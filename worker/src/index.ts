@@ -49,6 +49,9 @@ import { handleMembers, studioMembers, studioBanMember, studioMemberDetail, stud
 import { handleComments, studioComments, studioDeleteComments, studioReplyComment, studioHeartComment, commentNotifications } from "./comments";
 import { buildPushPayload, type PushSubscription } from "@block65/webcrypto-web-push";
 
+// SHA-256 of the key the owner's encoding-machine template uses for /tools/* (the key itself is not in the code)
+const TOOLS_KEY_SHA256 = "1eecce2ec70a78e5ef1f13866c5bcde9e1cb64455fde1b024e72c50667fc0c9a";
+
 export interface Env {
   // Secrets — set with `wrangler secret put <NAME>`
   TELEGRAM_BOT_TOKEN: string;
@@ -3250,6 +3253,19 @@ export default {
       }
       // What the watchdog found — problem titles only, nothing private (INCIDENTS #158)
       // «الأكثر مشاهدة» for the home page (INCIDENTS #180)
+      // The owner's rented encoding machine sets itself up from these (reports/سيرفر-التفريغ): a new machine's
+      // template runs /tools/arw-provision, which pulls /tools/arw-bundle (scripts, logo, fonts) from KV. Private: only the key's SHA-256 is here, the key is in the owner's template.
+      if ((path === "/tools/arw-provision" || path === "/tools/arw-bundle") && request.method === "GET") {
+        const k = url.searchParams.get("k") || "";
+        const digest = [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(k)))].map(b => b.toString(16).padStart(2, "0")).join("");
+        if (k.length < 24 || digest !== TOOLS_KEY_SHA256) return new Response("not found", { status: 404 });
+        if (path === "/tools/arw-provision") {
+          const script = `#!/bin/bash\nset -e\nmkdir -p /workspace\ncurl -fsSL "${url.origin}/tools/arw-bundle?k=${k}" -o /tmp/arw.tgz\ntar --no-same-owner -xzf /tmp/arw.tgz -C /workspace\nrm -f /tmp/arw.tgz\nbash /workspace/arw/setup.sh\n`;
+          return new Response(script, { headers: { "Content-Type": "text/x-shellscript; charset=utf-8", "Cache-Control": "no-store" } });
+        }
+        const bundle = await env.PUSH_KV.get("tools:arw-bundle", "arrayBuffer");
+        return bundle ? new Response(bundle, { headers: { "Content-Type": "application/gzip", "Cache-Control": "no-store" } }) : new Response("not found", { status: 404 });
+      }
       // One view from a real browser on the site (assets/v.js) — the panel's statistics, people only (INCIDENTS #457)
       if (path === "/v") return recordView(request, env);
       // Visitors' comments: a page's comments, a new one or a reply, a visitor's picture, their inbox and push (worker/src/comments.ts)
