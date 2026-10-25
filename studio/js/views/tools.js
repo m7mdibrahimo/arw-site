@@ -478,7 +478,7 @@ export async function renderServerTool(page) {
       <p class="muted">لكل عرض: الزق رابط التحميل نفسه (أو رابط التورنت)، واختار لغة الصوت وعدد الجودات. تقدر تضيف كذا عرض مرة واحدة، والسيرفر هيعملهم ورا بعض.</p>
       <div id="srv-rows"></div>
       <button class="btn btn-ghost btn-sm" id="srv-add">${icon('plus')} عرض كمان</button>
-      <p class="muted srv-note">المكسيكي والياباني بيطلعوا ترجمة إنجليزي برضه، عشان تترجمها زي ما انت متعود.</p>
+      <p class="muted srv-note">لغة الصوت = الصوت اللي هيتفرّغ ويتحط في العرض. لو الملف فيه صوتين (إنجليزي وياباني أو مكسيكي)، اختار «إنجليزي»، والسيرفر هياخد الصوت الإنجليزي من جوه الملف، وده أدق. المكسيكي والياباني اختارهم بس لو مفيش صوت إنجليزي، وبيطلعوا ترجمة إنجليزي برضه.</p>
       <button class="btn btn-primary" id="srv-go">${icon('download')} ابدأ</button>
     </section>
     <section class="panel"><header class="panel-head"><h2>${icon('film')} العروض</h2></header><div id="srv-shows"></div></section>
