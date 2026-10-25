@@ -4136,12 +4136,16 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض يو اف سي 333 ايرلي بريلمز مترجم",
-    "lastAttempt": 1792950905004,
+    "lastAttempt": 1792954437423,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
     },
     "processing": [
-      "instagram_reel"
+      "instagram_reel",
+      "instagram_story",
+      "tiktok"
     ],
     "reviewPlatforms": [],
     "needsReview": false
