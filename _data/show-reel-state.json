@@ -4147,5 +4147,76 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
+  },
+  "20261025193534-ufc-333-volkanovski-vs-evloev-prelims": {
+    "publishedAt": 1792948107383,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": false,
+    "title": "عرض يو اف سي 333 بريلمز مترجم",
+    "lastAttempt": 1792948193684,
+    "errors": {
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_story",
+      "tiktok"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261025193815-ufc-333-volkanovski-vs-evloev-main-card": {
+    "publishedAt": 1792948219610,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض يو اف سي 333 مين كارد مترجم",
+    "lastAttempt": 1792948231268,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261025194211-cmll-international-women-s-grand-prix-23-10-2026": {
+    "publishedAt": 1792948257675,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال انترناشونال ويمينز جراند بري 23.10.2026 مترجم",
+    "lastAttempt": 1792948268607,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261025194555-mlw-fusion-24-10-2026": {
+    "publishedAt": 1792948295937,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ام ال دبليو فيوجن 24.10.2026 مترجم",
+    "lastAttempt": 1792948308046,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261025195300-njpw-super-junior-tag-league-day-1-24-10-2026": {
+    "publishedAt": 1792948334616,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سوبر جونيور تاج ليج (اليوم الاول) 24.10.2026 مترجم",
+    "lastAttempt": 1792948346201,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
