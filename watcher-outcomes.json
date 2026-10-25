@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/jay-white-reveals-new-aew-faction-name-teasing-bullet-club-return-collision": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-25T00:50:14.182Z"
+ },
+ "https://www.ringsidenews.com/aew-collision-results-highlights-key-moments-october-24-2026": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-25T00:49:55.775Z"
+ },
  "https://www.fightful.com/wrestling/bang-bang-gang-and-the-dogs-alliance-officially-named-the-last-outfit-on-10-24-aew-collision": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -63,11 +73,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-25T00:46:09.411Z"
- },
- "https://www.ringsidenews.com/aew-collision-results-highlights-key-moments-october-24-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-25T00:33:09.968Z"
  },
  "https://www.fightful.com/wrestling/angel-medina-of-da-baldies-in-ecw-retires": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي",
   "retry": false,
   "at": "2026-10-11T11:43:06.101Z"
- },
- "https://www.fightful.com/wrestling/aew-collision-grand-slam-france-results-10-10-chris-jericho-young-bucks-compete": {
-  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
-  "retry": true,
-  "at": "2026-10-11T04:04:18.848Z"
  }
 }
