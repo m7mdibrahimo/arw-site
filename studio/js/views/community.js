@@ -2,7 +2,7 @@
 // members reported, the latest messages of any room (delete, stop the writer), and who can't write now.
 // The rooms themselves: worker/src/chat.ts.
 import { api, getUser } from '../api.js';
-import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, num } from '../ui.js';
+import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, num, pager } from '../ui.js';
 import { siteJpeg, kb } from '../image.js';
 
 // the rooms as the worker has them now (the owner names, colours, hides and closes them below: «الغرف»)
@@ -70,7 +70,7 @@ export async function renderCommunity(page) {
 
       <section class="panel cy-sec"><h2>${mark(state.room)} آخر رسائل ${nameOf(state.room)}</h2>
         ${getUser()?.role === 'owner' ? html`<div class="cy-clear"><button class="btn btn-sm btn-danger-soft" data-clear="${state.room}">${icon('trash')} امسح كل رسايل ${nameOf(state.room)}</button><button class="btn btn-sm btn-danger-soft" data-clear="all">${icon('trash')} امسح كل الرسايل في كل المجموعات</button></div>` : ''}
-        <div class="cy-list" id="cy-msgs"><div class="spinner"></div></div></section>
+        <div class="cy-list" id="cy-msgs"><div class="spinner"></div></div><div id="cy-pager"></div></section>
 
       ${(d.muted || []).length ? html`<section class="panel cy-sec"><h2>${icon('lock')} موقوفين عن الكتابة</h2>
         <div class="cy-list">${d.muted.map(m => html`<article class="cy-item">
@@ -83,7 +83,13 @@ export async function renderCommunity(page) {
     const box = $('#cy-msgs');
     try {
       const r = await api.chatRoom(state.room);
-      const msgs = (r.msgs || []).slice().reverse();
+      const all = (r.msgs || []).slice().reverse();
+      // 20 messages a page (owner 2026-10-25), newest first
+      const pages = Math.max(1, Math.ceil(all.length / 20));
+      state.msgPage = Math.min(Math.max(1, state.msgPage || 1), pages);
+      const msgs = all.slice((state.msgPage - 1) * 20, state.msgPage * 20);
+      mount($('#cy-pager'), pager(state.msgPage, pages));
+      $$('[data-page]', $('#cy-pager')).forEach(b => b.onclick = () => { state.msgPage = Number(b.dataset.page); loadRoom(); box.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
       mount(box, msgs.length ? html`${msgs.map(m => html`<article class="cy-item ${m.del ? 'is-del' : ''}">
         ${av(m)}
         <div class="cy-item-main"><div class="cm-meta"><b>${m.name}</b>${m.badge === 'gold' ? html`<em class="mb-gold-tag">الحساب الرسمي</em>` : ''}<span class="muted small">${timeAgo(m.at)}</span>${m.spoiler ? html`<em class="mb-wait">حرق نتائج</em>` : ''}</div>
@@ -112,7 +118,7 @@ export async function renderCommunity(page) {
       catch (err) { toast(err.message, 'error'); b.disabled = false; }
       return;
     }
-    if (b.dataset.room) { state.room = b.dataset.room; renderCommunity(page); return; }
+    if (b.dataset.room) { state.room = b.dataset.room; state.msgPage = 1; renderCommunity(page); return; }
     if (b.dataset.del) {
       const [room, id] = b.dataset.del.split(':');
       const ok = await dialog({ title: 'مسح الرسالة', body: html`<p class="muted small">هتختفي عند كل اللي في المجموعة على طول.</p>`, confirm: 'امسحها', danger: true });

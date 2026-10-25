@@ -1204,3 +1204,4 @@ section.panel + section.panel { margin-top: 16px; }
 .srv-keyrow .input { max-width: 420px; }
 .cy-clear { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 12px; }
 .srv-bar-sm { height: 10px; margin: 8px 0 4px; }
+button.pager-num, button.pager-step { border: 0; font: inherit; font-weight: 800; cursor: pointer; }

@@ -164,3 +164,20 @@ export function can(user, perm) {
   return !!user && (user.role === 'owner' || (Array.isArray(user.perms) && user.perms.includes(perm)));
 }
 export const sectionOf = (collection) => (collection === 'nostalgia_series' ? 'nostalgia' : collection);
+
+/** Numbered pages (1 … around the current one … last) as buttons with data-page, in the same look as the lists'
+ *  pager. The page wires them: box.querySelectorAll('[data-page]'). Nothing when it all fits on one page. */
+export function pager(page, pages) {
+  if (pages <= 1) return raw('');
+  const nums = [...new Set([1, pages, page - 2, page - 1, page, page + 1, page + 2])].filter(n => n >= 1 && n <= pages).sort((a, b) => a - b);
+  const out = [];
+  nums.forEach((n, i) => {
+    if (i && n - nums[i - 1] > 1) out.push('<span class="pager-gap">…</span>');
+    out.push(n === page ? `<span class="pager-num on" aria-current="page">${num(n)}</span>` : `<button type="button" class="pager-num" data-page="${n}">${num(n)}</button>`);
+  });
+  return raw(`<nav class="pager" aria-label="الصفحات">
+    ${page > 1 ? `<button type="button" class="pager-step" data-page="${page - 1}">→ السابقة</button>` : '<span class="pager-step off">→ السابقة</span>'}
+    ${out.join('')}
+    ${page < pages ? `<button type="button" class="pager-step" data-page="${page + 1}">التالية ←</button>` : '<span class="pager-step off">التالية ←</span>'}
+  </nav>`);
+}

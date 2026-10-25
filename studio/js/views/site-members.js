@@ -2,7 +2,7 @@
 // how much they comment; a member can be stopped (signed out, can't sign in or comment) and brought back. The
 // accounts themselves: worker/src/members.ts.
 import { api, getUser } from '../api.js';
-import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, num, normalizeArabic, debounce } from '../ui.js';
+import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, num, normalizeArabic, debounce, pager } from '../ui.js';
 import { premiumPicker, kindTag, payHistory, wirePayHistory } from './premium.js';
 import { memberSquare } from '../image.js';
 
@@ -54,7 +54,8 @@ function exportCsv(items) {
 }
 
 const FILTERS = [['all', 'الكل'], ['week', 'الجداد'], ['active', 'نشطين'], ['banned', 'موقوفين']];
-const state = { q: '', filter: 'all' };
+const state = { q: '', filter: 'all', page: 1 };
+const PER_PAGE = 20; // owner 2026-10-25: «كل 20 عضو في صفحة»
 
 function row(m) {
   const pic = m.official ? 'official' : m.pic;
@@ -105,6 +106,7 @@ export async function renderSiteMembers(page) {
         <div class="chips" id="mb-filters">${FILTERS.map(([k, l]) => html`<button class="chip ${state.filter === k ? 'active' : ''}" data-f="${k}">${l}</button>`)}</div>
       </div>
       <div class="cm-list" id="mb-list"></div>
+      <div id="mb-pager"></div>
     </div>`);
 
   const draw = () => {
@@ -116,7 +118,12 @@ export async function renderSiteMembers(page) {
       return !q || normalizeArabic(`${m.display} ${m.first_name || ''} ${m.last_name || ''} ${m.username} ${m.email}`).includes(q);
     });
     if ($('#mb-banned-n')) $('#mb-banned-n').textContent = num(items.filter(m => m.banned).length);
-    mount($('#mb-list'), shown.length ? html`${shown.map(row)}`
+    const pages = Math.max(1, Math.ceil(shown.length / PER_PAGE));
+    state.page = Math.min(Math.max(1, state.page), pages);
+    const pageItems = shown.slice((state.page - 1) * PER_PAGE, state.page * PER_PAGE);
+    mount($('#mb-pager'), pager(state.page, pages));
+    $$('[data-page]', $('#mb-pager')).forEach(b => b.onclick = () => { state.page = Number(b.dataset.page); draw(); $('#mb-list').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+    mount($('#mb-list'), shown.length ? html`${pageItems.map(row)}`
       : html`<div class="empty"><p class="muted">${items.length ? 'مفيش أعضاء بالشكل ده.' : 'لسه محدش عمل حساب على الموقع.'}</p></div>`);
     $$('[data-ban]', $('#mb-list')).forEach(b => b.onclick = async () => {
       const m = items.find(x => String(x.id) === b.dataset.ban);
@@ -145,8 +152,8 @@ export async function renderSiteMembers(page) {
   draw();
   if ($('#mb-off')) officialCard($('#mb-off'));
   $('#mb-export').onclick = () => exportCsv(items);
-  $('#mb-q').oninput = debounce((e) => { state.q = e.target.value; draw(); }, 150);
-  $$('#mb-filters .chip').forEach(c => c.onclick = () => { state.filter = c.dataset.f; $$('#mb-filters .chip').forEach(x => x.classList.toggle('active', x === c)); draw(); });
+  $('#mb-q').oninput = debounce((e) => { state.q = e.target.value; state.page = 1; draw(); }, 150);
+  $$('#mb-filters .chip').forEach(c => c.onclick = () => { state.filter = c.dataset.f; state.page = 1; $$('#mb-filters .chip').forEach(x => x.classList.toggle('active', x === c)); draw(); });
 }
 
 /** One member: everything about them (studio #/site-members/<id>) */
