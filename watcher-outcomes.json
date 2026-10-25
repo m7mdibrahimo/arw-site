@@ -1,38 +1,43 @@
 {
+ "https://www.fightful.com/wrestling/wwf-red-letter-intercontinental-championship-belt-becomes-most-valuable-wrestling-title-ever-sold-at-716750": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-25T13:12:32.125Z"
+ },
  "https://www.fightful.com/wrestling/rey-pegasus-comments-on-winning-cmll-torneo-de-escuelas": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T13:08:38.205Z"
+  "at": "2026-10-25T13:12:31.220Z"
  },
  "https://www.fightful.com/wrestling/aaa-heroes-inmortales-results-10-24": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T13:08:37.922Z"
+  "at": "2026-10-25T13:12:30.980Z"
  },
  "https://www.fightful.com/wrestling/darby-allin-to-defend-tnt-title-against-josh-alexander-at-aew-fright-night-dynamite": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T13:08:37.705Z"
+  "at": "2026-10-25T13:12:30.794Z"
  },
  "https://www.fightful.com/wrestling/watch-aaa-heroes-inmortales-october-24-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T13:08:37.477Z"
+  "at": "2026-10-25T13:12:30.597Z"
  },
  "https://www.fightful.com/wrestling/amber-nova-posts-bail-after-being-arrested-for-dui-refusal-to-submit-to-dui-testing": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T13:08:37.118Z"
+  "at": "2026-10-25T13:12:30.290Z"
  },
  "https://www.fightful.com/wrestling/leon-slater-hopes-to-compete-in-tnas-six-sided-ring-as-tna-world-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T13:08:36.839Z"
+  "at": "2026-10-25T13:12:30.048Z"
  },
  "https://www.fightful.com/wrestling/aj-francis-tna-deal-is-up-towards-the-end-of-2026-deal-between-the-two-sides-is-expected-to-get-done": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T13:08:36.603Z"
+  "at": "2026-10-25T13:12:29.848Z"
  },
  "https://www.fightful.com/wrestling/mvp-says-the-hurt-syndicate-wanted-to-drop-aew-world-tag-team-titles-back-to-private-party": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-11T20:44:45.352Z"
- },
- "https://www.ringsidenews.com/tna-bound-glory-results-highlights-key-moments-october-11-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-11T20:37:17.893Z"
  }
 }
