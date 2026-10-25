@@ -4134,15 +4134,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض يو اف سي 333 ايرلي بريلمز مترجم",
-    "lastAttempt": 1792956077843,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1792957102955,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -4186,7 +4182,7 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال انترناشونال ويمينز جراند بري 23.10.2026 مترجم",
-    "lastAttempt": 1792956180591,
+    "lastAttempt": 1792957104423,
     "errors": {
       "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
@@ -4206,17 +4202,16 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ام ال دبليو فيوجن 24.10.2026 مترجم",
-    "lastAttempt": 1792953599963,
+    "lastAttempt": 1792957113157,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
-      "tiktok"
+      "instagram_reel"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261025195300-njpw-super-junior-tag-league-day-1-24-10-2026": {
     "publishedAt": 1792948334616,
