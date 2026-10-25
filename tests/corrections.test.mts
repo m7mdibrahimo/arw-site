@@ -863,3 +863,12 @@ test("a stable named after «عرض» becomes «فريق» (INCIDENTS #833)", as
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /عرض The (Brood|Bloodline|Judgment Day|Nexus|Shield)/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #834: Sting is «ستينج» in the glossary; «ستينغ/ستينغر» reached 22 stories.
+test("Sting is spelled ستينج, never ستينغ (INCIDENTS #834)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("والده الأسطورة ستينغ وحركة ستينغر سبلاش"), "والده الأسطورة ستينج وحركة ستينجر سبلاش");
+  assert.equal(applyCorrections("تويت كاستينغ"), "تويت كاستينغ");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(?<![؀-ۿ])ستينغ(?![؀-ۿ])/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
