@@ -3281,6 +3281,10 @@ export default {
           const data = JSON.stringify(body);
           if (data.length > 400_000) return json({ success: false, error: "too big" }, 413);
           await env.ANALYTICS.prepare("INSERT INTO enc_status (id, at, data) VALUES (1, ?, ?) ON CONFLICT(id) DO UPDATE SET at = excluded.at, data = excluded.data").bind(now, data).run();
+          // the machine's own number at the rental site: «شغّل السيرفر» works on it directly (a key made in the panel
+          // may not list the account's machines)
+          if (/^\d{4,12}$/.test(String(body.instanceId || "")) && (await env.PUSH_KV.get("tools:instance-id")) !== String(body.instanceId))
+            await env.PUSH_KV.put("tools:instance-id", String(body.instanceId));
           // hand the machine what the panel asked for since its last heartbeat
           const cmds = (await env.ANALYTICS.prepare("SELECT id, kind, data FROM enc_cmds WHERE taken = 0 ORDER BY id LIMIT 20").all()).results as any[] || [];
           if (cmds.length) await env.ANALYTICS.prepare(`UPDATE enc_cmds SET taken = ? WHERE id IN (${cmds.map(() => "?").join(",")})`).bind(now, ...cmds.map(c => c.id)).run();
@@ -3582,9 +3586,10 @@ export default {
           if (!/^[A-Za-z0-9_-]{20,200}$/.test(k)) return json({ success: false, error: "المفتاح ده شكله مش صحيح" });
           // check it with what the button needs (the machines list); a key made with only some permissions has no
           // access to the account's profile, so that is not asked for
-          const res = await fetch(`https://console.vast.ai/api/v1/instances/?select_filters=${encodeURIComponent("{}")}&limit=25`, { headers: { Authorization: `Bearer ${k}`, Accept: "application/json" } });
+          const iid = await env.PUSH_KV.get("tools:instance-id");
+          const res = await fetch(iid ? `https://console.vast.ai/api/v0/instances/${iid}/?owner=me` : "https://console.vast.ai/api/v0/users/current/", { headers: { Authorization: `Bearer ${k}`, Accept: "application/json" } });
           const body: any = await res.json().catch(() => null);
-          if (!body || !Array.isArray(body.instances)) {
+          if (!res.ok || !body || body.success === false || body.error) {
             const why = body && (body.msg || body.error) ? String(body.msg || body.error).slice(0, 120) : `HTTP ${res.status}`;
             return json({ success: false, error: `موقع التأجير رفض المفتاح ده (${why}). اعمل مفتاح جديد وعلّم على كل الصلاحيات.` });
           }
@@ -3597,8 +3602,13 @@ export default {
           // the rental site's own tool (vast-ai/vast-cli): machines list on /api/v1/instances/, offers by POST /bundles/
           const vast = (p: string, init: RequestInit = {}) => fetch(p.startsWith("/api/") ? `https://console.vast.ai${p}` : `https://console.vast.ai/api/v0${p}`, { ...init, headers: { Authorization: `Bearer ${k}`, "Content-Type": "application/json", ...(init.headers || {}) } })
             .then(async r => ({ ok: r.ok, status: r.status, body: await r.json().catch(() => ({})) as any }));
-          const list = await vast(`/api/v1/instances/?select_filters=${encodeURIComponent("{}")}&limit=25`);
-          const mine = ((list.body && list.body.instances) || []).filter((i: any) => i.label === "arw-tafrigh");
+          const iid = await env.PUSH_KV.get("tools:instance-id");
+          let mine: any[] = [];
+          if (iid) {
+            const one = await vast(`/instances/${iid}/?owner=me`);
+            const inst = one.body && (one.body.instances && !Array.isArray(one.body.instances) ? one.body.instances : Array.isArray(one.body.instances) ? one.body.instances[0] : null);
+            if (inst && inst.id) mine = [inst];
+          }
           const running = mine.find((i: any) => i.actual_status === "running" || i.actual_status === "loading");
           if (path.endsWith("/stop")) {
             for (const i of mine.filter((i: any) => i.intended_status === "running")) await vast(`/instances/${i.id}/`, { method: "PUT", body: JSON.stringify({ state: "stopped" }) });
@@ -3623,6 +3633,7 @@ export default {
           for (const o of offers.slice(0, 8)) {
             const r = await vast(`/asks/${o.id}/`, { method: "PUT", body: JSON.stringify({ client_id: "me", template_hash_id: "b5f507df99df79817c49c792eff21439", disk: 100, label: "arw-tafrigh" }) });
             if (r.body && r.body.success) {
+              if (r.body.new_contract) await env.PUSH_KV.put("tools:instance-id", String(r.body.new_contract));
               if (old) await vast(`/instances/${old.id}/`, { method: "DELETE" });
               return json({ success: true, state: "new", message: `كارت السيرفر القديم كان متاخد، فأجّرت جهاز جديد (${o.gpu_name} — حوالي ${Math.round(o.dph_total * 100)} سنت في الساعة). هيركّب نفسه في حوالي ١٠ دقايق.` });
             }
