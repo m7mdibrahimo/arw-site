@@ -8758,5 +8758,41 @@
     "slug": "20261025192311-aaa-heroes-inmortales-week-24-",
     "image": "/content/images/73t7dmxfarjg13yl.jpg",
     "renderedAt": 1792948355462
+  },
+  {
+    "videoUrl": "/videos/reel-20261025202328-wwe-raw-sami-zayn-vs-cody-rhod.mp4",
+    "filename": "reel-20261025202328-wwe-raw-sami-zayn-vs-cody-rhod.mp4",
+    "title": "مباراة سامي زين ضد كودي رودز 19.10.2026 في عرض الرو دارك ماتش",
+    "secondaryTitle": "WWE RAW Sami Zayn vs Cody Rhodes Dark Match 19.10.2026",
+    "description": "مباراة سامي زين ضد كودي رودز في عرض الرو دارك ماتش بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261025202328-wwe-raw-sami-zayn-vs-cody-rhod",
+    "kind": "show",
+    "slug": "20261025202328-wwe-raw-sami-zayn-vs-cody-rhod",
+    "image": "/content/images/7bx4ikautoikvp5d.jpg",
+    "renderedAt": 1792949206108
+  },
+  {
+    "videoUrl": "/videos/reel-20260924112300-aew-dynamite-23-09-2026.mp4",
+    "filename": "reel-20260924112300-aew-dynamite-23-09-2026.mp4",
+    "title": "عرض داينامايت 23.09.2026 مترجم",
+    "secondaryTitle": "AEW Dynamite 23.09.2026",
+    "description": "عرض داينامايت مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20260924112300-aew-dynamite-23-09-2026",
+    "kind": "show",
+    "slug": "20260924112300-aew-dynamite-23-09-2026",
+    "image": "/content/images/ej0qfugwdjht2di9.jpg",
+    "renderedAt": 1792949289716
+  },
+  {
+    "videoUrl": "/videos/reel-20260924115800-aew-collision-23-09-2026.mp4",
+    "filename": "reel-20260924115800-aew-collision-23-09-2026.mp4",
+    "title": "عرض كوليجن 23.09.2026 مترجم",
+    "secondaryTitle": "AEW Collision 23.09.2026",
+    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20260924115800-aew-collision-23-09-2026",
+    "kind": "show",
+    "slug": "20260924115800-aew-collision-23-09-2026",
+    "image": "/content/images/gf0rzx3ry5wqa78r.jpg",
+    "renderedAt": 1792949371721
   }
 ]
