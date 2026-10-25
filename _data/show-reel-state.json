@@ -4172,7 +4172,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261025194211-cmll-international-women-s-grand-prix-23-10-2026": {
     "publishedAt": 1792948257675,
@@ -4193,15 +4194,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض ام ال دبليو فيوجن 24.10.2026 مترجم",
-    "lastAttempt": 1792967626836,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1792968565416,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -4231,7 +4228,7 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ان دبليو ايه باور 24.10.2026 مترجم",
-    "lastAttempt": 1792965504344,
+    "lastAttempt": 1792968567196,
     "errors": {
       "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
