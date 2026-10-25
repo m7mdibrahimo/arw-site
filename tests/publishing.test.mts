@@ -3344,6 +3344,11 @@ test('source-folder addresses of shows, recaps and news redirect to their pages 
   }
   const pairs = contentFolderAddresses(root, site).map(([from]) => from).sort();
   assert.deepEqual(pairs, ['/content/news/2026-08-06-خبر-قديم/', '/content/recaps/2026-08-05-full-raw-highlights-aug-3-2026/', '/content/shows/2026-08-08-smackdown-07-08-2026/', '/shows/smackdown-07-08-2026/']);
+  // a story newer than the early «/content/…» builds never lived there: no redirect page (file budget)
+  fs.writeFileSync(path.join(root, 'news', '20261024120000-خبر-حديث.md'), '---\ntitle: "خبر حديث"\n---\n');
+  fs.mkdirSync(path.join(site, 'news/خبر-حديث'), { recursive: true });
+  fs.writeFileSync(path.join(site, 'news/خبر-حديث/index.html'), '');
+  assert.ok(!contentFolderAddresses(root, site).some(([from]) => from.includes('خبر-حديث')));
   // an annual show's file-name address (with the year) leads to its year-less page (INCIDENTS #325)
   fs.writeFileSync(path.join(root, 'shows', 'revpro-14-year-anniversary-show-2026.md'), '---\ntitle: "RevPro 14 Year Anniversary Show"\nis_annual: true\n---\n');
   fs.mkdirSync(path.join(site, 'shows/revpro-14-year-anniversary-show'), { recursive: true });

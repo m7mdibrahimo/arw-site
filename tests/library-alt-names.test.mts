@@ -57,3 +57,8 @@ test("a weekly episode also answers «عرض ماين ايفنت 2026 مترجم
   const forms = showNameForms({ headline: "عرض مين ايفنت 14.10.2026 مترجم", programName: "WWE Main Event", eventDate: "2026-10-14", aliases: ["عرض مين ايفنت"], isShow: true });
   for (const f of ["عرض ماين ايفنت 2026 مترجم", "عرض ماين ايفنت الاخير 2026 مترجم", "عرض مين ايفنت 2026 مترجم"]) assert.ok(forms.includes(f), f);
 });
+
+test("a show's alternateName lists each spelling once (the layout's global drops repeats)", async () => {
+  const fs = await import("node:fs");
+  assert.match(fs.readFileSync("eleventy.config.js", "utf-8"), /showNameForms\(\{[^}]*\}\)\.filter\(\(n\) => !seen\.has\(n\) && seen\.add\(n\)\)/);
+});
