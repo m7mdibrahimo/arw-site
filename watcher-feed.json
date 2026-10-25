@@ -1,5 +1,15 @@
 [
   {
+    "id": 335611,
+    "link": "https://www.fightful.com/wrestling/cmll-sabado-de-coliseo-results-10-24-2026-olympia-vs-queen-aminata-galeon-fantasma-infernales-neon-more/",
+    "date": "2026-10-25T02:15:00",
+    "date_gmt": "2026-10-25T06:15:00",
+    "title": {
+      "rendered": "CMLL Sábado De Coliseo Results (10/24/2026): Olympia vs. Queen Aminata, Galeón Fantasma, Infernales, Neón, More"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/25020502/olympia-aminata.jpg"
+  },
+  {
     "id": 335608,
     "link": "https://www.fightful.com/wrestling/artist-of-stardom-championship-match-to-take-place-at-aew-fright-night-collision/",
     "date": "2026-10-25T01:08:37",
@@ -288,15 +298,5 @@
       "rendered": "Ilja Dragunov Shares When He Thought About Leaving WWE"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/24071243/maxresdefault-177.jpg"
-  },
-  {
-    "id": 335486,
-    "link": "https://www.fightful.com/wrestling/hulk-hogans-estate-sells-florida-mansion-for-5-9-million/",
-    "date": "2026-10-24T13:39:11",
-    "date_gmt": "2026-10-24T17:39:11",
-    "title": {
-      "rendered": "Hulk Hogan’s Estate Sells Florida Mansion For $5.9 Million"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/06/05202046/Screenshot-123-e1780705269606.png"
   }
 ]
