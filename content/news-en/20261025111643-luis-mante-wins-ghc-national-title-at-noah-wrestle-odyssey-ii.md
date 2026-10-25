@@ -16,4 +16,3 @@ image: /content/images/yds0e7maa6p65mib.jpg
 Luis Mante captured the GHC National Championship by defeating Naomichi Marufuji at Pro Wrestling NOAH's Wrestle Odyssey II event on October 25, 2026, at Ryōgoku Sumo Hall in Tokyo, Japan. Marufuji was making his fifth defense of the belt after winning it in May 2026.
 
 Mante originally entered the scene as the M.P.I. character before revealing his true identity later. He has competed with Dragongate since 2019, and he secured the victory in this match with a pop-up powerbomb to become the 18th holder of the championship.
-
