@@ -484,6 +484,7 @@ export async function renderServerTool(page) {
     <section class="panel"><header class="panel-head"><h2>${icon('film')} العروض</h2></header><div id="srv-shows"></div></section>
     <section class="panel"><header class="panel-head"><h2>${icon('check')} اللي خلص</h2></header><div id="srv-jobs"></div></section>
     <section class="panel"><header class="panel-head"><h2>${icon('upload')} مواقع الرفع</h2></header><div id="srv-hosts"></div></section>
+    <section class="panel" id="srv-key-box"><header class="panel-head"><h2>${icon('bolt')} زرار التشغيل</h2></header><div id="srv-key"></div></section>
   </div>`);
   const box = $('#srv');
   let last = null, chosen = {}, chosenQ = {}; // the logo position / qualities picked for the Arabic file about to go up
@@ -549,6 +550,29 @@ export async function renderServerTool(page) {
     if (ok < rows.length) toast(`${num(rows.length - ok)} عرض متبعتش — جرّب تاني`, 'error');
   };
 
+  const power = async (which) => {
+    const b = $(which === 'start' ? '#srv-start' : '#srv-stop');
+    if (b) { b.disabled = true; b.textContent = which === 'start' ? 'بيشغّل…' : 'بيقفل…'; }
+    try {
+      const r = await tools.serverPower(which);
+      if (r && r.success === false) throw new Error(r.error || 'حصلت مشكلة');
+      toast(r.message || 'تمام', 'ok', 8000);
+    } catch (e) { toast(e.message || 'حصلت مشكلة', 'error', 8000); }
+    setTimeout(tick, 4000);
+  };
+  const drawKey = (has) => {
+    mount($('#srv-key'), html`<p class="muted">${has ? 'المفتاح متحط ✓ — زرار «شغّل السيرفر» شغال. لو عايز تغيّره حط الجديد هنا.' : 'مرة واحدة بس، عشان «شغّل السيرفر» يشتغل من هنا:'}</p>
+      <ol class="srv-steps"><li>افتح <a href="https://cloud.vast.ai/manage-keys/" target="_blank" rel="noopener">صفحة المفاتيح في موقع التأجير</a>.</li><li>اعمل مفتاح جديد وانسخه.</li><li>الزقه هنا ودوس «احفظ». (متبعتهوش لحد.)</li></ol>
+      <div class="srv-keyrow"><input class="input" id="srv-vk" type="password" dir="ltr" autocomplete="off" placeholder="${has ? 'متحط ✓' : 'مفتاح موقع التأجير'}"><button class="btn btn-primary btn-sm" id="srv-vk-save">${icon('check')} احفظ</button></div>`);
+    $('#srv-vk-save').onclick = async () => {
+      const key = $('#srv-vk').value.trim();
+      if (!key) return toast('الزق المفتاح الأول', 'error');
+      try { const r = await tools.serverVastKey(key); if (r && r.success === false) throw new Error(r.error); toast('اتحفظ — زرار التشغيل جاهز'); drawKey(true); tick(); }
+      catch (e) { toast(e.message || 'مقدرتش أحفظه', 'error'); }
+    };
+  };
+  let keyDrawn = null;
+
   const drawStatus = (d) => {
     const st = d.status, now = d.now || Date.now();
     const alive = st && st.state === 'on' && now - st.at < 90_000;
@@ -557,7 +581,9 @@ export async function renderServerTool(page) {
     mount(box, html`<section class="panel srv-card">
       <div class="srv-top">
         <div class="srv-state"><i class="srv-dot ${alive ? 'on' : ''}"></i><b>${alive ? 'السيرفر شغال' : 'السيرفر مقفول'}</b></div>
-        ${alive ? '' : html`<a class="btn btn-primary" href="https://cloud.vast.ai/instances/" target="_blank" rel="noopener">${icon('bolt')} افتح صفحة التشغيل</a>`}
+        ${alive ? (job ? '' : html`<button class="btn btn-sm btn-ghost" id="srv-stop">${icon('x')} اقفل السيرفر</button>`)
+          : d.vastKey ? html`<button class="btn btn-primary" id="srv-start">${icon('bolt')} شغّل السيرفر</button>`
+          : html`<a class="btn btn-primary" href="#srv-key-box">${icon('bolt')} جهّز زرار التشغيل</a>`}
       </div>
       ${alive ? html`<div class="srv-tools">
           ${st.uploadPage ? html`<a class="btn btn-sm" href="${st.uploadPage}" target="_blank" rel="noopener">${icon('upload')} ارفع من جهازك</a>` : ''}
@@ -570,12 +596,7 @@ export async function renderServerTool(page) {
         </details>` : ''}
       <p class="muted srv-sub">${alive ? `آخر إشارة منه: ${timeAgo(st.at)} — اشتغل الساعة ${dayClock(st.boot)}`
         : st ? `مقفول من ${dayClock(st.at)}` : 'لسه مبعتش أي إشارة'}</p>
-      ${!alive ? html`<ol class="srv-steps">
-          <li>دوس «افتح صفحة التشغيل».</li>
-          <li>دوس زرار التشغيل ▶ اللي على السيرفر.</li>
-          <li>ارجع هنا بعد دقيقة، وهتلاقيه «شغال». اللي طلبته وهو مقفول هيتعمل أول ما يشتغل.</li>
-          <li>لو زرار التشغيل مش راضي (الكارت اتاخد): من نفس الموقع افتح «القوالب»، واختار «عرب راسلنج - التفريغ والدمج»، وأجّر أي جهاز رخيص. هيركّب نفسه في ١٠ دقايق، وملفاتك موجودة على درايف.</li>
-        </ol>` : ''}
+      ${!alive ? html`<p class="muted srv-note">${d.vastKey ? 'دوس «شغّل السيرفر» وخلاص: لو كارته فاضي هيشتغل خلال دقيقة، ولو اتاخد هيأجّر جهاز جديد بنفس السعر ويركّب نفسه في حوالي ١٠ دقايق. اللي طلبته وهو مقفول هيتعمل أول ما يشتغل.' : 'عشان تشغّله بضغطة واحدة من هنا، حط مفتاح موقع التأجير مرة واحدة في «زرار التشغيل» تحت.'}</p>` : ''}
       ${job ? html`<div class="srv-job">
           <b>${STEP_NOW[job.step] || 'شغال على'}: ${job.name}</b>
           ${job.pct != null ? html`<div class="srv-bar"><div style="width:${Math.min(100, job.pct)}%"></div></div>` : ''}
@@ -707,6 +728,9 @@ export async function renderServerTool(page) {
     try {
       last = await tools.server();
       drawStatus(last);
+      if ($('#srv-start')) $('#srv-start').onclick = () => power('start');
+      if ($('#srv-stop')) $('#srv-stop').onclick = () => power('stop');
+      if (keyDrawn !== !!last.vastKey) { keyDrawn = !!last.vastKey; drawKey(keyDrawn); }
       // don't redraw the shows while a file picker is open or a position was just picked mid-upload
       if (!document.activeElement || !document.activeElement.matches('input[type=file]')) drawShows(last);
       drawJobs(last);

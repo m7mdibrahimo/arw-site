@@ -95,6 +95,8 @@ export const tools = {
   server: () => call('/api/studio/tools/server'),
   serverCmd: (body) => call('/api/studio/tools/server/cmd', { method: 'POST', body }),
   serverEn: (name) => call(`/api/studio/tools/server/en?name=${encodeURIComponent(name)}`),
+  serverPower: (which) => call(`/api/studio/tools/server/${which === 'stop' ? 'stop' : 'start'}`, { method: 'POST', body: {} }),
+  serverVastKey: (key) => call('/api/studio/tools/server/vastkey', { method: 'POST', body: { key } }),
   serverHosts: (body) => body ? call('/api/studio/tools/server/hosts', { method: 'POST', body }) : call('/api/studio/tools/server/hosts'),
   reelCheck: (slug) => callResult(`/api/videos/check?slug=${encodeURIComponent(slug)}`),
   makeReel: (slug) => call('/api/videos/dispatch', { method: 'POST', body: { slug } }),

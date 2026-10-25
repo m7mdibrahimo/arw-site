@@ -3572,6 +3572,53 @@ export default {
           await env.ANALYTICS.prepare("INSERT INTO enc_cmds (kind, data, created) VALUES (?, ?, ?)").bind(b.kind, JSON.stringify(data), Date.now()).run();
           return json({ success: true });
         }
+        // «شغّل السيرفر» / «اقفل السيرفر»: the panel runs the rented machine with the owner's own key for the rental site
+        // (KV tools:vast-key, put in by him in the panel, never sent back). Start = start the machine if its card is free;
+        // if the card was taken while it was off, rent the cheapest good machine from his template (it sets itself up)
+        // and delete the old one.
+        if (path === "/api/studio/tools/server/vastkey" && request.method === "POST") {
+          const b: any = await request.json().catch(() => ({}));
+          const k = String(b.key || "").trim();
+          if (!/^[A-Za-z0-9_-]{20,200}$/.test(k)) return json({ success: false, error: "المفتاح ده شكله مش صحيح" });
+          const test = await fetch("https://console.vast.ai/api/v0/users/current/", { headers: { Authorization: `Bearer ${k}` } });
+          if (!test.ok) return json({ success: false, error: "موقع التأجير رفض المفتاح ده" });
+          await env.PUSH_KV.put("tools:vast-key", k);
+          return json({ success: true });
+        }
+        if ((path === "/api/studio/tools/server/start" || path === "/api/studio/tools/server/stop") && request.method === "POST") {
+          const k = await env.PUSH_KV.get("tools:vast-key");
+          if (!k) return json({ success: false, needKey: true, error: "حط مفتاح موقع التأجير الأول (تحت في «زرار التشغيل»)" });
+          const vast = (p: string, init: RequestInit = {}) => fetch(`https://console.vast.ai/api/v0${p}`, { ...init, headers: { Authorization: `Bearer ${k}`, "Content-Type": "application/json", ...(init.headers || {}) } })
+            .then(async r => ({ ok: r.ok, status: r.status, body: await r.json().catch(() => ({})) as any }));
+          const list = await vast("/instances/?owner=me");
+          const mine = ((list.body && list.body.instances) || []).filter((i: any) => i.label === "arw-tafrigh");
+          const running = mine.find((i: any) => i.actual_status === "running" || i.actual_status === "loading");
+          if (path.endsWith("/stop")) {
+            for (const i of mine.filter((i: any) => i.intended_status === "running")) await vast(`/instances/${i.id}/`, { method: "PUT", body: JSON.stringify({ state: "stopped" }) });
+            return json({ success: true, state: "stopped", message: "السيرفر بيتقفل — مش هيتحسب غير تمن المساحة" });
+          }
+          if (running) return json({ success: true, state: "running", message: "السيرفر شغال أصلًا" });
+          const old = mine[0];
+          if (old) {
+            const r = await vast(`/instances/${old.id}/`, { method: "PUT", body: JSON.stringify({ state: "running" }) });
+            if (r.body && r.body.success) return json({ success: true, state: "starting", message: "السيرفر بيشتغل — خلال دقيقة هيبان «شغال»" });
+            await vast(`/instances/${old.id}/`, { method: "PUT", body: JSON.stringify({ state: "stopped" }) }); // cancel the queued start
+          }
+          // the card was taken (or there's no machine): rent the cheapest good one from the owner's template
+          const q = { gpu_name: { in: ["RTX 3060", "RTX 3060 Ti", "RTX 4060", "RTX 4060 Ti", "RTX 4070", "RTX 3070", "RTX 3080", "RTX 2080 Ti", "RTX A4000"] }, num_gpus: { eq: 1 }, rentable: { eq: true }, verified: { eq: true },
+            reliability2: { gte: 0.985 }, cpu_cores_effective: { gte: 16 }, disk_space: { gte: 100 }, inet_down: { gte: 500 }, inet_up: { gte: 300 }, gpu_ram: { gte: 7900 },
+            cuda_max_good: { gte: 12.4 }, cpu_arch: { in: ["amd64"] }, dph_total: { lte: 0.2 }, type: "on-demand", order: [["dph_total", "asc"]], limit: 30 };
+          const offers = ((await vast(`/bundles/?q=${encodeURIComponent(JSON.stringify(q))}`)).body.offers || [])
+            .filter((o: any) => !/china|CN$/i.test(String(o.geolocation || ""))); // Google Drive is blocked there
+          for (const o of offers.slice(0, 8)) {
+            const r = await vast(`/asks/${o.id}/`, { method: "PUT", body: JSON.stringify({ client_id: "me", template_hash_id: "b5f507df99df79817c49c792eff21439", disk: 100, label: "arw-tafrigh" }) });
+            if (r.body && r.body.success) {
+              if (old) await vast(`/instances/${old.id}/`, { method: "DELETE" });
+              return json({ success: true, state: "new", message: `كارت السيرفر القديم كان متاخد، فأجّرت جهاز جديد (${o.gpu_name} — حوالي ${Math.round(o.dph_total * 100)} سنت في الساعة). هيركّب نفسه في حوالي ١٠ دقايق.` });
+            }
+          }
+          return json({ success: false, error: "مفيش جهاز مناسب فاضي دلوقتي — جرّب كمان شوية" });
+        }
         // «مواقع الرفع»: which upload sites have the owner's key (never the keys themselves back), and saving them
         if (path === "/api/studio/tools/server/hosts") {
           const cur: any = (await env.PUSH_KV.get("tools:upload-keys", "json").catch(() => null)) || {};
@@ -3601,7 +3648,8 @@ export default {
           let status: any = null;
           try { status = st ? { ...JSON.parse(st.data), at: st.at } : null; } catch { status = null; }
           const pending = await env.ANALYTICS.prepare("SELECT kind, data, created FROM enc_cmds WHERE taken = 0 ORDER BY id").all().catch(() => ({ results: [] as any[] }));
-          return json({ success: true, now: Date.now(), status, jobs: jobs.results || [], pending: (pending.results || []).map((c: any) => { try { return { kind: c.kind, created: c.created, ...JSON.parse(c.data) }; } catch { return { kind: c.kind, created: c.created }; } }) });
+          const vastKey = !!(await env.PUSH_KV.get("tools:vast-key"));
+          return json({ success: true, now: Date.now(), vastKey, status, jobs: jobs.results || [], pending: (pending.results || []).map((c: any) => { try { return { kind: c.kind, created: c.created, ...JSON.parse(c.data) }; } catch { return { kind: c.kind, created: c.created }; } }) });
         }
         if (path === "/api/studio/tools/pinned" && request.method === "GET") {
           const f = await readRepoFile(env, "_data/pinned.json");
