@@ -3342,12 +3342,10 @@ export default {
       if (path === "/saved") return await handleSaved(request, env as any, url);
       // «تابع المشاهدة» and «سجل المشاهدة» (worker/src/watch.ts)
       if (path === "/watch") return await handleWatch(request, env as any, url);
-      // «توقعات العروض الكبرى»: members pick the winners, the owner enters the results (worker/src/predict.ts)
-      if (path === "/predict" || path.startsWith("/predict/")) {
-        // the cards put up from the code (worker/src/predict-seed.ts), once per running copy of the worker
-        await seedPredict(env);
-        return await handlePredict(request, env as any, url);
-      }
+      // «توقعات العروض الكبرى» was removed from the site (owner 2026-10-25: «الغي قسم التوقعات نهائي»): no page, no menu
+      // link, no panel tab. Its routes answer «gone»; the members' old picks stay in the database untouched.
+      if (path === "/predict" || path.startsWith("/predict/") || path.startsWith("/api/studio/predict"))
+        return json({ success: false, gone: true, error: "قسم التوقعات اتلغى." }, 410);
       if (path.startsWith("/api/studio/predict")) {
         if (!(await studioAuthorized(request, env, "community"))) return json({ success: false, denied: true, error: "مش مسموحلك تدير التوقعات." }, 403);
         const who = await studioUser(request, env as any);

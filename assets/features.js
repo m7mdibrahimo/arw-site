@@ -783,8 +783,8 @@
       '<a href="' + LP + '/federations/">' + ICONS.feds + 'الاتحادات</a>' +
       '<a href="' + LP + '/recaps/">' + ICONS.recaps + 'ملخصات العروض</a>' +
       '<a href="' + LP + '/history/">' + ICONS.history + 'سجل المشاهدة</a>' +
-      '<a href="' + LP + '/predictions/">' + ICONS.trophy + 'التوقعات</a>' +
-      '<a href="' + LP + '/apps/">' + ICONS.apps + 'تطبيقات الموقع</a>' +
+      // «التوقعات» was removed (owner 2026-10-25: «الغي قسم التوقعات نهائي»); the apps link takes the whole last row
+      '<a href="' + LP + '/apps/" style="grid-column:1/-1; justify-content:center;">' + ICONS.apps + 'تطبيقات الموقع</a>' +
       // «العضوية المميزة» (pages/premium.njk) took «ادعم الموقع»'s place; hidden for a member who has it
       '<a class="more-support premium-btn" href="' + LP + '/premium/" style="grid-column:1/-1; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>العضوية المميزة</a>' +
       '</div>';
@@ -1012,7 +1012,6 @@
           (m.official ? '' : '<a href="' + HOME + '/account/#subscription" role="menuitem">' + CROWN_IC + '<span>اشتراكي</span></a>') +
           '<a href="/community/" role="menuitem">' + MENU_IC.chat + '<span>مجتمع المصارعة</span></a>' +
           '<a href="' + LP + '/history/" role="menuitem">' + MENU_IC.history + '<span>سجل المشاهدة</span></a>' +
-          '<a href="' + LP + '/predictions/" role="menuitem">' + MENU_IC.trophy + '<span>التوقعات</span></a>' +
           (m.official ? '<a href="/admin/" role="menuitem">' + MENU_IC.panel + '<span>لوحة التحكم</span></a>' : '') +
         '</nav>' +
         tools() +

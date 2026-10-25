@@ -8,7 +8,6 @@ import { renderComments, refreshNew } from './views/comments.js';
 import { renderSiteMembers, renderSiteMember } from './views/site-members.js';
 import { renderCommunity } from './views/community.js';
 import { renderPremium } from './views/premium.js';
-import { renderPredictions } from './views/predictions.js';
 import { renderList } from './views/list.js';
 import { renderEditor, hasUnsavedChanges, closeEditor } from './views/editor.js';
 import { setupBell } from './notify.js';
@@ -61,7 +60,6 @@ function renderShell(user) {
           ${can(user, 'comments') ? html`<a class="tab" href="#/comments" data-nav="#/comments">${icon('comment')}التعليقات<span class="tab-count" id="cm-count" hidden></span></a>` : ''}
           ${can(user, 'members') ? html`<a class="tab" href="#/site-members" data-nav="#/site-members">${icon('users')}الأعضاء</a>` : ''}
           ${can(user, 'community') ? html`<a class="tab" href="#/community" data-nav="#/community">${icon('comment')}المجتمع</a>` : ''}
-          ${can(user, 'community') ? html`<a class="tab" href="#/predictions" data-nav="#/predictions">${icon('trophy')}التوقعات</a>` : ''}
           ${can(user, 'tools') ? html`<div class="menu" id="tools-menu">
             <button class="tab" type="button">${icon('tools')}الأدوات</button>
             <div class="menu-pop" hidden>
@@ -202,7 +200,6 @@ async function route() {
     if (parts[0] === 'comments') return can(user, 'comments') ? await renderComments(page) : noAccess();
     if (parts[0] === 'premium') return can(user, 'members') ? await renderPremium(page) : noAccess();
     if (parts[0] === 'community') return can(user, 'community') ? await renderCommunity(page) : noAccess();
-    if (parts[0] === 'predictions') return can(user, 'community') ? await renderPredictions(page) : noAccess();
     if (parts[0] === 'site-members') return can(user, 'members') ? await (parts[1] ? renderSiteMember(page, parts[1]) : renderSiteMembers(page)) : noAccess();
     if (parts[0] === 'settings') return await renderSettings(page);
     if (parts[0] === 'tools') {
