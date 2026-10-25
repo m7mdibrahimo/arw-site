@@ -4066,7 +4066,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261024163057-wwe-main-event-21-10-2026": {
     "publishedAt": 1792850076047,
