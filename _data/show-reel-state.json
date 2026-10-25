@@ -4187,7 +4187,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261025194555-mlw-fusion-24-10-2026": {
     "publishedAt": 1792948295937,
@@ -4207,16 +4208,14 @@
     "publishedAt": 1792948334616,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سوبر جونيور تاج ليج (اليوم الاول) 24.10.2026 مترجم",
-    "lastAttempt": 1792971243286,
+    "lastAttempt": 1792972172604,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
     "reviewPlatforms": [],
