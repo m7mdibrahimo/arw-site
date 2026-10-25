@@ -644,10 +644,11 @@ export async function renderServerTool(page) {
           ${busy ? '' : html`<button class="btn btn-sm btn-ghost danger" data-clean="${n}">${icon('trash')} امسحه من السيرفر</button>`}
         </div>
         ${s.video && !s.en && !(alive && st.job && st.job.step === 'subs' && st.job.name === s.name) ? html`<div class="srv-langs srv-lang-pick"><span class="muted">لغة الصوت:</span>${LANGS.map(l => html`<button class="srv-q ${(s.lang || 'en') === l.key ? 'on' : ''}" data-setlang="${n}:${l.key}">${l.name}</button>`)}</div>` : ''}
+        ${!busy && !s.merged ? html`<div class="srv-langs srv-lang-pick"><span class="muted">الجودات:</span>${QUALS.map(q => html`<button class="srv-q ${(chosenQ[s.name] || s.qual || 'all') === q.key ? 'on' : ''}" data-setq="${n}:${q.key}">${q.name}</button>`)}</div>` : ''}
         ${s.links ? linksBlock(s, n) : ''}
         ${!busy && (s.en || s.ar || s.merged) ? html`<${s.ar || s.merged ? 'details' : 'div'} class="srv-ar">
-          ${s.ar || s.merged ? html`<summary class="srv-ar-title">غيّر الترجمة العربي أو مكان اللوجو أو الجودات</summary>` : html`<div class="srv-ar-title">ارفع الترجمة العربي — واختار الجودات ومكان اللوجو قبلها:</div>`}
-          <div class="srv-langs">${QUALS.map(q => html`<button class="srv-q ${(chosenQ[s.name] || s.qual || 'all') === q.key ? 'on' : ''}" data-q="${n}:${q.key}">${q.name}</button>`)}</div>
+          ${s.ar || s.merged ? html`<summary class="srv-ar-title">غيّر الترجمة العربي أو مكان اللوجو أو الجودات</summary>` : html`<div class="srv-ar-title">ارفع الترجمة العربي — واختار مكان اللوجو قبلها (والجودات فوق):</div>`}
+          ${s.merged ? html`<div class="srv-langs">${QUALS.map(q => html`<button class="srv-q ${(chosenQ[s.name] || s.qual || 'all') === q.key ? 'on' : ''}" data-q="${n}:${q.key}">${q.name}</button>`)}</div>` : ''}
           <div class="srv-pos">${POSITIONS.map(p => html`<button class="srv-pos-btn ${(chosen[s.name] || s.ar || 1) === p.pos ? 'on' : ''}" data-pos="${n}:${p.pos}" title="${p.name}"><span class="srv-screen"><i class="${p.css}">لوجو</i></span>${p.name}</button>`)}</div>
           <label class="btn btn-sm btn-primary srv-file">${icon('upload')} ارفع الترجمة العربي وابدأ الدمج<input type="file" accept=".srt" data-ar="${n}" hidden></label>
         </${s.ar || s.merged ? 'details' : 'div'}>` : ''}
@@ -661,6 +662,11 @@ export async function renderServerTool(page) {
       const [n, pos] = b.dataset.pos.split(':').map(Number);
       chosen[list[n].name] = pos;
       drawShows(last);
+    });
+    $$('[data-setq]').forEach(b => b.onclick = () => {
+      const [n, q] = b.dataset.setq.split(':'); const s = list[+n];
+      chosenQ[s.name] = q; drawShows(last);
+      send({ kind: 'setqual', name: s.name, qual: q }, `«${s.name.slice(0, 40)}»: ${q === '720' ? '٧٢٠ بس' : '٤ جودات'}`);
     });
     $$('[data-setlang]').forEach(b => b.onclick = () => { const [n, l] = b.dataset.setlang.split(':'); send({ kind: 'resub', name: list[+n].name, lang: l }, `لغة الصوت: ${LANG_NAME[l]}`); });
     $$('[data-q]').forEach(b => b.onclick = () => { const [n, q] = b.dataset.q.split(':'); chosenQ[list[+n].name] = q; drawShows(last); });

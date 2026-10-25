@@ -3569,9 +3569,9 @@ export default {
             if (!name || !text.trim() || text.length > 5_000_000) return json({ success: false, error: "ملف الترجمة فاضي أو كبير" });
             await env.PUSH_KV.put(`enc:ar:${name}`, text, { expirationTtl: 30 * 86400 });
             data = { name, pos: [1, 2, 3].includes(Number(b.pos)) ? Number(b.pos) : 1, qual: b.qual === "720" ? "720" : "all" };
-          } else if (b.kind === "clean" || b.kind === "resub" || b.kind === "reupload") {
+          } else if (b.kind === "clean" || b.kind === "resub" || b.kind === "reupload" || b.kind === "setqual") {
             if (!name) return json({ success: false, error: "مفيش اسم" });
-            data = b.kind === "resub" ? { name, lang } : { name };
+            data = b.kind === "resub" ? { name, lang } : b.kind === "setqual" ? { name, qual: b.qual === "720" ? "720" : "all" } : { name };
           } else return json({ success: false, error: "طلب مش معروف" });
           await env.ANALYTICS.prepare("INSERT INTO enc_cmds (kind, data, created) VALUES (?, ?, ?)").bind(b.kind, JSON.stringify(data), Date.now()).run();
           return json({ success: true });
