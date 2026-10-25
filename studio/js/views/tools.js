@@ -543,12 +543,12 @@ export async function renderServerTool(page) {
     mount(box, html`<section class="panel srv-card">
       <div class="srv-top">
         <div class="srv-state"><i class="srv-dot ${alive ? 'on' : ''}"></i><b>${alive ? 'السيرفر شغال' : 'السيرفر مقفول'}</b></div>
-        ${alive && st.jupyter ? html`<a class="btn" href="${st.jupyter}" target="_blank" rel="noopener">${icon('folder')} افتح ملفات السيرفر</a>`
-          : html`<a class="btn btn-primary" href="https://cloud.vast.ai/instances/" target="_blank" rel="noopener">${icon('bolt')} افتح صفحة التشغيل</a>`}
+        ${alive ? '' : html`<a class="btn btn-primary" href="https://cloud.vast.ai/instances/" target="_blank" rel="noopener">${icon('bolt')} افتح صفحة التشغيل</a>`}
       </div>
       ${alive ? html`<div class="srv-tools">
           ${st.uploadPage ? html`<a class="btn btn-sm" href="${st.uploadPage}" target="_blank" rel="noopener">${icon('upload')} ارفع من جهازك</a>` : ''}
           ${st.browser ? html`<a class="btn btn-sm" href="${st.browser}" target="_blank" rel="noopener">${icon('globe')} متصفح السيرفر</a>` : ''}
+          ${st.jupyter ? html`<a class="btn btn-sm btn-ghost" href="${st.jupyter}" target="_blank" rel="noopener">${icon('folder')} ملفات السيرفر</a>` : ''}
         </div>
         <details class="srv-help"><summary>إزاي أرفع من جهازي أو أستخدم متصفح السيرفر؟</summary>
           <p><b>ارفع من جهازك:</b> هيفتح فولدر الفيديوهات على السيرفر. دوس زرار الرفع فوق، واختار الفيديوهات أو ملفات التورنت (تقدر تختار كذا ملف مرة واحدة)، ودوس الزرار الأزرق جنب كل ملف. أول ما الرفع يخلص، العرض هيظهر هنا تحت «العروض»، واختار لغة صوته من هناك.</p>
@@ -597,23 +597,24 @@ export async function renderServerTool(page) {
     if (!list.length) return mount($('#srv-shows'), html`<p class="muted">مفيش عروض على السيرفر دلوقتي. حط رابط عرض فوق ودوس «ابدأ».</p>`);
     mount($('#srv-shows'), html`${list.map((s, n) => {
       const stg = stageOf(s, alive ? st.job : null);
+      const busy = alive && st.job && st.job.name === s.name; // being downloaded/subtitled/merged/uploaded right now
       return html`<div class="srv-show">
         <div class="srv-show-head"><b class="srv-name">${s.name}</b><span class="srv-tag ${stg.tone}">${stg.text}</span></div>
         <small class="muted">لغة الصوت: ${LANG_NAME[s.lang] || 'إنجليزي'} — ${s.qual === '720' ? '٧٢٠ بس' : '٤ جودات'}${s.ar ? ` — اللوجو: ${(POSITIONS.find(p => p.pos === s.ar) || POSITIONS[0]).name}` : ''}</small>
         <div class="srv-actions">
           ${s.en ? html`<button class="btn btn-sm" data-en="${n}">${icon('download')} نزّل الترجمة الإنجليزي</button>` : ''}
           ${s.merged && s.drive ? html`<a class="btn btn-sm btn-primary" href="${s.drive}" target="_blank" rel="noopener">${icon('folder')} افتح العرض على درايف</a>` : ''}
-          ${s.subsFailed || s.en ? html`<button class="btn btn-sm btn-ghost" data-resub="${n}">${icon('refresh')} فرّغ تاني</button>` : ''}
-          <button class="btn btn-sm btn-ghost danger" data-clean="${n}">${icon('trash')} امسحه من السيرفر</button>
+          ${!busy && (s.subsFailed || (s.en && !s.ar && !s.merged)) ? html`<button class="btn btn-sm btn-ghost" data-resub="${n}">${icon('refresh')} فرّغ تاني</button>` : ''}
+          ${busy ? '' : html`<button class="btn btn-sm btn-ghost danger" data-clean="${n}">${icon('trash')} امسحه من السيرفر</button>`}
         </div>
         ${s.video && !s.en && !(alive && st.job && st.job.step === 'subs' && st.job.name === s.name) ? html`<div class="srv-langs srv-lang-pick"><span class="muted">لغة الصوت:</span>${LANGS.map(l => html`<button class="srv-q ${(s.lang || 'en') === l.key ? 'on' : ''}" data-setlang="${n}:${l.key}">${l.name}</button>`)}</div>` : ''}
         ${s.links ? linksBlock(s, n) : ''}
-        ${s.en || s.ar || s.merged ? html`<div class="srv-ar">
-          <div class="srv-ar-title">${s.ar || s.merged ? 'غيّر الترجمة العربي أو مكان اللوجو:' : 'ارفع الترجمة العربي واختار مكان اللوجو:'}</div>
+        ${!busy && (s.en || s.ar || s.merged) ? html`<${s.ar || s.merged ? 'details' : 'div'} class="srv-ar">
+          ${s.ar || s.merged ? html`<summary class="srv-ar-title">غيّر الترجمة العربي أو مكان اللوجو أو الجودات</summary>` : html`<div class="srv-ar-title">ارفع الترجمة العربي — واختار الجودات ومكان اللوجو قبلها:</div>`}
           <div class="srv-langs">${QUALS.map(q => html`<button class="srv-q ${(chosenQ[s.name] || s.qual || 'all') === q.key ? 'on' : ''}" data-q="${n}:${q.key}">${q.name}</button>`)}</div>
           <div class="srv-pos">${POSITIONS.map(p => html`<button class="srv-pos-btn ${(chosen[s.name] || s.ar || 1) === p.pos ? 'on' : ''}" data-pos="${n}:${p.pos}" title="${p.name}"><span class="srv-screen"><i class="${p.css}">لوجو</i></span>${p.name}</button>`)}</div>
           <label class="btn btn-sm btn-primary srv-file">${icon('upload')} ارفع الترجمة العربي وابدأ الدمج<input type="file" accept=".srt" data-ar="${n}" hidden></label>
-        </div>` : ''}
+        </${s.ar || s.merged ? 'details' : 'div'}>` : ''}
       </div>`;
     })}`);
     $$('[data-en]').forEach(b => b.onclick = async () => {

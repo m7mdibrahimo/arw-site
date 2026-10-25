@@ -3277,7 +3277,9 @@ export default {
         if (!body || typeof body !== "object") return json({ success: false }, 400);
         const now = Date.now();
         if (path === "/tools/arw-heartbeat") {
-          const data = JSON.stringify(body).slice(0, 30000);
+          // never cut it (a cut JSON would blank the panel page); the machine keeps it small (25 shows)
+          const data = JSON.stringify(body);
+          if (data.length > 400_000) return json({ success: false, error: "too big" }, 413);
           await env.ANALYTICS.prepare("INSERT INTO enc_status (id, at, data) VALUES (1, ?, ?) ON CONFLICT(id) DO UPDATE SET at = excluded.at, data = excluded.data").bind(now, data).run();
           // hand the machine what the panel asked for since its last heartbeat
           const cmds = (await env.ANALYTICS.prepare("SELECT id, kind, data FROM enc_cmds WHERE taken = 0 ORDER BY id LIMIT 20").all()).results as any[] || [];

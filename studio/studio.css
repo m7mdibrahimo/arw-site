@@ -1199,3 +1199,4 @@ section.panel + section.panel { margin-top: 16px; }
 .srv-help summary { cursor: pointer; font-weight: 800; }
 .srv-help p { margin: 8px 0; line-height: 1.9; }
 .srv-lang-pick { align-items: center; margin-top: 8px; }
+.srv-job > b, .srv-show .srv-name { overflow-wrap: anywhere; word-break: break-word; }
