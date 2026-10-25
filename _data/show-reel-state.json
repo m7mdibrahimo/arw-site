@@ -4136,7 +4136,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض يو اف سي 333 ايرلي بريلمز مترجم",
-    "lastAttempt": 1792955326230,
+    "lastAttempt": 1792956077843,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -4168,15 +4168,16 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض يو اف سي 333 مين كارد مترجم",
-    "lastAttempt": 1792951854138,
+    "lastAttempt": 1792956088477,
     "errors": {
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "tiktok"
+      "instagram_reel"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261025194211-cmll-international-women-s-grand-prix-23-10-2026": {
     "publishedAt": 1792948257675,
