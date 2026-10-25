@@ -517,7 +517,6 @@
     "httpsarab-wrestlingcomshowscmll-lunes-clasico-19-10-2026": 1792847826077,
     "httpsarab-wrestlingcomshowscmll-martes-populares-20-10-2026": 1792847983612,
     "httpsarab-wrestlingcomshowscmll-martes-de-glamour-20-10-2026": 1792848215737,
-    "httpsarab-wrestlingcomnewsإندي-هارتويل-تتحدث-عن-عودتها-الأخيرة-إلى-عرض-wwe-nxt-ومواجهة-زاريا": 1792848329121,
     "httpsarab-wrestlingcomshowsnwa-powerrr-17-10-2026": 1792848454535,
     "httpsarab-wrestlingcomshowstna-xplosion-16-10-2026": 1792848636971,
     "httpsarab-wrestlingcomshowswwe-evolve-21-10-2026": 1792848873430,
@@ -1140,7 +1139,6 @@
     "httpsarab-wrestlingcomshowscmll-lunes-clasico-19-10-2026": 1792847836921,
     "httpsarab-wrestlingcomshowscmll-martes-populares-20-10-2026": 1792847979543,
     "httpsarab-wrestlingcomshowscmll-martes-de-glamour-20-10-2026": 1792848225658,
-    "httpsarab-wrestlingcomnewsإندي-هارتويل-تتحدث-عن-عودتها-الأخيرة-إلى-عرض-wwe-nxt-ومواجهة-زاريا": 1792848329121,
     "httpsarab-wrestlingcomshowsnwa-powerrr-17-10-2026": 1792848465709,
     "httpsarab-wrestlingcomshowstna-xplosion-16-10-2026": 1792848650779,
     "httpsarab-wrestlingcomshowswwe-evolve-21-10-2026": 1792848884144,
@@ -1621,7 +1619,6 @@
     "httpsarab-wrestlingcomshowsaew-dynamite-21-10-2026": 1792846424539,
     "httpsarab-wrestlingcomshowstna-impact-22-10-2026": 1792847088149,
     "https___arab-wrestling_com_news_____-_______-_____-__-______-_______-___-___-wwe-nxt-_______-______": 1792847881805,
-    "httpsarab-wrestlingcomnewsإندي-هارتويل-تتحدث-عن-عودتها-الأخيرة-إلى-عرض-wwe-nxt-ومواجهة-زاريا": 1792848329121,
     "httpsarab-wrestlingcomshowstna-xplosion-16-10-2026": 1792848828793,
     "httpsarab-wrestlingcomshowswwe-main-event-21-10-2026": 1792850569890,
     "httpsarab-wrestlingcomshowswwe-smackdown-23-10-2026": 1792852309784,
@@ -1767,7 +1764,6 @@
     "httpsarab-wrestlingcomshowsroh-on-honorclub-22-10-2026": 1792846664633,
     "httpsarab-wrestlingcomshowstna-impact-22-10-2026": 1792847047134,
     "https___arab-wrestling_com_news_____-_______-_____-__-______-_______-___-___-wwe-nxt-_______-______": 1792847881805,
-    "httpsarab-wrestlingcomnewsإندي-هارتويل-تتحدث-عن-عودتها-الأخيرة-إلى-عرض-wwe-nxt-ومواجهة-زاريا": 1792848329121,
     "httpsarab-wrestlingcomshowswwe-smackdown-23-10-2026": 1792853447485,
     "https___arab-wrestling_com_news_____-________-____-______-_____-_______-__-___-marigold-grand-destiny-2026_": 1792856141927,
     "httpsarab-wrestlingcomnewsمايو-إيواتاني-تفوز-ببطولة-التاج-الثلاثي-في-عرض-marigold-grand-destiny-2026": 1792856428890,
@@ -2215,7 +2211,8 @@
     "httpsarab-wrestlingcomnewsالإعلان-عن-مواجهة-سي-ام-بانك-ضد-كيفن-أوينز-في-عرض-wwe-smackdown-يوم-السادس-من-نوفمبر": 1792871787803,
     "httpsarab-wrestlingcomnewsعرض-wwe-smackdown-ثلاثة-أمور-كرهناها-وثلاثة-أمور-أحببناها": 1792881207313,
     "httpsarab-wrestlingcomnewsسكادي-تفوز-بلقب-cmll-amazonas-grand-prix-لعام-2026": 1792885648056,
-    "httpsarab-wrestlingcomnewsميتشين-وبي-فاب-تعلقان-على-تتويجهم-ببطولة-wwe-للفرق-للسيدات": 1792893147752
+    "httpsarab-wrestlingcomnewsميتشين-وبي-فاب-تعلقان-على-تتويجهم-ببطولة-wwe-للفرق-للسيدات": 1792893147752,
+    "httpsarab-wrestlingcomnewsإندي-هارتويل-تتحدث-عن-عودتها-الأخيرة-إلى-عرض-wwe-nxt-ومواجهة-زاريا": 1792913187157
   },
   "held": {
     "httpsarab-wrestlingcomnewsلولا-فايس-تخطف-الأنظار-بصور-بيكيني-حمراء-خلال-رحلتها-إلى-ميامي": {
@@ -2961,7 +2958,9 @@
       "image": "/content/images/3xmhtihhfh0m2yxw.jpg",
       "reason": "return",
       "why": "title",
-      "note": "النص يذكر أن العودة حدثت يوم السادس من أكتوبر وهو ما يعد قديماً وأكثر من 6 ساعات."
+      "note": "النص يذكر أن العودة حدثت يوم السادس من أكتوبر وهو ما يعد قديماً وأكثر من 6 ساعات.",
+      "releasedAt": 1792913187157,
+      "by": "تلقائي بعد ١٨ ساعة"
     },
     "httpsarab-wrestlingcomnewsمايو-إيواتاني-تفوز-ببطولة-التاج-الثلاثي-في-عرض-marigold-grand-destiny-2026": {
       "at": 1792856428890,
