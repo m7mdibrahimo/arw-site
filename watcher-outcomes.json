@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/jay-white-reveals-new-aew-faction-name-teasing-bullet-club-return-collision": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-25T01:11:01.370Z"
+ },
+ "https://www.ringsidenews.com/aew-collision-results-highlights-key-moments-october-24-2026": {
+  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
+  "retry": false,
+  "at": "2026-10-25T01:09:43.739Z"
+ },
  "https://www.fightful.com/wrestling/amber-nova-posts-bail-after-being-arrested-for-dui-refusal-to-submit-to-dui-testing": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -58,16 +68,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-25T00:55:36.936Z"
- },
- "https://www.ringsidenews.com/jay-white-reveals-new-aew-faction-name-teasing-bullet-club-return-collision": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-25T00:50:14.182Z"
- },
- "https://www.ringsidenews.com/aew-collision-results-highlights-key-moments-october-24-2026": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-25T00:49:55.775Z"
  },
  "https://www.fightful.com/wrestling/angel-medina-of-da-baldies-in-ecw-retires": {
   "reason": "مكرر مع خبر نزل قبل كده",
