@@ -1898,20 +1898,20 @@
     {
       "window": "100-in-15min",
       "remaining": 99,
-      "resetAt": 1792951799290,
-      "updatedAt": 1792950899290
+      "resetAt": 1792952739358,
+      "updatedAt": 1792951839358
     },
     {
       "window": "250-in-1day",
-      "remaining": 230,
-      "resetAt": 1793032199290,
-      "updatedAt": 1792950899290
+      "remaining": 229,
+      "resetAt": 1793032211358,
+      "updatedAt": 1792951839358
     },
     {
       "window": "3000-in-30days",
-      "remaining": 2764,
-      "resetAt": 1794840072290,
-      "updatedAt": 1792950899290
+      "remaining": 2763,
+      "resetAt": 1794840084358,
+      "updatedAt": 1792951839358
     }
   ],
   "videoCooldowns": {
