@@ -2,7 +2,7 @@
 // social posting, news sources, the home slider's pinned items and show reels.
 import { tools, siteData, trackLive, mini } from '../api.js';
 import { notify } from '../notify.js';
-import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, num, normalizeArabic, debounce, esc } from '../ui.js';
+import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, num, normalizeArabic, debounce, esc, pager } from '../ui.js';
 
 const SITE = 'https://arab-wrestling.com';
 const PLATFORMS = [
@@ -713,13 +713,22 @@ export async function renderServerTool(page) {
     });
   };
 
-  const drawJobs = (d) => mount($('#srv-jobs'), d.jobs && d.jobs.length ? html`<div class="srv-table"><table>
+  // «اللي خلص»: 10 a page, newest first (the worker keeps the last 30 days)
+  let jobsPage = 1;
+  const drawJobs = (d) => {
+    const all = d.jobs || [];
+    const pages = Math.max(1, Math.ceil(all.length / 10));
+    jobsPage = Math.min(Math.max(1, jobsPage), pages);
+    const jobs = all.slice((jobsPage - 1) * 10, jobsPage * 10);
+    mount($('#srv-jobs'), all.length ? html`<div class="srv-table"><table>
       <thead><tr><th>العرض</th><th>الخطوة</th><th>بدأ</th><th>خلص</th><th>خد</th></tr></thead>
-      <tbody>${d.jobs.map(j => html`<tr>
+      <tbody>${jobs.map(j => html`<tr>
         <td class="srv-name">${j.name}</td>
         <td class="${j.ok ? 'ok' : 'bad'}">${STEP_NAME[j.step] || j.step} ${j.ok ? '✓' : '✗'}</td>
         <td>${dayClock(j.started)}</td><td>${dayClock(j.finished)}</td><td>${span(j.finished - j.started)}</td>
-      </tr>`)}</tbody></table></div>` : html`<p class="muted">لسه مفيش حاجة خلصت من ساعة ما الصفحة دي اتعملت.</p>`);
+      </tr>`)}</tbody></table></div>${pager(jobsPage, pages)}<p class="muted small">بيتشال من هنا لوحده اللي عدّى عليه أكتر من ٣٠ يوم.</p>` : html`<p class="muted">لسه مفيش حاجة خلصت من ساعة ما الصفحة دي اتعملت.</p>`);
+    $$('[data-page]', $('#srv-jobs')).forEach(b => b.onclick = () => { jobsPage = Number(b.dataset.page); drawJobs(last); });
+  };
 
 
   let stopped = false, timer = 0;

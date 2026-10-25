@@ -3673,7 +3673,9 @@ export default {
         if (path === "/api/studio/tools/server" && request.method === "GET") {
           if (!env.ANALYTICS) return json({ success: false, error: "no database" });
           const st: any = await env.ANALYTICS.prepare("SELECT at, data FROM enc_status WHERE id = 1").first().catch(() => null);
-          const jobs = await env.ANALYTICS.prepare("SELECT name, step, started, finished, ok FROM enc_jobs ORDER BY finished DESC LIMIT 40").all().catch(() => ({ results: [] as any[] }));
+          // the finished steps of the last 30 days (older ones are dropped so the list doesn't grow forever)
+          await env.ANALYTICS.prepare("DELETE FROM enc_jobs WHERE finished < ?").bind(Date.now() - 30 * 86400_000).run().catch(() => {});
+          const jobs = await env.ANALYTICS.prepare("SELECT name, step, started, finished, ok FROM enc_jobs ORDER BY finished DESC LIMIT 300").all().catch(() => ({ results: [] as any[] }));
           let status: any = null;
           try { status = st ? { ...JSON.parse(st.data), at: st.at } : null; } catch { status = null; }
           const pending = await env.ANALYTICS.prepare("SELECT kind, data, created FROM enc_cmds WHERE taken = 0 ORDER BY id").all().catch(() => ({ results: [] as any[] }));
