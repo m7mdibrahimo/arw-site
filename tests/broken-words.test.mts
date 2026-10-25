@@ -615,3 +615,8 @@ test('orphan_in_favor: «لصالح ضد» blocks, «لصالحه ضد» does no
   assert.ok(codes('تمكن نيون من حسم النزال الخاطف لصالح ضد منافسه فوجاز.').includes('orphan_in_favor'));
   assert.ok(!codes('نجح في حسم الانتصار لصالحه ضد كيو تي مارشال.').includes('orphan_in_favor'));
 });
+
+// INCIDENTS #824: «رحلة خارجية مع WWE» (on excursion) read like a trip abroad in the Ulka Sasaki story.
+test('«رحلة خارجية مع» is corrected to «فترة إعارة مع»', () => {
+  assert.equal(applyCorrections('كان في رحلة خارجية مع WWE'), 'كان في فترة إعارة مع WWE');
+});
