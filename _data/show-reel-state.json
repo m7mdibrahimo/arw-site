@@ -4079,7 +4079,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261024171120-wwe-smackdown-23-10-2026": {
     "publishedAt": 1792851684057,
