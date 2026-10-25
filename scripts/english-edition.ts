@@ -124,6 +124,8 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   if (/\b(as an ai|language model|arab wrestling|translated|translation)\b/i.test(title + "\n" + body)) issues.push("meta text");
   if (/^#{1,6}\s/m.test(body) || /\*\*/.test(body)) issues.push("markdown formatting");
   if (/[\u{1F300}-\u{1FAFF}]/u.test(title)) issues.push("emoji in title");
+  // a headline with a dangling ampersand or a cut-off tail («Comes Down to His & One Other», INCIDENTS #836)
+  if (/\b(?:his|her|their|its|the|a|an|to|of|for|with|and)\s*&(?!\w)|&\s*$/i.test(title)) issues.push("dangling ampersand in title");
   // a curse word or a quoted slang line as the headline (INCIDENTS #425: «These Female Wrestler On Some Other Shit»)
   if (/\b(shit\w*|fuck\w*|bitch\w*|asshole|bullshit|damn|dick|pussy)\b/i.test(title)) issues.push("profanity in title");
   // an article glued to the next word by a hyphen («on the-ring» for «in the ring», INCIDENTS #829); «state-of-the-art» is fine

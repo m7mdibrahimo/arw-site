@@ -872,3 +872,11 @@ test("Sting is spelled ستينج, never ستينغ (INCIDENTS #834)", async () 
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(?<![؀-ۿ])ستينغ(?![؀-ۿ])/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+test("an English headline with a dangling ampersand is blocked (INCIDENTS #836)", async () => {
+  const { checkEnglish } = await import("../scripts/english-edition.ts");
+  const body = "Drew McIntyre talked about his Hell in a Cell match with CM Punk during an appearance on a podcast this week. ".repeat(3);
+  const input = { sourceText: body, sourceUrl: "https://example.com/a" } as any;
+  assert.ok(checkEnglish({ title: "Drew McIntyre Believes WWE's Best Hell in a Cell Match Comes Down to His & One Other", body, tags: [] } as any, input).some(x => x.includes("ampersand")));
+  assert.ok(!checkEnglish({ title: "Tag Team Champions Dolph Ziggler & Robert Roode Return", body, tags: [] } as any, input).some(x => x.includes("ampersand")));
+});

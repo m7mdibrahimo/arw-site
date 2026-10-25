@@ -186,3 +186,11 @@ test("a raw «المواجهة …:» result line left at the end of a story is 
   assert.ok(checkArticle("لويس مانتي يتوج ببطولة GHC", body).some((i) => i.code === "stray_result_block"));
   assert.ok(!checkArticle("لويس مانتي يتوج ببطولة GHC", "**المواجهة الأولى: نزال فرق**\n\nفاز فريق أ.").some((i) => i.code === "stray_result_block"));
 });
+
+// INCIDENTS #836: an image caption in English («In 2019, Kofi defeated …») stayed as its own line in an Arabic story.
+test('a whole English caption line inside an Arabic story is blocked', () => {
+  const body = 'تحدث كوفي كينغستون عن فترته في WWE.\n\nIn 2019, Kofi defeated Bryan Danielson at WrestleMania 35 to become WWE Champion\n\nوأضاف أنها كانت حلم طفولة.';
+  assert.ok(checkArticle('عنوان', body).some((i) => i.code === 'english_caption_line'));
+  assert.ok(!checkArticle('عنوان', 'تحدث كوفي كينغستون عن فترته في WWE.\n\n> "I really believed it was my time to win the title that night"\n\nوأضاف أنها حلم.').some((i) => i.code === 'english_caption_line'));
+  assert.ok(!checkArticle('عنوان', 'عرض AEW Dynamite الليلة\n\nWWE Raw').some((i) => i.code === 'english_caption_line'));
+});
