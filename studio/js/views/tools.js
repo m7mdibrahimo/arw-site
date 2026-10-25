@@ -546,6 +546,14 @@ export async function renderServerTool(page) {
         ${alive && st.jupyter ? html`<a class="btn" href="${st.jupyter}" target="_blank" rel="noopener">${icon('folder')} افتح ملفات السيرفر</a>`
           : html`<a class="btn btn-primary" href="https://cloud.vast.ai/instances/" target="_blank" rel="noopener">${icon('bolt')} افتح صفحة التشغيل</a>`}
       </div>
+      ${alive ? html`<div class="srv-tools">
+          ${st.uploadPage ? html`<a class="btn btn-sm" href="${st.uploadPage}" target="_blank" rel="noopener">${icon('upload')} ارفع من جهازك</a>` : ''}
+          ${st.browser ? html`<a class="btn btn-sm" href="${st.browser}" target="_blank" rel="noopener">${icon('globe')} متصفح السيرفر</a>` : ''}
+        </div>
+        <details class="srv-help"><summary>إزاي أرفع من جهازي أو أستخدم متصفح السيرفر؟</summary>
+          <p><b>ارفع من جهازك:</b> هيفتح فولدر الفيديوهات على السيرفر. دوس زرار الرفع فوق، واختار الفيديوهات أو ملفات التورنت (تقدر تختار كذا ملف مرة واحدة)، ودوس الزرار الأزرق جنب كل ملف. أول ما الرفع يخلص، العرض هيظهر هنا تحت «العروض»، واختار لغة صوته من هناك.</p>
+          <p><b>متصفح السيرفر:</b> متصفح شغال على السيرفر نفسه. افتح منه موقع التورنت أو موقع التحميل ونزّل الملف عادي، وهينزل لوحده في فولدر الفيديوهات ويبدأ. ده الحل لموقع التورنت اللي لازم التحميل يكون من نفس الجهاز اللي نزّل ملف التورنت.</p>
+        </details>` : ''}
       <p class="muted srv-sub">${alive ? `آخر إشارة منه: ${timeAgo(st.at)} — اشتغل الساعة ${dayClock(st.boot)}`
         : st ? `مقفول من ${dayClock(st.at)}` : 'لسه مبعتش أي إشارة'}</p>
       ${!alive ? html`<ol class="srv-steps">
@@ -598,6 +606,7 @@ export async function renderServerTool(page) {
           ${s.subsFailed || s.en ? html`<button class="btn btn-sm btn-ghost" data-resub="${n}">${icon('refresh')} فرّغ تاني</button>` : ''}
           <button class="btn btn-sm btn-ghost danger" data-clean="${n}">${icon('trash')} امسحه من السيرفر</button>
         </div>
+        ${s.video && !s.en && !(alive && st.job && st.job.step === 'subs' && st.job.name === s.name) ? html`<div class="srv-langs srv-lang-pick"><span class="muted">لغة الصوت:</span>${LANGS.map(l => html`<button class="srv-q ${(s.lang || 'en') === l.key ? 'on' : ''}" data-setlang="${n}:${l.key}">${l.name}</button>`)}</div>` : ''}
         ${s.links ? linksBlock(s, n) : ''}
         ${s.en || s.ar || s.merged ? html`<div class="srv-ar">
           <div class="srv-ar-title">${s.ar || s.merged ? 'غيّر الترجمة العربي أو مكان اللوجو:' : 'ارفع الترجمة العربي واختار مكان اللوجو:'}</div>
@@ -616,6 +625,7 @@ export async function renderServerTool(page) {
       chosen[list[n].name] = pos;
       drawShows(last);
     });
+    $$('[data-setlang]').forEach(b => b.onclick = () => { const [n, l] = b.dataset.setlang.split(':'); send({ kind: 'resub', name: list[+n].name, lang: l }, `لغة الصوت: ${LANG_NAME[l]}`); });
     $$('[data-q]').forEach(b => b.onclick = () => { const [n, q] = b.dataset.q.split(':'); chosenQ[list[+n].name] = q; drawShows(last); });
     $$('[data-copy]').forEach(b => b.onclick = async () => {
       const [n, q] = b.dataset.copy.split(':'); const s = list[+n];
