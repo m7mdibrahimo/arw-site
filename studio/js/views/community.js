@@ -68,7 +68,9 @@ export async function renderCommunity(page) {
             <button class="btn btn-sm btn-ghost" data-dismiss="${r.id}">تجاهل</button>
           </div></article>`)}</div></section>` : ''}
 
-      <section class="panel cy-sec"><h2>${mark(state.room)} آخر رسائل ${nameOf(state.room)}</h2><div class="cy-list" id="cy-msgs"><div class="spinner"></div></div></section>
+      <section class="panel cy-sec"><h2>${mark(state.room)} آخر رسائل ${nameOf(state.room)}</h2>
+        ${getUser()?.role === 'owner' ? html`<div class="cy-clear"><button class="btn btn-sm btn-danger-soft" data-clear="${state.room}">${icon('trash')} امسح كل رسايل ${nameOf(state.room)}</button><button class="btn btn-sm btn-danger-soft" data-clear="all">${icon('trash')} امسح كل الرسايل في كل المجموعات</button></div>` : ''}
+        <div class="cy-list" id="cy-msgs"><div class="spinner"></div></div></section>
 
       ${(d.muted || []).length ? html`<section class="panel cy-sec"><h2>${icon('lock')} موقوفين عن الكتابة</h2>
         <div class="cy-list">${d.muted.map(m => html`<article class="cy-item">
@@ -98,6 +100,18 @@ export async function renderCommunity(page) {
   page.onclick = async (e) => {
     const b = e.target.closest('button');
     if (!b) return;
+    // wiping a room (or all of them) — the owner presses it himself and types «امسح»; it can't be undone
+    if (b.dataset.clear) {
+      const all = b.dataset.clear === 'all';
+      const ok = await dialog({ title: all ? 'تمسح كل الرسايل في كل المجموعات؟' : `تمسح كل رسايل ${nameOf(b.dataset.clear)}؟`, danger: true, confirm: 'امسح نهائي',
+        body: 'كل الرسايل هتتمسح نهائي، رسايل الأعضاء ورسايلك، بالصور والرسايل الصوتية، ومش هتقدر ترجّعها. اكتب «امسح» عشان تأكد.',
+        input: { placeholder: 'اكتب: امسح', match: 'امسح' } });
+      if (!ok) return;
+      b.disabled = true;
+      try { const r = await api.chatClear(b.dataset.clear); toast(`اتمسحت ${num(r.deleted || 0)} رسالة ✓`); renderCommunity(page); }
+      catch (err) { toast(err.message, 'error'); b.disabled = false; }
+      return;
+    }
     if (b.dataset.room) { state.room = b.dataset.room; renderCommunity(page); return; }
     if (b.dataset.del) {
       const [room, id] = b.dataset.del.split(':');

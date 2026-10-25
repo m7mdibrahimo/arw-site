@@ -1202,3 +1202,4 @@ section.panel + section.panel { margin-top: 16px; }
 .srv-job > b, .srv-show .srv-name { overflow-wrap: anywhere; word-break: break-word; }
 .srv-keyrow { display: flex; gap: 8px; align-items: center; margin-top: 8px; }
 .srv-keyrow .input { max-width: 420px; }
+.cy-clear { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 12px; }

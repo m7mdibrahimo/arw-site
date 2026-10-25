@@ -43,7 +43,7 @@ import { handleWatch } from "./watch";
 import { handlePredict, studioPredict, studioPredictPicks, studioPredictSave, studioPredictResult, studioPredictDelete, studioPredictPrize } from "./predict";
 import { seedPredictions } from "./predict-seed";
 import { once } from "./once";
-import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatMute, studioChatDismiss, studioChatRooms, studioChatBg, chatKick, chatRebadge, chatExpirySweep } from "./chat";
+import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatClear, studioChatMute, studioChatDismiss, studioChatRooms, studioChatBg, chatKick, chatRebadge, chatExpirySweep } from "./chat";
 export { ChatRoom } from "./chat";
 import { handleMembers, sendMail, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember, studioVerifyMember, studioEditMember, resetAutoBadges } from "./members";
 import { handleComments, studioComments, studioDeleteComments, studioReplyComment, studioHeartComment, commentNotifications } from "./comments";
@@ -3433,7 +3433,8 @@ export default {
         if (room && request.method === "GET") { const r = await studioChatRoom(env as any, room[1], Number(url.searchParams.get("before")) || 0); return json(r, r.success ? 200 : 404); }
         const body: any = request.method === "POST" ? await request.json().catch(() => ({})) : {};
         let r: any = null;
-        if (path === "/api/studio/chat/delete") { r = await studioChatDelete(env as any, body.room, body.id); if (who && r.success) await studioAudit(env as any, who.user, "community.delete", { room: String(body.room), id: Number(body.id) || 0 }).catch(() => {}); }
+        if (path === "/api/studio/chat/clear") { if (!who || who.user.role !== "owner") return json({ success: false, denied: true, error: "ده لصاحب الموقع بس." }, 403); r = await studioChatClear(env as any, body.room); if (r.success) await studioAudit(env as any, who.user, "community.clear", { room: String(body.room), count: (r as any).deleted || 0 }).catch(() => {}); }
+        else if (path === "/api/studio/chat/delete") { r = await studioChatDelete(env as any, body.room, body.id); if (who && r.success) await studioAudit(env as any, who.user, "community.delete", { room: String(body.room), id: Number(body.id) || 0 }).catch(() => {}); }
         else if (path === "/api/studio/chat/mute") { r = await studioChatMute(env as any, body.uid, body.hours); if (who && r.success) await studioAudit(env as any, who.user, Number(body.hours) ? "community.mute" : "community.unmute", { id: Number(body.uid) || 0, hours: Number(body.hours) || 0 }).catch(() => {}); }
         else if (path === "/api/studio/chat/dismiss") r = await studioChatDismiss(env as any, body.id);
         else if (path === "/api/studio/chat/rooms") { if (!who || who.user.role !== "owner") return json({ success: false, denied: true, error: "ده لصاحب الموقع بس." }, 403); r = await studioChatRooms(env as any, body); if (who && r.success) await studioAudit(env as any, who.user, "community.rooms", { count: (r.rooms || []).length }).catch(() => {}); }

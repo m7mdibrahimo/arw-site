@@ -267,6 +267,18 @@ export class ChatRoom {
   async admin(b: any, now = Date.now()) {
     if (b.op === "recent") return { msgs: this.latest(Math.min(Number(b.n) || 100, 200), Number(b.before) || 0) };
     if (b.op === "delete") return { ok: this.remove(Number(b.id), now, true) };
+    // the owner wiped the room from the panel (he pressed it himself, after typing «امسح»): every message goes,
+    // with its pictures/voices, and open pages drop what they show
+    if (b.op === "clear") {
+      const rows = this.sql.exec("SELECT id, att FROM msgs").toArray() as any[];
+      for (const r of rows) {
+        try { const att = r.att ? JSON.parse(String(r.att)) : null; if (att?.url?.startsWith(MEDIA_PREFIX) && this.env.MEDIA) this.env.MEDIA.delete(att.url.slice(MEDIA_PREFIX.length)).catch?.(() => {}); } catch { /* bad row */ }
+      }
+      this.sql.exec("DELETE FROM msgs");
+      if (this.meta("pin")) { this.setMeta("pin", null); this.broadcast({ t: "pin", m: null }); }
+      for (const r of rows.slice(-300)) this.broadcast({ t: "del", id: Number(r.id), gone: true });
+      return { ok: true, n: rows.length };
+    }
     if (b.op === "mute") {
       const uid = Number(b.uid) || 0;
       const until = Number(b.until) || 0;
@@ -677,6 +689,18 @@ export async function studioChatDelete(env: ChatEnv, room: unknown, id: unknown)
   const r: any = await (await roomCall(env, room, "/admin", { method: "POST", body: JSON.stringify({ op: "delete", id: Number(id) || 0 }) })).json();
   if (env.ANALYTICS) { await ensureReports(env.ANALYTICS); await env.ANALYTICS.prepare("UPDATE chat_reports SET done = 1 WHERE room = ?1 AND msg = ?2").bind(room, Number(id) || 0).run(); }
   return r.ok ? { success: true } : { success: false, error: "الرسالة دي اتمسحت قبل كده." };
+}
+export async function studioChatClear(env: ChatEnv, room: unknown) {
+  if (!env.CHAT) return { success: false, error: "مش متاح دلوقتي." };
+  const rooms = room === "all" ? (await roomList(env)).map(r => r.id) : isRoom(room) ? [String(room)] : [];
+  if (!rooms.length) return { success: false, error: "المجموعة دي مش موجودة." };
+  let n = 0;
+  for (const id of rooms) {
+    const r: any = await (await roomCall(env, id, "/admin", { method: "POST", body: JSON.stringify({ op: "clear" }) })).json().catch(() => ({}));
+    n += Number(r.n) || 0;
+  }
+  if (env.ANALYTICS) { await ensureReports(env.ANALYTICS); await env.ANALYTICS.prepare(room === "all" ? "UPDATE chat_reports SET done = 1" : "UPDATE chat_reports SET done = 1 WHERE room = ?1").bind(...(room === "all" ? [] : [String(room)])).run(); }
+  return { success: true, deleted: n, rooms: rooms.length };
 }
 export async function studioChatMute(env: ChatEnv, uid: unknown, hours: unknown, now = Date.now()) {
   const id = Number(uid) || 0;

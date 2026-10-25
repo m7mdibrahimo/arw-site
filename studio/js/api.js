@@ -162,6 +162,7 @@ export const api = {
   predictPicks: (id) => call(`/api/studio/predict/picks?id=${Number(id)}`),
   chatRoom: (room) => call(`/api/studio/chat/room/${encodeURIComponent(room)}`),
   chatDelete: (room, id) => call('/api/studio/chat/delete', { method: 'POST', body: { room, id: Number(id) } }),
+  chatClear: (room) => call('/api/studio/chat/clear', { method: 'POST', body: { room } }),
   chatMute: (uid, hours) => call('/api/studio/chat/mute', { method: 'POST', body: { uid: Number(uid), hours: Number(hours) } }),
   chatDismiss: (id) => call('/api/studio/chat/dismiss', { method: 'POST', body: { id: Number(id) } }),
   siteMemberBadge: (id, on, level) => call('/api/studio/members/badge', { method: 'POST', body: { id: Number(id), on: !!on, level: level === undefined ? (on ? 1 : 0) : Number(level) } }),
