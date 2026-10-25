@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/roman-reigns-says-world-heavyweight-title-now-wwes-number-one-most-coveted-prize-money-bank-2026/": {
-    "matchedFile": "20261011043910-رومان-رينز-عن-ال-ايه-نايت-يجب-أن-أمنحه-احترامه-لكنه-اصطدم-بمنافس-أفضل.md",
-    "reason": "الخبر الجديد يعيد نفس تصريحات رومان رينز مع كاثي كيلي عقب عرض موني إن ذا بانك 2026 والتي نُشرت بالفعل في الخبر رقم 0.",
-    "at": "2026-10-11T01:47:52.577Z"
-  },
   "https://www.fightful.com/wrestling/jevon-evans-sent-crashing-through-ambulance-roof-during-mens-money-in-the-bank-ladder-match/": {
     "matchedFile": "20261011041404-بينتا-يفوز-بنزال-السلالم-للرجال-في-عرض-wwe-موني-إن-ذا-بانك-2026.md",
     "reason": "الخبر الجديد يكرر تفاصيل سقوط جيفون إيفانز واختراقه لسقف سيارة الإسعاف في نزال موني إن ذا بانك، وهي نفس الواقعة المذكورة بالتفصيل في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261024172144-تفاصيل-وموعد-انطلاق-ودليل-مشاهدة-عرض-aaa-heroes-inmortales-الليلة.md",
     "reason": "الخبر الجديد يغطي نفس عرض AAA Heroes Inmortales وتفاصيل النزالات المذكورة في الخبر رقم 0، ولا يقدم أي تطور جديد أو نتيجة.",
     "at": "2026-10-25T01:31:40.119Z"
+  },
+  "https://www.fightful.com/wrestling/darby-allin-to-defend-tnt-title-against-josh-alexander-at-aew-fright-night-dynamite/": {
+    "matchedFile": "20261025042419-داربي-ألين-يدافع-عن-بطولة-tnt-في-عرض-aew-dynamite-يوم-28-أكتوبر.md",
+    "reason": "الخبر الجديد يتناول نفس الإعلان عن نزال داربي ألين ضد جوش ألكسندر في عرض AEW Fright Night Dynamite، وهو نفس الحدث المذكور في الخبر رقم 0.",
+    "at": "2026-10-25T01:43:04.517Z"
   }
 }
