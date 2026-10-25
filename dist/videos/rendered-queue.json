@@ -8649,19 +8649,19 @@
     "kind": "show",
     "slug": "20261001130548-aew-dynamite-30-09-2026",
     "image": "/content/images/d3znaep7usmqwk7z.jpg",
-    "renderedAt": 1792946647803
+    "renderedAt": 1792945989930
   },
   {
-    "videoUrl": "/videos/reel-20261025192311-aaa-heroes-inmortales-week-24-.mp4",
-    "filename": "reel-20261025192311-aaa-heroes-inmortales-week-24-.mp4",
-    "title": "عرض ايه ايه ايه 24.10.2026 مترجم",
-    "secondaryTitle": "AAA Héroes Inmortales Week 24.10.2026",
-    "description": "عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261025192311-aaa-heroes-inmortales-week-24-",
+    "videoUrl": "/videos/reel-20261025194555-mlw-fusion-24-10-2026.mp4",
+    "filename": "reel-20261025194555-mlw-fusion-24-10-2026.mp4",
+    "title": "عرض ام ال دبليو فيوجن 24.10.2026 مترجم",
+    "secondaryTitle": "MLW Fusion 24.10.2026",
+    "description": "عرض ام ال دبليو فيوجن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261025194555-mlw-fusion-24-10-2026",
     "kind": "show",
-    "slug": "20261025192311-aaa-heroes-inmortales-week-24-",
-    "image": "/content/images/73t7dmxfarjg13yl.jpg",
-    "renderedAt": 1792946745550
+    "slug": "20261025194555-mlw-fusion-24-10-2026",
+    "image": "/content/images/l5p0u8bnbxsa1p6q.jpg",
+    "renderedAt": 1792947052786
   },
   {
     "videoUrl": "/videos/reel-20261025192644-aew-collision-24-10-2026.mp4",
@@ -8673,6 +8673,54 @@
     "kind": "show",
     "slug": "20261025192644-aew-collision-24-10-2026",
     "image": "/content/images/ze3qsghgvpiznp01.jpg",
-    "renderedAt": 1792946842643
+    "renderedAt": 1792947142425
+  },
+  {
+    "videoUrl": "/videos/reel-20261025193204-ufc-333-volkanovski-vs-evloev-.mp4",
+    "filename": "reel-20261025193204-ufc-333-volkanovski-vs-evloev-.mp4",
+    "title": "عرض يو اف سي 333 ايرلي بريلمز مترجم",
+    "secondaryTitle": "UFC 333: Volkanovski vs Evloev (Early Prelims)",
+    "description": "عرض يو اف سي 333 ايرلي بريلمز مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261025193204-ufc-333-volkanovski-vs-evloev-",
+    "kind": "show",
+    "slug": "20261025193204-ufc-333-volkanovski-vs-evloev-",
+    "image": "/content/images/2y74srnfllu824qu.jpg",
+    "renderedAt": 1792947229922
+  },
+  {
+    "videoUrl": "/videos/reel-20261025193534-ufc-333-volkanovski-vs-evloev-.mp4",
+    "filename": "reel-20261025193534-ufc-333-volkanovski-vs-evloev-.mp4",
+    "title": "عرض يو اف سي 333 بريلمز مترجم",
+    "secondaryTitle": "UFC 333: Volkanovski vs Evloev (Prelims)",
+    "description": "عرض يو اف سي 333 بريلمز مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261025193534-ufc-333-volkanovski-vs-evloev-",
+    "kind": "show",
+    "slug": "20261025193534-ufc-333-volkanovski-vs-evloev-",
+    "image": "/content/images/zq4rry3ag0a2mobg.jpg",
+    "renderedAt": 1792947319955
+  },
+  {
+    "videoUrl": "/videos/reel-20261025193815-ufc-333-volkanovski-vs-evloev-.mp4",
+    "filename": "reel-20261025193815-ufc-333-volkanovski-vs-evloev-.mp4",
+    "title": "عرض يو اف سي 333 مين كارد مترجم",
+    "secondaryTitle": "UFC 333: Volkanovski vs Evloev (Main Card)",
+    "description": "عرض يو اف سي 333 مين كارد مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261025193815-ufc-333-volkanovski-vs-evloev-",
+    "kind": "show",
+    "slug": "20261025193815-ufc-333-volkanovski-vs-evloev-",
+    "image": "/content/images/8tjb2teyty0d9r2m.jpg",
+    "renderedAt": 1792947412410
+  },
+  {
+    "videoUrl": "/videos/reel-20261025194211-cmll-international-women-s-gra.mp4",
+    "filename": "reel-20261025194211-cmll-international-women-s-gra.mp4",
+    "title": "عرض سي ام ال ال انترناشونال ويمينز جراند بري 23.10.2026 مترجم",
+    "secondaryTitle": "CMLL International Women’s Grand Prix 23.10.2026",
+    "description": "عرض سي ام ال ال انترناشونال ويمينز جراند بري مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261025194211-cmll-international-women-s-gra",
+    "kind": "show",
+    "slug": "20261025194211-cmll-international-women-s-gra",
+    "image": "/content/images/5prblrwgiuyb6yov.jpg",
+    "renderedAt": 1792947508303
   }
 ]
