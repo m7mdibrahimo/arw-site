@@ -3582,7 +3582,7 @@ export default {
           if (!/^[A-Za-z0-9_-]{20,200}$/.test(k)) return json({ success: false, error: "المفتاح ده شكله مش صحيح" });
           // check it with what the button needs (the machines list); a key made with only some permissions has no
           // access to the account's profile, so that is not asked for
-          const res = await fetch("https://console.vast.ai/api/v0/instances/?owner=me", { headers: { Authorization: `Bearer ${k}`, Accept: "application/json" } });
+          const res = await fetch(`https://console.vast.ai/api/v1/instances/?select_filters=${encodeURIComponent("{}")}&limit=25`, { headers: { Authorization: `Bearer ${k}`, Accept: "application/json" } });
           const body: any = await res.json().catch(() => null);
           if (!body || !Array.isArray(body.instances)) {
             const why = body && (body.msg || body.error) ? String(body.msg || body.error).slice(0, 120) : `HTTP ${res.status}`;
@@ -3594,9 +3594,10 @@ export default {
         if ((path === "/api/studio/tools/server/start" || path === "/api/studio/tools/server/stop") && request.method === "POST") {
           const k = await env.PUSH_KV.get("tools:vast-key");
           if (!k) return json({ success: false, needKey: true, error: "حط مفتاح موقع التأجير الأول (تحت في «زرار التشغيل»)" });
-          const vast = (p: string, init: RequestInit = {}) => fetch(`https://console.vast.ai/api/v0${p}`, { ...init, headers: { Authorization: `Bearer ${k}`, "Content-Type": "application/json", ...(init.headers || {}) } })
+          // the rental site's own tool (vast-ai/vast-cli): machines list on /api/v1/instances/, offers by POST /bundles/
+          const vast = (p: string, init: RequestInit = {}) => fetch(p.startsWith("/api/") ? `https://console.vast.ai${p}` : `https://console.vast.ai/api/v0${p}`, { ...init, headers: { Authorization: `Bearer ${k}`, "Content-Type": "application/json", ...(init.headers || {}) } })
             .then(async r => ({ ok: r.ok, status: r.status, body: await r.json().catch(() => ({})) as any }));
-          const list = await vast("/instances/?owner=me");
+          const list = await vast(`/api/v1/instances/?select_filters=${encodeURIComponent("{}")}&limit=25`);
           const mine = ((list.body && list.body.instances) || []).filter((i: any) => i.label === "arw-tafrigh");
           const running = mine.find((i: any) => i.actual_status === "running" || i.actual_status === "loading");
           if (path.endsWith("/stop")) {
@@ -3616,7 +3617,7 @@ export default {
             cuda_max_good: { gte: 12.4 }, cpu_arch: { in: ["amd64"] }, dph_total: { lte: 0.2 }, type: "on-demand", order: [["dph_total", "asc"]], limit: 30 };
           // cheapest overall: the card is paid only while it works, the 100 GB disk all day — weigh the disk 3x
           const score = (o: any) => (Number(o.dph_base) || Number(o.dph_total) || 0) + (Number(o.storage_cost) || 0) * 100 / 720 * 3;
-          const offers = ((await vast(`/bundles/?q=${encodeURIComponent(JSON.stringify(q))}`)).body.offers || [])
+          const offers = ((await vast("/bundles/", { method: "POST", body: JSON.stringify(q) })).body.offers || [])
             .filter((o: any) => !/china|CN$/i.test(String(o.geolocation || ""))) // Google Drive is blocked there
             .sort((a: any, b: any) => score(a) - score(b));
           for (const o of offers.slice(0, 8)) {
