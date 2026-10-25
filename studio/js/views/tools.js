@@ -616,7 +616,7 @@ export async function renderServerTool(page) {
   };
 
   const stageOf = (s, job) => {
-    if (job && job.name === s.name) return { text: STEP_NOW[job.step] || 'شغال عليه', tone: 'run' };
+    if (job && job.name === s.name) return { text: `${STEP_NOW[job.step] || 'شغال عليه'}${job.pct != null ? ` — ${num(job.pct)}٪` : ''}`, tone: 'run' };
     if (s.merged && s.uploaded) return { text: 'جاهز واترفع ✓', tone: 'ok' };
     if (s.merged) return { text: 'اتدمج — مستني الرفع', tone: 'wait' };
     if (s.mergeFailed) return { text: 'الدمج فشل', tone: 'bad' };
@@ -636,6 +636,7 @@ export async function renderServerTool(page) {
       const busy = alive && st.job && st.job.name === s.name; // being downloaded/subtitled/merged/uploaded right now
       return html`<div class="srv-show">
         <div class="srv-show-head"><b class="srv-name">${s.name}</b><span class="srv-tag ${stg.tone}">${stg.text}</span></div>
+        ${busy && st.job.pct != null ? html`<div class="srv-bar srv-bar-sm"><div style="width:${Math.min(100, st.job.pct)}%"></div></div><small class="muted">فاضل ${leftText(st.job.left)}</small><br>` : ''}
         <small class="muted">لغة الصوت: ${LANG_NAME[s.lang] || 'إنجليزي'} — ${s.qual === '720' ? '٧٢٠ بس' : '٤ جودات'}${s.ar ? ` — اللوجو: ${(POSITIONS.find(p => p.pos === s.ar) || POSITIONS[0]).name}` : ''}</small>
         <div class="srv-actions">
           ${s.en ? html`<button class="btn btn-sm" data-en="${n}">${icon('download')} نزّل الترجمة الإنجليزي</button>` : ''}
