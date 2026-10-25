@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/myles-borne-calls-out-fans-using-what-chants-against-him-wwe-nxt": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-25T12:31:49.237Z"
+ },
  "https://www.fightful.com/wrestling/rey-pegasus-comments-on-winning-cmll-torneo-de-escuelas": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-11T20:37:17.893Z"
- },
- "https://www.fightful.com/wrestling/penta-wins-2026-mens-money-in-the-bank-ladder-match": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-11T17:14:37.180Z"
  }
 }
