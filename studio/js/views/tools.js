@@ -465,8 +465,8 @@ export async function renderServerTool(page) {
     <div id="srv"><div class="loading-page"><div class="spinner"></div></div></div>
     <section class="panel srv-new">
       <header class="panel-head"><h2>${icon('plus')} عرض جديد</h2></header>
-      <p class="muted">الزق رابط التحميل نفسه (أو رابط التورنت)، واختار لغة الصوت، ودوس «ابدأ». السيرفر هينزّله ويفرّغه لوحده.</p>
-      <input id="srv-url" class="input" type="url" dir="ltr" placeholder="الزق الرابط هنا">
+      <p class="muted">الزق رابط التحميل نفسه (أو رابط التورنت)، واختار لغة الصوت، ودوس «ابدأ». السيرفر هينزّله ويفرّغه لوحده. تقدر تحط كذا عرض مرة واحدة: كل رابط في سطر.</p>
+      <textarea id="srv-url" class="input" dir="ltr" rows="3" placeholder="الزق الرابط هنا — وكل عرض زيادة في سطر جديد"></textarea>
       <div class="srv-langs">${LANGS.map((l, n) => html`<label class="srv-chip"><input type="radio" name="srv-lang" value="${l.key}" ${n ? '' : 'checked'}><span>${l.name}</span></label>`)}</div>
       <p class="muted srv-note">المكسيكي والياباني بيطلعوا ترجمة إنجليزي برضه، عشان تترجمها زي ما انت متعود.</p>
       <button class="btn btn-primary" id="srv-go">${icon('download')} ابدأ</button>
@@ -488,10 +488,15 @@ export async function renderServerTool(page) {
   };
 
   $('#srv-go').onclick = async () => {
-    const url = $('#srv-url').value.trim();
+    const lines = $('#srv-url').value.split(/\s*\n\s*/).map(x => x.trim()).filter(Boolean);
     const lang = ($('input[name="srv-lang"]:checked') || {}).value || 'en';
-    if (!/^(https?:\/\/|magnet:\?)/i.test(url)) return toast('الزق رابط التحميل الأول', 'error');
-    if (await send({ kind: 'link', url, lang }, 'تمام — السيرفر هياخد الرابط خلال ثواني')) $('#srv-url').value = '';
+    const bad = lines.filter(u => !/^(https?:\/\/|magnet:\?)/i.test(u));
+    if (!lines.length) return toast('الزق رابط التحميل الأول', 'error');
+    if (bad.length) return toast(`فيه ${num(bad.length)} سطر مش رابط`, 'error');
+    let ok = 0;
+    for (const url of lines) { try { const r = await tools.serverCmd({ kind: 'link', url, lang }); if (r && r.success !== false) ok++; } catch {} }
+    if (ok) { toast(ok === 1 ? 'تمام — السيرفر هياخد الرابط خلال ثواني' : `تمام — ${num(ok)} عروض، هيتعملوا ورا بعض`); $('#srv-url').value = ''; setTimeout(tick, 1500); }
+    if (ok < lines.length) toast(`${num(lines.length - ok)} رابط متبعتش — جرّب تاني`, 'error');
   };
 
   const drawStatus = (d) => {
@@ -554,7 +559,7 @@ export async function renderServerTool(page) {
           ${s.en ? html`<button class="btn btn-sm" data-en="${n}">${icon('download')} نزّل الترجمة الإنجليزي</button>` : ''}
           ${s.merged && s.drive ? html`<a class="btn btn-sm btn-primary" href="${s.drive}" target="_blank" rel="noopener">${icon('folder')} افتح العرض على درايف</a>` : ''}
           ${s.subsFailed || s.en ? html`<button class="btn btn-sm btn-ghost" data-resub="${n}">${icon('refresh')} فرّغ تاني</button>` : ''}
-          ${s.merged ? html`<button class="btn btn-sm btn-ghost danger" data-clean="${n}">${icon('trash')} امسحه من السيرفر</button>` : ''}
+          <button class="btn btn-sm btn-ghost danger" data-clean="${n}">${icon('trash')} امسحه من السيرفر</button>
         </div>
         ${s.en || s.ar || s.merged ? html`<div class="srv-ar">
           <div class="srv-ar-title">${s.ar || s.merged ? 'غيّر الترجمة العربي أو مكان اللوجو:' : 'ارفع الترجمة العربي واختار مكان اللوجو:'}</div>
@@ -590,7 +595,10 @@ export async function renderServerTool(page) {
     });
     $$('[data-clean]').forEach(b => b.onclick = async () => {
       const s = list[+b.dataset.clean];
-      const ok = await dialog({ title: 'تمسحه من السيرفر؟', body: `«${s.name}» هيتمسح من السيرفر عشان المساحة. نسخته على درايف هتفضل موجودة.`, confirm: 'امسح', danger: true });
+      const body = s.merged ? `«${s.name}» هيتمسح من السيرفر عشان المساحة. نسخته على درايف هتفضل موجودة.`
+        : s.en ? `«${s.name}» هيتمسح من السيرفر (الفيديو والترجمة). الترجمة الإنجليزي بتاعته فاضلة على درايف، بس العرض نفسه لسه متدمجش.`
+        : `«${s.name}» هيتمسح من السيرفر. لسه متفرّغش، فلو عايزه تاني هتحط رابطه من الأول.`;
+      const ok = await dialog({ title: 'تمسحه من السيرفر؟', body, confirm: 'امسح', danger: true });
       if (ok) send({ kind: 'clean', name: s.name }, 'هيتمسح من السيرفر');
     });
   };
