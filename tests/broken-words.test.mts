@@ -560,6 +560,12 @@ test('a stray ta marbuta after «ي» («احترافيتة») is a blocking bro
   assert.ok(!checkArticle('عنوان واضح عن الخبر', body.replace('احترافيتة', 'احترافيته')).some((i: any) => /يتة/.test(i.message || '')));
 });
 
+test('«مميتة» is a real word, not a broken «…يتة» (INCIDENTS #817)', async () => {
+  const { checkArticle } = await import('../scripts/news-qa.ts');
+  const body = 'اطمأن المصارع على حالته بعد الفحوصات الطبية، حيث أخبره الطبيب أن حالته غير مميتة وأن نتائج فحوصاته جيدة للغاية، مؤكدا له سلامة قلبه وقدرته على العودة قريبا إلى الحلبة.';
+  assert.ok(!checkArticle('عنوان واضح عن الخبر', body).some((i: any) => i.code === 'broken_word'));
+});
+
 // INCIDENTS #815: duals that slipped through — «ابنيه»، «شقيقيه»، «اتحادا WWE وAEW»، «لقبي بطولة»، «مواجهتي بطولة».
 test('INCIDENTS #815: dual nouns with pronouns, before Latin names, and in construct state are blocked', () => {
   const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + ' ' + 'كلام '.repeat(80)).map((i) => i.code);
