@@ -428,8 +428,16 @@ export async function renderReelsTool(page) {
 // finished show on Drive. The machine sends a heartbeat every 30 seconds (and takes the page's requests with it);
 // this page reads it every 10 seconds, so it also says when the machine is off, and «افتح ملفات السيرفر» always has
 // the machine's current link (it changes on every start).
-const STEP_NAME = { subs: 'تفريغ', merge: 'دمج', download: 'تحميل' };
-const STEP_NOW = { subs: 'بيفرّغ دلوقتي', merge: 'بيدمج دلوقتي', download: 'بيحمّل دلوقتي' };
+const STEP_NAME = { subs: 'تفريغ', merge: 'دمج', download: 'تحميل', upload: 'رفع' };
+const STEP_NOW = { subs: 'بيفرّغ دلوقتي', merge: 'بيدمج دلوقتي', download: 'بيحمّل دلوقتي', upload: 'بيرفع دلوقتي' };
+const QUALS = [{ key: 'all', name: '٤ جودات (٣٦٠ لـ ١٠٨٠)' }, { key: '720', name: '٧٢٠ بس' }];
+// the upload sites (upload.py): the first three need no account, the rest the owner's key
+const HOSTS = [
+  { key: 'gofile', name: 'جوفايل', free: true }, { key: 'buzzheavier', name: 'بازهيفير', free: true }, { key: 'vikingfile', name: 'فايكنج فايل', free: true },
+  { key: 'pixeldrain', name: 'بيكسل درايف' }, { key: 'uqload', name: 'يو كيو لود' }, { key: 'vidmoly', name: 'فيدمولي' }, { key: 'vidtube', name: 'فيد تيوب' },
+  { key: 'dailyuploads', name: 'ديلي أبلودز' }, { key: 'sendnow', name: 'سند ناو' }, { key: 'megaup', name: 'ميجا أب' }, { key: '1cloudfile', name: 'وان كلاود فايل' },
+];
+const HOST_NAME = Object.fromEntries(HOSTS.map(h => [h.key, h.name]));
 const LANGS = [{ key: 'en', name: 'إنجليزي' }, { key: 'es', name: 'مكسيكي (إسباني)' }, { key: 'ja', name: 'ياباني' }];
 const LANG_NAME = Object.fromEntries(LANGS.map(l => [l.key, l.name]));
 const POSITIONS = [{ pos: 1, name: 'فوق شمال', css: 'tl' }, { pos: 2, name: 'فوق يمين', css: 'tr' }, { pos: 3, name: 'تحت يمين', css: 'br' }];
@@ -465,17 +473,28 @@ export async function renderServerTool(page) {
     <div id="srv"><div class="loading-page"><div class="spinner"></div></div></div>
     <section class="panel srv-new">
       <header class="panel-head"><h2>${icon('plus')} عرض جديد</h2></header>
-      <p class="muted">الزق رابط التحميل نفسه (أو رابط التورنت)، واختار لغة الصوت، ودوس «ابدأ». السيرفر هينزّله ويفرّغه لوحده. تقدر تحط كذا عرض مرة واحدة: كل رابط في سطر.</p>
-      <textarea id="srv-url" class="input" dir="ltr" rows="3" placeholder="الزق الرابط هنا — وكل عرض زيادة في سطر جديد"></textarea>
-      <div class="srv-langs">${LANGS.map((l, n) => html`<label class="srv-chip"><input type="radio" name="srv-lang" value="${l.key}" ${n ? '' : 'checked'}><span>${l.name}</span></label>`)}</div>
+      <p class="muted">لكل عرض: الزق رابط التحميل نفسه (أو رابط التورنت)، واختار لغة الصوت وعدد الجودات. تقدر تضيف كذا عرض مرة واحدة، والسيرفر هيعملهم ورا بعض.</p>
+      <div id="srv-rows"></div>
+      <button class="btn btn-ghost btn-sm" id="srv-add">${icon('plus')} عرض كمان</button>
       <p class="muted srv-note">المكسيكي والياباني بيطلعوا ترجمة إنجليزي برضه، عشان تترجمها زي ما انت متعود.</p>
       <button class="btn btn-primary" id="srv-go">${icon('download')} ابدأ</button>
     </section>
     <section class="panel"><header class="panel-head"><h2>${icon('film')} العروض</h2></header><div id="srv-shows"></div></section>
     <section class="panel"><header class="panel-head"><h2>${icon('check')} اللي خلص</h2></header><div id="srv-jobs"></div></section>
+    <section class="panel"><header class="panel-head"><h2>${icon('upload')} مواقع الرفع</h2></header><div id="srv-hosts"></div></section>
   </div>`);
   const box = $('#srv');
-  let last = null, chosen = {}; // chosen[name] = logo position picked for the Arabic file about to go up
+  let last = null, chosen = {}, chosenQ = {}; // the logo position / qualities picked for the Arabic file about to go up
+  // a show's upload links, grouped by quality, each group copied in one tap (one link per line, as the show page takes them)
+  const linksBlock = (s, n) => {
+    const quals = s.qual === '720' ? ['720p'] : ['1080p', '720p', '480p', '360p'];
+    const ok = (q) => Object.entries(s.links).map(([h, qs]) => qs[q]).filter(v => /^https?:/.test(String(v || '')));
+    const failed = Object.entries(s.links).filter(([h, qs]) => Object.values(qs).some(v => !/^https?:/.test(String(v || '')))).map(([h]) => HOST_NAME[h] || h);
+    return html`<div class="srv-links"><div class="srv-ar-title">${icon('link')} روابط الرفع</div>
+      ${quals.map(q => { const l = ok(q); return l.length ? html`<div class="srv-lq"><b>${q}</b><span class="muted">${num(l.length)} رابط</span><button class="btn btn-sm" data-copy="${n}:${q}">${icon('copy')} انسخ</button></div>` : ''; })}
+      ${failed.length ? html`<p class="srv-err">${icon('alert')} مترفعش على: ${failed.join('، ')} <button class="btn btn-sm btn-ghost" data-reup="${n}">${icon('refresh')} جرّب تاني</button></p>` : ''}
+    </div>`;
+  };
 
   const send = async (body, okText) => {
     try {
@@ -487,16 +506,33 @@ export async function renderServerTool(page) {
     } catch (e) { toast(e.message || 'حصلت مشكلة', 'error'); return false; }
   };
 
+  // one row per show: its link, its audio language, its qualities
+  const addRow = () => {
+    const row = document.createElement('div');
+    row.className = 'srv-row';
+    mount(row, html`<input class="input srv-url" type="url" dir="ltr" placeholder="الزق رابط العرض هنا">
+      <select class="input srv-lang">${LANGS.map(l => html`<option value="${l.key}">${l.name}</option>`)}</select>
+      <select class="input srv-qual">${QUALS.map(q => html`<option value="${q.key}">${q.name}</option>`)}</select>
+      <button class="icon-btn sm" title="شيل" type="button">${icon('x')}</button>`);
+    row.querySelector('button').onclick = () => { if ($$('.srv-row').length > 1) row.remove(); else row.querySelector('.srv-url').value = ''; };
+    $('#srv-rows').appendChild(row);
+    return row;
+  };
+  addRow();
+  $('#srv-add').onclick = () => addRow().querySelector('.srv-url').focus();
+
   $('#srv-go').onclick = async () => {
-    const lines = $('#srv-url').value.split(/\s*\n\s*/).map(x => x.trim()).filter(Boolean);
-    const lang = ($('input[name="srv-lang"]:checked') || {}).value || 'en';
-    const bad = lines.filter(u => !/^(https?:\/\/|magnet:\?)/i.test(u));
-    if (!lines.length) return toast('الزق رابط التحميل الأول', 'error');
-    if (bad.length) return toast(`فيه ${num(bad.length)} سطر مش رابط`, 'error');
+    const rows = $$('.srv-row').map(r => ({ r, url: r.querySelector('.srv-url').value.trim(), lang: r.querySelector('.srv-lang').value, qual: r.querySelector('.srv-qual').value })).filter(x => x.url);
+    if (!rows.length) return toast('الزق رابط العرض الأول', 'error');
+    const bad = rows.filter(x => !/^(https?:\/\/|magnet:\?)/i.test(x.url));
+    if (bad.length) return toast(`فيه ${num(bad.length)} خانة مش رابط`, 'error');
     let ok = 0;
-    for (const url of lines) { try { const r = await tools.serverCmd({ kind: 'link', url, lang }); if (r && r.success !== false) ok++; } catch {} }
-    if (ok) { toast(ok === 1 ? 'تمام — السيرفر هياخد الرابط خلال ثواني' : `تمام — ${num(ok)} عروض، هيتعملوا ورا بعض`); $('#srv-url').value = ''; setTimeout(tick, 1500); }
-    if (ok < lines.length) toast(`${num(lines.length - ok)} رابط متبعتش — جرّب تاني`, 'error');
+    for (const x of rows) {
+      try { const r = await tools.serverCmd({ kind: 'link', url: x.url, lang: x.lang, qual: x.qual }); if (r && r.success !== false) { ok++; x.r.remove(); } } catch {}
+    }
+    if (!$$('.srv-row').length) addRow();
+    if (ok) { toast(ok === 1 ? 'تمام — السيرفر هياخد العرض خلال ثواني' : `تمام — ${num(ok)} عروض، هيتعملوا ورا بعض`); setTimeout(tick, 1500); }
+    if (ok < rows.length) toast(`${num(rows.length - ok)} عرض متبعتش — جرّب تاني`, 'error');
   };
 
   const drawStatus = (d) => {
@@ -537,7 +573,8 @@ export async function renderServerTool(page) {
 
   const stageOf = (s, job) => {
     if (job && job.name === s.name) return { text: STEP_NOW[job.step] || 'شغال عليه', tone: 'run' };
-    if (s.merged) return { text: 'جاهز ✓', tone: 'ok' };
+    if (s.merged && s.uploaded) return { text: 'جاهز واترفع ✓', tone: 'ok' };
+    if (s.merged) return { text: 'اتدمج — مستني الرفع', tone: 'wait' };
     if (s.mergeFailed) return { text: 'الدمج فشل', tone: 'bad' };
     if (s.ar) return { text: 'مستني الدمج', tone: 'wait' };
     if (s.en) return { text: 'الترجمة الإنجليزي جاهزة', tone: 'ok' };
@@ -554,15 +591,17 @@ export async function renderServerTool(page) {
       const stg = stageOf(s, alive ? st.job : null);
       return html`<div class="srv-show">
         <div class="srv-show-head"><b class="srv-name">${s.name}</b><span class="srv-tag ${stg.tone}">${stg.text}</span></div>
-        <small class="muted">لغة الصوت: ${LANG_NAME[s.lang] || 'إنجليزي'}${s.ar ? ` — اللوجو: ${(POSITIONS.find(p => p.pos === s.ar) || POSITIONS[0]).name}` : ''}</small>
+        <small class="muted">لغة الصوت: ${LANG_NAME[s.lang] || 'إنجليزي'} — ${s.qual === '720' ? '٧٢٠ بس' : '٤ جودات'}${s.ar ? ` — اللوجو: ${(POSITIONS.find(p => p.pos === s.ar) || POSITIONS[0]).name}` : ''}</small>
         <div class="srv-actions">
           ${s.en ? html`<button class="btn btn-sm" data-en="${n}">${icon('download')} نزّل الترجمة الإنجليزي</button>` : ''}
           ${s.merged && s.drive ? html`<a class="btn btn-sm btn-primary" href="${s.drive}" target="_blank" rel="noopener">${icon('folder')} افتح العرض على درايف</a>` : ''}
           ${s.subsFailed || s.en ? html`<button class="btn btn-sm btn-ghost" data-resub="${n}">${icon('refresh')} فرّغ تاني</button>` : ''}
           <button class="btn btn-sm btn-ghost danger" data-clean="${n}">${icon('trash')} امسحه من السيرفر</button>
         </div>
+        ${s.links ? linksBlock(s, n) : ''}
         ${s.en || s.ar || s.merged ? html`<div class="srv-ar">
           <div class="srv-ar-title">${s.ar || s.merged ? 'غيّر الترجمة العربي أو مكان اللوجو:' : 'ارفع الترجمة العربي واختار مكان اللوجو:'}</div>
+          <div class="srv-langs">${QUALS.map(q => html`<button class="srv-q ${(chosenQ[s.name] || s.qual || 'all') === q.key ? 'on' : ''}" data-q="${n}:${q.key}">${q.name}</button>`)}</div>
           <div class="srv-pos">${POSITIONS.map(p => html`<button class="srv-pos-btn ${(chosen[s.name] || s.ar || 1) === p.pos ? 'on' : ''}" data-pos="${n}:${p.pos}" title="${p.name}"><span class="srv-screen"><i class="${p.css}">لوجو</i></span>${p.name}</button>`)}</div>
           <label class="btn btn-sm btn-primary srv-file">${icon('upload')} ارفع الترجمة العربي وابدأ الدمج<input type="file" accept=".srt" data-ar="${n}" hidden></label>
         </div>` : ''}
@@ -577,13 +616,20 @@ export async function renderServerTool(page) {
       chosen[list[n].name] = pos;
       drawShows(last);
     });
+    $$('[data-q]').forEach(b => b.onclick = () => { const [n, q] = b.dataset.q.split(':'); chosenQ[list[+n].name] = q; drawShows(last); });
+    $$('[data-copy]').forEach(b => b.onclick = async () => {
+      const [n, q] = b.dataset.copy.split(':'); const s = list[+n];
+      const text = Object.values(s.links).map(qs => qs[q]).filter(v => /^https?:/.test(String(v || ''))).join('\n');
+      try { await navigator.clipboard.writeText(text); toast(`اتنسخت روابط ${q}`); } catch { toast('مقدرتش أنسخ', 'error'); }
+    });
+    $$('[data-reup]').forEach(b => b.onclick = () => send({ kind: 'reupload', name: list[+b.dataset.reup].name }, 'هيجرّب يرفع تاني على المواقع اللي فشلت'));
     $$('[data-ar]').forEach(inp => inp.onchange = async () => {
       const s = list[+inp.dataset.ar], file = inp.files && inp.files[0];
       if (!file) return;
       const text = await file.text();
       if (!/-->/.test(text)) return toast('ده مش ملف ترجمة', 'error');
-      const pos = chosen[s.name] || s.ar || 1;
-      await send({ kind: 'arabic', name: s.name, pos, text }, `اترفعت — الدمج هيبدأ واللوجو ${(POSITIONS.find(p => p.pos === pos) || POSITIONS[0]).name}`);
+      const pos = chosen[s.name] || s.ar || 1, qual = chosenQ[s.name] || s.qual || 'all';
+      await send({ kind: 'arabic', name: s.name, pos, qual, text }, `اترفعت — الدمج هيبدأ (${qual === '720' ? '٧٢٠ بس' : '٤ جودات'}) واللوجو ${(POSITIONS.find(p => p.pos === pos) || POSITIONS[0]).name}`);
     });
     $$('[data-resub]').forEach(b => b.onclick = async () => {
       const s = list[+b.dataset.resub];
@@ -610,6 +656,23 @@ export async function renderServerTool(page) {
         <td class="${j.ok ? 'ok' : 'bad'}">${STEP_NAME[j.step] || j.step} ${j.ok ? '✓' : '✗'}</td>
         <td>${dayClock(j.started)}</td><td>${dayClock(j.finished)}</td><td>${span(j.finished - j.started)}</td>
       </tr>`)}</tbody></table></div>` : html`<p class="muted">لسه مفيش حاجة خلصت من ساعة ما الصفحة دي اتعملت.</p>`);
+
+  const drawHosts = async () => {
+    let h = { has: {}, off: [] };
+    try { h = await tools.serverHosts(); } catch {}
+    mount($('#srv-hosts'), html`<p class="muted">السيرفر بيرفع كل عرض جاهز لوحده على المواقع المتعلّمة، ويحطلك الروابط جنب العرض. المواقع اللي محتاجة حساب: حط مفتاح الرفع بتاعك من إعدادات حسابك في الموقع (اسمه غالبًا «مفتاح الواجهة»)، مرة واحدة بس.</p>
+      <div class="srv-hosts">${HOSTS.map(x => html`<div class="srv-host">
+        <label class="srv-host-on"><input type="checkbox" data-on="${x.key}" ${h.off.includes(x.key) ? '' : 'checked'}> <b>${x.name}</b></label>
+        ${x.free ? html`<span class="muted">مش محتاج حساب</span>` : html`<input class="input" type="password" autocomplete="off" dir="ltr" data-key="${x.key}" placeholder="${h.has[x.key] ? 'متحط ✓ (اكتب جديد لو عايز تغيّره)' : 'مفتاح الرفع'}">`}
+      </div>`)}</div>
+      <button class="btn btn-primary btn-sm" id="srv-hosts-save">${icon('check')} احفظ</button>`);
+    $('#srv-hosts-save').onclick = async () => {
+      const body = { off: $$('[data-on]').filter(c => !c.checked).map(c => c.dataset.on) };
+      $$('[data-key]').forEach(i => { if (i.value.trim()) body[i.dataset.key] = i.value.trim(); });
+      try { await tools.serverHosts(body); toast('اتحفظ'); drawHosts(); } catch (e) { toast(e.message || 'مقدرتش أحفظ', 'error'); }
+    };
+  };
+  drawHosts();
 
   let stopped = false, timer = 0;
   const tick = async () => {

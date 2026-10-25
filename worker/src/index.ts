@@ -3286,11 +3286,11 @@ export default {
         } else {
           const t = (v: any) => Math.min(now + 60_000, Math.max(0, Math.round(Number(v) || 0)));
           await env.ANALYTICS.prepare("INSERT INTO enc_jobs (name, step, started, finished, ok) VALUES (?, ?, ?, ?, ?)")
-            .bind(String(body.name || "").slice(0, 200), body.step === "merge" ? "merge" : body.step === "download" ? "download" : "subs", t(body.started), t(body.finished) || now, body.ok ? 1 : 0).run();
+            .bind(String(body.name || "").slice(0, 200), ["merge", "download", "upload"].includes(body.step) ? body.step : "subs", t(body.started), t(body.finished) || now, body.ok ? 1 : 0).run();
         }
         return json({ success: true });
       }
-      if ((path === "/tools/arw-provision" || path === "/tools/arw-bundle" || path === "/tools/arw-notify") && request.method === "GET") {
+      if ((path === "/tools/arw-provision" || path === "/tools/arw-bundle" || path === "/tools/arw-notify" || path === "/tools/arw-upload-keys") && request.method === "GET") {
         const k = url.searchParams.get("k") || "";
         const digest = [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(k)))].map(b => b.toString(16).padStart(2, "0")).join("");
         if (k.length < 24 || digest !== TOOLS_KEY_SHA256) return new Response("not found", { status: 404 });
@@ -3298,10 +3298,15 @@ export default {
           const script = `#!/bin/bash\nset -e\nmkdir -p /workspace\ncurl -fsSL "${url.origin}/tools/arw-bundle?k=${k}" -o /tmp/arw.tgz\ntar --no-same-owner -xzf /tmp/arw.tgz -C /workspace\nrm -f /tmp/arw.tgz\necho \"${k}\" > /workspace/arw/.tools-key\nchmod 600 /workspace/arw/.tools-key\nbash /workspace/arw/setup.sh\n`;
           return new Response(script, { headers: { "Content-Type": "text/x-shellscript; charset=utf-8", "Cache-Control": "no-store" } });
         }
+        // the owner's own keys for the upload sites he put in the panel («مواقع الرفع»), for upload.py on the machine
+        if (path === "/tools/arw-upload-keys") {
+          const keys = await env.PUSH_KV.get("tools:upload-keys", "json").catch(() => null);
+          return json({ success: true, keys: keys || {} });
+        }
         // the machine tells the owner by email when a show's English subtitles or its 4 qualities are ready
         // (the address is in KV tools:notify-to, not in this public code; at most 40 mails a day)
         if (path === "/tools/arw-notify") {
-          const kinds: Record<string, string> = { en: "الترجمة الإنجليزي جاهزة", ready: "الأربع جودات جاهزة", fail: "حصلت مشكلة", idle: "السيرفر خلّص كل الشغل وهيقفل نفسه" };
+          const kinds: Record<string, string> = { en: "الترجمة الإنجليزي جاهزة", ready: "العرض اتدمج وجاهز", uploaded: "العرض اترفع على مواقع التحميل — الروابط في لوحة التحكم", fail: "حصلت مشكلة", idle: "السيرفر خلّص كل الشغل وهيقفل نفسه" };
           const kind = url.searchParams.get("t") || "", what = kinds[kind];
           const name = (url.searchParams.get("n") || "").replace(/[<>&"]/g, "").slice(0, 160);
           const to = await env.PUSH_KV.get("tools:notify-to");
@@ -3552,18 +3557,35 @@ export default {
           if (b.kind === "link") {
             const u = String(b.url || "").trim();
             if (!/^(https?:\/\/|magnet:\?)/i.test(u) || u.length > 4000) return json({ success: false, error: "الرابط مش صحيح" });
-            data = { url: u, lang };
+            data = { url: u, lang, qual: b.qual === "720" ? "720" : "all" };
           } else if (b.kind === "arabic") {
             const text = String(b.text || "");
             if (!name || !text.trim() || text.length > 5_000_000) return json({ success: false, error: "ملف الترجمة فاضي أو كبير" });
             await env.PUSH_KV.put(`enc:ar:${name}`, text, { expirationTtl: 30 * 86400 });
-            data = { name, pos: [1, 2, 3].includes(Number(b.pos)) ? Number(b.pos) : 1 };
-          } else if (b.kind === "clean" || b.kind === "resub") {
+            data = { name, pos: [1, 2, 3].includes(Number(b.pos)) ? Number(b.pos) : 1, qual: b.qual === "720" ? "720" : "all" };
+          } else if (b.kind === "clean" || b.kind === "resub" || b.kind === "reupload") {
             if (!name) return json({ success: false, error: "مفيش اسم" });
             data = b.kind === "resub" ? { name, lang } : { name };
           } else return json({ success: false, error: "طلب مش معروف" });
           await env.ANALYTICS.prepare("INSERT INTO enc_cmds (kind, data, created) VALUES (?, ?, ?)").bind(b.kind, JSON.stringify(data), Date.now()).run();
           return json({ success: true });
+        }
+        // «مواقع الرفع»: which upload sites have the owner's key (never the keys themselves back), and saving them
+        if (path === "/api/studio/tools/server/hosts") {
+          const cur: any = (await env.PUSH_KV.get("tools:upload-keys", "json").catch(() => null)) || {};
+          if (request.method === "POST") {
+            const b: any = await request.json().catch(() => ({}));
+            const allowed = ["pixeldrain", "vikingfile", "uqload", "vidmoly", "dailyuploads", "sendnow", "megaup", "1cloudfile", "vidtube"];
+            for (const k of allowed) {
+              if (typeof b[k] !== "string") continue;
+              const v = b[k].trim().slice(0, 300);
+              if (v) cur[k] = v; else delete cur[k];
+            }
+            if (Array.isArray(b.off)) cur.off = b.off.filter((x: any) => typeof x === "string").slice(0, 20);
+            await env.PUSH_KV.put("tools:upload-keys", JSON.stringify(cur));
+          }
+          const has = Object.fromEntries(Object.keys(cur).filter(k => k !== "off").map(k => [k, true]));
+          return json({ success: true, has, off: cur.off || [] });
         }
         if (path === "/api/studio/tools/server/en" && request.method === "GET") {
           const text = await env.PUSH_KV.get(`enc:en:${(url.searchParams.get("name") || "").slice(0, 200)}`);
