@@ -830,3 +830,10 @@ test("no story says «بعد رحيل استمر … سنوات» (a departure i
   assert.deepEqual(bad, []);
   assert.ok(JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections.some((c: any) => c.regex && c.wrong === "بعد رحيل استمر"));
 });
+
+test("literal translations «على خط النهاية» / «لموازنة الكفتين» are corrected (INCIDENTS #822)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  const body = applyCorrections("ستكون البطولة على خط النهاية. تدخلت لموازنة الكفتين.");
+  assert.ok(body.includes("على المحك") && body.includes("لتعادل القوى بين الطرفين"), body);
+  assert.ok(!body.includes("على خط النهاية") && !body.includes("لموازنة الكفتين"));
+});
