@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/aaa-heroes-inmortales-results-stream-highlights-key-moments-october-24-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-25T02:05:31.234Z"
+ },
+ "https://www.ringsidenews.com/jay-white-reveals-new-aew-faction-name-teasing-bullet-club-return-collision": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-25T02:05:31.146Z"
+ },
  "https://www.fightful.com/wrestling/darby-allin-to-defend-tnt-title-against-josh-alexander-at-aew-fright-night-dynamite": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1988,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-11T13:02:39.771Z"
- },
- "https://www.fightful.com/wrestling/wwe-money-in-the-bank-results-10-10-2026-two-mitb-ladder-matches-roman-reigns-vs-la-knight-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-11T12:21:53.105Z"
  }
 }
