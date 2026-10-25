@@ -8592,16 +8592,16 @@
     "renderedAt": 1792938847879
   },
   {
-    "videoUrl": "/videos/reel-20261025192311-aaa-heroes-inmortales-week-24-.mp4",
-    "filename": "reel-20261025192311-aaa-heroes-inmortales-week-24-.mp4",
-    "title": "عرض ايه ايه ايه 24.10.2026 مترجم",
-    "secondaryTitle": "AAA Héroes Inmortales Week 24.10.2026",
-    "description": "عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261025192311-aaa-heroes-inmortales-week-24-",
+    "videoUrl": "/videos/reel-20261025193204-ufc-333-volkanovski-vs-evloev-.mp4",
+    "filename": "reel-20261025193204-ufc-333-volkanovski-vs-evloev-.mp4",
+    "title": "عرض يو اف سي 333 ايرلي بريلمز مترجم",
+    "secondaryTitle": "UFC 333: Volkanovski vs Evloev (Early Prelims)",
+    "description": "عرض يو اف سي 333 ايرلي بريلمز مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261025193204-ufc-333-volkanovski-vs-evloev-",
     "kind": "show",
-    "slug": "20261025192311-aaa-heroes-inmortales-week-24-",
-    "image": "/content/images/73t7dmxfarjg13yl.jpg",
-    "renderedAt": 1792945615080
+    "slug": "20261025193204-ufc-333-volkanovski-vs-evloev-",
+    "image": "/content/images/2y74srnfllu824qu.jpg",
+    "renderedAt": 1792946270266
   },
   {
     "videoUrl": "/videos/reel-20260924201500-mlp-mayhem-23-09-2026.mp4",
@@ -8613,7 +8613,7 @@
     "kind": "show",
     "slug": "20260924201500-mlp-mayhem-23-09-2026",
     "image": "/content/images/4kipum1hzd6pykrl.jpg",
-    "renderedAt": 1792945709390
+    "renderedAt": 1792946365771
   },
   {
     "videoUrl": "/videos/reel-20260924201800-wwe-evolve-23-09-2026.mp4",
@@ -8625,7 +8625,7 @@
     "kind": "show",
     "slug": "20260924201800-wwe-evolve-23-09-2026",
     "image": "/content/images/csrrxdziyj3q2hdz.jpg",
-    "renderedAt": 1792945804086
+    "renderedAt": 1792946462130
   },
   {
     "videoUrl": "/videos/reel-20260925083500-wwe-main-event-24-09-2026.mp4",
@@ -8637,7 +8637,7 @@
     "kind": "show",
     "slug": "20260925083500-wwe-main-event-24-09-2026",
     "image": "/content/images/dpwjgjhr05jh0akx.jpg",
-    "renderedAt": 1792945897809
+    "renderedAt": 1792946555074
   },
   {
     "videoUrl": "/videos/reel-20261001130548-aew-dynamite-30-09-2026.mp4",
@@ -8649,6 +8649,30 @@
     "kind": "show",
     "slug": "20261001130548-aew-dynamite-30-09-2026",
     "image": "/content/images/d3znaep7usmqwk7z.jpg",
-    "renderedAt": 1792945989930
+    "renderedAt": 1792946647803
+  },
+  {
+    "videoUrl": "/videos/reel-20261025192311-aaa-heroes-inmortales-week-24-.mp4",
+    "filename": "reel-20261025192311-aaa-heroes-inmortales-week-24-.mp4",
+    "title": "عرض ايه ايه ايه 24.10.2026 مترجم",
+    "secondaryTitle": "AAA Héroes Inmortales Week 24.10.2026",
+    "description": "عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261025192311-aaa-heroes-inmortales-week-24-",
+    "kind": "show",
+    "slug": "20261025192311-aaa-heroes-inmortales-week-24-",
+    "image": "/content/images/73t7dmxfarjg13yl.jpg",
+    "renderedAt": 1792946745550
+  },
+  {
+    "videoUrl": "/videos/reel-20261025192644-aew-collision-24-10-2026.mp4",
+    "filename": "reel-20261025192644-aew-collision-24-10-2026.mp4",
+    "title": "عرض كوليجن 24.10.2026 مترجم",
+    "secondaryTitle": "AEW Collision 24.10.2026",
+    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261025192644-aew-collision-24-10-2026",
+    "kind": "show",
+    "slug": "20261025192644-aew-collision-24-10-2026",
+    "image": "/content/images/ze3qsghgvpiznp01.jpg",
+    "renderedAt": 1792946842643
   }
 ]
