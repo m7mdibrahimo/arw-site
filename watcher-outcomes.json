@@ -1,63 +1,68 @@
 {
+ "https://www.ringsidenews.com/aaa-heroes-inmortales-results-stream-highlights-key-moments-october-24-2026": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-25T02:39:28.509Z"
+ },
  "https://www.fightful.com/wrestling/rey-pegasus-comments-on-winning-cmll-torneo-de-escuelas": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-10-25T02:36:23.793Z"
+  "at": "2026-10-25T02:38:54.636Z"
  },
  "https://www.fightful.com/wrestling/aaa-heroes-inmortales-results-10-24": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-25T02:35:51.089Z"
+  "at": "2026-10-25T02:37:40.815Z"
  },
  "https://www.fightful.com/wrestling/darby-allin-to-defend-tnt-title-against-josh-alexander-at-aew-fright-night-dynamite": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:35:50.877Z"
+  "at": "2026-10-25T02:37:40.630Z"
  },
  "https://www.fightful.com/wrestling/watch-aaa-heroes-inmortales-october-24-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:35:50.652Z"
+  "at": "2026-10-25T02:37:40.434Z"
  },
  "https://www.fightful.com/wrestling/amber-nova-posts-bail-after-being-arrested-for-dui-refusal-to-submit-to-dui-testing": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:35:50.298Z"
+  "at": "2026-10-25T02:37:40.126Z"
  },
  "https://www.fightful.com/wrestling/leon-slater-hopes-to-compete-in-tnas-six-sided-ring-as-tna-world-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:35:50.017Z"
+  "at": "2026-10-25T02:37:39.883Z"
  },
  "https://www.fightful.com/wrestling/aj-francis-tna-deal-is-up-towards-the-end-of-2026-deal-between-the-two-sides-is-expected-to-get-done": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:35:49.789Z"
+  "at": "2026-10-25T02:37:39.685Z"
  },
  "https://www.fightful.com/wrestling/mvp-says-the-hurt-syndicate-wanted-to-drop-aew-world-tag-team-titles-back-to-private-party": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:35:49.372Z"
+  "at": "2026-10-25T02:37:39.325Z"
  },
  "https://www.fightful.com/wrestling/hulk-hogans-estate-sells-florida-mansion-for-5-9-million": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:35:48.828Z"
+  "at": "2026-10-25T02:37:38.855Z"
  },
  "https://www.fightful.com/wrestling/bryce-remsburg-if-aew-was-looking-for-a-domestic-stadium-to-host-all-in-i-do-think-lincoln-financial-field-would-be-in-the-conversation": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:35:48.597Z"
+  "at": "2026-10-25T02:37:38.655Z"
  },
  "https://www.fightful.com/wrestling/bryce-remsburg-says-conversations-are-being-had-about-what-aew-might-do-while-wwe-is-in-saudi-arabia-for-wrestlemania-43": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:35:48.367Z"
+  "at": "2026-10-25T02:37:38.459Z"
  },
  "https://www.fightful.com/wrestling/gunther-to-do-something-special-for-danhausen-on-10-30-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:35:48.004Z"
+  "at": "2026-10-25T02:37:38.146Z"
  },
  "https://www.fightful.com/wrestling/womens-blood-and-guts-challenge-made-on-10-24-aew-collision": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -73,11 +78,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-25T02:08:25.315Z"
- },
- "https://www.ringsidenews.com/aaa-heroes-inmortales-results-stream-highlights-key-moments-october-24-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-25T02:07:47.049Z"
  },
  "https://www.ringsidenews.com/jay-white-reveals-new-aew-faction-name-teasing-bullet-club-return-collision": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
