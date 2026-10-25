@@ -431,13 +431,6 @@ export async function renderReelsTool(page) {
 const STEP_NAME = { subs: 'تفريغ', merge: 'دمج', download: 'تحميل', upload: 'رفع' };
 const STEP_NOW = { subs: 'بيفرّغ دلوقتي', merge: 'بيدمج دلوقتي', download: 'بيحمّل دلوقتي', upload: 'بيرفع دلوقتي' };
 const QUALS = [{ key: 'all', name: '٤ جودات (٣٦٠ لـ ١٠٨٠)' }, { key: '720', name: '٧٢٠ بس' }];
-// the upload sites (upload.py): the first three need no account, the rest the owner's key
-const HOSTS = [
-  { key: 'gofile', name: 'جوفايل', free: true }, { key: 'buzzheavier', name: 'بازهيفير', free: true }, { key: 'vikingfile', name: 'فايكنج فايل', free: true },
-  { key: 'pixeldrain', name: 'بيكسل درايف' }, { key: 'uqload', name: 'يو كيو لود' }, { key: 'vidmoly', name: 'فيدمولي' }, { key: 'vidtube', name: 'فيد تيوب' },
-  { key: 'dailyuploads', name: 'ديلي أبلودز' }, { key: 'sendnow', name: 'سند ناو' }, { key: 'megaup', name: 'ميجا أب' }, { key: '1cloudfile', name: 'وان كلاود فايل' },
-];
-const HOST_NAME = Object.fromEntries(HOSTS.map(h => [h.key, h.name]));
 // download pages with a "are you human" box the machine can't tick by itself: they open in the server's browser
 const BROWSER_PAGE = /^https?:\/\/(?:www\.)?(?:vik1ngfile\.site|vikingfile\.com|vik1ngfile\.[a-z]+)\/f\//i;
 const LANGS = [{ key: 'en', name: 'إنجليزي' }, { key: 'enja', name: 'إنجليزي + ياباني' }, { key: 'enes', name: 'إنجليزي + مكسيكي' }, { key: 'es', name: 'مكسيكي (إسباني)' }, { key: 'ja', name: 'ياباني' }];
@@ -483,21 +476,10 @@ export async function renderServerTool(page) {
     </section>
     <section class="panel"><header class="panel-head"><h2>${icon('film')} العروض</h2></header><div id="srv-shows"></div></section>
     <section class="panel"><header class="panel-head"><h2>${icon('check')} اللي خلص</h2></header><div id="srv-jobs"></div></section>
-    <section class="panel"><header class="panel-head"><h2>${icon('upload')} مواقع الرفع</h2></header><div id="srv-hosts"></div></section>
     <section class="panel" id="srv-key-box"><header class="panel-head"><h2>${icon('bolt')} زرار التشغيل</h2></header><div id="srv-key"></div></section>
   </div>`);
   const box = $('#srv');
   let last = null, chosen = {}, chosenQ = {}; // the logo position / qualities picked for the Arabic file about to go up
-  // a show's upload links, grouped by quality, each group copied in one tap (one link per line, as the show page takes them)
-  const linksBlock = (s, n) => {
-    const quals = s.qual === '720' ? ['720p'] : ['1080p', '720p', '480p', '360p'];
-    const ok = (q) => Object.entries(s.links).map(([h, qs]) => qs[q]).filter(v => /^https?:/.test(String(v || '')));
-    const failed = Object.entries(s.links).filter(([h, qs]) => Object.values(qs).some(v => !/^https?:/.test(String(v || '')))).map(([h]) => HOST_NAME[h] || h);
-    return html`<div class="srv-links"><div class="srv-ar-title">${icon('link')} روابط الرفع</div>
-      ${quals.map(q => { const l = ok(q); return l.length ? html`<div class="srv-lq"><b>${q}</b><span class="muted">${num(l.length)} رابط</span><button class="btn btn-sm" data-copy="${n}:${q}">${icon('copy')} انسخ</button></div>` : ''; })}
-      ${failed.length ? html`<p class="srv-err">${icon('alert')} مترفعش على: ${failed.join('، ')} <button class="btn btn-sm btn-ghost" data-reup="${n}">${icon('refresh')} جرّب تاني</button></p>` : ''}
-    </div>`;
-  };
 
   const send = async (body, okText) => {
     try {
@@ -617,8 +599,7 @@ export async function renderServerTool(page) {
 
   const stageOf = (s, job) => {
     if (job && job.name === s.name) return { text: `${STEP_NOW[job.step] || 'شغال عليه'}${job.pct != null ? ` — ${num(job.pct)}٪` : ''}`, tone: 'run' };
-    if (s.merged && s.uploaded) return { text: 'جاهز واترفع ✓', tone: 'ok' };
-    if (s.merged) return { text: 'اتدمج — مستني الرفع', tone: 'wait' };
+    if (s.merged) return { text: 'جاهز ✓', tone: 'ok' };
     if (s.mergeFailed) return { text: 'الدمج فشل', tone: 'bad' };
     if (s.ar) return { text: 'مستني الدمج', tone: 'wait' };
     if (s.en) return { text: 'الترجمة الإنجليزي جاهزة', tone: 'ok' };
@@ -646,7 +627,6 @@ export async function renderServerTool(page) {
         </div>
         ${s.video && !s.en && !(alive && st.job && st.job.step === 'subs' && st.job.name === s.name) ? html`<div class="srv-langs srv-lang-pick"><span class="muted">لغة الصوت:</span>${LANGS.map(l => html`<button class="srv-q ${(s.lang || 'en') === l.key ? 'on' : ''}" data-setlang="${n}:${l.key}">${l.name}</button>`)}</div>` : ''}
         ${!busy && !s.merged ? html`<div class="srv-langs srv-lang-pick"><span class="muted">الجودات:</span>${QUALS.map(q => html`<button class="srv-q ${(chosenQ[s.name] || s.qual || 'all') === q.key ? 'on' : ''}" data-setq="${n}:${q.key}">${q.name}</button>`)}</div>` : ''}
-        ${s.links ? linksBlock(s, n) : ''}
         ${!busy && (s.en || s.ar || s.merged) ? html`<${s.ar || s.merged ? 'details' : 'div'} class="srv-ar">
           ${s.ar || s.merged ? html`<summary class="srv-ar-title">غيّر الترجمة العربي أو مكان اللوجو أو الجودات</summary>` : html`<div class="srv-ar-title">ارفع الترجمة العربي — واختار مكان اللوجو قبلها (والجودات فوق):</div>`}
           ${s.merged ? html`<div class="srv-langs">${QUALS.map(q => html`<button class="srv-q ${(chosenQ[s.name] || s.qual || 'all') === q.key ? 'on' : ''}" data-q="${n}:${q.key}">${q.name}</button>`)}</div>` : ''}
@@ -671,12 +651,6 @@ export async function renderServerTool(page) {
     });
     $$('[data-setlang]').forEach(b => b.onclick = () => { const [n, l] = b.dataset.setlang.split(':'); send({ kind: 'resub', name: list[+n].name, lang: l }, `لغة الصوت: ${LANG_NAME[l]}`); });
     $$('[data-q]').forEach(b => b.onclick = () => { const [n, q] = b.dataset.q.split(':'); chosenQ[list[+n].name] = q; drawShows(last); });
-    $$('[data-copy]').forEach(b => b.onclick = async () => {
-      const [n, q] = b.dataset.copy.split(':'); const s = list[+n];
-      const text = Object.values(s.links).map(qs => qs[q]).filter(v => /^https?:/.test(String(v || ''))).join('\n');
-      try { await navigator.clipboard.writeText(text); toast(`اتنسخت روابط ${q}`); } catch { toast('مقدرتش أنسخ', 'error'); }
-    });
-    $$('[data-reup]').forEach(b => b.onclick = () => send({ kind: 'reupload', name: list[+b.dataset.reup].name }, 'هيجرّب يرفع تاني على المواقع اللي فشلت'));
     $$('[data-ar]').forEach(inp => inp.onchange = async () => {
       const s = list[+inp.dataset.ar], file = inp.files && inp.files[0];
       if (!file) return;
@@ -711,22 +685,6 @@ export async function renderServerTool(page) {
         <td>${dayClock(j.started)}</td><td>${dayClock(j.finished)}</td><td>${span(j.finished - j.started)}</td>
       </tr>`)}</tbody></table></div>` : html`<p class="muted">لسه مفيش حاجة خلصت من ساعة ما الصفحة دي اتعملت.</p>`);
 
-  const drawHosts = async () => {
-    let h = { has: {}, off: [] };
-    try { h = await tools.serverHosts(); } catch {}
-    mount($('#srv-hosts'), html`<p class="muted">السيرفر بيرفع كل عرض جاهز لوحده على المواقع المتعلّمة، ويحطلك الروابط جنب العرض. المواقع اللي محتاجة حساب: حط مفتاح الرفع بتاعك من إعدادات حسابك في الموقع (اسمه غالبًا «مفتاح الواجهة»)، مرة واحدة بس.</p>
-      <div class="srv-hosts">${HOSTS.map(x => html`<div class="srv-host">
-        <label class="srv-host-on"><input type="checkbox" data-on="${x.key}" ${h.off.includes(x.key) ? '' : 'checked'}> <b>${x.name}</b></label>
-        ${x.free ? html`<span class="muted">مش محتاج حساب</span>` : html`<input class="input" type="password" autocomplete="off" dir="ltr" data-key="${x.key}" placeholder="${h.has[x.key] ? 'متحط ✓ (اكتب جديد لو عايز تغيّره)' : 'مفتاح الرفع'}">`}
-      </div>`)}</div>
-      <button class="btn btn-primary btn-sm" id="srv-hosts-save">${icon('check')} احفظ</button>`);
-    $('#srv-hosts-save').onclick = async () => {
-      const body = { off: $$('[data-on]').filter(c => !c.checked).map(c => c.dataset.on) };
-      $$('[data-key]').forEach(i => { if (i.value.trim()) body[i.dataset.key] = i.value.trim(); });
-      try { await tools.serverHosts(body); toast('اتحفظ'); drawHosts(); } catch (e) { toast(e.message || 'مقدرتش أحفظ', 'error'); }
-    };
-  };
-  drawHosts();
 
   let stopped = false, timer = 0;
   const tick = async () => {
