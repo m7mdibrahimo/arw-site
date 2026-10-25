@@ -440,7 +440,7 @@ const HOSTS = [
 const HOST_NAME = Object.fromEntries(HOSTS.map(h => [h.key, h.name]));
 // download pages with a "are you human" box the machine can't tick by itself: they open in the server's browser
 const BROWSER_PAGE = /^https?:\/\/(?:www\.)?(?:vik1ngfile\.site|vikingfile\.com|vik1ngfile\.[a-z]+)\/f\//i;
-const LANGS = [{ key: 'en', name: 'إنجليزي' }, { key: 'es', name: 'مكسيكي (إسباني)' }, { key: 'ja', name: 'ياباني' }];
+const LANGS = [{ key: 'en', name: 'إنجليزي' }, { key: 'enja', name: 'إنجليزي + ياباني' }, { key: 'enes', name: 'إنجليزي + مكسيكي' }, { key: 'es', name: 'مكسيكي (إسباني)' }, { key: 'ja', name: 'ياباني' }];
 const LANG_NAME = Object.fromEntries(LANGS.map(l => [l.key, l.name]));
 const POSITIONS = [{ pos: 1, name: 'فوق شمال', css: 'tl' }, { pos: 2, name: 'فوق يمين', css: 'tr' }, { pos: 3, name: 'تحت يمين', css: 'br' }];
 const clock = (ms) => new Date(ms).toLocaleTimeString('ar-EG', { hour: 'numeric', minute: '2-digit', timeZone: 'Africa/Cairo' });
@@ -478,7 +478,7 @@ export async function renderServerTool(page) {
       <p class="muted">لكل عرض: الزق رابط التحميل نفسه (أو رابط التورنت)، واختار لغة الصوت وعدد الجودات. تقدر تضيف كذا عرض مرة واحدة، والسيرفر هيعملهم ورا بعض.</p>
       <div id="srv-rows"></div>
       <button class="btn btn-ghost btn-sm" id="srv-add">${icon('plus')} عرض كمان</button>
-      <p class="muted srv-note">لغة الصوت = الصوت اللي هيتفرّغ ويتحط في العرض. لو الملف فيه صوتين (إنجليزي وياباني أو مكسيكي)، اختار «إنجليزي»، والسيرفر هياخد الصوت الإنجليزي من جوه الملف، وده أدق. المكسيكي والياباني اختارهم بس لو مفيش صوت إنجليزي، وبيطلعوا ترجمة إنجليزي برضه.</p>
+      <p class="muted srv-note">لغة الصوت = الصوت اللي هيتفرّغ ويتحط في العرض. لو الملف فيه صوت إنجليزي، السيرفر بياخده من جوه الملف. لو المعلقين إنجليزي والمصارعين بيتكلموا ياباني أو مكسيكي، اختار «إنجليزي + ياباني» أو «إنجليزي + مكسيكي»: كلام المعلقين بيتكتب زي ما هو، وكلام المصارعين بيتترجم لإنجليزي. «مكسيكي» أو «ياباني» لوحدهم بس لو مفيش صوت إنجليزي خالص.</p>
       <button class="btn btn-primary" id="srv-go">${icon('download')} ابدأ</button>
     </section>
     <section class="panel"><header class="panel-head"><h2>${icon('film')} العروض</h2></header><div id="srv-shows"></div></section>

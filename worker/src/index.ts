@@ -3563,7 +3563,7 @@ export default {
         if (path === "/api/studio/tools/server/cmd" && request.method === "POST") {
           if (!env.ANALYTICS) return json({ success: false, error: "no database" });
           const b: any = await request.json().catch(() => ({}));
-          const lang = ["en", "es", "ja"].includes(b.lang) ? b.lang : "en";
+          const lang = ["en", "es", "ja", "enja", "enes"].includes(b.lang) ? b.lang : "en";
           const name = String(b.name || "").slice(0, 200);
           let data: any;
           if (b.kind === "link" || b.kind === "browse") {
