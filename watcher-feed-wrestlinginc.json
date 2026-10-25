@@ -1,5 +1,15 @@
 [
   {
+    "id": 2819926212,
+    "link": "https://www.wrestlinginc.com/2293444/wwe-matt-hardy-shawn-michaels-undertaker-hell-in-a-cell-never-forget-classic-match-up-close/",
+    "date": "Sun, 25 Oct 2026 03:59:00 +0000",
+    "date_gmt": "2026-10-25T03:59:00.000Z",
+    "title": {
+      "rendered": "Matt Hardy Says He'll Never Forget Seeing Classic WWE Match Up Close"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/matt-hardy-says-hell-never-forget-seeing-classic-wwe-match-up-close/l-intro-1792609119.jpg"
+  },
+  {
     "id": 1540058041,
     "link": "https://www.wrestlinginc.com/2296264/aew-collision-october-24-2026-results/",
     "date": "Sat, 24 Oct 2026 23:05:11 +0000",
@@ -188,15 +198,5 @@
       "rendered": "JBL: Vince McMahon Never Turned John Cena Heel In WWE Due To Previous Lesson Learned"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/jbl-vince-mcmahon-never-turned-john-cena-heel-in-wwe-due-to-previous-lesson-learned/l-intro-1792448671.jpg"
-  },
-  {
-    "id": 2555385277,
-    "link": "https://www.wrestlinginc.com/2296106/wwe-smackdown-october-23-2026-hated-loved-opinion-review/",
-    "date": "Sat, 24 Oct 2026 04:01:14 +0000",
-    "date_gmt": "2026-10-24T04:01:14.000Z",
-    "title": {
-      "rendered": "WWE SmackDown 10/23/2026: 3 Things We Hated And 3 Things We Loved"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-10232026-3-things-we-hated-and-3-things-we-loved/l-intro-1792814296.jpg"
   }
 ]
