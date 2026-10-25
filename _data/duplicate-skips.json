@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/tna-bound-for-glory-results-10-11-leon-slater-vs-nic-nemeth-hardys-vs-syx/": {
-    "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
-    "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
-    "at": "2026-10-11T21:25:09.325Z"
-  },
   "https://www.fightful.com/wrestling/amazing-red-wins-tna-x-division-title-at-tna-bound-for-glory/": {
     "matchedFile": "20261012001651-أميزينغ-ريد-يفوز-ببطولة-tna-x-division-في-عرض-tna-bound-for-glory-2026.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (فوز أميزينغ ريد بلقب X Division في عرض Bound for Glory) الذي تم تغطيته بالفعل في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261024192436-السفارة-الأمريكية-تحدث-إرشادات-السفر-إلى-السعودية-وتوصي-بضرورة-إعادة-النظر-في-السفر.md",
     "reason": "الخبر الجديد يعيد سرد نفس التحذير الأمني الصادر عن السفارة الأمريكية وإجراءات وزارة الخارجية المتعلقة بمغادرة الموظفين، مع الإشارة لنفس الحدث (Crown Jewel) كخلفية، ولا يقدم تطوراً جديداً جوهرياً يغير من طبيعة الخبر المنشور مسبقاً.",
     "at": "2026-10-25T20:25:10.930Z"
+  },
+  "https://www.ringsidenews.com/aaa-heroes-inmortales-spoiler-results-week-two-there/": {
+    "matchedFile": "20261025050251-نتائج-عرض-aaa-heroes-inmortales-24-أكتوبر-2026-الدفاع-عن-الألقاب-وتكريم-في-قاعة-المشاهير.md",
+    "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
+    "at": "2026-10-25T22:30:39.298Z"
   }
 }

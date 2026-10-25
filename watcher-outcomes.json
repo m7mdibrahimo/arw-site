@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aaa-heroes-inmortales-spoiler-results-week-two-there": {
+  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
+  "retry": false,
+  "at": "2026-10-25T22:30:39.288Z"
+ },
  "https://www.fightful.com/wrestling/u-s-embassy-riyadh-issues-new-security-alert-advising-us-citizens-to-take-extreme-caution-if-you-choose-to-use-airports-in-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-12T16:02:37.566Z"
- },
- "https://www.fightful.com/wrestling/moose-def-max-caster-at-tna-bound-for-glory-2026": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-12T15:41:10.024Z"
  }
 }
