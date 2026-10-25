@@ -69,11 +69,6 @@
   "retry": true,
   "at": "2026-10-25T00:49:55.775Z"
  },
- "https://www.wrestlinginc.com/2296264/aew-collision-october-24-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-25T00:46:09.411Z"
- },
  "https://www.fightful.com/wrestling/angel-medina-of-da-baldies-in-ecw-retires": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
