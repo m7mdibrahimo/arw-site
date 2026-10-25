@@ -642,3 +642,13 @@ test('garbled Bandido / منافسة / Ben are corrected automatically (INCIDENT
   assert.match(applyCorrections('في عرض All Out للنافس على اللقب'), /للمنافسة على/);
   assert.match(applyCorrections('ووداعهم لبن. وأوضح'), /لبنجامين/);
 });
+
+// INCIDENTS #832: a headline ended on the cut word «وأنا لا أعل».
+test('title_cut_word blocks a headline cut mid-word and passes a whole one', () => {
+  const body = 'وجهت المصارعة مارينا شافير رسالة قوية إلى مرسيدس موني. '.repeat(20);
+  const cut = checkArticle('مارينا شافير لمرسيدس موني: تحتاجين لاستعراض هيمنتك وأنا لا أعل', body);
+  assert.ok(cut.some(i => i.code === 'title_cut_word'));
+  const ok = checkArticle('مارينا شافير توجه رسالة قوية إلى مرسيدس موني بعد عرض AEW Collision', body);
+  assert.ok(!ok.some(i => i.code === 'title_cut_word'));
+  assert.ok(BLOCKING_QA_CODES.includes('title_cut_word') && RETRYABLE_QA_CODES.includes('title_cut_word'));
+});
