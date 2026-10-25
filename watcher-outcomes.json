@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/silvia-likki-not-signed-wwe-despite-previous-reports": {
+  "reason": "المراجعة رفضته: حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)، اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
+  "retry": true,
+  "at": "2026-10-25T11:51:05.939Z"
+ },
  "https://www.fightful.com/wrestling/rey-pegasus-comments-on-winning-cmll-torneo-de-escuelas": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-10-11T17:02:11.917Z"
- },
- "https://www.fightful.com/wrestling/watch-money-in-the-bank-post-show-oct-10-2026": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-11T15:54:35.042Z"
  }
 }
