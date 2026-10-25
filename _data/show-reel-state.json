@@ -4153,7 +4153,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض يو اف سي 333 بريلمز مترجم",
-    "lastAttempt": 1792951824204,
+    "lastAttempt": 1792952633272,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -4188,9 +4188,15 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال انترناشونال ويمينز جراند بري 23.10.2026 مترجم",
-    "lastAttempt": 1792948268607,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792952662351,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_reel",
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
