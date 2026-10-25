@@ -555,8 +555,16 @@ export async function renderServerTool(page) {
     if (b) { b.disabled = true; b.textContent = which === 'start' ? 'بيشغّل…' : 'بيقفل…'; }
     try {
       const r = await tools.serverPower(which);
-      if (r && r.success === false) throw new Error(r.error || 'حصلت مشكلة');
-      toast(r.message || 'تمام', 'ok', 8000);
+      if (r && r.noSame) {
+        // no A4000 like his is free: he decides — wait, or take the closest machine for now
+        const ok = await dialog({ title: 'الجهاز بتاعك مش فاضي دلوقتي', body: r.error, confirm: 'خد أقرب جهاز ليه', cancel: 'هستنى' });
+        if (ok) {
+          const r2 = await tools.serverPower('start', { any: true });
+          if (r2 && r2.success === false) throw new Error(r2.error || 'حصلت مشكلة');
+          toast(r2.message || 'تمام', 'ok', 8000);
+        }
+      } else if (r && r.success === false) throw new Error(r.error || 'حصلت مشكلة');
+      else toast(r.message || 'تمام', 'ok', 8000);
     } catch (e) { toast(e.message || 'حصلت مشكلة', 'error', 8000); }
     setTimeout(tick, 4000);
   };
@@ -596,7 +604,7 @@ export async function renderServerTool(page) {
         </details>` : ''}
       <p class="muted srv-sub">${alive ? `آخر إشارة منه: ${timeAgo(st.at)} — اشتغل الساعة ${dayClock(st.boot)}`
         : st ? `مقفول من ${dayClock(st.at)}` : 'لسه مبعتش أي إشارة'}</p>
-      ${!alive ? html`<p class="muted srv-note">${d.vastKey ? 'دوس «شغّل السيرفر» وخلاص: لو كارته فاضي هيشتغل خلال دقيقة، ولو اتاخد هيأجّر جهاز جديد بنفس السعر ويركّب نفسه في حوالي ١٠ دقايق. اللي طلبته وهو مقفول هيتعمل أول ما يشتغل.' : 'عشان تشغّله بضغطة واحدة من هنا، حط مفتاح موقع التأجير مرة واحدة في «زرار التشغيل» تحت.'}</p>` : ''}
+      ${!alive ? html`<p class="muted srv-note">${d.vastKey ? 'دوس «شغّل السيرفر» وخلاص: لو جهازك موجود هيشتغل خلال دقيقة. ولو اتمسح (بيتمسح لوحده بعد ١٢ ساعة مقفول عشان متدفعش مساحة) أو كارته اتاخد، هيأجّر جهاز «إيه ٤٠٠٠» زيه بالظبط ويركّب نفسه في حوالي ١٠ دقايق، وبعدها دوس «وصّل درايف». اللي طلبته وهو مقفول هيتعمل أول ما يشتغل.' : 'عشان تشغّله بضغطة واحدة من هنا، حط مفتاح موقع التأجير مرة واحدة في «زرار التشغيل» تحت.'}</p>` : ''}
       ${job ? html`<div class="srv-job">
           <b>${st.paused ? 'متوقف مؤقتًا' : (STEP_NOW[job.step] || 'شغال على')}: ${job.name}</b>
           <div class="srv-ctl-row">${controls(st, job.name)}</div>
@@ -610,7 +618,9 @@ export async function renderServerTool(page) {
         </div>` : alive ? html`<div class="srv-job"><b>مفيش شغل دلوقتي</b><p class="muted">مستني عرض جديد أو ترجمة عربي. هيقفل نفسه لوحده بعد ${num(st.idleLeft || 0)} دقيقة لو مفيش شغل.</p></div>` : ''}
       ${alive && (q.links || q.subs || q.merge) ? html`<p class="muted">مستني بعده: ${[q.links ? `${num(q.links)} رابط للتحميل` : '', q.subs ? `${num(q.subs)} فيديو للتفريغ` : '', q.merge ? `${num(q.merge)} ترجمة عربي للدمج` : ''].filter(Boolean).join(' — ')}</p>` : ''}
       ${d.pending && d.pending.length ? html`<p class="srv-wait">${icon('clock')} ${num(d.pending.length)} طلب مستني السيرفر ياخده${alive ? ' (خلال ثواني)' : ' (أول ما يشتغل)'}</p>` : ''}
-      ${st && st.drive === false && alive ? html`<p class="srv-err">${icon('alert')} السيرفر ده مش متوصل بجوجل درايف لسه — قول لكلود «وصّل درايف».</p>` : ''}
+      ${st && st.drive === false && alive ? html`<div class="srv-drive"><p class="srv-err">${icon('alert')} السيرفر ده مش متوصل بجوجل درايف لسه (أول مرة على كل جهاز جديد).</p>
+          <button class="btn btn-primary btn-sm" id="srv-drive-go">${icon('link')} وصّل درايف</button>
+          <p class="muted small">هيفتحلك متصفح السيرفر على صفحة جوجل: ادخل بحسابك ودوس «سماح». مرة واحدة بس للجهاز ده.</p></div>` : ''}
       ${alive && st.errors && st.errors.length ? html`<div class="srv-err">${icon('alert')} ${st.errors[st.errors.length - 1]}</div>` : ''}
     </section>`);
   };
@@ -749,6 +759,11 @@ export async function renderServerTool(page) {
       last = await tools.server();
       drawStatus(last);
       wireControls(box);
+      if ($('#srv-drive-go')) $('#srv-drive-go').onclick = async () => {
+        const w = last.status && last.status.browser ? window.open('about:blank', '_blank') : null;
+        await send({ kind: 'drive-connect' }, 'صفحة جوجل بتتفتح في متصفح السيرفر');
+        if (w) setTimeout(() => { w.location = last.status.browser; }, 4000);
+      };
       if ($('#srv-start')) $('#srv-start').onclick = () => power('start');
       if ($('#srv-stop')) $('#srv-stop').onclick = () => power('stop');
       if (keyDrawn !== !!last.vastKey) { keyDrawn = !!last.vastKey; drawKey(keyDrawn); }

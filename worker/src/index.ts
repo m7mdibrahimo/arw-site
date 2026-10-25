@@ -3575,6 +3575,8 @@ export default {
             if (!name || !text.trim() || text.length > 5_000_000) return json({ success: false, error: "ملف الترجمة فاضي أو كبير" });
             await env.PUSH_KV.put(`enc:ar:${name}`, text, { expirationTtl: 30 * 86400 });
             data = { name, pos: [1, 2, 3].includes(Number(b.pos)) ? Number(b.pos) : 1, qual: b.qual === "720" ? "720" : "all", file: String(b.file || "").slice(0, 160) };
+          } else if (b.kind === "drive-connect") {
+            data = {};
           } else if (b.kind === "pause" || b.kind === "resume" || b.kind === "cancel") {
             data = { name };
           } else if (b.kind === "clean" || b.kind === "resub" || b.kind === "reupload" || b.kind === "setqual" || b.kind === "remerge" || b.kind === "unqueue") {
@@ -3630,14 +3632,24 @@ export default {
             await vast(`/instances/${old.id}/`, { method: "PUT", body: JSON.stringify({ state: "stopped" }) }); // cancel the queued start
           }
           // the card was taken (or there's no machine): rent the cheapest good one from the owner's template
-          const q = { gpu_name: { in: ["RTX 3060", "RTX 3060 Ti", "RTX 4060", "RTX 4060 Ti", "RTX 4070", "RTX 3070", "RTX 3080", "RTX 2080 Ti", "RTX A4000"] }, num_gpus: { eq: 1 }, rentable: { eq: true }, verified: { eq: true },
-            reliability2: { gte: 0.985 }, cpu_cores_effective: { gte: 16 }, disk_space: { gte: 100 }, inet_down: { gte: 500 }, inet_up: { gte: 300 }, gpu_ram: { gte: 7900 },
+          // the owner wants the same machine every time (2026-10-26: «عايز يكون زيه تماما بالظبط في كل مرة»): an RTX A4000
+          // with a fast line — the same physical one first; anything else only when he asks for it (body.any)
+          const sb: any = await request.json().catch(() => ({}));
+          const anyCard = !!sb.any;
+          const q = { gpu_name: { in: anyCard ? ["RTX 3060", "RTX 3060 Ti", "RTX 4060", "RTX 4060 Ti", "RTX 4070", "RTX 3070", "RTX 3080", "RTX 2080 Ti", "RTX A4000"] : ["RTX A4000"] }, num_gpus: { eq: 1 }, rentable: { eq: true }, verified: { eq: true },
+            reliability2: { gte: 0.985 }, cpu_cores_effective: { gte: 16 }, disk_space: { gte: 100 }, inet_down: { gte: 500 }, inet_up: { gte: anyCard ? 300 : 1500 }, gpu_ram: { gte: 7900 },
             cuda_max_good: { gte: 12.4 }, cpu_arch: { in: ["amd64"] }, dph_total: { lte: 0.2 }, type: "on-demand", order: [["dph_total", "asc"]], limit: 30 };
           // cheapest overall: the card is paid only while it works, the 100 GB disk all day — weigh the disk 3x
           const score = (o: any) => (Number(o.dph_base) || Number(o.dph_total) || 0) + (Number(o.storage_cost) || 0) * 100 / 720 * 3;
+          // the same physical machine first (its upload to Drive was measured fast), then hosts with a fast line
+          // (advertised upload ≥ 1500 Mbps), then the rest — each group cheapest first
+          const pref = await env.PUSH_KV.get("tools:pref-machine");
           const offers = ((await vast("/bundles/", { method: "POST", body: JSON.stringify(q) })).body.offers || [])
             .filter((o: any) => !/china|CN$/i.test(String(o.geolocation || ""))) // Google Drive is blocked there
-            .sort((a: any, b: any) => score(a) - score(b));
+            .sort((a: any, b: any) => {
+              const g = (o: any) => (pref && String(o.machine_id) === pref ? 0 : Number(o.inet_up) >= 1500 ? 1 : 2);
+              return g(a) - g(b) || score(a) - score(b);
+            });
           for (const o of offers.slice(0, 8)) {
             const r = await vast(`/asks/${o.id}/`, { method: "PUT", body: JSON.stringify({ client_id: "me", template_hash_id: "b5f507df99df79817c49c792eff21439", disk: 100, label: "arw-tafrigh" }) });
             if (r.body && r.body.success) {
@@ -3646,7 +3658,10 @@ export default {
               return json({ success: true, state: "new", message: `كارت السيرفر القديم كان متاخد، فأجّرت جهاز جديد (${o.gpu_name} — حوالي ${Math.round(o.dph_total * 100)} سنت في الساعة). هيركّب نفسه في حوالي ١٠ دقايق.` });
             }
           }
-          return json({ success: false, error: "مفيش جهاز مناسب فاضي دلوقتي — جرّب كمان شوية" });
+          return json({ success: false, noSame: !anyCard, error: anyCard ? "مفيش جهاز مناسب فاضي دلوقتي — جرّب كمان شوية" : "جهاز «إيه ٤٠٠٠» زي بتاعك مش فاضي دلوقتي. استنى شوية وجرّب تاني، أو خد أقرب جهاز ليه." });
+        }
+        if (path === "/api/studio/tools/server/start-info" && request.method === "GET") {
+          return json({ success: true, hasMachine: !!(await env.PUSH_KV.get("tools:instance-id")) });
         }
         // «مواقع الرفع»: which upload sites have the owner's key (never the keys themselves back), and saving them
         if (path === "/api/studio/tools/server/hosts") {
@@ -4468,6 +4483,8 @@ export default {
       minute % 10 === 7 ? oneTimeBadgeReset(env).catch(() => {}) : Promise.resolve(),
       // a membership about to end, or just ended: the member is told (worker/src/premium.ts)
       minute === 20 ? runPremiumReminders(env as any, _controller.scheduledTime).catch(() => {}) : Promise.resolve(),
+      // the rented encoding machine, off for 12 hours, is deleted so its disk isn't paid for (owner 2026-10-26)
+      minute === 33 ? encIdleSweep(env).catch((e: any) => console.log("[enc] sweep:", e?.message || e)) : Promise.resolve(),
       // followers told of each new full show: their inbox, then their devices
       runFollowNotify(env as any, _controller.scheduledTime).then(() => runFollowPush(env as any, _controller.scheduledTime)).catch(() => {}),
       // a subscription that just ended drops its look in the community rooms too
@@ -4479,6 +4496,24 @@ export default {
     ]));
   },
 } satisfies ExportedHandler<Env>;
+
+/** The owner's rented encoding machine (reports/سيرفر-التفريغ): off (no heartbeat) for 12 hours → deleted, so its
+ *  disk (~$0.04/h) isn't paid for on days he doesn't work. Its finished work is on his Drive; «شغّل السيرفر» rents a new
+ *  one from his template, preferring the same physical machine (KV tools:pref-machine). */
+async function encIdleSweep(env: Env, now = Date.now()) {
+  const k = await env.PUSH_KV.get("tools:vast-key"), iid = await env.PUSH_KV.get("tools:instance-id");
+  if (!k || !iid || !env.ANALYTICS) return;
+  const r = await fetch(`https://console.vast.ai/api/v0/instances/${iid}/?owner=me`, { headers: { Authorization: `Bearer ${k}` } });
+  const b: any = await r.json().catch(() => ({}));
+  const inst = b && (b.instances && !Array.isArray(b.instances) ? b.instances : Array.isArray(b.instances) ? b.instances[0] : null);
+  if (!inst || !inst.id) return;
+  if (inst.machine_id && (await env.PUSH_KV.get("tools:pref-machine")) !== String(inst.machine_id)) await env.PUSH_KV.put("tools:pref-machine", String(inst.machine_id));
+  if (inst.intended_status === "running" || inst.actual_status === "running" || inst.actual_status === "loading") return;
+  const st: any = await env.ANALYTICS.prepare("SELECT at FROM enc_status WHERE id = 1").first().catch(() => null);
+  if (!st || now - Number(st.at) < 12 * 3600_000) return;
+  const del = await fetch(`https://console.vast.ai/api/v0/instances/${inst.id}/`, { method: "DELETE", headers: { Authorization: `Bearer ${k}` } });
+  if (del.ok) { await env.PUSH_KV.delete("tools:instance-id"); console.log("[enc] deleted idle machine", inst.id); }
+}
 
 /** The badges the owner gave by hand (the latest panel action for each member is «members.badge») stay */
 async function oneTimeBadgeReset(env: Env): Promise<void> {
