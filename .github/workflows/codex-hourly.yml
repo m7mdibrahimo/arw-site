@@ -1,0 +1,189 @@
+name: Codex Hourly Round
+
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: codex-hourly-round
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    if: vars.ARW_CODEX_CLOUD_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: read
+      actions: read
+      checks: read
+    outputs:
+      has_patch: ${{ steps.patch.outputs.has_patch }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          filter: blob:none
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install site dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Install worker dependencies
+        working-directory: worker
+        run: npm ci --no-audit --no-fund
+
+      - name: Run Codex round
+        uses: openai/codex-action@v1
+        env:
+          GH_TOKEN: ${{ github.token }}
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          prompt-file: .github/codex/prompts/hourly-monitor.md
+          output-file: ${{ runner.temp }}/codex-summary.md
+          sandbox: danger-full-access
+          codex-args: '["--ephemeral"]'
+
+      - name: Capture proposed changes
+        id: patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -N .
+          git diff --check HEAD
+          git diff --binary HEAD > "$RUNNER_TEMP/codex.patch"
+          if [ -s "$RUNNER_TEMP/codex.patch" ]; then
+            echo 'has_patch=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'has_patch=false' >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Save round summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: codex-hourly-summary-${{ github.run_id }}
+          path: ${{ runner.temp }}/codex-summary.md
+          if-no-files-found: ignore
+          retention-days: 30
+
+      - name: Save proposed patch
+        if: steps.patch.outputs.has_patch == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: codex-hourly-patch-${{ github.run_id }}
+          path: ${{ runner.temp }}/codex.patch
+          if-no-files-found: error
+          retention-days: 7
+
+  verify:
+    needs: generate
+    if: needs.generate.outputs.has_patch == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          filter: blob:none
+          persist-credentials: false
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: codex-hourly-patch-${{ github.run_id }}
+          path: ${{ runner.temp }}
+
+      - name: Apply patch for verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          git apply --check "$RUNNER_TEMP/codex.patch"
+          git apply "$RUNNER_TEMP/codex.patch"
+          git diff --check
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Install worker dependencies
+        working-directory: worker
+        run: npm ci --no-audit --no-fund
+
+      - name: Test all changes
+        run: npx tsx --test tests/*.test.mts
+
+      - name: Build changed pages
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --name-only | grep -Eq '^(content/|_includes/|pages/|lib/|_data/|eleventy\.config\.js$|index\.njk$)'; then
+            node --stack-size=4096 ./node_modules/@11ty/eleventy/cmd.cjs --quiet
+          fi
+
+  publish:
+    needs: [generate, verify]
+    if: needs.verify.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          filter: blob:none
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: codex-hourly-patch-${{ github.run_id }}
+          path: ${{ runner.temp }}
+
+      - name: Publish verified patch to main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git checkout -B main origin/main
+          git apply --3way --index "$RUNNER_TEMP/codex.patch"
+          git diff --cached --check
+
+          while IFS= read -r -d '' file; do
+            case "$file" in
+              .github/*|.codex/*|.opencode/*|.env|.env.*|*credential*|*secret*)
+                echo "Protected path in automatic patch: $file" >&2
+                exit 1
+                ;;
+            esac
+          done < <(git diff --cached --name-only -z)
+
+          if git diff --cached --quiet; then
+            echo 'No file changes to publish'
+            exit 0
+          fi
+
+          git config user.name 'codex-hourly[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "fix(monitor): apply verified Codex hourly round $GITHUB_RUN_ID"
+
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            git fetch origin main
+            git rebase origin/main
+          done
+          echo 'Could not publish after three attempts' >&2
+          exit 1
