@@ -607,3 +607,11 @@ test('spanish_article_mixed blocks Los/La/El before an Arabic name', () => {
   assert.ok(codes('دافع فريق Los بيروس ديل مال عن اللقب.').includes('spanish_article_mixed'));
   assert.ok(!codes('دافع فريق لوس بيروس ديل مال عن اللقب ضد La Parka.').includes('spanish_article_mixed'));
 });
+
+test('orphan_in_favor: «لصالح ضد» blocks, «لصالحه ضد» does not', () => {
+  const pad = ' كلام عادي كثير '.repeat(40);
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + pad).map((i) => i.code);
+  assert.ok(BLOCKING_QA_CODES.includes('orphan_in_favor'));
+  assert.ok(codes('تمكن نيون من حسم النزال الخاطف لصالح ضد منافسه فوجاز.').includes('orphan_in_favor'));
+  assert.ok(!codes('نجح في حسم الانتصار لصالحه ضد كيو تي مارشال.').includes('orphan_in_favor'));
+});
