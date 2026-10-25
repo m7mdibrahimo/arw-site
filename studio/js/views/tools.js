@@ -639,6 +639,7 @@ export async function renderServerTool(page) {
         ${busy ? html`<div class="srv-ctl-row">${controls(st, s.name)}</div>` : ''}
         ${s.stopped === 'merge' || (s.mergeFailed && s.ar && !busy) ? html`<div class="srv-actions"><button class="btn btn-sm btn-primary" data-remerge="${n}">${icon('refresh')} ابدأ الدمج تاني</button></div>` : ''}
         ${busy && st.job.pct != null ? html`<div class="srv-bar srv-bar-sm"><div style="width:${Math.min(100, st.job.pct)}%"></div></div><small class="muted">فاضل ${leftText(st.job.left)}</small><br>` : ''}
+        ${s.ar && !s.merged ? html`<div class="srv-arinfo">${icon('check')} الترجمة العربي: <b dir="ltr">${s.arFile || 'ملف الترجمة'}</b>${s.arLines ? html`<span class="muted"> — ${num(s.arLines)} جملة</span>` : ''}${!busy && alive && st.job && st.job.step === 'merge' ? html`<span class="muted"> — هيتدمج بعد «${st.job.name.slice(0, 40)}»</span>` : ''}</div>` : ''}
         <small class="muted">لغة الصوت: ${LANG_NAME[s.lang] || 'إنجليزي'} — ${s.qual === '720' ? '٧٢٠ بس' : '٤ جودات'}${s.ar ? ` — اللوجو: ${(POSITIONS.find(p => p.pos === s.ar) || POSITIONS[0]).name}` : ''}</small>
         <div class="srv-actions">
           ${s.en ? html`<button class="btn btn-sm" data-en="${n}">${icon('download')} نزّل الترجمة الإنجليزي</button>` : ''}
@@ -689,7 +690,7 @@ export async function renderServerTool(page) {
       if (!p) return;
       const pos = chosen[s.name] || s.ar || 1, qual = chosenQ[s.name] || s.qual || 'all';
       b.disabled = true;
-      if (await send({ kind: 'arabic', name: s.name, pos, qual, text: p.text }, `الدمج بدأ (${qual === '720' ? '٧٢٠ بس' : '٤ جودات'}) واللوجو ${(POSITIONS.find(x => x.pos === pos) || POSITIONS[0]).name}`)) delete pickedAr[s.name];
+      if (await send({ kind: 'arabic', name: s.name, pos, qual, text: p.text, file: p.file }, `الدمج بدأ (${qual === '720' ? '٧٢٠ بس' : '٤ جودات'}) واللوجو ${(POSITIONS.find(x => x.pos === pos) || POSITIONS[0]).name}`)) delete pickedAr[s.name];
       else b.disabled = false;
     });
     $$('[data-remerge]').forEach(b => b.onclick = () => send({ kind: 'remerge', name: list[+b.dataset.remerge].name }, 'الدمج هيبدأ تاني'));

@@ -1211,3 +1211,5 @@ button.pager-num, button.pager-step { border: 0; font: inherit; font-weight: 800
 .srv-picked b { word-break: break-all; }
 .srv-go { min-width: 180px; }
 [data-theme="dark"] .srv-picked { background: rgba(63,163,77,.18); }
+.srv-arinfo { margin: 6px 0 2px; font-size: 14px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.srv-arinfo b { word-break: break-all; }
