@@ -1,63 +1,68 @@
 {
- "https://www.fightful.com/wrestling/womens-blood-and-guts-challenge-made-on-10-24-aew-collision": {
+ "https://www.fightful.com/wrestling/rey-pegasus-comments-on-winning-cmll-torneo-de-escuelas": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-10-25T02:29:45.042Z"
+  "at": "2026-10-25T02:34:24.738Z"
  },
  "https://www.fightful.com/wrestling/aaa-heroes-inmortales-results-10-24": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-25T02:28:38.024Z"
+  "at": "2026-10-25T02:32:36.422Z"
  },
  "https://www.fightful.com/wrestling/darby-allin-to-defend-tnt-title-against-josh-alexander-at-aew-fright-night-dynamite": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:28:37.813Z"
+  "at": "2026-10-25T02:32:36.215Z"
  },
  "https://www.fightful.com/wrestling/watch-aaa-heroes-inmortales-october-24-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:28:37.589Z"
+  "at": "2026-10-25T02:32:35.996Z"
  },
  "https://www.fightful.com/wrestling/amber-nova-posts-bail-after-being-arrested-for-dui-refusal-to-submit-to-dui-testing": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:28:37.239Z"
+  "at": "2026-10-25T02:32:35.654Z"
  },
  "https://www.fightful.com/wrestling/leon-slater-hopes-to-compete-in-tnas-six-sided-ring-as-tna-world-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:28:36.961Z"
+  "at": "2026-10-25T02:32:35.381Z"
  },
  "https://www.fightful.com/wrestling/aj-francis-tna-deal-is-up-towards-the-end-of-2026-deal-between-the-two-sides-is-expected-to-get-done": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:28:36.736Z"
+  "at": "2026-10-25T02:32:35.161Z"
  },
  "https://www.fightful.com/wrestling/mvp-says-the-hurt-syndicate-wanted-to-drop-aew-world-tag-team-titles-back-to-private-party": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:28:36.323Z"
+  "at": "2026-10-25T02:32:34.757Z"
  },
  "https://www.fightful.com/wrestling/hulk-hogans-estate-sells-florida-mansion-for-5-9-million": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:28:35.783Z"
+  "at": "2026-10-25T02:32:34.230Z"
  },
  "https://www.fightful.com/wrestling/bryce-remsburg-if-aew-was-looking-for-a-domestic-stadium-to-host-all-in-i-do-think-lincoln-financial-field-would-be-in-the-conversation": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:28:35.555Z"
+  "at": "2026-10-25T02:32:34.005Z"
  },
  "https://www.fightful.com/wrestling/bryce-remsburg-says-conversations-are-being-had-about-what-aew-might-do-while-wwe-is-in-saudi-arabia-for-wrestlemania-43": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:28:35.329Z"
+  "at": "2026-10-25T02:32:33.782Z"
  },
  "https://www.fightful.com/wrestling/gunther-to-do-something-special-for-danhausen-on-10-30-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T02:28:34.970Z"
+  "at": "2026-10-25T02:32:33.430Z"
+ },
+ "https://www.fightful.com/wrestling/womens-blood-and-guts-challenge-made-on-10-24-aew-collision": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-25T02:29:45.042Z"
  },
  "https://www.fightful.com/mma/ufc-333-volkanovski-vs-evloev-results": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-11T15:43:43.167Z"
- },
- "https://www.fightful.com/wrestling/house-of-glory-provides-update-on-vic-vendetta-after-scary-landing-at-hog-salvation": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-11T14:52:35.788Z"
  }
 }
