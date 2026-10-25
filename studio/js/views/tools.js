@@ -645,6 +645,7 @@ export async function renderServerTool(page) {
           ${s.en ? html`<button class="btn btn-sm" data-en="${n}">${icon('download')} نزّل الترجمة الإنجليزي</button>` : ''}
           ${s.merged && s.drive ? html`<a class="btn btn-sm btn-primary" href="${s.drive}" target="_blank" rel="noopener">${icon('folder')} افتح العرض على درايف</a>` : ''}
           ${!busy && (s.subsFailed || s.stopped === 'subs' || (s.en && !s.ar && !s.merged)) ? html`<button class="btn btn-sm ${s.stopped === 'subs' ? 'btn-primary' : 'btn-ghost'}" data-resub="${n}">${icon('refresh')} ${s.stopped === 'subs' ? 'ابدأ التفريغ تاني' : 'فرّغ تاني'}</button>` : ''}
+          ${!busy && s.ar && !s.merged ? html`<button class="btn btn-sm" data-unqueue="${n}">${icon('x')} إلغاء الدمج</button>` : ''}
           ${busy ? '' : html`<button class="btn btn-sm btn-ghost danger" data-clean="${n}">${icon('trash')} امسحه من السيرفر</button>`}
         </div>
         ${s.video && !s.en && !(alive && st.job && st.job.step === 'subs' && st.job.name === s.name) ? html`<div class="srv-langs srv-lang-pick"><span class="muted">لغة الصوت:</span>${LANGS.map(l => html`<button class="srv-q ${(s.lang || 'en') === l.key ? 'on' : ''}" data-setlang="${n}:${l.key}">${l.name}</button>`)}</div>` : ''}
@@ -692,6 +693,11 @@ export async function renderServerTool(page) {
       b.disabled = true;
       if (await send({ kind: 'arabic', name: s.name, pos, qual, text: p.text, file: p.file }, `الدمج بدأ (${qual === '720' ? '٧٢٠ بس' : '٤ جودات'}) واللوجو ${(POSITIONS.find(x => x.pos === pos) || POSITIONS[0]).name}`)) delete pickedAr[s.name];
       else b.disabled = false;
+    });
+    $$('[data-unqueue]').forEach(b => b.onclick = async () => {
+      const s = list[+b.dataset.unqueue];
+      const ok = await dialog({ title: 'تلغي الدمج؟', body: `ملف الترجمة العربي اللي اترفع لـ«${s.name.slice(0, 60)}» هيتشال، والعرض هيرجع «الترجمة الإنجليزي جاهزة». بعدها اختار الملف الجديد ودوس «ابدأ الدمج».`, confirm: 'إلغاء الدمج', cancel: 'رجوع' });
+      if (ok) send({ kind: 'unqueue', name: s.name }, 'اتلغى — اختار ملف الترجمة الجديد');
     });
     $$('[data-remerge]').forEach(b => b.onclick = () => send({ kind: 'remerge', name: list[+b.dataset.remerge].name }, 'الدمج هيبدأ تاني'));
     wireControls($('#srv-shows'));

@@ -3577,7 +3577,7 @@ export default {
             data = { name, pos: [1, 2, 3].includes(Number(b.pos)) ? Number(b.pos) : 1, qual: b.qual === "720" ? "720" : "all", file: String(b.file || "").slice(0, 160) };
           } else if (b.kind === "pause" || b.kind === "resume" || b.kind === "cancel") {
             data = { name };
-          } else if (b.kind === "clean" || b.kind === "resub" || b.kind === "reupload" || b.kind === "setqual" || b.kind === "remerge") {
+          } else if (b.kind === "clean" || b.kind === "resub" || b.kind === "reupload" || b.kind === "setqual" || b.kind === "remerge" || b.kind === "unqueue") {
             if (!name) return json({ success: false, error: "مفيش اسم" });
             data = b.kind === "resub" ? { name, lang } : b.kind === "setqual" ? { name, qual: b.qual === "720" ? "720" : "all" } : { name };
           } else return json({ success: false, error: "طلب مش معروف" });
