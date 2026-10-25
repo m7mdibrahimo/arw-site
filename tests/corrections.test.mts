@@ -846,3 +846,11 @@ test("plural verb after الاتحاد and broken «ليتعرض لإصابة» 
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /وتمنوا (لها|له) الشفاء|ليتعرض لإصابة/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #830: «ذا كوت» (The Cut) و«غوريلا مونصون» وصلوا لأخبار.
+test("The Cut / Gorilla Monsoon spellings are corrected (INCIDENTS #830)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("باسم ذا كوت وضد غوريلا مونصون"), "باسم ذا كات وضد غوريلا مونسون");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /ذا كوت|غوريلا مونصون/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
