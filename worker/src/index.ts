@@ -3255,7 +3255,7 @@ export default {
       // «الأكثر مشاهدة» for the home page (INCIDENTS #180)
       // The owner's rented encoding machine sets itself up from these (reports/سيرفر-التفريغ): a new machine's
       // template runs /tools/arw-provision, which pulls /tools/arw-bundle (scripts, logo, fonts) from KV. Private: only the key's SHA-256 is here, the key is in the owner's template.
-      if ((path === "/tools/arw-heartbeat" || path === "/tools/arw-job" || path === "/tools/arw-file") && (request.method === "POST" || (path === "/tools/arw-file" && request.method === "GET"))) {
+      if ((path === "/tools/arw-heartbeat" || path === "/tools/arw-job" || path === "/tools/arw-file" || path === "/tools/arw-cmds") && (request.method === "POST" || ((path === "/tools/arw-file" || path === "/tools/arw-cmds") && request.method === "GET"))) {
         const k = url.searchParams.get("k") || "";
         const digest = [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(k)))].map(b => b.toString(16).padStart(2, "0")).join("");
         if (k.length < 24 || digest !== TOOLS_KEY_SHA256 || !env.ANALYTICS) return new Response("not found", { status: 404 });
@@ -3272,6 +3272,13 @@ export default {
           if (text.length > 5_000_000) return json({ success: false, error: "too big" }, 413);
           await env.PUSH_KV.put(`enc:${kind}:${name}`, text, { expirationTtl: 30 * 86400 });
           return json({ success: true });
+        }
+        // the machine asks every few seconds what the panel wants (a link opened in its browser can't wait for the
+        // 30-second heartbeat)
+        if (path === "/tools/arw-cmds") {
+          const cmds = (await env.ANALYTICS.prepare("SELECT id, kind, data FROM enc_cmds WHERE taken = 0 ORDER BY id LIMIT 20").all()).results as any[] || [];
+          if (cmds.length) await env.ANALYTICS.prepare(`UPDATE enc_cmds SET taken = ? WHERE id IN (${cmds.map(() => "?").join(",")})`).bind(Date.now(), ...cmds.map(c => c.id)).run();
+          return json({ success: true, commands: cmds.map(c => { try { return { kind: c.kind, ...JSON.parse(c.data) }; } catch { return { kind: c.kind }; } }) });
         }
         const body: any = await request.json().catch(() => null);
         if (!body || typeof body !== "object") return json({ success: false }, 400);
