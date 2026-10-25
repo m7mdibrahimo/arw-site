@@ -3580,8 +3580,14 @@ export default {
           const b: any = await request.json().catch(() => ({}));
           const k = String(b.key || "").trim();
           if (!/^[A-Za-z0-9_-]{20,200}$/.test(k)) return json({ success: false, error: "المفتاح ده شكله مش صحيح" });
-          const test = await fetch("https://console.vast.ai/api/v0/users/current/", { headers: { Authorization: `Bearer ${k}` } });
-          if (!test.ok) return json({ success: false, error: "موقع التأجير رفض المفتاح ده" });
+          // check it with what the button needs (the machines list); a key made with only some permissions has no
+          // access to the account's profile, so that is not asked for
+          const res = await fetch("https://console.vast.ai/api/v0/instances/?owner=me", { headers: { Authorization: `Bearer ${k}`, Accept: "application/json" } });
+          const body: any = await res.json().catch(() => null);
+          if (!body || !Array.isArray(body.instances)) {
+            const why = body && (body.msg || body.error) ? String(body.msg || body.error).slice(0, 120) : `HTTP ${res.status}`;
+            return json({ success: false, error: `موقع التأجير رفض المفتاح ده (${why}). اعمل مفتاح جديد وعلّم على كل الصلاحيات.` });
+          }
           await env.PUSH_KV.put("tools:vast-key", k);
           return json({ success: true });
         }
