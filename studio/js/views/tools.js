@@ -480,6 +480,23 @@ export async function renderServerTool(page) {
   </div>`);
   const box = $('#srv');
   let last = null, chosen = {}, chosenQ = {}; // the logo position / qualities picked for the Arabic file about to go up
+  const pickedAr = {}; // name → { file, text, lines }: the Arabic subtitle picked, shown until «ابدأ الدمج»
+  // pause / go on / stop the running step (from the status card or the show's card)
+  const controls = (st, name) => {
+    const paused = st && st.paused;
+    return html`<span class="srv-ctl">
+      ${paused ? html`<button class="btn btn-sm btn-primary" data-ctl="resume" data-n="${name}">${icon('bolt')} كمّل</button>`
+        : html`<button class="btn btn-sm" data-ctl="pause" data-n="${name}">${icon('clock')} إيقاف مؤقت</button>`}
+      <button class="btn btn-sm btn-ghost danger" data-ctl="cancel" data-n="${name}">${icon('x')} إلغاء</button></span>`;
+  };
+  const wireControls = (root) => $$('[data-ctl]', root).forEach(b => b.onclick = async () => {
+    const what = b.dataset.ctl, name = b.dataset.n;
+    if (what === 'cancel') {
+      const ok = await dialog({ title: 'تلغي الشغل ده؟', body: `هيقف «${name.slice(0, 60)}» خالص. تقدر تبدأه تاني بعدين من كارت العرض.`, confirm: 'إلغاء الشغل', cancel: 'رجوع', danger: true });
+      if (!ok) return;
+    }
+    send({ kind: what, name }, what === 'pause' ? 'اتوقف مؤقتًا' : what === 'resume' ? 'بيكمّل' : 'اتلغى');
+  });
 
   const send = async (body, okText) => {
     try {
@@ -581,7 +598,8 @@ export async function renderServerTool(page) {
         : st ? `مقفول من ${dayClock(st.at)}` : 'لسه مبعتش أي إشارة'}</p>
       ${!alive ? html`<p class="muted srv-note">${d.vastKey ? 'دوس «شغّل السيرفر» وخلاص: لو كارته فاضي هيشتغل خلال دقيقة، ولو اتاخد هيأجّر جهاز جديد بنفس السعر ويركّب نفسه في حوالي ١٠ دقايق. اللي طلبته وهو مقفول هيتعمل أول ما يشتغل.' : 'عشان تشغّله بضغطة واحدة من هنا، حط مفتاح موقع التأجير مرة واحدة في «زرار التشغيل» تحت.'}</p>` : ''}
       ${job ? html`<div class="srv-job">
-          <b>${STEP_NOW[job.step] || 'شغال على'}: ${job.name}</b>
+          <b>${st.paused ? 'متوقف مؤقتًا' : (STEP_NOW[job.step] || 'شغال على')}: ${job.name}</b>
+          <div class="srv-ctl-row">${controls(st, job.name)}</div>
           ${job.pct != null ? html`<div class="srv-bar"><div style="width:${Math.min(100, job.pct)}%"></div></div>` : ''}
           <div class="srv-kpis">
             ${job.pct != null ? html`<div><small>خلص</small><b>${num(job.pct)}٪</b></div>` : ''}
@@ -598,7 +616,8 @@ export async function renderServerTool(page) {
   };
 
   const stageOf = (s, job) => {
-    if (job && job.name === s.name) return { text: `${STEP_NOW[job.step] || 'شغال عليه'}${job.pct != null ? ` — ${num(job.pct)}٪` : ''}`, tone: 'run' };
+    if (job && job.name === s.name) return { text: `${last && last.status && last.status.paused ? 'متوقف مؤقتًا' : (STEP_NOW[job.step] || 'شغال عليه')}${job.pct != null ? ` — ${num(job.pct)}٪` : ''}`, tone: last && last.status && last.status.paused ? 'wait' : 'run' };
+    if (s.stopped) return { text: s.stopped === 'merge' ? 'الدمج اتلغى' : 'التفريغ اتلغى', tone: 'bad' };
     if (s.merged) return { text: 'جاهز ✓', tone: 'ok' };
     if (s.mergeFailed) return { text: 'الدمج فشل', tone: 'bad' };
     if (s.ar) return { text: 'مستني الدمج', tone: 'wait' };
@@ -617,12 +636,14 @@ export async function renderServerTool(page) {
       const busy = alive && st.job && st.job.name === s.name; // being downloaded/subtitled/merged/uploaded right now
       return html`<div class="srv-show">
         <div class="srv-show-head"><b class="srv-name">${s.name}</b><span class="srv-tag ${stg.tone}">${stg.text}</span></div>
+        ${busy ? html`<div class="srv-ctl-row">${controls(st, s.name)}</div>` : ''}
+        ${s.stopped === 'merge' || (s.mergeFailed && s.ar && !busy) ? html`<div class="srv-actions"><button class="btn btn-sm btn-primary" data-remerge="${n}">${icon('refresh')} ابدأ الدمج تاني</button></div>` : ''}
         ${busy && st.job.pct != null ? html`<div class="srv-bar srv-bar-sm"><div style="width:${Math.min(100, st.job.pct)}%"></div></div><small class="muted">فاضل ${leftText(st.job.left)}</small><br>` : ''}
         <small class="muted">لغة الصوت: ${LANG_NAME[s.lang] || 'إنجليزي'} — ${s.qual === '720' ? '٧٢٠ بس' : '٤ جودات'}${s.ar ? ` — اللوجو: ${(POSITIONS.find(p => p.pos === s.ar) || POSITIONS[0]).name}` : ''}</small>
         <div class="srv-actions">
           ${s.en ? html`<button class="btn btn-sm" data-en="${n}">${icon('download')} نزّل الترجمة الإنجليزي</button>` : ''}
           ${s.merged && s.drive ? html`<a class="btn btn-sm btn-primary" href="${s.drive}" target="_blank" rel="noopener">${icon('folder')} افتح العرض على درايف</a>` : ''}
-          ${!busy && (s.subsFailed || (s.en && !s.ar && !s.merged)) ? html`<button class="btn btn-sm btn-ghost" data-resub="${n}">${icon('refresh')} فرّغ تاني</button>` : ''}
+          ${!busy && (s.subsFailed || s.stopped === 'subs' || (s.en && !s.ar && !s.merged)) ? html`<button class="btn btn-sm ${s.stopped === 'subs' ? 'btn-primary' : 'btn-ghost'}" data-resub="${n}">${icon('refresh')} ${s.stopped === 'subs' ? 'ابدأ التفريغ تاني' : 'فرّغ تاني'}</button>` : ''}
           ${busy ? '' : html`<button class="btn btn-sm btn-ghost danger" data-clean="${n}">${icon('trash')} امسحه من السيرفر</button>`}
         </div>
         ${s.video && !s.en && !(alive && st.job && st.job.step === 'subs' && st.job.name === s.name) ? html`<div class="srv-langs srv-lang-pick"><span class="muted">لغة الصوت:</span>${LANGS.map(l => html`<button class="srv-q ${(s.lang || 'en') === l.key ? 'on' : ''}" data-setlang="${n}:${l.key}">${l.name}</button>`)}</div>` : ''}
@@ -631,7 +652,10 @@ export async function renderServerTool(page) {
           ${s.ar || s.merged ? html`<summary class="srv-ar-title">غيّر الترجمة العربي أو مكان اللوجو أو الجودات</summary>` : html`<div class="srv-ar-title">ارفع الترجمة العربي — واختار مكان اللوجو قبلها (والجودات فوق):</div>`}
           ${s.merged ? html`<div class="srv-langs">${QUALS.map(q => html`<button class="srv-q ${(chosenQ[s.name] || s.qual || 'all') === q.key ? 'on' : ''}" data-q="${n}:${q.key}">${q.name}</button>`)}</div>` : ''}
           <div class="srv-pos">${POSITIONS.map(p => html`<button class="srv-pos-btn ${(chosen[s.name] || s.ar || 1) === p.pos ? 'on' : ''}" data-pos="${n}:${p.pos}" title="${p.name}"><span class="srv-screen"><i class="${p.css}">لوجو</i></span>${p.name}</button>`)}</div>
-          <label class="btn btn-sm btn-primary srv-file">${icon('upload')} ارفع الترجمة العربي وابدأ الدمج<input type="file" accept=".srt" data-ar="${n}" hidden></label>
+          ${pickedAr[s.name] ? html`<div class="srv-picked">${icon('check')} <b dir="ltr">${pickedAr[s.name].file}</b> <span class="muted">— ${num(pickedAr[s.name].lines)} جملة</span>
+              <button class="btn btn-sm btn-ghost" data-unpick="${n}">${icon('x')} شيل</button></div>
+            <button class="btn btn-primary srv-go" data-armerge="${n}">${icon('bolt')} ابدأ الدمج</button>`
+            : html`<label class="btn btn-sm srv-file">${icon('upload')} اختار ملف الترجمة العربي<input type="file" accept=".srt" data-ar="${n}" hidden></label>`}
         </${s.ar || s.merged ? 'details' : 'div'}>` : ''}
       </div>`;
     })}`);
@@ -656,9 +680,20 @@ export async function renderServerTool(page) {
       if (!file) return;
       const text = await file.text();
       if (!/-->/.test(text)) return toast('ده مش ملف ترجمة', 'error');
-      const pos = chosen[s.name] || s.ar || 1, qual = chosenQ[s.name] || s.qual || 'all';
-      await send({ kind: 'arabic', name: s.name, pos, qual, text }, `اترفعت — الدمج هيبدأ (${qual === '720' ? '٧٢٠ بس' : '٤ جودات'}) واللوجو ${(POSITIONS.find(p => p.pos === pos) || POSITIONS[0]).name}`);
+      pickedAr[s.name] = { file: file.name, text, lines: (text.match(/-->/g) || []).length };
+      drawShows(last);
     });
+    $$('[data-unpick]').forEach(b => b.onclick = () => { delete pickedAr[list[+b.dataset.unpick].name]; drawShows(last); });
+    $$('[data-armerge]').forEach(b => b.onclick = async () => {
+      const s = list[+b.dataset.armerge], p = pickedAr[s.name];
+      if (!p) return;
+      const pos = chosen[s.name] || s.ar || 1, qual = chosenQ[s.name] || s.qual || 'all';
+      b.disabled = true;
+      if (await send({ kind: 'arabic', name: s.name, pos, qual, text: p.text }, `الدمج بدأ (${qual === '720' ? '٧٢٠ بس' : '٤ جودات'}) واللوجو ${(POSITIONS.find(x => x.pos === pos) || POSITIONS[0]).name}`)) delete pickedAr[s.name];
+      else b.disabled = false;
+    });
+    $$('[data-remerge]').forEach(b => b.onclick = () => send({ kind: 'remerge', name: list[+b.dataset.remerge].name }, 'الدمج هيبدأ تاني'));
+    wireControls($('#srv-shows'));
     $$('[data-resub]').forEach(b => b.onclick = async () => {
       const s = list[+b.dataset.resub];
       let pick = s.lang || 'en';
@@ -694,6 +729,7 @@ export async function renderServerTool(page) {
     try {
       last = await tools.server();
       drawStatus(last);
+      wireControls(box);
       if ($('#srv-start')) $('#srv-start').onclick = () => power('start');
       if ($('#srv-stop')) $('#srv-stop').onclick = () => power('stop');
       if (keyDrawn !== !!last.vastKey) { keyDrawn = !!last.vastKey; drawKey(keyDrawn); }

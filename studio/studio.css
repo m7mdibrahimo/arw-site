@@ -1205,3 +1205,9 @@ section.panel + section.panel { margin-top: 16px; }
 .cy-clear { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 12px; }
 .srv-bar-sm { height: 10px; margin: 8px 0 4px; }
 button.pager-num, button.pager-step { border: 0; font: inherit; font-weight: 800; cursor: pointer; }
+.srv-ctl-row { margin-top: 8px; }
+.srv-ctl { display: inline-flex; gap: 8px; flex-wrap: wrap; }
+.srv-picked { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 6px 0 10px; padding: 10px 12px; border-radius: 12px; background: rgba(63,163,77,.12); }
+.srv-picked b { word-break: break-all; }
+.srv-go { min-width: 180px; }
+[data-theme="dark"] .srv-picked { background: rgba(63,163,77,.18); }

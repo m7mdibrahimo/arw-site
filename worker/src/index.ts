@@ -3575,7 +3575,9 @@ export default {
             if (!name || !text.trim() || text.length > 5_000_000) return json({ success: false, error: "ملف الترجمة فاضي أو كبير" });
             await env.PUSH_KV.put(`enc:ar:${name}`, text, { expirationTtl: 30 * 86400 });
             data = { name, pos: [1, 2, 3].includes(Number(b.pos)) ? Number(b.pos) : 1, qual: b.qual === "720" ? "720" : "all" };
-          } else if (b.kind === "clean" || b.kind === "resub" || b.kind === "reupload" || b.kind === "setqual") {
+          } else if (b.kind === "pause" || b.kind === "resume" || b.kind === "cancel") {
+            data = { name };
+          } else if (b.kind === "clean" || b.kind === "resub" || b.kind === "reupload" || b.kind === "setqual" || b.kind === "remerge") {
             if (!name) return json({ success: false, error: "مفيش اسم" });
             data = b.kind === "resub" ? { name, lang } : b.kind === "setqual" ? { name, qual: b.qual === "720" ? "720" : "all" } : { name };
           } else return json({ success: false, error: "طلب مش معروف" });
