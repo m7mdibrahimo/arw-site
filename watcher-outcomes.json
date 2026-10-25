@@ -1,48 +1,53 @@
 {
+ "https://www.fightful.com/wrestling/u-s-embassy-riyadh-issues-new-security-alert-advising-us-citizens-to-take-extreme-caution-if-you-choose-to-use-airports-in-saudi-arabia": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-25T20:29:07.989Z"
+ },
  "https://www.fightful.com/wrestling/table-goes-into-business-for-itself-at-greektown-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T20:24:42.126Z"
+  "at": "2026-10-25T20:29:07.395Z"
  },
  "https://www.fightful.com/wrestling/wildman-jack-armstrong-passes-away": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T20:24:41.899Z"
+  "at": "2026-10-25T20:29:07.155Z"
  },
  "https://www.fightful.com/wrestling/revolver-jerry-lynn-invitational-results-10-24": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T20:24:41.672Z"
+  "at": "2026-10-25T20:29:06.916Z"
  },
  "https://www.fightful.com/wrestling/raquel-rodriguez-vs-iyo-sky-chad-gable-dragon-lee-vs-big-cass-ethan-page-added-to-10-26-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T20:24:41.520Z"
+  "at": "2026-10-25T20:29:06.751Z"
  },
  "https://www.fightful.com/wrestling/joe-hendry-on-creative-he-doesnt-necessarily-agree-with-i-think-your-job-in-pro-wrestling-is-to-give-it-your-absolute-best": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T20:24:41.294Z"
+  "at": "2026-10-25T20:29:06.519Z"
  },
  "https://www.fightful.com/wrestling/samantha-irvin-shares-that-she-politely-declined-wwe-record-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T20:24:40.874Z"
+  "at": "2026-10-25T20:29:06.099Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-25T20:24:40.132Z"
+  "at": "2026-10-25T20:29:05.358Z"
  },
  "https://www.fightful.com/wrestling/jay-white-we-are-the-last-outfit-capable-of-slicing-the-cancer-out-of-aew-we-are-the-cut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T20:24:39.914Z"
+  "at": "2026-10-25T20:29:05.143Z"
  },
  "https://www.fightful.com/wrestling/wwf-red-letter-intercontinental-championship-belt-becomes-most-valuable-wrestling-title-ever-sold-at-716750": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T20:24:39.608Z"
+  "at": "2026-10-25T20:29:04.845Z"
  },
  "https://www.ringsidenews.com/mick-foley-reveals-his-biggest-regret-about-working-shawn-michaels-wwe": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-12T15:15:10.828Z"
- },
- "https://www.fightful.com/wrestling/frankie-kazarian-wins-third-call-your-shot-gauntlet-at-tna-bound-for-glory": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-12T14:53:11.746Z"
  }
 }
