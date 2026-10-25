@@ -103,3 +103,9 @@ test("a weekly show carries the federation with watch/download words", () => {
   const forms = showNameForms({ headline: "عرض سماك داون 16.10.2026", title: "WWE Smackdown 16.10.2026", programName: "WWE Smackdown", eventDate: "2026-10-16", aliases: ["عرض سماك داون"], isShow: true });
   for (const f of ["wwe مشاهدة", "مشاهدة wwe", "wwe تحميل", "تحميل wwe"]) assert.ok(forms.some((n: string) => n.toLowerCase() === f), f);
 });
+
+// INCIDENTS #828: «عروض المصارعة الحرة مترجمة» (6.4) outside the first 3 for the 19.10 episode — structured data only.
+test("a weekly show carries the feminine «عروض المصارعة الحرة مترجمة»", () => {
+  const forms = showNameForms({ headline: "عرض الرو 19.10.2026 مترجم", title: "WWE Raw 19.10.2026", programName: "WWE Raw", eventDate: "2026-10-19", aliases: ["عرض الرو"], isShow: true });
+  for (const f of ["عروض المصارعة الحرة مترجمة", "مشاهدة عروض المصارعة الحرة", "تحميل عروض المصارعة الحرة"]) assert.ok(forms.includes(f), f);
+});

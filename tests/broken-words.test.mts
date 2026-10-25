@@ -624,3 +624,8 @@ test('«رحلة خارجية مع» is corrected to «فترة إعارة مع�
 test('corrections write Luis Mante as «لويس مانتي», not «إل مانتي» (INCIDENTS #826)', () => {
   assert.match(applyCorrections('توج إل مانتي ببطولة GHC الوطنية'), /توج لويس مانتي ببطولة/);
 });
+
+// INCIDENTS #828: «باع مزاد علني» (the auction sold) came from a literal «sold at auction».
+test('«باع مزاد علني» is corrected to «بيع في مزاد علني»', () => {
+  assert.equal(applyCorrections('باع مزاد علني الحزام'), 'بيع في مزاد علني الحزام');
+});
