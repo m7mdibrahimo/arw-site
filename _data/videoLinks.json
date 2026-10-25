@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-10-24T23:33:27.117Z",
+ "checkedAt": "2026-10-25T04:55:49.102Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
@@ -5623,60 +5623,60 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-73bogusi1r4b.html": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-19-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17732737698400": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-19-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://hgcloud.to/e/xqk9oslcnihc": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-19-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-cr1lkxp21586.html": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-19-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/asR8-qyL_ClyB": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-19-10-2026/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-can2pisooswn.html": {
    "page": "https://arab-wrestling.com/shows/mlw-fusion-17-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17729936951904": {
    "page": "https://arab-wrestling.com/shows/mlw-fusion-17-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
+   "checked": "2026-10-25T04:55:49.102Z",
    "lastOk": "2026-10-24T21:08:59.168Z"
   },
   "https://vidmoly.org/embed-g85ajskwc1pu.html": {
@@ -5684,15 +5684,15 @@
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://hgcloud.to/e/kfbf5j8o0qlx": {
    "page": "https://arab-wrestling.com/shows/mlw-fusion-17-10-2026/",
-   "status": "ok",
-   "reason": "the stream arrives",
-   "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
+   "status": "broken",
+   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
+   "strikes": 1,
+   "checked": "2026-10-25T04:55:49.102Z",
    "lastOk": "2026-10-24T23:33:27.117Z"
   },
   "https://fembed.co/embed/v_g-39EisGtuv": {
@@ -5700,15 +5700,15 @@
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://hgcloud.to/e/0nq364j31534": {
    "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-13-10-2026/",
-   "status": "ok",
-   "reason": "the stream arrives",
-   "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
+   "status": "broken",
+   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
+   "strikes": 1,
+   "checked": "2026-10-25T04:55:49.102Z",
    "lastOk": "2026-10-24T23:33:27.117Z"
   },
   "https://uqload.vc/embed-f8uesfazc811.html": {
@@ -5716,114 +5716,114 @@
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17729936886368": {
    "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-13-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-v8ow61saoeqd.html": {
    "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-13-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-m6menlfv68zq.html": {
    "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-13-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-brjv4f9s8evg.html": {
    "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-13-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/mTLQKklt-H_1p": {
    "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-13-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-zssqb1muwfhu.html": {
    "page": "https://arab-wrestling.com/shows/njpw-taichi-school-pro-wrestling-2-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-mf4h2fl44wm3.html": {
    "page": "https://arab-wrestling.com/shows/njpw-taichi-school-pro-wrestling-2-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17729937017440": {
    "page": "https://arab-wrestling.com/shows/njpw-taichi-school-pro-wrestling-2-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://hgcloud.to/e/826q4t2eckv1": {
    "page": "https://arab-wrestling.com/shows/njpw-taichi-school-pro-wrestling-2-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/Al25-g2k_m86x": {
    "page": "https://arab-wrestling.com/shows/njpw-taichi-school-pro-wrestling-2-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-rdffsqas73fi.html": {
    "page": "https://arab-wrestling.com/shows/njpw-taichi-school-pro-wrestling-2-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-2n3mtsvg4cb0.html": {
    "page": "https://arab-wrestling.com/shows/wwe-nxt-20-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-6icrkn4u1opf.html": {
    "page": "https://arab-wrestling.com/shows/wwe-nxt-20-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17739347004000": {
    "page": "https://arab-wrestling.com/shows/wwe-nxt-20-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
+   "checked": "2026-10-25T04:55:49.102Z",
    "lastOk": "2026-10-24T16:17:03.720Z"
   },
   "https://hgcloud.to/e/oztvm38f4xi7": {
@@ -5831,46 +5831,46 @@
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/vqp_x-TUAQSUz": {
    "page": "https://arab-wrestling.com/shows/wwe-nxt-20-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-89unkld18dq6.html": {
    "page": "https://arab-wrestling.com/shows/wwe-nxt-20-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-zhq67r8qn3gm.html": {
    "page": "https://arab-wrestling.com/shows/roh-on-honorclub-22-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-o0kxhl8hj347.html": {
    "page": "https://arab-wrestling.com/shows/roh-on-honorclub-22-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://hgcloud.to/e/70spt7t3imam": {
    "page": "https://arab-wrestling.com/shows/roh-on-honorclub-22-10-2026/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 2,
-   "checked": "2026-10-24T23:33:27.117Z",
+   "checked": "2026-10-25T04:55:49.102Z",
    "since": "2026-10-24T13:26:47.987Z"
   },
   "https://ok.ru/videoembed/17775910259296": {
@@ -5878,22 +5878,22 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/BITt-Uk_HB77g": {
    "page": "https://arab-wrestling.com/shows/roh-on-honorclub-22-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://hgcloud.to/e/fwiyg5qnrbzg": {
    "page": "https://arab-wrestling.com/shows/aew-dynamite-21-10-2026/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 2,
-   "checked": "2026-10-24T23:33:27.117Z",
+   "checked": "2026-10-25T04:55:49.102Z",
    "since": "2026-10-24T13:26:47.987Z"
   },
   "https://uqload.vc/embed-jvn9qcprmrx6.html": {
@@ -5901,60 +5901,60 @@
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17775910390368": {
    "page": "https://arab-wrestling.com/shows/aew-dynamite-21-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-wqq2qwfww04o.html": {
    "page": "https://arab-wrestling.com/shows/aew-dynamite-21-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-0z5uunsak9o6.html": {
    "page": "https://arab-wrestling.com/shows/aew-dynamite-21-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-pt39fzj7n65w.html": {
    "page": "https://arab-wrestling.com/shows/aew-dynamite-21-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/06TbYF_6-nvAh": {
    "page": "https://arab-wrestling.com/shows/aew-dynamite-21-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-737vvps7ad26.html": {
    "page": "https://arab-wrestling.com/shows/cmll-martes-populares-20-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://hgcloud.to/e/drmvd78ysjwh": {
    "page": "https://arab-wrestling.com/shows/cmll-martes-populares-20-10-2026/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 2,
-   "checked": "2026-10-24T23:33:27.117Z",
+   "checked": "2026-10-25T04:55:49.102Z",
    "since": "2026-10-24T14:02:25.388Z"
   },
   "https://vidmoly.org/embed-bf9bnwj8otjs.html": {
@@ -5962,98 +5962,98 @@
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17776493726304": {
    "page": "https://arab-wrestling.com/shows/cmll-martes-populares-20-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/Z7t4TAb-Mg_um": {
    "page": "https://arab-wrestling.com/shows/cmll-martes-populares-20-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://hgcloud.to/e/n4gdk9rl6vom": {
    "page": "https://arab-wrestling.com/shows/cmll-lunes-clasico-19-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-ipqajxzn8ti1.html": {
    "page": "https://arab-wrestling.com/shows/cmll-martes-populares-20-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17776493398624": {
    "page": "https://arab-wrestling.com/shows/cmll-lunes-clasico-19-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-0my1zzha6kz7.html": {
    "page": "https://arab-wrestling.com/shows/cmll-lunes-clasico-19-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-z2zx1bjl73ju.html": {
    "page": "https://arab-wrestling.com/shows/cmll-lunes-clasico-19-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-l2giuj512wt9.html": {
    "page": "https://arab-wrestling.com/shows/cmll-lunes-clasico-19-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/BP1Jfm_jAS-ke": {
    "page": "https://arab-wrestling.com/shows/cmll-lunes-clasico-19-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-zub159syorrq.html": {
    "page": "https://arab-wrestling.com/shows/cmll-domingo-familiar-18-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17776493333088": {
    "page": "https://arab-wrestling.com/shows/cmll-domingo-familiar-18-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://hgcloud.to/e/414tnt0adj2k": {
    "page": "https://arab-wrestling.com/shows/cmll-domingo-familiar-18-10-2026/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 2,
-   "checked": "2026-10-24T23:33:27.117Z",
+   "checked": "2026-10-25T04:55:49.102Z",
    "since": "2026-10-24T14:02:25.388Z"
   },
   "https://vidmoly.org/embed-oou60wm5pf65.html": {
@@ -6061,15 +6061,15 @@
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://hgcloud.to/e/9swejj04l7hp": {
    "page": "https://arab-wrestling.com/shows/cmll-sabados-de-coliseo-17-10-2026/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 2,
-   "checked": "2026-10-24T23:33:27.117Z",
+   "checked": "2026-10-25T04:55:49.102Z",
    "since": "2026-10-24T14:02:25.388Z"
   },
   "https://fembed.co/embed/aww-pgt4M_KcB": {
@@ -6077,75 +6077,75 @@
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-wwtma642se4t.html": {
    "page": "https://arab-wrestling.com/shows/cmll-domingo-familiar-18-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17776493464160": {
    "page": "https://arab-wrestling.com/shows/cmll-sabados-de-coliseo-17-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-8k4d2y86gkct.html": {
    "page": "https://arab-wrestling.com/shows/cmll-sabados-de-coliseo-17-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-vxvwso42fmsd.html": {
    "page": "https://arab-wrestling.com/shows/cmll-sabados-de-coliseo-17-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-0k3xcozjn4c5.html": {
    "page": "https://arab-wrestling.com/shows/cmll-sabados-de-coliseo-17-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/bAR5zsQ_9W-fH": {
    "page": "https://arab-wrestling.com/shows/cmll-sabados-de-coliseo-17-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-fqq0gglsmw3q.html": {
    "page": "https://arab-wrestling.com/shows/tna-impact-22-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17775910324832": {
    "page": "https://arab-wrestling.com/shows/tna-impact-22-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://hgcloud.to/e/bgvvq2zyn3v4": {
    "page": "https://arab-wrestling.com/shows/tna-impact-22-10-2026/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 2,
-   "checked": "2026-10-24T23:33:27.117Z",
+   "checked": "2026-10-25T04:55:49.102Z",
    "since": "2026-10-24T23:33:27.117Z",
    "lastOk": "2026-10-24T16:17:03.720Z"
   },
@@ -6154,122 +6154,122 @@
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/cj_QB-srcg5Zh": {
    "page": "https://arab-wrestling.com/shows/tna-impact-22-10-2026/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-89jiwtp0jg46.html": {
    "page": "https://arab-wrestling.com/shows/tna-impact-22-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/VxdUC-G_Dv7PB": {
    "page": "https://arab-wrestling.com/shows/wwe-main-event-21-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-sqfly5cbcskd.html": {
    "page": "https://arab-wrestling.com/shows/wwe-main-event-21-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-f2bluxofnco3.html": {
    "page": "https://arab-wrestling.com/shows/wwe-main-event-21-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17776493529696": {
    "page": "https://arab-wrestling.com/shows/wwe-main-event-21-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-543q6f2qudoj.html": {
    "page": "https://arab-wrestling.com/shows/wwe-main-event-21-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-s7m8cnf1gr55.html": {
    "page": "https://arab-wrestling.com/shows/wwe-evolve-21-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17776493660768": {
    "page": "https://arab-wrestling.com/shows/wwe-evolve-21-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://hgcloud.to/e/ubcesv3faohn": {
    "page": "https://arab-wrestling.com/shows/wwe-evolve-21-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17776493595232": {
    "page": "https://arab-wrestling.com/shows/tna-xplosion-16-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-t1lguibpajhn.html": {
    "page": "https://arab-wrestling.com/shows/wwe-evolve-21-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/ZX_RcAn-ZspjX": {
    "page": "https://arab-wrestling.com/shows/wwe-evolve-21-10-2026/",
    "status": "ok",
-   "reason": "the video plays",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-6ra05zfktlm7.html": {
    "page": "https://arab-wrestling.com/shows/wwe-evolve-21-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://hgcloud.to/e/hkzvzw68m5ul": {
    "page": "https://arab-wrestling.com/shows/tna-xplosion-16-10-2026/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 2,
-   "checked": "2026-10-24T23:33:27.117Z",
+   "checked": "2026-10-25T04:55:49.102Z",
    "since": "2026-10-24T14:29:35.937Z"
   },
   "https://fembed.co/embed/e0f_hDJ6m-sYz": {
@@ -6277,53 +6277,53 @@
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-rz0v6ogvft1i.html": {
    "page": "https://arab-wrestling.com/shows/tna-xplosion-16-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-nn0lzt3538sf.html": {
    "page": "https://arab-wrestling.com/shows/tna-xplosion-16-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-f53wq6jx1i2x.html": {
    "page": "https://arab-wrestling.com/shows/nwa-powerrr-17-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-3z7hpzpcouqw.html": {
    "page": "https://arab-wrestling.com/shows/tna-xplosion-16-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17776493988448": {
    "page": "https://arab-wrestling.com/shows/nwa-powerrr-17-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://hgcloud.to/e/v764tmwczrv5": {
    "page": "https://arab-wrestling.com/shows/nwa-powerrr-17-10-2026/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 2,
-   "checked": "2026-10-24T23:33:27.117Z",
+   "checked": "2026-10-25T04:55:49.102Z",
    "since": "2026-10-24T14:29:35.937Z"
   },
   "https://ok.ru/videoembed/17776493922912": {
@@ -6331,336 +6331,336 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-dhacch97qgig.html": {
    "page": "https://arab-wrestling.com/shows/nwa-powerrr-17-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/nPwlT_eMx-q0L": {
    "page": "https://arab-wrestling.com/shows/nwa-powerrr-17-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-f3m3ixlf5olk.html": {
    "page": "https://arab-wrestling.com/shows/nwa-powerrr-17-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/B14sa_6-cliho": {
    "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-20-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://hgcloud.to/e/9bhvmqsxiex5": {
    "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-20-10-2026/",
-   "status": "broken",
-   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
-   "strikes": 2,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "since": "2026-10-24T14:29:35.937Z"
+   "status": "ok",
+   "reason": "the video plays",
+   "strikes": 0,
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-toyleitn0db4.html": {
    "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-20-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-ltmdxgou0uxc.html": {
    "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-20-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-9osyrqpjimvh.html": {
    "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-20-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/P-ZhT01AS_uo2": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-23-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-clbt8w3dqgvp.html": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-23-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-ok7iboyt5k3m.html": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-23-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17782852684384": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-23-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-kniqu6tj51x7.html": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-23-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/X-8_VgurpW1AN": {
    "page": "https://arab-wrestling.com/recaps/wwe-smackdown-highlights-23-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-48vm0t9j57n4.html": {
    "page": "https://arab-wrestling.com/recaps/wwe-smackdown-highlights-23-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-ks8pzvfh0nyc.html": {
    "page": "https://arab-wrestling.com/recaps/wwe-smackdown-highlights-23-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17783304292960": {
    "page": "https://arab-wrestling.com/recaps/wwe-smackdown-highlights-23-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-9hdp9r196n5a.html": {
    "page": "https://arab-wrestling.com/recaps/wwe-smackdown-highlights-23-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-6ry5yoeheaav.html": {
    "page": "https://arab-wrestling.com/recaps/wwe-main-event-highlights-21-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17783303899744": {
    "page": "https://arab-wrestling.com/recaps/wwe-main-event-highlights-21-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-ytquc99pso9l.html": {
    "page": "https://arab-wrestling.com/recaps/wwe-main-event-highlights-21-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/qzwcQ-B_a8viU": {
    "page": "https://arab-wrestling.com/recaps/wwe-main-event-highlights-21-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-s2nukuxo8xok.html": {
    "page": "https://arab-wrestling.com/recaps/nxt-highlights-20-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-cuni0rsteyja.html": {
    "page": "https://arab-wrestling.com/recaps/wwe-main-event-highlights-21-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17783304030816": {
    "page": "https://arab-wrestling.com/recaps/nxt-highlights-20-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17783304161888": {
    "page": "https://arab-wrestling.com/recaps/wwe-smackdown-highlights-16-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-urjpacnjbygs.html": {
    "page": "https://arab-wrestling.com/recaps/nxt-highlights-20-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/kEam_85R-pHX7": {
    "page": "https://arab-wrestling.com/recaps/nxt-highlights-20-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-sus0xl5pyq88.html": {
    "page": "https://arab-wrestling.com/recaps/nxt-highlights-20-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-q4b6bdw7cvg2.html": {
    "page": "https://arab-wrestling.com/recaps/wwe-smackdown-highlights-16-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-bgww3r5yf1i4.html": {
    "page": "https://arab-wrestling.com/recaps/wwe-smackdown-highlights-16-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-mcmizi83xhk5.html": {
    "page": "https://arab-wrestling.com/recaps/wwe-smackdown-highlights-16-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/SCFDg3-cT_cxi": {
    "page": "https://arab-wrestling.com/recaps/wwe-smackdown-highlights-16-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/V-jAwhWEs7_Jo": {
    "page": "https://arab-wrestling.com/recaps/nxt-highlights-13-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17783304096352": {
    "page": "https://arab-wrestling.com/recaps/nxt-highlights-13-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-rcqykg7su2u1.html": {
    "page": "https://arab-wrestling.com/recaps/nxt-highlights-13-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-gdh2tz8crmik.html": {
    "page": "https://arab-wrestling.com/recaps/nxt-highlights-13-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://vidtube.one/embed-qhk17adnifwo.html": {
    "page": "https://arab-wrestling.com/recaps/wwe-raw-highlights-12-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-xiqb8nctxd2v.html": {
    "page": "https://arab-wrestling.com/recaps/nxt-highlights-13-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://ok.ru/videoembed/17783303965280": {
    "page": "https://arab-wrestling.com/recaps/wwe-raw-highlights-12-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z"
   },
   "https://vidmoly.org/embed-91dhjez464wo.html": {
    "page": "https://arab-wrestling.com/recaps/wwe-raw-highlights-12-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://fembed.co/embed/1Jd4_sR9Vk-x4": {
    "page": "https://arab-wrestling.com/recaps/wwe-raw-highlights-12-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   },
   "https://uqload.vc/embed-vaaplom2h427.html": {
    "page": "https://arab-wrestling.com/recaps/wwe-raw-highlights-12-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-24T23:33:27.117Z",
-   "lastOk": "2026-10-24T23:33:27.117Z"
+   "checked": "2026-10-25T04:55:49.102Z",
+   "lastOk": "2026-10-25T04:55:49.102Z"
   }
  },
  "broken": [
@@ -6674,7 +6674,6 @@
   "https://hgcloud.to/e/814moty0mp4b",
   "https://hgcloud.to/e/8x36eehbw4kh",
   "https://hgcloud.to/e/9b8jhigzcqa6",
-  "https://hgcloud.to/e/9bhvmqsxiex5",
   "https://hgcloud.to/e/9bhyk3u6y2s0",
   "https://hgcloud.to/e/9swejj04l7hp",
   "https://hgcloud.to/e/9zm394ycsf3u",
