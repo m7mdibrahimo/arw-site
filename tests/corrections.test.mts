@@ -888,3 +888,11 @@ test("«دفته» is corrected to «دفعته» (INCIDENTS #837)", async () =>
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(?<![؀-ۿ])دفته(?![؀-ۿ])/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #838: «أنه وجهت له دعوة» (broken sentence) reached an Ethan Page story.
+test("«أنه وجهت له دعوة» is corrected to «أنه تلقى دعوة» (INCIDENTS #838)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("ليوضح لها بايج أنه وجهت له دعوة لإنشاء محتوى"), "ليوضح لها بايج أنه تلقى دعوة لإنشاء محتوى");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "").includes("أنه وجهت له دعوة"));
+  assert.deepEqual(bad, []);
+});
