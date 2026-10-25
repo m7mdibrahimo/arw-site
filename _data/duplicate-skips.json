@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/watch-2026-tna-hall-of-fame-live-and-free-at-4pm-et-on-october-11th/": {
-    "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
-    "reason": "الخبر الجديد يعلن عن بث حفل قاعة مشاهير TNA الذي تم تغطيته بالفعل ضمن تقرير نتائج عرض Bound for Glory المنشور في الخبر رقم 0.",
-    "at": "2026-10-11T20:56:02.890Z"
-  },
   "https://www.fightful.com/wrestling/amazing-red-enters-tna-hall-of-fame-to-compete-at-tna-bound-for-glory/": {
     "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
     "reason": "الخبر الجديد يغطي نفس حدث تكريم أميزينج ريد في قاعة مشاهير TNA ومشاركته في نزال الـ X-Division الذي تم ذكره بالفعل في تقرير نتائج عرض TNA Bound for Glory المنشور.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261025052748-تحدي-نزال-blood-and-guts-للسيدات-يظهر-في-عرض-aew-collision.md",
     "reason": "الخبر الجديد يمثل تحديثاً وإعلاناً رسمياً لنفس نزال Blood and Guts للسيدات الذي تم الحديث عن مجرد التحدي بشأنه في الخبر المنشور رقم 0، حيث أصبح الآن حدثاً مؤكداً ورسمياً مع تفاصيل موعد إقامته.",
     "at": "2026-10-25T18:39:58.841Z"
+  },
+  "https://www.ringsidenews.com/us-orders-non-emergency-staff-families-out-saudi-arabia-ahead-wwe-crown-jewel/": {
+    "matchedFile": "20261024192436-السفارة-الأمريكية-تحدث-إرشادات-السفر-إلى-السعودية-وتوصي-بضرورة-إعادة-النظر-في-السفر.md",
+    "reason": "الخبر الجديد ينقل نفس واقعة أمر وزارة الخارجية والسفارة الأمريكية للموظفين غير الضروريين وعائلاتهم بمغادرة السعودية قبل عرض Crown Jewel المذكورة في الخبر رقم 1 دون إضافة تطور جديد.",
+    "at": "2026-10-25T18:51:02.509Z"
   }
 }
