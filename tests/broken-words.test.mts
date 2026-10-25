@@ -588,3 +588,13 @@ test('one_of_two: «أحدهم … والآخر» عن اتنين بيتمنع (
   assert.ok(checkArticle(t, 'كان عنده عقدين مع الاتحاد، أحدهم كمصارع والآخر للعمل خلف الكواليس.' + pad).some((i) => i.code === 'one_of_two'));
   assert.ok(!checkArticle(t, 'كان عنده عقدين مع الاتحاد، واحد كمصارع وواحد للعمل خلف الكواليس.' + pad).some((i) => i.code === 'one_of_two'));
 });
+
+// INCIDENTS #819: «ومرافقتها كايل ayla Kassidy» — a name broken into Arabic + lowercase Latin reached the site.
+test('INCIDENTS #819: a lowercase Latin fragment inside an Arabic name is blocked', () => {
+  const pad = ' كلام عادي كثير '.repeat(40);
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + pad).map((i) => i.code);
+  assert.ok(BLOCKING_QA_CODES.includes('lowercase_latin_fragment'));
+  assert.ok(codes('يدافع البطل ومرافقتها كايل ayla Kassidy ضد جيك.').includes('lowercase_latin_fragment'));
+  assert.ok(!codes('يدافع البطل ومرافقته كايلا كاسيدي ضد جيك.').includes('lowercase_latin_fragment'));
+  assert.ok(!codes('واجه البطل Kayla Kassidy في النزال.').includes('lowercase_latin_fragment'));
+});
