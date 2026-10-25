@@ -4122,17 +4122,16 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض كوليجن 24.10.2026 مترجم",
-    "lastAttempt": 1792950056344,
+    "lastAttempt": 1792950902730,
     "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_story",
-      "tiktok"
+      "instagram_story"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261025193204-ufc-333-volkanovski-vs-evloev-early-prelims": {
     "publishedAt": 1792947308153,
@@ -4141,9 +4140,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض يو اف سي 333 ايرلي بريلمز مترجم",
-    "lastAttempt": 1792947321313,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792950905004,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
