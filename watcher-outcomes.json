@@ -1,53 +1,53 @@
 {
- "https://www.ringsidenews.com/mick-foley-reveals-his-biggest-regret-about-working-shawn-michaels-wwe": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-25T19:38:58.222Z"
- },
  "https://www.fightful.com/wrestling/table-goes-into-business-for-itself-at-greektown-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T19:39:21.273Z"
+  "at": "2026-10-25T19:41:47.021Z"
  },
  "https://www.fightful.com/wrestling/wildman-jack-armstrong-passes-away": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T19:39:21.111Z"
+  "at": "2026-10-25T19:41:46.792Z"
  },
  "https://www.fightful.com/wrestling/revolver-jerry-lynn-invitational-results-10-24": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T19:39:20.949Z"
+  "at": "2026-10-25T19:41:46.556Z"
  },
  "https://www.fightful.com/wrestling/raquel-rodriguez-vs-iyo-sky-chad-gable-dragon-lee-vs-big-cass-ethan-page-added-to-10-26-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T19:39:20.835Z"
+  "at": "2026-10-25T19:41:46.401Z"
  },
  "https://www.fightful.com/wrestling/joe-hendry-on-creative-he-doesnt-necessarily-agree-with-i-think-your-job-in-pro-wrestling-is-to-give-it-your-absolute-best": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T19:39:20.662Z"
+  "at": "2026-10-25T19:41:46.172Z"
  },
  "https://www.fightful.com/wrestling/samantha-irvin-shares-that-she-politely-declined-wwe-record-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T19:39:20.348Z"
+  "at": "2026-10-25T19:41:45.748Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-25T19:39:19.805Z"
+  "at": "2026-10-25T19:41:44.995Z"
  },
  "https://www.fightful.com/wrestling/jay-white-we-are-the-last-outfit-capable-of-slicing-the-cancer-out-of-aew-we-are-the-cut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T19:39:19.649Z"
+  "at": "2026-10-25T19:41:44.780Z"
  },
  "https://www.fightful.com/wrestling/wwf-red-letter-intercontinental-championship-belt-becomes-most-valuable-wrestling-title-ever-sold-at-716750": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-25T19:39:19.435Z"
+  "at": "2026-10-25T19:41:44.483Z"
+ },
+ "https://www.ringsidenews.com/mick-foley-reveals-his-biggest-regret-about-working-shawn-michaels-wwe": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-25T19:38:58.222Z"
  },
  "https://www.wrestlinginc.com/2294980/wwe-jerry-lynn-jim-cornette-gangrel-brood-pitched-leading-attitude-era-faction": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
