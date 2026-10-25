@@ -4120,15 +4120,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض كوليجن 24.10.2026 مترجم",
-    "lastAttempt": 1792950902730,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1792951822471,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -4157,7 +4153,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض يو اف سي 333 بريلمز مترجم",
-    "lastAttempt": 1792949192025,
+    "lastAttempt": 1792951824204,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -4175,9 +4171,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض يو اف سي 333 مين كارد مترجم",
-    "lastAttempt": 1792948231268,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792951854138,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
