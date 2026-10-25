@@ -1,4 +1,64 @@
 {
+ "https://www.fightful.com/wrestling/bang-bang-gang-and-the-dogs-alliance-officially-named-the-last-outfit-on-10-24-aew-collision": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-25T00:56:25.920Z"
+ },
+ "https://www.fightful.com/wrestling/amber-nova-posts-bail-after-being-arrested-for-dui-refusal-to-submit-to-dui-testing": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-25T00:55:37.099Z"
+ },
+ "https://www.fightful.com/wrestling/aew-collision-results-10-24-2026-mcmg-vs-ftr-divine-dominion-vs-wrathlander-jay-white-speak-swerve-strickalnd-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-25T00:55:36.936Z"
+ },
+ "https://www.fightful.com/wrestling/leon-slater-hopes-to-compete-in-tnas-six-sided-ring-as-tna-world-champion": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-25T00:55:36.718Z"
+ },
+ "https://www.fightful.com/wrestling/aj-francis-tna-deal-is-up-towards-the-end-of-2026-deal-between-the-two-sides-is-expected-to-get-done": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-25T00:55:36.475Z"
+ },
+ "https://www.fightful.com/wrestling/mvp-says-the-hurt-syndicate-wanted-to-drop-aew-world-tag-team-titles-back-to-private-party": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-25T00:55:36.047Z"
+ },
+ "https://www.fightful.com/wrestling/hulk-hogans-estate-sells-florida-mansion-for-5-9-million": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-25T00:55:35.488Z"
+ },
+ "https://www.fightful.com/wrestling/bryce-remsburg-if-aew-was-looking-for-a-domestic-stadium-to-host-all-in-i-do-think-lincoln-financial-field-would-be-in-the-conversation": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-25T00:55:35.258Z"
+ },
+ "https://www.fightful.com/wrestling/bryce-remsburg-says-conversations-are-being-had-about-what-aew-might-do-while-wwe-is-in-saudi-arabia-for-wrestlemania-43": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-25T00:55:35.025Z"
+ },
+ "https://www.fightful.com/wrestling/gunther-to-do-something-special-for-danhausen-on-10-30-wwe-smackdown": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-25T00:55:34.666Z"
+ },
+ "https://www.fightful.com/mma/ufc-333-volkanovski-vs-evloev-results": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-25T00:55:34.365Z"
+ },
+ "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-25T00:55:34.017Z"
+ },
  "https://www.ringsidenews.com/jay-white-reveals-new-aew-faction-name-teasing-bullet-club-return-collision": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -8,66 +68,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-10-25T00:49:55.775Z"
- },
- "https://www.fightful.com/wrestling/bang-bang-gang-and-the-dogs-alliance-officially-named-the-last-outfit-on-10-24-aew-collision": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-25T00:48:06.376Z"
- },
- "https://www.fightful.com/wrestling/amber-nova-posts-bail-after-being-arrested-for-dui-refusal-to-submit-to-dui-testing": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-25T00:47:39.354Z"
- },
- "https://www.fightful.com/wrestling/aew-collision-results-10-24-2026-mcmg-vs-ftr-divine-dominion-vs-wrathlander-jay-white-speak-swerve-strickalnd-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-25T00:47:39.204Z"
- },
- "https://www.fightful.com/wrestling/leon-slater-hopes-to-compete-in-tnas-six-sided-ring-as-tna-world-champion": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-25T00:47:38.995Z"
- },
- "https://www.fightful.com/wrestling/aj-francis-tna-deal-is-up-towards-the-end-of-2026-deal-between-the-two-sides-is-expected-to-get-done": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-25T00:47:38.774Z"
- },
- "https://www.fightful.com/wrestling/mvp-says-the-hurt-syndicate-wanted-to-drop-aew-world-tag-team-titles-back-to-private-party": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-25T00:47:38.369Z"
- },
- "https://www.fightful.com/wrestling/hulk-hogans-estate-sells-florida-mansion-for-5-9-million": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-25T00:47:37.838Z"
- },
- "https://www.fightful.com/wrestling/bryce-remsburg-if-aew-was-looking-for-a-domestic-stadium-to-host-all-in-i-do-think-lincoln-financial-field-would-be-in-the-conversation": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-25T00:47:37.615Z"
- },
- "https://www.fightful.com/wrestling/bryce-remsburg-says-conversations-are-being-had-about-what-aew-might-do-while-wwe-is-in-saudi-arabia-for-wrestlemania-43": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-25T00:47:37.390Z"
- },
- "https://www.fightful.com/wrestling/gunther-to-do-something-special-for-danhausen-on-10-30-wwe-smackdown": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-25T00:47:37.038Z"
- },
- "https://www.fightful.com/mma/ufc-333-volkanovski-vs-evloev-results": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-25T00:47:36.741Z"
- },
- "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-25T00:47:36.406Z"
  },
  "https://www.wrestlinginc.com/2296264/aew-collision-october-24-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
