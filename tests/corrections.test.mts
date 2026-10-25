@@ -880,3 +880,11 @@ test("an English headline with a dangling ampersand is blocked (INCIDENTS #836)"
   assert.ok(checkEnglish({ title: "Drew McIntyre Believes WWE's Best Hell in a Cell Match Comes Down to His & One Other", body, tags: [] } as any, input).some(x => x.includes("ampersand")));
   assert.ok(!checkEnglish({ title: "Tag Team Champions Dolph Ziggler & Robert Roode Return", body, tags: [] } as any, input).some(x => x.includes("ampersand")));
 });
+
+// INCIDENTS #837: «دفته» (typo for «دفعته») reached a Jonathan Gresham story.
+test("«دفته» is corrected to «دفعته» (INCIDENTS #837)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("ضغوطات دفته لذلك الموقف"), "ضغوطات دفعته لذلك الموقف");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(?<![؀-ۿ])دفته(?![؀-ۿ])/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});

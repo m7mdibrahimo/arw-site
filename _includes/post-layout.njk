@@ -125,6 +125,9 @@
       {% if duration and (duration | isoDuration) %}"duration": "{{ duration | isoDuration }}",{% endif %}
       {% if eventDate or event_date %}"datePublished": {{ (eventDate or event_date) | jsonify | safe }},{% endif %}
       "inLanguage": "ar",
+      {#- free to watch, and what kind of video it is: the plain facts Google reads for a video page, nothing visible (INCIDENTS #837) -#}
+      "isAccessibleForFree": true,
+      "genre": "Professional Wrestling",
       {#- the other ways people write the program's name, on the video itself too (INCIDENTS #446) -#}
       {#- + this episode's own date spellings («عرض الرو 5/10/2026», «WWE RAW October 5 2026»), and the broadcast itself as a non-live BroadcastEvent (INCIDENTS #466) -#}
       {% set ldNames = ([ldAbout.arName] if (ldAbout and ldAbout.arName) else []).concat(ldAbout.aliases if ldAbout else []) %}
