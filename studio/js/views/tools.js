@@ -466,7 +466,7 @@ export async function renderServerTool(page) {
     <section class="panel srv-new">
       <header class="panel-head"><h2>${icon('plus')} عرض جديد</h2></header>
       <p class="muted">الزق رابط التحميل نفسه (أو رابط التورنت)، واختار لغة الصوت، ودوس «ابدأ». السيرفر هينزّله ويفرّغه لوحده.</p>
-      <input id="srv-url" type="url" dir="ltr" placeholder="https://…">
+      <input id="srv-url" class="input" type="url" dir="ltr" placeholder="الزق الرابط هنا">
       <div class="srv-langs">${LANGS.map((l, n) => html`<label class="srv-chip"><input type="radio" name="srv-lang" value="${l.key}" ${n ? '' : 'checked'}><span>${l.name}</span></label>`)}</div>
       <p class="muted srv-note">المكسيكي والياباني بيطلعوا ترجمة إنجليزي برضه، عشان تترجمها زي ما انت متعود.</p>
       <button class="btn btn-primary" id="srv-go">${icon('download')} ابدأ</button>
@@ -556,7 +556,7 @@ export async function renderServerTool(page) {
           ${s.subsFailed || s.en ? html`<button class="btn btn-sm btn-ghost" data-resub="${n}">${icon('refresh')} فرّغ تاني</button>` : ''}
           ${s.merged ? html`<button class="btn btn-sm btn-ghost danger" data-clean="${n}">${icon('trash')} امسحه من السيرفر</button>` : ''}
         </div>
-        ${s.en || s.video ? html`<div class="srv-ar">
+        ${s.en || s.ar || s.merged ? html`<div class="srv-ar">
           <div class="srv-ar-title">${s.ar || s.merged ? 'غيّر الترجمة العربي أو مكان اللوجو:' : 'ارفع الترجمة العربي واختار مكان اللوجو:'}</div>
           <div class="srv-pos">${POSITIONS.map(p => html`<button class="srv-pos-btn ${(chosen[s.name] || s.ar || 1) === p.pos ? 'on' : ''}" data-pos="${n}:${p.pos}" title="${p.name}"><span class="srv-screen"><i class="${p.css}">لوجو</i></span>${p.name}</button>`)}</div>
           <label class="btn btn-sm btn-primary srv-file">${icon('upload')} ارفع الترجمة العربي وابدأ الدمج<input type="file" accept=".srt" data-ar="${n}" hidden></label>
