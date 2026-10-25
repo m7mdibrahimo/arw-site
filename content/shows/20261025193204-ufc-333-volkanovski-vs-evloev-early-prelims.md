@@ -72,4 +72,5 @@ downloads_high: |-
   https://vidmoly.me/v/keztsir0fkp3
   https://hgcloud.to/66wbu0b3zz8p
 layout: post-layout.njk
+card_title: name
 ---
