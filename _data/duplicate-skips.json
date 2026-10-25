@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/amazing-red-enters-tna-hall-of-fame-to-compete-at-tna-bound-for-glory/": {
-    "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
-    "reason": "الخبر الجديد يغطي نفس حدث تكريم أميزينج ريد في قاعة مشاهير TNA ومشاركته في نزال الـ X-Division الذي تم ذكره بالفعل في تقرير نتائج عرض TNA Bound for Glory المنشور.",
-    "at": "2026-10-11T21:06:45.847Z"
-  },
   "https://www.fightful.com/wrestling/tna-bound-for-glory-results-10-11-leon-slater-vs-nic-nemeth-hardys-vs-syx/": {
     "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
     "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261024192436-السفارة-الأمريكية-تحدث-إرشادات-السفر-إلى-السعودية-وتوصي-بضرورة-إعادة-النظر-في-السفر.md",
     "reason": "الخبر الجديد ينقل نفس واقعة أمر وزارة الخارجية والسفارة الأمريكية للموظفين غير الضروريين وعائلاتهم بمغادرة السعودية قبل عرض Crown Jewel المذكورة في الخبر رقم 1 دون إضافة تطور جديد.",
     "at": "2026-10-25T18:51:02.509Z"
+  },
+  "https://www.fightful.com/wrestling/u-s-embassy-riyadh-issues-new-security-alert-advising-us-citizens-to-take-extreme-caution-if-you-choose-to-use-airports-in-saudi-arabia/": {
+    "matchedFile": "20261024192436-السفارة-الأمريكية-تحدث-إرشادات-السفر-إلى-السعودية-وتوصي-بضرورة-إعادة-النظر-في-السفر.md",
+    "reason": "الخبر الجديد يعيد سرد نفس التحذير الأمني الصادر عن السفارة الأمريكية وإجراءات وزارة الخارجية المتعلقة بمغادرة الموظفين، مع الإشارة لنفس الحدث (Crown Jewel) كخلفية، ولا يقدم تطوراً جديداً جوهرياً يغير من طبيعة الخبر المنشور مسبقاً.",
+    "at": "2026-10-25T20:25:10.930Z"
   }
 }
