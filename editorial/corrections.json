@@ -7959,6 +7959,21 @@
    "wrong": "إل مانتي",
    "right": "لويس مانتي",
    "note": "Luis Mante (دراجون جيت/NOAH) اتكتب «إل مانتي» وباقي أخبار الأسبوع «لويس مانتي» (INCIDENTS #826)"
+  },
+  {
+   "wrong": "وتمنوا لها الشفاء",
+   "right": "وتمنى لها الشفاء",
+   "note": "فعل جمع بعد «الاتحاد» أو تركيب مكسور من ترجمة حرفية («causing him to suffer an injury») (INCIDENTS #827)"
+  },
+  {
+   "wrong": "وتمنوا له الشفاء",
+   "right": "وتمنى له الشفاء",
+   "note": "فعل جمع بعد «الاتحاد» أو تركيب مكسور من ترجمة حرفية («causing him to suffer an injury») (INCIDENTS #827)"
+  },
+  {
+   "wrong": "ليتعرض لإصابة",
+   "right": "فأصيب",
+   "note": "فعل جمع بعد «الاتحاد» أو تركيب مكسور من ترجمة حرفية («causing him to suffer an injury») (INCIDENTS #827)"
   }
  ]
 }

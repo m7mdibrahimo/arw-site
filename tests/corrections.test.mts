@@ -837,3 +837,12 @@ test("literal translations «على خط النهاية» / «لموازنة ا�
   assert.ok(body.includes("على المحك") && body.includes("لتعادل القوى بين الطرفين"), body);
   assert.ok(!body.includes("على خط النهاية") && !body.includes("لموازنة الكفتين"));
 });
+
+// INCIDENTS #827: «وتمنوا لها الشفاء» بعد «الاتحاد» و«ليتعرض لإصابة» وصلوا لأخبار.
+test("plural verb after الاتحاد and broken «ليتعرض لإصابة» are corrected (INCIDENTS #827)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("أعلن الاتحاد غيابها وتمنوا لها الشفاء العاجل"), "أعلن الاتحاد غيابها وتمنى لها الشفاء العاجل");
+  assert.equal(applyCorrections("ليسقط خارج الحلبة ليتعرض لإصابة في ركبته"), "ليسقط خارج الحلبة فأصيب في ركبته");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /وتمنوا (لها|له) الشفاء|ليتعرض لإصابة/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
