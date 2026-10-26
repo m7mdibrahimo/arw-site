@@ -1,5 +1,25 @@
 [
   {
+    "id": 3705952719,
+    "link": "https://www.wrestlinginc.com/2295706/kalisto-ryback-sweetheart-wwe-feud/",
+    "date": "Mon, 26 Oct 2026 03:59:00 +0000",
+    "date_gmt": "2026-10-26T03:59:00.000Z",
+    "title": {
+      "rendered": "Kalisto Says Ryback Was A 'Sweetheart' During WWE Feud"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/kalisto-says-ryback-was-a-sweetheart-during-wwe-feud/l-intro-1792781211.jpg"
+  },
+  {
+    "id": 3346394460,
+    "link": "https://www.wrestlinginc.com/2295617/tatum-paxley-discusses-wwe-main-roster-mentor/",
+    "date": "Sun, 25 Oct 2026 21:00:00 +0000",
+    "date_gmt": "2026-10-25T21:00:00.000Z",
+    "title": {
+      "rendered": "Tatum Paxley Discusses WWE Main Roster Mentor"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tatum-paxley-discusses-wwe-main-roster-mentor/l-intro-1792805394.jpg"
+  },
+  {
     "id": 1411604483,
     "link": "https://www.wrestlinginc.com/2295612/jonathan-gresham-returning-roh-aew-tony-khan/",
     "date": "Sun, 25 Oct 2026 20:30:00 +0000",
@@ -178,25 +198,5 @@
       "rendered": "WWE's Charlotte Flair Provides Update On Father Ric's Condition After Suffering Fall"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-charlotte-flair-provides-update-on-father-rics-condition-after-suffering-fall/l-intro-1792937601.jpg"
-  },
-  {
-    "id": 992429935,
-    "link": "https://www.wrestlinginc.com/2294223/cody-rhodes-pac-kevin-owens-camera-wwe-tribute-aew/",
-    "date": "Sun, 25 Oct 2026 13:30:00 +0000",
-    "date_gmt": "2026-10-25T13:30:00.000Z",
-    "title": {
-      "rendered": "Cody Rhodes Remembers Pac, Says Kevin Owens Set Up Camera For WWE Stars To Pay Tribute"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/cody-rhodes-remembers-pac-says-kevin-owens-set-up-camera-for-wwe-stars-to-pay-tribute/l-intro-1792683599.jpg"
-  },
-  {
-    "id": 2983981899,
-    "link": "https://www.wrestlinginc.com/2293929/wwe-wrestlemania-27-miz-mixed-feelings-main-event-victory/",
-    "date": "Sun, 25 Oct 2026 13:00:00 +0000",
-    "date_gmt": "2026-10-25T13:00:00.000Z",
-    "title": {
-      "rendered": "The Miz Has Mixed Feelings On WWE WrestleMania 27 Main Event Victory"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/the-miz-has-mixed-feelings-on-wwe-wrestlemania-27-main-event-victory/l-intro-1792672818.jpg"
   }
 ]
