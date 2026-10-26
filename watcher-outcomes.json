@@ -1,53 +1,58 @@
 {
+ "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-10-26": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-26T12:03:24.468Z"
+ },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-26T12:00:14.690Z"
+  "at": "2026-10-26T12:03:24.237Z"
  },
  "https://www.fightful.com/wrestling/myles-borne-on-grayson-waller-wearing-a-stephanie-vaquer-t-shirt-you-spent-money-on-her-shirt-youre-a-fan": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T12:00:14.474Z"
+  "at": "2026-10-26T12:03:24.020Z"
  },
  "https://www.fightful.com/wrestling/myles-borne-tells-fans-they-are-wasting-their-engery-by-chanting-what-at-him": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T12:00:14.179Z"
+  "at": "2026-10-26T12:03:23.726Z"
  },
  "https://www.fightful.com/wrestling/eric-young-and-wwe-details": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T12:00:13.347Z"
+  "at": "2026-10-26T12:03:22.897Z"
  },
  "https://www.fightful.com/wrestling/u-s-embassy-riyadh-issues-new-security-alert-advising-us-citizens-to-take-extreme-caution-if-you-choose-to-use-airports-in-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T12:00:12.989Z"
+  "at": "2026-10-26T12:03:22.539Z"
  },
  "https://www.fightful.com/wrestling/table-goes-into-business-for-itself-at-greektown-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T12:00:12.433Z"
+  "at": "2026-10-26T12:03:21.981Z"
  },
  "https://www.fightful.com/wrestling/wildman-jack-armstrong-passes-away": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T12:00:12.204Z"
+  "at": "2026-10-26T12:03:21.750Z"
  },
  "https://www.fightful.com/wrestling/revolver-jerry-lynn-invitational-results-10-24": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T12:00:11.968Z"
+  "at": "2026-10-26T12:03:21.513Z"
  },
  "https://www.fightful.com/wrestling/raquel-rodriguez-vs-iyo-sky-chad-gable-dragon-lee-vs-big-cass-ethan-page-added-to-10-26-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T12:00:11.814Z"
+  "at": "2026-10-26T12:03:21.359Z"
  },
  "https://www.fightful.com/wrestling/joe-hendry-on-creative-he-doesnt-necessarily-agree-with-i-think-your-job-in-pro-wrestling-is-to-give-it-your-absolute-best": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T12:00:11.576Z"
+  "at": "2026-10-26T12:03:21.120Z"
  },
  "https://www.fightful.com/wrestling/samantha-irvin-shares-that-she-politely-declined-wwe-record-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-12T18:56:15.139Z"
- },
- "https://www.fightful.com/wrestling/leon-slater-speaks-after-tna-title-win-accomplishes-goal-five-years-early": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-12T18:02:50.042Z"
  }
 }
