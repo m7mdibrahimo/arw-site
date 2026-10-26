@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/shayna-baszler-zoey-serrano-capture-knockouts-world-tag-team-titles-at-tna-bound-for-glory/": {
-    "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
-    "reason": "الخبر الجديد يتناول نتيجة نزال ضمن عرض TNA Bound for Glory، وهو حدث تم تغطيته بالفعل في تقرير نتائج العرض المنشور تحت رقم 3.",
-    "at": "2026-10-11T21:46:16.249Z"
-  },
   "https://www.fightful.com/wrestling/frankie-kazarian-wins-third-call-your-shot-gauntlet-at-tna-bound-for-glory/": {
     "matchedFile": "20261012011429-فرانكي-كازاريان-يفوز-بنزال-call-your-shot-gauntlet-في-عرض-tna-bound-for-glory-2026.md",
     "reason": "الخبر الجديد يغطي نفس نتيجة نزال Call Your Shot Gauntlet وفوز فرانكي كازاريان في عرض TNA Bound for Glory المذكور في الخبر المنشور مسبقاً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261026035835-بيع-دعامة-ركبة-موقعة-ومستخدمة-في-النزالات-للمصارع-ستون-كولد-ستيف-أوستن-تعود-لعام-1999-بمبلغ-225700-دولار.md",
     "reason": "الخبر الجديد يعرض نفس تفاصيل بيع دعامة الركبة الخاصة بستيف أوستن لعام 1999 في مزاد هيريتج والتي تم تغطيتها بالفعل في الخبر المنشور.",
     "at": "2026-10-26T10:20:17.972Z"
+  },
+  "https://www.ringsidenews.com/brooke-hogan-unloads-people-who-profited-hulk-hogans-mansion-sale/": {
+    "matchedFile": "20261024221431-بروك-هوجان-تنتقد-بيع-قصر-هالك-هوجان-في-فلوريدا.md",
+    "reason": "الخبر الجديد يغطي نفس تصريحات بروك هوجان وغضبها بشأن بيع قصر والدها هالك هوجان وانخفاض السعر، وهي نفس التفاصيل والحدث المغطى في الخبر المنشور رقم 0.",
+    "at": "2026-10-26T11:11:53.584Z"
   }
 }
