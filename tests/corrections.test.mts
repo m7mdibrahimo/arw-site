@@ -930,3 +930,12 @@ test("«الموهبين» is corrected to «الموهوبين» and no story h
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(^|[^؀-ۿ])الموهبين([^؀-ۿ]|$)/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+test("dual verb «منحاها» is blocked and «استفادتها» corrected; no story has them (INCIDENTS #847)", async () => {
+  const { applyCorrections, checkArticle } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("الدروس التي استفادتها"), "الدروس التي تعلمتها");
+  const issues = checkArticle("عنوان تجريبي طويل بما يكفي للفحص هنا", "العمل معها منحاها خبرة كبيرة. " + "كلام عادي مفهوم. ".repeat(60));
+  assert.ok(issues.some((i: any) => i.code === "dual_form"));
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(^|[^؀-ۿ])(استفادتها|منحاها)([^؀-ۿ]|$)/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
