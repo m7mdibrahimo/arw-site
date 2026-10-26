@@ -4247,9 +4247,15 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "مباراة سامي زين ضد كودي رودز 19.10.2026 في عرض الرو دارك ماتش",
-    "lastAttempt": 1792963304341,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792973870114,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story"
+    ],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -4275,9 +4281,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سوبر جونيور تاج ليج (اليوم الثاني) 25.10.2026 مترجم",
-    "lastAttempt": 1792970420754,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792973898988,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
