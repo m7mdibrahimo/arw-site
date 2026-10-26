@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/boxer-kickboxer-tenshin-nasukawa-to-compete-in-match-for-ddt-pro-wrestling": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مصارع في المتن غير موجود في المصدر: Kevin Owens",
+  "retry": true,
+  "at": "2026-10-26T19:50:10.886Z"
+ },
  "https://www.fightful.com/wrestling/kaylia-capri-misses-rows-sherri-martel-classic-due-to-car-accident-notes-that-she-suffered-minor-injuries": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T19:41:49.373Z"
+  "at": "2026-10-26T19:49:27.962Z"
  },
  "https://www.fightful.com/wrestling/alexa-bliss-states-that-she-bray-wyatt-were-supposed-to-reunite-on-wwe-programming": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T19:41:49.140Z"
+  "at": "2026-10-26T19:49:27.732Z"
  },
  "https://www.fightful.com/wrestling/alexa-bliss-says-traveling-with-her-daughter-was-worked-into-wwe-contract-thats-a-non-negotiable": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T19:41:48.841Z"
+  "at": "2026-10-26T19:49:27.435Z"
  },
  "https://www.fightful.com/wrestling/brooke-hogan-reacts-to-sale-of-hulk-hogans-florida-mansion-the-sick-feeling-is-indescribable": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T19:41:48.524Z"
+  "at": "2026-10-26T19:49:27.122Z"
  },
  "https://www.fightful.com/wrestling/channing-stacks-lorenzo-provides-update-after-suffering-injury-at-nxt-house-show": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T19:41:48.226Z"
+  "at": "2026-10-26T19:49:26.829Z"
  },
  "https://www.fightful.com/wrestling/steve-maclin-details-suffering-broken-fibula-ten-weeks-before-adam-copeland-match-at-mlp-northern-rising": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T19:41:47.849Z"
+  "at": "2026-10-26T19:49:26.455Z"
  },
  "https://www.ringsidenews.com/mvp-says-diddys-prison-perks-nothing-compared-what-hes-seen-behind-bars": {
   "reason": "المراجعة رفضته: جزء إنجليزي صغير الحروف وسط اسم عربي («كايل ayla Kassidy») — الاسم اتكسر: اكتبه كله بالعربي أو كله بالإنجليزي (INCIDENTS #819)",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
   "retry": true,
   "at": "2026-10-13T15:05:21.523Z"
- },
- "https://www.fightful.com/wrestling/carmelo-hayes-returns-on-wwe-raw-joins-the-946": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-13T14:56:22.377Z"
  }
 }
