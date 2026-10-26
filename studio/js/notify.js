@@ -66,6 +66,7 @@ const ENC = {
   'subs-start': { ico: 'film', tone: 'sky', ok: 'بدأ تفريغ العرض', named: true },
   'merge-start': { ico: 'show', tone: 'sky', ok: 'بدأ دمج العرض', named: true },
   novideo: { ico: 'alert', tone: 'coral', ok: 'الترجمة العربي وصلت بس فيديو العرض مش على السيرفر:', named: true, detail: 'ارفع الفيديو من «سيرفر التفريغ» والدمج هيبدأ لوحده' },
+  'no-nvenc': { ico: 'alert', tone: 'yellow', ok: 'كارت الجهاز ده مش بيعرف يدمج — الدمج هيتعمل على المعالج', detail: 'أبطأ شوية، بس النتيجة بنفس الجودة' },
   cancelled: { ico: 'shield', tone: 'ink', ok: 'وقفت العرض', named: true, detail: 'بقرار منك' },
   drive: { ico: 'folder', tone: 'sky', ok: 'العرض وصل على جوجل درايف', named: true },
   waiting: { ico: 'clock', tone: 'yellow', ok: 'جهاز التفريغ مشغول مع حد تاني', detail: 'بحاول عليه كل دقيقتين، وأول ما يفضى هيشتغل لوحده' },

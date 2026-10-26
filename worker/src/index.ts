@@ -3318,7 +3318,7 @@ export default {
           const r = await v("/commands/rclone/", { method: "POST", body: JSON.stringify({ src: "/workspace/drive-out/", dst: "/", instance_id: Number(iid), selected: conn.id, transfer: "Instance To Cloud", flags: [] }) });
           return json({ success: !!(r && r.success), error: r && !r.success ? r.msg || r.error : undefined });
         } else if (path === "/tools/arw-event") {
-          if (["subs-start", "merge-start", "cancelled", "novideo"].includes(body.kind)) await encEvent(env, body.kind, String(body.name || ""));
+          if (["subs-start", "merge-start", "cancelled", "novideo", "no-nvenc"].includes(body.kind)) await encEvent(env, body.kind, String(body.name || ""));
         } else {
           const t = (v: any) => Math.min(now + 60_000, Math.max(0, Math.round(Number(v) || 0)));
           await env.ANALYTICS.prepare("INSERT INTO enc_jobs (name, step, started, finished, ok) VALUES (?, ?, ?, ?, ?)")
