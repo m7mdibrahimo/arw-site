@@ -4232,7 +4232,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261025202328-wwe-raw-sami-zayn-vs-cody-rhodes-dark-match-19-10-2026": {
     "publishedAt": 1792950086740,
@@ -4253,15 +4254,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض سي ام ال ال سابادوس دي كوليسيو 24.10.2026 مترجم",
-    "lastAttempt": 1792982549328,
-    "errors": {
-      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1792983358857,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
