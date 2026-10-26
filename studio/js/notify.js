@@ -79,7 +79,7 @@ const ENC = {
   start: { ico: 'check', tone: 'sky', ok: 'طلبت تشغيل سيرفر التفريغ', detail: 'هيبان «شغال» خلال دقيقة' },
   rented: { ico: 'alert', tone: 'yellow', ok: 'اتأجر جهاز تفريغ جديد', named: true, detail: 'الكارت القديم كان متاخد — هيركّب نفسه في حوالي ١٠ دقايق' },
   stop: { ico: 'shield', tone: 'ink', ok: 'طلبت قفل سيرفر التفريغ', detail: 'مش هيتحسب غير تمن المساحة' },
-  idle: { ico: 'shield', tone: 'ink', ok: 'سيرفر التفريغ خلّص كل الشغل وهيقفل نفسه', detail: 'بعد ساعة من غير شغل' },
+  idle: { ico: 'shield', tone: 'ink', ok: 'سيرفر التفريغ خلّص كل الشغل وهيقفل نفسه', detail: 'بعد ٥ دقايق من غير شغل، وبعد ما رفع كل حاجة على درايف' },
   offline: { ico: 'alert', tone: 'yellow', ok: 'سيرفر التفريغ اتقفل', detail: 'مبقاش بيرد على اللوحة' },
   deleted: { ico: 'trash', tone: 'coral', ok: 'اتمسح جهاز التفريغ بعد ١٢ ساعة وهو مقفول', detail: 'شغلك على درايف — «شغّل السيرفر» هيأجر جهاز جديد' },
   other: { ico: 'check', tone: 'ink', ok: 'سيرفر التفريغ', fail: 'مشكلة في سيرفر التفريغ', named: true },
