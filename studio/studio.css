@@ -1216,3 +1216,7 @@ button.pager-num, button.pager-step { border: 0; font: inherit; font-weight: 800
 /* the rental key stays hidden as dots without being a password field (so the browser doesn't offer saved logins) */
 .srv-masked { -webkit-text-security: disc; text-security: disc; }
 .srv-drive-opt { margin-top: 12px; display: flex; flex-direction: column; gap: 4px; }
+.srv-dls { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+.srv-dl { display: flex; flex-direction: column; gap: 4px; }
+.srv-dl-head { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; }
+.srv-dl-head span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }

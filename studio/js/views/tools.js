@@ -615,7 +615,12 @@ export async function renderServerTool(page) {
             <div><small>عدّى</small><b>${span(now - job.started)}</b></div>
             ${job.pct != null ? html`<div><small>فاضل</small><b>${leftText(job.left)}</b></div>` : ''}
           </div>
-        </div>` : alive ? html`<div class="srv-job"><b>مفيش شغل دلوقتي</b><p class="muted">مستني عرض جديد أو ترجمة عربي. هيقفل نفسه لوحده بعد ${num(st.idleLeft || 0)} دقيقة لو مفيش شغل.</p></div>` : ''}
+        </div>` : alive && !(st.downloads || []).length ? html`<div class="srv-job"><b>مفيش شغل دلوقتي</b><p class="muted">مستني عرض جديد أو ترجمة عربي. هيقفل نفسه لوحده بعد ${num(st.idleLeft || 0)} دقيقة لو مفيش شغل.</p></div>` : ''}
+      ${alive && (st.downloads || []).length ? html`<div class="srv-dls"><b>${icon('download')} بيتحمّل دلوقتي (${num(st.downloads.length)})</b>
+          ${st.downloads.map(x => html`<div class="srv-dl"><div class="srv-dl-head"><span dir="ltr">${x.name}</span><b>${x.pct != null ? `${num(x.pct)}٪` : 'بيبدأ…'}</b></div>
+            <div class="srv-bar srv-bar-sm"><div style="width:${Math.min(100, x.pct || 0)}%"></div></div>
+            ${x.left != null ? html`<small class="muted">فاضل ${span(x.left * 1000)}</small>` : ''}</div>`)}
+          <p class="muted small">تقدر تفتح عرض تاني في متصفح السيرفر وتحمّله دلوقتي، هيتحمّل جنبهم.</p></div>` : ''}
       ${alive && (q.links || q.subs || q.merge) ? html`<p class="muted">مستني بعده: ${[q.links ? `${num(q.links)} رابط للتحميل` : '', q.subs ? `${num(q.subs)} فيديو للتفريغ` : '', q.merge ? `${num(q.merge)} ترجمة عربي للدمج` : ''].filter(Boolean).join(' — ')}</p>` : ''}
       ${d.pending && d.pending.length ? html`<p class="srv-wait">${icon('clock')} ${num(d.pending.length)} طلب مستني السيرفر ياخده${alive ? ' (خلال ثواني)' : ' (أول ما يشتغل)'}</p>` : ''}
       ${alive && st.drive ? html`<div class="srv-drive-opt"><label class="srv-host-on"><input type="checkbox" id="srv-drive-ready" ${st.driveReady !== false ? 'checked' : ''}> ارفع العروض الجاهزة على جوجل درايف</label>
