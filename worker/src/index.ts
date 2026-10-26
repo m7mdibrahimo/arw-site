@@ -3638,24 +3638,27 @@ export default {
           }
           const running = mine.find((i: any) => i.actual_status === "running" || i.actual_status === "loading");
           if (path.endsWith("/stop")) {
+            // also the end of waiting for his machine (the panel's «بطّل الانتظار»)
+            if (await env.PUSH_KV.get("tools:start-wait")) { await env.PUSH_KV.delete("tools:start-wait"); if (!running) return json({ success: true, state: "stopped", message: "تمام، بطّلت أستنى الجهاز" }); }
             for (const i of mine.filter((i: any) => i.intended_status === "running")) await vast(`/instances/${i.id}/`, { method: "PUT", body: JSON.stringify({ state: "stopped" }) });
             await encEvent(env, "stop");
             return json({ success: true, state: "stopped", message: "السيرفر بيتقفل — مش هيتحسب غير تمن المساحة" });
           }
           if (running) return json({ success: true, state: "running", message: "السيرفر شغال أصلًا" });
           const old = mine[0];
-          if (old) {
-            const r = await vast(`/instances/${old.id}/`, { method: "PUT", body: JSON.stringify({ state: "running" }) });
-            if (r.body && r.body.success) await encEvent(env, "start");
-            if (r.body && r.body.success) return json({ success: true, state: "starting", message: "السيرفر بيشتغل — خلال دقيقة هيبان «شغال»" });
-            await vast(`/instances/${old.id}/`, { method: "PUT", body: JSON.stringify({ state: "stopped" }) }); // cancel the queued start
-          }
-          // the card was taken (or there's no machine): rent the cheapest good one from the owner's template
-          // the owner wants the same machine every time (2026-10-26: «عايز يكون زيه تماما بالظبط في كل مرة»): the same
-          // physical one first (KV tools:pref-machine), then one with the same card, a fast line and cheap internet;
-          // anything else only when he asks for it (body.any)
           const sb: any = await request.json().catch(() => ({}));
           const anyCard = !!sb.any;
+          // his own machine (owner 2026-10-26: «لما اشغل السيرفر ويلاقيه مشغول يفضل وراه لحد ما يكون فاضي … مش ال هو يشوف
+          // جهاز تاني»): started if its card is free; if it's busy with another renter (or was deleted after 12 h off),
+          // the worker keeps trying every 2 minutes (encStartWait) — another machine only when he asks (body.any)
+          if (!anyCard) {
+            const r = await encTryOwn(env, k, old);
+            if (r) { await encEvent(env, r === "rented" ? "freed" : "start"); return json({ success: true, state: "starting", message: r === "rented" ? "جهازك كان فاضي وأجّرته تاني — هيركّب نفسه في حوالي ١٠ دقايق" : "السيرفر بيشتغل — خلال دقيقة هيبان «شغال»" }); }
+            if (!(await env.PUSH_KV.get("tools:start-wait"))) { await env.PUSH_KV.put("tools:start-wait", JSON.stringify({ since: Date.now() })); await encEvent(env, "waiting"); }
+            return json({ success: true, state: "waiting", message: "جهازك مشغول دلوقتي مع حد تاني. هفضل أحاول كل دقيقتين، وأول ما يفضى هيشتغل لوحده ويوصلك إشعار." });
+          }
+          await env.PUSH_KV.delete("tools:start-wait");
+          // he asked for the closest machine: the cheapest good one from his template
           const prefGpu = (await env.PUSH_KV.get("tools:pref-gpu")) || "RTX 3060";
           const q = { gpu_name: { in: anyCard ? ["RTX 3060", "RTX 3060 Ti", "RTX 4060", "RTX 4060 Ti", "RTX 4070", "RTX 3070", "RTX 3080", "RTX 2080 Ti", "RTX A4000"] : [prefGpu] }, num_gpus: { eq: 1 }, rentable: { eq: true }, verified: { eq: true },
             reliability2: { gte: 0.985 }, cpu_cores_effective: { gte: 12 }, disk_space: { gte: 100 }, inet_down: { gte: 500 }, inet_up: { gte: anyCard ? 300 : 1500 }, gpu_ram: { gte: 7900 },
@@ -3686,7 +3689,7 @@ export default {
               return json({ success: true, state: "new", message: `كارت السيرفر القديم كان متاخد، فأجّرت جهاز جديد (${o.gpu_name} — حوالي ${Math.round(o.dph_total * 100)} سنت في الساعة). هيركّب نفسه في حوالي ١٠ دقايق.` });
             }
           }
-          return json({ success: false, noSame: !anyCard, error: anyCard ? "مفيش جهاز مناسب فاضي دلوقتي — جرّب كمان شوية" : "جهاز زي بتاعك (نفس الكارت ونت رخيص وخط سريع) مش فاضي دلوقتي. استنى شوية وجرّب تاني، أو خد أقرب جهاز ليه." });
+          return json({ success: false, error: "مفيش جهاز مناسب فاضي دلوقتي — جرّب كمان شوية" });
         }
         if (path === "/api/studio/tools/server/start-info" && request.method === "GET") {
           return json({ success: true, hasMachine: !!(await env.PUSH_KV.get("tools:instance-id")) });
@@ -3723,7 +3726,8 @@ export default {
           try { status = st ? { ...JSON.parse(st.data), at: st.at } : null; } catch { status = null; }
           const pending = await env.ANALYTICS.prepare("SELECT kind, data, created FROM enc_cmds WHERE taken = 0 ORDER BY id").all().catch(() => ({ results: [] as any[] }));
           const vastKey = !!(await env.PUSH_KV.get("tools:vast-key"));
-          return json({ success: true, now: Date.now(), vastKey, status, jobs: jobs.results || [], pending: (pending.results || []).map((c: any) => { try { return { kind: c.kind, created: c.created, ...JSON.parse(c.data) }; } catch { return { kind: c.kind, created: c.created }; } }) });
+          const waiting = (await env.PUSH_KV.get("tools:start-wait", "json").catch(() => null)) as any;
+          return json({ success: true, now: Date.now(), vastKey, waiting: waiting ? Number(waiting.since) || null : null, status, jobs: jobs.results || [], pending: (pending.results || []).map((c: any) => { try { return { kind: c.kind, created: c.created, ...JSON.parse(c.data) }; } catch { return { kind: c.kind, created: c.created }; } }) });
         }
         if (path === "/api/studio/tools/pinned" && request.method === "GET") {
           const f = await readRepoFile(env, "_data/pinned.json");
@@ -4514,6 +4518,7 @@ export default {
       // the rented encoding machine, off for 12 hours, is deleted so its disk isn't paid for (owner 2026-10-26)
       minute === 33 ? encIdleSweep(env).catch((e: any) => console.log("[enc] sweep:", e?.message || e)) : Promise.resolve(),
       minute % 5 === 2 ? encOfflineCheck(env).catch(() => {}) : Promise.resolve(),
+      minute % 2 === 1 ? encStartWait(env).catch((e: any) => console.log("[enc] wait:", e?.message || e)) : Promise.resolve(),
       // followers told of each new full show: their inbox, then their devices
       runFollowNotify(env as any, _controller.scheduledTime).then(() => runFollowPush(env as any, _controller.scheduledTime)).catch(() => {}),
       // a subscription that just ended drops its look in the community rooms too
@@ -4554,6 +4559,50 @@ async function encEvent(env: Env, kind: string, name = "", now = Date.now()) {
     await env.ANALYTICS.prepare("CREATE TABLE IF NOT EXISTS enc_events (id INTEGER PRIMARY KEY AUTOINCREMENT, at INTEGER NOT NULL, kind TEXT NOT NULL, name TEXT NOT NULL DEFAULT '')").run().catch(() => {});
     await add().catch(() => {});
   }
+}
+
+/** His own machine back on: started if its card is free, or — deleted after 12 h off — rented again from the same
+ *  physical host (KV tools:pref-machine). "started" | "rented" | "" (busy) */
+async function encTryOwn(env: Env, k: string, old?: any): Promise<string> {
+  const vast = (p: string, init: RequestInit = {}) => fetch(`https://console.vast.ai/api/v0${p}`, { ...init, headers: { Authorization: `Bearer ${k}`, "Content-Type": "application/json" } })
+    .then(async r => ({ ok: r.ok, body: await r.json().catch(() => ({})) as any }));
+  if (!old) {
+    const iid = await env.PUSH_KV.get("tools:instance-id");
+    if (iid) {
+      const b = (await vast(`/instances/${iid}/?owner=me`)).body;
+      old = b && (b.instances && !Array.isArray(b.instances) ? b.instances : Array.isArray(b.instances) ? b.instances[0] : null);
+      if (old && !old.id) old = null;
+    }
+  }
+  if (old) {
+    if (old.actual_status === "running" || old.actual_status === "loading") return "started";
+    const r = await vast(`/instances/${old.id}/`, { method: "PUT", body: JSON.stringify({ state: "running" }) });
+    if (r.body && r.body.success) return "started";
+    await vast(`/instances/${old.id}/`, { method: "PUT", body: JSON.stringify({ state: "stopped" }) }); // no queued start
+    return "";
+  }
+  const pref = await env.PUSH_KV.get("tools:pref-machine");
+  if (!pref) return "";
+  const offers = (await vast("/bundles/", { method: "POST", body: JSON.stringify({ machine_id: { eq: Number(pref) }, rentable: { eq: true }, type: "on-demand", limit: 5 }) })).body.offers || [];
+  for (const o of offers.filter((o: any) => String(o.machine_id) === pref && Number(o.num_gpus) === 1)) {
+    const r = await vast(`/asks/${o.id}/`, { method: "PUT", body: JSON.stringify({ client_id: "me", template_hash_id: "b5f507df99df79817c49c792eff21439", disk: 100, label: "arw-tafrigh" }) });
+    if (r.body && r.body.success) {
+      if (r.body.new_contract) await env.PUSH_KV.put("tools:instance-id", String(r.body.new_contract));
+      return "rented";
+    }
+  }
+  return "";
+}
+
+/** «شغّل السيرفر» found his machine busy: tried again every 2 minutes until it's free (a day at most) */
+async function encStartWait(env: Env, now = Date.now()) {
+  const w = (await env.PUSH_KV.get("tools:start-wait", "json").catch(() => null)) as any;
+  if (!w) return;
+  if (now - Number(w.since) > 24 * 3600_000) { await env.PUSH_KV.delete("tools:start-wait"); await encEvent(env, "wait-timeout"); return; }
+  const k = await env.PUSH_KV.get("tools:vast-key");
+  if (!k) return;
+  const r = await encTryOwn(env, k);
+  if (r) { await env.PUSH_KV.delete("tools:start-wait"); await encEvent(env, "freed"); }
 }
 
 /** The machine stopped answering (turned off, or lost) — told once, every 5 minutes checked */

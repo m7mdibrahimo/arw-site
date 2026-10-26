@@ -555,15 +555,7 @@ export async function renderServerTool(page) {
     if (b) { b.disabled = true; b.textContent = which === 'start' ? 'بيشغّل…' : 'بيقفل…'; }
     try {
       const r = await tools.serverPower(which);
-      if (r && r.noSame) {
-        // no A4000 like his is free: he decides — wait, or take the closest machine for now
-        const ok = await dialog({ title: 'الجهاز بتاعك مش فاضي دلوقتي', body: r.error, confirm: 'خد أقرب جهاز ليه', cancel: 'هستنى' });
-        if (ok) {
-          const r2 = await tools.serverPower('start', { any: true });
-          if (r2 && r2.success === false) throw new Error(r2.error || 'حصلت مشكلة');
-          toast(r2.message || 'تمام', 'ok', 8000);
-        }
-      } else if (r && r.success === false) throw new Error(r.error || 'حصلت مشكلة');
+      if (r && r.success === false) throw new Error(r.error || 'حصلت مشكلة');
       else toast(r.message || 'تمام', 'ok', 8000);
     } catch (e) { toast(e.message || 'حصلت مشكلة', 'error', 8000); }
     setTimeout(tick, 4000);
@@ -590,6 +582,7 @@ export async function renderServerTool(page) {
       <div class="srv-top">
         <div class="srv-state"><i class="srv-dot ${alive ? 'on' : ''}"></i><b>${alive ? 'السيرفر شغال' : 'السيرفر مقفول'}</b></div>
         ${alive ? (job ? '' : html`<button class="btn btn-sm btn-ghost" id="srv-stop">${icon('x')} اقفل السيرفر</button>`)
+          : d.waiting ? html`<button class="btn btn-sm btn-ghost" id="srv-stop">${icon('x')} بطّل الانتظار</button>`
           : d.vastKey ? html`<button class="btn btn-primary" id="srv-start">${icon('bolt')} شغّل السيرفر</button>`
           : html`<a class="btn btn-primary" href="#srv-key-box">${icon('bolt')} جهّز زرار التشغيل</a>`}
       </div>
@@ -604,7 +597,10 @@ export async function renderServerTool(page) {
         </details>` : ''}
       <p class="muted srv-sub">${alive ? `آخر إشارة منه: ${timeAgo(st.at)} — اشتغل الساعة ${dayClock(st.boot)}`
         : st ? `مقفول من ${dayClock(st.at)}` : 'لسه مبعتش أي إشارة'}</p>
-      ${!alive ? html`<p class="muted srv-note">${d.vastKey ? 'دوس «شغّل السيرفر» وخلاص: لو جهازك موجود هيشتغل خلال دقيقة. ولو اتمسح (بيتمسح لوحده بعد ١٢ ساعة مقفول عشان متدفعش مساحة) أو كارته اتاخد، هيأجّر جهاز زيه بالظبط (نفس الكارت ونت رخيص) ويركّب نفسه في حوالي ١٠ دقايق، وبعدها دوس «وصّل درايف». اللي طلبته وهو مقفول هيتعمل أول ما يشتغل.' : 'عشان تشغّله بضغطة واحدة من هنا، حط مفتاح موقع التأجير مرة واحدة في «زرار التشغيل» تحت.'}</p>` : ''}
+      ${!alive && d.waiting ? html`<div class="srv-job"><b>${icon('clock')} مستني جهازك يفضى</b>
+          <p class="muted">جهازك مشغول مع حد تاني. بحاول عليه كل دقيقتين من الساعة ${dayClock(d.waiting)}، وأول ما يفضى هيشتغل لوحده ويوصلك إشعار. لو عايز تشتغل دلوقتي حالًا خد أقرب جهاز ليه (هيتأجّر جهاز جديد ويركّب نفسه في حوالي ١٠ دقايق).</p>
+          <div class="srv-actions"><button class="btn btn-sm" id="srv-any">${icon('bolt')} خد أقرب جهاز ليه</button></div></div>`
+        : !alive ? html`<p class="muted srv-note">${d.vastKey ? 'دوس «شغّل السيرفر» وخلاص: لو جهازك فاضي هيشتغل خلال دقيقة. ولو مشغول مع حد تاني، هفضل أحاول عليه لحد ما يفضى وأشغّله لوحده. اللي طلبته وهو مقفول هيتعمل أول ما يشتغل.' : 'عشان تشغّله بضغطة واحدة من هنا، حط مفتاح موقع التأجير مرة واحدة في «زرار التشغيل» تحت.'}</p>` : ''}
       ${job ? html`<div class="srv-job">
           <b>${st.paused ? 'متوقف مؤقتًا' : (STEP_NOW[job.step] || 'شغال على')}: ${job.name}</b>
           <div class="srv-ctl-row">${controls(st, job.name)}</div>
@@ -776,6 +772,13 @@ export async function renderServerTool(page) {
       };
       if ($('#srv-start')) $('#srv-start').onclick = () => power('start');
       if ($('#srv-stop')) $('#srv-stop').onclick = () => power('stop');
+      if ($('#srv-any')) $('#srv-any').onclick = async () => {
+        if (!(await dialog({ title: 'تاخد أقرب جهاز؟', body: 'هيتأجّر جهاز جديد بنفس المواصفات تقريبًا، ويتمسح جهازك القديم. هيركّب نفسه في حوالي ١٠ دقايق، وبعدها دوس «وصّل درايف».', confirm: 'أيوه خده', cancel: 'هستنى جهازي' }))) return;
+        $('#srv-any').disabled = true;
+        try { const r = await tools.serverPower('start', { any: true }); if (r && r.success === false) throw new Error(r.error || 'حصلت مشكلة'); toast(r.message || 'تمام', 'ok', 8000); }
+        catch (e) { toast(e.message || 'حصلت مشكلة', 'error', 8000); }
+        setTimeout(tick, 4000);
+      };
       if (keyDrawn !== !!last.vastKey) { keyDrawn = !!last.vastKey; drawKey(keyDrawn); }
       // don't redraw the shows while a file picker is open or a position was just picked mid-upload
       if (!document.activeElement || !document.activeElement.matches('input[type=file]')) drawShows(last);
