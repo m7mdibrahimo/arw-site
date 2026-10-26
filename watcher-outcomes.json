@@ -1,23 +1,28 @@
 {
+ "https://www.fightful.com/wrestling/cmll-domingo-familiar-results-10-25-2026-india-sioux-vs-queen-aminata-volador-jr-vs-esfinge-more": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-26T15:35:26.539Z"
+ },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-10-26": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T15:25:56.024Z"
+  "at": "2026-10-26T15:30:28.143Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-26T15:25:55.819Z"
+  "at": "2026-10-26T15:30:27.935Z"
  },
  "https://www.fightful.com/wrestling/myles-borne-on-grayson-waller-wearing-a-stephanie-vaquer-t-shirt-you-spent-money-on-her-shirt-youre-a-fan": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T15:25:55.637Z"
+  "at": "2026-10-26T15:30:27.748Z"
  },
  "https://www.fightful.com/wrestling/myles-borne-tells-fans-they-are-wasting-their-engery-by-chanting-what-at-him": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T15:25:55.379Z"
+  "at": "2026-10-26T15:30:27.483Z"
  },
  "https://www.wrestlinginc.com/2296527/wwe-nxt-viewership-ratings-october-20-2026": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-13T00:37:26.531Z"
- },
- "https://www.fightful.com/wrestling/cody-rhodes-there-was-never-any-heat-with-travis-scott-id-like-to-see-him-back-doing-something-with-wwe": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-12T23:14:12.748Z"
  }
 }
