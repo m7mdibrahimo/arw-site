@@ -1,6 +1,6 @@
 ---
 federation: INDIE
-title: "نتائج عرض Focus Pro The World In My Hands: مواجهة دييغو ألفاريز و1 Called Manders"
+title: "نتائج عرض Focus Pro The World In My Hands: دييغو ألفاريز ضد 1 Called Manders"
 date: 2026-10-27T00:25:29.000+03:00
 published_at: 2026-10-26T21:42:42.128Z
 source_id: 335949
@@ -13,6 +13,7 @@ tags:
   - دييغو ألفاريز
   - ستيف دي لاندر
 image: /content/images/mjs43plhsin4x9m4.jpg
+permalink: "/news/20261027002529-نتائج-عرض-focus-pro-the-world-in-my-hands-مواجهة-دييغو-ألفاريز-و1-called-manders/index.html"
 layout: post-layout.njk
 ---
 أقام اتحاد Focus Pro Wrestling عرض Focus Pro The World In My Hands يوم 24 أكتوبر من صالة سونيا في كامبريدج بولاية ماساتشوستس، وتم بث العرض عبر منصة IWTV.
@@ -20,7 +21,7 @@ layout: post-layout.njk
 ---
 **المواجهة الأولى: بطولة Fight Factory Pro Wrestling الأيرلندية للوزن الخفيف**
 
-تمكن أوستن لوك من هزيمة البطل إ جي كليري بالاستبعاد، ليحافظ كليري على لقبه.
+تمكن أوستن لوك من هزيمة البطل إل جيه كليري بالاستبعاد، ليحافظ كليري على لقبه.
 
 🏆 **الفائز:** أوستن لوك
 

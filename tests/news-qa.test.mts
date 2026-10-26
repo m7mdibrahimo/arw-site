@@ -206,3 +206,10 @@ test("the story must not talk about «the source» (INCIDENTS #854: «بلا ن�
   assert.ok(checkArticle(t, "خاض الفريق مواجهة، ولم يذكر المصدر نتيجة النزال.").some((i) => i.code === "source_meta"));
   assert.ok(!checkArticle(t, "ولم يتم الإعلان عن نتيجة النزال. وقال مصدر مطلع إن الصفقة قريبة.").some((i) => i.code === "source_meta"));
 });
+
+test("a lone letter from a split name («إ جي كليري») is blocking and retryable, and the correction fixes it (INCIDENTS #855)", async () => {
+  const { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, applyCorrections } = await import("../scripts/news-qa.ts");
+  assert.ok(BLOCKING_QA_CODES.includes("truncated_word") && RETRYABLE_QA_CODES.includes("truncated_word"));
+  assert.ok(checkArticle("عنوان تجريبي", "هزم أوستن لوك البطل إ جي كليري بالاستبعاد.\n\nنص آخر طويل بما يكفي.").some((i) => i.code === "truncated_word"));
+  assert.equal(applyCorrections("هزم أوستن لوك البطل إ جي كليري"), "هزم أوستن لوك البطل إل جيه كليري");
+});

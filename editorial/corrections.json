@@ -2,6 +2,12 @@
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
   {
+   "wrong": "إ\\s+جي",
+   "right": "إل جيه",
+   "regex": true,
+   "note": "اسم LJ اتكتب حرف منفصل «إ جي» (كليري) — INCIDENTS #855"
+  },
+  {
    "wrong": "يظفر بالفوز",
    "right": "يحقق الفوز",
    "note": "«الظفر/يظفر» كلمة فصحى قديمة مش مفهومة للقارئ؛ «الفوز/يفوز» أوضح — عنوان درو ماكنتاير «يلمح إلى خططه للظفر ببطولة العالم»، صاحب الموقع: «مش مفهوم خالص زي كلمة للظفر» (INCIDENTS #623)"
