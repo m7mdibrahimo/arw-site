@@ -73,6 +73,8 @@ const ENC = {
   'wait-timeout': { ico: 'alert', tone: 'coral', ok: 'جهاز التفريغ فضل مشغول يوم كامل', detail: 'بطّلت أستنى — شغّله تاني أو خد أقرب جهاز' },
   'alt-rent': { ico: 'alert', tone: 'yellow', ok: 'كاليفورنيا فضل مشغول نص ساعة، فأجّرت جهاز شبهه:', named: true, detail: 'هيركّب نفسه في حوالي ١٠ دقايق — بعدها دوس «وصّل درايف»' },
   'alt-start': { ico: 'check', tone: 'sky', ok: 'كاليفورنيا فضل مشغول نص ساعة، فشغّلت الجهاز الشبيه:', named: true, detail: 'خلال دقيقة هيبان «شغال»' },
+  'list-gone': { ico: 'alert', tone: 'coral', ok: 'جهاز من قائمة السيرفرات اتشال من موقع التأجير:', named: true, detail: 'قولّي وأحطلك جهاز شبهه مكانه' },
+  'list-ending': { ico: 'clock', tone: 'yellow', ok: 'جهاز من قائمة السيرفرات عرضه بيخلص قريب:', named: true, detail: 'غالبًا صاحبه هيجدده — لو اتشال هيوصلك إشعار' },
   online: { ico: 'check', tone: 'teal', ok: 'سيرفر التفريغ اشتغل', detail: 'جاهز للشغل' },
   start: { ico: 'check', tone: 'sky', ok: 'طلبت تشغيل سيرفر التفريغ', detail: 'هيبان «شغال» خلال دقيقة' },
   rented: { ico: 'alert', tone: 'yellow', ok: 'اتأجر جهاز تفريغ جديد', named: true, detail: 'الكارت القديم كان متاخد — هيركّب نفسه في حوالي ١٠ دقايق' },

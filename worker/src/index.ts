@@ -4524,6 +4524,7 @@ export default {
       // the rented encoding machine, off for 12 hours, is deleted so its disk isn't paid for (owner 2026-10-26)
       minute === 33 ? encIdleSweep(env).catch((e: any) => console.log("[enc] sweep:", e?.message || e)) : Promise.resolve(),
       minute % 5 === 2 ? encOfflineCheck(env).catch(() => {}) : Promise.resolve(),
+      minute === 47 && new Date(_controller.scheduledTime).getUTCHours() === 7 ? encListCheck(env).catch(() => {}) : Promise.resolve(),
       minute % 2 === 1 ? encStartWait(env).catch((e: any) => console.log("[enc] wait:", e?.message || e)) : Promise.resolve(),
       // followers told of each new full show: their inbox, then their devices
       runFollowNotify(env as any, _controller.scheduledTime).then(() => runFollowPush(env as any, _controller.scheduledTime)).catch(() => {}),
@@ -4616,6 +4617,26 @@ async function encStartWait(env: Env, now = Date.now()) {
   if (now - Number(w.since) >= 30 * 60_000) {
     const alt = await encTryAlt(env, k);
     if (alt) { await env.PUSH_KV.delete("tools:start-wait"); await encEvent(env, alt.rented ? "alt-rent" : "alt-start", alt.name); }
+  }
+}
+
+/** Each machine on his list is offered by its owner until a date the owner sets (they usually extend it): once a day
+ *  the bell is told about one that is gone from the site or ends within 5 days, so a look-alike can take its place */
+async function encListCheck(env: Env, now = Date.now()) {
+  const k = await env.PUSH_KV.get("tools:vast-key");
+  if (!k) return;
+  const pref = await env.PUSH_KV.get("tools:pref-machine");
+  const alts = ((await env.PUSH_KV.get("tools:alt-machines", "json").catch(() => null)) as any[] || []).filter(a => a && a.id);
+  const list = [...(pref ? [{ id: pref, name: "كاليفورنيا" }] : []), ...alts];
+  for (const m of list) {
+    const r = await fetch("https://console.vast.ai/api/v0/bundles/", { method: "POST", headers: { Authorization: `Bearer ${k}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ machine_id: { eq: Number(m.id) }, num_gpus: { eq: 1 }, type: "on-demand", limit: 3 }) }).then(r => r.json()).catch(() => null) as any;
+    if (!r) continue;
+    // told once in 3 days at most
+    if (env.ANALYTICS && await env.ANALYTICS.prepare("SELECT id FROM enc_events WHERE kind IN ('list-gone','list-ending') AND name LIKE ? AND at > ? LIMIT 1").bind(`${m.name}%`, now - 3 * 86400_000).first().catch(() => null)) continue;
+    const end = Math.max(0, ...((r.offers || []).map((o: any) => Number(o.end_date) * 1000 || 0)));
+    if (!(r.offers || []).length) await encEvent(env, "list-gone", m.name);
+    else if (end && end - now < 5 * 86400_000) await encEvent(env, "list-ending", `${m.name} — ${new Date(end).toISOString().slice(0, 10)}`);
   }
 }
 
