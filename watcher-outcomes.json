@@ -7,32 +7,32 @@
  "https://www.fightful.com/wrestling/kaylia-capri-misses-rows-sherri-martel-classic-due-to-car-accident-notes-that-she-suffered-minor-injuries": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T20:46:25.048Z"
+  "at": "2026-10-26T20:52:36.926Z"
  },
  "https://www.fightful.com/wrestling/alexa-bliss-states-that-she-bray-wyatt-were-supposed-to-reunite-on-wwe-programming": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T20:46:24.869Z"
+  "at": "2026-10-26T20:52:36.744Z"
  },
  "https://www.fightful.com/wrestling/alexa-bliss-says-traveling-with-her-daughter-was-worked-into-wwe-contract-thats-a-non-negotiable": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T20:46:24.639Z"
+  "at": "2026-10-26T20:52:36.509Z"
  },
  "https://www.fightful.com/wrestling/brooke-hogan-reacts-to-sale-of-hulk-hogans-florida-mansion-the-sick-feeling-is-indescribable": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T20:46:24.398Z"
+  "at": "2026-10-26T20:52:36.262Z"
  },
  "https://www.fightful.com/wrestling/channing-stacks-lorenzo-provides-update-after-suffering-injury-at-nxt-house-show": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T20:46:24.165Z"
+  "at": "2026-10-26T20:52:36.029Z"
  },
  "https://www.fightful.com/wrestling/steve-maclin-details-suffering-broken-fibula-ten-weeks-before-adam-copeland-match-at-mlp-northern-rising": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T20:46:23.848Z"
+  "at": "2026-10-26T20:52:35.735Z"
  },
  "https://www.fightful.com/wrestling/zoey-serrano-i-really-would-like-to-help-harley-hudson-elevate-her-up-a-little-bit-more-in-tna": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -1993,10 +1993,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-10-13T16:51:31.664Z"
- },
- "https://www.fightful.com/wrestling/kevin-knight-shares-that-he-spent-the-night-in-hospital-with-steven-borden-after-injury-at-aew-all-out": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-13T16:41:55.344Z"
  }
 }
