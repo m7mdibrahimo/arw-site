@@ -896,3 +896,10 @@ test("«أنه وجهت له دعوة» is corrected to «أنه تلقى دعو
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "").includes("أنه وجهت له دعوة"));
   assert.deepEqual(bad, []);
 });
+
+test("Alexa Bliss is spelled «بليس» (INCIDENTS #843)", () => {
+  const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string }[];
+  assert.ok(corrections.some(c => c.wrong === "أليكسا بلس" && c.right === "أليكسا بليس"));
+  const names = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8"));
+  assert.equal(names["Alexa Bliss"], "أليكسا بليس");
+});
