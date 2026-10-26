@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2295617/tatum-paxley-discusses-wwe-main-roster-mentor": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-26T01:05:05.051Z"
+ },
  "https://www.fightful.com/wrestling/eric-young-and-wwe-details": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,11 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-26T00:45:16.164Z"
- },
- "https://www.wrestlinginc.com/2295617/tatum-paxley-discusses-wwe-main-roster-mentor": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-26T00:18:06.054Z"
  },
  "https://www.fightful.com/wrestling/wwf-red-letter-intercontinental-championship-belt-becomes-most-valuable-wrestling-title-ever-sold-at-716750": {
   "reason": "مكرر مع خبر نزل قبل كده",
