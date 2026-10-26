@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/mvp-says-diddys-prison-perks-nothing-compared-what-hes-seen-behind-bars": {
+  "reason": "المراجعة رفضته: جزء إنجليزي صغير الحروف وسط اسم عربي («كايل ayla Kassidy») — الاسم اتكسر: اكتبه كله بالعربي أو كله بالإنجليزي (INCIDENTS #819)",
+  "retry": false,
+  "at": "2026-10-26T19:26:09.875Z"
+ },
  "https://www.fightful.com/wrestling/kaylia-capri-misses-rows-sherri-martel-classic-due-to-car-accident-notes-that-she-suffered-minor-injuries": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-13T14:56:22.377Z"
- },
- "https://www.fightful.com/wrestling/chelsea-green-appears-on-wwe-raw-set-to-face-liv-morgan-at-wwe-crown-jewel": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-13T13:52:22.756Z"
  }
 }
