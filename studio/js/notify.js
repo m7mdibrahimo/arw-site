@@ -65,6 +65,7 @@ const ENC = {
   upload: { ico: 'send', tone: 'teal', ok: 'اترفع العرض', fail: 'فشل رفع العرض', named: true },
   'subs-start': { ico: 'film', tone: 'sky', ok: 'بدأ تفريغ العرض', named: true },
   'merge-start': { ico: 'show', tone: 'sky', ok: 'بدأ دمج العرض', named: true },
+  novideo: { ico: 'alert', tone: 'coral', ok: 'الترجمة العربي وصلت بس فيديو العرض مش على السيرفر:', named: true, detail: 'ارفع الفيديو من «سيرفر التفريغ» والدمج هيبدأ لوحده' },
   cancelled: { ico: 'shield', tone: 'ink', ok: 'وقفت العرض', named: true, detail: 'بقرار منك' },
   drive: { ico: 'folder', tone: 'sky', ok: 'العرض وصل على جوجل درايف', named: true },
   online: { ico: 'check', tone: 'teal', ok: 'سيرفر التفريغ اشتغل', detail: 'جاهز للشغل' },

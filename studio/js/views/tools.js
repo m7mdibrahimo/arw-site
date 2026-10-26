@@ -633,6 +633,7 @@ export async function renderServerTool(page) {
     if (s.merged && !s.drive && last && last.status && last.status.driveReady !== false) return { text: 'بيترفع على درايف', tone: 'run' };
     if (s.merged) return { text: 'جاهز ✓', tone: 'ok' };
     if (s.mergeFailed) return { text: 'الدمج فشل', tone: 'bad' };
+    if (s.ar && s.noVideo) return { text: 'مستني الفيديو', tone: 'bad' };
     if (s.ar) return { text: 'مستني الدمج', tone: 'wait' };
     if (s.en) return { text: 'الترجمة الإنجليزي جاهزة', tone: 'ok' };
     if (s.subsFailed) return { text: 'التفريغ فشل', tone: 'bad' };
@@ -654,6 +655,7 @@ export async function renderServerTool(page) {
           ${st && st.driveUp ? html`<div class="srv-bar srv-bar-sm"><div style="width:${Math.min(100, st.driveUp.pct)}%"></div></div>` : ''}` : ''}
         ${s.stopped === 'merge' || (s.mergeFailed && s.ar && !busy) ? html`<div class="srv-actions"><button class="btn btn-sm btn-primary" data-remerge="${n}">${icon('refresh')} ابدأ الدمج تاني</button></div>` : ''}
         ${busy && st.job.pct != null ? html`<div class="srv-bar srv-bar-sm"><div style="width:${Math.min(100, st.job.pct)}%"></div></div><small class="muted">فاضل ${leftText(st.job.left)}</small><br>` : ''}
+        ${s.ar && s.noVideo && !s.merged ? html`<p class="srv-wait">${icon('alert')} فيديو العرض ده مش على السيرفر. ارفعه من «ارفع من جهازك» (لفولدر «1-الفيديوهات») أو حط رابطه فوق، والدمج هيبدأ لوحده أول ما يوصل.</p>` : ''}
         ${s.ar && !s.merged ? html`<div class="srv-arinfo">${icon('check')} الترجمة العربي: <b dir="ltr">${s.arFile || 'ملف الترجمة'}</b>${s.arLines ? html`<span class="muted"> — ${num(s.arLines)} جملة</span>` : ''}${!busy && alive && st.job && st.job.step === 'merge' ? html`<span class="muted"> — هيتدمج بعد «${st.job.name.slice(0, 40)}»</span>` : ''}</div>` : ''}
         <small class="muted">لغة الصوت: ${LANG_NAME[s.lang] || 'إنجليزي'} — ${s.qual === '720' ? '٧٢٠ بس' : '٤ جودات'}${s.ar ? ` — اللوجو: ${(POSITIONS.find(p => p.pos === s.ar) || POSITIONS[0]).name}` : ''}</small>
         <div class="srv-actions">

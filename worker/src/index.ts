@@ -3306,7 +3306,7 @@ export default {
           if (cmds.length) await env.ANALYTICS.prepare(`UPDATE enc_cmds SET taken = ? WHERE id IN (${cmds.map(() => "?").join(",")})`).bind(now, ...cmds.map(c => c.id)).run();
           return json({ success: true, commands: cmds.map(c => { try { return { kind: c.kind, ...JSON.parse(c.data) }; } catch { return { kind: c.kind }; } }) });
         } else if (path === "/tools/arw-event") {
-          if (["subs-start", "merge-start", "cancelled"].includes(body.kind)) await encEvent(env, body.kind, String(body.name || ""));
+          if (["subs-start", "merge-start", "cancelled", "novideo"].includes(body.kind)) await encEvent(env, body.kind, String(body.name || ""));
         } else {
           const t = (v: any) => Math.min(now + 60_000, Math.max(0, Math.round(Number(v) || 0)));
           await env.ANALYTICS.prepare("INSERT INTO enc_jobs (name, step, started, finished, ok) VALUES (?, ?, ?, ?, ?)")
