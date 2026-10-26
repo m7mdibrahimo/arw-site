@@ -3632,12 +3632,14 @@ export default {
             await vast(`/instances/${old.id}/`, { method: "PUT", body: JSON.stringify({ state: "stopped" }) }); // cancel the queued start
           }
           // the card was taken (or there's no machine): rent the cheapest good one from the owner's template
-          // the owner wants the same machine every time (2026-10-26: «عايز يكون زيه تماما بالظبط في كل مرة»): an RTX A4000
-          // with a fast line — the same physical one first; anything else only when he asks for it (body.any)
+          // the owner wants the same machine every time (2026-10-26: «عايز يكون زيه تماما بالظبط في كل مرة»): the same
+          // physical one first (KV tools:pref-machine), then one with the same card, a fast line and cheap internet;
+          // anything else only when he asks for it (body.any)
           const sb: any = await request.json().catch(() => ({}));
           const anyCard = !!sb.any;
-          const q = { gpu_name: { in: anyCard ? ["RTX 3060", "RTX 3060 Ti", "RTX 4060", "RTX 4060 Ti", "RTX 4070", "RTX 3070", "RTX 3080", "RTX 2080 Ti", "RTX A4000"] : ["RTX A4000"] }, num_gpus: { eq: 1 }, rentable: { eq: true }, verified: { eq: true },
-            reliability2: { gte: 0.985 }, cpu_cores_effective: { gte: 16 }, disk_space: { gte: 100 }, inet_down: { gte: 500 }, inet_up: { gte: anyCard ? 300 : 1500 }, gpu_ram: { gte: 7900 },
+          const prefGpu = (await env.PUSH_KV.get("tools:pref-gpu")) || "RTX 3060";
+          const q = { gpu_name: { in: anyCard ? ["RTX 3060", "RTX 3060 Ti", "RTX 4060", "RTX 4060 Ti", "RTX 4070", "RTX 3070", "RTX 3080", "RTX 2080 Ti", "RTX A4000"] : [prefGpu] }, num_gpus: { eq: 1 }, rentable: { eq: true }, verified: { eq: true },
+            reliability2: { gte: 0.985 }, cpu_cores_effective: { gte: 12 }, disk_space: { gte: 100 }, inet_down: { gte: 500 }, inet_up: { gte: anyCard ? 300 : 1500 }, gpu_ram: { gte: 7900 },
             cuda_max_good: { gte: 12.4 }, cpu_arch: { in: ["amd64"] }, dph_total: { lte: 0.2 }, type: "on-demand", order: [["dph_total", "asc"]], limit: 30 };
           // cheapest overall: the card is paid only while it works, the 100 GB disk all day — weigh the disk 3x
           // the internet is paid too: shows come in at ~10 GB and go to Drive at 1–4 GB, so a host charging $39/TB costs
@@ -3664,7 +3666,7 @@ export default {
               return json({ success: true, state: "new", message: `كارت السيرفر القديم كان متاخد، فأجّرت جهاز جديد (${o.gpu_name} — حوالي ${Math.round(o.dph_total * 100)} سنت في الساعة). هيركّب نفسه في حوالي ١٠ دقايق.` });
             }
           }
-          return json({ success: false, noSame: !anyCard, error: anyCard ? "مفيش جهاز مناسب فاضي دلوقتي — جرّب كمان شوية" : "جهاز «إيه ٤٠٠٠» زي بتاعك مش فاضي دلوقتي. استنى شوية وجرّب تاني، أو خد أقرب جهاز ليه." });
+          return json({ success: false, noSame: !anyCard, error: anyCard ? "مفيش جهاز مناسب فاضي دلوقتي — جرّب كمان شوية" : "جهاز زي بتاعك (نفس الكارت ونت رخيص وخط سريع) مش فاضي دلوقتي. استنى شوية وجرّب تاني، أو خد أقرب جهاز ليه." });
         }
         if (path === "/api/studio/tools/server/start-info" && request.method === "GET") {
           return json({ success: true, hasMachine: !!(await env.PUSH_KV.get("tools:instance-id")) });
@@ -4514,6 +4516,7 @@ async function encIdleSweep(env: Env, now = Date.now()) {
   const inst = b && (b.instances && !Array.isArray(b.instances) ? b.instances : Array.isArray(b.instances) ? b.instances[0] : null);
   if (!inst || !inst.id) return;
   if (inst.machine_id && (await env.PUSH_KV.get("tools:pref-machine")) !== String(inst.machine_id)) await env.PUSH_KV.put("tools:pref-machine", String(inst.machine_id));
+  if (inst.gpu_name && (await env.PUSH_KV.get("tools:pref-gpu")) !== String(inst.gpu_name)) await env.PUSH_KV.put("tools:pref-gpu", String(inst.gpu_name));
   if (inst.intended_status === "running" || inst.actual_status === "running" || inst.actual_status === "loading") return;
   const st: any = await env.ANALYTICS.prepare("SELECT at FROM enc_status WHERE id = 1").first().catch(() => null);
   if (!st || now - Number(st.at) < 12 * 3600_000) return;
