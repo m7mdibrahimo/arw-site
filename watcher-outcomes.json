@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2297108/wwe-crown-jewel-dave-meltzer-move-forward-planned": {
+  "reason": "المراجعة رفضته: العنوان بينتهي بكلمة مبتورة مش موجودة في الخبر — الاقتباس اتقطع",
+  "retry": true,
+  "at": "2026-10-26T16:51:18.490Z"
+ },
  "https://www.fightful.com/wrestling/brooke-hogan-reacts-to-sale-of-hulk-hogans-florida-mansion-the-sick-feeling-is-indescribable": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-13T03:37:35.395Z"
- },
- "https://www.fightful.com/wrestling/max-casters-line-about-riyadh-at-tna-bound-for-glory-was-not-scripted-or-approved": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-13T03:26:24.799Z"
  }
 }
