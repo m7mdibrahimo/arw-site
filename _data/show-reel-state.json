@@ -4209,15 +4209,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض سوبر جونيور تاج ليج (اليوم الاول) 24.10.2026 مترجم",
-    "lastAttempt": 1792973788262,
-    "errors": {
-      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1792974758630,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -4229,7 +4225,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ان دبليو ايه باور 24.10.2026 مترجم",
-    "lastAttempt": 1792973790277,
+    "lastAttempt": 1792974760060,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
