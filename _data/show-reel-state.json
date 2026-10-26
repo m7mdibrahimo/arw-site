@@ -4267,15 +4267,15 @@
     "publishedAt": 1792970410323,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سوبر جونيور تاج ليج (اليوم الثاني) 25.10.2026 مترجم",
-    "lastAttempt": 1792981667498,
+    "lastAttempt": 1792984715476,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel"
+      "instagram_story"
     ],
     "reviewPlatforms": [],
     "needsReview": false,
