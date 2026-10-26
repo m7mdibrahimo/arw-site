@@ -34,16 +34,6 @@
   "retry": true,
   "at": "2026-10-26T22:07:22.919Z"
  },
- "https://www.ringsidenews.com/reason-behind-michin-b-fabs-wwe-womens-tag-team-title-win": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-26T21:57:07.339Z"
- },
- "https://www.ringsidenews.com/grayson-waller-fat-shames-tony-dangelo-ahead-wwe-nxt-halloween-havoc": {
-  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-10-26T21:56:39.730Z"
- },
  "https://www.fightful.com/wrestling/focus-pro-the-world-in-my-hands-results-10-24": {
   "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
   "retry": true,
