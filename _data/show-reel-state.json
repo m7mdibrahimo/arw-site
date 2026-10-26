@@ -4202,7 +4202,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261025195300-njpw-super-junior-tag-league-day-1-24-10-2026": {
     "publishedAt": 1792948334616,
@@ -4236,16 +4237,14 @@
     "publishedAt": 1792950086740,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "مباراة سامي زين ضد كودي رودز 19.10.2026 في عرض الرو دارك ماتش",
-    "lastAttempt": 1792975650597,
+    "lastAttempt": 1792976492841,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
     "reviewPlatforms": [],
