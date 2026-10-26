@@ -9286,5 +9286,65 @@
     "slug": "20261017160225-wwe-smackdown-16-10-2026",
     "image": "/content/images/dbgqg3wbhdpizx01.jpg",
     "renderedAt": 1793042101874
+  },
+  {
+    "videoUrl": "/videos/reel-20260924111500-cmll-martes-populares-22-09-20.mp4",
+    "filename": "reel-20260924111500-cmll-martes-populares-22-09-20.mp4",
+    "title": "عرض سي ام ال ال مارتيس بوبيولاريس 22.09.2026 مترجم",
+    "secondaryTitle": "CMLL Martes Populares 22.09.2026",
+    "description": "عرض سي ام ال ال مارتيس بوبيولاريس مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20260924111500-cmll-martes-populares-22-09-20",
+    "kind": "show",
+    "slug": "20260924111500-cmll-martes-populares-22-09-20",
+    "image": "/content/images/m8d59u7c9heju50p.jpg",
+    "renderedAt": 1793055403320
+  },
+  {
+    "videoUrl": "/videos/reel-20260927053000-hog-windy-city-warfare-2026.mp4",
+    "filename": "reel-20260927053000-hog-windy-city-warfare-2026.mp4",
+    "title": "عرض اتش او جي فول اوت 25.09.2026 مترجم",
+    "secondaryTitle": "HOG Windy City Warfare (2026)",
+    "description": "عرض اتش او جي فول اوت مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20260927053000-hog-windy-city-warfare-2026",
+    "kind": "show",
+    "slug": "20260927053000-hog-windy-city-warfare-2026",
+    "image": "/content/images/rv1dkjnjn7hlecbk.jpg",
+    "renderedAt": 1793055495636
+  },
+  {
+    "videoUrl": "/videos/reel-20261004111922-cmll-viernes-espectacular-02-1.mp4",
+    "filename": "reel-20261004111922-cmll-viernes-espectacular-02-1.mp4",
+    "title": "عرض سي ام ال ال فيرنس اسبكتكيولار 02.10.2026 مترجم",
+    "secondaryTitle": "CMLL Viernes Espectacular 02.10.2026",
+    "description": "عرض سي ام ال ال فيرنس اسبكتكيولار مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261004111922-cmll-viernes-espectacular-02-1",
+    "kind": "show",
+    "slug": "20261004111922-cmll-viernes-espectacular-02-1",
+    "image": "/content/images/zo50oq9ay9ddpmkw.jpg",
+    "renderedAt": 1793055589172
+  },
+  {
+    "videoUrl": "/videos/reel-20261004154654-mlp-northern-rising-2026.mp4",
+    "filename": "reel-20261004154654-mlp-northern-rising-2026.mp4",
+    "title": "عرض ام ال بي نورثرن رايزنج 03.10.2026 مترجم",
+    "secondaryTitle": "MLP Northern Rising (2026)",
+    "description": "عرض ام ال بي نورثرن رايزنج مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261004154654-mlp-northern-rising-2026",
+    "kind": "show",
+    "slug": "20261004154654-mlp-northern-rising-2026",
+    "image": "/content/images/ay4bdaohc4h5mzn9.jpg",
+    "renderedAt": 1793055683359
+  },
+  {
+    "videoUrl": "/videos/reel-20261011154305-aew-collision-grand-slam-franc.mp4",
+    "filename": "reel-20261011154305-aew-collision-grand-slam-franc.mp4",
+    "title": "عرض كوليجن 10.10.2026 مترجم",
+    "secondaryTitle": "AEW Collision Grand Slam France 10.10.2026",
+    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261011154305-aew-collision-grand-slam-franc",
+    "kind": "show",
+    "slug": "20261011154305-aew-collision-grand-slam-franc",
+    "image": "/content/images/otcp6a0qjgikvzrg.jpg",
+    "renderedAt": 1793055777253
   }
 ]
