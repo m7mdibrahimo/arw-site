@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/anna-jay-undergoes-shoulder-surgery-years-bone-deterioration": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-26T09:55:00.280Z"
+ },
  "https://www.fightful.com/wrestling/eric-young-and-wwe-details": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
   "at": "2026-10-12T17:07:21.441Z"
- },
- "https://www.fightful.com/wrestling/tna-have-had-their-eye-on-ben-bishop-since-2025-sources-within-tna-claimed-that-tommy-dreamer-was-not-a-fan-of-bishops-social-media-clips": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-12T17:07:08.304Z"
  }
 }
