@@ -39,6 +39,11 @@
   "retry": true,
   "at": "2026-10-26T20:15:39.129Z"
  },
+ "https://www.ringsidenews.com/grayson-waller-fat-shames-tony-dangelo-ahead-wwe-nxt-halloween-havoc": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-10-26T20:15:39.129Z"
+ },
  "https://www.fightful.com/wrestling/boxer-kickboxer-tenshin-nasukawa-to-compete-in-match-for-ddt-pro-wrestling": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
