@@ -4301,9 +4301,17 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض جي سي دبليو شوتزي بلاكهارتس درايف ان فروم هيل 25.10.2026 مترجم",
-    "lastAttempt": 1793038523313,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1793041892855,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story",
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
