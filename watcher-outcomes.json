@@ -1,48 +1,48 @@
 {
- "https://www.ringsidenews.com/anna-jay-undergoes-shoulder-surgery-years-bone-deterioration": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-26T09:57:43.104Z"
- },
  "https://www.fightful.com/wrestling/eric-young-and-wwe-details": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T09:52:21.646Z"
+  "at": "2026-10-26T10:03:21.290Z"
  },
  "https://www.fightful.com/wrestling/u-s-embassy-riyadh-issues-new-security-alert-advising-us-citizens-to-take-extreme-caution-if-you-choose-to-use-airports-in-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T09:52:21.292Z"
+  "at": "2026-10-26T10:03:21.064Z"
  },
  "https://www.fightful.com/wrestling/table-goes-into-business-for-itself-at-greektown-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T09:52:20.749Z"
+  "at": "2026-10-26T10:03:20.719Z"
  },
  "https://www.fightful.com/wrestling/wildman-jack-armstrong-passes-away": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T09:52:20.525Z"
+  "at": "2026-10-26T10:03:20.574Z"
  },
  "https://www.fightful.com/wrestling/revolver-jerry-lynn-invitational-results-10-24": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T09:52:20.301Z"
+  "at": "2026-10-26T10:03:20.426Z"
  },
  "https://www.fightful.com/wrestling/raquel-rodriguez-vs-iyo-sky-chad-gable-dragon-lee-vs-big-cass-ethan-page-added-to-10-26-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T09:52:20.144Z"
+  "at": "2026-10-26T10:03:20.328Z"
  },
  "https://www.fightful.com/wrestling/joe-hendry-on-creative-he-doesnt-necessarily-agree-with-i-think-your-job-in-pro-wrestling-is-to-give-it-your-absolute-best": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T09:52:19.913Z"
+  "at": "2026-10-26T10:03:20.180Z"
  },
  "https://www.fightful.com/wrestling/samantha-irvin-shares-that-she-politely-declined-wwe-record-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T09:52:19.487Z"
+  "at": "2026-10-26T10:03:19.906Z"
+ },
+ "https://www.ringsidenews.com/anna-jay-undergoes-shoulder-surgery-years-bone-deterioration": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-26T09:57:43.104Z"
  },
  "https://www.wrestlinginc.com/2295617/tatum-paxley-discusses-wwe-main-roster-mentor": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
