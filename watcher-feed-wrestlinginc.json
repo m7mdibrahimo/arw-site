@@ -1,5 +1,25 @@
 [
   {
+    "id": 2358613005,
+    "link": "https://www.wrestlinginc.com/2297809/wwe-raw-october-26-2026-results/",
+    "date": "Mon, 26 Oct 2026 22:59:37 +0000",
+    "date_gmt": "2026-10-26T22:59:37.000Z",
+    "title": {
+      "rendered": "WWE Raw Results 10/26/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-results-102626-w-live-updates/l-intro-1793055474.jpg"
+  },
+  {
+    "id": 4540964166,
+    "link": "https://www.wrestlinginc.com/2297808/aew-wwe-andrade-tony-khan-moving-between-relationship/",
+    "date": "Mon, 26 Oct 2026 22:57:42 +0000",
+    "date_gmt": "2026-10-26T22:57:42.000Z",
+    "title": {
+      "rendered": "Andrade Comments On Moving Between AEW & WWE, Relationship With Tony Khan"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/andrade-comments-on-moving-between-aew-wwe-relationship-with-tony-khan/l-intro-1793054642.jpg"
+  },
+  {
     "id": 4660663520,
     "link": "https://www.wrestlinginc.com/2297807/stephanie-vaquer-unavailable-wwe-raw-no-1-contender-becky-lynch/",
     "date": "Mon, 26 Oct 2026 22:52:11 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Tony Khan Comments On Hurt Syndicate's AEW Absence"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/tony-khan-comments-on-hurt-syndicates-aew-absence/l-intro-1793009738.jpg"
-  },
-  {
-    "id": 1815699310,
-    "link": "https://www.wrestlinginc.com/2296495/cody-rhodes-thinks-aquaman-star-jason-momoa-wwe-superstar/",
-    "date": "Mon, 26 Oct 2026 14:00:00 +0000",
-    "date_gmt": "2026-10-26T14:00:00.000Z",
-    "title": {
-      "rendered": "Cody Rhodes Thinks 'Aquaman' Star Would Make Good WWE Superstar"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/cody-rhodes-thinks-aquaman-star-would-make-good-wwe-superstar/l-intro-1793006442.jpg"
-  },
-  {
-    "id": 4627365309,
-    "link": "https://www.wrestlinginc.com/2296468/wwe-hofer-kevin-nash-mitb-title-match-made-statement-roman-reigns-la-knight/",
-    "date": "Mon, 26 Oct 2026 13:30:00 +0000",
-    "date_gmt": "2026-10-26T13:30:00.000Z",
-    "title": {
-      "rendered": "WWE HOFer Kevin Nash Thinks MITB Title Match Made A Statement"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-hofer-kevin-nash-thinks-mitb-title-match-made-a-statement/l-intro-1792997633.jpg"
   }
 ]
