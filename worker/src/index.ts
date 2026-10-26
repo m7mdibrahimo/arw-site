@@ -3640,12 +3640,18 @@ export default {
             reliability2: { gte: 0.985 }, cpu_cores_effective: { gte: 16 }, disk_space: { gte: 100 }, inet_down: { gte: 500 }, inet_up: { gte: anyCard ? 300 : 1500 }, gpu_ram: { gte: 7900 },
             cuda_max_good: { gte: 12.4 }, cpu_arch: { in: ["amd64"] }, dph_total: { lte: 0.2 }, type: "on-demand", order: [["dph_total", "asc"]], limit: 30 };
           // cheapest overall: the card is paid only while it works, the 100 GB disk all day — weigh the disk 3x
-          const score = (o: any) => (Number(o.dph_base) || Number(o.dph_total) || 0) + (Number(o.storage_cost) || 0) * 100 / 720 * 3;
+          // the internet is paid too: shows come in at ~10 GB and go to Drive at 1–4 GB, so a host charging $39/TB costs
+          // ~50¢ a show in data alone (owner's credit went that way 2026-10-26). Hosts above $5/TB either way are left out,
+          // and what's left is weighed with ~15 GB in and ~4 GB out per working hour.
+          const perTB = (v: any) => (Number(v) || 0) * 1000;
+          const score = (o: any) => (Number(o.dph_base) || Number(o.dph_total) || 0) + (Number(o.storage_cost) || 0) * 100 / 720 * 3
+            + (Number(o.inet_down_cost) || 0) * 15 + (Number(o.inet_up_cost) || 0) * 4;
           // the same physical machine first (its upload to Drive was measured fast), then hosts with a fast line
           // (advertised upload ≥ 1500 Mbps), then the rest — each group cheapest first
           const pref = await env.PUSH_KV.get("tools:pref-machine");
           const offers = ((await vast("/bundles/", { method: "POST", body: JSON.stringify(q) })).body.offers || [])
             .filter((o: any) => !/china|CN$/i.test(String(o.geolocation || ""))) // Google Drive is blocked there
+            .filter((o: any) => perTB(o.inet_down_cost) <= 5 && perTB(o.inet_up_cost) <= 5)
             .sort((a: any, b: any) => {
               const g = (o: any) => (pref && String(o.machine_id) === pref ? 0 : Number(o.inet_up) >= 1500 ? 1 : 2);
               return g(a) - g(b) || score(a) - score(b);
