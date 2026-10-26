@@ -678,3 +678,11 @@ test("«يذكر أن» followed by a verb before the subject is blocked (INCIDE
   assert.ok(checkArticle("باكسلي تتحدث عن مرشدتها في WWE", body, []).some(i => i.code === "verb_after_yudhkar"));
   assert.ok(!checkArticle("باكسلي تتحدث عن مرشدتها في WWE", body.replace(/توجت باكسلي وبليس/g, "باكسلي توجت مع بليس"), []).some(i => i.code === "verb_after_yudhkar"));
 });
+
+// INCIDENTS #849: second-person dual «بكما / منكما» and the dual vocative «يا طفلي الرائعين» reached a published story.
+test('INCIDENTS #849: second-person dual pronouns are blocked', () => {
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + ' كلام'.repeat(80)).map((i) => i.code);
+  assert.ok(codes('وكتبت: "مرحبا بكما في العالم يا طفلي الرائعين"').includes('dual_form'));
+  assert.ok(codes('تعلمت الكثير منكما معا اليوم').includes('dual_form'));
+  assert.ok(!codes('وكتبت: "مرحبا بكم في العالم يا صغاري الرائعين"').includes('dual_form'));
+});
