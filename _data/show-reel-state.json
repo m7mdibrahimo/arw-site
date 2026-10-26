@@ -4284,20 +4284,43 @@
     "publishedAt": 1793037567727,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال دومينغو فاميليار 25.10.2026 مترجم",
-    "lastAttempt": 1793037617582,
+    "lastAttempt": 1793038481434,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
-      "instagram_story",
-      "tiktok"
+      "instagram_story"
     ],
+    "reviewPlatforms": [],
+    "needsReview": false,
+    "tiktok": true
+  },
+  "20261026203411-gcw-shotzi-blackhearts-drive-in-from-hell-25-10-2026": {
+    "publishedAt": 1793038510515,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض جي سي دبليو شوتزي بلاكهارتس درايف ان فروم هيل 25.10.2026 مترجم",
+    "lastAttempt": 1793038523313,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261026203720-progress-chapter-199-bonestorm-25-10-2026": {
+    "publishedAt": 1793038548517,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض بروجريس شابتر 199 بونستورم 25.10.2026 مترجم",
+    "lastAttempt": 1793038560512,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }
