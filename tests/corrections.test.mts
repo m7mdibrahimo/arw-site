@@ -903,3 +903,10 @@ test("Alexa Bliss is spelled «بليس» (INCIDENTS #843)", () => {
   const names = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8"));
   assert.equal(names["Alexa Bliss"], "أليكسا بليس");
 });
+
+test("«يككد» is corrected to «يؤكد» and no story has it (INCIDENTS #844)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("لم يككد طبيعة الإصابة"), "لم يؤكد طبيعة الإصابة");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(^|[^؀-ۿ])يككد([^؀-ۿ]|$)/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
