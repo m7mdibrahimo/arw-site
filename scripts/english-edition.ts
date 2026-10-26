@@ -242,6 +242,15 @@ export function normalizeEnglishTitle(title: string): string {
     // a small word inside a hyphenated compound stays lowercase: «2-Out-Of-3 Falls» → «2-Out-of-3 Falls» (INCIDENTS #622)
     .replace(/(?<=[A-Za-z0-9])-(Of|To|In|On|At|By|For|And|Or|The|As)(?=-[A-Za-z0-9])/g, (_m, w: string) => "-" + w.toLowerCase());
 }
+/** An acronym the writer Title-Cased in the headline («Wsw Tour») is put back as the story spells it («WSW»). «Raw» is the show's own spelling (INCIDENTS #840) */
+export function restoreTitleAcronyms(title: string, body: string): string {
+  return String(title).replace(/\b[A-Z][a-z]{1,4}\b/g, (w) => {
+    const up = w.toUpperCase();
+    if (up === "RAW" || SMALL_WORDS.has(w.toLowerCase())) return w;
+    const inBody = (s: string) => new RegExp(`(?<![A-Za-z])${s}(?![A-Za-z])`).test(body);
+    return inBody(up) && !inBody(w) && !inBody(w.toLowerCase()) ? up : w;
+  });
+}
 /** A word said twice in a row by the writer («With With His Own Money», «Kevin Kevin Owens») is collapsed to one (INCIDENTS #590).
  *  Quotes (a «> » line or text inside quotation marks) are the speaker's own words and stay; ring names that ARE a double stay. */
 const LEGIT_EN_DOUBLES = new Set(["shay", "bang", "kelly", "boom", "pago", "bye", "ha", "blah", "no", "so", "very", "had", "that", "can", "hee", "ho", "la", "na", "ra", "ya", "yeah", "wow", "oh"]);
@@ -293,6 +302,7 @@ export function fixEnglishNames(text: string): string {
 export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEWS_EN_DIR): string {
   // a literal «\n» typed as text (INCIDENTS #736: «…limited schedule. \n\n> "Shingo…») is a line break
   e = { ...e, title: fixEnglishNames(normalizeEnglishTitle(e.title)), body: fixEnglishNames(e.body.replace(/[ \t]*\\n/g, "\n")) };
+  e.title = restoreTitleAcronyms(e.title, e.body);
   fs.mkdirSync(dir, { recursive: true });
   let slug = englishSlug(e.title) || `story-${i.sourceId}`;
   const existing = findEnglishEdition(i.sourceId, dir);

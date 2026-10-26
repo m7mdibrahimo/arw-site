@@ -1,5 +1,5 @@
 ---
-title: "Buddy Matthews Misses Wsw Tour Due to Scheduling Conflict"
+title: "Buddy Matthews Misses WSW Tour Due to Scheduling Conflict"
 slug: "buddy-matthews-misses-wsw-tour-due-to-scheduling-conflict"
 description: "World Series of Wrestling announced that Buddy Matthews will miss the WSW Megamania tour because of a scheduling conflict. The run was scheduled to take…"
 federation: AEW

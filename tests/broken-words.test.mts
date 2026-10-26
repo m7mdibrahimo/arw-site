@@ -652,3 +652,22 @@ test('title_cut_word blocks a headline cut mid-word and passes a whole one', () 
   assert.ok(!ok.some(i => i.code === 'title_cut_word'));
   assert.ok(BLOCKING_QA_CODES.includes('title_cut_word') && RETRYABLE_QA_CODES.includes('title_cut_word'));
 });
+
+// INCIDENTS #840: the scrubbed source name left «تقارير صحفية» twice in a sentence; an English headline lost its acronym («Wsw»).
+test("scrubbed source name garbage is blocked and no published story has it (INCIDENTS #840)", async () => {
+  const { checkArticle, BLOCKING_QA_CODES } = await import("../scripts/news-qa");
+  assert.ok(BLOCKING_QA_CODES.includes("scrubbed_source_garbage"));
+  const body = "تدخل الصحفي البارز تقارير صحفية مطلعة من تقارير صحفية و*تقارير صحفية* ليفند هذه الشائعة تماما. ".repeat(3);
+  assert.ok(checkArticle("نفى شائعات استبعاد إيليا دراغونوف عن شاشات WWE", body, []).some(i => i.code === "scrubbed_source_garbage"));
+  assert.ok(!checkArticle("نفى شائعات استبعاد إيليا دراغونوف عن شاشات WWE", "قال ري بيغاسوس خلال حواره مع لويس بوليدو إنه سعيد جدا بالفوز. ".repeat(4), []).some(i => i.code === "scrubbed_source_garbage"));
+  assert.ok(checkArticle("عنوان عربي كامل للخبر هنا", "قال ري بيغاسوس خلال حواره مع لويس بوليدو من تقارير صحفية إنه سعيد جدا بالفوز. ".repeat(4), []).some(i => i.code === "scrubbed_source_garbage"));
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /تقارير\s+صحفية(?:\s+مطلعة)?\s+من\s+تقارير\s+صحفية/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
+
+test("an acronym Title-Cased in an English headline is restored from the body (INCIDENTS #840)", async () => {
+  const { restoreTitleAcronyms } = await import("../scripts/english-edition.ts");
+  assert.equal(restoreTitleAcronyms("Buddy Matthews Misses Wsw Tour", "The WSW Megamania tour"), "Buddy Matthews Misses WSW Tour");
+  assert.equal(restoreTitleAcronyms("Chad Gable Wins Raw Match", "On WWE RAW tonight"), "Chad Gable Wins Raw Match");
+  assert.equal(restoreTitleAcronyms("Big Show Returns", "The Big Show returned"), "Big Show Returns");
+});
