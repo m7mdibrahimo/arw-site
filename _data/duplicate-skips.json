@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/erick-redbeard-helps-syx-defeat-the-hardys-at-tna-bound-for-glory/": {
-    "matchedFile": "20261012023417-إريك-ريدبيرد-يظهر-لأول-مرة-في-عرض-tna-bound-for-glory-ويساعد-فريق-syx-على-هزيمة-ذا-هارديز.md",
-    "reason": "الخبر الجديد يغطي نفس الحدث (فوز فريق syX على ذا هارديز بتدخل إريك ريدبيرد في عرض TNA Bound for Glory) الذي تم تغطيته بالفعل في الخبر رقم 0.",
-    "at": "2026-10-11T23:48:21.200Z"
-  },
   "https://www.fightful.com/wrestling/leon-slater-becomes-tna-world-champion-at-bound-for-glory-2026/": {
     "matchedFile": "20261012030424-ليون-سلاتر-يهزم-نيك-نيميث-ويتوج-بطلا-للعالم-في-عرض-tna-bound-for-glory.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (فوز ليون سلاتر بلقب TNA العالمي في عرض Bound for Glory 2026) الذي تم تغطيته بالفعل في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261026125254-تشانينج-ستاكس-يكشف-مستجدات-تعافيه-بعد-دخوله-المستشفى-بسبب-إصابته-المرعبة-في-عرض-wwe-nxt.md",
     "reason": "الخبر الجديد يتناول نفس الواقعة (إصابة تشانينج ستاكس في عرض NXT) ونفس التصريحات التي تم تغطيتها بالفعل في الخبر المنشور، ولا يقدم تطوراً جديداً جوهرياً.",
     "at": "2026-10-26T16:19:50.234Z"
+  },
+  "https://www.wrestlinginc.com/2297064/wwe-nxt-cw-beyond-the-bell-vic-joseph-commentator-new-series/": {
+    "matchedFile": "20261024193944-إطلاق-برنامج-nxt-beyond-the-bell-عبر-شبكة-cw-network.md",
+    "reason": "الخبر الجديد يتناول نفس الإعلان عن برنامج Beyond The Bell بنفس التفاصيل الأساسية والمصدر المذكور، ولا يقدم تطوراً جديداً جوهرياً.",
+    "at": "2026-10-26T16:36:19.724Z"
   }
 }
