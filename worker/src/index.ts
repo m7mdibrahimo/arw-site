@@ -4611,7 +4611,50 @@ async function encStartWait(env: Env, now = Date.now()) {
   const k = await env.PUSH_KV.get("tools:vast-key");
   if (!k) return;
   const r = await encTryOwn(env, k);
-  if (r) { await env.PUSH_KV.delete("tools:start-wait"); await encEvent(env, "freed"); }
+  if (r) { await env.PUSH_KV.delete("tools:start-wait"); await encEvent(env, "freed"); return; }
+  // still busy after half an hour: one of the machines like it that he approved (owner 2026-10-27: «اعمل القائمة»)
+  if (now - Number(w.since) >= 30 * 60_000) {
+    const alt = await encTryAlt(env, k);
+    if (alt) { await env.PUSH_KV.delete("tools:start-wait"); await encEvent(env, alt.rented ? "alt-rent" : "alt-start", alt.name); }
+  }
+}
+
+/** The short list of machines like his California one (KV tools:alt-machines: [{id, name}], same card class, a strong
+ *  processor, a fast disk, internet ≤ $4/TB): the one he already has on that list is started, else the first free one is
+ *  rented from his template and a stopped machine on another host is deleted */
+async function encTryAlt(env: Env, k: string): Promise<{ name: string; rented: boolean } | null> {
+  const alts = ((await env.PUSH_KV.get("tools:alt-machines", "json").catch(() => null)) as any[] || []).filter(a => a && a.id);
+  if (!alts.length) return null;
+  const vast = (p: string, init: RequestInit = {}) => fetch(`https://console.vast.ai/api/v0${p}`, { ...init, headers: { Authorization: `Bearer ${k}`, "Content-Type": "application/json" } })
+    .then(async r => ({ ok: r.ok, body: await r.json().catch(() => ({})) as any }));
+  const iid = await env.PUSH_KV.get("tools:instance-id");
+  let old: any = null;
+  if (iid) {
+    const b = (await vast(`/instances/${iid}/?owner=me`)).body;
+    old = b && (b.instances && !Array.isArray(b.instances) ? b.instances : Array.isArray(b.instances) ? b.instances[0] : null);
+    if (old && !old.id) old = null;
+  }
+  if (old && (old.actual_status === "running" || old.actual_status === "loading")) return null;
+  const mine = old && alts.find(a => String(a.id) === String(old.machine_id));
+  if (mine) {
+    const r = await vast(`/instances/${old.id}/`, { method: "PUT", body: JSON.stringify({ state: "running" }) });
+    if (r.body && r.body.success) return { name: mine.name, rented: false };
+    await vast(`/instances/${old.id}/`, { method: "PUT", body: JSON.stringify({ state: "stopped" }) });
+  }
+  for (const a of alts) {
+    if (mine && a === mine) continue;
+    const offers = (await vast("/bundles/", { method: "POST", body: JSON.stringify({ machine_id: { eq: Number(a.id) }, rentable: { eq: true }, num_gpus: { eq: 1 }, type: "on-demand", limit: 5 }) })).body.offers || [];
+    // the price he approved can't have jumped: internet still cheap, the card not dearer than 20¢ an hour
+    for (const o of offers.filter((o: any) => String(o.machine_id) === String(a.id) && Number(o.inet_up_cost) * 1000 <= 5 && Number(o.inet_down_cost) * 1000 <= 5 && Number(o.dph_total) <= 0.2)) {
+      const r = await vast(`/asks/${o.id}/`, { method: "PUT", body: JSON.stringify({ client_id: "me", template_hash_id: "b5f507df99df79817c49c792eff21439", disk: 100, label: "arw-tafrigh" }) });
+      if (r.body && r.body.success) {
+        if (r.body.new_contract) await env.PUSH_KV.put("tools:instance-id", String(r.body.new_contract));
+        if (old && old.id) await vast(`/instances/${old.id}/`, { method: "DELETE" });
+        return { name: a.name, rented: true };
+      }
+    }
+  }
+  return null;
 }
 
 /** The machine stopped answering (turned off, or lost) — told once, every 5 minutes checked */
