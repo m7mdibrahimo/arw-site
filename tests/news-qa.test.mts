@@ -194,3 +194,8 @@ test('a whole English caption line inside an Arabic story is blocked', () => {
   assert.ok(!checkArticle('عنوان', 'تحدث كوفي كينغستون عن فترته في WWE.\n\n> "I really believed it was my time to win the title that night"\n\nوأضاف أنها حلم.').some((i) => i.code === 'english_caption_line'));
   assert.ok(!checkArticle('عنوان', 'عرض AEW Dynamite الليلة\n\nWWE Raw').some((i) => i.code === 'english_caption_line'));
 });
+
+test("dual adjective «مقيدتين» is blocked as a dual form (INCIDENTS #853)", () => {
+  assert.ok(checkArticle("عنوان", "بعد أن كانت يداه مقيدتين مع شركته السابقة عاد للتألق.").some((i) => i.code === "dual_noun"));
+  assert.ok(!checkArticle("عنوان", "بعد أن كان مقيدا مع شركته السابقة عاد للتألق.").some((i) => i.code === "dual_noun"));
+});

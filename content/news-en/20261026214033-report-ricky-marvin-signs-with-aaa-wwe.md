@@ -1,5 +1,5 @@
 ---
-title: "Report: Ricky Marvin Signs With AAA/WWE"
+title: "Report: Ricky Marvin Signs With AAA"
 slug: "report-ricky-marvin-signs-with-aaa-wwe"
 description: "Ricky Marvin is returning to AAA. A report from False Finish notes that Marvin has signed with Lucha Libre AAA as a trainer and occasional producer.…"
 federation: WWE

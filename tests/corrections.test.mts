@@ -948,3 +948,12 @@ test("«إيلسوورث» is unified to «إلسورث» and the glossary has E
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /إيلسوورث/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #853: «العظم المحجاج» / «وأسن سنكون» reached stories.
+test("«المحجاج» and «وأسن» are corrected and gone from the stories", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("كسر العظم المحجاج"), "كسر عظمة الحجاج");
+  assert.equal(applyCorrections("وأسن سنكون معا"), "وأننا سنكون معا");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /المحجاج|وأسن /.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
