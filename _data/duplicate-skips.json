@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/tna-have-had-their-eye-on-ben-bishop-since-2025-sources-within-tna-claimed-that-tommy-dreamer-was-not-a-fan-of-bishops-social-media-clips/": {
-    "matchedFile": "20261012073536-لماذا-تأخر-اتحاد-tna-طويلا-قبل-التعاقد-مع-بن-بيشوب.md",
-    "reason": "الخبر الجديد يعيد تدوير نفس المعلومات والكواليس الموجودة في الخبر المنشور رقم [0] حول مراقبة اتحاد TNA لبن بيشوب منذ العام الماضي وموقف تومي دريمر المتحفظ من محتواه على وسائل التواصل الاجتماعي.",
-    "at": "2026-10-12T07:03:52.323Z"
-  },
   "https://www.fightful.com/wrestling/njpw-king-of-pro-wrestling-results-10-12-five-title-bouts/": {
     "matchedFile": "20261010171221-نتائج-عرض-njpw-road-to-king-of-pro-wrestling-10-أكتوبر-2026-ظهور-مفاجئ-لويل-أوسبراي.md",
     "reason": "الخبر الجديد يغطي نتائج عرض NJPW King of Pro-Wrestling ونزالاته، وهو نفس الحدث والنتائج المتعلقة بالعرض.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261025192417-إصابة-النجمة-السابقة-في-wwe-كايليا-كابري-في-حادث-سيارة.md",
     "reason": "الخبر الجديد يعيد سرد نفس واقعة تعرض المصارعة كايا كابري (كايليا كابري) لحادث سير ومنعها من المشاركة في بطولة Sherri Martel Classic لاتحاد ROW، وهي نفس تفاصيل الخبر المنشور رقم [1] من مصدر آخر.",
     "at": "2026-10-26T18:23:59.807Z"
+  },
+  "https://www.ringsidenews.com/brooke-hogan-makes-it-clear-she-no-beef-wwe-stars-hulk-hogan-tribute-comments/": {
+    "matchedFile": "20261026143548-بروك-هوجان-تنتقد-نجوم-wwe-لتكريمهم-لهالك-هوجان-بعد-وفاته-وتقصيرهم-في-زيارته-بالمستشفى.md",
+    "reason": "الخبر الجديد يمثل توضيحاً لنفس التصريح السابق حول انتقاد نجوم WWE في تكريم هالك هوجان، ولا يمثل تطوراً جديداً بل هو امتداد للجدل نفسه.",
+    "at": "2026-10-26T18:39:24.936Z"
   }
 }
