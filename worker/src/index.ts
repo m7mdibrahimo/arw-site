@@ -3733,7 +3733,9 @@ export default {
           const pending = await env.ANALYTICS.prepare("SELECT kind, data, created FROM enc_cmds WHERE taken = 0 ORDER BY id").all().catch(() => ({ results: [] as any[] }));
           const vastKey = !!(await env.PUSH_KV.get("tools:vast-key"));
           const waiting = (await env.PUSH_KV.get("tools:start-wait", "json").catch(() => null)) as any;
-          return json({ success: true, now: Date.now(), vastKey, waiting: waiting ? Number(waiting.since) || null : null, status, jobs: jobs.results || [], pending: (pending.results || []).map((c: any) => { try { return { kind: c.kind, created: c.created, ...JSON.parse(c.data) }; } catch { return { kind: c.kind, created: c.created }; } }) });
+          const prefName = (await env.PUSH_KV.get("tools:pref-name")) || "جهازك";
+          const altNames = ((await env.PUSH_KV.get("tools:alt-machines", "json").catch(() => null)) as any[] || []).map(a => a && a.name).filter(Boolean);
+          return json({ success: true, now: Date.now(), vastKey, waiting: waiting ? Number(waiting.since) || null : null, prefName, altNames, status, jobs: jobs.results || [], pending: (pending.results || []).map((c: any) => { try { return { kind: c.kind, created: c.created, ...JSON.parse(c.data) }; } catch { return { kind: c.kind, created: c.created }; } }) });
         }
         if (path === "/api/studio/tools/pinned" && request.method === "GET") {
           const f = await readRepoFile(env, "_data/pinned.json");
@@ -4567,8 +4569,8 @@ async function encEvent(env: Env, kind: string, name = "", now = Date.now()) {
   }
 }
 
-/** His own machine back on (KV tools:pref-machine — the California host he chose, owner 2026-10-26: «ده ال انا عايزه
- *  جهازي دايما»): started if it's that host and its card is free; otherwise that host is rented again from his template
+/** His own machine back on (KV tools:pref-machine, its name in tools:pref-name — California at first, owner 2026-10-26:
+ *  «ده ال انا عايزه جهازي دايما»; Pennsylvania from 2026-10-27, its Drive upload measured 41 MB/s): started if it's that host and its card is free; otherwise that host is rented again from his template
  *  when it's free, and a machine on another host is deleted. "started" | "rented" | "" (busy) */
 async function encTryOwn(env: Env, k: string, old?: any): Promise<string> {
   const vast = (p: string, init: RequestInit = {}) => fetch(`https://console.vast.ai/api/v0${p}`, { ...init, headers: { Authorization: `Bearer ${k}`, "Content-Type": "application/json" } })
@@ -4627,7 +4629,7 @@ async function encListCheck(env: Env, now = Date.now()) {
   if (!k) return;
   const pref = await env.PUSH_KV.get("tools:pref-machine");
   const alts = ((await env.PUSH_KV.get("tools:alt-machines", "json").catch(() => null)) as any[] || []).filter(a => a && a.id);
-  const list = [...(pref ? [{ id: pref, name: "كاليفورنيا" }] : []), ...alts];
+  const list = [...(pref ? [{ id: pref, name: (await env.PUSH_KV.get("tools:pref-name")) || "جهازك" }] : []), ...alts];
   for (const m of list) {
     const r = await fetch("https://console.vast.ai/api/v0/bundles/", { method: "POST", headers: { Authorization: `Bearer ${k}`, "Content-Type": "application/json" },
       body: JSON.stringify({ machine_id: { eq: Number(m.id) }, num_gpus: { eq: 1 }, type: "on-demand", limit: 3 }) }).then(r => r.json()).catch(() => null) as any;
