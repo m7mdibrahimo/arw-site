@@ -4211,9 +4211,9 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سوبر جونيور تاج ليج (اليوم الاول) 24.10.2026 مترجم",
-    "lastAttempt": 1792972997574,
+    "lastAttempt": 1792973788262,
     "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
     },
     "processing": [
       "instagram_story"
@@ -4229,7 +4229,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ان دبليو ايه باور 24.10.2026 مترجم",
-    "lastAttempt": 1792972998601,
+    "lastAttempt": 1792973790277,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -4261,15 +4261,12 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال سابادوس دي كوليسيو 24.10.2026 مترجم",
-    "lastAttempt": 1792970380456,
-    "errors": {
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
-    },
-    "processing": [
-      "tiktok"
-    ],
+    "lastAttempt": 1792973800834,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261026020421-njpw-super-junior-tag-league-day-2-25-10-2026": {
     "publishedAt": 1792970410323,
