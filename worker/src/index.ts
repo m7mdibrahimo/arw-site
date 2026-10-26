@@ -4633,6 +4633,7 @@ const ENC_PLACES: Record<string, string> = {
   Thailand: "تايلاند", Malaysia: "ماليزيا", Singapore: "سنغافورة", Australia: "أستراليا", Brazil: "البرازيل", India: "الهند",
 };
 const ENC_CARDS: Record<string, string> = { "RTX 3060": "٣٠٦٠", "RTX 3060 Ti": "٣٠٦٠ تي", "RTX 3070": "٣٠٧٠", "RTX 4060 Ti": "٤٠٦٠ تي" };
+const encNear = (o: any) => (/,\s*(US|CA|NO|SE|FI|DE|FR|NL|ES|PL|CZ|GB|UK|EE|LV|LT|BE|AT|CH|DK|IE|IT|PT|RO|BG|HU|SK|SI|HR)$/.test(String(o.geolocation || "")) ? 0 : 1);
 const encMachineName = (o: any) => `${ENC_PLACES[String(o.geolocation || "").split(",")[0].trim()] || "جهاز بديل"} (${ENC_CARDS[o.gpu_name] || o.gpu_name})`;
 
 /** Every machine on the list is offered by its owner until a date he sets: once a day, one that is gone from the site
@@ -4660,7 +4661,8 @@ async function encListCheck(env: Env, now = Date.now()) {
       .filter((o: any) => Number(o.inet_up_cost) * 1000 <= 4 && Number(o.inet_down_cost) * 1000 <= 4 && Number(o.end_date) * 1000 - now >= 20 * 86400_000)
       .map((o: any) => ({ o, price: (Number(o.dph_base) || 0) + (Number(o.storage_cost) || 0) * 100 / 730 }))
       .filter((x: any) => x.price <= 0.13)
-      .sort((a: any, b: any) => a.price - b.price)[0];
+      // America and Europe first: Drive took 41 MB/s from Pennsylvania and 40 from Estonia; Asia wasn't measured
+      .sort((a: any, b: any) => encNear(a.o) - encNear(b.o) || a.price - b.price)[0];
     if (!pick) { await encEvent(env, "list-nofind", m.name); continue; }
     const next = { id: String(pick.o.machine_id), name: encMachineName(pick.o) };
     list[i] = next; changed = true;
