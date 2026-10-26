@@ -671,3 +671,10 @@ test("an acronym Title-Cased in an English headline is restored from the body (I
   assert.equal(restoreTitleAcronyms("Chad Gable Wins Raw Match", "On WWE RAW tonight"), "Chad Gable Wins Raw Match");
   assert.equal(restoreTitleAcronyms("Big Show Returns", "The Big Show returned"), "Big Show Returns");
 });
+
+test("«يذكر أن» followed by a verb before the subject is blocked (INCIDENTS #841)", () => {
+  assert.ok(BLOCKING_QA_CODES.includes("verb_after_yudhkar"));
+  const body = "يذكر أن توجت باكسلي وبليس ببطولة WWE للسيدات للفرق في وقت سابق من الشهر الجاري. ".repeat(4);
+  assert.ok(checkArticle("باكسلي تتحدث عن مرشدتها في WWE", body, []).some(i => i.code === "verb_after_yudhkar"));
+  assert.ok(!checkArticle("باكسلي تتحدث عن مرشدتها في WWE", body.replace(/توجت باكسلي وبليس/g, "باكسلي توجت مع بليس"), []).some(i => i.code === "verb_after_yudhkar"));
+});
