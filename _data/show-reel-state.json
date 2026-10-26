@@ -4240,7 +4240,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "مباراة سامي زين ضد كودي رودز 19.10.2026 في عرض الرو دارك ماتش",
-    "lastAttempt": 1792976492841,
+    "lastAttempt": 1792977400784,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -4258,9 +4258,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال سابادوس دي كوليسيو 24.10.2026 مترجم",
-    "lastAttempt": 1792973800834,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1792977401770,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -4272,14 +4276,11 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سوبر جونيور تاج ليج (اليوم الثاني) 25.10.2026 مترجم",
-    "lastAttempt": 1792973898988,
-    "errors": {
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
-    },
-    "processing": [
-      "tiktok"
-    ],
+    "lastAttempt": 1792977410979,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   }
 }
