@@ -939,3 +939,12 @@ test("dual verb «منحاها» is blocked and «استفادتها» corrected
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(^|[^؀-ۿ])(استفادتها|منحاها)([^؀-ۿ]|$)/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+test("«إيلسوورث» is unified to «إلسورث» and the glossary has Ellsworth (INCIDENTS #848)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("جيمس إيلسوورث"), "جيمس إلسورث");
+  const names = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8"));
+  assert.equal(names["James Ellsworth"], "جيمس إلسورث");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /إيلسوورث/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
