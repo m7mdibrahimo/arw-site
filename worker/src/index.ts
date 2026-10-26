@@ -3577,6 +3577,8 @@ export default {
             data = { name, pos: [1, 2, 3].includes(Number(b.pos)) ? Number(b.pos) : 1, qual: b.qual === "720" ? "720" : "all", file: String(b.file || "").slice(0, 160) };
           } else if (b.kind === "drive-connect") {
             data = {};
+          } else if (b.kind === "drive-ready") {
+            data = { on: !!b.on };
           } else if (b.kind === "pause" || b.kind === "resume" || b.kind === "cancel") {
             data = { name };
           } else if (b.kind === "clean" || b.kind === "resub" || b.kind === "reupload" || b.kind === "setqual" || b.kind === "remerge" || b.kind === "unqueue") {

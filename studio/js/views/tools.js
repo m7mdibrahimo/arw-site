@@ -618,6 +618,8 @@ export async function renderServerTool(page) {
         </div>` : alive ? html`<div class="srv-job"><b>مفيش شغل دلوقتي</b><p class="muted">مستني عرض جديد أو ترجمة عربي. هيقفل نفسه لوحده بعد ${num(st.idleLeft || 0)} دقيقة لو مفيش شغل.</p></div>` : ''}
       ${alive && (q.links || q.subs || q.merge) ? html`<p class="muted">مستني بعده: ${[q.links ? `${num(q.links)} رابط للتحميل` : '', q.subs ? `${num(q.subs)} فيديو للتفريغ` : '', q.merge ? `${num(q.merge)} ترجمة عربي للدمج` : ''].filter(Boolean).join(' — ')}</p>` : ''}
       ${d.pending && d.pending.length ? html`<p class="srv-wait">${icon('clock')} ${num(d.pending.length)} طلب مستني السيرفر ياخده${alive ? ' (خلال ثواني)' : ' (أول ما يشتغل)'}</p>` : ''}
+      ${alive && st.drive ? html`<div class="srv-drive-opt"><label class="srv-host-on"><input type="checkbox" id="srv-drive-ready" ${st.driveReady !== false ? 'checked' : ''}> ارفع العروض الجاهزة على جوجل درايف</label>
+          <span class="muted small">${st.driveReady !== false ? 'كل عرض جاهز بيترفع على درايف لوحده.' : 'مقفول: نزّل العروض الجاهزة بنفسك من «ملفات السيرفر» ← «4-الجاهز». الترجمات بس اللي بتترفع على درايف.'}</span></div>` : ''}
       ${st && st.drive === false && alive ? html`<div class="srv-drive"><p class="srv-err">${icon('alert')} السيرفر ده مش متوصل بجوجل درايف لسه (أول مرة على كل جهاز جديد).</p>
           <button class="btn btn-primary btn-sm" id="srv-drive-go">${icon('link')} وصّل درايف</button>
           <p class="muted small">هيفتحلك متصفح السيرفر على صفحة جوجل: ادخل بحسابك ودوس «سماح». مرة واحدة بس للجهاز ده.</p></div>` : ''}
@@ -628,7 +630,7 @@ export async function renderServerTool(page) {
   const stageOf = (s, job) => {
     if (job && job.name === s.name) return { text: `${last && last.status && last.status.paused ? 'متوقف مؤقتًا' : (STEP_NOW[job.step] || 'شغال عليه')}${job.pct != null ? ` — ${num(job.pct)}٪` : ''}`, tone: last && last.status && last.status.paused ? 'wait' : 'run' };
     if (s.stopped) return { text: s.stopped === 'merge' ? 'الدمج اتلغى' : 'التفريغ اتلغى', tone: 'bad' };
-    if (s.merged && !s.drive) return { text: 'بيترفع على درايف', tone: 'run' };
+    if (s.merged && !s.drive && last && last.status && last.status.driveReady !== false) return { text: 'بيترفع على درايف', tone: 'run' };
     if (s.merged) return { text: 'جاهز ✓', tone: 'ok' };
     if (s.mergeFailed) return { text: 'الدمج فشل', tone: 'bad' };
     if (s.ar) return { text: 'مستني الدمج', tone: 'wait' };
@@ -648,7 +650,7 @@ export async function renderServerTool(page) {
       return html`<div class="srv-show">
         <div class="srv-show-head"><b class="srv-name">${s.name}</b><span class="srv-tag ${stg.tone}">${stg.text}</span></div>
         ${busy ? html`<div class="srv-ctl-row">${controls(st, s.name)}</div>` : ''}
-        ${s.merged && !s.drive ? html`<div class="srv-arinfo">${icon('upload')} بيترفع على جوجل درايف${st && st.driveUp ? html`<b>— ${num(st.driveUp.pct)}٪</b><span class="muted">فاضل ${st.driveUp.eta.replace('h', ' ساعة ').replace('m', ' دقيقة ').replace(/\d+s$/, '').trim() || 'أقل من دقيقة'}</span>` : html`<span class="muted">— زرار درايف هيظهر أول ما يخلص</span>`}</div>
+        ${s.merged && !s.drive && st && st.driveReady !== false ? html`<div class="srv-arinfo">${icon('upload')} بيترفع على جوجل درايف${st && st.driveUp ? html`<b>— ${num(st.driveUp.pct)}٪</b><span class="muted">فاضل ${st.driveUp.eta.replace('h', ' ساعة ').replace('m', ' دقيقة ').replace(/\d+s$/, '').trim() || 'أقل من دقيقة'}</span>` : html`<span class="muted">— زرار درايف هيظهر أول ما يخلص</span>`}</div>
           ${st && st.driveUp ? html`<div class="srv-bar srv-bar-sm"><div style="width:${Math.min(100, st.driveUp.pct)}%"></div></div>` : ''}` : ''}
         ${s.stopped === 'merge' || (s.mergeFailed && s.ar && !busy) ? html`<div class="srv-actions"><button class="btn btn-sm btn-primary" data-remerge="${n}">${icon('refresh')} ابدأ الدمج تاني</button></div>` : ''}
         ${busy && st.job.pct != null ? html`<div class="srv-bar srv-bar-sm"><div style="width:${Math.min(100, st.job.pct)}%"></div></div><small class="muted">فاضل ${leftText(st.job.left)}</small><br>` : ''}
@@ -759,6 +761,7 @@ export async function renderServerTool(page) {
       last = await tools.server();
       drawStatus(last);
       wireControls(box);
+      if ($('#srv-drive-ready')) $('#srv-drive-ready').onchange = (e) => send({ kind: 'drive-ready', on: e.target.checked }, e.target.checked ? 'العروض الجاهزة هتترفع على درايف' : 'العروض الجاهزة مش هتترفع على درايف');
       if ($('#srv-drive-go')) $('#srv-drive-go').onclick = async () => {
         const w = last.status && last.status.browser ? window.open('about:blank', '_blank') : null;
         await send({ kind: 'drive-connect' }, 'صفحة جوجل بتتفتح في متصفح السيرفر');
