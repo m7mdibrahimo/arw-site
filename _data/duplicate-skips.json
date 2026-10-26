@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/leon-slaters-five-year-old-world-title-prediction-comes-true-tna-bound-glory/": {
-    "matchedFile": "20261012030424-ليون-سلاتر-يهزم-نيك-نيميث-ويتوج-بطلا-للعالم-في-عرض-tna-bound-for-glory.md",
-    "reason": "الخبر الجديد يركز على نفس واقعة فوز ليون سلاتر باللقب في عرض TNA Bound for Glory، وتفصيلة التغريدة القديمة تعتبر معلومة إضافية حول نفس الحدث وليست تطوراً جوهرياً يغير من طبيعة الخبر المنشور مسبقاً.",
-    "at": "2026-10-12T04:55:11.906Z"
-  },
   "https://www.ringsidenews.com/leon-slater-delivers-emotional-off-air-message-winning-tna-world-championship/": {
     "matchedFile": "20261012030424-ليون-سلاتر-يهزم-نيك-نيميث-ويتوج-بطلا-للعالم-في-عرض-tna-bound-for-glory.md",
     "reason": "الخبر الجديد عبارة عن تصريحات لليون سلاتر بعد فوزه بالبطولة في نفس الحدث، لكنه يعتبر امتداداً لنفس الحدث الرئيسي (الفوز بالبطولة في عرض TNA Bound for Glory) ولا يمثل تطوراً إخبارياً مستقلاً كافياً لمنع اعتباره جزءاً من تغطية نفس الحدث.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261026044101-بادي-ماثيوز-يغيب-عن-جولة-اتحاد-wsw-بسبب-تعارض-المواعيد.md",
     "reason": "الخبر الجديد يغطي نفس واقعة غياب بادي ماثيوز عن جولة WSW بسبب تعارض المواعيد التي تم نشرها بالفعل في الخبر رقم 0.",
     "at": "2026-10-26T16:57:43.541Z"
+  },
+  "https://www.fightful.com/wrestling/alexa-bliss-says-traveling-with-her-daughter-was-worked-into-wwe-contract-thats-a-non-negotiable/": {
+    "matchedFile": "20261026181711-أليكسا-بليس-تكشف-عن-شرط-غير-قابل-للتفاوض-قبل-عودتها-إلى-wwe.md",
+    "reason": "الخبر الجديد يعيد سرد نفس التصريحات التي أدلت بها أليكسا بليس في برنامج Shot of Brandi حول شرط اصطحاب ابنتها في عقدها مع WWE، وهو نفس المحتوى المذكور في الخبر رقم 0.",
+    "at": "2026-10-26T17:47:15.373Z"
   }
 }
