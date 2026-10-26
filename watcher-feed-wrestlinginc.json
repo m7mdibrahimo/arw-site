@@ -1,5 +1,15 @@
 [
   {
+    "id": 4244520662,
+    "link": "https://www.wrestlinginc.com/2297812/biggest-winners-losers-week-october-26-2026/",
+    "date": "Mon, 26 Oct 2026 23:03:15 +0000",
+    "date_gmt": "2026-10-26T23:03:15.000Z",
+    "title": {
+      "rendered": "Biggest Winners And Losers Of The Week — 10/26/2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/biggest-winners-and-losers-of-the-week-10262026/l-intro-1793055699.jpg"
+  },
+  {
     "id": 2358613005,
     "link": "https://www.wrestlinginc.com/2297809/wwe-raw-october-26-2026-results/",
     "date": "Mon, 26 Oct 2026 22:59:37 +0000",
@@ -7,7 +17,7 @@
     "title": {
       "rendered": "WWE Raw Results 10/26/26 W/ Live Updates"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-results-102626-w-live-updates/l-intro-1793055474.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-october-26-2026-results/l-intro-1793055886.jpg"
   },
   {
     "id": 4540964166,
@@ -188,15 +198,5 @@
       "rendered": "WWE NXT Viewership & Ratings Report: 10/20/2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-viewership-ratings-report-10202026/l-intro-1793011947.jpg"
-  },
-  {
-    "id": 5107346008,
-    "link": "https://www.wrestlinginc.com/2296517/aew-tony-khan-hurt-syndicate-absence/",
-    "date": "Mon, 26 Oct 2026 14:30:00 +0000",
-    "date_gmt": "2026-10-26T14:30:00.000Z",
-    "title": {
-      "rendered": "Tony Khan Comments On Hurt Syndicate's AEW Absence"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tony-khan-comments-on-hurt-syndicates-aew-absence/l-intro-1793009738.jpg"
   }
 ]
