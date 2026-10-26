@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2295617/tatum-paxley-discusses-wwe-main-roster-mentor": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-26T00:18:06.054Z"
+ },
  "https://www.fightful.com/wrestling/eric-young-and-wwe-details": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-12T16:56:20.530Z"
- },
- "https://www.fightful.com/wrestling/leon-slater-becomes-tna-world-champion-at-bound-for-glory-2026": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-12T16:23:19.409Z"
  }
 }
