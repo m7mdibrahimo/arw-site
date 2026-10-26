@@ -1,28 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/eddie-kingston-cuts-emotional-promo-at-progress-chapter-199-says-he-wanted-to-leave-wrestling-after-the-passing-of-butcher-and-pac": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-26T16:27:05.368Z"
+ },
+ "https://www.fightful.com/wrestling/channing-stacks-lorenzo-provides-update-after-suffering-injury-at-nxt-house-show": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-26T16:21:26.037Z"
+ },
  "https://www.fightful.com/wrestling/steve-maclin-details-suffering-broken-fibula-ten-weeks-before-adam-copeland-match-at-mlp-northern-rising": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T16:18:28.104Z"
+  "at": "2026-10-26T16:21:25.743Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-10-26": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T16:18:26.753Z"
+  "at": "2026-10-26T16:21:24.344Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-26T16:18:26.522Z"
+  "at": "2026-10-26T16:21:24.111Z"
  },
  "https://www.fightful.com/wrestling/myles-borne-on-grayson-waller-wearing-a-stephanie-vaquer-t-shirt-you-spent-money-on-her-shirt-youre-a-fan": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T16:18:26.311Z"
+  "at": "2026-10-26T16:21:23.885Z"
  },
  "https://www.fightful.com/wrestling/myles-borne-tells-fans-they-are-wasting-their-engery-by-chanting-what-at-him": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T16:18:26.014Z"
+  "at": "2026-10-26T16:21:23.580Z"
  },
  "https://www.fightful.com/wrestling/cmll-domingo-familiar-results-10-25-2026-india-sioux-vs-queen-aminata-volador-jr-vs-esfinge-more": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
@@ -1988,15 +1998,5 @@
   "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي",
   "retry": false,
   "at": "2026-10-13T02:08:50.307Z"
- },
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-october-12-2026": {
-  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
-  "retry": false,
-  "at": "2026-10-13T01:22:47.586Z"
- },
- "https://www.wrestlinginc.com/2284178/wwe-raw-october-12-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-13T00:53:14.568Z"
  }
 }
