@@ -1,48 +1,48 @@
 {
- "https://www.wrestlinginc.com/2295617/tatum-paxley-discusses-wwe-main-roster-mentor": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-26T01:05:05.051Z"
- },
  "https://www.fightful.com/wrestling/eric-young-and-wwe-details": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T01:04:46.197Z"
+  "at": "2026-10-26T01:07:40.244Z"
  },
  "https://www.fightful.com/wrestling/u-s-embassy-riyadh-issues-new-security-alert-advising-us-citizens-to-take-extreme-caution-if-you-choose-to-use-airports-in-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T01:04:45.839Z"
+  "at": "2026-10-26T01:07:39.893Z"
  },
  "https://www.fightful.com/wrestling/table-goes-into-business-for-itself-at-greektown-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T01:04:45.290Z"
+  "at": "2026-10-26T01:07:39.349Z"
  },
  "https://www.fightful.com/wrestling/wildman-jack-armstrong-passes-away": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T01:04:45.060Z"
+  "at": "2026-10-26T01:07:39.118Z"
  },
  "https://www.fightful.com/wrestling/revolver-jerry-lynn-invitational-results-10-24": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T01:04:44.832Z"
+  "at": "2026-10-26T01:07:38.888Z"
  },
  "https://www.fightful.com/wrestling/raquel-rodriguez-vs-iyo-sky-chad-gable-dragon-lee-vs-big-cass-ethan-page-added-to-10-26-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T01:04:44.679Z"
+  "at": "2026-10-26T01:07:38.738Z"
  },
  "https://www.fightful.com/wrestling/joe-hendry-on-creative-he-doesnt-necessarily-agree-with-i-think-your-job-in-pro-wrestling-is-to-give-it-your-absolute-best": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T01:04:44.450Z"
+  "at": "2026-10-26T01:07:38.515Z"
  },
  "https://www.fightful.com/wrestling/samantha-irvin-shares-that-she-politely-declined-wwe-record-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T01:04:44.006Z"
+  "at": "2026-10-26T01:07:38.093Z"
+ },
+ "https://www.wrestlinginc.com/2295617/tatum-paxley-discusses-wwe-main-roster-mentor": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-26T01:05:05.051Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
