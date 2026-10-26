@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2296527/wwe-nxt-viewership-ratings-october-20-2026": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-26T15:05:29.728Z"
+ },
  "https://www.fightful.com/wrestling/matt-jackson-jokes-about-why-the-young-bucks-use-the-same-promo-pictures-for-graphics-for-long-periods-of-time": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-12T23:14:12.748Z"
- },
- "https://www.fightful.com/wrestling/nikki-bella-discloses-thumb-injury-i-have-no-feeling-now": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-12T22:17:39.243Z"
  }
 }
