@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/wwe-raw-preview-october-12-2026-confirmed-matches-start-time-how-watch/": {
-    "matchedFile": "20261011191911-ظهور-ليف-مورغان-ونزال-ري-ميستيريو-ضد-بيج-كاس-في-عرض-wwe-raw-القادم.md",
-    "reason": "الخبر الجديد يغطي نفس عرض WWE RAW ونفس قائمة النزالات والتفاصيل التي تم الإعلان عنها مسبقاً في الخبر رقم 2.",
-    "at": "2026-10-12T06:54:36.442Z"
-  },
   "https://www.fightful.com/wrestling/tna-have-had-their-eye-on-ben-bishop-since-2025-sources-within-tna-claimed-that-tommy-dreamer-was-not-a-fan-of-bishops-social-media-clips/": {
     "matchedFile": "20261012073536-لماذا-تأخر-اتحاد-tna-طويلا-قبل-التعاقد-مع-بن-بيشوب.md",
     "reason": "الخبر الجديد يعيد تدوير نفس المعلومات والكواليس الموجودة في الخبر المنشور رقم [0] حول مراقبة اتحاد TNA لبن بيشوب منذ العام الماضي وموقف تومي دريمر المتحفظ من محتواه على وسائل التواصل الاجتماعي.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261026180305-أليكسا-بليس-تكشف-خطط-wwe-لجمعها-مع-براي-وايت-قبل-وفاته.md",
     "reason": "الخبر الجديد يكرر نفس التصريحات التي أدلت بها أليكسا بليس حول خطط اتحاد WWE لجمعها مجددا مع الراحل براي وايت ومشاركتها في فعالية الهالوين.",
     "at": "2026-10-26T18:06:31.468Z"
+  },
+  "https://www.fightful.com/wrestling/kaylia-capri-misses-rows-sherri-martel-classic-due-to-car-accident-notes-that-she-suffered-minor-injuries/": {
+    "matchedFile": "20261025192417-إصابة-النجمة-السابقة-في-wwe-كايليا-كابري-في-حادث-سيارة.md",
+    "reason": "الخبر الجديد يعيد سرد نفس واقعة تعرض المصارعة كايا كابري (كايليا كابري) لحادث سير ومنعها من المشاركة في بطولة Sherri Martel Classic لاتحاد ROW، وهي نفس تفاصيل الخبر المنشور رقم [1] من مصدر آخر.",
+    "at": "2026-10-26T18:23:59.807Z"
   }
 }
