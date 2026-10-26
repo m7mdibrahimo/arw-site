@@ -1,48 +1,48 @@
 {
  "https://www.fightful.com/wrestling/the-dogs-reflect-on-chain-match-against-bang-bang-gang-didnt-have-a-long-time-to-work-on-it": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، العنوان بينتهي بكلمة مبتورة مش موجودة في الخبر — الاقتباس اتقطع",
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-10-26T12:51:41.435Z"
+  "at": "2026-10-26T12:55:33.038Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-10-26": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T12:50:49.388Z"
+  "at": "2026-10-26T12:54:23.632Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-26T12:50:49.166Z"
+  "at": "2026-10-26T12:54:23.402Z"
  },
  "https://www.fightful.com/wrestling/myles-borne-on-grayson-waller-wearing-a-stephanie-vaquer-t-shirt-you-spent-money-on-her-shirt-youre-a-fan": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T12:50:48.960Z"
+  "at": "2026-10-26T12:54:23.176Z"
  },
  "https://www.fightful.com/wrestling/myles-borne-tells-fans-they-are-wasting-their-engery-by-chanting-what-at-him": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T12:50:48.680Z"
+  "at": "2026-10-26T12:54:22.868Z"
  },
  "https://www.fightful.com/wrestling/eric-young-and-wwe-details": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T12:50:47.884Z"
+  "at": "2026-10-26T12:54:22.033Z"
  },
  "https://www.fightful.com/wrestling/u-s-embassy-riyadh-issues-new-security-alert-advising-us-citizens-to-take-extreme-caution-if-you-choose-to-use-airports-in-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T12:50:47.542Z"
+  "at": "2026-10-26T12:54:21.674Z"
  },
  "https://www.fightful.com/wrestling/table-goes-into-business-for-itself-at-greektown-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T12:50:47.004Z"
+  "at": "2026-10-26T12:54:21.094Z"
  },
  "https://www.fightful.com/wrestling/wildman-jack-armstrong-passes-away": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-26T12:50:46.777Z"
+  "at": "2026-10-26T12:54:20.852Z"
  },
  "https://www.fightful.com/wrestling/revolver-jerry-lynn-invitational-results-10-24": {
   "reason": "مكرر مع خبر نزل قبل كده",
