@@ -5272,3 +5272,19 @@ test('a headline already published is detected whatever its age', () => {
   assert.equal(titleAlreadyPublished('إيليا دراغونوف يتحدث عن تجاهل بروك ليسنر لهجماته في عرض WWE Royal Rumble'), true);
   assert.equal(titleAlreadyPublished('عنوان لم ينشر أبدا في أي مكان على الموقع'), false);
 });
+
+// INCIDENTS #850: a show renamed after it went live (newer than the early builds) must keep its first address.
+test('a recent show whose title was edited keeps a redirect from its file-name address (INCIDENTS #850)', async () => {
+  const { contentFolderAddresses } = await import('../lib/redirects.cjs');
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'content-'));
+  const site = path.join(root, '_site');
+  fs.mkdirSync(path.join(root, 'shows'));
+  fs.writeFileSync(path.join(root, 'shows', '20261007172320-aew-dynamite-06-10-2026.md'), '---\ntitle: "AEW Dynamite Grand Slam France 06.10.2026"\n---\n');
+  fs.writeFileSync(path.join(root, 'shows', '20261014172320-aew-dynamite-14-10-2026.md'), '---\ntitle: "AEW Dynamite 14.10.2026"\n---\n');
+  for (const p of ['shows/aew-dynamite-grand-slam-france-06-10-2026', 'shows/aew-dynamite-14-10-2026']) {
+    fs.mkdirSync(path.join(site, p), { recursive: true });
+    fs.writeFileSync(path.join(site, p, 'index.html'), '');
+  }
+  const pairs = contentFolderAddresses(root, site);
+  assert.deepEqual(pairs, [['/shows/aew-dynamite-06-10-2026/', '/shows/aew-dynamite-grand-slam-france-06-10-2026/']]);
+});
