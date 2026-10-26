@@ -598,7 +598,7 @@ export async function renderServerTool(page) {
       <p class="muted srv-sub">${alive ? `آخر إشارة منه: ${timeAgo(st.at)} — اشتغل الساعة ${dayClock(st.boot)}`
         : st ? `مقفول من ${dayClock(st.at)}` : 'لسه مبعتش أي إشارة'}</p>
       ${!alive && d.waiting ? html`<div class="srv-job"><b>${icon('clock')} مستني جهازك يفضى</b>
-          <p class="muted">جهازك مشغول مع حد تاني. بحاول عليه كل دقيقتين من الساعة ${dayClock(d.waiting)}، وأول ما يفضى هيشتغل لوحده ويوصلك إشعار. لو عايز تشتغل دلوقتي حالًا خد أقرب جهاز ليه (هيتأجّر جهاز جديد ويركّب نفسه في حوالي ١٠ دقايق).</p>
+          <p class="muted">جهازك مشغول مع حد تاني. بحاول عليه كل دقيقتين من الساعة ${dayClock(d.waiting)}، وأول ما يفضى هيشتغل لوحده ويوصلك إشعار. لو عايز تشتغل دلوقتي حالًا خد أقرب جهاز ليه.</p>
           <div class="srv-actions"><button class="btn btn-sm" id="srv-any">${icon('bolt')} خد أقرب جهاز ليه</button></div></div>`
         : !alive ? html`<p class="muted srv-note">${d.vastKey ? 'دوس «شغّل السيرفر» وخلاص: لو جهازك فاضي هيشتغل خلال دقيقة. ولو مشغول مع حد تاني، هفضل أحاول عليه لحد ما يفضى وأشغّله لوحده. اللي طلبته وهو مقفول هيتعمل أول ما يشتغل.' : 'عشان تشغّله بضغطة واحدة من هنا، حط مفتاح موقع التأجير مرة واحدة في «زرار التشغيل» تحت.'}</p>` : ''}
       ${job ? html`<div class="srv-job">
@@ -773,7 +773,7 @@ export async function renderServerTool(page) {
       if ($('#srv-start')) $('#srv-start').onclick = () => power('start');
       if ($('#srv-stop')) $('#srv-stop').onclick = () => power('stop');
       if ($('#srv-any')) $('#srv-any').onclick = async () => {
-        if (!(await dialog({ title: 'تاخد أقرب جهاز؟', body: 'هيتأجّر جهاز جديد بنفس المواصفات تقريبًا، ويتمسح جهازك القديم. هيركّب نفسه في حوالي ١٠ دقايق، وبعدها دوس «وصّل درايف».', confirm: 'أيوه خده', cancel: 'هستنى جهازي' }))) return;
+        if (!(await dialog({ title: 'تاخد أقرب جهاز؟', body: 'هيشتغل جهاز بديل بنفس الكارت لحد ما جهازك يفضى. ولو مفيش بديل فاضي، هيتأجّر جهاز جديد ويركّب نفسه في حوالي ١٠ دقايق، وبعدها دوس «وصّل درايف». المرة الجاية اللي تدوس فيها «شغّل السيرفر» هيرجع يدوّر على جهازك.', confirm: 'أيوه خده', cancel: 'هستنى جهازي' }))) return;
         $('#srv-any').disabled = true;
         try { const r = await tools.serverPower('start', { any: true }); if (r && r.success === false) throw new Error(r.error || 'حصلت مشكلة'); toast(r.message || 'تمام', 'ok', 8000); }
         catch (e) { toast(e.message || 'حصلت مشكلة', 'error', 8000); }

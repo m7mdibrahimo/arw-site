@@ -3658,7 +3658,13 @@ export default {
             return json({ success: true, state: "waiting", message: "جهازك مشغول دلوقتي مع حد تاني. هفضل أحاول كل دقيقتين، وأول ما يفضى هيشتغل لوحده ويوصلك إشعار." });
           }
           await env.PUSH_KV.delete("tools:start-wait");
-          // he asked for the closest machine: the cheapest good one from his template
+          // he asked for the closest machine: the stand-in he already has (another host), if its card is free
+          if (old) {
+            const r = await vast(`/instances/${old.id}/`, { method: "PUT", body: JSON.stringify({ state: "running" }) });
+            if (r.body && r.body.success) { await encEvent(env, "start"); return json({ success: true, state: "starting", message: "الجهاز البديل بيشتغل — خلال دقيقة هيبان «شغال»" }); }
+            await vast(`/instances/${old.id}/`, { method: "PUT", body: JSON.stringify({ state: "stopped" }) });
+          }
+          // or the cheapest good one from his template
           const prefGpu = (await env.PUSH_KV.get("tools:pref-gpu")) || "RTX 3060";
           const q = { gpu_name: { in: anyCard ? ["RTX 3060", "RTX 3060 Ti", "RTX 4060", "RTX 4060 Ti", "RTX 4070", "RTX 3070", "RTX 3080", "RTX 2080 Ti", "RTX A4000"] : [prefGpu] }, num_gpus: { eq: 1 }, rentable: { eq: true }, verified: { eq: true },
             reliability2: { gte: 0.985 }, cpu_cores_effective: { gte: 12 }, disk_space: { gte: 100 }, inet_down: { gte: 500 }, inet_up: { gte: anyCard ? 300 : 1500 }, gpu_ram: { gte: 7900 },
@@ -4541,8 +4547,7 @@ async function encIdleSweep(env: Env, now = Date.now()) {
   const b: any = await r.json().catch(() => ({}));
   const inst = b && (b.instances && !Array.isArray(b.instances) ? b.instances : Array.isArray(b.instances) ? b.instances[0] : null);
   if (!inst || !inst.id) return;
-  if (inst.machine_id && (await env.PUSH_KV.get("tools:pref-machine")) !== String(inst.machine_id)) await env.PUSH_KV.put("tools:pref-machine", String(inst.machine_id));
-  if (inst.gpu_name && (await env.PUSH_KV.get("tools:pref-gpu")) !== String(inst.gpu_name)) await env.PUSH_KV.put("tools:pref-gpu", String(inst.gpu_name));
+  // KV tools:pref-machine is his choice (the California host) and is not moved to whatever machine runs now
   if (inst.intended_status === "running" || inst.actual_status === "running" || inst.actual_status === "loading") return;
   const st: any = await env.ANALYTICS.prepare("SELECT at FROM enc_status WHERE id = 1").first().catch(() => null);
   if (!st || now - Number(st.at) < 12 * 3600_000) return;
@@ -4561,8 +4566,9 @@ async function encEvent(env: Env, kind: string, name = "", now = Date.now()) {
   }
 }
 
-/** His own machine back on: started if its card is free, or — deleted after 12 h off — rented again from the same
- *  physical host (KV tools:pref-machine). "started" | "rented" | "" (busy) */
+/** His own machine back on (KV tools:pref-machine — the California host he chose, owner 2026-10-26: «ده ال انا عايزه
+ *  جهازي دايما»): started if it's that host and its card is free; otherwise that host is rented again from his template
+ *  when it's free, and a machine on another host is deleted. "started" | "rented" | "" (busy) */
 async function encTryOwn(env: Env, k: string, old?: any): Promise<string> {
   const vast = (p: string, init: RequestInit = {}) => fetch(`https://console.vast.ai/api/v0${p}`, { ...init, headers: { Authorization: `Bearer ${k}`, "Content-Type": "application/json" } })
     .then(async r => ({ ok: r.ok, body: await r.json().catch(() => ({})) as any }));
@@ -4574,20 +4580,23 @@ async function encTryOwn(env: Env, k: string, old?: any): Promise<string> {
       if (old && !old.id) old = null;
     }
   }
-  if (old) {
+  const pref = await env.PUSH_KV.get("tools:pref-machine");
+  // a stand-in that is working right now is never swapped out under him
+  if (old && (old.actual_status === "running" || old.actual_status === "loading")) return "started";
+  if (old && (!pref || String(old.machine_id) === pref)) {
     if (old.actual_status === "running" || old.actual_status === "loading") return "started";
     const r = await vast(`/instances/${old.id}/`, { method: "PUT", body: JSON.stringify({ state: "running" }) });
     if (r.body && r.body.success) return "started";
     await vast(`/instances/${old.id}/`, { method: "PUT", body: JSON.stringify({ state: "stopped" }) }); // no queued start
     return "";
   }
-  const pref = await env.PUSH_KV.get("tools:pref-machine");
   if (!pref) return "";
-  const offers = (await vast("/bundles/", { method: "POST", body: JSON.stringify({ machine_id: { eq: Number(pref) }, rentable: { eq: true }, type: "on-demand", limit: 5 }) })).body.offers || [];
+  const offers = (await vast("/bundles/", { method: "POST", body: JSON.stringify({ machine_id: { eq: Number(pref) }, rentable: { eq: true }, num_gpus: { eq: 1 }, type: "on-demand", limit: 5 }) })).body.offers || [];
   for (const o of offers.filter((o: any) => String(o.machine_id) === pref && Number(o.num_gpus) === 1)) {
     const r = await vast(`/asks/${o.id}/`, { method: "PUT", body: JSON.stringify({ client_id: "me", template_hash_id: "b5f507df99df79817c49c792eff21439", disk: 100, label: "arw-tafrigh" }) });
     if (r.body && r.body.success) {
       if (r.body.new_contract) await env.PUSH_KV.put("tools:instance-id", String(r.body.new_contract));
+      if (old && old.id) await vast(`/instances/${old.id}/`, { method: "DELETE" }); // the stand-in on another host
       return "rented";
     }
   }
