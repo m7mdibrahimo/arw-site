@@ -923,3 +923,10 @@ test("Nikki Bella / Victoria Arlen spellings and «shoulder tee» are corrected 
   const badEn = fs.readdirSync("content/news-en").filter(f => f.endsWith(".md") && /shoulder tee/.test(fs.readFileSync(`content/news-en/${f}`, "utf-8")));
   assert.deepEqual(badEn, []);
 });
+
+test("«الموهبين» is corrected to «الموهوبين» and no story has it (INCIDENTS #846)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("برنامج الموهبين"), "برنامج الموهوبين");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(^|[^؀-ۿ])الموهبين([^؀-ۿ]|$)/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
