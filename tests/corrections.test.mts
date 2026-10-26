@@ -910,3 +910,16 @@ test("«يككد» is corrected to «يؤكد» and no story has it (INCIDENTS #
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(^|[^؀-ۿ])يككد([^؀-ۿ]|$)/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #845: «نيك بيلا», «فيكتوريا أرلن» and the English «shoulder tee» reached stories.
+test("Nikki Bella / Victoria Arlen spellings and «shoulder tee» are corrected everywhere", async () => {
+  const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string }[];
+  assert.ok(corrections.some(c => c.wrong === "نيك بيلا" && c.right === "نيكي بيلا"));
+  assert.ok(corrections.some(c => c.wrong === "فيكتوريا أرلن" && c.right === "فيكتوريا أرلين"));
+  const { fixEnglishNames } = await import("../scripts/english-edition.ts");
+  assert.equal(fixEnglishNames("missing 20% of the bone on her shoulder tee"), "missing 20% of the bone on her shoulder socket");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /نيك بيلا|فيكتوريا أرلن|ببعضهن من مقعده/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+  const badEn = fs.readdirSync("content/news-en").filter(f => f.endsWith(".md") && /shoulder tee/.test(fs.readFileSync(`content/news-en/${f}`, "utf-8")));
+  assert.deepEqual(badEn, []);
+});
