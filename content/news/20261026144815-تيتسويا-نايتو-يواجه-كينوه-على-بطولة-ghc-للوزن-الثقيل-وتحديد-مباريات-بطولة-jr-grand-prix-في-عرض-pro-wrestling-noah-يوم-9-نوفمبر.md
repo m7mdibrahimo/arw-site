@@ -1,6 +1,7 @@
 ---
 federation: INDIE
-title: "تيتسويا نايتو يواجه كينوه على بطولة GHC للوزن الثقيل وتحديد مباريات بطولة Jr. Grand Prix في عرض Pro Wrestling NOAH يوم 9 نوفمبر"
+title: "تيتسويا نايتو يواجه كينوه على بطولة GHC للوزن الثقيل وتحديد مباريات بطولة Jr. Grand Prix في عرض Pro Wrestling NOAH"
+permalink: "/news/تيتسويا-نايتو-يواجه-كينوه-على-بطولة-ghc-للوزن-الثقيل-وتحديد-مباريات-بطولة-jr-grand-prix-في-عرض-pro-wrestling-noah-يوم-9-نوفمبر/index.html"
 date: 2026-10-26T14:48:15.000+03:00
 published_at: 2026-10-26T11:57:40.378Z
 source_id: 335791
