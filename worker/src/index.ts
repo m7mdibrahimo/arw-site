@@ -3255,7 +3255,7 @@ export default {
       // «الأكثر مشاهدة» for the home page (INCIDENTS #180)
       // The owner's rented encoding machine sets itself up from these (reports/سيرفر-التفريغ): a new machine's
       // template runs /tools/arw-provision, which pulls /tools/arw-bundle (scripts, logo, fonts) from KV. Private: only the key's SHA-256 is here, the key is in the owner's template.
-      if ((path === "/tools/arw-heartbeat" || path === "/tools/arw-job" || path === "/tools/arw-file" || path === "/tools/arw-cmds") && (request.method === "POST" || ((path === "/tools/arw-file" || path === "/tools/arw-cmds") && request.method === "GET"))) {
+      if ((path === "/tools/arw-heartbeat" || path === "/tools/arw-job" || path === "/tools/arw-event" || path === "/tools/arw-file" || path === "/tools/arw-cmds") && (request.method === "POST" || ((path === "/tools/arw-file" || path === "/tools/arw-cmds") && request.method === "GET"))) {
         const k = url.searchParams.get("k") || "";
         const digest = [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(k)))].map(b => b.toString(16).padStart(2, "0")).join("");
         if (k.length < 24 || digest !== TOOLS_KEY_SHA256 || !env.ANALYTICS) return new Response("not found", { status: 404 });
@@ -3287,6 +3287,15 @@ export default {
           // never cut it (a cut JSON would blank the panel page); the machine keeps it small (25 shows)
           const data = JSON.stringify(body);
           if (data.length > 400_000) return json({ success: false, error: "too big" }, 413);
+          // the bell: the machine came on, a finished show reached Drive (compared with the heartbeat before)
+          const prev: any = await env.ANALYTICS.prepare("SELECT at, data FROM enc_status WHERE id = 1").first().catch(() => null);
+          if (!prev || now - Number(prev.at) > 5 * 60_000) await encEvent(env, "online");
+          if (prev) {
+            let before: any = {};
+            try { before = JSON.parse(prev.data); } catch {}
+            const had = new Set((before.shows || []).filter((x: any) => x && x.drive).map((x: any) => x.name));
+            for (const sh of (Array.isArray(body.shows) ? body.shows : []).filter((x: any) => x && x.drive && !had.has(x.name)).slice(0, 5)) await encEvent(env, "drive", sh.name);
+          }
           await env.ANALYTICS.prepare("INSERT INTO enc_status (id, at, data) VALUES (1, ?, ?) ON CONFLICT(id) DO UPDATE SET at = excluded.at, data = excluded.data").bind(now, data).run();
           // the machine's own number at the rental site: «شغّل السيرفر» works on it directly (a key made in the panel
           // may not list the account's machines)
@@ -3296,6 +3305,8 @@ export default {
           const cmds = (await env.ANALYTICS.prepare("SELECT id, kind, data FROM enc_cmds WHERE taken = 0 ORDER BY id LIMIT 20").all()).results as any[] || [];
           if (cmds.length) await env.ANALYTICS.prepare(`UPDATE enc_cmds SET taken = ? WHERE id IN (${cmds.map(() => "?").join(",")})`).bind(now, ...cmds.map(c => c.id)).run();
           return json({ success: true, commands: cmds.map(c => { try { return { kind: c.kind, ...JSON.parse(c.data) }; } catch { return { kind: c.kind }; } }) });
+        } else if (path === "/tools/arw-event") {
+          if (["subs-start", "merge-start", "cancelled"].includes(body.kind)) await encEvent(env, body.kind, String(body.name || ""));
         } else {
           const t = (v: any) => Math.min(now + 60_000, Math.max(0, Math.round(Number(v) || 0)));
           await env.ANALYTICS.prepare("INSERT INTO enc_jobs (name, step, started, finished, ok) VALUES (?, ?, ?, ?, ?)")
@@ -3322,6 +3333,7 @@ export default {
           const kinds: Record<string, string> = { en: "الترجمة الإنجليزي جاهزة", ready: "العرض اتدمج وجاهز", uploaded: "العرض اترفع على مواقع التحميل — الروابط في لوحة التحكم", fail: "حصلت مشكلة", idle: "السيرفر خلّص كل الشغل وهيقفل نفسه" };
           const kind = url.searchParams.get("t") || "", what = kinds[kind];
           const name = (url.searchParams.get("n") || "").replace(/[<>&"]/g, "").slice(0, 160);
+          if (kind === "idle") await encEvent(env, "idle");
           const to = await env.PUSH_KV.get("tools:notify-to");
           if (!what || !to) return json({ success: false });
           const day = new Date().toISOString().slice(0, 10), countKey = `tools:notify-count:${day}`;
@@ -3534,7 +3546,10 @@ export default {
       }
       if (path === "/api/studio/notifications" && request.method === "GET") {
         if (!(await studioUser(request, env as any))) return json({ success: false, auth: false, error: "انتهت الجلسة. سجّل الدخول من جديد." }, 401);
-        const n = await studioNotifications(env, await studioAuthorized(request, env, "tools"));
+        const withTools = await studioAuthorized(request, env, "tools");
+        const n = await studioNotifications(env, withTools);
+        // the rented encoding machine («سيرفر التفريغ»): every step and every change of its state
+        if (withTools) n.items = [...n.items, ...(await encNotifications(env, Date.now() - NOTIFY_WINDOW_MS))].sort((a, b) => b.at - a.at).slice(0, 120);
         // a visitor's new comment, for those who read the comments
         if (await studioAuthorized(request, env, "comments")) {
           n.items = [...n.items, ...(await commentNotifications(env as any, Date.now() - NOTIFY_WINDOW_MS))].sort((a, b) => b.at - a.at).slice(0, 120);
@@ -3624,12 +3639,14 @@ export default {
           const running = mine.find((i: any) => i.actual_status === "running" || i.actual_status === "loading");
           if (path.endsWith("/stop")) {
             for (const i of mine.filter((i: any) => i.intended_status === "running")) await vast(`/instances/${i.id}/`, { method: "PUT", body: JSON.stringify({ state: "stopped" }) });
+            await encEvent(env, "stop");
             return json({ success: true, state: "stopped", message: "السيرفر بيتقفل — مش هيتحسب غير تمن المساحة" });
           }
           if (running) return json({ success: true, state: "running", message: "السيرفر شغال أصلًا" });
           const old = mine[0];
           if (old) {
             const r = await vast(`/instances/${old.id}/`, { method: "PUT", body: JSON.stringify({ state: "running" }) });
+            if (r.body && r.body.success) await encEvent(env, "start");
             if (r.body && r.body.success) return json({ success: true, state: "starting", message: "السيرفر بيشتغل — خلال دقيقة هيبان «شغال»" });
             await vast(`/instances/${old.id}/`, { method: "PUT", body: JSON.stringify({ state: "stopped" }) }); // cancel the queued start
           }
@@ -3665,6 +3682,7 @@ export default {
             if (r.body && r.body.success) {
               if (r.body.new_contract) await env.PUSH_KV.put("tools:instance-id", String(r.body.new_contract));
               if (old) await vast(`/instances/${old.id}/`, { method: "DELETE" });
+              await encEvent(env, "rented", `${o.gpu_name}`);
               return json({ success: true, state: "new", message: `كارت السيرفر القديم كان متاخد، فأجّرت جهاز جديد (${o.gpu_name} — حوالي ${Math.round(o.dph_total * 100)} سنت في الساعة). هيركّب نفسه في حوالي ١٠ دقايق.` });
             }
           }
@@ -4495,6 +4513,7 @@ export default {
       minute === 20 ? runPremiumReminders(env as any, _controller.scheduledTime).catch(() => {}) : Promise.resolve(),
       // the rented encoding machine, off for 12 hours, is deleted so its disk isn't paid for (owner 2026-10-26)
       minute === 33 ? encIdleSweep(env).catch((e: any) => console.log("[enc] sweep:", e?.message || e)) : Promise.resolve(),
+      minute % 5 === 2 ? encOfflineCheck(env).catch(() => {}) : Promise.resolve(),
       // followers told of each new full show: their inbox, then their devices
       runFollowNotify(env as any, _controller.scheduledTime).then(() => runFollowPush(env as any, _controller.scheduledTime)).catch(() => {}),
       // a subscription that just ended drops its look in the community rooms too
@@ -4523,7 +4542,40 @@ async function encIdleSweep(env: Env, now = Date.now()) {
   const st: any = await env.ANALYTICS.prepare("SELECT at FROM enc_status WHERE id = 1").first().catch(() => null);
   if (!st || now - Number(st.at) < 12 * 3600_000) return;
   const del = await fetch(`https://console.vast.ai/api/v0/instances/${inst.id}/`, { method: "DELETE", headers: { Authorization: `Bearer ${k}` } });
-  if (del.ok) { await env.PUSH_KV.delete("tools:instance-id"); console.log("[enc] deleted idle machine", inst.id); }
+  if (del.ok) { await env.PUSH_KV.delete("tools:instance-id"); await encEvent(env, "deleted"); console.log("[enc] deleted idle machine", inst.id); }
+}
+
+/** One line for the panel's bell about the rented encoding machine (owner 2026-10-26: «اي حاجة تحصل يوصل في
+ *  الاشعارات»): online, start, stop, rented, idle, drive (a finished show reached Drive), offline, deleted */
+async function encEvent(env: Env, kind: string, name = "", now = Date.now()) {
+  if (!env.ANALYTICS) return;
+  const add = () => env.ANALYTICS!.prepare("INSERT INTO enc_events (at, kind, name) VALUES (?, ?, ?)").bind(now, kind, String(name).slice(0, 200)).run();
+  try { await add(); } catch {
+    await env.ANALYTICS.prepare("CREATE TABLE IF NOT EXISTS enc_events (id INTEGER PRIMARY KEY AUTOINCREMENT, at INTEGER NOT NULL, kind TEXT NOT NULL, name TEXT NOT NULL DEFAULT '')").run().catch(() => {});
+    await add().catch(() => {});
+  }
+}
+
+/** The machine stopped answering (turned off, or lost) — told once, every 5 minutes checked */
+async function encOfflineCheck(env: Env, now = Date.now()) {
+  if (!env.ANALYTICS) return;
+  const st: any = await env.ANALYTICS.prepare("SELECT at FROM enc_status WHERE id = 1").first().catch(() => null);
+  if (!st || now - Number(st.at) < 3 * 60_000 || now - Number(st.at) > 3 * 3600_000) return;
+  const told: any = await env.ANALYTICS.prepare("SELECT id FROM enc_events WHERE kind = 'offline' AND at > ? LIMIT 1").bind(Number(st.at)).first().catch(() => null);
+  if (told) return;
+  await encEvent(env, "offline", "", Number(st.at) + 60_000);
+}
+
+/** The bell's lines about the machine: every finished step (enc_jobs) and its own events (enc_events) */
+export async function encNotifications(env: Env, sinceMs: number): Promise<any[]> {
+  if (!env.ANALYTICS) return [];
+  const jobs = (await env.ANALYTICS.prepare("SELECT id, name, step, finished, ok FROM enc_jobs WHERE finished > ? ORDER BY finished DESC LIMIT 60").bind(sinceMs).all().catch(() => ({ results: [] as any[] }))).results as any[] || [];
+  const evs = (await env.ANALYTICS.prepare("SELECT id, at, kind, name FROM enc_events WHERE at > ? ORDER BY at DESC LIMIT 60").bind(sinceMs).all().catch(() => ({ results: [] as any[] }))).results as any[] || [];
+  await env.ANALYTICS.prepare("DELETE FROM enc_events WHERE at < ?").bind(Date.now() - 14 * 86400_000).run().catch(() => {});
+  return [
+    ...jobs.map(j => ({ id: `enc-job:${j.id}`, type: "enc", at: Number(j.finished), step: j.step, ok: !!j.ok, name: j.name })),
+    ...evs.map(e => ({ id: `enc-ev:${e.id}`, type: "enc", at: Number(e.at), step: e.kind, ok: true, name: e.name })),
+  ];
 }
 
 /** The badges the owner gave by hand (the latest panel action for each member is «members.badge») stay */

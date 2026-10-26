@@ -58,6 +58,24 @@ window.addEventListener('studio:live', (e) => { for (const d of e.detail || []) 
 const PLATFORM = { telegram: 'تيليجرام', facebook: 'فيسبوك', instagram: 'إنستغرام', x: 'إكس' };
 const REEL = { facebook_reel: 'ريل فيسبوك', instagram_reel: 'ريل إنستغرام', facebook_story: 'ستوري فيسبوك', instagram_story: 'ستوري إنستغرام' };
 const HELD = { result: 'فيه نتيجة نزال', return: 'فيه عودة أو ظهور أول', show: 'حاجة حصلت في عرض لسه متذاع' };
+const ENC = {
+  download: { ico: 'check', tone: 'teal', ok: 'خلص تحميل العرض', fail: 'فشل تحميل العرض', named: true },
+  subs: { ico: 'film', tone: 'teal', ok: 'الترجمة الإنجليزي جاهزة للعرض', fail: 'فشل تفريغ العرض', named: true, detail: 'نزّلها من «سيرفر التفريغ» وترجمها' },
+  merge: { ico: 'show', tone: 'teal', ok: 'خلص دمج العرض', fail: 'فشل دمج العرض', named: true },
+  upload: { ico: 'send', tone: 'teal', ok: 'اترفع العرض', fail: 'فشل رفع العرض', named: true },
+  'subs-start': { ico: 'film', tone: 'sky', ok: 'بدأ تفريغ العرض', named: true },
+  'merge-start': { ico: 'show', tone: 'sky', ok: 'بدأ دمج العرض', named: true },
+  cancelled: { ico: 'shield', tone: 'ink', ok: 'وقفت العرض', named: true, detail: 'بقرار منك' },
+  drive: { ico: 'folder', tone: 'sky', ok: 'العرض وصل على جوجل درايف', named: true },
+  online: { ico: 'check', tone: 'teal', ok: 'سيرفر التفريغ اشتغل', detail: 'جاهز للشغل' },
+  start: { ico: 'check', tone: 'sky', ok: 'طلبت تشغيل سيرفر التفريغ', detail: 'هيبان «شغال» خلال دقيقة' },
+  rented: { ico: 'alert', tone: 'yellow', ok: 'اتأجر جهاز تفريغ جديد', named: true, detail: 'الكارت القديم كان متاخد — هيركّب نفسه في حوالي ١٠ دقايق' },
+  stop: { ico: 'shield', tone: 'ink', ok: 'طلبت قفل سيرفر التفريغ', detail: 'مش هيتحسب غير تمن المساحة' },
+  idle: { ico: 'shield', tone: 'ink', ok: 'سيرفر التفريغ خلّص كل الشغل وهيقفل نفسه', detail: 'بعد ساعة من غير شغل' },
+  offline: { ico: 'alert', tone: 'yellow', ok: 'سيرفر التفريغ اتقفل', detail: 'مبقاش بيرد على اللوحة' },
+  deleted: { ico: 'trash', tone: 'coral', ok: 'اتمسح جهاز التفريغ بعد ١٢ ساعة وهو مقفول', detail: 'شغلك على درايف — «شغّل السيرفر» هيأجر جهاز جديد' },
+  other: { ico: 'check', tone: 'ink', ok: 'سيرفر التفريغ', fail: 'مشكلة في سيرفر التفريغ', named: true },
+};
 const KIND_ICON = { show: 'show', shows: 'show', recap: 'recap', recaps: 'recap', news: 'news', nostalgia: 'nostalgia', nostalgia_series: 'folder' };
 const NAME = { shows: 'العرض', show: 'العرض', recaps: 'الملخص', recap: 'الملخص', news: 'الخبر', nostalgia: 'حلقة النوستالجيا', nostalgia_series: 'سلسلة النوستالجيا' };
 const singular = (c) => (COLLECTIONS[c] && COLLECTIONS[c].singular) || ({ show: 'عرض', recap: 'ملخص', news: 'خبر' }[c]) || 'موضوع';
@@ -97,6 +115,10 @@ export function describe(n) {
       if (/^paid:/.test(n.by || '')) return { ico: 'crown', tone: 'yellow', title: `${n.by.slice(5)} فعّل العضوية المميزة لـ${n.name || 'عضو'}`, detail: `اشتراك مدفوع${n.amount ? ` · ${n.currency === 'USD' ? `$${n.amount}` : `${n.amount} جنيه`}` : ''} · ${n.days} يوم`, chip: null, href: '#/premium' };
       return { ico: 'crown', tone: 'yellow', title: n.by ? `${n.by} فعّل العضوية المميزة لـ${n.name || 'عضو'}` : `مشترك جديد في العضوية المميزة: ${n.name || 'عضو'}`, detail: n.by ? `هدية · ${n.days} يوم` : `دفع ${n.currency === 'USD' ? `$${n.amount}` : `${n.amount} جنيه`} · اتفعّلت لوحدها`, chip: n.by ? null : { text: 'فلوس وصلت', tone: 'teal' }, href: '#/premium' };
     case 'premium-req': return { ico: 'film', tone: 'sky', title: `طلب ترجمة من ${n.name || 'عضو مميز'}`, detail: String(n.text || '').length > 110 ? `${String(n.text).slice(0, 110)}…` : String(n.text || ''), chip: { text: 'مستني ردك', tone: 'yellow' }, href: '#/premium' };
+    // «سيرفر التفريغ» (worker: enc_jobs + enc_events)
+    case 'enc': { const e = ENC[n.step] || ENC.other; const name = n.name ? ` ${q(n.name)}` : '';
+      return n.ok ? { ico: e.ico, tone: e.tone, title: `${e.ok}${e.named ? name : ''}`, detail: e.detail || '', chip: null, href: '#/tools/server' }
+        : { ico: 'alert', tone: 'coral', title: `${e.fail}${name}`, detail: 'افتح «سيرفر التفريغ» وجرّب تاني', chip: { text: 'محتاج تدخل', tone: 'coral' }, href: '#/tools/server' }; }
     case 'reel-site': return { ico: 'show', tone: 'coral', title: `تم نشر ريل ${q(n.title)}`, detail: (n.done || []).map(d => REEL[d] || d).join(' · '), chip: null, href: '#/tools/reels' };
     default: return { ico: 'check', tone: 'ink', title: n.title || '', detail: n.detail || '', chip: null, href: '' };
   }
