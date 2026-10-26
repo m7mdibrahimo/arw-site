@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/amazing-red-wins-tna-x-division-title-at-tna-bound-for-glory/": {
-    "matchedFile": "20261012001651-أميزينغ-ريد-يفوز-ببطولة-tna-x-division-في-عرض-tna-bound-for-glory-2026.md",
-    "reason": "الخبر الجديد يغطي نفس الحدث (فوز أميزينغ ريد بلقب X Division في عرض Bound for Glory) الذي تم تغطيته بالفعل في الخبر رقم 0.",
-    "at": "2026-10-11T21:25:23.919Z"
-  },
   "https://www.ringsidenews.com/zoey-serrano-shayna-baszler-win-tna-knockouts-tag-team-titles-bound-glory-2026/": {
     "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
     "reason": "الخبر الجديد يغطي نتائج عرض TNA Bound for Glory 2026، وتحديداً فوز زوي سيرانو وشينا باسلر ببطولة الفرق للسيدات، وهو حدث من نفس العرض المدرج بالفعل ضمن تقرير نتائج العرض الشامل في الخبر رقم 1.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261025050251-نتائج-عرض-aaa-heroes-inmortales-24-أكتوبر-2026-الدفاع-عن-الألقاب-وتكريم-في-قاعة-المشاهير.md",
     "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
     "at": "2026-10-25T22:30:39.298Z"
+  },
+  "https://www.fightful.com/wrestling/eric-young-and-wwe-details/": {
+    "matchedFile": "20261025044320-تقارير-إريك-يانج-يعمل-لصالح-wwe-كمنتج-في-عرض-wwe-nxt.md",
+    "reason": "الخبر الجديد يكرر نفس المعلومة المنشورة مسبقاً حول عمل إريك يانج كمنتج في عرض NXT منذ شهر يوليو الماضي ورحيله عن اتحاد TNA.",
+    "at": "2026-10-26T00:02:52.666Z"
   }
 }
