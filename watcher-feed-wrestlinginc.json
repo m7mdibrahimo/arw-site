@@ -1,5 +1,15 @@
 [
   {
+    "id": 1707908315,
+    "link": "https://www.wrestlinginc.com/2296458/tna-impact-viewership-ratings-october-15-2026/",
+    "date": "Mon, 26 Oct 2026 13:00:00 +0000",
+    "date_gmt": "2026-10-26T13:00:00.000Z",
+    "title": {
+      "rendered": "TNA Impact Viewership & Ratings Report: 10/15/2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-impact-viewership-ratings-report-10152026/l-intro-1792993623.jpg"
+  },
+  {
     "id": 3635025297,
     "link": "https://www.wrestlinginc.com/2296332/njpw-aew-wwe-david-finlay-exit-choosing/",
     "date": "Mon, 26 Oct 2026 12:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW Star Samoa Joe Names His Hardest-Hitting Opponent"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-star-samoa-joe-names-his-hardest-hitting-opponent/l-intro-1792690755.jpg"
-  },
-  {
-    "id": 1989131197,
-    "link": "https://www.wrestlinginc.com/2294297/wwe-aew-jeff-jarrett-rematch-hbk-shawn-michaels/",
-    "date": "Sun, 25 Oct 2026 14:30:00 +0000",
-    "date_gmt": "2026-10-25T14:30:00.000Z",
-    "title": {
-      "rendered": "AEW's Jeff Jarrett Wishes He'd Have Gotten Rematch With This WWE Hall Of Famer"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-jeff-jarrett-wishes-hed-have-gotten-rematch-with-this-wwe-hall-of-famer/l-intro-1792685522.jpg"
   }
 ]

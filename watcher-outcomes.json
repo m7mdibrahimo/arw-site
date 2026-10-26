@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2296458/tna-impact-viewership-ratings-october-15-2026": {
+  "reason": "تقرير مشاهدة لعرض قديم (2026-10-15)",
+  "retry": false,
+  "at": "2026-10-26T13:06:38.455Z"
+ },
  "https://www.fightful.com/wrestling/the-dogs-reflect-on-chain-match-against-bang-bang-gang-didnt-have-a-long-time-to-work-on-it": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-12T19:28:19.340Z"
- },
- "https://www.fightful.com/wrestling/kenny-omega-proposes-three-way-match-for-njpw-power-struggle": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-12T18:56:15.313Z"
  }
 }
