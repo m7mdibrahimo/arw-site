@@ -4301,9 +4301,9 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض جي سي دبليو شوتزي بلاكهارتس درايف ان فروم هيل 25.10.2026 مترجم",
-    "lastAttempt": 1793046329210,
+    "lastAttempt": 1793047137218,
     "errors": {
-      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
       "instagram_story"
@@ -4319,14 +4319,15 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض بروجريس شابتر 199 بونستورم 25.10.2026 مترجم",
-    "lastAttempt": 1793043682963,
+    "lastAttempt": 1793047148113,
     "errors": {
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "tiktok"
+      "instagram_reel"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   }
 }
