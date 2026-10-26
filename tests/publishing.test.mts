@@ -12,7 +12,7 @@ import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow
 import { toPagesRedirects, writeRedirectPages } from '../lib/redirects.cjs';
 import { applyProofEdits } from '../scripts/editorial';
 import { checkArticle, autoFix, headUnheadedMatches, applyCorrections, BLOCKING_QA_CODES, RETRYABLE_QA_CODES } from '../scripts/news-qa';
-import { extractBodyImages, extractEmbeds, sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint, isEmptyResultsStub, clearlyDifferentStories, analyzeShowTiming } from '../scripts/fightful-watcher';
+import { extractBodyImages, extractEmbeds, sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint, isEmptyResultsStub, clearlyDifferentStories, analyzeShowTiming, titleAlreadyPublished } from '../scripts/fightful-watcher';
 
 const env = { GITHUB_OWNER: 'owner', GITHUB_REPO: 'repo', GITHUB_BRANCH: 'main', GITHUB_TOKEN: 'test-token' };
 function ledger() {
@@ -5265,4 +5265,10 @@ test('sanitizeWrestlingTerms keeps Quinton "Rampage" Jackson with any quote styl
   assert.equal(sanitizeWrestlingTerms('نجل كوينتون “رامباج” جاكسون'), 'نجل كوينتون "رامباج" جاكسون');
   assert.equal(sanitizeWrestlingTerms('نجل كوينتون رامباج جاكسون'), 'نجل كوينتون رامباج جاكسون');
   assert.equal(sanitizeWrestlingTerms('شاهد رامباج الليلة'), 'شاهد عرض AEW Rampage الليلة');
+});
+
+// INCIDENTS #850: a re-post of an old story by another site came out with the exact same Arabic headline as one published six days earlier.
+test('a headline already published is detected whatever its age', () => {
+  assert.equal(titleAlreadyPublished('إيليا دراغونوف يتحدث عن تجاهل بروك ليسنر لهجماته في عرض WWE Royal Rumble'), true);
+  assert.equal(titleAlreadyPublished('عنوان لم ينشر أبدا في أي مكان على الموقع'), false);
 });

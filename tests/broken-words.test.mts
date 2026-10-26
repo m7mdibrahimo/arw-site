@@ -686,3 +686,14 @@ test('INCIDENTS #849: second-person dual pronouns are blocked', () => {
   assert.ok(codes('تعلمت الكثير منكما معا اليوم').includes('dual_form'));
   assert.ok(!codes('وكتبت: "مرحبا بكم في العالم يا صغاري الرائعين"').includes('dual_form'));
 });
+
+// INCIDENTS #850: a feminine dual adjective («المواسم الأخيرتين») and a headline date the story never gives («WWE Royal Rumble (26 أكتوبر)»).
+test('INCIDENTS #850: feminine dual adjectives and unbacked headline dates are blocked', () => {
+  const pad = ' كلام'.repeat(80);
+  const codes = (t: string, b: string) => checkArticle(t, b + pad).map((i) => i.code);
+  assert.ok(codes('عنوان تجريبي طويل بما يكفي للفحص هنا', 'تضمن العرض المواسم الأخيرتين من الدور ربع النهائي').includes('dual_form'));
+  assert.ok(!codes('عنوان تجريبي طويل بما يكفي للفحص هنا', 'تضمن العرض ختام الدور ربع النهائي').includes('dual_form'));
+  assert.ok(codes('إيليا دراغونوف يتحدث عن تجاهل بروك ليسنر لهجماته (26 أكتوبر)', 'تحدث المصارع عن نزال سابق').includes('title_date_not_in_body'));
+  assert.ok(!codes('نتائج عرض GCW Drive-In (25 أكتوبر 2026) فوز كافرون', 'أقام اتحاد GCW العرض يوم 25 أكتوبر في صالة').includes('title_date_not_in_body'));
+  assert.ok(BLOCKING_QA_CODES.includes('title_date_not_in_body'));
+});

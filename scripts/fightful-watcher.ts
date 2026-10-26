@@ -3719,6 +3719,18 @@ export function findSameShowResults(rawTitle: string, hoursWindow: number = 30, 
   return { isDuplicate: false };
 }
 
+export function titleAlreadyPublished(title: string, newsDir: string = NEWS_DIR): boolean {
+  const want = `title: ${JSON.stringify(title)}`;
+  if (!title || !fs.existsSync(newsDir)) return false;
+  for (const f of fs.readdirSync(newsDir)) {
+    if (!f.endsWith(".md")) continue;
+    let head = "";
+    try { const fd = fs.openSync(path.join(newsDir, f), "r"); const buf = Buffer.alloc(700); const n = fs.readSync(fd, buf, 0, 700, 0); fs.closeSync(fd); head = buf.toString("utf-8", 0, n); } catch { continue; }
+    if (head.split("\n").some(l => l.trim() === want)) return true;
+  }
+  return false;
+}
+
 export function findLikelyDuplicateStory(rawTitle: string, hoursWindow: number = 24, newsDir: string = NEWS_DIR): { isDuplicate: boolean; matchedFile?: string } {
   if (!fs.existsSync(newsDir)) return { isDuplicate: false };
   // Federation and show-name words say nothing about the STORY: "WWE Main Event
@@ -4403,6 +4415,10 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
     .filter(i => BLOCKING_QA_CODES.includes(i.code));
+  // The same headline already published (a re-post of an old story by another site) is a duplicate whatever its age (INCIDENTS #850).
+  if (!options.manual && titleAlreadyPublished(draft.title)) {
+    blocking.push({ code: "same_title_published", severity: "error", field: "title", message: "نفس العنوان منشور قبل كده — الخبر مكرر", excerpt: draft.title });
+  }
   // An age the source never gives is an invented number (INCIDENTS #341).
   // A wrestler the source never names but the story keeps naming is a swapped name (INCIDENTS #461).
   for (const en of wrestlerNotInSource(draft.body, `${rawTitle}\n${plainText}`, WRESTLER_NAMES_MAP)) {
