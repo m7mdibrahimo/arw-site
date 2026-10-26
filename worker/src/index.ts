@@ -3255,7 +3255,7 @@ export default {
       // «الأكثر مشاهدة» for the home page (INCIDENTS #180)
       // The owner's rented encoding machine sets itself up from these (reports/سيرفر-التفريغ): a new machine's
       // template runs /tools/arw-provision, which pulls /tools/arw-bundle (scripts, logo, fonts) from KV. Private: only the key's SHA-256 is here, the key is in the owner's template.
-      if ((path === "/tools/arw-heartbeat" || path === "/tools/arw-job" || path === "/tools/arw-event" || path === "/tools/arw-file" || path === "/tools/arw-cmds") && (request.method === "POST" || ((path === "/tools/arw-file" || path === "/tools/arw-cmds") && request.method === "GET"))) {
+      if ((path === "/tools/arw-heartbeat" || path === "/tools/arw-job" || path === "/tools/arw-event" || path === "/tools/arw-cloudcopy" || path === "/tools/arw-file" || path === "/tools/arw-cmds") && (request.method === "POST" || ((path === "/tools/arw-file" || path === "/tools/arw-cmds") && request.method === "GET"))) {
         const k = url.searchParams.get("k") || "";
         const digest = [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(k)))].map(b => b.toString(16).padStart(2, "0")).join("");
         if (k.length < 24 || digest !== TOOLS_KEY_SHA256 || !env.ANALYTICS) return new Response("not found", { status: 404 });
@@ -3305,6 +3305,18 @@ export default {
           const cmds = (await env.ANALYTICS.prepare("SELECT id, kind, data FROM enc_cmds WHERE taken = 0 ORDER BY id LIMIT 20").all()).results as any[] || [];
           if (cmds.length) await env.ANALYTICS.prepare(`UPDATE enc_cmds SET taken = ? WHERE id IN (${cmds.map(() => "?").join(",")})`).bind(now, ...cmds.map(c => c.id)).run();
           return json({ success: true, commands: cmds.map(c => { try { return { kind: c.kind, ...JSON.parse(c.data) }; } catch { return { kind: c.kind }; } }) });
+        } else if (path === "/tools/arw-cloudcopy") {
+          // Drive through the owner's own connection on the rental site (owner 2026-10-27: «مش عايز انا كل شوية اعمل توصيل
+          // ب درايف»): its copy takes /workspace/drive-out/ (the machine keeps «سيرفر عرب راسلنج/…» there as hard links)
+          // into his Drive's top, where that folder already is — its paths can't carry Arabic, the files inside can
+          const k = await env.PUSH_KV.get("tools:vast-key"), iid = await env.PUSH_KV.get("tools:instance-id");
+          if (!k || !iid || String(body.instanceId || "") !== iid) return json({ success: false, error: "no machine" });
+          const v = (p: string, init: RequestInit = {}) => fetch(`https://console.vast.ai/api/v0${p}`, { ...init, headers: { Authorization: `Bearer ${k}`, "Content-Type": "application/json" } }).then(r => r.json()).catch(() => null) as Promise<any>;
+          const conns = await v("/users/cloud_integrations/");
+          const conn = Array.isArray(conns) ? conns.find((c: any) => c && c.cloud_type === "drive") : null;
+          if (!conn) return json({ success: false, error: "no drive connection" });
+          const r = await v("/commands/rclone/", { method: "POST", body: JSON.stringify({ src: "/workspace/drive-out/", dst: "/", instance_id: Number(iid), selected: conn.id, transfer: "Instance To Cloud", flags: [] }) });
+          return json({ success: !!(r && r.success), error: r && !r.success ? r.msg || r.error : undefined });
         } else if (path === "/tools/arw-event") {
           if (["subs-start", "merge-start", "cancelled", "novideo"].includes(body.kind)) await encEvent(env, body.kind, String(body.name || ""));
         } else {
