@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2283326/frankie-kazarian-wins-another-tna-call-your-shot-gauntlet/": {
-    "matchedFile": "20261012011429-فرانكي-كازاريان-يفوز-بنزال-call-your-shot-gauntlet-في-عرض-tna-bound-for-glory-2026.md",
-    "reason": "الخبر الجديد يغطي نفس الحدث (فوز فرانكي كازاريان بنزال Call Your Shot Gauntlet في عرض Bound For Glory) الذي تم تغطيته بالفعل في الخبر رقم 0.",
-    "at": "2026-10-11T22:40:56.582Z"
-  },
   "https://www.ringsidenews.com/jason-hotch-pins-mustafa-ali-win-tna-international-championship-bound-glory-2026/": {
     "matchedFile": "20261011223100-نتائج-عرض-tna-bound-for-glory-11-أكتوبر-2026-حفل-قاعة-المشاهير-ومواجهات-العرض.md",
     "reason": "الخبر الجديد يتناول نتيجة نزال بطولة TNA الدولية في عرض Bound for Glory 2026، وهي نتيجة تم ذكرها بالفعل ضمن تقرير نتائج العرض الشامل في الخبر رقم 2.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261025153024-مايلز-بورن-يرد-على-هتافات-الجماهير-ضده-في-عرض-wwe-nxt.md",
     "reason": "الخبر الجديد يعيد سرد نفس تصريحات مايلز بورن حول هتافات \"ماذا\" وعدم قدرته على سماعها بسبب صممه، وهو نفس الحدث والتصريح المغطى في الخبر المنشور رقم 0.",
     "at": "2026-10-26T11:31:11.886Z"
+  },
+  "https://www.fightful.com/wrestling/myles-borne-on-grayson-waller-wearing-a-stephanie-vaquer-t-shirt-you-spent-money-on-her-shirt-youre-a-fan/": {
+    "matchedFile": "20261025155911-مايلز-بورن-يتحدث-عن-ارتداء-غرايسون-والر-قميص-ستيفاني-فاكير-في-عرض-wwe-nxt.md",
+    "reason": "الخبر الجديد يكرر تصريحات مايلز بورن حول ارتداء غرايسون والر لقميص ستيفاني فاكير ودعمه المالي لها، وهي نفس الواقعة والتصريحات المغطاة في الخبر المنشور مسبقاً.",
+    "at": "2026-10-26T11:58:01.248Z"
   }
 }
