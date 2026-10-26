@@ -44,3 +44,13 @@ test('dual verbs سيتحالفان/تراجعا/ليقررا and a stray </p><p
   const codes = checkArticle('عنوان', 'تحدث المصارع عن النزال المنتظر في الحلبة.</p><p>خلال مقابلة حديثة قال إنه سعيد جدا بذلك.').map(i => i.code);
   assert.ok(codes.includes('artifact'));
 });
+
+// Time-period duals («الأسبوعين الثاني والثالث» in the AAA Heroes Inmortales story) passed because only noun duals of
+// match words were listed. They are now dual_noun too.
+test('dual time words (أسبوعين/شهرين/عامين/ساعتين…) are caught', () => {
+  for (const w of ['الأسبوعين الثاني والثالث', 'خلال الشهرين الماضيين', 'قبل عامين', 'منذ يومين', 'بعد ساعتين']) {
+    const codes = checkArticle('عنوان', `سجل الاتحاد ${w} من العرض الكبير.`).map(i => i.code);
+    assert.ok(codes.includes('dual_noun'), w);
+  }
+  assert.ok(!checkArticle('عنوان', 'سجل الاتحاد الأسبوع الثاني والأسبوع الثالث من العرض.').some(i => i.code === 'dual_noun'));
+});
