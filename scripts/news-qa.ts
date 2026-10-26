@@ -168,6 +168,10 @@ const RULES: Rule[] = [
   // Gemini sometimes swaps one letter of a name for a look-alike from another script:
   // «وパاتريك» (Japanese), «ناтан» (Cyrillic), «مصارعة חברה» (Hebrew tag) — INCIDENTS #54.
   { code: "foreign_script", severity: "error", re: /[\u0370-\u03FF\u0400-\u058F\u0590-\u05FF\u0900-\u0DFF\u0E00-\u0E7F\u1000-\u109F\u10A0-\u10FF\u1200-\u137F\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF]+/g, message: "حروف من لغة أخرى (يابانية/روسية/عبرية/بورمية...) داخل النص" },
+  // The writer talks ABOUT its source inside the story when a result is missing: «انتهى النزال بلا نتيجة محددة في المصدر»,
+  // «ولم يذكر المصدر نتيجة النزال», «(النزال لا يزال جاريا في المصدر)». The reader has no «source» — a match with no
+  // known result is simply left without a winner line (INCIDENTS #854).
+  { code: "source_meta", severity: "error", re: /(?:في المصدر|(?:لم|لا|ولم)\s+(?:يذكر|يحدد|يوضح|يتضمن|تذكر|تحدد)\s+المصدر)(?![\u0600-\u06FF])/g, message: "الخبر بيتكلم عن «المصدر» جوه النص (مثل: بلا نتيجة في المصدر) — القارئ مالوش مصدر؛ احذف الجملة أو اكتب اللي حصل بس", fields: ["title", "body"] },
   { code: "ai_leak", severity: "error", re: /كنموذج ذكاء|بصفتي نموذج|as an AI|I cannot|here is the|ترجمة:|النص المترجم|body_markdown|"title"\s*:/gi, message: "نص تسرب من رد الذكاء الاصطناعي" },
   // Not blocking (ai_leak is): the copy editor removes it — «خلال إضافة علامات التنصيص… كما في المصدر» (INCIDENTS #254)
   { code: "echoed_instruction", severity: "error", re: /علامات التنصيص|كما (?:في|ورد في) المصدر/g, message: "تعليمات للكاتب اتنقلت جوه النص — احذفها", fields: ["title", "body"] },

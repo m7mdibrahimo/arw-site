@@ -199,3 +199,10 @@ test("dual adjective «مقيدتين» is blocked as a dual form (INCIDENTS #85
   assert.ok(checkArticle("عنوان", "بعد أن كانت يداه مقيدتين مع شركته السابقة عاد للتألق.").some((i) => i.code === "dual_noun"));
   assert.ok(!checkArticle("عنوان", "بعد أن كان مقيدا مع شركته السابقة عاد للتألق.").some((i) => i.code === "dual_noun"));
 });
+
+test("the story must not talk about «the source» (INCIDENTS #854: «بلا نتيجة محددة في المصدر»)", () => {
+  const t = "نتائج عرض تجريبي كامل";
+  assert.ok(checkArticle(t, "انتهى النزال بلا نتيجة محددة في المصدر.\n\nنص آخر طويل بما يكفي.").some((i) => i.code === "source_meta"));
+  assert.ok(checkArticle(t, "خاض الفريق مواجهة، ولم يذكر المصدر نتيجة النزال.").some((i) => i.code === "source_meta"));
+  assert.ok(!checkArticle(t, "ولم يتم الإعلان عن نتيجة النزال. وقال مصدر مطلع إن الصفقة قريبة.").some((i) => i.code === "source_meta"));
+});
