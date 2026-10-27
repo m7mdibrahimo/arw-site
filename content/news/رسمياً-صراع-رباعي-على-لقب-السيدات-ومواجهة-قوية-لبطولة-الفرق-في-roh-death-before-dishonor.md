@@ -4,7 +4,7 @@ title: "رسمي.. صراع رباعي على لقب السيدات ومواجه
 permalink: "/news/رسميا-صراع-رباعي-على-لقب-السيدات-ومواجهة-قوية-لبطولة-الفرق-في-roh-death-before-dishonor/index.html"
 date: 2026-08-21T06:14:00.000+03:00
 tags:
-  - رينغ أوف هونر
+  - ROH
   - ريد فيلفيت
   - ميستيكو
   - ROH Death Before Dishonor
@@ -13,7 +13,7 @@ tags:
 image: /content/images/egr3b0owjj3rckb0.jpg
 layout: post-layout.njk
 ---
-أعلن اتحاد رينغ أوف هونر رسميا عن إضافة مواجهتين على الألقاب، إلى جانب نزال في العرض التمهيدي، لبطاقة عرض Death Before Dishonor.
+أعلن اتحاد ROH رسميا عن إضافة مواجهتين على الألقاب، إلى جانب نزال في العرض التمهيدي، لبطاقة عرض Death Before Dishonor.
 
 نزال رباعي على بطولة التلفزيون للسيدات
 

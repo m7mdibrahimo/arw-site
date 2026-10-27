@@ -38,3 +38,23 @@ test("Ash By Elegance has one spelling in the glossary, the corrections and ever
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && fs.readFileSync(`content/news/${f}`, "utf-8").includes("إيليجانس"));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #883: show and recap front matter never passes through applyCorrections, so 13 RAW pages carried the tag
+// «رومان راينز» while the glossary (and every story) says «رومان رينز». A tag that a correction would rewrite is a
+// misspelling Google cannot connect to the wrestler's page.
+test("no show, recap or nostalgia tag is a spelling corrections.json would rewrite", () => {
+  const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string; regex?: boolean }[];
+  const wrongOnes = corrections.filter(c => !c.regex && c.right !== c.wrong && /[\u0621-\u064A]/.test(c.wrong));
+  const bad: string[] = [];
+  for (const dir of ["content/shows", "content/recaps", "content/nostalgia"]) {
+    for (const f of fs.readdirSync(dir).filter(x => x.endsWith(".md"))) {
+      const text = fs.readFileSync(`${dir}/${f}`, "utf-8");
+      const tags = ((text.match(/^tags:\n((?:  - .*\n)+)/m) || ["", ""])[1] || "").split("\n").map(l => l.replace(/^\s*-\s*/, "").trim()).filter(Boolean);
+      for (const tag of tags) for (const c of wrongOnes) if (tag === c.wrong) bad.push(`${dir}/${f}: «${c.wrong}» (الصح «${c.right}»)`);
+    }
+  }
+  assert.deepEqual(bad, []);
+  // the glossary spelling is the one the show pages carry now
+  assert.equal((JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8")) as Record<string, string>)["Roman Reigns"], "رومان رينز");
+  assert.ok(!fs.readFileSync("content/shows/20261027125824-wwe-raw-26-10-2026.md", "utf-8").includes("رومان راينز"));
+});

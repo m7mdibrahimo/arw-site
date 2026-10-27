@@ -1,7 +1,7 @@
 ---
 title: "Monica Monroe Says AJ Styles Invited Her to WWE Tryout During SummerSlam Weekend"
 slug: "monica-monroe-says-aj-styles-invited-her-to-wwe-tryout-during-summerslam-weekend"
-description: "Monica Monroe was recruited by AJ Styles."
+description: "AJ Styles personally called Monica Monroe to invite her to a WWE tryout during SummerSlam weekend, and she says the call left her in tears."
 federation: WWE
 date: 2026-10-27T19:56:12.000Z
 source_id: 336141

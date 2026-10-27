@@ -307,3 +307,26 @@ test('a word dropped from a transcribed quote is put back («One the things», r
   const fs = await import('node:fs');
   assert.deepEqual(fs.readdirSync('content/news-en').filter((f) => f.endsWith('.md') && /\bOne the things\b/.test(fs.readFileSync(`content/news-en/${f}`, 'utf8'))), []);
 });
+
+// INCIDENTS #883: the description was built from the first prose line only, so a story whose opening line is a short
+// topic sentence («Monica Monroe was recruited by AJ Styles.») had a 40-letter description that said nothing.
+test("a short opening line does not leave a one-sentence description", () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'news-en-'));
+  const file = saveEnglishEdition({
+    ...good,
+    body: 'Monica Monroe was recruited by AJ Styles.\n\nMonroe won the WWE ID Women\'s Championship earlier this month, and she said the call from Styles changed her career.',
+  }, input, dir);
+  const m = matter(fs.readFileSync(file, 'utf8'));
+  assert.ok(m.data.description.length > 100, m.data.description);
+  assert.ok(/Monroe/.test(m.data.description), m.data.description);
+});
+
+// INCIDENTS #883: «currently … current» in one clause («currently part of the faction's current on-screen alliance»).
+test("the same word is not repeated in one clause of English prose", async () => {
+  const { fixEnglishNames } = await import('../scripts/english-edition.ts');
+  assert.equal(fixEnglishNames("He is currently part of the faction's current on-screen alliance."), "He is now part of the faction's current on-screen alliance.");
+  assert.equal(fixEnglishNames('Currently working with the current champion.'), 'Now working with the current champion.');
+  // «current» used once, or «currently» with another adjective, stays
+  assert.equal(fixEnglishNames('He is currently out with an injury.'), 'He is currently out with an injury.');
+  assert.equal(fixEnglishNames('He is part of the current roster.'), 'He is part of the current roster.');
+});

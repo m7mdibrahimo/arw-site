@@ -197,6 +197,8 @@ export function fixSingularThey(text: string): string {
 }
 
 export const ENGLISH_FIXES: [RegExp, string][] = [
+  // «currently part of the faction's current on-screen alliance»: the same word twice in one clause (2026-10-27)
+  [/\b([Cc])urrently((?:\s+[A-Za-z'’.-]+){0,5})\s+current\b/g, (_m: string, c: string, mid: string) => `${c === "C" ? "Now" : "now"}${mid} current`],
   // a word dropped from the source's transcription: «One the things he said» → «One of the things he said» (round 2026-10-27)
   [/\bOne the things\b/g, "One of the things"],
   [/\bone the things\b/g, "one of the things"],
@@ -377,7 +379,11 @@ export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEW
   // the embeds the Arabic story has and the English one left out go at its end
   const missing = embedLines(i.arabicBody).filter((l) => !body.includes(linkOf(l)));
   const finalBody = missing.length ? `${body}\n\n${missing.join("\n\n")}` : body;
-  const lead = body.split("\n").find((l) => l.trim() && !/^\s*>/.test(l) && !isEmbedLine(l)) || "";
+  // The description used to be built from the FIRST prose line only. When that line is the writer's short
+  // topic sentence — «Monica Monroe was recruited by AJ Styles.» — the snippet under the title said nothing
+  // about the story (a 40-letter description on live pages, 2026-10-27). The first prose paragraphs are given
+  // to metaDescription instead, which fills up to Google's ~158 letters with whole sentences.
+  const lead = body.split("\n").filter((l) => l.trim() && !/^\s*>/.test(l) && !isEmbedLine(l)).slice(0, 3).join(" ").slice(0, 700);
   // A description cut at 155 letters ended mid-sentence with «…» (1,536 of 1,564 stories): a snippet Google
   // rewrites and a visitor cannot read. It now ends where a sentence or clause ends (INCIDENTS #862).
   const description = metaDescription(lead);

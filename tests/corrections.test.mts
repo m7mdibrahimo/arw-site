@@ -1007,3 +1007,26 @@ test("Stu Grayson is «ستو غرايسون» and the misspelling is corrected 
   }
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #883: the federation was written in Arabic letters («اتحاد رينغ أوف هونر») although the style guide says
+// federations stay English, «Gabe» of the WWE ID program was given Gabe Kidd's surname, and «being pushed in ROH»
+// became «الحصول على دفعات» (payments).
+test("ROH, Gabe Sapolsky and «push» are corrected instead of published", async () => {
+  const { applyCorrections, checkArticle, BLOCKING_QA_CODES } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("انضم إلى اتحاد رينغ أوف هونر في 2021"), "انضم إلى اتحاد ROH في 2021");
+  assert.equal(applyCorrections("قدم اتحاد رينغ أوف هونر (ROH) عرضا"), "قدم اتحاد ROH عرضا");
+  assert.equal(applyCorrections("انتقلت الإجراءات إلى جيب كيد، المسؤول عن برنامج WWE ID"), "انتقلت الإجراءات إلى جيب سابولسكي، المسؤول عن برنامج WWE ID");
+  assert.equal(applyCorrections("يفضل الحصول على دفعات في عروض ROH"), "يفضل الحصول على دور أكبر في عروض ROH");
+  assert.equal(applyCorrections("عندما عرض النتائج على مكمان، ذكره بأسئلته السابقة"), "عندما عرض النتائج على مكمان، أعاد إلى ذهنه أسئلته السابقة");
+  // the QA codes block the same mistakes when the corrections list is not loaded
+  for (const code of ["federation_arabic_name", "wrong_gabe", "push_as_payments"]) assert.ok(BLOCKING_QA_CODES.includes(code), code);
+  const issues = checkArticle("تحدث بيشوب كاون", "قال إنه يفضل الحصول على دفعات في عروض ROH، وذكر أن جيب كيد هو المسؤول عن برنامج WWE ID.", []);
+  assert.ok(issues.some((i: { code: string }) => i.code === "push_as_payments"));
+  assert.ok(issues.some((i: { code: string }) => i.code === "wrong_gabe"));
+  const bad: string[] = [];
+  for (const f of fs.readdirSync("content/news").filter((x) => x.endsWith(".md"))) {
+    const text = fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|source_url|image):.*$/gm, "");
+    if (/رينغ أوف هونر|رينج أوف هونر|جيب كيد، المسؤول عن برنامج WWE ID|الحصول على دفعات في عروض/.test(text)) bad.push(f);
+  }
+  assert.deepEqual(bad, []);
+});

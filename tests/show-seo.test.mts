@@ -118,3 +118,17 @@ test("a weekly show carries the «… الاخير اليوم» names, an archiv
   const archive = showNameForms({ headline: "عرض سماك داون 23.10.2026 مترجم", title: "WWE Smackdown 23.10.2026", programName: "WWE Smackdown", eventDate: "2026-10-23", aliases: ["عرض سماك داون"], isShow: true, archive: true });
   assert.ok(!archive.some((n: string) => n.endsWith("اليوم")));
 });
+
+// INCIDENTS #883: the day-one, day-two and day-three pages of a multi-day tournament had the same title but for the
+// date («عرض سوبر جونيور تاج ليج 25.10.2026 كامل مترجم»), so the day people search with was missing from the head.
+test("a multi-day tournament keeps its day mark in the head", () => {
+  const mk = (n: string, d: string) => showSeoText({ headline: `عرض سوبر جونيور تاج ليج (اليوم ${n}) ${d}.2026 مترجم`, title: "NJPW Super Junior Tag League", programName: "NJPW Super Junior Tag League", eventDate: `2026-10-${d}`, day: `${d} أكتوبر 2026`, isLatest: false, description: `عرض سوبر جونيور تاج ليج (اليوم ${n}) مترجم بالكامل مع جميع النزالات والأحداث.` });
+  const a = mk("الثاني", "25"), b = mk("الثالث", "26");
+  assert.ok(a.title.includes("(اليوم الثاني)"), a.title);
+  assert.ok(b.title.includes("(اليوم الثالث)"), b.title);
+  assert.notEqual(a.title.replace(/\d{2}\.\d{2}\.\d{4}/, ""), b.title.replace(/\d{2}\.\d{2}\.\d{4}/, ""));
+  assert.ok(a.description.includes("(اليوم الثاني)"), a.description);
+  // a weekly show has no day mark and is unchanged
+  const weekly = showSeoText({ headline: "عرض راو 26.10.2026 مترجم", title: "WWE Raw", programName: "WWE Raw", eventDate: "2026-10-26", day: "26 أكتوبر 2026", isLatest: false, description: "" });
+  assert.ok(!weekly.title.includes("اليوم"), weekly.title);
+});
