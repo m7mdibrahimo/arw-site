@@ -501,6 +501,8 @@ export async function renderServerTool(page) {
   const box = $('#srv');
   let last = null, chosen = {}, chosenQ = {}; // the logo position / qualities picked for the Arabic file about to go up
   const pickedAr = {}; // name → { file, text, lines }: the Arabic subtitle picked, shown until «ابدأ الدمج»
+  // an uploaded show's language: picked (lit at once), then sent with «ابدأ التفريغ» (owner 2026-10-27)
+  const pickedLang = {}, startedSubs = {};
   // pause / go on / stop the running step (from the status card or the show's card)
   const controls = (st, name) => {
     const paused = st && st.paused;
@@ -690,8 +692,10 @@ export async function renderServerTool(page) {
           ${MERGE && !busy && s.ar && !s.merged ? html`<button class="btn btn-sm" data-unqueue="${n}">${icon('x')} إلغاء الدمج</button>` : ''}
           ${busy ? '' : html`<button class="btn btn-sm btn-ghost danger" data-clean="${n}">${icon('trash')} امسحه من السيرفر</button>`}
         </div>
-        ${s.needLang ? html`<div class="srv-needlang"><b>${icon('alert')} اختار لغة الصوت عشان التفريغ يبدأ:</b>
-          <div class="srv-langs">${LANGS.map(l => html`<button class="btn btn-sm" data-setlang="${n}:${l.key}">${l.name}</button>`)}</div></div>`
+        ${s.needLang && startedSubs[s.name] ? html`<p class="srv-wait">${icon('clock')} التفريغ بيبدأ (${LANG_NAME[startedSubs[s.name]] || ''}) — خلال ثواني هتشوف النسبة.</p>`
+        : s.needLang ? html`<div class="srv-needlang"><b>${icon('alert')} اختار لغة الصوت، وبعدين دوس «ابدأ التفريغ»:</b>
+          <div class="srv-langs">${LANGS.map(l => html`<button class="srv-q ${pickedLang[s.name] === l.key ? 'on' : ''}" data-picklang="${n}:${l.key}">${l.name}</button>`)}</div>
+          <div><button class="btn btn-primary" data-startsubs="${n}" ${pickedLang[s.name] ? '' : 'disabled'}>${icon('bolt')} ابدأ التفريغ${pickedLang[s.name] ? ` (${LANG_NAME[pickedLang[s.name]]})` : ''}</button></div></div>`
         : s.video && !s.en && !(alive && st.job && st.job.step === 'subs' && st.job.name === s.name) ? html`<div class="srv-langs srv-lang-pick"><span class="muted">لغة الصوت:</span>${LANGS.map(l => html`<button class="srv-q ${(s.lang || 'en') === l.key ? 'on' : ''}" data-setlang="${n}:${l.key}">${l.name}</button>`)}</div>` : ''}
         ${MERGE && !busy && !s.merged ? html`<div class="srv-langs srv-lang-pick"><span class="muted">الجودات:</span>${QUALS.map(q => html`<button class="srv-q ${(chosenQ[s.name] || s.qual || 'all') === q.key ? 'on' : ''}" data-setq="${n}:${q.key}">${q.name}</button>`)}</div>` : ''}
         ${MERGE && !busy && (s.en || s.ar || s.merged) ? html`<${s.ar || s.merged ? 'details' : 'div'} class="srv-ar">
@@ -718,6 +722,14 @@ export async function renderServerTool(page) {
       const [n, q] = b.dataset.setq.split(':'); const s = list[+n];
       chosenQ[s.name] = q; drawShows(last);
       send({ kind: 'setqual', name: s.name, qual: q }, `«${s.name.slice(0, 40)}»: ${q === '720' ? '٧٢٠ بس' : '٤ جودات'}`);
+    });
+    $$('[data-picklang]').forEach(b => b.onclick = () => { const [n, l] = b.dataset.picklang.split(':'); pickedLang[list[+n].name] = l; drawShows(last); });
+    $$('[data-startsubs]').forEach(b => b.onclick = async () => {
+      const s = list[+b.dataset.startsubs], l = pickedLang[s.name];
+      if (!l) return;
+      b.disabled = true;
+      if (!(await send({ kind: 'resub', name: s.name, lang: l }, `التفريغ بيبدأ — ${LANG_NAME[l]}`))) { b.disabled = false; return; }
+      startedSubs[s.name] = l; delete pickedLang[s.name]; drawShows(last);
     });
     $$('[data-setlang]').forEach(b => b.onclick = () => { const [n, l] = b.dataset.setlang.split(':'); send({ kind: 'resub', name: list[+n].name, lang: l }, list[+n].needLang ? `لغة الصوت: ${LANG_NAME[l]} — التفريغ هيبدأ خلال ثواني` : `لغة الصوت: ${LANG_NAME[l]}`); });
     $$('[data-q]').forEach(b => b.onclick = () => { const [n, q] = b.dataset.q.split(':'); chosenQ[list[+n].name] = q; drawShows(last); });
