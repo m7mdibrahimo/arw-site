@@ -187,9 +187,15 @@ export async function runSiteHealthCheck(env: HealthEnv, minute: number, keyOf: 
       const quiet = lastAt && now - lastAt > 6 * 3600_000;
       problems = mergeProblems(problems, quiet ? [{ key: "stale", code: "news_stale", title: "مفيش خبر جديد نزل من أكتر من ٦ ساعات", detail: `آخر خبر: ${String(newest?.title || "").slice(0, 100)}` }] : [], ["news_stale"], now);
       const state = await readState().catch(() => null);
-      if (state) {
+      // the owner stopped social posting for now (KV social:paused): nothing is «stuck»; and once it's back, what came out
+      // while it was off is not owed to the platforms (KV social:resume-from)
+      const paused = env.PUSH_KV ? await env.PUSH_KV.get("social:paused").catch(() => null) : null;
+      const resumeFrom = env.PUSH_KV ? Number(await env.PUSH_KV.get("social:resume-from").catch(() => null)) || 0 : 0;
+      if (paused) problems = mergeProblems(problems, [], ["social_stuck"], now);
+      else if (state) {
         const igAllows = await igRule().catch(() => () => true);
-        const stuck = stuckOnSocial(Array.isArray(feed) ? feed : [], state, keyOf, now, igAllows, fileOf)
+        const fresh = (Array.isArray(feed) ? feed : []).filter((it: any) => !resumeFrom || (Date.parse(it.published_at || it.date) || 0) >= resumeFrom);
+        const stuck = stuckOnSocial(fresh, state, keyOf, now, igAllows, fileOf)
           .map(s => ({ key: `social:${s.title}`, code: "social_stuck", title: `«${s.title}» منزلش على ${s.missing.join(" و")}`, detail: "عدّى عليه أكتر من ساعة على الموقع ومش محجوز" }));
         problems = mergeProblems(problems, stuck, ["social_stuck"], now);
       }

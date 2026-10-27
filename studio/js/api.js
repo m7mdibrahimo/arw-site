@@ -82,6 +82,8 @@ export const notifications = () => call('/api/studio/notifications');
 // ── Publishing tools (the old /admin/ pages, now in the panel) ──────────────
 export const tools = {
   socialStatus: (urls) => call('/api/studio/tools/social', { method: 'POST', body: { urls } }),
+  socialPause: () => call('/api/studio/social/pause'),
+  setSocialPause: (paused) => call('/api/studio/social/pause', { method: 'POST', body: { paused } }),
   /** One platform per request (the worker's rule), so each gets its own result. */
   publish: (item, platform, force = false) => callResult('/api/social/manual-publish', { method: 'POST', body: {
     title: item.title, text: item.headline || item.description || '', url: `https://arab-wrestling.com${item.url}`, image: item.image, kind: item.kind, platforms: [platform], force } }),

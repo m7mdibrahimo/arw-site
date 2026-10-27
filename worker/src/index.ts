@@ -2052,6 +2052,7 @@ async function publishToPlatform(
   item: { title: string; text?: string; url: string; image?: string; kind?: string; file?: string },
   verified: { imageBuffer?: ArrayBuffer; imageContentType?: string }, force: boolean,
 ): Promise<{ status: string; raw?: any }> {
+  if (await socialPaused(env)) return { status: "paused" };
   // Fail closed if state cannot be read; absence of a read is not permission to resend.
   const { state } = await githubReadState(env);
   if (!force && state[platform]?.[key]) return { status: "already_sent" };
@@ -2388,6 +2389,7 @@ function looksLikeContentFeed(data: any): data is any[] {
 // so the very next stall, whatever eventually causes it, is noticed within
 // minutes instead of being found by chance while browsing the site.
 async function checkPublishingStalled(env: Env, items: any[]): Promise<void> {
+  if (await socialPaused(env)) return;
   if (!env.PUSH_KV || !env.ADMIN_TELEGRAM_CHAT_ID) return;
   try {
     const now = Date.now();
@@ -2399,9 +2401,10 @@ async function checkPublishingStalled(env: Env, items: any[]): Promise<void> {
 
     // Don't alert on a quiet news day with nothing new to post — only when
     // there's demonstrably fresh work that should have gone out by now.
+    const resumeFrom = Number(await env.PUSH_KV.get("social:resume-from")) || 0; // what came out while posting was off isn't owed
     const hasFreshWork = items.some((it) => {
       const ts = it?.date ? new Date(it.date).getTime() : 0;
-      return ts > 0 && now - ts < STALL_THRESHOLD_MS;
+      return ts > 0 && ts >= resumeFrom && now - ts < STALL_THRESHOLD_MS;
     });
     if (!hasFreshWork) return;
 
@@ -2424,7 +2427,16 @@ async function checkPublishingStalled(env: Env, items: any[]): Promise<void> {
   }
 }
 
+/** The owner's switch for all social posting (owner 2026-10-27: «توقف النشر حاليا نهائي علي كل المنصات … بشكل مؤقت»):
+ *  KV social:paused = {since, by}. While it's on, nothing goes to Telegram, Facebook, Instagram, X or TikTok — the
+ *  automatic poster, the reels, the promos, the panel's own «نشر» and «فك الحجب». Turned off, posting starts again with
+ *  what's published from then on (KV social:resume-from), not with the backlog of the paused time */
+async function socialPaused(env: Env): Promise<any> {
+  return await env.PUSH_KV.get("social:paused", "json").catch(() => null);
+}
+
 export async function runWatcherPoll(env: Env): Promise<void> {
+  if (await socialPaused(env)) return;
   let items: any[] = [];
   try {
     // watcher-recent-content.json is a small, fixed-size (~200 item) tail of the newest
@@ -2457,7 +2469,8 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   if (!items.length) return;
   items = items.map((it: any) => (it && it.image ? { ...it, image: socialImage(it.image) } : it));
 
-  const minDate = env.WATCHER_MIN_DATE ? new Date(env.WATCHER_MIN_DATE).getTime() : 0;
+  const resumeFrom = Number(await env.PUSH_KV.get("social:resume-from")) || 0;
+  const minDate = Math.max(env.WATCHER_MIN_DATE ? new Date(env.WATCHER_MIN_DATE).getTime() : 0, resumeFrom);
 
   let state: PublishState;
   let currentSha: string | null = null;
@@ -3576,7 +3589,21 @@ export default {
         if (!(await studioAuthorized(request, env, "tools"))) return json({ success: false, denied: true, error: "مش مسموحلك تتحكم في النشر على المنصات." }, 403);
         return json(await studioHeld(env));
       }
+      // the switch for all social posting: read by every panel user, changed by those who run the publishing tools
+      if (path === "/api/studio/social/pause") {
+        if (request.method === "GET") return json({ success: true, paused: await socialPaused(env) });
+        if (request.method === "POST") {
+          if (!(await studioAuthorized(request, env, "tools"))) return json({ success: false, denied: true, error: "مش مسموحلك تتحكم في النشر على المنصات." }, 403);
+          const b: any = await request.json().catch(() => ({}));
+          const who = await studioUser(request, env as any);
+          if (b.paused) await env.PUSH_KV.put("social:paused", JSON.stringify({ since: Date.now(), by: who?.user || "" }));
+          else { await env.PUSH_KV.delete("social:paused"); await env.PUSH_KV.put("social:resume-from", String(Date.now())); }
+          if (who) await studioAudit(env as any, who.user, b.paused ? "social.pause" : "social.resume", {}).catch(() => {});
+          return json({ success: true, paused: b.paused ? await socialPaused(env) : null });
+        }
+      }
       if ((path === "/api/studio/held/publish" || path === "/api/studio/held/keep") && request.method === "POST") {
+        if (path.endsWith("/publish") && await socialPaused(env)) return json({ success: false, error: "النشر على السوشيال متوقف مؤقتًا — رجّعه الأول من «النشر على المنصات»." });
         if (!(await studioAuthorized(request, env, "tools"))) return json({ success: false, denied: true, error: "مش مسموحلك تتحكم في النشر على المنصات." }, 403);
         return await studioHeldAction(env, request, path.endsWith("/publish") ? "publish" : "keep");
       }
@@ -3826,6 +3853,7 @@ export default {
       // whether a reel can reach TikTok now: through Buffer's TikTok channel, or the site's own app once TikTok audited it
       // (scripts/show-reel-monitor.ts asks before it offers a reel to TikTok)
       if (path === "/api/tiktok/ready" && request.method === "GET") {
+        if (await socialPaused(env)) return json({ success: true, ready: false, paused: true });
         const viaBuffer = !!(await bufferTikTokChannel(env));
         return json({ success: true, ready: env.TIKTOK_AUTO_ENABLED === "true" && (viaBuffer || env.TIKTOK_APP_AUDITED === "true"), via: viaBuffer ? "buffer" : env.TIKTOK_APP_AUDITED === "true" ? "app" : "" });
       }
@@ -4259,6 +4287,7 @@ export default {
       }
 
       if (path === "/api/videos/publish-social" && request.method === "POST") {
+        if (await socialPaused(env)) return json({ success: false, paused: true, error: "النشر على السوشيال متوقف مؤقتًا" }, 503);
         try {
           const body: any = await request.json().catch(() => ({}));
           const rawVideoUrl = String(body.videoUrl || "").trim();
@@ -4380,6 +4409,7 @@ export default {
       // request, posted once (deliverOnce), then pinned where the platform lets a page pin. The file must already be on
       // the site at /videos/<file> (.github/workflows/promo-publish.yml puts it there). Admin only (the check above).
       if (path === "/api/videos/publish-promo" && request.method === "POST") {
+        if (await socialPaused(env)) return json({ success: false, paused: true, error: "النشر على السوشيال متوقف مؤقتًا" }, 503);
         const body: any = await request.json().catch(() => ({}));
         const file = String(body.file || "");
         const platform = String(body.platform || "") as PromoPlatform;

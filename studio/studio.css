@@ -1220,3 +1220,7 @@ button.pager-num, button.pager-step { border: 0; font: inherit; font-weight: 800
 .srv-dl { display: flex; flex-direction: column; gap: 4px; }
 .srv-dl-head { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; }
 .srv-dl-head span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.pause-card { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 18px; margin-bottom: 16px; border-radius: 16px; background: var(--card, rgba(255,255,255,.04)); border: 1px solid var(--line, rgba(255,255,255,.08)); }
+.pause-card p { margin: 4px 0 0; }
+.pause-card.is-off { border-color: rgba(255, 99, 71, .55); background: rgba(255, 99, 71, .08); }
+@media (max-width: 640px) { .pause-card { flex-direction: column; align-items: stretch; } }

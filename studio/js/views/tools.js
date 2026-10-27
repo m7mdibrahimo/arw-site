@@ -29,6 +29,7 @@ export async function renderSocialTool(page) {
   const selected = new Set();
   mount(page, html`<div class="wrap page-in">
     ${header('النشر على المنصات', 'انشر أي عرض أو ملخص أو خبر على تيليجرام وفيسبوك وإنستجرام وإكس بإيدك. النشر التلقائي شغال لوحده؛ دي للحالات اللي انت عايز تتحكم فيها.')}
+    <div id="social-pause"></div>
     <div class="filterbar">
       <div class="search search-wide">${icon('search')}<input id="q" placeholder="ابحث في آخر ٨٠ موضوع…"></div>
       <div class="seg" id="filters">${[['all', 'الكل'], ['unsent', 'لسه متنشرش كامل'], ['show', 'عروض'], ['recap', 'ملخصات'], ['news', 'أخبار']].map(([k, l], n) => html`<button type="button" data-f="${k}" class="${n ? '' : 'on'}">${l}</button>`)}</div>
@@ -37,6 +38,23 @@ export async function renderSocialTool(page) {
     <div class="rows" id="list"></div>
   </div>`);
 
+  // one switch for all posting (owner 2026-10-27: «توقف النشر حاليا نهائي … بشكل مؤقت»)
+  const drawPause = async () => {
+    let p = null;
+    try { p = (await tools.socialPause()).paused; } catch {}
+    mount($('#social-pause'), p ? html`<div class="pause-card is-off"><div><b>${icon('alert')} النشر على السوشيال متوقف</b>
+        <p class="muted">من ${timeAgo(p.since)}. مفيش أي حاجة بتنزل على تيليجرام وفيسبوك وإنستجرام وإكس وتيك توك، لا تلقائي ولا بإيدك. الموقع نفسه شغال عادي.</p></div>
+        <button class="btn btn-primary" id="pause-toggle">${icon('send')} رجّع النشر</button></div>`
+      : html`<div class="pause-card"><div><b>${icon('check')} النشر على السوشيال شغال</b>
+        <p class="muted">لو عايز توقفه شوية، دوس «أوقف النشر». ولما ترجّعه، هيتنشر اللي ينزل على الموقع من ساعتها بس.</p></div>
+        <button class="btn btn-ghost" id="pause-toggle">${icon('x')} أوقف النشر</button></div>`);
+    $('#pause-toggle').onclick = async () => {
+      if (!p && !(await dialog({ title: 'توقف النشر على كل المنصات؟', body: 'مفيش حاجة هتنزل على السوشيال لحد ما ترجّعه. الموقع هيفضل شغال وينزل عليه عادي.', confirm: 'أوقف النشر', cancel: 'لا' }))) return;
+      try { await tools.setSocialPause(!p); toast(p ? 'النشر رجع — اللي هينزل من دلوقتي هيتنشر' : 'النشر على السوشيال اتوقف', 'ok'); } catch (e) { toast(e.message, 'error'); }
+      drawPause();
+    };
+  };
+  drawPause();
   const done = (u) => { const s = status[u]; return s && !s.held && s.telegram && s.facebook && s.instagram; };
   const visible = () => items.filter(i => (filter === 'all' || (filter === 'unsent' ? !done(i.url) : i.kind === filter))
     && (!q || normalizeArabic(`${i.title} ${i.headline || ''}`).includes(q)));
