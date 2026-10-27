@@ -9,7 +9,7 @@
 #   ARW_GUARD_MODEL     موديل واحد بصيغة provider/model
 #   ARW_GUARD_MODELS    قايمة موديلات بالفواصل (بيجرّبهم بالترتيب لحد ما واحد ينجح)
 #   ARW_GUARD_SKIP_CI=1 يتخطّى npm ci (لو الحزم مركّبة بالفعل)
-#   ARW_GUARD_TIMEOUT   أقصى مدة للفة بالدقايق (افتراضي 45)
+#   ARW_GUARD_TIMEOUT   أقصى مدة للفة بالدقايق (افتراضي 60)
 #
 # ملاحظة: السكربت بيعمل commit بس — **مابيدفعش**. الدفع بيتعمل في الـworkflow
 # بعد فحص مستقل (اختبارات + بناء)، عشان أي كود مكسور مايوصلش للموقع.
@@ -20,7 +20,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT" || exit 1
 
 AGENT="${ARW_GUARD_AGENT:-site-guard}"
-TIMEOUT_MIN="${ARW_GUARD_TIMEOUT:-45}"
+TIMEOUT_MIN="${ARW_GUARD_TIMEOUT:-60}"
 LOG_DIR="$ROOT/reports/guard"
 mkdir -p "$LOG_DIR"
 
@@ -56,7 +56,7 @@ if [ "${1:-}" = "--dry-run" ]; then
   echo "LOG=$LOG"
   echo "MODELS=${MODELS[*]}"
   echo "SKIP_CI=${ARW_GUARD_SKIP_CI:-0}"
-  echo "TIMEOUT=${ARW_GUARD_TIMEOUT:-45}"
+  echo "TIMEOUT=${ARW_GUARD_TIMEOUT:-60}"
   echo "PROMPT=$PROMPT"
   exit 0
 fi
