@@ -12,11 +12,11 @@ name: Hourly Guard
 on:
   schedule:
     - cron: '5 * * * *'   # كل ساعة في الدقيقة ٥
-  # احتياطي: كرون GitHub في مستودع بنشاط ١٧٠٠ كوميت/يوم بيتأخر ساعات أو بيتشال.
-  # «Site Branch» بتشتغل بالكرون كل ١٠ دقايق وعمليًا ~١/ساعة، فبنستخدم تشغيلها
-  # المجدول كمُشغّل إضافي، مع بوابة في preflight: مفيش لفة لو آخر نجاح أقل من ٥٥ دقيقة.
+  # احتياطي: كرون GitHub في المستودع ده بيتأخر ساعات. «SEO New Shows» بتشتغل كل ساعة
+  # (الـWorker بيطلقها + جدولها)، وبوابة preflight بتمنع أي لفة لو آخر نجاح أقل من ٥٥ دقيقة.
+  # (مش «Site Branch»: بتشتغل مع كل push فبتولّد مئات التشغيلات الفارغة.)
   workflow_run:
-    workflows: ["Site Branch"]
+    workflows: ["SEO New Shows"]
     types: [completed]
   workflow_dispatch:
 
