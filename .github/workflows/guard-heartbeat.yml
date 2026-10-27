@@ -11,6 +11,11 @@ name: Guard Heartbeat
 on:
   schedule:
     - cron: '35 * * * *'
+  # نفس مشكلة الكرون المتأخر: لو الاعتماد على الجدول لوحده، الحارس-الحارس نفسه
+  # ممكن مايشتغلش يوم وقفة اللفة. فبنتعلّق على نفس المُشغّل الساعي الموثوق.
+  workflow_run:
+    workflows: ["SEO New Shows", "Search Console Report"]
+    types: [completed]
   workflow_dispatch:
 
 permissions:
