@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/wwe-raw-26-10-2026/",
+    "title": "عرض الرو 26.10.2026 مترجم",
+    "subtitle": "WWE RAW 26.10.2026",
+    "image": "/content/images/01j2a38qm0m0uat0.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض الرو مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-raw-sami-zayn-vs-cody-rhodes-dark-match-19-10-2026/",
     "title": "مباراة سامي زين ضد كودي رودز 19.10.2026 في عرض الرو دارك ماتش",
     "subtitle": "WWE RAW Sami Zayn vs Cody Rhodes Dark Match 19.10.2026",
@@ -119,38 +130,5 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض ان اكس تي مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-raw-19-10-2026/",
-    "title": "عرض الرو 19.10.2026 مترجم",
-    "subtitle": "WWE RAW 19.10.2026",
-    "image": "/content/images/kb9baanfqcmujspi.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض الرو مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aew-wrestledream-2026/",
-    "title": "عرض ريسل دريم 17.10.2026 مترجم",
-    "subtitle": "AEW WrestleDream (2026)",
-    "image": "/content/images/3ic2a4k9egkbj34g.jpg?w=800",
-    "federation": "AEW",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ريسل دريم مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aew-wrestledream-tailgate-brawl-2026/",
-    "title": "عرض ريسل دريم تيلغيت برول 17.10.2026 مترجم",
-    "subtitle": "AEW WrestleDream Tailgate Brawl (2026)",
-    "image": "/content/images/1nhohlh291gy95pg.jpg?w=800",
-    "federation": "AEW",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ريسل دريم تيلغيت برول مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
