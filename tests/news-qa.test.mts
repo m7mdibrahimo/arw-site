@@ -213,3 +213,9 @@ test("a lone letter from a split name («إ جي كليري») is blocking and r
   assert.ok(checkArticle("عنوان تجريبي", "هزم أوستن لوك البطل إ جي كليري بالاستبعاد.\n\nنص آخر طويل بما يكفي.").some((i) => i.code === "truncated_word"));
   assert.equal(applyCorrections("هزم أوستن لوك البطل إ جي كليري"), "هزم أوستن لوك البطل إل جيه كليري");
 });
+
+test("«ديقاز» and «إكسبرودير» are corrected automatically (INCIDENTS #857)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa.ts");
+  assert.equal(applyCorrections("بطلة WWE للديقاز السابقة"), "بطلة WWE للديفاز السابقة");
+  assert.equal(applyCorrections("ونفذ حركة إكسبرودير"), "ونفذ حركة إكسبلودر");
+});

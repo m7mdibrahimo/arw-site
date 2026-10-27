@@ -8106,6 +8106,21 @@
    "wrong": "وأسن",
    "right": "وأننا",
    "note": "غلطة كتابة «وأسن سنكون» (INCIDENTS #853)"
+  },
+  {
+   "wrong": "ديقاز",
+   "right": "ديفاز",
+   "note": "Divas بالفاء مش بالقاف (INCIDENTS #857)"
+  },
+  {
+   "wrong": "للديقاز",
+   "right": "للديفاز",
+   "note": "Divas بالفاء مش بالقاف (INCIDENTS #857)"
+  },
+  {
+   "wrong": "إكسبرودير",
+   "right": "إكسبلودر",
+   "note": "حركة Exploder suplex (INCIDENTS #857)"
   }
  ]
 }
