@@ -411,7 +411,9 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
   // A headline whose last word is a 2-3 letter stub that appears nowhere in the body: the quote was cut
   // mid-word («… وأنا لا أعل», INCIDENTS #832).
   const lastTitleWord = (title || "").trim().replace(/[.!؟?"»”'\s]+$/, "").split(/\s+/).pop() || "";
-  if (/^[ء-ي]{2,3}$/.test(lastTitleWord) && (title || "").length > 40) {
+  // Whole 2-3 letter words a headline may legitimately end on although the body never uses them («شخص سيء», «عن قرب»)
+  const WHOLE_SHORT_WORDS = new Set(["سيء", "سيئ", "قرب", "جيد", "جدا", "بعد", "قبل", "حقا", "فقط", "غدا", "أمس", "امس", "الان", "كثيرا", "قريب", "بعيد", "هناك", "هنا", "دائما", "أبدا", "ابدا", "معا", "منه", "معه", "لها", "له", "عنه", "عنها", "منها", "معها", "بها", "به", "فيه", "فيها", "عليه", "عليها", "لي", "مني", "معي", "بي", "لنا", "منا", "معنا", "لهم", "منهم", "معهم", "عنهم", "بهم", "ما", "مرة", "وقت", "يوم", "يرد"]);
+  if (/^[ء-ي]{2,3}$/.test(lastTitleWord) && (title || "").length > 40 && !WHOLE_SHORT_WORDS.has(lastTitleWord)) {
     const stem = lastTitleWord.replace(/^(?:و|ف|ب|ل|ك)?(?:ال)?/, "");
     const bodyWords = stripNonProse(body || "").split(/[^ء-ي]+/);
     const inBody = bodyWords.some((w) => w === lastTitleWord || (stem.length >= 2 && w.replace(/^(?:و|ف|ب|ل|ك)?(?:ال)?/, "") === stem));

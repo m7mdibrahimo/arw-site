@@ -650,6 +650,9 @@ test('title_cut_word blocks a headline cut mid-word and passes a whole one', () 
   assert.ok(cut.some(i => i.code === 'title_cut_word'));
   const ok = checkArticle('مارينا شافير توجه رسالة قوية إلى مرسيدس موني بعد عرض AEW Collision', body);
   assert.ok(!ok.some(i => i.code === 'title_cut_word'));
+  // a complete short word the body never uses is not a cut quote («إنه شخص سيء», «عن قرب»)
+  assert.ok(!checkArticle('درو ماكنتاير يتحدث عن خلافه مع سي ام بانك في WWE: إنه شخص سيء', body).some(i => i.code === 'title_cut_word'));
+  assert.ok(!checkArticle('مات هاردي: لن أنسى أبدا مشاهدة هذا النزال الكلاسيكي في عرض WWE عن قرب', body).some(i => i.code === 'title_cut_word'));
   assert.ok(BLOCKING_QA_CODES.includes('title_cut_word') && RETRYABLE_QA_CODES.includes('title_cut_word'));
 });
 
