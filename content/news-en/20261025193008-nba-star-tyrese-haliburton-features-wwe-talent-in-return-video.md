@@ -1,7 +1,7 @@
 ---
 title: "NBA Star Tyrese Haliburton Features WWE Talent in Return Video"
 slug: "nba-star-tyrese-haliburton-features-wwe-talent-in-return-video"
-description: "Indiana Pacers guard Tyrese Haliburton is preparing for his return to the court this Wednesday, according to Wrestling Inc."
+description: Indiana Pacers guard Tyrese Haliburton is preparing for his return to the court this Wednesday, according to Wrestling Inc.
 federation: WWE
 date: 2026-10-25T16:30:08.000Z
 source_id: 4823978347

@@ -957,3 +957,20 @@ test("«المحجاج» and «وأسن» are corrected and gone from the storie
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /المحجاج|وأسن /.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #869: «مقابلة أجراها تقارير صحفية مطلعة» (a report conducting an interview) and the show name
+// «موني إن ذا بانك» in 259 Arabic stories + the broken «حضوره الفعاليات».
+test("show names stay English and a report cannot conduct an interview (INCIDENTS #869)", async () => {
+  const { applyCorrections, checkArticle } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("في عرض موني إن ذا بانك 2026"), "في عرض Money in the Bank 2026");
+  assert.equal(applyCorrections("بعد مقابلة أجراها تقارير صحفية مطلعة مع الموهبة"), "بعد مقابلة أجراها صحفي متخصص مع الموهبة");
+  assert.equal(applyCorrections("تحدث عن حضوره الفعاليات وأجوائها"), "تحدث عن حضوره فعاليات وأجوائها");
+  const issues = checkArticle("خبر عادي", "وجاء هذا التفاعل بعد مقابلة أجراها تقارير صحفية مطلعة مع الموهبة.", []);
+  assert.ok(issues.some((i) => i.code === "broken_attribution"), JSON.stringify(issues));
+  // the corrected sentence is clean
+  const ok = checkArticle("خبر عادي", "وجاء هذا التفاعل بعد مقابلة أجراها شون روس ساب من Fightful مع الموهبة.", []);
+  assert.ok(!ok.some((i) => i.code === "broken_attribution"), JSON.stringify(ok));
+  // the transliterated show name is gone from every published story (title, body and tags alike)
+  const bad = fs.readdirSync("content/news").filter((f) => /موني إن ذا بانك|ريسل\s*مانيا|سمر\s*سلام|رويال\s+رامبل/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|source_url|image):.*$/gm, "")));
+  assert.deepEqual(bad, []);
+});

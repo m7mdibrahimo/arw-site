@@ -100,6 +100,31 @@ permalink: "/index.html"
       "name": "نوستالجيا",
       "description": "أرشيف عروض المصارعة التاريخية والكلاسيكية مترجمة بالتسلسل الزمني",
       "url": "https://arab-wrestling.com/nostalgia/"
+    },
+    {#- The home page is what Google shows for the biggest whole-site queries («عرض الرو الاخير» 4.3, «عرض سماك داون الاخير» 5.5, «مصارعة حرة» 6.8, «مصارعة» 9.3 in Search Console). Its head says what the page is and lists the episodes it shows, in the head only — nothing visible changes (INCIDENTS #870). -#}
+    {
+      "@type": "CollectionPage",
+      "@id": "https://arab-wrestling.com/#webpage",
+      "url": "https://arab-wrestling.com/",
+      "name": "عرب راسلنج | مصارعة حرة — أخبار وعروض المصارعة الحرة مترجمة",
+      "description": "عرب راسلنج: موقع المصارعة الحرة بالعربي. عروض مصارعة حرة جديدة مترجمة أول بأول: عرض الرو الأخير وسماك داون وداينامايت ونتائجها (WWE وAEW وTNA وROH)، وأخبار المصارعة اليوم، وملخصات العروض.",
+      "inLanguage": "ar",
+      "isPartOf": { "@id": "https://arab-wrestling.com/#website" },
+      "about": [
+        { "@type": "Thing", "name": "Professional Wrestling", "sameAs": "https://en.wikipedia.org/wiki/Professional_wrestling" },
+        { "@type": "Organization", "name": "WWE", "sameAs": "https://en.wikipedia.org/wiki/WWE" },
+        { "@type": "Organization", "name": "AEW", "sameAs": "https://en.wikipedia.org/wiki/All_Elite_Wrestling" },
+        { "@type": "Organization", "name": "TNA Wrestling", "sameAs": "https://en.wikipedia.org/wiki/Total_Nonstop_Action_Wrestling" },
+        { "@type": "Organization", "name": "Ring of Honor", "sameAs": "https://en.wikipedia.org/wiki/Ring_of_Honor" },
+        { "@type": "Organization", "name": "New Japan Pro-Wrestling", "sameAs": "https://en.wikipedia.org/wiki/New_Japan_Pro-Wrestling" },
+        { "@type": "Organization", "name": "CMLL", "sameAs": "https://en.wikipedia.org/wiki/Consejo_Mundial_de_Lucha_Libre" }
+      ],
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {% for item in collections.shows %}{% if loop.index <= 10 %}{ "@type": "ListItem", "position": {{ loop.index }}, "url": "https://arab-wrestling.com{{ item.url | cleanUrl }}", "name": "{{ (item.data.headline or item.data.title) | escape }}" }{% if not loop.last and loop.index < 10 %},{% endif %}{% endif %}{% endfor %}
+        ]
+      }
     }
   ]
 }

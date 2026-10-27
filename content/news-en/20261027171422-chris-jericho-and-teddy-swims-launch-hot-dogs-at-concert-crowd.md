@@ -1,7 +1,7 @@
 ---
 title: "Chris Jericho and Teddy Swims Launch Hot Dogs at Concert Crowd"
 slug: "chris-jericho-and-teddy-swims-launch-hot-dogs-at-concert-crowd"
-description: "AEW star Chris Jericho joined musician Teddy Swims on stage for a lighthearted moment during a recent concert. The performance took place on Oct."
+description: AEW star Chris Jericho joined musician Teddy Swims on stage for a lighthearted moment during a recent concert.
 federation: AEW
 date: 2026-10-27T14:14:22.000Z
 source_id: 336062

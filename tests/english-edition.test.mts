@@ -178,8 +178,15 @@ test('English grammar slips are fixed on save: «a experimental», «I’re» (m
   assert.equal(aToAn('> a eager quote'), '> a eager quote');
   assert.equal(fixIre('I feel like I’re starving. I\'re ready'), 'I feel like I’m starving. I\'m ready');
   assert.equal(fixEnglishNames('He made a experimental move'), 'He made an experimental move');
-  assert.deepEqual(englishGrammarSlips('a experimental'), ['a/an or I\'re typo']);
+  assert.deepEqual(englishGrammarSlips('a experimental'), ['a/an, I\'re or pronoun-case typo']);
   assert.deepEqual(englishGrammarSlips('an experimental'), []);
+  // a preposition never takes the subject form; a speaker's own quote and «after he» (a conjunction) stay as written (INCIDENTS #870)
+  const { fixPronounCase } = await import('../scripts/english-edition.ts');
+  assert.equal(fixPronounCase('with he and his group at Survivor Series'), 'with him and his group at Survivor Series');
+  assert.equal(fixPronounCase('a chance for she and the team, between they and us'), 'a chance for her and the team, between them and us');
+  assert.equal(fixPronounCase('after he won, before she arrived, to we the people'), 'after he won, before she arrived, to us the people');
+  assert.equal(fixPronounCase('> "It had something to do with I never changed my name"'), '> "It had something to do with I never changed my name"');
+  assert.deepEqual(englishGrammarSlips('with he and his group'), ['a/an, I\'re or pronoun-case typo']);
 });
 
 test('Mercedes Mone always gets her accent', async () => {

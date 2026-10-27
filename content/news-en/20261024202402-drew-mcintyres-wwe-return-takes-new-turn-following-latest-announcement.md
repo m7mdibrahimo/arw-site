@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre's WWE Return Takes New Turn Following Latest Announcement"
 slug: "drew-mcintyres-wwe-return-takes-new-turn-following-latest-announcement"
-description: "Drew McIntyre's return to WWE television might be delayed longer than expected. The Scottish wrestler has been absent for six months, and Nov."
+description: "Drew McIntyre's return to WWE television might be delayed longer than expected."
 federation: WWE
 date: 2026-10-24T17:24:02.000Z
 source_id: 802259176

@@ -109,3 +109,12 @@ test("a weekly show carries the feminine «عروض المصارعة الحرة 
   const forms = showNameForms({ headline: "عرض الرو 19.10.2026 مترجم", title: "WWE Raw 19.10.2026", programName: "WWE Raw", eventDate: "2026-10-19", aliases: ["عرض الرو"], isShow: true });
   for (const f of ["عروض المصارعة الحرة مترجمة", "مشاهدة عروض المصارعة الحرة", "تحميل عروض المصارعة الحرة"]) assert.ok(forms.includes(f), f);
 });
+
+// INCIDENTS #870: «عرض سماك داون الاخير اليوم» (4.7, 433 impressions) was answered by the home page only — the day word
+// belongs with the episode's own names too, and a nostalgia/archive episode is never «today».
+test("a weekly show carries the «… الاخير اليوم» names, an archive episode does not", () => {
+  const weekly = showNameForms({ headline: "عرض سماك داون 23.10.2026 مترجم", title: "WWE Smackdown 23.10.2026", programName: "WWE Smackdown", eventDate: "2026-10-23", aliases: ["عرض سماك داون"], isShow: true });
+  for (const f of ["عرض سماك داون الاخير اليوم", "سماك داون الاخير اليوم", "عرض سماك داون اليوم"]) assert.ok(weekly.includes(f), f);
+  const archive = showNameForms({ headline: "عرض سماك داون 23.10.2026 مترجم", title: "WWE Smackdown 23.10.2026", programName: "WWE Smackdown", eventDate: "2026-10-23", aliases: ["عرض سماك داون"], isShow: true, archive: true });
+  assert.ok(!archive.some((n: string) => n.endsWith("اليوم")));
+});

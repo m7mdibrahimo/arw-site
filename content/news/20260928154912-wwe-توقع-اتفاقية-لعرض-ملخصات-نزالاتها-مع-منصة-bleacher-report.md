@@ -15,12 +15,12 @@ tags:
   - WWE RAW
   - WWE SmackDown
   - WWE NXT
-  - موني إن ذا بانك
+  - Money in the Bank
 image: /content/images/whkhf1xalt7fh93v.jpg
 layout: post-layout.njk
 ---
 أبرم اتحاد WWE اتفاقية تعاون جديدة مع منصة Bleacher Report لنشر ملخصات العروض والمحتوى الحصري. وبحسب التقارير، ستشمل الشراكة محتوى من عروض WWE RAW وWWE SmackDown وWWE NXT، بالإضافة إلى العروض الكبرى مثل WrestleMania وSurvivor Series.
 
-سيتم توزيع هذا المحتوى عبر منصات التواصل الاجتماعي التابعة لـ TNT Sports، بما في ذلك B/R وHouse of Highlights وB/R Wrestling، مع تواجد ميداني للمنصة في عروض WWE المتميزة لجمع الفيديوهات ونشرها. ومن المقرر أن تدخل هذه الاتفاقية حيز التنفيذ بدءا من عرض موني إن ذا بانك في 10 أكتوبر المقبل.
+سيتم توزيع هذا المحتوى عبر منصات التواصل الاجتماعي التابعة لـ TNT Sports، بما في ذلك B/R وHouse of Highlights وB/R Wrestling، مع تواجد ميداني للمنصة في عروض WWE المتميزة لجمع الفيديوهات ونشرها. ومن المقرر أن تدخل هذه الاتفاقية حيز التنفيذ بدءا من عرض Money in the Bank في 10 أكتوبر المقبل.
 
 تأتي هذه الخطوة لتعزز حضور WWE الرقمي، حيث تنضم إلى قائمة طويلة من الشراكات الرياضية التي تجمع Bleacher Report مع دوريات كبرى مثل NFL وNCAA وMLB وNHL وNBA.

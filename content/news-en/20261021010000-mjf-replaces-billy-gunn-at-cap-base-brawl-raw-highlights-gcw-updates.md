@@ -1,7 +1,7 @@
 ---
 title: "MJF Replaces Billy Gunn at CAP Base Brawl, Raw Highlights, GCW Updates"
 slug: "mjf-replaces-billy-gunn-at-cap-base-brawl-raw-highlights-gcw-updates"
-description: "MJF has replaced Billy Gunn at Create-A-Pro Base Brawl. WWE released the top 10 moments from the October 19 episode of WWE RAW. Nick Gage and Mr."
+description: MJF has replaced Billy Gunn at Create-A-Pro Base Brawl. WWE released the top 10 moments from the October 19 episode of WWE RAW.
 federation: AEW
 date: 2026-10-20T22:00:00.000Z
 source_id: 334896

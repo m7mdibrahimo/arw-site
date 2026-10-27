@@ -1,7 +1,7 @@
 ---
 title: "Possible Plans for CM Punk at WrestleMania 43 Revealed"
 slug: "possible-plans-for-cm-punk-at-wrestlemania-43-revealed"
-description: "Jonathan Coachman says he was told WWE's plans for WrestleMania include Cody Rhodes vs. CM Punk and Oba Femi vs."
+description: "Jonathan Coachman says he was told WWE's plans for WrestleMania include Cody Rhodes vs. CM Punk and Oba Femi vs. Roman Reigns as the main events for both."
 federation: WWE
 date: 2026-10-21T14:01:44.000Z
 source_id: 802258169

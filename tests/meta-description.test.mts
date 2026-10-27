@@ -46,6 +46,20 @@ test("a cut never leaves a verb hanging after its preposition (INCIDENTS #868)",
   assert.match(d, /it\.$/, d);
 });
 
+test("a cut never stops on an abbreviation that ends with a full stop (INCIDENTS #869)", () => {
+  // The live Chris Jericho description ended «…during a recent concert. The performance took place
+  // on Oct.» because «Oct.» was read as the end of a sentence. Eleven live descriptions were cut the
+  // same way («…and Nov.», «…U.S.», «…according to Wrestling Inc.», «…and Mr.», «…vs.»).
+  const lead = "AEW star Chris Jericho joined musician Teddy Swims on stage for a lighthearted moment during a recent concert. The performance took place on Oct. 25 at the Benchmark International Arena in Tampa, Florida, where Jericho made a surprise appearance to help Swims launch hot dogs into the audience.";
+  const d = metaDescription(lead);
+  assert.ok(!/(?:Oct|Nov|Dec|Sept|Inc|Mr|vs|U\.S)\.$/.test(d), d);
+  assert.match(d, /recent concert\.$/, d);
+  const judge = metaDescription("A federal judge has rejected the latest attempt by WWE, TKO, Vince McMahon, and Linda McMahon to dismiss the long-standing ring boy lawsuit. U.S. District Judge Timothy Corrigan ruled on the motion this week, keeping the case alive.");
+  assert.ok(!/U\.S\.$/.test(judge), judge);
+  const coachman = metaDescription("Jonathan Coachman says he was told WWE's plans for WrestleMania include Cody Rhodes vs. CM Punk and Oba Femi vs. Jacob Fatu. Coachman shared the news on his podcast this week.");
+  assert.ok(!/\bvs\.$/.test(coachman), coachman);
+});
+
 test("a cut never stops on a phrase opened by a subordinating word (INCIDENTS #868)", () => {
   // The live Samoa Joe description ended «…showcase their full capabilities following years spent.» —
   // the lead's first sentence is longer than the limit and has no comma, so the word cut left half a clause.

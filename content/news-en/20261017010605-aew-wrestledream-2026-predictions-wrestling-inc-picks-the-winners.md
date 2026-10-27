@@ -1,7 +1,7 @@
 ---
 title: "AEW WrestleDream 2026 Predictions: Wrestling Inc. Picks the Winners"
 slug: "aew-wrestledream-2026-predictions-wrestling-inc-picks-the-winners"
-description: "AEW WrestleDream 2026 takes place this Saturday in Orlando, Florida, featuring an eight-match main card with seven title bouts. Wrestling Inc."
+description: AEW WrestleDream 2026 takes place this Saturday in Orlando, Florida, featuring an eight-match main card with seven title bouts.
 federation: AEW
 date: 2026-10-16T22:06:05.000Z
 source_id: 4410103851

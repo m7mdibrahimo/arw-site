@@ -72,6 +72,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - Do not call something "upcoming" or "set to" if its date has already passed relative to today (a film that is out, a show that aired): use the past tense or "new".
 - Pronouns: one wrestler is "he" or "she" as the source says, never the singular "they/their/themselves" ("Mike Bailey Says He Is Doubting Himself", not "Says They Are Doubting Themselves"); "they" is only for a team, a group or several people (INCIDENTS #713).
 - Grammar: "an" before a vowel sound (an experimental match, an emotional message), "a" before a consonant sound (a unanimous decision); a speaker's contraction is "I'm", never "I're" (the code fixes both, but write them right).
+- Pronouns after a preposition take the object form: "with him and his group", "between him and Cody", "for her and the team" — never "with he", "between he", "for she" (INCIDENTS #870).
 - No markdown headings (#), no bold, no lists with bullets, no links in the text.
 - Times and time zones: keep each start time in the zone the source gives (8 pm local time in Mexico, 10 pm ET); never relabel a local time as ET (INCIDENTS #808).
 - Never add a "what's next" sentence the source does not have: no "will return to action at …", "will face … for the … Championship", "is set to appear at …" unless the SOURCE says it (a story about how Sami Zayn chose his name ended with a Crown Jewel match the source never mentioned, INCIDENTS #862). The story ends where the source ends.
@@ -296,12 +297,24 @@ export function aToAn(text: string): string {
 export function fixIre(text: string): string {
   return String(text).replace(/\bI([’'])re\b/g, "I$1m");
 }
-/** The English prose mistakes still in a story: «a experimental», «I’re» (empty = fine) */
+/**
+ * «with he and his 946 group» → «with him and his 946 group»: these prepositions never take the subject form (a speaker's
+ * own quote keeps its words, and «after/before/as/than he» are conjunctions so they stay) — INCIDENTS #870.
+ */
+const AFTER_PREP = /\b(with|for|to|by|from|between|about|against|without|beside|behind|near|around|into|onto|upon|within|across|through|toward|towards|among|except) (he|she|they|we|I)\b/g;
+const OBJECT_FORM: Record<string, string> = { he: "him", she: "her", they: "them", we: "us", I: "me" };
+export function fixPronounCase(text: string): string {
+  return String(text).split("\n").map((line) => {
+    if (SKIP_LINE.test(line)) return line;
+    return line.split(QUOTED).map((part, k) => (k % 2 ? part : part.replace(AFTER_PREP, (_m, prep: string, subj: string) => `${prep} ${OBJECT_FORM[subj]}`))).join("");
+  }).join("\n");
+}
+/** The English prose mistakes still in a story: «a experimental», «I’re», «with he» (empty = fine) */
 export function englishGrammarSlips(text: string): string[] {
-  return aToAn(fixIre(text)) === String(text) ? [] : ["a/an or I're typo"];
+  return aToAn(fixIre(fixPronounCase(text))) === String(text) ? [] : ["a/an, I're or pronoun-case typo"];
 }
 export function fixEnglishNames(text: string): string {
-  return fixSingularThey(aToAn(fixIre(twitterToX(collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text)))))));
+  return fixSingularThey(aToAn(fixIre(fixPronounCase(twitterToX(collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text))))))));
 }
 
 export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEWS_EN_DIR): string {

@@ -2,6 +2,16 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "وضع بصمة",
+      "right": "ترك بصمة",
+      "note": "«وضع بصمة» ترجمة حرفية لـ left an impression — العربي «ترك بصمة» (خبر كيلاني جوردان، INCIDENTS #870)"
+    },
+    {
+      "wrong": "وضعت بصمة",
+      "right": "تركت بصمة",
+      "note": "«وضعت بصمة» ← «تركت بصمة» (INCIDENTS #870)"
+    },
+    {
       "wrong": "السعى",
       "right": "السعي",
       "note": "«ى» مكان «ي» في مصدر «السعي» — خبر سامي زين عن أندرتيكر (INCIDENTS #868)"
@@ -8151,6 +8161,42 @@
       "wrong": "فلقد",
       "right": "فقد",
       "note": "«فلقد» أسلوب قديم ثقيل؛ الدليل بيطلب فصحى بسيطة — خبر ساموا جو (INCIDENTS #868)"
+    },
+    {
+      "wrong": "موني\\s+إن\\s+ذا\\s+بانك",
+      "right": "Money in the Bank",
+      "regex": true,
+      "note": "أسماء العروض تفضل بالإنجليزي (GEMINI.md §2) — «موني إن ذا بانك» اتكتبت في ٢٥٩ خبر (جولة المراقبة 27-10)"
+    },
+    {
+      "wrong": "أجراها\\s+تقارير\\s+صحفية(?:\\s+(?:مطلعة|موثوقة))?",
+      "right": "أجراها صحفي متخصص",
+      "regex": true,
+      "note": "فعل منسوب لغير عاقل: «مقابلة أجراها تقارير صحفية مطلعة» — خبر داستن رودس (جولة المراقبة 27-10)"
+    },
+    {
+      "wrong": "حضوره\\s+الفعاليات",
+      "right": "حضوره فعاليات",
+      "regex": true,
+      "note": "إضافة مكسورة — خبر كولبي كوفينجتون (جولة المراقبة 27-10)"
+    },
+    {
+      "wrong": "ريسل\\s*مانيا",
+      "right": "WrestleMania",
+      "regex": true,
+      "note": "أسماء العروض بالإنجليزي (GEMINI.md §2)"
+    },
+    {
+      "wrong": "ال?سمر\\s*سلام",
+      "right": "SummerSlam",
+      "regex": true,
+      "note": "أسماء العروض بالإنجليزي (GEMINI.md §2)"
+    },
+    {
+      "wrong": "ال?رويال\\s+رامبل",
+      "right": "Royal Rumble",
+      "regex": true,
+      "note": "أسماء العروض بالإنجليزي (GEMINI.md §2)"
     }
   ]
 }
