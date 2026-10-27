@@ -1,7 +1,7 @@
 ---
 title: "Comedian Roasts Shawn Michaels, Vince McMahon and Goldberg in Bret Hart Halloween Candy Parody"
 slug: "comedian-roasts-shawn-michaels-vince-mcmahon-and-goldberg-in-bret-hart"
-description: "Comedian Kyle Fields released a new parody video on Instagram titled \"Bret Hart Reviews Halloween Candy,\" using a bag of sweets to poke fun at several."
+description: "Comedian Kyle Fields released a \"Bret Hart Reviews Halloween Candy\" parody video, using sweets to poke fun at Shawn Michaels, Vince McMahon and Goldberg."
 federation: WWE
 date: 2026-10-27T22:00:18.000Z
 source_id: 802260362

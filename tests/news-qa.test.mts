@@ -303,3 +303,10 @@ test("عنوان «مرور عام» ونص بيقول عامين/24 شهرا ب
   const other = "وقع كريس باي عقدا جديدا يمتد إلى العام الثاني من مسيرته مع الاتحاد، وقال إنه سعيد.\n\nنص آخر طويل بما يكفي لاجتياز حد الطول.";
   assert.ok(!checkArticle(title, other).some((i) => i.code === "title_period_mismatch"));
 });
+
+test("«قبل أن تنصرف انتباه الجماهير» is blocked — «انتباه» is masculine (INCIDENTS #895)", () => {
+  const codes = (b: string) => checkArticle("لوغان بول يوضح سبب رفضه الرد على الجدل", b, []).map((i) => i.code);
+  assert.ok(codes("موضحا أن موجات الأخبار السلبية تستمر 36 ساعة فقط قبل أن تنصرف انتباه الجماهير إلى أمر آخر.").includes("attention_verb"));
+  assert.ok(!codes("موضحا أن موجات الأخبار السلبية تستمر 36 ساعة فقط قبل أن ينصرف انتباه الجماهير إلى أمر آخر.").includes("attention_verb"));
+  assert.equal(applyCorrections("قبل أن تنصرف انتباه الجماهير إلى أمر آخر"), "قبل أن ينصرف انتباه الجماهير إلى أمر آخر");
+});

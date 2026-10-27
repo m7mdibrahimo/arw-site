@@ -330,3 +330,11 @@ test("the same word is not repeated in one clause of English prose", async () =>
   assert.equal(fixEnglishNames('He is currently out with an injury.'), 'He is currently out with an injury.');
   assert.equal(fixEnglishNames('He is part of the current roster.'), 'He is part of the current roster.');
 });
+
+test('a filler left in a transcribed quote is dropped (INCIDENTS #895)', async () => {
+  const { fixEnglishNames } = await import('../scripts/english-edition.ts');
+  assert.equal(
+    fixEnglishNames('"I totally agree with you. I feel like, just because I\'ve been thinking that also."'),
+    '"I totally agree with you. I feel like I\'ve been thinking that also."',
+  );
+});

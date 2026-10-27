@@ -106,12 +106,31 @@ export function indexingCandidates(urls: string[]): string[] {
 }
 
 /** A program's library page Google found in the sitemap but never crawled after 3 days (INCIDENTS #724): it gets the same one-time
- *  direct notice a show gets, a few per run, oldest first. Head/sitemap are fine for these — Google just hasn't come. */
+ *  direct notice a show gets, a few per run, oldest first. Head/sitemap are fine for these — Google just hasn't come.
+ *  A page that got the notice and is still not crawled a week later gets it again: one notice is not a promise, and the
+ *  library pages that got theirs on 2026-10-20 were never looked at again while they sat unindexed (2026-10-27). */
+export const DIRECT_RETRY_MS = 7 * 24 * H;
 export function stuckLibraryPages(pages: Record<string, Page>, now: number, max = 5): string[] {
+  const noticeAge = (p: Page) => (p.directAt ? Date.parse(p.directAt) : 0); // 0 = never noticed, goes first
   return Object.entries(pages)
-    .filter(([u, p]) => /^https:\/\/arab-wrestling\.com\/library\/[^/]+\/$/.test(u) && !p.indexedAt && !p.directAt && !p.crawledAt && !!p.inspected
-      && now - Date.parse(p.firstSeen) > 72 * H)
-    .sort((a, b) => Date.parse(a[1].firstSeen) - Date.parse(b[1].firstSeen)).slice(0, max).map(([u]) => u);
+    .filter(([u, p]) => /^https:\/\/arab-wrestling\.com\/library\/[^/]+\/$/.test(u) && !p.indexedAt && !p.crawledAt && !!p.inspected
+      && now - Date.parse(p.firstSeen) > 72 * H
+      && (!p.directAt || now - Date.parse(p.directAt) > DIRECT_RETRY_MS))
+    .sort((a, b) => (noticeAge(a[1]) - noticeAge(b[1])) || (Date.parse(a[1].firstSeen) - Date.parse(b[1].firstSeen)))
+    .slice(0, max).map(([u]) => u);
+}
+
+/** The pages to ask Google about this run: a page never inspected comes before one inspected hours ago, so a page
+ *  created today is not starved by a hundred pages created two weeks ago that are asked about every six hours
+ *  (the queue used to be by firstSeen only and recent library pages waited days for their first look, 2026-10-27).
+ *  `has` is the live sitemap: only URLs still there are inspected. */
+export function inspectionQueue(pages: Record<string, Page>, now: number, has: (u: string) => boolean, max = INSPECT_PER_RUN): string[] {
+  return Object.entries(pages)
+    .filter(([u, p]) => p.pinged && p.pinged !== "before tracking" && !p.indexedAt && has(u)
+      && now - Date.parse(p.firstSeen) >= 6 * H && now - Date.parse(p.firstSeen) <= 10 * 24 * H
+      && (!p.inspected || now - Date.parse(p.inspected) >= 6 * H))
+    .sort((a, b) => (Date.parse(a[1].inspected || "") || 0) - (Date.parse(b[1].inspected || "") || 0))
+    .slice(0, max).map(([u]) => u);
 }
 
 /** Google's Indexing API: «this URL is new or changed, crawl it». Failure (API not enabled for the service account's
@@ -179,13 +198,9 @@ async function main() {
 
   // 2. ask Google about pages it may not have yet
   if (site && readToken) {
-    const due = Object.entries(state.pages)
-      .filter(([u, p]) => p.pinged && p.pinged !== "before tracking" && !p.indexedAt && lastmodOf.has(u)
-        && now - Date.parse(p.firstSeen) >= 6 * H && now - Date.parse(p.firstSeen) <= 10 * 24 * H
-        && (!p.inspected || now - Date.parse(p.inspected) >= 6 * H))
-      .sort((a, b) => Date.parse(a[1].firstSeen) - Date.parse(b[1].firstSeen))
-      .slice(0, INSPECT_PER_RUN);
-    for (const [u, p] of due) {
+    const due = inspectionQueue(state.pages, now, (u) => lastmodOf.has(u));
+    for (const u of due) {
+      const p = state.pages[u];
       try {
         const d = await api(readToken, "https://searchconsole.googleapis.com/v1/urlInspection/index:inspect", { inspectionUrl: u, siteUrl: site, languageCode: "ar" });
         const r = d.inspectionResult?.indexStatusResult || {};

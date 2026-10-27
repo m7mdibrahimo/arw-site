@@ -81,6 +81,24 @@ test("a cut never stops inside a multi-word name (live 2026-10-27)", () => {
   assert.match(d, /suffered\.$/, d);
 });
 
+test("a description never ends on a quantifier whose noun was cut away (live 2026-10-27)", () => {
+  // «…using a bag of sweets to poke fun at several.» — «several» needs «prominent wrestling figures» after it.
+  const d = metaDescription("Comedian Kyle Fields released a new parody video on Instagram titled \"Bret Hart Reviews Halloween Candy,\" using a bag of sweets to poke fun at several prominent wrestling figures through his impression of the Hall of Famer. In the video, Fields turns various classic candies into punchlines targeting Shawn Michaels, Vince McMahon, Bill Goldberg, and Eric Bischoff.");
+  assert.ok(!/\b(?:several|many|some|most|each|every|these|those|such|various|numerous|few|another)\.$/.test(d), d);
+  assert.match(d, /[.!?]$/);
+});
+
+test("no published English description ends on a quantifier", () => {
+  const dir = path.join(process.cwd(), "content", "news-en");
+  const DANGLING = /\b(?:several|many|some|most|each|every|these|those|such|various|numerous|few|another)\.$/;
+  const bad: string[] = [];
+  for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".md"))) {
+    const d = String(matter(fs.readFileSync(path.join(dir, f), "utf-8")).data.description || "");
+    if (DANGLING.test(d)) bad.push(`${f}: ${d}`);
+  }
+  assert.deepEqual(bad, []);
+});
+
 test("a description never ends on a bare time phrase (live 2026-10-27)", () => {
   // «Monica Monroe recently reflected on a viral moment involving Booker T. Back in July 2025.» — «T.» was
   // read as an initial, so the two sentences joined, the cut fell on the comma after the date and the

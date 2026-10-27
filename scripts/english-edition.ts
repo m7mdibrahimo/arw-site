@@ -197,6 +197,10 @@ export function fixSingularThey(text: string): string {
 }
 
 export const ENGLISH_FIXES: [RegExp, string][] = [
+  // a filler left in a transcribed quote: «I feel like, just because I've been thinking that also» is not a
+  // sentence (live 2026-10-27) — the filler goes and the thought stays whole
+  [/\bI feel like, just because\b/g, "I feel like"],
+  [/\bfeel like, just because\b/g, "feel like"],
   // «currently part of the faction's current on-screen alliance»: the same word twice in one clause (2026-10-27)
   [/\b([Cc])urrently((?:\s+[A-Za-z'’.-]+){0,5})\s+current\b/g, (_m: string, c: string, mid: string) => `${c === "C" ? "Now" : "now"}${mid} current`],
   // a word dropped from the source's transcription: «One the things he said» → «One of the things he said» (round 2026-10-27)
