@@ -1,43 +1,48 @@
 {
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-october-26-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-27T00:36:49.897Z"
+ "https://www.fightful.com/wrestling/wwe-crown-jewel-remains-planned-for-saudi-arabia": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-27T00:39:18.899Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-10-26-2026-bayley-vs-lyra-valkyria-in-a-no-disqualification-match-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-27T00:36:34.761Z"
+  "at": "2026-10-27T00:39:18.602Z"
  },
  "https://www.fightful.com/wrestling/kaylia-capri-misses-rows-sherri-martel-classic-due-to-car-accident-notes-that-she-suffered-minor-injuries": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T00:36:33.962Z"
+  "at": "2026-10-27T00:39:17.969Z"
  },
  "https://www.fightful.com/wrestling/alexa-bliss-states-that-she-bray-wyatt-were-supposed-to-reunite-on-wwe-programming": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T00:36:33.761Z"
+  "at": "2026-10-27T00:39:17.810Z"
  },
  "https://www.fightful.com/wrestling/alexa-bliss-says-traveling-with-her-daughter-was-worked-into-wwe-contract-thats-a-non-negotiable": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T00:36:33.503Z"
+  "at": "2026-10-27T00:39:17.603Z"
  },
  "https://www.fightful.com/wrestling/brooke-hogan-reacts-to-sale-of-hulk-hogans-florida-mansion-the-sick-feeling-is-indescribable": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T00:36:33.230Z"
+  "at": "2026-10-27T00:39:17.388Z"
  },
  "https://www.fightful.com/wrestling/channing-stacks-lorenzo-provides-update-after-suffering-injury-at-nxt-house-show": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T00:36:32.973Z"
+  "at": "2026-10-27T00:39:17.180Z"
  },
  "https://www.fightful.com/wrestling/steve-maclin-details-suffering-broken-fibula-ten-weeks-before-adam-copeland-match-at-mlp-northern-rising": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T00:36:32.649Z"
+  "at": "2026-10-27T00:39:16.923Z"
+ },
+ "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-october-26-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-27T00:36:49.897Z"
  },
  "https://www.wrestlinginc.com/2297809/wwe-raw-october-26-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-14T01:38:52.030Z"
- },
- "https://www.wrestlinginc.com/2284897/wwe-nxt-october-13-2026-results": {
-  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
-  "retry": false,
-  "at": "2026-10-14T01:23:32.160Z"
  }
 }
