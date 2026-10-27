@@ -1,7 +1,7 @@
 ---
 title: "Royce Keys Explains Why Carmelo Hayes Was the Perfect Fit for The 946"
 slug: "royce-keys-explains-why-carmelo-hayes-was-the-perfect-fit-for-946"
-description: "Royce Keys recently discussed Carmelo Hayes joining The 946 on WWE RAW, explaining why the former NXT Champion was a natural fit for the group. Speaking to The…"
+description: "Royce Keys recently discussed Carmelo Hayes joining The 946 on WWE RAW, explaining why the former NXT Champion was a natural fit for the group."
 federation: WWE
 date: 2026-10-14T14:32:37.000Z
 source_id: 802255003

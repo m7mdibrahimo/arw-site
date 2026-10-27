@@ -1,7 +1,7 @@
 ---
 title: "Swerve Strickland Rules Out WWE-AEW Crossover Event in His Lifetime"
 slug: "swerve-strickland-rules-out-wwe-aew-crossover-event-in-his-lifetime"
-description: "Former AEW World Champion Swerve Strickland believes professional wrestling fans will never see a joint event between WWE and AEW. When asked in an…"
+description: "Former AEW World Champion Swerve Strickland believes professional wrestling fans will never see a joint event between WWE and AEW."
 federation: AEW
 date: 2026-10-21T18:00:10.000Z
 source_id: 334997

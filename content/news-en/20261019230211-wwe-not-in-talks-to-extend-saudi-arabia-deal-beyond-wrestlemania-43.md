@@ -1,7 +1,7 @@
 ---
 title: "WWE Not in Talks to Extend Saudi Arabia Deal Beyond WrestleMania 43"
 slug: "wwe-not-in-talks-to-extend-saudi-arabia-deal-beyond-wrestlemania-43"
-description: "WWE may be slowing down its long-term commitments in Saudi Arabia, as a new report claims there are no meaningful discussions about extending the Riyadh…"
+description: "WWE may be slowing down its long-term commitments in Saudi Arabia, as a new report claims there are no meaningful discussions about extending the Riyadh."
 federation: WWE
 date: 2026-10-19T20:02:11.000Z
 source_id: 802257311

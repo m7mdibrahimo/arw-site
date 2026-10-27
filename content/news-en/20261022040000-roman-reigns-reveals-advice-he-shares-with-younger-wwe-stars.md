@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Reveals Advice He Shares With Younger WWE Stars"
 slug: "roman-reigns-reveals-advice-he-shares-with-younger-wwe-stars"
-description: "Roman Reigns recently spoke about the advice he shares with younger WWE stars, drawing a parallel to his work in the upcoming movie Street Fighter. Reigns…"
+description: "Roman Reigns recently spoke about the advice he shares with younger WWE stars, drawing a parallel to his work in the upcoming movie Street Fighter."
 federation: WWE
 date: 2026-10-22T01:00:00.000Z
 source_id: 1084810053

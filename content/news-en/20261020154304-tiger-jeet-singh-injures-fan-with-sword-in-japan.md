@@ -1,7 +1,7 @@
 ---
 title: "Tiger Jeet Singh Injures Fan With Sword in Japan"
 slug: "tiger-jeet-singh-injures-fan-with-sword-in-japan"
-description: "Wrestling legend Tiger Jeet Singh made a turbulent return to Japan after 14 years away when he struck a spectator in the head with his sword during Megumi…"
+description: "Wrestling legend Tiger Jeet Singh made a turbulent return to Japan after 14 years away when he struck a spectator in the head with his sword during Megumi."
 federation: INDIE
 date: 2026-10-20T12:43:04.000Z
 source_id: 802257724

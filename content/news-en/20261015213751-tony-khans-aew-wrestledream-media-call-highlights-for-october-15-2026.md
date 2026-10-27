@@ -1,7 +1,7 @@
 ---
 title: "Tony Khan’s AEW WrestleDream Media Call Highlights for October 15, 2026"
 slug: "tony-khans-aew-wrestledream-media-call-highlights-for-october-15-2026"
-description: "AEW President Tony Khan held a media call on October 15, 2026, to discuss the upcoming AEW WrestleDream pay-per-view. During the session, Khan addressed…"
+description: "AEW President Tony Khan held a media call on October 15, 2026, to discuss the upcoming AEW WrestleDream pay-per-view."
 federation: AEW
 date: 2026-10-15T18:37:51.000Z
 source_id: 802255466

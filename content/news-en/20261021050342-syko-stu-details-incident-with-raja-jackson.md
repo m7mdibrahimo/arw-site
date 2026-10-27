@@ -1,7 +1,7 @@
 ---
 title: "Syko Stu Details Incident With Raja Jackson"
 slug: "syko-stu-details-incident-with-raja-jackson"
-description: "Independent wrestler Syko Stu spoke about the 2025 incident involving Raja Jackson during an appearance on the SOS Podcast. Stu recalled confronting Raja…"
+description: "Independent wrestler Syko Stu spoke about the 2025 incident involving Raja Jackson during an appearance on the SOS Podcast."
 federation: INDIE
 date: 2026-10-21T02:03:42.000Z
 source_id: 334945

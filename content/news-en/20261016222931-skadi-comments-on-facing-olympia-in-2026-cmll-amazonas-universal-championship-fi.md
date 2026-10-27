@@ -1,7 +1,7 @@
 ---
 title: "Skadi Comments on Facing Olympia in 2026 CMLL Amazonas Universal Championship Finals"
 slug: "skadi-comments-on-facing-olympia-in-2026-cmll-amazonas-universal-championship-fi"
-description: "Skadi is preparing for a decisive match against Olympia in the 2026 CMLL Amazonas Universal Championship tournament finals. In recent comments, Skadi…"
+description: "Skadi is preparing for a decisive match against Olympia in the 2026 CMLL Amazonas Universal Championship tournament finals."
 federation: INDIE
 date: 2026-10-16T19:29:31.000Z
 source_id: 334226

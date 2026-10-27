@@ -1,7 +1,7 @@
 ---
 title: "Gabe Kidd Confronts Clark Connors & David Finlay at PRODUCE"
 slug: "gabe-kidd-confronts-clark-connors-david-finlay-at-produce"
-description: "Friction between Gabe Kidd, Clark Connors, and David Finlay followed them outside of AEW according to Fightful. PRODUCE held Hell Comes To Dogtown in Los…"
+description: "Friction between Gabe Kidd, Clark Connors, and David Finlay followed them outside of AEW according to Fightful."
 federation: INDIE
 date: 2026-10-23T13:01:01.000Z
 source_id: 335238

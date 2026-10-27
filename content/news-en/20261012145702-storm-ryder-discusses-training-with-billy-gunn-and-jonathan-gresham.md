@@ -1,7 +1,7 @@
 ---
 title: "Storm Ryder Discusses Training With Billy Gunn and Jonathan Gresham"
 slug: "storm-ryder-discusses-training-with-billy-gunn-and-jonathan-gresham"
-description: "Independent wrestler Storm Ryder recently opened up about his training experiences and the mentors who shaped his career, including Billy Gunn and Jonathan…"
+description: "Independent wrestler Storm Ryder recently opened up about his training experiences and the mentors who shaped his career."
 federation: INDIE
 date: 2026-10-12T11:57:02.000Z
 source_id: 333479

@@ -1,7 +1,7 @@
 ---
 title: "Reason Behind WWE Signing Necro Butcher to a Legends Deal"
 slug: "reason-behind-wwe-signing-necro-butcher-to-a-legends-deal"
-description: "The recent signing of hardcore icon Necro Butcher to a WWE Legends deal was not a coincidence, but rather a strategic move with a specific purpose.…"
+description: "The recent signing of hardcore icon Necro Butcher to a WWE Legends deal was not a coincidence, but rather a strategic move with a specific purpose."
 federation: WWE
 date: 2026-10-13T20:59:42.000Z
 source_id: 802254700

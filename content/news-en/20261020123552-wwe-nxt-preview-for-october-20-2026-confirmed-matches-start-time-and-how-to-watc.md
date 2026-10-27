@@ -1,7 +1,7 @@
 ---
 title: "WWE NXT Preview for October 20, 2026: Confirmed Matches, Start Time and How to Watch"
 slug: "wwe-nxt-preview-for-october-20-2026-confirmed-matches-start-time-and-how-to-watc"
-description: "WWE NXT airs tonight on the CW Network from the WWE Performance Center in Orlando, Florida, starting at 8 PM ET. The show builds toward the upcoming…"
+description: "WWE NXT airs tonight on the CW Network from the WWE Performance Center in Orlando, Florida, starting at 8 PM ET."
 federation: WWE
 date: 2026-10-20T09:35:52.000Z
 source_id: 802257623

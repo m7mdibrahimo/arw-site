@@ -1,7 +1,7 @@
 ---
 title: "WWE NXT Viewership and Ratings Fall for October 20 Episode"
 slug: "wwe-nxt-viewership-and-ratings-fall-for-october-20-episode"
-description: "WWE NXT experienced a drop in both viewership and ratings following a six-week high the previous week. According to reports, the developmental brand…"
+description: "WWE NXT experienced a drop in both viewership and ratings following a six-week high the previous week."
 federation: WWE
 date: 2026-10-26T15:00:00.000Z
 source_id: 3042606548

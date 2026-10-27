@@ -1,7 +1,7 @@
 ---
 title: "Karmen Petrovic Addresses Bizarre Death Rumors"
 slug: "karmen-petrovic-addresses-bizarre-death-rumors"
-description: "Karmen Petrovic has addressed the strange rumors that falsely claimed she had passed away. The situation began after an exhausting work schedule, including…"
+description: "Karmen Petrovic has addressed the strange rumors that falsely claimed she had passed away."
 federation: WWE
 date: 2026-10-08T18:21:00.000Z
 source_id: 802252490

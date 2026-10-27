@@ -1,7 +1,7 @@
 ---
 title: "Possible Reason Behind Daria Rae’s TNA Television Absence"
 slug: "possible-reason-behind-daria-raes-tna-television-absence"
-description: "Daria Rae has been absent from TNA television for more than a month due to a storyline suspension after getting physical with Indi Hartwell. However,…"
+description: "Daria Rae has been absent from TNA television for more than a month due to a storyline suspension after getting physical with Indi Hartwell."
 federation: TNA
 date: 2026-10-22T15:00:03.000Z
 source_id: 802258519

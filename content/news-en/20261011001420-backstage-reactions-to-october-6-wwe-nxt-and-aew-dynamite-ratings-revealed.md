@@ -1,7 +1,7 @@
 ---
 title: "Backstage Reactions to October 6 WWE NXT and AEW Dynamite Ratings Revealed"
 slug: "backstage-reactions-to-october-6-wwe-nxt-and-aew-dynamite-ratings-revealed"
-description: "The latest television ratings for WWE NXT and AEW Dynamite have sparked internal discussions within both promotions. According to reports, AEW was pleased…"
+description: "The latest television ratings for WWE NXT and AEW Dynamite have sparked internal discussions within both promotions."
 federation: WWE
 date: 2026-10-10T21:14:20.000Z
 source_id: 802253320

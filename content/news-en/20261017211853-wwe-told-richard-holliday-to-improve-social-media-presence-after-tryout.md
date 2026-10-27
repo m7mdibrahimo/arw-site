@@ -1,7 +1,7 @@
 ---
 title: "WWE Told Richard Holliday to Improve Social Media Presence After Tryout"
 slug: "wwe-told-richard-holliday-to-improve-social-media-presence-after-tryout"
-description: "Richard Holliday revealed that WWE told him to improve his social media presence after he was not offered a contract following his September 2023 tryout.…"
+description: "Richard Holliday revealed that WWE told him to improve his social media presence after he was not offered a contract following his September 2023 tryout."
 federation: WWE
 date: 2026-10-17T18:18:53.000Z
 source_id: 802256269

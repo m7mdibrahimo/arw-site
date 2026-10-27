@@ -1,7 +1,7 @@
 ---
 title: "Bayley Drops Bikini Video During WWE Hawaii Tour"
 slug: "bayley-drops-bikini-video-during-wwe-hawaii-tour"
-description: "Bayley made the most of WWE's recent trip to Hawaii by sharing a vacation video that included jumping off a boat into the ocean. The former WWE Women's…"
+description: "Bayley made the most of WWE's recent trip to Hawaii by sharing a vacation video that included jumping off a boat into the ocean."
 federation: WWE
 date: 2026-10-22T15:34:18.000Z
 source_id: 802258524

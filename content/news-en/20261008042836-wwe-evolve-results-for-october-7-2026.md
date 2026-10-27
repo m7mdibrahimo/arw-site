@@ -1,7 +1,7 @@
 ---
 title: "WWE EVOLVE Results for October 7, 2026"
 slug: "wwe-evolve-results-for-october-7-2026"
-description: "WWE presented the latest episode of WWE EVOLVE on October 7, broadcasting from the WWE Performance Center in Orlando, Florida, via the Tubi platform. The…"
+description: "WWE presented the latest episode of WWE EVOLVE on October 7, broadcasting from the WWE Performance Center in Orlando, Florida, via the Tubi platform."
 federation: WWE
 date: 2026-10-08T01:28:36.000Z
 source_id: 332701

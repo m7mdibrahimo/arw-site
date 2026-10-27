@@ -1,7 +1,7 @@
 ---
 title: "Billy Gunn Reveals AEW Initially Had Very Different Plans for His In-Ring Career"
 slug: "billy-gunn-reveals-aew-initially-had-very-different-plans-for-his-in-ring-career"
-description: "Billy Gunn was not originally expected to wrestle as much as he has for AEW. When he first signed with the promotion, his talent contract only included 12…"
+description: "Billy Gunn was not originally expected to wrestle as much as he has for AEW."
 federation: AEW
 date: 2026-10-18T19:07:19.000Z
 source_id: 802256974

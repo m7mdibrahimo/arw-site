@@ -1,7 +1,7 @@
 ---
 title: "Street Fighter Box Office Projection Revealed"
 slug: "street-fighter-box-office-projection-revealed"
-description: "Street Fighter is on pace to capture the top spot at the domestic box office, although its opening weekend is tracking slightly below Paramount's original…"
+description: "Street Fighter is on pace to capture the top spot at the domestic box office."
 federation: WWE
 date: 2026-10-17T16:28:52.000Z
 source_id: 802256244

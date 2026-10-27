@@ -1,7 +1,7 @@
 ---
 title: "AJ Francis: My Feud With Elijah Is Probably the Best Storyline in Wrestling This Year"
 slug: "aj-francis-my-feud-with-elijah-is-probably-the-best-storyline-in-wrestling-this"
-description: "AJ Francis recently discussed his rivalry with Elijah, which spanned from March through August and featured several matches on television and pay-per-view.…"
+description: "AJ Francis recently discussed his rivalry with Elijah, which spanned from March through August and featured several matches on television and pay-per-view."
 federation: TNA
 date: 2026-10-20T18:47:59.000Z
 source_id: 334853

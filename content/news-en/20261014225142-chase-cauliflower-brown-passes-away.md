@@ -1,7 +1,7 @@
 ---
 title: "Chase 'Cauliflower' Brown Passes Away"
 slug: "chase-cauliflower-brown-passes-away"
-description: "Wrestler Chase Brown, known by the nickname 'Cauliflower', has passed away at the age of 41. The news was shared by fellow wrestler Cheeseburger, who paid…"
+description: "Wrestler Chase Brown, known by the nickname 'Cauliflower', has passed away at the age of 41."
 federation: ROH
 date: 2026-10-14T19:51:42.000Z
 source_id: 333902

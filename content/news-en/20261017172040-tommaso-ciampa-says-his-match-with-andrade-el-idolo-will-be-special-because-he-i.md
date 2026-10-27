@@ -1,7 +1,7 @@
 ---
 title: "Tommaso Ciampa Says His Match With Andrade El Idolo Will Be Special Because 'He Is So Darn Talented'"
 slug: "tommaso-ciampa-says-his-match-with-andrade-el-idolo-will-be-special-because-he-i"
-description: "Tommaso Ciampa praised Andrade El Idolo ahead of their upcoming match at AEW WrestleDream, highlighting his exceptional talent. Ciampa is scheduled to…"
+description: "Tommaso Ciampa praised Andrade El Idolo ahead of their upcoming match at AEW WrestleDream, highlighting his exceptional talent."
 federation: AEW
 date: 2026-10-17T14:20:40.000Z
 source_id: 334316

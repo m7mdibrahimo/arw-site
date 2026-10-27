@@ -1,7 +1,7 @@
 ---
 title: "AEW’s Original Plans for the Demand Revealed"
 slug: "aews-original-plans-for-the-demand-revealed"
-description: "Bishop Kaun recently revealed that he and Toa Liona were not originally planned to join Ricochet in forming The Demand. Speaking on the Certified Mark…"
+description: "Bishop Kaun recently revealed that he and Toa Liona were not originally planned to join Ricochet in forming The Demand."
 federation: AEW
 date: 2026-10-10T12:22:46.000Z
 source_id: 802253153

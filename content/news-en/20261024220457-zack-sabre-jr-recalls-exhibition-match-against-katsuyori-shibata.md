@@ -1,7 +1,7 @@
 ---
 title: "Zack Sabre Jr. Recalls Exhibition Match Against Katsuyori Shibata"
 slug: "zack-sabre-jr-recalls-exhibition-match-against-katsuyori-shibata"
-description: "Zack Sabre Jr. discussed his special exhibition match against Katsuyori Shibata during the 2021 G1 Climax tournament in NJPW while appearing on CMLL's Esto…"
+description: "Zack Sabre Jr. discussed his special exhibition match against Katsuyori Shibata during the 2021 G1 Climax tournament in NJPW while appearing on CMLL's Esto."
 federation: NJPW
 date: 2026-10-24T19:04:57.000Z
 source_id: 335499

@@ -1,7 +1,7 @@
 ---
 title: "A Missed WWE Flight in Ireland Led to Hornswoggle Vomiting on John Cena's Hamburger"
 slug: "a-missed-wwe-flight-in-ireland-led-to-hornswoggle-vomiting-on-john-cenas-hamburg"
-description: "John Cena recently shared a bizarre story on Trevor Noah's \"What Now\" podcast about a trip to Ireland where a volcanic eruption left the WWE roster…"
+description: "John Cena recently shared a bizarre story on Trevor Noah's \"What Now\" podcast about a trip to Ireland where a volcanic eruption left the WWE roster stranded."
 federation: WWE
 date: 2026-10-18T18:30:00.000Z
 source_id: 3286676179

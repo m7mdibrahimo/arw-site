@@ -1,7 +1,7 @@
 ---
 title: "AEW's Ilja Dragunov Comments on How WWE Has Used GUNTHER Since He Retired John Cena"
 slug: "aews-ilja-dragunov-comments-on-how-wwe-has-used-gunther-since-he-retired-john-ce"
-description: "Ilja Dragunov recently commented on GUNTHER's current momentum in WWE following his high-profile retirement of John Cena. Dragunov and GUNTHER share a long…"
+description: "Ilja Dragunov recently commented on GUNTHER's current momentum in WWE following his high-profile retirement of John Cena."
 federation: WWE
 date: 2026-10-26T18:16:07.000Z
 source_id: 3340147186

@@ -1,7 +1,7 @@
 ---
 title: "Internal Reaction to Roman Reigns and LA Knight’s Promo Battle on October 5 WWE RAW"
 slug: "internal-reaction-to-roman-reigns-and-la-knights-promo-battle-on-october-5-wwe-r"
-description: "The promo battle between Roman Reigns and LA Knight on the final WWE RAW before Money in the Bank generated significant internal praise among WWE officials…"
+description: "The promo battle between Roman Reigns and LA Knight on the final WWE RAW before Money in the Bank generated significant internal praise among WWE officials."
 federation: WWE
 date: 2026-10-08T16:29:57.000Z
 source_id: 802252456

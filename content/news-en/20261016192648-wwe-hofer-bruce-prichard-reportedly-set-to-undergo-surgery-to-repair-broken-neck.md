@@ -1,7 +1,7 @@
 ---
 title: "WWE HOFer Bruce Prichard Reportedly Set to Undergo Surgery to Repair Broken Neck"
 slug: "wwe-hofer-bruce-prichard-reportedly-set-to-undergo-surgery-to-repair-broken-neck"
-description: "According to reports, WWE Hall of Famer Bruce Prichard is set to undergo surgery to repair a broken neck. Conrad Thompson announced on his podcast that…"
+description: "According to reports, WWE Hall of Famer Bruce Prichard is set to undergo surgery to repair a broken neck."
 federation: WWE
 date: 2026-10-16T16:26:48.000Z
 source_id: 3699164251

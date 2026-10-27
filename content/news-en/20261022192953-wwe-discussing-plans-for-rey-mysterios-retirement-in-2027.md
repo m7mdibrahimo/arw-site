@@ -1,7 +1,7 @@
 ---
 title: "WWE Discussing Plans for Rey Mysterio’s Retirement in 2027"
 slug: "wwe-discussing-plans-for-rey-mysterios-retirement-in-2027"
-description: "WWE is reportedly discussing potential plans for Rey Mysterio's retirement, with backstage conversations pointing toward 2027 as the possible year for his…"
+description: "WWE is reportedly discussing potential plans for Rey Mysterio's retirement."
 federation: WWE
 date: 2026-10-22T16:29:53.000Z
 source_id: 802258539

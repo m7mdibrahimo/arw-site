@@ -1,7 +1,7 @@
 ---
 title: "Penta Wins Men’s Money in the Bank Ladder Match at WWE Money in the Bank 2026"
 slug: "penta-wins-mens-money-in-the-bank-ladder-match-at-wwe-money-in-the-bank-2026"
-description: "Penta secured the biggest victory of his WWE career by winning the men’s Money in the Bank ladder match at WWE Money in the Bank 2026. He outlasted Bron…"
+description: "Penta secured the biggest victory of his WWE career by winning the men’s Money in the Bank ladder match at WWE Money in the Bank 2026."
 federation: WWE
 date: 2026-10-11T01:14:04.000Z
 source_id: 802253506

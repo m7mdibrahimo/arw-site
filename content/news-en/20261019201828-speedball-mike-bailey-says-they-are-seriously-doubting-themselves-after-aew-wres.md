@@ -1,7 +1,7 @@
 ---
 title: "Speedball Mike Bailey Says He Is Seriously Doubting Himself After AEW WrestleDream"
 slug: "speedball-mike-bailey-says-they-are-seriously-doubting-themselves-after-aew-wres"
-description: "Speedball Mike Bailey reflected on his experience at AEW WrestleDream, noting that he is seriously doubting himself following the event. At…"
+description: "Speedball Mike Bailey reflected on his experience at AEW WrestleDream, noting that he is seriously doubting himself following the event."
 federation: AEW
 date: 2026-10-19T17:18:28.000Z
 source_id: 334700

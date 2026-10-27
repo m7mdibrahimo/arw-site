@@ -1,7 +1,7 @@
 ---
 title: "Chris Jericho to Play Gorgeous George in 'The Greatest'"
 slug: "chris-jericho-to-play-gorgeous-george-in-the-greatest"
-description: "Chris Jericho has landed a major acting role. Deadline reports that Jericho will star as Gorgeous George in \"The Greatest,\" an upcoming limited series…"
+description: "Chris Jericho has landed a major acting role. Deadline reports that Jericho will star as Gorgeous George in \"The Greatest,\" an upcoming limited series about."
 federation: INDIE
 date: 2026-10-23T01:21:17.000Z
 source_id: 335211

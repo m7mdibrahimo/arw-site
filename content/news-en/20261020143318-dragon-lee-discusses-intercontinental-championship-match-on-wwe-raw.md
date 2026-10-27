@@ -1,7 +1,7 @@
 ---
 title: "Dragon Lee Discusses Intercontinental Championship Match on WWE RAW"
 slug: "dragon-lee-discusses-intercontinental-championship-match-on-wwe-raw"
-description: "Dragon Lee has shared his thoughts on competing for the WWE Intercontinental Championship during the October 19, 2026, episode of WWE RAW. The championship…"
+description: "Dragon Lee has shared his thoughts on competing for the WWE Intercontinental Championship during the October 19, 2026, episode of WWE RAW."
 federation: WWE
 date: 2026-10-20T11:33:18.000Z
 source_id: 334781

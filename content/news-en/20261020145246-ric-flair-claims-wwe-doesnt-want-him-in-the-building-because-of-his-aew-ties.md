@@ -1,7 +1,7 @@
 ---
 title: "Ric Flair Claims WWE Doesn’t Want Him in the Building Because of His AEW Ties"
 slug: "ric-flair-claims-wwe-doesnt-want-him-in-the-building-because-of-his-aew-ties"
-description: "Ric Flair believes his relationship with AEW is the reason WWE no longer wants him backstage at their events. The WWE Hall of Famer explained that his…"
+description: "Ric Flair believes his relationship with AEW is the reason WWE no longer wants him backstage at their events."
 federation: WWE
 date: 2026-10-20T11:52:46.000Z
 source_id: 802257687

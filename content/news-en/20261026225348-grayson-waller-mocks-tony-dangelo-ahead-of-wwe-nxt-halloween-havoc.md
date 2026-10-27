@@ -1,7 +1,7 @@
 ---
 title: "Grayson Waller Mocks Tony D’Angelo Ahead of WWE NXT Halloween Havoc"
 slug: "grayson-waller-mocks-tony-dangelo-ahead-of-wwe-nxt-halloween-havoc"
-description: "Grayson Waller has initiated personal attacks against Tony D’Angelo ahead of his upcoming NXT Championship defense. With the Halloween Havoc event…"
+description: "Grayson Waller has initiated personal attacks against Tony D’Angelo ahead of his upcoming NXT Championship defense."
 federation: WWE
 date: 2026-10-26T19:53:48.000Z
 source_id: 802259908

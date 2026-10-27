@@ -1,7 +1,7 @@
 ---
 title: "Identity of Woman in Andrade Selfie Segment on AEW Collision"
 slug: "identity-of-woman-in-andrade-selfie-segment-on-aew-collision"
-description: "Andrade El Idolo continued his usual ringside selfie routine during AEW Collision before getting ambushed by Tommaso Ciampa. During the event, Andrade…"
+description: "Andrade El Idolo continued his usual ringside selfie routine during AEW Collision before getting ambushed by Tommaso Ciampa."
 federation: AEW
 date: 2026-10-25T10:51:01.000Z
 source_id: 802259448

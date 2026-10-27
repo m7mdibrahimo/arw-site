@@ -1,7 +1,7 @@
 ---
 title: "TNA Partners With LaMelo Ball's LaFrancé Fashion Brand"
 slug: "tna-partners-with-lamelo-balls-lafrance-fashion-brand"
-description: "TNA announced a new partnership with LaFrancé, the lifestyle fashion brand created by NBA star LaMelo Ball. The announcement was made by commentator Tom…"
+description: "TNA announced a new partnership with LaFrancé, the lifestyle fashion brand created by NBA star LaMelo Ball."
 federation: TNA
 date: 2026-10-11T20:50:02.000Z
 source_id: 333286

@@ -1,7 +1,7 @@
 ---
 title: "Ludwig Kaiser's Defense Given Access to Medical Records"
 slug: "ludwig-kaisers-defense-given-access-to-medical-records"
-description: "Court records indicate that the legal team representing Ludwig Kaiser, also known as Marcel Barthel, has been granted access to the medical records of the…"
+description: "Court records indicate that the legal team representing Ludwig Kaiser, also known as Marcel Barthel."
 federation: WWE
 date: 2026-10-27T00:21:04.000Z
 source_id: 335973

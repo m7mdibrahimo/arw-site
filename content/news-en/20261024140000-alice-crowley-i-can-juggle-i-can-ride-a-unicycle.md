@@ -1,7 +1,7 @@
 ---
 title: "Alice Crowley: “I Can Juggle & I Can Ride a Unicycle”"
 slug: "alice-crowley-i-can-juggle-i-can-ride-a-unicycle"
-description: "Alice Crowley recently addressed a question posed by Jody Threat and Joel Pearl regarding her unicycle and juggling skills. During an interview, Pearl and…"
+description: "Alice Crowley recently addressed a question posed by Jody Threat and Joel Pearl regarding her unicycle and juggling skills."
 federation: INDIE
 date: 2026-10-24T11:00:00.000Z
 source_id: 335327

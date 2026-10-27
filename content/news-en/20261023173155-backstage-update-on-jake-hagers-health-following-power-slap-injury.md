@@ -1,7 +1,7 @@
 ---
 title: "Backstage Update on Jake Hager's Health Following Power Slap Injury"
 slug: "backstage-update-on-jake-hagers-health-following-power-slap-injury"
-description: "Former WWE and AEW star Jake Hager suffered a serious eye injury at last month's Power Slap 23 event, which required emergency surgery. According to a new…"
+description: "Former WWE and AEW star Jake Hager suffered a serious eye injury at last month's Power Slap 23 event, which required emergency surgery."
 federation: WWE
 date: 2026-10-23T14:31:55.000Z
 source_id: 2206177375

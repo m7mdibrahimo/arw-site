@@ -1,7 +1,7 @@
 ---
 title: "The Swirl, KUSHIDA, and Nick Wayne Set for 2026 NJPW Super Jr. Tag League"
 slug: "the-swirl-kushida-and-nick-wayne-set-for-2026-njpw-super-jr-tag-league"
-description: "New Japan Pro-Wrestling has revealed the full lineup of teams for the 2026 Super Jr. Tag League tournament, which kicks off on October 24. Twelve teams…"
+description: "New Japan Pro-Wrestling has revealed the full lineup of teams for the 2026 Super Jr. Tag League tournament, which kicks off on October 24."
 federation: NJPW
 date: 2026-10-13T11:14:20.000Z
 source_id: 333650

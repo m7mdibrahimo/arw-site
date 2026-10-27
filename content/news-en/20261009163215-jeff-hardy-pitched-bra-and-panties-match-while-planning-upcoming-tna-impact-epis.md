@@ -1,7 +1,7 @@
 ---
 title: "Jeff Hardy Pitched Bra and Panties Match While Planning Upcoming TNA iMPACT Episode"
 slug: "jeff-hardy-pitched-bra-and-panties-match-while-planning-upcoming-tna-impact-epis"
-description: "Matt Hardy revealed that he and his brother Jeff Hardy have been actively collaborating with the creative team to plan the upcoming episode of TNA iMPACT.…"
+description: "Matt Hardy revealed that he and his brother Jeff Hardy have been actively collaborating with the creative team to plan the upcoming episode of TNA iMPACT."
 federation: TNA
 date: 2026-10-09T13:32:15.000Z
 source_id: 802252715

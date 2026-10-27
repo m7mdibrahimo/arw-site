@@ -1,7 +1,7 @@
 ---
 title: "Tommy End and Xelina Drawing Interest From Multiple Promotions After WWE Release"
 slug: "tommy-end-and-xelina-drawing-interest-from-multiple-promotions-after-wwe-release"
-description: "Tommy End and Xelina are currently attracting significant interest from multiple wrestling promotions following their departures from WWE earlier this…"
+description: "Tommy End and Xelina are currently attracting significant interest from multiple wrestling promotions following their departures from WWE earlier this year."
 federation: WWE
 date: 2026-10-13T20:48:39.000Z
 source_id: 802254695

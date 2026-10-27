@@ -1,7 +1,7 @@
 ---
 title: "Tatum Paxley Discusses WWE Main Roster Mentor"
 slug: "tatum-paxley-discusses-wwe-main-roster-mentor"
-description: "Tatum Paxley recently discussed her journey in WWE and her experience working alongside her main roster mentor and tag team partner, Alexa Bliss. During an…"
+description: "Tatum Paxley recently discussed her journey in WWE and her experience working alongside her main roster mentor and tag team partner, Alexa Bliss."
 federation: WWE
 date: 2026-10-25T21:00:00.000Z
 source_id: 3346394460

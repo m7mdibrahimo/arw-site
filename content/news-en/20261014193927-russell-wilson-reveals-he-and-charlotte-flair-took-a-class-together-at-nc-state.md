@@ -1,7 +1,7 @@
 ---
 title: "Russell Wilson Reveals He and Charlotte Flair Took a Class Together at NC State"
 slug: "russell-wilson-reveals-he-and-charlotte-flair-took-a-class-together-at-nc-state"
-description: "Russell Wilson and Charlotte Flair share a connection from their time at North Carolina State University. During a recent guest appearance on the Set, Hut!…"
+description: "Russell Wilson and Charlotte Flair share a connection from their time at North Carolina State University. During a recent guest appearance on the Set, Hut!"
 federation: WWE
 date: 2026-10-14T16:39:27.000Z
 source_id: 333861

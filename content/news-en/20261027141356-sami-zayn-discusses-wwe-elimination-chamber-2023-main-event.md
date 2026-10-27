@@ -1,7 +1,7 @@
 ---
 title: "Sami Zayn Discusses WWE Elimination Chamber 2023 Main Event"
 slug: "sami-zayn-discusses-wwe-elimination-chamber-2023-main-event"
-description: "During an appearance on Insight with Chris Van Vliet, Sami Zayn reflected on his historic clash against Roman Reigns at WWE Elimination Chamber 2023 in…"
+description: "During an appearance on Insight with Chris Van Vliet, Sami Zayn reflected on his historic clash against Roman Reigns at WWE Elimination Chamber 2023."
 federation: WWE
 date: 2026-10-27T11:13:56.000Z
 source_id: 336028

@@ -1,7 +1,7 @@
 ---
 title: "AEW Collision Results (October 24, 2026): Wrathlander Win in Main Event"
 slug: "aew-collision-results-october-24-2026-wrathlander-win-in-main-event"
-description: "The October 24, 2026, episode of AEW Collision took place at the LJVM Coliseum in Winston-Salem, North Carolina, featuring intense matches and ongoing…"
+description: "The October 24, 2026, episode of AEW Collision took place at the LJVM Coliseum in Winston-Salem, North Carolina."
 federation: AEW
 date: 2026-10-25T00:59:00.000Z
 source_id: 335533

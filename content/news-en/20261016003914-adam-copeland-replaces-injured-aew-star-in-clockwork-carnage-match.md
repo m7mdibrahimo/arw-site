@@ -1,7 +1,7 @@
 ---
 title: "Adam Copeland Replaces Injured AEW Star in Clockwork Carnage Match"
 slug: "adam-copeland-replaces-injured-aew-star-in-clockwork-carnage-match"
-description: "The participant list for the inaugural Clockwork Carnage match at AEW WrestleDream 2026 is finalized. AEW World Champion Will Ospreay will defend his title…"
+description: "The participant list for the inaugural Clockwork Carnage match at AEW WrestleDream 2026 is finalized."
 federation: AEW
 date: 2026-10-15T21:39:14.000Z
 source_id: 3476515102

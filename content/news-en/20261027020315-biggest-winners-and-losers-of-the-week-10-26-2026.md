@@ -1,7 +1,7 @@
 ---
 title: "Biggest Winners and Losers of the Week — 10/26/2026"
 slug: "biggest-winners-and-losers-of-the-week-10-26-2026"
-description: "It has been another busy week in professional wrestling as major promotions build toward upcoming events. On WWE RAW, Roman Reigns joined his family's…"
+description: "It has been another busy week in professional wrestling as major promotions build toward upcoming events."
 federation: WWE
 date: 2026-10-26T23:03:15.000Z
 source_id: 4244520662

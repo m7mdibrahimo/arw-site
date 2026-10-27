@@ -1,7 +1,7 @@
 ---
 title: "Nic Nemeth Considered Faking an Injury to Get Away From WWE"
 slug: "nic-nemeth-considered-faking-an-injury-to-get-away-from-wwe"
-description: "Nic Nemeth opened up about a particularly frustrating period during his long tenure with WWE, revealing that he was so desperate for a change that he…"
+description: "Nic Nemeth opened up about a particularly frustrating period during his long tenure with WWE."
 federation: WWE
 date: 2026-10-10T12:19:25.000Z
 source_id: 802253146

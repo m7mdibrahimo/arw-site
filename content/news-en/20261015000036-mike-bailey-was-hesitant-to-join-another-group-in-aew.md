@@ -1,7 +1,7 @@
 ---
 title: "Mike Bailey Was Hesitant to Join Another Group in AEW"
 slug: "mike-bailey-was-hesitant-to-join-another-group-in-aew"
-description: "Mike Bailey admitted that he was hesitant to join another group in AEW, explaining that his previous team did not end well and he initially found it…"
+description: "Mike Bailey admitted that he was hesitant to join another group in AEW."
 federation: AEW
 date: 2026-10-14T21:00:36.000Z
 source_id: 333928

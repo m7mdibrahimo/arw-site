@@ -1,7 +1,7 @@
 ---
 title: "Jon Moxley Suffers Rare Pinfall Loss on 10/14 AEW Dynamite"
 slug: "jon-moxley-suffers-rare-pinfall-loss-on-10-14-aew-dynamite"
-description: "Jake Doyle scored a major upset victory over Jon Moxley on the October 14 episode of AEW Dynamite. The show opened with a six-man tag team match featuring…"
+description: "Jake Doyle scored a major upset victory over Jon Moxley on the October 14 episode of AEW Dynamite."
 federation: AEW
 date: 2026-10-15T00:42:06.000Z
 source_id: 333953

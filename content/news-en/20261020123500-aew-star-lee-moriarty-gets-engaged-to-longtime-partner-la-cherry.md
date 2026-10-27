@@ -1,7 +1,7 @@
 ---
 title: "AEW Star Lee Moriarty Gets Engaged to Longtime Partner La Cherry"
 slug: "aew-star-lee-moriarty-gets-engaged-to-longtime-partner-la-cherry"
-description: "AEW star and ROH Pure Champion Lee Moriarty has announced his engagement to his longtime partner, La Cherry. Cherry shared the happy news on X, posting…"
+description: "AEW star and ROH Pure Champion Lee Moriarty has announced his engagement to his longtime partner, La Cherry."
 federation: AEW
 date: 2026-10-20T09:35:00.000Z
 source_id: 802257629

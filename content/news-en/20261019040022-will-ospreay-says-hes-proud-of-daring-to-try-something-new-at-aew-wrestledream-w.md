@@ -1,7 +1,7 @@
 ---
 title: "Will Ospreay Says He's Proud of ‘Daring to Try Something New’ at AEW WrestleDream With Clockwork Carnage"
 slug: "will-ospreay-says-hes-proud-of-daring-to-try-something-new-at-aew-wrestledream-w"
-description: "Will Ospreay reflected on the Clockwork Carnage match after successfully defending his AEW World Title at AEW WrestleDream. Ospreay came up with the idea…"
+description: "Will Ospreay reflected on the Clockwork Carnage match after successfully defending his AEW World Title at AEW WrestleDream."
 federation: AEW
 date: 2026-10-19T01:00:22.000Z
 source_id: 334603

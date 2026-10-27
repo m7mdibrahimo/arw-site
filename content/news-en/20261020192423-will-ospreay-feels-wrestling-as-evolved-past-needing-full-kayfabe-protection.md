@@ -1,7 +1,7 @@
 ---
 title: "Will Ospreay Feels Wrestling as 'Evolved' Past Needing Full Kayfabe Protection"
 slug: "will-ospreay-feels-wrestling-as-evolved-past-needing-full-kayfabe-protection"
-description: "Will Ospreay feels that wrestling has evolved past needing full kayfabe protection in modern shows. Speaking in a recent interview, Ospreay discussed how…"
+description: "Will Ospreay feels that wrestling has evolved past needing full kayfabe protection in modern shows."
 federation: AEW
 date: 2026-10-20T16:24:23.000Z
 source_id: 334815

@@ -1,7 +1,7 @@
 ---
 title: "Mayu Iwatani Becomes Marigold Triple Crown Champion at Grand Destiny 2026"
 slug: "mayu-iwatani-becomes-marigold-triple-crown-champion-at-grand-destiny-2026"
-description: "Mayu Iwatani captured the Marigold Triple Crown Championship at Dream Star Fighting Marigold's Grand Destiny 2026 event. Ryogoku Sumo Hall in Tokyo, Japan,…"
+description: "Mayu Iwatani captured the Marigold Triple Crown Championship at Dream Star Fighting Marigold's Grand Destiny 2026 event."
 federation: INDIE
 date: 2026-10-24T15:32:18.000Z
 source_id: 335449

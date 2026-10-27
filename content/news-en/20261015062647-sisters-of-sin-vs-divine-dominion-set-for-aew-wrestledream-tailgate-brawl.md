@@ -1,7 +1,7 @@
 ---
 title: "Sisters of Sin vs. Divine Dominion Set for AEW WrestleDream Tailgate Brawl"
 slug: "sisters-of-sin-vs-divine-dominion-set-for-aew-wrestledream-tailgate-brawl"
-description: "A new women's match has been confirmed for the AEW WrestleDream Tailgate Brawl event. The contest will feature the Sisters of Sin, consisting of Julia Hart…"
+description: "A new women's match has been confirmed for the AEW WrestleDream Tailgate Brawl event."
 federation: AEW
 date: 2026-10-15T03:26:47.000Z
 source_id: 333995

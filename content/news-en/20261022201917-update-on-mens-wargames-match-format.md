@@ -1,7 +1,7 @@
 ---
 title: "Update on Men's WarGames Match Format"
 slug: "update-on-mens-wargames-match-format"
-description: "As the WWE Survivor Series event approaches, new details regarding the men's WarGames match are emerging. Following recent television angles and matches,…"
+description: "As the WWE Survivor Series event approaches, new details regarding the men's WarGames match are emerging."
 federation: WWE
 date: 2026-10-22T17:19:17.000Z
 source_id: 335155

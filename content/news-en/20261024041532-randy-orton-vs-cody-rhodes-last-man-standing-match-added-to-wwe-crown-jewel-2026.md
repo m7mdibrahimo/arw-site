@@ -1,7 +1,7 @@
 ---
 title: "Randy Orton vs. Cody Rhodes Last Man Standing Match Added to WWE Crown Jewel 2026"
 slug: "randy-orton-vs-cody-rhodes-last-man-standing-match-added-to-wwe-crown-jewel-2026"
-description: "WWE has announced that Cody Rhodes and Randy Orton will face each other in a Last Man Standing Match at WWE Crown Jewel 2026. The two superstars have been…"
+description: "WWE has announced that Cody Rhodes and Randy Orton will face each other in a Last Man Standing Match at WWE Crown Jewel 2026."
 federation: WWE
 date: 2026-10-24T01:15:32.000Z
 source_id: 802258915

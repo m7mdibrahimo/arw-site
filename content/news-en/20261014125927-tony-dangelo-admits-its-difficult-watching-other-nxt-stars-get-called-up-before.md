@@ -1,7 +1,7 @@
 ---
 title: "Tony D’Angelo Admits It’s Difficult Watching Other NXT Stars Get Called Up Before Him"
 slug: "tony-dangelo-admits-its-difficult-watching-other-nxt-stars-get-called-up-before"
-description: "Tony D'Angelo recently opened up about the emotional challenge of watching other wrestlers get called up to WWE RAW and SmackDown while he remains in WWE…"
+description: "Tony D'Angelo recently opened up about the emotional challenge of watching other wrestlers get called up to WWE RAW and SmackDown while he remains in WWE NXT."
 federation: WWE
 date: 2026-10-14T09:59:27.000Z
 source_id: 802254931

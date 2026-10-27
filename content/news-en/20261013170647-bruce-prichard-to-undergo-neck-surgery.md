@@ -1,7 +1,7 @@
 ---
 title: "Bruce Prichard to Undergo Neck Surgery"
 slug: "bruce-prichard-to-undergo-neck-surgery"
-description: "Bruce Prichard is scheduled to undergo neck surgery. Conrad Thompson shared the news on the latest episode of the 83 Weeks podcast, noting that his co-host…"
+description: "Bruce Prichard is scheduled to undergo neck surgery. Conrad Thompson shared the news on the latest episode of the 83 Weeks podcast."
 federation: WWE
 date: 2026-10-13T14:06:47.000Z
 source_id: 333688

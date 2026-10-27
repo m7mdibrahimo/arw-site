@@ -1,7 +1,7 @@
 ---
 title: "Adam Copeland Thought He Would Have to Run His Own Show to Wrestle in Maple Leaf Gardens"
 slug: "adam-copeland-thought-he-would-have-to-run-his-own-show-to-wrestle-in-maple-leaf"
-description: "Adam Copeland opened up about finally getting the chance to wrestle in Maple Leaf Gardens, revealing the lengths he thought he would have to go to in order…"
+description: "Adam Copeland opened up about finally getting the chance to wrestle in Maple Leaf Gardens."
 federation: AEW
 date: 2026-10-20T13:01:05.000Z
 source_id: 334795

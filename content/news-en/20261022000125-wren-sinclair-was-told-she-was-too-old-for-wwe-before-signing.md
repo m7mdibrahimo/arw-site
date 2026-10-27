@@ -1,7 +1,7 @@
 ---
 title: "Wren Sinclair Was Told She Was Too Old for WWE Before Signing"
 slug: "wren-sinclair-was-told-she-was-too-old-for-wwe-before-signing"
-description: "NXT star Wren Sinclair revealed that she was told she was \"too old for WWE\" and should look elsewhere before finally signing with the company in 2023.…"
+description: "NXT star Wren Sinclair revealed that she was told she was \"too old for WWE\" and should look elsewhere before finally signing with the company in 2023."
 federation: WWE
 date: 2026-10-21T21:01:25.000Z
 source_id: 802258254

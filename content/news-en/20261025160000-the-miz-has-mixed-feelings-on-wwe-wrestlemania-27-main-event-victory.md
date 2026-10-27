@@ -1,7 +1,7 @@
 ---
 title: "The Miz Has Mixed Feelings on WWE WrestleMania 27 Main Event Victory"
 slug: "the-miz-has-mixed-feelings-on-wwe-wrestlemania-27-main-event-victory"
-description: "WWE WrestleMania 27 marked the first time The Miz headlined the company's biggest event of the year, defending his WWE Championship against John Cena. With…"
+description: "WWE WrestleMania 27 marked the first time The Miz headlined the company's biggest event of the year, defending his WWE Championship against John Cena."
 federation: WWE
 date: 2026-10-25T13:00:00.000Z
 source_id: 2983981899

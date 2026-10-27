@@ -1,7 +1,7 @@
 ---
 title: "Bully Ray Discusses Potential WWE Money in the Bank Storyline"
 slug: "bully-ray-discusses-potential-wwe-money-in-the-bank-storyline"
-description: "According to Wrestling Inc., wrestling veteran Bully Ray recently shared his thoughts on a potential storyline involving Judgment Day stablemates Liv…"
+description: "According to Wrestling Inc., wrestling veteran Bully Ray recently shared his thoughts on a potential storyline involving Judgment Day stablemates Liv Morgan."
 federation: WWE
 date: 2026-10-07T21:54:59.000Z
 source_id: 4758205677

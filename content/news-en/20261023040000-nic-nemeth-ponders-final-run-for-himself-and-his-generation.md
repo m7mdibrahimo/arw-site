@@ -1,7 +1,7 @@
 ---
 title: "Nic Nemeth Ponders Final Run for Himself and His Generation"
 slug: "nic-nemeth-ponders-final-run-for-himself-and-his-generation"
-description: "John Cena officially retired from in-ring competition last year, and Adam Copeland is scheduled to do the same next year. Their former colleague Nic Nemeth…"
+description: "John Cena officially retired from in-ring competition last year, and Adam Copeland is scheduled to do the same next year."
 federation: TNA
 date: 2026-10-23T01:00:00.000Z
 source_id: 4511140784

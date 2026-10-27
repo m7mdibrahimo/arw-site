@@ -1,7 +1,7 @@
 ---
 title: "Rey Pegasus Says He Still Hasn't Fully Processed Winning CMLL Mexican National Middleweight Title"
 slug: "rey-pegasus-says-he-still-hasnt-fully-processed-winning-cmll-mexican-national-mi"
-description: "Rey Pegasus opened up about winning the Mexican National Middleweight Title after earning his opportunity through online fan voting. Pegasus reflected on…"
+description: "Rey Pegasus opened up about winning the Mexican National Middleweight Title after earning his opportunity through online fan voting."
 federation: INDIE
 date: 2026-10-26T02:02:18.000Z
 source_id: 335757

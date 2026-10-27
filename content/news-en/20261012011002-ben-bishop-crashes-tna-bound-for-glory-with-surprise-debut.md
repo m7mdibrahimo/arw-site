@@ -1,7 +1,7 @@
 ---
 title: "Ben Bishop Crashes TNA Bound for Glory With Surprise Debut"
 slug: "ben-bishop-crashes-tna-bound-for-glory-with-surprise-debut"
-description: "Ben Bishop made a surprise debut at TNA Bound for Glory by entering the Call Your Shot Gauntlet match as the 19th entrant. Before entering the ring, Bishop…"
+description: "Ben Bishop made a surprise debut at TNA Bound for Glory by entering the Call Your Shot Gauntlet match as the 19th entrant."
 federation: TNA
 date: 2026-10-11T22:10:02.000Z
 source_id: 802253853

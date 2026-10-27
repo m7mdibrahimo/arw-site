@@ -1,7 +1,7 @@
 ---
 title: "Carlos Silva Holds Backstage Meeting Over Expiring TNA Talent Contracts"
 slug: "carlos-silva-holds-backstage-meeting-over-expiring-talents-tna-contracts"
-description: "TNA Wrestling management is preparing for major contract discussions as several talent agreements approach their end. President Carlos Silva recently…"
+description: "TNA Wrestling management is preparing for major contract discussions as several talent agreements approach their end."
 federation: TNA
 date: 2026-10-18T21:06:14.000Z
 source_id: 802257010

@@ -1,7 +1,7 @@
 ---
 title: "WWE Raw Results (October 12, 2026): Intercontinental Title Match and Six-Man Tag Action"
 slug: "wwe-raw-results-october-12-2026-intercontinental-title-match-and-six-man-tag-act"
-description: "WWE Raw aired live from the Brookshire Grocery Arena in Bossier City, Louisiana, on October 12, 2026. The show opened with a recap of Money in the Bank,…"
+description: "WWE Raw aired live from the Brookshire Grocery Arena in Bossier City, Louisiana, on October 12, 2026."
 federation: WWE
 date: 2026-10-13T01:04:50.000Z
 source_id: 3263749283

@@ -1,7 +1,7 @@
 ---
 title: "ROH TV Results (October 22, 2026): Lee Moriarty Defends ROH Pure Title"
 slug: "roh-tv-results-october-22-2026-lee-moriarty-defends-roh-pure-title"
-description: "Ring of Honor presented the latest episode of ROH TV on October 22, streaming live on Honor Club. In the main event, Lee Moriarty successfully defended the…"
+description: "Ring of Honor presented the latest episode of ROH TV on October 22, streaming live on Honor Club."
 federation: ROH
 date: 2026-10-23T02:00:20.000Z
 source_id: 335216

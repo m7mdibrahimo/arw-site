@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes to Honor Pharaoh With a New American Nightmare Logo"
 slug: "cody-rhodes-to-honor-pharaoh-with-a-new-american-nightmare-logo"
-description: "Cody Rhodes is planning to introduce a new variation of the American Nightmare logo featuring a wolf skull to honor his dog Pharaoh, who recently passed…"
+description: "Cody Rhodes is planning to introduce a new variation of the American Nightmare logo featuring a wolf skull to honor his dog Pharaoh."
 federation: WWE
 date: 2026-10-10T03:35:42.000Z
 source_id: 332942

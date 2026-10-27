@@ -1,7 +1,7 @@
 ---
 title: "Mike Bailey Says Clockwork Carnage Match Is the Kind of Bout He Has Prepared For"
 slug: "mike-bailey-says-clockwork-carnage-match-is-the-kind-of-bout-he-has-prepared-for"
-description: "Mike Bailey is excited for his upcoming match at AEW WrestleDream, which will feature the company's first Clockwork Carnage match. Speaking in an…"
+description: "Mike Bailey is excited for his upcoming match at AEW WrestleDream, which will feature the company's first Clockwork Carnage match."
 federation: AEW
 date: 2026-10-15T16:00:00.000Z
 source_id: 333930

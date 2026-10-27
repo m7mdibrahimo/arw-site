@@ -1,7 +1,7 @@
 ---
 title: "Skadi Reflects on Carrying Marcela’s Legacy in CMLL"
 slug: "skadi-reflects-on-carrying-marcelas-legacy-in-cmll"
-description: "Skadi recently opened up about the heavy burden and honor of carrying on the legacy of her mother, Marcela, who is widely considered one of the greatest…"
+description: "Skadi recently opened up about the heavy burden and honor of carrying on the legacy of her mother, Marcela."
 federation: INDIE
 date: 2026-10-19T02:41:15.000Z
 source_id: 334624

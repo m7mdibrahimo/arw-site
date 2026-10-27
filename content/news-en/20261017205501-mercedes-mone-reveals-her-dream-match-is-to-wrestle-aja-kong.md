@@ -1,7 +1,7 @@
 ---
 title: "Mercedes Moné Reveals Her Dream Match Is to Wrestle Aja Kong"
 slug: "mercedes-mone-reveals-her-dream-match-is-to-wrestle-aja-kong"
-description: "AEW Women's World Champion Mercedes Moné recently took to social media to reveal her ultimate career goal. Mone shared a post expressing her desire to…"
+description: "AEW Women's World Champion Mercedes Moné recently took to social media to reveal her ultimate career goal."
 federation: AEW
 date: 2026-10-17T17:55:01.000Z
 source_id: 334364

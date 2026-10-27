@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Comments on the New Level's AEW Debuts Catching His Attention"
 slug: "ilja-dragunov-comments-on-the-new-levels-aew-debuts-catching-his-attention"
-description: "Ilja Dragunov recently discussed how The New Level's AEW debuts caught his attention, noting the way they performed since joining the promotion. Speaking…"
+description: "Ilja Dragunov recently discussed how The New Level's AEW debuts caught his attention, noting the way they performed since joining the promotion."
 federation: AEW
 date: 2026-10-21T16:50:22.000Z
 source_id: 334983

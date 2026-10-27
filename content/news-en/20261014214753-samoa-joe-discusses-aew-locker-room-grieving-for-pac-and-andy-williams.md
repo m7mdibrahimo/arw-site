@@ -1,7 +1,7 @@
 ---
 title: "Samoa Joe Discusses AEW Locker Room Grieving for Pac and Andy Williams"
 slug: "samoa-joe-discusses-aew-locker-room-grieving-for-pac-and-andy-williams"
-description: "In a recent interview with TVInsider, AEW star Samoa Joe opened up about the emotional atmosphere backstage following the tragic passing of both Pac and…"
+description: "In a recent interview with TVInsider, AEW star Samoa Joe opened up about the emotional atmosphere backstage following the tragic passing of both Pac and Andy."
 federation: AEW
 date: 2026-10-14T18:47:53.000Z
 source_id: 5043759108

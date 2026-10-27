@@ -1,7 +1,7 @@
 ---
 title: "Andrade Comments on Moving Between AEW and WWE, Relationship With Tony Khan"
 slug: "andrade-comments-on-moving-between-aew-and-wwe-relationship-with-tony-khan"
-description: "Andrade El Idolo has frequently moved between WWE and AEW, first joining WWE in 2015 as 'Andrade \"Cien\" Almas' before leaving in 2021. He competed in AEW…"
+description: "Andrade El Idolo has frequently moved between WWE and AEW, first joining WWE in 2015 as 'Andrade \"Cien\" Almas' before leaving in 2021."
 federation: AEW
 date: 2026-10-26T22:57:42.000Z
 source_id: 4540964166

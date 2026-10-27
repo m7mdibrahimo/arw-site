@@ -1,7 +1,7 @@
 ---
 title: "Booker T Says WWE Wrestlers Were Afraid of Getting Backstage Heat for Taking Naps"
 slug: "booker-t-says-wwe-wrestlers-were-afraid-of-getting-backstage-heat-for-taking-nap"
-description: "Booker T revealed that when he first joined WWE, he was warned by a terrified wrestler that taking naps backstage could cause serious heat with management.…"
+description: "Booker T revealed that when he first joined WWE, he was warned by a terrified wrestler that taking naps backstage could cause serious heat with management."
 federation: WWE
 date: 2026-10-20T14:48:36.000Z
 source_id: 802257777

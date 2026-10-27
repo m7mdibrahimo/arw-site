@@ -1,7 +1,7 @@
 ---
 title: "Former WWE Star Kaylia Capri Injured in Car Accident"
 slug: "former-wwe-star-kaylia-capri-injured-in-car-accident"
-description: "Kaylia Capri was scheduled to compete at Reality of Wrestling's Sherri Martel Classic in Texas City, Texas, on October 24, but a car accident on the same…"
+description: "Kaylia Capri was scheduled to compete at Reality of Wrestling's Sherri Martel Classic in Texas City, Texas, on October 24."
 federation: WWE
 date: 2026-10-25T16:24:17.000Z
 source_id: 802259606

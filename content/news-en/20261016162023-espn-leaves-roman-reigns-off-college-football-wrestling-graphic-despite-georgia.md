@@ -1,7 +1,7 @@
 ---
 title: "ESPN Leaves Roman Reigns Off College Football-Wrestling Graphic Despite Georgia Tech Career"
 slug: "espn-leaves-roman-reigns-off-college-football-wrestling-graphic-despite-georgia"
-description: "ESPN recently aired a graphic highlighting notable professional wrestlers who also played college football, but current WWE World Heavyweight Champion…"
+description: "ESPN recently aired a graphic highlighting notable professional wrestlers who also played college football."
 federation: WWE
 date: 2026-10-16T13:20:23.000Z
 source_id: 802254020

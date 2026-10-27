@@ -1,7 +1,7 @@
 ---
 title: "Why Michael Cole Holds No Grudge Against CM Punk Despite Past Remarks"
 slug: "why-michael-cole-holds-no-grudge-against-cm-punk-despite-past-remarks"
-description: "Michael Cole recently opened up about the return of CM Punk to WWE, admitting he initially had questions regarding how Punk would fit into the current…"
+description: "Michael Cole recently opened up about the return of CM Punk to WWE, admitting he initially had questions regarding how Punk would fit into the current locker."
 federation: WWE
 date: 2026-10-10T15:11:07.000Z
 source_id: 802253201

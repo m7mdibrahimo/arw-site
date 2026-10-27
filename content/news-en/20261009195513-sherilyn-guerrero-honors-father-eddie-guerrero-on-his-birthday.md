@@ -1,7 +1,7 @@
 ---
 title: "Sherilyn Guerrero Honors Father Eddie Guerrero on His Birthday"
 slug: "sherilyn-guerrero-honors-father-eddie-guerrero-on-his-birthday"
-description: "Sherilyn Guerrero, daughter of the late WWE Hall of Famer Eddie Guerrero, shared a heartfelt tribute on Instagram to mark her father's birthday on October…"
+description: "Sherilyn Guerrero, daughter of the late WWE Hall of Famer Eddie Guerrero, shared a heartfelt tribute on Instagram to mark her father's birthday on October 9."
 federation: WWE
 date: 2026-10-09T16:55:13.000Z
 source_id: 802252788

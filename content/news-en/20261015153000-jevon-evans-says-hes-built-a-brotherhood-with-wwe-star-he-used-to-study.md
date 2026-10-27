@@ -1,7 +1,7 @@
 ---
 title: "Je'Von Evans Says He's Built a Brotherhood With WWE Star He Used to Study"
 slug: "jevon-evans-says-hes-built-a-brotherhood-with-wwe-star-he-used-to-study"
-description: "Je'Von Evans spoke about his bond with Penta on No-Contest Wrestling. Evans described his working relationship with the former…"
+description: "Je'Von Evans spoke about his bond with Penta on No-Contest Wrestling. Evans described his working relationship with the former Men's Intercontinental."
 federation: WWE
 date: 2026-10-15T12:30:00.000Z
 source_id: 2753916026

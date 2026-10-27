@@ -1,7 +1,7 @@
 ---
 title: "AJPW Unveils Field for 2026 Real World Tag League Tournament"
 slug: "ajpw-unveils-field-for-2026-real-world-tag-league-tournament"
-description: "All Japan Pro Wrestling has announced the field and blocks for the 2026 Real World Tag League tournament. The tournament is scheduled to begin on November…"
+description: "All Japan Pro Wrestling has announced the field and blocks for the 2026 Real World Tag League tournament."
 federation: INDIE
 date: 2026-10-26T14:07:18.000Z
 source_id: 335831

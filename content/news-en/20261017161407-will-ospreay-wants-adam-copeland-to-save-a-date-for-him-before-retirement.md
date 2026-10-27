@@ -1,7 +1,7 @@
 ---
 title: "Will Ospreay Wants Adam Copeland to Save a Date for Him Before Retirement"
 slug: "will-ospreay-wants-adam-copeland-to-save-a-date-for-him-before-retirement"
-description: "Will Ospreay recently discussed Adam Copeland's impact on his wrestling career and revealed that he wants Copeland to save a date for him before he hangs…"
+description: "Will Ospreay recently discussed Adam Copeland's impact on his wrestling career and revealed that he wants Copeland to save a date for him before he hangs up."
 federation: AEW
 date: 2026-10-17T13:14:07.000Z
 source_id: 334314

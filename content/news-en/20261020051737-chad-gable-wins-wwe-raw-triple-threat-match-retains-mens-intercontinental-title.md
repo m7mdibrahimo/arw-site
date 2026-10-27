@@ -1,7 +1,7 @@
 ---
 title: "Chad Gable Wins WWE Raw Triple Threat Match, Retains Men's Intercontinental Title"
 slug: "chad-gable-wins-wwe-raw-triple-threat-match-retains-mens-intercontinental-title"
-description: "Chad Gable successfully defended the Men's Intercontinental Championship against Rey Mysterio and Dragon Lee on the October 19, 2026, episode of WWE RAW.…"
+description: "Chad Gable successfully defended the Men's Intercontinental Championship against Rey Mysterio and Dragon Lee on the October 19, 2026, episode of WWE RAW."
 federation: WWE
 date: 2026-10-20T02:17:37.000Z
 source_id: 3180734207

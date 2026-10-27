@@ -1,7 +1,7 @@
 ---
 title: "Bully Ray Wants to See This Rematch From WWE Money in the Bank"
 slug: "bully-ray-wants-to-see-this-rematch-from-wwe-money-in-the-bank"
-description: "Bully Ray recently praised WWE star LA Knight following his impressive performance against Roman Reigns at WWE Money in the Bank. Speaking on Busted Open,…"
+description: "Bully Ray recently praised WWE star LA Knight following his impressive performance against Roman Reigns at WWE Money in the Bank."
 federation: WWE
 date: 2026-10-14T13:00:00.000Z
 source_id: 1002400401

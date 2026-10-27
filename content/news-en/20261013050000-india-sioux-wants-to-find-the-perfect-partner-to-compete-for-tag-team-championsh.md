@@ -1,7 +1,7 @@
 ---
 title: "India Sioux Wants to Find the Perfect Partner to Compete for Tag Team Championships in CMLL"
 slug: "india-sioux-wants-to-find-the-perfect-partner-to-compete-for-tag-team-championsh"
-description: "India Sioux has her sights set on competing for tag team championships in CMLL. In a recent interview, she expressed her desire to find the perfect partner…"
+description: "India Sioux has her sights set on competing for tag team championships in CMLL."
 federation: INDIE
 date: 2026-10-13T02:00:00.000Z
 source_id: 333432

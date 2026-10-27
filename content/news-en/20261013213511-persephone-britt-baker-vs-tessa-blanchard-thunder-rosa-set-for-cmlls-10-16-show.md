@@ -1,7 +1,7 @@
 ---
 title: "Persephone & Britt Baker vs. Tessa Blanchard & Thunder Rosa Set for CMLL's 10/16 Show"
 slug: "persephone-britt-baker-vs-tessa-blanchard-thunder-rosa-set-for-cmlls-10-16-show"
-description: "Britt Baker and Persephone are set to team up at the upcoming CMLL all-women's event on October 16 at Arena México. The show will be headlined by the CMLL…"
+description: "Britt Baker and Persephone are set to team up at the upcoming CMLL all-women's event on October 16 at Arena México."
 federation: INDIE
 date: 2026-10-13T18:35:11.000Z
 source_id: 333736

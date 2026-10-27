@@ -1,7 +1,7 @@
 ---
 title: "John Cena Shuts Down Claims His WWE Retirement Tour Was Ego-Driven"
 slug: "john-cena-shuts-down-claims-his-wwe-retirement-tour-was-ego-driven"
-description: "John Cena has addressed criticism surrounding his recent WWE retirement tour, firmly rejecting claims that his farewell run was motivated by personal ego.…"
+description: "John Cena has addressed criticism surrounding his recent WWE retirement tour, firmly rejecting claims that his farewell run was motivated by personal ego."
 federation: WWE
 date: 2026-10-10T12:45:38.000Z
 source_id: 802253167

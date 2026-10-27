@@ -1,7 +1,7 @@
 ---
 title: "AEW's Steven Borden Walked Away From Successful Career to Pursue Pro Wrestling"
 slug: "aews-steven-borden-walked-away-from-successful-career-to-pursue-pro-wrestling"
-description: "AEW star Steven Borden revealed that he left a successful career managing a sports technology company to pursue professional wrestling. Borden admitted…"
+description: "AEW star Steven Borden revealed that he left a successful career managing a sports technology company to pursue professional wrestling."
 federation: AEW
 date: 2026-10-11T12:30:00.000Z
 source_id: 4078699125

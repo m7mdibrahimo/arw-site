@@ -1,7 +1,7 @@
 ---
 title: "Tyrese Haliburton Wears Triple H Jacket for NBA Opening Night"
 slug: "tyrese-haliburton-wears-triple-h-jacket-for-nba-opening-night"
-description: "Indiana Pacers star Tyrese Haliburton prepared for his return to the NBA on Wednesday against the New Orleans Pelicans. This game marked his first…"
+description: "Indiana Pacers star Tyrese Haliburton prepared for his return to the NBA on Wednesday against the New Orleans Pelicans."
 federation: WWE
 date: 2026-10-21T21:53:46.000Z
 source_id: 335032

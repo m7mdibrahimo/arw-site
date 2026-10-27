@@ -1,7 +1,7 @@
 ---
 title: "Frustrations Regarding Club WWE Membership Rollout"
 slug: "frustrations-regarding-club-wwe-membership-rollout"
-description: "According to a report from WrestleVotes, WWE has faced significant criticism regarding the launch of its Club WWE membership program, specifically the $99…"
+description: "According to a report from WrestleVotes, WWE has faced significant criticism regarding the launch of its Club WWE membership program."
 federation: WWE
 date: 2026-10-10T21:17:12.000Z
 source_id: 333097

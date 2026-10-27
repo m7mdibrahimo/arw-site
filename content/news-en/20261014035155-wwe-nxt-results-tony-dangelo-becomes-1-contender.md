@@ -1,7 +1,7 @@
 ---
 title: "WWE NXT Results: Tony D'Angelo Becomes #1 Contender"
 slug: "wwe-nxt-results-tony-dangelo-becomes-1-contender"
-description: "The October 13, 2026, episode of WWE NXT aired live from the Capitol Wrestling Center in Orlando, Florida. The show featured a high-stakes main event to…"
+description: "The October 13, 2026, episode of WWE NXT aired live from the Capitol Wrestling Center in Orlando, Florida."
 federation: WWE
 date: 2026-10-14T00:51:55.000Z
 source_id: 802254617

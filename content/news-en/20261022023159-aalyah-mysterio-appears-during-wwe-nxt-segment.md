@@ -1,7 +1,7 @@
 ---
 title: "Aalyah Mysterio Appears During WWE NXT Segment"
 slug: "aalyah-mysterio-appears-during-wwe-nxt-segment"
-description: "Aalyah Mysterio made an appearance during the October 20 broadcast of WWE NXT on The CW. A backstage segment aired to provide context for an upcoming match…"
+description: "Aalyah Mysterio made an appearance during the October 20 broadcast of WWE NXT on The CW."
 federation: WWE
 date: 2026-10-21T23:31:59.000Z
 source_id: 335047

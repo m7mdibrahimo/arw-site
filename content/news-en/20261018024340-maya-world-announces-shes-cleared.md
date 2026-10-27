@@ -1,7 +1,7 @@
 ---
 title: "Maya World Announces She's Cleared"
 slug: "maya-world-announces-shes-cleared"
-description: "Maya World has been cleared to return to competition. During the 2026 AEW WrestleDream BUY-IN, hosted by Renee Paquette, Jeff Jarrett, and R.J. City,…"
+description: "Maya World has been cleared to return to competition. During the 2026 AEW WrestleDream BUY-IN, hosted by Renee Paquette, Jeff Jarrett, and R.J."
 federation: AEW
 date: 2026-10-17T23:43:40.000Z
 source_id: 334420

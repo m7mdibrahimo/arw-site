@@ -1,7 +1,7 @@
 ---
 title: "Will Ospreay: I Feel Like I'd Be Okay at Acting"
 slug: "will-ospreay-i-feel-like-id-be-okay-at-acting"
-description: "Will Ospreay recently discussed the possibility of branching out into acting during an interview with Real Radio Monsters. While acknowledging that…"
+description: "Will Ospreay recently discussed the possibility of branching out into acting during an interview with Real Radio Monsters."
 federation: AEW
 date: 2026-10-20T17:06:56.000Z
 source_id: 334818

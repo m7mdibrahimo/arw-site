@@ -1,7 +1,7 @@
 ---
 title: "Kofi Kingston Reflects on Historic KofiMania Era in WWE"
 slug: "kofi-kingston-reflects-on-historic-kofimania-era-in-wwe"
-description: "Kofi Kingston appeared on The Mick and Kenny Show to discuss his historic KofiMania run in WWE, according to Wrestling Inc. In 2019, Kofi defeated Bryan…"
+description: "Kofi Kingston appeared on The Mick and Kenny Show to discuss his historic KofiMania run in WWE, according to Wrestling Inc."
 federation: WWE
 date: 2026-10-25T19:30:00.000Z
 source_id: 4261910283

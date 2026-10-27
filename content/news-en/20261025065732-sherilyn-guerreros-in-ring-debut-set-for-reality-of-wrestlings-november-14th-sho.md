@@ -1,7 +1,7 @@
 ---
 title: "Sherilyn Guerrero's In-Ring Debut Set for Reality of Wrestling's November 14th Show"
 slug: "sherilyn-guerreros-in-ring-debut-set-for-reality-of-wrestlings-november-14th-sho"
-description: "Sherilyn Guerrero, the second-oldest daughter of the late WWE Hall of Famer Eddie Guerrero, is set to make her professional wrestling in-ring debut. During…"
+description: "Sherilyn Guerrero, the second-oldest daughter of the late WWE Hall of Famer Eddie Guerrero, is set to make her professional wrestling in-ring debut."
 federation: INDIE
 date: 2026-10-25T03:57:32.000Z
 source_id: 335605

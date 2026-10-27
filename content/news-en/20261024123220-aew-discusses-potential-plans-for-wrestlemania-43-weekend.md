@@ -1,7 +1,7 @@
 ---
 title: "AEW Discusses Potential Plans for WrestleMania 43 Weekend"
 slug: "aew-discusses-potential-plans-for-wrestlemania-43-weekend"
-description: "AEW has started discussing potential activities to hold during the WrestleMania 43 weekend in 2027. With WWE taking the event to Saudi Arabia that year,…"
+description: "AEW has started discussing potential activities to hold during the WrestleMania 43 weekend in 2027."
 federation: AEW
 date: 2026-10-24T09:32:20.000Z
 source_id: 802259061

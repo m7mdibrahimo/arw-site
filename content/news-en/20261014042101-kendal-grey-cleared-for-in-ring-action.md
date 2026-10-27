@@ -1,7 +1,7 @@
 ---
 title: "Kendal Grey Cleared for In-Ring Action"
 slug: "kendal-grey-cleared-for-in-ring-action"
-description: "Kendal Grey has received medical clearance to return to the ring. During the October 13 episode of NXT on The CW, Grey made an appearance while Wren…"
+description: "Kendal Grey has received medical clearance to return to the ring. During the October 13 episode of NXT on The CW."
 federation: WWE
 date: 2026-10-14T01:21:01.000Z
 source_id: 333791

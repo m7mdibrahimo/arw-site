@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Says PAC’s Death Shows How Quickly Your Entire Life Can Change"
 slug: "drew-mcintyre-says-pacs-death-shows-how-quickly-your-entire-life-can-change"
-description: "Drew McIntyre recently opened up about the sudden death of PAC, explaining how quickly life can change without warning. During an appearance on Stephanie…"
+description: "Drew McIntyre recently opened up about the sudden death of PAC, explaining how quickly life can change without warning."
 federation: WWE
 date: 2026-10-17T12:55:46.000Z
 source_id: 802256190

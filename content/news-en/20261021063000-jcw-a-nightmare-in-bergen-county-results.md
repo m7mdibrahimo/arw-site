@@ -1,7 +1,7 @@
 ---
 title: "JCW a Nightmare in Bergen County Results"
 slug: "jcw-a-nightmare-in-bergen-county-results"
-description: "Jersey Championship Wrestling hosted JCW A Nightmare in Bergen County on October 18 at The Mecca in Ridgefield Park, New Jersey, with a broadcast on…"
+description: "Jersey Championship Wrestling hosted JCW A Nightmare in Bergen County on October 18 at The Mecca in Ridgefield Park, New Jersey."
 federation: INDIE
 date: 2026-10-21T03:30:00.000Z
 source_id: 334913

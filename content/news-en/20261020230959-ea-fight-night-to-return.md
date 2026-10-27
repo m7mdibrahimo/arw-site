@@ -1,7 +1,7 @@
 ---
 title: "EA Fight Night to Return"
 slug: "ea-fight-night-to-return"
-description: "EA Fight Night is set to return after a teaser photo was shared on Tuesday, though no further details were provided. The franchise's last title, Fight…"
+description: "EA Fight Night is set to return after a teaser photo was shared on Tuesday, though no further details were provided."
 federation: MMA
 date: 2026-10-20T20:09:59.000Z
 source_id: 334879

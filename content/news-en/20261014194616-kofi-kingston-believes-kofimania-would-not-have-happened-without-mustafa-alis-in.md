@@ -1,7 +1,7 @@
 ---
 title: "Kofi Kingston Believes KofiMania Would Not Have Happened Without Mustafa Ali's Injury"
 slug: "kofi-kingston-believes-kofimania-would-not-have-happened-without-mustafa-alis-in"
-description: "Kofi Kingston recently discussed the build-up to his iconic KofiMania moment, expressing his belief that the historic run would not have happened if…"
+description: "Kofi Kingston recently discussed the build-up to his iconic KofiMania moment."
 federation: WWE
 date: 2026-10-14T16:46:16.000Z
 source_id: 333846

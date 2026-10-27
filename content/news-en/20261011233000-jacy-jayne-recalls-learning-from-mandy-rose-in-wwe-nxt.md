@@ -1,7 +1,7 @@
 ---
 title: "Jacy Jayne Recalls Learning From Mandy Rose in WWE NXT"
 slug: "jacy-jayne-recalls-learning-from-mandy-rose-in-wwe-nxt"
-description: "Jacy Jayne recently discussed the mentorship she received from Mandy Rose during their time together in the Toxic Attraction faction on WWE NXT. Jayne…"
+description: "Jacy Jayne recently discussed the mentorship she received from Mandy Rose during their time together in the Toxic Attraction faction on WWE NXT."
 federation: WWE
 date: 2026-10-11T20:30:00.000Z
 source_id: 1607488743

@@ -1,7 +1,7 @@
 ---
 title: "Sol Ruca States That It's Terrifying Doing the Sasuke Special"
 slug: "sol-ruca-states-that-its-terrifying-doing-the-sasuke-special"
-description: "Sol Ruca recently discussed the challenges of performing certain maneuvers in the ring during her appearance on Notsam Wrestling Live!. When asked about…"
+description: "Sol Ruca recently discussed the challenges of performing certain maneuvers in the ring during her appearance on Notsam Wrestling Live!."
 federation: WWE
 date: 2026-10-12T20:47:08.000Z
 source_id: 333556

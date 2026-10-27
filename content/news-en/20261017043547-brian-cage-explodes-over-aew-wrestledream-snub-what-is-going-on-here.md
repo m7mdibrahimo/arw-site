@@ -1,7 +1,7 @@
 ---
 title: "Brian Cage Explodes Over AEW WrestleDream Snub: “What Is Going on Here?”"
 slug: "brian-cage-explodes-over-aew-wrestledream-snub-what-is-going-on-here"
-description: "Brian Cage is frustrated after being left off the AEW WrestleDream card. On October 16, Cage posted a video on X expressing his anger over missing…"
+description: "Brian Cage is frustrated after being left off the AEW WrestleDream card."
 federation: AEW
 date: 2026-10-17T01:35:47.000Z
 source_id: 802256022

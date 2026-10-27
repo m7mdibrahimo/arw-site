@@ -1,7 +1,7 @@
 ---
 title: "Alexa Bliss and Tatum Paxley Win WWE Women’s Tag Team Titles on SmackDown"
 slug: "alexa-bliss-and-tatum-paxley-win-wwe-womens-tag-team-titles-on-smackdown"
-description: "In a surprise title change just 24 hours before Money in the Bank, Alexa Bliss and Tatum Paxley captured the WWE Women’s Tag Team Championship. During the…"
+description: "In a surprise title change just 24 hours before Money in the Bank, Alexa Bliss and Tatum Paxley captured the WWE Women’s Tag Team Championship."
 federation: WWE
 date: 2026-10-10T01:46:05.000Z
 source_id: 802253033

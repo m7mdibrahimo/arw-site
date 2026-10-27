@@ -1,7 +1,7 @@
 ---
 title: "AEW Dynamite Preview for October 14, 2026: Confirmed Matches, Start Time and How to Watch"
 slug: "aew-dynamite-preview-for-october-14-2026-confirmed-matches-start-time-and-how-to"
-description: "AEW Dynamite tonight on TBS features a loaded card as the go-home show before the WrestleDream pay-per-view. Will Ospreay and Andrade El Idolo team up to…"
+description: "AEW Dynamite tonight on TBS features a loaded card as the go-home show before the WrestleDream pay-per-view."
 federation: AEW
 date: 2026-10-14T10:07:52.000Z
 source_id: 802254918

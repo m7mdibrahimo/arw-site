@@ -1,7 +1,7 @@
 ---
 title: "John Cena Still Owns the First Car That He Bought With His Own Money"
 slug: "john-cena-still-owns-the-first-car-that-he-bought-with-with-his-own-money"
-description: "John Cena revealed in a new interview that he still owns the first car he ever bought with his own money, a 1989 Jeep Wrangler. Cena explained that he…"
+description: "John Cena revealed in a new interview that he still owns the first car he ever bought with his own money, a 1989 Jeep Wrangler."
 federation: WWE
 date: 2026-10-15T13:45:14.000Z
 source_id: 334043

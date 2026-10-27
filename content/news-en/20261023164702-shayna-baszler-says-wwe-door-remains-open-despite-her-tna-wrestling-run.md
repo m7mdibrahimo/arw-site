@@ -1,7 +1,7 @@
 ---
 title: "Shayna Baszler Says WWE Door Remains Open Despite Her TNA Wrestling Run"
 slug: "shayna-baszler-says-wwe-door-remains-open-despite-her-tna-wrestling-run"
-description: "Shayna Baszler remains on good terms with WWE and could continue working behind the scenes despite her recent run in TNA Wrestling. During an interview…"
+description: "Shayna Baszler remains on good terms with WWE and could continue working behind the scenes despite her recent run in TNA Wrestling."
 federation: WWE
 date: 2026-10-23T13:47:02.000Z
 source_id: 802258666

@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Says He's Focused on 'Hollywood Drew,' but He's Always Ready to Return to the Ring"
 slug: "drew-mcintyre-says-hes-focused-on-hollywood-drew-but-hes-always-ready-to-return"
-description: "Drew McIntyre is currently prioritizing his acting career, having secured roles in projects such as The Last Druid, Highlander, and the animated film…"
+description: "Drew McIntyre is currently prioritizing his acting career, having secured roles in projects such as The Last Druid, Highlander, and the animated film Hexed."
 federation: WWE
 date: 2026-10-13T13:08:29.000Z
 source_id: 333678

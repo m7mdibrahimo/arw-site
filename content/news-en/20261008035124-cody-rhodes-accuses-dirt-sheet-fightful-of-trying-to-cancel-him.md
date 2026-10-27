@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Accuses Dirt Sheet Fightful of Trying to Cancel Him"
 slug: "cody-rhodes-accuses-dirt-sheet-fightful-of-trying-to-cancel-him"
-description: "WWE superstar Cody Rhodes has taken aim at wrestling dirt-sheet coverage, accusing Fightful of repeatedly taking his comments out of context to generate…"
+description: "WWE superstar Cody Rhodes has taken aim at wrestling dirt-sheet coverage."
 federation: WWE
 date: 2026-10-08T00:51:24.000Z
 source_id: 802252273

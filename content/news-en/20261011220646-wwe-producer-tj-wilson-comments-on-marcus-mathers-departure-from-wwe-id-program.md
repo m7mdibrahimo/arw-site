@@ -1,7 +1,7 @@
 ---
 title: "WWE Producer TJ Wilson Comments on Marcus Mathers' Departure From WWE ID Program"
 slug: "wwe-producer-tj-wilson-comments-on-marcus-mathers-departure-from-wwe-id-program"
-description: "WWE producer TJ Wilson has praised Marcus Mathers following his recent departure from the WWE ID program. Mathers confirmed his exit from the initiative…"
+description: "WWE producer TJ Wilson has praised Marcus Mathers following his recent departure from the WWE ID program."
 federation: WWE
 date: 2026-10-11T19:06:46.000Z
 source_id: 924246446

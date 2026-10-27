@@ -1,7 +1,7 @@
 ---
 title: "AEW Updates Full Gear 2026 Poster With Pac References"
 slug: "aew-updates-full-gear-2026-poster-with-pac-references"
-description: "All Elite Wrestling has updated the official poster for AEW Full Gear 2026, which takes place November 14 at the Mortgage Matchup Center in Phoenix,…"
+description: "All Elite Wrestling has updated the official poster for AEW Full Gear 2026, which takes place November 14 at the Mortgage Matchup Center in Phoenix, Arizona."
 federation: AEW
 date: 2026-10-16T20:23:54.000Z
 source_id: 334240

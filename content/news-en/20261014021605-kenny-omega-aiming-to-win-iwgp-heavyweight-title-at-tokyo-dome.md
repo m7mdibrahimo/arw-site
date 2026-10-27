@@ -1,7 +1,7 @@
 ---
 title: "Kenny Omega Aiming to Win IWGP Heavyweight Title at Tokyo Dome"
 slug: "kenny-omega-aiming-to-win-iwgp-heavyweight-title-at-tokyo-dome"
-description: "Kenny Omega has his sights set on the IWGP Heavyweight Championship at the Tokyo Dome. After a surprise appearance at NJPW King of Pro-Wrestling, it was…"
+description: "Kenny Omega has his sights set on the IWGP Heavyweight Championship at the Tokyo Dome."
 federation: NJPW
 date: 2026-10-13T23:16:05.000Z
 source_id: 333780

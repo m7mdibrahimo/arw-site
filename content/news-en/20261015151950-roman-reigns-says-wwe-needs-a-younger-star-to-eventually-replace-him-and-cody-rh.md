@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Says WWE Needs a Younger Star to Eventually Replace Him and Cody Rhodes"
 slug: "roman-reigns-says-wwe-needs-a-younger-star-to-eventually-replace-him-and-cody-rh"
-description: "Roman Reigns stated that WWE will eventually need a younger star to step up and replace both him and Cody Rhodes. During an appearance on Club Shay Shay,…"
+description: "Roman Reigns stated that WWE will eventually need a younger star to step up and replace both him and Cody Rhodes."
 federation: WWE
 date: 2026-10-15T12:19:50.000Z
 source_id: 802255344

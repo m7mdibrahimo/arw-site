@@ -1,7 +1,7 @@
 ---
 title: "Anthony Bowens Addresses His Future and Contract Status"
 slug: "anthony-bowens-addresses-his-future-and-contract-status"
-description: "Anthony Bowens recently discussed his current status and future plans during a new interview with Michael Fairman. Earlier in October 2026, reports…"
+description: "Anthony Bowens recently discussed his current status and future plans during a new interview with Michael Fairman."
 federation: AEW
 date: 2026-10-13T03:29:41.000Z
 source_id: 333619

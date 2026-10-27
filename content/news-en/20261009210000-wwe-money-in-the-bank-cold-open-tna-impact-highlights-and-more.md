@@ -1,7 +1,7 @@
 ---
 title: "WWE Money in the Bank Cold Open, TNA iMPACT Highlights, and More"
 slug: "wwe-money-in-the-bank-cold-open-tna-impact-highlights-and-more"
-description: "Triple H has unveiled the cold open for the upcoming WWE Money In The Bank event. Meanwhile, TNA iMPACT featured several highlights during its latest…"
+description: "Triple H has unveiled the cold open for the upcoming WWE Money In The Bank event. Meanwhile, TNA iMPACT featured several highlights during its latest episode."
 federation: WWE
 date: 2026-10-09T18:00:00.000Z
 source_id: 332882

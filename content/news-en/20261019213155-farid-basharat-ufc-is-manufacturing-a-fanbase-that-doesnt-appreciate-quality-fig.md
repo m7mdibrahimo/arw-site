@@ -1,7 +1,7 @@
 ---
 title: "Farid Basharat: UFC Is Manufacturing a Fanbase That Doesn't Appreciate Quality Fighting"
 slug: "farid-basharat-ufc-is-manufacturing-a-fanbase-that-doesnt-appreciate-quality-fig"
-description: "Undefeated bantamweight Farid Basharat was released by UFC after his contract was not renewed, despite boasting a 16-0 career record and a 7-0 record…"
+description: "Undefeated bantamweight Farid Basharat was released by UFC after his contract was not renewed."
 federation: MMA
 date: 2026-10-19T18:31:55.000Z
 source_id: 334714

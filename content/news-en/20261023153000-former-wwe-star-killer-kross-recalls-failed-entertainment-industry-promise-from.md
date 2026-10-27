@@ -1,7 +1,7 @@
 ---
 title: "Former WWE Star Killer Kross Recalls Failed Entertainment Industry Promise From TKO"
 slug: "former-wwe-star-killer-kross-recalls-failed-entertainment-industry-promise-from"
-description: "Former WWE star Killer Kross recently recalled a failed promise from TKO regarding opportunities in the entertainment industry. During an interview on \"The…"
+description: "Former WWE star Killer Kross recently recalled a failed promise from TKO regarding opportunities in the entertainment industry."
 federation: WWE
 date: 2026-10-23T12:30:00.000Z
 source_id: 4907411439

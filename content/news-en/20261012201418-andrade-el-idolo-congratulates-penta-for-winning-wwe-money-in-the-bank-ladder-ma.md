@@ -1,7 +1,7 @@
 ---
 title: "Andrade El Idolo Congratulates Penta for Winning WWE Money in the Bank Ladder Match"
 slug: "andrade-el-idolo-congratulates-penta-for-winning-wwe-money-in-the-bank-ladder-ma"
-description: "Andrade El Idolo recently shared a message of support for Penta following his massive victory. The conclusion of the 2026 WWE Money in the Bank event saw…"
+description: "Andrade El Idolo recently shared a message of support for Penta following his massive victory."
 federation: WWE
 date: 2026-10-12T17:14:18.000Z
 source_id: 333523

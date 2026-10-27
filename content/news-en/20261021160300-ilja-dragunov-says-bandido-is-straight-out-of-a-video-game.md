@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Says Bandido Is 'Straight Out of a Video Game'"
 slug: "ilja-dragunov-says-bandido-is-straight-out-of-a-video-game"
-description: "Ilja Dragunov is drawing attention to Bandido as he prepares for his in-ring debut in All Elite Wrestling. Ahead of facing 'Speedball' Mike Bailey on AEW…"
+description: "Ilja Dragunov is drawing attention to Bandido as he prepares for his in-ring debut in All Elite Wrestling."
 federation: AEW
 date: 2026-10-21T13:03:00.000Z
 source_id: 334966

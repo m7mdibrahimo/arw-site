@@ -1,7 +1,7 @@
 ---
 title: "Royce Keys Compares Jaida Parker to Sherri Martel"
 slug: "royce-keys-compares-jaida-parker-to-sherri-martel"
-description: "According to Fightful, Royce Keys spoke highly of Jaida Parker during an appearance on Busted Open, stating that she could be a modern-day Sherri Martel. "
+description: "According to Fightful, Royce Keys spoke highly of Jaida Parker during an appearance on Busted Open, stating that she could be a modern-day Sherri Martel."
 federation: WWE
 date: 2026-10-14T18:17:40.000Z
 source_id: 333879

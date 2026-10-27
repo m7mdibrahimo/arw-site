@@ -1,7 +1,7 @@
 ---
 title: "Seth Rollins’ Current Status for WWE Money in the Bank 2026"
 slug: "seth-rollins-current-status-for-wwe-money-in-the-bank-2026"
-description: "Seth Rollins has addressed his status for WWE Money in the Bank 2026 this weekend. While Rollins will be in New Orleans, he clarified that he will not be…"
+description: "Seth Rollins has addressed his status for WWE Money in the Bank 2026 this weekend."
 federation: WWE
 date: 2026-10-09T20:31:54.000Z
 source_id: 802252849

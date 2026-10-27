@@ -1,7 +1,7 @@
 ---
 title: "Je'Von Evans Hopes to Share the Ring With Oba Femi and Trick Williams Again"
 slug: "jevon-evans-hopes-to-share-the-ring-with-oba-femi-and-trick-williams-again"
-description: "WWE star Je'Von Evans wants to reunite with Oba Femi and Trick Williams inside the ring on the main roster. The three performers previously shared the…"
+description: "WWE star Je'Von Evans wants to reunite with Oba Femi and Trick Williams inside the ring on the main roster."
 federation: WWE
 date: 2026-10-12T17:29:42.000Z
 source_id: 2199819034

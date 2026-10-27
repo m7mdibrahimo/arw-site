@@ -1,7 +1,7 @@
 ---
 title: "Billy Gunn Says His AEW Contract Was for 12 Dates a Year"
 slug: "billy-gunn-says-his-aew-contract-was-for-12-dates-a-year"
-description: "Billy Gunn revealed that his original contract with AEW was for only 12 dates a year when he was initially brought in as a coach and producer. He noted…"
+description: "Billy Gunn revealed that his original contract with AEW was for only 12 dates a year when he was initially brought in as a coach and producer."
 federation: AEW
 date: 2026-10-21T13:30:42.000Z
 source_id: 334674

@@ -1,7 +1,7 @@
 ---
 title: "David Otunga Changes His Stance on Montez Ford Lawsuit After New Footage Emerges"
 slug: "david-otunga-changes-his-stance-on-montez-ford-lawsuit-after-new-footage-emerges"
-description: "David Otunga has completely changed his perspective on the lawsuit involving Montez Ford after reviewing new camera angles. The former WWE star and…"
+description: "David Otunga has completely changed his perspective on the lawsuit involving Montez Ford after reviewing new camera angles."
 federation: WWE
 date: 2026-10-19T14:31:04.000Z
 source_id: 802257174

@@ -1,7 +1,7 @@
 ---
 title: "Laynie Luck Addresses WWE I.D. Deal Not Being Renewed"
 slug: "laynie-luck-addresses-wwe-i-d-deal-not-being-renewed"
-description: "Laynie Luck has spoken out regarding the decision not to renew her WWE I.D. contract. Following her loss of the WWE I.D. Women's Championship, it was…"
+description: "Laynie Luck has spoken out regarding the decision not to renew her WWE I.D. contract. Following her loss of the WWE I.D."
 federation: WWE
 date: 2026-10-12T12:30:00.000Z
 source_id: 333376

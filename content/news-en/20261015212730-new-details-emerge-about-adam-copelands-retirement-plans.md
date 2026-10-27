@@ -1,7 +1,7 @@
 ---
 title: "New Details Emerge About Adam Copeland’s Retirement Plans"
 slug: "new-details-emerge-about-adam-copelands-retirement-plans"
-description: "Tony Khan revealed that Adam Copeland informed him well before his public announcement that 2027 would be his final year as a professional wrestler. Khan…"
+description: "Tony Khan revealed that Adam Copeland informed him well before his public announcement that 2027 would be his final year as a professional wrestler."
 federation: AEW
 date: 2026-10-15T18:27:30.000Z
 source_id: 802255459

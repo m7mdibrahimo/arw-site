@@ -1,7 +1,7 @@
 ---
 title: "Baron Von Raschke Sets Wrestling Record at Age 86"
 slug: "baron-von-raschke-sets-wrestling-record-at-age-86"
-description: "Baron Von Raschke made history at Dreamwave Wrestling by becoming the oldest male professional wrestler to compete at 86 years old. He entered the…"
+description: "Baron Von Raschke made history at Dreamwave Wrestling by becoming the oldest male professional wrestler to compete at 86 years old."
 federation: INDIE
 date: 2026-10-12T12:51:29.000Z
 source_id: 333488

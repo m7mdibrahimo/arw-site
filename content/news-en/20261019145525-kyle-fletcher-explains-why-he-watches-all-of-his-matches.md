@@ -1,7 +1,7 @@
 ---
 title: "Kyle Fletcher Explains Why He Watches All of His Matches"
 slug: "kyle-fletcher-explains-why-he-watches-all-of-his-matches"
-description: "AEW star Kyle Fletcher revealed that he reviews every single match he wrestles to evaluate his performance and apply feedback to his future in the ring.…"
+description: "AEW star Kyle Fletcher revealed that he reviews every single match he wrestles to evaluate his performance and apply feedback to his future in the ring."
 federation: AEW
 date: 2026-10-19T11:55:25.000Z
 source_id: 334652

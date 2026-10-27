@@ -1,7 +1,7 @@
 ---
 title: "Tony D'Angelo to Challenge Grayson Waller for NXT Championship at Halloween Havoc"
 slug: "tony-dangelo-to-challenge-grayson-waller-for-nxt-championship-at-halloween-havoc"
-description: "Tony D'Angelo is set to compete for the NXT Championship after securing a victory on the October 13th episode of WWE NXT on The CW. D'Angelo defeated Myles…"
+description: "Tony D'Angelo is set to compete for the NXT Championship after securing a victory on the October 13th episode of WWE NXT on The CW."
 federation: WWE
 date: 2026-10-14T02:11:44.000Z
 source_id: 333796

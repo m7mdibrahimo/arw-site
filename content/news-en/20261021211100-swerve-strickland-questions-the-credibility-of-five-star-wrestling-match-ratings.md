@@ -1,7 +1,7 @@
 ---
 title: "Swerve Strickland Questions the Credibility of Five-Star Wrestling Match Ratings"
 slug: "swerve-strickland-questions-the-credibility-of-five-star-wrestling-match-ratings"
-description: "AEW star Swerve Strickland recently shared his thoughts on the credibility of Wrestling Observer's famous five-star match ratings. Speaking with Billboard…"
+description: "AEW star Swerve Strickland recently shared his thoughts on the credibility of Wrestling Observer's famous five-star match ratings."
 federation: AEW
 date: 2026-10-21T18:11:00.000Z
 source_id: 802258210

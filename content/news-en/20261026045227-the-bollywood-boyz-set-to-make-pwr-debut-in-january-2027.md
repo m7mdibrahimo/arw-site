@@ -1,7 +1,7 @@
 ---
 title: "The Bollywood Boyz Set to Make PWR Debut in January 2027"
 slug: "the-bollywood-boyz-set-to-make-pwr-debut-in-january-2027"
-description: "The Bollywood Boyz are scheduled to make their Pro Wrestling Rebellion debut early next year. PWR will head to Talkatora Stadium in New Delhi, India, on…"
+description: "The Bollywood Boyz are scheduled to make their Pro Wrestling Rebellion debut early next year."
 federation: INDIE
 date: 2026-10-26T01:52:27.000Z
 source_id: 335750

@@ -1,7 +1,7 @@
 ---
 title: "Nick Khan Addresses Outside Film and TV Projects for WWE Stars"
 slug: "nick-khan-addresses-outside-film-and-tv-projects-for-wwe-stars"
-description: "WWE President Nick Khan recently discussed how outside projects bring added notoriety to the company during a feature published by The New York Times. The…"
+description: "WWE President Nick Khan recently discussed how outside projects bring added notoriety to the company during a feature published by The New York Times."
 federation: WWE
 date: 2026-10-15T13:54:04.000Z
 source_id: 334047

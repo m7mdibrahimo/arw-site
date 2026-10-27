@@ -1,7 +1,7 @@
 ---
 title: "WWE Raw Scheduled to Air at 6PM ET on November 2"
 slug: "wwe-raw-scheduled-to-air-at-6pm-et-on-november-2"
-description: "WWE Raw is scheduled to air two hours early on November 2 as the go-home show for Crown Jewel. According to WrestleVotes Radio on Fightful Select, the…"
+description: "WWE Raw is scheduled to air two hours early on November 2 as the go-home show for Crown Jewel."
 federation: WWE
 date: 2026-10-22T17:27:03.000Z
 source_id: 335157

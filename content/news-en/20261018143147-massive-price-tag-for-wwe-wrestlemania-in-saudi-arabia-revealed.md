@@ -1,7 +1,7 @@
 ---
 title: "Massive Price Tag for WWE WrestleMania in Saudi Arabia Revealed"
 slug: "massive-price-tag-for-wwe-wrestlemania-in-saudi-arabia-revealed"
-description: "WWE is set to receive a massive $150 million payout for bringing WrestleMania to Saudi Arabia. According to Dave Meltzer on Wrestling Observer Radio, this…"
+description: "WWE is set to receive a massive $150 million payout for bringing WrestleMania to Saudi Arabia."
 federation: WWE
 date: 2026-10-18T11:31:47.000Z
 source_id: 802256829

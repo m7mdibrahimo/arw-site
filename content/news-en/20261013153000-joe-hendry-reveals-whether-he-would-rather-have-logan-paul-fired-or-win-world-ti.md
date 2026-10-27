@@ -1,7 +1,7 @@
 ---
 title: "Joe Hendry Reveals Whether He Would Rather Have Logan Paul Fired or Win World Title"
 slug: "joe-hendry-reveals-whether-he-would-rather-have-logan-paul-fired-or-win-world-ti"
-description: "During a recent appearance on Busted Open Radio, WWE star Joe Hendry faced a tough dilemma when Nic Nemeth asked him whether he would rather have Logan…"
+description: "During a recent appearance on Busted Open Radio, WWE star Joe Hendry faced a tough dilemma when Nic Nemeth asked him whether he would rather have Logan Paul."
 federation: WWE
 date: 2026-10-13T12:30:00.000Z
 source_id: 1394300416

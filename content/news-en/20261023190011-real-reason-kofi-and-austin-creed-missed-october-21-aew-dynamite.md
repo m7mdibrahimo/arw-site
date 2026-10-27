@@ -1,7 +1,7 @@
 ---
 title: "Real Reason Kofi and Austin Creed Missed October 21 AEW Dynamite"
 slug: "real-reason-kofi-and-austin-creed-missed-october-21-aew-dynamite"
-description: "Kofi Kingston and Austin Creed missed the October 21 episode of AEW Dynamite because they were attending Big E's wedding to Kris Yim. According to Dave…"
+description: "Kofi Kingston and Austin Creed missed the October 21 episode of AEW Dynamite because they were attending Big E's wedding to Kris Yim."
 federation: AEW
 date: 2026-10-23T16:00:11.000Z
 source_id: 802258713

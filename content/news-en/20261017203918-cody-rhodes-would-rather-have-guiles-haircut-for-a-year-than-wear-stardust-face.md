@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Would Rather Have Guile's Haircut for a Year Than Wear Stardust Face Paint for a Day"
 slug: "cody-rhodes-would-rather-have-guiles-haircut-for-a-year-than-wear-stardust-face"
-description: "Cody Rhodes recently stated that he would rather have Guile's haircut for a year than wear the Stardust face paint for a single day. The new Street Fighter…"
+description: "Cody Rhodes recently stated that he would rather have Guile's haircut for a year than wear the Stardust face paint for a single day."
 federation: WWE
 date: 2026-10-17T17:39:18.000Z
 source_id: 334361

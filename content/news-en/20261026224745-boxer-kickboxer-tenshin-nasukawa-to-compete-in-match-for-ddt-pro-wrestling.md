@@ -1,7 +1,7 @@
 ---
 title: "Boxer/Kickboxer Tenshin Nasukawa to Compete in Match for DDT Pro-Wrestling"
 slug: "boxer-kickboxer-tenshin-nasukawa-to-compete-in-match-for-ddt-pro-wrestling"
-description: "Boxer and former kickboxer and MMA fighter Tenshin Nasukawa is set to compete in a match for DDT Pro-Wrestling. Team Tenshin is holding a festival on…"
+description: "Boxer and former kickboxer and MMA fighter Tenshin Nasukawa is set to compete in a match for DDT Pro-Wrestling."
 federation: INDIE
 date: 2026-10-26T19:47:45.000Z
 source_id: 335899

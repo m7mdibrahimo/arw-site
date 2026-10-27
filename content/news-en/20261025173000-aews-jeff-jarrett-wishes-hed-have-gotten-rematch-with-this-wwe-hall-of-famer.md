@@ -1,7 +1,7 @@
 ---
 title: "AEW's Jeff Jarrett Wishes He'd Have Gotten Rematch With This WWE Hall of Famer"
 slug: "aews-jeff-jarrett-wishes-hed-have-gotten-rematch-with-this-wwe-hall-of-famer"
-description: "Jeff Jarrett discussed his illustrious career on an episode of My World, revealing one major match he never got to have. Jarrett stated that he wishes he…"
+description: "Jeff Jarrett discussed his illustrious career on an episode of My World, revealing one major match he never got to have."
 federation: WWE
 date: 2026-10-25T14:30:00.000Z
 source_id: 1989131197

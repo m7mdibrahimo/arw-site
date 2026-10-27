@@ -1,7 +1,7 @@
 ---
 title: "Marina Shafir Replaces Shotzi in CMLL Amazonas Grand Prix"
 slug: "marina-shafir-replaces-shotzi-in-cmll-amazonas-grand-prix"
-description: "Marina Shafir is heading to CMLL to compete in the upcoming Amazonas Grand Prix. CMLL announced that Shafir will replace Shotzi Blackheart on Team World…"
+description: "Marina Shafir is heading to CMLL to compete in the upcoming Amazonas Grand Prix."
 federation: INDIE
 date: 2026-10-16T19:46:35.000Z
 source_id: 334236

@@ -1,7 +1,7 @@
 ---
 title: "Bobby Steveson to Release Song With Grammy Nominated Singer Jimmie Allen"
 slug: "bobby-steveson-to-release-song-with-grammy-nominated-singer-jimmie-allen"
-description: "Former WWE NXT wrestler Bobby Steveson, formerly known as Damon Kemp, is set to release a new song with Grammy-nominated singer Jimmie Allen. Steveson…"
+description: "Former WWE NXT wrestler Bobby Steveson, formerly known as Damon Kemp, is set to release a new song with Grammy-nominated singer Jimmie Allen."
 federation: WWE
 date: 2026-10-20T20:46:04.000Z
 source_id: 334887

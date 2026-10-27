@@ -1,7 +1,7 @@
 ---
 title: "Sami Zayn Defeats Je'Von Evans in Impromptu Undisputed WWE Title Match on Raw"
 slug: "sami-zayn-defeats-jevon-evans-in-impromptu-undisputed-wwe-title-match-on-raw"
-description: "Sami Zayn successfully defended the WWE Championship against Je'Von Evans in an impromptu match on WWE RAW. Zayn came to the ring to address a lack of…"
+description: "Sami Zayn successfully defended the WWE Championship against Je'Von Evans in an impromptu match on WWE RAW."
 federation: WWE
 date: 2026-10-27T00:46:06.000Z
 source_id: 2090937581

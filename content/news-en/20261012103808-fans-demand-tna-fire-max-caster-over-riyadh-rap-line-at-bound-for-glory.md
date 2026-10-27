@@ -1,7 +1,7 @@
 ---
 title: "Fans Demand TNA Fire Max Caster Over Riyadh Rap Line at Bound for Glory"
 slug: "fans-demand-tna-fire-max-caster-over-riyadh-rap-line-at-bound-for-glory"
-description: "Max Caster made his TNA debut at Bound for Glory, but fans were left outraged over a line in his entrance rap referencing a recent tragedy in Riyadh.…"
+description: "Max Caster made his TNA debut at Bound for Glory, but fans were left outraged over a line in his entrance rap referencing a recent tragedy in Riyadh."
 federation: TNA
 date: 2026-10-12T07:38:08.000Z
 source_id: 802254036

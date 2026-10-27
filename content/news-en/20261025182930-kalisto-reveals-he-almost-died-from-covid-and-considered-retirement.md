@@ -1,7 +1,7 @@
 ---
 title: "Kalisto Reveals He Almost Died From COVID and Considered Retirement"
 slug: "kalisto-reveals-he-almost-died-from-covid-and-considered-retirement"
-description: "Former WWE star Kalisto revealed that he nearly died from COVID-19 following his April 2021 release from WWE, spending roughly two and a half months in the…"
+description: "Former WWE star Kalisto revealed that he nearly died from COVID-19 following his April 2021 release from WWE."
 federation: WWE
 date: 2026-10-25T15:29:30.000Z
 source_id: 802259572

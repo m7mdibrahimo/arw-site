@@ -1,7 +1,7 @@
 ---
 title: "FTR vs. Motor City Machine Guns 2, Myron Reed vs. Swerve Strickland Set for 10/24 AEW Collision"
 slug: "ftr-vs-motor-city-machine-guns-2-myron-reed-vs-swerve-strickland-set-for-10-24-a"
-description: "AEW has announced the lineup for the October 24 episode of AEW Collision. The show will feature the second match in the best-of-five series between FTR and…"
+description: "AEW has announced the lineup for the October 24 episode of AEW Collision."
 federation: AEW
 date: 2026-10-22T02:11:17.000Z
 source_id: 335088

@@ -1,7 +1,7 @@
 ---
 title: "Skadi Wins 2026 CMLL Amazonas Grand Prix"
 slug: "skadi-wins-2026-cmll-amazonas-grand-prix"
-description: "Skadi has emerged victorious in the 2026 CMLL Amazonas Grand Prix. The tournament concluded on October 23rd, with the final match seeing Skadi defeat…"
+description: "Skadi has emerged victorious in the 2026 CMLL Amazonas Grand Prix. The tournament concluded on October 23rd."
 federation: INDIE
 date: 2026-10-24T05:22:34.000Z
 source_id: 335404

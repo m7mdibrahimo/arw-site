@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Pitched Cutting Off Someone's Arm With His Sword, Vince McMahon Rejected the Idea"
 slug: "drew-mcintyre-pitched-cutting-off-someones-arm-with-his-sword-vince-mcmahon-reje"
-description: "Drew McIntyre recently revealed on Insight with Chris Van Vliet that he once pitched an idea to Vince McMahon to use his sword to cut off someone's arm…"
+description: "Drew McIntyre recently revealed on Insight with Chris Van Vliet that he once pitched an idea to Vince McMahon to use his sword to cut off someone's arm."
 federation: WWE
 date: 2026-10-20T11:12:58.000Z
 source_id: 334782

@@ -1,7 +1,7 @@
 ---
 title: "Avery Styles Reportedly Injured at Recent TNA Tapings"
 slug: "avery-styles-reportedly-injured-at-recent-tna-tapings"
-description: "Avery Styles may face a brief slowdown in his momentum. According to Fightful Select, he was seen wearing a walking boot following recent TNA tapings in…"
+description: "Avery Styles may face a brief slowdown in his momentum. According to Fightful Select."
 federation: TNA
 date: 2026-10-19T21:56:08.000Z
 source_id: 2554688763

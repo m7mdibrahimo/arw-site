@@ -1,7 +1,7 @@
 ---
 title: "MJF Makes Surprise Wrestling Return Amid AEW Television Absence"
 slug: "mjf-makes-surprise-wrestling-return-amid-aew-television-absence"
-description: "MJF has made a surprise return to a wrestling ring, even as his absence from AEW television continues. The former AEW World Champion appeared at the Create…"
+description: "MJF has made a surprise return to a wrestling ring, even as his absence from AEW television continues."
 federation: AEW
 date: 2026-10-25T21:39:31.000Z
 source_id: 802259670

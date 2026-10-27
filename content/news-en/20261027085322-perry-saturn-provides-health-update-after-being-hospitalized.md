@@ -1,7 +1,7 @@
 ---
 title: "Perry Saturn Provides Health Update After Being Hospitalized"
 slug: "perry-saturn-provides-health-update-after-being-hospitalized"
-description: "Perry Saturn provided a health update in a video published on his official YouTube channel alongside his show co-host Maven. Saturn explained his…"
+description: "Perry Saturn provided a health update in a video published on his official YouTube channel alongside his show co-host Maven."
 federation: INDIE
 date: 2026-10-27T05:53:22.000Z
 source_id: 336014

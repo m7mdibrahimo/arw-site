@@ -1,7 +1,7 @@
 ---
 title: "Sean Legacy Details Conversation With CM Punk About Improving His Physique"
 slug: "sean-legacy-details-conversation-with-cm-punk-about-improving-his-physique"
-description: "WWE NXT talent Sean Legacy is crediting CM Punk for helping him improve his physique. Legacy shared on Instagram that a conversation with Punk at a live…"
+description: "WWE NXT talent Sean Legacy is crediting CM Punk for helping him improve his physique."
 federation: WWE
 date: 2026-10-23T21:20:52.000Z
 source_id: 335307

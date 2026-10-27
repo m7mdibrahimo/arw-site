@@ -1,7 +1,7 @@
 ---
 title: "Seri Yamaoka Returning to In-Ring Action After Recovery From Shoulder Surgery"
 slug: "seri-yamaoka-returning-to-in-ring-action-after-recovery-from-shoulder-surgery"
-description: "Seri Yamaoka is set to return to the ring following a recovery from shoulder surgery. The Dream Star Fighting Marigold talent suffered a dislocated right…"
+description: "Seri Yamaoka is set to return to the ring following a recovery from shoulder surgery."
 federation: INDIE
 date: 2026-10-13T14:18:39.000Z
 source_id: 333692

@@ -1,7 +1,7 @@
 ---
 title: "Ari Emanuel Addresses Possibility of Relocating WWE Crown Jewel Amid Security Concerns"
 slug: "ari-emanuel-addresses-possibility-of-relocating-wwe-crown-jewel-amid-security-co"
-description: "WWE Crown Jewel remains scheduled for Riyadh, Saudi Arabia, on November 7, according to TKO executive chair and CEO Ari Emanuel. During an appearance on…"
+description: "WWE Crown Jewel remains scheduled for Riyadh, Saudi Arabia, on November 7, according to TKO executive chair and CEO Ari Emanuel."
 federation: WWE
 date: 2026-10-23T09:05:27.000Z
 source_id: 802258600

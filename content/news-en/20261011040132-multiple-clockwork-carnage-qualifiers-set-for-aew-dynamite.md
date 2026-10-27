@@ -1,7 +1,7 @@
 ---
 title: "Multiple Clockwork Carnage Qualifiers Set for AEW Dynamite"
 slug: "multiple-clockwork-carnage-qualifiers-set-for-aew-dynamite"
-description: "All Elite Wrestling has announced five qualifying matches for the upcoming Clockwork Carnage match at AEW WrestleDream. The announced bouts include Darby…"
+description: "All Elite Wrestling has announced five qualifying matches for the upcoming Clockwork Carnage match at AEW WrestleDream."
 federation: AEW
 date: 2026-10-11T01:01:32.000Z
 source_id: 333157

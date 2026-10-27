@@ -1,7 +1,7 @@
 ---
 title: "Skadi Discusses Tag Team With Kira in CMLL"
 slug: "skadi-discusses-tag-team-with-kira-in-cmll"
-description: "Skadi recently reflected on her successful partnership with Kira in CMLL. The duo won the CMLL Mexican National Women's Tag Team Championship in March 2024…"
+description: "Skadi recently reflected on her successful partnership with Kira in CMLL."
 federation: INDIE
 date: 2026-10-20T02:00:00.000Z
 source_id: 334639

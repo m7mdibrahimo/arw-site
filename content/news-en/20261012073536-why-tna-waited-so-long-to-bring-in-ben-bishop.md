@@ -1,7 +1,7 @@
 ---
 title: "Why TNA Waited So Long to Bring in Ben Bishop"
 slug: "why-tna-waited-so-long-to-bring-in-ben-bishop"
-description: "Ben Bishop finally made his TNA debut at Bound for Glory on October 11, 2026, but the move was a long time in the making. According to reports, TNA had…"
+description: "Ben Bishop finally made his TNA debut at Bound for Glory on October 11, 2026, but the move was a long time in the making."
 federation: TNA
 date: 2026-10-12T04:35:36.000Z
 source_id: 802253998

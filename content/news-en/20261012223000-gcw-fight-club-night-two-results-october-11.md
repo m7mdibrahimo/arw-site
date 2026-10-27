@@ -1,7 +1,7 @@
 ---
 title: "GCW Fight Club Night Two Results (October 11)"
 slug: "gcw-fight-club-night-two-results-october-11"
-description: "Game Changer Wrestling held the second night of its GCW Fight Club event on October 11 at The Showboat in Atlantic City, New Jersey. The event was…"
+description: "Game Changer Wrestling held the second night of its GCW Fight Club event on October 11 at The Showboat in Atlantic City, New Jersey."
 federation: INDIE
 date: 2026-10-12T19:30:00.000Z
 source_id: 333400

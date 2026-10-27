@@ -1,7 +1,7 @@
 ---
 title: "Deonna Purrazzo Explains What a Match Against Athena Would Mean to Her"
 slug: "deonna-purrazzo-explains-what-a-match-against-athena-would-mean-to-her"
-description: "Deonna Purrazzo recently discussed what a potential singles match against Athena would mean to her. Both wrestlers are part of the Ring of Honor roster,…"
+description: "Deonna Purrazzo recently discussed what a potential singles match against Athena would mean to her."
 federation: ROH
 date: 2026-10-14T13:00:00.000Z
 source_id: 333448

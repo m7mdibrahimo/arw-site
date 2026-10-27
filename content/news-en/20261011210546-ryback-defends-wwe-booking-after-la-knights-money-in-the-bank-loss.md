@@ -1,7 +1,7 @@
 ---
 title: "Ryback Defends WWE Booking After LA Knight's Money in the Bank Loss"
 slug: "ryback-defends-wwe-booking-after-la-knights-money-in-the-bank-loss"
-description: "Ryback recently took to social media to defend WWE and LA Knight following his loss to Roman Reigns at Money in the Bank. Many fans expressed frustration…"
+description: "Ryback recently took to social media to defend WWE and LA Knight following his loss to Roman Reigns at Money in the Bank."
 federation: WWE
 date: 2026-10-11T18:05:46.000Z
 source_id: 802253684

@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Modifying American Nightmare Logo to Honor Late Dog Pharaoh"
 slug: "cody-rhodes-modifying-american-nightmare-logo-to-honor-late-dog-pharaoh"
-description: "Cody Rhodes is planning a major update to his iconic branding to honor his late husky, Pharaoh, according to Ringside News. The modification follows the…"
+description: "Cody Rhodes is planning a major update to his iconic branding to honor his late husky, Pharaoh, according to Ringside News."
 federation: WWE
 date: 2026-10-07T21:55:39.000Z
 source_id: 802252223

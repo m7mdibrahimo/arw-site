@@ -1,7 +1,7 @@
 ---
 title: "Nattie Neidhart Criticizes Enhancement Matches in WWE"
 slug: "nattie-neidhart-criticizes-enhancement-matches-in-wwe"
-description: "WWE veteran Nattie Neidhart recently shared her perspective on enhancement matches, noting that she does not enjoy the format. According to Wrestling Inc,…"
+description: "WWE veteran Nattie Neidhart recently shared her perspective on enhancement matches, noting that she does not enjoy the format."
 federation: WWE
 date: 2026-10-08T01:00:00.000Z
 source_id: 3153727239

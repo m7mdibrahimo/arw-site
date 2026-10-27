@@ -1,7 +1,7 @@
 ---
 title: "Nic Nemeth Pitched Vince McMahon on a Manufactured Return"
 slug: "nic-nemeth-pitched-vince-mcmahon-on-a-manufactured-return"
-description: "Nic Nemeth recently spoke about how the wrestling industry's workload has changed over the years, reflecting on his time with WWE. He noted that working…"
+description: "Nic Nemeth recently spoke about how the wrestling industry's workload has changed over the years, reflecting on his time with WWE."
 federation: WWE
 date: 2026-10-09T16:00:00.000Z
 source_id: 332283

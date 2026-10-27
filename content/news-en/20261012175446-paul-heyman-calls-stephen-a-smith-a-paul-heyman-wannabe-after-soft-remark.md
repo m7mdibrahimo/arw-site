@@ -1,7 +1,7 @@
 ---
 title: "Paul Heyman Calls Stephen A. Smith a ‘Paul Heyman Wannabe’ After ‘Soft’ Remark"
 slug: "paul-heyman-calls-stephen-a-smith-a-paul-heyman-wannabe-after-soft-remark"
-description: "Paul Heyman recently fired back at Stephen A. Smith after the ESPN host claimed the WWE Hall of Famer had \"gone soft.\" Speaking on his YouTube channel,…"
+description: "Paul Heyman recently fired back at Stephen A. Smith after the ESPN host claimed the WWE Hall of Famer had \"gone soft.\""
 federation: WWE
 date: 2026-10-12T14:54:46.000Z
 source_id: 802254127

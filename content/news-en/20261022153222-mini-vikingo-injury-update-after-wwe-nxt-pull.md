@@ -1,7 +1,7 @@
 ---
 title: "Mini Vikingo Injury Update After WWE NXT Pull"
 slug: "mini-vikingo-injury-update-after-wwe-nxt-pull"
-description: "Mini Vikingo missed his scheduled match on WWE NXT after suffering a real elbow injury. He was supposed to team with EK Prosper and Chazz Hall to face…"
+description: "Mini Vikingo missed his scheduled match on WWE NXT after suffering a real elbow injury."
 federation: WWE
 date: 2026-10-22T12:32:22.000Z
 source_id: 802258479

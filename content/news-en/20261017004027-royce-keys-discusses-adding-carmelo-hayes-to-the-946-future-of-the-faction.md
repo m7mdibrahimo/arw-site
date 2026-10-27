@@ -1,7 +1,7 @@
 ---
 title: "Royce Keys Discusses Adding Carmelo Hayes to The 946, Future of the Faction"
 slug: "royce-keys-discusses-adding-carmelo-hayes-to-the-946-future-of-the-faction"
-description: "Royce Keys, leader of the faction known as The 946, recently appeared on Busted Open Radio to discuss the group's recent expansion. The stable, which…"
+description: "Royce Keys, leader of the faction known as The 946, recently appeared on Busted Open Radio to discuss the group's recent expansion."
 federation: WWE
 date: 2026-10-16T21:40:27.000Z
 source_id: 2787301367

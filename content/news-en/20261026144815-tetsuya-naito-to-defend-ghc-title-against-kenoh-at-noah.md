@@ -1,7 +1,7 @@
 ---
 title: "Tetsuya Naito to Defend GHC Title Against Kenoh at NOAH"
 slug: "tetsuya-naito-to-defend-ghc-title-against-kenoh-at-noah"
-description: "Tetsuya Naito has his next GHC Heavyweight Championship defense lined up following his successful defense against OZAWA at Pro Wrestling NOAH Wrestle…"
+description: "Tetsuya Naito has his next GHC Heavyweight Championship defense lined up following his successful defense against OZAWA at Pro Wrestling NOAH Wrestle Odyssey."
 federation: INDIE
 date: 2026-10-26T11:48:15.000Z
 source_id: 335791

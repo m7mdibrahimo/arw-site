@@ -1,7 +1,7 @@
 ---
 title: "Independent Wrestler Jadis Quinn Claims They Were Jumped by Group"
 slug: "independent-wrestler-jadis-quinn-claims-they-were-jumped-by-group"
-description: "Independent wrestler Jadis Quinn claims they were attacked by four people at a bar in Hagerstown following an ACW show on Friday night. Quinn stated that…"
+description: "Independent wrestler Jadis Quinn claims they were attacked by four people at a bar in Hagerstown following an ACW show on Friday night."
 federation: INDIE
 date: 2026-10-25T14:48:10.000Z
 source_id: 802259553

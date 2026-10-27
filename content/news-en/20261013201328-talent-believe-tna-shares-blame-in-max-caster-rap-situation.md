@@ -1,7 +1,7 @@
 ---
 title: "Talent Believe TNA Shares Blame in Max Caster Rap Situation"
 slug: "talent-believe-tna-shares-blame-in-max-caster-rap-situation"
-description: "Some talent feel TNA should take some blame regarding the Max Caster situation at TNA Bound for Glory, according to Fightful Select. Sources indicated that…"
+description: "Some talent feel TNA should take some blame regarding the Max Caster situation at TNA Bound for Glory, according to Fightful Select."
 federation: TNA
 date: 2026-10-13T17:13:28.000Z
 source_id: 333718

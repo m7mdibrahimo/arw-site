@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Calls Out Wrestling Social Media for Creating Fake Controversies"
 slug: "cody-rhodes-calls-out-wrestling-social-media-for-creating-fake-controversies"
-description: "WWE star Cody Rhodes recently opened up about his frustrations with wrestling social media during an interview with Chris Van Vliet, explaining how online…"
+description: "WWE star Cody Rhodes recently opened up about his frustrations with wrestling social media during an interview with Chris Van Vliet."
 federation: WWE
 date: 2026-10-22T12:09:28.000Z
 source_id: 802258455

@@ -1,7 +1,7 @@
 ---
 title: "Pro Wrestling NOAH Announces Neo Green Boys Recruitment Program and Tournament"
 slug: "pro-wrestling-noah-announces-neo-green-boys-recruitment-program-and-tournament"
-description: "Pro Wrestling NOAH has announced the launch of the Neo Green Boys recruitment program and a special rookie tournament. The audition project aims to attract…"
+description: "Pro Wrestling NOAH has announced the launch of the Neo Green Boys recruitment program and a special rookie tournament."
 federation: INDIE
 date: 2026-10-26T12:32:39.000Z
 source_id: 335800

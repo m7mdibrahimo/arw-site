@@ -1,7 +1,7 @@
 ---
 title: "TWE Chattanooga Nightmare on Dayton Blvd Results"
 slug: "twe-chattanooga-nightmare-on-dayton-blvd-results"
-description: "TWE Chattanooga hosted its TWE Nightmare On Dayton Blvd event on October 24, 2026, from Bud Higdon Arena in Red Bank, Tennessee, with a broadcast on IWTV,…"
+description: "TWE Chattanooga hosted its TWE Nightmare On Dayton Blvd event on October 24, 2026, from Bud Higdon Arena in Red Bank, Tennessee, with a broadcast on IWTV."
 federation: INDIE
 date: 2026-10-25T20:56:42.000Z
 source_id: 335726

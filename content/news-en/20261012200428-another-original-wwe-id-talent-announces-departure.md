@@ -1,7 +1,7 @@
 ---
 title: "Another Original WWE ID Talent Announces Departure"
 slug: "another-original-wwe-id-talent-announces-departure"
-description: "Another original member of the WWE ID developmental program has officially announced his departure. Sam Holloway confirmed on October 12 that his two-year…"
+description: "Another original member of the WWE ID developmental program has officially announced his departure."
 federation: WWE
 date: 2026-10-12T17:04:28.000Z
 source_id: 802254158

@@ -1,7 +1,7 @@
 ---
 title: "NWA Powerrr Results (October 17)"
 slug: "nwa-powerrr-results-october-17"
-description: "NWA aired a new episode of NWA Powerrr on October 17 on Comet TV. Colby Corino confronted Kerry Morton, demanding a rematch, but Morton insisted that…"
+description: "NWA aired a new episode of NWA Powerrr on October 17 on Comet TV. Colby Corino confronted Kerry Morton, demanding a rematch."
 federation: INDIE
 date: 2026-10-20T03:30:00.000Z
 source_id: 334743

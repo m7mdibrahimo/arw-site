@@ -1,7 +1,7 @@
 ---
 title: "Anthony Bowens Details 'I'm Gay' Segment in AEW"
 slug: "anthony-bowens-details-im-gay-segment-in-aew"
-description: "Anthony Bowens recently discussed his memorable moment on the June 23, 2023 episode of AEW Rampage, where he rejected Harley Cameron's advances by stating…"
+description: "Anthony Bowens recently discussed his memorable moment on the June 23, 2023 episode of AEW Rampage."
 federation: AEW
 date: 2026-10-17T19:30:00.000Z
 source_id: 3506326897

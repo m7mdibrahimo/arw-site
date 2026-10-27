@@ -1,7 +1,7 @@
 ---
 title: "Scotty 2 Hotty Details Origins of Too Cool Tag Team in WWE"
 slug: "scotty-2-hotty-details-origins-of-too-cool-tag-team-in-wwe"
-description: "Scott Garland, known as Scotty 2 Hotty, recently discussed the origins of his classic WWE Attitude Era tag team Too Cool during an appearance on \"Insight…"
+description: "Scott Garland, known as Scotty 2 Hotty, recently discussed the origins of his classic WWE Attitude Era tag team Too Cool during an appearance on \"Insight."
 federation: WWE
 date: 2026-10-24T15:30:00.000Z
 source_id: 1201730005

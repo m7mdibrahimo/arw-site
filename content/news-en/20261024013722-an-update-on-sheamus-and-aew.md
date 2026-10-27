@@ -1,7 +1,7 @@
 ---
 title: "An Update on Sheamus and AEW"
 slug: "an-update-on-sheamus-and-aew"
-description: "According to Fightful Select, there is no immediate urgency to bring Sheamus into AEW. However, top stars like Claudio Castagnoli and Adam Copeland have…"
+description: "According to Fightful Select, there is no immediate urgency to bring Sheamus into AEW."
 federation: AEW
 date: 2026-10-23T22:37:22.000Z
 source_id: 335328

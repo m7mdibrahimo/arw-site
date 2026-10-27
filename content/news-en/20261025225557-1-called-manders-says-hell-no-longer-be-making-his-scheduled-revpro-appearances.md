@@ -1,7 +1,7 @@
 ---
 title: "1 Called Manders Says He'll No Longer Be Making His Scheduled RevPro Appearances Due to Injury"
 slug: "1-called-manders-says-hell-no-longer-be-making-his-scheduled-revpro-appearances"
-description: "1 Called Manders has canceled his scheduled RevPro appearances due to an injury. According to the wrestler, he suffered an injury while competing in a…"
+description: "1 Called Manders has canceled his scheduled RevPro appearances due to an injury."
 federation: INDIE
 date: 2026-10-25T19:55:57.000Z
 source_id: 335718

@@ -1,7 +1,7 @@
 ---
 title: "Santino Marella Re-Signs With TNA Wrestling"
 slug: "santino-marella-re-signs-with-tna-wrestling"
-description: "Santino Marella has officially signed a one-year contract extension with TNA Wrestling. Speaking on The Johnny I Pro Show, the Director of Authority…"
+description: "Santino Marella has officially signed a one-year contract extension with TNA Wrestling."
 federation: TNA
 date: 2026-10-20T15:20:45.000Z
 source_id: 802257807

@@ -1,7 +1,7 @@
 ---
 title: "John Cena Addresses People Who Judge Him for Not Wanting Kids"
 slug: "john-cena-addresses-people-who-judge-him-for-not-wanting-kids"
-description: "John Cena recently opened up about his decision not to have children, addressing the criticism he faces for that choice. In a conversation with Trevor…"
+description: "John Cena recently opened up about his decision not to have children, addressing the criticism he faces for that choice."
 federation: WWE
 date: 2026-10-08T21:51:03.000Z
 source_id: 802252556

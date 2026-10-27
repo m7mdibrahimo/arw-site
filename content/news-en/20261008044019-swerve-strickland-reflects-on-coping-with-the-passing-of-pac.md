@@ -1,7 +1,7 @@
 ---
 title: "Swerve Strickland Reflects on Coping With the Passing of Pac"
 slug: "swerve-strickland-reflects-on-coping-with-the-passing-of-pac"
-description: "AEW World Trios Champion Swerve Strickland recently discussed how he and the AEW locker room have been processing the tragic passing of Pac. Speaking with…"
+description: "AEW World Trios Champion Swerve Strickland recently discussed how he and the AEW locker room have been processing the tragic passing of Pac."
 federation: AEW
 date: 2026-10-08T01:40:19.000Z
 source_id: 1594059234

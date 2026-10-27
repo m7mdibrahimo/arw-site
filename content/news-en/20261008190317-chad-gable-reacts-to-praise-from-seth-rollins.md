@@ -1,7 +1,7 @@
 ---
 title: "Chad Gable Reacts to Praise From Seth Rollins"
 slug: "chad-gable-reacts-to-praise-from-seth-rollins"
-description: "WWE Intercontinental Champion Chad Gable recently shared his emotional reaction to high praise from Seth Rollins, who called watching Gable grow into one…"
+description: "WWE Intercontinental Champion Chad Gable recently shared his emotional reaction to high praise from Seth Rollins."
 federation: WWE
 date: 2026-10-08T16:03:17.000Z
 source_id: 332749

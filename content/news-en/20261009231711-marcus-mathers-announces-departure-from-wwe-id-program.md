@@ -1,7 +1,7 @@
 ---
 title: "Marcus Mathers Announces Departure From WWE ID Program"
 slug: "marcus-mathers-announces-departure-from-wwe-id-program"
-description: "Marcus Mathers has announced his departure from the WWE ID program. Mathers, who was among the original talents signed when the program launched in October…"
+description: "Marcus Mathers has announced his departure from the WWE ID program. Mathers."
 federation: WWE
 date: 2026-10-09T20:17:11.000Z
 source_id: 332913

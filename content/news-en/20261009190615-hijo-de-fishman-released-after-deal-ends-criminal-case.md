@@ -1,7 +1,7 @@
 ---
 title: "Hijo de Fishman Released After Deal Ends Criminal Case"
 slug: "hijo-de-fishman-released-after-deal-ends-criminal-case"
-description: "According to Ringside News, Hijo de Fishman has been freed from custody following an agreement with the family of referee Gerardo Germán Pineda, also known…"
+description: "According to Ringside News, Hijo de Fishman has been freed from custody following an agreement with the family of referee Gerardo Germán Pineda."
 federation: INDIE
 date: 2026-10-09T16:06:15.000Z
 source_id: 802252772

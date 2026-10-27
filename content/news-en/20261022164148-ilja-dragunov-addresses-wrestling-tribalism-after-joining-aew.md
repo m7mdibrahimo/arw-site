@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Addresses Wrestling Tribalism After Joining AEW"
 slug: "ilja-dragunov-addresses-wrestling-tribalism-after-joining-aew"
-description: "Ilja Dragunov recently addressed the tribalism among wrestling fans following his move to AEW. In an interview with Jon Alba on The TakeDown on SI,…"
+description: "Ilja Dragunov recently addressed the tribalism among wrestling fans following his move to AEW."
 federation: AEW
 date: 2026-10-22T13:41:48.000Z
 source_id: 802258495

@@ -1,7 +1,7 @@
 ---
 title: "John Cena Discusses a Potential Appearance in GTA 6"
 slug: "john-cena-discusses-a-potential-appearance-in-gta-6"
-description: "John Cena recently discussed what a potential appearance for him in GTA 6 would look like. Grand Theft Auto 6 is set to release next month after two…"
+description: "John Cena recently discussed what a potential appearance for him in GTA 6 would look like."
 federation: WWE
 date: 2026-10-13T12:18:14.000Z
 source_id: 333658

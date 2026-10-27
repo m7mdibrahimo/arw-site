@@ -1,7 +1,7 @@
 ---
 title: "Je'Von Evans Explains Why He Didn't Like Doing Promos on the Indie Scene"
 slug: "jevon-evans-explains-why-he-didnt-like-doing-promos-on-the-indie-scene"
-description: "Je'Von Evans explained why he avoided doing promos during his time on the independent circuit before joining WWE. Speaking on the No Contest Wrestling…"
+description: "Je'Von Evans explained why he avoided doing promos during his time on the independent circuit before joining WWE."
 federation: WWE
 date: 2026-10-08T13:59:00.000Z
 source_id: 332731

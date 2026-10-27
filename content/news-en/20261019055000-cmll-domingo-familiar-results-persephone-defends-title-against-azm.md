@@ -1,7 +1,7 @@
 ---
 title: "CMLL Domingo Familiar Results: Persephone Defends Title Against AZM"
 slug: "cmll-domingo-familiar-results-persephone-defends-title-against-azm"
-description: "Consejo Mundial de Lucha Libre held CMLL Domingo Familiar on October 18, 2026, at Arena México in Mexico City, Mexico. In the main event, Persephone…"
+description: "Consejo Mundial de Lucha Libre held CMLL Domingo Familiar on October 18, 2026, at Arena México in Mexico City, Mexico."
 federation: INDIE
 date: 2026-10-19T02:50:00.000Z
 source_id: 334622

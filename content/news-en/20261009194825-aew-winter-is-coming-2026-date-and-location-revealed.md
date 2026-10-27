@@ -1,7 +1,7 @@
 ---
 title: "AEW Winter Is Coming 2026 Date and Location Revealed"
 slug: "aew-winter-is-coming-2026-date-and-location-revealed"
-description: "AEW has officially scheduled the 2026 edition of Winter Is Coming for Wednesday, December 9, at Arena Monterrey in Monterrey, Mexico. The event will…"
+description: "AEW has officially scheduled the 2026 edition of Winter Is Coming for Wednesday, December 9, at Arena Monterrey in Monterrey, Mexico."
 federation: AEW
 date: 2026-10-09T16:48:25.000Z
 source_id: 802252790

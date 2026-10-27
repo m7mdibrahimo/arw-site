@@ -1,7 +1,7 @@
 ---
 title: "Richard Holliday Takes Offense to Claims Independent Wrestling Has No Stars"
 slug: "richard-holliday-takes-offense-to-claims-independent-wrestling-has-no-stars"
-description: "Richard Holliday has made it clear that he takes personal offense to claims that the independent wrestling scene lacks true stars, pointing to his own…"
+description: "Richard Holliday has made it clear that he takes personal offense to claims that the independent wrestling scene lacks true stars."
 federation: INDIE
 date: 2026-10-17T19:15:52.000Z
 source_id: 802256300

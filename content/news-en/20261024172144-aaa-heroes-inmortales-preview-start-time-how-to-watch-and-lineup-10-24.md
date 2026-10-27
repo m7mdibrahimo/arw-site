@@ -1,7 +1,7 @@
 ---
 title: "AAA Heroes Inmortales Preview, Start Time, How to Watch, and Lineup (10/24)"
 slug: "aaa-heroes-inmortales-preview-start-time-how-to-watch-and-lineup-10-24"
-description: "Lucha Libre AAA presents AAA Heroes Inmortales tonight, October 24, 2026, live from Gimnasio Olímpico Juan de la Barrera in Mexico City, Mexico. The event…"
+description: "Lucha Libre AAA presents AAA Heroes Inmortales tonight, October 24, 2026, live from Gimnasio Olímpico Juan de la Barrera in Mexico City, Mexico."
 federation: INDIE
 date: 2026-10-24T14:21:44.000Z
 source_id: 335435

@@ -1,7 +1,7 @@
 ---
 title: "John Cena Willing to Let Another WWE Star Use His Entrance Music"
 slug: "john-cena-willing-to-let-another-wwe-star-use-his-entrance-music"
-description: "John Cena recently reflected on his retirement from in-ring competition, admitting that he thinks about wrestling every day and that his body could no…"
+description: "John Cena recently reflected on his retirement from in-ring competition."
 federation: WWE
 date: 2026-10-14T14:02:31.000Z
 source_id: 802254987

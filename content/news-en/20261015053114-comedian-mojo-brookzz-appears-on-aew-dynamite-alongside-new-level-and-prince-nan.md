@@ -1,7 +1,7 @@
 ---
 title: "Comedian Mojo Brookzz Appears on AEW Dynamite Alongside New Level and Prince Nana"
 slug: "comedian-mojo-brookzz-appears-on-aew-dynamite-alongside-new-level-and-prince-nan"
-description: "During the October 14 broadcast of AEW Dynamite and Collision from the Wolstein Center in Cleveland, Ohio, comedian Mojo Brookzz appeared on television.…"
+description: "During the October 14 broadcast of AEW Dynamite and Collision from the Wolstein Center in Cleveland, Ohio, comedian Mojo Brookzz appeared on television."
 federation: AEW
 date: 2026-10-15T02:31:14.000Z
 source_id: 333973

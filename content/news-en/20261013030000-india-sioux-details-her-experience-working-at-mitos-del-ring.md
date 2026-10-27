@@ -1,7 +1,7 @@
 ---
 title: "India Sioux Details Her Experience Working at Mitos del Ring"
 slug: "india-sioux-details-her-experience-working-at-mitos-del-ring"
-description: "India Sioux has shared her experience working on the CMLL project Mitos del Ring, which blended Mesoamerican culture with Mexican wrestling. Speaking in an…"
+description: "India Sioux has shared her experience working on the CMLL project Mitos del Ring, which blended Mesoamerican culture with Mexican wrestling."
 federation: INDIE
 date: 2026-10-13T00:00:00.000Z
 source_id: 333422

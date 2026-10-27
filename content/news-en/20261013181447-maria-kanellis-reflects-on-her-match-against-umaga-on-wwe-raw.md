@@ -1,7 +1,7 @@
 ---
 title: "Maria Kanellis Reflects on Her Match Against Umaga on WWE Raw"
 slug: "maria-kanellis-reflects-on-her-match-against-umaga-on-wwe-raw"
-description: "Maria Kanellis recently discussed her wrestling career during an appearance on Insight with Chris Van Vliet. She recalled a specific singles match from…"
+description: "Maria Kanellis recently discussed her wrestling career during an appearance on Insight with Chris Van Vliet."
 federation: WWE
 date: 2026-10-13T15:14:47.000Z
 source_id: 333700

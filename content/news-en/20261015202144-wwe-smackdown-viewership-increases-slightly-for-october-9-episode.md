@@ -1,7 +1,7 @@
 ---
 title: "WWE SmackDown Viewership Increases Slightly for October 9 Episode"
 slug: "wwe-smackdown-viewership-increases-slightly-for-october-9-episode"
-description: "The audience figures for the October 9 episode of WWE SmackDown on USA Network showed a slight increase compared to the previous week. The show drew…"
+description: "The audience figures for the October 9 episode of WWE SmackDown on USA Network showed a slight increase compared to the previous week."
 federation: WWE
 date: 2026-10-15T17:21:44.000Z
 source_id: 802255451

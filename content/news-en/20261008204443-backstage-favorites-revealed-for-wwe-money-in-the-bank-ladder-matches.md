@@ -1,7 +1,7 @@
 ---
 title: "Backstage Favorites Revealed for WWE Money in the Bank Ladder Matches"
 slug: "backstage-favorites-revealed-for-wwe-money-in-the-bank-ladder-matches"
-description: "Top candidates have emerged within WWE creative to win the upcoming Men's and Women's Money in the Bank ladder matches in New Orleans. Reports indicate…"
+description: "Top candidates have emerged within WWE creative to win the upcoming Men's and Women's Money in the Bank ladder matches in New Orleans."
 federation: WWE
 date: 2026-10-08T17:44:43.000Z
 source_id: 1704336800

@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov to Face Mike Bailey on 10/21 AEW Dynamite"
 slug: "ilja-dragunov-to-face-mike-bailey-on-10-21-aew-dynamite"
-description: "Ilja Dragunov has learned who his opponent will be for his upcoming in-ring debut in AEW. Tony Khan announced that Dragunov will step into the ring against…"
+description: "Ilja Dragunov has learned who his opponent will be for his upcoming in-ring debut in AEW."
 federation: AEW
 date: 2026-10-20T23:53:25.000Z
 source_id: 334919

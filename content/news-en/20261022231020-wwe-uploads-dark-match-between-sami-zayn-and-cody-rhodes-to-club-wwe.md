@@ -1,7 +1,7 @@
 ---
 title: "WWE Uploads Dark Match Between Sami Zayn and Cody Rhodes to Club WWE"
 slug: "wwe-uploads-dark-match-between-sami-zayn-and-cody-rhodes-to-club-wwe"
-description: "Following the conclusion of Monday's WWE Raw in San Diego, California, the promotion hosted a special dark match featuring Undisputed WWE Champion Sami…"
+description: "Following the conclusion of Monday's WWE Raw in San Diego, California, the promotion hosted a special dark match featuring Undisputed WWE Champion Sami Zayn."
 federation: WWE
 date: 2026-10-22T20:10:20.000Z
 source_id: 1712614517

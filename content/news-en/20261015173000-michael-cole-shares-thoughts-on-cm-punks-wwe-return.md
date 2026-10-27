@@ -1,7 +1,7 @@
 ---
 title: "Michael Cole Shares Thoughts on CM Punk's WWE Return"
 slug: "michael-cole-shares-thoughts-on-cm-punks-wwe-return"
-description: "Veteran WWE commentator Michael Cole recently discussed CM Punk's return to the company, noting that he welcomed the star with open arms despite losing…"
+description: "Veteran WWE commentator Michael Cole recently discussed CM Punk's return to the company."
 federation: WWE
 date: 2026-10-15T14:30:00.000Z
 source_id: 3593274844

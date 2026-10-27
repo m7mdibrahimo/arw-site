@@ -1,7 +1,7 @@
 ---
 title: "AJPW Star Xyon Returns to Rugby on October 17th"
 slug: "ajpw-star-xyon-returns-to-rugby-on-october-17th"
-description: "Former All Japan Pro Wrestling World Tag Team Champion Xyon is heading back to the rugby field for an exhibition match in Wales on October 17th at The Wern…"
+description: "Former All Japan Pro Wrestling World Tag Team Champion Xyon is heading back to the rugby field for an exhibition match in Wales on October 17th at The Wern."
 federation: INDIE
 date: 2026-10-13T12:06:15.000Z
 source_id: 333666

@@ -1,7 +1,7 @@
 ---
 title: "Nic Nemeth Reveals WWE Official Asked Him to Stop Selling So Well"
 slug: "nic-nemeth-reveals-wwe-official-asked-him-to-stop-selling-so-well"
-description: "Nic Nemeth recently discussed his long-standing reputation for being one of the best sellers in professional wrestling. During an interview, Nemeth…"
+description: "Nic Nemeth recently discussed his long-standing reputation for being one of the best sellers in professional wrestling."
 federation: WWE
 date: 2026-10-10T16:00:00.000Z
 source_id: 332291

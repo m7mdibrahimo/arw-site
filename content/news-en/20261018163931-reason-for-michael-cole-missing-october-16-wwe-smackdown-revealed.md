@@ -1,7 +1,7 @@
 ---
 title: "Reason for Michael Cole Missing October 16 WWE SmackDown Revealed"
 slug: "reason-for-michael-cole-missing-october-16-wwe-smackdown-revealed"
-description: "Michael Cole was missing from the October 16 episode of WWE SmackDown at the Golden 1 Center in Sacramento, California. According to PWInsider, Cole was…"
+description: "Michael Cole was missing from the October 16 episode of WWE SmackDown at the Golden 1 Center in Sacramento, California."
 federation: WWE
 date: 2026-10-18T13:39:31.000Z
 source_id: 802256876

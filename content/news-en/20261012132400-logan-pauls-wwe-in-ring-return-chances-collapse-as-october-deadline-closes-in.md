@@ -1,7 +1,7 @@
 ---
 title: "Logan Paul's WWE In-Ring Return Chances Collapse as October Deadline Closes In"
 slug: "logan-pauls-wwe-in-ring-return-chances-collapse-as-october-deadline-closes-in"
-description: "Logan Paul's chances of returning to a WWE ring before the end of October have dropped significantly to just five percent. Paul has been recovering from a…"
+description: "Logan Paul's chances of returning to a WWE ring before the end of October have dropped significantly to just five percent."
 federation: WWE
 date: 2026-10-12T10:24:00.000Z
 source_id: 802252755

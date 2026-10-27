@@ -1,7 +1,7 @@
 ---
 title: "Key Executive Who Helped Put Together WWE's Netflix Deal Leaving Streaming Giant"
 slug: "key-executive-who-helped-put-together-wwes-netflix-deal-leaving-streaming-giant"
-description: "Netflix chief content officer Bela Bajaria is leaving the streaming giant after holding the position since 2023. Bajaria played a key role in the…"
+description: "Netflix chief content officer Bela Bajaria is leaving the streaming giant after holding the position since 2023."
 federation: WWE
 date: 2026-10-16T15:20:44.000Z
 source_id: 802255685

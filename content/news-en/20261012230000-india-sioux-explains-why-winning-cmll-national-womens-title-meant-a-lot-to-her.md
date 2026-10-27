@@ -1,7 +1,7 @@
 ---
 title: "India Sioux Explains Why Winning CMLL National Women's Title Meant a Lot to Her"
 slug: "india-sioux-explains-why-winning-cmll-national-womens-title-meant-a-lot-to-her"
-description: "India Sioux has shared her thoughts on the significance of winning the CMLL National Women's Championship. Sioux won the title in March 2025 by defeating…"
+description: "India Sioux has shared her thoughts on the significance of winning the CMLL National Women's Championship."
 federation: INDIE
 date: 2026-10-12T20:00:00.000Z
 source_id: 333418

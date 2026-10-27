@@ -1,7 +1,7 @@
 ---
 title: "Jay White Returns at AEW WrestleDream"
 slug: "jay-white-returns-at-aew-wrestledream"
-description: "Jay White has made his unexpected return to television at AEW WrestleDream Tailgate Brawl. White teamed up with The Gunns and The Conglomeration to face…"
+description: "Jay White has made his unexpected return to television at AEW WrestleDream Tailgate Brawl."
 federation: AEW
 date: 2026-10-17T23:41:35.000Z
 source_id: 334419

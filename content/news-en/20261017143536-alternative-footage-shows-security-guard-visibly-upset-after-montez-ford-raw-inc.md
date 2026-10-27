@@ -1,7 +1,7 @@
 ---
 title: "Alternative Footage Shows Security Guard Visibly Upset After Montez Ford RAW Incident"
 slug: "alternative-footage-shows-security-guard-visibly-upset-after-montez-ford-raw-inc"
-description: "Alternative footage of the Montez Ford interaction at the center of a lawsuit against WWE has surfaced online, highlighting the security guard's direct…"
+description: "Alternative footage of the Montez Ford interaction at the center of a lawsuit against WWE has surfaced online."
 federation: WWE
 date: 2026-10-17T11:35:36.000Z
 source_id: 802256164

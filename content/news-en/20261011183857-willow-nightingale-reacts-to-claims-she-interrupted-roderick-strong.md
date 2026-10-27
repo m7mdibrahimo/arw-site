@@ -1,7 +1,7 @@
 ---
 title: "Willow Nightingale Reacts to Claims She Interrupted Roderick Strong"
 slug: "willow-nightingale-reacts-to-claims-she-interrupted-roderick-strong"
-description: "Willow Nightingale responded to claims that she interrupted Roderick Strong during the AEW Grand Slam France Collision event. During the show, the…"
+description: "Willow Nightingale responded to claims that she interrupted Roderick Strong during the AEW Grand Slam France Collision event."
 federation: AEW
 date: 2026-10-11T15:38:57.000Z
 source_id: 333253

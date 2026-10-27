@@ -1,7 +1,7 @@
 ---
 title: "AAA Heroes Inmortales Results: El Grande Americano Defeats Dominik Mysterio"
 slug: "aaa-heroes-inmortales-results-el-grande-americano-defeats-dominik-mysterio"
-description: "AAA held its special Heroes Inmortales 2026 event on October 24 at the Gimnasio Olímpico Juan de la Barrera in Mexico City. The event featured four…"
+description: "AAA held its special Heroes Inmortales 2026 event on October 24 at the Gimnasio Olímpico Juan de la Barrera in Mexico City."
 federation: INDIE
 date: 2026-10-25T02:24:48.000Z
 source_id: 802259241

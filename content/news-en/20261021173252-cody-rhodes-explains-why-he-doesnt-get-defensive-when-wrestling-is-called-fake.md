@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Explains Why He Doesn’t Get Defensive When Wrestling Is Called “Fake”"
 slug: "cody-rhodes-explains-why-he-doesnt-get-defensive-when-wrestling-is-called-fake"
-description: "Cody Rhodes has explained why he chooses not to get defensive when people call professional wrestling \"fake.\" During an appearance on Andrew Schulz's…"
+description: "Cody Rhodes has explained why he chooses not to get defensive when people call professional wrestling \"fake.\" During an appearance on Andrew Schulz's."
 federation: WWE
 date: 2026-10-21T14:32:52.000Z
 source_id: 802258180

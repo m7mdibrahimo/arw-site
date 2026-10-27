@@ -1,7 +1,7 @@
 ---
 title: "Alexa Bliss Reveals Why Ryan Cabrera Told Her Never to Cook Again"
 slug: "alexa-bliss-reveals-why-ryan-cabrera-told-her-never-to-cook-again"
-description: "Alexa Bliss revealed that her husband Ryan Cabrera once told her never to cook again after a disastrous breakfast attempt early in their relationship.…"
+description: "Alexa Bliss revealed that her husband Ryan Cabrera once told her never to cook again after a disastrous breakfast attempt early in their relationship."
 federation: WWE
 date: 2026-10-26T15:14:16.000Z
 source_id: 802259834

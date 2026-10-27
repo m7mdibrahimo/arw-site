@@ -1,7 +1,7 @@
 ---
 title: "Steve Maclin Says He Started Tearing Up When He Got Told He Would Be Working With Adam Copeland"
 slug: "steve-maclin-says-he-started-tearing-up-when-he-got-told-he-would-be-working-wit"
-description: "Steve Maclin recently spoke about finding out that he would be working with Adam Copeland in Maple Leaf Pro. Speaking during a Maple Leaf Pro YouTube…"
+description: "Steve Maclin recently spoke about finding out that he would be working with Adam Copeland in Maple Leaf Pro."
 federation: INDIE
 date: 2026-10-20T13:21:18.000Z
 source_id: 334798

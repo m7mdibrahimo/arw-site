@@ -1,7 +1,7 @@
 ---
 title: "Andrade Wants to Become Andrade Two Belts"
 slug: "andrade-wants-to-become-andrade-two-belts"
-description: "AEW National Champion Andrade is looking to add the promotion's top prize to his collection and become a dual champion. During a recent appearance on Close…"
+description: "AEW National Champion Andrade is looking to add the promotion's top prize to his collection and become a dual champion."
 federation: AEW
 date: 2026-10-17T10:07:33.000Z
 source_id: 802256144

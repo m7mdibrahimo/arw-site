@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Explains Why He and CM Punk Had Matching Knicks Gear"
 slug: "cody-rhodes-explains-why-he-and-cm-punk-had-matching-knicks-gear"
-description: "Cody Rhodes recently explained the reasoning behind his and CM Punk's matching Knicks gear during their tag team match at Saturday Night's Main Event…"
+description: "Cody Rhodes recently explained the reasoning behind his and CM Punk's matching Knicks gear during their tag team match at Saturday Night's Main Event earlier."
 federation: WWE
 date: 2026-10-12T16:57:40.000Z
 source_id: 333516

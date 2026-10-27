@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns on Working With Andrew Koji in 'Street Fighter': It Felt Like Being in WWE"
 slug: "roman-reigns-on-working-with-andrew-koji-in-street-fighter-it-felt-like-being-in"
-description: "Roman Reigns recently discussed his experience working with Andrew Koji on the set of the upcoming 'Street Fighter' film. Reigns, who portrays Akuma,…"
+description: "Roman Reigns recently discussed his experience working with Andrew Koji on the set of the upcoming 'Street Fighter' film."
 federation: WWE
 date: 2026-10-13T14:00:00.000Z
 source_id: 333571

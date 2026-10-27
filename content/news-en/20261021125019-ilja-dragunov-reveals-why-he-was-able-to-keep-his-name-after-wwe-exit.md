@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Reveals Why He Was Able to Keep His Name After WWE Exit"
 slug: "ilja-dragunov-reveals-why-he-was-able-to-keep-his-name-after-wwe-exit"
-description: "Ilja Dragunov explained why he was able to keep his name after leaving WWE. Unlike many wrestlers who must rebrand, Dragunov kept his ring name because he…"
+description: "Ilja Dragunov explained why he was able to keep his name after leaving WWE."
 federation: WWE
 date: 2026-10-21T09:50:19.000Z
 source_id: 802258145

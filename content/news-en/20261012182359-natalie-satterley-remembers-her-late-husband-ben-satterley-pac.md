@@ -1,7 +1,7 @@
 ---
 title: "Natalie Satterley Remembers Her Late Husband Ben Satterley (PAC)"
 slug: "natalie-satterley-remembers-her-late-husband-ben-satterley-pac"
-description: "Natalie Satterley has shared a heartfelt tribute to her late husband, Ben Satterley, known to wrestling fans as PAC, following his sudden passing which was…"
+description: "Natalie Satterley has shared a heartfelt tribute to her late husband, Ben Satterley, known to wrestling fans as PAC."
 federation: AEW
 date: 2026-10-12T15:23:59.000Z
 source_id: 333505

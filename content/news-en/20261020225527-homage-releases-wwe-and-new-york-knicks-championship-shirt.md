@@ -1,7 +1,7 @@
 ---
 title: "HOMAGE Releases WWE and New York Knicks Championship Shirt"
 slug: "homage-releases-wwe-and-new-york-knicks-championship-shirt"
-description: "The partnership between WWE and the New York Knicks continues with a new apparel release. The team is raising its 2026 NBA Championship banner at Madison…"
+description: "The partnership between WWE and the New York Knicks continues with a new apparel release."
 federation: WWE
 date: 2026-10-20T19:55:27.000Z
 source_id: 334873

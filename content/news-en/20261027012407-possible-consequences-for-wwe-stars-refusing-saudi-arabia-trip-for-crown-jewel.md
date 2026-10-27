@@ -1,7 +1,7 @@
 ---
 title: "Possible Consequences for WWE Stars Refusing Saudi Arabia Trip for Crown Jewel"
 slug: "possible-consequences-for-wwe-stars-refusing-saudi-arabia-trip-for-crown-jewel"
-description: "WWE talent can technically decline the trip to Saudi Arabia for Crown Jewel, but there may be professional repercussions for those who choose to stay home.…"
+description: "WWE talent can technically decline the trip to Saudi Arabia for Crown Jewel, but there may be professional repercussions for those who choose to stay home."
 federation: WWE
 date: 2026-10-26T22:24:07.000Z
 source_id: 802259936

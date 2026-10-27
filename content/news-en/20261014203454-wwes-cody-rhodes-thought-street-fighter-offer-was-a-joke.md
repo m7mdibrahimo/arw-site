@@ -1,7 +1,7 @@
 ---
 title: "WWE's Cody Rhodes Thought Street Fighter Offer Was a Joke"
 slug: "wwes-cody-rhodes-thought-street-fighter-offer-was-a-joke"
-description: "WWE star Cody Rhodes revealed that he initially thought the offer to star as Guile in the upcoming Street Fighter film adaptation was a joke. Rhodes shared…"
+description: "WWE star Cody Rhodes revealed that he initially thought the offer to star as Guile in the upcoming Street Fighter film adaptation was a joke."
 federation: WWE
 date: 2026-10-14T17:34:54.000Z
 source_id: 4469553007

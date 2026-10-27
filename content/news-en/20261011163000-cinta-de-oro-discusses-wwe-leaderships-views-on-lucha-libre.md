@@ -1,7 +1,7 @@
 ---
 title: "Cinta De Oro Discusses WWE Leadership's Views on Lucha Libre"
 slug: "cinta-de-oro-discusses-wwe-leaderships-views-on-lucha-libre"
-description: "Cinta de Oro, formerly known as Sin Cara in WWE, recently discussed how WWE leadership viewed lucha libre during his time with the company under both Vince…"
+description: "Cinta de Oro, formerly known as Sin Cara in WWE, recently discussed how WWE leadership viewed lucha libre during his time with the company under both Vince."
 federation: WWE
 date: 2026-10-11T13:30:00.000Z
 source_id: 4230462323

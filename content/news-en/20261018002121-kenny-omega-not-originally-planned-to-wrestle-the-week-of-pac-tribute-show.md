@@ -1,7 +1,7 @@
 ---
 title: "Kenny Omega Not Originally Planned to Wrestle the Week of PAC Tribute Show"
 slug: "kenny-omega-not-originally-planned-to-wrestle-the-week-of-pac-tribute-show"
-description: "According to Fightful Select, Kenny Omega was not originally scheduled to wrestle during the week of the PAC tribute show, but he decided to compete on the…"
+description: "According to Fightful Select, Kenny Omega was not originally scheduled to wrestle during the week of the PAC tribute show."
 federation: AEW
 date: 2026-10-17T21:21:21.000Z
 source_id: 334390

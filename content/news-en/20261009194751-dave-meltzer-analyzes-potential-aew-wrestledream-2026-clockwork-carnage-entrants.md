@@ -1,7 +1,7 @@
 ---
 title: "Dave Meltzer Analyzes Potential AEW WrestleDream 2026 Clockwork Carnage Entrants"
 slug: "dave-meltzer-analyzes-potential-aew-wrestledream-2026-clockwork-carnage-entrants"
-description: "AEW is set to debut a new match concept called Clockwork Carnage at the upcoming AEW WrestleDream 2026 event. The match, created by Will Ospreay, features…"
+description: "AEW is set to debut a new match concept called Clockwork Carnage at the upcoming AEW WrestleDream 2026 event."
 federation: AEW
 date: 2026-10-09T16:47:51.000Z
 source_id: 3496490927

@@ -1,7 +1,7 @@
 ---
 title: "Tommaso Ciampa: I'm a Unicorn in AEW in the Sense That I'm Like This Chameleon"
 slug: "tommaso-ciampa-im-a-unicorn-in-aew-in-the-sense-that-im-like-this-chameleon"
-description: "Tommaso Ciampa discussed his ability to transition between being a babyface and a heel in a short amount of time during a recent interview with The…"
+description: "Tommaso Ciampa discussed his ability to transition between being a babyface and a heel in a short amount of time during a recent interview with The Sportster."
 federation: AEW
 date: 2026-10-17T14:41:58.000Z
 source_id: 334318

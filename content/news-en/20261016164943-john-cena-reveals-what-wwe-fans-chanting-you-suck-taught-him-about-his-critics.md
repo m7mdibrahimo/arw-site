@@ -1,7 +1,7 @@
 ---
 title: "John Cena Reveals What WWE Fans Chanting You Suck Taught Him About His Critics"
 slug: "john-cena-reveals-what-wwe-fans-chanting-you-suck-taught-him-about-his-critics"
-description: "John Cena reflected on his years as a polarizing WWE star and what he learned from hostile crowds. During an appearance on TODAY’s Making Space with Hoda…"
+description: "John Cena reflected on his years as a polarizing WWE star and what he learned from hostile crowds."
 federation: WWE
 date: 2026-10-16T13:49:43.000Z
 source_id: 802255611

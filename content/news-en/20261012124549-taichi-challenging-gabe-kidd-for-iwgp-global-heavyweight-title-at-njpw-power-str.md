@@ -1,7 +1,7 @@
 ---
 title: "Taichi Challenging Gabe Kidd for IWGP Global Heavyweight Title at NJPW Power Struggle"
 slug: "taichi-challenging-gabe-kidd-for-iwgp-global-heavyweight-title-at-njpw-power-str"
-description: "Taichi is stepping up to challenge Gabe Kidd for the IWGP Global Heavyweight Championship. At New Japan Pro-Wrestling's King of Pro-Wrestling show on…"
+description: "Taichi is stepping up to challenge Gabe Kidd for the IWGP Global Heavyweight Championship."
 federation: NJPW
 date: 2026-10-12T09:45:49.000Z
 source_id: 333414

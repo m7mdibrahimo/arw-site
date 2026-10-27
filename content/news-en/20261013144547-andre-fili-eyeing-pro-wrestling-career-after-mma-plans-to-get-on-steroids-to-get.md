@@ -1,7 +1,7 @@
 ---
 title: "Andre Fili Eyeing Pro Wrestling Career After MMA, Plans to Get on Steroids to Get Bigger"
 slug: "andre-fili-eyeing-pro-wrestling-career-after-mma-plans-to-get-on-steroids-to-get"
-description: "Andre Fili is interested in a professional wrestling career after his time in MMA comes to an end. Following his knockout victory over Kai Kamaka III in…"
+description: "Andre Fili is interested in a professional wrestling career after his time in MMA comes to an end."
 federation: MMA
 date: 2026-10-13T11:45:47.000Z
 source_id: 333661

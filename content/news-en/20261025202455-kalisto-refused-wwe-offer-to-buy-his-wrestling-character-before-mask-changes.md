@@ -1,7 +1,7 @@
 ---
 title: "Kalisto Refused WWE Offer to Buy His Wrestling Character Before Mask Changes"
 slug: "kalisto-refused-wwe-offer-to-buy-his-wrestling-character-before-mask-changes"
-description: "Kalisto chose to protect his wrestling persona rather than hand over complete control when signing with WWE. The former United States Champion revealed…"
+description: "Kalisto chose to protect his wrestling persona rather than hand over complete control when signing with WWE."
 federation: WWE
 date: 2026-10-25T17:24:55.000Z
 source_id: 802259573

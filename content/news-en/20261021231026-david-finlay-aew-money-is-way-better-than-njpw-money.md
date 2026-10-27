@@ -1,7 +1,7 @@
 ---
 title: "David Finlay: AEW Money Is Way Better Than NJPW Money"
 slug: "david-finlay-aew-money-is-way-better-than-njpw-money"
-description: "David Finlay and Clark Connors discussed their time in AEW during an appearance on What Happened When with Tony Schiavone. Finlay noted that the money in…"
+description: "David Finlay and Clark Connors discussed their time in AEW during an appearance on What Happened When with Tony Schiavone."
 federation: AEW
 date: 2026-10-21T20:10:26.000Z
 source_id: 335015

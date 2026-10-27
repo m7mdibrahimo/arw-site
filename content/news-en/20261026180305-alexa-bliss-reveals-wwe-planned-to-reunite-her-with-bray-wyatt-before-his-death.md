@@ -1,7 +1,7 @@
 ---
 title: "Alexa Bliss Reveals WWE Planned to Reunite Her With Bray Wyatt Before His Death"
 slug: "alexa-bliss-reveals-wwe-planned-to-reunite-her-with-bray-wyatt-before-his-death"
-description: "Alexa Bliss recently shared that WWE had plans to reunite her with Bray Wyatt before his tragic passing in August 2023. During an appearance on Brandi…"
+description: "Alexa Bliss recently shared that WWE had plans to reunite her with Bray Wyatt before his tragic passing in August 2023."
 federation: WWE
 date: 2026-10-26T15:03:05.000Z
 source_id: 802259828

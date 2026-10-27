@@ -1,7 +1,7 @@
 ---
 title: "Tommaso Ciampa Explains How Jumping to AEW Has Been Good for His Family"
 slug: "tommaso-ciampa-explains-how-jumping-to-aew-has-been-good-for-his-family"
-description: "Tommaso Ciampa has been with AEW for less than a year, but the \"Psycho Killer\" has made a major impact since joining the promotion in January. Beyond…"
+description: "Tommaso Ciampa has been with AEW for less than a year, but the \"Psycho Killer\" has made a major impact since joining the promotion in January."
 federation: AEW
 date: 2026-10-18T17:30:00.000Z
 source_id: 4923809545

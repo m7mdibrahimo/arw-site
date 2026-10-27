@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Wants to Star in Horror Movie, Prefers Being Fearful Protagonist"
 slug: "drew-mcintyre-wants-to-star-in-horror-movie-prefers-being-fearful-protagonist"
-description: "Drew McIntyre recently discussed his acting ambitions outside of WWE, revealing that he would love to star in a horror-based project. During an interview…"
+description: "Drew McIntyre recently discussed his acting ambitions outside of WWE, revealing that he would love to star in a horror-based project."
 federation: WWE
 date: 2026-10-24T14:28:15.000Z
 source_id: 335425

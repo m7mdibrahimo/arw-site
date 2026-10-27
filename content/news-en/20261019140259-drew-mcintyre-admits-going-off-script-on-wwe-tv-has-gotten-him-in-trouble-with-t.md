@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Admits Going Off Script on WWE TV Has Gotten Him in Trouble With Triple H"
 slug: "drew-mcintyre-admits-going-off-script-on-wwe-tv-has-gotten-him-in-trouble-with-t"
-description: "Drew McIntyre recently opened up about his creative freedom in WWE, revealing that altering his promos during live television broadcasts has sometimes…"
+description: "Drew McIntyre recently opened up about his creative freedom in WWE, revealing that altering his promos during live television broadcasts has sometimes landed."
 federation: WWE
 date: 2026-10-19T11:02:59.000Z
 source_id: 802257130

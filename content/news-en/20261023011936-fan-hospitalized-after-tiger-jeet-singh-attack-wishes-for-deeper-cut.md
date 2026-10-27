@@ -1,7 +1,7 @@
 ---
 title: "Fan Hospitalized After Tiger Jeet Singh Attack Wishes for Deeper Cut"
 slug: "fan-hospitalized-after-tiger-jeet-singh-attack-wishes-for-deeper-cut"
-description: "A wrestling fan who was struck in the head by Tiger Jeet Singh's sword at an event stated he feels no anger, describing the incident as a dream come true…"
+description: "A wrestling fan who was struck in the head by Tiger Jeet Singh's sword at an event stated he feels no anger."
 federation: INDIE
 date: 2026-10-22T22:19:36.000Z
 source_id: 802258596

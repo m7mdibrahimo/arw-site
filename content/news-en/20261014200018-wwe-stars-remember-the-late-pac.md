@@ -1,7 +1,7 @@
 ---
 title: "WWE Stars Remember the Late Pac"
 slug: "wwe-stars-remember-the-late-pac"
-description: "Following the passing of Benjamin Pac Satterley on September 27, the wrestling community united to honor him. AEW held a tribute episode on AEW Dynamite,…"
+description: "Following the passing of Benjamin Pac Satterley on September 27, the wrestling community united to honor him."
 federation: WWE
 date: 2026-10-14T17:00:18.000Z
 source_id: 5042081245

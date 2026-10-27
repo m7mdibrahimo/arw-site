@@ -1,7 +1,7 @@
 ---
 title: "Nick Jackson Recalls Vivid Dream About PAC Prior to AEW WrestleDream"
 slug: "nick-jackson-recalls-vivid-dream-about-pac-prior-to-aew-wrestledream"
-description: "Nick Jackson recently recalled a vivid dream he had about PAC prior to AEW WrestleDream and explained how he felt his presence at the event. PAC sadly…"
+description: "Nick Jackson recently recalled a vivid dream he had about PAC prior to AEW WrestleDream and explained how he felt his presence at the event."
 federation: AEW
 date: 2026-10-20T12:14:15.000Z
 source_id: 334785

@@ -1,7 +1,7 @@
 ---
 title: "IYO SKY Could Be Getting WWE Women’s Intercontinental Title Match Soon"
 slug: "iyo-sky-could-be-getting-wwe-womens-intercontinental-title-match-soon"
-description: "IYO SKY could soon challenge for the WWE Women's Intercontinental Championship after pinning Raquel Rodriguez on the October 19 episode of WWE RAW.…"
+description: "IYO SKY could soon challenge for the WWE Women's Intercontinental Championship after pinning Raquel Rodriguez on the October 19 episode of WWE RAW."
 federation: WWE
 date: 2026-10-20T10:59:18.000Z
 source_id: 802257682

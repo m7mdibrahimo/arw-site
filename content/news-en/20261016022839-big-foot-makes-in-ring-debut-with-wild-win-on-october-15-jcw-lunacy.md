@@ -1,7 +1,7 @@
 ---
 title: "Big Foot Makes In-Ring Debut With Wild Win on October 15 JCW Lunacy"
 slug: "big-foot-makes-in-ring-debut-with-wild-win-on-october-15-jcw-lunacy"
-description: "Big Foot made his official in-ring debut on the October 15 episode of JCW Lunacy, securing a victory in a chaotic tag team match. Big Foot teamed up with…"
+description: "Big Foot made his official in-ring debut on the October 15 episode of JCW Lunacy, securing a victory in a chaotic tag team match."
 federation: INDIE
 date: 2026-10-15T23:28:39.000Z
 source_id: 802255484

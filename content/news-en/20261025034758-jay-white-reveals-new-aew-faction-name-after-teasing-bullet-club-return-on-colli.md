@@ -1,7 +1,7 @@
 ---
 title: "Jay White Reveals New AEW Faction Name After Teasing Bullet Club Return on Collision"
 slug: "jay-white-reveals-new-aew-faction-name-after-teasing-bullet-club-return-on-colli"
-description: "Jay White has officially named his new AEW alliance, but not before hinting at a potential Bullet Club comeback. During the October 24, 2026, episode of…"
+description: "Jay White has officially named his new AEW alliance, but not before hinting at a potential Bullet Club comeback."
 federation: AEW
 date: 2026-10-25T00:47:58.000Z
 source_id: 802259266

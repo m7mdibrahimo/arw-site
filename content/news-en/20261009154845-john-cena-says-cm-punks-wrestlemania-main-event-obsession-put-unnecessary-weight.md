@@ -1,7 +1,7 @@
 ---
 title: "John Cena Says CM Punk's WrestleMania Main Event Obsession Put Unnecessary Weight on Him"
 slug: "john-cena-says-cm-punks-wrestlemania-main-event-obsession-put-unnecessary-weight"
-description: "John Cena believes that CM Punk's long-term obsession with headlining WrestleMania created unnecessary pressure and weight on his shoulders. During a…"
+description: "John Cena believes that CM Punk's long-term obsession with headlining WrestleMania created unnecessary pressure and weight on his shoulders."
 federation: WWE
 date: 2026-10-09T12:48:45.000Z
 source_id: 802252690

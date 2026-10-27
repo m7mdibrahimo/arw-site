@@ -1,7 +1,7 @@
 ---
 title: "Kit Wilson Details His 007-Esque Character Pitch"
 slug: "kit-wilson-details-his-007-esque-character-pitch"
-description: "Kit Wilson has shared details regarding his pitch to adopt a James Bond-inspired character. Speaking on the Battleground Podcast, Wilson discussed how he…"
+description: "Kit Wilson has shared details regarding his pitch to adopt a James Bond-inspired character."
 federation: WWE
 date: 2026-10-25T18:28:03.000Z
 source_id: 335711

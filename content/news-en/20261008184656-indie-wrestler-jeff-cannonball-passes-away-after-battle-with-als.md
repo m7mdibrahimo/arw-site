@@ -1,7 +1,7 @@
 ---
 title: "Indie Wrestler Jeff Cannonball Passes Away After Battle With ALS"
 slug: "indie-wrestler-jeff-cannonball-passes-away-after-battle-with-als"
-description: "Independent wrestler Jeff Cannonball, who competed for promotions including MLW and GCW, has passed away following a battle with ALS. Cannonball publicly…"
+description: "Independent wrestler Jeff Cannonball, who competed for promotions including MLW and GCW, has passed away following a battle with ALS."
 federation: INDIE
 date: 2026-10-08T15:46:56.000Z
 source_id: 802252429

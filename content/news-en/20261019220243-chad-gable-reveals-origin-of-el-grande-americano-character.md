@@ -1,7 +1,7 @@
 ---
 title: "Chad Gable Reveals Origin of El Grande Americano Character"
 slug: "chad-gable-reveals-origin-of-el-grande-americano-character"
-description: "During an interview on \"Insight with Chris Van Vliet,\" Chad Gable discussed the creation of his El Grande Americano persona in WWE. Gable stated that he…"
+description: "During an interview on \"Insight with Chris Van Vliet,\" Chad Gable discussed the creation of his El Grande Americano persona in WWE."
 federation: WWE
 date: 2026-10-19T19:02:43.000Z
 source_id: 3010780826

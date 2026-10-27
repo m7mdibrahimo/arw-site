@@ -1,7 +1,7 @@
 ---
 title: "AEW's Young Bucks Mourn PAC"
 slug: "aews-young-bucks-mourn-pac"
-description: "The Young Bucks have paid an emotional tribute to PAC, reflecting on their long-standing friendship that began decades before their time together in AEW.…"
+description: "The Young Bucks have paid an emotional tribute to PAC, reflecting on their long-standing friendship that began decades before their time together in AEW."
 federation: AEW
 date: 2026-10-08T14:30:00.000Z
 source_id: 2627588211

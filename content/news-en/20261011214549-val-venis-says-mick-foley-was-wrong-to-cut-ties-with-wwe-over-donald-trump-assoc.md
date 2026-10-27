@@ -1,7 +1,7 @@
 ---
 title: "Val Venis Says Mick Foley Was Wrong to Cut Ties With WWE Over Donald Trump Association"
 slug: "val-venis-says-mick-foley-was-wrong-to-cut-ties-with-wwe-over-donald-trump-assoc"
-description: "Val Venis recently shared his thoughts on Mick Foley cutting ties with WWE due to the company's association with Donald Trump. While Venis expressed his…"
+description: "Val Venis recently shared his thoughts on Mick Foley cutting ties with WWE due to the company's association with Donald Trump."
 federation: WWE
 date: 2026-10-11T18:45:49.000Z
 source_id: 802253692

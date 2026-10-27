@@ -1,7 +1,7 @@
 ---
 title: "When Carmelo Hayes Was Locked in for 946 Faction"
 slug: "when-carmelo-hayes-was-locked-in-for-946-faction"
-description: "Carmelo Hayes shocked WWE fans when he joined the 946 faction on the October 12 episode of WWE RAW. According to a report from False Finish, this alliance…"
+description: "Carmelo Hayes shocked WWE fans when he joined the 946 faction on the October 12 episode of WWE RAW."
 federation: WWE
 date: 2026-10-13T13:12:20.000Z
 source_id: 802254570

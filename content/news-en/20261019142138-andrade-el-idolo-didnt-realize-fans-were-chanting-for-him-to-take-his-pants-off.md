@@ -1,7 +1,7 @@
 ---
 title: "Andrade El Idolo Didn't Realize Fans Were Chanting for Him to Take His Pants Off at First"
 slug: "andrade-el-idolo-didnt-realize-fans-were-chanting-for-him-to-take-his-pants-off"
-description: "Andrade El Idolo revealed that he was initially confused when AEW fans chanted for him to take his pants off during matches. Speaking on Renee Paquette's…"
+description: "Andrade El Idolo revealed that he was initially confused when AEW fans chanted for him to take his pants off during matches."
 federation: AEW
 date: 2026-10-19T11:21:38.000Z
 source_id: 334651

@@ -1,7 +1,7 @@
 ---
 title: "Leon Slater Feels Like His Option C Promo at TNA Lockdown Was the Moment He Became 'The Guy' in TNA"
 slug: "leon-slater-feels-like-his-option-c-promo-at-tna-lockdown-was-the-moment-he-beca"
-description: "Leon Slater recently reflected on his pivotal Option C promo at TNA Lockdown, where he defeated Cedric Alexander in a Last Man Standing Steel Cage match to…"
+description: "Leon Slater recently reflected on his pivotal Option C promo at TNA Lockdown."
 federation: TNA
 date: 2026-10-24T18:04:35.000Z
 source_id: 335341

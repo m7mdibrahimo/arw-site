@@ -1,7 +1,7 @@
 ---
 title: "Don Callis Believes Kyle Fletcher Will Become the Greatest Wrestler in History"
 slug: "don-callis-believes-kyle-fletcher-will-become-the-greatest-wrestler-in-history"
-description: "Don Callis believes Kyle Fletcher will ultimately eclipse every prominent star he has ever managed, including Kenny Omega, Konosuke Takeshita, Will…"
+description: "Don Callis believes Kyle Fletcher will ultimately eclipse every prominent star he has ever managed, including Kenny Omega, Konosuke Takeshita, Will Ospreay."
 federation: AEW
 date: 2026-10-12T13:00:23.000Z
 source_id: 2943308106

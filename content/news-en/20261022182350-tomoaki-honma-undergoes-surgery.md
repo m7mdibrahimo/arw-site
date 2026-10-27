@@ -1,7 +1,7 @@
 ---
 title: "Tomoaki Honma Undergoes Surgery"
 slug: "tomoaki-honma-undergoes-surgery"
-description: "Tomoaki Honma has successfully undergone surgery. The 29-year wrestling veteran shared the news on social media, posting a message to his fans:"
+description: "Tomoaki Honma has successfully undergone surgery. The 29-year wrestling veteran shared the news on social media, posting a message to his fans."
 federation: INDIE
 date: 2026-10-22T15:23:50.000Z
 source_id: 335137

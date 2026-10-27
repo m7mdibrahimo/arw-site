@@ -1,7 +1,7 @@
 ---
 title: "JBL Says Former WWE CEO Vince McMahon Was Biased Against Southern Wrestling"
 slug: "jbl-says-former-wwe-ceo-vince-mcmahon-was-biased-against-southern-wrestling"
-description: "During a recent episode of Something to Wrestle, WWE Hall of Famer John Bradshaw Layfield and Conrad Thompson looked back at the 25th anniversary of The…"
+description: "During a recent episode of Something to Wrestle, WWE Hall of Famer John Bradshaw Layfield and Conrad Thompson looked back at the 25th anniversary of The."
 federation: WWE
 date: 2026-10-21T18:30:00.000Z
 source_id: 4913984061

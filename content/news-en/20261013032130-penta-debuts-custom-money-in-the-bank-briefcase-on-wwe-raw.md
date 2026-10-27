@@ -1,7 +1,7 @@
 ---
 title: "Penta Debuts Custom Money in the Bank Briefcase on WWE Raw"
 slug: "penta-debuts-custom-money-in-the-bank-briefcase-on-wwe-raw"
-description: "Penta showcased his new custom briefcase on WWE Raw following his major victory at Money in the Bank. During the October 12 episode, he revealed a…"
+description: "Penta showcased his new custom briefcase on WWE Raw following his major victory at Money in the Bank."
 federation: WWE
 date: 2026-10-13T00:21:30.000Z
 source_id: 333584

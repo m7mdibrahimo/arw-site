@@ -1,7 +1,7 @@
 ---
 title: "Maria Kanellis Credits Nigel McGuinness for Suggesting the 'Mike Kanellis' Name"
 slug: "maria-kanellis-credits-nigel-mcguinness-for-suggesting-the-mike-kanellis-name"
-description: "Maria Kanellis recently discussed her time working with her husband, Mike Bennett, on an episode of Insight with Chris Van Vliet. She revealed that Nigel…"
+description: "Maria Kanellis recently discussed her time working with her husband, Mike Bennett, on an episode of Insight with Chris Van Vliet."
 federation: WWE
 date: 2026-10-13T15:04:30.000Z
 source_id: 333696

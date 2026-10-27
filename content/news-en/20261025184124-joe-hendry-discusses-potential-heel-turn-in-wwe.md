@@ -1,7 +1,7 @@
 ---
 title: "Joe Hendry Discusses Potential Heel Turn in WWE"
 slug: "joe-hendry-discusses-potential-heel-turn-in-wwe"
-description: "Joe Hendry stated that a potential heel turn in WWE remains entirely possible, according to Fightful, noting that anything can happen in the industry. He…"
+description: "Joe Hendry stated that a potential heel turn in WWE remains entirely possible, according to Fightful, noting that anything can happen in the industry."
 federation: WWE
 date: 2026-10-25T15:41:24.000Z
 source_id: 335641

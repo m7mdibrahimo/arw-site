@@ -1,7 +1,7 @@
 ---
 title: "Damian Priest Responds to R-Truth Blaming Him for SmackDown Injury"
 slug: "damian-priest-responds-to-r-truth-blaming-him-for-smackdown-injury"
-description: "Damian Priest has responded to R-Truth blaming him for the injury that stopped their WWE SmackDown match on October 16. Priest joked that Truth nearly…"
+description: "Damian Priest has responded to R-Truth blaming him for the injury that stopped their WWE SmackDown match on October 16."
 federation: WWE
 date: 2026-10-21T19:24:07.000Z
 source_id: 802258231

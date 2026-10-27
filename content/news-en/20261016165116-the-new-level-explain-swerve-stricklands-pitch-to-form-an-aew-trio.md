@@ -1,7 +1,7 @@
 ---
 title: "The New Level Explain Swerve Strickland's Pitch to Form an AEW Trio"
 slug: "the-new-level-explain-swerve-stricklands-pitch-to-form-an-aew-trio"
-description: "The New Level quickly adapted to All Elite Wrestling as Austin Creed and Kofi currently hold the AEW World Trios Championship alongside Swerve Strickland.…"
+description: "The New Level quickly adapted to All Elite Wrestling as Austin Creed and Kofi currently hold the AEW World Trios Championship alongside Swerve Strickland."
 federation: AEW
 date: 2026-10-16T13:51:16.000Z
 source_id: 4644314183

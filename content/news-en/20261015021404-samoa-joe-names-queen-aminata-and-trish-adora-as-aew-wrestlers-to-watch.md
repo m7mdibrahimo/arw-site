@@ -1,7 +1,7 @@
 ---
 title: "Samoa Joe Names Queen Aminata and Trish Adora as AEW Wrestlers to Watch"
 slug: "samoa-joe-names-queen-aminata-and-trish-adora-as-aew-wrestlers-to-watch"
-description: "Samoa Joe shared his thoughts on rising talent within AEW during a recent interview with TV Insider. When asked which wrestlers deserve more attention, Joe…"
+description: "Samoa Joe shared his thoughts on rising talent within AEW during a recent interview with TV Insider."
 federation: AEW
 date: 2026-10-14T23:14:04.000Z
 source_id: 333947

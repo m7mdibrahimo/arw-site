@@ -1,7 +1,7 @@
 ---
 title: "Andrade El Idolo Explains Why He Left AEW in 2023"
 slug: "andrade-el-idolo-explains-why-he-left-aew-in-2023"
-description: "Andrade El Idolo recently explained why he left AEW in 2023 to return to WWE. Speaking on Close Up with Renee Paquette, Andrade reflected on his career…"
+description: "Andrade El Idolo recently explained why he left AEW in 2023 to return to WWE."
 federation: AEW
 date: 2026-10-17T15:27:32.000Z
 source_id: 334337

@@ -157,7 +157,17 @@ test('سكربت التركيب بيتصرّف من غير تسريب وملف �
   const tmp = path.join(ROOT, 'reports/guard/.plist-check.xml');
   fs.writeFileSync(tmp, plist);
   try {
-    execFileSync('plutil', ['-lint', tmp], { encoding: 'utf-8' });
+    // plutil exists on a Mac only, but the guard runs on ubuntu-latest — this line made every hourly-guard
+    // round fail (INCIDENTS #862). The portable checks below run everywhere; a Mac still lints with plutil.
+    assert.match(plist, /^<\?xml version="1\.0"/);
+    assert.match(plist, /<plist version="1\.0">[\s\S]*<\/plist>\s*$/);
+    assert.equal((plist.match(/<dict>/g) || []).length, (plist.match(/<\/dict>/g) || []).length);
+    assert.equal((plist.match(/<array>/g) || []).length, (plist.match(/<\/array>/g) || []).length);
+    try {
+      execFileSync('plutil', ['-lint', tmp], { encoding: 'utf-8' });
+    } catch (e: any) {
+      if (e?.code !== 'ENOENT') throw e;
+    }
   } finally {
     fs.rmSync(tmp, { force: true });
   }

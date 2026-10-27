@@ -1,7 +1,7 @@
 ---
 title: "WWE's LA Knight Recalls Living With Jon Moxley"
 slug: "wwes-la-knight-recalls-living-with-jon-moxley"
-description: "LA Knight recently looked back on his early days in the professional wrestling industry, recalling the time he shared a one-bedroom apartment with Jon…"
+description: "LA Knight recently looked back on his early days in the professional wrestling industry, recalling the time he shared a one-bedroom apartment with Jon Moxley."
 federation: WWE
 date: 2026-10-11T13:00:00.000Z
 source_id: 3591934059

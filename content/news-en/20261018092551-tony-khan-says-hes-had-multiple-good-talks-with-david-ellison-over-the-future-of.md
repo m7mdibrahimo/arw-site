@@ -1,7 +1,7 @@
 ---
 title: "Tony Khan Says He's Had Multiple Good Talks With David Ellison Over the Future of AEW"
 slug: "tony-khan-says-hes-had-multiple-good-talks-with-david-ellison-over-the-future-of"
-description: "Tony Khan recently spoke about the future of AEW under the Skydance banner following the merger of Warner Brothers and Paramount, with David Ellison at the…"
+description: "Tony Khan recently spoke about the future of AEW under the Skydance banner following the merger of Warner Brothers and Paramount."
 federation: AEW
 date: 2026-10-18T06:25:51.000Z
 source_id: 334514

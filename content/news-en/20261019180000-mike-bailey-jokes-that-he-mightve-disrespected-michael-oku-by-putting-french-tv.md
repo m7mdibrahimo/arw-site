@@ -1,7 +1,7 @@
 ---
 title: "Mike Bailey Jokes That He Might've Disrespected Michael Oku by Putting French TV Host in a Half Crab"
 slug: "mike-bailey-jokes-that-he-mightve-disrespected-michael-oku-by-putting-french-tv"
-description: "Mike Bailey recently reflected on his trip to France for AEW Grand Slam: France and joked that he might have disrespected Michael Oku during a media…"
+description: "Mike Bailey recently reflected on his trip to France for AEW Grand Slam: France and joked that he might have disrespected Michael Oku during a media appearance."
 federation: AEW
 date: 2026-10-19T15:00:00.000Z
 source_id: 334035

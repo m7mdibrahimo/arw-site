@@ -1,7 +1,7 @@
 ---
 title: "Nikki Bella Suggests Chelsea Green’s Husband Wants an Upgrade on WWE SmackDown"
 slug: "nikki-bella-suggests-chelsea-greens-husband-wants-an-upgrade-on-wwe-smackdown"
-description: "Nikki Bella took a personal jab at Chelsea Green during the October 9, 2026 episode of WWE SmackDown. While confronting Green regarding the WWE Women's…"
+description: "Nikki Bella took a personal jab at Chelsea Green during the October 9, 2026 episode of WWE SmackDown."
 federation: WWE
 date: 2026-10-10T01:01:34.000Z
 source_id: 802252915

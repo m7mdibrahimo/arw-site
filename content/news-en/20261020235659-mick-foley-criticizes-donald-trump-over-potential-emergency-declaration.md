@@ -1,7 +1,7 @@
 ---
 title: "Mick Foley Criticizes Donald Trump Over Potential Emergency Declaration"
 slug: "mick-foley-criticizes-donald-trump-over-potential-emergency-declaration"
-description: "WWE Hall of Famer Mick Foley recently criticized President Donald Trump on Instagram regarding the possibility of declaring a national emergency ahead of…"
+description: "WWE Hall of Famer Mick Foley recently criticized President Donald Trump on Instagram regarding the possibility of declaring a national emergency ahead."
 federation: WWE
 date: 2026-10-20T20:56:59.000Z
 source_id: 802257886

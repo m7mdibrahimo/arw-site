@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Says He Viewed Street Fighter Role Like WWE Main Event"
 slug: "roman-reigns-says-he-viewed-street-fighter-role-like-wwe-main-event"
-description: "The latest Street Fighter movie has hit theaters, and WWE star Roman Reigns has shared how he approached his role as Akuma in the film. Speaking on the…"
+description: "The latest Street Fighter movie has hit theaters, and WWE star Roman Reigns has shared how he approached his role as Akuma in the film."
 federation: WWE
 date: 2026-10-20T18:02:31.000Z
 source_id: 2530866976

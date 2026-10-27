@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Says Brock Lesnar Makes WWE Matches Feel ‘Very Real’"
 slug: "cody-rhodes-says-brock-lesnar-makes-wwe-matches-feel-very-real"
-description: "Cody Rhodes recently shared his perspective on the unique intensity of working with Brock Lesnar in WWE. During an appearance on the Flagrant podcast,…"
+description: "Cody Rhodes recently shared his perspective on the unique intensity of working with Brock Lesnar in WWE."
 federation: WWE
 date: 2026-10-08T02:29:34.000Z
 source_id: 802252247

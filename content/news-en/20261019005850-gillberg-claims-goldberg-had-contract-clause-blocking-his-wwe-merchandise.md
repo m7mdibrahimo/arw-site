@@ -1,7 +1,7 @@
 ---
 title: "Gillberg Claims Goldberg Had Contract Clause Blocking His WWE Merchandise"
 slug: "gillberg-claims-goldberg-had-contract-clause-blocking-his-wwe-merchandise"
-description: "Gillberg believes WWE missed a significant opportunity by not producing more merchandise featuring his parody of Goldberg. He specifically wondered why the…"
+description: "Gillberg believes WWE missed a significant opportunity by not producing more merchandise featuring his parody of Goldberg."
 federation: WWE
 date: 2026-10-18T21:58:50.000Z
 source_id: 802257026

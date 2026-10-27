@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Calls Out Young Wrestlers Chasing Fame Before Wrestling"
 slug: "drew-mcintyre-calls-out-young-wrestlers-chasing-fame-before-wrestling"
-description: "Drew McIntyre believes many younger wrestlers are prioritizing fame over their in-ring development. Speaking on Raw Talk, McIntyre expressed his…"
+description: "Drew McIntyre believes many younger wrestlers are prioritizing fame over their in-ring development."
 federation: WWE
 date: 2026-10-13T19:55:41.000Z
 source_id: 802254684

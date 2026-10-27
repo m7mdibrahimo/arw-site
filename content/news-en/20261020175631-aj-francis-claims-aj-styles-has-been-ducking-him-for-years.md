@@ -1,7 +1,7 @@
 ---
 title: "AJ Francis Claims AJ Styles Has Been Ducking Him for Years"
 slug: "aj-francis-claims-aj-styles-has-been-ducking-him-for-years"
-description: "AJ Francis is continuing to insist that he is the greatest AJ in TNA history, and he is now accusing AJ Styles of intentionally avoiding him. Speaking on…"
+description: "AJ Francis is continuing to insist that he is the greatest AJ in TNA history, and he is now accusing AJ Styles of intentionally avoiding him."
 federation: TNA
 date: 2026-10-20T14:56:31.000Z
 source_id: 802257785

@@ -1,7 +1,7 @@
 ---
 title: "WWE Raw 10/12/2026: 3 Things We Hated & 3 Things We Loved"
 slug: "wwe-raw-10-12-2026-3-things-we-hated-3-things-we-loved"
-description: "Welcome to Wrestling Inc.'s weekly review of WWE Raw, featuring a new member added to the 946 group, the men's Intercontinental Championship match, Oba…"
+description: "Welcome to Wrestling Inc.'s weekly review of WWE Raw, featuring a new member added to the 946 group, the men's Intercontinental Championship match."
 federation: WWE
 date: 2026-10-13T04:44:13.000Z
 source_id: 4125924010

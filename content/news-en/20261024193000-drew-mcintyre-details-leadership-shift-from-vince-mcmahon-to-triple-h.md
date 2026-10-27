@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Details Leadership Shift From Vince McMahon to Triple H"
 slug: "drew-mcintyre-details-leadership-shift-from-vince-mcmahon-to-triple-h"
-description: "Drew McIntyre spoke about the leadership differences between Vince McMahon and Triple H during a recent interview on WWE RAW Talk. McIntyre explained that…"
+description: "Drew McIntyre spoke about the leadership differences between Vince McMahon and Triple H during a recent interview on WWE RAW Talk."
 federation: WWE
 date: 2026-10-24T16:30:00.000Z
 source_id: 3040771040

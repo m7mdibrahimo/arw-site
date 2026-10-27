@@ -1,7 +1,7 @@
 ---
 title: "Deonna Purrazzo Wants More Women in Creative, Talent Relations, and Producing Roles"
 slug: "deonna-purrazzo-wants-more-women-in-creative-talent-relations-and-producing-role"
-description: "Deonna Purrazzo shared her thoughts on the evolution of women's wrestling during an interview with The Ledgera magazine. While celebrating how common it…"
+description: "Deonna Purrazzo shared her thoughts on the evolution of women's wrestling during an interview with The Ledgera magazine."
 federation: AEW
 date: 2026-10-16T13:00:00.000Z
 source_id: 333453

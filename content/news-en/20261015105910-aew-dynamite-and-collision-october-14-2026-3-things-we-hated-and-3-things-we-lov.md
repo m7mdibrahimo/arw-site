@@ -1,7 +1,7 @@
 ---
 title: "AEW Dynamite and Collision - October 14, 2026: 3 Things We Hated and 3 Things We Loved"
 slug: "aew-dynamite-and-collision-october-14-2026-3-things-we-hated-and-3-things-we-lov"
-description: "Ahead of the upcoming WrestleDream pay-per-view, AEW presented a super-sized double edition of AEW Dynamite and AEW Collision in Cleveland, Ohio, featuring…"
+description: "Ahead of the upcoming WrestleDream pay-per-view, AEW presented a super-sized double edition of AEW Dynamite and AEW Collision in Cleveland, Ohio."
 federation: AEW
 date: 2026-10-15T07:59:10.000Z
 source_id: 3790996849

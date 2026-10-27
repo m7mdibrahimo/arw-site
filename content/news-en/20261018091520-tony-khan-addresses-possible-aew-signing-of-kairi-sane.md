@@ -1,7 +1,7 @@
 ---
 title: "Tony Khan Addresses Possible AEW Signing of Kairi Sane"
 slug: "tony-khan-addresses-possible-aew-signing-of-kairi-sane"
-description: "Tony Khan recently discussed the possibility of AEW signing Kairi Sane now that she is a free agent. Speaking at the post-AEW WrestleDream media scrum,…"
+description: "Tony Khan recently discussed the possibility of AEW signing Kairi Sane now that she is a free agent."
 federation: AEW
 date: 2026-10-18T06:15:20.000Z
 source_id: 802256798

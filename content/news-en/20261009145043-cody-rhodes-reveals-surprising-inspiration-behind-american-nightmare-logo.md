@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Reveals Surprising Inspiration Behind American Nightmare Logo"
 slug: "cody-rhodes-reveals-surprising-inspiration-behind-american-nightmare-logo"
-description: "Cody Rhodes has shared a surprising influence behind his iconic American Nightmare logo during an appearance on the podcast What Do You Wanna Talk About?…"
+description: "Cody Rhodes has shared a surprising influence behind his iconic American Nightmare logo during an appearance on the podcast What Do You Wanna Talk About?"
 federation: WWE
 date: 2026-10-09T11:50:43.000Z
 source_id: 802252679

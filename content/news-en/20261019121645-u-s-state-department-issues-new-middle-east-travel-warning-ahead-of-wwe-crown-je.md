@@ -1,7 +1,7 @@
 ---
 title: "U.S. State Department Issues New Middle East Travel Warning Ahead of WWE Crown Jewel"
 slug: "u-s-state-department-issues-new-middle-east-travel-warning-ahead-of-wwe-crown-je"
-description: "The U.S. State Department has issued a new travel warning for the Middle East due to potential flight cancellations, airport closures, and escalating…"
+description: "The U.S. State Department has issued a new travel warning for the Middle East due to potential flight cancellations, airport closures."
 federation: WWE
 date: 2026-10-19T09:16:45.000Z
 source_id: 802257093

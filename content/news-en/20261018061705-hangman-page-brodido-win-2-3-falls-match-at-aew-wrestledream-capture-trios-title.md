@@ -1,7 +1,7 @@
 ---
 title: "Hangman Page & Brodido Win 2/3 Falls Match at AEW WrestleDream, Capture Trios Titles"
 slug: "hangman-page-brodido-win-2-3-falls-match-at-aew-wrestledream-capture-trios-title"
-description: "Adam Page and Brodido defeated Swerve Strickland and the New Level in a Two Out of Three Falls match at AEW WrestleDream to recapture the World Trios…"
+description: "Adam Page and Brodido defeated Swerve Strickland and the New Level in a Two Out of Three Falls match at AEW WrestleDream to recapture the World Trios."
 federation: AEW
 date: 2026-10-18T03:17:05.000Z
 source_id: 1369627169

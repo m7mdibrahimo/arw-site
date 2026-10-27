@@ -1,7 +1,7 @@
 ---
 title: "John Cena to Star in Comedy Film The Family Disappears"
 slug: "john-cena-to-star-in-comedy-film-the-family-disappears"
-description: "WWE legend John Cena will star in a new comedy film titled \"The Family Disappears,\" according to Deadline. The project will also feature David Harbour and…"
+description: "WWE legend John Cena will star in a new comedy film titled \"The Family Disappears,\" according to Deadline."
 federation: WWE
 date: 2026-10-12T14:00:00.000Z
 source_id: 1004567509

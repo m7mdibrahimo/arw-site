@@ -1,7 +1,7 @@
 ---
 title: "Veronica West Says October 7 WWE EVOLVE Match Was Her Final Appearance"
 slug: "veronica-west-says-october-7-wwe-evolve-match-was-her-final-appearance"
-description: "Veronica West has confirmed that her run with WWE EVOLVE concluded following her match on the October 7 episode. West announced the news shortly after the…"
+description: "Veronica West has confirmed that her run with WWE EVOLVE concluded following her match on the October 7 episode."
 federation: WWE
 date: 2026-10-08T02:37:02.000Z
 source_id: 802252296

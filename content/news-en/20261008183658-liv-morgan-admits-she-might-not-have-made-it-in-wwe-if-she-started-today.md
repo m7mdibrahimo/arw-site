@@ -1,7 +1,7 @@
 ---
 title: "Liv Morgan Admits She Might Not Have Made It in WWE If She Started Today"
 slug: "liv-morgan-admits-she-might-not-have-made-it-in-wwe-if-she-started-today"
-description: "Liv Morgan reflected on her career and admitted that she might not have survived WWE's developmental system if she started today. During an appearance on…"
+description: "Liv Morgan reflected on her career and admitted that she might not have survived WWE's developmental system if she started today."
 federation: WWE
 date: 2026-10-08T15:36:58.000Z
 source_id: 802252421

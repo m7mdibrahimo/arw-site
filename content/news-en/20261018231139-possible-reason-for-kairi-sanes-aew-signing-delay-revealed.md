@@ -1,7 +1,7 @@
 ---
 title: "Possible Reason for Kairi Sane’s AEW Signing Delay Revealed"
 slug: "possible-reason-for-kairi-sanes-aew-signing-delay-revealed"
-description: "Questions continue regarding Kairi Sane’s move to AEW, as recent reports point to a specific reason for the delay in finalizing the deal. According to Dave…"
+description: "Questions continue regarding Kairi Sane’s move to AEW, as recent reports point to a specific reason for the delay in finalizing the deal."
 federation: AEW
 date: 2026-10-18T20:11:39.000Z
 source_id: 802256986

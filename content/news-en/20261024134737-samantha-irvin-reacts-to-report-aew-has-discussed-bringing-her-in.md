@@ -1,7 +1,7 @@
 ---
 title: "Samantha Irvin Reacts to Report AEW Has Discussed Bringing Her In"
 slug: "samantha-irvin-reacts-to-report-aew-has-discussed-bringing-her-in"
-description: "Samantha Irvin has reacted to reports regarding AEW's interest in bringing her into the company. The former WWE ring announcer is nearing the end of her…"
+description: "Samantha Irvin has reacted to reports regarding AEW's interest in bringing her into the company."
 federation: AEW
 date: 2026-10-24T10:47:37.000Z
 source_id: 802259082

@@ -1,7 +1,7 @@
 ---
 title: "AEW National Champion Andrade Exposes Fake Social Media Account"
 slug: "aew-national-champion-andrade-exposes-fake-social-media-account"
-description: "AEW National Champion Andrade has warned his fans about a fake social media account impersonating him online. The impostor profile was using his nickname…"
+description: "AEW National Champion Andrade has warned his fans about a fake social media account impersonating him online."
 federation: AEW
 date: 2026-10-18T16:45:51.000Z
 source_id: 802256941

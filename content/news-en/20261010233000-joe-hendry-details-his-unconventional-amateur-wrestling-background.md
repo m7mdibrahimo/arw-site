@@ -1,7 +1,7 @@
 ---
 title: "Joe Hendry Details His Unconventional Amateur Wrestling Background"
 slug: "joe-hendry-details-his-unconventional-amateur-wrestling-background"
-description: "Joe Hendry has established himself as a WWE star after years of competing on the independent scene, in TNA, and in ROH. In a recent appearance on Insight…"
+description: "Joe Hendry has established himself as a WWE star after years of competing on the independent scene, in TNA, and in ROH."
 federation: WWE
 date: 2026-10-10T20:30:00.000Z
 source_id: 2576869679

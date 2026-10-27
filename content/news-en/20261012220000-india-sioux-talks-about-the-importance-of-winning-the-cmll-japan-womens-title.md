@@ -1,7 +1,7 @@
 ---
 title: "India Sioux Talks About the Importance of Winning the CMLL-Japan Women's Title"
 slug: "india-sioux-talks-about-the-importance-of-winning-the-cmll-japan-womens-title"
-description: "India Sioux recently discussed the significance of her CMLL-Japan Women's Championship reign. Sioux defeated Hazuki on March 7, 2025, to capture the title.…"
+description: "India Sioux recently discussed the significance of her CMLL-Japan Women's Championship reign. Sioux defeated Hazuki on March 7, 2025, to capture the title."
 federation: INDIE
 date: 2026-10-12T19:00:00.000Z
 source_id: 333412

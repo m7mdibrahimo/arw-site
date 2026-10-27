@@ -1,7 +1,7 @@
 ---
 title: "Stephanie Vaquer Calls Out Fans Expecting Free Personalized Videos"
 slug: "stephanie-vaquer-calls-out-fans-expecting-free-personalized-videos"
-description: "Stephanie Vaquer is speaking out about fans who obtain private phone numbers and expect personalized videos for free. The WWE star explained on her…"
+description: "Stephanie Vaquer is speaking out about fans who obtain private phone numbers and expect personalized videos for free."
 federation: WWE
 date: 2026-10-26T12:53:49.000Z
 source_id: 802259778

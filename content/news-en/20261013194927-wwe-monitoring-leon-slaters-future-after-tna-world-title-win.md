@@ -1,7 +1,7 @@
 ---
 title: "WWE Monitoring Leon Slater’s Future After TNA World Title Win"
 slug: "wwe-monitoring-leon-slaters-future-after-tna-world-title-win"
-description: "Leon Slater recently secured the biggest victory of his career by winning the TNA World Championship. According to PWInsider, WWE is already monitoring his…"
+description: "Leon Slater recently secured the biggest victory of his career by winning the TNA World Championship."
 federation: WWE
 date: 2026-10-13T16:49:27.000Z
 source_id: 802254643

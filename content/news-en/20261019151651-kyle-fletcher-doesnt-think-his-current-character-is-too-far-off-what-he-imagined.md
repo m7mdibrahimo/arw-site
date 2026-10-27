@@ -1,7 +1,7 @@
 ---
 title: "Kyle Fletcher Doesn't Think His Current Character Is Too Far Off What He Imagined as a Kid"
 slug: "kyle-fletcher-doesnt-think-his-current-character-is-too-far-off-what-he-imagined"
-description: "Kyle Fletcher recently discussed his current character in AEW, noting that it closely resembles what he envisioned for himself as a child dreaming of…"
+description: "Kyle Fletcher recently discussed his current character in AEW, noting that it closely resembles what he envisioned for himself as a child dreaming."
 federation: AEW
 date: 2026-10-19T12:16:51.000Z
 source_id: 334656

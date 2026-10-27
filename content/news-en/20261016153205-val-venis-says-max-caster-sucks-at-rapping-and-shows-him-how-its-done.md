@@ -1,7 +1,7 @@
 ---
 title: "Val Venis Says Max Caster Sucks at Rapping and Shows Him How It's Done"
 slug: "val-venis-says-max-caster-sucks-at-rapping-and-shows-him-how-its-done"
-description: "Val Venis recently criticized Max Caster's rapping skills following Caster's abrupt departure from TNA after the Bound for Glory pay-per-view. Caster faced…"
+description: "Val Venis recently criticized Max Caster's rapping skills following Caster's abrupt departure from TNA after the Bound for Glory pay-per-view."
 federation: TNA
 date: 2026-10-16T12:32:05.000Z
 source_id: 802255620

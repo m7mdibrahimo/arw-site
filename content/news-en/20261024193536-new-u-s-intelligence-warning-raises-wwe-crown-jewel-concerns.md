@@ -1,7 +1,7 @@
 ---
 title: "New U.S. Intelligence Warning Raises WWE Crown Jewel Concerns"
 slug: "new-u-s-intelligence-warning-raises-wwe-crown-jewel-concerns"
-description: "U.S. intelligence issued a fresh warning regarding escalating Iranian efforts to target Americans abroad, creating additional security concerns ahead of…"
+description: "U.S. intelligence issued a fresh warning regarding escalating Iranian efforts to target Americans abroad."
 federation: WWE
 date: 2026-10-24T16:35:36.000Z
 source_id: 802259156

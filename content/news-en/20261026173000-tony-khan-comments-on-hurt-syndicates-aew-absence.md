@@ -1,7 +1,7 @@
 ---
 title: "Tony Khan Comments on Hurt Syndicate's AEW Absence"
 slug: "tony-khan-comments-on-hurt-syndicates-aew-absence"
-description: "AEW CEO Tony Khan has addressed the recent absence of The Hurt Syndicate from the promotion, explaining their sporadic appearances. Speaking during the…"
+description: "AEW CEO Tony Khan has addressed the recent absence of The Hurt Syndicate from the promotion, explaining their sporadic appearances."
 federation: AEW
 date: 2026-10-26T14:30:00.000Z
 source_id: 5107346008

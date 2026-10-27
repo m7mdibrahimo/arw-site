@@ -1,7 +1,7 @@
 ---
 title: "TNA Releases Statement on Max Caster Following Controversial Bound for Glory Debut"
 slug: "tna-releases-statement-on-max-caster-following-controversial-bound-for-glory-deb"
-description: "TNA confirmed it has ended its relationship with former AEW star Max Caster following his debut at TNA Bound for Glory 2026, where he faced Moose. Before…"
+description: "TNA confirmed it has ended its relationship with former AEW star Max Caster following his debut at TNA Bound for Glory 2026, where he faced Moose."
 federation: TNA
 date: 2026-10-12T23:29:07.000Z
 source_id: 4951595288

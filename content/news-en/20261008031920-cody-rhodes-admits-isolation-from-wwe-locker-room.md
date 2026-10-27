@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Admits Isolation From WWE Locker Room"
 slug: "cody-rhodes-admits-isolation-from-wwe-locker-room"
-description: "Cody Rhodes recently opened up about his current status in WWE, revealing that his top spot in the company has created distance between him and the rest of…"
+description: "Cody Rhodes recently opened up about his current status in WWE, revealing that his top spot in the company has created distance between him and the rest."
 federation: WWE
 date: 2026-10-08T00:19:20.000Z
 source_id: 802252246

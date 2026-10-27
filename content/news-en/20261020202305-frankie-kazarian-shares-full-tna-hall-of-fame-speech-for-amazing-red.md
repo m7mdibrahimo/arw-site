@@ -1,7 +1,7 @@
 ---
 title: "Frankie Kazarian Shares Full TNA Hall of Fame Speech for Amazing Red"
 slug: "frankie-kazarian-shares-full-tna-hall-of-fame-speech-for-amazing-red"
-description: "Frankie Kazarian revealed the complete transcript of his speech for Amazing Red's TNA Hall of Fame induction at the Bound for Glory pay-per-view on Sunday,…"
+description: "Frankie Kazarian revealed the complete transcript of his speech for Amazing Red's TNA Hall of Fame induction at the Bound for Glory pay-per-view on Sunday."
 federation: TNA
 date: 2026-10-20T17:23:05.000Z
 source_id: 334829

@@ -1,7 +1,7 @@
 ---
 title: "David Otunga Gives His Verdict on Montez Ford Lawsuit"
 slug: "david-otunga-gives-his-verdict-on-montez-ford-lawsuit"
-description: "Former WWE wrestler and attorney David Otunga has shared his legal verdict on the recent lawsuit filed against Montez Ford and WWE by a security guard over…"
+description: "Former WWE wrestler and attorney David Otunga has shared his legal verdict on the recent lawsuit filed against Montez Ford and WWE by a security guard."
 federation: WWE
 date: 2026-10-17T20:03:48.000Z
 source_id: 334378

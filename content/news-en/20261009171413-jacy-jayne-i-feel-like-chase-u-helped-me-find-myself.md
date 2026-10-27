@@ -1,7 +1,7 @@
 ---
 title: "Jacy Jayne: I Feel Like Chase U Helped Me Find Myself"
 slug: "jacy-jayne-i-feel-like-chase-u-helped-me-find-myself"
-description: "Jacy Jayne recently reflected on her time working with Chase U in WWE NXT, explaining how the experience shaped her career. Jayne was part of the group…"
+description: "Jacy Jayne recently reflected on her time working with Chase U in WWE NXT, explaining how the experience shaped her career."
 federation: WWE
 date: 2026-10-09T14:14:13.000Z
 source_id: 332854

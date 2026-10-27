@@ -1,7 +1,7 @@
 ---
 title: "TNA Wrestling to Announce Additional Contract Signings"
 slug: "tna-wrestling-to-announce-additional-contract-signings"
-description: "TNA Wrestling is planning to announce several new contract signings through media outlets in the coming weeks. According to Fightful Select, full details…"
+description: "TNA Wrestling is planning to announce several new contract signings through media outlets in the coming weeks."
 federation: TNA
 date: 2026-10-26T00:45:34.000Z
 source_id: 335738

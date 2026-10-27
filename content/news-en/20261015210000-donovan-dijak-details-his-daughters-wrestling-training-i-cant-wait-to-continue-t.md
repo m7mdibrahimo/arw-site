@@ -1,7 +1,7 @@
 ---
 title: "Donovan Dijak Details His Daughter's Wrestling Training: I Can't Wait to Continue to Guide Her on This Journey"
 slug: "donovan-dijak-details-his-daughters-wrestling-training-i-cant-wait-to-continue-t"
-description: "Donovan Dijak has detailed his daughter's wrestling training following a recent GCW spot, expressing his excitement to continue guiding her on her journey.…"
+description: "Donovan Dijak has detailed his daughter's wrestling training following a recent GCW spot, expressing his excitement to continue guiding her on her journey."
 federation: INDIE
 date: 2026-10-15T18:00:00.000Z
 source_id: 333828

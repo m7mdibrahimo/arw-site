@@ -1,7 +1,7 @@
 ---
 title: "Penta Opens Up About WWE Money in the Bank Win"
 slug: "penta-opens-up-about-wwe-money-in-the-bank-win"
-description: "Penta is reflecting on his recent career trajectory after winning the Money In The Bank briefcase just weeks after failing to capture the World Heavyweight…"
+description: "Penta is reflecting on his recent career trajectory after winning the Money In The Bank briefcase just weeks after failing to capture the World Heavyweight."
 federation: WWE
 date: 2026-10-22T14:34:25.000Z
 source_id: 335132

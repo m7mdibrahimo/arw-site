@@ -1,7 +1,7 @@
 ---
 title: "Anya Rune Says She Is Taking a Step Back From Wrestling"
 slug: "anya-rune-says-she-is-taking-a-step-back-from-wrestling"
-description: "Airica Demia, known as Anya Rune in WWE, is stepping away from wrestling for the time being. Rune announced the decision on social media, explaining that…"
+description: "Airica Demia, known as Anya Rune in WWE, is stepping away from wrestling for the time being."
 federation: WWE
 date: 2026-10-20T01:25:18.000Z
 source_id: 334763

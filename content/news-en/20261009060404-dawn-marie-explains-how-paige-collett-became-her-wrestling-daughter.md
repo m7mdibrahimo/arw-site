@@ -1,7 +1,7 @@
 ---
 title: "Dawn Marie Explains How Paige Collett Became Her Wrestling Daughter"
 slug: "dawn-marie-explains-how-paige-collett-became-her-wrestling-daughter"
-description: "Dawn Marie recently explained how Paige Collett became her wrestling daughter and why she wanted to mentor the younger talent. Speaking on Velvet Ropes,…"
+description: "Dawn Marie recently explained how Paige Collett became her wrestling daughter and why she wanted to mentor the younger talent."
 federation: WWE
 date: 2026-10-09T03:04:04.000Z
 source_id: 802252603

@@ -1,7 +1,7 @@
 ---
 title: "Ex-WWE Name Was TNA's Primary Choice for Max Caster's Bound for Glory Spot"
 slug: "ex-wwe-name-was-tnas-primary-choice-for-max-casters-bound-for-glory-spot"
-description: "Max Caster appeared at TNA Bound for Glory to answer Moose's open challenge, but he was not the company's first choice for the spot. According to False…"
+description: "Max Caster appeared at TNA Bound for Glory to answer Moose's open challenge, but he was not the company's first choice for the spot."
 federation: TNA
 date: 2026-10-12T19:38:23.000Z
 source_id: 802254227

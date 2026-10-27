@@ -1,7 +1,7 @@
 ---
 title: "Richard Holliday Shuts Down Claims AEW Is Responsible for Independent Wrestling's Success"
 slug: "richard-holliday-shuts-down-claims-aew-is-responsible-for-independent-wrestlings"
-description: "Richard Holliday does not believe that AEW deserves credit for the success of independent wrestling. During a recent podcast appearance, he argued that…"
+description: "Richard Holliday does not believe that AEW deserves credit for the success of independent wrestling."
 federation: AEW
 date: 2026-10-17T19:39:43.000Z
 source_id: 802256299

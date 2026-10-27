@@ -1,7 +1,7 @@
 ---
 title: "Perry Saturn Reveals Condition After Hospitalization Over Severe Respiratory Issues"
 slug: "perry-saturn-reveals-condition-after-hospitalization-over-severe-respiratory-iss"
-description: "Former WWE and ECW star Perry Saturn has shared details about his recent health scare, revealing that he was hospitalized for roughly 48 hours due to…"
+description: "Former WWE and ECW star Perry Saturn has shared details about his recent health scare."
 federation: WWE
 date: 2026-10-17T17:02:34.000Z
 source_id: 802256248

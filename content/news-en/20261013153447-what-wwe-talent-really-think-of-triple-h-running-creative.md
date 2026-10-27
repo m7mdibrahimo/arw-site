@@ -1,7 +1,7 @@
 ---
 title: "What WWE Talent Really Think of Triple H Running Creative"
 slug: "what-wwe-talent-really-think-of-triple-h-running-creative"
-description: "Despite online criticism of WWE creative decisions, a new report suggests that Triple H maintains strong support within the locker room. According to…"
+description: "Despite online criticism of WWE creative decisions, a new report suggests that Triple H maintains strong support within the locker room."
 federation: WWE
 date: 2026-10-13T12:34:47.000Z
 source_id: 802254560

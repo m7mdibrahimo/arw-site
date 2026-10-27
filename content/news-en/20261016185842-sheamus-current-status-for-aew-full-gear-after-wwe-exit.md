@@ -1,7 +1,7 @@
 ---
 title: "Sheamus’ Current Status for AEW Full Gear After WWE Exit"
 slug: "sheamus-current-status-for-aew-full-gear-after-wwe-exit"
-description: "Sheamus might have just given wrestling fans a reason to keep an eye on AEW Full Gear after requesting an early departure from a convention on the same…"
+description: "Sheamus might have just given wrestling fans a reason to keep an eye on AEW Full Gear after requesting an early departure from a convention on the same day."
 federation: WWE
 date: 2026-10-16T15:58:42.000Z
 source_id: 802255714

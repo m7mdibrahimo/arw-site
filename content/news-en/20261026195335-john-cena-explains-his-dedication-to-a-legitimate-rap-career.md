@@ -1,7 +1,7 @@
 ---
 title: "John Cena Explains His Dedication to a Legitimate Rap Career"
 slug: "john-cena-explains-his-dedication-to-a-legitimate-rap-career"
-description: "John Cena never intended to be just another wrestler releasing a rap album to capitalize on his fame. The WWE legend sought genuine respect from the…"
+description: "John Cena never intended to be just another wrestler releasing a rap album to capitalize on his fame."
 federation: WWE
 date: 2026-10-26T16:53:35.000Z
 source_id: 802259861

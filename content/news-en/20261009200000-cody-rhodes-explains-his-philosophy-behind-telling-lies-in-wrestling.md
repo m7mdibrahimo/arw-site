@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Explains His Philosophy Behind Telling Lies in Wrestling"
 slug: "cody-rhodes-explains-his-philosophy-behind-telling-lies-in-wrestling"
-description: "Cody Rhodes recently opened up about his reputation for bending the truth in the wrestling business. During an appearance on the Flagrant podcast, the WWE…"
+description: "Cody Rhodes recently opened up about his reputation for bending the truth in the wrestling business."
 federation: NJPW
 date: 2026-10-09T17:00:00.000Z
 source_id: 332700

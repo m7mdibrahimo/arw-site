@@ -1,7 +1,7 @@
 ---
 title: "50 Cent Says Cody Rhodes Took Street Fighter Cast on a Yacht"
 slug: "50-cent-says-cody-rhodes-took-street-fighter-cast-on-a-yacht"
-description: "The cast of the upcoming Street Fighter film, including rapper 50 Cent and actor Noah Centineo, recently shared high praise for WWE superstar Cody Rhodes…"
+description: "The cast of the upcoming Street Fighter film, including rapper 50 Cent and actor Noah Centineo."
 federation: WWE
 date: 2026-10-20T14:14:34.000Z
 source_id: 334807

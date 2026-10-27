@@ -1,7 +1,7 @@
 ---
 title: "Steve Maclin Battled Through Broken Fibula Before Adam Copeland Match"
 slug: "steve-maclin-battled-through-broken-fibula-before-adam-copeland-match"
-description: "Steve Maclin faced Adam Copeland in the main event of MLP Northern Rising on October 3, fulfilling a childhood dream of wrestling the star he once…"
+description: "Steve Maclin faced Adam Copeland in the main event of MLP Northern Rising on October 3."
 federation: INDIE
 date: 2026-10-12T14:17:08.000Z
 source_id: 333498

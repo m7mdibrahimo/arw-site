@@ -1,7 +1,7 @@
 ---
 title: "Mike Bailey Discusses Pros and Cons of Wrestling Barefoot"
 slug: "mike-bailey-discusses-pros-and-cons-of-wrestling-barefoot"
-description: "In a recent interview, Mike Bailey discussed the advantages and disadvantages of competing barefoot in the ring. Bailey explained that wrestling without…"
+description: "In a recent interview, Mike Bailey discussed the advantages and disadvantages of competing barefoot in the ring."
 federation: AEW
 date: 2026-10-17T16:00:00.000Z
 source_id: 334018

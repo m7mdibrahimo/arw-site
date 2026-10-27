@@ -1,7 +1,7 @@
 ---
 title: "Sheamus Looks Back on WWE Debut, Says He Never Had a 'Great Story' in the Company"
 slug: "sheamus-looks-back-on-wwe-debut-says-he-never-had-a-great-story-in-the-company"
-description: "Former WWE Champion Sheamus recently reflected on his main roster debut, which took place on the June 30, 2009 edition of \"WWE ECW\" against Oliver John.…"
+description: "Former WWE Champion Sheamus recently reflected on his main roster debut, which took place on the June 30, 2009 edition of \"WWE ECW\" against Oliver John."
 federation: WWE
 date: 2026-10-16T15:31:31.000Z
 source_id: 3217990467

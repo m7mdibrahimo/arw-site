@@ -1,7 +1,7 @@
 ---
 title: "Dragon Lee Re-Signs With WWE"
 slug: "dragon-lee-re-signs-with-wwe"
-description: "Dragon Lee has reportedly agreed to a new contract with WWE, keeping him with the company for the foreseeable future. According to PWInsider, the luchador…"
+description: "Dragon Lee has reportedly agreed to a new contract with WWE, keeping him with the company for the foreseeable future."
 federation: WWE
 date: 2026-10-21T08:38:53.000Z
 source_id: 802258134

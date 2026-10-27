@@ -1,7 +1,7 @@
 ---
 title: "Will Ospreay: I'm a Cardio Machine, Ask the Wife"
 slug: "will-ospreay-im-a-cardio-machine-ask-the-wife"
-description: "Will Ospreay recently quipped about his high level of cardiovascular endurance, noting that fans can ask his wife, Alex Windsor, to verify it. Speaking…"
+description: "Will Ospreay recently quipped about his high level of cardiovascular endurance, noting that fans can ask his wife, Alex Windsor, to verify it."
 federation: AEW
 date: 2026-10-18T13:47:26.000Z
 source_id: 334524

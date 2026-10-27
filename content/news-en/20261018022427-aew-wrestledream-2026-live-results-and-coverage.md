@@ -1,7 +1,7 @@
 ---
 title: "AEW WrestleDream 2026 Live Results and Coverage"
 slug: "aew-wrestledream-2026-live-results-and-coverage"
-description: "AEW WrestleDream took place on October 17, 2026, live from the Addition Financial Arena in Orlando, Florida. In the main event Clockwork Carnage Match,…"
+description: "AEW WrestleDream took place on October 17, 2026, live from the Addition Financial Arena in Orlando, Florida."
 federation: AEW
 date: 2026-10-17T23:24:27.000Z
 source_id: 3032456387

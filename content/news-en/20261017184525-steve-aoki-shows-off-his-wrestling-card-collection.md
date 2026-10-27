@@ -1,7 +1,7 @@
 ---
 title: "Steve Aoki Shows Off His Wrestling Card Collection"
 slug: "steve-aoki-shows-off-his-wrestling-card-collection"
-description: "DJ and producer Steve Aoki recently showed off his impressive WWE wrestling card collection in a Topps Motion video. Aoki, a known wrestling fan, revealed…"
+description: "DJ and producer Steve Aoki recently showed off his impressive WWE wrestling card collection in a Topps Motion video."
 federation: WWE
 date: 2026-10-17T15:45:25.000Z
 source_id: 334340

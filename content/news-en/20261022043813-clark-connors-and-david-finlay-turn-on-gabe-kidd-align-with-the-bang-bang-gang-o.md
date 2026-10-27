@@ -1,7 +1,7 @@
 ---
 title: "Clark Connors and David Finlay Turn on Gabe Kidd, Align With the Bang Bang Gang on AEW Dynamite"
 slug: "clark-connors-and-david-finlay-turn-on-gabe-kidd-align-with-the-bang-bang-gang-o"
-description: "During this week's episode of AEW Dynamite, Jon Moxley defeated Roderick Strong in an AEW Continental Championship Eliminator Match. Following the contest,…"
+description: "During this week's episode of AEW Dynamite, Jon Moxley defeated Roderick Strong in an AEW Continental Championship Eliminator Match."
 federation: AEW
 date: 2026-10-22T01:38:13.000Z
 source_id: 335081

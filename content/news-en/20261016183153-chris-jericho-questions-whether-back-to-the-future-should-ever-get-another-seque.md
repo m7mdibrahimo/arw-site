@@ -1,7 +1,7 @@
 ---
 title: "Chris Jericho Questions Whether Back to the Future Should Ever Get Another Sequel"
 slug: "chris-jericho-questions-whether-back-to-the-future-should-ever-get-another-seque"
-description: "Chris Jericho recently discussed whether the Back to the Future franchise should ever return with another sequel. During an episode of Talk Is Jericho,…"
+description: "Chris Jericho recently discussed whether the Back to the Future franchise should ever return with another sequel."
 federation: INDIE
 date: 2026-10-16T15:31:53.000Z
 source_id: 802255703

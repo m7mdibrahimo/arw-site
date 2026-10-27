@@ -1,7 +1,7 @@
 ---
 title: "Samoa Joe Calls Fear-Based Locker Room Leader Mentality a ‘Ridiculous Ideology’"
 slug: "samoa-joe-calls-fear-based-locker-room-leader-mentality-a-ridiculous-ideology"
-description: "Samoa Joe recently shared his thoughts on locker room leadership during an interview with SHAK Wrestling, explaining why he believes controlling wrestlers…"
+description: "Samoa Joe recently shared his thoughts on locker room leadership during an interview with SHAK Wrestling."
 federation: WWE
 date: 2026-10-17T15:30:43.000Z
 source_id: 802256223

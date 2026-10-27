@@ -1,7 +1,7 @@
 ---
 title: "WWE Discussing Drew McIntyre RAW Return After Scrapping Previous Comeback Plans"
 slug: "wwe-discussing-drew-mcintyre-raw-return-after-scrapping-previous-comeback-plans"
-description: "WWE is reportedly discussing plans for Drew McIntyre to return as a member of the WWE RAW roster, following earlier plans that were scrapped in late…"
+description: "WWE is reportedly discussing plans for Drew McIntyre to return as a member of the WWE RAW roster, following earlier plans that were scrapped in late August."
 federation: WWE
 date: 2026-10-08T16:23:50.000Z
 source_id: 802252452

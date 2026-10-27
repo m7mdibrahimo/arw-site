@@ -1,7 +1,7 @@
 ---
 title: "AEW Dynamite Viewership Sees Massive Increase on October 14, 2026"
 slug: "aew-dynamite-viewership-sees-massive-increase-on-october-14-2026"
-description: "The October 14, 2026 episode of AEW Dynamite on TBS experienced a significant week-to-week increase in viewership and ratings. According to Wrestlenomics,…"
+description: "The October 14, 2026 episode of AEW Dynamite on TBS experienced a significant week-to-week increase in viewership and ratings."
 federation: AEW
 date: 2026-10-16T23:37:25.000Z
 source_id: 802255871

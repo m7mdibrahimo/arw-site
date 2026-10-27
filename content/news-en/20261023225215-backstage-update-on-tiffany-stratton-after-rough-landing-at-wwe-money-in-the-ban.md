@@ -1,7 +1,7 @@
 ---
 title: "Backstage Update on Tiffany Stratton After Rough Landing at WWE Money in the Bank"
 slug: "backstage-update-on-tiffany-stratton-after-rough-landing-at-wwe-money-in-the-ban"
-description: "Tiffany Stratton captured her second WWE Women's Money in the Bank briefcase, but the victory came with a significant physical toll following a dangerous…"
+description: "Tiffany Stratton captured her second WWE Women's Money in the Bank briefcase."
 federation: WWE
 date: 2026-10-23T19:52:15.000Z
 source_id: 5029240870

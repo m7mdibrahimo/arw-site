@@ -1,7 +1,7 @@
 ---
 title: "WWE Employees Hated Vince McMahon’s Company-Wide Social Media Mandate"
 slug: "wwe-employees-hated-vince-mcmahons-company-wide-social-media-mandate"
-description: "Stephanie McMahon recently revealed that employees inside WWE strongly disliked Vince McMahon's strict company-wide social media mandate. Speaking with…"
+description: "Stephanie McMahon recently revealed that employees inside WWE strongly disliked Vince McMahon's strict company-wide social media mandate."
 federation: WWE
 date: 2026-10-23T09:59:43.000Z
 source_id: 802258639

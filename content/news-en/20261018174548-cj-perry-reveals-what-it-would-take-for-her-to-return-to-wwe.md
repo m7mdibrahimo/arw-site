@@ -1,7 +1,7 @@
 ---
 title: "CJ Perry Reveals What It Would Take for Her to Return to WWE"
 slug: "cj-perry-reveals-what-it-would-take-for-her-to-return-to-wwe"
-description: "CJ Perry recently discussed her potential return to WWE, explaining the specific conditions that would bring her back to television. During an appearance…"
+description: "CJ Perry recently discussed her potential return to WWE, explaining the specific conditions that would bring her back to television."
 federation: WWE
 date: 2026-10-18T14:45:48.000Z
 source_id: 802256902

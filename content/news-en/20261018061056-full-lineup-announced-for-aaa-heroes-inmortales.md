@@ -1,7 +1,7 @@
 ---
 title: "Full Lineup Announced for AAA Heroes Inmortales"
 slug: "full-lineup-announced-for-aaa-heroes-inmortales"
-description: "Lucha Libre AAA revealed the full match card for the upcoming AAA Heroes Inmortales event during the October 17 episode of AAA on Fox. The show is…"
+description: "Lucha Libre AAA revealed the full match card for the upcoming AAA Heroes Inmortales event during the October 17 episode of AAA on Fox."
 federation: INDIE
 date: 2026-10-18T03:10:56.000Z
 source_id: 334460

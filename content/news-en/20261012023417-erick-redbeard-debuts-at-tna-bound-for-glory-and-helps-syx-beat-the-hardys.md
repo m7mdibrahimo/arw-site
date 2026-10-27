@@ -1,7 +1,7 @@
 ---
 title: "Erick Redbeard Debuts at TNA Bound for Glory and Helps Syx Beat The Hardys"
 slug: "erick-redbeard-debuts-at-tna-bound-for-glory-and-helps-syx-beat-the-hardys"
-description: "Erick Redbeard made a surprise debut at TNA Bound for Glory on October 11, 2026, during a violent Falls Count Anywhere Match. Redbeard interfered in the…"
+description: "Erick Redbeard made a surprise debut at TNA Bound for Glory on October 11, 2026, during a violent Falls Count Anywhere Match."
 federation: TNA
 date: 2026-10-11T23:34:17.000Z
 source_id: 802253942

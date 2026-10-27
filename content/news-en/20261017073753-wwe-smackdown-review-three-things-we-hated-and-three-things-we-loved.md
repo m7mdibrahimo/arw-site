@@ -1,7 +1,7 @@
 ---
 title: "WWE SmackDown Review: Three Things We Hated and Three Things We Loved"
 slug: "wwe-smackdown-review-three-things-we-hated-and-three-things-we-loved"
-description: "The October 16, 2026, episode of WWE SmackDown featured a mix of segments and matches that drew varied reactions from the Wrestling Inc staff. Here is a…"
+description: "The October 16, 2026, episode of WWE SmackDown featured a mix of segments and matches that drew varied reactions from the Wrestling Inc staff."
 federation: WWE
 date: 2026-10-17T04:37:53.000Z
 source_id: 3311488728

@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Reflects on Entrance at AEW WrestleDream"
 slug: "ilja-dragunov-reflects-on-entrance-at-aew-wrestledream"
-description: "Ilja Dragunov spoke about his debut at the 2026 All Elite Wrestling WrestleDream pay-per-view. While making media rounds ahead of his in-ring debut for the…"
+description: "Ilja Dragunov spoke about his debut at the 2026 All Elite Wrestling WrestleDream pay-per-view."
 federation: AEW
 date: 2026-10-21T12:13:58.000Z
 source_id: 334958

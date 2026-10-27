@@ -1,7 +1,7 @@
 ---
 title: "Billy Gunn Discusses Triple H's Shot at AEW at 2019 WWE Hall of Fame"
 slug: "billy-gunn-discusses-triple-hs-shot-at-aew-at-2019-wwe-hall-of-fame"
-description: "During a recent interview, Billy Gunn reflected on Triple H taking a shot at AEW during the 2019 WWE Hall of Fame ceremony when D-Generation X was…"
+description: "During a recent interview, Billy Gunn reflected on Triple H taking a shot at AEW during the 2019 WWE Hall of Fame ceremony when D-Generation X was inducted."
 federation: WWE
 date: 2026-10-19T12:29:30.000Z
 source_id: 334663

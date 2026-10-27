@@ -1,7 +1,7 @@
 ---
 title: "Samoa Joe Wants to Sprinkle a Little Bit Back Before Retirement"
 slug: "samoa-joe-wants-to-sprinkle-a-little-bit-back-before-retirement"
-description: "Samoa Joe is looking toward the future of his wrestling career as he contemplates his eventual retirement. In a recent interview with CBS Sports, the…"
+description: "Samoa Joe is looking toward the future of his wrestling career as he contemplates his eventual retirement."
 federation: WWE
 date: 2026-10-16T18:31:06.000Z
 source_id: 802255762

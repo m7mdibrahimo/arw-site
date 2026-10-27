@@ -1,7 +1,7 @@
 ---
 title: "WWE Scraps Original Plans for Rusev"
 slug: "wwe-scraps-original-plans-for-rusev"
-description: "WWE scrapped original plans for Rusev due to an injury, forcing the company to alter its upcoming television storylines. According to WrestleVotes, Rusev…"
+description: "WWE scrapped original plans for Rusev due to an injury, forcing the company to alter its upcoming television storylines."
 federation: WWE
 date: 2026-10-26T22:07:41.000Z
 source_id: 802259934

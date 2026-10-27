@@ -1,7 +1,7 @@
 ---
 title: "WWE's Je'Von Evans Details Connection With Jacob Fatu"
 slug: "wwes-jevon-evans-details-connection-with-jacob-fatu"
-description: "WWE RAW star Je'Von Evans spoke about his strong connection with Jacob Fatu, praising the Samoan Werewolf for guiding him through his transition to the…"
+description: "WWE RAW star Je'Von Evans spoke about his strong connection with Jacob Fatu."
 federation: WWE
 date: 2026-10-15T01:00:00.000Z
 source_id: 969486448

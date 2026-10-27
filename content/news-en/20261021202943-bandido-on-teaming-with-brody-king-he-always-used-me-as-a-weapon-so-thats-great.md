@@ -1,7 +1,7 @@
 ---
 title: "Bandido on Teaming With Brody King: He Always Used Me as a Weapon, So That's Great"
 slug: "bandido-on-teaming-with-brody-king-he-always-used-me-as-a-weapon-so-thats-great"
-description: "Bandido recently discussed teaming with Brody King, joking about how Brody always uses his body as a weapon during their matches. The duo has achieved…"
+description: "Bandido recently discussed teaming with Brody King, joking about how Brody always uses his body as a weapon during their matches."
 federation: AEW
 date: 2026-10-21T17:29:43.000Z
 source_id: 334987

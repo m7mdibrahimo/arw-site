@@ -1,7 +1,7 @@
 ---
 title: "Former WWE Star Addresses Potential Return After Five Years Away"
 slug: "former-wwe-star-addresses-potential-return-after-five-years-away"
-description: "Kalisto has addressed a potential return to WWE more than five years after his departure from the company. Speaking in a recent interview, the former star…"
+description: "Kalisto has addressed a potential return to WWE more than five years after his departure from the company."
 federation: WWE
 date: 2026-10-14T14:18:08.000Z
 source_id: 802254999

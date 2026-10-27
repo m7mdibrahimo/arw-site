@@ -1,7 +1,7 @@
 ---
 title: "AEW Champ Will Ospreay Comments on Facing Adam Copeland Before His Retirement"
 slug: "aew-champ-will-ospreay-comments-on-facing-adam-copeland-before-his-retirement"
-description: "AEW Men's World Champion Will Ospreay recently discussed his desire for a singles match against Adam Copeland before Copeland's anticipated retirement in…"
+description: "AEW Men's World Champion Will Ospreay recently discussed his desire for a singles match against Adam Copeland before Copeland's anticipated retirement in 2027."
 federation: AEW
 date: 2026-10-21T14:58:09.000Z
 source_id: 3501898889

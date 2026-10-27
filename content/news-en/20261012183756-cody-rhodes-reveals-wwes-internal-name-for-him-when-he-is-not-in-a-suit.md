@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Reveals WWE's Internal Name for Him When He Is Not in a Suit"
 slug: "cody-rhodes-reveals-wwes-internal-name-for-him-when-he-is-not-in-a-suit"
-description: "Cody Rhodes has revealed the internal name that WWE uses for him when he appears on television without his trademark suit. While speaking in a new episode…"
+description: "Cody Rhodes has revealed the internal name that WWE uses for him when he appears on television without his trademark suit."
 federation: WWE
 date: 2026-10-12T15:37:56.000Z
 source_id: 333503

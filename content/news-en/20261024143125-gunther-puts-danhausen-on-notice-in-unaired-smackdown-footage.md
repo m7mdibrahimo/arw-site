@@ -1,7 +1,7 @@
 ---
 title: "Gunther Puts Danhausen on Notice in Unaired SmackDown Footage"
 slug: "gunther-puts-danhausen-on-notice-in-unaired-smackdown-footage"
-description: "Gunther made it clear he is unhappy about Danhausen receiving a special edition of WWE SmackDown, according to Ringside News. In an unaired backstage…"
+description: "Gunther made it clear he is unhappy about Danhausen receiving a special edition of WWE SmackDown, according to Ringside News."
 federation: WWE
 date: 2026-10-24T11:31:25.000Z
 source_id: 802259086

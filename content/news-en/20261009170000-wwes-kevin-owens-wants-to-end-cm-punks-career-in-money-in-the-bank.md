@@ -1,7 +1,7 @@
 ---
 title: "WWE's Kevin Owens Wants to End CM Punk's Career in Money in the Bank"
 slug: "wwes-kevin-owens-wants-to-end-cm-punks-career-in-money-in-the-bank"
-description: "Kevin Owens has made it clear that his primary goal in the upcoming men's Money in the Bank ladder match is to end the career of CM Punk. The two wrestlers…"
+description: "Kevin Owens has made it clear that his primary goal in the upcoming men's Money in the Bank ladder match is to end the career of CM Punk."
 federation: WWE
 date: 2026-10-09T14:00:00.000Z
 source_id: 4153048933

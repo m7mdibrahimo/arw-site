@@ -1,7 +1,7 @@
 ---
 title: "Jasper Troy Details Frustrations With How He Was Being Used in WWE NXT"
 slug: "jasper-troy-details-frustrations-with-how-he-was-being-used-in-wwe-nxt"
-description: "Jasper Troy recently opened up about his frustrations regarding his utilization during his time with WWE NXT, prior to his departure from the company in…"
+description: "Jasper Troy recently opened up about his frustrations regarding his utilization during his time with WWE NXT."
 federation: WWE
 date: 2026-10-11T18:58:56.000Z
 source_id: 333240

@@ -1,7 +1,7 @@
 ---
 title: "Dave Meltzer Believes WWE Crown Jewel Will Move Forward as Planned"
 slug: "dave-meltzer-believes-wwe-crown-jewel-will-move-forward-as-planned"
-description: "Despite ongoing geopolitical tensions in the region and warnings from the US State Department, Dave Meltzer reports that WWE remains committed to holding…"
+description: "Despite ongoing geopolitical tensions in the region and warnings from the US State Department."
 federation: WWE
 date: 2026-10-26T16:48:34.000Z
 source_id: 3483389202

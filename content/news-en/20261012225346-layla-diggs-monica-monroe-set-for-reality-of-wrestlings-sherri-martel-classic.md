@@ -1,7 +1,7 @@
 ---
 title: "Layla Diggs, Monica Monroe Set for Reality of Wrestling's Sherri Martel Classic"
 slug: "layla-diggs-monica-monroe-set-for-reality-of-wrestlings-sherri-martel-classic"
-description: "NXT talent Layla Diggs and the new WWE I.D. Women's Champion Monica Monroe have been announced for the upcoming Reality of Wrestling Sherri Martel Classic…"
+description: "NXT talent Layla Diggs and the new WWE I.D. Women's Champion Monica Monroe have been announced for the upcoming Reality of Wrestling Sherri Martel Classic."
 federation: WWE
 date: 2026-10-12T19:53:46.000Z
 source_id: 333549

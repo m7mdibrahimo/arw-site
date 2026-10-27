@@ -1,7 +1,7 @@
 ---
 title: "NXT’s Shiloh Hill Claims He’s Selling Merch on the Dark Web and Says He’s Already Made Sales"
 slug: "nxts-shiloh-hill-claims-hes-selling-merch-on-the-dark-web-and-says-hes-already-m"
-description: "NXT talent Shiloh Hill claims he has created a site on the dark web to sell his custom shirts and has already made sales. Hill posted on Instagram that he…"
+description: "NXT talent Shiloh Hill claims he has created a site on the dark web to sell his custom shirts and has already made sales."
 federation: WWE
 date: 2026-10-12T05:26:17.000Z
 source_id: 802254007

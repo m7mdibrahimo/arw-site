@@ -1,7 +1,7 @@
 ---
 title: "Jeff Cobb Discusses Wearing Face Paint in WWE"
 slug: "jeff-cobb-discusses-wearing-face-paint-in-wwe"
-description: "Jeff Cobb recently reflected on his time in WWE as JC Mateo, specifically comparing the experience of wearing face paint to wearing a mask in Lucha…"
+description: "Jeff Cobb recently reflected on his time in WWE as JC Mateo, specifically comparing the experience of wearing face paint to wearing a mask in Lucha Underground."
 federation: WWE
 date: 2026-10-26T14:12:29.000Z
 source_id: 335818

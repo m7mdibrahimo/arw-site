@@ -1,7 +1,7 @@
 ---
 title: "Chad Gable Reveals Original Plans for El Grande Americano Storyline"
 slug: "chad-gable-reveals-original-plans-for-el-grande-americano-storyline"
-description: "Chad Gable recently shared details about WWE's initial plans for the El Grande Americano character before his injury halted the storyline. Speaking on a…"
+description: "Chad Gable recently shared details about WWE's initial plans for the El Grande Americano character before his injury halted the storyline."
 federation: WWE
 date: 2026-10-08T08:23:37.000Z
 source_id: 802252321

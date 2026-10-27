@@ -1,7 +1,7 @@
 ---
 title: "Chris Sabin: AEW Has the Greatest Tag Team Division in History"
 slug: "chris-sabin-aew-has-the-greatest-tag-team-division-in-history"
-description: "Motor City Machine Guns star Chris Sabin recently expressed his strong belief that All Elite Wrestling boasts the greatest tag team division in the history…"
+description: "Motor City Machine Guns star Chris Sabin recently expressed his strong belief that All Elite Wrestling boasts the greatest tag team division in the history."
 federation: AEW
 date: 2026-10-18T14:35:47.000Z
 source_id: 334528

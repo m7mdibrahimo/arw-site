@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Pushes Back on Claims WWE Is in Decline"
 slug: "cody-rhodes-pushes-back-on-claims-wwe-is-in-decline"
-description: "Cody Rhodes dismissed claims that WWE is in decline, stating that the company continues to grow and move upward. Speaking to The Sportster, Rhodes noted…"
+description: "Cody Rhodes dismissed claims that WWE is in decline, stating that the company continues to grow and move upward."
 federation: WWE
 date: 2026-10-14T16:28:01.000Z
 source_id: 802255019

@@ -1,7 +1,7 @@
 ---
 title: "AJ Francis' TNA Contract Coming Up Soon"
 slug: "aj-francis-tna-contract-coming-up-soon"
-description: "AJ Francis could be heading into free agency soon, but he is expected to stay with TNA Wrestling. According to Sean Ross Sapp of Fightful Select, his…"
+description: "AJ Francis could be heading into free agency soon, but he is expected to stay with TNA Wrestling."
 federation: TNA
 date: 2026-10-24T19:42:38.000Z
 source_id: 802259214

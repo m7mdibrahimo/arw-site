@@ -1,7 +1,7 @@
 ---
 title: "Brooke Havok Considered for WWE ID Women's Title Before Injury"
 slug: "brooke-havok-considered-for-wwe-id-womens-title-before-injury"
-description: "According to Fightful Select, Brooke Havok was at one point considered and even planned to dethrone Laynie Luck as the WWE ID Women's Champion prior to…"
+description: "According to Fightful Select, Brooke Havok was at one point considered and even planned to dethrone Laynie Luck as the WWE ID Women's Champion prior."
 federation: WWE
 date: 2026-10-10T02:23:14.000Z
 source_id: 332976

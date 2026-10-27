@@ -1,7 +1,7 @@
 ---
 title: "Mike Bailey: Constant Progress Is My Greatest Accomplishment in Pro Wrestling"
 slug: "mike-bailey-constant-progress-is-my-greatest-accomplishment-in-pro-wrestling"
-description: "Mike Bailey recently reflected on his career and his first match against Mustafa Ali, which took place in February 2024 at Prestige Wrestling's A Moment Of…"
+description: "Mike Bailey recently reflected on his career and his first match against Mustafa Ali."
 federation: TNA
 date: 2026-10-18T16:00:00.000Z
 source_id: 334028

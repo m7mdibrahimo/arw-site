@@ -1,7 +1,7 @@
 ---
 title: "Will Ospreay Expresses Delight Over the New Level Joining AEW"
 slug: "will-ospreay-expresses-delight-over-the-new-level-joining-aew"
-description: "Will Ospreay recently shared his thoughts on The New Level joining AEW, expressing his delight at having them as part of the roster. At AEW All In 2026,…"
+description: "Will Ospreay recently shared his thoughts on The New Level joining AEW, expressing his delight at having them as part of the roster."
 federation: AEW
 date: 2026-10-19T13:11:30.000Z
 source_id: 334658

@@ -1,7 +1,7 @@
 ---
 title: "Bron Breakker Lands on His Neck During Scary Spot at WWE Live Event"
 slug: "bron-breakker-lands-on-his-neck-during-scary-spot-at-wwe-live-event"
-description: "Bron Breakker suffered a scary landing on his neck during a WWE live event on October 17. The incident occurred during a match in which Breakker teamed…"
+description: "Bron Breakker suffered a scary landing on his neck during a WWE live event on October 17."
 federation: WWE
 date: 2026-10-18T20:55:34.000Z
 source_id: 802256994

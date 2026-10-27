@@ -1,7 +1,7 @@
 ---
 title: "Vince McMahon’s Reckless Driving Case Officially Closed After Completing Probation"
 slug: "vince-mcmahons-reckless-driving-case-officially-closed-after-completing-probatio"
-description: "Vince McMahon has officially resolved his 2025 reckless driving case. According to PWInsider, McMahon successfully completed a one-year probation period…"
+description: "Vince McMahon has officially resolved his 2025 reckless driving case. According to PWInsider."
 federation: WWE
 date: 2026-10-15T17:11:10.000Z
 source_id: 802255447

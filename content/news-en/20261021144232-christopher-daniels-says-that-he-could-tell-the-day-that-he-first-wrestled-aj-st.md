@@ -1,7 +1,7 @@
 ---
 title: "Christopher Daniels Says That He Could Tell the Day That He First Wrestled AJ Styles That He Was Going to Be Special"
 slug: "christopher-daniels-says-that-he-could-tell-the-day-that-he-first-wrestled-aj-st"
-description: "Christopher Daniels reflected on the early days of his rivalry with AJ Styles and noted that he knew early on that Styles was destined for greatness.…"
+description: "Christopher Daniels reflected on the early days of his rivalry with AJ Styles and noted that he knew early on that Styles was destined for greatness."
 federation: TNA
 date: 2026-10-21T11:42:32.000Z
 source_id: 334952

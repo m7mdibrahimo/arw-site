@@ -1,7 +1,7 @@
 ---
 title: "AEW's Mick Foley Says He's Better Suited to Tony Khan's Management Style"
 slug: "aews-mick-foley-says-hes-better-suited-to-tony-khans-management-style"
-description: "Mick Foley expressed his admiration for AEW and Tony Khan's management style, contrasting it with his past experience in WWE. Foley left WWE after growing…"
+description: "Mick Foley expressed his admiration for AEW and Tony Khan's management style, contrasting it with his past experience in WWE."
 federation: AEW
 date: 2026-10-15T15:00:00.000Z
 source_id: 2192876835

@@ -1,7 +1,7 @@
 ---
 title: "First Look at The Rock as the Chicken Man in 'Lizard Music'"
 slug: "first-look-at-the-rock-as-the-chicken-man-in-lizard-music"
-description: "Dwayne \"The Rock\" Johnson is portraying a 70-year-old character known as the Chicken Man in the upcoming film 'Lizard Music'. Directed by Benny Safdie, the…"
+description: "Dwayne \"The Rock\" Johnson is portraying a 70-year-old character known as the Chicken Man in the upcoming film 'Lizard Music'."
 federation: WWE
 date: 2026-10-20T20:10:24.000Z
 source_id: 334872

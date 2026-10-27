@@ -1,7 +1,7 @@
 ---
 title: "Why Roman Reigns Keeps His Distance From Other WWE Wrestlers Backstage"
 slug: "why-roman-reigns-keeps-his-distance-from-other-wwe-wrestlers-backstage"
-description: "During a recent appearance on Shannon Sharpe's Club Shay Shay, Roman Reigns explained why he and other top WWE stars like John Cena, The Rock, and Batista…"
+description: "During a recent appearance on Shannon Sharpe's Club Shay Shay, Roman Reigns explained why he and other top WWE stars like John Cena, The Rock."
 federation: WWE
 date: 2026-10-14T12:45:01.000Z
 source_id: 802254955

@@ -1,7 +1,7 @@
 ---
 title: "Penta Teases Big Surprise and Warns Champions"
 slug: "penta-teases-big-surprise-and-warns-champions"
-description: "Penta holds the Money in the Bank briefcase, granting him a guaranteed title shot at any WWE championship at any time. Speaking at the post-show press…"
+description: "Penta holds the Money in the Bank briefcase, granting him a guaranteed title shot at any WWE championship at any time."
 federation: WWE
 date: 2026-10-11T01:32:26.000Z
 source_id: 333172

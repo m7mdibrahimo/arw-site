@@ -1,7 +1,7 @@
 ---
 title: "Kazuchika Okada Retains AEW International Title in Clockwork Carnage Qualifier"
 slug: "kazuchika-okada-retains-aew-international-title-in-clockwork-carnage-qualifier"
-description: "Kazuchika Okada remains the AEW International Champion after defeating Myron Reed on the October 14 episode of AEW Dynamite. This victory also earned Okada…"
+description: "Kazuchika Okada remains the AEW International Champion after defeating Myron Reed on the October 14 episode of AEW Dynamite."
 federation: AEW
 date: 2026-10-15T01:34:20.000Z
 source_id: 3328852665

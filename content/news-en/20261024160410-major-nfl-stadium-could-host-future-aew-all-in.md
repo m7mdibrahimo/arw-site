@@ -1,7 +1,7 @@
 ---
 title: "Major NFL Stadium Could Host Future AEW All In"
 slug: "major-nfl-stadium-could-host-future-aew-all-in"
-description: "AEW running All In at the home of the Philadelphia Eagles is a genuine possibility for the future, according to referee and travel department manager Bryce…"
+description: "AEW running All In at the home of the Philadelphia Eagles is a genuine possibility for the future."
 federation: AEW
 date: 2026-10-24T13:04:10.000Z
 source_id: 802259105

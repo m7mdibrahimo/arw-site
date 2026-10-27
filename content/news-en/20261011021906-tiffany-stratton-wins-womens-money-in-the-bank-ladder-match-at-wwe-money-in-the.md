@@ -1,7 +1,7 @@
 ---
 title: "Tiffany Stratton Wins Women’s Money in the Bank Ladder Match at WWE Money in the Bank 2026"
 slug: "tiffany-stratton-wins-womens-money-in-the-bank-ladder-match-at-wwe-money-in-the"
-description: "Tiffany Stratton secured a future world title opportunity after winning a chaotic Women’s Money in the Bank ladder match at WWE Money in the Bank 2026. She…"
+description: "Tiffany Stratton secured a future world title opportunity after winning a chaotic Women’s Money in the Bank ladder match at WWE Money in the Bank 2026."
 federation: WWE
 date: 2026-10-10T23:19:06.000Z
 source_id: 802253435

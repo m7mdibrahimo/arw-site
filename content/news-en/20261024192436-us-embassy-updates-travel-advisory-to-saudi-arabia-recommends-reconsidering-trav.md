@@ -1,7 +1,7 @@
 ---
 title: "US Embassy Updates Travel Advisory to Saudi Arabia, Recommends Reconsidering Travel"
 slug: "us-embassy-updates-travel-advisory-to-saudi-arabia-recommends-reconsidering-trav"
-description: "The US Embassy has updated its travel advisory for Saudi Arabia due to the threat of increased Iranian-supported Houthi regional aggression, armed…"
+description: "The US Embassy has updated its travel advisory for Saudi Arabia due to the threat of increased Iranian-supported Houthi regional aggression, armed conflict."
 federation: WWE
 date: 2026-10-24T16:24:36.000Z
 source_id: 335469

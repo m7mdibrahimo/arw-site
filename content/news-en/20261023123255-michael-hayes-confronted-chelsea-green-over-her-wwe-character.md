@@ -1,7 +1,7 @@
 ---
 title: "Michael Hayes Confronted Chelsea Green Over Her WWE Character"
 slug: "michael-hayes-confronted-chelsea-green-over-her-wwe-character"
-description: "WWE Hall of Famer Michael Hayes recently revealed that he once confronted Chelsea Green about her matches lacking her signature character work. Speaking on…"
+description: "WWE Hall of Famer Michael Hayes recently revealed that he once confronted Chelsea Green about her matches lacking her signature character work."
 federation: WWE
 date: 2026-10-23T09:32:55.000Z
 source_id: 802258622

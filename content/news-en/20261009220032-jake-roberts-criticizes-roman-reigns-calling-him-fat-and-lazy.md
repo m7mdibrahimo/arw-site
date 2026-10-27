@@ -1,7 +1,7 @@
 ---
 title: "Jake Roberts Criticizes Roman Reigns, Calling Him 'Fat' and 'Lazy'"
 slug: "jake-roberts-criticizes-roman-reigns-calling-him-fat-and-lazy"
-description: "WWE Hall of Famer Jake Roberts recently shared a blunt assessment of Roman Reigns. Speaking on Inside the Ropes, Roberts expressed his dissatisfaction with…"
+description: "WWE Hall of Famer Jake Roberts recently shared a blunt assessment of Roman Reigns."
 federation: WWE
 date: 2026-10-09T19:00:32.000Z
 source_id: 802252827

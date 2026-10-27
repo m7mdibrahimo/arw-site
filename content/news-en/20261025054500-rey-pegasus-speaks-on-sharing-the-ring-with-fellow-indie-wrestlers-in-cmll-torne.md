@@ -1,7 +1,7 @@
 ---
 title: "Rey Pegasus Speaks on Sharing the Ring With Fellow Indie Wrestlers in CMLL Torneo de Escuelas"
 slug: "rey-pegasus-speaks-on-sharing-the-ring-with-fellow-indie-wrestlers-in-cmll-torne"
-description: "Rey Pegasus discussed his experience meeting and competing against fellow independent wrestlers during the 2026 CMLL Torneo de Escuelas. Pegasus and his…"
+description: "Rey Pegasus discussed his experience meeting and competing against fellow independent wrestlers during the 2026 CMLL Torneo de Escuelas."
 federation: INDIE
 date: 2026-10-25T02:45:00.000Z
 source_id: 335545

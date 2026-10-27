@@ -1,7 +1,7 @@
 ---
 title: "WWE Paid $44,000 for Psicosis Surgery After Rey Mysterio Request"
 slug: "wwe-paid-44-000-for-psicosis-surgery-after-rey-mysterio-request"
-description: "WWE covered the cost of hip replacement surgery for lucha libre legend Psicosis after Rey Mysterio pushed the company to help his longtime friend and…"
+description: "WWE covered the cost of hip replacement surgery for lucha libre legend Psicosis after Rey Mysterio pushed the company to help his longtime friend and rival."
 federation: WWE
 date: 2026-10-16T15:17:05.000Z
 source_id: 802255684

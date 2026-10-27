@@ -1,7 +1,7 @@
 ---
 title: "Eric Bischoff Says Anti-ICE Chants Don’t Belong in Wrestling"
 slug: "eric-bischoff-says-anti-ice-chants-dont-belong-in-wrestling"
-description: "Former WCW President Eric Bischoff recently shared his thoughts on the growing presence of politics in professional wrestling, specifically addressing the…"
+description: "Former WCW President Eric Bischoff recently shared his thoughts on the growing presence of politics in professional wrestling."
 federation: AEW
 date: 2026-10-09T22:06:44.000Z
 source_id: 802252888

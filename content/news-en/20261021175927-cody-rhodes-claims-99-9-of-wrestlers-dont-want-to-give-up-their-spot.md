@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Claims 99.9% of Wrestlers Don’t Want to Give Up Their Spot"
 slug: "cody-rhodes-claims-99-9-of-wrestlers-dont-want-to-give-up-their-spot"
-description: "During a recent appearance, Cody Rhodes discussed John Cena's final WWE run and explained that 99.9% of wrestlers ultimately struggle to give up their…"
+description: "During a recent appearance, Cody Rhodes discussed John Cena's final WWE run and explained that 99.9% of wrestlers ultimately struggle to give up their spot."
 federation: WWE
 date: 2026-10-21T14:59:27.000Z
 source_id: 802258184

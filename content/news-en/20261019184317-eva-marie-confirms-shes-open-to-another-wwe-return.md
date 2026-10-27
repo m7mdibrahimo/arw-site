@@ -1,7 +1,7 @@
 ---
 title: "Eva Marie Confirms She’s Open to Another WWE Return"
 slug: "eva-marie-confirms-shes-open-to-another-wwe-return"
-description: "Eva Marie remains open to a potential return to WWE, expressing her continued affection for the company that launched her career. During a recent interview…"
+description: "Eva Marie remains open to a potential return to WWE, expressing her continued affection for the company that launched her career."
 federation: WWE
 date: 2026-10-19T15:43:17.000Z
 source_id: 802257185

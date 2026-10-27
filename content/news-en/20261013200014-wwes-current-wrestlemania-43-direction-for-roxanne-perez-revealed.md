@@ -1,7 +1,7 @@
 ---
 title: "WWE's Current WrestleMania 43 Direction for Roxanne Perez Revealed"
 slug: "wwes-current-wrestlemania-43-direction-for-roxanne-perez-revealed"
-description: "Although Roxanne Perez left Money in the Bank without the briefcase, WWE reportedly has significant plans for her moving forward. According to a report…"
+description: "Although Roxanne Perez left Money in the Bank without the briefcase, WWE reportedly has significant plans for her moving forward."
 federation: WWE
 date: 2026-10-13T17:00:14.000Z
 source_id: 802254598

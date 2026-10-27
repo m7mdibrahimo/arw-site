@@ -1,7 +1,7 @@
 ---
 title: "Drake Maverick Recalls Wetting Himself at WWE Survivor Series 2018"
 slug: "drake-maverick-recalls-wetting-himself-at-wwe-survivor-series-2018"
-description: "WWE star Drake Maverick recently looked back at a memorable moment from the 2018 Survivor Series event, where he was asked to urinate on himself during a…"
+description: "WWE star Drake Maverick recently looked back at a memorable moment from the 2018 Survivor Series event."
 federation: WWE
 date: 2026-10-09T01:00:00.000Z
 source_id: 973279184

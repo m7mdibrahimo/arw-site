@@ -1,7 +1,7 @@
 ---
 title: "Who Made the Call to Load Up WWE NXT Against AEW Blood & Guts"
 slug: "who-made-the-call-to-load-up-wwe-nxt-against-aew-blood-guts"
-description: "Dave Meltzer reported in the Wrestling Observer Newsletter that Nick Khan made the decision for WWE NXT to feature bigger attractions for its one-night…"
+description: "Dave Meltzer reported in the Wrestling Observer Newsletter that Nick Khan made the decision for WWE NXT to feature bigger attractions for its one-night move."
 federation: WWE
 date: 2026-10-23T14:23:16.000Z
 source_id: 802258696

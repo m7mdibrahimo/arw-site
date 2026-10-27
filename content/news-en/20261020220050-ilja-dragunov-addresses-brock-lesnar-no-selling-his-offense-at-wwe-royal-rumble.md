@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Addresses Brock Lesnar No-Selling His Offense at WWE Royal Rumble"
 slug: "ilja-dragunov-addresses-brock-lesnar-no-selling-his-offense-at-wwe-royal-rumble"
-description: "Ilja Dragunov recently addressed his brief showdown with Brock Lesnar at the Royal Rumble, where Lesnar quickly eliminated him and seemingly brushed off…"
+description: "Ilja Dragunov recently addressed his brief showdown with Brock Lesnar at the Royal Rumble."
 federation: WWE
 date: 2026-10-20T19:00:50.000Z
 source_id: 802257870

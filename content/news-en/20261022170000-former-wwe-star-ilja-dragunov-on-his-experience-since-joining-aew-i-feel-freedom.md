@@ -1,7 +1,7 @@
 ---
 title: "Former WWE Star Ilja Dragunov on His Experience Since Joining AEW: 'I Feel Freedom'"
 slug: "former-wwe-star-ilja-dragunov-on-his-experience-since-joining-aew-i-feel-freedom"
-description: "Former WWE star Ilja Dragunov recently opened up about his transition to AEW, describing his experience as a refreshing new start. After being released by…"
+description: "Former WWE star Ilja Dragunov recently opened up about his transition to AEW, describing his experience as a refreshing new start."
 federation: AEW
 date: 2026-10-22T14:00:00.000Z
 source_id: 4803416643

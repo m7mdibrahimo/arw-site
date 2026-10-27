@@ -1,7 +1,7 @@
 ---
 title: "Anna Jay Set to Undergo Surgery for Shoulder Injury"
 slug: "anna-jay-set-to-undergo-surgery-for-shoulder-injury"
-description: "AEW star Anna Jay has confirmed she will undergo shoulder surgery within the next one to two weeks. Jay explained during a Twitch stream that she spent…"
+description: "AEW star Anna Jay has confirmed she will undergo shoulder surgery within the next one to two weeks."
 federation: AEW
 date: 2026-10-12T13:55:19.000Z
 source_id: 802254098

@@ -1,7 +1,7 @@
 ---
 title: "TNA Knockouts Tag Team Champions Issue Bound for Glory Challenge to Zoey Serrano"
 slug: "tna-knockouts-tag-team-champions-issue-bound-for-glory-challenge-to-zoey-serrano"
-description: "TNA Knockouts World Tag Team Champions Allie and Kiera Hogan have challenged Zoey Serrano to a title match at Bound for Glory. The challenge was issued…"
+description: "TNA Knockouts World Tag Team Champions Allie and Kiera Hogan have challenged Zoey Serrano to a title match at Bound for Glory."
 federation: TNA
 date: 2026-10-09T01:27:57.000Z
 source_id: 802252587

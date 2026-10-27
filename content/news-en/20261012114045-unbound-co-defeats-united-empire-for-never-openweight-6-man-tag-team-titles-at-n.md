@@ -1,7 +1,7 @@
 ---
 title: "Unbound Co. Defeats United Empire for NEVER Openweight 6-Man Tag Team Titles at NJPW King of Pro-Wrestling"
 slug: "unbound-co-defeats-united-empire-for-never-openweight-6-man-tag-team-titles-at-n"
-description: "Unbound Co. captured the NEVER Openweight 6-Man Tag Team Titles from United Empire at NJPW King of Pro-Wrestling. Jeff Cobb, Yuto-Ice, and OSKAR defeated…"
+description: "Unbound Co. captured the NEVER Openweight 6-Man Tag Team Titles from United Empire at NJPW King of Pro-Wrestling."
 federation: NJPW
 date: 2026-10-12T08:40:45.000Z
 source_id: 333392

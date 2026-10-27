@@ -1,7 +1,7 @@
 ---
 title: "The Rock Reveals How WWE Promos Helped Him Break Into Acting"
 slug: "the-rock-reveals-how-wwe-promos-helped-him-break-into-acting"
-description: "The Rock recently discussed how his time in WWE gave him a significant advantage when he transitioned into a Hollywood acting career. Speaking with Elmo…"
+description: "The Rock recently discussed how his time in WWE gave him a significant advantage when he transitioned into a Hollywood acting career."
 federation: WWE
 date: 2026-10-14T21:45:03.000Z
 source_id: 802255059

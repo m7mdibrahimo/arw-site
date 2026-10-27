@@ -1,7 +1,7 @@
 ---
 title: "Women's Blood and Guts Challenge Made on AEW Collision"
 slug: "womens-blood-and-guts-challenge-made-on-aew-collision"
-description: "The October 24 episode of AEW Collision featured a new challenge for a Women's Blood and Guts match. During the event, Divine Dominion, consisting of Megan…"
+description: "The October 24 episode of AEW Collision featured a new challenge for a Women's Blood and Guts match."
 federation: AEW
 date: 2026-10-25T02:27:48.000Z
 source_id: 335580

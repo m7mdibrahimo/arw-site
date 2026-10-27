@@ -1,7 +1,7 @@
 ---
 title: "WWE's Roman Reigns Comments on Possibility of Doing More Movies After Street Fighter"
 slug: "wwes-roman-reigns-comments-on-possibility-of-doing-more-movies-after-street-figh"
-description: "WWE World Heavyweight Champion Roman Reigns recently discussed his plans to star in more movies following his role as Akuma in the upcoming Street Fighter…"
+description: "WWE World Heavyweight Champion Roman Reigns recently discussed his plans to star in more movies following his role as Akuma in the upcoming Street Fighter film."
 federation: WWE
 date: 2026-10-14T15:00:00.000Z
 source_id: 2250510531

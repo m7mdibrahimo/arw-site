@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes: Promos Have Become Rap Battles Now"
 slug: "cody-rhodes-promos-have-become-rap-battles-now"
-description: "Cody Rhodes recently discussed the evolution of wrestling promos during an appearance on the Flagrant podcast. While reviewing an old promo by JBL, Rhodes…"
+description: "Cody Rhodes recently discussed the evolution of wrestling promos during an appearance on the Flagrant podcast."
 federation: WWE
 date: 2026-10-08T20:00:00.000Z
 source_id: 332692

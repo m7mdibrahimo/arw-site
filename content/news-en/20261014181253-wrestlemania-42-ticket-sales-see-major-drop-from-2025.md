@@ -1,7 +1,7 @@
 ---
 title: "WrestleMania 42 Ticket Sales See Major Drop From 2025"
 slug: "wrestlemania-42-ticket-sales-see-major-drop-from-2025"
-description: "WrestleMania 42 generated $36,000,093 in ticket revenue across two nights at Allegiant Stadium in Las Vegas on April 18 and 19. Night One, headlined by…"
+description: "WrestleMania 42 generated $36,000,093 in ticket revenue across two nights at Allegiant Stadium in Las Vegas on April 18 and 19."
 federation: WWE
 date: 2026-10-14T15:12:53.000Z
 source_id: 802255007

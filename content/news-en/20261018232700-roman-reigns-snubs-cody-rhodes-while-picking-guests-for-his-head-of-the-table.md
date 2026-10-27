@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Snubs Cody Rhodes While Picking Guests for His Head of the Table"
 slug: "roman-reigns-snubs-cody-rhodes-while-picking-guests-for-his-head-of-the-table"
-description: "Roman Reigns is bringing his Tribal Chief persona into the Street Fighter universe, though Cody Rhodes did not make the cut for his dinner party. In a…"
+description: "Roman Reigns is bringing his Tribal Chief persona into the Street Fighter universe, though Cody Rhodes did not make the cut for his dinner party."
 federation: WWE
 date: 2026-10-18T20:27:00.000Z
 source_id: 802256985

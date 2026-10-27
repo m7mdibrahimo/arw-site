@@ -1,7 +1,7 @@
 ---
 title: "Becky Lynch Quietly Returned from Fractured Vertebra Injury"
 slug: "becky-lynch-quietly-returned-from-fractured-vertebra-injury"
-description: "Becky Lynch has been dealing with a more serious injury than previously known. Her husband, Seth Rollins, revealed during an appearance on The Rich Eisen…"
+description: "Becky Lynch has been dealing with a more serious injury than previously known."
 federation: WWE
 date: 2026-10-09T20:21:01.000Z
 source_id: 802252841

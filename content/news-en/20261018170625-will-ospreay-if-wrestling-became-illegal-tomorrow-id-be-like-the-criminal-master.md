@@ -1,7 +1,7 @@
 ---
 title: "Will Ospreay: If Wrestling Became Illegal Tomorrow, I'd Be Like the Criminal Mastermind of an Underground Mafia Wrestling Promotion"
 slug: "will-ospreay-if-wrestling-became-illegal-tomorrow-id-be-like-the-criminal-master"
-description: "Will Ospreay recently discussed his deep passion for professional wrestling and the extreme lengths he would go to in order to continue performing.…"
+description: "Will Ospreay recently discussed his deep passion for professional wrestling and the extreme lengths he would go to in order to continue performing."
 federation: AEW
 date: 2026-10-18T14:06:25.000Z
 source_id: 334526

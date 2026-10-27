@@ -1,7 +1,7 @@
 ---
 title: "Liv Morgan Still Women's World Champion After WWE Raw Main Event Ends in DQ"
 slug: "liv-morgan-still-womens-world-champion-after-wwe-raw-main-event-ends-in-dq"
-description: "Liv Morgan retained her WWE Women's World Championship in the main event of the October 26 episode of \"WWE Raw\" after her match against Becky Lynch ended…"
+description: "Liv Morgan retained her WWE Women's World Championship in the main event of the October 26 episode of \"WWE Raw\" after her match against Becky Lynch."
 federation: WWE
 date: 2026-10-27T02:53:20.000Z
 source_id: 4384231302

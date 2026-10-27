@@ -1,7 +1,7 @@
 ---
 title: "Bayley Makes Surprise Appearance at Big Time Wrestling’s 30th Anniversary Show"
 slug: "bayley-makes-surprise-appearance-at-big-time-wrestlings-30th-anniversary-show"
-description: "Bayley returned to the promotion where her career began during Big Time Wrestling's 30th anniversary show on October 18, 2026. She served as the special…"
+description: "Bayley returned to the promotion where her career began during Big Time Wrestling's 30th anniversary show on October 18, 2026."
 federation: WWE
 date: 2026-10-19T08:40:16.000Z
 source_id: 802257052

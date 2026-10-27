@@ -1,7 +1,7 @@
 ---
 title: "Taipei Deathmatch Announced for PRODUCE Vol. 6 and WWE NXT Highlights"
 slug: "taipei-deathmatch-announced-for-produce-vol-6-and-wwe-nxt-highlights"
-description: "PRODUCE has officially announced that a Taipei Deathmatch will take place at the upcoming PRODUCE Vol. 6 event. In addition, the latest highlights from the…"
+description: "PRODUCE has officially announced that a Taipei Deathmatch will take place at the upcoming PRODUCE Vol. 6 event."
 federation: WWE
 date: 2026-10-14T22:00:37.000Z
 source_id: 333934

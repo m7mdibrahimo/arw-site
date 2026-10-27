@@ -1,7 +1,7 @@
 ---
 title: "AEW Changes Jay White’s Faction Name Following Fan Backlash"
 slug: "aew-changes-jay-whites-faction-name-following-fan-backlash"
-description: "AEW quickly changed the name of Jay White’s new faction after receiving negative feedback from fans. White had introduced the group as The Last Outfit…"
+description: "AEW quickly changed the name of Jay White’s new faction after receiving negative feedback from fans."
 federation: AEW
 date: 2026-10-25T10:33:29.000Z
 source_id: 802259466

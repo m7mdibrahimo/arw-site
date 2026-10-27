@@ -1,7 +1,7 @@
 ---
 title: "Christyan XO Discusses Her Start With AEW and ROH"
 slug: "christyan-xo-discusses-her-start-with-aew-and-roh"
-description: "Christyan XO recently shared insights into her professional wrestling journey and her inclusion in the Shane Taylor Promotions faction within ROH. The…"
+description: "Christyan XO recently shared insights into her professional wrestling journey and her inclusion in the Shane Taylor Promotions faction within ROH."
 federation: AEW
 date: 2026-10-15T23:30:33.000Z
 source_id: 334126

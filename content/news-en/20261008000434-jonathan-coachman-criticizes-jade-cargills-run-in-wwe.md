@@ -1,7 +1,7 @@
 ---
 title: "Jonathan Coachman Criticizes Jade Cargill's Run in WWE"
 slug: "jonathan-coachman-criticizes-jade-cargills-run-in-wwe"
-description: "Former broadcaster Jonathan Coachman recently shared a harsh assessment of Jade Cargill, claiming according to Ringside News that she lacks the necessary…"
+description: "Former broadcaster Jonathan Coachman recently shared a harsh assessment of Jade Cargill."
 federation: WWE
 date: 2026-10-07T21:04:34.000Z
 source_id: 802252207

@@ -1,7 +1,7 @@
 ---
 title: "Shingo Takagi & Natsupoi vs. Hirooki Goto & Yuna Mizumori Set for STARDOM's Oct. 29 Show"
 slug: "shingo-takagi-natsupoi-vs-hirooki-goto-yuna-mizumori-set-for-stardoms-oct-29-sho"
-description: "Shingo Takagi and his wife, Natsupoi, are joining forces for a mixed tag team match. During the October 11 event for World Wonder Ring STARDOM, Natsupoi…"
+description: "Shingo Takagi and his wife, Natsupoi, are joining forces for a mixed tag team match."
 federation: NJPW
 date: 2026-10-12T21:29:52.000Z
 source_id: 333560

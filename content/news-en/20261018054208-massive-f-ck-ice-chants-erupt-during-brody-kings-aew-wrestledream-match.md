@@ -1,7 +1,7 @@
 ---
 title: "Massive “F*ck ICE” Chants Erupt During Brody King’s AEW WrestleDream Match"
 slug: "massive-f-ck-ice-chants-erupt-during-brody-kings-aew-wrestledream-match"
-description: "Fans at AEW WrestleDream on October 17, 2026, launched into loud anti-ICE chants as Brody King entered the arena for the AEW World Trios Championship…"
+description: "Fans at AEW WrestleDream on October 17, 2026, launched into loud anti-ICE chants as Brody King entered the arena for the AEW World Trios Championship match."
 federation: AEW
 date: 2026-10-18T02:42:08.000Z
 source_id: 802256601

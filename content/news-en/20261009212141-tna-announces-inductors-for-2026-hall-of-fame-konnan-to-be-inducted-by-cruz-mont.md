@@ -1,7 +1,7 @@
 ---
 title: "TNA Announces Inductors for 2026 Hall of Fame, Konnan to Be Inducted by Cruz Montana"
 slug: "tna-announces-inductors-for-2026-hall-of-fame-konnan-to-be-inducted-by-cruz-mont"
-description: "TNA Wrestling has revealed the list of inductors for the 2026 Hall of Fame ceremony, which is scheduled to take place on October 11 at the Yuengling Center…"
+description: "TNA Wrestling has revealed the list of inductors for the 2026 Hall of Fame ceremony."
 federation: TNA
 date: 2026-10-09T18:21:41.000Z
 source_id: 332886

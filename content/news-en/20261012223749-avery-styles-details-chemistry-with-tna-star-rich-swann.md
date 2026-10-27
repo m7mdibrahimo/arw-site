@@ -1,7 +1,7 @@
 ---
 title: "Avery Styles Details Chemistry With TNA Star Rich Swann"
 slug: "avery-styles-details-chemistry-with-tna-star-rich-swann"
-description: "Avery Styles recently discussed his strong bond with TNA colleague Rich Swann, noting that the two developed an immediate connection outside of the ring.…"
+description: "Avery Styles recently discussed his strong bond with TNA colleague Rich Swann, noting that the two developed an immediate connection outside of the ring."
 federation: TNA
 date: 2026-10-12T19:37:49.000Z
 source_id: 4682966101

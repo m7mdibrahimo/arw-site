@@ -1,7 +1,7 @@
 ---
 title: "Ricky Saints Feels Like He Has Been in WWE for Ten Years"
 slug: "ricky-saints-feels-like-he-has-been-in-wwe-for-ten-years"
-description: "Ricky Saints recently reflected on his time in WWE, sharing that his tenure with the company feels like a full decade. Saints debuted in NXT in February of…"
+description: "Ricky Saints recently reflected on his time in WWE, sharing that his tenure with the company feels like a full decade."
 federation: WWE
 date: 2026-10-12T13:51:40.000Z
 source_id: 333493

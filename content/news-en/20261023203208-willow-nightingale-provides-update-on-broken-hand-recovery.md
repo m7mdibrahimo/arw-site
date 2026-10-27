@@ -1,7 +1,7 @@
 ---
 title: "Willow Nightingale Provides Update on Broken Hand Recovery"
 slug: "willow-nightingale-provides-update-on-broken-hand-recovery"
-description: "Willow Nightingale shared a fresh update on her broken hand recovery, confirming she is continuing daily treatment to heal the injury. She posted a photo…"
+description: "Willow Nightingale shared a fresh update on her broken hand recovery, confirming she is continuing daily treatment to heal the injury."
 federation: AEW
 date: 2026-10-23T17:32:08.000Z
 source_id: 802258738

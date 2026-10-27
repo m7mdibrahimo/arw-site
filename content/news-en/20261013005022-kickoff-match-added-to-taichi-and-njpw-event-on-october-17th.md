@@ -1,7 +1,7 @@
 ---
 title: "Kickoff Match Added to Taichi and NJPW Event on October 17th"
 slug: "kickoff-match-added-to-taichi-and-njpw-event-on-october-17th"
-description: "NJPW announced a new kickoff bout for the upcoming Taichi event, scheduled for October 17th at the wrestler's former middle school. The match features…"
+description: "NJPW announced a new kickoff bout for the upcoming Taichi event, scheduled for October 17th at the wrestler's former middle school."
 federation: NJPW
 date: 2026-10-12T21:50:22.000Z
 source_id: 333565

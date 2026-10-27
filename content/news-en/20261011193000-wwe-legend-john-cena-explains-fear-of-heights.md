@@ -1,7 +1,7 @@
 ---
 title: "WWE Legend John Cena Explains Fear of Heights"
 slug: "wwe-legend-john-cena-explains-fear-of-heights"
-description: "During a recent interview with E! News to promote his new film Matchbox: The Movie, WWE legend John Cena opened up about developing a fear of heights…"
+description: "During a recent interview with E! News to promote his new film Matchbox: The Movie."
 federation: WWE
 date: 2026-10-11T16:30:00.000Z
 source_id: 4745158523

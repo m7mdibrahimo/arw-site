@@ -1,7 +1,7 @@
 ---
 title: "PRODUCE Wrestling to Honor Ms. Sandra Gray on November 27th"
 slug: "produce-wrestling-to-honor-ms-sandra-gray-on-november-27th"
-description: "PRODUCE Wrestling announced that its November 27th event, Vol. 7: FRIDAY, will feature a special presentation honoring legendary fashion and costume…"
+description: "PRODUCE Wrestling announced that its November 27th event, Vol. 7: FRIDAY."
 federation: INDIE
 date: 2026-10-15T01:22:06.000Z
 source_id: 333964

@@ -1,7 +1,7 @@
 ---
 title: "Max Caster’s TNA Controversy Could Hurt His WWE Chances"
 slug: "max-casters-tna-controversy-could-hurt-his-wwe-chances"
-description: "Max Caster’s controversial appearance at TNA Bound for Glory may have negatively impacted his future prospects with WWE. According to Bryan Alvarez on…"
+description: "Max Caster’s controversial appearance at TNA Bound for Glory may have negatively impacted his future prospects with WWE."
 federation: WWE
 date: 2026-10-12T20:05:01.000Z
 source_id: 802254237

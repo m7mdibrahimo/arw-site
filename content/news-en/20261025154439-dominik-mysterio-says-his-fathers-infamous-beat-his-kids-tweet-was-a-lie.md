@@ -1,7 +1,7 @@
 ---
 title: "Dominik Mysterio Says His Father's Infamous Beat His Kids Tweet Was a Lie"
 slug: "dominik-mysterio-says-his-fathers-infamous-beat-his-kids-tweet-was-a-lie"
-description: "Dominik Mysterio addressed an infamous tweet from his father, Rey Mysterio, where he stated he was planning to beat his kids. While speaking with Ring Rust…"
+description: "Dominik Mysterio addressed an infamous tweet from his father, Rey Mysterio, where he stated he was planning to beat his kids."
 federation: WWE
 date: 2026-10-25T12:44:39.000Z
 source_id: 335626

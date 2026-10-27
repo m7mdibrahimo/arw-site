@@ -1,7 +1,7 @@
 ---
 title: "AJ Styles Says He Was in His Prime in WWE as Opposed to TNA"
 slug: "aj-styles-says-he-was-in-his-prime-in-wwe-as-opposed-to-tna"
-description: "AJ Styles believes his true prime occurred during his tenure in WWE rather than TNA Wrestling. While Styles gained significant recognition during his years…"
+description: "AJ Styles believes his true prime occurred during his tenure in WWE rather than TNA Wrestling."
 federation: WWE
 date: 2026-10-10T19:30:00.000Z
 source_id: 1800557625

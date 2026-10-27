@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Thinks Aquaman Star Would Make Good WWE Superstar"
 slug: "cody-rhodes-thinks-aquaman-star-would-make-good-wwe-superstar"
-description: "Cody Rhodes believes that actor Jason Momoa could eventually join WWE. In an appearance on ESPN's \"The Rich Eisen Show,\" Rhodes noted that Momoa possesses…"
+description: "Cody Rhodes believes that actor Jason Momoa could eventually join WWE."
 federation: WWE
 date: 2026-10-26T14:00:00.000Z
 source_id: 1815699310

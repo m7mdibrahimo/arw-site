@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Appearance, JD McDonagh vs. Joe Hendry Set for 10/19 WWE Raw"
 slug: "roman-reigns-appearance-jd-mcdonagh-vs-joe-hendry-set-for-10-19-wwe-raw"
-description: "WWE has announced the lineup for the October 19 episode of WWE Raw. Roman Reigns is scheduled to return to the red brand following his victory over LA…"
+description: "WWE has announced the lineup for the October 19 episode of WWE Raw. Roman Reigns is scheduled to return to the red brand following his victory over LA Knight."
 federation: WWE
 date: 2026-10-13T02:16:05.000Z
 source_id: 333612

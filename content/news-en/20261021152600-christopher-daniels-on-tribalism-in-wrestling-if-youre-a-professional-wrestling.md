@@ -1,7 +1,7 @@
 ---
 title: "Christopher Daniels on Tribalism in Wrestling: If You're a Professional Wrestling Fan, I Think You Should Support All Pro Wrestling"
 slug: "christopher-daniels-on-tribalism-in-wrestling-if-youre-a-professional-wrestling"
-description: "Christopher Daniels recently discussed tribalism in professional wrestling during an interview with Going Ringside, sharing his perspective that fans…"
+description: "Christopher Daniels recently discussed tribalism in professional wrestling during an interview with Going Ringside."
 federation: AEW
 date: 2026-10-21T12:26:00.000Z
 source_id: 334955

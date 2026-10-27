@@ -1,7 +1,7 @@
 ---
 title: "Backstage News on Original Plans for WWE Money in the Bank Ladder Match Winners"
 slug: "backstage-news-on-original-plans-for-wwe-money-in-the-bank-ladder-match-winners"
-description: "Backstage reports reveal that Bron Breakker and Roxanne Perez were originally slated to win the Money in the Bank ladder matches instead of Penta and…"
+description: "Backstage reports reveal that Bron Breakker and Roxanne Perez were originally slated to win the Money in the Bank ladder matches instead of Penta and Tiffany."
 federation: WWE
 date: 2026-10-13T18:13:41.000Z
 source_id: 4553664490

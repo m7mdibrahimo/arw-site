@@ -1,7 +1,7 @@
 ---
 title: "Val Venis Claims Murderers and Child Molesters Can Still Go to Heaven"
 slug: "val-venis-claims-murderers-and-child-molesters-can-still-go-to-heaven"
-description: "Former WWE star Val Venis shared a controversial perspective during a recent interview, stating that even murderers and child molesters can attain…"
+description: "Former WWE star Val Venis shared a controversial perspective during a recent interview."
 federation: WWE
 date: 2026-10-17T15:31:55.000Z
 source_id: 802256232

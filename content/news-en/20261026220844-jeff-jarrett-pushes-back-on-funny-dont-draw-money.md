@@ -1,7 +1,7 @@
 ---
 title: "Jeff Jarrett Pushes Back on 'Funny Don't Draw Money'"
 slug: "jeff-jarrett-pushes-back-on-funny-dont-draw-money"
-description: "WWE Hall of Famer Jeff Jarrett recently pushed back against the long-standing belief that comedy wrestling does not draw money. Speaking on his My World…"
+description: "WWE Hall of Famer Jeff Jarrett recently pushed back against the long-standing belief that comedy wrestling does not draw money."
 federation: AEW
 date: 2026-10-26T19:08:44.000Z
 source_id: 1588121791

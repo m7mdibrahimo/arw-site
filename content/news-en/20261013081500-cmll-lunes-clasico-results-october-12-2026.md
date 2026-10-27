@@ -1,7 +1,7 @@
 ---
 title: "CMLL Lunes Clásico Results: October 12, 2026"
 slug: "cmll-lunes-clasico-results-october-12-2026"
-description: "Consejo Mundial de Lucha Libre hosted CMLL Lunes Clásico on October 12, 2026, at Arena Puebla in Puebla, México, according to Fightful. Fans in attendance…"
+description: "Consejo Mundial de Lucha Libre hosted CMLL Lunes Clásico on October 12, 2026, at Arena Puebla in Puebla, México, according to Fightful."
 federation: INDIE
 date: 2026-10-13T05:15:00.000Z
 source_id: 333637

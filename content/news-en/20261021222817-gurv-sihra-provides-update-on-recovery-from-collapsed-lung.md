@@ -1,7 +1,7 @@
 ---
 title: "Gurv Sihra Provides Update on Recovery From Collapsed Lung"
 slug: "gurv-sihra-provides-update-on-recovery-from-collapsed-lung"
-description: "Gurv Sihra, formerly known as Sunil Singh, shared a health update regarding his recovery from a collapsed lung. He revealed that his lungs are nearly back…"
+description: "Gurv Sihra, formerly known as Sunil Singh, shared a health update regarding his recovery from a collapsed lung."
 federation: INDIE
 date: 2026-10-21T19:28:17.000Z
 source_id: 335005

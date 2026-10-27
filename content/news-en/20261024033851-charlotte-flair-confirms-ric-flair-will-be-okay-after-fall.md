@@ -1,7 +1,7 @@
 ---
 title: "Charlotte Flair Confirms Ric Flair Will Be Okay After Fall"
 slug: "charlotte-flair-confirms-ric-flair-will-be-okay-after-fall"
-description: "Charlotte Flair has reassured fans regarding the health of her father, WWE legend Ric Flair, following his recent fall. Ric previously revealed on Friday…"
+description: "Charlotte Flair has reassured fans regarding the health of her father, WWE legend Ric Flair, following his recent fall."
 federation: WWE
 date: 2026-10-24T00:38:51.000Z
 source_id: 335345

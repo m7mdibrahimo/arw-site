@@ -1,7 +1,7 @@
 ---
 title: "MVP Diagnosed With a Heart Condition"
 slug: "mvp-diagnosed-with-a-heart-condition"
-description: "AEW star MVP recently revealed that he has been diagnosed with Wolff-Parkinson-White syndrome, a condition affecting the heart's electrical system.…"
+description: "AEW star MVP recently revealed that he has been diagnosed with Wolff-Parkinson-White syndrome, a condition affecting the heart's electrical system."
 federation: AEW
 date: 2026-10-24T15:38:06.000Z
 source_id: 802259138

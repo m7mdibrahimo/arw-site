@@ -1,7 +1,7 @@
 ---
 title: "Where Things Stand With Dralistico and RUSH in AEW After Cryptic Tweets"
 slug: "where-things-stand-with-dralistico-and-rush-in-aew-after-cryptic-tweets"
-description: "Dralistico's cryptic social media post has sparked speculation about his future with AEW, while RUSH's mysterious message appears to be related to visa…"
+description: "Dralistico's cryptic social media post has sparked speculation about his future with AEW."
 federation: AEW
 date: 2026-10-20T17:04:48.000Z
 source_id: 802257842

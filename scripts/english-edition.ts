@@ -9,6 +9,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { splitGluedBlocks, decodeHtmlEntities } from "./news-qa";
+import { metaDescription } from "../lib/meta-description.cjs";
 
 export const NEWS_EN_DIR = path.join(process.cwd(), "content", "news-en");
 const NEWS_DIR = path.join(process.cwd(), "content", "news");
@@ -73,6 +74,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - Grammar: "an" before a vowel sound (an experimental match, an emotional message), "a" before a consonant sound (a unanimous decision); a speaker's contraction is "I'm", never "I're" (the code fixes both, but write them right).
 - No markdown headings (#), no bold, no lists with bullets, no links in the text.
 - Times and time zones: keep each start time in the zone the source gives (8 pm local time in Mexico, 10 pm ET); never relabel a local time as ET (INCIDENTS #808).
+- Never add a "what's next" sentence the source does not have: no "will return to action at …", "will face … for the … Championship", "is set to appear at …" unless the SOURCE says it (a story about how Sami Zayn chose his name ended with a Crown Jewel match the source never mentioned, INCIDENTS #862). The story ends where the source ends.
 - Never mention Arab Wrestling, translation, AI, or that this is a rewrite.`;
 }
 
@@ -316,7 +318,9 @@ export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEW
   const missing = embedLines(i.arabicBody).filter((l) => !body.includes(linkOf(l)));
   const finalBody = missing.length ? `${body}\n\n${missing.join("\n\n")}` : body;
   const lead = body.split("\n").find((l) => l.trim() && !/^\s*>/.test(l) && !isEmbedLine(l)) || "";
-  const description = lead.length > 158 ? lead.slice(0, lead.lastIndexOf(" ", 155)) + "…" : lead;
+  // A description cut at 155 letters ended mid-sentence with «…» (1,536 of 1,564 stories): a snippet Google
+  // rewrites and a visitor cannot read. It now ends where a sentence or clause ends (INCIDENTS #862).
+  const description = metaDescription(lead);
   const file = path.join(dir, `${i.filePrefix}-${slug}.md`);
   const fm = [
     "---",

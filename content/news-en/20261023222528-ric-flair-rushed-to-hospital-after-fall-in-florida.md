@@ -1,7 +1,7 @@
 ---
 title: "Ric Flair Rushed to Hospital After Fall in Florida"
 slug: "ric-flair-rushed-to-hospital-after-fall-in-florida"
-description: "Ric Flair was rushed to a Florida hospital on Friday, October 23, following a severe fall that caused facial bleeding. According to TMZ, the WWE Hall of…"
+description: "Ric Flair was rushed to a Florida hospital on Friday, October 23, following a severe fall that caused facial bleeding."
 federation: WWE
 date: 2026-10-23T19:25:28.000Z
 source_id: 802258758

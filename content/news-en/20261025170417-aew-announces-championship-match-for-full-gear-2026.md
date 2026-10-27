@@ -1,7 +1,7 @@
 ---
 title: "AEW Announces Championship Match for Full Gear 2026"
 slug: "aew-announces-championship-match-for-full-gear-2026"
-description: "AEW has announced a new AEW World Trios Championship match for Full Gear 2026, giving Swerve Strickland another opportunity to compete for the titles.…"
+description: "AEW has announced a new AEW World Trios Championship match for Full Gear 2026, giving Swerve Strickland another opportunity to compete for the titles."
 federation: AEW
 date: 2026-10-25T14:04:17.000Z
 source_id: 802259536

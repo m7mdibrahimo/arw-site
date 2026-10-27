@@ -1,7 +1,7 @@
 ---
 title: "Seth Rollins Praises Becky Lynch for Pioneering Motherhood on the Road in WWE"
 slug: "seth-rollins-praises-becky-lynch-for-pioneering-motherhood-on-the-road-in-wwe"
-description: "Seth Rollins spoke highly of his wife, Becky Lynch, reflecting on how they manage family life while touring. Since welcoming their first child in December…"
+description: "Seth Rollins spoke highly of his wife, Becky Lynch, reflecting on how they manage family life while touring."
 federation: WWE
 date: 2026-10-09T17:22:48.000Z
 source_id: 332878

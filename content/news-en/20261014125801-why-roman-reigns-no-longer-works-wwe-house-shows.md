@@ -1,7 +1,7 @@
 ---
 title: "Why Roman Reigns No Longer Works WWE House Shows"
 slug: "why-roman-reigns-no-longer-works-wwe-house-shows"
-description: "Roman Reigns recently addressed criticism regarding his reduced WWE schedule during an appearance on Club Shay Shay, explaining why he no longer wrestles…"
+description: "Roman Reigns recently addressed criticism regarding his reduced WWE schedule during an appearance on Club Shay Shay."
 federation: WWE
 date: 2026-10-14T09:58:01.000Z
 source_id: 802254940

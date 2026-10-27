@@ -1,7 +1,7 @@
 ---
 title: "Update on Former WWE Star Shotzi Blackheart's Contract Status After TNA Appearance"
 slug: "update-on-former-wwe-star-shotzi-blackhearts-contract-status-after-tna-appearanc"
-description: "Since leaving WWE in 2025, Shotzi Blackheart has been a key figure in the MLW women's division, holding the MLW Women's Featherweight Championship for most…"
+description: "Since leaving WWE in 2025, Shotzi Blackheart has been a key figure in the MLW women's division."
 federation: TNA
 date: 2026-10-14T18:05:19.000Z
 source_id: 5152188653

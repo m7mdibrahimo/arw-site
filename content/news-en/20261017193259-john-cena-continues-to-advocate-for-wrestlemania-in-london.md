@@ -1,7 +1,7 @@
 ---
 title: "John Cena Continues to Advocate for WrestleMania in London"
 slug: "john-cena-continues-to-advocate-for-wrestlemania-in-london"
-description: "John Cena recently reiterated his strong support for bringing WrestleMania to London, expressing his belief that the city has earned the right to host the…"
+description: "John Cena recently reiterated his strong support for bringing WrestleMania to London."
 federation: WWE
 date: 2026-10-17T16:32:59.000Z
 source_id: 334350

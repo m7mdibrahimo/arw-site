@@ -1,7 +1,7 @@
 ---
 title: "John Cena Admits He Could’ve Wrestled Another Year or Two Before Retiring"
 slug: "john-cena-admits-he-couldve-wrestled-another-year-or-two-before-retiring"
-description: "John Cena recently shared that he likely had one or two years of wrestling left in him before deciding to retire. During an appearance on The Drew…"
+description: "John Cena recently shared that he likely had one or two years of wrestling left in him before deciding to retire."
 federation: WWE
 date: 2026-10-10T16:52:58.000Z
 source_id: 802253213

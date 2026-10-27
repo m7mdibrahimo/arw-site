@@ -1,7 +1,7 @@
 ---
 title: "Shelley Martinez Admits She Was Wrong About Maria Kanellis After Publicly Dragging Her Into Controversy"
 slug: "shelley-martinez-admits-she-was-wrong-about-maria-kanellis-after-publicly-draggi"
-description: "Shelley Martinez has walked back her recent comments regarding Maria Kanellis after realizing she was mistaken about who she was discussing. Martinez…"
+description: "Shelley Martinez has walked back her recent comments regarding Maria Kanellis after realizing she was mistaken about who she was discussing."
 federation: WWE
 date: 2026-10-18T19:13:31.000Z
 source_id: 802256961

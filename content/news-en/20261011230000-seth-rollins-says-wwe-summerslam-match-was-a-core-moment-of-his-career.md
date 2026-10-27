@@ -1,7 +1,7 @@
 ---
 title: "Seth Rollins Says WWE SummerSlam Match Was a Core Moment of His Career"
 slug: "seth-rollins-says-wwe-summerslam-match-was-a-core-moment-of-his-career"
-description: "During a recent interview with ESPN New York, Seth Rollins discussed his 2026 SummerSlam match against Roman Reigns, calling it a pivotal moment in his…"
+description: "During a recent interview with ESPN New York, Seth Rollins discussed his 2026 SummerSlam match against Roman Reigns, calling it a pivotal moment in his career."
 federation: WWE
 date: 2026-10-11T20:00:00.000Z
 source_id: 3363542057

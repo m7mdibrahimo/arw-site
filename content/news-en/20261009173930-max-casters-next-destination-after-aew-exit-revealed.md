@@ -1,7 +1,7 @@
 ---
 title: "Max Caster's Next Destination After AEW Exit Revealed"
 slug: "max-casters-next-destination-after-aew-exit-revealed"
-description: "Max Caster has confirmed his next destination following his departure from AEW. The former star announced that he will make his TNA debut this weekend at…"
+description: "Max Caster has confirmed his next destination following his departure from AEW."
 federation: TNA
 date: 2026-10-09T14:39:30.000Z
 source_id: 802252739

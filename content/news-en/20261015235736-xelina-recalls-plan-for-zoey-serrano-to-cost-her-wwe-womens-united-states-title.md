@@ -1,7 +1,7 @@
 ---
 title: "Xelina Recalls Plan for Zoey Serrano to Cost Her WWE Women's United States Title"
 slug: "xelina-recalls-plan-for-zoey-serrano-to-cost-her-wwe-womens-united-states-title"
-description: "In a recent interview on the Ring The Belle YouTube channel, Xelina, formerly known as Zelina Vega, opened up about her time in WWE and discussed a…"
+description: "In a recent interview on the Ring The Belle YouTube channel, Xelina, formerly known as Zelina Vega."
 federation: WWE
 date: 2026-10-15T20:57:36.000Z
 source_id: 334120

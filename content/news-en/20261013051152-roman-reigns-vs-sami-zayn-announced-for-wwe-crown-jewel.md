@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns vs. Sami Zayn Announced for WWE Crown Jewel"
 slug: "roman-reigns-vs-sami-zayn-announced-for-wwe-crown-jewel"
-description: "A major matchup is confirmed for WWE Crown Jewel. World Heavyweight Champion Roman Reigns will face WWE Champion Sami Zayn, with the winner earning the…"
+description: "A major matchup is confirmed for WWE Crown Jewel. World Heavyweight Champion Roman Reigns will face WWE Champion Sami Zayn."
 federation: WWE
 date: 2026-10-13T02:11:52.000Z
 source_id: 333609

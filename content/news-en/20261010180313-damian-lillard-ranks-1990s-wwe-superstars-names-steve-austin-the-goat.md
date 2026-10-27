@@ -1,7 +1,7 @@
 ---
 title: "Damian Lillard Ranks 1990s WWE Superstars, Names Steve Austin the GOAT"
 slug: "damian-lillard-ranks-1990s-wwe-superstars-names-steve-austin-the-goat"
-description: "Portland Trail Blazers star Damian Lillard shared his personal ranking of top WWE wrestlers from the 1990s in a recently released video. The NBA point…"
+description: "Portland Trail Blazers star Damian Lillard shared his personal ranking of top WWE wrestlers from the 1990s in a recently released video."
 federation: WWE
 date: 2026-10-10T15:03:13.000Z
 source_id: 333043

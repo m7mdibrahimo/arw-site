@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Reveals Why He Chose AEW After WWE Exit"
 slug: "ilja-dragunov-reveals-why-he-chose-aew-after-wwe-exit"
-description: "Ilja Dragunov has explained his decision to join AEW following his departure from WWE, noting that he wanted a fresh environment where he could breathe and…"
+description: "Ilja Dragunov has explained his decision to join AEW following his departure from WWE."
 federation: AEW
 date: 2026-10-18T05:40:19.000Z
 source_id: 802256775

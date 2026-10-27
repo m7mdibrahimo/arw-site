@@ -1,7 +1,7 @@
 ---
 title: "Blitzkrieg! Pro Static Age Results (10/17)"
 slug: "blitzkrieg-pro-static-age-results-10-17"
-description: "Blitzkrieg! Pro hosted its B!P Static Age event on October 17 in Enfield, Connecticut, with the show airing on YouTube according to Fightful. Angelo Carter…"
+description: "Blitzkrieg! Pro hosted its B!P Static Age event on October 17 in Enfield, Connecticut, with the show airing on YouTube according to Fightful."
 federation: INDIE
 date: 2026-10-22T15:31:58.000Z
 source_id: 335139

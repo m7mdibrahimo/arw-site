@@ -1,7 +1,7 @@
 ---
 title: "Conrad Thompson Fires Back at Roman Reigns Over Claims He’s Using His Name for Clicks"
 slug: "conrad-thompson-fires-back-at-roman-reigns-over-claims-hes-using-his-name-for-cl"
-description: "Conrad Thompson has responded to Roman Reigns after the WWE star accused him of using his name for views. Thompson previously labeled Reigns overrated and…"
+description: "Conrad Thompson has responded to Roman Reigns after the WWE star accused him of using his name for views."
 federation: WWE
 date: 2026-10-17T09:24:37.000Z
 source_id: 802256125

@@ -1,7 +1,7 @@
 ---
 title: "Yota Tsuji Discusses Idea of Doing NJPW vs AEW Matches at Tokyo Dome"
 slug: "yota-tsuji-discusses-idea-of-doing-njpw-vs-aew-matches-at-tokyo-dome"
-description: "Yota Tsuji suggested the idea of holding an inter-promotional event between NJPW and AEW at the Tokyo Dome, pointing out that top AEW talent has been…"
+description: "Yota Tsuji suggested the idea of holding an inter-promotional event between NJPW and AEW at the Tokyo Dome."
 federation: NJPW
 date: 2026-10-12T22:27:17.000Z
 source_id: 333572

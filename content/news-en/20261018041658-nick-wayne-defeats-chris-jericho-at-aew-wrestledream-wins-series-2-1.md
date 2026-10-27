@@ -1,7 +1,7 @@
 ---
 title: "Nick Wayne Defeats Chris Jericho at AEW WrestleDream, Wins Series 2-1"
 slug: "nick-wayne-defeats-chris-jericho-at-aew-wrestledream-wins-series-2-1"
-description: "Nick Wayne secured a victory over Chris Jericho at AEW WrestleDream. This marked the third singles match between the two stars, following their initial…"
+description: "Nick Wayne secured a victory over Chris Jericho at AEW WrestleDream. This marked the third singles match between the two stars."
 federation: AEW
 date: 2026-10-18T01:16:58.000Z
 source_id: 334434

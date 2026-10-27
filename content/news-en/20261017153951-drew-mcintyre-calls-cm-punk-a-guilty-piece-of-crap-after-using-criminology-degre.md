@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Calls CM Punk a 'Guilty Piece of Crap' After Using Criminology Degree to Judge Him"
 slug: "drew-mcintyre-calls-cm-punk-a-guilty-piece-of-crap-after-using-criminology-degre"
-description: "Drew McIntyre recently appeared on Stephanie McMahon’s podcast and used his criminology degree to evaluate CM Punk, joking that his longtime rival would…"
+description: "Drew McIntyre recently appeared on Stephanie McMahon’s podcast and used his criminology degree to evaluate CM Punk."
 federation: WWE
 date: 2026-10-17T12:39:51.000Z
 source_id: 802256185

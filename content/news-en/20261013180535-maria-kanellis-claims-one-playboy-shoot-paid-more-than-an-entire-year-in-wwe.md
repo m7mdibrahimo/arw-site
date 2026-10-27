@@ -1,7 +1,7 @@
 ---
 title: "Maria Kanellis Claims One Playboy Shoot Paid More Than an Entire Year in WWE"
 slug: "maria-kanellis-claims-one-playboy-shoot-paid-more-than-an-entire-year-in-wwe"
-description: "Maria Kanellis recently revealed a significant pay discrepancy from her time in WWE during the Divas era. According to Kanellis, she earned more money from…"
+description: "Maria Kanellis recently revealed a significant pay discrepancy from her time in WWE during the Divas era."
 federation: WWE
 date: 2026-10-13T15:05:35.000Z
 source_id: 802254613

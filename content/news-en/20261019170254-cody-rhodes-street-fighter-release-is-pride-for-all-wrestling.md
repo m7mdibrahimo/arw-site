@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes: Street Fighter Release Is Pride for All Wrestling"
 slug: "cody-rhodes-street-fighter-release-is-pride-for-all-wrestling"
-description: "Cody Rhodes discussed the global release of Street Fighter, stating that the new film is a proud moment for the entire wrestling industry. The movie adapts…"
+description: "Cody Rhodes discussed the global release of Street Fighter, stating that the new film is a proud moment for the entire wrestling industry."
 federation: WWE
 date: 2026-10-19T14:02:54.000Z
 source_id: 334661

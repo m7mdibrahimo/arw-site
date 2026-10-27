@@ -1,7 +1,7 @@
 ---
 title: "Conrad Thompson Responds to Roman Reigns Controversy, 'I Just Shared My Personal Wrestling Opinion'"
 slug: "conrad-thompson-responds-to-roman-reigns-controversy-i-just-shared-my-personal-w"
-description: "Conrad Thompson has responded to recent criticism regarding his opinions on Roman Reigns and his workload. In an interview with Sean Ross Sapp, Thompson…"
+description: "Conrad Thompson has responded to recent criticism regarding his opinions on Roman Reigns and his workload."
 federation: WWE
 date: 2026-10-24T16:00:00.000Z
 source_id: 335255

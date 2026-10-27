@@ -1,7 +1,7 @@
 ---
 title: "Tony Khan Addresses AEW's Future Under Skydance After Talks With David Ellison"
 slug: "tony-khan-addresses-aews-future-under-skydance-after-talks-with-david-ellison"
-description: "Tony Khan has shared details about his recent conversations with Skydance CEO David Ellison following the company's acquisition of Warner Bros. Discovery.…"
+description: "Tony Khan has shared details about his recent conversations with Skydance CEO David Ellison following the company's acquisition of Warner Bros. Discovery."
 federation: AEW
 date: 2026-10-15T18:20:08.000Z
 source_id: 802255454

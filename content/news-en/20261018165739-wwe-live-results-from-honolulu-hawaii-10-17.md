@@ -1,7 +1,7 @@
 ---
 title: "WWE Live Results From Honolulu, Hawaii (10/17)"
 slug: "wwe-live-results-from-honolulu-hawaii-10-17"
-description: "WWE held a live event on October 17 at the Neal S. Blaisdell Arena in Honolulu, Hawaii. Nia Jax defeated Roxanne Perez. Dragon Lee defeated Big Cass. In a…"
+description: "WWE held a live event on October 17 at the Neal S. Blaisdell Arena in Honolulu, Hawaii. Nia Jax defeated Roxanne Perez. Dragon Lee defeated Big Cass."
 federation: WWE
 date: 2026-10-18T13:57:39.000Z
 source_id: 334533

@@ -1,7 +1,7 @@
 ---
 title: "Four Hours of Cody Rhodes’ Street Fighter Footage Never Made the Final Cut"
 slug: "four-hours-of-cody-rhodes-street-fighter-footage-never-made-the-final-cut"
-description: "Cody Rhodes' role in the new Street Fighter movie involved significantly more improvisation than originally planned. Co-star Andrew Schulz revealed that…"
+description: "Cody Rhodes' role in the new Street Fighter movie involved significantly more improvisation than originally planned."
 federation: WWE
 date: 2026-10-13T18:05:11.000Z
 source_id: 802254667

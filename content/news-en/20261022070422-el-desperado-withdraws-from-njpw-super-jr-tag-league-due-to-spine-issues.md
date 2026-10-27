@@ -1,7 +1,7 @@
 ---
 title: "El Desperado Withdraws From NJPW Super Jr. Tag League Due to Spine Issues"
 slug: "el-desperado-withdraws-from-njpw-super-jr-tag-league-due-to-spine-issues"
-description: "El Desperado has been sidelined and will miss both the Super Jr. Tag League tournament and the CMLL x NJPW Lucha Kingdom event. New Japan Pro-Wrestling…"
+description: "El Desperado has been sidelined and will miss both the Super Jr. Tag League tournament and the CMLL x NJPW Lucha Kingdom event."
 federation: NJPW
 date: 2026-10-22T04:04:22.000Z
 source_id: 335104

@@ -1,7 +1,7 @@
 ---
 title: "AEW's Willow Nightingale Explains How She Deals With Imposter Syndrome"
 slug: "aews-willow-nightingale-explains-how-she-deals-with-imposter-syndrome"
-description: "AEW star Willow Nightingale recently discussed how she handles imposter syndrome during her rise in the women's division. Appearing on The Mick and Kenny…"
+description: "AEW star Willow Nightingale recently discussed how she handles imposter syndrome during her rise in the women's division."
 federation: AEW
 date: 2026-10-17T17:30:00.000Z
 source_id: 1315167711

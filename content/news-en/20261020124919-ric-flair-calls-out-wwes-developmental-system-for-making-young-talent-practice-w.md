@@ -1,7 +1,7 @@
 ---
 title: "Ric Flair Calls Out WWE’s Developmental System for Making Young Talent “Practice Wrestle” Each Other"
 slug: "ric-flair-calls-out-wwes-developmental-system-for-making-young-talent-practice-w"
-description: "Ric Flair believes WWE's developmental system is failing young talent because wrestlers spend too much time training against each other instead of gaining…"
+description: "Ric Flair believes WWE's developmental system is failing young talent because wrestlers spend too much time training against each other instead of gaining."
 federation: WWE
 date: 2026-10-20T09:49:19.000Z
 source_id: 802257638

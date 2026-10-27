@@ -1,7 +1,7 @@
 ---
 title: "John Cena Clarifies He Has Glasses, Not a Monocle"
 slug: "john-cena-clarifies-he-has-glasses-not-a-monocle"
-description: "John Cena recently cleared up any confusion regarding his eyewear during an appearance on Slice Joint, part of First We Feast. While reading a cue card,…"
+description: "John Cena recently cleared up any confusion regarding his eyewear during an appearance on Slice Joint, part of First We Feast."
 federation: WWE
 date: 2026-10-11T15:00:17.000Z
 source_id: 333255

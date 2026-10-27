@@ -1,7 +1,7 @@
 ---
 title: "First Look at AEW WrestleDream 2026 Stage Setup in Orlando"
 slug: "first-look-at-aew-wrestledream-2026-stage-setup-in-orlando"
-description: "Newly surfaced photos have revealed the massive stage setup for AEW WrestleDream 2026 inside the Addition Financial Arena at the University of Central…"
+description: "Newly surfaced photos have revealed the massive stage setup for AEW WrestleDream 2026 inside the Addition Financial Arena at the University of Central."
 federation: AEW
 date: 2026-10-17T22:24:50.000Z
 source_id: 802256329

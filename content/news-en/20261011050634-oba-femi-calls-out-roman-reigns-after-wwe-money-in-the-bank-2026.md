@@ -1,7 +1,7 @@
 ---
 title: "Oba Femi Calls Out Roman Reigns After WWE Money in the Bank 2026"
 slug: "oba-femi-calls-out-roman-reigns-after-wwe-money-in-the-bank-2026"
-description: "Oba Femi made a bold statement following his victory at WWE Money in the Bank 2026, where he defeated Bronson Reed despite interference from The Vision.…"
+description: "Oba Femi made a bold statement following his victory at WWE Money in the Bank 2026, where he defeated Bronson Reed despite interference from The Vision."
 federation: WWE
 date: 2026-10-11T02:06:34.000Z
 source_id: 802253582

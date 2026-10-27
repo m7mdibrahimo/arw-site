@@ -1,7 +1,7 @@
 ---
 title: "Zelina Vega Says WWE Told Her Not to Outshine Certain People During Promos"
 slug: "zelina-vega-says-wwe-told-her-not-to-outshine-certain-people-during-promos"
-description: "Zelina Vega is speaking out about the creative limits she faced during her time in WWE. Following her departure from the promotion, the former Women's…"
+description: "Zelina Vega is speaking out about the creative limits she faced during her time in WWE."
 federation: WWE
 date: 2026-10-15T17:06:07.000Z
 source_id: 802255440

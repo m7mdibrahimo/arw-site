@@ -1,7 +1,7 @@
 ---
 title: "Jason Hotch Defeats Mustafa Ali on TNA Impact"
 slug: "jason-hotch-defeats-mustafa-ali-on-tna-impact"
-description: "Jason Hotch successfully defended his International Championship against Mustafa Ali in a Two Out of Three Falls match during the main event of TNA Impact.…"
+description: "Jason Hotch successfully defended his International Championship against Mustafa Ali in a Two Out of Three Falls match during the main event of TNA Impact."
 federation: TNA
 date: 2026-10-23T03:08:25.000Z
 source_id: 4444426990

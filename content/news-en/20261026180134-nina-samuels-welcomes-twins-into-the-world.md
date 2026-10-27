@@ -1,7 +1,7 @@
 ---
 title: "Nina Samuels Welcomes Twins Into the World"
 slug: "nina-samuels-welcomes-twins-into-the-world"
-description: "Nina Samuels has announced the birth of her twin boys. After an 11-year career in professional wrestling, Samuels is now stepping into the role of…"
+description: "Nina Samuels has announced the birth of her twin boys. After an 11-year career in professional wrestling, Samuels is now stepping into the role of motherhood."
 federation: WWE
 date: 2026-10-26T15:01:34.000Z
 source_id: 335843

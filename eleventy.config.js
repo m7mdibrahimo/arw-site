@@ -640,6 +640,11 @@ module.exports = function(eleventyConfig) {
   };
   eleventyConfig.addFilter("stripDate", stripDate);
   eleventyConfig.addNunjucksFilter("stripDate", stripDate);
+  // A meta description cut at a fixed length ended mid-word/mid-sentence («…بدلا من...»): this one ends
+  // where a sentence or clause ends. Head only, nothing visible (INCIDENTS #862).
+  const metaDescription = require("./lib/meta-description.cjs").metaDescription;
+  eleventyConfig.addFilter("metaDescription", metaDescription);
+  eleventyConfig.addNunjucksFilter("metaDescription", metaDescription);
 
   const formatDate = function(dateObj, format) {
     if (!dateObj) return "";

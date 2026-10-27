@@ -1,7 +1,7 @@
 ---
 title: "Vince Russo Blasts WWE Agents Over Bron Breakker’s Scary Neck Landing at Live Event"
 slug: "vince-russo-blasts-wwe-agents-over-bron-breakkers-scary-neck-landing-at-live-eve"
-description: "Vince Russo recently criticized WWE agents following a dangerous neck landing by Bron Breakker during a live event. During an appearance on The Coach & Bro…"
+description: "Vince Russo recently criticized WWE agents following a dangerous neck landing by Bron Breakker during a live event."
 federation: WWE
 date: 2026-10-19T19:08:35.000Z
 source_id: 802257290

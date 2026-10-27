@@ -1,7 +1,7 @@
 ---
 title: "Samantha Irvin Set to Become Free Agent as AEW Interest Comes to Light"
 slug: "samantha-irvin-set-to-become-free-agent-as-aew-interest-comes-to-light"
-description: "Samantha Irvin is nearing the end of her non-compete agreement, and AEW has expressed interest in bringing her into the company. The former WWE ring…"
+description: "Samantha Irvin is nearing the end of her non-compete agreement, and AEW has expressed interest in bringing her into the company."
 federation: WWE
 date: 2026-10-23T21:31:21.000Z
 source_id: 802258799

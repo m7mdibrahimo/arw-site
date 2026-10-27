@@ -1,7 +1,7 @@
 ---
 title: "Je'Von Evans Says WWE Succeeded in Making Him Hate Villainous Faction"
 slug: "jevon-evans-says-wwe-succeeded-in-making-him-hate-villainous-faction"
-description: "During a recent appearance on Stephanie McMahon's podcast, current WWE star Je'Von Evans discussed his childhood reaction to Seth Rollins turning on his…"
+description: "During a recent appearance on Stephanie McMahon's podcast, current WWE star Je'Von Evans discussed his childhood reaction to Seth Rollins turning on his."
 federation: WWE
 date: 2026-10-19T12:30:00.000Z
 source_id: 3942488976

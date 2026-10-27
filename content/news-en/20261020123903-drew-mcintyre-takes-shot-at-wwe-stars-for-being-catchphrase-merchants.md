@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Takes Shot at WWE Stars for Being Catchphrase Merchants"
 slug: "drew-mcintyre-takes-shot-at-wwe-stars-for-being-catchphrase-merchants"
-description: "Drew McIntyre recently discussed his promo style and criticized some unnamed WWE colleagues for relying on catchphrases. Speaking on a recent podcast…"
+description: "Drew McIntyre recently discussed his promo style and criticized some unnamed WWE colleagues for relying on catchphrases."
 federation: WWE
 date: 2026-10-20T09:39:03.000Z
 source_id: 802257648

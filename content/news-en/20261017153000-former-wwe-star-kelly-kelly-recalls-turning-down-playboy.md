@@ -1,7 +1,7 @@
 ---
 title: "Former WWE Star Kelly Kelly Recalls Turning Down Playboy"
 slug: "former-wwe-star-kelly-kelly-recalls-turning-down-playboy"
-description: "Former WWE star Kelly Kelly recently recalled turning down an offer to model for Playboy during her early days with the company. Speaking on the \"LayTalk\"…"
+description: "Former WWE star Kelly Kelly recently recalled turning down an offer to model for Playboy during her early days with the company."
 federation: WWE
 date: 2026-10-17T12:30:00.000Z
 source_id: 1207235165

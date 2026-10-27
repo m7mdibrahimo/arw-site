@@ -1,7 +1,7 @@
 ---
 title: "Former WWE NXT and AEW Wrestler Amber Flora Arrested for DUI in Florida"
 slug: "former-wwe-nxt-and-aew-wrestler-amber-flora-arrested-for-dui-in-florida"
-description: "Former WWE NXT and AEW wrestler Amber Flora, also known on the independent scene as Amber Nova, is facing legal issues following her arrest in Orlando,…"
+description: "Former WWE NXT and AEW wrestler Amber Flora, also known on the independent scene as Amber Nova, is facing legal issues following her arrest in Orlando, Florida."
 federation: INDIE
 date: 2026-10-24T23:06:08.000Z
 source_id: 802259251

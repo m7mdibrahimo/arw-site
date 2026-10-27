@@ -1,7 +1,7 @@
 ---
 title: "Ring Rat Leaves Steven Flo with Facade After JCW Lunacy Breakdown"
 slug: "ring-rat-leaves-steven-flo-with-facade-after-jcw-lunacy-breakdown"
-description: "Steven Flo suffered a double loss during the October 8 episode of JCW Lunacy. Following a chaotic match against Facade, Flo's frustration boiled over after…"
+description: "Steven Flo suffered a double loss during the October 8 episode of JCW Lunacy."
 federation: INDIE
 date: 2026-10-08T23:29:33.000Z
 source_id: 802252574

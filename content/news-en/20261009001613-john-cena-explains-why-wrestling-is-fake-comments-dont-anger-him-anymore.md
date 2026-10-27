@@ -1,7 +1,7 @@
 ---
 title: "John Cena Explains Why “Wrestling Is Fake” Comments Don’t Anger Him Anymore"
 slug: "john-cena-explains-why-wrestling-is-fake-comments-dont-anger-him-anymore"
-description: "John Cena says he no longer gets upset when people dismiss professional wrestling as fake. During a recent interview with Trevor Noah, the 17-time World…"
+description: "John Cena says he no longer gets upset when people dismiss professional wrestling as fake."
 federation: WWE
 date: 2026-10-08T21:16:13.000Z
 source_id: 802252537

@@ -1,7 +1,7 @@
 ---
 title: "WWE Stars to Join WhatsApp Feature for Live NFL Reactions"
 slug: "wwe-stars-to-join-whatsapp-feature-for-live-nfl-reactions"
-description: "Wrestling fans can connect with WWE talent through a live chat feature from WhatsApp and OffBall during NFL games. According to a news release obtained by…"
+description: "Wrestling fans can connect with WWE talent through a live chat feature from WhatsApp and OffBall during NFL games."
 federation: WWE
 date: 2026-10-13T13:28:45.000Z
 source_id: 333682

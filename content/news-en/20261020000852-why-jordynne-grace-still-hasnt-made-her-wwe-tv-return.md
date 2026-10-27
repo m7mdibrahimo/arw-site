@@ -1,7 +1,7 @@
 ---
 title: "Why Jordynne Grace Still Hasn’t Made Her WWE TV Return"
 slug: "why-jordynne-grace-still-hasnt-made-her-wwe-tv-return"
-description: "Jordynne Grace has been absent from WWE television for months, but reports suggest this is not a sign of her departure. According to the latest backstage…"
+description: "Jordynne Grace has been absent from WWE television for months, but reports suggest this is not a sign of her departure."
 federation: WWE
 date: 2026-10-19T21:08:52.000Z
 source_id: 802257342

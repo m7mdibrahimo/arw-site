@@ -1,7 +1,7 @@
 ---
 title: "Seth Rollins Claims Roman Reigns Could Destroy LA Knight in 30 Seconds"
 slug: "seth-rollins-claims-roman-reigns-could-destroy-la-knight-in-30-seconds"
-description: "Seth Rollins recently shared his thoughts on the upcoming World Heavyweight Championship match at WWE Money in the Bank, stating that Roman Reigns could…"
+description: "Seth Rollins recently shared his thoughts on the upcoming World Heavyweight Championship match at WWE Money in the Bank."
 federation: WWE
 date: 2026-10-09T15:46:37.000Z
 source_id: 802252759

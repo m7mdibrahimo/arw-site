@@ -1,7 +1,7 @@
 ---
 title: "Spoiler: TNA Star Returns During TV Tapings in Dothan"
 slug: "spoiler-tna-star-returns-during-tv-tapings-in-dothan"
-description: "Following the Bound for Glory pay-per-view, TNA Wrestling hosted television tapings in Dothan, Alabama, on October 13 and October 14, 2026. During the…"
+description: "Following the Bound for Glory pay-per-view, TNA Wrestling hosted television tapings in Dothan, Alabama, on October 13 and October 14, 2026."
 federation: TNA
 date: 2026-10-15T13:09:58.000Z
 source_id: 802255368

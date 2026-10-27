@@ -1,7 +1,7 @@
 ---
 title: "Lyra Valkyria’s X Account Appears Suspended as WWE Star’s Instagram Vanishes"
 slug: "lyra-valkyrias-x-account-appears-suspended-as-wwe-stars-instagram-vanishes"
-description: "Lyra Valkyria’s social media presence has been shrouded in mystery for months. The WWE Superstar’s X account, @Real_Valkyria, currently appears to be…"
+description: "Lyra Valkyria’s social media presence has been shrouded in mystery for months."
 federation: WWE
 date: 2026-10-18T18:28:31.000Z
 source_id: 802256963

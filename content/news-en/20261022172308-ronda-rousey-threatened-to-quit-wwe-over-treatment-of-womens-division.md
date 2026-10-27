@@ -1,7 +1,7 @@
 ---
 title: "Ronda Rousey Threatened to Quit WWE Over Treatment of Women's Division"
 slug: "ronda-rousey-threatened-to-quit-wwe-over-treatment-of-womens-division"
-description: "Ronda Rousey once threatened to quit WWE after six minutes were cut from her pay-per-view match, according to Shayna Baszler. Speaking on a podcast,…"
+description: "Ronda Rousey once threatened to quit WWE after six minutes were cut from her pay-per-view match, according to Shayna Baszler."
 federation: WWE
 date: 2026-10-22T14:23:08.000Z
 source_id: 802258510

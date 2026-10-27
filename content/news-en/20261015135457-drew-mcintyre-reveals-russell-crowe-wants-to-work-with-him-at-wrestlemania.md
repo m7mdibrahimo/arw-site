@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Reveals Russell Crowe Wants to Work With Him at WrestleMania"
 slug: "drew-mcintyre-reveals-russell-crowe-wants-to-work-with-him-at-wrestlemania"
-description: "Drew McIntyre's Hollywood career could bring a major name into WWE, as actor Russell Crowe apparently wants to work with him at WrestleMania. Speaking on…"
+description: "Drew McIntyre's Hollywood career could bring a major name into WWE, as actor Russell Crowe apparently wants to work with him at WrestleMania."
 federation: WWE
 date: 2026-10-15T10:54:57.000Z
 source_id: 802255307

@@ -1,7 +1,7 @@
 ---
 title: "CMLL Viernes Espectacular Results (10/16/2026): Olympia Wins Grand Prix"
 slug: "cmll-viernes-espectacular-results-10-16-2026-olympia-wins-grand-prix"
-description: "The October 16, 2026, episode of CMLL Viernes Espectacular took place at Arena Mexico in Mexico City. The event was broadcast through the official CMLL…"
+description: "The October 16, 2026, episode of CMLL Viernes Espectacular took place at Arena Mexico in Mexico City."
 federation: INDIE
 date: 2026-10-17T05:30:00.000Z
 source_id: 334310

@@ -1,7 +1,7 @@
 ---
 title: "Nikki Bella Reveals Where She Stands on Getting Married Again"
 slug: "nikki-bella-reveals-where-she-stands-on-getting-married-again"
-description: "Nikki Bella is currently not interested in getting married again, although she is open to romance. During a recent episode of The Nikki & Brie Show, the…"
+description: "Nikki Bella is currently not interested in getting married again, although she is open to romance."
 federation: WWE
 date: 2026-10-23T09:21:16.000Z
 source_id: 802258618

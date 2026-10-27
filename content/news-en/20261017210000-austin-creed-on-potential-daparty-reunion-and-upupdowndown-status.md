@@ -1,7 +1,7 @@
 ---
 title: "Austin Creed on Potential DaParty Reunion and UpUpDownDown Status"
 slug: "austin-creed-on-potential-daparty-reunion-and-upupdowndown-status"
-description: "Austin Creed hints that something could be in the works regarding a potential DaParty reunion. During a sit-down interview at PAX Australia, Creed was…"
+description: "Austin Creed hints that something could be in the works regarding a potential DaParty reunion."
 federation: WWE
 date: 2026-10-17T18:00:00.000Z
 source_id: 333814

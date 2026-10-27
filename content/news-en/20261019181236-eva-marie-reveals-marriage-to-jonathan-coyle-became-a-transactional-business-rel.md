@@ -1,7 +1,7 @@
 ---
 title: "Eva Marie Reveals Marriage to Jonathan Coyle Became a Transactional Business Relationship Before Divorce"
 slug: "eva-marie-reveals-marriage-to-jonathan-coyle-became-a-transactional-business-rel"
-description: "Former WWE Superstar Eva Marie has opened up about the reasons behind her divorce from Jonathan Coyle after ten years of marriage, explaining that their…"
+description: "Former WWE Superstar Eva Marie has opened up about the reasons behind her divorce from Jonathan Coyle after ten years of marriage."
 federation: WWE
 date: 2026-10-19T15:12:36.000Z
 source_id: 802257184

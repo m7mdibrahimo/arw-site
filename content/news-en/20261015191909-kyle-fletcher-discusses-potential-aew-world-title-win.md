@@ -1,7 +1,7 @@
 ---
 title: "Kyle Fletcher Discusses Potential AEW World Title Win"
 slug: "kyle-fletcher-discusses-potential-aew-world-title-win"
-description: "Kyle Fletcher refuses to set a timeline for a future AEW World Championship victory, despite being heavily favored as a future world champion following his…"
+description: "Kyle Fletcher refuses to set a timeline for a future AEW World Championship victory."
 federation: AEW
 date: 2026-10-15T16:19:09.000Z
 source_id: 334074

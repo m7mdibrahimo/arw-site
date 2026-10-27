@@ -1,7 +1,7 @@
 ---
 title: "Kaitlyn Reveals Name Dispute Nearly Complicated Her 2018 WWE Return"
 slug: "kaitlyn-reveals-name-dispute-nearly-complicated-her-2018-wwe-return"
-description: "Celeste Bonin recently revealed that her 2018 WWE return almost hit a roadblock over a dispute regarding her ring name. When WWE reached out about bringing…"
+description: "Celeste Bonin recently revealed that her 2018 WWE return almost hit a roadblock over a dispute regarding her ring name."
 federation: WWE
 date: 2026-10-15T12:41:47.000Z
 source_id: 802255354

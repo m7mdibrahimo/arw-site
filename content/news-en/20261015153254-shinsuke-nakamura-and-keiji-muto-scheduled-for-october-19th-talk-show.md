@@ -1,7 +1,7 @@
 ---
 title: "Shinsuke Nakamura and Keiji Muto Scheduled for October 19th Talk Show"
 slug: "shinsuke-nakamura-and-keiji-muto-scheduled-for-october-19th-talk-show"
-description: "Keiji Muto and WWE star Shinsuke Nakamura are scheduled to host a live talk show stream on October 19th. The announcement was shared via the official…"
+description: "Keiji Muto and WWE star Shinsuke Nakamura are scheduled to host a live talk show stream on October 19th."
 federation: WWE
 date: 2026-10-15T12:32:54.000Z
 source_id: 334031

@@ -1,7 +1,7 @@
 ---
 title: "NXT Beyond the Bell Coming to CW Network"
 slug: "nxt-beyond-the-bell-coming-to-cw-network"
-description: "A new interview series called NXT Beyond The Bell is coming to the CW Network, according to Fightful. Vic Joseph announced that he and Blake Howard will…"
+description: "A new interview series called NXT Beyond The Bell is coming to the CW Network, according to Fightful."
 federation: WWE
 date: 2026-10-24T16:39:44.000Z
 source_id: 335472

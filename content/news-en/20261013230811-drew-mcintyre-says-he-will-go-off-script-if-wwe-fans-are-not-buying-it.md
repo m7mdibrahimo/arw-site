@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Says He Will Go Off Script If WWE Fans Are Not Buying It"
 slug: "drew-mcintyre-says-he-will-go-off-script-if-wwe-fans-are-not-buying-it"
-description: "Drew McIntyre explained that WWE's creative process under Triple H is a collaboration, allowing him to change the script if the live audience is not…"
+description: "Drew McIntyre explained that WWE's creative process under Triple H is a collaboration, allowing him to change the script if the live audience is not reacting."
 federation: WWE
 date: 2026-10-13T20:08:11.000Z
 source_id: 802254689

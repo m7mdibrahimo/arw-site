@@ -1,7 +1,7 @@
 ---
 title: "Oba Femi Seemingly Turns Down Opportunity to Work With Paul Heyman on WWE Raw"
 slug: "oba-femi-seemingly-turns-down-opportunity-to-work-with-paul-heyman-on-wwe-raw"
-description: "Following his victory over Bronson Reed at WWE Money in the Bank 2026, Oba Femi addressed the audience during the October 12 episode of WWE Raw. Femi…"
+description: "Following his victory over Bronson Reed at WWE Money in the Bank 2026, Oba Femi addressed the audience during the October 12 episode of WWE Raw."
 federation: WWE
 date: 2026-10-13T01:42:33.000Z
 source_id: 3102276727

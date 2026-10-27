@@ -1,7 +1,7 @@
 ---
 title: "The Syx Reveal TNA Used Their Pitch Without Telling Them"
 slug: "the-syx-reveal-tna-used-their-pitch-without-telling-them"
-description: "The Syx revealed that a major surprise during their shocking TNA debut was meant for them as well as the fans. Speaking on Busted Open Radio, Shaw shared…"
+description: "The Syx revealed that a major surprise during their shocking TNA debut was meant for them as well as the fans."
 federation: TNA
 date: 2026-10-08T15:10:09.000Z
 source_id: 802252415

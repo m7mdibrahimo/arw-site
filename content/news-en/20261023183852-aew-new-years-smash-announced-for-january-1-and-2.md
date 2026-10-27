@@ -1,7 +1,7 @@
 ---
 title: "AEW New Year's Smash Announced for January 1 and 2"
 slug: "aew-new-years-smash-announced-for-january-1-and-2"
-description: "All Elite Wrestling officially revealed the return of the annual New Year's Smash event, featuring AEW Dynamite on January 1 and AEW Collision on January…"
+description: "All Elite Wrestling officially revealed the return of the annual New Year's Smash event, featuring AEW Dynamite on January 1 and AEW Collision on January 2."
 federation: AEW
 date: 2026-10-23T15:38:52.000Z
 source_id: 335259

@@ -1,7 +1,7 @@
 ---
 title: "Penta Discusses Money in the Bank Cash-in Plans and Roman Reigns Rematch"
 slug: "penta-discusses-money-in-the-bank-cash-in-plans-and-roman-reigns-rematch"
-description: "Penta, the winner of the men's Money in the Bank ladder match, recently shared his strategy regarding his championship contract. During an interview on WWE…"
+description: "Penta, the winner of the men's Money in the Bank ladder match, recently shared his strategy regarding his championship contract."
 federation: WWE
 date: 2026-10-13T15:00:00.000Z
 source_id: 1425212330

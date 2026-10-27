@@ -1,7 +1,7 @@
 ---
 title: "NJPW Announces Matches for Tanahashi Jam 2"
 slug: "njpw-announces-matches-for-tanahashi-jam-2"
-description: "NJPW President Hiroshi Tanahashi announced the initial lineup for the second Tanahashi Jam event, taking place November 19 at Korakuen Hall in Tokyo.…"
+description: "NJPW President Hiroshi Tanahashi announced the initial lineup for the second Tanahashi Jam event, taking place November 19 at Korakuen Hall in Tokyo."
 federation: NJPW
 date: 2026-10-26T15:27:57.000Z
 source_id: 335850

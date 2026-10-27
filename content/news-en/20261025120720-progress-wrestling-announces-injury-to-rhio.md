@@ -1,7 +1,7 @@
 ---
 title: "PROGRESS Wrestling Announces Injury to Rhio"
 slug: "progress-wrestling-announces-injury-to-rhio"
-description: "PROGRESS Women's Champion Rhio has suffered an injury and will be unable to compete at the Chapter 199: BONESTORM event on October 25th in London, England.…"
+description: "PROGRESS Women's Champion Rhio has suffered an injury and will be unable to compete at the Chapter 199: BONESTORM event on October 25th in London, England."
 federation: INDIE
 date: 2026-10-25T09:07:20.000Z
 source_id: 335623

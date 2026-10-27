@@ -1,7 +1,7 @@
 ---
 title: "U.S. Orders Diplomatic Personnel Out of Saudi Arabia Ahead of WWE Crown Jewel 2026"
 slug: "u-s-orders-diplomatic-personnel-out-of-saudi-arabia-ahead-of-wwe-crown-jewel-202"
-description: "The U.S. government has ordered non-emergency diplomatic personnel and their families to leave Saudi Arabia amid ongoing security threats and Houthi…"
+description: "The U.S. government has ordered non-emergency diplomatic personnel and their families to leave Saudi Arabia amid ongoing security threats and Houthi attacks."
 federation: WWE
 date: 2026-10-21T20:33:42.000Z
 source_id: 802258248

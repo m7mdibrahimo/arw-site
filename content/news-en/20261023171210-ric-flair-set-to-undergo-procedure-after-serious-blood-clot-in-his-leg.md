@@ -1,7 +1,7 @@
 ---
 title: "Ric Flair Set to Undergo Procedure After Serious Blood Clot in His Leg"
 slug: "ric-flair-set-to-undergo-procedure-after-serious-blood-clot-in-his-leg"
-description: "WWE Hall of Famer Ric Flair is facing a serious health issue as he deals with a blood clot in his leg, forcing him to limit his travel and cancel a…"
+description: "WWE Hall of Famer Ric Flair is facing a serious health issue as he deals with a blood clot in his leg."
 federation: WWE
 date: 2026-10-23T14:12:10.000Z
 source_id: 802258683

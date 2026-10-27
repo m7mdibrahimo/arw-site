@@ -1,7 +1,7 @@
 ---
 title: "Jericho Cruise Oceanic Championship Tournament Announced, TNA iMPACT! Highlights, and More"
 slug: "jericho-cruise-oceanic-championship-tournament-announced-tna-impact-highlights-a"
-description: "Chris Jericho has announced the lineup for the Jericho Cruise Oceanic Championship Tournament. Meanwhile, TNA iMPACT aired its latest episode featuring top…"
+description: "Chris Jericho has announced the lineup for the Jericho Cruise Oceanic Championship Tournament."
 federation: AEW
 date: 2026-10-16T18:00:00.000Z
 source_id: 334211

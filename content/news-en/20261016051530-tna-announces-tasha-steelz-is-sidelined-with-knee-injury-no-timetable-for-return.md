@@ -1,7 +1,7 @@
 ---
 title: "TNA Announces Tasha Steelz Is Sidelined With Knee Injury, No Timetable for Return"
 slug: "tna-announces-tasha-steelz-is-sidelined-with-knee-injury-no-timetable-for-return"
-description: "TNA Wrestling has announced that Tasha Steelz is sidelined with a knee injury and there is no timetable for her return. The injury stems from an incident…"
+description: "TNA Wrestling has announced that Tasha Steelz is sidelined with a knee injury and there is no timetable for her return."
 federation: TNA
 date: 2026-10-16T02:15:30.000Z
 source_id: 334143

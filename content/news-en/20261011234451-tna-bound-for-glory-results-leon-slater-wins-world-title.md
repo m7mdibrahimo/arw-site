@@ -1,7 +1,7 @@
 ---
 title: "TNA Bound for Glory Results: Leon Slater Wins World Title"
 slug: "tna-bound-for-glory-results-leon-slater-wins-world-title"
-description: "TNA Bound for Glory took place on October 11, 2026, at the Yuengling Center in Tampa, Florida. The event featured the induction of Amazing Red, Konnan, and…"
+description: "TNA Bound for Glory took place on October 11, 2026, at the Yuengling Center in Tampa, Florida."
 federation: TNA
 date: 2026-10-11T20:44:51.000Z
 source_id: 802253624

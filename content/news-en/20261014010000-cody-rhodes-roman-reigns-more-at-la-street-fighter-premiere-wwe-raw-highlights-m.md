@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes, Roman Reigns, More at LA 'Street Fighter' Premiere, WWE Raw Highlights, More"
 slug: "cody-rhodes-roman-reigns-more-at-la-street-fighter-premiere-wwe-raw-highlights-m"
-description: "Several WWE stars including Cody Rhodes and Roman Reigns attended the 'Street Fighter' premiere in Los Angeles. WWE released the top 10 moments from the…"
+description: "Several WWE stars including Cody Rhodes and Roman Reigns attended the 'Street Fighter' premiere in Los Angeles."
 federation: WWE
 date: 2026-10-13T22:00:00.000Z
 source_id: 333771

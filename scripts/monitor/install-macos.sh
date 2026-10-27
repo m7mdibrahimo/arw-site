@@ -72,8 +72,12 @@ done
 [ -f "$TSX_CLI" ] || { echo "❌ مش لاقي tsx — نفّذ npm install الأول" >&2; exit 1; }
 
 # وضع العرض: نطبع محتوى الملف بس من غير أي تركيب ولا كتابة على الجهاز
+# (ملف مؤقت بدل /dev/stdout: في بعض البيئات — زي حاويات مافيهاش جهاز طرفي — الكتابة
+#  على /dev/stdout بترجع «No such device or address» والاختبار كان بيفشل بسببها)
+PRINT_TMP=""
 if [ -n "$PRINT_ONLY" ]; then
-  PLIST_TARGET="/dev/stdout"
+  PRINT_TMP="$(mktemp "${TMPDIR:-/tmp}/arw-watch.XXXXXX")"
+  PLIST_TARGET="$PRINT_TMP"
 else
   PLIST_TARGET="$PLIST"
   mkdir -p "$LOG_DIR" "$AGENTS_DIR"
@@ -134,6 +138,8 @@ $SCHEDULE
 PLIST_EOF
 
 if [ -n "$PRINT_ONLY" ]; then
+  cat "$PRINT_TMP"
+  rm -f "$PRINT_TMP"
   exit 0
 fi
 

@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Helps Bloodline Run Off The 946 in WWE Raw Main Event Brawl"
 slug: "roman-reigns-helps-bloodline-run-off-the-946-in-wwe-raw-main-event-brawl"
-description: "World Heavyweight Champion Roman Reigns arrived to assist The Bloodline during a chaotic main event segment on \"WWE Raw.\" After Jimmy and Jey Uso called…"
+description: "World Heavyweight Champion Roman Reigns arrived to assist The Bloodline during a chaotic main event segment on \"WWE Raw.\" After Jimmy and Jey Uso called out."
 federation: WWE
 date: 2026-10-20T02:34:48.000Z
 source_id: 3233221852

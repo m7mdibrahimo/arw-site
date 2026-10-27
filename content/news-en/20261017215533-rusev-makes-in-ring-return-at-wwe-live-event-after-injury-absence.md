@@ -1,7 +1,7 @@
 ---
 title: "Rusev Makes In-Ring Return at WWE Live Event After Injury Absence"
 slug: "rusev-makes-in-ring-return-at-wwe-live-event-after-injury-absence"
-description: "Rusev has officially returned to the ring after spending nearly three months out of action due to an injury. He wrestled his first match back at a WWE live…"
+description: "Rusev has officially returned to the ring after spending nearly three months out of action due to an injury."
 federation: WWE
 date: 2026-10-17T18:55:33.000Z
 source_id: 802256279

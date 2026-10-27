@@ -1,7 +1,7 @@
 ---
 title: "Royce Keys Claims He Would Take Roman Reigns' Jordans"
 slug: "royce-keys-claims-he-would-take-roman-reigns-jordans"
-description: "The 946 member Royce Keys stated that he does not need Roman Reigns to hand him a pair of Jordans, declaring that he would simply steal them if he desired…"
+description: "The 946 member Royce Keys stated that he does not need Roman Reigns to hand him a pair of Jordans, declaring that he would simply steal them if he desired them."
 federation: WWE
 date: 2026-10-15T16:52:42.000Z
 source_id: 802255433

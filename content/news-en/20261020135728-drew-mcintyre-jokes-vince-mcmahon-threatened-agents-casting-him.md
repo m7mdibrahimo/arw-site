@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Jokes Vince McMahon Threatened Agents Casting Him"
 slug: "drew-mcintyre-jokes-vince-mcmahon-threatened-agents-casting-him"
-description: "Drew McIntyre recently discussed how his Hollywood opportunities have expanded under the current WWE leadership of Nick Khan and Triple H compared to the…"
+description: "Drew McIntyre recently discussed how his Hollywood opportunities have expanded under the current WWE leadership of Nick Khan and Triple H compared."
 federation: WWE
 date: 2026-10-20T10:57:28.000Z
 source_id: 334779

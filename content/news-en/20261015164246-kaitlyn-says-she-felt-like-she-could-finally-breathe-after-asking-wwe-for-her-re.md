@@ -1,7 +1,7 @@
 ---
 title: "Kaitlyn Says She Felt Like She Could Finally Breathe After Asking WWE for Her Release"
 slug: "kaitlyn-says-she-felt-like-she-could-finally-breathe-after-asking-wwe-for-her-re"
-description: "Former Divas Champion Kaitlyn opened up about her departure from WWE in 2014, explaining that she felt she could finally breathe after asking for her…"
+description: "Former Divas Champion Kaitlyn opened up about her departure from WWE in 2014."
 federation: WWE
 date: 2026-10-15T13:42:46.000Z
 source_id: 802255374

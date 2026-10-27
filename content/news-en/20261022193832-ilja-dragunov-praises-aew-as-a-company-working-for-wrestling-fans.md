@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Praises AEW as a Company Working for Wrestling Fans"
 slug: "ilja-dragunov-praises-aew-as-a-company-working-for-wrestling-fans"
-description: "Ilja Dragunov recently shared his thoughts on AEW and why fans enjoy the product. Following his debut win against Mike Bailey on the October 21 episode of…"
+description: "Ilja Dragunov recently shared his thoughts on AEW and why fans enjoy the product."
 federation: AEW
 date: 2026-10-22T16:38:32.000Z
 source_id: 335146

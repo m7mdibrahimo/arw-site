@@ -1,7 +1,7 @@
 ---
 title: "Penta Says His Family Helped Him Choose Between WWE & AEW"
 slug: "penta-says-his-family-helped-him-choose-between-wwe-aew"
-description: "Penta revealed that his family played a crucial role in helping him choose between WWE and AEW when he became a free agent in 2024. The former AEW World…"
+description: "Penta revealed that his family played a crucial role in helping him choose between WWE and AEW when he became a free agent in 2024."
 federation: WWE
 date: 2026-10-22T21:09:20.000Z
 source_id: 2871053565

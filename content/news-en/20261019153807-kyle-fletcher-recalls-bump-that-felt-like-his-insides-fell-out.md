@@ -1,7 +1,7 @@
 ---
 title: "Kyle Fletcher Recalls Bump That Felt Like His Insides Fell Out"
 slug: "kyle-fletcher-recalls-bump-that-felt-like-his-insides-fell-out"
-description: "During a recent interview with Westwood One Sports Night, AEW star Kyle Fletcher recalled the nastiest bump he has ever taken in his career, which happened…"
+description: "During a recent interview with Westwood One Sports Night, AEW star Kyle Fletcher recalled the nastiest bump he has ever taken in his career."
 federation: AEW
 date: 2026-10-19T12:38:07.000Z
 source_id: 334657

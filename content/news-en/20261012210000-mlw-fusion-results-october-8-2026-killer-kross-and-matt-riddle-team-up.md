@@ -1,7 +1,7 @@
 ---
 title: "MLW Fusion Results (October 8, 2026): Killer Kross and Matt Riddle Team Up"
 slug: "mlw-fusion-results-october-8-2026-killer-kross-and-matt-riddle-team-up"
-description: "Major League Wrestling aired a new episode of MLW Fusion on October 8 via Tubi. Footage featured Matt Riddle reminding Killer Kross that he owes him a…"
+description: "Major League Wrestling aired a new episode of MLW Fusion on October 8 via Tubi. Footage featured Matt Riddle reminding Killer Kross that he owes him a favor."
 federation: INDIE
 date: 2026-10-12T18:00:00.000Z
 source_id: 333377

@@ -1,7 +1,7 @@
 ---
 title: "RVD Addresses Possibility of Another AEW Run"
 slug: "rvd-addresses-possibility-of-another-aew-run"
-description: "Rob Van Dam recently discussed the possibility of returning for another run in AEW, noting that the company has proven itself over time. Speaking on his…"
+description: "Rob Van Dam recently discussed the possibility of returning for another run in AEW, noting that the company has proven itself over time."
 federation: AEW
 date: 2026-10-21T08:39:04.000Z
 source_id: 802258128

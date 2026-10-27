@@ -1,7 +1,7 @@
 ---
 title: "2026 World X-Cup and Ultimate X Matches Added to TNA Destination X"
 slug: "2026-world-x-cup-and-ultimate-x-matches-added-to-tna-destination-x"
-description: "TNA announced major additions to its upcoming Destination X event during the broadcast of Thursday Night iMPACT. The special show will take place on…"
+description: "TNA announced major additions to its upcoming Destination X event during the broadcast of Thursday Night iMPACT."
 federation: TNA
 date: 2026-10-23T02:30:37.000Z
 source_id: 335223

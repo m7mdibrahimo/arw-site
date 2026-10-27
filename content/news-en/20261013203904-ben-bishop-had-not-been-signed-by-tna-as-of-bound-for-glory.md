@@ -1,7 +1,7 @@
 ---
 title: "Ben Bishop Had Not Been Signed by TNA as of Bound for Glory"
 slug: "ben-bishop-had-not-been-signed-by-tna-as-of-bound-for-glory"
-description: "Ben Bishop made his debut for TNA Wrestling during the Call Your Shot Gauntlet at Bound for Glory. During the match, Bishop shoved Jada Stone out of the…"
+description: "Ben Bishop made his debut for TNA Wrestling during the Call Your Shot Gauntlet at Bound for Glory."
 federation: TNA
 date: 2026-10-13T17:39:04.000Z
 source_id: 333724

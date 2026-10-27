@@ -1,7 +1,7 @@
 ---
 title: "Stephanie Vaquer Cleared, Says She'll See Becky Lynch on Monday"
 slug: "stephanie-vaquer-cleared-says-shell-see-becky-lynch-on-monday"
-description: "Stephanie Vaquer is ready to resume her rivalry with Becky Lynch. On social media, Vaquer announced she has been medically cleared to return to action,…"
+description: "Stephanie Vaquer is ready to resume her rivalry with Becky Lynch. On social media, Vaquer announced she has been medically cleared to return to action."
 federation: WWE
 date: 2026-10-24T21:06:59.000Z
 source_id: 335530

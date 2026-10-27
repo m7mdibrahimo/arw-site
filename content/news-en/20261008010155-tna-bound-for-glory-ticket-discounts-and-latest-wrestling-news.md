@@ -1,7 +1,7 @@
 ---
 title: "TNA Bound for Glory Ticket Discounts and Latest Wrestling News"
 slug: "tna-bound-for-glory-ticket-discounts-and-latest-wrestling-news"
-description: "According to Fightful, fans can secure a fifty percent discount on tickets for the upcoming TNA Bound for Glory event. The update also highlights the full…"
+description: "According to Fightful, fans can secure a fifty percent discount on tickets for the upcoming TNA Bound for Glory event."
 federation: TNA
 date: 2026-10-07T22:01:55.000Z
 source_id: 332665

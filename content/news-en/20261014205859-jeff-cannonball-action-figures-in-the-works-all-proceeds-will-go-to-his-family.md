@@ -1,7 +1,7 @@
 ---
 title: "Jeff Cannonball Action Figures in the Works, All Proceeds Will Go to His Family"
 slug: "jeff-cannonball-action-figures-in-the-works-all-proceeds-will-go-to-his-family"
-description: "Action figures for the late Jeff Cannonball are currently in development, with all proceeds going to support his family. Cannonball passed away at the age…"
+description: "Action figures for the late Jeff Cannonball are currently in development, with all proceeds going to support his family."
 federation: INDIE
 date: 2026-10-14T17:58:59.000Z
 source_id: 333876

@@ -1,7 +1,7 @@
 ---
 title: "Dominik Mysterio Explains Why Seth Rollins Is a Significant Figure in His WWE Career"
 slug: "dominik-mysterio-explains-why-seth-rollins-is-a-significant-figure-in-his-wwe-ca"
-description: "Dominik Mysterio recently opened up about his WWE career and discussed why Seth Rollins holds a major significance in his journey. Speaking on the Six Feet…"
+description: "Dominik Mysterio recently opened up about his WWE career and discussed why Seth Rollins holds a major significance in his journey."
 federation: WWE
 date: 2026-10-17T19:00:00.000Z
 source_id: 2382739236

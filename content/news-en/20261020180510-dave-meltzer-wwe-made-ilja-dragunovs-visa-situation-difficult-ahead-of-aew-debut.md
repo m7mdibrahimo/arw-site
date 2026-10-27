@@ -1,7 +1,7 @@
 ---
 title: "Dave Meltzer: WWE Made Ilja Dragunov's Visa Situation 'Difficult' Ahead of AEW Debut"
 slug: "dave-meltzer-wwe-made-ilja-dragunovs-visa-situation-difficult-ahead-of-aew-debut"
-description: "It took nearly two months for Ilja Dragunov to debut at AEW WrestleDream this past Saturday following his WWE departure. Dave Meltzer reported on…"
+description: "It took nearly two months for Ilja Dragunov to debut at AEW WrestleDream this past Saturday following his WWE departure."
 federation: AEW
 date: 2026-10-20T15:05:10.000Z
 source_id: 1642590077

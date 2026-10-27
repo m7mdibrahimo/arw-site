@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Addresses Brock Lesnar No-Selling His Offense at WWE Royal Rumble"
 slug: "ilja-dragunov-addresses-brock-lesnar-no-selling-his-offense-at-wwe-royal-rumble-4631175365"
-description: "AEW star Ilja Dragunov has reflected on his brief in-ring encounter with Brock Lesnar during the men's Royal Rumble match earlier this year. During the…"
+description: "AEW star Ilja Dragunov has reflected on his brief in-ring encounter with Brock Lesnar during the men's Royal Rumble match earlier this year."
 federation: WWE
 date: 2026-10-26T16:19:20.000Z
 source_id: 4631175365

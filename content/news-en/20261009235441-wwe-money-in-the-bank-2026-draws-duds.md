@@ -1,7 +1,7 @@
 ---
 title: "WWE Money in the Bank 2026: Draws & Duds"
 slug: "wwe-money-in-the-bank-2026-draws-duds"
-description: "As WWE Money in the Bank 2026 approaches, Wrestling Inc. staff analyzed the upcoming card, identifying the most anticipated matches and those that have…"
+description: "As WWE Money in the Bank 2026 approaches, Wrestling Inc. staff analyzed the upcoming card."
 federation: WWE
 date: 2026-10-09T20:54:41.000Z
 source_id: 2436632880

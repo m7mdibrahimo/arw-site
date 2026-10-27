@@ -1,7 +1,7 @@
 ---
 title: "WWE Had Cody Rhodes Walk Out of Burned-Out Bus Just for Sponsored Shot"
 slug: "wwe-had-cody-rhodes-walk-out-of-burned-out-bus-just-for-sponsored-shot"
-description: "Cody Rhodes recently shared details about the bus fire he experienced during WrestleMania 40 weekend, explaining how an exploding air-conditioning unit…"
+description: "Cody Rhodes recently shared details about the bus fire he experienced during WrestleMania 40 weekend."
 federation: WWE
 date: 2026-10-08T12:28:06.000Z
 source_id: 802252360

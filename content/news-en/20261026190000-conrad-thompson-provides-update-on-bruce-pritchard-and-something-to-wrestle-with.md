@@ -1,7 +1,7 @@
 ---
 title: "Conrad Thompson Provides Update on Bruce Pritchard and Something to Wrestle With"
 slug: "conrad-thompson-provides-update-on-bruce-pritchard-and-something-to-wrestle-with"
-description: "Conrad Thompson has provided an update on the status of Something To Wrestle With. In recent years, Bruce Pritchard has maintained a part-time schedule for…"
+description: "Conrad Thompson has provided an update on the status of Something To Wrestle With."
 federation: WWE
 date: 2026-10-26T16:00:00.000Z
 source_id: 335269

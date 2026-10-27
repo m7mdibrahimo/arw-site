@@ -1,7 +1,7 @@
 ---
 title: "Kofi Confirms the Main Reason He and Austin Creed Signed With AEW"
 slug: "kofi-confirms-the-main-reason-he-and-austin-creed-signed-with-aew"
-description: "During an appearance on The Mick and Kenny Show, Kofi revealed that the main reason he and Austin Creed signed with AEW was the opportunity to face The…"
+description: "During an appearance on The Mick and Kenny Show, Kofi revealed that the main reason he and Austin Creed signed with AEW was the opportunity to face The Young."
 federation: AEW
 date: 2026-10-26T20:14:04.000Z
 source_id: 4203132622

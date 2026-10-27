@@ -1,7 +1,7 @@
 ---
 title: "Toni Storm Tapes Discovered at AEW WrestleDream"
 slug: "toni-storm-tapes-discovered-at-aew-wrestledream"
-description: "A clue regarding the whereabouts of Toni Storm has surfaced at AEW WrestleDream in Florida, where content creator Astrid Pizarro discovered what appear to…"
+description: "A clue regarding the whereabouts of Toni Storm has surfaced at AEW WrestleDream in Florida."
 federation: AEW
 date: 2026-10-19T02:02:04.000Z
 source_id: 334616

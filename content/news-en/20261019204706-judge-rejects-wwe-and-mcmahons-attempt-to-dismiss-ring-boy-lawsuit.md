@@ -1,7 +1,7 @@
 ---
 title: "Judge Rejects WWE and McMahons' Attempt to Dismiss Ring Boy Lawsuit"
 slug: "judge-rejects-wwe-and-mcmahons-attempt-to-dismiss-ring-boy-lawsuit"
-description: "A federal judge has rejected the latest attempt by WWE, TKO, Vince McMahon, and Linda McMahon to dismiss the long-standing ring boy lawsuit. U.S. District…"
+description: "A federal judge has rejected the latest attempt by WWE, TKO, Vince McMahon, and Linda McMahon to dismiss the long-standing ring boy lawsuit. U.S."
 federation: WWE
 date: 2026-10-19T17:47:06.000Z
 source_id: 802257249

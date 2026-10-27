@@ -1,7 +1,7 @@
 ---
 title: "Former WWE Prospect Details Encounter With Triple H That Got Him Blackballed From WWE"
 slug: "former-wwe-prospect-details-encounter-with-triple-h-that-got-him-blackballed-fro"
-description: "Former WWE prospect Jamin Olivencia recently shared the story of how a backstage encounter with Paul 'Triple H' Levesque led to him being blackballed from…"
+description: "Former WWE prospect Jamin Olivencia recently shared the story of how a backstage encounter with Paul 'Triple H' Levesque led to him being."
 federation: WWE
 date: 2026-10-12T17:49:49.000Z
 source_id: 333525

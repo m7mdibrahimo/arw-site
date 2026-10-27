@@ -1,7 +1,7 @@
 ---
 title: "Kairi Clarifies Wrestling Status for Chris Jericho Cruise"
 slug: "kairi-clarifies-wrestling-status-for-chris-jericho-cruise"
-description: "Kairi is heading out to sea with Chris Jericho, but she made it clear that she will not compete in any matches during the trip amid ongoing speculation…"
+description: "Kairi is heading out to sea with Chris Jericho, but she made it clear that she will not compete in any matches during the trip amid ongoing speculation about."
 federation: AEW
 date: 2026-10-20T16:29:02.000Z
 source_id: 802257824

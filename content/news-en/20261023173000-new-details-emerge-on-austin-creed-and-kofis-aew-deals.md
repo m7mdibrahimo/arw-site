@@ -1,7 +1,7 @@
 ---
 title: "New Details Emerge on Austin Creed and Kofi's AEW Deals"
 slug: "new-details-emerge-on-austin-creed-and-kofis-aew-deals"
-description: "New details have emerged regarding the length of the contracts for Austin Creed and Kofi in AEW, with reports indicating they plan to stay with the…"
+description: "New details have emerged regarding the length of the contracts for Austin Creed and Kofi in AEW."
 federation: AEW
 date: 2026-10-23T14:30:00.000Z
 source_id: 1455640339

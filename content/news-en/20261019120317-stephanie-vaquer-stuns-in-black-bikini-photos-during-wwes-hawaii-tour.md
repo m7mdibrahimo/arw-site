@@ -1,7 +1,7 @@
 ---
 title: "Stephanie Vaquer Stuns in Black Bikini Photos During WWE’s Hawaii Tour"
 slug: "stephanie-vaquer-stuns-in-black-bikini-photos-during-wwes-hawaii-tour"
-description: "Stephanie Vaquer is enjoying her time in Hawaii following WWE's tour, sharing photos of herself in a black bikini from her hotel room. The WWE star posted…"
+description: "Stephanie Vaquer is enjoying her time in Hawaii following WWE's tour, sharing photos of herself in a black bikini from her hotel room."
 federation: WWE
 date: 2026-10-19T09:03:17.000Z
 source_id: 802257058

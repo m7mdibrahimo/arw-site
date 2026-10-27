@@ -1,7 +1,7 @@
 ---
 title: "Street Fighter Debuts With 34% Critic Score on Rotten Tomatoes"
 slug: "street-fighter-debuts-with-34-critic-score-on-rotten-tomatoes"
-description: "The film Street Fighter, starring Roman Reigns, Cody Rhodes, and Hirooki Goto, is scheduled to hit theaters on Friday, October 16, with early preview…"
+description: "The film Street Fighter, starring Roman Reigns, Cody Rhodes, and Hirooki Goto, is scheduled to hit theaters on Friday, October 16."
 federation: WWE
 date: 2026-10-15T16:34:21.000Z
 source_id: 334086

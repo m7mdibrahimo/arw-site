@@ -1,7 +1,7 @@
 ---
 title: "Kali Armstrong to Challenge La Catalina for AAA Reina de Reinas Title on October 13 WWE NXT"
 slug: "kali-armstrong-to-challenge-la-catalina-for-aaa-reina-de-reinas-title-on-october"
-description: "Kali Armstrong is set to challenge La Catalina for the AAA Reina de Reinas Championship on the October 13 episode of WWE NXT. The matchup was arranged…"
+description: "Kali Armstrong is set to challenge La Catalina for the AAA Reina de Reinas Championship on the October 13 episode of WWE NXT."
 federation: WWE
 date: 2026-10-13T22:17:17.000Z
 source_id: 333774

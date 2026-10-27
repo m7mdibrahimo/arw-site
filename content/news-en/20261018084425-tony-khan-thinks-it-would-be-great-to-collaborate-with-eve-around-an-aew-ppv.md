@@ -1,7 +1,7 @@
 ---
 title: "Tony Khan Thinks It Would Be Great to Collaborate With EVE Around an AEW PPV"
 slug: "tony-khan-thinks-it-would-be-great-to-collaborate-with-eve-around-an-aew-ppv"
-description: "Tony Khan discussed the ongoing relationship between AEW and Pro Wrestling EVE. The two promotions have collaborated for over a year, with EVE events…"
+description: "Tony Khan discussed the ongoing relationship between AEW and Pro Wrestling EVE."
 federation: AEW
 date: 2026-10-18T05:44:25.000Z
 source_id: 334500

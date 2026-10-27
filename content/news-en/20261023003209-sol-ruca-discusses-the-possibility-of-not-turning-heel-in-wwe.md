@@ -1,7 +1,7 @@
 ---
 title: "Sol Ruca Discusses the Possibility of Not Turning Heel in WWE"
 slug: "sol-ruca-discusses-the-possibility-of-not-turning-heel-in-wwe"
-description: "Sol Ruca has spent her WWE career showcasing a fun-loving persona to fans, yet she remains curious about the potential of exploring a completely different…"
+description: "Sol Ruca has spent her WWE career showcasing a fun-loving persona to fans."
 federation: WWE
 date: 2026-10-22T21:32:09.000Z
 source_id: 802258591

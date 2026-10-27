@@ -1,7 +1,7 @@
 ---
 title: "WWE SmackDown Review: Highlights and Lowlights from October 23, 2026"
 slug: "wwe-smackdown-review-highlights-and-lowlights-from-october-23-2026"
-description: "The October 23, 2026, episode of WWE SmackDown featured intense rivalries and championship build-ups, though some segments drew criticism. The WINC crew…"
+description: "The October 23, 2026, episode of WWE SmackDown featured intense rivalries and championship build-ups, though some segments drew criticism."
 federation: WWE
 date: 2026-10-24T04:01:14.000Z
 source_id: 2555385277

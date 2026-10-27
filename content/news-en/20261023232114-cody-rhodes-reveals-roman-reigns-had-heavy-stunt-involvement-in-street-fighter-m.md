@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Reveals Roman Reigns Had Heavy Stunt Involvement in Street Fighter Movie"
 slug: "cody-rhodes-reveals-roman-reigns-had-heavy-stunt-involvement-in-street-fighter-m"
-description: "Cody Rhodes and Roman Reigns took on demanding stunt work for their roles in the Street Fighter movie. Rhodes, who portrays Guile, revealed on The Rich…"
+description: "Cody Rhodes and Roman Reigns took on demanding stunt work for their roles in the Street Fighter movie."
 federation: WWE
 date: 2026-10-23T20:21:14.000Z
 source_id: 802258774

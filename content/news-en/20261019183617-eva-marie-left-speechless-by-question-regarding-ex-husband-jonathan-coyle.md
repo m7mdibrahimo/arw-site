@@ -1,7 +1,7 @@
 ---
 title: "Eva Marie Left Speechless by Question Regarding Ex-Husband Jonathan Coyle"
 slug: "eva-marie-left-speechless-by-question-regarding-ex-husband-jonathan-coyle"
-description: "Former WWE Superstar Eva Marie recently discussed her divorce from Jonathan Coyle, admitting she was left speechless when asked about their current…"
+description: "Former WWE Superstar Eva Marie recently discussed her divorce from Jonathan Coyle."
 federation: WWE
 date: 2026-10-19T15:36:17.000Z
 source_id: 802257186

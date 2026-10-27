@@ -1,7 +1,7 @@
 ---
 title: "The Dogs Reveal NSFW Name They Originally Wanted to Use in AEW"
 slug: "the-dogs-reveal-nsfw-name-they-originally-wanted-to-use-in-aew"
-description: "David Finlay and Clark Connors revealed that they originally wanted to use the name Raw Dogs when arriving in AEW, but avoided it due to WWE's Monday Night…"
+description: "David Finlay and Clark Connors revealed that they originally wanted to use the name Raw Dogs when arriving in AEW, but avoided it due to WWE's Monday Night Raw."
 federation: AEW
 date: 2026-10-21T12:38:55.000Z
 source_id: 802258156

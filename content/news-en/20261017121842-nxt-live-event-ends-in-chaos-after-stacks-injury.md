@@ -1,7 +1,7 @@
 ---
 title: "NXT Live Event Ends in Chaos After Stacks Injury"
 slug: "nxt-live-event-ends-in-chaos-after-stacks-injury"
-description: "The October 16 WWE NXT live event in Sudbury, Ontario, concluded in a frightening manner when Channing \"Stacks\" Lorenzo suffered a severe fall during the…"
+description: "The October 16 WWE NXT live event in Sudbury, Ontario, concluded in a frightening manner when Channing \"Stacks\" Lorenzo suffered a severe fall."
 federation: WWE
 date: 2026-10-17T09:18:42.000Z
 source_id: 802256101

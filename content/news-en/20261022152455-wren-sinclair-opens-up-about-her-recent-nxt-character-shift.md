@@ -1,7 +1,7 @@
 ---
 title: "Wren Sinclair Opens Up About Her Recent NXT Character Shift"
 slug: "wren-sinclair-opens-up-about-her-recent-nxt-character-shift"
-description: "Wren Sinclair has discussed the recent changes to her on-screen persona, explaining her turn toward a more aggressive side in NXT. Sinclair is scheduled to…"
+description: "Wren Sinclair has discussed the recent changes to her on-screen persona, explaining her turn toward a more aggressive side in NXT."
 federation: WWE
 date: 2026-10-22T12:24:55.000Z
 source_id: 335119

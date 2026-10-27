@@ -1,7 +1,7 @@
 ---
 title: "Bron Breakker Spears Injured Je’Von Evans on WWE RAW"
 slug: "bron-breakker-spears-injured-jevon-evans-on-wwe-raw"
-description: "Bron Breakker attacked an injured Je’Von Evans with a spear during the October 12, 2026 episode of WWE RAW. The show opened with Penta celebrating his…"
+description: "Bron Breakker attacked an injured Je’Von Evans with a spear during the October 12, 2026 episode of WWE RAW."
 federation: WWE
 date: 2026-10-13T00:20:58.000Z
 source_id: 802254284

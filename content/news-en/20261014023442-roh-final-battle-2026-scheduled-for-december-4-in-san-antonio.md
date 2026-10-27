@@ -1,7 +1,7 @@
 ---
 title: "ROH Final Battle 2026 Scheduled for December 4 in San Antonio"
 slug: "roh-final-battle-2026-scheduled-for-december-4-in-san-antonio"
-description: "Pre-sale ticket information on Ticketmaster revealed details for the upcoming 2026 Ring of Honor Final Battle pay-per-view. The event will take place on…"
+description: "Pre-sale ticket information on Ticketmaster revealed details for the upcoming 2026 Ring of Honor Final Battle pay-per-view."
 federation: ROH
 date: 2026-10-13T23:34:42.000Z
 source_id: 333783

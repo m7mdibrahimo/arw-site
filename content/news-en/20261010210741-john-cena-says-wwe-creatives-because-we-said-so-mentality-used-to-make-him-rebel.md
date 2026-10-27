@@ -1,7 +1,7 @@
 ---
 title: "John Cena Says WWE Creative’s “Because We Said So” Mentality Used to Make Him Rebel"
 slug: "john-cena-says-wwe-creatives-because-we-said-so-mentality-used-to-make-him-rebel"
-description: "John Cena recently discussed how WWE's creative process often triggered his rebellious nature during his career. Speaking on The Drew Barrymore Show, Cena…"
+description: "John Cena recently discussed how WWE's creative process often triggered his rebellious nature during his career."
 federation: WWE
 date: 2026-10-10T18:07:41.000Z
 source_id: 802253217

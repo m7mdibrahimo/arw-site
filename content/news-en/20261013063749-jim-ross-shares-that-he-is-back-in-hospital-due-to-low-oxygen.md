@@ -1,7 +1,7 @@
 ---
 title: "Jim Ross Shares That He Is Back in Hospital Due to Low Oxygen"
 slug: "jim-ross-shares-that-he-is-back-in-hospital-due-to-low-oxygen"
-description: "AEW commentator Jim Ross has announced that he is back in the hospital due to low oxygen levels. Ross shared the news on social media, writing, \"Back in…"
+description: "AEW commentator Jim Ross has announced that he is back in the hospital due to low oxygen levels."
 federation: AEW
 date: 2026-10-13T03:37:49.000Z
 source_id: 333622

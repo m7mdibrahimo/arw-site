@@ -1,7 +1,7 @@
 ---
 title: "Austin Creed Discusses Adapting to AEW's Style"
 slug: "austin-creed-discusses-adapting-to-aews-style"
-description: "Austin Creed has expressed complete confidence in his and Kofi's ability to quickly adjust to AEW following a 16-year run in WWE, according to Wrestling…"
+description: "Austin Creed has expressed complete confidence in his and Kofi's ability to quickly adjust to AEW following a 16-year run in WWE, according to Wrestling Inc."
 federation: AEW
 date: 2026-10-23T16:00:00.000Z
 source_id: 1713068849

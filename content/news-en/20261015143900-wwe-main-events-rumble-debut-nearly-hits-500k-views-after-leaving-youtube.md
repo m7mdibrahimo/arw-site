@@ -1,7 +1,7 @@
 ---
 title: "WWE Main Event's Rumble Debut Nearly Hits 500K Views After Leaving YouTube"
 slug: "wwe-main-events-rumble-debut-nearly-hits-500k-views-after-leaving-youtube"
-description: "WWE Main Event's transition to Rumble has achieved significant early success, with its premiere episode approaching half a million views. The October 14…"
+description: "WWE Main Event's transition to Rumble has achieved significant early success, with its premiere episode approaching half a million views."
 federation: WWE
 date: 2026-10-15T11:39:00.000Z
 source_id: 802255332

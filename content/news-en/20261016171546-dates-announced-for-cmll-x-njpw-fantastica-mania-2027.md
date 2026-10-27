@@ -1,7 +1,7 @@
 ---
 title: "Dates Announced for CMLL x NJPW Fantastica Mania 2027"
 slug: "dates-announced-for-cmll-x-njpw-fantastica-mania-2027"
-description: "CMLL and NJPW have announced the schedule for the 2027 Fantastica Mania tour, which will kick off in February and run for three weeks. The tour will visit…"
+description: "CMLL and NJPW have announced the schedule for the 2027 Fantastica Mania tour, which will kick off in February and run for three weeks."
 federation: NJPW
 date: 2026-10-16T14:15:46.000Z
 source_id: 334168

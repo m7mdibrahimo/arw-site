@@ -1,7 +1,7 @@
 ---
 title: "Paige Collett Credits Medical Marijuana for Saving Her Life, Rebukes Critics"
 slug: "paige-collett-credits-medical-marijuana-for-saving-her-life-rebukes-critics"
-description: "Independent wrestler Paige Collett addressed criticism regarding her use of cannabis, stating that medical marijuana is the reason she can still pursue her…"
+description: "Independent wrestler Paige Collett addressed criticism regarding her use of cannabis."
 federation: INDIE
 date: 2026-10-18T21:22:09.000Z
 source_id: 802257012

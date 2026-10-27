@@ -1,7 +1,7 @@
 ---
 title: "Stephanie Vaquer and Myles Borne's Relationship Status Cleared Up"
 slug: "stephanie-vaquer-and-myles-bornes-relationship-status-cleared-up"
-description: "Stephanie Vaquer and Myles Borne are still together despite recent breakup rumors. Fans previously suspected a split after the two WWE stars unfollowed…"
+description: "Stephanie Vaquer and Myles Borne are still together despite recent breakup rumors."
 federation: WWE
 date: 2026-10-25T12:55:53.000Z
 source_id: 802259506

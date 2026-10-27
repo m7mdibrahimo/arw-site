@@ -1,7 +1,7 @@
 ---
 title: "Mick Foley Explains How He Became an Early Supporter of AEW's Willow Nightingale"
 slug: "mick-foley-explains-how-he-became-an-early-supporter-of-aews-willow-nightingale"
-description: "As Willow Nightingale has risen through the ranks in AEW, winning the TBS and AEW Women's World Championships, she has frequently cited WWE Hall of Famer…"
+description: "As Willow Nightingale has risen through the ranks in AEW, winning the TBS and AEW Women's World Championships."
 federation: AEW
 date: 2026-10-21T01:00:00.000Z
 source_id: 2425303750

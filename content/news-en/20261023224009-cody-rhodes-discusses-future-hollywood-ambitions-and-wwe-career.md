@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Discusses Future Hollywood Ambitions and WWE Career"
 slug: "cody-rhodes-discusses-future-hollywood-ambitions-and-wwe-career"
-description: "Cody Rhodes has addressed his future in acting after filming his role in Street Fighter, emphasizing that wrestling remains his central priority and that…"
+description: "Cody Rhodes has addressed his future in acting after filming his role in Street Fighter."
 federation: WWE
 date: 2026-10-23T19:40:09.000Z
 source_id: 802258764

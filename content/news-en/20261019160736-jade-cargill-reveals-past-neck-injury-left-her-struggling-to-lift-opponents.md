@@ -1,7 +1,7 @@
 ---
 title: "Jade Cargill Reveals Past Neck Injury Left Her Struggling to Lift Opponents"
 slug: "jade-cargill-reveals-past-neck-injury-left-her-struggling-to-lift-opponents"
-description: "WWE Superstar Jade Cargill recently opened up about a neck injury she dealt with approximately two years ago, revealing that a pinched muscle severely…"
+description: "WWE Superstar Jade Cargill recently opened up about a neck injury she dealt with approximately two years ago."
 federation: WWE
 date: 2026-10-19T13:07:36.000Z
 source_id: 802257151

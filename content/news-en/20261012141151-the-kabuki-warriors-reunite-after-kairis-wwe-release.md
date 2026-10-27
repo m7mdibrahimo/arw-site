@@ -1,7 +1,7 @@
 ---
 title: "The Kabuki Warriors Reunite After KAIRI’s WWE Release"
 slug: "the-kabuki-warriors-reunite-after-kairis-wwe-release"
-description: "KAIRI and Asuka recently reunited in a new video uploaded to Asuka's YouTube channel, marking their first on-camera meeting since KAIRI's departure from…"
+description: "KAIRI and Asuka recently reunited in a new video uploaded to Asuka's YouTube channel."
 federation: WWE
 date: 2026-10-12T11:11:51.000Z
 source_id: 802254064

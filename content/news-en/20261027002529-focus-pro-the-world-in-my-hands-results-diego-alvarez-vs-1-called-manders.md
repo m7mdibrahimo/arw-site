@@ -1,7 +1,7 @@
 ---
 title: "Focus Pro the World in My Hands Results: Diego Alvarez vs. 1 Called Manders"
 slug: "focus-pro-the-world-in-my-hands-results-diego-alvarez-vs-1-called-manders"
-description: "Focus Pro Wrestling hosted its The World In My Hands event on October 24 at Sonia in Cambridge, Massachusetts. The show was broadcast on IWTV, according to…"
+description: "Focus Pro Wrestling hosted its The World In My Hands event on October 24 at Sonia in Cambridge, Massachusetts."
 federation: INDIE
 date: 2026-10-26T21:25:29.000Z
 source_id: 335949

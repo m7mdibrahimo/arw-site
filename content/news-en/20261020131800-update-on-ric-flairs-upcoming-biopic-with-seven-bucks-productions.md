@@ -1,7 +1,7 @@
 ---
 title: "Update on Ric Flair's Upcoming Biopic With Seven Bucks Productions"
 slug: "update-on-ric-flairs-upcoming-biopic-with-seven-bucks-productions"
-description: "Ric Flair's long-discussed biopic with The Rock's Seven Bucks Productions is still active, with updates expected in the coming weeks. Flair stated that he…"
+description: "Ric Flair's long-discussed biopic with The Rock's Seven Bucks Productions is still active, with updates expected in the coming weeks."
 federation: INDIE
 date: 2026-10-20T10:18:00.000Z
 source_id: 802257643

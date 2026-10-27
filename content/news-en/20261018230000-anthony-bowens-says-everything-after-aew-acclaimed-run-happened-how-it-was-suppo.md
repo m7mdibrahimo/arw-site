@@ -1,7 +1,7 @@
 ---
 title: "Anthony Bowens Says Everything After AEW Acclaimed Run Happened How It Was Supposed To"
 slug: "anthony-bowens-says-everything-after-aew-acclaimed-run-happened-how-it-was-suppo"
-description: "Anthony Bowens addressed the aftermath of The Acclaimed's breakup, pushing back against the idea that his subsequent singles run was an unintentional…"
+description: "Anthony Bowens addressed the aftermath of The Acclaimed's breakup, pushing back against the idea that his subsequent singles run was an unintentional failure."
 federation: AEW
 date: 2026-10-18T20:00:00.000Z
 source_id: 4554794959

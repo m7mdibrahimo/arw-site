@@ -1,7 +1,7 @@
 ---
 title: "Mini Vikingo Not Cleared to Compete on 10/20 WWE NXT"
 slug: "mini-vikingo-not-cleared-to-compete-on-10-20-wwe-nxt"
-description: "Mini Vikingo was not medically cleared to compete on the October 20th episode of WWE NXT on The CW. The show was scheduled to feature a six-man tag team…"
+description: "Mini Vikingo was not medically cleared to compete on the October 20th episode of WWE NXT on The CW."
 federation: WWE
 date: 2026-10-21T00:52:38.000Z
 source_id: 334926

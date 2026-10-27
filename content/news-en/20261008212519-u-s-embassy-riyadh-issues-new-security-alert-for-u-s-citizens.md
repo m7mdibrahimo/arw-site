@@ -1,7 +1,7 @@
 ---
 title: "U.S. Embassy Riyadh Issues New Security Alert for U.S. Citizens"
 slug: "u-s-embassy-riyadh-issues-new-security-alert-for-u-s-citizens"
-description: "The U.S. Embassy in Riyadh, Saudi Arabia, issued a new security alert on October 7, urging U.S. citizens to exercise heightened vigilance. The advisory…"
+description: "The U.S. Embassy in Riyadh, Saudi Arabia, issued a new security alert on October 7, urging U.S. citizens to exercise heightened vigilance."
 federation: WWE
 date: 2026-10-08T18:25:19.000Z
 source_id: 332783

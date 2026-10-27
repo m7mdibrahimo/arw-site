@@ -1,7 +1,7 @@
 ---
 title: "Samoa Joe Calls Out Wrestlers for Making Thigh Slaps Too Obvious"
 slug: "samoa-joe-calls-out-wrestlers-for-making-thigh-slaps-too-obvious"
-description: "Samoa Joe recently shared his thoughts on wrestlers slapping their thighs to enhance the sound of strikes, explaining that he has no issue with the…"
+description: "Samoa Joe recently shared his thoughts on wrestlers slapping their thighs to enhance the sound of strikes."
 federation: WWE
 date: 2026-10-16T22:08:51.000Z
 source_id: 802255841

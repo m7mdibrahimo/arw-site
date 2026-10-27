@@ -1,7 +1,7 @@
 ---
 title: "Dustin Rhodes Says He's Writing a Second Book"
 slug: "dustin-rhodes-says-hes-writing-a-second-book"
-description: "Dustin Rhodes is currently writing his second book, following his 2010 autobiography \"Cross Rhodes: Goldust, Out of the Darkness.\" Dustin revealed the…"
+description: "Dustin Rhodes is currently writing his second book, following his 2010 autobiography \"Cross Rhodes: Goldust."
 federation: AEW
 date: 2026-10-26T18:51:12.000Z
 source_id: 335897

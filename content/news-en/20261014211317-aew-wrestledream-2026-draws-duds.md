@@ -1,7 +1,7 @@
 ---
 title: "AEW WrestleDream 2026: Draws & Duds"
 slug: "aew-wrestledream-2026-draws-duds"
-description: "AEW WrestleDream 2026 is heading to Orlando, Florida, featuring a stacked card with a championship on the line for every currently announced match. The…"
+description: "AEW WrestleDream 2026 is heading to Orlando, Florida, featuring a stacked card with a championship on the line for every currently announced match."
 federation: AEW
 date: 2026-10-14T18:13:17.000Z
 source_id: 1010334897

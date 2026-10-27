@@ -1,7 +1,7 @@
 ---
 title: "TNA Impact 10/8/2026: 3 Things We Hated & 3 Things We Loved"
 slug: "tna-impact-10-8-2026-3-things-we-hated-3-things-we-loved"
-description: "The final edition of TNA Impact before TNA Bound for Glory featured multiple title matches, high-stakes gauntlet qualifying action, and major news…"
+description: "The final edition of TNA Impact before TNA Bound for Glory featured multiple title matches, high-stakes gauntlet qualifying action."
 federation: TNA
 date: 2026-10-09T04:00:43.000Z
 source_id: 1016214620

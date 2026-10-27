@@ -1,7 +1,7 @@
 ---
 title: "AEW World Champion Will Ospreay Addresses Absent MJF Flaunting His Own Title Belt"
 slug: "aew-world-champion-will-ospreay-addresses-absent-mjf-flaunting-his-own-title-bel"
-description: "Following his successful title defense at Clockwork Carnage, AEW World Champion Will Ospreay addressed the situation regarding absent star MJF, who…"
+description: "Following his successful title defense at Clockwork Carnage, AEW World Champion Will Ospreay addressed the situation regarding absent star MJF."
 federation: AEW
 date: 2026-10-19T20:18:34.000Z
 source_id: 1444206978

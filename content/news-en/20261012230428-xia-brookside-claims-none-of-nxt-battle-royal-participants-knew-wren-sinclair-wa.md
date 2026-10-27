@@ -1,7 +1,7 @@
 ---
 title: "Xia Brookside Claims None of NXT Battle Royal Participants Knew Wren Sinclair Was Disguised as Lady Shani"
 slug: "xia-brookside-claims-none-of-nxt-battle-royal-participants-knew-wren-sinclair-wa"
-description: "According to Xia Brookside, none of the participants in the recent WWE NXT Battle Royal realized that Wren Sinclair was disguised as AAA's Lady Shani.…"
+description: "According to Xia Brookside, none of the participants in the recent WWE NXT Battle Royal realized that Wren Sinclair was disguised as AAA's Lady Shani."
 federation: WWE
 date: 2026-10-12T20:04:28.000Z
 source_id: 333552

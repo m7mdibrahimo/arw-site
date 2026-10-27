@@ -1,7 +1,7 @@
 ---
 title: "Absent AEW Star Spotted in Town Ahead of Dynamite in Cleveland"
 slug: "absent-aew-star-spotted-in-town-ahead-of-dynamite-in-cleveland"
-description: "Steven Borden may not be ready to return to the ring just yet, but his recent appearance offers an encouraging sign in his recovery process. According to…"
+description: "Steven Borden may not be ready to return to the ring just yet, but his recent appearance offers an encouraging sign in his recovery process."
 federation: AEW
 date: 2026-10-14T13:41:54.000Z
 source_id: 802254980

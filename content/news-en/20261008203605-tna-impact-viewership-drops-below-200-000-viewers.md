@@ -1,7 +1,7 @@
 ---
 title: "TNA iMPACT! Viewership Drops Below 200,000 Viewers"
 slug: "tna-impact-viewership-drops-below-200-000-viewers"
-description: "TNA iMPACT! viewership decreased for the October 1, 2026 episode, according to Wrestlenomics. The show drew 182,000 viewers on AMC, dropping from the…"
+description: "TNA iMPACT! viewership decreased for the October 1, 2026 episode, according to Wrestlenomics."
 federation: TNA
 date: 2026-10-08T17:36:05.000Z
 source_id: 332772

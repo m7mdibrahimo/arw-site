@@ -1,7 +1,7 @@
 ---
 title: "Richard Adonis Joins WWE ID Program"
 slug: "richard-adonis-joins-wwe-id-program"
-description: "Richard Adonis has officially joined the WWE ID program. During a WWN Live event held on October 12 in Clearwater, Florida, WWE coach and EVOLVE General…"
+description: "Richard Adonis has officially joined the WWE ID program. During a WWN Live event held on October 12 in Clearwater, Florida."
 federation: WWE
 date: 2026-10-13T04:03:15.000Z
 source_id: 333627

@@ -1,7 +1,7 @@
 ---
 title: "Saudi Arabia’s GEA Chairman Pushes WWE Crown Jewel Ticket Sales Despite Security Concerns"
 slug: "saudi-arabias-gea-chairman-pushes-wwe-crown-jewel-ticket-sales-despite-security"
-description: "WWE Crown Jewel is still set to take place in Saudi Arabia, and Turki Alalshikh is actively promoting ticket sales for the event. Despite growing security…"
+description: "WWE Crown Jewel is still set to take place in Saudi Arabia, and Turki Alalshikh is actively promoting ticket sales for the event."
 federation: WWE
 date: 2026-10-26T18:12:18.000Z
 source_id: 802259873

@@ -1,7 +1,7 @@
 ---
 title: "Perry Saturn Hospitalized After Serious Respiratory Health Scare"
 slug: "perry-saturn-hospitalized-after-serious-respiratory-health-scare"
-description: "Former WWE and ECW star Perry Saturn has returned home following a severe health scare that required multiple hospital visits throughout the past week.…"
+description: "Former WWE and ECW star Perry Saturn has returned home following a severe health scare that required multiple hospital visits throughout the past week."
 federation: WWE
 date: 2026-10-13T21:16:19.000Z
 source_id: 802254704

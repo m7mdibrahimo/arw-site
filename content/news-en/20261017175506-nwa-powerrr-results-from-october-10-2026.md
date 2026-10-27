@@ -1,7 +1,7 @@
 ---
 title: "NWA Powerrr Results From October 10, 2026"
 slug: "nwa-powerrr-results-from-october-10-2026"
-description: "The National Wrestling Alliance aired a new episode of NWA Powerrr on October 10 via Comet TV. Silas Mason claimed that Carson Drake lied to avoid their…"
+description: "The National Wrestling Alliance aired a new episode of NWA Powerrr on October 10 via Comet TV."
 federation: INDIE
 date: 2026-10-17T14:55:06.000Z
 source_id: 334332

@@ -1,7 +1,7 @@
 ---
 title: "Damian Priest Underwent Medical Procedures After Dealing With Multiple Injuries"
 slug: "damian-priest-underwent-medical-procedures-after-dealing-with-multiple-injuries"
-description: "Damian Priest revealed that he has undergone medical procedures to deal with ongoing pain after wrestling with injuries for a long time. Speaking on Off…"
+description: "Damian Priest revealed that he has undergone medical procedures to deal with ongoing pain after wrestling with injuries for a long time."
 federation: WWE
 date: 2026-10-21T19:41:50.000Z
 source_id: 802258237

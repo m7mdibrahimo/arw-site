@@ -1,7 +1,7 @@
 ---
 title: "Jacy Jayne Had Out of Body Experience Beating Stephanie Vaquer for WWE NXT Title"
 slug: "jacy-jayne-had-out-of-body-experience-beating-stephanie-vaquer-for-wwe-nxt-title"
-description: "In May 2025, Jacy Jayne captured the NXT Women's Championship by defeating Stephanie Vaquer with assistance from Fallon Henley and Jazmyn Nyx. Reflecting…"
+description: "In May 2025, Jacy Jayne captured the NXT Women's Championship by defeating Stephanie Vaquer with assistance from Fallon Henley and Jazmyn Nyx."
 federation: WWE
 date: 2026-10-17T17:00:00.000Z
 source_id: 2759805726

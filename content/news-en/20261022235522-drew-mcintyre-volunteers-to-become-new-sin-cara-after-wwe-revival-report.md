@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Volunteers to Become New Sin Cara After WWE Revival Report"
 slug: "drew-mcintyre-volunteers-to-become-new-sin-cara-after-wwe-revival-report"
-description: "Drew McIntyre has joked about becoming the new Sin Cara after reports emerged that WWE has discussed bringing the masked character back with a new…"
+description: "Drew McIntyre has joked about becoming the new Sin Cara after reports emerged that WWE has discussed bringing the masked character back with a new wrestler."
 federation: WWE
 date: 2026-10-22T20:55:22.000Z
 source_id: 802258587

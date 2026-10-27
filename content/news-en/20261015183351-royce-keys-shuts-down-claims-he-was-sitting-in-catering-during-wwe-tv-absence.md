@@ -1,7 +1,7 @@
 ---
 title: "Royce Keys Shuts Down Claims He Was Sitting in Catering During WWE TV Absence"
 slug: "royce-keys-shuts-down-claims-he-was-sitting-in-catering-during-wwe-tv-absence"
-description: "Royce Keys addressed the assumption that he was simply sitting in catering during his time away from WWE television, revealing that Triple H kept him busy…"
+description: "Royce Keys addressed the assumption that he was simply sitting in catering during his time away from WWE television."
 federation: WWE
 date: 2026-10-15T15:33:51.000Z
 source_id: 802255419

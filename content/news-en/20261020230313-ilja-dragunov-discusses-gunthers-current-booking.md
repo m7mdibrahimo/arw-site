@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Discusses Gunther's Current Booking"
 slug: "ilja-dragunov-discusses-gunthers-current-booking"
-description: "In December, Gunther forced John Cena into retirement. He subsequently retired AJ Styles as well, but he stepped back and is currently engaged in a program…"
+description: "In December, Gunther forced John Cena into retirement. He subsequently retired AJ Styles as well."
 federation: WWE
 date: 2026-10-20T20:03:13.000Z
 source_id: 334877

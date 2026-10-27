@@ -1,7 +1,7 @@
 ---
 title: "TNA iMPACT! Results: October 8, 2026"
 slug: "tna-impact-results-october-8-2026"
-description: "TNA Wrestling broadcasted the latest episode of TNA iMPACT on October 8 from the Boeing Center at Tech Port in San Antonio, Texas, on AMC, according to…"
+description: "TNA Wrestling broadcasted the latest episode of TNA iMPACT on October 8 from the Boeing Center at Tech Port in San Antonio, Texas, on AMC."
 federation: TNA
 date: 2026-10-09T03:22:55.785Z
 source_id: 332826

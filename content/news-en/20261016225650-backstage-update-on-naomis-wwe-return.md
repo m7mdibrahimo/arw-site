@@ -1,7 +1,7 @@
 ---
 title: "Backstage Update on Naomi's WWE Return"
 slug: "backstage-update-on-naomis-wwe-return"
-description: "Recent backstage reports indicate that the return of Naomi to WWE television could happen sooner rather than later. According to Dave Meltzer in the…"
+description: "Recent backstage reports indicate that the return of Naomi to WWE television could happen sooner rather than later."
 federation: WWE
 date: 2026-10-16T19:56:50.000Z
 source_id: 4978171600

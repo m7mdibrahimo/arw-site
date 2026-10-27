@@ -1,7 +1,7 @@
 ---
 title: "John Cena Explains How He Responds When People Tell Him Wrestling Is Fake"
 slug: "john-cena-explains-how-he-responds-when-people-tell-him-wrestling-is-fake"
-description: "John Cena says he does not get angry when people tell him professional wrestling is fake. Instead, he views it as a sign that the person is simply…"
+description: "John Cena says he does not get angry when people tell him professional wrestling is fake."
 federation: WWE
 date: 2026-10-26T17:03:53.000Z
 source_id: 802259865

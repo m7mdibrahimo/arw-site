@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes: \"There’s a Rule at WWE... We’re Never Doing an A.I. Voice of Dusty\""
 slug: "cody-rhodes-theres-a-rule-at-wwe-were-never-doing-an-a-i-voice-of-dusty"
-description: "Cody Rhodes has confirmed that there is a strict policy within WWE regarding the use of artificial intelligence. During a recent appearance on the Last…"
+description: "Cody Rhodes has confirmed that there is a strict policy within WWE regarding the use of artificial intelligence."
 federation: WWE
 date: 2026-10-13T12:30:00.000Z
 source_id: 333648

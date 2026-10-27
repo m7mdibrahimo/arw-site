@@ -1,7 +1,7 @@
 ---
 title: "Noam Dar and Romeo Moreno vs. Vanity Project Set for NXT Dusty Rhodes Tag Team Classic"
 slug: "noam-dar-and-romeo-moreno-vs-vanity-project-set-for-nxt-dusty-rhodes-tag-team-cl"
-description: "The first semifinal matchup for the 2026 NXT Dusty Rhodes Tag Team Classic has been finalized. During the October 13 episode of NXT on The CW, NXT Tag Team…"
+description: "The first semifinal matchup for the 2026 NXT Dusty Rhodes Tag Team Classic has been finalized."
 federation: WWE
 date: 2026-10-14T01:46:39.000Z
 source_id: 333794

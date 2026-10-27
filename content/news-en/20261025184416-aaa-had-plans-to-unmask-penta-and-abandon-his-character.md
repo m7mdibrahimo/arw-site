@@ -1,7 +1,7 @@
 ---
 title: "AAA Had Plans to Unmask Penta and Abandon His Character"
 slug: "aaa-had-plans-to-unmask-penta-and-abandon-his-character"
-description: "Kalisto recently revealed that AAA had major plans to unmask Penta and retire his character entirely before Kalisto's move to WWE changed everything.…"
+description: "Kalisto recently revealed that AAA had major plans to unmask Penta and retire his character entirely before Kalisto's move to WWE changed everything."
 federation: WWE
 date: 2026-10-25T15:44:16.000Z
 source_id: 802259571

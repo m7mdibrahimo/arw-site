@@ -1,7 +1,7 @@
 ---
 title: "Absent AEW Star Spotted Backstage at October 14 Dynamite"
 slug: "absent-aew-star-spotted-backstage-at-october-14-dynamite"
-description: "Penelope Ford appeared backstage at AEW Dynamite, marking her first time behind the scenes in months of absence from AEW programming. Reports confirmed…"
+description: "Penelope Ford appeared backstage at AEW Dynamite, marking her first time behind the scenes in months of absence from AEW programming."
 federation: AEW
 date: 2026-10-15T14:29:15.000Z
 source_id: 802255403

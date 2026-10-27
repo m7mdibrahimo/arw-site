@@ -1,7 +1,7 @@
 ---
 title: "Shakur Stevenson Secures Zuffa Boxing Release"
 slug: "shakur-stevenson-secures-zuffa-boxing-release"
-description: "Shakur Stevenson has officially secured his release from Zuffa Boxing after never fighting for the promotion. Stevenson announced the news on Monday,…"
+description: "Shakur Stevenson has officially secured his release from Zuffa Boxing after never fighting for the promotion."
 federation: MMA
 date: 2026-10-19T20:43:49.000Z
 source_id: 334722

@@ -1,7 +1,7 @@
 ---
 title: "Shotzi Mourns the Loss of Her Brother Dean"
 slug: "shotzi-mourns-the-loss-of-her-brother-dean"
-description: "Former WWE star Shotzi announced the passing of her brother, Dean, late Sunday night in a heartbreaking update shared on X. She explained that recent days…"
+description: "Former WWE star Shotzi announced the passing of her brother, Dean, late Sunday night in a heartbreaking update shared on X."
 federation: WWE
 date: 2026-10-14T15:50:41.000Z
 source_id: 802255015

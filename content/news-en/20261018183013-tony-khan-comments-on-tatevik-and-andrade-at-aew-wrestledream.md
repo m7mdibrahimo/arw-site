@@ -1,7 +1,7 @@
 ---
 title: "Tony Khan Comments on Tatevik and Andrade at AEW WrestleDream"
 slug: "tony-khan-comments-on-tatevik-and-andrade-at-aew-wrestledream"
-description: "During the AEW WrestleDream press conference, Tony Khan addressed the presence of Tatevik and Rachel Ley alongside Andrade El Idolo on AEW programming.…"
+description: "During the AEW WrestleDream press conference, Tony Khan addressed the presence of Tatevik and Rachel Ley alongside Andrade El Idolo on AEW programming."
 federation: AEW
 date: 2026-10-18T15:30:13.000Z
 source_id: 334544

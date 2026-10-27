@@ -1,7 +1,7 @@
 ---
 title: "WWE’s Internal Reaction to 946’s Main Roster Run So Far"
 slug: "wwes-internal-reaction-to-946s-main-roster-run-so-far"
-description: "The 946 faction has made a strong impression on WWE management since arriving on the main roster. According to False Finish, officials are very pleased…"
+description: "The 946 faction has made a strong impression on WWE management since arriving on the main roster."
 federation: WWE
 date: 2026-10-13T16:51:51.000Z
 source_id: 802254565

@@ -1,7 +1,7 @@
 ---
 title: "AEW Dynamite and Collision Results for October 14, 2026"
 slug: "aew-dynamite-and-collision-results-for-october-14-2026"
-description: "The October 14, 2026, episode of AEW Dynamite and Collision emanated from the Wolstein Center in Cleveland, Ohio. The show featured several AEW…"
+description: "The October 14, 2026, episode of AEW Dynamite and Collision emanated from the Wolstein Center in Cleveland, Ohio."
 federation: AEW
 date: 2026-10-15T00:49:15.000Z
 source_id: 802254986

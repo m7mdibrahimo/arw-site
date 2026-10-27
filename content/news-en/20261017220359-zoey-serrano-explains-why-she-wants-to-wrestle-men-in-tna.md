@@ -1,7 +1,7 @@
 ---
 title: "Zoey Serrano Explains Why She Wants to Wrestle Men in TNA"
 slug: "zoey-serrano-explains-why-she-wants-to-wrestle-men-in-tna"
-description: "Zoey Serrano discussed her experience with intergender wrestling during a recent Q&A session on her YouTube channel, explaining that she often felt more…"
+description: "Zoey Serrano discussed her experience with intergender wrestling during a recent Q&A session on her YouTube channel."
 federation: TNA
 date: 2026-10-17T19:03:59.000Z
 source_id: 802256294

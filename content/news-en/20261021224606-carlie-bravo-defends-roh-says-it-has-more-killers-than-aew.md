@@ -1,7 +1,7 @@
 ---
 title: "Carlie Bravo Defends ROH, Says It Has 'More Killers' Than AEW"
 slug: "carlie-bravo-defends-roh-says-it-has-more-killers-than-aew"
-description: "Carlie Bravo recently defended Ring of Honor in an interview, stating that the promotion has more hungry and dangerous talent than AEW. Bravo highlighted…"
+description: "Carlie Bravo recently defended Ring of Honor in an interview, stating that the promotion has more hungry and dangerous talent than AEW."
 federation: ROH
 date: 2026-10-21T19:46:06.000Z
 source_id: 335006

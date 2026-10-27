@@ -1,7 +1,7 @@
 ---
 title: "Alexa Bliss Reveals She Had a Non-Negotiable Demand Before Returning to WWE"
 slug: "alexa-bliss-reveals-she-had-a-non-negotiable-demand-before-returning-to-wwe"
-description: "Alexa Bliss shared that having her daughter Hendrix travel with her was a non-negotiable demand before returning to WWE in 2025. Speaking on Shot of…"
+description: "Alexa Bliss shared that having her daughter Hendrix travel with her was a non-negotiable demand before returning to WWE in 2025."
 federation: WWE
 date: 2026-10-26T15:17:11.000Z
 source_id: 802259826

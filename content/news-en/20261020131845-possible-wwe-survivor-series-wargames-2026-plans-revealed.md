@@ -1,7 +1,7 @@
 ---
 title: "Possible WWE Survivor Series WarGames 2026 Plans Revealed"
 slug: "possible-wwe-survivor-series-wargames-2026-plans-revealed"
-description: "Possible plans for a WarGames match at WWE Survivor Series have been revealed following a major angle on WWE RAW. According to Dave Meltzer on Wrestling…"
+description: "Possible plans for a WarGames match at WWE Survivor Series have been revealed following a major angle on WWE RAW."
 federation: WWE
 date: 2026-10-20T10:18:45.000Z
 source_id: 802257664

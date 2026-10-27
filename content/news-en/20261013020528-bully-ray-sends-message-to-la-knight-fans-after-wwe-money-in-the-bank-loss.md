@@ -1,7 +1,7 @@
 ---
 title: "Bully Ray Sends Message to LA Knight Fans After WWE Money in the Bank Loss"
 slug: "bully-ray-sends-message-to-la-knight-fans-after-wwe-money-in-the-bank-loss"
-description: "WWE Hall of Famer Bully Ray shared his thoughts on Busted Open Radio regarding LA Knight's performance against Roman Reigns at WWE Money in the Bank.…"
+description: "WWE Hall of Famer Bully Ray shared his thoughts on Busted Open Radio regarding LA Knight's performance against Roman Reigns at WWE Money in the Bank."
 federation: WWE
 date: 2026-10-12T23:05:28.000Z
 source_id: 3656946058

@@ -1,7 +1,7 @@
 ---
 title: "CM Punk Featured in First Trailer for Netflix Film 'Guarding Stars'"
 slug: "cm-punk-featured-in-first-trailer-for-netflix-film-guarding-stars"
-description: "CM Punk has landed a role in the upcoming romantic comedy 'Guarding Stars'. The film is scheduled to premiere on Netflix on Wednesday, November 18. Punk…"
+description: "CM Punk has landed a role in the upcoming romantic comedy 'Guarding Stars'. The film is scheduled to premiere on Netflix on Wednesday, November 18."
 federation: WWE
 date: 2026-10-20T20:46:56.000Z
 source_id: 334884

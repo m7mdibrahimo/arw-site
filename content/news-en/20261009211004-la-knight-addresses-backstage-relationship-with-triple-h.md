@@ -1,7 +1,7 @@
 ---
 title: "LA Knight Addresses Backstage Relationship With Triple H"
 slug: "la-knight-addresses-backstage-relationship-with-triple-h"
-description: "LA Knight has finally spoken about his professional relationship with Triple H following months of rumors regarding potential tension between them. His…"
+description: "LA Knight has finally spoken about his professional relationship with Triple H following months of rumors regarding potential tension between them."
 federation: WWE
 date: 2026-10-09T18:10:04.000Z
 source_id: 802252807

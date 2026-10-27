@@ -1,7 +1,7 @@
 ---
 title: "Kaitlyn Says WWE Women Tried to Get Her Written Out After Accidental RAW Win"
 slug: "kaitlyn-says-wwe-women-tried-to-get-her-written-out-after-accidental-raw-win"
-description: "Former Divas Champion Kaitlyn recently spoke about her accidental breakthrough in WWE, revealing that some women on the roster tried to get her pushed out…"
+description: "Former Divas Champion Kaitlyn recently spoke about her accidental breakthrough in WWE."
 federation: WWE
 date: 2026-10-15T13:38:49.000Z
 source_id: 802255362

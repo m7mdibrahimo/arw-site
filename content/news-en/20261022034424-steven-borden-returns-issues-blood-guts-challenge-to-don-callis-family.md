@@ -1,7 +1,7 @@
 ---
 title: "Steven Borden Returns, Issues Blood & Guts Challenge to Don Callis Family"
 slug: "steven-borden-returns-issues-blood-guts-challenge-to-don-callis-family"
-description: "Steven Borden made his return to AEW on this week's episode of AEW Dynamite. The show featured a tag team match where Adam Copeland and Will Ospreay faced…"
+description: "Steven Borden made his return to AEW on this week's episode of AEW Dynamite."
 federation: AEW
 date: 2026-10-22T00:44:24.000Z
 source_id: 335060

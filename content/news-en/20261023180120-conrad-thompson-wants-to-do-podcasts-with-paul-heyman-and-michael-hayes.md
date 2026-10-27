@@ -1,7 +1,7 @@
 ---
 title: "Conrad Thompson Wants to Do Podcasts With Paul Heyman and Michael Hayes"
 slug: "conrad-thompson-wants-to-do-podcasts-with-paul-heyman-and-michael-hayes"
-description: "Conrad Thompson revealed in a recent interview that Paul Heyman and Michael Hayes are his top dream podcast guests. Thompson praised Hayes for his…"
+description: "Conrad Thompson revealed in a recent interview that Paul Heyman and Michael Hayes are his top dream podcast guests."
 federation: WWE
 date: 2026-10-23T15:01:20.000Z
 source_id: 335254

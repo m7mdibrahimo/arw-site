@@ -1,7 +1,7 @@
 ---
 title: "Alexa Bliss Reveals How Her First-Ever Song Came Together"
 slug: "alexa-bliss-reveals-how-her-first-ever-song-came-together"
-description: "Alexa Bliss recently shared the unique story behind her debut single, explaining how years of humorous text messages sent to her husband, Ryan Cabrera,…"
+description: "Alexa Bliss recently shared the unique story behind her debut single, explaining how years of humorous text messages sent to her husband, Ryan Cabrera."
 federation: WWE
 date: 2026-10-08T16:25:06.000Z
 source_id: 802252449

@@ -1,7 +1,7 @@
 ---
 title: "WWE NXT Preview for October 13, 2026: Confirmed Matches, Start Time and How to Watch"
 slug: "wwe-nxt-preview-for-october-13-2026-confirmed-matches-start-time-and-how-to-watc"
-description: "WWE NXT returns tonight, October 13, 2026, with a loaded card as the brand builds toward its next Premium Live Event. The show will feature a high-stakes…"
+description: "WWE NXT returns tonight, October 13, 2026, with a loaded card as the brand builds toward its next Premium Live Event."
 federation: WWE
 date: 2026-10-13T12:15:51.000Z
 source_id: 802254513

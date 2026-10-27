@@ -1,7 +1,7 @@
 ---
 title: "Alice Crowley Reflects on Match Against Red Velvet at ROH x MLP Global Wars Canada"
 slug: "alice-crowley-reflects-on-match-against-red-velvet-at-roh-x-mlp-global-wars-cana"
-description: "Alice Crowley recently revisited her high-profile bout against Red Velvet, which took place at the ROH x MLP Global Wars Canada event in March 2026. The…"
+description: "Alice Crowley recently revisited her high-profile bout against Red Velvet, which took place at the ROH x MLP Global Wars Canada event in March 2026."
 federation: ROH
 date: 2026-10-23T19:45:22.000Z
 source_id: 335280

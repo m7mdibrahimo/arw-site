@@ -1,7 +1,7 @@
 ---
 title: "Shuji Kondo Wins GHC200 Championship at NOAH Wrestle Odyssey II"
 slug: "shuji-kondo-wins-ghc200-championship-at-noah-wrestle-odyssey-ii"
-description: "Shuji Kondo captured the GHC200 Championship at Pro Wrestling NOAH event Wrestle Odyssey II on October 25th, according to Fightful. The unique title…"
+description: "Shuji Kondo captured the GHC200 Championship at Pro Wrestling NOAH event Wrestle Odyssey II on October 25th, according to Fightful."
 federation: INDIE
 date: 2026-10-25T07:16:33.000Z
 source_id: 335617

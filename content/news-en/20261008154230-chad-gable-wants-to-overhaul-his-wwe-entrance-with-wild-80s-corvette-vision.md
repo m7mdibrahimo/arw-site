@@ -1,7 +1,7 @@
 ---
 title: "Chad Gable Wants to Overhaul His WWE Entrance With Wild ’80s Corvette Vision"
 slug: "chad-gable-wants-to-overhaul-his-wwe-entrance-with-wild-80s-corvette-vision"
-description: "Chad Gable is looking to completely overhaul his WWE entrance visuals, sharing a wild vision that includes an '80s aesthetic, workout footage, and cruising…"
+description: "Chad Gable is looking to completely overhaul his WWE entrance visuals, sharing a wild vision that includes an '80s aesthetic, workout footage."
 federation: WWE
 date: 2026-10-08T12:42:30.000Z
 source_id: 802252359

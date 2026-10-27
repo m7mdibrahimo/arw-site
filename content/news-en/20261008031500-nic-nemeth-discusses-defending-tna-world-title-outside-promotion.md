@@ -1,7 +1,7 @@
 ---
 title: "Nic Nemeth Discusses Defending TNA World Title Outside Promotion"
 slug: "nic-nemeth-discusses-defending-tna-world-title-outside-promotion"
-description: "TNA World Champion Nic Nemeth recently discussed preserving the prestige of his championship and the rare occasions he puts it on the line outside the…"
+description: "TNA World Champion Nic Nemeth recently discussed preserving the prestige of his championship and the rare occasions he puts it on the line outside."
 federation: TNA
 date: 2026-10-08T00:15:00.000Z
 source_id: 332263

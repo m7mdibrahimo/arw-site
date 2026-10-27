@@ -1,7 +1,7 @@
 ---
 title: "Brie Bella Reveals Bad News From Latest Scans Amid WWE Comeback Hopes"
 slug: "brie-bella-reveals-bad-news-from-latest-scans-amid-wwe-comeback-hopes"
-description: "Brie Bella has shared an update on her recovery from a broken scapula, confirming that her latest CT scan showed her bones have not yet fused. Speaking on…"
+description: "Brie Bella has shared an update on her recovery from a broken scapula, confirming that her latest CT scan showed her bones have not yet fused."
 federation: WWE
 date: 2026-10-09T17:32:56.000Z
 source_id: 802252812

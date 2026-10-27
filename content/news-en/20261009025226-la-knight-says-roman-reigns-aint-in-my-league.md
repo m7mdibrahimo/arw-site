@@ -1,7 +1,7 @@
 ---
 title: "LA Knight Says Roman Reigns ‘Ain’t in My League’"
 slug: "la-knight-says-roman-reigns-aint-in-my-league"
-description: "LA Knight recently addressed the comparison between his career path and Roman Reigns' ahead of their World Heavyweight Championship match at Money in the…"
+description: "LA Knight recently addressed the comparison between his career path and Roman Reigns' ahead of their World Heavyweight Championship match at Money in the Bank."
 federation: WWE
 date: 2026-10-08T23:52:26.000Z
 source_id: 802252581

@@ -1,7 +1,7 @@
 ---
 title: "Penta Wasn’t Originally Planned to Win Money in the Bank Match"
 slug: "penta-wasnt-originally-planned-to-win-money-in-the-bank-match"
-description: "Penta's victory in the Money in the Bank ladder match reportedly caught many people within WWE by surprise. According to recent comments from JoeyVotes and…"
+description: "Penta's victory in the Money in the Bank ladder match reportedly caught many people within WWE by surprise."
 federation: WWE
 date: 2026-10-12T21:40:37.000Z
 source_id: 802254251

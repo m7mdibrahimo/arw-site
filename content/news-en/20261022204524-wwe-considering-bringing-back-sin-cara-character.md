@@ -1,7 +1,7 @@
 ---
 title: "WWE Considering Bringing Back Sin Cara Character"
 slug: "wwe-considering-bringing-back-sin-cara-character"
-description: "WWE is reportedly exploring ideas to bring back the Sin Cara character with a completely new wrestler under the mask. According to PWInsider, early…"
+description: "WWE is reportedly exploring ideas to bring back the Sin Cara character with a completely new wrestler under the mask."
 federation: WWE
 date: 2026-10-22T17:45:24.000Z
 source_id: 802258565

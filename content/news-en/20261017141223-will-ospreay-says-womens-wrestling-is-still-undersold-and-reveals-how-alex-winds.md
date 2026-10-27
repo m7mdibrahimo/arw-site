@@ -1,7 +1,7 @@
 ---
 title: "Will Ospreay Says Women’s Wrestling Is Still Undersold and Reveals How Alex Windsor Got Signed by AEW"
 slug: "will-ospreay-says-womens-wrestling-is-still-undersold-and-reveals-how-alex-winds"
-description: "Will Ospreay believes that women's wrestling continues to be undervalued and is actively working to change that through his involvement with Pro Wrestling…"
+description: "Will Ospreay believes that women's wrestling continues to be undervalued and is actively working to change that through his involvement with Pro Wrestling EVE."
 federation: AEW
 date: 2026-10-17T11:12:23.000Z
 source_id: 802256154

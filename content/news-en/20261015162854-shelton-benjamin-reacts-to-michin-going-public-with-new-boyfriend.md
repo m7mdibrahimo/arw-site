@@ -1,7 +1,7 @@
 ---
 title: "Shelton Benjamin Reacts to Michin Going Public With New Boyfriend"
 slug: "shelton-benjamin-reacts-to-michin-going-public-with-new-boyfriend"
-description: "Shelton Benjamin reacted to Michin going public with her new boyfriend by joking that he is glad to finally prove he was never secretly dating her.…"
+description: "Shelton Benjamin reacted to Michin going public with her new boyfriend by joking that he is glad to finally prove he was never secretly dating her."
 federation: WWE
 date: 2026-10-15T13:28:54.000Z
 source_id: 802255375

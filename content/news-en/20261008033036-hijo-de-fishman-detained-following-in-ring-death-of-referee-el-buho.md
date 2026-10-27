@@ -1,7 +1,7 @@
 ---
 title: "Hijo de Fishman Detained Following In-Ring Death of Referee El Buho"
 slug: "hijo-de-fishman-detained-following-in-ring-death-of-referee-el-buho"
-description: "An independent wrestling event in Hidalgo, Mexico, escalated into a criminal investigation after referee Gerardo German Pineda, known as El Buho, collapsed…"
+description: "An independent wrestling event in Hidalgo, Mexico, escalated into a criminal investigation after referee Gerardo German Pineda, known as El Buho."
 federation: INDIE
 date: 2026-10-08T00:30:36.000Z
 source_id: 802252254

@@ -1,7 +1,7 @@
 ---
 title: "Report: The Hurt Syndicate Refused to Lose Matches in AEW"
 slug: "report-the-hurt-syndicate-refused-to-lose-matches-in-aew"
-description: "The strange booking of The Hurt Syndicate in AEW has sparked many questions, particularly regarding the regular absence of Bobby Lashley, Shelton Benjamin…"
+description: "The strange booking of The Hurt Syndicate in AEW has sparked many questions, particularly regarding the regular absence of Bobby Lashley."
 federation: AEW
 date: 2026-10-22T16:10:21.000Z
 source_id: 802258530

@@ -1,7 +1,7 @@
 ---
 title: "Backstage Update on WWE Taping and Travel Plans Ahead of Crown Jewel in Saudi Arabia"
 slug: "backstage-update-on-wwe-taping-and-travel-plans-ahead-of-crown-jewel-in-saudi-ar"
-description: "WWE is proceeding with its travel plans to Saudi Arabia for Crown Jewel despite regional conflicts and a Level 3 travel advisory issued by the US…"
+description: "WWE is proceeding with its travel plans to Saudi Arabia for Crown Jewel despite regional conflicts and a Level 3 travel advisory issued by the US government."
 federation: WWE
 date: 2026-10-23T13:00:00.000Z
 source_id: 2100205733

@@ -1,7 +1,7 @@
 ---
 title: "Jaxson Ryker Claims Vince McMahon Hated the Success of Triple H's NXT"
 slug: "jaxson-ryker-claims-vince-mcmahon-hated-the-success-of-triple-hs-nxt"
-description: "Jaxson Ryker recently stated that WWE's former black-and-gold NXT brand achieved so much success that Vince McMahon could not stand it. Speaking on…"
+description: "Jaxson Ryker recently stated that WWE's former black-and-gold NXT brand achieved so much success that Vince McMahon could not stand it."
 federation: WWE
 date: 2026-10-20T13:07:21.000Z
 source_id: 802257713

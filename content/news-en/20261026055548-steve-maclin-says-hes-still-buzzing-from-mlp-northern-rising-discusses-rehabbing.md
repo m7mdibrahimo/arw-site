@@ -1,7 +1,7 @@
 ---
 title: "Steve Maclin Says He's Still Buzzing From MLP Northern Rising, Discusses Rehabbing His Leg"
 slug: "steve-maclin-says-hes-still-buzzing-from-mlp-northern-rising-discusses-rehabbing"
-description: "Steve Maclin recently opened up about his experience wrestling Adam Copeland in a Street Fight at the Maple Leaf Wrestling Northern Rising event. The bout…"
+description: "Steve Maclin recently opened up about his experience wrestling Adam Copeland in a Street Fight at the Maple Leaf Wrestling Northern Rising event."
 federation: INDIE
 date: 2026-10-26T02:55:48.000Z
 source_id: 335762

@@ -1,7 +1,7 @@
 ---
 title: "Stu Grayson Reflects on Recent MLP Match With Josh Alexander"
 slug: "stu-grayson-reflects-on-recent-mlp-match-with-josh-alexander"
-description: "Stu Grayson recently reflected on his Maple Leaf Pro match against Josh Alexander and the explosive Canadian style they brought to the ring. At Maple Leaf…"
+description: "Stu Grayson recently reflected on his Maple Leaf Pro match against Josh Alexander and the explosive Canadian style they brought to the ring."
 federation: INDIE
 date: 2026-10-26T12:52:26.000Z
 source_id: 335798

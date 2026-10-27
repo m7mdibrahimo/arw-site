@@ -1,7 +1,7 @@
 ---
 title: "WWE SmackDown Results: October 9, 2026"
 slug: "wwe-smackdown-results-october-9-2026"
-description: "The October 9, 2026, episode of WWE SmackDown emanated live from The Cajundome in Lafayette, Louisiana, as the final stop before WWE Money in the Bank. The…"
+description: "The October 9, 2026, episode of WWE SmackDown emanated live from The Cajundome in Lafayette, Louisiana, as the final stop before WWE Money in the Bank."
 federation: WWE
 date: 2026-10-10T00:51:44.000Z
 source_id: 802252670

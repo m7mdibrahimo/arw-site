@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Says Orbital Injury at WrestleMania 42 Affected His Work After"
 slug: "cody-rhodes-says-orbital-injury-at-wrestlemania-42-affected-his-work-after"
-description: "Cody Rhodes revealed that an orbital injury he suffered against Randy Orton at WrestleMania 42 affected his in-ring work afterward. Speaking on Insight…"
+description: "Cody Rhodes revealed that an orbital injury he suffered against Randy Orton at WrestleMania 42 affected his in-ring work afterward."
 federation: WWE
 date: 2026-10-22T10:56:10.000Z
 source_id: 335110

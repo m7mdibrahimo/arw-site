@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Calls Out WWE Wrestlers Who Can't Improvise During Matches"
 slug: "drew-mcintyre-calls-out-wwe-wrestlers-who-cant-improvise-during-matches"
-description: "Drew McIntyre has voiced his frustration with WWE wrestlers who rely entirely on pre-planned, choreographed matches instead of improvising in the ring.…"
+description: "Drew McIntyre has voiced his frustration with WWE wrestlers who rely entirely on pre-planned, choreographed matches instead of improvising in the ring."
 federation: WWE
 date: 2026-10-19T11:40:49.000Z
 source_id: 802257140

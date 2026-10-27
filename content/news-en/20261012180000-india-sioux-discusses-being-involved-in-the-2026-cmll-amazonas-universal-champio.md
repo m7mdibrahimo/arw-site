@@ -1,7 +1,7 @@
 ---
 title: "India Sioux Discusses Being Involved in the 2026 CMLL Amazonas Universal Championship Tournament"
 slug: "india-sioux-discusses-being-involved-in-the-2026-cmll-amazonas-universal-champio"
-description: "India Sioux recently spoke about her involvement in the 2026 CMLL Amazonas Universal Championship tournament, noting that she initially thought she would…"
+description: "India Sioux recently spoke about her involvement in the 2026 CMLL Amazonas Universal Championship tournament."
 federation: INDIE
 date: 2026-10-12T15:00:00.000Z
 source_id: 333356

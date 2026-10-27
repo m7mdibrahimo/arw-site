@@ -1,7 +1,7 @@
 ---
 title: "Zoey Serrano: I Really Would Like to Help Harley Hudson Elevate Her Up a Little Bit More in TNA"
 slug: "zoey-serrano-i-really-would-like-to-help-harley-hudson-elevate-her-up-a-little-b"
-description: "Zoey Serrano has expressed her desire to help Harley Hudson elevate her status in TNA Wrestling. During an appearance on Busted Open, Serrano discussed…"
+description: "Zoey Serrano has expressed her desire to help Harley Hudson elevate her status in TNA Wrestling."
 federation: TNA
 date: 2026-10-26T20:18:45.000Z
 source_id: 335928

@@ -1,7 +1,7 @@
 ---
 title: "Willow Nightingale, Maya World, and Hyan Set for TJPW's Texas Stampede II Tour"
 slug: "willow-nightingale-maya-world-and-hyan-set-for-tjpws-texas-stampede-ii-tour"
-description: "Members of the AEW roster, including Willow Nightingale, are set for the Tokyo Joshi Pro-Wrestling Texas Stampede II tour, which takes place from December…"
+description: "Members of the AEW roster, including Willow Nightingale, are set for the Tokyo Joshi Pro-Wrestling Texas Stampede II tour."
 federation: INDIE
 date: 2026-10-25T14:43:34.000Z
 source_id: 335650

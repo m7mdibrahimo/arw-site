@@ -1,7 +1,7 @@
 ---
 title: "AEW's Jeff Jarrett Names Most 'Disheartening' Part of Max Caster-TNA Situation"
 slug: "aews-jeff-jarrett-names-most-disheartening-part-of-max-caster-tna-situation"
-description: "AEW's Jeff Jarrett discussed Max Caster's recent TNA Wrestling debut and subsequent firing on his My World podcast, pointing out what he finds most…"
+description: "AEW's Jeff Jarrett discussed Max Caster's recent TNA Wrestling debut and subsequent firing on his My World podcast."
 federation: TNA
 date: 2026-10-20T13:30:00.000Z
 source_id: 2166177102

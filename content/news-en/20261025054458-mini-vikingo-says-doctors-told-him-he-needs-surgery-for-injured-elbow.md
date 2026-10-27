@@ -1,7 +1,7 @@
 ---
 title: "Mini Vikingo Says Doctors Told Him He Needs Surgery for Injured Elbow"
 slug: "mini-vikingo-says-doctors-told-him-he-needs-surgery-for-injured-elbow"
-description: "Mini Vikingo will undergo surgery for an elbow injury. During the first week of Lucha Libre AAA's Héroes Inmortales, it was revealed that Vikingo was…"
+description: "Mini Vikingo will undergo surgery for an elbow injury. During the first week of Lucha Libre AAA's Héroes Inmortales."
 federation: WWE
 date: 2026-10-25T02:44:58.000Z
 source_id: 335588

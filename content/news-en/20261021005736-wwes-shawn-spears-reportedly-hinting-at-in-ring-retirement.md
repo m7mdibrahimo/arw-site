@@ -1,7 +1,7 @@
 ---
 title: "WWE's Shawn Spears Reportedly Hinting at In-Ring Retirement"
 slug: "wwes-shawn-spears-reportedly-hinting-at-in-ring-retirement"
-description: "Is the career of WWE NXT star Shawn Spears nearing its end? A recent incident at a WWE live event in Kitchener, Ontario, has sparked speculation regarding…"
+description: "Is the career of WWE NXT star Shawn Spears nearing its end? A recent incident at a WWE live event in Kitchener, Ontario."
 federation: WWE
 date: 2026-10-20T21:57:36.000Z
 source_id: 4064539005

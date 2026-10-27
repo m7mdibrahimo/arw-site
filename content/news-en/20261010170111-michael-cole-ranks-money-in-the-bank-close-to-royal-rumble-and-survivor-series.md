@@ -1,7 +1,7 @@
 ---
 title: "Michael Cole Ranks Money in the Bank Close to Royal Rumble and Survivor Series"
 slug: "michael-cole-ranks-money-in-the-bank-close-to-royal-rumble-and-survivor-series"
-description: "Michael Cole believes that the Money In The Bank premium live event has reached a status nearly matching major shows like Royal Rumble and Survivor Series.…"
+description: "Michael Cole believes that the Money In The Bank premium live event has reached a status nearly matching major shows like Royal Rumble and Survivor Series."
 federation: WWE
 date: 2026-10-10T14:01:11.000Z
 source_id: 333015

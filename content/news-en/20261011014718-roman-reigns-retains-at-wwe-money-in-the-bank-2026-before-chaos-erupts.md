@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Retains at WWE Money in the Bank 2026 Before Chaos Erupts"
 slug: "roman-reigns-retains-at-wwe-money-in-the-bank-2026-before-chaos-erupts"
-description: "Roman Reigns successfully defended his World Heavyweight Championship at WWE Money in the Bank 2026, but the victory was immediately overshadowed by a…"
+description: "Roman Reigns successfully defended his World Heavyweight Championship at WWE Money in the Bank 2026."
 federation: WWE
 date: 2026-10-10T22:47:18.000Z
 source_id: 802253374

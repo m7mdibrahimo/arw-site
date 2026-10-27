@@ -1,7 +1,7 @@
 ---
 title: "AJ Francis Claims WWE Backstage Heat Stemmed From Guest Wanting Top Dolla Over Brock Lesnar"
 slug: "aj-francis-claims-wwe-backstage-heat-stemmed-from-guest-wanting-top-dolla-over-b"
-description: "AJ Francis revealed that he faced backstage backlash during his time with WWE because a celebrity guest specifically asked to meet him instead of major…"
+description: "AJ Francis revealed that he faced backstage backlash during his time with WWE because a celebrity guest specifically asked to meet him instead of major stars."
 federation: WWE
 date: 2026-10-20T15:02:20.000Z
 source_id: 802257784

@@ -1,7 +1,7 @@
 ---
 title: "Mick Foley Reveals Why His WWE Segments With The Rock Were Never Rehearsed"
 slug: "mick-foley-reveals-why-his-wwe-segments-with-the-rock-were-never-rehearsed"
-description: "Mick Foley and The Rock created some of the most memorable moments of WWE's Attitude Era, but Foley recently revealed that those segments were never…"
+description: "Mick Foley and The Rock created some of the most memorable moments of WWE's Attitude Era, but Foley recently revealed that those segments were never rehearsed."
 federation: WWE
 date: 2026-10-25T19:19:33.000Z
 source_id: 802259648

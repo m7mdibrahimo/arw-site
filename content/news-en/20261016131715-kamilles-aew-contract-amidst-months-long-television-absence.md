@@ -1,7 +1,7 @@
 ---
 title: "Kamille’s AEW Contract Amidst Months-Long Television Absence"
 slug: "kamilles-aew-contract-amidst-months-long-television-absence"
-description: "Kamille remains under contract with AEW despite a prolonged absence from television programming. Reports confirm she is still employed by the promotion…"
+description: "Kamille remains under contract with AEW despite a prolonged absence from television programming."
 federation: AEW
 date: 2026-10-16T10:17:15.000Z
 source_id: 802255584

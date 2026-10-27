@@ -1,7 +1,7 @@
 ---
 title: "Joe Hendry Reveals What Went Wrong With His WWE Plans for Logan Paul"
 slug: "joe-hendry-reveals-what-went-wrong-with-his-wwe-plans-for-logan-paul"
-description: "Joe Hendry recently opened up about his plans to feud with Logan Paul in WWE and explained why the rivalry never fully materialized. During an interview…"
+description: "Joe Hendry recently opened up about his plans to feud with Logan Paul in WWE and explained why the rivalry never fully materialized."
 federation: WWE
 date: 2026-10-25T15:59:46.000Z
 source_id: 802259590

@@ -1,7 +1,7 @@
 ---
 title: "Kevin Owens Explains Why He Made NXT In-Ring Return After Seven Years"
 slug: "kevin-owens-explains-why-he-made-nxt-in-ring-return-after-seven-years"
-description: "Kevin Owens recently explained his decision to return to the ring for WWE NXT after nearly seven years away from the brand. Owens wanted the opportunity to…"
+description: "Kevin Owens recently explained his decision to return to the ring for WWE NXT after nearly seven years away from the brand."
 federation: WWE
 date: 2026-10-18T15:14:36.000Z
 source_id: 802256922

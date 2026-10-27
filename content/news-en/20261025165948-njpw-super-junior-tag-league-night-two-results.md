@@ -1,7 +1,7 @@
 ---
 title: "NJPW Super Junior Tag League Night Two Results"
 slug: "njpw-super-junior-tag-league-night-two-results"
-description: "New Japan Pro-Wrestling hosted the second night of the NJPW Super Junior Tag League on October 25 from Korakuen Hall in Tokyo, Japan, with a live broadcast…"
+description: "New Japan Pro-Wrestling hosted the second night of the NJPW Super Junior Tag League on October 25 from Korakuen Hall in Tokyo, Japan."
 federation: NJPW
 date: 2026-10-25T13:59:48.000Z
 source_id: 335640

@@ -1,7 +1,7 @@
 ---
 title: "WWE’s Long-Term Direction for Tiffany Stratton After Money in the Bank Win"
 slug: "wwes-long-term-direction-for-tiffany-stratton-after-money-in-the-bank-win"
-description: "Tiffany Stratton's second Money in the Bank victory sparked significant online backlash, but according to a new report, the reaction was part of WWE's…"
+description: "Tiffany Stratton's second Money in the Bank victory sparked significant online backlash, but according to a new report."
 federation: WWE
 date: 2026-10-13T12:15:45.000Z
 source_id: 802254529

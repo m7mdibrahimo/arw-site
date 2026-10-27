@@ -1,7 +1,7 @@
 ---
 title: "CMLL Domingo Familiar Results (October 11, 2026)"
 slug: "cmll-domingo-familiar-results-october-11-2026"
-description: "Consejo Mundial de Lucha Libre held the event Domingo Familiar on October 11, 2026, at Arena México in Mexico City, Distrito Federal, Mexico. Fans can see…"
+description: "Consejo Mundial de Lucha Libre held the event Domingo Familiar on October 11, 2026, at Arena México in Mexico City, Distrito Federal, Mexico."
 federation: INDIE
 date: 2026-10-13T15:30:00.000Z
 source_id: 333641

@@ -1,7 +1,7 @@
 ---
 title: "Luis Mante Wins GHC National Title at NOAH Wrestle Odyssey II"
 slug: "luis-mante-wins-ghc-national-title-at-noah-wrestle-odyssey-ii"
-description: "Luis Mante captured the GHC National Championship by defeating Naomichi Marufuji at Pro Wrestling NOAH's Wrestle Odyssey II event on October 25, 2026, at…"
+description: "Luis Mante captured the GHC National Championship by defeating Naomichi Marufuji at Pro Wrestling NOAH's Wrestle Odyssey II event on October 25, 2026."
 federation: INDIE
 date: 2026-10-25T08:16:43.000Z
 source_id: 335620

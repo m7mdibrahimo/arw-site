@@ -1,7 +1,7 @@
 ---
 title: "Anthony Bowens Looks Back on Signing With AEW, Forming The Acclaimed"
 slug: "anthony-bowens-looks-back-on-signing-with-aew-forming-the-acclaimed"
-description: "Anthony Bowens recently looked back on his journey to All Elite Wrestling and the formation of The Acclaimed. During an interview with the Michael Fairman…"
+description: "Anthony Bowens recently looked back on his journey to All Elite Wrestling and the formation of The Acclaimed."
 federation: AEW
 date: 2026-10-25T16:30:00.000Z
 source_id: 1066800301

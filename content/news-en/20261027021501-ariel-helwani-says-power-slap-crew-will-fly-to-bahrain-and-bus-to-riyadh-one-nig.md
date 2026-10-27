@@ -1,7 +1,7 @@
 ---
 title: "Ariel Helwani Says Power Slap Crew Will Fly to Bahrain and Bus to Riyadh One Night Before WWE Crown Jewel"
 slug: "ariel-helwani-says-power-slap-crew-will-fly-to-bahrain-and-bus-to-riyadh-one-nig"
-description: "Potential travel plans for WWE Crown Jewel have emerged as Riyadh's King Khalid International Airport has faced closures and limited flights following…"
+description: "Potential travel plans for WWE Crown Jewel have emerged as Riyadh's King Khalid International Airport has faced closures and limited flights following recent."
 federation: WWE
 date: 2026-10-26T23:15:01.000Z
 source_id: 335964

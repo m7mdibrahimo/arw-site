@@ -1,7 +1,7 @@
 ---
 title: "AJ Francis Claims He Helped TNA Land Its AMC Television Deal"
 slug: "aj-francis-claims-he-helped-tna-land-its-amc-television-deal"
-description: "AJ Francis believes he deserves significant credit for helping TNA secure its television deal with AMC. Speaking on The Wrestling Classic, Francis…"
+description: "AJ Francis believes he deserves significant credit for helping TNA secure its television deal with AMC."
 federation: TNA
 date: 2026-10-20T15:32:39.000Z
 source_id: 802257783

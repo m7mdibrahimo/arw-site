@@ -1,7 +1,7 @@
 ---
 title: "Mickie Knuckles Says She Was Lied to Before Flaming Casket Spot Left Her With Burns"
 slug: "mickie-knuckles-says-she-was-lied-to-before-flaming-casket-spot-left-her-with-bu"
-description: "Mickie Knuckles has opened up about the dangerous flaming casket spot that landed her in a hospital burn unit, stating that she was explicitly promised the…"
+description: "Mickie Knuckles has opened up about the dangerous flaming casket spot that landed her in a hospital burn unit."
 federation: INDIE
 date: 2026-10-17T14:23:24.000Z
 source_id: 802256208

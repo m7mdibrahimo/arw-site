@@ -1,7 +1,7 @@
 ---
 title: "Samoa Joe Pays Tribute to PAC"
 slug: "samoa-joe-pays-tribute-to-pac"
-description: "Samoa Joe recently shared his thoughts on the passing of PAC, remembering his remarkable international journey and the impact he left behind. In an…"
+description: "Samoa Joe recently shared his thoughts on the passing of PAC, remembering his remarkable international journey and the impact he left behind."
 federation: AEW
 date: 2026-10-16T17:02:10.000Z
 source_id: 334205

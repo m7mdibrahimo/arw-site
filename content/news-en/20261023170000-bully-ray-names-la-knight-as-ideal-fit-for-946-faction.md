@@ -1,7 +1,7 @@
 ---
 title: "Bully Ray Names LA Knight as Ideal Fit for 946 Faction"
 slug: "bully-ray-names-la-knight-as-ideal-fit-for-946-faction"
-description: "WWE Hall of Famer Bully Ray believes LA Knight is the ideal choice to fill the final spot in the 946 faction ahead of their Survivor Series clash with The…"
+description: "WWE Hall of Famer Bully Ray believes LA Knight is the ideal choice to fill the final spot in the 946 faction ahead of their Survivor Series clash with The."
 federation: WWE
 date: 2026-10-23T14:00:00.000Z
 source_id: 1360554094

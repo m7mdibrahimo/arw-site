@@ -1,7 +1,7 @@
 ---
 title: "Shinya Aoki Signs With DDT Pro-Wrestling"
 slug: "shinya-aoki-signs-with-ddt-pro-wrestling"
-description: "Japanese combat sports veteran Shinya Aoki has officially signed a contract with DDT Pro-Wrestling. Aoki has competed for the promotion as a freelancer…"
+description: "Japanese combat sports veteran Shinya Aoki has officially signed a contract with DDT Pro-Wrestling."
 federation: INDIE
 date: 2026-10-26T14:46:16.000Z
 source_id: 335838

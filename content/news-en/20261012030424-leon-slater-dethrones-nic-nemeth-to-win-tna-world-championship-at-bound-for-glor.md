@@ -1,7 +1,7 @@
 ---
 title: "Leon Slater Dethrones Nic Nemeth to Win TNA World Championship at Bound for Glory"
 slug: "leon-slater-dethrones-nic-nemeth-to-win-tna-world-championship-at-bound-for-glor"
-description: "Leon Slater captured the TNA World Championship at TNA Bound for Glory on October 11, 2026, in Tampa, Florida. Slater, known as \"The Youngest In Charge,\"…"
+description: "Leon Slater captured the TNA World Championship at TNA Bound for Glory on October 11, 2026, in Tampa, Florida."
 federation: TNA
 date: 2026-10-12T00:04:24.000Z
 source_id: 802253969

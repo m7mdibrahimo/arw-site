@@ -1,7 +1,7 @@
 ---
 title: "AEW Collision Viewership Drops on October 10"
 slug: "aew-collision-viewership-drops-on-october-10"
-description: "The October 10, 2026 episode of AEW Collision on TNT experienced a notable decline in viewership compared to the prior week, according to Ringside News.…"
+description: "The October 10, 2026 episode of AEW Collision on TNT experienced a notable decline in viewership compared to the prior week, according to Ringside News."
 federation: AEW
 date: 2026-10-16T14:52:39.000Z
 source_id: 802255673

@@ -1,7 +1,7 @@
 ---
 title: "ATTACK! Goosebumps 11 Night One Results"
 slug: "attack-goosebumps-11-night-one-results"
-description: "ATTACK Pro Wrestling held night one of ATTACK! Goosebumps 11 on October 24 at Cathays Community Centre in Cardiff, Wales, with the event airing live on…"
+description: "ATTACK Pro Wrestling held night one of ATTACK! Goosebumps 11 on October 24 at Cathays Community Centre in Cardiff, Wales, with the event airing live on YouTube."
 federation: INDIE
 date: 2026-10-25T12:30:00.000Z
 source_id: 335595

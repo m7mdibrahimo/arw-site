@@ -1,7 +1,7 @@
 ---
 title: "Chris Jericho Explains Thought Process Behind His AEW Factions & Current Solo Run"
 slug: "chris-jericho-explains-thought-process-behind-his-aew-factions-current-solo-run"
-description: "Chris Jericho recently discussed his time leading various stables in AEW and his current singles run. In an interview with TMZ's Inside The Ring, Jericho…"
+description: "Chris Jericho recently discussed his time leading various stables in AEW and his current singles run."
 federation: AEW
 date: 2026-10-10T16:30:00.000Z
 source_id: 2492094548

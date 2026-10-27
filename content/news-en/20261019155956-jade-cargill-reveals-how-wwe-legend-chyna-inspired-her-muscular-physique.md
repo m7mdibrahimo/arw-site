@@ -1,7 +1,7 @@
 ---
 title: "Jade Cargill Reveals How WWE Legend Chyna Inspired Her Muscular Physique"
 slug: "jade-cargill-reveals-how-wwe-legend-chyna-inspired-her-muscular-physique"
-description: "Jade Cargill has revealed that WWE legend Chyna played a major role in inspiring her muscular physique and powerful presence. Speaking in a workout video…"
+description: "Jade Cargill has revealed that WWE legend Chyna played a major role in inspiring her muscular physique and powerful presence."
 federation: WWE
 date: 2026-10-19T12:59:56.000Z
 source_id: 802257152

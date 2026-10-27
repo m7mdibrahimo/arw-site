@@ -1,7 +1,7 @@
 ---
 title: "Netflix Censors LA Knight's Middle Finger to Roman Reigns in WWE Money in the Bank Replay"
 slug: "netflix-censors-la-knights-middle-finger-to-roman-reigns-in-wwe-money-in-the-ban"
-description: "Netflix has censored a notable moment during the replay of Roman Reigns defending the World Heavyweight Championship against LA Knight at WWE Money in the…"
+description: "Netflix has censored a notable moment during the replay of Roman Reigns defending the World Heavyweight Championship against LA Knight at WWE Money in the Bank."
 federation: WWE
 date: 2026-10-14T12:55:27.000Z
 source_id: 802254964

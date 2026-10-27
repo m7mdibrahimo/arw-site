@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes, Charlotte Flair and O'Shea Jackson Jr. Set for Heyman Hustle TV Roundtable"
 slug: "cody-rhodes-charlotte-flair-and-oshea-jackson-jr-set-for-heyman-hustle-tv-roundt"
-description: "Paul Heyman's Heyman Hustle TV is preparing to present a special roundtable broadcast on Wednesday, October 21st. The show will be hosted by Paul Heyman's…"
+description: "Paul Heyman's Heyman Hustle TV is preparing to present a special roundtable broadcast on Wednesday, October 21st."
 federation: WWE
 date: 2026-10-19T21:48:28.000Z
 source_id: 334723

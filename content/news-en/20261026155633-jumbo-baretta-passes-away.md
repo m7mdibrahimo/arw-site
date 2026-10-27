@@ -1,7 +1,7 @@
 ---
 title: "Jumbo Baretta Passes Away"
 slug: "jumbo-baretta-passes-away"
-description: "Former wrestler Julio Barrera, also known as Jumbo Baretta, has passed away. The Cauliflower Alley Club shared the news on X, stating that he passed away…"
+description: "Former wrestler Julio Barrera, also known as Jumbo Baretta, has passed away."
 federation: WWE
 date: 2026-10-26T12:56:33.000Z
 source_id: 335807

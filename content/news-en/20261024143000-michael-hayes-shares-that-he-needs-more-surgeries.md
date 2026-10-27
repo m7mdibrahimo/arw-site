@@ -1,7 +1,7 @@
 ---
 title: "Michael Hayes Shares That He Needs More Surgeries"
 slug: "michael-hayes-shares-that-he-needs-more-surgeries"
-description: "WWE producer Michael Hayes spoke about his health and past operations during a recent episode of Stephanie McMahon's What's Your Story? podcast, revealing…"
+description: "WWE producer Michael Hayes spoke about his health and past operations during a recent episode of Stephanie McMahon's What's Your Story?"
 federation: WWE
 date: 2026-10-24T11:30:00.000Z
 source_id: 335412

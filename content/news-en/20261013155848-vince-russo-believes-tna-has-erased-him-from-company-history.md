@@ -1,7 +1,7 @@
 ---
 title: "Vince Russo Believes TNA Has Erased Him From Company History"
 slug: "vince-russo-believes-tna-has-erased-him-from-company-history"
-description: "Former TNA writer Vince Russo feels that the company has intentionally removed him from its historical records. While watching the recent Hall of Fame…"
+description: "Former TNA writer Vince Russo feels that the company has intentionally removed him from its historical records."
 federation: TNA
 date: 2026-10-13T12:58:48.000Z
 source_id: 802254209

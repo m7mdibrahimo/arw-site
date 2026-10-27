@@ -1,7 +1,7 @@
 ---
 title: "Fightful Releases Updated AAA Roster and Staff"
 slug: "fightful-releases-updated-aaa-roster-and-staff"
-description: "According to Fightful, the updated AAA roster features divisions for men, women, and tag teams, alongside backstage and broadcast crews. The men's division…"
+description: "According to Fightful, the updated AAA roster features divisions for men, women, and tag teams, alongside backstage and broadcast crews."
 federation: INDIE
 date: 2026-10-26T15:58:48.000Z
 source_id: 321603

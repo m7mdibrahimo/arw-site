@@ -1,7 +1,7 @@
 ---
 title: "Zack Sabre Jr. Would Never Claim to Be Leader of TMDK, Says It Belongs to Australian Wrestling"
 slug: "zack-sabre-jr-would-never-claim-to-be-leader-of-tmdk-says-it-belong-to-australia"
-description: "Zack Sabre Jr. stated in a recent interview that he would never claim to be the leader of the TMDK faction, emphasizing that the group belongs to…"
+description: "Zack Sabre Jr. stated in a recent interview that he would never claim to be the leader of the TMDK faction."
 federation: NJPW
 date: 2026-10-24T19:29:36.000Z
 source_id: 335507

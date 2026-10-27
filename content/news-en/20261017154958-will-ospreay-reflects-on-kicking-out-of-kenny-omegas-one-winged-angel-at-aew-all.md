@@ -1,7 +1,7 @@
 ---
 title: "Will Ospreay Reflects on Kicking Out of Kenny Omega's One Winged Angel at AEW All In"
 slug: "will-ospreay-reflects-on-kicking-out-of-kenny-omegas-one-winged-angel-at-aew-all"
-description: "Will Ospreay recently reflected on kicking out of Kenny Omega's One Winged Angel finisher during their match at AEW All In 2026. Speaking in a new…"
+description: "Will Ospreay recently reflected on kicking out of Kenny Omega's One Winged Angel finisher during their match at AEW All In 2026."
 federation: AEW
 date: 2026-10-17T12:49:58.000Z
 source_id: 334313

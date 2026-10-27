@@ -1,7 +1,7 @@
 ---
 title: "WWE Signs Former Michigan State Athlete Elly Finch to Developmental Deal"
 slug: "wwe-signs-former-michigan-state-athlete-elly-finch-to-developmental-deal"
-description: "WWE has bolstered its developmental roster by signing Elly Finch, a former track and field athlete from Michigan State University. According to PWInsider,…"
+description: "WWE has bolstered its developmental roster by signing Elly Finch, a former track and field athlete from Michigan State University."
 federation: WWE
 date: 2026-10-22T18:53:21.000Z
 source_id: 802258576

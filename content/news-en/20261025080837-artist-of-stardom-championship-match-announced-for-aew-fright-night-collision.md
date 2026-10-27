@@ -1,7 +1,7 @@
 ---
 title: "Artist of Stardom Championship Match Announced for AEW Fright Night Collision"
 slug: "artist-of-stardom-championship-match-announced-for-aew-fright-night-collision"
-description: "The Artist of Stardom Championship will be defended during an upcoming AEW broadcast. According to Fightful, the promotion is taping a title match for AEW…"
+description: "The Artist of Stardom Championship will be defended during an upcoming AEW broadcast."
 federation: AEW
 date: 2026-10-25T05:08:37.000Z
 source_id: 335608

@@ -1,7 +1,7 @@
 ---
 title: "Michael Cole Reveals His WWE Retirement Timeline"
 slug: "michael-cole-reveals-his-wwe-retirement-timeline"
-description: "Michael Cole has discussed his future with WWE and revealed the age at which he hopes to retire from commentary. Speaking with Bobby Burack of OutKick, the…"
+description: "Michael Cole has discussed his future with WWE and revealed the age at which he hopes to retire from commentary."
 federation: WWE
 date: 2026-10-10T14:47:10.000Z
 source_id: 802253186

@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Says His WWE Return Will Be a Big Deal"
 slug: "drew-mcintyre-says-his-wwe-return-will-be-a-big-deal"
-description: "Drew McIntyre recently discussed his absence from WWE and what his eventual return will mean. McIntyre has been off television since his unsanctioned match…"
+description: "Drew McIntyre recently discussed his absence from WWE and what his eventual return will mean."
 federation: WWE
 date: 2026-10-17T16:27:43.000Z
 source_id: 334295

@@ -1,7 +1,7 @@
 ---
 title: "Ludwig Kaiser Names Girlfriend as Defense Witness in Battery Case"
 slug: "ludwig-kaiser-names-girlfriend-as-defense-witness-in-battery-case"
-description: "According to Ringside News, Ludwig Kaiser is heading back to court as his legal team attempts to have his battery charge dismissed. A new court filing…"
+description: "According to Ringside News, Ludwig Kaiser is heading back to court as his legal team attempts to have his battery charge dismissed."
 federation: WWE
 date: 2026-10-19T17:42:01.000Z
 source_id: 802257252

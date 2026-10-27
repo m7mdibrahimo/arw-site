@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns: Many in the Locker Room Think They Are on My Level"
 slug: "roman-reigns-many-in-the-locker-room-think-they-are-on-my-level"
-description: "Roman Reigns discussed his mindset in the world of wrestling during a recent interview with Sam Roberts. While Reigns enjoyed his time filming the upcoming…"
+description: "Roman Reigns discussed his mindset in the world of wrestling during a recent interview with Sam Roberts."
 federation: WWE
 date: 2026-10-14T20:06:29.000Z
 source_id: 333894

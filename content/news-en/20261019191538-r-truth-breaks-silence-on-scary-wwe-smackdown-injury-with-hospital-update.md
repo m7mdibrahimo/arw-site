@@ -1,7 +1,7 @@
 ---
 title: "R-Truth Breaks Silence on Scary WWE SmackDown Injury With Hospital Update"
 slug: "r-truth-breaks-silence-on-scary-wwe-smackdown-injury-with-hospital-update"
-description: "R-Truth has provided a health update after suffering a scary injury during his match against Damian Priest on the October 16 episode of WWE SmackDown. On…"
+description: "R-Truth has provided a health update after suffering a scary injury during his match against Damian Priest on the October 16 episode of WWE SmackDown."
 federation: WWE
 date: 2026-10-19T16:15:38.000Z
 source_id: 802257224

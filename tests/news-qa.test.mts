@@ -229,3 +229,23 @@ test("dual verb «يتحديان» and dual noun «كمالكين» are blocked 
 test("applyCorrections fixes the doubled «عرضا جديدا من عرض» opener", () => {
   assert.equal(applyCorrections("بث اتحاد NWA عرضا جديدا من عرض NWA Powerrr يوم 24 أكتوبر"), "بث اتحاد NWA عرض NWA Powerrr يوم 24 أكتوبر");
 });
+
+test("dual verbs «ليهزما / ويتوجا» and «تخلي + اسم بضمير» are blocked (INCIDENTS #862)", async () => {
+  const { BLOCKING_QA_CODES } = await import("../scripts/news-qa.ts");
+  const t = "سامي زين يتحدث عن عرض WWE Elimination Chamber 2023";
+  assert.ok(BLOCKING_QA_CODES.includes("tarakki_without_an"));
+  assert.ok(checkArticle(t, "حيث تحالف مع كيفن أوينز ليهزما فريق ذا أوسوز ويتوجا ببطولة WWE للفرق.\n\nنص آخر طويل بما يكفي.").some((i) => i.code === "dual_form"));
+  assert.ok(!checkArticle(t, "حيث تحالف مع كيفن أوينز وهزم فريق ذا أوسوز وتوج معه ببطولة WWE للفرق.\n\nنص آخر طويل بما يكفي.").some((i) => i.code === "dual_form"));
+  assert.ok(checkArticle(t, "وذلك قبل تخلي قناعه الذي اشتهر به.\n\nنص آخر طويل بما يكفي.").some((i) => i.code === "tarakki_without_an"));
+  // «التخلي عن» و«التخلي تماما عن» و«التخلي وإلغاء» عربي سليم
+  for (const ok of ["وذلك قبل التخلي عن قناعه.", "قرر التخلي تماما عن دوره.", "وجاء قرار التخلي وإلغاء اللقب."])
+    assert.ok(!checkArticle(t, ok + "\n\nنص آخر طويل بما يكفي.").some((i) => i.code === "tarakki_without_an"), ok);
+});
+
+test("لقب المصارع «رامبيج» بين علامتين مش اسم عرض (INCIDENTS #862)", () => {
+  const t = "الإفراج عن راجا جاكسون";
+  assert.ok(!checkArticle(t, "نجل الأسطورة كوينتون «رامبيج» جاكسون خرج من السجن بعد قضاء فترة العقوبة كاملة.\n\nنص آخر طويل بما يكفي.").some((i) => i.code === "known_wrong" || i.code === "transliterated_show"));
+  assert.ok(checkArticle(t, "شاهد عرض رامبيج الليلة على القناة.\n\nنص آخر طويل بما يكفي.").some((i) => i.code === "transliterated_show"));
+  assert.equal(applyCorrections("نجم UFC السابق كوينتون «رامبيج» جاكسون"), "نجم UFC السابق كوينتون «رامبيج» جاكسون");
+  assert.equal(applyCorrections("شاهد عرض رامبيج الليلة"), "شاهد عرض AEW Rampage الليلة");
+});

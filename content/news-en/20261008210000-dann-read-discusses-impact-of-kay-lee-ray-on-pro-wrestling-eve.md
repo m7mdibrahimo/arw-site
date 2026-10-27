@@ -1,7 +1,7 @@
 ---
 title: "Dann Read Discusses Impact of Kay Lee Ray on Pro Wrestling EVE"
 slug: "dann-read-discusses-impact-of-kay-lee-ray-on-pro-wrestling-eve"
-description: "Dann Read recently highlighted the significant positive influence Kay Lee Ray has on Pro Wrestling EVE. According to Fightful, Read noted that her presence…"
+description: "Dann Read recently highlighted the significant positive influence Kay Lee Ray has on Pro Wrestling EVE."
 federation: INDIE
 date: 2026-10-08T18:00:00.000Z
 source_id: 332590

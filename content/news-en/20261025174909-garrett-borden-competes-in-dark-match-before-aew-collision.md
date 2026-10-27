@@ -1,7 +1,7 @@
 ---
 title: "Garrett Borden Competes in Dark Match Before AEW Collision"
 slug: "garrett-borden-competes-in-dark-match-before-aew-collision"
-description: "Garrett Borden stepped back into the ring prior to the October 24 episode of AEW Collision, squaring off against Kiran Grey in a singles match and securing…"
+description: "Garrett Borden stepped back into the ring prior to the October 24 episode of AEW Collision."
 federation: AEW
 date: 2026-10-25T14:49:09.000Z
 source_id: 335653

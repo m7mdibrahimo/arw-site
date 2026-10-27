@@ -1,7 +1,7 @@
 ---
 title: "WWE NXT Star Alix Brooks Shares Poolside Bikini Photos"
 slug: "wwe-nxt-star-alix-brooks-shares-poolside-bikini-photos"
-description: "Alix Brooks has not appeared on WWE NXT television yet, but she is already grabbing attention on social media. The new WWE star shared a series of bikini…"
+description: "Alix Brooks has not appeared on WWE NXT television yet, but she is already grabbing attention on social media."
 federation: WWE
 date: 2026-10-26T12:40:03.000Z
 source_id: 802259765

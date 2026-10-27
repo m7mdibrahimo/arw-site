@@ -1,7 +1,7 @@
 ---
 title: "TNA International Title 2-Out-of-3 Falls Match, Avery Styles vs. Joe Alonzo Set for TNA iMPACT"
 slug: "tna-international-title-2-out-of-3-falls-match-avery-styles-vs-joe-alonzo-set-fo"
-description: "The rivalry over the TNA International Championship continues to heat up. Jason Hotch captured the title in a four-way match at Bound for Glory, defeating…"
+description: "The rivalry over the TNA International Championship continues to heat up."
 federation: TNA
 date: 2026-10-16T03:43:34.000Z
 source_id: 334158

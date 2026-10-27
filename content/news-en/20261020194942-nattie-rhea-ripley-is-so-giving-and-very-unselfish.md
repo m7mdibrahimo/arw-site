@@ -1,7 +1,7 @@
 ---
 title: "Nattie: Rhea Ripley Is So Giving and Very Unselfish"
 slug: "nattie-rhea-ripley-is-so-giving-and-very-unselfish"
-description: "Natalya recently shared high praise for Rhea Ripley during an interview with The West Sport. Having shared the ring nearly 20 times since 2019, Natalya…"
+description: "Natalya recently shared high praise for Rhea Ripley during an interview with The West Sport."
 federation: WWE
 date: 2026-10-20T16:49:42.000Z
 source_id: 334823

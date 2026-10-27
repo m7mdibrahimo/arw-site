@@ -1,7 +1,7 @@
 ---
 title: "Bully Ray Is Baffled by WWE's Decision to Have Current World Champion Lose on Raw"
 slug: "bully-ray-is-baffled-by-wwes-decision-to-have-current-world-champion-lose-on-raw"
-description: "WWE Women's Champion Chelsea Green suffered a loss to Roxanne Perez on a recent episode of WWE RAW, followed by a post-match beatdown from Perez, Liv…"
+description: "WWE Women's Champion Chelsea Green suffered a loss to Roxanne Perez on a recent episode of WWE RAW, followed by a post-match beatdown from Perez, Liv Morgan."
 federation: WWE
 date: 2026-10-14T19:11:21.000Z
 source_id: 2889288772

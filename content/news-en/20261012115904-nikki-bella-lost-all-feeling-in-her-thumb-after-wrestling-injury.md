@@ -1,7 +1,7 @@
 ---
 title: "Nikki Bella Lost All Feeling in Her Thumb After Wrestling Injury"
 slug: "nikki-bella-lost-all-feeling-in-her-thumb-after-wrestling-injury"
-description: "Nikki Bella revealed that she still cannot feel her thumb due to an untreated injury from her WWE career. During an appearance on The Nikki & Brie Show…"
+description: "Nikki Bella revealed that she still cannot feel her thumb due to an untreated injury from her WWE career."
 federation: WWE
 date: 2026-10-12T08:59:04.000Z
 source_id: 802254048

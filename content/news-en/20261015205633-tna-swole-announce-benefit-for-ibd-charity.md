@@ -1,7 +1,7 @@
 ---
 title: "TNA & Swole Announce Benefit for IBD Charity"
 slug: "tna-swole-announce-benefit-for-ibd-charity"
-description: "Former AEW wrestler and current ASÉ Wrestling commentator Aerial Big Swole Johnson is being honored at the Crohn's and Colitis Foundation's A Toast for A…"
+description: "Former AEW wrestler and current ASÉ Wrestling commentator Aerial Big Swole Johnson is being honored at the Crohn's and Colitis Foundation's A Toast for A."
 federation: TNA
 date: 2026-10-15T17:56:33.000Z
 source_id: 2703289521

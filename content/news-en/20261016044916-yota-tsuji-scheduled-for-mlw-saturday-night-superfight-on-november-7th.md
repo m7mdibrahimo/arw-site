@@ -1,7 +1,7 @@
 ---
 title: "Yota Tsuji Scheduled for MLW Saturday Night SuperFight on November 7th"
 slug: "yota-tsuji-scheduled-for-mlw-saturday-night-superfight-on-november-7th"
-description: "Yota Tsuji is set to appear for MLW. The promotion has been teasing the arrival of the current IWGP Heavyweight Champion, and his appearance has now been…"
+description: "Yota Tsuji is set to appear for MLW. The promotion has been teasing the arrival of the current IWGP Heavyweight Champion."
 federation: INDIE
 date: 2026-10-16T01:49:16.000Z
 source_id: 334139

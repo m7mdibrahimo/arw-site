@@ -1,7 +1,7 @@
 ---
 title: "Dave Meltzer Assesses Dragon Lee and Dralistico's Future"
 slug: "dave-meltzer-assesses-dragon-lee-and-dralisticos-future"
-description: "Dave Meltzer has provided new details regarding the futures of Dragon Lee and his brother Dralistico. Meltzer confirmed on Wrestling Observer Radio that…"
+description: "Dave Meltzer has provided new details regarding the futures of Dragon Lee and his brother Dralistico."
 federation: WWE
 date: 2026-10-22T15:52:07.000Z
 source_id: 2285465667

@@ -1,7 +1,7 @@
 ---
 title: "Kalisto Says Ryback Was a 'Sweetheart' During WWE Feud"
 slug: "kalisto-says-ryback-was-a-sweetheart-during-wwe-feud"
-description: "Former WWE talent Ryback has faced a controversial reputation since leaving the company, partly due to his aggressive social media presence. Looking back…"
+description: "Former WWE talent Ryback has faced a controversial reputation since leaving the company, partly due to his aggressive social media presence."
 federation: WWE
 date: 2026-10-26T03:59:00.000Z
 source_id: 3705952719

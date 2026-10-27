@@ -1,7 +1,7 @@
 ---
 title: "Konnan's Health Takes Major Turn Ahead of TNA Hall of Fame Induction"
 slug: "konnans-health-takes-major-turn-ahead-of-tna-hall-of-fame-induction"
-description: "Konnan has faced severe health battles this year, but a positive update has emerged just before his TNA Hall of Fame induction at Bound for Glory. Speaking…"
+description: "Konnan has faced severe health battles this year, but a positive update has emerged just before his TNA Hall of Fame induction at Bound for Glory."
 federation: TNA
 date: 2026-10-11T12:04:28.000Z
 source_id: 802253623

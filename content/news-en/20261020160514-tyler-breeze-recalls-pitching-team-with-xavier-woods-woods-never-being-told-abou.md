@@ -1,7 +1,7 @@
 ---
 title: "Tyler Breeze Recalls Pitching Team With Xavier Woods, Woods Never Being Told About the Pitch Outcome"
 slug: "tyler-breeze-recalls-pitching-team-with-xavier-woods-woods-never-being-told-abou"
-description: "Tyler Breeze recalled his early NXT evaluation with Bill DeMott, where he pitched teaming up with Xavier Woods. Breeze thought he was getting fired after a…"
+description: "Tyler Breeze recalled his early NXT evaluation with Bill DeMott, where he pitched teaming up with Xavier Woods."
 federation: WWE
 date: 2026-10-20T13:05:14.000Z
 source_id: 334799

@@ -1,7 +1,7 @@
 ---
 title: "LA Knight Has an Unexpected Pick for His Greatest WWE Rival"
 slug: "la-knight-has-an-unexpected-pick-for-his-greatest-wwe-rival"
-description: "LA Knight has reflected on his time in WWE and named the opponents who stand out the most in his career. In an interview with Sporf, Knight pointed to Solo…"
+description: "LA Knight has reflected on his time in WWE and named the opponents who stand out the most in his career."
 federation: WWE
 date: 2026-10-11T15:30:00.000Z
 source_id: 2379660110

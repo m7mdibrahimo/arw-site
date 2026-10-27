@@ -1,7 +1,7 @@
 ---
 title: "Nyla Rose Gets Special Deal on Taquitos"
 slug: "nyla-rose-gets-special-deal-on-taquitos"
-description: "Former AEW Women's World Champion Nyla Rose addressed her recent social media interactions with Sean Ross Sapp in a new video. Rose highlighted several…"
+description: "Former AEW Women's World Champion Nyla Rose addressed her recent social media interactions with Sean Ross Sapp in a new video."
 federation: AEW
 date: 2026-10-13T20:01:21.000Z
 source_id: 333760

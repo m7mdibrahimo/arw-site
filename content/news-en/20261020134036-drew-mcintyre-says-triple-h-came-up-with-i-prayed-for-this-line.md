@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Says Triple H Came Up With 'I Prayed for This' Line"
 slug: "drew-mcintyre-says-triple-h-came-up-with-i-prayed-for-this-line"
-description: "Drew McIntyre recently revealed that Triple H came up with his famous 'I prayed for this' line following CM Punk's injury at the 2024 Royal Rumble.…"
+description: "Drew McIntyre recently revealed that Triple H came up with his famous 'I prayed for this' line following CM Punk's injury at the 2024 Royal Rumble."
 federation: WWE
 date: 2026-10-20T10:40:36.000Z
 source_id: 334777

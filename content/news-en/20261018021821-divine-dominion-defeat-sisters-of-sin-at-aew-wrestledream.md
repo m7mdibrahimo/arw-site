@@ -1,7 +1,7 @@
 ---
 title: "Divine Dominion Defeat Sisters of Sin at AEW WrestleDream"
 slug: "divine-dominion-defeat-sisters-of-sin-at-aew-wrestledream"
-description: "Divine Dominion consisting of Lena Kross and Megan Bayne secured a victory against Sisters of Sin featuring Julia Hart and Skye Blue at AEW WrestleDream.…"
+description: "Divine Dominion consisting of Lena Kross and Megan Bayne secured a victory against Sisters of Sin featuring Julia Hart and Skye Blue at AEW WrestleDream."
 federation: AEW
 date: 2026-10-17T23:18:21.000Z
 source_id: 334407

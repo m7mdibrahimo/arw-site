@@ -1,7 +1,7 @@
 ---
 title: "The Miz Recalls Upsetting WWE Locker Room on the Day of First Tag Title Win"
 slug: "the-miz-recalls-upsetting-wwe-locker-room-on-the-day-of-first-tag-title-win"
-description: "The Miz recently reflected on the day he won his first WWE tag team championship alongside John Morrison, revealing that their actions backstage and during…"
+description: "The Miz recently reflected on the day he won his first WWE tag team championship alongside John Morrison."
 federation: WWE
 date: 2026-10-24T20:00:00.000Z
 source_id: 4518204281

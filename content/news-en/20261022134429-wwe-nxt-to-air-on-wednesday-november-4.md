@@ -1,7 +1,7 @@
 ---
 title: "WWE NXT to Air on Wednesday, November 4"
 slug: "wwe-nxt-to-air-on-wednesday-november-4"
-description: "WWE NXT will temporarily shift to Wednesday, November 4, facing a direct head-to-head clash with the annual Blood & Guts episode of AEW Dynamite. This…"
+description: "WWE NXT will temporarily shift to Wednesday, November 4, facing a direct head-to-head clash with the annual Blood & Guts episode of AEW Dynamite."
 federation: WWE
 date: 2026-10-22T10:44:29.000Z
 source_id: 335108

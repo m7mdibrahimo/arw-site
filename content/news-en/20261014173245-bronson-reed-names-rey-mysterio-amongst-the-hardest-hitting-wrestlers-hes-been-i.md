@@ -1,7 +1,7 @@
 ---
 title: "Bronson Reed Names Rey Mysterio Amongst the Hardest Hitting Wrestlers He's Been in the Ring With"
 slug: "bronson-reed-names-rey-mysterio-amongst-the-hardest-hitting-wrestlers-hes-been-i"
-description: "Bronson Reed has named Rey Mysterio as one of the hardest-hitting wrestlers he has shared the ring with, alongside Bron Breakker and Gunther. During an…"
+description: "Bronson Reed has named Rey Mysterio as one of the hardest-hitting wrestlers he has shared the ring with, alongside Bron Breakker and Gunther."
 federation: WWE
 date: 2026-10-14T14:32:45.000Z
 source_id: 333834

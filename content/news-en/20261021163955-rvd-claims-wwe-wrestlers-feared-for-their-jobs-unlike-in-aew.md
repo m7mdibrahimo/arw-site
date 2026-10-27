@@ -1,7 +1,7 @@
 ---
 title: "RVD Claims WWE Wrestlers Feared for Their Jobs Unlike in AEW"
 slug: "rvd-claims-wwe-wrestlers-feared-for-their-jobs-unlike-in-aew"
-description: "Rob Van Dam believes AEW gives its wrestlers the freedom to express themselves, unlike his time in WWE where performers feared for their jobs and simply…"
+description: "Rob Van Dam believes AEW gives its wrestlers the freedom to express themselves."
 federation: WWE
 date: 2026-10-21T13:39:55.000Z
 source_id: 802258161

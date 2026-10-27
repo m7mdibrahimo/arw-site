@@ -1,7 +1,7 @@
 ---
 title: "Chris Jericho vs. Nick Wayne Rubber Match Set for AEW WrestleDream"
 slug: "chris-jericho-vs-nick-wayne-rubber-match-set-for-aew-wrestledream"
-description: "Chris Jericho and Nick Wayne are set to face off in a rubber match at AEW WrestleDream this Saturday. The match was confirmed during the October 14 episode…"
+description: "Chris Jericho and Nick Wayne are set to face off in a rubber match at AEW WrestleDream this Saturday."
 federation: AEW
 date: 2026-10-15T02:48:28.000Z
 source_id: 802255217

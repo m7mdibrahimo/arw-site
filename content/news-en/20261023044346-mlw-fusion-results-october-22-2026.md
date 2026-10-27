@@ -1,7 +1,7 @@
 ---
 title: "MLW Fusion Results (October 22, 2026)"
 slug: "mlw-fusion-results-october-22-2026"
-description: "Major League Wrestling aired the latest episode of MLW Fusion on October 22 via Tubi. In the opening match, Joe Coffey defeated Andrew Everett. Following…"
+description: "Major League Wrestling aired the latest episode of MLW Fusion on October 22 via Tubi. In the opening match, Joe Coffey defeated Andrew Everett."
 federation: INDIE
 date: 2026-10-23T01:43:46.000Z
 source_id: 335214

@@ -1,7 +1,7 @@
 ---
 title: "Multiple WWE Superstars Have Questioned the WWE ID Program Following Departures of Laynie Luck and Marcus Mathers"
 slug: "multiple-wwe-superstars-have-questioned-the-wwe-id-program-following-departures"
-description: "Several WWE Superstars have raised concerns regarding the WWE ID program following the recent departures of Laynie Luck and Marcus Mathers. According to…"
+description: "Several WWE Superstars have raised concerns regarding the WWE ID program following the recent departures of Laynie Luck and Marcus Mathers."
 federation: WWE
 date: 2026-10-10T02:48:41.000Z
 source_id: 332987

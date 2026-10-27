@@ -1,7 +1,7 @@
 ---
 title: "WWE NXT Viewership Drops Below 700,000 Viewers"
 slug: "wwe-nxt-viewership-drops-below-700-000-viewers"
-description: "WWE NXT viewership and ratings saw a decrease for the October 20 episode on CW Network. According to Wrestlenomics, the show drew 655,000 viewers, falling…"
+description: "WWE NXT viewership and ratings saw a decrease for the October 20 episode on CW Network."
 federation: WWE
 date: 2026-10-22T23:48:47.000Z
 source_id: 335203

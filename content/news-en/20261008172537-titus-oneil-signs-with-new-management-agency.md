@@ -1,7 +1,7 @@
 ---
 title: "Titus O’Neil Signs With New Management Agency"
 slug: "titus-oneil-signs-with-new-management-agency"
-description: "Titus O’Neil has officially signed with Stoked Sports & Entertainment Expansion for management to continue building his career outside the ring, according…"
+description: "Titus O’Neil has officially signed with Stoked Sports & Entertainment Expansion for management to continue building his career outside the ring."
 federation: WWE
 date: 2026-10-08T14:25:37.000Z
 source_id: 802252404

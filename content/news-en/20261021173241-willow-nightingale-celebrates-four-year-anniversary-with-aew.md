@@ -1,7 +1,7 @@
 ---
 title: "Willow Nightingale Celebrates Four-Year Anniversary With AEW"
 slug: "willow-nightingale-celebrates-four-year-anniversary-with-aew"
-description: "Willow Nightingale recently marked four full years since her official signing with AEW by highlighting her major career achievements. Her initial…"
+description: "Willow Nightingale recently marked four full years since her official signing with AEW by highlighting her major career achievements."
 federation: AEW
 date: 2026-10-21T14:32:41.000Z
 source_id: 334974

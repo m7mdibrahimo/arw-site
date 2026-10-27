@@ -1,7 +1,7 @@
 ---
 title: "AEW's Zayda Steel Plans to 'Run It Back' With Mercedes Moné"
 slug: "aews-zayda-steel-plans-to-run-it-back-with-mercedes-mone"
-description: "AEW star Zayda Steel recently opened up about facing her idol, Mercedes Moné, during an appearance on MuscleManMalcolm's Muscle Memory. Steel reflected on…"
+description: "AEW star Zayda Steel recently opened up about facing her idol, Mercedes Moné, during an appearance on MuscleManMalcolm's Muscle Memory."
 federation: AEW
 date: 2026-10-14T12:30:00.000Z
 source_id: 4679859257

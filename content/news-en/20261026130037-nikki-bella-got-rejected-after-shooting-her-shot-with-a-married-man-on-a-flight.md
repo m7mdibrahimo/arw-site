@@ -1,7 +1,7 @@
 ---
 title: "Nikki Bella Got Rejected After Shooting Her Shot With a Married Man on a Flight"
 slug: "nikki-bella-got-rejected-after-shooting-her-shot-with-a-married-man-on-a-flight"
-description: "Nikki Bella recalled an embarrassing moment from years ago when she tried to flirt with a handsome stranger on a plane. During The Nikki & Brie Show, while…"
+description: "Nikki Bella recalled an embarrassing moment from years ago when she tried to flirt with a handsome stranger on a plane."
 federation: WWE
 date: 2026-10-26T10:00:37.000Z
 source_id: 802259720

@@ -1,7 +1,7 @@
 ---
 title: "Triple H Shares Official Poster for WWE Crown Jewel in Riyadh, Saudi Arabia"
 slug: "triple-h-shares-official-poster-for-wwe-crown-jewel-in-riyadh-saudi-arabia"
-description: "Triple H has shared the official poster for WWE Crown Jewel, confirming that the event will take place in Riyadh, Saudi Arabia. Taking to X, the WWE chief…"
+description: "Triple H has shared the official poster for WWE Crown Jewel, confirming that the event will take place in Riyadh, Saudi Arabia."
 federation: WWE
 date: 2026-10-13T17:03:12.000Z
 source_id: 2124453634

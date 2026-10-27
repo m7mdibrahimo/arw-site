@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Reveals Awkward Encounter With Robert Downey Jr. That He Still Regrets"
 slug: "drew-mcintyre-reveals-awkward-encounter-with-robert-downey-jr-that-he-still-regr"
-description: "WWE star Drew McIntyre revealed an awkward encounter with actor Robert Downey Jr. that he still regrets. While promoting Agent of Shadows, McIntyre…"
+description: "WWE star Drew McIntyre revealed an awkward encounter with actor Robert Downey Jr. that he still regrets."
 federation: WWE
 date: 2026-10-24T09:37:39.000Z
 source_id: 802259055

@@ -1,7 +1,7 @@
 ---
 title: "Queen Aminata to Challenge for TBS Championship at AEW Fright Night Dynamite, FTR vs. Motor City Machine Guns 3 Also Announced"
 slug: "queen-aminata-to-challenge-for-tbs-championship-at-aew-fright-night-dynamite-ftr"
-description: "Queen Aminata is set to challenge Persephone for the TBS Championship at AEW Fright Night Dynamite. Aminata earned this opportunity after defeating Maya…"
+description: "Queen Aminata is set to challenge Persephone for the TBS Championship at AEW Fright Night Dynamite."
 federation: AEW
 date: 2026-10-22T02:06:02.000Z
 source_id: 335089

@@ -1,7 +1,7 @@
 ---
 title: "WWE's Drew McIntyre Teases On-Screen Partnership With Academy Award Winning Actor"
 slug: "wwes-drew-mcintyre-teases-on-screen-partnership-with-academy-award-winning-actor"
-description: "WWE Superstar Drew McIntyre is aiming to reclaim the world championship once he returns to the ring. In a recent appearance on the \"Joe Vulpis Podcast,\"…"
+description: "WWE Superstar Drew McIntyre is aiming to reclaim the world championship once he returns to the ring."
 federation: WWE
 date: 2026-10-25T18:16:17.000Z
 source_id: 2223864666

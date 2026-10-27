@@ -1,7 +1,7 @@
 ---
 title: "WWE Raw (10/5) Records 2.4 Million Global Views on Netflix"
 slug: "wwe-raw-10-5-records-2-4-million-global-views-on-netflix"
-description: "WWE Raw on October 5 drew 2.4 million global views on Netflix, according to Tudum. This figure represents a slight decrease from the 2.5 million views…"
+description: "WWE Raw on October 5 drew 2.4 million global views on Netflix, according to Tudum."
 federation: WWE
 date: 2026-10-13T21:14:46.000Z
 source_id: 333767

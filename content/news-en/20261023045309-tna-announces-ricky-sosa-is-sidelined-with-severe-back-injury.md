@@ -1,7 +1,7 @@
 ---
 title: "TNA Announces Ricky Sosa Is Sidelined With Severe Back Injury"
 slug: "tna-announces-ricky-sosa-is-sidelined-with-severe-back-injury"
-description: "Ricky Sosa is sidelined from in-ring competition due to a severe back injury. During the October 22nd episode of TNA iMPACT on AMC, it was announced that…"
+description: "Ricky Sosa is sidelined from in-ring competition due to a severe back injury."
 federation: TNA
 date: 2026-10-23T01:53:09.000Z
 source_id: 335217

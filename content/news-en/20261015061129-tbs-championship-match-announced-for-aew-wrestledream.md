@@ -1,7 +1,7 @@
 ---
 title: "TBS Championship Match Announced for AEW WrestleDream"
 slug: "tbs-championship-match-announced-for-aew-wrestledream"
-description: "AEW has officially confirmed a new title match for the upcoming AEW WrestleDream event. During the latest episode of AEW Collision, Dani Luna and Hyan…"
+description: "AEW has officially confirmed a new title match for the upcoming AEW WrestleDream event."
 federation: AEW
 date: 2026-10-15T03:11:29.000Z
 source_id: 333985

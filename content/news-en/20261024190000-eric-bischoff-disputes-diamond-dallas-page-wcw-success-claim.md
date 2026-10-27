@@ -1,7 +1,7 @@
 ---
 title: "Eric Bischoff Disputes Diamond Dallas Page WCW Success Claim"
 slug: "eric-bischoff-disputes-diamond-dallas-page-wcw-success-claim"
-description: "While many fans credit the Diamond Cutter as the main reason for Diamond Dallas Page achieving immense popularity in WCW, WWE Hall of Famer Eric Bischoff…"
+description: "While many fans credit the Diamond Cutter as the main reason for Diamond Dallas Page achieving immense popularity in WCW."
 federation: WWE
 date: 2026-10-24T16:00:00.000Z
 source_id: 4118358802

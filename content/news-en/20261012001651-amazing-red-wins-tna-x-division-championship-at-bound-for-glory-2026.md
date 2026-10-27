@@ -1,7 +1,7 @@
 ---
 title: "Amazing Red Wins TNA X-Division Championship at Bound for Glory 2026"
 slug: "amazing-red-wins-tna-x-division-championship-at-bound-for-glory-2026"
-description: "Amazing Red made a stunning return to championship glory at TNA Bound for Glory 2026 by winning the vacant TNA X-Division Championship over 16 years after…"
+description: "Amazing Red made a stunning return to championship glory at TNA Bound for Glory 2026 by winning the vacant TNA X-Division Championship over 16 years after."
 federation: TNA
 date: 2026-10-11T21:16:51.000Z
 source_id: 802253764

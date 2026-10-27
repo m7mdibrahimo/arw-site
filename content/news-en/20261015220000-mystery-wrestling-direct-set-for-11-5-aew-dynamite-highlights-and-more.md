@@ -1,7 +1,7 @@
 ---
 title: "Mystery Wrestling Direct Set for 11/5, AEW Dynamite Highlights, and More"
 slug: "mystery-wrestling-direct-set-for-11-5-aew-dynamite-highlights-and-more"
-description: "Mystery Wrestling will host a Direct event on November 5 to reveal their future plans. AEW Dynamite and Collision featured several highlights this week.…"
+description: "Mystery Wrestling will host a Direct event on November 5 to reveal their future plans. AEW Dynamite and Collision featured several highlights this week."
 federation: INDIE
 date: 2026-10-15T19:00:00.000Z
 source_id: 334101

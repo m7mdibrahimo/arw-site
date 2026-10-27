@@ -1,7 +1,7 @@
 ---
 title: "CMLL Lunes Clásico Results (10/26/2026): Xelhua Advances to the Rey del Inframundo Finals"
 slug: "cmll-lunes-clasico-results-10-26-2026-xelhua-advances-to-the-rey-del-inframundo"
-description: "CMLL held an edition of Lunes Clásico on October 26, 2026, at Arena Puebla in Puebla, México. In the main event, Esfinge and Sky Team (Máscara Dorada and…"
+description: "CMLL held an edition of Lunes Clásico on October 26, 2026, at Arena Puebla in Puebla, México."
 federation: INDIE
 date: 2026-10-27T05:40:00.000Z
 source_id: 336011

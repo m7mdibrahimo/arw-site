@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Tells Sami Zayn That Maybe the Undisputed WWE Title Hasn't Meant Sh*t Since WrestleMania 40"
 slug: "roman-reigns-tells-sami-zayn-that-maybe-the-undisputed-wwe-title-hasnt-meant-sh"
-description: "Roman Reigns and Sami Zayn exchanged words during the October 19th episode of WWE RAW. Reigns pulled up in a truck, followed by his Crown Jewel opponent,…"
+description: "Roman Reigns and Sami Zayn exchanged words during the October 19th episode of WWE RAW."
 federation: WWE
 date: 2026-10-20T00:32:53.000Z
 source_id: 334752

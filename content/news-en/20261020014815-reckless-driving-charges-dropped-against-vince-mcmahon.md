@@ -1,7 +1,7 @@
 ---
 title: "Reckless Driving Charges Dropped Against Vince McMahon"
 slug: "reckless-driving-charges-dropped-against-vince-mcmahon"
-description: "Reckless driving charges against former WWE chairman Vince McMahon have been officially dropped following the completion of his probationary period.…"
+description: "Reckless driving charges against former WWE chairman Vince McMahon have been officially dropped following the completion of his probationary period."
 federation: WWE
 date: 2026-10-19T22:48:15.000Z
 source_id: 5128298471

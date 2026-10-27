@@ -1,7 +1,7 @@
 ---
 title: "ROH TV Results: Action Andretti vs. ELP"
 slug: "roh-tv-results-action-andretti-vs-elp"
-description: "Ring of Honor aired the latest episode of ROH TV on October 15 on HonorClub. AR Fox and Top Flight defeated JD Ink, Matt Mako, and Charles Crowley. The…"
+description: "Ring of Honor aired the latest episode of ROH TV on October 15 on HonorClub. AR Fox and Top Flight defeated JD Ink, Matt Mako, and Charles Crowley."
 federation: ROH
 date: 2026-10-16T16:23:06.000Z
 source_id: 334197

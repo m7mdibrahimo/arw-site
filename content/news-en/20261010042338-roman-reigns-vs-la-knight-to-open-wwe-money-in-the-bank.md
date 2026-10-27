@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns vs. LA Knight to Open WWE Money in the Bank"
 slug: "roman-reigns-vs-la-knight-to-open-wwe-money-in-the-bank"
-description: "WWE has officially confirmed that the World Heavyweight Championship match between Roman Reigns and LA Knight will serve as the opening contest at…"
+description: "WWE has officially confirmed that the World Heavyweight Championship match between Roman Reigns and LA Knight will serve as the opening contest at tomorrow's."
 federation: WWE
 date: 2026-10-10T01:23:38.000Z
 source_id: 332950

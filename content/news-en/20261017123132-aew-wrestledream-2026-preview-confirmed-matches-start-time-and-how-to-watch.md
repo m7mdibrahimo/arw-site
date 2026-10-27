@@ -1,7 +1,7 @@
 ---
 title: "AEW WrestleDream 2026 Preview: Confirmed Matches, Start Time and How to Watch"
 slug: "aew-wrestledream-2026-preview-confirmed-matches-start-time-and-how-to-watch"
-description: "AEW WrestleDream 2026 is set to take place tonight, October 17, at the Addition Financial Arena in Orlando, Florida. The event features a stacked card,…"
+description: "AEW WrestleDream 2026 is set to take place tonight, October 17, at the Addition Financial Arena in Orlando, Florida."
 federation: AEW
 date: 2026-10-17T09:31:32.000Z
 source_id: 802256106

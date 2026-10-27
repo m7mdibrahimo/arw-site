@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Names His Wrestling Mount Rushmore"
 slug: "roman-reigns-names-his-wrestling-mount-rushmore"
-description: "Roman Reigns shared his professional wrestling Mount Rushmore during an appearance on Club Shay Shay, focusing strictly on business impact and revenue…"
+description: "Roman Reigns shared his professional wrestling Mount Rushmore during an appearance on Club Shay Shay."
 federation: WWE
 date: 2026-10-14T13:20:29.000Z
 source_id: 802254976

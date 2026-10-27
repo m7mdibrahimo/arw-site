@@ -1,7 +1,7 @@
 ---
 title: "Erik and Sarah Rowe Welcome Their Third Child"
 slug: "erik-and-sarah-rowe-welcome-their-third-child"
-description: "Erik and Sarah Rowe have officially welcomed their third child. Months after the WWE star announced they were expecting, Erik revealed that their first…"
+description: "Erik and Sarah Rowe have officially welcomed their third child. Months after the WWE star announced they were expecting."
 federation: WWE
 date: 2026-10-20T21:50:48.000Z
 source_id: 802257896

@@ -1,7 +1,7 @@
 ---
 title: "CMLL Martes de Arena México Results (10/13/2026)"
 slug: "cmll-martes-de-arena-mexico-results-10-13-2026"
-description: "Consejo Mundial de Lucha Libre hosted CMLL Martes de Arena México on October 13, 2026, live from Arena México in Mexico City, according to Fightful. The…"
+description: "Consejo Mundial de Lucha Libre hosted CMLL Martes de Arena México on October 13, 2026, live from Arena México in Mexico City, according to Fightful."
 federation: INDIE
 date: 2026-10-14T04:15:00.000Z
 source_id: 333812

@@ -1,7 +1,7 @@
 ---
 title: "Medical Examiner Report Reveals Heartbreaking Details About PAC's Final Hours"
 slug: "medical-examiner-report-reveals-heartbreaking-details-about-pacs-final-hours"
-description: "Heartbreaking details about PAC's final hours have emerged, showing how suddenly his life ended. His wife, Natalie Taylor, spoke with him less than three…"
+description: "Heartbreaking details about PAC's final hours have emerged, showing how suddenly his life ended."
 federation: AEW
 date: 2026-10-20T19:45:10.000Z
 source_id: 802257875

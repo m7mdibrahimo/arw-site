@@ -1,7 +1,7 @@
 ---
 title: "Dave Meltzer Reveals Compensation WWE Will Receive for Holding WrestleMania in Riyadh"
 slug: "dave-meltzer-reveals-compensation-wwe-will-receive-for-holding-wrestlemania-in-r"
-description: "Dave Meltzer has revealed the financial compensation WWE is set to receive for hosting WrestleMania in Riyadh. Speaking on Wrestling Observer Radio,…"
+description: "Dave Meltzer has revealed the financial compensation WWE is set to receive for hosting WrestleMania in Riyadh."
 federation: WWE
 date: 2026-10-21T16:38:03.000Z
 source_id: 1225351123

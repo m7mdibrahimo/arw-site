@@ -1,7 +1,7 @@
 ---
 title: "Paige Collett Shares Photos to Celebrate 56 Days Without Sugar"
 slug: "paige-collett-shares-photos-to-celebrate-56-days-without-sugar"
-description: "JCW wrestler Paige Collett celebrated reaching 56 days without sugar by sharing new photos of herself in black lace underwear on X. Collett used the post…"
+description: "JCW wrestler Paige Collett celebrated reaching 56 days without sugar by sharing new photos of herself in black lace underwear on X."
 federation: INDIE
 date: 2026-10-19T09:40:27.000Z
 source_id: 802257105

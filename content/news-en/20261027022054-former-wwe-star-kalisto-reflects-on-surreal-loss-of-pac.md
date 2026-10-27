@@ -1,7 +1,7 @@
 ---
 title: "Former WWE Star Kalisto Reflects on 'Surreal' Loss of PAC"
 slug: "former-wwe-star-kalisto-reflects-on-surreal-loss-of-pac"
-description: "Former WWE star Kalisto recently reflected on the passing of AEW star PAC, real name Benjamin Satterley, who died on September 27. Speaking with TMZ…"
+description: "Former WWE star Kalisto recently reflected on the passing of AEW star PAC, real name Benjamin Satterley, who died on September 27."
 federation: WWE
 date: 2026-10-26T23:20:54.000Z
 source_id: 2667567774

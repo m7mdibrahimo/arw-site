@@ -1,7 +1,7 @@
 ---
 title: "Shotzi Blackheart's MLW Contract Has Expired"
 slug: "shotzi-blackhearts-mlw-contract-has-expired"
-description: "Shotzi Blackheart's run with Major League Wrestling has come to an end after her contract expired last week. According to Mike Johnson of PWInsider, MLW…"
+description: "Shotzi Blackheart's run with Major League Wrestling has come to an end after her contract expired last week."
 federation: INDIE
 date: 2026-10-14T02:56:56.000Z
 source_id: 333807

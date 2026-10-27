@@ -1,7 +1,7 @@
 ---
 title: "Avery Styles Seen in Walking Boot Following TNA Tapings"
 slug: "avery-styles-seen-in-walking-boot-following-tna-tapings"
-description: "Avery Styles was seen wearing a walking boot following TNA tapings held earlier this week. The promotion hosted back-to-back television tapings on October…"
+description: "Avery Styles was seen wearing a walking boot following TNA tapings held earlier this week."
 federation: TNA
 date: 2026-10-16T18:39:17.000Z
 source_id: 334217

@@ -1,7 +1,7 @@
 ---
 title: "John Cena Explains Why He Wasn't Emotional During His Final WWE Match"
 slug: "john-cena-explains-why-he-wasnt-emotional-during-his-final-wwe-match"
-description: "John Cena recently reflected on his final in-ring performance, which took place at WWE Saturday Night's Main Event on December 13, 2025. While fans were…"
+description: "John Cena recently reflected on his final in-ring performance, which took place at WWE Saturday Night's Main Event on December 13, 2025."
 federation: WWE
 date: 2026-10-10T19:00:00.000Z
 source_id: 4892603632

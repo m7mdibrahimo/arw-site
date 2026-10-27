@@ -1,7 +1,7 @@
 ---
 title: "Karl Fredericks Calls Match With Gabe Kidd His Most Important Since Leaving NJPW"
 slug: "karl-fredericks-calls-match-with-gabe-kidd-his-most-important-since-leaving-njpw"
-description: "Karl Fredericks is looking forward to his upcoming singles match against Gabe Kidd at PRODUCE Vol. 6, which is co-produced by The Dogs. Speaking on the In…"
+description: "Karl Fredericks is looking forward to his upcoming singles match against Gabe Kidd at PRODUCE Vol. 6, which is co-produced by The Dogs."
 federation: NJPW
 date: 2026-10-09T15:00:00.000Z
 source_id: 332758

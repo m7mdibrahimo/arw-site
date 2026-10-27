@@ -1,7 +1,7 @@
 ---
 title: "JBL: Vince McMahon Never Turned John Cena Heel in WWE Due to Previous Lesson Learned"
 slug: "jbl-vince-mcmahon-never-turned-john-cena-heel-in-wwe-due-to-previous-lesson-lear"
-description: "John Cena was one of the biggest babyfaces in WWE history, but many fans often called for him to turn heel during the peak of his popularity. However,…"
+description: "John Cena was one of the biggest babyfaces in WWE history, but many fans often called for him to turn heel during the peak of his popularity."
 federation: WWE
 date: 2026-10-24T12:30:00.000Z
 source_id: 2740222976

@@ -1,7 +1,7 @@
 ---
 title: "John Cena Explains How His Hollywood Career Almost Ended"
 slug: "john-cena-explains-how-his-hollywood-career-almost-ended"
-description: "John Cena recently reflected on the struggles of his early acting career and how he was once told that his time in Hollywood was essentially over. Speaking…"
+description: "John Cena recently reflected on the struggles of his early acting career and how he was once told that his time in Hollywood was essentially over."
 federation: WWE
 date: 2026-10-10T12:59:26.000Z
 source_id: 802253171

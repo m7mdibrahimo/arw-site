@@ -1,7 +1,7 @@
 ---
 title: "Steve Maclin Details TNA Departure: 'I Was Just Spinning the Wheels'"
 slug: "steve-maclin-details-tna-departure-i-was-just-spinning-the-wheels"
-description: "Steve Maclin recently opened up about his decision to leave TNA after five years, citing significant creative differences. Despite winning the TNA…"
+description: "Steve Maclin recently opened up about his decision to leave TNA after five years, citing significant creative differences."
 federation: TNA
 date: 2026-10-10T17:00:00.000Z
 source_id: 1725813469

@@ -1,7 +1,7 @@
 ---
 title: "Buff Bagwell Claims WCW Was So Cold Before the nWo They Had to Beg Fans to Attend for Free"
 slug: "buff-bagwell-claims-wcw-was-so-cold-before-the-nwo-they-had-to-beg-fans-to-atten"
-description: "Buff Bagwell recently opened up about the difficult times WCW faced before the nWo completely transformed the company. According to Bagwell, the promotion…"
+description: "Buff Bagwell recently opened up about the difficult times WCW faced before the nWo completely transformed the company."
 federation: AEW
 date: 2026-10-09T09:05:12.000Z
 source_id: 802252641

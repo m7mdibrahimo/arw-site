@@ -1,7 +1,7 @@
 ---
 title: "WWE’s Planned Main Event for Money in the Bank 2026"
 slug: "wwes-planned-main-event-for-money-in-the-bank-2026"
-description: "WWE has reportedly finalized its planned closing match for the upcoming Money in the Bank premium live event. According to WrestleVotes Radio on Fightful…"
+description: "WWE has reportedly finalized its planned closing match for the upcoming Money in the Bank premium live event."
 federation: WWE
 date: 2026-10-08T16:44:34.000Z
 source_id: 802252478

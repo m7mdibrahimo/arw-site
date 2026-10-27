@@ -1,7 +1,7 @@
 ---
 title: "Sami Zayn to Defend WWE Championship Against Trick Williams on 10/30 WWE SmackDown"
 slug: "sami-zayn-to-defend-wwe-championship-against-trick-williams-on-10-30-wwe-smackdo"
-description: "Sami Zayn is set to defend his WWE Championship in the upcoming episode of WWE SmackDown on October 30. During the October 23 show, Trick Williams…"
+description: "Sami Zayn is set to defend his WWE Championship in the upcoming episode of WWE SmackDown on October 30."
 federation: WWE
 date: 2026-10-24T01:44:55.000Z
 source_id: 335372

@@ -1,7 +1,7 @@
 ---
 title: "El Patron Lucha Libre Releases Statement After Arrest of Hijo de Fishman"
 slug: "el-patron-lucha-libre-releases-statement-after-arrest-of-hijo-de-fishman"
-description: "El Patron Lucha Libre has released an official statement following the arrest of independent wrestler Hijo de Fishman in connection with the death of…"
+description: "El Patron Lucha Libre has released an official statement following the arrest of independent wrestler Hijo de Fishman in connection with the death of referee."
 federation: INDIE
 date: 2026-10-08T00:19:49.000Z
 source_id: 332681

@@ -1,7 +1,7 @@
 ---
 title: "WWE Files to Trademark 'WWE: Survive the Ride'"
 slug: "wwe-files-to-trademark-wwe-survive-the-ride"
-description: "WWE has filed a trademark for the term 'WWE: Survive the Ride' on October 13th. According to the filing details, the trademark covers video, mobile, and…"
+description: "WWE has filed a trademark for the term 'WWE: Survive the Ride' on October 13th."
 federation: WWE
 date: 2026-10-14T16:51:34.000Z
 source_id: 333863

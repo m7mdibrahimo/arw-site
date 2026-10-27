@@ -1,7 +1,7 @@
 ---
 title: "WWE Live Results From Palm Desert"
 slug: "wwe-live-results-from-palm-desert"
-description: "WWE hosted a Road To Survivor Series live show on October 22 at the Acrisure Arena in Palm Desert, California, according to Fightful. Trick Williams def.…"
+description: "WWE hosted a Road To Survivor Series live show on October 22 at the Acrisure Arena in Palm Desert, California, according to Fightful. Trick Williams def."
 federation: WWE
 date: 2026-10-23T12:28:48.000Z
 source_id: 335236

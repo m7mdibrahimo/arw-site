@@ -1,7 +1,7 @@
 ---
 title: "WWE Reportedly Wanted Late Saved by the Bell Star to Serve as Authority Figure"
 slug: "wwe-reportedly-wanted-late-saved-by-the-bell-star-to-serve-as-authority-figure"
-description: "Dennis Haskins, the actor best known for his role as Mr. Richard Belding on \"Saved By the Bell,\" passed away on September 27 at the age of 75. Haskins was…"
+description: "Dennis Haskins, the actor best known for his role as Mr. Richard Belding on \"Saved By the Bell,\" passed away on September 27 at the age of 75."
 federation: WWE
 date: 2026-10-10T15:30:00.000Z
 source_id: 3517532477

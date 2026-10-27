@@ -1,7 +1,7 @@
 ---
 title: "Conrad Thompson Expresses Desire to Do ECW Podcast With Joey Styles"
 slug: "conrad-thompson-expresses-desire-to-do-ecw-podcast-with-joey-styles"
-description: "Conrad Thompson has revealed that he would still love to launch an ECW podcast with Joey Styles when the time is right. Speaking with Sean Ross Sapp,…"
+description: "Conrad Thompson has revealed that he would still love to launch an ECW podcast with Joey Styles when the time is right."
 federation: INDIE
 date: 2026-10-25T16:00:00.000Z
 source_id: 335267

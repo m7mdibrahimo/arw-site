@@ -1,7 +1,7 @@
 ---
 title: "New Attorney Enters Ludwig Kaiser Battery Case Ahead of Hearing"
 slug: "new-attorney-enters-ludwig-kaiser-battery-case-ahead-of-hearing"
-description: "According to Ringside News, a new legal development has emerged in the ongoing battery case involving Ludwig Kaiser just days before his upcoming Orlando…"
+description: "According to Ringside News, a new legal development has emerged in the ongoing battery case involving Ludwig Kaiser just days before his upcoming Orlando."
 federation: WWE
 date: 2026-10-09T13:49:01.000Z
 source_id: 802252726

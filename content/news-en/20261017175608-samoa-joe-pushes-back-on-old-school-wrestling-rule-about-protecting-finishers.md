@@ -1,7 +1,7 @@
 ---
 title: "Samoa Joe Pushes Back on Old-School Wrestling Rule About Protecting Finishers"
 slug: "samoa-joe-pushes-back-on-old-school-wrestling-rule-about-protecting-finishers"
-description: "Samoa Joe recently shared his thoughts on the traditional wrestling rule about protecting finishing moves, stating that the idea does not hold true for…"
+description: "Samoa Joe recently shared his thoughts on the traditional wrestling rule about protecting finishing moves."
 federation: AEW
 date: 2026-10-17T14:56:08.000Z
 source_id: 802256222

@@ -1,7 +1,7 @@
 ---
 title: "Former WWE Star James Ellsworth Open to Returning After Eight Years Away"
 slug: "former-wwe-star-james-ellsworth-open-to-returning-after-eight-years-away"
-description: "James Ellsworth believes his story with WWE might not be over, even though years have passed since he was a regular performer for the company. The former…"
+description: "James Ellsworth believes his story with WWE might not be over, even though years have passed since he was a regular performer for the company."
 federation: WWE
 date: 2026-10-26T14:06:02.000Z
 source_id: 802259809

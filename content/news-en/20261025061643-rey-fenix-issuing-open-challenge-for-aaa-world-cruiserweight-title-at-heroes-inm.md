@@ -1,7 +1,7 @@
 ---
 title: "Rey Fenix Issuing Open Challenge for AAA World Cruiserweight Title at Héroes Inmortales Week Two"
 slug: "rey-fenix-issuing-open-challenge-for-aaa-world-cruiserweight-title-at-heroes-inm"
-description: "Rey Fenix is set to host an open challenge for the AAA World Cruiserweight Championship at the second week of Héroes Inmortales. Originally, Mini Vikingo…"
+description: "Rey Fenix is set to host an open challenge for the AAA World Cruiserweight Championship at the second week of Héroes Inmortales."
 federation: INDIE
 date: 2026-10-25T03:16:43.000Z
 source_id: 335603

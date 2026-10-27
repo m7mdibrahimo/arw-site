@@ -1,7 +1,7 @@
 ---
 title: "WWE SmackDown Results (October 16, 2026): Cody Rhodes Faces Baron Corbin as Randy Orton Intervenes"
 slug: "wwe-smackdown-results-october-16-2026-cody-rhodes-faces-baron-corbin-as-randy-or"
-description: "Tonight's WWE SmackDown, airing October 16, 2026, emanated live from the Golden 1 Center in Sacramento, California. The show kicked off with Undisputed WWE…"
+description: "Tonight's WWE SmackDown, airing October 16, 2026, emanated live from the Golden 1 Center in Sacramento, California."
 federation: WWE
 date: 2026-10-17T00:38:32.000Z
 source_id: 802255622

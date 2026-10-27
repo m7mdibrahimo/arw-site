@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Remains Tight-Lipped About Marvel Studios Summer Meeting"
 slug: "cody-rhodes-remains-tight-lipped-about-marvel-studios-summer-meeting"
-description: "WWE Undisputed Champion Cody Rhodes is staying quiet about his potential future with Marvel Studios following a summer visit to their offices. In an…"
+description: "WWE Undisputed Champion Cody Rhodes is staying quiet about his potential future with Marvel Studios following a summer visit to their offices."
 federation: WWE
 date: 2026-10-22T12:30:00.000Z
 source_id: 1895707758

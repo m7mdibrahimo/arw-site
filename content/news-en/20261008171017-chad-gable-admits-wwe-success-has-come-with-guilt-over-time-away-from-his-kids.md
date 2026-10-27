@@ -1,7 +1,7 @@
 ---
 title: "Chad Gable Admits WWE Success Has Come With Guilt Over Time Away From His Kids"
 slug: "chad-gable-admits-wwe-success-has-come-with-guilt-over-time-away-from-his-kids"
-description: "WWE Intercontinental Champion Chad Gable recently opened up about the personal toll of his career, admitting that achieving success in the ring has come…"
+description: "WWE Intercontinental Champion Chad Gable recently opened up about the personal toll of his career."
 federation: WWE
 date: 2026-10-08T14:10:17.000Z
 source_id: 802252400

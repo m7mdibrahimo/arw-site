@@ -1,7 +1,7 @@
 ---
 title: "Bandido Breaks Jay Lethal's Record for Most Overall Days as ROH World Champion"
 slug: "bandido-breaks-jay-lethals-record-for-most-overall-days-as-roh-world-champion"
-description: "Bandido has set a major milestone in Ring of Honor history. On October 14, he officially surpassed Jay Lethal to claim the record for the most overall days…"
+description: "Bandido has set a major milestone in Ring of Honor history. On October 14."
 federation: ROH
 date: 2026-10-16T16:43:48.000Z
 source_id: 334201

@@ -1,7 +1,7 @@
 ---
 title: "Matt Jackson Jokes About The Young Bucks Reusing Promo Pictures"
 slug: "matt-jackson-jokes-about-the-young-bucks-reusing-promo-pictures"
-description: "AEW star Matt Jackson recently addressed the running joke among fans regarding The Young Bucks frequently using the same promotional photos for their match…"
+description: "AEW star Matt Jackson recently addressed the running joke among fans regarding The Young Bucks frequently using the same promotional photos for their match."
 federation: AEW
 date: 2026-10-26T14:41:53.000Z
 source_id: 335830

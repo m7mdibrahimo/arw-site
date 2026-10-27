@@ -1,7 +1,7 @@
 ---
 title: "Jacy Jayne Says She Still Isn't Taken Seriously as a WWE Competitor"
 slug: "jacy-jayne-says-she-still-isnt-taken-seriously-as-a-wwe-competitor"
-description: "Jacy Jayne feels that people still refuse to take her seriously as a competitor in WWE despite her championships and main roster presence. During an…"
+description: "Jacy Jayne feels that people still refuse to take her seriously as a competitor in WWE despite her championships and main roster presence."
 federation: WWE
 date: 2026-10-08T13:35:16.000Z
 source_id: 802252388

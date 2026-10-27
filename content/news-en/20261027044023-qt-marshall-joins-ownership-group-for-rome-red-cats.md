@@ -1,7 +1,7 @@
 ---
 title: "QT Marshall Joins Ownership Group for Rome Red Cats"
 slug: "qt-marshall-joins-ownership-group-for-rome-red-cats"
-description: "QT Marshall has joined the ownership group of the Rome Red Cats, an indoor football team competing in the American Arena League. The organization…"
+description: "QT Marshall has joined the ownership group of the Rome Red Cats, an indoor football team competing in the American Arena League."
 federation: AEW
 date: 2026-10-27T01:40:23.000Z
 source_id: 335989

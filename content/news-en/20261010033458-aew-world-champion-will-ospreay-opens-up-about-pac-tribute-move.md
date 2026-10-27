@@ -1,7 +1,7 @@
 ---
 title: "AEW World Champion Will Ospreay Opens Up About PAC Tribute Move"
 slug: "aew-world-champion-will-ospreay-opens-up-about-pac-tribute-move"
-description: "During the September 30 episode of AEW Dynamite, AEW World Champion Will Ospreay and Ricochet competed in a match dedicated to their late friend, Pac, who…"
+description: "During the September 30 episode of AEW Dynamite, AEW World Champion Will Ospreay and Ricochet competed in a match dedicated to their late friend, Pac."
 federation: AEW
 date: 2026-10-10T00:34:58.000Z
 source_id: 1482406305

@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Personally Thinks The Rock Has a Couple of Matches Left"
 slug: "cody-rhodes-personally-thinks-the-rock-has-a-couple-of-matches-left"
-description: "During a recent interview on Insight with Chris Van Vliet, Cody Rhodes shared his personal thoughts on whether The Rock will wrestle again in WWE. Rhodes…"
+description: "During a recent interview on Insight with Chris Van Vliet, Cody Rhodes shared his personal thoughts on whether The Rock will wrestle again in WWE."
 federation: WWE
 date: 2026-10-22T11:24:48.000Z
 source_id: 335115

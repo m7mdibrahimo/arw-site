@@ -1,7 +1,7 @@
 ---
 title: "Tony Khan 'Extremely Happy' After Skydance Meeting"
 slug: "tony-khan-extremely-happy-after-skydance-meeting"
-description: "AEW President Tony Khan met with executives from Skydance in Los Angeles on Friday. Reports indicate that Khan left the discussion in high spirits…"
+description: "AEW President Tony Khan met with executives from Skydance in Los Angeles on Friday."
 federation: AEW
 date: 2026-10-26T16:01:17.000Z
 source_id: 4900842061

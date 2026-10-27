@@ -1,7 +1,7 @@
 ---
 title: "Ulka Sasaki Returning to Pro Wrestling NOAH on 12/31"
 slug: "ulka-sasaki-returning-to-pro-wrestling-noah-on-12-31"
-description: "Ulka Sasaki is returning to Pro Wrestling NOAH. A hype video aired during the Wrestle Odyssey II show on October 25, confirming that Sasaki will compete at…"
+description: "Ulka Sasaki is returning to Pro Wrestling NOAH. A hype video aired during the Wrestle Odyssey II show on October 25."
 federation: INDIE
 date: 2026-10-25T06:50:48.000Z
 source_id: 335614

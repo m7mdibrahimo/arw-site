@@ -1,7 +1,7 @@
 ---
 title: "Dominik Mysterio Explains Biggest Benefit of WWE and AAA Partnership"
 slug: "dominik-mysterio-explains-biggest-benefit-of-wwe-and-aaa-partnership"
-description: "Dominik Mysterio discussed the biggest advantage AAA gained from its partnership with WWE and the presence of main roster stars on its shows. Dominik…"
+description: "Dominik Mysterio discussed the biggest advantage AAA gained from its partnership with WWE and the presence of main roster stars on its shows."
 federation: WWE
 date: 2026-10-25T13:25:14.000Z
 source_id: 335627

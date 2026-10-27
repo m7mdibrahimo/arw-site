@@ -1,7 +1,7 @@
 ---
 title: "WWE NXT - 10/13/2026: 3 Things We Hated & 3 Things We Loved"
 slug: "wwe-nxt-10-13-2026-3-things-we-hated-3-things-we-loved"
-description: "WWE NXT on October 13, 2026, featured the road to Halloween Havoc with Dusty Rhodes Tag Team Classic matches and Tony D'Angelo earning another NXT Title…"
+description: "WWE NXT on October 13, 2026, featured the road to Halloween Havoc with Dusty Rhodes Tag Team Classic matches and Tony D'Angelo earning another NXT Title shot."
 federation: WWE
 date: 2026-10-14T03:38:46.000Z
 source_id: 4193574267

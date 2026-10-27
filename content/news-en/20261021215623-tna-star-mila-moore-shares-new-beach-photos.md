@@ -1,7 +1,7 @@
 ---
 title: "TNA Star Mila Moore Shares New Beach Photos"
 slug: "tna-star-mila-moore-shares-new-beach-photos"
-description: "TNA star Mila Moore returned to the beach for a new vacation, sharing photos from her getaway on October 21. Moore posted several images on Instagram…"
+description: "TNA star Mila Moore returned to the beach for a new vacation, sharing photos from her getaway on October 21."
 federation: TNA
 date: 2026-10-21T18:56:23.000Z
 source_id: 802258219

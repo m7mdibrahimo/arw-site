@@ -1,7 +1,7 @@
 ---
 title: "Fallout From Max Caster Leaving TNA"
 slug: "fallout-from-max-caster-leaving-tna"
-description: "Details have emerged regarding the fallout from Max Caster departing TNA. According to Fightful Select, Max Caster was originally only scheduled to work…"
+description: "Details have emerged regarding the fallout from Max Caster departing TNA."
 federation: TNA
 date: 2026-10-26T00:58:16.000Z
 source_id: 335742

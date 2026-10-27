@@ -1,7 +1,7 @@
 ---
 title: "John Cena Admits His Relationship With His Family Is Strained"
 slug: "john-cena-admits-his-relationship-with-his-family-is-strained"
-description: "John Cena recently opened up about his personal life, admitting that his relationship with his family is currently strained due to his busy schedule.…"
+description: "John Cena recently opened up about his personal life, admitting that his relationship with his family is currently strained due to his busy schedule."
 federation: WWE
 date: 2026-10-15T16:17:36.000Z
 source_id: 802255428

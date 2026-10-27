@@ -1,7 +1,7 @@
 ---
 title: "Chad Gable Comments on New Project He's Working On"
 slug: "chad-gable-comments-on-new-project-hes-working-on"
-description: "WWE Intercontinental Champion Chad Gable recently appeared as a guest on Insight with Chris Van Vliet to discuss his career. During the conversation, Gable…"
+description: "WWE Intercontinental Champion Chad Gable recently appeared as a guest on Insight with Chris Van Vliet to discuss his career."
 federation: WWE
 date: 2026-10-08T13:05:44.000Z
 source_id: 332727

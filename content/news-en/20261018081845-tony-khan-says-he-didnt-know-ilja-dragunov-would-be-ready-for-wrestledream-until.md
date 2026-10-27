@@ -1,7 +1,7 @@
 ---
 title: "Tony Khan Says He Didn't Know Ilja Dragunov Would Be Ready for WrestleDream Until Wednesday"
 slug: "tony-khan-says-he-didnt-know-ilja-dragunov-would-be-ready-for-wrestledream-until"
-description: "Ilja Dragunov made his AEW debut at AEW WrestleDream after being introduced by Renee Paquette. Tony Khan explained at the post-show press conference that…"
+description: "Ilja Dragunov made his AEW debut at AEW WrestleDream after being introduced by Renee Paquette."
 federation: AEW
 date: 2026-10-18T05:18:45.000Z
 source_id: 334490

@@ -1,7 +1,7 @@
 ---
 title: "Bandido Reflects on Final Conversation He Had With PAC, Exchange of Football Shirts"
 slug: "bandido-reflects-on-final-conversation-he-had-with-pac-exchange-of-football-shir"
-description: "Bandido recently reflected on his final conversation with PAC and the story of how they exchanged their respective football club shirts. PAC tragically…"
+description: "Bandido recently reflected on his final conversation with PAC and the story of how they exchanged their respective football club shirts."
 federation: AEW
 date: 2026-10-21T16:20:31.000Z
 source_id: 334982

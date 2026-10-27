@@ -1,7 +1,7 @@
 ---
 title: "Kalisto Remembers PAC, Says He 'Looked Up to Him a Lot'"
 slug: "kalisto-remembers-pac-says-he-looked-up-to-him-a-lot"
-description: "Kalisto recently reflected on the late PAC, recalling their time working together and noting that he looked up to him a lot. During an interview with TMZ's…"
+description: "Kalisto recently reflected on the late PAC, recalling their time working together and noting that he looked up to him a lot."
 federation: WWE
 date: 2026-10-14T18:01:33.000Z
 source_id: 333866

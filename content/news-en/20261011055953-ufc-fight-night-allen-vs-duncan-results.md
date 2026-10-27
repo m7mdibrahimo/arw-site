@@ -1,7 +1,7 @@
 ---
 title: "UFC Fight Night: Allen vs. Duncan Results"
 slug: "ufc-fight-night-allen-vs-duncan-results"
-description: "UFC Fight Night: Allen vs. Duncan took place on Saturday, October 10, 2026, from the Meta APEX in Las Vegas, Nevada. The event aired live on Paramount+,…"
+description: "UFC Fight Night: Allen vs. Duncan took place on Saturday, October 10, 2026, from the Meta APEX in Las Vegas, Nevada."
 federation: MMA
 date: 2026-10-11T02:59:53.000Z
 source_id: 333215

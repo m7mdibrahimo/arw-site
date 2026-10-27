@@ -1,7 +1,7 @@
 ---
 title: "Don Callis Explains What He Looks for in Faction Recruits"
 slug: "don-callis-explains-what-he-looks-for-in-faction-recruits"
-description: "In a recent appearance on Poisonrana, Don Callis discussed the criteria he uses when recruiting members for the AEW faction Don Callis Family. Callis…"
+description: "In a recent appearance on Poisonrana, Don Callis discussed the criteria he uses when recruiting members for the AEW faction Don Callis Family."
 federation: AEW
 date: 2026-10-11T17:00:00.000Z
 source_id: 2539918876

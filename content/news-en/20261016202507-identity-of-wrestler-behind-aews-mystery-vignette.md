@@ -1,7 +1,7 @@
 ---
 title: "Identity of Wrestler Behind AEW's Mystery Vignette"
 slug: "identity-of-wrestler-behind-aews-mystery-vignette"
-description: "AEW has started teasing the arrival of a major new star with a recent mystery vignette on television. According to reports, the promotional videos were…"
+description: "AEW has started teasing the arrival of a major new star with a recent mystery vignette on television."
 federation: AEW
 date: 2026-10-16T17:25:07.000Z
 source_id: 802255767

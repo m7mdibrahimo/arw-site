@@ -1,7 +1,7 @@
 ---
 title: "New WWE Women's Tag Team Champions Crowned on October 23 SmackDown"
 slug: "new-wwe-womens-tag-team-champions-crowned-on-october-23-smackdown"
-description: "The WWE Women's Tag Team Championship reign of Alexa Bliss and Tatum Paxley came to a sudden end during the October 23 episode of WWE SmackDown. The duo…"
+description: "The WWE Women's Tag Team Championship reign of Alexa Bliss and Tatum Paxley came to a sudden end during the October 23 episode of WWE SmackDown."
 federation: WWE
 date: 2026-10-24T01:29:42.000Z
 source_id: 802258941

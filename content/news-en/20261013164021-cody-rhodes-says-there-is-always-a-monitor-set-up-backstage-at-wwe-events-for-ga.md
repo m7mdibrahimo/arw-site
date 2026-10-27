@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Says There Is Always a Monitor Set Up Backstage at WWE Events for Gaming"
 slug: "cody-rhodes-says-there-is-always-a-monitor-set-up-backstage-at-wwe-events-for-ga"
-description: "Cody Rhodes recently shared that gaming is a major part of the culture within the WWE locker room. In an interview with ExtraTV, Rhodes explained that…"
+description: "Cody Rhodes recently shared that gaming is a major part of the culture within the WWE locker room."
 federation: WWE
 date: 2026-10-13T13:40:21.000Z
 source_id: 333675

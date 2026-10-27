@@ -1,7 +1,7 @@
 ---
 title: "Michael Cole Reveals He Only Knows Half of WWE Match Finishes Ahead of Time"
 slug: "michael-cole-reveals-he-only-knows-half-of-wwe-match-finishes-ahead-of-time"
-description: "Veteran WWE broadcaster Michael Cole shared insights into how much information he receives regarding match outcomes before going live on air. Speaking in…"
+description: "Veteran WWE broadcaster Michael Cole shared insights into how much information he receives regarding match outcomes before going live on air."
 federation: WWE
 date: 2026-10-10T14:22:25.000Z
 source_id: 333020

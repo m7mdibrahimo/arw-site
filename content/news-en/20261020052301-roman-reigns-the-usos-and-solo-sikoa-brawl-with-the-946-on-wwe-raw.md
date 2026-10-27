@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns, The Usos and Solo Sikoa Brawl With The 946 on WWE RAW"
 slug: "roman-reigns-the-usos-and-solo-sikoa-brawl-with-the-946-on-wwe-raw"
-description: "The October 19, 2026 episode of WWE RAW closed in pure chaos as Roman Reigns, The Usos, and Solo Sikoa engaged in a violent brawl with the faction known as…"
+description: "The October 19, 2026 episode of WWE RAW closed in pure chaos as Roman Reigns, The Usos, and Solo Sikoa engaged in a violent brawl with the faction known as 946."
 federation: WWE
 date: 2026-10-20T02:23:01.000Z
 source_id: 802257586

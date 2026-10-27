@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Praises Elijah Holyfield for Strong Presence"
 slug: "drew-mcintyre-praises-elijah-holyfield-for-strong-presence"
-description: "Drew McIntyre recently shared the screen with Elijah Holyfield in Agent Of Shadows. Speaking on The Joe Vulpis Podcast, McIntyre lauded the NXT talent for…"
+description: "Drew McIntyre recently shared the screen with Elijah Holyfield in Agent Of Shadows."
 federation: WWE
 date: 2026-10-17T15:00:00.000Z
 source_id: 334175

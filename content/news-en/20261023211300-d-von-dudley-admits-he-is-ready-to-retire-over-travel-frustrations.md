@@ -1,7 +1,7 @@
 ---
 title: "D-Von Dudley Admits He Is Ready to Retire Over Travel Frustrations"
 slug: "d-von-dudley-admits-he-is-ready-to-retire-over-travel-frustrations"
-description: "WWE Hall of Famer D-Von Dudley revealed that he is nearing retirement because ongoing airline delays and airport headaches have made constant travel…"
+description: "WWE Hall of Famer D-Von Dudley revealed that he is nearing retirement because ongoing airline delays and airport headaches have made constant travel exhausting."
 federation: WWE
 date: 2026-10-23T18:13:00.000Z
 source_id: 802258747

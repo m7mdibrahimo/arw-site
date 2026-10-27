@@ -1,7 +1,7 @@
 ---
 title: "Ric Flair Says Tony Khan Could Be the Greatest Wrestling Promoter of All Time"
 slug: "ric-flair-says-tony-khan-could-be-the-greatest-wrestling-promoter-of-all-time"
-description: "Ric Flair believes AEW President Tony Khan could go down as the greatest promoter in professional wrestling history. Speaking on NewsNation's BIFF on…"
+description: "Ric Flair believes AEW President Tony Khan could go down as the greatest promoter in professional wrestling history."
 federation: AEW
 date: 2026-10-20T11:36:31.000Z
 source_id: 802257689

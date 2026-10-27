@@ -1,7 +1,7 @@
 ---
 title: "Chad Gable Reveals Texting Friendship With CM Punk"
 slug: "chad-gable-reveals-texting-friendship-with-cm-punk"
-description: "Chad Gable revealed that he and CM Punk have formed an unexpected texting friendship centered around fitness and workout equipment. According to Gable, the…"
+description: "Chad Gable revealed that he and CM Punk have formed an unexpected texting friendship centered around fitness and workout equipment."
 federation: WWE
 date: 2026-10-08T12:50:43.000Z
 source_id: 802252367

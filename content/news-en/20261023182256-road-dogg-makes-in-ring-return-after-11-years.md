@@ -1,7 +1,7 @@
 ---
 title: "Road Dogg Makes In-Ring Return After 11 Years"
 slug: "road-dogg-makes-in-ring-return-after-11-years"
-description: "Road Dogg returned to the ring after more than 11 years without an official match, competing at Jeff Jarrett's All-Star Super Slam on October 22. The WWE…"
+description: "Road Dogg returned to the ring after more than 11 years without an official match, competing at Jeff Jarrett's All-Star Super Slam on October 22."
 federation: WWE
 date: 2026-10-23T15:22:56.000Z
 source_id: 802258704

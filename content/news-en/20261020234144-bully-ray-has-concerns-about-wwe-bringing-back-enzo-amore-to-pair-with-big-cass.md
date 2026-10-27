@@ -1,7 +1,7 @@
 ---
 title: "Bully Ray Has Concerns About WWE Bringing Back Enzo Amore to Pair With Big Cass"
 slug: "bully-ray-has-concerns-about-wwe-bringing-back-enzo-amore-to-pair-with-big-cass"
-description: "Rumors about a potential WWE reunion between former WWE NXT stars Enzo Amore and Big Cass began circulating after Amore was spotted at the WWE Performance…"
+description: "Rumors about a potential WWE reunion between former WWE NXT stars Enzo Amore and Big Cass began circulating after Amore was spotted at the WWE Performance."
 federation: WWE
 date: 2026-10-20T20:41:44.000Z
 source_id: 1538174640

@@ -1,7 +1,7 @@
 ---
 title: "Brett Lauderdale to Address GCW World Championship Status"
 slug: "brett-lauderdale-to-address-gcw-world-championship-status"
-description: "Game Changer Wrestling announced that promoter Brett Lauderdale will address the current status of the GCW World Title at GCW Fight Club on Sunday, October…"
+description: "Game Changer Wrestling announced that promoter Brett Lauderdale will address the current status of the GCW World Title at GCW Fight Club on Sunday."
 federation: INDIE
 date: 2026-10-07T21:26:00.000Z
 source_id: 332657

@@ -1,7 +1,7 @@
 ---
 title: "WWE SmackDown Results (10/23/26): Title Matches and Big Returns"
 slug: "wwe-smackdown-results-10-23-26-title-matches-and-big-returns"
-description: "WWE SmackDown aired on October 23, 2026, live from the Toyota Arena in Ontario, California, featuring championship matches and high-stakes rivalries.…"
+description: "WWE SmackDown aired on October 23, 2026, live from the Toyota Arena in Ontario, California, featuring championship matches and high-stakes rivalries."
 federation: WWE
 date: 2026-10-24T01:21:23.000Z
 source_id: 3792639274

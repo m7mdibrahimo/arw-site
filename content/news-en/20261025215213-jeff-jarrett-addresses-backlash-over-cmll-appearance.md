@@ -1,7 +1,7 @@
 ---
 title: "Jeff Jarrett Addresses Backlash Over CMLL Appearance"
 slug: "jeff-jarrett-addresses-backlash-over-cmll-appearance"
-description: "AEW star Jeff Jarrett recently spoke out about online criticism regarding his match at CMLL 93 Aniversario on September 18. The veteran wrestler faced Blue…"
+description: "AEW star Jeff Jarrett recently spoke out about online criticism regarding his match at CMLL 93 Aniversario on September 18."
 federation: AEW
 date: 2026-10-25T18:52:13.000Z
 source_id: 1416048378

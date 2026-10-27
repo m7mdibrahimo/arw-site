@@ -1,7 +1,7 @@
 ---
 title: "UFC 333: Volkanovski vs. Evloev Fight Card"
 slug: "ufc-333-volkanovski-vs-evloev-odds-courtesy-of-mybookie"
-description: "UFC 333: Volkanovski vs. Evloev is scheduled for Saturday, October 24, at Etihad Arena on Fight Island in Abu Dhabi, UAE, with a broadcast on Paramount+.…"
+description: "UFC 333: Volkanovski vs. Evloev is scheduled for Saturday, October 24, at Etihad Arena on Fight Island in Abu Dhabi, UAE, with a broadcast on Paramount+."
 federation: MMA
 date: 2026-10-22T17:39:52.000Z
 source_id: 335159

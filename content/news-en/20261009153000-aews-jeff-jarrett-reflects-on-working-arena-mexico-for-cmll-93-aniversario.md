@@ -1,7 +1,7 @@
 ---
 title: "AEW's Jeff Jarrett Reflects on Working Arena Mexico for CMLL 93 Aniversario"
 slug: "aews-jeff-jarrett-reflects-on-working-arena-mexico-for-cmll-93-aniversario"
-description: "AEW star Jeff Jarrett recently reflected on his experience wrestling at the iconic Arena Mexico during CMLL's 93 Aniversario event on September 18, where…"
+description: "AEW star Jeff Jarrett recently reflected on his experience wrestling at the iconic Arena Mexico during CMLL's 93 Aniversario event on September 18."
 federation: INDIE
 date: 2026-10-09T12:30:00.000Z
 source_id: 3330778825

@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Isn’t Worried About Getting Lost on AEW’s Stacked Roster"
 slug: "ilja-dragunov-isnt-worried-about-getting-lost-on-aews-stacked-roster"
-description: "Ilja Dragunov says he is not concerned about being overlooked on AEW's loaded roster. The former WWE star explained that he has spent his entire 14-year…"
+description: "Ilja Dragunov says he is not concerned about being overlooked on AEW's loaded roster."
 federation: AEW
 date: 2026-10-20T21:05:26.000Z
 source_id: 802257892

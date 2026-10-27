@@ -1,7 +1,7 @@
 ---
 title: "Exodus Pro Heat of the Moment Results"
 slug: "exodus-pro-heat-of-the-moment-results"
-description: "Exodus Pro Wrestling hosted its Exodus Pro Heat of the Moment event on October 16 at Collision Bend Brewery in Euclid, OH, according to Fightful. Dante…"
+description: "Exodus Pro Wrestling hosted its Exodus Pro Heat of the Moment event on October 16 at Collision Bend Brewery in Euclid, OH, according to Fightful."
 federation: INDIE
 date: 2026-10-18T20:37:15.000Z
 source_id: 334583

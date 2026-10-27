@@ -1,7 +1,7 @@
 ---
 title: "Where Things Stand With John Cena’s Future as Peacemaker in the DC Universe"
 slug: "where-things-stand-with-john-cenas-future-as-peacemaker-in-the-dc-universe"
-description: "John Cena is not worried about when he might play Peacemaker again, leaving the decision entirely up to James Gunn. Speaking on the Happy Sad Confused…"
+description: "John Cena is not worried about when he might play Peacemaker again, leaving the decision entirely up to James Gunn."
 federation: WWE
 date: 2026-10-10T12:40:30.000Z
 source_id: 802253163

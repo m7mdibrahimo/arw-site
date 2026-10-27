@@ -1,7 +1,7 @@
 ---
 title: "Randy Savage's WrestleMania III Title Belt Sells at Auction"
 slug: "randy-savages-wrestlemania-iii-title-belt-sells-at-auction"
-description: "An iconic WWE championship belt used during Randy Savage and Ricky Steamboat's legendary WrestleMania III match sold for $716,750 at Heritage Auctions. The…"
+description: "An iconic WWE championship belt used during Randy Savage and Ricky Steamboat's legendary WrestleMania III match sold for $716,750 at Heritage Auctions."
 federation: WWE
 date: 2026-10-25T10:59:44.000Z
 source_id: 802259461

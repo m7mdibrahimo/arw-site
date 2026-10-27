@@ -1,7 +1,7 @@
 ---
 title: "Former WWE Star 2 Cold Scorpio Sentenced to Six Years in Prison"
 slug: "former-wwe-star-2-cold-scorpio-sentenced-to-six-years-in-prison"
-description: "Former WWE, WCW and ECW wrestler 2 Cold Scorpio, whose real name is Charles Scaggs, was sentenced on October 9 to six years in the Missouri Department of…"
+description: "Former WWE, WCW and ECW wrestler 2 Cold Scorpio, whose real name is Charles Scaggs."
 federation: WWE
 date: 2026-10-09T22:16:29.000Z
 source_id: 802252895

@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Hints at World Title Plans for His WWE Return"
 slug: "drew-mcintyre-hints-at-world-title-plans-for-his-wwe-return"
-description: "Drew McIntyre is already planning big things for his eventual return to WWE, and he expects those plans to lead straight back to the world championship.…"
+description: "Drew McIntyre is already planning big things for his eventual return to WWE, and he expects those plans to lead straight back to the world championship."
 federation: WWE
 date: 2026-10-15T10:50:43.000Z
 source_id: 802255311

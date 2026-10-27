@@ -1,7 +1,7 @@
 ---
 title: "The Real Reason Bronson Reed Put His Foot on Oba Femi"
 slug: "the-real-reason-bronson-reed-put-his-foot-on-oba-femi"
-description: "The viral moment where Bronson Reed placed his foot on Oba Femi's back during their rivalry was not a display of genuine animosity. According to a report…"
+description: "The viral moment where Bronson Reed placed his foot on Oba Femi's back during their rivalry was not a display of genuine animosity."
 federation: WWE
 date: 2026-10-13T14:42:32.000Z
 source_id: 802254609

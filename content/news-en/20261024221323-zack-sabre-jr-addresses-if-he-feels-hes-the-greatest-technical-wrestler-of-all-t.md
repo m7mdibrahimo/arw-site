@@ -1,7 +1,7 @@
 ---
 title: "Zack Sabre Jr. Addresses If He Feels He's the Greatest Technical Wrestler of All Time"
 slug: "zack-sabre-jr-addresses-if-he-feels-hes-the-greatest-technical-wrestler-of-all-t"
-description: "Zack Sabre Jr. recently addressed whether he considers himself the greatest technical wrestler of all time ahead of his upcoming match against Hechicero.…"
+description: "Zack Sabre Jr. recently addressed whether he considers himself the greatest technical wrestler of all time ahead of his upcoming match against Hechicero."
 federation: NJPW
 date: 2026-10-24T19:13:23.000Z
 source_id: 335503

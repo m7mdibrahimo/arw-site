@@ -1,7 +1,7 @@
 ---
 title: "Seth Rollins Remembers Late AEW Star and Former WWE Opponent Pac"
 slug: "seth-rollins-remembers-late-aew-star-and-former-wwe-opponent-pac"
-description: "In the weeks following the tragic death of AEW star Pac, who performed as Neville in WWE, fellow wrestlers have shared their grief and memories of the late…"
+description: "In the weeks following the tragic death of AEW star Pac, who performed as Neville in WWE."
 federation: WWE
 date: 2026-10-13T23:52:08.000Z
 source_id: 1729212585

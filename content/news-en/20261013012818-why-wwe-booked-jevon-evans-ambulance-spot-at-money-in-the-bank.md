@@ -1,7 +1,7 @@
 ---
 title: "Why WWE Booked Je’Von Evans’ Ambulance Spot at Money in the Bank"
 slug: "why-wwe-booked-jevon-evans-ambulance-spot-at-money-in-the-bank"
-description: "Je'Von Evans crashing through the roof of an ambulance was a major talking point coming out of Money in the Bank. According to WrestleVotes, WWE had…"
+description: "Je'Von Evans crashing through the roof of an ambulance was a major talking point coming out of Money in the Bank."
 federation: WWE
 date: 2026-10-12T22:28:18.000Z
 source_id: 802254256

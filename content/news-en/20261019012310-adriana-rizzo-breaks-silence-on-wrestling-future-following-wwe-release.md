@@ -1,7 +1,7 @@
 ---
 title: "Adriana Rizzo Breaks Silence on Wrestling Future Following WWE Release"
 slug: "adriana-rizzo-breaks-silence-on-wrestling-future-following-wwe-release"
-description: "Adriana Rizzo is not finished with professional wrestling following her recent release from WWE. The former NXT talent is currently waiting out her 30-day…"
+description: "Adriana Rizzo is not finished with professional wrestling following her recent release from WWE."
 federation: WWE
 date: 2026-10-18T22:23:10.000Z
 source_id: 802257039

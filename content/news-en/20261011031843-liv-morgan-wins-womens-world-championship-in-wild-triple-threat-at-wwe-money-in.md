@@ -1,7 +1,7 @@
 ---
 title: "Liv Morgan Wins Women’s World Championship in Wild Triple Threat at WWE Money in the Bank 2026"
 slug: "liv-morgan-wins-womens-world-championship-in-wild-triple-threat-at-wwe-money-in"
-description: "Liv Morgan captured the Women’s World Championship at WWE Money in the Bank 2026 by outlasting Stephanie Vaquer and Becky Lynch in a chaotic triple threat…"
+description: "Liv Morgan captured the Women’s World Championship at WWE Money in the Bank 2026 by outlasting Stephanie Vaquer and Becky Lynch in a chaotic triple threat."
 federation: WWE
 date: 2026-10-11T00:18:43.000Z
 source_id: 802253460

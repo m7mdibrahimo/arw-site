@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Wants CM Punk Gone From WWE Forever"
 slug: "drew-mcintyre-wants-cm-punk-gone-from-wwe-forever"
-description: "Drew McIntyre has intensified his ongoing feud with CM Punk by stating that he wants his rival out of WWE permanently. Speaking during an interview with…"
+description: "Drew McIntyre has intensified his ongoing feud with CM Punk by stating that he wants his rival out of WWE permanently."
 federation: WWE
 date: 2026-10-14T19:20:59.000Z
 source_id: 802255043

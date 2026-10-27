@@ -1,7 +1,7 @@
 ---
 title: "Biggest Winners and Losers from WWE Money in the Bank 2026"
 slug: "biggest-winners-and-losers-from-wwe-money-in-the-bank-2026"
-description: "WWE hosted Money In The Bank 2026 in New Orleans, featuring intense ladder matches and unforgettable moments. Several stars stood out as winners on…"
+description: "WWE hosted Money In The Bank 2026 in New Orleans, featuring intense ladder matches and unforgettable moments."
 federation: WWE
 date: 2026-10-12T12:00:00.000Z
 source_id: 3282669668

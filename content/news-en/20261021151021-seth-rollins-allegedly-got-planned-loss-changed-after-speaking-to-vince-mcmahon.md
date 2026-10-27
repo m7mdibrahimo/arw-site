@@ -1,7 +1,7 @@
 ---
 title: "Seth Rollins Allegedly Got Planned Loss Changed After Speaking to Vince McMahon"
 slug: "seth-rollins-allegedly-got-planned-loss-changed-after-speaking-to-vince-mcmahon"
-description: "Karl Anderson revealed that Seth Rollins once had a planned loss changed after speaking directly to Vince McMahon. Speaking on the latest episode of Talk'n…"
+description: "Karl Anderson revealed that Seth Rollins once had a planned loss changed after speaking directly to Vince McMahon."
 federation: WWE
 date: 2026-10-21T12:10:21.000Z
 source_id: 802258151

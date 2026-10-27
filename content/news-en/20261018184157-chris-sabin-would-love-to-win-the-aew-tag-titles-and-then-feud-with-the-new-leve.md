@@ -1,7 +1,7 @@
 ---
 title: "Chris Sabin Would Love to Win the AEW Tag Titles and Then Feud With the New Level for Six Months"
 slug: "chris-sabin-would-love-to-win-the-aew-tag-titles-and-then-feud-with-the-new-leve"
-description: "Chris Sabin hopes that the Motor City Machine Guns can capture the AEW World Tag Team Championship and then engage in a six-month feud with The New Level.…"
+description: "Chris Sabin hopes that the Motor City Machine Guns can capture the AEW World Tag Team Championship and then engage in a six-month feud with The New Level."
 federation: AEW
 date: 2026-10-18T15:41:57.000Z
 source_id: 334531

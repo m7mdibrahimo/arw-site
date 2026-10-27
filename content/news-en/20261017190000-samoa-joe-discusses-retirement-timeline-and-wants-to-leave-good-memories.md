@@ -1,7 +1,7 @@
 ---
 title: "Samoa Joe Discusses Retirement Timeline and Wants to Leave Good Memories"
 slug: "samoa-joe-discusses-retirement-timeline-and-wants-to-leave-good-memories"
-description: "Samoa Joe stated that his retirement timeline is still not quite nailed down and that he wants to leave as many good memories as he can for fans. During a…"
+description: "Samoa Joe stated that his retirement timeline is still not quite nailed down and that he wants to leave as many good memories as he can for fans."
 federation: AEW
 date: 2026-10-17T16:00:00.000Z
 source_id: 334322

@@ -1,7 +1,7 @@
 ---
 title: "Austin Creed Reveals Extreme Burnout Before Leaving WWE"
 slug: "austin-creed-reveals-extreme-burnout-before-leaving-wwe"
-description: "Austin Creed revealed that his final years in WWE brought severe exhaustion after more than two decades of constant wrestling, travel, and digital content…"
+description: "Austin Creed revealed that his final years in WWE brought severe exhaustion after more than two decades of constant wrestling, travel."
 federation: WWE
 date: 2026-10-18T12:54:19.000Z
 source_id: 802256857

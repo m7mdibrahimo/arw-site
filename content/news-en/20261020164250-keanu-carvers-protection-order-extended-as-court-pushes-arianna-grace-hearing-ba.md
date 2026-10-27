@@ -1,7 +1,7 @@
 ---
 title: "Keanu Carver's Protection Order Extended as Court Pushes Arianna Grace Hearing Back"
 slug: "keanu-carvers-protection-order-extended-as-court-pushes-arianna-grace-hearing-ba"
-description: "Keanu Carver's legal proceedings will continue as his protection order case involving Arianna Grace has been pushed back. According to court records, Kevin…"
+description: "Keanu Carver's legal proceedings will continue as his protection order case involving Arianna Grace has been pushed back."
 federation: WWE
 date: 2026-10-20T13:42:50.000Z
 source_id: 802257745

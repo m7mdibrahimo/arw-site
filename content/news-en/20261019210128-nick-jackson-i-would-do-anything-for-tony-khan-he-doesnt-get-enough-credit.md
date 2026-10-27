@@ -1,7 +1,7 @@
 ---
 title: "Nick Jackson: I Would Do Anything for Tony Khan, He Doesn't Get Enough Credit"
 slug: "nick-jackson-i-would-do-anything-for-tony-khan-he-doesnt-get-enough-credit"
-description: "Nick Jackson discussed his working relationship with AEW president Tony Khan following The Young Bucks' match at AEW WrestleDream, expressing strong…"
+description: "Nick Jackson discussed his working relationship with AEW president Tony Khan following The Young Bucks' match at AEW WrestleDream."
 federation: AEW
 date: 2026-10-19T18:01:28.000Z
 source_id: 334699

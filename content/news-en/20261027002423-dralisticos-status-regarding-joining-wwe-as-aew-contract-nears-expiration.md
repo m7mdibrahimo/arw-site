@@ -1,7 +1,7 @@
 ---
 title: "Dralistico's Status Regarding Joining WWE as AEW Contract Nears Expiration"
 slug: "dralisticos-status-regarding-joining-wwe-as-aew-contract-nears-expiration"
-description: "Reports indicate that wrestler Dralistico intends to join WWE once his current AEW contract concludes, primarily to work alongside his brother, Dragon Lee.…"
+description: "Reports indicate that wrestler Dralistico intends to join WWE once his current AEW contract concludes, primarily to work alongside his brother, Dragon Lee."
 federation: WWE
 date: 2026-10-26T21:24:23.000Z
 source_id: 802259927

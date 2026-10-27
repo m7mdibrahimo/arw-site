@@ -1,7 +1,7 @@
 ---
 title: "Nikki Bella Mocks Chelsea Green's WWE Entrance and Says She Will Never Be a Hall of Famer"
 slug: "nikki-bella-mocks-chelsea-greens-wwe-entrance-and-says-she-will-never-be-a-hall"
-description: "Nikki Bella mocked Chelsea Green's WWE entrance during an NFL game in Paris while promoting their upcoming WWE Women's Championship match on SmackDown.…"
+description: "Nikki Bella mocked Chelsea Green's WWE entrance during an NFL game in Paris while promoting their upcoming WWE Women's Championship match on SmackDown."
 federation: WWE
 date: 2026-10-25T14:14:29.000Z
 source_id: 802259534

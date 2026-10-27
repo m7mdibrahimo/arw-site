@@ -1,7 +1,7 @@
 ---
 title: "The Hardy Boyz Allegedly Privately Complained About Their Treatment in AEW"
 slug: "the-hardy-boyz-allegedly-privately-complained-about-their-treatment-in-aew"
-description: "The Hardy Boyz were reportedly unhappy with their time in AEW, and D-Von Dudley claims he heard about their frustrations directly from Matt and Jeff Hardy.…"
+description: "The Hardy Boyz were reportedly unhappy with their time in AEW, and D-Von Dudley claims he heard about their frustrations directly from Matt and Jeff Hardy."
 federation: AEW
 date: 2026-10-23T18:27:51.000Z
 source_id: 802258753

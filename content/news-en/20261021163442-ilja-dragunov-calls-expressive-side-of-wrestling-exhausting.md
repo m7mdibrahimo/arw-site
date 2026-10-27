@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Calls Expressive Side of Wrestling Exhausting"
 slug: "ilja-dragunov-calls-expressive-side-of-wrestling-exhausting"
-description: "Ilja Dragunov stated that the expressive side of professional wrestling is the most exhausting part of the industry, noting that it is harder than…"
+description: "Ilja Dragunov stated that the expressive side of professional wrestling is the most exhausting part of the industry."
 federation: AEW
 date: 2026-10-21T13:34:42.000Z
 source_id: 334959

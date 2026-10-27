@@ -1,7 +1,7 @@
 ---
 title: "Kaitlyn Changes Her Stance on Potential WWE Return After Eight Years Away"
 slug: "kaitlyn-changes-her-stance-on-potential-wwe-return-after-eight-years-away"
-description: "Kaitlyn is no longer as interested in returning to a WWE ring as she once was. After previously stating she was open to coming back for an appearance like…"
+description: "Kaitlyn is no longer as interested in returning to a WWE ring as she once was."
 federation: WWE
 date: 2026-10-15T10:57:29.000Z
 source_id: 802255316

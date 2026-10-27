@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns on Frustration With WWE in the 2010s: 'I Didn't Like What I Was Doing'"
 slug: "roman-reigns-on-frustration-with-wwe-in-the-2010s-i-didnt-like-what-i-was-doing"
-description: "During a recent interview on the \"notsam\" podcast to promote his new film \"Street Fighter,\" Roman Reigns opened up about his frustrations with his WWE run…"
+description: "During a recent interview on the \"notsam\" podcast to promote his new film \"Street Fighter,\" Roman Reigns opened up about his frustrations with his WWE run."
 federation: WWE
 date: 2026-10-19T18:34:43.000Z
 source_id: 4318675270

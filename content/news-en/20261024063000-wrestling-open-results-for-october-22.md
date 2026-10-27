@@ -1,7 +1,7 @@
 ---
 title: "Wrestling Open Results for October 22"
 slug: "wrestling-open-results-for-october-22"
-description: "Beyond Wrestling broadcast its newest Wrestling Open episode on October 22 from the White Eagle in Worcester, Massachusetts, streaming on IWTV, according…"
+description: "Beyond Wrestling broadcast its newest Wrestling Open episode on October 22 from the White Eagle in Worcester, Massachusetts, streaming on IWTV."
 federation: INDIE
 date: 2026-10-24T03:30:00.000Z
 source_id: 335355

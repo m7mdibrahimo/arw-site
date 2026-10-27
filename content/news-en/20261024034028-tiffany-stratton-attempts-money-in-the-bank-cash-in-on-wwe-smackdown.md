@@ -1,7 +1,7 @@
 ---
 title: "Tiffany Stratton Attempts Money in the Bank Cash-In on WWE SmackDown"
 slug: "tiffany-stratton-attempts-money-in-the-bank-cash-in-on-wwe-smackdown"
-description: "Tiffany Stratton nearly cashed in her Money in the Bank contract during the October 23, 2026, episode of WWE SmackDown, which would have forced Liv Morgan…"
+description: "Tiffany Stratton nearly cashed in her Money in the Bank contract during the October 23, 2026, episode of WWE SmackDown."
 federation: WWE
 date: 2026-10-24T00:40:28.000Z
 source_id: 802258809

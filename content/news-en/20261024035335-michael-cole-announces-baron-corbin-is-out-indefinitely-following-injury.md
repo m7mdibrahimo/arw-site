@@ -1,7 +1,7 @@
 ---
 title: "Michael Cole Announces Baron Corbin Is Out Indefinitely Following Injury"
 slug: "michael-cole-announces-baron-corbin-is-out-indefinitely-following-injury"
-description: "WWE has announced that Baron Corbin will be sidelined indefinitely. The injury occurred during an impromptu match against Cody Rhodes on WWE SmackDown last…"
+description: "WWE has announced that Baron Corbin will be sidelined indefinitely. The injury occurred during an impromptu match against Cody Rhodes on WWE SmackDown last."
 federation: WWE
 date: 2026-10-24T00:53:35.000Z
 source_id: 335350

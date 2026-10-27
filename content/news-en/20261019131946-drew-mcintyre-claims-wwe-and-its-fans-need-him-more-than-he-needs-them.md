@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Claims WWE and Its Fans Need Him More Than He Needs Them"
 slug: "drew-mcintyre-claims-wwe-and-its-fans-need-him-more-than-he-needs-them"
-description: "Drew McIntyre recently discussed his extended absence from WWE television while working on various Hollywood projects. During his appearance on the Raw…"
+description: "Drew McIntyre recently discussed his extended absence from WWE television while working on various Hollywood projects."
 federation: WWE
 date: 2026-10-19T10:19:46.000Z
 source_id: 802257117

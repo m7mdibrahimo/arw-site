@@ -1,7 +1,7 @@
 ---
 title: "Dax Harwood Welcomes Any New AEW Signings Who Want to Help the Company Grow"
 slug: "dax-harwood-welcomes-any-new-aew-signings-who-want-to-help-the-company-grow"
-description: "Dax Harwood recently spoke about the influx of new talent joining AEW in 2026, stating that he will welcome anyone who wants to help the company grow.…"
+description: "Dax Harwood recently spoke about the influx of new talent joining AEW in 2026, stating that he will welcome anyone who wants to help the company grow."
 federation: AEW
 date: 2026-10-24T15:23:09.000Z
 source_id: 335431

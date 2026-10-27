@@ -1,7 +1,7 @@
 ---
 title: "Scotty 2 Hotty Recalls Worm Dance Becoming Popular With the WWE Audience"
 slug: "scotty-2-hotty-recalls-worm-dance-becoming-popular-with-the-wwe-audience"
-description: "Former WWE star Scotty 2 Hotty recently recalled how his signature dance move, the worm, became a massive hit with fans during his time in the company as…"
+description: "Former WWE star Scotty 2 Hotty recently recalled how his signature dance move, the worm."
 federation: WWE
 date: 2026-10-17T15:30:00.000Z
 source_id: 1964716072

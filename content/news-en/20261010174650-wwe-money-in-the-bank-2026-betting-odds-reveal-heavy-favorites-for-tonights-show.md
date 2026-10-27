@@ -1,7 +1,7 @@
 ---
 title: "WWE Money in the Bank 2026 Betting Odds Reveal Heavy Favorites for Tonight’s Show"
 slug: "wwe-money-in-the-bank-2026-betting-odds-reveal-heavy-favorites-for-tonights-show"
-description: "BetOnline has released betting odds for WWE Money in the Bank 2026, revealing several clear favorites for tonight's event at the Smoothie King Center in…"
+description: "BetOnline has released betting odds for WWE Money in the Bank 2026, revealing several clear favorites for tonight's event at the Smoothie King Center in New."
 federation: WWE
 date: 2026-10-10T14:46:50.000Z
 source_id: 802253190

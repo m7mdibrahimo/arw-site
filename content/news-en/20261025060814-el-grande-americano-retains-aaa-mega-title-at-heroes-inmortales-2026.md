@@ -1,7 +1,7 @@
 ---
 title: "El Grande Americano Retains AAA Mega Title at Heroes Inmortales 2026"
 slug: "el-grande-americano-retains-aaa-mega-title-at-heroes-inmortales-2026"
-description: "El Grande Americano successfully defended the AAA Mega Championship against Dominik Mysterio at the Lucha Libre AAA Heroes Inmortales 2026 event. During…"
+description: "El Grande Americano successfully defended the AAA Mega Championship against Dominik Mysterio at the Lucha Libre AAA Heroes Inmortales 2026 event."
 federation: INDIE
 date: 2026-10-25T03:08:14.000Z
 source_id: 335596

@@ -1,7 +1,7 @@
 ---
 title: "TJ Wilson Credits 2014 Match With Pac for Saving WWE Job"
 slug: "tj-wilson-credits-2014-match-with-pac-for-saving-wwe-job"
-description: "TJ Wilson recalled how a 2014 match with Pac in WWE NXT helped him keep his job with WWE. Speaking in a video on the official WWE YouTube channel, Wilson…"
+description: "TJ Wilson recalled how a 2014 match with Pac in WWE NXT helped him keep his job with WWE."
 federation: WWE
 date: 2026-10-12T13:30:00.000Z
 source_id: 4574618739

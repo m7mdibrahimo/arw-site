@@ -1,7 +1,7 @@
 ---
 title: "TNA iMPACT! Draws Over 250,000 Viewers on AMC"
 slug: "tna-impact-draws-over-250-000-viewers-on-amc"
-description: "TNA iMPACT! drew 252,000 viewers on AMC for the October 15, 2026 episode, according to Wrestlenomics. This is an increase from the 214,000 viewers the show…"
+description: "TNA iMPACT! drew 252,000 viewers on AMC for the October 15, 2026 episode, according to Wrestlenomics."
 federation: TNA
 date: 2026-10-23T14:39:30.000Z
 source_id: 335249

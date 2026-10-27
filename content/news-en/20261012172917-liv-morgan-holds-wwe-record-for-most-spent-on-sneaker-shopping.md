@@ -1,7 +1,7 @@
 ---
 title: "Liv Morgan Holds WWE Record for Most Spent on Sneaker Shopping"
 slug: "liv-morgan-holds-wwe-record-for-most-spent-on-sneaker-shopping"
-description: "Liv Morgan holds the WWE record for the most money spent on sneaker shopping, according to Cody Rhodes. During an appearance at ComplexCon, Rhodes revealed…"
+description: "Liv Morgan holds the WWE record for the most money spent on sneaker shopping, according to Cody Rhodes."
 federation: WWE
 date: 2026-10-12T14:29:17.000Z
 source_id: 802254109

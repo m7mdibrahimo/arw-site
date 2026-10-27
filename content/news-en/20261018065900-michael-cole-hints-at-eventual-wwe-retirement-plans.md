@@ -1,7 +1,7 @@
 ---
 title: "Michael Cole Hints at Eventual WWE Retirement Plans"
 slug: "michael-cole-hints-at-eventual-wwe-retirement-plans"
-description: "Veteran WWE commentator Michael Cole recently discussed his potential retirement plans during an interview with OutKick, revealing that he signed a…"
+description: "Veteran WWE commentator Michael Cole recently discussed his potential retirement plans during an interview with OutKick."
 federation: WWE
 date: 2026-10-18T03:59:00.000Z
 source_id: 1009740821

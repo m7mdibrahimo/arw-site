@@ -1,7 +1,7 @@
 ---
 title: "Ludwig Kaiser Fails to Get Battery Charge Dismissed After Court Testimony"
 slug: "ludwig-kaiser-fails-to-get-battery-charge-dismissed-after-court-testimony"
-description: "WWE Superstar Ludwig Kaiser was unsuccessful in his bid to have a misdemeanor battery charge against him dismissed. Following a court hearing on October 19…"
+description: "WWE Superstar Ludwig Kaiser was unsuccessful in his bid to have a misdemeanor battery charge against him dismissed."
 federation: WWE
 date: 2026-10-19T19:40:29.000Z
 source_id: 802257303

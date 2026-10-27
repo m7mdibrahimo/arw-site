@@ -1,7 +1,7 @@
 ---
 title: "Bret Hart Accuses Shawn Michaels of Stealing His Ladder Match Idea for WrestleMania X"
 slug: "bret-hart-accuses-shawn-michaels-of-stealing-his-ladder-match-idea-for-wrestlema"
-description: "Bret Hart recently opened up about his frustrations regarding the iconic ladder match between Shawn Michaels and Razor Ramon at WrestleMania X, revealing…"
+description: "Bret Hart recently opened up about his frustrations regarding the iconic ladder match between Shawn Michaels and Razor Ramon at WrestleMania X."
 federation: WWE
 date: 2026-10-25T20:50:27.000Z
 source_id: 802259664

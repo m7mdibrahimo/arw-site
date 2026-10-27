@@ -1,7 +1,7 @@
 ---
 title: "Jon Moxley Video Airs During NJPW King of Pro-Wrestling"
 slug: "jon-moxley-video-airs-during-njpw-king-of-pro-wrestling"
-description: "Jon Moxley is heading back to NJPW. Shingo Takagi has been calling out the Death Riders leader and AEW Continental Champion since defeating group member…"
+description: "Jon Moxley is heading back to NJPW. Shingo Takagi has been calling out the Death Riders leader and AEW Continental Champion since defeating group member."
 federation: NJPW
 date: 2026-10-12T07:26:23.000Z
 source_id: 333367

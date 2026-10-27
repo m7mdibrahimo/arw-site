@@ -1,7 +1,7 @@
 ---
 title: "Xelina Wishes Triple H Let Her Defend WWE Women's United States Title Her Way"
 slug: "xelina-wishes-triple-h-let-her-defend-wwe-womens-united-states-title-her-way"
-description: "Xelina, the second holder of the WWE Women's United States Championship, recently reflected on her 63-day reign with the title. During an interview on Ring…"
+description: "Xelina, the second holder of the WWE Women's United States Championship, recently reflected on her 63-day reign with the title."
 federation: WWE
 date: 2026-10-15T20:31:29.000Z
 source_id: 334117

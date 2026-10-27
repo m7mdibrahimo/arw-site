@@ -1,7 +1,7 @@
 ---
 title: "Nic Nemeth Explains Why Dating Is Difficult for Him"
 slug: "nic-nemeth-explains-why-dating-is-difficult-for-him"
-description: "TNA star Nic Nemeth is content with his single lifestyle and attributes his current relationship status to his deep commitment to professional wrestling.…"
+description: "TNA star Nic Nemeth is content with his single lifestyle and attributes his current relationship status to his deep commitment to professional wrestling."
 federation: TNA
 date: 2026-10-09T19:56:13.000Z
 source_id: 802252842

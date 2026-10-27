@@ -1,7 +1,7 @@
 ---
 title: "TNA Impact 10/22/2026: 3 Things We Hated & 3 Things We Loved"
 slug: "tna-impact-10-22-2026-3-things-we-hated-3-things-we-loved"
-description: "This week's \"TNA Impact\" featured a mix of title picture developments and a lackluster singles debut. The show included a four-way number one contender's…"
+description: "This week's \"TNA Impact\" featured a mix of title picture developments and a lackluster singles debut."
 federation: TNA
 date: 2026-10-23T03:44:43.000Z
 source_id: 4170420914

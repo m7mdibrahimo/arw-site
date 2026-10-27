@@ -1,7 +1,7 @@
 ---
 title: "Penta Says He Tried to Use Joker Gear in WWE Before Money in the Bank"
 slug: "penta-says-he-tried-to-use-joker-gear-in-wwe-before-money-in-the-bank"
-description: "Penta revealed that he had previously tried to use his Joker gear in WWE before finally wearing it at Money In The Bank. During the event, Penta competed…"
+description: "Penta revealed that he had previously tried to use his Joker gear in WWE before finally wearing it at Money In The Bank."
 federation: WWE
 date: 2026-10-11T14:19:40.000Z
 source_id: 333234

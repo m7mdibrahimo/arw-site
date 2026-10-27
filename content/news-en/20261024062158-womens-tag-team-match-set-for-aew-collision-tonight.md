@@ -1,7 +1,7 @@
 ---
 title: "Women's Tag Team Match Set for AEW Collision Tonight"
 slug: "womens-tag-team-match-set-for-aew-collision-tonight"
-description: "AEW has added a new women's tag team match to the lineup for AEW Collision tonight, October 24. Promotion president Tony Khan confirmed that Divine…"
+description: "AEW has added a new women's tag team match to the lineup for AEW Collision tonight, October 24."
 federation: AEW
 date: 2026-10-24T03:21:58.000Z
 source_id: 335399

@@ -1,7 +1,7 @@
 ---
 title: "Daria Rae Return and More Added to TNA iMPACT!"
 slug: "daria-rae-return-and-more-added-to-tna-impact"
-description: "Daria Rae is scheduled to make her return on the upcoming episode of TNA iMPACT! Total Nonstop Action Wrestling announced that the Director of Operations…"
+description: "Daria Rae is scheduled to make her return on the upcoming episode of TNA iMPACT!"
 federation: TNA
 date: 2026-10-21T22:46:12.000Z
 source_id: 335044

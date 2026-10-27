@@ -1,7 +1,7 @@
 ---
 title: "Vince Russo Urges Ric Flair to Consider the Impact of His Behavior on Charlotte Flair"
 slug: "vince-russo-urges-ric-flair-to-consider-the-impact-of-his-behavior-on-charlotte"
-description: "Vince Russo believes Ric Flair must prioritize his family following his recent health scares in Florida. Speaking on the Coach and Bro Show, Russo argued…"
+description: "Vince Russo believes Ric Flair must prioritize his family following his recent health scares in Florida."
 federation: WWE
 date: 2026-10-26T19:36:40.000Z
 source_id: 802259891

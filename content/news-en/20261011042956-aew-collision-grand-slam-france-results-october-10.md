@@ -1,7 +1,7 @@
 ---
 title: "AEW Collision Grand Slam France Results: October 10"
 slug: "aew-collision-grand-slam-france-results-october-10"
-description: "All Elite Wrestling held AEW Collision Grand Slam France at the Adidas Arena in Paris, France. The event featured several championship bouts and qualifiers…"
+description: "All Elite Wrestling held AEW Collision Grand Slam France at the Adidas Arena in Paris, France."
 federation: AEW
 date: 2026-10-11T01:29:56.000Z
 source_id: 333117

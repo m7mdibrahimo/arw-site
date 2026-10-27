@@ -1,7 +1,7 @@
 ---
 title: "Darby Allin and Steve Borden Say Sting Had 'More Fun in AEW Than Anyone Else'"
 slug: "darby-allin-and-steve-borden-say-sting-had-more-fun-in-aew-than-anyone-else"
-description: "During a recent interview with Q101, Darby Allin and Sting's son, Steven Borden, discussed the legendary icon's final run in AEW. Steven Borden noted that…"
+description: "During a recent interview with Q101, Darby Allin and Sting's son, Steven Borden, discussed the legendary icon's final run in AEW."
 federation: AEW
 date: 2026-10-17T16:30:00.000Z
 source_id: 4421517768

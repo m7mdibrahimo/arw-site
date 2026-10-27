@@ -1,7 +1,7 @@
 ---
 title: "Lola Vice Shares Poolside Photos From Miami Getaway"
 slug: "lola-vice-shares-poolside-photos-from-miami-getaway"
-description: "Lola Vice is enjoying some time off following a busy run in WWE, sharing new poolside photos from her trip to Miami. On October 17, the RAW star posted…"
+description: "Lola Vice is enjoying some time off following a busy run in WWE, sharing new poolside photos from her trip to Miami."
 federation: WWE
 date: 2026-10-18T14:18:11.000Z
 source_id: 802256888

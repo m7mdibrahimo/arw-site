@@ -1,7 +1,7 @@
 ---
 title: "Fans Accuse Triple H of Burying LA Knight"
 slug: "fans-accuse-triple-h-of-burying-la-knight"
-description: "WWE management faced harsh criticism from fans after revealing details for the upcoming Money in the Bank event. During an episode of SmackDown, a World…"
+description: "WWE management faced harsh criticism from fans after revealing details for the upcoming Money in the Bank event."
 federation: WWE
 date: 2026-10-10T12:09:24.000Z
 source_id: 802253138

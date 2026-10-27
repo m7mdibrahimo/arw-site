@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Reveals the Insane Amount of Food He Eats to Stay WWE Ready"
 slug: "roman-reigns-reveals-the-insane-amount-of-food-he-eats-to-stay-wwe-ready"
-description: "Roman Reigns maintains a rigorous, year-round diet to stay in top shape for his WWE schedule. In a recent appearance on Men's Health's \"Gym & Fridge\"…"
+description: "Roman Reigns maintains a rigorous, year-round diet to stay in top shape for his WWE schedule."
 federation: WWE
 date: 2026-10-16T21:01:14.000Z
 source_id: 802255831

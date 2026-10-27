@@ -1,7 +1,7 @@
 ---
 title: "Conrad Thompson Shares Hate Mail From Roman Reigns Fan Over Mount Rushmore Comments"
 slug: "conrad-thompson-shares-hate-mail-from-roman-reigns-fan-over-mount-rushmore-comme"
-description: "Podcaster Conrad Thompson shared a hostile email from a Roman Reigns fan on October 8, 2026, after reiterating his stance that Reigns does not belong on a…"
+description: "Podcaster Conrad Thompson shared a hostile email from a Roman Reigns fan on October 8, 2026."
 federation: WWE
 date: 2026-10-08T20:04:24.000Z
 source_id: 802252516

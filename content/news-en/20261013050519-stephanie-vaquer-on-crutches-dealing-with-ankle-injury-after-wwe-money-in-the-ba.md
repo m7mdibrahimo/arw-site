@@ -1,7 +1,7 @@
 ---
 title: "Stephanie Vaquer on Crutches, Dealing With Ankle Injury After WWE Money in the Bank"
 slug: "stephanie-vaquer-on-crutches-dealing-with-ankle-injury-after-wwe-money-in-the-ba"
-description: "Stephanie Vaquer is currently dealing with an ankle injury following her participation at WWE Money In The Bank. Vaquer challenged Becky Lynch and Liv…"
+description: "Stephanie Vaquer is currently dealing with an ankle injury following her participation at WWE Money In The Bank."
 federation: WWE
 date: 2026-10-13T02:05:19.000Z
 source_id: 333606

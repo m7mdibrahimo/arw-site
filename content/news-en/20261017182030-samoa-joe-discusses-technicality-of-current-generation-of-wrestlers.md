@@ -1,7 +1,7 @@
 ---
 title: "Samoa Joe Discusses Technicality of Current Generation of Wrestlers"
 slug: "samoa-joe-discusses-technicality-of-current-generation-of-wrestlers"
-description: "Samoa Joe recently shared his thoughts on the technical level of today's professional wrestlers, noting that it is significantly higher than in past…"
+description: "Samoa Joe recently shared his thoughts on the technical level of today's professional wrestlers."
 federation: AEW
 date: 2026-10-17T15:20:30.000Z
 source_id: 334319

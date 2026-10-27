@@ -1,7 +1,7 @@
 ---
 title: "Last Man Standing Match for MLW World Heavyweight Title Set for Saturday Night SuperFight"
 slug: "last-man-standing-match-for-mlw-world-heavyweight-title-set-for-saturday-night-s"
-description: "Major League Wrestling announced that Killer Kross will defend the MLW World Heavyweight Championship against Josh Bishop in a Last Man Standing match at…"
+description: "Major League Wrestling announced that Killer Kross will defend the MLW World Heavyweight Championship against Josh Bishop in a Last Man Standing match."
 federation: INDIE
 date: 2026-10-16T03:30:44.000Z
 source_id: 334155

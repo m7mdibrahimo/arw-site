@@ -1,7 +1,7 @@
 ---
 title: "JBL Recalls Vince McMahon Wanting to Turn PAC Into Mighty Mouse in WWE"
 slug: "jbl-recalls-vince-mcmahon-wanting-to-turn-pac-into-mighty-mouse-in-wwe"
-description: "JBL recently recalled his interactions with the late star PAC and the plans that Vince McMahon had for him during his time in WWE. Speaking on the…"
+description: "JBL recently recalled his interactions with the late star PAC and the plans that Vince McMahon had for him during his time in WWE."
 federation: WWE
 date: 2026-10-12T14:30:00.000Z
 source_id: 1270967741

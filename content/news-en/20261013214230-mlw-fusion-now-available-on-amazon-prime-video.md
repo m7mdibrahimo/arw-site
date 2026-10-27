@@ -1,7 +1,7 @@
 ---
 title: "MLW Fusion Now Available on Amazon Prime Video"
 slug: "mlw-fusion-now-available-on-amazon-prime-video"
-description: "Major League Wrestling announced that MLW Fusion is now streaming on Amazon Prime Video to broaden its global audience. Supporters can buy full seasons for…"
+description: "Major League Wrestling announced that MLW Fusion is now streaming on Amazon Prime Video to broaden its global audience."
 federation: INDIE
 date: 2026-10-13T18:42:30.000Z
 source_id: 333740

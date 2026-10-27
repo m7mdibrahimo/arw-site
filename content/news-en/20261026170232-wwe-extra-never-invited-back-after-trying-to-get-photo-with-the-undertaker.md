@@ -1,7 +1,7 @@
 ---
 title: "WWE Extra Never Invited Back After Trying to Get Photo With The Undertaker"
 slug: "wwe-extra-never-invited-back-after-trying-to-get-photo-with-the-undertaker"
-description: "A former WWE extra ruined their chances of returning to the company after attempting to take a photo with The Undertaker. Former WWE Superstar James…"
+description: "A former WWE extra ruined their chances of returning to the company after attempting to take a photo with The Undertaker."
 federation: WWE
 date: 2026-10-26T14:02:32.000Z
 source_id: 802259806

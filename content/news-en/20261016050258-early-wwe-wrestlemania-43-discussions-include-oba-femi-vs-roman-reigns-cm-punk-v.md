@@ -1,7 +1,7 @@
 ---
 title: "Early WWE WrestleMania 43 Discussions Include Oba Femi vs. Roman Reigns, CM Punk vs. Cody Rhodes"
 slug: "early-wwe-wrestlemania-43-discussions-include-oba-femi-vs-roman-reigns-cm-punk-v"
-description: "Early creative discussions for WWE WrestleMania 43 reportedly feature high-profile matchups, including Oba Femi versus Roman Reigns and CM Punk versus Cody…"
+description: "Early creative discussions for WWE WrestleMania 43 reportedly feature high-profile matchups."
 federation: WWE
 date: 2026-10-16T02:02:58.000Z
 source_id: 334141

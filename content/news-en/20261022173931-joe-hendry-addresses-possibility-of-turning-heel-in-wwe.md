@@ -1,7 +1,7 @@
 ---
 title: "Joe Hendry Addresses Possibility of Turning Heel in WWE"
 slug: "joe-hendry-addresses-possibility-of-turning-heel-in-wwe"
-description: "Joe Hendry revealed that his popular WWE character was originally designed to be universally hated by fans. Speaking with TV Insider, Hendry discussed…"
+description: "Joe Hendry revealed that his popular WWE character was originally designed to be universally hated by fans."
 federation: WWE
 date: 2026-10-22T14:39:31.000Z
 source_id: 802258515

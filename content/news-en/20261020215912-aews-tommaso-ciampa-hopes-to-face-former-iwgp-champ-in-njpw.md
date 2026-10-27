@@ -1,7 +1,7 @@
 ---
 title: "AEW's Tommaso Ciampa Hopes to Face Former IWGP Champ in NJPW"
 slug: "aews-tommaso-ciampa-hopes-to-face-former-iwgp-champ-in-njpw"
-description: "AEW star Tommaso Ciampa recently revealed his aspirations to wrestle in NJPW, expressing a strong desire to face former IWGP Heavyweight Champion Shingo…"
+description: "AEW star Tommaso Ciampa recently revealed his aspirations to wrestle in NJPW, expressing a strong desire to face former IWGP Heavyweight Champion Shingo Takagi."
 federation: AEW
 date: 2026-10-20T18:59:12.000Z
 source_id: 2509935056

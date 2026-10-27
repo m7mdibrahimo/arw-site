@@ -1,7 +1,7 @@
 ---
 title: "Tony Khan Says Some AEW Talent Couldn’t Wrestle After PAC’s Death"
 slug: "tony-khan-says-some-aew-talent-couldnt-wrestle-after-pacs-death"
-description: "AEW President Tony Khan revealed that several wrestlers were too emotionally shaken to compete following the sudden death of PAC, also known as Benjamin…"
+description: "AEW President Tony Khan revealed that several wrestlers were too emotionally shaken to compete following the sudden death of PAC."
 federation: AEW
 date: 2026-10-17T12:09:36.000Z
 source_id: 802256176

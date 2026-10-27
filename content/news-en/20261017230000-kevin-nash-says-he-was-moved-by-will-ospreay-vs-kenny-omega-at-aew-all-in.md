@@ -1,7 +1,7 @@
 ---
 title: "Kevin Nash Says He Was Moved by Will Ospreay vs. Kenny Omega at AEW All In"
 slug: "kevin-nash-says-he-was-moved-by-will-ospreay-vs-kenny-omega-at-aew-all-in"
-description: "During a recent episode of his podcast, WWE Hall of Famer Kevin Nash discussed his thoughts on the match between Will Ospreay and Kenny Omega at AEW All…"
+description: "During a recent episode of his podcast, WWE Hall of Famer Kevin Nash discussed his thoughts on the match between Will Ospreay and Kenny Omega at AEW All In."
 federation: AEW
 date: 2026-10-17T20:00:00.000Z
 source_id: 4393567139

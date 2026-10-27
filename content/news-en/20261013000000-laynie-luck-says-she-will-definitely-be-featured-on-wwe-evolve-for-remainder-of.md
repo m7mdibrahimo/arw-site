@@ -1,7 +1,7 @@
 ---
 title: "Laynie Luck Says She Will Definitely Be Featured on WWE EVOLVE for Remainder of 2026"
 slug: "laynie-luck-says-she-will-definitely-be-featured-on-wwe-evolve-for-remainder-of"
-description: "Laynie Luck will continue to appear on WWE programming through the end of 2026 due to a backlog of recorded content. Luck's contract under the WWE I.D.…"
+description: "Laynie Luck will continue to appear on WWE programming through the end of 2026 due to a backlog of recorded content. Luck's contract under the WWE I.D."
 federation: WWE
 date: 2026-10-12T21:00:00.000Z
 source_id: 333390

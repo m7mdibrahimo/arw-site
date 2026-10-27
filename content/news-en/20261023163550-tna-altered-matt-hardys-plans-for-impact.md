@@ -1,7 +1,7 @@
 ---
 title: "TNA Altered Matt Hardy's Plans for Impact"
 slug: "tna-altered-matt-hardys-plans-for-impact"
-description: "According to Ringside News, Matt Hardy and Jeff Hardy received significant creative control for the October 15 episode of TNA Impact, though TNA adjusted…"
+description: "According to Ringside News, Matt Hardy and Jeff Hardy received significant creative control for the October 15 episode of TNA Impact."
 federation: TNA
 date: 2026-10-23T13:35:50.000Z
 source_id: 802258659

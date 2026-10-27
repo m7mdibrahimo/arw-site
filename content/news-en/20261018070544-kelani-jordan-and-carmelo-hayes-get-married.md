@@ -1,7 +1,7 @@
 ---
 title: "Kelani Jordan and Carmelo Hayes Get Married"
 slug: "kelani-jordan-and-carmelo-hayes-get-married"
-description: "Kelani Jordan and Carmelo Hayes are officially married. The couple tied the knot on October 17 in Miami, with photos captured by Photos By Reem. Hayes…"
+description: "Kelani Jordan and Carmelo Hayes are officially married. The couple tied the knot on October 17 in Miami, with photos captured by Photos By Reem."
 federation: WWE
 date: 2026-10-18T04:05:44.000Z
 source_id: 334481

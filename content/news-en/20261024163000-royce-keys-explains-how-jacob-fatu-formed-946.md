@@ -1,7 +1,7 @@
 ---
 title: "Royce Keys Explains How Jacob Fatu Formed 946"
 slug: "royce-keys-explains-how-jacob-fatu-formed-946"
-description: "Royce Keys claims that Jacob Fatu is entirely responsible for the creation of The 946, which includes Bronco Nima, Lucien Price, Jaida Parker, and the…"
+description: "Royce Keys claims that Jacob Fatu is entirely responsible for the creation of The 946, which includes Bronco Nima, Lucien Price, Jaida Parker."
 federation: WWE
 date: 2026-10-24T13:30:00.000Z
 source_id: 1027758810

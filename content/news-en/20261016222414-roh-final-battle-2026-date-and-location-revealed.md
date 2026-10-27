@@ -1,7 +1,7 @@
 ---
 title: "ROH Final Battle 2026 Date and Location Revealed"
 slug: "roh-final-battle-2026-date-and-location-revealed"
-description: "Ring of Honor has confirmed the details for its upcoming Final Battle 2026 event. Tony Khan announced the show will take place on December 4 at the Boeing…"
+description: "Ring of Honor has confirmed the details for its upcoming Final Battle 2026 event."
 federation: ROH
 date: 2026-10-16T19:24:14.000Z
 source_id: 802255808

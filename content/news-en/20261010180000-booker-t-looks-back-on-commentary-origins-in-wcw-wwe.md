@@ -1,7 +1,7 @@
 ---
 title: "Booker T Looks Back on Commentary Origins in WCW & WWE"
 slug: "booker-t-looks-back-on-commentary-origins-in-wcw-wwe"
-description: "WWE Hall of Famer Booker T recently discussed his journey into commentary during an appearance on \"Insight with Chris Van Vliet.\" He recalled starting out…"
+description: "WWE Hall of Famer Booker T recently discussed his journey into commentary during an appearance on \"Insight with Chris Van Vliet.\""
 federation: WWE
 date: 2026-10-10T15:00:00.000Z
 source_id: 1968146919

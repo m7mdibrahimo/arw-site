@@ -1,7 +1,7 @@
 ---
 title: "Marc Summers Says WWE Tried to Hire Him From Nickelodeon, 'They Offered Zero Money'"
 slug: "marc-summers-says-wwe-tried-to-hire-him-from-nickelodeon-they-offered-zero-money"
-description: "TV host Marc Summers recently reflected on his legendary career, including his time on the classic show Double Dare. Summers recalled a unique crossover…"
+description: "TV host Marc Summers recently reflected on his legendary career, including his time on the classic show Double Dare."
 federation: WWE
 date: 2026-10-20T21:32:31.000Z
 source_id: 334894

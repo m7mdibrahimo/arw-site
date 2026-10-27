@@ -1,7 +1,7 @@
 ---
 title: "Tatum Paxley Credits STARDOM's Suzu Suzuki for Inspiring 'Cemetery Drive' Finisher"
 slug: "tatum-paxley-credits-stardoms-suzu-suzuki-for-inspiring-cemetery-drive-finisher"
-description: "Tatum Paxley recently revealed that her finishing move, the 'Cemetery Drive,' was inspired by STARDOM star Suzu Suzuki. Paxley, who recently captured the…"
+description: "Tatum Paxley recently revealed that her finishing move, the 'Cemetery Drive,' was inspired by STARDOM star Suzu Suzuki."
 federation: WWE
 date: 2026-10-14T22:32:57.000Z
 source_id: 333941

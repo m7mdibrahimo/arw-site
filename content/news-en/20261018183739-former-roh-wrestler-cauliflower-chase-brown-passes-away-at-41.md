@@ -1,7 +1,7 @@
 ---
 title: "Former ROH Wrestler 'Cauliflower' Chase Brown Passes Away at 41"
 slug: "former-roh-wrestler-cauliflower-chase-brown-passes-away-at-41"
-description: "The independent wrestling community is mourning the loss of former Ring of Honor wrestler \"Cauliflower\" Chase Brown, who passed away on October 13 at the…"
+description: "The independent wrestling community is mourning the loss of former Ring of Honor wrestler \"Cauliflower\" Chase Brown."
 federation: ROH
 date: 2026-10-18T15:37:39.000Z
 source_id: 802256928

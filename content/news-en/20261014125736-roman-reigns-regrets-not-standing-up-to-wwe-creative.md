@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Regrets Not Standing Up to WWE Creative"
 slug: "roman-reigns-regrets-not-standing-up-to-wwe-creative"
-description: "Roman Reigns reflects on his WWE career and admits he wishes he had more confidence to push back against creative decisions during his early days on the…"
+description: "Roman Reigns reflects on his WWE career and admits he wishes he had more confidence to push back against creative decisions during his early days on the main."
 federation: WWE
 date: 2026-10-14T09:57:36.000Z
 source_id: 802254944

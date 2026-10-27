@@ -1,7 +1,7 @@
 ---
 title: "Jacy Jayne Was Worried She'd Be Fired Weeks Ahead of WWE NXT Title Win"
 slug: "jacy-jayne-was-worried-shed-be-fired-weeks-ahead-of-wwe-nxt-title-win"
-description: "Jacy Jayne recently reflected on her time in WWE NXT, revealing that she feared she would be released just weeks before winning the NXT Women's…"
+description: "Jacy Jayne recently reflected on her time in WWE NXT, revealing that she feared she would be released just weeks before winning the NXT Women's Championship."
 federation: WWE
 date: 2026-10-16T12:30:00.000Z
 source_id: 4169727162

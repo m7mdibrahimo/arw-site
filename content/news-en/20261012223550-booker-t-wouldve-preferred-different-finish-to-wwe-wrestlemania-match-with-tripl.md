@@ -1,7 +1,7 @@
 ---
 title: "Booker T Would've Preferred Different Finish to WWE WrestleMania Match With Triple H"
 slug: "booker-t-wouldve-preferred-different-finish-to-wwe-wrestlemania-match-with-tripl"
-description: "Booker T's WWE WrestleMania 19 match against Triple H remains a frequent topic of fan debate. Given the rivalry's racial undertones, many believed Booker T…"
+description: "Booker T's WWE WrestleMania 19 match against Triple H remains a frequent topic of fan debate."
 federation: WWE
 date: 2026-10-12T19:35:50.000Z
 source_id: 3785162096

@@ -1,7 +1,7 @@
 ---
 title: "Konnan Inducted Into TNA Hall of Fame Without Appearing to Accept Plaque"
 slug: "konnan-inducted-into-tna-hall-of-fame-without-appearing-to-accept-plaque"
-description: "Konnan was officially inducted into the TNA Hall of Fame on October 11, 2026, during a ceremony held in Tampa, Florida. The event, which took place just…"
+description: "Konnan was officially inducted into the TNA Hall of Fame on October 11, 2026, during a ceremony held in Tampa, Florida."
 federation: TNA
 date: 2026-10-11T20:45:56.000Z
 source_id: 802253749

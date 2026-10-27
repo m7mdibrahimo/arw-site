@@ -1,7 +1,7 @@
 ---
 title: "Matt Hardy Says Jeff Hardy Might Take Some Time Off to Deal With Neck Injury"
 slug: "matt-hardy-says-jeff-hardy-might-take-some-time-off-to-deal-with-neck-injury"
-description: "Matt Hardy provided an update on Jeff Hardy's health status during a recent podcast appearance. Jeff has been dealing with a persistent neck injury since…"
+description: "Matt Hardy provided an update on Jeff Hardy's health status during a recent podcast appearance."
 federation: TNA
 date: 2026-10-23T14:27:29.000Z
 source_id: 335247

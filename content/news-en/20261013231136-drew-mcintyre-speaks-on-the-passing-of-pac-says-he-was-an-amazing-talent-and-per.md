@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Speaks on the Passing of PAC, Says He Was an Amazing Talent and Person"
 slug: "drew-mcintyre-speaks-on-the-passing-of-pac-says-he-was-an-amazing-talent-and-per"
-description: "Drew McIntyre recently paid tribute to the late PAC, praising him as an amazing talent and person. During an interview with Dan Soder, McIntyre reflected…"
+description: "Drew McIntyre recently paid tribute to the late PAC, praising him as an amazing talent and person."
 federation: WWE
 date: 2026-10-13T20:11:36.000Z
 source_id: 333761

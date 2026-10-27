@@ -1,7 +1,7 @@
 ---
 title: "Danhausen Teased for NXT Halloween Havoc PLE"
 slug: "danhausen-teased-for-nxt-halloween-havoc-ple"
-description: "Danhausen may be serving as the host for the upcoming NXT Halloween Havoc premium live event. The final segment of the October 13th episode of NXT on The…"
+description: "Danhausen may be serving as the host for the upcoming NXT Halloween Havoc premium live event."
 federation: WWE
 date: 2026-10-14T02:17:55.000Z
 source_id: 333799

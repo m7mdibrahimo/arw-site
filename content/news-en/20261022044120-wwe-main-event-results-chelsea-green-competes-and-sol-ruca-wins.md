@@ -1,7 +1,7 @@
 ---
 title: "WWE Main Event Results: Chelsea Green Competes and Sol Ruca Wins"
 slug: "wwe-main-event-results-chelsea-green-competes-and-sol-ruca-wins"
-description: "WWE aired the latest episode of WWE Main Event on October 21 via Rumble. In the opening match, Chelsea Green defeated Lainey Reid. Next, MFT consisting of…"
+description: "WWE aired the latest episode of WWE Main Event on October 21 via Rumble. In the opening match, Chelsea Green defeated Lainey Reid."
 federation: WWE
 date: 2026-10-22T01:41:20.000Z
 source_id: 335079

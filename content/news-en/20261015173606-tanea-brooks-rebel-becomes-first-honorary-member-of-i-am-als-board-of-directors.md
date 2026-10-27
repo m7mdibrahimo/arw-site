@@ -1,7 +1,7 @@
 ---
 title: "Tanea Brooks (Rebel) Becomes First Honorary Member of I Am ALS Board of Directors"
 slug: "tanea-brooks-rebel-becomes-first-honorary-member-of-i-am-als-board-of-directors"
-description: "Tanea Brooks, known to wrestling fans as Rebel, has been named the first honorary member of the I Am ALS Board of Directors. Brooks, a former AEW star who…"
+description: "Tanea Brooks, known to wrestling fans as Rebel, has been named the first honorary member of the I Am ALS Board of Directors."
 federation: AEW
 date: 2026-10-15T14:36:06.000Z
 source_id: 334053

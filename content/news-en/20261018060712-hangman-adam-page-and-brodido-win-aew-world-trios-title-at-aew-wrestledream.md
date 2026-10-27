@@ -1,7 +1,7 @@
 ---
 title: "Hangman Adam Page and Brodido Win AEW World Trios Title at AEW WrestleDream"
 slug: "hangman-adam-page-and-brodido-win-aew-world-trios-title-at-aew-wrestledream"
-description: "Hangman Adam Page and the team of Brodido captured the AEW World Trios Championship at AEW WrestleDream. The trio defeated Swerve Strickland and The New…"
+description: "Hangman Adam Page and the team of Brodido captured the AEW World Trios Championship at AEW WrestleDream."
 federation: AEW
 date: 2026-10-18T03:07:12.000Z
 source_id: 334455

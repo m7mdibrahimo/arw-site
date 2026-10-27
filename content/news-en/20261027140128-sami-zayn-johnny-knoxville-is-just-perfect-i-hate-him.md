@@ -1,7 +1,7 @@
 ---
 title: "Sami Zayn: Johnny Knoxville Is Just Perfect. I Hate Him"
 slug: "sami-zayn-johnny-knoxville-is-just-perfect-i-hate-him"
-description: "Looking back at his memorable WrestleMania 38 match against Johnny Knoxville, Sami Zayn opened up about the unique dynamic and the intensity of their feud…"
+description: "Looking back at his memorable WrestleMania 38 match against Johnny Knoxville."
 federation: WWE
 date: 2026-10-27T11:01:28.000Z
 source_id: 336025

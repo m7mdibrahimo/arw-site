@@ -1,7 +1,7 @@
 ---
 title: "CJ Perry Reveals Serious Mental Health Struggles After Leaving WWE"
 slug: "cj-perry-reveals-serious-mental-health-struggles-after-leaving-wwe"
-description: "CJ Perry recently opened up about the emotional and mental health struggles she faced after leaving WWE. Speaking on Nick Club Wrestling Happy Hour, Perry…"
+description: "CJ Perry recently opened up about the emotional and mental health struggles she faced after leaving WWE."
 federation: WWE
 date: 2026-10-18T14:55:13.000Z
 source_id: 802256900

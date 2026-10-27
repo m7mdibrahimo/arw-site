@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes: Dominik Mysterio & Solo Sikoa Have a Kinship With Everyone in the Locker Room"
 slug: "cody-rhodes-dominik-mysterio-solo-sikoa-have-a-kinship-with-everyone-in-the-lock"
-description: "Cody Rhodes recently praised Dominik Mysterio and Solo Sikoa, highlighting their strong presence and leadership qualities behind the scenes in WWE. During…"
+description: "Cody Rhodes recently praised Dominik Mysterio and Solo Sikoa, highlighting their strong presence and leadership qualities behind the scenes in WWE."
 federation: WWE
 date: 2026-10-08T15:00:00.000Z
 source_id: 332673

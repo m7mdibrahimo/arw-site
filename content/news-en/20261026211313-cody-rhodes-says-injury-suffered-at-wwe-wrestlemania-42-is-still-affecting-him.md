@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Says Injury Suffered at WWE WrestleMania 42 Is Still Affecting Him"
 slug: "cody-rhodes-says-injury-suffered-at-wwe-wrestlemania-42-is-still-affecting-him"
-description: "Cody Rhodes revealed that he is still dealing with the effects of an orbital fracture he suffered during his WrestleMania 42 match, which may have been…"
+description: "Cody Rhodes revealed that he is still dealing with the effects of an orbital fracture he suffered during his WrestleMania 42 match."
 federation: WWE
 date: 2026-10-26T18:13:13.000Z
 source_id: 4195627246

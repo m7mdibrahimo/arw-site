@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Lands Voice Role in Disney’s New Animated Movie ‘Hexed’"
 slug: "drew-mcintyre-lands-voice-role-in-disneys-new-animated-movie-hexed"
-description: "Drew McIntyre is expanding his career beyond WWE by securing a voice role in Disney’s upcoming animated film, Hexed. The movie, which features a magical…"
+description: "Drew McIntyre is expanding his career beyond WWE by securing a voice role in Disney’s upcoming animated film, Hexed."
 federation: WWE
 date: 2026-10-12T18:56:09.000Z
 source_id: 802254204

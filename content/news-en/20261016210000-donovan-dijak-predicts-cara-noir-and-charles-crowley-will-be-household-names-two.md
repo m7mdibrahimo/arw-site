@@ -1,7 +1,7 @@
 ---
 title: "Donovan Dijak Predicts Cara Noir and Charles Crowley Will Be Household Names Two Years From Now"
 slug: "donovan-dijak-predicts-cara-noir-and-charles-crowley-will-be-household-names-two"
-description: "Donovan Dijak recently discussed his tour with PROGRESS Wrestling, where he worked with talents like Tommy End, Cara Noir, and Charles Crowley. In an…"
+description: "Donovan Dijak recently discussed his tour with PROGRESS Wrestling, where he worked with talents like Tommy End, Cara Noir, and Charles Crowley."
 federation: INDIE
 date: 2026-10-16T18:00:00.000Z
 source_id: 333827

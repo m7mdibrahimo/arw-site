@@ -1,7 +1,7 @@
 ---
 title: "Kofi Reflects on AEW Grand Slam France, Says Bandido Is Special"
 slug: "kofi-reflects-on-aew-grand-slam-france-says-bandido-is-special"
-description: "Kofi shared his thoughts on AEW Grand Slam France following his match against Bandido. During the latest episode of AEW Dynamite, Kofi challenged Bandido…"
+description: "Kofi shared his thoughts on AEW Grand Slam France following his match against Bandido."
 federation: AEW
 date: 2026-10-08T01:45:20.000Z
 source_id: 332706

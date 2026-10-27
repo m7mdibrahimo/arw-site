@@ -1,7 +1,7 @@
 ---
 title: "WWE Creative Concerned Enzo Amore Talk Is Getting in the Way of Big Cass Plans"
 slug: "wwe-creative-concerned-enzo-amore-talk-is-getting-in-the-way-of-big-cass-plans"
-description: "WWE creative staff reportedly have concerns that ongoing audience discussion regarding a potential return for Enzo Amore is overshadowing the current…"
+description: "WWE creative staff reportedly have concerns that ongoing audience discussion regarding a potential return for Enzo Amore is overshadowing the current singles."
 federation: WWE
 date: 2026-10-08T16:27:22.000Z
 source_id: 802252451

@@ -1,7 +1,7 @@
 ---
 title: "Ric Flair's Drinking and Behavior at Tampa Bars Draw New Complaints After Bloody Fall"
 slug: "ric-flairs-drinking-and-behavior-at-tampa-bars-draw-new-complaints-after-bloody"
-description: "Ric Flair has faced new complaints regarding his behavior and drinking habits at Tampa bars following a recent fall that left him with a bleeding head and…"
+description: "Ric Flair has faced new complaints regarding his behavior and drinking habits at Tampa bars following a recent fall that left him with a bleeding head."
 federation: WWE
 date: 2026-10-26T13:28:24.000Z
 source_id: 802259794

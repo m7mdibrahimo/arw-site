@@ -1,7 +1,7 @@
 ---
 title: "Aaron Wolf Attempts to Recruit Olympian Christa Deguchi to Pro Wrestling, Invites Her to NJPW Wrestle Kingdom 21"
 slug: "aaron-wolf-attempts-to-recruit-olympian-christa-deguchi-to-pro-wrestling-invites"
-description: "New Japan Pro-Wrestling's NEVER Openweight Champion Aaron Wolf is hoping to bring Olympic gold medalist Christa Deguchi into the world of professional…"
+description: "New Japan Pro-Wrestling's NEVER Openweight Champion Aaron Wolf is hoping to bring Olympic gold medalist Christa Deguchi into the world of professional."
 federation: NJPW
 date: 2026-10-26T13:36:59.000Z
 source_id: 335820

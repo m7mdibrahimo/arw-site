@@ -1,7 +1,7 @@
 ---
 title: "Matt Hardy Says He'll Never Forget Seeing Classic WWE Match Up Close"
 slug: "matt-hardy-says-hell-never-forget-seeing-classic-wwe-match-up-close"
-description: "During a 1997 episode of WWE's Badd Blood: In Your House, Matt Hardy witnessed a historic moment as The Undertaker and Shawn Michaels competed in the…"
+description: "During a 1997 episode of WWE's Badd Blood: In Your House, Matt Hardy witnessed a historic moment as The Undertaker and Shawn Michaels competed."
 federation: WWE
 date: 2026-10-25T03:59:00.000Z
 source_id: 2819926212

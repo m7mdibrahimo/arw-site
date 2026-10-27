@@ -1,7 +1,7 @@
 ---
 title: "Jacy Jayne: I Want to Be the Most Obnoxious Human Being Alive With the Money in the Bank Briefcase"
 slug: "jacy-jayne-i-want-to-be-the-most-obnoxious-human-being-alive-with-the-money-in-t"
-description: "Jacy Jayne is looking forward to her opportunity to win the WWE Women's Money In The Bank briefcase at the upcoming Premium Live Event. Jayne, who…"
+description: "Jacy Jayne is looking forward to her opportunity to win the WWE Women's Money In The Bank briefcase at the upcoming Premium Live Event."
 federation: WWE
 date: 2026-10-10T15:43:49.000Z
 source_id: 333036

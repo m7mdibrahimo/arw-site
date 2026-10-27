@@ -1,7 +1,7 @@
 ---
 title: "Dustin Rhodes Continues Pizza War With Criticism of Jersey Shore Slice"
 slug: "dustin-rhodes-continues-pizza-war-with-criticism-of-jersey-shore-slice"
-description: "Dustin Rhodes has expanded his ongoing social media pizza feud to target New Jersey. After previously criticizing New York pizza and specific toppings,…"
+description: "Dustin Rhodes has expanded his ongoing social media pizza feud to target New Jersey."
 federation: AEW
 date: 2026-10-08T23:16:15.000Z
 source_id: 802252570

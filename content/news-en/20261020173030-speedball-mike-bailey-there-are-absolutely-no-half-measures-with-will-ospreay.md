@@ -1,7 +1,7 @@
 ---
 title: "Speedball Mike Bailey: There Are Absolutely No Half Measures With Will Ospreay"
 slug: "speedball-mike-bailey-there-are-absolutely-no-half-measures-with-will-ospreay"
-description: "Speedball Mike Bailey recently discussed his United Empire faction teammate Will Ospreay, emphasizing that the AEW World Champion does not hesitate in the…"
+description: "Speedball Mike Bailey recently discussed his United Empire faction teammate Will Ospreay, emphasizing that the AEW World Champion does not hesitate in the ring."
 federation: AEW
 date: 2026-10-20T14:30:30.000Z
 source_id: 334805

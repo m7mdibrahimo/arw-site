@@ -1,7 +1,7 @@
 ---
 title: "Several WWE Talent Are Hesitant to Work With Oba Femi"
 slug: "several-wwe-talent-are-hesitant-to-work-with-oba-femi"
-description: "According to a recent backstage report from a Self Made Session, several WWE talent are hesitant to work with Oba Femi. Self Made Pro noted that the…"
+description: "According to a recent backstage report from a Self Made Session, several WWE talent are hesitant to work with Oba Femi."
 federation: WWE
 date: 2026-10-13T12:00:19.000Z
 source_id: 802254539

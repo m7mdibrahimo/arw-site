@@ -1,7 +1,7 @@
 ---
 title: "Eric Bischoff Admits WWE HOFer Hulk Hogan Lost Sight Sometimes of Who Terry Bollea Was"
 slug: "eric-bischoff-admits-wwe-hofer-hulk-hogan-lost-sight-sometimes-of-who-terry-boll"
-description: "During a recent appearance on Planet Tyrus, Eric Bischoff discussed the immense pressure wrestlers faced in the past to maintain their personas outside of…"
+description: "During a recent appearance on Planet Tyrus, Eric Bischoff discussed the immense pressure wrestlers faced in the past to maintain their personas."
 federation: WWE
 date: 2026-10-18T15:00:00.000Z
 source_id: 2235876212

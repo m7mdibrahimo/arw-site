@@ -1,7 +1,7 @@
 ---
 title: "WWE SmackDown Review: Highlights and Lowlights"
 slug: "wwe-smackdown-review-highlights-and-lowlights"
-description: "Welcome to the latest review of \"WWE SmackDown,\" which served as the final stop before Money in the Bank and featured the crowning of new tag team…"
+description: "Welcome to the latest review of \"WWE SmackDown,\" which served as the final stop before Money in the Bank and featured the crowning of new tag team champions."
 federation: WWE
 date: 2026-10-10T05:27:10.000Z
 source_id: 2795128734

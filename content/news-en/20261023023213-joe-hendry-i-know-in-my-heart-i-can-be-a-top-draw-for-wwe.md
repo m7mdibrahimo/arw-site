@@ -1,7 +1,7 @@
 ---
 title: "Joe Hendry: I Know in My Heart I Can Be a Top Draw for WWE"
 slug: "joe-hendry-i-know-in-my-heart-i-can-be-a-top-draw-for-wwe"
-description: "Joe Hendry believes he can make a major impact in WWE. During an interview with Scott Fishman of TV Insider, Hendry discussed his career goals and his…"
+description: "Joe Hendry believes he can make a major impact in WWE. During an interview with Scott Fishman of TV Insider."
 federation: WWE
 date: 2026-10-22T23:32:13.000Z
 source_id: 335201

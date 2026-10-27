@@ -1,7 +1,7 @@
 ---
 title: "Will Ospreay Responds to Constant Questions About Leaving AEW for WWE"
 slug: "will-ospreay-responds-to-constant-questions-about-leaving-aew-for-wwe"
-description: "Will Ospreay is frequently asked about a potential jump to WWE, but he maintains that he is not concerned with those rumors. Speaking with Brandon Kravitz,…"
+description: "Will Ospreay is frequently asked about a potential jump to WWE, but he maintains that he is not concerned with those rumors."
 federation: AEW
 date: 2026-10-16T19:25:05.000Z
 source_id: 802255804

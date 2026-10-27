@@ -1,7 +1,7 @@
 ---
 title: "Jacy Jayne Provides Update After Ladder Incident at WWE Money in the Bank"
 slug: "jacy-jayne-provides-update-after-ladder-incident-at-wwe-money-in-the-bank"
-description: "Jacy Jayne has shared a status update following her participation in the 2026 women's Money in the Bank ladder match. Jayne competed in the bout alongside…"
+description: "Jacy Jayne has shared a status update following her participation in the 2026 women's Money in the Bank ladder match."
 federation: WWE
 date: 2026-10-13T01:35:32.000Z
 source_id: 333603

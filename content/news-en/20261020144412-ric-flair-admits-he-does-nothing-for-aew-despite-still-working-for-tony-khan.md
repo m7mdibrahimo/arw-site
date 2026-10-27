@@ -1,7 +1,7 @@
 ---
 title: "Ric Flair Admits He Does Nothing for AEW Despite Still Working for Tony Khan"
 slug: "ric-flair-admits-he-does-nothing-for-aew-despite-still-working-for-tony-khan"
-description: "Ric Flair recently admitted that he still works for AEW despite doing absolutely nothing for the company. During an interview on NewsNation's BIFF, the WWE…"
+description: "Ric Flair recently admitted that he still works for AEW despite doing absolutely nothing for the company."
 federation: AEW
 date: 2026-10-20T11:44:12.000Z
 source_id: 802257688

@@ -1,7 +1,7 @@
 ---
 title: "Shawn Spears Uses Perfect 10 Entrance Theme at WWE NXT Live Event"
 slug: "shawn-spears-uses-perfect-10-entrance-theme-at-wwe-nxt-live-event"
-description: "Shawn Spears treated longtime WWE fans to a nostalgic moment by using his classic Perfect 10 entrance music during an NXT live event in Kitchener, Ontario,…"
+description: "Shawn Spears treated longtime WWE fans to a nostalgic moment by using his classic Perfect 10 entrance music during an NXT live event in Kitchener, Ontario."
 federation: WWE
 date: 2026-10-16T14:12:31.000Z
 source_id: 802255667

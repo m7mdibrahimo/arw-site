@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes on WWE Pay Structure: 'That Next Level Pay Is Now Comparable With Sports'"
 slug: "cody-rhodes-on-wwe-pay-structure-that-next-level-pay-is-now-comparable-with-spor"
-description: "Cody Rhodes believes that the earning potential for WWE Superstars is reaching new heights, noting that top-tier pay is now comparable to that of major…"
+description: "Cody Rhodes believes that the earning potential for WWE Superstars is reaching new heights."
 federation: WWE
 date: 2026-10-20T01:00:00.000Z
 source_id: 4739320112

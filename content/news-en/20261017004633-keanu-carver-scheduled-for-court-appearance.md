@@ -1,7 +1,7 @@
 ---
 title: "Keanu Carver Scheduled for Court Appearance"
 slug: "keanu-carver-scheduled-for-court-appearance"
-description: "Keanu Carver is set to appear in a Seminole County, Florida, court on Tuesday, October 20. Carver, whose real name is Kevin Robertson, was previously…"
+description: "Keanu Carver is set to appear in a Seminole County, Florida, court on Tuesday, October 20."
 federation: WWE
 date: 2026-10-16T21:46:33.000Z
 source_id: 334262

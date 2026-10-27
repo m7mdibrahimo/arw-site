@@ -1,7 +1,7 @@
 ---
 title: "Dave Meltzer Believes WWE Crown Jewel Decision Comes Down to Saudi Arabian Government"
 slug: "dave-meltzer-believes-wwe-crown-jewel-decision-comes-down-to-saudi-arabian-gover"
-description: "Dave Meltzer believes that the final decision regarding whether WWE Crown Jewel 2026 will take place in Saudi Arabia rests with the Saudi government,…"
+description: "Dave Meltzer believes that the final decision regarding whether WWE Crown Jewel 2026 will take place in Saudi Arabia rests with the Saudi government."
 federation: WWE
 date: 2026-10-16T23:34:18.000Z
 source_id: 1107817707

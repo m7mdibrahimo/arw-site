@@ -1,7 +1,7 @@
 ---
 title: "Karmen Petrovic Discusses Joining Perros del Mal"
 slug: "karmen-petrovic-discusses-joining-perros-del-mal"
-description: "Karmen Petrovic revealed that she was first contacted about joining the Perros del Mal faction in November 2025, according to Fightful. The group made its…"
+description: "Karmen Petrovic revealed that she was first contacted about joining the Perros del Mal faction in November 2025, according to Fightful."
 federation: WWE
 date: 2026-10-13T12:00:00.000Z
 source_id: 333640

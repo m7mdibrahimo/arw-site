@@ -1,7 +1,7 @@
 ---
 title: "Oba Femi Defeats Bronson Reed at WWE Money in the Bank"
 slug: "oba-femi-defeats-bronson-reed-at-wwe-money-in-the-bank"
-description: "Oba Femi secured a victory over Bronson Reed during the WWE Money in the Bank event. This marked Reed's first televised match since February 2026,…"
+description: "Oba Femi secured a victory over Bronson Reed during the WWE Money in the Bank event."
 federation: WWE
 date: 2026-10-10T23:49:31.000Z
 source_id: 333137

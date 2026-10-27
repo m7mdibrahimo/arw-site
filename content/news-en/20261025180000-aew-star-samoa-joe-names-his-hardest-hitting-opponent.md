@@ -1,7 +1,7 @@
 ---
 title: "AEW Star Samoa Joe Names His Hardest-Hitting Opponent"
 slug: "aew-star-samoa-joe-names-his-hardest-hitting-opponent"
-description: "Throughout his extensive career across multiple promotions, Samoa Joe has faced numerous formidable opponents. Recently returning to AEW and setting his…"
+description: "Throughout his extensive career across multiple promotions, Samoa Joe has faced numerous formidable opponents."
 federation: AEW
 date: 2026-10-25T15:00:00.000Z
 source_id: 2111668404

@@ -1,7 +1,7 @@
 ---
 title: "Val Venis Plans to Confront Leftist AEW Fans Outside Full Gear"
 slug: "val-venis-plans-to-confront-leftist-aew-fans-outside-full-gear"
-description: "Val Venis announced plans to appear outside AEW Full Gear in Phoenix on November 14 to conduct street interviews and challenge fans he described as…"
+description: "Val Venis announced plans to appear outside AEW Full Gear in Phoenix on November 14 to conduct street interviews and challenge fans he described as leftists."
 federation: AEW
 date: 2026-10-12T17:00:52.000Z
 source_id: 802254157

@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Addresses Fans Who Accuse Him of Benefiting From Nepotism"
 slug: "roman-reigns-addresses-fans-who-accuse-him-of-benefiting-from-nepotism"
-description: "Roman Reigns recently discussed the criticism surrounding his family's legacy and the accusations of nepotism during an appearance on Club Shay Shay.…"
+description: "Roman Reigns recently discussed the criticism surrounding his family's legacy and the accusations of nepotism during an appearance on Club Shay Shay."
 federation: WWE
 date: 2026-10-16T09:21:43.000Z
 source_id: 802255562

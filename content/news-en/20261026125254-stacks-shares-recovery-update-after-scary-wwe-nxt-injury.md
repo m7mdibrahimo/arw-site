@@ -1,7 +1,7 @@
 ---
 title: "Stacks Shares Recovery Update After Scary WWE NXT Injury"
 slug: "stacks-shares-recovery-update-after-scary-wwe-nxt-injury"
-description: "Channing Stacks Lorenzo shared an encouraging recovery update following his recent scary injury at a WWE NXT live event. The WWE star posted photos from…"
+description: "Channing Stacks Lorenzo shared an encouraging recovery update following his recent scary injury at a WWE NXT live event."
 federation: WWE
 date: 2026-10-26T09:52:54.000Z
 source_id: 802259699

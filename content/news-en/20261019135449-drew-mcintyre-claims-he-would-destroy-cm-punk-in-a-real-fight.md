@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Claims He Would Destroy CM Punk in a Real Fight"
 slug: "drew-mcintyre-claims-he-would-destroy-cm-punk-in-a-real-fight"
-description: "Drew McIntyre has no problem speaking his mind about CM Punk, and he recently took things a step further by claiming he would easily defeat Punk in a real…"
+description: "Drew McIntyre has no problem speaking his mind about CM Punk, and he recently took things a step further by claiming he would easily defeat Punk in a real."
 federation: WWE
 date: 2026-10-19T10:54:49.000Z
 source_id: 802257118

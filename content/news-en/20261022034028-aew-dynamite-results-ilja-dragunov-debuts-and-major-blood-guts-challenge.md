@@ -1,7 +1,7 @@
 ---
 title: "AEW Dynamite Results: Ilja Dragunov Debuts and Major Blood & Guts Challenge"
 slug: "aew-dynamite-results-ilja-dragunov-debuts-and-major-blood-guts-challenge"
-description: "AEW Dynamite aired live from the Watsco Center in Coral Gables, Florida, on October 21, 2026. Following WrestleDream, Ilja Dragunov made his AEW debut,…"
+description: "AEW Dynamite aired live from the Watsco Center in Coral Gables, Florida, on October 21, 2026."
 federation: AEW
 date: 2026-10-22T00:40:28.000Z
 source_id: 4645967609

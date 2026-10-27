@@ -1,7 +1,7 @@
 ---
 title: "Update on the Future of Wrestling Open Rhode Island"
 slug: "update-on-the-future-of-wrestling-open-rhode-island"
-description: "Beyond Wrestling faces the potential end of its Wrestling Open Rhode Island weekly brand by December unless fan attendance improves or sponsor revenue…"
+description: "Beyond Wrestling faces the potential end of its Wrestling Open Rhode Island weekly brand by December unless fan attendance improves or sponsor revenue."
 federation: INDIE
 date: 2026-10-26T22:36:58.000Z
 source_id: 335957

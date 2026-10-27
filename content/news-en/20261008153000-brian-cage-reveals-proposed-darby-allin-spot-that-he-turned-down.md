@@ -1,7 +1,7 @@
 ---
 title: "Brian Cage Reveals Proposed Darby Allin Spot That He Turned Down"
 slug: "brian-cage-reveals-proposed-darby-allin-spot-that-he-turned-down"
-description: "During a recent appearance on a podcast, Brian Cage recalled his AEW debut match at AEW Double or Nothing 2020 against Darby Allin. Cage revealed that he…"
+description: "During a recent appearance on a podcast, Brian Cage recalled his AEW debut match at AEW Double or Nothing 2020 against Darby Allin."
 federation: AEW
 date: 2026-10-08T12:30:00.000Z
 source_id: 2610798222

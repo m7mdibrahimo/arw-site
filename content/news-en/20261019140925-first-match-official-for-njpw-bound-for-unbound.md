@@ -1,7 +1,7 @@
 ---
 title: "First Match Official for NJPW Bound for Unbound"
 slug: "first-match-official-for-njpw-bound-for-unbound"
-description: "NJPW and Shingo Takagi announced the first official match for the upcoming NJPW Bound For Unbound event on November 20. Daiki Nagai will face his teammate…"
+description: "NJPW and Shingo Takagi announced the first official match for the upcoming NJPW Bound For Unbound event on November 20."
 federation: NJPW
 date: 2026-10-19T11:09:25.000Z
 source_id: 334641

@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns: Video Games Are a Positive Replacement for Wrestlers' Past Habits"
 slug: "roman-reigns-video-games-are-a-positive-replacement-for-wrestlers-past-habits"
-description: "Roman Reigns recently discussed the growing popularity of video games within professional wrestling locker rooms. During an interview on the red carpet for…"
+description: "Roman Reigns recently discussed the growing popularity of video games within professional wrestling locker rooms."
 federation: WWE
 date: 2026-10-13T12:46:00.000Z
 source_id: 333663

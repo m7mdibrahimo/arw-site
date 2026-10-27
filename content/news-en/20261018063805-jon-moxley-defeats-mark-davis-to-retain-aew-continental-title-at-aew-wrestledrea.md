@@ -1,7 +1,7 @@
 ---
 title: "Jon Moxley Defeats Mark Davis to Retain AEW Continental Title at AEW WrestleDream"
 slug: "jon-moxley-defeats-mark-davis-to-retain-aew-continental-title-at-aew-wrestledrea"
-description: "Jon Moxley successfully defended the AEW Continental Championship against Mark Davis of the Don Callis Family at AEW WrestleDream. The two wrestlers had…"
+description: "Jon Moxley successfully defended the AEW Continental Championship against Mark Davis of the Don Callis Family at AEW WrestleDream."
 federation: AEW
 date: 2026-10-18T03:38:05.000Z
 source_id: 334470

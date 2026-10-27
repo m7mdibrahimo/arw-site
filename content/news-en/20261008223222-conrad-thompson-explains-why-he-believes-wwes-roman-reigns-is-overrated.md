@@ -1,7 +1,7 @@
 ---
 title: "Conrad Thompson Explains Why He Believes WWE's Roman Reigns Is 'Overrated'"
 slug: "conrad-thompson-explains-why-he-believes-wwes-roman-reigns-is-overrated"
-description: "Wrestling podcaster Conrad Thompson recently shared his perspective on why he considers WWE star Roman Reigns to be overrated. Appearing on \"Busted Open…"
+description: "Wrestling podcaster Conrad Thompson recently shared his perspective on why he considers WWE star Roman Reigns to be overrated."
 federation: WWE
 date: 2026-10-08T19:32:22.000Z
 source_id: 3638459133

@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Teases New Moves and More Violence for WWE Return"
 slug: "drew-mcintyre-teases-new-moves-and-more-violence-for-wwe-return"
-description: "Drew McIntyre has not wrestled in WWE since WrestleMania 42, but he is already planning several surprises for his comeback. The former WWE Champion spent…"
+description: "Drew McIntyre has not wrestled in WWE since WrestleMania 42, but he is already planning several surprises for his comeback."
 federation: WWE
 date: 2026-10-20T14:11:28.000Z
 source_id: 802257761

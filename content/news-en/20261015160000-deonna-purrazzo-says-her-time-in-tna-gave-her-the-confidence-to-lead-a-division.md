@@ -1,7 +1,7 @@
 ---
 title: "Deonna Purrazzo Says Her Time in TNA Gave Her the Confidence to Lead a Division"
 slug: "deonna-purrazzo-says-her-time-in-tna-gave-her-the-confidence-to-lead-a-division"
-description: "Deonna Purrazzo stated that her time in TNA Wrestling shaped her the most as a performer and gave her the confidence to lead a division. Speaking with The…"
+description: "Deonna Purrazzo stated that her time in TNA Wrestling shaped her the most as a performer and gave her the confidence to lead a division."
 federation: TNA
 date: 2026-10-15T13:00:00.000Z
 source_id: 333451

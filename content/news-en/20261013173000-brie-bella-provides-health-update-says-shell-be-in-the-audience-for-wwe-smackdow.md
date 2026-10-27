@@ -1,7 +1,7 @@
 ---
 title: "Brie Bella Provides Health Update, Says She'll Be in the Audience for WWE Smackdown"
 slug: "brie-bella-provides-health-update-says-shell-be-in-the-audience-for-wwe-smackdow"
-description: "Brie Bella has shared an update on her recovery from a shoulder injury sustained during the tag team match at SummerSlam, where she and Paige faced Fatal…"
+description: "Brie Bella has shared an update on her recovery from a shoulder injury sustained during the tag team match at SummerSlam."
 federation: WWE
 date: 2026-10-13T14:30:00.000Z
 source_id: 1947121425

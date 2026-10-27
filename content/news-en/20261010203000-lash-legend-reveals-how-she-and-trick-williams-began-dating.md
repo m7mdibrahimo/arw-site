@@ -1,7 +1,7 @@
 ---
 title: "Lash Legend Reveals How She and Trick Williams Began Dating"
 slug: "lash-legend-reveals-how-she-and-trick-williams-began-dating"
-description: "Lash Legend and Trick Williams are now a married couple traveling on the road with WWE, but their relationship had a slow start. Speaking on \"What's Your…"
+description: "Lash Legend and Trick Williams are now a married couple traveling on the road with WWE, but their relationship had a slow start."
 federation: WWE
 date: 2026-10-10T17:30:00.000Z
 source_id: 3495422610

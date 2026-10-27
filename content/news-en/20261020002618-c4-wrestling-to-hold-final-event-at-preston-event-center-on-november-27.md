@@ -1,7 +1,7 @@
 ---
 title: "C4 Wrestling to Hold Final Event at Preston Event Center on November 27"
 slug: "c4-wrestling-to-hold-final-event-at-preston-event-center-on-november-27"
-description: "C4 Wrestling announced its final event at the Preston Event Center in Ottawa will take place on November 27. This show will celebrate the promotion's 19th…"
+description: "C4 Wrestling announced its final event at the Preston Event Center in Ottawa will take place on November 27."
 federation: INDIE
 date: 2026-10-19T21:26:18.000Z
 source_id: 334725

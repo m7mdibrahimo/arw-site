@@ -1,7 +1,7 @@
 ---
 title: "AEW Star Replacing Shotzi Blackheart in CMLL Amazonas Grand Prix"
 slug: "aew-star-replacing-shotzi-blackheart-in-cmll-amazonas-grand-prix"
-description: "CMLL's Amazonas Grand Prix is a global showcase featuring women from various promotions, including AEW, STARDOM, Maple Leaf Pro, MLW, and RevPro. The…"
+description: "CMLL's Amazonas Grand Prix is a global showcase featuring women from various promotions, including AEW, STARDOM, Maple Leaf Pro, MLW, and RevPro."
 federation: INDIE
 date: 2026-10-19T15:20:14.000Z
 source_id: 3250547359

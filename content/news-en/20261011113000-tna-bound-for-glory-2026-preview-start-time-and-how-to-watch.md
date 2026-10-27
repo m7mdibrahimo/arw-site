@@ -1,7 +1,7 @@
 ---
 title: "TNA Bound for Glory 2026 Preview, Start Time, and How to Watch"
 slug: "tna-bound-for-glory-2026-preview-start-time-and-how-to-watch"
-description: "TNA Bound for Glory takes place on October 11, 2026, at the Yuengling Center in Tampa, Florida. The event starts at 4:30 p.m. ET and streams live on TNA+…"
+description: "TNA Bound for Glory takes place on October 11, 2026, at the Yuengling Center in Tampa, Florida. The event starts at 4:30 p.m."
 federation: TNA
 date: 2026-10-11T08:30:00.000Z
 source_id: 333105

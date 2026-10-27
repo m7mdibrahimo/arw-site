@@ -1,7 +1,7 @@
 ---
 title: "Dann Read: Tony Khan and AEW Have Been Wonderful to Pro Wrestling EVE"
 slug: "dann-read-tony-khan-and-aew-have-been-wonderful-to-pro-wrestling-eve"
-description: "Dann Read, a key figure in the British promotion Pro Wrestling EVE, recently praised Tony Khan and AEW for their significant support of the independent…"
+description: "Dann Read, a key figure in the British promotion Pro Wrestling EVE, recently praised Tony Khan and AEW for their significant support of the independent."
 federation: AEW
 date: 2026-10-09T18:00:00.000Z
 source_id: 332592

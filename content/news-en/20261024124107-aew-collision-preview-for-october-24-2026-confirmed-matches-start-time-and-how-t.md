@@ -1,7 +1,7 @@
 ---
 title: "AEW Collision Preview for October 24, 2026: Confirmed Matches, Start Time and How to Watch"
 slug: "aew-collision-preview-for-october-24-2026-confirmed-matches-start-time-and-how-t"
-description: "AEW Collision is set to deliver an action-packed show tonight, October 24, 2026, building towards the Full Gear pay-per-view. The lineup features the…"
+description: "AEW Collision is set to deliver an action-packed show tonight, October 24, 2026, building towards the Full Gear pay-per-view."
 federation: AEW
 date: 2026-10-24T09:41:07.000Z
 source_id: 802259028

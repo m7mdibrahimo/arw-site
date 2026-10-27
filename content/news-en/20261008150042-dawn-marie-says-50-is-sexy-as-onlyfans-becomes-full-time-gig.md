@@ -1,7 +1,7 @@
 ---
 title: "Dawn Marie Says 50 Is Sexy as OnlyFans Becomes Full-Time Gig"
 slug: "dawn-marie-says-50-is-sexy-as-onlyfans-becomes-full-time-gig"
-description: "Former WWE and ECW star Dawn Marie has transitioned from the wrestling ring to OnlyFans, establishing the platform as her full-time career rather than a…"
+description: "Former WWE and ECW star Dawn Marie has transitioned from the wrestling ring to OnlyFans."
 federation: WWE
 date: 2026-10-08T12:00:42.000Z
 source_id: 802252342

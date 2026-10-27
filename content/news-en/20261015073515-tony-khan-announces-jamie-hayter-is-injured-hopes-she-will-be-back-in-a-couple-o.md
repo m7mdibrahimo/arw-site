@@ -1,7 +1,7 @@
 ---
 title: "Tony Khan Announces Jamie Hayter Is Injured, Hopes She Will Be Back in a Couple of Weeks"
 slug: "tony-khan-announces-jamie-hayter-is-injured-hopes-she-will-be-back-in-a-couple-o"
-description: "AEW President Tony Khan has provided an update on the status of Jamie Hayter. Following the three-hour broadcast of AEW Dynamite/Collision, Khan announced…"
+description: "AEW President Tony Khan has provided an update on the status of Jamie Hayter."
 federation: AEW
 date: 2026-10-15T04:35:15.000Z
 source_id: 334013

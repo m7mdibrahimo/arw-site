@@ -1,7 +1,7 @@
 ---
 title: "Backstage News on Number of Participants for WWE Survivor Series Men's WarGames Match"
 slug: "backstage-news-on-number-of-participants-for-wwe-survivor-series-mens-wargames-m"
-description: "This year's Survivor Series will feature a WarGames match with five wrestlers on each team. Reports indicate that The Bloodline will likely face off…"
+description: "This year's Survivor Series will feature a WarGames match with five wrestlers on each team."
 federation: WWE
 date: 2026-10-23T15:00:00.000Z
 source_id: 1987013019

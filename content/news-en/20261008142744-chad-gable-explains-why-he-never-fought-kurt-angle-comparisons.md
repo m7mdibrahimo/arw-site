@@ -1,7 +1,7 @@
 ---
 title: "Chad Gable Explains Why He Never Fought Kurt Angle Comparisons"
 slug: "chad-gable-explains-why-he-never-fought-kurt-angle-comparisons"
-description: "Chad Gable recently discussed why he never tried to avoid comparisons to Kurt Angle, explaining that he considers them a major compliment. Speaking with…"
+description: "Chad Gable recently discussed why he never tried to avoid comparisons to Kurt Angle, explaining that he considers them a major compliment."
 federation: WWE
 date: 2026-10-08T11:27:44.000Z
 source_id: 802252328

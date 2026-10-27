@@ -1,7 +1,7 @@
 ---
 title: "Marina Shafir Delivers Strong Message to Mercedes Moné After AEW Collision"
 slug: "marina-shafir-delivers-strong-message-to-mercedes-mone-after-aew-collision"
-description: "Marina Shafir delivered a direct message to Mercedes Moné following AEW Collision, reassuring the champion that she is not afraid. Shafir previously…"
+description: "Marina Shafir delivered a direct message to Mercedes Moné following AEW Collision, reassuring the champion that she is not afraid."
 federation: AEW
 date: 2026-10-25T14:10:14.000Z
 source_id: 335637

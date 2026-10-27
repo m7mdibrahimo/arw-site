@@ -1,7 +1,7 @@
 ---
 title: "Britt Baker Makes CMLL Debut at Arena México With Submission Victory"
 slug: "britt-baker-makes-cmll-debut-at-arena-mexico-with-submission-victory"
-description: "Britt Baker made her CMLL debut at Arena México on Friday night, teaming with Persephone to defeat Thunder Rosa and Tessa Blanchard in a tag team match.…"
+description: "Britt Baker made her CMLL debut at Arena México on Friday night, teaming with Persephone to defeat Thunder Rosa and Tessa Blanchard in a tag team match."
 federation: INDIE
 date: 2026-10-17T15:02:33.000Z
 source_id: 802256233

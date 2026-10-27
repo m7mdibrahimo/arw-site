@@ -1,7 +1,7 @@
 ---
 title: "Will Ospreay Discusses the Great Responsibility of Being AEW World Champion"
 slug: "will-ospreay-discusses-the-great-responsibility-of-being-aew-world-champion"
-description: "Will Ospreay recently discussed the heavy responsibility that comes with holding the AEW World Championship and leading the company through challenging…"
+description: "Will Ospreay recently discussed the heavy responsibility that comes with holding the AEW World Championship and leading the company through challenging times."
 federation: AEW
 date: 2026-10-17T12:24:20.000Z
 source_id: 802256175

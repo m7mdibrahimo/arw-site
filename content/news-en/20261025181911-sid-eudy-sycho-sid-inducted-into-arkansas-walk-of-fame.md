@@ -1,7 +1,7 @@
 ---
 title: "Sid Eudy (Sycho Sid) Inducted Into Arkansas Walk of Fame"
 slug: "sid-eudy-sycho-sid-inducted-into-arkansas-walk-of-fame"
-description: "Sid Eudy, the wrestling legend known to fans as Sycho Sid, has been honored with an induction into the Arkansas Walk of Fame. The ceremony took place on…"
+description: "Sid Eudy, the wrestling legend known to fans as Sycho Sid, has been honored with an induction into the Arkansas Walk of Fame."
 federation: WWE
 date: 2026-10-25T15:19:11.000Z
 source_id: 335663

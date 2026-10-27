@@ -1,7 +1,7 @@
 ---
 title: "Update on Vic Vendetta's Condition After Scary Spot at House of Glory Event"
 slug: "update-on-vic-vendettas-condition-after-scary-spot-at-house-of-glory-event"
-description: "Fans have received positive news regarding Vic Vendetta following a frightening injury scare at the House of Glory Salvation event on October 9. During the…"
+description: "Fans have received positive news regarding Vic Vendetta following a frightening injury scare at the House of Glory Salvation event on October 9."
 federation: INDIE
 date: 2026-10-10T22:13:32.000Z
 source_id: 802253385

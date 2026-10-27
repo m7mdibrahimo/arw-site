@@ -1,7 +1,7 @@
 ---
 title: "Deonna Purrazzo Explains the Most Difficult Part of Having to Step Away From the Ring Due to Her ROH Injury"
 slug: "deonna-purrazzo-explains-the-most-difficult-part-of-having-to-step-away-from-the"
-description: "Deonna Purrazzo recently opened up about the challenges she faced after suffering an injury earlier this year. During an ROH taping in June, Purrazzo was…"
+description: "Deonna Purrazzo recently opened up about the challenges she faced after suffering an injury earlier this year."
 federation: ROH
 date: 2026-10-13T13:00:00.000Z
 source_id: 333437

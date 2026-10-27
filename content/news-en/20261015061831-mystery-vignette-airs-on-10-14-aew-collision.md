@@ -1,7 +1,7 @@
 ---
 title: "Mystery Vignette Airs on 10/14 AEW Collision"
 slug: "mystery-vignette-airs-on-10-14-aew-collision"
-description: "A mystery vignette aired on the October 14 episode of AEW Collision. The 25-second video featured a metronome, a person conducting music, and shots of…"
+description: "A mystery vignette aired on the October 14 episode of AEW Collision. The 25-second video featured a metronome, a person conducting music."
 federation: AEW
 date: 2026-10-15T03:18:31.000Z
 source_id: 333989

@@ -1,7 +1,7 @@
 ---
 title: "Will Ospreay Reflects on Hitting the Black Arrow and PAC Tribute Show"
 slug: "will-ospreay-reflects-on-hitting-the-black-arrow-and-pac-tribute-show"
-description: "Will Ospreay recently reflected on the special AEW Dynamite tribute show dedicated to PAC, where he successfully performed the iconic Black Arrow during…"
+description: "Will Ospreay recently reflected on the special AEW Dynamite tribute show dedicated to PAC."
 federation: AEW
 date: 2026-10-20T16:46:26.000Z
 source_id: 334817

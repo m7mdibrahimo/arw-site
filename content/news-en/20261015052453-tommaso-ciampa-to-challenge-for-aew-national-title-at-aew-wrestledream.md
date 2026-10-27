@@ -1,7 +1,7 @@
 ---
 title: "Tommaso Ciampa to Challenge for AEW National Title at AEW WrestleDream"
 slug: "tommaso-ciampa-to-challenge-for-aew-national-title-at-aew-wrestledream"
-description: "AEW has announced a major championship match for the upcoming AEW WrestleDream event. During this week's episode of AEW Collision, it was confirmed that…"
+description: "AEW has announced a major championship match for the upcoming AEW WrestleDream event."
 federation: AEW
 date: 2026-10-15T02:24:53.000Z
 source_id: 333972

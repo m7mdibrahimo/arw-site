@@ -1,7 +1,7 @@
 ---
 title: "Dave Meltzer Speculates on the Status of WWE Crown Jewel 2026 in Saudi Arabia"
 slug: "dave-meltzer-speculates-on-the-status-of-wwe-crown-jewel-2026-in-saudi-arabia"
-description: "WWE's next Premium Live Event is scheduled to be the annual Crown Jewel show, returning to Riyadh, Saudi Arabia on November 7 following last year's event…"
+description: "WWE's next Premium Live Event is scheduled to be the annual Crown Jewel show, returning to Riyadh."
 federation: WWE
 date: 2026-10-12T16:50:06.000Z
 source_id: 2564937022

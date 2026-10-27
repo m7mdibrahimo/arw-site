@@ -1,7 +1,7 @@
 ---
 title: "Erick Redbeard Appears at TNA Bound for Glory 2026 to Assist Syx"
 slug: "erick-redbeard-appears-at-tna-bound-for-glory-2026-to-assist-syx"
-description: "Erick Redbeard, formerly known as Erick Rowan in WWE, made his TNA debut at Bound for Glory 2026. He appeared to assist Syx, Joseph Sawyer, and Samuel Shaw…"
+description: "Erick Redbeard, formerly known as Erick Rowan in WWE, made his TNA debut at Bound for Glory 2026."
 federation: TNA
 date: 2026-10-11T23:49:01.000Z
 source_id: 2831167814

@@ -1,7 +1,7 @@
 ---
 title: "TNA Star Xia Brookside Shows Off New Ford Bronco Purchase"
 slug: "tna-star-xia-brookside-shows-off-new-ford-bronco-purchase"
-description: "TNA Wrestling star Xia Brookside has purchased a new Ford Bronco. The 27-year-old wrestler shared photos on Instagram of her white SUV parked outside a…"
+description: "TNA Wrestling star Xia Brookside has purchased a new Ford Bronco. The 27-year-old wrestler shared photos on Instagram of her white SUV parked outside."
 federation: TNA
 date: 2026-10-26T10:45:03.000Z
 source_id: 802259736

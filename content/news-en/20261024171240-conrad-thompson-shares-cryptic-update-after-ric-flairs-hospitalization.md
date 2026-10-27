@@ -1,7 +1,7 @@
 ---
 title: "Conrad Thompson Shares Cryptic Update After Ric Flair’s Hospitalization"
 slug: "conrad-thompson-shares-cryptic-update-after-ric-flairs-hospitalization"
-description: "Conrad Thompson has shared a cryptic update on social media following Ric Flair's recent hospitalization after a fall in Florida. Thompson posted a short…"
+description: "Conrad Thompson has shared a cryptic update on social media following Ric Flair's recent hospitalization after a fall in Florida."
 federation: WWE
 date: 2026-10-24T14:12:40.000Z
 source_id: 802259129

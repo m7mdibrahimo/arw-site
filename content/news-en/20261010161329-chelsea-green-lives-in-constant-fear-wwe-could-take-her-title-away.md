@@ -1,7 +1,7 @@
 ---
 title: "Chelsea Green Lives in Constant Fear WWE Could Take Her Title Away"
 slug: "chelsea-green-lives-in-constant-fear-wwe-could-take-her-title-away"
-description: "Chelsea Green admits she lives in constant fear that WWE might take her Women's Championship away at any moment. Speaking on Jeremy's Food Tour, Green…"
+description: "Chelsea Green admits she lives in constant fear that WWE might take her Women's Championship away at any moment."
 federation: WWE
 date: 2026-10-10T13:13:29.000Z
 source_id: 802253175

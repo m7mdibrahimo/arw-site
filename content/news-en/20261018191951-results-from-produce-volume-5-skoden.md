@@ -1,7 +1,7 @@
 ---
 title: "Results From PRODUCE Volume 5: Skoden"
 slug: "results-from-produce-volume-5-skoden"
-description: "PRODUCE Wrestling held its PRODUCE Volume 5: Skoden event on October 12, 2026, at the Roulette Intermedium in New York City. The event was broadcast on…"
+description: "PRODUCE Wrestling held its PRODUCE Volume 5: Skoden event on October 12, 2026, at the Roulette Intermedium in New York City."
 federation: INDIE
 date: 2026-10-18T16:19:51.000Z
 source_id: 334553

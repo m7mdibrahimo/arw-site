@@ -1,7 +1,7 @@
 ---
 title: "Triple H Unhappy With WWE’s Developmental System Progress"
 slug: "triple-h-unhappy-with-wwes-developmental-system-progress"
-description: "Triple H has been working to revamp the WWE developmental pipeline, but reports suggest he is not satisfied with the current results. According to Self…"
+description: "Triple H has been working to revamp the WWE developmental pipeline, but reports suggest he is not satisfied with the current results."
 federation: WWE
 date: 2026-10-13T12:00:34.000Z
 source_id: 802254535

@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Says It Was a Blessing That He Didn't Have to Fall Down Once for Street Fighter"
 slug: "roman-reigns-says-it-was-a-blessing-that-he-didnt-have-to-fall-down-once-for-str"
-description: "Roman Reigns recently discussed his experience working on the upcoming Street Fighter movie, in which he portrays the character Akuma. During a media…"
+description: "Roman Reigns recently discussed his experience working on the upcoming Street Fighter movie, in which he portrays the character Akuma."
 federation: WWE
 date: 2026-10-12T21:20:24.000Z
 source_id: 333559

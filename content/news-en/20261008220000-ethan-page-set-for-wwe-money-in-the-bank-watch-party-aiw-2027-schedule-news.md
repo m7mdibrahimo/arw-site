@@ -1,7 +1,7 @@
 ---
 title: "Ethan Page Set for WWE Money in the Bank Watch Party, AIW 2027 Schedule News"
 slug: "ethan-page-set-for-wwe-money-in-the-bank-watch-party-aiw-2027-schedule-news"
-description: "Ethan Page is scheduled to appear at a WWE Money In The Bank watch party in Toronto. Meanwhile, Absolute Intense Wrestling has announced plans to reduce…"
+description: "Ethan Page is scheduled to appear at a WWE Money In The Bank watch party in Toronto."
 federation: WWE
 date: 2026-10-08T19:00:00.000Z
 source_id: 332791

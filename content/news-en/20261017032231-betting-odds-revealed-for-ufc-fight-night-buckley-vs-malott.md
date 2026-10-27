@@ -1,7 +1,7 @@
 ---
 title: "Betting Odds Revealed for UFC Fight Night: Buckley vs. Malott"
 slug: "betting-odds-revealed-for-ufc-fight-night-buckley-vs-malott"
-description: "Betting odds have been released for the upcoming UFC Fight Night event scheduled for Saturday, October 17, at Rogers Place in Edmonton, Alberta, Canada.…"
+description: "Betting odds have been released for the upcoming UFC Fight Night event scheduled for Saturday, October 17, at Rogers Place in Edmonton, Alberta, Canada."
 federation: MMA
 date: 2026-10-17T00:22:31.000Z
 source_id: 334273

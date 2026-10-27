@@ -1,7 +1,7 @@
 ---
 title: "Drako Starx Reflects on His WWE Release"
 slug: "drako-starx-reflects-on-his-wwe-release"
-description: "Drako Starx reflected on his departure from WWE a full year after his contract was terminated on October 10. Starx took to social media to share a photo of…"
+description: "Drako Starx reflected on his departure from WWE a full year after his contract was terminated on October 10."
 federation: WWE
 date: 2026-10-10T23:45:12.000Z
 source_id: 333109

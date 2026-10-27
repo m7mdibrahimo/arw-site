@@ -1,7 +1,7 @@
 ---
 title: "Tatum Paxley Defends WWE Signing Athletes Without Indie Experience"
 slug: "tatum-paxley-defends-wwe-signing-athletes-without-indie-experience"
-description: "Tatum Paxley is unfazed by criticism regarding WWE's recruitment of athletes who lack a background in independent wrestling. While some fans believe…"
+description: "Tatum Paxley is unfazed by criticism regarding WWE's recruitment of athletes who lack a background in independent wrestling."
 federation: WWE
 date: 2026-10-16T09:20:21.000Z
 source_id: 802255558

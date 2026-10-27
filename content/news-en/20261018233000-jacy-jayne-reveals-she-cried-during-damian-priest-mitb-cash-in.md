@@ -1,7 +1,7 @@
 ---
 title: "Jacy Jayne Reveals She Cried During Damian Priest MITB Cash-In"
 slug: "jacy-jayne-reveals-she-cried-during-damian-priest-mitb-cash-in"
-description: "Women's United States Champion Jacy Jayne recently discussed emotional wrestling moments during an appearance on \"The Wrestling Classic,\" revealing that…"
+description: "Women's United States Champion Jacy Jayne recently discussed emotional wrestling moments during an appearance on \"The Wrestling Classic,\" revealing that."
 federation: WWE
 date: 2026-10-18T20:30:00.000Z
 source_id: 3068293107

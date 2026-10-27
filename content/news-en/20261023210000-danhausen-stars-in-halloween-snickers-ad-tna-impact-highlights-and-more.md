@@ -1,7 +1,7 @@
 ---
 title: "Danhausen Stars in Halloween Snickers Ad, TNA iMPACT Highlights, and More"
 slug: "danhausen-stars-in-halloween-snickers-ad-tna-impact-highlights-and-more"
-description: "Danhausen stars in a new Halloween advertisement for Snickers, highlighting the latest news update. The report covers top moments from TNA iMPACT,…"
+description: "Danhausen stars in a new Halloween advertisement for Snickers, highlighting the latest news update."
 federation: TNA
 date: 2026-10-23T18:00:00.000Z
 source_id: 335276

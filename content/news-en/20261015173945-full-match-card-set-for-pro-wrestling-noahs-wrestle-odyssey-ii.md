@@ -1,7 +1,7 @@
 ---
 title: "Full Match Card Set for Pro Wrestling NOAH's Wrestle Odyssey II"
 slug: "full-match-card-set-for-pro-wrestling-noahs-wrestle-odyssey-ii"
-description: "Pro Wrestling NOAH has finalized the complete match card for its upcoming Wrestle Odyssey II event. The show is scheduled to take place on October 25th at…"
+description: "Pro Wrestling NOAH has finalized the complete match card for its upcoming Wrestle Odyssey II event."
 federation: INDIE
 date: 2026-10-15T14:39:45.000Z
 source_id: 334054

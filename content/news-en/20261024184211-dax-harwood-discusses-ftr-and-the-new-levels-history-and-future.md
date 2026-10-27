@@ -1,7 +1,7 @@
 ---
 title: "Dax Harwood Discusses FTR and the New Level's History and Future"
 slug: "dax-harwood-discusses-ftr-and-the-new-levels-history-and-future"
-description: "Dax Harwood recently spoke about the rivalry between FTR and The New Level, expressing his excitement to face them in AEW. At AEW All In 2026, The New…"
+description: "Dax Harwood recently spoke about the rivalry between FTR and The New Level, expressing his excitement to face them in AEW."
 federation: AEW
 date: 2026-10-24T15:42:11.000Z
 source_id: 335432

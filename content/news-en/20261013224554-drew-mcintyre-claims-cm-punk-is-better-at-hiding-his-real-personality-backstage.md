@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Claims CM Punk Is Better at Hiding His Real Personality Backstage"
 slug: "drew-mcintyre-claims-cm-punk-is-better-at-hiding-his-real-personality-backstage"
-description: "Drew McIntyre recently opened up about his ongoing animosity with CM Punk, claiming that the star has become much better at hiding his true personality…"
+description: "Drew McIntyre recently opened up about his ongoing animosity with CM Punk."
 federation: WWE
 date: 2026-10-13T19:45:54.000Z
 source_id: 802254680

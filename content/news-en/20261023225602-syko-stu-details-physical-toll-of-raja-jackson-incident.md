@@ -1,7 +1,7 @@
 ---
 title: "Syko Stu Details Physical Toll of Raja Jackson Incident"
 slug: "syko-stu-details-physical-toll-of-raja-jackson-incident"
-description: "Over a year after being attacked by Raja Jackson at a Knokx Pro Wrestling event, Stuart Smith, known as Syko Stu, has opened up about his recovery.…"
+description: "Over a year after being attacked by Raja Jackson at a Knokx Pro Wrestling event, Stuart Smith, known as Syko Stu, has opened up about his recovery."
 federation: INDIE
 date: 2026-10-23T19:56:02.000Z
 source_id: 1384361153

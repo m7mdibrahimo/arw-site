@@ -1,7 +1,7 @@
 ---
 title: "NARAKU vs. Shiloh Hill Added to NXT Halloween Havoc"
 slug: "naraku-vs-shiloh-hill-added-to-nxt-halloween-havoc"
-description: "NARAKU has put Shiloh Hill on notice ahead of their upcoming match at WWE NXT Halloween Havoc on October 31st. The two have previously faced each other in…"
+description: "NARAKU has put Shiloh Hill on notice ahead of their upcoming match at WWE NXT Halloween Havoc on October 31st."
 federation: WWE
 date: 2026-10-21T01:52:43.000Z
 source_id: 334943

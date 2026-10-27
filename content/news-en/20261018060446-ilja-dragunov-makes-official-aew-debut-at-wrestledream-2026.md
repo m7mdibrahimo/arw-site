@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Makes Official AEW Debut at WrestleDream 2026"
 slug: "ilja-dragunov-makes-official-aew-debut-at-wrestledream-2026"
-description: "Ilja Dragunov has officially joined AEW. The former WWE star made his debut at AEW WrestleDream on October 17, 2026, ending weeks of speculation regarding…"
+description: "Ilja Dragunov has officially joined AEW. The former WWE star made his debut at AEW WrestleDream on October 17, 2026."
 federation: AEW
 date: 2026-10-18T03:04:46.000Z
 source_id: 802256630

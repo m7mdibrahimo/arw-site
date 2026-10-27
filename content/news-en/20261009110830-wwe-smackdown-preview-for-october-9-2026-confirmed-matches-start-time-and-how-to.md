@@ -1,7 +1,7 @@
 ---
 title: "WWE SmackDown Preview for October 9, 2026: Confirmed Matches, Start Time and How to Watch"
 slug: "wwe-smackdown-preview-for-october-9-2026-confirmed-matches-start-time-and-how-to"
-description: "The October 9 episode of WWE SmackDown serves as the final stop before the Money in the Bank Premium Live Event, featuring a stacked lineup to entertain…"
+description: "The October 9 episode of WWE SmackDown serves as the final stop before the Money in the Bank Premium Live Event, featuring a stacked lineup to entertain fans."
 federation: WWE
 date: 2026-10-09T08:08:30.000Z
 source_id: 802252609

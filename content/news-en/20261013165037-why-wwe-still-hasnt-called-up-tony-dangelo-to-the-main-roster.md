@@ -1,7 +1,7 @@
 ---
 title: "Why WWE Still Hasn’t Called Up Tony D’Angelo to the Main Roster"
 slug: "why-wwe-still-hasnt-called-up-tony-dangelo-to-the-main-roster"
-description: "Tony D'Angelo has spent five years in NXT, yet he remains waiting for a promotion to WWE RAW or SmackDown. According to a recent backstage report from Self…"
+description: "Tony D'Angelo has spent five years in NXT, yet he remains waiting for a promotion to WWE RAW or SmackDown."
 federation: WWE
 date: 2026-10-13T13:50:37.000Z
 source_id: 802254592

@@ -1,7 +1,7 @@
 ---
 title: "Jacy Jayne Declares Herself WWE’s New It Girl"
 slug: "jacy-jayne-declares-herself-wwes-new-it-girl"
-description: "Jacy Jayne is fully confident as she transitions to the WWE main roster, boldly declaring herself the company's new top star. Speaking on The Wrestling…"
+description: "Jacy Jayne is fully confident as she transitions to the WWE main roster, boldly declaring herself the company's new top star."
 federation: WWE
 date: 2026-10-08T13:39:49.000Z
 source_id: 802252389

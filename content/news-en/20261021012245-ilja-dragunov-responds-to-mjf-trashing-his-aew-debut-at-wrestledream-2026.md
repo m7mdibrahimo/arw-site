@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Responds to MJF Trashing His AEW Debut at WrestleDream 2026"
 slug: "ilja-dragunov-responds-to-mjf-trashing-his-aew-debut-at-wrestledream-2026"
-description: "Ilja Dragunov is not bothered by MJF's recent criticism of his AEW debut at WrestleDream 2026. After MJF mocked his entrance and called him a…"
+description: "Ilja Dragunov is not bothered by MJF's recent criticism of his AEW debut at WrestleDream 2026."
 federation: AEW
 date: 2026-10-20T22:22:45.000Z
 source_id: 802257905

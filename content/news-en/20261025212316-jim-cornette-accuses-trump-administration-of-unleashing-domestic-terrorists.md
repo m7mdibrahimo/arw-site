@@ -1,7 +1,7 @@
 ---
 title: "Jim Cornette Accuses Trump Administration of Unleashing Domestic Terrorists"
 slug: "jim-cornette-accuses-trump-administration-of-unleashing-domestic-terrorists"
-description: "Jim Cornette reacted to a video showing police using force against civilians outside a restaurant, launching a sharp attack on the administration of US…"
+description: "Jim Cornette reacted to a video showing police using force against civilians outside a restaurant."
 federation: WWE
 date: 2026-10-25T18:23:16.000Z
 source_id: 802259627

@@ -1,7 +1,7 @@
 ---
 title: "Satoshi Kojima Must Meet Weight Requirement to Face YOH at NJPW/Taichi Event"
 slug: "satoshi-kojima-must-meet-weight-requirement-to-face-yoh-at-njpw-taichi-event"
-description: "Satoshi Kojima faces a unique challenge for the upcoming NJPW/Taichi co-presented show on October 17th. Taichi has officially announced that if Kojima can…"
+description: "Satoshi Kojima faces a unique challenge for the upcoming NJPW/Taichi co-presented show on October 17th."
 federation: NJPW
 date: 2026-10-15T04:11:13.000Z
 source_id: 334010

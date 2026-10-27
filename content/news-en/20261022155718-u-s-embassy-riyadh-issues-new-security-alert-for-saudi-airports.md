@@ -1,7 +1,7 @@
 ---
 title: "U.S. Embassy Riyadh Issues New Security Alert for Saudi Airports"
 slug: "u-s-embassy-riyadh-issues-new-security-alert-for-saudi-airports"
-description: "The U.S. Embassy in Riyadh issued a security alert on October 22, advising U.S. citizens to exercise extreme caution when using airports in Saudi Arabia.…"
+description: "The U.S. Embassy in Riyadh issued a security alert on October 22, advising U.S. citizens to exercise extreme caution when using airports in Saudi Arabia."
 federation: WWE
 date: 2026-10-22T12:57:18.000Z
 source_id: 335121

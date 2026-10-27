@@ -1,7 +1,7 @@
 ---
 title: "Penta Recalls Challenging Roman Reigns for WWE World Heavyweight Title"
 slug: "penta-recalls-challenging-roman-reigns-for-wwe-world-heavyweight-title"
-description: "Penta may have fallen to Roman Reigns on WWE RAW last month, but he left the ring feeling victorious. During a recent appearance on Busted Open Radio, the…"
+description: "Penta may have fallen to Roman Reigns on WWE RAW last month, but he left the ring feeling victorious."
 federation: WWE
 date: 2026-10-25T19:00:00.000Z
 source_id: 1396464136

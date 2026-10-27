@@ -1,7 +1,7 @@
 ---
 title: "Jonathan Coachman Questions WWE’s Decision to Drag John Cena Into Nikki Bella-Paige Feud"
 slug: "jonathan-coachman-questions-wwes-decision-to-drag-john-cena-into-nikki-bella-pai"
-description: "Jonathan Coachman is criticizing WWE for involving John Cena in the current storyline between Nikki Bella and Paige. The former commentator argued that the…"
+description: "Jonathan Coachman is criticizing WWE for involving John Cena in the current storyline between Nikki Bella and Paige."
 federation: WWE
 date: 2026-10-19T18:36:53.000Z
 source_id: 802257280

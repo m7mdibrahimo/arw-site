@@ -1,7 +1,7 @@
 ---
 title: "Kofi: I Wish Maybe We Could Have Kept the Sustainable WWE Championship"
 slug: "kofi-i-wish-maybe-we-could-have-kept-the-sustainable-wwe-championship"
-description: "Kofi spoke about the sustainable WWE Championship belt that Daniel Bryan used during his final run with the title. At WrestleMania 35, Kofi defeated Daniel…"
+description: "Kofi spoke about the sustainable WWE Championship belt that Daniel Bryan used during his final run with the title."
 federation: WWE
 date: 2026-10-14T17:09:09.000Z
 source_id: 333851

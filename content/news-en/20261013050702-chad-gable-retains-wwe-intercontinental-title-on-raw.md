@@ -1,7 +1,7 @@
 ---
 title: "Chad Gable Retains WWE Intercontinental Title on Raw"
 slug: "chad-gable-retains-wwe-intercontinental-title-on-raw"
-description: "Chad Gable successfully defended the WWE Intercontinental Championship against AAA Cruiserweight Champion Rey Fenix on the latest episode of WWE Raw.…"
+description: "Chad Gable successfully defended the WWE Intercontinental Championship against AAA Cruiserweight Champion Rey Fenix on the latest episode of WWE Raw."
 federation: WWE
 date: 2026-10-13T02:07:02.000Z
 source_id: 3206404730

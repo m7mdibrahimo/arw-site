@@ -1,7 +1,7 @@
 ---
 title: "Brie Bella Calls Out People Who Dismiss Her Problems Because She’s Rich"
 slug: "brie-bella-calls-out-people-who-dismiss-her-problems-because-shes-rich"
-description: "Brie Bella recently addressed people who dismiss her personal struggles simply because of her wealth and success. Speaking on The Nikki & Brie Show…"
+description: "Brie Bella recently addressed people who dismiss her personal struggles simply because of her wealth and success."
 federation: WWE
 date: 2026-10-26T10:18:44.000Z
 source_id: 802259726

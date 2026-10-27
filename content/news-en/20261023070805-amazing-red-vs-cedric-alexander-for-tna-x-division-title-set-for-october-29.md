@@ -1,7 +1,7 @@
 ---
 title: "Amazing Red vs. Cedric Alexander for TNA X Division Title Set for October 29"
 slug: "amazing-red-vs-cedric-alexander-for-tna-x-division-title-set-for-october-29"
-description: "A championship match for the TNA X Division Title is confirmed for the October 29 episode of TNA iMPACT. Cedric Alexander earned his opportunity after…"
+description: "A championship match for the TNA X Division Title is confirmed for the October 29 episode of TNA iMPACT."
 federation: TNA
 date: 2026-10-23T04:08:05.000Z
 source_id: 335232

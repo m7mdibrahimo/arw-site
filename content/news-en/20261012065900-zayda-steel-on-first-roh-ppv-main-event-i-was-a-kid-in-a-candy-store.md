@@ -1,7 +1,7 @@
 ---
 title: "Zayda Steel on First ROH PPV Main Event: 'I Was a Kid in a Candy Store'"
 slug: "zayda-steel-on-first-roh-ppv-main-event-i-was-a-kid-in-a-candy-store"
-description: "Reflecting on her meteoric rise in Ring of Honor, Zayda Steel recently opened up about competing in the main event of ROH Supercard of Honor just five…"
+description: "Reflecting on her meteoric rise in Ring of Honor, Zayda Steel recently opened up about competing in the main event of ROH Supercard of Honor just five months."
 federation: ROH
 date: 2026-10-12T03:59:00.000Z
 source_id: 4240304026

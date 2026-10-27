@@ -1,7 +1,7 @@
 ---
 title: "Tony Khan Addresses Possibility of Adam Copeland Wrestling at Tokyo Dome: \"I'll Leave Some Mystery to That\""
 slug: "tony-khan-addresses-possibility-of-adam-copeland-wrestling-at-tokyo-dome-ill-lea"
-description: "Adam Copeland recently revealed on the October 14th edition of AEW Dynamite that he plans to retire from professional wrestling in 2027. Following this…"
+description: "Adam Copeland recently revealed on the October 14th edition of AEW Dynamite that he plans to retire from professional wrestling in 2027."
 federation: AEW
 date: 2026-10-15T18:44:58.000Z
 source_id: 334109

@@ -1,7 +1,7 @@
 ---
 title: "Brooke Hogan Slams People Who Showed Up at the End of Hulk Hogan’s Life"
 slug: "brooke-hogan-slams-people-who-showed-up-at-the-end-of-hulk-hogans-life"
-description: "Brooke Hogan is expressing intense anger toward individuals who she claims used her father, Hulk Hogan, until his death. In a series of posts on her…"
+description: "Brooke Hogan is expressing intense anger toward individuals who she claims used her father, Hulk Hogan, until his death."
 federation: WWE
 date: 2026-10-26T12:22:50.000Z
 source_id: 802259764

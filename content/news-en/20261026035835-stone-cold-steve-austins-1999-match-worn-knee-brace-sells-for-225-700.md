@@ -1,7 +1,7 @@
 ---
 title: "Stone Cold Steve Austin's 1999 Match-Worn Knee Brace Sells for $225,700"
 slug: "stone-cold-steve-austins-1999-match-worn-knee-brace-sells-for-225-700"
-description: "A match-worn and signed knee brace used by Stone Cold Steve Austin around 1999 has been sold at auction for $225,700 through Heritage Auctions. The DonJoy…"
+description: "A match-worn and signed knee brace used by Stone Cold Steve Austin around 1999 has been sold at auction for $225,700 through Heritage Auctions."
 federation: WWE
 date: 2026-10-26T00:58:35.000Z
 source_id: 335739

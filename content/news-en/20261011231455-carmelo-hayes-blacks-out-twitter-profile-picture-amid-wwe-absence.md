@@ -1,7 +1,7 @@
 ---
 title: "Carmelo Hayes Blacks Out X Profile Picture Amid WWE Absence"
 slug: "carmelo-hayes-blacks-out-twitter-profile-picture-amid-wwe-absence"
-description: "Carmelo Hayes has not appeared on WWE television for several weeks, and his recent activity on social media has sparked new speculation among fans. On…"
+description: "Carmelo Hayes has not appeared on WWE television for several weeks, and his recent activity on social media has sparked new speculation among fans."
 federation: WWE
 date: 2026-10-11T20:14:55.000Z
 source_id: 802253708

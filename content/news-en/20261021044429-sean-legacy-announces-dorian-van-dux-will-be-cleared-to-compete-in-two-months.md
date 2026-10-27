@@ -1,7 +1,7 @@
 ---
 title: "Sean Legacy Announces Dorian Van Dux Will Be Cleared to Compete in Two Months"
 slug: "sean-legacy-announces-dorian-van-dux-will-be-cleared-to-compete-in-two-months"
-description: "Sean Legacy provided an update on Dorian Van Dux during the October 20th episode of WWE NXT on The CW. Speaking alongside Romero Moreno, E.K. Prosper,…"
+description: "Sean Legacy provided an update on Dorian Van Dux during the October 20th episode of WWE NXT on The CW. Speaking alongside Romero Moreno, E.K."
 federation: WWE
 date: 2026-10-21T01:44:29.000Z
 source_id: 334940

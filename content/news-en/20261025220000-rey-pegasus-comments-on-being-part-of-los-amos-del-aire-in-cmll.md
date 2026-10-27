@@ -1,7 +1,7 @@
 ---
 title: "Rey Pegasus Comments on Being Part of Los Amos Del Aire in CMLL"
 slug: "rey-pegasus-comments-on-being-part-of-los-amos-del-aire-in-cmll"
-description: "Rey Pegasus discussed his experience working in the CMLL group Los Amos del Aire alongside Tornado and Magia Blanca, who also serves as their trainer.…"
+description: "Rey Pegasus discussed his experience working in the CMLL group Los Amos del Aire alongside Tornado and Magia Blanca, who also serves as their trainer."
 federation: INDIE
 date: 2026-10-25T19:00:00.000Z
 source_id: 335675

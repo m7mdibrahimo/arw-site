@@ -1,7 +1,7 @@
 ---
 title: "Fan Arrested After Throwing Drink at Lucien Price During WWE RAW"
 slug: "fan-arrested-after-throwing-drink-at-lucien-price-during-wwe-raw"
-description: "During the latest episode of WWE RAW, a fan was arrested after throwing a drink at Lucien Price as the trio known as 946 made their entrance through the…"
+description: "During the latest episode of WWE RAW, a fan was arrested after throwing a drink at Lucien Price as the trio known as 946 made their entrance through the crowd."
 federation: WWE
 date: 2026-10-14T13:04:40.000Z
 source_id: 802254970

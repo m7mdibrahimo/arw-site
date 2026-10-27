@@ -1,7 +1,7 @@
 ---
 title: "Eric Bischoff Compares AEW President Tony Khan and Vince McMahon"
 slug: "eric-bischoff-compares-aew-president-tony-khan-and-vince-mcmahon"
-description: "Former WCW Senior Vice President Eric Bischoff recently discussed the similarities between AEW President Tony Khan and former WWE CEO and Chairman Vince…"
+description: "Former WCW Senior Vice President Eric Bischoff recently discussed the similarities between AEW President Tony Khan and former WWE CEO and Chairman Vince."
 federation: WWE
 date: 2026-10-13T01:00:00.000Z
 source_id: 919746479

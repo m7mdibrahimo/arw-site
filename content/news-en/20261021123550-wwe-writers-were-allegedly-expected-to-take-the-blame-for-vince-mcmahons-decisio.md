@@ -1,7 +1,7 @@
 ---
 title: "WWE Writers Were Allegedly Expected to Take the Blame for Vince McMahon’s Decisions"
 slug: "wwe-writers-were-allegedly-expected-to-take-the-blame-for-vince-mcmahons-decisio"
-description: "Former WWE writer Jimmy Jacobs recently discussed the misconceptions surrounding the company's creative team during Vince McMahon's tenure. Jacobs…"
+description: "Former WWE writer Jimmy Jacobs recently discussed the misconceptions surrounding the company's creative team during Vince McMahon's tenure."
 federation: WWE
 date: 2026-10-21T09:35:50.000Z
 source_id: 802258140

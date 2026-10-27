@@ -1,7 +1,7 @@
 ---
 title: "WWE Changes PR Firm for UK Communications"
 slug: "wwe-changes-pr-firm-for-uk-communications"
-description: "WWE has appointed a new public relations firm to handle its communications in the United Kingdom, according to PRWeek. The Romans P.R. Agency had managed…"
+description: "WWE has appointed a new public relations firm to handle its communications in the United Kingdom, according to PRWeek. The Romans P.R."
 federation: WWE
 date: 2026-10-14T05:51:26.000Z
 source_id: 333824

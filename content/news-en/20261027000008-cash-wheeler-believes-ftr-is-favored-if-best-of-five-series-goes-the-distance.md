@@ -1,7 +1,7 @@
 ---
 title: "Cash Wheeler Believes FTR Is Favored If Best-of-Five Series Goes the Distance"
 slug: "cash-wheeler-believes-ftr-is-favored-if-best-of-five-series-goes-the-distance"
-description: "Cash Wheeler believes that FTR has the advantage if their ongoing best-of-five series against the Motor City Machine Guns goes the full distance. Speaking…"
+description: "Cash Wheeler believes that FTR has the advantage if their ongoing best-of-five series against the Motor City Machine Guns goes the full distance."
 federation: AEW
 date: 2026-10-26T21:00:08.000Z
 source_id: 335942

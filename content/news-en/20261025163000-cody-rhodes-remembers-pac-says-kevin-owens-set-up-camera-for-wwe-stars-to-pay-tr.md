@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Remembers Pac, Says Kevin Owens Set Up Camera for WWE Stars to Pay Tribute"
 slug: "cody-rhodes-remembers-pac-says-kevin-owens-set-up-camera-for-wwe-stars-to-pay-tr"
-description: "The professional wrestling world was deeply saddened by the passing of AEW star Pac, also known as Benjamin Satterley, shortly after AEW All Out 2026 where…"
+description: "The professional wrestling world was deeply saddened by the passing of AEW star Pac, also known as Benjamin Satterley."
 federation: WWE
 date: 2026-10-25T13:30:00.000Z
 source_id: 992429935

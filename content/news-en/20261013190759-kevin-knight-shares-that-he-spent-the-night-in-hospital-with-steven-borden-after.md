@@ -1,7 +1,7 @@
 ---
 title: "Kevin Knight Shares That He Spent the Night in Hospital With Steven Borden After Injury at AEW All Out"
 slug: "kevin-knight-shares-that-he-spent-the-night-in-hospital-with-steven-borden-after"
-description: "Kevin Knight revealed that he spent the night in the hospital with Steven Borden following an injury during their match at AEW All Out. The event featured…"
+description: "Kevin Knight revealed that he spent the night in the hospital with Steven Borden following an injury during their match at AEW All Out."
 federation: AEW
 date: 2026-10-13T16:07:59.000Z
 source_id: 333706

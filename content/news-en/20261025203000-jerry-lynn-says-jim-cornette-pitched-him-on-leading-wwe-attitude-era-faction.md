@@ -1,7 +1,7 @@
 ---
 title: "Jerry Lynn Says Jim Cornette Pitched Him on Leading WWE Attitude Era Faction"
 slug: "jerry-lynn-says-jim-cornette-pitched-him-on-leading-wwe-attitude-era-faction"
-description: "Jerry Lynn recalled that Jim Cornette once pitched him to lead a memorable faction in WWE during the Attitude Era. Speaking on \"What Happened When\", Lynn…"
+description: "Jerry Lynn recalled that Jim Cornette once pitched him to lead a memorable faction in WWE during the Attitude Era."
 federation: WWE
 date: 2026-10-25T17:30:00.000Z
 source_id: 5192218546

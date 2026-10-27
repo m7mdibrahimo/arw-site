@@ -1,7 +1,7 @@
 ---
 title: "Andrade El Idolo Bests Tommaso Ciampa at AEW WrestleDream to Retain National Championship"
 slug: "andrade-el-idolo-bests-tommaso-ciampa-at-aew-wrestledream-to-retain-national-cha"
-description: "Andrade El Idolo successfully defended his AEW National Championship against Tommaso Ciampa at AEW WrestleDream. This victory marked El Idolo's seventh…"
+description: "Andrade El Idolo successfully defended his AEW National Championship against Tommaso Ciampa at AEW WrestleDream."
 federation: AEW
 date: 2026-10-18T02:35:39.000Z
 source_id: 334454

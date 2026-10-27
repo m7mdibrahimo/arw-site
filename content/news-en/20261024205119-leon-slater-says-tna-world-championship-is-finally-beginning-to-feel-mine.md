@@ -1,7 +1,7 @@
 ---
 title: "Leon Slater Says TNA World Championship Is Finally Beginning to Feel Mine"
 slug: "leon-slater-says-tna-world-championship-is-finally-beginning-to-feel-mine"
-description: "Leon Slater recently discussed his historic TNA World Championship victory and how it has taken time to fully sink in. At TNA Bound for Glory, Slater…"
+description: "Leon Slater recently discussed his historic TNA World Championship victory and how it has taken time to fully sink in."
 federation: TNA
 date: 2026-10-24T17:51:19.000Z
 source_id: 335339

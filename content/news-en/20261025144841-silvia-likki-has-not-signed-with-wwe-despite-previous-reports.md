@@ -1,7 +1,7 @@
 ---
 title: "Silvia Likki Has Not Signed With WWE Despite Previous Reports"
 slug: "silvia-likki-has-not-signed-with-wwe-despite-previous-reports"
-description: "Silvia Likki has not signed with WWE despite previous reports naming her as one of four new female recruits heading to the WWE Performance Center.…"
+description: "Silvia Likki has not signed with WWE despite previous reports naming her as one of four new female recruits heading to the WWE Performance Center."
 federation: WWE
 date: 2026-10-25T11:48:41.000Z
 source_id: 802259494

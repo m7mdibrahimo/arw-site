@@ -1,7 +1,7 @@
 ---
 title: "Eric Bischoff Explains Necessity of Episodic Storytelling"
 slug: "eric-bischoff-explains-necessity-of-episodic-storytelling"
-description: "WWE Hall of Famer Eric Bischoff discussed the importance of relying on episodic and dramatic storytelling in professional wrestling shows to continuously…"
+description: "WWE Hall of Famer Eric Bischoff discussed the importance of relying on episodic and dramatic storytelling in professional wrestling shows to continuously."
 federation: WWE
 date: 2026-10-25T17:00:00.000Z
 source_id: 4996163455

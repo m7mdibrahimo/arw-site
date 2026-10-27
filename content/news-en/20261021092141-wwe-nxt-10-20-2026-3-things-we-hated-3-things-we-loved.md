@@ -1,7 +1,7 @@
 ---
 title: "WWE NXT - 10/20/2026: 3 Things We Hated & 3 Things We Loved"
 slug: "wwe-nxt-10-20-2026-3-things-we-hated-3-things-we-loved"
-description: "Halloween Havoc inches closer, and another episode of WWE NXT is in the books. The October 20 edition featured a shocking upset in the Dusty Rhodes Tag…"
+description: "Halloween Havoc inches closer, and another episode of WWE NXT is in the books."
 federation: WWE
 date: 2026-10-21T06:21:41.000Z
 source_id: 5097270990

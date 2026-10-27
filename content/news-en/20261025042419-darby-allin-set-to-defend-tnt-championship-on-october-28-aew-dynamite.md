@@ -1,7 +1,7 @@
 ---
 title: "Darby Allin Set to Defend TNT Championship on October 28 AEW Dynamite"
 slug: "darby-allin-set-to-defend-tnt-championship-on-october-28-aew-dynamite"
-description: "Darby Allin will defend his TNT Championship against Josh Alexander on the October 28 edition of AEW Dynamite: Fright Night in St. Louis, Missouri. The…"
+description: "Darby Allin will defend his TNT Championship against Josh Alexander on the October 28 edition of AEW Dynamite: Fright Night in St. Louis, Missouri."
 federation: AEW
 date: 2026-10-25T01:24:19.000Z
 source_id: 802259318

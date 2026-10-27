@@ -1,7 +1,7 @@
 ---
 title: "William Regal Warns Wrestlers They’re Risking Fans’ Trust by Making Matches Look Less Believable"
 slug: "william-regal-warns-wrestlers-theyre-risking-fans-trust-by-making-matches-look-l"
-description: "William Regal believes professional wrestling is suffering from a credibility crisis caused by performers who fail to make their matches look realistic. On…"
+description: "William Regal believes professional wrestling is suffering from a credibility crisis caused by performers who fail to make their matches look realistic."
 federation: WWE
 date: 2026-10-16T19:52:06.000Z
 source_id: 802255815

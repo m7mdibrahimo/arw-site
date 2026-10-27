@@ -1,7 +1,7 @@
 ---
 title: "Bobby Orlando Wins Title at Dreamwave Trick or Treat"
 slug: "bobby-orlando-wins-title-at-dreamwave-trick-or-treat"
-description: "Dreamwave Wrestling hosted its Trick or Treat event on October 10 at the Kaycee Club in LaSalle, Illinois. The card featured multiple championship bouts…"
+description: "Dreamwave Wrestling hosted its Trick or Treat event on October 10 at the Kaycee Club in LaSalle, Illinois."
 federation: INDIE
 date: 2026-10-12T21:00:00.000Z
 source_id: 333406

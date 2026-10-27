@@ -1,7 +1,7 @@
 ---
 title: "PAC Death Investigation Takes New Turn With Additional Testing After Autopsy"
 slug: "pac-death-investigation-takes-new-turn-with-additional-testing-after-autopsy"
-description: "The investigation into the death of PAC has taken a new turn as the Cook County Medical Examiner's Office ordered additional testing following the initial…"
+description: "The investigation into the death of PAC has taken a new turn as the Cook County Medical Examiner's Office ordered additional testing following the initial."
 federation: INDIE
 date: 2026-10-09T14:27:30.000Z
 source_id: 802252738

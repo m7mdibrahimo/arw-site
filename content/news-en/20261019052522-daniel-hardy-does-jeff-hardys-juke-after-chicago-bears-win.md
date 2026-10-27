@@ -1,7 +1,7 @@
 ---
 title: "Daniel Hardy Does Jeff Hardy's Juke After Chicago Bears' Win"
 slug: "daniel-hardy-does-jeff-hardys-juke-after-chicago-bears-win"
-description: "Daniel Hardy celebrated a victory by performing Jeff Hardy's signature juke. The Chicago Bears defeated the Atlanta Falcons 31-23 on October 18 at…"
+description: "Daniel Hardy celebrated a victory by performing Jeff Hardy's signature juke."
 federation: INDIE
 date: 2026-10-19T02:25:22.000Z
 source_id: 334619

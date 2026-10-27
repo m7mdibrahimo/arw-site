@@ -1,7 +1,7 @@
 ---
 title: "Samantha Irvin Turned Down WWE Record Deal Before Departure"
 slug: "samantha-irvin-turned-down-wwe-record-deal-before-departure"
-description: "Samantha Irvin is addressing details of her WWE exit, stating that she turned down a recording contract offer from the company because her sole desire was…"
+description: "Samantha Irvin is addressing details of her WWE exit, stating that she turned down a recording contract offer from the company because her sole desire was."
 federation: WWE
 date: 2026-10-25T11:04:51.000Z
 source_id: 802259455

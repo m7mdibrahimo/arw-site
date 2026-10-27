@@ -1,7 +1,7 @@
 ---
 title: "Some Within WWE Feeling Sting Over The Rock's Comments on Tony Khan"
 slug: "some-within-wwe-feeling-sting-over-the-rocks-comments-on-tony-khan"
-description: "Following the passing of AEW star PAC, WWE star and TKO board member Dwayne \"The Rock\" Johnson paid tribute to his former colleague on social media. While…"
+description: "Following the passing of AEW star PAC, WWE star and TKO board member Dwayne \"The Rock\" Johnson paid tribute to his former colleague on social media."
 federation: WWE
 date: 2026-10-23T20:49:48.000Z
 source_id: 1036440828

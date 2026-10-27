@@ -1,7 +1,7 @@
 ---
 title: "Steph De Lander Reflects on Leaving TNA and Her ROH Future"
 slug: "steph-de-lander-reflects-on-leaving-tna-and-her-roh-future"
-description: "Steph De Lander discussed her departure from TNA Wrestling and her current status with ROH during an appearance on TMZSports Inside the Ring. The…"
+description: "Steph De Lander discussed her departure from TNA Wrestling and her current status with ROH during an appearance on TMZSports Inside the Ring."
 federation: ROH
 date: 2026-10-10T21:00:00.000Z
 source_id: 2739389464

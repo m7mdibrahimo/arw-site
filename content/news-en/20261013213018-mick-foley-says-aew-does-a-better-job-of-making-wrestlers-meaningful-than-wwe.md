@@ -1,7 +1,7 @@
 ---
 title: "Mick Foley Says AEW Does a Better Job of Making Wrestlers Meaningful Than WWE"
 slug: "mick-foley-says-aew-does-a-better-job-of-making-wrestlers-meaningful-than-wwe"
-description: "Mick Foley stated that AEW has become the wrestling show that keeps pulling him back because the company treats the entire roster with importance rather…"
+description: "Mick Foley stated that AEW has become the wrestling show that keeps pulling him back because the company treats the entire roster with importance rather than."
 federation: AEW
 date: 2026-10-13T18:30:18.000Z
 source_id: 802254672

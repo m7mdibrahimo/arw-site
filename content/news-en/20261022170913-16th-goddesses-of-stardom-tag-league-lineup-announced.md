@@ -1,7 +1,7 @@
 ---
 title: "16th Goddesses of STARDOM Tag League Lineup Announced"
 slug: "16th-goddesses-of-stardom-tag-league-lineup-announced"
-description: "STARDOM has announced the official lineup for the 16th Goddesses of STARDOM Tag League. The round-robin tournament is scheduled to begin on November 1 and…"
+description: "STARDOM has announced the official lineup for the 16th Goddesses of STARDOM Tag League."
 federation: INDIE
 date: 2026-10-22T14:09:13.000Z
 source_id: 335128

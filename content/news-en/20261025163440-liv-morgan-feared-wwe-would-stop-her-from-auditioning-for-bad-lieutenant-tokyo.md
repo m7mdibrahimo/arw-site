@@ -1,7 +1,7 @@
 ---
 title: "Liv Morgan Feared WWE Would Stop Her From Auditioning for Bad Lieutenant: Tokyo"
 slug: "liv-morgan-feared-wwe-would-stop-her-from-auditioning-for-bad-lieutenant-tokyo"
-description: "Liv Morgan revealed she feared WWE would prevent her from auditioning for the movie Bad Lieutenant: Tokyo due to its mature content. The WWE Women's World…"
+description: "Liv Morgan revealed she feared WWE would prevent her from auditioning for the movie Bad Lieutenant: Tokyo due to its mature content."
 federation: WWE
 date: 2026-10-25T13:34:40.000Z
 source_id: 802259522

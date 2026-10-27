@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Doesn't Think He'll Ever Win the United States Championship"
 slug: "cody-rhodes-doesnt-think-hell-ever-win-the-united-states-championship"
-description: "During a recent interview on Flagrant, Cody Rhodes discussed the accomplishments that have eluded him in WWE, noting that while he still has a chance to…"
+description: "During a recent interview on Flagrant, Cody Rhodes discussed the accomplishments that have eluded him in WWE."
 federation: WWE
 date: 2026-10-08T14:00:00.000Z
 source_id: 332668

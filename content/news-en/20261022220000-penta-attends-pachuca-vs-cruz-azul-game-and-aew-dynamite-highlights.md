@@ -1,7 +1,7 @@
 ---
 title: "Penta Attends Pachuca vs. Cruz Azul Game and AEW Dynamite Highlights"
 slug: "penta-attends-pachuca-vs-cruz-azul-game-and-aew-dynamite-highlights"
-description: "Penta recently attended the match between Pachuca and Cruz Azul. AEW Dynamite featured several top highlights. Kelani Jordan celebrated a birthday, and…"
+description: "Penta recently attended the match between Pachuca and Cruz Azul. AEW Dynamite featured several top highlights."
 federation: AEW
 date: 2026-10-22T19:00:00.000Z
 source_id: 335171

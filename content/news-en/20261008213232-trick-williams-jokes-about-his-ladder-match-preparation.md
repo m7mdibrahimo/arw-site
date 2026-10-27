@@ -1,7 +1,7 @@
 ---
 title: "Trick Williams Jokes About His Ladder Match Preparation"
 slug: "trick-williams-jokes-about-his-ladder-match-preparation"
-description: "Trick Williams has a unique method for preparing for the upcoming Money in the Bank ladder match. While training with Big E, Williams shared his humorous…"
+description: "Trick Williams has a unique method for preparing for the upcoming Money in the Bank ladder match."
 federation: WWE
 date: 2026-10-08T18:32:32.000Z
 source_id: 332790

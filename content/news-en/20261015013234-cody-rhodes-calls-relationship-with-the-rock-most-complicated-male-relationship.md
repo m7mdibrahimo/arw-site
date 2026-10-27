@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Calls Relationship With The Rock 'Most Complicated Male Relationship'"
 slug: "cody-rhodes-calls-relationship-with-the-rock-most-complicated-male-relationship"
-description: "Cody Rhodes recently discussed his complex professional and personal relationship with Dwayne \"The Rock\" Johnson. During an appearance on the \"Last Meals\"…"
+description: "Cody Rhodes recently discussed his complex professional and personal relationship with Dwayne \"The Rock\" Johnson."
 federation: WWE
 date: 2026-10-14T22:32:34.000Z
 source_id: 5138247746

@@ -1,7 +1,7 @@
 ---
 title: "CMLL Viernes Espectacular Results (10/9/2026): Skadi Advances to the Universal Championship Finals"
 slug: "cmll-viernes-espectacular-results-10-9-2026-skadi-advances-to-the-universal-cham"
-description: "The October 9, 2026, episode of CMLL Viernes Espectacular took place at Arena Mexico in Mexico City. The event was broadcast on the CMLL YouTube membership…"
+description: "The October 9, 2026, episode of CMLL Viernes Espectacular took place at Arena Mexico in Mexico City."
 federation: INDIE
 date: 2026-10-10T15:30:00.000Z
 source_id: 333037

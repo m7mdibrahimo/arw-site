@@ -1,7 +1,7 @@
 ---
 title: "Deonna Purrazzo Explains the Significance of Winning the ROH Women's Pure Championship"
 slug: "deonna-purrazzo-explains-the-significance-of-winning-the-roh-womens-pure-champio"
-description: "Deonna Purrazzo recently discussed her historical reign as the inaugural ROH Women's Pure Champion, highlighting the deep connection she shares with Ring…"
+description: "Deonna Purrazzo recently discussed her historical reign as the inaugural ROH Women's Pure Champion."
 federation: ROH
 date: 2026-10-12T13:00:00.000Z
 source_id: 333440

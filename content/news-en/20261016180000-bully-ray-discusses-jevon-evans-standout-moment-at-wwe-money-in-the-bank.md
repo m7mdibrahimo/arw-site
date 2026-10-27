@@ -1,7 +1,7 @@
 ---
 title: "Bully Ray Discusses Je'Von Evans' Standout Moment at WWE Money in the Bank"
 slug: "bully-ray-discusses-jevon-evans-standout-moment-at-wwe-money-in-the-bank"
-description: "During a recent episode of Busted Open, Bully Ray discussed Je'Von Evans' performance at WWE Money in the Bank, where he competed in the men's ladder match…"
+description: "During a recent episode of Busted Open, Bully Ray discussed Je'Von Evans' performance at WWE Money in the Bank."
 federation: WWE
 date: 2026-10-16T15:00:00.000Z
 source_id: 2557522802

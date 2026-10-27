@@ -1,7 +1,7 @@
 ---
 title: "Shayna Baszler Signs With TNA Wrestling"
 slug: "shayna-baszler-signs-with-tna-wrestling"
-description: "Shayna Baszler has officially signed with TNA Wrestling following her championship victory at Bound for Glory. The former WWE star confirmed the signing,…"
+description: "Shayna Baszler has officially signed with TNA Wrestling following her championship victory at Bound for Glory."
 federation: TNA
 date: 2026-10-22T14:10:13.000Z
 source_id: 802258503

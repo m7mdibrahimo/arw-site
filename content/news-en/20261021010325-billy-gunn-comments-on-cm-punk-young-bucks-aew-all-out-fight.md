@@ -1,7 +1,7 @@
 ---
 title: "Billy Gunn Comments on CM Punk & Young Bucks AEW All Out Fight"
 slug: "billy-gunn-comments-on-cm-punk-young-bucks-aew-all-out-fight"
-description: "AEW star and coach Billy Gunn addressed the famous backstage brawl between CM Punk and The Elite that took place after the All Out 2022 press conference.…"
+description: "AEW star and coach Billy Gunn addressed the famous backstage brawl between CM Punk and The Elite that took place after the All Out 2022 press conference."
 federation: AEW
 date: 2026-10-20T22:03:25.000Z
 source_id: 2695749316

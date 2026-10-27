@@ -1,7 +1,7 @@
 ---
 title: "Zelina Vega Says She Has Had Nightmares Every Night Since Leaving WWE"
 slug: "zelina-vega-says-she-has-had-nightmares-every-night-since-leaving-wwe"
-description: "Zelina Vega says that leaving WWE has been a difficult emotional process, revealing that she has dealt with recurring nightmares since her departure.…"
+description: "Zelina Vega says that leaving WWE has been a difficult emotional process, revealing that she has dealt with recurring nightmares since her departure."
 federation: WWE
 date: 2026-10-15T19:52:25.000Z
 source_id: 802255475

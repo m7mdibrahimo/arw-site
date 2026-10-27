@@ -1,7 +1,7 @@
 ---
 title: "ZARIA vs. Izzi Dame Set for NXT Halloween Havoc"
 slug: "zaria-vs-izzi-dame-set-for-nxt-halloween-havoc"
-description: "Izzi Dame is set to face ZARIA at NXT Halloween Havoc. Over the past few weeks, Dame has targeted NXT Women's North American Champion ZARIA, digging up…"
+description: "Izzi Dame is set to face ZARIA at NXT Halloween Havoc. Over the past few weeks, Dame has targeted NXT Women's North American Champion ZARIA."
 federation: WWE
 date: 2026-10-21T01:12:11.000Z
 source_id: 334933

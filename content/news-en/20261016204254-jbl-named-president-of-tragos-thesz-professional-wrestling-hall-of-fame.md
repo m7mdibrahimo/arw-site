@@ -1,7 +1,7 @@
 ---
 title: "JBL Named President of Tragos/Thesz Professional Wrestling Hall of Fame"
 slug: "jbl-named-president-of-tragos-thesz-professional-wrestling-hall-of-fame"
-description: "John Bradshaw Layfield has been named the new president of the George Tragos/Lou Thesz Professional Wrestling Hall of Fame board of directors, taking over…"
+description: "John Bradshaw Layfield has been named the new president of the George Tragos/Lou Thesz Professional Wrestling Hall of Fame board of directors."
 federation: WWE
 date: 2026-10-16T17:42:54.000Z
 source_id: 802255761

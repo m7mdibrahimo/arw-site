@@ -1,7 +1,7 @@
 ---
 title: "GCW Shotzi Blackheart's Drive-In From Hell Results"
 slug: "gcw-shotzi-blackhearts-drive-in-from-hell-results"
-description: "Game Changer Wrestling hosted GCW Shotzi Blackheart's Drive-In From Hell on October 25 from the Brownsville Drive-In Theater in Grindstone, Pennsylvania.…"
+description: "Game Changer Wrestling hosted GCW Shotzi Blackheart's Drive-In From Hell on October 25 from the Brownsville Drive-In Theater in Grindstone, Pennsylvania."
 federation: INDIE
 date: 2026-10-26T15:11:31.000Z
 source_id: 335847

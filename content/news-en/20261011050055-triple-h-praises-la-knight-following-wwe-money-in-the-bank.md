@@ -1,7 +1,7 @@
 ---
 title: "Triple H Praises LA Knight Following WWE Money in the Bank"
 slug: "triple-h-praises-la-knight-following-wwe-money-in-the-bank"
-description: "Triple H spoke highly of LA Knight following his performance at WWE Money In The Bank. Knight challenged Roman Reigns for the WWE World Heavyweight Title…"
+description: "Triple H spoke highly of LA Knight following his performance at WWE Money In The Bank."
 federation: WWE
 date: 2026-10-11T02:00:55.000Z
 source_id: 333201

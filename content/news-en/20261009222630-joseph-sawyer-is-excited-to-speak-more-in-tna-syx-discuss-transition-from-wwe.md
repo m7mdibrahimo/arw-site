@@ -1,7 +1,7 @@
 ---
 title: "Joseph Sawyer Is Excited to Speak More in TNA, Syx Discuss Transition From WWE"
 slug: "joseph-sawyer-is-excited-to-speak-more-in-tna-syx-discuss-transition-from-wwe"
-description: "Syx, consisting of Joseph Sawyer and Samuel Shaw, made an immediate impact in TNA by attacking the Hardys. The pair, formerly known as the Wyatt Sicks in…"
+description: "Syx, consisting of Joseph Sawyer and Samuel Shaw, made an immediate impact in TNA by attacking the Hardys."
 federation: TNA
 date: 2026-10-09T19:26:30.000Z
 source_id: 332902

@@ -1,7 +1,7 @@
 ---
 title: "Scotty 2 Hotty Recalls Stone Cold Steve Austin Taking Him to Doctor's Appointment"
 slug: "scotty-2-hotty-recalls-stone-cold-steve-austin-taking-him-to-doctors-appointment"
-description: "During a recent appearance on Insight with Chris Van Vliet, Scotty 2 Hotty recalled how Stone Cold Steve Austin accompanied him to his first doctor's…"
+description: "During a recent appearance on Insight with Chris Van Vliet, Scotty 2 Hotty recalled how Stone Cold Steve Austin accompanied him to his first doctor's."
 federation: WWE
 date: 2026-10-18T12:30:00.000Z
 source_id: 3222502267

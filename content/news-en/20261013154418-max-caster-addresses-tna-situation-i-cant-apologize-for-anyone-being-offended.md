@@ -1,7 +1,7 @@
 ---
 title: "Max Caster Addresses TNA Situation: I Can’t Apologize for Anyone Being Offended"
 slug: "max-caster-addresses-tna-situation-i-cant-apologize-for-anyone-being-offended"
-description: "Max Caster addressed the fallout from his appearance at TNA Bound for Glory 2026, where he answered Moose's open challenge. During his entrance rap, Caster…"
+description: "Max Caster addressed the fallout from his appearance at TNA Bound for Glory 2026, where he answered Moose's open challenge."
 federation: TNA
 date: 2026-10-13T12:44:18.000Z
 source_id: 333676

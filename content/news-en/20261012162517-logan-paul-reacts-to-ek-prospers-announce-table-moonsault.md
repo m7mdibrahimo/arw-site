@@ -1,7 +1,7 @@
 ---
 title: "Logan Paul Reacts to EK Prosper's Announce Table Moonsault"
 slug: "logan-paul-reacts-to-ek-prospers-announce-table-moonsault"
-description: "Logan Paul recently shared his thoughts on EK Prosper executing a dangerous announce table springboard moonsault during his WWE NXT Championship match…"
+description: "Logan Paul recently shared his thoughts on EK Prosper executing a dangerous announce table springboard moonsault during his WWE NXT Championship match."
 federation: WWE
 date: 2026-10-12T13:25:17.000Z
 source_id: 333487

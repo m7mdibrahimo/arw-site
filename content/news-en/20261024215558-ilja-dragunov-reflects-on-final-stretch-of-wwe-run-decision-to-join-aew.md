@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Reflects on Final Stretch of WWE Run, Decision to Join AEW"
 slug: "ilja-dragunov-reflects-on-final-stretch-of-wwe-run-decision-to-join-aew"
-description: "Ilja Dragunov recently spoke about the final stretch of his run with WWE and his decision to join AEW. The former WWE Superstar made his AEW debut at the…"
+description: "Ilja Dragunov recently spoke about the final stretch of his run with WWE and his decision to join AEW."
 federation: AEW
 date: 2026-10-24T18:55:58.000Z
 source_id: 2817263555

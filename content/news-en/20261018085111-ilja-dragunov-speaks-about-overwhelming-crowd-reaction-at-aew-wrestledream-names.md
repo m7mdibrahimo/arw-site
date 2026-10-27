@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Speaks About 'Overwhelming' Crowd Reaction at AEW WrestleDream, Names Roster Members He Wants to Wrestle"
 slug: "ilja-dragunov-speaks-about-overwhelming-crowd-reaction-at-aew-wrestledream-names"
-description: "Ilja Dragunov discussed his AEW debut and the crowd reaction he received at AEW WrestleDream after signing with All Elite Wrestling. Speaking alongside…"
+description: "Ilja Dragunov discussed his AEW debut and the crowd reaction he received at AEW WrestleDream after signing with All Elite Wrestling."
 federation: AEW
 date: 2026-10-18T05:51:11.000Z
 source_id: 334502

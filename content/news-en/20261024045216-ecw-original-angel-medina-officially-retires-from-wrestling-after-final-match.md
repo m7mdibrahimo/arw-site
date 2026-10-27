@@ -1,7 +1,7 @@
 ---
 title: "ECW Original Angel Medina Officially Retires From Wrestling After Final Match"
 slug: "ecw-original-angel-medina-officially-retires-from-wrestling-after-final-match"
-description: "Veteran wrestler Angel Medina, widely recognized as Angel of The Baldies, has officially retired following his final match on October 23, 2026. This…"
+description: "Veteran wrestler Angel Medina, widely recognized as Angel of The Baldies, has officially retired following his final match on October 23, 2026."
 federation: INDIE
 date: 2026-10-24T01:52:16.000Z
 source_id: 802258906

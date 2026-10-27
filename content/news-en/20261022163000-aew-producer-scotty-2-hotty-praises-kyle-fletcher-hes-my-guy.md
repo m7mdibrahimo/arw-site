@@ -1,7 +1,7 @@
 ---
 title: "AEW Producer Scotty 2 Hotty Praises Kyle Fletcher: 'He's My Guy'"
 slug: "aew-producer-scotty-2-hotty-praises-kyle-fletcher-hes-my-guy"
-description: "AEW producer Scotty 2 Hotty has praised Kyle Fletcher, highlighting the wrestler's impressive growth over the past year and expressing excitement for his…"
+description: "AEW producer Scotty 2 Hotty has praised Kyle Fletcher, highlighting the wrestler's impressive growth over the past year and expressing excitement for his."
 federation: AEW
 date: 2026-10-22T13:30:00.000Z
 source_id: 3460628453

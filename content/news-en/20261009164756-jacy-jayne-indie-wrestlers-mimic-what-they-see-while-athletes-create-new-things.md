@@ -1,7 +1,7 @@
 ---
 title: "Jacy Jayne: Indie Wrestlers Mimic What They See, While Athletes Create New Things"
 slug: "jacy-jayne-indie-wrestlers-mimic-what-they-see-while-athletes-create-new-things"
-description: "During a recent interview, WWE NXT star Jacy Jayne discussed the differences between independent wrestlers and collegiate athletes in the wrestling…"
+description: "During a recent interview, WWE NXT star Jacy Jayne discussed the differences between independent wrestlers and collegiate athletes in the wrestling business."
 federation: WWE
 date: 2026-10-09T13:47:56.000Z
 source_id: 332851

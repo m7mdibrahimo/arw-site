@@ -1,7 +1,7 @@
 ---
 title: "Mercedes Martinez Undergoes ACL Surgery After GoFundMe Covers Procedure in Full"
 slug: "mercedes-martinez-undergoes-acl-surgery-after-gofundme-covers-procedure-in-full"
-description: "Veteran wrestler Mercedes Martinez has officially undergone surgery to repair a torn ACL in her right knee, which she suffered during an August 15 match…"
+description: "Veteran wrestler Mercedes Martinez has officially undergone surgery to repair a torn ACL in her right knee."
 federation: INDIE
 date: 2026-10-16T16:56:11.000Z
 source_id: 802255702

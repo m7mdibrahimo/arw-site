@@ -1,7 +1,7 @@
 ---
 title: "Sol Ruca: Becky Lynch Taught Me How to Stick Up for Myself"
 slug: "sol-ruca-becky-lynch-taught-me-how-to-stick-up-for-myself"
-description: "Sol Ruca discussed what she learned from working with Becky Lynch, noting that Lynch taught her how to stand up for herself when disagreeing with creative…"
+description: "Sol Ruca discussed what she learned from working with Becky Lynch, noting that Lynch taught her how to stand up for herself when disagreeing with creative."
 federation: WWE
 date: 2026-10-26T13:26:58.000Z
 source_id: 335819

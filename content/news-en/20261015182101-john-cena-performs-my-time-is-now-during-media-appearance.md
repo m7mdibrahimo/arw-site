@@ -1,7 +1,7 @@
 ---
 title: "John Cena Performs 'My Time Is Now' During Media Appearance"
 slug: "john-cena-performs-my-time-is-now-during-media-appearance"
-description: "John Cena recently revisited his classic theme song during a media tour to promote 'Matchbox: The Movie'. During his appearance with Capital, the 17-time…"
+description: "John Cena recently revisited his classic theme song during a media tour to promote 'Matchbox: The Movie'."
 federation: WWE
 date: 2026-10-15T15:21:01.000Z
 source_id: 334059

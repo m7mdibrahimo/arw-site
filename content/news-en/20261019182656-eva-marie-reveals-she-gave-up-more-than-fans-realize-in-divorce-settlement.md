@@ -1,7 +1,7 @@
 ---
 title: "Eva Marie Reveals She Gave Up More Than Fans Realize in Divorce Settlement"
 slug: "eva-marie-reveals-she-gave-up-more-than-fans-realize-in-divorce-settlement"
-description: "Former WWE star Eva Marie opened up about her recent divorce, revealing that she gave up significantly more in the settlement than most people realize.…"
+description: "Former WWE star Eva Marie opened up about her recent divorce, revealing that she gave up significantly more in the settlement than most people realize."
 federation: WWE
 date: 2026-10-19T15:26:56.000Z
 source_id: 802257187

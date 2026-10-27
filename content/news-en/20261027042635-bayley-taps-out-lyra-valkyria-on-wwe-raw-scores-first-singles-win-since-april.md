@@ -1,7 +1,7 @@
 ---
 title: "Bayley Taps Out Lyra Valkyria on WWE Raw, Scores First Singles Win Since April"
 slug: "bayley-taps-out-lyra-valkyria-on-wwe-raw-scores-first-singles-win-since-april"
-description: "Bayley secured a significant victory on WWE Raw by defeating Lyra Valkyria in a No Disqualification match. The bout added another chapter to their ongoing…"
+description: "Bayley secured a significant victory on WWE Raw by defeating Lyra Valkyria in a No Disqualification match."
 federation: WWE
 date: 2026-10-27T01:26:35.000Z
 source_id: 335984

@@ -1,7 +1,7 @@
 ---
 title: "Bandido Names Ilja Dragunov and Kenny Omega as His Dream AEW Opponents"
 slug: "bandido-names-ilja-dragunov-and-kenny-omega-as-his-dream-aew-opponents"
-description: "AEW star Bandido has named Kenny Omega and newly signed star Ilja Dragunov as his dream opponents in the company. Since joining All Elite Wrestling, the…"
+description: "AEW star Bandido has named Kenny Omega and newly signed star Ilja Dragunov as his dream opponents in the company."
 federation: AEW
 date: 2026-10-21T17:52:54.000Z
 source_id: 334989

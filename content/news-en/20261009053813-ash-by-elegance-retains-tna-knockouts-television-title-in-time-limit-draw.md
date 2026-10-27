@@ -1,7 +1,7 @@
 ---
 title: "Ash by Elegance Retains TNA Knockouts Television Title in Time Limit Draw"
 slug: "ash-by-elegance-retains-tna-knockouts-television-title-in-time-limit-draw"
-description: "Elayna Black once again fell short in her pursuit of the TNA Knockouts Television Championship due to the title's strict time limit. During the October 9…"
+description: "Elayna Black once again fell short in her pursuit of the TNA Knockouts Television Championship due to the title's strict time limit."
 federation: TNA
 date: 2026-10-09T02:38:13.000Z
 source_id: 3470190680

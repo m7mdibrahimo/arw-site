@@ -1,7 +1,7 @@
 ---
 title: "North American Title Match, Dusty Rhodes Tag Team Classic Semifinals, Set for WWE NXT"
 slug: "north-american-title-match-dusty-rhodes-tag-team-classic-semifinals-set-for-wwe"
-description: "The lineup for the October 27th episode of WWE NXT has been set as the go-home show ahead of Halloween Havoc on October 31st. Jackson Drake will defend the…"
+description: "The lineup for the October 27th episode of WWE NXT has been set as the go-home show ahead of Halloween Havoc on October 31st."
 federation: WWE
 date: 2026-10-21T02:08:02.000Z
 source_id: 334947

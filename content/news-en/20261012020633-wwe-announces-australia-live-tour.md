@@ -1,7 +1,7 @@
 ---
 title: "WWE Announces Australia Live Tour"
 slug: "wwe-announces-australia-live-tour"
-description: "WWE is returning to Australia and New Zealand this December with a series of live events. The tour begins in Melbourne on December 9, followed by a show in…"
+description: "WWE is returning to Australia and New Zealand this December with a series of live events."
 federation: WWE
 date: 2026-10-11T23:06:33.000Z
 source_id: 333325

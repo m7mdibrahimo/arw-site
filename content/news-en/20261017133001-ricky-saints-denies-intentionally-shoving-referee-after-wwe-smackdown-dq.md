@@ -1,7 +1,7 @@
 ---
 title: "Ricky Saints Denies Intentionally Shoving Referee After WWE SmackDown DQ"
 slug: "ricky-saints-denies-intentionally-shoving-referee-after-wwe-smackdown-dq"
-description: "Ricky Saints is disputing the controversial finish of his AAA World Cruiserweight Championship match against Rey Fénix on the October 16, 2026 episode of…"
+description: "Ricky Saints is disputing the controversial finish of his AAA World Cruiserweight Championship match against Rey Fénix on the October 16."
 federation: WWE
 date: 2026-10-17T10:30:01.000Z
 source_id: 802256149

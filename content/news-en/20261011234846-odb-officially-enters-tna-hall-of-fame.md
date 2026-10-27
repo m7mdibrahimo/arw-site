@@ -1,7 +1,7 @@
 ---
 title: "ODB Officially Enters TNA Hall of Fame"
 slug: "odb-officially-enters-tna-hall-of-fame"
-description: "ODB officially entered the TNA Hall of Fame on October 11, 2026, during a special ceremony ahead of Bound for Glory. Al Snow and Traci Brooks handled the…"
+description: "ODB officially entered the TNA Hall of Fame on October 11, 2026, during a special ceremony ahead of Bound for Glory."
 federation: TNA
 date: 2026-10-11T20:48:46.000Z
 source_id: 802253748

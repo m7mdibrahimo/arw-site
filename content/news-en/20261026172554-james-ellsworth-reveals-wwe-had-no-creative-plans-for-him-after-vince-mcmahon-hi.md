@@ -1,7 +1,7 @@
 ---
 title: "James Ellsworth Reveals WWE Had No Creative Plans for Him After Vince McMahon Hired Him"
 slug: "james-ellsworth-reveals-wwe-had-no-creative-plans-for-him-after-vince-mcmahon-hi"
-description: "James Ellsworth went from being destroyed by Braun Strowman to becoming a regular on WWE SmackDown, but he recently revealed that WWE had no creative plans…"
+description: "James Ellsworth went from being destroyed by Braun Strowman to becoming a regular on WWE SmackDown."
 federation: WWE
 date: 2026-10-26T14:25:54.000Z
 source_id: 802259817

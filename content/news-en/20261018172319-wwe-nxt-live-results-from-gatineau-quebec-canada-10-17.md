@@ -1,7 +1,7 @@
 ---
 title: "WWE NXT Live Results From Gatineau, Quebec, Canada (10/17)"
 slug: "wwe-nxt-live-results-from-gatineau-quebec-canada-10-17"
-description: "WWE held an NXT live event on October 17 in Gatineau, Quebec, Canada. Hank Walker and Tank Ledger defeated DarkState, consisting of Cutler James and Osiris…"
+description: "WWE held an NXT live event on October 17 in Gatineau, Quebec, Canada. Hank Walker and Tank Ledger defeated DarkState."
 federation: WWE
 date: 2026-10-18T14:23:19.000Z
 source_id: 334537

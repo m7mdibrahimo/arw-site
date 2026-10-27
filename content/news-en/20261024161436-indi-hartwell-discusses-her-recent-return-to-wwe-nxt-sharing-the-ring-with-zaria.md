@@ -1,7 +1,7 @@
 ---
 title: "Indi Hartwell Discusses Her Recent Return to WWE NXT, Sharing the Ring With Zaria"
 slug: "indi-hartwell-discusses-her-recent-return-to-wwe-nxt-sharing-the-ring-with-zaria"
-description: "Indi Hartwell recently discussed her brief return to WWE NXT and getting the opportunity to share the ring with Zaria. During an appearance, Hartwell spoke…"
+description: "Indi Hartwell recently discussed her brief return to WWE NXT and getting the opportunity to share the ring with Zaria."
 federation: WWE
 date: 2026-10-24T13:14:36.000Z
 source_id: 335420

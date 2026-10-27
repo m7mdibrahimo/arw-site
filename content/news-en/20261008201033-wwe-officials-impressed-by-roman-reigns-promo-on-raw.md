@@ -1,7 +1,7 @@
 ---
 title: "WWE Officials Impressed by Roman Reigns Promo on RAW"
 slug: "wwe-officials-impressed-by-roman-reigns-promo-on-raw"
-description: "WWE officials were impressed with Roman Reigns during his segment with LA Knight on the Money in the Bank go-home edition of Monday Night Raw ahead of…"
+description: "WWE officials were impressed with Roman Reigns during his segment with LA Knight on the Money in the Bank go-home edition of Monday Night Raw ahead of their."
 federation: WWE
 date: 2026-10-08T17:10:33.000Z
 source_id: 332762

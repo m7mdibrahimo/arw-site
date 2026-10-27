@@ -1,7 +1,7 @@
 ---
 title: "WWE SmackDown Preview for October 16, 2026"
 slug: "wwe-smackdown-preview-for-october-16-2026"
-description: "The October 16 episode of SmackDown delivers high drama following Money in the Bank. Cody Rhodes and Randy Orton meet face-to-face before Crown Jewel, per…"
+description: "The October 16 episode of SmackDown delivers high drama following Money in the Bank."
 federation: WWE
 date: 2026-10-16T09:19:17.000Z
 source_id: 802255550

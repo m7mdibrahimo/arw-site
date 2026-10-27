@@ -1,7 +1,7 @@
 ---
 title: "The Young Bucks Retain AEW World Tag Team Titles Against Kyle Fletcher & Kevin Knight at WrestleDream"
 slug: "the-young-bucks-retain-aew-world-tag-team-titles-against-kyle-fletcher-kevin-kni"
-description: "The Young Bucks successfully defended their AEW World Tag Team Titles at the 2026 WrestleDream event. Matt and Nick Jackson faced the Don Callis Family's…"
+description: "The Young Bucks successfully defended their AEW World Tag Team Titles at the 2026 WrestleDream event."
 federation: AEW
 date: 2026-10-18T01:42:53.000Z
 source_id: 334444

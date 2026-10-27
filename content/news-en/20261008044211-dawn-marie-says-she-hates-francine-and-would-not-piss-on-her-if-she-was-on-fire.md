@@ -1,7 +1,7 @@
 ---
 title: "Dawn Marie Says She Hates Francine and Would Not Piss on Her if She Was on Fire"
 slug: "dawn-marie-says-she-hates-francine-and-would-not-piss-on-her-if-she-was-on-fire"
-description: "Dawn Marie remains deeply critical of her former ECW rival Francine, stating that their past backstage conflicts continue to impact her perspective today.…"
+description: "Dawn Marie remains deeply critical of her former ECW rival Francine, stating that their past backstage conflicts continue to impact her perspective today."
 federation: WWE
 date: 2026-10-08T01:42:11.000Z
 source_id: 802252282

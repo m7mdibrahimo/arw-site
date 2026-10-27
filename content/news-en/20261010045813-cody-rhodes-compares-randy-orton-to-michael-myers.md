@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Compares Randy Orton to Michael Myers"
 slug: "cody-rhodes-compares-randy-orton-to-michael-myers"
-description: "During the latest episode of WWE SmackDown, Cody Rhodes interrupted a segment featuring The Miz and Kit Wilson. Rhodes took the opportunity to address…"
+description: "During the latest episode of WWE SmackDown, Cody Rhodes interrupted a segment featuring The Miz and Kit Wilson."
 federation: WWE
 date: 2026-10-10T01:58:13.000Z
 source_id: 332958

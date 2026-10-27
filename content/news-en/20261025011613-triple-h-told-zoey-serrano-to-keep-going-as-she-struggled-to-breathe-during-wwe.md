@@ -1,7 +1,7 @@
 ---
 title: "Triple H Told Zoey Serrano to Keep Going as She Struggled to Breathe During WWE Match"
 slug: "triple-h-told-zoey-serrano-to-keep-going-as-she-struggled-to-breathe-during-wwe"
-description: "Zoey Serrano revealed that she once struggled to breathe during a match against Shayna Baszler in WWE. While caught in Baszler's Kirifuda Clutch, Serrano…"
+description: "Zoey Serrano revealed that she once struggled to breathe during a match against Shayna Baszler in WWE."
 federation: WWE
 date: 2026-10-24T22:16:13.000Z
 source_id: 802259233

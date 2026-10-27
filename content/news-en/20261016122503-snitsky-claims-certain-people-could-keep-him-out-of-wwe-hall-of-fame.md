@@ -1,7 +1,7 @@
 ---
 title: "Snitsky Claims \"Certain People\" Could Keep Him Out of WWE Hall of Fame"
 slug: "snitsky-claims-certain-people-could-keep-him-out-of-wwe-hall-of-fame"
-description: "Former WWE star Snitsky recently discussed his thoughts on a potential WWE Hall of Fame induction during an appearance on the It's Not Our Fault podcast.…"
+description: "Former WWE star Snitsky recently discussed his thoughts on a potential WWE Hall of Fame induction during an appearance on the It's Not Our Fault podcast."
 federation: WWE
 date: 2026-10-16T09:25:03.000Z
 source_id: 802255566

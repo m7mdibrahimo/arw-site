@@ -1,7 +1,7 @@
 ---
 title: "WWE Crown Jewel Faces New Security Concerns After Riyadh Airport Attack"
 slug: "wwe-crown-jewel-faces-new-security-concerns-after-riyadh-airport-attack"
-description: "WWE Crown Jewel faces new security concerns after an attack on King Khalid International Airport in Riyadh forced an evacuation and temporarily halted…"
+description: "WWE Crown Jewel faces new security concerns after an attack on King Khalid International Airport in Riyadh forced an evacuation and temporarily halted flights."
 federation: WWE
 date: 2026-10-10T15:54:22.000Z
 source_id: 802253206

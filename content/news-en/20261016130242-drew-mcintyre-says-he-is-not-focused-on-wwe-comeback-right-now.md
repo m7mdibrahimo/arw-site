@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Says He Is Not Focused on WWE Comeback Right Now"
 slug: "drew-mcintyre-says-he-is-not-focused-on-wwe-comeback-right-now"
-description: "Drew McIntyre says he is not focused on his WWE comeback right now, as he is currently busy promoting his new movie Agent of Shadows. During a recent…"
+description: "Drew McIntyre says he is not focused on his WWE comeback right now, as he is currently busy promoting his new movie Agent of Shadows."
 federation: WWE
 date: 2026-10-16T10:02:42.000Z
 source_id: 802255585

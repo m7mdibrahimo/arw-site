@@ -1,7 +1,7 @@
 ---
 title: "Persephone Wins Four-Way Match to Retain TBS Championship at AEW WrestleDream"
 slug: "persephone-wins-four-way-match-to-retain-tbs-championship-at-aew-wrestledream"
-description: "Persephone successfully defended her TBS Championship in a four-way match against Dani Luna, Hyan, and Queen Aminata at AEW WrestleDream. Despite the…"
+description: "Persephone successfully defended her TBS Championship in a four-way match against Dani Luna, Hyan, and Queen Aminata at AEW WrestleDream."
 federation: AEW
 date: 2026-10-18T02:01:37.000Z
 source_id: 334448

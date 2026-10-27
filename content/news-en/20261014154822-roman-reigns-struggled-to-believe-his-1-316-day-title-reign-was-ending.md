@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Struggled to Believe His 1,316-Day Title Reign Was Ending"
 slug: "roman-reigns-struggled-to-believe-his-1-316-day-title-reign-was-ending"
-description: "Roman Reigns admitted that it was difficult for him to believe his historic 1,316-day championship reign was actually coming to an end when Cody Rhodes…"
+description: "Roman Reigns admitted that it was difficult for him to believe his historic 1,316-day championship reign was actually coming to an end when Cody Rhodes."
 federation: WWE
 date: 2026-10-14T12:48:22.000Z
 source_id: 802254960

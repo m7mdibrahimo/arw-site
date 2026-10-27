@@ -1,7 +1,7 @@
 ---
 title: "Billy Gunn Says He Wrestled Much More Than Expected in AEW"
 slug: "billy-gunn-says-he-wrestled-much-more-than-expected-in-aew"
-description: "Billy Gunn's AEW tenure has involved a significant amount of in-ring action, far exceeding his initial expectations. Gunn, who originally joined the…"
+description: "Billy Gunn's AEW tenure has involved a significant amount of in-ring action, far exceeding his initial expectations."
 federation: AEW
 date: 2026-10-24T21:00:00.000Z
 source_id: 4364660057

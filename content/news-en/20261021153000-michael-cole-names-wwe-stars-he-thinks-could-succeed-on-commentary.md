@@ -1,7 +1,7 @@
 ---
 title: "Michael Cole Names WWE Stars He Thinks Could Succeed on Commentary"
 slug: "michael-cole-names-wwe-stars-he-thinks-could-succeed-on-commentary"
-description: "Michael Cole recently discussed his broadcasting future and potential successors on the WWE commentary desk. Speaking on OutKick, Cole named Wade Barrett,…"
+description: "Michael Cole recently discussed his broadcasting future and potential successors on the WWE commentary desk."
 federation: WWE
 date: 2026-10-21T12:30:00.000Z
 source_id: 4718216742

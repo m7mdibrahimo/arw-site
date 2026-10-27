@@ -1,7 +1,7 @@
 ---
 title: "AAA on FOX Results (October 17): La Catalina Appears and Tag Title Bout"
 slug: "aaa-on-fox-results-october-17-la-catalina-appears-and-tag-title-bout"
-description: "Lucha Libre AAA broadcast a new episode of AAA on FOX on October 17 via Fox Latin America and YouTube. La Catalina opened the program to discuss her AAA…"
+description: "Lucha Libre AAA broadcast a new episode of AAA on FOX on October 17 via Fox Latin America and YouTube."
 federation: INDIE
 date: 2026-10-18T03:26:10.000Z
 source_id: 334469

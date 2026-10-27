@@ -1,7 +1,7 @@
 ---
 title: "Kenny Omega and Jon Moxley Prepare for NJPW Returns"
 slug: "kenny-omega-and-jon-moxley-prepare-for-njpw-returns"
-description: "New Japan Pro Wrestling held its annual King of Pro Wrestling event at Ryogoku Sumo Hall in Tokyo, featuring major announcements regarding the in-ring…"
+description: "New Japan Pro Wrestling held its annual King of Pro Wrestling event at Ryogoku Sumo Hall in Tokyo."
 federation: NJPW
 date: 2026-10-12T16:04:31.000Z
 source_id: 3064823140

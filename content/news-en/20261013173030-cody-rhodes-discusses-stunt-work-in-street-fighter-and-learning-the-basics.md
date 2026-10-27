@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Discusses Stunt Work in Street Fighter and Learning the Basics"
 slug: "cody-rhodes-discusses-stunt-work-in-street-fighter-and-learning-the-basics"
-description: "Cody Rhodes recently opened up about his experience performing stunt work while on the set of the Street Fighter movie. While many people assume that…"
+description: "Cody Rhodes recently opened up about his experience performing stunt work while on the set of the Street Fighter movie."
 federation: WWE
 date: 2026-10-13T14:30:30.000Z
 source_id: 333681

@@ -1,7 +1,7 @@
 ---
 title: "TNA Thursday Night Impact Results: October 22, 2026"
 slug: "tna-thursday-night-impact-results-october-22-2026"
-description: "TNA Thursday Night Impact took place on October 22, 2026, at the Dothan Civic Center in Dothan, Alabama. The event featured high-stakes championship action…"
+description: "TNA Thursday Night Impact took place on October 22, 2026, at the Dothan Civic Center in Dothan, Alabama."
 federation: TNA
 date: 2026-10-23T02:12:49.000Z
 source_id: 2481817458

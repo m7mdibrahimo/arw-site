@@ -1,7 +1,7 @@
 ---
 title: "WWE Considering Bigger Push for Nikki Bella"
 slug: "wwe-considering-bigger-push-for-nikki-bella"
-description: "Nikki Bella is enjoying a successful WWE return behind the scenes, according to WrestleVotes Radio on Fightful Select. Officials are reportedly thrilled…"
+description: "Nikki Bella is enjoying a successful WWE return behind the scenes, according to WrestleVotes Radio on Fightful Select."
 federation: WWE
 date: 2026-10-22T16:48:02.000Z
 source_id: 802258543

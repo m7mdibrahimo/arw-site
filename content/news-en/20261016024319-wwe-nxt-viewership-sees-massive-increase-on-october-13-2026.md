@@ -1,7 +1,7 @@
 ---
 title: "WWE NXT Viewership Sees Massive Increase on October 13, 2026"
 slug: "wwe-nxt-viewership-sees-massive-increase-on-october-13-2026"
-description: "Viewership for WWE NXT on The CW Network saw a significant boost for the October 13, 2026 episode. According to Wrestlenomics, the show drew 732,000…"
+description: "Viewership for WWE NXT on The CW Network saw a significant boost for the October 13, 2026 episode."
 federation: WWE
 date: 2026-10-15T23:43:19.000Z
 source_id: 802255516

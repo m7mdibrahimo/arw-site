@@ -1,7 +1,7 @@
 ---
 title: "Marc Summers Recalls WWE Trying to Hire Him Away From Nickelodeon"
 slug: "marc-summers-recalls-wwe-trying-to-hire-him-away-from-nickelodeon"
-description: "Legendary TV host Marc Summers recently recalled that WWE once attempted to hire him away from Nickelodeon to work as an announcer. During an interview…"
+description: "Legendary TV host Marc Summers recently recalled that WWE once attempted to hire him away from Nickelodeon to work as an announcer."
 federation: WWE
 date: 2026-10-25T12:30:00.000Z
 source_id: 4989550527

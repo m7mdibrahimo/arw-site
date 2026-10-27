@@ -1,7 +1,7 @@
 ---
 title: "AEW Dynamite Preview, Start Time, How to Watch, Location (10/21)"
 slug: "aew-dynamite-preview-start-time-how-to-watch-location-10-21"
-description: "AEW Dynamite takes place on October 21, 2026, at the Watsco Center in Coral Gables, FL, airing live at 8 p.m. ET on TBS and Max. The match card features…"
+description: "AEW Dynamite takes place on October 21, 2026, at the Watsco Center in Coral Gables, FL, airing live at 8 p.m. ET on TBS and Max."
 federation: AEW
 date: 2026-10-21T12:00:00.000Z
 source_id: 334901

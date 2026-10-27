@@ -1,7 +1,7 @@
 ---
 title: "WWE Women's Title Bout Added to 10/23 WWE SmackDown"
 slug: "wwe-womens-title-bout-added-to-10-23-wwe-smackdown"
-description: "A WWE Women's Championship match has been added to the upcoming episode of WWE SmackDown. SmackDown general manager Nick Aldis announced that Chelsea Green…"
+description: "A WWE Women's Championship match has been added to the upcoming episode of WWE SmackDown."
 federation: WWE
 date: 2026-10-21T23:44:18.000Z
 source_id: 335051

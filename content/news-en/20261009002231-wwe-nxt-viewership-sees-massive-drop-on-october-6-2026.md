@@ -1,7 +1,7 @@
 ---
 title: "WWE NXT Viewership Sees Massive Drop on October 6, 2026"
 slug: "wwe-nxt-viewership-sees-massive-drop-on-october-6-2026"
-description: "WWE NXT viewership on The CW Network saw a significant decline for the October 6, 2026 episode. According to data, the show drew 532,000 viewers, with a 0…"
+description: "WWE NXT viewership on The CW Network saw a significant decline for the October 6, 2026 episode."
 federation: WWE
 date: 2026-10-08T21:22:31.000Z
 source_id: 802252549

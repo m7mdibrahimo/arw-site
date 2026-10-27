@@ -1,7 +1,7 @@
 ---
 title: "Vince Russo Blasts Fans for Incorrectly Using the Term Pop"
 slug: "vince-russo-blasts-fans-for-incorrectly-using-the-term-pop"
-description: "Former WWE writer Vince Russo recently criticized wrestling fans for misusing the term “pop,” explaining that a true pop requires buildup rather than just…"
+description: "Former WWE writer Vince Russo recently criticized wrestling fans for misusing the term “pop,” explaining that a true pop requires buildup rather than just."
 federation: WWE
 date: 2026-10-21T18:35:12.000Z
 source_id: 802258214

@@ -1,7 +1,7 @@
 ---
 title: "Tony Khan Claims AEW’s Biggest Pay-Per-View Numbers Ever Have Come in 2026"
 slug: "tony-khan-claims-aews-biggest-pay-per-view-numbers-ever-have-come-in-2026"
-description: "AEW President Tony Khan recently stated that the company is experiencing its most successful year ever in terms of pay-per-view business, with…"
+description: "AEW President Tony Khan recently stated that the company is experiencing its most successful year ever in terms of pay-per-view business."
 federation: AEW
 date: 2026-10-17T11:11:41.000Z
 source_id: 802256153

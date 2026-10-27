@@ -1,7 +1,7 @@
 ---
 title: "Tama Tonga Responds to Controversy Over Ilja Dragunov Post"
 slug: "tama-tonga-responds-to-controversy-over-ilja-dragunov-post"
-description: "Tama Tonga has officially addressed the debate surrounding a recent video clip he shared featuring Ilja Dragunov. The WWE star clarified that no hidden…"
+description: "Tama Tonga has officially addressed the debate surrounding a recent video clip he shared featuring Ilja Dragunov."
 federation: WWE
 date: 2026-10-21T21:56:40.000Z
 source_id: 802258258

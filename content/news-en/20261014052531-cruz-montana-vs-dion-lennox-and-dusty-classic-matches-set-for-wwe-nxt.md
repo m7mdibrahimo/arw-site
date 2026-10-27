@@ -1,7 +1,7 @@
 ---
 title: "Cruz Montana vs. Dion Lennox and Dusty Classic Matches Set for WWE NXT"
 slug: "cruz-montana-vs-dion-lennox-and-dusty-classic-matches-set-for-wwe-nxt"
-description: "WWE has announced a singles match between Cruz Montana and Dion Lennox for the October 20 episode of WWE NXT. According to Fightful, the rivalry…"
+description: "WWE has announced a singles match between Cruz Montana and Dion Lennox for the October 20 episode of WWE NXT."
 federation: WWE
 date: 2026-10-14T02:25:31.000Z
 source_id: 333802

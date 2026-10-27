@@ -1,7 +1,7 @@
 ---
 title: "Rob Van Dam Reveals Uncomfortable Encounters With Scott Hall and Why Their Relationship Wasn’t Always Positive"
 slug: "rob-van-dam-reveals-uncomfortable-encounters-with-scott-hall-and-why-their-relat"
-description: "Rob Van Dam recently opened up about his complicated relationship with the late WWE Hall of Famer Scott Hall, explaining that he refuses to rewrite history…"
+description: "Rob Van Dam recently opened up about his complicated relationship with the late WWE Hall of Famer Scott Hall."
 federation: WWE
 date: 2026-10-24T20:20:51.000Z
 source_id: 802259219

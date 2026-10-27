@@ -1,7 +1,7 @@
 ---
 title: "Lucha Libre AAA Announces January Event at Arena GNP Seguros"
 slug: "lucha-libre-aaa-announces-january-event-at-arena-gnp-seguros"
-description: "Lucha Libre AAA will run an event at Arena GNP Seguros in Acapulco on January 2. The venue regularly hosts tennis tournaments and can seat approximately…"
+description: "Lucha Libre AAA will run an event at Arena GNP Seguros in Acapulco on January 2."
 federation: INDIE
 date: 2026-10-26T01:50:17.000Z
 source_id: 335749

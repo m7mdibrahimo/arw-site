@@ -1,7 +1,7 @@
 ---
 title: "El Cuatrero Says Legal Case Is Not Over Yet"
 slug: "el-cuatrero-says-legal-case-is-not-over-yet"
-description: "According to Ringside News, wrestler El Cuatrero spoke about the difficult period he experienced over the past two years following a domestic violence case…"
+description: "According to Ringside News, wrestler El Cuatrero spoke about the difficult period he experienced over the past two years following a domestic violence case."
 federation: INDIE
 date: 2026-10-11T15:26:26.000Z
 source_id: 802253663

@@ -1,7 +1,7 @@
 ---
 title: "WWE NXT Star Names Former World Champ GUNTHER as Dream WrestleMania Opponent"
 slug: "wwe-nxt-star-names-former-world-champ-gunther-as-dream-wrestlemania-opponent"
-description: "WWE NXT star Shiloh Hill revealed that former World Heavyweight Champion GUNTHER is his dream opponent for WrestleMania. Hill is currently feuding with…"
+description: "WWE NXT star Shiloh Hill revealed that former World Heavyweight Champion GUNTHER is his dream opponent for WrestleMania."
 federation: WWE
 date: 2026-10-12T12:30:00.000Z
 source_id: 2411017372

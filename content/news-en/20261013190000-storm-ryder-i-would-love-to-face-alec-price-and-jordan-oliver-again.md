@@ -1,7 +1,7 @@
 ---
 title: "Storm Ryder: I Would Love to Face Alec Price and Jordan Oliver Again"
 slug: "storm-ryder-i-would-love-to-face-alec-price-and-jordan-oliver-again"
-description: "Storm Ryder recently discussed his career goals and potential dream matches in a new interview. Ryder, who debuted in professional wrestling last year…"
+description: "Storm Ryder recently discussed his career goals and potential dream matches in a new interview."
 federation: INDIE
 date: 2026-10-13T16:00:00.000Z
 source_id: 333481

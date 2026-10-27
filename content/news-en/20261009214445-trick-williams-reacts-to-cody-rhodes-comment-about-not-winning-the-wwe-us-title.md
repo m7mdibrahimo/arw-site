@@ -1,7 +1,7 @@
 ---
 title: "Trick Williams Reacts to Cody Rhodes' Comment About Not Winning the WWE US Title"
 slug: "trick-williams-reacts-to-cody-rhodes-comment-about-not-winning-the-wwe-us-title"
-description: "Trick Williams does not believe Cody Rhodes will win the United States Championship anytime soon. During a recent appearance on the Flagrant podcast, Cody…"
+description: "Trick Williams does not believe Cody Rhodes will win the United States Championship anytime soon."
 federation: WWE
 date: 2026-10-09T18:44:45.000Z
 source_id: 332889

@@ -1,7 +1,7 @@
 ---
 title: "Becky Lynch Shares Vince McMahon's Reaction to Her Pregnancy"
 slug: "becky-lynch-shares-vince-mcmahons-reaction-to-her-pregnancy"
-description: "Becky Lynch was one of WWE's top stars when she discovered she was pregnant, but informing Vince McMahon about her departure caused her severe anxiety.…"
+description: "Becky Lynch was one of WWE's top stars when she discovered she was pregnant, but informing Vince McMahon about her departure caused her severe anxiety."
 federation: WWE
 date: 2026-10-17T17:16:04.000Z
 source_id: 802255847

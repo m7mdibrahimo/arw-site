@@ -1,7 +1,7 @@
 ---
 title: "Nikki Bella Is Tired of People Trying to Set Her Up With Men"
 slug: "nikki-bella-is-tired-of-people-trying-to-set-her-up-with-men"
-description: "Nikki Bella is speaking out against matchmaking attempts, explaining on a recent podcast episode that she is frustrated by friends and acquaintances trying…"
+description: "Nikki Bella is speaking out against matchmaking attempts, explaining on a recent podcast episode that she is frustrated by friends and acquaintances trying."
 federation: WWE
 date: 2026-10-09T08:41:29.000Z
 source_id: 802252626

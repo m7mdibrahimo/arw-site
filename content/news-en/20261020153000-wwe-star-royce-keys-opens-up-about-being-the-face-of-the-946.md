@@ -1,7 +1,7 @@
 ---
 title: "WWE Star Royce Keys Opens Up About Being the 'Face of' The 946"
 slug: "wwe-star-royce-keys-opens-up-about-being-the-face-of-the-946"
-description: "WWE star Royce Keys recently opened up about his role as the leader and face of the 946 faction on WWE RAW. During an interview on Busted Open Radio, Keys…"
+description: "WWE star Royce Keys recently opened up about his role as the leader and face of the 946 faction on WWE RAW."
 federation: WWE
 date: 2026-10-20T12:30:00.000Z
 source_id: 1230092042

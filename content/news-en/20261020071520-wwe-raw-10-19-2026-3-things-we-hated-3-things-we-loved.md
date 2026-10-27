@@ -1,7 +1,7 @@
 ---
 title: "WWE RAW 10/19/2026: 3 Things We Hated & 3 Things We Loved"
 slug: "wwe-raw-10-19-2026-3-things-we-hated-3-things-we-loved"
-description: "This week's edition of WWE RAW featured a chaotic opening segment involving Roman Reigns and Sami Zayn, a standout performance from Penta, and a title…"
+description: "This week's edition of WWE RAW featured a chaotic opening segment involving Roman Reigns and Sami Zayn, a standout performance from Penta."
 federation: WWE
 date: 2026-10-20T04:15:20.000Z
 source_id: 2376862120

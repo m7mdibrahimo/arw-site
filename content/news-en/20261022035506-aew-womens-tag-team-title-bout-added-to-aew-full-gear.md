@@ -1,7 +1,7 @@
 ---
 title: "AEW Women's Tag Team Title Bout Added to AEW Full Gear"
 slug: "aew-womens-tag-team-title-bout-added-to-aew-full-gear"
-description: "Harley Cameron and Kris Statlander earned a shot at the AEW Women's Tag Team Titles by winning a three-way match at AEW Collision Grand Slam France against…"
+description: "Harley Cameron and Kris Statlander earned a shot at the AEW Women's Tag Team Titles by winning a three-way match at AEW Collision Grand Slam France against."
 federation: AEW
 date: 2026-10-22T00:55:06.000Z
 source_id: 333207

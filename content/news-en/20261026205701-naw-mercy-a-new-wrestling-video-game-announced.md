@@ -1,7 +1,7 @@
 ---
 title: "NAW MERCY, a New Wrestling Video Game Announced"
 slug: "naw-mercy-a-new-wrestling-video-game-announced"
-description: "Nearly Average Wrestling announced NAW MERCY, a new arcade-style fighting game inspired by classics like Mortal Kombat. Actor and comedian Shane Hartline…"
+description: "Nearly Average Wrestling announced NAW MERCY, a new arcade-style fighting game inspired by classics like Mortal Kombat."
 federation: INDIE
 date: 2026-10-26T17:57:01.000Z
 source_id: 335879

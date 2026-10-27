@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Kept Training In-Ring During Three Month Stay in Barcelona"
 slug: "drew-mcintyre-kept-training-in-ring-during-three-month-stay-in-barcelona"
-description: "Drew McIntyre has been absent from WWE television since WrestleMania 42 following his loss to Jacob Fatu. During his time away, he has been busy filming…"
+description: "Drew McIntyre has been absent from WWE television since WrestleMania 42 following his loss to Jacob Fatu."
 federation: WWE
 date: 2026-10-19T17:37:58.000Z
 source_id: 334706

@@ -1,7 +1,7 @@
 ---
 title: "Bron Breakker Weighs His Strength Against That of Past and Present WWE Stars"
 slug: "bron-breakker-weighs-his-strength-against-that-of-past-and-present-wwe-stars"
-description: "Bron Breakker recently compared his strength to several past and present WWE stars, acknowledging that legends like The Rock, Brock Lesnar, and Mark Henry…"
+description: "Bron Breakker recently compared his strength to several past and present WWE stars, acknowledging that legends like The Rock, Brock Lesnar."
 federation: WWE
 date: 2026-10-12T13:00:00.000Z
 source_id: 1896269593

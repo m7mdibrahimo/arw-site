@@ -1,7 +1,7 @@
 ---
 title: "IWGP Women's Title Bout, Zack Sabre Jr. vs. Hechicero Added to CMLL x NJPW Lucha Kingdom"
 slug: "iwgp-womens-title-bout-zack-sabre-jr-vs-hechicero-added-to-cmll-x-njpw-lucha-kin"
-description: "The IWGP Women's Championship will be defended at the CMLL x NJPW Lucha Kingdom event on November 16th at Arena México. During the October 14th episode of…"
+description: "The IWGP Women's Championship will be defended at the CMLL x NJPW Lucha Kingdom event on November 16th at Arena México."
 federation: NJPW
 date: 2026-10-15T03:46:54.000Z
 source_id: 334003

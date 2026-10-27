@@ -1,7 +1,7 @@
 ---
 title: "Karl Fredericks Explains Why He Was Originally Hesitant About Co-Curating PRODUCE Show"
 slug: "karl-fredericks-explains-why-he-was-originally-hesitant-about-co-curating-produc"
-description: "Karl Fredericks recently discussed his upcoming involvement in co-producing PRODUCE Volume 5, scheduled for Monday, October 12. In a new interview,…"
+description: "Karl Fredericks recently discussed his upcoming involvement in co-producing PRODUCE Volume 5, scheduled for Monday, October 12."
 federation: INDIE
 date: 2026-10-08T16:39:28.000Z
 source_id: 332745

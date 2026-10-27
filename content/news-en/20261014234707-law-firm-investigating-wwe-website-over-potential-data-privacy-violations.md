@@ -1,7 +1,7 @@
 ---
 title: "Law Firm Investigating WWE Website Over Potential Data Privacy Violations"
 slug: "law-firm-investigating-wwe-website-over-potential-data-privacy-violations"
-description: "A law firm is investigating WWE.com regarding potential data privacy violations. Levi & Korsinsky is looking into whether the company shared visitors'…"
+description: "A law firm is investigating WWE.com regarding potential data privacy violations."
 federation: WWE
 date: 2026-10-14T20:47:07.000Z
 source_id: 802255051

@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Recalls Visa Process That Allowed Him to Debut at AEW WrestleDream 2026"
 slug: "ilja-dragunov-recalls-visa-process-that-allowed-him-to-debut-at-aew-wrestledream"
-description: "Ilja Dragunov recently discussed the visa renewal process that allowed him to make his debut at AEW WrestleDream. Appearing on The Ariel Helwani Show,…"
+description: "Ilja Dragunov recently discussed the visa renewal process that allowed him to make his debut at AEW WrestleDream."
 federation: AEW
 date: 2026-10-21T21:53:56.000Z
 source_id: 3218524985

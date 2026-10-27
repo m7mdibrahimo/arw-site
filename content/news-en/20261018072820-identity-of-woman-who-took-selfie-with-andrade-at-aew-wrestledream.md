@@ -1,7 +1,7 @@
 ---
 title: "Identity of Woman Who Took Selfie With Andrade at AEW WrestleDream"
 slug: "identity-of-woman-who-took-selfie-with-andrade-at-aew-wrestledream"
-description: "Andrade El Idolo continued his recent ringside routine at AEW WrestleDream by stopping mid-match to take a selfie and share a kiss with a fan in the crowd.…"
+description: "Andrade El Idolo continued his recent ringside routine at AEW WrestleDream by stopping mid-match to take a selfie and share a kiss with a fan in the crowd."
 federation: AEW
 date: 2026-10-18T04:28:20.000Z
 source_id: 802256748

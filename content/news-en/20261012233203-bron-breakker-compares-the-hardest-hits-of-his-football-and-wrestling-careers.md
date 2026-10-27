@@ -1,7 +1,7 @@
 ---
 title: "Bron Breakker Compares the Hardest Hits of His Football and Wrestling Careers"
 slug: "bron-breakker-compares-the-hardest-hits-of-his-football-and-wrestling-careers"
-description: "Bron Breakker recently discussed the most impactful hits he has experienced in both his football and professional wrestling careers. Before his transition…"
+description: "Bron Breakker recently discussed the most impactful hits he has experienced in both his football and professional wrestling careers."
 federation: WWE
 date: 2026-10-12T20:32:03.000Z
 source_id: 333554

@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Shuts Down Retirement Talk Despite Growing Hollywood Career"
 slug: "drew-mcintyre-shuts-down-retirement-talk-despite-growing-hollywood-career"
-description: "Drew McIntyre has made it clear that his growing Hollywood career does not mean he is leaving WWE behind. During a recent podcast appearance, McIntyre…"
+description: "Drew McIntyre has made it clear that his growing Hollywood career does not mean he is leaving WWE behind."
 federation: WWE
 date: 2026-10-17T17:37:47.000Z
 source_id: 802256260

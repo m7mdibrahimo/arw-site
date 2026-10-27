@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Calls Out People Who Credit Dusty Rhodes for His Work Ethic"
 slug: "cody-rhodes-calls-out-people-who-credit-dusty-rhodes-for-his-work-ethic"
-description: "WWE star Cody Rhodes recently opened up about the frustrations of having his intense work ethic constantly attributed to his legendary father, Dusty…"
+description: "WWE star Cody Rhodes recently opened up about the frustrations of having his intense work ethic constantly attributed to his legendary father, Dusty Rhodes."
 federation: WWE
 date: 2026-10-21T20:01:39.000Z
 source_id: 802258242

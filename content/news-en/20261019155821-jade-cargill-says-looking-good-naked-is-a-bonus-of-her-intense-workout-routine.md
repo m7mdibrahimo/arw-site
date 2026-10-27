@@ -1,7 +1,7 @@
 ---
 title: "Jade Cargill Says Looking Good Naked Is a Bonus of Her Intense Workout Routine"
 slug: "jade-cargill-says-looking-good-naked-is-a-bonus-of-her-intense-workout-routine"
-description: "Jade Cargill discussed her core training routine and fitness approach in a recent video for Women's Health. The WWE Superstar explained that exercising…"
+description: "Jade Cargill discussed her core training routine and fitness approach in a recent video for Women's Health."
 federation: WWE
 date: 2026-10-19T12:58:21.000Z
 source_id: 802257153

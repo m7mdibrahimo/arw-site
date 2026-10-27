@@ -1,7 +1,7 @@
 ---
 title: "Carmelo Hayes Revealed as 946 Ally After Brutal Attack on The Usos and Solo Sikoa"
 slug: "carmelo-hayes-revealed-as-946-ally-after-brutal-attack-on-the-usos-and-solo-siko"
-description: "During a chaotic six-man tag team match between The Usos and Solo Sikoa against the team of Bronco Nima, Lucien Price, and Royce Keys, Carmelo Hayes made a…"
+description: "During a chaotic six-man tag team match between The Usos and Solo Sikoa against the team of Bronco Nima, Lucien Price, and Royce Keys."
 federation: WWE
 date: 2026-10-13T02:32:19.000Z
 source_id: 802254320

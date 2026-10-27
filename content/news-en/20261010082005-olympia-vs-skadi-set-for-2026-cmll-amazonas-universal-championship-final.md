@@ -1,7 +1,7 @@
 ---
 title: "Olympia vs. Skadi Set for 2026 CMLL Amazonas Universal Championship Final"
 slug: "olympia-vs-skadi-set-for-2026-cmll-amazonas-universal-championship-final"
-description: "The 2026 CMLL Amazonas Universal Championship tournament is reaching its conclusion. The final match is scheduled for next weekend at Arena México, where…"
+description: "The 2026 CMLL Amazonas Universal Championship tournament is reaching its conclusion."
 federation: INDIE
 date: 2026-10-10T05:20:05.000Z
 source_id: 333092

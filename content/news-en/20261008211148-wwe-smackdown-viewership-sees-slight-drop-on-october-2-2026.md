@@ -1,7 +1,7 @@
 ---
 title: "WWE SmackDown Viewership Sees Slight Drop on October 2, 2026"
 slug: "wwe-smackdown-viewership-sees-slight-drop-on-october-2-2026"
-description: "WWE SmackDown viewership numbers for the October 2, 2026, episode on USA Network saw a minor decline compared to the previous week. According to data, the…"
+description: "WWE SmackDown viewership numbers for the October 2, 2026, episode on USA Network saw a minor decline compared to the previous week."
 federation: WWE
 date: 2026-10-08T18:11:48.000Z
 source_id: 802252491

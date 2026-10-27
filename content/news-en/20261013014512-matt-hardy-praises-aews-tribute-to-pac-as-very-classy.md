@@ -1,7 +1,7 @@
 ---
 title: "Matt Hardy Praises AEW's Tribute to PAC as 'Very Classy'"
 slug: "matt-hardy-praises-aews-tribute-to-pac-as-very-classy"
-description: "Following the sudden passing of PAC in late September, AEW held a tribute show during the following episode of AEW Dynamite. Fans praised the event,…"
+description: "Following the sudden passing of PAC in late September, AEW held a tribute show during the following episode of AEW Dynamite."
 federation: AEW
 date: 2026-10-12T22:45:12.000Z
 source_id: 1386848472

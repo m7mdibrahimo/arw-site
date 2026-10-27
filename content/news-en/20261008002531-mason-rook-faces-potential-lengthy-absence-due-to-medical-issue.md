@@ -1,7 +1,7 @@
 ---
 title: "Mason Rook Faces Potential Lengthy Absence Due to Medical Issue"
 slug: "mason-rook-faces-potential-lengthy-absence-due-to-medical-issue"
-description: "Mason Rook might be sidelined from the ring for an extended period due to a medical situation that appears more severe than initially anticipated.…"
+description: "Mason Rook might be sidelined from the ring for an extended period due to a medical situation that appears more severe than initially anticipated."
 federation: WWE
 date: 2026-10-07T21:25:31.000Z
 source_id: 802252213

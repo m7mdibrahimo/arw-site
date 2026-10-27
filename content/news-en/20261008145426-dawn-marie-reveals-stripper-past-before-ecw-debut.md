@@ -1,7 +1,7 @@
 ---
 title: "Dawn Marie Reveals Stripper Past Before ECW Debut"
 slug: "dawn-marie-reveals-stripper-past-before-ecw-debut"
-description: "According to Ringside News, Dawn Marie recalled that she was still working as a stripper when she received a sudden phone call telling her to travel to…"
+description: "According to Ringside News, Dawn Marie recalled that she was still working as a stripper when she received a sudden phone call telling her to travel."
 federation: WWE
 date: 2026-10-08T11:54:26.000Z
 source_id: 802252338

@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Addresses Rumors He’s Joining the MCU After Marvel Meeting"
 slug: "cody-rhodes-addresses-rumors-hes-joining-the-mcu-after-marvel-meeting"
-description: "Cody Rhodes recently addressed the rumors surrounding his mysterious meeting with Marvel Studios, keeping fans guessing about a potential role in the MCU.…"
+description: "Cody Rhodes recently addressed the rumors surrounding his mysterious meeting with Marvel Studios, keeping fans guessing about a potential role in the MCU."
 federation: WWE
 date: 2026-10-16T19:02:38.000Z
 source_id: 802255795

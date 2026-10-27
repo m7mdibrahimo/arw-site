@@ -1,7 +1,7 @@
 ---
 title: "Becky Lynch Tells Stephanie Vaquer She Will Be Injured Again Within Three Weeks of WWE Return"
 slug: "becky-lynch-tells-stephanie-vaquer-she-will-be-injured-again-within-three-weeks"
-description: "Stephanie Vaquer has been medically cleared to return to WWE, but Becky Lynch is already predicting she will be sidelined again soon. After WWE posted a…"
+description: "Stephanie Vaquer has been medically cleared to return to WWE, but Becky Lynch is already predicting she will be sidelined again soon."
 federation: WWE
 date: 2026-10-24T22:03:56.000Z
 source_id: 802259227

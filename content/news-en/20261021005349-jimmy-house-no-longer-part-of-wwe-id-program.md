@@ -1,7 +1,7 @@
 ---
 title: "Jimmy House No Longer Part of WWE ID Program"
 slug: "jimmy-house-no-longer-part-of-wwe-id-program"
-description: "Jimmy House is no longer part of the WWE ID program. Fightful Select confirmed that House was released from the program, and he confirmed the news himself.…"
+description: "Jimmy House is no longer part of the WWE ID program. Fightful Select confirmed that House was released from the program, and he confirmed the news himself."
 federation: WWE
 date: 2026-10-20T21:53:49.000Z
 source_id: 334904

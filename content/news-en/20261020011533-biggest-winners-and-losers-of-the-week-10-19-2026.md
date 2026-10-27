@@ -1,7 +1,7 @@
 ---
 title: "Biggest Winners and Losers of the Week — 10/19/2026"
 slug: "biggest-winners-and-losers-of-the-week-10-19-2026"
-description: "Another week of professional wrestling brings a fresh batch of winners and losers from the Wrestling Inc. staff. Carmelo Hayes had a massive week, joining…"
+description: "Another week of professional wrestling brings a fresh batch of winners and losers from the Wrestling Inc. staff."
 federation: WWE
 date: 2026-10-19T22:15:33.000Z
 source_id: 1112181697

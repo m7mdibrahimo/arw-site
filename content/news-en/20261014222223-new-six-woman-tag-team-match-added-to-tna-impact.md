@@ -1,7 +1,7 @@
 ---
 title: "New Six-Woman Tag Team Match Added to TNA iMPACT"
 slug: "new-six-woman-tag-team-match-added-to-tna-impact"
-description: "TNA added a new six-woman tag team match to the upcoming TNA iMPACT card on October 15. The special event celebrates The Hardys and their 35 years in…"
+description: "TNA added a new six-woman tag team match to the upcoming TNA iMPACT card on October 15."
 federation: TNA
 date: 2026-10-14T19:22:23.000Z
 source_id: 333888

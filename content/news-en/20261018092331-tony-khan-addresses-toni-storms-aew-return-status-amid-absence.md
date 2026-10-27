@@ -1,7 +1,7 @@
 ---
 title: "Tony Khan Addresses Toni Storm’s AEW Return Status Amid Absence"
 slug: "tony-khan-addresses-toni-storms-aew-return-status-amid-absence"
-description: "Tony Khan provided an update on Toni Storm’s mysterious absence from AEW during the post-AEW WrestleDream media scrum, confirming that the former AEW…"
+description: "Tony Khan provided an update on Toni Storm’s mysterious absence from AEW during the post-AEW WrestleDream media scrum."
 federation: AEW
 date: 2026-10-18T06:23:31.000Z
 source_id: 802256810

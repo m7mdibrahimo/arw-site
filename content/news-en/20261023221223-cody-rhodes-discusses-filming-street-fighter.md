@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Discusses Filming Street Fighter"
 slug: "cody-rhodes-discusses-filming-street-fighter"
-description: "Cody Rhodes recently discussed how the WWE executive team simplified his transition to filming Street Fighter, which hit theaters on October 16 with Roman…"
+description: "Cody Rhodes recently discussed how the WWE executive team simplified his transition to filming Street Fighter."
 federation: WWE
 date: 2026-10-23T19:12:23.000Z
 source_id: 335292

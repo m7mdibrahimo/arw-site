@@ -1,7 +1,7 @@
 ---
 title: "WWE HOFer JBL Dismisses Long-Standing Rumor of HBK/Vader Beef"
 slug: "wwe-hofer-jbl-dismisses-long-standing-rumor-of-hbk-vader-beef"
-description: "During a recent episode of Something To Wrestle, WWE Hall of Famer JBL addressed the long-standing rumor regarding backstage tension between Shawn Michaels…"
+description: "During a recent episode of Something To Wrestle, WWE Hall of Famer JBL addressed the long-standing rumor regarding backstage tension between Shawn Michaels."
 federation: WWE
 date: 2026-10-24T17:30:00.000Z
 source_id: 3424916546

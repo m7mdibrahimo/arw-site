@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Believes The Rock Will Wrestle in WWE Again"
 slug: "cody-rhodes-believes-the-rock-will-wrestle-in-wwe-again"
-description: "Cody Rhodes recently discussed the in-ring future of Dwayne \"The Rock\" Johnson, expressing his belief that the WWE legend still has more matches left in…"
+description: "Cody Rhodes recently discussed the in-ring future of Dwayne \"The Rock\" Johnson."
 federation: WWE
 date: 2026-10-25T16:37:19.000Z
 source_id: 1895281782

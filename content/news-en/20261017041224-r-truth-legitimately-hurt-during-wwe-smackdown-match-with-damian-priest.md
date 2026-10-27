@@ -1,7 +1,7 @@
 ---
 title: "R-Truth Legitimately Hurt During WWE SmackDown Match With Damian Priest"
 slug: "r-truth-legitimately-hurt-during-wwe-smackdown-match-with-damian-priest"
-description: "R-Truth suffered a legitimate injury during his singles match against Damian Priest on the October 16, 2026, episode of WWE SmackDown. The injury occurred…"
+description: "R-Truth suffered a legitimate injury during his singles match against Damian Priest on the October 16, 2026, episode of WWE SmackDown."
 federation: WWE
 date: 2026-10-17T01:12:24.000Z
 source_id: 802255985

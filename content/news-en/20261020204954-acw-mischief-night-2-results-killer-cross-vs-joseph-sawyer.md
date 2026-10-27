@@ -1,7 +1,7 @@
 ---
 title: "ACW Mischief Night 2 Results: Killer Cross vs. Joseph Sawyer"
 slug: "acw-mischief-night-2-results-killer-cross-vs-joseph-sawyer"
-description: "Awesome Championship Wrestling hosted its ACW Mischief Night 2 event on October 17 from the MJN Convention Center in Poughkeepsie, NY, airing live on…"
+description: "Awesome Championship Wrestling hosted its ACW Mischief Night 2 event on October 17 from the MJN Convention Center in Poughkeepsie, NY."
 federation: INDIE
 date: 2026-10-20T17:49:54.000Z
 source_id: 334843

@@ -1,7 +1,7 @@
 ---
 title: "DDP Mocks Insane Gas Prices With Kevin Nash Meme"
 slug: "ddp-mocks-insane-gas-prices-with-kevin-nash-meme"
-description: "Diamond Dallas Page used a Kevin Nash meme based on his old WWE Diesel gimmick to mock high gas prices. DDP shared an image on X designed like a gas…"
+description: "Diamond Dallas Page used a Kevin Nash meme based on his old WWE Diesel gimmick to mock high gas prices."
 federation: WWE
 date: 2026-10-17T20:05:03.000Z
 source_id: 802256309

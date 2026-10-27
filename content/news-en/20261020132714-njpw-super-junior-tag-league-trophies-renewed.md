@@ -1,7 +1,7 @@
 ---
 title: "NJPW Super Junior Tag League Trophies Renewed"
 slug: "njpw-super-junior-tag-league-trophies-renewed"
-description: "New Japan Pro-Wrestling has announced that the winners of the upcoming Super Junior Tag League will each receive a brand-new trophy to commemorate their…"
+description: "New Japan Pro-Wrestling has announced that the winners of the upcoming Super Junior Tag League will each receive a brand-new trophy to commemorate their."
 federation: NJPW
 date: 2026-10-20T10:27:14.000Z
 source_id: 334772

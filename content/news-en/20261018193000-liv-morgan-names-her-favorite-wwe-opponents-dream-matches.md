@@ -1,7 +1,7 @@
 ---
 title: "Liv Morgan Names Her Favorite WWE Opponents & Dream Matches"
 slug: "liv-morgan-names-her-favorite-wwe-opponents-dream-matches"
-description: "WWE Women's World Champion Liv Morgan recently opened up about her favorite opponents in the ring during an appearance on the Six Feet Under podcast.…"
+description: "WWE Women's World Champion Liv Morgan recently opened up about her favorite opponents in the ring during an appearance on the Six Feet Under podcast."
 federation: WWE
 date: 2026-10-18T16:30:00.000Z
 source_id: 4075564185

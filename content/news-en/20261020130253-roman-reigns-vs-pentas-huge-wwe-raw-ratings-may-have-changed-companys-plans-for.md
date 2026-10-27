@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns vs. Penta’s Huge WWE RAW Ratings May Have Changed Company’s Plans for Mexican Stars"
 slug: "roman-reigns-vs-pentas-huge-wwe-raw-ratings-may-have-changed-companys-plans-for"
-description: "WWE may have found a new formula for drawing viewers, and Penta is a major reason behind it. His match against Roman Reigns in Mexico City delivered some…"
+description: "WWE may have found a new formula for drawing viewers, and Penta is a major reason behind it."
 federation: WWE
 date: 2026-10-20T10:02:53.000Z
 source_id: 802257663

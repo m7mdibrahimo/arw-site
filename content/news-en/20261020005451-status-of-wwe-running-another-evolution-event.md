@@ -1,7 +1,7 @@
 ---
 title: "Status of WWE Running Another Evolution Event"
 slug: "status-of-wwe-running-another-evolution-event"
-description: "WWE fans hoping for another all-women's Evolution event should temper their expectations. According to WrestleVotes, there are no current plans for the…"
+description: "WWE fans hoping for another all-women's Evolution event should temper their expectations."
 federation: WWE
 date: 2026-10-19T21:54:51.000Z
 source_id: 802257356

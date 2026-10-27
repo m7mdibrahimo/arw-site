@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre: WWE and the Fans Need Me, I Don't Need Y'all"
 slug: "drew-mcintyre-wwe-and-the-fans-need-me-i-dont-need-yall"
-description: "Drew McIntyre is currently away from WWE, having been off television for over six months. While his return date remains uncertain, the former champion…"
+description: "Drew McIntyre is currently away from WWE, having been off television for over six months."
 federation: WWE
 date: 2026-10-16T14:46:38.000Z
 source_id: 334172

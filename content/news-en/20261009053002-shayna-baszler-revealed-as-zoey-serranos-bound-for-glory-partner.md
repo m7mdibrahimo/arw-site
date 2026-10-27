@@ -1,7 +1,7 @@
 ---
 title: "Shayna Baszler Revealed as Zoey Serrano's Bound for Glory Partner"
 slug: "shayna-baszler-revealed-as-zoey-serranos-bound-for-glory-partner"
-description: "Zoey Serrano acted quickly to secure a formidable partner for her upcoming match at Bound for Glory. During the October 8, 2026, episode of TNA iMPACT,…"
+description: "Zoey Serrano acted quickly to secure a formidable partner for her upcoming match at Bound for Glory."
 federation: TNA
 date: 2026-10-09T02:30:02.000Z
 source_id: 802252596

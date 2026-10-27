@@ -1,7 +1,7 @@
 ---
 title: "Brandon Cutler Mocks The Young Bucks for Squash Loss on AEW Dynamite"
 slug: "brandon-cutler-mocks-the-young-bucks-for-squash-loss-on-aew-dynamite"
-description: "Brandon Cutler poked fun at The Young Bucks following their first career squash match loss on last week's AEW Dynamite. According to Fightful, the AEW…"
+description: "Brandon Cutler poked fun at The Young Bucks following their first career squash match loss on last week's AEW Dynamite."
 federation: AEW
 date: 2026-10-26T15:03:00.000Z
 source_id: 335833

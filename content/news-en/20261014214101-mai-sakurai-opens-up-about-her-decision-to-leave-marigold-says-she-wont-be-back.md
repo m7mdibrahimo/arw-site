@@ -1,7 +1,7 @@
 ---
 title: "Mai Sakurai Opens Up About Her Decision to Leave Marigold, Says She Won't Be Back Anytime Soon"
 slug: "mai-sakurai-opens-up-about-her-decision-to-leave-marigold-says-she-wont-be-back"
-description: "Mai Sakurai has opened up about her upcoming departure from Dream Star Fighting Marigold, revealing that she plans to take a break from pro wrestling. Her…"
+description: "Mai Sakurai has opened up about her upcoming departure from Dream Star Fighting Marigold, revealing that she plans to take a break from pro wrestling."
 federation: INDIE
 date: 2026-10-14T18:41:01.000Z
 source_id: 333882

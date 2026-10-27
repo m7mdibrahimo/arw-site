@@ -1,7 +1,7 @@
 ---
 title: "Shotzi Blackheart Saves Allie From Fire 'N Flava on TNA iMPACT"
 slug: "shotzi-blackheart-saves-allie-from-fire-n-flava-on-tna-impact"
-description: "Shotzi Blackheart made her official TNA debut by saving Allie from an ambush during the October 22 episode of TNA iMPACT. This incident followed the loss…"
+description: "Shotzi Blackheart made her official TNA debut by saving Allie from an ambush during the October 22 episode of TNA iMPACT."
 federation: TNA
 date: 2026-10-23T02:44:14.000Z
 source_id: 335228

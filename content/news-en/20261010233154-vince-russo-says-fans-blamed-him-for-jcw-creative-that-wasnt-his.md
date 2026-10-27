@@ -1,7 +1,7 @@
 ---
 title: "Vince Russo Says Fans Blamed Him for JCW Creative That Wasn’t His"
 slug: "vince-russo-says-fans-blamed-him-for-jcw-creative-that-wasnt-his"
-description: "Vince Russo has shared further details regarding his departure from JCW, highlighting a desire to protect his professional reputation. Speaking on the Two…"
+description: "Vince Russo has shared further details regarding his departure from JCW, highlighting a desire to protect his professional reputation."
 federation: INDIE
 date: 2026-10-10T20:31:54.000Z
 source_id: 802253280

@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Talks WWE Beef With CM Punk: He Is a Genuine Piece of Crap"
 slug: "drew-mcintyre-talks-wwe-beef-with-cm-punk-he-is-a-genuine-piece-of-crap"
-description: "During a recent interview, Drew McIntyre opened up about his genuine hatred for CM Punk, stating that their onscreen rivalry is fueled by real animosity.…"
+description: "During a recent interview, Drew McIntyre opened up about his genuine hatred for CM Punk, stating that their onscreen rivalry is fueled by real animosity."
 federation: WWE
 date: 2026-10-24T15:00:00.000Z
 source_id: 2053066546

@@ -1,7 +1,7 @@
 ---
 title: "Penta to Face Bron Breakker on 10/19 WWE Raw"
 slug: "penta-to-face-bron-breakker-on-10-19-wwe-raw"
-description: "Penta will compete on the upcoming episode of WWE Raw. General Manager Adam Pearce announced that the current Mr. Money in the Bank will face Bron Breakker…"
+description: "Penta will compete on the upcoming episode of WWE Raw. General Manager Adam Pearce announced that the current Mr."
 federation: WWE
 date: 2026-10-18T21:54:39.000Z
 source_id: 334587

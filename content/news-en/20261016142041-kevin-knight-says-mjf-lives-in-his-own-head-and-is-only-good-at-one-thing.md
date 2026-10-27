@@ -1,7 +1,7 @@
 ---
 title: "Kevin Knight Says MJF Lives in His Own Head and Is Only Good at One Thing"
 slug: "kevin-knight-says-mjf-lives-in-his-own-head-and-is-only-good-at-one-thing"
-description: "AEW star Kevin Knight recently criticized MJF during an interview on TMZ’s Inside the Ring, following a social media exchange where MJF mocked his roller…"
+description: "AEW star Kevin Knight recently criticized MJF during an interview on TMZ’s Inside the Ring."
 federation: AEW
 date: 2026-10-16T11:20:41.000Z
 source_id: 802255586

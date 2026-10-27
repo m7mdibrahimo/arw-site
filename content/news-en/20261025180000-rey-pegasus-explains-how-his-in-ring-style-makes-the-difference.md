@@ -1,7 +1,7 @@
 ---
 title: "Rey Pegasus Explains How His In-Ring Style Makes the Difference"
 slug: "rey-pegasus-explains-how-his-in-ring-style-makes-the-difference"
-description: "Rey Pegasus opened up about his unique in-ring style and how it has helped him stand out in the promotion. Pegasus first made a name for himself by winning…"
+description: "Rey Pegasus opened up about his unique in-ring style and how it has helped him stand out in the promotion."
 federation: INDIE
 date: 2026-10-25T15:00:00.000Z
 source_id: 335550

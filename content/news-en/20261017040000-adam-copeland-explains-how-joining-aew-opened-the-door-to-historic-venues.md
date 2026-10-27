@@ -1,7 +1,7 @@
 ---
 title: "Adam Copeland Explains How Joining AEW Opened the Door to Historic Venues"
 slug: "adam-copeland-explains-how-joining-aew-opened-the-door-to-historic-venues"
-description: "Adam Copeland discussed how his transition to AEW allowed him to perform in historic venues that he never thought he would reach. Copeland noted that after…"
+description: "Adam Copeland discussed how his transition to AEW allowed him to perform in historic venues that he never thought he would reach."
 federation: AEW
 date: 2026-10-17T01:00:00.000Z
 source_id: 2505940590

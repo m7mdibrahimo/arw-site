@@ -1,7 +1,7 @@
 ---
 title: "Sami Zayn Details His Gradual Heel Turn, Gives the Cheer-Boo Ratio He's Trying to Reach"
 slug: "sami-zayn-details-his-gradual-heel-turn-gives-the-cheer-boo-ratio-hes-trying-to"
-description: "Sami Zayn spoke about his gradual transition to a heel persona during an appearance on Chris Van Vliet's Insight podcast. Zayn explained that the process…"
+description: "Sami Zayn spoke about his gradual transition to a heel persona during an appearance on Chris Van Vliet's Insight podcast."
 federation: WWE
 date: 2026-10-27T10:53:16.000Z
 source_id: 336023

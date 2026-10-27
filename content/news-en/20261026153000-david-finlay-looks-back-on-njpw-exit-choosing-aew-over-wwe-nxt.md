@@ -1,7 +1,7 @@
 ---
 title: "David Finlay Looks Back on NJPW Exit & Choosing AEW Over WWE NXT"
 slug: "david-finlay-looks-back-on-njpw-exit-choosing-aew-over-wwe-nxt"
-description: "David Finlay recently opened up about his decision to leave New Japan Pro-Wrestling after eleven years and sign with AEW in March 2026. Prior to joining…"
+description: "David Finlay recently opened up about his decision to leave New Japan Pro-Wrestling after eleven years and sign with AEW in March 2026."
 federation: AEW
 date: 2026-10-26T12:30:00.000Z
 source_id: 3635025297

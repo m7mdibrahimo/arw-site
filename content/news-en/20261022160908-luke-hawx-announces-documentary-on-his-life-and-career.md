@@ -1,7 +1,7 @@
 ---
 title: "Luke Hawx Announces Documentary on His Life and Career"
 slug: "luke-hawx-announces-documentary-on-his-life-and-career"
-description: "Luke Hawx has announced a new documentary focusing on his life and career in the professional wrestling and entertainment industry. Hawx, who began his…"
+description: "Luke Hawx has announced a new documentary focusing on his life and career in the professional wrestling and entertainment industry."
 federation: INDIE
 date: 2026-10-22T13:09:08.000Z
 source_id: 335124

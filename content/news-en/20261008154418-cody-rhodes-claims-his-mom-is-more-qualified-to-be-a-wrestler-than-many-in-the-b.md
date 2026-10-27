@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Claims His Mom Is More Qualified to Be a Wrestler Than Many in the Business"
 slug: "cody-rhodes-claims-his-mom-is-more-qualified-to-be-a-wrestler-than-many-in-the-b"
-description: "Cody Rhodes recently discussed his mother's involvement in his WrestleMania 40 storyline and made a striking claim about her qualifications. Speaking on…"
+description: "Cody Rhodes recently discussed his mother's involvement in his WrestleMania 40 storyline and made a striking claim about her qualifications."
 federation: WWE
 date: 2026-10-08T12:44:18.000Z
 source_id: 802252364

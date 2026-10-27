@@ -1,7 +1,7 @@
 ---
 title: "Kenny Omega Appears at NJPW King of Pro-Wrestling"
 slug: "kenny-omega-appears-at-njpw-king-of-pro-wrestling"
-description: "Yota Tsuji successfully defended the IWGP Heavyweight Title by defeating Ryohei Oiwa in the main event at NJPW King of Pro-Wrestling. While Tsuji spoke to…"
+description: "Yota Tsuji successfully defended the IWGP Heavyweight Title by defeating Ryohei Oiwa in the main event at NJPW King of Pro-Wrestling."
 federation: NJPW
 date: 2026-10-12T11:07:32.000Z
 source_id: 333463

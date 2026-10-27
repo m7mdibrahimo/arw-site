@@ -1,7 +1,7 @@
 ---
 title: "Ric Flair Provides Update After Fall: 'I Am Focused on My Healing and Recovery Right Now. I Will Be Okay'"
 slug: "ric-flair-provides-update-after-fall-i-am-focused-on-my-healing-and-recovery-rig"
-description: "Ric Flair shared an update with fans following his recent hospitalization after a fall in Florida. The WWE Hall of Famer took to social media to express…"
+description: "Ric Flair shared an update with fans following his recent hospitalization after a fall in Florida."
 federation: WWE
 date: 2026-10-24T16:56:36.000Z
 source_id: 335478

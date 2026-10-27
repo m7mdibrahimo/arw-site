@@ -1,7 +1,7 @@
 ---
 title: "Stipulation Set for Nic Nemeth vs. Ryan Nemeth Match on 10/15 TNA iMPACT"
 slug: "stipulation-set-for-nic-nemeth-vs-ryan-nemeth-match-on-10-15-tna-impact"
-description: "Matt and Jeff Hardy are set to run the October 15th edition of TNA iMPACT, the first show following Bound for Glory. The Hardys have announced that the…"
+description: "Matt and Jeff Hardy are set to run the October 15th edition of TNA iMPACT, the first show following Bound for Glory."
 federation: TNA
 date: 2026-10-13T18:20:06.000Z
 source_id: 333732

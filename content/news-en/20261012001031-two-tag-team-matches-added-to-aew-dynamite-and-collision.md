@@ -1,7 +1,7 @@
 ---
 title: "Two Tag Team Matches Added to AEW Dynamite and Collision"
 slug: "two-tag-team-matches-added-to-aew-dynamite-and-collision"
-description: "All Elite Wrestling has announced two additional tag team matches for the upcoming October 14 edition of AEW Dynamite and Collision. The three-hour…"
+description: "All Elite Wrestling has announced two additional tag team matches for the upcoming October 14 edition of AEW Dynamite and Collision."
 federation: AEW
 date: 2026-10-11T21:10:31.000Z
 source_id: 333297

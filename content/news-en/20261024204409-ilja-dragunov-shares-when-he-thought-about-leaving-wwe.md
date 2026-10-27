@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Shares When He Thought About Leaving WWE"
 slug: "ilja-dragunov-shares-when-he-thought-about-leaving-wwe"
-description: "Ilja Dragunov recently discussed the timeline of when he first considered leaving WWE before his contract expired in August. Dragunov noted that after…"
+description: "Ilja Dragunov recently discussed the timeline of when he first considered leaving WWE before his contract expired in August."
 federation: WWE
 date: 2026-10-24T17:44:09.000Z
 source_id: 335489

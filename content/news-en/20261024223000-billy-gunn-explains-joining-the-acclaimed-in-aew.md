@@ -1,7 +1,7 @@
 ---
 title: "Billy Gunn Explains Joining The Acclaimed in AEW"
 slug: "billy-gunn-explains-joining-the-acclaimed-in-aew"
-description: "Billy Gunn reflected on the formation of his partnership with Max Caster and Anthony Bowens in AEW, noting that the combination helped draw immediate…"
+description: "Billy Gunn reflected on the formation of his partnership with Max Caster and Anthony Bowens in AEW."
 federation: AEW
 date: 2026-10-24T19:30:00.000Z
 source_id: 4241527097

@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Making AEW In-Ring Debut on 10/21 Dynamite"
 slug: "ilja-dragunov-making-aew-in-ring-debut-on-10-21-dynamite"
-description: "All Elite Wrestling officially confirmed the signing of Ilja Dragunov at the WrestleDream pay-per-view. Following the event, Dragunov appeared at the…"
+description: "All Elite Wrestling officially confirmed the signing of Ilja Dragunov at the WrestleDream pay-per-view."
 federation: AEW
 date: 2026-10-18T05:34:49.000Z
 source_id: 334498

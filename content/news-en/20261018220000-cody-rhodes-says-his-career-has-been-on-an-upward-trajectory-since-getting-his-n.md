@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Says His Career Has Been on an Upward Trajectory Since Getting His Neck Tattoo"
 slug: "cody-rhodes-says-his-career-has-been-on-an-upward-trajectory-since-getting-his-n"
-description: "Cody Rhodes has addressed his neck tattoo, which depicts his \"American Nightmare\" logo, during a media tour for his new movie, \"Street Fighter.\" Rhodes…"
+description: "Cody Rhodes has addressed his neck tattoo, which depicts his \"American Nightmare\" logo, during a media tour for his new movie."
 federation: WWE
 date: 2026-10-18T19:00:00.000Z
 source_id: 5081440568

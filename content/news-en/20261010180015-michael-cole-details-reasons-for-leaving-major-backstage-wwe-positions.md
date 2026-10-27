@@ -1,7 +1,7 @@
 ---
 title: "Michael Cole Details Reasons for Leaving Major Backstage WWE Positions"
 slug: "michael-cole-details-reasons-for-leaving-major-backstage-wwe-positions"
-description: "Longtime commentator Michael Cole has simplified his schedule in recent years by stepping away from several major backstage responsibilities in WWE to…"
+description: "Longtime commentator Michael Cole has simplified his schedule in recent years by stepping away from several major backstage responsibilities in WWE to focus."
 federation: WWE
 date: 2026-10-10T15:00:15.000Z
 source_id: 802253191

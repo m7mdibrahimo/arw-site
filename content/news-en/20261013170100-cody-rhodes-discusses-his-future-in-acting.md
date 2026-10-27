@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Discusses His Future in Acting"
 slug: "cody-rhodes-discusses-his-future-in-acting"
-description: "Cody Rhodes recently shared insights into his acting career, indicating that the coming months will bring new developments to his filmography. According to…"
+description: "Cody Rhodes recently shared insights into his acting career, indicating that the coming months will bring new developments to his filmography."
 federation: WWE
 date: 2026-10-13T14:01:00.000Z
 source_id: 333671

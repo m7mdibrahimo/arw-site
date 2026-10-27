@@ -1,7 +1,7 @@
 ---
 title: "AEW Collision Viewership Sees Massive Increase on October 14, 2026"
 slug: "aew-collision-viewership-sees-massive-increase-on-october-14-2026"
-description: "The audience figures for the October 14, 2026 episode of AEW Collision on TBS have been released, showing a sharp increase compared to the previous week.…"
+description: "The audience figures for the October 14, 2026 episode of AEW Collision on TBS have been released, showing a sharp increase compared to the previous week."
 federation: AEW
 date: 2026-10-16T23:37:03.000Z
 source_id: 802255870

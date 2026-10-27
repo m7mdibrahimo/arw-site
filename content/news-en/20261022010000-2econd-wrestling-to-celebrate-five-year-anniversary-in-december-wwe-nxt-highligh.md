@@ -1,7 +1,7 @@
 ---
 title: "2econd Wrestling to Celebrate Five Year Anniversary in December, WWE NXT Highlights, More"
 slug: "2econd-wrestling-to-celebrate-five-year-anniversary-in-december-wwe-nxt-highligh"
-description: "2econd Wrestling will celebrate its five-year anniversary on December 3. Meanwhile, full highlights from the October 20, 2026, episode of WWE NXT are now…"
+description: "2econd Wrestling will celebrate its five-year anniversary on December 3."
 federation: WWE
 date: 2026-10-21T22:00:00.000Z
 source_id: 335030

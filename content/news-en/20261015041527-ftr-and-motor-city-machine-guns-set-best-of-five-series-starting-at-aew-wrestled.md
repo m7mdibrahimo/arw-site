@@ -1,7 +1,7 @@
 ---
 title: "FTR and Motor City Machine Guns Set Best-of-Five Series Starting at AEW WrestleDream"
 slug: "ftr-and-motor-city-machine-guns-set-best-of-five-series-starting-at-aew-wrestled"
-description: "FTR and the Motor City Machine Guns have agreed to a best-of-five series to determine the top tag team in AEW, with the first match set for AEW…"
+description: "FTR and the Motor City Machine Guns have agreed to a best-of-five series to determine the top tag team in AEW, with the first match set for AEW WrestleDream."
 federation: AEW
 date: 2026-10-15T01:15:27.000Z
 source_id: 802255121

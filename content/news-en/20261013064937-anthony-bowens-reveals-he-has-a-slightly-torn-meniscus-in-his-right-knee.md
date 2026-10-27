@@ -1,7 +1,7 @@
 ---
 title: "Anthony Bowens Reveals He Has a Slightly Torn Meniscus in His Right Knee"
 slug: "anthony-bowens-reveals-he-has-a-slightly-torn-meniscus-in-his-right-knee"
-description: "Anthony Bowens recently discussed the various injuries he has sustained during his professional wrestling career in an interview with Michael Fairman. The…"
+description: "Anthony Bowens recently discussed the various injuries he has sustained during his professional wrestling career in an interview with Michael Fairman."
 federation: AEW
 date: 2026-10-13T03:49:37.000Z
 source_id: 333625

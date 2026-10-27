@@ -1,7 +1,7 @@
 ---
 title: "JCW Reveals Jasmin St. Claire and Happy's Child Is Named 'Baby Pooey' Before Dijak Drops an Elbow on It"
 slug: "jcw-reveals-jasmin-st-claire-and-happys-child-is-named-baby-pooey-before-dijak-d"
-description: "On the October 15 episode of JCW Lunacy, the ongoing pregnancy storyline involving Jasmin St. Claire took a bizarre turn when the name of her child with…"
+description: "On the October 15 episode of JCW Lunacy, the ongoing pregnancy storyline involving Jasmin St."
 federation: INDIE
 date: 2026-10-16T00:01:21.000Z
 source_id: 802255519

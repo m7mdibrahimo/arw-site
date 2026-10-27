@@ -1,7 +1,7 @@
 ---
 title: "Reason Behind Montez Ford’s WWE Absence"
 slug: "reason-behind-montez-fords-wwe-absence"
-description: "Montez Ford’s recent absence from WWE television is unrelated to the ongoing lawsuit involving an interaction with a security guard during Monday Night…"
+description: "Montez Ford’s recent absence from WWE television is unrelated to the ongoing lawsuit involving an interaction with a security guard during Monday Night RAW."
 federation: WWE
 date: 2026-10-19T20:48:12.000Z
 source_id: 802257331

@@ -1,7 +1,7 @@
 ---
 title: "Laynie Luck States That There Was Not Too Much Restriction for Her With WWE ID Contract"
 slug: "laynie-luck-states-that-there-was-not-too-much-restriction-for-her-with-wwe-id-c"
-description: "Laynie Luck spoke about her experience under the WWE I.D. program after losing the WWE I.D. Women's Championship to Monica Monroe following a 320-day…"
+description: "Laynie Luck spoke about her experience under the WWE I.D. program after losing the WWE I.D. Women's Championship to Monica Monroe following a 320-day reign."
 federation: WWE
 date: 2026-10-12T16:00:00.000Z
 source_id: 333383

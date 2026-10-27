@@ -1,7 +1,7 @@
 ---
 title: "Konosuke Takeshita to Be in Action at DDT Ultimate Party 2026"
 slug: "konosuke-takeshita-to-be-in-action-at-ddt-ultimate-party-2026"
-description: "Konosuke Takeshita is returning to DDT Pro-Wrestling to compete at the upcoming Ultimate Party 2026 show. Takeshita, who currently performs under contract…"
+description: "Konosuke Takeshita is returning to DDT Pro-Wrestling to compete at the upcoming Ultimate Party 2026 show."
 federation: AEW
 date: 2026-10-24T16:02:19.000Z
 source_id: 335459

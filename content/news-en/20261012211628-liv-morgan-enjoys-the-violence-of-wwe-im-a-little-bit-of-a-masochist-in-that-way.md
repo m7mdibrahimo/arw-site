@@ -1,7 +1,7 @@
 ---
 title: "Liv Morgan Enjoys the Violence of WWE: 'I'm a Little Bit of a Masochist in That Way'"
 slug: "liv-morgan-enjoys-the-violence-of-wwe-im-a-little-bit-of-a-masochist-in-that-way"
-description: "WWE Women's World Champion Liv Morgan is no stranger to the physical toll of professional wrestling. During an appearance on \"Hot Ones,\" Morgan shared her…"
+description: "WWE Women's World Champion Liv Morgan is no stranger to the physical toll of professional wrestling."
 federation: WWE
 date: 2026-10-12T18:16:28.000Z
 source_id: 1081167666

@@ -1,7 +1,7 @@
 ---
 title: "Identity of Woman in Mustafa Ali’s TNA Bound for Glory Entrance"
 slug: "identity-of-woman-in-mustafa-alis-tna-bound-for-glory-entrance"
-description: "Independent wrestler Sofia Sivan has been identified as one of the mystery women who accompanied Mustafa Ali during his Egyptian-inspired entrance at TNA…"
+description: "Independent wrestler Sofia Sivan has been identified as one of the mystery women who accompanied Mustafa Ali during his Egyptian-inspired entrance at TNA."
 federation: TNA
 date: 2026-10-12T07:04:45.000Z
 source_id: 802254031

@@ -1,7 +1,7 @@
 ---
 title: "First Look at CM Punk in Netflix’s Guarding Stars"
 slug: "first-look-at-cm-punk-in-netflixs-guarding-stars"
-description: "Netflix has released the first trailer for the upcoming film Guarding Stars, giving fans a glimpse of CM Punk in his next movie role. In the preview, Punk…"
+description: "Netflix has released the first trailer for the upcoming film Guarding Stars, giving fans a glimpse of CM Punk in his next movie role."
 federation: WWE
 date: 2026-10-14T15:25:11.000Z
 source_id: 802255011

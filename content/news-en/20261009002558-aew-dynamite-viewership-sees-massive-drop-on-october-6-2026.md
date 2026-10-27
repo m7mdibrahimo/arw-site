@@ -1,7 +1,7 @@
 ---
 title: "AEW Dynamite Viewership Sees Massive Drop on October 6, 2026"
 slug: "aew-dynamite-viewership-sees-massive-drop-on-october-6-2026"
-description: "AEW Dynamite on TBS experienced a significant decline in audience numbers for the October 6, 2026, episode. According to data from Wrestlenomics, the show…"
+description: "AEW Dynamite on TBS experienced a significant decline in audience numbers for the October 6, 2026, episode."
 federation: AEW
 date: 2026-10-08T21:25:58.000Z
 source_id: 802252553

@@ -1,7 +1,7 @@
 ---
 title: "Laynie Luck Comments on AJ Styles Helping Out With WWE EVOLVE"
 slug: "laynie-luck-comments-on-aj-styles-helping-out-with-wwe-evolve"
-description: "Laynie Luck recently discussed AJ Styles and his backstage contributions to WWE EVOLVE. Following his transition away from in-ring competition, Styles has…"
+description: "Laynie Luck recently discussed AJ Styles and his backstage contributions to WWE EVOLVE."
 federation: WWE
 date: 2026-10-13T20:00:00.000Z
 source_id: 333460

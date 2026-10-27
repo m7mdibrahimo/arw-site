@@ -1,7 +1,7 @@
 ---
 title: "Adam Copeland Announces 2027 Will Be His Final Year in Pro Wrestling After Revealing Serious AEW All Out Injuries"
 slug: "adam-copeland-announces-2027-will-be-his-final-year-in-pro-wrestling-after-revea"
-description: "Adam Copeland revealed during the October 14, 2026 episode of AEW Dynamite/Collision that 2027 will be his final year in professional wrestling. The…"
+description: "Adam Copeland revealed during the October 14, 2026 episode of AEW Dynamite/Collision that 2027 will be his final year in professional wrestling."
 federation: AEW
 date: 2026-10-15T00:47:16.000Z
 source_id: 802255074

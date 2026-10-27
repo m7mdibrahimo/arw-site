@@ -1,7 +1,7 @@
 ---
 title: "Chris Jericho Calls DeLoreans “Clunky and Crappy” After Seeing One Up Close"
 slug: "chris-jericho-calls-deloreans-clunky-and-crappy-after-seeing-one-up-close"
-description: "Chris Jericho recently shared his thoughts on DeLorean cars, explaining that seeing one up close ruined the appeal for him. During an episode of Talk Is…"
+description: "Chris Jericho recently shared his thoughts on DeLorean cars, explaining that seeing one up close ruined the appeal for him."
 federation: WWE
 date: 2026-10-16T15:40:21.000Z
 source_id: 802255699

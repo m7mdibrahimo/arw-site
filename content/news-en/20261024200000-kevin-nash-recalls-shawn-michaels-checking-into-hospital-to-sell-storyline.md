@@ -1,7 +1,7 @@
 ---
 title: "Kevin Nash Recalls Shawn Michaels Checking Into Hospital to Sell Storyline"
 slug: "kevin-nash-recalls-shawn-michaels-checking-into-hospital-to-sell-storyline"
-description: "WWE Hall of Famer Kevin Nash recently recalled a memorable storyline involving Shawn Michaels, where the legendary wrestler was seemingly checked into a…"
+description: "WWE Hall of Famer Kevin Nash recently recalled a memorable storyline involving Shawn Michaels."
 federation: WWE
 date: 2026-10-24T17:00:00.000Z
 source_id: 4749809798

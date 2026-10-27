@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Names Chad Gable and Jacob Fatu as WWE Talent That Could Fare Best in a World Warrior Tournament"
 slug: "cody-rhodes-names-chad-gable-and-jacob-fatu-as-wwe-talent-that-could-fare-best-i"
-description: "Cody Rhodes recently discussed which WWE talent would succeed if they entered a Street Fighter World Warrior tournament. The Street Fighter film is now…"
+description: "Cody Rhodes recently discussed which WWE talent would succeed if they entered a Street Fighter World Warrior tournament."
 federation: WWE
 date: 2026-10-18T12:55:38.000Z
 source_id: 334522

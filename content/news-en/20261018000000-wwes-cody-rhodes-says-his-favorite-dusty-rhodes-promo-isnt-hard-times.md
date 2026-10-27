@@ -1,7 +1,7 @@
 ---
 title: "WWE's Cody Rhodes Says His Favorite Dusty Rhodes Promo Isn't 'Hard Times'"
 slug: "wwes-cody-rhodes-says-his-favorite-dusty-rhodes-promo-isnt-hard-times"
-description: "During a recent appearance on Mythical Kitchen's Last Meal, Cody Rhodes revealed that his favorite promo from his father, the legendary Dusty Rhodes, is…"
+description: "During a recent appearance on Mythical Kitchen's Last Meal, Cody Rhodes revealed that his favorite promo from his father, the legendary Dusty Rhodes."
 federation: WWE
 date: 2026-10-17T21:00:00.000Z
 source_id: 2876071790

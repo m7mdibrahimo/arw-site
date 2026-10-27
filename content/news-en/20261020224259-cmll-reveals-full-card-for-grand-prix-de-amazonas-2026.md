@@ -1,7 +1,7 @@
 ---
 title: "CMLL Reveals Full Card for Grand Prix De Amazonas 2026"
 slug: "cmll-reveals-full-card-for-grand-prix-de-amazonas-2026"
-description: "CMLL announced the full lineup for the Grand Prix de Amazonas event on Tuesday, October 20. The upcoming show on October 23 features the main Grand Prix…"
+description: "CMLL announced the full lineup for the Grand Prix de Amazonas event on Tuesday, October 20."
 federation: INDIE
 date: 2026-10-20T19:42:59.000Z
 source_id: 334865

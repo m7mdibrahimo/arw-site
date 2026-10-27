@@ -1,7 +1,7 @@
 ---
 title: "Kyle Fletcher Says That He Will Rectify His Loss to Darby Allin in Due Time"
 slug: "kyle-fletcher-says-that-he-will-rectify-his-loss-to-darby-allin-in-due-time"
-description: "Kyle Fletcher stated that he will rectify his loss to Darby Allin in due time, while also labeling him as a cheating bastard following their match at AEW…"
+description: "Kyle Fletcher stated that he will rectify his loss to Darby Allin in due time."
 federation: AEW
 date: 2026-10-12T18:03:41.000Z
 source_id: 333530

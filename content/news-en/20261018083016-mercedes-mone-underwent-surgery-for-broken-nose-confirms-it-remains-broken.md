@@ -1,7 +1,7 @@
 ---
 title: "Mercedes Moné Underwent Surgery for Broken Nose, Confirms It Remains Broken"
 slug: "mercedes-mone-underwent-surgery-for-broken-nose-confirms-it-remains-broken"
-description: "AEW Women's World Champion Mercedes Moné shared a significant medical update following her successful title defense at AEW WrestleDream on October 17. Mone…"
+description: "AEW Women's World Champion Mercedes Moné shared a significant medical update following her successful title defense at AEW WrestleDream on October 17."
 federation: AEW
 date: 2026-10-18T05:30:16.000Z
 source_id: 334493

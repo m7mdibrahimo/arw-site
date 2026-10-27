@@ -1,7 +1,7 @@
 ---
 title: "Karl Fredericks Recalls NXT Underground and Strap Matches"
 slug: "karl-fredericks-recalls-nxt-underground-and-strap-matches"
-description: "Karl Fredericks, known as Eddy Thorpe during his time in WWE, recently reflected on his experiences competing in stipulation matches within NXT. According…"
+description: "Karl Fredericks, known as Eddy Thorpe during his time in WWE, recently reflected on his experiences competing in stipulation matches within NXT."
 federation: WWE
 date: 2026-10-10T17:00:00.000Z
 source_id: 332765

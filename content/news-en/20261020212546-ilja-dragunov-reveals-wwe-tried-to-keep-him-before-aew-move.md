@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Reveals WWE Tried to Keep Him Before AEW Move"
 slug: "ilja-dragunov-reveals-wwe-tried-to-keep-him-before-aew-move"
-description: "Ilja Dragunov recently opened up about his departure from WWE, revealing that the company actually tried to keep him before he ultimately decided to sign…"
+description: "Ilja Dragunov recently opened up about his departure from WWE, revealing that the company actually tried to keep him before he ultimately decided to sign."
 federation: WWE
 date: 2026-10-20T18:25:46.000Z
 source_id: 802257854

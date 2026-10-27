@@ -1,7 +1,7 @@
 ---
 title: "David Finlay Recalls WWE Ambitions Prior to NJPW Run"
 slug: "david-finlay-recalls-wwe-ambitions-prior-to-njpw-run"
-description: "During an appearance on Talk is Jericho, David Finlay recalled his early career plans to eventually wrestle for WWE. Given that his father, Fit Finlay,…"
+description: "During an appearance on Talk is Jericho, David Finlay recalled his early career plans to eventually wrestle for WWE."
 federation: AEW
 date: 2026-10-17T15:00:00.000Z
 source_id: 1659274601

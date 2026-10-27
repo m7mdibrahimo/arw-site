@@ -1,7 +1,7 @@
 ---
 title: "Myles Borne Addresses Grayson Waller Wearing Stephanie Vaquer Shirt on WWE NXT"
 slug: "myles-borne-addresses-grayson-waller-wearing-stephanie-vaquer-shirt-on-wwe-nxt"
-description: "Myles Borne is unfazed by Grayson Waller wearing a Stephanie Vaquer shirt on WWE NXT, believing the attempt to troll him backfired. Borne pointed out that…"
+description: "Myles Borne is unfazed by Grayson Waller wearing a Stephanie Vaquer shirt on WWE NXT, believing the attempt to troll him backfired."
 federation: WWE
 date: 2026-10-25T12:59:11.000Z
 source_id: 802259511

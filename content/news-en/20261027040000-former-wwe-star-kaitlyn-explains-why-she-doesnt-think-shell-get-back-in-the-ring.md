@@ -1,7 +1,7 @@
 ---
 title: "Former WWE Star Kaitlyn Explains Why She Doesn't Think She'll Get Back in the Ring"
 slug: "former-wwe-star-kaitlyn-explains-why-she-doesnt-think-shell-get-back-in-the-ring"
-description: "Retirement in professional wrestling is often temporary, as many performers eventually decide to return to the ring. However, former WWE Divas Champion…"
+description: "Retirement in professional wrestling is often temporary, as many performers eventually decide to return to the ring."
 federation: WWE
 date: 2026-10-27T01:00:00.000Z
 source_id: 2601245995

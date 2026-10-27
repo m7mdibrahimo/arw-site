@@ -1,7 +1,7 @@
 ---
 title: "Sami Zayn to Come Face-to-Face With Roman Reigns on 10/19 WWE Raw"
 slug: "sami-zayn-to-come-face-to-face-with-roman-reigns-on-10-19-wwe-raw"
-description: "Sami Zayn is set to confront Roman Reigns on the October 19 episode of WWE Raw to discuss their upcoming championship match. During the October 12 episode…"
+description: "Sami Zayn is set to confront Roman Reigns on the October 19 episode of WWE Raw to discuss their upcoming championship match."
 federation: WWE
 date: 2026-10-17T00:43:10.000Z
 source_id: 334280

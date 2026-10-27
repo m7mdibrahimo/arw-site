@@ -1,7 +1,7 @@
 ---
 title: "Paul Walter Hauser Says He Heard a High Level Wrestling Star Was Talking Behind His Back"
 slug: "paul-walter-hauser-says-he-heard-a-high-level-wrestling-star-was-talking-behind"
-description: "Paul Walter Hauser, an Emmy award winning actor who also competes in the wrestling world for promotions like ROH, MLW, PROGRESS, and various independent…"
+description: "Paul Walter Hauser, an Emmy award winning actor who also competes in the wrestling world for promotions like ROH, MLW, PROGRESS."
 federation: INDIE
 date: 2026-10-26T20:09:55.000Z
 source_id: 335909

@@ -1,7 +1,7 @@
 ---
 title: "Speedball Mike Bailey Calls MVP Tension Reports Ridiculous"
 slug: "speedball-mike-bailey-calls-mvp-tension-reports-ridiculous"
-description: "Speedball Mike Bailey recently reflected on past internet reports suggesting that they and MVP did not get along, describing the claims as the most…"
+description: "Speedball Mike Bailey recently reflected on past internet reports suggesting that they and MVP did not get along."
 federation: AEW
 date: 2026-10-20T14:10:56.000Z
 source_id: 334796

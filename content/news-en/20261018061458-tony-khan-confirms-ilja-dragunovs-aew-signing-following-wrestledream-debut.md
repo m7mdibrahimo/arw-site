@@ -1,7 +1,7 @@
 ---
 title: "Tony Khan Confirms Ilja Dragunov’s AEW Signing Following WrestleDream Debut"
 slug: "tony-khan-confirms-ilja-dragunovs-aew-signing-following-wrestledream-debut"
-description: "Tony Khan has officially welcomed Ilja Dragunov to the AEW roster. Shortly after Dragunov made a surprise appearance at AEW WrestleDream on October 17,…"
+description: "Tony Khan has officially welcomed Ilja Dragunov to the AEW roster. Shortly after Dragunov made a surprise appearance at AEW WrestleDream on October 17, 2026."
 federation: AEW
 date: 2026-10-18T03:14:58.000Z
 source_id: 802256657

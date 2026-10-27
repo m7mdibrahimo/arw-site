@@ -1,7 +1,7 @@
 ---
 title: "Samantha Irvin Responds to Fan Accusing Her of Lying About Music Career After WWE"
 slug: "samantha-irvin-responds-to-fan-accusing-her-of-lying-about-music-career-after-ww"
-description: "Samantha Irvin is defending her account of her WWE exit, directly responding to fans who accused her of lying about her career path. The exchange began…"
+description: "Samantha Irvin is defending her account of her WWE exit, directly responding to fans who accused her of lying about her career path."
 federation: WWE
 date: 2026-10-26T16:07:26.000Z
 source_id: 802259852

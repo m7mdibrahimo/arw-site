@@ -1,7 +1,7 @@
 ---
 title: "John Cena Says Having Children Is Still an Open Topic"
 slug: "john-cena-says-having-children-is-still-an-open-topic"
-description: "John Cena opened up about his marriage to Shay Shariatzadeh and their choice not to have children, noting that the subject remains open for discussion…"
+description: "John Cena opened up about his marriage to Shay Shariatzadeh and their choice not to have children."
 federation: WWE
 date: 2026-10-16T14:02:34.000Z
 source_id: 802255647

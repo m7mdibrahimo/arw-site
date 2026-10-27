@@ -1,7 +1,7 @@
 ---
 title: "Tiffany Stratton's Money in the Bank Win Flooded With Dislikes on YouTube"
 slug: "tiffany-strattons-money-in-the-bank-win-flooded-with-dislikes-on-youtube"
-description: "Tiffany Stratton left Money in the Bank with the briefcase, but fans are still unhappy with the decision. After social media backlash following the finish,…"
+description: "Tiffany Stratton left Money in the Bank with the briefcase, but fans are still unhappy with the decision."
 federation: WWE
 date: 2026-10-11T14:48:35.000Z
 source_id: 802253654

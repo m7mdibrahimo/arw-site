@@ -1,7 +1,7 @@
 ---
 title: "Bully Ray Wants WWE Unreal to Cover Roman Reigns vs. LA Knight Match"
 slug: "bully-ray-wants-wwe-unreal-to-cover-roman-reigns-vs-la-knight-match"
-description: "Hall of Famer Bully Ray recently discussed what he would like to see if the documentary series WWE Unreal returns for a fourth season. Ray noted that he…"
+description: "Hall of Famer Bully Ray recently discussed what he would like to see if the documentary series WWE Unreal returns for a fourth season."
 federation: WWE
 date: 2026-10-20T21:07:43.000Z
 source_id: 1092710189

@@ -1,7 +1,7 @@
 ---
 title: "Benjamin Satterley (PAC) Passed Away From Bronchial Asthma"
 slug: "benjamin-satterley-pac-passed-away-from-bronchial-asthma"
-description: "A spokesperson for the Cook County Medical Examiner’s Office confirmed that Benjamin Satterley, known as PAC, died from bronchial asthma. The death was…"
+description: "A spokesperson for the Cook County Medical Examiner’s Office confirmed that Benjamin Satterley, known as PAC, died from bronchial asthma."
 federation: AEW
 date: 2026-10-16T23:06:23.000Z
 source_id: 334264

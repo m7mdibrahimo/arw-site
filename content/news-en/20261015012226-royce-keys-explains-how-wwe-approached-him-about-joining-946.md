@@ -1,7 +1,7 @@
 ---
 title: "Royce Keys Explains How WWE Approached Him About Joining The 946"
 slug: "royce-keys-explains-how-wwe-approached-him-about-joining-946"
-description: "Royce Keys recently opened up about how WWE approached him regarding the new direction that helped him find his footing with the company and join The 946.…"
+description: "Royce Keys recently opened up about how WWE approached him regarding the new direction that helped him find his footing with the company and join The 946."
 federation: WWE
 date: 2026-10-14T22:22:26.000Z
 source_id: 802255069

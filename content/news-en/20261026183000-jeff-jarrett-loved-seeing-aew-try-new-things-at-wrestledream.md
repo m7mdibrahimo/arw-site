@@ -1,7 +1,7 @@
 ---
 title: "Jeff Jarrett Loved Seeing AEW Try 'New Things' at WrestleDream"
 slug: "jeff-jarrett-loved-seeing-aew-try-new-things-at-wrestledream"
-description: "AEW executive Jeff Jarrett was pleased to see the promotion experiment with new concepts during the WrestleDream pay-per-view. The event featured the debut…"
+description: "AEW executive Jeff Jarrett was pleased to see the promotion experiment with new concepts during the WrestleDream pay-per-view."
 federation: AEW
 date: 2026-10-26T15:30:00.000Z
 source_id: 3179415099

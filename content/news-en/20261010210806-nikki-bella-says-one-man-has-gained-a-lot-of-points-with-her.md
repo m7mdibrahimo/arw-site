@@ -1,7 +1,7 @@
 ---
 title: "Nikki Bella Says One Man Has ‘Gained a Lot of Points’ With Her"
 slug: "nikki-bella-says-one-man-has-gained-a-lot-of-points-with-her"
-description: "Nikki Bella is opening up about her current dating life, revealing that while she is not actively searching for a relationship, she is open to…"
+description: "Nikki Bella is opening up about her current dating life, revealing that while she is not actively searching for a relationship, she is open to possibilities."
 federation: WWE
 date: 2026-10-10T18:08:06.000Z
 source_id: 802253225

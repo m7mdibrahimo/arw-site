@@ -1,7 +1,7 @@
 ---
 title: "Eddie Kingston Cuts Emotional Promo at PROGRESS Chapter 199, Says He Wanted to Leave Wrestling After the Passing of Butcher and PAC"
 slug: "eddie-kingston-cuts-emotional-promo-at-progress-chapter-199-says-he-wanted-to-le"
-description: "Eddie Kingston delivered an emotional promo at PROGRESS Chapter 199 following his match against Luke Jacobs, reflecting on the recent passings of Andy…"
+description: "Eddie Kingston delivered an emotional promo at PROGRESS Chapter 199 following his match against Luke Jacobs."
 federation: INDIE
 date: 2026-10-26T16:21:04.000Z
 source_id: 335861

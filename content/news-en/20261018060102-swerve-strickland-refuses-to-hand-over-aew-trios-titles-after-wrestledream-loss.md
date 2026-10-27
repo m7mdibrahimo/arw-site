@@ -1,7 +1,7 @@
 ---
 title: "Swerve Strickland Refuses to Hand Over AEW Trios Titles After WrestleDream Loss"
 slug: "swerve-strickland-refuses-to-hand-over-aew-trios-titles-after-wrestledream-loss"
-description: "Swerve Strickland made his frustration clear following his championship loss at AEW WrestleDream on October 17, 2026. After losing the AEW World Trios…"
+description: "Swerve Strickland made his frustration clear following his championship loss at AEW WrestleDream on October 17, 2026."
 federation: AEW
 date: 2026-10-18T03:01:02.000Z
 source_id: 802256559

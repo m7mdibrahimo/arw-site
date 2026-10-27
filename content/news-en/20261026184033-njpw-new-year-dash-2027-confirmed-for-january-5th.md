@@ -1,7 +1,7 @@
 ---
 title: "NJPW New Year Dash 2027 Confirmed for January 5th"
 slug: "njpw-new-year-dash-2027-confirmed-for-january-5th"
-description: "New Japan Pro-Wrestling has officially confirmed the date for the 2027 installment of New Year Dash. The event will take place on January 5th at the EBARA…"
+description: "New Japan Pro-Wrestling has officially confirmed the date for the 2027 installment of New Year Dash."
 federation: NJPW
 date: 2026-10-26T15:40:33.000Z
 source_id: 335855

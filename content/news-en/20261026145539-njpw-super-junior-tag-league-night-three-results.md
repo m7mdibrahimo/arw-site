@@ -1,7 +1,7 @@
 ---
 title: "NJPW Super Junior Tag League Night Three Results"
 slug: "njpw-super-junior-tag-league-night-three-results"
-description: "New Japan Pro-Wrestling hosted the third night of the Super Junior Tag League tournament on October 26 at Korakuen Hall in Tokyo, Japan, broadcasting the…"
+description: "New Japan Pro-Wrestling hosted the third night of the Super Junior Tag League tournament on October 26 at Korakuen Hall in Tokyo, Japan."
 federation: NJPW
 date: 2026-10-26T11:55:39.000Z
 source_id: 335779

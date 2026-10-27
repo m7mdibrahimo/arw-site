@@ -1,7 +1,7 @@
 ---
 title: "TNA Bound for Glory 2026: Three Things We Hated and Three We Loved"
 slug: "tna-bound-for-glory-2026-three-things-we-hated-and-three-we-loved"
-description: "TNA Bound for Glory 2026 featured the crowning of new champions and the debut of the former Erick Redbeard. While the event delivered memorable moments,…"
+description: "TNA Bound for Glory 2026 featured the crowning of new champions and the debut of the former Erick Redbeard."
 federation: TNA
 date: 2026-10-12T03:27:53.000Z
 source_id: 979808793

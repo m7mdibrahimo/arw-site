@@ -1,7 +1,7 @@
 ---
 title: "Finn Balor Says Sami Zayn Is 'Underappreciated' on the Microphone"
 slug: "finn-balor-says-sami-zayn-is-underappreciated-on-the-microphone"
-description: "Finn Balor believes that Sami Zayn's promo skills are often overlooked despite his long-standing reputation for excellence. During an interview on…"
+description: "Finn Balor believes that Sami Zayn's promo skills are often overlooked despite his long-standing reputation for excellence."
 federation: WWE
 date: 2026-10-10T20:00:00.000Z
 source_id: 3664501892

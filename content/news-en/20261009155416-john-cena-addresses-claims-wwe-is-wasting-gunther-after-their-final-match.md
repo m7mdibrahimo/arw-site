@@ -1,7 +1,7 @@
 ---
 title: "John Cena Addresses Claims WWE Is Wasting Gunther After Their Final Match"
 slug: "john-cena-addresses-claims-wwe-is-wasting-gunther-after-their-final-match"
-description: "John Cena recently addressed fan concerns that WWE is wasting Gunther following their final match at Saturday Night’s Main Event, where Gunther forced Cena…"
+description: "John Cena recently addressed fan concerns that WWE is wasting Gunther following their final match at Saturday Night’s Main Event."
 federation: WWE
 date: 2026-10-09T12:54:16.000Z
 source_id: 802252692

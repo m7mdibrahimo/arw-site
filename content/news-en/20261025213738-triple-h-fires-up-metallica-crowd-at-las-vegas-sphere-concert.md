@@ -1,7 +1,7 @@
 ---
 title: "Triple H Fires Up Metallica Crowd at Las Vegas Sphere Concert"
 slug: "triple-h-fires-up-metallica-crowd-at-las-vegas-sphere-concert"
-description: "Triple H got a crowd fired up before Metallica took the stage at the Sphere in Las Vegas over the weekend. The WWE Chief Content Officer attended the…"
+description: "Triple H got a crowd fired up before Metallica took the stage at the Sphere in Las Vegas over the weekend."
 federation: WWE
 date: 2026-10-25T18:37:38.000Z
 source_id: 802259633

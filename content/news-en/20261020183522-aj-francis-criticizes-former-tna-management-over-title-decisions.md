@@ -1,7 +1,7 @@
 ---
 title: "AJ Francis Criticizes Former TNA Management Over Title Decisions"
 slug: "aj-francis-criticizes-former-tna-management-over-title-decisions"
-description: "AJ Francis expressed strong frustration with how TNA was previously managed, arguing that the former regime made flawed decisions regarding championship…"
+description: "AJ Francis expressed strong frustration with how TNA was previously managed."
 federation: TNA
 date: 2026-10-20T15:35:22.000Z
 source_id: 802257786

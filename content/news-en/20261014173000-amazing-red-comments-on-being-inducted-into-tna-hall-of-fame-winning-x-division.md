@@ -1,7 +1,7 @@
 ---
 title: "Amazing Red Comments on Being Inducted Into TNA Hall of Fame, Winning X-Division Title"
 slug: "amazing-red-comments-on-being-inducted-into-tna-hall-of-fame-winning-x-division"
-description: "Amazing Red opened up about his unforgettable night at TNA Bound for Glory, where he entered the TNA Hall of Fame and captured the X-Division Championship.…"
+description: "Amazing Red opened up about his unforgettable night at TNA Bound for Glory, where he entered the TNA Hall of Fame and captured the X-Division Championship."
 federation: TNA
 date: 2026-10-14T14:30:00.000Z
 source_id: 1244285081

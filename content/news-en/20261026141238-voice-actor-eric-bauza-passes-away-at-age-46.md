@@ -1,7 +1,7 @@
 ---
 title: "Voice Actor Eric Bauza Passes Away at Age 46"
 slug: "voice-actor-eric-bauza-passes-away-at-age-46"
-description: "Actor Eric Bauza passed away at the age of 46, according to Fightful. He was famous as the modern voice of Bugs Bunny and Daffy Duck, and he starred in…"
+description: "Actor Eric Bauza passed away at the age of 46, according to Fightful. He was famous as the modern voice of Bugs Bunny and Daffy Duck."
 federation: WWE
 date: 2026-10-26T11:12:38.000Z
 source_id: 335782

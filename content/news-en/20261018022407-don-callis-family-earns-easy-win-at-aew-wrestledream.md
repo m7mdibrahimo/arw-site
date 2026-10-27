@@ -1,7 +1,7 @@
 ---
 title: "Don Callis Family Earns Easy Win at AEW WrestleDream"
 slug: "don-callis-family-earns-easy-win-at-aew-wrestledream"
-description: "The Don Callis Family picked up a quick victory during the AEW WrestleDream Tailgate Brawl. Jake Doyle, Josh Alexander, and Wardlow easily defeated Alex…"
+description: "The Don Callis Family picked up a quick victory during the AEW WrestleDream Tailgate Brawl."
 federation: AEW
 date: 2026-10-17T23:24:07.000Z
 source_id: 334411

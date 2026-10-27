@@ -1,7 +1,7 @@
 ---
 title: "Bully Ray Would Have Changed One Thing About WWE Raw Angle With The 946 & The Bloodline"
 slug: "bully-ray-would-have-changed-one-thing-about-wwe-raw-angle-with-the-946-the-bloo"
-description: "During a recent episode of \"Busted Open Radio,\" WWE Hall of Famer Bully Ray discussed the brawl between The Bloodline and the 946 on \"WWE Raw.\" Ray stated…"
+description: "During a recent episode of \"Busted Open Radio,\" WWE Hall of Famer Bully Ray discussed the brawl between The Bloodline and the 946 on \"WWE Raw.\" Ray stated."
 federation: WWE
 date: 2026-10-20T23:33:16.000Z
 source_id: 2326078581

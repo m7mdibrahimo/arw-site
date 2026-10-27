@@ -1,7 +1,7 @@
 ---
 title: "Chris Sabin Discusses Motor City Machine Guns' Goal of Winning AEW Tag Team Titles"
 slug: "chris-sabin-discusses-motor-city-machine-guns-goal-of-winning-aew-tag-team-title"
-description: "Chris Sabin spoke about the Motor City Machine Guns potentially becoming the first team to hold tag team titles across major wrestling promotions. In a…"
+description: "Chris Sabin spoke about the Motor City Machine Guns potentially becoming the first team to hold tag team titles across major wrestling promotions."
 federation: AEW
 date: 2026-10-18T14:58:52.000Z
 source_id: 334529

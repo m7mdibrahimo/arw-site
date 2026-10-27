@@ -1,7 +1,7 @@
 ---
 title: "Positive Update on Jake Hager’s Condition After Power Slap 23 Eye Injury"
 slug: "positive-update-on-jake-hagers-condition-after-power-slap-23-eye-injury"
-description: "Jake Hager has shown an encouraging recovery following the severe eye injury he suffered at Power Slap 23 last month in Lubbock, Texas. After taking a…"
+description: "Jake Hager has shown an encouraging recovery following the severe eye injury he suffered at Power Slap 23 last month in Lubbock, Texas."
 federation: WWE
 date: 2026-10-08T13:25:41.000Z
 source_id: 802252378

@@ -1,7 +1,7 @@
 ---
 title: "Indi Hartwell Dethrones Xia Brookside to Win TNA Knockouts World Championship at Bound for Glory"
 slug: "indi-hartwell-dethrones-xia-brookside-to-win-tna-knockouts-world-championship-at"
-description: "Indi Hartwell captured the TNA Knockouts World Championship at TNA Bound for Glory on October 11, 2026, by defeating Xia Brookside. The intense matchup…"
+description: "Indi Hartwell captured the TNA Knockouts World Championship at TNA Bound for Glory on October 11, 2026, by defeating Xia Brookside."
 federation: TNA
 date: 2026-10-11T22:55:55.000Z
 source_id: 802253903

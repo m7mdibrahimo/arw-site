@@ -1,7 +1,7 @@
 ---
 title: "AEW Talent Accused of Ignoring Referee Instructions During Matches"
 slug: "aew-talent-accused-of-ignoring-referee-instructions-during-matches"
-description: "AEW referee Bryce Remsburg recently revealed that while most wrestlers cooperate with instructions during live television matches, some talent occasionally…"
+description: "AEW referee Bryce Remsburg recently revealed that while most wrestlers cooperate with instructions during live television matches."
 federation: AEW
 date: 2026-10-24T13:43:34.000Z
 source_id: 802259113

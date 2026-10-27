@@ -1,7 +1,7 @@
 ---
 title: "AAA on FOX Preview, Start Time, How to Watch, Location (10/10)"
 slug: "aaa-on-fox-preview-start-time-how-to-watch-location-10-10"
-description: "Lucha Libre AAA presents AAA on FOX Latin America on October 10, 2026, live from Domo de la Feria in Leon, Mexico. The broadcast begins at 8 pm ET in…"
+description: "Lucha Libre AAA presents AAA on FOX Latin America on October 10, 2026, live from Domo de la Feria in Leon, Mexico."
 federation: INDIE
 date: 2026-10-10T14:00:00.000Z
 source_id: 332986

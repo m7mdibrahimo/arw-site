@@ -1,7 +1,7 @@
 ---
 title: "Sami Zayn to Open WWE SmackDown"
 slug: "sami-zayn-to-open-wwe-smackdown"
-description: "WWE is preparing for a major episode of SmackDown tonight, with reports indicating that Undisputed WWE Champion Sami Zayn will kick off the broadcast. As…"
+description: "WWE is preparing for a major episode of SmackDown tonight, with reports indicating that Undisputed WWE Champion Sami Zayn will kick off the broadcast."
 federation: WWE
 date: 2026-10-23T21:36:04.000Z
 source_id: 802258798

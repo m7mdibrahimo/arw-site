@@ -1,7 +1,7 @@
 ---
 title: "CM Punk vs. Kevin Owens Announced for November 6 WWE SmackDown"
 slug: "cm-punk-vs-kevin-owens-announced-for-november-6-wwe-smackdown"
-description: "CM Punk and Kevin Owens will finally face each other in the ring after blaming one another for their Undisputed WWE Championship issues. WWE officially…"
+description: "CM Punk and Kevin Owens will finally face each other in the ring after blaming one another for their Undisputed WWE Championship issues."
 federation: WWE
 date: 2026-10-24T01:44:51.000Z
 source_id: 802258977

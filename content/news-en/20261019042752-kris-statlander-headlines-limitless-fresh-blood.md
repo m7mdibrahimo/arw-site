@@ -1,7 +1,7 @@
 ---
 title: "Kris Statlander Headlines Limitless Fresh Blood"
 slug: "kris-statlander-headlines-limitless-fresh-blood"
-description: "Limitless Wrestling held its Limitless Fresh Blood event on October 18, 2026, at Live At Madrid's in Portland, Maine, according to Fightful. The show…"
+description: "Limitless Wrestling held its Limitless Fresh Blood event on October 18, 2026, at Live At Madrid's in Portland, Maine, according to Fightful."
 federation: INDIE
 date: 2026-10-19T01:27:52.000Z
 source_id: 334608

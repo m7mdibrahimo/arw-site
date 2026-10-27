@@ -1,7 +1,7 @@
 ---
 title: "Update on WWE Creative Plans for Jordynne Grace"
 slug: "update-on-wwe-creative-plans-for-jordynne-grace"
-description: "According to Fightful, WWE developed tentative creative plans for Jordynne Grace in September. The company intended to begin teasing a tag team featuring…"
+description: "According to Fightful, WWE developed tentative creative plans for Jordynne Grace in September."
 federation: WWE
 date: 2026-10-20T22:03:50.000Z
 source_id: 334906

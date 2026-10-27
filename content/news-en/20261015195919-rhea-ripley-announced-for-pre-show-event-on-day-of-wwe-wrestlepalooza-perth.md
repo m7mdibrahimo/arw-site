@@ -1,7 +1,7 @@
 ---
 title: "Rhea Ripley Announced for Pre-Show Event on Day of WWE Wrestlepalooza: Perth"
 slug: "rhea-ripley-announced-for-pre-show-event-on-day-of-wwe-wrestlepalooza-perth"
-description: "WWE star Rhea Ripley has been announced for a special pre-show event in Perth, Australia. The event is scheduled to take place on the same day as the WWE…"
+description: "WWE star Rhea Ripley has been announced for a special pre-show event in Perth, Australia."
 federation: WWE
 date: 2026-10-15T16:59:19.000Z
 source_id: 334089

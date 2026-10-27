@@ -1,7 +1,7 @@
 ---
 title: "WWE’s Potential Dates for John Cena Classic Revealed"
 slug: "wwes-potential-dates-for-john-cena-classic-revealed"
-description: "WWE is currently weighing two potential dates for the upcoming John Cena Classic, while the calendar for December continues to fill up. According to…"
+description: "WWE is currently weighing two potential dates for the upcoming John Cena Classic, while the calendar for December continues to fill up."
 federation: WWE
 date: 2026-10-22T16:56:26.000Z
 source_id: 802258548

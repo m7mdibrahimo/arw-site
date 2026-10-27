@@ -1,7 +1,7 @@
 ---
 title: "Max Caster Removed From AEW Roster Page Following TNA Bound for Glory Announcement"
 slug: "max-caster-removed-from-aew-roster-page-following-tna-bound-for-glory-announceme"
-description: "Max Caster has been officially removed from the AEW online roster page following recent developments regarding his contract status. Reports earlier this…"
+description: "Max Caster has been officially removed from the AEW online roster page following recent developments regarding his contract status."
 federation: AEW
 date: 2026-10-09T16:52:44.000Z
 source_id: 332876

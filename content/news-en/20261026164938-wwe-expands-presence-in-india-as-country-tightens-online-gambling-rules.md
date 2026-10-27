@@ -1,7 +1,7 @@
 ---
 title: "WWE Expands Presence in India as Country Tightens Online Gambling Rules"
 slug: "wwe-expands-presence-in-india-as-country-tightens-online-gambling-rules"
-description: "WWE continues to grow its reach in India through its partnership with Netflix, even as the nation implements strict new regulations on online gambling.…"
+description: "WWE continues to grow its reach in India through its partnership with Netflix, even as the nation implements strict new regulations on online gambling."
 federation: WWE
 date: 2026-10-26T13:49:38.000Z
 source_id: 802259100

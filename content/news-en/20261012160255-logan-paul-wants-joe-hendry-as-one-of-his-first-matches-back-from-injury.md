@@ -1,7 +1,7 @@
 ---
 title: "Logan Paul Wants Joe Hendry as One of His First Matches Back From Injury"
 slug: "logan-paul-wants-joe-hendry-as-one-of-his-first-matches-back-from-injury"
-description: "Logan Paul wants to face Joe Hendry in a one-on-one match as soon as he is cleared to return to the ring. In recent months, Hendry has targeted Paul with…"
+description: "Logan Paul wants to face Joe Hendry in a one-on-one match as soon as he is cleared to return to the ring."
 federation: WWE
 date: 2026-10-12T13:02:55.000Z
 source_id: 333486

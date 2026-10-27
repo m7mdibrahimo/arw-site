@@ -1,7 +1,7 @@
 ---
 title: "Women's Tag Title Match and Street Fight Set for Next WWE SmackDown"
 slug: "womens-tag-title-match-and-street-fight-set-for-next-wwe-smackdown"
-description: "WWE has announced several major matchups for the October 23 episode of WWE SmackDown. Following an in-ring segment between Blake Monroe and General Manager…"
+description: "WWE has announced several major matchups for the October 23 episode of WWE SmackDown."
 federation: WWE
 date: 2026-10-17T01:50:26.000Z
 source_id: 334297

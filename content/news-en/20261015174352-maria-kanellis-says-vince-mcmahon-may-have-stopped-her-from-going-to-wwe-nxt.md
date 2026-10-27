@@ -1,7 +1,7 @@
 ---
 title: "Maria Kanellis Says Vince McMahon May Have Stopped Her From Going to WWE NXT"
 slug: "maria-kanellis-says-vince-mcmahon-may-have-stopped-her-from-going-to-wwe-nxt"
-description: "Maria Kanellis revealed that her 2017 WWE return almost took a different path when she and Mike Bennett expected to start in WWE NXT. According to Maria,…"
+description: "Maria Kanellis revealed that her 2017 WWE return almost took a different path when she and Mike Bennett expected to start in WWE NXT."
 federation: WWE
 date: 2026-10-15T14:43:52.000Z
 source_id: 802255410

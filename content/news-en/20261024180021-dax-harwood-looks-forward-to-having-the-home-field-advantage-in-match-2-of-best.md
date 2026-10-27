@@ -1,7 +1,7 @@
 ---
 title: "Dax Harwood Looks Forward to Having 'The Home Field Advantage' in Match 2 of Best of 5 Series With the Motor City Machine Guns"
 slug: "dax-harwood-looks-forward-to-having-the-home-field-advantage-in-match-2-of-best"
-description: "Dax Harwood discussed FTR's upcoming second match in their best-of-five series against the Motor City Machine Guns. On the October 24 episode of AEW…"
+description: "Dax Harwood discussed FTR's upcoming second match in their best-of-five series against the Motor City Machine Guns."
 federation: AEW
 date: 2026-10-24T15:00:21.000Z
 source_id: 335426

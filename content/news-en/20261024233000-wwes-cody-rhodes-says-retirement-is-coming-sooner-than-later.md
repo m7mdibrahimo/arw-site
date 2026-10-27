@@ -1,7 +1,7 @@
 ---
 title: "WWE's Cody Rhodes Says Retirement Is Coming 'Sooner Than Later'"
 slug: "wwes-cody-rhodes-says-retirement-is-coming-sooner-than-later"
-description: "WWE star Cody Rhodes recently discussed his future in the ring and admitted that retirement might happen sooner than later. Speaking in an interview,…"
+description: "WWE star Cody Rhodes recently discussed his future in the ring and admitted that retirement might happen sooner than later."
 federation: WWE
 date: 2026-10-24T20:30:00.000Z
 source_id: 4269256006

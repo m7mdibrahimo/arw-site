@@ -1,7 +1,7 @@
 ---
 title: "Details on New Level's AEW Contracts"
 slug: "details-on-new-levels-aew-contracts"
-description: "According to Fightful, the members of New Level have signed five-year contracts with AEW. Austin Creed and Kofi Kingston, formerly known as Xavier Woods…"
+description: "According to Fightful, the members of New Level have signed five-year contracts with AEW."
 federation: AEW
 date: 2026-10-22T00:58:27.000Z
 source_id: 335064

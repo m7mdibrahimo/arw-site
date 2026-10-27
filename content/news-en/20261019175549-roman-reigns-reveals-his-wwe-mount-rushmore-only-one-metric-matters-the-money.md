@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Reveals His WWE Mount Rushmore: 'Only One Metric Matters, the Money'"
 slug: "roman-reigns-reveals-his-wwe-mount-rushmore-only-one-metric-matters-the-money"
-description: "Roman Reigns revealed his WWE Mount Rushmore during an appearance on Club Shay Shay, explaining that his choices are based purely on business. Reigns…"
+description: "Roman Reigns revealed his WWE Mount Rushmore during an appearance on Club Shay Shay, explaining that his choices are based purely on business."
 federation: WWE
 date: 2026-10-19T14:55:49.000Z
 source_id: 4952753909

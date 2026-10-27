@@ -1,7 +1,7 @@
 ---
 title: "WWE EVOLVE Succession IV Results (October 14, 2026)"
 slug: "wwe-evolve-succession-iv-results-october-14-2026"
-description: "WWE aired the latest special of WWE EVOLVE, Succession IV, on October 14 via Tubi. In the opening match, Harlem Lewis successfully defended the EVOLVE…"
+description: "WWE aired the latest special of WWE EVOLVE, Succession IV, on October 14 via Tubi."
 federation: WWE
 date: 2026-10-17T01:24:09.000Z
 source_id: 334289

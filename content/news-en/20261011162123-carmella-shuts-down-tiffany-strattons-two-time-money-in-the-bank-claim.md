@@ -1,7 +1,7 @@
 ---
 title: "Carmella Shuts Down Tiffany Stratton's Two-Time Money in the Bank Claim"
 slug: "carmella-shuts-down-tiffany-strattons-two-time-money-in-the-bank-claim"
-description: "Tiffany Stratton recently won the Women's Money in the Bank Ladder Match, but former briefcase holder Carmella quickly stepped in to correct a claim…"
+description: "Tiffany Stratton recently won the Women's Money in the Bank Ladder Match."
 federation: WWE
 date: 2026-10-11T13:21:23.000Z
 source_id: 802253643

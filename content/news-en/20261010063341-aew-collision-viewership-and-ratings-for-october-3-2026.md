@@ -1,7 +1,7 @@
 ---
 title: "AEW Collision Viewership and Ratings for October 3, 2026"
 slug: "aew-collision-viewership-and-ratings-for-october-3-2026"
-description: "Following an emotional week that included tributes to the late Pac, the October 3 episode of AEW Collision steered the promotion back toward the upcoming…"
+description: "Following an emotional week that included tributes to the late Pac, the October 3 episode of AEW Collision steered the promotion back toward the upcoming AEW."
 federation: AEW
 date: 2026-10-10T03:33:41.000Z
 source_id: 1981474749

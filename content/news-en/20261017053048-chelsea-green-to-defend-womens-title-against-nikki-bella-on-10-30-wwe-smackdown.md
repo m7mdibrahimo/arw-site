@@ -1,7 +1,7 @@
 ---
 title: "Chelsea Green to Defend Women's Title Against Nikki Bella on 10/30 WWE SmackDown"
 slug: "chelsea-green-to-defend-womens-title-against-nikki-bella-on-10-30-wwe-smackdown"
-description: "Chelsea Green will defend her title against Nikki Bella on the October 30 episode of WWE SmackDown in Charleston, West Virginia. The match was set after…"
+description: "Chelsea Green will defend her title against Nikki Bella on the October 30 episode of WWE SmackDown in Charleston, West Virginia."
 federation: WWE
 date: 2026-10-17T02:30:48.000Z
 source_id: 334305

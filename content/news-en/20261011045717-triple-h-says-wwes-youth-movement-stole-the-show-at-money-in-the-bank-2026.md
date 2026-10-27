@@ -1,7 +1,7 @@
 ---
 title: "Triple H Says WWE’s Youth Movement Stole the Show at Money in the Bank 2026"
 slug: "triple-h-says-wwes-youth-movement-stole-the-show-at-money-in-the-bank-2026"
-description: "Triple H praised WWE's next generation after Money in the Bank 2026, stating that the youth movement stole the show. Speaking at the post-show press…"
+description: "Triple H praised WWE's next generation after Money in the Bank 2026, stating that the youth movement stole the show."
 federation: WWE
 date: 2026-10-11T01:57:17.000Z
 source_id: 802253578

@@ -1,7 +1,7 @@
 ---
 title: "Damian Priest Explains Why He Turned on R-Truth, 'This Is an Individual Business'"
 slug: "damian-priest-explains-why-he-turned-on-r-truth-this-is-an-individual-business"
-description: "Damian Priest explained why he turned on R-Truth in an interview with WWE Radio's Off The Ropes. Since ending his partnership with Truth in September,…"
+description: "Damian Priest explained why he turned on R-Truth in an interview with WWE Radio's Off The Ropes."
 federation: WWE
 date: 2026-10-21T21:18:23.000Z
 source_id: 335028

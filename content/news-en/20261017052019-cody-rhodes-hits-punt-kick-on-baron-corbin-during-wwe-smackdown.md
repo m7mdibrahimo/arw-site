@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Hits Punt Kick on Baron Corbin During WWE SmackDown"
 slug: "cody-rhodes-hits-punt-kick-on-baron-corbin-during-wwe-smackdown"
-description: "Cody Rhodes delivered a Punt Kick to Baron Corbin during the October 16 episode of WWE SmackDown. The segment began with Baron Corbin interrupting a promo…"
+description: "Cody Rhodes delivered a Punt Kick to Baron Corbin during the October 16 episode of WWE SmackDown."
 federation: WWE
 date: 2026-10-17T02:20:19.000Z
 source_id: 334300

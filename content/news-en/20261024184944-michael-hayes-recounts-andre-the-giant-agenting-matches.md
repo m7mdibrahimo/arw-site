@@ -1,7 +1,7 @@
 ---
 title: "Michael Hayes Recounts André the Giant Agenting Matches"
 slug: "michael-hayes-recounts-andre-the-giant-agenting-matches"
-description: "In a recent appearance on Stephanie McMahon's What's Your Story? podcast, WWE producer Michael Hayes shared stories from his pro wrestling career,…"
+description: "In a recent appearance on Stephanie McMahon's What's Your Story? podcast, WWE producer Michael Hayes shared stories from his pro wrestling career."
 federation: WWE
 date: 2026-10-24T15:49:44.000Z
 source_id: 335454

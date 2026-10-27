@@ -1,7 +1,7 @@
 ---
 title: "Shotzi Blackheart Officially Signs With TNA Wrestling"
 slug: "shotzi-blackheart-officially-signs-with-tna-wrestling"
-description: "Shotzi Blackheart has officially signed with TNA Wrestling. The news was first reported by Fightful Select on October 14, and TNA subsequently confirmed…"
+description: "Shotzi Blackheart has officially signed with TNA Wrestling. The news was first reported by Fightful Select on October 14."
 federation: TNA
 date: 2026-10-19T15:47:52.000Z
 source_id: 334685

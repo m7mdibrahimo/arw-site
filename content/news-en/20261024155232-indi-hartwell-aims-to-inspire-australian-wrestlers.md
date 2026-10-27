@@ -1,7 +1,7 @@
 ---
 title: "Indi Hartwell Aims to Inspire Australian Wrestlers"
 slug: "indi-hartwell-aims-to-inspire-australian-wrestlers"
-description: "Indi Hartwell looks forward to inspiring Australian professional wrestlers in the future as the TNA Knockouts World Champion. She successfully captured the…"
+description: "Indi Hartwell looks forward to inspiring Australian professional wrestlers in the future as the TNA Knockouts World Champion."
 federation: TNA
 date: 2026-10-24T12:52:32.000Z
 source_id: 335419

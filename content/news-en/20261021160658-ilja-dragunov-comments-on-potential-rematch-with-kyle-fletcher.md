@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Comments on Potential Rematch With Kyle Fletcher"
 slug: "ilja-dragunov-comments-on-potential-rematch-with-kyle-fletcher"
-description: "Ilja Dragunov recently shared his thoughts on a potential rematch with Kyle Fletcher, explaining why the matchup interests him. Dragunov made his debut for…"
+description: "Ilja Dragunov recently shared his thoughts on a potential rematch with Kyle Fletcher, explaining why the matchup interests him."
 federation: AEW
 date: 2026-10-21T13:06:58.000Z
 source_id: 334957

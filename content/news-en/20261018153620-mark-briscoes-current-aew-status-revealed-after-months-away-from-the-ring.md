@@ -1,7 +1,7 @@
 ---
 title: "Mark Briscoe's Current AEW Status Revealed After Months Away From the Ring"
 slug: "mark-briscoes-current-aew-status-revealed-after-months-away-from-the-ring"
-description: "Mark Briscoe has been absent from AEW television for more than three months, and reports indicate he is still not ready to return to the ring. During…"
+description: "Mark Briscoe has been absent from AEW television for more than three months, and reports indicate he is still not ready to return to the ring."
 federation: AEW
 date: 2026-10-18T12:36:20.000Z
 source_id: 802256847

@@ -1,7 +1,7 @@
 ---
 title: "Dragongate's Luis Mante Revealed as Mysterious Phantom Invader in NOAH"
 slug: "dragongates-luis-mante-revealed-as-mysterious-phantom-invader-in-noah"
-description: "Luis Mante has been unmasked as the Mysterious Phantom Invader during Pro Wrestling NOAH's event at Korakuen Hall in Tokyo, Japan on October 15, 2026.…"
+description: "Luis Mante has been unmasked as the Mysterious Phantom Invader during Pro Wrestling NOAH's event at Korakuen Hall in Tokyo, Japan on October 15, 2026."
 federation: INDIE
 date: 2026-10-15T12:06:40.000Z
 source_id: 334020

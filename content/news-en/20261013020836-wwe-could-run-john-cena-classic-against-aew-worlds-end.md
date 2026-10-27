@@ -1,7 +1,7 @@
 ---
 title: "WWE Could Run John Cena Classic Against AEW Worlds End"
 slug: "wwe-could-run-john-cena-classic-against-aew-worlds-end"
-description: "John Cena has confirmed that the John Cena Classic is scheduled for December, though the exact date remains undecided. According to reports from…"
+description: "John Cena has confirmed that the John Cena Classic is scheduled for December, though the exact date remains undecided."
 federation: WWE
 date: 2026-10-12T23:08:36.000Z
 source_id: 802254269

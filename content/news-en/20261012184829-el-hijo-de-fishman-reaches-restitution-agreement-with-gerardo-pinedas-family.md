@@ -1,7 +1,7 @@
 ---
 title: "El Hijo De Fishman Reaches Restitution Agreement With Gerardo Pineda's Family"
 slug: "el-hijo-de-fishman-reaches-restitution-agreement-with-gerardo-pinedas-family"
-description: "El Hijo de Fishman has reached a financial restitution agreement with the family of late referee Gerardo Pineda to avoid potential manslaughter charges.…"
+description: "El Hijo de Fishman has reached a financial restitution agreement with the family of late referee Gerardo Pineda to avoid potential manslaughter charges."
 federation: INDIE
 date: 2026-10-12T15:48:29.000Z
 source_id: 3327267111

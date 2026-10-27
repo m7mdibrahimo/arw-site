@@ -1,7 +1,7 @@
 ---
 title: "WWE Star Je'Von Evans Explains Aspects of His Game He's Intent on Improving"
 slug: "wwe-star-jevon-evans-explains-aspects-of-his-game-hes-intent-on-improving"
-description: "WWE star Je'Von Evans recently discussed the aspects of his wrestling career that he is focused on improving, including his microphone skills and physical…"
+description: "WWE star Je'Von Evans recently discussed the aspects of his wrestling career that he is focused on improving."
 federation: WWE
 date: 2026-10-17T14:30:00.000Z
 source_id: 926363757

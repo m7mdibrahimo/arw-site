@@ -1,7 +1,7 @@
 ---
 title: "Taya Valkyrie Eliminated From the Traitors Canada"
 slug: "taya-valkyrie-eliminated-from-the-traitors-canada"
-description: "Taya Valkyrie has been eliminated from The Traitors Canada. The former TNA Knockouts Champion was banished from the show on the fourth episode that aired…"
+description: "Taya Valkyrie has been eliminated from The Traitors Canada. The former TNA Knockouts Champion was banished from the show on the fourth episode that aired."
 federation: TNA
 date: 2026-10-15T17:25:19.000Z
 source_id: 334091

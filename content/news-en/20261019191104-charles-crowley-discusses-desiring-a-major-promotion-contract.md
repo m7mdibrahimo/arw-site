@@ -1,7 +1,7 @@
 ---
 title: "Charles Crowley Discusses Desiring a Major Promotion Contract"
 slug: "charles-crowley-discusses-desiring-a-major-promotion-contract"
-description: "Charles Crowley recently discussed his potential goals of signing with a major wrestling promotion to secure a platform that showcases his true abilities…"
+description: "Charles Crowley recently discussed his potential goals of signing with a major wrestling promotion to secure a platform that showcases his true abilities."
 federation: INDIE
 date: 2026-10-19T16:11:04.000Z
 source_id: 334688

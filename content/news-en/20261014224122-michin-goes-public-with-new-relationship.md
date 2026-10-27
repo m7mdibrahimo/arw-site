@@ -1,7 +1,7 @@
 ---
 title: "Michin Goes Public With New Relationship"
 slug: "michin-goes-public-with-new-relationship"
-description: "WWE star Michin has gone public with her new relationship, sharing romantic photos with dancer Seth J on Instagram. On October 14, 2026, Michin posted…"
+description: "WWE star Michin has gone public with her new relationship, sharing romantic photos with dancer Seth J on Instagram."
 federation: WWE
 date: 2026-10-14T19:41:22.000Z
 source_id: 802255047

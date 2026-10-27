@@ -1,7 +1,7 @@
 ---
 title: "Tommaso Ciampa Reflects on AEW WrestleDream: 'Each Test, Each Loss, All Part of the Journey. I Run Marathons, Not Sprints'"
 slug: "tommaso-ciampa-reflects-on-aew-wrestledream-each-test-each-loss-all-part-of-the"
-description: "Tommaso Ciampa has reflected on his recent appearance at AEW WrestleDream, where he challenged Andrade El Idolo for the AEW National Championship. Although…"
+description: "Tommaso Ciampa has reflected on his recent appearance at AEW WrestleDream, where he challenged Andrade El Idolo for the AEW National Championship."
 federation: AEW
 date: 2026-10-18T17:42:06.000Z
 source_id: 334567

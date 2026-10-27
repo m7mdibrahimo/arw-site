@@ -1,7 +1,7 @@
 ---
 title: "Mark Haskins Set to Make PROGRESS Return, PRODUCE Announcements, More | Fight Size"
 slug: "mark-haskins-set-to-make-progress-return-produce-announcements-more-fight-size"
-description: "Mark Haskins is returning to PROGRESS for the first time since 2024. PRODUCE has announced a list of talent for their Volume 7 event. KJ Orso and Sam…"
+description: "Mark Haskins is returning to PROGRESS for the first time since 2024. PRODUCE has announced a list of talent for their Volume 7 event."
 federation: INDIE
 date: 2026-10-26T22:03:05.000Z
 source_id: 335954

@@ -1,7 +1,7 @@
 ---
 title: "More AEW Wrestlers Planned for NJPW Spots"
 slug: "more-aew-wrestlers-planned-for-njpw-spots"
-description: "According to reports, AEW and NJPW are planning for more AEW wrestlers to secure spots in Japan in the coming weeks. Recently, Kenny Omega made his return…"
+description: "According to reports, AEW and NJPW are planning for more AEW wrestlers to secure spots in Japan in the coming weeks."
 federation: AEW
 date: 2026-10-17T21:17:42.000Z
 source_id: 334387

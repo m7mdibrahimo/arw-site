@@ -1,7 +1,7 @@
 ---
 title: "Zoey Serrano Discusses TNA Run and Desire for Singles Matches"
 slug: "zoey-serrano-discusses-tna-run-and-desire-for-singles-matches"
-description: "Zoey Serrano remains focused on pursuing a singles career despite her current tag team partnership with Shayna Baszler. The duo, who captured the TNA…"
+description: "Zoey Serrano remains focused on pursuing a singles career despite her current tag team partnership with Shayna Baszler."
 federation: TNA
 date: 2026-10-26T20:00:58.000Z
 source_id: 335904

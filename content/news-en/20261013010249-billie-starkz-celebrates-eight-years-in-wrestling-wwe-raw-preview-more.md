@@ -1,7 +1,7 @@
 ---
 title: "Billie Starkz Celebrates Eight Years in Wrestling, WWE Raw Preview, More"
 slug: "billie-starkz-celebrates-eight-years-in-wrestling-wwe-raw-preview-more"
-description: "Billie Starkz will reach her eight-year anniversary in wrestling on October 13. Liv Morgan is set to return to WWE RAW as the Women’s World Champion. Ethan…"
+description: "Billie Starkz will reach her eight-year anniversary in wrestling on October 13. Liv Morgan is set to return to WWE RAW as the Women’s World Champion."
 federation: WWE
 date: 2026-10-12T22:02:49.000Z
 source_id: 333564

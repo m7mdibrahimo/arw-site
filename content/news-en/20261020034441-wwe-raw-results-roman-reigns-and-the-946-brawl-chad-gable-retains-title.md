@@ -1,7 +1,7 @@
 ---
 title: "WWE RAW Results: Roman Reigns and The 946 Brawl, Chad Gable Retains Title"
 slug: "wwe-raw-results-roman-reigns-and-the-946-brawl-chad-gable-retains-title"
-description: "WWE RAW on October 19, 2026, aired live from the Pechanga Arena in San Diego. The show featured a confrontation between Undisputed WWE Champion Sami Zayn…"
+description: "WWE RAW on October 19, 2026, aired live from the Pechanga Arena in San Diego."
 federation: WWE
 date: 2026-10-20T00:44:41.000Z
 source_id: 802257144

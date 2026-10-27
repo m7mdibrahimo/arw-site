@@ -1,7 +1,7 @@
 ---
 title: "WWE Had Nothing to Do With Max Caster’s Firing After TNA Bound for Glory"
 slug: "wwe-had-nothing-to-do-with-max-casters-firing-after-tna-bound-for-glory"
-description: "WWE had no involvement in TNA's decision to fire Max Caster following the controversy surrounding his rap at Bound for Glory, according to Dave Meltzer in…"
+description: "WWE had no involvement in TNA's decision to fire Max Caster following the controversy surrounding his rap at Bound for Glory."
 federation: WWE
 date: 2026-10-16T16:09:40.000Z
 source_id: 802255730

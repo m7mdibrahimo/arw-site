@@ -1,7 +1,7 @@
 ---
 title: "Sol Ruca: I've Been Told in the Past That I'll Likely Never Be Heel"
 slug: "sol-ruca-ive-been-told-in-the-past-that-ill-likely-never-be-heel"
-description: "Sol Ruca recently discussed her potential as a heel character in WWE during an interview. Known for her lively and bubbly persona on TV, Sol admitted that…"
+description: "Sol Ruca recently discussed her potential as a heel character in WWE during an interview."
 federation: WWE
 date: 2026-10-26T13:35:12.000Z
 source_id: 335825

@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Believes His Hell in a Cell Match With CM Punk Rivals the Undertaker vs. Shawn Michaels Classic"
 slug: "drew-mcintyre-believes-wwes-best-hell-in-a-cell-match-comes-down-to-his-one-othe"
-description: "Drew McIntyre believes his Hell in a Cell match against CM Punk at WWE Bad Blood in 2024 rivals the historic first-ever iteration between The Undertaker…"
+description: "Drew McIntyre believes his Hell in a Cell match against CM Punk at WWE Bad Blood in 2024 rivals the historic first-ever iteration between The Undertaker."
 federation: WWE
 date: 2026-10-25T20:00:00.000Z
 source_id: 4580716348

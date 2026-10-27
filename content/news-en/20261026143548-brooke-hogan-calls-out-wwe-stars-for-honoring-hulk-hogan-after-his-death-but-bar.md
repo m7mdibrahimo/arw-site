@@ -1,7 +1,7 @@
 ---
 title: "Brooke Hogan Calls Out WWE Stars for Honoring Hulk Hogan After His Death but Barely Visiting Him in Hospital"
 slug: "brooke-hogan-calls-out-wwe-stars-for-honoring-hulk-hogan-after-his-death-but-bar"
-description: "Brooke Hogan has strongly criticized the WWE Superstars and legends who appeared on television to honor her late father, Hulk Hogan, accusing them of…"
+description: "Brooke Hogan has strongly criticized the WWE Superstars and legends who appeared on television to honor her late father, Hulk Hogan."
 federation: WWE
 date: 2026-10-26T11:35:48.000Z
 source_id: 802259757

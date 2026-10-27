@@ -1,7 +1,7 @@
 ---
 title: "Ricochet: I'm Honestly a Je'Von Evans Fan"
 slug: "ricochet-im-honestly-a-jevon-evans-fan"
-description: "Ricochet has shared his thoughts on Je'Von Evans' impressive performance during the 2026 men's Money In The Bank ladder match. During the bout, Evans took…"
+description: "Ricochet has shared his thoughts on Je'Von Evans' impressive performance during the 2026 men's Money In The Bank ladder match."
 federation: WWE
 date: 2026-10-11T12:32:25.000Z
 source_id: 333228

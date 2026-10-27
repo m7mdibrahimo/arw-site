@@ -1,7 +1,7 @@
 ---
 title: "Former WWE EVOLVE Star Veronica West Explains Why She Dropped Fallyn Grey Ring Name"
 slug: "former-wwe-evolve-star-veronica-west-explains-why-she-dropped-fallyn-grey-ring-n"
-description: "Former WWE EVOLVE star Veronica West has opened up about why she decided to abandon the Fallyn Grey ring name after leaving the company. West explained…"
+description: "Former WWE EVOLVE star Veronica West has opened up about why she decided to abandon the Fallyn Grey ring name after leaving the company."
 federation: WWE
 date: 2026-10-19T09:33:41.000Z
 source_id: 802257100

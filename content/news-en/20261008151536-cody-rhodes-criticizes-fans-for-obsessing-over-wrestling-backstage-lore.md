@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Criticizes Fans for Obsessing Over Wrestling Backstage Lore"
 slug: "cody-rhodes-criticizes-fans-for-obsessing-over-wrestling-backstage-lore"
-description: "Cody Rhodes recently discussed how some wrestling fans focus too much on backstage gossip rather than enjoying the performances in the ring. Speaking with…"
+description: "Cody Rhodes recently discussed how some wrestling fans focus too much on backstage gossip rather than enjoying the performances in the ring."
 federation: WWE
 date: 2026-10-08T12:15:36.000Z
 source_id: 802252349

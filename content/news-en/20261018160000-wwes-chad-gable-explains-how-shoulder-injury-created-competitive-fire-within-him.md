@@ -1,7 +1,7 @@
 ---
 title: "WWE's Chad Gable Explains How Shoulder Injury Created 'Competitive Fire' Within Him"
 slug: "wwes-chad-gable-explains-how-shoulder-injury-created-competitive-fire-within-him"
-description: "Chad Gable recently opened up about suffering a serious shoulder injury during his match against El Hijo del Vikingo at Worlds Collide 2025. He explained…"
+description: "Chad Gable recently opened up about suffering a serious shoulder injury during his match against El Hijo del Vikingo at Worlds Collide 2025."
 federation: WWE
 date: 2026-10-18T13:00:00.000Z
 source_id: 2485623067

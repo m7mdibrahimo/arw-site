@@ -1,7 +1,7 @@
 ---
 title: "Zach Bryan Uses Dusty Rhodes' Hard Times Promo in Robot Killed the Working Man"
 slug: "zach-bryan-uses-dusty-rhodes-hard-times-promo-in-robot-killed-the-working-man"
-description: "Zach Bryan incorporated Dusty Rhodes' famous \"Hard Times\" promo into the intro of his new song, \"Robot Killed The Working Man.\" The track features lyrics…"
+description: "Zach Bryan incorporated Dusty Rhodes' famous \"Hard Times\" promo into the intro of his new song."
 federation: WWE
 date: 2026-10-17T15:02:21.000Z
 source_id: 334334

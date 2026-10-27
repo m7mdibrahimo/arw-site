@@ -1,7 +1,7 @@
 ---
 title: "Royce Keys Addresses Fan Throwing Drink at 946 on WWE RAW"
 slug: "royce-keys-addresses-fan-throwing-drink-at-946-on-wwe-raw"
-description: "Royce Keys says he is not bothered by fans throwing drinks at 946 during WWE RAW. In an appearance on The Ebro Laura Rosenberg Show, the WWE star noted…"
+description: "Royce Keys says he is not bothered by fans throwing drinks at 946 during WWE RAW."
 federation: WWE
 date: 2026-10-14T22:12:57.000Z
 source_id: 802255063

@@ -1,7 +1,7 @@
 ---
 title: "Bronson Reed Shuts Down Claims His Weight Loss Hurt His Aura"
 slug: "bronson-reed-shuts-down-claims-his-weight-loss-hurt-his-aura"
-description: "Bronson Reed is dismissing concerns that his recent 50-pound weight loss has negatively impacted his wrestling persona. During an appearance on Cheap Heat…"
+description: "Bronson Reed is dismissing concerns that his recent 50-pound weight loss has negatively impacted his wrestling persona."
 federation: WWE
 date: 2026-10-09T22:32:22.000Z
 source_id: 802252904

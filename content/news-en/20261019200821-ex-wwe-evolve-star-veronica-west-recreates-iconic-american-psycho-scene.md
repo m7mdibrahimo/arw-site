@@ -1,7 +1,7 @@
 ---
 title: "Ex-WWE EVOLVE Star Veronica West Recreates Iconic American Psycho Scene"
 slug: "ex-wwe-evolve-star-veronica-west-recreates-iconic-american-psycho-scene"
-description: "Former WWE EVOLVE star Veronica West recently recreated the famous murder scene from American Psycho on Instagram. Dressing up as Christian Bale's…"
+description: "Former WWE EVOLVE star Veronica West recently recreated the famous murder scene from American Psycho on Instagram."
 federation: WWE
 date: 2026-10-19T17:08:21.000Z
 source_id: 802257229

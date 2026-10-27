@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Admits Some WWE Stars Were Upset Over His Promos"
 slug: "drew-mcintyre-admits-some-wwe-stars-were-upset-over-his-promos"
-description: "Drew McIntyre revealed that his authentic approach to promos has occasionally caused friction backstage. During an appearance on the Soder podcast,…"
+description: "Drew McIntyre revealed that his authentic approach to promos has occasionally caused friction backstage."
 federation: WWE
 date: 2026-10-13T17:27:38.000Z
 source_id: 802254658

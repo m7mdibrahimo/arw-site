@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Recounts Advice He Gave to Logan Paul"
 slug: "roman-reigns-recounts-advice-he-gave-to-logan-paul"
-description: "During a recent appearance on the Club Shay Shay show with Shannon Sharpe, Roman Reigns discussed the advice he previously gave to Logan Paul. Reigns…"
+description: "During a recent appearance on the Club Shay Shay show with Shannon Sharpe, Roman Reigns discussed the advice he previously gave to Logan Paul."
 federation: WWE
 date: 2026-10-15T11:00:00.000Z
 source_id: 333983

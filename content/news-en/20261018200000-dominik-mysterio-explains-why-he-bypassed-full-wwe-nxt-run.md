@@ -1,7 +1,7 @@
 ---
 title: "Dominik Mysterio Explains Why He Bypassed Full WWE NXT Run"
 slug: "dominik-mysterio-explains-why-he-bypassed-full-wwe-nxt-run"
-description: "Dominik Mysterio explained why he never completed a traditional run through WWE NXT after joining the company's main roster early in his career. Mysterio…"
+description: "Dominik Mysterio explained why he never completed a traditional run through WWE NXT after joining the company's main roster early in his career."
 federation: WWE
 date: 2026-10-18T17:00:00.000Z
 source_id: 1297450511

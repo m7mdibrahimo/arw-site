@@ -1,7 +1,7 @@
 ---
 title: "Road Dogg Set for First Match in Over 11 Years"
 slug: "road-dogg-set-for-first-match-in-over-11-years"
-description: "WWE Hall of Famer Road Dogg is preparing to step back into the ring for the first time in over a decade to participate in a major anniversary event in…"
+description: "WWE Hall of Famer Road Dogg is preparing to step back into the ring for the first time in over a decade to participate in a major anniversary event."
 federation: WWE
 date: 2026-10-08T00:01:08.000Z
 source_id: 802252240

@@ -1,7 +1,7 @@
 ---
 title: "Oba Femi Puts His Foot on Bronson Reed After WWE Money in the Bank Match"
 slug: "oba-femi-puts-his-foot-on-bronson-reed-after-wwe-money-in-the-bank-match"
-description: "Oba Femi secured a hard-hitting victory against Bronson Reed at WWE Money in the Bank, followed by a subtle yet powerful post-match statement. Footage…"
+description: "Oba Femi secured a hard-hitting victory against Bronson Reed at WWE Money in the Bank, followed by a subtle yet powerful post-match statement."
 federation: WWE
 date: 2026-10-11T17:00:34.000Z
 source_id: 802253673

@@ -1,7 +1,7 @@
 ---
 title: "Leaked Photo Shows Je'Von Evans Rehearsing Ambulance Spot Before WWE Money in the Bank"
 slug: "leaked-photo-shows-jevon-evans-rehearsing-ambulance-spot-before-wwe-money-in-the"
-description: "A leaked backstage photo offers a rare look at how WWE rehearsed Je'Von Evans' unforgettable ambulance spot before Money in the Bank went live. The image,…"
+description: "A leaked backstage photo offers a rare look at how WWE rehearsed Je'Von Evans' unforgettable ambulance spot before Money in the Bank went live."
 federation: WWE
 date: 2026-10-12T12:38:58.000Z
 source_id: 802254078

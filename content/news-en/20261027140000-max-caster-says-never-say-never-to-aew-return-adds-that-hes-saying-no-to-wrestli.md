@@ -1,7 +1,7 @@
 ---
 title: "Max Caster Says 'Never Say Never' to AEW Return, Adds That He's Saying No to Wrestling Bookings Right Now"
 slug: "max-caster-says-never-say-never-to-aew-return-adds-that-hes-saying-no-to-wrestli"
-description: "Max Caster has commented on his future in professional wrestling following his recent situation at TNA Wrestling's Bound for Glory pay-per-view. Caster,…"
+description: "Max Caster has commented on his future in professional wrestling following his recent situation at TNA Wrestling's Bound for Glory pay-per-view."
 federation: AEW
 date: 2026-10-27T11:00:00.000Z
 source_id: 336000

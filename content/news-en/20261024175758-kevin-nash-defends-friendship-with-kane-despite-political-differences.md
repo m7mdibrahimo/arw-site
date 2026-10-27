@@ -1,7 +1,7 @@
 ---
 title: "Kevin Nash Defends Friendship With Kane Despite Political Differences"
 slug: "kevin-nash-defends-friendship-with-kane-despite-political-differences"
-description: "Kevin Nash has responded to critics who questioned his ongoing friendship with Glenn Jacobs, known in WWE as Kane. Despite holding opposing political…"
+description: "Kevin Nash has responded to critics who questioned his ongoing friendship with Glenn Jacobs, known in WWE as Kane."
 federation: WWE
 date: 2026-10-24T14:57:58.000Z
 source_id: 802259133

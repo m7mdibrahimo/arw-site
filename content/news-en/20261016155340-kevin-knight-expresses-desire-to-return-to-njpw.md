@@ -1,7 +1,7 @@
 ---
 title: "Kevin Knight Expresses Desire to Return to NJPW"
 slug: "kevin-knight-expresses-desire-to-return-to-njpw"
-description: "Kevin Knight expressed a strong desire to return to NJPW to showcase the significant growth in his career since his last appearance with the promotion in…"
+description: "Kevin Knight expressed a strong desire to return to NJPW to showcase the significant growth in his career since his last appearance with the promotion in May."
 federation: AEW
 date: 2026-10-16T12:53:40.000Z
 source_id: 334166

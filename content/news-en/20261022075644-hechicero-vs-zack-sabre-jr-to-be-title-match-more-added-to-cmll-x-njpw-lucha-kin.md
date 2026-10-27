@@ -1,7 +1,7 @@
 ---
 title: "Hechicero vs. Zack Sabre Jr. to Be Title Match, More Added to CMLL x NJPW Lucha Kingdom"
 slug: "hechicero-vs-zack-sabre-jr-to-be-title-match-more-added-to-cmll-x-njpw-lucha-kin"
-description: "Zack Sabre Jr. will challenge Hechicero for the CMLL World Heavyweight Championship at the CMLL x NJPW Lucha Kingdom event on November 16th at Arena…"
+description: "Zack Sabre Jr. will challenge Hechicero for the CMLL World Heavyweight Championship at the CMLL x NJPW Lucha Kingdom event on November 16th at Arena Mexico."
 federation: NJPW
 date: 2026-10-22T04:56:44.000Z
 source_id: 335106

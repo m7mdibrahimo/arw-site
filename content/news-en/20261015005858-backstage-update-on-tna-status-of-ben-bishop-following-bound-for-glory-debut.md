@@ -1,7 +1,7 @@
 ---
 title: "Backstage Update on TNA Status of Ben Bishop Following Bound for Glory Debut"
 slug: "backstage-update-on-tna-status-of-ben-bishop-following-bound-for-glory-debut"
-description: "Ben Bishop made a notable appearance at TNA Bound for Glory this past Sunday, entering the Call Your Shot gauntlet match as the penultimate participant.…"
+description: "Ben Bishop made a notable appearance at TNA Bound for Glory this past Sunday, entering the Call Your Shot gauntlet match as the penultimate participant."
 federation: TNA
 date: 2026-10-14T21:58:58.000Z
 source_id: 2846277287

@@ -1,7 +1,7 @@
 ---
 title: "Backstage Report on Oba Femi Calling Out Roman Reigns After WWE Money in the Bank"
 slug: "backstage-report-on-oba-femi-calling-out-roman-reigns-after-wwe-money-in-the-ban"
-description: "According to Wrestling Observer Radio, Oba Femi's recent call-out of Roman Reigns following his victory over Bronson Reed at WWE Money in the Bank was not…"
+description: "According to Wrestling Observer Radio, Oba Femi's recent call-out of Roman Reigns following his victory over Bronson Reed at WWE Money in the Bank was not."
 federation: WWE
 date: 2026-10-13T21:38:13.000Z
 source_id: 4673268302

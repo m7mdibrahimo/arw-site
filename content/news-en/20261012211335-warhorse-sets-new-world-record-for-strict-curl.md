@@ -1,7 +1,7 @@
 ---
 title: "WARHORSE Sets New World Record for Strict Curl"
 slug: "warhorse-sets-new-world-record-for-strict-curl"
-description: "WARHORSE achieved a new milestone by setting a world record for the strict curl. The 13-year veteran took to social media to announce his achievement,…"
+description: "WARHORSE achieved a new milestone by setting a world record for the strict curl."
 federation: AEW
 date: 2026-10-12T18:13:35.000Z
 source_id: 333537

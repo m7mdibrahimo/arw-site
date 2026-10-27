@@ -1,7 +1,7 @@
 ---
 title: "WWE Signs Several Female Athletes to Join Performance Center"
 slug: "wwe-signs-several-female-athletes-to-join-performance-center"
-description: "WWE has added four new female recruits to its roster who have already relocated to Orlando, Florida. According to Bryan Alvarez of the Wrestling Observer,…"
+description: "WWE has added four new female recruits to its roster who have already relocated to Orlando, Florida."
 federation: WWE
 date: 2026-10-23T21:18:00.000Z
 source_id: 802258794

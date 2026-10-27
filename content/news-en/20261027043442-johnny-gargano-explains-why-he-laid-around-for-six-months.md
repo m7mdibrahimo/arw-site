@@ -1,7 +1,7 @@
 ---
 title: "Johnny Gargano Explains Why He Laid Around for Six Months"
 slug: "johnny-gargano-explains-why-he-laid-around-for-six-months"
-description: "Johnny Gargano recently explained why he spent six months laying low backstage instead of wrestling before his return to the ring against CM Punk in…"
+description: "Johnny Gargano recently explained why he spent six months laying low backstage instead of wrestling before his return to the ring against CM Punk."
 federation: WWE
 date: 2026-10-27T01:34:42.000Z
 source_id: 335988

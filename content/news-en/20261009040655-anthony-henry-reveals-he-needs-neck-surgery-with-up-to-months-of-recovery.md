@@ -1,7 +1,7 @@
 ---
 title: "Anthony Henry Reveals He Needs Neck Surgery With Up to Months of Recovery"
 slug: "anthony-henry-reveals-he-needs-neck-surgery-with-up-to-months-of-recovery"
-description: "Anthony Henry is facing a serious health setback as he revealed on social media that he requires neck surgery. The WorkHorsemen member explained that…"
+description: "Anthony Henry is facing a serious health setback as he revealed on social media that he requires neck surgery."
 federation: INDIE
 date: 2026-10-09T01:06:55.000Z
 source_id: 802252582

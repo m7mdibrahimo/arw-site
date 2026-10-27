@@ -1,7 +1,7 @@
 ---
 title: "NJPW Taichi School Pro Wrestling 2 Results"
 slug: "njpw-taichi-school-pro-wrestling-2-results"
-description: "New Japan Pro-Wrestling hosted its NJPW Taichi School Pro Wrestling 2 event on October 17, 2026, at the Ishikari Municipal Hanakawa Junior High School…"
+description: "New Japan Pro-Wrestling hosted its NJPW Taichi School Pro Wrestling 2 event on October 17, 2026."
 federation: NJPW
 date: 2026-10-17T21:06:53.000Z
 source_id: 334384

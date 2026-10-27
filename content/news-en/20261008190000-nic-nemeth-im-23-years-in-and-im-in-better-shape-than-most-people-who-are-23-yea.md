@@ -1,7 +1,7 @@
 ---
 title: "Nic Nemeth: I'm 23 Years in and I'm in Better Shape Than Most People Who Are 23 Years Old"
 slug: "nic-nemeth-im-23-years-in-and-im-in-better-shape-than-most-people-who-are-23-yea"
-description: "Ahead of his TNA World Championship defense at Bound for Glory, Nic Nemeth spoke about his upcoming challenger Leon Slater and his own storied career.…"
+description: "Ahead of his TNA World Championship defense at Bound for Glory, Nic Nemeth spoke about his upcoming challenger Leon Slater and his own storied career."
 federation: TNA
 date: 2026-10-08T16:00:00.000Z
 source_id: 332271

@@ -1,7 +1,7 @@
 ---
 title: "Marigold's Kizuna Tanaka Returning to In-Ring Action After Left Ankle Surgeries"
 slug: "marigolds-kizuna-tanaka-returning-to-in-ring-action-after-left-ankle-surgeries"
-description: "Kizuna Tanaka is preparing to make her return to the ring. In January 2026, Tanaka wrestled at a Dream Star Fighting Marigold event, where she suffered a…"
+description: "Kizuna Tanaka is preparing to make her return to the ring. In January 2026, Tanaka wrestled at a Dream Star Fighting Marigold event."
 federation: INDIE
 date: 2026-10-13T12:14:01.000Z
 source_id: 333670

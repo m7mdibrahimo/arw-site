@@ -1,7 +1,7 @@
 ---
 title: "Footage Shows Stephanie Vaquer Struggling to Walk After WWE Money in the Bank"
 slug: "footage-shows-stephanie-vaquer-struggling-to-walk-after-wwe-money-in-the-bank"
-description: "Footage has emerged showing Stephanie Vaquer struggling to walk and receiving assistance from referee Jessika Carr after WWE Money in the Bank. Vaquer was…"
+description: "Footage has emerged showing Stephanie Vaquer struggling to walk and receiving assistance from referee Jessika Carr after WWE Money in the Bank."
 federation: WWE
 date: 2026-10-11T11:34:09.000Z
 source_id: 802253603

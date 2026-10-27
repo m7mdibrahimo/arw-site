@@ -1,7 +1,7 @@
 ---
 title: "Anthony Bowens Looks Back on AEW Singles Run, Says He Was Supposed to Turn Heel"
 slug: "anthony-bowens-looks-back-on-aew-singles-run-says-he-was-supposed-to-turn-heel"
-description: "Anthony Bowens recently reflected on his recent singles run in AEW during an interview with Michael Fairman. Bowens addressed the sentiment that his…"
+description: "Anthony Bowens recently reflected on his recent singles run in AEW during an interview with Michael Fairman."
 federation: AEW
 date: 2026-10-13T11:30:00.000Z
 source_id: 333632

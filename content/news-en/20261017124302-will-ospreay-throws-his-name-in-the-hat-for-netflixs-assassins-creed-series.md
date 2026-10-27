@@ -1,7 +1,7 @@
 ---
 title: "Will Ospreay Throws His Name in the Hat for Netflix’s Assassin’s Creed Series"
 slug: "will-ospreay-throws-his-name-in-the-hat-for-netflixs-assassins-creed-series"
-description: "Will Ospreay has expressed interest in joining Netflix's upcoming Assassin’s Creed series. The AEW star revealed that he has put his name forward for a…"
+description: "Will Ospreay has expressed interest in joining Netflix's upcoming Assassin’s Creed series."
 federation: AEW
 date: 2026-10-17T09:43:02.000Z
 source_id: 802256116

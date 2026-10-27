@@ -1,7 +1,7 @@
 ---
 title: "Laynie Luck Not Having WWE ID Deal Renewed"
 slug: "laynie-luck-not-having-wwe-id-deal-renewed"
-description: "Laynie Luck will become a free agent tomorrow as her WWE ID contract is not being renewed. According to reports, she recently dropped the WWE ID…"
+description: "Laynie Luck will become a free agent tomorrow as her WWE ID contract is not being renewed."
 federation: WWE
 date: 2026-10-08T19:25:45.000Z
 source_id: 332798

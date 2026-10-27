@@ -1,7 +1,7 @@
 ---
 title: "Kit Wilson Wants BLACKPINK at WrestleMania"
 slug: "kit-wilson-wants-blackpink-at-wrestlemania"
-description: "Kit Wilson revealed his big wish to have the K-pop girl group BLACKPINK perform his live entrance music at WrestleMania. Speaking on the Battleground…"
+description: "Kit Wilson revealed his big wish to have the K-pop girl group BLACKPINK perform his live entrance music at WrestleMania."
 federation: WWE
 date: 2026-10-25T18:08:49.000Z
 source_id: 335705

@@ -1,7 +1,7 @@
 ---
 title: "Matt Hardy Pitched WWE on Super-Faction to Counter D-Generation X"
 slug: "matt-hardy-pitched-wwe-on-super-faction-to-counter-d-generation-x"
-description: "During his \"Extreme Life\" podcast, Matt Hardy revealed he once pitched an idea to WWE to form a super-faction featuring himself, Jeff Hardy, Edge, and…"
+description: "During his \"Extreme Life\" podcast, Matt Hardy revealed he once pitched an idea to WWE to form a super-faction featuring himself, Jeff Hardy, Edge."
 federation: WWE
 date: 2026-10-14T01:00:00.000Z
 source_id: 2786162952

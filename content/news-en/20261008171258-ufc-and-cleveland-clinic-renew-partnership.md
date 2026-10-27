@@ -1,7 +1,7 @@
 ---
 title: "UFC and Cleveland Clinic Renew Partnership"
 slug: "ufc-and-cleveland-clinic-renew-partnership"
-description: "UFC and the Cleveland Clinic have announced a multiyear extension of their partnership, with UFC providing a one million dollar contribution to support the…"
+description: "UFC and the Cleveland Clinic have announced a multiyear extension of their partnership."
 federation: WWE
 date: 2026-10-08T14:12:58.000Z
 source_id: 332728

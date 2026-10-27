@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Says It Was Amazing to Spend Nearly Three Months Under Russell Crowe's Learning Tree"
 slug: "drew-mcintyre-says-it-was-amazing-to-spend-nearly-three-months-under-russell-cro"
-description: "Drew McIntyre has gained valuable insights from working alongside Russell Crowe on the upcoming films 'Highlander' and 'The Last Druid.' Reflecting on…"
+description: "Drew McIntyre has gained valuable insights from working alongside Russell Crowe on the upcoming films 'Highlander' and 'The Last Druid.' Reflecting on their."
 federation: WWE
 date: 2026-10-13T17:11:30.000Z
 source_id: 333716

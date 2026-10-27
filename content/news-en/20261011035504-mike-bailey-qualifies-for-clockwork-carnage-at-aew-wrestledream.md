@@ -1,7 +1,7 @@
 ---
 title: "Mike Bailey Qualifies for Clockwork Carnage at AEW WrestleDream"
 slug: "mike-bailey-qualifies-for-clockwork-carnage-at-aew-wrestledream"
-description: "Mike Bailey is headed to AEW WrestleDream after securing a big win on the road. During AEW Collision Grand Slam France, Speedball Mike Bailey defeated Lee…"
+description: "Mike Bailey is headed to AEW WrestleDream after securing a big win on the road."
 federation: AEW
 date: 2026-10-11T00:55:04.000Z
 source_id: 333154

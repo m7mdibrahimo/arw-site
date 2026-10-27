@@ -1,7 +1,7 @@
 ---
 title: "Big E and Kris Yim Get Married"
 slug: "big-e-and-kris-yim-get-married"
-description: "Former WWE Champion Big E has officially married Kris Yim in a ceremony attended by family, friends, and wrestling stars. A clip shared online showed the…"
+description: "Former WWE Champion Big E has officially married Kris Yim in a ceremony attended by family, friends, and wrestling stars."
 federation: WWE
 date: 2026-10-23T09:06:31.000Z
 source_id: 802258613

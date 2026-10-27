@@ -1,7 +1,7 @@
 ---
 title: "MLW Fusion Results: Shotzi Defends Title and Matt Riddle Wins"
 slug: "mlw-fusion-results-shotzi-defends-title-and-matt-riddle-wins"
-description: "Major League Wrestling aired the latest episode of MLW Fusion on October 15, featuring matches and segments taped in June and broadcast on Tubi. Killer…"
+description: "Major League Wrestling aired the latest episode of MLW Fusion on October 15, featuring matches and segments taped in June and broadcast on Tubi."
 federation: INDIE
 date: 2026-10-19T00:28:48.000Z
 source_id: 334601

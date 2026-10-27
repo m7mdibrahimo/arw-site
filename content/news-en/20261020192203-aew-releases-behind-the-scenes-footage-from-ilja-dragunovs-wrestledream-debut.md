@@ -1,7 +1,7 @@
 ---
 title: "AEW Releases Behind-the-Scenes Footage From Ilja Dragunov's WrestleDream Debut"
 slug: "aew-releases-behind-the-scenes-footage-from-ilja-dragunovs-wrestledream-debut"
-description: "AEW has shared behind-the-scenes footage on X showing Ilja Dragunov's arrival and debut at WrestleDream. Despite visa issues that delayed his arrival,…"
+description: "AEW has shared behind-the-scenes footage on X showing Ilja Dragunov's arrival and debut at WrestleDream."
 federation: AEW
 date: 2026-10-20T16:22:03.000Z
 source_id: 3954748881

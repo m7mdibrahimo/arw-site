@@ -1,7 +1,7 @@
 ---
 title: "Reason Behind Roman Reigns’ Expanded WWE Schedule"
 slug: "reason-behind-roman-reigns-expanded-wwe-schedule"
-description: "Roman Reigns is preparing for one of his busiest periods in years, with a backstage report clarifying the driving force behind his increased appearances.…"
+description: "Roman Reigns is preparing for one of his busiest periods in years, with a backstage report clarifying the driving force behind his increased appearances."
 federation: WWE
 date: 2026-10-10T21:00:16.000Z
 source_id: 802253304

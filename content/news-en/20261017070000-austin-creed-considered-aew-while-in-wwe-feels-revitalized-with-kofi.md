@@ -1,7 +1,7 @@
 ---
 title: "Austin Creed Considered AEW While in WWE, Feels Revitalized With Kofi"
 slug: "austin-creed-considered-aew-while-in-wwe-feels-revitalized-with-kofi"
-description: "Austin Creed revealed in an interview at PAX Australia that he previously thought about moving to AEW while still under contract with WWE. The New Level…"
+description: "Austin Creed revealed in an interview at PAX Australia that he previously thought about moving to AEW while still under contract with WWE."
 federation: AEW
 date: 2026-10-17T04:00:00.000Z
 source_id: 333819

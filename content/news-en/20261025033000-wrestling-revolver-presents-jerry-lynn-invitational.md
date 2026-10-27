@@ -1,7 +1,7 @@
 ---
 title: "Wrestling Revolver Presents Jerry Lynn Invitational"
 slug: "wrestling-revolver-presents-jerry-lynn-invitational"
-description: "Wrestling Revolver is hosting the Jerry Lynn Invitational event live on Saturday, October 24th at 9pm ET and 8pm CT. The tournament features several…"
+description: "Wrestling Revolver is hosting the Jerry Lynn Invitational event live on Saturday, October 24th at 9pm ET and 8pm CT."
 federation: INDIE
 date: 2026-10-25T00:30:00.000Z
 source_id: 335524

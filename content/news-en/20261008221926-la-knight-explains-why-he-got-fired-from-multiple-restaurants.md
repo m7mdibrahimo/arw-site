@@ -1,7 +1,7 @@
 ---
 title: "LA Knight Explains Why He Got Fired From Multiple Restaurants"
 slug: "la-knight-explains-why-he-got-fired-from-multiple-restaurants"
-description: "WWE Superstar LA Knight recently opened up about his past working in the restaurant industry before his rise to wrestling stardom. During an appearance on…"
+description: "WWE Superstar LA Knight recently opened up about his past working in the restaurant industry before his rise to wrestling stardom."
 federation: WWE
 date: 2026-10-08T19:19:26.000Z
 source_id: 802252507

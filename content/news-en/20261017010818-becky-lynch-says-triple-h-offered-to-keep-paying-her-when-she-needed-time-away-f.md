@@ -1,7 +1,7 @@
 ---
 title: "Becky Lynch Says Triple H Offered to Keep Paying Her When She Needed Time Away From WWE"
 slug: "becky-lynch-says-triple-h-offered-to-keep-paying-her-when-she-needed-time-away-f"
-description: "Becky Lynch revealed that Triple H offered to continue paying her through her existing deal when she needed to take time away from WWE due to burnout.…"
+description: "Becky Lynch revealed that Triple H offered to continue paying her through her existing deal when she needed to take time away from WWE due to burnout."
 federation: WWE
 date: 2026-10-16T22:08:18.000Z
 source_id: 802255848

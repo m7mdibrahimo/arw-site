@@ -1,7 +1,7 @@
 ---
 title: "John Cena Compares Stand-Up Comedy to Pro Wrestling"
 slug: "john-cena-compares-stand-up-comedy-to-pro-wrestling"
-description: "John Cena recently compared stand-up comedy to professional wrestling during an appearance on the What Now podcast with Trevor Noah. Cena discussed the…"
+description: "John Cena recently compared stand-up comedy to professional wrestling during an appearance on the What Now podcast with Trevor Noah."
 federation: WWE
 date: 2026-10-09T16:35:09.000Z
 source_id: 332872

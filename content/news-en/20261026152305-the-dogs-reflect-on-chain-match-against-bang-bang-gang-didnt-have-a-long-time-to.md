@@ -1,7 +1,7 @@
 ---
 title: "The Dogs Reflect on Chain Match Against Bang Bang Gang, Didn't Have a Long Time to Work on It"
 slug: "the-dogs-reflect-on-chain-match-against-bang-bang-gang-didnt-have-a-long-time-to"
-description: "At AEW Redemption, the Dogs consisting of David Finlay and Clark Connors faced the Bang Bang Gang featuring Jay White and Juice Robinson in a double chain…"
+description: "At AEW Redemption, the Dogs consisting of David Finlay and Clark Connors faced the Bang Bang Gang featuring Jay White and Juice Robinson in a double chain."
 federation: AEW
 date: 2026-10-26T12:23:05.000Z
 source_id: 335799

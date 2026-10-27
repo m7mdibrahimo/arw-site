@@ -1,7 +1,7 @@
 ---
 title: "Full WWE Rosters for Raw, Smackdown, & Free Agents"
 slug: "full-wwe-rosters-for-raw-smackdown-free-agents"
-description: "An up-to-date look at the current WWE rosters for Raw and SmackDown has been provided, detailing the men's and women's divisions, tag teams, stables, and…"
+description: "An up-to-date look at the current WWE rosters for Raw and SmackDown has been provided, detailing the men's and women's divisions, tag teams, stables."
 federation: WWE
 date: 2026-10-20T16:32:00.000Z
 source_id: 49699

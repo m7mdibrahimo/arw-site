@@ -1,7 +1,7 @@
 ---
 title: "Trick Williams Addresses Backlash Over Headbutting Sami Zayn on WWE SmackDown"
 slug: "trick-williams-addresses-backlash-over-headbutting-sami-zayn-on-wwe-smackdown"
-description: "Trick Williams has addressed the backlash surrounding his physical altercation with Sami Zayn on WWE SmackDown. During a recent appearance on Busted Open…"
+description: "Trick Williams has addressed the backlash surrounding his physical altercation with Sami Zayn on WWE SmackDown."
 federation: WWE
 date: 2026-10-09T15:58:06.000Z
 source_id: 802252757

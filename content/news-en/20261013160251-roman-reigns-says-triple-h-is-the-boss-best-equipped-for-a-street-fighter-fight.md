@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Says Triple H Is the Boss Best Equipped for a Street Fighter Fight"
 slug: "roman-reigns-says-triple-h-is-the-boss-best-equipped-for-a-street-fighter-fight"
-description: "Roman Reigns believes Triple H is the boss he has worked under who is best suited for a Street Fighter-style battle. With the Street Fighter movie set for…"
+description: "Roman Reigns believes Triple H is the boss he has worked under who is best suited for a Street Fighter-style battle."
 federation: WWE
 date: 2026-10-13T13:02:51.000Z
 source_id: 333665

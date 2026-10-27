@@ -1,7 +1,7 @@
 ---
 title: "Interim Welterweight Title Match Set for UFC 336 as Flyweight Title Fight Headlines"
 slug: "interim-welterweight-title-match-set-for-ufc-336-as-flyweight-title-fight-headli"
-description: "Two massive championship matches are official for UFC 336. The promotion announced during UFC 333 that Carlos Prates will clash with Michael Morales for…"
+description: "Two massive championship matches are official for UFC 336. The promotion announced during UFC 333 that Carlos Prates will clash with Michael Morales."
 federation: MMA
 date: 2026-10-24T19:47:16.000Z
 source_id: 335516

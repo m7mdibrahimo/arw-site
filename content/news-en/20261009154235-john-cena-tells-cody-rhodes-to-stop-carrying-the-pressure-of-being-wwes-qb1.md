@@ -1,7 +1,7 @@
 ---
 title: "John Cena Tells Cody Rhodes to Stop Carrying the Pressure of Being WWE’s QB1"
 slug: "john-cena-tells-cody-rhodes-to-stop-carrying-the-pressure-of-being-wwes-qb1"
-description: "John Cena recently offered some advice to Cody Rhodes regarding the pressure of being the face of WWE. During an appearance on Busted Open Radio, Cena…"
+description: "John Cena recently offered some advice to Cody Rhodes regarding the pressure of being the face of WWE."
 federation: WWE
 date: 2026-10-09T12:42:35.000Z
 source_id: 802252691

@@ -1,7 +1,7 @@
 ---
 title: "Michael Hayes Discusses Vince McMahon Hating Him in the Past"
 slug: "michael-hayes-discusses-vince-mcmahon-hating-him-in-the-past"
-description: "WWE producer Michael Hayes recently appeared on an episode of Stephanie McMahon's podcast, What's Your Story?, where he discussed his rocky relationship…"
+description: "WWE producer Michael Hayes recently appeared on an episode of Stephanie McMahon's podcast, What's Your Story?"
 federation: WWE
 date: 2026-10-24T13:00:23.000Z
 source_id: 335417

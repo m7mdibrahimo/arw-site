@@ -1,7 +1,7 @@
 ---
 title: "AEW Dynamite Review: Three Things We Hated and Three Things We Loved"
 slug: "aew-dynamite-review-three-things-we-hated-and-three-things-we-loved"
-description: "The latest edition of AEW Dynamite featured major developments following WrestleDream, highlighted by high-profile debuts and escalating rivalries. While…"
+description: "The latest edition of AEW Dynamite featured major developments following WrestleDream, highlighted by high-profile debuts and escalating rivalries."
 federation: AEW
 date: 2026-10-22T05:38:39.000Z
 source_id: 1733480515

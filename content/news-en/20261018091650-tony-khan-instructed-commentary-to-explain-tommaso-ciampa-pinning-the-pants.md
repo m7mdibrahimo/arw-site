@@ -1,7 +1,7 @@
 ---
 title: "Tony Khan Instructed Commentary to Explain Tommaso Ciampa Pinning the Pants"
 slug: "tony-khan-instructed-commentary-to-explain-tommaso-ciampa-pinning-the-pants"
-description: "AEW President Tony Khan addressed a humorous spot from the AEW WrestleDream event where Tommaso Ciampa attacked and pinned Andrade El Idolo's pants during…"
+description: "AEW President Tony Khan addressed a humorous spot from the AEW WrestleDream event where Tommaso Ciampa attacked and pinned Andrade El Idolo's pants during."
 federation: AEW
 date: 2026-10-18T06:16:50.000Z
 source_id: 334504

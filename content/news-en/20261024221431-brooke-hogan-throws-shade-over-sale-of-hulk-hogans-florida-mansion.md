@@ -1,7 +1,7 @@
 ---
 title: "Brooke Hogan Throws Shade Over Sale of Hulk Hogan’s Florida Mansion"
 slug: "brooke-hogan-throws-shade-over-sale-of-hulk-hogans-florida-mansion"
-description: "Brooke Hogan expressed her displeasure regarding the sale of her late father's Florida mansion in Clearwater Beach. Following the official sale of the…"
+description: "Brooke Hogan expressed her displeasure regarding the sale of her late father's Florida mansion in Clearwater Beach."
 federation: WWE
 date: 2026-10-24T19:14:31.000Z
 source_id: 802259205

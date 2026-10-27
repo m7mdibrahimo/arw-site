@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Responds to Conrad Thompson's Criticism"
 slug: "roman-reigns-responds-to-conrad-thompsons-criticism"
-description: "Roman Reigns addressed recent remarks from Conrad Thompson, who previously labeled him one of the most overrated stars in WWE history. The Tribal Chief…"
+description: "Roman Reigns addressed recent remarks from Conrad Thompson, who previously labeled him one of the most overrated stars in WWE history."
 federation: WWE
 date: 2026-10-14T09:58:17.000Z
 source_id: 802254935

@@ -1,7 +1,7 @@
 ---
 title: "Ja'Marr Chase Successfully Appeals Fines for 'People's Elbow' Touchdown Celebration"
 slug: "jamarr-chase-successfully-appeals-fines-for-peoples-elbow-touchdown-celebration"
-description: "Cincinnati Bengals wide receiver Ja'Marr Chase has successfully appealed the fines he received for his touchdown celebration. Chase scored two touchdowns…"
+description: "Cincinnati Bengals wide receiver Ja'Marr Chase has successfully appealed the fines he received for his touchdown celebration."
 federation: WWE
 date: 2026-10-13T20:50:10.000Z
 source_id: 333764

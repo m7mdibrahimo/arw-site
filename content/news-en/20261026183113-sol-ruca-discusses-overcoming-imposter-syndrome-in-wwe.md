@@ -1,7 +1,7 @@
 ---
 title: "Sol Ruca Discusses Overcoming Imposter Syndrome in WWE"
 slug: "sol-ruca-discusses-overcoming-imposter-syndrome-in-wwe"
-description: "Sol Ruca recently addressed her transition to the WWE main roster and how she overcame feelings of imposter syndrome. The former NXT Women's North American…"
+description: "Sol Ruca recently addressed her transition to the WWE main roster and how she overcame feelings of imposter syndrome."
 federation: WWE
 date: 2026-10-26T15:31:13.000Z
 source_id: 335837

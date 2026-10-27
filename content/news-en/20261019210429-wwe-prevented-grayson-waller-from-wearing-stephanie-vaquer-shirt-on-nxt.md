@@ -1,7 +1,7 @@
 ---
 title: "WWE Prevented Grayson Waller From Wearing Stephanie Vaquer Shirt on NXT"
 slug: "wwe-prevented-grayson-waller-from-wearing-stephanie-vaquer-shirt-on-nxt"
-description: "Grayson Waller planned to wear a T-shirt featuring Stephanie Vaquer's viral Instagram photo on WWE NXT, but company officials blocked the idea. The photo…"
+description: "Grayson Waller planned to wear a T-shirt featuring Stephanie Vaquer's viral Instagram photo on WWE NXT, but company officials blocked the idea."
 federation: WWE
 date: 2026-10-19T18:04:29.000Z
 source_id: 802257263

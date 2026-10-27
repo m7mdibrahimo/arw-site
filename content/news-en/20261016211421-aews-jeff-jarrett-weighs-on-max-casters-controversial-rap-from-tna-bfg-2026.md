@@ -1,7 +1,7 @@
 ---
 title: "AEW's Jeff Jarrett Weighs In on Max Caster's Controversial Rap From TNA Bound for Glory 2026"
 slug: "aews-jeff-jarrett-weighs-on-max-casters-controversial-rap-from-tna-bfg-2026"
-description: "AEW's Jeff Jarrett recently addressed Max Caster's controversial rap promo from TNA Bound for Glory 2026, which referenced the recent attacks in Riyadh,…"
+description: "AEW's Jeff Jarrett recently addressed Max Caster's controversial rap promo from TNA Bound for Glory 2026, which referenced the recent attacks in Riyadh."
 federation: TNA
 date: 2026-10-16T18:14:21.000Z
 source_id: 3187678815

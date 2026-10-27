@@ -1,7 +1,7 @@
 ---
 title: "Stephanie Vaquer Potentially Unavailable for No. 1 Contender's Match on WWE Raw"
 slug: "stephanie-vaquer-potentially-unavailable-for-no-1-contenders-match-on-wwe-raw"
-description: "Questions have arisen regarding Stephanie Vaquer's status for Monday's episode of WWE Raw, where she was scheduled to face Becky Lynch in a number one…"
+description: "Questions have arisen regarding Stephanie Vaquer's status for Monday's episode of WWE Raw."
 federation: WWE
 date: 2026-10-26T22:52:11.000Z
 source_id: 4660663520

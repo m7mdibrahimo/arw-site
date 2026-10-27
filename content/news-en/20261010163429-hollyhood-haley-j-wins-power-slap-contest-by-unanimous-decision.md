@@ -1,7 +1,7 @@
 ---
 title: "HollyHood Haley J Wins Power Slap Contest by Unanimous Decision"
 slug: "hollyhood-haley-j-wins-power-slap-contest-by-unanimous-decision"
-description: "HollyHood Haley J secured another victory in Power Slap competition. She competed at Power Slap 24 on Friday against Gema, who entered the matchup with an…"
+description: "HollyHood Haley J secured another victory in Power Slap competition. She competed at Power Slap 24 on Friday against Gema."
 federation: MMA
 date: 2026-10-10T13:34:29.000Z
 source_id: 333024

@@ -1,7 +1,7 @@
 ---
 title: "ROH TV Taping Results From October 24"
 slug: "roh-tv-taping-results-from-october-24"
-description: "Ring of Honor recorded matches on October 24 for upcoming episodes of ROH TV. According to PWInsider, the full spoilers feature a main event win for…"
+description: "Ring of Honor recorded matches on October 24 for upcoming episodes of ROH TV."
 federation: ROH
 date: 2026-10-25T19:18:12.000Z
 source_id: 335716

@@ -1,7 +1,7 @@
 ---
 title: "John Cena Reveals Why Staying in WWE Longer Would Be Unfair to His Wife"
 slug: "john-cena-reveals-why-staying-in-wwe-longer-would-be-unfair-to-his-wife"
-description: "John Cena recently explained that staying in WWE longer would have been unfair to his wife, Shay Shariatzadeh. During an appearance on TODAY’s Making Space…"
+description: "John Cena recently explained that staying in WWE longer would have been unfair to his wife, Shay Shariatzadeh."
 federation: WWE
 date: 2026-10-16T13:47:37.000Z
 source_id: 802255648

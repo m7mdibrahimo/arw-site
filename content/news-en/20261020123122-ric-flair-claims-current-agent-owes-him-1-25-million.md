@@ -1,7 +1,7 @@
 ---
 title: "Ric Flair Claims Current Agent Owes Him $1.25 Million"
 slug: "ric-flair-claims-current-agent-owes-him-1-25-million"
-description: "Ric Flair recently opened up about his negative experiences with agents, claiming his current representative owes him a staggering $1.25 million. Speaking…"
+description: "Ric Flair recently opened up about his negative experiences with agents, claiming his current representative owes him a staggering $1.25 million."
 federation: INDIE
 date: 2026-10-20T09:31:22.000Z
 source_id: 802257634

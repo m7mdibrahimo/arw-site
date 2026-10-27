@@ -1,7 +1,7 @@
 ---
 title: "Ludwig Kaiser Legal Team Receives New Evidence"
 slug: "ludwig-kaiser-legal-team-receives-new-evidence"
-description: "Ludwig Kaiser's defense team has gained access to new evidence in his ongoing criminal case, featuring four photographs documenting the alleged injuries of…"
+description: "Ludwig Kaiser's defense team has gained access to new evidence in his ongoing criminal case."
 federation: WWE
 date: 2026-10-23T15:19:10.000Z
 source_id: 802258691

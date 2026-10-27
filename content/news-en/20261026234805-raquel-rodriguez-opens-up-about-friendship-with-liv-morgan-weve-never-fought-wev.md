@@ -1,7 +1,7 @@
 ---
 title: "Raquel Rodriguez Opens Up About Friendship With Liv Morgan: \"We've Never Fought, We've Never Argued\""
 slug: "raquel-rodriguez-opens-up-about-friendship-with-liv-morgan-weve-never-fought-wev"
-description: "WWE star Raquel Rodriguez spoke openly about her deep bond with Judgment Day member and current WWE Women's World Champion Liv Morgan during a recent…"
+description: "WWE star Raquel Rodriguez spoke openly about her deep bond with Judgment Day member and current WWE Women's World Champion Liv Morgan during a recent."
 federation: WWE
 date: 2026-10-26T20:48:05.000Z
 source_id: 335943

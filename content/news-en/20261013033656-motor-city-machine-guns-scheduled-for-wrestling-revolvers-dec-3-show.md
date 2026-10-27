@@ -1,7 +1,7 @@
 ---
 title: "Motor City Machine Guns Scheduled for Wrestling REVOLVER's Dec. 3 Show"
 slug: "motor-city-machine-guns-scheduled-for-wrestling-revolvers-dec-3-show"
-description: "Motor City Machine Guns are set to appear at the Wrestling REVOLVER event on December 3. The promotion announced that Alex Shelley and Chris Sabin will be…"
+description: "Motor City Machine Guns are set to appear at the Wrestling REVOLVER event on December 3."
 federation: INDIE
 date: 2026-10-13T00:36:56.000Z
 source_id: 333590

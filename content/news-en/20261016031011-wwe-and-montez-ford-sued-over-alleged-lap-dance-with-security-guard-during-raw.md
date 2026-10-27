@@ -1,7 +1,7 @@
 ---
 title: "WWE and Montez Ford Sued Over Alleged Lap Dance With Security Guard During RAW"
 slug: "wwe-and-montez-ford-sued-over-alleged-lap-dance-with-security-guard-during-raw"
-description: "WWE and Montez Ford are being sued by a Cook County Sheriff’s officer who claims he was subjected to an unwanted sexualized dance during a July 6 episode…"
+description: "WWE and Montez Ford are being sued by a Cook County Sheriff’s officer who claims he was subjected to an unwanted sexualized dance during a July 6 episode."
 federation: WWE
 date: 2026-10-16T00:10:11.000Z
 source_id: 802255525

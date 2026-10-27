@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Recounts Learning That His Dad Dusty Rhodes Was a Flying Colonel"
 slug: "cody-rhodes-recounts-learning-that-his-dad-dusty-rhodes-was-a-flying-colonel"
-description: "Cody Rhodes recently shared a story about discovering that his late father, Dusty Rhodes, held the status of a Flying Colonel with Delta Air Lines.…"
+description: "Cody Rhodes recently shared a story about discovering that his late father, Dusty Rhodes, held the status of a Flying Colonel with Delta Air Lines."
 federation: WWE
 date: 2026-10-21T18:49:36.000Z
 source_id: 335002

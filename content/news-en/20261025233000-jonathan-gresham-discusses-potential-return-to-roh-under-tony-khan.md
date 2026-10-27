@@ -1,7 +1,7 @@
 ---
 title: "Jonathan Gresham Discusses Potential Return to ROH Under Tony Khan"
 slug: "jonathan-gresham-discusses-potential-return-to-roh-under-tony-khan"
-description: "Jonathan Gresham recently addressed the possibility of returning to ROH under AEW President Tony Khan during an appearance on the Grapsody Podcast. Gresham…"
+description: "Jonathan Gresham recently addressed the possibility of returning to ROH under AEW President Tony Khan during an appearance on the Grapsody Podcast."
 federation: ROH
 date: 2026-10-25T20:30:00.000Z
 source_id: 1411604483

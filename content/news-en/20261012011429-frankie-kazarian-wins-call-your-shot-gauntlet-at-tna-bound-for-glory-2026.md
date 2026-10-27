@@ -1,7 +1,7 @@
 ---
 title: "Frankie Kazarian Wins Call Your Shot Gauntlet at TNA Bound for Glory 2026"
 slug: "frankie-kazarian-wins-call-your-shot-gauntlet-at-tna-bound-for-glory-2026"
-description: "Frankie Kazarian won the Call Your Shot Gauntlet match at TNA Bound for Glory on October 11, 2026, securing a significant future opportunity. The chaotic…"
+description: "Frankie Kazarian won the Call Your Shot Gauntlet match at TNA Bound for Glory on October 11, 2026, securing a significant future opportunity."
 federation: TNA
 date: 2026-10-11T22:14:29.000Z
 source_id: 802253824

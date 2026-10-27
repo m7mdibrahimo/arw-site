@@ -1,7 +1,7 @@
 ---
 title: "Frankie Kazarian Reveals Call Your Shot Plans After TNA Bound for Glory Win"
 slug: "frankie-kazarian-reveals-call-your-shot-plans-after-tna-bound-for-glory-win"
-description: "Frankie Kazarian has confirmed his strategy following his victory in the Call Your Shot gauntlet at TNA Bound for Glory on October 11, 2026. Rather than…"
+description: "Frankie Kazarian has confirmed his strategy following his victory in the Call Your Shot gauntlet at TNA Bound for Glory on October 11, 2026."
 federation: TNA
 date: 2026-10-11T23:17:58.000Z
 source_id: 802253939

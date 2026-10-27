@@ -1,7 +1,7 @@
 ---
 title: "Dralistico Fuels AEW Exit Speculation With Cryptic Jail Photo"
 slug: "dralistico-fuels-aew-exit-speculation-with-cryptic-jail-photo"
-description: "Dralistico has sparked rumors regarding his AEW status after posting a cryptic photo on X. The luchador shared an image of himself in handcuffs behind bars…"
+description: "Dralistico has sparked rumors regarding his AEW status after posting a cryptic photo on X."
 federation: AEW
 date: 2026-10-19T19:45:58.000Z
 source_id: 802257297

@@ -1,7 +1,7 @@
 ---
 title: "Sean Strickland Expresses Frustration With UFC Over Pay Disparities"
 slug: "sean-strickland-expresses-frustration-with-ufc-over-pay-disparities"
-description: "According to Fightful, UFC Middleweight Champion Sean Strickland is unhappy with the promotion and is considering walking away unless significant changes…"
+description: "According to Fightful, UFC Middleweight Champion Sean Strickland is unhappy with the promotion and is considering walking away unless significant changes are."
 federation: MMA
 date: 2026-10-07T22:26:19.000Z
 source_id: 332669

@@ -1,7 +1,7 @@
 ---
 title: "Ethan Page Walks Away After Heated Confrontation With Wrestling Fan"
 slug: "ethan-page-walks-away-after-heated-confrontation-with-wrestling-fan"
-description: "WWE star Ethan Page recently found himself involved in an awkward confrontation with wrestling influencer Heel Girlfriend. The incident occurred on October…"
+description: "WWE star Ethan Page recently found himself involved in an awkward confrontation with wrestling influencer Heel Girlfriend."
 federation: WWE
 date: 2026-10-25T22:18:18.000Z
 source_id: 802259679

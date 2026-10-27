@@ -1,7 +1,7 @@
 ---
 title: "MVP Criticizes the Great Khali's Wrestling Skills in Scathing Rant"
 slug: "mvp-criticizes-the-great-khalis-wrestling-skills-in-scathing-rant"
-description: "MVP recently shared his blunt assessment of The Great Khali's in-ring work during an appearance on the Marking Out podcast. While discussing wrestlers who…"
+description: "MVP recently shared his blunt assessment of The Great Khali's in-ring work during an appearance on the Marking Out podcast."
 federation: WWE
 date: 2026-10-12T18:22:05.000Z
 source_id: 802254167

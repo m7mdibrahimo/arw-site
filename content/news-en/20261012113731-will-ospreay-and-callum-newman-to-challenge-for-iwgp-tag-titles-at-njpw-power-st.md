@@ -1,7 +1,7 @@
 ---
 title: "Will Ospreay and Callum Newman to Challenge for IWGP Tag Titles at NJPW Power Struggle"
 slug: "will-ospreay-and-callum-newman-to-challenge-for-iwgp-tag-titles-at-njpw-power-st"
-description: "Will Ospreay and Callum Newman will challenge for the IWGP Tag Titles at NJPW Power Struggle on November 3. At NJPW King of Pro-Wrestling, United Empire…"
+description: "Will Ospreay and Callum Newman will challenge for the IWGP Tag Titles at NJPW Power Struggle on November 3."
 federation: NJPW
 date: 2026-10-12T08:37:31.000Z
 source_id: 333393

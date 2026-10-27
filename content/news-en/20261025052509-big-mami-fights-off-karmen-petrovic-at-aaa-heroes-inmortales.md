@@ -1,7 +1,7 @@
 ---
 title: "Big Mami Fights Off Karmen Petrovic at AAA Héroes Inmortales"
 slug: "big-mami-fights-off-karmen-petrovic-at-aaa-heroes-inmortales"
-description: "Big Mami made a surprise appearance at the first week of Lucha Libre AAA's Héroes Inmortales event to save Niño Hamburguesa. During the AAA World Trios…"
+description: "Big Mami made a surprise appearance at the first week of Lucha Libre AAA's Héroes Inmortales event to save Niño Hamburguesa."
 federation: INDIE
 date: 2026-10-25T02:25:09.000Z
 source_id: 335579

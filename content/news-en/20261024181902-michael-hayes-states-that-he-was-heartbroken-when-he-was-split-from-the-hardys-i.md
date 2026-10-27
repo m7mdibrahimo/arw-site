@@ -1,7 +1,7 @@
 ---
 title: "Michael Hayes States That He Was Heartbroken When He Was Split From The Hardys in WWE"
 slug: "michael-hayes-states-that-he-was-heartbroken-when-he-was-split-from-the-hardys-i"
-description: "Michael Hayes revealed that he was heartbroken when he was separated from The Hardys in WWE. During an appearance on the What's Your Story? podcast with…"
+description: "Michael Hayes revealed that he was heartbroken when he was separated from The Hardys in WWE. During an appearance on the What's Your Story?"
 federation: WWE
 date: 2026-10-24T15:19:02.000Z
 source_id: 335444

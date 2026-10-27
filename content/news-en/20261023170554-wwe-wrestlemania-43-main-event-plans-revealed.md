@@ -1,7 +1,7 @@
 ---
 title: "WWE WrestleMania 43 Main Event Plans Revealed"
 slug: "wwe-wrestlemania-43-main-event-plans-revealed"
-description: "WWE already has a major match in mind for WrestleMania 43, but fans hoping to see Cody Rhodes face CM Punk might be disappointed. According to Dave Meltzer…"
+description: "WWE already has a major match in mind for WrestleMania 43, but fans hoping to see Cody Rhodes face CM Punk might be disappointed."
 federation: WWE
 date: 2026-10-23T14:05:54.000Z
 source_id: 802258684

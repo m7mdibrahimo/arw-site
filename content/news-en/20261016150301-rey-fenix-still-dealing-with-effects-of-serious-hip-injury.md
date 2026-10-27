@@ -1,7 +1,7 @@
 ---
 title: "Rey Fénix Still Dealing With Effects of Serious Hip Injury"
 slug: "rey-fenix-still-dealing-with-effects-of-serious-hip-injury"
-description: "WWE star Rey Fénix recently opened up about the severe physical toll his wrestling career has taken on his body, revealing that a serious right hip injury…"
+description: "WWE star Rey Fénix recently opened up about the severe physical toll his wrestling career has taken on his body."
 federation: WWE
 date: 2026-10-16T12:03:01.000Z
 source_id: 802255614

@@ -1,7 +1,7 @@
 ---
 title: "Billy Gunn Criticizes Modern Wrestlers for Handling of Backstage Drama"
 slug: "billy-gunn-criticizes-modern-wrestlers-for-handling-of-backstage-drama"
-description: "Billy Gunn believes that modern wrestlers struggle to manage backstage conflicts effectively compared to his time in WWE. Reflecting on the drama during CM…"
+description: "Billy Gunn believes that modern wrestlers struggle to manage backstage conflicts effectively compared to his time in WWE."
 federation: WWE
 date: 2026-10-18T18:37:00.000Z
 source_id: 802256964

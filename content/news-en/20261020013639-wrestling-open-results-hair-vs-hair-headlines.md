@@ -1,7 +1,7 @@
 ---
 title: "Wrestling Open Results: Hair vs. Hair Headlines"
 slug: "wrestling-open-results-hair-vs-hair-headlines"
-description: "Beyond Wrestling hosted the latest episode of Wrestling Open on October 15 at White Eagle in Worcester, Massachusetts, with the event airing live on IWTV.…"
+description: "Beyond Wrestling hosted the latest episode of Wrestling Open on October 15 at White Eagle in Worcester, Massachusetts, with the event airing live on IWTV."
 federation: INDIE
 date: 2026-10-19T22:36:39.000Z
 source_id: 334738

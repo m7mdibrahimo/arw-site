@@ -1,7 +1,7 @@
 ---
 title: "Backstage Update on AEW Status of Ilja Dragunov & Kairi Sane Ahead of WrestleDream"
 slug: "backstage-update-on-aew-status-of-ilja-dragunov-kairi-sane-ahead-of-wrestledream"
-description: "According to reports, former WWE United States Champion Ilja Dragunov has officially signed with AEW after resolving his visa issues, and a recent…"
+description: "According to reports, former WWE United States Champion Ilja Dragunov has officially signed with AEW after resolving his visa issues."
 federation: AEW
 date: 2026-10-16T18:40:12.000Z
 source_id: 2925262872

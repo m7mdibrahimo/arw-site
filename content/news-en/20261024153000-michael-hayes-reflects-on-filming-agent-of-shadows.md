@@ -1,7 +1,7 @@
 ---
 title: "Michael Hayes Reflects on Filming Agent of Shadows"
 slug: "michael-hayes-reflects-on-filming-agent-of-shadows"
-description: "WWE producer Michael Hayes recently looked back on his experience filming the ReelShort movie Agent of Shadows during an appearance on What's Your Story?…"
+description: "WWE producer Michael Hayes recently looked back on his experience filming the ReelShort movie Agent of Shadows during an appearance on What's Your Story?"
 federation: WWE
 date: 2026-10-24T12:30:00.000Z
 source_id: 335414

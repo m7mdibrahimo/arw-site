@@ -1,7 +1,7 @@
 ---
 title: "Vince Russo Blames TNA for Max Caster Firing and Says Company Wasted Huge Opportunity"
 slug: "vince-russo-blames-tna-for-max-caster-firing-and-says-company-wasted-huge-opport"
-description: "Vince Russo criticized TNA Wrestling for firing Max Caster following his controversial entrance rap at Bound for Glory, arguing that management shares the…"
+description: "Vince Russo criticized TNA Wrestling for firing Max Caster following his controversial entrance rap at Bound for Glory."
 federation: TNA
 date: 2026-10-19T13:58:03.000Z
 source_id: 802257167

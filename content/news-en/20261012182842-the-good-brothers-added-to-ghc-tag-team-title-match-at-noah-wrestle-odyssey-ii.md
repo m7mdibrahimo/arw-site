@@ -1,7 +1,7 @@
 ---
 title: "The Good Brothers Added to GHC Tag Team Title Match at NOAH Wrestle Odyssey II"
 slug: "the-good-brothers-added-to-ghc-tag-team-title-match-at-noah-wrestle-odyssey-ii"
-description: "The Good Brothers have been added to the GHC Tag Team Title match at the upcoming Pro Wrestling NOAH Wrestle Odyssey II event. The show is scheduled for…"
+description: "The Good Brothers have been added to the GHC Tag Team Title match at the upcoming Pro Wrestling NOAH Wrestle Odyssey II event."
 federation: INDIE
 date: 2026-10-12T15:28:42.000Z
 source_id: 333504

@@ -1,7 +1,7 @@
 ---
 title: "Dominik Mysterio Discusses Current Title Aspirations in WWE"
 slug: "dominik-mysterio-discusses-current-title-aspirations-in-wwe"
-description: "Dominik Mysterio has spoken about the various championships in WWE and his opportunities if he decides to pursue them, including tag team titles. He…"
+description: "Dominik Mysterio has spoken about the various championships in WWE and his opportunities if he decides to pursue them, including tag team titles."
 federation: WWE
 date: 2026-10-21T15:43:00.000Z
 source_id: 334977

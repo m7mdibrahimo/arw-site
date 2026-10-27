@@ -1,7 +1,7 @@
 ---
 title: "AEW's Tony Khan Talks Adam Copeland Retirement Announcement, Christian Cage's Injury"
 slug: "aews-tony-khan-talks-adam-copeland-retirement-announcement-christian-cages-injur"
-description: "AEW CEO Tony Khan recently addressed Adam Copeland's upcoming retirement announcement for 2027, expressing his support and noting that Copeland wants next…"
+description: "AEW CEO Tony Khan recently addressed Adam Copeland's upcoming retirement announcement for 2027."
 federation: AEW
 date: 2026-10-23T20:58:14.000Z
 source_id: 3164323950

@@ -1,7 +1,7 @@
 ---
 title: "Judge Denies AEW Request to Move Production Worker Lawsuit to Florida"
 slug: "judge-denies-aew-request-to-move-production-worker-lawsuit-to-florida"
-description: "A judge denied a request from AEW and Jon Moxley to transfer a civil lawsuit to a Florida court. According to Brandon Thurston, the case filed by former…"
+description: "A judge denied a request from AEW and Jon Moxley to transfer a civil lawsuit to a Florida court."
 federation: AEW
 date: 2026-10-22T17:49:00.000Z
 source_id: 335161

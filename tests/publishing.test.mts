@@ -4958,7 +4958,9 @@ test("a program's library page structured data carries dateModified and its name
 test("a one-off program's library page title leads with the year, as visitors search it (INCIDENTS #547)", async () => {
   const { readFileSync } = await import("node:fs");
   const tpl = readFileSync(new URL("../pages/library-program.njk", import.meta.url), "utf8");
-  assert.match(tpl, /lp\.prog\.count < 4 and \(lp\.prog\.latest\.eventDate \| yearOf\)\s*%\}\{\{ lp\.prog\.arName \}\} \{\{ lp\.prog\.latest\.eventDate \| yearOf \}\} مترجم كامل/);
+  // Still holds after INCIDENTS #862: the year stays right after the name, but the title is the collection's
+  // («عروض … المترجمة (عرض واحد)»), never the newest episode's own title again.
+  assert.match(tpl, /lp\.prog\.count < 4 and \(lp\.prog\.latest\.eventDate \| yearOf\) and lp\.prog\.arLibTitle\s*%\}\{\{ lp\.prog\.arLibTitle \| replace\(' مترجمة', ''\) \}\} \{\{ lp\.prog\.latest\.eventDate \| yearOf \}\} المترجمة \(/);
 });
 
 test('weekly shows carry the generic «عروض المصارعة الحرة مترجم» in their structured-data names (INCIDENTS #550)', async () => {
@@ -4989,8 +4991,11 @@ test("the newest episode's visible H1 says «الأخير» like its title (INCI
 // INCIDENTS #566: a one-event library page (Money in the Bank 2026) is searched with its year, not «الاخير»
 test("the library description of a yearly one-event program says the year and download/watch", () => {
   const t = fs.readFileSync("pages/library-program.njk", "utf-8");
-  assert.ok(/مشاهدة وتحميل \{\{ lp\.prog\.arName \}\}\{% if lp\.prog\.count < 4 and \(lp\.prog\.latest\.eventDate \| yearOf\) %\} \{\{ lp\.prog\.latest\.eventDate \| yearOf \}\}/.test(t));
-  assert.ok(t.includes("تحميل ومشاهدة"));
+  // «كل عروض … 2026 المترجمة (عرض واحد) … مع نتائج كل عرض وروابط المشاهدة والتحميل» — the year stays in the
+  // description of a one-event program, and download/watch stays too (INCIDENTS #862 kept both when it made the
+  // head clearly a collection's, not the episode's).
+  assert.ok(/كل عروض \{\{ lp\.prog\.name \}\}\{% if not \(lp\.prog\.name \| string\)\.endsWith\(lp\.prog\.latest\.eventDate \| yearOf \| string\) %\} \{\{ lp\.prog\.latest\.eventDate \| yearOf \}\}/.test(t));
+  assert.ok(t.includes("روابط المشاهدة والتحميل"));
 });
 
 // A show page's episode list links the program's newest episode as «… الأخير …» (title + alt), like the home page and the library page do

@@ -1,7 +1,7 @@
 ---
 title: "Indi Hartwell Retains KO Title Against Former Champ Xia Brookside on TNA Impact"
 slug: "indi-hartwell-retains-ko-title-against-former-champ-xia-brookside-on-tna-impact"
-description: "Indi Hartwell successfully defended her Knockouts World Championship against former champion Xia Brookside in an impromptu match during the latest episode…"
+description: "Indi Hartwell successfully defended her Knockouts World Championship against former champion Xia Brookside in an impromptu match during the latest episode."
 federation: TNA
 date: 2026-10-23T01:31:51.000Z
 source_id: 2035195111

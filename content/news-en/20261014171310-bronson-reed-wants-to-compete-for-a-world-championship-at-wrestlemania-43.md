@@ -1,7 +1,7 @@
 ---
 title: "Bronson Reed Wants to Compete for a World Championship at WrestleMania 43"
 slug: "bronson-reed-wants-to-compete-for-a-world-championship-at-wrestlemania-43"
-description: "Bronson Reed recently discussed his goals for WrestleMania 43, stating that he is aiming to challenge for a world championship at the event. During an…"
+description: "Bronson Reed recently discussed his goals for WrestleMania 43, stating that he is aiming to challenge for a world championship at the event."
 federation: WWE
 date: 2026-10-14T14:13:10.000Z
 source_id: 333831

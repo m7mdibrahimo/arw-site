@@ -1,7 +1,7 @@
 ---
 title: "Sol Ruca Sparks Dating Speculation With NXT Star Ricky Smokes"
 slug: "sol-ruca-sparks-dating-speculation-with-nxt-star-ricky-smokes"
-description: "Sol Ruca and Tyler Bate were one of WWE's most prominent couples for years, but recent social media changes sparked many questions among fans. According to…"
+description: "Sol Ruca and Tyler Bate were one of WWE's most prominent couples for years, but recent social media changes sparked many questions among fans."
 federation: WWE
 date: 2026-10-23T12:05:08.000Z
 source_id: 802258650

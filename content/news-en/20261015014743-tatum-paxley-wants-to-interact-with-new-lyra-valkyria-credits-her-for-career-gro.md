@@ -1,7 +1,7 @@
 ---
 title: "Tatum Paxley Wants to Interact With New Lyra Valkyria, Credits Her for Career Growth"
 slug: "tatum-paxley-wants-to-interact-with-new-lyra-valkyria-credits-her-for-career-gro"
-description: "Tatum Paxley recently reflected on her close on-screen partnership with Lyra Valkyria during their time in WWE NXT. While appearing on Off The Ropes,…"
+description: "Tatum Paxley recently reflected on her close on-screen partnership with Lyra Valkyria during their time in WWE NXT."
 federation: WWE
 date: 2026-10-14T22:47:43.000Z
 source_id: 333945

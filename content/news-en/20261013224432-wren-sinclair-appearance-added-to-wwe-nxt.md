@@ -1,7 +1,7 @@
 ---
 title: "Wren Sinclair Appearance Added to WWE NXT"
 slug: "wren-sinclair-appearance-added-to-wwe-nxt"
-description: "The suspended Wren Sinclair is scheduled to appear on tonight's episode of WWE NXT. Sinclair snuck into a 20-woman Battle Royal last week disguised as Lady…"
+description: "The suspended Wren Sinclair is scheduled to appear on tonight's episode of WWE NXT."
 federation: WWE
 date: 2026-10-13T19:44:32.000Z
 source_id: 333758

@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Saw His Street Fighter Role Double During Filming"
 slug: "cody-rhodes-saw-his-street-fighter-role-double-during-filming"
-description: "Cody Rhodes originally landed a smaller part as Guile in the upcoming Street Fighter movie, but according to Ringside News, his performance quickly…"
+description: "Cody Rhodes originally landed a smaller part as Guile in the upcoming Street Fighter movie, but according to Ringside News."
 federation: WWE
 date: 2026-10-08T00:16:38.000Z
 source_id: 802252245

@@ -1,7 +1,7 @@
 ---
 title: "Cappuccino Jones and Santi Rivera No Longer With WWE ID Program"
 slug: "cappuccino-jones-and-santi-rivera-no-longer-with-wwe-id-program"
-description: "Cappuccino Jones and Santi Rivera are no longer part of the WWE I.D. program, following multiple departures from the initiative. According to Mike Johnson…"
+description: "Cappuccino Jones and Santi Rivera are no longer part of the WWE I.D. program, following multiple departures from the initiative."
 federation: WWE
 date: 2026-10-13T16:27:23.000Z
 source_id: 333709

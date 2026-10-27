@@ -1,7 +1,7 @@
 ---
 title: "PAC Had Blood Clot Issues and Lung Problems Before His Death at 40"
 slug: "pac-had-blood-clot-issues-and-lung-problems-before-his-death-at-40"
-description: "PAC's sudden death at 40 shocked the wrestling world, but new details reveal he had health problems years before his passing. Dave Meltzer reported on…"
+description: "PAC's sudden death at 40 shocked the wrestling world, but new details reveal he had health problems years before his passing."
 federation: AEW
 date: 2026-10-20T12:33:10.000Z
 source_id: 802257707

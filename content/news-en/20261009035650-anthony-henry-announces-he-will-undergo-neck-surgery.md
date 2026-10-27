@@ -1,7 +1,7 @@
 ---
 title: "Anthony Henry Announces He Will Undergo Neck Surgery"
 slug: "anthony-henry-announces-he-will-undergo-neck-surgery"
-description: "Anthony Henry has announced that he will be undergoing neck surgery. He shared the update on X, explaining that he has been inactive due to his health.…"
+description: "Anthony Henry has announced that he will be undergoing neck surgery. He shared the update on X, explaining that he has been inactive due to his health."
 federation: INDIE
 date: 2026-10-09T00:56:50.000Z
 source_id: 332834

@@ -1,7 +1,7 @@
 ---
 title: "Samoa Joe Shares Thoughts on In-Ring Retirement"
 slug: "samoa-joe-shares-thoughts-on-in-ring-retirement"
-description: "As several prominent stars from the previous generation of professional wrestling prepare to hang up their boots, Samoa Joe has shared his thoughts on his…"
+description: "As several prominent stars from the previous generation of professional wrestling prepare to hang up their boots."
 federation: AEW
 date: 2026-10-25T15:30:00.000Z
 source_id: 2318822664

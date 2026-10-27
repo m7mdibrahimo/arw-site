@@ -1,7 +1,7 @@
 ---
 title: "Kevin Nash Thinks WWE Title Match at Money in the Bank Made a Statement"
 slug: "kevin-nash-thinks-wwe-title-match-at-money-in-the-bank-made-a-statement"
-description: "Roman Reigns defended his WWE World Heavyweight Championship against LA Knight at Money in the Bank, a match Kevin Nash believes set a strong standard for…"
+description: "Roman Reigns defended his WWE World Heavyweight Championship against LA Knight at Money in the Bank."
 federation: WWE
 date: 2026-10-26T13:30:00.000Z
 source_id: 4627365309

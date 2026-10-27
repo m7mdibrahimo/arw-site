@@ -1,7 +1,7 @@
 ---
 title: "Identity of Person Who Told Paul Heyman to Cut His Ponytail"
 slug: "identity-of-person-who-told-paul-heyman-to-cut-his-ponytail"
-description: "Jacob Heyman recently revealed that he was the person who convinced his father, Paul Heyman, to cut off his iconic ponytail. Speaking during a roundtable…"
+description: "Jacob Heyman recently revealed that he was the person who convinced his father, Paul Heyman, to cut off his iconic ponytail."
 federation: WWE
 date: 2026-10-21T19:07:32.000Z
 source_id: 802258227

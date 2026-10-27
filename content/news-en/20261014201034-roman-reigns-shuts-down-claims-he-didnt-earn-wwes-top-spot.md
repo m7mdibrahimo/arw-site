@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Shuts Down Claims He Didn’t Earn WWE’s Top Spot"
 slug: "roman-reigns-shuts-down-claims-he-didnt-earn-wwes-top-spot"
-description: "Roman Reigns recently addressed the ongoing debates about his legacy and whether he truly earned his top position in WWE. Speaking on NotSam Wrestling,…"
+description: "Roman Reigns recently addressed the ongoing debates about his legacy and whether he truly earned his top position in WWE."
 federation: WWE
 date: 2026-10-14T17:10:34.000Z
 source_id: 802255033

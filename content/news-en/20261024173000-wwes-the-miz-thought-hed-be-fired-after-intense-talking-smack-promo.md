@@ -1,7 +1,7 @@
 ---
 title: "WWE's The Miz Thought He'd Be Fired After Intense Talking Smack Promo"
 slug: "wwes-the-miz-thought-hed-be-fired-after-intense-talking-smack-promo"
-description: "Looking back at his famous 2016 Talking Smack promo with Daniel Bryan, WWE star The Miz revealed that he genuinely thought he was going to get fired after…"
+description: "Looking back at his famous 2016 Talking Smack promo with Daniel Bryan, WWE star The Miz revealed that he genuinely thought he was going to get fired after."
 federation: WWE
 date: 2026-10-24T14:30:00.000Z
 source_id: 3252994411

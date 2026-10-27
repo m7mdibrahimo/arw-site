@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Thinks He'll Wrestle Six or Seven More Years, Doesn't Want to Wrestle Until He's 50"
 slug: "cody-rhodes-thinks-hell-wrestle-six-or-seven-more-years-doesnt-want-to-wrestle-u"
-description: "Cody Rhodes discussed his wrestling future during an appearance on Chris Van Vliet's Insight podcast. Rhodes revealed that he recently signed a new…"
+description: "Cody Rhodes discussed his wrestling future during an appearance on Chris Van Vliet's Insight podcast."
 federation: WWE
 date: 2026-10-22T11:16:38.000Z
 source_id: 335112

@@ -1,7 +1,7 @@
 ---
 title: "CJ Perry Reveals WWE Sometimes Gave Her Storyline Ideas to Other Wrestlers"
 slug: "cj-perry-reveals-wwe-sometimes-gave-her-storyline-ideas-to-other-wrestlers"
-description: "CJ Perry recently discussed her time in WWE and revealed that some of the storyline ideas she pitched to management were later given to other Superstars…"
+description: "CJ Perry recently discussed her time in WWE and revealed that some of the storyline ideas she pitched to management were later given to other Superstars."
 federation: WWE
 date: 2026-10-18T14:51:13.000Z
 source_id: 802256901

@@ -1,7 +1,7 @@
 ---
 title: "Frustration and Confusion Surrounding GUNTHER on WWE SmackDown"
 slug: "frustration-and-confusion-surrounding-gunther-on-wwe-smackdown"
-description: "There is a reported sense of frustration and confusion regarding how WWE is currently utilizing GUNTHER on SmackDown. According to Fightful, his recent…"
+description: "There is a reported sense of frustration and confusion regarding how WWE is currently utilizing GUNTHER on SmackDown."
 federation: WWE
 date: 2026-10-16T02:29:05.000Z
 source_id: 334145

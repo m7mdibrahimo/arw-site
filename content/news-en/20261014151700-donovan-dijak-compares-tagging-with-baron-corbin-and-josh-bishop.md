@@ -1,7 +1,7 @@
 ---
 title: "Donovan Dijak Compares Tagging With Baron Corbin and Josh Bishop"
 slug: "donovan-dijak-compares-tagging-with-baron-corbin-and-josh-bishop"
-description: "Donovan Dijak recently discussed the differences between teaming with Baron Corbin and Josh Bishop in Major League Wrestling, according to Fightful. Since…"
+description: "Donovan Dijak recently discussed the differences between teaming with Baron Corbin and Josh Bishop in Major League Wrestling, according to Fightful."
 federation: INDIE
 date: 2026-10-14T12:17:00.000Z
 source_id: 333826

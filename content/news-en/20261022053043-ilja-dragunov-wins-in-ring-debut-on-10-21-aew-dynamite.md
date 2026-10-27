@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Wins In-Ring Debut on 10/21 AEW Dynamite"
 slug: "ilja-dragunov-wins-in-ring-debut-on-10-21-aew-dynamite"
-description: "Ilja Dragunov secured his first victory in AEW during the latest episode of AEW Dynamite. The show was headlined by a singles match between Dragunov and…"
+description: "Ilja Dragunov secured his first victory in AEW during the latest episode of AEW Dynamite."
 federation: AEW
 date: 2026-10-22T02:30:43.000Z
 source_id: 335090

@@ -1,7 +1,7 @@
 ---
 title: "AEW Fans Mock Promotion Over Kamille Birthday Post During Extended Absence"
 slug: "aew-fans-mock-promotion-over-kamille-birthday-post-during-extended-absence"
-description: "AEW faced criticism from wrestling fans after publishing a social media post celebrating the birthday of Kamille on October 24. Rather than sending warm…"
+description: "AEW faced criticism from wrestling fans after publishing a social media post celebrating the birthday of Kamille on October 24."
 federation: AEW
 date: 2026-10-24T19:22:05.000Z
 source_id: 802259175

@@ -1,7 +1,7 @@
 ---
 title: "AEW WrestleDream 2026: 3 Things We Hated & 3 Things We Loved"
 slug: "aew-wrestledream-2026-3-things-we-hated-3-things-we-loved"
-description: "AEW WrestleDream 2026 presented a packed night of action in Orlando, featuring title changes, intense battles, and high-profile debuts. Wrestling Inc.…"
+description: "AEW WrestleDream 2026 presented a packed night of action in Orlando, featuring title changes, intense battles, and high-profile debuts. Wrestling Inc."
 federation: AEW
 date: 2026-10-18T05:42:01.000Z
 source_id: 4497488823

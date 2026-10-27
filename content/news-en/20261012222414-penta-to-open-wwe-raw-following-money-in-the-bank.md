@@ -1,7 +1,7 @@
 ---
 title: "Penta to Open WWE RAW Following Money in the Bank"
 slug: "penta-to-open-wwe-raw-following-money-in-the-bank"
-description: "WWE is preparing for tonight's episode of WWE RAW, with preliminary reports indicating that Money in the Bank briefcase winner Penta is scheduled to open…"
+description: "WWE is preparing for tonight's episode of WWE RAW, with preliminary reports indicating that Money in the Bank briefcase winner Penta is scheduled to open."
 federation: WWE
 date: 2026-10-12T19:24:14.000Z
 source_id: 802254222

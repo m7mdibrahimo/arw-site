@@ -1,7 +1,7 @@
 ---
 title: "Michael Hayes Says Triple H Wants to Make Bobby Roode the Next 'Michael Hayes'"
 slug: "michael-hayes-says-triple-h-wants-to-make-bobby-roode-the-next-michael-hayes"
-description: "During a recent appearance on Stephanie McMahon's What's Your Story? podcast, WWE producer Michael Hayes discussed his role within the company and revealed…"
+description: "During a recent appearance on Stephanie McMahon's What's Your Story? podcast."
 federation: WWE
 date: 2026-10-23T15:46:07.000Z
 source_id: 335305

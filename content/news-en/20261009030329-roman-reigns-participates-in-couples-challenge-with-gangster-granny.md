@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Participates in Couples Challenge With Gangster Granny"
 slug: "roman-reigns-participates-in-couples-challenge-with-gangster-granny"
-description: "Roman Reigns appeared in a new TikTok video alongside the viral personality Gangster Granny. The pair participated in the Couples Challenge, a game where…"
+description: "Roman Reigns appeared in a new TikTok video alongside the viral personality Gangster Granny."
 federation: WWE
 date: 2026-10-09T00:03:29.000Z
 source_id: 332823

@@ -1,7 +1,7 @@
 ---
 title: "Lola Vice Comments on Ladder Incident at WWE Money in the Bank: “It Hurt a Lot & Was Very Scary”"
 slug: "lola-vice-comments-on-ladder-incident-at-wwe-money-in-the-bank-it-hurt-a-lot-was"
-description: "Lola Vice discussed the dangerous ladder incident that occurred during the women's Money in the Bank Ladder match at the 2026 WWE Money in the Bank Premium…"
+description: "Lola Vice discussed the dangerous ladder incident that occurred during the women's Money in the Bank Ladder match at the 2026 WWE Money in the Bank Premium."
 federation: WWE
 date: 2026-10-15T23:51:46.000Z
 source_id: 334129

@@ -1,7 +1,7 @@
 ---
 title: "Riyadh Airport Closure Extended After Deadly Attacks Weeks Before WWE Crown Jewel"
 slug: "riyadh-airport-closure-extended-after-deadly-attacks-weeks-before-wwe-crown-jewe"
-description: "Riyadh's main international airport will remain closed until October 17 following a series of deadly attacks, raising concerns ahead of WWE Crown Jewel on…"
+description: "Riyadh's main international airport will remain closed until October 17 following a series of deadly attacks."
 federation: WWE
 date: 2026-10-12T16:43:04.000Z
 source_id: 802254152

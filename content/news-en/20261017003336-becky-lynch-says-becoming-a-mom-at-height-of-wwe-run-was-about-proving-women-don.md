@@ -1,7 +1,7 @@
 ---
 title: "Becky Lynch Says Becoming a Mom at Height of WWE Run Was About Proving Women Don't Have to Choose"
 slug: "becky-lynch-says-becoming-a-mom-at-height-of-wwe-run-was-about-proving-women-don"
-description: "Becky Lynch was at the peak of her WWE career when she decided to start a family, a move she says was intentionally aimed at proving women do not have to…"
+description: "Becky Lynch was at the peak of her WWE career when she decided to start a family."
 federation: WWE
 date: 2026-10-16T21:33:36.000Z
 source_id: 802255846

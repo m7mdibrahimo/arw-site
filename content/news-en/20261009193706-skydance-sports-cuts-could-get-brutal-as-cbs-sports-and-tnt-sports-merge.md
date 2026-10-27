@@ -1,7 +1,7 @@
 ---
 title: "Skydance Sports Cuts Could Get Brutal as CBS Sports and TNT Sports Merge"
 slug: "skydance-sports-cuts-could-get-brutal-as-cbs-sports-and-tnt-sports-merge"
-description: "Following the merger of Paramount and Warner Bros. Discovery, CBS Sports and TNT Sports are folding into a single operation under Skydance, leading to…"
+description: "Following the merger of Paramount and Warner Bros. Discovery, CBS Sports and TNT Sports are folding into a single operation under Skydance."
 federation: AEW
 date: 2026-10-09T16:37:06.000Z
 source_id: 802252782

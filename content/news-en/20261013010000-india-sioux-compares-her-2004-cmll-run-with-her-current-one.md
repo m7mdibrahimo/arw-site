@@ -1,7 +1,7 @@
 ---
 title: "India Sioux Compares Her 2004 CMLL Run With Her Current One"
 slug: "india-sioux-compares-her-2004-cmll-run-with-her-current-one"
-description: "India Sioux has reflected on her career journey within CMLL, comparing her initial stint with the promotion in 2004 to her return sixteen years later in…"
+description: "India Sioux has reflected on her career journey within CMLL, comparing her initial stint with the promotion in 2004 to her return sixteen years later in 2024."
 federation: INDIE
 date: 2026-10-12T22:00:00.000Z
 source_id: 333428

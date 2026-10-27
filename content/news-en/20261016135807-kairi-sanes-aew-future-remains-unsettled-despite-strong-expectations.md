@@ -1,7 +1,7 @@
 ---
 title: "Kairi Sane's AEW Future Remains Unsettled Despite Strong Expectations"
 slug: "kairi-sanes-aew-future-remains-unsettled-despite-strong-expectations"
-description: "Kairi Sane's wrestling future continues to attract attention as speculation grows regarding a potential move to AEW. The former WWE star remains one of the…"
+description: "Kairi Sane's wrestling future continues to attract attention as speculation grows regarding a potential move to AEW."
 federation: AEW
 date: 2026-10-16T10:58:07.000Z
 source_id: 802255583

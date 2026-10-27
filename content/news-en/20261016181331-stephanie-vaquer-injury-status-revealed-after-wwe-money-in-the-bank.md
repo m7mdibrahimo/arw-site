@@ -1,7 +1,7 @@
 ---
 title: "Stephanie Vaquer Injury Status Revealed After WWE Money in the Bank"
 slug: "stephanie-vaquer-injury-status-revealed-after-wwe-money-in-the-bank"
-description: "Stephanie Vaquer suffered a legitimate injury during her Women's World Championship match against Liv Morgan at WWE Money in the Bank, according to Dave…"
+description: "Stephanie Vaquer suffered a legitimate injury during her Women's World Championship match against Liv Morgan at WWE Money in the Bank."
 federation: WWE
 date: 2026-10-16T15:13:31.000Z
 source_id: 802255672

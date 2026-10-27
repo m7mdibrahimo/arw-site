@@ -1,7 +1,7 @@
 ---
 title: "MJF Trashes Will Ospreay and Ilja Dragunov While Mocking AEW WrestleDream 2026"
 slug: "mjf-trashes-will-ospreay-and-ilja-dragunov-while-mocking-aew-wrestledream-2026"
-description: "Maxwell Jacob Friedman took to social media to criticize AEW WrestleDream 2026, targeting AEW World Champion Will Ospreay, newcomer Ilja Dragunov, and…"
+description: "Maxwell Jacob Friedman took to social media to criticize AEW WrestleDream 2026, targeting AEW World Champion Will Ospreay, newcomer Ilja Dragunov."
 federation: AEW
 date: 2026-10-18T16:38:46.000Z
 source_id: 802256942

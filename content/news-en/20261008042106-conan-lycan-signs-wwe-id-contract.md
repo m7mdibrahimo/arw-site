@@ -1,7 +1,7 @@
 ---
 title: "Conan Lycan Signs WWE ID Contract"
 slug: "conan-lycan-signs-wwe-id-contract"
-description: "Conan Lycan has officially joined the WWE ID program, according to Fightful. During the October 7 episode of WWE EVOLVE, AJ Styles announced that Lycan had…"
+description: "Conan Lycan has officially joined the WWE ID program, according to Fightful."
 federation: WWE
 date: 2026-10-08T01:21:06.000Z
 source_id: 332703

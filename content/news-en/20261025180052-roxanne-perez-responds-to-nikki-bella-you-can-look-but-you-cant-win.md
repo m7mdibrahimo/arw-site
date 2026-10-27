@@ -1,7 +1,7 @@
 ---
 title: "Roxanne Perez Responds to Nikki Bella: You Can Look but You Can't Win"
 slug: "roxanne-perez-responds-to-nikki-bella-you-can-look-but-you-cant-win"
-description: "Roxanne Perez has responded to Nikki Bella's recent insult on WWE SmackDown, mocking Bella over her past ring losses. Nikki previously called Roxanne the…"
+description: "Roxanne Perez has responded to Nikki Bella's recent insult on WWE SmackDown, mocking Bella over her past ring losses."
 federation: WWE
 date: 2026-10-25T15:00:52.000Z
 source_id: 335651

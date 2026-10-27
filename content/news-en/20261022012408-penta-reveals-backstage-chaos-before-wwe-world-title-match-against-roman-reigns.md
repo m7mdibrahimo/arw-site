@@ -1,7 +1,7 @@
 ---
 title: "Penta Reveals Backstage Chaos Before WWE World Title Match Against Roman Reigns"
 slug: "penta-reveals-backstage-chaos-before-wwe-world-title-match-against-roman-reigns"
-description: "Penta recently opened up about the intense backstage chaos he experienced before his World Heavyweight Championship match against Roman Reigns in Mexico…"
+description: "Penta recently opened up about the intense backstage chaos he experienced before his World Heavyweight Championship match against Roman Reigns in Mexico City."
 federation: WWE
 date: 2026-10-21T22:24:08.000Z
 source_id: 802258265

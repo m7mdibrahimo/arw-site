@@ -1,7 +1,7 @@
 ---
 title: "Kofi Praises Tony Khan's Energy in AEW"
 slug: "kofi-praises-tony-khans-energy-in-aew"
-description: "Kofi praised Tony Khan's passion for professional wrestling, describing it as contagious and infectious while highlighting the positive vibe among AEW…"
+description: "Kofi praised Tony Khan's passion for professional wrestling, describing it as contagious and infectious while highlighting the positive vibe among AEW talent."
 federation: AEW
 date: 2026-10-14T15:55:18.000Z
 source_id: 333844

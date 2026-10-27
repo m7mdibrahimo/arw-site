@@ -1,7 +1,7 @@
 ---
 title: "Paige Stranded in Scotland After Chaotic Flight and Train Nightmare"
 slug: "paige-stranded-in-scotland-after-chaotic-flight-and-train-nightmare"
-description: "Paige faced a major travel nightmare while trying to leave Scotland. After losing her seat, having her flight canceled due to a storm, and finding out that…"
+description: "Paige faced a major travel nightmare while trying to leave Scotland. After losing her seat, having her flight canceled due to a storm."
 federation: WWE
 date: 2026-10-25T19:20:45.000Z
 source_id: 802259644

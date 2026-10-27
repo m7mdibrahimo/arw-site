@@ -1,7 +1,7 @@
 ---
 title: "Bully Ray Says This Element of Oba Femi Match at WWE Money in the Bank 2026 Was 'a Little Much'"
 slug: "bully-ray-says-this-element-of-oba-femi-match-at-wwe-money-in-the-bank-2026-was"
-description: "Oba Femi secured a victory over Bronson Reed at WWE Money in the Bank, but WWE legend Bully Ray took issue with a specific sequence during the bout. During…"
+description: "Oba Femi secured a victory over Bronson Reed at WWE Money in the Bank, but WWE legend Bully Ray took issue with a specific sequence during the bout."
 federation: WWE
 date: 2026-10-13T13:30:00.000Z
 source_id: 4233377854

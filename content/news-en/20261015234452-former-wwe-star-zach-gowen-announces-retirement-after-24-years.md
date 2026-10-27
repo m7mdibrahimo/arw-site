@@ -1,7 +1,7 @@
 ---
 title: "Former WWE Star Zach Gowen Announces Retirement After 24 Years"
 slug: "former-wwe-star-zach-gowen-announces-retirement-after-24-years"
-description: "Former WWE star Zach Gowen has officially retired from professional wrestling following a 24-year career. He shared the news on Facebook, posting his first…"
+description: "Former WWE star Zach Gowen has officially retired from professional wrestling following a 24-year career."
 federation: WWE
 date: 2026-10-15T20:44:52.000Z
 source_id: 802255489

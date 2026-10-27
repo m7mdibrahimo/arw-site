@@ -1,7 +1,7 @@
 ---
 title: "Leon Slater Wants TNA to Bring Back Six-Sided Ring for Destination X"
 slug: "leon-slater-wants-tna-to-bring-back-six-sided-ring-for-destination-x"
-description: "TNA World Champion Leon Slater hopes the company will bring back the iconic six-sided ring for the upcoming Destination X pay-per-view event. Speaking on…"
+description: "TNA World Champion Leon Slater hopes the company will bring back the iconic six-sided ring for the upcoming Destination X pay-per-view event."
 federation: TNA
 date: 2026-10-23T16:49:34.000Z
 source_id: 802258733

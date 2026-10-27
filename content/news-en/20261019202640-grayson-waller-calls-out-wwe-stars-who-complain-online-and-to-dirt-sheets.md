@@ -1,7 +1,7 @@
 ---
 title: "Grayson Waller Calls Out WWE Stars Who Complain Online and to Dirt Sheets"
 slug: "grayson-waller-calls-out-wwe-stars-who-complain-online-and-to-dirt-sheets"
-description: "Grayson Waller shared his thoughts on WWE stars who complain online and to dirt sheets when they are unhappy with their television time. The current NXT…"
+description: "Grayson Waller shared his thoughts on WWE stars who complain online and to dirt sheets when they are unhappy with their television time."
 federation: WWE
 date: 2026-10-19T17:26:40.000Z
 source_id: 802257241

@@ -1,7 +1,7 @@
 ---
 title: "Ric Flair Makes Bold Claim that He “Made” Bad Bunny"
 slug: "ric-flair-makes-bold-claim-that-he-made-bad-bunny"
-description: "Ric Flair recently accepted a wedding invitation from a fan on video under the condition that he receives two tickets to bring his signature style to the…"
+description: "Ric Flair recently accepted a wedding invitation from a fan on video under the condition that he receives two tickets to bring his signature style to the event."
 federation: WWE
 date: 2026-10-09T10:27:11.000Z
 source_id: 802252657

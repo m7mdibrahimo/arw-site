@@ -1,7 +1,7 @@
 ---
 title: "John Cena Recalls Eating a Burger That Hornswoggle Puked On"
 slug: "john-cena-recalls-eating-a-burger-that-hornswoggle-puked-on"
-description: "John Cena recently shared a funny story about a time he was stuck in Ireland with Hornswoggle and Christian Cage due to a volcano eruption. During an…"
+description: "John Cena recently shared a funny story about a time he was stuck in Ireland with Hornswoggle and Christian Cage due to a volcano eruption."
 federation: WWE
 date: 2026-10-09T16:14:04.000Z
 source_id: 332865

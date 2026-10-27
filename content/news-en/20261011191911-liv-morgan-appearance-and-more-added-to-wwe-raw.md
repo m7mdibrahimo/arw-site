@@ -1,7 +1,7 @@
 ---
 title: "Liv Morgan Appearance and More Added to WWE Raw"
 slug: "liv-morgan-appearance-and-more-added-to-wwe-raw"
-description: "New matches and appearances have been added to the upcoming episode of WWE Raw by general manager Adam Pearce. Newly crowned Women's World Champion Liv…"
+description: "New matches and appearances have been added to the upcoming episode of WWE Raw by general manager Adam Pearce."
 federation: WWE
 date: 2026-10-11T16:19:11.000Z
 source_id: 333265

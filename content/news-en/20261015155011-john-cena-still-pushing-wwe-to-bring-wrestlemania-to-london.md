@@ -1,7 +1,7 @@
 ---
 title: "John Cena Still Pushing WWE to Bring WrestleMania to London"
 slug: "john-cena-still-pushing-wwe-to-bring-wrestlemania-to-london"
-description: "John Cena is still advocating for WrestleMania to take place in London, believing the city has earned the right to host WWE's biggest event. Speaking on a…"
+description: "John Cena is still advocating for WrestleMania to take place in London, believing the city has earned the right to host WWE's biggest event."
 federation: WWE
 date: 2026-10-15T12:50:11.000Z
 source_id: 802255355

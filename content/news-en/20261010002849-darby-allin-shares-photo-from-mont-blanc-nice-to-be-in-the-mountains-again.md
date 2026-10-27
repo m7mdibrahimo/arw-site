@@ -1,7 +1,7 @@
 ---
 title: "Darby Allin Shares Photo From Mont Blanc: 'Nice to Be in the Mountains Again'"
 slug: "darby-allin-shares-photo-from-mont-blanc-nice-to-be-in-the-mountains-again"
-description: "Darby Allin has shared a new photo from Mont Blanc, signaling a return to mountain climbing. Last year, the AEW star successfully summited Mount Everest,…"
+description: "Darby Allin has shared a new photo from Mont Blanc, signaling a return to mountain climbing."
 federation: AEW
 date: 2026-10-09T21:28:49.000Z
 source_id: 332938

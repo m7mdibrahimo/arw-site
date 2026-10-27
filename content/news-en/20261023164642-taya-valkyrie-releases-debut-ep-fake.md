@@ -1,7 +1,7 @@
 ---
 title: "Taya Valkyrie Releases Debut EP 'Fake'"
 slug: "taya-valkyrie-releases-debut-ep-fake"
-description: "Taya Valkyrie is expanding her artistic career by stepping into the music industry, according to Fightful. Following weeks of promotion on social media,…"
+description: "Taya Valkyrie is expanding her artistic career by stepping into the music industry, according to Fightful."
 federation: AEW
 date: 2026-10-23T13:46:42.000Z
 source_id: 335243

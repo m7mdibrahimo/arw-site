@@ -1,7 +1,7 @@
 ---
 title: "Mick Foley Reveals His Biggest Regret About Working With Shawn Michaels in WWE"
 slug: "mick-foley-reveals-his-biggest-regret-about-working-with-shawn-michaels-in-wwe"
-description: "Mick Foley recently looked back at his memorable WWE career and revealed his single biggest regret regarding his historic rivalry with Shawn Michaels.…"
+description: "Mick Foley recently looked back at his memorable WWE career and revealed his single biggest regret regarding his historic rivalry with Shawn Michaels."
 federation: WWE
 date: 2026-10-25T19:36:31.000Z
 source_id: 802259647

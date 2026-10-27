@@ -1,7 +1,7 @@
 ---
 title: "Trey Miguel Earns World Title Shot With Nic Nemeth's Help on TNA iMPACT"
 slug: "trey-miguel-earns-world-title-shot-with-nic-nemeths-help-on-tna-impact"
-description: "Trey Miguel secured a championship opportunity after winning a ladder match on the latest episode of TNA iMPACT. The show featured the Hardys as guest…"
+description: "Trey Miguel secured a championship opportunity after winning a ladder match on the latest episode of TNA iMPACT."
 federation: TNA
 date: 2026-10-16T03:10:46.000Z
 source_id: 2672679072

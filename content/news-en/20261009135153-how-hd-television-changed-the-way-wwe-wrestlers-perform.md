@@ -1,7 +1,7 @@
 ---
 title: "How HD Television Changed the Way WWE Wrestlers Perform"
 slug: "how-hd-television-changed-the-way-wwe-wrestlers-perform"
-description: "The transition of WWE to high-definition television in January 2008 fundamentally transformed how wrestlers perform inside the ring. Speaking on the What…"
+description: "The transition of WWE to high-definition television in January 2008 fundamentally transformed how wrestlers perform inside the ring."
 federation: WWE
 date: 2026-10-09T10:51:53.000Z
 source_id: 802252662

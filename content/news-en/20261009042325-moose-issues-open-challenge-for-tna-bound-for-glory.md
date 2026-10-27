@@ -1,7 +1,7 @@
 ---
 title: "Moose Issues Open Challenge for TNA Bound for Glory"
 slug: "moose-issues-open-challenge-for-tna-bound-for-glory"
-description: "Moose has officially thrown his name into the mix for TNA Bound for Glory. During the October 8th episode of TNA iMPACT, a video package aired featuring…"
+description: "Moose has officially thrown his name into the mix for TNA Bound for Glory."
 federation: TNA
 date: 2026-10-09T01:23:25.000Z
 source_id: 332836

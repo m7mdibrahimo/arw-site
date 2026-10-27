@@ -1,7 +1,7 @@
 ---
 title: "Kofi Calls the New Level's AEW Debut an Open Secret"
 slug: "kofi-calls-the-new-levels-aew-debut-an-open-secret"
-description: "Kofi stated that The New Level arriving at AEW All In was an open secret online. Earlier this year, The New Level members Kofi and Austin Creed appeared…"
+description: "Kofi stated that The New Level arriving at AEW All In was an open secret online."
 federation: AEW
 date: 2026-10-14T16:24:40.000Z
 source_id: 333847

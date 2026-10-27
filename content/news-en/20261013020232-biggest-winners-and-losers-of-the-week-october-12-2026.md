@@ -1,7 +1,7 @@
 ---
 title: "Biggest Winners and Losers of the Week — October 12, 2026"
 slug: "biggest-winners-and-losers-of-the-week-october-12-2026"
-description: "This week in professional wrestling featured major events from WWE and TNA, including Money in the Bank and Bound for Glory. Yota Tsuji successfully…"
+description: "This week in professional wrestling featured major events from WWE and TNA, including Money in the Bank and Bound for Glory."
 federation: WWE
 date: 2026-10-12T23:02:32.000Z
 source_id: 4547496532

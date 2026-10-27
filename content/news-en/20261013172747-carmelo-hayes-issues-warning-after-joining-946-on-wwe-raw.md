@@ -1,7 +1,7 @@
 ---
 title: "Carmelo Hayes Issues Warning After Joining The 946 on WWE RAW"
 slug: "carmelo-hayes-issues-warning-after-joining-946-on-wwe-raw"
-description: "Carmelo Hayes has broken his silence following his shocking alliance with The 946 on WWE RAW. Hayes posted a warning on Instagram after making his surprise…"
+description: "Carmelo Hayes has broken his silence following his shocking alliance with The 946 on WWE RAW."
 federation: WWE
 date: 2026-10-13T14:27:47.000Z
 source_id: 802254602

@@ -1,7 +1,7 @@
 ---
 title: "Sheamus Shares New Gym Photos, Former WWE Coworkers Respond"
 slug: "sheamus-shares-new-gym-photos-former-wwe-coworkers-respond"
-description: "Former WWE star Sheamus, now known as S. Farrelly, recently shared new gym photos and videos on Instagram while training with heavy weights. Several of his…"
+description: "Former WWE star Sheamus, now known as S. Farrelly, recently shared new gym photos and videos on Instagram while training with heavy weights."
 federation: WWE
 date: 2026-10-23T23:27:35.000Z
 source_id: 1491256751

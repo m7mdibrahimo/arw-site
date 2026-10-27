@@ -1,7 +1,7 @@
 ---
 title: "Tony Khan: Jon Moxley Has Been a Great Leader for AEW Both in and Out of the Ring"
 slug: "tony-khan-jon-moxley-has-been-a-great-leader-for-aew-both-in-and-out-of-the-ring"
-description: "Tony Khan continued to praise Jon Moxley during his media call ahead of AEW WrestleDream on October 17. Khan was asked about the impact Moxley has had on…"
+description: "Tony Khan continued to praise Jon Moxley during his media call ahead of AEW WrestleDream on October 17."
 federation: AEW
 date: 2026-10-15T18:57:13.000Z
 source_id: 334110

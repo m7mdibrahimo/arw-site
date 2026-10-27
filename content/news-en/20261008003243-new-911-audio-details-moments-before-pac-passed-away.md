@@ -1,7 +1,7 @@
 ---
 title: "New 911 Audio Details Moments Before PAC Passed Away"
 slug: "new-911-audio-details-moments-before-pac-passed-away"
-description: "According to TMZ, newly released 911 audio provides heartbreaking details regarding the final moments before first responders arrived to help PAC, whose…"
+description: "According to TMZ, newly released 911 audio provides heartbreaking details regarding the final moments before first responders arrived to help PAC."
 federation: WWE
 date: 2026-10-07T21:32:43.000Z
 source_id: 802252219

@@ -1,7 +1,7 @@
 ---
 title: "Kyle Fletcher Writes 'PAC Forever' on Love Lock Bridge in Paris"
 slug: "kyle-fletcher-writes-pac-forever-on-love-lock-bridge-in-paris"
-description: "Kyle Fletcher paid tribute to PAC in the latest episode of his vlog series by writing 'PAC Forever' on the Love Lock bridge in Paris. On September 27th,…"
+description: "Kyle Fletcher paid tribute to PAC in the latest episode of his vlog series by writing 'PAC Forever' on the Love Lock bridge in Paris."
 federation: AEW
 date: 2026-10-12T17:40:36.000Z
 source_id: 333522

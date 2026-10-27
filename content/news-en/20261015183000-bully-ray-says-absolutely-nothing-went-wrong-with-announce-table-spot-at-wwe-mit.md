@@ -1,7 +1,7 @@
 ---
 title: "Bully Ray Says Absolutely Nothing Went Wrong With Announce Table Spot at WWE MITB"
 slug: "bully-ray-says-absolutely-nothing-went-wrong-with-announce-table-spot-at-wwe-mit"
-description: "Bully Ray has defended the announce table spot from the match between LA Knight and Roman Reigns at WWE Money in the Bank, where Knight needed two attempts…"
+description: "Bully Ray has defended the announce table spot from the match between LA Knight and Roman Reigns at WWE Money in the Bank."
 federation: WWE
 date: 2026-10-15T15:30:00.000Z
 source_id: 2950829075

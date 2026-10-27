@@ -1,7 +1,7 @@
 ---
 title: "Val Venis Claims the Leftist IWC Gave Up on Nyla Rose"
 slug: "val-venis-claims-the-leftist-iwc-gave-up-on-nyla-rose"
-description: "Val Venis recently returned to social media to target Nyla Rose once again, claiming that the online wrestling community has abandoned her. In a post on…"
+description: "Val Venis recently returned to social media to target Nyla Rose once again, claiming that the online wrestling community has abandoned her."
 federation: AEW
 date: 2026-10-09T11:41:13.000Z
 source_id: 802252668

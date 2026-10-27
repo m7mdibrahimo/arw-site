@@ -1,7 +1,7 @@
 ---
 title: "WWE Reportedly Covered Hip Surgery Costs for Former AAA Star Psicosis"
 slug: "wwe-reportedly-covered-hip-surgery-costs-for-former-aaa-star-psicosis"
-description: "According to the Wrestling Observer Newsletter, WWE paid for the hip replacement surgery of Dionicio Castellanos, known as Psicosis and Nicho el…"
+description: "According to the Wrestling Observer Newsletter, WWE paid for the hip replacement surgery of Dionicio Castellanos, known as Psicosis and Nicho el Millonario."
 federation: WWE
 date: 2026-10-20T21:21:12.000Z
 source_id: 4662895414

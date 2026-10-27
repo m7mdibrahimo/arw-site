@@ -1,7 +1,7 @@
 ---
 title: "Report: Eric Young Working for WWE as NXT Producer"
 slug: "report-eric-young-working-for-wwe-as-nxt-producer"
-description: "Eric Young has returned to WWE, according to a report from Mike Johnson of PWInsider. The two-time TNA World Champion joined the company's backstage staff…"
+description: "Eric Young has returned to WWE, according to a report from Mike Johnson of PWInsider."
 federation: WWE
 date: 2026-10-25T01:43:20.000Z
 source_id: 335566

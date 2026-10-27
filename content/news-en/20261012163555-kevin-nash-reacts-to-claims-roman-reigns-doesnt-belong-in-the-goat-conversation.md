@@ -1,7 +1,7 @@
 ---
 title: "Kevin Nash Reacts to Claims Roman Reigns Doesn’t Belong in the GOAT Conversation"
 slug: "kevin-nash-reacts-to-claims-roman-reigns-doesnt-belong-in-the-goat-conversation"
-description: "Kevin Nash recently shared his thoughts on Roman Reigns during an episode of the Kliq This podcast, defending the WWE star against claims that he does not…"
+description: "Kevin Nash recently shared his thoughts on Roman Reigns during an episode of the Kliq This podcast."
 federation: WWE
 date: 2026-10-12T13:35:55.000Z
 source_id: 802254094

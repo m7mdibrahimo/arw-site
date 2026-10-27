@@ -1,7 +1,7 @@
 ---
 title: "Charles Crowley Discusses Playing Biddy Blas in Star Wars: Galactic Racer"
 slug: "charles-crowley-discusses-playing-biddy-blas-in-star-wars-galactic-racer"
-description: "Charles Crowley recently spoke about voicing the fan-favorite character Biddy Blas in Star Wars: Galactic Racer, noting that the intense vocal performance…"
+description: "Charles Crowley recently spoke about voicing the fan-favorite character Biddy Blas in Star Wars: Galactic Racer."
 federation: INDIE
 date: 2026-10-19T16:31:29.000Z
 source_id: 334691

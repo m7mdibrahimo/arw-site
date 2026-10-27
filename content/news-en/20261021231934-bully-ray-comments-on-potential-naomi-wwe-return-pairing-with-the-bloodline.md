@@ -1,7 +1,7 @@
 ---
 title: "Bully Ray Comments on Potential Naomi WWE Return, Pairing With The Bloodline"
 slug: "bully-ray-comments-on-potential-naomi-wwe-return-pairing-with-the-bloodline"
-description: "As the Bloodline and the 946 storyline continues on WWE programming, anticipation is growing for the return of Naomi to support her husband, Jimmy Uso, and…"
+description: "As the Bloodline and the 946 storyline continues on WWE programming, anticipation is growing for the return of Naomi to support her husband, Jimmy Uso."
 federation: WWE
 date: 2026-10-21T20:19:34.000Z
 source_id: 4762868323

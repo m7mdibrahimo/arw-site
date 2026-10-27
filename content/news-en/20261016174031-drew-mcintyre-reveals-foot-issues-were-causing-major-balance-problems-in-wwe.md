@@ -1,7 +1,7 @@
 ---
 title: "Drew McIntyre Reveals Foot Issues Were Causing Major Balance Problems in WWE"
 slug: "drew-mcintyre-reveals-foot-issues-were-causing-major-balance-problems-in-wwe"
-description: "Drew McIntyre recently opened up about how addressing hidden foot and balance issues has made him feel stronger and more stable in the ring than he has in…"
+description: "Drew McIntyre recently opened up about how addressing hidden foot and balance issues has made him feel stronger and more stable in the ring than he has."
 federation: WWE
 date: 2026-10-16T14:40:31.000Z
 source_id: 802255674

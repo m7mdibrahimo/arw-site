@@ -1,7 +1,7 @@
 ---
 title: "John Cena Reacts to Internet Rumor Claiming He Was Dead"
 slug: "john-cena-reacts-to-internet-rumor-claiming-he-was-dead"
-description: "John Cena recently reflected on one of the most bizarre rumors he has ever seen about himself online, recalling the time the internet falsely claimed he…"
+description: "John Cena recently reflected on one of the most bizarre rumors he has ever seen about himself online."
 federation: WWE
 date: 2026-10-16T17:11:44.000Z
 source_id: 802255751

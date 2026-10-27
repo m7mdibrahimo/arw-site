@@ -1,7 +1,7 @@
 ---
 title: "Austin Creed Reacts to Losing AEW World Trios Titles at WrestleDream 2026"
 slug: "austin-creed-reacts-to-losing-aew-world-trios-titles-at-wrestledream-2026"
-description: "Austin Creed is not letting a championship loss slow down The New Level after dropping the AEW World Trios Championships at WrestleDream. Creed shared a…"
+description: "Austin Creed is not letting a championship loss slow down The New Level after dropping the AEW World Trios Championships at WrestleDream."
 federation: AEW
 date: 2026-10-18T16:10:26.000Z
 source_id: 802256935

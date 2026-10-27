@@ -1,7 +1,7 @@
 ---
 title: "NWA Powerrr Results (October 24)"
 slug: "nwa-powerrr-results-october-24"
-description: "NWA aired a new episode of NWA Powerrr on October 24 on Comet TV. The show opened with King Trevor the First and his Royal Court, who demanded applause.…"
+description: "NWA aired a new episode of NWA Powerrr on October 24 on Comet TV. The show opened with King Trevor the First and his Royal Court, who demanded applause."
 federation: INDIE
 date: 2026-10-27T03:30:00.000Z
 source_id: 335962

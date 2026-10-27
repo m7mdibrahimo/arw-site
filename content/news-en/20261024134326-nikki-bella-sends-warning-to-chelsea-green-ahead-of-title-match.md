@@ -1,7 +1,7 @@
 ---
 title: "Nikki Bella Sends Warning to Chelsea Green Ahead of Title Match"
 slug: "nikki-bella-sends-warning-to-chelsea-green-ahead-of-title-match"
-description: "Nikki Bella is getting ready for a major challenge for the WWE Women's Championship on WWE SmackDown, where she will face champion Chelsea Green on October…"
+description: "Nikki Bella is getting ready for a major challenge for the WWE Women's Championship on WWE SmackDown, where she will face champion Chelsea Green on October 30."
 federation: WWE
 date: 2026-10-24T10:43:26.000Z
 source_id: 802259077

@@ -1,7 +1,7 @@
 ---
 title: "Will Ospreay Discusses Tension With Callum Newman in NJPW"
 slug: "will-ospreay-discusses-tension-with-callum-newman-in-njpw"
-description: "Will Ospreay recently spoke about the growing tension between himself and NJPW's United Empire leader Callum Newman. During an interview with 1010XL,…"
+description: "Will Ospreay recently spoke about the growing tension between himself and NJPW's United Empire leader Callum Newman."
 federation: NJPW
 date: 2026-10-17T13:35:28.000Z
 source_id: 334315

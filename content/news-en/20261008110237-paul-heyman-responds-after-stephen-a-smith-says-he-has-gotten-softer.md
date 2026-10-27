@@ -1,7 +1,7 @@
 ---
 title: "Paul Heyman Responds After Stephen A. Smith Says He Has Gotten Softer"
 slug: "paul-heyman-responds-after-stephen-a-smith-says-he-has-gotten-softer"
-description: "Paul Heyman has responded to recent comments from Stephen A. Smith, who criticized the WWE Hall of Famer for becoming too likable on television. Smith…"
+description: "Paul Heyman has responded to recent comments from Stephen A. Smith, who criticized the WWE Hall of Famer for becoming too likable on television."
 federation: WWE
 date: 2026-10-08T08:02:37.000Z
 source_id: 802252312

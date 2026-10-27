@@ -1,7 +1,7 @@
 ---
 title: "Je’Von Evans Reveals Original JD McDonagh “Big Head” Insult WWE Changed"
 slug: "jevon-evans-reveals-original-jd-mcdonagh-big-head-insult-wwe-changed"
-description: "Je'Von Evans recently shared that he had a different insult planned for JD McDonagh during their segment on WWE RAW, revealing he wanted to use the word…"
+description: "Je'Von Evans recently shared that he had a different insult planned for JD McDonagh during their segment on WWE RAW."
 federation: WWE
 date: 2026-10-08T14:44:33.000Z
 source_id: 802252409

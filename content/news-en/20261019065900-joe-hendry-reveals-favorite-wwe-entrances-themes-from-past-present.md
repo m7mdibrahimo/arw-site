@@ -1,7 +1,7 @@
 ---
 title: "Joe Hendry Reveals Favorite WWE Entrance Themes From Past & Present"
 slug: "joe-hendry-reveals-favorite-wwe-entrances-themes-from-past-present"
-description: "During an appearance on TMZSports' Inside the Ring, WWE star Joe Hendry discussed his favorite wrestling entrance themes from the past and present. When…"
+description: "During an appearance on TMZSports' Inside the Ring, WWE star Joe Hendry discussed his favorite wrestling entrance themes from the past and present."
 federation: WWE
 date: 2026-10-19T03:59:00.000Z
 source_id: 4064172270

@@ -1,7 +1,7 @@
 ---
 title: "AEW's Swerve Strickland: I Perform at 'Highest Level' for a Black Wrestler in History"
 slug: "aews-swerve-strickland-i-perform-at-highest-level-for-a-black-wrestler-in-histor"
-description: "AEW star Swerve Strickland recently spoke about his career in professional wrestling and hip-hop during an interview with Billboard. Reflecting on his…"
+description: "AEW star Swerve Strickland recently spoke about his career in professional wrestling and hip-hop during an interview with Billboard."
 federation: AEW
 date: 2026-10-22T19:10:02.000Z
 source_id: 4029899734
