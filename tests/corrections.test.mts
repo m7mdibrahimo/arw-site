@@ -974,3 +974,19 @@ test("show names stay English and a report cannot conduct an interview (INCIDENT
   const bad = fs.readdirSync("content/news").filter((f) => /موني إن ذا بانك|ريسل\s*مانيا|سمر\s*سلام|رويال\s+رامبل/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|source_url|image):.*$/gm, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #874: the glossary spellings reached stories wrong («جوردين غريس»، «نيك غيج»، «لوك جاكوبس»، «ذا سيكس»، «دا بوب»).
+test("glossary spellings of Jordynne Grace, Nick Gage, Luke Jacobs, SYX and The Pope are corrected", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("عودة جوردين غريس إلى كمال الأجسام"), "عودة جوردين جريس إلى كمال الأجسام");
+  assert.equal(applyCorrections("تحدث نيك غيج عن النزال"), "تحدث نيك جيج عن النزال");
+  assert.equal(applyCorrections("فاز لوك جاكوبس على مارك كوفي"), "فاز لوك جيكوبز على مارك كوفي");
+  assert.equal(applyCorrections("ضد فريق ذا سيكس في الحدث الرئيسي"), "ضد فريق SYX في الحدث الرئيسي");
+  assert.equal(applyCorrections("وفاز دا بوب على بيغ سترونغ ميمز"), "وفاز ذا بوب على بيغ سترونغ ميمز");
+  const bad: string[] = [];
+  for (const f of fs.readdirSync("content/news").filter((x) => x.endsWith(".md"))) {
+    const text = fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/gm, "");
+    if (/جوردين غريس|نيك غيج|لوك جاكوبس|ذا سيكس|(?<![ء-ي])دا بوب/.test(text)) bad.push(f);
+  }
+  assert.deepEqual(bad, []);
+});

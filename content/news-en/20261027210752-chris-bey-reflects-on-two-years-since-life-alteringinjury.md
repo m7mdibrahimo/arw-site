@@ -1,5 +1,5 @@
 ---
-title: "Chris Bey Reflects on Two Years Since Life-AlteringInjury"
+title: "Chris Bey Reflects on Two Years Since Life-Altering Injury"
 slug: "chris-bey-reflects-on-two-years-since-life-alteringinjury"
 description: "Chris Bey recently took to social media to reflect on the two-year anniversary of the severe neck injury and paralysis he suffered at a post-TNA Bound."
 federation: TNA

@@ -14,7 +14,7 @@ en_tags:
   - "Grayson Waller"
 image: /content/images/8isciw3nr311h49x.jpg
 ---
-Tony D'Angelo discussed the importance of versatility and adaptability in WWE NXT during a recent interview with Denise Salcedo. Having spent several years in the developmental brand, D'Angelo has witnessed many wrestlers come and go, including newer names like Cruz Montana and Grayson Waller.
+Tony D'Angelo discussed the importance of versatility and adaptability in WWE NXT during a recent interview with Denise Salcedo. Having spent several years in the developmental brand, D'Angelo has watched many wrestlers come and go to the WWE main roster, while newer names such as Cruz Montana and Grayson Waller have recently joined the brand.
 
 Reflecting on the shifting roster, D'Angelo emphasized that adapting quickly is essential for long-term success.
 

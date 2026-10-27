@@ -73,6 +73,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - Pronouns: one wrestler is "he" or "she" as the source says, never the singular "they/their/themselves" ("Mike Bailey Says He Is Doubting Himself", not "Says They Are Doubting Themselves"); "they" is only for a team, a group or several people (INCIDENTS #713).
 - Grammar: "an" before a vowel sound (an experimental match, an emotional message), "a" before a consonant sound (a unanimous decision); a speaker's contraction is "I'm", never "I're" (the code fixes both, but write them right).
 - Pronouns after a preposition take the object form: "with him and his group", "between him and Cody", "for her and the team" — never "with he", "between he", "for she" (INCIDENTS #870).
+- Never glue two words into one: every word is separated by a space, "Life-Altering Injury", never "Life-AlteringInjury" (the code fixes it, but write it right).
 - No markdown headings (#), no bold, no lists with bullets, no links in the text.
 - Times and time zones: keep each start time in the zone the source gives (8 pm local time in Mexico, 10 pm ET); never relabel a local time as ET (INCIDENTS #808).
 - Never add a "what's next" sentence the source does not have: no "will return to action at …", "will face … for the … Championship", "is set to appear at …" unless the SOURCE says it (a story about how Sami Zayn chose his name ended with a Crown Jewel match the source never mentioned, INCIDENTS #862). The story ends where the source ends.
@@ -189,6 +190,10 @@ export function fixSingularThey(text: string): string {
 export const ENGLISH_FIXES: [RegExp, string][] = [
   // a translation scratchpad left in a quote: the foreign line and its «->» before the English one are dropped (INCIDENTS #872)
   [/["“«][^"”»\n]*[\u0400-\u04FF\u0370-\u03FF\u0590-\u05FF\u3040-\u30FF\u4E00-\u9FFF][^"”»\n]*["”»]\s*(?:->|→)\s*/g, ""],
+  // two words glued at a capital letter after a hyphenated compound: «Life-AlteringInjury» → «Life-Altering Injury»
+  // (INCIDENTS #874). Only after a compound, so real CamelCase names («McIntyre», «WrestleMania») are never split,
+  // and the brand second halves that legitimately sit after a hyphen («Robo-WrestleMania») stay whole.
+  [/\b([A-Z][a-z]+(?:-[A-Z][a-z]+)+)(?!(?:Mania|Verse|Palooza|Fest)\b)([A-Z][a-z]{2,})\b/g, "$1 $2"],
   // «shoulder tee» is a typo for «shoulder socket» (INCIDENTS #845)
   [/\b(shoulder|hip) tee\b/g, "$1 socket"],
   // «Says It Belong to Australian Wrestling»: a singular subject with a bare verb (INCIDENTS #813)

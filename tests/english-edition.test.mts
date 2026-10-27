@@ -259,3 +259,13 @@ test('a foreign-language scratchpad or a translation arrow blocks the English ed
   // a normal English quote has no arrow and stays untouched
   assert.deepEqual(checkEnglish({ ...good, body: good.body + ' > "This is a show you put together."' }, input), []);
 });
+
+test("a word glued to a hyphenated compound in an English headline gets its space (INCIDENTS #874: «Life-AlteringInjury»)", async () => {
+  const { fixEnglishNames, englishStyleRules } = await import('../scripts/english-edition.ts');
+  assert.equal(fixEnglishNames('Chris Bey Reflects on His Life-AlteringInjury'), 'Chris Bey Reflects on His Life-Altering Injury');
+  // real CamelCase names are never split
+  assert.equal(fixEnglishNames('Drew McIntyre and WrestleMania'), 'Drew McIntyre and WrestleMania');
+  // a brand name that legitimately follows a hyphen stays whole
+  assert.equal(fixEnglishNames('Scooby-Doo and WWE: Robo-WrestleMania!'), 'Scooby-Doo and WWE: Robo-WrestleMania!');
+  assert.match(englishStyleRules('https://x.com/a'), /Life-AlteringInjury/);
+});
