@@ -13,10 +13,11 @@ on:
   schedule:
     - cron: '5 * * * *'   # كل ساعة في الدقيقة ٥
   # احتياطي: كرون GitHub في المستودع ده بيتأخر ساعات. «SEO New Shows» بتشتغل كل ساعة
-  # (الـWorker بيطلقها + جدولها)، وبوابة preflight بتمنع أي لفة لو آخر نجاح أقل من ٥٥ دقيقة.
+  # (الـWorker بيطلقها + جدولها)، وبوابة preflight بتمنع أي لفة لو آخر نجاح أقل من ٤٠ دقيقة.
   # (مش «Site Branch»: بتشتغل مع كل push فبتولّد مئات التشغيلات الفارغة.)
+  # «Search Console Report» احتياطي يومي لو الأولى وقفت.
   workflow_run:
-    workflows: ["SEO New Shows"]
+    workflows: ["SEO New Shows", "Search Console Report"]
     types: [completed]
   workflow_dispatch:
 
@@ -60,7 +61,7 @@ jobs:
           fi
           AGE=$(( ( $(date +%s) - $(date -d "$LAST" +%s) ) / 60 ))
           echo "آخر نجاح بقاله $AGE دقيقة"
-          if [ "$AGE" -ge 55 ]; then echo "due=true" >> "$GITHUB_OUTPUT"; else echo "due=false" >> "$GITHUB_OUTPUT"; fi
+          if [ "$AGE" -ge 40 ]; then echo "due=true" >> "$GITHUB_OUTPUT"; else echo "due=false" >> "$GITHUB_OUTPUT"; fi
 
   round:
     needs: preflight

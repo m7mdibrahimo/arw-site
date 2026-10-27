@@ -112,8 +112,8 @@ test('الـworkflow: الدقيقة ٥، مفتاح تشغيل، وبوابة �
   assert.match(wf, /vars\.ARW_GUARD_ENABLED == 'true'/);
   // كرون GitHub بيتأخر في المستودع ده — لازم مُشغّل احتياطي ببوابة ٥٥ دقيقة
   assert.match(wf, /workflow_run:/, 'لازم مُشغّل احتياطي، الكرون لوحده مش مضمون');
-  assert.match(wf, /workflows: \["SEO New Shows"\]/);
-  assert.match(wf, /-ge 55/, 'البوابة: لفة واحدة كل ٥٥ دقيقة على الأقل');
+  assert.match(wf, /workflows: \["SEO New Shows", "Search Console Report"\]/);
+  assert.match(wf, /-ge 40/, 'البوابة: لفة واحدة كل ٤٠ دقيقة على الأقل (مع مُشغّل كل ساعة = ساعة، مش ساعتين)');
   assert.match(wf, /needs: preflight/);
   assert.match(wf, /concurrency:/);
   assert.match(wf, /contents:\s*write/);
