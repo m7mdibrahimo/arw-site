@@ -83,6 +83,7 @@ export const notifications = () => call('/api/studio/notifications');
 export const tools = {
   socialStatus: (urls) => call('/api/studio/tools/social', { method: 'POST', body: { urls } }),
   socialPause: () => call('/api/studio/social/pause'),
+  serverSubsOnly: (on) => call('/api/studio/tools/server/subsonly', { method: 'POST', body: { on } }),
   setSocialPause: (paused) => call('/api/studio/social/pause', { method: 'POST', body: { paused } }),
   /** One platform per request (the worker's rule), so each gets its own result. */
   publish: (item, platform, force = false) => callResult('/api/social/manual-publish', { method: 'POST', body: {

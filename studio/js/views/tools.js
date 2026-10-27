@@ -637,7 +637,9 @@ export async function renderServerTool(page) {
           <p class="muted small">تقدر تفتح عرض تاني في متصفح السيرفر وتحمّله دلوقتي، هيتحمّل جنبهم.</p></div>` : ''}
       ${alive && (q.links || q.subs || q.merge) ? html`<p class="muted">مستني بعده: ${[q.links ? `${num(q.links)} رابط للتحميل` : '', q.subs ? `${num(q.subs)} فيديو للتفريغ` : '', q.merge ? `${num(q.merge)} ترجمة عربي للدمج` : ''].filter(Boolean).join(' — ')}</p>` : ''}
       ${d.pending && d.pending.length ? html`<p class="srv-wait">${icon('clock')} ${num(d.pending.length)} طلب مستني السيرفر ياخده${alive ? ' (خلال ثواني)' : ' (أول ما يشتغل)'}</p>` : ''}
-      ${alive && st.drive ? html`<div class="srv-drive-opt"><label class="srv-host-on"><input type="checkbox" id="srv-drive-ready" ${st.driveReady !== false ? 'checked' : ''}> ارفع العروض الجاهزة على جوجل درايف</label>
+      <div class="srv-drive-opt"><label class="srv-host-on"><input type="checkbox" id="srv-subs-only" ${d.subsOnly ? 'checked' : ''}> تفريغ بس (من غير دمج)</label>
+        <span class="muted small">${d.subsOnly ? 'السيرفر بيحمّل العرض ويفرّغه، وبعد ما الترجمة الإنجليزي تخلص بيمسح الفيديو ويقفل. أسرع وأوفر.' : 'السيرفر بيحمّل ويفرّغ ويدمج لما ترفعله الترجمة العربي.'}</span></div>
+      ${alive && st.drive && !d.subsOnly ? html`<div class="srv-drive-opt"><label class="srv-host-on"><input type="checkbox" id="srv-drive-ready" ${st.driveReady !== false ? 'checked' : ''}> ارفع العروض الجاهزة على جوجل درايف</label>
           <span class="muted small">${st.driveReady !== false ? 'كل عرض جاهز بيترفع على درايف لوحده.' : 'مقفول: نزّل العروض الجاهزة بنفسك من «ملفات السيرفر» ← «4-الجاهز». الترجمات بس اللي بتترفع على درايف.'}</span></div>` : ''}
       ${st && st.drive === false && alive ? html`<div class="srv-drive"><p class="srv-err">${icon('alert')} السيرفر ده مش متوصل بجوجل درايف لسه (أول مرة على كل جهاز جديد).</p>
           <button class="btn btn-primary btn-sm" id="srv-drive-go">${icon('link')} وصّل درايف</button>
@@ -782,6 +784,10 @@ export async function renderServerTool(page) {
       last = await tools.server();
       drawStatus(last);
       wireControls(box);
+      if ($('#srv-subs-only')) $('#srv-subs-only').onchange = async (e) => {
+        try { await tools.serverSubsOnly(e.target.checked); toast(e.target.checked ? 'السيرفر هيفرّغ بس' : 'السيرفر رجع يفرّغ ويدمج', 'ok'); } catch (err) { toast(err.message, 'error'); }
+        setTimeout(tick, 500);
+      };
       if ($('#srv-drive-ready')) $('#srv-drive-ready').onchange = (e) => send({ kind: 'drive-ready', on: e.target.checked }, e.target.checked ? 'العروض الجاهزة هتترفع على درايف' : 'العروض الجاهزة مش هتترفع على درايف');
       if ($('#srv-drive-go')) $('#srv-drive-go').onclick = async () => {
         const w = last.status && last.status.browser ? window.open('about:blank', '_blank') : null;

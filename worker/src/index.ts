@@ -3321,10 +3321,10 @@ export default {
           // may not list the account's machines)
           if (/^\d{4,12}$/.test(String(body.instanceId || "")) && (await env.PUSH_KV.get("tools:instance-id")) !== String(body.instanceId))
             await env.PUSH_KV.put("tools:instance-id", String(body.instanceId));
-          // hand the machine what the panel asked for since its last heartbeat
+          // hand the machine what the panel asked for since its last heartbeat, and the owner's standing settings
           const cmds = (await env.ANALYTICS.prepare("SELECT id, kind, data FROM enc_cmds WHERE taken = 0 ORDER BY id LIMIT 20").all()).results as any[] || [];
           if (cmds.length) await env.ANALYTICS.prepare(`UPDATE enc_cmds SET taken = ? WHERE id IN (${cmds.map(() => "?").join(",")})`).bind(now, ...cmds.map(c => c.id)).run();
-          return json({ success: true, commands: cmds.map(c => { try { return { kind: c.kind, ...JSON.parse(c.data) }; } catch { return { kind: c.kind }; } }) });
+          return json({ success: true, settings: { subsOnly: (await env.PUSH_KV.get("tools:subs-only")) === "1" }, commands: cmds.map(c => { try { return { kind: c.kind, ...JSON.parse(c.data) }; } catch { return { kind: c.kind }; } }) });
         } else if (path === "/tools/arw-cloudcopy") {
           // Drive through the owner's own connection on the rental site (owner 2026-10-27: «مش عايز انا كل شوية اعمل توصيل
           // ب درايف»): its copy takes /workspace/drive-out/ (the machine keeps «سيرفر عرب راسلنج/…» there as hard links)
@@ -3653,6 +3653,13 @@ export default {
         // (KV tools:vast-key, put in by him in the panel, never sent back). Start = start the machine if its card is free;
         // if the card was taken while it was off, rent the cheapest good machine from his template (it sets itself up)
         // and delete the old one.
+        // «تفريغ بس» (owner 2026-10-27: «هيحمل ويفرغ وبس … عايزه يكون سريع ويوفر معايا»): the machine deletes a show's video
+        // once its English subtitles are done, so a smaller disk is enough; every machine gets it with its next heartbeat
+        if (path === "/api/studio/tools/server/subsonly" && request.method === "POST") {
+          const b: any = await request.json().catch(() => ({}));
+          if (b.on) await env.PUSH_KV.put("tools:subs-only", "1"); else await env.PUSH_KV.delete("tools:subs-only");
+          return json({ success: true, subsOnly: !!b.on });
+        }
         if (path === "/api/studio/tools/server/vastkey" && request.method === "POST") {
           const b: any = await request.json().catch(() => ({}));
           const k = String(b.key || "").trim();
@@ -3732,7 +3739,7 @@ export default {
               return g(a) - g(b) || score(a) - score(b);
             });
           for (const o of offers.slice(0, 8)) {
-            const r = await vast(`/asks/${o.id}/`, { method: "PUT", body: JSON.stringify({ client_id: "me", template_hash_id: "b5f507df99df79817c49c792eff21439", disk: 100, label: "arw-tafrigh" }) });
+            const r = await vast(`/asks/${o.id}/`, { method: "PUT", body: JSON.stringify({ client_id: "me", template_hash_id: "b5f507df99df79817c49c792eff21439", disk: ENC_DISK_GB, label: "arw-tafrigh" }) });
             if (r.body && r.body.success) {
               if (r.body.new_contract) await env.PUSH_KV.put("tools:instance-id", String(r.body.new_contract));
               if (old) await vast(`/instances/${old.id}/`, { method: "DELETE" });
@@ -3777,10 +3784,11 @@ export default {
           try { status = st ? { ...JSON.parse(st.data), at: st.at } : null; } catch { status = null; }
           const pending = await env.ANALYTICS.prepare("SELECT kind, data, created FROM enc_cmds WHERE taken = 0 ORDER BY id").all().catch(() => ({ results: [] as any[] }));
           const vastKey = !!(await env.PUSH_KV.get("tools:vast-key"));
+          const subsOnly = (await env.PUSH_KV.get("tools:subs-only")) === "1";
           const waiting = (await env.PUSH_KV.get("tools:start-wait", "json").catch(() => null)) as any;
           const prefName = (await env.PUSH_KV.get("tools:pref-name")) || "جهازك";
           const altNames = ((await env.PUSH_KV.get("tools:alt-machines", "json").catch(() => null)) as any[] || []).map(a => a && a.name).filter(Boolean);
-          return json({ success: true, now: Date.now(), vastKey, waiting: waiting ? Number(waiting.since) || null : null, prefName, altNames, status, jobs: jobs.results || [], pending: (pending.results || []).map((c: any) => { try { return { kind: c.kind, created: c.created, ...JSON.parse(c.data) }; } catch { return { kind: c.kind, created: c.created }; } }) });
+          return json({ success: true, now: Date.now(), vastKey, subsOnly, waiting: waiting ? Number(waiting.since) || null : null, prefName, altNames, status, jobs: jobs.results || [], pending: (pending.results || []).map((c: any) => { try { return { kind: c.kind, created: c.created, ...JSON.parse(c.data) }; } catch { return { kind: c.kind, created: c.created }; } }) });
         }
         if (path === "/api/studio/tools/pinned" && request.method === "GET") {
           const f = await readRepoFile(env, "_data/pinned.json");
@@ -4617,6 +4625,10 @@ async function encEvent(env: Env, kind: string, name = "", now = Date.now()) {
   }
 }
 
+// the disk a new machine is rented with: the tools take ~13 GB and «تفريغ بس» deletes each video once it's subtitled, so
+// 60 GB holds a few shows downloading at once; it's paid every hour the machine exists, on or off
+const ENC_DISK_GB = 60;
+
 /** The owner's list of 4 machines (KV tools:pref-machine/pref-name first, then tools:alt-machines; owner 2026-10-27:
  *  «لو حاجة محجوزة تنقل علي ال بعده»): the machine he already has is started when it's on the list and its card is free
  *  (nothing to set up again), else the first free one in the list's order is rented from his template and a stopped
@@ -4649,7 +4661,7 @@ async function encTryList(env: Env, k: string): Promise<{ name: string; rented: 
     const offers = (await vast("/bundles/", { method: "POST", body: JSON.stringify({ machine_id: { eq: Number(m.id) }, rentable: { eq: true }, num_gpus: { eq: 1 }, type: "on-demand", limit: 5 }) })).body.offers || [];
     // the price he approved can't have jumped: internet still cheap, the card not dearer than 20¢ an hour
     for (const o of offers.filter((o: any) => String(o.machine_id) === m.id && Number(o.inet_up_cost) * 1000 <= 5 && Number(o.inet_down_cost) * 1000 <= 5 && Number(o.dph_total) <= 0.2)) {
-      const r = await vast(`/asks/${o.id}/`, { method: "PUT", body: JSON.stringify({ client_id: "me", template_hash_id: "b5f507df99df79817c49c792eff21439", disk: 100, label: "arw-tafrigh" }) });
+      const r = await vast(`/asks/${o.id}/`, { method: "PUT", body: JSON.stringify({ client_id: "me", template_hash_id: "b5f507df99df79817c49c792eff21439", disk: ENC_DISK_GB, label: "arw-tafrigh" }) });
       if (r.body && r.body.success) {
         if (r.body.new_contract) await env.PUSH_KV.put("tools:instance-id", String(r.body.new_contract));
         if (old && old.id) await vast(`/instances/${old.id}/`, { method: "DELETE" });
