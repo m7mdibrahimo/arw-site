@@ -32,9 +32,7 @@ permissions:
 jobs:
   # هل اللحظة دي مستحقة للفة؟ (بيمنع اللفة المتكررة من المُشغّل الاحتياطي)
   preflight:
-    if: >-
-      vars.ARW_GUARD_ENABLED == 'true' &&
-      (github.event_name != 'workflow_run' || github.event.workflow_run.event == 'schedule')
+    if: vars.ARW_GUARD_ENABLED == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     outputs:
