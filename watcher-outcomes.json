@@ -1,33 +1,33 @@
 {
- "https://www.wrestlinginc.com/2297809/wwe-raw-october-26-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-27T08:58:45.287Z"
- },
  "https://www.fightful.com/wrestling/pro-wrestling-noah-announces-hayata-suffered-torn-acl": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T08:50:46.170Z"
+  "at": "2026-10-27T09:01:25.196Z"
  },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-remains-planned-for-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T08:50:45.477Z"
+  "at": "2026-10-27T09:01:24.689Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-10-26-2026-bayley-vs-lyra-valkyria-in-a-no-disqualification-match-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T08:50:45.044Z"
+  "at": "2026-10-27T09:01:24.341Z"
  },
  "https://www.fightful.com/wrestling/kaylia-capri-misses-rows-sherri-martel-classic-due-to-car-accident-notes-that-she-suffered-minor-injuries": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T08:50:44.102Z"
+  "at": "2026-10-27T09:01:23.650Z"
  },
  "https://www.fightful.com/wrestling/alexa-bliss-states-that-she-bray-wyatt-were-supposed-to-reunite-on-wwe-programming": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T08:50:43.865Z"
+  "at": "2026-10-27T09:01:23.476Z"
+ },
+ "https://www.wrestlinginc.com/2297809/wwe-raw-october-26-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-27T08:58:45.287Z"
  },
  "https://www.fightful.com/wrestling/alexa-bliss-says-traveling-with-her-daughter-was-worked-into-wwe-contract-thats-a-non-negotiable": {
   "reason": "مكرر مع خبر نزل قبل كده",
