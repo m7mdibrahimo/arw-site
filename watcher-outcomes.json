@@ -1,33 +1,33 @@
 {
- "https://www.wrestlinginc.com/2297809/wwe-raw-october-26-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+ "https://www.fightful.com/wrestling/slaughterhouse-syx-hardys-match-added-to-10-29-tna-impact": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-10-27T18:19:02.473Z"
- },
- "https://www.fightful.com/wrestling/chris-bey-reflects-on-two-years-since-life-altering-injury": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-27T18:15:42.412Z"
+  "at": "2026-10-27T18:23:56.973Z"
  },
  "https://www.fightful.com/wrestling/cj-perry-rusev-expecting-their-first-child": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T18:14:24.094Z"
+  "at": "2026-10-27T18:23:26.836Z"
  },
  "https://www.fightful.com/wrestling/john-cena-says-the-speculation-ends-on-11-2-wwe-raw-lets-build-this-never-seen-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T18:14:23.288Z"
+  "at": "2026-10-27T18:23:26.048Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-shares-that-kevin-owens-set-up-camera-at-wwe-event-so-people-could-speak-about-benjamin-satterley-pac": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T18:14:23.071Z"
+  "at": "2026-10-27T18:23:25.838Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-27T18:14:22.719Z"
+  "at": "2026-10-27T18:23:25.449Z"
+ },
+ "https://www.wrestlinginc.com/2297809/wwe-raw-october-26-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-27T18:19:02.473Z"
  },
  "https://www.fightful.com/wrestling/chris-bey-reflects-on-two-years-since-life-altering-injury": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
