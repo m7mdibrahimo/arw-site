@@ -1,5 +1,5 @@
 ---
-title: "CJ Perry and Rusev Expecting Their First Child"
+title: "CJ Perry and Miro Expecting Their First Child"
 slug: "cj-perry-and-rusev-expecting-their-first-child"
 description: "CJ Perry and Miro are expecting their first child together after a challenging and emotional IVF journey."
 federation: WWE

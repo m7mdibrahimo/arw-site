@@ -1833,6 +1833,11 @@ module.exports = function(eleventyConfig) {
     return require("./lib/show-seo.cjs").showNameForms({ headline, title, programName, eventDate, aliases, isShow, archive }).filter((n) => !seen.has(n) && seen.add(n));
   });
 
+  // The people a news headline names, for the story's structured data only (mentions — nothing on the page)
+  eleventyConfig.addNunjucksGlobal("personMentions", function(headline) {
+    return require("./lib/wrestler-mentions.cjs").personMentions(headline);
+  });
+
   // The ways visitors write a program's library page, for its structured data only (INCIDENTS #503)
   eleventyConfig.addNunjucksGlobal("libraryNameForms", function(prog, year) {
     return require("./lib/show-seo.cjs").libraryNameForms({ arName: prog && prog.arName, name: prog && prog.name, aliases: (prog && prog.aliases) || [], year, count: (prog && prog.count) || 0, latest: prog && prog.latest && prog.latest.eventDate });

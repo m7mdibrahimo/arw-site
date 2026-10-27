@@ -1,7 +1,7 @@
 ---
 title: "Slaughterhouse SYX Match Added to October 29 TNA iMPACT!"
 slug: "slaughterhouse-syx-match-added-to-october-29-tna-impact"
-description: "The Hardys and SYX are set to clash again on the October 29 episode of TNA iMPACT!."
+description: "The Hardys and SYX are set to clash again on the October 29 episode of TNA iMPACT!"
 federation: TNA
 date: 2026-10-27T18:13:14.000Z
 source_id: 336112
@@ -22,6 +22,6 @@ The lineup for the upcoming TNA iMPACT! includes:
 
 Amazing Red vs. Cedric Alexander for the TNA X Division Championship
 John Skyler vs. A.J. Francis
-M by Elegance vs. Jada Stone for the TNA Knockouts Television Title
+Ash By Elegance vs. Jada Stone for the TNA Knockouts Television Title
 Elijah vs. Ryan Nemeth
-The Hardys vs. The SYX in a Slaughterhouse SYX match
+The Hardys vs. SYX in a Slaughterhouse SYX match

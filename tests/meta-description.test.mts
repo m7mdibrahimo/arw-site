@@ -69,3 +69,14 @@ test("a cut never stops on a phrase opened by a subordinating word (INCIDENTS #8
   assert.ok(!/\b(?:following|including|during|after|before|despite)\s+\w+(?:\s+\w+)?\.?$/.test(d), d);
   assert.match(d, /capabilities\.$/, d);
 });
+
+test("a cut never stops inside a multi-word name (live 2026-10-27)", () => {
+  // The live Chris Bey description ended «…the severe neck injury and paralysis he suffered at a post-TNA
+  // Bound.» — «Bound for Glory» lost its rest and the snippet read as if the injury happened «at a post-TNA
+  // Bound». The word cut now goes back to the last preposition before the half name.
+  const lead = "Chris Bey recently took to social media to reflect on the two-year anniversary of the severe neck injury and paralysis he suffered at a post-TNA Bound for Glory television taping.";
+  const d = metaDescription(lead);
+  assert.ok(!/\bBound\.$/.test(d), d);
+  assert.ok(!/\b(?:for|of|in|at|to)$/.test(d.replace(/\.$/, "")), d);
+  assert.match(d, /suffered\.$/, d);
+});

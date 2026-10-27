@@ -662,3 +662,6 @@ http://arab-wrestling.pages.dev/* https://arab-wrestling.com/:splat 301!
 # «التوقعات» was removed (owner 2026-10-25); old links go to the home page
 /predictions/* / 301
 /en/predictions/* /en/ 301
+
+# «life-alteringinjury» glued two words in the address of a story published for 1.5 hours (INCIDENTS: round 2026-10-27 19:40 UTC)
+/en/news/chris-bey-reflects-on-two-years-since-life-alteringinjury/* /en/news/chris-bey-reflects-on-two-years-since-life-altering-injury/ 301!

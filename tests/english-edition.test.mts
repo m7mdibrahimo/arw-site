@@ -48,6 +48,14 @@ test('the edition is saved once per source story, with its embeds, English tags 
   assert.deepEqual(fs.readdirSync(dir), [path.basename(again)]);
   assert.equal(findEnglishEdition(802252223, dir), again);
   assert.equal(englishSlug('AEW’s "Big" Night: Moxley & Co.'), 'aews-big-night-moxley-co');
+  // A hard cut at 80 letters cut a word in half in three live addresses («…his-character-change-a»,
+  // «…dream-ma», «…royal-rumb», 2026-10-27): the slug ends on a whole word.
+  const long = englishSlug('Tony D\'Angelo Says A Lot of Behind the Scenes Stuff Caused His Character Change and the Family Breakup');
+  assert.ok(long.length <= 80, long);
+  assert.ok(!/-[a-z]{1,2}$/.test(long), long);
+  assert.ok(!long.endsWith('dream-ma'), long);
+  assert.equal(englishSlug('Sami Zayn Thought His Chance at the WWE Championship Had Passed After Royal Rumble 2026').slice(-4) === 'rumb', false);
+
 });
 
 test('writing: retried once, never saved when it doesn\'t pass, never for a story before the English news began', async () => {

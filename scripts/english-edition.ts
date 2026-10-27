@@ -74,6 +74,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - Grammar: "an" before a vowel sound (an experimental match, an emotional message), "a" before a consonant sound (a unanimous decision); a speaker's contraction is "I'm", never "I're" (the code fixes both, but write them right).
 - Pronouns after a preposition take the object form: "with him and his group", "between him and Cody", "for her and the team" — never "with he", "between he", "for she" (INCIDENTS #870).
 - Never glue two words into one: every word is separated by a space, "Life-Altering Injury", never "Life-AlteringInjury" (the code fixes it, but write it right).
+- One name per person in the headline and the body: use the name the source's text uses (the body says "Miro", so the headline says "Miro", not "Rusev"; a source headline may carry the old ring name) (round 2026-10-27).
 - No markdown headings (#), no bold, no lists with bullets, no links in the text.
 - Times and time zones: keep each start time in the zone the source gives (8 pm local time in Mexico, 10 pm ET); never relabel a local time as ET (INCIDENTS #808).
 - Never add a "what's next" sentence the source does not have: no "will return to action at …", "will face … for the … Championship", "is set to appear at …" unless the SOURCE says it (a story about how Sami Zayn chose his name ended with a Crown Jewel match the source never mentioned, INCIDENTS #862). The story ends where the source ends.
@@ -169,8 +170,14 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
 }
 
 export function englishSlug(title: string): string {
-  return String(title).toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/['’]/g, "")
-    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80).replace(/-+$/, "");
+  const s = String(title).toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/['’]/g, "")
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  if (s.length <= 80) return s;
+  // A hard cut at 80 letters cut a word in half in the address of the story («…his-character-change-a»,
+  // «…dream-ma», «…royal-rumb», live 2026-10-27): the last whole word that fits is used instead.
+  const cut = s.slice(0, 80);
+  const at = cut.lastIndexOf("-");
+  return (at >= 40 ? cut.slice(0, at) : cut).replace(/-+$/g, "");
 }
 
 const yaml = (v: unknown) => JSON.stringify(v);
@@ -200,7 +207,7 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   [/\b((?:it|this|that) belong)( (?:to|in)\b)/gi, "$1s$2"],
   // «fallen in view of watching» is a broken idiom: it is «fallen in love with watching» (INCIDENTS #794)
   [/\bfallen in view of\b/g, "fallen in love with"],
-  [/\bM By Elegance\b/g, "Ash By Elegance"],
+  [/\bM By Elegance\b/gi, "Ash By Elegance"],
   // Jey Uso written with Ilja Dragunov's surname (INCIDENTS #758)
   [/\bJey Dragunov\b/g, "Jey Uso"],
   // Tom Filip misspelled as "Tome Filip" (INCIDENTS #764)
