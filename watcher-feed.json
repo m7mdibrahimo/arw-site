@@ -1,5 +1,25 @@
 [
   {
+    "id": 336092,
+    "link": "https://www.fightful.com/wrestling/cj-perry-rusev-expecting-their-first-child/",
+    "date": "2026-10-27T13:05:58",
+    "date_gmt": "2026-10-27T17:05:58",
+    "title": {
+      "rendered": "CJ Perry &amp; Rusev Expecting Their First Child"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/27125853/Miro-CJ-Perry.jpg"
+  },
+  {
+    "id": 336086,
+    "link": "https://www.fightful.com/wrestling/tony-dangelo-says-there-were-a-lot-of-behind-the-scenes-stuff-that-caused-his-character-change-and-the-family-breakup/",
+    "date": "2026-10-27T13:04:11",
+    "date_gmt": "2026-10-27T17:04:11",
+    "title": {
+      "rendered": "Tony D&#8217;Angelo Says There Were &#8216;A Lot Of Behind The Scenes Stuff&#8217; That Caused His Character Change And The Family Breakup"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/29225154/Tony-DAngelo-Drops-The-Don-Title-As-WWE-NXT-Closes-With-Mysterious-Scene.png"
+  },
+  {
     "id": 336085,
     "link": "https://www.fightful.com/wrestling/336085-jimmy-house-wwe-id/",
     "date": "2026-10-27T13:00:00",
@@ -278,25 +298,5 @@
       "rendered": "Sami Zayn Explains How He Ended Up As &#8216;Sami Zayn&#8217; In NXT, Presented Different Categories Of Names"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/31202516/HOmG4BKW8AARqrs.jpg"
-  },
-  {
-    "id": 336014,
-    "link": "https://www.fightful.com/wrestling/perry-saturn-provides-health-update-after-being-hospitalized/",
-    "date": "2026-10-27T01:53:22",
-    "date_gmt": "2026-10-27T05:53:22",
-    "title": {
-      "rendered": "Perry Saturn Provides Health Update After Being Hospitalized"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/27014234/Untitled-Design-28.jpg"
-  },
-  {
-    "id": 336011,
-    "link": "https://www.fightful.com/wrestling/cmll-lunes-clasico-results-10-26-2026-xelhua-advances-to-the-rey-del-inframundo-finals-more/",
-    "date": "2026-10-27T01:40:00",
-    "date_gmt": "2026-10-27T05:40:00",
-    "title": {
-      "rendered": "CMLL Lunes Clásico Results (10/26/2026): Xelhua Advances to the Rey del Inframundo Finals, More"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/27013211/image-430.png"
   }
 ]
