@@ -1,0 +1,71 @@
+# حارس الحارس — الضمانة إن اللفة الساعية ميقفشش وهي ساكتة.
+#
+# المشكلة الحقيقية: لو اللفة وقفت (الجدول اتلغى، التوثيق باظ، الـworkflow اتقفل)،
+# مفيش حاجة هتقولك. الاختبار ده بيشتغل كل ساعة وبيقيس: آخر لفة ناجحة كانت امتى؟
+# لو بقالها أكتر من ٣ ساعات → بيفشل → GitHub يبعتلك إيميل.
+#
+# مابيكتبش أي حاجة في المستودع. صلاحية قراءة بس.
+
+name: Guard Heartbeat
+
+on:
+  schedule:
+    - cron: '35 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  alive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: هل المفتاح مفتوح؟
+        env:
+          ENABLED: ${{ vars.ARW_GUARD_ENABLED }}
+        run: |
+          if [ "$ENABLED" != "true" ]; then
+            echo "::error::⚠️ المفتاح ARW_GUARD_ENABLED مش مفتوح — اللفة الساعية مش بتشتغل خالص."
+            echo "التشغيل: gh variable set ARW_GUARD_ENABLED -R ${{ github.repository }} --body true"
+            exit 1
+          fi
+          echo "✅ المفتاح مفتوح"
+
+      - name: آخر لفة ناجحة
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -uo pipefail
+          RUNS=$(curl -fsS -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$REPO/actions/workflows/hourly-guard.yml/runs?per_page=20") || {
+            echo "::error::مش عارف أقرا تشغيلات اللفة (API)"; exit 1; }
+
+          TOTAL=$(echo "$RUNS" | jq '.workflow_runs | length')
+          if [ "$TOTAL" = "0" ]; then
+            echo "مفيش أي تشغيل لسه — أول لفة هتكون في الدقيقة ٥. مش هعتبرها عطل."
+            exit 0
+          fi
+
+          # آخر تشغيل ناجح
+          LAST=$(echo "$RUNS" | jq -r '[.workflow_runs[] | select(.conclusion == "success")] | sort_by(.created_at) | last | .created_at // empty')
+          if [ -z "$LAST" ]; then
+            echo "::error::❌ مفيش أي لفة ناجحة لحد دلوقتي ($TOTAL تشغيل وكلهم فشلوا)."
+            exit 1
+          fi
+
+          AGE=$(( ( $(date +%s) - $(date -d "$LAST" +%s) ) / 60 ))
+          echo "آخر لفة ناجحة: $LAST (بقالها $AGE دقيقة)"
+
+          if [ "$AGE" -gt 180 ]; then
+            echo "::error::❌ اللفة الساعية واقفة: آخر نجاح بقاله $AGE دقيقة (الحد ١٨٠)."
+            echo "شوف: https://github.com/$REPO/actions/workflows/hourly-guard.yml"
+            exit 1
+          fi
+
+          # حتى لو فيه نجاح قريب، لو آخر ٣ تشغيلات فشلت كلها → في عطل متكرر
+          RECENT_FAILS=$(echo "$RUNS" | jq '[.workflow_runs[] | select(.conclusion != null and .conclusion != "success" and .conclusion != "cancelled" and .conclusion != "skipped")] | length')
+          echo "تشغيلات فاشلة في آخر $TOTAL: $RECENT_FAILS"
+          echo "✅ اللفة شغّالة"
