@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2299128/wwe-raw-viewership-ratings-report-october-19-2026": {
+  "reason": "تقرير مشاهدة لعرض قديم (2026-10-19)",
+  "retry": false,
+  "at": "2026-10-27T23:08:25.168Z"
+ },
  "https://www.fightful.com/wrestling/report-wwe-signs-sumo-football-athlete-hidetora-hanada": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-15T02:23:59.041Z"
- },
- "https://www.wrestlinginc.com/2287205/mcmg-return-aew-challenge-ftr-best-5-series": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-15T01:35:43.936Z"
  }
 }
