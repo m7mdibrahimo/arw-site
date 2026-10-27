@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2297809/wwe-raw-october-26-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-27T11:16:28.519Z"
+ },
  "https://www.fightful.com/wrestling/pro-wrestling-noah-announces-hayata-suffered-torn-acl": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -18,11 +23,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-27T10:59:44.340Z"
- },
- "https://www.wrestlinginc.com/2297809/wwe-raw-october-26-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-27T10:56:22.952Z"
  },
  "https://www.fightful.com/wrestling/alexa-bliss-states-that-she-bray-wyatt-were-supposed-to-reunite-on-wwe-programming": {
   "reason": "مكرر مع خبر نزل قبل كده",
