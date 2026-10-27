@@ -8,7 +8,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { splitGluedBlocks, decodeHtmlEntities } from "./news-qa";
+import { splitGluedBlocks, decodeHtmlEntities, dropRepeatedListItem } from "./news-qa";
 import { metaDescription } from "../lib/meta-description.cjs";
 
 export const NEWS_EN_DIR = path.join(process.cwd(), "content", "news-en");
@@ -362,7 +362,7 @@ export function englishGrammarSlips(text: string): string[] {
   return aToAn(fixIre(fixPronounCase(text))) === String(text) ? [] : ["a/an, I're or pronoun-case typo"];
 }
 export function fixEnglishNames(text: string): string {
-  return fixSingularThey(aToAn(fixIre(fixPronounCase(twitterToX(collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text))))))));
+  return fixSingularThey(aToAn(fixIre(fixPronounCase(twitterToX(dropRepeatedListItem(collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text)))))))));
 }
 
 export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEWS_EN_DIR): string {

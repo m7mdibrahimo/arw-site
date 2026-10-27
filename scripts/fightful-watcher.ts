@@ -2196,6 +2196,8 @@ export async function optimizeTitleForSEOAndCTR(
     - «put [someone] over» معناها «خسر أمامه عن قصد عشان يرفع من شأنه»، مش «منحه الأفضلية» ولا «خسّره» (INCIDENTS #217).
     - الموجزات («Fight Size» وأمثالها، سطور كتير صغيرة): كل سطر تنقله بفاعله ومعناه زي ما هو، ومن غير ما تحذف اسم الشخص اللي عمل الحاجة. «Rusev took to social media to SHOOT HARD on EA FC 27» ← «هاجم روسيف لعبة EA FC 27 بشدة»، مش «أبدى رأيه عبر حساباته في اللعبة» (INCIDENTS #208).
     - انقل الرقم من المصدر حرفيًا، من غير تقريب ولا تغيير.
+    - عنوان الموجز اللي بيجمع خبرين: كل خبر بفاعله وفعله، عشان القارئ ميفتكرش إن الاتحاد الأول عمل التاني. «AEW To Stream On Twitch Before Blood & Guts, WWE RAW Highlights» ← «AEW يعود للبث على Twitch قبل Blood & Guts وقائمة WWE لأبرز لقطات RAW»، مش «AEW يبث على Twitch قبل Blood & Guts وأبرز لقطات WWE RAW» (INCIDENTS #893).
+    - «addressing [someone]» معناها «تحدث إلى / وجّه كلامه إلى»، مش «اعترض على»: «Zayn opened the show by addressing Adam Pearce» ← «بدأ العرض بحديث سامي زين إلى آدم بيرس» (INCIDENTS #893).
   - **قاعدة إلزامية ذكر اسم الاتحاد قبل اسم أي عرض مباشرة (Mandatory Promotion Prefix)**:
     - ممنوع نهائياً كتابة اسم أي عرض بدون ذكر اسم الاتحاد قبله مباشرة (اكتب دائماً: عرض WWE RAW، عرض WWE SmackDown، عرض AEW Collision، عرض TNA iMPACT).
   - **قاعدة اللغة العربية المبسطة والحديثة (حظر الألفاظ التراثية والغريبة والأخطاء الإملائية)**:

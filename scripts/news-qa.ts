@@ -927,6 +927,47 @@ export function dropRepeatedClause(line: string, minWords = 7): string {
 }
 
 /**
+ * The same name written twice in one list: «…يضم هيذر باي إليغانس وإم باي إليغانس ومستر إليغانس، وإم باي إليغانس،
+ * ومستر إليغانس.» and «Ash By Elegance, Heather By Elegance, Ash By Elegance, and Mr. Elegance» went live in the
+ * George Iceman story (INCIDENTS #892). An item of two to five words repeated as its own list item in the same
+ * sentence is never intended: the later copy and the separator before it go.
+ */
+export function dropRepeatedListItem(text: string): string {
+  if (!text) return text;
+  const SEP = /(،\s*و?|,\s+(?:and\s+)?)/g;
+  const norm = (s: string) => s.replace(/[«»"“”()*]/g, "").replace(/\s+/g, " ").trim().toLowerCase();
+  const subItems = (s: string) => s.split(/\s+(?:and\s+|و(?=[\u0621-\u064A]))/).slice(-4).map(norm);
+  const short = (k: string) => { const n = k.split(" ").length; return n >= 2 && n <= 5; };
+  return text.split("\n").map(line => {
+    if (/^\s*(?:>|https?:|<|\|)/.test(line)) return line;
+    return line.replace(/[^.!?؟]+[.!?؟]*/g, (sentence: string, offset: number) => {
+      const parts = sentence.split(SEP); // [segment, sep, segment, sep, segment…]
+      if (parts.length < 5) return sentence;
+      let head = norm(parts[0]);
+      let run: string[] = short(head) ? [head] : [];
+      const keep: string[] = [parts[0]];
+      for (let i = 1; i < parts.length; i += 2) {
+        const sep = parts[i], raw = parts[i + 1] ?? "";
+        const item = raw.replace(/[.!?؟]+\s*$/, "");
+        const key = norm(item);
+        const before = line.slice(0, offset) + keep.join(""); // a quote is never touched: «pushing me, pushing me»
+        const inQuote = (before.split("«").length > before.split("»").length) || (before.split('"').length % 2 === 0) || (before.split("“").length > before.split("”").length);
+        // the run started by a longer part: «…الذي يضم أيضا هيذر باي إليغانس وإم باي إليغانس ومستر إليغانس»,
+        // «which includes Ash By Elegance»
+        if (!inQuote && short(key) && !/\d/.test(key) && key.replace(/[^\p{L}]/gu, "").length >= 6 &&
+            ([head, ...run].some(p => p === key || p.endsWith(" " + key)) || subItems(head).includes(key))) {
+          keep.push(raw.slice(item.length)); // keep the sentence's end mark
+          continue;
+        }
+        if (short(key)) run.push(key); else { head = key; run = []; }
+        keep.push(sep, raw);
+      }
+      return keep.join("");
+    });
+  }).join("\n");
+}
+
+/**
  * A block the writer glued onto the end of a paragraph: «…(9:18). **المواجهة الثالثة…**» (CMLL Viernes
  * Espectacular) and «…قال: > "…"» (Booker T, Lash Legend) rendered as plain text with a stray «>» or «**».
  * A match heading or a quote marker always starts its own paragraph (INCIDENTS #404).
@@ -957,6 +998,7 @@ export function dualPronounsToPlural(text: string): string {
 export function autoFix(text: string): string {
   if (!text) return text;
   text = splitGluedBlocks(text);
+  text = dropRepeatedListItem(text);
   // «عرض» is masculine: «في عرض SmackDown الأخيرة» went live in 28 stories (INCIDENTS #621) — the adjective agrees with it
   text = text.replace(/(عرض\s+(?:[A-Za-z0-9'’!.&*-]+\s+){0,5}[A-Za-z0-9'’!.&*-]+\s+)(الأخير|الاخير|القادم|الماضي)ة(?![\u0621-\u064A])/g, "$1$2");
   text = dualPronounsToPlural(text);

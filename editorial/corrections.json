@@ -2,6 +2,36 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "ستيفن رولينز",
+      "right": "سيث رولينز",
+      "note": "اسم المصارع Seth Rollins اتكتب «ستيفن» في خبر درو ماكنتاير (INCIDENTS #893)"
+    },
+    {
+      "wrong": "عدواته",
+      "right": "عداوته",
+      "note": "«عدواته» غلط إملائي (حروف مقلوبة) لـ«عداوته» (خبر درو ماكنتاير، INCIDENTS #893)"
+    },
+    {
+      "wrong": "عدواتها",
+      "right": "عداوتها",
+      "note": "«عداوة» (INCIDENTS #893)"
+    },
+    {
+      "wrong": "عدواتهم",
+      "right": "عداوتهم",
+      "note": "«عداوة» (INCIDENTS #893)"
+    },
+    {
+      "wrong": "إنديانا بوليس",
+      "right": "إنديانابوليس",
+      "note": "اسم المدينة Indianapolis كلمة واحدة (INCIDENTS #893)"
+    },
+    {
+      "wrong": "نجوم فئة المنتصف",
+      "right": "نجوم الفئة المتوسطة",
+      "note": "ترجمة حرفية لـ«midcard» — «الفئة المتوسطة» مفهومة (خبر مصارعي AEW، INCIDENTS #893)"
+    },
+    {
       "wrong": "لا يجدون غضاضة في",
       "right": "لا يمانعون في",
       "note": "«غضاضة» كلمة فصحى قديمة مش مفهومة للقارئ — «لا يمانعون» أبسط (خبر مصارعي AEW والخسارة، INCIDENTS #883)"

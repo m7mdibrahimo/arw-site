@@ -155,15 +155,16 @@
           "name": "الرئيسية",
           "item": "https://arab-wrestling.com/"
         },
-        {% set sectionName = 'الأخبار' if page.url.startsWith('/news/') else ('نوستالجيا' if (page.url.startsWith('/nostalgia/') or isNostalgiaItem) else ('عروض المصارعة' if page.url.startsWith('/shows/') else 'ملخصات العروض')) %}
-        {% set sectionUrl = '/news/' if page.url.startsWith('/news/') else ('/nostalgia/' if (page.url.startsWith('/nostalgia/') or isNostalgiaItem) else ('/shows/' if page.url.startsWith('/shows/') else '/recaps/')) %}
+        {#- isNews, not the URL: an English story renders at /en-src/news/ and got «Highlights → /en/recaps/» and a federation step (INCIDENTS #894) -#}
+        {% set sectionName = 'الأخبار' if isNews else ('نوستالجيا' if (page.url.startsWith('/nostalgia/') or isNostalgiaItem) else ('عروض المصارعة' if page.url.startsWith('/shows/') else 'ملخصات العروض')) %}
+        {% set sectionUrl = '/news/' if isNews else ('/nostalgia/' if (page.url.startsWith('/nostalgia/') or isNostalgiaItem) else ('/shows/' if page.url.startsWith('/shows/') else '/recaps/')) %}
         {
           "@type": "ListItem",
           "position": 2,
           "name": "{{ sectionName }}",
           "item": "https://arab-wrestling.com{{ sectionUrl }}"
         },
-        {% set ldFed = federation if (federation and not page.url.startsWith('/news/') and not isNostalgiaItem) else '' %}
+        {% set ldFed = federation if (federation and not isNews and not isNostalgiaItem) else '' %}
         {% set ldProg = libraryProgramOf(page.url, collections.library, program_name) if (page.url.startsWith('/shows/') or page.url.startsWith('/recaps/')) else null %}
         {% set ldPos = 3 %}
         {% if ldFed %}{
