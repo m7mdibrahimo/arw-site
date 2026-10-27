@@ -36,3 +36,6 @@ dist/videos/*.mp4
 
 # wrangler's local dev state
 media-worker/.wrangler/
+
+# تقارير المراقب — محلية، مالهاش علاقة بالمستودع (كانت بتتدفع بالغلط مع لفة الحارس)
+reports/

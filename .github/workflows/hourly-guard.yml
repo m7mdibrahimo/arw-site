@@ -86,9 +86,10 @@ jobs:
           ARW_GUARD_MODEL: ${{ vars.ARW_GUARD_MODEL }}
         run: bash scripts/monitor/run-round.sh
 
-      # أي تعديل سابه الوكيل من غير commit — بنحفظه بدل ما يضيع
+      # أي تعديل سابه الوكيل من غير commit — بنحفظه بدل ما يضيع (لما اللفة تنجح بس:
+      # لفة فاشلة نصّها مش هيتدفع أصلًا، وتعديلاتها بتتحفظ كـartifact للمراجعة)
       - name: تأمين أي تعديل مش مسجّل
-        if: always()
+        if: steps.round.outcome == 'success'
         run: |
           set -uo pipefail
           if [ -n "$(git status --porcelain)" ]; then
@@ -114,6 +115,14 @@ jobs:
         id: decide
         run: |
           set -euo pipefail
+          # لفة فشلت نصّها مايتدفعش: العمل الناقص مش أحسن من مفيش عمل
+          if [ "${{ steps.round.outcome }}" != "success" ]; then
+            echo "::error::❌ اللفة نفسها فشلت — مش هيتدفع أي حاجة."
+            git status --porcelain > reports/guard/failed-round.status 2>/dev/null || true
+            git diff origin/main --stat > reports/guard/failed-round.stat 2>/dev/null || true
+            git diff origin/main > reports/guard/failed-round.diff 2>/dev/null || true
+            echo "push=no" >> "$GITHUB_OUTPUT"; exit 0
+          fi
           if [ "${{ steps.gate_tests.outcome }}" != "success" ]; then
             echo "::error::❌ الاختبارات فشلت — مش هيتدفع أي حاجة. الموقع محمي."
             echo "push=no" >> "$GITHUB_OUTPUT"; exit 0

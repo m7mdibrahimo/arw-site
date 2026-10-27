@@ -20,6 +20,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT" || exit 1
 
 AGENT="${ARW_GUARD_AGENT:-site-guard}"
+TIMEOUT_MIN="${ARW_GUARD_TIMEOUT:-45}"
 LOG_DIR="$ROOT/reports/guard"
 mkdir -p "$LOG_DIR"
 
@@ -41,7 +42,8 @@ find_opencode() {
 CLI="$(find_opencode)"
 
 # الموديلات بترجّع أخطاء وبتزنق، واللفة لازم متقفش: بنجرّب بالترتيب لحد ما واحد ينجح.
-DEFAULT_MODELS="opencode/deepseek-v4.1-flash-free,opencode/muse-spark-1.3-contributor-free,opencode/longcat-2.5-preview-free,opencode/cat-jam-free"
+# (الأسماء دي من `opencode models | grep free` — أي اسم مش موجود بيرجع «Model unavailable».)
+DEFAULT_MODELS="opencode/deepseek-v4.1-flash-free,opencode/glm-5.3-flash-free,opencode/mimo-v2.6-flash-free,opencode/flint-40b-free,opencode/beam-free,opencode/nemotron-3.5-lightning-free"
 MODELS_CSV="${ARW_GUARD_MODEL:-${ARW_GUARD_MODELS:-$DEFAULT_MODELS}}"
 IFS=',' read -r -a MODELS <<<"$MODELS_CSV"
 
@@ -77,11 +79,25 @@ log "بداية لفة الحارس (agent=$AGENT) pid=$$"
 
 CODE=1
 USED_MODEL=""
+
+# مهلة محمولة: GitHub Actions عنده timeout، والماك مفيهوش `timeout` افتراضيًا.
+run_with_timeout() {
+  local secs="$1"; shift
+  if command -v timeout >/dev/null 2>&1; then timeout "$secs" "$@"; return $?; fi
+  if command -v gtimeout >/dev/null 2>&1; then gtimeout "$secs" "$@"; return $?; fi
+  "$@" & local pid=$!
+  ( sleep "$secs"; kill -TERM "$pid" 2>/dev/null ) & local watcher=$!
+  wait "$pid"; local rc=$?
+  kill "$watcher" 2>/dev/null
+  return $rc
+}
+
 for M in "${MODELS[@]}"; do
   log "محاولة بالموديل: $M"
   # --auto       : يوافق على الصلاحيات غير الممنوعة (الممنوعات في ملف الوكيل)
   # --standalone : سيرفر خاص — مطلوب على سيرفرات CI
-  "$CLI" run \
+  run_with_timeout "$((TIMEOUT_MIN * 60))" \
+    "$CLI" run \
     --agent "$AGENT" \
     --auto \
     --standalone \

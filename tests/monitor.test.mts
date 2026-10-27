@@ -97,6 +97,10 @@ test('سكربت اللفة بيجهّز البيئة وبيشغّل الوكي�
   assert.match(sh, /--auto/, 'مفيش حد يرد على الأسئلة');
   assert.match(sh, /--standalone/, 'مطلوب على سيرفرات CI');
   assert.match(sh, /for M in "\$\{MODELS\[@\]\}"/, 'لو موديل فشل، اللفة ماتقفش');
+  assert.match(sh, /run_with_timeout/, 'لازم مهلة — لفة معلّقة بتقفل السيرفر');
+  // أسماء الموديلات لازم تكون حقيقية: أي اسم غلط بيرجع «Model unavailable» وبيضيّع محاولة
+  assert.doesNotMatch(sh, /muse-spark|longcat|cat-jam/, 'أسماء موديلات قديمة/غير موجودة — بتفشل فورًا');
+  assert.match(sh, /opencode\/glm-5\.3-flash-free/, 'لازم بديل مجاني حقيقي');
   assert.match(sh, /last-round\.json/);
   assert.doesNotMatch(sh, /git push/, 'السكربت مايدفعش — الدفع في الـworkflow');
 });
@@ -115,7 +119,24 @@ test('الـworkflow: الدقيقة ٥، مفتاح تشغيل، وبوابة �
   assert.match(wf, /steps\.gate_tests\.outcome/, 'لازم بوابة اختبارات');
   assert.match(wf, /steps\.gate_build\.outcome/, 'لازم بوابة بناء');
   assert.match(wf, /if: steps\.decide\.outputs\.push == 'yes'/, 'الدفع مشروط بقرار البوابة');
+  // لفة فشلت نصّها مايتدفعش
+  assert.match(wf, /steps\.round\.outcome.*!= "success"|steps\.round\.outcome.*== 'failure'/, 'لازم يمنع دفع لفة فاشلة');
   assert.match(wf, /timeout-minutes:\s*\d+/, 'اللفة ١٠-٢٥ دقيقة — محتاجة مهلة');
+});
+
+test('مجلد التقارير متجاهل في git — لفة الحارس مالهاش تدفع لوجات', () => {
+  const gi = read('.gitignore');
+  assert.ok(
+    gi.split('\n').map((l) => l.trim()).includes('reports/'),
+    'reports/ لازم يكون في .gitignore — أول لفة دفعت last-round.json للمستودع بالغلط',
+  );
+  // وملف التقارير نفسه مش متتبّع
+  try {
+    execFileSync('git', ['ls-files', '--error-unmatch', 'reports/guard/last-round.json'], { stdio: 'pipe' });
+    assert.fail('reports/guard/last-round.json لسه متتبّع في git');
+  } catch (e: any) {
+    assert.notEqual(e.status, 0, 'الملف لازم يكون بره git');
+  }
 });
 
 test('حارس الحارس: بيكتشف لو اللفة وقفت ساكتة', () => {
