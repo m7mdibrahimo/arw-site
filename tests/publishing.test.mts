@@ -3788,6 +3788,13 @@ test('the show reels are linked into the build, not copied byte for byte (INCIDE
   assert.match(cfg, /linkTree\("dist\/videos", "_site\/videos"\)/);
 });
 
+test('the article structured data says isAccessibleForFree as a Boolean, not a string (INCIDENTS #898)', () => {
+  const tpl = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
+  // schema.org's isAccessibleForFree is a Boolean: a string "true" is the wrong type and Google can drop the property
+  assert.ok(!/"isAccessibleForFree":\s*"true"/.test(tpl), 'isAccessibleForFree must not be the string "true"');
+  assert.ok(tpl.includes('"isAccessibleForFree": true'));
+});
+
 test('article pages load their styles and scripts from shared cached files (INCIDENTS #311)', () => {
   const tpl = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
   assert.match(tpl, /<link rel="stylesheet" href="\{\{ asset\('\/assets\/post-layout\.css'\) \}\}">/);

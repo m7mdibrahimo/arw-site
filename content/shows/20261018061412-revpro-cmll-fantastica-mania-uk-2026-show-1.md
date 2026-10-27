@@ -2,16 +2,15 @@
 show_type: عرض
 federation: INDIE
 title: RevPro/CMLL Fantastica Mania UK 2026 (Show 1)
-headline: عرض ريف برو / سي ام ال ال فانتاستيكا مانيا يو كيه (العرض الاول) 17.10.2026 مترجم
+headline: عرض RevPro / سي ام ال ال فانتاستيكا مانيا يو كيه (العرض الاول) 17.10.2026 مترجم
 card_title: name
 program_name: RevPro
-description: عرض ريف برو / سي ام ال ال فانتاستيكا مانيا يو كيه (العرض الاول) مترجم بالكامل مع جميع النزالات والأحداث.
+description: عرض RevPro / سي ام ال ال فانتاستيكا مانيا يو كيه (العرض الاول) مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-10-17
 date: 2026-10-18T06:09:59.000+03:00
 duration: 02:18:00
 tags:
   - RevPro
-  - ريف برو
 image: /content/images/t55axhhvsv49bg4k.jpg
 servers:
   - url: https://ok.ru/video/17693452995168

@@ -1,6 +1,6 @@
 ---
 federation: INDIE
-title: "فريق إف تي آر يتوج بلقب Undisputed British Tag Team في عرض ريف برو ال 14"
+title: "فريق إف تي آر يتوج بلقب Undisputed British Tag Team في عرض RevPro ال 14"
 permalink: "/news/فريق-اف-تي-ار-يتوج-بلقب-undisputed-british-tag-team-في-عرض-ريف-برو-ال-14/index.html"
 date: 2026-08-30T06:56:00.000+03:00
 tags:
@@ -12,7 +12,7 @@ tags:
 image: /content/images/9rj8grhwpxk566jj.jpg
 layout: post-layout.njk
 ---
-أضاف الثنائي العالمي وفريق اتحاد AEW الشهير، إف تي آر المكون من داكس هاروود وكاش ويلر (كاش ويلر)، إنجازا دوليا جديدا إلى سجلهم الأسطوري في عالم مصارعة الفرق، بعد تتويجهم رسمي بلقب بطولة بريطانيا للفرق بلا منازع (بطولة بريطانيا للفرق بلا منازع) خلال عرض الذكرى السنوية الرابع عشر لاتحاد ريف برو البريطاني.
+أضاف الثنائي العالمي وفريق اتحاد AEW الشهير، إف تي آر المكون من داكس هاروود وكاش ويلر (كاش ويلر)، إنجازا دوليا جديدا إلى سجلهم الأسطوري في عالم مصارعة الفرق، بعد تتويجهم رسمي بلقب بطولة بريطانيا للفرق بلا منازع (بطولة بريطانيا للفرق بلا منازع) خلال عرض الذكرى السنوية الرابع عشر لاتحاد RevPro البريطاني.
 
 وجاء تتويج إف تي آر بعد خوضهم مواجهة دموية ملحمية وشديدة العنف ضد حاملي اللقب السابقين، فريق Cowboy Way المكون من توماس شاير و1 Called Manders (توماس شاير & 1 Called Manders).
 
@@ -23,4 +23,4 @@ layout: post-layout.njk
 * سجل الأبطال السابقين: انتهت فترة حمل فريق Cowboy Way للقب بعد أن استمرت لمدة 48 يوما فقط، نجحا خلالها في الدفاع عن الأحزمة في مناسبة واحدة ناجحة.
 * الغياب عن شاشات AEW: يعد هذا الظهور الأبرز للثنائي منذ غيابهم عن عروض AEW التلفزيونية عقب خسارتهم لألقاب فرق AEW لصالح الثنائي كريستيان كيج وآدم كوبلاند (Cage & Cope) في عرض *Double or Nothing* الماضي.
 
-<https://x.com/BritWresIsAlive/status/2093779697070936439?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2093779697070936439%7Ctwgr%5E9a3853162727e7c6fb4f3a41cac14887aa84883e%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Fftr-wins-undisputed-british-tag-titles-at-ريف برو-14-year-anniversary%2F>
+<https://x.com/BritWresIsAlive/status/2093779697070936439?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2093779697070936439%7Ctwgr%5E9a3853162727e7c6fb4f3a41cac14887aa84883e%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Fftr-wins-undisputed-british-tag-titles-at-RevPro-14-year-anniversary%2F>

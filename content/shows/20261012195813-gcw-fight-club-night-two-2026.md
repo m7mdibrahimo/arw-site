@@ -11,7 +11,6 @@ date: 2026-10-12T19:56:30.000+03:00
 duration: 02:50:28
 tags:
   - GCW
-  - GCW
   - INDIE
   - GCW Fight Club
 image: /content/images/j78evg0gkex6ooxz.jpg

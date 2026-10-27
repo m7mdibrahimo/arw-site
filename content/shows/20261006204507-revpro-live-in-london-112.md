@@ -2,17 +2,16 @@
 show_type: عرض
 federation: INDIE
 title: RevPro Live In London 112
-headline: عرض ريف برو لايف ان لندن 112 04.10.2026 مترجم
+headline: عرض RevPro لايف ان لندن 112 04.10.2026 مترجم
 program_name: RevPro
 card_title: name
 is_annual: true
-description: عرض ريف برو لايف ان لندن 112 مترجم بالكامل مع جميع النزالات والأحداث.
+description: عرض RevPro لايف ان لندن 112 مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-10-04
 date: 2026-10-06T20:37:56.000+03:00
 duration: 02:58:06
 tags:
   - RevPro
-  - ريف برو
 image: /content/images/t29ubxj36we66iny.jpg
 servers:
   - url: https://ok.ru/video/17537779042912

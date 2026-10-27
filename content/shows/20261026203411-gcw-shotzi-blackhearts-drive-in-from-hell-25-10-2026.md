@@ -11,7 +11,6 @@ date: 2026-10-26T20:31:42.000+03:00
 duration: 02:39:32
 tags:
   - GCW
-  - GCW
   - INDIE
 image: /content/images/xcbpyka9rn5c472h.jpg
 servers:

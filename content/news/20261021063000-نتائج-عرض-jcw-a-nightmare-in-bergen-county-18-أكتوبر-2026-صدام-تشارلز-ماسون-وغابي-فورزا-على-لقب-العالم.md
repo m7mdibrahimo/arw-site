@@ -18,7 +18,7 @@ tags:
 image: /content/images/tusqv2q46abpe2wk.jpg
 layout: post-layout.njk
 ---
-أقام اتحاد جيرزي تشامبيونشيب ريسلينج عرض JCW A Nightmare In Bergen County يوم 18 أكتوبر في صالة The Mecca بمدينة ريدجفيلد بارك في ولاية نيوجيرسي، وبث العرض عبر منصة TrillerTV+.
+أقام اتحاد Jersey Championship Wrestling عرض JCW A Nightmare In Bergen County يوم 18 أكتوبر في صالة The Mecca بمدينة ريدجفيلد بارك في ولاية نيوجيرسي، وبث العرض عبر منصة TrillerTV+.
 
 ---
 **المواجهة الأولى: نزال فردي** 

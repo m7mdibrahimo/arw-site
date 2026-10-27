@@ -12,7 +12,6 @@ duration: 03:16:05
 tags:
   - HOG Fallout
   - HOG
-  - HOG
 image: /content/images/rv1dkjnjn7hlecbk.jpg
 servers:
   - url: https://ok.ru/video/17410104035936

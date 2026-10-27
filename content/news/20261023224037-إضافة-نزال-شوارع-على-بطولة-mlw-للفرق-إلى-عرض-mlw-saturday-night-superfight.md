@@ -19,7 +19,7 @@ tags:
 image: /content/images/20rwb3b5ep0r50nw.jpg
 layout: post-layout.njk
 ---
-أعلن اتحاد ميجر ليج ريسلينج عن إضافة نزال جديد على بطولة MLW العالمية للفرق في عرض MLW Saturday Night SuperFight المقرر إقامته يوم 7 نوفمبر.
+أعلن اتحاد MLW عن إضافة نزال جديد على بطولة MLW العالمية للفرق في عرض MLW Saturday Night SuperFight المقرر إقامته يوم 7 نوفمبر.
 
 يدافع فريق ذا جود براذرز (دوك غالوز وكارل أندرسون) عن بطولة MLW العالمية للفرق ضد فريق GBOT في نزال شوارع في عرض MLW Saturday Night SuperFight يوم 7 نوفمبر، والذي يقام في صالة سيسيرو ستاديوم في شيكاغو ويبث حصريا عبر منصة VEEPS.
 

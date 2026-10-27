@@ -303,7 +303,7 @@ test('dual «اتحادا X وY» is blocked; «درام غيت» and «تواج
   assert.ok(checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'نظم اتحادا ريف برو ودراغون غيت تحية ' + body).some(i => i.code === 'dual_form'));
   assert.ok(!checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'شكل اتحادا قويا ' + body).some(i => i.code === 'dual_form'));
   assert.ok(!checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'ليس اتحادا حقيقيا وأن الجميع هناك سيئون ' + body).some(i => i.code === 'dual_form'));
-  assert.match(applyCorrections('نظم اتحاد درام غيت'), /دراغون غيت/);
+  assert.equal(applyCorrections('نظم اتحاد درام غيت'), 'نظم اتحاد Dragon Gate');
   assert.match(applyCorrections('خلال فترة تواجهم في الجامعة'), /تواجدهم/);
 });
 

@@ -1030,3 +1030,29 @@ test("ROH, Gabe Sapolsky and «push» are corrected instead of published", async
   }
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #898: the glossary mapped Dragon Gate / RevPro / Stardom to Arabic letters, so the bot published
+// «دراغون غيت» / «ريف برو» / «ستاردوم» in 44 stories, and a «نتائج نزاعات» typo sat in the social notes.
+test("federation names stay in Latin letters and «نتائج نزاعات» is corrected", async () => {
+  const { applyCorrections, checkArticle, BLOCKING_QA_CODES } = await import("../scripts/news-qa");
+  const glossary = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8")) as Record<string, string>;
+  for (const n of ["Dragon Gate", "RevPro", "Stardom", "Self Made Pro", "Tokyo Joshi Pro-Wrestling", "Jersey Championship Wrestling"]) assert.equal(glossary[n], n, n);
+  assert.equal(glossary["Major League Wrestling"], "MLW");
+  assert.equal(glossary["Game Changer Wrestling"], "GCW");
+  assert.equal(glossary["Over The Top Wrestling"], "OTT");
+  assert.equal(applyCorrections("في عرض دراغون غيت مع ريف برو وستاردوم"), "في عرض Dragon Gate مع RevPro وStardom");
+  assert.equal(applyCorrections("نتائج نزاعات العرض"), "نتائج نزالات العرض");
+  assert.equal(applyCorrections("وقال دويكيكد عبر برنامج اتحاد بيوند"), "وقال Dropkickd عبر برنامج Beyond");
+  assert.ok(BLOCKING_QA_CODES.includes("federation_arabic_name"));
+  const issues = checkArticle("خبر", "شارك في عرض ريف برو ثم ظهر في ستاردوم.", []);
+  assert.ok(issues.some((i: { code: string }) => i.code === "federation_arabic_name"));
+  // and no published story keeps the Arabic spelling of a federation
+  const bad: string[] = [];
+  for (const dir of ["content/news", "content/news-en", "content/shows", "content/recaps", "content/nostalgia"]) {
+    for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".md"))) {
+      const text = fs.readFileSync(`${dir}/${f}`, "utf-8").replace(/^permalink:.*$/gm, "");
+      if (/دراغون غيت|ريف برو|ستاردوم|ميجر ليج ريسلينج|جيم تشينجر ريسلينج|سيلف ميد برو|نتائج نزاعات/.test(text)) bad.push(`${dir}/${f}`);
+    }
+  }
+  assert.deepEqual(bad, []);
+});

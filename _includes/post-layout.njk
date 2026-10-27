@@ -87,7 +87,7 @@
       {% set ldPeopleEn = englishPersonMentions([pageTitle, (en_tags or []) | join(' ')] | join(' ')) if page.url.startsWith('/en-src/news/') else [] %}
       {% if ldPeople.length %}"mentions": [{% for m in ldPeople %}{ "@type": "Person", "name": "{{ m.name | escape }}", "alternateName": "{{ m.en | escape }}" }{% if not loop.last %}, {% endif %}{% endfor %}],{% elif ldPeopleEn.length %}"mentions": [{% for m in ldPeopleEn %}{ "@type": "Person", "name": "{{ m.name | escape }}" }{% if not loop.last %}, {% endif %}{% endfor %}],{% endif %}
       "inLanguage": "ar",
-      "isAccessibleForFree": "true",
+      "isAccessibleForFree": true,
       "speakable": {
         "@type": "SpeakableSpecification",
         "xpath": [

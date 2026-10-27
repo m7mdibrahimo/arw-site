@@ -9,7 +9,7 @@ single_match_result: false
 source_title: "TJPW Wrestle Princess VII Results (10/3/26): Four Championship Matches"
 source_results: 10
 tags:
-  - طوكيو جوشي برو ريسلينج
+  - Tokyo Joshi Pro-Wrestling
   - Wrestle Princess VII
   - شوكو ناكاجيما
   - مييو ياماشيتا
@@ -18,7 +18,7 @@ tags:
 image: /content/images/3uwahbwcb5kkoh3q.jpg
 layout: post-layout.njk
 ---
-أقيم عرض Wrestle Princess VII التابع لطوكيو جوشي برو ريسلينج في الثالث من أكتوبر 2026 في صالة إيبارا ويف أرينا في مدينة أوتا باليابان، وشهد إقامة عشر مواجهات كاملة تخللتها أربع نزالات على البطولات والألقاب الكبرى.
+أقيم عرض Wrestle Princess VII التابع لTokyo Joshi Pro-Wrestling في الثالث من أكتوبر 2026 في صالة إيبارا ويف أرينا في مدينة أوتا باليابان، وشهد إقامة عشر مواجهات كاملة تخللتها أربع نزالات على البطولات والألقاب الكبرى.
 
 **المواجهة الأولى: نزال فردي**
 

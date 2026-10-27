@@ -9,7 +9,7 @@ single_match_result: false
 social_spoiler: false
 social_spoiler_kind: none
 social_spoiler_age: none
-social_spoiler_note: "النص يتحدث عن كواليس إدارية وسبب استحداث نزال قبل عرضه، ولا يحتوي على نتائج نزاعات أو عودات مفاجئة."
+social_spoiler_note: "النص يتحدث عن كواليس إدارية وسبب استحداث نزال قبل عرضه، ولا يحتوي على نتائج نزالات أو عودات مفاجئة."
 social_priority: normal
 tags:
   - AEW
