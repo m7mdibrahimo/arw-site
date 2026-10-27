@@ -161,6 +161,7 @@ test('سكربت التركيب بيتصرّف من غير تسريب وملف �
   assert.match(plist, /<key>Label<\/key>/);
   assert.match(plist, /watch\.ts/);
   const tmp = path.join(ROOT, 'reports/guard/.plist-check.xml');
+  fs.mkdirSync(path.dirname(tmp), { recursive: true }); // reports/ is gitignored: absent on a fresh checkout
   fs.writeFileSync(tmp, plist);
   try {
     // plutil exists on a Mac only, but the guard runs on ubuntu-latest — this line made every hourly-guard
