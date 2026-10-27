@@ -110,6 +110,11 @@ test('الـworkflow: الدقيقة ٥، مفتاح تشغيل، وبوابة �
   const wf = read('.github/workflows/hourly-guard.yml');
   assert.match(wf, /cron:\s*'5 \* \* \* \*'/);
   assert.match(wf, /vars\.ARW_GUARD_ENABLED == 'true'/);
+  // كرون GitHub بيتأخر في المستودع ده — لازم مُشغّل احتياطي ببوابة ٥٥ دقيقة
+  assert.match(wf, /workflow_run:/, 'لازم مُشغّل احتياطي، الكرون لوحده مش مضمون');
+  assert.match(wf, /workflows: \["Site Branch"\]/);
+  assert.match(wf, /-ge 55/, 'البوابة: لفة واحدة كل ٥٥ دقيقة على الأقل');
+  assert.match(wf, /needs: preflight/);
   assert.match(wf, /concurrency:/);
   assert.match(wf, /contents:\s*write/);
   assert.match(wf, /workflow_dispatch/);

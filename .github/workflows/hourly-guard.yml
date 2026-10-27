@@ -12,6 +12,12 @@ name: Hourly Guard
 on:
   schedule:
     - cron: '5 * * * *'   # كل ساعة في الدقيقة ٥
+  # احتياطي: كرون GitHub في مستودع بنشاط ١٧٠٠ كوميت/يوم بيتأخر ساعات أو بيتشال.
+  # «Site Branch» بتشتغل بالكرون كل ١٠ دقايق وعمليًا ~١/ساعة، فبنستخدم تشغيلها
+  # المجدول كمُشغّل إضافي، مع بوابة في preflight: مفيش لفة لو آخر نجاح أقل من ٥٥ دقيقة.
+  workflow_run:
+    workflows: ["Site Branch"]
+    types: [completed]
   workflow_dispatch:
 
 concurrency:
@@ -23,8 +29,42 @@ permissions:
   actions: read
 
 jobs:
+  # هل اللحظة دي مستحقة للفة؟ (بيمنع اللفة المتكررة من المُشغّل الاحتياطي)
+  preflight:
+    if: >-
+      vars.ARW_GUARD_ENABLED == 'true' &&
+      (github.event_name != 'workflow_run' || github.event.workflow_run.event == 'schedule')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      due: ${{ steps.check.outputs.due }}
+    steps:
+      - name: بوابة التوقيت
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -uo pipefail
+          if [ "${{ github.event_name }}" != "workflow_run" ]; then
+            echo "مُشغّل مباشر (${{ github.event_name }}) — اللفة مستحقة"
+            echo "due=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          RUNS=$(curl -fsS -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$REPO/actions/workflows/hourly-guard.yml/runs?per_page=30") || {
+            echo "due=true" >> "$GITHUB_OUTPUT"; exit 0; }
+          LAST=$(echo "$RUNS" | jq -r '[.workflow_runs[] | select(.conclusion == "success")] | sort_by(.created_at) | last | .created_at // empty')
+          if [ -z "$LAST" ]; then
+            echo "مفيش نجاح سابق — مستحقة"
+            echo "due=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          AGE=$(( ( $(date +%s) - $(date -d "$LAST" +%s) ) / 60 ))
+          echo "آخر نجاح بقاله $AGE دقيقة"
+          if [ "$AGE" -ge 55 ]; then echo "due=true" >> "$GITHUB_OUTPUT"; else echo "due=false" >> "$GITHUB_OUTPUT"; fi
+
   round:
-    if: vars.ARW_GUARD_ENABLED == 'true'
+    needs: preflight
+    if: needs.preflight.outputs.due == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 120
 
