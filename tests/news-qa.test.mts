@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { checkArticle } from "../scripts/news-qa.ts";
+import { checkArticle, applyCorrections } from "../scripts/news-qa.ts";
 
 test("a long number spelled in words in the TITLE is blocked (INCIDENTS #520: «ألف وثلاثمائة وستة عشر يوما»)", () => {
   const issues = checkArticle("رومان رينز يكشف صعوبة تصديق نهاية فترة احتفاظه بلقبه لمدة ألف وثلاثمائة وستة عشر يوما", "نص الخبر هنا.");
@@ -224,4 +224,8 @@ test("dual verb «يتحديان» and dual noun «كمالكين» are blocked 
   assert.ok(checkArticle("بينتا وجيفون إيفانز يتحديان على بطولة WWE للفرق", "نص خبر طويل بما يكفي ليمر الفحص الأساسي بدون مشاكل أخرى.").some((i) => i.code === "dual_form"));
   assert.ok(checkArticle("عنوان", "انضم مارشال كمالكين جزئيين جدد للنادي مع شريكه في العمل.").some((i) => i.code === "dual_form"));
   assert.ok(!checkArticle("بينتا وجيفون إيفانز ضد ذا فيجن على بطولة WWE للفرق", "نص خبر طويل بما يكفي ليمر الفحص الأساسي بدون مشاكل أخرى.").some((i) => i.code === "dual_form"));
+});
+
+test("applyCorrections fixes the doubled «عرضا جديدا من عرض» opener", () => {
+  assert.equal(applyCorrections("بث اتحاد NWA عرضا جديدا من عرض NWA Powerrr يوم 24 أكتوبر"), "بث اتحاد NWA عرض NWA Powerrr يوم 24 أكتوبر");
 });
