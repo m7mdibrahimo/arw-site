@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2299130/wwe-nxt-october-27-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-27T23:39:45.430Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-results-10-27-2026-jackson-drake-vs-ek-prosper-dusty-classic-semifinals-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -23,11 +28,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-27T23:33:37.483Z"
- },
- "https://www.wrestlinginc.com/2299130/wwe-nxt-october-27-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-27T23:24:31.974Z"
  },
  "https://www.wrestlinginc.com/2299128/wwe-raw-viewership-ratings-report-october-19-2026": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-19)",
