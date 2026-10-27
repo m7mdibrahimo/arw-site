@@ -1,43 +1,43 @@
 {
- "https://www.fightful.com/wrestling/335980-wwe-crown-jewel": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-27T01:06:13.779Z"
- },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-remains-planned-for-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T01:05:38.383Z"
+  "at": "2026-10-27T01:08:39.819Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-10-26-2026-bayley-vs-lyra-valkyria-in-a-no-disqualification-match-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-27T01:05:38.092Z"
+  "at": "2026-10-27T01:08:39.372Z"
  },
  "https://www.fightful.com/wrestling/kaylia-capri-misses-rows-sherri-martel-classic-due-to-car-accident-notes-that-she-suffered-minor-injuries": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T01:05:37.457Z"
+  "at": "2026-10-27T01:08:38.405Z"
  },
  "https://www.fightful.com/wrestling/alexa-bliss-states-that-she-bray-wyatt-were-supposed-to-reunite-on-wwe-programming": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T01:05:37.299Z"
+  "at": "2026-10-27T01:08:38.168Z"
  },
  "https://www.fightful.com/wrestling/alexa-bliss-says-traveling-with-her-daughter-was-worked-into-wwe-contract-thats-a-non-negotiable": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T01:05:37.099Z"
+  "at": "2026-10-27T01:08:37.863Z"
  },
  "https://www.fightful.com/wrestling/brooke-hogan-reacts-to-sale-of-hulk-hogans-florida-mansion-the-sick-feeling-is-indescribable": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T01:05:36.883Z"
+  "at": "2026-10-27T01:08:37.535Z"
  },
  "https://www.fightful.com/wrestling/channing-stacks-lorenzo-provides-update-after-suffering-injury-at-nxt-house-show": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T01:05:36.681Z"
+  "at": "2026-10-27T01:08:37.208Z"
+ },
+ "https://www.fightful.com/wrestling/335980-wwe-crown-jewel": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-27T01:06:13.779Z"
  },
  "https://www.fightful.com/wrestling/steve-maclin-details-suffering-broken-fibula-ten-weeks-before-adam-copeland-match-at-mlp-northern-rising": {
   "reason": "مكرر مع خبر نزل قبل كده",
