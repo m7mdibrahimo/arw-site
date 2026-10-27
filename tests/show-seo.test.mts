@@ -132,3 +132,16 @@ test("a multi-day tournament keeps its day mark in the head", () => {
   const weekly = showSeoText({ headline: "عرض راو 26.10.2026 مترجم", title: "WWE Raw", programName: "WWE Raw", eventDate: "2026-10-26", day: "26 أكتوبر 2026", isLatest: false, description: "" });
   assert.ok(!weekly.title.includes("اليوم"), weekly.title);
 });
+
+// INCIDENTS #899: a special filed under another program of the same promotion («CMLL Dia De Muertos Puebla» under
+// «CMLL Lunes Clasico») had the weekly program's English name in its title and description, never its own.
+test('a special under another program carries its own English name in the head', () => {
+  const args = { headline: 'عرض سي ام ال ال ديا دي مويرتوس بويبلا 26.10.2026 مترجم', title: 'CMLL Dia De Muertos Puebla 26.10.2026', programName: 'CMLL Lunes Clasico', eventDate: '2026-10-26', day: '26 أكتوبر 2026', isLatest: true, description: 'عرض سي ام ال ال ديا دي مويرتوس بويبلا مترجم بالكامل مع جميع النزالات والأحداث.' };
+  const r = showSeoText(args);
+  assert.match(r.title, /— CMLL Dia De Muertos Puebla$/);
+  assert.match(r.description, /CMLL Dia De Muertos Puebla October 26, 2026/);
+  assert.ok(showNameForms({ ...args, isShow: true }).includes('CMLL Dia De Muertos Puebla October 26 2026'));
+  // weekly shows keep the program's name
+  assert.match(showSeoText({ headline: 'عرض الرو 26.10.2026 مترجم', title: 'RAW 26.10.2026', programName: 'WWE RAW', eventDate: '2026-10-26', day: '26 أكتوبر 2026', isLatest: true }).title, /— WWE RAW$/);
+  assert.match(showSeoText({ headline: 'عرض روود تو ديستركشن 10.09.2026 مترجم', title: 'NJPW Road To Destruction 10.09.2026', programName: 'NJPW Road To Destruction 2026', eventDate: '2026-09-10', day: '10 سبتمبر 2026', isLatest: false }).title, /— NJPW Road To Destruction 2026$/);
+});

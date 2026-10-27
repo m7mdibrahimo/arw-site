@@ -731,3 +731,26 @@ test('«أغنيتين باهظتي الثمن» is a dual, «جيب كيد» fo
   assert.equal(restoreTitleTheNames('Bishop Kaun Details How the Demand Got Started', 'discussed the formation of The Demand, the AEW faction'), 'Bishop Kaun Details How The Demand Got Started');
   assert.equal(restoreTitleTheNames('Star Returns After the Show Ends', 'He returned after the show ended.'), 'Star Returns After the Show Ends');
 });
+
+// INCIDENTS #898: «رسميا» without its alif after an English promotion name — «أعلن اتحاد WWE رسمي عن»,
+// «أعلن اتحاد CMLL (CMLL المكسيكي) رسمي عن», «WWE تروج رسمي لمشاركة» — slipped past the check in 192 stories.
+test('adverb_without_alef also catches «رسمي» after an English name or a bracket', () => {
+  const pad = ' كلام'.repeat(80);
+  for (const bad of ['أعلن اتحاد WWE رسمي عن نزال جديد', 'أعلن اتحاد CMLL (CMLL المكسيكي) رسمي عن جدول النزالات', 'WWE تروج رسمي لمشاركة ذا روك', 'NJPW تحدد رسمي مواعيد عرضي Wrestle Kingdom', 'أعلن اتحاد هاوس أوف غلوري (HOG) رسمي عن مواجهة']) {
+    assert.ok(checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', bad + pad).some(i => i.code === 'adverb_without_alef'), bad);
+  }
+  const ok = checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'أعلن اتحاد WWE رسميا عن نزال، وصدر بيان رسمي عن AEW، وحساب WWE الرسمي على إكس' + pad);
+  assert.ok(!ok.some(i => i.code === 'adverb_without_alef'));
+});
+
+test('no published story writes «رسمي» as an adverb (INCIDENTS #898)', async () => {
+  const fs = await import('node:fs');
+  const bad: string[] = [];
+  for (const f of fs.readdirSync('content/news').filter(f => f.endsWith('.md'))) {
+    const t = fs.readFileSync(`content/news/${f}`, 'utf8');
+    const body = t.replace(/^---\n[\s\S]*?\n---\n/, '');
+    const title = (t.match(/^title:\s*(.*)$/m) || [])[1] || 'عنوان';
+    if (checkArticle(title.replace(/^["']|["']$/g, ''), body).some(i => i.code === 'adverb_without_alef')) bad.push(f);
+  }
+  assert.deepEqual(bad, []);
+});

@@ -1,6 +1,6 @@
 ---
 federation: AEW
-title: "مواجهة رباعية على بطولة TBS تعلن رسمي لعرض AEW Dynamite القادم (19 أغسطس)"
+title: "مواجهة رباعية على بطولة TBS تعلن رسميا لعرض AEW Dynamite القادم (19 أغسطس)"
 permalink: "/news/مواجهة-رباعية-نارية-على-بطولة-tbs-تعلن-رسميا-لعرض-aew-dynamite-القادم-19-أغسطس/index.html"
 date: 2026-08-13T05:56:00.000+03:00
 tags:

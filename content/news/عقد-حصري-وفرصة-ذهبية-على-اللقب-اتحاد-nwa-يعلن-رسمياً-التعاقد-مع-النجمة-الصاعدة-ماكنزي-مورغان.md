@@ -13,7 +13,7 @@ tags:
 image: /content/images/yw31by2e4rwvxttq.jpg
 layout: post-layout.njk
 ---
-أعلن اتحاد المصارعة العريق National Wrestling Alliance (NWA) رسمي عن توقيع عقد حصري مع النجمة الصاعدة ماكنزي مورغان (Mackenzie Morgan)، لتدعم رسمي قسم السيدات داخل الاتحاد بعد ظهورها المميز الأول في حدث *NWA Hard Times 6* بمدينة أتلانتا.
+أعلن اتحاد المصارعة العريق National Wrestling Alliance (NWA) رسميا عن توقيع عقد حصري مع النجمة الصاعدة ماكنزي مورغان (Mackenzie Morgan)، لتدعم رسمي قسم السيدات داخل الاتحاد بعد ظهورها المميز الأول في حدث *NWA Hard Times 6* بمدينة أتلانتا.
 
 ### بطاقة تعريفية بالنجمة ماكنزي مورغان:
 
