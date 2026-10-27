@@ -1,5 +1,5 @@
 ---
-title: "Truth Magnum Shares That Mark Henry Advocated for the Outrunners to Be Signed by AEW"
+title: "Truth Magnum Shares That Mark Henry Advocated for The Outrunners to Be Signed by AEW"
 slug: "truth-magnum-shares-that-mark-henry-advocated-for-the-outrunners-to-be-signed-by"
 description: "During his appearance on LiMPiN AiNT EASY, Truth Magnum of The Outrunners discussed how he and Turbo Floyd secured their AEW contracts."
 federation: AEW

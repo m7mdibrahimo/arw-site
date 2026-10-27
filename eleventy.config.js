@@ -1509,6 +1509,11 @@ module.exports = function(eleventyConfig) {
           : /^عرض\s/.test(arName) ? arName.replace(/^عرض\s/, "عروض ") + " مترجمة"
           : /^(برنامج|مسلسل)\s/.test(arName) ? "حلقات " + arName + " مترجمة"
           : "عروض " + arName + " مترجمة";
+        // A catch-all section for one-off events is not named after its only show in the head: the title of
+        // /library/njpw-special-events/ read «عروض ان جيه بي دبليو تايتشي سكول برو ريسلنج 2 2026» and Google left it
+        // «discovered, not indexed» for 157 hours (INCIDENTS #883). Head and structured data only; the page's H1 keeps arLibTitle.
+        const HEAD_LIB_TITLES = { "njpw-special-events": "عروض ان جيه بي دبليو الخاصة مترجمة" };
+        const arHeadTitle = HEAD_LIB_TITLES[p.slug] || "";
         // Other spellings people search with (INCIDENTS #275)
         const ALIASES = {
           "wwe-raw": ["دبليو دبليو إي راو", "دبليو دبليو اي رو", "رو", "الرو", "راو", "عرض رو", "الرو الاخير", "الرو مترجم", "WWE Raw", "WWE RAW مترجم", "Monday Night Raw", "raw مترجم", "wwe مترجم", "مصارعة حرة مترجم", "عرض الرو الاخير مترجم نتفلكس", "WWE RAW Netflix", "الرو نتفلكس", "عرض الرو الاخير مترجم عربي", "عرض الرو الاخير كامل ومترجم", "عرض الرو الأخير مترجم كامل", "عرض رو الاخير مترجم", "عرض رو مترجم", "عرض الرو مترجم"],
@@ -1537,7 +1542,7 @@ module.exports = function(eleventyConfig) {
         const generated = fedSaid && /[\u0600-\u06FF]/.test(programSaid) && !programSaid.startsWith(fedSaid)
           ? [fedSaid + " " + programSaid].concat(/(^|\s)ان\s/.test(programSaid) ? [fedSaid + " " + programSaid.replace(/(^|\s)ان\s/g, "$1إن ")] : []) : [];
         const withGenerated = baseAliases.concat(generated.filter(function(g) { return baseAliases.indexOf(g) === -1; }));
-        return { slug: p.slug, name: p.name, aliases: withGenerated, arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: arLibTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded,
+        return { slug: p.slug, name: p.name, aliases: withGenerated, arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: arLibTitle, arHeadTitle: arHeadTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded,
           promo: (function(x) { return { key: x.key, mark: x.mark, name: x.name, h: x.h, s: x.s, custom: !!x.custom }; })(libraryPromotionOf({
             name: p.name, federation: federation,
             chosen: (shows.find(function(e) { return e.libraryFederation; }) || {}).libraryFederation })) };

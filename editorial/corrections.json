@@ -2,6 +2,21 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "لا يجدون غضاضة في",
+      "right": "لا يمانعون في",
+      "note": "«غضاضة» كلمة فصحى قديمة مش مفهومة للقارئ — «لا يمانعون» أبسط (خبر مصارعي AEW والخسارة، INCIDENTS #883)"
+    },
+    {
+      "wrong": "لا يجد غضاضة في",
+      "right": "لا يمانع في",
+      "note": "«غضاضة» ← «يمانع» (INCIDENTS #883)"
+    },
+    {
+      "wrong": "لا تجد غضاضة في",
+      "right": "لا تمانع في",
+      "note": "«غضاضة» ← «تمانع» (INCIDENTS #883)"
+    },
+    {
       "wrong": "وضع بصمة",
       "right": "ترك بصمة",
       "note": "«وضع بصمة» ترجمة حرفية لـ left an impression — العربي «ترك بصمة» (خبر كيلاني جوردان، INCIDENTS #870)"

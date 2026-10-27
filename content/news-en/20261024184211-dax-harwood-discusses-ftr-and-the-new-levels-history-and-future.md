@@ -1,5 +1,5 @@
 ---
-title: "Dax Harwood Discusses FTR and the New Level's History and Future"
+title: "Dax Harwood Discusses FTR and The New Level's History and Future"
 slug: "dax-harwood-discusses-ftr-and-the-new-levels-history-and-future"
 description: "Dax Harwood recently spoke about the rivalry between FTR and The New Level, expressing his excitement to face them in AEW."
 federation: AEW

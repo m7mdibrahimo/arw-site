@@ -1,5 +1,5 @@
 ---
-title: "Austin Creed Names the New Day's Most Important Match"
+title: "Austin Creed Names The New Day's Most Important Match"
 slug: "austin-creed-names-the-new-days-most-important-match"
 description: "Austin Creed recently reflected on his past career and future goals during an interview with Cameron Hawkins for Uncrowned."
 federation: AEW

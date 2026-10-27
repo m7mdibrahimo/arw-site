@@ -1,5 +1,5 @@
 ---
-title: "Tony D'Angelo Says 'A Lot of Behind the Scenes Stuff' Caused His Character Change and the Family Breakup"
+title: "Tony D'Angelo Says 'A Lot of Behind the Scenes Stuff' Caused His Character Change and The Family Breakup"
 slug: "tony-dangelo-says-a-lot-of-behind-the-scenes-stuff-caused-his-character-change-a"
 description: "Tony D'Angelo recently discussed his character shift and the breakup of The Family within WWE NXT."
 federation: WWE

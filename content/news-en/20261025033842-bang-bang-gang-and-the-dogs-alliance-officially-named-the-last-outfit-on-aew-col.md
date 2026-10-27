@@ -1,5 +1,5 @@
 ---
-title: "Bang Bang Gang and the Dogs Alliance Officially Named the Last Outfit on AEW Collision"
+title: "Bang Bang Gang and The Dogs Alliance Officially Named The Last Outfit on AEW Collision"
 slug: "bang-bang-gang-and-the-dogs-alliance-officially-named-the-last-outfit-on-aew-col"
 description: "The Bang Bang Gang and The Dogs have officially formed a new alliance under the name The Last Outfit."
 federation: AEW

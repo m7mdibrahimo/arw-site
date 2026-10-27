@@ -289,6 +289,20 @@ export function restoreTitleAcronyms(title: string, body: string): string {
     return inBody(up) && !inBody(w) && !inBody(w.toLowerCase()) ? up : w;
   });
 }
+/** «the» stays capital before a name the story itself writes with «The» mid-sentence («formation of The Demand») — «How the Demand Got Started» → «How The Demand Got Started» (INCIDENTS #883) */
+export function restoreTitleTheNames(title: string, body: string): string {
+  return String(title).replace(/(?<=\S )the ((?:[A-Z][\w'’]*)(?: [A-Z][\w'’]*){0,2})/g, (m, name: string) => {
+    const words = name.split(" ");
+    for (let n = words.length; n > 0; n--) {
+      const part = words.slice(0, n).join(" ");
+      const esc = part.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const after = `${esc}(?![\\w'’])`;
+      // the story writes «The X» after a lowercase word and never «the X»: an event name («Money in the Bank») has «the» in the body too
+      if (new RegExp(`(?<![A-Za-z])[a-z][a-z'’]*,? The ${after}`).test(body) && !new RegExp(`(?<![A-Za-z])the ${after}`).test(body)) return "The " + name;
+    }
+    return m;
+  });
+}
 /** A word said twice in a row by the writer («With With His Own Money», «Kevin Kevin Owens») is collapsed to one (INCIDENTS #590).
  *  Quotes (a «> » line or text inside quotation marks) are the speaker's own words and stay; ring names that ARE a double stay. */
 const LEGIT_EN_DOUBLES = new Set(["shay", "bang", "kelly", "boom", "pago", "bye", "ha", "blah", "no", "so", "very", "had", "that", "can", "hee", "ho", "la", "na", "ra", "ya", "yeah", "wow", "oh"]);
@@ -353,6 +367,7 @@ export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEW
   // a literal «\n» typed as text (INCIDENTS #736: «…limited schedule. \n\n> "Shingo…») is a line break
   e = { ...e, title: fixEnglishNames(normalizeEnglishTitle(e.title)), body: fixEnglishNames(e.body.replace(/[ \t]*\\n/g, "\n")) };
   e.title = restoreTitleAcronyms(e.title, e.body);
+  e.title = restoreTitleTheNames(e.title, e.body);
   fs.mkdirSync(dir, { recursive: true });
   let slug = englishSlug(e.title) || `story-${i.sourceId}`;
   const existing = findEnglishEdition(i.sourceId, dir);

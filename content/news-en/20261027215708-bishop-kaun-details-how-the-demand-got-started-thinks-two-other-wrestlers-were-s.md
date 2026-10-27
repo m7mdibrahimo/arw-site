@@ -1,5 +1,5 @@
 ---
-title: "Bishop Kaun Details How the Demand Got Started, Thinks Two Other Wrestlers Were Supposed to Be With Ricochet"
+title: "Bishop Kaun Details How The Demand Got Started, Thinks Two Other Wrestlers Were Supposed to Be With Ricochet"
 slug: "bishop-kaun-details-how-the-demand-got-started-thinks-two-other-wrestlers-were-s"
 description: "Bishop Kaun recently discussed the formation of The Demand, the AEW faction featuring himself, Toa Liona, and Ricochet."
 federation: AEW

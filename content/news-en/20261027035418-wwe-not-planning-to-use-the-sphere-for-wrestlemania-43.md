@@ -1,5 +1,5 @@
 ---
-title: "WWE Not Planning to Use the Sphere for WrestleMania 43"
+title: "WWE Not Planning to Use The Sphere for WrestleMania 43"
 slug: "wwe-not-planning-to-use-the-sphere-for-wrestlemania-43"
 description: "WWE has no plans to utilize The Sphere in Las Vegas as a backup venue for WrestleMania 43."
 federation: WWE

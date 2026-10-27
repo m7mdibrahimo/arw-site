@@ -1,5 +1,5 @@
 ---
-title: "Will Ospreay Expresses Delight Over the New Level Joining AEW"
+title: "Will Ospreay Expresses Delight Over The New Level Joining AEW"
 slug: "will-ospreay-expresses-delight-over-the-new-level-joining-aew"
 description: "Will Ospreay recently shared his thoughts on The New Level joining AEW, expressing his delight at having them as part of the roster."
 federation: AEW

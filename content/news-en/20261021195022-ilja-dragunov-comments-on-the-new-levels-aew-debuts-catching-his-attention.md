@@ -1,5 +1,5 @@
 ---
-title: "Ilja Dragunov Comments on the New Level's AEW Debuts Catching His Attention"
+title: "Ilja Dragunov Comments on The New Level's AEW Debuts Catching His Attention"
 slug: "ilja-dragunov-comments-on-the-new-levels-aew-debuts-catching-his-attention"
 description: "Ilja Dragunov recently discussed how The New Level's AEW debuts caught his attention, noting the way they performed since joining the promotion."
 federation: AEW

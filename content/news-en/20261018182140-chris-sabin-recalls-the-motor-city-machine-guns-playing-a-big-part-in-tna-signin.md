@@ -1,5 +1,5 @@
 ---
-title: "Chris Sabin Recalls the Motor City Machine Guns Playing a Big Part in TNA Signing The Young Bucks"
+title: "Chris Sabin Recalls The Motor City Machine Guns Playing a Big Part in TNA Signing The Young Bucks"
 slug: "chris-sabin-recalls-the-motor-city-machine-guns-playing-a-big-part-in-tna-signin"
 description: "Chris Sabin recently reflected on how The Motor City Machine Guns played a major role in TNA signing The Young Bucks back when they wrestled as Generation Me."
 federation: AEW

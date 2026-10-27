@@ -717,3 +717,17 @@ test('«السعى» with ى is caught and fixed, «السعي» is fine (INCIDE
   const good = checkArticle('سامي زين ينتقد العقلية', 'أوضح زين أن هذه العقلية قد تخلق شعورا بالتعاسة، متذكرا كيف كان مدربو NXT يكررون ضرورة السعي ليكون المصارع هو النجم التالي.');
   assert.ok(!good.some(i => i.code === 'alif_maqsura_ya' || i.code === 'known_wrong'));
 });
+
+test('«أغنيتين باهظتي الثمن» is a dual, «جيب كيد» for WWE ID is Gabe Sapolsky, «غضاضة» is simplified, and «the Demand» keeps its capital (INCIDENTS #883)', async () => {
+  const dual = checkArticle('أورانج كاسيدي: أمتلك أغنيتين باهظتي الثمن', 'كشف كاسيدي أنه يمتلك أغنيتين باهظتي الثمن ولا يفضل أي أغنية على الأخرى.');
+  assert.ok(dual.some(i => i.code === 'dual_noun'));
+  assert.ok(!checkArticle('أورانج كاسيدي: أغاني دخولي باهظة الثمن', 'كشف كاسيدي أن أغاني دخوله باهظة الثمن ولا يفضل أي أغنية على الأخرى.').some(i => i.code === 'dual_noun'));
+  const gabe = checkArticle('مونيكا مونرو تتحدث عن انضمامها', 'انتقلت إجراءات انضمامها بعد ذلك إلى جيب كيد، المسؤول عن برنامج WWE ID.');
+  assert.ok(gabe.some(i => i.code === 'wrong_gabe'));
+  assert.ok(BLOCKING_QA_CODES.includes('wrong_gabe'));
+  assert.ok(!checkArticle('جيب كيد يواجه كلارك كونورز', 'يواجه جيب كيد كلارك كونورز في عرض AEW Dynamite.').some(i => i.code === 'wrong_gabe'));
+  assert.equal(applyCorrections('النجوم الكبار لا يجدون غضاضة في الخسارة'), 'النجوم الكبار لا يمانعون في الخسارة');
+  const { restoreTitleTheNames } = await import("../scripts/english-edition.ts");
+  assert.equal(restoreTitleTheNames('Bishop Kaun Details How the Demand Got Started', 'discussed the formation of The Demand, the AEW faction'), 'Bishop Kaun Details How The Demand Got Started');
+  assert.equal(restoreTitleTheNames('Star Returns After the Show Ends', 'He returned after the show ended.'), 'Star Returns After the Show Ends');
+});

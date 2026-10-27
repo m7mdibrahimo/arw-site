@@ -4996,7 +4996,7 @@ test("a one-off program's library page title leads with the year, as visitors se
   const tpl = readFileSync(new URL("../pages/library-program.njk", import.meta.url), "utf8");
   // Still holds after INCIDENTS #862: the year stays right after the name, but the title is the collection's
   // («عروض … المترجمة (عرض واحد)»), never the newest episode's own title again.
-  assert.match(tpl, /lp\.prog\.count < 4 and \(lp\.prog\.latest\.eventDate \| yearOf\) and lp\.prog\.arLibTitle\s*%\}\{\{ lp\.prog\.arLibTitle \| replace\(' مترجمة', ''\) \}\} \{\{ lp\.prog\.latest\.eventDate \| yearOf \}\} المترجمة \(/);
+  assert.match(tpl, /lp\.prog\.count < 4 and \(lp\.prog\.latest\.eventDate \| yearOf\) and lp\.prog\.arLibTitle\s*%\}\{\{ \(lp\.prog\.arHeadTitle or lp\.prog\.arLibTitle\) \| replace\(' مترجمة', ''\) \}\} \{\{ lp\.prog\.latest\.eventDate \| yearOf \}\} المترجمة \(/);
 });
 
 test('weekly shows carry the generic «عروض المصارعة الحرة مترجم» in their structured-data names (INCIDENTS #550)', async () => {
@@ -5328,4 +5328,14 @@ test('a recent show whose title was edited keeps a redirect from its file-name a
   }
   const pairs = contentFolderAddresses(root, site);
   assert.deepEqual(pairs, [['/shows/aew-dynamite-06-10-2026/', '/shows/aew-dynamite-grand-slam-france-06-10-2026/']]);
+});
+
+test('the NJPW Special Events library page is not named after its only show in the head (INCIDENTS #883)', async () => {
+  const fs = await import('node:fs');
+  const cfg = fs.readFileSync(new URL('../eleventy.config.js', import.meta.url), 'utf8');
+  assert.match(cfg, /"njpw-special-events": "عروض ان جيه بي دبليو الخاصة مترجمة"/);
+  const tpl = fs.readFileSync(new URL('../pages/library-program.njk', import.meta.url), 'utf8');
+  assert.equal((tpl.match(/lp\.prog\.arHeadTitle or lp\.prog\.arLibTitle/g) || []).length, 3);
+  // the visible H1 keeps arLibTitle
+  assert.match(tpl, /<h1 class="hero-title"><bdi>\{% if lp\.prog\.arLibTitle and lp\.pageNumber == 1 %\}\{\{ lp\.prog\.arLibTitle \}\}/);
 });
