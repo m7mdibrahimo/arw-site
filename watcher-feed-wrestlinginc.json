@@ -1,5 +1,15 @@
 [
   {
+    "id": 2090937581,
+    "link": "https://www.wrestlinginc.com/2297845/wwe-raw-sami-zayn-jevon-evans-undisputed-title-match/",
+    "date": "Tue, 27 Oct 2026 00:46:06 +0000",
+    "date_gmt": "2026-10-27T00:46:06.000Z",
+    "title": {
+      "rendered": "Sami Zayn Defeats Je'Von Evans In Impromptu Undisputed WWE Title Match On Raw"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/sami-zayn-defeats-jevon-evans-in-impromptu-undisputed-wwe-title-match-on-raw/l-intro-1793061873.jpg"
+  },
+  {
     "id": 3056072693,
     "link": "https://www.wrestlinginc.com/2297838/wwe-raw-stephanie-vaquer-not-cleared-becky-lynch-womens-title-liv-morgan/",
     "date": "Tue, 27 Oct 2026 00:16:09 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Jeff Jarrett Loved Seeing AEW Try 'New Things' At WrestleDream"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/jeff-jarrett-loved-seeing-aew-try-new-things-at-wrestledream/l-intro-1793013577.jpg"
-  },
-  {
-    "id": 917897319,
-    "link": "https://www.wrestlinginc.com/2296934/wwe-crown-jewel-saudi-arabia-intelligence-memo-indicates-increased-danger/",
-    "date": "Mon, 26 Oct 2026 15:21:08 +0000",
-    "date_gmt": "2026-10-26T15:21:08.000Z",
-    "title": {
-      "rendered": "Intelligence Memo Indicates Increased Danger As WWE Plans Crown Jewel In Saudi Arabia"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/intelligence-memo-indicates-increased-danger-as-wwe-plans-crown-jewel-in-saudi-arabia/l-intro-1793027884.jpg"
   }
 ]
