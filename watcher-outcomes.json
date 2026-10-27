@@ -1,58 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/cody-rhodes-shares-that-kevin-owens-set-up-camera-at-wwe-event-so-people-could-speak-about-benjamin-satterley-pac": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-27T13:21:10.203Z"
+ },
+ "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-27T13:21:09.698Z"
+ },
+ "https://www.fightful.com/wrestling/pro-wrestling-noah-announces-hayata-suffered-torn-acl": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-27T13:21:08.941Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-crown-jewel-remains-planned-for-saudi-arabia": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-27T13:21:08.233Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-raw-results-10-26-2026-bayley-vs-lyra-valkyria-in-a-no-disqualification-match-more": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-27T13:21:07.770Z"
+ },
  "https://www.wrestlinginc.com/2297809/wwe-raw-october-26-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-27T13:17:32.757Z"
  },
- "https://www.fightful.com/wrestling/cody-rhodes-shares-that-kevin-owens-set-up-camera-at-wwe-event-so-people-could-speak-about-benjamin-satterley-pac": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-27T13:17:32.753Z"
- },
- "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-27T13:16:45.350Z"
- },
- "https://www.fightful.com/wrestling/pro-wrestling-noah-announces-hayata-suffered-torn-acl": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-27T13:16:44.619Z"
- },
- "https://www.fightful.com/wrestling/wwe-crown-jewel-remains-planned-for-saudi-arabia": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-27T13:16:43.936Z"
- },
- "https://www.fightful.com/wrestling/wwe-raw-results-10-26-2026-bayley-vs-lyra-valkyria-in-a-no-disqualification-match-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-27T13:16:43.500Z"
- },
  "https://www.fightful.com/wrestling/jake-hager-underwent-additional-surgery-to-reattach-retina-after-power-slap-loss": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-27T13:13:15.999Z"
- },
- "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-27T13:12:46.944Z"
- },
- "https://www.fightful.com/wrestling/pro-wrestling-noah-announces-hayata-suffered-torn-acl": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-27T13:12:46.417Z"
- },
- "https://www.fightful.com/wrestling/wwe-crown-jewel-remains-planned-for-saudi-arabia": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-27T13:12:45.924Z"
- },
- "https://www.fightful.com/wrestling/wwe-raw-results-10-26-2026-bayley-vs-lyra-valkyria-in-a-no-disqualification-match-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-27T13:12:45.609Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-10-27": {
   "reason": "المراجعة رفضته: نفس العنوان منشور قبل كده — الخبر مكرر",
