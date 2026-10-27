@@ -990,3 +990,20 @@ test("glossary spellings of Jordynne Grace, Nick Gage, Luke Jacobs, SYX and The 
   }
   assert.deepEqual(bad, []);
 });
+
+// Stu Grayson was written «ستيو غرايسون» in three stories while the other fourteen say «ستو غرايسون» (round 2026-10-27).
+test("Stu Grayson is «ستو غرايسون» and the misspelling is corrected everywhere", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  const glossary = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8")) as Record<string, string>;
+  assert.equal(glossary["Stu Grayson"], "ستو غرايسون");
+  assert.equal(applyCorrections("تحدث ستيو غرايسون عن الإصابة"), "تحدث ستو غرايسون عن الإصابة");
+  // the right spelling is left alone
+  assert.equal(applyCorrections("تحدث ستو غرايسون عن الإصابة"), "تحدث ستو غرايسون عن الإصابة");
+  const bad: string[] = [];
+  for (const f of fs.readdirSync("content/news").filter((x) => x.endsWith(".md"))) {
+    // a pinned permalink keeps the old address on purpose
+    const text = fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|source_url|image):.*$/gm, "");
+    if (/ستيو غرايسون/.test(text)) bad.push(f);
+  }
+  assert.deepEqual(bad, []);
+});

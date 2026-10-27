@@ -4587,6 +4587,18 @@ test("show pages carry the program's other names on the VideoObject too (INCIDEN
   assert.match(video.slice(0, 1800), /"alternateName":.*ldNames/);
 });
 
+// Round 2026-10-27: the top queries of the round («عرض الرو اليوم», «عرض سماك داون», «تحميل عرض سماك داون») were
+// answered through the video's name forms only; the broadcast now carries the episode's name forms too (Arabic +
+// English + the date spellings), in the code that builds every such page's head.
+test("the BroadcastEvent of a show episode carries the episode's name forms (round 2026-10-27)", () => {
+  const layout = fs.readFileSync("_includes/post-layout.njk", "utf8");
+  const i = layout.indexOf('"@type": "BroadcastEvent"');
+  assert.ok(i >= 0, "a BroadcastEvent is emitted for a show's episode");
+  const pub = layout.slice(i, i + 900);
+  assert.match(pub, /"startDate": \{\{ \(eventDate or event_date\) \| jsonify \| safe \}\}/);
+  assert.match(pub, /"alternateName": \[\{% for a in ldNames %\}/);
+});
+
 test('program library description carries «<اسم> <السنة> مترجم» (INCIDENTS #447)', () => {
   const page = fs.readFileSync('pages/library-program.njk', 'utf-8');
   assert.match(page, /pageDesc: "[^"]*arName \}\} \{\{ lp\.prog\.latest\.eventDate \| yearOf \}\} مترجم/);

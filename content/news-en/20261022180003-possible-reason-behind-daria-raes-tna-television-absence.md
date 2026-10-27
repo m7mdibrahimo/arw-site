@@ -14,4 +14,4 @@ en_tags:
   - "TNA iMPACT!"
 image: /content/images/54nwk1n93celo03b.jpg
 ---
-Daria Rae has been absent from TNA television for more than a month due to a storyline suspension after getting physical with Indi Hartwell. However, reports indicate she is set to return on the October 22 episode of TNA iMPACT!. Mike Johnson of PWInsider noted that her time away may have been used to focus on various acting commitments outside of wrestling. During her absence, Santino Marella stepped in and granted Hartwell a TNA Knockouts World Championship opportunity.
+Daria Rae has been absent from TNA television for more than a month due to a storyline suspension after getting physical with Indi Hartwell. However, reports indicate she is set to return on the October 22 episode of TNA iMPACT! Mike Johnson of PWInsider noted that her time away may have been used to focus on various acting commitments outside of wrestling. During her absence, Santino Marella stepped in and granted Hartwell a TNA Knockouts World Championship opportunity.

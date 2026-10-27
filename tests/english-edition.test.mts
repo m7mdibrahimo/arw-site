@@ -277,3 +277,33 @@ test("a word glued to a hyphenated compound in an English headline gets its spac
   assert.equal(fixEnglishNames('Scooby-Doo and WWE: Robo-WrestleMania!'), 'Scooby-Doo and WWE: Robo-WrestleMania!');
   assert.match(englishStyleRules('https://x.com/a'), /Life-AlteringInjury/);
 });
+
+test('a show name ending in «!» or «?» is never followed by a full stop (round 2026-10-27)', async () => {
+  const { fixEnglishNames } = await import('../scripts/english-edition.ts');
+  // «the October 29 episode of TNA iMPACT!.» and «Notsam Wrestling Live!.» were live on 2026-10-27
+  assert.equal(fixEnglishNames('The Hardys clash again on the October 29 episode of TNA iMPACT!. The promotion announced it.'), 'The Hardys clash again on the October 29 episode of TNA iMPACT! The promotion announced it.');
+  assert.equal(fixEnglishNames('He appeared on Notsam Wrestling Live!. When asked, he laughed.'), 'He appeared on Notsam Wrestling Live! When asked, he laughed.');
+  // a normal sentence keeps its full stop, and an ellipsis stays
+  assert.equal(fixEnglishNames('He waited... Then he left.'), 'He waited... Then he left.');
+  const fs = await import('node:fs');
+  assert.deepEqual(fs.readdirSync('content/news-en').filter((f) => f.endsWith('.md') && /[!?]\.(?:\s|$)/.test(fs.readFileSync(`content/news-en/${f}`, 'utf8'))), []);
+});
+
+test('the writer never inserts a bracketed word into a direct quote (round 2026-10-27)', async () => {
+  const { fixEnglishNames } = await import('../scripts/english-edition.ts');
+  // «I came back from my ACL tear...[which] that happened» was in the live Ilja Dragunov story
+  assert.equal(fixEnglishNames('I came back from my ACL tear...[which] that happened in the most unexciting way possible.'), 'I came back from my ACL tear...which happened in the most unexciting way possible.');
+  assert.equal(fixEnglishNames('I was back [and] that felt strange.'), 'I was back and that felt strange.');
+  // a real markdown link is not a bracketed word
+  assert.equal(fixEnglishNames('See [which](https://example.com) here.'), 'See [which](https://example.com) here.');
+  // the rules say it, too
+  const { englishStyleRules } = await import('../scripts/english-edition.ts');
+  assert.match(englishStyleRules('https://x.com/a'), /square brackets/);
+});
+
+test('a word dropped from a transcribed quote is put back («One the things», round 2026-10-27)', async () => {
+  const { fixEnglishNames } = await import('../scripts/english-edition.ts');
+  assert.equal(fixEnglishNames('One the things he said that he noticed was that I was athletic.'), 'One of the things he said that he noticed was that I was athletic.');
+  const fs = await import('node:fs');
+  assert.deepEqual(fs.readdirSync('content/news-en').filter((f) => f.endsWith('.md') && /\bOne the things\b/.test(fs.readFileSync(`content/news-en/${f}`, 'utf8'))), []);
+});

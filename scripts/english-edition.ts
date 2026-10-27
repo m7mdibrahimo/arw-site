@@ -62,6 +62,8 @@ export function englishStyleRules(sourceUrl: string): string {
   const outlet = outletOf(sourceUrl);
   return `- Write it in your own words. Do not copy the source's sentences: rephrase everything except direct quotes.
 - Direct quotes stay exactly as the source has them, each in its own markdown blockquote line starting with > and the quote in straight double quotes.
+- Never add a word in square brackets inside a quote («[which]», «[sic]»): a quote keeps the source's own words. If the source's quote is broken there, close it with an ellipsis (…) or leave that part out.
+- Punctuation: a show or event name that ends with «!» or «?» («TNA iMPACT!») is never followed by a full stop — the name's own mark ends the sentence, never «TNA iMPACT!.»; never two full stops in a row.
 - Donald Trump is the sitting US President (2025–2029): never write "former President Trump" or "the previous administration" about him unless the source says so explicitly about his first term (INCIDENTS #609).
 - Event and team names are written exactly as the promotion writes them: "Bound for Glory" (lowercase "for"), "Syx" (never "syX"), "Wrestlepalooza".
 - Headline: never name a promotion the story itself does not say the person joined or signed with (a source headline «Signs With AAA/WWE» when the text says only AAA becomes «Signs With AAA»; INCIDENTS #853).
@@ -195,6 +197,17 @@ export function fixSingularThey(text: string): string {
 }
 
 export const ENGLISH_FIXES: [RegExp, string][] = [
+  // a word dropped from the source's transcription: «One the things he said» → «One of the things he said» (round 2026-10-27)
+  [/\bOne the things\b/g, "One of the things"],
+  [/\bone the things\b/g, "one of the things"],
+  // a sentence that ends with a show name ending in «!» or «?» got a second full stop: «the October 29 episode of TNA
+  // iMPACT!.» (round 2026-10-27). The name's own mark ends the sentence; the extra period is dropped.
+  [/(?<=[!?])\.(?=\s|$)/g, ""],
+  // the writer inserted its own bracketed word into a direct quote and kept the source's «that» too:
+  // «my ACL tear...[which] that happened» → «my ACL tear... which happened» (round 2026-10-27)
+  [/\[(?:which|what|who)\]\s+that\b/gi, "which"],
+  [/\[that\]\s+that\b/gi, "that"],
+  [/\[(and|but|or|so)\]\s+that\b/gi, "$1 that"],
   // a translation scratchpad left in a quote: the foreign line and its «->» before the English one are dropped (INCIDENTS #872)
   [/["“«][^"”»\n]*[\u0400-\u04FF\u0370-\u03FF\u0590-\u05FF\u3040-\u30FF\u4E00-\u9FFF][^"”»\n]*["”»]\s*(?:->|→)\s*/g, ""],
   // two words glued at a capital letter after a hyphenated compound: «Life-AlteringInjury» → «Life-Altering Injury»

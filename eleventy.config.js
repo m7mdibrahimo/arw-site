@@ -1838,6 +1838,11 @@ module.exports = function(eleventyConfig) {
     return require("./lib/wrestler-mentions.cjs").personMentions(headline);
   });
 
+  // The people an English story names, in English, for the English page's structured data only (mentions)
+  eleventyConfig.addNunjucksGlobal("englishPersonMentions", function(text) {
+    return require("./lib/wrestler-mentions.cjs").englishPersonMentions(text);
+  });
+
   // The ways visitors write a program's library page, for its structured data only (INCIDENTS #503)
   eleventyConfig.addNunjucksGlobal("libraryNameForms", function(prog, year) {
     return require("./lib/show-seo.cjs").libraryNameForms({ arName: prog && prog.arName, name: prog && prog.name, aliases: (prog && prog.aliases) || [], year, count: (prog && prog.count) || 0, latest: prog && prog.latest && prog.latest.eventDate });

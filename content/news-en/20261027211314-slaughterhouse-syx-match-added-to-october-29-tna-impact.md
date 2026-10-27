@@ -14,7 +14,7 @@ en_tags:
   - "Bound for Glory"
 image: /content/images/0nd7v0iqxz3b8g03.jpg
 ---
-The Hardys and SYX are set to clash again on the October 29 episode of TNA iMPACT!. The promotion officially announced a Slaughterhouse SYX match featuring Matt Hardy and Jeff Hardy against Sam Shaw and Joseph Sawyer. This follows their previous encounter at TNA Bound for Glory, where SYX secured a victory with assistance from Erick Redbeard.
+The Hardys and SYX are set to clash again on the October 29 episode of TNA iMPACT! The promotion officially announced a Slaughterhouse SYX match featuring Matt Hardy and Jeff Hardy against Sam Shaw and Joseph Sawyer. This follows their previous encounter at TNA Bound for Glory, where SYX secured a victory with assistance from Erick Redbeard.
 
 https://x.com/AMC_TV/status/2115132721403924636
 

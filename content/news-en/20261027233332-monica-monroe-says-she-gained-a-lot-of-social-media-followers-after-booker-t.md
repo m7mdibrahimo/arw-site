@@ -1,7 +1,7 @@
 ---
 title: "Monica Monroe Says She Gained a Lot of Social Media Followers After Booker T Named Her on WWE NXT"
 slug: "monica-monroe-says-she-gained-a-lot-of-social-media-followers-after-booker-t"
-description: "Monica Monroe recently reflected on a viral moment involving Booker T. Back in July 2025."
+description: "Monica Monroe recently reflected on a viral moment involving Booker T."
 federation: WWE
 date: 2026-10-27T20:33:32.000Z
 source_id: 336146

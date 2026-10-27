@@ -80,3 +80,28 @@ test("a cut never stops inside a multi-word name (live 2026-10-27)", () => {
   assert.ok(!/\b(?:for|of|in|at|to)$/.test(d.replace(/\.$/, "")), d);
   assert.match(d, /suffered\.$/, d);
 });
+
+test("a description never ends on a bare time phrase (live 2026-10-27)", () => {
+  // «Monica Monroe recently reflected on a viral moment involving Booker T. Back in July 2025.» — «T.» was
+  // read as an initial, so the two sentences joined, the cut fell on the comma after the date and the
+  // snippet under the title said nothing.
+  const monica = metaDescription("Monica Monroe recently reflected on a viral moment involving Booker T. Back in July 2025, Booker T accidentally referred to Blake Monroe as Monica Monroe during an episode of WWE NXT. The mistake quickly gained traction online.");
+  assert.equal(monica, "Monica Monroe recently reflected on a viral moment involving Booker T.");
+  // «Bandido has set a major milestone in Ring of Honor history. On October 14.»
+  const bandido = metaDescription("Bandido has set a major milestone in Ring of Honor history. On October 14, he officially surpassed Jay Lethal to claim the record for the most overall days as the ROH World Champion, reaching over 710 days across two reigns.");
+  assert.equal(bandido, "Bandido has set a major milestone in Ring of Honor history.");
+  // a real sentence that opens with a date keeps its verb and stays
+  const kept = metaDescription("On October 14, Bandido broke the record for the most overall days as ROH World Champion, passing Jay Lethal after three years at the top of the division.");
+  assert.match(kept, /On October 14, Bandido broke the record/);
+});
+
+test("no published description ends on a bare time phrase", () => {
+  const dir = path.join(process.cwd(), "content", "news-en");
+  const TIME_ONLY = /\. (?:Back in|In|On|At|During|Since|Earlier|Later|Meanwhile) (?:the )?(?:January|February|March|April|May|June|July|August|September|October|November|December|\d{4}|\d{1,2})\.$/;
+  const bad: string[] = [];
+  for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".md"))) {
+    const d = String(matter(fs.readFileSync(path.join(dir, f), "utf-8")).data.description || "");
+    if (TIME_ONLY.test(d)) bad.push(`${f}: ${d}`);
+  }
+  assert.deepEqual(bad, []);
+});

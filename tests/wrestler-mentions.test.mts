@@ -25,3 +25,35 @@ test("a name is matched whole, never inside a longer word", () => {
   // «باك» must not match «باكستيج» or «باكيت»
   assert.deepEqual(personMentions("باكستيج الفريق أصبح أقوى هذا الأسبوع"), []);
 });
+
+// The English pages of name stories had no `mentions` at all: Search Console showed
+// «liv morgan boy meets world» (778 impressions) on position 8.9 with nobody listed as a Person.
+test("an English headline's people are listed in English (round 2026-10-27)", () => {
+  const { englishPersonMentions } = require("../lib/wrestler-mentions.cjs");
+  const m = englishPersonMentions("Liv Morgan Calls Cory Matthews Toxic After Rewatching Boy Meets World");
+  assert.deepEqual(m, [{ name: "Liv Morgan", ar: "ليف مورغان" }]);
+  const two = englishPersonMentions("Seth Rollins Attacks CM Punk Before WWE RAW");
+  assert.deepEqual(two.map((x: { name: string }) => x.name).sort(), ["CM Punk", "Seth Rollins"]);
+  // tags carry the names a headline leaves out (the layout joins headline and en_tags)
+  assert.deepEqual(englishPersonMentions("AEW WrestleDream Results: New Champion Crowned"), []);
+  // a promotion, a show or a chance capitalised phrase is never a person
+  assert.deepEqual(englishPersonMentions("WWE Announces WrestleMania 43 in Saudi Arabia"), []);
+  // no Arabic name leaks into the English structured data
+  assert.ok(englishPersonMentions("Liv Morgan and Cody Rhodes").every((x: { name: string }) => !/[\u0621-\u064A]/.test(x.name)));
+});
+
+test("every English story that names a glossary person gets it from its headline or tags", () => {
+  const fs = require("node:fs");
+  const matter = require("gray-matter");
+  const { englishPersonMentions } = require("../lib/wrestler-mentions.cjs");
+  const dir = "content/news-en";
+  const bad: string[] = [];
+  for (const f of fs.readdirSync(dir).filter((x: string) => x.endsWith(".md"))) {
+    const d = matter(fs.readFileSync(`${dir}/${f}`, "utf-8")).data;
+    const hay = [d.title, (d.en_tags || []).join(" ")].join(" ");
+    for (const n of englishPersonMentions(hay)) {
+      if (!hay.includes(n.name)) bad.push(`${f}: ${n.name}`);
+    }
+  }
+  assert.deepEqual(bad, []);
+});
