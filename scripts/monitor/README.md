@@ -91,6 +91,20 @@ npx tsx scripts/monitor/install-macos.sh --print    # ملف launchd للماك
 | `tests/monitor.test.mts` | بيقفل الصلاحيات والجدول والبوابة وحماية البناء |
 | `tests/monitor-checks.test.mts` | بيقفل منطق الفحص الحتمي |
 
+## لو اللفة وقفت
+
+الـheartbeat بيبعتلك إيميل في نفس الساعة. الأسباب المعتادة والحل:
+
+| السبب في رسالة الفشل | الحل |
+|---|---|
+| `التوثيق باظ` أو `401` | أعد تصدير التوثيق: `opencode auth export "OpenCode Console" \| gh secret set OPENCODE_AUTH -R m7mdibrahimo/arw-site` |
+| `حصة الموديلات المجانية خلصت` | حدّد موديل مدفوع: `gh variable set ARW_GUARD_MODEL -R m7mdibrahimo/arw-site --body opencode/<model>` |
+| `اللفة عدّت المهلة` | ارفع `ARW_GUARD_TIMEOUT` أو اختار موديل أسرع |
+| المفتاح مقفول | `gh variable set ARW_GUARD_ENABLED -R m7mdibrahimo/arw-site --body true` |
+
+**التوثيق صلاحيته ~١٨ يوم**: التوكن المصدَّر بيُستخدم زي ما هو على السيرفر (واتجدد تلقائيًا
+من الـrefresh token). لو اللفة رجّعت خطأ توثيق، الأمر اللي فوق بيرجّعها في دقيقة.
+
 ## ملاحظات تشغيلية
 
 - **البناء بيتأثر بأي ملف `.md` في المستودع**: Eleventy بيقرا أي `frontmatter` غير سليم

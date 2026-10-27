@@ -98,6 +98,7 @@ test('سكربت اللفة بيجهّز البيئة وبيشغّل الوكي�
   assert.match(sh, /--standalone/, 'مطلوب على سيرفرات CI');
   assert.match(sh, /for M in "\$\{MODELS\[@\]\}"/, 'لو موديل فشل، اللفة ماتقفش');
   assert.match(sh, /run_with_timeout/, 'لازم مهلة — لفة معلّقة بتقفل السيرفر');
+  assert.match(sh, /-eq 124/, 'لو المهلة خلصت مايجرّبش موديل تاني (هيضيّع مهلة كمان)');
   // أسماء الموديلات لازم تكون حقيقية: أي اسم غلط بيرجع «Model unavailable» وبيضيّع محاولة
   assert.doesNotMatch(sh, /muse-spark|longcat|cat-jam/, 'أسماء موديلات قديمة/غير موجودة — بتفشل فورًا');
   assert.match(sh, /opencode\/glm-5\.3-flash-free/, 'لازم بديل مجاني حقيقي');
