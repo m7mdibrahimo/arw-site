@@ -2401,7 +2401,7 @@ async function checkPublishingStalled(env: Env, items: any[]): Promise<void> {
 
     // Don't alert on a quiet news day with nothing new to post — only when
     // there's demonstrably fresh work that should have gone out by now.
-    const resumeFrom = Number(await env.PUSH_KV.get("social:resume-from")) || 0; // what came out while posting was off isn't owed
+    const resumeFrom = await socialResumeFrom(env); // what came out while posting was off isn't owed
     const hasFreshWork = items.some((it) => {
       const ts = it?.date ? new Date(it.date).getTime() : 0;
       return ts > 0 && ts >= resumeFrom && now - ts < STALL_THRESHOLD_MS;
@@ -2432,7 +2432,14 @@ async function checkPublishingStalled(env: Env, items: any[]): Promise<void> {
  *  automatic poster, the reels, the promos, the panel's own «نشر» and «فك الحجب». Turned off, posting starts again with
  *  what's published from then on (KV social:resume-from), not with the backlog of the paused time */
 async function socialPaused(env: Env): Promise<any> {
+  if (!env.PUSH_KV) return null;
   return await env.PUSH_KV.get("social:paused", "json").catch(() => null);
+}
+
+/** When posting was last switched back on (0 if never, or if KV is absent) */
+async function socialResumeFrom(env: Env): Promise<number> {
+  if (!env.PUSH_KV) return 0;
+  return Number(await env.PUSH_KV.get("social:resume-from").catch(() => null)) || 0;
 }
 
 export async function runWatcherPoll(env: Env): Promise<void> {
@@ -2469,7 +2476,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
   if (!items.length) return;
   items = items.map((it: any) => (it && it.image ? { ...it, image: socialImage(it.image) } : it));
 
-  const resumeFrom = Number(await env.PUSH_KV.get("social:resume-from")) || 0;
+  const resumeFrom = await socialResumeFrom(env);
   const minDate = Math.max(env.WATCHER_MIN_DATE ? new Date(env.WATCHER_MIN_DATE).getTime() : 0, resumeFrom);
 
   let state: PublishState;
