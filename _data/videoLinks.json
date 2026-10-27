@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-10-27T00:48:18.452Z",
+ "checkedAt": "2026-10-27T07:57:34.014Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
@@ -7075,14 +7075,14 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-27T00:48:18.452Z"
+   "checked": "2026-10-27T07:57:34.014Z"
   },
   "https://hgcloud.to/e/j5cium6w5mu1": {
    "page": "https://arab-wrestling.com/shows/cmll-domingo-familiar-25-10-2026/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 2,
-   "checked": "2026-10-27T00:48:18.452Z",
+   "checked": "2026-10-27T07:57:34.014Z",
    "since": "2026-10-26T20:52:40.607Z"
   },
   "https://ok.ru/videoembed/17814974106208": {
@@ -7090,83 +7090,84 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-27T00:48:18.452Z"
+   "checked": "2026-10-27T07:57:34.014Z"
   },
   "https://vidmoly.org/embed-9fxw9sdo22lt.html": {
    "page": "https://arab-wrestling.com/shows/cmll-domingo-familiar-25-10-2026/",
    "status": "ok",
-   "reason": "the video plays",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-27T00:48:18.452Z",
-   "lastOk": "2026-10-27T00:48:18.452Z"
+   "checked": "2026-10-27T07:57:34.014Z",
+   "lastOk": "2026-10-27T07:57:34.014Z"
   },
   "https://fembed.co/embed/6P0Lt-s_qbStk": {
    "page": "https://arab-wrestling.com/shows/cmll-domingo-familiar-25-10-2026/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-27T00:48:18.452Z",
-   "lastOk": "2026-10-27T00:48:18.452Z"
+   "checked": "2026-10-27T07:57:34.014Z",
+   "lastOk": "2026-10-27T07:57:34.014Z"
   },
   "https://vidtube.one/embed-gipil5kqg5ui.html": {
    "page": "https://arab-wrestling.com/shows/progress-chapter-199-bonestorm-25-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-27T00:48:18.452Z"
+   "checked": "2026-10-27T07:57:34.014Z"
   },
   "https://ok.ru/videoembed/17814974368352": {
    "page": "https://arab-wrestling.com/shows/progress-chapter-199-bonestorm-25-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-27T00:48:18.452Z"
+   "checked": "2026-10-27T07:57:34.014Z"
   },
   "https://hgcloud.to/e/6c0pw8fns6e0": {
    "page": "https://arab-wrestling.com/shows/progress-chapter-199-bonestorm-25-10-2026/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-27T00:48:18.452Z",
-   "lastOk": "2026-10-27T00:48:18.452Z"
+   "checked": "2026-10-27T07:57:34.014Z",
+   "lastOk": "2026-10-27T07:57:34.014Z"
   },
   "https://vidmoly.org/embed-ocprxv6qoqsu.html": {
    "page": "https://arab-wrestling.com/shows/progress-chapter-199-bonestorm-25-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-27T00:48:18.452Z",
-   "lastOk": "2026-10-27T00:48:18.452Z"
+   "checked": "2026-10-27T07:57:34.014Z",
+   "lastOk": "2026-10-27T07:57:34.014Z"
   },
   "https://fembed.co/embed/AyN_Np9VFQ-7o": {
    "page": "https://arab-wrestling.com/shows/progress-chapter-199-bonestorm-25-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-27T00:48:18.452Z",
-   "lastOk": "2026-10-27T00:48:18.452Z"
+   "checked": "2026-10-27T07:57:34.014Z",
+   "lastOk": "2026-10-27T07:57:34.014Z"
   },
   "https://vidmoly.org/embed-wpflk5marn1v.html": {
    "page": "https://arab-wrestling.com/shows/gcw-shotzi-blackhearts-drive-in-from-hell-25-10-2026/",
    "status": "ok",
-   "reason": "the video plays",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-27T00:48:18.452Z",
-   "lastOk": "2026-10-27T00:48:18.452Z"
+   "checked": "2026-10-27T07:57:34.014Z",
+   "lastOk": "2026-10-27T07:57:34.014Z"
   },
   "https://ok.ru/videoembed/17814974237280": {
    "page": "https://arab-wrestling.com/shows/gcw-shotzi-blackhearts-drive-in-from-hell-25-10-2026/",
-   "status": "unknown",
-   "reason": "no stream seen",
+   "status": "ok",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-27T00:48:18.452Z"
+   "checked": "2026-10-27T07:57:34.014Z",
+   "lastOk": "2026-10-27T07:57:34.014Z"
   },
   "https://hgcloud.to/e/e9g0k8g1bqk9": {
    "page": "https://arab-wrestling.com/shows/gcw-shotzi-blackhearts-drive-in-from-hell-25-10-2026/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 2,
-   "checked": "2026-10-27T00:48:18.452Z",
+   "checked": "2026-10-27T07:57:34.014Z",
    "since": "2026-10-27T00:48:18.452Z"
   },
   "https://vidtube.one/embed-aok5yot26ivr.html": {
@@ -7174,15 +7175,60 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-27T00:48:18.452Z"
+   "checked": "2026-10-27T07:57:34.014Z"
   },
   "https://fembed.co/embed/C_HwQdA-j3S1X": {
    "page": "https://arab-wrestling.com/shows/gcw-shotzi-blackhearts-drive-in-from-hell-25-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-27T00:48:18.452Z",
-   "lastOk": "2026-10-27T00:48:18.452Z"
+   "checked": "2026-10-27T07:57:34.014Z",
+   "lastOk": "2026-10-27T07:57:34.014Z"
+  },
+  "https://vidtube.one/embed-3p4yagsm2mhe.html": {
+   "page": "https://arab-wrestling.com/shows/njpw-super-junior-tag-league-day-3-26-10-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-10-27T07:57:34.014Z"
+  },
+  "https://ok.ru/videoembed/17817389173344": {
+   "page": "https://arab-wrestling.com/shows/njpw-super-junior-tag-league-day-3-26-10-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-10-27T07:57:34.014Z"
+  },
+  "https://hgcloud.to/e/ik53xauyb3fc": {
+   "page": "https://arab-wrestling.com/shows/njpw-super-junior-tag-league-day-3-26-10-2026/",
+   "status": "broken",
+   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
+   "strikes": 1,
+   "checked": "2026-10-27T07:57:34.014Z"
+  },
+  "https://vidmoly.org/embed-8jrt1ufcspog.html": {
+   "page": "https://arab-wrestling.com/shows/njpw-super-junior-tag-league-day-3-26-10-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-10-27T07:57:34.014Z",
+   "lastOk": "2026-10-27T07:57:34.014Z"
+  },
+  "https://fembed.co/embed/BdoE_Rmaj-JMS": {
+   "page": "https://arab-wrestling.com/shows/njpw-super-junior-tag-league-day-3-26-10-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-10-27T07:57:34.014Z",
+   "lastOk": "2026-10-27T07:57:34.014Z"
+  },
+  "https://uqload.vc/embed-x5kcw0yg2ksl.html": {
+   "page": "https://arab-wrestling.com/shows/njpw-super-junior-tag-league-day-3-26-10-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-10-27T07:57:34.014Z",
+   "lastOk": "2026-10-27T07:57:34.014Z"
   }
  },
  "broken": [
