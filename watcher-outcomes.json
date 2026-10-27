@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2297809/wwe-raw-october-26-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-27T13:24:38.360Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-shares-that-kevin-owens-set-up-camera-at-wwe-event-so-people-could-speak-about-benjamin-satterley-pac": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -23,11 +28,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-27T13:23:46.437Z"
- },
- "https://www.wrestlinginc.com/2297809/wwe-raw-october-26-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-27T13:17:32.757Z"
  },
  "https://www.fightful.com/wrestling/jake-hager-underwent-additional-surgery-to-reattach-retina-after-power-slap-loss": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
