@@ -1,8 +1,13 @@
 {
+ "https://www.wrestlinginc.com/2297870/wwe-raw-liv-morgan-womens-world-champion-main-event-dq": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-27T02:56:07.936Z"
+ },
  "https://www.wrestlinginc.com/2297809/wwe-raw-october-26-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-27T02:53:34.511Z"
+  "at": "2026-10-27T02:55:42.253Z"
  },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-remains-planned-for-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-14T02:15:24.951Z"
- },
- "https://www.fightful.com/wrestling/laynie-luck-recounts-wwe-id-womens-title-win-everything-just-kind-of-worked-out-in-my-favor": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-14T02:11:51.895Z"
  }
 }
