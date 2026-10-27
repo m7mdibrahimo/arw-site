@@ -189,4 +189,16 @@ jobs:
         if: steps.round.outcome == 'failure'
         run: |
           echo "::error::لفة الحارس فشلت من غير بوابة — شوف اللوج"
+          LOG=$(ls -t reports/guard/round-*.log 2>/dev/null | head -1)
+          if [ -n "$LOG" ]; then
+            if grep -qi "free usage limit" "$LOG"; then
+              echo "::error::السبب: حصة الموديلات المجانية خلصت. الحل: ARW_GUARD_MODEL بموديل مدفوع، أو انتظار تجدد الحصة."
+            elif grep -qiE "401|unauthorized|invalid_grant|auth.*(expired|fail)" "$LOG"; then
+              echo "::error::السبب: التوثيق باظ أو انتهت صلاحيته. الحل: أعد تصدير التوثيق: opencode auth export \"OpenCode Console\" | gh secret set OPENCODE_AUTH -R ${{ github.repository }}"
+            elif grep -qi "timed out\|timeout" "$LOG"; then
+              echo "::error::السبب: اللفة عدّت المهلة. الحل: ارفع ARW_GUARD_TIMEOUT أو ARW_GUARD_MODEL أسرع."
+            fi
+            echo "--- آخر ١٠ سطور ---"
+            tail -10 "$LOG"
+          fi
           exit 1
