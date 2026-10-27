@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2297809/wwe-raw-october-26-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-27T17:18:53.175Z"
+ },
  "https://www.fightful.com/wrestling/cj-perry-rusev-expecting-their-first-child": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -18,11 +23,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-27T17:16:13.998Z"
- },
- "https://www.wrestlinginc.com/2297809/wwe-raw-october-26-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-27T17:05:11.184Z"
  },
  "https://www.fightful.com/wrestling/pro-wrestling-noah-announces-hayata-suffered-torn-acl": {
   "reason": "مكرر مع خبر نزل قبل كده",
