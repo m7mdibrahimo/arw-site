@@ -3336,7 +3336,7 @@ export default {
           const conn = Array.isArray(conns) ? conns.find((c: any) => c && c.cloud_type === "drive") : null;
           if (!conn) return json({ success: false, error: "no drive connection" });
           const r = await v("/commands/rclone/", { method: "POST", body: JSON.stringify({ src: "/workspace/drive-out/", dst: "/", instance_id: Number(iid), selected: conn.id, transfer: "Instance To Cloud", flags: [] }) });
-          return json({ success: !!(r && r.success), error: r && !r.success ? r.msg || r.error : undefined });
+          return json({ success: !!(r && r.success), log: r && r.result_url ? String(r.result_url) : undefined, error: r && !r.success ? r.msg || r.error : undefined });
         } else if (path === "/tools/arw-event") {
           if (["subs-start", "merge-start", "cancelled", "novideo", "no-nvenc"].includes(body.kind)) await encEvent(env, body.kind, String(body.name || ""));
         } else {

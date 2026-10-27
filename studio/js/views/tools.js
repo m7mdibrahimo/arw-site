@@ -765,13 +765,18 @@ export async function renderServerTool(page) {
     jobsPage = Math.min(Math.max(1, jobsPage), pages);
     const jobs = all.slice((jobsPage - 1) * 10, jobsPage * 10);
     mount($('#srv-jobs'), all.length ? html`<div class="srv-table"><table>
-      <thead><tr><th>العرض</th><th>الخطوة</th><th>بدأ</th><th>خلص</th><th>خد</th></tr></thead>
+      <thead><tr><th>العرض</th><th>الخطوة</th><th>بدأ</th><th>خلص</th><th>خد</th><th></th></tr></thead>
       <tbody>${jobs.map(j => html`<tr>
         <td class="srv-name">${j.name}</td>
         <td class="${j.ok ? 'ok' : 'bad'}">${STEP_NAME[j.step] || j.step} ${j.ok ? '✓' : '✗'}</td>
         <td>${dayClock(j.started)}</td><td>${dayClock(j.finished)}</td><td>${span(j.finished - j.started)}</td>
+        <td>${j.step === 'subs' && j.ok ? html`<button class="btn btn-sm btn-ghost" data-jen="${j.name}">${icon('download')} الترجمة</button>` : ''}</td>
       </tr>`)}</tbody></table></div>${pager(jobsPage, pages)}<p class="muted small">بيتشال من هنا لوحده اللي عدّى عليه أكتر من ٣٠ يوم.</p>` : html`<p class="muted">لسه مفيش حاجة خلصت من ساعة ما الصفحة دي اتعملت.</p>`);
     $$('[data-page]', $('#srv-jobs')).forEach(b => b.onclick = () => { jobsPage = Number(b.dataset.page); drawJobs(last); });
+    // «تفريغ بس» clears the server once Drive has the subtitles: the English one stays downloadable from here (30 days)
+    $$('[data-jen]', $('#srv-jobs')).forEach(b => b.onclick = async () => {
+      try { const r = await tools.serverEn(b.dataset.jen); saveText(`${b.dataset.jen}.srt`, r.text); } catch (e) { toast(e.message || 'مقدرتش أجيب الترجمة', 'error'); }
+    });
   };
 
 
