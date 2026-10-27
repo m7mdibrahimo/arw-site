@@ -1,33 +1,33 @@
 {
- "https://www.fightful.com/wrestling/chris-jericho-teddy-swims-shoot-hot-dogs-into-crowd-at-concert": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-27T14:19:35.594Z"
- },
  "https://www.fightful.com/wrestling/john-cena-says-the-speculation-ends-on-11-2-wwe-raw-lets-build-this-never-seen-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T14:19:01.103Z"
+  "at": "2026-10-27T14:21:37.973Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-shares-that-kevin-owens-set-up-camera-at-wwe-event-so-people-could-speak-about-benjamin-satterley-pac": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T14:19:00.826Z"
+  "at": "2026-10-27T14:21:37.769Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-27T14:19:00.363Z"
+  "at": "2026-10-27T14:21:37.429Z"
  },
  "https://www.fightful.com/wrestling/pro-wrestling-noah-announces-hayata-suffered-torn-acl": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T14:18:59.676Z"
+  "at": "2026-10-27T14:21:36.918Z"
  },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-remains-planned-for-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T14:18:59.023Z"
+  "at": "2026-10-27T14:21:36.438Z"
+ },
+ "https://www.fightful.com/wrestling/chris-jericho-teddy-swims-shoot-hot-dogs-into-crowd-at-concert": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-27T14:19:35.594Z"
  },
  "https://www.wrestlinginc.com/2297809/wwe-raw-october-26-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
