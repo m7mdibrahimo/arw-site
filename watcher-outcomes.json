@@ -1,18 +1,23 @@
 {
+ "https://www.fightful.com/wrestling/max-caster-comments-on-anthony-bowens-aew-status-he-still-works-there": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-27T11:32:03.813Z"
+ },
  "https://www.fightful.com/wrestling/pro-wrestling-noah-announces-hayata-suffered-torn-acl": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T11:28:45.273Z"
+  "at": "2026-10-27T11:31:45.914Z"
  },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-remains-planned-for-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T11:28:44.566Z"
+  "at": "2026-10-27T11:31:45.209Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-10-26-2026-bayley-vs-lyra-valkyria-in-a-no-disqualification-match-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T11:28:44.120Z"
+  "at": "2026-10-27T11:31:44.761Z"
  },
  "https://www.wrestlinginc.com/2297809/wwe-raw-october-26-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-14T04:54:11.870Z"
- },
- "https://www.fightful.com/wrestling/amazing-red-speaks-about-going-into-tna-hall-of-fame-winning-x-division-title-on-same-night": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-14T04:10:50.556Z"
  }
 }
