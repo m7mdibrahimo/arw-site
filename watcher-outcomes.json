@@ -7,22 +7,27 @@
  "https://www.fightful.com/wrestling/john-cena-says-the-speculation-ends-on-11-2-wwe-raw-lets-build-this-never-seen-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T16:14:34.373Z"
+  "at": "2026-10-27T16:18:02.864Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-shares-that-kevin-owens-set-up-camera-at-wwe-event-so-people-could-speak-about-benjamin-satterley-pac": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T16:14:34.071Z"
+  "at": "2026-10-27T16:18:02.546Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-27T16:14:33.558Z"
+  "at": "2026-10-27T16:18:02.014Z"
  },
  "https://www.fightful.com/wrestling/pro-wrestling-noah-announces-hayata-suffered-torn-acl": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T16:14:32.794Z"
+  "at": "2026-10-27T16:18:01.230Z"
+ },
+ "https://www.wrestlinginc.com/2297809/wwe-raw-october-26-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-27T16:13:17.278Z"
  },
  "https://www.wrestlinginc.com/2297978/chris-sabin-discusses-goals-following-aew-signing": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
