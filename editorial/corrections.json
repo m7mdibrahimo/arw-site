@@ -8197,6 +8197,24 @@
       "right": "Royal Rumble",
       "regex": true,
       "note": "أسماء العروض بالإنجليزي (GEMINI.md §2)"
+    },
+    {
+      "wrong": "يسترجع ذكريات",
+      "right": "يتذكر",
+      "note": "لفظ ثقيل (GEMINI.md §10) — INCIDENTS #871",
+      "regex": false
+    },
+    {
+      "wrong": "يسترجع كواليس",
+      "right": "يكشف كواليس",
+      "note": "لفظ ثقيل (GEMINI.md §10) — INCIDENTS #871",
+      "regex": false
+    },
+    {
+      "wrong": "يسترجع",
+      "right": "يتذكر",
+      "note": "لفظ ثقيل (GEMINI.md §10) — INCIDENTS #871",
+      "regex": false
     }
   ]
 }

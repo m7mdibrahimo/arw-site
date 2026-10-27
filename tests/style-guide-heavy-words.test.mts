@@ -34,3 +34,14 @@ test("style guide: «الماضي» only when the source says «last <day>» (IN
   assert.ok(guide.includes("يوم الثلاثاء الماضي"));
   assert.ok(guide.includes("last Tuesday"));
 });
+
+test("«iestرجع» becomes «يتذكر/يكشف» in every story (INCIDENTS #871)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa.ts");
+  assert.equal(applyCorrections("بينتا يسترجع ذكريات مواجهة رومان"), "بينتا يتذكر مواجهة رومان");
+  assert.equal(applyCorrections("ويل أوسبراي يسترجع كواليس شجار"), "ويل أوسبراي يكشف كواليس شجار");
+  assert.equal(applyCorrections("ديفيد فينلي يسترجع طموحاته السابقة"), "ديفيد فينلي يتذكر طموحاته السابقة");
+  for (const f of fs.readdirSync("content/news").filter(f => f.endsWith(".md"))) {
+    const s = fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink: .*$/m, "");
+    assert.doesNotMatch(s, /يسترجع/, f);
+  }
+});

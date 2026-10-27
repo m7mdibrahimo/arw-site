@@ -1,6 +1,7 @@
 ---
 federation: AEW
-title: "كوفي يسترجع ذكريات عرض AEW Grand Slam France ويؤكد أن بانديدو مصارع استثنائي"
+title: "كوفي يتذكر عرض AEW Grand Slam France ويؤكد أن بانديدو مصارع استثنائي"
+permalink: "/news/كوفي-يسترجع-ذكريات-عرض-aew-grand-slam-france-ويؤكد-أن-بانديدو-مصارع-استثنائي/index.html"
 date: 2026-10-08T04:45:20.000+03:00
 published_at: 2026-10-08T01:54:47.616Z
 source_id: 332706
