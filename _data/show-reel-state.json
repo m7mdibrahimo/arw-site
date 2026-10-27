@@ -4337,6 +4337,26 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
+  },
+  "20261027125824-wwe-raw-26-10-2026": {
+    "publishedAt": 1793097313524,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": false,
+    "title": "عرض الرو 26.10.2026 مترجم",
+    "lastAttempt": 1793097401020,
+    "errors": {
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_story",
+      "tiktok"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
