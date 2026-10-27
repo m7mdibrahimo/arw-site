@@ -1,43 +1,43 @@
 {
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-october-26-2026": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-27T01:15:58.531Z"
- },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-remains-planned-for-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T01:11:53.446Z"
+  "at": "2026-10-27T01:18:21.451Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-10-26-2026-bayley-vs-lyra-valkyria-in-a-no-disqualification-match-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-27T01:11:53.002Z"
+  "at": "2026-10-27T01:18:21.017Z"
  },
  "https://www.fightful.com/wrestling/kaylia-capri-misses-rows-sherri-martel-classic-due-to-car-accident-notes-that-she-suffered-minor-injuries": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T01:11:52.057Z"
+  "at": "2026-10-27T01:18:20.069Z"
  },
  "https://www.fightful.com/wrestling/alexa-bliss-states-that-she-bray-wyatt-were-supposed-to-reunite-on-wwe-programming": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T01:11:51.825Z"
+  "at": "2026-10-27T01:18:19.834Z"
  },
  "https://www.fightful.com/wrestling/alexa-bliss-says-traveling-with-her-daughter-was-worked-into-wwe-contract-thats-a-non-negotiable": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T01:11:51.527Z"
+  "at": "2026-10-27T01:18:19.532Z"
  },
  "https://www.fightful.com/wrestling/brooke-hogan-reacts-to-sale-of-hulk-hogans-florida-mansion-the-sick-feeling-is-indescribable": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T01:11:51.212Z"
+  "at": "2026-10-27T01:18:19.210Z"
  },
  "https://www.fightful.com/wrestling/channing-stacks-lorenzo-provides-update-after-suffering-injury-at-nxt-house-show": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-27T01:11:50.908Z"
+  "at": "2026-10-27T01:18:18.899Z"
+ },
+ "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-october-26-2026": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-27T01:15:58.531Z"
  },
  "https://www.fightful.com/wrestling/335980-wwe-crown-jewel": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
