@@ -1224,3 +1224,5 @@ button.pager-num, button.pager-step { border: 0; font: inherit; font-weight: 800
 .pause-card p { margin: 4px 0 0; }
 .pause-card.is-off { border-color: rgba(255, 99, 71, .55); background: rgba(255, 99, 71, .08); }
 @media (max-width: 640px) { .pause-card { flex-direction: column; align-items: stretch; } }
+.srv-needlang { margin: 10px 0; padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(255, 196, 0, .5); background: rgba(255, 196, 0, .08); display: flex; flex-direction: column; gap: 8px; }
+.srv-needlang .srv-langs { display: flex; flex-wrap: wrap; gap: 8px; }

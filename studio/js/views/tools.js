@@ -612,7 +612,7 @@ export async function renderServerTool(page) {
           ${st.jupyter ? html`<a class="btn btn-sm btn-ghost" href="${st.jupyter}" target="_blank" rel="noopener">${icon('folder')} ملفات السيرفر</a>` : ''}
         </div>
         <details class="srv-help"><summary>إزاي أرفع من جهازي أو أستخدم متصفح السيرفر؟</summary>
-          <p><b>الأوفر:</b> لو العرض عندك على سيرفر الويندوز، حطه جنب ملف «طلّع-الصوت» ودوس عليه دبل كليك. هيطلّع الصوت في فولدر «audio» في ثواني (حوالي ١٠٠ ميجا بدل ١٠ جيجا). ارفع ملفات الصوت دي من «ارفع من جهازك» بدل الفيديو، والعرض يتكلّف أقل من النص.</p>
+          <p><b>الأوفر:</b> لو العرض عندك على سيرفر الويندوز، حطه جنب ملف «طلّع-الصوت» ودوس عليه دبل كليك. هيطلّع الصوت في فولدر «audio» في ثواني (حوالي ١٠٠ ميجا بدل ١٠ جيجا). ارفع ملفات الصوت دي من «ارفع من جهازك» بدل الفيديو، والعرض يتكلّف أقل من النص. أول ما الملف يوصل هيظهر تحت في «العروض»، اختار لغة الصوت والتفريغ يبدأ.</p>
           <p><b>ارفع من جهازك:</b> هيفتح فولدر الفيديوهات على السيرفر. دوس زرار الرفع فوق، واختار الفيديوهات أو ملفات التورنت (تقدر تختار كذا ملف مرة واحدة)، ودوس الزرار الأزرق جنب كل ملف. أول ما الرفع يخلص، العرض هيظهر هنا تحت «العروض»، واختار لغة صوته من هناك.</p>
           <p><b>متصفح السيرفر:</b> متصفح شغال على السيرفر نفسه. افتح منه موقع التورنت أو موقع التحميل ونزّل الملف عادي، وهينزل لوحده في فولدر الفيديوهات ويبدأ. ده الحل لموقع التورنت اللي لازم التحميل يكون من نفس الجهاز اللي نزّل ملف التورنت.</p>
         </details>` : ''}
@@ -661,6 +661,7 @@ export async function renderServerTool(page) {
     if (s.ar) return { text: 'مستني الدمج', tone: 'wait' };
     if (s.en) return { text: 'الترجمة الإنجليزي جاهزة', tone: 'ok' };
     if (s.subsFailed) return { text: 'التفريغ فشل', tone: 'bad' };
+    if (s.needLang) return { text: 'مستني تختار لغة الصوت', tone: 'bad' };
     if (s.video) return { text: 'مستني التفريغ', tone: 'wait' };
     return { text: '', tone: '' };
   };
@@ -689,7 +690,9 @@ export async function renderServerTool(page) {
           ${MERGE && !busy && s.ar && !s.merged ? html`<button class="btn btn-sm" data-unqueue="${n}">${icon('x')} إلغاء الدمج</button>` : ''}
           ${busy ? '' : html`<button class="btn btn-sm btn-ghost danger" data-clean="${n}">${icon('trash')} امسحه من السيرفر</button>`}
         </div>
-        ${s.video && !s.en && !(alive && st.job && st.job.step === 'subs' && st.job.name === s.name) ? html`<div class="srv-langs srv-lang-pick"><span class="muted">لغة الصوت:</span>${LANGS.map(l => html`<button class="srv-q ${(s.lang || 'en') === l.key ? 'on' : ''}" data-setlang="${n}:${l.key}">${l.name}</button>`)}</div>` : ''}
+        ${s.needLang ? html`<div class="srv-needlang"><b>${icon('alert')} اختار لغة الصوت عشان التفريغ يبدأ:</b>
+          <div class="srv-langs">${LANGS.map(l => html`<button class="btn btn-sm" data-setlang="${n}:${l.key}">${l.name}</button>`)}</div></div>`
+        : s.video && !s.en && !(alive && st.job && st.job.step === 'subs' && st.job.name === s.name) ? html`<div class="srv-langs srv-lang-pick"><span class="muted">لغة الصوت:</span>${LANGS.map(l => html`<button class="srv-q ${(s.lang || 'en') === l.key ? 'on' : ''}" data-setlang="${n}:${l.key}">${l.name}</button>`)}</div>` : ''}
         ${MERGE && !busy && !s.merged ? html`<div class="srv-langs srv-lang-pick"><span class="muted">الجودات:</span>${QUALS.map(q => html`<button class="srv-q ${(chosenQ[s.name] || s.qual || 'all') === q.key ? 'on' : ''}" data-setq="${n}:${q.key}">${q.name}</button>`)}</div>` : ''}
         ${MERGE && !busy && (s.en || s.ar || s.merged) ? html`<${s.ar || s.merged ? 'details' : 'div'} class="srv-ar">
           ${s.ar || s.merged ? html`<summary class="srv-ar-title">غيّر الترجمة العربي أو مكان اللوجو أو الجودات</summary>` : html`<div class="srv-ar-title">ارفع الترجمة العربي — واختار مكان اللوجو قبلها (والجودات فوق):</div>`}
@@ -716,7 +719,7 @@ export async function renderServerTool(page) {
       chosenQ[s.name] = q; drawShows(last);
       send({ kind: 'setqual', name: s.name, qual: q }, `«${s.name.slice(0, 40)}»: ${q === '720' ? '٧٢٠ بس' : '٤ جودات'}`);
     });
-    $$('[data-setlang]').forEach(b => b.onclick = () => { const [n, l] = b.dataset.setlang.split(':'); send({ kind: 'resub', name: list[+n].name, lang: l }, `لغة الصوت: ${LANG_NAME[l]}`); });
+    $$('[data-setlang]').forEach(b => b.onclick = () => { const [n, l] = b.dataset.setlang.split(':'); send({ kind: 'resub', name: list[+n].name, lang: l }, list[+n].needLang ? `لغة الصوت: ${LANG_NAME[l]} — التفريغ هيبدأ خلال ثواني` : `لغة الصوت: ${LANG_NAME[l]}`); });
     $$('[data-q]').forEach(b => b.onclick = () => { const [n, q] = b.dataset.q.split(':'); chosenQ[list[+n].name] = q; drawShows(last); });
     $$('[data-ar]').forEach(inp => inp.onchange = async () => {
       const s = list[+inp.dataset.ar], file = inp.files && inp.files[0];
