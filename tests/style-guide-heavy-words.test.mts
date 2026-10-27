@@ -45,3 +45,15 @@ test("«iestرجع» becomes «يتذكر/يكشف» in every story (INCIDENTS #
     assert.doesNotMatch(s, /يسترجع/, f);
   }
 });
+
+test("two things never take the plural pronoun «هم» (INCIDENTS #875: «أغنيتين … وأحبهم بنفس القدر»)", () => {
+  const guide = fs.readFileSync("editorial/style-guide.md", "utf-8");
+  const prompt = fs.readFileSync("scripts/fightful-watcher.ts", "utf-8");
+  assert.ok(guide.includes("متجمعش الضمير «هم/هن»"));
+  assert.ok(prompt.includes("متجمعش الضمير «هم/هن»"));
+  for (const f of fs.readdirSync("content/news").filter(f => f.endsWith(".md"))) {
+    const s = fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink: .*$/m, "");
+    assert.doesNotMatch(s, /(?:أغنيتين|نزالين|فيديوين)[^.\n]{0,40}أ?حبهم/, f);
+    assert.doesNotMatch(s, /كلتا الأغنيتين/, f);
+  }
+});
