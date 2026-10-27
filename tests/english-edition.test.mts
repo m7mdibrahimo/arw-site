@@ -249,3 +249,13 @@ test('an article glued to the next word by a hyphen is held back («on the-ring�
   assert.ok(checkEnglish({ ...good, body: good.body + ' She hopes to manage stars on the-ring soon.' }, input).includes('article glued to the next word with a hyphen'));
   assert.deepEqual(checkEnglish({ ...good, body: good.body + ' A state-of-the-art arena.' }, input), []);
 });
+
+test('a foreign-language scratchpad or a translation arrow blocks the English edition (INCIDENTS #872)', async () => {
+  const cyr = ' > "Если вы прочитаете это заявление без автора, вы подумаете, что это подросток." -> "If you read that statement, you would think a teenager wrote it."';
+  assert.ok(checkEnglish({ ...good, body: good.body + cyr }, input).includes('letters from another script'));
+  assert.ok(checkEnglish({ ...good, body: good.body + cyr }, input).includes('translation arrow left in the text'));
+  const { fixEnglishNames } = await import('../scripts/english-edition.ts');
+  assert.equal(fixEnglishNames(cyr), ' > "If you read that statement, you would think a teenager wrote it."');
+  // a normal English quote has no arrow and stays untouched
+  assert.deepEqual(checkEnglish({ ...good, body: good.body + ' > "This is a show you put together."' }, input), []);
+});

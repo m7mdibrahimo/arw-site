@@ -76,7 +76,8 @@ export function englishStyleRules(sourceUrl: string): string {
 - No markdown headings (#), no bold, no lists with bullets, no links in the text.
 - Times and time zones: keep each start time in the zone the source gives (8 pm local time in Mexico, 10 pm ET); never relabel a local time as ET (INCIDENTS #808).
 - Never add a "what's next" sentence the source does not have: no "will return to action at …", "will face … for the … Championship", "is set to appear at …" unless the SOURCE says it (a story about how Sami Zayn chose his name ended with a Crown Jewel match the source never mentioned, INCIDENTS #862). The story ends where the source ends.
-- Never mention Arab Wrestling, translation, AI, or that this is a rewrite.`;
+- Never mention Arab Wrestling, translation, AI, or that this is a rewrite.
+- English letters only: never leave a word or a sentence in another script (Cyrillic, Greek, Hebrew, Chinese, Japanese, Korean) and never a translation arrow «->» or a pair of a foreign line and its English line. A quote is English only (INCIDENTS #872).`;
 }
 
 /** The English edition inside the Arabic story's own request (owner's request, INCIDENTS #356): one request writes the
@@ -125,6 +126,10 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   if (!title || title.length < 15 || title.length > 140) issues.push("title length");
   if (!body || body.replace(/\s+/g, " ").length < 180) issues.push("body too short");
   if (AR.test(title + body)) issues.push("Arabic letters"); // (an Arabic tag is only dropped, when saved)
+  // The model once left its own translation scratchpad in a blockquote: a Russian sentence, then «->», then the English
+  // one (INCIDENTS #872). Any other script, and any translation arrow, blocks the English edition.
+  if (/[\u0370-\u03FF\u0400-\u058F\u0590-\u05FF\u0900-\u0DFF\u0E00-\u0E7F\u1000-\u109F\u10A0-\u10FF\u1200-\u137F\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF]/.test(title + "\n" + body)) issues.push("letters from another script");
+  if (/->|→/.test(body)) issues.push("translation arrow left in the text");
   if (/\b(as an ai|language model|arab wrestling|translated|translation)\b/i.test(title + "\n" + body)) issues.push("meta text");
   if (/^#{1,6}\s/m.test(body) || /\*\*/.test(body)) issues.push("markdown formatting");
   if (/[\u{1F300}-\u{1FAFF}]/u.test(title)) issues.push("emoji in title");
@@ -182,6 +187,8 @@ export function fixSingularThey(text: string): string {
 }
 
 export const ENGLISH_FIXES: [RegExp, string][] = [
+  // a translation scratchpad left in a quote: the foreign line and its «->» before the English one are dropped (INCIDENTS #872)
+  [/["“«][^"”»\n]*[\u0400-\u04FF\u0370-\u03FF\u0590-\u05FF\u3040-\u30FF\u4E00-\u9FFF][^"”»\n]*["”»]\s*(?:->|→)\s*/g, ""],
   // «shoulder tee» is a typo for «shoulder socket» (INCIDENTS #845)
   [/\b(shoulder|hip) tee\b/g, "$1 socket"],
   // «Says It Belong to Australian Wrestling»: a singular subject with a bare verb (INCIDENTS #813)

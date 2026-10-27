@@ -279,3 +279,16 @@ test("«كبث» تتصلح لـ«بث»، واسم Steven Borden مش «أبن�
   // «أبناء الأسطورة ستينج» عن الابنَين الاتنين عربي سليم ومش بيتلمس
   assert.equal(applyCorrections("تعرف الجمهور على أبناء الأسطورة ستينج خلال النزال"), "تعرف الجمهور على أبناء الأسطورة ستينج خلال النزال");
 });
+
+test("«بايج بوم إيه جي» بتتصلح، ومفيش حروف أجنبية في أي خبر (INCIDENTS #872)", async () => {
+  assert.equal(applyCorrections("وتحالفوا مع بايج بوم إيه جي وكيو تي مارشال"), "وتحالفوا مع بيج بوم إيه جي وكيو تي مارشال");
+  const fs = await import("node:fs");
+  const foreign = /[\u0370-\u03FF\u0400-\u058F\u0590-\u05FF\u0900-\u0DFF\u0E00-\u0E7F\u1000-\u109F\u10A0-\u10FF\u1200-\u137F\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF]/;
+  const bad: string[] = [];
+  for (const dir of ["content/news", "content/news-en"]) {
+    for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".md"))) {
+      if (foreign.test(fs.readFileSync(`${dir}/${f}`, "utf8"))) bad.push(`${dir}/${f}`);
+    }
+  }
+  assert.deepEqual(bad, []);
+});

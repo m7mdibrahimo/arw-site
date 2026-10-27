@@ -15,7 +15,7 @@ image: /content/images/gn898kncx02aohli.jpg
 ---
 Jonathan Coachman recently criticized Tony Khan's explanation for the absence of the Hurt Syndicate from AEW television. Speaking on Two Count Tuesday, according to Ringside News, Coachman mocked Khan's remarks describing Bobby Lashley, MVP, and Shelton Benjamin as hired guns available for the right price.
 
-> "Если вы прочитаете это заявление Тони Хана без указания автора, вы подумаете, что его написал 16-летний подросток или сам Тони Хан в начале своей карьеры, рассуждающий о шоу как о реальной жизни." -> "If you read that statement from Tony Khan and it wasn't a name attached to it, you would swear it was either a 16-year-old or a young Tony Khan, which is what he is, talking about a show as if it's real life."
+> "If you read that statement from Tony Khan and it wasn't a name attached to it, you would swear it was either a 16-year-old or a young Tony Khan, which is what he is, talking about a show as if it's real life."
 
 Coachman noted that Khan runs AEW, books the wrestlers, and pays them, making it ridiculous for Khan to act as if the group's appearances are out of his hands.
 

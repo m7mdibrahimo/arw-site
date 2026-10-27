@@ -9,7 +9,7 @@ single_match_result: false
 social_spoiler: false
 social_spoiler_kind: none
 social_spoiler_age: recent
-social_spoiler_note: "العنوان وأول الخبر يتحدثان عن إعلان مباراة وعودة مתוقعة ضمن عرض سيتم بثه ولا يعتبران حرقاً لنتيجة أو حدث منتهي في آخر 24 ساعة"
+social_spoiler_note: "العنوان وأول الخبر يتحدثان عن إعلان مباراة وعودة متوقعة ضمن عرض سيتم بثه ولا يعتبران حرقاً لنتيجة أو حدث منتهي في آخر 24 ساعة"
 social_priority: high
 tags:
   - AEW
