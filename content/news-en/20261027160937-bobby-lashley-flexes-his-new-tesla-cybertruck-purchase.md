@@ -1,7 +1,7 @@
 ---
 title: "Bobby Lashley Flexes His New Tesla Cybertruck Purchase"
 slug: "bobby-lashley-flexes-his-new-tesla-cybertruck-purchase"
-description: "Bobby Lashley has a new ride and a specific reason for buying it. The AEW star joined the growing list of wrestlers with a Tesla Cybertruck by sharing."
+description: "Bobby Lashley has a new ride and a specific reason for buying it. The AEW star joined the growing list of wrestlers who own a Tesla Cybertruck."
 federation: AEW
 date: 2026-10-27T13:09:37.000Z
 source_id: 802260256

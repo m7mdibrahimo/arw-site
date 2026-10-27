@@ -198,7 +198,7 @@ const RULES: Rule[] = [
   // «تواجه كل من كراتوس روميو كيفيدو في نزال» — the «و» between the two names dropped (INCIDENTS #301)
   { code: "kol_min_no_waw", severity: "error", re: /كل\s+من\s+(?:(?!و)[ء-ي]+\s+){2,4}في\s+نزال/g, message: "«كل من» بعدها اسمين من غير «و» بينهم (حصل: «تواجه كل من كراتوس روميو كيفيدو» والصح «كراتوس وروميو كيفيدو»)", fields: ["title", "body"] },
   // «فى فيلم»، «الذى دفعه»، «لقاء صحفى» — ى مكان ي في آخر الكلمة (INCIDENTS #303)
-  { code: "alif_maqsura_ya", severity: "error", re: /(?<![ء-ي])(?:فى|الذى|التى|صحفى|عربى|الثنائى|الثلاثى|الرباعى|التاريخى|الرسمى|حوارى|جوهرى|نارى|الدولى|المحلى|العالمى|الأسبوعى|الاسبوعى|الإعلامى|الاعلامى|الأمريكى|الامريكى|الشخصى|المهنى|الرئيسى|الحقيقى|النهائى)(?![ء-ي])/g, message: "ى مكان ي (حصل: «فى WWE»، «الذى»، «صحفى»، «الثنائى»، «التاريخى») — الصح «في»، «الذي»، «صحفي»، «الثنائي»، «التاريخي» (INCIDENTS #594)", fields: ["title", "body"] },
+  { code: "alif_maqsura_ya", severity: "error", re: /(?<![ء-ي])(?:فى|الذى|التى|صحفى|عربى|الثنائى|الثلاثى|الرباعى|التاريخى|الرسمى|حوارى|جوهرى|نارى|الدولى|المحلى|العالمى|الأسبوعى|الاسبوعى|الإعلامى|الاعلامى|الأمريكى|الامريكى|الشخصى|المهنى|الرئيسى|الحقيقى|النهائى|السعى)(?![ء-ي])/g, message: "ى مكان ي (حصل: «فى WWE»، «الذى»، «صحفى»، «الثنائى»، «التاريخى») — الصح «في»، «الذي»، «صحفي»، «الثنائي»، «التاريخي» (INCIDENTS #594)", fields: ["title", "body"] },
   // «خلال استضافتها في برنامج أن المخطط…» — the show/podcast name was dropped and the sentence has no name after «برنامج» (INCIDENTS #594)
   { code: "dropped_show_name", severity: "error", re: /(?<![ء-ي])(?:في|خلال|عبر|على)\s+(?:برنامج|بودكاست)\s+(?:أن|إن|حيث|التي|الذي)(?![ء-ي])/g, message: "«في برنامج» وبعدها مباشرة «أن/حيث» — اسم البرنامج اتشال (حصل: «استضافتها في برنامج أن المخطط»). اكتب اسم البرنامج من المصدر أو احذف «في برنامج»", fields: ["title", "body"] },
   // Latin letters glued to an Arabic stem that is not a prefix: «يOH» (for YOH), «نagai», «إيفيs» — a name half-transliterated (INCIDENTS #438)
@@ -423,6 +423,20 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
     const bodyWords = stripNonProse(body || "").split(/[^ء-ي]+/);
     const inBody = bodyWords.some((w) => w === lastTitleWord || (stem.length >= 2 && w.replace(/^(?:و|ف|ب|ل|ك)?(?:ال)?/, "") === stem));
     if (!inBody) issues.push({ code: "title_cut_word", severity: "error", field: "title", message: "العنوان بينتهي بكلمة مبتورة مش موجودة في الخبر — الاقتباس اتقطع", excerpt: lastTitleWord });
+  }
+
+  // A cut word can also end up two letters long: «…وأنا متحمس جدا لر إلى أين ستصل الأمور» (INCIDENTS #868).
+  // The one-letter rule above cannot see it, and no Arabic word of two letters starts with ل/ب/ك/ف
+  // except the short words listed here — so anything else is the tail of a word the model cut.
+  const SHORT_PREFIX_WORDS = new Set(["في", "فى", "فن", "فخ", "فم", "فض", "فك", "لا", "لم", "لن", "له", "لي", "لو", "لك", "لل", "لب", "لـ", "بـ", "به", "بك", "بي", "بل", "بن", "بو", "بث", "بد", "كم", "كي", "كو", "كن", "كل", "كب", "كف", "كـ"]);
+  for (const [field, text] of fields) {
+    const stub = /(?<![ء-ي])[لبكف][ء-ي](?![ء-ي])/g;
+    let m: RegExpExecArray | null;
+    while ((m = stub.exec(text))) {
+      if (SHORT_PREFIX_WORDS.has(m[0])) continue;
+      issues.push({ code: "truncated_word", severity: "error", field, message: `كلمة عربية مقطوعة من حرفين («${m[0]}») — اكتب الكلمة كاملة`, excerpt: excerptAround(text, m.index, m[0].length) });
+      break;
+    }
   }
 
   // The same paragraph/bullet twice (a Gemini list slip: INCIDENTS #400). Compared without «و», spaces and punctuation.

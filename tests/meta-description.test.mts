@@ -37,3 +37,21 @@ test("no published English story keeps a description cut with «…»", () => {
   }
   assert.deepEqual(bad, []);
 });
+
+test("a cut never leaves a verb hanging after its preposition (INCIDENTS #868)", () => {  // The live description of the Bobby Lashley story ended «…with a Tesla Cybertruck by sharing.» — a
+  // sentence that stops on a gerund is unreadable under the title in Google.
+  const lead = "Bobby Lashley has a new ride and a specific reason for buying it. The AEW star joined the growing list of wrestlers with a Tesla Cybertruck by sharing a video on Instagram. The clip started with the question, \"Why would you even get a Tesla?\"";
+  const d = metaDescription(lead);
+  assert.ok(!/\b(?:by|of|for|about|from|with|into|on|at|to|against|over|under|between|via)\s+\w+ing\.?$/.test(d), d);
+  assert.match(d, /it\.$/, d);
+});
+
+test("a cut never stops on a phrase opened by a subordinating word (INCIDENTS #868)", () => {
+  // The live Samoa Joe description ended «…showcase their full capabilities following years spent.» —
+  // the lead's first sentence is longer than the limit and has no comma, so the word cut left half a clause.
+  const lead = "Samoa Joe asserted that the move to AEW will grant Austin Creed and Kofi a genuine opportunity to showcase their full capabilities following years spent in WWE. Joe, who achieved major success in Tony Khan's promotion, noted that fans will witness unprecedented style variety.";
+  const d = metaDescription(lead);
+  assert.ok(d.length <= 158, `${d.length}: ${d}`);
+  assert.ok(!/\b(?:following|including|during|after|before|despite)\s+\w+(?:\s+\w+)?\.?$/.test(d), d);
+  assert.match(d, /capabilities\.$/, d);
+});

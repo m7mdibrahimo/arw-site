@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Says 50 Cent Completely Outdid the Street Fighter Cast With Insane Theme Park Flex"
 slug: "cody-rhodes-says-50-cent-completely-outdid-the-street-fighter-cast-with-insane-t"
-description: "Cody Rhodes recently shared that 50 Cent completely overshadowed the rest of the cast during the production of the upcoming Street Fighter movie by renting."
+description: "Cody Rhodes recently shared that 50 Cent completely overshadowed the rest of the cast during the production of the upcoming Street Fighter movie."
 federation: WWE
 date: 2026-10-12T14:28:20.000Z
 source_id: 802254117

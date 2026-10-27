@@ -1,7 +1,7 @@
 ---
 title: "Samoa Joe Discusses the New Level in AEW"
 slug: "samoa-joe-discusses-the-new-level-in-aew"
-description: "Samoa Joe asserted that the move to AEW will grant Austin Creed and Kofi a genuine opportunity to showcase their full capabilities following years spent."
+description: "Samoa Joe believes the move to AEW will give Austin Creed and Kofi a real chance to show their full potential after years in WWE."
 federation: AEW
 date: 2026-10-27T13:30:00.000Z
 source_id: 2729068135

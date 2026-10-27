@@ -700,3 +700,20 @@ test('INCIDENTS #850: feminine dual adjectives and unbacked headline dates are b
   assert.ok(!codes('نتائج عرض GCW Drive-In (25 أكتوبر 2026) فوز كافرون', 'أقام اتحاد GCW العرض يوم 25 أكتوبر في صالة').includes('title_date_not_in_body'));
   assert.ok(BLOCKING_QA_CODES.includes('title_date_not_in_body'));
 });
+
+test('a two-letter cut word blocks the story, while the real short words pass (INCIDENTS #868)', () => {
+  // «وأنا متحمس جدا لر إلى أين ستصل الأمور» — «لمعرفة» came out as «لر» (live story, 27-10)
+  const cut = checkArticle('سبيدبول مايك بيلي عن إيليا دراغونوف', 'قال إنه متحمس جدا لر إلى أين ستصل الأمور في الأشهر القادمة، وإن النزال كان جيدا.');
+  assert.ok(cut.some(i => i.code === 'truncated_word'));
+  assert.ok(BLOCKING_QA_CODES.includes('truncated_word'));
+  // the short words Arabic really has with ل/ب/ك/ف in front are not touched
+  const body = 'قال إنه لم يكن يتوقع ذلك، وله في المصارعة تاريخ طويل، وفي كل مرة كان يبكي بعد الخسارة، وبهذا الفوز عاد إلى القمة.';
+  assert.ok(!checkArticle('مصارع يتحدث عن مسيرته', body).some(i => i.code === 'truncated_word'));
+});
+
+test('«السعى» with ى is caught and fixed, «السعي» is fine (INCIDENTS #868)', () => {
+  const bad = checkArticle('سامي زين ينتقد العقلية', 'أوضح زين أن هذه العقلية قد تخلق شعورا بالتعاسة، متذكرا كيف كان مدربو NXT يكررون ضرورة السعى ليكون المصارع هو النجم التالي.');
+  assert.ok(bad.some(i => i.code === 'alif_maqsura_ya' || i.code === 'known_wrong'));
+  const good = checkArticle('سامي زين ينتقد العقلية', 'أوضح زين أن هذه العقلية قد تخلق شعورا بالتعاسة، متذكرا كيف كان مدربو NXT يكررون ضرورة السعي ليكون المصارع هو النجم التالي.');
+  assert.ok(!good.some(i => i.code === 'alif_maqsura_ya' || i.code === 'known_wrong'));
+});
