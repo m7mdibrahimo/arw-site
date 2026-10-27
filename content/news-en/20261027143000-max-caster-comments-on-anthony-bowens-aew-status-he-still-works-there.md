@@ -1,7 +1,7 @@
 ---
 title: "Max Caster Comments on Anthony Bowens' AEW Status: He Still Works There"
 slug: "max-caster-comments-on-anthony-bowens-aew-status-he-still-works-there"
-description: "Max Caster has commented on the AEW status of his former tag team partner Anthony Bowens. Earlier in October, reports indicated that both Bowens and Caster…"
+description: "Max Caster has commented on the AEW status of his former tag team partner Anthony Bowens."
 federation: AEW
 date: 2026-10-27T11:30:00.000Z
 source_id: 336002

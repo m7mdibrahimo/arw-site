@@ -1,7 +1,7 @@
 ---
 title: "Fans Accuse WWE of Using Green Screen for Solo Sikoa’s Promo on October 26 RAW"
 slug: "fans-accuse-wwe-of-using-green-screen-for-solo-sikoas-promo-on-october-26-raw"
-description: "Solo Sikoa delivered a promo during the October 26 episode of WWE RAW to send a warning to Royce Keys and mention The Bloodline, but fans quickly grew…"
+description: "Solo Sikoa delivered a promo during the October 26 episode of WWE RAW to send a warning to Royce Keys and mention The Bloodline."
 federation: WWE
 date: 2026-10-27T11:43:11.000Z
 source_id: 802260240

@@ -1,7 +1,7 @@
 ---
 title: "CM Punk Threatened Wrestlers During WWE Backstage Meeting Over Thefts"
 slug: "cm-punk-threatened-wrestlers-during-wwe-backstage-meeting-over-thefts"
-description: "Booker T recently discussed a time in WWE when wrestlers held a backstage meeting to deal with a series of thefts in the locker room. During an episode of…"
+description: "Booker T recalled a time in WWE when wrestlers held a backstage meeting to deal with a series of thefts in the locker room."
 federation: WWE
 date: 2026-10-27T11:49:34.000Z
 source_id: 802260221

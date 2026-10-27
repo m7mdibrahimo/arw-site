@@ -1,7 +1,7 @@
 ---
 title: "Sami Zayn Criticizes Wrestling Fans for Acting Like They Know Everything"
 slug: "sami-zayn-criticizes-wrestling-fans-for-acting-like-they-know-everything"
-description: "Sami Zayn recently discussed the disconnect between wrestling fans and performers, arguing that viewers often speak with absolute certainty about things…"
+description: "Sami Zayn discussed the disconnect between wrestling fans and performers, saying viewers often speak with certainty about things they cannot understand."
 federation: WWE
 date: 2026-10-27T11:43:38.000Z
 source_id: 802260234
