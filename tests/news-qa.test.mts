@@ -264,3 +264,18 @@ test("«تقارير صحفية» never becomes the interviewer, and the glossar
   // …while the stable and the show names keep their own glossary entries
   assert.equal(applyNamesGlossary("فاز فريق House of Torture في الحدث الرئيسي"), "فاز فريق هاوس أوف تورتشر في الحدث الرئيسي");
 });
+
+test("«للمشجعين/بحضور مشجعين» جمع سليم مش مثنى — المثنى «مشجعان» بس (جولة مراقبة ٢٧-١٠)", () => {
+  const t = "كودي رودز يتحدث عن المصارعة";
+  const body = "أكد كودي رودز أن المصارعة مميزة بالنسبة للمشجعين، وأن الحضور الجماهيري كان كبيرا.\n\nنص آخر طويل بما يكفي.";
+  assert.ok(!checkArticle(t, body).some((i) => i.code === "dual_noun"));
+  assert.ok(!checkArticle(t, "حضر مشجعين كثيرون إلى الصالة لمشاهدة العرض.\n\nنص آخر طويل بما يكفي.").some((i) => i.code === "dual_noun"));
+  assert.ok(checkArticle(t, "حضر مشجعان اثنان فقط إلى الصالة.\n\nنص آخر طويل بما يكفي.").some((i) => i.code === "dual_noun"));
+});
+
+test("«كبث» تتصلح لـ«بث»، واسم Steven Borden مش «أبناء الأسطورة ستينج» (INCIDENTS #872)", () => {
+  assert.equal(applyCorrections("وفي كبث مسجل لعرض Barclays Center"), "وفي بث مسجل لعرض Barclays Center");
+  assert.equal(applyCorrections("رغم تدخل داربي ألين وأبناء الأسطورة ستينج لإنقاذ الموقف"), "رغم تدخل داربي ألين وستيفن بوردن لإنقاذ الموقف");
+  // «أبناء الأسطورة ستينج» عن الابنَين الاتنين عربي سليم ومش بيتلمس
+  assert.equal(applyCorrections("تعرف الجمهور على أبناء الأسطورة ستينج خلال النزال"), "تعرف الجمهور على أبناء الأسطورة ستينج خلال النزال");
+});

@@ -4507,6 +4507,28 @@ test('recap pages get a searchable title and description with program, date and 
   assert.equal(own.description, 'وصف خاص بالمحرر.');
 });
 
+test('the newest recap of a weekly program says «الأخير» in its head title (INCIDENTS #872)', async () => {
+  const { createRequire } = await import('node:module');
+  const { recapSeoText } = createRequire(import.meta.url)('../lib/show-seo.cjs');
+  const f = { headline: 'ملخص عرض سماك داون 23.10.2026 مترجم', title: 'WWE Smackdown Highlights 23.10.2026', programName: 'WWE Smackdown', eventDate: '2026-10-23', day: '23 أكتوبر 2026', description: 'ملخص عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث.' };
+  const latest = recapSeoText({ ...f, isLatest: true });
+  assert.equal(latest.title, 'ملخص عرض سماك داون الأخير 23.10.2026 مترجم — WWE Smackdown');
+  assert.match(latest.description, /ملخص عرض سماك داون الأخير 23\.10\.2026/);
+  const older = recapSeoText({ ...f, isLatest: false });
+  assert.doesNotMatch(older.title, /الأخير/);
+  // a yearly event is never «the latest»
+  const yearly = recapSeoText({ headline: 'ملخص عرض موني ان ذا بانك 10.10.2026', title: 'WWE Money in the Bank Highlights (2026)', programName: 'WWE Money in the Bank', eventDate: '2026-10-10', day: '10 أكتوبر 2026', description: '', isLatest: true });
+  assert.doesNotMatch(yearly.title, /الأخير/);
+});
+
+test('recapSeo receives the library so a recap knows it is the program’s latest (INCIDENTS #872)', () => {
+  const tpl = fs.readFileSync(path.join(process.cwd(), '_includes/post-layout.njk'), 'utf-8');
+  assert.match(tpl, /recapSeo\(headline, title, program_name, event_date, description, collections\.library\)/);
+  const cfg = fs.readFileSync(path.join(process.cwd(), 'eleventy.config.js'), 'utf-8');
+  assert.match(cfg, /addNunjucksGlobal\("recapSeo", function\(headline, title, programName, eventDate, description, library\)/);
+  assert.match(cfg, /dayKey\(p\.latest\.eventDate\) === key/);
+});
+
 test('seo-new-shows: a page that left the live sitemap is not listed as a problem (INCIDENTS #433)', () => {
   const src = fs.readFileSync(path.join(process.cwd(), "scripts/seo-new-shows.ts"), 'utf-8');
   assert.match(src, /const recent = Object\.entries\(state\.pages\)\s*\.filter\(\(\[u, p\]\) => lastmodOf\.has\(u\)/);

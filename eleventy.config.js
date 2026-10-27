@@ -1838,9 +1838,22 @@ module.exports = function(eleventyConfig) {
     return require("./lib/show-seo.cjs").libraryNameForms({ arName: prog && prog.arName, name: prog && prog.name, aliases: (prog && prog.aliases) || [], year, count: (prog && prog.count) || 0, latest: prog && prog.latest && prog.latest.eventDate });
   });
 
-  eleventyConfig.addNunjucksGlobal("recapSeo", function(headline, title, programName, eventDate, description) {
+  eleventyConfig.addNunjucksGlobal("recapSeo", function(headline, title, programName, eventDate, description, library) {
     const day = eventDate ? formatDate(eventDate) : "";
-    return require("./lib/show-seo.cjs").recapSeoText({ headline, title, programName, eventDate, day, description });
+    // The recap of a program's newest show is searched as «ملخص عرض … الاخير» (Search Console: «ملخص عرض سماك داون
+    // الاخير مترجم» at 8.6 without the word in any recap's title): the recap knows it is the latest only when its
+    // event date is the newest show of the same program in the library (INCIDENTS #872). Head only.
+    const dayKey = function(v) {
+      if (!v) return "";
+      const d = v instanceof Date ? v : new Date(v);
+      return isNaN(d.getTime()) ? "" : d.toISOString().slice(0, 10);
+    };
+    const norm = function(s) { return String(s || "").replace(/\s+/g, " ").trim().toLowerCase(); };
+    const key = dayKey(eventDate);
+    const isLatest = !!key && (library || []).some(function(p) {
+      return p && p.latest && norm(p.name) === norm(programName) && dayKey(p.latest.eventDate) === key;
+    });
+    return require("./lib/show-seo.cjs").recapSeoText({ headline, title, programName, eventDate, day, description, isLatest });
   });
 
   // «عن العرض» on every show page (owner 2026-10-11, INCIDENTS #435): true sentences and facts from the show's own
