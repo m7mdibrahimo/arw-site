@@ -219,3 +219,9 @@ test("«ديقاز» and «إكسبرودير» are corrected automatically (INC
   assert.equal(applyCorrections("بطلة WWE للديقاز السابقة"), "بطلة WWE للديفاز السابقة");
   assert.equal(applyCorrections("ونفذ حركة إكسبرودير"), "ونفذ حركة إكسبلودر");
 });
+
+test("dual verb «يتحديان» and dual noun «كمالكين» are blocked (INCIDENTS #858)", () => {
+  assert.ok(checkArticle("بينتا وجيفون إيفانز يتحديان على بطولة WWE للفرق", "نص خبر طويل بما يكفي ليمر الفحص الأساسي بدون مشاكل أخرى.").some((i) => i.code === "dual_form"));
+  assert.ok(checkArticle("عنوان", "انضم مارشال كمالكين جزئيين جدد للنادي مع شريكه في العمل.").some((i) => i.code === "dual_form"));
+  assert.ok(!checkArticle("بينتا وجيفون إيفانز ضد ذا فيجن على بطولة WWE للفرق", "نص خبر طويل بما يكفي ليمر الفحص الأساسي بدون مشاكل أخرى.").some((i) => i.code === "dual_form"));
+});
