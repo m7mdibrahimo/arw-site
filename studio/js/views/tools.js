@@ -448,6 +448,8 @@ export async function renderReelsTool(page) {
 // the machine's current link (it changes on every start).
 const STEP_NAME = { subs: 'تفريغ', merge: 'دمج', download: 'تحميل', upload: 'رفع' };
 const STEP_NOW = { subs: 'بيفرّغ دلوقتي', merge: 'بيدمج دلوقتي', download: 'بيحمّل دلوقتي', upload: 'بيرفع دلوقتي' };
+// no merging on the server any more (owner 2026-10-27: «انا مش هدمج عليه خالص»): it downloads and subtitles only
+const MERGE = false;
 const QUALS = [{ key: 'all', name: '٤ جودات (٣٦٠ لـ ١٠٨٠)' }, { key: '720', name: '٧٢٠ بس' }];
 // download pages with a "are you human" box the machine can't tick by itself: they open in the server's browser
 const BROWSER_PAGE = /^https?:\/\/(?:www\.)?(?:vik1ngfile\.site|vikingfile\.com|vik1ngfile\.[a-z]+)\/f\//i;
@@ -482,7 +484,7 @@ const saveText = (name, text) => {
 
 export async function renderServerTool(page) {
   mount(page, html`<div class="wrap page-in">
-    ${header('سيرفر التفريغ', 'من هنا كل حاجة: تحط رابط العرض، وتاخد الترجمة الإنجليزي، وترفع العربي وتختار مكان اللوجو، وتلاقي العرض جاهز على درايف.')}
+    ${header('سيرفر التفريغ', 'من هنا كل حاجة: تحط رابط العرض، والسيرفر يحمّله ويفرّغه، وتاخد الترجمة الإنجليزي من هنا أو من جوجل درايف. لما يخلص كل العروض بيقفل نفسه.')}
     <div id="srv"><div class="loading-page"><div class="spinner"></div></div></div>
     <section class="panel srv-new">
       <header class="panel-head"><h2>${icon('plus')} عرض جديد</h2></header>
@@ -532,7 +534,7 @@ export async function renderServerTool(page) {
     row.className = 'srv-row';
     mount(row, html`<input class="input srv-url" type="text" inputmode="url" name="srv-show-link-${Date.now()}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore dir="ltr" placeholder="الزق رابط العرض هنا">
       <select class="input srv-lang">${LANGS.map(l => html`<option value="${l.key}">${l.name}</option>`)}</select>
-      <select class="input srv-qual">${QUALS.map(q => html`<option value="${q.key}">${q.name}</option>`)}</select>
+      ${MERGE ? html`<select class="input srv-qual">${QUALS.map(q => html`<option value="${q.key}">${q.name}</option>`)}</select>` : ''}
       <button class="icon-btn sm" title="شيل" type="button">${icon('x')}</button>`);
     row.querySelector('button').onclick = () => { if ($$('.srv-row').length > 1) row.remove(); else row.querySelector('.srv-url').value = ''; };
     $('#srv-rows').appendChild(row);
@@ -546,7 +548,7 @@ export async function renderServerTool(page) {
     const pages = $$('.srv-row .srv-url').some(i => BROWSER_PAGE.test(i.value.trim()));
     const browserUrl = last && last.status && last.status.browser;
     const win = pages && browserUrl ? window.open('about:blank', '_blank') : null;
-    const rows = $$('.srv-row').map(r => ({ r, url: r.querySelector('.srv-url').value.trim(), lang: r.querySelector('.srv-lang').value, qual: r.querySelector('.srv-qual').value })).filter(x => x.url);
+    const rows = $$('.srv-row').map(r => ({ r, url: r.querySelector('.srv-url').value.trim(), lang: r.querySelector('.srv-lang').value, qual: r.querySelector('.srv-qual') ? r.querySelector('.srv-qual').value : '720' })).filter(x => x.url);
     if (!rows.length) return toast('الزق رابط العرض الأول', 'error');
     const bad = rows.filter(x => !/^(https?:\/\/|magnet:\?)/i.test(x.url));
     if (bad.length) return toast(`فيه ${num(bad.length)} خانة مش رابط`, 'error');
@@ -637,9 +639,9 @@ export async function renderServerTool(page) {
           <p class="muted small">تقدر تفتح عرض تاني في متصفح السيرفر وتحمّله دلوقتي، هيتحمّل جنبهم.</p></div>` : ''}
       ${alive && (q.links || q.subs || q.merge) ? html`<p class="muted">مستني بعده: ${[q.links ? `${num(q.links)} رابط للتحميل` : '', q.subs ? `${num(q.subs)} فيديو للتفريغ` : '', q.merge ? `${num(q.merge)} ترجمة عربي للدمج` : ''].filter(Boolean).join(' — ')}</p>` : ''}
       ${d.pending && d.pending.length ? html`<p class="srv-wait">${icon('clock')} ${num(d.pending.length)} طلب مستني السيرفر ياخده${alive ? ' (خلال ثواني)' : ' (أول ما يشتغل)'}</p>` : ''}
-      <div class="srv-drive-opt"><label class="srv-host-on"><input type="checkbox" id="srv-subs-only" ${d.subsOnly ? 'checked' : ''}> تفريغ بس (من غير دمج)</label>
-        <span class="muted small">${d.subsOnly ? 'السيرفر بيحمّل العرض ويفرّغه، وبعد ما الترجمة الإنجليزي تخلص بيمسح الفيديو ويقفل. أسرع وأوفر.' : 'السيرفر بيحمّل ويفرّغ ويدمج لما ترفعله الترجمة العربي.'}</span></div>
-      ${alive && st.drive && !d.subsOnly ? html`<div class="srv-drive-opt"><label class="srv-host-on"><input type="checkbox" id="srv-drive-ready" ${st.driveReady !== false ? 'checked' : ''}> ارفع العروض الجاهزة على جوجل درايف</label>
+      ${MERGE ? html`<div class="srv-drive-opt"><label class="srv-host-on"><input type="checkbox" id="srv-subs-only" ${d.subsOnly ? 'checked' : ''}> تفريغ بس (من غير دمج)</label>
+        <span class="muted small">${d.subsOnly ? 'السيرفر بيحمّل العرض ويفرّغه، وبعد ما الترجمة الإنجليزي تخلص بيمسح الفيديو ويقفل. أسرع وأوفر.' : 'السيرفر بيحمّل ويفرّغ ويدمج لما ترفعله الترجمة العربي.'}</span></div>` : ''}
+      ${MERGE && alive && st.drive && !d.subsOnly ? html`<div class="srv-drive-opt"><label class="srv-host-on"><input type="checkbox" id="srv-drive-ready" ${st.driveReady !== false ? 'checked' : ''}> ارفع العروض الجاهزة على جوجل درايف</label>
           <span class="muted small">${st.driveReady !== false ? 'كل عرض جاهز بيترفع على درايف لوحده.' : 'مقفول: نزّل العروض الجاهزة بنفسك من «ملفات السيرفر» ← «4-الجاهز». الترجمات بس اللي بتترفع على درايف.'}</span></div>` : ''}
       ${st && st.drive === false && alive ? html`<div class="srv-drive"><p class="srv-err">${icon('alert')} السيرفر ده مش متوصل بجوجل درايف لسه (أول مرة على كل جهاز جديد).</p>
           <button class="btn btn-primary btn-sm" id="srv-drive-go">${icon('link')} وصّل درايف</button>
@@ -672,23 +674,23 @@ export async function renderServerTool(page) {
       return html`<div class="srv-show">
         <div class="srv-show-head"><b class="srv-name">${s.name}</b><span class="srv-tag ${stg.tone}">${stg.text}</span></div>
         ${busy ? html`<div class="srv-ctl-row">${controls(st, s.name)}</div>` : ''}
-        ${s.merged && !s.drive && st && st.driveReady !== false ? html`<div class="srv-arinfo">${icon('upload')} بيترفع على جوجل درايف${st && st.driveUp ? html`<b>— ${num(st.driveUp.pct)}٪</b><span class="muted">فاضل ${st.driveUp.eta.replace('h', ' ساعة ').replace('m', ' دقيقة ').replace(/\d+s$/, '').trim() || 'أقل من دقيقة'}</span>` : html`<span class="muted">— زرار درايف هيظهر أول ما يخلص</span>`}</div>
+        ${MERGE && s.merged && !s.drive && st && st.driveReady !== false ? html`<div class="srv-arinfo">${icon('upload')} بيترفع على جوجل درايف${st && st.driveUp ? html`<b>— ${num(st.driveUp.pct)}٪</b><span class="muted">فاضل ${st.driveUp.eta.replace('h', ' ساعة ').replace('m', ' دقيقة ').replace(/\d+s$/, '').trim() || 'أقل من دقيقة'}</span>` : html`<span class="muted">— زرار درايف هيظهر أول ما يخلص</span>`}</div>
           ${st && st.driveUp ? html`<div class="srv-bar srv-bar-sm"><div style="width:${Math.min(100, st.driveUp.pct)}%"></div></div>` : ''}` : ''}
-        ${s.stopped === 'merge' || (s.mergeFailed && s.ar && !busy) ? html`<div class="srv-actions"><button class="btn btn-sm btn-primary" data-remerge="${n}">${icon('refresh')} ابدأ الدمج تاني</button></div>` : ''}
+        ${MERGE && (s.stopped === 'merge' || (s.mergeFailed && s.ar && !busy)) ? html`<div class="srv-actions"><button class="btn btn-sm btn-primary" data-remerge="${n}">${icon('refresh')} ابدأ الدمج تاني</button></div>` : ''}
         ${busy && st.job.pct != null ? html`<div class="srv-bar srv-bar-sm"><div style="width:${Math.min(100, st.job.pct)}%"></div></div><small class="muted">فاضل ${leftText(st.job.left)}</small><br>` : ''}
-        ${s.ar && s.noVideo && !s.merged ? html`<p class="srv-wait">${icon('alert')} فيديو العرض ده مش على السيرفر. ارفعه من «ارفع من جهازك» (لفولدر «1-الفيديوهات») أو حط رابطه فوق، والدمج هيبدأ لوحده أول ما يوصل.</p>` : ''}
-        ${s.ar && !s.merged ? html`<div class="srv-arinfo">${icon('check')} الترجمة العربي: <b dir="ltr">${s.arFile || 'ملف الترجمة'}</b>${s.arLines ? html`<span class="muted"> — ${num(s.arLines)} جملة</span>` : ''}${!busy && alive && st.job && st.job.step === 'merge' ? html`<span class="muted"> — هيتدمج بعد «${st.job.name.slice(0, 40)}»</span>` : ''}</div>` : ''}
-        <small class="muted">لغة الصوت: ${LANG_NAME[s.lang] || 'إنجليزي'} — ${s.qual === '720' ? '٧٢٠ بس' : '٤ جودات'}${s.ar ? ` — اللوجو: ${(POSITIONS.find(p => p.pos === s.ar) || POSITIONS[0]).name}` : ''}</small>
+        ${MERGE && s.ar && s.noVideo && !s.merged ? html`<p class="srv-wait">${icon('alert')} فيديو العرض ده مش على السيرفر. ارفعه من «ارفع من جهازك» (لفولدر «1-الفيديوهات») أو حط رابطه فوق، والدمج هيبدأ لوحده أول ما يوصل.</p>` : ''}
+        ${MERGE && s.ar && !s.merged ? html`<div class="srv-arinfo">${icon('check')} الترجمة العربي: <b dir="ltr">${s.arFile || 'ملف الترجمة'}</b>${s.arLines ? html`<span class="muted"> — ${num(s.arLines)} جملة</span>` : ''}${!busy && alive && st.job && st.job.step === 'merge' ? html`<span class="muted"> — هيتدمج بعد «${st.job.name.slice(0, 40)}»</span>` : ''}</div>` : ''}
+        <small class="muted">لغة الصوت: ${LANG_NAME[s.lang] || 'إنجليزي'}${MERGE ? ` — ${s.qual === '720' ? '٧٢٠ بس' : '٤ جودات'}` : ''}${MERGE && s.ar ? ` — اللوجو: ${(POSITIONS.find(p => p.pos === s.ar) || POSITIONS[0]).name}` : ''}</small>
         <div class="srv-actions">
           ${s.en ? html`<button class="btn btn-sm" data-en="${n}">${icon('download')} نزّل الترجمة الإنجليزي</button>` : ''}
-          ${s.merged && s.drive ? html`<a class="btn btn-sm btn-primary" href="${s.drive}" target="_blank" rel="noopener">${icon('folder')} افتح العرض على درايف</a>` : ''}
-          ${!busy && (s.subsFailed || s.stopped === 'subs' || (s.en && !s.ar && !s.merged)) ? html`<button class="btn btn-sm ${s.stopped === 'subs' ? 'btn-primary' : 'btn-ghost'}" data-resub="${n}">${icon('refresh')} ${s.stopped === 'subs' ? 'ابدأ التفريغ تاني' : 'فرّغ تاني'}</button>` : ''}
-          ${!busy && s.ar && !s.merged ? html`<button class="btn btn-sm" data-unqueue="${n}">${icon('x')} إلغاء الدمج</button>` : ''}
+          ${MERGE && s.merged && s.drive ? html`<a class="btn btn-sm btn-primary" href="${s.drive}" target="_blank" rel="noopener">${icon('folder')} افتح العرض على درايف</a>` : ''}
+          ${!busy && (s.subsFailed || s.stopped === 'subs' || (s.en && !(MERGE && (s.ar || s.merged)))) ? html`<button class="btn btn-sm ${s.stopped === 'subs' ? 'btn-primary' : 'btn-ghost'}" data-resub="${n}">${icon('refresh')} ${s.stopped === 'subs' ? 'ابدأ التفريغ تاني' : 'فرّغ تاني'}</button>` : ''}
+          ${MERGE && !busy && s.ar && !s.merged ? html`<button class="btn btn-sm" data-unqueue="${n}">${icon('x')} إلغاء الدمج</button>` : ''}
           ${busy ? '' : html`<button class="btn btn-sm btn-ghost danger" data-clean="${n}">${icon('trash')} امسحه من السيرفر</button>`}
         </div>
         ${s.video && !s.en && !(alive && st.job && st.job.step === 'subs' && st.job.name === s.name) ? html`<div class="srv-langs srv-lang-pick"><span class="muted">لغة الصوت:</span>${LANGS.map(l => html`<button class="srv-q ${(s.lang || 'en') === l.key ? 'on' : ''}" data-setlang="${n}:${l.key}">${l.name}</button>`)}</div>` : ''}
-        ${!busy && !s.merged ? html`<div class="srv-langs srv-lang-pick"><span class="muted">الجودات:</span>${QUALS.map(q => html`<button class="srv-q ${(chosenQ[s.name] || s.qual || 'all') === q.key ? 'on' : ''}" data-setq="${n}:${q.key}">${q.name}</button>`)}</div>` : ''}
-        ${!busy && (s.en || s.ar || s.merged) ? html`<${s.ar || s.merged ? 'details' : 'div'} class="srv-ar">
+        ${MERGE && !busy && !s.merged ? html`<div class="srv-langs srv-lang-pick"><span class="muted">الجودات:</span>${QUALS.map(q => html`<button class="srv-q ${(chosenQ[s.name] || s.qual || 'all') === q.key ? 'on' : ''}" data-setq="${n}:${q.key}">${q.name}</button>`)}</div>` : ''}
+        ${MERGE && !busy && (s.en || s.ar || s.merged) ? html`<${s.ar || s.merged ? 'details' : 'div'} class="srv-ar">
           ${s.ar || s.merged ? html`<summary class="srv-ar-title">غيّر الترجمة العربي أو مكان اللوجو أو الجودات</summary>` : html`<div class="srv-ar-title">ارفع الترجمة العربي — واختار مكان اللوجو قبلها (والجودات فوق):</div>`}
           ${s.merged ? html`<div class="srv-langs">${QUALS.map(q => html`<button class="srv-q ${(chosenQ[s.name] || s.qual || 'all') === q.key ? 'on' : ''}" data-q="${n}:${q.key}">${q.name}</button>`)}</div>` : ''}
           <div class="srv-pos">${POSITIONS.map(p => html`<button class="srv-pos-btn ${(chosen[s.name] || s.ar || 1) === p.pos ? 'on' : ''}" data-pos="${n}:${p.pos}" title="${p.name}"><span class="srv-screen"><i class="${p.css}">لوجو</i></span>${p.name}</button>`)}</div>
