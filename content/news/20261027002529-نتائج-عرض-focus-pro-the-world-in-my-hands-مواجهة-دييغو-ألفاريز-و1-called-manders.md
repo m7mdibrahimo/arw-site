@@ -1,6 +1,6 @@
 ---
 federation: INDIE
-title: "نتائج عرض Focus Pro The World In My Hands: دييغو ألفاريز ضد 1 Called Manders"
+title: "نتائج عرض Focus Pro The World In My Hands: فوز دييغو ألفاريز في الحدث الرئيسي"
 date: 2026-10-27T00:25:29.000+03:00
 published_at: 2026-10-26T21:42:42.128Z
 source_id: 335949
