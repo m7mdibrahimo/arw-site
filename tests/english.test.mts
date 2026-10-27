@@ -245,6 +245,23 @@ test('the English sitemap lists only English pages really written, each with its
   }
 });
 
+test('INCIDENTS #869: a noindex page is left out of the English sitemap even when its meta sits far down the head', () => {
+  const site = fs.mkdtempSync(path.join(os.tmpdir(), 'en-sitemap-noindex-'));
+  fs.writeFileSync(path.join(site, 'index.html'), page('عرب راسلنج', '<p>الأخبار</p>'));
+  fs.mkdirSync(path.join(site, 'about'), { recursive: true });
+  fs.writeFileSync(path.join(site, 'about', 'index.html'), page('من نحن', '<p>عن الموقع</p>'));
+  // /account/ is noindex, but only after 9,000 letters of head — the old filter read the first 8,000 and let it through
+  fs.mkdirSync(path.join(site, 'account'), { recursive: true });
+  fs.writeFileSync(path.join(site, 'account', 'index.html'), page('حسابي', '<p>حسابك</p>').replace('</head>', `<meta name="x" content="${'a'.repeat(9000)}"><meta name="robots" content="noindex, follow"></head>`));
+  fs.mkdirSync(path.join(site, 'search'), { recursive: true });
+  fs.writeFileSync(path.join(site, 'search', 'index.html'), page('بحث', '<p>ابحث</p>').replace('</head>', '<meta name="robots" content="noindex, follow"></head>'));
+  mirror.buildEnglish(site, { content: {} });
+  const sm = fs.readFileSync(path.join(site, 'en', 'sitemap.xml'), 'utf8');
+  assert.match(sm, /\/en\/about\//);
+  assert.doesNotMatch(sm, /\/en\/account\//);
+  assert.doesNotMatch(sm, /\/en\/search\//);
+});
+
 test('INCIDENTS #438: the «عن العرض» section of a show page is translated', () => {
   const t = mirror.makeTranslator(dict, { 'عرض ديناميت 06.10.2026 مترجم': 'AEW Dynamite 06.10.2026' });
   const out = (s: string) => t(s);

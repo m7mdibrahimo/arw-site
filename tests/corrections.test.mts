@@ -963,7 +963,7 @@ test("«المحجاج» and «وأسن» are corrected and gone from the storie
 test("show names stay English and a report cannot conduct an interview (INCIDENTS #869)", async () => {
   const { applyCorrections, checkArticle } = await import("../scripts/news-qa");
   assert.equal(applyCorrections("في عرض موني إن ذا بانك 2026"), "في عرض Money in the Bank 2026");
-  assert.equal(applyCorrections("بعد مقابلة أجراها تقارير صحفية مطلعة مع الموهبة"), "بعد مقابلة أجراها صحفي متخصص مع الموهبة");
+  assert.equal(applyCorrections("بعد مقابلة صحفية أجراها تقارير صحفية مطلعة مع الموهبة"), "بعد تقرير صحفي عن الموهبة");
   assert.equal(applyCorrections("تحدث عن حضوره الفعاليات وأجوائها"), "تحدث عن حضوره فعاليات وأجوائها");
   const issues = checkArticle("خبر عادي", "وجاء هذا التفاعل بعد مقابلة أجراها تقارير صحفية مطلعة مع الموهبة.", []);
   assert.ok(issues.some((i) => i.code === "broken_attribution"), JSON.stringify(issues));

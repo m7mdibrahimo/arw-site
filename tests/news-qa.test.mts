@@ -249,3 +249,18 @@ test("لقب المصارع «رامبيج» بين علامتين مش اسم �
   assert.equal(applyCorrections("نجم UFC السابق كوينتون «رامبيج» جاكسون"), "نجم UFC السابق كوينتون «رامبيج» جاكسون");
   assert.equal(applyCorrections("شاهد عرض رامبيج الليلة"), "شاهد عرض AEW Rampage الليلة");
 });
+
+test("«تقارير صحفية» never becomes the interviewer, and the glossary knows Jimmy House (INCIDENTS #869)", async () => {
+  const { applyNamesGlossary } = await import("../scripts/fightful-watcher.ts");
+  const t = "داستن رودس: جيمي هاوس سيكون إضافة رائعة لغرفة ملابس AEW";
+  const bad = "وجاء هذا التفاعل بعد مقابلة صحفية أجراها تقارير صحفية مطلعة مع الموهبة السابقة في برنامج WWE I.D.";
+  assert.ok(checkArticle(t, bad).some((i) => i.code === "scrubbed_reporter_interviewer"));
+  const ok = "وجاء هذا التفاعل بعد تقرير صحفي عن الموهبة السابقة في برنامج WWE I.D.";
+  assert.ok(!checkArticle(t, bad.replace("مقابلة صحفية أجراها تقارير صحفية مطلعة مع", "تقرير صحفي عن")).some((i) => i.code === "scrubbed_reporter_interviewer"));
+  assert.ok(!applyCorrections(bad).includes("تقارير صحفية"));
+  assert.equal(applyCorrections(bad), ok);
+  // the English name left in the Arabic text is transliterated like every other wrestler
+  assert.equal(applyNamesGlossary("أبدى رودس حماسه لانضمام House إلى اتحاد AEW"), "أبدى رودس حماسه لانضمام هاوس إلى اتحاد AEW");
+  // …while the stable and the show names keep their own glossary entries
+  assert.equal(applyNamesGlossary("فاز فريق House of Torture في الحدث الرئيسي"), "فاز فريق هاوس أوف تورتشر في الحدث الرئيسي");
+});
