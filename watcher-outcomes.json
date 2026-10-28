@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2299197/wwe-nxt-october-27-2026-3-things-hated-loved-opinion-review": {
+  "reason": "المراجعة رفضته: نفس العنوان منشور قبل كده — الخبر مكرر",
+  "retry": false,
+  "at": "2026-10-28T05:59:04.407Z"
+ },
  "https://www.fightful.com/wrestling/update-on-bruce-prichards-expected-retirement": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-15T12:06:01.047Z"
- },
- "https://www.fightful.com/wrestling/celeste-bonin-kaitlyn-i-dont-really-want-to-get-back-in-the-ring": {
-  "reason": "المراجعة رفضته: همزات ساقطة في 5 مواضع — النص يحتاج إعادة ترجمة",
-  "retry": true,
-  "at": "2026-10-15T11:56:16.442Z"
  }
 }
