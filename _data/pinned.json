@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/wwe-nxt-27-10-2026/",
+    "title": "عرض ان اكس تي 27.10.2026 مترجم",
+    "subtitle": "WWE NXT 27.10.2026",
+    "image": "/content/images/bczogazjal4o1pyp.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ان اكس تي مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-raw-26-10-2026/",
     "title": "عرض الرو 26.10.2026 مترجم",
     "subtitle": "WWE RAW 26.10.2026",
@@ -119,16 +130,5 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض داينامايت مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-nxt-20-10-2026/",
-    "title": "عرض ان اكس تي 20.10.2026 مترجم",
-    "subtitle": "WWE NXT 20.10.2026",
-    "image": "/content/images/5pwi4yof3hgzravw.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ان اكس تي مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
