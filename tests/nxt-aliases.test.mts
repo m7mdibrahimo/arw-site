@@ -3,10 +3,19 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 
 // INCIDENTS #479: the NXT show pages carry the misspellings visitors type with «مترجم»
-test("NXT aliases include the misspelt + مترجم forms Google showed", () => {
+// INCIDENTS #923: …but never the adult-site searches («اكس ان اكس اكس» = xnxx) Google once showed them for
+test("NXT aliases keep the real misspellings and none of the adult-site searches", async () => {
   const src = readFileSync("eleventy.config.js", "utf8");
   const line = src.split("\n").find((l) => l.includes('"wwe-nxt": ['))!;
-  for (const q of ["اكس مترجم", "اكس ان اكس اكس مترجم", "اكس ان اكس مترجم"]) assert.ok(line.includes(`"${q}"`), q);
+  for (const q of ["ان اكس تي", "ان اكس تي مترجم", "NXT مترجم"]) assert.ok(line.includes(`"${q}"`), q);
+  const { isOffTopicQuery, weakQueries } = await import("../scripts/seo-new-shows.ts");
+  const aliases = [...line.matchAll(/"([^"]+)"/g)].map((m) => m[1]);
+  assert.deepEqual(aliases.filter(isOffTopicQuery), []);
+  assert.ok(!/"اكس ان اكس"|"اكس اكس ان"/.test(readFileSync("lib/show-seo.cjs", "utf8")));
+  for (const q of ["اكس ان اكس اكس مترجم", "اكس ان اكس عرب", "اكس مترجم", "xnxx"]) assert.ok(isOffTopicQuery(q), q);
+  for (const q of ["ان اكس تي مترجم", "عرض ان اكس اكس مترجم", "اكس تي", "عرض الرو الاخير", "nxt مترجم", "نيكي بيلا", "ساسكس"]) assert.ok(!isOffTopicQuery(q), q);
+  const qs = [{ q: "اكس ان اكس", impressions: 9, clicks: 0, position: 8 }, { q: "عرض ان اكس تي", impressions: 9, clicks: 0, position: 8 }];
+  assert.deepEqual(weakQueries(qs).map((x: any) => x.q), ["عرض ان اكس تي"]);
 });
 
 import { checkArticle } from "../scripts/news-qa.ts";

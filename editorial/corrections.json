@@ -8543,6 +8543,22 @@
       "wrong": "استحواذ سكاي دانس على",
       "right": "استحواذ باراماونت على",
       "note": "المصدر قال acquisition of Warner Bros. Discovery by Paramount — الفاعل باراماونت مش سكاي دانس (جولة المراقبة 2026-10-28)"
+    },
+    {
+      "wrong": "كالاويرا",
+      "right": "كالافيرا",
+      "note": "Calavera Jr. = «كالافيرا جونيور» زي باقي الأخبار، مش «كالاويرا» (خبر CMLL Día de Muertos — INCIDENTS #922)"
+    },
+    {
+      "wrong": "يوتياني",
+      "right": "يوتاني",
+      "note": "Yutani = «يوتاني» (خبر CMLL Día de Muertos — INCIDENTS #922)"
+    },
+    {
+      "wrong": "بيكيني[وُ]?\\s+ماجيا",
+      "right": "بيكينيو ماغيا",
+      "regex": true,
+      "note": "Pequeño Magia = «بيكينيو ماغيا»؛ «بيكيني» لوحدها كلمة تانية (INCIDENTS #922)"
     }
   ]
 }

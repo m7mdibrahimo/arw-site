@@ -4933,7 +4933,9 @@ test('showNameForms: a program\'s short English alias carries the date, and a no
 test('NXT episodes carry the common Arabic spellings of NXT in the VideoObject names (INCIDENTS #514)', async () => {
   const { showNameForms } = (await import('../lib/show-seo.cjs')).default;
   const forms = showNameForms({ headline: 'عرض ان اكس تي 06.10.2026 مترجم', title: 'WWE NXT 06.10.2026', programName: 'WWE NXT', eventDate: '2026-10-06', aliases: ['عرض ان اكس تي'], isShow: true });
-  for (const f of ['عرض ان اكس اكس مترجم', 'اكس ان تي مترجم', 'عرض اكس ان اكس مترجم', 'ان اكس تي 06.10.2026 مترجم']) assert.ok(forms.includes(f), f);
+  for (const f of ['عرض ان اكس اكس مترجم', 'اكس ان تي مترجم', 'ان اكس تي 06.10.2026 مترجم']) assert.ok(forms.includes(f), f);
+  // the adult-site forms are not NXT searches (INCIDENTS #923)
+  assert.ok(!forms.some((f: string) => /اكس ان اكس|اكس اكس ان/.test(f)));
 });
 
 // INCIDENTS #515: a recap carries «ملخص/نتائج …» and «<English> highlights» names; a weekly library page carries its newest episode's date
@@ -5123,10 +5125,11 @@ test('INCIDENTS #641: a yearly show\'s recap carries the show\'s own query words
   }
 });
 
-test('INCIDENTS #641: NXT misspellings «اكس اكس ان» are in the show\'s structured data', async () => {
+// INCIDENTS #923 reversed #641: «اكس اكس ان» is an adult-site search, never in a show's structured data
+test('INCIDENTS #641/#923: the adult-site «اكس اكس ان» form is not in the show\'s structured data', async () => {
   const { showNameForms } = (await import('../lib/show-seo.cjs')).default;
   const forms = showNameForms({ headline: 'عرض ان اكس تي مترجم', title: 'WWE NXT 13.10.2026', programName: 'WWE NXT', eventDate: '2026-10-13', aliases: ['عرض ان اكس تي'], isShow: true });
-  assert.ok(forms.includes('اكس اكس ان مترجم'));
+  assert.ok(!forms.includes('اكس اكس ان مترجم'));
 });
 
 test('INCIDENTS #642: a weekly program page answers the federation alone («عرض aew الاخير», «تي إن إيه»)', async () => {
@@ -5401,4 +5404,17 @@ test("a show's BroadcastEvent says when it ended and that it was scheduled (INCI
   assert.match(layout, /"endDate": \{\{ ldEnd \| jsonify \| safe \}\}/);
   const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
   assert.match(cfg, /addFilter\("eventEnd"/);
+});
+
+test("Spanish particles stay lowercase in Mexican show names, and CMLL names follow the glossary (INCIDENTS #922)", async () => {
+  const { fixEnglishNames } = await import("../scripts/english-edition.ts");
+  assert.equal(fixEnglishNames("Esfinge Wins Title at CMLL Dia De Muertos"), "Esfinge Wins Title at CMLL Día de Muertos");
+  assert.equal(fixEnglishNames("Calavera Jr. I Advances to Rey Del Inframundo Finals"), "Calavera Jr. I Advances to Rey del Inframundo Finals");
+  assert.equal(fixEnglishNames("Hijo Del Vikingo and Hijo De Fishman"), "Hijo del Vikingo and Hijo de Fishman");
+  const fs = await import("node:fs");
+  const names = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8"));
+  assert.equal(names["Calavera Jr. I"], "كالافيرا جونيور الأول");
+  assert.equal(names["Yutani"], "يوتاني");
+  const bad = fs.readdirSync("content/news").filter((f) => /كالاويرا|يوتياني|بيكيني\s+ماجيا/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
 });

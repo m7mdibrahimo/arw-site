@@ -321,3 +321,13 @@ test("a headline that names the wrestler after «نجم WWE» is not vague (live
   assert.ok(checkArticle("أسطورة WWE يعلن اعتزاله المصارعة نهائيا", body).some((i) => i.code === "vague_title_subject"));
   assert.ok(checkArticle("بطل WWE السابق يريد العودة إلى الحلبة", body).some((i) => i.code === "vague_title_subject"));
 });
+
+test("a headline that says a match type was set must name it (INCIDENTS #922)", async () => {
+  const { checkArticle, BLOCKING_QA_CODES, RETRYABLE_QA_CODES } = await import("../scripts/news-qa.ts");
+  const body = "اشتعلت العداوة بين تافيون هايتس ومايلز بورن خلال عرض WWE NXT الأخير، واستقرت العجلة على نزال Weapons Wild الذي يسمح باستخدام الأسلحة داخل الحلبة.";
+  const has = (t: string) => checkArticle(t, body, []).some((i: any) => i.code === "hidden_stipulation_title");
+  assert.ok(has("تافيون هايتس ومايلز بورن يحددان نوع مواجهتهم في عرض WWE NXT Halloween Havoc"));
+  assert.ok(has("الكشف عن شرط النزال بين هايتس وبورن"));
+  assert.ok(!has("نزال Weapons Wild بين تافيون هايتس ومايلز بورن في عرض WWE NXT Halloween Havoc"));
+  assert.ok(BLOCKING_QA_CODES.includes("hidden_stipulation_title") && RETRYABLE_QA_CODES.includes("hidden_stipulation_title"));
+});

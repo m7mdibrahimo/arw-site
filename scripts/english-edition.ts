@@ -262,6 +262,10 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   // Title Case capitalised the small word of an event name (INCIDENTS #441)
   [/\bBound For Glory\b/g, "Bound for Glory"],
   [/\bsyX\b/g, "Syx"],
+  // Spanish particles stay lowercase in Mexican show and wrestler names: «CMLL Dia De Muertos» (INCIDENTS #922)
+  [/\bD[ií]a De Muertos\b/g, "Día de Muertos"],
+  [/\bRey Del Inframundo\b/g, "Rey del Inframundo"],
+  [/\bHijo D(e|el) (?=[A-Z])/g, "Hijo d$1 "],
   // the wrestler is «Nikkita Lyons» (the writer wrote «Nikkito»)
   [/\bNikkito Lyons\b/g, "Nikkita Lyons"],
   // the 2026 film is «Street Fighter»; the source dropped the «er» (INCIDENTS #589)

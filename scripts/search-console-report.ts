@@ -8,6 +8,7 @@ import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 import matter from "gray-matter";
+import { isOffTopicQuery } from "./seo-new-shows";
 
 const OUT_DIR = path.join(process.cwd(), "seo");
 const SCOPE = "https://www.googleapis.com/auth/webmasters.readonly";
@@ -165,7 +166,7 @@ async function main() {
   const allBest: Record<string, any> = {};
   for (const row of queryPages) if (!allBest[row.keys[0]] || row.impressions > allBest[row.keys[0]].impressions) allBest[row.keys[0]] = row;
   const opportunities = queries
-    .filter((q: any) => q.impressions >= 40 && q.position > 1.4)
+    .filter((q: any) => q.impressions >= 40 && q.position > 1.4 && !isOffTopicQuery(q.keys[0]))
     .map((q: any) => ({ query: q.keys[0], impressions: q.impressions, clicks: q.clicks, position: q.position, page: allBest[q.keys[0]]?.keys[1] || "", score: q.impressions * (q.position - 1) }))
     .sort((a: any, b: any) => b.score - a.score)
     .slice(0, 40);
