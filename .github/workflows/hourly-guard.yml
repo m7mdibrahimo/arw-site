@@ -120,6 +120,8 @@ jobs:
       - name: اللفة الساعية
         id: round
         continue-on-error: true
+        # حاجز أخير لو السكربت نفسه زنق: الـjob مهلته ١٢٠، والبوابة + البناء + الدفع محتاجين ~٨
+        timeout-minutes: 75
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ARW_GUARD_MODEL: ${{ vars.ARW_GUARD_MODEL }}

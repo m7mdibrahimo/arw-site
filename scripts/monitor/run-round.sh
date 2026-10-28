@@ -92,11 +92,21 @@ run_with_timeout() {
   return $rc
 }
 
+# المهلة للفة كلها، مش لكل موديل: موديل بيفشل قرب آخر مهلته كان بيدّي اللي بعده ساعة
+# جديدة، فاللفة وصلت ١١٩ دقيقة والـjob اتقتل قبل البوابة والدفع (2026-10-28).
+DEADLINE=$((START + TIMEOUT_MIN * 60))
+
 for M in "${MODELS[@]}"; do
-  log "محاولة بالموديل: $M"
+  LEFT=$((DEADLINE - $(date +%s)))
+  if [ "$LEFT" -lt 300 ]; then
+    log "ميزانية اللفة (${TIMEOUT_MIN} دقيقة) خلصت — مش بجرّب $M"
+    [ "$CODE" -eq 0 ] || CODE=124
+    break
+  fi
+  log "محاولة بالموديل: $M (باقي $((LEFT / 60)) دقيقة)"
   # --auto       : يوافق على الصلاحيات غير الممنوعة (الممنوعات في ملف الوكيل)
   # --standalone : سيرفر خاص — مطلوب على سيرفرات CI
-  run_with_timeout "$((TIMEOUT_MIN * 60))" \
+  run_with_timeout "$LEFT" \
     "$CLI" run \
     --agent "$AGENT" \
     --auto \
@@ -111,7 +121,7 @@ for M in "${MODELS[@]}"; do
   fi
   # ١٢٤ = المهلة خلصت. مفيش فايدة من موديل تاني (هياخد مهلة كاملة كمان) — بنقف.
   if [ "$CODE" -eq 124 ]; then
-    log "الموديل $M عدّى المهلة (${TIMEOUT_MIN} دقيقة) — مش بجرّب غيره"
+    log "الموديل $M خلّص ميزانية اللفة (${TIMEOUT_MIN} دقيقة) — مش بجرّب غيره"
     break
   fi
   log "فشل الموديل $M (كود $CODE) — بجرّب اللي بعده"
