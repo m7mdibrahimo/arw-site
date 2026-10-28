@@ -1,6 +1,6 @@
 ---
 federation: AEW
-title: "الإعلان عن نزال جديد في عرض AEW Grand Slam France"
+title: "الإعلان عن نزال ساموا جو ضد جاك بيري في عرض AEW Grand Slam France"
 date: 2026-10-04T04:40:12.000+03:00
 published_at: 2026-10-04T01:43:07.590Z
 source_id: 802250967
@@ -20,6 +20,7 @@ tags:
   - كازوتشيكا أوكادا
 image: /content/images/38wkzr1854sywsc7.jpg
 layout: post-layout.njk
+permalink: "/news/الإعلان-عن-نزال-جديد-في-عرض-aew-grand-slam-france/index.html"
 ---
 أضاف اتحاد AEW نزالا هاما إلى جدول مواجهات عرض AEW Grand Slam France، حيث أعلن خلال عرض AEW Collision عن مواجهة ستجمع بين ساموا جو وجاك بيري في نزال تأهيلي لبطولة Clockwork Carnage. سيقام النزال في صالة أديداس أرينا في العاصمة الفرنسية باريس، وسيحجز الفائز مقعده في نزال بطولة AEW العالمية المرتقب في عرض WrestleDream.
 

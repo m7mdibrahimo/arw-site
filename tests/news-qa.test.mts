@@ -331,3 +331,15 @@ test("a headline that says a match type was set must name it (INCIDENTS #922)", 
   assert.ok(!has("نزال Weapons Wild بين تافيون هايتس ومايلز بورن في عرض WWE NXT Halloween Havoc"));
   assert.ok(BLOCKING_QA_CODES.includes("hidden_stipulation_title") && RETRYABLE_QA_CODES.includes("hidden_stipulation_title"));
 });
+
+test("an announced or advertised match must be named in the headline (INCIDENTS #930)", async () => {
+  const { checkArticle, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, applyCorrections } = await import("../scripts/news-qa.ts");
+  const body = "ظهرت إعلانات محلية تجمع بين غونتر وفين بالور على المواد الترويجية عند أحد مداخل ملعب الرياض سيزون، ورغم عدم صدور إعلان رسمي حتى الآن من إدارة WWE فإن النزال قريب.";
+  const has = (t: string) => checkArticle(t, body, []).some((i: any) => i.code === "hidden_match_title");
+  assert.ok(has("إشارة محتملة لمواجهة جديدة أخرى في عرض WWE Crown Jewel 2026"));
+  assert.ok(has("الإعلان عن نزال جديد في عرض AEW Grand Slam France"));
+  assert.ok(!has("إعلانات محلية تشير إلى نزال غونتر ضد فين بالور في عرض WWE Crown Jewel 2026"));
+  assert.ok(!has("إيه جيه ستايلز يكشف عن الشرط الوحيد الذي قد يعيده من الاعتزال لخوض مواجهة جديدة"));
+  assert.ok(BLOCKING_QA_CODES.includes("hidden_match_title") && RETRYABLE_QA_CODES.includes("hidden_match_title"));
+  assert.equal(applyCorrections("رغم عدم صدور إعلان رسمى ترك اتحاد WWE NXT في موقف صعب"), "رغم عدم صدور إعلان رسمي ترك عرض WWE NXT في موقف صعب");
+});
