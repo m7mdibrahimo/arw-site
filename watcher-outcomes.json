@@ -1,28 +1,28 @@
 {
  "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-october-27-2026": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
   "retry": true,
-  "at": "2026-10-28T01:29:37.479Z"
+  "at": "2026-10-28T01:34:52.286Z"
  },
  "https://www.fightful.com/wrestling/tavion-heights-vs-myles-borne-in-weapons-wild-match-added-to-nxt-halloween-havoc": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-10-28T01:27:27.517Z"
+  "at": "2026-10-28T01:33:49.771Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-signs-sumo-football-athlete-hidetora-hanada": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T01:27:12.766Z"
+  "at": "2026-10-28T01:33:36.256Z"
  },
  "https://www.fightful.com/wrestling/amazing-red-thinks-he-can-bring-aj-styles-out-of-retirement-wrestling-is-such-a-hard-thing-to-leave": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T01:27:12.497Z"
+  "at": "2026-10-28T01:33:36.027Z"
  },
  "https://www.fightful.com/wrestling/cj-perry-rusev-expecting-their-first-child": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T01:27:11.352Z"
+  "at": "2026-10-28T01:33:35.024Z"
  },
  "https://www.wrestlinginc.com/2299130/wwe-nxt-october-27-2026-results": {
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
