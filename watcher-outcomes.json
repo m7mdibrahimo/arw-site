@@ -1,38 +1,43 @@
 {
+ "https://www.fightful.com/wrestling/robert-stone-predicts-kendal-grey-and-kelani-jordan-will-be-future-wrestlemania-main-eventers": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-28T15:16:18.948Z"
+ },
  "https://www.fightful.com/wrestling/jimmy-house-says-he-learned-how-to-work-heel-in-wwe-evolve": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T15:10:08.633Z"
+  "at": "2026-10-28T15:14:19.594Z"
  },
  "https://www.fightful.com/wrestling/former-wwe-co-president-speaks-about-2019-crown-jewel-plane-incident-i-think-it-was-exaggerated-to-some-degree": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T15:10:07.853Z"
+  "at": "2026-10-28T15:14:18.717Z"
  },
  "https://www.fightful.com/wrestling/update-on-bruce-prichards-expected-retirement": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T15:10:07.204Z"
+  "at": "2026-10-28T15:14:17.979Z"
  },
  "https://www.fightful.com/wrestling/watch-danhausens-very-nice-very-evil-halloween-special": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T15:10:06.863Z"
+  "at": "2026-10-28T15:14:17.592Z"
  },
  "https://www.fightful.com/wrestling/report-bruce-prichard-expected-to-retire-as-executive-director-after-wrestlemania-season": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T15:10:06.460Z"
+  "at": "2026-10-28T15:14:17.131Z"
  },
  "https://www.fightful.com/wrestling/dr-wagner-jr-in-attendance-to-watch-wagner-brothers-compete-on-10-27-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T15:10:06.178Z"
+  "at": "2026-10-28T15:14:16.800Z"
  },
  "https://www.fightful.com/wrestling/tavion-heights-vs-myles-borne-in-weapons-wild-match-added-to-nxt-halloween-havoc": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T15:10:05.952Z"
+  "at": "2026-10-28T15:14:16.538Z"
  },
  "https://www.fightful.com/wrestling/orange-cassidy-recalls-breaking-orbital-bone-as-his-worst-injury-vomiting-blood-as-a-result": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-15T13:32:28.566Z"
- },
- "https://www.ringsidenews.com/tna-impact-spoiler-taping-results-october-13": {
-  "reason": "المراجعة رفضته: اسم مصارع في المتن غير موجود في المصدر: Agent Zero، تقرير نتائج بلا أي نتيجة",
-  "retry": true,
-  "at": "2026-10-15T13:11:42.376Z"
  }
 }
