@@ -4388,5 +4388,24 @@
     "needsReview": true,
     "tiktok": true,
     "reviewNotified": true
+  },
+  "20261028095954-wwe-nxt-27-10-2026": {
+    "publishedAt": 1793173453883,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": false,
+    "title": "عرض ان اكس تي 27.10.2026 مترجم",
+    "lastAttempt": 1793173533875,
+    "errors": {
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_story",
+      "tiktok"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
