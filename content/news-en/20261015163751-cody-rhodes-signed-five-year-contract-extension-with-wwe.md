@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Signed Five-Year Contract Extension With WWE"
 slug: "cody-rhodes-signed-five-year-contract-extension-with-wwe"
-description: "Cody Rhodes recently signed a five-year contract extension with WWE. While making media rounds to promote the upcoming Street Fighter movie."
+description: "Cody Rhodes recently signed a five-year contract extension with WWE."
 federation: WWE
 date: 2026-10-15T13:37:51.000Z
 source_id: 334044

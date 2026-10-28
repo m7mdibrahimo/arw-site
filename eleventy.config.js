@@ -1832,10 +1832,10 @@ module.exports = function(eleventyConfig) {
   });
 
   // The episode's own date spellings for the VideoObject alternateName (INCIDENTS #466)
-  eleventyConfig.addNunjucksGlobal("showNameForms", function(headline, title, programName, eventDate, aliases, isShow, archive) {
+  eleventyConfig.addNunjucksGlobal("showNameForms", function(headline, title, programName, eventDate, aliases, isShow, archive, isLatest) {
     // each spelling once: the spelling variants repeated «عرض سماك داون» and the «2026» forms in a show's alternateName/keywords
     const seen = new Set(aliases || []);
-    return require("./lib/show-seo.cjs").showNameForms({ headline, title, programName, eventDate, aliases, isShow, archive }).filter((n) => !seen.has(n) && seen.add(n));
+    return require("./lib/show-seo.cjs").showNameForms({ headline, title, programName, eventDate, aliases, isShow, archive, isLatest }).filter((n) => !seen.has(n) && seen.add(n));
   });
 
   // The people a news headline names, for the story's structured data only (mentions — nothing on the page)

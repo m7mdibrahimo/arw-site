@@ -67,6 +67,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - Donald Trump is the sitting US President (2025–2029): never write "former President Trump" or "the previous administration" about him unless the source says so explicitly about his first term (INCIDENTS #609).
 - Event and team names are written exactly as the promotion writes them: "Bound for Glory" (lowercase "for"), "Syx" (never "syX"), "Wrestlepalooza".
 - Headline: never name a promotion the story itself does not say the person joined or signed with (a source headline «Signs With AAA/WWE» when the text says only AAA becomes «Signs With AAA»; INCIDENTS #853).
+- Headline: name the person the story is about ("George Iceman Drawing Outside Interest as TNA Contract Nears Expiration", "Report: Bruce Prichard to Leave WWE Role After WrestleMania 43"). Never a vague stand-in ("TNA Talent…", "A Backstage Figure…") and never "Major Update on X's Future" or "X's Future" without saying what happens (round 2026-10-28).
 - Headline: Title Case with the small words (a, an, the, and, but, or, for, at, by, in, of, on, to, as, vs) in lowercase unless first or last (the code enforces this), clear and specific, under 90 characters, no clickbait, no emoji, no all caps, grammatically correct, never a copied slang line or a curse word (say what happened: "Logan Paul Praises WWE's Women's Roster", not a quote with a swear word).
 - Body: a strong lead sentence, then short paragraphs (2-3 sentences each), AP style, American English. A results report lists every result the source lists, one per line, in the form "Winner def. Loser" with the stipulation or title if the source gives one. An announced card or lineup (matches not yet wrestled) is written "A vs. B", never "def." (INCIDENTS #679).
 - If the source reports something (an exclusive, a backstage report), attribute it${outlet ? `: "according to ${outlet}"` : ""}.
@@ -79,6 +80,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - One name per person in the headline and the body: use the name the source's text uses (the body says "Miro", so the headline says "Miro", not "Rusev"; a source headline may carry the old ring name) (round 2026-10-27).
 - No markdown headings (#), no bold, no lists with bullets, no links in the text.
 - Times and time zones: keep each start time in the zone the source gives (8 pm local time in Mexico, 10 pm ET); never relabel a local time as ET (INCIDENTS #808).
+- Dates and weekdays: a specific date takes "on" plus the date and the day of the week the source names ("on Wednesday, November 4"), never the indefinite "on a Wednesday"; a weekday with no date is "on Wednesday" (round 2026-10-28).
 - Never add a "what's next" sentence the source does not have: no "will return to action at …", "will face … for the … Championship", "is set to appear at …" unless the SOURCE says it (a story about how Sami Zayn chose his name ended with a Crown Jewel match the source never mentioned, INCIDENTS #862). The story ends where the source ends.
 - Never mention Arab Wrestling, translation, AI, or that this is a rewrite.
 - English letters only: never leave a word or a sentence in another script (Cyrillic, Greek, Hebrew, Chinese, Japanese, Korean) and never a translation arrow «->» or a pair of a foreign line and its English line. A quote is English only (INCIDENTS #872).`;
@@ -141,6 +143,11 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   if (/\b(?:his|her|their|its|the|a|an|to|of|for|with|and)\s*&(?!\w)|&\s*$/i.test(title)) issues.push("dangling ampersand in title");
   // a curse word or a quoted slang line as the headline (INCIDENTS #425: «These Female Wrestler On Some Other Shit»)
   if (/\b(shit\w*|fuck\w*|bitch\w*|asshole|bullshit|damn|dick|pussy)\b/i.test(title)) issues.push("profanity in title");
+  // a headline that hides whose story it is: «TNA Talent Drawing Outside Interest as Contract Nears Expiration» (George
+  // Iceman) and «Major Update on Bruce Prichard's WWE Future» reached the English site live on 2026-10-27/28. The rule
+  // asks for the person's name; this makes a vague one a retry instead of a published headline.
+  if (/^(?:major|big|huge|latest)\s+(?:update|news)\s+on\b/i.test(title)
+    || /^(?:WWE|AEW|TNA|NJPW|ROH|MLW|AAA|CMLL|GCW|UFC)\s+(?:talent|star|superstar|wrestler|personality|name)\s+(?:drawing|draws|signs|says|speaks|returns|teases|reveals|wants|is|set|reportedly|in|on|to|for|at)\b/i.test(title)) issues.push("vague headline");
   // an article glued to the next word by a hyphen («on the-ring» for «in the ring», INCIDENTS #829); «state-of-the-art» is fine
   if (/(?<![\w-])(?:the|an?)-[a-z]+/i.test(body.replace(/<?https?:\/\/\S+/g, " "))) issues.push("article glued to the next word with a hyphen");
   // padded: far longer than the source

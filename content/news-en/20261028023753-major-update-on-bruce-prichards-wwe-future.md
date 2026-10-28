@@ -1,7 +1,7 @@
 ---
-title: "Major Update on Bruce Prichard's WWE Future"
+title: "Report: Bruce Prichard to Leave WWE Role After WrestleMania 43"
 slug: "major-update-on-bruce-prichards-wwe-future"
-description: "A major backstage figure in WWE is reportedly set to step down next year after WrestleMania 43."
+description: "PWInsider reports that Bruce Prichard will step down from his WWE creative role after WrestleMania 43 and move into consulting."
 federation: WWE
 date: 2026-10-27T23:37:53.000Z
 source_id: 2114269765

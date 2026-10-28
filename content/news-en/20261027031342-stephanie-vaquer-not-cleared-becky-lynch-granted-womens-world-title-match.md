@@ -1,7 +1,7 @@
 ---
 title: "Stephanie Vaquer Not Cleared, Becky Lynch Granted Women's World Title Match"
 slug: "stephanie-vaquer-not-cleared-becky-lynch-granted-womens-world-title-match"
-description: "Stephanie Vaquer is unable to compete. During the October 27 episode of WWE Raw."
+description: "Adam Pearce announced that Stephanie Vaquer has not been cleared for her scheduled match against Becky Lynch."
 federation: WWE
 date: 2026-10-27T00:13:42.000Z
 source_id: 335969

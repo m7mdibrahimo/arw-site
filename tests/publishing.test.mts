@@ -4590,8 +4590,10 @@ test('show description says «موعد العرض» and MITB has alternate spell
 test("show pages carry the program's other names on the VideoObject too (INCIDENTS #446)", () => {
   const layout = fs.readFileSync("_includes/post-layout.njk", "utf8");
   const video = layout.slice(layout.indexOf('"@type": "VideoObject"'));
-  assert.match(video.slice(0, 1800), /ldAbout\.aliases/);
-  assert.match(video.slice(0, 1800), /"alternateName":.*ldNames/);
+  // the window must reach past the «alternateName» line: the comments above it pushed the key further than a tight slice
+  const head = video.slice(0, 2000);
+  assert.match(head, /ldAbout\.aliases/);
+  assert.match(head, /"alternateName":.*ldNames/);
 });
 
 // Round 2026-10-27: the top queries of the round («عرض الرو اليوم», «عرض سماك داون», «تحميل عرض سماك داون») were

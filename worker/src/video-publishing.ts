@@ -67,21 +67,54 @@ export async function publishFacebookVideo(options: {
   } catch { return { ok: false, ambiguous: true, error: 'تعذر تأكيد حالة فيديو فيسبوك؛ راجع المنصة.' }; }
 }
 
+/** Does a reel's caption (or video title) belong to this show? Facebook trims long captions, and a headline edited after
+ *  publishing no longer matches character for character, so a trimmed caption that is a prefix of the title counts too. */
+export function reelCaptionMatches(description: unknown, title: string): boolean {
+  const clean = (v: unknown) => String(v ?? "").replace(/\s+/g, " ").replace(/[«»"'“”]/g, "").trim().toLowerCase();
+  const d = clean(description), t = clean(title);
+  if (!d || !t) return false;
+  return d === t || d.startsWith(t) || (d.length >= 30 && t.startsWith(d));
+}
+
+/** The page's reels and videos, looked up by caption: a reel published before state.reviewIds existed has no id to ask
+ *  about, and the reels edge alone does not always return it (INCIDENTS #906). Newest match wins. */
+export async function findReelByTitle(pageId: string, token: string, title: string): Promise<string | undefined> {
+  const found: Array<{ id: string; created: number }> = [];
+  for (const edge of ['video_reels', 'videos']) {
+    try {
+      const list: any = await (await fetch(`${API}/${pageId}/${edge}?fields=id,description,title,created_time&limit=50&access_token=${encodeURIComponent(token)}`)).json();
+      if (!Array.isArray(list.data)) continue;
+      for (const v of list.data) {
+        if (reelCaptionMatches(v.description ?? v.title, title)) found.push({ id: String(v.id), created: Date.parse(v.created_time) || 0 });
+      }
+    } catch { /* try the other edge */ }
+  }
+  found.sort((a, b) => b.created - a.created);
+  return found[0]?.id;
+}
+
 /** A reel whose publish step ran out of time: find it on the page (its video id, or the reel whose caption starts with
  *  the show's title) and say whether Facebook published it — so the reel monitor settles it instead of failing every run */
 export async function facebookReelState(o: { pageId: string; token: string; id?: string; title?: string }): Promise<'published' | 'failed' | 'pending' | 'missing'> {
-  let id = o.id;
-  if (!id && o.title) {
-    const list: any = await (await fetch(`${API}/${o.pageId}/video_reels?fields=id,description&limit=25&access_token=${encodeURIComponent(o.token)}`)).json();
-    if (!Array.isArray(list.data)) throw new Error(list.error?.message || 'reels list unavailable');
-    id = list.data.find((v: any) => String(v.description || '').trim().startsWith(o.title!.trim()))?.id;
+  const statusOf = async (id: string): Promise<'published' | 'failed' | 'pending' | null> => {
+    const data: any = await (await fetch(`${API}/${id}?fields=status&access_token=${encodeURIComponent(o.token)}`)).json();
+    if (data.error) return null; // an id the page no longer knows must not be reported as «pending»
+    if (data.status?.publishing_phase?.status === 'complete' || data.status?.video_status === 'ready') return 'published';
+    if (data.status?.publishing_phase?.status === 'error' || data.status?.video_status === 'error') return 'failed';
+    return 'pending';
+  };
+  if (o.id) {
+    const state = await statusOf(o.id);
+    if (state) return state;
   }
-  if (!id) return 'missing';
-  const data: any = await (await fetch(`${API}/${id}?fields=status&access_token=${encodeURIComponent(o.token)}`)).json();
-  if (data.error) throw new Error(data.error.message || 'status unavailable');
-  if (data.status?.publishing_phase?.status === 'complete' || data.status?.video_status === 'ready') return 'published';
-  if (data.status?.publishing_phase?.status === 'error' || data.status?.video_status === 'error') return 'failed';
-  return 'pending';
+  if (o.title) {
+    const found = await findReelByTitle(o.pageId, o.token, o.title);
+    if (found && found !== o.id) {
+      const state = await statusOf(found);
+      if (state) return state;
+    }
+  }
+  return 'missing';
 }
 
 export async function publishInstagramVideo(options: {

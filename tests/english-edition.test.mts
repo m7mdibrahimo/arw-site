@@ -30,6 +30,10 @@ test('an English edition that reads like the source, has Arabic, or talks about 
   assert.deepEqual(checkEnglish({ ...good, body: good.body + '\n\n> "The update honors his late dog Pharaoh, who appeared at many WWE events and became a fan favorite on social media."' }, input), []);
   assert.ok(checkEnglish({ ...good, body: '## Heading\n\n' + good.body }, input).includes('markdown formatting'));
   assert.ok(checkEnglish({ ...good, title: 'Short' }, input).includes('title length'));
+  // a headline that hides whose story it is (live 2026-10-27/28 on /en/)
+  assert.ok(checkEnglish({ ...good, title: 'TNA Talent Drawing Outside Interest as Contract Nears Expiration' }, input).includes('vague headline'));
+  assert.ok(checkEnglish({ ...good, title: "Major Update on Bruce Prichard's WWE Future" }, input).includes('vague headline'));
+  assert.ok(!checkEnglish({ ...good, title: 'TNA Star Joe Hendry Signs New Contract' }, input).includes('vague headline'));
 });
 
 test('the edition is saved once per source story, with its embeds, English tags and the Arabic story\'s picture', () => {

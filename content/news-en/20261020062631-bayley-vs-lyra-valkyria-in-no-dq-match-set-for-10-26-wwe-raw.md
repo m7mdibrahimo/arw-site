@@ -1,7 +1,7 @@
 ---
 title: "Bayley vs. Lyra Valkyria in No DQ Match Set for 10/26 WWE Raw"
 slug: "bayley-vs-lyra-valkyria-in-no-dq-match-set-for-10-26-wwe-raw"
-description: "The rivalry between Bayley and Lyra Valkyria is set to escalate. During the latest episode of WWE Monday Night Raw."
+description: "The rivalry between Bayley and Lyra Valkyria is set to escalate. During the latest episode of WWE Monday Night Raw, a singles match took place between Lyra Valkyria and Lola Vice."
 federation: WWE
 date: 2026-10-20T03:26:31.000Z
 source_id: 334769

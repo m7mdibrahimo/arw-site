@@ -150,6 +150,29 @@ export function applyResults(existing: Entry | undefined, results: Record<string
 export function needsReviewAlert(entry: Entry | undefined): boolean {
   return !!entry?.needsReview && !entry.reviewNotified;
 }
+// A Facebook reel left «accepted, not confirmed» used to fail the workflow every 15 minutes until someone cleared it by
+// hand (INCIDENTS #901). The Worker now looks it up: published → done; failed → retried as a normal failure;
+// still pending or not found → kept for review (never re-posted blind), and only counted as a failure after 2 hours.
+export const REVIEW_GRACE_MS = 2 * 60 * 60_000;
+export function settleReview(entry: Entry, platform: Platform, state: string, now = Date.now()): { entry: Entry; failing: boolean } {
+  const next: Entry = { ...entry, errors: { ...entry.errors }, reviewIds: { ...entry.reviewIds } };
+  const review = new Set(next.reviewPlatforms || []);
+  // «missing» after the 2-hour grace means Facebook never got this reel (an id lost before reviewIds existed, a caption
+  // edited afterwards): settle it as a normal failure so the platform goes back to the retry queue — keeping it «for
+  // review» failed the workflow forever and the reel never got posted (INCIDENTS #906).
+  const graced = now - (entry.lastAttempt || 0) > REVIEW_GRACE_MS;
+  if (state === 'published' || state === 'failed' || (state === 'missing' && graced)) {
+    review.delete(platform);
+    delete next.reviewIds![platform];
+    if (state === 'published') { next[platform] = true; next.publishedAt ||= now; delete next.errors![platform]; }
+    else if (state === 'failed') next.errors![platform] = 'فشلت معالجة الريل عند فيسبوك؛ ستتم إعادة المحاولة.';
+    else next.errors![platform] = 'لم يظهر الريل على صفحة فيسبوك خلال ساعتين؛ ستتم إعادة المحاولة.';
+  }
+  next.reviewPlatforms = [...review];
+  next.needsReview = review.size > 0;
+  if (!Object.keys(next.reviewIds!).length) delete next.reviewIds;
+  return { entry: next, failing: next.needsReview && graced };
+}
 export async function main() {
   const root = process.cwd();
   const stateFile = path.join(root, '_data/show-reel-state.json');

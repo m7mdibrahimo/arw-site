@@ -33,7 +33,8 @@ test("no published English story keeps a description cut with «…»", () => {
   for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".md"))) {
     const d = String(matter(fs.readFileSync(path.join(dir, f), "utf-8")).data.description || "");
     if (!d) continue;
-    if (d.endsWith("…") || d.length > 160 || d.length < 40) bad.push(`${f}: ${d.slice(-40)}`);
+    // a complete sentence may run to ~185 letters rather than stop in a four-word fragment (live 2026-10-27)
+    if (d.endsWith("…") || d.length > 185 || d.length < 40) bad.push(`${f}: ${d.slice(-40)}`);
   }
   assert.deepEqual(bad, []);
 });
@@ -120,6 +121,31 @@ test("no published description ends on a bare time phrase", () => {
   for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".md"))) {
     const d = String(matter(fs.readFileSync(path.join(dir, f), "utf-8")).data.description || "");
     if (TIME_ONLY.test(d)) bad.push(`${f}: ${d}`);
+  }
+  assert.deepEqual(bad, []);
+});
+
+// Live 2026-10-27 (Elio LeFleur, /en/news/elio-lefleur-returns-to-in-ring-action/): the cut left a second sentence
+// with only a subordinate clause — «…has made his return to the ring. Prior to the October 27th episode of WWE NXT
+// on The CW.» — so the line under the title said nothing. The clause is now completed or dropped.
+test("a description never ends on a subordinate clause whose main clause was cut", () => {
+  const elio = metaDescription("Elio LeFleur has made his return to the ring. Prior to the October 27th episode of WWE NXT on The CW, dark matches were held for the fans in attendance at the Performance Center. One of these bouts featured the in-ring return of the former Men's Speed Champion.");
+  assert.equal(elio, "Elio LeFleur has made his return to the ring. Prior to the October 27th episode of WWE NXT on The CW, dark matches were held for the fans in attendance at the Performance Center.");
+  // a subordinate clause that cannot be completed inside the limit goes, and the sentence before it ends the line
+  const arabic = metaDescription("عاد المصارع إيليو ليفلور إلى الحلبة مجددا. وقبل انطلاق عرض WWE NXT على قناة The CW، أقيمت نزالات غير مذاعة للجماهير الحاضرة في مركز الأداء التابع لاتحاد WWE.");
+  assert.ok(!/\.\s*(?:وقبل|قبل|بعد)$/.test(arabic), arabic);
+  // a real sentence that opens with a subordinator and has its main clause after the comma is not touched
+  const kept = metaDescription("After the match ended, Rhodes said the crowd in Chicago was the loudest he had heard in years, and he thanked them for staying to the end of the night.");
+  assert.match(kept, /^After the match ended, Rhodes said/);
+});
+
+test("no published description ends on a lone subordinate clause", () => {
+  const dirs = [path.join(process.cwd(), "content", "news-en")];
+  const FRAGMENT = /\. (?:Prior to|Before|After|While|When|As|During|Following|Despite|Because|Since|If|Although|Though|According to) [^,.]*\.$/;
+  const bad: string[] = [];
+  for (const dir of dirs) for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".md"))) {
+    const d = String(matter(fs.readFileSync(path.join(dir, f), "utf-8")).data.description || "");
+    if (FRAGMENT.test(d)) bad.push(`${f}: ${d}`);
   }
   assert.deepEqual(bad, []);
 });

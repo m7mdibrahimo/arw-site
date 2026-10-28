@@ -145,3 +145,16 @@ test('a special under another program carries its own English name in the head',
   assert.match(showSeoText({ headline: 'عرض الرو 26.10.2026 مترجم', title: 'RAW 26.10.2026', programName: 'WWE RAW', eventDate: '2026-10-26', day: '26 أكتوبر 2026', isLatest: true }).title, /— WWE RAW$/);
   assert.match(showSeoText({ headline: 'عرض روود تو ديستركشن 10.09.2026 مترجم', title: 'NJPW Road To Destruction 10.09.2026', programName: 'NJPW Road To Destruction 2026', eventDate: '2026-09-10', day: '10 سبتمبر 2026', isLatest: false }).title, /— NJPW Road To Destruction 2026$/);
 });
+
+// INCIDENTS #907: every episode of a program carried «الرو الاخير» / «اخر عرض الرو» in its alternateName, so a dozen
+// pages claimed the same query and the newest episode sat at 8.3 for «عرض الرو الاخير» (Search Console, 2026-10-28).
+test('only the newest episode of a program claims «الاخير» spellings', () => {
+  const mk = (isLatest: boolean) => showNameForms({ headline: 'عرض الرو 19.10.2026 مترجم', title: 'WWE Raw 19.10.2026', programName: 'WWE Raw', eventDate: '2026-10-19', aliases: ['عرض الرو'], isShow: true, archive: false, isLatest });
+  const latest = mk(true), older = mk(false);
+  assert.ok(latest.some((n: string) => /(?:^|\s)(?:ال)?[آأ]?خير(?:\s|$)/.test(n)));
+  assert.ok(!older.some((n: string) => /(?:^|\s)(?:ال)?[آأ]?خير(?:\s|$)/.test(n)));
+  assert.ok(!older.some((n: string) => /^[آأ]?خر\s/.test(n)));
+  // the episode's own date spellings stay on it
+  assert.ok(older.includes('عرض الرو 19 أكتوبر 2026'), 'its own date');
+  assert.ok(older.some((n: string) => n === 'عرض الرو مترجم'), 'its own plain name');
+});

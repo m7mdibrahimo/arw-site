@@ -1,7 +1,7 @@
 ---
 title: "Elio LeFleur Returns to In-Ring Action"
 slug: "elio-lefleur-returns-to-in-ring-action"
-description: "Elio LeFleur has made his return to the ring. Prior to the October 27th episode of WWE NXT on The CW."
+description: "Elio LeFleur has made his return to the ring. Prior to the October 27th episode of WWE NXT on The CW, dark matches were held for the fans in attendance at the Performance Center."
 federation: WWE
 date: 2026-10-28T00:07:13.000Z
 source_id: 336167

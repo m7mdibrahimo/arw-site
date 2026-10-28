@@ -1,7 +1,7 @@
 ---
 title: "La Jarochita Suffers Left Wrist Injury, Will Be Out of Action 3-4 Months"
 slug: "la-jarochita-suffers-left-wrist-injury-will-be-out-of-action-3-4-months"
-description: "La Jarochita is currently sidelined with a left wrist injury. During the October 14th episode of CMLL Informa."
+description: "La Jarochita is currently sidelined with a left wrist injury."
 federation: INDIE
 date: 2026-10-15T03:56:14.000Z
 source_id: 334006

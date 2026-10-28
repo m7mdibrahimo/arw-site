@@ -1,7 +1,7 @@
 ---
 title: "Update on Jim Ross Following Hospitalization"
 slug: "update-on-jim-ross-following-hospitalization"
-description: "An update has been provided regarding the health of Jim Ross. Following a second brain procedure."
+description: "An update has been provided regarding the health of Jim Ross. Following a second brain procedure, Jim Ross had to return to hospital care due to low oxygen levels."
 federation: INDIE
 date: 2026-10-22T18:14:41.000Z
 source_id: 335145
