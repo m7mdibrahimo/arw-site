@@ -2,6 +2,36 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "عاد إلى الأحداث",
+      "right": "عاد إلى الحلبة",
+      "note": "«returned to in-ring action» بتتكتب «عاد إلى الحلبة» مش «عاد إلى الأحداث» (خبر تشانينج ستاكس لورينزو، جولة 2026-10-28)"
+    },
+    {
+      "wrong": "إلى الأحداث من جديد",
+      "right": "إلى الحلبة من جديد",
+      "note": "نفس الغلطة بصيغة تانية (جولة 2026-10-28)"
+    },
+    {
+      "wrong": "نزال سلح بسلاح",
+      "right": "نزال أسلحة مفتوحة",
+      "note": "Weapons Wild Match بتتكتب «نزال أسلحة مفتوحة» — «سلح بسلاح» مش عربي مفهوم (خبر NXT Halloween Havoc، جولة 2026-10-28)"
+    },
+    {
+      "wrong": "أوريان كونورز",
+      "right": "أوريا كونورز",
+      "note": "اسم Uriah Connors في المسرد «أوريا كونورز» (جولة 2026-10-28)"
+    },
+    {
+      "wrong": "تشارلي دمبسي",
+      "right": "تشارلي ديمبسي",
+      "note": "اسم Charlie Dempsey بصيغة واحدة «تشارلي ديمبسي» زي باقي الأخبار (جولة 2026-10-28)"
+    },
+    {
+      "wrong": "برايت رايت",
+      "right": "بيرثرايت",
+      "note": "اسم فريق BirthRight في المسرد «بيرثرايت» — «برايت رايت» صيغة تانية لنفس الفريق (جولة 2026-10-28)"
+    },
+    {
       "wrong": "رايكل رودريغيز",
       "right": "راكيل رودريغيز",
       "note": "اسم Raquel Rodriguez اتكتب «رايكل» في خبر بولي راي (INCIDENTS #911)"

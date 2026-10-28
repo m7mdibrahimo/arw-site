@@ -62,6 +62,7 @@ export function englishStyleRules(sourceUrl: string): string {
   const outlet = outletOf(sourceUrl);
   return `- Write it in your own words. Do not copy the source's sentences: rephrase everything except direct quotes.
 - Direct quotes stay exactly as the source has them, each in its own markdown blockquote line starting with > and the quote in straight double quotes.
+- A quoted word or phrase that is part of your own sentence ("He described the match as a "do or die" situation") stays inline in that sentence: only a whole quoted statement gets its own blockquote line. Never break a sentence in two with a quote, an embed or a line break — «He described the encounter as a» + blockquote + «situation.» left a story on the site with a paragraph reading «situation. Despite…» (2026-10-28), and the code now blocks a paragraph that starts with a lowercase letter.
 - Never add a word in square brackets inside a quote («[which]», «[sic]»): a quote keeps the source's own words. If the source's quote is broken there, close it with an ellipsis (…) or leave that part out.
 - Punctuation: a show or event name that ends with «!» or «?» («TNA iMPACT!») is never followed by a full stop — the name's own mark ends the sentence, never «TNA iMPACT!.»; never two full stops in a row.
 - Donald Trump is the sitting US President (2025–2029): never write "former President Trump" or "the previous administration" about him unless the source says so explicitly about his first term (INCIDENTS #609).
@@ -150,6 +151,10 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
     || /^(?:WWE|AEW|TNA|NJPW|ROH|MLW|AAA|CMLL|GCW|UFC)\s+(?:talent|star|superstar|wrestler|personality|name)\s+(?:drawing|draws|signs|says|speaks|returns|teases|reveals|wants|is|set|reportedly|in|on|to|for|at)\b/i.test(title)) issues.push("vague headline");
   // an article glued to the next word by a hyphen («on the-ring» for «in the ring», INCIDENTS #829); «state-of-the-art» is fine
   if (/(?<![\w-])(?:the|an?)-[a-z]+/i.test(body.replace(/<?https?:\/\/\S+/g, " "))) issues.push("article glued to the next word with a hyphen");
+  // a line that starts with a lowercase letter is a broken sentence (its subject was dropped): the Weapons Wild
+  // story shipped « victory can only be achieved by pinfall or submission inside the ring.» (2026-10-28)
+  const bl = body.split(/\n/);
+  if (bl.some((l, i) => l.trim() && !SKIP_LINE.test(l) && !/^\s*(?:<)?https?:\/\//.test(l) && (i === 0 || !bl[i - 1].trim()) && /^[a-z]/.test(l.trim()))) issues.push("line starts lowercase (broken sentence)");
   // padded: far longer than the source
   const prose = body.replace(/<https?:\/\/[^>]+>/g, "").replace(/\s+/g, " ").length;
   if (i.sourceText.length < 800 && prose > i.sourceText.length * 3.5) issues.push("padded");
@@ -368,6 +373,21 @@ export function fixPronounCase(text: string): string {
     return line.split(QUOTED).map((part, k) => (k % 2 ? part : part.replace(AFTER_PREP, (_m, prep: string, subj: string) => `${prep} ${OBJECT_FORM[subj]}`))).join("");
   }).join("\n");
 }
+/** A line that starts with a lowercase letter lost its subject: the Weapons Wild story had
+ *  « victory can only be achieved by pinfall or submission inside the ring.» as a paragraph of its own
+ *  (2026-10-28). A sentence starts with a capital, so the first letter is raised — the sentence stays exactly
+ *  the source's fact, it only stops looking broken. Quotes, embeds and markdown lines are left alone. */
+export function fixLineStarts(text: string): string {
+  const lines = String(text).split("\n");
+  return lines.map((line, i) => {
+    if (!line.trim() || SKIP_LINE.test(line) || /^\s*(?:<)?https?:\/\//.test(line) || isEmbedLine(line)) return line;
+    // only the opening line of a paragraph: a phrase mid-paragraph keeps its own letter
+    if (i > 0 && lines[i - 1].trim()) return line;
+    const t = line.trim();
+    if (/^[a-z]/.test(t)) return t[0].toUpperCase() + t.slice(1);
+    return line;
+  }).join("\n");
+}
 /** The English prose mistakes still in a story: «a experimental», «I’re», «with he» (empty = fine) */
 export function englishGrammarSlips(text: string): string[] {
   return aToAn(fixIre(fixPronounCase(text))) === String(text) ? [] : ["a/an, I're or pronoun-case typo"];
@@ -378,7 +398,8 @@ export function fixEnglishNames(text: string): string {
 
 export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEWS_EN_DIR): string {
   // a literal «\n» typed as text (INCIDENTS #736: «…limited schedule. \n\n> "Shingo…») is a line break
-  e = { ...e, title: fixEnglishNames(normalizeEnglishTitle(e.title)), body: fixEnglishNames(e.body.replace(/[ \t]*\\n/g, "\n")) };
+  // the broken-sentence fix is for the whole story only: a single phrase handed to fixEnglishNames keeps its letter
+  e = { ...e, title: fixEnglishNames(normalizeEnglishTitle(e.title)), body: fixLineStarts(fixEnglishNames(e.body.replace(/[ \t]*\\n/g, "\n"))) };
   e.title = restoreTitleAcronyms(e.title, e.body);
   e.title = restoreTitleTheNames(e.title, e.body);
   fs.mkdirSync(dir, { recursive: true });

@@ -4996,8 +4996,13 @@ test('the episode VideoObject carries its program names as keywords too (INCIDEN
 
 test("a program's library page structured data carries dateModified and its names as keywords (INCIDENTS #655)", () => {
   const tpl = fs.readFileSync('pages/library-program.njk', 'utf8');
-  assert.match(tpl, /"dateModified": \{\{ lp\.prog\.latest\.eventDate \| jsonify \| safe \}\}/);
+  // the date is when the newest episode was added (the sitemap's lastmod), so the two never disagree
+  assert.match(tpl, /"dateModified": \{\{ \(lp\.prog\.latest\.addedDate or lp\.prog\.latest\.eventDate\) \| jsonify \| safe \}\}/);
   assert.match(tpl, /"keywords": "\{% for a in libKw %\}/);
+  // round 2026-10-28: a one-show section Google never crawled gets a described, counted ItemList
+  assert.match(tpl, /"description": "\{\{ pageDesc \| escape \}\}"/);
+  assert.match(tpl, /"numberOfItems": \{\{ lp\.items \| length \}\}/);
+  assert.match(tpl, /"itemListOrder": "https:\/\/schema\.org\/ItemListOrderDescending"/);
 });
 
 test("a one-off program's library page title leads with the year, as visitors search it (INCIDENTS #547)", async () => {

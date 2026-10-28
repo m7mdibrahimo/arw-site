@@ -1122,3 +1122,36 @@ test("the shadda'd writer word «كتّاب» is corrected to «كتاب» (INCI
   }
   assert.deepEqual(bad, []);
 });
+
+// Round 2026-10-28: a story said «عاد إلى الأحداث» (returned to events), «نزال سلح بسلاح» (Weapons
+// Wild read word by word), «أوريان كونورز» and «تشارلي دمبسي» — four spellings/phrasings that reached
+// the site twice. They are correction rules now, so the same words can never be published again.
+test("return to the ring, Weapons Wild and two name spellings are corrected (round 2026-10-28)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("عاد تشانينج لورينزو إلى الأحداث من جديد"), "عاد تشانينج لورينزو إلى الحلبة من جديد");
+  assert.equal(applyCorrections("عاد إلى الأحداث بعد غياب طويل"), "عاد إلى الحلبة بعد غياب طويل");
+  assert.equal(applyCorrections("يتواجهان في نزال سلح بسلاح"), "يتواجهان في نزال أسلحة مفتوحة");
+  assert.equal(applyCorrections("أوريان كونورز وتشارلي دمبسي"), "أوريا كونورز وتشارلي ديمبسي");
+  assert.equal(applyCorrections("فريق برايت رايت المكون من ليكسيس كينغ"), "فريق بيرثرايت المكون من ليكسيس كينغ");
+  const glossary = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8")) as Record<string, string>;
+  assert.equal(glossary["Charlie Dempsey"], "تشارلي ديمبسي");
+  assert.equal(glossary["Uriah Connors"], "أوريا كونورز");
+  assert.equal(glossary["Shiloh Hill"], "شايلو هيل");
+  const bad: string[] = [];
+  for (const f of fs.readdirSync("content/news").filter((x) => x.endsWith(".md"))) {
+    const text = fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/gm, "");
+    if (/عاد إلى الأحداث|إلى الأحداث من جديد|نزال سلح بسلاح|أوريان كونورز|تشارلي دمبسي|برايت رايت/.test(text)) bad.push(f);
+  }
+  assert.deepEqual(bad, []);
+});
+
+// The copy editor must look for these mistakes itself (the rules above only catch the exact wording).
+test("the proofreading prompt names the new mistakes to look for (round 2026-10-28)", async () => {
+  const { proofreadPrompt } = await import("../scripts/editorial");
+  const prompt = proofreadPrompt({ title: "عنوان", body: "متن", tags: [] } as any, "t", "s", "", []);
+  assert.match(prompt, /«عاد إلى الحلبة» مش «عاد إلى الأحداث»/);
+  assert.match(prompt, /Weapons Wild Match ← «نزال أسلحة مفتوحة»/);
+  assert.match(prompt, /اسم مصارع مختلط عربي وإنجليزي/);
+  const guide = fs.readFileSync("editorial/style-guide.md", "utf-8");
+  assert.match(guide, /«شيلوه Hill»/);
+});

@@ -342,3 +342,22 @@ test('a filler left in a transcribed quote is dropped (INCIDENTS #895)', async (
     '"I totally agree with you. I feel like I\'ve been thinking that also."',
   );
 });
+
+// Round 2026-10-28: the Weapons Wild story (Wrestling Inc source) shipped a paragraph with no subject —
+// « victory can only be achieved by pinfall or submission inside the ring.» The cause was a dropped first
+// word; a deterministic fix raises the first letter and the check now refuses such a line, so a broken
+// sentence can no longer reach the English site.
+test("a line that starts with a lowercase letter is a broken sentence and is fixed", async () => {
+  const { fixLineStarts, fixEnglishNames, checkEnglish } = await import('../scripts/english-edition.ts');
+  assert.equal(fixLineStarts('The wheel was spun.\n\n victory can only be achieved by pinfall or submission.'), 'The wheel was spun.\n\nVictory can only be achieved by pinfall or submission.');
+  assert.equal(fixLineStarts('victory can only be achieved inside the ring.'), 'Victory can only be achieved inside the ring.');
+  // quotes, embeds and markdown lines keep their own first letter
+  assert.equal(fixLineStarts('> "he said it was over"'), '> "he said it was over"');
+  assert.equal(fixLineStarts('<https://arab-wrestling.com/shows/wwe-raw-26-10-2026/>'), '<https://arab-wrestling.com/shows/wwe-raw-26-10-2026/>');
+  // a whole story goes through the fix when it is saved; a single phrase handed to fixEnglishNames keeps its letter
+  assert.equal(fixEnglishNames('a fan favorite'), 'a fan favorite');
+  const input = { sourceId: 1, sourceUrl: 'https://www.wrestlinginc.com/x/', sourceTitle: 'Tavion Heights And Myles Borne Set For Weapons Wild Match', sourceText: 'Tavion Heights and Myles Borne will meet in a Weapons Wild Match at Halloween Havoc. Security stepped in before a brawl.', arabicTitle: 'عنوان', arabicBody: 'متن الخبر', federation: 'WWE', date: '2026-10-28T01:36:05.000Z', image: '/content/images/x.jpg', filePrefix: '20261028043605' };
+  const good = { title: 'Tavion Heights and Myles Borne Set for Weapons Wild Match', body: 'Tavion Heights and Myles Borne will meet in a Weapons Wild Match at NXT Halloween Havoc. Security stepped in before a brawl could start inside the ring.' + ' The match was made official for the October 31 event.' };
+  assert.deepEqual(checkEnglish(good, input as any), []);
+  assert.ok(checkEnglish({ ...good, body: good.body + '\n\n victory can only be achieved by pinfall or submission.' }, input as any).includes('line starts lowercase (broken sentence)'));
+});

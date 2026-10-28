@@ -16,10 +16,7 @@ image: /content/images/vue12n1e6w1kgnbu.jpg
 ---
 WWE has officially confirmed that the World Heavyweight Championship match between Roman Reigns and LA Knight will serve as the opening contest at tomorrow's Money in the Bank event. This bout marks the second singles encounter between the two rivals during their ongoing feud.
 
-Regarding the high-stakes matchup, Knight recently noted that the opportunity represents a critical moment for his career. He described the encounter as a
-> "do or die"
-
-situation. Despite the significant fan support behind Knight, Seth Rollins has expressed skepticism regarding his chances of defeating the champion.
+Regarding the high-stakes matchup, Knight recently noted that the opportunity represents a critical moment for his career. He described the encounter as a "do or die" situation. Despite the significant fan support behind Knight, Seth Rollins has expressed skepticism regarding his chances of defeating the champion.
 
 https://www.youtube.com/watch?v=B-IEYPKYg6s
 

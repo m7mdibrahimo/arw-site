@@ -19,4 +19,4 @@ The tension between Tavion Heights and Myles Borne reached a new high during the
 
 Security personnel stepped in to prevent a physical brawl, but the situation took a theatrical turn when Danhausen made his presence felt. The Halloween Havoc host instructed his druids to spin the wheel to determine the rules for their upcoming contest, leaving the fate of both superstars to chance.
 
- victory can only be achieved by pinfall or submission inside the ring. WWE NXT Halloween Havoc will take place live from the WWE Performance Center on Saturday, October 31.
+In a Weapons Wild Match, victory can only be achieved by pinfall or submission inside the ring. WWE NXT Halloween Havoc will take place live from the WWE Performance Center on Saturday, October 31.

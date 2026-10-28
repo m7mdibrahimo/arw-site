@@ -26,6 +26,16 @@ test("a name is matched whole, never inside a longer word", () => {
   assert.deepEqual(personMentions("باكستيج الفريق أصبح أقوى هذا الأسبوع"), []);
 });
 
+// A second name glued to the conjunction «و» was never matched, so the story about both of them listed
+// only the first person: «تافيون هايتس ومايلز بورن يحددان…» had Tavion Heights and no Myles Borne.
+test("a name after the conjunction «و» or «ف» is still a person (round 2026-10-28)", () => {
+  const m = personMentions("تافيون هايتس ومايلز بورن يحددان نوع مواجهتهم في عرض WWE NXT Halloween Havoc");
+  assert.deepEqual(m.map((x: { en: string }) => x.en).sort(), ["Myles Borne", "Tavion Heights"]);
+  assert.deepEqual(personMentions("أعلن الخبر فكودي رودز سيشارك في العرض").map((x: { en: string }) => x.en), ["Cody Rhodes"]);
+  // a «و» inside a word is not a conjunction: «رو» + name must not match
+  assert.deepEqual(personMentions("قال إن الفريق رومايلز بورن سيعود"), []);
+});
+
 // The English pages of name stories had no `mentions` at all: Search Console showed
 // «liv morgan boy meets world» (778 impressions) on position 8.9 with nobody listed as a Person.
 test("an English headline's people are listed in English (round 2026-10-27)", () => {
