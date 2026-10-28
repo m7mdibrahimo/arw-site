@@ -1,5 +1,15 @@
 [
   {
+    "id": 4694805965,
+    "link": "https://www.wrestlinginc.com/2299173/wwe-announces-john-cena-nxt-return/",
+    "date": "Wed, 28 Oct 2026 01:54:37 +0000",
+    "date_gmt": "2026-10-28T01:54:37.000Z",
+    "title": {
+      "rendered": "WWE Announces John Cena's NXT Return"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-announces-john-cenas-nxt-return/l-intro-1793152381.jpg"
+  },
+  {
     "id": 4788156235,
     "link": "https://www.wrestlinginc.com/2299167/dusty-rhodes-tag-team-classic-finals-set-wednesday-edition-wwe-nxt/",
     "date": "Wed, 28 Oct 2026 01:37:06 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Chris Sabin Discusses His Goals Following AEW Signing"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/chris-sabin-discusses-his-goals-following-aew-signing/l-intro-1793098978.jpg"
-  },
-  {
-    "id": 3917014662,
-    "link": "https://www.wrestlinginc.com/2298311/tna-matt-jeff-hardy-maybe-take-time-off/",
-    "date": "Tue, 27 Oct 2026 15:10:38 +0000",
-    "date_gmt": "2026-10-27T15:10:38.000Z",
-    "title": {
-      "rendered": "TNA's Matt Hardy On Jeff Hardy: 'I Think He's Maybe Going To Take Some Time Off'"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-matt-jeff-hardy-maybe-take-time-off/l-intro-1793114609.jpg"
   }
 ]
