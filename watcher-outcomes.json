@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2299244/tna-impact-matt-hardy-experience-booking-episode": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-28T14:03:36.827Z"
+ },
  "https://www.fightful.com/wrestling/former-wwe-co-president-speaks-about-2019-crown-jewel-plane-incident-i-think-it-was-exaggerated-to-some-degree": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-15T12:29:39.039Z"
- },
- "https://www.fightful.com/wrestling/roman-reigns-quality-over-quantity-every-single-day-of-the-week": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-15T12:29:20.747Z"
  }
 }
