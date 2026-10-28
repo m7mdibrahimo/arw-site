@@ -2,9 +2,9 @@
 show_type: عرض
 federation: NJPW
 title: NJPW Super Junior Tag League Day 4 27.10.2026
-headline: عرض سوبر جونيور تاج ليج (اليوم الرابع) 27.10.2026 مترجم
+headline: عرض ان جيه بي دبليو سوبر جونيور تاج ليج (اليوم الرابع) 27.10.2026 مترجم
 program_name: NJPW Super Junior Tag League
-description: عرض سوبر جونيور تاج ليج (اليوم الرابع) مترجم بالكامل مع جميع النزالات والأحداث.
+description: عرض ان جيه بي دبليو سوبر جونيور تاج ليج (اليوم الرابع) مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-10-27
 date: 2026-10-28T02:32:34.000+03:00
 duration: 02:11:37
