@@ -159,3 +159,12 @@ test("a corporate abbreviation «Bros.» is not the end of a sentence (live 2026
   const creed = metaDescription("Austin Creed has expressed complete confidence in his and Kofi's ability to quickly adjust to AEW following a 16-year run in WWE, according to Wrestling Inc.");
   assert.ok(creed.endsWith("Wrestling Inc."), creed);
 });
+
+test("a word cut never ends on a superlative without its noun (INCIDENTS #935)", () => {
+  // The live Sami Zayn description ended «…credited Sexxxy Eddy with providing the biggest.» — «the biggest
+  // break of his career» lost its noun. The cut goes back to the last «and» instead.
+  const lead = "During an interview on Insight with Chris Van Vliet, Sami Zayn reflected on his career and credited Canadian wrestler Sexxxy Eddy with providing the biggest break of his career. Zayn explained that back in his early years, getting booked had nothing to do with him.";
+  const d = metaDescription(lead);
+  assert.ok(!/\bthe\s+\w+est\.?$/.test(d), d);
+  assert.equal(d, "During an interview on Insight with Chris Van Vliet, Sami Zayn reflected on his career.");
+});

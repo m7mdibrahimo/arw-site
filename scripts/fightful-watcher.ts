@@ -3047,6 +3047,7 @@ async function rewriteWithGemini(
 1. **قاعدة أسماء الاتحادات والعروض بالإنجليزية حصراً**:
    - أسماء الاتحادات تظل بالإنجليزية دائماً كما هي دون تعريب: (WWE, AEW, TNA, ROH, NJPW, MLW, AAA, CMLL, GCW, UFC, MLP, Dragon Gate, RevPro, Stardom, OTT). وأي اتحاد آخر يُكتب بالحروف اللاتينية زي المصدر — ممنوع تعريبه («دراغون غيت»، «ريف برو»، «ستاردوم»).
    - أسماء العروض التابعة للاتحادات تظل بالإنجليزية دائماً كما هي: (مثل WWE RAW, WWE SmackDown, WWE NXT, AEW Dynamite, AEW Collision, AEW Rampage, TNA iMPACT, ROH TV, Triplemania, MLP Northern Rising, NJPW Power Struggle, NJPW Wrestle Kingdom, NJPW Dominion, NJPW New Year Dash, NJPW Road To Destruction, NJPW Destruction in Kobe).
+   - **ممنوع تنسب لمصارع لقب أو بطولة أو صفة («بطلة WWE NXT»، «تحقيق لقب WWE») المصدر ما قالهاش صراحة** — جملة افتراضية («Maybe I'd be WWE Champion») أو لقب حمله غيره مش معناها إنه بطل.
    - **أي اسم عرض جديد مش في القائمة يفضل إنجليزي زي المصدر**: ممنوع تعريبه صوتيا («Power Struggle» مش «باور ستراجل»، «Wrestle Kingdom» مش «ريسل كينغدوم»).
    - **تنبيه خاص لـ NJPW**: اسم جولة وعرض **NJPW Road To Destruction** و**NJPW Destruction in Kobe** يظل بالإنجليزية دائماً دون أي ترجمة أو تعريب (ممنوع منعاً باتاً ترجمة أو تعريب "Destruction" إلى "ديستركشن" أو "الدمار" نهائياً!).
    - ممنوع نهائياً كتابة: "دبليو دبليو إي" أو "إيه إي دبليو" أو "عرض الرو" أو "سماكداون" أو "ديناميت"؛ اكتب دائماً: WWE, AEW, WWE RAW, WWE SmackDown, AEW Dynamite.
@@ -3218,6 +3219,7 @@ ${isListOrReviewArticle(originalTitle) ? `   - **مقال قائمة/تقييم 
      - اكتب دائماً: WWE, AEW, TNA, NJPW, MLW.
     - **أسماء العروض التابعة للاتحادات تظل بالإنجليزية دائماً كما هي**:
       (مثل: WWE RAW, WWE SmackDown, WWE NXT, AEW Dynamite, AEW Collision, AEW Rampage, TNA iMPACT, AEW All In, WrestleMania, Royal Rumble, SummerSlam, MLP Northern Rising, NJPW Power Struggle, NJPW Wrestle Kingdom, NJPW Dominion, NJPW New Year Dash, NJPW Road To Destruction, NJPW Destruction in Kobe).
+      - **ممنوع تنسب لمصارع لقب أو بطولة أو صفة («بطلة WWE NXT»، «تحقيق لقب WWE») المصدر ما قالهاش صراحة** — جملة افتراضية («Maybe I'd be WWE Champion») أو لقب حمله غيره مش معناها إنه بطل.
       - **أي اسم عرض جديد مش في القائمة يفضل إنجليزي زي المصدر، ممنوع تعريبه صوتيا** («Power Struggle» مش «باور ستراجل»).
       - ممنوع نهائياً: "الرو", "راو", "سماكداون", "ديناميت", "كوليجن", "إمباكت", "ديستركشن".
       - اكتب دائماً: WWE RAW, WWE SmackDown, AEW Dynamite, AEW Collision, TNA iMPACT, NJPW Road To Destruction.

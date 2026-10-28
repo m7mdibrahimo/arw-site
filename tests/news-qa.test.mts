@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { checkArticle, applyCorrections } from "../scripts/news-qa.ts";
+import { checkArticle, applyCorrections, autoFix, BLOCKING_QA_CODES } from "../scripts/news-qa.ts";
 
 test("a long number spelled in words in the TITLE is blocked (INCIDENTS #520: «ألف وثلاثمائة وستة عشر يوما»)", () => {
   const issues = checkArticle("رومان رينز يكشف صعوبة تصديق نهاية فترة احتفاظه بلقبه لمدة ألف وثلاثمائة وستة عشر يوما", "نص الخبر هنا.");
@@ -356,4 +356,28 @@ test("a federation is not a championship in a headline (round 2026-10-28)", asyn
   // a real championship keeps its promotion: «بطولة AEW العالمية» is fine
   assert.ok(!has("سي ام بانك يدافع عن بطولة AEW العالمية في عرض AEW Dynamite"));
   assert.ok(BLOCKING_QA_CODES.includes("federation_as_championship") && RETRYABLE_QA_CODES.includes("federation_as_championship"));
+});
+
+test("a name half in Arabic, half in English and a letter typed three times are fixed and blocked (INCIDENTS #935)", () => {
+  const body = "واسترجع كاسيدي ترددداته في البداية، موضحا أن مارك Briscoe هو من دفعه للتسجيل في النزال.";
+  const codes = checkArticle("أورانج كاسيدي يقدم نصيحة للمشاركين في نزال AEW Blood and Guts", body).map((i) => i.code);
+  assert.ok(codes.includes("half_english_name"));
+  assert.ok(codes.includes("tripled_letter"));
+  assert.ok(BLOCKING_QA_CODES.includes("half_english_name") && BLOCKING_QA_CODES.includes("tripled_letter"));
+  const fixed = autoFix(body);
+  assert.ok(fixed.includes("تردداته") && fixed.includes("مارك بريسكو") && !fixed.includes("Briscoe"));
+  assert.equal(autoFix("ومارك بريسكو"), "ومارك بريسكو");
+  assert.equal(autoFix("التمهيد لللعودة المرتقبة"), "التمهيد للعودة المرتقبة");
+  // real words with three in a row stay: «ووودز» (و + وودز), «شتتت» (a verb), laughter
+  for (const ok of ["كوفي ووودز", "شتتت انتباهه", "ههههه"]) assert.equal(autoFix(ok), ok);
+  assert.ok(!checkArticle("عنوان خبر عن المصارعة الحرة", "حدثت في جامعة يوتا فالي في سبتمبر الماضي.").some((i) => i.code === "missing_hamza"));
+});
+
+test("no published story has a half-English glossary name or a tripled letter (INCIDENTS #935)", async () => {
+  const fs = await import("node:fs");
+  const bad = fs.readdirSync("content/news").filter((f) => f.endsWith(".md")).filter((f) => {
+    const t = fs.readFileSync(`content/news/${f}`, "utf-8");
+    return autoFix(t.replace(/^---[\s\S]*?---/, "")).includes("بريسكو") && /مارك Briscoe/.test(t) || /(?:ددد|للل)/.test(t);
+  });
+  assert.deepEqual(bad, []);
 });
