@@ -1,5 +1,15 @@
 [
   {
+    "id": 336167,
+    "link": "https://www.fightful.com/wrestling/nxts-elio-lefleur-returns-to-in-ring-action/",
+    "date": "2026-10-27T20:07:13",
+    "date_gmt": "2026-10-28T00:07:13",
+    "title": {
+      "rendered": "NXT&#8217;s Elio LeFleur Returns To In-Ring Action"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/02/24205458/HB969JIWUAANQE7.jpg"
+  },
+  {
     "id": 336152,
     "link": "https://www.fightful.com/wrestling/wwe-nxt-results-10-27-2026-jackson-drake-vs-ek-prosper-dusty-classic-semifinals-more/",
     "date": "2026-10-27T19:15:00",
@@ -288,15 +298,5 @@
       "rendered": "Matt Hardy Says He Would Have Had &#8216;Almost Complete Creative Control&#8217; Over The Broken Character In TNA"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2016/08/27195924/Broken-Matt-Hardy_8.jpg"
-  },
-  {
-    "id": 336049,
-    "link": "https://www.fightful.com/wrestling/matt-hardy-recalls-the-hardys-being-taken-off-wwe-television-due-to-jeff-rejecting-pitches-due-to-being-uncomfortable/",
-    "date": "2026-10-27T10:46:20",
-    "date_gmt": "2026-10-27T14:46:20",
-    "title": {
-      "rendered": "Matt Hardy Recalls The Hardys Being Taken Off WWE Television Due To Jeff Rejecting Pitches Due To &#8216;Being Uncomfortable&#8217;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2023/04/27223511/the_hardys_aew.jpg"
   }
 ]
