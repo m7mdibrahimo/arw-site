@@ -1,43 +1,48 @@
 {
+ "https://www.fightful.com/wrestling/cmll-dia-de-muertos-results-10-27-2026-calavera-jr-i-advances-to-the-rey-del-inframundo-finals-esfinge-wins-the-mexican-heavyweight-title-more": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-28T05:43:00.983Z"
+ },
  "https://www.fightful.com/wrestling/update-on-bruce-prichards-expected-retirement": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:39:14.772Z"
+  "at": "2026-10-28T05:42:26.023Z"
  },
  "https://www.fightful.com/wrestling/john-cena-cody-rhodes-to-appear-dusty-classic-final-unsanctioned-match-set-for-11-4-nxt": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-10-28T05:39:14.461Z"
+  "at": "2026-10-28T05:42:25.704Z"
  },
  "https://www.fightful.com/wrestling/watch-danhausens-very-nice-very-evil-halloween-special": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:38:44.877Z"
+  "at": "2026-10-28T05:41:48.585Z"
  },
  "https://www.fightful.com/wrestling/report-bruce-prichard-expected-to-retire-as-executive-director-after-wrestlemania-season": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:38:44.431Z"
+  "at": "2026-10-28T05:41:48.137Z"
  },
  "https://www.fightful.com/wrestling/dr-wagner-jr-in-attendance-to-watch-wagner-brothers-compete-on-10-27-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:38:44.123Z"
+  "at": "2026-10-28T05:41:47.826Z"
  },
  "https://www.fightful.com/wrestling/tavion-heights-vs-myles-borne-in-weapons-wild-match-added-to-nxt-halloween-havoc": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:38:43.882Z"
+  "at": "2026-10-28T05:41:47.582Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-signs-sumo-football-athlete-hidetora-hanada": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:38:43.437Z"
+  "at": "2026-10-28T05:41:47.126Z"
  },
  "https://www.fightful.com/wrestling/amazing-red-thinks-he-can-bring-aj-styles-out-of-retirement-wrestling-is-such-a-hard-thing-to-leave": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:38:43.114Z"
+  "at": "2026-10-28T05:41:46.806Z"
  },
  "https://www.fightful.com/wrestling/yota-tsuji-hirooki-goto-teaming-konosuke-takeshita-match-added-to-cmll-x-njpw-lucha-kingdom": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: همزات ساقطة في 5 مواضع — النص يحتاج إعادة ترجمة",
   "retry": true,
   "at": "2026-10-15T11:56:16.442Z"
- },
- "https://www.ringsidenews.com/mick-foley-says-wrestlers-dont-need-wrestlemania-have-wrestlemania-moment": {
-  "reason": "المراجعة رفضته: كلمة رقم عربية قدام رقم بالأرقام (مثل: أحد عشر 1000) — اكتب الرقم مرة واحدة",
-  "retry": false,
-  "at": "2026-10-15T11:02:06.859Z"
  }
 }
