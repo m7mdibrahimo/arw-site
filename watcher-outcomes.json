@@ -1,18 +1,23 @@
 {
+ "https://www.fightful.com/wrestling/tavion-heights-vs-myles-borne-in-weapons-wild-match-added-to-nxt-halloween-havoc": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-10-28T01:15:00.680Z"
+ },
  "https://www.fightful.com/wrestling/report-wwe-signs-sumo-football-athlete-hidetora-hanada": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T01:10:44.999Z"
+  "at": "2026-10-28T01:13:56.142Z"
  },
  "https://www.fightful.com/wrestling/amazing-red-thinks-he-can-bring-aj-styles-out-of-retirement-wrestling-is-such-a-hard-thing-to-leave": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T01:10:44.695Z"
+  "at": "2026-10-28T01:13:55.828Z"
  },
  "https://www.fightful.com/wrestling/cj-perry-rusev-expecting-their-first-child": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T01:10:43.398Z"
+  "at": "2026-10-28T01:13:54.505Z"
  },
  "https://www.wrestlinginc.com/2299130/wwe-nxt-october-27-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
