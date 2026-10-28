@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aew-dynamite-preview-october-28-2026-confirmed-matches-start-time-how-watch": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-10-28T11:35:32.938Z"
+ },
  "https://www.fightful.com/wrestling/update-on-bruce-prichards-expected-retirement": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-15T12:17:40.940Z"
- },
- "https://www.fightful.com/wrestling/santi-rivera-confirms-exit-from-wwe-id-program": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-15T12:06:01.047Z"
  }
 }
