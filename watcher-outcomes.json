@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/orange-cassidy-recalls-breaking-orbital-bone-as-his-worst-injury-vomiting-blood-as-a-result": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-28T14:31:58.121Z"
+ },
  "https://www.fightful.com/wrestling/former-wwe-co-president-speaks-about-2019-crown-jewel-plane-incident-i-think-it-was-exaggerated-to-some-degree": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T14:27:50.177Z"
+  "at": "2026-10-28T14:30:28.848Z"
  },
  "https://www.fightful.com/wrestling/update-on-bruce-prichards-expected-retirement": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T14:27:49.412Z"
+  "at": "2026-10-28T14:30:28.360Z"
  },
  "https://www.fightful.com/wrestling/watch-danhausens-very-nice-very-evil-halloween-special": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T14:27:49.021Z"
+  "at": "2026-10-28T14:30:28.095Z"
  },
  "https://www.fightful.com/wrestling/report-bruce-prichard-expected-to-retire-as-executive-director-after-wrestlemania-season": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T14:27:48.552Z"
+  "at": "2026-10-28T14:30:27.784Z"
  },
  "https://www.fightful.com/wrestling/dr-wagner-jr-in-attendance-to-watch-wagner-brothers-compete-on-10-27-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T14:27:48.224Z"
+  "at": "2026-10-28T14:30:27.555Z"
  },
  "https://www.fightful.com/wrestling/tavion-heights-vs-myles-borne-in-weapons-wild-match-added-to-nxt-halloween-havoc": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T14:27:47.966Z"
+  "at": "2026-10-28T14:30:27.383Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-signs-sumo-football-athlete-hidetora-hanada": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-15T12:40:42.968Z"
- },
- "https://www.fightful.com/wrestling/big-damo-announces-tommy-end-xelina-are-off-progress-show-due-to-personal-issue": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-15T12:29:39.039Z"
  }
 }
