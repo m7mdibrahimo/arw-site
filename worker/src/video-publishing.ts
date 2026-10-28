@@ -60,6 +60,23 @@ export async function publishFacebookVideo(options: {
   } catch { return { ok: false, ambiguous: true, error: 'تعذر تأكيد حالة فيديو فيسبوك؛ راجع المنصة.' }; }
 }
 
+/** A reel whose publish step ran out of time: find it on the page (its video id, or the reel whose caption starts with
+ *  the show's title) and say whether Facebook published it — so the reel monitor settles it instead of failing every run */
+export async function facebookReelState(o: { pageId: string; token: string; id?: string; title?: string }): Promise<'published' | 'failed' | 'pending' | 'missing'> {
+  let id = o.id;
+  if (!id && o.title) {
+    const list: any = await (await fetch(`${API}/${o.pageId}/video_reels?fields=id,description&limit=25&access_token=${encodeURIComponent(o.token)}`)).json();
+    if (!Array.isArray(list.data)) throw new Error(list.error?.message || 'reels list unavailable');
+    id = list.data.find((v: any) => String(v.description || '').trim().startsWith(o.title!.trim()))?.id;
+  }
+  if (!id) return 'missing';
+  const data: any = await (await fetch(`${API}/${id}?fields=status&access_token=${encodeURIComponent(o.token)}`)).json();
+  if (data.error) throw new Error(data.error.message || 'status unavailable');
+  if (data.status?.publishing_phase?.status === 'complete' || data.status?.video_status === 'ready') return 'published';
+  if (data.status?.publishing_phase?.status === 'error' || data.status?.video_status === 'error') return 'failed';
+  return 'pending';
+}
+
 export async function publishInstagramVideo(options: {
   accountId: string; token: string; videoUrl: string; caption?: string; story: boolean; kv: KVNamespace;
 }): Promise<VideoResult> {

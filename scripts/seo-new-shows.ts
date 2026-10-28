@@ -110,10 +110,13 @@ export function indexingCandidates(urls: string[]): string[] {
  *  A page that got the notice and is still not crawled a week later gets it again: one notice is not a promise, and the
  *  library pages that got theirs on 2026-10-20 were never looked at again while they sat unindexed (2026-10-27). */
 export const DIRECT_RETRY_MS = 7 * 24 * H;
-export function stuckLibraryPages(pages: Record<string, Page>, now: number, max = 5): string[] {
+// `listed` is checked BEFORE the cut to `max`: filtering after it let /library/njpw/, /roh/, /cmll/ (redirects since
+// INCIDENTS #433, out of the sitemap, so never noticed) take the 5 places on every run, and /library/njpw-special-events/
+// sat «unknown to Google» for 160h without one notice (INCIDENTS #903).
+export function stuckLibraryPages(pages: Record<string, Page>, now: number, max = 5, listed: (u: string) => boolean = () => true): string[] {
   const noticeAge = (p: Page) => (p.directAt ? Date.parse(p.directAt) : 0); // 0 = never noticed, goes first
   return Object.entries(pages)
-    .filter(([u, p]) => /^https:\/\/arab-wrestling\.com\/library\/[^/]+\/$/.test(u) && !p.indexedAt && !p.crawledAt && !!p.inspected
+    .filter(([u, p]) => /^https:\/\/arab-wrestling\.com\/library\/[^/]+\/$/.test(u) && listed(u) && !p.indexedAt && !p.crawledAt && !!p.inspected
       && now - Date.parse(p.firstSeen) > 72 * H
       && (!p.directAt || now - Date.parse(p.directAt) > DIRECT_RETRY_MS))
     .sort((a, b) => (noticeAge(a[1]) - noticeAge(b[1])) || (Date.parse(a[1].firstSeen) - Date.parse(b[1].firstSeen)))
@@ -181,7 +184,7 @@ async function main() {
     // New pages, and pages from the last 3 days Google still doesn't have that never got the direct notice
     const waiting = Object.entries(state.pages).filter(([u, p]) => !p.indexedAt && !p.directAt && lastmodOf.has(u)
       && now - Date.parse(p.firstSeen) < 72 * H).map(([u]) => u);
-    const direct = [...indexingCandidates([...new Set([...ready, ...waiting])]), ...stuckLibraryPages(state.pages, now).filter(u => lastmodOf.has(u))];
+    const direct = [...indexingCandidates([...new Set([...ready, ...waiting])]), ...stuckLibraryPages(state.pages, now, 5, u => lastmodOf.has(u))];
     if (site && direct.length) {
       const res = await accessToken(sa, INDEXING_SCOPE).then(t => notifyGoogle(t, direct)).catch((e: any) => ({ ok: 0, error: String(e?.message || e).slice(0, 300) }));
       state.indexingApi = { at: new Date(now).toISOString(), sent: res.ok, ...(res.error ? { error: res.error } : {}) };

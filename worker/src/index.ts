@@ -32,7 +32,7 @@
 import { deliverOnce, authorizeAdmin } from "./delivery";
 import { PROMO_FILE, PROMO_PLATFORMS, type PromoPlatform, promoCaption, promoFacebook, facebookPostOf, pinFacebook, promoTelegram, pinTelegram } from "./promo";
 import { handleStudio, studioAuthorized, studioUser, readRepoFile, commitFiles, audit as studioAudit, auditLog } from "./studio";
-import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRetainVideo } from "./video-publishing";
+import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRetainVideo, facebookReelState } from "./video-publishing";
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
 import { recordView, pruneAnalytics } from "./analytics";
@@ -4301,6 +4301,15 @@ export default {
         }
       }
 
+      // a reel left «accepted, not confirmed» (INCIDENTS #901): the reel monitor asks here instead of failing every run
+      if (path === "/api/videos/facebook-reel-status" && request.method === "POST") {
+        const body: any = await request.json().catch(() => ({}));
+        try {
+          const state = await facebookReelState({ pageId: env.FACEBOOK_PAGE_ID, token: await getPageAccessToken(env),
+            id: body.id ? String(body.id) : undefined, title: body.title ? String(body.title) : undefined });
+          return json({ success: true, state });
+        } catch (e: any) { return json({ success: false, error: e.message }, 502); }
+      }
       if (path === "/api/videos/publish-social" && request.method === "POST") {
         if (await socialPaused(env)) return json({ success: false, paused: true, error: "النشر على السوشيال متوقف مؤقتًا" }, 503);
         try {

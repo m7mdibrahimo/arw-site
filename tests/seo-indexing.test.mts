@@ -46,3 +46,13 @@ test("the inspection queue asks about pages Google never looked at before the on
     "https://arab-wrestling.com/shows/due-again/",
   ]);
 });
+
+test("library pages out of the sitemap never take the direct-notice places of listed ones (INCIDENTS #903)", () => {
+  const now = Date.parse("2026-10-28T00:00:00Z");
+  const old = { firstSeen: "2026-10-10T00:00:00Z", lastmod: "2026-10-10", inspected: "2026-10-27T00:00:00Z", crawledAt: "" };
+  const pages: Record<string, any> = {};
+  for (const s of ["njpw", "roh", "cmll", "aaa", "mlw", "wwe"]) pages[`https://arab-wrestling.com/library/${s}/`] = { ...old };
+  pages["https://arab-wrestling.com/library/njpw-special-events/"] = { ...old, firstSeen: "2026-10-21T07:31:08Z" };
+  const listed = (u: string) => u.endsWith("/njpw-special-events/");
+  assert.deepEqual(stuckLibraryPages(pages, now, 5, listed), ["https://arab-wrestling.com/library/njpw-special-events/"]);
+});
