@@ -166,6 +166,21 @@ test("«نزال فرق سداسي» with four winners is blocked (INCIDENTS #68
   assert.ok(!checkArticle("نتائج عرض WWE NXT Live", bad.replace("وكيندال غراي", "").replace("وشايلو هيل", "")).some((i) => i.code === "team_size_label"));
 });
 
+test("«نزال فرق سداسي» with four indie winners under «الفائزون» is blocked (INCIDENTS #938)", () => {
+  const bad = "نتائج عرض.\n\n**المواجهة الرابعة: نزال فرق سداسي**\n\nفاز فريق كريستون كريد وهازاردوس وجوني تاب ومارك أندروز على فريق مات غاتلين.\n\n🏆 **الفائزون:** كريستون كريد وهازاردوس وجوني تاب ومارك أندروز";
+  assert.ok(checkArticle("نتائج عرض ATTACK! Goosebumps 11", bad).some((i) => i.code === "team_size_label"));
+  assert.ok(!checkArticle("نتائج عرض ATTACK! Goosebumps 11", bad.replace("سداسي", "ثماني")).some((i) => i.code === "team_size_label"));
+  assert.ok(!checkArticle("نتائج عرض ATTACK! Goosebumps 11", bad.replace(" ومارك أندروز", "").replace(" ومارك أندروز", "")).some((i) => i.code === "team_size_label"));
+});
+
+test("Becky/ATTACK/Maclin wording fixes are applied to every story (INCIDENTS #938)", () => {
+  assert.equal(applyCorrections("نجح البطل درو باركر في الدفاع عن لقبه بنجاح ضد كريس برونسون"), "نجح البطل درو باركر في الدفاع عن لقبه ضد كريس برونسون");
+  assert.equal(applyCorrections("حركة مانهادل سلام"), "حركة مانهاندل سلام");
+  assert.equal(applyCorrections("في صالة لوكو كلاب بمدينة برستل"), "في صالة لوكو كلوب بمدينة بريستول");
+  assert.equal(applyCorrections("كان النزال رسالة حب لطفولتهم"), "كان النزال تحية لطفولتهم");
+  assert.equal(applyCorrections("يتابعون ظهروه التلفزيوني"), "يتابعون ظهوره التلفزيوني");
+});
+
 test("a stray «وة» fragment («هانك وة تانك») is blocked as a broken word (INCIDENTS #725)", () => {
   assert.ok(checkArticle("عنوان", "نزال بين فريق ذا كريد برذرز وفريق هانك وة تانك في ربع النهائي.").some((i) => i.code === "broken_word"));
   assert.ok(!checkArticle("عنوان", "نزال بين فريق ذا كريد برذرز وفريق هانك وتانك في ربع النهائي.").some((i) => i.code === "broken_word"));

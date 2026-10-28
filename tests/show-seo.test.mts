@@ -158,3 +158,12 @@ test('only the newest episode of a program claims «الاخير» spellings', (
   assert.ok(older.includes('عرض الرو 19 أكتوبر 2026'), 'its own date');
   assert.ok(older.some((n: string) => n === 'عرض الرو مترجم'), 'its own plain name');
 });
+
+test("a show named with the federation in Arabic letters also gets its bare name in the structured data (INCIDENTS #939)", () => {
+  const forms = showNameForms({ headline: "عرض ان جيه بي دبليو سوبر جونيور تاج ليج (اليوم الرابع) 27.10.2026 مترجم", title: "NJPW Super Junior Tag League Day 4 27.10.2026", programName: "NJPW Super Junior Tag League", eventDate: "2026-10-27", isShow: true });
+  for (const f of ["سوبر جونيور تاج ليج", "عرض سوبر جونيور تاج ليج مترجم", "سوبر جونيور تاج ليج 27.10.2026", "عرض سوبر جونيور تاج ليج اليوم الرابع مترجم", "Super Junior Tag League"]) assert.ok(forms.includes(f), f);
+  // NXT is all federation letters: nothing is stripped; a special never claims its weekly program's name
+  assert.ok(!showNameForms({ headline: "عرض ان اكس تي 27.10.2026 مترجم", title: "WWE NXT 27.10.2026", programName: "WWE NXT", eventDate: "2026-10-27", isShow: true }).some((f) => /^(?:عرض )?(?:تي|اكس تي)$/.test(f)));
+  const cmll = showNameForms({ headline: "عرض سي ام ال ال ديا دي مويرتوس بويبلا 26.10.2026 مترجم", title: "CMLL Dia De Muertos Puebla 26.10.2026", programName: "CMLL Lunes Clasico", eventDate: "2026-10-26", isShow: true });
+  assert.ok(cmll.includes("ديا دي مويرتوس بويبلا") && !cmll.includes("Lunes Clasico"));
+});

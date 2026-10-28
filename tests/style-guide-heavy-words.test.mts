@@ -41,7 +41,8 @@ test("«iestرجع» becomes «يتذكر/يكشف» in every story (INCIDENTS #
   assert.equal(applyCorrections("ويل أوسبراي يسترجع كواليس شجار"), "ويل أوسبراي يكشف كواليس شجار");
   assert.equal(applyCorrections("ديفيد فينلي يسترجع طموحاته السابقة"), "ديفيد فينلي يتذكر طموحاته السابقة");
   for (const f of fs.readdirSync("content/news").filter(f => f.endsWith(".md"))) {
-    const s = fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink: .*$/m, "");
+    // social_spoiler_note is the bot's internal note for the social scheduler (never shown, never edited): only the story counts (INCIDENTS #938)
+    const s = fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink: .*$/m, "").replace(/^social_[a-z_]+: .*$/gm, "");
     assert.doesNotMatch(s, /يسترجع/, f);
   }
 });

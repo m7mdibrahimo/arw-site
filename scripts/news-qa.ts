@@ -577,9 +577,18 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
   // Four glossary names in the winners line can't be a 3-on-3 match.
   for (const block of (body || "").split(/\n(?=\*\*(?:المواجهة|الحدث))/)) {
     const head = block.match(/^\*\*(?:المواجهة|الحدث)[^\n]*?:\s*([^\n]*)\*\*/);
-    const win = block.match(/الفائز(?:ة)?:\*{0,2}\s*([^\n]+)/);
+    const win = block.match(/الفائز(?:ون|ين|ات|ة)?:\*{0,2}\s*([^\n]+)/);
     if (!head || !win || !/فرق سداسي/.test(head[1]) || /^فريق\s/.test(win[1].trim())) continue;
-    if (!/[()（]/.test(win[1]) && glossaryNamesIn(win[1]) >= 4) {
+    // Indie names are not in the glossary: also count the names joined by « و»/«،» (INCIDENTS #938).
+    // Two one-word pieces in a row are one name whose surname starts with «و» («شيلبي وايلدر», «آرون وولف»).
+    let joined = 0, lastSingle = false;
+    for (const part of win[1].replace(/\*/g, "").replace(/،\s*/g, " و").split(/\s+و(?=[\u0621-\u064A])/)) {
+      const words = part.trim().split(/\s+/).filter(Boolean).length;
+      if (!words) continue;
+      if (words === 1 && lastSingle) { lastSingle = false; continue; }
+      joined++; lastSingle = words === 1;
+    }
+    if (!/[()（]/.test(win[1]) && (glossaryNamesIn(win[1]) >= 4 || joined >= 4)) {
       issues.push({ code: "team_size_label", severity: "error", field: "body", message: "المواجهة مكتوبة «نزال فرق سداسي» والفائزين أربعة — ٤ ضد ٤ هو «نزال فرق ثماني»", excerpt: head[1].slice(0, 60) });
       break;
     }
