@@ -152,6 +152,8 @@ const RULES: Rule[] = [
   { code: "broken_word", severity: "error", re: /(?<![ء-ي])(?:أنها|أنه|إنها|إنه|بأنها|بأنه|وأنها|وأنه)\s+لست(?![ء-ي])/g, message: "نحو: «لست» مع ضمير الغائب — الصح «ليست/ليس»", fields: ["title", "body"] },
   { code: "broken_word", severity: "error", re: /(?<![ء-ي])(?!(?:ال)?(?:مميتة|مستميتة)(?![ء-ي]))[ء-ي]{2,}يتة(?![ء-ي])/g, message: "كلمة مكسورة: «…يتة» (تاء زيادة — مثل «احترافيتة» بدل «احترافيته/احترافيتها»)", fields: ["title", "body"] },
   { code: "broken_word", severity: "error", re: /(?<![ء-ي])وة(?![ء-ي])/g, message: "كلمة مكسورة: «وة» لوحدها (غالبا «و» + ترجمة مقطوعة لاسم — مثل «هانك وة تانك» بدل «هانك وتانك»)", fields: ["title", "body"] },
+  // A preposition straight before a past verb — a sentence half rewritten: «هزمتها مجددا في حظيت المواجهة الثانية بإشادة» (Blake Monroe story, INCIDENTS #946)
+  { code: "broken_word", severity: "error", re: /(?<![ء-ي])(?:في|على|إلى)\s+(?:حظي|حظيت|كان|كانت|أصبح|أصبحت|تم|قام|قامت|شهد|شهدت|أكد|أكدت|قال|قالت|نجح|نجحت|فاز|فازت)(?![ء-ي])/g, message: "جملة مكسورة: حرف جر قبل فعل ماضي («في حظيت المواجهة» ← «في نزال حظي بإشادة»)" },
   { code: "detached_prefix", severity: "error", re: new RegExp(`(?:^|\\s)[لب]\\s+(?=[${AR}])`, "g"), message: "حرف جر منفصل عن الكلمة (مثل: ل زينا)" },
   // The future «س» cut off its verb: «"س تكون طريقة رائعة"» (Matt Hardy story, INCIDENTS #945)
   { code: "detached_prefix", severity: "error", re: /(?<![ء-ي\w])س\s+(?=[تينأ][ء-ي]{2,})/g, message: "«س» منفصلة عن الفعل (مثل: س تكون ← ستكون)" },
@@ -531,7 +533,8 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
   // A cut word can also end up two letters long: «…وأنا متحمس جدا لر إلى أين ستصل الأمور» (INCIDENTS #868).
   // The one-letter rule above cannot see it, and no Arabic word of two letters starts with ل/ب/ك/ف
   // except the short words listed here — so anything else is the tail of a word the model cut.
-  const SHORT_PREFIX_WORDS = new Set(["في", "فى", "فن", "فخ", "فم", "فض", "فك", "لا", "لم", "لن", "له", "لي", "لو", "لك", "لل", "لب", "لـ", "بـ", "به", "بك", "بي", "بل", "بن", "بو", "بث", "بد", "كم", "كي", "كو", "كن", "كل", "كب", "كف", "كـ"]);
+  // «لف» (wrapping: «أثناء لف الأسلاك الشائكة حول ركبته») is a whole word, not a cut one (INCIDENTS #946)
+  const SHORT_PREFIX_WORDS = new Set(["في", "فى", "فن", "فخ", "فم", "فض", "فك", "لف", "لص", "فر", "لا", "لم", "لن", "له", "لي", "لو", "لك", "لل", "لب", "لـ", "بـ", "به", "بك", "بي", "بل", "بن", "بو", "بث", "بد", "كم", "كي", "كو", "كن", "كل", "كب", "كف", "كـ"]);
   for (const [field, text] of fields) {
     const stub = /(?<![ء-ي])[لبكف][ء-ي](?![ء-ي])/g;
     let m: RegExpExecArray | null;

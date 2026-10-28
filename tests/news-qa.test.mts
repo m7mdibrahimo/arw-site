@@ -440,3 +440,11 @@ test("«س تكون», «عرضي AEW Dynamite وAEW Collision», «حلقتي �
   assert.equal(applyCorrections("كان يشرب الكحولات"), "كان يشرب الكحول");
   assert.equal(applyCorrections("بلغ عدد المشاهدين مليون"), "بلغ عدد المشاهدين مليون");
 });
+
+test("a preposition before a past verb is blocked and «اختلاقات / نفت ذلك قاطعة» corrected (INCIDENTS #946)", () => {
+  const t = "بليك مونرو تنتقد نيك ألديس";
+  assert.ok(checkArticle(t, "وبعد أسابيع قليلة، هزمت مونرو جوليا مجددا في حظيت المواجهة الثانية بإشادة واسعة.").some((i) => i.code === "broken_word"));
+  assert.ok(!checkArticle(t, "وبعد أسابيع قليلة، هزمت مونرو جوليا مجددا في نزال شوارع حظي بإشادة واسعة.").some((i) => i.code === "broken_word"));
+  assert.ok(!checkArticle(t, "وأوضح غرايسون أنه أصيب أثناء لف الأسلاك الشائكة حول ركبته ليضرب بها خصمه.").some((i) => i.code === "truncated_word"));
+  assert.equal(applyCorrections("نفت ذلك قاطعة: لا يحدث. وحل أي اختلاقات بينهم."), "نفت ذلك بشكل قاطع: لا يحدث. وحل أي اختلافات بينهم.");
+});
