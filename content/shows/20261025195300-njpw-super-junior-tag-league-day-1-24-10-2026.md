@@ -2,7 +2,7 @@
 show_type: عرض
 federation: NJPW
 title: NJPW Super Junior Tag League Day 1 24.10.2026
-headline: عرض سوبر جونيور تاج ليج (اليوم الاول) 24.10.2026 مترجم
+headline: عرض ان جيه بي دبليو سوبر جونيور تاج ليج (اليوم الاول) 24.10.2026 مترجم
 program_name: NJPW Super Junior Tag League
 description: عرض سوبر جونيور تاج ليج (اليوم الاول) مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-10-24
