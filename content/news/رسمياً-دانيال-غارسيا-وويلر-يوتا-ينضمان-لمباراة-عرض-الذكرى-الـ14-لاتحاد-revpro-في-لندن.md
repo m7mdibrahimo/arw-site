@@ -9,7 +9,6 @@ tags:
   - ويلر يوتا
   - باك
   - أخبار المصارعة
-  - RevPro
 image: /content/images/d6liw80jzj7ur2uo.jpg
 layout: post-layout.njk
 ---
