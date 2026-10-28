@@ -1,28 +1,28 @@
 {
- "https://www.wrestlinginc.com/2299130/wwe-nxt-october-27-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-28T00:19:29.586Z"
- },
  "https://www.fightful.com/wrestling/wwe-nxt-results-10-27-2026-jackson-drake-vs-ek-prosper-dusty-classic-semifinals-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-28T00:20:48.366Z"
+  "at": "2026-10-28T00:22:24.228Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-signs-sumo-football-athlete-hidetora-hanada": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T00:20:48.206Z"
+  "at": "2026-10-28T00:22:24.054Z"
  },
  "https://www.fightful.com/wrestling/amazing-red-thinks-he-can-bring-aj-styles-out-of-retirement-wrestling-is-such-a-hard-thing-to-leave": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T00:20:47.897Z"
+  "at": "2026-10-28T00:22:23.714Z"
  },
  "https://www.fightful.com/wrestling/cj-perry-rusev-expecting-their-first-child": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T00:20:46.578Z"
+  "at": "2026-10-28T00:22:22.267Z"
+ },
+ "https://www.wrestlinginc.com/2299130/wwe-nxt-october-27-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-28T00:19:29.586Z"
  },
  "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-october-27-2026": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
