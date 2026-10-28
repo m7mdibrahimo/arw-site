@@ -46,6 +46,29 @@ export async function crossRunDuplicates(ours: NewsFile[], arrived: NewsFile[], 
   return hits;
 }
 
+export interface ResultsReport { file: string; sourceTitle: string; date: number; sourceUrl?: string }
+type ShowKey = (title: string) => { name: string; md: string };
+
+/**
+ * Results reports skip the story check above: each bot's own per-show guard (findSameShowResults) keeps one report per
+ * show — but it only sees the site as it was when its run started. Fightful and Ringside News both published «WWE NXT
+ * Results (27/10)» two minutes apart (INCIDENTS #910). The same show = the same name, and the same date when both titles
+ * carry one (else written within 20 hours of each other).
+ */
+export function sameShowResultsAcrossRuns(ours: ResultsReport[], arrived: ResultsReport[], key: ShowKey): CrossRunHit[] {
+  const hits: CrossRunHit[] = [];
+  for (const mine of ours) {
+    const k = key(mine.sourceTitle);
+    if (!k.name || k.name.split(" ").length < 2) continue;
+    const other = arrived.find(a => {
+      const o = key(a.sourceTitle);
+      return o.name === k.name && (k.md && o.md ? k.md === o.md : Math.abs(mine.date - a.date) < 20 * 3600_000);
+    });
+    if (other) hits.push({ file: mine.file, matchedFile: other.file, reason: "تقرير نتائج نفس العرض نزل من بوت تاني في نفس الوقت" });
+  }
+  return hits;
+}
+
 function git(...args: string[]): string {
   return execFileSync("git", ["-c", "core.quotePath=false", ...args], { encoding: "utf-8" });
 }
@@ -63,18 +86,45 @@ function readNews(file: string): NewsFile | null {
   } catch { return null; }
 }
 
+function readResults(file: string): ResultsReport | null {
+  try {
+    const { data } = matter(fs.readFileSync(path.join(NEWS_DIR, file), "utf-8"));
+    if (!data.source_title) return null;
+    return { file, sourceTitle: String(data.source_title), date: data.date ? new Date(data.date).getTime() : 0, sourceUrl: data.source_url };
+  } catch { return null; }
+}
+/** The English edition of a removed Arabic story (same source_id) goes with it. */
+function removeEnglishPair(file: string) {
+  try {
+    const id = String(matter(fs.readFileSync(path.join(NEWS_DIR, file), "utf-8")).data.source_id ?? "");
+    const dir = path.join(process.cwd(), "content", "news-en");
+    if (!id || !fs.existsSync(dir)) return;
+    for (const f of fs.readdirSync(dir)) {
+      if (!f.endsWith(".md")) continue;
+      const full = path.join(dir, f);
+      if (String(matter(fs.readFileSync(full, "utf-8")).data.source_id ?? "") === id) fs.rmSync(full);
+    }
+  } catch {}
+}
+
 async function main() {
   const base = process.argv[2];
   if (!base) return;
-  const ours = addedNews("origin/main", "HEAD").map(readNews).filter((n): n is NewsFile => !!n);
-  if (!ours.length) return;
-  const arrived = addedNews(base, "origin/main").filter(f => !ours.some(o => o.file === f)).map(readNews).filter((n): n is NewsFile => !!n);
-  if (!arrived.length) return;
-  const { queryGemini } = await import("./fightful-watcher");
-  const hits = await crossRunDuplicates(ours, arrived, p => queryGemini(p, true, 0.1));
+  const oursFiles = addedNews("origin/main", "HEAD");
+  const arrivedFiles = addedNews(base, "origin/main").filter(f => !oursFiles.includes(f));
+  if (!oursFiles.length || !arrivedFiles.length) return;
+  const ours = oursFiles.map(readNews).filter((n): n is NewsFile => !!n);
+  const arrived = arrivedFiles.map(readNews).filter((n): n is NewsFile => !!n);
+  const { queryGemini, showResultsKey } = await import("./fightful-watcher");
+  const oursResults = oursFiles.map(readResults).filter((n): n is ResultsReport => !!n);
+  const hits = [
+    ...sameShowResultsAcrossRuns(oursResults, arrivedFiles.map(readResults).filter((n): n is ResultsReport => !!n), showResultsKey),
+    ...(ours.length && arrived.length ? await crossRunDuplicates(ours, arrived, p => queryGemini(p, true, 0.1)) : []),
+  ];
   for (const hit of hits) {
-    const mine = ours.find(o => o.file === hit.file)!;
+    const mine = ours.find(o => o.file === hit.file) || oursResults.find(o => o.file === hit.file)!;
     const full = path.join(NEWS_DIR, hit.file);
+    removeEnglishPair(hit.file);
     const image = String(matter(fs.readFileSync(full, "utf-8")).data.image || "");
     fs.rmSync(full);
     // Its image goes too, unless another article uses it

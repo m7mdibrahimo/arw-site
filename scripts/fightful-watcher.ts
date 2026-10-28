@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, careerStartNotInSource, wrestlerNotInSource, type NewsFile } from "./news-qa";
+import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, careerStartNotInSource, wrestlerNotInSource, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -2494,6 +2494,17 @@ export function missingResults(sourceText: string, body: string): string[] {
 }
 
 /**
+ * More winners than the source has results = invented winners. NXT 27/10: the source listed «Hank and Tank vs. The Wagner
+ * Brothers» with no result yet and the report wrote «فاز فريق هانك وتانك…» (INCIDENTS #910). Counts real «🏆 الفائز:» lines
+ * (not «لم يتم الإعلان») against every outcome word in the source; returns how many winners are too many.
+ */
+export function extraWinners(sourceText: string, body: string): number {
+  const winners = [...String(body || "").matchAll(/🏆[ \t]*\*{0,2}[ \t]*الفائز(?:ة|ان|تان|ون|ات)?[ \t]*:?[ \t]*\*{0,2}[ \t]*:?[ \t]*([^\n]+)/g)]
+    .filter(m => !NO_WINNER_VALUE.test(m[1].trim())).length;
+  return Math.max(0, winners - countResultLines(sourceText));
+}
+
+/**
  * Glossary names the source's results carry that the Arabic report never writes. NJPW 7 Oct: the
  * main event «YOH def. Robbie X» came out «ضد روبي إيغلز» — the model swapped in the other Robbie
  * from the next line (INCIDENTS #335). Returns the source spellings missing from the body.
@@ -3700,7 +3711,9 @@ export function clearlyDifferentStories(a: string, b: string): boolean {
 /** "AEW All Out Results 9/26 - Several Titles…" / "AEW All Out 2026 Results (9/26)" → { name: "aew all out", md: "9/26" } */
 export function showResultsKey(title: string): { name: string; md: string } {
   const t = String(title || "").toLowerCase().replace(/&#8217;|’/g, "'");
-  const md = (t.match(/\b(\d{1,2})\/(\d{1,2})\b/) || []).slice(1, 3).map(Number).join("/");
+  // «… for October 27, 2026» (Ringside News) is a date too (INCIDENTS #910)
+  const named = t.match(new RegExp(`\\b(${EN_MONTHS.join("|")})\\s+(\\d{1,2})(?:st|nd|rd|th)?\\b`));
+  const md = (t.match(/\b(\d{1,2})\/(\d{1,2})\b/) || []).slice(1, 3).map(Number).join("/") || (named ? `${EN_MONTHS.indexOf(named[1]) + 1}/${+named[2]}` : "");
   const head = t.split(/\bresults?\b|\bspoilers?\b|\blive coverage\b|\blive recap\b/)[0] || t;
   const name = head.replace(/\(.*?\)/g, " ").replace(/\b\d{1,2}\/\d{1,2}(?:\/\d{2,4})?\b/g, " ").replace(/\b(?:19|20)\d\d\b/g, " ")
     .replace(/\b(?:live|full|quick|night|day|the)\b/g, " ").replace(/[^a-z0-9]+/g, " ").trim();
@@ -4448,6 +4461,11 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // was a match card with every winner line removed).
   if (isShowResultsArticle(rawTitle, plainText) && !/الفائز|الفائزة|الفائزون|الفائزتان|الفائزان/.test(draft.body)) {
     blocking.push({ code: "results_without_winners", severity: "error", field: "body", message: "تقرير نتائج بلا أي نتيجة", excerpt: "" });
+    lastPostRetryable = true;
+  }
+  const tooMany = isShowResultsArticle(rawTitle, plainText) ? extraWinners(plainText, draft.body) : 0;
+  if (tooMany) {
+    blocking.push({ code: "invented_winner", severity: "error", field: "body", message: `في التقرير ${tooMany} فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز`, excerpt: "" });
     lastPostRetryable = true;
   }
   // A body far longer than its source means Gemini padded a teaser with filler
