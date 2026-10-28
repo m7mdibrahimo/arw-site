@@ -5429,3 +5429,22 @@ test("CMLL Mexican National Heavyweight keeps «الوطنية» in Arabic, and 
   assert.equal(names["Kaligua"], "كاليجوا");
   assert.equal(names["Galaxy"], "غالاكسي");
 });
+
+// Round 2026-10-28: the CMLL Dia de Muertos Puebla page (a special filed under «CMLL Lunes Clasico») carried 185
+// alternateNames, most of them the weekly program's — «عرض سي ام ال ال لونيس كلاسيكو 26.10.2026», «CMLL Lunes Clasico
+// October 26 2026» — so it competed with the real Lunes Clasico pages and claimed to be their «الاخير». A special keeps
+// only the federation's brand from the program it is filed under, plus its own name.
+test("a special does not claim the weekly program's names in its structured data (round 2026-10-28)", async () => {
+  const { showNameForms, showAliasesFor } = (await import('../lib/show-seo.cjs')).default;
+  const aliases = ['سي ام ال ال', 'لونيس كلاسيكو', 'CMLL', 'CMLL Lunes Clasico', 'عرض سي ام ال ال لونيس كلاسيكو'];
+  // the alternateName list in the layout starts from the program's names: a special keeps only the brand ones it names itself
+  assert.deepEqual(showAliasesFor({ headline: 'عرض سي ام ال ال ديا دي مويرتوس بويبلا 26.10.2026 مترجم', title: 'CMLL Dia De Muertos Puebla 26.10.2026', programName: 'CMLL Lunes Clasico', aliases }), ['سي ام ال ال', 'CMLL']);
+  assert.deepEqual(showAliasesFor({ headline: 'عرض الرو 26.10.2026 مترجم', title: 'WWE RAW 26.10.2026', programName: 'WWE RAW', aliases: ['الرو', 'WWE RAW'] }), ['الرو', 'WWE RAW']);
+  const forms = showNameForms({ headline: 'عرض سي ام ال ال ديا دي مويرتوس بويبلا 26.10.2026 مترجم', title: 'CMLL Dia De Muertos Puebla 26.10.2026', programName: 'CMLL Lunes Clasico', eventDate: '2026-10-26', aliases, isShow: true });
+  assert.ok(forms.some((f: string) => f.includes('ديا دي مويرتوس')));
+  assert.deepEqual(forms.filter((f: string) => /لونيس|Lunes|Clasico/i.test(f)), []);
+  // a weekly episode keeps its own program's names (nothing lost for RAW/SmackDown)
+  const weekly = showNameForms({ headline: 'عرض الرو 26.10.2026 مترجم', title: 'WWE RAW 26.10.2026', programName: 'WWE RAW', eventDate: '2026-10-26', aliases: ['الرو', 'راو', 'WWE RAW'], isShow: true });
+  assert.ok(weekly.some((f: string) => /الرو/.test(f)));
+  assert.ok(weekly.some((f: string) => /WWE RAW October 26 2026/.test(f)));
+});

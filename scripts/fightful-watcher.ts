@@ -3046,7 +3046,8 @@ async function rewriteWithGemini(
  القواعد التحريرية والتنسيقية الإلزامية:
 1. **قاعدة أسماء الاتحادات والعروض بالإنجليزية حصراً**:
    - أسماء الاتحادات تظل بالإنجليزية دائماً كما هي دون تعريب: (WWE, AEW, TNA, ROH, NJPW, MLW, AAA, CMLL, GCW, UFC, MLP, Dragon Gate, RevPro, Stardom, OTT). وأي اتحاد آخر يُكتب بالحروف اللاتينية زي المصدر — ممنوع تعريبه («دراغون غيت»، «ريف برو»، «ستاردوم»).
-   - أسماء العروض التابعة للاتحادات تظل بالإنجليزية دائماً كما هي: (مثل WWE RAW, WWE SmackDown, WWE NXT, AEW Dynamite, AEW Collision, AEW Rampage, TNA iMPACT, ROH TV, Triplemania, MLP Northern Rising, NJPW Road To Destruction, NJPW Destruction in Kobe).
+   - أسماء العروض التابعة للاتحادات تظل بالإنجليزية دائماً كما هي: (مثل WWE RAW, WWE SmackDown, WWE NXT, AEW Dynamite, AEW Collision, AEW Rampage, TNA iMPACT, ROH TV, Triplemania, MLP Northern Rising, NJPW Power Struggle, NJPW Wrestle Kingdom, NJPW Dominion, NJPW New Year Dash, NJPW Road To Destruction, NJPW Destruction in Kobe).
+   - **أي اسم عرض جديد مش في القائمة يفضل إنجليزي زي المصدر**: ممنوع تعريبه صوتيا («Power Struggle» مش «باور ستراجل»، «Wrestle Kingdom» مش «ريسل كينغدوم»).
    - **تنبيه خاص لـ NJPW**: اسم جولة وعرض **NJPW Road To Destruction** و**NJPW Destruction in Kobe** يظل بالإنجليزية دائماً دون أي ترجمة أو تعريب (ممنوع منعاً باتاً ترجمة أو تعريب "Destruction" إلى "ديستركشن" أو "الدمار" نهائياً!).
    - ممنوع نهائياً كتابة: "دبليو دبليو إي" أو "إيه إي دبليو" أو "عرض الرو" أو "سماكداون" أو "ديناميت"؛ اكتب دائماً: WWE, AEW, WWE RAW, WWE SmackDown, AEW Dynamite.
    - **إلزامية ذكر اسم الاتحاد قبل اسم أي عرض مباشرة (Mandatory Promotion Prefix)**: ممنوع نهائياً كتابة اسم العرض مفرداً بدون اسم الاتحاد (اكتب دائماً: عرض MLP Northern Rising، عرض WWE SmackDown، عرض AEW Collision، عرض TNA iMPACT، عرض NJPW Road To Destruction).
@@ -3199,6 +3200,7 @@ ${timing.isTonight || (timing.isPreview && !timing.isFuture) ? `     - 🚨 **ت
      - الصيغة تكون فصحى بيضاء مبسطة جدا وسلسة وممتعة (جمل قصيرة وكلمات يومية سهلة)، وليست ترجمة حرفية ركيكة.
      - **فاعل الاستحواذ ومفعوله زي المصدر بالظبط**: «acquisition of Warner Bros. Discovery by Paramount» = «استحواذ باراماونت على وارنر براذرز ديسكفري» — ممنوع تبدّل الشركتين (حصل فعليا: الخبر كتب إن سكاي دانس هي اللي استحوذت، جولة المراقبة 2026-10-28).
      - **«considered for a visit» / «under consideration» = «كانت زيارته قيد الدراسة»**، ممنوع الترجمة الحرفية «كان تحت الدراسة».
+     - **الاتحاد مش بطولة**: ممنوع «NJPW بطولة» أو «AEW بطولة» — الاتحاد شركة والبطولة حاجة تانية. جملة المصدر «NJPW is an easy in for them» بتتكتب «الوصول إلى NJPW سهل عليهم» مش «NJPW بطولة سهلة» (حصل فعليا: خبر كالوم نيومان، جولة المراقبة 2026-10-28).
 ${isListOrReviewArticle(originalTitle) ? `   - **مقال قائمة/تقييم (List / Review)**: عنوان المصدر يعد القارئ بعدد من النقاط (مثل "3 Things We Hated & 3 We Loved" أو "5 Takeaways")، لذلك يجب أن يغطي المتن **كل نقطة منها بالترتيب** حتى لا يَعِد العنوان بما لا يقدمه الخبر:
      - فقرة افتتاحية قصيرة (سطرين) تذكر الحدث.
      - ثم عنوان فرعي بخط عريض لكل قسم (مثل **ما أعجبنا** و**ما لم يعجبنا**)، وتحته كل نقطة في سطر مستقل يبدأ بـ "- " مع جملة أو جملتين تشرح النقطة كما وردت في المصدر بالضبط.
@@ -3215,7 +3217,8 @@ ${isListOrReviewArticle(originalTitle) ? `   - **مقال قائمة/تقييم 
      - ممنوع نهائياً: "دبليو دبليو إي", "إيه إي دبليو", "تي إن إيه", "نيو جابان".
      - اكتب دائماً: WWE, AEW, TNA, NJPW, MLW.
     - **أسماء العروض التابعة للاتحادات تظل بالإنجليزية دائماً كما هي**:
-      (مثل: WWE RAW, WWE SmackDown, WWE NXT, AEW Dynamite, AEW Collision, AEW Rampage, TNA iMPACT, AEW All In, WrestleMania, Royal Rumble, SummerSlam, MLP Northern Rising, NJPW Road To Destruction, NJPW Destruction in Kobe).
+      (مثل: WWE RAW, WWE SmackDown, WWE NXT, AEW Dynamite, AEW Collision, AEW Rampage, TNA iMPACT, AEW All In, WrestleMania, Royal Rumble, SummerSlam, MLP Northern Rising, NJPW Power Struggle, NJPW Wrestle Kingdom, NJPW Dominion, NJPW New Year Dash, NJPW Road To Destruction, NJPW Destruction in Kobe).
+      - **أي اسم عرض جديد مش في القائمة يفضل إنجليزي زي المصدر، ممنوع تعريبه صوتيا** («Power Struggle» مش «باور ستراجل»).
       - ممنوع نهائياً: "الرو", "راو", "سماكداون", "ديناميت", "كوليجن", "إمباكت", "ديستركشن".
       - اكتب دائماً: WWE RAW, WWE SmackDown, AEW Dynamite, AEW Collision, TNA iMPACT, NJPW Road To Destruction.
    - **إلزامية ذكر اسم الاتحاد قبل اسم أي عرض مباشرة (Mandatory Promotion Prefix)**:

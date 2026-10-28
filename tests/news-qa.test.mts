@@ -343,3 +343,17 @@ test("an announced or advertised match must be named in the headline (INCIDENTS 
   assert.ok(BLOCKING_QA_CODES.includes("hidden_match_title") && RETRYABLE_QA_CODES.includes("hidden_match_title"));
   assert.equal(applyCorrections("رغم عدم صدور إعلان رسمى ترك اتحاد WWE NXT في موقف صعب"), "رغم عدم صدور إعلان رسمي ترك عرض WWE NXT في موقف صعب");
 });
+
+// Round 2026-10-28: «مصارعو AEW يعتقدون أن NJPW بطولة سهلة» — the source said NJPW is an easy *in* and the headline
+// turned a federation into a championship. The check blocks it and the writer retries with a correct headline.
+test("a federation is not a championship in a headline (round 2026-10-28)", async () => {
+  const { checkArticle, BLOCKING_QA_CODES, RETRYABLE_QA_CODES } = await import("../scripts/news-qa.ts");
+  const body = "أعرب كالوم نيومان عن استيائه من مصارعي AEW الذين يعتبرون الوصول إلى NJPW سهلا، وأكد أن التدريبات في الدوجو لا تقارن بحضور نزال واحد في عرض كبير قبل يوم واحد فقط من المواجهة.";
+  const has = (t: string) => checkArticle(t, body, []).some((i: any) => i.code === "federation_as_championship");
+  assert.ok(has("كالوم نيومان: مصارعو AEW يعتقدون أن NJPW بطولة سهلة والأمر ليس كذلك"));
+  assert.ok(has("مصارعو AEW يعتقدون أن AEW بطولة سهلة"));
+  assert.ok(!has("كالوم نيومان: مصارعو AEW يعتقدون أن الوصول إلى NJPW سهل والأمر ليس كذلك"));
+  // a real championship keeps its promotion: «بطولة AEW العالمية» is fine
+  assert.ok(!has("سي ام بانك يدافع عن بطولة AEW العالمية في عرض AEW Dynamite"));
+  assert.ok(BLOCKING_QA_CODES.includes("federation_as_championship") && RETRYABLE_QA_CODES.includes("federation_as_championship"));
+});

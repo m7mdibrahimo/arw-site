@@ -1225,3 +1225,22 @@ test("the Mexican National title keeps «الوطنية», and the CMLL pequeño
   const bad = fs.readdirSync("content/news").filter((f) => f.endsWith(".md") && /بطولة المكسيك للوزن الثقيل/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/gm, "")));
   assert.deepEqual(bad, []);
 });
+
+// Round 2026-10-28: «NJPW Power Struggle» was transliterated «باور ستراجل» in nine published stories — a show name is
+// part of the English media brand and transliterating it loses the search entirely. A deterministic correction now
+// rewrites it on every article, and the published archive is scanned so it cannot come back.
+test("show names stay English: «باور ستراجل» is corrected everywhere (round 2026-10-28)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("في عرض NJPW باور ستراجل يوم 3 نوفمبر"), "في عرض NJPW Power Struggle يوم 3 نوفمبر");
+  // idempotent: the approved English form is left alone
+  assert.equal(applyCorrections("عرض NJPW Power Struggle يوم 3 نوفمبر"), "عرض NJPW Power Struggle يوم 3 نوفمبر");
+  // the cause: the names glossary itself carried the transliteration, and it is sent to Gemini with every story
+  const glossary = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8")) as Record<string, string>;
+  assert.equal(glossary["Power Struggle"], "Power Struggle");
+  const bad: string[] = [];
+  for (const f of fs.readdirSync("content/news").filter((x) => x.endsWith(".md"))) {
+    const text = fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/gm, "");
+    if (/باور ستراجل/.test(text)) bad.push(f);
+  }
+  assert.deepEqual(bad, []);
+});

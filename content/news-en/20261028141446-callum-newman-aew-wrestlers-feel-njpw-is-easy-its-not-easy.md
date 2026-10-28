@@ -1,7 +1,7 @@
 ---
 title: "Callum Newman: AEW Wrestlers Feel NJPW Is Easy, It's Not Easy"
 slug: "callum-newman-aew-wrestlers-feel-njpw-is-easy-its-not-easy"
-description: "AEW stars like Kenny Omega, Jon Moxley, MJF, and Will Ospreay have been appearing on recent NJPW shows to set up future matches."
+description: "Callum Newman says AEW wrestlers treat NJPW as an easy way in, skipping the dojo grind and the full tours while jumping straight into main events."
 federation: AEW
 date: 2026-10-28T11:14:46.000Z
 source_id: 336228
