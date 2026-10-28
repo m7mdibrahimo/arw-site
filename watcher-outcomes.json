@@ -1,18 +1,23 @@
 {
+ "https://www.fightful.com/wrestling/michin-and-b-fab-discuss-winning-their-first-championships-in-wwe": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-28T20:32:33.654Z"
+ },
  "https://www.fightful.com/wrestling/ric-flair-set-for-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T20:20:45.885Z"
+  "at": "2026-10-28T20:31:48.179Z"
  },
  "https://www.fightful.com/wrestling/jimmy-house-says-he-learned-how-to-work-heel-in-wwe-evolve": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T20:20:45.140Z"
+  "at": "2026-10-28T20:31:47.372Z"
  },
  "https://www.fightful.com/wrestling/former-wwe-co-president-speaks-about-2019-crown-jewel-plane-incident-i-think-it-was-exaggerated-to-some-degree": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T20:20:44.252Z"
+  "at": "2026-10-28T20:31:46.404Z"
  },
  "https://www.ringsidenews.com/john-cena-drank-10-straight-days-before-iconic-shawn-michaels-match": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-15T16:51:10.283Z"
- },
- "https://www.fightful.com/wrestling/ftr-and-motor-city-machine-guns-to-battle-in-best-of-five-series-first-match-set-for-aew-wrestledream": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-15T15:54:06.796Z"
  }
 }
