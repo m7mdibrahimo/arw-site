@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/reason-behind-tna-stars-extended-television-absence": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Shiloh Hill",
+  "retry": true,
+  "at": "2026-10-28T22:05:13.135Z"
+ },
  "https://www.fightful.com/wrestling/shotzi-blackheart-clarifies-comments-regarding-wwe-not-allowing-her-to-do-tna-crossover": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": true,
   "at": "2026-10-15T20:28:55.331Z"
- },
- "https://www.fightful.com/wrestling/333960-aew-wrestledream-clockwork-carnage": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-15T18:24:04.204Z"
  }
 }
