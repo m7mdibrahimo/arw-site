@@ -4375,16 +4375,13 @@
     "facebook_reel": false,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض ان جيه بي دبليو سوبر جونيور تاج ليج (اليوم الرابع) 27.10.2026 مترجم",
-    "lastAttempt": 1793148227648,
+    "lastAttempt": 1793149080516,
     "errors": {
-      "facebook_reel": "تم قبول الفيديو ولم يتأكد ظهوره بعد؛ راجع فيسبوك.",
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "facebook_reel": "تم قبول الفيديو ولم يتأكد ظهوره بعد؛ راجع فيسبوك."
     },
-    "processing": [
-      "instagram_story"
-    ],
+    "processing": [],
     "reviewPlatforms": [
       "facebook_reel"
     ],
