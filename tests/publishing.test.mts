@@ -5347,3 +5347,23 @@ test('the NJPW Special Events library page is not named after its only show in t
   // the visible H1 keeps arLibTitle
   assert.match(tpl, /<h1 class="hero-title"><bdi>\{% if lp\.prog\.arLibTitle and lp\.pageNumber == 1 %\}\{\{ lp\.prog\.arLibTitle \}\}/);
 });
+
+// INCIDENTS #906: a Facebook reel still processing after the 30s status poll was reported as «ambiguous»,
+// which failed the show-reel monitor job every run (red /health) and let the same reel be posted again later.
+test('a Facebook reel still processing is accepted, not a failure', async t => {
+  let calls = 0;
+  t.mock.method(globalThis, 'fetch', async (url: any) => {
+    calls++;
+    if (calls === 1) return Response.json({ video_id: 'v1', upload_url: 'https://upload.test' });
+    if (calls === 2) return new Response('video', { headers: { 'content-length': '5' } });
+    if (calls === 3) return Response.json({ success: true });
+    if (calls === 4) return Response.json({ id: 'v1' });          // finish
+    return Response.json({ status: { publishing_phase: { status: 'processing' } } });
+  });
+  const result = await publishFacebookVideo({ pageId: 'p', token: 'secret', videoUrl: 'https://video.test', story: false, poll: { tries: 2, intervalMs: 0 } });
+  assert.equal(result.ok, true); assert.equal(result.id, 'v1');
+  // …and a lost acknowledgement is a review item, never a failed run
+  assert.equal(hasRealFailure({ facebook_reel: { ok: false, ambiguous: true, id: 'v1', error: 'x' } }, ['facebook_reel']), false);
+  assert.equal(hasRealFailure({ facebook_reel: { ok: false, status: 'uncertain', error: 'x' } }, ['facebook_reel']), false);
+  assert.equal(hasRealFailure({ facebook_reel: { ok: false, error: 'Meta rejected the media' } }, ['facebook_reel']), true);
+});

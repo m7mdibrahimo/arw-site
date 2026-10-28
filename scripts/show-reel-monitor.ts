@@ -98,7 +98,11 @@ export function hasRealFailure(results: Record<string, any>, requested: readonly
   // 'rate_limited' = the Worker is honouring a platform pause (e.g. Instagram's
   // "too many actions"); it resumes by itself, so it must not fail the job and
   // email the owner every 15 minutes for hours (seen 2026-09-24).
-  return requested.some(p => results[p]?.ok !== true && !['processing', 'rate_limited'].includes(results[p]?.status) && !results[p]?.skipped);
+  // 'uncertain'/ambiguous = the platform accepted the post but the acknowledgement was lost
+  // (Facebook reel still processing, connection cut). Retrying could post it twice, so it is
+  // a review item (entry.reviewPlatforms), not a CI failure: failing the job for it turned
+  // /health red on every run while the reel was already on the page (INCIDENTS #906).
+  return requested.some(p => results[p]?.ok !== true && !['processing', 'rate_limited', 'uncertain'].includes(results[p]?.status) && !results[p]?.ambiguous && !results[p]?.skipped);
 }
 // Instagram encodes video asynchronously; a platform left mid-processing is
 // usually ready within minutes, so waiting the full 45-minute retry gate held a

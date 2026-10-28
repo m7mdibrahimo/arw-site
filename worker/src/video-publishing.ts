@@ -18,6 +18,8 @@ export async function finishPublication(url: string, body: object): Promise<Vide
 
 export async function publishFacebookVideo(options: {
   pageId: string; token: string; videoUrl: string; caption?: string; story: boolean;
+  /** status polling after «finish» (tests shorten it; production keeps 10 × 3s) */
+  poll?: { tries: number; intervalMs: number };
 }): Promise<VideoResult> {
   const { pageId, token, videoUrl, caption, story } = options;
   if (!pageId || !token) return { ok: false, error: 'بيانات حساب فيسبوك غير مكتملة.' };
@@ -47,8 +49,9 @@ export async function publishFacebookVideo(options: {
     if (!result.ok) return result;
     if (story) return { ...result, id: String(session.video_id) };
     // Reels finish can acknowledge processing before the video is actually published.
-    for (let i = 0; i < 10; i++) {
-      await pause(3000);
+    const poll = options.poll || { tries: 10, intervalMs: 3000 };
+    for (let i = 0; i < poll.tries; i++) {
+      if (poll.intervalMs > 0) await pause(poll.intervalMs);
       const response = await fetch(`${API}/${session.video_id}?fields=status&access_token=${encodeURIComponent(token)}`);
       const data: any = await response.json();
       if (data.status?.publishing_phase?.status === 'complete' || data.status?.video_status === 'ready') {
@@ -56,7 +59,11 @@ export async function publishFacebookVideo(options: {
       }
       if (data.status?.publishing_phase?.status === 'error') return { ok: false, error: 'فشلت معالجة الريل بعد الرفع.' };
     }
-    return { ok: false, ambiguous: true, id: String(session.video_id), error: 'تم قبول الفيديو ولم يتأكد ظهوره بعد؛ راجع فيسبوك.' };
+    // Facebook accepted the reel with video_state=PUBLISHED and never reported an error: a reel still
+    // processing appears on the page by itself a minute later. Reporting this as «ambiguous» failed the
+    // monitor job on every run and, 45 minutes later, let deliverOnce post the same reel a second time
+    // (NJPW Super Junior Tag League Day 4, round 2026-10-28, INCIDENTS #906).
+    return { ok: true, id: String(session.video_id), result: { pending: true }, message: 'تم قبول الريل وهو قيد المعالجة على فيسبوك.' };
   } catch { return { ok: false, ambiguous: true, error: 'تعذر تأكيد حالة فيديو فيسبوك؛ راجع المنصة.' }; }
 }
 

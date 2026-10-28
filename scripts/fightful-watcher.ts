@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, wrestlerNotInSource, type NewsFile } from "./news-qa";
+import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, careerStartNotInSource, wrestlerNotInSource, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -3174,6 +3174,7 @@ ${timing.isTonight || (timing.isPreview && !timing.isFuture) ? `     - 🚨 **ت
    - **قاعدة الأمانة الخبرية التامة (100% Factual Fidelity)**:
      - انقل جميع الوقائع، الأسماء، النزالات، والأحداث الواردة في النص الإنجليزي بأمانة تامة ودقة متناهية دون زيادة أحداث من عندك أو حذف تفاصيل هامة.
      - **البطل والمتحدي كما في المصدر**: «X defending the title against Y» أو «X (c) vs. Y» يعني X هو البطل وY هو المتحدي. ممنوع تبدّلهم (حصل فعليا: «Grayson Waller defending the NXT Championship against Tony D'Angelo» اتكتب «البطل توني دي أنجيلو والمتحدي غرايسون والر»).
+     - **سنة الانضمام مش سنة بداية المسيرة**: «started working for the WWF in 1987» أو «joined WWE in 2019» معناها «التحق باتحاد WWF عام 1987» — ممنوع تكتبها «بدأ مسيرته عام 1987»؛ «بدأ مسيرته/مشواره» تُكتب بس لو المصدر قالها نصاً (began/started his career أو debuted)، ولو المصدر مبسّط اكتب «بدأ العمل في …» أو سيب السنة (حصل فعليا: بروس بريتشارد بدأ في المصارعة وعمره 10 سنوات عام 1973، والخبر قال «بدأ مسيرته عام 1987»).
      - الصيغة تكون فصحى بيضاء مبسطة جدا وسلسة وممتعة (جمل قصيرة وكلمات يومية سهلة)، وليست ترجمة حرفية ركيكة.
 ${isListOrReviewArticle(originalTitle) ? `   - **مقال قائمة/تقييم (List / Review)**: عنوان المصدر يعد القارئ بعدد من النقاط (مثل "3 Things We Hated & 3 We Loved" أو "5 Takeaways")، لذلك يجب أن يغطي المتن **كل نقطة منها بالترتيب** حتى لا يَعِد العنوان بما لا يقدمه الخبر:
      - فقرة افتتاحية قصيرة (سطرين) تذكر الحدث.
@@ -4477,6 +4478,8 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   draft = { ...draft, title: shelvedNotCancelled(draft.title, plainText), body: shelvedNotCancelled(draft.body, plainText) };
   // A story about Vince Russo is never «فينس مكمان» (INCIDENTS #294).
   draft = { ...draft, title: vinceIsRusso(draft.title, plainText), body: vinceIsRusso(draft.body, plainText), tags: [...new Set(draft.tags.map(t => vinceIsRusso(t, plainText)))] };
+  // «started working for the WWF in 1987» is not «بدأ مسيرته عام 1987» (INCIDENTS #906).
+  draft = { ...draft, title: careerStartNotInSource(draft.title, `${rawTitle}\n${plainText}`), body: careerStartNotInSource(draft.body, `${rawTitle}\n${plainText}`) };
   if (blocking.length) {
     // These are one-off Gemini glitches: a fresh translation next run usually comes out clean.
     if (blocking.some(i => RETRYABLE_QA_CODES.includes(i.code))) lastPostRetryable = true;

@@ -857,6 +857,23 @@ export function ageNotInSource(body: string, source: string): string[] {
   }
   return found;
 }
+/**
+ * «بدأ مسيرته في عالم المصارعة عام 1987» must be what the source says (began / started his
+ * career, debuted). "He started working for the then-WWFW in 1987" is a company start, not a
+ * career start: the writer compressed it and gave the career a year that is not its own — Bruce
+ * Prichard began at 10 (1973) and joined the WWF in 1987 (INCIDENTS #906). When no source
+ * sentence ties that year to a career start, the year is dropped before publishing.
+ */
+export function careerStartNotInSource(text: string, source: string): string {
+  if (!text) return text;
+  const sentences = String(source || "").replace(/\s+/g, " ").split(/(?<=[.!?])\s+/);
+  const backed = (year: string) => sentences.some(s => s.includes(year)
+    && (/\b(?:began|started|launched)\b[^.]{0,60}\b(?:career|wrestling|training|business)\b/i.test(s)
+      || /\b(?:debuted|made (?:his|her|their) (?:in-ring )?debut)\b/i.test(s)));
+  return String(text).replace(
+    /(بدأ(?:ت)?\s+(?:[\u0621-\u064A]+(?:[\s\u00A0]+[\u0621-\u064A]+){0,3}\s+)?(?:مسيرته|مسيرتها|مشواره|مشوارها)(?:\s+الطويلة)?(?:\s+في\s+(?:عالم\s+)?المصارعة)?)\s+عام\s+((?:19|20)\d{2})/g,
+    (whole, head: string, year: string) => backed(year) ? whole : head);
+}
 export function spelledAgesToDigits(body: string): string {
   return String(body || "").replace(/(?<![\u0600-\u06FF])(?:(واحدا|ثلاثا|أربعا|خمسا|ستا|سبعا|ثمانيا|تسعا|واحد|اثنين|ثلاثة|أربعة|خمسة|ستة|سبعة|ثمانية|تسعة)\s+و)?(?:ال)?(عشرين|ثلاثين|أربعين|خمسين|ستين|سبعين|ثمانين|تسعين)\s+(عاما|عامًا|عام|سنة)(?![\u0600-\u06FF])/g,
     (_m, u: string | undefined, t: string, w: string) => `${(u ? AGE_UNITS[u] : 0) + AGE_TENS[t]} ${w}`)

@@ -1081,3 +1081,27 @@ test("«مهرجان» للعروض بيتصلح لـ«عرض» وممنوع ف�
   }
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #906: «started working for the WWF in 1987» اتكتبت «بدأ مسيرته في عالم المصارعة عام 1987»،
+// وبروس بريتشارد بدأ فعلا في المصارعة وعمره 10 سنوات عام 1973. القاعدة: سنة المسيرة لازم تكون من
+// جملة في المصدر عن بداية المسيرة، وإلا السنة بتتشال قبل النشر.
+test("a career-start year the source never gives is dropped (INCIDENTS #906)", async () => {
+  const { careerStartNotInSource } = await import("../scripts/news-qa");
+  const prichard = "Prichard began his professional wrestling career at just 10 years old, starting by selling posters for Paul Boesch's Houston Wrestling in 1973. He started working for the then-WWFW in 1987, occasionally as an announcer, before creating his Brother Love gimmick.";
+  assert.equal(
+    careerStartNotInSource("بدأ بريتشارد مسيرته الطويلة في عالم المصارعة عام 1987، واشتهر بشخصية Brother Love.", prichard),
+    "بدأ بريتشارد مسيرته الطويلة في عالم المصارعة، واشتهر بشخصية Brother Love.");
+  // مصدر بيقول بداية المسيرة نصاً: السنة تفضل
+  const aja = "Aja Kong began her career in 1986 and won titles everywhere.";
+  assert.equal(careerStartNotInSource("كونغ التي بدأت مسيرتها عام 1986 وحققت ألقابا كثيرة.", aja), "كونغ التي بدأت مسيرتها عام 1986 وحققت ألقابا كثيرة.");
+  // والخبر المنشور نفسه مبقاش فيه السنة الغلط
+  const story = fs.readFileSync("content/news/20261028023753-تطورات-مهمة-حول-مستقبل-بروس-بريتشارد-في-wwe.md", "utf-8");
+  assert.doesNotMatch(story, /بدأ[^.]{0,40}مسيرته[^.]{0,40}عام\s+1987/);
+  assert.match(story, /التحق باتحاد WWF عام 1987/);
+  // والقاعدة موجودة في الدليل اللي بيتقرا لجيميناي وفي برومبت المدقق
+  const guide = fs.readFileSync("editorial/style-guide.md", "utf-8");
+  assert.match(guide, /started working for the WWF in 1987/);
+  const { proofreadPrompt } = await import("../scripts/editorial.ts");
+  const prompt = proofreadPrompt({ title: "عنوان", body: "متن", tags: [] } as any, "t", "s", "", []);
+  assert.match(prompt, /started working for the WWF in 1987/);
+});
