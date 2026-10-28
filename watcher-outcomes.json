@@ -2,42 +2,42 @@
  "https://www.fightful.com/wrestling/update-on-bruce-prichards-expected-retirement": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:31:04.196Z"
+  "at": "2026-10-28T05:33:34.485Z"
  },
  "https://www.fightful.com/wrestling/john-cena-cody-rhodes-to-appear-dusty-classic-final-unsanctioned-match-set-for-11-4-nxt": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-10-28T05:31:03.845Z"
+  "at": "2026-10-28T05:33:34.166Z"
  },
  "https://www.fightful.com/wrestling/watch-danhausens-very-nice-very-evil-halloween-special": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:30:29.726Z"
+  "at": "2026-10-28T05:33:08.027Z"
  },
  "https://www.fightful.com/wrestling/report-bruce-prichard-expected-to-retire-as-executive-director-after-wrestlemania-season": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:30:29.234Z"
+  "at": "2026-10-28T05:33:07.581Z"
  },
  "https://www.fightful.com/wrestling/dr-wagner-jr-in-attendance-to-watch-wagner-brothers-compete-on-10-27-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:30:28.896Z"
+  "at": "2026-10-28T05:33:07.274Z"
  },
  "https://www.fightful.com/wrestling/tavion-heights-vs-myles-borne-in-weapons-wild-match-added-to-nxt-halloween-havoc": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:30:28.629Z"
+  "at": "2026-10-28T05:33:07.033Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-signs-sumo-football-athlete-hidetora-hanada": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:30:28.128Z"
+  "at": "2026-10-28T05:33:06.589Z"
  },
  "https://www.fightful.com/wrestling/amazing-red-thinks-he-can-bring-aj-styles-out-of-retirement-wrestling-is-such-a-hard-thing-to-leave": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:30:27.780Z"
+  "at": "2026-10-28T05:33:06.267Z"
  },
  "https://www.fightful.com/wrestling/yota-tsuji-hirooki-goto-teaming-konosuke-takeshita-match-added-to-cmll-x-njpw-lucha-kingdom": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
