@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2299130/wwe-nxt-october-27-2026-results": {
+  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
+  "retry": false,
+  "at": "2026-10-28T01:25:31.810Z"
+ },
  "https://www.fightful.com/wrestling/tavion-heights-vs-myles-borne-in-weapons-wild-match-added-to-nxt-halloween-havoc": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
@@ -18,11 +23,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-28T01:21:28.721Z"
- },
- "https://www.wrestlinginc.com/2299130/wwe-nxt-october-27-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-28T01:05:56.653Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-results-10-27-2026-jackson-drake-vs-ek-prosper-dusty-classic-semifinals-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
