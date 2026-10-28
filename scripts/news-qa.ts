@@ -50,7 +50,9 @@ export function applyCorrections(text: string, corrections = loadCorrections()):
   if (!text) return text;
   let out = decodeHtmlEntities(text);
   for (const c of corrections) {
-    out = out.replace(correctionRegex(c), (_m, prefix = "") =>
+    out = out.replace(correctionRegex(c), (m, prefix = "") =>
+      // the text is already right: «لعودة→للعودة» read «للعودة» as «ل» + «لعودة» and wrote «لللعودة» (INCIDENTS #944)
+      m === c.right ? m :
       // "بـWWE SmackDown": a joined preposition before an English name takes a tatweel
       prefix && /^[A-Za-z]/.test(c.right) && !prefix.endsWith("و") ? `${prefix}ـ${c.right}` : `${prefix}${c.right}`);
     // a rule that deletes a phrase leaves a double space behind
@@ -145,6 +147,8 @@ const RULES: Rule[] = [
   { code: "glued_latin_arabic", severity: "error", re: new RegExp(`[A-Za-z][${AR}]|[${AR}]{2}[A-Za-z]|(?<![${AR}])[بلك](?=[A-Z]{2,})`, "g"), message: "حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)" },
   { code: "glued_prefix_quote", severity: "error", re: new RegExp(`(?<![${AR}])[بلك]["“«](?=[${AR}])`, "g"), message: "حرف جر ملزوق بعلامة اقتباس (ب\"الصدمة\") — اكتب «بالصدمة» بدون اقتباس أو الاقتباس كله بين علامتين" },
   { code: "broken_word", severity: "error", re: /(?<![ء-ي\w])(?:ص|ث|ج|ح|خ|ذ|ز|ش|ض|ط|ظ|غ|ق|ك)(?![ء-ي\w])(?=\s+(?:من|في|على|عن|إلى|الى)\s)/g, message: "كلمة مكسورة: حرف عربي واحد لوحده (غالبا «ص» بدل «صورة»)", fields: ["title", "body"] },
+  // An English common noun spelled in Arabic letters — «سلالته ودونسته الخاصة» for «my own dynasty» (INCIDENTS #944)
+  { code: "broken_word", severity: "error", re: /(?<![ء-ي])(?:[وفبل]?(?:ال)?)(?:دونست|داينست|دايناست|لينياج)[ء-ي]*/g, message: "كلمة إنجليزية مكتوبة بحروف عربية (dynasty ← سلالة، lineage ← نسب)", fields: ["title", "body"] },
   { code: "broken_word", severity: "error", re: /(?<![ء-ي])(?:أنها|أنه|إنها|إنه|بأنها|بأنه|وأنها|وأنه)\s+لست(?![ء-ي])/g, message: "نحو: «لست» مع ضمير الغائب — الصح «ليست/ليس»", fields: ["title", "body"] },
   { code: "broken_word", severity: "error", re: /(?<![ء-ي])(?!(?:ال)?(?:مميتة|مستميتة)(?![ء-ي]))[ء-ي]{2,}يتة(?![ء-ي])/g, message: "كلمة مكسورة: «…يتة» (تاء زيادة — مثل «احترافيتة» بدل «احترافيته/احترافيتها»)", fields: ["title", "body"] },
   { code: "broken_word", severity: "error", re: /(?<![ء-ي])وة(?![ء-ي])/g, message: "كلمة مكسورة: «وة» لوحدها (غالبا «و» + ترجمة مقطوعة لاسم — مثل «هانك وة تانك» بدل «هانك وتانك»)", fields: ["title", "body"] },

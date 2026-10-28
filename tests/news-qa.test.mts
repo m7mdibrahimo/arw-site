@@ -413,3 +413,15 @@ test("the duals «يساعدان» / «ضيفين» / «وهما» are blocked, 
   const ok = checkArticle("دانهاوزن يستعين ببابا شانغو وذا بوغيمان لعلاج مات كاردونا في عرض الهالوين", "وشهد العرض ظهور بابا شانغو وذا بوغيمان، من أبرز الشخصيات المرعبة في تاريخ WWE، وهم يحاولون المساعدة.\n\n" + body);
   assert.ok(!ok.some((i) => i.code === "dual_form"));
 });
+
+test("broken_word: English common noun spelled in Arabic letters (INCIDENTS #944)", () => {
+  const t = "بيشوب كاون يتحدث عن سعيه نحو بطولة ROH العالمية";
+  assert.ok(checkArticle(t, "يرى أن اللحظة قد حانت ليظهر إمكانياته ويخلق سلالته ودونسته الخاصة داخل اتحاد ROH.").some((i) => i.code === "broken_word"));
+  assert.ok(!checkArticle(t, "يرى أن اللحظة قد حانت ليظهر إمكانياته ويصنع سلالته الخاصة داخل اتحاد ROH.").some((i) => i.code === "broken_word"));
+  assert.ok(!checkArticle(t, "فاز شون ليغاسي ودوريان فان دوكس بالنزال.").some((i) => i.code === "broken_word"));
+});
+
+test("applyCorrections keeps text that is already right (لعودة→للعودة must not write لللعودة, INCIDENTS #944)", () => {
+  assert.equal(applyCorrections("يستعد للعودة المرتقبة إلى الحلبة"), "يستعد للعودة المرتقبة إلى الحلبة");
+  assert.equal(applyCorrections("يستعد لعودة المرتقبة إلى الحلبة"), "يستعد للعودة المرتقبة إلى الحلبة");
+});
