@@ -4419,7 +4419,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261028212556-tna-xplosion-23-10-2026": {
     "publishedAt": 1793215108431,
