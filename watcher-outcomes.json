@@ -1,23 +1,23 @@
 {
- "https://www.fightful.com/wrestling/stu-grayson-recalls-severing-a-nerve-in-his-finger-with-barbed-wire-during-ring-of-honor-bout": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-28T18:03:41.651Z"
- },
  "https://www.fightful.com/wrestling/ric-flair-set-for-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T18:03:02.484Z"
+  "at": "2026-10-28T18:05:52.926Z"
  },
  "https://www.fightful.com/wrestling/jimmy-house-says-he-learned-how-to-work-heel-in-wwe-evolve": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T18:03:01.674Z"
+  "at": "2026-10-28T18:05:52.182Z"
  },
  "https://www.fightful.com/wrestling/former-wwe-co-president-speaks-about-2019-crown-jewel-plane-incident-i-think-it-was-exaggerated-to-some-degree": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T18:03:00.706Z"
+  "at": "2026-10-28T18:05:51.279Z"
+ },
+ "https://www.fightful.com/wrestling/stu-grayson-recalls-severing-a-nerve-in-his-finger-with-barbed-wire-during-ring-of-honor-bout": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-28T18:03:41.651Z"
  },
  "https://www.fightful.com/wrestling/update-on-bruce-prichards-expected-retirement": {
   "reason": "مكرر مع خبر نزل قبل كده",
