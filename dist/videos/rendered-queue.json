@@ -10344,16 +10344,16 @@
     "renderedAt": 1793201823858
   },
   {
-    "videoUrl": "/videos/reel-20261028212403-cmll-dia-de-muertos-mexico-cit.mp4",
-    "filename": "reel-20261028212403-cmll-dia-de-muertos-mexico-cit.mp4",
-    "title": "عرض سي ام ال ال ديا دي مويرتوس مكسيكو سيتي 27.10.2026 مترجم",
-    "secondaryTitle": "CMLL Dia De Muertos Mexico City 27.10.2026",
-    "description": "عرض سي ام ال ال ديا دي مويرتوس مكسيكو سيتي مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261028212403-cmll-dia-de-muertos-mexico-cit",
+    "videoUrl": "/videos/reel-20261028212556-tna-xplosion-23-10-2026.mp4",
+    "filename": "reel-20261028212556-tna-xplosion-23-10-2026.mp4",
+    "title": "عرض تي ان ايه اكسبلوجن 23.10.2026 مترجم",
+    "secondaryTitle": "TNA Xplosion 23.10.2026",
+    "description": "عرض تي ان ايه اكسبلوجن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261028212556-tna-xplosion-23-10-2026",
     "kind": "show",
-    "slug": "20261028212403-cmll-dia-de-muertos-mexico-cit",
-    "image": "/content/images/cqdvo6mzi3ji0q84.jpg",
-    "renderedAt": 1793212233947
+    "slug": "20261028212556-tna-xplosion-23-10-2026",
+    "image": "/content/images/x4hviwmdavtrdohq.jpg",
+    "renderedAt": 1793213708230
   },
   {
     "videoUrl": "/videos/reel-20260924112300-aew-dynamite-23-09-2026.mp4",
@@ -10365,7 +10365,7 @@
     "kind": "show",
     "slug": "20260924112300-aew-dynamite-23-09-2026",
     "image": "/content/images/ej0qfugwdjht2di9.jpg",
-    "renderedAt": 1793212339286
+    "renderedAt": 1793213788583
   },
   {
     "videoUrl": "/videos/reel-20260924115800-aew-collision-23-09-2026.mp4",
@@ -10377,7 +10377,7 @@
     "kind": "show",
     "slug": "20260924115800-aew-collision-23-09-2026",
     "image": "/content/images/gf0rzx3ry5wqa78r.jpg",
-    "renderedAt": 1793212442772
+    "renderedAt": 1793213867274
   },
   {
     "videoUrl": "/videos/reel-20260925093300-tna-impact-24-09-2026.mp4",
@@ -10389,7 +10389,7 @@
     "kind": "show",
     "slug": "20260925093300-tna-impact-24-09-2026",
     "image": "/content/images/ns9b5vt8q6sg5ag1.jpg",
-    "renderedAt": 1793212547550
+    "renderedAt": 1793213946111
   },
   {
     "videoUrl": "/videos/reel-20260925100800-roh-24-09-2026.mp4",
@@ -10401,7 +10401,7 @@
     "kind": "show",
     "slug": "20260925100800-roh-24-09-2026",
     "image": "/content/images/jumvbajygd3plbfm.jpg",
-    "renderedAt": 1793212651071
+    "renderedAt": 1793214023461
   },
   {
     "videoUrl": "/videos/reel-20260930132546-wwe-nxt-29-09-2026.mp4",
@@ -10413,7 +10413,7 @@
     "kind": "show",
     "slug": "20260930132546-wwe-nxt-29-09-2026",
     "image": "/content/images/qultpltsjy7kplny.jpg",
-    "renderedAt": 1793212752480
+    "renderedAt": 1793214100221
   },
   {
     "videoUrl": "/videos/reel-20260930152731-cmll-domingo-familiar-27-09-20.mp4",
@@ -10425,7 +10425,7 @@
     "kind": "show",
     "slug": "20260930152731-cmll-domingo-familiar-27-09-20",
     "image": "/content/images/uy20pbsieciwkj3z.jpg",
-    "renderedAt": 1793212858343
+    "renderedAt": 1793214180567
   },
   {
     "videoUrl": "/videos/reel-20261025192311-aaa-heroes-inmortales-week-24-.mp4",
@@ -10437,7 +10437,7 @@
     "kind": "show",
     "slug": "20261025192311-aaa-heroes-inmortales-week-24-",
     "image": "/content/images/73t7dmxfarjg13yl.jpg",
-    "renderedAt": 1793212960157
+    "renderedAt": 1793214259569
   },
   {
     "videoUrl": "/videos/reel-20261025200715-nwa-powerrr-24-10-2026.mp4",
@@ -10449,6 +10449,18 @@
     "kind": "show",
     "slug": "20261025200715-nwa-powerrr-24-10-2026",
     "image": "/content/images/yzd5lwqhv75hz0t5.jpg",
-    "renderedAt": 1793213063206
+    "renderedAt": 1793214354839
+  },
+  {
+    "videoUrl": "/videos/reel-20261028212403-cmll-dia-de-muertos-mexico-cit.mp4",
+    "filename": "reel-20261028212403-cmll-dia-de-muertos-mexico-cit.mp4",
+    "title": "عرض سي ام ال ال ديا دي مويرتوس مكسيكو سيتي 27.10.2026 مترجم",
+    "secondaryTitle": "CMLL Dia De Muertos Mexico City 27.10.2026",
+    "description": "عرض سي ام ال ال ديا دي مويرتوس مكسيكو سيتي مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261028212403-cmll-dia-de-muertos-mexico-cit",
+    "kind": "show",
+    "slug": "20261028212403-cmll-dia-de-muertos-mexico-cit",
+    "image": "/content/images/cqdvo6mzi3ji0q84.jpg",
+    "renderedAt": 1793214434084
   }
 ]
