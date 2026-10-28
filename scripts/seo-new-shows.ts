@@ -62,7 +62,8 @@ export function queriesByPage(rows: { keys: string[]; clicks: number; impression
 
 /** Adult-site searches Google sometimes shows a show page for («اكس ان اكس اكس» = xnxx). They are not wrestling queries:
  *  never a ranking target, and their words never go into a page's head (INCIDENTS #923) */
-export const OFF_TOPIC_QUERY = /اكس\s*ان\s*اكس|اكس\s+اكس\s+ان|^\s*اكس\s+مترجم|(?:^|\s)(?:سكس|نيك)(?=\s|$)|افلام\s+اكس|\b(?:xnxx|xxx|sex|porn\w*)\b/i;
+// «عرب اكس» and a bare «اكس» are the same adult searches (the NXT 27.10 page was listed at 29 for «عرب اكس», INCIDENTS #943)
+export const OFF_TOPIC_QUERY = /اكس\s*ان\s*اكس|عرب\s*اكس(?![ء-ي])|^\s*اكس\s*$|اكس\s+اكس\s+ان|^\s*اكس\s+مترجم|(?:^|\s)(?:سكس|نيك)(?=\s|$)|افلام\s+اكس|\b(?:xnxx|xxx|sex|porn\w*)\b/i;
 export function isOffTopicQuery(q: string): boolean { return OFF_TOPIC_QUERY.test(String(q)); }
 
 /** The queries people really use (seen `minImpressions` times or more) where the page is not in the first 3 */

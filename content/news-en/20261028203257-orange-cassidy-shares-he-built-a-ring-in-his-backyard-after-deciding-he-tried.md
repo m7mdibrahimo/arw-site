@@ -1,5 +1,5 @@
 ---
-title: "Orange Cassidy Shares He Built a Ring in His Backyard After Deciding He Tried Wrestling"
+title: "Orange Cassidy Shares He Built a Ring in His Backyard After Deciding to Try Wrestling"
 slug: "orange-cassidy-shares-he-built-a-ring-in-his-backyard-after-deciding-he-tried"
 description: "Orange Cassidy has revealed that he built a ring in his backyard after making the decision to try out professional wrestling."
 federation: AEW

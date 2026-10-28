@@ -404,3 +404,12 @@ test("no published story has a half-English glossary name or a tripled letter (I
   });
   assert.deepEqual(bad, []);
 });
+
+test("the duals «يساعدان» / «ضيفين» / «وهما» are blocked, the plural rewrite passes (INCIDENTS #942)", () => {
+  const body = "نص خبر طويل بما يكفي ليمر الفحص الأساسي بدون مشاكل أخرى في المتن.";
+  assert.ok(checkArticle("بابا شانغو وذا بوغيمان يساعدان دانهاوزن في إصلاح مات كاردونا", body).some((i) => i.code === "dual_form"));
+  assert.ok(checkArticle("دانهاوزن يستضيف عرض الهالوين", "وشهد العرض حضور ضيفين مميزين من تاريخ WWE، وهما بابا شانغو وذا بوغيمان.\n\n" + body).some((i) => i.code === "dual_form"));
+  assert.ok(BLOCKING_QA_CODES.includes("dual_form"));
+  const ok = checkArticle("دانهاوزن يستعين ببابا شانغو وذا بوغيمان لعلاج مات كاردونا في عرض الهالوين", "وشهد العرض ظهور بابا شانغو وذا بوغيمان، من أبرز الشخصيات المرعبة في تاريخ WWE، وهم يحاولون المساعدة.\n\n" + body);
+  assert.ok(!ok.some((i) => i.code === "dual_form"));
+});
