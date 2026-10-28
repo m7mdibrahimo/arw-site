@@ -1,18 +1,23 @@
 {
+ "https://www.fightful.com/wrestling/shawn-michaels-and-nxt-roster-parody-raw-1000-ad-to-advertise-next-weeks-wwe-nxt": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-10-28T18:12:59.500Z"
+ },
  "https://www.fightful.com/wrestling/ric-flair-set-for-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T18:05:52.926Z"
+  "at": "2026-10-28T18:11:35.543Z"
  },
  "https://www.fightful.com/wrestling/jimmy-house-says-he-learned-how-to-work-heel-in-wwe-evolve": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T18:05:52.182Z"
+  "at": "2026-10-28T18:11:35.025Z"
  },
  "https://www.fightful.com/wrestling/former-wwe-co-president-speaks-about-2019-crown-jewel-plane-incident-i-think-it-was-exaggerated-to-some-degree": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T18:05:51.279Z"
+  "at": "2026-10-28T18:11:34.406Z"
  },
  "https://www.fightful.com/wrestling/stu-grayson-recalls-severing-a-nerve-in-his-finger-with-barbed-wire-during-ring-of-honor-bout": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-15T15:12:38.333Z"
- },
- "https://www.fightful.com/wrestling/law-firm-investigating-potential-privacy-violation-by-wwes-official-website": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-15T14:38:52.136Z"
  }
 }
