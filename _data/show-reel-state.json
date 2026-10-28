@@ -4414,7 +4414,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال ديا دي مويرتوس مكسيكو سيتي 27.10.2026 مترجم",
-    "lastAttempt": 1793214254712,
+    "lastAttempt": 1793215081711,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -4424,5 +4424,24 @@
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
+  },
+  "20261028212556-tna-xplosion-23-10-2026": {
+    "publishedAt": 1793215108431,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض تي ان ايه اكسبلوجن 23.10.2026 مترجم",
+    "lastAttempt": 1793215162815,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_reel",
+      "tiktok"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
