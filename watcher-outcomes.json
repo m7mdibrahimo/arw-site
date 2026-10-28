@@ -1,23 +1,23 @@
 {
- "https://www.ringsidenews.com/john-cena-drank-10-straight-days-before-iconic-shawn-michaels-match": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-28T19:57:16.952Z"
- },
  "https://www.fightful.com/wrestling/ric-flair-set-for-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T19:59:30.540Z"
+  "at": "2026-10-28T20:01:09.205Z"
  },
  "https://www.fightful.com/wrestling/jimmy-house-says-he-learned-how-to-work-heel-in-wwe-evolve": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T19:59:29.730Z"
+  "at": "2026-10-28T20:01:08.563Z"
  },
  "https://www.fightful.com/wrestling/former-wwe-co-president-speaks-about-2019-crown-jewel-plane-incident-i-think-it-was-exaggerated-to-some-degree": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T19:59:28.766Z"
+  "at": "2026-10-28T20:01:07.794Z"
+ },
+ "https://www.ringsidenews.com/john-cena-drank-10-straight-days-before-iconic-shawn-michaels-match": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-28T19:57:16.952Z"
  },
  "https://www.fightful.com/wrestling/royce-keys-on-the-946-potentially-facing-the-bloodline-inside-wargames-just-take-what-weve-done-now-and-multiply-it-by-a-hundred": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
