@@ -20,6 +20,6 @@ Ilja Dragunov, the newest signee for AEW, opened up about his emotions and react
 
 He added that he felt a strong sense of nostalgia and intense excitement before stepping into the ring to give his all with complete devotion.
 
-https://www.youtube.com/watch?v=eHhayAWYsFM
-
 Dragunov expressed admiration for how dedicated AEW is to presenting his character in a distinct and precise way. He also revealed that he spoke with Tony Khan immediately after his first appearance, noting that the AEW CEO praised his debut on television and felt the timing was completely ideal.
+
+https://www.youtube.com/watch?v=eHhayAWYsFM

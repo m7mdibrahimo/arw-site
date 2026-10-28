@@ -66,6 +66,19 @@ export function embedLines(body: string): string[] {
   return String(body || "").split("\n").map((l) => l.trim()).filter(isEmbedLine);
 }
 const linkOf = (line: string) => line.trim().replace(/^<|>$/g, "");
+/** The embeds that close the Arabic story close the English one too. Gemini put the Ilja Dragunov interview video
+ *  between two paragraphs of the English story while the Arabic one ends with it (INCIDENTS #937). */
+export function trailingEmbedsLast(body: string, arabicBody: string): string {
+  const ar = String(arabicBody || "").split("\n").map((l) => l.trim()).filter(Boolean);
+  const tail: string[] = [];
+  for (let k = ar.length - 1; k >= 0 && isEmbedLine(ar[k]); k--) tail.unshift(linkOf(ar[k]));
+  if (!tail.length) return body;
+  const blocks = String(body || "").split(/\n{2,}/);
+  const moved = blocks.filter((b) => isEmbedLine(b) && tail.includes(linkOf(b)));
+  if (!moved.length) return body;
+  const rest = blocks.filter((b) => !moved.includes(b));
+  return [...rest, ...moved].join("\n\n").trim();
+}
 
 /** How every English story is written: the separate request below and the joint one (jointEnglishRules) share them */
 export function englishStyleRules(sourceUrl: string): string {
@@ -435,7 +448,7 @@ export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEW
   const existing = findEnglishEdition(i.sourceId, dir);
   // another story already has this address: the source id keeps it unique
   if (fs.readdirSync(dir).some((f) => f.endsWith(`-${slug}.md`) && (!existing || path.join(dir, f) !== existing))) slug = `${slug}-${i.sourceId}`;
-  const body = splitGluedBlocks(e.body.replace(/\r/g, "")).replace(/\n{3,}/g, "\n\n").trim();
+  const body = trailingEmbedsLast(splitGluedBlocks(e.body.replace(/\r/g, "")).replace(/\n{3,}/g, "\n\n").trim(), i.arabicBody);
   // the embeds the Arabic story has and the English one left out go at its end
   const missing = embedLines(i.arabicBody).filter((l) => !body.includes(linkOf(l)));
   const finalBody = missing.length ? `${body}\n\n${missing.join("\n\n")}` : body;
