@@ -1105,3 +1105,20 @@ test("a career-start year the source never gives is dropped (INCIDENTS #906)", a
   const prompt = proofreadPrompt({ title: "عنوان", body: "متن", tags: [] } as any, "t", "s", "", []);
   assert.match(prompt, /started working for the WWF in 1987/);
 });
+
+// INCIDENTS #909: «كتّاب» (بشدّة/تشكيل) وصل للخبر ووصل الـQA غص نهاية الكلمة «كت».
+// القاعدة: الكلمة المكتملة «كتاب»، والتشكيل ممنوع، والتصحيح التلقائي بيطبقها قبل النشر.
+test("the shadda'd writer word «كتّاب» is corrected to «كتاب» (INCIDENTS #909)", async () => {
+  const { applyCorrections, checkArticle } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("ويقال إن كتّاب عرض WWE NXT يخضعون لإشرافه"), "ويقال إن كتاب عرض WWE NXT يخضعون لإشرافه");
+  const issues = checkArticle("تطورات مهمة حول مستقبل بروس بريتشارد في WWE", "ويقال إن كتّاب عرض WWE NXT يخضعون لإشرافه أيضا.");
+  assert.ok(issues.some((i: { code: string }) => i.code === "truncated_word"));
+  const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string }[];
+  assert.ok(corrections.some(c => c.wrong === "كتّاب" && c.right === "كتاب"));
+  const bad: string[] = [];
+  for (const f of fs.readdirSync("content/news").filter((x) => x.endsWith(".md"))) {
+    const text = fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/gm, "");
+    if (text.includes("كتّاب")) bad.push(f);
+  }
+  assert.deepEqual(bad, []);
+});
