@@ -4428,16 +4428,17 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض تي ان ايه اكسبلوجن 23.10.2026 مترجم",
-    "lastAttempt": 1793215162815,
+    "lastAttempt": 1793218625237,
     "errors": {
       "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
       "instagram_reel",
-      "tiktok"
+      "instagram_story"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   }
 }
