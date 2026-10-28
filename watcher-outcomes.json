@@ -1,43 +1,48 @@
 {
+ "https://www.fightful.com/wrestling/yota-tsuji-hirooki-goto-teaming-konosuke-takeshita-match-added-to-cmll-x-njpw-lucha-kingdom": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-28T05:10:50.105Z"
+ },
  "https://www.fightful.com/wrestling/update-on-bruce-prichards-expected-retirement": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:08:12.719Z"
+  "at": "2026-10-28T05:10:14.238Z"
  },
  "https://www.fightful.com/wrestling/john-cena-cody-rhodes-to-appear-dusty-classic-final-unsanctioned-match-set-for-11-4-nxt": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-10-28T05:08:12.484Z"
+  "at": "2026-10-28T05:10:13.930Z"
  },
  "https://www.fightful.com/wrestling/watch-danhausens-very-nice-very-evil-halloween-special": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:07:50.824Z"
+  "at": "2026-10-28T05:09:51.339Z"
  },
  "https://www.fightful.com/wrestling/report-bruce-prichard-expected-to-retire-as-executive-director-after-wrestlemania-season": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:07:50.493Z"
+  "at": "2026-10-28T05:09:50.955Z"
  },
  "https://www.fightful.com/wrestling/dr-wagner-jr-in-attendance-to-watch-wagner-brothers-compete-on-10-27-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:07:50.262Z"
+  "at": "2026-10-28T05:09:50.692Z"
  },
  "https://www.fightful.com/wrestling/tavion-heights-vs-myles-borne-in-weapons-wild-match-added-to-nxt-halloween-havoc": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:07:50.085Z"
+  "at": "2026-10-28T05:09:50.485Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-signs-sumo-football-athlete-hidetora-hanada": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:07:49.755Z"
+  "at": "2026-10-28T05:09:50.107Z"
  },
  "https://www.fightful.com/wrestling/amazing-red-thinks-he-can-bring-aj-styles-out-of-retirement-wrestling-is-such-a-hard-thing-to-leave": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T05:07:49.518Z"
+  "at": "2026-10-28T05:09:49.836Z"
  },
  "https://www.fightful.com/wrestling/cj-perry-rusev-expecting-their-first-child": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: كلمة رقم عربية قدام رقم بالأرقام (مثل: أحد عشر 1000) — اكتب الرقم مرة واحدة",
   "retry": false,
   "at": "2026-10-15T11:02:06.859Z"
- },
- "https://www.ringsidenews.com/identity-woman-who-took-selfie-andrade-october-14-aew-dynamite": {
-  "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي",
-  "retry": false,
-  "at": "2026-10-15T10:52:16.664Z"
  }
 }
