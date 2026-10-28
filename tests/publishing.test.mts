@@ -5277,7 +5277,8 @@ test('a wrestler who just debuted or came back: every story about them is held �
 test("recap and nostalgia articles carry the program names in their keywords (INCIDENTS #679)", () => {
   const layout = fs.readFileSync("_includes/post-layout.njk", "utf-8");
   // «ldTags» = «tags or en_tags» (INCIDENTS #900): the English files carry en_tags, so their keywords come from it.
-  assert.ok(/set artNames = \[\]/.test(layout) && /"keywords": "\{\{ \(ldTags or \[\]\)/.test(layout));
+  // The tags and names go through keywordList (each name once, INCIDENTS #940).
+  assert.ok(/set artNames = \[\]/.test(layout) && /set kwList = keywordList\(ldTags, artNames, 14/.test(layout) && /"keywords": "\{\{ kwList/.test(layout));
   assert.ok(/page\.url\.startsWith\('\/recaps\/'\) and ldAbout/.test(layout));
 });
 

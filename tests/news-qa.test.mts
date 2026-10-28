@@ -181,6 +181,14 @@ test("Becky/ATTACK/Maclin wording fixes are applied to every story (INCIDENTS #9
   assert.equal(applyCorrections("يتابعون ظهروه التلفزيوني"), "يتابعون ظهوره التلفزيوني");
 });
 
+test("Austin/Flair/Stone wording fixes are applied to every story (INCIDENTS #940)", () => {
+  assert.equal(applyCorrections("موسمه الأول في سباقات الطرق الوعيرة"), "موسمه الأول في سباقات الطرق الوعرة");
+  assert.equal(applyCorrections("نقله إلى مستشفى تاما جنرال هوسبيتال"), "نقله إلى مستشفى تامبا جنرال هوسبيتال");
+  assert.equal(applyCorrections("الفترة الأهم والأكثر مكافأة في مشواره"), "الفترة الأهم والأكثر إرضاء في مشواره");
+  assert.equal(applyCorrections("كانت الأكثر متعة ومكافأة"), "كانت الأكثر متعة وإرضاء");
+  assert.equal(applyCorrections("المصارع تاما تونغا"), "المصارع تاما تونغا");
+});
+
 test("a stray «وة» fragment («هانك وة تانك») is blocked as a broken word (INCIDENTS #725)", () => {
   assert.ok(checkArticle("عنوان", "نزال بين فريق ذا كريد برذرز وفريق هانك وة تانك في ربع النهائي.").some((i) => i.code === "broken_word"));
   assert.ok(!checkArticle("عنوان", "نزال بين فريق ذا كريد برذرز وفريق هانك وتانك في ربع النهائي.").some((i) => i.code === "broken_word"));

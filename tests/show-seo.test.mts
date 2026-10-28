@@ -167,3 +167,20 @@ test("a show named with the federation in Arabic letters also gets its bare name
   const cmll = showNameForms({ headline: "عرض سي ام ال ال ديا دي مويرتوس بويبلا 26.10.2026 مترجم", title: "CMLL Dia De Muertos Puebla 26.10.2026", programName: "CMLL Lunes Clasico", eventDate: "2026-10-26", isShow: true });
   assert.ok(cmll.includes("ديا دي مويرتوس بويبلا") && !cmll.includes("Lunes Clasico"));
 });
+
+test("show keywords list each name once so the episode's dated names keep their slots (INCIDENTS #940)", async () => {
+  const { keywordList } = await import("../lib/show-seo.cjs");
+  const kw = keywordList(["Dynamite", "داينامايت", "AEW", "AEW Dynamite"], ["عرض داينامايت", "داينامايت", "عرض داينامايت", "AEW Dynamite", "aew dynamite", "عرض داينامايت 14.10.2026 مترجم"], 14);
+  assert.deepEqual(kw, ["Dynamite", "داينامايت", "AEW", "AEW Dynamite", "عرض داينامايت", "عرض داينامايت 14.10.2026 مترجم"]);
+  assert.equal(keywordList([], ["a", "b", "c"], 2).length, 2);
+});
+
+test("a show's keywords put the episode's dated names before the program's spellings (INCIDENTS #940)", async () => {
+  const { keywordList } = await import("../lib/show-seo.cjs");
+  const names = Array.from({ length: 16 }, (_, i) => `اسم ${i}`).concat(["عرض داينامايت 14.10.2026 مترجم", "AEW Dynamite October 14 2026"]);
+  const kw = keywordList(["AEW"], names, 14, true);
+  assert.equal(kw[1], "عرض داينامايت 14.10.2026 مترجم");
+  assert.ok(kw.includes("اسم 0"));
+  assert.ok(kw.includes("AEW Dynamite October 14 2026"));
+  assert.equal(keywordList(["AEW"], names, 14).includes("AEW Dynamite October 14 2026"), false);
+});

@@ -1841,6 +1841,13 @@ module.exports = function(eleventyConfig) {
     return require("./lib/show-seo.cjs").showSeoText({ headline, title, programName, eventDate, day, isLatest, description, aliases });
   });
 
+  // A show's structured-data keywords: its tags, then up to `max` of its search names, each once. The tags and the
+  // program's names overlap («داينامايت», «AEW Dynamite» twice) and the repeats used the slots of the episode's own
+  // dated names (INCIDENTS #940)
+  eleventyConfig.addNunjucksGlobal("keywordList", function(tags, names, max, datedFirst) {
+    return require("./lib/show-seo.cjs").keywordList(tags, names, max, datedFirst);
+  });
+
   // The program names a page may claim: a special filed under a weekly program keeps only its own brand, never the
   // weekly program's names (INCIDENTS #934)
   eleventyConfig.addNunjucksGlobal("showAliasesFor", function(headline, title, programName, aliases) {
