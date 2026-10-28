@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2297881/aew-fright-night-dynamite-october-28-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-28T23:02:36.557Z"
+ },
  "https://www.fightful.com/wrestling/shotzi-blackheart-clarifies-comments-regarding-wwe-not-allowing-her-to-do-tna-crossover": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-15T20:31:20.316Z"
- },
- "https://www.fightful.com/wrestling/xelina-details-how-cody-rhodes-saved-10-minutes-for-her-giulias-match-on-wwe-smackdown": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": true,
-  "at": "2026-10-15T20:28:55.331Z"
  }
 }
