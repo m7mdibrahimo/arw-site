@@ -119,6 +119,12 @@ for M in "${MODELS[@]}"; do
     USED_MODEL="$M"
     break
   fi
+  # الحصة المجانية مشتركة بين كل الموديلات: لو خلصت لواحد خلصت للكل — مفيش فايدة نكمّل.
+  if tail -5 "$LOG" | grep -qi "free usage limit"; then
+    log "حصة الموديلات المجانية خلصت — اللفة دي هتتخطّى لحد ما الحصة تتجدد"
+    CODE=75
+    break
+  fi
   # ١٢٤ = المهلة خلصت. مفيش فايدة من موديل تاني (هياخد مهلة كاملة كمان) — بنقف.
   if [ "$CODE" -eq 124 ]; then
     log "الموديل $M خلّص ميزانية اللفة (${TIMEOUT_MIN} دقيقة) — مش بجرّب غيره"
@@ -126,6 +132,15 @@ for M in "${MODELS[@]}"; do
   fi
   log "فشل الموديل $M (كود $CODE) — بجرّب اللي بعده"
 done
+
+# ٧٥ (الحصة) و١٢٤ (الميزانية) مش أعطال في الموقع: اللفة اتخطّت بس، والـworkflow
+# بيسجّلها تحذير من غير ما يفشل (كل فشل = إيميل للمالك — وصلوا عشرات في يوم 2026-10-28).
+case "$CODE" in
+  0) REASON="ok" ;;
+  75) REASON="quota" ;;
+  124) REASON="budget" ;;
+  *) REASON="error" ;;
+esac
 
 END="$(date +%s)"
 DURATION=$((END - START))
@@ -137,6 +152,7 @@ cat >"$LOG_DIR/last-round.json" <<JSON
   "startedAt": $START,
   "durationSec": $DURATION,
   "exitCode": $CODE,
+  "reason": "$REASON",
   "agent": "$AGENT",
   "model": "$USED_MODEL",
   "log": "reports/guard/round-$STAMP.log"

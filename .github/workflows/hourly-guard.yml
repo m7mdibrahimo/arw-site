@@ -158,7 +158,8 @@ jobs:
           set -euo pipefail
           # لفة فشلت نصّها مايتدفعش: العمل الناقص مش أحسن من مفيش عمل
           if [ "${{ steps.round.outcome }}" != "success" ]; then
-            echo "::error::❌ اللفة نفسها فشلت — مش هيتدفع أي حاجة."
+            echo "::warning::اللفة ماكملتش — مش هيتدفع أي حاجة."
+            git format-patch -q origin/main..HEAD -o .git/ 2>/dev/null || true
             git status --porcelain > reports/guard/failed-round.status 2>/dev/null || true
             git diff origin/main --stat > reports/guard/failed-round.stat 2>/dev/null || true
             git diff origin/main > reports/guard/failed-round.diff 2>/dev/null || true
@@ -186,8 +187,11 @@ jobs:
           git fetch origin main
           if ! git rebase origin/main; then
             git rebase --abort || true
-            echo "::error::تعارض مع تغييرات البوتات — مش هيتدفع حاجة. شوف الـartifact."
-            exit 1
+            # المراقب المحلي والبوتات بيعدّلوا نفس الملفات في نفس الساعة؛ التعارض معناه إن
+            # حد سبقنا — مش عطل. التعديلات بتتحفظ كـpatch في الـartifact، والتشغيل مايفشلش.
+            git format-patch -q origin/main..HEAD -o .git/ 2>/dev/null || true
+            echo "::warning::تعارض مع تغييرات اتدفعت أثناء اللفة — مااتدفعش حاجة، والتعديلات محفوظة في الـartifact."
+            exit 0
           fi
           git push origin HEAD:main
           echo "✅ اتدفع: $(git rev-parse --short HEAD)"
@@ -231,6 +235,16 @@ jobs:
         run: |
           echo "::error::لفة الحارس فشلت من غير بوابة — شوف اللوج"
           LOG=$(ls -t reports/guard/round-*.log 2>/dev/null | head -1)
+          REASON=$(jq -r '.reason // empty' reports/guard/last-round.json 2>/dev/null || true)
+          # الحصة المجانية خلصت أو ميزانية الوقت خلصت: لفة اتخطّت، مش عطل — تحذير بس من غير إيميل.
+          if [ "$REASON" = "quota" ]; then
+            echo "::warning::اللفة اتخطّت: حصة الموديلات المجانية خلصت، وهتكمّل لوحدها لما تتجدد."
+            exit 0
+          fi
+          if [ "$REASON" = "budget" ]; then
+            echo "::warning::اللفة اتخطّت: الموديلات المجانية ماخلّصتش في ميزانية الوقت."
+            exit 0
+          fi
           if [ -n "$LOG" ]; then
             if grep -qi "free usage limit" "$LOG"; then
               echo "::error::السبب: حصة الموديلات المجانية خلصت. الحل: ARW_GUARD_MODEL بموديل مدفوع، أو انتظار تجدد الحصة."

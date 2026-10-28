@@ -65,6 +65,15 @@ jobs:
           echo "آخر لفة ناجحة: $LAST (بقالها $AGE دقيقة)"
 
           if [ "$AGE" -gt 180 ]; then
+            # الحارس-الحارس بيشتغل ٣-٤ مرات في الساعة؛ إنذار واحد لكل وقفة كفاية. لو فيه تشغيل فاشل
+            # ليه بعد آخر نجاح للفة، المالك اتبلّغ بالوقفة دي خلاص (كانت بتبعت إيميل كل ربع ساعة).
+            OWN=$(curl -fsS -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/$REPO/actions/workflows/guard-heartbeat.yml/runs?per_page=30&status=failure" || echo '{}')
+            ALERTED=$(echo "$OWN" | jq --arg last "$LAST" '[.workflow_runs[]? | select(.created_at > $last)] | length')
+            if [ "${ALERTED:-0}" -gt 0 ]; then
+              echo "::warning::اللفة لسه واقفة (آخر نجاح بقاله $AGE دقيقة) — اتبلّغت بالوقفة دي قبل كده."
+              exit 0
+            fi
             echo "::error::❌ اللفة الساعية واقفة: آخر نجاح بقاله $AGE دقيقة (الحد ١٨٠)."
             echo "شوف: https://github.com/$REPO/actions/workflows/hourly-guard.yml"
             exit 1
