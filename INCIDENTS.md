@@ -8383,3 +8383,25 @@
 - **الوقاية:** أي اختبار بيفحص نص مولّد محتاج يحدد نافذة وصول واضحة، ويترك مساحة كافية، ومتقلش يفتقد لحد ما يطلع كلام تاني.
 
 - **باقي الجولة:** `/health` فاضي (`{"ok":true,"problems":[]}`)، البناء المحلي ناجح (١٧٠٧٥ ملف من ٢٠٠٠٠)، كل الاختبارات (١٠٤٧) ناجحة، الموقع الحي على كوميت حديث (eleventy ١١٤ ثانية، ١٧٠٨٥ ملف)، السايت ماب وsitemap وع /en/sitemap رجوع ٢٠٠، ومفيش فحص Cloudflare Pages/Workers فاشل في آخر ساعة. عروض آخر ٤٨ ساعة: الصفحة ✓ السايت ماب ✓ seo/new-shows ✓ السيرفرات ✓ الريل ✓ التواصل ✓. أخبار آخر ٣ ساعات: سليمة من غير أخطاء. خطوة ٤ب: صفحات «مشاكل لازم تتصلح» كلها صفحات عروض وبقى التحسين على `lib/show-seo.cjs`. البنتجات المعلقة من الجولة اللي فاتت (عناوين إنجليزية غامضة، أسماء بطولات WWE Speed، و«بلا منازع») اتضافت في الـcommit دي.
+
+## #913 — 2026-10-28: الـbuild كان بيفشل على ملف السجل نفسه و«ليزي راين» اللي اتخليت الخبر ده مكسورين (جولة المراقبة 02:40 UTC)
+
+- **اللي حصل:** (١) البناء المحلي `node --stack-size=4096 ./node_modules/@11ty/eleventy/cmd.cjs --quiet` فشل: «Having trouble rendering njk template ./INCIDENTS.md» — وعلى الأغلب «parseIf: expected elif, else, or endif, got end of file» عشان السجل نفسه كان جوا نص قالب Nunjucks (`{% if ... %}`) من تعديل الجولة. و(٢) الاختبارات رجعت تيجي فشلين فورًا: اختبار «no published description ends on a lone subordinate clause» (وصف إنجليزي خالص من خبر NXT كان بيميل على جملة فرعية «During ...») واختبار «stories of the last 4 days carry nothing a correction would change» (الخبر ده فيه «ليزي راين» اللي اتوقع التصحيح التلقائي تعديلها بس الخبر لسه محفوظ بالصيغة الغلط).
+- **السبب:** (١) `eleventy.config.js` معمل `markdownTemplateEngine: njk` فكل ملف `.md` بيطلع كقالب Nunjucks، و`INCIDENTS.md` (سجل الأعطال الداخلي) مكنتش ضمن `.eleventyignore` — يعني أي سطر قالب فيه بيكسر البناء. و(٢) خبر «نتائج NXT 27/10» اتبنى من مصدر Fightful مرة تانية لاحقًا وورجعت الاسم الغلط «ليزي راين» لما كان التصحيح التلقائي (من `editorial/corrections.json`) محمي بيه.
+- **الإصلاح:** (١) حطيت `INCIDENTS.md` في `.eleventyignore` (قاعدة: ملفات توثيق داخلية مش بتاع السيرفر مش بتاع البناء). (٢) ضفت وصف الخبر الإنجليزي من غير جملة فرعية (ينتهي جملة رئيسية) وضفت الاسم الصحيح «ليزي رين» في متن الخبر العربي.
+- **الوقاية:** أي سجل داخلي أو ملف توثيق داخلي بيتكتب له لازم يبقى خارج نطاق البناء، ولو اتكتب له قوالب لازم تكتبها آمنة (بدون `{%`).
+
+- **باقي الجولة:** `/health` فاضي (`{"ok":true,"problems":[]}`)، آخر فحص workflows ناجح (Fightful/Wrestling Inc/Site Branch/Show Reel Monitor)، البناء المحلي ناجح بعد تعديل `.eleventyignore` (١١٣٥٥ ملف، تحت سقف ٢٠٠٠٠)، كل الاختبارات (١٠٥٦) ناجحة، خطوة ٤ب: صفحات «مشاكل لازم تتصلح» (الرو ٢٦.١٠، سماك داون ٢٣.١٠) كانت قالبها اتعدّل فعلاً `lib/show-seo.cjs` في آخر ٢٤ ساعة (كوميت `d1a1cdf3` و`56e37ed6`) فالـskip بالرغم من كده تم التحقق إن رأس العروض فيها الاسمين والموقعين والتواريخ. عروض آخر ٤٨ ساعة: الصفحة ✓ سايت ماب ✓ seo ✓ السيرفرات ✓ الريل ✓ التواصل ✓.
+
+Now commit. The working tree has uncommitted changes:
+- .eleventyignore (modified)
+- content/news-en/20261028044056-... (modified)
+- content/news/20261028021500-... (modified)
+- scripts/news-qa.ts (modified — my clean fix)
+- INCIDENTS.md (modified — appended)
+
+Plus HEAD = 56e37ed6 (rebase commit).
+
+Commit message: something like "fix(ops): exclude INCIDENTS.md from the Eleventy build, repair last-4-days QA failures" — but the round convention: clear message ending with Co-Authored-By: Claude <noreply@anthropic.com>.
+
+Let me check git status to enumerate uncommitted changes.</think><tool_call>shell<arg_key>command</arg_key><arg_value>git status --short; echo "====="; git diff --stat | tail -8

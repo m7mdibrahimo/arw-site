@@ -1,7 +1,7 @@
 ---
 title: "Channing 'Stacks' Lorenzo Returns on 10/27 WWE NXT"
 slug: "channing-stacks-lorenzo-returns-on-10-27-wwe-nxt"
-description: "Channing 'Stacks' Lorenzo has returned to WWE NXT. During the October 27th episode of WWE NXT on The CW."
+description: "Channing 'Stacks' Lorenzo has returned to WWE NXT. The October 27th episode of WWE NXT on The CW was the night he made his return."
 federation: WWE
 date: 2026-10-28T01:40:56.000Z
 source_id: 336186
