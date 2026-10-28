@@ -1208,3 +1208,20 @@ test("«حلقة خاصة من عرض» is corrected and never survives in publi
   }
   assert.deepEqual(bad, []);
 });
+
+// Round 2026-10-28: the Mexican National Heavyweight Championship lost its «الوطنية» in an Arabic story — «بطولة المكسيك
+// للوزن الثقيل» is the CMLL World title's short form, not this one. The team's pequeños (Pequeño Volador Jr., Kaligua,
+// Galaxy, Pequeño Sky Team) were missing from the glossary too, so every story spelled them differently.
+test("the Mexican National title keeps «الوطنية», and the CMLL pequeños are in the glossary (round 2026-10-28)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  const glossary = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8")) as Record<string, string>;
+  assert.equal(glossary["CMLL Mexican National Heavyweight Championship"], "بطولة المكسيك الوطنية للوزن الثقيل");
+  assert.equal(glossary["Pequeño Volador Jr."], "بيكينيو فولادور جونيور");
+  assert.equal(glossary["Kaligua"], "كاليجوا");
+  assert.equal(glossary["Galaxy"], "غالاكسي");
+  assert.equal(applyCorrections("انتزع إسفينخي لقب بطولة المكسيك للوزن الثقيل"), "انتزع إسفينخي لقب بطولة المكسيك الوطنية للوزن الثقيل");
+  // the full name is not rewritten into itself
+  assert.equal(applyCorrections("لقب بطولة المكسيك الوطنية للوزن الثقيل"), "لقب بطولة المكسيك الوطنية للوزن الثقيل");
+  const bad = fs.readdirSync("content/news").filter((f) => f.endsWith(".md") && /بطولة المكسيك للوزن الثقيل/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/gm, "")));
+  assert.deepEqual(bad, []);
+});

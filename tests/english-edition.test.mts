@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import matter from 'gray-matter';
-import { englishStyleRules, checkEnglish, saveEnglishEdition, writeEnglishEdition, findEnglishEdition, englishSlug, dedupeEnglishEditions, englishPrompt, wordCount, embedLines, syncEnglishFromArabic, type EnglishInput } from '../scripts/english-edition.ts';
+import { englishStyleRules, checkEnglish, saveEnglishEdition, writeEnglishEdition, findEnglishEdition, englishSlug, dedupeEnglishEditions, englishPrompt, wordCount, embedLines, syncEnglishFromArabic, catchUpEnglishEditions, type EnglishInput } from '../scripts/english-edition.ts';
 
 const source = 'Cody Rhodes is making the first major change to the American Nightmare logo since he returned to WWE in 2022. The update honors his late dog Pharaoh, who appeared at many WWE events and became a fan favorite on social media. Rhodes said the change was something he had wanted to do for months and that fans will see it on merchandise soon.';
 const input: EnglishInput = {
@@ -360,4 +360,53 @@ test("a line that starts with a lowercase letter is a broken sentence and is fix
   const good = { title: 'Tavion Heights and Myles Borne Set for Weapons Wild Match', body: 'Tavion Heights and Myles Borne will meet in a Weapons Wild Match at NXT Halloween Havoc. Security stepped in before a brawl could start inside the ring.' + ' The match was made official for the October 31 event.' };
   assert.deepEqual(checkEnglish(good, input as any), []);
   assert.ok(checkEnglish({ ...good, body: good.body + '\n\n victory can only be achieved by pinfall or submission.' }, input as any).includes('line starts lowercase (broken sentence)'));
+});
+
+
+// Round 2026-10-28: the English edition of a lineup or results story was never written — its card lines can only be
+// written with the source's own names, so every attempt failed «copied from the source». The catch-up retried the same
+// story every bot run (two Gemini requests every ten minutes) and, first in the queue, kept every other missing
+// edition out (INCIDENTS #924).
+test('a card or result line is not «copied prose», but copied sentences still are (round 2026-10-28)', () => {
+  const card = 'Místico & Último Guerrero vs. Yota Tsuji & Hirooki Goto\nThree-Way Tag Team Match — NJPW STRONG Openweight Tag Team Championship: Los Hermanos Chávez (Ángel de Oro & Niebla Roja) (c) vs. United Empire (Francesco Akira & Templario) vs. Unbound Co. (Taiji Ishimori & Titán)';
+  const sourceSentence = 'Two more matches were added to the CMLL x NJPW Lucha Kingdom card for November 16 at Arena México in Mexico City.';
+  const src: EnglishInput = { ...input, sourceUrl: 'https://www.fightful.com/wrestling/yota-tsuji', sourceText: `${sourceSentence} ${card.replace(/\n/g, ' ')}` };
+  const body = 'Two more matches were announced for the November 16 show at Arena México.\n\n' + card + '\n\nA singles match between Konosuke Takeshita and Bárbaro Cavernario was also announced.';
+  const issues = checkEnglish({ title: 'Yota Tsuji and Hirooki Goto Team at CMLL Lucha Kingdom', body, tags: [] }, src);
+  assert.ok(!issues.includes('copied from the source'), issues.join(', '));
+  const copied = checkEnglish({ title: 'Yota Tsuji and Hirooki Goto Team at CMLL Lucha Kingdom', body: body + '\n\n' + sourceSentence, tags: [] }, src);
+  assert.ok(copied.includes('copied from the source'));
+});
+
+test('the catch-up skips a story whose edition keeps failing and still writes the others (round 2026-10-28)', async () => {
+  const newsDir = fs.mkdtempSync(path.join(os.tmpdir(), 'news-ar-'));
+  const englishDir = fs.mkdtempSync(path.join(os.tmpdir(), 'news-en-catch-'));
+  const stateFile = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'catchup-')), 'english-catchup.json');
+  const when = new Date(Date.now() - 3600_000).toISOString();
+  const ids = [910001, 910002, 910003, 910004];
+  // the first two stories (highest file names, tried first) can never pass; the last two are fine
+  ids.forEach((id, n) => {
+    const prefix = `202610280${String(4 - n).padStart(2, '0')}00`;
+    fs.writeFileSync(path.join(newsDir, `${prefix}-story-${id}.md`),
+      `---\ntitle: "خبر رقم ${n}"\ndate: ${when}\nsource_id: ${id}\nsource_url: "https://www.fightful.com/wrestling/story-${id}"\nimage: /content/images/x.jpg\nfederation: WWE\n---\nمحتوى الخبر العربي رقم ${n}.\n`, 'utf-8');
+  });
+  let calls = 0;
+  const ask = async (prompt: string) => {
+    calls++;
+    const marker = prompt.match(/MARKER-(\d+)/);
+    return marker && ['910001', '910002'].includes(marker[1])
+      ? JSON.stringify({ ...good, title: 'عنوان عربي للخبر' })
+      : JSON.stringify(good);
+  };
+  const fetchSource = async (url: string) => ({ title: 'Source', text: `MARKER-${url.split('-').pop()} ${'Body text that is long enough to be a source article. '.repeat(12)}` });
+  const done = await catchUpEnglishEditions(ask, fetchSource, 2, undefined, stateFile, newsDir, englishDir);
+  assert.equal(done, 2);
+  const written = fs.readdirSync(englishDir).map((f) => matter(fs.readFileSync(path.join(englishDir, f), 'utf-8')).data.source_id).sort();
+  assert.deepEqual(written, [910003, 910004]);
+  const failed = JSON.parse(fs.readFileSync(stateFile, 'utf-8'));
+  assert.deepEqual(Object.keys(failed).sort(), ['910001', '910002']);
+  // the next run spends nothing on the two that just failed: they wait six hours
+  calls = 0;
+  assert.equal(await catchUpEnglishEditions(ask, fetchSource, 2, undefined, stateFile, newsDir, englishDir), 0);
+  assert.equal(calls, 0);
 });

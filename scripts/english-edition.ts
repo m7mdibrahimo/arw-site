@@ -51,6 +51,16 @@ export function wordCount(body: string): number {
 export function isEmbedLine(line: string): boolean {
   return /^(?:<https?:\/\/[^>\s]+>|https?:\/\/\S+)$/.test(String(line || "").trim());
 }
+/** A line that is only a match listing — an announced card («A vs. B») or a result («X def. Y») — not prose.
+ *  Its names and titles are the source's own words, so it must never count as copied text (INCIDENTS #924). */
+export function isCardOrResultLine(line: string): boolean {
+  const t = String(line || "").trim();
+  if (!t || t.length > 400) return false;
+  if (!/(?:^|\s)(?:vs\.?|def\.|defeated|beat|beats)(?:\s|$)/i.test(t)) return false;
+  // a real sentence (a conjunction, a reporting verb) is prose, not a listing
+  if (/\b(?:because|although|while|which|who|said|says|according|after|before|when|that)\b/i.test(t)) return false;
+  return t.split(/\s+/).length <= 60;
+}
 /** The embed lines of a story, kept as they are */
 export function embedLines(body: string): string[] {
   return String(body || "").split("\n").map((l) => l.trim()).filter(isEmbedLine);
@@ -162,9 +172,13 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   // padded: far longer than the source
   const prose = body.replace(/<https?:\/\/[^>]+>/g, "").replace(/\s+/g, " ").length;
   if (i.sourceText.length < 800 && prose > i.sourceText.length * 3.5) issues.push("padded");
-  // copied: a long run of the source's own words outside a quote
+  // copied: a long run of the source's own words outside a quote. Card and result lines («A vs. B», «X def. Y») are
+  // left out: they can only be written with the source's own names and titles, and counting them as copied prose kept
+  // the English edition of every lineup/results story from ever being written (a card line of 30 names matched the
+  // source; the catch-up retried it every bot run — two Gemini requests every ten minutes — and, being first in the
+  // queue, starved every other missing edition; INCIDENTS #924).
   const src = i.sourceText.toLowerCase().replace(/\s+/g, " ");
-  const prosLines = body.split("\n").filter((l) => !/^\s*>/.test(l) && !/^<https?:/.test(l.trim())).join(" ").toLowerCase().replace(/[“”"]/g, '"');
+  const prosLines = body.split("\n").filter((l) => !/^\s*>/.test(l) && !/^<https?:/.test(l.trim()) && !isCardOrResultLine(l)).join(" ").toLowerCase().replace(/[“”"]/g, '"');
   const words = prosLines.replace(/"[^"]*"/g, " ").split(/\s+/).filter(Boolean);
   for (let k = 0; k + 14 <= words.length; k++) { if (src.includes(words.slice(k, k + 14).join(" "))) { issues.push("copied from the source"); break; } }
   // a number the source never says (INCIDENTS #516: «150 to 200 matches» became «150 and 250»)
@@ -466,14 +480,14 @@ const parse = (raw: string | null): EnglishEdition | null => {
 };
 
 /** Write and save the English edition of a story just published in Arabic. Two tries; null when it doesn't pass. */
-export async function writeEnglishEdition(i: EnglishInput, ask: Ask, dir = NEWS_EN_DIR): Promise<string | null> {
+export async function writeEnglishEdition(i: EnglishInput, ask: Ask, dir = NEWS_EN_DIR, onFail?: (reason: "check" | "no-response") => void): Promise<string | null> {
   if (new Date(i.date).getTime() < new Date(ENGLISH_NEWS_SINCE).getTime()) return null;
   for (let attempt = 0; attempt < 2; attempt++) {
     const e = parse(await ask(englishPrompt(i), true, 0.4));
-    if (!e) continue;
+    if (!e) { onFail?.("no-response"); continue; }
     e.title = e.title.replace(/\s+/g, " ").trim();
     const issues = checkEnglish(e, i);
-    if (issues.length) { console.warn(`[English] ✋ ${i.sourceId}: ${issues.join(", ")}${attempt ? "" : " — retrying"}`); continue; }
+    if (issues.length) { console.warn(`[English] ✋ ${i.sourceId}: ${issues.join(", ")}${attempt ? "" : " — retrying"}`); onFail?.("check"); continue; }
     const file = saveEnglishEdition(e, i, dir);
     console.log(`[English] ✅ ${path.basename(file)}`);
     return file;
@@ -587,28 +601,48 @@ export function saveJointEnglishEdition(raw: { en_title?: unknown; en_body?: unk
 
 /** The last day's Arabic stories with no English edition yet (Gemini was out, a check failed): tried again from the
  *  source, at most `limit` a run. Each bot catches up only its own outlet's stories (`outlets`; "" = none of the three):
- *  the three bots run at the same time, and two of them catching up the same story wrote it twice (INCIDENTS #355). */
-export async function catchUpEnglishEditions(ask: Ask, fetchSource: (url: string) => Promise<{ title: string; text: string } | null>, limit = 4, outlets?: string[]): Promise<number> {
-  if (!fs.existsSync(NEWS_DIR)) return 0;
-  dedupeEnglishEditions();
-  pruneDuplicateOrphanEnglish();
-  syncEnglishFromArabic();
+ *  the three bots run at the same time, and two of them catching up the same story wrote it twice (INCIDENTS #355).
+ *  A story whose edition fails the checks is skipped for six hours (english-catchup.json): retried every ten minutes it
+ *  spent the day's Gemini requests on itself and, sitting first in the queue, kept every other missing edition out
+ *  (INCIDENTS #924). The loop also stops at `limit` successes, not at `limit` stories tried. */
+export async function catchUpEnglishEditions(ask: Ask, fetchSource: (url: string) => Promise<{ title: string; text: string } | null>, limit = 4, outlets?: string[], stateFile = CATCHUP_STATE, newsDir = NEWS_DIR, englishDir = NEWS_EN_DIR): Promise<number> {
+  if (!fs.existsSync(newsDir)) return 0;
+  dedupeEnglishEditions(englishDir);
+  pruneDuplicateOrphanEnglish(englishDir, newsDir);
+  syncEnglishFromArabic(englishDir, newsDir);
+  const failedAt = readCatchUpFailures(stateFile);
   const since = Math.max(Date.now() - 24 * 3600_000, new Date(ENGLISH_NEWS_SINCE).getTime());
-  const todo = fs.readdirSync(NEWS_DIR).filter((f) => f.endsWith(".md")).sort().reverse().map((f) => path.join(NEWS_DIR, f))
+  const todo = fs.readdirSync(newsDir).filter((f) => f.endsWith(".md")).sort().reverse().map((f) => path.join(newsDir, f))
     .map((p) => { try { const m = matter(fs.readFileSync(p, "utf-8")); return { p, d: m.data as any, body: m.content }; } catch { return null; } })
     .filter((x): x is { p: string; d: any; body: string } => !!x && x.d.source_id != null && !!x.d.source_url && new Date(x.d.date).getTime() >= since
-      && (!outlets || outlets.includes(outletOf(String(x.d.source_url)))) && !findEnglishEdition(x.d.source_id));
+      && (!outlets || outlets.includes(outletOf(String(x.d.source_url)))) && !findEnglishEdition(x.d.source_id, englishDir)
+      && !(failedAt[String(x.d.source_id)] && Date.now() - failedAt[String(x.d.source_id)] < CATCHUP_COOLDOWN_MS));
   let done = 0;
-  for (const x of todo.slice(0, limit)) {
+  for (const x of todo.slice(0, Math.max(limit * 6, 12))) {
+    if (done >= limit) break;
     const src = await fetchSource(String(x.d.source_url)).catch(() => null);
     if (!src || src.text.length < 200) continue;
     const prefix = (path.basename(x.p).match(/^(\d{14})-/) || [])[1] || new Date(x.d.date).toISOString().replace(/\D/g, "").slice(0, 14);
+    let reason: { value: "check" | "no-response" | null } = { value: null };
     const file = await writeEnglishEdition({
       sourceTitle: src.title, sourceText: src.text, sourceUrl: String(x.d.source_url), sourceId: x.d.source_id,
       arabicTitle: String(x.d.title || ""), arabicBody: x.body, federation: String(x.d.federation || "WWE"),
       image: String(x.d.image || ""), gallery: Array.isArray(x.d.gallery) ? x.d.gallery.map(String) : [], date: new Date(x.d.date).toISOString(), filePrefix: prefix,
-    }, ask);
-    if (file) done++;
+    }, ask, englishDir, (why) => { reason.value = why; });
+    if (file) { done++; delete failedAt[String(x.d.source_id)]; continue; }
+    // no answer at all: Gemini is out of quota or the request failed — stop trying this run instead of spending one per story
+    if (reason.value === "no-response") break;
+    if (reason.value === "check") failedAt[String(x.d.source_id)] = Date.now();
   }
+  writeCatchUpFailures(stateFile, failedAt);
   return done;
+}
+
+const CATCHUP_STATE = path.join(process.cwd(), "_data", "english-catchup.json");
+const CATCHUP_COOLDOWN_MS = 6 * 3600_000;
+function readCatchUpFailures(file: string): Record<string, number> {
+  try { const d = JSON.parse(fs.readFileSync(file, "utf-8")); return d && typeof d === "object" ? d : {}; } catch { return {}; }
+}
+function writeCatchUpFailures(file: string, data: Record<string, number>): void {
+  try { fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, JSON.stringify(data, null, 2) + "\n", "utf-8"); } catch {}
 }

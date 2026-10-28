@@ -5418,3 +5418,14 @@ test("Spanish particles stay lowercase in Mexican show names, and CMLL names fol
   const bad = fs.readdirSync("content/news").filter((f) => /كالاويرا|يوتياني|بيكيني\s+ماجيا/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+test("CMLL Mexican National Heavyweight keeps «الوطنية» in Arabic, and the pequeños stay in the glossary (INCIDENTS #925)", async () => {
+  assert.equal(sanitizeWrestlingTerms("Esfinge def. Akuma to win the Mexican National Heavyweight Championship"),
+    "Esfinge def. Akuma to win the بطولة المكسيك الوطنية للوزن الثقيل");
+  assert.equal(sanitizeWrestlingTerms("فاز إسفينخي ببطولة المكسيك الوطنية للوزن الثقيل"), "فاز إسفينخي ببطولة المكسيك الوطنية للوزن الثقيل");
+  const fs = await import("node:fs");
+  const names = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8"));
+  assert.equal(names["Pequeño Volador Jr."], "بيكينيو فولادور جونيور");
+  assert.equal(names["Kaligua"], "كاليجوا");
+  assert.equal(names["Galaxy"], "غالاكسي");
+});

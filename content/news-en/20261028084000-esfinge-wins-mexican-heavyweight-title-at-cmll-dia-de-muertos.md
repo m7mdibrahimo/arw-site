@@ -11,7 +11,7 @@ en_tags:
   - "Esfinge"
   - "Akuma"
   - "Calavera Jr. I"
-  - "Dia De Muertos"
+  - "Día de Muertos"
 image: /content/images/nfcxypartmclh0to.jpg
 ---
 Consejo Mundial de Lucha Libre held the Día de Muertos event on Tuesday, October 27, 2026, at Arena Mexico in Mexico City, Mexico. The show aired live on CMLL's YouTube channel on a membership tier.

@@ -1009,6 +1009,9 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(/\bRising\s+Stars\s+of\s*بطولة\s+السيدات\s+Wrestling\b/gi, "Rising Stars of Women’s Wrestling")
 
     // 9. Enforce Arabic for Championship Titles without duplicating federation acronym inside the title
+    // «Mexican National Heavyweight» is not «World Heavyweight»: its Arabic name keeps «الوطنية» (the story called it
+    // «بطولة المكسيك للوزن الثقيل», which is the short form of another title; INCIDENTS #925).
+    .replace(/\b(?:CMLL\s+)?Mexican\s+National\s+Heavyweight\s+(?:Championship|Titles|Title|Champion)\b/gi, "بطولة المكسيك الوطنية للوزن الثقيل")
     .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*World\s+Heavyweight\s+(?:Championship|Titles|Title|Champion)\b/gi, "بطولة العالم للوزن الثقيل")
     .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*Intercontinental\s+(?:Championship|Titles|Title|Champion)\b/gi, "بطولة القارات")
     .replace(/\b(?:AAA|WWE|AEW|TNA|ROH|NJPW|MLW)?\s*United\s+States\s+(?:Championship|Titles|Title|Champion)\b/gi, "بطولة الولايات المتحدة")
