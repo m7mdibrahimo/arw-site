@@ -1,5 +1,15 @@
 [
   {
+    "id": 1407384989,
+    "link": "https://www.wrestlinginc.com/2299252/ilja-dragunov-gushes-aew-debut/",
+    "date": "Wed, 28 Oct 2026 14:30:00 +0000",
+    "date_gmt": "2026-10-28T14:30:00.000Z",
+    "title": {
+      "rendered": "Ilja Dragunov Gushes About AEW Debut"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/ilja-dragunov-gushes-about-aew-debut/l-intro-1793180901.jpg"
+  },
+  {
     "id": 3909090819,
     "link": "https://www.wrestlinginc.com/2299244/tna-impact-matt-hardy-experience-booking-episode/",
     "date": "Wed, 28 Oct 2026 14:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Former WWE & AEW Star Jake Hager Reportedly Undergoes Second Eye Surgery"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/former-wwe-aew-star-jake-hager-reportedly-undergoes-second-eye-surgery/l-intro-1793131021.jpg"
-  },
-  {
-    "id": 2705287652,
-    "link": "https://www.wrestlinginc.com/2298836/wwe-rusev-cj-perry-expecting-first-child/",
-    "date": "Tue, 27 Oct 2026 19:20:30 +0000",
-    "date_gmt": "2026-10-27T19:20:30.000Z",
-    "title": {
-      "rendered": "WWE's Rusev And CJ Perry Announce They're Expecting Their First Child"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-rusev-and-cj-perry-announce-theyre-expecting-their-first-child/l-intro-1793128634.jpg"
   }
 ]
