@@ -4374,24 +4374,21 @@
     "publishedAt": 1793144741481,
     "facebook_reel": false,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سوبر جونيور تاج ليج (اليوم الرابع) 27.10.2026 مترجم",
-    "lastAttempt": 1793144772790,
+    "lastAttempt": 1793145645780,
     "errors": {
       "facebook_reel": "تم قبول الفيديو ولم يتأكد ظهوره بعد؛ راجع فيسبوك.",
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
-      "instagram_story",
-      "tiktok"
+      "instagram_story"
     ],
     "reviewPlatforms": [
       "facebook_reel"
     ],
-    "needsReview": true
+    "needsReview": true,
+    "tiktok": true
   }
 }
