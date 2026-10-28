@@ -139,6 +139,9 @@ ${String(i.arabicBody).slice(0, 6000)}`;
 }
 
 /** What blocks an English edition (an empty list: it's fine) */
+/** Common English misspellings that must never reach the site (whole words only). */
+export const EN_MISSPELLED = /\b(?:mutting|recieve[ds]?|recieving|occured|occurence|seperat(?:e|ed|ely|ion)|definately|untill|accomodat\w*|tommorow|truely|publically|succesful\w*|begining|wierd|arguement|thier|alot|wich|becuase|beleive[ds]?|existance|occassion\w*|persistant|reccomend\w*|refered|commited|embarass\w*|goverment|independant|noticable|relevent|tounament|championshp|wrestlign|wreslt\w*)\b/i;
+
 export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   const issues: string[] = [];
   const title = String(e?.title || "").trim(), body = String(e?.body || "").trim();
@@ -149,6 +152,8 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   // one (INCIDENTS #872). Any other script, and any translation arrow, blocks the English edition.
   if (/[\u0370-\u03FF\u0400-\u058F\u0590-\u05FF\u0900-\u0DFF\u0E00-\u0E7F\u1000-\u109F\u10A0-\u10FF\u1200-\u137F\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF]/.test(title + "\n" + body)) issues.push("letters from another script");
   if (/->|→/.test(body)) issues.push("translation arrow left in the text");
+  // a plain misspelling reached the English site: «mutting sound» for «muting» (Netflix/Liv Morgan story, INCIDENTS #936)
+  if (EN_MISSPELLED.test(title + "\n" + body)) issues.push("misspelled word");
   if (/\b(as an ai|language model|arab wrestling|translated|translation)\b/i.test(title + "\n" + body)) issues.push("meta text");
   if (/^#{1,6}\s/m.test(body) || /\*\*/.test(body)) issues.push("markdown formatting");
   if (/[\u{1F300}-\u{1FAFF}]/u.test(title)) issues.push("emoji in title");

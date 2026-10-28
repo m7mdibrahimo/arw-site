@@ -1244,3 +1244,25 @@ test("show names stay English: «باور ستراجل» is corrected everywhere
   }
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #936: «نزالتها» (not a word), «ركلات خارقة» for superkicks, «لا تمنع تجنب» (double negative that flips the
+// meaning) in Arabic stories, and «mutting» for «muting» in an English one.
+test("«نزالتها», «ركلات خارقة», «لا تمنع تجنب» are corrected and English misspellings block the edition (INCIDENTS #936)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("وعقب نزالتها ضد بيكي لينش"), "وعقب نزالها ضد بيكي لينش");
+  assert.equal(applyCorrections("وتعرضت لركلات خارقة في وجهي"), "وتعرضت لركلات سوبر كيك في وجهي");
+  assert.equal(applyCorrections("محاولاته لا تمنع تجنب المساءلة"), "محاولاته لا تعفي من المساءلة");
+  const { checkEnglish, EN_MISSPELLED } = await import("../scripts/english-edition.ts");
+  const input = { sourceText: "Netflix censored Liv Morgan on the RAW replay. ".repeat(20), sourceUrl: "https://www.ringsidenews.com/x", arabicTitle: "x", arabicBody: "x" } as any;
+  const body = "Netflix has been editing WWE replays recently, and Liv Morgan became the latest wrestler to face this treatment during the October 26 episode of WWE RAW, with mutting sound during another incident.";
+  assert.ok(checkEnglish({ title: "Netflix Censors Liv Morgan During WWE RAW Replay", body, tags: [] } as any, input).includes("misspelled word"));
+  assert.ok(!checkEnglish({ title: "Netflix Censors Liv Morgan During WWE RAW Replay", body: body.replace("mutting sound", "muting the sound"), tags: [] } as any, input).includes("misspelled word"));
+  const bad: string[] = [];
+  for (const f of fs.readdirSync("content/news").filter(f => f.endsWith(".md"))) {
+    if (/نزالتها|نزالتهم|ركلات خارقة|ركلة خارقة|لا [تي]منع تجنب/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/gm, ""))) bad.push(f);
+  }
+  for (const f of fs.readdirSync("content/news-en").filter(f => f.endsWith(".md"))) {
+    if (EN_MISSPELLED.test(fs.readFileSync(`content/news-en/${f}`, "utf-8").replace(/^(slug|source_url|permalink):.*$/gm, ""))) bad.push(f);
+  }
+  assert.deepEqual(bad, []);
+});
