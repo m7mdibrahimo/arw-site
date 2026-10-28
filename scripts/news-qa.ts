@@ -1326,10 +1326,12 @@ export function wrestlerNotInSource(body: string, source: string, glossary: Reco
     for (let i = text.indexOf(ar); i !== -1 && hits < 2; i = text.indexOf(ar, i + ar.length)) {
       if (!/[ء-ي]/.test(text[i - 1] || "") && !/[ء-ي]/.test(text[i + ar.length] || "")) hits++;
     }
-    // One mention is enough when no word of the English name is in the source either: «يوشيكي إينامورا» stood for
-    // Yuki Iino in a NOAH story (the swap was never repeated), INCIDENTS #463
-    const anyWordInSource = words.some(w => src.includes(w.toLowerCase().slice(0, Math.max(4, w.length - 2))));
-    if (hits < 2 && !(hits === 1 && !anyWordInSource)) continue;
+    // One mention is enough when the surname is not in the source: «يوشيكي إينامورا» stood for Yuki Iino in a NOAH
+    // story (INCIDENTS #463), and «جورج آيسمان» stood for George Barrios once in the title and once in the text — the
+    // shared first name «George» used to clear it (INCIDENTS #927).
+    const surname = words[words.length - 1];
+    const surnameInSource = src.includes(surname.toLowerCase().slice(0, Math.max(4, surname.length - 2)));
+    if (hits < 2 && !(hits === 1 && !surnameInSource)) continue;
     found.push(en);
   }
   return found;

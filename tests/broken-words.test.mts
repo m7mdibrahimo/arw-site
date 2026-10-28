@@ -197,6 +197,17 @@ test('a glossary wrestler named once whose name is nowhere in the source is bloc
   assert.deepEqual(wrestlerNotInSource('ضد حامل اللقب فريق يوكي إيينو ومانابو سويا', source, gl), []);
 });
 
+test('a glossary name sharing only a first name with the source is blocked, title included (INCIDENTS #927)', async () => {
+  const { wrestlerNotInSource } = await import('../scripts/news-qa.ts');
+  const gl = { 'George Iceman': 'جورج آيسمان', 'George Barrios': 'جورج باريوس' };
+  const source = 'Former WWE Co-President George Barrios appeared on My World With Jeff Jarrett to discuss the Saudi Arabia deal. '.repeat(3);
+  assert.deepEqual(wrestlerNotInSource('جورج آيسمان يكشف كواليس صفقة WWE\nتحدث باريوس عن الرحلة.', source, gl), ['George Iceman']);
+  assert.deepEqual(wrestlerNotInSource('جورج باريوس يكشف كواليس صفقة WWE\nتحدث باريوس عن الرحلة.', source, gl), []);
+  const watcher = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
+  assert.match(watcher, /wrestlerNotInSource\(`\$\{draft\.title\}\\n\$\{draft\.body\}`/);
+  assert.doesNotMatch(fs.readFileSync('editorial/style-guide.md', 'utf8'), /«جورج آيسمان يجذب/);
+});
+
 test('dual pronouns «-هما» become plural; agreeing words are left alone; no published story keeps one (INCIDENTS #463)', async () => {
   const { dualPronounsToPlural, loadNews } = await import('../scripts/news-qa.ts');
   assert.equal(dualPronounsToPlural('علاقتهما وبينهما ومنهما وعليهما ولديهما'), 'علاقتهم وبينهم ومنهم وعليهم ولديهم');

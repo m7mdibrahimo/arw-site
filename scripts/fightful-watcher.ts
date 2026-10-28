@@ -4462,8 +4462,8 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   }
   // An age the source never gives is an invented number (INCIDENTS #341).
   // A wrestler the source never names but the story keeps naming is a swapped name (INCIDENTS #461).
-  for (const en of wrestlerNotInSource(draft.body, `${rawTitle}\n${plainText}`, WRESTLER_NAMES_MAP)) {
-    blocking.push({ code: "name_not_in_source", severity: "error", field: "body", message: `اسم مصارع في المتن غير موجود في المصدر: ${en}`, excerpt: en });
+  for (const en of wrestlerNotInSource(`${draft.title}\n${draft.body}`, `${rawTitle}\n${plainText}`, WRESTLER_NAMES_MAP)) {
+    blocking.push({ code: "name_not_in_source", severity: "error", field: "body", message: `اسم مصارع في العنوان أو المتن غير موجود في المصدر: ${en}`, excerpt: en });
   }
   const badAges = ageNotInSource(draft.body, `${rawTitle}\n${plainText}`);
   if (badAges.length) {
