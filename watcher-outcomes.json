@@ -1,43 +1,43 @@
 {
- "https://www.wrestlinginc.com/2299244/tna-impact-matt-hardy-experience-booking-episode": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-28T14:03:36.827Z"
- },
  "https://www.fightful.com/wrestling/former-wwe-co-president-speaks-about-2019-crown-jewel-plane-incident-i-think-it-was-exaggerated-to-some-degree": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T14:00:46.746Z"
+  "at": "2026-10-28T14:05:48.089Z"
  },
  "https://www.fightful.com/wrestling/update-on-bruce-prichards-expected-retirement": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T14:00:46.166Z"
+  "at": "2026-10-28T14:05:47.343Z"
  },
  "https://www.fightful.com/wrestling/watch-danhausens-very-nice-very-evil-halloween-special": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T14:00:45.859Z"
+  "at": "2026-10-28T14:05:46.951Z"
  },
  "https://www.fightful.com/wrestling/report-bruce-prichard-expected-to-retire-as-executive-director-after-wrestlemania-season": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T14:00:45.496Z"
+  "at": "2026-10-28T14:05:46.485Z"
  },
  "https://www.fightful.com/wrestling/dr-wagner-jr-in-attendance-to-watch-wagner-brothers-compete-on-10-27-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T14:00:45.243Z"
+  "at": "2026-10-28T14:05:46.154Z"
  },
  "https://www.fightful.com/wrestling/tavion-heights-vs-myles-borne-in-weapons-wild-match-added-to-nxt-halloween-havoc": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T14:00:45.044Z"
+  "at": "2026-10-28T14:05:45.894Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-signs-sumo-football-athlete-hidetora-hanada": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-28T14:00:44.674Z"
+  "at": "2026-10-28T14:05:45.425Z"
+ },
+ "https://www.wrestlinginc.com/2299244/tna-impact-matt-hardy-experience-booking-episode": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-28T14:03:36.827Z"
  },
  "https://www.fightful.com/wrestling/amazing-red-thinks-he-can-bring-aj-styles-out-of-retirement-wrestling-is-such-a-hard-thing-to-leave": {
   "reason": "مكرر مع خبر نزل قبل كده",
