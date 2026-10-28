@@ -1155,3 +1155,56 @@ test("the proofreading prompt names the new mistakes to look for (round 2026-10-
   const guide = fs.readFileSync("editorial/style-guide.md", "utf-8");
   assert.match(guide, /«شيلوه Hill»/);
 });
+
+// Round 2026-10-28: «حضور مسؤولي وارنر براذرز عرض AEW Dynamite» — the headline lost «في» before the show's
+// name and read broken. The check blocks the shape; the style guide and the writer prompt carry the rule.
+test("a title that drops the preposition before a show name is blocked (round 2026-10-28)", async () => {
+  const { titleMissingPreposition } = await import("../scripts/news-qa");
+  assert.equal(
+    titleMissingPreposition("توني خان يكشف عن اجتماعه مع فريق سكاي دانس وحضور مسؤولي وارنر براذرز عرض AEW Dynamite الليلة"),
+    "وحضور مسؤولي وارنر براذرز عرض");
+  for (const ok of [
+    "توني خان يكشف عن اجتماعه مع فريق سكاي دانس وحضور مسؤولي وارنر براذرز في عرض AEW Dynamite الليلة",
+    "حضور جماهيري كبير في عرض الرو الليلة",
+    "حضور عرض الرو الليلة",
+    "حضور أسطوري لسي ام بانك وكودي رودز وراندي أورتن وشراسة الألقاب تشعل عرض Smackdown المقبل",
+    "توني خان يؤكد حضور مسؤولي WBD لعرض AEW Dynamite ويكرر حماسه",
+  ]) assert.equal(titleMissingPreposition(ok), null, ok);
+  // the story this round fixed keeps the same URL and a complete headline
+  const story = fs.readFileSync("content/news/20261028051051-توني-خان-يكشف-عن-اجتماعه-مع-فريق-سكاي-دانس-وحضور-مسؤولي-وارنر-براذرز-عرض-aew-dynamite-الليلة.md", "utf-8");
+  assert.match(story, /title: "[^"]*وحضور مسؤولي وارنر براذرز في عرض AEW Dynamite الليلة"/);
+  assert.match(story, /permalink: "\/news\/توني-خان-يكشف-عن-اجتماعه-مع-فريق-سكاي-دانس-وحضور-مسؤولي-وارنر-براذرز-عرض-aew-dynamite-الليلة\/index\.html"/);
+});
+
+// «illness-related» was written «أسباب صحية ومرضية» (Vaquer story, round 2026-10-28): two words for one meaning.
+test("«أسباب صحية ومرضية» is corrected to «أسباب مرضية» (round 2026-10-28)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("غياب فاكير يعود لأسباب صحية ومرضية"), "غياب فاكير يعود لأسباب مرضية");
+  const bad = fs.readdirSync("content/news").filter((f) => f.endsWith(".md") && /صحية ومرضية/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
+
+// A blockquote that is only a fragment — «> "out indefinitely."» — is not a quoted statement (round 2026-10-28).
+test("an English blockquote of a fragment is blocked (round 2026-10-28)", async () => {
+  const { checkEnglish } = await import("../scripts/english-edition.ts");
+  const input = { sourceText: "x".repeat(900), sourceUrl: "https://example.com/a" } as any;
+  const body = "New reports have emerged regarding the absence of Stephanie Vaquer from WWE programming and what follows. ".repeat(2) + "\n\n> \"out indefinitely.\"\n";
+  assert.ok(checkEnglish({ title: "Stephanie Vaquer Out Indefinitely", body, tags: [] } as any, input).some((x: string) => x.includes("fragment")));
+  const full = "New reports have emerged regarding the absence of Stephanie Vaquer from WWE programming and what follows. ".repeat(2) + "\n\n> \"I just got back from Los Angeles, I had a great visit out there with the Skydance team.\"\n";
+  assert.ok(!checkEnglish({ title: "Stephanie Vaquer Out Indefinitely", body: full, tags: [] } as any, input).some((x: string) => x.includes("fragment")));
+});
+
+// Round 2026-10-28: «حلقة خاصة من عرض» reached three older published stories even after the writer-prompt,
+// style-guide and correction rules were added — the phrase-level rule only matched the «عرض» template, so the
+// real-world shapes («… على حلقة خاصة من WWE SmackDown») stayed. The correction is a phrase rule, and the
+// content scan now guards the forbidden wording everywhere it can still appear.
+test("«حلقة خاصة من عرض» is corrected and never survives in published stories (round 2026-10-28)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("خاضت المصارعة حلقة خاصة من عرض WWE SmackDown"), "خاضت المصارعة عرض خاص من WWE SmackDown");
+  const bad: string[] = [];
+  for (const f of fs.readdirSync("content/news").filter((x) => x.endsWith(".md"))) {
+    const text = fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/gm, "");
+    if (/حلقة خاصة/.test(text)) bad.push(f);
+  }
+  assert.deepEqual(bad, []);
+});

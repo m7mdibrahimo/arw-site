@@ -63,6 +63,7 @@ export function englishStyleRules(sourceUrl: string): string {
   return `- Write it in your own words. Do not copy the source's sentences: rephrase everything except direct quotes.
 - Direct quotes stay exactly as the source has them, each in its own markdown blockquote line starting with > and the quote in straight double quotes.
 - A quoted word or phrase that is part of your own sentence ("He described the match as a "do or die" situation") stays inline in that sentence: only a whole quoted statement gets its own blockquote line. Never break a sentence in two with a quote, an embed or a line break — «He described the encounter as a» + blockquote + «situation.» left a story on the site with a paragraph reading «situation. Despite…» (2026-10-28), and the code now blocks a paragraph that starts with a lowercase letter.
+- A blockquote must be a whole quoted statement, never a fragment: a story on the site ended with a blockquote reading only «"out indefinitely."» (2026-10-28). If the source gives only a few words, put them inline in your own sentence — "Cory Hays of False Finish followed up by saying that she will be out indefinitely."
 - Never add a word in square brackets inside a quote («[which]», «[sic]»): a quote keeps the source's own words. If the source's quote is broken there, close it with an ellipsis (…) or leave that part out.
 - Punctuation: a show or event name that ends with «!» or «?» («TNA iMPACT!») is never followed by a full stop — the name's own mark ends the sentence, never «TNA iMPACT!.»; never two full stops in a row.
 - Donald Trump is the sitting US President (2025–2029): never write "former President Trump" or "the previous administration" about him unless the source says so explicitly about his first term (INCIDENTS #609).
@@ -155,6 +156,9 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   // story shipped « victory can only be achieved by pinfall or submission inside the ring.» (2026-10-28)
   const bl = body.split(/\n/);
   if (bl.some((l, i) => l.trim() && !SKIP_LINE.test(l) && !/^\s*(?:<)?https?:\/\//.test(l) && (i === 0 || !bl[i - 1].trim()) && /^[a-z]/.test(l.trim()))) issues.push("line starts lowercase (broken sentence)");
+  // a blockquote that is only a fragment, not a whole statement: «> "out indefinitely."» (Vaquer story, 2026-10-28)
+  const fragments = bl.filter((l) => /^\s*>/.test(l) && (l.replace(/^\s*>\s*/, "").replace(/["“”]/g, "").trim().split(/\s+/).filter(Boolean).length < 3));
+  if (fragments.length) issues.push("blockquote is a fragment, not a statement");
   // padded: far longer than the source
   const prose = body.replace(/<https?:\/\/[^>]+>/g, "").replace(/\s+/g, " ").length;
   if (i.sourceText.length < 800 && prose > i.sourceText.length * 3.5) issues.push("padded");

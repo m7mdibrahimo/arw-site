@@ -338,9 +338,9 @@ export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYea
  * dual_noun / dual_form joined them in INCIDENTS #471: ~4% of stories reached the site with «نزالين» / «حققا» / «أنهما»
  * although the style guide bans the dual. english_title_name is not blocking: «Championship» is also part of tournament names.
  */
-export const BLOCKING_QA_CODES = ["betting_promo", "title_no_result", "invented_winner", "adverb_without_alef", "title_not_arabic", "english_quote", "english_caption_line", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "glued_prefix_quote", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "glued_arabic_words", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "verbless_opening", "lowercase_latin_fragment", "orphan_in_favor", "spanish_article_mixed", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "same_title_published", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", ];
+export const BLOCKING_QA_CODES = ["betting_promo", "title_no_result", "invented_winner", "adverb_without_alef", "title_not_arabic", "english_quote", "english_caption_line", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "glued_prefix_quote", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "glued_arabic_words", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "verbless_opening", "lowercase_latin_fragment", "orphan_in_favor", "spanish_article_mixed", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "same_title_published", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", ];
 /** Blocking codes that are one-off Gemini glitches: a fresh translation on the next run usually comes out clean. */
-export const RETRYABLE_QA_CODES = ["artifact", "title_no_result", "invented_winner", "adverb_without_alef", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "english_caption_line", "mixed_script_word", "name_not_in_source", "spanish_article_mixed", "orphan_in_favor", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", ];
+export const RETRYABLE_QA_CODES = ["artifact", "title_no_result", "invented_winner", "adverb_without_alef", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "english_caption_line", "mixed_script_word", "name_not_in_source", "spanish_article_mixed", "orphan_in_favor", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", ];
 
 
 /** Winners («🏆 **الفائز:** …») whose name isn't in the text of their own match block. */
@@ -405,6 +405,24 @@ export function noWinnerLines(body: string): string {
 }
 
 
+/** A headline that joins a presence word to a show name with no preposition:
+ *  «حضور مسؤولي وارنر براذرز عرض AEW Dynamite» instead of «… في عرض AEW Dynamite»
+ *  (Tony Khan story, round 2026-10-28). «حضور عرض الرو» and «حضور جماهيري في عرض الرو» are fine. */
+export function titleMissingPreposition(title: string): string | null {
+  const re = /(?<![ء-ي])[وف]?(?:حضور|ظهور|مشاركة)\s+([^.،:!؟\n]{2,60}?)\s+(?<![ء-ي])(?:عرض|RAW|Raw|SmackDown|NXT|Dynamite|Collision|Rampage|iMPACT|EVOLVE)(?![ء-ي])/;
+  const m = re.exec(title || "");
+  if (!m) return null;
+  const between = ` ${m[1]} `;
+  if (/(?:^|\s)(?:في|فى|خلال|داخل|أمام|مع|على|من|إلى|ضد|ل|ب)(?:\s|$)/.test(between)) return null;
+  // «لعرض Dynamite» already carries its preposition, glued to the word
+  if (/(?:ل|ب|ك)عرض/.test(m[0])) return null;
+  // only a group of people before the show name: «حضور مسؤولي وارنر براذرز عرض …». A verb phrase
+  // («حضور أسطوري لـ… تشعل عرض SmackDown») is a different sentence and stays.
+  if (!/(?:مسؤول|نجوم|نجم|مصارع|مصارعة|فريق|بطل|بطلة|رئيس|مدير|وفد|ممثل)/.test(m[1])) return null;
+  if (m[1].trim().split(/\s+/).length < 2) return null;
+  return m[0];
+}
+
 export function checkArticle(title: string, body: string, tags: string[] = []): QaIssue[] {
   const issues: QaIssue[] = [];
   for (const tag of tags) if (isJunkTag(tag)) issues.push({ code: "junk_tag", severity: "error", field: "tags", message: "وسم عبارة عن تاريخ أو رقم", excerpt: tag });
@@ -415,6 +433,11 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
   // the model turned the subject into the object (live 2026-10-27)
   const attention = /(?:^|\s)(?:ت|ن)نصرف\s+انتباه/.exec(body || "");
   if (attention) issues.push({ code: "attention_verb", severity: "error", field: "body", message: "«انتباه» مذكر: «ينصرف انتباه الجماهير» مش «تنصرف انتباه»", excerpt: excerptAround(body, attention.index, attention[0].length) });
+  // «حضور مسؤولي وارنر براذرز عرض AEW Dynamite»: the headline lost the preposition before the show's
+  // name, so it reads broken (Tony Khan story, round 2026-10-28). Only a presence word + at least two
+  // words + a show name with no «في/خلال/…» between them; «حضور عرض X» and «حضور جماهيري في عرض X» stay.
+  const missingPrep = titleMissingPreposition(title || "");
+  if (missingPrep) issues.push({ code: "title_missing_preposition", severity: "error", field: "title", message: "العنوان ناقص حرف جر قبل اسم العرض — «حضور X في عرض Y» مش «حضور X عرض Y»", excerpt: missingPrep });
   // «فاز فريق هانك وتانك على…» right above «الفائز: ولم يتم الإعلان عن نتيجة النزال»: a win the source never gave (INCIDENTS #910)
   const winNoResult = /(?:^|\n)[^\n]*(?:(?<![ء-ي])(?:فاز|فازت|تغلب|تغلبت|انتصر|انتصرت)\s|من\s+(?:الفوز|الانتصار|تحقيق\s+(?:الفوز|الانتصار)))[^\n]*\n+\s*(?:🏆[ \t]*\*{0,2}[ \t]*الفائز[^\n:]*:\*{0,2}\s*(?:و\s*)?(?:لم|غير)|🤝\s*\*{0,2}النتيجة:?\*{0,2}\s*(?:و\s*)?(?:لم|غير))/.exec(body || "");
   if (winNoResult) issues.push({ code: "winner_mismatch", severity: "error", field: "body", message: "النص بيقول إن حد فاز والسطر اللي تحته بيقول النتيجة ما اتعلنتش — فوز مخترع", excerpt: excerptAround(body, winNoResult.index, Math.min(winNoResult[0].length, 160)) });
