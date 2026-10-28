@@ -10,8 +10,7 @@ export const PLATFORMS = ['facebook_reel', 'facebook_story', 'instagram_reel', '
 type Platform = typeof PLATFORMS[number];
 type Entry = Record<Platform, boolean> & {
   publishedAt: number | null; lastAttempt?: number; title?: string;
-  errors?: Record<string, string>; reviewPlatforms?: Platform[]; needsReview?: boolean; note?: string;
-  reviewIds?: Partial<Record<Platform, string>>;
+  errors?: Record<string, string>; reviewPlatforms?: Platform[]; needsReview?: boolean; reviewNotified?: boolean; note?: string;
   processing?: Platform[];
   mediaDeleted?: boolean;
 };
@@ -137,34 +136,19 @@ export function applyResults(existing: Entry | undefined, results: Record<string
     if (results[p]?.ok) review.delete(p);
     else if (results[p]?.ambiguous || results[p]?.status === 'uncertain') review.add(p);
   }
+  const grew = [...review].some(p => !(existing?.reviewPlatforms || []).includes(p));
   entry.reviewPlatforms = [...review];
   entry.needsReview = review.size > 0;
-  // the platform's id of an unconfirmed upload, so a later run can ask the platform what became of it
-  const ids = { ...existing?.reviewIds };
-  for (const p of requested) {
-    if (review.has(p) && results[p]?.id) ids[p] = String(results[p].id);
-    else if (!review.has(p)) delete ids[p];
-  }
-  if (Object.keys(ids).length) entry.reviewIds = ids; else delete entry.reviewIds;
+  // A review item is reported to CI once, not on every run: a permanently parked
+  // show turned the job red every 15 minutes for a reel that was already posted
+  // (NJPW Super Junior Tag League Day 4, INCIDENTS #906).
+  if (!review.size) delete entry.reviewNotified;
+  else if (grew) entry.reviewNotified = false;
   return entry;
 }
-// A Facebook reel left «accepted, not confirmed» used to fail the workflow every 15 minutes until someone cleared it by
-// hand (INCIDENTS #901). The Worker now looks it up: published → done; failed → retried as a normal failure;
-// still pending or not found → kept for review (never re-posted blind), and only counted as a failure after 2 hours.
-export const REVIEW_GRACE_MS = 2 * 60 * 60_000;
-export function settleReview(entry: Entry, platform: Platform, state: string, now = Date.now()): { entry: Entry; failing: boolean } {
-  const next: Entry = { ...entry, errors: { ...entry.errors }, reviewIds: { ...entry.reviewIds } };
-  const review = new Set(next.reviewPlatforms || []);
-  if (state === 'published' || state === 'failed') {
-    review.delete(platform);
-    delete next.reviewIds![platform];
-    if (state === 'published') { next[platform] = true; next.publishedAt ||= now; delete next.errors![platform]; }
-    else next.errors![platform] = 'فشلت معالجة الريل عند فيسبوك؛ ستتم إعادة المحاولة.';
-  }
-  next.reviewPlatforms = [...review];
-  next.needsReview = review.size > 0;
-  if (!Object.keys(next.reviewIds!).length) delete next.reviewIds;
-  return { entry: next, failing: next.needsReview && now - (entry.lastAttempt || 0) > REVIEW_GRACE_MS };
+/** True only for a review item that has not been reported yet — the run fails once to flag it, then stays green. */
+export function needsReviewAlert(entry: Entry | undefined): boolean {
+  return !!entry?.needsReview && !entry.reviewNotified;
 }
 export async function main() {
   const root = process.cwd();
@@ -195,21 +179,14 @@ export async function main() {
   for (const filename of fs.readdirSync(dir).filter(f => f.endsWith('.md')).sort()) {
     const { data } = matter(fs.readFileSync(path.join(dir, filename), 'utf8'));
     const slug = filename.replace(/\.md$/, '');
-    if (!shouldProcessShow(filename, data, state[slug])) continue;
-    let previous = state[slug];
-    if (previous?.needsReview && previous.reviewPlatforms?.includes('facebook_reel') && !dryRun) {
-      let answer = 'unknown';
-      try {
-        const r = await fetch(`${WORKER}/api/videos/facebook-reel-status`, { method: 'POST', signal: AbortSignal.timeout(30_000),
-          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${process.env.GITHUB_TOKEN}` },
-          body: JSON.stringify({ id: previous.reviewIds?.facebook_reel, title: previous.title || data.headline || data.title }) });
-        answer = ((await r.json()) as any).state || 'unknown';
-      } catch {}
-      const settled = settleReview(previous, 'facebook_reel', answer);
-      console.log(`${slug}: facebook_reel on Facebook → ${answer}`);
-      if (JSON.stringify(settled.entry) !== JSON.stringify(previous)) { state[slug] = previous = settled.entry; save(); }
-      if (settled.failing) { console.error(`${slug}: uncertain platforms need review.`); failures++; }
-    } else if (previous?.needsReview && Date.now() - (previous.lastAttempt || 0) > REVIEW_GRACE_MS) { console.error(`${slug}: uncertain platforms need review.`); failures++; }
+    const previous = state[slug];
+    if (!shouldProcessShow(filename, data, previous)) continue;
+    if (needsReviewAlert(previous)) {
+      console.error(`${slug}: uncertain platforms need review.`);
+      failures++;
+      state[slug] = { ...previous!, reviewNotified: true };
+      save();
+    }
     const review = previous?.reviewPlatforms || (previous?.needsReview ? [...PLATFORMS] : []);
     let pending = PLATFORMS.filter(p => !previous?.[p] && !review.includes(p) && (p !== 'tiktok' || wantsTikTok(data, previous, tiktokReady)));
     if (!pending.length) continue;

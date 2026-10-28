@@ -8,7 +8,7 @@ import path from 'node:path';
 import { deliverOnce, authorizeAdmin } from '../worker/src/delivery';
 import { finishPublication, publishFacebookVideo, publishInstagramVideo, mustRetainVideo, publishTikTokVideo } from '../worker/src/video-publishing';
 import worker, { runWatcherPoll, newestFeedItem } from '../worker/src/index';
-import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow, hasRealFailure, retryDelayMs, takePlatformBudget } from '../scripts/show-reel-monitor';
+import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow, hasRealFailure, retryDelayMs, takePlatformBudget, needsReviewAlert } from '../scripts/show-reel-monitor';
 import { toPagesRedirects, writeRedirectPages } from '../lib/redirects.cjs';
 import { applyProofEdits } from '../scripts/editorial';
 import { checkArticle, autoFix, headUnheadedMatches, applyCorrections, BLOCKING_QA_CODES, RETRYABLE_QA_CODES } from '../scripts/news-qa';
@@ -5366,4 +5366,21 @@ test('a Facebook reel still processing is accepted, not a failure', async t => {
   assert.equal(hasRealFailure({ facebook_reel: { ok: false, ambiguous: true, id: 'v1', error: 'x' } }, ['facebook_reel']), false);
   assert.equal(hasRealFailure({ facebook_reel: { ok: false, status: 'uncertain', error: 'x' } }, ['facebook_reel']), false);
   assert.equal(hasRealFailure({ facebook_reel: { ok: false, error: 'Meta rejected the media' } }, ['facebook_reel']), true);
+});
+
+// INCIDENTS #906: a show parked for review failed the reel monitor on every run (every 15 minutes)
+// for a Facebook reel that was already accepted and posted. The alert must fire once, not forever.
+test('a review item alerts once, then the run stays green until something new is uncertain', () => {
+  const first = applyResults(undefined, { facebook_reel: { ok: false, ambiguous: true } }, ['facebook_reel'], 'title');
+  assert.equal(first.reviewNotified, false);
+  assert.equal(needsReviewAlert(first), true);
+  // the monitor records that it reported it
+  const reported = { ...first, reviewNotified: true };
+  assert.equal(needsReviewAlert(reported), false);
+  // another platform going uncertain is new information: alert again
+  const grown = applyResults(reported, { instagram_reel: { ok: false, status: 'uncertain' } } as any, ['instagram_reel'], 'title');
+  assert.equal(grown.needsReview, true); assert.equal(grown.reviewNotified, false); assert.equal(needsReviewAlert(grown), true);
+  // and when the last review item is confirmed the flag disappears completely
+  const cleared = applyResults(grown, { facebook_reel: { ok: true }, instagram_reel: { ok: true } } as any, ['facebook_reel', 'instagram_reel'], 'title');
+  assert.equal(cleared.needsReview, false); assert.equal(cleared.reviewNotified, undefined); assert.equal(needsReviewAlert(cleared), false);
 });
