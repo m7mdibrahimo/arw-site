@@ -588,6 +588,12 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(arWord("المهرجان"), "العرض")
     .replace(arWord("بالمهرجان"), "بالعرض")
     .replace(arWord("للمهرجان"), "للعرض")
+    // …and the forms with an attached pronoun, which the boundary-anchored rules above skip («لمهرجانها المرتقب»
+    // reached the live site 27 times; جولة المراقبة 2026-10-27)
+    .replace(arWord("مهرجانها"), "عرضها")
+    .replace(arWord("مهرجانه"), "عرضه")
+    .replace(arWord("مهرجانهم"), "عرضهم")
+    .replace(arWord("مهرجاننا"), "عرضنا")
     // «حلقة عرض» is left to the next rule — «عرض $1» would make it «عرض عرض».
     .replace(new RegExp(arBoundL + "حلقة\\s+(NXT|RAW|SmackDown|Dynamite|Collision|IMPACT|WWE|AEW|TNA|ROH)\\b", "gi"), "عرض $1")
     .replace(/حلقات\s+عروض/g, "عروض")

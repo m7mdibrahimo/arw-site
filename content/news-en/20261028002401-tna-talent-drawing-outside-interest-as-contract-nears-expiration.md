@@ -1,5 +1,5 @@
 ---
-title: "TNA Talent Drawing Outside Interest as Contract Nears Expiration"
+title: "George Iceman Drawing Outside Interest as TNA Contract Nears Expiration"
 slug: "tna-talent-drawing-outside-interest-as-contract-nears-expiration"
 description: "George Iceman may soon face some big career decisions. According to a report from False Finish, the TNA personality's contract is nearing its end."
 federation: TNA

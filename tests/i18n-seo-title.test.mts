@@ -49,3 +49,20 @@ test('the English page uses the search title only in the head, not in structured
   assert.match(out, /"name":"WWE RAW 26\.10\.2026"/, 'structured data keeps the plain name');
   assert.ok(!/Full Show/.test(out.replace(/<title>[\s\S]*?<\/title>/, '').replace(/og:title[^>]*>/g, '')), 'no «Full Show» outside the title');
 });
+
+// INCIDENTS #900: English news files carry «en_tags», never «tags», so the English article had no keywords at all in
+// its structured data (the Arabic twin had them). The layout must read «tags or en_tags» for the head — and must not
+// start printing the English tags as pills on the page (nothing visible changes for the owner).
+test('English news pages get their keywords from en_tags, head only', () => {
+  const fs = require('node:fs');
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf-8') as string;
+  assert.match(layout, /\{% set ldTags = tags or en_tags %\}/);
+  const keywordsLine = layout.split('\n').find((l: string) => l.includes('"keywords"') && l.includes('ldTags'));
+  assert.ok(keywordsLine, 'JSON-LD keywords use ldTags');
+  const tagBox = layout.slice(layout.indexOf('class="post-tags'));
+  assert.ok(tagBox.includes('{% for tag in tags %}'), 'the visible tag box still lists Arabic «tags» only');
+  assert.ok(!/ldTags|en_tags/.test(tagBox), 'no English tag reaches the page itself');
+  // every English story carries tags to put in that head
+  const missing = fs.readdirSync('content/news-en').filter((f: string) => f.endsWith('.md') && !/^en_tags:/m.test(fs.readFileSync(`content/news-en/${f}`, 'utf-8')));
+  assert.deepEqual(missing, []);
+});

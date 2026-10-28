@@ -10,6 +10,7 @@ en_tags:
   - "Liv Morgan"
   - "WWE"
   - "Hot Ones"
+  - "Boy Meets World"
 image: /content/images/cah5kxav39rmu5kf.jpg
 ---
 WWE star Liv Morgan recently revealed that rewatching the classic sitcom Boy Meets World as an adult completely changed her view of the main character, Cory Matthews. During her appearance on Hot Ones with Sean Evans, Morgan explained that she once considered Cory the ultimate romantic partner, especially when Topanga chose him over attending Yale. However, looking back as a grown woman, her perspective shifted dramatically. Morgan stated that she now views the character as manipulative, toxic, and emotionally abusive. Despite this shift in perception, she still appreciates the show for its nostalgic value alongside other classic coming-of-age television series like Saved by the Bell and The Wonder Years.

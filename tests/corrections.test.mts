@@ -1056,3 +1056,28 @@ test("federation names stay in Latin letters and «نتائج نزاعات» is 
   }
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #900: «مهرجان» رجعت للموقع 27 مرة في أخبار المصارعة لأن الـautoFix كان بيمسك الكلمة
+// لوحدها بس، فـ«لمهرجانها» و«مهرجان Heatwave» عدّوا. القاعدة دلوقتي: «عرض» دايمًا، وممنوعة بالـQA.
+test("«مهرجان» للعروض بيتصلح لـ«عرض» وممنوع في الأخبار (INCIDENTS #900)", async () => {
+  const { applyCorrections, checkArticle, BLOCKING_QA_CODES, RETRYABLE_QA_CODES } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("احتفل لمهرجانها الكبير"), "احتفل لعرضها الكبير");
+  assert.equal(applyCorrections("خلال مهرجان Heatwave"), "خلال عرض Heatwave");
+  assert.equal(applyCorrections("في المهرجان All In"), "في العرض All In");
+  assert.equal(applyCorrections("منصة دويكيكد"), "منصة Dropkickd");
+  // الأفلام مش عروض مصارعة: «المهرجانات السينمائية» تفضل زي ما هي
+  assert.equal(applyCorrections("حقق نجاحا في المهرجانات السينمائية"), "حقق نجاحا في المهرجانات السينمائية");
+  for (const code of ["banned_word_festival"]) {
+    assert.ok(BLOCKING_QA_CODES.includes(code), code);
+    assert.ok(RETRYABLE_QA_CODES.includes(code), code);
+  }
+  const issues = checkArticle("عنوان واضح عن العرض", "أقيمت المواجهة في مهرجان Heatwave وسط جماهير كبيرة. ".repeat(8));
+  assert.ok(issues.some((i: { code: string }) => i.code === "banned_word_festival"));
+  // ولا خبر منشور فيه «مهرجان» بمعنى عرض (سطور الـpermalink/slug مش نص ظاهر)
+  const bad: string[] = [];
+  for (const f of fs.readdirSync("content/news").filter((x) => x.endsWith(".md"))) {
+    const text = fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|slug|source_url|image):.*$/gm, "");
+    if (/(?:ب|ل|ال|بال|لل|كال)?مهرجان(?:ها|ه|هم|ي|نا)?(?![ء-ي])/.test(text)) bad.push(f);
+  }
+  assert.deepEqual(bad, []);
+});

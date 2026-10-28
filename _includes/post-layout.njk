@@ -18,9 +18,12 @@
 <title>{{ pageTitle }} | عرب راسلنج</title>
 {% set baseDesc = description or (content | striptags | metaDescription) or 'مشاهدة وتحميل عروض المصارعة مترجمة وآخر الأخبار والملخصات على عرب راسلنج.' %}
 {% set metaDesc = baseDesc | truncate(320, true, '') %}
+{#- English news files carry «en_tags», never «tags» (content/news-en/news-en.11tydata.js): without this the English
+    article had no keywords at all in its structured data, while the Arabic twin had them (round 2026-10-27, INCIDENTS #900) -#}
+{% set ldTags = tags or en_tags %}
 <meta name="description" content="{{ metaDesc }}">
-{% if tags and tags.length %}
-<meta name="keywords" content="{{ tags | join(', ') }}">
+{% if ldTags and ldTags.length %}
+<meta name="keywords" content="{{ ldTags | join(', ') }}">
 {% endif %}
 <link rel="canonical" href="https://arab-wrestling.com{{ page.url | cleanUrl }}">
 <link rel="alternate" type="application/rss+xml" title="عرب راسلنج - تغذية الأخبار RSS" href="https://arab-wrestling.com/feed.xml">
@@ -47,8 +50,8 @@
 <meta property="article:published_time" content="{{ page.date.toISOString() }}">
 <meta property="article:modified_time" content="{{ page.date.toISOString() }}">
 {% if federation %}<meta property="article:section" content="{{ federation }}">{% endif %}
-{% if tags and tags.length %}
-{% for t in tags %}
+{% if ldTags and ldTags.length %}
+{% for t in ldTags %}
 <meta property="article:tag" content="{{ t }}">
 {% endfor %}
 {% endif %}
@@ -79,7 +82,7 @@
       {% set ldAbout = libraryProgramOf(page.url, collections.library, program_name) if (page.url.startsWith('/shows/') or page.url.startsWith('/recaps/')) else null %}
       {#- a recap or nostalgia special is searched by the same names as a show («ملخص عرض موني ان ذا بانك 2026 مترجم»): the article's keywords carry them, head only (INCIDENTS #679) -#}
       {% set artNames = [] %}{% if page.url.startsWith('/recaps/') and ldAbout %}{% set artNames = ([ldAbout.arName] if ldAbout.arName else []).concat(ldAbout.aliases or []) %}{% set artNames = artNames.concat(showNameForms(headline, title, program_name, event_date, artNames, false)) %}{% elif page.url.startsWith('/shows/') and ldAbout %}{% set artNames = ([ldAbout.arName] if ldAbout.arName else []).concat(ldAbout.aliases or []) %}{% set artNames = artNames.concat(showNameForms(headline, title, program_name, event_date, artNames, true)) %}{% elif page.url.startsWith('/nostalgia/') and series_type == 'shows' %}{% set artNames = showNameForms(headline, title, title | replace(r/\s*\(.*\)\s*$/, ''), event_date, [], true, true) %}{% endif %}
-      {% if (tags and tags.length) or artNames.length %}"keywords": "{{ (tags or []) | join(', ') | escape }}{% for a in artNames %}{% if loop.index0 < 14 %}{% if (tags and tags.length) or loop.index0 > 0 %}, {% endif %}{{ a | escape }}{% endif %}{% endfor %}",{% endif %}
+      {% if (ldTags and ldTags.length) or artNames.length %}"keywords": "{{ (ldTags or []) | join(', ') | escape }}{% for a in artNames %}{% if loop.index0 < 14 %}{% if (ldTags and ldTags.length) or loop.index0 > 0 %}, {% endif %}{{ a | escape }}{% endif %}{% endfor %}",{% endif %}
       {#- the show's program under every name people search it by — for search engines only, nothing on the page (owner) -#}
       {% if ldAbout %}"about": { "@type": "TVSeries", "name": "{{ ldAbout.name | escape }}", "url": "https://arab-wrestling.com/library/{{ ldAbout.slug }}/"{% if ldAbout.arName or ldAbout.aliases.length %}, "alternateName": [{% for a in ([ldAbout.arName] if ldAbout.arName else []).concat(ldAbout.aliases) %}"{{ a | escape }}"{% if not loop.last %}, {% endif %}{% endfor %}]{% endif %} },{% endif %}
       {#- the people the headline names, under their Arabic and English spelling: Google shows these pages for «ماكس كاستر» and «المصارع باك» on positions 10-11 (round 2026-10-27) - head only -#}
