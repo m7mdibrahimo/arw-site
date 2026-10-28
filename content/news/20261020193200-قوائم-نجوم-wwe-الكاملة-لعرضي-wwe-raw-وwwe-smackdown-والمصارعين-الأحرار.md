@@ -1,6 +1,7 @@
 ---
 federation: WWE
-title: "قوائم نجوم WWE الكاملة لعرضي WWE RAW وWWE SmackDown والمصارعين الأحرار"
+title: "قوائم نجوم WWE الكاملة لعرض WWE RAW وWWE SmackDown والمصارعين الأحرار"
+permalink: "/news/قوائم-نجوم-wwe-الكاملة-لعرضي-wwe-raw-وwwe-smackdown-والمصارعين-الأحرار/index.html"
 date: 2026-10-20T19:32:00.000+03:00
 published_at: 2026-10-20T18:39:57.967Z
 source_id: 49699

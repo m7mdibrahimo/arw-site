@@ -1,6 +1,6 @@
 ---
 federation: WWE
-title: "WWE تدرس إقامة عرضي WWE RAW وWWE SmackDown على جانبي عرض TripleMania في عام 2027"
+title: "WWE تدرس إقامة عرض WWE RAW وWWE SmackDown على جانبي عرض TripleMania في عام 2027"
 permalink: "/news/wwe-تدرس-إقامة-عرضي-wwe-raw-وwwe-smackdown-على-جانبي-عرض-triplemania-في-عام-2027/index.html"
 date: 2026-09-17T20:49:06.000+03:00
 source_id: 328973

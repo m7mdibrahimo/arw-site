@@ -153,6 +153,8 @@ const RULES: Rule[] = [
   { code: "broken_word", severity: "error", re: /(?<![ء-ي])(?!(?:ال)?(?:مميتة|مستميتة)(?![ء-ي]))[ء-ي]{2,}يتة(?![ء-ي])/g, message: "كلمة مكسورة: «…يتة» (تاء زيادة — مثل «احترافيتة» بدل «احترافيته/احترافيتها»)", fields: ["title", "body"] },
   { code: "broken_word", severity: "error", re: /(?<![ء-ي])وة(?![ء-ي])/g, message: "كلمة مكسورة: «وة» لوحدها (غالبا «و» + ترجمة مقطوعة لاسم — مثل «هانك وة تانك» بدل «هانك وتانك»)", fields: ["title", "body"] },
   { code: "detached_prefix", severity: "error", re: new RegExp(`(?:^|\\s)[لب]\\s+(?=[${AR}])`, "g"), message: "حرف جر منفصل عن الكلمة (مثل: ل زينا)" },
+  // The future «س» cut off its verb: «"س تكون طريقة رائعة"» (Matt Hardy story, INCIDENTS #945)
+  { code: "detached_prefix", severity: "error", re: /(?<![ء-ي\w])س\s+(?=[تينأ][ء-ي]{2,})/g, message: "«س» منفصلة عن الفعل (مثل: س تكون ← ستكون)" },
   { code: "repeated_word", severity: "error", re: new RegExp(`(?<![${AR}])([${AR}]{4,})\\s+\\1(?![${AR}])`, "g"), message: "كلمة مكررة مرتين متتاليتين" },
   { code: "repeated_word_waw", severity: "error", re: new RegExp(`(?<![${AR}])(?:لل|ال|بال|كال)(?!كثير|نهائي|قمصان)([${AR}]{3,})\\s+وال\\1(?![${AR}])`, "g"), message: "نفس الكلمة مكررة حوالين «و» («للدعم والدعم المعنوي») — اشطب التكرار" },
   { code: "forbidden_term", severity: "error", re: new RegExp(`${arBoundL}(?:ال)?(?:مهرجان|يستذكر)${arBoundR}|${arBoundL}(?:ال)?حلق(?:ة|ات)\\s+${SHOW_WORDS}|${SHOW_WORDS}\\s+(?:ال)?حلق(?:ة|ات)${arBoundR}`, "g"), message: "مصطلح ممنوع (حلقة العرض/مهرجان/يستذكر) — المعتمد: عرض، يتذكر" },
@@ -264,6 +266,8 @@ const RULES: Rule[] = [
   { code: "unclosed_straight_quote", severity: "error", re: /^>\s*["“][^"”\n]{5,}$/gm, message: "اقتباس بدأ بعلامة \" ومتقفلش — اقفله بنفس العلامة", fields: ["body"] },
   // Duals the lists above missed, found in published stories: «ابنيه/ابنيها/شقيقيه» (dual noun + pronoun), «اتحادا WWE وAEW» (dual noun before Latin names), «مواجهتي بطولة / لقبي بطولة» (construct dual) — INCIDENTS #815
   { code: "dual_noun", severity: "error", re: /(?<![ء-ي])(?:[وفبلك]?(?:ال)?|لل)(?:ابني|ابنتي|شقيقي|شقيقتي|أخوي|زميلي|ولدي|طفلي|صديقي)(?:ه|ها|هم|هن)(?![ء-ي])|(?<![ء-ي])[وفبلك]?اتحادا(?=\s+[A-Za-z])|(?<![ء-ي])(?:مواجهتي|نزالي|لقبي|بطولتي|عرضي|فريقي)\s+(?:بطولة|لقب|على\s+(?:لقب|بطولة)|ضمن)(?![ء-ي])/g, message: "اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»", fields: ["title", "body"] },
+  // «عرضي AEW Dynamite وAEW Collision»، «في حلقتي مسلسل Visionquest» (INCIDENTS #945)
+  { code: "dual_noun", severity: "error", re: /(?<![ء-ي])[وفبل]?(?:عرضي(?=\s+[A-Za-z])|حلقتي(?=\s+(?:مسلسل|برنامج|بودكاست|فيلم)))/g, message: "اسم مثنى (عرضي WWE RAW وSmackDown / حلقتي مسلسل) ممنوع — «عرض X وY» أو «حلقات من مسلسل»", fields: ["title", "body"] },
   // «أحدهم … والآخر» pairs "one of them" with "the other" of TWO things — the dual «أحدهما» was lost («عقدين، أحدهم كمصارع والآخر…», Billy Gunn story, INCIDENTS #816)
   { code: "one_of_two", severity: "error", re: /(?<![ء-ي])أحدهم(?![ء-ي])[^.\n]{0,40}(?<![ء-ي])و?(?:الآخر|الأخر)(?![ء-ي])/g, message: "«أحدهم … والآخر» بتتقال عن اتنين (مثنى ممنوع) — قول «واحد … وواحد» أو «الأول … والتاني»", fields: ["body"] },
   // Dual pronoun «هما» on prepositions/nouns the lists above miss: «عند صعودهما الطائرة»، «فمر بالقرب منهما» (INCIDENTS #755)

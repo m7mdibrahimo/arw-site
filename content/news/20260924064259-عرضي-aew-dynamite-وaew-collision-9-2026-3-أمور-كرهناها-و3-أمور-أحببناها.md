@@ -1,6 +1,6 @@
 ---
 federation: AEW
-title: "عرضي AEW Dynamite وAEW Collision: ثلاثة أمور كرهناها وثلاثة أحببناها"
+title: "عرض AEW Dynamite وAEW Collision: ثلاثة أمور كرهناها وثلاثة أحببناها"
 permalink: "/news/عرضي-aew-dynamite-وaew-collision-9-2026-3-أمور-كرهناها-و3-أمور-أحببناها/index.html"
 date: 2026-09-24T06:42:59.000+03:00
 source_id: 2516016189
@@ -17,7 +17,7 @@ tags:
 image: /content/images/jwb774g07qjk72m6.jpg
 layout: post-layout.njk
 ---
-شهد العرض المشترك لعرضي AEW Dynamite وAEW Collision محطات متباينة بين النزالات الحماسية والفقرات التي أثارت تساؤلات فريق العمل، وذلك تحضيرا لعرض AEW All Out المرتقب هذا الأسبوع.
+شهد العرض المشترك لعرض AEW Dynamite وAEW Collision محطات متباينة بين النزالات الحماسية والفقرات التي أثارت تساؤلات فريق العمل، وذلك تحضيرا لعرض AEW All Out المرتقب هذا الأسبوع.
 
 **ما لم يعجبنا**
 

@@ -425,3 +425,18 @@ test("applyCorrections keeps text that is already right (لعودة→للعود
   assert.equal(applyCorrections("يستعد للعودة المرتقبة إلى الحلبة"), "يستعد للعودة المرتقبة إلى الحلبة");
   assert.equal(applyCorrections("يستعد لعودة المرتقبة إلى الحلبة"), "يستعد للعودة المرتقبة إلى الحلبة");
 });
+
+test("«س تكون», «عرضي AEW Dynamite وAEW Collision», «حلقتي مسلسل» are blocked and «مشاهدين عرض / كلا منهم / لفتترته» corrected (INCIDENTS #945)", () => {
+  const t = "مات هاردي يتحدث عن آدم كوبلاند";
+  assert.ok(checkArticle(t, 'وقال هاردي: "س تكون طريقة رائعة لتكريمه عند الاعتزال".').some((i) => i.code === "detached_prefix"));
+  assert.ok(!checkArticle(t, 'وقال هاردي: "ستكون طريقة رائعة لتكريمه عند الاعتزال".').some((i) => i.code === "detached_prefix"));
+  assert.ok(checkArticle(t, "يشارك سينا في عرضي WWE RAW وWWE NXT الأسبوع القادم.").some((i) => i.code === "dual_noun"));
+  assert.ok(checkArticle(t, "ظهرت سابقا في حلقتي مسلسل Visionquest.").some((i) => i.code === "dual_noun"));
+  assert.ok(!checkArticle(t, "يشارك سينا في عرض WWE RAW وعرض WWE NXT الأسبوع القادم.").some((i) => i.code === "dual_noun"));
+  assert.equal(applyCorrections("انخفاض عدد مشاهدين عرض WWE SmackDown"), "انخفاض عدد مشاهدي عرض WWE SmackDown");
+  assert.equal(applyCorrections("يجمع بين عرضي AEW Dynamite وAEW Collision"), "يجمع بين عرض AEW Dynamite وAEW Collision");
+  assert.equal(applyCorrections("أكد أن كلا منهم يسلك طريقا مختلفا"), "أكد أن كل واحد منهم يسلك طريقا مختلفا");
+  assert.equal(applyCorrections("سيكونون منتقدين لفتترته كبطل"), "سيكونون منتقدين لفترته كبطل");
+  assert.equal(applyCorrections("كان يشرب الكحولات"), "كان يشرب الكحول");
+  assert.equal(applyCorrections("بلغ عدد المشاهدين مليون"), "بلغ عدد المشاهدين مليون");
+});

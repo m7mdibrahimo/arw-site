@@ -27,7 +27,7 @@ gallery:
   - /content/images/kn67svxb23260qdc.webp
 layout: post-layout.njk
 ---
-استعد اتحاد AEW لعرض WrestleDream القادم من خلال تقديم عرض مشترك ضخم يجمع بين عرضي AEW Dynamite وAEW Collision في مدينة كليفلاند بولاية أوهايو، وتضمن العرض نزالات تأهيلية لبطولة Clockwork Carnage ودفاعات عن الألقاب وسط أجواء حماسية.
+استعد اتحاد AEW لعرض WrestleDream القادم من خلال تقديم عرض مشترك ضخم يجمع بين عرض AEW Dynamite وAEW Collision في مدينة كليفلاند بولاية أوهايو، وتضمن العرض نزالات تأهيلية لبطولة Clockwork Carnage ودفاعات عن الألقاب وسط أجواء حماسية.
 
 **ما لم يعجبنا**
 
