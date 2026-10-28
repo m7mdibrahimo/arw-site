@@ -4386,6 +4386,7 @@
       "facebook_reel"
     ],
     "needsReview": true,
-    "tiktok": true
+    "tiktok": true,
+    "reviewNotified": true
   }
 }
