@@ -448,3 +448,8 @@ test("a preposition before a past verb is blocked and «اختلاقات / نف�
   assert.ok(!checkArticle(t, "وأوضح غرايسون أنه أصيب أثناء لف الأسلاك الشائكة حول ركبته ليضرب بها خصمه.").some((i) => i.code === "truncated_word"));
   assert.equal(applyCorrections("نفت ذلك قاطعة: لا يحدث. وحل أي اختلاقات بينهم."), "نفت ذلك بشكل قاطع: لا يحدث. وحل أي اختلافات بينهم.");
 });
+
+test("«لطالما … لفترة طويلة» loses the repeated «لفترة طويلة» (INCIDENTS #947)", () => {
+  assert.equal(applyCorrections("لطالما حاولت النساء لفترة طويلة تعويض نقص التقنية."), "لطالما حاولت النساء تعويض نقص التقنية.");
+  assert.equal(applyCorrections("غاب لفترة طويلة عن الحلبة."), "غاب لفترة طويلة عن الحلبة.");
+});

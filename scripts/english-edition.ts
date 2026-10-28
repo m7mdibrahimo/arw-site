@@ -178,7 +178,10 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   // Iceman) and «Major Update on Bruce Prichard's WWE Future» reached the English site live on 2026-10-27/28. The rule
   // asks for the person's name; this makes a vague one a retry instead of a published headline.
   if (/^(?:major|big|huge|latest)\s+(?:update|news)\s+on\b/i.test(title)
-    || /^(?:WWE|AEW|TNA|NJPW|ROH|MLW|AAA|CMLL|GCW|UFC)\s+(?:talent|star|superstar|wrestler|personality|name)\s+(?:drawing|draws|signs|says|speaks|returns|teases|reveals|wants|is|set|reportedly|in|on|to|for|at)\b/i.test(title)) issues.push("vague headline");
+    || /^(?:WWE|AEW|TNA|NJPW|ROH|MLW|AAA|CMLL|GCW|UFC)\s+(?:talent|star|superstar|wrestler|personality|name)\s+(?:drawing|draws|signs|says|speaks|returns|teases|reveals|wants|is|set|reportedly|in|on|to|for|at)\b/i.test(title)
+    // «Reason Behind TNA Star’s Extended Television Absence» (Léi Yǐng Lee, INCIDENTS #947): an unnamed possessive in the
+    // first words («…as WWE Star's Instagram Vanishes» later in a headline that already named her is fine)
+    || /^(?:\S+\s+){0,3}(?:former\s+|ex-)?(?:WWE|AEW|TNA|NJPW|ROH|MLW|AAA|CMLL|GCW|UFC|NXT)\s+(?:talent|star|superstar|wrestler|personality|name|champion)['’]s\b/i.test(title)) issues.push("vague headline");
   // an article glued to the next word by a hyphen («on the-ring» for «in the ring», INCIDENTS #829); «state-of-the-art» is fine
   if (/(?<![\w-])(?:the|an?)-[a-z]+/i.test(body.replace(/<?https?:\/\/\S+/g, " "))) issues.push("article glued to the next word with a hyphen");
   // a line that starts with a lowercase letter is a broken sentence (its subject was dropped): the Weapons Wild

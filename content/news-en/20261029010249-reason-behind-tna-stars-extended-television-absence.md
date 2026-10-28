@@ -1,5 +1,5 @@
 ---
-title: "Reason Behind TNA Star’s Extended Television Absence"
+title: "Léi Yǐng Lee’s Extended TNA Absence Explained"
 slug: "reason-behind-tna-stars-extended-television-absence"
 description: "Léi Yǐng Lee has been absent from TNA television for several months, leading to speculation about her status with the promotion."
 federation: TNA

@@ -34,6 +34,8 @@ test('an English edition that reads like the source, has Arabic, or talks about 
   assert.ok(checkEnglish({ ...good, title: 'TNA Talent Drawing Outside Interest as Contract Nears Expiration' }, input).includes('vague headline'));
   assert.ok(checkEnglish({ ...good, title: "Major Update on Bruce Prichard's WWE Future" }, input).includes('vague headline'));
   assert.ok(!checkEnglish({ ...good, title: 'TNA Star Joe Hendry Signs New Contract' }, input).includes('vague headline'));
+  assert.ok(checkEnglish({ ...good, title: 'Reason Behind TNA Star’s Extended Television Absence' }, input).includes('vague headline'));
+  assert.ok(!checkEnglish({ ...good, title: "Léi Yǐng Lee's Extended TNA Absence Explained" }, input).includes('vague headline'));
 });
 
 test('the edition is saved once per source story, with its embeds, English tags and the Arabic story\'s picture', () => {
