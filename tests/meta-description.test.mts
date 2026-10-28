@@ -149,3 +149,13 @@ test("no published description ends on a lone subordinate clause", () => {
   }
   assert.deepEqual(bad, []);
 });
+
+test("a corporate abbreviation «Bros.» is not the end of a sentence (live 2026-10-28)", () => {
+  // «Tony Khan remains enthusiastic about the future of AEW. Following the acquisition of Warner Bros.» —
+  // «Bros.» counted as a sentence end, so the line under the title stopped half-way through the sentence.
+  const khan = metaDescription("Tony Khan remains enthusiastic about the future of AEW. Following the acquisition of Warner Bros. Discovery by Paramount, which resulted in the formation of Skydance, Khan has been engaging with the new leadership.");
+  assert.equal(khan, "Tony Khan remains enthusiastic about the future of AEW.");
+  // a real sentence that simply mentions the company keeps its words
+  const creed = metaDescription("Austin Creed has expressed complete confidence in his and Kofi's ability to quickly adjust to AEW following a 16-year run in WWE, according to Wrestling Inc.");
+  assert.ok(creed.endsWith("Wrestling Inc."), creed);
+});

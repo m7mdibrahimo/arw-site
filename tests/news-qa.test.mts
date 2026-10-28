@@ -310,3 +310,14 @@ test("«قبل أن تنصرف انتباه الجماهير» is blocked — «
   assert.ok(!codes("موضحا أن موجات الأخبار السلبية تستمر 36 ساعة فقط قبل أن ينصرف انتباه الجماهير إلى أمر آخر.").includes("attention_verb"));
   assert.equal(applyCorrections("قبل أن تنصرف انتباه الجماهير إلى أمر آخر"), "قبل أن ينصرف انتباه الجماهير إلى أمر آخر");
 });
+
+test("a headline that names the wrestler after «نجم WWE» is not vague (live 2026-10-28)", () => {
+  const body = "نص الخبر الطويل هنا بما يكفي لتجاوز الحد الأدنى لطول النص المطلوب في الفحص التلقائي للأخبار المنشورة على الموقع.";
+  // the real names are in the headline: nothing to block
+  assert.ok(!checkArticle("نجم WWE السابق جيمس إلسورث يؤكد انفتاحه على العودة بعد غياب ثماني سنوات", body).some((i) => i.code === "vague_title_subject"));
+  assert.ok(!checkArticle("بطلة WWE NXT كيلاني جوردان تواجه صعوبة في جانب واحد من تدريبات المصارعة", body).some((i) => i.code === "vague_title_subject"));
+  // the stand-in with a verb straight after the promotion is still vague (INCIDENTS #904)
+  assert.ok(checkArticle("نجم TNA يجذب اهتمام أطراف خارجية مع اقتراب نهاية عقده", body).some((i) => i.code === "vague_title_subject"));
+  assert.ok(checkArticle("أسطورة WWE يعلن اعتزاله المصارعة نهائيا", body).some((i) => i.code === "vague_title_subject"));
+  assert.ok(checkArticle("بطل WWE السابق يريد العودة إلى الحلبة", body).some((i) => i.code === "vague_title_subject"));
+});

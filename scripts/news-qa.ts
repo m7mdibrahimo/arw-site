@@ -554,7 +554,18 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
   if (/^(تصريحات نارية|صدمة مدوية|ليلة نارية|اعترافات صادمة|مفاجأة كبرى)/.test(t)) issues.push({ code: "title_cliche", severity: "error", field: "title", message: "بادئة كليشيه ممنوعة", excerpt: t });
   // «نجم TNA يجذب اهتمام أطراف خارجية…» hid the name the story is about (live 2026-10-27, George Iceman): the
   // guide already asks for the wrestler's name in the headline, so the writer retries with the source's name.
-  if (/^(?:نجم|نجمة|مصارع|مصارعة|موهبة|أسطورة|بطل|بطلة)\s+(?:WWE|AEW|TNA|NJPW|ROH|MLW|AAA|CMLL|UFC)\b/.test(t)) issues.push({ code: "vague_title_subject", severity: "error", field: "title", message: "العنوان من غير اسم الشخص («نجم TNA…») — اكتب اسم المصارع اللي في الخبر", excerpt: t });
+  // Only when the phrase goes straight into a verb: «نجم WWE السابق جيمس إلسورث يؤكد…» and «بطلة WWE NXT
+  // كيلاني جوردان تواجه…» DO name the wrestler, and the old pattern blocked both (live 2026-10-28) — a
+  // blocking+retryable code that fires on a good headline wastes a rewrite and can hold the story.
+  const vagueSubject = /^(?:نجم|نجمة|مصارع|مصارعة|موهبة|أسطورة|بطل|بطلة)\s+(?:WWE|AEW|TNA|NJPW|ROH|MLW|AAA|CMLL|UFC|GCW)\b(.*)$/.exec(t);
+  if (vagueSubject) {
+    const afterPromo = vagueSubject[1]
+      .replace(/^\s+(?:السابق|السابقة|الحالي|الحالية|المخضرم|المخضرمة|الأسطوري|الأسطورية|الشهير|الشهيرة|الأسبق|الأمريكي|الأمريكية|المكسيكي|المكسيكية|الياباني|اليابانية|الأسترالي|الأسترالية|الإنجليزي|الإنجليزية|الكندي|الكندية|الفرنسي|الفرنسية)+/, "")
+      .trim();
+    const firstWord = afterPromo.split(/\s+/)[0] || "";
+    const genericVerb = /^(?:يجذب|تجذب|يريد|تريد|يكشف|تكشف|يعلن|تعلن|يتحدث|تتحدث|يواجه|تواجه|يعود|تعود|ينتظر|تنتظر|يرفض|ترفض|يخسر|تخسر|يفوز|تفوز|يستعد|تستعد|يطلب|تطلب|يؤكد|تؤكد|يحسم|تحسم|يخطط|تخطط|يغادر|تغادر|ينضم|تنضم|يوضح|توضح|يهاجم|تهاجم|يرد|ترد|يثير|تثير|يقرر|تقرر|يلمح|تلمح|يحدد|تحدد|يترقب|يتحول|يحضر|يحذر|يحقق|يشارك|يستبعد|يبدأ|يستمر|يفكر|يواصل|يتعرض|يستضيف)$/;
+    if (!afterPromo || genericVerb.test(firstWord)) issues.push({ code: "vague_title_subject", severity: "error", field: "title", message: "العنوان من غير اسم الشخص («نجم TNA…») — اكتب اسم المصارع اللي في الخبر", excerpt: t });
+  }
   // A quip lifted word for word into the headline: «...في دار أيتام بالمكسيك على ما أعتقد» (INCIDENTS #299)
   if (/على ما (?:أعتقد|أظن)|(?:^|\s)(?:أعتقد|أظن)$/.test(t)) issues.push({ code: "title_first_person", severity: "error", field: "title", message: "العنوان فيه تحفظ بصيغة المتكلم منقول حرفيًا من تصريح ساخر — اكتب العنوان بصيغة الخبر", excerpt: t });
   // «تقرير نسب المشاهدة والتقييمات لعرض WWE NXT 2026» — says nothing about which night (INCIDENTS #299)

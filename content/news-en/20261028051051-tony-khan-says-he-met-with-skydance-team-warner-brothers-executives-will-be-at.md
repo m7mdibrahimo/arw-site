@@ -1,7 +1,7 @@
 ---
 title: "Tony Khan Says He Met With Skydance Team, Warner Brothers Executives Will Be at AEW Dynamite"
 slug: "tony-khan-says-he-met-with-skydance-team-warner-brothers-executives-will-be-at"
-description: "Tony Khan remains enthusiastic about the future of AEW. Following the acquisition of Warner Bros."
+description: "Tony Khan says he had a great visit with the Skydance team in Los Angeles and that Warner Bros. executives will attend AEW Dynamite on Wednesday."
 federation: AEW
 date: 2026-10-28T02:10:51.000Z
 source_id: 336192

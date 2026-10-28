@@ -702,6 +702,16 @@ module.exports = function(eleventyConfig) {
   });
   eleventyConfig.addFilter("yearOf", function(d) { const t = new Date(d); return isNaN(t) ? "" : String(t.getUTCFullYear()); });
   eleventyConfig.addFilter("isoDay", function(v) { const d = new Date(v); return isNaN(d) ? new Date().toISOString().slice(0, 10) : d.toISOString().slice(0, 10); });
+  // The end of the show for the BroadcastEvent structured data: start + the page's own duration
+  // («02:25:26»). A show with no duration keeps only its startDate. Head only (INCIDENTS #915).
+  eleventyConfig.addFilter("eventEnd", function(start, duration) {
+    const d = new Date(start);
+    const m = /^(\d{1,2}):(\d{2})(?::(\d{2}))?$/.exec(String(duration || "").trim());
+    if (isNaN(d) || !m) return "";
+    const ms = ((+m[1]) * 3600 + (+m[2]) * 60 + (+(m[3] || 0))) * 1000;
+    if (!ms) return "";
+    return new Date(d.getTime() + ms).toISOString();
+  });
   eleventyConfig.addNunjucksFilter("date", formatDate);
 
   const jsonify = function(obj){

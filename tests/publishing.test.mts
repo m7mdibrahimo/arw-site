@@ -5386,3 +5386,14 @@ test('a review item alerts once, then the run stays green until something new is
   const cleared = applyResults(grown, { facebook_reel: { ok: true }, instagram_reel: { ok: true } } as any, ['facebook_reel', 'instagram_reel'], 'title');
   assert.equal(cleared.needsReview, false); assert.equal(cleared.reviewNotified, undefined); assert.equal(needsReviewAlert(cleared), false);
 });
+
+test("a show's BroadcastEvent says when it ended and that it was scheduled (INCIDENTS #915)", () => {
+  // «موعد عرض …» (Search Console: 8.9 و9.5 للموني إن ذا بانك) asks for the show's time; a BroadcastEvent with
+  // only a startDate never says how long it ran. Head only, nothing visible changes.
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
+  assert.match(layout, /"@type": "BroadcastEvent"[\s\S]*"eventStatus": "https:\/\/schema\.org\/EventScheduled"/);
+  assert.match(layout, /"@type": "BroadcastEvent"[\s\S]*"eventAttendanceMode": "https:\/\/schema\.org\/OnlineEventAttendanceMode"/);
+  assert.match(layout, /"endDate": \{\{ ldEnd \| jsonify \| safe \}\}/);
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
+  assert.match(cfg, /addFilter\("eventEnd"/);
+});
