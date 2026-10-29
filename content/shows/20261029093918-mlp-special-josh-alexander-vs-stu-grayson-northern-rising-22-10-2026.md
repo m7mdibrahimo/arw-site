@@ -12,7 +12,7 @@ tags:
   - MLP
   - INDIE
   - ام ال بي
-  - MLP Mayhem
+  - MLP Special
 image: /content/images/b7fon3mbts63adde.jpg
 early_servers: 6
 early_downloads: 13
