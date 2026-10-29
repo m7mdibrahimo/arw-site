@@ -1,6 +1,7 @@
 ---
 federation: WWE
-title: "موقف WWE الحالي من مواجهة عرض AEW Dynamite New Year's Smash لعرض WWE SmackDown"
+title: "WWE لن تغير خطتها لعرض SmackDown رغم مواجهة عرض AEW Dynamite New Year's Smash"
+permalink: "/news/موقف-wwe-الحالي-من-مواجهة-عرض-aew-dynamite-new-years-smash-لعرض-wwe-smackdown/index.html"
 date: 2026-10-29T20:01:35.000+03:00
 published_at: 2026-10-29T17:14:20.400Z
 source_id: 802261178

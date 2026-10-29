@@ -1,7 +1,7 @@
 ---
 title: "Sami Zayn Explains Why He Did Not Post About the Death of PAC"
 slug: "sami-zayn-explains-why-he-did-not-post-about-the-death-of-pac"
-description: "Sami Zayn recently discussed his decision to refrain from posting on social media following the death of Benjamin \"PAC\" Satterly last month due."
+description: "Sami Zayn recently discussed his decision to refrain from posting on social media following the death of Benjamin \"PAC\" Satterly last month due to bronchial asthma."
 federation: WWE
 date: 2026-10-29T17:17:53.000Z
 source_id: 2886142507

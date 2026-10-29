@@ -1,7 +1,7 @@
 ---
 title: "Speculation on Will Ospreay vs. Adam Copeland World Title Match After WrestleDream"
 slug: "speculation-on-will-ospreay-vs-adam-copeland-world-title-match-after-wrestledrea"
-description: "Dave Meltzer recently addressed the speculation surrounding a potential AEW World Championship match between Will Ospreay and Adam Copeland following their."
+description: "Dave Meltzer addressed the speculation surrounding a potential AEW World Championship match between Will Ospreay and Adam Copeland after WrestleDream."
 federation: AEW
 date: 2026-10-20T10:08:29.000Z
 source_id: 802257662

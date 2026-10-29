@@ -1,7 +1,7 @@
 ---
 title: "Scott D'Amore Confirms Taylor Rising Exits Maple Leaf Pro Wrestling"
 slug: "scott-damore-confirms-taylor-rising-exits-maple-leaf-pro-wrestling"
-description: "Maple Leaf Pro Wrestling owner Scott D'Amore made a surprise cameo appearance on a recent episode of CMLL Informa to share a major update regarding his."
+description: "Maple Leaf Pro Wrestling owner Scott D'Amore appeared on CMLL Informa to confirm that Taylor Rising has left the company."
 federation: INDIE
 date: 2026-10-08T04:49:03.000Z
 source_id: 332718

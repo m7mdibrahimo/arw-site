@@ -1,7 +1,7 @@
 ---
 title: "Val Venis Claims Triple H Was Offended by His Political Comments"
 slug: "val-venis-claims-triple-h-was-offended-by-his-political-comments"
-description: "Val Venis recently discussed a backstage political conversation with Triple H during his WWE career that he believes may have negatively impacted his."
+description: "Val Venis recently discussed a backstage political conversation with Triple H that he believes may have hurt his WWE career."
 federation: WWE
 date: 2026-10-11T19:07:08.000Z
 source_id: 802253697

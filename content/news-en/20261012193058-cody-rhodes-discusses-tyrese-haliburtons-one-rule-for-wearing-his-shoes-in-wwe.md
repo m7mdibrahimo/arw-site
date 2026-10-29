@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Discusses Tyrese Haliburton's One Rule for Wearing His Shoes in WWE"
 slug: "cody-rhodes-discusses-tyrese-haliburtons-one-rule-for-wearing-his-shoes-in-wwe"
-description: "Cody Rhodes recently discussed Tyrese Haliburton's frequent appearances on WWE programming and revealed a specific rule that Haliburton has regarding his."
+description: "Cody Rhodes discussed Tyrese Haliburton's frequent WWE appearances and revealed a specific rule Haliburton has about his signature shoes."
 federation: WWE
 date: 2026-10-12T16:30:58.000Z
 source_id: 333509
