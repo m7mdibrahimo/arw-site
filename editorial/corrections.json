@@ -2,6 +2,11 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "هيمان",
+      "right": "هايمن",
+      "note": "Paul Heyman في قاموس الأسماء «بول هايمن» — البوت كتبه «بول هيمان» في ٢٩ خبر وصفحتين وسوم لنفس الشخص (INCIDENTS #976)"
+    },
+    {
       "wrong": "سابفا",
       "right": "سابقا",
       "note": "غلطة حرف («ف» بدل «ق») — خبر توماسو تشامبا (INCIDENTS #974)"

@@ -1,7 +1,7 @@
 ---
 title: "Chris Jericho Reveals TV Series About His Early Wrestling Career Is Close to Filming Pilot"
 slug: "chris-jericho-reveals-tv-series-about-his-early-wrestling-career-is-close-to"
-description: "Chris Jericho recently revealed that a television series based on his early professional wrestling career is currently in development and approaching."
+description: "Chris Jericho recently revealed that a television series based on his early professional wrestling career is currently in development."
 federation: AEW
 date: 2026-10-29T13:41:21.000Z
 source_id: 802261103

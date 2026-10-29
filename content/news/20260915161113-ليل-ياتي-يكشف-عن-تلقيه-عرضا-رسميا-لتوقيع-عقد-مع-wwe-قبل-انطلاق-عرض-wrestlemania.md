@@ -12,7 +12,7 @@ tags:
   - ليل ياتي
   - تريك ويليامز
   - بارون كوربين
-  - بول هيمان
+  - بول هايمن
 image: /content/images/9iub4eg92mey9otq.jpg
 layout: post-layout.njk
 ---

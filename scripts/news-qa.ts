@@ -1265,6 +1265,9 @@ export function autoFix(text: string): string {
     .replace(new RegExp(`(?<![${AR}])([${AR}]+)ـ(?=[${AR}])`, "g"), (m, w) => TATWEEL_PREFIXES.has(w) ? m : w)
     // "عرض MLP عرض MLP" → "عرض MLP"
     .replace(/(?<!\S)(\S+\s+\S+)(?:\s+\1)+(?!\S)/g, (m, phrase) => new RegExp(`[${AR}]`).test(phrase) ? phrase : m)
+    // "وبداياته في بداياته في المصارعة" → "وبداياته في المصارعة": the same two words repeated with
+    // «و/ف» joined only to the first copy (Jericho story, INCIDENTS #976)
+    .replace(new RegExp(`(?<!\\S)([وف])([${AR}]{3,}\\s+[${AR}]{2,})\\s+\\2(?![${AR}])`, "g"), "$1$2")
     // "صالة صالة" → "صالة" (team names like "بانغ بانغ" are kept)
     .replace(new RegExp(`(?<![${AR}])([${AR}]{4,})(?:\\s+\\1)+(?![${AR}])`, "g"), (m, w) => LEGIT_DOUBLES.has(w) ? m : w)
     // "آدم بيرس (آدم بيرس)" → "آدم بيرس"
