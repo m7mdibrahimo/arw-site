@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes: Haku Is Notoriously the Toughest Wrestler of All Time, He's Also the Sweetest Human Being You've Ever Met"
 slug: "cody-rhodes-haku-is-notoriously-the-toughest-wrestler-of-all-time-hes-also-the-s"
-description: "Cody Rhodes recently discussed Haku, noting that while he is widely considered the toughest wrestler of all time."
+description: "Cody Rhodes recently discussed Haku, noting that while he is widely considered the toughest wrestler of all time, he is also the sweetest person you will ever meet."
 federation: WWE
 date: 2026-10-21T14:10:22.000Z
 source_id: 334971

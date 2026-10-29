@@ -18,8 +18,13 @@ permalink: "{{ fedPage.permalink }}"
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
 <link rel="icon" type="image/png" href="/favicon.png?v=3">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
-<title>مصارعة {{ fed.code }}: عروض وأخبار {{ fed.code }} مترجمة بالعربية{% if fedPage.pageNumber > 1 %} - صفحة {{ fedPage.pageNumber }}{% endif %} | عرب راسلنج</title>
-<meta name="description" content="مصارعة {{ fed.code }} بالعربي: شاهد وحمّل جميع عروض وأخبار وملخصات {{ fed.code }} ({{ fed.name }}) مترجمة باللغة العربية بجودة عالية.{% if fedPage.pageNumber > 1 %} صفحة {{ fedPage.pageNumber }}.{% endif %}">
+{#- Head only: «مصارعة wwe» sat at 10 and «مصارعة حرة wwe» at 7.9 with the home page answering them
+    (seo/search-console.md, INCIDENTS #974). A wrestling federation's page now says «المصارعة الحرة» and
+    carries its Arabic spelling and full name as alternate names; nothing on the page changes. -#}
+{% set fedAr = {"WWE": "دبليو دبليو إي", "AEW": "إيه إي دبليو", "NJPW": "نيو جابان", "TNA": "تي إن إيه", "ROH": "رينج أوف أونر"}[fed.code] %}
+{% set fedWrestling = fedAr %}
+<title>مصارعة {{ fed.code }}{% if fedWrestling %} الحرة{% endif %}: عروض وأخبار {{ fed.code }} مترجمة بالعربية{% if fedPage.pageNumber > 1 %} - صفحة {{ fedPage.pageNumber }}{% endif %} | عرب راسلنج</title>
+<meta name="description" content="مصارعة {{ fed.code }}{% if fedWrestling %} الحرة ({{ fedAr }}){% endif %} بالعربي: شاهد وحمّل جميع عروض وأخبار وملخصات {{ fed.code }} ({{ fed.name }}) مترجمة باللغة العربية بجودة عالية.{% if fedPage.pageNumber > 1 %} صفحة {{ fedPage.pageNumber }}.{% endif %}">
 <link rel="canonical" href="https://arab-wrestling.com{{ fedPage.url }}">
 <script type="application/ld+json">
 {
@@ -27,8 +32,18 @@ permalink: "{{ fedPage.permalink }}"
   "@type": "CollectionPage",
   "name": "مصارعة {{ fed.code }}: عروض وأخبار {{ fed.code }} مترجمة",
   "url": "https://arab-wrestling.com{{ fedPage.url }}",
-  "description": "شاهد وحمّل جميع عروض وأخبار وملخصات {{ fed.code }} ({{ fed.name }}) مترجمة باللغة العربية بجودة عالية.",
+  "description": "شاهد وحمّل جميع عروض وأخبار وملخصات {{ fed.code }} ({{ fed.name }}) مترجمة باللغة العربية بجودة عالية.",{% if fedWrestling %}
+  "alternateName": ["مصارعة حرة {{ fed.code }}", "مصارعة {{ fed.code }} الحرة", "مصارعة {{ fed.code }} مترجمة", "عروض {{ fed.code }} مترجمة", "اخبار {{ fed.code }}", "مصارعة {{ fedAr }}"],
+  "about": { "@type": "SportsOrganization", "name": "{{ fed.name }}", "alternateName": ["{{ fed.code }}", "{{ fedAr }}"], "sport": "Professional wrestling" },{% endif %}
   "isPartOf": { "@id": "https://arab-wrestling.com/#website" },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://arab-wrestling.com/" },
+      { "@type": "ListItem", "position": 2, "name": "الاتحادات", "item": "https://arab-wrestling.com/federations/" },
+      { "@type": "ListItem", "position": 3, "name": "مصارعة {{ fed.code }}", "item": "https://arab-wrestling.com/federation/{{ fed.slug }}/" }
+    ]
+  },
   "inLanguage": "ar"
 }
 </script>

@@ -20,6 +20,6 @@ AEW star Jeff Jarrett recently spoke out about online criticism regarding his ma
 
 Speaking on his My World podcast, Jarrett explained that he selects his appearances carefully and understands his role in professional wrestling. He noted that he contributes to short-term storylines and helps elevate rising talent without needing to wrestle weekly.
 
-> "I pick my spots here and there," 
+> "I pick my spots here and there."
 
 At the event, Blue Panther def. Jeff Jarrett in under nine minutes. In another match, Hechicero def. Claudio Castagnolo and Zack Sabre Jr. to successfully defend his title.

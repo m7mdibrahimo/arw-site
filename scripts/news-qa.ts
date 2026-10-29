@@ -1392,7 +1392,26 @@ export function wrestlerNotInSource(body: string, source: string, glossary: Reco
     const w = en.split(/\s+/).filter(x => /^[A-Za-z]{4,}$/.test(x)).pop();
     if (w && src.includes(w.toLowerCase().slice(0, Math.max(4, w.length - 2)))) named.add(ar);
   }
+  // A relative the source names in place of the one the story wrote: «داستن رودس» in a story whose source
+  // says Dusty Rhodes (Paul Heyman story, INCIDENTS #974). The shared surname cleared it, so when another
+  // glossary name with that surname has its first name in the source and this one's first name is not, it
+  // counts even once.
+  const word = (w: string) => new RegExp(`\\b${w.toLowerCase()}\\b`).test(src);
+  const bySurname = new Map<string, [string, string][]>();
   for (const [en, ar] of Object.entries(glossary)) {
+    const parts = en.split(/\s+/);
+    if (parts.length !== 2 || !parts.every(p => /^[A-Za-z]{3,}$/.test(p))) continue;
+    const key = parts[1].toLowerCase();
+    bySurname.set(key, [...(bySurname.get(key) || []), [parts[0], ar]]);
+  }
+  for (const [en, ar] of Object.entries(glossary)) {
+    const parts = en.split(/\s+/);
+    const kin = parts.length === 2 ? bySurname.get(parts[1].toLowerCase()) || [] : [];
+    if (named.has(ar) && kin.length > 1 && !word(parts[0]) && kin.some(([first, kar]) => kar !== ar && word(first))) {
+      // «وداستن رودس»: a one-letter prefix is part of the written word
+      const at = text.search(new RegExp(`(?<![ء-ي])(?:[وبلفك])?${ar}(?![ء-ي])`));
+      if (at !== -1) { found.push(en); continue; }
+    }
     if (named.has(ar)) continue;
     const words = en.split(/\s+/).filter(w => /^[A-Za-z]{4,}$/.test(w));
     if (words.length < 2 || ar.length < 8 || !/^[؀-ۿ ]+$/.test(ar)) continue;

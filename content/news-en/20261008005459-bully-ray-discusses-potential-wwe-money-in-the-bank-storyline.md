@@ -18,7 +18,7 @@ According to Wrestling Inc., wrestling veteran Bully Ray recently shared his tho
 
 Speaking on Busted Open Radio, Bully Ray proposed a specific dramatic moment for the event rather than an immediate cash-in. According to Wrestling Inc., he envisioned a scenario where Morgan wins the triple threat match while her opponents are down, only for Perez to walk out with her briefcase.
 
-> "Could you imagine if Liv Morgan wins, Becky's selling on the floor, the medical is attending to...Vaquer, and Liv is all by herself sitting in the corner, clutching that championship,"
+> "Could you imagine if Liv Morgan wins, Becky's selling on the floor, the medical is attending to...Vaquer, and Liv is all by herself sitting in the corner, clutching that championship."
 
 > "She's out of breath, because she just won a big three-way dance. And Roxanne's music hits, and here she comes with the briefcase. Roxanne slides in, Roxanne has the briefcase, she's looking right down at Liv who's holding the championship, right?"
 

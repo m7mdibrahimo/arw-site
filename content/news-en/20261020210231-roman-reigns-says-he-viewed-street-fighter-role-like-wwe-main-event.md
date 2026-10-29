@@ -15,7 +15,7 @@ image: /content/images/ktmycrtxbyl9g5l2.jpg
 ---
 The latest Street Fighter movie has hit theaters, and WWE star Roman Reigns has shared how he approached his role as Akuma in the film. Speaking on the Notsam radio show, Reigns explained that his character appears in the movie's third act, leading him to treat the opportunity with the same gravity as a major match.
 
-> "I just try to keep that type of weight on it, you know what I mean? ... The stakes are as high as can be, so you need to be able to come in and match what me and everybody's done,"
+> "I just try to keep that type of weight on it, you know what I mean? ... The stakes are as high as can be, so you need to be able to come in and match what me and everybody's done."
 
 Reigns acknowledged that stepping into the acting world was a new challenge, but he relied on his wrestling background and his castmates' performances to guide him.
 

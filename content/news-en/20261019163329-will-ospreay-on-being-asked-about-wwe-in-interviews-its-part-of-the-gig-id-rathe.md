@@ -1,7 +1,7 @@
 ---
 title: "Will Ospreay on Being Asked About WWE in Interviews: It's Part of the Gig, I'd Rather Focus on AEW"
 slug: "will-ospreay-on-being-asked-about-wwe-in-interviews-its-part-of-the-gig-id-rathe"
-description: "Will Ospreay recently discussed his perspective on being asked about WWE during interviews, noting that while it comes with the territory."
+description: "Will Ospreay recently discussed his perspective on being asked about WWE during interviews, noting that while it comes with the territory, he prefers to focus his energy on AEW."
 federation: AEW
 date: 2026-10-19T13:33:29.000Z
 source_id: 334660

@@ -16,12 +16,12 @@ image: /content/images/yki0vyv0in5bq1j9.jpg
 ---
 Tommaso Ciampa recently discussed his experience facing Chris Jericho as "The Painmaker" in a No Holds Barred match at AEW Redemption 2026, following a prior win over him on AEW Dynamite. Speaking with The Sportster, Ciampa expressed his excitement about wrestling a childhood idol and noted their strong in-ring chemistry and mutual trust.
 
-> "When the Painmaker thing came up, that just felt like such a lay-up," 
+> "When the Painmaker thing came up, that just felt like such a lay-up."
 
-He recalled, adding that he had been a fan since he was young.
+He added that he had been a fan since he was young.
 
 The bout in Montreal featured heavy brutality, including a barbed-wire table spot, hockey pucks with glued thumbtacks, and a spot where Jericho was dropped through a glass mirror and table. Ciampa stated he was amazed that the 55-year-old Jericho could maintain such a strenuous physical pace.
 
-> "He's inhuman! Like, I don't know how this guy does what he does," 
+> "He's inhuman! Like, I don't know how this guy does what he does."
 
 https://www.youtube.com/watch?v=vJ8CX5pjiPA

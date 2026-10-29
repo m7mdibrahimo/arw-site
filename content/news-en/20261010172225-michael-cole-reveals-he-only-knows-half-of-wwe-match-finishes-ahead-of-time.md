@@ -16,7 +16,7 @@ image: /content/images/k8uqbm1sg0p2r15h.jpg
 ---
 Veteran WWE broadcaster Michael Cole shared insights into how much information he receives regarding match outcomes before going live on air. Speaking in an interview with OutKick, Cole explained that he knows the winning results about half the time, balancing the need for story progression with genuine excitement.
 
-> "Fifty-fifty. Sometimes I do because I need to know where to lead the audience in terms of where stories may be going each and every week,"
+> "Fifty-fifty. Sometimes I do because I need to know where to lead the audience in terms of where stories may be going each and every week."
 
 Cole noted that understanding the results helps guide viewers through WWE's episodic television format. However, he often prefers remaining in the dark to deliver authentic commentary during major moments, such as the Money in the Bank ladder matches.
 

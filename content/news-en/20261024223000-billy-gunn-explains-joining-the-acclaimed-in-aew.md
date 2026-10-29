@@ -16,7 +16,7 @@ image: /content/images/3brrmu8gvchdbie4.jpg
 ---
 Billy Gunn reflected on the formation of his partnership with Max Caster and Anthony Bowens in AEW, noting that the combination helped draw immediate attention to the act. Speaking with Inside The Ropes, the wrestling veteran noted that his established reputation helped legitimize the young duo.
 
-> "I still have equity in this business, so [putting] me with them, it kind of makes people take notice a little bit,"
+> "I still have equity in this business, so [putting] me with them, it kind of makes people take notice a little bit."
 
 Gunn explained that the group's success came from all three performers clicking together, including their memorable entrance routine and crowd reactions.
 

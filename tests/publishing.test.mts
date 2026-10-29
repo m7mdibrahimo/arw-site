@@ -3367,7 +3367,7 @@ test('source-folder addresses of shows, recaps and news redirect to their pages 
   const annual = contentFolderAddresses(root, site).find(([from]) => from === '/shows/revpro-14-year-anniversary-show-2026/');
   assert.equal(annual?.[1], '/shows/revpro-14-year-anniversary-show/');
   // searched words in the head only: «مصارعة wwe», «نتائج عرض الرو الاخير», «wrestling in arabic» (INCIDENTS #325)
-  assert.match(fs.readFileSync('pages/federation.njk', 'utf-8'), /<title>مصارعة \{\{ fed\.code \}\}:/);
+  assert.match(fs.readFileSync('pages/federation.njk', 'utf-8'), /<title>مصارعة \{\{ fed\.code \}\}(?:\{% if fedWrestling %\} الحرة\{% endif %\})?:/);
   assert.match(fs.readFileSync('pages/library-program.njk', 'utf-8'), /pageDesc: "[^"]*مع نتائجه كاملة/);
   assert.match(fs.readFileSync('index.njk', 'utf-8'), /"Wrestling in Arabic"/);
   assert.match(fs.readFileSync('eleventy.config.js', 'utf-8'), /contentFolderAddresses\(\)/);

@@ -1,7 +1,7 @@
 ---
 title: "John Cena Says Roman Reigns Winning Too Much Could Create WWE’s Next CM Punk or Daniel Bryan"
 slug: "john-cena-says-roman-reigns-winning-too-much-could-create-wwes-next-cm-punk-or-d"
-description: "John Cena believes that if Roman Reigns continues winning continuously."
+description: "John Cena believes that if Roman Reigns continues winning continuously, it could eventually create the same kind of audience backlash that pushed CM Punk and Daniel Bryan into stardom."
 federation: WWE
 date: 2026-10-09T13:07:07.000Z
 source_id: 802252705

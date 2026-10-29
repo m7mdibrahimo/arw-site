@@ -18,7 +18,7 @@ Queen Aminata recently reflected on challenging Mercedes Moné for the AEW Women
 
 During an appearance on CMLL Informa, according to Fightful, Aminata discussed having a role model in the industry and commended her recent opponent.
 
-> "Growing up watching wrestling, I didn’t really have a role model, so I just wanted to make myself my own role model. Now that I’ve faced her in Paris, after that match, something stuck in my head. I want to be as good as this woman is. She is amazing. I don’t think people give her enough credit. I feel like I’m a different wrestler because of that match. It was in France, and I grew up in France. Of course, it’s the one and only Mercedes Moné. I want to do it again. I really want to wrestle her again. She’s amazing,"
+> "Growing up watching wrestling, I didn’t really have a role model, so I just wanted to make myself my own role model. Now that I’ve faced her in Paris, after that match, something stuck in my head. I want to be as good as this woman is. She is amazing. I don’t think people give her enough credit. I feel like I’m a different wrestler because of that match. It was in France, and I grew up in France. Of course, it’s the one and only Mercedes Moné. I want to do it again. I really want to wrestle her again. She’s amazing."
 
 Aminata is scheduled to challenge Persephone for the AEW TBS Championship on AEW Dynamite.
 

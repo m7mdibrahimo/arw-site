@@ -1,7 +1,7 @@
 ---
 title: "Paul Heyman Reveals Studio 54 Offered to Pay Him in Cocaine When He Was Just 19"
 slug: "paul-heyman-reveals-studio-54-offered-to-pay-him-in-cocaine-when-he-was-just-19"
-description: "Paul Heyman revealed that when he was working as a 19-year-old photographer at the legendary Studio 54 in New York City."
+description: "Paul Heyman revealed that when he was working as a 19-year-old photographer at the legendary Studio 54 in New York City, management offered to pay him in cocaine instead of money."
 federation: WWE
 date: 2026-10-29T12:51:48.000Z
 source_id: 802261093

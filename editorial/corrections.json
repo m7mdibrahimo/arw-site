@@ -2,6 +2,22 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "سابفا",
+      "right": "سابقا",
+      "note": "غلطة حرف («ف» بدل «ق») — خبر توماسو تشامبا (INCIDENTS #974)"
+    },
+    {
+      "wrong": "قائللا",
+      "right": "قائلا",
+      "note": "لام زيادة — خبر توماسو تشامبا (INCIDENTS #974)"
+    },
+    {
+      "wrong": "(?<=(?:اندهاش|دهشة|إعجاب)(?:ه|ها|هم)\\s+(?:الشديد|الشديدة|الكبير|الكبيرة)\\s+)قدرة",
+      "right": "من قدرة",
+      "regex": true,
+      "note": "«أعرب عن اندهاشه الشديد قدرة جيريكو» ناقصة «من» — خبر توماسو تشامبا (INCIDENTS #974)"
+    },
+    {
       "wrong": "عاد إلى الأحداث",
       "right": "عاد إلى الحلبة",
       "note": "«returned to in-ring action» بتتكتب «عاد إلى الحلبة» مش «عاد إلى الأحداث» (خبر تشانينج ستاكس لورينزو، جولة 2026-10-28)"

@@ -300,6 +300,11 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   [/\bI feel like, just because\b/g, "I feel like"],
   // «Speaking on an interview» (Paul Heyman, INCIDENTS #973): on a podcast/show, but in an interview
   [/\b([Ss])peaking on an interview\b/g, "$1peaking in an interview"],
+  // A quote set apart as a «>» line kept the comma of «"…a lay-up," he recalled», so the line ended «,"» and the
+  // next paragraph read «He recalled, adding that…» (Tommaso Ciampa story, INCIDENTS #974): the paragraph says
+  // «He added that…» and the quote ends with a full stop — unless the next paragraph is only its attribution.
+  [/^(He|She|They) (?:recalled|said|explained|noted|continued|stated), adding that\b/gm, "$1 added that"],
+  [/^(>\s*["“][^\n]*?),(\s*["”])[ \t]*$(?!\n+\s*(?:[A-Z][\w'’-]+\s+){1,2}(?:said|shared|added|recalled|explained|noted|continued|stated|wrote|told|revealed|admitted)\b(?![^.\n]*\bthat\b)[^.\n]{0,40}\.)/gm, "$1.$2"],
   [/\bfeel like, just because\b/g, "feel like"],
   // «currently part of the faction's current on-screen alliance»: the same word twice in one clause (2026-10-27)
   [/\b([Cc])urrently((?:\s+[A-Za-z'’.-]+){0,5})\s+current\b/g, (_m: string, c: string, mid: string) => `${c === "C" ? "Now" : "now"}${mid} current`],
