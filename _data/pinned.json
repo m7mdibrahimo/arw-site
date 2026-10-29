@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/aew-fright-night-dynamite-28-10-2026/",
+    "title": "عرض داينامايت 28.10.2026 مترجم",
+    "subtitle": "AEW Fright Night Dynamite 28.10.2026",
+    "image": "/content/images/7uyyhakaqwjnoaql.jpg?w=800",
+    "federation": "AEW",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض داينامايت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-nxt-27-10-2026/",
     "title": "عرض ان اكس تي 27.10.2026 مترجم",
     "subtitle": "WWE NXT 27.10.2026",
@@ -119,16 +130,5 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض ايفولف مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aew-dynamite-21-10-2026/",
-    "title": "عرض داينامايت 21.10.2026 مترجم",
-    "subtitle": "AEW Dynamite 21.10.2026",
-    "image": "/content/images/zhpj9w8wx1hmw8qf.jpg?w=800",
-    "federation": "AEW",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض داينامايت مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
