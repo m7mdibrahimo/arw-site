@@ -509,4 +509,6 @@ test("team members written twice, «النتيجة صالحه», a lone «ك» b
   assert.ok(checkArticle("عنوان", "يتضمن العرض ست مواجهات، منها اثنتان على الألقاب.").some((i) => i.code === "dual_noun"));
   assert.ok(checkArticle("عنوان", "يشعر بآلام وإرهاق شديدين في جسده.").some((i) => i.code === "dual_noun"));
   assert.equal(applyCorrections("فاز فريق لوس أمريكانو على خصومه، وفريق لوس أمريكانوس كمان"), "فاز فريق لوس أمريكانوس على خصومه، وفريق لوس أمريكانوس كمان");
+  assert.equal(applyCorrections("ببقاء AEW على قناتي TBS وTNT وعبر قناتي *ESPN* و*ESPN2*، وقال: قناتي على يوتيوب"), "ببقاء AEW على قنوات TBS وTNT وعبر قنوات *ESPN* و*ESPN2*، وقال: قناتي على يوتيوب");
+  assert.equal(applyCorrections("فاز بحركة براين باستر"), "فاز بحركة برين باستر");
 });
