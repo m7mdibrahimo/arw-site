@@ -70,6 +70,8 @@ export async function ensureOk(db: D1Database) {
   if (ready.has(db)) return;
   await db.prepare(`CREATE TABLE IF NOT EXISTS early_ok (vid TEXT PRIMARY KEY, k TEXT NOT NULL, want TEXT NOT NULL, done TEXT NOT NULL DEFAULT '',
     tries INTEGER NOT NULL DEFAULT 0, error TEXT NOT NULL DEFAULT '', updated INTEGER NOT NULL)`).run();
+  // its server's lines in the show's file, held out of it while the video is still friends-only after the window
+  await db.prepare("ALTER TABLE early_ok ADD COLUMN item TEXT NOT NULL DEFAULT ''").run().catch(() => {});
   ready.add(db);
 }
 /** A show's window began or moved: its OK.ru videos off the profile; any it no longer has, back for everyone */
@@ -96,12 +98,60 @@ export async function okHidden(db: D1Database | undefined, k: string): Promise<S
   const rows = (await db.prepare("SELECT vid FROM early_ok WHERE k = ?1 AND done = 'FRIENDS'").bind(k).all<any>()).results || [];
   return new Set(rows.map((r: any) => String(r.vid)));
 }
+/** A server list's items («- url: …» and the lines under it), each with its OK.ru video's id */
+function serverItems(lines: string[]): { lines: string[]; vid: string }[] {
+  const items: { lines: string[]; vid: string }[] = [];
+  for (const l of lines) {
+    if (/^\s*-\s/.test(l) || !items.length) items.push({ lines: [l], vid: "" });
+    else items[items.length - 1].lines.push(l);
+  }
+  for (const it of items) it.vid = okVideoId((it.lines.join("\n").match(/url:\s*['"]?(https?:\/\/[^'"\s]+)/) || [])[1]);
+  return items;
+}
+/** The window ended but an OK.ru video is still friends-only (OK.ru not set up, or down): its server stays out of the
+ *  show's file, so the page never shows a server that doesn't play; it's put back once the video is public (syncOk) */
+export async function okHold(db: D1Database, k: string, vault: string, now = Date.now()): Promise<string> {
+  const hidden = await okHidden(db, k);
+  if (!hidden.size) return vault;
+  const out: string[] = [];
+  let inServers = false, list: string[] = [];
+  const flush = async () => {
+    for (const it of serverItems(list)) {
+      if (it.vid && hidden.has(it.vid)) await db.prepare("UPDATE early_ok SET item = ?2, updated = ?3 WHERE vid = ?1").bind(it.vid, it.lines.join("\n"), now).run();
+      else out.push(...it.lines);
+    }
+    list = [];
+  };
+  for (const l of vault.split(/\r?\n/)) {
+    if (/^[A-Za-z_][\w-]*:/.test(l)) { if (inServers) await flush(); inServers = /^servers:/.test(l); out.push(l); continue; }
+    if (inServers) list.push(l); else out.push(l);
+  }
+  if (inServers) await flush();
+  return out.join("\n");
+}
+/** A held server's lines back at the top of the show's servers (or a new «servers:» before «layout:») */
+export function okPutBack(text: string, item: string): string {
+  const m = text.match(/^(---\r?\n)([\s\S]*?)(\r?\n---)/);
+  if (!m || !item) return text;
+  const lines = m[2].split(/\r?\n/);
+  const at = lines.findIndex(l => /^servers:\s*(null|\[\])?\s*$/.test(l));
+  if (at >= 0) lines.splice(at, 1, "servers:", ...item.split("\n"));
+  else {
+    const lay = lines.findIndex(l => /^layout:/.test(l));
+    lines.splice(lay >= 0 ? lay : lines.length, 0, "servers:", ...item.split("\n"));
+  }
+  return m[1] + lines.join("\n") + text.slice(m[1].length + m[2].length);
+}
+
 /** Every minute: each video OK.ru hasn't been told about yet (a few a minute, a failing one less and less often) */
-export async function syncOk(db: D1Database | undefined, env: OkEnv, now = Date.now(), call = okCall): Promise<{ vid: string; to: string; ok: boolean }[]> {
+export async function syncOk(db: D1Database | undefined, env: OkEnv, now = Date.now(), call = okCall, io?: {
+  read: (path: string) => Promise<{ content: string } | null>;
+  commit: (path: string, text: string, message: string) => Promise<unknown>;
+}): Promise<{ vid: string; to: string; ok: boolean }[]> {
   if (!db || !okConfigured(env)) return [];
   await ensureOk(db);
   // never turned friends-only (or public again): nothing to ask OK.ru
-  await db.prepare("DELETE FROM early_ok WHERE want = 'PUBLIC' AND done IN ('', 'PUBLIC')").run();
+  await db.prepare("DELETE FROM early_ok WHERE want = 'PUBLIC' AND done IN ('', 'PUBLIC') AND item = ''").run();
   const rows = (await db.prepare("SELECT vid, k, want, tries, updated FROM early_ok WHERE want != done AND tries < 40 ORDER BY updated LIMIT 8").all<any>()).results || [];
   const out: { vid: string; to: string; ok: boolean }[] = [];
   for (const r of rows) {
@@ -116,6 +166,19 @@ export async function syncOk(db: D1Database | undefined, env: OkEnv, now = Date.
       out.push({ vid: r.vid, to: r.want, ok: false });
     }
   }
-  await db.prepare("DELETE FROM early_ok WHERE want = 'PUBLIC' AND done = 'PUBLIC'").run();
+  // public again: a server held out of its show's file goes back in (one commit; tried again next minute if it fails)
+  const back = (await db.prepare("SELECT vid, k, item FROM early_ok WHERE want = 'PUBLIC' AND done = 'PUBLIC' AND item != '' LIMIT 5").all<any>()).results || [];
+  for (const b of back) {
+    if (!io) break;
+    try {
+      const path = `content/${b.k}.md`, file = await io.read(path);
+      if (file && !file.content.includes(`ok.ru/video/${b.vid}`) && !file.content.includes(`ok.ru/videoembed/${b.vid}`)) {
+        const label = String(b.k).startsWith("recaps/") ? "ملخص" : String(b.k).startsWith("nostalgia/") ? "عرض / حلقة نوستالجيا" : "عرض";
+        await io.commit(path, okPutBack(file.content, b.item), `Update ${label} “${String(b.k).split("/")[1]}” (لوحة التحكم — سيرفر أوكي متاح للجميع)`);
+      }
+      await db.prepare("UPDATE early_ok SET item = '' WHERE vid = ?1").bind(b.vid).run();
+    } catch (e: any) { console.log(`[ok.ru] put back ${b.k}: ${e?.message || e}`); }
+  }
+  await db.prepare("DELETE FROM early_ok WHERE want = 'PUBLIC' AND done = 'PUBLIC' AND item = ''").run();
   return out;
 }

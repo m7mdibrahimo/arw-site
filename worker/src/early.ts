@@ -9,7 +9,7 @@
 //   every minute (worker/src/index.ts)          a window that ended: the blocks go back into the file, the site rebuilds
 // The page: _includes/post-layout.njk (the lock and its countdown), assets/post-player.js (the links, asked for).
 // Its OK.ru videos are turned friends-only on OK.ru meanwhile, so its profile doesn't give the show away (worker/src/okru.ts).
-import { okWantHidden, okWantPublic } from "./okru";
+import { okWantHidden, okWantPublic, okHold } from "./okru";
 
 /** Top-level front matter keys that hold watch servers or download links */
 export const GATED = /^(servers|downloads(_\w+)?)$/;
@@ -172,9 +172,11 @@ export async function releaseEarly(db: D1Database | undefined, io: {
     const path = `content/${d.k}.md`;
     try {
       const file = await io.read(path);
+      // an OK.ru video still friends-only: its server stays out until it's public (worker/src/okru.ts)
+      const vault = await okHold(db, d.k, d.vault, now);
       if (file && isVaulted(file.content)) {
         const label = d.k.startsWith("recaps/") ? "ملخص" : d.k.startsWith("nostalgia/") ? "عرض / حلقة نوستالجيا" : "عرض";
-        await io.commit(path, joinEarly(file.content, d.vault), `Update ${label} “${d.k.split("/")[1]}” (لوحة التحكم — العرض قبل الجميع: متاح للجميع)`);
+        await io.commit(path, joinEarly(file.content, vault), `Update ${label} “${d.k.split("/")[1]}” (لوحة التحكم — العرض قبل الجميع: متاح للجميع)`);
       }
       await okWantPublic(db, d.k, now);
       await db.prepare("DELETE FROM early_media WHERE k = ?1 AND until <= ?2").bind(d.k, now).run();

@@ -4592,7 +4592,7 @@ export default {
       // …and its OK.ru videos, friends-only during the window, for everyone again after it (worker/src/okru.ts)
       releaseEarly(env.ANALYTICS, { read: (p) => readRepoFile(env as any, p), commit: (p, text, msg) => commitFiles(env as any, [{ path: p, text }], msg) }, _controller.scheduledTime)
         .catch((e: any) => console.log("[early]", e?.message || e))
-        .then(() => syncOk(env.ANALYTICS, env as any, _controller.scheduledTime)).catch((e: any) => console.log("[ok.ru]", e?.message || e)),
+        .then(() => syncOk(env.ANALYTICS, env as any, _controller.scheduledTime, undefined, { read: (p) => readRepoFile(env as any, p), commit: (p, text, msg) => commitFiles(env as any, [{ path: p, text }], msg) })).catch((e: any) => console.log("[ok.ru]", e?.message || e)),
       // a membership about to end, or just ended: the member is told (worker/src/premium.ts)
       minute === 20 ? runPremiumReminders(env as any, _controller.scheduledTime).catch(() => {}) : Promise.resolve(),
       // the rented encoding machine, off for 12 hours, is deleted so its disk isn't paid for (owner 2026-10-26)

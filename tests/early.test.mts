@@ -238,7 +238,7 @@ test('OK.ru: hidden on OK.ru for the window, left out of the members\' servers, 
     down = false;
     await syncOk(db, e, until + 90_000, call);            // too soon after a failure
     assert.equal(calls.length, 1);
-    await syncOk(db, e, until + 3 * 60_000, call);
+    await syncOk(db, e, until + 3 * 60_000, call, { read: async () => null, commit: async () => {} });
     assert.deepEqual(calls, ['video.update 111 FRIENDS', 'video.update 111 PUBLIC']);
     assert.deepEqual([...(await okHidden(db, k))], []);
     assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM early_ok').first()).n, 0);
@@ -249,4 +249,30 @@ test('OK.ru: hidden on OK.ru for the window, left out of the members\' servers, 
     await syncOk(db, e, now, call);
     assert.equal(calls.length, 2);
   } finally { globalThis.fetch = real; }
+});
+
+test('OK.ru: a video still friends-only at release is held out of the file, and put back once it is public', async () => {
+  const { okPutBack } = await import('../worker/src/okru');
+  const db = d1(), k = 'shows/raw-26-10', path = `content/${k}.md`, now = NOW;
+  const s = await earlyOnSave(db, k, show(), now);
+  // hidden on OK.ru by hand (OK.ru not set up): the site knows it is friends-only
+  await db.prepare("UPDATE early_ok SET done = 'FRIENDS'").run();
+  const repo: Record<string, string> = { [path]: s.text };
+  const io = { read: async (p: string) => (repo[p] != null ? { content: repo[p] } : null), commit: async (p: string, t: string) => { repo[p] = t; } };
+  await releaseEarly(db, io, UNTIL);
+  assert.ok(!repo[path].includes('ok.ru'), 'the friends-only server is not on the page');
+  assert.ok(repo[path].includes('vidmoly.org/embed-abc.html') && repo[path].includes('gofile.io/d/high1'));
+  assert.ok(!isVaulted(repo[path]));
+  // not set up: it waits
+  const env = { OK_APP_KEY: 'CBA', OK_SESSION_SECRET: 'ss', OK_TOKEN: 'tok' };
+  await syncOk(db, {}, UNTIL + 60_000, async () => null, io);
+  assert.ok(!repo[path].includes('ok.ru'));
+  // set up: public on OK.ru, then back at the top of the servers, once
+  const calls: string[] = [];
+  await syncOk(db, env, UNTIL + 120_000, async (_e: any, _m: string, a: any) => { calls.push(a.privacy); return null; }, io);
+  assert.deepEqual(calls, ['PUBLIC']);
+  assert.equal(repo[path], show());
+  assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM early_ok').first()).n, 0);
+  // a show with no servers left gets a «servers:» before «layout:»
+  assert.equal(okPutBack('---\ntitle: x\nlayout: post-layout.njk\n---\n', '  - url: https://ok.ru/video/1'), '---\ntitle: x\nservers:\n  - url: https://ok.ru/video/1\nlayout: post-layout.njk\n---\n');
 });
