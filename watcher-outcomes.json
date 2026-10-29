@@ -1,4 +1,54 @@
 {
+ "https://www.fightful.com/wrestling/336374-queen-aminata-tbs": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-29T10:27:53.605Z"
+ },
+ "https://www.fightful.com/wrestling/update-on-timeless-toni-storm": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-29T10:27:53.370Z"
+ },
+ "https://www.fightful.com/wrestling/336362-motor-city-machine-guns-ftr": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-29T10:27:53.122Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-was-willing-to-move-smackdown-to-9-pm-et-on-friday-to-help-wnba-finals-game-6": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-29T10:27:52.874Z"
+ },
+ "https://www.fightful.com/wrestling/aew-collision-10-24-draws-nearly-450000-viewers-on-cable-tv": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-29T10:27:52.344Z"
+ },
+ "https://www.fightful.com/wrestling/aew-dynamite-fright-night-results-10-28-2026-persephone-vs-queen-aminata-ftr-vs-mcmg-darby-allin-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-29T10:27:52.093Z"
+ },
+ "https://www.fightful.com/wrestling/shotzi-blackheart-clarifies-comments-regarding-wwe-not-allowing-her-to-do-tna-crossover": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-29T10:27:51.686Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-smackdown-10-23-viewership-drops-against-world-series-game-one": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-29T10:27:51.435Z"
+ },
+ "https://www.fightful.com/wrestling/full-lineup-for-cmll-dia-de-muertos-on-october-30": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-29T10:27:51.177Z"
+ },
+ "https://www.fightful.com/wrestling/ric-flair-set-for-surgery": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-29T10:27:50.216Z"
+ },
  "https://www.ringsidenews.com/aew-collision-spoiler-results-october-31-2026": {
   "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
   "retry": true,
@@ -8,56 +58,6 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-29T10:23:06.127Z"
- },
- "https://www.fightful.com/wrestling/336374-queen-aminata-tbs": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-29T10:17:09.445Z"
- },
- "https://www.fightful.com/wrestling/update-on-timeless-toni-storm": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-29T10:17:09.210Z"
- },
- "https://www.fightful.com/wrestling/336362-motor-city-machine-guns-ftr": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-29T10:17:08.963Z"
- },
- "https://www.fightful.com/wrestling/wwe-was-willing-to-move-smackdown-to-9-pm-et-on-friday-to-help-wnba-finals-game-6": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-29T10:17:08.716Z"
- },
- "https://www.fightful.com/wrestling/aew-collision-10-24-draws-nearly-450000-viewers-on-cable-tv": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-29T10:17:08.184Z"
- },
- "https://www.fightful.com/wrestling/aew-dynamite-fright-night-results-10-28-2026-persephone-vs-queen-aminata-ftr-vs-mcmg-darby-allin-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-29T10:17:07.933Z"
- },
- "https://www.fightful.com/wrestling/shotzi-blackheart-clarifies-comments-regarding-wwe-not-allowing-her-to-do-tna-crossover": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-29T10:17:07.528Z"
- },
- "https://www.fightful.com/wrestling/wwe-smackdown-10-23-viewership-drops-against-world-series-game-one": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-29T10:17:07.279Z"
- },
- "https://www.fightful.com/wrestling/full-lineup-for-cmll-dia-de-muertos-on-october-30": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-29T10:17:07.023Z"
- },
- "https://www.fightful.com/wrestling/ric-flair-set-for-surgery": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-29T10:17:06.070Z"
  },
  "https://www.fightful.com/wrestling/michin-and-b-fab-discuss-winning-their-first-championships-in-wwe": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
