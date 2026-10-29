@@ -1,5 +1,15 @@
 [
   {
+    "id": 1266535362,
+    "link": "https://www.wrestlinginc.com/2301812/wwe-nxt-halloween-havoc-2026-draws-duds-grayson-waller-tony-dangelo-wren-sinclair-kelani-jordan/",
+    "date": "Thu, 29 Oct 2026 22:26:52 +0000",
+    "date_gmt": "2026-10-29T22:26:52.000Z",
+    "title": {
+      "rendered": "WWE NXT Halloween Havoc 2026: Draws & Duds"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-halloween-havoc-2026-draws-duds/l-intro-1793312371.jpg"
+  },
+  {
     "id": 952141426,
     "link": "https://www.wrestlinginc.com/2301775/tna-thursday-night-impact-october-29-2026-results/",
     "date": "Thu, 29 Oct 2026 22:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Queen Aminata Dethrones Persephone, Claims AEW TBS Title In Dynamite Main Event"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/queen-aminata-dethrones-persephone-claims-aew-tbs-title-in-dynamite-main-event/l-intro-1793241383.jpg"
-  },
-  {
-    "id": 2378352798,
-    "link": "https://www.wrestlinginc.com/2300606/aew-dynamite-fright-night-darby-allin-josh-alexander-tnt-title/",
-    "date": "Thu, 29 Oct 2026 02:16:47 +0000",
-    "date_gmt": "2026-10-29T02:16:47.000Z",
-    "title": {
-      "rendered": "Darby Allin Defeats Josh Alexander, Escapes AEW Fright Night Dynamite With TNT Title"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-fright-night-darby-allin-josh-alexander-tnt-title/l-intro-1793241427.jpg"
   }
 ]
