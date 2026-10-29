@@ -13,6 +13,6 @@ en_tags:
   - "Chris Van Vliet"
 image: /content/images/3ftympyflx3gnd1g.jpg
 ---
-Grayson Waller explained that insulting NXT fans is one of his favorite parts of showing up every week, calling them a bunch of fat flops during a recent interview with Chris Van Vliet. Waller recalled several interactions with fans, including one where he told a fan that he looked like he could get Chick-fil-A on a Sunday and leave it unfrigerated, and another time when he told a kid he had the same haircut as his mom.
+Grayson Waller explained that insulting NXT fans is one of his favorite parts of showing up every week, calling them a bunch of fat flops during a recent interview with Chris Van Vliet. Waller recalled several interactions with fans, including one where he told a fan that he looked like he could get Chick-fil-A on a Sunday and leave it unrefrigerated, and another time when he told a kid he had the same haircut as his mom.
 
 Waller also discussed a viral moment involving a young girl at ringside where he pulled the NXT Championship away after offering to let her touch it, describing the encounter as a wholesome interaction. He added that he enjoys making kids believe ridiculous stories rather than acting like a typical babyface. While his tag team partner Austin Theory prefers to take photos with fans when they arrive at an arena, Waller prefers to stay true to his character, criticizing certain NXT fans for failing to respect what wrestlers do.

@@ -412,6 +412,9 @@ export function applyNamesGlossary(text: string): string {
         // Elite» became «Being ذا إيليت», «The Extreme Life of Matt Hardy» «…of مات هاردي» (INCIDENTS #234)
         const lead = whole.slice(Math.max(0, offset - 24), offset).match(/([A-Za-z]+)\s+$/)?.[1] || "";
         if (lead && !/^(?:WWE|AEW|TNA|ROH|NJPW|MLW|AAA|CMLL|GCW|MLP|UFC|NXT|vs|and|or|with|w)$/i.test(lead)) return m;
+        // «with» after another English word is a podcast/show title: «One of a Kind with RVD» became
+        // «One of a Kind with آر في دي», «Marking Out with ام في بي» (INCIDENTS #969)
+        if (/^(?:with|w)$/i.test(lead) && /[A-Za-z]+\s+(?:with|w)\s+$/i.test(whole.slice(Math.max(0, offset - 40), offset))) return m;
         return arabic;
       });
     } catch (e) {
@@ -419,7 +422,34 @@ export function applyNamesGlossary(text: string): string {
     }
   }
 
-  return result;
+  return restoreEnglishTitleNames(result);
+}
+
+// Gemini itself writes the glossary's Arabic for a name inside an English podcast/show title:
+// «بودكاست One of a Kind with آر في دي», «My World with جيف جاريت» (INCIDENTS #969). The title is
+// English, so the name in it goes back to the glossary's English (only when one English key has it).
+let ARABIC_TO_ENGLISH: Map<string, string> | null = null;
+export function restoreEnglishTitleNames(text: string): string {
+  if (!text || typeof text !== "string" || !/[A-Za-z]\s+with\s+[\u0600-\u06FF]/i.test(text)) return text;
+  if (!ARABIC_TO_ENGLISH) {
+    const keys = new Map<string, string[]>();
+    for (const [english, arabic] of Object.entries(WRESTLER_NAMES_MAP)) {
+      if (!english || !arabic || english === arabic || !/[\u0600-\u06FF]/.test(arabic)) continue;
+      keys.set(arabic, [...(keys.get(arabic) || []), english]);
+    }
+    ARABIC_TO_ENGLISH = new Map([...keys].filter(([, e]) => e.length === 1).map(([a, e]) => [a, e[0]]));
+  }
+  return text.replace(/([A-Za-z]+\s+with\s+)([\u0600-\u06FF][\u0600-\u06FF ]*[\u0600-\u06FF])/gi, (m, lead: string, tail: string) => {
+    const words = tail.split(" ");
+    // the longest glossary name at the start of what follows «with»
+    for (let n = Math.min(words.length, 4); n > 0; n--) {
+      const name = words.slice(0, n).join(" ");
+      const punct = name.match(/[\u060C\u061B\u061F]$/)?.[0] || "";
+      const english = ARABIC_TO_ENGLISH!.get(punct ? name.slice(0, -1) : name);
+      if (english) return lead + english + punct + (n < words.length ? " " + words.slice(n).join(" ") : "");
+    }
+    return m;
+  });
 }
 
 // Same glossary and matching rules as applyNamesGlossary, but returns which

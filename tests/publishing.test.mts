@@ -2941,6 +2941,17 @@ test('a name led into by an English word stays English (show and podcast titles)
   assert.equal(applyNamesGlossary('نجم TNA Matt Hardy'), 'نجم TNA مات هاردي');
 });
 
+test('a name after «with» in an English podcast title stays English, even when Gemini wrote it in Arabic (INCIDENTS #969)', async () => {
+  const { applyNamesGlossary } = await import('../scripts/fightful-watcher');
+  assert.equal(applyNamesGlossary('خلال حلقة من بودكاست One of a Kind with RVD قال RVD'), 'خلال حلقة من بودكاست One of a Kind with RVD قال آر في دي');
+  assert.equal(applyNamesGlossary('بودكاست One of a Kind with آر في دي، ناقش آر في دي سقوط فلير'), 'بودكاست One of a Kind with RVD، ناقش آر في دي سقوط فلير');
+  assert.equal(applyNamesGlossary('بودكاست Marking Out with ام في بي تحدث'), 'بودكاست Marking Out with MVP تحدث');
+  assert.equal(applyNamesGlossary('بودكاست My World with جيف جاريت كشف'), 'بودكاست My World with Jeff Jarrett كشف');
+  assert.equal(applyCorrections('كانت تنعل بسرعة، منتقدرا الجماهير، جاهزون فور للظهور، اقتصرت على عامهم الأولين معا'),
+    'كانت تنفعل بسرعة، منتقدا الجماهير، جاهزون فورا للظهور، اقتصرت على سنواتهم الأولى معا');
+  assert.equal(applyCorrections('فور انضمامها إلى العرض'), 'فور انضمامها إلى العرض');
+});
+
 test('Arn Anderson has one spelling (INCIDENTS #236)', () => {
   assert.equal(applyCorrections('تيري تايلور وسترن أندرسون'), 'تيري تايلور وآرن أندرسون');
   assert.equal(applyCorrections('أرن أندرسون'), 'آرن أندرسون');

@@ -219,3 +219,14 @@ test('an older episode drops the program aliases that claim the latest', async (
   assert.deepEqual(dropLatestClaims(aliases, true), aliases);
   assert.deepEqual(dropLatestClaims(aliases, undefined), aliases);
 });
+
+// INCIDENTS #970: the program's «عرض AEW الأخير», «عرض ايه اي دبليو ديناميت الاخير» were still in the TVSeries «about»
+// of Dynamite 14.10 and 21.10 (Google showed them for «عرض aew dynamite الأخير» at 7–10, not the newest 28.10 page).
+// The «about» names of a show page go through dropLatestClaims like every other name list.
+test('the TVSeries «about» names of an older episode drop the latest claims too', async () => {
+  const fs = await import('node:fs');
+  const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
+  const about = layout.split('\n').find((l) => l.includes('"about": { "@type": "TVSeries"'));
+  assert.ok(about, 'TVSeries about block');
+  assert.match(about, /concat\(ldAbout\.aliases\), 999\) \| dropLatestClaims\(\(showSeoData and showSeoData\.isLatest\) if page\.url\.startsWith\('\/shows\/'\)/);
+});
