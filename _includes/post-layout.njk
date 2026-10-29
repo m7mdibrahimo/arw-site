@@ -423,13 +423,21 @@
                 <span class="wd-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.6v14.8a1 1 0 0 0 1.52.85l12.1-7.4a1 1 0 0 0 0-1.7L8.52 3.75A1 1 0 0 0 7 4.6Z"/></svg></span>
               </button>
               {% if earlyLock %}
+              {#- «العرض قبل الجميع» (owner 2026-10-29, the first of three pictures: «العدّاد الكبير»): the time left, ticking each
+                  second (assets/post-player.js); the servers come in its place for a premium member, and for everyone at 00:00:00 -#}
               <div class="wd-lock" id="wdLock">
-                <span class="wd-lock-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg></span>
-                <b class="wd-lock-t">العرض متاح الآن للأعضاء المميزين</b>
-                <span class="wd-lock-s">ويتاح للجميع بعد <span class="wd-count" id="wdCount">وقت قصير</span></span>
+                <span class="wd-lock-tag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg><span>قبل الجميع</span></span>
+                <b class="wd-lock-t">هذا العرض متاح الآن لأعضاء العضوية المميزة</b>
+                <span class="wd-clock" id="wdClock" role="timer" aria-label="الوقت المتبقي على إتاحة العرض للجميع">
+                  <span class="wd-u" data-u="d" hidden><b>--</b><small>يوم</small></span><i hidden>:</i>
+                  <span class="wd-u" data-u="h"><b>--</b><small>ساعة</small></span><i>:</i>
+                  <span class="wd-u" data-u="m"><b>--</b><small>دقيقة</small></span><i>:</i>
+                  <span class="wd-u" data-u="s"><b>--</b><small>ثانية</small></span>
+                </span>
+                <span class="wd-lock-s">يُتاح للجميع مجانًا فور انتهاء العدّاد، أو اشترك الآن وشاهده قبل الجميع.</span>
                 <span class="wd-lock-acts">
-                  <a class="wd-lock-btn" href="/premium/">اشترك وشاهد الآن</a>
-                  <a class="wd-lock-in" href="/account/?back={{ (page.url | cleanUrl) | urlencode }}">لديك عضوية؟ سجل دخولك</a>
+                  <a class="wd-lock-btn" href="/premium/#subscribe"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg><span>اشترك وشاهد الآن</span></a>
+                  <a class="wd-lock-in" href="/account/?back={{ (page.url | cleanUrl) | urlencode }}">لديك عضوية؟ سجّل دخولك</a>
                 </span>
               </div>
               {% endif %}

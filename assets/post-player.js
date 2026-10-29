@@ -601,12 +601,17 @@
     var lock = document.getElementById('wdLock');
     var pub = Number(deck.getAttribute('data-pub')) || 0;
     function pad(n) { return (n < 10 ? '0' : '') + n; }
-    // the time left: a clock up to two days, then the days
-    function left(ms) {
-      var s = Math.max(0, Math.floor(ms / 1000)), h = Math.floor(s / 3600), d = Math.floor(s / 86400);
-      if (h >= 48) return d + (d <= 10 ? ' أيام' : ' يوما');
-      return pad(h) + ':' + pad(Math.floor(s % 3600 / 60)) + ':' + pad(s % 60);
+    // the clock: hours, minutes, seconds (and days, past one day) — the worker's timeLeft says the same (worker/src/early.ts)
+    var clock = document.getElementById('wdClock');
+    function paint(ms) {
+      if (!clock) return;
+      var s = Math.max(0, Math.floor(ms / 1000)), d = Math.floor(s / 86400);
+      var v = { d: d, h: d ? Math.floor(s % 86400 / 3600) : Math.floor(s / 3600), m: Math.floor(s % 3600 / 60), s: s % 60 };
+      ['d', 'h', 'm', 's'].forEach(function(k){ var u = clock.querySelector('[data-u="' + k + '"]'); if (u) u.querySelector('b').textContent = pad(v[k]); });
+      var du = clock.querySelector('[data-u="d"]');
+      if (du && du.hidden !== !d) { du.hidden = !d; if (du.nextElementSibling) du.nextElementSibling.hidden = !d; }
     }
+    var LOCK_S = lock ? lock.querySelector('.wd-lock-s').textContent : '';
     // the qualities in the page's own order and words (_includes/post-layout.njk)
     var TIERS = [['light', 'جودة خفيفة', '360p'], ['low', 'جودة منخفضة', '480p'], ['medium', 'جودة متوسطة', '720p'], ['high', 'جودة عالية', '1080p']];
     function unlock(d) {
@@ -621,22 +626,25 @@
       deck.classList.remove('is-locked');
       if (d.premium && pub > Date.now()) {
         var h = deck.querySelector('.wd-head h3');
-        if (h && !h.querySelector('.wd-early')) h.appendChild(el('span', 'wd-early', CROWN + '<span>قبل الجميع</span>'));
+        if (h && !h.querySelector('.wd-early')) { var tag = el('span', 'wd-early', CROWN + '<span>قبل الجميع</span>'); tag.title = 'تشاهده قبل الجميع لأنك عضو مميز'; h.appendChild(tag); }
       }
       return true;
     }
-    function lockSay(title, sub) {
+    // a message in place of the clock (clock: true puts the clock back)
+    function lockSay(title, sub, withClock) {
       if (!lock) return;
       if (title) lock.querySelector('.wd-lock-t').textContent = title;
       if (sub != null) lock.querySelector('.wd-lock-s').textContent = sub;
+      if (clock) clock.hidden = !withClock;
     }
     function countdown() {
-      var c = document.getElementById('wdCount');
       var tries = 0;
       (function tick() {
         if (!lock || !lock.isConnected) return;
         var ms = pub - Date.now();
-        if (ms > 0) { if (c) c.textContent = left(ms); setTimeout(tick, 1000); return; }
+        // on the second: the next tick lands just after the clock's second changes
+        if (ms > 0) { paint(ms); setTimeout(tick, (ms % 1000) + 20); return; }
+        paint(0);
         lockSay('العرض متاح للجميع الآن', 'لحظات ويظهر المشغل…');
         get('early').then(function(d){
           if (d.ok && unlock(d)) return;
@@ -687,17 +695,14 @@
     }
 
     if (!lock) { extras(); return; }
-    var c0 = document.getElementById('wdCount');
-    if (c0 && pub > Date.now()) c0.textContent = left(pub - Date.now());
+    paint(pub - Date.now());
     if (token) { var signIn = lock.querySelector('.wd-lock-in'); if (signIn) signIn.remove(); }
     if (token && thinksPremium) lockSay('جار تجهيز العرض لك…', '');
     if (token || pub <= Date.now()) {
       get('early').then(function(d){
         if (d.ok && unlock(d)) { extras(); return; }
         if (d.status === 403) {
-          lockSay('العرض متاح الآن للأعضاء المميزين', null);
-          var s = lock.querySelector('.wd-lock-s');
-          if (s && !document.getElementById('wdCount')) { s.textContent = 'ويتاح للجميع بعد '; var c = el('span', 'wd-count'); c.id = 'wdCount'; s.appendChild(c); }
+          lockSay('هذا العرض متاح الآن لأعضاء العضوية المميزة', LOCK_S, true);
           countdown();
         } else lockSay('تعذر تجهيز العرض الآن', 'أعد تحميل الصفحة بعد قليل.');
         extras();

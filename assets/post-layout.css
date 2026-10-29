@@ -271,16 +271,23 @@
   html.arw-dark .wd-prem-go{ background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; }
   .wd-early{ display:inline-flex; align-items:center; gap:4px; margin-inline-start:8px; padding:2px 9px; border-radius:999px; vertical-align:2px; background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; font:900 11.5px 'Cairo',sans-serif; }
   .wd-early svg{ width:12px; height:12px; }
-  .wd-lock{ position:absolute; inset:0; z-index:8; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; padding:18px; text-align:center; color:#fff; border-radius:inherit; background:linear-gradient(180deg, rgba(13,16,21,.62), rgba(13,16,21,.88)); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); }
-  .wd-lock-ic{ width:52px; height:52px; border-radius:16px; display:grid; place-items:center; background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; box-shadow:0 10px 24px -8px rgba(224,154,18,.7); }
-  .wd-lock-ic svg{ width:26px; height:26px; }
-  .wd-lock-t{ font:900 clamp(16px, 2.6vw, 21px) 'Cairo',sans-serif; text-wrap:balance; }
-  .wd-lock-s{ font-size:14px; font-weight:600; color:rgba(255,255,255,.82); }
-  .wd-count{ display:inline-block; direction:ltr; unicode-bidi:isolate; font-family:'Cairo',sans-serif; font-weight:800; color:#ffd25a; font-variant-numeric:tabular-nums; }
-  .wd-lock-acts{ display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:8px 14px; margin-top:6px; }
-  .wd-lock-btn{ display:inline-flex; align-items:center; height:42px; padding:0 22px; border-radius:999px; background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; font:900 14.5px 'Cairo',sans-serif; text-decoration:none; box-shadow:0 10px 22px -10px rgba(224,154,18,.8); }
+  /* «العرض قبل الجميع» (owner 2026-10-29: «العدّاد الكبير»): the lock over the poster, its clock ticking each second */
+  .wd-lock{ position:absolute; inset:0; z-index:8; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; padding:20px; text-align:center; color:#fff; border-radius:inherit; background:radial-gradient(120% 90% at 50% 0%, rgba(224,154,18,.22), transparent 60%), linear-gradient(180deg, rgba(13,16,21,.70), rgba(13,16,21,.93)); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); }
+  .wd-lock-tag{ display:inline-flex; align-items:center; gap:6px; padding:4px 12px; border-radius:999px; background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; font:900 12px 'Cairo',sans-serif; }
+  .wd-lock-tag svg{ width:13px; height:13px; }
+  .wd-lock-t{ font:900 clamp(18px, 2.8vw, 24px)/1.5 'Cairo',sans-serif; text-wrap:balance; }
+  .wd-lock-s{ max-width:560px; font-size:14.5px; font-weight:600; line-height:1.7; color:rgba(255,255,255,.8); text-wrap:balance; }
+  .wd-clock{ display:flex; align-items:center; gap:10px; direction:ltr; margin:2px 0; }
+  .wd-clock[hidden], .wd-u[hidden], .wd-clock i[hidden]{ display:none; }
+  .wd-u{ min-width:78px; padding:10px 8px 8px; border-radius:16px; background:rgba(255,255,255,.07); border:1px solid rgba(255,210,90,.35); box-shadow:inset 0 1px 0 rgba(255,255,255,.08); }
+  .wd-u b{ display:block; font:900 34px/1 'Cairo',sans-serif; color:#ffd25a; font-variant-numeric:tabular-nums; }
+  .wd-u small{ display:block; margin-top:6px; font-size:12px; font-weight:700; color:rgba(255,255,255,.7); }
+  .wd-clock i{ font:normal 900 28px 'Cairo',sans-serif; color:rgba(255,210,90,.6); margin-top:-14px; }
+  .wd-lock-acts{ display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:10px 16px; margin-top:4px; }
+  .wd-lock-btn{ display:inline-flex; align-items:center; gap:8px; height:46px; padding:0 26px; border-radius:999px; background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; font:900 15px 'Cairo',sans-serif; text-decoration:none; box-shadow:0 12px 26px -10px rgba(224,154,18,.85); }
+  .wd-lock-btn svg{ width:18px; height:18px; }
   .wd-lock-btn:hover{ filter:brightness(1.06); }
-  .wd-lock-in{ color:#fff; font-size:13.5px; font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+  .wd-lock-in{ color:#fff; font-size:13.5px; font-weight:700; text-decoration:underline; text-underline-offset:3px; opacity:.9; }
   .watch-deck.is-locked .wd-play, .watch-deck.is-locked .wd-prem{ display:none; }
   .watch-deck.is-locked .wd-poster{ cursor:default; }
   .quality-btn[data-tier="prem"] .quality-icon{ background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; }
@@ -290,12 +297,14 @@
     .srv-row.is-prem .srv-name b{ font-size:12.5px; }
     .wd-prem{ margin-top:10px; padding:10px 12px; gap:10px; }
     .wd-prem-tx small{ display:none; }
-    .wd-lock{ gap:6px; padding:12px; }
-    .wd-lock-ic{ width:40px; height:40px; border-radius:12px; }
-    .wd-lock-ic svg{ width:20px; height:20px; }
-    .wd-lock-s{ font-size:12.5px; }
-    .wd-lock-btn{ height:36px; padding:0 16px; font-size:13px; }
-    .wd-lock-in{ font-size:12px; }
+    /* a phone: the lock is taller than the 16:9 box, so the box grows to it */
+    .watch-deck.is-locked .video-embed{ aspect-ratio:auto; min-height:56.25cqw; }
+    .wd-lock{ position:relative; inset:auto; width:100%; min-height:inherit; padding:22px 14px; }
+    .wd-clock{ gap:6px; }
+    .wd-clock i{ display:none; }
+    .wd-u{ min-width:62px; padding:8px 6px 6px; }
+    .wd-u b{ font-size:26px; }
+    .wd-lock-s{ font-size:13px; }
   }
 
   .server-single-label{ display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:var(--muted); padding:8px 16px; background:var(--card); border:1px solid var(--line); border-radius:999px; user-select:none; margin:0 auto; }
