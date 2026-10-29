@@ -485,3 +485,9 @@ test("«النزال الموت» and «غير ترابطية» are corrected (I
   assert.equal(applyCorrections("استمرار الإثارة في قصة النزال الموت بين الطرفين"), "استمرار الإثارة في قصة نزال الموت بين الطرفين");
   assert.equal(applyCorrections("القصة بدت متسرعة وغير ترابطية مقارنة بنزال الرجال"), "القصة بدت متسرعة وغير مترابطة مقارنة بنزال الرجال");
 });
+
+// Round 2026-10-29 06:15 UTC: «ميتشين وبي فاب تتحدثن» (2nd person) and «ستريت بروفيتس» (INCIDENTS #959)
+test("third-person feminine plural verbs and Street Profits are corrected (INCIDENTS #959)", () => {
+  assert.equal(applyCorrections("ميتشين وبي فاب تتحدثن عن الفوز بأول ألقابهن"), "ميتشين وبي فاب يتحدثن عن الفوز بأول ألقابهن");
+  assert.equal(applyCorrections("مع فريق ذا ستريت بروفيتس"), "مع فريق ذا ستريت بروفتس");
+});

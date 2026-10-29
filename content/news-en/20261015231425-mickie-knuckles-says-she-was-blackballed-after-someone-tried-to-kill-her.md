@@ -1,7 +1,7 @@
 ---
 title: "Mickie Knuckles Says She Was Blackballed After Someone “Tried to Kill” Her"
 slug: "mickie-knuckles-says-she-was-blackballed-after-someone-tried-to-kill-her"
-description: "Mickie Knuckles recently reflected on her two-decade wrestling career, revealing two instances where she almost quit the industry. Speaking on Jasmin St."
+description: "Mickie Knuckles recently reflected on her two-decade wrestling career, revealing two instances where she almost quit the industry."
 federation: INDIE
 date: 2026-10-15T20:14:25.000Z
 source_id: 802255480

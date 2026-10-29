@@ -168,3 +168,9 @@ test("a word cut never ends on a superlative without its noun (INCIDENTS #935)",
   assert.ok(!/\bthe\s+\w+est\.?$/.test(d), d);
   assert.equal(d, "During an interview on Insight with Chris Van Vliet, Sami Zayn reflected on his career.");
 });
+
+// A participle phrase cut at its comma: «…first gold in WWE. Continuing their recent success.» (INCIDENTS #959)
+test("a description never ends with an -ing phrase cut at its comma (INCIDENTS #959)", () => {
+  const d = metaDescription("Michin and B-Fab have officially claimed their first gold in WWE. Continuing their recent success, the duo defeated Alexa Bliss and Tatum Paxley to win the WWE Women's Tag Team Championships on the October 23 episode of WWE SmackDown. Speaking with Complex Graps, Michin shared");
+  assert.equal(d, "Michin and B-Fab have officially claimed their first gold in WWE.");
+});
