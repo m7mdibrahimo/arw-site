@@ -174,3 +174,8 @@ test("a description never ends with an -ing phrase cut at its comma (INCIDENTS #
   const d = metaDescription("Michin and B-Fab have officially claimed their first gold in WWE. Continuing their recent success, the duo defeated Alexa Bliss and Tatum Paxley to win the WWE Women's Tag Team Championships on the October 23 episode of WWE SmackDown. Speaking with Complex Graps, Michin shared");
   assert.equal(d, "Michin and B-Fab have officially claimed their first gold in WWE.");
 });
+
+test("a comma inside a list of names is not where the description ends (The Syx story, round 2026-10-30)", () => {
+  const d = metaDescription("The Syx have been making waves in the TNA tag team division, but Samuel Shaw, Joseph Sawyer and Erick Redbeard recently took a break from their serious demeanor to participate in a viral social media trend. Fans at a recent ACW event were surprised.");
+  assert.equal(d, "The Syx have been making waves in the TNA tag team division.");
+});

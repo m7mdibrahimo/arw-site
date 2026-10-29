@@ -1,7 +1,7 @@
 ---
 title: "Alice Crowley Expresses Excitement for CMLL Women's Grand Prix, Details How Opportunity Came About"
 slug: "alice-crowley-expresses-excitement-for-cmll-womens-grand-prix-details-how-opport"
-description: "Alice Crowley is set to compete in the 2026 CMLL Women's Grand Prix. In an interview with Fightful."
+description: "Alice Crowley is set to compete in the 2026 CMLL Women's Grand Prix."
 federation: INDIE
 date: 2026-10-23T00:58:34.000Z
 source_id: 335208

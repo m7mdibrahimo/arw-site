@@ -460,3 +460,11 @@ test('a weekday that is not the day of its date blocks the English edition', asy
   const e = { title: 'Toni Storm AEW Return Not Happening Soon', body: `${source}\n\nThe tapes surfaced at WrestleDream on Friday, October 17, 2026, after a show.` };
   assert.ok(checkEnglish(e as any, input).some((x) => /weekday does not match/.test(x)));
 });
+
+test("a «>» quote line that goes on with the story is split, and Los Americanos / The Judgment Day keep their names (round 2026-10-30)", async () => {
+  const { ENGLISH_FIXES } = await import('../scripts/english-edition.ts');
+  const fix = (t: string) => ENGLISH_FIXES.reduce((s, [re, to]) => s.replace(re, to), t);
+  assert.equal(fix('> "I just embrace it." Heyman emphasized that he does not.'), '> "I just embrace it."\n\nHeyman emphasized that he does not.');
+  assert.equal(fix('Los Americano (Bravo and Rayo) def. Judgment Day (JD McDonagh and Dominik Mysterio).'), 'Los Americanos (Bravo and Rayo) def. The Judgment Day (JD McDonagh and Dominik Mysterio).');
+  assert.equal(fix('Los Americanos beat The Judgment Day (JD McDonagh).'), 'Los Americanos beat The Judgment Day (JD McDonagh).');
+});

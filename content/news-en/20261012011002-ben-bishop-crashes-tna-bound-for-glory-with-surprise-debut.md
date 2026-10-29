@@ -15,6 +15,8 @@ image: /content/images/rpsqkfw2enp1jqzb.jpg
 ---
 Ben Bishop made a surprise debut at TNA Bound for Glory by entering the Call Your Shot Gauntlet match as the 19th entrant. Before entering the ring, Bishop attacked Jada Stone, took her spot in the match, and grabbed a microphone to address the audience.
 
-> "I've been waiting for opportunities long enough. If nobody's going to give me one, I'm taking one myself… Welcome to T-Ben-A." Bishop then officially entered the match to a loud reaction from the crowd, signaling a strong start to his time in TNA.
+> "I've been waiting for opportunities long enough. If nobody's going to give me one, I'm taking one myself… Welcome to T-Ben-A."
+
+Bishop then officially entered the match to a loud reaction from the crowd, signaling a strong start to his time in TNA.
 
 https://x.com/ThisIsTNA/status/2109404273746256003

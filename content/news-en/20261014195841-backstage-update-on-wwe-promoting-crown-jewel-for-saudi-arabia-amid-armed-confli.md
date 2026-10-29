@@ -1,7 +1,7 @@
 ---
 title: "Backstage Update on WWE Promoting Crown Jewel for Saudi Arabia Amid Armed Conflict"
 slug: "backstage-update-on-wwe-promoting-crown-jewel-for-saudi-arabia-amid-armed-confli"
-description: "Despite ongoing armed conflict in Saudi Arabia and travel warnings from the United States State Department."
+description: "WWE has made it clear that they still plan to hold Crown Jewel in Riyadh next month."
 federation: WWE
 date: 2026-10-14T16:58:41.000Z
 source_id: 3969565699

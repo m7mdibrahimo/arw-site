@@ -17,7 +17,9 @@ Konnan was officially inducted into the TNA Hall of Fame on October 11, 2026, du
 
 > "Without Konnan there is no Rey Mysterio, there is no Juventud Guerrera and there is no Psychosis."
 
-> "Without Konnan there is no lucha libre in the United States." Despite the tribute, the ceremony took an awkward turn when Konnan’s music played but he never appeared on stage. Montana held the Hall of Fame plaque alone before carrying it backstage. No official explanation was provided for Konnan's absence during the event, though TNA ensured his legacy was formally recognized as part of the company's history.
+> "Without Konnan there is no lucha libre in the United States."
+
+Despite the tribute, the ceremony took an awkward turn when Konnan’s music played but he never appeared on stage. Montana held the Hall of Fame plaque alone before carrying it backstage. No official explanation was provided for Konnan's absence during the event, though TNA ensured his legacy was formally recognized as part of the company's history.
 
 https://x.com/ThisIsTNA/status/2109378629687792066
 

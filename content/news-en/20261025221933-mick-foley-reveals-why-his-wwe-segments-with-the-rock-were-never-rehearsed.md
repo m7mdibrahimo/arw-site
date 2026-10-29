@@ -17,6 +17,8 @@ Mick Foley and The Rock created some of the most memorable moments of WWE's Atti
 
 > "The key is that we never rehearsed anything. And we never had anything written down. Because I think if I had Dwayne, 'Hey, I'm going to interrupt you and say your catchphrases,' he would have said, 'Nein, nein. Du kannst nicht meine catchphrases haben.'" Foley emphasized that speaking from the heart was more important than delivering lines perfectly.
 
-> "So, we were acting and reacting instead of trying to remember. And I think that's really important. They're trying to remember instead of speaking from the heart. And I would much rather have someone make many mistakes and speak from the heart than to get everything perfect that someone else has told them to say." This approach helped define the Rock 'n' Sock Connection, and Foley believes this creative freedom is why their segments remain popular decades later.
+> "So, we were acting and reacting instead of trying to remember. And I think that's really important. They're trying to remember instead of speaking from the heart. And I would much rather have someone make many mistakes and speak from the heart than to get everything perfect that someone else has told them to say."
+
+This approach helped define the Rock 'n' Sock Connection, and Foley believes this creative freedom is why their segments remain popular decades later.
 
 https://www.youtube.com/watch?v=hZbD1-zV3_c

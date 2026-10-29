@@ -1858,13 +1858,15 @@ module.exports = function(eleventyConfig) {
     return require("./lib/show-seo.cjs").showAliasesFor({ headline, title, programName, aliases: aliases || [] });
   });
 
-  // An older episode drops the program names that claim «the latest» (INCIDENTS #968)
+  // An older episode drops the program names that claim «the latest» (INCIDENTS #968). Each name once: the program's
+  // Arabic name and its alias list both carried «عرض داينامايت», so the Fright Night Dynamite video named it twice
+  // (round 2026-10-30).
   eleventyConfig.addNunjucksFilter("dropLatestClaims", function(names, isLatest) {
-    return require("./lib/show-seo.cjs").dropLatestClaims(names, isLatest);
+    return [...new Set(require("./lib/show-seo.cjs").dropLatestClaims(names, isLatest))];
   });
 
   // The episode's own date spellings for the VideoObject alternateName (INCIDENTS #466)
-  eleventyConfig.addNunjucksFilter("recapOnlyNames", (names) => require("./lib/show-seo.cjs").recapOnlyNames(names));
+  eleventyConfig.addNunjucksFilter("recapOnlyNames", (names) => [...new Set(require("./lib/show-seo.cjs").recapOnlyNames(names))]);
   eleventyConfig.addNunjucksGlobal("showNameForms", function(headline, title, programName, eventDate, aliases, isShow, archive, isLatest) {
     // each spelling once: the spelling variants repeated «عرض سماك داون» and the «2026» forms in a show's alternateName/keywords
     const seen = new Set(aliases || []);

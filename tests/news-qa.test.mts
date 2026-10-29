@@ -497,3 +497,16 @@ test("«بعرض عرض AEW Redemption» (a doubled 3-letter «عرض») is bloc
   assert.ok(checkArticle("عنوان", "قدم عرض عرض AEW Dynamite مواجهة قوية.").some((i) => i.code === "repeated_word"));
   assert.ok(!checkArticle("عنوان", "بينما استعرض عرض TNA iMPACT باقة من أبرز لقطاته.").some((i) => i.code === "repeated_word"));
 });
+
+test("team members written twice, «النتيجة صالحه», a lone «ك» before a quote and the duals «يعيدان»/«بدلتين مطابقتين» (round 2026-10-30)", () => {
+  assert.equal(autoFix("نجح فريق ذا جادجمنت داي (جي دي ماكدونا ودومينيك ميستيريو) المكون من جي دي ماكدونا ودومينيك ميستيريو في الفوز."),
+    "نجح فريق ذا جادجمنت داي (جي دي ماكدونا ودومينيك ميستيريو) في الفوز.");
+  assert.match(autoFix("وتمكن من حسم النتيجة صالحه بعد تنفيذ حركة تسونامي."), /حسم النتيجة لصالحه/);
+  assert.match(autoFix("يفضل الفصل بين دوره ك \"الحكيم\" أمام الكاميرات وحياته."), /دوره كالحكيم أمام/);
+  assert.match(autoFix("وأتبعها بحركة بدت ك \"سبيناروني\" صغيرة."), /بدت كسبيناروني صغيرة/);
+  assert.ok(checkArticle("ذا ميز وماريس يعيدان تمثيل مشهد شهير", "نص.").some((i) => i.code === "dual_form"));
+  assert.ok(checkArticle("ذا ميز يعيد تمثيل مشهد", "ارتدى الثنائي بدلتين مطابقتين للفيلم.").some((i) => i.code === "dual_noun"));
+  assert.ok(checkArticle("عنوان", "يتضمن العرض ست مواجهات، منها اثنتان على الألقاب.").some((i) => i.code === "dual_noun"));
+  assert.ok(checkArticle("عنوان", "يشعر بآلام وإرهاق شديدين في جسده.").some((i) => i.code === "dual_noun"));
+  assert.equal(applyCorrections("فاز فريق لوس أمريكانو على خصومه، وفريق لوس أمريكانوس كمان"), "فاز فريق لوس أمريكانوس على خصومه، وفريق لوس أمريكانوس كمان");
+});

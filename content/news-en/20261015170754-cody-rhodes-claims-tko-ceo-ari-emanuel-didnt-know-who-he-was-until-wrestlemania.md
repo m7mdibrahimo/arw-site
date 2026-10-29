@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Claims TKO CEO Ari Emanuel Didn't Know Who He Was Until WrestleMania 40"
 slug: "cody-rhodes-claims-tko-ceo-ari-emanuel-didnt-know-who-he-was-until-wrestlemania"
-description: "During a recent media tour for the upcoming Street Fighter movie, WWE star Cody Rhodes revealed that TKO CEO Ari Emanuel did not know who he was until."
+description: "During a recent media tour for the upcoming Street Fighter movie, WWE star Cody Rhodes revealed that TKO CEO Ari Emanuel did not know who he was."
 federation: WWE
 date: 2026-10-15T14:07:54.000Z
 source_id: 334050

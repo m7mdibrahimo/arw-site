@@ -310,6 +310,13 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   [/^(He|She|They) (?:recalled|said|explained|noted|continued|stated), adding that\b/gm, "$1 added that"],
   [/^(>\s*["“][^\n]*?),(\s*["”])[ \t]*$(?!\n+\s*(?:[A-Z][\w'’-]+\s+){1,2}(?:said|shared|added|recalled|explained|noted|continued|stated|wrote|told|revealed|admitted)\b(?![^.\n]*\bthat\b)[^.\n]{0,40}\.)/gm, "$1.$2"],
   [/\bfeel like, just because\b/g, "feel like"],
+  // A «>» quote line that goes on with the story after the closing mark: «> "…my f*cked-up-ed-ness." Heyman
+  // emphasized that…» showed the narration inside the quote box (Paul Heyman story, round 2026-10-30)
+  [/^(>\s*["“][^"“”\n]+[.!?]["”])[ \t]+(?=[A-Z][a-z])/gm, "$1\n\n"],
+  // The team's name: «Los Americano (Bravo and Rayo)», «Judgment Day (JD McDonagh…)» (WWE Main Event story,
+  // round 2026-10-30)
+  [/\bLos Americano\b(?!s)/g, "Los Americanos"],
+  [/(?<![Tt]he )\bJudgment Day(?= \(| faction| stable| members?\b)/g, "The Judgment Day"],
   // «currently part of the faction's current on-screen alliance»: the same word twice in one clause (2026-10-27)
   [/\b([Cc])urrently((?:\s+[A-Za-z'’.-]+){0,5})\s+current\b/g, (_m: string, c: string, mid: string) => `${c === "C" ? "Now" : "now"}${mid} current`],
   // a word dropped from the source's transcription: «One the things he said» → «One of the things he said» (round 2026-10-27)

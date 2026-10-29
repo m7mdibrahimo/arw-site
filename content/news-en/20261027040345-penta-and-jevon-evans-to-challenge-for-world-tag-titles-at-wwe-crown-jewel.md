@@ -1,7 +1,7 @@
 ---
 title: "Penta and Je'Von Evans to Challenge for World Tag Titles at WWE Crown Jewel"
 slug: "penta-and-jevon-evans-to-challenge-for-world-tag-titles-at-wwe-crown-jewel"
-description: "A major title match has been set for WWE Crown Jewel. On this week's episode of WWE Raw."
+description: "A major title match has been set for WWE Crown Jewel."
 federation: WWE
 date: 2026-10-27T01:03:45.000Z
 source_id: 335980

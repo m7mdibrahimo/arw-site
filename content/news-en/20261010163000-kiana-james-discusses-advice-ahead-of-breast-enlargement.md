@@ -1,7 +1,7 @@
 ---
 title: "Kiana James Discusses Advice Ahead of Breast Enlargement"
 slug: "kiana-james-discusses-advice-ahead-of-breast-enlargement"
-description: "During a recent appearance on the YouTube channel Ari and Emily, hosted by WWE star Ivy Nile and her husband Ari Levy."
+description: "Hosted by WWE star Ivy Nile and her husband Ari Levy, WWE star Kiana James discussed her experience and concerns ahead of undergoing a breast augmentation procedure."
 federation: WWE
 date: 2026-10-10T13:30:00.000Z
 source_id: 4340430638

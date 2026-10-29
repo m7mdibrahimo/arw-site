@@ -1,7 +1,7 @@
 ---
 title: "Roman Reigns Retains Title at Money in the Bank, 946 Brawls With Bloodline"
 slug: "roman-reigns-retains-title-at-money-in-the-bank-946-brawls-with-bloodline"
-description: "Roman Reigns defended his title at WWE Money in the Bank. In the opening match of the 2026 WWE Money in the Bank event."
+description: "Roman Reigns defended his title at WWE Money in the Bank."
 federation: WWE
 date: 2026-10-10T22:54:01.000Z
 source_id: 333114

@@ -1,7 +1,7 @@
 ---
 title: "Tatum Paxley Reflects on Winning WWE Women's Tag Team Titles With Alexa Bliss"
 slug: "tatum-paxley-reflects-on-winning-wwe-womens-tag-team-titles-with-alexa-bliss"
-description: "Tatum Paxley is reflecting on her recent championship success. On the October 9th episode of WWE SmackDown."
+description: "Tatum Paxley is reflecting on her recent championship success."
 federation: WWE
 date: 2026-10-14T22:20:11.000Z
 source_id: 333938

@@ -1,7 +1,7 @@
 ---
 title: "Dave Meltzer: WWE Sources Deny Involvement in Max Caster's TNA Exit"
 slug: "dave-meltzer-wwe-sources-deny-involvement-in-max-casters-tna-exit"
-description: "Following Max Caster's controversial departure from TNA after the Bound for Glory 2026 event."
+description: "Following Max Caster's controversial departure from TNA after the Bound for Glory 2026 event, reports have emerged regarding whether WWE played a role in the decision."
 federation: WWE
 date: 2026-10-16T20:30:02.000Z
 source_id: 3757884367

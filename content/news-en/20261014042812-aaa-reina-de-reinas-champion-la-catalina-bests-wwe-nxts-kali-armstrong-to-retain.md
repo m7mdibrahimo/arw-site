@@ -1,7 +1,7 @@
 ---
 title: "AAA Reina De Reinas Champion La Catalina Bests WWE NXT's Kali Armstrong to Retain Title"
 slug: "aaa-reina-de-reinas-champion-la-catalina-bests-wwe-nxts-kali-armstrong-to-retain"
-description: "After securing a spot in the AAA Reina de Reinas Championship match following a strong performance in last week's 20-woman battle royal."
+description: "Kali Armstrong challenged La Catalina for the title on this week's episode of WWE NXT."
 federation: WWE
 date: 2026-10-14T01:28:12.000Z
 source_id: 998681841
