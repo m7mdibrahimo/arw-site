@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2301775/tna-thursday-night-impact-october-29-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-29T23:44:57.568Z"
+ },
  "https://www.fightful.com/wrestling/chris-jericho-says-tv-series-about-early-portion-of-his-career-is-close-to-filming-pilot-episode": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -58,11 +63,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-29T23:35:44.598Z"
- },
- "https://www.wrestlinginc.com/2301775/tna-thursday-night-impact-october-29-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-29T23:24:51.105Z"
  },
  "https://www.wrestlinginc.com/2301731/dave-meltzer-wwe-crown-jewel-venue-change-riyadh-saudi-arabia": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
