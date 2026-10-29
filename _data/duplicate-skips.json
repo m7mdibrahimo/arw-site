@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/santi-rivera-confirms-exit-from-wwe-id-program/": {
-    "matchedFile": "20261013192723-تقرير-كابوتشينو-جونز-وسانتي-ريفيرا-يغادران-برنامج-wwe-id.md",
-    "reason": "الخبر الجديد يغطي نفس واقعة رحيل سانتي ريفيرا عن برنامج WWE ID التي تم تناولها في الخبر المنشور، وتصريح ريفيرا يعتبر رداً أو تأكيداً شخصياً على خبر رحيله الذي سبق نشره.",
-    "at": "2026-10-14T20:18:17.281Z"
-  },
   "https://www.fightful.com/wrestling/tony-dangelo-says-shawn-michaels-johnny-russo-matt-bloom-have-spoken-to-him-about-why-hes-not-on-wwe-main-roster-yet/": {
     "matchedFile": "20261014125927-توني-دي-أنجيلو-يعترف-بصعوبة-مشاهدة-نجوم-wwe-nxt-يتم-تصعيدهم-قبله.md",
     "reason": "الخبر الجديد يعيد سرد نفس تصريحات توني دي أنجيلو في بودكاست Busted Open After Dark حول أسباب عدم تصعيده وتواصل القيادة معه، وهي نفس التفاصيل المذكورة في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261029052917-كوين-أميناتا-تفوز-ببطولة-tbs-في-عرض-aew-dynamite.md",
     "reason": "الخبر الجديد يغطي نفس الحدث والنتيجة تماماً (فوز كوين أميناتا ببطولة TBS على حساب بيرسيفوني في عرض AEW Dynamite وتدخل بريت بيكر) وهو مكرر للخبر المنشور برقم 0 من مصدر آخر.",
     "at": "2026-10-29T02:41:40.587Z"
+  },
+  "https://www.fightful.com/wrestling/aew-fright-night-collision-spoilers-taped-on-10-28/": {
+    "matchedFile": "20261029132056-نتائج-تسجيلي-عرض-aew-collision-ليوم-31-أكتوبر-2026.md",
+    "reason": "الخبر الجديد يكرر نشر نتائج نفس عرض AEW Collision (Fright Night) المسجل في 28 أكتوبر 2026 والمقرر بثه في 31 أكتوبر، وقد تم نشر تقرير النتائج بالفعل في الخبر رقم [0].",
+    "at": "2026-10-29T10:45:11.752Z"
   }
 }
