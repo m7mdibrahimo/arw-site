@@ -1,7 +1,7 @@
 ---
 show_type: عرض
 federation: INDIE
-title: "MLP Special: Josh Alexander vs Stu Grayson (Northern Rising) 21.10.2026"
+title: "MLP Special: Josh Alexander vs Stu Grayson 21.10.2026"
 headline: عرض ام ال بي 21.10.2026 مترجم
 program_name: MLP Special
 description: عرض ام ال بي مترجم بالكامل مع جميع النزالات والأحداث.
