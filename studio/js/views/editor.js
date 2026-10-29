@@ -204,6 +204,7 @@ const F = {
     <textarea class="input mono" id="f-prem-dl" rows="3" dir="ltr" placeholder="https://...">${S.premium ? S.premium.downloads : ''}</textarea>
     <div class="pr-early"><b>العرض قبل الجميع</b><span class="muted small">المميزين يشغّلوه دلوقتي، والباقيين يشوفوا عدّاد لحد ما يتنشر للكل:</span>
       <div class="pr-early-btns">${[[1, 'ساعة'], [2, 'ساعتين'], [3, '3 ساعات'], [6, '6 ساعات']].map(([h, l]) => html`<button type="button" class="btn btn-sm btn-soft" data-early="${h}">للكل بعد ${l}</button>`)}</div>
+      <div class="pr-early-at"><label for="f-early-at">أو حدد الوقت بنفسك</label><input class="input" type="datetime-local" id="f-early-at" value="${localInput(S.data.early_until)}"></div>
       <div class="pr-early-on" id="pr-early-on"${S.data.early_until ? '' : ' hidden'}><span id="pr-early-txt">${earlyText()}</span><button type="button" class="btn btn-sm btn-ghost" data-early="0">إلغاء</button></div></div>
     <small class="hint pr-state" id="pr-state">${S.premium && S.premium.loading ? 'بيحمّل الروابط المحفوظة…' : ''}</small></div>`,
   servers: () => html`<div class="field">
@@ -607,6 +608,11 @@ function titleHint() {
   el.classList.toggle('warn', !!warn.length);
 }
 
+// a time as the value of a datetime-local field (the panel's own clock), «» for none
+function localInput(v) {
+  const d = toDate(v);
+  return d ? new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 16) : '';
+}
 // «العرض قبل الجميع»: where the show's window stands, in a line under its buttons
 function earlyText() {
   const t = toDate(S.data.early_until);
@@ -624,16 +630,30 @@ function bindPremium() {
   sv.oninput = onInput; dl.oninput = onInput;
   // «العرض قبل الجميع»: published now like any show, its servers and downloads for premium members till early_until (the
   // worker keeps them off the file and the page till then: worker/src/early.ts), then for everyone. «إلغاء» = for everyone now
+  // the buttons (an hour … 6 hours from now), or any time the owner picks (owner 2026-10-29: «زود خيار اني اقدر احط الوقت ال انا عايزه»)
+  const setEarly = (t) => {
+    if (t) S.data.early_until = isoLocal(t); else delete S.data.early_until;
+    const on = $('#pr-early-on'), txt = $('#pr-early-txt'), at = $('#f-early-at');
+    if (on) on.hidden = !t;
+    if (txt) txt.textContent = earlyText();
+    if (at && document.activeElement !== at) at.value = localInput(S.data.early_until);
+    markDirty();
+  };
   $$('[data-early]').forEach(b => { b.onclick = () => {
     const h = Number(b.dataset.early);
-    const t = new Date(Date.now() + h * 3600e3);
-    if (h) S.data.early_until = isoLocal(t); else delete S.data.early_until;
-    const on = $('#pr-early-on'), txt = $('#pr-early-txt');
-    if (on) on.hidden = !h;
-    if (txt) txt.textContent = earlyText();
-    markDirty();
-    toast(h ? `اتظبط: المميزين دلوقتي، والكل ${fmtDate(t, true)}. احفظ عشان يتنشر.` : 'اتلغى: العرض هيبقى للكل أول ما تحفظ.');
+    const t = h ? new Date(Date.now() + h * 3600e3) : null;
+    setEarly(t);
+    toast(t ? `اتظبط: المميزين دلوقتي، والكل ${fmtDate(t, true)}. احفظ عشان يتنشر.` : 'اتلغى: العرض هيبقى للكل أول ما تحفظ.');
   }; });
+  const at = $('#f-early-at');
+  if (at) at.onchange = () => {
+    const t = at.value ? new Date(at.value) : null;
+    if (!t || isNaN(t)) return setEarly(null);
+    // a minute from now at the least: a time already gone would open the show to everyone at once
+    if (t.getTime() < Date.now() + 60e3) { toast('الوقت ده عدّى، اختار وقت بعد دلوقتي.'); at.value = localInput(S.data.early_until); return; }
+    setEarly(t);
+    toast(`اتظبط: المميزين دلوقتي، والكل ${fmtDate(t, true)}. احفظ عشان يتنشر.`);
+  };
   if (S.premium.loading && S.slug && !S.premium.asked) {
     S.premium.asked = true;
     const key = premiumKey(S.slug);
