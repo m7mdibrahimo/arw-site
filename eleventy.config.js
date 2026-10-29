@@ -1548,7 +1548,9 @@ module.exports = function(eleventyConfig) {
         // Every program also answers to «<the federation said in Arabic> <the program>» («دبليو دبليو إي موني إن ذا بانك»,
         // 111 impressions at 10.4 on a show that had no such name), with «إن» and «ان» both (INCIDENTS #564)
         const FED_SAID = { WWE: "دبليو دبليو إي", AEW: "ايه اي دبليو", TNA: "تي ان ايه", NJPW: "نيو جابان", ROH: "ار او اتش", MLW: "ام ال دبليو", NWA: "ان دبليو ايه", CMLL: "سي ام ال ال", AAA: "لوتشا ليبري اي اي اي" };
-        const baseAliases = ALIASES[p.slug] || (/^cmll-/.test(p.slug) ? ["سي ام ال ال", "سي إم إل إل", "CMLL", "CMLL مترجم"] : /^revpro/.test(p.slug) ? ["ريف برو", "ريفبرو", "ريفولوشن برو", "ريفولوشن برو ريسلنج", "RevPro", "Rev Pro", "Revolution Pro Wrestling", "RevPro مترجم", "شاهد برو"] : []);
+        const baseAliases = ALIASES[p.slug] || (/^cmll-/.test(p.slug) ? ["سي ام ال ال", "سي إم إل إل", "CMLL", "CMLL مترجم"] : /^mlp-/.test(p.slug) ? ["ام ال بي", "إم إل بي", "ميبل ليف برو", "ميبل ليف", "MLP", "Maple Leaf Pro", "Maple Leaf Pro Wrestling", "MLP Wrestling", "MLP مترجم", "عرض ام ال بي مترجم"] // MLP shows had one Arabic name only (INCIDENTS #963)
+          : p.slug === "tna-xplosion" ? ["اكسبلوجن", "إكسبلوجن", "اكسبلوشن", "TNA Xplosion", "TNA Xplosion مترجم", "عرض اكسبلوجن مترجم", "تي ان ايه", "TNA مترجم"] // (INCIDENTS #963)
+          : /^revpro/.test(p.slug) ? ["ريف برو", "ريفبرو", "ريفولوشن برو", "ريفولوشن برو ريسلنج", "RevPro", "Rev Pro", "Revolution Pro Wrestling", "RevPro مترجم", "شاهد برو"] : []);
         const fedSaid = FED_SAID[String(federation || "").toUpperCase()] || "";
         const programSaid = String(arName || "").replace(/^(عرض|برنامج)\s+/, "").replace(/\s+(19|20)\d{2}$/, "").trim();
         const generated = fedSaid && /[\u0600-\u06FF]/.test(programSaid) && !programSaid.startsWith(fedSaid)
@@ -2390,6 +2392,7 @@ module.exports = function(eleventyConfig) {
       for (const [from, to] of dropped) console.warn(`[redirects] skipped ${from} → ${to}: it would send a live page to a missing one (INCIDENTS #455)`);
       writeRedirectPages(tooLong, "_site"); // over-long Arabic redirects (INCIDENTS #200)
       writeRedirectPages(vanishedLibraryRedirects(), "_site"); // library pages whose show moved to another program (INCIDENTS #951)
+      writeRedirectPages(require("./lib/redirects.cjs").vanishedShowRedirects(), "_site"); // in-between show addresses after quick title edits (INCIDENTS #961)
       writeRedirectPages(require("./lib/redirects.cjs").legacyArticleAddresses(), "_site"); // old article addresses Google still holds (INCIDENTS #274)
       writeRedirectPages(require("./lib/redirects.cjs").contentFolderAddresses(), "_site"); // «/content/<section>/<file>/» addresses (INCIDENTS #284)
     }
@@ -2438,6 +2441,9 @@ module.exports = function(eleventyConfig) {
     try {
       const { summary, leftovers } = require("./lib/i18n/mirror.cjs").buildEnglish("_site", { content: I18N_CONTENT, pages: I18N_PAGES, news: I18N_NEWS });
       console.log(`[en] ${JSON.stringify(summary)}`);
+      // the English copies of renamed shows' old addresses, now that /en/ exists (INCIDENTS #961)
+      const R = require("./lib/redirects.cjs");
+      R.writeRedirectPages(R.contentFolderAddresses().concat(R.vanishedShowRedirects()).filter(([from]) => from.startsWith("/en/")), "_site");
       leftovers.slice(0, 20).forEach(function(x) { console.log(`[en] still Arabic (${x[1]} pages): ${x[0].slice(0, 120)}`); });
       fs.writeFileSync("node_modules/.cache-arw-i18n-content.json", JSON.stringify({ content: I18N_CONTENT, pages: I18N_PAGES, news: I18N_NEWS }));
     } catch (e) { console.log(`[en] skipped: ${e.stack}`); }

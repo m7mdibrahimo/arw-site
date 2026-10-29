@@ -448,3 +448,15 @@ test('the retry is told the exact copied words, and source quote entities are de
   assert.equal(prompts.length, 2);
   assert.ok(!prompts[0].includes('REFUSED') && prompts[1].includes('during the frantic negotiations'));
 });
+
+// INCIDENTS #962: «Friday, October 17, 2026» (a Saturday) reached three English stories
+test('a weekday that is not the day of its date blocks the English edition', async () => {
+  const { enWeekdayNotOnDate } = await import('../scripts/english-edition.ts');
+  const now = new Date('2026-10-29T07:00:00Z');
+  assert.equal(enWeekdayNotOnDate('cassette tapes surfacing at AEW WrestleDream on Friday, October 17, 2026, after', now), 'Friday, October 17, 2026');
+  assert.equal(enWeekdayNotOnDate('added to the card on Friday, November 7, in Riyadh', now), 'Friday, November 7');
+  assert.equal(enWeekdayNotOnDate('on Saturday, October 17, 2026 and on Thursday, October 15', now), null);
+  assert.equal(enWeekdayNotOnDate('on Monday, January 4', new Date('2026-12-20T00:00:00Z')), null); // 2027
+  const e = { title: 'Toni Storm AEW Return Not Happening Soon', body: `${source}\n\nThe tapes surfaced at WrestleDream on Friday, October 17, 2026, after a show.` };
+  assert.ok(checkEnglish(e as any, input).some((x) => /weekday does not match/.test(x)));
+});

@@ -14,7 +14,7 @@ en_tags:
   - "SmackDown"
 image: /content/images/6muivebf1dkom9tq.jpg
 ---
-WWE Crown Jewel is nearing a complete lineup, according to Ringside News, with indications pointing toward another major match added to the card on Friday, November 7, in Riyadh, Saudi Arabia.
+WWE Crown Jewel is nearing a complete lineup, according to Ringside News, with indications pointing toward another major match added to the card on Saturday, November 7, in Riyadh, Saudi Arabia.
 
 Local advertisements featuring GUNTHER vs. Finn Balor appeared on promotional materials at an entrance of Riyadh Season Stadium at KAFD, where the event will take place next weekend. Although WWE has not officially confirmed the bout, its presence in local advertising aligns with the intense rivalry between the two wrestlers throughout October on SmackDown.
 

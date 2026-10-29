@@ -105,7 +105,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - One name per person in the headline and the body: use the name the source's text uses (the body says "Miro", so the headline says "Miro", not "Rusev"; a source headline may carry the old ring name) (round 2026-10-27).
 - No markdown headings (#), no bold, no lists with bullets, no links in the text.
 - Times and time zones: keep each start time in the zone the source gives (8 pm local time in Mexico, 10 pm ET); never relabel a local time as ET (INCIDENTS #808).
-- Dates and weekdays: a specific date takes "on" plus the date and the day of the week the source names ("on Wednesday, November 4"), never the indefinite "on a Wednesday"; a weekday with no date is "on Wednesday" (round 2026-10-28).
+- Dates and weekdays: a specific date takes "on" plus the date and the day of the week the source names ("on Wednesday, November 4"), never the indefinite "on a Wednesday"; a weekday with no date is "on Wednesday" (round 2026-10-28). The weekday must be the real day of that date in that year — sources get it wrong (WrestleDream, October 17, 2026 was a Saturday, not a Friday; INCIDENTS #962); if you are not sure of it, write the date without a weekday.
 - Never give a wrestler a title or status the source does not state: "as the NXT Women's Champion" and "commented on winning the WWE Championship" were invented (a hypothetical "Maybe I'd be WWE Champion" or another wrestler's reign is NOT that wrestler's title).
 - Never add a "what's next" sentence the source does not have: no "will return to action at …", "will face … for the … Championship", "is set to appear at …" unless the SOURCE says it (a story about how Sami Zayn chose his name ended with a Crown Jewel match the source never mentioned, INCIDENTS #862). The story ends where the source ends.
 - Never mention Arab Wrestling, translation, AI, or that this is a rewrite.
@@ -155,6 +155,21 @@ ${String(i.arabicBody).slice(0, 6000)}`;
 /** Common English misspellings that must never reach the site (whole words only). */
 export const EN_MISSPELLED = /\b(?:mutting|recieve[ds]?|recieving|occured|occurence|seperat(?:e|ed|ely|ion)|definately|untill|accomodat\w*|tommorow|truely|publically|succesful\w*|begining|wierd|arguement|thier|alot|wich|becuase|beleive[ds]?|existance|occassion\w*|persistant|reccomend\w*|refered|commited|embarass\w*|goverment|independant|noticable|relevent|tounament|championshp|wrestlign|wreslt\w*)\b/i;
 
+const EN_DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const EN_MONTHS_FULL = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+/** «Friday, October 17, 2026» when October 17, 2026 is a Saturday: the first weekday that isn't its date's day, or null (INCIDENTS #962). */
+export function enWeekdayNotOnDate(text: string, now = new Date()): string | null {
+  const year = now.getUTCFullYear(), month = now.getUTCMonth();
+  const re = new RegExp(`\\b(${EN_DAYS.join("|")}),? (${EN_MONTHS_FULL.join("|")}) (\\d{1,2})(?:st|nd|rd|th)?\\b(?:,? (\\d{4}))?`, "g");
+  for (const m of String(text || "").matchAll(re)) {
+    const mi = EN_MONTHS_FULL.indexOf(m[2]);
+    // no year: the nearest one (a December story's «Monday, January 4» is next year's)
+    const d = new Date(Date.UTC(m[4] ? +m[4] : year + (mi - month > 6 ? -1 : month - mi > 6 ? 1 : 0), mi, +m[3]));
+    if (d.getUTCDate() === +m[3] && d.getUTCDay() !== EN_DAYS.indexOf(m[1])) return m[0];
+  }
+  return null;
+}
+
 export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   const issues: string[] = [];
   const title = String(e?.title || "").trim(), body = String(e?.body || "").trim();
@@ -165,6 +180,9 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   // one (INCIDENTS #872). Any other script, and any translation arrow, blocks the English edition.
   if (/[\u0370-\u03FF\u0400-\u058F\u0590-\u05FF\u0900-\u0DFF\u0E00-\u0E7F\u1000-\u109F\u10A0-\u10FF\u1200-\u137F\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF]/.test(title + "\n" + body)) issues.push("letters from another script");
   if (/->|→/.test(body)) issues.push("translation arrow left in the text");
+  // «on Friday, October 17, 2026» for a Saturday (Toni Storm, Crown Jewel, Matt Hardy stories, INCIDENTS #962)
+  const badDay = enWeekdayNotOnDate(title + "\n" + body);
+  if (badDay) issues.push(`weekday does not match the date: ${badDay}`);
   // a plain misspelling reached the English site: «mutting sound» for «muting» (Netflix/Liv Morgan story, INCIDENTS #936)
   if (EN_MISSPELLED.test(title + "\n" + body)) issues.push("misspelled word");
   // «translated/translation» alone is a story word too: Sammy Guevara «translated» The Beast Mortos for Rush and the
