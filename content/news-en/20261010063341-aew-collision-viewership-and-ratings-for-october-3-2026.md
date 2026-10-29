@@ -1,7 +1,7 @@
 ---
 title: "AEW Collision Viewership and Ratings for October 3, 2026"
 slug: "aew-collision-viewership-and-ratings-for-october-3-2026"
-description: "Following an emotional week that included tributes to the late Pac, the October 3 episode of AEW Collision steered the promotion back toward the upcoming AEW."
+description: "Following an emotional week that included tributes to the late PAC, the October 3 episode of AEW Collision steered the promotion back toward the upcoming AEW."
 federation: AEW
 date: 2026-10-10T03:33:41.000Z
 source_id: 1981474749
@@ -14,7 +14,7 @@ en_tags:
   - "AEW"
 image: /content/images/6dq9lgjl1kw8j4ej.jpg
 ---
-Following an emotional week that included tributes to the late Pac, the October 3 episode of AEW Collision steered the promotion back toward the upcoming AEW WrestleDream pay-per-view on October 17.
+Following an emotional week that included tributes to the late PAC, the October 3 episode of AEW Collision steered the promotion back toward the upcoming AEW WrestleDream pay-per-view on October 17.
 
 Kofi competed in his debut AEW singles bout against Lee Moriarty, Jon Moxley triumphed over Jake Doyle during an AEW Continental Championship Eliminator match, and the Clockwork Carnage match was officially booked for AEW WrestleDream.
 

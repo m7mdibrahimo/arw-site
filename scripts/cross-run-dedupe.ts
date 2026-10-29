@@ -138,4 +138,21 @@ async function main() {
   }
 }
 
-if (process.argv[1]?.endsWith("cross-run-dedupe.ts")) main().catch(e => { console.error("[Cross-run]", e); });
+/**
+ * The rebase drops this run's commit when its changes are already on main (another bot pushed the same files): HEAD is
+ * then the other bot's commit, and the push loop's `git commit --amend` rewrote it — every push after that was refused
+ * (8/8 in run 40894835100, INCIDENTS #978). This run gets a commit of its own back, so the amend only ever touches it.
+ */
+export function keepOwnCommit(run = (args: string[]) => execFileSync("git", args, { encoding: "utf-8" }).trim()): boolean {
+  try {
+    if (run(["rev-parse", "HEAD"]) !== run(["rev-parse", "origin/main"])) return false;
+    run(["add", "-A"]);
+    run(["commit", "--allow-empty", "-q", "-m", "feat(news): auto-publish latest wrestling news"]);
+    console.log("[Cross-run] this run's commit was already on main — a commit of its own so the push loop never amends another bot's.");
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+if (process.argv[1]?.endsWith("cross-run-dedupe.ts")) main().catch(e => { console.error("[Cross-run]", e); }).finally(() => keepOwnCommit());

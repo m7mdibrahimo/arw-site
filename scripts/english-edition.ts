@@ -332,6 +332,8 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   // «fallen in view of watching» is a broken idiom: it is «fallen in love with watching» (INCIDENTS #794)
   [/\bfallen in view of\b/g, "fallen in love with"],
   [/\bM By Elegance\b/gi, "Ash By Elegance"],
+  // The wrestler is «PAC» in capitals (the glossary and every source); «Pac» went live in 16 stories (INCIDENTS #979)
+  [/\bPac\b(?![-‐](?:Man|\d))/g, "PAC"],
   // Jey Uso written with Ilja Dragunov's surname (INCIDENTS #758)
   [/\bJey Dragunov\b/g, "Jey Uso"],
   // Tom Filip misspelled as "Tome Filip" (INCIDENTS #764)

@@ -11,7 +11,7 @@ en_tags:
   - "WWE"
   - "AIW"
   - "Wrestling REVOLVER"
-  - "X-Pac"
+  - "X-PAC"
 image: /content/images/d4o15guxzotibgpm.jpg
 ---
-Ethan Page is scheduled to appear at a WWE Money In The Bank watch party in Toronto. Meanwhile, Absolute Intense Wrestling has announced plans to reduce its event schedule in 2027. In other news, a match between Lee Moriarty and Karl Greco-Malenko has been signed for an upcoming PRODUCE event, and CPA is set to face Kevin Tibbs at a future Create-A-Pro show. Additionally, X-Pac is confirmed for New York Comic Con on October 10, while Darian Bengston will take on Kasey Owens at Scott Hensley's Last Hurrah. Wrestling REVOLVER also announced that Zachary Wentz, Trey Miguel, Gringo Loco, and BDE will participate in the Jerry Lynn Invitational.
+Ethan Page is scheduled to appear at a WWE Money In The Bank watch party in Toronto. Meanwhile, Absolute Intense Wrestling has announced plans to reduce its event schedule in 2027. In other news, a match between Lee Moriarty and Karl Greco-Malenko has been signed for an upcoming PRODUCE event, and CPA is set to face Kevin Tibbs at a future Create-A-Pro show. Additionally, X-PAC is confirmed for New York Comic Con on October 10, while Darian Bengston will take on Kasey Owens at Scott Hensley's Last Hurrah. Wrestling REVOLVER also announced that Zachary Wentz, Trey Miguel, Gringo Loco, and BDE will participate in the Jerry Lynn Invitational.

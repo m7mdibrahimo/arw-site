@@ -184,7 +184,9 @@ const RULES: Rule[] = [
   { code: "scrubbed_source_garbage", severity: "error", re: /تقارير\s+صحفية(?:\s+مطلعة)?\s+من\s+تقارير\s+صحفية|الصحفي(?:\s+\S+)?\s+تقارير\s+صحفية|تقارير\s+صحفية\s+و\*?تقارير\s+صحفية|(?<![؀-ۿ])مع\s+\S+(?:\s+\S+)?\s+من\s+تقارير\s+صحفية/g, message: "اسم المصدر اتمسح وسابله جملة مكسورة («تقارير صحفية» مكررة) — لازم تتكتب من غير الاسم", fields: ["title", "body"] },
   // «يذكر أن توجت باكسلي وبليس…» — the subject must come before the verb after «يذكر أن» (INCIDENTS #841)
   { code: "verb_after_yudhkar", severity: "error", re: /يذكر أن (?:توجت|توج|خاض|خاضت|فاز|فازت|حقق|حققت|انضم|انضمت|عاد|عادت|ظهر|ظهرت|احتفظ|احتفظت|هزم|هزمت|تغلب|تغلبت|أنهى|أنهت|دخل|دخلت|فازا|حققا|خاضا)(?![\u0600-\u06FF])/g, message: "بعد «يذكر أن» لازم الفاعل يسبق الفعل (يذكر أن باكسلي توجت)", fields: ["title", "body"] },
-  { code: "english_caption_line", severity: "error", re: /^(?![ \t]*>)[ \t]*(?:[A-Za-z0-9'’,.;:!?()$&"“”-]+[ \t]+){5,}[A-Za-z0-9'’.!?"“”)-]+[ \t]*$/gm, message: "سطر كامل بالإنجليزي (كابشن صورة/فيديو من المصدر) جوه الخبر العربي — لازم يتشال أو يتترجم", fields: ["body"] },
+  // …also when it sits inside «»: «have diverticulitis, he would've never been defeated in UFC…» closed the Heyman/Lesnar
+  // story (INCIDENTS #979)
+  { code: "english_caption_line", severity: "error", re: /^(?![ \t]*>)[ \t]*[«‹]?(?:[A-Za-z0-9'’,.;:!?()$&"“”-]+[ \t]+){5,}[A-Za-z0-9'’.!?"“”)-]+[»›]?[ \t]*$/gm, message: "سطر كامل بالإنجليزي (كابشن صورة/فيديو من المصدر) جوه الخبر العربي — لازم يتشال أو يتترجم", fields: ["body"] },
   { code: "english_quote", severity: "error", re: /^>[^\n]*?(?<![A-Za-z'’])(?:[A-Za-z][A-Za-z'’]+[\s,.;:!?—-]+){6,}[A-Za-z][A-Za-z'’]+/gm, message: "اقتباس بالإنجليزي جوه الخبر العربي — لازم يتترجم للعربي", fields: ["body"] },
   { code: "game_terms", severity: "error", re: /مجريات اللعب|المباراة الكروية|الشوط (?:الأول|الثاني)|أرض الملعب/g, message: "تعبير رياضي غير مناسب للمصارعة (المعتمد: مجريات النزال)" },
   // A word the model broke in two scripts: «شخصية أك uma الشهيرة» (Akuma — INCIDENTS #143). Latin names in
@@ -1157,6 +1159,8 @@ export function autoFix(text: string): string {
   // A straight quote glued to the «» pair: > "«أنا حتى لا أعرف…»" went live in the Russo story (INCIDENTS #489) — the
   // «» stays, the extra marks go
   text = text.replace(/["“”]+(\*{0,2})«/g, "$1«").replace(/»(\*{0,2})["“”]+/g, "»$1");
+  // A space inside the brackets: «أوكس آدامز ( برفقة بريت رايان غوسيلين)» (INCIDENTS #979)
+  text = text.replace(/\([ \t]+(?=\S)/g, "(").replace(/(?<=\S)[ \t]+\)/g, ")");
   // A quote marker written in the middle of a sentence («وقال بيشوف: > نعم…») shows as a literal «>» — the quote goes
   // on its own line (INCIDENTS #470)
   text = text.replace(/^([^>\n][^\n]*?[:：،])[ \t]+>[ \t]+(?=\S)/gm, "$1\n\n> ");
