@@ -1,14 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/ftr-and-motor-city-machine-guns-to-battle-in-best-of-five-series-first-match-set-for-aew-wrestledream/": {
-    "matchedFile": "20261015041527-فريق-إف-تي-آر-وفريق-موتور-سيتي-ماشين-جانز-يحددان-سلسلة-من-خمس-مواجهات-تبدأ-في-عرض-aew-wrestledream.md",
-    "reason": "الخبر الجديد يغطي نفس الحدث (سلسلة المواجهات الخمس بين FTR وMCMG في عرض WrestleDream) الذي تم تغطيته بالفعل في الخبر رقم 0.",
-    "at": "2026-10-15T01:47:28.473Z"
-  },
-  "https://www.ringsidenews.com/new-match-added-aew-wrestledream-during-1014-dynamite/": {
-    "matchedFile": "20261015023100-نتائج-عرض-aew-dynamite-collision-14-أكتوبر-2026-آدم-كوبلاند-يكشف-عن-خططه-المستقبلية.md",
-    "reason": "الخبر الجديد يتناول تفاصيل نزال تم الإعلان عنه ضمن أحداث عرض AEW Dynamite بتاريخ 14 أكتوبر 2026، وهو نفس العرض الذي غطاه الخبر رقم 2 في تقرير نتائجه.",
-    "at": "2026-10-15T02:22:30.564Z"
-  },
   "https://www.wrestlinginc.com/2287219/adam-copeland-more-fill-out-aew-wrestledream-clockwork-carnage/": {
     "matchedFile": "20261015023100-نتائج-عرض-aew-dynamite-collision-14-أكتوبر-2026-آدم-كوبلاند-يكشف-عن-خططه-المستقبلية.md",
     "reason": "الخبر الجديد يغطي نفس نتائج نزالات التصفيات التي تم ذكرها بالفعل في تقرير نتائج عرض AEW Dynamite/Collision رقم [2].",
@@ -2498,5 +2488,15 @@
     "matchedFile": "20261029200135-موقف-wwe-الحالي-من-مواجهة-عرض-aew-dynamite-new-years-smash-لعرض-wwe-smackdown.md",
     "reason": "الخبر الجديد يتناول نفس الحدث والقرار الإداري الخاص بجدول تسجيل عرض SmackDown في مواجهة عرض AEW، ولا يقدم أي تطور جديد أو معلومة إضافية جوهرية لم تكن موجودة في الخبر المنشور مسبقاً.",
     "at": "2026-10-29T17:25:30.303Z"
+  },
+  "https://www.fightful.com/wrestling/wwe-has-backup-blueprint-for-hosting-wrestlemania-43-domestically/": {
+    "matchedFile": "20261029195309-wwe-تملك-خطة-بديلة-سرية-لعرض-wrestlemania-43-إذا-تعذر-إقامته-في-السعودية.md",
+    "reason": "الخبر الجديد يعيد سرد نفس المعلومات الواردة في الخبر المنشور مسبقاً حول خطة WWE البديلة لـ WrestleMania 43 واستبعاد صالة ذا سفير، ولا يقدم أي تطور جديد جوهري.",
+    "at": "2026-10-29T17:31:33.696Z"
+  },
+  "https://www.fightful.com/wrestling/tony-khan-aew-has-the-most-affordable-tickets-in-tv-wrestling-were-not-going-to-take-an-arm-and-a-leg/": {
+    "matchedFile": "20261028234834-توني-خان-يؤكد-أن-aew-يمتلك-التذاكر-الأقل-سعرا-في-عروض-المصارعة-التلفزيونية.md",
+    "reason": "الخبر الجديد يتناول نفس تصريح توني خان حول أسعار تذاكر عرض Blood & Guts الذي تم تغطيته بالفعل في الخبر رقم 0.",
+    "at": "2026-10-29T17:31:39.830Z"
   }
 }
