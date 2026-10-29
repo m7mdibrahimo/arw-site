@@ -453,3 +453,9 @@ test("«لطالما … لفترة طويلة» loses the repeated «لفترة
   assert.equal(applyCorrections("لطالما حاولت النساء لفترة طويلة تعويض نقص التقنية."), "لطالما حاولت النساء تعويض نقص التقنية.");
   assert.equal(applyCorrections("غاب لفترة طويلة عن الحلبة."), "غاب لفترة طويلة عن الحلبة.");
 });
+
+// Round 2026-10-29: «اتحاد WNBA» (a basketball league) and «انتقل كايل فليتشر للحديث عن نفسه وتحدى» (INCIDENTS #954)
+test('a non-wrestling league is «دوري», and «turned to himself and challenged» is just «تحدى» (round 2026-10-29)', () => {
+  assert.equal(applyCorrections('قرر اتحاد WNBA إقامة المباراة'), 'قرر دوري WNBA إقامة المباراة');
+  assert.equal(applyCorrections('انتقل كايل فليتشر للحديث عن نفسه وتحدى ويل أوسبراي'), 'تحدى ويل أوسبراي');
+});

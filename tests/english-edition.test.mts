@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import matter from 'gray-matter';
-import { englishStyleRules, checkEnglish, stripBold, saveEnglishEdition, writeEnglishEdition, findEnglishEdition, englishSlug, dedupeEnglishEditions, englishPrompt, wordCount, embedLines, syncEnglishFromArabic, catchUpEnglishEditions, type EnglishInput } from '../scripts/english-edition.ts';
+import { englishStyleRules, checkEnglish, stripBold, saveEnglishEdition, writeEnglishEdition, findEnglishEdition, englishSlug, dedupeEnglishEditions, englishPrompt, wordCount, embedLines, syncEnglishFromArabic, catchUpEnglishEditions, copiedRun, retryFeedback, type EnglishInput } from '../scripts/english-edition.ts';
 
 const source = 'Cody Rhodes is making the first major change to the American Nightmare logo since he returned to WWE in 2022. The update honors his late dog Pharaoh, who appeared at many WWE events and became a fan favorite on social media. Rhodes said the change was something he had wanted to do for months and that fans will see it on merchandise soon.';
 const input: EnglishInput = {
@@ -426,4 +426,25 @@ test('a story word «translated» is not meta text, the model talking about its 
   assert.ok(checkEnglish(plus('This article was translated from Arabic.'), input).includes('meta text'));
   assert.ok(checkEnglish(plus('Here is the translation of the source text.'), input).includes('meta text'));
   assert.equal(stripBold('**Vince McMahon** doubted the **WWE Network** at first.'), 'Vince McMahon doubted the WWE Network at first.');
+});
+
+// Round 2026-10-29: the Toni Storm and WNBA/SmackDown stories never got an English edition — every try copied the same
+// source sentence and the retry was the very same prompt; the source's «&#8220;…&#8221;» also hid that ESPN's words were a quote (INCIDENTS #953)
+test('the retry is told the exact copied words, and source quote entities are decoded (round 2026-10-29)', async () => {
+  const sentence = 'During the frantic negotiations over the weekend an unlikely ally emerged for the league and the arena';
+  const src = { sourceText: `ESPN reported it. ${sentence}.` };
+  const body = `ESPN said that ${sentence.toLowerCase()} in Atlanta.`;
+  assert.equal(copiedRun(body, src.sourceText), 'during the frantic negotiations over the weekend an unlikely ally emerged for the league');
+  const fb = retryFeedback(['copied from the source'], { body }, src);
+  assert.match(fb, /REFUSED/);
+  assert.match(fb, /during the frantic negotiations/);
+  assert.equal(copiedRun(`ESPN said: "${sentence}."`, src.sourceText), null);
+  const { htmlToPlainText } = await import('../scripts/fightful-watcher.ts');
+  assert.equal(htmlToPlainText('<p>&#8220;He&#039;d move it&#8230;&#8221;</p>'), '"He\'d move it…"');
+  const prompts: string[] = [];
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'news-en-retry-'));
+  const input: any = { sourceId: 9, sourceUrl: 'https://www.ringsidenews.com/x/', sourceTitle: 'WWE Was Willing to Move SmackDown', sourceText: src.sourceText, arabicTitle: 'عنوان', arabicBody: 'متن', federation: 'WWE', date: '2026-10-29T01:53:00.000Z', image: '/content/images/x.jpg', filePrefix: '20261029045300' };
+  await writeEnglishEdition(input, async (p: string) => { prompts.push(p); return JSON.stringify({ title: 'WWE Was Willing to Move SmackDown for the WNBA Finals', body }); }, dir);
+  assert.equal(prompts.length, 2);
+  assert.ok(!prompts[0].includes('REFUSED') && prompts[1].includes('during the frantic negotiations'));
 });

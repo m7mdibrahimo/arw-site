@@ -16,6 +16,6 @@ image: /content/images/wbjzv6l0ertt34jj.jpg
 ---
 Kyle Fletcher wants to face Will Ospreay again for the title. Following his victory over Jack Perry on AEW Dynamite, Don Callis, Jake Doyle, and Mark Davis joined him in the ring.
 
-After stating that Davis and Doyle will capture the AEW World Tag Team Championships at AEW Full Gear, Kyle Fletcher shifted his focus to himself and challenged Will Ospreay to an AEW World Championship match at the same event. Tony Khan confirmed the pay-per-view bout shortly after Fletcher's promo.
+After stating that Davis and Doyle will capture the AEW World Tag Team Championships at AEW Full Gear, Kyle Fletcher challenged Will Ospreay to an AEW World Championship match at the same event. Tony Khan confirmed the pay-per-view bout shortly after Fletcher's promo.
 
 https://x.com/AEW/status/2115607161354985675

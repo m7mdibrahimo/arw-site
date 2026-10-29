@@ -13,6 +13,9 @@ test("NXT aliases keep the real misspellings and none of the adult-site searches
   assert.deepEqual(aliases.filter(isOffTopicQuery), []);
   assert.ok(!/"اكس ان اكس"|"اكس اكس ان"/.test(readFileSync("lib/show-seo.cjs", "utf8")));
   for (const q of ["اكس ان اكس اكس مترجم", "اكس ان اكس عرب", "اكس مترجم", "xnxx", "عرب اكس", "اكس"]) assert.ok(isOffTopicQuery(q), q);
+  // «مترجم اكس» (INCIDENTS #955) is off topic; «عرض ان اكس» is NXT
+  assert.ok(isOffTopicQuery("مترجم اكس"));
+  for (const q of ["عرض ان اكس", "ان اكس تي مترجم", "عرض ان اكس تي الاخير"]) assert.ok(!isOffTopicQuery(q), q);
   for (const q of ["ان اكس تي مترجم", "عرض ان اكس اكس مترجم", "اكس تي", "عرض الرو الاخير", "nxt مترجم", "نيكي بيلا", "ساسكس", "عرض ان اكس تي عربي"]) assert.ok(!isOffTopicQuery(q), q);
   const qs = [{ q: "اكس ان اكس", impressions: 9, clicks: 0, position: 8 }, { q: "عرض ان اكس تي", impressions: 9, clicks: 0, position: 8 }];
   assert.deepEqual(weakQueries(qs).map((x: any) => x.q), ["عرض ان اكس تي"]);

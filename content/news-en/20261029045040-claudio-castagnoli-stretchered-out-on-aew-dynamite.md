@@ -16,7 +16,7 @@ image: /content/images/ye8zmzcnfr833ozv.jpg
 ---
 Claudio Castagnoli needed to be loaded onto a medical stretcher and taken away after taking a vicious beating from The Cut on AEW Dynamite.
 
-The show featured fiery moments when multiple parties interfered during a clash between The Death Riders and The Cut. Because the opponents had a clear numbers advantage, Castagnoli tried to step in and aid his allies by using a garbage can. David Finlay then struck him violently before Jay White hit a Blade Runner on him onto the exposed concrete floor outside the ring.
+A brawl broke out between members of The Death Riders and The Cut, and The Cut gained the upper hand. Castagnoli rushed out to help his allies and went after The Cut with a garbage can, but he was outnumbered. David Finlay hit him with his shillelagh, including a shot to the head, before Jay White delivered a Blade Runner onto the exposed concrete outside the ring.
 
 Broadcast footage showed a replay of the assault while medical staff attended to Castagnoli prior to his removal. No official confirmation has been made yet on whether the injury is real or if the segment is part of the ongoing storylines between the two factions ahead of Full Gear.
 

@@ -342,6 +342,11 @@ export function htmlToPlainText(html: string): string {
     .replace(/&#8216;/g, "'")
     .replace(/&#8211;/g, "-")
     .replace(/&#8212;/g, "—")
+    // «&#8220;…&#8221;» left as entities hid that a paragraph was a quote: the English edition copied ESPN's quoted
+    // words as its own prose and failed «copied from the source» on every try (INCIDENTS #953)
+    .replace(/&#822[01];|&[lr]dquo;/g, '"')
+    .replace(/&#0?39;|&[lr]squo;/g, "'")
+    .replace(/&#8230;|&hellip;/g, "…")
     .replace(/\s+/g, " ")
     .trim();
 }

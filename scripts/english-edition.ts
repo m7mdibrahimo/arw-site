@@ -208,10 +208,7 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   // the English edition of every lineup/results story from ever being written (a card line of 30 names matched the
   // source; the catch-up retried it every bot run — two Gemini requests every ten minutes — and, being first in the
   // queue, starved every other missing edition; INCIDENTS #924).
-  const src = i.sourceText.toLowerCase().replace(/\s+/g, " ");
-  const prosLines = body.split("\n").filter((l) => !/^\s*>/.test(l) && !/^<https?:/.test(l.trim()) && !isCardOrResultLine(l)).join(" ").toLowerCase().replace(/[“”"]/g, '"');
-  const words = prosLines.replace(/"[^"]*"/g, " ").split(/\s+/).filter(Boolean);
-  for (let k = 0; k + 14 <= words.length; k++) { if (src.includes(words.slice(k, k + 14).join(" "))) { issues.push("copied from the source"); break; } }
+  if (copiedRun(body, i.sourceText)) issues.push("copied from the source");
   // a number the source never says (INCIDENTS #516: «150 to 200 matches» became «150 and 250»)
   const srcDigits = i.sourceText.replace(/(\d),(?=\d{3})/g, "$1");
   const odd = (body.replace(/(\d),(?=\d{3})/g, "$1").match(/(?<![\d.$])\d{3,4}(?![\d.])/g) || []).filter((n) => !/^(19|20)\d\d$/.test(n) && !srcDigits.includes(n));
@@ -230,6 +227,15 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
     }
   }
   return issues;
+}
+
+/** The first run of 14 words the edition's prose copies from the source (outside quotes, blockquotes and card lines), or null. */
+export function copiedRun(body: string, sourceText: string): string | null {
+  const src = sourceText.toLowerCase().replace(/[“”"]/g, '"').replace(/\s+/g, " ");
+  const prosLines = body.split("\n").filter((l) => !/^\s*>/.test(l) && !/^<https?:/.test(l.trim()) && !isCardOrResultLine(l)).join(" ").toLowerCase().replace(/[“”"]/g, '"');
+  const words = prosLines.replace(/"[^"]*"/g, " ").split(/\s+/).filter(Boolean);
+  for (let k = 0; k + 14 <= words.length; k++) { const run = words.slice(k, k + 14).join(" "); if (src.includes(run)) return run; }
+  return null;
 }
 
 export function englishSlug(title: string): string {
@@ -504,6 +510,12 @@ export function findEnglishEdition(sourceId: number | string, dir = NEWS_EN_DIR)
   return null;
 }
 
+/** What the retry prompt adds: the problems of the refused try, with the exact words it copied from the source. */
+export function retryFeedback(issues: string[], e: { body: string }, i: { sourceText: string }): string {
+  const run = issues.includes("copied from the source") ? copiedRun(e.body, i.sourceText) : null;
+  return `\n\nYOUR PREVIOUS ANSWER WAS REFUSED: ${issues.join("; ")}.${run ? ` These words are copied word for word from the source: "${run}". Say it in your own words, or put a quote in quotation marks and name who said or wrote it.` : ""} Fix this and keep every other rule.`;
+}
+
 type Ask = (prompt: string, json?: boolean, temperature?: number) => Promise<string | null>;
 /** «**bold**» the model sometimes puts around a name is only markup: dropped, instead of throwing the whole edition
  *  away (Vince McMahon / WWE Network story never reached the English site, INCIDENTS #948). */
@@ -519,12 +531,15 @@ const parse = (raw: string | null): EnglishEdition | null => {
 /** Write and save the English edition of a story just published in Arabic. Two tries; null when it doesn't pass. */
 export async function writeEnglishEdition(i: EnglishInput, ask: Ask, dir = NEWS_EN_DIR, onFail?: (reason: "check" | "no-response") => void): Promise<string | null> {
   if (new Date(i.date).getTime() < new Date(ENGLISH_NEWS_SINCE).getTime()) return null;
+  // The second try is told why the first was refused: the same prompt again failed the same way every time — the Toni
+  // Storm and WNBA stories copied the same source sentence on all three tries and never reached the English site (INCIDENTS #953)
+  let feedback = "";
   for (let attempt = 0; attempt < 2; attempt++) {
-    const e = parse(await ask(englishPrompt(i), true, 0.4));
+    const e = parse(await ask(englishPrompt(i) + feedback, true, 0.4));
     if (!e) { onFail?.("no-response"); continue; }
     e.title = e.title.replace(/\s+/g, " ").trim();
     const issues = checkEnglish(e, i);
-    if (issues.length) { console.warn(`[English] ✋ ${i.sourceId}: ${issues.join(", ")}${attempt ? "" : " — retrying"}`); onFail?.("check"); continue; }
+    if (issues.length) { console.warn(`[English] ✋ ${i.sourceId}: ${issues.join(", ")}${attempt ? "" : " — retrying"}`); onFail?.("check"); feedback = retryFeedback(issues, e, i); continue; }
     const file = saveEnglishEdition(e, i, dir);
     console.log(`[English] ✅ ${path.basename(file)}`);
     return file;
