@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-willing-move-smackdown-start-time-help-wnba-finals": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-29T01:50:18.777Z"
+ },
  "https://www.fightful.com/wrestling/update-on-timeless-toni-storm": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -48,11 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-29T01:46:05.069Z"
- },
- "https://www.ringsidenews.com/wwe-willing-move-smackdown-start-time-help-wnba-finals": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-29T01:28:39.119Z"
  },
  "https://www.wrestlinginc.com/2297881/aew-fright-night-dynamite-october-28-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
