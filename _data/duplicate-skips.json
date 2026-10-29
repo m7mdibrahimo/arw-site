@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2287219/adam-copeland-more-fill-out-aew-wrestledream-clockwork-carnage/": {
-    "matchedFile": "20261015023100-نتائج-عرض-aew-dynamite-collision-14-أكتوبر-2026-آدم-كوبلاند-يكشف-عن-خططه-المستقبلية.md",
-    "reason": "الخبر الجديد يغطي نفس نتائج نزالات التصفيات التي تم ذكرها بالفعل في تقرير نتائج عرض AEW Dynamite/Collision رقم [2].",
-    "at": "2026-10-15T02:36:31.459Z"
-  },
   "https://www.wrestlinginc.com/2286195/aew-dynamite-collision-october-14-2026-results/": {
     "matchedFile": "20261015023100-نتائج-عرض-aew-dynamite-collision-14-أكتوبر-2026-آدم-كوبلاند-يكشف-عن-خططه-المستقبلية.md",
     "reason": "الخبر الجديد يغطي نفس نتائج عرضي AEW Dynamite وAEW Collision بتاريخ 14 أكتوبر 2026 التي تم نشرها بالفعل في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261028234834-توني-خان-يؤكد-أن-aew-يمتلك-التذاكر-الأقل-سعرا-في-عروض-المصارعة-التلفزيونية.md",
     "reason": "الخبر الجديد يتناول نفس تصريح توني خان حول أسعار تذاكر عرض Blood & Guts الذي تم تغطيته بالفعل في الخبر رقم 0.",
     "at": "2026-10-29T17:31:39.830Z"
+  },
+  "https://www.fightful.com/wrestling/working-creative-idea-for-paul-heymans-return-to-wwe-tv/": {
+    "matchedFile": "20261029201647-wwe-تعمل-على-اتجاه-جديد-لعودة-بول-هايمن-إلى-الشاشات.md",
+    "reason": "الخبر الجديد يتناول نفس الخطة الإبداعية لعودة بول هايمن وارتباطه ببرون بريكر وفريق ذا فيجن، وهي نفس التفاصيل المذكورة في الخبر المنشور مسبقاً.",
+    "at": "2026-10-29T17:38:44.099Z"
   }
 }
