@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, careerStartNotInSource, wrestlerNotInSource, type NewsFile } from "./news-qa";
+import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, careerStartNotInSource, wrestlerNotInSource, fixNearGlossaryNames, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -2507,6 +2507,13 @@ export function missingResults(sourceText: string, body: string): string[] {
  * Brothers» with no result yet and the report wrote «فاز فريق هانك وتانك…» (INCIDENTS #910). Counts real «🏆 الفائز:» lines
  * (not «لم يتم الإعلان») against every outcome word in the source; returns how many winners are too many.
  */
+/** True when a results report has 3+ match sections and fewer than half of them carry a winner line. */
+export function winnerlessMatchSections(body: string): boolean {
+  const sections = (String(body || "").match(/^\*\*(?:المواجهة|النزال|المباراة|الحدث الرئيسي)[^\n]*\*\*\s*$/gm) || []).length;
+  const winners = [...String(body || "").matchAll(/🏆[ \t]*\*{0,2}[ \t]*الفائز(?:ة|ان|تان|ون|ات)?[ \t]*:?[ \t]*\*{0,2}[ \t]*:?[ \t]*([^\n]+)/g)].length;
+  return sections >= 3 && winners * 2 < sections;
+}
+
 export function extraWinners(sourceText: string, body: string): number {
   const winners = [...String(body || "").matchAll(/🏆[ \t]*\*{0,2}[ \t]*الفائز(?:ة|ان|تان|ون|ات)?[ \t]*:?[ \t]*\*{0,2}[ \t]*:?[ \t]*([^\n]+)/g)]
     .filter(m => !NO_WINNER_VALUE.test(m[1].trim())).length;
@@ -4463,6 +4470,11 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   const fixText = (t: string) => applyCorrections(autoFix(applyCorrections(t)));
   draft = { title: fixText(draft.title), body: spelledAgesToDigits(spelledMoneyToDigits(fixText(draft.body))), tags: [...new Set(draft.tags.map(fixText).map(tagInArabic))].filter(t => !isJunkTag(t) && !isHeadlineTag(t, draft.title) && !isUnrelatedNameTag(t, draft.title, draft.body)) };
   draft.tags = canonicalTags(dropPartialNameTags(titleNamesAsTags(draft.title, draft.tags)));
+  // A source name the story spells one letter off («قوين أميناتا»، «جوش أكسندر») takes the glossary spelling (INCIDENTS #956).
+  {
+    const want = sourceNamesMissing(`${rawTitle}\n${plainText}`, `${draft.title}\n${draft.body}`).map(n => WRESTLER_NAMES_MAP[n]);
+    if (want.length) draft = { title: fixNearGlossaryNames(draft.title, want), body: fixNearGlossaryNames(draft.body, want), tags: canonicalTags(draft.tags.map(t => fixNearGlossaryNames(t, want))) };
+  }
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
     .filter(i => BLOCKING_QA_CODES.includes(i.code));
@@ -4484,6 +4496,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // was a match card with every winner line removed).
   if (isShowResultsArticle(rawTitle, plainText) && !/الفائز|الفائزة|الفائزون|الفائزتان|الفائزان/.test(draft.body)) {
     blocking.push({ code: "results_without_winners", severity: "error", field: "body", message: "تقرير نتائج بلا أي نتيجة", excerpt: "" });
+    lastPostRetryable = true;
+  }
+  // A results update kept the match headings but dropped the «🏆 الفائز» line of 5 of 6 matches
+  // (AEW Fright Night Dynamite 28/10, INCIDENTS #956): the live updater then keeps the older version.
+  if (isShowResultsArticle(rawTitle, plainText) && winnerlessMatchSections(draft.body)) {
+    blocking.push({ code: "results_missing_winners", severity: "error", field: "body", message: "أغلب نزالات التقرير من غير سطر «🏆 الفائز»", excerpt: "" });
     lastPostRetryable = true;
   }
   const tooMany = isShowResultsArticle(rawTitle, plainText) ? extraWinners(plainText, draft.body) : 0;

@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { checkArticle, applyCorrections, autoFix, BLOCKING_QA_CODES } from "../scripts/news-qa.ts";
+import { checkArticle, applyCorrections, autoFix, BLOCKING_QA_CODES, fixNearGlossaryNames } from "../scripts/news-qa.ts";
 
 test("a long number spelled in words in the TITLE is blocked (INCIDENTS #520: «ألف وثلاثمائة وستة عشر يوما»)", () => {
   const issues = checkArticle("رومان رينز يكشف صعوبة تصديق نهاية فترة احتفاظه بلقبه لمدة ألف وثلاثمائة وستة عشر يوما", "نص الخبر هنا.");
@@ -458,4 +458,24 @@ test("«لطالما … لفترة طويلة» loses the repeated «لفترة
 test('a non-wrestling league is «دوري», and «turned to himself and challenged» is just «تحدى» (round 2026-10-29)', () => {
   assert.equal(applyCorrections('قرر اتحاد WNBA إقامة المباراة'), 'قرر دوري WNBA إقامة المباراة');
   assert.equal(applyCorrections('انتقل كايل فليتشر للحديث عن نفسه وتحدى ويل أوسبراي'), 'تحدى ويل أوسبراي');
+});
+
+// Round 2026-10-29 03:15 UTC: «توجت كوين أميناتا ببطولة AEW TBS الجديدة», «ركلة ركبة جارية», «قوين أميناتا»/«جوش أكسندر» (INCIDENTS #956)
+test("«crowned with the NEW championship» is blocked; «new champion» passes (INCIDENTS #956)", () => {
+  const bad = checkArticle("كوين أميناتا تفوز ببطولة TBS", "توجت كوين أميناتا ببطولة AEW TBS الجديدة بعد فوزها على بيرسيفوني.");
+  assert.ok(bad.some((i) => i.code === "crowned_new_belt"));
+  assert.ok(BLOCKING_QA_CODES.includes("crowned_new_belt"));
+  assert.ok(!checkArticle("كوين أميناتا تفوز ببطولة TBS", "توجت كوين أميناتا بطلة جديدة لبطولة AEW TBS بعد فوزها على بيرسيفوني.").some((i) => i.code === "crowned_new_belt"));
+});
+
+test("«running knee strike» is «ضربة ركبة مندفعة» (INCIDENTS #956)", () => {
+  assert.equal(applyCorrections("سددت ضربة برأسها تلتها ركلة ركبة جارية لتثبت منافستها"), "سددت ضربة برأسها تلتها ضربة ركبة مندفعة لتثبت منافستها");
+});
+
+test("a source name spelled one letter off takes the glossary spelling, other names stay (INCIDENTS #956)", () => {
+  assert.equal(fixNearGlossaryNames("انتزعت قوين أميناتا اللقب، واحتفظ داربي ألين بلقبه أمام جوش أكسندر", ["كوين أميناتا", "جوش ألكسندر"]),
+    "انتزعت كوين أميناتا اللقب، واحتفظ داربي ألين بلقبه أمام جوش ألكسندر");
+  // a different wrestler with the same family name is not «fixed»
+  assert.equal(fixNearGlossaryNames("فاز جيمي يوسو", ["جاي يوسو"]), "فاز جيمي يوسو");
+  assert.equal(fixNearGlossaryNames("فاز جيف هاردي", ["مات هاردي"]), "فاز جيف هاردي");
 });

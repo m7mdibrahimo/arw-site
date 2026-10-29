@@ -131,6 +131,8 @@ export function fixHalfEnglishNames(text: string): string {
 // A letter typed three times: «ترددداته» (Orange Cassidy story), «لللعودة» and «لللقاءات» went live (INCIDENTS #935).
 // Not «و» («ووودز» = و + وودز), «ه» (laughter) or «ت» («شتتت انتباهه» is a real verb).
 const TRIPLED_LETTER = /([\u0621-\u0629\u062B-\u0646\u0649-\u064A])\1\1/g;
+// «توجت كوين أميناتا ببطولة AEW TBS الجديدة»: she is the new champion, the belt isn't new (INCIDENTS #956)
+const CROWNED_NEW_BELT = /(?<![\u0621-\u064A])(?:[وف]?(?:تو?جت?|تتو?ج|يتو?ج))(?![\u0621-\u064A])\s+(?:[^\s.،]+\s+){0,3}?بـ?بطولة\s+(?:[^\s.،]+\s+){1,5}?الجديدة(?![\u0621-\u064A])/;
 export function fixTripledLetters(text: string): string {
   return text ? text.replace(TRIPLED_LETTER, "$1$1") : text;
 }
@@ -380,9 +382,9 @@ export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYea
  * dual_noun / dual_form joined them in INCIDENTS #471: ~4% of stories reached the site with «نزالين» / «حققا» / «أنهما»
  * although the style guide bans the dual. english_title_name is not blocking: «Championship» is also part of tournament names.
  */
-export const BLOCKING_QA_CODES = ["betting_promo", "title_no_result", "invented_winner", "adverb_without_alef", "title_not_arabic", "english_quote", "english_caption_line", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "glued_prefix_quote", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "glued_arabic_words", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "verbless_opening", "lowercase_latin_fragment", "orphan_in_favor", "spanish_article_mixed", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "same_title_published", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", "hidden_stipulation_title", "hidden_match_title", "federation_as_championship", "half_english_name", "tripled_letter", ];
+export const BLOCKING_QA_CODES = ["betting_promo", "title_no_result", "invented_winner", "adverb_without_alef", "title_not_arabic", "english_quote", "english_caption_line", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "glued_prefix_quote", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "glued_arabic_words", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "verbless_opening", "lowercase_latin_fragment", "orphan_in_favor", "spanish_article_mixed", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "same_title_published", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", "hidden_stipulation_title", "hidden_match_title", "federation_as_championship", "half_english_name", "tripled_letter", "crowned_new_belt", ];
 /** Blocking codes that are one-off Gemini glitches: a fresh translation on the next run usually comes out clean. */
-export const RETRYABLE_QA_CODES = ["artifact", "title_no_result", "invented_winner", "adverb_without_alef", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "english_caption_line", "mixed_script_word", "name_not_in_source", "spanish_article_mixed", "orphan_in_favor", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", "hidden_stipulation_title", "hidden_match_title", "federation_as_championship", "half_english_name", "tripled_letter", ];
+export const RETRYABLE_QA_CODES = ["artifact", "title_no_result", "invented_winner", "adverb_without_alef", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "english_caption_line", "mixed_script_word", "name_not_in_source", "spanish_article_mixed", "orphan_in_favor", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", "hidden_stipulation_title", "hidden_match_title", "federation_as_championship", "half_english_name", "tripled_letter", "crowned_new_belt", ];
 
 
 /** Winners («🏆 **الفائز:** …») whose name isn't in the text of their own match block. */
@@ -498,6 +500,8 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
     TRIPLED_LETTER.lastIndex = 0;
     const t3 = TRIPLED_LETTER.exec(text);
     if (t3) issues.push({ code: "tripled_letter", severity: "error", field, message: "حرف مكتوب ٣ مرات ورا بعض («ترددداته»، «لللعودة») — غلطة كتابة", excerpt: excerptAround(text, t3.index, t3[0].length) });
+    const nb = CROWNED_NEW_BELT.exec(text);
+    if (nb) issues.push({ code: "crowned_new_belt", severity: "error", field, message: "«توج ببطولة X الجديدة» — البطولة مش جديدة، المصارع هو البطل الجديد: اكتب «توج بطلا جديدا لبطولة X» أو «فاز ببطولة X»", excerpt: excerptAround(text, nb.index, nb[0].length) });
   }
   const fields: [QaIssue["field"], string][] = [["title", title || ""], ["body", stripNonProse(body || "")], ["tags", tags.join(" | ")]];
   for (const [field, text] of fields) {
@@ -1403,4 +1407,31 @@ export function wrestlerNotInSource(body: string, source: string, glossary: Reco
     found.push(en);
   }
   return found;
+}
+
+/**
+ * A glossary name the story writes one letter off: «قوين أميناتا» for «كوين أميناتا», «جوش أكسندر» for
+ * «جوش ألكسندر» (INCIDENTS #956). `names` are the glossary spellings the source names but the story
+ * never writes. A run of the same number of words in a row, one of them identical, one letter off in all
+ * (two in names of 10+ letters), takes the glossary spelling.
+ */
+export function fixNearGlossaryNames(text: string, names: string[]): string {
+  let out = String(text || "");
+  for (const name of names) {
+    const words = String(name || "").split(" ").filter(Boolean);
+    if (words.length < 2 || !words.every(w => /^[\u0621-\u064A]+$/.test(w)) || out.includes(name)) continue;
+    const flat = normalizeArabic(name).replace(/ /g, "");
+    const limit = flat.length >= 10 ? 2 : 1;
+    const tokens = [...out.matchAll(/[\u0621-\u064A]+/g)];
+    const hits: [number, number][] = [];
+    for (let i = 0; i + words.length <= tokens.length; i++) {
+      const run = tokens.slice(i, i + words.length);
+      if (run.some((t, k) => k > 0 && out.slice(run[k - 1].index! + run[k - 1][0].length, t.index) !== " ")) continue;
+      if (!run.some((t, k) => t[0] === words[k])) continue;
+      const d = editDistance(normalizeArabic(run.map(t => t[0]).join("")), flat);
+      if (d > 0 && d <= limit) { hits.push([run[0].index!, run[run.length - 1].index! + run[run.length - 1][0].length]); i += words.length - 1; }
+    }
+    for (const [from, to] of hits.reverse()) out = out.slice(0, from) + name + out.slice(to);
+  }
+  return out;
 }
