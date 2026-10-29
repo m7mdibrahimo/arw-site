@@ -209,3 +209,13 @@ test("a show in «العرض قبل الجميع» (no VideoObject yet) still ca
   const art = layout.slice(layout.indexOf('"@type": "NewsArticle"'), layout.indexOf('"@type": "VideoObject"'));
   assert.match(art, /if not \(''\s*if earlyLock else \(servers \| videoEmbedUrl\)\)[^\n]*showNameForms\(headline, title, program_name, event_date[^\n]*"alternateName"/);
 });
+
+// INCIDENTS #968: the 19.10 RAW page still claimed the program's own «الرو الاخير» aliases (only the generated forms were
+// dropped), so it competed with the 26.10 page for «عرض الرو الاخير». An older episode drops every «latest» name.
+test('an older episode drops the program aliases that claim the latest', async () => {
+  const { dropLatestClaims } = require('../lib/show-seo.cjs');
+  const aliases = ['عرض الرو', 'الرو الاخير', 'عرض الرو الاخير مترجم نتفلكس', 'عرض الرو الأخير مترجم كامل', 'اخر عرض الرو', 'عروض المصارعة الاخيرة مترجم', 'WWE Raw', 'الرو مترجم'];
+  assert.deepEqual(dropLatestClaims(aliases, false), ['عرض الرو', 'WWE Raw', 'الرو مترجم']);
+  assert.deepEqual(dropLatestClaims(aliases, true), aliases);
+  assert.deepEqual(dropLatestClaims(aliases, undefined), aliases);
+});

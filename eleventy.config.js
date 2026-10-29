@@ -1858,6 +1858,11 @@ module.exports = function(eleventyConfig) {
     return require("./lib/show-seo.cjs").showAliasesFor({ headline, title, programName, aliases: aliases || [] });
   });
 
+  // An older episode drops the program names that claim «the latest» (INCIDENTS #968)
+  eleventyConfig.addNunjucksFilter("dropLatestClaims", function(names, isLatest) {
+    return require("./lib/show-seo.cjs").dropLatestClaims(names, isLatest);
+  });
+
   // The episode's own date spellings for the VideoObject alternateName (INCIDENTS #466)
   eleventyConfig.addNunjucksGlobal("showNameForms", function(headline, title, programName, eventDate, aliases, isShow, archive, isLatest) {
     // each spelling once: the spelling variants repeated «عرض سماك داون» and the «2026» forms in a show's alternateName/keywords

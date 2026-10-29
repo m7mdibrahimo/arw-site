@@ -54,3 +54,18 @@ test('dual time words (أسبوعين/شهرين/عامين/ساعتين…) are
   }
   assert.ok(!checkArticle('عنوان', 'سجل الاتحاد الأسبوع الثاني والأسبوع الثالث من العرض.').some(i => i.code === 'dual_noun'));
 });
+
+// INCIDENTS #967: hand fixes by monitor rounds wrote tashkeel («تشكّل»، «نزالاً»، «وشبّه») into published stories —
+// the pipeline strips it, a manual edit does not. No Arabic story may carry tashkeel in its title, description or text.
+test('no Arabic story carries tashkeel in its title, description or text', () => {
+  const dir = 'content/news/';
+  const bad: string[] = [];
+  for (const f of fs.readdirSync(dir).filter(f => f.endsWith('.md'))) {
+    const m = fs.readFileSync(dir + f, 'utf8').match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+    if (!m) continue;
+    const head = m[1].split('\n').filter(l => /^(title|description):/.test(l)).join('\n');
+    const hit = /\S*[ً-ْ]\S*/.exec(head + '\n' + m[2]);
+    if (hit) bad.push(`${f}: ${hit[0]}`);
+  }
+  assert.deepEqual(bad, []);
+});

@@ -4591,7 +4591,7 @@ test("show pages carry the program's other names on the VideoObject too (INCIDEN
   const layout = fs.readFileSync("_includes/post-layout.njk", "utf8");
   const video = layout.slice(layout.indexOf('"@type": "VideoObject"'));
   // the window must reach past the «alternateName» line: the comments above it pushed the key further than a tight slice
-  const head = video.slice(0, 2000);
+  const head = video.slice(0, 3000);
   assert.match(head, /ldAbout\.aliases/);
   assert.match(head, /"alternateName":.*ldNames/);
 });
