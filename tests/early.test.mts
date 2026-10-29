@@ -184,3 +184,69 @@ test('every minute: a window that ended puts the links back in the file (one com
   assert.deepEqual(await releaseEarly(db, io, UNTIL), ['shows/gone']);
   assert.equal(commits.length, 1);
 });
+
+// ── its OK.ru videos: friends-only on OK.ru during the window (off the owner's profile), for everyone after it ──
+import { okVideoId, okSig, syncOk, okHidden, okConfigured } from '../worker/src/okru';
+
+test('OK.ru: a video\'s id from its links, and the request\'s signature', () => {
+  assert.equal(okVideoId('https://ok.ru/video/17826440612448'), '17826440612448');
+  assert.equal(okVideoId('https://ok.ru/videoembed/17826440612448?autoplay=1'), '17826440612448');
+  assert.equal(okVideoId('https://m.ok.ru/video/123456789'), '123456789');
+  assert.equal(okVideoId('https://vidmoly.org/embed-abc.html'), '');
+  assert.equal(okVideoId('https://evil.example/ok.ru/video/123456'), '');
+  // md5(sorted «k=v» + md5(token + app secret)); access_token is never in it
+  const env = { OK_APP_KEY: 'CBA', OK_APP_SECRET: 'sec', OK_TOKEN: 'tok' };
+  const p = { method: 'video.update', application_key: 'CBA', vid: '1', privacy: 'FRIENDS', format: 'json' };
+  assert.equal(okSig(p, env), okSig({ ...p, access_token: 'tok' } as any, env));
+  assert.match(okSig(p, env), /^[0-9a-f]{32}$/);
+  assert.notEqual(okSig(p, env), okSig({ ...p, privacy: 'PUBLIC' }, env));
+  assert.notEqual(okSig(p, env), okSig(p, { ...env, OK_SESSION_SECRET: 'abc' }));
+  assert.equal(okConfigured({}), false);
+  assert.equal(okConfigured(env), true);
+});
+
+test('OK.ru: hidden on OK.ru for the window, left out of the members\' servers, public again at release — nothing by hand', async () => {
+  const real = globalThis.fetch;
+  globalThis.fetch = (async () => new Response('{}', { status: 404 })) as any;
+  try {
+    const now = Date.now(), until = now + 2 * 3600e3;
+    const e: any = { ANALYTICS: d1(), PUSH_KV: kv(), OK_APP_KEY: 'CBA', OK_SESSION_SECRET: 'ss', OK_TOKEN: 'tok' };
+    const db = e.ANALYTICS, k = 'shows/raw-26-10';
+    const calls: string[] = [];
+    let down = false;
+    const call = async (_env: any, method: string, a: any) => { if (down) throw new Error('OK.ru 500'); calls.push(`${method} ${a.vid} ${a.privacy}`); return null; };
+    // not set up yet: nothing asked, the video stays public and plays for members
+    await earlyOnSave(db, k, show(until), now);
+    assert.deepEqual(await syncOk(db, {}, now, call), []);
+    const s = await member(e, 'okmember');
+    await studioPremiumGrant(e, s.member.id, 30);
+    assert.equal((await early(e, k, s.token)).body.servers.length, 2);
+    // set up: the save's wish is carried out within the minute
+    await syncOk(db, e, now, call);
+    assert.deepEqual(calls, ['video.update 111 FRIENDS']);
+    assert.deepEqual([...(await okHidden(db, k))], ['111']);
+    // friends-only doesn't play in the site's player: the member gets the other servers
+    assert.deepEqual((await early(e, k, s.token)).body.servers, ['https://vidmoly.org/embed-abc.html']);
+    await syncOk(db, e, now + 60_000, call);
+    assert.equal(calls.length, 1); // asked once
+    // the window ends: the file gets its links back, the video is public again, and its row goes
+    const repo: Record<string, string> = {};
+    await releaseEarly(db, { read: async () => null, commit: async (p, t) => { repo[p] = t; } }, until + 1);
+    down = true;
+    await syncOk(db, e, until + 60_000, call);            // OK.ru down: tried again later
+    assert.equal(calls.length, 1);
+    down = false;
+    await syncOk(db, e, until + 90_000, call);            // too soon after a failure
+    assert.equal(calls.length, 1);
+    await syncOk(db, e, until + 3 * 60_000, call);
+    assert.deepEqual(calls, ['video.update 111 FRIENDS', 'video.update 111 PUBLIC']);
+    assert.deepEqual([...(await okHidden(db, k))], []);
+    assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM early_ok').first()).n, 0);
+    // a window taken off before OK.ru was ever asked: nothing to ask
+    await earlyOnSave(db, 'shows/other', show(until), now);
+    const off = await earlyOnSave(db, 'shows/other', show(null), now);
+    await off.after();
+    await syncOk(db, e, now, call);
+    assert.equal(calls.length, 2);
+  } finally { globalThis.fetch = real; }
+});

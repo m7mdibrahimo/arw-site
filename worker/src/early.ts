@@ -8,6 +8,8 @@
 //   GET /premium/early?k=…                      the links: a premium member now, anyone once the time has come
 //   every minute (worker/src/index.ts)          a window that ended: the blocks go back into the file, the site rebuilds
 // The page: _includes/post-layout.njk (the lock and its countdown), assets/post-player.js (the links, asked for).
+// Its OK.ru videos are turned friends-only on OK.ru meanwhile, so its profile doesn't give the show away (worker/src/okru.ts).
+import { okWantHidden, okWantPublic } from "./okru";
 
 /** Top-level front matter keys that hold watch servers or download links */
 export const GATED = /^(servers|downloads(_\w+)?)$/;
@@ -141,10 +143,11 @@ export async function earlyOnSave(db: D1Database | undefined, k: string, text: s
     if (s) {
       await db.prepare("INSERT INTO early_media (k, until, vault, updated) VALUES (?1, ?2, ?3, ?4) ON CONFLICT(k) DO UPDATE SET until = ?2, vault = ?3, updated = ?4")
         .bind(k, until, s.vault, now).run();
+      await okWantHidden(db, k, linksOf(s.vault).servers, now);
       return { text: s.text, until, after: none };
     }
   }
-  return { text: whole, until: 0, after: r ? async () => { await db.prepare("DELETE FROM early_media WHERE k = ?1").bind(k).run(); } : none };
+  return { text: whole, until: 0, after: r ? async () => { await okWantPublic(db, k, now); await db.prepare("DELETE FROM early_media WHERE k = ?1").bind(k).run(); } : none };
 }
 
 /** A show's links while they're in D1 (its window, and the minute after it until they're back in the file) */
@@ -173,6 +176,7 @@ export async function releaseEarly(db: D1Database | undefined, io: {
         const label = d.k.startsWith("recaps/") ? "ملخص" : d.k.startsWith("nostalgia/") ? "عرض / حلقة نوستالجيا" : "عرض";
         await io.commit(path, joinEarly(file.content, d.vault), `Update ${label} “${d.k.split("/")[1]}” (لوحة التحكم — العرض قبل الجميع: متاح للجميع)`);
       }
+      await okWantPublic(db, d.k, now);
       await db.prepare("DELETE FROM early_media WHERE k = ?1 AND until <= ?2").bind(d.k, now).run();
       done.push(d.k);
     } catch (e: any) { console.log(`[early] ${d.k}: ${e?.message || e}`); } // the next minute tries again

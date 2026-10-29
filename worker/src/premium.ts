@@ -17,6 +17,7 @@ import { chatRebadge } from "./chat";
 import { memberOf, ensureMembers } from "./members";
 import { readRepoFile } from "./studio";
 import { earlyLinks, earlyOpen, earlyUntil, linksOf, allDownloads } from "./early";
+import { okHidden, okVideoId } from "./okru";
 
 export interface PremiumEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; PREMIUM_AUTO?: string; FAWATERK_API_KEY?: string; FAWATERK_VENDOR_KEY?: string; FAWATERK_CLIENT_ID?: string; FAWATERK_CLIENT_SECRET?: string; RESEND_API_KEY?: string;
   GITHUB_OWNER?: string; GITHUB_REPO?: string; GITHUB_BRANCH?: string; GITHUB_TOKEN?: string }
@@ -275,7 +276,10 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
     // never before its time for anyone but a premium member: not even how many links there are
     if (!earlyOpen(links.until, premium, now)) return reply({ ok: false, premium: false, pub: links.until, error: "العرض متاح الآن للأعضاء المميزين فقط." }, 403);
     const g = links.groups;
-    return reply({ ok: true, premium, servers: links.servers, downloads: allDownloads(g), dl: g, pub: links.until });
+    // an OK.ru video that is friends-only right now doesn't play in the site's player (worker/src/okru.ts): left out
+    const off = await okHidden(db, k).catch(() => new Set<string>());
+    const servers = (links.servers as string[]).filter(u => !off.has(okVideoId(u)));
+    return reply({ ok: true, premium, servers, downloads: allDownloads(g), dl: g, pub: links.until });
   }
 
   if (!me) return reply({ ok: false, signedOut: true, error: "سجل دخولك أولا." }, 401);

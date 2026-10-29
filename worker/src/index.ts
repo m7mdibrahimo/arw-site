@@ -33,6 +33,7 @@ import { deliverOnce, authorizeAdmin } from "./delivery";
 import { PROMO_FILE, PROMO_PLATFORMS, type PromoPlatform, promoCaption, promoFacebook, facebookPostOf, pinFacebook, promoTelegram, pinTelegram } from "./promo";
 import { handleStudio, studioAuthorized, studioUser, readRepoFile, commitFiles, audit as studioAudit, auditLog } from "./studio";
 import { releaseEarly } from "./early";
+import { syncOk } from "./okru";
 import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRetainVideo, facebookReelState } from "./video-publishing";
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
@@ -4588,7 +4589,10 @@ export default {
       // once: the automatic blue badge of the first members goes, the owner's own stay (worker/src/members.ts)
       minute % 10 === 7 ? oneTimeBadgeReset(env).catch(() => {}) : Promise.resolve(),
       // «العرض قبل الجميع»: a show whose window ended gets its links back in its file, and the site rebuilds (worker/src/early.ts)
-      releaseEarly(env.ANALYTICS, { read: (p) => readRepoFile(env as any, p), commit: (p, text, msg) => commitFiles(env as any, [{ path: p, text }], msg) }, _controller.scheduledTime).catch((e: any) => console.log("[early]", e?.message || e)),
+      // …and its OK.ru videos, friends-only during the window, for everyone again after it (worker/src/okru.ts)
+      releaseEarly(env.ANALYTICS, { read: (p) => readRepoFile(env as any, p), commit: (p, text, msg) => commitFiles(env as any, [{ path: p, text }], msg) }, _controller.scheduledTime)
+        .catch((e: any) => console.log("[early]", e?.message || e))
+        .then(() => syncOk(env.ANALYTICS, env as any, _controller.scheduledTime)).catch((e: any) => console.log("[ok.ru]", e?.message || e)),
       // a membership about to end, or just ended: the member is told (worker/src/premium.ts)
       minute === 20 ? runPremiumReminders(env as any, _controller.scheduledTime).catch(() => {}) : Promise.resolve(),
       // the rented encoding machine, off for 12 hours, is deleted so its disk isn't paid for (owner 2026-10-26)
