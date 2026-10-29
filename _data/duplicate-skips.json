@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/adam-copeland-2027-will-be-my-last-year-in-professional-wrestling/": {
-    "matchedFile": "20261015034716-آدم-كوبلاند-يعلن-أن-2027-سيكون-عامه-الأخير-في-المصارعة-بعد-الكشف-عن-إصابات-خطيرة-تعرض-لها-في-عرض-aew-all-out.md",
-    "reason": "الخبر الجديد يغطي نفس التصريح الذي أدلى به آدم كوبلاند حول اعتزاله في عام 2027 بعد فوزه على جوش ألكسندر في عرض AEW Dynamite، وهو نفس الحدث المذكور في الخبر المنشور.",
-    "at": "2026-10-15T01:16:06.474Z"
-  },
   "https://www.fightful.com/wrestling/aew-dynamite-results-10-14-2026-will-ospreay-andrade-in-tag-action-clockwork-carnage-qualifiers-mercedes-mone-dani-luna-more/": {
     "matchedFile": "20261015023100-نتائج-عرض-aew-dynamite-collision-14-أكتوبر-2026-آدم-كوبلاند-يكشف-عن-خططه-المستقبلية.md",
     "reason": "الخبر الجديد يغطي نفس نتائج عرض AEW Dynamite بتاريخ 14 أكتوبر 2026 التي تم نشرها بالفعل في الخبر رقم 0، بما في ذلك نتائج النزالات وتصريحات آدم كوبلاند.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261029042647-wwe-كانت-مستعدة-لتغيير-موعد-عرض-wwe-smackdown-لمساعدة-نهائيات-wnba.md",
     "reason": "الخبر الجديد يعالج نفس الحدث المتعلق باحتمالية تغيير موعد عرض SmackDown لمساعدة نهائيات WNBA والمذكور بالتفصيل في الخبر الأول.",
     "at": "2026-10-29T15:17:40.289Z"
+  },
+  "https://www.fightful.com/wrestling/queen-aminata-comments-on-aew-tbs-title-win/": {
+    "matchedFile": "20261029052917-كوين-أميناتا-تفوز-ببطولة-tbs-في-عرض-aew-dynamite.md",
+    "reason": "الخبر الجديد يعيد سرد فوز كوين أميناتا ببطولة TBS في عرض AEW Fright Night Dynamite، وهو نفس الحدث والنتيجة المغطاة في الخبر المنشور رقم 0 من نفس المصدر أو العرض.",
+    "at": "2026-10-29T15:37:34.896Z"
   }
 }
