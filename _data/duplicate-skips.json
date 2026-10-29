@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/roman-reigns-says-if-he-could-change-things-about-his-wrestling-career-hed-go-back-say-no-to-some-ideas/": {
-    "matchedFile": "20261014125736-رومان-رينز-يندم-على-عدم-معارضة-فريق-الإبداع-في-wwe.md",
-    "reason": "الخبر الجديد يعيد نفس التصريحات التي أدلى بها رومان رينز في بودكاست Club Shay Shay بخصوص ندمه على عدم معارضة فريق الإبداع وعبارة Suffering Succotash، وهو مطابق للخبر المنشور برقم 3.",
-    "at": "2026-10-15T11:34:52.425Z"
-  },
   "https://www.ringsidenews.com/wwe-crown-jewel-risk-saudi-arabia-considers-cancelling-riyadh-season/": {
     "matchedFile": "20261014195841-تطورات-كواليس-خطط-wwe-لإقامة-عرض-crown-jewel-في-السعودية-وسط-النزاع-المسلح.md",
     "reason": "الخبر الجديد يغطي نفس الحدث المتعلق بمصير إقامة عرض Crown Jewel في السعودية وسط المخاوف الأمنية والنزاع المسلح وتحذيرات السفر، وهو امتداد لنفس الموضوع الذي نوقش في الخبر السابق مع إضافة تفاصيل حول احتمال إلغاء موسم الرياض.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261029200135-موقف-wwe-الحالي-من-مواجهة-عرض-aew-dynamite-new-years-smash-لعرض-wwe-smackdown.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (مواجهة SmackDown وDynamite في رأس السنة) ونفس التفاصيل المتعلقة بجدول التسجيل في تامبا وعدم نية WWE التغيير، وهي نفس المعلومات الواردة في الخبر رقم 1.",
     "at": "2026-10-29T19:21:01.091Z"
+  },
+  "https://www.wrestlinginc.com/2301560/shawn-michaels-wwe-bruce-prichard-role-replace-legend-hall-of-fame/": {
+    "matchedFile": "20261029204744-شون-مايكلز-يحل-محل-بروس-بريتشارد-في-wwe-بعد-عرض-wrestlemania-43.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث (انتقال شون مايكلز لمنصب بروس بريتشارد بعد WrestleMania 43) المذكور بالفعل في الخبر رقم 1، ولا يقدم تطوراً جديداً جوهرياً.",
+    "at": "2026-10-29T19:26:48.538Z"
   }
 }
