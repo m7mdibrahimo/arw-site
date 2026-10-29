@@ -1,5 +1,5 @@
 ---
-title: "Status of WWE Running Another Evolution Event"
+title: "Report: WWE Has No Current Plans for Another Evolution Event"
 slug: "status-of-wwe-running-another-evolution-event"
 description: "WWE fans hoping for another all-women's Evolution event should temper their expectations."
 federation: WWE

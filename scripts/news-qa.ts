@@ -105,6 +105,31 @@ function glossaryNamesIn(line: string): number {
   }
   return n;
 }
+// «يذكر أن إيفانز وبينتا يستعد للمنافسة»: two people joined by «و» before a singular verb — the verb has to be
+// plural («يستعدون»), never dual (Jevon Evans story, round 2026-10-29). A glossary name whose second word starts
+// with «و» («كيت ويلسون») is one person, not two, and stays.
+export function pairSingularVerb(text: string): { index: number; match: string } | null {
+  const re = /(?<![ء-ي])أن\s+(?!ال)([ء-ي]{3,})\s+و(?!ال)([ء-ي]{3,})\s+(?:ي|ت)(?:ستعد|نافس|واجه|خوض|شارك|عود|طمح|سعى|تطلع|دافع|حتفظ|ظهر|لتقي|نتظر|تحدث|خطط|حتفل|حاول|رغب|ريد)(?![ء-ي])/g;
+  if (!GLOSSARY_AR) glossaryNamesIn("");
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text))) {
+    const joined = `${m[1]} و${m[2]}`;
+    if ((GLOSSARY_AR || []).some((n) => n.includes(joined))) continue;
+    return { index: m.index, match: m[0] };
+  }
+  return null;
+}
+// «مستقبل الشراكة وعلاقة العمل بين اتحاد TNA واتحاد OVW», «آخر المستجدات حول جوردين جريس»: a headline that names a topic
+// and never says what happens, although the prompt forbids it (round 2026-10-29, INCIDENTS #985). Only when the
+// headline holds no present/future verb («مستقبل كايري ساني مع AEW يظل غير حاسم» says something and stays).
+export function titleVagueTopic(title: string): string | null {
+  const t = (title || "").trim();
+  const topic = /^(?:آخر\s+(?:المستجدات|التطورات)|تطورات(?:\s+[^\s:]+)?|مستجدات)\s+(?:حول|بشأن)\s/.test(t) && !t.includes(":");
+  if (!topic && !/^مستقبل\s/.test(t)) return null;
+  const rest = t.split(/\s+/).slice(1).join(" ");
+  if (/(?<![ء-ي])(?:[وف]?[يت][ء-ي]{2,}|قد|سي[ء-ي]{3,})(?![ء-ي])/.test(rest)) return null;
+  return t;
+}
 // A name written half in Arabic and half in English: «مارك Briscoe» for Mark Briscoe went live in the Orange Cassidy
 // story although the copy editor's rule 13 forbids it (INCIDENTS #935). Built from every two-word glossary name whose
 // Arabic spelling has two words too, both ways round («مارك Briscoe» and «Mark بريسكو»).
@@ -386,9 +411,9 @@ export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYea
  * dual_noun / dual_form joined them in INCIDENTS #471: ~4% of stories reached the site with «نزالين» / «حققا» / «أنهما»
  * although the style guide bans the dual. english_title_name is not blocking: «Championship» is also part of tournament names.
  */
-export const BLOCKING_QA_CODES = ["betting_promo", "title_no_result", "invented_winner", "adverb_without_alef", "title_not_arabic", "english_quote", "english_caption_line", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "glued_prefix_quote", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "glued_arabic_words", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "verbless_opening", "lowercase_latin_fragment", "orphan_in_favor", "spanish_article_mixed", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "same_title_published", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", "hidden_stipulation_title", "hidden_match_title", "federation_as_championship", "half_english_name", "tripled_letter", "crowned_new_belt", "title_champions_no_name", ];
+export const BLOCKING_QA_CODES = ["betting_promo", "title_no_result", "invented_winner", "adverb_without_alef", "title_not_arabic", "english_quote", "english_caption_line", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "glued_prefix_quote", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "glued_arabic_words", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "verbless_opening", "lowercase_latin_fragment", "orphan_in_favor", "spanish_article_mixed", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "same_title_published", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", "hidden_stipulation_title", "hidden_match_title", "federation_as_championship", "half_english_name", "tripled_letter", "crowned_new_belt", "title_champions_no_name", "pair_singular_verb", "title_vague_topic", ];
 /** Blocking codes that are one-off Gemini glitches: a fresh translation on the next run usually comes out clean. */
-export const RETRYABLE_QA_CODES = ["artifact", "title_no_result", "invented_winner", "adverb_without_alef", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "english_caption_line", "mixed_script_word", "name_not_in_source", "spanish_article_mixed", "orphan_in_favor", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", "hidden_stipulation_title", "hidden_match_title", "federation_as_championship", "half_english_name", "tripled_letter", "crowned_new_belt", "title_champions_no_name", ];
+export const RETRYABLE_QA_CODES = ["artifact", "title_no_result", "invented_winner", "adverb_without_alef", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "english_caption_line", "mixed_script_word", "name_not_in_source", "spanish_article_mixed", "orphan_in_favor", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", "hidden_stipulation_title", "hidden_match_title", "federation_as_championship", "half_english_name", "tripled_letter", "crowned_new_belt", "title_champions_no_name", "pair_singular_verb", "title_vague_topic", ];
 
 
 /** Winners («🏆 **الفائز:** …») whose name isn't in the text of their own match block. */
@@ -495,6 +520,12 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
   // «حضور مسؤولي وارنر براذرز عرض AEW Dynamite»: the headline lost the preposition before the show's
   // name, so it reads broken (Tony Khan story, round 2026-10-28). Only a presence word + at least two
   // words + a show name with no «في/خلال/…» between them; «حضور عرض X» and «حضور جماهيري في عرض X» stay.
+  for (const [field, text] of [["title", title || ""], ["body", stripNonProse(body || "")]] as [QaIssue["field"], string][]) {
+    const pair = pairSingularVerb(text);
+    if (pair) issues.push({ code: "pair_singular_verb", severity: "error", field, message: "بعد اسمين بينهم «و» الفعل يبقى جمع: «أن إيفانز وبينتا يستعدون» مش «يستعد» (ومن غير مثنى)", excerpt: excerptAround(text, pair.index, pair.match.length) });
+  }
+  const vagueTopic = titleVagueTopic(title || "");
+  if (vagueTopic) issues.push({ code: "title_vague_topic", severity: "error", field: "title", message: "العنوان موضوع عام من غير خبر («مستقبل…»، «آخر المستجدات حول…») — اكتب اللي حصل أو هيحصل («اتحاد TNA يخطط لتسجيل عروض Xplosion في صالة OVW»)", excerpt: vagueTopic });
   const missingPrep = titleMissingPreposition(title || "");
   const champsOnly = titleChampionsWithoutName(title || "");
   if (champsOnly) issues.push({ code: "title_champions_no_name", severity: "error", field: "title", message: "العنوان بيذكر صاحب الكلام بلقبه بس («أبطال AEW العالمي للفرق:») — اكتب اسمه («ذا يانغ باكس:»)", excerpt: champsOnly });

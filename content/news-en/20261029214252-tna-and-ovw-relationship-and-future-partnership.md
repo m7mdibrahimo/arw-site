@@ -1,5 +1,5 @@
 ---
-title: "TNA and OVW Relationship and Future Partnership"
+title: "TNA Plans to Tape Xplosion at OVW's Davis Arena in 2027"
 slug: "tna-and-ovw-relationship-and-future-partnership"
 description: "The working relationship between TNA and Ohio Valley Wrestling is set to evolve significantly in 2027."
 federation: TNA

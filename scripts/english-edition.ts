@@ -108,6 +108,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - Dates and weekdays: a specific date takes "on" plus the date and the day of the week the source names ("on Wednesday, November 4"), never the indefinite "on a Wednesday"; a weekday with no date is "on Wednesday" (round 2026-10-28). The weekday must be the real day of that date in that year — sources get it wrong (WrestleDream, October 17, 2026 was a Saturday, not a Friday; INCIDENTS #962); if you are not sure of it, write the date without a weekday.
 - Never give a wrestler a title or status the source does not state: "as the NXT Women's Champion" and "commented on winning the WWE Championship" were invented (a hypothetical "Maybe I'd be WWE Champion" or another wrestler's reign is NOT that wrestler's title).
 - Never add a "what's next" sentence the source does not have: no "will return to action at …", "will face … for the … Championship", "is set to appear at …" unless the SOURCE says it (a story about how Sami Zayn chose his name ended with a Crown Jewel match the source never mentioned, INCIDENTS #862). The story ends where the source ends.
+- A speaker's "the match with X" / "my match with X" is the speaker's OWN match against X: "after his match with EK Prosper", never "after a match between EK Prosper and another opponent" (Grayson Waller story, round 2026-10-29). A "spot" is one moment inside a match ("the ambulance spot", "a ladder spot"), never a match of its own.
 - Never mention Arab Wrestling, translation, AI, or that this is a rewrite.
 - English letters only: never leave a word or a sentence in another script (Cyrillic, Greek, Hebrew, Chinese, Japanese, Korean) and never a translation arrow «->» or a pair of a foreign line and its English line. A quote is English only (INCIDENTS #872).`;
 }
@@ -215,7 +216,10 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
     || /^(?:WWE|AEW|TNA|NJPW|ROH|MLW|AAA|CMLL|GCW|UFC)\s+(?:talent|star|superstar|wrestler|personality|name)\s+(?:drawing|draws|signs|says|speaks|returns|teases|reveals|wants|is|set|reportedly|in|on|to|for|at)\b/i.test(title)
     // «Reason Behind TNA Star’s Extended Television Absence» (Léi Yǐng Lee, INCIDENTS #947): an unnamed possessive in the
     // first words («…as WWE Star's Instagram Vanishes» later in a headline that already named her is fine)
-    || /^(?:\S+\s+){0,3}(?:former\s+|ex-)?(?:WWE|AEW|TNA|NJPW|ROH|MLW|AAA|CMLL|GCW|UFC|NXT)\s+(?:talent|star|superstar|wrestler|personality|name|champion)['’]s\b/i.test(title)) issues.push("vague headline");
+    || /^(?:\S+\s+){0,3}(?:former\s+|ex-)?(?:WWE|AEW|TNA|NJPW|ROH|MLW|AAA|CMLL|GCW|UFC|NXT)\s+(?:talent|star|superstar|wrestler|personality|name|champion)['’]s\b/i.test(title)
+    // «TNA and OVW Relationship and Future Partnership», «Status of WWE Running Another Evolution Event»: a topic, not
+    // news — the headline never says what happens (round 2026-10-29, INCIDENTS #985)
+    || /^(?:the\s+)?(?:future|state|status)\s+of\b|\b(?:relationship|partnership)\s+and\s+(?:its\s+)?future\b|\bfuture\s+partnership\s*$/i.test(title)) issues.push("vague headline");
   // an article glued to the next word by a hyphen («on the-ring» for «in the ring», INCIDENTS #829); «state-of-the-art» is fine
   if (/(?<![\w-])(?:the|an?)-[a-z]+/i.test(body.replace(/<?https?:\/\/\S+/g, " "))) issues.push("article glued to the next word with a hyphen");
   // a line that starts with a lowercase letter is a broken sentence (its subject was dropped): the Weapons Wild

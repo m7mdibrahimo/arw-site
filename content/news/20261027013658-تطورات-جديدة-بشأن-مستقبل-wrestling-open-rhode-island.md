@@ -1,6 +1,7 @@
 ---
 federation: INDIE
-title: "تطورات جديدة بشأن مستقبل Wrestling Open Rhode Island"
+title: "علامة Wrestling Open Rhode Island مهددة بالتوقف بنهاية ديسمبر بسبب ضعف الحضور"
+permalink: "/news/تطورات-جديدة-بشأن-مستقبل-wrestling-open-rhode-island/index.html"
 date: 2026-10-27T01:36:58.000+03:00
 published_at: 2026-10-26T22:37:42.145Z
 source_id: 335957
