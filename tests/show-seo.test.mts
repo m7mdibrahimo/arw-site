@@ -202,3 +202,10 @@ test("a pre-show on the main show's day does not claim the main show's dated nam
   // a special night of a weekly program is not a pre-show
   assert.ok(names("عرض داينامايت 28.10.2026 مترجم", "AEW Fright Night Dynamite").length > 0);
 });
+
+test("a show in «العرض قبل الجميع» (no VideoObject yet) still carries its dated names on the article (INCIDENTS #966)", async () => {
+  const fs = await import("node:fs");
+  const layout = fs.readFileSync("_includes/post-layout.njk", "utf8");
+  const art = layout.slice(layout.indexOf('"@type": "NewsArticle"'), layout.indexOf('"@type": "VideoObject"'));
+  assert.match(art, /if not \(''\s*if earlyLock else \(servers \| videoEmbedUrl\)\)[^\n]*showNameForms\(headline, title, program_name, event_date[^\n]*"alternateName"/);
+});

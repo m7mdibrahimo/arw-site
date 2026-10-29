@@ -160,6 +160,8 @@ const RULES: Rule[] = [
   // The future «س» cut off its verb: «"س تكون طريقة رائعة"» (Matt Hardy story, INCIDENTS #945)
   { code: "detached_prefix", severity: "error", re: /(?<![ء-ي\w])س\s+(?=[تينأ][ء-ي]{2,})/g, message: "«س» منفصلة عن الفعل (مثل: س تكون ← ستكون)" },
   { code: "repeated_word", severity: "error", re: new RegExp(`(?<![${AR}])([${AR}]{4,})\\s+\\1(?![${AR}])`, "g"), message: "كلمة مكررة مرتين متتاليتين" },
+  // «عرض» is too short for repeated_word: «في مواجهة بدون قوانين بعرض عرض AEW Redemption» (Jericho story, INCIDENTS #965)
+  { code: "repeated_word", severity: "error", re: /(?<![ء-ي])[وفبل]?عرض\s+عرض(?![ء-ي])/g, message: "كلمة «عرض» مكررة مرتين ورا بعض — اكتبها مرة واحدة" },
   { code: "repeated_word_waw", severity: "error", re: new RegExp(`(?<![${AR}])(?:لل|ال|بال|كال)(?!كثير|نهائي|قمصان)([${AR}]{3,})\\s+وال\\1(?![${AR}])`, "g"), message: "نفس الكلمة مكررة حوالين «و» («للدعم والدعم المعنوي») — اشطب التكرار" },
   { code: "forbidden_term", severity: "error", re: new RegExp(`${arBoundL}(?:ال)?(?:مهرجان|يستذكر)${arBoundR}|${arBoundL}(?:ال)?حلق(?:ة|ات)\\s+${SHOW_WORDS}|${SHOW_WORDS}\\s+(?:ال)?حلق(?:ة|ات)${arBoundR}`, "g"), message: "مصطلح ممنوع (حلقة العرض/مهرجان/يستذكر) — المعتمد: عرض، يتذكر" },
   // A sentence that ends right on the verb of speech: «…لم يره الجمهور بالكامل بعد، وقال.» — the quote was lost (INCIDENTS #535)

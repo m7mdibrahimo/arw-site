@@ -5449,3 +5449,8 @@ test("a special does not claim the weekly program's names in its structured data
   assert.ok(weekly.some((f: string) => /الرو/.test(f)));
   assert.ok(weekly.some((f: string) => /WWE RAW October 26 2026/.test(f)));
 });
+
+test('sanitizeWrestlingTerms drops a doubled «عرض» but keeps «استعرض عرض» (INCIDENTS #965)', () => {
+  assert.ok(sanitizeWrestlingTerms('مواجهة بعرض عرض AEW Redemption').includes('بعرض AEW Redemption'));
+  assert.ok(sanitizeWrestlingTerms('بينما استعرض عرض TNA iMPACT باقة').includes('استعرض عرض TNA iMPACT'));
+});

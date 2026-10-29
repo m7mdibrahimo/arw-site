@@ -491,3 +491,9 @@ test("third-person feminine plural verbs and Street Profits are corrected (INCID
   assert.equal(applyCorrections("ميتشين وبي فاب تتحدثن عن الفوز بأول ألقابهن"), "ميتشين وبي فاب يتحدثن عن الفوز بأول ألقابهن");
   assert.equal(applyCorrections("مع فريق ذا ستريت بروفيتس"), "مع فريق ذا ستريت بروفتس");
 });
+
+test("«بعرض عرض AEW Redemption» (a doubled 3-letter «عرض») is blocked, «استعرض عرض» is not (INCIDENTS #965)", () => {
+  assert.ok(checkArticle("عنوان", "في مواجهة بدون قوانين بعرض عرض AEW Redemption.").some((i) => i.code === "repeated_word"));
+  assert.ok(checkArticle("عنوان", "قدم عرض عرض AEW Dynamite مواجهة قوية.").some((i) => i.code === "repeated_word"));
+  assert.ok(!checkArticle("عنوان", "بينما استعرض عرض TNA iMPACT باقة من أبرز لقطاته.").some((i) => i.code === "repeated_word"));
+});

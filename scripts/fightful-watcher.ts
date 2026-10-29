@@ -548,8 +548,9 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(arWord("تغ(?=\\s|$)"), "تاغ")
 
     // Fix double occurrences created by replacement (e.g. "عرض عرض" or "WWE WWE")
-    .replace(/(?:عرض\s+)+عرض\s+/g, "عرض ")
-    .replace(/عرض\s+عرض/g, "عرض")
+    // Only the whole word «عرض» (with a ب/و/ف/ل in front: «بعرض عرض AEW Redemption») —
+    // «استعرض عرض TNA iMPACT» is a verb then the show and stays as written.
+    .replace(/(?<![\u0621-\u064A])([وفبل]?)عرض(?:\s+عرض)+(?![\u0621-\u064A])/g, "$1عرض")
     .replace(/WWE\s+WWE/g, "WWE")
     .replace(/AEW\s+AEW/g, "AEW")
     .replace(/TNA\s+TNA/g, "TNA")
@@ -613,8 +614,9 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(arWord("حلقات"), "عروض")
     .replace(arWord("الحلقات"), "العروض")
     .replace(arWord("حلقة\\s+"), "عرض ")
-    .replace(/(?:عرض\s+)+عرض\s+/g, "عرض ")
-    .replace(/عرض\s+عرض/g, "عرض")
+    // Only the whole word «عرض» (with a ب/و/ف/ل in front: «بعرض عرض AEW Redemption») —
+    // «استعرض عرض TNA iMPACT» is a verb then the show and stays as written.
+    .replace(/(?<![\u0621-\u064A])([وفبل]?)عرض(?:\s+عرض)+(?![\u0621-\u064A])/g, "$1عرض")
 
     // 4. Total Scrub of Fightful & foreign journalist branding to keep all news 100% clean and neutral
     .replace(/Sean\s*Ross\s*Sapp/gi, "تقارير صحفية مطلعة")
