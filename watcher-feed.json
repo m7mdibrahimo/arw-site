@@ -1,5 +1,15 @@
 [
   {
+    "id": 336383,
+    "link": "https://www.fightful.com/boxing/jake-paul-to-fight-on-december-24-in-dubai/",
+    "date": "2026-10-29T07:18:42",
+    "date_gmt": "2026-10-29T11:18:42",
+    "title": {
+      "rendered": "Jake Paul To Fight On December 24 In Dubai"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/05/16231820/Screenshot-2026-05-16-at-11.16.16-PM.png"
+  },
+  {
     "id": 336381,
     "link": "https://www.fightful.com/wrestling/grayson-waller-felt-he-was-going-to-be-released-after-new-day-left-wwe/",
     "date": "2026-10-29T07:13:35",
@@ -288,15 +298,5 @@
       "rendered": "Riyadh Season Announces WWE Crown Jewel Is Being Moved, Will Remain In Riyadh"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/04112806/NET_INTL_065804_CrownJewel26_LAUNCH_1920x1080.jpg"
-  },
-  {
-    "id": 336289,
-    "link": "https://www.fightful.com/wrestling/papa-shango-and-the-boogeyman-help-danhausen-fix-matt-cardona/",
-    "date": "2026-10-28T13:49:59",
-    "date_gmt": "2026-10-28T17:49:59",
-    "title": {
-      "rendered": "Papa Shango And The Boogeyman Help Danhausen Fix Matt Cardona"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/28134851/Screenshot-2026-10-28-at-1.37.06-PM.png"
   }
 ]
