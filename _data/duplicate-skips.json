@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/cody-rhodes-admits-he-may-take-break-wwe-acting-projects/": {
-    "matchedFile": "20261014192801-كودي-رودز-يرد-على-الادعاءات-حول-تراجع-مستوى-wwe.md",
-    "reason": "الخبر الجديد يعتمد على نفس المقابلة والمصدر (رابط الفيديو) المذكور في الخبر رقم 3، حيث يتحدث كودي رودز عن مستقبله في WWE وعلاقته بالإدارة، وهو ما تم تغطيته بالفعل.",
-    "at": "2026-10-14T16:41:20.783Z"
-  },
   "https://www.ringsidenews.com/shotzi-signs-deal-tna-wrestling/": {
     "matchedFile": "20261014055656-انتهاء-عقد-شوتزي-بلاك-هارت-مع-اتحاد-mlw.md",
     "reason": "الخبر الجديد يعتبر تطوراً مباشراً لنفس الحدث السابق (انتهاء عقد شوتزي مع MLW وظهورها في TNA)، حيث يمثل إعلاناً رسمياً للتوقيع الذي تمت الإشارة إليه كمجرد ظهور في الخبر المنشور سابقاً، ولا يعتبر تطوراً كبيراً يستقل بذاته كحدث منفصل.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261029033227-جون-موكسلي-يطلق-تحدي-نزال-anarchy-in-the-arena-في-عرض-aew-full-gear.md",
     "reason": "الخبر الجديد يغطي نفس واقعة تحدي نزال Anarchy in the Arena في عرض AEW Full Gear التي تم تناولها في الخبر المنشور رقم 0.",
     "at": "2026-10-29T00:48:59.342Z"
+  },
+  "https://www.ringsidenews.com/aew-fright-night-dynamite-results-highlights-key-moments-october-28-2026/": {
+    "matchedFile": "20261029033227-جون-موكسلي-يطلق-تحدي-نزال-anarchy-in-the-arena-في-عرض-aew-full-gear.md",
+    "reason": "الخبر الجديد يغطي نفس نتائج عرض AEW Fright Night Dynamite التي تم تناولها بالفعل في الخبر رقم 1، حيث أن تفاصيل نزال موكسلي وتحدي Anarchy in the Arena مذكورة مسبقاً.",
+    "at": "2026-10-29T01:04:07.133Z"
   }
 }
