@@ -585,11 +585,11 @@
     function promo(servers, downloads) {
       var built = document.getElementById('wdPrem');
       if (!servers && !downloads) { if (built) built.remove(); return; }
-      var what = servers && downloads ? 'سيرفر خاص متعدد الجودات وتحميل مباشر سريع' : servers ? 'سيرفر خاص متعدد الجودات بدون إعلانات' : 'تحميل مباشر وسريع بدون إعلانات';
+      var what = servers && downloads ? 'إضافة للأعضاء المميزين: سيرفر خاص متعدد الجودات وتحميل مباشر سريع' : servers ? 'إضافة للأعضاء المميزين: سيرفر خاص متعدد الجودات بدون إعلانات' : 'إضافة للأعضاء المميزين: تحميل مباشر وسريع بدون إعلانات';
       // the page came with it (built from the worker's counts): only its words may have changed since
       if (built) { built.querySelector('b').textContent = what; built.hidden = false; return; }
       var a = el('a', 'wd-prem', '<span class="wd-prem-ic">' + CROWN + '</span><span class="wd-prem-tx"><b></b><small></small></span><span class="wd-prem-go"></span>');
-      a.querySelector('small').textContent = 'متاح في هذا العرض للأعضاء المميزين فقط، ومعه العروض الجديدة قبل الجميع';
+      a.querySelector('small').textContent = 'العرض متاح للجميع مجانًا على باقي السيرفرات، وهذه الإضافة للمشتركين في العضوية المميزة فقط.';
       a.querySelector('.wd-prem-go').textContent = 'اشترك';
       a.href = HOME + '/premium/';
       a.querySelector('b').textContent = what;
