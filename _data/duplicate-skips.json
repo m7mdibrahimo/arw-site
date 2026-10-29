@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/aew-dynamite-results-10-14-2026-will-ospreay-andrade-in-tag-action-clockwork-carnage-qualifiers-mercedes-mone-dani-luna-more/": {
-    "matchedFile": "20261015023100-نتائج-عرض-aew-dynamite-collision-14-أكتوبر-2026-آدم-كوبلاند-يكشف-عن-خططه-المستقبلية.md",
-    "reason": "الخبر الجديد يغطي نفس نتائج عرض AEW Dynamite بتاريخ 14 أكتوبر 2026 التي تم نشرها بالفعل في الخبر رقم 0، بما في ذلك نتائج النزالات وتصريحات آدم كوبلاند.",
-    "at": "2026-10-15T01:26:17.233Z"
-  },
   "https://www.wrestlinginc.com/2287205/mcmg-return-aew-challenge-ftr-best-5-series/": {
     "matchedFile": "20261015041527-فريق-إف-تي-آر-وفريق-موتور-سيتي-ماشين-جانز-يحددان-سلسلة-من-خمس-مواجهات-تبدأ-في-عرض-aew-wrestledream.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (تحدي فريق موتور سيتي ماشين جانز لفريق إف تي آر في سلسلة من خمس مواجهات في عرض WrestleDream) الذي تم تغطيته بالفعل في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261029052917-كوين-أميناتا-تفوز-ببطولة-tbs-في-عرض-aew-dynamite.md",
     "reason": "الخبر الجديد يعيد سرد فوز كوين أميناتا ببطولة TBS في عرض AEW Fright Night Dynamite، وهو نفس الحدث والنتيجة المغطاة في الخبر المنشور رقم 0 من نفس المصدر أو العرض.",
     "at": "2026-10-29T15:37:34.896Z"
+  },
+  "https://www.fightful.com/wrestling/tommaso-ciampa-thinks-kyle-fletcher-is-randy-orton-still-cant-hit-the-rko/": {
+    "matchedFile": "20261029182943-توماسو-تشامبا-يخلط-بين-كايل-فليتشر-وراندي-أورتن-خلال-محاولة-فاشلة-لتنفيذ-حركة-rko.md",
+    "reason": "الخبر الجديد يغطي نفس الواقعة בדיוק (محاولة توماسو تشامبا الفاشلة لتنفيذ حركة RKO على كايل فليتشر لاعتقاده بأنه راندي أورتن) وهي مغطاة بالفعل في الخبر المنشور.",
+    "at": "2026-10-29T16:39:09.626Z"
   }
 }
