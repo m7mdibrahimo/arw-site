@@ -1,48 +1,43 @@
 {
- "https://www.ringsidenews.com/aew-fright-night-dynamite-results-highlights-key-moments-october-28-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-29T00:49:01.015Z"
- },
- "https://www.wrestlinginc.com/2297881/aew-fright-night-dynamite-october-28-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-29T00:52:37.230Z"
- },
  "https://www.fightful.com/wrestling/aew-collision-10-24-draws-nearly-450000-viewers-on-cable-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-29T00:52:25.199Z"
+  "at": "2026-10-29T00:54:39.784Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-fright-night-results-10-28-2026-persephone-vs-queen-aminata-ftr-vs-mcmg-darby-allin-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-29T00:52:24.946Z"
+  "at": "2026-10-29T00:54:39.531Z"
  },
  "https://www.fightful.com/wrestling/shotzi-blackheart-clarifies-comments-regarding-wwe-not-allowing-her-to-do-tna-crossover": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-29T00:52:24.534Z"
+  "at": "2026-10-29T00:54:39.118Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-10-23-viewership-drops-against-world-series-game-one": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-29T00:52:24.280Z"
+  "at": "2026-10-29T00:54:38.838Z"
  },
  "https://www.fightful.com/wrestling/full-lineup-for-cmll-dia-de-muertos-on-october-30": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-29T00:52:24.026Z"
+  "at": "2026-10-29T00:54:38.581Z"
  },
  "https://www.fightful.com/wrestling/michin-and-b-fab-discuss-winning-their-first-championships-in-wwe": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-10-29T00:52:23.766Z"
+  "at": "2026-10-29T00:54:38.322Z"
  },
  "https://www.fightful.com/wrestling/ric-flair-set-for-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-29T00:52:00.670Z"
+  "at": "2026-10-29T00:54:08.344Z"
+ },
+ "https://www.ringsidenews.com/aew-fright-night-dynamite-results-highlights-key-moments-october-28-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-29T00:49:01.015Z"
  },
  "https://www.wrestlinginc.com/2297881/aew-fright-night-dynamite-october-28-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
