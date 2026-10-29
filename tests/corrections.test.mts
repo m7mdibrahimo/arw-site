@@ -1050,7 +1050,9 @@ test("federation names stay in Latin letters and «نتائج نزاعات» is 
   const bad: string[] = [];
   for (const dir of ["content/news", "content/news-en", "content/shows", "content/recaps", "content/nostalgia"]) {
     for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".md"))) {
-      const text = fs.readFileSync(`${dir}/${f}`, "utf-8").replace(/^permalink:.*$/gm, "");
+      const text = fs.readFileSync(`${dir}/${f}`, "utf-8").replace(/^permalink:.*$/gm, "")
+        // the spoiler note is the classifier's own reasoning for the social bot, never on the page (INCIDENTS #973)
+        .replace(/^social_spoiler_note:.*$/gm, "");
       if (/دراغون غيت|ريف برو|ستاردوم|ميجر ليج ريسلينج|جيم تشينجر ريسلينج|سيلف ميد برو|نتائج نزاعات/.test(text)) bad.push(`${dir}/${f}`);
     }
   }

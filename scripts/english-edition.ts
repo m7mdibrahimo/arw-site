@@ -170,6 +170,19 @@ export function enWeekdayNotOnDate(text: string, now = new Date()): string | nul
   return null;
 }
 
+/** «on October 23, 2025» when the source only says «on October 23» and 2025 is nowhere in it: the writer guessed the
+ *  year wrong (Ric Flair's fall, a 2026 story — INCIDENTS #971). A year that isn't the story's own and isn't in the
+ *  source is dropped; the date is kept. With no source text nothing changes. */
+export function enYearNotInSource(text: string, sourceText: string, storyDate?: string): string {
+  if (!text || !sourceText || sourceText.length < 200) return text;
+  const own = new Date(storyDate || Date.now()).getUTCFullYear();
+  const re = new RegExp(`\\b((?:${EN_MONTHS_FULL.join("|")}) \\d{1,2}(?:st|nd|rd|th)?),\\s?((?:19|20)\\d{2})\\b(,?)`, "g");
+  return String(text).replace(re, (whole, date: string, year: string, comma: string) =>
+    // only a date the source itself gives without a year: «compared to the October 24, 2025 episode» from a source
+    // that says «the same week last year» stays as it is
+    +year === own || new RegExp(`(?<!\\d)${year}(?!\\d)`).test(sourceText) || !new RegExp(`\\b${date}\\b(?!,?\\s?(?:19|20)\\d{2})`).test(sourceText) ? whole : `${date}${comma}`);
+}
+
 export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   const issues: string[] = [];
   const title = String(e?.title || "").trim(), body = String(e?.body || "").trim();
@@ -285,6 +298,8 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   // a filler left in a transcribed quote: «I feel like, just because I've been thinking that also» is not a
   // sentence (live 2026-10-27) — the filler goes and the thought stays whole
   [/\bI feel like, just because\b/g, "I feel like"],
+  // «Speaking on an interview» (Paul Heyman, INCIDENTS #973): on a podcast/show, but in an interview
+  [/\b([Ss])peaking on an interview\b/g, "$1peaking in an interview"],
   [/\bfeel like, just because\b/g, "feel like"],
   // «currently part of the faction's current on-screen alliance»: the same word twice in one clause (2026-10-27)
   [/\b([Cc])urrently((?:\s+[A-Za-z'’.-]+){0,5})\s+current\b/g, (_m: string, c: string, mid: string) => `${c === "C" ? "Now" : "now"}${mid} current`],
@@ -476,7 +491,7 @@ export function fixEnglishNames(text: string): string {
 export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEWS_EN_DIR): string {
   // a literal «\n» typed as text (INCIDENTS #736: «…limited schedule. \n\n> "Shingo…») is a line break
   // the broken-sentence fix is for the whole story only: a single phrase handed to fixEnglishNames keeps its letter
-  e = { ...e, title: fixEnglishNames(normalizeEnglishTitle(e.title)), body: fixLineStarts(fixEnglishNames(e.body.replace(/[ \t]*\\n/g, "\n"))) };
+  e = { ...e, title: fixEnglishNames(normalizeEnglishTitle(e.title)), body: enYearNotInSource(fixLineStarts(fixEnglishNames(e.body.replace(/[ \t]*\\n/g, "\n"))), i.sourceText, i.date) };
   e.title = restoreTitleAcronyms(e.title, e.body);
   e.title = restoreTitleTheNames(e.title, e.body);
   fs.mkdirSync(dir, { recursive: true });

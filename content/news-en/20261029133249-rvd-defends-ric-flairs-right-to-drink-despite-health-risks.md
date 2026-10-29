@@ -15,7 +15,7 @@ image: /content/images/xv0ge58q57aa2qd8.jpg
 ---
 According to Ringside News, Rob Van Dam recently shared his thoughts on Ric Flair continuing to party and drink despite ongoing health concerns. Rather than criticizing the wrestling legend, Van Dam questioned whether a 77-year-old has earned the right to live life on his own terms.
 
-Speaking on his podcast, Van Dam discussed Flair suffering a bloody fall outside a Florida establishment on October 23, 2025, and returning to the same venue on October 24 after spending a night at Tampa General Hospital, where he was later seen wearing an eye patch. He acknowledged the pain this lifestyle causes family members, particularly Charlotte Flair, but noted that at his age, Flair understands the consequences and may prefer enjoying his remaining time.
+Speaking on his podcast, Van Dam discussed Flair suffering a bloody fall outside a Florida establishment on October 23, and returning to the same venue on October 24 after spending a night at Tampa General Hospital, where he was later seen wearing an eye patch. He acknowledged the pain this lifestyle causes family members, particularly Charlotte Flair, but noted that at his age, Flair understands the consequences and may prefer enjoying his remaining time.
 
 Drawing on past experiences with the late Sabu, Van Dam explained that constantly fighting with someone over addiction often just pushes them away, leaving loved ones to choose between endless arguments or simply trying to remain supportive.
 
