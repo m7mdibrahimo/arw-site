@@ -4444,17 +4444,42 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض داينامايت 28.10.2026 مترجم",
-    "lastAttempt": 1793256420258,
+    "lastAttempt": 1793257249155,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
       "instagram_reel",
-      "instagram_story",
-      "tiktok"
+      "instagram_story"
     ],
+    "reviewPlatforms": [],
+    "needsReview": false,
+    "tiktok": true
+  },
+  "20261029093918-mlp-special-josh-alexander-vs-stu-grayson-northern-rising-22-10-2026": {
+    "publishedAt": 1793257274611,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ام ال بي 21.10.2026 مترجم",
+    "lastAttempt": 1793257288158,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261029094308-mlp-special-rohan-vs-andrade-priscilla-kelly-vs-storm-28-10-2026": {
+    "publishedAt": 1793257319134,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ام ال بي 28.10.2026 مترجم",
+    "lastAttempt": 1793257330614,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }
