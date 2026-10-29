@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2287205/mcmg-return-aew-challenge-ftr-best-5-series/": {
-    "matchedFile": "20261015041527-فريق-إف-تي-آر-وفريق-موتور-سيتي-ماشين-جانز-يحددان-سلسلة-من-خمس-مواجهات-تبدأ-في-عرض-aew-wrestledream.md",
-    "reason": "الخبر الجديد يغطي نفس الحدث (تحدي فريق موتور سيتي ماشين جانز لفريق إف تي آر في سلسلة من خمس مواجهات في عرض WrestleDream) الذي تم تغطيته بالفعل في الخبر رقم 0.",
-    "at": "2026-10-15T01:41:09.595Z"
-  },
   "https://www.fightful.com/wrestling/ftr-and-motor-city-machine-guns-to-battle-in-best-of-five-series-first-match-set-for-aew-wrestledream/": {
     "matchedFile": "20261015041527-فريق-إف-تي-آر-وفريق-موتور-سيتي-ماشين-جانز-يحددان-سلسلة-من-خمس-مواجهات-تبدأ-في-عرض-aew-wrestledream.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (سلسلة المواجهات الخمس بين FTR وMCMG في عرض WrestleDream) الذي تم تغطيته بالفعل في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261029182943-توماسو-تشامبا-يخلط-بين-كايل-فليتشر-وراندي-أورتن-خلال-محاولة-فاشلة-لتنفيذ-حركة-rko.md",
     "reason": "الخبر الجديد يغطي نفس الواقعة בדיוק (محاولة توماسو تشامبا الفاشلة لتنفيذ حركة RKO على كايل فليتشر لاعتقاده بأنه راندي أورتن) وهي مغطاة بالفعل في الخبر المنشور.",
     "at": "2026-10-29T16:39:09.626Z"
+  },
+  "https://www.fightful.com/wrestling/wwe-has-no-plans-to-reshape-taping-schedule-for-smackdown-to-go-head-to-head-live-with-aew-new-years-smash/": {
+    "matchedFile": "20261029200135-موقف-wwe-الحالي-من-مواجهة-عرض-aew-dynamite-new-years-smash-لعرض-wwe-smackdown.md",
+    "reason": "الخبر الجديد يتناول نفس الحدث والقرار الإداري الخاص بجدول تسجيل عرض SmackDown في مواجهة عرض AEW، ولا يقدم أي تطور جديد أو معلومة إضافية جوهرية لم تكن موجودة في الخبر المنشور مسبقاً.",
+    "at": "2026-10-29T17:25:30.303Z"
   }
 }
