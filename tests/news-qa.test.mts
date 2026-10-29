@@ -479,3 +479,9 @@ test("a source name spelled one letter off takes the glossary spelling, other na
   assert.equal(fixNearGlossaryNames("فاز جيمي يوسو", ["جاي يوسو"]), "فاز جيمي يوسو");
   assert.equal(fixNearGlossaryNames("فاز جيف هاردي", ["مات هاردي"]), "فاز جيف هاردي");
 });
+
+// Round 2026-10-29 05:15 UTC: «قصة النزال الموت» and «غير ترابطية» in the AEW Dynamite review (INCIDENTS #958)
+test("«النزال الموت» and «غير ترابطية» are corrected (INCIDENTS #958)", () => {
+  assert.equal(applyCorrections("استمرار الإثارة في قصة النزال الموت بين الطرفين"), "استمرار الإثارة في قصة نزال الموت بين الطرفين");
+  assert.equal(applyCorrections("القصة بدت متسرعة وغير ترابطية مقارنة بنزال الرجال"), "القصة بدت متسرعة وغير مترابطة مقارنة بنزال الرجال");
+});
