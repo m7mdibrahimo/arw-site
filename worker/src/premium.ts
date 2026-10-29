@@ -16,6 +16,7 @@
 import { chatRebadge } from "./chat";
 import { memberOf, ensureMembers } from "./members";
 import { readRepoFile } from "./studio";
+import { earlyLinks, earlyOpen, earlyUntil, linksOf, allDownloads } from "./early";
 
 export interface PremiumEnv { ANALYTICS?: D1Database; PUSH_KV: KVNamespace; PREMIUM_AUTO?: string; FAWATERK_API_KEY?: string; FAWATERK_VENDOR_KEY?: string; FAWATERK_CLIENT_ID?: string; FAWATERK_CLIENT_SECRET?: string; RESEND_API_KEY?: string;
   GITHUB_OWNER?: string; GITHUB_REPO?: string; GITHUB_BRANCH?: string; GITHUB_TOKEN?: string }
@@ -253,24 +254,28 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
     if (premiumOf(me, now)) { out.links = { servers: sv, downloads: dl }; out.premium = true; }
     return reply(out);
   }
-  // a show scheduled for later: a premium member watches it now (its links read from the repo, never in the page)
+  // «العرض قبل الجميع» (worker/src/early.ts): a premium member watches it now, everyone else when its time comes. During
+  // its window the links are in D1 only; a show dated later (the old way) or one already back in its file: read from the repo
   if (path === "/premium/early" && request.method === "GET") {
     const k = contentKey(url.searchParams.get("k"));
     if (!k) return reply({ ok: false }, 400);
-    const cacheKey = `pm:early:${k}`;
-    // before its time only for a premium member; after it, anyone (the page waits for the site's next build)
     const premium = !!premiumOf(me, now);
-    const known: any = JSON.parse(await env.PUSH_KV.get(cacheKey) || "null");
-    let links: any = known;
+    let links: any = await earlyLinks(db, k).catch(() => null);
     if (!links) {
-      let file: { content: string } | null;
-      try { file = await readRepoFile(env as any, `content/${k}.md`); } catch { return reply({ ok: false, error: "تعذر التحميل، حاول بعد قليل." }, 503); }
-      links = file ? showLinks(file.content) : { missing: true };
-      await env.PUSH_KV.put(cacheKey, JSON.stringify(links), { expirationTtl: 120 });
+      const cacheKey = `pm:early:${k}`;
+      links = JSON.parse(await env.PUSH_KV.get(cacheKey) || "null");
+      if (!links) {
+        let file: { content: string } | null;
+        try { file = await readRepoFile(env as any, `content/${k}.md`); } catch { return reply({ ok: false, error: "تعذر التحميل، حاول بعد قليل." }, 503); }
+        links = file ? { until: earlyUntil(file.content) || showLinks(file.content).date, ...linksOf(file.content) } : { missing: true };
+        await env.PUSH_KV.put(cacheKey, JSON.stringify(links), { expirationTtl: 120 });
+      }
     }
     if (links.missing) return reply({ ok: false, error: "العرض غير موجود." }, 404);
-    if (!premium && (!links.date || links.date > now)) return reply({ ok: false, premium: false, pub: links.date, error: "العرض متاح الآن للأعضاء المميزين فقط." }, 403);
-    return reply({ ok: true, premium, servers: links.servers, downloads: links.downloads, pub: links.date });
+    // never before its time for anyone but a premium member: not even how many links there are
+    if (!earlyOpen(links.until, premium, now)) return reply({ ok: false, premium: false, pub: links.until, error: "العرض متاح الآن للأعضاء المميزين فقط." }, 403);
+    const g = links.groups;
+    return reply({ ok: true, premium, servers: links.servers, downloads: allDownloads(g), dl: g, pub: links.until });
   }
 
   if (!me) return reply({ ok: false, signedOut: true, error: "سجل دخولك أولا." }, 401);

@@ -203,7 +203,8 @@ const F = {
     <label for="f-prem-dl">روابط تحميل مميزة <em>كل رابط في سطر</em></label>
     <textarea class="input mono" id="f-prem-dl" rows="3" dir="ltr" placeholder="https://...">${S.premium ? S.premium.downloads : ''}</textarea>
     <div class="pr-early"><b>العرض قبل الجميع</b><span class="muted small">المميزين يشغّلوه دلوقتي، والباقيين يشوفوا عدّاد لحد ما يتنشر للكل:</span>
-      <div class="pr-early-btns">${[[1, 'ساعة'], [2, 'ساعتين'], [3, '3 ساعات'], [6, '6 ساعات']].map(([h, l]) => html`<button type="button" class="btn btn-sm btn-soft" data-early="${h}">للكل بعد ${l}</button>`)}</div></div>
+      <div class="pr-early-btns">${[[1, 'ساعة'], [2, 'ساعتين'], [3, '3 ساعات'], [6, '6 ساعات']].map(([h, l]) => html`<button type="button" class="btn btn-sm btn-soft" data-early="${h}">للكل بعد ${l}</button>`)}</div>
+      <div class="pr-early-on" id="pr-early-on"${S.data.early_until ? '' : ' hidden'}><span id="pr-early-txt">${earlyText()}</span><button type="button" class="btn btn-sm btn-ghost" data-early="0">إلغاء</button></div></div>
     <small class="hint pr-state" id="pr-state">${S.premium && S.premium.loading ? 'بيحمّل الروابط المحفوظة…' : ''}</small></div>`,
   servers: () => html`<div class="field">
     <div class="list-head"><label>روابط المشاهدة (الإمبيد) <em>${(S.data.servers || []).length} سيرفر</em></label></div>
@@ -606,6 +607,13 @@ function titleHint() {
   el.classList.toggle('warn', !!warn.length);
 }
 
+// «العرض قبل الجميع»: where the show's window stands, in a line under its buttons
+function earlyText() {
+  const t = toDate(S.data.early_until);
+  if (!t) return '';
+  return t > new Date() ? `المميزين بس لحد ${fmtDate(t, true)}، وبعدها يتفتح للكل لوحده.` : `خلص وقته: العرض متاح للكل.`;
+}
+
 // «للأعضاء المميزين»: loaded from the worker and saved there after the file itself (worker/src/premium.ts)
 const premiumKey = (slug) => `${S.collection}/${slug}`;
 const premLines = (t) => String(t || '').split(/\s+/).map(x => x.trim()).filter(x => /^https?:\/\//.test(x));
@@ -614,13 +622,17 @@ function bindPremium() {
   if (!sv || !dl) return;
   const onInput = () => { S.premium.servers = sv.value; S.premium.downloads = dl.value; S.premium.dirty = true; markDirty(); };
   sv.oninput = onInput; dl.oninput = onInput;
-  // «العرض قبل الجميع»: the publish time moved forward; the page is built without links till then (_includes/post-layout.njk)
+  // «العرض قبل الجميع»: published now like any show, its servers and downloads for premium members till early_until (the
+  // worker keeps them off the file and the page till then: worker/src/early.ts), then for everyone. «إلغاء» = for everyone now
   $$('[data-early]').forEach(b => { b.onclick = () => {
-    const t = new Date(Date.now() + Number(b.dataset.early) * 3600e3);
-    S.data.date = isoLocal(t);
-    const d = $('#f-date');
-    if (d) { d.value = new Date(t.getTime() - t.getTimezoneOffset() * 60000).toISOString().slice(0, 16); d.dispatchEvent(new Event('input')); } else markDirty();
-    toast(`اتظبط: المميزين دلوقتي، والكل ${fmtDate(t, true)}. احفظ عشان يتنشر.`);
+    const h = Number(b.dataset.early);
+    const t = new Date(Date.now() + h * 3600e3);
+    if (h) S.data.early_until = isoLocal(t); else delete S.data.early_until;
+    const on = $('#pr-early-on'), txt = $('#pr-early-txt');
+    if (on) on.hidden = !h;
+    if (txt) txt.textContent = earlyText();
+    markDirty();
+    toast(h ? `اتظبط: المميزين دلوقتي، والكل ${fmtDate(t, true)}. احفظ عشان يتنشر.` : 'اتلغى: العرض هيبقى للكل أول ما تحفظ.');
   }; });
   if (S.premium.loading && S.slug && !S.premium.asked) {
     S.premium.asked = true;

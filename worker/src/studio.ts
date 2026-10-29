@@ -17,6 +17,7 @@
 import { authorizeAdmin } from './delivery';
 
 import { siteAnalytics, pageTotals } from './analytics';
+import { earlyOnRead, earlyOnSave } from './early';
 // @ts-ignore — plain JS shared with the panel (bundled by wrangler)
 import { collapseRepeatedNames, NAME_FIELDS } from '../../studio/js/names.js';
 
@@ -305,6 +306,8 @@ export function entryPath(collection: string, slug: string): string | null {
   if (!slug || slug.length > 240 || /[\/\\\0]|\.\./.test(slug) || /^\./.test(slug)) return null;
   return `${folder}/${slug}.md`;
 }
+/** A content file's key in D1 («shows/<slug>»), for the three folders whose shows have servers; «» for the rest */
+const earlyKey = (p: string) => (p.match(/^content\/((?:shows|recaps|nostalgia)\/[^/]+)\.md$/) || [])[1] || '';
 export function imagePathOk(p: string): boolean {
   return /^content\/images\/[a-z0-9_-]{6,64}\.(?:jpg|jpeg|png|webp|gif)$/.test(p);
 }
@@ -654,7 +657,8 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
     if (!can(me, `${sectionOf(collection)}.view`)) return deny();
     const file = await readRepoFile(env, p);
     if (!file) return json({ success: false, error: 'الموضوع غير موجود' }, 404);
-    return json({ success: true, ...file });
+    // «العرض قبل الجميع»: its links are in D1 till its time (worker/src/early.ts), the editor shows them in their place
+    return json({ success: true, ...file, content: await earlyOnRead(env.ANALYTICS, earlyKey(p), file.content) });
   }
   if (route === 'save' && request.method === 'POST') {
     const collection = String(body.collection || '');
@@ -664,12 +668,15 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
     const existing = await readRepoFile(env, p);
     if (!can(me, `${sectionOf(collection)}.${existing ? 'edit' : 'create'}`)) return deny();
     if (body.create && existing) return json({ success: false, error: 'في موضوع بنفس الاسم بالفعل.' }, 409);
+    if (existing) existing.content = await earlyOnRead(env.ANALYTICS, earlyKey(p), existing.content);
     // Opened version ≠ current version: someone (usually the automatic fixes) changed it meanwhile.
     if (!body.create && body.sha && existing && existing.sha !== body.sha && !body.force) {
       return json({ success: false, conflict: true, current: existing, error: 'الموضوع اتعدّل من مكان تاني بعد ما فتحته.' }, 409);
     }
     body.content = cleanNameFields(body.content);
-    const changes: FileChange[] = [{ path: p, text: body.content }];
+    // «العرض قبل الجميع»: during its window the file goes out without its links (they wait in D1, worker/src/early.ts)
+    const early = await earlyOnSave(env.ANALYTICS, earlyKey(p), body.content);
+    const changes: FileChange[] = [{ path: p, text: early.text }];
     // The owner's word fixes teach the writer (INCIDENTS #148): logged with the save, promoted to
     // editorial/corrections.json by scripts/learn-corrections.ts on its next run.
     if (existing && ['news', 'shows', 'recaps', 'nostalgia'].includes(collection)) {
@@ -710,6 +717,7 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
     const by = me.displayName || me.username;
     const sha = await commitFiles(env, changes, `${existing ? 'Update' : 'Create'} ${label} “${body.slug}” (لوحة التحكم — ${by})`);
     const committedAt = Date.now();
+    await early.after().catch(() => {});
     const saved = await readRepoFile(env, p).catch(() => null);
     const title = (String(body.content).match(/^(?:headline|title):\s*["']?(.+?)["']?\s*$/m) || [])[1] || body.slug;
     await audit(env, me, existing ? 'content.update' : 'content.create', { collection, slug: body.slug, title: String(title).slice(0, 160) });

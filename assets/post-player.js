@@ -541,7 +541,8 @@
     }
 
     // ── downloads: one more card in «روابط التحميل», opening its own list ──
-    function addDownloads(list, prem) {
+    // opt: one quality of an early show's links ({tier, label, sub}), as the page's own quality buttons show it
+    function addDownloads(list, prem, opt) {
       list = clean(list);
       if (!list.length) return;
       var wrap = document.getElementById('downloads');
@@ -550,16 +551,16 @@
         wrap.id = 'downloads';
         deck.parentNode.insertBefore(wrap, deck.nextSibling);
       }
-      var grid = wrap.querySelector('.quality-grid'), id = prem ? 'dlModalPrem' : 'dlModalEarly';
+      var grid = wrap.querySelector('.quality-grid'), id = prem ? 'dlModalPrem' : 'dlModalEarly' + (opt ? '-' + opt.tier : '');
       var btn = el('button', 'quality-btn' + (prem ? ' is-prem' : ''), '<span class="quality-icon">' + (prem ? CROWN : DL) + '</span><span class="quality-label"></span><span class="quality-sub"></span>');
-      btn.type = 'button'; btn.setAttribute('data-tier', prem ? 'prem' : 'high');
-      btn.querySelector('.quality-label').textContent = prem ? 'تحميل مميز' : 'تحميل العرض';
-      btn.querySelector('.quality-sub').textContent = prem ? 'مباشر وسريع' : 'كل الجودات';
+      btn.type = 'button'; btn.setAttribute('data-tier', prem ? 'prem' : opt ? opt.tier : 'high');
+      btn.querySelector('.quality-label').textContent = prem ? 'تحميل مميز' : opt ? opt.label : 'تحميل العرض';
+      btn.querySelector('.quality-sub').textContent = prem ? 'مباشر وسريع' : opt ? opt.sub : 'كل الجودات';
       if (prem) grid.insertBefore(btn, grid.firstChild); else grid.appendChild(btn);
       var modal = el('div', 'dl-modal-backdrop');
       modal.id = id;
       modal.innerHTML = '<div class="dl-modal" role="dialog" aria-modal="true"><div class="dl-modal-head"><h4></h4><button type="button" class="dl-modal-close" aria-label="إغلاق"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="dl-modal-body"></div></div>';
-      var title = prem ? 'روابط التحميل المميزة' : 'روابط التحميل';
+      var title = prem ? 'روابط التحميل المميزة' : opt ? 'روابط التحميل · ' + opt.label + ' ' + opt.sub : 'روابط التحميل';
       modal.querySelector('h4').textContent = title;
       modal.querySelector('.dl-modal').setAttribute('aria-label', title);
       var listEl = modal.querySelector('.dl-modal-body');
@@ -570,7 +571,7 @@
         a.querySelector('img').src = st.logo;
         a.querySelector('img').alt = st.name;
         a.querySelector('.dl-site-name').textContent = st.name || 'رابط التحميل';
-        a.querySelector('.dl-site-quality').textContent = prem ? 'تحميل مباشر وسريع' : 'اضغط هنا للتحميل';
+        a.querySelector('.dl-site-quality').textContent = prem ? 'تحميل مباشر وسريع' : opt ? opt.sub : 'اضغط هنا للتحميل';
         listEl.appendChild(a);
       });
       document.body.appendChild(modal);
@@ -606,9 +607,15 @@
       if (h >= 48) return d + (d <= 10 ? ' أيام' : ' يوما');
       return pad(h) + ':' + pad(Math.floor(s % 3600 / 60)) + ':' + pad(s % 60);
     }
+    // the qualities in the page's own order and words (_includes/post-layout.njk)
+    var TIERS = [['light', 'جودة خفيفة', '360p'], ['low', 'جودة منخفضة', '480p'], ['medium', 'جودة متوسطة', '720p'], ['high', 'جودة عالية', '1080p']];
     function unlock(d) {
       var n = addServers(d.servers, false);
-      addDownloads(d.downloads, false);
+      if (d.dl) {
+        var rest = clean((d.dl.multi || []).concat(d.dl.other || []));
+        TIERS.forEach(function(t){ addDownloads(d.dl[t[0]], false, { tier: t[0], label: t[1], sub: t[2] }); });
+        addDownloads(rest, false);
+      } else addDownloads(d.downloads, false);
       if (!n && !clean(d.downloads).length) return false;
       if (lock) lock.remove();
       deck.classList.remove('is-locked');

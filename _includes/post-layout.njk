@@ -29,10 +29,13 @@
 <link rel="alternate" type="application/rss+xml" title="عرب راسلنج - تغذية الأخبار RSS" href="https://arab-wrestling.com/feed.xml">
 
 {% set schemaImage = (image | absUrl) if image else 'https://arab-wrestling.com/assets/logo.png' %}
-{% set isVideoContent = (servers and servers.length) and not isNews %}
-{#- «العرض قبل الجميع»: dated later = built without its links; premium members get them now (assets/post-player.js) -#}
+{% set isVideoContent = ((servers and servers.length) or early_servers) and not isNews %}
+{#- «العرض قبل الجميع»: published now, its links for premium members only till early_until (their lines wait in D1 meanwhile,
+    worker/src/early.ts: «early_servers» stands in for them), then for everyone. Dated later (the old way): the same till its date.
+    The page is built without them either way; assets/post-player.js asks for them -#}
 {% set pk = page.inputPath | contentKey %}
-{% set earlyLock = pk and isVideoContent and (page.date | isFuture) %}
+{% set earlyLock = pk and isVideoContent and (early_servers is defined or (early_until | isFuture) or (page.date | isFuture)) %}
+{% set earlyPub = (early_until | msOf) or page.date.getTime() %}
 {% set pageUrl = 'https://arab-wrestling.com' + (page.url | cleanUrl) %}
 
 <!-- Open Graph / Facebook -->
@@ -374,14 +377,14 @@
     </script>
     {% endif %}
 
-    {% if servers and servers.length %}
+    {% if (servers and servers.length) or earlyLock %}
       {% if earlyLock %}{% set servers = [] %}{% set firstEmbedUrl = '' %}{% else %}
       {% set servers = servers | playableServers(videoHosts, videoLinks) %}
       {% set firstEmbedUrl = (servers[0].url | toEmbedUrl) %}
       {% endif %}
       {#- «غرفة التحكم»: one card at the column width, like the download box — the servers on the right, the player
           on the left (owner, 2026-10-06) -#}
-      <section class="watch-deck is-idle{% if servers.length < 2 %} is-single{% endif %}{% if earlyLock %} is-locked{% endif %}" id="watchDeck" aria-label="المشاهدة أونلاين"{% if pk %} data-pk="{{ pk }}"{% endif %}{% if earlyLock %} data-pub="{{ page.date.getTime() }}"{% endif %}>
+      <section class="watch-deck is-idle{% if servers.length < 2 %} is-single{% endif %}{% if earlyLock %} is-locked{% endif %}" id="watchDeck" aria-label="المشاهدة أونلاين"{% if pk %} data-pk="{{ pk }}"{% endif %}{% if earlyLock %} data-pub="{{ earlyPub }}"{% endif %}>
         <div class="wd-head">
           <h3>المشاهدة أونلاين</h3>
           <div class="player-actions wd-acts">

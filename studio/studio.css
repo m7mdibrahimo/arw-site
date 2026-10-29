@@ -930,6 +930,8 @@ html.theme-vt::view-transition-new(root) { animation-name: theme-vt-in; }
 .pr-state { color: var(--teal); font-weight: 700; }
 .pr-early { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; padding: 12px; border: 1px dashed var(--line); border-radius: 14px; }
 .pr-early-btns { display: flex; flex-wrap: wrap; gap: 6px; }
+.pr-early-on { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; color: var(--teal); font-weight: 700; font-size: 13px; }
+.pr-early-on[hidden] { display: none; }
 
 /* «غرف المجتمع» (studio/js/views/community.js renderRoomsEditor) */
 .cy-head-acts { display: flex; gap: 8px; flex-wrap: wrap; }
