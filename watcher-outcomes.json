@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-willing-move-smackdown-start-time-help-wnba-finals": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-29T01:28:39.119Z"
+ },
  "https://www.fightful.com/wrestling/wwe-was-willing-to-move-smackdown-to-9-pm-et-on-friday-to-help-wnba-finals-game-6": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-10-16T13:52:44.824Z"
- },
- "https://www.ringsidenews.com/tna-impact-viewership-sees-increase-october-8-2026": {
-  "reason": "تقرير مشاهدة لعرض قديم (2026-10-08)",
-  "retry": false,
-  "at": "2026-10-16T13:29:37.890Z"
  }
 }
