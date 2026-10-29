@@ -2,42 +2,42 @@
  "https://www.fightful.com/wrestling/wwe-was-willing-to-move-smackdown-to-9-pm-et-on-friday-to-help-wnba-finals-game-6": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-10-29T01:22:08.364Z"
+  "at": "2026-10-29T01:25:23.365Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-10-24-draws-nearly-450000-viewers-on-cable-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-29T01:21:53.507Z"
+  "at": "2026-10-29T01:25:04.827Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-fright-night-results-10-28-2026-persephone-vs-queen-aminata-ftr-vs-mcmg-darby-allin-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-29T01:21:53.336Z"
+  "at": "2026-10-29T01:25:04.553Z"
  },
  "https://www.fightful.com/wrestling/shotzi-blackheart-clarifies-comments-regarding-wwe-not-allowing-her-to-do-tna-crossover": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-29T01:21:53.052Z"
+  "at": "2026-10-29T01:25:04.110Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-10-23-viewership-drops-against-world-series-game-one": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-29T01:21:52.879Z"
+  "at": "2026-10-29T01:25:03.835Z"
  },
  "https://www.fightful.com/wrestling/full-lineup-for-cmll-dia-de-muertos-on-october-30": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-29T01:21:52.707Z"
+  "at": "2026-10-29T01:25:03.559Z"
  },
  "https://www.fightful.com/wrestling/michin-and-b-fab-discuss-winning-their-first-championships-in-wwe": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
   "retry": true,
-  "at": "2026-10-29T01:21:52.533Z"
+  "at": "2026-10-29T01:25:03.281Z"
  },
  "https://www.fightful.com/wrestling/ric-flair-set-for-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-29T01:21:34.753Z"
+  "at": "2026-10-29T01:24:44.883Z"
  },
  "https://www.wrestlinginc.com/2297881/aew-fright-night-dynamite-october-28-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
