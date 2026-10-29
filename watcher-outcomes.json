@@ -1988,15 +1988,5 @@
   "reason": "المراجعة رفضته: حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)",
   "retry": false,
   "at": "2026-10-16T23:11:40.001Z"
- },
- "https://www.wrestlinginc.com/2289390/aew-wrestledream-2026-predictions-winners": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-16T22:11:56.599Z"
- },
- "https://www.fightful.com/wrestling/leon-slater-vs-trey-miguel-for-tna-world-title-made-official-for-destination-x": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-16T20:35:29.942Z"
  }
 }
