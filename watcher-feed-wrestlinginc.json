@@ -1,5 +1,15 @@
 [
   {
+    "id": 5012357700,
+    "link": "https://www.wrestlinginc.com/2301536/wwe-smackdown-aew-dynamite-head-to-head-new-years-day-2027/",
+    "date": "Thu, 29 Oct 2026 19:14:23 +0000",
+    "date_gmt": "2026-10-29T19:14:23.000Z",
+    "title": {
+      "rendered": "Backstage News On WWE SmackDown & AEW Dynamite Running Head-To-Head On New Year's Day"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-wwe-smackdown-aew-dynamite-running-head-to-head-on-new-years-day/l-intro-1793300884.jpg"
+  },
+  {
     "id": 4868303305,
     "link": "https://www.wrestlinginc.com/2301453/wwe-wrestlemania-43-backup-venue-the-sphere-las-vegas/",
     "date": "Thu, 29 Oct 2026 18:39:14 +0000",
@@ -27,7 +37,7 @@
     "title": {
       "rendered": "Backstage Details On Recent Report That WWE Was In Talks To Re-Hire Vince Russo"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-details-on-recent-report-that-wwe-was-in-talks-to-re-hire-vince-russo/l-intro-1793298837.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-details-on-recent-report-that-wwe-was-in-talks-to-re-hire-vince-russo/l-intro-1793300608.jpg"
   },
   {
     "id": 2886142507,
@@ -188,15 +198,5 @@
       "rendered": "Bryce Remsburg Comments On AEW Potentially Holding Event Against WWE WrestleMania"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/bryce-remsburg-comments-on-aew-potentially-holding-event-against-wwe-wrestlemania/l-intro-1793231522.jpg"
-  },
-  {
-    "id": 1637493022,
-    "link": "https://www.wrestlinginc.com/2300572/tko-town-hall-meeting-mark-shapiro-safety-middle-east-wwe/",
-    "date": "Wed, 28 Oct 2026 23:19:16 +0000",
-    "date_gmt": "2026-10-28T23:19:16.000Z",
-    "title": {
-      "rendered": "TKO Holds Town Hall Meeting, Mark Shapiro Emphasizes Safety In The Middle East"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tko-holds-town-hall-meeting-mark-shapiro-emphasizes-safety-in-the-middle-east/l-intro-1793229337.jpg"
   }
 ]
