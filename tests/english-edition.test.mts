@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import matter from 'gray-matter';
-import { englishStyleRules, checkEnglish, saveEnglishEdition, writeEnglishEdition, findEnglishEdition, englishSlug, dedupeEnglishEditions, englishPrompt, wordCount, embedLines, syncEnglishFromArabic, catchUpEnglishEditions, type EnglishInput } from '../scripts/english-edition.ts';
+import { englishStyleRules, checkEnglish, stripBold, saveEnglishEdition, writeEnglishEdition, findEnglishEdition, englishSlug, dedupeEnglishEditions, englishPrompt, wordCount, embedLines, syncEnglishFromArabic, catchUpEnglishEditions, type EnglishInput } from '../scripts/english-edition.ts';
 
 const source = 'Cody Rhodes is making the first major change to the American Nightmare logo since he returned to WWE in 2022. The update honors his late dog Pharaoh, who appeared at many WWE events and became a fan favorite on social media. Rhodes said the change was something he had wanted to do for months and that fans will see it on merchandise soon.';
 const input: EnglishInput = {
@@ -411,4 +411,19 @@ test('the catch-up skips a story whose edition keeps failing and still writes th
   calls = 0;
   assert.equal(await catchUpEnglishEditions(ask, fetchSource, 2, undefined, stateFile, newsDir, englishDir), 0);
   assert.equal(calls, 0);
+});
+
+test('a short quote that is a whole sentence is not a fragment, a cut-off one is (INCIDENTS #948)', () => {
+  const withQuote = (q: string) => ({ ...good, body: good.body + `\n\n> "${q}"\n\nShe said they talk it out.` });
+  assert.ok(!checkEnglish(withQuote('No, never.'), input).includes('blockquote is a fragment, not a statement'));
+  assert.ok(checkEnglish(withQuote('out indefinitely.'), input).includes('blockquote is a fragment, not a statement'));
+  assert.ok(checkEnglish(withQuote('No, never'), input).includes('blockquote is a fragment, not a statement'));
+});
+
+test('a story word «translated» is not meta text, the model talking about its translation is; bold is only markup (INCIDENTS #948)', () => {
+  const plus = (t: string) => ({ ...good, body: good.body + '\n\n' + t });
+  assert.ok(!checkEnglish(plus('Guevara then translated what The Beast Mortos said for Rush, joking that his translation might be a little rough.'), input).includes('meta text'));
+  assert.ok(checkEnglish(plus('This article was translated from Arabic.'), input).includes('meta text'));
+  assert.ok(checkEnglish(plus('Here is the translation of the source text.'), input).includes('meta text'));
+  assert.equal(stripBold('**Vince McMahon** doubted the **WWE Network** at first.'), 'Vince McMahon doubted the WWE Network at first.');
 });

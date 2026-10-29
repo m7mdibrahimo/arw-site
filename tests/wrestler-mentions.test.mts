@@ -67,3 +67,10 @@ test("every English story that names a glossary person gets it from its headline
   }
   assert.deepEqual(bad, []);
 });
+
+test("the people a story is tagged with are mentioned after the headline's (round 2026-10-29, «ماكس كاستر» 11.1)", () => {
+  const m = personMentions("حذف ماكس كاستر من صفحة قائمة مصارعي AEW بعد الإعلان عن مشاركته في عرض TNA Bound for Glory", 4, ["AEW", "TNA", "ماكس كاستر", "أنتوني باوينز", "موس", "عروض WWE"]);
+  assert.deepEqual(m.map((x) => x.en), ["Max Caster", "Anthony Bowens", "Moose"]);
+  // no tags: the headline alone, as before
+  assert.deepEqual(personMentions("حذف ماكس كاستر من صفحة قائمة مصارعي AEW").map((x) => x.en), ["Max Caster"]);
+});

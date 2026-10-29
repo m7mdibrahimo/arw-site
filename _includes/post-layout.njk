@@ -86,7 +86,7 @@
       {#- the show's program under every name people search it by — for search engines only, nothing on the page (owner) -#}
       {% if ldAbout %}"about": { "@type": "TVSeries", "name": "{{ ldAbout.name | escape }}", "url": "https://arab-wrestling.com/library/{{ ldAbout.slug }}/"{% if ldAbout.arName or ldAbout.aliases.length %}, "alternateName": [{% for a in keywordList([], ([ldAbout.arName] if ldAbout.arName else []).concat(ldAbout.aliases), 999) %}"{{ a | escape }}"{% if not loop.last %}, {% endif %}{% endfor %}]{% endif %} },{% endif %}
       {#- the people the headline names, under their Arabic and English spelling: Google shows these pages for «ماكس كاستر» and «المصارع باك» on positions 10-11 (round 2026-10-27) - head only -#}
-      {% set ldPeople = personMentions(pageTitle) if page.url.startsWith('/news/') else [] %}
+      {% set ldPeople = personMentions(pageTitle, tags) if page.url.startsWith('/news/') else [] %}
       {% set ldPeopleEn = englishPersonMentions([pageTitle, (en_tags or []) | join(' ')] | join(' ')) if page.url.startsWith('/en-src/news/') else [] %}
       {% if ldPeople.length %}"mentions": [{% for m in ldPeople %}{ "@type": "Person", "name": "{{ m.name | escape }}", "alternateName": "{{ m.en | escape }}" }{% if not loop.last %}, {% endif %}{% endfor %}],{% elif ldPeopleEn.length %}"mentions": [{% for m in ldPeopleEn %}{ "@type": "Person", "name": "{{ m.name | escape }}" }{% if not loop.last %}, {% endif %}{% endfor %}],{% endif %}
       "inLanguage": "ar",

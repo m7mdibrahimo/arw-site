@@ -167,7 +167,10 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   if (/->|→/.test(body)) issues.push("translation arrow left in the text");
   // a plain misspelling reached the English site: «mutting sound» for «muting» (Netflix/Liv Morgan story, INCIDENTS #936)
   if (EN_MISSPELLED.test(title + "\n" + body)) issues.push("misspelled word");
-  if (/\b(as an ai|language model|arab wrestling|translated|translation)\b/i.test(title + "\n" + body)) issues.push("meta text");
+  // «translated/translation» alone is a story word too: Sammy Guevara «translated» The Beast Mortos for Rush and the
+  // story never reached the English site (INCIDENTS #948) — only the model talking about its own translation is meta
+  if (/\b(as an ai|language model|arab wrestling)\b/i.test(title + "\n" + body)
+    || /\b(?:this|the)\s+(?:story|article|report|piece|text)\s+(?:was|has\s+been|is)\s+translated\b|\btranslat(?:ed|ion)\s+(?:from|into|of\s+the)\s+(?:the\s+)?(?:arabic|english|source)\b|\barabic\s+translation\b/i.test(title + "\n" + body)) issues.push("meta text");
   if (/^#{1,6}\s/m.test(body) || /\*\*/.test(body)) issues.push("markdown formatting");
   if (/[\u{1F300}-\u{1FAFF}]/u.test(title)) issues.push("emoji in title");
   // a headline with a dangling ampersand or a cut-off tail («Comes Down to His & One Other», INCIDENTS #836)
@@ -188,8 +191,14 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   // story shipped « victory can only be achieved by pinfall or submission inside the ring.» (2026-10-28)
   const bl = body.split(/\n/);
   if (bl.some((l, i) => l.trim() && !SKIP_LINE.test(l) && !/^\s*(?:<)?https?:\/\//.test(l) && (i === 0 || !bl[i - 1].trim()) && /^[a-z]/.test(l.trim()))) issues.push("line starts lowercase (broken sentence)");
-  // a blockquote that is only a fragment, not a whole statement: «> "out indefinitely."» (Vaquer story, 2026-10-28)
-  const fragments = bl.filter((l) => /^\s*>/.test(l) && (l.replace(/^\s*>\s*/, "").replace(/["“”]/g, "").trim().split(/\s+/).filter(Boolean).length < 3));
+  // a blockquote that is only a fragment, not a whole statement: «> "out indefinitely."» (Vaquer story, 2026-10-28).
+  // A short answer that is a whole sentence — capital first, a full stop at the end — is fine: «> "No, never."» kept
+  // Becky Lynch's story out of the English site (INCIDENTS #948)
+  const fragments = bl.filter((l) => {
+    if (!/^\s*>/.test(l)) return false;
+    const q = l.replace(/^\s*>\s*/, "").replace(/["“”]/g, "").trim();
+    return q.split(/\s+/).filter(Boolean).length < 3 && !/^[A-Z][^.!?]*[.!?]$/.test(q);
+  });
   if (fragments.length) issues.push("blockquote is a fragment, not a statement");
   // padded: far longer than the source
   const prose = body.replace(/<https?:\/\/[^>]+>/g, "").replace(/\s+/g, " ").length;
@@ -496,9 +505,15 @@ export function findEnglishEdition(sourceId: number | string, dir = NEWS_EN_DIR)
 }
 
 type Ask = (prompt: string, json?: boolean, temperature?: number) => Promise<string | null>;
+/** «**bold**» the model sometimes puts around a name is only markup: dropped, instead of throwing the whole edition
+ *  away (Vince McMahon / WWE Network story never reached the English site, INCIDENTS #948). */
+export function stripBold(text: string): string {
+  return String(text).replace(/\*\*([^*\n]+?)\*\*/g, "$1");
+}
+
 const parse = (raw: string | null): EnglishEdition | null => {
   if (!raw) return null;
-  try { const j = JSON.parse(raw.replace(/^```(?:json)?\s*|\s*```$/g, "")); return j && typeof j.title === "string" && typeof j.body === "string" ? { title: j.title, body: j.body, tags: Array.isArray(j.tags) ? j.tags : [] } : null; } catch { return null; }
+  try { const j = JSON.parse(raw.replace(/^```(?:json)?\s*|\s*```$/g, "")); return j && typeof j.title === "string" && typeof j.body === "string" ? { title: stripBold(j.title), body: stripBold(j.body), tags: Array.isArray(j.tags) ? j.tags : [] } : null; } catch { return null; }
 };
 
 /** Write and save the English edition of a story just published in Arabic. Two tries; null when it doesn't pass. */
@@ -613,7 +628,7 @@ export function pruneDuplicateOrphanEnglish(dir = NEWS_EN_DIR, newsDir = NEWS_DI
 export function saveJointEnglishEdition(raw: { en_title?: unknown; en_body?: unknown; en_tags?: unknown } | null | undefined, i: EnglishInput, dir = NEWS_EN_DIR): string | null {
   if (new Date(i.date).getTime() < new Date(ENGLISH_NEWS_SINCE).getTime()) return null;
   if (!raw || typeof raw.en_title !== "string" || typeof raw.en_body !== "string") return null;
-  const e: EnglishEdition = { title: raw.en_title.replace(/\s+/g, " ").trim(), body: raw.en_body, tags: Array.isArray(raw.en_tags) ? raw.en_tags.map(String) : [] };
+  const e: EnglishEdition = { title: stripBold(raw.en_title).replace(/\s+/g, " ").trim(), body: stripBold(raw.en_body), tags: Array.isArray(raw.en_tags) ? raw.en_tags.map(String) : [] };
   const issues = checkEnglish(e, i);
   if (issues.length) { console.warn(`[English] ✋ ${i.sourceId} (written with the Arabic): ${issues.join(", ")} — asking for it on its own`); return null; }
   const file = saveEnglishEdition(e, i, dir);

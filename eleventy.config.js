@@ -1862,8 +1862,8 @@ module.exports = function(eleventyConfig) {
   });
 
   // The people a news headline names, for the story's structured data only (mentions — nothing on the page)
-  eleventyConfig.addNunjucksGlobal("personMentions", function(headline) {
-    return require("./lib/wrestler-mentions.cjs").personMentions(headline);
+  eleventyConfig.addNunjucksGlobal("personMentions", function(headline, tags) {
+    return require("./lib/wrestler-mentions.cjs").personMentions(headline, 4, tags);
   });
 
   // The people an English story names, in English, for the English page's structured data only (mentions)
