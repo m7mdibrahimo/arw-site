@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2297881/aew-fright-night-dynamite-october-28-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-29T00:48:55.292Z"
+ },
  "https://www.fightful.com/wrestling/aew-collision-10-24-draws-nearly-450000-viewers-on-cable-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -38,11 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-29T00:45:30.561Z"
- },
- "https://www.wrestlinginc.com/2297881/aew-fright-night-dynamite-october-28-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-29T00:37:41.835Z"
  },
  "https://www.ringsidenews.com/jon-moxley-challenges-cut-anarchy-arena-match-aew-full-gear-2026": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
