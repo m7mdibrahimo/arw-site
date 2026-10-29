@@ -1,5 +1,15 @@
 [
   {
+    "id": 4868303305,
+    "link": "https://www.wrestlinginc.com/2301453/wwe-wrestlemania-43-backup-venue-the-sphere-las-vegas/",
+    "date": "Thu, 29 Oct 2026 18:39:14 +0000",
+    "date_gmt": "2026-10-29T18:39:14.000Z",
+    "title": {
+      "rendered": "Backstage News On Possible Backup Venue For WWE WrestleMania 43"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-possible-backup-venue-for-wwe-wrestlemania-43/l-intro-1793299020.jpg"
+  },
+  {
     "id": 2304453618,
     "link": "https://www.wrestlinginc.com/2301411/queen-aminata-aew-tbs-title-win-fright-night-dynamite/",
     "date": "Thu, 29 Oct 2026 18:20:49 +0000",
@@ -7,7 +17,7 @@
     "title": {
       "rendered": "Queen Aminata Makes First Comment On AEW TBS Title Win On Fright Night Dynamite"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/queen-aminata-makes-first-comment-on-aew-tbs-title-win-on-fright-night-dynamite/l-intro-1793297841.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/queen-aminata-makes-first-comment-on-aew-tbs-title-win-on-fright-night-dynamite/l-intro-1793298938.jpg"
   },
   {
     "id": 3042152317,
@@ -17,7 +27,7 @@
     "title": {
       "rendered": "Backstage Details On Recent Report That WWE Was In Talks To Re-Hire Vince Russo"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-details-on-recent-report-that-wwe-was-in-talks-to-re-hire-vince-russo/l-intro-1793297280.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-details-on-recent-report-that-wwe-was-in-talks-to-re-hire-vince-russo/l-intro-1793298837.jpg"
   },
   {
     "id": 2886142507,
@@ -188,15 +198,5 @@
       "rendered": "TKO Holds Town Hall Meeting, Mark Shapiro Emphasizes Safety In The Middle East"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/tko-holds-town-hall-meeting-mark-shapiro-emphasizes-safety-in-the-middle-east/l-intro-1793229337.jpg"
-  },
-  {
-    "id": 4394769536,
-    "link": "https://www.wrestlinginc.com/2297881/aew-fright-night-dynamite-october-28-2026-results/",
-    "date": "Wed, 28 Oct 2026 23:00:00 +0000",
-    "date_gmt": "2026-10-28T23:00:00.000Z",
-    "title": {
-      "rendered": "AEW Fright Night Dynamite Results 10/28/26 W/ Live Updates"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-fright-night-dynamite-october-28-2026-results/l-intro-1793240862.jpg"
   }
 ]

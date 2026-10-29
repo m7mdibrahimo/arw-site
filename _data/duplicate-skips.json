@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2287229/darby-allin-retains-tnt-title-qualifies-clockwork-carnage-aew-collision-main-event/": {
-    "matchedFile": "20261015023100-نتائج-عرض-aew-dynamite-collision-14-أكتوبر-2026-آدم-كوبلاند-يكشف-عن-خططه-المستقبلية.md",
-    "reason": "الخبر الجديد يغطي نتيجة نزال تأهيلي في عرض AEW Collision الذي تم تغطية نتائجه بالفعل في الخبر رقم 0.",
-    "at": "2026-10-15T03:42:43.135Z"
-  },
   "https://www.ringsidenews.com/tony-khan-announces-jamie-hayter-sidelined-injury-aew-dynamitecollision/": {
     "matchedFile": "20261015073515-توني-خان-يعلن-إصابة-جيمي-هايتر-ويأمل-عودتها-خلال-أسبوعين.md",
     "reason": "الخبر الجديد يكرر إعلان توني خان عن إصابة جيمي هايتر وتوقع عودتها خلال أسبوعين بسبب إصابتها في نزال شيكاغو، وهو نفس المحتوى والمصدر المذكور في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261029010249-السبب-وراء-غياب-نجمة-tna-لي-يينغ-لي-الطويل-عن-الشاشات.md",
     "reason": "الخبر الجديد يكرر نفس المعلومة الأساسية حول غياب لي يينغ لي وسبب تواجدها في الصين وارتباطها بعقد مع TNA، وهي تفاصيل تم تغطيتها بالكامل في الخبر المنشور.",
     "at": "2026-10-29T18:28:37.476Z"
+  },
+  "https://www.wrestlinginc.com/2301453/wwe-wrestlemania-43-backup-venue-the-sphere-las-vegas/": {
+    "matchedFile": "20261029195309-wwe-تملك-خطة-بديلة-سرية-لعرض-wrestlemania-43-إذا-تعذر-إقامته-في-السعودية.md",
+    "reason": "الخبر الجديد يغطي نفس تفاصيل خطة WWE البديلة لعرض WrestleMania 43 وموقف صالة The Sphere، وهي معلومات تم تناولها بالكامل في الخبر رقم 0.",
+    "at": "2026-10-29T18:43:12.870Z"
   }
 }
