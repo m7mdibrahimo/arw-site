@@ -1,7 +1,7 @@
 ---
 title: "Japan Boxing Commission Cancels Tenshin Nasukawa Match"
 slug: "japan-boxing-commission-cancels-tenshin-nasukawa-match"
-description: "Tenshin Nasukawa will no longer participate in an upcoming bout. TEAM TENSHIN, the group backing the former MMA fighter, kickboxer, and active boxer."
+description: "Tenshin Nasukawa will no longer participate in an upcoming bout."
 federation: INDIE
 date: 2026-10-29T15:18:02.000Z
 source_id: 336401
