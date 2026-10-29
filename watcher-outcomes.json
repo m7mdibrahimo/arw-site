@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aew-fright-night-dynamite-results-highlights-key-moments-october-28-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-29T00:12:38.311Z"
+ },
  "https://www.fightful.com/wrestling/aew-collision-10-24-draws-nearly-450000-viewers-on-cable-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,11 +48,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-29T00:05:00.040Z"
- },
- "https://www.ringsidenews.com/aew-fright-night-dynamite-results-highlights-key-moments-october-28-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-28T23:59:05.158Z"
  },
  "https://www.fightful.com/?p=336338": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
