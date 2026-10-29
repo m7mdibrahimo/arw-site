@@ -4458,17 +4458,16 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ام ال بي 21.10.2026 مترجم",
-    "lastAttempt": 1793260741334,
+    "lastAttempt": 1793261570111,
     "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
     },
     "processing": [
-      "instagram_story",
-      "tiktok"
+      "instagram_story"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261029094308-mlp-special-rohan-vs-andrade-priscilla-kelly-vs-storm-28-10-2026": {
     "publishedAt": 1793257319134,
@@ -4477,9 +4476,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ام ال بي 28.10.2026 مترجم",
-    "lastAttempt": 1793257330614,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1793261571744,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
