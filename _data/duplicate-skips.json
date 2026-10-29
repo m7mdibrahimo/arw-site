@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/roman-reigns-emphasizes-the-importance-of-metrics-says-the-big-dog-moved-more-merch-than-la-knight-does/": {
-    "matchedFile": "20261014201034-رومان-رينز-يرفض-المشككين-في-استحقاقه-لمكانته-البارزة-في-wwe.md",
-    "reason": "الخبر الجديد يعيد سرد نفس التصريحات التي أدلى بها رومان رينز في نفس اللقاء حول إحصائيات البضائع ومقارنته بـ ال ايه نايت، وهي نفس المعلومات الواردة في الخبر رقم 0.",
-    "at": "2026-10-14T19:36:26.183Z"
-  },
   "https://www.fightful.com/wrestling/santi-rivera-confirms-exit-from-wwe-id-program/": {
     "matchedFile": "20261013192723-تقرير-كابوتشينو-جونز-وسانتي-ريفيرا-يغادران-برنامج-wwe-id.md",
     "reason": "الخبر الجديد يغطي نفس واقعة رحيل سانتي ريفيرا عن برنامج WWE ID التي تم تناولها في الخبر المنشور، وتصريح ريفيرا يعتبر رداً أو تأكيداً شخصياً على خبر رحيله الذي سبق نشره.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261029052917-كوين-أميناتا-تفوز-ببطولة-tbs-في-عرض-aew-dynamite.md",
     "reason": "الخبر الجديد يغطي نفس نتيجة النزال وتتويج كوين أميناتا ببطولة TBS في عرض AEW Dynamite، وهو مطابق تماماً لما ورد في الخبر المنشور.",
     "at": "2026-10-29T02:37:30.441Z"
+  },
+  "https://www.wrestlinginc.com/2300611/aew-dynamite-queen-animata-dethrones-persephone-tbs-title-main-event/": {
+    "matchedFile": "20261029052917-كوين-أميناتا-تفوز-ببطولة-tbs-في-عرض-aew-dynamite.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث والنتيجة تماماً (فوز كوين أميناتا ببطولة TBS على حساب بيرسيفوني في عرض AEW Dynamite وتدخل بريت بيكر) وهو مكرر للخبر المنشور برقم 0 من مصدر آخر.",
+    "at": "2026-10-29T02:41:40.587Z"
   }
 }
