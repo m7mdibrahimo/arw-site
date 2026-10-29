@@ -2398,6 +2398,7 @@ module.exports = function(eleventyConfig) {
       for (const [from, to] of dropped) console.warn(`[redirects] skipped ${from} → ${to}: it would send a live page to a missing one (INCIDENTS #455)`);
       writeRedirectPages(tooLong, "_site"); // over-long Arabic redirects (INCIDENTS #200)
       writeRedirectPages(vanishedLibraryRedirects(), "_site"); // library pages whose show moved to another program (INCIDENTS #951)
+      writeRedirectPages(require("./lib/redirects.cjs").orphanEnglishRedirects(), "_site"); // English stories whose Arabic story was deleted (INCIDENTS #982)
       writeRedirectPages(require("./lib/redirects.cjs").vanishedShowRedirects(), "_site"); // in-between show addresses after quick title edits (INCIDENTS #961)
       writeRedirectPages(require("./lib/redirects.cjs").legacyArticleAddresses(), "_site"); // old article addresses Google still holds (INCIDENTS #274)
       writeRedirectPages(require("./lib/redirects.cjs").contentFolderAddresses(), "_site"); // «/content/<section>/<file>/» addresses (INCIDENTS #284)

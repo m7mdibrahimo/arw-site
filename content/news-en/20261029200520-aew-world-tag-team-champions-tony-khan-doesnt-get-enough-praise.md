@@ -1,5 +1,5 @@
 ---
-title: "AEW World Tag Team Champions: Tony Khan 'Doesn't Get Enough Praise'"
+title: "The Young Bucks: Tony Khan 'Doesn't Get Enough Praise'"
 slug: "aew-world-tag-team-champions-tony-khan-doesnt-get-enough-praise"
 description: "AEW World Tag Team Champions the Young Bucks recently discussed their ongoing run in AEW and praised their boss, Tony Khan."
 federation: AEW

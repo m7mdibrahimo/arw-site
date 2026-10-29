@@ -8797,6 +8797,17 @@
       "wrong": "لأنها تحويل",
       "right": "لأنها تحول",
       "note": "بعد «لأنها» فعل مش مصدر (خبر بول هيمان، #973)"
-    }
+    },
+    {"wrong": "سايا كورارا", "right": "ساياكا كورارا", "note": "Sayaka Kurara (Stardom) — البوت شال «كا» من اسمها في نتائج Crimson Nightmare (INCIDENTS #982)"},
+    {"wrong": "أومي صوهري", "right": "آمي سوهري", "note": "Ami Sohrei (Stardom) — نتائج Crimson Nightmare (INCIDENTS #982)"},
+    {"wrong": "يون ميزوموري", "right": "يونا ميزوموري", "note": "Yuna Mizumori (Stardom) — نتائج Crimson Nightmare (INCIDENTS #982)"},
+    {"wrong": "تغلبت(?=\\s+(?:ال)?(?:فريق|ثنائي|ثلاثي)(?![\\u0621-\\u064A]))", "right": "تغلب", "regex": true, "note": "«الفريق/الثنائي/الثلاثي» مذكر: «تغلب الفريق» مش «تغلبت الفريق» — نتائج Stardom Crimson Nightmare (INCIDENTS #982)"},
+    {"wrong": "فازت(?=\\s+(?:ال)?(?:فريق|ثنائي|ثلاثي)(?![\\u0621-\\u064A]))", "right": "فاز", "regex": true, "note": "«الفريق/الثنائي/الثلاثي» مذكر: «فاز الفريق» مش «فازت الفريق» — نتائج Stardom Crimson Nightmare (INCIDENTS #982)"},
+    {"wrong": "تمكنت(?=\\s+(?:ال)?(?:فريق|ثنائي|ثلاثي)(?![\\u0621-\\u064A]))", "right": "تمكن", "regex": true, "note": "«الفريق/الثنائي/الثلاثي» مذكر: «تمكن الفريق» مش «تمكنت الفريق» — نتائج Stardom Crimson Nightmare (INCIDENTS #982)"},
+    {"wrong": "نجحت(?=\\s+(?:ال)?(?:فريق|ثنائي|ثلاثي)(?![\\u0621-\\u064A]))", "right": "نجح", "regex": true, "note": "«الفريق/الثنائي/الثلاثي» مذكر: «نجح الفريق» مش «نجحت الفريق» — نتائج Stardom Crimson Nightmare (INCIDENTS #982)"},
+    {"wrong": "انتصرت(?=\\s+(?:ال)?(?:فريق|ثنائي|ثلاثي)(?![\\u0621-\\u064A]))", "right": "انتصر", "regex": true, "note": "«الفريق/الثنائي/الثلاثي» مذكر: «انتصر الفريق» مش «انتصرت الفريق» — نتائج Stardom Crimson Nightmare (INCIDENTS #982)"},
+    {"wrong": "تفوقت(?=\\s+(?:ال)?(?:فريق|ثنائي|ثلاثي)(?![\\u0621-\\u064A]))", "right": "تفوق", "regex": true, "note": "«الفريق/الثنائي/الثلاثي» مذكر: «تفوق الفريق» مش «تفوقت الفريق» — نتائج Stardom Crimson Nightmare (INCIDENTS #982)"},
+    {"wrong": "احتفظت(?=\\s+(?:ال)?(?:فريق|ثنائي|ثلاثي)(?![\\u0621-\\u064A]))", "right": "احتفظ", "regex": true, "note": "«الفريق/الثنائي/الثلاثي» مذكر: «احتفظ الفريق» مش «احتفظت الفريق» — نتائج Stardom Crimson Nightmare (INCIDENTS #982)"},
+    {"wrong": "توجت(?=\\s+(?:ال)?(?:فريق|ثنائي|ثلاثي)(?![\\u0621-\\u064A]))", "right": "توج", "regex": true, "note": "«الفريق/الثنائي/الثلاثي» مذكر: «توج الفريق» مش «توجت الفريق» — نتائج Stardom Crimson Nightmare (INCIDENTS #982)"}
   ]
 }
