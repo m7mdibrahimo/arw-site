@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2297881/aew-fright-night-dynamite-october-28-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-29T01:04:32.353Z"
+ },
  "https://www.fightful.com/wrestling/aew-collision-10-24-draws-nearly-450000-viewers-on-cable-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -38,11 +43,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-29T00:49:01.015Z"
- },
- "https://www.wrestlinginc.com/2297881/aew-fright-night-dynamite-october-28-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-29T00:48:55.292Z"
  },
  "https://www.fightful.com/wrestling/jimmy-house-says-he-learned-how-to-work-heel-in-wwe-evolve": {
   "reason": "مكرر مع خبر نزل قبل كده",
