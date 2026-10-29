@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2301775/tna-thursday-night-impact-october-29-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-29T22:03:43.557Z"
+ },
  "https://www.fightful.com/wrestling/chris-jericho-says-tv-series-about-early-portion-of-his-career-is-close-to-filming-pilot-episode": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-17T15:18:17.999Z"
- },
- "https://www.wrestlinginc.com/2286138/aew-wwe-njpw-david-finlay-ambitions": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-17T15:05:39.539Z"
  }
 }
