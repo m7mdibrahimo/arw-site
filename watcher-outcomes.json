@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2301731/dave-meltzer-wwe-crown-jewel-venue-change-riyadh-saudi-arabia": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-10-29T21:12:35.055Z"
+ },
  "https://www.fightful.com/wrestling/tony-dangelo-if-the-show-is-not-doing-numbers-they-looked-at-me-as-the-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)",
   "retry": false,
   "at": "2026-10-17T15:02:56.627Z"
- },
- "https://www.fightful.com/wrestling/334208-wwe-smackdown-aaa": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-17T13:37:24.554Z"
  }
 }
