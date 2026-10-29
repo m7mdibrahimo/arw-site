@@ -74,3 +74,10 @@ test("the people a story is tagged with are mentioned after the headline's (roun
   // no tags: the headline alone, as before
   assert.deepEqual(personMentions("حذف ماكس كاستر من صفحة قائمة مصارعي AEW").map((x) => x.en), ["Max Caster"]);
 });
+
+// round 2026-10-29: «liv morgan boy meets world» on position 8.9 while the page's structured data only knew Liv Morgan
+test("an English story's structured data is about the tags its headline names, not promotions or its people", () => {
+  const { englishTopics } = require("../lib/wrestler-mentions.cjs");
+  assert.deepEqual(englishTopics("Liv Morgan Calls Cory Matthews Toxic After Rewatching Boy Meets World", ["Liv Morgan", "WWE", "Hot Ones", "Boy Meets World"]), ["Boy Meets World"]);
+  assert.deepEqual(englishTopics("Kyle Fletcher to Challenge Will Ospreay at AEW Full Gear", ["AEW", "AEW Full Gear", "Kyle Fletcher"]), ["AEW Full Gear"]);
+});

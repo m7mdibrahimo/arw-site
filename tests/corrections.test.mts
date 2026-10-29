@@ -1266,3 +1266,11 @@ test("«نزالتها», «ركلات خارقة», «لا تمنع تجنب» 
   }
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #952: literal translations in the Cena, Fletcher, Toni Storm and Asuka stories
+test('teases are «تلميحات», and the guide names the literal phrases to avoid', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('من خلال هذه الأدوار التشويقية حتى تعود'), 'من خلال هذه التلميحات التشويقية حتى تعود');
+  const guide = fs.readFileSync("editorial/style-guide.md", "utf-8");
+  for (const s of ["«مصارع احتياطي لم يكن من المقرر أن يشارك»", "«انتقل للحديث عن نفسه»", "«حي كيتا»"]) assert.ok(guide.includes(s), s);
+});

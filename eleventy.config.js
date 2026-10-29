@@ -1871,6 +1871,11 @@ module.exports = function(eleventyConfig) {
     return require("./lib/wrestler-mentions.cjs").englishPersonMentions(text);
   });
 
+  // The things an English headline names besides its people («Boy Meets World»), for the page's structured data only
+  eleventyConfig.addNunjucksGlobal("englishTopics", function(headline, tags) {
+    return require("./lib/wrestler-mentions.cjs").englishTopics(headline, tags);
+  });
+
   // The ways visitors write a program's library page, for its structured data only (INCIDENTS #503)
   eleventyConfig.addNunjucksGlobal("libraryNameForms", function(prog, year) {
     return require("./lib/show-seo.cjs").libraryNameForms({ arName: prog && prog.arName, name: prog && prog.name, aliases: (prog && prog.aliases) || [], year, count: (prog && prog.count) || 0, latest: prog && prog.latest && prog.latest.eventDate });
@@ -2377,11 +2382,12 @@ module.exports = function(eleventyConfig) {
       fs.cpSync("assets", "_site/assets", { recursive: true });
     }
     if (fs.existsSync("_redirects")) {
-      const { toPagesRedirects, renamedArticleRedirects, writeRedirectPages } = require("./lib/redirects.cjs");
+      const { toPagesRedirects, renamedArticleRedirects, vanishedLibraryRedirects, writeRedirectPages } = require("./lib/redirects.cjs");
       const tooLong = [], dropped = [];
       fs.writeFileSync("_site/_redirects", toPagesRedirects(fs.readFileSync("_redirects", "utf-8"), "_site", renamedArticleRedirects(), tooLong, dropped));
       for (const [from, to] of dropped) console.warn(`[redirects] skipped ${from} → ${to}: it would send a live page to a missing one (INCIDENTS #455)`);
       writeRedirectPages(tooLong, "_site"); // over-long Arabic redirects (INCIDENTS #200)
+      writeRedirectPages(vanishedLibraryRedirects(), "_site"); // library pages whose show moved to another program (INCIDENTS #951)
       writeRedirectPages(require("./lib/redirects.cjs").legacyArticleAddresses(), "_site"); // old article addresses Google still holds (INCIDENTS #274)
       writeRedirectPages(require("./lib/redirects.cjs").contentFolderAddresses(), "_site"); // «/content/<section>/<file>/» addresses (INCIDENTS #284)
     }
