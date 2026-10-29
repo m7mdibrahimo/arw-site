@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2300606/aew-dynamite-fright-night-darby-allin-josh-alexander-tnt-title": {
+  "reason": "المراجعة رفضته: ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-29T02:21:08.646Z"
+ },
  "https://www.fightful.com/wrestling/update-on-timeless-toni-storm": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-16T15:12:22.958Z"
- },
- "https://www.wrestlinginc.com/2288559/bully-ray-jevon-evans-wwe-mitb-money-in-the-bank-ladder-ambulance": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-16T15:04:50.596Z"
  }
 }
