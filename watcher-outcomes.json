@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/elayna-black-says-she-didnt-care-who-paid-most-wwe-fired-her": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-29T16:09:29.010Z"
+ },
  "https://www.fightful.com/wrestling/queen-aminata-comments-on-aew-tbs-title-win": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
