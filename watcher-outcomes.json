@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2300643/ilja-dragunov-thinks-former-wwe-rival-gunther-goat": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-29T14:37:55.082Z"
+ },
  "https://www.fightful.com/wrestling/336389-grayson-waller-john-cena": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -58,11 +63,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-29T14:42:57.879Z"
- },
- "https://www.wrestlinginc.com/2300643/ilja-dragunov-thinks-former-wwe-rival-gunther-goat": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-29T14:28:14.341Z"
  },
  "https://www.fightful.com/wrestling/wwe-evolve-results-10-28": {
   "reason": "المراجعة رفضته: أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
