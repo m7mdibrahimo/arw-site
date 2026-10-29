@@ -1,5 +1,15 @@
 [
   {
+    "id": 802261048,
+    "link": "https://www.ringsidenews.com/aew-collision-spoiler-results-october-31-2026/",
+    "date": "Thu, 29 Oct 2026 10:20:56 +0000",
+    "date_gmt": "2026-10-29T10:20:56.000Z",
+    "title": {
+      "rendered": "AEW Collision Spoiler Results for October 31, 2026"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/spoiler-absent-aew-stars-return-during-collision-taping-in-st-louis-07.jpg?x72895"
+  },
+  {
     "id": 802261031,
     "link": "https://www.ringsidenews.com/spoiler-absent-aew-stars-return-during-collision-taping-st-louis/",
     "date": "Thu, 29 Oct 2026 10:18:21 +0000",
@@ -138,15 +148,5 @@
       "rendered": "Tony Khan Claims AEW Has the Most Affordable Tickets in TV Wrestling"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/tony-khan-claims-aew-has-the-most-affordable-tickets-in-tv-wrestling-10.jpg?x72895"
-  },
-  {
-    "id": 802260788,
-    "link": "https://www.ringsidenews.com/wwe-smackdown-viewership-sees-drop-october-23-2026/",
-    "date": "Wed, 28 Oct 2026 20:48:02 +0000",
-    "date_gmt": "2026-10-28T20:48:02.000Z",
-    "title": {
-      "rendered": "WWE SmackDown Viewership Sees Drop on October 23, 2026"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/02/SmackDown-Massive-Decrease.jpg?x72895"
   }
 ]
