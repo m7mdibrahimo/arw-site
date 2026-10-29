@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
-const { showSeoText, showNameForms } = require("../lib/show-seo.cjs");
+const { showSeoText, showNameForms, showAliasesFor } = require("../lib/show-seo.cjs");
 
 // INCIDENTS #690: two parts of one event on one day had the same title/description, and an AEW show got «wwe AEW WrestleDream 2026 مترجم».
 test("the two parts of an event keep their part mark in the head", () => {
@@ -183,4 +183,22 @@ test("a show's keywords put the episode's dated names before the program's spell
   assert.ok(kw.includes("اسم 0"));
   assert.ok(kw.includes("AEW Dynamite October 14 2026"));
   assert.equal(keywordList(["AEW"], names, 14).includes("AEW Dynamite October 14 2026"), false);
+});
+
+// INCIDENTS #964: the Tailgate Brawl pre-show carried the main WrestleDream page's own dated names word for word.
+test("a pre-show on the main show's day does not claim the main show's dated names", () => {
+  const aliases = ["عرض ريسل دريم", "ريسلدريم", "ريسل دريم", "WrestleDream", "AEW WrestleDream", "AEW WrestleDream مترجم", "ريسل دريم مترجم"];
+  const names = (headline: string, title: string) => {
+    const a = showAliasesFor({ headline, title, programName: "AEW WrestleDream", aliases });
+    return [...a, ...showNameForms({ headline, title, programName: "AEW WrestleDream", eventDate: "2026-10-17", aliases: a, isShow: true, archive: false, isLatest: false })];
+  };
+  const pre = names("عرض ريسل دريم تيلغيت برول 17.10.2026 مترجم", "AEW WrestleDream Tailgate Brawl (2026)");
+  const main = names("عرض ريسل دريم 17.10.2026 مترجم", "AEW WrestleDream (2026)");
+  for (const n of ["عرض ريسل دريم 17.10.2026", "AEW WrestleDream October 17 2026", "ريسل دريم 2026 كامل", "ريسل دريم مترجم", "AEW مترجم"]) {
+    assert.ok(main.includes(n), n);
+    assert.ok(!pre.includes(n), n);
+  }
+  for (const n of ["AEW WrestleDream Tailgate Brawl October 17 2026", "عرض ريسل دريم تيلغيت برول 2026 مترجم", "تيلغيت برول", "تيلغيت برول مترجم"]) assert.ok(pre.includes(n), n);
+  // a special night of a weekly program is not a pre-show
+  assert.ok(names("عرض داينامايت 28.10.2026 مترجم", "AEW Fright Night Dynamite").length > 0);
 });
