@@ -2,12 +2,12 @@
  "https://www.ringsidenews.com/rusev-responds-rumors-hell-join-new-wwe-faction-ethan-page-big-cass": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-10-30T15:42:20.630Z"
+  "at": "2026-10-30T15:44:55.555Z"
  },
  "https://www.ringsidenews.com/wwes-original-plans-world-tag-team-title-match-crown-jewel-2026": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
   "retry": true,
-  "at": "2026-10-30T15:41:09.452Z"
+  "at": "2026-10-30T15:44:11.344Z"
  },
  "https://www.fightful.com/wrestling/tammy-sytch-attempting-to-have-conviction-thrown-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
