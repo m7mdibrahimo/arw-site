@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/rusev-responds-rumors-hell-join-new-wwe-faction-ethan-page-big-cass": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-30T16:53:41.640Z"
+ },
+ "https://www.ringsidenews.com/wwes-original-plans-world-tag-team-title-match-crown-jewel-2026": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
+  "retry": true,
+  "at": "2026-10-30T16:52:29.428Z"
+ },
  "https://www.fightful.com/wrestling/rusev-says-he-got-sick-after-suffering-injury-on-wwe-raw-doesnt-think-the-two-incidents-were-related": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
