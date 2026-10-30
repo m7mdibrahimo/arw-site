@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/alexa-bliss-tatum-paxley-recreate-iconic-dodgeball-scene-halloween": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-30T23:10:44.151Z"
+ },
  "https://www.fightful.com/wrestling/mike-foley-calls-wwe-hall-of-famer-the-most-corrupted-preside-in-history": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,11 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-30T23:09:48.889Z"
- },
- "https://www.ringsidenews.com/alexa-bliss-tatum-paxley-recreate-iconic-dodgeball-scene-halloween": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-30T22:45:23.809Z"
  },
  "https://www.fightful.com/wrestling/cm-punk-added-to-nxt-holiday-live-tour": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
