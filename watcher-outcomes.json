@@ -12,47 +12,47 @@
  "https://www.fightful.com/wrestling/ric-flair-responds-to-people-that-wonder-how-hes-still-alive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T18:32:13.936Z"
+  "at": "2026-10-30T18:36:47.740Z"
  },
  "https://www.fightful.com/wrestling/tatum-paxley-to-appear-as-panelist-at-nxt-halloween-havoc-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T18:32:13.710Z"
+  "at": "2026-10-30T18:36:47.481Z"
  },
  "https://www.fightful.com/wrestling/rusev-says-he-got-sick-after-suffering-injury-on-wwe-raw-doesnt-think-the-two-incidents-were-related": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T18:32:13.424Z"
+  "at": "2026-10-30T18:36:47.149Z"
  },
  "https://www.fightful.com/wrestling/tammy-sytch-attempting-to-have-conviction-thrown-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T18:32:13.136Z"
+  "at": "2026-10-30T18:36:46.815Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-viewership-10-22-drops-remains-over-230000-views": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-22)",
   "retry": false,
-  "at": "2026-10-30T18:32:12.784Z"
+  "at": "2026-10-30T18:36:46.408Z"
  },
  "https://www.fightful.com/wrestling/new-venue-in-riyadh-listed-for-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T18:32:12.638Z"
+  "at": "2026-10-30T18:36:46.238Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-30T18:32:12.212Z"
+  "at": "2026-10-30T18:36:45.824Z"
  },
  "https://www.fightful.com/wrestling/tony-dangelo-says-he-went-to-speech-therapy-to-transtion-from-his-don-character": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T18:32:11.937Z"
+  "at": "2026-10-30T18:36:45.509Z"
  },
  "https://www.fightful.com/wrestling/wwe-live-results-10-29-26-chad-gable-scores-pinfall-victory-over-cm-punk": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: LA Knight",
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: LA Knight، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
   "retry": true,
-  "at": "2026-10-30T18:32:11.389Z"
+  "at": "2026-10-30T18:36:44.878Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-results-10-29-slaughterhouse-syx-amazing-red-vs-cedric-alexander": {
   "reason": "مكرر مع خبر نزل قبل كده",
