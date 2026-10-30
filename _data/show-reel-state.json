@@ -4530,15 +4530,17 @@
     "publishedAt": 1793367129557,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض تي ان ايه امباكت 29.10.2026 مترجم",
-    "lastAttempt": 1793367142664,
+    "lastAttempt": 1793370659576,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
     },
     "processing": [
-      "instagram_reel"
+      "instagram_story",
+      "tiktok"
     ],
     "reviewPlatforms": [],
     "needsReview": false
