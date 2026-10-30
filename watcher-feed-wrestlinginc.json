@@ -1,5 +1,15 @@
 [
   {
+    "id": 1035126786,
+    "link": "https://www.wrestlinginc.com/2302864/wwe-crown-jewel-2026-saudi-arabia-report-no-stars-declined-travel/",
+    "date": "Fri, 30 Oct 2026 19:36:08 +0000",
+    "date_gmt": "2026-10-30T19:36:08.000Z",
+    "title": {
+      "rendered": "Report: No WWE Stars Have Declined To Travel To Saudi Arabia For Crown Jewel"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/report-no-wwe-stars-have-declined-to-travel-to-saudi-arabia-for-crown-jewel/l-intro-1793388884.jpg"
+  },
+  {
     "id": 5174207623,
     "link": "https://www.wrestlinginc.com/2302471/aew-ilja-dragunov-continental-classic-entering-comments/",
     "date": "Fri, 30 Oct 2026 16:33:37 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Backstage Update On Potential WWE Interest In AEW Star Dralistico"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-potential-wwe-interest-in-aew-star-dralistico/l-intro-1793315914.jpg"
-  },
-  {
-    "id": 1266535362,
-    "link": "https://www.wrestlinginc.com/2301812/wwe-nxt-halloween-havoc-2026-draws-duds-grayson-waller-tony-dangelo-wren-sinclair-kelani-jordan/",
-    "date": "Thu, 29 Oct 2026 22:26:52 +0000",
-    "date_gmt": "2026-10-29T22:26:52.000Z",
-    "title": {
-      "rendered": "WWE NXT Halloween Havoc 2026: Draws & Duds"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-halloween-havoc-2026-draws-duds/l-intro-1793312371.jpg"
   }
 ]
