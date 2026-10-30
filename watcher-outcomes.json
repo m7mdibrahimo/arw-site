@@ -1,58 +1,63 @@
 {
- "https://www.fightful.com/wrestling/wwe-live-results-10-29-26-chad-gable-scores-pinfall-victory-over-cm-punk": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+ "https://www.fightful.com/wrestling/wwe-nxt-10-27-viewership-drops-21-against-world-series": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
   "retry": true,
-  "at": "2026-10-30T10:28:16.296Z"
+  "at": "2026-10-30T10:40:09.594Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-live-results-10-29-26-chad-gable-scores-pinfall-victory-over-cm-punk": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
+  "retry": true,
+  "at": "2026-10-30T10:39:13.612Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-results-10-29-slaughterhouse-syx-amazing-red-vs-cedric-alexander": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T10:27:51.527Z"
+  "at": "2026-10-30T10:38:53.500Z"
  },
  "https://www.fightful.com/wrestling/chris-jericho-says-tv-series-about-early-portion-of-his-career-is-close-to-filming-pilot-episode": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T10:27:51.376Z"
+  "at": "2026-10-30T10:38:53.331Z"
  },
  "https://www.fightful.com/wrestling/tony-dangelo-if-the-show-is-not-doing-numbers-they-looked-at-me-as-the-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T10:27:51.157Z"
+  "at": "2026-10-30T10:38:53.077Z"
  },
  "https://www.fightful.com/wrestling/report-lei-ying-lee-still-under-contract-with-tna": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T10:27:50.631Z"
+  "at": "2026-10-30T10:38:52.470Z"
  },
  "https://www.fightful.com/wrestling/report-shawn-michaels-expected-to-step-into-bruce-prichards-role": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T10:27:50.351Z"
+  "at": "2026-10-30T10:38:52.146Z"
  },
  "https://www.fightful.com/wrestling/wwe-wants-to-ensure-john-cena-classic-looks-feels-different-consults-shawn-michaels-aj-styles": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T10:27:50.133Z"
+  "at": "2026-10-30T10:38:51.892Z"
  },
  "https://www.fightful.com/wrestling/working-creative-idea-for-paul-heymans-return-to-wwe-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T10:27:49.914Z"
+  "at": "2026-10-30T10:38:51.640Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-aew-has-the-most-affordable-tickets-in-tv-wrestling-were-not-going-to-take-an-arm-and-a-leg": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T10:27:49.647Z"
+  "at": "2026-10-30T10:38:51.327Z"
  },
  "https://www.fightful.com/wrestling/wwe-has-backup-blueprint-for-hosting-wrestlemania-43-domestically": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T10:27:49.422Z"
+  "at": "2026-10-30T10:38:51.068Z"
  },
  "https://www.fightful.com/wrestling/wwe-has-no-plans-to-reshape-taping-schedule-for-smackdown-to-go-head-to-head-live-with-aew-new-years-smash": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T10:27:49.200Z"
+  "at": "2026-10-30T10:38:50.806Z"
  },
  "https://www.wrestlinginc.com/2301894/tna-impact-destination-x-world-x-cup-fabian-aichner-ricky-sosa-declare-themselves": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-17T17:56:22.128Z"
- },
- "https://www.fightful.com/wrestling/aew-posts-new-teaser-for-ilja-dragunov-with-aew-wrestledream-tag": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-17T16:31:58.694Z"
  }
 }
