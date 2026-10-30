@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/wwe-danhausens-very-nice-very-evil-smackdown-results-highlights-key-moments-october-30-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-30T23:39:37.124Z"
+ },
+ "https://www.ringsidenews.com/alexa-bliss-tatum-paxley-recreate-iconic-dodgeball-scene-halloween": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
+  "retry": true,
+  "at": "2026-10-30T23:39:37.040Z"
+ },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-10-30-2026-sami-zayn-vs-trick-williams-nikki-bella-vs-chelsea-green-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -53,11 +63,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-30T23:30:24.030Z"
- },
- "https://www.ringsidenews.com/alexa-bliss-tatum-paxley-recreate-iconic-dodgeball-scene-halloween": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-30T23:28:39.554Z"
  },
  "https://www.fightful.com/wrestling/tony-dangelo-says-he-went-to-speech-therapy-to-transtion-from-his-don-character": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-18T11:45:16.949Z"
- },
- "https://www.wrestlinginc.com/2289682/aew-wrestledream-2026-hated-loved-opinion-review": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-18T06:26:07.688Z"
  }
 }
