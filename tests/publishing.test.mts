@@ -4676,7 +4676,10 @@ test('a live page never redirects to a missing one, every video has its address,
 test('yearly event title carries its year once (round 2026-10-12: «عرض موني ان ذا بانك 2026»)', async () => {
   const { showSeoText } = await import('../lib/show-seo.cjs');
   const r = showSeoText({ headline: 'عرض موني ان ذا بانك 10.10.2026 مترجم', title: 'WWE Money in the Bank (2026)', programName: 'WWE Money in the Bank', eventDate: '2026-10-10', day: '10 أكتوبر 2026', isLatest: true });
-  assert.match(r.title, /^عرض موني ان ذا بانك 2026 الأخير 10\.10\.2026 كامل مترجم/);
+  // «الأخير» between the year and the date was no one's search: the name, the year and «كامل مترجم» stay together (INCIDENTS #993)
+  assert.match(r.title, /^عرض موني ان ذا بانك 2026 كامل مترجم 10\.10\.2026 — WWE Money in the Bank$/);
+  assert.doesNotMatch(r.title + r.description, /الأخير/);
+  assert.match(r.description, /^مشاهدة وتحميل عرض موني ان ذا بانك 2026 مترجم بالعربي .*\(10\.10\.2026، WWE Money in the Bank October 10, 2026\)/);
   const w = showSeoText({ headline: 'عرض سماك داون 09.10.2026 مترجم', title: 'WWE SmackDown 09.10.2026', programName: 'WWE Smackdown', eventDate: '2026-10-09', day: '9 أكتوبر 2026', isLatest: true });
   assert.doesNotMatch(w.title, /سماك داون 2026/);
 });

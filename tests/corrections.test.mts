@@ -1276,3 +1276,14 @@ test('teases are «تلميحات», and the guide names the literal phrases to 
   const guide = fs.readFileSync("editorial/style-guide.md", "utf-8");
   for (const s of ["«مصارع احتياطي لم يكن من المقرر أن يشارك»", "«انتقل للحديث عن نفسه»", "«حي كيتا»"]) assert.ok(guide.includes(s), s);
 });
+
+// INCIDENTS #992: «أحدث عرض من بودكاسته» (Booker T story) slipped past «أحدث عرض من بودكاست» because the pronoun is joined to the word;
+// and «bumps» became «ضربات» in the Jack Perry story
+test('a podcast has episodes even with a pronoun joined, and bumps are «سقطات» in the guide', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('وأوضح خلال أحدث عرض من بودكاسته قائلا'), 'وأوضح خلال أحدث حلقة من بودكاسته قائلا');
+  assert.equal(applyCorrections('في عرض من بودكاستها'), 'في حلقة من بودكاستها');
+  assert.equal(applyCorrections('في عرض من البودكاست'), 'في حلقة من البودكاست');
+  const guide = fs.readFileSync("editorial/style-guide.md", "utf-8");
+  assert.ok(guide.includes("«سقطة / سقطات»"));
+});
