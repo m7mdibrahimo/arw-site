@@ -1,5 +1,25 @@
 [
   {
+    "id": 2210198139,
+    "link": "https://www.wrestlinginc.com/2303009/wwe-crown-jewel-2026-saudi-arabia-changes-card-backstage-report/",
+    "date": "Fri, 30 Oct 2026 21:01:11 +0000",
+    "date_gmt": "2026-10-30T21:01:11.000Z",
+    "title": {
+      "rendered": "Backstage Report On Changes To WWE Crown Jewel Card"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-report-on-changes-to-wwe-crown-jewel-card/l-intro-1793393993.jpg"
+  },
+  {
+    "id": 3482908491,
+    "link": "https://www.wrestlinginc.com/2302585/wwe-smackdown-october-30-2026-results/",
+    "date": "Fri, 30 Oct 2026 21:00:00 +0000",
+    "date_gmt": "2026-10-30T21:00:00.000Z",
+    "title": {
+      "rendered": "WWE SmackDown Results 10/30/2026 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-results-10302026-w-live-updates/l-intro-1793381372.jpg"
+  },
+  {
     "id": 1569064968,
     "link": "https://www.wrestlinginc.com/2302962/wwe-shawn-michaels-rumored-promotion-additional-details-other-candidates/",
     "date": "Fri, 30 Oct 2026 20:24:47 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Amazing Red Defends X-Division Title Against Cedric Alexander On TNA Impact"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/amazing-red-defends-x-division-title-against-cedric-alexander-on-tna-impact/l-intro-1793325563.jpg"
-  },
-  {
-    "id": 1373107703,
-    "link": "https://www.wrestlinginc.com/2301886/tna-impact-m-by-elegance-jada-stone-retain-knockouts-tv-title-help-teammate/",
-    "date": "Fri, 30 Oct 2026 01:49:08 +0000",
-    "date_gmt": "2026-10-30T01:49:08.000Z",
-    "title": {
-      "rendered": "M By Elegance Retains Knockouts TV Title Over Jada Stone With Help From Teammate"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/m-by-elegance-retains-knockouts-tv-title-over-jada-stone-with-help-from-teammate/l-intro-1793324836.jpg"
-  },
-  {
-    "id": 1481950618,
-    "link": "https://www.wrestlinginc.com/2297801/wwe-booker-t-never-got-heat-locker-room/",
-    "date": "Fri, 30 Oct 2026 01:00:00 +0000",
-    "date_gmt": "2026-10-30T01:00:00.000Z",
-    "title": {
-      "rendered": "Booker T Explains Why He Never Got 'Heat' With The WWE Locker Room"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/booker-t-explains-why-he-never-got-heat-with-the-wwe-locker-room/l-intro-1793054337.jpg"
   }
 ]
