@@ -1,7 +1,7 @@
 ---
 title: "Liv Morgan Calls Cory Matthews Toxic After Rewatching Boy Meets World"
 slug: "liv-morgan-calls-cory-matthews-toxic-after-rewatching-boy-meets-world"
-description: "WWE star Liv Morgan recently revealed that rewatching the classic sitcom Boy Meets World as an adult completely changed her view of the main character."
+description: "Liv Morgan told Hot Ones that rewatching Boy Meets World as an adult changed her view of Cory Matthews, whom she now calls toxic and manipulative."
 federation: WWE
 date: 2026-10-08T15:44:42.000Z
 source_id: 802252426

@@ -1,7 +1,7 @@
 ---
 title: "Nic Nemeth Explains Taking Blame for Jeff Hardy Match Confusion"
 slug: "nic-nemeth-explains-taking-blame-for-jeff-hardy-match-confusion"
-description: "Nic Nemeth recently discussed why he publicly shouldered the blame for the confusion surrounding his advertised match against Jeff Hardy in TNA."
+description: "Nic Nemeth discussed why he publicly shouldered the blame for the confusion surrounding his advertised match against Jeff Hardy in TNA, according to Fightful."
 federation: TNA
 date: 2026-10-11T18:07:00.000Z
 source_id: 333274

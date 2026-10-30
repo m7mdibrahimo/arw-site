@@ -25,7 +25,8 @@ test("an English description never ends on «due», «than» or «rather»", () 
   const lead = 'Sami Zayn recently discussed his decision to refrain from posting on social media following the death of Benjamin "PAC" Satterly last month due to bronchial asthma. During an interview he explained more.';
   const d = metaDescription(lead);
   assert.doesNotMatch(d, /\bdue\.$/);
-  assert.match(d, /last month\.$/);
+  // since #991 the filler «recently» goes and the whole sentence fits
+  assert.match(d, /(?:last month|due to bronchial asthma)\.$/);
   const foley = "Mick Foley stated that AEW has become the wrestling show that keeps pulling him back because the company treats the entire roster with importance rather than focusing only on a few top stars. More text follows here.";
   assert.doesNotMatch(metaDescription(foley), /\b(?:rather|than)\.$/);
   for (const f of fs.readdirSync("content/news-en")) {

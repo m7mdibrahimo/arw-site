@@ -1,7 +1,7 @@
 ---
 title: "Andrade El Idolo Says His Pants Are Injured After Tommaso Ciampa's Beatdown at AEW WrestleDream"
 slug: "andrade-el-idolo-says-his-pants-are-injured-after-tommaso-ciampas-beatdown-at-ae"
-description: "Andrade El Idolo recently provided an update on his status after his pants were targeted and beaten down by Tommaso Ciampa during their match at AEW."
+description: "Andrade El Idolo provided an update on his status after his pants were targeted and beaten down by Tommaso Ciampa during their match at AEW WrestleDream."
 federation: AEW
 date: 2026-10-19T15:45:11.000Z
 source_id: 334681

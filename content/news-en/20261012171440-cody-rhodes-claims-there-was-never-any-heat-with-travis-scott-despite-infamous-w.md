@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Claims There Was Never Any Heat With Travis Scott Despite Infamous WWE Slap"
 slug: "cody-rhodes-claims-there-was-never-any-heat-with-travis-scott-despite-infamous-w"
-description: "Cody Rhodes recently addressed his infamous physical altercation with Travis Scott during their WWE storyline."
+description: "Cody Rhodes addressed his infamous physical altercation with Travis Scott during their WWE storyline, claiming there was never any real heat between them."
 federation: WWE
 date: 2026-10-12T14:14:40.000Z
 source_id: 802254107

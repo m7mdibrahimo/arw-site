@@ -1,7 +1,7 @@
 ---
 title: "WWE's Cody Rhodes Assesses Wrestling's Place in Culture"
 slug: "wwes-cody-rhodes-assesses-wrestlings-place-in-culture"
-description: "Cody Rhodes recently shared his thoughts on the current state of professional wrestling."
+description: "Cody Rhodes shared his thoughts on the current state of professional wrestling, highlighting its growing cultural impact both inside and outside the ring."
 federation: WWE
 date: 2026-10-28T15:00:00.000Z
 source_id: 1767823288

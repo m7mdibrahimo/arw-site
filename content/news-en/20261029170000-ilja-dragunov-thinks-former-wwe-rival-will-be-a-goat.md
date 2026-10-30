@@ -1,7 +1,7 @@
 ---
 title: "Ilja Dragunov Thinks Former WWE Rival Will Be 'A GOAT'"
 slug: "ilja-dragunov-thinks-former-wwe-rival-will-be-a-goat"
-description: "Ilja Dragunov recently opened up about his career and the influence of his long-time rival and former WWE colleague, GUNTHER."
+description: "Ilja Dragunov opened up about his career and the influence of his long-time rival and former WWE colleague, GUNTHER, whom he holds in the highest regard."
 federation: WWE
 date: 2026-10-29T14:00:00.000Z
 source_id: 948061818

@@ -1,7 +1,7 @@
 ---
 title: "Steve Maclin Talks About Planning the Match Against Adam Copeland at MLP Northern Rising"
 slug: "steve-maclin-talks-about-planning-the-match-against-adam-copeland-at-mlp"
-description: "Steve Maclin recently opened up about planning his street fight against Adam Copeland at the MLP Northern Rising event."
+description: "Steve Maclin opened up about planning his street fight against Adam Copeland at the MLP Northern Rising event, marking their first-time singles matchup."
 federation: INDIE
 date: 2026-10-28T16:00:00.000Z
 source_id: 335915

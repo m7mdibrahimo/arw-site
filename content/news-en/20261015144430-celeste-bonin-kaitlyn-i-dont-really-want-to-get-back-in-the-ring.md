@@ -1,7 +1,7 @@
 ---
 title: "Celeste Bonin (Kaitlyn): I Don't Really Want to Get Back in the Ring"
 slug: "celeste-bonin-kaitlyn-i-dont-really-want-to-get-back-in-the-ring"
-description: "Former WWE Divas Champion Celeste Bonin, also known as Kaitlyn, recently spoke about her current stance on wrestling and whether she plans to step back into."
+description: "Former WWE Divas Champion Celeste Bonin, also known as Kaitlyn, spoke about her current stance on wrestling and whether she plans to step back into the ring."
 federation: WWE
 date: 2026-10-15T11:44:30.000Z
 source_id: 334017

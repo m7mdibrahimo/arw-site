@@ -1,7 +1,7 @@
 ---
 title: "Orange Cassidy Offers Advice to This Year's AEW Blood & Guts Competitors"
 slug: "orange-cassidy-offers-advice-to-this-years-aew-blood-guts-competitors"
-description: "Orange Cassidy recently shared some advice for the participants in this year's AEW Blood And Guts match."
+description: "Orange Cassidy shared some advice for the participants in this year's AEW Blood And Guts match, which is scheduled for the upcoming episode of AEW Dynamite."
 federation: AEW
 date: 2026-10-28T12:30:25.000Z
 source_id: 336234

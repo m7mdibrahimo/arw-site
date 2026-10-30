@@ -1,7 +1,7 @@
 ---
 title: "John Cena Explains Why He Won't Pitch The Rock on Hollywood Team-Up"
 slug: "john-cena-explains-why-he-wont-pitch-the-rock-on-hollywood-team-up"
-description: "John Cena recently discussed his relationship with Dwayne \"The Rock\" Johnson and explained why he would never pressure him to collaborate on a Hollywood."
+description: "John Cena discussed his relationship with Dwayne \"The Rock\" Johnson and explained why he would never pressure him to collaborate on a Hollywood movie project."
 federation: WWE
 date: 2026-10-12T18:14:55.000Z
 source_id: 2155587292

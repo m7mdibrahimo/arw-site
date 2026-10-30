@@ -1,7 +1,7 @@
 ---
 title: "Speedball Mike Bailey Says Ilja Dragunov Is Going to Do Amazing in AEW"
 slug: "speedball-mike-bailey-says-ilja-dragunov-is-going-to-do-amazing-in-aew"
-description: "Speedball Mike Bailey recently reflected on his match against Ilja Dragunov."
+description: "Speedball Mike Bailey reflected on his match against Ilja Dragunov, expressing excitement about what the future holds for Dragunov in All Elite Wrestling."
 federation: AEW
 date: 2026-10-27T12:52:07.000Z
 source_id: 336037

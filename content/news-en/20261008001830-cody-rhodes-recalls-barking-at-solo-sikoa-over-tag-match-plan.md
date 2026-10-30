@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Recalls Barking at Solo Sikoa Over Tag Match Plan"
 slug: "cody-rhodes-recalls-barking-at-solo-sikoa-over-tag-match-plan"
-description: "Cody Rhodes shared a humorous backstage story about Solo Sikoa attempting to plan a tag team match that was never actually going to take place."
+description: "Cody Rhodes shared a humorous backstage story about Solo Sikoa attempting to plan a tag team match that was never going to take place, according to Fightful."
 federation: WWE
 date: 2026-10-07T21:18:30.000Z
 source_id: 332656

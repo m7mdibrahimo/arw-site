@@ -1,7 +1,7 @@
 ---
 title: "Royce Keys Calls Being Added to WWE 2K26 a 'Great Accomplishment'"
 slug: "royce-keys-calls-being-added-to-wwe-2k26-a-great-accomplishment"
-description: "Royce Keys recently discussed his inclusion in the WWE 2K26 roster, calling it a 'great accomplishment' and expressing his excitement about being a playable."
+description: "Royce Keys discussed his inclusion in the WWE 2K26 roster, calling it a 'great accomplishment' and expressing his excitement about being a playable character."
 federation: WWE
 date: 2026-10-28T18:39:20.000Z
 source_id: 336299

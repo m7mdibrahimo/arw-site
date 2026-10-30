@@ -1,7 +1,7 @@
 ---
 title: "Xelina Details How Cody Rhodes Saved 10 Minutes for Her and Giulia's Match on WWE SmackDown"
 slug: "xelina-details-how-cody-rhodes-saved-10-minutes-for-her-and-giulias-match-on-wwe"
-description: "Xelina, formerly known in WWE as Zelina Vega, recently shared that her August 2025 SmackDown match against Giulia is one of her favorite bouts from her WWE."
+description: "Xelina, formerly known in WWE as Zelina Vega, shared that her August 2025 SmackDown match against Giulia is one of her favorite bouts from her WWE tenure."
 federation: WWE
 date: 2026-10-15T20:13:34.000Z
 source_id: 334114

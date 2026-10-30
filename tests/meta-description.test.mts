@@ -179,3 +179,13 @@ test("a comma inside a list of names is not where the description ends (The Syx 
   const d = metaDescription("The Syx have been making waves in the TNA tag team division, but Samuel Shaw, Joseph Sawyer and Erick Redbeard recently took a break from their serious demeanor to participate in a viral social media trend. Fans at a recent ACW event were surprised.");
   assert.equal(d, "The Syx have been making waves in the TNA tag team division.");
 });
+
+test("a first sentence a little too long loses its filler adverbs, not its ending (INCIDENTS #991)", () => {
+  const d = metaDescription("WWE star Liv Morgan recently revealed that rewatching the classic sitcom Boy Meets World as an adult completely changed her view of the main character, Cory Matthews. During her appearance on Hot Ones with Sean Evans, Morgan explained that she once considered Cory the ultimate romantic partner.");
+  assert.equal(d, "WWE star Liv Morgan revealed that rewatching the classic sitcom Boy Meets World as an adult changed her view of the main character, Cory Matthews.");
+  const e = metaDescription("Former WWE prospect Jamin Olivencia recently shared the story of how a backstage encounter with Paul 'Triple H' Levesque led to him being blackballed from the company. He said more.");
+  assert.match(e, /blackballed from the company\.$/);
+  // «reportedly» changes what the sentence says: it is never dropped
+  const r = metaDescription("WWE has reportedly been discussing plans for a major return at the next premium live event in Saudi Arabia, with several top stars recently pitched for the match card. More follows here.");
+  assert.match(r, /reportedly/);
+});

@@ -1,7 +1,7 @@
 ---
 title: "Nikki Bella Says She’s Single but “Not for Sale”"
 slug: "nikki-bella-says-shes-single-but-not-for-sale"
-description: "Nikki Bella made it clear on a recent episode of her podcast that she is currently single."
+description: "Nikki Bella made it clear on a recent episode of her podcast that she is currently single, but she is not looking for anyone to help her find a partner."
 federation: WWE
 date: 2026-10-19T08:41:41.000Z
 source_id: 802257069

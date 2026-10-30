@@ -1,7 +1,7 @@
 ---
 title: "Alexa Bliss Reveals Ryan Cabrera Had No Idea Who She Was Before They Started Dating"
 slug: "alexa-bliss-reveals-ryan-cabrera-had-no-idea-who-she-was-before-they-started-dat"
-description: "Alexa Bliss recently shared the hilarious story of how her relationship with Ryan Cabrera began."
+description: "Alexa Bliss shared the hilarious story of how her relationship with Ryan Cabrera began, revealing that he had no idea who she was when they first connected."
 federation: WWE
 date: 2026-10-26T15:06:54.000Z
 source_id: 802259835
