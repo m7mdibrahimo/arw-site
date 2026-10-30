@@ -1,4 +1,64 @@
 {
+ "https://www.fightful.com/wrestling/ric-flair-responds-to-people-that-wonder-how-hes-still-alive": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-30T17:43:26.913Z"
+ },
+ "https://www.fightful.com/wrestling/tatum-paxley-to-appear-as-panelist-at-nxt-halloween-havoc-2026": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-30T17:43:26.690Z"
+ },
+ "https://www.fightful.com/wrestling/rusev-says-he-got-sick-after-suffering-injury-on-wwe-raw-doesnt-think-the-two-incidents-were-related": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-30T17:43:26.402Z"
+ },
+ "https://www.fightful.com/wrestling/tammy-sytch-attempting-to-have-conviction-thrown-out": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-30T17:43:26.113Z"
+ },
+ "https://www.fightful.com/wrestling/tna-impact-viewership-10-22-drops-remains-over-230000-views": {
+  "reason": "تقرير مشاهدة لعرض قديم (2026-10-22)",
+  "retry": false,
+  "at": "2026-10-30T17:43:25.761Z"
+ },
+ "https://www.fightful.com/wrestling/new-venue-in-riyadh-listed-for-wwe-crown-jewel": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-30T17:43:25.616Z"
+ },
+ "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-30T17:43:25.264Z"
+ },
+ "https://www.fightful.com/wrestling/tony-dangelo-says-he-went-to-speech-therapy-to-transtion-from-his-don-character": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-30T17:43:24.990Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-live-results-10-29-26-chad-gable-scores-pinfall-victory-over-cm-punk": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: LA Knight",
+  "retry": true,
+  "at": "2026-10-30T17:43:24.446Z"
+ },
+ "https://www.fightful.com/wrestling/tna-impact-results-10-29-slaughterhouse-syx-amazing-red-vs-cedric-alexander": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-30T17:40:32.822Z"
+ },
+ "https://www.fightful.com/wrestling/chris-jericho-says-tv-series-about-early-portion-of-his-career-is-close-to-filming-pilot-episode": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-30T17:40:32.673Z"
+ },
+ "https://www.fightful.com/wrestling/tony-dangelo-if-the-show-is-not-doing-numbers-they-looked-at-me-as-the-champion": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-30T17:40:32.445Z"
+ },
  "https://www.ringsidenews.com/rusev-responds-rumors-hell-join-new-wwe-faction-ethan-page-big-cass": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -8,66 +68,6 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
   "retry": true,
   "at": "2026-10-30T17:36:36.862Z"
- },
- "https://www.fightful.com/wrestling/ric-flair-responds-to-people-that-wonder-how-hes-still-alive": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T17:34:40.892Z"
- },
- "https://www.fightful.com/wrestling/tatum-paxley-to-appear-as-panelist-at-nxt-halloween-havoc-2026": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T17:34:40.610Z"
- },
- "https://www.fightful.com/wrestling/rusev-says-he-got-sick-after-suffering-injury-on-wwe-raw-doesnt-think-the-two-incidents-were-related": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T17:34:40.248Z"
- },
- "https://www.fightful.com/wrestling/tammy-sytch-attempting-to-have-conviction-thrown-out": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T17:34:39.885Z"
- },
- "https://www.fightful.com/wrestling/tna-impact-viewership-10-22-drops-remains-over-230000-views": {
-  "reason": "تقرير مشاهدة لعرض قديم (2026-10-22)",
-  "retry": false,
-  "at": "2026-10-30T17:34:39.438Z"
- },
- "https://www.fightful.com/wrestling/new-venue-in-riyadh-listed-for-wwe-crown-jewel": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T17:34:39.253Z"
- },
- "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-30T17:34:38.809Z"
- },
- "https://www.fightful.com/wrestling/tony-dangelo-says-he-went-to-speech-therapy-to-transtion-from-his-don-character": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T17:34:38.466Z"
- },
- "https://www.fightful.com/wrestling/wwe-live-results-10-29-26-chad-gable-scores-pinfall-victory-over-cm-punk": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: LA Knight",
-  "retry": true,
-  "at": "2026-10-30T17:34:37.780Z"
- },
- "https://www.fightful.com/wrestling/tna-impact-results-10-29-slaughterhouse-syx-amazing-red-vs-cedric-alexander": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T17:33:51.621Z"
- },
- "https://www.fightful.com/wrestling/chris-jericho-says-tv-series-about-early-portion-of-his-career-is-close-to-filming-pilot-episode": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T17:33:51.427Z"
- },
- "https://www.fightful.com/wrestling/tony-dangelo-if-the-show-is-not-doing-numbers-they-looked-at-me-as-the-champion": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T17:33:51.123Z"
  },
  "https://www.ringsidenews.com/ric-flair-fires-back-people-asking-how-hes-still-alive-nasty-fall": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
