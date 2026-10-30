@@ -1,5 +1,25 @@
 [
   {
+    "id": 3432170407,
+    "link": "https://www.wrestlinginc.com/2301996/wwe-john-cena-classic-official-announcement-raw/",
+    "date": "Fri, 30 Oct 2026 15:30:00 +0000",
+    "date_gmt": "2026-10-30T15:30:00.000Z",
+    "title": {
+      "rendered": "Backstage Details On WWE's John Cena Classic Ahead Of Presumed Official Announcement"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-details-on-wwes-john-cena-classic-ahead-of-presumed-official-announcement/l-intro-1793360007.jpg"
+  },
+  {
+    "id": 4447516990,
+    "link": "https://www.wrestlinginc.com/2302327/dave-meltzer-stephanie-vaquer-illness-wwe-raw/",
+    "date": "Fri, 30 Oct 2026 15:26:56 +0000",
+    "date_gmt": "2026-10-30T15:26:56.000Z",
+    "title": {
+      "rendered": "Dave Meltzer Provides Update On Stephanie Vaquer Illness That Kept Her Off WWE Raw"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/dave-meltzer-provides-update-on-stephanie-vaquer-illness-that-kept-her-off-wwe-raw/l-intro-1793373921.jpg"
+  },
+  {
     "id": 1115854367,
     "link": "https://www.wrestlinginc.com/2302315/wwe-crown-jewel-2026-new-venue-officially-revealed/",
     "date": "Fri, 30 Oct 2026 15:16:07 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Dave Meltzer Reveals Reason Behind WWE Crown Jewel Venue Change In Riyadh"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/dave-meltzer-reveals-reason-behind-wwe-crown-jewel-venue-change-in-riyadh/l-intro-1793307876.jpg"
-  },
-  {
-    "id": 1319594696,
-    "link": "https://www.wrestlinginc.com/2301667/aew-tommaso-ciampa-rko-kyle-fletcher-randy-orton-wwe-out-of-nowhere/",
-    "date": "Thu, 29 Oct 2026 20:23:27 +0000",
-    "date_gmt": "2026-10-29T20:23:27.000Z",
-    "title": {
-      "rendered": "Tommaso Ciampa Attempts RKO On Fellow AEW Star After Mistaking Him For Randy Orton"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tommaso-ciampa-attempts-rko-on-fellow-aew-star-after-mistaking-him-for-randy-orton/l-intro-1793308934.jpg"
-  },
-  {
-    "id": 3799961411,
-    "link": "https://www.wrestlinginc.com/2301560/shawn-michaels-wwe-bruce-prichard-role-replace-legend-hall-of-fame/",
-    "date": "Thu, 29 Oct 2026 19:22:51 +0000",
-    "date_gmt": "2026-10-29T19:22:51.000Z",
-    "title": {
-      "rendered": "Legendary WWE Hall Of Famer Reportedly Set To Take Over Bruce Prichard's Role"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/legendary-wwe-hall-of-famer-reportedly-set-to-take-over-bruce-prichards-role/l-intro-1793301606.jpg"
   }
 ]
