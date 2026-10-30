@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2302438/wwe-wcw-nfl-paul-heyman-sting-recovery-classic-moment-nicely-done": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-30T16:24:32.825Z"
+ },
  "https://www.fightful.com/wrestling/rusev-says-he-got-sick-after-suffering-injury-on-wwe-raw-doesnt-think-the-two-incidents-were-related": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-18T03:03:03.717Z"
- },
- "https://www.fightful.com/mma/ufc-fight-night-buckley-vs-malott-results": {
-  "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
-  "retry": true,
-  "at": "2026-10-18T03:01:34.061Z"
  }
 }
