@@ -1,5 +1,15 @@
 [
   {
+    "id": 1481950618,
+    "link": "https://www.wrestlinginc.com/2297801/wwe-booker-t-never-got-heat-locker-room/",
+    "date": "Fri, 30 Oct 2026 01:00:00 +0000",
+    "date_gmt": "2026-10-30T01:00:00.000Z",
+    "title": {
+      "rendered": "Booker T Explains Why He Never Got 'Heat' With The WWE Locker Room"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/booker-t-explains-why-he-never-got-heat-with-the-wwe-locker-room/l-intro-1793054337.jpg"
+  },
+  {
     "id": 1436139659,
     "link": "https://www.wrestlinginc.com/2301851/wwe-interest-aew-dralistico-main-roster-aaa-december/",
     "date": "Thu, 29 Oct 2026 23:20:36 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Tommaso Ciampa Discusses Personal Impact Of Wrestling Chris Jericho In AEW"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/tommaso-ciampa-discusses-personal-impact-of-wrestling-chris-jericho-in-aew/l-intro-1793040732.jpg"
-  },
-  {
-    "id": 1319862512,
-    "link": "https://www.wrestlinginc.com/2300623/aew-dynamite-fright-night-october-28-2026-hated-loved-opinion-review/",
-    "date": "Thu, 29 Oct 2026 04:17:18 +0000",
-    "date_gmt": "2026-10-29T04:17:18.000Z",
-    "title": {
-      "rendered": "AEW Dynamite 10/28/2026: 3 Things We Hated & 3 Things We Loved"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-10282026-3-things-we-hated-3-things-we-loved/l-intro-1793247324.jpg"
   }
 ]
