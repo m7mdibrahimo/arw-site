@@ -1,5 +1,15 @@
 [
   {
+    "id": 4948402941,
+    "link": "https://www.wrestlinginc.com/2303157/aew-komander-absence-backstage-details-october-2026/",
+    "date": "Fri, 30 Oct 2026 23:26:43 +0000",
+    "date_gmt": "2026-10-30T23:26:43.000Z",
+    "title": {
+      "rendered": "Backstage Details On Komander's AEW Absence"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-details-on-komanders-aew-absence/l-intro-1793402710.jpg"
+  },
+  {
     "id": 2210198139,
     "link": "https://www.wrestlinginc.com/2303009/wwe-crown-jewel-2026-saudi-arabia-changes-card-backstage-report/",
     "date": "Fri, 30 Oct 2026 21:01:11 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Ricky Sosa & Fabian Aichner Declare Themselves For World X-Cup On TNA Impact"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/ricky-sosa-fabian-aichner-declare-themselves-for-world-x-cup-on-tna-impact/l-intro-1793325898.jpg"
-  },
-  {
-    "id": 1916289712,
-    "link": "https://www.wrestlinginc.com/2301891/tna-impact-amazing-red-cedric-alexander-defends-x-division-title/",
-    "date": "Fri, 30 Oct 2026 02:00:52 +0000",
-    "date_gmt": "2026-10-30T02:00:52.000Z",
-    "title": {
-      "rendered": "Amazing Red Defends X-Division Title Against Cedric Alexander On TNA Impact"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/amazing-red-defends-x-division-title-against-cedric-alexander-on-tna-impact/l-intro-1793325563.jpg"
   }
 ]
