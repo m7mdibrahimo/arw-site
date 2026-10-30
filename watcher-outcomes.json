@@ -2,52 +2,52 @@
  "https://www.fightful.com/wrestling/kayla-becker-previews-her-upcoming-movies-paper-made-chicken-head-and-stranglehold": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-10-30T14:12:12.756Z"
+  "at": "2026-10-30T14:16:41.037Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-viewership-10-22-drops-remains-over-230000-views": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-22)",
   "retry": false,
-  "at": "2026-10-30T14:11:20.222Z"
+  "at": "2026-10-30T14:16:12.590Z"
  },
  "https://www.fightful.com/wrestling/new-venue-in-riyadh-listed-for-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T14:11:20.053Z"
+  "at": "2026-10-30T14:16:12.422Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-30T14:11:19.651Z"
+  "at": "2026-10-30T14:16:12.004Z"
  },
  "https://www.fightful.com/wrestling/tony-dangelo-says-he-went-to-speech-therapy-to-transtion-from-his-don-character": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T14:11:19.337Z"
+  "at": "2026-10-30T14:16:11.691Z"
  },
  "https://www.fightful.com/wrestling/wwe-live-results-10-29-26-chad-gable-scores-pinfall-victory-over-cm-punk": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: LA Knight",
+  "reason": "المراجعة رفضته: الخبر بيبدأ بسطر عنوان فرعي (** أو #) بدل أول جملة، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، اسم مصارع في العنوان أو المتن غير موجود في المصدر: LA Knight",
   "retry": true,
-  "at": "2026-10-30T14:11:18.711Z"
+  "at": "2026-10-30T14:16:11.059Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-results-10-29-slaughterhouse-syx-amazing-red-vs-cedric-alexander": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T14:10:27.016Z"
+  "at": "2026-10-30T14:13:55.039Z"
  },
  "https://www.fightful.com/wrestling/chris-jericho-says-tv-series-about-early-portion-of-his-career-is-close-to-filming-pilot-episode": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T14:10:26.846Z"
+  "at": "2026-10-30T14:13:54.871Z"
  },
  "https://www.fightful.com/wrestling/tony-dangelo-if-the-show-is-not-doing-numbers-they-looked-at-me-as-the-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T14:10:26.585Z"
+  "at": "2026-10-30T14:13:54.611Z"
  },
  "https://www.fightful.com/wrestling/report-lei-ying-lee-still-under-contract-with-tna": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T14:10:25.958Z"
+  "at": "2026-10-30T14:13:53.976Z"
  },
  "https://www.fightful.com/wrestling/rohan-raja-bret-hart-is-such-a-sweetheart-i-dont-think-many-people-see-that-side-of-him": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
