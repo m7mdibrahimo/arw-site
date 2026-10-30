@@ -1,5 +1,15 @@
 [
   {
+    "id": 336501,
+    "link": "https://www.fightful.com/wrestling/roh-tv-results-10-29/",
+    "date": "2026-10-29T23:09:44",
+    "date_gmt": "2026-10-30T03:09:44",
+    "title": {
+      "rendered": "ROH TV Results (10/29)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/29230758/HVz3f4_WgAECuF2.jpeg"
+  },
+  {
     "id": 336497,
     "link": "https://www.fightful.com/wrestling/wwe-live-results-10-29-26-chad-gable-scores-pinfall-victory-over-cm-punk/",
     "date": "2026-10-29T22:50:38",
@@ -288,15 +298,5 @@
       "rendered": "Mark Cuban Says He Was Sore For Two Weeks After Sheamus Table Bump On WWE Raw"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/29121352/Screenshot-354-e1793290444721.png"
-  },
-  {
-    "id": 336098,
-    "link": "https://www.fightful.com/wrestling/jimmy-house-credits-gabe-sapolsky-for-opening-the-door-to-wwe-for-him/",
-    "date": "2026-10-29T12:00:00",
-    "date_gmt": "2026-10-29T16:00:00",
-    "title": {
-      "rendered": "Jimmy House Credits Gabe Sapolsky For Opening The Door To WWE For Him"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/27134304/maxresdefault-195.jpg"
   }
 ]
