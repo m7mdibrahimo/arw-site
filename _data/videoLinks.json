@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-10-30T09:45:20.659Z",
+ "checkedAt": "2026-10-30T10:04:34.647Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
@@ -7552,14 +7552,14 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://hgcloud.to/e/phg80he2rjlo": {
    "page": "https://arab-wrestling.com/shows/aew-fright-night-dynamite-28-10-2026/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 2,
-   "checked": "2026-10-30T09:45:20.659Z",
+   "checked": "2026-10-30T10:04:34.647Z",
    "since": "2026-10-29T18:55:09.151Z"
   },
   "https://ok.ru/videoembed/17852040088160": {
@@ -7567,68 +7567,68 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://vidmoly.org/embed-n1fn9z60106y.html": {
    "page": "https://arab-wrestling.com/shows/aew-fright-night-dynamite-28-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://fembed.co/embed/zV-e3_JR3QcAg": {
    "page": "https://arab-wrestling.com/shows/aew-fright-night-dynamite-28-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://uqload.vc/embed-rf2ybncl1krt.html": {
    "page": "https://arab-wrestling.com/shows/aew-fright-night-dynamite-28-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://vidtube.one/embed-2527cq3ft2nz.html": {
    "page": "https://arab-wrestling.com/shows/mlp-special-rohan-vs-andrade-priscilla-kelly-vs-storm-28-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://ok.ru/videoembed/17852891925088": {
    "page": "https://arab-wrestling.com/shows/mlp-special-rohan-vs-andrade-priscilla-kelly-vs-storm-28-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://vidmoly.org/embed-c4nf4p84h03c.html": {
    "page": "https://arab-wrestling.com/shows/mlp-special-rohan-vs-andrade-priscilla-kelly-vs-storm-28-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://hgcloud.to/e/ly3c11ggsqep": {
    "page": "https://arab-wrestling.com/shows/mlp-special-rohan-vs-andrade-priscilla-kelly-vs-storm-28-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://hgcloud.to/e/zzdg34eaigyd": {
    "page": "https://arab-wrestling.com/shows/mlp-special-josh-alexander-vs-stu-grayson-21-10-2026/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 2,
-   "checked": "2026-10-30T09:45:20.659Z",
+   "checked": "2026-10-30T10:04:34.647Z",
    "since": "2026-10-29T18:55:09.151Z"
   },
   "https://fembed.co/embed/F8AT-ru_ZLXgy": {
@@ -7636,462 +7636,552 @@
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://uqload.vc/embed-1o2ngt6os4b6.html": {
    "page": "https://arab-wrestling.com/shows/mlp-special-rohan-vs-andrade-priscilla-kelly-vs-storm-28-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://ok.ru/videoembed/17852840544864": {
    "page": "https://arab-wrestling.com/shows/mlp-special-josh-alexander-vs-stu-grayson-21-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://uqload.vc/embed-ck09o0fr3uq9.html": {
    "page": "https://arab-wrestling.com/shows/mlp-special-josh-alexander-vs-stu-grayson-21-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://vidmoly.org/embed-7alnjjdj0uy4.html": {
    "page": "https://arab-wrestling.com/shows/mlp-special-josh-alexander-vs-stu-grayson-21-10-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://vidtube.one/embed-2buvhtob35lc.html": {
    "page": "https://arab-wrestling.com/shows/mlp-special-josh-alexander-vs-stu-grayson-21-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://fembed.co/embed/OZfiOc_y-Lk9g": {
    "page": "https://arab-wrestling.com/shows/mlp-special-josh-alexander-vs-stu-grayson-21-10-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://vidtube.one/embed-tma2zu0ugn5z.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-20-08-2010/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
-  },
-  "https://hgcloud.to/e/dko7bh1ul1vw": {
-   "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-20-08-2010/",
-   "status": "ok",
-   "reason": "the video plays",
-   "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://ok.ru/videoembed/17861007051360": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-20-08-2010/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
+  },
+  "https://hgcloud.to/e/dko7bh1ul1vw": {
+   "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-20-08-2010/",
+   "status": "ok",
+   "reason": "the video plays",
+   "strikes": 0,
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://vidmoly.org/embed-xyiyl5qsznrz.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-20-08-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://fembed.co/embed/fIz-yENy_e2lN": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-20-08-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://hgcloud.to/e/3cwbjmz54lt1": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-16-08-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://uqload.vc/embed-6b4m4mw04vxr.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-20-08-2010/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://ok.ru/videoembed/17861002201696": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-16-08-2010/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://uqload.vc/embed-g5lh9qvqp4e0.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-16-08-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://vidmoly.org/embed-ybj7svhywzk9.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-16-08-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://vidtube.one/embed-st868nvpj3u9.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-16-08-2010/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://fembed.co/embed/6dzVz_i-5vhOi": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-16-08-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
+  },
+  "https://vidtube.one/embed-kui5it8ptfdp.html": {
+   "page": "https://arab-wrestling.com/nostalgia/wwe-night-of-champions-2010/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-10-30T10:04:34.647Z"
+  },
+  "https://hgcloud.to/e/jk24q9iplm1q": {
+   "page": "https://arab-wrestling.com/nostalgia/wwe-night-of-champions-2010/",
+   "status": "broken",
+   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
+   "strikes": 1,
+   "checked": "2026-10-30T10:04:34.647Z"
+  },
+  "https://vidmoly.org/embed-akd4hnegg6cy.html": {
+   "page": "https://arab-wrestling.com/nostalgia/wwe-night-of-champions-2010/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
+  },
+  "https://ok.ru/videoembed/17861012425312": {
+   "page": "https://arab-wrestling.com/nostalgia/wwe-night-of-champions-2010/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-10-30T10:04:34.647Z"
+  },
+  "https://hgcloud.to/e/ggst7dw3iknh": {
+   "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-17-09-2010/",
+   "status": "broken",
+   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
+   "strikes": 1,
+   "checked": "2026-10-30T10:04:34.647Z"
+  },
+  "https://fembed.co/embed/SF_SlLqbs-QYe": {
+   "page": "https://arab-wrestling.com/nostalgia/wwe-night-of-champions-2010/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
+  },
+  "https://uqload.vc/embed-nxbyyl01qve9.html": {
+   "page": "https://arab-wrestling.com/nostalgia/wwe-night-of-champions-2010/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
+  },
+  "https://ok.ru/videoembed/17861011901024": {
+   "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-17-09-2010/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-10-30T10:04:34.647Z"
+  },
+  "https://uqload.vc/embed-jnycqa9c27l1.html": {
+   "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-17-09-2010/",
+   "status": "ok",
+   "reason": "the video plays",
+   "strikes": 0,
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
+  },
+  "https://vidmoly.org/embed-kztfta1p5s4y.html": {
+   "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-17-09-2010/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
+  },
+  "https://vidtube.one/embed-zmni7v164yjj.html": {
+   "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-17-09-2010/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-10-30T10:04:34.647Z"
+  },
+  "https://fembed.co/embed/UsD-afUa_Hs59": {
+   "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-17-09-2010/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://vidtube.one/embed-0vscctelkavn.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-13-09-2010/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
-  },
-  "https://vidmoly.org/embed-v8vthb939xku.html": {
-   "page": "https://arab-wrestling.com/nostalgia/wwe-raw-13-09-2010/",
-   "status": "ok",
-   "reason": "the stream arrives",
-   "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://ok.ru/videoembed/17861011311200": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-13-09-2010/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://hgcloud.to/e/oeg5f4cchc1s": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-13-09-2010/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 1,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
-  "https://fembed.co/embed/HZP_j0tl-gTtt": {
+  "https://vidmoly.org/embed-v8vthb939xku.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-13-09-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://hgcloud.to/e/cjpcvv5m5s4f": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-10-09-2010/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 1,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
+  },
+  "https://fembed.co/embed/HZP_j0tl-gTtt": {
+   "page": "https://arab-wrestling.com/nostalgia/wwe-raw-13-09-2010/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://uqload.vc/embed-phuqgj6exxbr.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-13-09-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://ok.ru/videoembed/17861010655840": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-10-09-2010/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://uqload.vc/embed-p5prjc8y6j4a.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-10-09-2010/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://vidmoly.org/embed-jtop2l007vi5.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-10-09-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://vidtube.one/embed-kmth0nhedzge.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-10-09-2010/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://fembed.co/embed/MIn_7rWU-3HHR": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-10-09-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://vidtube.one/embed-eohafe96czl4.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-06-09-2010/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://ok.ru/videoembed/17861010131552": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-06-09-2010/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://hgcloud.to/e/wmtui6scfq42": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-06-09-2010/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 1,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://vidmoly.org/embed-6ocb35h0yumo.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-06-09-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://hgcloud.to/e/7nmabvmzccsw": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-03-09-2010/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 1,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://fembed.co/embed/X_bRUI4-OwMOh": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-06-09-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://uqload.vc/embed-xgyz9i7gkd1l.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-06-09-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://ok.ru/videoembed/17861009541728": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-03-09-2010/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://uqload.vc/embed-cuid8vth859z.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-03-09-2010/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://vidmoly.org/embed-yh09c5yw6hf0.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-03-09-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://vidtube.one/embed-bu170rtnlybc.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-03-09-2010/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://fembed.co/embed/Fr_zaTZ2UU-7x": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-03-09-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://vidtube.one/embed-q50cj7fknhqf.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-30-08-2010/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://ok.ru/videoembed/17861009082976": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-30-08-2010/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://hgcloud.to/e/ylwpeku211ph": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-30-08-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://vidmoly.org/embed-md6aor30zjsp.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-30-08-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://hgcloud.to/e/rsbqyqmh9vdp": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-27-08-2010/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 1,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://fembed.co/embed/JK-w1Lo_ycW2X": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-30-08-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://uqload.vc/embed-cxyh5huxw7fg.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-30-08-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://ok.ru/videoembed/17861008231008": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-27-08-2010/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://uqload.vc/embed-hdp1hj1ogeej.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-27-08-2010/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://vidmoly.org/embed-gmu3dqtqbk5v.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-27-08-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://vidtube.one/embed-ns5eqqwijph3.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-27-08-2010/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://fembed.co/embed/gS-Ru4TKd_sMs": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-27-08-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://vidtube.one/embed-vbodfi7v4fjh.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-23-08-2010/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://ok.ru/videoembed/17861007575648": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-23-08-2010/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://hgcloud.to/e/mkckfon0qpj5": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-23-08-2010/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 1,
-   "checked": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z"
   },
   "https://vidmoly.org/embed-n7ably07kd0i.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-23-08-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://fembed.co/embed/6D_b-7rrfh6AW": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-23-08-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   },
   "https://uqload.vc/embed-3l7cpk0gb343.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-23-08-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-10-30T09:45:20.659Z",
-   "lastOk": "2026-10-30T09:45:20.659Z"
+   "checked": "2026-10-30T10:04:34.647Z",
+   "lastOk": "2026-10-30T10:04:34.647Z"
   }
  },
  "broken": [
