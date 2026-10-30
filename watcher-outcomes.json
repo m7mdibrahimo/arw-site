@@ -2,52 +2,52 @@
  "https://www.fightful.com/wrestling/kayla-becker-previews-her-upcoming-movies-paper-made-chicken-head-and-stranglehold": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-10-30T14:57:11.628Z"
+  "at": "2026-10-30T14:58:58.930Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-viewership-10-22-drops-remains-over-230000-views": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-22)",
   "retry": false,
-  "at": "2026-10-30T14:56:58.409Z"
+  "at": "2026-10-30T14:58:44.892Z"
  },
  "https://www.fightful.com/wrestling/new-venue-in-riyadh-listed-for-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T14:56:58.227Z"
+  "at": "2026-10-30T14:58:44.776Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-30T14:56:57.786Z"
+  "at": "2026-10-30T14:58:44.489Z"
  },
  "https://www.fightful.com/wrestling/tony-dangelo-says-he-went-to-speech-therapy-to-transtion-from-his-don-character": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T14:56:57.445Z"
+  "at": "2026-10-30T14:58:44.273Z"
  },
  "https://www.fightful.com/wrestling/wwe-live-results-10-29-26-chad-gable-scores-pinfall-victory-over-cm-punk": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: LA Knight",
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: LA Knight، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
   "retry": true,
-  "at": "2026-10-30T14:56:56.767Z"
+  "at": "2026-10-30T14:58:43.854Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-results-10-29-slaughterhouse-syx-amazing-red-vs-cedric-alexander": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T14:56:38.760Z"
+  "at": "2026-10-30T14:58:28.001Z"
  },
  "https://www.fightful.com/wrestling/chris-jericho-says-tv-series-about-early-portion-of-his-career-is-close-to-filming-pilot-episode": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T14:56:38.576Z"
+  "at": "2026-10-30T14:58:27.883Z"
  },
  "https://www.fightful.com/wrestling/tony-dangelo-if-the-show-is-not-doing-numbers-they-looked-at-me-as-the-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T14:56:38.287Z"
+  "at": "2026-10-30T14:58:27.706Z"
  },
  "https://www.fightful.com/wrestling/report-lei-ying-lee-still-under-contract-with-tna": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T14:56:37.609Z"
+  "at": "2026-10-30T14:58:27.274Z"
  },
  "https://www.ringsidenews.com/wwes-original-plans-world-tag-team-title-match-crown-jewel-2026": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مصارع في العنوان أو المتن غير موجود في المصدر: PROGRESS Tag Team Championships، اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: AAA Tag Team Championship",
