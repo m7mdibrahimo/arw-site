@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/alexa-bliss-tatum-paxley-recreate-iconic-dodgeball-scene-halloween": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-30T21:13:50.465Z"
+ },
  "https://www.fightful.com/wrestling/cm-punk-added-to-nxt-holiday-live-tour": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -58,11 +63,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-30T21:09:47.794Z"
- },
- "https://www.ringsidenews.com/alexa-bliss-tatum-paxley-recreate-iconic-dodgeball-scene-halloween": {
-  "reason": "المراجعة رفضته: صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
-  "retry": true,
-  "at": "2026-10-30T20:54:11.326Z"
  },
  "https://www.fightful.com/wrestling/wwe-live-results-10-29-26-chad-gable-scores-pinfall-victory-over-cm-punk": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: LA Knight",
