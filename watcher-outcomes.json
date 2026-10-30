@@ -1,58 +1,58 @@
 {
  "https://www.fightful.com/wrestling/wwe-live-results-10-29-26-chad-gable-scores-pinfall-victory-over-cm-punk": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: LA Knight، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: LA Knight",
   "retry": true,
-  "at": "2026-10-30T09:57:07.760Z"
+  "at": "2026-10-30T10:07:15.392Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-results-10-29-slaughterhouse-syx-amazing-red-vs-cedric-alexander": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T09:56:50.162Z"
+  "at": "2026-10-30T10:06:52.246Z"
  },
  "https://www.fightful.com/wrestling/chris-jericho-says-tv-series-about-early-portion-of-his-career-is-close-to-filming-pilot-episode": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T09:56:49.979Z"
+  "at": "2026-10-30T10:06:52.077Z"
  },
  "https://www.fightful.com/wrestling/tony-dangelo-if-the-show-is-not-doing-numbers-they-looked-at-me-as-the-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T09:56:49.710Z"
+  "at": "2026-10-30T10:06:51.827Z"
  },
  "https://www.fightful.com/wrestling/report-lei-ying-lee-still-under-contract-with-tna": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T09:56:49.066Z"
+  "at": "2026-10-30T10:06:51.221Z"
  },
  "https://www.fightful.com/wrestling/report-shawn-michaels-expected-to-step-into-bruce-prichards-role": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T09:56:48.720Z"
+  "at": "2026-10-30T10:06:50.899Z"
  },
  "https://www.fightful.com/wrestling/wwe-wants-to-ensure-john-cena-classic-looks-feels-different-consults-shawn-michaels-aj-styles": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T09:56:48.448Z"
+  "at": "2026-10-30T10:06:50.650Z"
  },
  "https://www.fightful.com/wrestling/working-creative-idea-for-paul-heymans-return-to-wwe-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T09:56:48.169Z"
+  "at": "2026-10-30T10:06:50.400Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-aew-has-the-most-affordable-tickets-in-tv-wrestling-were-not-going-to-take-an-arm-and-a-leg": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T09:56:47.820Z"
+  "at": "2026-10-30T10:06:50.094Z"
  },
  "https://www.fightful.com/wrestling/wwe-has-backup-blueprint-for-hosting-wrestlemania-43-domestically": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T09:56:47.550Z"
+  "at": "2026-10-30T10:06:49.842Z"
  },
  "https://www.fightful.com/wrestling/wwe-has-no-plans-to-reshape-taping-schedule-for-smackdown-to-go-head-to-head-live-with-aew-new-years-smash": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T09:56:47.281Z"
+  "at": "2026-10-30T10:06:49.586Z"
  },
  "https://www.wrestlinginc.com/2301894/tna-impact-destination-x-world-x-cup-fabian-aichner-ricky-sosa-declare-themselves": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
