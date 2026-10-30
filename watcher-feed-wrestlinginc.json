@@ -1,5 +1,15 @@
 [
   {
+    "id": 5046430709,
+    "link": "https://www.wrestlinginc.com/2301975/wwe-joe-hendry-logan-paul-injury-rival-tough-spot/",
+    "date": "Fri, 30 Oct 2026 15:00:00 +0000",
+    "date_gmt": "2026-10-30T15:00:00.000Z",
+    "title": {
+      "rendered": "Joe Hendry Says Injury To WWE Rival Has Put Him In A 'Tough Spot'"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/joe-hendry-says-injury-to-wwe-rival-has-put-him-in-a-tough-spot/l-intro-1793356751.jpg"
+  },
+  {
     "id": 2108346287,
     "link": "https://www.wrestlinginc.com/2301954/ilja-dragunov-aew-deal-quite-quickly-wwe-contract-expiration/",
     "date": "Fri, 30 Oct 2026 14:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Backstage News On WWE SmackDown & AEW Dynamite Running Head-To-Head On New Year's Day"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-wwe-smackdown-aew-dynamite-running-head-to-head-on-new-years-day/l-intro-1793300884.jpg"
-  },
-  {
-    "id": 4868303305,
-    "link": "https://www.wrestlinginc.com/2301453/wwe-wrestlemania-43-backup-venue-the-sphere-las-vegas/",
-    "date": "Thu, 29 Oct 2026 18:39:14 +0000",
-    "date_gmt": "2026-10-29T18:39:14.000Z",
-    "title": {
-      "rendered": "Backstage News On Possible Backup Venue For WWE WrestleMania 43"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-possible-backup-venue-for-wwe-wrestlemania-43/l-intro-1793308502.jpg"
   }
 ]
