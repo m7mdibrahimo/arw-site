@@ -1,5 +1,15 @@
 [
   {
+    "id": 4734111972,
+    "link": "https://www.wrestlinginc.com/2301927/paul-heyman-return-wwe-tv-vision-bron-breakker/",
+    "date": "Fri, 30 Oct 2026 13:00:00 +0000",
+    "date_gmt": "2026-10-30T13:00:00.000Z",
+    "title": {
+      "rendered": "Backstage News On Paul Heyman's Potential Return To WWE TV"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-paul-heymans-potential-return-to-wwe-tv/l-intro-1793341552.jpg"
+  },
+  {
     "id": 2159281484,
     "link": "https://www.wrestlinginc.com/2297558/former-wwe-aew-star-maria-kanellis-ruminates-future/",
     "date": "Fri, 30 Oct 2026 12:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW World Tag Team Champions: Tony Khan 'Doesn't Get Enough Praise'"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-world-tag-team-champions-tony-khan-doesnt-get-enough-praise/l-intro-1793293321.jpg"
-  },
-  {
-    "id": 4528280656,
-    "link": "https://www.wrestlinginc.com/2300970/wwe-smackdown-broadcast-almost-moved-wnba-finals-game-6/",
-    "date": "Thu, 29 Oct 2026 15:09:37 +0000",
-    "date_gmt": "2026-10-29T15:09:37.000Z",
-    "title": {
-      "rendered": "WWE SmackDown Broadcast Was Reportedly Almost Moved To Accommodate WNBA Finals"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-broadcast-was-reportedly-almost-moved-to-accommodate-wnba-finals/l-intro-1793286451.jpg"
   }
 ]
