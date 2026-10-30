@@ -4516,16 +4516,28 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض ار او اتش اون اونر كلوب 29.10.2026 مترجم",
-    "lastAttempt": 1793366318781,
+    "lastAttempt": 1793367099477,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false,
+    "tiktok": true
+  },
+  "20261030150220-tna-impact-29-10-2026": {
+    "publishedAt": 1793367129557,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض تي ان ايه امباكت 29.10.2026 مترجم",
+    "lastAttempt": 1793367142664,
     "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_story",
-      "tiktok"
+      "instagram_reel"
     ],
     "reviewPlatforms": [],
     "needsReview": false
