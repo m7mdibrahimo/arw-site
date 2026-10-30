@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/rusev-responds-rumors-hell-join-new-wwe-faction-ethan-page-big-cass": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-30T18:36:12.602Z"
+ },
+ "https://www.ringsidenews.com/wwes-original-plans-world-tag-team-title-match-crown-jewel-2026": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
+  "retry": true,
+  "at": "2026-10-30T18:35:09.987Z"
+ },
  "https://www.fightful.com/wrestling/ric-flair-responds-to-people-that-wonder-how-hes-still-alive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,16 +63,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-30T18:28:48.065Z"
- },
- "https://www.ringsidenews.com/rusev-responds-rumors-hell-join-new-wwe-faction-ethan-page-big-cass": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-30T18:26:19.146Z"
- },
- "https://www.ringsidenews.com/wwes-original-plans-world-tag-team-title-match-crown-jewel-2026": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
-  "retry": true,
-  "at": "2026-10-30T18:25:23.748Z"
  },
  "https://www.fightful.com/wrestling/tony-dangelo-if-the-show-is-not-doing-numbers-they-looked-at-me-as-the-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
