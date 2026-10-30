@@ -1993,10 +1993,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-18T01:58:25.131Z"
- },
- "https://www.fightful.com/wrestling/the-young-bucks-score-win-over-kyle-fletcher-kevin-knight-to-retain-aew-world-tag-team-titles-at-wrestledream": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-18T01:44:55.892Z"
  }
 }
