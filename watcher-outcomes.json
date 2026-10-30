@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwes-original-plans-world-tag-team-title-match-crown-jewel-2026": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
+  "retry": true,
+  "at": "2026-10-30T15:04:22.616Z"
+ },
  "https://www.fightful.com/wrestling/kayla-becker-previews-her-upcoming-movies-paper-made-chicken-head-and-stranglehold": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -48,11 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-30T15:02:39.413Z"
- },
- "https://www.ringsidenews.com/wwes-original-plans-world-tag-team-title-match-crown-jewel-2026": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مصارع في العنوان أو المتن غير موجود في المصدر: PROGRESS Tag Team Championships، اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: AAA Tag Team Championship",
-  "retry": true,
-  "at": "2026-10-30T14:38:10.513Z"
  },
  "https://www.fightful.com/wrestling/rohan-raja-bret-hart-is-such-a-sweetheart-i-dont-think-many-people-see-that-side-of-him": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
