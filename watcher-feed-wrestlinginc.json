@@ -1,5 +1,15 @@
 [
   {
+    "id": 1115854367,
+    "link": "https://www.wrestlinginc.com/2302315/wwe-crown-jewel-2026-new-venue-officially-revealed/",
+    "date": "Fri, 30 Oct 2026 15:16:07 +0000",
+    "date_gmt": "2026-10-30T15:16:07.000Z",
+    "title": {
+      "rendered": "New Venue For WWE Crown Jewel In Saudi Arabia Officially Revealed"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/new-venue-for-wwe-crown-jewel-in-saudi-arabia-officially-revealed/l-intro-1793373170.jpg"
+  },
+  {
     "id": 5046430709,
     "link": "https://www.wrestlinginc.com/2301975/wwe-joe-hendry-logan-paul-injury-rival-tough-spot/",
     "date": "Fri, 30 Oct 2026 15:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Legendary WWE Hall Of Famer Reportedly Set To Take Over Bruce Prichard's Role"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/legendary-wwe-hall-of-famer-reportedly-set-to-take-over-bruce-prichards-role/l-intro-1793301606.jpg"
-  },
-  {
-    "id": 5012357700,
-    "link": "https://www.wrestlinginc.com/2301536/wwe-smackdown-aew-dynamite-head-to-head-new-years-day-2027/",
-    "date": "Thu, 29 Oct 2026 19:14:23 +0000",
-    "date_gmt": "2026-10-29T19:14:23.000Z",
-    "title": {
-      "rendered": "Backstage News On WWE SmackDown & AEW Dynamite Running Head-To-Head On New Year's Day"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-wwe-smackdown-aew-dynamite-running-head-to-head-on-new-years-day/l-intro-1793300884.jpg"
   }
 ]
