@@ -4494,7 +4494,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261030115245-wwe-main-event-28-10-2026": {
     "publishedAt": 1793355026022,
