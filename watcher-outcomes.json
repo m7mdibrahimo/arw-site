@@ -1,63 +1,63 @@
 {
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-10-30": {
-  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
-  "retry": true,
-  "at": "2026-10-30T12:03:06.096Z"
+  "reason": "المراجعة رفضته: نفس العنوان منشور قبل كده — الخبر مكرر",
+  "retry": false,
+  "at": "2026-10-30T12:06:15.886Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-30T12:02:01.066Z"
+  "at": "2026-10-30T12:05:19.451Z"
  },
  "https://www.fightful.com/wrestling/tony-dangelo-says-he-went-to-speech-therapy-to-transtion-from-his-don-character": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-30T12:02:00.799Z"
+  "at": "2026-10-30T12:05:19.180Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-live-results-10-29-26-chad-gable-scores-pinfall-victory-over-cm-punk": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: LA Knight",
+  "retry": true,
+  "at": "2026-10-30T12:04:53.564Z"
+ },
+ "https://www.fightful.com/wrestling/tna-impact-results-10-29-slaughterhouse-syx-amazing-red-vs-cedric-alexander": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-30T12:04:33.941Z"
+ },
+ "https://www.fightful.com/wrestling/chris-jericho-says-tv-series-about-early-portion-of-his-career-is-close-to-filming-pilot-episode": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-30T12:04:33.795Z"
+ },
+ "https://www.fightful.com/wrestling/tony-dangelo-if-the-show-is-not-doing-numbers-they-looked-at-me-as-the-champion": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-30T12:04:33.576Z"
+ },
+ "https://www.fightful.com/wrestling/report-lei-ying-lee-still-under-contract-with-tna": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-30T12:04:33.050Z"
+ },
+ "https://www.fightful.com/wrestling/report-shawn-michaels-expected-to-step-into-bruce-prichards-role": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-30T12:04:32.765Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-wants-to-ensure-john-cena-classic-looks-feels-different-consults-shawn-michaels-aj-styles": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-30T12:04:32.542Z"
+ },
+ "https://www.fightful.com/wrestling/working-creative-idea-for-paul-heymans-return-to-wwe-tv": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-30T12:04:32.313Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-10-27-viewership-drops-21-against-world-series": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-30T12:02:00.514Z"
- },
- "https://www.fightful.com/wrestling/wwe-live-results-10-29-26-chad-gable-scores-pinfall-victory-over-cm-punk": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: LA Knight",
-  "retry": true,
-  "at": "2026-10-30T12:01:49.231Z"
- },
- "https://www.fightful.com/wrestling/tna-impact-results-10-29-slaughterhouse-syx-amazing-red-vs-cedric-alexander": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T12:01:30.335Z"
- },
- "https://www.fightful.com/wrestling/chris-jericho-says-tv-series-about-early-portion-of-his-career-is-close-to-filming-pilot-episode": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T12:01:30.185Z"
- },
- "https://www.fightful.com/wrestling/tony-dangelo-if-the-show-is-not-doing-numbers-they-looked-at-me-as-the-champion": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T12:01:29.963Z"
- },
- "https://www.fightful.com/wrestling/report-lei-ying-lee-still-under-contract-with-tna": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T12:01:29.431Z"
- },
- "https://www.fightful.com/wrestling/report-shawn-michaels-expected-to-step-into-bruce-prichards-role": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T12:01:29.140Z"
- },
- "https://www.fightful.com/wrestling/wwe-wants-to-ensure-john-cena-classic-looks-feels-different-consults-shawn-michaels-aj-styles": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T12:01:28.916Z"
- },
- "https://www.fightful.com/wrestling/working-creative-idea-for-paul-heymans-return-to-wwe-tv": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T12:01:28.685Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-night-five-results-10-30": {
   "reason": "المراجعة رفضته: أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
