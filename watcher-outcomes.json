@@ -1,4 +1,29 @@
 {
+ "https://www.fightful.com/wrestling/jake-roberts-says-he-has-re-signed-with-wwe": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-31T20:37:52.541Z"
+ },
+ "https://www.fightful.com/wrestling/court-bauer-says-mlw-was-in-talks-with-paramount-in-2025-before-ufc-deal-was-announced": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-31T20:37:52.264Z"
+ },
+ "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-31T20:37:50.869Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-2026-preview-start-time-how-to-watch-10-31": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-31T20:37:50.028Z"
+ },
+ "https://www.fightful.com/wrestling/xelhua-wins-2026-cmll-rey-del-inframundo": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-31T20:37:49.755Z"
+ },
  "https://www.wrestlinginc.com/2300404/sami-zayn-beating-roman-reigns-wwe-elimination-chamber-2023-montreal": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Cody Rhodes",
   "retry": true,
@@ -13,31 +38,6 @@
   "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
   "retry": true,
   "at": "2026-10-31T20:33:22.019Z"
- },
- "https://www.fightful.com/wrestling/jake-roberts-says-he-has-re-signed-with-wwe": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-31T20:34:27.011Z"
- },
- "https://www.fightful.com/wrestling/court-bauer-says-mlw-was-in-talks-with-paramount-in-2025-before-ufc-deal-was-announced": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-31T20:34:26.833Z"
- },
- "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-31T20:34:25.911Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-2026-preview-start-time-how-to-watch-10-31": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-31T20:34:25.341Z"
- },
- "https://www.fightful.com/wrestling/xelhua-wins-2026-cmll-rey-del-inframundo": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-31T20:34:25.161Z"
  },
  "https://www.wrestlinginc.com/2299147/xelina-zelina-vega-wwe-womens-us-title-scrapped-plans-storylines": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
