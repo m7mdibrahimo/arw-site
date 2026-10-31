@@ -1,4 +1,24 @@
 {
+ "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-31T19:07:53.713Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-2026-preview-start-time-how-to-watch-10-31": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-31T19:07:52.883Z"
+ },
+ "https://www.fightful.com/wrestling/xelhua-wins-2026-cmll-rey-del-inframundo": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-31T19:07:52.617Z"
+ },
+ "https://www.fightful.com/wrestling/no-holds-barred-stipulation-added-to-cm-punk-vs-kevin-owens-on-11-6-wwe-smackdown": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-31T19:07:52.070Z"
+ },
  "https://www.wrestlinginc.com/2299147/xelina-zelina-vega-wwe-womens-us-title-scrapped-plans-storylines": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
@@ -8,26 +28,6 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
   "retry": true,
   "at": "2026-10-31T19:06:06.131Z"
- },
- "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-31T19:05:48.571Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-2026-preview-start-time-how-to-watch-10-31": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-31T19:05:47.729Z"
- },
- "https://www.fightful.com/wrestling/xelhua-wins-2026-cmll-rey-del-inframundo": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-31T19:05:47.454Z"
- },
- "https://www.fightful.com/wrestling/no-holds-barred-stipulation-added-to-cm-punk-vs-kevin-owens-on-11-6-wwe-smackdown": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-31T19:05:46.907Z"
  },
  "https://www.fightful.com/wrestling/the-demon-finn-balor-returns-on-10-30-wwe-smackdown-takes-out-gunther": {
   "reason": "مكرر مع خبر نزل قبل كده",
