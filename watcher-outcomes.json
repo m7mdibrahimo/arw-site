@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2303207/aew-collision-october-31-2026-results": {
+  "reason": "المراجعة رفضته: العنوان مش جملة عربية (أقل من 3 كلمات عربية)، في التقرير 5 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
+  "retry": true,
+  "at": "2026-10-31T22:51:10.663Z"
+ },
+ "https://www.wrestlinginc.com/2301904/wwe-nxt-halloween-havoc-october-31-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-31T22:50:10.968Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-results-10-31-2026-danhausen-hosts-grayson-waller-kelani-jordan-zilla-fatu-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -33,16 +43,6 @@
   "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
   "retry": false,
   "at": "2026-10-31T22:49:12.489Z"
- },
- "https://www.wrestlinginc.com/2303207/aew-collision-october-31-2026-results": {
-  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
-  "retry": true,
-  "at": "2026-10-31T22:41:10.680Z"
- },
- "https://www.wrestlinginc.com/2301904/wwe-nxt-halloween-havoc-october-31-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-31T22:40:18.618Z"
  },
  "https://www.ringsidenews.com/wwe-nxt-halloween-havoc-results-highlights-key-moments-october-31-2026": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
