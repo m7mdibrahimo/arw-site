@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aew-dynamite-will-not-go-head-head-wwe-smackdown-january-1-all": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-31T13:44:57.903Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-2026-preview-start-time-how-to-watch-10-31": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-18T18:34:30.946Z"
- },
- "https://www.fightful.com/wrestling/watch-aew-wrestledream-post-show-media-scrum": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-18T17:41:37.781Z"
  }
 }
