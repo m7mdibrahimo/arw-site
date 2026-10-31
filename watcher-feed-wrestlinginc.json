@@ -1,5 +1,15 @@
 [
   {
+    "id": 3844802676,
+    "link": "https://www.wrestlinginc.com/2298429/wwe-bully-ray-rock-one-more-match/",
+    "date": "Sat, 31 Oct 2026 16:00:00 +0000",
+    "date_gmt": "2026-10-31T16:00:00.000Z",
+    "title": {
+      "rendered": "Bully Ray Thinks The Rock Has One More WWE Match In Him"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/bully-ray-thinks-the-rock-has-one-more-wwe-match-in-him/l-intro-1793117742.jpg"
+  },
+  {
     "id": 1794424009,
     "link": "https://www.wrestlinginc.com/2298321/aew-excalibur-jim-ross-chemistry-test/",
     "date": "Sat, 31 Oct 2026 15:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE SmackDown Results 10/30/2026 W/ Live Updates"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-results-10302026-w-live-updates/l-intro-1793381372.jpg"
-  },
-  {
-    "id": 1569064968,
-    "link": "https://www.wrestlinginc.com/2302962/wwe-shawn-michaels-rumored-promotion-additional-details-other-candidates/",
-    "date": "Fri, 30 Oct 2026 20:24:47 +0000",
-    "date_gmt": "2026-10-30T20:24:47.000Z",
-    "title": {
-      "rendered": "Additional Details On Shawn Michaels' Rumored WWE Promotion, Other Candidates"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/additional-details-on-shawn-michaels-rumored-wwe-promotion-other-candidates/l-intro-1793391879.jpg"
   }
 ]
