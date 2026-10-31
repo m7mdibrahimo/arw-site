@@ -1,38 +1,38 @@
 {
- "https://www.ringsidenews.com/wwe-nxt-halloween-havoc-results-highlights-key-moments-october-31-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-31T22:14:35.094Z"
- },
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-results-10-31-2026-danhausen-hosts-grayson-waller-kelani-jordan-zilla-fatu-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-31T22:14:26.152Z"
+  "at": "2026-10-31T22:17:50.004Z"
  },
  "https://www.fightful.com/wrestling/watch-countdown-to-nxt-halloween-havoc-oct-31-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T22:14:25.984Z"
+  "at": "2026-10-31T22:17:49.757Z"
  },
  "https://www.fightful.com/wrestling/sheamus-im-just-taking-time-off-im-on-vacation": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T22:14:25.756Z"
+  "at": "2026-10-31T22:17:49.413Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-says-he-has-re-signed-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T22:14:25.524Z"
+  "at": "2026-10-31T22:17:49.067Z"
  },
  "https://www.fightful.com/wrestling/court-bauer-says-mlw-was-in-talks-with-paramount-in-2025-before-ufc-deal-was-announced": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T22:14:25.345Z"
+  "at": "2026-10-31T22:17:48.799Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-31T22:14:24.391Z"
+  "at": "2026-10-31T22:17:47.392Z"
+ },
+ "https://www.ringsidenews.com/wwe-nxt-halloween-havoc-results-highlights-key-moments-october-31-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-31T22:14:35.094Z"
  },
  "https://www.wrestlinginc.com/2300404/sami-zayn-beating-roman-reigns-wwe-elimination-chamber-2023-montreal": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Cody Rhodes",
