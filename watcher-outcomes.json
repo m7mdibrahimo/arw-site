@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2299147/xelina-zelina-vega-wwe-womens-us-title-scrapped-plans-storylines": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-31T19:33:01.022Z"
+ },
+ "https://www.wrestlinginc.com/2298622/aew-billy-gunn-austin-colten-thoughts-children-following-footsteps": {
+  "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
+  "retry": true,
+  "at": "2026-10-31T19:32:46.485Z"
+ },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -18,16 +28,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-31T19:15:55.399Z"
- },
- "https://www.wrestlinginc.com/2299147/xelina-zelina-vega-wwe-womens-us-title-scrapped-plans-storylines": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-31T19:06:17.300Z"
- },
- "https://www.wrestlinginc.com/2298622/aew-billy-gunn-austin-colten-thoughts-children-following-footsteps": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
-  "retry": true,
-  "at": "2026-10-31T19:06:06.131Z"
  },
  "https://www.fightful.com/wrestling/the-demon-finn-balor-returns-on-10-30-wwe-smackdown-takes-out-gunther": {
   "reason": "مكرر مع خبر نزل قبل كده",
