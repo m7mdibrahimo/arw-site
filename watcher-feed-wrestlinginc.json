@@ -1,5 +1,15 @@
 [
   {
+    "id": 3266555099,
+    "link": "https://www.wrestlinginc.com/2303189/wwe-smackdown-rey-fenix-defeats-ricky-saints-aaa-cruiserweight-title/",
+    "date": "Sat, 31 Oct 2026 01:08:50 +0000",
+    "date_gmt": "2026-10-31T01:08:50.000Z",
+    "title": {
+      "rendered": "Rey Fenix Defeats Ricky Saints, Retains AAA Cruiserweight Title On WWE SmackDown"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/rey-fenix-defeats-ricky-saints-retains-aaa-cruiserweight-title-on-wwe-smackdown/l-intro-1793408825.jpg"
+  },
+  {
     "id": 1359567531,
     "link": "https://www.wrestlinginc.com/2297587/wwe-cody-rhodes-dwayne-johnson-rock-lesson-learned-wrestling-hollywood/",
     "date": "Sat, 31 Oct 2026 01:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Former WWE/AEW Star Maria Kanellis Ruminates On Future"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/former-wweaew-star-maria-kanellis-ruminates-on-future/l-intro-1793043515.jpg"
-  },
-  {
-    "id": 4611325047,
-    "link": "https://www.wrestlinginc.com/2301913/tna-impact-october-29-2026-hated-loved-opinion-review/",
-    "date": "Fri, 30 Oct 2026 04:10:54 +0000",
-    "date_gmt": "2026-10-30T04:10:54.000Z",
-    "title": {
-      "rendered": "TNA Impact 10/29/2026: 3 Things We Hated & 3 Things We Loved"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-impact-10292026-3-things-we-hated-3-things-we-loved/l-intro-1793330508.jpg"
   }
 ]
