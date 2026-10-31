@@ -1,5 +1,15 @@
 [
   {
+    "id": 2528800735,
+    "link": "https://www.wrestlinginc.com/2303204/wwe-nxt-halloween-havoc-2026-predictions-winners/",
+    "date": "Sat, 31 Oct 2026 10:00:00 +0000",
+    "date_gmt": "2026-10-31T10:00:00.000Z",
+    "title": {
+      "rendered": "WWE NXT Halloween Havoc 2026 Predictions: Wrestling Inc. Picks The Winners"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-halloween-havoc-2026-predictions-wrestling-inc-picks-the-winners/l-intro-1793417276.jpg"
+  },
+  {
     "id": 2675370881,
     "link": "https://www.wrestlinginc.com/2303208/wwe-smackdown-october-30-2026-hated-loved-opinion-review/",
     "date": "Sat, 31 Oct 2026 04:20:20 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Backstage Update On Status Of Absent TNA Star Lei Ying Lee"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-status-of-absent-tna-star-lei-ying-lee/l-intro-1793370071.jpg"
-  },
-  {
-    "id": 2769072468,
-    "link": "https://www.wrestlinginc.com/2301945/tna-relationship-ovw-change-upcoming-taping-format-xplosion/",
-    "date": "Fri, 30 Oct 2026 14:00:00 +0000",
-    "date_gmt": "2026-10-30T14:00:00.000Z",
-    "title": {
-      "rendered": "Backstage News On TNA Relationship With OVW, Change To Upcoming Taping Format"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-tna-relationship-with-ovw-change-to-upcoming-taping-format/l-intro-1793349594.jpg"
   }
 ]
