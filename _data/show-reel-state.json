@@ -4554,7 +4554,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261031062157-wwe-smackdown-30-10-2026": {
     "publishedAt": 1793421790908,
