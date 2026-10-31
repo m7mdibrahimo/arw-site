@@ -1,43 +1,43 @@
 {
- "https://www.ringsidenews.com/wwe-nxt-halloween-havoc-results-highlights-key-moments-october-31-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-31T23:47:05.060Z"
- },
  "https://www.fightful.com/wrestling/aew-fight-night-collision-results-10-31-ilja-dragunov-competes": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-31T23:45:31.747Z"
+  "at": "2026-10-31T23:48:53.440Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-results-10-31-2026-danhausen-hosts-grayson-waller-kelani-jordan-zilla-fatu-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-31T23:45:31.570Z"
+  "at": "2026-10-31T23:48:53.180Z"
  },
  "https://www.fightful.com/wrestling/watch-countdown-to-nxt-halloween-havoc-oct-31-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T23:45:31.392Z"
+  "at": "2026-10-31T23:48:52.932Z"
  },
  "https://www.fightful.com/wrestling/sheamus-im-just-taking-time-off-im-on-vacation": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T23:45:31.150Z"
+  "at": "2026-10-31T23:48:52.593Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-says-he-has-re-signed-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T23:45:30.907Z"
+  "at": "2026-10-31T23:48:52.249Z"
  },
  "https://www.fightful.com/wrestling/court-bauer-says-mlw-was-in-talks-with-paramount-in-2025-before-ufc-deal-was-announced": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T23:45:30.718Z"
+  "at": "2026-10-31T23:48:51.982Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-31T23:45:29.715Z"
+  "at": "2026-10-31T23:48:50.587Z"
+ },
+ "https://www.ringsidenews.com/wwe-nxt-halloween-havoc-results-highlights-key-moments-october-31-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-31T23:47:05.060Z"
  },
  "https://www.wrestlinginc.com/2303207/aew-collision-october-31-2026-results": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، تقرير نتائج بلا أي نتيجة",
