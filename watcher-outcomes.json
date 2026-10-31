@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-danhausens-very-nice-very-evil-smackdown-results-highlights-key-moments-october-30-2026": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-31T00:40:41.434Z"
+ },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-10-30-2026-sami-zayn-vs-trick-williams-nikki-bella-vs-chelsea-green-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -53,11 +58,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-31T00:38:48.787Z"
- },
- "https://www.ringsidenews.com/wwe-danhausens-very-nice-very-evil-smackdown-results-highlights-key-moments-october-30-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-31T00:17:08.327Z"
  },
  "https://www.ringsidenews.com/alexa-bliss-tatum-paxley-recreate-iconic-dodgeball-scene-halloween": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
