@@ -1,5 +1,15 @@
 [
   {
+    "id": 4147230044,
+    "link": "https://www.wrestlinginc.com/2303186/wwe-smackdown-chelsea-green-defeats-nikki-bella-womens-title/",
+    "date": "Sat, 31 Oct 2026 00:50:04 +0000",
+    "date_gmt": "2026-10-31T00:50:04.000Z",
+    "title": {
+      "rendered": "Chelsea Green Defeats Nikki Bella, Retains WWE Women's Title On SmackDown"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/chelsea-green-defeats-nikki-bella-retains-wwe-womens-title-on-smackdown/l-intro-1793407727.jpg"
+  },
+  {
     "id": 4948402941,
     "link": "https://www.wrestlinginc.com/2303157/aew-komander-absence-backstage-details-october-2026/",
     "date": "Fri, 30 Oct 2026 23:26:43 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Indi Hartwell To Defend Title Against Shayna Baszler At TNA Destination X"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/indi-hartwell-to-defend-title-against-shayna-baszler-at-tna-destination-x/l-intro-1793327697.jpg"
-  },
-  {
-    "id": 2863223799,
-    "link": "https://www.wrestlinginc.com/2301894/tna-impact-destination-x-world-x-cup-fabian-aichner-ricky-sosa-declare-themselves/",
-    "date": "Fri, 30 Oct 2026 02:08:41 +0000",
-    "date_gmt": "2026-10-30T02:08:41.000Z",
-    "title": {
-      "rendered": "Ricky Sosa & Fabian Aichner Declare Themselves For World X-Cup On TNA Impact"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/ricky-sosa-fabian-aichner-declare-themselves-for-world-x-cup-on-tna-impact/l-intro-1793325898.jpg"
   }
 ]
