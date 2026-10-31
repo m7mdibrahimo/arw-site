@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/why-big-cass-wwe-return-heel-difficult": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-31T12:44:58.244Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-2026-preview-start-time-how-to-watch-10-31": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-10-18T16:47:52.834Z"
- },
- "https://www.wrestlinginc.com/2288405/wwe-liv-morgan-favorite-opponents-dream-matches": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-18T16:32:41.519Z"
  }
 }
