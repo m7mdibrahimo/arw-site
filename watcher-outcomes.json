@@ -7,42 +7,47 @@
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-2026-preview-start-time-how-to-watch-10-31": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T14:35:56.615Z"
+  "at": "2026-10-31T14:38:54.148Z"
  },
  "https://www.fightful.com/wrestling/xelhua-wins-2026-cmll-rey-del-inframundo": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T14:35:56.357Z"
+  "at": "2026-10-31T14:38:53.888Z"
  },
  "https://www.fightful.com/wrestling/no-holds-barred-stipulation-added-to-cm-punk-vs-kevin-owens-on-11-6-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T14:35:55.826Z"
+  "at": "2026-10-31T14:38:53.351Z"
  },
  "https://www.fightful.com/wrestling/the-demon-finn-balor-returns-on-10-30-wwe-smackdown-takes-out-gunther": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T14:35:55.564Z"
+  "at": "2026-10-31T14:38:53.089Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-10-30-2026-sami-zayn-vs-trick-williams-nikki-bella-vs-chelsea-green-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T14:35:55.320Z"
+  "at": "2026-10-31T14:38:52.837Z"
  },
  "https://www.fightful.com/wrestling/mike-foley-calls-wwe-hall-of-famer-the-most-corrupted-preside-in-history": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T14:35:54.788Z"
+  "at": "2026-10-31T14:38:52.290Z"
  },
  "https://www.fightful.com/wrestling/details-on-jeff-hardy-upcoming-absence-from-tna": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T14:35:54.225Z"
+  "at": "2026-10-31T14:38:51.734Z"
  },
  "https://www.fightful.com/wrestling/paul-heyman-reacts-to-christian-watson-ambulance-return-we-did-this-in-1991": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T14:35:53.958Z"
+  "at": "2026-10-31T14:38:51.465Z"
+ },
+ "https://www.ringsidenews.com/ric-flair-turns-hospital-photo-ai-generated-pirate-look-halloween": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-31T14:35:51.932Z"
  },
  "https://www.ringsidenews.com/ric-flair-turns-hospital-photo-ai-generated-pirate-look-halloween": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
