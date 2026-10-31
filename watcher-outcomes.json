@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/cody-rhodes-says-he-got-shamed-by-his-wife-matt-cardona-and-chelsea-green-for-wearing-too-fancy-of-a-polo": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-10-31T17:14:10.631Z"
+ },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-31T17:10:49.872Z"
+  "at": "2026-10-31T17:13:52.924Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-2026-preview-start-time-how-to-watch-10-31": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T17:10:49.039Z"
+  "at": "2026-10-31T17:13:52.091Z"
  },
  "https://www.fightful.com/wrestling/xelhua-wins-2026-cmll-rey-del-inframundo": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T17:10:48.770Z"
+  "at": "2026-10-31T17:13:51.828Z"
  },
  "https://www.fightful.com/wrestling/no-holds-barred-stipulation-added-to-cm-punk-vs-kevin-owens-on-11-6-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T17:10:48.233Z"
+  "at": "2026-10-31T17:13:51.285Z"
  },
  "https://www.fightful.com/wrestling/the-demon-finn-balor-returns-on-10-30-wwe-smackdown-takes-out-gunther": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T17:10:47.963Z"
+  "at": "2026-10-31T17:13:51.017Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-10-30-2026-sami-zayn-vs-trick-williams-nikki-bella-vs-chelsea-green-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T17:10:47.717Z"
+  "at": "2026-10-31T17:13:50.767Z"
  },
  "https://www.wrestlinginc.com/2298622/aew-billy-gunn-austin-colten-thoughts-children-following-footsteps": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-19T02:01:26.388Z"
- },
- "https://www.fightful.com/wrestling/mlw-fusion-results-10-15-shotzi-defends-title": {
-  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
-  "retry": true,
-  "at": "2026-10-19T00:59:29.522Z"
  }
 }
