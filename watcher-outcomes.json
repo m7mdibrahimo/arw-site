@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2303207/aew-collision-october-31-2026-results": {
+  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
+  "retry": true,
+  "at": "2026-10-31T22:59:05.828Z"
+ },
+ "https://www.wrestlinginc.com/2301904/wwe-nxt-halloween-havoc-october-31-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-31T22:58:45.424Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-results-10-31-2026-danhausen-hosts-grayson-waller-kelani-jordan-zilla-fatu-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -33,16 +43,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-31T22:53:33.963Z"
- },
- "https://www.wrestlinginc.com/2303207/aew-collision-october-31-2026-results": {
-  "reason": "المراجعة رفضته: العنوان مش جملة عربية (أقل من 3 كلمات عربية)، في التقرير 5 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
-  "retry": true,
-  "at": "2026-10-31T22:51:10.663Z"
- },
- "https://www.wrestlinginc.com/2301904/wwe-nxt-halloween-havoc-october-31-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-31T22:50:10.968Z"
  },
  "https://www.fightful.com/wrestling/michin-states-that-she-sent-hate-mail-to-stephanie-mcmahon-when-she-was-a-kid": {
   "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
