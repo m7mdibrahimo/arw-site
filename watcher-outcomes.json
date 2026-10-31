@@ -1,23 +1,28 @@
 {
+ "https://www.fightful.com/wrestling/jake-roberts-says-he-has-re-signed-with-wwe": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-10-31T20:28:51.007Z"
+ },
  "https://www.fightful.com/wrestling/court-bauer-says-mlw-was-in-talks-with-paramount-in-2025-before-ufc-deal-was-announced": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T20:25:59.906Z"
+  "at": "2026-10-31T20:28:50.747Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-31T20:25:58.580Z"
+  "at": "2026-10-31T20:28:49.367Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-2026-preview-start-time-how-to-watch-10-31": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T20:25:57.774Z"
+  "at": "2026-10-31T20:28:48.531Z"
  },
  "https://www.fightful.com/wrestling/xelhua-wins-2026-cmll-rey-del-inframundo": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T20:25:57.506Z"
+  "at": "2026-10-31T20:28:48.261Z"
  },
  "https://www.wrestlinginc.com/2301904/wwe-nxt-halloween-havoc-october-31-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مصارع في المتن غير موجود في المصدر: Vince McMahon",
   "retry": true,
   "at": "2026-10-19T09:42:43.356Z"
- },
- "https://www.ringsidenews.com/nikki-bella-says-shes-single-not-sale": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-19T08:57:29.282Z"
  }
 }
