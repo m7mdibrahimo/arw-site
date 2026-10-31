@@ -1,58 +1,58 @@
 {
- "https://www.wrestlinginc.com/2297596/wwe-hofer-jbl-reflects-friendship-savio-vega": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-31T12:34:03.002Z"
- },
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-2026-preview-start-time-how-to-watch-10-31": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T12:34:54.958Z"
+  "at": "2026-10-31T12:37:45.788Z"
  },
  "https://www.fightful.com/wrestling/xelhua-wins-2026-cmll-rey-del-inframundo": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T12:34:54.696Z"
+  "at": "2026-10-31T12:37:45.562Z"
  },
  "https://www.fightful.com/wrestling/no-holds-barred-stipulation-added-to-cm-punk-vs-kevin-owens-on-11-6-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T12:34:54.150Z"
+  "at": "2026-10-31T12:37:45.101Z"
  },
  "https://www.fightful.com/wrestling/the-demon-finn-balor-returns-on-10-30-wwe-smackdown-takes-out-gunther": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T12:34:53.888Z"
+  "at": "2026-10-31T12:37:44.878Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-10-30-2026-sami-zayn-vs-trick-williams-nikki-bella-vs-chelsea-green-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T12:34:53.640Z"
+  "at": "2026-10-31T12:37:44.666Z"
  },
  "https://www.fightful.com/wrestling/mike-foley-calls-wwe-hall-of-famer-the-most-corrupted-preside-in-history": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T12:34:53.091Z"
+  "at": "2026-10-31T12:37:44.207Z"
  },
  "https://www.fightful.com/wrestling/details-on-jeff-hardy-upcoming-absence-from-tna": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T12:34:52.531Z"
+  "at": "2026-10-31T12:37:43.734Z"
  },
  "https://www.fightful.com/wrestling/paul-heyman-reacts-to-christian-watson-ambulance-return-we-did-this-in-1991": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T12:34:52.263Z"
+  "at": "2026-10-31T12:37:43.512Z"
  },
  "https://www.fightful.com/wrestling/ric-flair-responds-to-people-that-wonder-how-hes-still-alive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T12:34:51.860Z"
+  "at": "2026-10-31T12:37:43.179Z"
  },
  "https://www.fightful.com/wrestling/tatum-paxley-to-appear-as-panelist-at-nxt-halloween-havoc-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T12:34:51.590Z"
+  "at": "2026-10-31T12:37:42.949Z"
+ },
+ "https://www.wrestlinginc.com/2297596/wwe-hofer-jbl-reflects-friendship-savio-vega": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-31T12:34:03.002Z"
  },
  "https://www.fightful.com/wrestling/rusev-says-he-got-sick-after-suffering-injury-on-wwe-raw-doesnt-think-the-two-incidents-were-related": {
   "reason": "مكرر مع خبر نزل قبل كده",
