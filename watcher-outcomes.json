@@ -49,11 +49,6 @@
   "retry": true,
   "at": "2026-10-31T14:27:56.494Z"
  },
- "https://www.wrestlinginc.com/2297843/xelina-zelina-vega-wwe-cody-rhodes-john-cena-giulia-longer-match": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": true,
-  "at": "2026-10-31T14:15:03.831Z"
- },
  "https://www.ringsidenews.com/aew-dynamite-will-not-go-head-head-wwe-smackdown-january-1-all": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
