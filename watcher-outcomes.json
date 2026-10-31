@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/aj-lee-cm-punk-transform-resident-evil-characters-halloween": {
+  "reason": "المراجعة رفضته: مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-31T23:12:39.918Z"
+ },
+ "https://www.ringsidenews.com/wwe-nxt-halloween-havoc-results-highlights-key-moments-october-31-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-31T23:12:23.235Z"
+ },
  "https://www.fightful.com/wrestling/aew-fight-night-collision-results-10-31-ilja-dragunov-competes": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -43,11 +53,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-31T22:58:45.424Z"
- },
- "https://www.ringsidenews.com/wwe-nxt-halloween-havoc-results-highlights-key-moments-october-31-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-31T22:53:33.963Z"
  },
  "https://www.fightful.com/wrestling/michin-states-that-she-sent-hate-mail-to-stephanie-mcmahon-when-she-was-a-kid": {
   "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-19T19:24:01.328Z"
- },
- "https://www.ringsidenews.com/oshea-jackson-jr-revealed-mystery-guest-cody-rhodes-charlotte-flair-interview": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-10-19T18:55:22.622Z"
  }
 }
