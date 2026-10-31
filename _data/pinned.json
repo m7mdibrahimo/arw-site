@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/wwe-smackdown-30-10-2026/",
+    "title": "عرض سماك داون 30.10.2026 مترجم",
+    "subtitle": "WWE Smackdown 30.10.2026",
+    "image": "/content/images/oeveyn7n1saa3xrz.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/aew-fright-night-dynamite-28-10-2026/",
     "title": "عرض داينامايت 28.10.2026 مترجم",
     "subtitle": "AEW Fright Night Dynamite 28.10.2026",
@@ -75,60 +86,5 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-smackdown-23-10-2026/",
-    "title": "عرض سماك داون 23.10.2026 مترجم",
-    "subtitle": "WWE Smackdown 23.10.2026",
-    "image": "/content/images/g6ml1c5xrm4k6pbe.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/tna-impact-22-10-2026/",
-    "title": "عرض تي ان ايه امباكت 22.10.2026 مترجم",
-    "subtitle": "TNA iMPACT 22.10.2026",
-    "image": "/content/images/3whzuqiwqnhhuqr9.jpg?w=800",
-    "federation": "TNA",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض تي ان ايه امباكت مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/roh-on-honorclub-22-10-2026/",
-    "title": "عرض ار او اتش اون اونر كلوب 22.10.2026 مترجم",
-    "subtitle": "ROH on HonorClub 22.10.2026",
-    "image": "/content/images/jm2tccalvolwgd79.jpg?w=800",
-    "federation": "ROH",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ار او اتش اون اونر كلوب مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-main-event-21-10-2026/",
-    "title": "عرض مين ايفنت 21.10.2026 مترجم",
-    "subtitle": "WWE Main Event 21.10.2026",
-    "image": "/content/images/w87shfbtq9hrwzc4.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض مين ايفنت مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-evolve-21-10-2026/",
-    "title": "عرض ايفولف 21.10.2026 مترجم",
-    "subtitle": "WWE Evolve 21.10.2026",
-    "image": "/content/images/cfi6sw37d51nm2t8.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ايفولف مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
