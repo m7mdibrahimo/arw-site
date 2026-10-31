@@ -1,8 +1,8 @@
 {
- "https://www.ringsidenews.com/ric-flair-turns-hospital-photo-ai-generated-pirate-look-halloween": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+ "https://www.wrestlinginc.com/2297843/xelina-zelina-vega-wwe-cody-rhodes-john-cena-giulia-longer-match": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": true,
-  "at": "2026-10-31T14:35:51.932Z"
+  "at": "2026-10-31T14:38:12.902Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-2026-preview-start-time-how-to-watch-10-31": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -43,6 +43,11 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-31T14:35:53.958Z"
+ },
+ "https://www.ringsidenews.com/ric-flair-turns-hospital-photo-ai-generated-pirate-look-halloween": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-31T14:35:51.932Z"
  },
  "https://www.fightful.com/wrestling/nikki-bella-on-potentially-having-one-last-singles-match-with-brie-bella-before-they-retire-i-dont-think-itll-happen-unfortunately": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
