@@ -12,32 +12,37 @@
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-31T17:16:05.845Z"
+  "at": "2026-10-31T17:25:01.078Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-2026-preview-start-time-how-to-watch-10-31": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T17:16:05.100Z"
+  "at": "2026-10-31T17:25:00.236Z"
  },
  "https://www.fightful.com/wrestling/xelhua-wins-2026-cmll-rey-del-inframundo": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T17:16:04.862Z"
+  "at": "2026-10-31T17:24:59.966Z"
  },
  "https://www.fightful.com/wrestling/no-holds-barred-stipulation-added-to-cm-punk-vs-kevin-owens-on-11-6-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T17:16:04.375Z"
+  "at": "2026-10-31T17:24:59.420Z"
  },
  "https://www.fightful.com/wrestling/the-demon-finn-balor-returns-on-10-30-wwe-smackdown-takes-out-gunther": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T17:16:04.126Z"
+  "at": "2026-10-31T17:24:59.148Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-10-30-2026-sami-zayn-vs-trick-williams-nikki-bella-vs-chelsea-green-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T17:16:03.899Z"
+  "at": "2026-10-31T17:24:58.894Z"
+ },
+ "https://www.fightful.com/wrestling/cody-rhodes-says-he-got-shamed-by-his-wife-matt-cardona-and-chelsea-green-for-wearing-too-fancy-of-a-polo": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-10-31T17:23:21.225Z"
  },
  "https://www.ringsidenews.com/rock-goes-above-beyond-young-fan-who-dressed-him-halloween": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
