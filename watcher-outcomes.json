@@ -1,4 +1,19 @@
 {
+ "https://www.wrestlinginc.com/2300404/sami-zayn-beating-roman-reigns-wwe-elimination-chamber-2023-montreal": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Cody Rhodes",
+  "retry": true,
+  "at": "2026-10-31T20:33:33.862Z"
+ },
+ "https://www.wrestlinginc.com/2301904/wwe-nxt-halloween-havoc-october-31-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-31T20:33:22.193Z"
+ },
+ "https://www.wrestlinginc.com/2298622/aew-billy-gunn-austin-colten-thoughts-children-following-footsteps": {
+  "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
+  "retry": true,
+  "at": "2026-10-31T20:33:22.019Z"
+ },
  "https://www.fightful.com/wrestling/jake-roberts-says-he-has-re-signed-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -23,16 +38,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-31T20:31:53.056Z"
- },
- "https://www.wrestlinginc.com/2301904/wwe-nxt-halloween-havoc-october-31-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-31T20:21:43.367Z"
- },
- "https://www.wrestlinginc.com/2298622/aew-billy-gunn-austin-colten-thoughts-children-following-footsteps": {
-  "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
-  "retry": true,
-  "at": "2026-10-31T20:21:43.118Z"
  },
  "https://www.wrestlinginc.com/2299147/xelina-zelina-vega-wwe-womens-us-title-scrapped-plans-storylines": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-19T10:56:41.043Z"
- },
- "https://www.ringsidenews.com/paige-collett-drops-steamy-photos-celebrate-56-days-without-sugar": {
-  "reason": "المراجعة رفضته: اسم مصارع في المتن غير موجود في المصدر: Vince McMahon",
-  "retry": true,
-  "at": "2026-10-19T09:42:43.356Z"
  }
 }
