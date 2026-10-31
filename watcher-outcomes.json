@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2303189/wwe-smackdown-rey-fenix-defeats-ricky-saints-aaa-cruiserweight-title": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-31T01:55:09.119Z"
+ },
  "https://www.fightful.com/wrestling/no-holds-barred-stipulation-added-to-cm-punk-vs-kevin-owens-on-11-6-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -63,11 +68,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-31T01:37:54.212Z"
- },
- "https://www.wrestlinginc.com/2303189/wwe-smackdown-rey-fenix-defeats-ricky-saints-aaa-cruiserweight-title": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-31T01:34:39.583Z"
  },
  "https://www.wrestlinginc.com/2302585/wwe-smackdown-october-30-2026-results": {
   "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Tatum Paxley",
