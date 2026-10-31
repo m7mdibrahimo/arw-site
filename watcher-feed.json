@@ -1,5 +1,15 @@
 [
   {
+    "id": 336711,
+    "link": "https://www.fightful.com/wrestling/wrestling-open-results-10-29/",
+    "date": "2026-10-31T12:07:06",
+    "date_gmt": "2026-10-31T16:07:06",
+    "title": {
+      "rendered": "Wrestling Open Results (10/29)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/31120634/HVoTRQwWgAA-KKQ.jpeg"
+  },
+  {
     "id": 336698,
     "link": "https://www.fightful.com/wrestling/tony-dangelo-says-he-isnt-too-focused-on-being-considered-one-of-the-all-time-greats-in-wwe-nxt/",
     "date": "2026-10-31T12:01:42",
@@ -288,15 +298,5 @@
       "rendered": "Islam Makhachev Claims His Next Fight Will Be His Last"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/30163828/Screenshot-2026-10-30-at-4.38.14-PM.png"
-  },
-  {
-    "id": 336597,
-    "link": "https://www.fightful.com/wrestling/paul-heyman-recalls-trying-to-lure-ric-flair-into-fighting-him-but-he-didnt-take-the-bait/",
-    "date": "2026-10-30T16:23:28",
-    "date_gmt": "2026-10-30T20:23:28",
-    "title": {
-      "rendered": "Paul Heyman Recalls Trying To Lure Ric Flair Into Fighting Him, But He Didn’t Take The Bait"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/30162144/RAW_1021_Photo_062.jpg"
   }
 ]
