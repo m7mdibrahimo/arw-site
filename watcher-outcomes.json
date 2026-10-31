@@ -2,32 +2,37 @@
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-results-10-31-2026-danhausen-hosts-grayson-waller-kelani-jordan-zilla-fatu-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-31T22:44:27.251Z"
+  "at": "2026-10-31T22:49:15.582Z"
  },
  "https://www.fightful.com/wrestling/watch-countdown-to-nxt-halloween-havoc-oct-31-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T22:44:27.071Z"
+  "at": "2026-10-31T22:49:15.339Z"
  },
  "https://www.fightful.com/wrestling/sheamus-im-just-taking-time-off-im-on-vacation": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T22:44:26.838Z"
+  "at": "2026-10-31T22:49:15.006Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-says-he-has-re-signed-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T22:44:26.601Z"
+  "at": "2026-10-31T22:49:14.668Z"
  },
  "https://www.fightful.com/wrestling/court-bauer-says-mlw-was-in-talks-with-paramount-in-2025-before-ufc-deal-was-announced": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T22:44:26.412Z"
+  "at": "2026-10-31T22:49:14.278Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-31T22:44:25.423Z"
+  "at": "2026-10-31T22:49:12.882Z"
+ },
+ "https://www.fightful.com/wrestling/michin-states-that-she-sent-hate-mail-to-stephanie-mcmahon-when-she-was-a-kid": {
+  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
+  "retry": false,
+  "at": "2026-10-31T22:49:12.489Z"
  },
  "https://www.wrestlinginc.com/2303207/aew-collision-october-31-2026-results": {
   "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-19T18:17:15.278Z"
- },
- "https://www.fightful.com/wrestling/details-about-tna-talent-meeting-held-by-carlos-silva-regarding-upcoming-contracts": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-19T17:12:34.983Z"
  }
 }
