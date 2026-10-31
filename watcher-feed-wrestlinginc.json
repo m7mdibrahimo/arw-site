@@ -1,5 +1,15 @@
 [
   {
+    "id": 3948282089,
+    "link": "https://www.wrestlinginc.com/2303194/wwe-smackdown-finn-balor-demon-danhausen-gunther-revived-persona/",
+    "date": "Sat, 31 Oct 2026 01:55:29 +0000",
+    "date_gmt": "2026-10-31T01:55:29.000Z",
+    "title": {
+      "rendered": "Finn Balor's Demon Persona Revived By Danhausen, Takes Down GUNTHER On WWE SmackDown"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/finn-balors-demon-persona-revived-by-danhausen-takes-down-gunther-on-wwe-smackdown/l-intro-1793411643.jpg"
+  },
+  {
     "id": 3266555099,
     "link": "https://www.wrestlinginc.com/2303189/wwe-smackdown-rey-fenix-defeats-ricky-saints-aaa-cruiserweight-title/",
     "date": "Sat, 31 Oct 2026 01:08:50 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Backstage News On Paul Heyman's Potential Return To WWE TV"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-paul-heymans-potential-return-to-wwe-tv/l-intro-1793341552.jpg"
-  },
-  {
-    "id": 2159281484,
-    "link": "https://www.wrestlinginc.com/2297558/former-wwe-aew-star-maria-kanellis-ruminates-future/",
-    "date": "Fri, 30 Oct 2026 12:30:00 +0000",
-    "date_gmt": "2026-10-30T12:30:00.000Z",
-    "title": {
-      "rendered": "Former WWE/AEW Star Maria Kanellis Ruminates On Future"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/former-wweaew-star-maria-kanellis-ruminates-on-future/l-intro-1793043515.jpg"
   }
 ]
