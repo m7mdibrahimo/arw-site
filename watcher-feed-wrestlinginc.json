@@ -1,5 +1,25 @@
 [
   {
+    "id": 1106835055,
+    "link": "https://www.wrestlinginc.com/2301904/wwe-nxt-halloween-havoc-october-31-2026-results/",
+    "date": "Sat, 31 Oct 2026 20:00:00 +0000",
+    "date_gmt": "2026-10-31T20:00:00.000Z",
+    "title": {
+      "rendered": "WWE NXT Halloween Havoc Results 10/31/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-halloween-havoc-results-103126-w-live-updates/l-intro-1793329196.jpg"
+  },
+  {
+    "id": 932013334,
+    "link": "https://www.wrestlinginc.com/2297485/wwe-drew-mcintyre-moment-wishes-take-back/",
+    "date": "Sat, 31 Oct 2026 20:00:00 +0000",
+    "date_gmt": "2026-10-31T20:00:00.000Z",
+    "title": {
+      "rendered": "Drew McIntyre Identifies WWE Moment He Wishes He Could Take Back"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/drew-mcintyre-identifies-wwe-moment-he-wishes-he-could-take-back/l-intro-1793039143.jpg"
+  },
+  {
     "id": 1780948599,
     "link": "https://www.wrestlinginc.com/2299653/aew-bryce-remsburg-compares-referee-role-indies/",
     "date": "Sat, 31 Oct 2026 19:30:00 +0000",
@@ -178,25 +198,5 @@
       "rendered": "WWE HOFer JBL Reflects On Friendship With Savio Vega"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-hofer-jbl-reflects-on-friendship-with-savio-vega/l-intro-1793044285.jpg"
-  },
-  {
-    "id": 2528800735,
-    "link": "https://www.wrestlinginc.com/2303204/wwe-nxt-halloween-havoc-2026-predictions-winners/",
-    "date": "Sat, 31 Oct 2026 10:00:00 +0000",
-    "date_gmt": "2026-10-31T10:00:00.000Z",
-    "title": {
-      "rendered": "WWE NXT Halloween Havoc 2026 Predictions: Wrestling Inc. Picks The Winners"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-halloween-havoc-2026-predictions-wrestling-inc-picks-the-winners/l-intro-1793417276.jpg"
-  },
-  {
-    "id": 2675370881,
-    "link": "https://www.wrestlinginc.com/2303208/wwe-smackdown-october-30-2026-hated-loved-opinion-review/",
-    "date": "Sat, 31 Oct 2026 04:20:20 +0000",
-    "date_gmt": "2026-10-31T04:20:20.000Z",
-    "title": {
-      "rendered": "WWE SmackDown 10/30/2026: 3 Things We Hated And 3 Things We Loved"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-10302026-3-things-we-hated-and-3-things-we-loved/l-intro-1793419298.jpg"
   }
 ]
