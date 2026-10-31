@@ -1,5 +1,15 @@
 [
   {
+    "id": 336655,
+    "link": "https://www.fightful.com/wrestling/aew-dynamite-10-28-viewership-drops-remains-over-600000-viewers-against-world-series/",
+    "date": "2026-10-30T22:16:44",
+    "date_gmt": "2026-10-31T02:16:44",
+    "title": {
+      "rendered": "AEW Dynamite (10/28) Viewership Drops, Remains Over 600,000 Viewers Against World Series"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/10194242/dynamite-2024-1-2.jpg"
+  },
+  {
     "id": 336641,
     "link": "https://www.fightful.com/wrestling/mina-shirakawa-discusses-being-selected-to-be-india-siouxs-opponent/",
     "date": "2026-10-30T22:00:00",
@@ -288,15 +298,5 @@
       "rendered": "TNA iMPACT (10/22) Viewership Drops, Remains Over 230,000 Views"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/26181456/48d23a281b51ea48d72d132dafab4752-1-1.jpg"
-  },
-  {
-    "id": 336525,
-    "link": "https://www.fightful.com/wrestling/new-venue-in-riyadh-listed-for-wwe-crown-jewel/",
-    "date": "2026-10-30T08:44:41",
-    "date_gmt": "2026-10-30T12:44:41",
-    "title": {
-      "rendered": "New Venue In Riyadh Listed For WWE Crown Jewel"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/04112806/NET_INTL_065804_CrownJewel26_LAUNCH_1920x1080.jpg"
   }
 ]
