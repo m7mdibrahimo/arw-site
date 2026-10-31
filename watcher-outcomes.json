@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2297911/drew-mctyre-returning-wwe-2017-talks-njpw": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-10-31T15:07:28.941Z"
+ },
+ "https://www.wrestlinginc.com/2297843/xelina-zelina-vega-wwe-cody-rhodes-john-cena-giulia-longer-match": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-31T15:06:54.205Z"
+ },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -1988,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-18T21:34:38.156Z"
- },
- "https://www.ringsidenews.com/tommy-dreamers-mysterious-midnight-dreamer-character-explained": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-10-18T21:29:57.433Z"
  }
 }
