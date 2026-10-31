@@ -1,5 +1,25 @@
 [
   {
+    "id": 1259144251,
+    "link": "https://www.wrestlinginc.com/2303207/aew-collision-october-31-2026-results/",
+    "date": "Sat, 31 Oct 2026 21:00:00 +0000",
+    "date_gmt": "2026-10-31T21:00:00.000Z",
+    "title": {
+      "rendered": "AEW Collision Results 10/31/2026 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-collision-results-10312026-w-live-updates/l-intro-1793418860.jpg"
+  },
+  {
+    "id": 1722499304,
+    "link": "https://www.wrestlinginc.com/2300675/aew-adam-copeland-maple-leaf-gardens-more-important-wembley/",
+    "date": "Sat, 31 Oct 2026 21:00:00 +0000",
+    "date_gmt": "2026-10-31T21:00:00.000Z",
+    "title": {
+      "rendered": "AEW's Adam Copeland: Wrestling In Maple Leaf Gardens Was More Important Than Wembley"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-adam-copeland-wrestling-in-maple-leaf-gardens-was-more-important-than-wembley/l-intro-1793266255.jpg"
+  },
+  {
     "id": 5017048766,
     "link": "https://www.wrestlinginc.com/2300404/sami-zayn-beating-roman-reigns-wwe-elimination-chamber-2023-montreal/",
     "date": "Sat, 31 Oct 2026 20:30:00 +0000",
@@ -178,25 +198,5 @@
       "rendered": "WWE NXT Halloween Havoc 2026 Full & Final Card"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-halloween-havoc-2026-full-final-card/l-intro-1793325273.jpg"
-  },
-  {
-    "id": 5087264238,
-    "link": "https://www.wrestlinginc.com/2297637/aew-samoa-joe-identifies-ways-modern-wrestling-improved-past/",
-    "date": "Sat, 31 Oct 2026 13:00:00 +0000",
-    "date_gmt": "2026-10-31T13:00:00.000Z",
-    "title": {
-      "rendered": "AEW's Samoa Joe Identifies Ways Modern Wrestling Has Improved On The Past"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-samoa-joe-identifies-ways-modern-wrestling-has-improved-on-the-past/l-intro-1793045644.jpg"
-  },
-  {
-    "id": 2004107284,
-    "link": "https://www.wrestlinginc.com/2303240/tna-jeff-hardy-upcoming-absence-backstage-report/",
-    "date": "Sat, 31 Oct 2026 12:35:07 +0000",
-    "date_gmt": "2026-10-31T12:35:07.000Z",
-    "title": {
-      "rendered": "Backstage Report On Jeff Hardy's Upcoming TNA Absence"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-report-on-jeff-hardys-upcoming-tna-absence/l-intro-1793450011.jpg"
   }
 ]

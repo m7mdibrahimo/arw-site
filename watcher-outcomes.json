@@ -1,4 +1,19 @@
 {
+ "https://www.wrestlinginc.com/2303207/aew-collision-october-31-2026-results": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تقرير نتائج بلا أي نتيجة",
+  "retry": true,
+  "at": "2026-10-31T21:04:00.721Z"
+ },
+ "https://www.wrestlinginc.com/2300404/sami-zayn-beating-roman-reigns-wwe-elimination-chamber-2023-montreal": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Cody Rhodes",
+  "retry": true,
+  "at": "2026-10-31T21:03:32.444Z"
+ },
+ "https://www.wrestlinginc.com/2301904/wwe-nxt-halloween-havoc-october-31-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-10-31T21:03:20.828Z"
+ },
  "https://www.fightful.com/wrestling/sheamus-im-just-taking-time-off-im-on-vacation": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -23,16 +38,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-31T20:54:50.120Z"
- },
- "https://www.wrestlinginc.com/2300404/sami-zayn-beating-roman-reigns-wwe-elimination-chamber-2023-montreal": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Cody Rhodes",
-  "retry": true,
-  "at": "2026-10-31T20:52:50.055Z"
- },
- "https://www.wrestlinginc.com/2301904/wwe-nxt-halloween-havoc-october-31-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-31T20:52:34.365Z"
  },
  "https://www.wrestlinginc.com/2298622/aew-billy-gunn-austin-colten-thoughts-children-following-footsteps": {
   "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-19T14:59:11.544Z"
- },
- "https://www.fightful.com/wrestling/mjf-shares-his-aew-wrestledream-synopsis": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-19T14:09:37.870Z"
  }
 }
