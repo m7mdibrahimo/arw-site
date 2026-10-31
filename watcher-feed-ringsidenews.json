@@ -1,5 +1,25 @@
 [
   {
+    "id": 802261674,
+    "link": "https://www.ringsidenews.com/vince-mcmahon-accused-putting-wwe-writers-hostage-situation/",
+    "date": "Sat, 31 Oct 2026 11:00:21 +0000",
+    "date_gmt": "2026-10-31T11:00:21.000Z",
+    "title": {
+      "rendered": "Vince McMahon Accused of Putting WWE Writers in a ‘Hostage Situation’"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/vince-mcmahon-accused-of-putting-wwe-writers-in-a-hostage-situation-45.jpg?x72895"
+  },
+  {
+    "id": 802261678,
+    "link": "https://www.ringsidenews.com/fans-lash-out-nikki-bella-fails-win-wwe-womens-title-october-30-smackdown/",
+    "date": "Sat, 31 Oct 2026 11:00:11 +0000",
+    "date_gmt": "2026-10-31T11:00:11.000Z",
+    "title": {
+      "rendered": "Fans Lash Out After Nikki Bella Fails to Win WWE Women’s Title on October 30 SmackDown"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/fans-lash-out-after-nikki-bella-fails-to-win-wwe-womens-title-on-october-30-smackdown-30.jpg?x72895"
+  },
+  {
     "id": 802261598,
     "link": "https://www.ringsidenews.com/sami-zayn-retains-undisputed-wwe-championship-against-trick-williams-controversial-finish-smackdown/",
     "date": "Sat, 31 Oct 2026 02:04:02 +0000",
@@ -128,25 +148,5 @@
       "rendered": "Mick Foley Fears Dementia Could Eventually Claim His Life After Years of Head Trauma"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/mick-foley-fears-dementia-could-eventually-claim-his-life-after-years-of-head-trauma-28.jpg?x72895"
-  },
-  {
-    "id": 802261406,
-    "link": "https://www.ringsidenews.com/hulk-hogans-widow-sued-allegedly-supplying-alcohol-minors-party-linked-sexual-assault-case/",
-    "date": "Fri, 30 Oct 2026 19:05:08 +0000",
-    "date_gmt": "2026-10-30T19:05:08.000Z",
-    "title": {
-      "rendered": "Hulk Hogan’s Widow Sued Over Allegedly Supplying Alcohol to Minors at Party Linked to Sexual Assault Case"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/hulk-hogans-widow-sued-over-allegedly-supplying-alcohol-to-minors-at-party-linked-to-sexual-assault-case-55.jpg?x72895"
-  },
-  {
-    "id": 802261402,
-    "link": "https://www.ringsidenews.com/mick-foley-calls-donald-trump-most-corrupt-president-us-history/",
-    "date": "Fri, 30 Oct 2026 18:32:28 +0000",
-    "date_gmt": "2026-10-30T18:32:28.000Z",
-    "title": {
-      "rendered": "Mick Foley Calls Donald Trump The ‘Most Corrupt President’ in U.S. History"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/mick-foley-calls-donald-trump-the-most-corrupt-president-in-u-s-history-37.jpg?x72895"
   }
 ]
