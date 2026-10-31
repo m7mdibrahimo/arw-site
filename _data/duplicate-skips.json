@@ -1,14 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2288796/wwe-montez-ford-sued-security-guard/": {
-    "matchedFile": "20261016031011-مقاضاة-wwe-ومونتيز-فورد-بسبب-رقصة-غير-لائقة-مع-رجل-أمن-خلال-عرض-wwe-raw.md",
-    "reason": "الخبر الجديد يتناول نفس الدعوى القضائية المرفوعة ضد WWE ومونتيز فورد من قبل رجل الأمن نويل لوكاس بسبب نفس الواقعة في عرض RAW بتاريخ 6 يوليو والمذكورة بالفعل في الخبر المنشور.",
-    "at": "2026-10-16T15:05:03.172Z"
-  },
-  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-10-16/": {
-    "matchedFile": "20261016121917-تفاصيل-وموعد-انطلاق-مواجهات-عرض-wwe-smackdown-الليلة.md",
-    "reason": "الخبر الجديد يمثل معاينة (Preview) وجدول نزالات لنفس عرض SmackDown المنشور بالفعل تفاصيله ونزالاته ومكان إقامته في الخبر السابق.",
-    "at": "2026-10-16T15:24:06.839Z"
-  },
   "https://www.fightful.com/wrestling/aew-collision-grand-slam-france-dips-below-400000-viewers-on-tnt-key-demo-rating-also-down/": {
     "matchedFile": "20261016175239-انخفاض-نسب-مشاهدة-عرض-aew-collision-يوم-10-أكتوبر-2026.md",
     "reason": "الخبر الجديد يغطي نفس نسب المشاهدة لعرض AEW Collision بتاريخ 10 أكتوبر 2026 وأرقام قناة TNT والفئة العمرية والمقارنة مع الأسبوع السابق والمذكورة بالفعل في الخبر رقم 1.",
@@ -2498,5 +2488,15 @@
     "matchedFile": "20261031000000-نتائج-عرض-wwe-smackdown-30-أكتوبر-2026-تغطية-مباشرة-وتحديثات-مستمرة.md",
     "reason": "الخبر الجديد يغطي نفس نتيجة نزال بطولة WWE بلا منازع التي تم ذكرها بالفعل في تقرير نتائج عرض SmackDown بتاريخ 30 أكتوبر 2026.",
     "at": "2026-10-31T02:06:16.333Z"
+  },
+  "https://www.wrestlinginc.com/2303189/wwe-smackdown-rey-fenix-defeats-ricky-saints-aaa-cruiserweight-title/": {
+    "matchedFile": "20261031000000-نتائج-عرض-wwe-smackdown-30-أكتوبر-2026-تغطية-مباشرة-وتحديثات-مستمرة.md",
+    "reason": "الخبر الجديد هو تقرير مفصل لنزال ري فينيكس وريكي سينتس في عرض SmackDown الذي تم نشر نتائجه الكاملة من قبل في الخبر رقم [0] بما في ذلك نفس النزال ونفس النتيجة.",
+    "at": "2026-10-31T02:16:09.384Z"
+  },
+  "https://www.wrestlinginc.com/2303195/wwe-smackdown-sami-zayn-still-undisputed-champion-trick-williams/": {
+    "matchedFile": "20261031000000-نتائج-عرض-wwe-smackdown-30-أكتوبر-2026-تغطية-مباشرة-وتحديثات-مستمرة.md",
+    "reason": "الخبر الجديد يغطي نفس نتائج عرض SmackDown ونزال بطولة WWE بلا منازع بين سامي زين وتريك ويليامز الموجودة بالفعل في تقرير النتائج الشامل للرض.",
+    "at": "2026-10-31T02:17:00.949Z"
   }
 }
