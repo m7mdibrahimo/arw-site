@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/ric-flair-turns-hospital-photo-ai-generated-pirate-look-halloween": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-10-31T14:35:51.932Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-2026-preview-start-time-how-to-watch-10-31": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
   "at": "2026-10-18T21:29:57.433Z"
- },
- "https://www.fightful.com/wrestling/ilja-dragunov-if-i-feel-the-air-in-a-certain-environment-gets-thinner-i-need-to-breathe": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-18T20:33:23.017Z"
  }
 }
