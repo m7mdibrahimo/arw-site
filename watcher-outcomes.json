@@ -1,63 +1,63 @@
 {
- "https://www.wrestlinginc.com/2302585/wwe-smackdown-october-30-2026-results": {
-  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Tatum Paxley",
-  "retry": true,
-  "at": "2026-10-31T01:01:50.424Z"
- },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-10-30-2026-sami-zayn-vs-trick-williams-nikki-bella-vs-chelsea-green-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-31T01:01:17.982Z"
+  "at": "2026-10-31T01:03:24.453Z"
  },
  "https://www.fightful.com/wrestling/mike-foley-calls-wwe-hall-of-famer-the-most-corrupted-preside-in-history": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T01:01:17.620Z"
+  "at": "2026-10-31T01:03:23.901Z"
  },
  "https://www.fightful.com/wrestling/details-on-jeff-hardy-upcoming-absence-from-tna": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T01:01:17.248Z"
+  "at": "2026-10-31T01:03:23.332Z"
  },
  "https://www.fightful.com/wrestling/paul-heyman-reacts-to-christian-watson-ambulance-return-we-did-this-in-1991": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T01:01:17.069Z"
+  "at": "2026-10-31T01:03:23.069Z"
  },
  "https://www.fightful.com/wrestling/ric-flair-responds-to-people-that-wonder-how-hes-still-alive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T01:01:16.853Z"
+  "at": "2026-10-31T01:03:22.743Z"
  },
  "https://www.fightful.com/wrestling/tatum-paxley-to-appear-as-panelist-at-nxt-halloween-havoc-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T01:01:16.676Z"
+  "at": "2026-10-31T01:03:22.471Z"
  },
  "https://www.fightful.com/wrestling/rusev-says-he-got-sick-after-suffering-injury-on-wwe-raw-doesnt-think-the-two-incidents-were-related": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T01:01:16.451Z"
+  "at": "2026-10-31T01:03:22.124Z"
  },
  "https://www.fightful.com/wrestling/tammy-sytch-attempting-to-have-conviction-thrown-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T01:01:16.225Z"
+  "at": "2026-10-31T01:03:21.785Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-viewership-10-22-drops-remains-over-230000-views": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-22)",
   "retry": false,
-  "at": "2026-10-31T01:01:15.947Z"
+  "at": "2026-10-31T01:03:21.368Z"
  },
  "https://www.fightful.com/wrestling/new-venue-in-riyadh-listed-for-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-10-31T01:01:15.832Z"
+  "at": "2026-10-31T01:03:21.194Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-10-31T01:01:15.547Z"
+  "at": "2026-10-31T01:03:20.766Z"
+ },
+ "https://www.wrestlinginc.com/2302585/wwe-smackdown-october-30-2026-results": {
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Tatum Paxley",
+  "retry": true,
+  "at": "2026-10-31T01:01:50.424Z"
  },
  "https://www.wrestlinginc.com/2303186/wwe-smackdown-chelsea-green-defeats-nikki-bella-womens-title": {
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
