@@ -1,5 +1,25 @@
 [
   {
+    "id": 4001320669,
+    "link": "https://www.wrestlinginc.com/2301893/wwe-nxt-halloween-havoc-2026-full-final-card-matches/",
+    "date": "Sat, 31 Oct 2026 13:00:00 +0000",
+    "date_gmt": "2026-10-31T13:00:00.000Z",
+    "title": {
+      "rendered": "WWE NXT Halloween Havoc 2026 Full & Final Card"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-halloween-havoc-2026-full-final-card/l-intro-1793325273.jpg"
+  },
+  {
+    "id": 5087264238,
+    "link": "https://www.wrestlinginc.com/2297637/aew-samoa-joe-identifies-ways-modern-wrestling-improved-past/",
+    "date": "Sat, 31 Oct 2026 13:00:00 +0000",
+    "date_gmt": "2026-10-31T13:00:00.000Z",
+    "title": {
+      "rendered": "AEW's Samoa Joe Identifies Ways Modern Wrestling Has Improved On The Past"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-samoa-joe-identifies-ways-modern-wrestling-has-improved-on-the-past/l-intro-1793045644.jpg"
+  },
+  {
     "id": 2004107284,
     "link": "https://www.wrestlinginc.com/2303240/tna-jeff-hardy-upcoming-absence-backstage-report/",
     "date": "Sat, 31 Oct 2026 12:35:07 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Dave Meltzer Provides Update On Stephanie Vaquer Illness That Kept Her Off WWE Raw"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/dave-meltzer-provides-update-on-stephanie-vaquer-illness-that-kept-her-off-wwe-raw/l-intro-1793373921.jpg"
-  },
-  {
-    "id": 1115854367,
-    "link": "https://www.wrestlinginc.com/2302315/wwe-crown-jewel-2026-new-venue-officially-revealed/",
-    "date": "Fri, 30 Oct 2026 15:16:07 +0000",
-    "date_gmt": "2026-10-30T15:16:07.000Z",
-    "title": {
-      "rendered": "New Venue For WWE Crown Jewel In Saudi Arabia Officially Revealed"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/new-venue-for-wwe-crown-jewel-in-saudi-arabia-officially-revealed/l-intro-1793375530.jpg"
-  },
-  {
-    "id": 5046430709,
-    "link": "https://www.wrestlinginc.com/2301975/wwe-joe-hendry-logan-paul-injury-rival-tough-spot/",
-    "date": "Fri, 30 Oct 2026 15:00:00 +0000",
-    "date_gmt": "2026-10-30T15:00:00.000Z",
-    "title": {
-      "rendered": "Joe Hendry Says Injury To WWE Rival Has Put Him In A 'Tough Spot'"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/joe-hendry-says-injury-to-wwe-rival-has-put-him-in-a-tough-spot/l-intro-1793356751.jpg"
   }
 ]
