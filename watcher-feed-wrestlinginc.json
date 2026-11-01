@@ -1,5 +1,15 @@
 [
   {
+    "id": 4418062323,
+    "link": "https://www.wrestlinginc.com/2303464/tna-leon-slater-aj-styles-trying-become-next/",
+    "date": "Sun, 01 Nov 2026 19:52:36 +0000",
+    "date_gmt": "2026-11-01T19:52:36.000Z",
+    "title": {
+      "rendered": "Leon Slater Says He's Trying To Become TNA's Next AJ Styles"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/leon-slater-says-hes-trying-to-become-tnas-next-aj-styles/l-intro-1793562708.jpg"
+  },
+  {
     "id": 1634853965,
     "link": "https://www.wrestlinginc.com/2302591/tna-wwe-nxt-leon-slater-changed-game/",
     "date": "Sun, 01 Nov 2026 19:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE NXT Champion Grayson Waller Gets Opportunistic Win In Halloween Havoc Main Event, Will Face CM Punk"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-champion-grayson-waller-gets-opportunistic-win-in-halloween-havoc-main-event-will-face-cm-punk/l-intro-1793499142.jpg"
-  },
-  {
-    "id": 1157533989,
-    "link": "https://www.wrestlinginc.com/2303363/wwe-nxt-reviving-tlc-ple/",
-    "date": "Sun, 01 Nov 2026 01:42:15 +0000",
-    "date_gmt": "2026-11-01T01:42:15.000Z",
-    "title": {
-      "rendered": "WWE NXT Reviving TLC PLE"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-reviving-tlc-ple/l-intro-1793497249.jpg"
   }
 ]
