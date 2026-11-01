@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/kelani-jordan-retains-nxt-womens-championship-controversial-finish-halloween-havoc-2026": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-01T01:12:43.884Z"
+ },
  "https://www.fightful.com/wrestling/zilla-fatu-overcomes-birthright-to-defeat-charlie-dempsey-at-nxt-halloween-havoc": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
   "retry": false,
   "at": "2026-10-20T01:40:52.850Z"
- },
- "https://www.fightful.com/wrestling/roman-reigns-tells-sami-zayn-that-maybe-the-undisputed-wwe-title-hasnt-meant-sht-since-wrestlemania-40": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-20T00:35:45.711Z"
  }
 }
