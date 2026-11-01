@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/mercedes-martinez-provides-surgery-update-says-gofundme-covered-it-in-full/": {
-    "matchedFile": "20261016195611-مرسيدس-مارتينيز-تخضع-لعملية-جراحية-في-الرباط-الصليبي-بعد-نجاح-حملة-تبرعات-gofundme.md",
-    "reason": "الخبر الجديد يكرر نفس تفاصيل العملية الجراحية لمرسيدس مارتينيز وتغطية حملة GoFundMe للتكاليف بالكامل والتي نُشرت بالفعل في الخبر السابق.",
-    "at": "2026-10-17T16:32:01.610Z"
-  },
   "https://www.fightful.com/wrestling/drew-mcintyre-wants-to-beat-roman-reigns-once-he-returns-to-wwe-says-he-may-have-to-bring-the-sword-back-because-romans-got-95-family-members/": {
     "matchedFile": "20261016174638-درو-ماكنتاير-wwe-والجماهير-يحتاجونني-وأنا-لا-أحتاج-إليكم.md",
     "reason": "الخبر الجديد يعتمد على نفس اللقاء (Going Ringside) ويتناول نفس التصريحات المتعلقة برغبة درو ماكنتاير في مواجهة رومان رينز وعودته واستخدام السيف، والتي تم تناول تفاصيلها ومشتقاتها في الأخبار المنشورة مسبقاً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261101065835-عرض-wwe-nxt-halloween-havoc-2026-ثلاثة-أمور-كرهناها-وثلاثة-أحببناها.md",
     "reason": "الخبر الجديد يتحدث عن نزالات غير مذاعة جرت في نفس عرض WWE NXT Halloween Havoc 2026، وهو مدمج ضمن تغطية نتائج ونقاط العرض المذكورة في الخبر المنشور رقم 0.",
     "at": "2026-11-01T16:16:34.706Z"
+  },
+  "https://www.ringsidenews.com/identity-mystery-woman-during-zaria-vs-izzi-dame-match-nxt-halloween-havoc/": {
+    "matchedFile": "20261101025543-إيزي-دايم-تحقق-الفوز-على-زاريا-في-عرض-wwe-nxt-halloween-havoc.md",
+    "reason": "الخبر الجديد يعتبر متابعة تفصيلية لنفس الحدث الرئيسي (نزال زاريا وإيزي دايم في عرض Halloween Havoc وتدخل المرأة الغامضة) الذي تم تغطيته بالفعل في الخبر رقم 0، حيث يضيف تفاصيل حول هوية المرأة (كينزي ابنة دين مالينكو) وهي تفصيلة تقع ضمن نفس التغطية للحدث وليست تطوراً مستقلاً بذاته.",
+    "at": "2026-11-01T16:26:03.596Z"
   }
 }
