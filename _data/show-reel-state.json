@@ -4623,9 +4623,17 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال مارتيس دي غلامور 27.10.2026 مترجم",
-    "lastAttempt": 1793568202616,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1793571677744,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story",
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
