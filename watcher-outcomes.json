@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-sign-guy-rick-achberger-honored-celebration-life": {
+  "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
+  "retry": true,
+  "at": "2026-11-01T19:44:12.146Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-says-no-wrestler-has-ever-said-that-they-want-lose-their-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-01T19:42:27.858Z"
- },
- "https://www.ringsidenews.com/wwe-sign-guy-rick-achberger-honored-celebration-life": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-01T19:28:43.763Z"
  },
  "https://www.fightful.com/wrestling/new-texas-pro-wrestling-8-year-anniversary-event-results-10-30": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
