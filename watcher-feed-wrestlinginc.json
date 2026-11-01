@@ -1,5 +1,15 @@
 [
   {
+    "id": 5184412106,
+    "link": "https://www.wrestlinginc.com/2301014/wwe-matt-hardy-boyz-attempt-split-up-2001/",
+    "date": "Sun, 01 Nov 2026 14:30:00 +0000",
+    "date_gmt": "2026-11-01T14:30:00.000Z",
+    "title": {
+      "rendered": "Matt Hardy Recalls WWE's Attempt To Split Up The Hardy Boyz In 2001"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/matt-hardy-recalls-wwes-attempt-to-split-up-the-hardy-boyz-in-2001/l-intro-1793287812.jpg"
+  },
+  {
     "id": 1741009678,
     "link": "https://www.wrestlinginc.com/2300877/wwe-jbl-john-bradshaw-layfield-michael-cole-identifies-greatest-commentator-all-time/",
     "date": "Sun, 01 Nov 2026 14:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE's Drew McIntyre Envisions Big Future Ahead For Elijah Holyfield"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-drew-mcintyre-envisions-big-future-ahead-for-elijah-holyfield/l-intro-1793129405.jpg"
-  },
-  {
-    "id": 1446192642,
-    "link": "https://www.wrestlinginc.com/2303282/tko-president-mark-shapiro-saudi-arabia-safety-town-hall-meeting/",
-    "date": "Sat, 31 Oct 2026 16:32:21 +0000",
-    "date_gmt": "2026-10-31T16:32:21.000Z",
-    "title": {
-      "rendered": "TKO President Mark Shapiro Talks Saudi Arabia Safety In Company Town Hall Meeting"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tko-president-mark-shapiro-talks-saudi-arabia-safety-in-company-town-hall-meeting/l-intro-1793464002.jpg"
   }
 ]
