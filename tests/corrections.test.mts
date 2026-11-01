@@ -1294,3 +1294,8 @@ test('Laredo Kid is spelled one way and a TV episode is «حلقة»', async () 
   assert.equal(applyCorrections('ضد تاكوما ولاري دو كيد.'), 'ضد تاكوما ولاريدو كيد.');
   assert.equal(applyCorrections('يشبه عرض تلفزيونية طويلة'), 'يشبه حلقة تلفزيونية طويلة');
 });
+
+test('نيوزلندا ← نيوزيلندا (INCIDENTS #996)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('لقاء صحفي في نيوزلندا.'), 'لقاء صحفي في نيوزيلندا.');
+});
