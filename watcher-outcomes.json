@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/bret-hart-accuses-shawn-michaels-taking-cheap-shot-scrapped-wwe-title-change": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-01T21:40:25.018Z"
+ },
  "https://www.fightful.com/wrestling/darby-allin-completes-new-york-city-marathon-in-just-over-five-and-a-half-hours": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -38,11 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-01T21:36:54.494Z"
- },
- "https://www.ringsidenews.com/bret-hart-accuses-shawn-michaels-taking-cheap-shot-scrapped-wwe-title-change": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-01T21:20:28.647Z"
  },
  "https://www.fightful.com/wrestling/watch-aaa-heroes-inmortales-october-31-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
