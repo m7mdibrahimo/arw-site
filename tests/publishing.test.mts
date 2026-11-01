@@ -3869,7 +3869,9 @@ test('the site builds from a «site» branch without the original pictures and r
   // (INCIDENTS #343) — and a save goes out the moment that build is done, not a fixed 2.5 minutes later (INCIDENTS #352)
   assert.match(wf, /checks: read/);
   assert.match(gather, /GAP=0 /);
-  assert.match(gather, /commits\/\$SITE\/check-runs\?check_name=Cloudflare%20Pages/);
+  // the build mark is the «Workers Builds: arw-site-static» check run (the site moved to Workers Static Assets, INCIDENTS #1005); the old Pages mark still counts
+  assert.match(gather, /commits\/\$SITE\/check-runs\?per_page=100/);
+  assert.match(gather, /Workers Builds: arw-site-static/);
   assert.match(gather, /BUSY_MAX: '300'/);
   assert.ok(!/MIN_GAP/.test(wf));
   assert.match(gather, /\[ "\$EVENT" = "push" \]/);

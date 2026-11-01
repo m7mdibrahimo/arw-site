@@ -11,6 +11,7 @@ name: Site Branch
 #  اللوحة بيتبني أول ما Cloudflare يخلص البناء اللي شغال (الحادثة ٣٥٢). وكل مرة بيبني من آخر main، ومبيبنيش لو اللي اتغير حاجات المتابع مش بيشوفها.
 #  build.json بيقول commit الـmain الأصلي.
 #  للرجوع: خلي فرع الإنتاج في Cloudflare Pages يرجع main.
+#  من الحادثة ١٠٠٥ الموقع بيتقدم من الـWorker «arw-site-static» (Workers Static Assets) على arab-wrestling.com/*، والانتظار على علامة «Workers Builds: arw-site-static».
 # ═══════════════════════════════════════════════════════
 
 on:
@@ -76,7 +77,7 @@ jobs:
             GAP=0   # a save from the panel or a device: only as long as Cloudflare is busy
           fi
           SITE_AT=$(date -d "$(jq -r .committer.date s.json)" +%s)
-          built() { api "https://api.github.com/repos/$REPO/commits/$SITE/check-runs?check_name=Cloudflare%20Pages" | jq -e '[.check_runs[] | select(.status == "completed")] | length > 0' > /dev/null; }
+          built() { api "https://api.github.com/repos/$REPO/commits/$SITE/check-runs?per_page=100" | jq -e '[.check_runs[] | select((.name == "Workers Builds: arw-site-static" or .name == "Cloudflare Pages") and .status == "completed")] | length > 0' > /dev/null; }
           while :; do
             AGE=$(( $(date +%s) - SITE_AT ))
             if [ "$AGE" -ge "$GAP" ]; then
@@ -110,7 +111,7 @@ jobs:
           RETRY=0
           if [ -n "$SITE" ] && [ "$SITE" != "null" ]; then
             SMSG=$(api "$BASE/commits/$SITE" | jq -r .message)
-            if ! grep -q 'site-retry' <<<"$SMSG" && api "https://api.github.com/repos/$REPO/commits/$SITE/check-runs?check_name=Cloudflare%20Pages" | jq -e '[.check_runs[] | select(.status == "completed" and .conclusion == "failure")] | length > 0' > /dev/null; then
+            if ! grep -q 'site-retry' <<<"$SMSG" && api "https://api.github.com/repos/$REPO/commits/$SITE/check-runs?per_page=100" | jq -e '[.check_runs[] | select(.name == "Workers Builds: arw-site-static" and .status == "completed" and .conclusion == "failure")] | length > 0' > /dev/null; then
               RETRY=1; echo "Cloudflare's build of $SITE failed: building it again"
               if [ "$PREV" = "$MAIN" ] || [ -z "$PREV" ]; then PREV=""; fi
             fi

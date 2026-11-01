@@ -2465,7 +2465,8 @@ module.exports = function(eleventyConfig) {
   // Cloudflare Pages refuses a deployment of more than 20,000 files — the build «succeeds» and the deploy fails, so the
   // site silently stays on its last version (INCIDENTS #368). Counted last, after every page, picture and redirect
   // page is written: in /build.json for the watchdog and the monitoring round, and loudly in the log near the limit.
-  const PAGES_FILE_LIMIT = 20000;
+  // The site is served by the «arw-site-static» Worker (static assets, 100,000 files on the paid plan, INCIDENTS #1005); the old Pages project stops at 20,000
+  const PAGES_FILE_LIMIT = 100000;
   eleventyConfig.on("eleventy.after", () => {
     try {
       let files = 0;
