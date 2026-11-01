@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2300877/wwe-jbl-john-bradshaw-layfield-michael-cole-identifies-greatest-commentator-all-time": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-01T14:05:50.525Z"
+ },
  "https://www.fightful.com/wrestling/grayson-waller-def-tony-dangelo-to-retain-nxt-title-at-halloween-havoc": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-20T11:47:44.474Z"
- },
- "https://www.fightful.com/wrestling/adriana-rizzo-is-waiting-until-the-end-of-her-30-days-to-decide-if-she-will-continue-wrestling": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-20T11:10:37.197Z"
  }
 }

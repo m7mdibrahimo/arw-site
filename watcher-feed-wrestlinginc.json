@@ -1,5 +1,15 @@
 [
   {
+    "id": 1741009678,
+    "link": "https://www.wrestlinginc.com/2300877/wwe-jbl-john-bradshaw-layfield-michael-cole-identifies-greatest-commentator-all-time/",
+    "date": "Sun, 01 Nov 2026 14:00:00 +0000",
+    "date_gmt": "2026-11-01T14:00:00.000Z",
+    "title": {
+      "rendered": "WWE HOFer JBL Identifies Greatest Commentator Of All Time"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-hofer-jbl-identifies-greatest-commentator-of-all-time/l-intro-1793283400.jpg"
+  },
+  {
     "id": 3901640045,
     "link": "https://www.wrestlinginc.com/2300724/wwe-tna-leon-slater-john-cena-experience-working-retirement-show/",
     "date": "Sun, 01 Nov 2026 13:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "TKO President Mark Shapiro Talks Saudi Arabia Safety In Company Town Hall Meeting"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/tko-president-mark-shapiro-talks-saudi-arabia-safety-in-company-town-hall-meeting/l-intro-1793464002.jpg"
-  },
-  {
-    "id": 2267515882,
-    "link": "https://www.wrestlinginc.com/2298622/aew-billy-gunn-austin-colten-thoughts-children-following-footsteps/",
-    "date": "Sat, 31 Oct 2026 16:30:00 +0000",
-    "date_gmt": "2026-10-31T16:30:00.000Z",
-    "title": {
-      "rendered": "AEW's Billy Gunn Shares Thoughts On His Children Following In His Footsteps"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/former-aew-star-billy-gunn-shares-thoughts-on-his-children-following-in-his-footsteps/l-intro-1793123030.jpg"
   }
 ]
