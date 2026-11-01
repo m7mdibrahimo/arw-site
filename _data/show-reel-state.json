@@ -4584,7 +4584,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261101161557-wwe-nxt-halloween-havoc-2026": {
     "publishedAt": 1793545226596,
