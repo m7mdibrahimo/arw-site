@@ -1,5 +1,15 @@
 [
   {
+    "id": 4247805034,
+    "link": "https://www.wrestlinginc.com/2302483/wwe-kit-wilson-chelsea-green-creative-pitch-never-came/",
+    "date": "Sun, 01 Nov 2026 18:30:00 +0000",
+    "date_gmt": "2026-11-01T18:30:00.000Z",
+    "title": {
+      "rendered": "Kit Wilson Details WWE Creative Pitch With Chelsea Green That Never Came To Be"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/kit-wilson-details-wwe-creative-pitch-with-chelsea-green-that-never-came-to-be/l-intro-1793378228.jpg"
+  },
+  {
     "id": 3563743858,
     "link": "https://www.wrestlinginc.com/2301875/nunzio-looks-back-feud-wwe-hofer-undertaker/",
     "date": "Sun, 01 Nov 2026 18:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW Collision Results 10/31/2026 W/ Live Updates"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-collision-results-10312026-w-live-updates/l-intro-1793418860.jpg"
-  },
-  {
-    "id": 1722499304,
-    "link": "https://www.wrestlinginc.com/2300675/aew-adam-copeland-maple-leaf-gardens-more-important-wembley/",
-    "date": "Sat, 31 Oct 2026 21:00:00 +0000",
-    "date_gmt": "2026-10-31T21:00:00.000Z",
-    "title": {
-      "rendered": "AEW's Adam Copeland: Wrestling In Maple Leaf Gardens Was More Important Than Wembley"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-adam-copeland-wrestling-in-maple-leaf-gardens-was-more-important-than-wembley/l-intro-1793266255.jpg"
   }
 ]
