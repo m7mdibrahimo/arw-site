@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2289481/wwe-smackdown-rey-fenix-aaa-cruiserweight-title-dq-finish-ricky-saints/": {
-    "matchedFile": "20261017023100-نتائج-عرض-wwe-smackdown-16-أكتوبر-2026-تريك-ويليامز-يهزم-جوني-جارجانو-وأبرز-الأحداث.md",
-    "reason": "الخبر الجديد يغطي نتيجة نزال تم ذكره في تقرير نتائج عرض SmackDown، وتفاصيل النزال (الاستبعاد، تدخل الحكم، الهجوم اللاحق) تعتبر تفاصيل إضافية لنفس الحدث المنشور مسبقاً.",
-    "at": "2026-10-17T02:11:52.917Z"
-  },
   "https://www.fightful.com/wrestling/wwe-smackdown-results-10-16-2026-cody-rhodes-randy-orton-face-to-face-rey-fenix-vs-ricky-saints-more/": {
     "matchedFile": "20261017023100-نتائج-عرض-wwe-smackdown-16-أكتوبر-2026-تريك-ويليامز-يهزم-جوني-جارجانو-وأبرز-الأحداث.md",
     "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261101042658-wwe-تعلن-عن-إقامة-عرض-nxt-tlc.md",
     "reason": "الخبر الجديد يعيد نفس إعلان إقامة عرض NXT TLC في 12 ديسمبر بأورلاندو والذي تم تغطيته بالفعل في الخبر رقم 0، مع تفاصيل مكررة عن تاريخ العرض ومكانه والإعلان عنه في Halloween Havoc.",
     "at": "2026-11-01T01:47:10.213Z"
+  },
+  "https://www.fightful.com/wrestling/watch-aaa-heroes-inmortales-october-31-2026/": {
+    "matchedFile": "20261031170000-دليل-مشاهدة-وتفاصيل-وموعد-انطلاق-الأسبوع-الثاني-من-عرض-aaa-heroes-inmortales-الليلة.md",
+    "reason": "الخبر الجديد يغطي نفس بطاقة نزالات عرض AAA Heroes Inmortales الأسبوع الثاني التي تم الإعلان عنها مسبقاً في الخبر رقم 0، ولا يحتوي على أي تطورات جديدة أو نتائج.",
+    "at": "2026-11-01T01:51:46.193Z"
   }
 }

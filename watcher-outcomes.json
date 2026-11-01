@@ -2,57 +2,57 @@
  "https://www.wrestlinginc.com/2303207/aew-collision-october-31-2026-results": {
   "reason": "المراجعة رفضته: في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
   "retry": true,
-  "at": "2026-11-01T01:49:00.327Z"
+  "at": "2026-11-01T01:52:17.108Z"
  },
  "https://www.fightful.com/wrestling/nxt-tlc-set-for-december-12th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T01:48:20.420Z"
+  "at": "2026-11-01T01:50:56.147Z"
  },
  "https://www.fightful.com/mma/ufc-fight-night-moicano-vs-nolan-results": {
-  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
-  "retry": true,
-  "at": "2026-11-01T01:48:20.126Z"
+  "reason": "المراجعة رفضته: العنوان مش جملة عربية (أقل من 3 كلمات عربية)",
+  "retry": false,
+  "at": "2026-11-01T01:50:55.807Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-overcomes-birthright-to-defeat-charlie-dempsey-at-nxt-halloween-havoc": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T01:47:56.582Z"
+  "at": "2026-11-01T01:50:39.663Z"
  },
  "https://www.fightful.com/wrestling/multiple-wwe-superstars-did-not-want-to-be-booked-for-wwe-crown-jewel-due-to-safety-concerns": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T01:47:56.302Z"
+  "at": "2026-11-01T01:50:39.341Z"
  },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-venue-moved-for-safety-reasons": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T01:47:56.075Z"
+  "at": "2026-11-01T01:50:39.080Z"
  },
  "https://www.fightful.com/wrestling/aew-fight-night-collision-results-10-31-ilja-dragunov-competes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T01:47:55.719Z"
+  "at": "2026-11-01T01:50:38.673Z"
  },
  "https://www.fightful.com/wrestling/watch-countdown-to-nxt-halloween-havoc-oct-31-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T01:47:55.375Z"
+  "at": "2026-11-01T01:50:38.276Z"
  },
  "https://www.fightful.com/wrestling/sheamus-im-just-taking-time-off-im-on-vacation": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T01:47:55.082Z"
+  "at": "2026-11-01T01:50:37.937Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-says-he-has-re-signed-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T01:47:54.786Z"
+  "at": "2026-11-01T01:50:37.596Z"
  },
  "https://www.fightful.com/wrestling/court-bauer-says-mlw-was-in-talks-with-paramount-in-2025-before-ufc-deal-was-announced": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T01:47:54.552Z"
+  "at": "2026-11-01T01:50:37.319Z"
  },
  "https://www.fightful.com/wrestling/shiloh-hill-scores-win-over-naraku-at-nxt-halloween-havoc": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
