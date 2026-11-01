@@ -299,6 +299,8 @@ export function fixSingularThey(text: string): string {
 }
 
 export const ENGLISH_FIXES: [RegExp, string][] = [
+  // «Royce Key» — the surname is Keys (WWE RAW card story, INCIDENTS #999)
+  [/\bRoyce Key\b(?!s)/g, "Royce Keys"],
   // «Marisela Peñan» — a stray «n» after the surname of Marisela Peña (AAA Hall of Fame story, INCIDENTS #995)
   [/\bPeñan\b/g, "Peña"],
   // a filler left in a transcribed quote: «I feel like, just because I've been thinking that also» is not a

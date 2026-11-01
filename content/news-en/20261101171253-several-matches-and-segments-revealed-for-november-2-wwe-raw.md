@@ -14,6 +14,6 @@ en_tags:
   - "WWE Crown Jewel"
 image: /content/images/jrbqnqioc1u3f84z.jpg
 ---
-WWE has announced several big names and matches for the November 2 episode of WWE RAW in Brooklyn, New York. General Manager Adam Pearce confirmed on Instagram that John Cena will appear on the show, adding to a lineup that also includes Roman Reigns ahead of his match at WWE Crown Jewel. The event, promoted as a joint RAW and SmackDown night at the Barclays Center, will feature Chad Gable defending his Intercontinental Championship against Ethan Page. Additionally, The Vision will face Penta, Je'Von Evans, and Dragon Lee in a six-man tag team match, while Solo Sikoa takes on Royce Key in singles action.
+WWE has announced several big names and matches for the November 2 episode of WWE RAW in Brooklyn, New York. General Manager Adam Pearce confirmed on Instagram that John Cena will appear on the show, adding to a lineup that also includes Roman Reigns ahead of his match at WWE Crown Jewel. The event, promoted as a joint RAW and SmackDown night at the Barclays Center, will feature Chad Gable defending his Intercontinental Championship against Ethan Page. Additionally, The Vision will face Penta, Je'Von Evans, and Dragon Lee in a six-man tag team match, while Solo Sikoa takes on Royce Keys in singles action.
 
 https://www.instagram.com/p/DfM5wAthQw1/

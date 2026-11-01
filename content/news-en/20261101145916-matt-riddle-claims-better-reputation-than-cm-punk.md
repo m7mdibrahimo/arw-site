@@ -1,7 +1,7 @@
 ---
 title: "Matt Riddle Claims Better Reputation Than CM Punk"
 slug: "matt-riddle-claims-better-reputation-than-cm-punk"
-description: "Matt Riddle believes his overall reputation is much better than CM Punk."
+description: "Matt Riddle believes his overall reputation is much better than CM Punk's."
 federation: WWE
 date: 2026-11-01T11:59:16.000Z
 source_id: 802262232
@@ -13,7 +13,7 @@ en_tags:
   - "MMA"
 image: /content/images/6cgob8kikn3pni6u.jpg
 ---
-Matt Riddle believes his overall reputation is much better than CM Punk. During an interview in New Zealand, Riddle discussed how his mixed martial arts career helped him transition into professional wrestling, pointing out his superior reputation both inside and outside the cage.
+Matt Riddle believes his overall reputation is much better than CM Punk's. During an interview in New Zealand, Riddle discussed how his mixed martial arts career helped him transition into professional wrestling, pointing out his superior reputation both inside and outside the cage.
 
 Commenting on the matter, Riddle stated:
 
