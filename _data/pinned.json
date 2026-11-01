@@ -64,5 +64,49 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "مباراة سامي زين ضد كودي رودز في عرض الرو دارك ماتش بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/roh-on-honorclub-29-10-2026/",
+    "title": "عرض ار او اتش اون اونر كلوب 29.10.2026 مترجم",
+    "subtitle": "ROH on HonorClub 29.10.2026",
+    "image": "/content/images/qvwsqpzuosetcaq9.jpg?w=800",
+    "federation": "ROH",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ار او اتش اون اونر كلوب مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/tna-impact-29-10-2026/",
+    "title": "عرض تي ان ايه امباكت 29.10.2026 مترجم",
+    "subtitle": "TNA iMPACT 29.10.2026",
+    "image": "/content/images/973uon358tk121y6.jpg?w=800",
+    "federation": "TNA",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض تي ان ايه امباكت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/wwe-main-event-28-10-2026/",
+    "title": "عرض مين ايفنت 28.10.2026 مترجم",
+    "subtitle": "WWE Main Event 28.10.2026",
+    "image": "/content/images/r90r84dwhbir39tj.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض مين ايفنت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/wwe-evolve-28-10-2026/",
+    "title": "عرض ايفولف 28.10.2026 مترجم",
+    "subtitle": "WWE Evolve 28.10.2026",
+    "image": "/content/images/3w7ijvo4rbkhlq5a.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ايفولف مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
