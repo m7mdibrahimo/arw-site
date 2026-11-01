@@ -1,53 +1,53 @@
 {
- "https://www.ringsidenews.com/wwe-sign-guy-rick-achberger-honored-celebration-life": {
-  "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
-  "retry": true,
-  "at": "2026-11-01T19:09:08.666Z"
- },
  "https://www.fightful.com/wrestling/cody-rhodes-says-no-wrestler-has-ever-said-that-they-want-lose-their-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T19:09:52.231Z"
+  "at": "2026-11-01T19:11:53.432Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-addresses-hardcore-fans-not-always-loving-the-wwe-nil-system": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T19:09:51.833Z"
+  "at": "2026-11-01T19:11:53.013Z"
  },
  "https://www.fightful.com/wrestling/fred-rosser-clarifies-that-he-was-a-guest-coach-at-wwe-performance-center": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T19:09:51.200Z"
+  "at": "2026-11-01T19:11:52.351Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-01T19:09:50.863Z"
+  "at": "2026-11-01T19:11:51.997Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-finals-set": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T19:09:50.545Z"
+  "at": "2026-11-01T19:11:51.656Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-appearance-intercontinental-championship-match-and-more-added-to-11-2-wwe-monday-night-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T19:09:50.281Z"
+  "at": "2026-11-01T19:11:51.386Z"
  },
  "https://www.fightful.com/wrestling/grayson-waller-def-tony-dangelo-to-retain-nxt-title-at-halloween-havoc": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T19:09:49.430Z"
+  "at": "2026-11-01T19:11:50.479Z"
  },
  "https://www.fightful.com/wrestling/watch-aaa-heroes-inmortales-october-31-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T19:09:49.256Z"
+  "at": "2026-11-01T19:11:50.302Z"
  },
  "https://www.fightful.com/wrestling/nxt-tlc-set-for-december-12th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T19:09:48.987Z"
+  "at": "2026-11-01T19:11:50.030Z"
+ },
+ "https://www.ringsidenews.com/wwe-sign-guy-rick-achberger-honored-celebration-life": {
+  "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
+  "retry": true,
+  "at": "2026-11-01T19:09:08.666Z"
  },
  "https://www.fightful.com/wrestling/new-texas-pro-wrestling-8-year-anniversary-event-results-10-30": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
