@@ -1,0 +1,13 @@
+// The site as a Workers Static Assets project (INCIDENTS #1004). Cloudflare Pages refuses more than 20,000 files in a
+// deployment; a Worker with static assets takes up to 100,000 on a paid plan (the account has Workers Paid).
+// NOT read by Cloudflare Pages (the file name is not wrangler.jsonc): the Pages project keeps serving the site until
+// the owner points the domain at this Worker. Test: `npx wrangler dev --config wrangler.static.jsonc` after a build.
+{
+  "name": "arw-site-static",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./_site",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}
