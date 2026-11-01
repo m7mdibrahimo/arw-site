@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/aew-posts-new-teaser-for-ilja-dragunov-with-aew-wrestledream-tag/": {
-    "matchedFile": "20261016202507-الكشف-عن-هوية-المصارع-وراء-الفيديو-الغامض-في-عرض-aew.md",
-    "reason": "الخبر الجديد يتناول نفس الحدث الخاص بنشر AEW لمقطع تيديو ترويجي لإيليا دراغونوف بنفس التفاصيل (المايسترو وجهاز ضبط الإيقاع) وتم تغطيته بالفعل في الخبر رقم 2.",
-    "at": "2026-10-17T00:13:41.254Z"
-  },
   "https://www.ringsidenews.com/aew-drops-major-ilja-dragunov-tease-ahead-wrestledream/": {
     "matchedFile": "20261016214012-آخر-مستجدات-كواليس-وضع-إيليا-دراغونوف-وكايري-ساني-مع-aew-قبل-عرض-wrestledream.md",
     "reason": "الخبر الجديد يتناول نفس الحدث (الترويج لظهور إيليا دراغونوف في عرض WrestleDream عبر فيديو غامض) الذي تم تغطيته بالفعل في الأخبار السابقة، ولا يقدم تطوراً جوهرياً جديداً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261101023521-مايلز-بورن-يهزم-تافيون-هايتس-في-نزال-أسلحة-مفتوحة-ضمن-عرض-wwe-nxt-halloween-havoc.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (نزال مايلز بورن ضد تافيون هايتس في عرض NXT Halloween Havoc) الذي تم نشره بالفعل في الخبر رقم 4.",
     "at": "2026-11-01T00:36:06.063Z"
+  },
+  "https://www.ringsidenews.com/wwe-nxt-halloween-havoc-results-highlights-key-moments-october-31-2026/": {
+    "matchedFile": "20261101032725-زيلا-فاتو-يهزم-تشارلي-ديمبسي-في-نزال-مثير-في-عرض-wwe-nxt-halloween-havoc-2026.md",
+    "reason": "الخبر الجديد عبارة عن ملخص لنتائج عرض WWE NXT Halloween Havoc، وهو يكرر نتائج النزالات التي تم تغطيتها بالفعل في الأخبار [0]، [1]، و[3] بشكل منفصل.",
+    "at": "2026-11-01T00:49:04.641Z"
   }
 }
