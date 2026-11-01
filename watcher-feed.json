@@ -1,5 +1,15 @@
 [
   {
+    "id": 336845,
+    "link": "https://www.fightful.com/wrestling/new-texas-pro-wrestling-8-year-anniversary-event-results-10-30/",
+    "date": "2026-11-01T13:00:00",
+    "date_gmt": "2026-11-01T18:00:00",
+    "title": {
+      "rendered": "New Texas Pro 8 Year Anniversary Event Results (10/30)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/31221056/Screenshot_20261030_234157_Gallery.jpg.webp"
+  },
+  {
     "id": 336911,
     "link": "https://www.fightful.com/wrestling/cody-rhodes-addresses-hardcore-fans-not-always-loving-the-wwe-nil-system/",
     "date": "2026-11-01T12:41:14",
@@ -288,15 +298,5 @@
       "rendered": "Wrestlers In Halloween Costumes"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/31203328/Screenshot-2026-10-31-at-8.33.11-PM.png"
-  },
-  {
-    "id": 336801,
-    "link": "https://www.fightful.com/wrestling/zilla-fatu-overcomes-birthright-to-defeat-charlie-dempsey-at-nxt-halloween-havoc/",
-    "date": "2026-10-31T20:31:30",
-    "date_gmt": "2026-11-01T00:31:30",
-    "title": {
-      "rendered": "Zilla Fatu Overcomes BirthRight To Defeat Charlie Dempsey At NXT Halloween Havoc"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/31203022/HV_5LaaXcAAE7qY.jpg"
   }
 ]
