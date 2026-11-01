@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2303366/wwe-nxt-champion-grayson-waller-opportunistic-win-halloween-havoc-main-event": {
+  "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي",
+  "retry": false,
+  "at": "2026-11-01T02:17:53.781Z"
+ },
  "https://www.wrestlinginc.com/2303207/aew-collision-october-31-2026-results": {
   "reason": "المراجعة رفضته: في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-20T10:55:29.880Z"
- },
- "https://www.ringsidenews.com/possible-wwe-survivor-series-wargames-2026-plans-revealed": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-20T10:19:55.848Z"
  }
 }
