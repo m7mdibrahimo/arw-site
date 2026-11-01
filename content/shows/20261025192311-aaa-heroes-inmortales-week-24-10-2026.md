@@ -1,7 +1,7 @@
 ---
 show_type: عرض
 federation: INDIE
-title: AAA Héroes Inmortales Week 24.10.2026
+title: AAA Héroes Inmortales Week 1 24.10.2026
 headline: عرض ايه ايه ايه 24.10.2026 مترجم
 program_name: Lucha Libre AAA
 description: عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث.
