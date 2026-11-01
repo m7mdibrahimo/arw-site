@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2302736/wwe-michael-ps-hayes-battle-alcoholism": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-01T20:52:47.620Z"
+ },
  "https://www.fightful.com/wrestling/darby-allin-completes-new-york-city-marathon-in-just-over-five-and-a-half-hours": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-01T20:35:11.058Z"
- },
- "https://www.wrestlinginc.com/2302736/wwe-michael-ps-hayes-battle-alcoholism": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-01T20:33:04.984Z"
  },
  "https://www.fightful.com/wrestling/nxt-tlc-set-for-december-12th": {
   "reason": "مكرر مع خبر نزل قبل كده",
