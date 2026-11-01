@@ -1,5 +1,15 @@
 [
   {
+    "id": 1634853965,
+    "link": "https://www.wrestlinginc.com/2302591/tna-wwe-nxt-leon-slater-changed-game/",
+    "date": "Sun, 01 Nov 2026 19:30:00 +0000",
+    "date_gmt": "2026-11-01T19:30:00.000Z",
+    "title": {
+      "rendered": "TNA's Leon Slater Recalls WWE NXT Appearances: 'Really Changed The Game For Me'"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tnas-leon-slater-recalls-wwe-nxt-appearances-really-changed-the-game-for-me/l-intro-1793381604.jpg"
+  },
+  {
     "id": 2894334895,
     "link": "https://www.wrestlinginc.com/2303463/wwe-paul-heyman-vince-mcmahon-good-man/",
     "date": "Sun, 01 Nov 2026 19:26:23 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE NXT Reviving TLC PLE"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-reviving-tlc-ple/l-intro-1793497249.jpg"
-  },
-  {
-    "id": 2363023686,
-    "link": "https://www.wrestlinginc.com/2303360/kelani-jordan-overcomes-wren-sinclair-retan-wwe-nxt-womens-title/",
-    "date": "Sun, 01 Nov 2026 01:23:02 +0000",
-    "date_gmt": "2026-11-01T01:23:02.000Z",
-    "title": {
-      "rendered": "Kelani Jordan Overcomes Wren Sinclair To Retain WWE NXT Women's Title"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/kelani-jordan-overcomes-wren-sinclair-to-retain-wwe-nxt-womens-title/l-intro-1793496126.jpg"
   }
 ]
