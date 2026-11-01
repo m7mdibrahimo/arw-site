@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/aew-collision-31-10-2026/",
+    "title": "عرض كوليجن 31.10.2026 مترجم",
+    "subtitle": "AEW Collision 31.10.2026",
+    "image": "/content/images/ninjb6s53dbbq8al.jpg?w=800",
+    "federation": "AEW",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-smackdown-30-10-2026/",
     "title": "عرض سماك داون 30.10.2026 مترجم",
     "subtitle": "WWE Smackdown 30.10.2026",
@@ -53,38 +64,5 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "مباراة سامي زين ضد كودي رودز في عرض الرو دارك ماتش بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/ufc-333-volkanovski-vs-evloev-main-card/",
-    "title": "عرض يو اف سي 333 مين كارد مترجم",
-    "subtitle": "UFC 333: Volkanovski vs Evloev (Main Card)",
-    "image": "/content/images/8tjb2teyty0d9r2m.jpg?w=800",
-    "federation": "MMA",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض يو اف سي 333 مين كارد مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aew-collision-24-10-2026/",
-    "title": "عرض كوليجن 24.10.2026 مترجم",
-    "subtitle": "AEW Collision 24.10.2026",
-    "image": "/content/images/ze3qsghgvpiznp01.jpg?w=800",
-    "federation": "AEW",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aaa-heroes-inmortales-week-24-10-2026/",
-    "title": "عرض ايه ايه ايه 24.10.2026 مترجم",
-    "subtitle": "AAA Héroes Inmortales Week 24.10.2026",
-    "image": "/content/images/73t7dmxfarjg13yl.jpg?w=800",
-    "federation": "INDIE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
