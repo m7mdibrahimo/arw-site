@@ -1,5 +1,25 @@
 [
   {
+    "id": 336886,
+    "link": "https://www.fightful.com/wrestling/thunder-rosa-says-it-was-very-emotional-for-her-to-participate-in-the-cmll-grand-prix/",
+    "date": "2026-11-01T11:00:05",
+    "date_gmt": "2026-11-01T16:00:05",
+    "title": {
+      "rendered": "Thunder Rosa Says It Was &#8216;Very Emotional&#8217; For Her To Participate In The CMLL Grand Prix"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/27145833/l-intro-1690350022.jpg"
+  },
+  {
+    "id": 336535,
+    "link": "https://www.fightful.com/wrestling/rohan-raja-on-mlp-northern-rising-everyone-was-there-to-make-a-statement-i-feel-like-we-did-a-pretty-damn-good-job/",
+    "date": "2026-11-01T11:00:00",
+    "date_gmt": "2026-11-01T16:00:00",
+    "title": {
+      "rendered": "Rohan Raja On MLP Northern Rising: Everyone Was There To Make A Statement, I Feel Like We Did A Pretty Damn Good Job"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/30093618/maxresdefault-206.jpg"
+  },
+  {
     "id": 336897,
     "link": "https://www.fightful.com/wrestling/fred-rosser-clarifies-that-he-was-a-guest-coach-at-wwe-performance-center/",
     "date": "2026-11-01T10:54:59",
@@ -278,25 +298,5 @@
       "rendered": "WWE Crown Jewel Venue Moved For Safety Reasons"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/04112806/NET_INTL_065804_CrownJewel26_LAUNCH_1920x1080.jpg"
-  },
-  {
-    "id": 336783,
-    "link": "https://www.fightful.com/wrestling/myles-borne-def-tavion-heights-in-weapons-wild-match-at-nxt-halloween-havoc/",
-    "date": "2026-10-31T19:35:21",
-    "date_gmt": "2026-10-31T23:35:21",
-    "title": {
-      "rendered": "Myles Borne Def. Tavion Heights In Weapons Wild Match At NXT Halloween Havoc"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/31193413/HV_uqWZXsAEzfWI.jpg"
-  },
-  {
-    "id": 336780,
-    "link": "https://www.fightful.com/wrestling/cody-rhodes-the-best-catering-in-all-of-entertainment-is-wwe/",
-    "date": "2026-10-31T19:23:42",
-    "date_gmt": "2026-10-31T23:23:42",
-    "title": {
-      "rendered": "Cody Rhodes: &#8220;The Best Catering In All Of Entertainment Is WWE&#8221;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/31130951/intro-1693147774.jpg"
   }
 ]
