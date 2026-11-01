@@ -12588,16 +12588,16 @@
     "renderedAt": 1793526557650
   },
   {
-    "videoUrl": "/videos/reel-20261101161009-aew-collision-31-10-2026.mp4",
-    "filename": "reel-20261101161009-aew-collision-31-10-2026.mp4",
-    "title": "عرض كوليجن 31.10.2026 مترجم",
-    "secondaryTitle": "AEW Collision 31.10.2026",
-    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261101161009-aew-collision-31-10-2026",
+    "videoUrl": "/videos/reel-20261101161557-wwe-nxt-halloween-havoc-2026.mp4",
+    "filename": "reel-20261101161557-wwe-nxt-halloween-havoc-2026.mp4",
+    "title": "عرض ان اكس تي هالوين هافوك 31.10.2026 مترجم",
+    "secondaryTitle": "WWE NXT Halloween Havoc (2026)",
+    "description": "عرض ان اكس تي مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261101161557-wwe-nxt-halloween-havoc-2026",
     "kind": "show",
-    "slug": "20261101161009-aew-collision-31-10-2026",
-    "image": "/content/images/ninjb6s53dbbq8al.jpg",
-    "renderedAt": 1793542448422
+    "slug": "20261101161557-wwe-nxt-halloween-havoc-2026",
+    "image": "/content/images/i3tsek0u7j2ljjb7.jpg",
+    "renderedAt": 1793543478696
   },
   {
     "videoUrl": "/videos/reel-20260927170600-gcw-the-score-2026.mp4",
@@ -12609,7 +12609,7 @@
     "kind": "show",
     "slug": "20260927170600-gcw-the-score-2026",
     "image": "/content/images/x8m2foyiussqbc7o.jpg",
-    "renderedAt": 1793542549076
+    "renderedAt": 1793543553085
   },
   {
     "videoUrl": "/videos/reel-20260929130409-wwe-raw-28-09-2026.mp4",
@@ -12621,7 +12621,7 @@
     "kind": "show",
     "slug": "20260929130409-wwe-raw-28-09-2026",
     "image": "/content/images/qewchyxui5nm6d3m.jpg",
-    "renderedAt": 1793542650797
+    "renderedAt": 1793543629967
   },
   {
     "videoUrl": "/videos/reel-20261001130548-aew-dynamite-30-09-2026.mp4",
@@ -12633,7 +12633,7 @@
     "kind": "show",
     "slug": "20261001130548-aew-dynamite-30-09-2026",
     "image": "/content/images/d3znaep7usmqwk7z.jpg",
-    "renderedAt": 1793542749923
+    "renderedAt": 1793543703355
   },
   {
     "videoUrl": "/videos/reel-20261001135418-aaa-worlds-collide-2026.mp4",
@@ -12645,7 +12645,7 @@
     "kind": "show",
     "slug": "20261001135418-aaa-worlds-collide-2026",
     "image": "/content/images/s57awl84ejeui87w.jpg",
-    "renderedAt": 1793542854548
+    "renderedAt": 1793543779039
   },
   {
     "videoUrl": "/videos/reel-20261010142832-wwe-smackdown-09-10-2026.mp4",
@@ -12657,7 +12657,19 @@
     "kind": "show",
     "slug": "20261010142832-wwe-smackdown-09-10-2026",
     "image": "/content/images/dbs32voaupebsrcc.jpg",
-    "renderedAt": 1793542956864
+    "renderedAt": 1793543853737
+  },
+  {
+    "videoUrl": "/videos/reel-20261012060623-cmll-sabados-de-coliseo-10-10-.mp4",
+    "filename": "reel-20261012060623-cmll-sabados-de-coliseo-10-10-.mp4",
+    "title": "عرض سي ام ال ال سابادوس دي كوليسيو 10.10.2026 مترجم",
+    "secondaryTitle": "CMLL Sabados De Coliseo 10.10.2026",
+    "description": "عرض سي ام ال ال سابادوس دي كوليسيو مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261012060623-cmll-sabados-de-coliseo-10-10-",
+    "kind": "show",
+    "slug": "20261012060623-cmll-sabados-de-coliseo-10-10-",
+    "image": "/content/images/mz8zgvqls99u165t.jpg",
+    "renderedAt": 1793543929348
   },
   {
     "videoUrl": "/videos/reel-20261012141810-tna-hall-of-fame-ceremony-2026.mp4",
@@ -12669,7 +12681,19 @@
     "kind": "show",
     "slug": "20261012141810-tna-hall-of-fame-ceremony-2026",
     "image": "/content/images/si6bo0brxqyyv356.jpg",
-    "renderedAt": 1793543057889
+    "renderedAt": 1793544003056
+  },
+  {
+    "videoUrl": "/videos/reel-20261015063344-tna-xplosion-09-10-2026.mp4",
+    "filename": "reel-20261015063344-tna-xplosion-09-10-2026.mp4",
+    "title": "عرض تي ان ايه اكسبلوجن 09.10.2026 مترجم",
+    "secondaryTitle": "TNA Xplosion 09.10.2026",
+    "description": "عرض تي ان ايه اكسبلوجن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261015063344-tna-xplosion-09-10-2026",
+    "kind": "show",
+    "slug": "20261015063344-tna-xplosion-09-10-2026",
+    "image": "/content/images/mhxy3r6c080k2ie1.jpg",
+    "renderedAt": 1793544076905
   },
   {
     "videoUrl": "/videos/reel-20261029093918-mlp-special-josh-alexander-vs-.mp4",
@@ -12681,7 +12705,7 @@
     "kind": "show",
     "slug": "20261029093918-mlp-special-josh-alexander-vs-",
     "image": "/content/images/b7fon3mbts63adde.jpg",
-    "renderedAt": 1793543162516
+    "renderedAt": 1793544153650
   },
   {
     "videoUrl": "/videos/reel-20261029094308-mlp-special-rohan-vs-andrade-p.mp4",
@@ -12693,6 +12717,18 @@
     "kind": "show",
     "slug": "20261029094308-mlp-special-rohan-vs-andrade-p",
     "image": "/content/images/jjbosh97mx0iayar.jpg",
-    "renderedAt": 1793543265814
+    "renderedAt": 1793544232492
+  },
+  {
+    "videoUrl": "/videos/reel-20261101161009-aew-collision-31-10-2026.mp4",
+    "filename": "reel-20261101161009-aew-collision-31-10-2026.mp4",
+    "title": "عرض كوليجن 31.10.2026 مترجم",
+    "secondaryTitle": "AEW Collision 31.10.2026",
+    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261101161009-aew-collision-31-10-2026",
+    "kind": "show",
+    "slug": "20261101161009-aew-collision-31-10-2026",
+    "image": "/content/images/ninjb6s53dbbq8al.jpg",
+    "renderedAt": 1793544309459
   }
 ]
