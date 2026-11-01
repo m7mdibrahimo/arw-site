@@ -1309,3 +1309,9 @@ test("Hogan spelling and the 997 phrase fixes are applied (INCIDENTS #997)", asy
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /هوغان/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|source_url|slug):.*$/gm, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #998: «يلمح لاستهدف» (missing preposition, verb instead of noun) in a headline
+test("«يلمح لاستهدف» becomes «يلمح إلى استهداف»", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("رويس كيز يلمح لاستهدف فريق"), "رويس كيز يلمح إلى استهداف فريق");
+});

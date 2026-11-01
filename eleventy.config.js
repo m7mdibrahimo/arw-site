@@ -1555,7 +1555,11 @@ module.exports = function(eleventyConfig) {
         const programSaid = String(arName || "").replace(/^(عرض|برنامج)\s+/, "").replace(/\s+(19|20)\d{2}$/, "").trim();
         const generated = fedSaid && /[\u0600-\u06FF]/.test(programSaid) && !programSaid.startsWith(fedSaid)
           ? [fedSaid + " " + programSaid].concat(/(^|\s)ان\s/.test(programSaid) ? [fedSaid + " " + programSaid.replace(/(^|\s)ان\s/g, "$1إن ")] : []) : [];
-        const withGenerated = baseAliases.concat(generated.filter(function(g) { return baseAliases.indexOf(g) === -1; }));
+        // How visitors really ask for a show: «تحميل/مشاهدة/اخر عرض <البرنامج>» — Google showed these for SmackDown at 3.4-6.7
+        // while the aliases only had «مترجم»/«الاخير» forms. Added for every program (head/structured data only).
+        const askName = /[\u0600-\u06FF]/.test(arName) ? (/^عرض\s/.test(arName) ? arName : "عرض " + arName) : "";
+        const asked = askName ? ["تحميل " + askName, "مشاهدة " + askName, "اخر " + askName, "تحميل " + askName + " مترجم"] : [];
+        const withGenerated = baseAliases.concat(generated.concat(asked).filter(function(g, i, a) { return baseAliases.indexOf(g) === -1 && a.indexOf(g) === i; }));
         return { slug: p.slug, name: p.name, aliases: withGenerated, arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: arLibTitle, arHeadTitle: arHeadTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded,
           promo: (function(x) { return { key: x.key, mark: x.mark, name: x.name, h: x.h, s: x.s, custom: !!x.custom }; })(libraryPromotionOf({
             name: p.name, federation: federation,
