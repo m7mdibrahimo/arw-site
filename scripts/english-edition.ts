@@ -299,6 +299,8 @@ export function fixSingularThey(text: string): string {
 }
 
 export const ENGLISH_FIXES: [RegExp, string][] = [
+  // «Marisela Peñan» — a stray «n» after the surname of Marisela Peña (AAA Hall of Fame story, INCIDENTS #995)
+  [/\bPeñan\b/g, "Peña"],
   // a filler left in a transcribed quote: «I feel like, just because I've been thinking that also» is not a
   // sentence (live 2026-10-27) — the filler goes and the thought stays whole
   [/\bI feel like, just because\b/g, "I feel like"],

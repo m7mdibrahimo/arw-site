@@ -14,7 +14,7 @@ en_tags:
   - "Lucha Libre"
 image: /content/images/0clc2nskgfz61syr.jpg
 ---
-AAA held its special Heroes Inmortales 2026 event on October 24 at the Gimnasio Olímpico Juan de la Barrera in Mexico City. The event featured four championship matches, a singles bout, and the induction of Marisela Peñan into the AAA Hall of Fame.
+AAA held its special Heroes Inmortales 2026 event on October 24 at the Gimnasio Olímpico Juan de la Barrera in Mexico City. The event featured four championship matches, a singles bout, and the induction of Marisela Peña into the AAA Hall of Fame.
 
 In the main event, AAA Mega Champion El Grande Americano successfully defended his title against Dominik Mysterio. The match saw heavy interference from Omos, Dorian Roldán, and Rey Mysterio, but Americano ultimately secured the win with an Aztec Headbutt.
 

@@ -468,3 +468,10 @@ test("a «>» quote line that goes on with the story is split, and Los Americano
   assert.equal(fix('Los Americano (Bravo and Rayo) def. Judgment Day (JD McDonagh and Dominik Mysterio).'), 'Los Americanos (Bravo and Rayo) def. The Judgment Day (JD McDonagh and Dominik Mysterio).');
   assert.equal(fix('Los Americanos beat The Judgment Day (JD McDonagh).'), 'Los Americanos beat The Judgment Day (JD McDonagh).');
 });
+
+test("«Marisela Peñan» is corrected to «Marisela Peña» (round 2026-11-01)", async () => {
+  const { ENGLISH_FIXES } = await import('../scripts/english-edition.ts');
+  const fix = (t: string) => ENGLISH_FIXES.reduce((s, [re, to]) => s.replace(re, to), t);
+  assert.equal(fix('Marisela Peñan is set to enter the Hall of Fame.'), 'Marisela Peña is set to enter the Hall of Fame.');
+  assert.equal(fix('Marisela Peña is set.'), 'Marisela Peña is set.');
+});
