@@ -1,7 +1,7 @@
 ---
 title: "AEW World Champion Will Ospreay Credits WCW Influence on Style"
 slug: "aew-world-champion-will-ospreay-credits-wcw-influence-on-style"
-description: "AEW World Champion Will Ospreay recently discussed how watching WCW cruiserweights on television and practicing on a backyard trampoline shaped."
+description: "AEW World Champion Will Ospreay recently discussed how watching WCW cruiserweights on television and practicing on a backyard trampoline shaped his high-flying wrestling style."
 federation: AEW
 date: 2026-11-01T16:30:00.000Z
 source_id: 4644385608

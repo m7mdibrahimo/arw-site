@@ -1,7 +1,7 @@
 ---
 title: "WWE's Michael PS Hayes Recalls Falling Out With Vince McMahon During Freebirds Era"
 slug: "wwes-michael-ps-hayes-recalls-falling-out-with-vince-mcmahon-during-freebirds"
-description: "Michael P.S. Hayes recently appeared on \"What's Your Story? With Steph McMahon\" to discuss the real story behind the Fabulous Freebirds' departure, from WWE in 1984."
+description: "Michael P.S. Hayes recently appeared on \"What's Your Story? With Steph McMahon\" to discuss the real story behind the Fabulous Freebirds' departure from WWE in 1984."
 federation: WWE
 date: 2026-11-01T15:30:00.000Z
 source_id: 3473983236

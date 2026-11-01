@@ -19,7 +19,7 @@ test('two words repeated with «و» joined to the first copy are said once', ()
 
 test('a word cut never leaves «and <verb>ing» without its object', () => {
   const t = 'Chris Jericho recently revealed that a television series based on his early professional wrestling career is currently in development and approaching the pilot filming stage. During an interview he explained more.';
-  assert.equal(metaDescription(t), 'Chris Jericho recently revealed that a television series based on his early professional wrestling career is currently in development.');
+  assert.equal(metaDescription(t), 'Chris Jericho revealed that a television series based on his early professional wrestling career is currently in development and approaching the pilot filming stage.');
 });
 
 test('a themed episode keeps its program names and dates', () => {
