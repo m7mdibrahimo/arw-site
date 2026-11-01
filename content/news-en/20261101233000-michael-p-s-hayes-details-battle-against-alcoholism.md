@@ -1,7 +1,7 @@
 ---
 title: "Michael P.S. Hayes Details Battle Against Alcoholism"
 slug: "michael-p-s-hayes-details-battle-against-alcoholism"
-description: "Michael P.S. Hayes opened up about his long battle with alcohol abuse during an appearance on \"What's Your Story? with Steph McMahon,\" looking back."
+description: "Michael P.S. Hayes opened up about his long battle with alcohol abuse during an appearance on \"What's Your Story? with Steph McMahon\"."
 federation: WWE
 date: 2026-11-01T20:30:00.000Z
 source_id: 1344505152

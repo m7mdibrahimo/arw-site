@@ -1315,3 +1315,10 @@ test("«يلمح لاستهدف» becomes «يلمح إلى استهداف»", a
   const { applyCorrections } = await import("../scripts/news-qa");
   assert.equal(applyCorrections("رويس كيز يلمح لاستهدف فريق"), "رويس كيز يلمح إلى استهداف فريق");
 });
+
+// INCIDENTS #1006: «لانه» without the hamza
+test("«لانه» becomes «لأنه» and «لانهيار» is left alone (INCIDENTS #1006)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("حافظ على مسيرته لانه كان قادرا"), "حافظ على مسيرته لأنه كان قادرا");
+  assert.equal(applyCorrections("تعرض لانهيار في الرئة"), "تعرض لانهيار في الرئة");
+});

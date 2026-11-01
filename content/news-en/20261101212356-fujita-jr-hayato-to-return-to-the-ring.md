@@ -1,7 +1,7 @@
 ---
 title: "Fujita Jr. Hayato to Return to the Ring"
 slug: "fujita-jr-hayato-to-return-to-the-ring"
-description: "Fujita Hayato plans to wrestle again in 2027. He stated that he is leaving his position as the commissioner of Michinoku Pro so he can challenge the reigning."
+description: "Fujita Hayato plans to wrestle again in 2027."
 federation: NJPW
 date: 2026-11-01T18:23:56.000Z
 source_id: 336922

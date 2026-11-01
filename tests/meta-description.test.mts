@@ -201,3 +201,15 @@ test("a description never ends on an adjective that lost its noun («the reignin
   const b = metaDescription("Fujita Hayato plans to wrestle again in 2027. He stated that he is leaving his position as the commissioner of Michinoku Pro so he can challenge the reigning champion of the promotion in a title match soon.");
   assert.equal(b, "Fujita Hayato plans to wrestle again in 2027.");
 });
+
+test("a description does not end on a speech participle («revealing that.») and keeps «AEW All In» whole (live 2026-11-01)", () => {
+  const a = metaDescription("Women's United States Champion Jacy Jayne recently discussed emotional wrestling moments during an appearance on \"The Wrestling Classic,\" revealing that she cried during her first title win at the arena.");
+  assert.ok(!/(?:revealing|that)\.$/.test(a), a);
+  const b = metaDescription("Kevin Nash discussed his thoughts on the match between Will Ospreay and Kenny Omega at AEW All In. He said it was a very good match with a great crowd.");
+  assert.ok(!/All\.$/.test(b), b);
+});
+
+test("a description does not end on «, looking back.» (live 2026-11-01)", () => {
+  const a = metaDescription("Michael P.S. Hayes opened up about his long battle with alcohol abuse during an appearance on \"What's Your Story? with Steph McMahon,\" looking back at his golden era with the Fabulous Freebirds in the 1980s. He explained that he began drinking young.");
+  assert.ok(!/looking back\.?$/.test(a), a);
+});

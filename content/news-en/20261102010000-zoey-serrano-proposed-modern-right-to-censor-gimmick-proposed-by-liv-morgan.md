@@ -1,7 +1,7 @@
 ---
-title: "Zoey Serrano Proposed Modern Right to Censor Gimmick Proposed by Liv Morgan"
+title: "Zoey Serrano Says Liv Morgan Pitched Modern Right to Censor Gimmick"
 slug: "zoey-serrano-proposed-modern-right-to-censor-gimmick-proposed-by-liv-morgan"
-description: "Former WWE talent Zoey Serrano, who wrestled under the name Zoey Stark."
+description: "Former WWE talent Zoey Serrano revealed that she pitched an updated version of the Attitude Era stable Right to Censor during her time with the company."
 federation: WWE
 date: 2026-11-01T22:00:00.000Z
 source_id: 3978348992

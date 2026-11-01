@@ -1,7 +1,7 @@
 ---
 title: "Leon Slater Wants to Become TNA's Next AJ Styles"
 slug: "leon-slater-wants-to-become-tnas-next-aj-styles"
-description: "Many view TNA Wrestling as the house that AJ Styles built, but reigning TNA World Champion Leon Slater wants to establish himself as the company's new."
+description: "Many view TNA Wrestling as the house that AJ Styles built."
 federation: TNA
 date: 2026-11-01T19:52:36.000Z
 source_id: 4418062323
