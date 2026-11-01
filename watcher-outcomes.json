@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2302736/wwe-michael-ps-hayes-battle-alcoholism": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-01T20:33:04.984Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-says-no-wrestler-has-ever-said-that-they-want-lose-their-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-20T16:18:35.601Z"
- },
- "https://www.fightful.com/wrestling/shotzi-blackheart-says-she-will-keep-taking-indie-bookings-excited-to-tell-stories-in-tna": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-20T16:08:38.068Z"
  }
 }
