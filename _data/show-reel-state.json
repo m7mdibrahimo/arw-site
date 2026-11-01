@@ -4601,5 +4601,65 @@
     "needsReview": false,
     "tiktok": true,
     "mediaDeleted": true
+  },
+  "20261101223936-aaa-heroes-inmortales-31-10-2026": {
+    "publishedAt": 1793568130526,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ايه ايه ايه 31.10.2026 مترجم",
+    "lastAttempt": 1793568170886,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story",
+      "tiktok"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261101224259-cmll-martes-de-glamour-27-10-2026": {
+    "publishedAt": 1793568192474,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال مارتيس دي غلامور 27.10.2026 مترجم",
+    "lastAttempt": 1793568202616,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261101224611-cmll-rey-del-inframundo-2026": {
+    "publishedAt": 1793568229060,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال ري ديل انفراموندو 30.10.2026 مترجم",
+    "lastAttempt": 1793568238280,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261101224901-njpw-super-junior-tag-league-day-6-31-10-2026": {
+    "publishedAt": 1793568263799,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ان جيه بي دبليو سوبر جونيور تاج ليج (اليوم السادس) 31.10.2026 مترجم",
+    "lastAttempt": 1793568273515,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
