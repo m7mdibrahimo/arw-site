@@ -4579,9 +4579,9 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض كوليجن 31.10.2026 مترجم",
-    "lastAttempt": 1793544339979,
+    "lastAttempt": 1793545198179,
     "errors": {
-      "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا.",
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
@@ -4591,5 +4591,22 @@
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
+  },
+  "20261101161557-wwe-nxt-halloween-havoc-2026": {
+    "publishedAt": 1793545226596,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ان اكس تي هالوين هافوك 31.10.2026 مترجم",
+    "lastAttempt": 1793545270449,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
