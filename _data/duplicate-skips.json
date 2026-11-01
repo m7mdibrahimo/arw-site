@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2289470/wwe-smackdown-r-truth-injury-damian-priest-referee-stoppage/": {
-    "matchedFile": "20261017041224-ار-تروث-يتعرض-لإصابة-حقيقية-خلال-نزاله-ضد-داميان-بريست-في-عرض-wwe-smackdown.md",
-    "reason": "الخبر الجديد يغطي نفس الواقعة (إصابة ار تروث في نزاله ضد داميان بريست في عرض سماكداون) التي تم تغطيتها بالفعل في الخبر رقم 0، ولا يقدم أي تطور جديد أو معلومة إضافية جوهرية.",
-    "at": "2026-10-17T01:25:41.338Z"
-  },
   "https://www.fightful.com/wrestling/r-truth-vs-damian-priest-ends-in-referee-stoppage-on-10-16-wwe-smackdown/": {
     "matchedFile": "20261017041224-ار-تروث-يتعرض-لإصابة-حقيقية-خلال-نزاله-ضد-داميان-بريست-في-عرض-wwe-smackdown.md",
     "reason": "الخبران يغطيان نفس النزال والواقعة المحددة (إيقاف الحكم لنزال ار تروث وداميان بريست في عرض سماكداون بتاريخ 16 أكتوبر وتدخل فراكسيوم).",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261101041225-كيلاني-جوردان-تحتفظ-ببطولة-nxt-للسيدات-في-عرض-halloween-havoc.md",
     "reason": "الخبر الجديد يغطي نفس نزال احتفاظ كيلاني جوردان ببطولة NXT للسيدات ضد رين سنكلير في عرض Halloween Havoc والذي تم نشره بالفعل في الخبر السابق.",
     "at": "2026-11-01T01:26:47.941Z"
+  },
+  "https://www.ringsidenews.com/kelani-jordan-retains-nxt-womens-championship-controversial-finish-halloween-havoc-2026/": {
+    "matchedFile": "20261101041225-كيلاني-جوردان-تحتفظ-ببطولة-nxt-للسيدات-في-عرض-halloween-havoc.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث والنتيجة لنزال كيلاني جوردان ضد رين سنكلير في عرض Halloween Havoc 2026 والذي تم نشر تقرير عنه مسبقاً.",
+    "at": "2026-11-01T01:28:59.083Z"
   }
 }
