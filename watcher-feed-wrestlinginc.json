@@ -1,5 +1,15 @@
 [
   {
+    "id": 3563743858,
+    "link": "https://www.wrestlinginc.com/2301875/nunzio-looks-back-feud-wwe-hofer-undertaker/",
+    "date": "Sun, 01 Nov 2026 18:00:00 +0000",
+    "date_gmt": "2026-11-01T18:00:00.000Z",
+    "title": {
+      "rendered": "Nunzio Looks Back On Feud With WWE HOFer The Undertaker"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/nunzio-looks-back-on-feud-with-wwe-hofer-the-undertaker/l-intro-1793320738.jpg"
+  },
+  {
     "id": 908742623,
     "link": "https://www.wrestlinginc.com/2301829/maria-kanellis-pulls-back-curtain-wwe-match-umaga/",
     "date": "Sun, 01 Nov 2026 17:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW's Adam Copeland: Wrestling In Maple Leaf Gardens Was More Important Than Wembley"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-adam-copeland-wrestling-in-maple-leaf-gardens-was-more-important-than-wembley/l-intro-1793266255.jpg"
-  },
-  {
-    "id": 5017048766,
-    "link": "https://www.wrestlinginc.com/2300404/sami-zayn-beating-roman-reigns-wwe-elimination-chamber-2023-montreal/",
-    "date": "Sat, 31 Oct 2026 20:30:00 +0000",
-    "date_gmt": "2026-10-31T20:30:00.000Z",
-    "title": {
-      "rendered": "Sami Zayn Talks Possibility Of Beating Roman Reigns At WWE Elimination Chamber 2023"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/sami-zayn-talks-possibility-of-beating-roman-reigns-at-wwe-elimination-chamber-2023/l-intro-1793219380.jpg"
   }
 ]
