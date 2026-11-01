@@ -1,5 +1,15 @@
 [
   {
+    "id": 1157533989,
+    "link": "https://www.wrestlinginc.com/2303363/wwe-nxt-reviving-tlc-ple/",
+    "date": "Sun, 01 Nov 2026 01:42:15 +0000",
+    "date_gmt": "2026-11-01T01:42:15.000Z",
+    "title": {
+      "rendered": "WWE NXT Reviving TLC PLE"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-reviving-tlc-ple/l-intro-1793497249.jpg"
+  },
+  {
     "id": 2363023686,
     "link": "https://www.wrestlinginc.com/2303360/kelani-jordan-overcomes-wren-sinclair-retan-wwe-nxt-womens-title/",
     "date": "Sun, 01 Nov 2026 01:23:02 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Former WWE Star Says She Got Longer Title Match Because Of Cody Rhodes And John Cena"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/former-wwe-star-says-she-got-longer-title-match-because-of-cody-rhodes-and-john-cena/l-intro-1793061768.jpg"
-  },
-  {
-    "id": 2952950817,
-    "link": "https://www.wrestlinginc.com/2303246/aew-dynamite-viewership-ratings-report-october-28-2026/",
-    "date": "Sat, 31 Oct 2026 13:28:30 +0000",
-    "date_gmt": "2026-10-31T13:28:30.000Z",
-    "title": {
-      "rendered": "AEW Dynamite Viewership & Ratings Report, 10/28/2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-viewership-ratings-report-10282026/l-intro-1793453022.jpg"
   }
 ]
