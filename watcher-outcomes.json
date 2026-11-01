@@ -1,48 +1,48 @@
 {
- "https://www.wrestlinginc.com/2302736/wwe-michael-ps-hayes-battle-alcoholism": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-01T20:52:47.620Z"
- },
  "https://www.fightful.com/wrestling/darby-allin-completes-new-york-city-marathon-in-just-over-five-and-a-half-hours": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-01T20:53:08.946Z"
+  "at": "2026-11-01T20:56:43.715Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-no-wrestler-has-ever-said-that-they-want-lose-their-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T20:52:53.145Z"
+  "at": "2026-11-01T20:56:29.311Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-addresses-hardcore-fans-not-always-loving-the-wwe-nil-system": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T20:52:52.742Z"
+  "at": "2026-11-01T20:56:29.025Z"
  },
  "https://www.fightful.com/wrestling/fred-rosser-clarifies-that-he-was-a-guest-coach-at-wwe-performance-center": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T20:52:52.101Z"
+  "at": "2026-11-01T20:56:28.564Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-01T20:52:51.754Z"
+  "at": "2026-11-01T20:56:28.316Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-finals-set": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T20:52:51.428Z"
+  "at": "2026-11-01T20:56:28.080Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-appearance-intercontinental-championship-match-and-more-added-to-11-2-wwe-monday-night-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T20:52:51.153Z"
+  "at": "2026-11-01T20:56:27.885Z"
  },
  "https://www.fightful.com/wrestling/grayson-waller-def-tony-dangelo-to-retain-nxt-title-at-halloween-havoc": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T20:52:50.277Z"
+  "at": "2026-11-01T20:56:27.250Z"
+ },
+ "https://www.wrestlinginc.com/2302736/wwe-michael-ps-hayes-battle-alcoholism": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-01T20:52:47.620Z"
  },
  "https://www.fightful.com/wrestling/watch-aaa-heroes-inmortales-october-31-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
