@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-sign-guy-rick-achberger-honored-celebration-life": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-01T18:49:17.285Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-says-no-wrestler-has-ever-said-that-they-want-lose-their-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-20T16:08:38.068Z"
- },
- "https://www.fightful.com/wrestling/speedball-mike-bailey-there-are-absolutely-no-half-measures-with-will-ospreay-there-is-nothing-that-he-does-that-he-hesitates-on": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-20T14:48:47.350Z"
  }
 }
