@@ -1972,21 +1972,21 @@
   "bufferQuota": [
     {
       "window": "150-in-15min",
-      "remaining": 148,
-      "resetAt": 1793572552119,
-      "updatedAt": 1793571669119
+      "remaining": 147,
+      "resetAt": 1793572552174,
+      "updatedAt": 1793571675174
     },
     {
       "window": "600-in-1day",
-      "remaining": 580,
-      "resetAt": 1793640408119,
-      "updatedAt": 1793571669119
+      "remaining": 579,
+      "resetAt": 1793640407174,
+      "updatedAt": 1793571675174
     },
     {
       "window": "2000-in-30days",
-      "remaining": 1536,
-      "resetAt": 1794840073119,
-      "updatedAt": 1793571669119
+      "remaining": 1535,
+      "resetAt": 1794840072174,
+      "updatedAt": 1793571675174
     }
   ],
   "videoCooldowns": {
