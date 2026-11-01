@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2303207/aew-collision-october-31-2026-results": {
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
+  "retry": true,
+  "at": "2026-11-01T00:17:21.371Z"
+ },
+ "https://www.wrestlinginc.com/2301904/wwe-nxt-halloween-havoc-october-31-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-01T00:17:00.097Z"
+ },
  "https://www.fightful.com/wrestling/multiple-wwe-superstars-did-not-want-to-be-booked-for-wwe-crown-jewel-due-to-safety-concerns": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,16 +53,6 @@
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، تقرير نتائج بلا أي نتيجة",
   "retry": true,
   "at": "2026-10-31T23:58:59.354Z"
- },
- "https://www.wrestlinginc.com/2303207/aew-collision-october-31-2026-results": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، تقرير نتائج بلا أي نتيجة",
-  "retry": true,
-  "at": "2026-10-31T23:56:40.244Z"
- },
- "https://www.wrestlinginc.com/2301904/wwe-nxt-halloween-havoc-october-31-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-31T23:56:23.166Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
