@@ -1,48 +1,53 @@
 {
+ "https://www.fightful.com/wrestling/nxt-tlc-set-for-december-12th": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-01T01:36:11.956Z"
+ },
  "https://www.fightful.com/mma/ufc-fight-night-moicano-vs-nolan-results": {
   "reason": "المراجعة رفضته: العنوان مش جملة عربية (أقل من 3 كلمات عربية)",
   "retry": false,
-  "at": "2026-11-01T01:33:38.362Z"
+  "at": "2026-11-01T01:36:11.707Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-overcomes-birthright-to-defeat-charlie-dempsey-at-nxt-halloween-havoc": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T01:33:16.764Z"
+  "at": "2026-11-01T01:35:42.576Z"
  },
  "https://www.fightful.com/wrestling/multiple-wwe-superstars-did-not-want-to-be-booked-for-wwe-crown-jewel-due-to-safety-concerns": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T01:33:16.438Z"
+  "at": "2026-11-01T01:35:42.340Z"
  },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-venue-moved-for-safety-reasons": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T01:33:16.172Z"
+  "at": "2026-11-01T01:35:42.148Z"
  },
  "https://www.fightful.com/wrestling/aew-fight-night-collision-results-10-31-ilja-dragunov-competes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T01:33:15.754Z"
+  "at": "2026-11-01T01:35:41.848Z"
  },
  "https://www.fightful.com/wrestling/watch-countdown-to-nxt-halloween-havoc-oct-31-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T01:33:15.352Z"
+  "at": "2026-11-01T01:35:41.548Z"
  },
  "https://www.fightful.com/wrestling/sheamus-im-just-taking-time-off-im-on-vacation": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T01:33:15.010Z"
+  "at": "2026-11-01T01:35:41.293Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-says-he-has-re-signed-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T01:33:14.666Z"
+  "at": "2026-11-01T01:35:41.045Z"
  },
  "https://www.fightful.com/wrestling/court-bauer-says-mlw-was-in-talks-with-paramount-in-2025-before-ufc-deal-was-announced": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T01:33:14.397Z"
+  "at": "2026-11-01T01:35:40.852Z"
  },
  "https://www.fightful.com/wrestling/shiloh-hill-scores-win-over-naraku-at-nxt-halloween-havoc": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-20T02:58:45.921Z"
- },
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-october-19-2026": {
-  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
-  "retry": true,
-  "at": "2026-10-20T02:49:39.814Z"
  }
 }
