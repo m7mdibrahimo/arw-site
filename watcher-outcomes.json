@@ -1,63 +1,68 @@
 {
- "https://www.wrestlinginc.com/2303207/aew-collision-october-31-2026-results": {
-  "reason": "المراجعة رفضته: في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
+ "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-results-10-31-2026-danhausen-hosts-grayson-waller-kelani-jordan-zilla-fatu-more": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
-  "at": "2026-11-01T02:38:48.316Z"
+  "at": "2026-11-01T02:41:31.676Z"
  },
  "https://www.fightful.com/wrestling/grayson-waller-def-tony-dangelo-to-retain-nxt-title-at-halloween-havoc": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T02:38:18.316Z"
+  "at": "2026-11-01T02:40:57.389Z"
  },
  "https://www.fightful.com/wrestling/watch-aaa-heroes-inmortales-october-31-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T02:38:18.138Z"
+  "at": "2026-11-01T02:40:57.214Z"
  },
  "https://www.fightful.com/wrestling/nxt-tlc-set-for-december-12th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T02:38:17.870Z"
+  "at": "2026-11-01T02:40:56.951Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-overcomes-birthright-to-defeat-charlie-dempsey-at-nxt-halloween-havoc": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T02:38:17.223Z"
+  "at": "2026-11-01T02:40:56.320Z"
  },
  "https://www.fightful.com/wrestling/multiple-wwe-superstars-did-not-want-to-be-booked-for-wwe-crown-jewel-due-to-safety-concerns": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T02:38:16.896Z"
+  "at": "2026-11-01T02:40:55.998Z"
  },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-venue-moved-for-safety-reasons": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T02:38:16.631Z"
+  "at": "2026-11-01T02:40:55.736Z"
  },
  "https://www.fightful.com/wrestling/aew-fight-night-collision-results-10-31-ilja-dragunov-competes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T02:38:16.215Z"
+  "at": "2026-11-01T02:40:55.327Z"
  },
  "https://www.fightful.com/wrestling/watch-countdown-to-nxt-halloween-havoc-oct-31-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T02:38:15.810Z"
+  "at": "2026-11-01T02:40:54.930Z"
  },
  "https://www.fightful.com/wrestling/sheamus-im-just-taking-time-off-im-on-vacation": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T02:38:15.469Z"
+  "at": "2026-11-01T02:40:54.594Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-says-he-has-re-signed-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T02:38:15.121Z"
+  "at": "2026-11-01T02:40:54.254Z"
  },
  "https://www.fightful.com/wrestling/court-bauer-says-mlw-was-in-talks-with-paramount-in-2025-before-ufc-deal-was-announced": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T02:38:14.851Z"
+  "at": "2026-11-01T02:40:53.989Z"
+ },
+ "https://www.wrestlinginc.com/2303207/aew-collision-october-31-2026-results": {
+  "reason": "المراجعة رفضته: في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
+  "retry": true,
+  "at": "2026-11-01T02:38:48.316Z"
  },
  "https://www.wrestlinginc.com/2303366/wwe-nxt-champion-grayson-waller-opportunistic-win-halloween-havoc-main-event": {
   "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي",
@@ -78,11 +83,6 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-01T01:31:23.042Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-results-10-31-2026-danhausen-hosts-grayson-waller-kelani-jordan-zilla-fatu-more": {
-  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-11-01T01:27:16.742Z"
  },
  "https://www.ringsidenews.com/kelani-jordan-retains-nxt-womens-championship-controversial-finish-halloween-havoc-2026": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
