@@ -971,7 +971,7 @@ test("show names stay English and a report cannot conduct an interview (INCIDENT
   const ok = checkArticle("خبر عادي", "وجاء هذا التفاعل بعد مقابلة أجراها شون روس ساب من Fightful مع الموهبة.", []);
   assert.ok(!ok.some((i) => i.code === "broken_attribution"), JSON.stringify(ok));
   // the transliterated show name is gone from every published story (title, body and tags alike)
-  const bad = fs.readdirSync("content/news").filter((f) => /موني إن ذا بانك|ريسل\s*مانيا|سمر\s*سلام|رويال\s+رامبل/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|source_url|image):.*$/gm, "")));
+  const bad = fs.readdirSync("content/news").filter((f) => /موني إن ذا بانك|ريسل\s*مانيا|سمر\s*سلام|رويال\s+رامبل/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|source_url|image|social_spoiler_note):.*$/gm, "")));
   assert.deepEqual(bad, []);
 });
 
@@ -1286,4 +1286,11 @@ test('a podcast has episodes even with a pronoun joined, and bumps are «سقط�
   assert.equal(applyCorrections('في عرض من البودكاست'), 'في حلقة من البودكاست');
   const guide = fs.readFileSync("editorial/style-guide.md", "utf-8");
   assert.ok(guide.includes("«سقطة / سقطات»"));
+});
+
+// INCIDENTS #994: «لاري دو كيد» (Laredo Kid) and «عرض تلفزيونية» slipped into the AAA results and NXT Halloween Havoc stories
+test('Laredo Kid is spelled one way and a TV episode is «حلقة»', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa');
+  assert.equal(applyCorrections('ضد تاكوما ولاري دو كيد.'), 'ضد تاكوما ولاريدو كيد.');
+  assert.equal(applyCorrections('يشبه عرض تلفزيونية طويلة'), 'يشبه حلقة تلفزيونية طويلة');
 });

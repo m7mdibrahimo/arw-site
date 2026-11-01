@@ -1,7 +1,7 @@
 ---
 title: "Shayna Baszler Challenging Indi Hartwell for Knockouts World Title at TNA Destination X"
 slug: "shayna-baszler-challenging-indi-hartwell-for-knockouts-world-title-at-tna"
-description: "Shayna Baszler is set to challenge Indi Hartwell for the Knockouts World Championship at TNA Destination X. During the October 29 episode of TNA iMPACT."
+description: "Shayna Baszler is set to challenge Indi Hartwell for the Knockouts World Championship at TNA Destination X."
 federation: TNA
 date: 2026-10-30T02:14:54.000Z
 source_id: 336485

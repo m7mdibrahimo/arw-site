@@ -189,3 +189,8 @@ test("a first sentence a little too long loses its filler adverbs, not its endin
   const r = metaDescription("WWE has reportedly been discussing plans for a major return at the next premium live event in Saudi Arabia, with several top stars recently pitched for the match card. More follows here.");
   assert.match(r, /reportedly/);
 });
+
+test("a last sentence that is only «During the … episode of …» is dropped (live 2026-11-01)", () => {
+  const cut = metaDescription("Shayna Baszler is set to challenge Indi Hartwell for the Knockouts World Championship at TNA Destination X. During the October 29 episode of TNA iMPACT.");
+  assert.equal(cut, "Shayna Baszler is set to challenge Indi Hartwell for the Knockouts World Championship at TNA Destination X.");
+});
