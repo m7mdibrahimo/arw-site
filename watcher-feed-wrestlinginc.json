@@ -1,5 +1,15 @@
 [
   {
+    "id": 2894334895,
+    "link": "https://www.wrestlinginc.com/2303463/wwe-paul-heyman-vince-mcmahon-good-man/",
+    "date": "Sun, 01 Nov 2026 19:26:23 +0000",
+    "date_gmt": "2026-11-01T19:26:23.000Z",
+    "title": {
+      "rendered": "WWE's Paul Heyman Comments On Whether Or Not Vince McMahon Is A Good Man"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-paul-heyman-comments-on-whether-or-not-vince-mcmahon-is-a-good-man/l-intro-1793560985.jpg"
+  },
+  {
     "id": 4247805034,
     "link": "https://www.wrestlinginc.com/2302483/wwe-kit-wilson-chelsea-green-creative-pitch-never-came/",
     "date": "Sun, 01 Nov 2026 18:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Kelani Jordan Overcomes Wren Sinclair To Retain WWE NXT Women's Title"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/kelani-jordan-overcomes-wren-sinclair-to-retain-wwe-nxt-womens-title/l-intro-1793496126.jpg"
-  },
-  {
-    "id": 1259144251,
-    "link": "https://www.wrestlinginc.com/2303207/aew-collision-october-31-2026-results/",
-    "date": "Sat, 31 Oct 2026 21:00:00 +0000",
-    "date_gmt": "2026-10-31T21:00:00.000Z",
-    "title": {
-      "rendered": "AEW Collision Results 10/31/2026 W/ Live Updates"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-collision-results-10312026-w-live-updates/l-intro-1793418860.jpg"
   }
 ]
