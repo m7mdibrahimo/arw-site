@@ -1,58 +1,63 @@
 {
+ "https://www.fightful.com/mma/ufc-fight-night-moicano-vs-nolan-results": {
+  "reason": "المراجعة رفضته: العنوان مش جملة عربية (أقل من 3 كلمات عربية)",
+  "retry": false,
+  "at": "2026-11-01T03:22:45.794Z"
+ },
  "https://www.fightful.com/wrestling/grayson-waller-def-tony-dangelo-to-retain-nxt-title-at-halloween-havoc": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T03:19:55.272Z"
+  "at": "2026-11-01T03:22:15.933Z"
  },
  "https://www.fightful.com/wrestling/watch-aaa-heroes-inmortales-october-31-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T03:19:55.097Z"
+  "at": "2026-11-01T03:22:15.753Z"
  },
  "https://www.fightful.com/wrestling/nxt-tlc-set-for-december-12th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T03:19:54.834Z"
+  "at": "2026-11-01T03:22:15.484Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-overcomes-birthright-to-defeat-charlie-dempsey-at-nxt-halloween-havoc": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T03:19:54.197Z"
+  "at": "2026-11-01T03:22:14.822Z"
  },
  "https://www.fightful.com/wrestling/multiple-wwe-superstars-did-not-want-to-be-booked-for-wwe-crown-jewel-due-to-safety-concerns": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T03:19:53.872Z"
+  "at": "2026-11-01T03:22:14.486Z"
  },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-venue-moved-for-safety-reasons": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T03:19:53.607Z"
+  "at": "2026-11-01T03:22:14.216Z"
  },
  "https://www.fightful.com/wrestling/aew-fight-night-collision-results-10-31-ilja-dragunov-competes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T03:19:53.191Z"
+  "at": "2026-11-01T03:22:13.797Z"
  },
  "https://www.fightful.com/wrestling/watch-countdown-to-nxt-halloween-havoc-oct-31-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T03:19:52.792Z"
+  "at": "2026-11-01T03:22:13.393Z"
  },
  "https://www.fightful.com/wrestling/sheamus-im-just-taking-time-off-im-on-vacation": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T03:19:52.449Z"
+  "at": "2026-11-01T03:22:13.050Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-says-he-has-re-signed-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T03:19:52.101Z"
+  "at": "2026-11-01T03:22:12.702Z"
  },
  "https://www.fightful.com/wrestling/court-bauer-says-mlw-was-in-talks-with-paramount-in-2025-before-ufc-deal-was-announced": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-01T03:19:51.827Z"
+  "at": "2026-11-01T03:22:12.431Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-results-10-31-2026-danhausen-hosts-grayson-waller-kelani-jordan-zilla-fatu-more": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
@@ -73,11 +78,6 @@
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-01T02:10:55.523Z"
- },
- "https://www.fightful.com/mma/ufc-fight-night-moicano-vs-nolan-results": {
-  "reason": "المراجعة رفضته: حروف عربي ملزوقة في حروف إنجليزي جوه نفس الاسم (حصل: «يOH»، «نagai») — اكتب الاسم كله إنجليزي أو كله عربي، العنوان مش جملة عربية (أقل من 3 كلمات عربية)",
-  "retry": true,
-  "at": "2026-11-01T02:07:24.481Z"
  },
  "https://www.fightful.com/wrestling/shiloh-hill-scores-win-over-naraku-at-nxt-halloween-havoc": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
