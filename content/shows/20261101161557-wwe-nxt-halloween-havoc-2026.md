@@ -2,7 +2,7 @@
 show_type: عرض
 federation: WWE
 title: WWE NXT Halloween Havoc (2026)
-headline: عرض ان اكس تي 31.10.2026 مترجم
+headline: عرض ان اكس تي هالوين هافوك 31.10.2026 مترجم
 card_title: name
 program_name: WWE NXT Halloween Havoc
 description: عرض ان اكس تي مترجم بالكامل مع جميع النزالات والأحداث.
