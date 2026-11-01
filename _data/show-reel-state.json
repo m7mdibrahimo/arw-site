@@ -4579,18 +4579,17 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض كوليجن 31.10.2026 مترجم",
-    "lastAttempt": 1793543453323,
+    "lastAttempt": 1793544339979,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
       "instagram_reel",
-      "instagram_story",
-      "tiktok"
+      "instagram_story"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   }
 }
