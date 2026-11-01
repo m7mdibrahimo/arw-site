@@ -1,5 +1,15 @@
 [
   {
+    "id": 908742623,
+    "link": "https://www.wrestlinginc.com/2301829/maria-kanellis-pulls-back-curtain-wwe-match-umaga/",
+    "date": "Sun, 01 Nov 2026 17:30:00 +0000",
+    "date_gmt": "2026-11-01T17:30:00.000Z",
+    "title": {
+      "rendered": "Maria Kanellis Pulls Back The Curtain On WWE Match With Umaga"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/maria-kanellis-pulls-back-the-curtain-on-wwe-match-with-umaga/l-intro-1793314493.jpg"
+  },
+  {
     "id": 4373748096,
     "link": "https://www.wrestlinginc.com/2303436/paul-heyman-brock-lesnar-undefeated-ufc-diverticulitis/",
     "date": "Sun, 01 Nov 2026 17:26:25 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Sami Zayn Talks Possibility Of Beating Roman Reigns At WWE Elimination Chamber 2023"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/sami-zayn-talks-possibility-of-beating-roman-reigns-at-wwe-elimination-chamber-2023/l-intro-1793219380.jpg"
-  },
-  {
-    "id": 1106835055,
-    "link": "https://www.wrestlinginc.com/2301904/wwe-nxt-halloween-havoc-october-31-2026-results/",
-    "date": "Sat, 31 Oct 2026 20:00:00 +0000",
-    "date_gmt": "2026-10-31T20:00:00.000Z",
-    "title": {
-      "rendered": "WWE NXT Halloween Havoc Results 10/31/26 W/ Live Updates"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-halloween-havoc-results-103126-w-live-updates/l-intro-1793500407.jpg"
   }
 ]
