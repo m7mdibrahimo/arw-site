@@ -1299,3 +1299,13 @@ test('نيوزلندا ← نيوزيلندا (INCIDENTS #996)', async () => {
   const { applyCorrections } = await import('../scripts/news-qa');
   assert.equal(applyCorrections('لقاء صحفي في نيوزلندا.'), 'لقاء صحفي في نيوزيلندا.');
 });
+
+// INCIDENTS #997: bare «هوغان» next to «هوجان», «بطولتنا» in third person, present-tense verb in a past sentence
+test("Hogan spelling and the 997 phrase fixes are applied (INCIDENTS #997)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("زوجة هوغان"), "زوجة هوجان");
+  assert.equal(applyCorrections("تركت ذلك وتعتنق الديانة المسيحية منذ عشرين عاما"), "تركت ذلك واعتنقت المسيحية منذ عشرين عاما");
+  assert.equal(applyCorrections("بالاحترام الذي تستحقه بطولتنا"), "بالاحترام الذي تستحقه بطولته");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /هوغان/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|source_url|slug):.*$/gm, "")));
+  assert.deepEqual(bad, []);
+});
