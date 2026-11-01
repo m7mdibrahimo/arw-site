@@ -194,3 +194,10 @@ test("a last sentence that is only «During the … episode of …» is dropped 
   const cut = metaDescription("Shayna Baszler is set to challenge Indi Hartwell for the Knockouts World Championship at TNA Destination X. During the October 29 episode of TNA iMPACT.");
   assert.equal(cut, "Shayna Baszler is set to challenge Indi Hartwell for the Knockouts World Championship at TNA Destination X.");
 });
+
+test("a description never ends on an adjective that lost its noun («the reigning.», «the company's new.») (live 2026-11-01)", () => {
+  const a = metaDescription("Many view TNA Wrestling as the house that AJ Styles built, but reigning TNA World Champion Leon Slater wants to establish himself as the company’s new face of the whole promotion for years.");
+  assert.equal(a, "Many view TNA Wrestling as the house that AJ Styles built.");
+  const b = metaDescription("Fujita Hayato plans to wrestle again in 2027. He stated that he is leaving his position as the commissioner of Michinoku Pro so he can challenge the reigning champion of the promotion in a title match soon.");
+  assert.equal(b, "Fujita Hayato plans to wrestle again in 2027.");
+});

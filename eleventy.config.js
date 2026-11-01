@@ -2471,6 +2471,13 @@ module.exports = function(eleventyConfig) {
       let files = 0;
       const walk = (d) => { for (const e of fs.readdirSync(d, { withFileTypes: true })) e.isDirectory() ? walk(path.join(d, e.name)) : files++; };
       walk("_site");
+      // Near the limit the oldest redirect stubs («/content/news/<file>/») go first, so the deploy never fails (INCIDENTS #1004)
+      const BUDGET = PAGES_FILE_LIMIT - 800;
+      if (files > BUDGET) {
+        const removed = require("./lib/redirects.cjs").pruneRedirectStubs("_site", files, BUDGET);
+        console.warn(`[files] ${files} files is over the budget of ${BUDGET}: removed ${removed} old redirect pages (INCIDENTS #1004)`);
+        files = 0; walk("_site");
+      }
       const b = JSON.parse(fs.readFileSync("_site/build.json", "utf8"));
       b.files = files; b.fileLimit = PAGES_FILE_LIMIT;
       fs.writeFileSync("_site/build.json", JSON.stringify(b));
