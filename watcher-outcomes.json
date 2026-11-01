@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2303383/aew-collision-viewership-ratings-october-24-2026": {
+  "reason": "تقرير مشاهدة لعرض قديم (2026-10-24)",
+  "retry": false,
+  "at": "2026-11-01T03:39:53.622Z"
+ },
  "https://www.fightful.com/wrestling/grayson-waller-def-tony-dangelo-to-retain-nxt-title-at-halloween-havoc": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-20T11:10:37.197Z"
- },
- "https://www.fightful.com/wrestling/billy-gunn-weighs-in-on-brawl-out-certain-veterans-arent-going-to-put-up-with-that-shit": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-20T10:55:29.880Z"
  }
 }
