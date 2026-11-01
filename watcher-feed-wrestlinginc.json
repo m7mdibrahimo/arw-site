@@ -1,5 +1,15 @@
 [
   {
+    "id": 3901640045,
+    "link": "https://www.wrestlinginc.com/2300724/wwe-tna-leon-slater-john-cena-experience-working-retirement-show/",
+    "date": "Sun, 01 Nov 2026 13:30:00 +0000",
+    "date_gmt": "2026-11-01T13:30:00.000Z",
+    "title": {
+      "rendered": "TNA's Leon Slater Recalls Experience Working John Cena's WWE Retirement Show"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tnas-leon-slater-recalls-experience-working-john-cenas-wwe-retirement-show/l-intro-1793275933.jpg"
+  },
+  {
     "id": 1672119545,
     "link": "https://www.wrestlinginc.com/2300703/sami-zayn-wwe-royal-rumble-2023-crowd-reaction-unlike-anything-heard/",
     "date": "Sun, 01 Nov 2026 03:59:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW's Billy Gunn Shares Thoughts On His Children Following In His Footsteps"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/former-aew-star-billy-gunn-shares-thoughts-on-his-children-following-in-his-footsteps/l-intro-1793123030.jpg"
-  },
-  {
-    "id": 3844802676,
-    "link": "https://www.wrestlinginc.com/2298429/wwe-bully-ray-rock-one-more-match/",
-    "date": "Sat, 31 Oct 2026 16:00:00 +0000",
-    "date_gmt": "2026-10-31T16:00:00.000Z",
-    "title": {
-      "rendered": "Bully Ray Thinks The Rock Has One More WWE Match In Him"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/bully-ray-thinks-the-rock-has-one-more-wwe-match-in-him/l-intro-1793117742.jpg"
   }
 ]
