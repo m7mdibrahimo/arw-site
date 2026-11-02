@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-2-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-02T22:41:09.345Z"
+ },
+ "https://www.ringsidenews.com/wwes-backstage-reaction-backlash-nikki-bella-vs-chelsea-green-match": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-02T22:41:09.265Z"
+ },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-2-2026-solo-sikoa-vs-royce-keys-john-cena-roman-reigns-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -23,16 +33,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-02T22:37:56.317Z"
- },
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-2-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-02T22:32:57.723Z"
- },
- "https://www.ringsidenews.com/wwes-backstage-reaction-backlash-nikki-bella-vs-chelsea-green-match": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-02T22:32:57.657Z"
  },
  "https://www.wrestlinginc.com/2304792/david-finlay-contract-chess-game-aew-money-better-njpw-clark-connors": {
   "reason": "المراجعة رفضته: اقتباس بالإنجليزي جوه الخبر العربي — لازم يتترجم للعربي، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",

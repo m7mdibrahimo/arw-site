@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/will-ospreay-retains-aew-world-championship-wild-clockwork-carnage-match-wrestledream/": {
-    "matchedFile": "20261017230000-نتائج-عرض-aew-wrestledream-17-أكتوبر-2026-مع-التغطية-الحية.md",
-    "reason": "الخبر الجديد يغطي نفس نتيجة نزال بطولة AEW العالمية في عرض AEW WrestleDream الذي تم ذكره وتغطيته بالفعل في الخبر رقم 0.",
-    "at": "2026-10-18T04:23:43.733Z"
-  },
   "https://www.fightful.com/wrestling/will-ospreay-wins-clockwork-carnage-match-to-retain-aew-world-championship-at-wrestledream/": {
     "matchedFile": "20261017230000-نتائج-عرض-aew-wrestledream-17-أكتوبر-2026-مع-التغطية-الحية.md",
     "reason": "الخبر الجديد يغطي تفاصيل نزال احتفاظ ويل أوسبراي ببطولة AEW العالمية في عرض AEW WrestleDream، وهو نفس الحدث والنتيجة المغطاة مسبقاً في تقرير نتائج عرض AEW WrestleDream رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261102013622-عرض-جون-سينا-الكلاسيكي-قد-يقام-في-مواجهة-مباشرة-مع-عرض-aew-worlds-end.md",
     "reason": "الخبر الجديد يعيد سرد تفاصيل عودة جون سينا لعرض RAW للكشف عن تفاصيل البطولة، وهي معلومة تم ذكرها بالفعل في نهاية الخبر رقم 0.",
     "at": "2026-11-02T20:52:08.652Z"
+  },
+  "https://www.ringsidenews.com/possible-venue-john-cena-classic-revealed/": {
+    "matchedFile": "20261102013622-عرض-جون-سينا-الكلاسيكي-قد-يقام-في-مواجهة-مباشرة-مع-عرض-aew-worlds-end.md",
+    "reason": "الخبر الجديد يركز على نفس الحدث (عرض جون سينا الكلاسيكي) ويضيف تفاصيل حول المكان المحتمل، وهي تفاصيل إضافية لنفس الإعلان المذكور في الخبر رقم 0، ولا تعتبر تطوراً جوهرياً يمنع كونه تكراراً لنفس الموضوع.",
+    "at": "2026-11-02T22:41:18.366Z"
   }
 }
