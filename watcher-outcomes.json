@@ -1,43 +1,43 @@
 {
- "https://www.fightful.com/wrestling/santino-marella-says-he-pitched-cobra-vs-mr-socko-battle-in-the-2012-royal-rumble-match-says-they-had-more-planned": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-02T12:58:59.327Z"
- },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-2": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T12:58:27.606Z"
+  "at": "2026-11-02T13:01:58.341Z"
  },
  "https://www.fightful.com/wrestling/mike-kitlas-senior-director-live-events-departs-mlw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T12:58:27.146Z"
+  "at": "2026-11-02T13:01:57.695Z"
  },
  "https://www.fightful.com/wrestling/reaction-to-brock-lesnar-ufc-comments-made-by-paul-heyman": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T12:58:26.957Z"
+  "at": "2026-11-02T13:01:57.430Z"
  },
  "https://www.fightful.com/wrestling/jordynne-grace-still-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T12:58:26.608Z"
+  "at": "2026-11-02T13:01:56.937Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-no-wrestler-has-ever-said-that-they-want-lose-their-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T12:58:26.149Z"
+  "at": "2026-11-02T13:01:56.286Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-addresses-hardcore-fans-not-always-loving-the-wwe-nil-system": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T12:58:25.863Z"
+  "at": "2026-11-02T13:01:55.883Z"
  },
  "https://www.fightful.com/wrestling/fred-rosser-clarifies-that-he-was-a-guest-coach-at-wwe-performance-center": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T12:58:25.400Z"
+  "at": "2026-11-02T13:01:55.228Z"
+ },
+ "https://www.fightful.com/wrestling/santino-marella-says-he-pitched-cobra-vs-mr-socko-battle-in-the-2012-royal-rumble-match-says-they-had-more-planned": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-02T12:58:59.327Z"
  },
  "https://www.ringsidenews.com/why-randy-ortons-wwe-heel-run-faces-major-problem": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
