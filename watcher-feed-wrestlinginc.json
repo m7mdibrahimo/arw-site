@@ -1,5 +1,15 @@
 [
   {
+    "id": 3047014889,
+    "link": "https://www.wrestlinginc.com/2303589/aew-orange-cassidy-tony-khan-helped-pro-wrestling-industry/",
+    "date": "Mon, 02 Nov 2026 16:30:00 +0000",
+    "date_gmt": "2026-11-02T16:30:00.000Z",
+    "title": {
+      "rendered": "AEW's Orange Cassidy Explains How Tony Khan Has Helped The Pro Wrestling Industry"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-orange-cassidy-explains-how-tony-khan-has-helped-the-pro-wrestling-industry/l-intro-1793617537.jpg"
+  },
+  {
     "id": 4153210788,
     "link": "https://www.wrestlinginc.com/2304029/wwe-crown-jewel-2026-dave-meltzer-saudi-arabia-maintains-no-stars-refused-travel/",
     "date": "Mon, 02 Nov 2026 16:22:08 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Nunzio Looks Back On Feud With WWE HOFer The Undertaker"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/nunzio-looks-back-on-feud-with-wwe-hofer-the-undertaker/l-intro-1793320738.jpg"
-  },
-  {
-    "id": 908742623,
-    "link": "https://www.wrestlinginc.com/2301829/maria-kanellis-pulls-back-curtain-wwe-match-umaga/",
-    "date": "Sun, 01 Nov 2026 17:30:00 +0000",
-    "date_gmt": "2026-11-01T17:30:00.000Z",
-    "title": {
-      "rendered": "Maria Kanellis Pulls Back The Curtain On WWE Match With Umaga"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/maria-kanellis-pulls-back-the-curtain-on-wwe-match-with-umaga/l-intro-1793314493.jpg"
   }
 ]
