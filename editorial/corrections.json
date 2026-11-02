@@ -2,6 +2,26 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "تكون تحالفا مؤخرا",
+      "right": "كون تحالفا مؤخرا",
+      "note": "فعل غلط (INCIDENTS #1021)"
+    },
+    {
+      "wrong": "تكون تحالف مؤخرا",
+      "right": "كون تحالفا مؤخرا",
+      "note": "فعل غلط (INCIDENTS #1021)"
+    },
+    {
+      "wrong": "منذ صفوره",
+      "right": "منذ صغره",
+      "note": "حرف مبدّل (INCIDENTS #1021)"
+    },
+    {
+      "wrong": "لاستزفازه",
+      "right": "لاستفزازه",
+      "note": "حرف مبدّل (INCIDENTS #1021)"
+    },
+    {
       "wrong": "بنفس القحدة",
       "right": "بنفس الحدة",
       "note": "حرف زايد في خبر نسب مشاهدة NXT (INCIDENTS #1020)"

@@ -1348,3 +1348,13 @@ test("Rihanna is not written «بريانا» (INCIDENTS #1013)", async () => {
   const { applyCorrections } = await import("../scripts/news-qa");
   assert.equal(applyCorrections("يلتقون بريانا في لقاء مفاجئ"), "يلتقون ريانا في لقاء مفاجئ");
 });
+
+// INCIDENTS #1021: «لاستزفازه» / «صفوره» / «تكون تحالف» reached three Big Cass / Royce Keys stories.
+test("letter-swap typos from the Nov 2 Big Cass / Royce Keys stories are corrected", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("لاستزفازه"), "لاستفزازه");
+  assert.equal(applyCorrections("ما يعلق بذهنه منذ صفوره"), "ما يعلق بذهنه منذ صغره");
+  assert.equal(applyCorrections("تكون تحالف مؤخرا مع إيثان"), "كون تحالفا مؤخرا مع إيثان");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /لاستزفازه|منذ صفوره|تكون تحالف/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
