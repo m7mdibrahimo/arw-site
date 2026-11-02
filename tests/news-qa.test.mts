@@ -530,3 +530,11 @@ test("dual_form: «تحالفا في / تمكنا من / ظهرا كفريق» (
   }
   assert.ok(!checkArticle("خبر عادي عن المصارعة", `قال: أتمنى لو أننا تمكنا من الاحتفاظ بالتصميم. ${filler}`).some((i) => i.code === "dual_form"));
 });
+
+test("invisible characters are stripped by autoFix and an empty «()» is blocked (Jake Paul story, 2026-11-02)", () => {
+  assert.equal(autoFix("قال \u2060\u200Bجيك"), "قال جيك");
+  assert.ok(checkArticle("عنوان", "قال سيدريك كان يتحدى في الماضي (\u2060) بعد ذلك.").some((i) => i.code === "invisible_char"));
+  assert.ok(checkArticle("عنوان", "قال سيدريك كان يتحدى في الماضي () بعد ذلك.").some((i) => i.code === "empty_parens"));
+  assert.ok(!checkArticle("عنوان", "قال سيدريك (أوكرانيا) بعد ذلك.").some((i) => i.code === "empty_parens"));
+  assert.ok(BLOCKING_QA_CODES.includes("invisible_char") && BLOCKING_QA_CODES.includes("empty_parens"));
+});

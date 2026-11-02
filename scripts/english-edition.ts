@@ -698,7 +698,8 @@ export function pruneDuplicateOrphanEnglish(dir = NEWS_EN_DIR, newsDir = NEWS_DI
 export function saveJointEnglishEdition(raw: { en_title?: unknown; en_body?: unknown; en_tags?: unknown } | null | undefined, i: EnglishInput, dir = NEWS_EN_DIR): string | null {
   if (new Date(i.date).getTime() < new Date(ENGLISH_NEWS_SINCE).getTime()) return null;
   if (!raw || typeof raw.en_title !== "string" || typeof raw.en_body !== "string") return null;
-  const e: EnglishEdition = { title: stripBold(raw.en_title).replace(/\s+/g, " ").trim(), body: stripBold(raw.en_body), tags: Array.isArray(raw.en_tags) ? raw.en_tags.map(String) : [] };
+  const noInvisible = (t: string) => t.replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF\u00AD]/g, ""); // zero-width chars from the source (Jake Paul quote, 2026-11-02)
+  const e: EnglishEdition = { title: noInvisible(stripBold(raw.en_title)).replace(/\s+/g, " ").trim(), body: noInvisible(stripBold(raw.en_body)), tags: Array.isArray(raw.en_tags) ? raw.en_tags.map(String) : [] };
   const issues = checkEnglish(e, i);
   if (issues.length) { console.warn(`[English] ✋ ${i.sourceId} (written with the Arabic): ${issues.join(", ")} — asking for it on its own`); return null; }
   const file = saveEnglishEdition(e, i, dir);

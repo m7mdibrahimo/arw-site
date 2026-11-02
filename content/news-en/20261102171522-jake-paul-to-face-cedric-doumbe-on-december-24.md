@@ -18,7 +18,7 @@ According to Fightful, MVP Boxing revealed that Jake Paul will square off agains
 
 For Doumbé, the bout represents his initial boxing appearance since April 2015, holding an undefeated 1-0 record in the sport. He established his reputation in kickboxing with a 63-7-1 mark before transitioning to mixed martial arts to compile a 6-1 record, last competing in May 2024. A broadcasting partner for the event remains unannounced.
 
-> "Cedric … was calling ⁠me out two years ago after knocking a guy ​out in nine seconds. Well, now you get your ​chance. I'm rusty, my jaw isn't quite right and I don't have kickboxing world titles like you do. ​But this isn't kickboxing, mon ami. This is ​boxing. Just like (Ukraine's) Oleksandr Usyk feasted on Rico Verhoeven, I'm going to ‌eat ⁠you for dinner in Dubai on Christmas Eve."
+> "Cedric … was calling me out two years ago after knocking a guy out in nine seconds. Well, now you get your chance. I'm rusty, my jaw isn't quite right and I don't have kickboxing world titles like you do. But this isn't kickboxing, mon ami. This is boxing. Just like (Ukraine's) Oleksandr Usyk feasted on Rico Verhoeven, I'm going to eat you for dinner in Dubai on Christmas Eve."
 
 Fightful will share further updates regarding the matchup as information becomes available.
 
