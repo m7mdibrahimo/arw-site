@@ -794,3 +794,7 @@ test('corrections fix «عصر الأتيود» and «قمة الهرم الغذ
   assert.equal(applyCorrections('تقارن الفوضى بعصر الأتيود'), 'تقارن الفوضى بعصر الأتيتيود');
   assert.equal(applyCorrections('يتربع على قمة الهرم الغذائي في الاتحاد'), 'يتربع على قمة السلسلة الغذائية في الاتحاد');
 });
+
+test('corrections fix «بلاكهارت» (INCIDENTS #1024)', () => {
+  assert.equal(applyCorrections('أبدت بلاكهارت حماسها'), 'أبدت بلاك هارت حماسها');
+});
