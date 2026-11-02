@@ -13128,16 +13128,16 @@
     "renderedAt": 1793595017341
   },
   {
-    "videoUrl": "/videos/reel-20261102131123-mlw-fusion-31-10-2026.mp4",
-    "filename": "reel-20261102131123-mlw-fusion-31-10-2026.mp4",
-    "title": "عرض ام ال دبليو فيوجن 31.10.2026 مترجم",
-    "secondaryTitle": "MLW Fusion 31.10.2026",
-    "description": "عرض ام ال دبليو فيوجن مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261102131123-mlw-fusion-31-10-2026",
+    "videoUrl": "/videos/reel-20261102132209-ufc-fight-night-292-moicano-vs.mp4",
+    "filename": "reel-20261102132209-ufc-fight-night-292-moicano-vs.mp4",
+    "title": "عرض يو اف سي فايت نايت 31.10.2026 مترجم",
+    "secondaryTitle": "UFC Fight Night 292: Moicano vs Nolan",
+    "description": "عرض يو اف سي فايت نايت مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261102132209-ufc-fight-night-292-moicano-vs",
     "kind": "show",
-    "slug": "20261102131123-mlw-fusion-31-10-2026",
-    "image": "/content/images/zvrr8q3dmkd1ccl5.jpg",
-    "renderedAt": 1793618120162
+    "slug": "20261102132209-ufc-fight-night-292-moicano-vs",
+    "image": "/content/images/9851o21ibp624ora.jpg",
+    "renderedAt": 1793619625588
   },
   {
     "videoUrl": "/videos/reel-20260923063300-wwe-nxt-22-09-2026.mp4",
@@ -13149,7 +13149,7 @@
     "kind": "show",
     "slug": "20260923063300-wwe-nxt-22-09-2026",
     "image": "/content/images/snbzgkkh0uz10rg4.jpg",
-    "renderedAt": 1793618222780
+    "renderedAt": 1793619722158
   },
   {
     "videoUrl": "/videos/reel-20260924111500-cmll-martes-populares-22-09-20.mp4",
@@ -13161,7 +13161,7 @@
     "kind": "show",
     "slug": "20260924111500-cmll-martes-populares-22-09-20",
     "image": "/content/images/m8d59u7c9heju50p.jpg",
-    "renderedAt": 1793618326096
+    "renderedAt": 1793619819318
   },
   {
     "videoUrl": "/videos/reel-20260927053000-hog-windy-city-warfare-2026.mp4",
@@ -13173,7 +13173,7 @@
     "kind": "show",
     "slug": "20260927053000-hog-windy-city-warfare-2026",
     "image": "/content/images/rv1dkjnjn7hlecbk.jpg",
-    "renderedAt": 1793618428322
+    "renderedAt": 1793619916193
   },
   {
     "videoUrl": "/videos/reel-20261004111922-cmll-viernes-espectacular-02-1.mp4",
@@ -13185,7 +13185,7 @@
     "kind": "show",
     "slug": "20261004111922-cmll-viernes-espectacular-02-1",
     "image": "/content/images/zo50oq9ay9ddpmkw.jpg",
-    "renderedAt": 1793618531419
+    "renderedAt": 1793620013578
   },
   {
     "videoUrl": "/videos/reel-20261004154654-mlp-northern-rising-2026.mp4",
@@ -13197,7 +13197,7 @@
     "kind": "show",
     "slug": "20261004154654-mlp-northern-rising-2026",
     "image": "/content/images/ay4bdaohc4h5mzn9.jpg",
-    "renderedAt": 1793618635523
+    "renderedAt": 1793620111458
   },
   {
     "videoUrl": "/videos/reel-20261005023231-ufc-332-silva-vs-wang-main-car.mp4",
@@ -13209,7 +13209,7 @@
     "kind": "show",
     "slug": "20261005023231-ufc-332-silva-vs-wang-main-car",
     "image": "/content/images/zrxiqosmbsfpbzq7.jpg",
-    "renderedAt": 1793618736626
+    "renderedAt": 1793620206653
   },
   {
     "videoUrl": "/videos/reel-20261006015444-cmll-sabados-de-coliseo-03-10-.mp4",
@@ -13221,7 +13221,19 @@
     "kind": "show",
     "slug": "20261006015444-cmll-sabados-de-coliseo-03-10-",
     "image": "/content/images/2fasj33b6uu3lgu6.jpg",
-    "renderedAt": 1793618840805
+    "renderedAt": 1793620303817
+  },
+  {
+    "videoUrl": "/videos/reel-20261018035716-cmll-viernes-espectacular-16-1.mp4",
+    "filename": "reel-20261018035716-cmll-viernes-espectacular-16-1.mp4",
+    "title": "عرض سي ام ال ال فيرنس اسبكتكيولار 16.10.2026 مترجم",
+    "secondaryTitle": "CMLL Viernes Espectacular 16.10.2026",
+    "description": "عرض سي ام ال ال فيرنس اسبكتكيولار مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261018035716-cmll-viernes-espectacular-16-1",
+    "kind": "show",
+    "slug": "20261018035716-cmll-viernes-espectacular-16-1",
+    "image": "/content/images/9c99bg21jq6gzcmd.jpg",
+    "renderedAt": 1793620400149
   },
   {
     "videoUrl": "/videos/reel-20261018061412-revpro-cmll-fantastica-mania-u.mp4",
@@ -13233,7 +13245,7 @@
     "kind": "show",
     "slug": "20261018061412-revpro-cmll-fantastica-mania-u",
     "image": "/content/images/t55axhhvsv49bg4k.jpg",
-    "renderedAt": 1793618940956
+    "renderedAt": 1793620493757
   },
   {
     "videoUrl": "/videos/reel-20261021003941-wwe-raw-19-10-2026.mp4",
@@ -13245,7 +13257,7 @@
     "kind": "show",
     "slug": "20261021003941-wwe-raw-19-10-2026",
     "image": "/content/images/kb9baanfqcmujspi.jpg",
-    "renderedAt": 1793619043843
+    "renderedAt": 1793620589953
   },
   {
     "videoUrl": "/videos/reel-20261027104508-njpw-super-junior-tag-league-d.mp4",
@@ -13257,7 +13269,7 @@
     "kind": "show",
     "slug": "20261027104508-njpw-super-junior-tag-league-d",
     "image": "/content/images/8tqswvvzp7nfydjb.jpg",
-    "renderedAt": 1793619145133
+    "renderedAt": 1793620684217
   },
   {
     "videoUrl": "/videos/reel-20261029085955-aew-fright-night-dynamite-28-1.mp4",
@@ -13269,7 +13281,7 @@
     "kind": "show",
     "slug": "20261029085955-aew-fright-night-dynamite-28-1",
     "image": "/content/images/7uyyhakaqwjnoaql.jpg",
-    "renderedAt": 1793619248976
+    "renderedAt": 1793620781658
   },
   {
     "videoUrl": "/videos/reel-20261030115059-wwe-evolve-28-10-2026.mp4",
@@ -13281,6 +13293,42 @@
     "kind": "show",
     "slug": "20261030115059-wwe-evolve-28-10-2026",
     "image": "/content/images/3w7ijvo4rbkhlq5a.jpg",
-    "renderedAt": 1793619349673
+    "renderedAt": 1793620876955
+  },
+  {
+    "videoUrl": "/videos/reel-20261030115245-wwe-main-event-28-10-2026.mp4",
+    "filename": "reel-20261030115245-wwe-main-event-28-10-2026.mp4",
+    "title": "عرض مين ايفنت 28.10.2026 مترجم",
+    "secondaryTitle": "WWE Main Event 28.10.2026",
+    "description": "عرض مين ايفنت مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261030115245-wwe-main-event-28-10-2026",
+    "kind": "show",
+    "slug": "20261030115245-wwe-main-event-28-10-2026",
+    "image": "/content/images/r90r84dwhbir39tj.jpg",
+    "renderedAt": 1793620973923
+  },
+  {
+    "videoUrl": "/videos/reel-20261102131123-mlw-fusion-31-10-2026.mp4",
+    "filename": "reel-20261102131123-mlw-fusion-31-10-2026.mp4",
+    "title": "عرض ام ال دبليو فيوجن 31.10.2026 مترجم",
+    "secondaryTitle": "MLW Fusion 31.10.2026",
+    "description": "عرض ام ال دبليو فيوجن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261102131123-mlw-fusion-31-10-2026",
+    "kind": "show",
+    "slug": "20261102131123-mlw-fusion-31-10-2026",
+    "image": "/content/images/zvrr8q3dmkd1ccl5.jpg",
+    "renderedAt": 1793621070477
+  },
+  {
+    "videoUrl": "/videos/reel-20261102131523-njpw-super-junior-tag-league-d.mp4",
+    "filename": "reel-20261102131523-njpw-super-junior-tag-league-d.mp4",
+    "title": "عرض ان جيه بي دبليو سوبر جونيور تاج ليج (اليوم السابع) 01.11.2026 مترجم",
+    "secondaryTitle": "NJPW Super Junior Tag League Day 7 01.11.2026",
+    "description": "عرض ان جيه بي دبليو سوبر جونيور تاج ليج (اليوم السابع) مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261102131523-njpw-super-junior-tag-league-d",
+    "kind": "show",
+    "slug": "20261102131523-njpw-super-junior-tag-league-d",
+    "image": "/content/images/uny0od3qwfn49zdq.jpg",
+    "renderedAt": 1793621164355
   }
 ]
