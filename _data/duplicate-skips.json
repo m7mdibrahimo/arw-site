@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2289666/aew-wrestledream-2026-andrade-el-idolo-tommaso-ciampa-national-title-retains/": {
-    "matchedFile": "20261017230000-نتائج-عرض-aew-wrestledream-17-أكتوبر-2026-مع-التغطية-الحية.md",
-    "reason": "الخبر الجديد يغطي نزالاً ضمن عرض AEW WrestleDream، وهو نفس العرض الذي تم نشر نتائج كاملة له في الخبر رقم 0.",
-    "at": "2026-10-18T02:32:23.662Z"
-  },
   "https://www.fightful.com/wrestling/ilja-dragunov-signs-with-all-elite-wrestling/": {
     "matchedFile": "20261018060446-إيليا-دراغونوف-يسجل-ظهوره-الأول-رسميا-في-عرض-aew-wrestledream.md",
     "reason": "الخبر الجديد يغطي نفس حدث ظهور إيليا دراغونوف الأول وانضمامه رسميا في عرض AEW WrestleDream والإعلان عنه من قبل توني خان، وهو نفس الحدث المغطى في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261102210948-wwe-تعلن-موعد-إقامة-عرض-wwe-royal-rumble-2027.md",
     "reason": "الخبر الجديد يعلن نفس تفاصيل موعد ومكان عرض WWE Royal Rumble 2027 (6 فبراير 2027 في State Farm Stadium) التي تم نشرها بالفعل في الخبر السابق.",
     "at": "2026-11-02T19:08:32.672Z"
+  },
+  "https://www.wrestlinginc.com/2304469/mlw-paul-walter-hauser-announces-exit-creative-differences/": {
+    "matchedFile": "20261101232246-بول-والتر-هاوزر-يودع-اتحاد-mlw-بسبب-اختلافات-إبداعية.md",
+    "reason": "الخبر الجديد يغطي نفس واقعة رحيل بول والتر هاوزر عن MLW بسبب اختلافات إبداعية، والتفاصيل الإضافية المذكورة (مثل تعيين رافايل مورفي أو مشاركة تيسا بلانشارد) تعتبر تفاصيل جانبية لا تغير من جوهر الخبر الأساسي المكرر.",
+    "at": "2026-11-02T19:16:24.954Z"
   }
 }
