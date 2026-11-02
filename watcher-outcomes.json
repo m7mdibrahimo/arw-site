@@ -17,27 +17,32 @@
  "https://www.fightful.com/wrestling/wwe-raw-results-11-2-2026-solo-sikoa-vs-royce-keys-john-cena-roman-reigns-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-02T22:59:29.650Z"
+  "at": "2026-11-02T23:01:28.899Z"
  },
  "https://www.fightful.com/wrestling/njpw-power-struggle-2026-preview-start-time-how-to-watch-location-11-3": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T22:59:29.296Z"
+  "at": "2026-11-02T23:01:28.569Z"
  },
  "https://www.fightful.com/wrestling/gabe-kidd-reacts-to-fan-hoping-to-see-him-in-arena-mexico-soon-its-been-nearly-two-years-and-im-still-waiting-to-end-soberano-jr": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-02T22:59:29.097Z"
+  "at": "2026-11-02T23:01:28.373Z"
  },
  "https://www.fightful.com/wrestling/six-woman-tag-team-match-added-to-11-2-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T22:57:59.906Z"
+  "at": "2026-11-02T23:00:45.638Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-2": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T22:57:58.779Z"
+  "at": "2026-11-02T23:00:44.522Z"
+ },
+ "https://www.wrestlinginc.com/2303334/wwe-raw-november-2-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-02T22:56:46.967Z"
  },
  "https://www.wrestlinginc.com/2304792/david-finlay-contract-chess-game-aew-money-better-njpw-clark-connors": {
   "reason": "المراجعة رفضته: اقتباس بالإنجليزي جوه الخبر العربي — لازم يتترجم للعربي، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
