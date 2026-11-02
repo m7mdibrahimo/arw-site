@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2289653/aew-wrestledream-2026-tailgate-brawl-jay-white-return-divine-dominion-don-callis-family/": {
-    "matchedFile": "20261018024135-جاي-وايت-يعود-في-عرض-aew-wrestledream.md",
-    "reason": "الخبر الجديد يغطي نفس الحدث والنتائج لعرض AEW WrestleDream Tailgate Brawl وعودة جاي وايت، وهو مكرر لنفس تفاصيل الخبر المنشور سابقاً.",
-    "at": "2026-10-18T00:05:30.332Z"
-  },
   "https://www.fightful.com/wrestling/aew-wrestledream-results-10-17-2026-mercedes-mone-vs-thekla-clockwork-carnage-more/": {
     "matchedFile": "20261017230000-نتائج-عرض-aew-wrestledream-17-أكتوبر-2026-مع-التغطية-الحية.md",
     "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261101202625-بول-هايمن-بروك-ليسنر-كان-سينهي-مسيرته-في-ufc-بلا-هزيمة-لولا-مرضه.md",
     "reason": "الخبر الجديد يعيد سرد نفس تصريحات بول هايمن حول بروك ليسنر ومرضه التي تم تغطيتها بالفعل في الخبر رقم 0، ولا يقدم تطوراً جديداً جوهرياً.",
     "at": "2026-11-02T00:47:00.832Z"
+  },
+  "https://www.fightful.com/wrestling/mike-kitlas-senior-director-live-events-departs-mlw/": {
+    "matchedFile": "20261102031404-مايك-كيتلاس-يغادر-منصبه-كمدير-للعمليات-الميدانية-في-اتحاد-mlw.md",
+    "reason": "الخبر الجديد يغطي نفس واقعة رحيل مايك كيتلاس عن اتحاد MLW التي تم تناولها بالفعل في الخبر رقم 0، والمعلومات الإضافية عن يوتا تسوجي لا تغير من كون الخبر الأساسي مكرراً.",
+    "at": "2026-11-02T00:57:12.584Z"
   }
 }
