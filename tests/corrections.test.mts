@@ -1322,3 +1322,10 @@ test("«لانه» becomes «لأنه» and «لانهيار» is left alone (IN
   assert.equal(applyCorrections("حافظ على مسيرته لانه كان قادرا"), "حافظ على مسيرته لأنه كان قادرا");
   assert.equal(applyCorrections("تعرض لانهيار في الرئة"), "تعرض لانهيار في الرئة");
 });
+
+// INCIDENTS #1007: «توموكو» for Tohoku, «ملهم وفي الوقت نفسه»
+test("Tohoku and «ملهما» fixes are applied (INCIDENTS #1007)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("بطل توموكو للوزن"), "بطل توهوكو للوزن");
+  assert.equal(applyCorrections("كان ملهم وفي الوقت نفسه مرهقا"), "كان ملهما وفي الوقت نفسه مرهقا");
+});

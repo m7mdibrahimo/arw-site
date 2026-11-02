@@ -2,6 +2,16 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "توموكو",
+      "right": "توهوكو",
+      "note": "Tohoku (اسم منطقة يابانية) بتتكتب «توهوكو» — خبر فوجيتا هاياتو (INCIDENTS #1007)"
+    },
+    {
+      "wrong": "ملهم وفي الوقت نفسه",
+      "right": "ملهما وفي الوقت نفسه",
+      "note": "خبر منصوب (حال) لازم ألف — خبر بول هايمن (INCIDENTS #1007)"
+    },
+    {
       "wrong": "هيمان",
       "right": "هايمن",
       "note": "Paul Heyman في قاموس الأسماء «بول هايمن» — البوت كتبه «بول هيمان» في ٢٩ خبر وصفحتين وسوم لنفس الشخص (INCIDENTS #976)"
