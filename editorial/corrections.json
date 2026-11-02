@@ -9436,6 +9436,48 @@
       "wrong": "لانك",
       "right": "لأنك",
       "note": "همزة ناقصة: «لأنك» (خبر مايكل هايز، جولة 2026-11-01، #1006)"
+    },
+    {
+      "wrong": "(?<![A-Za-z])Njpw(?![A-Za-z])",
+      "right": "NJPW",
+      "regex": true,
+      "note": "اسم اتحاد بحروف صغيرة بالغلط (Njpw) - عرض Njpw Power Struggle (جولة 2026-11-02، #1015)"
+    },
+    {
+      "wrong": "(?<![A-Za-z])Wwe(?![A-Za-z])",
+      "right": "WWE",
+      "regex": true,
+      "note": "اسم اتحاد بحروف صغيرة بالغلط (Wwe) - عرض Njpw Power Struggle (جولة 2026-11-02، #1015)"
+    },
+    {
+      "wrong": "(?<![A-Za-z])Aew(?![A-Za-z])",
+      "right": "AEW",
+      "regex": true,
+      "note": "اسم اتحاد بحروف صغيرة بالغلط (Aew) - عرض Njpw Power Struggle (جولة 2026-11-02، #1015)"
+    },
+    {
+      "wrong": "(?<![A-Za-z])Tna(?![A-Za-z])",
+      "right": "TNA",
+      "regex": true,
+      "note": "اسم اتحاد بحروف صغيرة بالغلط (Tna) - عرض Njpw Power Struggle (جولة 2026-11-02، #1015)"
+    },
+    {
+      "wrong": "(?<![A-Za-z])Ufc(?![A-Za-z])",
+      "right": "UFC",
+      "regex": true,
+      "note": "اسم اتحاد بحروف صغيرة بالغلط (Ufc) - عرض Njpw Power Struggle (جولة 2026-11-02، #1015)"
+    },
+    {
+      "wrong": "(?<![A-Za-z])Cmll(?![A-Za-z])",
+      "right": "CMLL",
+      "regex": true,
+      "note": "اسم اتحاد بحروف صغيرة بالغلط (Cmll) - عرض Njpw Power Struggle (جولة 2026-11-02، #1015)"
+    },
+    {
+      "wrong": "(?<![A-Za-z])Mlw(?![A-Za-z])",
+      "right": "MLW",
+      "regex": true,
+      "note": "اسم اتحاد بحروف صغيرة بالغلط (Mlw) - عرض Njpw Power Struggle (جولة 2026-11-02، #1015)"
     }
   ]
 }

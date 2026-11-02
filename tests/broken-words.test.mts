@@ -765,3 +765,9 @@ test('no published story writes «رسمي» as an adverb (INCIDENTS #898)', asy
   }
   assert.deepEqual(bad, []);
 });
+
+test('اسم الاتحاد بحروف صغيرة (Njpw/Wwe/Aew) بيتصلح لحروف كبيرة من غير ما يلمس أسماء زي Rohan (#1015)', () => {
+  assert.match(applyCorrections('المقرر لعرض Njpw Power Struggle'), /NJPW Power Struggle/);
+  assert.match(applyCorrections('نجم Wwe و Aew'), /WWE و AEW/);
+  assert.equal(applyCorrections('Rohan and Tnaa'), 'Rohan and Tnaa');
+});
