@@ -12,27 +12,32 @@
  "https://www.fightful.com/wrestling/njpw-power-struggle-2026-preview-start-time-how-to-watch-location-11-3": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T20:04:13.950Z"
+  "at": "2026-11-02T20:11:00.679Z"
  },
  "https://www.fightful.com/wrestling/gabe-kidd-reacts-to-fan-hoping-to-see-him-in-arena-mexico-soon-its-been-nearly-two-years-and-im-still-waiting-to-end-soberano-jr": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-02T20:04:13.695Z"
+  "at": "2026-11-02T20:11:00.369Z"
  },
  "https://www.fightful.com/wrestling/six-woman-tag-team-match-added-to-11-2-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T20:00:04.588Z"
+  "at": "2026-11-02T20:06:07.562Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-2": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T20:00:03.126Z"
+  "at": "2026-11-02T20:06:05.750Z"
  },
  "https://www.fightful.com/wrestling/mike-kitlas-senior-director-live-events-departs-mlw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T20:00:02.526Z"
+  "at": "2026-11-02T20:06:05.020Z"
+ },
+ "https://www.wrestlinginc.com/2303125/maria-kanellis-looks-back-second-wwe-run": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Vince McMahon",
+  "retry": true,
+  "at": "2026-11-02T20:00:50.834Z"
  },
  "https://www.fightful.com/wrestling/triple-threat-revolver-returning-at-tna-wrestling-tapings-in-calgary": {
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
