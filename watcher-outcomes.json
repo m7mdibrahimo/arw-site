@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/kevin-knight-mara-sade-link-rihanna-during-surprise-halloween-encounter": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-02T02:13:16.394Z"
+ },
  "https://www.fightful.com/wrestling/mike-kitlas-senior-director-live-events-departs-mlw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -38,11 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-02T02:10:10.065Z"
- },
- "https://www.ringsidenews.com/kevin-knight-mara-sade-link-rihanna-during-surprise-halloween-encounter": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-02T01:51:59.220Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-appearance-intercontinental-championship-match-and-more-added-to-11-2-wwe-monday-night-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
