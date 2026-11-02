@@ -1,33 +1,38 @@
 {
- "https://www.wrestlinginc.com/2303334/wwe-raw-november-2-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-02T23:52:53.916Z"
+ "https://www.fightful.com/wrestling/wwes-internal-plans-call-for-john-cena-classic-to-take-place-at-walt-disney-world": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-02T23:55:26.945Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-2-2026-solo-sikoa-vs-royce-keys-john-cena-roman-reigns-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-02T23:53:17.231Z"
+  "at": "2026-11-02T23:55:26.637Z"
  },
  "https://www.fightful.com/wrestling/njpw-power-struggle-2026-preview-start-time-how-to-watch-location-11-3": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T23:53:16.738Z"
+  "at": "2026-11-02T23:55:26.214Z"
  },
  "https://www.fightful.com/wrestling/gabe-kidd-reacts-to-fan-hoping-to-see-him-in-arena-mexico-soon-its-been-nearly-two-years-and-im-still-waiting-to-end-soberano-jr": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-02T23:53:16.452Z"
+  "at": "2026-11-02T23:55:25.911Z"
  },
  "https://www.fightful.com/wrestling/six-woman-tag-team-match-added-to-11-2-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T23:52:18.228Z"
+  "at": "2026-11-02T23:54:46.999Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-2": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T23:52:16.535Z"
+  "at": "2026-11-02T23:54:45.550Z"
+ },
+ "https://www.wrestlinginc.com/2303334/wwe-raw-november-2-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-02T23:52:53.916Z"
  },
  "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-2-2026": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
