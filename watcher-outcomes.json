@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/why-randy-ortons-wwe-heel-run-faces-major-problem": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-02T12:26:23.559Z"
+ },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-2": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-20T21:57:32.972Z"
- },
- "https://www.fightful.com/wrestling/jimmy-house-no-longer-part-of-wwe-id-program": {
-  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
-  "retry": false,
-  "at": "2026-10-20T21:55:04.557Z"
  }
 }
