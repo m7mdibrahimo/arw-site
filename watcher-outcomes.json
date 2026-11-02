@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-2-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-02T23:35:25.340Z"
+ },
  "https://www.wrestlinginc.com/2303334/wwe-raw-november-2-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -28,11 +33,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-02T23:31:14.526Z"
- },
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-2-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-02T23:14:59.479Z"
  },
  "https://www.ringsidenews.com/wwes-backstage-reaction-backlash-nikki-bella-vs-chelsea-green-match": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
