@@ -1,5 +1,15 @@
 [
   {
+    "id": 337069,
+    "link": "https://www.fightful.com/wrestling/wwe-announces-date-for-wwe-royal-rumble-2027/",
+    "date": "2026-11-02T13:09:48",
+    "date_gmt": "2026-11-02T18:09:48",
+    "title": {
+      "rendered": "WWE Announces Date For WWE Royal Rumble 2027"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/02130929/WWE_LVE_Royal-Rumble_1920x1080-TOS_Text.jpg"
+  },
+  {
     "id": 337055,
     "link": "https://www.fightful.com/wrestling/big-cass-i-would-really-really-love-to-wrestle-oba-femi/",
     "date": "2026-11-02T13:02:21",
@@ -288,15 +298,5 @@
       "rendered": "Jordynne Grace Still With WWE"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/31003434/Untitled-Design.png"
-  },
-  {
-    "id": 336960,
-    "link": "https://www.fightful.com/wrestling/lei-ying-lee-still-under-contract-to-tna/",
-    "date": "2026-11-01T18:36:02",
-    "date_gmt": "2026-11-01T23:36:02",
-    "title": {
-      "rendered": "Lei Ying Lee Still Under Contract To TNA"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/29142010/l-intro-1773428723.jpg"
   }
 ]
