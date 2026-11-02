@@ -13584,16 +13584,16 @@
     "renderedAt": 1793657269602
   },
   {
-    "videoUrl": "/videos/reel-20261018134522-ufc-fight-night-291-buckley-vs.mp4",
-    "filename": "reel-20261018134522-ufc-fight-night-291-buckley-vs.mp4",
-    "title": "عرض يو اف سي فايت نايت 17.10.2026 مترجم",
-    "secondaryTitle": "UFC Fight Night 291: Buckley vs. Malott",
-    "description": "عرض يو اف سي فايت نايت مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261018134522-ufc-fight-night-291-buckley-vs",
+    "videoUrl": "/videos/reel-20261103004220-nwa-powerrr-31-10-2026.mp4",
+    "filename": "reel-20261103004220-nwa-powerrr-31-10-2026.mp4",
+    "title": "عرض ان دبليو ايه باور 31.10.2026 مترجم",
+    "secondaryTitle": "NWA Powerrr 31.10.2026",
+    "description": "عرض ان دبليو ايه باور مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261103004220-nwa-powerrr-31-10-2026",
     "kind": "show",
-    "slug": "20261018134522-ufc-fight-night-291-buckley-vs",
-    "image": "/content/images/g725d3dyqtaq92g3.jpg",
-    "renderedAt": 1793659152004
+    "slug": "20261103004220-nwa-powerrr-31-10-2026",
+    "image": "/content/images/w91y24u47coearjp.jpg",
+    "renderedAt": 1793659628089
   },
   {
     "videoUrl": "/videos/reel-20261024161514-cmll-martes-populares-20-10-20.mp4",
@@ -13605,7 +13605,7 @@
     "kind": "show",
     "slug": "20261024161514-cmll-martes-populares-20-10-20",
     "image": "/content/images/salnifcedtap3d42.jpg",
-    "renderedAt": 1793659256499
+    "renderedAt": 1793659731611
   },
   {
     "videoUrl": "/videos/reel-20261024163057-wwe-main-event-21-10-2026.mp4",
@@ -13617,6 +13617,6 @@
     "kind": "show",
     "slug": "20261024163057-wwe-main-event-21-10-2026",
     "image": "/content/images/w87shfbtq9hrwzc4.jpg",
-    "renderedAt": 1793659360467
+    "renderedAt": 1793659836874
   }
 ]
