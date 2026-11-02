@@ -789,3 +789,8 @@ test('INCIDENTS #1017: a 3+ word phrase repeated back to back is blocked', () =>
 test('corrections fix «بنفس القحدة» (INCIDENTS #1020)', () => {
   assert.equal(applyCorrections('لم ينخفض التقييم بنفس القحدة'), 'لم ينخفض التقييم بنفس الحدة');
 });
+
+test('corrections fix «عصر الأتيود» and «قمة الهرم الغذائي» (INCIDENTS #1022)', () => {
+  assert.equal(applyCorrections('تقارن الفوضى بعصر الأتيود'), 'تقارن الفوضى بعصر الأتيتيود');
+  assert.equal(applyCorrections('يتربع على قمة الهرم الغذائي في الاتحاد'), 'يتربع على قمة السلسلة الغذائية في الاتحاد');
+});
