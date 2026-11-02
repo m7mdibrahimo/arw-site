@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2303125/maria-kanellis-looks-back-second-wwe-run": {
+  "reason": "المراجعة رفضته: ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Vince McMahon",
+  "retry": true,
+  "at": "2026-11-02T18:49:36.927Z"
+ },
  "https://www.fightful.com/wrestling/six-woman-tag-team-match-added-to-11-2-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
