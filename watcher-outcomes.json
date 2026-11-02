@@ -34,11 +34,6 @@
   "retry": true,
   "at": "2026-11-02T22:08:16.028Z"
  },
- "https://www.wrestlinginc.com/2303334/wwe-raw-november-2-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-02T22:07:55.586Z"
- },
  "https://www.ringsidenews.com/wwe-reveals-christmas-week-plans-raw-smackdown-changes": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
