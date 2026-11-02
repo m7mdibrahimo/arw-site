@@ -1336,3 +1336,10 @@ test("verb gender fixes for «تجدر الإشارة» and «أثارت خسا�
   assert.equal(applyCorrections("ويجدر الإشارة إلى أن"), "وتجدر الإشارة إلى أن");
   assert.equal(applyCorrections("أثار خسارة سي ام بانك تفاعلا"), "أثارت خسارة سي ام بانك تفاعلا");
 });
+
+// INCIDENTS #1009: first-person verb left in a third-person headline, and a name missing its last word.
+test("«وألجأ» and the short Lei Ying Lee name are corrected (INCIDENTS #1009)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("صديق مقرب وألجأ إليه دائما لطلب النصيحة"), "صديق مقرب ويلجأ إليه دائما لطلب النصيحة");
+  assert.equal(applyCorrections("لي يينغ لا تزال مرتبطة بعقد"), "لي يينغ لي لا تزال مرتبطة بعقد");
+});
