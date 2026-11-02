@@ -1,33 +1,33 @@
 {
- "https://www.wrestlinginc.com/2303125/maria-kanellis-looks-back-second-wwe-run": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Vince McMahon",
-  "retry": true,
-  "at": "2026-11-02T17:06:12.199Z"
- },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-2": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T17:08:07.563Z"
+  "at": "2026-11-02T17:14:09.693Z"
  },
  "https://www.fightful.com/wrestling/mike-kitlas-senior-director-live-events-departs-mlw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T17:08:06.923Z"
+  "at": "2026-11-02T17:14:09.029Z"
  },
  "https://www.fightful.com/wrestling/reaction-to-brock-lesnar-ufc-comments-made-by-paul-heyman": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T17:08:06.658Z"
+  "at": "2026-11-02T17:14:08.755Z"
  },
  "https://www.fightful.com/wrestling/jordynne-grace-still-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T17:08:06.165Z"
+  "at": "2026-11-02T17:14:08.255Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-no-wrestler-has-ever-said-that-they-want-lose-their-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T17:08:05.508Z"
+  "at": "2026-11-02T17:14:07.587Z"
+ },
+ "https://www.wrestlinginc.com/2303125/maria-kanellis-looks-back-second-wwe-run": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Vince McMahon",
+  "retry": true,
+  "at": "2026-11-02T17:06:12.199Z"
  },
  "https://www.wrestlinginc.com/2303589/aew-orange-cassidy-tony-khan-helped-pro-wrestling-industry": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
