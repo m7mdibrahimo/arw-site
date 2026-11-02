@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/kevin-knight-mara-sade-link-rihanna-during-surprise-halloween-encounter": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-02T00:55:32.045Z"
+ },
  "https://www.fightful.com/wrestling/reaction-to-brock-lesnar-ufc-comments-made-by-paul-heyman": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-20T19:41:41.648Z"
- },
- "https://www.fightful.com/wrestling/roman-reigns-and-solo-sikoa-embrace-after-wwe-monday-night-raw-goes-off-the-air": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-20T19:36:41.022Z"
  }
 }
