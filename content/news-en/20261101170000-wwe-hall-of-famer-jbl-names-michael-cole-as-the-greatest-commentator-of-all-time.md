@@ -1,7 +1,7 @@
 ---
 title: "WWE Hall of Famer JBL Names Michael Cole as the Greatest Commentator of All Time"
 slug: "wwe-hall-of-famer-jbl-names-michael-cole-as-the-greatest-commentator-of-all-time"
-description: "During an appearance on \"Something to Wrestle,\" WWE Hall of Famer JBL named his former traveling partner, Michael Cole."
+description: "WWE Hall of Famer JBL named his former traveling partner, Michael Cole, as the greatest commentator in professional wrestling history."
 federation: WWE
 date: 2026-11-01T14:00:00.000Z
 source_id: 1741009678

@@ -1,7 +1,7 @@
 ---
 title: "Bryan Idol’s Mother Gets Physical After Being Attacked at NWA Event"
 slug: "bryan-idols-mother-gets-physical-after-being-attacked-at-nwa-event"
-description: "The mother of NWA National Heavyweight Champion Bryan Idol, Antoinette Nazar."
+description: "Antoinette Nazar, mother of NWA National Heavyweight Champion Bryan Idol, took matters into her own hands after a confrontation with NWA wrestler Mike Mondo."
 federation: INDIE
 date: 2026-10-31T23:16:45.000Z
 source_id: 802261969

@@ -1329,3 +1329,10 @@ test("Tohoku and «ملهما» fixes are applied (INCIDENTS #1007)", async () =
   assert.equal(applyCorrections("بطل توموكو للوزن"), "بطل توهوكو للوزن");
   assert.equal(applyCorrections("كان ملهم وفي الوقت نفسه مرهقا"), "كان مصدر إلهام وفي الوقت نفسه مرهقا");
 });
+
+// INCIDENTS #1008: «ويجدر الإشارة», «أثار خسارة»
+test("verb gender fixes for «تجدر الإشارة» and «أثارت خسارة» (INCIDENTS #1008)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("ويجدر الإشارة إلى أن"), "وتجدر الإشارة إلى أن");
+  assert.equal(applyCorrections("أثار خسارة سي ام بانك تفاعلا"), "أثارت خسارة سي ام بانك تفاعلا");
+});

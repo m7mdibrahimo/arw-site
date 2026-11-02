@@ -213,3 +213,11 @@ test("a description does not end on «, looking back.» (live 2026-11-01)", () =
   const a = metaDescription("Michael P.S. Hayes opened up about his long battle with alcohol abuse during an appearance on \"What's Your Story? with Steph McMahon,\" looking back at his golden era with the Fabulous Freebirds in the 1980s. He explained that he began drinking young.");
   assert.ok(!/looking back\.?$/.test(a), a);
 });
+
+// INCIDENTS #1008: a clause cut right before the main verb left a subject with no predicate
+test("a description is never cut before the main verb (INCIDENTS #1008)", async () => {
+  const { metaDescription } = await import("../lib/meta-description.cjs");
+  const d = metaDescription("The mother of NWA National Heavyweight Champion Bryan Idol, Antoinette Nazar, took matters into her own hands after a confrontation with NWA wrestler Mike Mondo. The conflict began at an NWA event when Mondo confronted Nazar at ringside.");
+  assert.ok(!/Antoinette Nazar\.$/.test(d), d);
+  assert.ok(d.startsWith("The conflict began"), d);
+});

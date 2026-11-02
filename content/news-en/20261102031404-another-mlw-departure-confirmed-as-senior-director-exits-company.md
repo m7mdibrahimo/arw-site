@@ -1,7 +1,7 @@
 ---
 title: "Another MLW Departure Confirmed as Senior Director Exits Company"
 slug: "another-mlw-departure-confirmed-as-senior-director-exits-company"
-description: "Major League Wrestling has lost another longtime member of its team, as Mike Kitlas, the promotion's Senior Director of Live Events."
+description: "Mike Kitlas, Major League Wrestling's Senior Director of Live Events, has left the promotion after seven years to join Real American Freestyle."
 federation: INDIE
 date: 2026-11-02T00:14:04.000Z
 source_id: 802262435
