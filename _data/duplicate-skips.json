@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/maya-world-cleared-aew-ring-return-injury-scare/": {
-    "matchedFile": "20261018024340-مايا-وورلد-تعلن-حصولها-على-التصريح-الطبي-للعودة-إلى-الحلبات.md",
-    "reason": "الخبر الجديد يعيد نفس تفاصيل حصول مايا وورلد على التصريح الطبي للعودة خلال عرض WrestleDream Buy-In وهي نفس الواقعة المذكورة في الخبر المنشور تماماً.",
-    "at": "2026-10-18T02:21:29.378Z"
-  },
   "https://www.wrestlinginc.com/2289666/aew-wrestledream-2026-andrade-el-idolo-tommaso-ciampa-national-title-retains/": {
     "matchedFile": "20261017230000-نتائج-عرض-aew-wrestledream-17-أكتوبر-2026-مع-التغطية-الحية.md",
     "reason": "الخبر الجديد يغطي نزالاً ضمن عرض AEW WrestleDream، وهو نفس العرض الذي تم نشر نتائج كاملة له في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261102145443-الكشف-عن-جدول-نزالات-عرض-njpw-power-struggle-بالكامل.md",
     "reason": "الخبر الجديد يقدم تفاصيل إضافية (توقيت العرض، القاعة، القائمة الكاملة للنزالات) لنفس الحدث الذي تم تغطيته مسبقاً، ولا يعتبر تطوراً جديداً أو خبراً مختلفاً.",
     "at": "2026-11-02T19:06:35.124Z"
+  },
+  "https://www.ringsidenews.com/wwe-royal-rumble-2027-date-revealed/": {
+    "matchedFile": "20261102210948-wwe-تعلن-موعد-إقامة-عرض-wwe-royal-rumble-2027.md",
+    "reason": "الخبر الجديد يعلن نفس تفاصيل موعد ومكان عرض WWE Royal Rumble 2027 (6 فبراير 2027 في State Farm Stadium) التي تم نشرها بالفعل في الخبر السابق.",
+    "at": "2026-11-02T19:08:32.672Z"
   }
 }
