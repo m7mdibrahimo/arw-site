@@ -4736,16 +4736,16 @@
    "directAt": "2026-10-20T21:49:05.481Z",
    "queries": [
     {
-     "q": "عرض الرو الاخير مترجم",
-     "clicks": 0,
-     "impressions": 27,
-     "position": 5.4
-    },
-    {
      "q": "عرض الرو مترجم",
      "clicks": 4,
-     "impressions": 27,
-     "position": 5.7
+     "impressions": 28,
+     "position": 5.6
+    },
+    {
+     "q": "عرض الرو الاخير مترجم",
+     "clicks": 0,
+     "impressions": 28,
+     "position": 5.6
     },
     {
      "q": "عرض الرو الأخير مترجم كامل",
@@ -4756,14 +4756,14 @@
     {
      "q": "wwe raw مترجم",
      "clicks": 0,
-     "impressions": 16,
+     "impressions": 17,
      "position": 6.6
     },
     {
      "q": "تحميل عرض الرو الاخير مترجم",
      "clicks": 0,
-     "impressions": 14,
-     "position": 4.3
+     "impressions": 16,
+     "position": 4.9
     },
     {
      "q": "تحميل عرض الرو",
@@ -4786,20 +4786,20 @@
     {
      "q": "دبليو دبليو إي راو 19 أكتوبر 2026",
      "clicks": 0,
-     "impressions": 6,
-     "position": 8.8
+     "impressions": 7,
+     "position": 8.3
+    },
+    {
+     "q": "عرض الرو الاخير",
+     "clicks": 0,
+     "impressions": 7,
+     "position": 12.4
     },
     {
      "q": "عرض الرو الاخير مترجم نتفلكس",
      "clicks": 0,
      "impressions": 6,
      "position": 9.8
-    },
-    {
-     "q": "عرض الرو الاخير",
-     "clicks": 0,
-     "impressions": 6,
-     "position": 12.7
     },
     {
      "q": "مشاهدة عرض الرو",
@@ -4826,7 +4826,7 @@
      "position": 9.6
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-21T04:15:42.990Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -4840,7 +4840,7 @@
    "pinged": "2026-10-21T07:18:12.584Z",
    "directAt": "2026-10-21T07:18:12.584Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-21T14:10:55.157Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -4854,7 +4854,7 @@
    "pinged": "2026-10-21T07:18:12.584Z",
    "directAt": "2026-10-21T07:18:12.584Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-21T14:10:55.157Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -4867,7 +4867,7 @@
    "lastmod": "2026-10-21",
    "pinged": "2026-10-21T07:31:08.465Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-31T01:07:43.069Z",
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
@@ -4881,7 +4881,7 @@
    "pinged": "2026-10-21T07:31:08.465Z",
    "directAt": "2026-10-21T07:31:08.465Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-21T14:10:55.157Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -4906,9 +4906,15 @@
      "clicks": 0,
      "impressions": 1,
      "position": 8
+    },
+    {
+     "q": "تحميل المصارعة",
+     "clicks": 0,
+     "impressions": 1,
+     "position": 157
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-21T19:10:50.714Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -4922,7 +4928,7 @@
    "pinged": "2026-10-24T12:58:58.800Z",
    "directAt": "2026-10-24T12:58:58.800Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-24T19:50:44.309Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -4936,7 +4942,7 @@
    "pinged": "2026-10-24T12:58:58.800Z",
    "directAt": "2026-10-24T12:58:58.800Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-24T19:50:44.309Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -4950,7 +4956,7 @@
    "pinged": "2026-10-24T13:20:48.013Z",
    "directAt": "2026-10-24T13:20:48.013Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-24T19:50:44.309Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -4964,7 +4970,7 @@
    "pinged": "2026-10-24T13:20:48.013Z",
    "directAt": "2026-10-24T13:20:48.013Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-24T19:50:44.309Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -4978,7 +4984,7 @@
    "pinged": "2026-10-24T13:20:48.013Z",
    "directAt": "2026-10-24T13:20:48.013Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-24T19:50:44.309Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -4992,7 +4998,7 @@
    "pinged": "2026-10-24T13:20:48.013Z",
    "directAt": "2026-10-24T13:20:48.013Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-24T19:50:44.309Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5006,7 +5012,7 @@
    "pinged": "2026-10-24T13:20:48.013Z",
    "directAt": "2026-10-24T13:20:48.013Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-24T19:50:44.309Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5020,7 +5026,7 @@
    "pinged": "2026-10-24T13:43:20.500Z",
    "directAt": "2026-10-24T13:43:20.500Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-24T19:50:44.309Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5034,7 +5040,7 @@
    "pinged": "2026-10-24T13:43:20.500Z",
    "directAt": "2026-10-24T13:43:20.500Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-24T19:50:44.309Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5055,7 +5061,7 @@
      "position": 17
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-24T19:50:44.309Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5069,7 +5075,7 @@
    "pinged": "2026-10-24T13:43:20.500Z",
    "directAt": "2026-10-24T13:43:20.500Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-24T19:50:44.309Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5083,7 +5089,7 @@
    "pinged": "2026-10-24T13:43:20.500Z",
    "directAt": "2026-10-24T13:43:20.500Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-24T19:50:44.309Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5100,20 +5106,32 @@
     {
      "q": "عرض سماك داون الأخير 2026",
      "clicks": 4,
-     "impressions": 35,
-     "position": 4.8
+     "impressions": 42,
+     "position": 5.2
     },
     {
      "q": "تحميل عرض سماك داون",
      "clicks": 2,
-     "impressions": 19,
-     "position": 5.5
+     "impressions": 25,
+     "position": 5.8
     },
     {
      "q": "wwe smackdown مترجم",
      "clicks": 1,
-     "impressions": 15,
-     "position": 5.9
+     "impressions": 20,
+     "position": 6.3
+    },
+    {
+     "q": "عرض سماك داون مترجم",
+     "clicks": 1,
+     "impressions": 17,
+     "position": 7.3
+    },
+    {
+     "q": "عرض سماك داون الأخير",
+     "clicks": 1,
+     "impressions": 14,
+     "position": 6.8
     },
     {
      "q": "عرض سماك داون الاخير 2026",
@@ -5122,16 +5140,10 @@
      "position": 4.7
     },
     {
-     "q": "عرض سماك داون مترجم",
+     "q": "عرض سماك داون الاخير مترجم كامل",
      "clicks": 1,
-     "impressions": 13,
-     "position": 7.1
-    },
-    {
-     "q": "عرض سماك داون الأخير",
-     "clicks": 1,
-     "impressions": 12,
-     "position": 6.8
+     "impressions": 11,
+     "position": 5.4
     },
     {
      "q": "عرض سماك داون",
@@ -5140,22 +5152,16 @@
      "position": 6.7
     },
     {
-     "q": "عرض سماك داون الاخير مترجم كامل",
+     "q": "عرض السماك داون الاخير",
      "clicks": 1,
-     "impressions": 10,
-     "position": 5.4
+     "impressions": 6,
+     "position": 5.2
     },
     {
      "q": "مشاهده عرض سماك داون الاخير",
      "clicks": 0,
      "impressions": 5,
      "position": 2.6
-    },
-    {
-     "q": "عرض السماك داون الاخير",
-     "clicks": 1,
-     "impressions": 5,
-     "position": 5
     },
     {
      "q": "مشاهدة عرض سماك داون",
@@ -5170,6 +5176,12 @@
      "position": 4.5
     },
     {
+     "q": "مشاهدة عرض سماك داون الاخير",
+     "clicks": 0,
+     "impressions": 4,
+     "position": 5.3
+    },
+    {
      "q": "عرض سماك داون الاخير",
      "clicks": 1,
      "impressions": 4,
@@ -5180,15 +5192,9 @@
      "clicks": 0,
      "impressions": 4,
      "position": 89.5
-    },
-    {
-     "q": "مشاهدة عرض سماك داون الاخير",
-     "clicks": 0,
-     "impressions": 3,
-     "position": 4
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-24T20:50:44.429Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5202,7 +5208,7 @@
    "pinged": "2026-10-24T14:54:35.843Z",
    "directAt": "2026-10-24T14:54:35.843Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-24T21:10:02.439Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5216,7 +5222,7 @@
    "pinged": "2026-10-24T14:54:35.843Z",
    "directAt": "2026-10-24T14:54:35.843Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-24T21:10:02.439Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5230,7 +5236,7 @@
    "pinged": "2026-10-24T15:16:24.033Z",
    "directAt": "2026-10-24T15:16:24.033Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-24T21:50:49.445Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5244,7 +5250,7 @@
    "pinged": "2026-10-24T15:16:24.033Z",
    "directAt": "2026-10-24T15:16:24.033Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-24T21:50:49.445Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5258,7 +5264,7 @@
    "pinged": "2026-10-24T15:16:24.033Z",
    "directAt": "2026-10-24T15:16:24.033Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-24T21:50:49.445Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5272,7 +5278,7 @@
    "pinged": "2026-10-24T15:16:24.033Z",
    "directAt": "2026-10-24T15:16:24.033Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-24T21:50:49.445Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5286,7 +5292,7 @@
    "pinged": "2026-10-25T16:32:36.861Z",
    "directAt": "2026-10-25T16:32:36.861Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-25T22:47:23.580Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5300,7 +5306,7 @@
    "pinged": "2026-10-25T16:32:36.861Z",
    "directAt": "2026-10-25T16:32:36.861Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-25T22:47:23.580Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5313,7 +5319,7 @@
    "lastmod": "2026-10-25",
    "pinged": "2026-10-25T16:55:11.416Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-11-02T01:43:48.151Z",
    "verdict": "NEUTRAL",
    "coverage": "لم يتعرّف محرّك بحث Google على عنوان URL.",
@@ -5327,7 +5333,7 @@
    "pinged": "2026-10-25T16:55:11.416Z",
    "directAt": "2026-10-25T16:55:11.416Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-25T23:11:01.675Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5341,7 +5347,7 @@
    "pinged": "2026-10-25T16:55:11.416Z",
    "directAt": "2026-10-25T16:55:11.416Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-25T23:11:01.675Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5362,7 +5368,7 @@
      "position": 5
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-25T23:11:01.675Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5376,7 +5382,7 @@
    "pinged": "2026-10-25T16:55:11.416Z",
    "directAt": "2026-10-25T16:55:11.416Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-25T23:11:01.675Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5390,7 +5396,7 @@
    "pinged": "2026-10-25T16:55:11.416Z",
    "directAt": "2026-10-25T16:55:11.416Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-25T23:11:01.675Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5403,7 +5409,7 @@
    "lastmod": "2026-11-01",
    "pinged": "2026-11-01T21:12:17.369Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-11-02T01:43:48.151Z",
    "verdict": "NEUTRAL",
    "coverage": "تم اكتشاف الصفحة - لم تتم فهرستها حتى الآن",
@@ -5417,7 +5423,7 @@
    "pinged": "2026-10-25T17:16:41.718Z",
    "directAt": "2026-10-25T17:16:41.718Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-25T23:46:40.791Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5431,7 +5437,7 @@
    "pinged": "2026-10-25T17:16:41.718Z",
    "directAt": "2026-10-25T17:16:41.718Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-25T23:46:40.791Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5445,7 +5451,7 @@
    "pinged": "2026-10-25T17:32:54.448Z",
    "directAt": "2026-10-25T17:32:54.448Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-25T23:46:40.791Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5459,7 +5465,7 @@
    "pinged": "2026-10-25T23:11:01.675Z",
    "directAt": "2026-10-25T23:11:01.675Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-26T05:43:43.491Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5473,7 +5479,7 @@
    "pinged": "2026-10-25T23:11:01.675Z",
    "directAt": "2026-10-25T23:11:01.675Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-26T05:43:43.491Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5487,7 +5493,7 @@
    "pinged": "2026-11-02T00:44:43.313Z",
    "directAt": "2026-11-02T00:44:43.313Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-26T06:42:45.907Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5501,7 +5507,7 @@
    "pinged": "2026-10-26T17:40:43.825Z",
    "directAt": "2026-10-26T17:40:43.825Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-27T00:05:09.059Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5515,7 +5521,7 @@
    "pinged": "2026-10-26T18:40:46.770Z",
    "directAt": "2026-10-26T18:40:46.770Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-27T01:38:47.698Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5540,9 +5546,15 @@
      "clicks": 0,
      "impressions": 1,
      "position": 161
+    },
+    {
+     "q": "تحميل المصارعة",
+     "clicks": 0,
+     "impressions": 1,
+     "position": 164
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-27T01:38:47.698Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5563,7 +5575,7 @@
      "position": 88
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-27T14:32:43.276Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5580,49 +5592,49 @@
     {
      "q": "عرض الرو الاخير",
      "clicks": 17,
-     "impressions": 191,
+     "impressions": 192,
      "position": 5.8
     },
     {
      "q": "عرض الرو الاخير مترجم",
      "clicks": 11,
-     "impressions": 60,
-     "position": 3.1
+     "impressions": 65,
+     "position": 3.2
     },
     {
      "q": "عروض المصارعة الحرة",
      "clicks": 0,
-     "impressions": 34,
-     "position": 13
+     "impressions": 36,
+     "position": 12.7
     },
     {
      "q": "عرض الرو الأخير مترجم كامل",
      "clicks": 5,
-     "impressions": 32,
+     "impressions": 35,
      "position": 3.6
     },
     {
      "q": "عرض الرو",
      "clicks": 4,
-     "impressions": 31,
-     "position": 5.3
+     "impressions": 32,
+     "position": 5.4
     },
     {
      "q": "عرض الرو مترجم",
      "clicks": 2,
-     "impressions": 28,
-     "position": 4.6
+     "impressions": 29,
+     "position": 4.7
     },
     {
      "q": "مشاهدة عرض الرو الاخير",
      "clicks": 6,
-     "impressions": 23,
+     "impressions": 25,
      "position": 3.8
     },
     {
      "q": "wwe raw مترجم",
      "clicks": 4,
-     "impressions": 23,
+     "impressions": 25,
      "position": 4.4
     },
     {
@@ -5632,22 +5644,28 @@
      "position": 6.4
     },
     {
+     "q": "تحميل عرض الرو",
+     "clicks": 1,
+     "impressions": 20,
+     "position": 4.1
+    },
+    {
      "q": "عرض الرو الأخير",
      "clicks": 2,
      "impressions": 20,
      "position": 5.4
     },
     {
-     "q": "تحميل عرض الرو",
-     "clicks": 1,
-     "impressions": 19,
-     "position": 4.1
-    },
-    {
      "q": "wwe مترجم",
      "clicks": 0,
-     "impressions": 16,
-     "position": 7.3
+     "impressions": 18,
+     "position": 7.5
+    },
+    {
+     "q": "عرض رو الاخير",
+     "clicks": 0,
+     "impressions": 15,
+     "position": 6.8
     },
     {
      "q": "الرو",
@@ -5656,19 +5674,13 @@
      "position": 9.2
     },
     {
-     "q": "عرض الرو الأخير مترجم",
+     "q": "عرض الرو الاخير 2026",
      "clicks": 1,
      "impressions": 14,
-     "position": 2.9
-    },
-    {
-     "q": "عرض رو الاخير",
-     "clicks": 0,
-     "impressions": 14,
-     "position": 6.9
+     "position": 2.4
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-27T16:30:54.306Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5681,7 +5693,7 @@
    "lastmod": "2026-10-27",
    "pinged": "2026-10-27T12:19:41.393Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z"
+   "queriesAt": "2026-11-02T04:41:47.508Z"
   },
   "https://arab-wrestling.com/shows/cmll-dia-de-muertos-puebla-26-10-2026/": {
    "firstSeen": "2026-10-27T12:19:41.393Z",
@@ -5702,7 +5714,7 @@
      "position": 168
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-27T18:30:51.307Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5716,7 +5728,7 @@
    "pinged": "2026-10-27T23:46:01.010Z",
    "directAt": "2026-10-27T23:46:01.010Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-28T06:28:44.274Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5785,7 +5797,7 @@
      "position": 101
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-28T14:26:51.547Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5798,7 +5810,7 @@
    "lastmod": "2026-10-28",
    "pinged": "2026-10-28T18:33:51.125Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-29T01:24:42.901Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5819,7 +5831,7 @@
      "position": 95
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-29T01:24:42.901Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5840,7 +5852,7 @@
      "position": 88.5
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-29T01:24:42.901Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5877,9 +5889,15 @@
      "clicks": 0,
      "impressions": 1,
      "position": 59
+    },
+    {
+     "q": "تحميل المصارعة",
+     "clicks": 0,
+     "impressions": 1,
+     "position": 106
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-29T12:22:46.421Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5900,7 +5918,7 @@
      "position": 10
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-29T13:22:44.477Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5914,14 +5932,14 @@
    "pinged": "2026-10-29T06:48:46.596Z",
    "directAt": "2026-10-29T06:48:46.596Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z"
+   "queriesAt": "2026-11-02T04:41:47.508Z"
   },
   "https://arab-wrestling.com/library/mlp-special/": {
    "firstSeen": "2026-10-29T07:23:43.223Z",
    "lastmod": "2026-10-29",
    "pinged": "2026-10-29T07:23:43.223Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-29T13:41:21.305Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5942,7 +5960,7 @@
      "position": 84
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-29T13:41:21.305Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5963,7 +5981,7 @@
      "position": 2
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-30T15:10:44.940Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5977,7 +5995,7 @@
    "pinged": "2026-10-30T09:10:29.932Z",
    "directAt": "2026-10-30T09:10:29.932Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-30T15:10:44.940Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -5991,7 +6009,7 @@
    "pinged": "2026-10-30T09:34:01.949Z",
    "directAt": "2026-10-30T09:34:01.949Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-30T16:10:44.709Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6005,7 +6023,7 @@
    "pinged": "2026-10-30T09:34:01.949Z",
    "directAt": "2026-10-30T09:34:01.949Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-30T16:10:44.709Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6019,7 +6037,7 @@
    "pinged": "2026-10-30T09:34:01.949Z",
    "directAt": "2026-10-30T09:34:01.949Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-30T16:10:44.709Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6033,7 +6051,7 @@
    "pinged": "2026-10-30T09:34:01.949Z",
    "directAt": "2026-10-30T09:34:01.949Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-30T16:10:44.709Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6047,7 +6065,7 @@
    "pinged": "2026-10-30T09:34:01.949Z",
    "directAt": "2026-10-30T09:34:01.949Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-30T16:10:44.709Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6074,7 +6092,7 @@
      "position": 141
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-30T16:10:44.709Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6101,7 +6119,7 @@
      "position": 144
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-30T16:10:44.709Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6128,7 +6146,7 @@
      "position": 4
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-30T16:10:44.709Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6142,7 +6160,7 @@
    "pinged": "2026-10-30T09:57:15.137Z",
    "directAt": "2026-10-30T09:57:15.137Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-30T16:10:44.709Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6156,7 +6174,7 @@
    "pinged": "2026-10-30T09:57:15.137Z",
    "directAt": "2026-10-30T09:57:15.137Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-30T16:10:44.709Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6170,7 +6188,7 @@
    "pinged": "2026-10-30T09:57:15.137Z",
    "directAt": "2026-10-30T09:57:15.137Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-30T16:10:44.709Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6185,13 +6203,25 @@
    "directAt": "2026-10-30T13:07:31.834Z",
    "queries": [
     {
+     "q": "29.10.2026",
+     "clicks": 0,
+     "impressions": 1,
+     "position": 7
+    },
+    {
+     "q": "تحميل المصارعة",
+     "clicks": 0,
+     "impressions": 1,
+     "position": 130
+    },
+    {
      "q": "مصارعة اونلاين",
      "clicks": 0,
      "impressions": 1,
      "position": 159
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-30T19:08:44.567Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6206,13 +6236,19 @@
    "directAt": "2026-10-30T13:22:19.098Z",
    "queries": [
     {
+     "q": "تحميل المصارعة",
+     "clicks": 0,
+     "impressions": 1,
+     "position": 144
+    },
+    {
      "q": "مصارعة اونلاين",
      "clicks": 0,
      "impressions": 1,
      "position": 155
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-30T20:07:44.176Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6239,7 +6275,7 @@
      "position": 154
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-31T09:56:28.112Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6254,40 +6290,40 @@
    "directAt": "2026-10-31T04:31:20.134Z",
    "queries": [
     {
+     "q": "عرض سماك داون",
+     "clicks": 5,
+     "impressions": 33,
+     "position": 4.4
+    },
+    {
      "q": "عرض سماك داون الأخير 2026",
      "clicks": 5,
      "impressions": 31,
      "position": 3.2
     },
     {
-     "q": "عرض سماك داون",
-     "clicks": 5,
-     "impressions": 31,
-     "position": 4.2
-    },
-    {
      "q": "عرض سماك داون مترجم",
      "clicks": 5,
-     "impressions": 20,
-     "position": 3.2
+     "impressions": 22,
+     "position": 3.3
     },
     {
      "q": "wwe smackdown مترجم",
      "clicks": 2,
+     "impressions": 19,
+     "position": 4.1
+    },
+    {
+     "q": "تحميل عرض سماك داون",
+     "clicks": 2,
      "impressions": 15,
-     "position": 3.5
+     "position": 3.9
     },
     {
      "q": "عرض سماك داون الأخير",
      "clicks": 2,
      "impressions": 14,
      "position": 3.2
-    },
-    {
-     "q": "تحميل عرض سماك داون",
-     "clicks": 2,
-     "impressions": 12,
-     "position": 3.6
     },
     {
      "q": "مشاهدة عرض سماك داون",
@@ -6308,16 +6344,28 @@
      "position": 1.8
     },
     {
-     "q": "smackdown مترجم",
-     "clicks": 1,
-     "impressions": 5,
-     "position": 2.6
+     "q": "سماك داون",
+     "clicks": 0,
+     "impressions": 7,
+     "position": 8.1
+    },
+    {
+     "q": "عروض المصارعة الحرة",
+     "clicks": 0,
+     "impressions": 7,
+     "position": 8.3
     },
     {
      "q": "عرض سماك داون الاخير 2026",
      "clicks": 0,
+     "impressions": 6,
+     "position": 3.3
+    },
+    {
+     "q": "smackdown مترجم",
+     "clicks": 1,
      "impressions": 5,
-     "position": 3.4
+     "position": 2.6
     },
     {
      "q": "عرض سماك داون الاخير",
@@ -6326,25 +6374,13 @@
      "position": 4.8
     },
     {
-     "q": "عرض سماك داون الأخير مترجم",
-     "clicks": 3,
-     "impressions": 4,
-     "position": 1.5
-    },
-    {
-     "q": "سماك داون",
+     "q": "اخر عرض سماك داون",
      "clicks": 0,
-     "impressions": 4,
-     "position": 5.5
-    },
-    {
-     "q": "عروض المصارعة الحرة مترجم",
-     "clicks": 1,
-     "impressions": 4,
-     "position": 7
+     "impressions": 5,
+     "position": 6.6
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-10-31T11:01:47.497Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6365,7 +6401,7 @@
      "position": 1
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-11-01T20:48:58.308Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6391,7 +6427,7 @@
      "position": 63
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-11-01T20:48:58.308Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6418,7 +6454,7 @@
      "position": 53
     }
    ],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-11-01T20:48:58.308Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6431,7 +6467,7 @@
    "lastmod": "2026-11-01",
    "pinged": "2026-11-01T21:12:17.369Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-11-02T03:42:47.554Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6445,7 +6481,7 @@
    "pinged": "2026-11-01T21:12:17.369Z",
    "directAt": "2026-11-01T21:12:17.369Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-11-02T03:42:47.554Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6459,7 +6495,7 @@
    "pinged": "2026-11-01T21:12:17.369Z",
    "directAt": "2026-11-01T21:12:17.369Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-11-02T03:42:47.554Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6473,7 +6509,7 @@
    "pinged": "2026-11-01T21:12:17.369Z",
    "directAt": "2026-11-01T21:12:17.369Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-11-02T03:42:47.554Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6487,7 +6523,7 @@
    "pinged": "2026-11-01T21:12:17.369Z",
    "directAt": "2026-11-01T21:12:17.369Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-11-02T03:42:47.554Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
@@ -6501,7 +6537,7 @@
    "pinged": "2026-11-01T21:12:17.369Z",
    "directAt": "2026-11-01T21:12:17.369Z",
    "queries": [],
-   "queriesAt": "2026-11-02T03:42:47.554Z",
+   "queriesAt": "2026-11-02T04:41:47.508Z",
    "inspected": "2026-11-02T03:42:47.554Z",
    "verdict": "PASS",
    "coverage": "تم إرسال الصفحة وتمت فهرستها",
