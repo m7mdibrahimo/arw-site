@@ -2,6 +2,11 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "بريانا في لقاء",
+      "right": "ريانا في لقاء",
+      "note": "المغنية ريانا اتكتبت «بريانا» في عنوان خبر كيفن نايت ومارا سادي (INCIDENTS #1013)"
+    },
+    {
       "wrong": "وألجأ إليه دائما لطلب النصيحة",
       "right": "ويلجأ إليه دائما لطلب النصيحة",
       "note": "فعل بضمير المتكلم «وألجأ» في عنوان غائب — خبر ستيف ماكلين وكاردونا (INCIDENTS #1009)"

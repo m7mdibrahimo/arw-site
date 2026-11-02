@@ -1343,3 +1343,8 @@ test("«وألجأ» and the short Lei Ying Lee name are corrected (INCIDENTS #1
   assert.equal(applyCorrections("صديق مقرب وألجأ إليه دائما لطلب النصيحة"), "صديق مقرب ويلجأ إليه دائما لطلب النصيحة");
   assert.equal(applyCorrections("لي يينغ لا تزال مرتبطة بعقد"), "لي يينغ لي لا تزال مرتبطة بعقد");
 });
+
+test("Rihanna is not written «بريانا» (INCIDENTS #1013)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("يلتقون بريانا في لقاء مفاجئ"), "يلتقون ريانا في لقاء مفاجئ");
+});
