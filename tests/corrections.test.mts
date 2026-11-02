@@ -1327,5 +1327,5 @@ test("«لانه» becomes «لأنه» and «لانهيار» is left alone (IN
 test("Tohoku and «ملهما» fixes are applied (INCIDENTS #1007)", async () => {
   const { applyCorrections } = await import("../scripts/news-qa");
   assert.equal(applyCorrections("بطل توموكو للوزن"), "بطل توهوكو للوزن");
-  assert.equal(applyCorrections("كان ملهم وفي الوقت نفسه مرهقا"), "كان ملهما وفي الوقت نفسه مرهقا");
+  assert.equal(applyCorrections("كان ملهم وفي الوقت نفسه مرهقا"), "كان مصدر إلهام وفي الوقت نفسه مرهقا");
 });
