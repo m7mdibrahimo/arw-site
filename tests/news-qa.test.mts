@@ -512,3 +512,9 @@ test("team members written twice, «النتيجة صالحه», a lone «ك» b
   assert.equal(applyCorrections("ببقاء AEW على قناتي TBS وTNT وعبر قناتي *ESPN* و*ESPN2*، وقال: قناتي على يوتيوب"), "ببقاء AEW على قنوات TBS وTNT وعبر قنوات *ESPN* و*ESPN2*، وقال: قناتي على يوتيوب");
   assert.equal(applyCorrections("فاز بحركة براين باستر"), "فاز بحركة برين باستر");
 });
+
+test("dual_form: «تجتمعان» / «تحالفتا» (Syuri-Asuka story, round 2026-11-02) are blocked", () => {
+  const t = "شوري وأسوكا تجتمعان من جديد";
+  assert.ok(checkArticle(t, "اجتمعت المصارعة شوري مع أسوكا مؤخرا. وكانت الاثنتان قد تحالفتا مع هيكارو شيدا في عرض سابق أمام فريق قوي جدا.").some((i) => i.code === "dual_form" || i.code === "dual_noun"));
+  assert.ok(checkArticle("شوري وأسوكا تجتمعان من جديد", "نص عادي طويل بما يكفي لكي يمر الفحص دون مشاكل أخرى في الاختبار.").some((i) => i.code === "dual_form"));
+});
