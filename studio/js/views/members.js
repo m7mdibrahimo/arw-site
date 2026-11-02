@@ -5,7 +5,6 @@ import { html, raw, esc, mount, $, $$, icon, toast, dialog, timeAgo, fmtDate, nu
 
 const SECTIONS = [
   { id: 'shows', label: 'العروض' },
-  { id: 'recaps', label: 'الملخصات' },
   { id: 'news', label: 'الأخبار' },
   { id: 'nostalgia', label: 'نوستالجيا' },
 ];
@@ -26,7 +25,7 @@ const EXTRAS = [
 const all = (acts) => SECTIONS.flatMap(s => acts.map(a => `${s.id}.${a}`));
 const PRESETS = [
   { id: 'news', label: 'كاتب أخبار', perms: ['news.view', 'news.create', 'news.edit'] },
-  { id: 'shows', label: 'رافع عروض', perms: ['shows.view', 'shows.create', 'shows.edit', 'recaps.view', 'recaps.create', 'recaps.edit', 'nostalgia.view', 'nostalgia.create', 'nostalgia.edit'] },
+  { id: 'shows', label: 'رافع عروض', perms: ['shows.view', 'shows.create', 'shows.edit', 'nostalgia.view', 'nostalgia.create', 'nostalgia.edit'] },
   { id: 'editor', label: 'محرر كامل', perms: [...all(['view', 'create', 'edit']), 'stats'] },
   { id: 'viewer', label: 'مشاهدة بس', perms: [...all(['view']), 'stats', 'status'] },
 ];

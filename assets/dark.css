@@ -46,7 +46,7 @@ html.arw-dark .show-card .desc, html.arw-dark .news-card p{ color:#8b94a3 !impor
 
 /* Homepage: each section lit by a stage light in its own colour, falling from the top
    centre and fading into the black — replaces the flat light-mode tints. */
-html.arw-dark #feds, html.arw-dark #full-shows, html.arw-dark #recaps, html.arw-dark #nostalgia-home, html.arw-dark #news{
+html.arw-dark #feds, html.arw-dark #full-shows, html.arw-dark #nostalgia-home, html.arw-dark #news{
   background:
     radial-gradient(ellipse 55% 340px at 50% 0, color-mix(in srgb, var(--sec) 16%, transparent), transparent 72%),
     radial-gradient(ellipse 90% 520px at 50% 0, color-mix(in srgb, var(--sec) 6%, transparent), transparent 80%),
@@ -55,10 +55,10 @@ html.arw-dark #feds, html.arw-dark #full-shows, html.arw-dark #recaps, html.arw-
   background-clip:padding-box !important;
 }
 html.arw-dark #spotlight-wrap{ background:transparent !important; }
-html.arw-dark #feds::before, html.arw-dark #full-shows::before, html.arw-dark #recaps::before, html.arw-dark #nostalgia-home::before, html.arw-dark #news::before{
+html.arw-dark #feds::before, html.arw-dark #full-shows::before, html.arw-dark #nostalgia-home::before, html.arw-dark #news::before{
   background:linear-gradient(90deg, transparent, color-mix(in srgb, var(--sec) 70%, transparent) 50%, transparent) !important; opacity:.8;
 }
-html.arw-dark #feds::after, html.arw-dark #full-shows::after, html.arw-dark #recaps::after, html.arw-dark #nostalgia-home::after, html.arw-dark #news::after{
+html.arw-dark #feds::after, html.arw-dark #full-shows::after, html.arw-dark #nostalgia-home::after, html.arw-dark #news::after{
   box-shadow:0 0 0 3px color-mix(in srgb, var(--sec) 26%, transparent), 0 0 16px 2px color-mix(in srgb, var(--sec) 60%, transparent) !important;
 }
 

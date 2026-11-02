@@ -170,7 +170,7 @@ export async function refreshNew() {
   try { const seen = seenAt(); showNew(((await api.comments()).items || []).filter(c => !c.official && c.at > seen).length); } catch {}
 }
 
-const FILTERS = [['', 'الكل'], ['new', 'الجديدة'], ['news', 'على الأخبار'], ['shows', 'على العروض والملخصات']];
+const FILTERS = [['', 'الكل'], ['new', 'الجديدة'], ['news', 'على الأخبار'], ['shows', 'على العروض']];
 const state = { filter: '', q: '' };
 
 export async function renderComments(page) {

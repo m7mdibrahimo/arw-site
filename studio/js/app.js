@@ -56,7 +56,7 @@ function renderShell(user) {
         <button class="icon-btn only-mobile" id="menu-btn" aria-label="القائمة">${icon('menu')}</button>
         <a class="brand" href="#/" title="رئيسية اللوحة" aria-label="لوحة التحكم — الرئيسية"><img src="/assets/brand-logo.png?v=2" alt=""><span><b>لوحة التحكم</b><small>عرب راسلنج</small></span></a>
         <nav class="tabs" id="nav">
-          ${[['shows', 'العروض'], ['recaps', 'الملخصات'], ['news', 'الأخبار'], ['nostalgia', 'نوستالجيا']].filter(([c]) => can(user, `${c}.view`)).map(([c, l]) => html`<a class="tab" href="#/list/${c}" data-nav="#/list/${c}">${icon(COLLECTIONS[c].icon)}${l}</a>`)}
+          ${[['shows', 'العروض'], ['news', 'الأخبار'], ['nostalgia', 'نوستالجيا']].filter(([c]) => can(user, `${c}.view`)).map(([c, l]) => html`<a class="tab" href="#/list/${c}" data-nav="#/list/${c}">${icon(COLLECTIONS[c].icon)}${l}</a>`)}
           ${can(user, 'comments') ? html`<a class="tab" href="#/comments" data-nav="#/comments">${icon('comment')}التعليقات<span class="tab-count" id="cm-count" hidden></span></a>` : ''}
           ${can(user, 'members') ? html`<a class="tab" href="#/site-members" data-nav="#/site-members">${icon('users')}الأعضاء</a>` : ''}
           ${can(user, 'community') ? html`<a class="tab" href="#/community" data-nav="#/community">${icon('comment')}المجتمع</a>` : ''}
@@ -73,10 +73,10 @@ function renderShell(user) {
             <input id="search-input" placeholder="بحث…" autocomplete="off">
             <div class="search-results" id="search-results" hidden></div>
           </div>
-          ${['shows', 'recaps', 'news', 'nostalgia'].some(c => can(user, `${c}.create`)) ? html`<div class="menu" id="new-menu">
+          ${['shows', 'news', 'nostalgia'].some(c => can(user, `${c}.create`)) ? html`<div class="menu" id="new-menu">
             <button class="btn btn-primary" id="new-btn">${icon('plus')}<span>جديد</span></button>
             <div class="menu-pop end" hidden>
-              ${['shows', 'recaps', 'news', 'nostalgia'].filter(c => can(user, `${c}.create`)).map(c => html`<a href="#/new/${c}"><i style="--c:${COLLECTIONS[c].color}">${icon(COLLECTIONS[c].icon)}</i>${COLLECTIONS[c].singular} جديد</a>`)}
+              ${['shows', 'news', 'nostalgia'].filter(c => can(user, `${c}.create`)).map(c => html`<a href="#/new/${c}"><i style="--c:${COLLECTIONS[c].color}">${icon(COLLECTIONS[c].icon)}</i>${COLLECTIONS[c].singular} جديد</a>`)}
             </div>
           </div>` : ''}
           <a class="btn site-btn" href="/" target="_blank" rel="noopener" title="فتح الموقع">${icon('globe')}<span>فتح الموقع</span></a>

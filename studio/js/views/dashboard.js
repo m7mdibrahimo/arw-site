@@ -48,7 +48,6 @@ export async function renderDashboard(page) {
   const now = new Date();
   const news = index.filter(i => i.kind === 'news').sort(byDate);
   const shows = data.filter(d => d.collection === 'shows').sort(byDate);
-  const recaps = data.filter(d => d.collection === 'recaps');
   const nostalgia = data.filter(d => d.collection === 'nostalgia');
   const todayNews = news.filter(n => sameDay(new Date(n.date)));
   const todayShows = shows.filter(s => sameDay(new Date(s.date)));
@@ -84,7 +83,6 @@ export async function renderDashboard(page) {
           <p class="muted">${greet} · ${fmtDate(now)}</p></div>
         <div class="page-actions">
           ${can(user, 'shows.create') ? html`<a class="btn btn-primary" href="#/new/shows">${icon('plus')} عرض جديد</a>` : ''}
-          ${can(user, 'recaps.create') ? html`<a class="btn" href="#/new/recaps">${icon('recap')} ملخص</a>` : ''}
           ${can(user, 'news.create') ? html`<a class="btn" href="#/new/news">${icon('news')} خبر</a>` : ''}
         </div>
       </div>
@@ -99,7 +97,6 @@ export async function renderDashboard(page) {
 
       <div class="stats">
         ${[['shows', 'العروض', shows.length, `${num(shows.filter(s => now - new Date(s.date) < 7 * 864e5).length)} في آخر أسبوع`],
-           ['recaps', 'الملخصات', recaps.length, ''],
            ['news', 'الأخبار', news.length, `${num(todayNews.length)} النهارده`],
            ['nostalgia', 'نوستالجيا', nostalgia.length, '']].filter(([c]) => can(user, `${c}.view`)).map(([c, label, n, sub]) => html`
           <a class="stat" href="#/list/${c}" style="--c:${COLLECTIONS[c].color}">

@@ -16,7 +16,7 @@
 {% set isNostalgiaItem = (kind == 'nostalgia') or (page.inputPath and ("content/nostalgia" in page.inputPath)) or nostalgia_series or (page.url and page.url.startsWith('/nostalgia/')) %}
 {% set isNews = (kind == 'news') or (page.inputPath and ("content/news" in page.inputPath)) or (page.url and page.url.startsWith('/news/')) %}
 <title>{{ pageTitle }} | عرب راسلنج</title>
-{% set baseDesc = description or (content | striptags | metaDescription) or 'مشاهدة وتحميل عروض المصارعة مترجمة وآخر الأخبار والملخصات على عرب راسلنج.' %}
+{% set baseDesc = description or (content | striptags | metaDescription) or 'مشاهدة وتحميل عروض المصارعة مترجمة وآخر الأخبار على عرب راسلنج.' %}
 {% set metaDesc = baseDesc | truncate(320, true, '') %}
 {#- English news files carry «en_tags», never «tags» (content/news-en/news-en.11tydata.js): without this the English
     article had no keywords at all in its structured data, while the Arabic twin had them (round 2026-10-27, INCIDENTS #900) -#}
@@ -223,11 +223,7 @@
     </form>
     <ul id="navMenu">
       <li><a class="navlink" href="/library/">مكتبة العروض</a></li>
-      <li class="nav-dropdown nav-shows"><a class="navlink{% if (kind == 'show' and not fed and not isNostalgiaItem and not (page.url and page.url.startsWith('/nostalgia/'))) or kind == 'recap' %} active{% endif %}" href="/shows/" aria-haspopup="true">عروض المصارعة<svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
-        <ul class="dropdown-menu" aria-label="عروض المصارعة">
-          <li><a class="drop-item drop-shows{% if kind == 'show' and not fed and not isNostalgiaItem and not (page.url and page.url.startsWith('/nostalgia/')) %} active{% endif %}" href="/shows/"><span class="drop-dot"></span>كل العروض</a></li>
-          <li><a class="drop-item drop-recaps{% if kind == 'recap' %} active{% endif %}" href="/recaps/"><span class="drop-dot"></span>ملخصات العروض</a></li>
-        </ul></li>
+      <li><a class="navlink{% if (kind == 'show' and not fed and not isNostalgiaItem and not (page.url and page.url.startsWith('/nostalgia/'))) %} active{% endif %}" href="/shows/">عروض المصارعة</a></li>
       <li><a class="navlink{% if kind == 'news' or isNews %} active{% endif %}" href="/news/">الأخبار</a></li><li><a class="navlink{% if isNostalgiaItem or (page.url and page.url.startsWith('/nostalgia/')) %} active{% endif %}" href="/nostalgia/">نوستالجيا</a></li><li><a class="navlink nav-community" href="/community/">مجتمع المصارعة</a></li><li><a class="navlink" href="/apps/">تطبيقات الموقع</a></li>
       <li class="utility-row">
         <button aria-label="المفضلة وقائمة المشاهدة لاحقا" class="theme-toggle bookmarks-btn" id="arwBookmarksBtn" type="button" title="المفضلة والمشاهدة لاحقا">
@@ -632,13 +628,6 @@
       {% if newerNews %}<a class="news-pn-item news-pn-next" href="{{ newerNews.url }}"><span class="news-pn-label">الخبر التالي ←</span><span class="news-pn-title">{{ newerNews.data.title }}</span></a>{% endif %}
     </nav>
     {% endif %}
-    {% endif %}
-
-    {% set companion = page.url | companionPage(program_name, event_date, collections.allContent) %}
-    {% if companion %}
-    <nav class="news-pn reveal" aria-label="نفس العرض">
-      <a class="news-pn-item news-pn-prev" href="{{ companion.url }}"><span class="news-pn-label">{% if page.url.startsWith('/shows/') %}ملخص نفس العرض{% else %}العرض كامل ومترجم{% endif %}</span><span class="news-pn-title">{{ companion.data.headline or companion.data.title }}</span></a>
-    </nav>
     {% endif %}
 
     {% include "comments.njk" %}

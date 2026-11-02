@@ -1,4 +1,4 @@
-// Service Worker for Arab Wrestling Notifications (Shows & Recaps, and answers to a visitor's comments)
+// Service Worker for Arab Wrestling Notifications (Shows, and answers to a visitor's comments)
 
 self.addEventListener('install', function (event) {
   self.skipWaiting();
@@ -175,9 +175,9 @@ async function checkNewContentSW() {
 
     if (newItemsToNotify.length > 0) {
       newItemsToNotify.slice(0, 3).forEach(function(item) {
-        var label = item.kindLabel || (item.kind === 'show' ? 'عرض جديد' : 'ملخص جديد');
+        var label = item.kindLabel || (item.kind === 'show' ? 'عرض جديد' : 'عرض جديد');
         var title = 'عرب راسلنج 🔔 | ' + label + ': ' + (item.title || '');
-        var body = item.headline || item.description || 'تم إضافة عرض/ملخص جديد على الموقع. اضغط للمشاهدة الآن.';
+        var body = item.headline || item.description || 'تم إضافة عرض جديد على الموقع. اضغط للمشاهدة الآن.';
         self.registration.showNotification(title, {
           body: body,
           icon: item.image || '/favicon.png',
@@ -209,8 +209,8 @@ self.addEventListener('push', function(event) {
       var isNews = data.kind === 'news' || (data.url && data.url.indexOf('/news/') !== -1);
       if (isNews) return;
 
-      var title = data.title || 'عرب راسلنج 🔔 | عرض/ملخص جديد';
-      var body = data.body || 'تم إضافة عرض/ملخص جديد على الموقع. اضغط للمشاهدة الآن.';
+      var title = data.title || 'عرب راسلنج 🔔 | عرض جديد';
+      var body = data.body || 'تم إضافة عرض جديد على الموقع. اضغط للمشاهدة الآن.';
       var options = {
         body: body,
         icon: data.image || '/favicon.png',

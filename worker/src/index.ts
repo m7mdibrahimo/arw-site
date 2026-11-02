@@ -2898,12 +2898,12 @@ async function sendPushToAllSubscribers(
   if (isNews) return { success: false, reason: "News disabled" };
 
   const isShow = kind === "show" || collection === "shows" || (url && url.includes("/shows/"));
-  const label = isShow ? "عرض جديد" : "ملخص جديد";
+  const label = "عرض جديد";
 
   const message = {
     data: JSON.stringify({
       title: `عرب راسلنج 🔔 | ${label}: ${title || ""}`,
-      body: headline || text || "تم إضافة عرض/ملخص جديد على الموقع. اضغط للمشاهدة الآن.",
+      body: headline || text || "تم إضافة عرض جديد على الموقع. اضغط للمشاهدة الآن.",
       url: url || "/",
       image: image || "/favicon.png",
       kind: isShow ? "show" : "recap",

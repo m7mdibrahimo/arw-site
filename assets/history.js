@@ -43,7 +43,7 @@
   }
   function draw() {
     var shown = items.filter(function (it) { return !kind || it.kind === kind; });
-    if (!items.length) { bar.hidden = true; moreBtn.hidden = true; return empty('سجلك فارغ', 'أي عرض أو ملخص أو حلقة نوستالجيا تبدأ مشاهدتها وأنت مسجل الدخول ستجدها هنا.', ['تصفح العروض', HOME + '/shows/']); }
+    if (!items.length) { bar.hidden = true; moreBtn.hidden = true; return empty('سجلك فارغ', 'أي عرض أو حلقة نوستالجيا تبدأ مشاهدتها وأنت مسجل الدخول ستجدها هنا.', ['تصفح العروض', HOME + '/shows/']); }
     bar.hidden = false;
     list.textContent = '';
     if (!shown.length) { var p = el('p', 'hs-none', 'لا يوجد شيء من هذا النوع في سجلك.'); list.appendChild(p); }

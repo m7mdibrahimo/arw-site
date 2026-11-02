@@ -40,7 +40,7 @@ test('the panel server cleans every name field before it saves, and leaves the t
 
 test('no published show, recap, nostalgia episode or story repeats a name', () => {
   const bad: string[] = [];
-  for (const d of ['content/shows', 'content/recaps', 'content/nostalgia', 'content/news', 'content/news-en']) {
+  for (const d of ['content/shows', 'content/nostalgia', 'content/news', 'content/news-en']) {
     for (const f of fs.readdirSync(d).filter(f => f.endsWith('.md'))) {
       let data: any;
       try { data = matter(fs.readFileSync(path.join(d, f), 'utf8')).data; } catch { continue; }

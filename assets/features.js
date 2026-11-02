@@ -707,7 +707,6 @@
     more: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>',
     library: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v14"/><path d="M9 19V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v12"/><path d="m15 6.5 2.9-.8a1 1 0 0 1 1.2.7l3 11.4a1 1 0 0 1-.7 1.2l-2.9.8"/><path d="M3 19h18"/></svg>',
     feds: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6z"/></svg>',
-    recaps: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg>',
     history: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg>',
     trophy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>',
     apps: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>',
@@ -754,7 +753,7 @@
       : /^\/(shows)\//.test(path) ? 'shows'
       : /^\/news\//.test(path) ? 'news'
       : /^\/nostalgia\//.test(path) ? 'nostalgia'
-      : /^\/(federations?|recaps|apps|support|library|community)\//.test(path) ? 'more' : '';
+      : /^\/(federations?|apps|support|library|community)\//.test(path) ? 'more' : '';
     var items = [
       ['home', '/', 'الرئيسية'], ['shows', '/shows/', 'العروض'], ['news', '/news/', 'الأخبار'], ['nostalgia', '/nostalgia/', 'نوستالجيا']
     ];
@@ -781,10 +780,9 @@
       '<div class="arw-more-title">كل الأقسام</div><div class="arw-more-grid">' +
       '<a href="' + LP + '/library/">' + ICONS.library + 'مكتبة العروض</a>' +
       '<a href="' + LP + '/federations/">' + ICONS.feds + 'الاتحادات</a>' +
-      '<a href="' + LP + '/recaps/">' + ICONS.recaps + 'ملخصات العروض</a>' +
       '<a href="' + LP + '/history/">' + ICONS.history + 'سجل المشاهدة</a>' +
-      // «التوقعات» was removed (owner 2026-10-25: «الغي قسم التوقعات نهائي»); the apps link takes the whole last row
-      '<a href="' + LP + '/apps/" style="grid-column:1/-1; justify-content:center;">' + ICONS.apps + 'تطبيقات الموقع</a>' +
+      // «التوقعات» (owner 2026-10-25) and «ملخصات العروض» (owner 2026-11-03) were removed: history and apps share the last row
+      '<a href="' + LP + '/apps/">' + ICONS.apps + 'تطبيقات الموقع</a>' +
       // «العضوية المميزة» (pages/premium.njk) took «ادعم الموقع»'s place; hidden for a member who has it
       '<a class="more-support premium-btn" href="' + LP + '/premium/" style="grid-column:1/-1; justify-content:center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg>العضوية المميزة</a>' +
       '</div>';

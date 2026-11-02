@@ -1186,21 +1186,6 @@ module.exports = function(eleventyConfig) {
 
     return best.map(s => s.item);
   };
-  // The same episode as a show and as a recap (same program, same event day) link to each other: a plain navigation link,
-  // so the full show and its highlights are found from one another and Google sees them as two different pages (INCIDENTS #475).
-  const companionPage = function(currentUrl, programName, eventDate, allContent) {
-    if (!Array.isArray(allContent) || !programName || !eventDate) return null;
-    const isShow = /^\/shows\//.test(currentUrl || "");
-    if (!isShow && !/^\/recaps\//.test(currentUrl || "")) return null;
-    const day = (v) => { const d = v instanceof Date ? v : new Date(v); return isNaN(d.getTime()) ? "" : d.toISOString().slice(0, 10); };
-    const wantDay = day(eventDate);
-    const prog = String(programName).trim().toLowerCase();
-    if (!wantDay) return null;
-    return allContent.find((it) => it && it.url && it.url.startsWith(isShow ? "/recaps/" : "/shows/") && it.data
-      && String(it.data.program_name || "").trim().toLowerCase() === prog && day(it.data.event_date) === wantDay) || null;
-  };
-  eleventyConfig.addFilter("companionPage", companionPage);
-  eleventyConfig.addNunjucksFilter("companionPage", companionPage);
   eleventyConfig.addFilter("getRelatedPosts", getRelatedPosts);
   eleventyConfig.addNunjucksFilter("getRelatedPosts", getRelatedPosts);
 
@@ -2408,6 +2393,7 @@ module.exports = function(eleventyConfig) {
       writeRedirectPages(require("./lib/redirects.cjs").vanishedShowRedirects(), "_site"); // in-between show addresses after quick title edits (INCIDENTS #961)
       writeRedirectPages(require("./lib/redirects.cjs").legacyArticleAddresses(), "_site"); // old article addresses Google still holds (INCIDENTS #274)
       writeRedirectPages(require("./lib/redirects.cjs").contentFolderAddresses(), "_site"); // «/content/<section>/<file>/» addresses (INCIDENTS #284)
+      writeRedirectPages(require("./lib/redirects.cjs").removedRecapRedirects().filter(([from]) => !from.startsWith("/en/")), "_site"); // the removed «ملخصات العروض» (owner 2026-11-03)
     }
     if (fs.existsSync("_headers")) {
       fs.copyFileSync("_headers", "_site/_headers");
@@ -2456,7 +2442,7 @@ module.exports = function(eleventyConfig) {
       console.log(`[en] ${JSON.stringify(summary)}`);
       // the English copies of renamed shows' old addresses, now that /en/ exists (INCIDENTS #961)
       const R = require("./lib/redirects.cjs");
-      R.writeRedirectPages(R.contentFolderAddresses().concat(R.vanishedShowRedirects()).filter(([from]) => from.startsWith("/en/")), "_site");
+      R.writeRedirectPages(R.contentFolderAddresses().concat(R.vanishedShowRedirects(), R.removedRecapRedirects()).filter(([from]) => from.startsWith("/en/")), "_site");
       leftovers.slice(0, 20).forEach(function(x) { console.log(`[en] still Arabic (${x[1]} pages): ${x[0].slice(0, 120)}`); });
       fs.writeFileSync("node_modules/.cache-arw-i18n-content.json", JSON.stringify({ content: I18N_CONTENT, pages: I18N_PAGES, news: I18N_NEWS }));
     } catch (e) { console.log(`[en] skipped: ${e.stack}`); }

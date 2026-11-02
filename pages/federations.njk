@@ -19,7 +19,7 @@ permalink: "/federations/{% if pagination.pageNumber > 0 %}{{ pagination.pageNum
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 {% set pageNum = pagination.pageNumber + 1 %}
 <title>الاتحادات: WWE, AEW, TNA, ROH, MMA{% if pageNum > 1 %} - صفحة {{ pageNum }}{% endif %} | عرب راسلنج</title>
-<meta name="description" content="تصفح جميع اتحادات المصارعة الحرة ورياضات القتال (WWE, AEW, TNA, ROH, MMA) وكل عروضها وأخبارها وملخصاتها في مكان واحد.{% if pageNum > 1 %} صفحة {{ pageNum }}.{% endif %}">
+<meta name="description" content="تصفح جميع اتحادات المصارعة الحرة ورياضات القتال (WWE, AEW, TNA, ROH, MMA) وكل عروضها وأخبارها في مكان واحد.{% if pageNum > 1 %} صفحة {{ pageNum }}.{% endif %}">
 <link rel="canonical" href="https://arab-wrestling.com{{ page.url | cleanUrl }}">
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
@@ -45,7 +45,7 @@ permalink: "/federations/{% if pagination.pageNumber > 0 %}{{ pagination.pageNum
   "@type": "CollectionPage",
   "name": "اتحادات المصارعة الحرة",
   "url": "https://arab-wrestling.com/federations/",
-  "description": "تصفح جميع اتحادات المصارعة الحرة ورياضات القتال (WWE, AEW, TNA, ROH, MMA) وكل عروضها وأخبارها وملخصاتها.",
+  "description": "تصفح جميع اتحادات المصارعة الحرة ورياضات القتال (WWE, AEW, TNA, ROH, MMA) وكل عروضها وأخبارها.",
   "isPartOf": { "@id": "https://arab-wrestling.com/#website" },
   "inLanguage": "ar"
 }
@@ -340,11 +340,7 @@ permalink: "/federations/{% if pagination.pageNumber > 0 %}{{ pagination.pageNum
     </form>
     <ul id="navMenu">
       <li><a class="navlink" href="/library/">مكتبة العروض</a></li>
-      <li class="nav-dropdown nav-shows"><a class="navlink" href="/shows/" aria-haspopup="true">عروض المصارعة<svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
-        <ul class="dropdown-menu" aria-label="عروض المصارعة">
-          <li><a class="drop-item drop-shows" href="/shows/"><span class="drop-dot"></span>كل العروض</a></li>
-          <li><a class="drop-item drop-recaps" href="/recaps/"><span class="drop-dot"></span>ملخصات العروض</a></li>
-        </ul></li>
+      <li><a class="navlink" href="/shows/">عروض المصارعة</a></li>
       <li><a class="navlink" href="/news/">الأخبار</a></li><li><a class="navlink" href="/nostalgia/">نوستالجيا</a></li><li><a class="navlink nav-community" href="/community/">مجتمع المصارعة</a></li><li><a class="navlink" href="/apps/">تطبيقات الموقع</a></li>
       <li class="utility-row">
         <button aria-label="تبديل الوضع الليلي" class="theme-toggle" id="arwThemeToggle" type="button">
@@ -368,13 +364,13 @@ permalink: "/federations/{% if pagination.pageNumber > 0 %}{{ pagination.pageNum
   <div class="hero-inner">
     <span class="eyebrow">بوابتك العربية للمصارعة الحرة</span>
     <h1 class="hero-title">المحتوى الشامل <span class="u">لجميع الاتحادات</span></h1>
-    <p>عروض مصارعة مترجمة، ملخصات العروض، وآخر الأخبار.</p>
+    <p>عروض مصارعة مترجمة، وآخر الأخبار.</p>
   </div>
 </div>
 
 <div class="page-head reveal">
   <h2 style="color:var(--teal);">جميع المحتوى</h2>
-  <p>جميع العروض والملخصات والأخبار من كافة الاتحادات (من الأحدث للأقدم)</p>
+  <p>جميع العروض والأخبار من كافة الاتحادات (من الأحدث للأقدم)</p>
 </div>
 
 <section class="content" id="all-content-section">

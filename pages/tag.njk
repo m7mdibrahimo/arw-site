@@ -21,14 +21,14 @@ permalink: "{{ tagPage.permalink }}"
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 {# A wrestler's name is what people search («درو ماكنتاير», 391 impressions at #11 — INCIDENTS #284): it leads the title, with a real description #}
 <title>{{ tagObj.name }}: آخر الأخبار والعروض والنتائج{% if tagPage.pageNumber > 1 %} - صفحة {{ tagPage.pageNumber }}{% endif %} | عرب راسلنج</title>
-<meta name="description" content="آخر أخبار {{ tagObj.name }} بالعربي أول بأول، مع العروض المترجمة والنتائج والملخصات المتعلقة بـ{{ tagObj.name }} على عرب راسلنج.">
+<meta name="description" content="آخر أخبار {{ tagObj.name }} بالعربي أول بأول، مع العروض المترجمة والنتائج المتعلقة بـ{{ tagObj.name }} على عرب راسلنج.">
 
 <link rel="canonical" href="https://arab-wrestling.com{{ tagPage.url }}">
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://arab-wrestling.com{{ tagPage.url }}">
 <meta property="og:title" content="{{ tagObj.name }}: آخر الأخبار والعروض والنتائج | عرب راسلنج">
-<meta property="og:description" content="جميع العروض والأخبار والملخصات المتعلقة بالوسم #{{ tagObj.name }} على موقع عرب راسلنج.">
+<meta property="og:description" content="جميع العروض والأخبار المتعلقة بالوسم #{{ tagObj.name }} على موقع عرب راسلنج.">
 <meta property="og:image" content="https://arab-wrestling.com/assets/logo.png">
 <meta property="og:image:secure_url" content="https://arab-wrestling.com/assets/logo.png">
 <meta property="og:image:type" content="image/png">
@@ -40,7 +40,7 @@ permalink: "{{ tagPage.permalink }}"
 <!-- Twitter -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="مواضيع الوسم #{{ tagObj.name }} | عرب راسلنج">
-<meta name="twitter:description" content="جميع العروض والأخبار والملخصات المتعلقة بالوسم #{{ tagObj.name }} على موقع عرب راسلنج.">
+<meta name="twitter:description" content="جميع العروض والأخبار المتعلقة بالوسم #{{ tagObj.name }} على موقع عرب راسلنج.">
 <meta name="twitter:image" content="https://arab-wrestling.com/assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -272,11 +272,7 @@ permalink: "{{ tagPage.permalink }}"
     </form>
     <ul id="navMenu">
       <li><a class="navlink" href="/library/">مكتبة العروض</a></li>
-      <li class="nav-dropdown nav-shows"><a class="navlink" href="/shows/" aria-haspopup="true">عروض المصارعة<svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
-        <ul class="dropdown-menu" aria-label="عروض المصارعة">
-          <li><a class="drop-item drop-shows" href="/shows/"><span class="drop-dot"></span>كل العروض</a></li>
-          <li><a class="drop-item drop-recaps" href="/recaps/"><span class="drop-dot"></span>ملخصات العروض</a></li>
-        </ul></li>
+      <li><a class="navlink" href="/shows/">عروض المصارعة</a></li>
       <li><a class="navlink" href="/news/">الأخبار</a></li><li><a class="navlink" href="/nostalgia/">نوستالجيا</a></li><li><a class="navlink nav-community" href="/community/">مجتمع المصارعة</a></li><li><a class="navlink" href="/apps/">تطبيقات الموقع</a></li>
       <li class="utility-row">
         <button aria-label="تبديل الوضع الليلي" class="theme-toggle" id="arwThemeToggle" type="button">
@@ -291,7 +287,7 @@ permalink: "{{ tagPage.permalink }}"
 
 <div class="page-head">
   <h1>{{ tagObj.name }}: آخر الأخبار والعروض</h1>
-  <p>عروض وأخبار وملخصات المصارعة المتعلقة بـ #{{ tagObj.name }} ({{ tagObj.count }} نتائج)</p>
+  <p>عروض وأخبار المصارعة المتعلقة بـ #{{ tagObj.name }} ({{ tagObj.count }} نتائج)</p>
 </div>
 
 <section class="content"><div class="wrap"><div class="grid-12" id="tagGrid">

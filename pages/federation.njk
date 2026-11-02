@@ -24,7 +24,7 @@ permalink: "{{ fedPage.permalink }}"
 {% set fedAr = {"WWE": "دبليو دبليو إي", "AEW": "إيه إي دبليو", "NJPW": "نيو جابان", "TNA": "تي إن إيه", "ROH": "رينج أوف أونر"}[fed.code] %}
 {% set fedWrestling = fedAr %}
 <title>مصارعة {{ fed.code }}{% if fedWrestling %} الحرة{% endif %}: عروض وأخبار {{ fed.code }} مترجمة بالعربية{% if fedPage.pageNumber > 1 %} - صفحة {{ fedPage.pageNumber }}{% endif %} | عرب راسلنج</title>
-<meta name="description" content="مصارعة {{ fed.code }}{% if fedWrestling %} الحرة ({{ fedAr }}){% endif %} بالعربي: شاهد وحمّل جميع عروض وأخبار وملخصات {{ fed.code }} ({{ fed.name }}) مترجمة باللغة العربية بجودة عالية.{% if fedPage.pageNumber > 1 %} صفحة {{ fedPage.pageNumber }}.{% endif %}">
+<meta name="description" content="مصارعة {{ fed.code }}{% if fedWrestling %} الحرة ({{ fedAr }}){% endif %} بالعربي: شاهد وحمّل جميع عروض وأخبار {{ fed.code }} ({{ fed.name }}) مترجمة باللغة العربية بجودة عالية.{% if fedPage.pageNumber > 1 %} صفحة {{ fedPage.pageNumber }}.{% endif %}">
 <link rel="canonical" href="https://arab-wrestling.com{{ fedPage.url }}">
 <script type="application/ld+json">
 {
@@ -32,7 +32,7 @@ permalink: "{{ fedPage.permalink }}"
   "@type": "CollectionPage",
   "name": "مصارعة {{ fed.code }}: عروض وأخبار {{ fed.code }} مترجمة",
   "url": "https://arab-wrestling.com{{ fedPage.url }}",
-  "description": "شاهد وحمّل جميع عروض وأخبار وملخصات {{ fed.code }} ({{ fed.name }}) مترجمة باللغة العربية بجودة عالية.",{% if fedWrestling %}
+  "description": "شاهد وحمّل جميع عروض وأخبار {{ fed.code }} ({{ fed.name }}) مترجمة باللغة العربية بجودة عالية.",{% if fedWrestling %}
   "alternateName": ["مصارعة حرة {{ fed.code }}", "مصارعة {{ fed.code }} الحرة", "مصارعة {{ fed.code }} مترجمة", "عروض {{ fed.code }} مترجمة", "اخبار {{ fed.code }}", "مصارعة {{ fedAr }}"],
   "about": { "@type": "SportsOrganization", "name": "{{ fed.name }}", "alternateName": ["{{ fed.code }}", "{{ fedAr }}"], "sport": "Professional wrestling" },{% endif %}
   "isPartOf": { "@id": "https://arab-wrestling.com/#website" },
@@ -332,11 +332,7 @@ permalink: "{{ fedPage.permalink }}"
     </form>
     <ul id="navMenu">
       <li><a class="navlink" href="/library/">مكتبة العروض</a></li>
-      <li class="nav-dropdown nav-shows"><a class="navlink" href="/shows/" aria-haspopup="true">عروض المصارعة<svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
-        <ul class="dropdown-menu" aria-label="عروض المصارعة">
-          <li><a class="drop-item drop-shows" href="/shows/"><span class="drop-dot"></span>كل العروض</a></li>
-          <li><a class="drop-item drop-recaps" href="/recaps/"><span class="drop-dot"></span>ملخصات العروض</a></li>
-        </ul></li>
+      <li><a class="navlink" href="/shows/">عروض المصارعة</a></li>
       <li><a class="navlink" href="/news/">الأخبار</a></li><li><a class="navlink" href="/nostalgia/">نوستالجيا</a></li><li><a class="navlink nav-community" href="/community/">مجتمع المصارعة</a></li><li><a class="navlink" href="/apps/">تطبيقات الموقع</a></li>
       <li class="utility-row">
         <button aria-label="تبديل الوضع الليلي" class="theme-toggle" id="arwThemeToggle" type="button">
@@ -367,7 +363,7 @@ permalink: "{{ fedPage.permalink }}"
   <div class="hero-inner">
     <span class="eyebrow">بوابتك العربية للمصارعة الحرة</span>
     <h1 class="hero-title">قسم {{ fed.code }}<span class="u">{{ fed.name }}</span></h1>
-    <p>{% if fed.slug == "indie" or fed.code | lower == "indie" or fed.code | lower == "indies" %}أحدث عروض وملخصات وأخبار اتحادات INDIES.{% else %}أحدث عروض وملخصات وأخبار اتحاد {{ fed.code }}.{% endif %}</p>
+    <p>{% if fed.slug == "indie" or fed.code | lower == "indie" or fed.code | lower == "indies" %}أحدث عروض وأخبار اتحادات INDIES.{% else %}أحدث عروض وأخبار اتحاد {{ fed.code }}.{% endif %}</p>
     {% from "follow-btn.njk" import followBtn, fedLabelOf %}
     <div class="arw-follow-row">{{ followBtn("fed", fed.slug, fedLabelOf(fed.code)) }}</div>
   </div>

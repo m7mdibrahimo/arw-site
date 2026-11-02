@@ -28,11 +28,11 @@ export async function renderSocialTool(page) {
   let status = {}, automatic = {}, filter = 'all', q = '';
   const selected = new Set();
   mount(page, html`<div class="wrap page-in">
-    ${header('النشر على المنصات', 'انشر أي عرض أو ملخص أو خبر على تيليجرام وفيسبوك وإنستجرام وإكس بإيدك. النشر التلقائي شغال لوحده؛ دي للحالات اللي انت عايز تتحكم فيها.')}
+    ${header('النشر على المنصات', 'انشر أي عرض أو خبر على تيليجرام وفيسبوك وإنستجرام وإكس بإيدك. النشر التلقائي شغال لوحده؛ دي للحالات اللي انت عايز تتحكم فيها.')}
     <div id="social-pause"></div>
     <div class="filterbar">
       <div class="search search-wide">${icon('search')}<input id="q" placeholder="ابحث في آخر ٨٠ موضوع…"></div>
-      <div class="seg" id="filters">${[['all', 'الكل'], ['unsent', 'لسه متنشرش كامل'], ['show', 'عروض'], ['recap', 'ملخصات'], ['news', 'أخبار']].map(([k, l], n) => html`<button type="button" data-f="${k}" class="${n ? '' : 'on'}">${l}</button>`)}</div>
+      <div class="seg" id="filters">${[['all', 'الكل'], ['unsent', 'لسه متنشرش كامل'], ['show', 'عروض'], ['news', 'أخبار']].map(([k, l], n) => html`<button type="button" data-f="${k}" class="${n ? '' : 'on'}">${l}</button>`)}</div>
     </div>
     <div class="batchbar" id="batch" hidden><b id="batch-count"></b><button class="btn btn-primary btn-sm" id="batch-go">${icon('send')} انشر المحدد</button><button class="btn btn-ghost btn-sm" id="batch-clear">إلغاء التحديد</button></div>
     <div class="rows" id="list"></div>
@@ -192,7 +192,7 @@ export async function renderPinnedTool(page) {
     <section class="panel"><header class="panel-head"><h2>${icon('pin')} المثبت دلوقتي <span class="count-pill" id="count"></span></h2></header><div class="rows" id="pinned"></div></section>
     <section class="panel"><header class="panel-head"><h2>${icon('plus')} ثبّت موضوع</h2></header>
       <div class="filterbar pin-filters">
-        <div class="seg" id="kinds">${[['', 'الكل'], ['show', 'عروض'], ['recap', 'ملخصات'], ['news', 'أخبار'], ['nostalgia', 'نوستالجيا']].map(([k, l]) => html`<button type="button" data-kind="${k}" class="${k ? '' : 'on'}">${l}</button>`)}</div>
+        <div class="seg" id="kinds">${[['', 'الكل'], ['show', 'عروض'], ['news', 'أخبار'], ['nostalgia', 'نوستالجيا']].map(([k, l]) => html`<button type="button" data-kind="${k}" class="${k ? '' : 'on'}">${l}</button>`)}</div>
         <div class="search search-wide">${icon('search')}<input id="q" placeholder="ابحث في مواضيع الموقع…"></div>
       </div><div class="rows" id="avail"></div></section>
   </div>`);

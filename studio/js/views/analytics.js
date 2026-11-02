@@ -10,7 +10,7 @@ const countryName = (() => {
   return (code) => { try { return (dn && code && code.length === 2 && dn.of(code)) || code || 'غير معروف'; } catch { return code; } };
 })();
 const SECTION_PAGES = {
-  '/': 'الصفحة الرئيسية', '/shows/': 'صفحة كل العروض', '/news/': 'صفحة الأخبار', '/recaps/': 'صفحة الملخصات',
+  '/': 'الصفحة الرئيسية', '/shows/': 'صفحة كل العروض', '/news/': 'صفحة الأخبار',
   '/nostalgia/': 'صفحة النوستالجيا', '/library/': 'مكتبة العروض', '/federations/': 'صفحة الاتحادات', '/tags/': 'صفحة الوسوم',
   '/search/': 'صفحة البحث', '/about/': 'من نحن', '/contact/': 'اتصل بنا', '/privacy/': 'سياسة الخصوصية',
   '/terms/': 'شروط الاستخدام', '/dmca/': 'حقوق النشر', '/apps/': 'صفحة التطبيقات',

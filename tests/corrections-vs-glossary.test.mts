@@ -46,7 +46,7 @@ test("no show, recap or nostalgia tag is a spelling corrections.json would rewri
   const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string; regex?: boolean }[];
   const wrongOnes = corrections.filter(c => !c.regex && c.right !== c.wrong && /[\u0621-\u064A]/.test(c.wrong));
   const bad: string[] = [];
-  for (const dir of ["content/shows", "content/recaps", "content/nostalgia"]) {
+  for (const dir of ["content/shows", "content/nostalgia"]) {
     for (const f of fs.readdirSync(dir).filter(x => x.endsWith(".md"))) {
       const text = fs.readFileSync(`${dir}/${f}`, "utf-8");
       const tags = ((text.match(/^tags:\n((?:  - .*\n)+)/m) || ["", ""])[1] || "").split("\n").map(l => l.replace(/^\s*-\s*/, "").trim()).filter(Boolean);

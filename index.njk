@@ -376,7 +376,7 @@ footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px
 /* Homepage sections flow into each other as one soft gradient: each section holds a
    whisper (~4%) of its own colour in the middle and meets its neighbour halfway at the
    seam, so there are no hard edges. Starts and ends on the page background. */
-#feds, #full-shows, #recaps, #nostalgia-home, #news{
+#feds, #full-shows, #nostalgia-home, #news{
   --base: var(--bg); --amt: 9%;
   --top: color-mix(in srgb, color-mix(in srgb, var(--prev) 50%, var(--sec)) var(--amt), var(--base));
   --mid: color-mix(in srgb, var(--sec) var(--amt), var(--base));
@@ -385,9 +385,8 @@ footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px
   background:linear-gradient(180deg, var(--top) 0%, var(--mid) 30%, var(--mid) 70%, var(--bot) 100%);
 }
 #feds{ --prev: var(--teal); --sec: var(--teal); --next: var(--gold); }
-#full-shows{ --prev: var(--teal); --sec: var(--gold); --next: var(--violet); }
-#recaps{ --prev: var(--gold); --sec: var(--violet); --next: var(--nostalgia); }
-#nostalgia-home{ --prev: var(--violet); --sec: var(--nostalgia); --next: var(--coral); }
+#full-shows{ --prev: var(--teal); --sec: var(--gold); --next: var(--nostalgia); }
+#nostalgia-home{ --prev: var(--gold); --sec: var(--nostalgia); --next: var(--coral); }
 #news{ --prev: var(--nostalgia); --sec: var(--coral); --next: var(--coral); }
 /* Enter from and leave to the page background above and below. */
 /* Slider → «الاتحادات». The slider keeps the plain page beige (no background of its own:
@@ -408,23 +407,23 @@ footer{ padding:40px 24px; text-align:center; color:var(--muted); font-size:13px
 }
 
 #news{ background:linear-gradient(180deg, var(--top) 0%, var(--mid) 30%, var(--mid) 70%, var(--bg) 100%); }
-html.arw-dark #feds, html.arw-dark #full-shows, html.arw-dark #recaps, html.arw-dark #nostalgia-home, html.arw-dark #news{ --base: var(--bg); --amt: 9%; }
+html.arw-dark #feds, html.arw-dark #full-shows, html.arw-dark #nostalgia-home, html.arw-dark #news{ --base: var(--bg); --amt: 9%; }
 /* Section divider: a hairline in the section's colour that fades out at both ends,
    with a small ringed dot in the middle — marks where each section starts without
    breaking the gradient. */
-#feds, #full-shows, #recaps, #nostalgia-home, #news{ position:relative; }
+#feds, #full-shows, #nostalgia-home, #news{ position:relative; }
 /* The line and its dot sit on the section's top edge, the dot's centre on it (owner 2026-10-16: «المفروض ان النقطة
    المضيئة دي تكون علي حافة الخط ال فوق في النص» — as on «الاتحادات»). A dot hanging half outside its section was
    sometimes painted only below the edge (#610), so each section reaches 12px higher with a clear top border: its
    colour still starts at the edge (background-clip), the band above shows through the border, and the whole dot lies
    inside the section's own box. */
-#feds, #full-shows, #recaps, #nostalgia-home, #news{ border-top:12px solid transparent !important; margin-top:-12px; background-clip:padding-box; }
-#feds::before, #full-shows::before, #recaps::before, #nostalgia-home::before, #news::before{
+#feds, #full-shows, #nostalgia-home, #news{ border-top:12px solid transparent !important; margin-top:-12px; background-clip:padding-box; }
+#feds::before, #full-shows::before, #nostalgia-home::before, #news::before{
   content:""; position:absolute; top:0; left:50%; transform:translateX(-50%);
   width:min(760px, 78%); height:1px; pointer-events:none;
   background:linear-gradient(90deg, transparent, color-mix(in srgb, var(--sec) 45%, var(--line)) 30%, color-mix(in srgb, var(--sec) 45%, var(--line)) 70%, transparent);
 }
-#feds::after, #full-shows::after, #recaps::after, #nostalgia-home::after, #news::after{
+#feds::after, #full-shows::after, #nostalgia-home::after, #news::after{
   content:""; position:absolute; top:0.5px; left:50%; transform:translate(-50%, -50%);
   width:9px; height:9px; border-radius:50%; pointer-events:none;
   /* a dot lit in the section's own colour: no ring painted in a background colour, which never matched both the band
@@ -1337,11 +1336,7 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
 </form>
 <ul id="navMenu">
 <li><a class="navlink" href="/library/">مكتبة العروض</a></li>
-<li class="nav-dropdown nav-shows"><a class="navlink" href="/shows/" aria-haspopup="true">عروض المصارعة<svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
-  <ul class="dropdown-menu" aria-label="عروض المصارعة">
-    <li><a class="drop-item drop-shows" href="/shows/"><span class="drop-dot"></span>كل العروض</a></li>
-    <li><a class="drop-item drop-recaps" href="/recaps/"><span class="drop-dot"></span>ملخصات العروض</a></li>
-  </ul></li>
+<li><a class="navlink" href="/shows/">عروض المصارعة</a></li>
 <li><a class="navlink" href="/news/">الأخبار</a></li><li><a class="navlink" href="/nostalgia/">نوستالجيا</a></li><li><a class="navlink nav-community" href="/community/">مجتمع المصارعة</a></li><li><a class="navlink" href="/apps/">تطبيقات الموقع</a></li>
 <li class="utility-row">
 <button aria-label="المفضلة وقائمة المشاهدة لاحقاً" class="theme-toggle bookmarks-btn" id="arwBookmarksBtn" type="button" title="المفضلة والمشاهدة لاحقاً">
@@ -1361,7 +1356,7 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
 <div class="hero-inner">
 <span class="eyebrow">بوابتك العربية للمصارعة الحرة</span>
 <h1 class="home-h1"><span class="h1-line">مصارعة حرة من جميع</span> <span class="h1-line">الاتحادات، <span class="u">في مكان واحد</span></span></h1>
-<p>عروض مصارعة حرة مترجمة، ملخصات العروض، وآخر أخبار المصارعة.</p>
+<p>عروض مصارعة حرة مترجمة، وآخر أخبار المصارعة.</p>
 </div>
 </div>
 
@@ -1526,34 +1521,6 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
 </div>
 </section>
 
-<section class="content" id="recaps">
-<div class="wrap">
-<div class="section-head reveal">
-<div class="head-text"><h2 style="color:var(--violet);"><span class="dot" style="background:var(--violet)"></span>ملخصات العروض</h2><p>أبرز اللقطات والنتائج، لمن لا يستطيع مشاهدة الحلقة كاملة.</p></div>
-</div>
-<div class="grid-12">
-{% set recapCount = 0 %}
-{% for item in collections.recaps %}
-{% set isNostalgia = (item.data.nostalgia_series or ('nostalgia' in (item.data.tags or [])) or ('نوستالجيا' in (item.data.tags or [])) or ('content/nostalgia' in (item.inputPath or ''))) %}
-{% if not isNostalgia and recapCount < 8 %}
-{% set recapCount = recapCount + 1 %}
-<a class="show-card reveal" href="{{ item.url | cleanUrl }}">
-<div class="show-thumb"><img class="thumb-img" src="{% optImg item.data.image, 'https://images.unsplash.com/photo-1715149721511-8e48fc0cb2f4?w=800&auto=format&fit=crop' %}" alt="{{ item.data.headline or item.data.title }}" loading="lazy" decoding="async" width="450" height="160"><div class="play-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:-2px;"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg></div></div>
-<div class="show-body">
-<div class="badge-row"><span class="kind-badge kind-recap">ملخص</span>{% if item.data.federation %}<span class="cat cat-{{ item.data.federation | lower }}">{{ item.data.federation }}</span>{% endif %}{% set fts = item | freshTs %}{% if fts %}<span class="kind-badge fresh-tag" data-fresh-ts="{{ fts }}">جديد</span>{% endif %}</div>
-<h3>{{ item.data.headline or item.data.title }}</h3>
-<p class="desc">{{ item.data.description }}</p>
-<div class="foot"><span>{{ item.date | date }}</span>{% if item.data.duration %}<span style="margin-inline-start:auto; display:inline-flex; align-items:center; gap:3px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>{{ item.data.duration }}</span>{% endif %}</div>
-</div>
-</a>
-{% endif %}
-{% endfor %}
-</div>
-<div class="reveal" style="text-align:center; margin-top:36px;">
-<a href="/recaps/" class="view-all">جميع الملخصات ←</a>
-</div>
-</div>
-</section>
 {% if collections.nostalgiaSeries and collections.nostalgiaSeries.length %}
 <section class="content" id="nostalgia-home">
 <div class="wrap">

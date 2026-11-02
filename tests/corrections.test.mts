@@ -1048,7 +1048,7 @@ test("federation names stay in Latin letters and «نتائج نزاعات» is 
   assert.ok(issues.some((i: { code: string }) => i.code === "federation_arabic_name"));
   // and no published story keeps the Arabic spelling of a federation
   const bad: string[] = [];
-  for (const dir of ["content/news", "content/news-en", "content/shows", "content/recaps", "content/nostalgia"]) {
+  for (const dir of ["content/news", "content/news-en", "content/shows", "content/nostalgia"]) {
     for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".md"))) {
       const text = fs.readFileSync(`${dir}/${f}`, "utf-8").replace(/^permalink:.*$/gm, "")
         // the spoiler note is the classifier's own reasoning for the social bot, never on the page (INCIDENTS #973)
