@@ -522,3 +522,11 @@ test("dual_form: «تجتمعان» / «تحالفتا» (Syuri-Asuka story, rou
 test("dual_form: «يتحولان» (AJ Lee / CM Punk title, round 2026-11-02 06:00) is blocked", () => {
   assert.ok(checkArticle("إيه جيه لي وسي ام بانك يتحولان إلى شخصيات في الهالوين", "نص عادي طويل بما يكفي لكي يمر الفحص دون مشاكل أخرى في الاختبار.").some((i) => i.code === "dual_form"));
 });
+
+test("dual_form: «تحالفا في / تمكنا من / ظهرا كفريق» (Page/Cass story, round 2026-11-02 07:00) is blocked, first-person «أننا تمكنا من» is not", () => {
+  const filler = "نص عادي طويل بما يكفي لكي يمر الفحص دون مشاكل أخرى في الاختبار.";
+  for (const bad of ["بيج كاس وإيثان بايج قد تحالفا في عرض الرو", "حيث تمكنا من تحقيق الفوز", "وإيثان بايج ظهرا كفريق في الربيع"]) {
+    assert.ok(checkArticle("خبر عادي عن المصارعة", `${bad}. ${filler}`).some((i) => i.code === "dual_form"), bad);
+  }
+  assert.ok(!checkArticle("خبر عادي عن المصارعة", `قال: أتمنى لو أننا تمكنا من الاحتفاظ بالتصميم. ${filler}`).some((i) => i.code === "dual_form"));
+});
