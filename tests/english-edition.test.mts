@@ -475,3 +475,10 @@ test("«Marisela Peñan» is corrected to «Marisela Peña» (round 2026-11-01)"
   assert.equal(fix('Marisela Peñan is set to enter the Hall of Fame.'), 'Marisela Peña is set to enter the Hall of Fame.');
   assert.equal(fix('Marisela Peña is set.'), 'Marisela Peña is set.');
 });
+
+test("«rubbing … in faces of» gets its «the» (round 2026-11-02)", async () => {
+  const { ENGLISH_FIXES } = await import('../scripts/english-edition.ts');
+  const fix = (t: string) => ENGLISH_FIXES.reduce((s, [re, to]) => s.replace(re, to), t);
+  assert.equal(fix('Royce Keys Loves Rubbing His Success in Faces of Critics'), 'Royce Keys Loves Rubbing His Success in the Faces of Critics');
+  assert.equal(fix('rubbing it in the faces of critics'), 'rubbing it in the faces of critics');
+});

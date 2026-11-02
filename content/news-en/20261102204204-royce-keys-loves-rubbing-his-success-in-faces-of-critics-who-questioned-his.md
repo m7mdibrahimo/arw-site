@@ -1,5 +1,5 @@
 ---
-title: "Royce Keys Loves Rubbing His Success in Faces of Critics Who Questioned His Move From AEW"
+title: "Royce Keys Loves Rubbing His Success in the Faces of Critics Who Questioned His Move From AEW"
 slug: "royce-keys-loves-rubbing-his-success-in-faces-of-critics-who-questioned-his"
 description: "Royce Keys remembers the doubts people expressed when he moved from AEW to WWE and did not immediately become a top television star."
 federation: WWE
