@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/wwe-stars-carmelo-hayes-kelani-jordan-get-married-miami/": {
-    "matchedFile": "20261018070544-زواج-كيلاني-جوردان-وكارميلو-هايز-رسميا.md",
-    "reason": "الخبر الجديد يعبر عن نفس الحدث وهو زواج كارميلو هايز وكيلاني جوردان في ميامي، وهو تكرار لنفس الواقعة التي تم نشرها مسبقاً.",
-    "at": "2026-10-18T04:13:14.063Z"
-  },
   "https://www.ringsidenews.com/will-ospreay-retains-aew-world-championship-wild-clockwork-carnage-match-wrestledream/": {
     "matchedFile": "20261017230000-نتائج-عرض-aew-wrestledream-17-أكتوبر-2026-مع-التغطية-الحية.md",
     "reason": "الخبر الجديد يغطي نفس نتيجة نزال بطولة AEW العالمية في عرض AEW WrestleDream الذي تم ذكره وتغطيته بالفعل في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261101171253-الإعلان-عن-عدة-مواجهات-وفقرات-لعرض-wwe-raw-القادم.md",
     "reason": "الخبر الجديد يكرر تفاصيل وجدول نزالات عرض WWE RAW المقرر إقامته في 2 نوفمبر 2026 والتي تم نشرها مسبقاً في الخبر رقم [0] من نفس الحدث.",
     "at": "2026-11-02T20:11:27.183Z"
+  },
+  "https://www.wrestlinginc.com/2304687/john-cena-classic-wwe-raw-appearance-details/": {
+    "matchedFile": "20261102013622-عرض-جون-سينا-الكلاسيكي-قد-يقام-في-مواجهة-مباشرة-مع-عرض-aew-worlds-end.md",
+    "reason": "الخبر الجديد يعيد سرد تفاصيل عودة جون سينا لعرض RAW للكشف عن تفاصيل البطولة، وهي معلومة تم ذكرها بالفعل في نهاية الخبر رقم 0.",
+    "at": "2026-11-02T20:52:08.652Z"
   }
 }

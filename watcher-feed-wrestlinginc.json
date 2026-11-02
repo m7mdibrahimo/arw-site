@@ -1,5 +1,15 @@
 [
   {
+    "id": 1532552489,
+    "link": "https://www.wrestlinginc.com/2304687/john-cena-classic-wwe-raw-appearance-details/",
+    "date": "Mon, 02 Nov 2026 20:48:07 +0000",
+    "date_gmt": "2026-11-02T20:48:07.000Z",
+    "title": {
+      "rendered": "John Cena Confirms WWE Raw Appearance Will Provide Details On John Cena Classic"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/john-cena-confirms-wwe-raw-appearance-will-provide-details-on-john-cena-classic/l-intro-1793652417.jpg"
+  },
+  {
     "id": 2544319194,
     "link": "https://www.wrestlinginc.com/2303334/wwe-raw-november-2-2026-results/",
     "date": "Mon, 02 Nov 2026 20:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Kelani Jordan Names WWE Wrestlers She Hopes To Share The Ring With"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/kelani-jordan-names-wwe-wrestlers-she-hopes-to-share-the-ring-with/l-intro-1793393946.jpg"
-  },
-  {
-    "id": 2695084093,
-    "link": "https://www.wrestlinginc.com/2303477/wwe-nxt-halloween-havoc-2026-biggest-winners-losers-opinion-review/",
-    "date": "Sun, 01 Nov 2026 22:33:22 +0000",
-    "date_gmt": "2026-11-01T22:33:22.000Z",
-    "title": {
-      "rendered": "WWE NXT Halloween Havoc 2026: Biggest Winners & Losers"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-halloween-havoc-2026-biggest-winners-losers/l-intro-1793572290.jpg"
   }
 ]
