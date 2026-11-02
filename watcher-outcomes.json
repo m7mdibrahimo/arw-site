@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-royal-rumble-2027-date-revealed": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-02T18:16:35.296Z"
+ },
  "https://www.fightful.com/wrestling/wwe-announces-date-for-wwe-royal-rumble-2027": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-21T03:23:33.728Z"
- },
- "https://www.fightful.com/wrestling/naraku-vs-shiloh-hill-added-to-nxt-halloween-havoc": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-10-21T03:02:41.302Z"
  }
 }
