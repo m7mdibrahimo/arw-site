@@ -771,3 +771,9 @@ test('اسم الاتحاد بحروف صغيرة (Njpw/Wwe/Aew) بيتصلح ل
   assert.match(applyCorrections('نجم Wwe و Aew'), /WWE و AEW/);
   assert.equal(applyCorrections('Rohan and Tnaa'), 'Rohan and Tnaa');
 });
+
+test('corrections fix the clumsy literal "could have ended in tragedy" phrase (INCIDENTS #1016)', () => {
+  const out = applyCorrections('جعلته يدرك مدى خطورة الموقف ونحو أي مصير كارثي كادت الأمور أن تؤول إليه');
+  assert.ok(out.includes('وكيف كادت الأمور أن تنتهي بمأساة'));
+  assert.ok(!out.includes('ونحو أي مصير'));
+});
