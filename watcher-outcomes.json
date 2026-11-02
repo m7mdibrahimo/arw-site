@@ -7,27 +7,27 @@
  "https://www.fightful.com/wrestling/six-woman-tag-team-match-added-to-11-2-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T18:38:44.305Z"
+  "at": "2026-11-02T18:41:27.368Z"
  },
  "https://www.fightful.com/wrestling/wwe-announces-date-for-wwe-royal-rumble-2027": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
   "retry": true,
-  "at": "2026-11-02T18:38:44.017Z"
+  "at": "2026-11-02T18:41:27.091Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-2": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T18:38:20.889Z"
+  "at": "2026-11-02T18:41:07.426Z"
  },
  "https://www.fightful.com/wrestling/mike-kitlas-senior-director-live-events-departs-mlw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T18:38:20.297Z"
+  "at": "2026-11-02T18:41:06.749Z"
  },
  "https://www.fightful.com/wrestling/reaction-to-brock-lesnar-ufc-comments-made-by-paul-heyman": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T18:38:20.044Z"
+  "at": "2026-11-02T18:41:06.464Z"
  },
  "https://www.ringsidenews.com/wwe-royal-rumble-2027-date-revealed": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
