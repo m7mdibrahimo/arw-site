@@ -1,5 +1,25 @@
 [
   {
+    "id": 802262736,
+    "link": "https://www.ringsidenews.com/john-cena-has-another-wwe-appearance-planned-ahead-of-the-classic/",
+    "date": "Mon, 02 Nov 2026 23:51:57 +0000",
+    "date_gmt": "2026-11-02T23:51:57.000Z",
+    "title": {
+      "rendered": "John Cena Has Another WWE Appearance Planned Ahead of The Classic"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/john-cena-accepts-wwe-heel-turn-as-a-failure-but-has-no-regrets-05.jpg?x55711"
+  },
+  {
+    "id": 802262671,
+    "link": "https://www.ringsidenews.com/ethan-page-wins-intercontinental-championship-november-2-wwe-raw/",
+    "date": "Mon, 02 Nov 2026 23:49:38 +0000",
+    "date_gmt": "2026-11-02T23:49:38.000Z",
+    "title": {
+      "rendered": "Ethan Page Wins Intercontinental Championship on November 2 WWE RAW"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/ethan-page-wins-intercontinental-championship-on-november-2-wwe-raw-00.jpg?x55711"
+  },
+  {
     "id": 802262670,
     "link": "https://www.ringsidenews.com/spoiler-john-cena-classic-plans-revealed-ahead-wwe-raw-announcement/",
     "date": "Mon, 02 Nov 2026 23:12:28 +0000",
@@ -128,25 +148,5 @@
       "rendered": "WWE Announces Last-Minute Match for November 2 RAW"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/06/wwe-confirms-king-and-queen-of-the-ring-tournament-matches-for-june-8-raw-13.jpg?x55711"
-  },
-  {
-    "id": 802262578,
-    "link": "https://www.ringsidenews.com/wwe-royal-rumble-2027-date-revealed/",
-    "date": "Mon, 02 Nov 2026 18:13:45 +0000",
-    "date_gmt": "2026-11-02T18:13:45.000Z",
-    "title": {
-      "rendered": "WWE Royal Rumble 2027 Date Revealed"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/08/wwe-considered-two-night-royal-rumble-for-2027-in-arizona-56.jpg?x55711"
-  },
-  {
-    "id": 802262564,
-    "link": "https://www.ringsidenews.com/why-royce-keys-reservations-about-filming-vehicle-explosion-birmingham/",
-    "date": "Mon, 02 Nov 2026 17:53:44 +0000",
-    "date_gmt": "2026-11-02T17:53:44.000Z",
-    "title": {
-      "rendered": "Why Royce Keys Had Reservations About Filming a Vehicle Explosion in Birmingham"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/why-royce-keys-had-reservations-about-filming-a-vehicle-explosion-in-birmingham-13.jpg?x55711"
   }
 ]
