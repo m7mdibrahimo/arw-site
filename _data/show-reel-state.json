@@ -4680,16 +4680,14 @@
     "publishedAt": 1793621476249,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ان جيه بي دبليو سوبر جونيور تاج ليج (اليوم السابع) 01.11.2026 مترجم",
-    "lastAttempt": 1793625039493,
+    "lastAttempt": 1793625902141,
     "errors": {
-      "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
     "reviewPlatforms": [],
@@ -4703,9 +4701,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض يو اف سي فايت نايت 31.10.2026 مترجم",
-    "lastAttempt": 1793621551283,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1793625931074,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
