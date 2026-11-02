@@ -4674,7 +4674,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261102131523-njpw-super-junior-tag-league-day-7-01-11-2026": {
     "publishedAt": 1793621476249,
@@ -4697,9 +4698,9 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض يو اف سي فايت نايت 31.10.2026 مترجم",
-    "lastAttempt": 1793629499820,
+    "lastAttempt": 1793630317286,
     "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
     },
     "processing": [
       "instagram_story"
