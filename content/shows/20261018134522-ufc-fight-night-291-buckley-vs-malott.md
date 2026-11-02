@@ -3,7 +3,7 @@ show_type: عرض
 federation: MMA
 title: "UFC Fight Night 291: Buckley vs. Malott"
 headline: عرض يو اف سي فايت نايت 17.10.2026 مترجم
-card_title: name
+card_title: date
 program_name: UFC Fight Night
 description: عرض يو اف سي فايت نايت مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-10-17
