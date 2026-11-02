@@ -1,5 +1,15 @@
 [
   {
+    "id": 802262527,
+    "link": "https://www.ringsidenews.com/john-cena-appears-spoil-his-big-wwe-raw-announcement-instagram-post/",
+    "date": "Mon, 02 Nov 2026 15:00:01 +0000",
+    "date_gmt": "2026-11-02T15:00:01.000Z",
+    "title": {
+      "rendered": "John Cena Appears to Spoil His Big WWE RAW Announcement With Instagram Post"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/john-cena-set-to-reveal-details-about-john-cena-classic-on-november-2-wwe-raw-14.jpg?x55711"
+  },
+  {
     "id": 802262523,
     "link": "https://www.ringsidenews.com/kevin-nash-addresses-possibility-joining-wwes-creative-team/",
     "date": "Mon, 02 Nov 2026 14:28:22 +0000",
@@ -138,15 +148,5 @@
       "rendered": "Another MLW Departure Confirmed as Senior Director Exits Company"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2024/12/former-wwe-star-makes-debut-at-mlw-one-shot-53.jpg?x55711"
-  },
-  {
-    "id": 802262427,
-    "link": "https://www.ringsidenews.com/backstage-wwe-reaction-paul-heymans-brock-lesnar-ufc-claims/",
-    "date": "Sun, 01 Nov 2026 23:38:12 +0000",
-    "date_gmt": "2026-11-01T23:38:12.000Z",
-    "title": {
-      "rendered": "Backstage WWE Reaction to Paul Heyman’s Brock Lesnar UFC Claims"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/06/paul-heyman-breaks-silence-after-brock-lesnars-wwe-raw-return-22.jpg?x55711"
   }
 ]
