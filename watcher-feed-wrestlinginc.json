@@ -1,5 +1,15 @@
 [
   {
+    "id": 2738986970,
+    "link": "https://www.wrestlinginc.com/2303553/lil-yachty-explains-lessons-learned-wwe/",
+    "date": "Mon, 02 Nov 2026 15:30:00 +0000",
+    "date_gmt": "2026-11-02T15:30:00.000Z",
+    "title": {
+      "rendered": "Lil Yachty Explains Lessons Learned From WWE"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/lil-yachty-explains-lessons-learned-from-wwe/l-intro-1793605711.jpg"
+  },
+  {
     "id": 3976565681,
     "link": "https://www.wrestlinginc.com/2303547/aew-kevin-knight-comments-split-mike-bailey/",
     "date": "Mon, 02 Nov 2026 15:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW World Champion Will Ospreay Credits WCW Influence On Style"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-world-champion-will-ospreay-credits-wcw-influence-on-style/l-intro-1793294887.jpg"
-  },
-  {
-    "id": 2515708931,
-    "link": "https://www.wrestlinginc.com/2303424/wwe-shark-tank-goldberg-appear-reality-tv-series/",
-    "date": "Sun, 01 Nov 2026 16:23:28 +0000",
-    "date_gmt": "2026-11-01T16:23:28.000Z",
-    "title": {
-      "rendered": "WWE HOFer Goldberg Set To Appear On Reality TV Series"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-hofer-goldberg-set-to-appear-on-reality-tv-series/l-intro-1793550123.jpg"
   }
 ]
