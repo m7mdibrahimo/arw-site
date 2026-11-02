@@ -1558,7 +1558,7 @@ module.exports = function(eleventyConfig) {
         // How visitors really ask for a show: «تحميل/مشاهدة/اخر عرض <البرنامج>» — Google showed these for SmackDown at 3.4-6.7
         // while the aliases only had «مترجم»/«الاخير» forms. Added for every program (head/structured data only).
         const askName = /[\u0600-\u06FF]/.test(arName) ? (/^عرض\s/.test(arName) ? arName : "عرض " + arName) : "";
-        const asked = askName ? ["تحميل " + askName, "مشاهدة " + askName, "اخر " + askName, "تحميل " + askName + " مترجم"] : [];
+        const asked = askName ? ["تحميل " + askName, "مشاهدة " + askName, "اخر " + askName, "تحميل " + askName + " مترجم", askName + " مترجم", askName + " الاخير", askName + " الاخير مترجم", "مشاهدة " + askName + " مترجم"] : [];
         const withGenerated = baseAliases.concat(generated.concat(asked).filter(function(g, i, a) { return baseAliases.indexOf(g) === -1 && a.indexOf(g) === i; }));
         return { slug: p.slug, name: p.name, aliases: withGenerated, arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: arLibTitle, arHeadTitle: arHeadTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded,
           promo: (function(x) { return { key: x.key, mark: x.mark, name: x.name, h: x.h, s: x.s, custom: !!x.custom }; })(libraryPromotionOf({
