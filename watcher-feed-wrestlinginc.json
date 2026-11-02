@@ -1,5 +1,15 @@
 [
   {
+    "id": 4034105105,
+    "link": "https://www.wrestlinginc.com/2303575/wwe-nxt-viewership-ratings-october-27-2026/",
+    "date": "Mon, 02 Nov 2026 16:00:00 +0000",
+    "date_gmt": "2026-11-02T16:00:00.000Z",
+    "title": {
+      "rendered": "WWE NXT Viewership & Ratings Report: 10/27/2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-viewership-ratings-report-10272026/l-intro-1793613258.jpg"
+  },
+  {
     "id": 2738986970,
     "link": "https://www.wrestlinginc.com/2303553/lil-yachty-explains-lessons-learned-wwe/",
     "date": "Mon, 02 Nov 2026 15:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Paul Heyman: Brock Lesnar Would Have Gone Undefeated In UFC If Not For Diverticulitis"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/paul-heyman-brock-lesnar-would-have-gone-undefeated-in-ufc-if-not-for-diverticulitis/l-intro-1793553557.jpg"
-  },
-  {
-    "id": 4644385608,
-    "link": "https://www.wrestlinginc.com/2301275/aew-world-champion-will-ospreay-credits-wcw-influence-style/",
-    "date": "Sun, 01 Nov 2026 16:30:00 +0000",
-    "date_gmt": "2026-11-01T16:30:00.000Z",
-    "title": {
-      "rendered": "AEW World Champion Will Ospreay Credits WCW Influence On Style"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-world-champion-will-ospreay-credits-wcw-influence-on-style/l-intro-1793294887.jpg"
   }
 ]
