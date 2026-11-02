@@ -518,3 +518,7 @@ test("dual_form: «تجتمعان» / «تحالفتا» (Syuri-Asuka story, rou
   assert.ok(checkArticle(t, "اجتمعت المصارعة شوري مع أسوكا مؤخرا. وكانت الاثنتان قد تحالفتا مع هيكارو شيدا في عرض سابق أمام فريق قوي جدا.").some((i) => i.code === "dual_form" || i.code === "dual_noun"));
   assert.ok(checkArticle("شوري وأسوكا تجتمعان من جديد", "نص عادي طويل بما يكفي لكي يمر الفحص دون مشاكل أخرى في الاختبار.").some((i) => i.code === "dual_form"));
 });
+
+test("dual_form: «يتحولان» (AJ Lee / CM Punk title, round 2026-11-02 06:00) is blocked", () => {
+  assert.ok(checkArticle("إيه جيه لي وسي ام بانك يتحولان إلى شخصيات في الهالوين", "نص عادي طويل بما يكفي لكي يمر الفحص دون مشاكل أخرى في الاختبار.").some((i) => i.code === "dual_form"));
+});
