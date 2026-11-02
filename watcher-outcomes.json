@@ -34,11 +34,6 @@
   "retry": true,
   "at": "2026-11-02T14:48:28.851Z"
  },
- "https://www.wrestlinginc.com/2303125/maria-kanellis-looks-back-second-wwe-run": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Vince McMahon",
-  "retry": true,
-  "at": "2026-11-02T14:27:15.540Z"
- },
  "https://www.ringsidenews.com/cm-punk-kevin-owens-crown-jewel-status-clarified-amid-wwe-talent-safety-concerns": {
   "reason": "المراجعة رفضته: فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم",
   "retry": true,
