@@ -1,5 +1,15 @@
 [
   {
+    "id": 1761639071,
+    "link": "https://www.wrestlinginc.com/2304885/wwe-raw-ethan-page-chad-gable-mens-intercontinental-title/",
+    "date": "Mon, 02 Nov 2026 23:55:49 +0000",
+    "date_gmt": "2026-11-02T23:55:49.000Z",
+    "title": {
+      "rendered": "Ethan Page Defeats Chad Gable, Wins WWE Men's Intercontinental Title On Raw"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/ethan-page-defeats-chad-gable-wins-wwe-mens-intercontinental-title-on-raw/l-intro-1793663639.jpg"
+  },
+  {
     "id": 5018824748,
     "link": "https://www.wrestlinginc.com/2304869/wwe-john-cena-classic-plans-december-14-walt-disney-world/",
     "date": "Mon, 02 Nov 2026 23:29:34 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW's Orange Cassidy Explains How Tony Khan Has Helped The Pro Wrestling Industry"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-orange-cassidy-explains-how-tony-khan-has-helped-the-pro-wrestling-industry/l-intro-1793617537.jpg"
-  },
-  {
-    "id": 4153210788,
-    "link": "https://www.wrestlinginc.com/2304029/wwe-crown-jewel-2026-dave-meltzer-saudi-arabia-maintains-no-stars-refused-travel/",
-    "date": "Mon, 02 Nov 2026 16:22:08 +0000",
-    "date_gmt": "2026-11-02T16:22:08.000Z",
-    "title": {
-      "rendered": "Dave Meltzer Maintains No WWE Stars Refused To Travel To Saudi Arabia For Crown Jewel"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/dave-meltzer-maintains-no-wwe-stars-refused-to-travel-to-saudi-arabia-for-crown-jewel/l-intro-1793636177.jpg"
   }
 ]

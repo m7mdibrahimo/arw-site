@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2303334/wwe-raw-november-2-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-02T23:58:39.894Z"
+ },
  "https://www.fightful.com/wrestling/wwes-internal-plans-call-for-john-cena-classic-to-take-place-at-walt-disney-world": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -28,11 +33,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-02T23:56:55.479Z"
- },
- "https://www.wrestlinginc.com/2303334/wwe-raw-november-2-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-02T23:52:53.916Z"
  },
  "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-2-2026": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
