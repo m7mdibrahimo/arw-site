@@ -1,38 +1,38 @@
 {
- "https://www.fightful.com/mma/jake-paul-to-face-cedric-doumbe-on-december-24": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-02T14:48:28.851Z"
- },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-2": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T14:48:11.844Z"
+  "at": "2026-11-02T14:50:17.678Z"
  },
  "https://www.fightful.com/wrestling/mike-kitlas-senior-director-live-events-departs-mlw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T14:48:11.111Z"
+  "at": "2026-11-02T14:50:17.064Z"
  },
  "https://www.fightful.com/wrestling/reaction-to-brock-lesnar-ufc-comments-made-by-paul-heyman": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T14:48:10.806Z"
+  "at": "2026-11-02T14:50:16.809Z"
  },
  "https://www.fightful.com/wrestling/jordynne-grace-still-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T14:48:10.257Z"
+  "at": "2026-11-02T14:50:16.333Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-no-wrestler-has-ever-said-that-they-want-lose-their-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T14:48:09.543Z"
+  "at": "2026-11-02T14:50:15.714Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-addresses-hardcore-fans-not-always-loving-the-wwe-nil-system": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T14:48:09.099Z"
+  "at": "2026-11-02T14:50:15.333Z"
+ },
+ "https://www.fightful.com/mma/jake-paul-to-face-cedric-doumbe-on-december-24": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-02T14:48:28.851Z"
  },
  "https://www.wrestlinginc.com/2303125/maria-kanellis-looks-back-second-wwe-run": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Vince McMahon",
