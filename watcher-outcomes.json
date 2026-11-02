@@ -1,48 +1,53 @@
 {
+ "https://www.fightful.com/wrestling/lol-wrestling-mischief-night-mayhem-5-results-10-30": {
+  "reason": "المراجعة رفضته: العنوان مش جملة عربية (أقل من 3 كلمات عربية)",
+  "retry": false,
+  "at": "2026-11-02T01:25:31.654Z"
+ },
  "https://www.fightful.com/wrestling/mike-kitlas-senior-director-live-events-departs-mlw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T01:20:59.762Z"
+  "at": "2026-11-02T01:24:40.411Z"
  },
  "https://www.fightful.com/wrestling/reaction-to-brock-lesnar-ufc-comments-made-by-paul-heyman": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T01:20:59.482Z"
+  "at": "2026-11-02T01:24:40.180Z"
  },
  "https://www.fightful.com/wrestling/jordynne-grace-still-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T01:20:58.966Z"
+  "at": "2026-11-02T01:24:39.749Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-no-wrestler-has-ever-said-that-they-want-lose-their-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T01:20:58.296Z"
+  "at": "2026-11-02T01:24:39.188Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-addresses-hardcore-fans-not-always-loving-the-wwe-nil-system": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T01:20:57.889Z"
+  "at": "2026-11-02T01:24:38.837Z"
  },
  "https://www.fightful.com/wrestling/fred-rosser-clarifies-that-he-was-a-guest-coach-at-wwe-performance-center": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T01:20:57.228Z"
+  "at": "2026-11-02T01:24:38.276Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-02T01:20:56.875Z"
+  "at": "2026-11-02T01:24:37.974Z"
  },
  "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-finals-set": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T01:20:56.548Z"
+  "at": "2026-11-02T01:24:37.685Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-appearance-intercontinental-championship-match-and-more-added-to-11-2-wwe-monday-night-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T01:20:56.274Z"
+  "at": "2026-11-02T01:24:37.446Z"
  },
  "https://www.ringsidenews.com/kevin-knight-mara-sade-link-rihanna-during-surprise-halloween-encounter": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
@@ -1993,10 +1998,5 @@
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-12)",
   "retry": false,
   "at": "2026-10-20T20:05:47.200Z"
- },
- "https://www.wrestlinginc.com/2292267/wwe-roman-reigns-schedule-quality-over-quantity": {
-  "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي",
-  "retry": false,
-  "at": "2026-10-20T19:56:24.499Z"
  }
 }
