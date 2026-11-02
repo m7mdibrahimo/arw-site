@@ -1,5 +1,15 @@
 [
   {
+    "id": 336964,
+    "link": "https://www.fightful.com/wrestling/details-on-rumored-potential-wwe-stable/",
+    "date": "2026-11-01T19:06:54",
+    "date_gmt": "2026-11-02T00:06:54",
+    "title": {
+      "rendered": "Details On Rumored Potential WWE Stable"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/01190548/HVmg2eEXIAAaFFm.webp"
+  },
+  {
     "id": 336962,
     "link": "https://www.fightful.com/wrestling/jordynne-grace-still-with-wwe/",
     "date": "2026-11-01T18:48:01",
@@ -288,15 +298,5 @@
       "rendered": "CM Punk vs. Grayson Waller For NXT Title, NXT Women&#8217;s Title Bout, More Set For 11/4 WWE NXT"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/17155035/Screenshot-352-e1786996255456.png"
-  },
-  {
-    "id": 336851,
-    "link": "https://www.fightful.com/wrestling/mercedes-mone-to-defend-aew-womens-world-title-against-marina-shafir-at-aew-full-gear/",
-    "date": "2026-10-31T22:12:22",
-    "date_gmt": "2026-11-01T02:12:22",
-    "title": {
-      "rendered": "Mercedes Mone To Defend AEW Women&#8217;s World Title Against Marina Shafir At AEW Full Gear"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/31221119/HWAUkGNXEAEOZsA.jpg"
   }
 ]
