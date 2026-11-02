@@ -1,38 +1,38 @@
 {
- "https://www.wrestlinginc.com/2303125/maria-kanellis-looks-back-second-wwe-run": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Vince McMahon",
-  "retry": true,
-  "at": "2026-11-02T14:07:57.038Z"
- },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-2": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T14:06:10.207Z"
+  "at": "2026-11-02T14:09:55.085Z"
  },
  "https://www.fightful.com/wrestling/mike-kitlas-senior-director-live-events-departs-mlw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T14:06:09.629Z"
+  "at": "2026-11-02T14:09:54.437Z"
  },
  "https://www.fightful.com/wrestling/reaction-to-brock-lesnar-ufc-comments-made-by-paul-heyman": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T14:06:09.390Z"
+  "at": "2026-11-02T14:09:54.170Z"
  },
  "https://www.fightful.com/wrestling/jordynne-grace-still-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T14:06:08.948Z"
+  "at": "2026-11-02T14:09:53.675Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-no-wrestler-has-ever-said-that-they-want-lose-their-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T14:06:08.365Z"
+  "at": "2026-11-02T14:09:53.026Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-addresses-hardcore-fans-not-always-loving-the-wwe-nil-system": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T14:06:08.003Z"
+  "at": "2026-11-02T14:09:52.619Z"
+ },
+ "https://www.wrestlinginc.com/2303125/maria-kanellis-looks-back-second-wwe-run": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Vince McMahon",
+  "retry": true,
+  "at": "2026-11-02T14:07:57.038Z"
  },
  "https://www.ringsidenews.com/cm-punk-kevin-owens-crown-jewel-status-clarified-amid-wwe-talent-safety-concerns": {
   "reason": "المراجعة رفضته: فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم",
