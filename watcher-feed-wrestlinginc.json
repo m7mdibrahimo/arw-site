@@ -1,5 +1,15 @@
 [
   {
+    "id": 4711970773,
+    "link": "https://www.wrestlinginc.com/2304328/aew-darby-allin-complete-new-york-city-marathon/",
+    "date": "Mon, 02 Nov 2026 18:16:03 +0000",
+    "date_gmt": "2026-11-02T18:16:03.000Z",
+    "title": {
+      "rendered": "AEW's Darby Allin Completes New York City Marathon"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-darby-allin-completes-new-york-city-marathon/l-intro-1793643097.jpg"
+  },
+  {
     "id": 3866674286,
     "link": "https://www.wrestlinginc.com/2304158/aew-mlw-rafael-morfii-vice-president-vp-accepts-position/",
     "date": "Mon, 02 Nov 2026 17:22:24 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Paul Heyman Reveals He Betrayed WCW To Launch The Undertaker's Career In WWE"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/paul-heyman-reveals-he-betrayed-wcw-to-launch-the-undertakers-career-in-wwe/l-intro-1793383395.jpg"
-  },
-  {
-    "id": 4418062323,
-    "link": "https://www.wrestlinginc.com/2303464/tna-leon-slater-aj-styles-trying-become-next/",
-    "date": "Sun, 01 Nov 2026 19:52:36 +0000",
-    "date_gmt": "2026-11-01T19:52:36.000Z",
-    "title": {
-      "rendered": "Leon Slater Says He's Trying To Become TNA's Next AJ Styles"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/leon-slater-says-hes-trying-to-become-tnas-next-aj-styles/l-intro-1793562708.jpg"
   }
 ]
