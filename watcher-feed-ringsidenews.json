@@ -1,5 +1,15 @@
 [
   {
+    "id": 802262590,
+    "link": "https://www.ringsidenews.com/wwe-announces-last-minute-match-november-2-raw/",
+    "date": "Mon, 02 Nov 2026 18:26:37 +0000",
+    "date_gmt": "2026-11-02T18:26:37.000Z",
+    "title": {
+      "rendered": "WWE Announces Last-Minute Match for November 2 RAW"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/06/wwe-confirms-king-and-queen-of-the-ring-tournament-matches-for-june-8-raw-13.jpg?x55711"
+  },
+  {
     "id": 802262578,
     "link": "https://www.ringsidenews.com/wwe-royal-rumble-2027-date-revealed/",
     "date": "Mon, 02 Nov 2026 18:13:45 +0000",
@@ -138,15 +148,5 @@
       "rendered": "Gabe Kidd Trashes Entire WWE Roster With NSFW Response About Potential Matches"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/gabe-kidd-trashes-entire-wwe-roster-with-nsfw-response-about-potential-matches-50.jpg?x55711"
-  },
-  {
-    "id": 802262476,
-    "link": "https://www.ringsidenews.com/why-randy-ortons-wwe-heel-run-faces-major-problem/",
-    "date": "Mon, 02 Nov 2026 12:24:07 +0000",
-    "date_gmt": "2026-11-02T12:24:07.000Z",
-    "title": {
-      "rendered": "Why Randy Orton’s WWE Heel Run Faces a Major Problem"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/why-randy-ortons-wwe-heel-run-faces-a-major-problem-17.jpg?x55711"
   }
 ]
