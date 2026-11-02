@@ -413,9 +413,9 @@ export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYea
  * dual_noun / dual_form joined them in INCIDENTS #471: ~4% of stories reached the site with «نزالين» / «حققا» / «أنهما»
  * although the style guide bans the dual. english_title_name is not blocking: «Championship» is also part of tournament names.
  */
-export const BLOCKING_QA_CODES = ["betting_promo", "title_no_result", "invented_winner", "adverb_without_alef", "title_not_arabic", "english_quote", "english_caption_line", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "glued_prefix_quote", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "glued_arabic_words", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "verbless_opening", "lowercase_latin_fragment", "orphan_in_favor", "spanish_article_mixed", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "same_title_published", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", "hidden_stipulation_title", "hidden_match_title", "federation_as_championship", "half_english_name", "tripled_letter", "crowned_new_belt", "title_champions_no_name", "pair_singular_verb", "title_vague_topic", "dont_expect_literal", ];
+export const BLOCKING_QA_CODES = ["repeated_phrase", "betting_promo", "title_no_result", "invented_winner", "adverb_without_alef", "title_not_arabic", "english_quote", "english_caption_line", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "glued_prefix_quote", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "glued_arabic_words", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "verbless_opening", "lowercase_latin_fragment", "orphan_in_favor", "spanish_article_mixed", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "same_title_published", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", "hidden_stipulation_title", "hidden_match_title", "federation_as_championship", "half_english_name", "tripled_letter", "crowned_new_belt", "title_champions_no_name", "pair_singular_verb", "title_vague_topic", "dont_expect_literal", ];
 /** Blocking codes that are one-off Gemini glitches: a fresh translation on the next run usually comes out clean. */
-export const RETRYABLE_QA_CODES = ["artifact", "title_no_result", "invented_winner", "adverb_without_alef", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "english_caption_line", "mixed_script_word", "name_not_in_source", "spanish_article_mixed", "orphan_in_favor", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", "hidden_stipulation_title", "hidden_match_title", "federation_as_championship", "half_english_name", "tripled_letter", "crowned_new_belt", "title_champions_no_name", "pair_singular_verb", "title_vague_topic", "dont_expect_literal", ];
+export const RETRYABLE_QA_CODES = ["repeated_phrase", "artifact", "title_no_result", "invented_winner", "adverb_without_alef", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "english_quote", "english_caption_line", "mixed_script_word", "name_not_in_source", "spanish_article_mixed", "orphan_in_favor", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "team_size_label", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", "hidden_stipulation_title", "hidden_match_title", "federation_as_championship", "half_english_name", "tripled_letter", "crowned_new_belt", "title_champions_no_name", "pair_singular_verb", "title_vague_topic", "dont_expect_literal", ];
 
 
 /** Winners («🏆 **الفائز:** …») whose name isn't in the text of their own match block. */
@@ -606,6 +606,13 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
     if (key.length < 60) continue;
     if (lineKeys.has(key)) { issues.push({ code: "duplicate_paragraph", severity: "error", field: "body", message: "نفس الفقرة/النقطة مكررة مرتين", excerpt: line.slice(0, 80) }); break; }
     lineKeys.add(key);
+  }
+
+  // A phrase of 3+ words written twice back to back («…وتلك كانت الحقبة الذهبية، وتلك كانت الحقبة الذهبية» — Santino
+  // Marella story, INCIDENTS #1017). dropRepeatedClause needs 7 words; this catches the short ones.
+  for (const line of stripNonProse(body || "").split(/\n+/)) {
+    const rep = findAdjacentRepeatedPhrase(line);
+    if (rep) { issues.push({ code: "repeated_phrase", severity: "error", field: "body", message: "جملة قصيرة مكررة ورا بعض — اكتبها مرة واحدة", excerpt: rep }); break; }
   }
 
   // A result block whose prose says one wrestler won while the «الفائز» line names the other
@@ -1094,6 +1101,19 @@ export function spelledMoneyToDigits(body: string): string {
 }
 const ORD_UNITS: Record<string, number> = { حادية: 1, ثانية: 2, ثالثة: 3, رابعة: 4, خامسة: 5, سادسة: 6, سابعة: 7, ثامنة: 8, تاسعة: 9, حادي: 1, ثاني: 2, ثالث: 3, رابع: 4, خامس: 5, سادس: 6, سابع: 7, ثامن: 8, تاسع: 9 };
 const HUNDREDS: Record<string, number> = { مائة: 100, مئة: 100, مائتي: 200, مائتين: 200, ثلاثمائة: 300, أربعمائة: 400, خمسمائة: 500, ستمائة: 600, سبعمائة: 700, ثمانمائة: 800, تسعمائة: 900 };
+
+/** First phrase of 3+ Arabic words that is immediately repeated (ignoring punctuation and a leading «و»), or null. */
+export function findAdjacentRepeatedPhrase(line: string): string | null {
+  const words = [...line.matchAll(/\S+/g)].map(m => m[0].replace(/[،,.:؛!?؟«»"()]/g, "").replace(/^و(?=[\u0621-\u064A]{3,})/, ""));
+  for (let n = 3; n <= 12; n++) {
+    for (let i = 0; i + 2 * n <= words.length; i++) {
+      let same = true;
+      for (let k = 0; k < n && same; k++) same = !!words[i + k] && /^[\u0621-\u064A]+$/.test(words[i + k]) && words[i + k] === words[i + n + k];
+      if (same) return words.slice(i, i + n).join(" ");
+    }
+  }
+  return null;
+}
 
 /**
  * A clause written twice in one paragraph: «…إثر تغلبه على دومينيك ميستيريو في عرض AAA

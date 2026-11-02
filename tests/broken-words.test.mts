@@ -777,3 +777,11 @@ test('corrections fix the clumsy literal "could have ended in tragedy" phrase (I
   assert.ok(out.includes('وكيف كادت الأمور أن تنتهي بمأساة'));
   assert.ok(!out.includes('ونحو أي مصير'));
 });
+
+test('INCIDENTS #1017: a 3+ word phrase repeated back to back is blocked', () => {
+  const pad = Array.from({ length: 40 }, (_, i) => ` كلمة${'أبجدهوزحطيكلمنسعفصقرشتثخذضظغ'[i % 28]}${'أبجدهوزحطيكلمنسعفصقرشتثخذضظغ'[(i * 7) % 28]}ا`).join('');
+  const bad = 'قال إن تلك كانت الحقبة الذهبية، وتلك كانت الحقبة الذهبية.' + pad;
+  const ok = 'قال إن تلك كانت الحقبة الذهبية، ثم عادت الأمور.' + pad;
+  assert.ok(checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', bad).some((i) => i.code === 'repeated_phrase'));
+  assert.ok(!checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', ok).some((i) => i.code === 'repeated_phrase'));
+});

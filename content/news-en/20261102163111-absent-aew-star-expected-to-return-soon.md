@@ -1,5 +1,5 @@
 ---
-title: "Absent AEW Star Expected to Return Soon"
+title: "Nick Wayne Expected to Return to AEW Soon"
 slug: "absent-aew-star-expected-to-return-soon"
 description: "Nick Wayne could return to AEW television as soon as Wednesday, November 4."
 federation: AEW
