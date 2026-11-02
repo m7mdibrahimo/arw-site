@@ -1,5 +1,25 @@
 [
   {
+    "id": 2544319194,
+    "link": "https://www.wrestlinginc.com/2303334/wwe-raw-november-2-2026-results/",
+    "date": "Mon, 02 Nov 2026 20:00:00 +0000",
+    "date_gmt": "2026-11-02T20:00:00.000Z",
+    "title": {
+      "rendered": "WWE Raw Results 11/2/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-results-11226-w-live-updates/l-intro-1793483624.jpg"
+  },
+  {
+    "id": 4901379387,
+    "link": "https://www.wrestlinginc.com/2304585/wwe-rusev-believes-more-fight-ahead-sons-birth/",
+    "date": "Mon, 02 Nov 2026 19:58:19 +0000",
+    "date_gmt": "2026-11-02T19:58:19.000Z",
+    "title": {
+      "rendered": "WWE's Rusev Believes He Has 'More To Fight For' Ahead Of Son's Birth"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-rusev-believes-he-has-more-to-fight-for-ahead-of-sons-birth/l-intro-1793649379.jpg"
+  },
+  {
     "id": 3795969377,
     "link": "https://www.wrestlinginc.com/2304530/aew-wwe-adam-copeland-edge-tony-khan-john-cena-open-final-match/",
     "date": "Mon, 02 Nov 2026 19:28:39 +0000",
@@ -178,25 +198,5 @@
       "rendered": "WWE NXT Halloween Havoc 2026: Biggest Winners & Losers"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-halloween-havoc-2026-biggest-winners-losers/l-intro-1793572290.jpg"
-  },
-  {
-    "id": 3978348992,
-    "link": "https://www.wrestlinginc.com/2302913/zoey-serrano-stark-wwe-modern-right-to-censor-attitude-era/",
-    "date": "Sun, 01 Nov 2026 22:00:00 +0000",
-    "date_gmt": "2026-11-01T22:00:00.000Z",
-    "title": {
-      "rendered": "Zoey Serrano (Fka WWE's Zoey Stark) Pitched Modern Version Of Attitude Era Gimmick"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/zoey-serrano-fka-wwes-zoey-stark-pitched-modern-version-of-attitude-era-gimmick/l-intro-1793389918.jpg"
-  },
-  {
-    "id": 2516075848,
-    "link": "https://www.wrestlinginc.com/2302889/sami-zayn-wwe-wrestlemania-match-johnny-knoxville/",
-    "date": "Sun, 01 Nov 2026 21:30:00 +0000",
-    "date_gmt": "2026-11-01T21:30:00.000Z",
-    "title": {
-      "rendered": "Sami Zayn Reflects On WWE WrestleMania Match With Johnny Knoxville"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/sami-zayn-reflects-on-wwe-wrestlemania-match-with-johnny-knoxville/l-intro-1793389393.jpg"
   }
 ]
