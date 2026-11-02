@@ -1,5 +1,15 @@
 [
   {
+    "id": 337020,
+    "link": "https://www.fightful.com/wrestling/full-lineup-for-njpw-power-struggle/",
+    "date": "2026-11-02T06:54:43",
+    "date_gmt": "2026-11-02T11:54:43",
+    "title": {
+      "rendered": "Full Lineup For NJPW Power Struggle"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/02065421/20261103_PS_SP3.jpg"
+  },
+  {
     "id": 336955,
     "link": "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-2/",
     "date": "2026-11-02T06:00:00",
@@ -288,15 +298,5 @@
       "rendered": "Je&#8217;Von Evans Says The Only Way He And Penta Can &#8216;Get Their Game Back&#8217; Is To Win The WWE World Tag Team Titles"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/26210000/Screenshot-350-e1793062815570.png"
-  },
-  {
-    "id": 335453,
-    "link": "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-standings-and-results-archive/",
-    "date": "2026-11-01T10:11:00",
-    "date_gmt": "2026-11-01T15:11:00",
-    "title": {
-      "rendered": "NJPW Super Junior Tag League 2026 Standings And Results Archive"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/13070214/Untitled-Design-12.jpg"
   }
 ]
