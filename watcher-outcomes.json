@@ -39,11 +39,6 @@
   "retry": true,
   "at": "2026-11-02T19:37:05.500Z"
  },
- "https://www.wrestlinginc.com/2303125/maria-kanellis-looks-back-second-wwe-run": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Vince McMahon",
-  "retry": true,
-  "at": "2026-11-02T19:35:08.121Z"
- },
  "https://www.fightful.com/wrestling/wwe-announces-date-for-wwe-royal-rumble-2027": {
   "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
   "retry": true,
