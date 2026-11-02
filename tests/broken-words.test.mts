@@ -785,3 +785,7 @@ test('INCIDENTS #1017: a 3+ word phrase repeated back to back is blocked', () =>
   assert.ok(checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', bad).some((i) => i.code === 'repeated_phrase'));
   assert.ok(!checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', ok).some((i) => i.code === 'repeated_phrase'));
 });
+
+test('corrections fix «بنفس القحدة» (INCIDENTS #1020)', () => {
+  assert.equal(applyCorrections('لم ينخفض التقييم بنفس القحدة'), 'لم ينخفض التقييم بنفس الحدة');
+});
