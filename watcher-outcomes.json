@@ -1,38 +1,43 @@
 {
+ "https://www.fightful.com/wrestling/santino-marella-says-he-pitched-cobra-vs-mr-socko-battle-in-the-2012-royal-rumble-match-says-they-had-more-planned": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-02T12:58:59.327Z"
+ },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-2": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T12:56:59.677Z"
+  "at": "2026-11-02T12:58:27.606Z"
  },
  "https://www.fightful.com/wrestling/mike-kitlas-senior-director-live-events-departs-mlw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T12:56:59.012Z"
+  "at": "2026-11-02T12:58:27.146Z"
  },
  "https://www.fightful.com/wrestling/reaction-to-brock-lesnar-ufc-comments-made-by-paul-heyman": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T12:56:58.746Z"
+  "at": "2026-11-02T12:58:26.957Z"
  },
  "https://www.fightful.com/wrestling/jordynne-grace-still-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T12:56:58.249Z"
+  "at": "2026-11-02T12:58:26.608Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-no-wrestler-has-ever-said-that-they-want-lose-their-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T12:56:57.603Z"
+  "at": "2026-11-02T12:58:26.149Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-addresses-hardcore-fans-not-always-loving-the-wwe-nil-system": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T12:56:57.196Z"
+  "at": "2026-11-02T12:58:25.863Z"
  },
  "https://www.fightful.com/wrestling/fred-rosser-clarifies-that-he-was-a-guest-coach-at-wwe-performance-center": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-02T12:56:56.546Z"
+  "at": "2026-11-02T12:58:25.400Z"
  },
  "https://www.ringsidenews.com/why-randy-ortons-wwe-heel-run-faces-major-problem": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-08)",
   "retry": false,
   "at": "2026-10-20T22:39:36.063Z"
- },
- "https://www.fightful.com/wrestling/tna-wrestling-re-signs-santino-marella": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-20T21:57:32.972Z"
  }
 }
