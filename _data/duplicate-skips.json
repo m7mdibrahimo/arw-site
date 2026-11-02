@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/motor-city-machine-guns-win-match-one-against-ftr-at-aew-wrestledream/": {
-    "matchedFile": "20261017230000-نتائج-عرض-aew-wrestledream-17-أكتوبر-2026-مع-التغطية-الحية.md",
-    "reason": "الخبر الجديد يغطي نتيجة نزال من عرض AEW WrestleDream، وعرض AEW WrestleDream تم نشر تقرير نتائجه الشامل بالفعل في الخبر المنشور رقم 1 والذي يتضمن تفاصيل النزالات ونتائجها.",
-    "at": "2026-10-18T01:18:10.380Z"
-  },
   "https://www.wrestlinginc.com/2289663/aew-wrestledream-2026-young-bucks-world-tag-titles-don-callis-family/": {
     "matchedFile": "20261017230000-نتائج-عرض-aew-wrestledream-17-أكتوبر-2026-مع-التغطية-الحية.md",
     "reason": "الخبر الجديد يتناول نتيجة نزال ضمن عرض AEW WrestleDream، وهو نفس العرض الذي تم تغطية نتائجه بالكامل في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261102013622-عرض-جون-سينا-الكلاسيكي-قد-يقام-في-مواجهة-مباشرة-مع-عرض-aew-worlds-end.md",
     "reason": "الخبر الجديد يكرر تفاصيل إعلان جون سينا عن بطولته الكلاسيكية في عرض RAW وموعدها المحتمل في 19 ديسمبر، وهي نفس المعلومات الموجودة في الخبر المنشور رقم 0.",
     "at": "2026-11-02T15:02:12.586Z"
+  },
+  "https://www.wrestlinginc.com/2304029/wwe-crown-jewel-2026-dave-meltzer-saudi-arabia-maintains-no-stars-refused-travel/": {
+    "matchedFile": "20261102162048-توضيح-موقف-سي-ام-بانك-وكيفن-أوينز-في-عرض-wwe-crown-jewel-وسط-مخاوف-أمان-المواهب.md",
+    "reason": "الخبر الجديد يكرر مناقشة شائعات رفض نجوم WWE السفر إلى السعودية لعرض Crown Jewel وتأكيد ديف ميلتزر عكس ذلك، وهو نفس المحور الأساسي للخبر المنشور رقم [0].",
+    "at": "2026-11-02T16:26:08.447Z"
   }
 }
