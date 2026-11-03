@@ -12,42 +12,47 @@
  "https://www.fightful.com/wrestling/john-cena-to-appear-at-wwe-survivor-series-wargames-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T01:50:44.661Z"
+  "at": "2026-11-03T01:53:17.950Z"
  },
  "https://www.fightful.com/wrestling/337121-john-cena-classic-cody-rhodes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T01:50:44.486Z"
+  "at": "2026-11-03T01:53:17.690Z"
  },
  "https://www.fightful.com/wrestling/ethan-page-defeats-chad-gable-to-win-intercontinental-championship-on-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T01:50:44.310Z"
+  "at": "2026-11-03T01:53:17.431Z"
  },
  "https://www.fightful.com/wrestling/wwes-internal-plans-call-for-john-cena-classic-to-take-place-at-walt-disney-world": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T01:50:44.194Z"
+  "at": "2026-11-03T01:53:17.260Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-2-2026-solo-sikoa-vs-royce-keys-john-cena-roman-reigns-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T01:50:43.967Z"
+  "at": "2026-11-03T01:53:16.925Z"
  },
  "https://www.fightful.com/wrestling/njpw-power-struggle-2026-preview-start-time-how-to-watch-location-11-3": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T01:50:43.648Z"
+  "at": "2026-11-03T01:53:16.465Z"
  },
  "https://www.fightful.com/wrestling/gabe-kidd-reacts-to-fan-hoping-to-see-him-in-arena-mexico-soon-its-been-nearly-two-years-and-im-still-waiting-to-end-soberano-jr": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-03T01:50:43.465Z"
+  "at": "2026-11-03T01:53:16.197Z"
  },
  "https://www.fightful.com/wrestling/six-woman-tag-team-match-added-to-11-2-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T01:50:26.276Z"
+  "at": "2026-11-03T01:52:57.554Z"
+ },
+ "https://www.ringsidenews.com/wwe-smackdown-spoiler-lineup-november-6-2026-full-match-card-backstage-notes-revealed": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-03T01:49:40.746Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-2": {
   "reason": "مكرر مع خبر نزل قبل كده",
