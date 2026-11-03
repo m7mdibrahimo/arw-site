@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2305034/bully-ray-blake-monroe-female-version-ecw-sandman": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-03T17:14:12.010Z"
+ },
  "https://www.ringsidenews.com/carmella-explains-why-shes-hesitant-return-wrestling": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
   "retry": true,
@@ -1998,10 +2003,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-22T13:05:24.164Z"
- },
- "https://www.fightful.com/wrestling/carlie-bravo-lee-moriarty-is-one-of-the-best-wrestlers-on-planet-earth": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-22T12:22:33.071Z"
  }
 }
