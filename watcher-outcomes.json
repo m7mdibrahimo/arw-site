@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/conan-lycan-now-going-by-kato-sykes-in-wwe": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-03T23:39:50.735Z"
+ },
  "https://www.fightful.com/wrestling/eva-marie-says-shed-need-a-lot-of-money-and-some-type-of-creative-control-to-wrestle-again": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T23:34:55.077Z"
+  "at": "2026-11-03T23:39:13.826Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-clarifies-that-he-isnt-under-contract-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T23:34:54.186Z"
+  "at": "2026-11-03T23:39:12.966Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-quit-smoking-five-weeks-ago-is-working-towards-a-procedure-to-get-himself-off-oxygen": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T23:34:53.928Z"
+  "at": "2026-11-03T23:39:12.724Z"
  },
  "https://www.fightful.com/wrestling/cm-punk-teases-working-john-cena-classic-wwe-worlds-collide-at-walt-disney-world": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-03T23:34:53.591Z"
+  "at": "2026-11-03T23:39:12.403Z"
  },
  "https://www.fightful.com/wrestling/wwe-shop-selling-john-cena-classic-title-belt-for-799-99": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T23:34:26.943Z"
+  "at": "2026-11-03T23:36:22.887Z"
  },
  "https://www.fightful.com/wrestling/ethan-page-explains-why-he-feels-nothing-following-wwe-intercontinental-title-win": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T23:34:25.962Z"
+  "at": "2026-11-03T23:36:21.958Z"
  },
  "https://www.ringsidenews.com/cm-punks-status-wwes-john-cena-classic-worlds-collide": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-23T02:52:24.546Z"
- },
- "https://www.wrestlinginc.com/2294991/tna-impact-shotzi-blackheart-officially-debuts": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-23T02:34:34.121Z"
  }
 }
