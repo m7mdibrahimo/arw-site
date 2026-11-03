@@ -39,16 +39,6 @@
   "retry": false,
   "at": "2026-11-03T21:02:24.295Z"
  },
- "https://www.ringsidenews.com/cm-punks-status-wwes-john-cena-classic-worlds-collide": {
-  "reason": "المراجعة رفضته: حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-03T20:44:16.866Z"
- },
- "https://www.ringsidenews.com/carmella-explains-why-shes-hesitant-return-wrestling": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-03T20:43:41.021Z"
- },
  "https://www.fightful.com/wrestling/the-miz-credits-his-friends-in-ohio-with-giving-him-his-ring-name": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
