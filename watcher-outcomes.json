@@ -1,38 +1,38 @@
 {
- "https://www.ringsidenews.com/carmella-explains-why-shes-hesitant-return-wrestling": {
-  "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
-  "retry": true,
-  "at": "2026-11-03T17:27:10.886Z"
+ "https://www.fightful.com/wrestling/wwe-crown-jewel-odds-courtesy-of-my-bookie": {
+  "reason": "المراجعة رفضته: خبر ترويجي لموقع مراهنات (MyBookie…) — مش خبر، خبر ترويجي لموقع مراهنات (MyBookie…) — مش خبر",
+  "retry": false,
+  "at": "2026-11-03T17:52:44.230Z"
  },
- "https://www.wrestlinginc.com/2305034/bully-ray-blake-monroe-female-version-ecw-sandman": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-03T17:14:12.010Z"
+ "https://www.fightful.com/wrestling/ethan-page-explains-why-he-feels-nothing-following-wwe-intercontinental-title-win": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-03T17:50:39.949Z"
  },
  "https://www.fightful.com/wrestling/ddt-ultimate-party-results-11-3-26-zack-sabre-jr-konosuke-takeshita-in-action": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kevin Owens",
   "retry": true,
-  "at": "2026-11-03T17:37:43.609Z"
+  "at": "2026-11-03T17:50:39.600Z"
  },
  "https://www.fightful.com/wrestling/wwe-to-host-avengers-doomsday-themed-worlds-collide-event-on-december-15th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:35:08.480Z"
+  "at": "2026-11-03T17:50:04.778Z"
  },
  "https://www.fightful.com/wrestling/the-miz-credits-his-friends-in-ohio-with-giving-him-his-ring-name": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:35:08.036Z"
+  "at": "2026-11-03T17:50:04.470Z"
  },
  "https://www.fightful.com/wrestling/kenny-omega-pins-yota-tsuji-at-njpw-power-struggle-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:35:07.510Z"
+  "at": "2026-11-03T17:50:04.105Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-spoilers-for-11-6-taped-on-11-2": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:35:06.747Z"
+  "at": "2026-11-03T17:50:03.588Z"
  },
  "https://www.fightful.com/wrestling/john-cena-to-appear-at-wwe-survivor-series-wargames-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1998,15 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مصارع في المتن غير موجود في المصدر: Gisele Shaw",
   "retry": true,
   "at": "2026-10-22T15:55:54.683Z"
- },
- "https://www.fightful.com/wrestling/aew-dynamite-results-10-21-2026-mike-bailey-vs-ilja-dragunov-cope-will-ospreay-team-up-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-22T14:50:36.347Z"
- },
- "https://www.fightful.com/wrestling/damian-priest-responds-to-r-truths-social-media-post-after-wwe-smackdown-injury-scare": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-22T13:05:24.164Z"
  }
 }
