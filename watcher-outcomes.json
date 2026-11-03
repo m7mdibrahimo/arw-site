@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2303334/wwe-raw-november-2-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-03T00:57:52.354Z"
+ },
  "https://www.fightful.com/wrestling/337121-john-cena-classic-cody-rhodes": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)",
   "retry": true,
@@ -33,11 +38,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-03T00:54:30.120Z"
- },
- "https://www.wrestlinginc.com/2303334/wwe-raw-november-2-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-03T00:37:47.353Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-2": {
   "reason": "مكرر مع خبر نزل قبل كده",
