@@ -657,7 +657,8 @@
     "httpsarab-wrestlingcomnewsكروز-مونتانا-يتحالف-مع-فريق-ذا-946-في-عرض-wwe-raw": 1793671828473,
     "httpsarab-wrestlingcomnewsبول-هايمن-يكشف-كيف-أصلح-علاقته-مع-ريك-فلير-بعد-ليلة-من-الشرب-المستمر": 1793672022856,
     "httpsarab-wrestlingcomshowscmll-tzompantli-de-mascaras-2026": 1793672619696,
-    "https___arab-wrestling_com_news____-______-_____-_____-____-_______-_____-__-___-wwe-raw_": 1793675319020
+    "https___arab-wrestling_com_news____-______-_____-_____-____-_______-_____-__-___-wwe-raw_": 1793675319020,
+    "httpsarab-wrestlingcomnewsشون-مايكلز-يحتفل-بظهور-كروز-مونتانا-الأول-في-عرض-wwe-raw": 1793675908234
   },
   "facebook": {
     "https___arab-wrestling_com_news_____-________-_________-__-____-________-____-________": 1793659007799,
@@ -1320,7 +1321,8 @@
     "httpsarab-wrestlingcomnewsكروز-مونتانا-يتحالف-مع-فريق-ذا-946-في-عرض-wwe-raw": 1793671828473,
     "httpsarab-wrestlingcomnewsبول-هايمن-يكشف-كيف-أصلح-علاقته-مع-ريك-فلير-بعد-ليلة-من-الشرب-المستمر": 1793672038951,
     "httpsarab-wrestlingcomshowscmll-tzompantli-de-mascaras-2026": 1793672632401,
-    "https___arab-wrestling_com_news____-______-_____-_____-____-_______-_____-__-___-wwe-raw_": 1793675319020
+    "https___arab-wrestling_com_news____-______-_____-_____-____-_______-_____-__-___-wwe-raw_": 1793675319020,
+    "httpsarab-wrestlingcomnewsشون-مايكلز-يحتفل-بظهور-كروز-مونتانا-الأول-في-عرض-wwe-raw": 1793675908234
   },
   "instagram": {
     "https___arab-wrestling_com_news_____-________-_________-__-____-________-____-________": 1793659007799,
@@ -1759,7 +1761,8 @@
     "httpsarab-wrestlingcomnewsتسريبات-ومواجهات-عرض-wwe-smackdown-يوم-6-نوفمبر-2026-والكواليس-المسربة": 1793671252792,
     "httpsarab-wrestlingcomnewsكروز-مونتانا-يتحالف-مع-فريق-ذا-946-في-عرض-wwe-raw": 1793671828473,
     "httpsarab-wrestlingcomshowscmll-tzompantli-de-mascaras-2026": 1793672699981,
-    "https___arab-wrestling_com_news____-______-_____-_____-____-_______-_____-__-___-wwe-raw_": 1793675319020
+    "https___arab-wrestling_com_news____-______-_____-_____-____-_______-_____-__-___-wwe-raw_": 1793675319020,
+    "httpsarab-wrestlingcomnewsشون-مايكلز-يحتفل-بظهور-كروز-مونتانا-الأول-في-عرض-wwe-raw": 1793675908234
   },
   "x": {
     "https___arab-wrestling_com_news_____-________-_________-__-____-________-____-________": 1793659007799,
@@ -1894,7 +1897,8 @@
     "httpsarab-wrestlingcomnewsالإعلان-رسميا-عن-تفاصيل-بطولة-جون-سينا-الكلاسيكية-في-عرض-wwe-raw-وكودي-رودز-أول-المشاركين": 1793668648845,
     "httpsarab-wrestlingcomnewsكروز-مونتانا-يتحالف-مع-فريق-ذا-946-في-عرض-wwe-raw": 1793671828473,
     "httpsarab-wrestlingcomshowscmll-tzompantli-de-mascaras-2026": 1793672717991,
-    "https___arab-wrestling_com_news____-______-_____-_____-____-_______-_____-__-___-wwe-raw_": 1793675319020
+    "https___arab-wrestling_com_news____-______-_____-_____-____-_______-_____-__-___-wwe-raw_": 1793675319020,
+    "httpsarab-wrestlingcomnewsشون-مايكلز-يحتفل-بظهور-كروز-مونتانا-الأول-في-عرض-wwe-raw": 1793675908234
   },
   "cooldowns": {
     "facebook": 1789639159562,
@@ -3273,6 +3277,15 @@
       "reason": "show",
       "why": "ai",
       "note": "النص يكشف تفاصيل وهجوم وتدخلات حدثت في عرض WWE RAW الذي أقيم في آخر ٦ ساعات"
+    },
+    "httpsarab-wrestlingcomnewsشون-مايكلز-يحتفل-بظهور-كروز-مونتانا-الأول-في-عرض-wwe-raw": {
+      "at": 1793675908234,
+      "title": "شون مايكلز يحتفل بظهور كروز مونتانا الأول في عرض WWE RAW",
+      "url": "/news/شون-مايكلز-يحتفل-بظهور-كروز-مونتانا-الأول-في-عرض-wwe-raw/",
+      "image": "/content/images/e0bsqpmmejywu2io.jpg",
+      "reason": "return",
+      "why": "debut",
+      "note": "المنشور يكشف عن ظهور أول لمصارع في عرض WWE RAW الذي أقيم في آخر 6 ساعات، مما يعتبر حرقاً للمتابعين."
     }
   },
   "byFile": {
