@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/wwe-smackdown-spoiler-lineup-november-6-2026-full-match-card-backstage-notes-revealed": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-03T01:49:40.746Z"
+ },
+ "https://www.ringsidenews.com/cruz-montana-makes-wwe-main-roster-debut-brutal-attack-roman-reigns": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-03T01:48:45.959Z"
+ },
  "https://www.fightful.com/wrestling/john-cena-to-appear-at-wwe-survivor-series-wargames-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
