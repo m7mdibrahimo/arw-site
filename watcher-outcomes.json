@@ -1,38 +1,38 @@
 {
  "https://www.fightful.com/wrestling/wwe-crown-jewel-odds-courtesy-of-my-bookie": {
-  "reason": "المراجعة رفضته: خبر ترويجي لموقع مراهنات (MyBookie…) — مش خبر، خبر ترويجي لموقع مراهنات (MyBookie…) — مش خبر",
-  "retry": false,
-  "at": "2026-11-03T17:52:44.230Z"
+  "reason": "المراجعة رفضته: خبر ترويجي لموقع مراهنات (MyBookie…) — مش خبر، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-03T18:04:46.867Z"
  },
  "https://www.fightful.com/wrestling/ethan-page-explains-why-he-feels-nothing-following-wwe-intercontinental-title-win": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:50:39.949Z"
+  "at": "2026-11-03T18:02:03.634Z"
  },
  "https://www.fightful.com/wrestling/ddt-ultimate-party-results-11-3-26-zack-sabre-jr-konosuke-takeshita-in-action": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kevin Owens",
   "retry": true,
-  "at": "2026-11-03T17:50:39.600Z"
+  "at": "2026-11-03T18:02:03.230Z"
  },
  "https://www.fightful.com/wrestling/wwe-to-host-avengers-doomsday-themed-worlds-collide-event-on-december-15th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:50:04.778Z"
+  "at": "2026-11-03T17:58:09.276Z"
  },
  "https://www.fightful.com/wrestling/the-miz-credits-his-friends-in-ohio-with-giving-him-his-ring-name": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:50:04.470Z"
+  "at": "2026-11-03T17:58:08.928Z"
  },
  "https://www.fightful.com/wrestling/kenny-omega-pins-yota-tsuji-at-njpw-power-struggle-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:50:04.105Z"
+  "at": "2026-11-03T17:58:08.512Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-spoilers-for-11-6-taped-on-11-2": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:50:03.588Z"
+  "at": "2026-11-03T17:58:07.929Z"
  },
  "https://www.fightful.com/wrestling/john-cena-to-appear-at-wwe-survivor-series-wargames-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
