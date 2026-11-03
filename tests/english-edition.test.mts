@@ -482,3 +482,9 @@ test("«rubbing … in faces of» gets its «the» (round 2026-11-02)", async ()
   assert.equal(fix('Royce Keys Loves Rubbing His Success in Faces of Critics'), 'Royce Keys Loves Rubbing His Success in the Faces of Critics');
   assert.equal(fix('rubbing it in the faces of critics'), 'rubbing it in the faces of critics');
 });
+
+test('promotion acronyms left in title case are restored (Njpw → NJPW)', async () => {
+  const { ENGLISH_FIXES } = await import('../scripts/english-edition.ts');
+  const fix = (t: string) => ENGLISH_FIXES.reduce((s, [re, to]) => s.replace(re, to as any), t);
+  assert.equal(fix('in the final at Njpw Power Struggle and Wwe Raw'), 'in the final at NJPW Power Struggle and WWE Raw');
+});
