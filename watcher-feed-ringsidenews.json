@@ -1,5 +1,15 @@
 [
   {
+    "id": 802262925,
+    "link": "https://www.ringsidenews.com/wwe-smackdown-spoiler-results-november-6-2026/",
+    "date": "Tue, 03 Nov 2026 02:05:40 +0000",
+    "date_gmt": "2026-11-03T02:05:40.000Z",
+    "title": {
+      "rendered": "WWE SmackDown Spoiler Results for November 6, 2026"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/07/spoiler-unadvertised-match-revealed-for-july-24-wwe-smackdown-50.jpg?x55711"
+  },
+  {
     "id": 802262613,
     "link": "https://www.ringsidenews.com/wwe-smackdown-spoiler-lineup-november-6-2026-full-match-card-backstage-notes-revealed/",
     "date": "Tue, 03 Nov 2026 01:46:35 +0000",
@@ -138,15 +148,5 @@
       "rendered": "Spoiler: Absent WWE Star Spotted Arriving at RAW in Brooklyn"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/spoiler-absent-wwe-star-spotted-arriving-at-raw-in-brooklyn-09.jpg?x55711"
-  },
-  {
-    "id": 802262555,
-    "link": "https://www.ringsidenews.com/wwe-raw-spoiler-lineup-november-2-2026-full-match-card-backstage-notes-revealed/",
-    "date": "Mon, 02 Nov 2026 20:07:36 +0000",
-    "date_gmt": "2026-11-02T20:07:36.000Z",
-    "title": {
-      "rendered": "WWE RAW Spoiler Lineup for November 2, 2026: Full Match Card and Backstage Notes Revealed"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/06/wwe-raw-spoiler-lineup-for-june-8-2026-full-match-card-and-backstage-notes-revealed-37.jpg?x55711"
   }
 ]
