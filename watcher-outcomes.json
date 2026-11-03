@@ -2,32 +2,32 @@
  "https://www.fightful.com/wrestling/eva-marie-says-shed-need-a-lot-of-money-and-some-type-of-creative-control-to-wrestle-again": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T23:16:15.820Z"
+  "at": "2026-11-03T23:19:26.264Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-clarifies-that-he-isnt-under-contract-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T23:16:14.835Z"
+  "at": "2026-11-03T23:19:25.280Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-quit-smoking-five-weeks-ago-is-working-towards-a-procedure-to-get-himself-off-oxygen": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T23:16:14.553Z"
+  "at": "2026-11-03T23:19:25.002Z"
  },
  "https://www.fightful.com/wrestling/cm-punk-teases-working-john-cena-classic-wwe-worlds-collide-at-walt-disney-world": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صفة مثنى مؤنث (الأخيرتين/الأولتين/السابقتين…) ممنوعة — اكتب «ختام» أو «آخر الجولات» بدون مثنى (INCIDENTS #850)",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
-  "at": "2026-11-03T23:16:14.182Z"
+  "at": "2026-11-03T23:19:24.630Z"
  },
  "https://www.fightful.com/wrestling/wwe-shop-selling-john-cena-classic-title-belt-for-799-99": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T23:12:53.086Z"
+  "at": "2026-11-03T23:17:59.363Z"
  },
  "https://www.fightful.com/wrestling/ethan-page-explains-why-he-feels-nothing-following-wwe-intercontinental-title-win": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T23:12:52.020Z"
+  "at": "2026-11-03T23:17:58.299Z"
  },
  "https://www.ringsidenews.com/cm-punks-status-wwes-john-cena-classic-worlds-collide": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
