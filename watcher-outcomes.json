@@ -12,47 +12,52 @@
  "https://www.fightful.com/wrestling/ddt-ultimate-party-results-11-3-26-zack-sabre-jr-konosuke-takeshita-in-action": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kevin Owens",
   "retry": true,
-  "at": "2026-11-03T17:06:43.353Z"
+  "at": "2026-11-03T17:24:52.738Z"
  },
  "https://www.fightful.com/wrestling/wwe-to-host-avengers-doomsday-themed-worlds-collide-event-on-december-15th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:02:52.243Z"
+  "at": "2026-11-03T17:21:18.000Z"
  },
  "https://www.fightful.com/wrestling/the-miz-credits-his-friends-in-ohio-with-giving-him-his-ring-name": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:02:51.806Z"
+  "at": "2026-11-03T17:21:17.571Z"
  },
  "https://www.fightful.com/wrestling/kenny-omega-pins-yota-tsuji-at-njpw-power-struggle-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:02:51.299Z"
+  "at": "2026-11-03T17:21:17.062Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-spoilers-for-11-6-taped-on-11-2": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:02:50.569Z"
+  "at": "2026-11-03T17:21:16.329Z"
  },
  "https://www.fightful.com/wrestling/john-cena-to-appear-at-wwe-survivor-series-wargames-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:02:50.151Z"
+  "at": "2026-11-03T17:21:15.908Z"
  },
  "https://www.fightful.com/wrestling/337121-john-cena-classic-cody-rhodes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:02:49.865Z"
+  "at": "2026-11-03T17:21:15.635Z"
  },
  "https://www.fightful.com/wrestling/ethan-page-defeats-chad-gable-to-win-intercontinental-championship-on-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:02:49.576Z"
+  "at": "2026-11-03T17:21:15.346Z"
  },
  "https://www.fightful.com/wrestling/wwes-internal-plans-call-for-john-cena-classic-to-take-place-at-walt-disney-world": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:02:49.389Z"
+  "at": "2026-11-03T17:21:15.155Z"
+ },
+ "https://www.ringsidenews.com/carmella-explains-why-shes-hesitant-return-wrestling": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
+  "retry": true,
+  "at": "2026-11-03T16:58:53.860Z"
  },
  "https://www.fightful.com/wrestling/ryohei-oiwa-hartley-jackson-declare-for-2026-njpw-world-tag-league": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
