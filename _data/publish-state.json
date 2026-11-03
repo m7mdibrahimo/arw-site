@@ -1964,20 +1964,20 @@
     {
       "window": "15m",
       "remaining": 149,
-      "resetAt": 1793682098878,
-      "updatedAt": 1793681198878
+      "resetAt": 1793728318808,
+      "updatedAt": 1793727418808
     },
     {
       "window": "24h",
-      "remaining": 576,
-      "resetAt": 1793727240878,
-      "updatedAt": 1793681198878
+      "remaining": 599,
+      "resetAt": 1793813818808,
+      "updatedAt": 1793727418808
     },
     {
       "window": "30d",
-      "remaining": 1486,
-      "resetAt": 1794840072878,
-      "updatedAt": 1793681198878
+      "remaining": 1485,
+      "resetAt": 1794840072808,
+      "updatedAt": 1793727418808
     }
   ],
   "videoCooldowns": {
