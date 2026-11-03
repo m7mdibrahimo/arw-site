@@ -2,6 +2,11 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "تحتزام",
+      "right": "تحت الحزام",
+      "note": "«ضربة تحت الحزام» اتلصقت في كلمة واحدة (INCIDENTS #1031)"
+    },
+    {
       "wrong": "إيهو دل بيرفيرسو",
       "right": "هيخو ديل بيرفيرسو",
       "note": "أسماء لوتشادورز CMLL كانت بتتكتب بأشكال مختلفة من خبر لخبر (INCIDENTS #1029)"

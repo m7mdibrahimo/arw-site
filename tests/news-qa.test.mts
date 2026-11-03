@@ -546,3 +546,10 @@ test("«كواليس العرض» twice in one sentence is blocked (INCIDENTS #1
   assert.ok(!checkArticle("عنوان", ok).some((i) => i.code === "repeated_backstage"));
   assert.ok(BLOCKING_QA_CODES.includes("repeated_backstage"));
 });
+
+test("«تحتزام» (تحت الحزام ملزوقة) is blocked (INCIDENTS #1031)", () => {
+  const bad = "حاول المصارع الاعتداء على يوه، لكن الأخير تصدى له ووجه له ضربة تحتزام ثم نزع قناعه ليكشف هويته.";
+  const ok = "حاول المصارع الاعتداء على يوه، لكن الأخير تصدى له ووجه له ضربة تحت الحزام ثم نزع قناعه ليكشف هويته.";
+  assert.ok(checkArticle("عنوان", bad).some((i) => i.code === "broken_word"));
+  assert.ok(!checkArticle("عنوان", ok).some((i) => i.code === "broken_word"));
+});
