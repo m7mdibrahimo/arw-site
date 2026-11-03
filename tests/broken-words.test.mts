@@ -803,3 +803,11 @@ test('corrections unify the John Cena Classic name in Arabic (INCIDENTS #1026)',
   assert.equal(applyCorrections('بطولة جون سينا Classic'), 'بطولة جون سينا الكلاسيكية');
   assert.equal(applyCorrections('بطولة جون سينا كلاسيك'), 'بطولة جون سينا الكلاسيكية');
 });
+
+test('corrections fix «الب قائلا», «الشارين», «يتعافي», «نزال التثبيت الأخير» (INCIDENTS #1027)', () => {
+  assert.equal(applyCorrections('دعاه إلى الب قائلا'), 'دعاه إلى البار قائلا');
+  assert.equal(applyCorrections('ليس من الشارين'), 'ليس من الشاربين');
+  assert.equal(applyCorrections('فلير يتعافي حاليا'), 'فلير يتعافى حاليا');
+  assert.equal(applyCorrections('نزال التثبيت الأخير'), 'نزال الرجل الأخير الصامد');
+  assert.equal(applyCorrections('مواجهة ريويس كيز'), 'مواجهة رويس كيز');
+});
