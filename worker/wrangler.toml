@@ -51,8 +51,6 @@ migrations_dir = "migrations"
 
 # ─── متغيرات عادية (مش سرية) — تقدر تعدلها هنا مباشرة ───
 [vars]
-# «العضوية المميزة» turns on by itself once Fawaterk confirms the payment, and ends by itself (owner 2026-11-03)
-PREMIUM_AUTO = "1"
 INSTAGRAM_AUTO_ENABLED = "true"
 # X through Buffer: on again (owner 2026-10-17), new translated shows and big news only, a few a day (xAllowedFor)
 X_AUTO_ENABLED = "true"

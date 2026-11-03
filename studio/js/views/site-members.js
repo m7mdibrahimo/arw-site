@@ -21,12 +21,16 @@ const CROWN = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColo
 const isPrem = (m) => Number(m.premium_until) > Date.now();
 /** A member as the site shows them: the site's own account is «عرب راسلنج», its logo and the gold badge */
 const shownName = (m) => (m.official ? OFFICIAL_NAME : m.display || m.username);
-const badgeOf = (m) => raw(m.official || m.badge === 2 ? GOLD : m.badge === 0 ? '' : BLUE);
+// a premium member is blue while the membership lasts, and loses it by itself when it ends (owner 2026-11-03: «اي حد بفعله
+// الاشتراك … العلامة الزوقاء ولما يخلص … تروح لوحدها»): no need to give the blue badge by hand with the membership
+const premBlue = (m) => isPrem(m) && (m.badge ?? 1) === 0;
+const badgeOf = (m) => raw(m.official || m.badge === 2 ? GOLD : m.badge === 0 && !isPrem(m) ? '' : BLUE);
+const PREM_BLUE = 'العلامة الزرقا شغالة مع اشتراكه، وهتتشال لوحدها أول ما يخلص';
 const isOwner = () => getUser()?.role === 'owner';
 /** The owner gives the verification badge or takes it away (owner 2026-10-14: «ادي العلامة الزرقاء التوثيق لاي حد او اشيله») */
 // …and the gold one too, for anyone (owner 2026-10-15: «احط علامة توثيق ذهبي كمان او اشيلها لاي حد»): three choices
 const BADGES = [[0, 'من غير', ''], [1, 'أزرق', BLUE], [2, 'ذهبي', GOLD]];
-const badgeBtn = (m, cls = 'btn-sm') => (isOwner() && !m.official ? html`<span class="mb-badge-seg ${cls === 'btn-sm' ? 'is-sm' : ''}" role="group" aria-label="التوثيق">${BADGES.map(([lv, label, ic]) => html`<button type="button" class="${(m.badge ?? 1) === lv ? 'is-on' : ''}" data-badge="${m.id}" data-level="${lv}" title="${lv === 0 ? 'من غير توثيق' : `توثيق ${label}`}">${ic ? raw(ic) : ''}${label}</button>`)}</span>` : '');
+const badgeBtn = (m, cls = 'btn-sm') => (isOwner() && !m.official ? html`<span class="mb-badge-seg ${cls === 'btn-sm' ? 'is-sm' : ''}" role="group" aria-label="التوثيق">${BADGES.map(([lv, label, ic]) => html`<button type="button" class="${(premBlue(m) ? lv === 1 : (m.badge ?? 1) === lv) ? 'is-on' : ''}" data-badge="${m.id}" data-level="${lv}" title="${premBlue(m) && lv === 1 ? PREM_BLUE : lv === 0 ? 'من غير توثيق' : `توثيق ${label}`}">${ic ? raw(ic) : ''}${label}</button>`)}</span>` : '');
 const BADGE_DONE = ['اتشال التوثيق ✓', 'خد التوثيق الأزرق ✓', 'خد التوثيق الذهبي ✓'];
 const FED_NAME = { WWE: 'WWE', AEW: 'AEW', NJPW: 'NJPW', TNA: 'TNA', ROH: 'ROH', MLP: 'MLP', CMLL: 'CMLL', UFC: 'UFC' };
 const REGION = (() => { try { return new Intl.DisplayNames(['ar'], { type: 'region' }); } catch { return null; } })();
@@ -145,6 +149,7 @@ export async function renderSiteMembers(page) {
     const m = items.find(x => String(x.id) === b.dataset.badge);
     const lv = Number(b.dataset.level);
     if (lv === m.badge) return;
+    if (lv === 1 && premBlue(m)) { toast(PREM_BLUE); return; }
     b.disabled = true;
     try { await api.siteMemberBadge(m.id, lv > 0, lv); m.badge = lv; toast(BADGE_DONE[lv]); draw(); }
     catch (err) { toast(err.message, 'error'); b.disabled = false; }
@@ -219,6 +224,7 @@ export async function renderSiteMember(page, id) {
   $$('[data-badge]', page).forEach(bb => bb.onclick = async () => {
     const lv = Number(bb.dataset.level);
     if (lv === m.badge) return;
+    if (lv === 1 && premBlue(m)) { toast(PREM_BLUE); return; }
     bb.disabled = true;
     try { await api.siteMemberBadge(m.id, lv > 0, lv); toast(BADGE_DONE[lv]); renderSiteMember(page, id); }
     catch (e) { toast(e.message, 'error'); bb.disabled = false; }

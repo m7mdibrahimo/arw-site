@@ -114,9 +114,8 @@
       b.disabled = false;
       if (d.status === 401) { location.href = HOME + '/account/?back=' + encodeURIComponent(HOME + '/premium/#subscribe'); return; }
       if (!d.ok || !d.url) { flash('bad', srv(d.error) || 'تعذر فتح صفحة الدفع، حاول مرة أخرى.'); return; }
-      // Fawaterk couldn't make the member's own invoice: the fixed link in a new tab, and what to send after paying (the
-      // owner switches it on by hand). Otherwise it turns on by itself (owner 2026-11-03) and the box stays hidden.
-      if (d.manual) { window.open(d.url, '_blank', 'noopener'); var how = $('.pm-how'); if (how) { how.hidden = false; how.classList.remove('is-hi'); void how.offsetWidth; how.classList.add('is-hi'); how.scrollIntoView({ behavior: 'smooth', block: 'center' }); } return; }
+      // Fawaterk opens in a new tab; here, what to send after paying (the owner switches it on by hand)
+      if (d.manual) { window.open(d.url, '_blank', 'noopener'); var how = $('.pm-how'); if (how) { how.classList.remove('is-hi'); void how.offsetWidth; how.classList.add('is-hi'); how.scrollIntoView({ behavior: 'smooth', block: 'center' }); } return; }
       location.href = d.url;
     }).catch(function () { b.disabled = false; flash('bad', 'تعذر الاتصال، حاول مرة أخرى.'); });
   });
@@ -132,7 +131,7 @@
           refresh();
           return;
         }
-        if (Date.now() - t0 > maxMs) { flash('bad', 'لم يصلنا تأكيد الدفع بعد. إن كنت دفعت فستتفعل عضويتك تلقائيا خلال دقائق، وإن لم تتفعل فأرسل صورة إيصال الدفع والبريد المسجل في حسابك إلى صفحة عرب راسلنج على رسائل فيسبوك أو إنستجرام.'); return; }
+        if (Date.now() - t0 > maxMs) { flash('bad', 'أرسل صورة إيصال الدفع والبريد المسجل في حسابك إلى صفحة عرب راسلنج على رسائل فيسبوك أو إنستجرام، وسنفعّل عضويتك.'); return; }
         setTimeout(tick, every);
       }).catch(function () { setTimeout(tick, every); });
     })();
@@ -223,7 +222,7 @@
   var q = new URLSearchParams(location.search);
   refresh().then(function () {
     if (q.get('paid') !== null && session) waitForPayment(120000, 3000);
-    else if (q.get('pending') !== null && session) flash('wait', 'ستتفعل عضويتك تلقائيا فور إتمام الدفع.', true);
+    else if (q.get('pending') !== null && session) flash('wait', 'أرسل صورة إيصال الدفع والبريد المسجل في حسابك إلى صفحة عرب راسلنج على رسائل فيسبوك أو إنستجرام، وسنفعّل عضويتك.', true);
     else if (q.get('failed') !== null) flash('bad', 'لم تكتمل عملية الدفع، ولم يخصم منك شيء. يمكنك المحاولة مرة أخرى.');
     if (q.get('paid') !== null || q.get('pending') !== null || q.get('failed') !== null) history.replaceState(null, '', location.pathname + location.hash);
     // an old «?trial=1» link: there's no free trial, the plans instead
