@@ -1393,3 +1393,11 @@ test("save-reel-state retries transient GitHub errors instead of failing", () =>
   assert.match(src, /transient\(response\.status\)/);
   assert.match(src, /transient\(result\.status\)/);
 });
+
+// INCIDENTS #1039: «الانتقادات والانكشافات» (odd word) in a John Cena Classic story.
+test("«الانكشافات» is corrected to «الانتقادات» (INCIDENTS #1039)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("قوبلت بالانتقادات والانكشافات"), "قوبلت بالانتقادات والانتقادات");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /الانكشافات/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
