@@ -1,5 +1,15 @@
 [
   {
+    "id": 4868771230,
+    "link": "https://www.wrestlinginc.com/2305851/wwe-miz-gunther-danhausen-defends-booking/",
+    "date": "Tue, 03 Nov 2026 20:32:15 +0000",
+    "date_gmt": "2026-11-03T20:32:15.000Z",
+    "title": {
+      "rendered": "The Miz Defends WWE's Booking Of GUNTHER, Danhausen Involvement"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/the-miz-defends-wwes-booking-of-gunther-danhausen-involvement/l-intro-1793737456.jpg"
+  },
+  {
     "id": 3727691808,
     "link": "https://www.wrestlinginc.com/2305787/wwe-nxt-zilla-fatu-learned/",
     "date": "Tue, 03 Nov 2026 20:02:46 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Report: Former WWE Star Tammy Sytch (AKA Sunny) Seeking To Have Conviction Thrown Out"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/report-former-wwe-star-tammy-sytch-aka-sunny-seeking-to-have-conviction-thrown-out/l-intro-1793678747.jpg"
-  },
-  {
-    "id": 3146873819,
-    "link": "https://www.wrestlinginc.com/2304939/wwe-raw-november-2-2026-hated-loved-opinion-review/",
-    "date": "Tue, 03 Nov 2026 03:39:34 +0000",
-    "date_gmt": "2026-11-03T03:39:34.000Z",
-    "title": {
-      "rendered": "WWE RAW 11/2/2026: 3 Things We Hated & 3 Things We Loved"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-1122026-3-things-we-hated-3-things-we-loved/l-intro-1793677032.jpg"
   }
 ]
