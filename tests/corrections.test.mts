@@ -1423,3 +1423,10 @@ test("«تيخانا بامب» and «أدواته التشجيعية» are corr
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /تيخانا بامب|أدواته التشجيعية/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+test("«تسوجي ويوتا تسوجي» is corrected to «يوتو آيس» (INCIDENTS #1044)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("انتقد كلا من تسوجي ويوتا تسوجي"), "انتقد كلا من تسوجي ويوتو آيس");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /كلا من تسوجي ويوتا تسوجي/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
