@@ -1,48 +1,53 @@
 {
+ "https://www.fightful.com/wrestling/ddt-ultimate-party-results-11-3-26-zack-sabre-jr-konosuke-takeshita-in-action": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kevin Owens، تقرير نتائج بلا أي نتيجة",
+  "retry": true,
+  "at": "2026-11-03T16:28:34.825Z"
+ },
  "https://www.fightful.com/wrestling/wwe-to-host-avengers-doomsday-themed-worlds-collide-event-on-december-15th": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-03T16:21:39.171Z"
+  "at": "2026-11-03T16:26:25.709Z"
  },
  "https://www.fightful.com/wrestling/the-miz-credits-his-friends-in-ohio-with-giving-him-his-ring-name": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T16:21:04.798Z"
+  "at": "2026-11-03T16:25:27.035Z"
  },
  "https://www.fightful.com/wrestling/kenny-omega-pins-yota-tsuji-at-njpw-power-struggle-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T16:21:04.275Z"
+  "at": "2026-11-03T16:25:26.517Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-spoilers-for-11-6-taped-on-11-2": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T16:21:03.524Z"
+  "at": "2026-11-03T16:25:25.775Z"
  },
  "https://www.fightful.com/wrestling/john-cena-to-appear-at-wwe-survivor-series-wargames-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T16:21:03.098Z"
+  "at": "2026-11-03T16:25:25.346Z"
  },
  "https://www.fightful.com/wrestling/337121-john-cena-classic-cody-rhodes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T16:21:02.815Z"
+  "at": "2026-11-03T16:25:25.060Z"
  },
  "https://www.fightful.com/wrestling/ethan-page-defeats-chad-gable-to-win-intercontinental-championship-on-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T16:21:02.531Z"
+  "at": "2026-11-03T16:25:24.772Z"
  },
  "https://www.fightful.com/wrestling/wwes-internal-plans-call-for-john-cena-classic-to-take-place-at-walt-disney-world": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T16:21:02.344Z"
+  "at": "2026-11-03T16:25:24.579Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-2-2026-solo-sikoa-vs-royce-keys-john-cena-roman-reigns-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T16:21:01.886Z"
+  "at": "2026-11-03T16:25:24.118Z"
  },
  "https://www.ringsidenews.com/nxt-star-harlem-lewis-launches-gofundme-dogs-emergency-surgery": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-22T12:03:37.186Z"
- },
- "https://www.fightful.com/wrestling/jacob-heyman-reveals-he-told-his-dad-paul-heyman-to-cut-the-ponytail": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-22T11:24:17.516Z"
  }
 }
