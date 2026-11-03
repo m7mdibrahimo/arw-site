@@ -6,7 +6,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { createHmac } from 'node:crypto';
 import { handleMembers } from '../worker/src/members';
 import { handleComments } from '../worker/src/comments';
-import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumKind, studioPremiumRequest, studioPremiumMedia, showLinks, contentKey, premiumNotifications, PLANS, OFFERS, runPremiumReminders } from '../worker/src/premium';
+import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumKind, studioPremiumRequest, studioPremiumMedia, showLinks, contentKey, premiumNotifications, PLANS, OFFERS, runPremiumReminders, fawaterkHealth } from '../worker/src/premium';
 
 function d1() {
   const db = new DatabaseSync(':memory:');
@@ -662,4 +662,25 @@ test('the owner corrects how long a membership was given for: the payment says t
   // «تعديل المدة» opened «كانت هدية من الموقع»: the paid-or-gift buttons are only those that say which way (owner 2026-10-25)
   assert.match(panel, /\$\$\('\.pg-swap\[data-to\]', root\)\.forEach/);
   assert.doesNotMatch(panel, /\$\$\('\.pg-swap', root\)/);
+});
+
+test('auto memberships are on (owner 2026-11-03), and the panel is told when Fawaterk stops answering', async () => {
+  const fs = await import('node:fs');
+  assert.match(fs.readFileSync('worker/wrangler.toml', 'utf8'), /^PREMIUM_AUTO = "1"$/m);
+  const e = env({ PREMIUM_AUTO: '1', FAWATERK_API_KEY: 'fk_test' });
+  const real = globalThis.fetch;
+  try {
+    globalThis.fetch = (async (url: any) => String(url).endsWith('/getPaymentmethods')
+      ? new Response(JSON.stringify({ status: 'success', data: [] })) : new Response('{}', { status: 404 })) as any;
+    assert.equal((await fawaterkHealth(e)).ok, true);
+    assert.equal((await studioPremium(e)).fawaterk.ok, true);
+    // Fawaterk refuses the member's invoice: the fixed link, and the panel's warning
+    const s = await member(e);
+    globalThis.fetch = (async () => new Response(JSON.stringify({ status: 'error', message: 'Unauthenticated' }), { status: 401 })) as any;
+    const c = await call(e, '/premium/checkout', { currency: 'EGP' }, s.token);
+    assert.equal(c.body.manual, true);
+    const h = (await studioPremium(e)).fawaterk;
+    assert.equal(h.ok, false);
+    assert.match(h.error, /createInvoiceLink 401/);
+  } finally { globalThis.fetch = real; }
 });

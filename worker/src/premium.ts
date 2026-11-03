@@ -117,8 +117,9 @@ export async function validHash(env: PremiumEnv, b: any): Promise<boolean> {
 }
 /** Fawaterk's API key: a fixed token (FAWATERK_API_KEY), or one asked for with the OAuth client the owner made in
  *  Fawaterk («التكامل البرمجي» → «بيانات اعتماد عميل OAuth»), kept in KV until shortly before it ends */
-/** A paid membership turns on by itself only when the owner switches it on (PREMIUM_AUTO = "1") and Fawaterk's key is
- *  there. Off by default (owner 2026-10-15: «افضل خاجة ان انا ال افعل الاشتراك ب ايديا للناس عشان ممكن الناس تعمل
+/** A paid membership turns on by itself when PREMIUM_AUTO = "1" (worker/wrangler.toml; on since owner 2026-11-03:
+ *  «اي حد بفعله الاشتراك ودفع يتعمل اوتوماتيك العضوية بتاعته ب العلامة الزوقاء ولما يخلص … تروح لوحدها») and Fawaterk's
+ *  key is there. It was off at first (owner 2026-10-15: «افضل خاجة ان انا ال افعل الاشتراك ب ايديا للناس عشان ممكن الناس تعمل
  *  ثغرات»): the member pays on the plan's fixed link and sends the owner their email, the owner turns it on in the panel
  *  (views/premium.js). There's no free trial (endTrials). */
 export const fawaterkLive = (env: PremiumEnv) => env.PREMIUM_AUTO === "1" && !!(env.FAWATERK_API_KEY || (env.FAWATERK_CLIENT_ID && env.FAWATERK_CLIENT_SECRET));
@@ -150,6 +151,24 @@ async function fawaterk(env: PremiumEnv, path: string, init: RequestInit = {}): 
     if (!r || r.status !== 401 || env.FAWATERK_API_KEY) return r;
   }
   return null;
+}
+/** Does Fawaterk answer the site's key? Asked every hour (and at a refused checkout) and kept in KV for the panel: a
+ *  broken key sends members to the fixed links, which only the owner can turn on (owner 2026-11-03: «اي حد بفعله
+ *  الاشتراك ودفع يتعمل اوتوماتيك»). */
+const HEALTH_KEY = "pm:fawaterk:health";
+export async function fawaterkHealth(env: PremiumEnv, now = Date.now()): Promise<{ ok: boolean; at: number; error?: string }> {
+  let out: { ok: boolean; at: number; error?: string };
+  if (!fawaterkLive(env)) out = { ok: false, at: now, error: "off" };
+  else {
+    const r = await fawaterk(env, "/getPaymentmethods").catch(() => null);
+    const d: any = r ? await r.json().catch(() => null) : null;
+    out = r && r.ok && d?.status === "success" ? { ok: true, at: now } : { ok: false, at: now, error: r ? `${r.status} ${JSON.stringify(d).slice(0, 160)}` : "no token" };
+  }
+  await env.PUSH_KV.put(HEALTH_KEY, JSON.stringify(out)).catch(() => {});
+  return out;
+}
+async function fawaterkFailed(env: PremiumEnv, error: string, now = Date.now()) {
+  await env.PUSH_KV.put(HEALTH_KEY, JSON.stringify({ ok: false, at: now, error: error.slice(0, 200) })).catch(() => {});
 }
 /** Is this invoice paid? Fawaterk itself says (its answer, not the webhook's word); and paid in full, in the currency
  *  the site asked for (owner 2026-10-15: «يتاكد مليون في الميه انه دفع») */
@@ -321,6 +340,7 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
     // Fawaterk refused or didn't answer: the fixed link, so the member can still pay (the panel turns it on)
     if (!res || !res.ok || d?.status !== "success" || !inv.url) {
       console.log(`[premium] createInvoiceLink ${res?.status}: ${JSON.stringify(d).slice(0, 300)}`);
+      await fawaterkFailed(env, `createInvoiceLink ${res?.status ?? "no answer"} ${JSON.stringify(d).slice(0, 150)}`, now);
       return reply({ ok: true, url: plan.link, manual: true });
     }
     await db.prepare("INSERT INTO premium_payments (member, invoice_id, invoice_key, currency, amount, created, days) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)")
@@ -375,7 +395,8 @@ export async function studioPremium(env: PremiumEnv, now = Date.now()) {
     db.prepare(`SELECT r.*, m.username, m.display, m.pic, m.premium_until, m.official FROM premium_requests r LEFT JOIN members m ON m.id = r.member ORDER BY CASE r.status WHEN 'new' THEN 0 WHEN 'working' THEN 1 ELSE 2 END, r.id DESC LIMIT 300`),
     db.prepare("SELECT currency, SUM(amount) AS total, COUNT(*) AS n FROM premium_payments WHERE status = 'paid' AND paid_at > ?1 AND (granted_by = '' OR granted_by LIKE 'paid:%') GROUP BY currency").bind(month),
   ]) as any[];
-  return { success: true, members: members.results || [], payments: payments.results || [], requests: requests.results || [], month: sums.results || [], live: fawaterkLive(env) };
+  return { success: true, members: members.results || [], payments: payments.results || [], requests: requests.results || [], month: sums.results || [], live: fawaterkLive(env),
+    fawaterk: JSON.parse(await env.PUSH_KV.get(HEALTH_KEY).catch(() => null) || "null") };
 }
 /** The panel's bell: a new subscriber (paid, or given by hand) and a new translation request */
 export async function premiumNotifications(env: PremiumEnv, sinceMs: number): Promise<any[]> {
@@ -519,6 +540,7 @@ export async function runPremiumReminders(env: PremiumEnv, now = Date.now()) {
   const db = env.ANALYTICS;
   if (!db) return 0;
   await ensurePremium(db);
+  await fawaterkHealth(env, now).catch(() => null);
   await sweepPending(env, now).catch(() => 0);
   await endTrials(env, now).catch(() => 0);
   const { ensureFollows } = await import("./follows");
