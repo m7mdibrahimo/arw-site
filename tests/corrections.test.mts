@@ -1430,3 +1430,10 @@ test("«تسوجي ويوتا تسوجي» is corrected to «يوتو آيس» (
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /كلا من تسوجي ويوتا تسوجي/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+test("«الثنائي التقى الثنائي» is corrected (INCIDENTS #1045)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("يذكر أن الثنائي التقى الثنائي في ثلاث مواجهات"), "يذكر أن الثنائي التقى في ثلاث مواجهات");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /الثنائي التقى الثنائي/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
