@@ -1358,3 +1358,11 @@ test("letter-swap typos from the Nov 2 Big Cass / Royce Keys stories are correct
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /لاستزفازه|منذ صفوره|تكون تحالف/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #1033: «وارتلي جاكسون» (missing ه) in NJPW results.
+test("«وارتلي جاكسون» is corrected to «وهارتلي جاكسون» (INCIDENTS #1033)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("ريوهي أويوا وارتلي جاكسون"), "ريوهي أويوا وهارتلي جاكسون");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /وارتلي/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});

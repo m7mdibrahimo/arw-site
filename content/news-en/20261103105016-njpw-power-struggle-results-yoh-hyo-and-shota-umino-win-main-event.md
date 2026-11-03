@@ -1,5 +1,5 @@
 ---
-title: "NJPW Power Struggle Results: YOH, Hyo and Shota Umino Win Main Event"
+title: "NJPW Power Struggle Results: Knockout Bros Retain IWGP Tag Titles in Main Event"
 slug: "njpw-power-struggle-results-yoh-hyo-and-shota-umino-win-main-event"
 description: "New Japan Pro-Wrestling presented NJPW Power Struggle on November 3 from Hiroshima Sun Plaza Hall in Hiroshima, Japan."
 federation: NJPW
@@ -24,3 +24,11 @@ During the event, MJF appeared on the video screen to challenge Ryohei Oiwa at W
 
 Yuya Uemura, Toru Yano, Ryusuke Taguchi and Kazuma Sumi def. House of Torture (Ren Narita, Shun Skywalker, DOUKI and Yoshinobu Kanemaru)
 YOH, Hyo and Shota Umino def. House of Torture (SHO, Dick Togo and Yujiro Takahashi)
+
+A masked man challenged YOH for the IWGP Junior Heavyweight Title at Wrestle Kingdom and demanded that YOH be banned from NJPW if he lost. The masked man attacked YOH, but YOH hit a low blow and unmasked him as SHO. YOH accepted on the condition that SHO leave House of Torture and Roppongi 3K reunite if YOH wins.
+
+Unbound Co. (Shingo Takagi and Jeff Cobb) def. Death Riders (Jon Moxley and Wheeler Yuta)
+
+Shingo Takagi challenged Jon Moxley to a match at Wrestle Kingdom 21.
+
+IWGP Tag Team Championship: Knockout Bros (Yuto Ice and Oskar) retained against United Empire (Callum Newman and Will Ospreay) by disqualification. Newman and Ospreay brawled after the match, and Newman challenged Ospreay to a match at Wrestle Kingdom 21.
