@@ -1,33 +1,38 @@
 {
- "https://www.ringsidenews.com/carmella-explains-why-shes-hesitant-return-wrestling": {
-  "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
+ "https://www.fightful.com/wrestling/triple-h-invites-dwight-howard-to-get-in-wwe-ring": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Intercontinental Championship",
   "retry": true,
   "at": "2026-11-03T19:22:11.241Z"
  },
  "https://www.fightful.com/wrestling/ethan-page-explains-why-he-feels-nothing-following-wwe-intercontinental-title-win": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T19:04:02.298Z"
+  "at": "2026-11-03T19:29:51.790Z"
  },
  "https://www.fightful.com/wrestling/ddt-ultimate-party-results-11-3-26-zack-sabre-jr-konosuke-takeshita-in-action": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kevin Owens",
   "retry": true,
-  "at": "2026-11-03T19:04:01.805Z"
+  "at": "2026-11-03T19:29:51.284Z"
  },
  "https://www.fightful.com/wrestling/wwe-to-host-avengers-doomsday-themed-worlds-collide-event-on-december-15th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T19:02:49.308Z"
+  "at": "2026-11-03T19:29:29.283Z"
  },
  "https://www.fightful.com/wrestling/the-miz-credits-his-friends-in-ohio-with-giving-him-his-ring-name": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T19:02:48.880Z"
+  "at": "2026-11-03T19:29:28.844Z"
  },
  "https://www.fightful.com/wrestling/kenny-omega-pins-yota-tsuji-at-njpw-power-struggle-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T19:02:48.369Z"
+  "at": "2026-11-03T19:29:28.328Z"
+ },
+ "https://www.ringsidenews.com/carmella-explains-why-shes-hesitant-return-wrestling": {
+  "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
+  "retry": true,
+  "at": "2026-11-03T18:54:54.132Z"
  },
  "https://www.fightful.com/wrestling/paul-wight-ive-learned-quite-a-few-things-from-shaquille-oneal": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
@@ -1988,10 +1993,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-22T16:57:08.610Z"
- },
- "https://www.fightful.com/wrestling/mark-davis-jake-doyle-squash-the-young-bucks-in-tag-title-eliminator-match-on-aew-dynamite": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-22T16:37:46.077Z"
  }
 }

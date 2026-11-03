@@ -1,5 +1,15 @@
 [
   {
+    "id": 337250,
+    "link": "https://www.fightful.com/wrestling/triple-h-invites-dwight-howard-to-get-in-wwe-ring/",
+    "date": "2026-11-03T14:13:10",
+    "date_gmt": "2026-11-03T19:13:10",
+    "title": {
+      "rendered": "Triple H Invites Dwight Howard To Get In WWE Ring"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2022/09/27232836/dwight_howard.jpg"
+  },
+  {
     "id": 337243,
     "link": "https://www.fightful.com/wrestling/cm-punk-teases-working-john-cena-classic-wwe-worlds-collide-at-walt-disney-world/",
     "date": "2026-11-03T13:43:47",
@@ -288,15 +298,5 @@
       "rendered": "Will Ospreay To Face Callum Newman At NJPW Wrestle Kingdom 21"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/03042826/Screenshot-2026-11-03-at-4.26.47-AM.png"
-  },
-  {
-    "id": 337170,
-    "link": "https://www.fightful.com/wrestling/jon-moxley-vs-shingo-takagi-announced-for-njpw-wrestle-kingdom-21/",
-    "date": "2026-11-03T03:59:47",
-    "date_gmt": "2026-11-03T08:59:47",
-    "title": {
-      "rendered": "Jon Moxley vs. Shingo Takagi Announced For NJPW Wrestle Kingdom 21"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/04013302/Untitled-Design-2.jpg"
   }
 ]
