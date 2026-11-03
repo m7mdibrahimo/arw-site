@@ -1,5 +1,25 @@
 [
   {
+    "id": 337224,
+    "link": "https://www.fightful.com/wrestling/john-cena-announced-for-upcoming-episodes-of-wwe-raw-and-smackdown/",
+    "date": "2026-11-03T12:31:18",
+    "date_gmt": "2026-11-03T17:31:18",
+    "title": {
+      "rendered": "John Cena Announced For Upcoming Episodes Of WWE Raw And SmackDown"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/03123049/HWKPSqoXgAA2KVb.jpeg"
+  },
+  {
+    "id": 337219,
+    "link": "https://www.fightful.com/wrestling/ethan-page-explains-why-he-feels-nothing-following-wwe-intercontinental-title-win/",
+    "date": "2026-11-03T12:24:21",
+    "date_gmt": "2026-11-03T17:24:21",
+    "title": {
+      "rendered": "Ethan Page Explains Why He Feels &#8216;Nothing&#8217; Following WWE Intercontinental Title Win"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/02185512/HWKGdqsWYAAY6xg.jpg"
+  },
+  {
     "id": 337196,
     "link": "https://www.fightful.com/wrestling/paul-wight-says-he-sees-huge-big-star-potential-in-kyle-fletcher/",
     "date": "2026-11-03T12:14:30",
@@ -278,25 +298,5 @@
       "rendered": "John Cena Classic To Take Place At Disney World On 12/14, Cody Rhodes Revealed As First Entrant"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/02193821/HWKSdKZXMAAWE7h-e1793666312891.jpg"
-  },
-  {
-    "id": 337117,
-    "link": "https://www.fightful.com/wrestling/ethan-page-defeats-chad-gable-to-win-intercontinental-championship-on-wwe-raw/",
-    "date": "2026-11-02T18:58:56",
-    "date_gmt": "2026-11-02T23:58:56",
-    "title": {
-      "rendered": "Ethan Page Defeats Chad Gable To Win Intercontinental Championship On WWE Raw"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/02185512/HWKGdqsWYAAY6xg.jpg"
-  },
-  {
-    "id": 337107,
-    "link": "https://www.fightful.com/wrestling/wwes-internal-plans-call-for-john-cena-classic-to-take-place-at-walt-disney-world/",
-    "date": "2026-11-02T18:46:00",
-    "date_gmt": "2026-11-02T23:46:00",
-    "title": {
-      "rendered": "WWE&#8217;s Internal Plans Call For John Cena Classic To Take Place At Walt Disney World"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/27063334/maxresdefault-205.jpg"
   }
 ]
