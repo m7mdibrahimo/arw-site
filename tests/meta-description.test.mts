@@ -230,3 +230,8 @@ test("an over-long first sentence cut inside a name does not exceed the limit", 
   assert.match(d, /[.!؟]$/);
   assert.ok(!/like\.$|Generation\.$/.test(d), d);
 });
+
+test("a description never ends on a dangling «following»", () => {
+  const d = metaDescription("Mercedes Moné has expressed her desire to compete at the Tokyo Dome as the match card for New Japan Pro-Wrestling's Wrestle Kingdom 21 takes shape following the 2026 Power Struggle event. She replied.");
+  assert.ok(!/\b(?:following|including|despite)\.?$/i.test(d), d);
+});

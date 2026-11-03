@@ -1,7 +1,7 @@
 ---
 title: "Mercedes Moné Hoping to Compete at NJPW Wrestle Kingdom 21"
 slug: "mercedes-mone-hoping-to-compete-at-njpw-wrestle-kingdom-21"
-description: "Mercedes Moné has expressed her desire to compete at the Tokyo Dome as the match card for New Japan Pro-Wrestling's Wrestle Kingdom 21 takes shape following."
+description: "Mercedes Moné has expressed her desire to compete at the Tokyo Dome as the match card for New Japan Pro-Wrestling's Wrestle Kingdom 21 takes shape."
 federation: NJPW
 date: 2026-11-03T18:15:38.000Z
 source_id: 337232
