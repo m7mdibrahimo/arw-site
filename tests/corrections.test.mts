@@ -1415,3 +1415,11 @@ test("«أسفك دماء» and «العصوبة» are corrected (INCIDENTS #104
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /أسفك|العصوبة/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+test("«تيخانا بامب» and «أدواته التشجيعية» are corrected (INCIDENTS #1043)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("بتنفيذ حركة تيخانا بامب على سينا"), "بتنفيذ حركة تيهانا بومب على سينا");
+  assert.equal(applyCorrections("وتشتري أدواته التشجيعية"), "وتشتري منتجاته");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /تيخانا بامب|أدواته التشجيعية/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
