@@ -7,32 +7,42 @@
  "https://www.fightful.com/wrestling/wwe-crown-jewel-odds-courtesy-of-my-bookie": {
   "reason": "المراجعة رفضته: خبر ترويجي لموقع مراهنات (MyBookie…) — مش خبر، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-03T18:04:46.867Z"
+  "at": "2026-11-03T18:22:10.501Z"
+ },
+ "https://www.fightful.com/wrestling/paul-wight-ive-learned-quite-a-few-things-from-shaquille-oneal": {
+  "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
+  "retry": true,
+  "at": "2026-11-03T18:18:55.583Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-crown-jewel-odds-courtesy-of-my-bookie": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-03T18:18:42.877Z"
  },
  "https://www.fightful.com/wrestling/ethan-page-explains-why-he-feels-nothing-following-wwe-intercontinental-title-win": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T18:02:03.634Z"
+  "at": "2026-11-03T18:18:08.055Z"
  },
  "https://www.fightful.com/wrestling/ddt-ultimate-party-results-11-3-26-zack-sabre-jr-konosuke-takeshita-in-action": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kevin Owens",
   "retry": true,
-  "at": "2026-11-03T18:02:03.230Z"
+  "at": "2026-11-03T18:18:07.647Z"
  },
  "https://www.fightful.com/wrestling/wwe-to-host-avengers-doomsday-themed-worlds-collide-event-on-december-15th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:58:09.276Z"
+  "at": "2026-11-03T18:17:27.392Z"
  },
  "https://www.fightful.com/wrestling/the-miz-credits-his-friends-in-ohio-with-giving-him-his-ring-name": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:58:08.928Z"
+  "at": "2026-11-03T18:17:27.053Z"
  },
  "https://www.fightful.com/wrestling/kenny-omega-pins-yota-tsuji-at-njpw-power-struggle-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-03T17:58:08.512Z"
+  "at": "2026-11-03T18:17:26.646Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-spoilers-for-11-6-taped-on-11-2": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1988,15 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-22T16:37:46.077Z"
- },
- "https://www.ringsidenews.com/judge-denies-aew-jon-moxleys-request-move-assault-battery-lawsuit-florida": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-22T16:25:26.042Z"
- },
- "https://www.fightful.com/wrestling/bp-static-age-results-10-17": {
-  "reason": "المراجعة رفضته: اسم مصارع في المتن غير موجود في المصدر: Gisele Shaw",
-  "retry": true,
-  "at": "2026-10-22T15:55:54.683Z"
  }
 }
