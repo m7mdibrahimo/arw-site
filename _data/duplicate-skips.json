@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/cj-perry-pitched-becoming-ric-flairs-sixth-wife-wwe/": {
-    "matchedFile": "20261018175113-سي-جيه-بيري-تكشف-أن-wwe-منحت-أفكار-قصصها-أحيانا-لمصارعين-آخرين.md",
-    "reason": "الخبر الجديد يعيد سرد نفس التصريح الذي أدلت به سي جيه بيري في نفس المقابلة حول اقتراحها أن تصبح الزوجة السادسة لريك فلير، وهو تفصيل مذكور بالكامل في الخبر رقم 0.",
-    "at": "2026-10-18T14:56:33.951Z"
-  },
   "https://www.wrestlinginc.com/2289758/aew-wrestledream-2026-buy-in-maya-world-cleared-return/": {
     "matchedFile": "20261018024340-مايا-وورلد-تعلن-حصولها-على-التصريح-الطبي-للعودة-إلى-الحلبات.md",
     "reason": "الخبر الجديد يكرر نفس حدث إعلان حصول مايا وورلد على التصريح الطبي للعودة خلال عرض AEW WrestleDream والمذكور تفصيلياً في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261103050540-نتائج-عرض-wwe-smackdown-6-نوفمبر-2026-نزال-no-holds-barred-بين-كيفن-أوينز-وسي-ام-بانك.md",
     "reason": "الخبر الجديد يكرر تغطية نتائج ونقداث عرض WWE SmackDown وتسجيلاته التي تم نشرها بالفعل في الخبر رقم 0 والخبر رقم 1.",
     "at": "2026-11-03T15:08:50.929Z"
+  },
+  "https://www.wrestlinginc.com/2305275/aew-njpw-wrestle-kingdom-21-kenny-omega-jon-moxley-will-ospreay-mjf-gabe-kidd-matches-announced/": {
+    "matchedFile": "20261103115947-الإعلان-عن-نزال-جون-موكسلي-ضد-شينغو-تاكاغي-في-عرض-njpw-wrestle-kingdom-21.md",
+    "reason": "الخبر الجديد يغطي نفس إعلانات نزالات عرض NJPW Wrestle Kingdom 21 الخاصة بنجوم AEW مثل جون موكسلي وK-Omega والتي تم الإعلان عنها بالفعل في الخبر المنشور لنفس العرض.",
+    "at": "2026-11-03T15:33:41.320Z"
   }
 }
