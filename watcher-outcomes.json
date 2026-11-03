@@ -44,11 +44,6 @@
   "retry": false,
   "at": "2026-11-03T15:19:05.206Z"
  },
- "https://www.ringsidenews.com/wwe-announces-date-location-avengers-themed-worlds-collide-event": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": true,
-  "at": "2026-11-03T15:00:12.100Z"
- },
  "https://www.fightful.com/wrestling/njpw-power-struggle-2026-preview-start-time-how-to-watch-location-11-3": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
