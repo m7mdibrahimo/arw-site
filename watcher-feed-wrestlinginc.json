@@ -1,5 +1,15 @@
 [
   {
+    "id": 3146873819,
+    "link": "https://www.wrestlinginc.com/2304939/wwe-raw-november-2-2026-hated-loved-opinion-review/",
+    "date": "Tue, 03 Nov 2026 03:39:34 +0000",
+    "date_gmt": "2026-11-03T03:39:34.000Z",
+    "title": {
+      "rendered": "WWE RAW 11/2/2026: 3 Things We Hated & 3 Things We Loved"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-1122026-3-things-we-hated-3-things-we-loved/l-intro-1793677032.jpg"
+  },
+  {
     "id": 4825637396,
     "link": "https://www.wrestlinginc.com/2304921/wwe-raw-nxt-cruz-montana-846-bloodline-rout-main-event/",
     "date": "Tue, 03 Nov 2026 02:07:09 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Former AEW VP Accepts Position With MLW"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/former-aew-vp-accepts-position-with-mlw/l-intro-1793639946.jpg"
-  },
-  {
-    "id": 1360624883,
-    "link": "https://www.wrestlinginc.com/2304141/dave-meltzer-wwe-retirement-bruce-prichard-surgery/",
-    "date": "Mon, 02 Nov 2026 17:16:40 +0000",
-    "date_gmt": "2026-11-02T17:16:40.000Z",
-    "title": {
-      "rendered": "Dave Meltzer Provides Details On Upcoming WWE Retirement Of Bruce Prichard"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/dave-meltzer-provides-details-on-upcoming-wwe-retirement-of-bruce-prichard/l-intro-1793639628.jpg"
   }
 ]
