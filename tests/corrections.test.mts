@@ -1366,3 +1366,12 @@ test("«وارتلي جاكسون» is corrected to «وهارتلي جاكسو�
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /وارتلي/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #1035: «روب إكس» / «ياسدا» / «يوجيرو تاكا» (cut) reached NJPW stories.
+test("Robbie X, Yasuda and Yujiro Takahashi are spelled the glossary way (INCIDENTS #1035)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("فوز روب إكس وماساتورا ياسدا على يوجيرو تاكا"), "فوز روبي إكس وماساتورا ياسودا على يوجيرو تاكاهاشي");
+  assert.equal(applyCorrections("يوجيرو تاكاهاشي"), "يوجيرو تاكاهاشي");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /روب إكس|ياسدا|يوجيرو تاكا(?![؀-ۿ])/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
