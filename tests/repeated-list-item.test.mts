@@ -52,3 +52,14 @@ test("the round's corrections: «ستيفن رولينز», «عدواته», «
   assert.equal(applyCorrections("خلال عدواته مع إلياس"), "خلال عداوته مع إلياس");
   assert.equal(applyCorrections("حضر عرض Royal Rumble في إنديانا بوليس"), "حضر عرض Royal Rumble في إنديانابوليس");
 });
+
+// INCIDENTS #1029: CMLL Lunes Clásico story opened with «لا تفاصيل أخرى، وإليك نتائج المواجهات كما وردت في العرض---».
+test("empty «no other details» filler and its stray separators are dropped", () => {
+  const out = autoFix("أقيم عرض كذا.\n\n---\n\nلا تفاصيل أخرى، وإليك نتائج المواجهات كما وردت في العرض---\n\n**المواجهة الأولى: نزال**\n\nفاز س.");
+  assert.ok(!out.includes("لا تفاصيل") && !out.includes("---"), out);
+  assert.ok(out.includes("**المواجهة الأولى: نزال**"));
+});
+
+test("CMLL luchador names are written one way", () => {
+  assert.equal(applyCorrections("على كابتن سويسيادا وصوبرانو جونيور").text ?? applyCorrections("على كابتن سويسيادا وصوبرانو جونيور"), "على كابيتان سويسيدا وسوبيرانو جونيور");
+});

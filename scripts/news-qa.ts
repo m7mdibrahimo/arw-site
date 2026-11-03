@@ -1313,6 +1313,10 @@ export function autoFix(text: string): string {
     .replace(/(?:^|(?<=[\n.]\s*))تجهيزا\s+(?:للمنافسات|للمنافسة|للمواجهة|للنزال)(?:\s+(?:القوية|الكبرى|المرتقبة))?[،,]\s*/g, "")
     .replace(new RegExp(`[،,]\\s*(?:و)?شهد(?:ت)?\\s+(?:العرض|الأمسية|الليلة)\\s+(?:${FILLER_NOUNS})\\s+(?:${FILLER_ADJ})[^.\\n]*(?=\\.)`, "g"), "")
     .replace(new RegExp(`(^|[.!])[ \\t]*(?:و)?شهد(?:ت)?\\s+(?:العرض|الأمسية|الليلة)\\s+(?:${FILLER_NOUNS})\\s+(?:${FILLER_ADJ})[^.\\n]*\\.[ \\t]*`, "gm"), "$1")
+    // Empty filler Gemini writes when the source has no intro text: «لا تفاصيل أخرى، وإليك نتائج
+    // المواجهات كما وردت في العرض---» (CMLL Lunes Clásico 02/11 — INCIDENTS #1029). It says nothing and its
+    // «---» glued to the end (and the lone separator before it) rendered as stray lines on the page.
+    .replace(/(?:(?:^|\n)[ \t]*-{3,}[ \t]*\n+)?(?:^|\n)[ \t]*لا\s+(?:توجد\s+)?(?:أي\s+)?تفاصيل\s+(?:أخرى|إضافية)[^\n]*(?=\n|$)/g, "\n")
     // Self-promotion lines («لا تنسى زيارة موقعنا باستمرار…», «لا تنسى الفواصل…»)
     .replace(/(^|\n)[ \t]*لا\s+تنس[ىي][^\n]*(?=\n|$)/g, "$1")
     // Leftovers of the old glossary: «(بطولة WWE الموحدة - بطل (الاتحاد))», «بطولة X (بطل (الاتحاد للفرق))»

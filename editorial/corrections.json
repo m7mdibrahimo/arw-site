@@ -2,6 +2,51 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "إيهو دل بيرفيرسو",
+      "right": "هيخو ديل بيرفيرسو",
+      "note": "أسماء لوتشادورز CMLL كانت بتتكتب بأشكال مختلفة من خبر لخبر (INCIDENTS #1029)"
+    },
+    {
+      "wrong": "كابتن سويسيادا",
+      "right": "كابيتان سويسيدا",
+      "note": "أسماء لوتشادورز CMLL كانت بتتكتب بأشكال مختلفة من خبر لخبر (INCIDENTS #1029)"
+    },
+    {
+      "wrong": "كابتن سويسيدا",
+      "right": "كابيتان سويسيدا",
+      "note": "أسماء لوتشادورز CMLL كانت بتتكتب بأشكال مختلفة من خبر لخبر (INCIDENTS #1029)"
+    },
+    {
+      "wrong": "كابتن سويسيذا",
+      "right": "كابيتان سويسيدا",
+      "note": "أسماء لوتشادورز CMLL كانت بتتكتب بأشكال مختلفة من خبر لخبر (INCIDENTS #1029)"
+    },
+    {
+      "wrong": "كابيتان سويسا",
+      "right": "كابيتان سويسيدا",
+      "note": "أسماء لوتشادورز CMLL كانت بتتكتب بأشكال مختلفة من خبر لخبر (INCIDENTS #1029)"
+    },
+    {
+      "wrong": "كابتن سويسا",
+      "right": "كابيتان سويسيدا",
+      "note": "أسماء لوتشادورز CMLL كانت بتتكتب بأشكال مختلفة من خبر لخبر (INCIDENTS #1029)"
+    },
+    {
+      "wrong": "صوبرانو جونيور",
+      "right": "سوبيرانو جونيور",
+      "note": "أسماء لوتشادورز CMLL كانت بتتكتب بأشكال مختلفة من خبر لخبر (INCIDENTS #1029)"
+    },
+    {
+      "wrong": "سوبرانو جونيور",
+      "right": "سوبيرانو جونيور",
+      "note": "أسماء لوتشادورز CMLL كانت بتتكتب بأشكال مختلفة من خبر لخبر (INCIDENTS #1029)"
+    },
+    {
+      "wrong": "ماكينا ليطال",
+      "right": "ماكينا ليتال",
+      "note": "أسماء لوتشادورز CMLL كانت بتتكتب بأشكال مختلفة من خبر لخبر (INCIDENTS #1029)"
+    },
+    {
       "wrong": "عصر الأتيود",
       "right": "عصر الأتيتيود",
       "note": "«Attitude Era» اتكتبت ناقصة حرف (INCIDENTS #1022)"
