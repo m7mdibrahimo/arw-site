@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/cruz-montana-makes-wwe-main-roster-debut-brutal-attack-roman-reigns": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-03T01:39:01.575Z"
+ },
  "https://www.fightful.com/wrestling/john-cena-to-appear-at-wwe-survivor-series-wargames-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-21T18:40:18.682Z"
- },
- "https://www.fightful.com/wrestling/bandido-names-ilja-dragunov-and-kenny-omega-as-his-dream-aew-opponents": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-21T17:58:05.320Z"
  }
 }
