@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/cm-punks-status-wwes-john-cena-classic-worlds-collide": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-03T21:30:40.351Z"
+ },
+ "https://www.ringsidenews.com/carmella-explains-why-shes-hesitant-return-wrestling": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-03T21:29:43.342Z"
+ },
  "https://www.fightful.com/wrestling/jake-roberts-clarifies-that-he-isnt-under-contract-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
