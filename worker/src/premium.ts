@@ -58,6 +58,13 @@ export async function endTrials(env: PremiumEnv, now = Date.now()): Promise<numb
 }
 const DAY = 86_400_000;
 const FAWATERK = "https://app.fawaterk.com/api/v2";
+// The OAuth client's token opens only /api/v3 (createTransaction, getTransactionData); /api/v2 answered it «Invalid Token
+// or inactive vendor» (2026-11-03). A fixed API key (FAWATERK_API_KEY) keeps the v2 invoices.
+const FAWATERK_V3 = "https://app.fawaterk.com/api/v3";
+export const fawaterkV3 = (env: PremiumEnv) => !env.FAWATERK_API_KEY;
+const WORKER = "https://arw-site-bot.m7mdibrahimpc.workers.dev";
+/** A v3 payment's key (intent_key) is kept in invoice_id, with invoice_key «tr» */
+const TR = "tr";
 const SITE = "https://arab-wrestling.com";
 const CORS = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type, Authorization" };
 const reply = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store", ...CORS } });
@@ -147,7 +154,7 @@ async function fawaterk(env: PremiumEnv, path: string, init: RequestInit = {}): 
   for (const fresh of [false, true]) {
     const token = await fawaterkToken(env, fresh);
     if (!token) return null;
-    const r = await fetch(`${FAWATERK}${path}`, { ...init, headers: { ...(init.headers as any || {}), Authorization: `Bearer ${token}`, Accept: "application/json" } }).catch(() => null);
+    const r = await fetch(`${fawaterkV3(env) ? FAWATERK_V3 : FAWATERK}${path}`, { ...init, headers: { ...(init.headers as any || {}), Authorization: `Bearer ${token}`, Accept: "application/json" } }).catch(() => null);
     if (!r || r.status !== 401 || env.FAWATERK_API_KEY) return r;
   }
   return null;
@@ -160,7 +167,7 @@ export async function fawaterkHealth(env: PremiumEnv, now = Date.now()): Promise
   let out: { ok: boolean; at: number; error?: string };
   if (!fawaterkLive(env)) out = { ok: false, at: now, error: "off" };
   else {
-    const r = await fawaterk(env, "/getPaymentmethods").catch(() => null);
+    const r = await fawaterk(env, fawaterkV3(env) ? "/getTrPaymentmethods" : "/getPaymentmethods").catch(() => null);
     const d: any = r ? await r.json().catch(() => null) : null;
     out = r && r.ok && d?.status === "success" ? { ok: true, at: now } : { ok: false, at: now, error: r ? `${r.status} ${JSON.stringify(d).slice(0, 160)}` : "no token" };
   }
@@ -172,20 +179,27 @@ async function fawaterkFailed(env: PremiumEnv, error: string, now = Date.now()) 
 }
 /** Is this invoice paid? Fawaterk itself says (its answer, not the webhook's word); and paid in full, in the currency
  *  the site asked for (owner 2026-10-15: «يتاكد مليون في الميه انه دفع») */
-export async function invoicePaid(env: PremiumEnv, invoiceId: string, expect?: { amount?: number; currency?: string }): Promise<{ paid: boolean; method?: string; reference?: string } | null> {
+export async function invoicePaid(env: PremiumEnv, invoiceId: string, expect?: { amount?: number; currency?: string; invoice_key?: string }): Promise<{ paid: boolean; method?: string; reference?: string } | null> {
   if (!fawaterkLive(env) || !invoiceId) return null;
+  const v3 = expect?.invoice_key === TR;
+  if (v3 !== fawaterkV3(env)) return null; // made with the other kind of key: asked again once that key is back
   try {
-    const r = await fawaterk(env, `/getInvoiceData/${encodeURIComponent(invoiceId)}`);
+    const r = v3
+      ? await fawaterk(env, "/getTransactionData", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ intent_key: invoiceId }) })
+      : await fawaterk(env, `/getInvoiceData/${encodeURIComponent(invoiceId)}`);
     if (!r) return null;
     const d: any = await r.json().catch(() => null);
     const x = d?.data || {};
     let paid = x.paid === 1 || x.paid === true || x.paid === "1" || /^paid$/i.test(String(x.status_text || x.invoice_status || x.status || ""));
-    // what Fawaterk says was asked of the member: never less than the plan's price, never another currency
-    const total = Number(x.total ?? x.cart_total ?? x.cartTotal ?? x.invoice_total ?? NaN);
-    const cur = String(x.currency || "").toUpperCase();
-    if (expect && Number(expect.amount) > 0 && Number.isFinite(total) && total + 0.01 < Number(expect.amount)) paid = false;
-    if (expect && expect.currency && /^[A-Z]{3}$/.test(cur) && cur !== String(expect.currency).toUpperCase()) paid = false;
-    return { paid, method: String(x.payment_method || x.paymentMethod || ""), reference: String(x.referenceNumber || x.reference_number || "") };
+    // what Fawaterk says was asked of the member: never less than the plan's price, never another currency. A dollar
+    // payment may come back converted to pounds, its original amount and currency in financial_breakdown.
+    const fb = x.financial_breakdown || {};
+    const asked = [[x.total ?? x.cart_total ?? x.cartTotal ?? x.invoice_total, x.currency], [fb.original_amount, fb.original_currency]]
+      .map(([a, c]) => ({ amount: Number(a ?? NaN), cur: String(c || "").toUpperCase() })).filter(o => Number.isFinite(o.amount) || /^[A-Z]{3}$/.test(o.cur));
+    const fits = (o: { amount: number; cur: string }) => (!(expect && Number(expect.amount) > 0 && Number.isFinite(o.amount)) || o.amount + 0.01 >= Number(expect!.amount))
+      && (!(expect && expect.currency && /^[A-Z]{3}$/.test(o.cur)) || o.cur === String(expect!.currency).toUpperCase());
+    if (asked.length && !asked.some(fits)) paid = false;
+    return { paid, method: String(x.payment_method || x.paymentMethod || ""), reference: String(x.referenceNumber || x.reference_number || x.transaction_id || "") };
   } catch { return null; }
 }
 /** A pending payment found paid: the days go to its member, once */
@@ -238,11 +252,15 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
   if (!db) return reply({ ok: false, error: "العضوية المميزة غير متاحة الآن." }, 503);
   await ensurePremium(db);
   const path = url.pathname;
-  const body: any = request.method === "POST" ? await request.json().catch(() => ({})) : {};
+  // Fawaterk's webhook is form-encoded unless its address ends in «_json» (/premium/webhook_json)
+  const body: any = request.method !== "POST" ? {} : /form-urlencoded/i.test(request.headers.get("Content-Type") || "")
+    ? Object.fromEntries(new URLSearchParams(await request.text().catch(() => ""))) : await request.json().catch(() => ({}));
 
   // Fawaterk → the worker (no member session here: the invoice is ours, and Fawaterk confirms it)
-  if (path === "/premium/webhook" && request.method === "POST") {
-    const pay: any = await db.prepare("SELECT * FROM premium_payments WHERE invoice_id = ?1 ORDER BY id DESC LIMIT 1").bind(String(body.invoice_id || "")).first();
+  if ((path === "/premium/webhook" || path === "/premium/webhook_json") && request.method === "POST") {
+    const id = String(body.invoice_id || body.transaction_key || "");
+    if (!id) return reply({ ok: true, unknown: true });
+    const pay: any = await db.prepare("SELECT * FROM premium_payments WHERE invoice_id = ?1 ORDER BY id DESC LIMIT 1").bind(id).first();
     if (!pay) return reply({ ok: true, unknown: true });
     // the webhook only says «go and ask»: paid only when Fawaterk, asked by the site with its own key, says this very
     // invoice is paid in full (a webhook's own word, even signed, never turns a membership on: its signature doesn't
@@ -324,27 +342,36 @@ export async function handlePremium(request: Request, env: PremiumEnv, url: URL,
     const open = await db.prepare("SELECT COUNT(*) AS n FROM premium_payments WHERE member = ?1 AND created > ?2").bind(me.id, now - 3_600_000).first<{ n: number }>();
     if ((open?.n || 0) >= 8) return reply({ ok: false, error: "طلبات دفع كثيرة، حاول بعد قليل." }, 429);
     const name = String(me.display || me.username).trim().split(/\s+/);
-    const res = await fawaterk(env, "/createInvoiceLink", {
+    const v3 = fawaterkV3(env);
+    const item = currency === "USD" ? `Arab Wrestling Premium (${offer.en})` : `العضوية المميزة - عرب راسلنج (${offer.ar})`;
+    const customer = { first_name: name[0] || me.username, last_name: name.slice(1).join(" ") || "Member", email: me.email };
+    const redirectionUrls = { successUrl: `${back}?paid=1`, failUrl: `${back}?failed=1`, pendingUrl: `${back}?pending=1` };
+    const res = await fawaterk(env, v3 ? "/createTransaction" : "/createInvoiceLink", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        cartTotal: String(plan.price), currency,
-        customer: { first_name: name[0] || me.username, last_name: name.slice(1).join(" ") || "Member", email: me.email },
-        redirectionUrls: { successUrl: `${back}?paid=1`, failUrl: `${back}?failed=1`, pendingUrl: `${back}?pending=1` },
-        cartItems: [{ name: currency === "USD" ? `Arab Wrestling Premium (${offer.en})` : `العضوية المميزة - عرب راسلنج (${offer.ar})`, price: String(plan.price), quantity: "1" }],
+      body: JSON.stringify(v3 ? {
+        cartTotal: plan.price, currency, customer: { ...customer, customer_unique_id: String(me.id) },
+        cartItems: [{ name: item, price: plan.price, quantity: 1 }], pay_load: { member: me.id, plan: offerId },
+        redirectionUrls: { ...redirectionUrls, backUrl: back, webhookUrl: `${WORKER}/premium/webhook_json` },
+        sendEmail: false, sendSMS: false, lang: body.en ? "en" : "ar",
+      } : {
+        cartTotal: String(plan.price), currency, customer, redirectionUrls,
+        cartItems: [{ name: item, price: String(plan.price), quantity: "1" }],
         payLoad: JSON.stringify({ member: me.id }),
       }),
     });
     const d: any = res ? await res.json().catch(() => null) : null;
     const inv = d?.data || {};
+    const invoiceId = String((v3 ? inv.intent_key : inv.invoiceId ?? inv.invoice_id) ?? "");
     // Fawaterk refused or didn't answer: the fixed link, so the member can still pay (the panel turns it on)
-    if (!res || !res.ok || d?.status !== "success" || !inv.url) {
-      console.log(`[premium] createInvoiceLink ${res?.status}: ${JSON.stringify(d).slice(0, 300)}`);
-      await fawaterkFailed(env, `createInvoiceLink ${res?.status ?? "no answer"} ${JSON.stringify(d).slice(0, 150)}`, now);
+    if (!res || !res.ok || d?.status !== "success" || !inv.url || !invoiceId) {
+      const call = v3 ? "createTransaction" : "createInvoiceLink";
+      console.log(`[premium] ${call} ${res?.status}: ${JSON.stringify(d).slice(0, 300)}`);
+      await fawaterkFailed(env, `${call} ${res?.status ?? "no answer"} ${JSON.stringify(d).slice(0, 150)}`, now);
       return reply({ ok: true, url: plan.link, manual: true });
     }
     await db.prepare("INSERT INTO premium_payments (member, invoice_id, invoice_key, currency, amount, created, days) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)")
-      .bind(me.id, String(inv.invoiceId ?? inv.invoice_id ?? ""), String(inv.invoiceKey ?? inv.invoice_key ?? ""), currency, plan.price, now, offer.days).run();
+      .bind(me.id, invoiceId, v3 ? TR : String(inv.invoiceKey ?? inv.invoice_key ?? ""), currency, plan.price, now, offer.days).run();
     return reply({ ok: true, url: String(inv.url) });
   }
 

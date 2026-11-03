@@ -256,10 +256,11 @@ test('Fawaterk by its OAuth client: a token asked once and kept, a refused one a
       tokens++;
       return new Response(JSON.stringify({ token_type: 'Bearer', expires_in: 3600, access_token: `tok${tokens}` }));
     }
-    if (u.endsWith('/createInvoiceLink')) {
+    // the OAuth token opens /api/v3 only (2026-11-03: /api/v2 answered it «Invalid Token or inactive vendor»)
+    if (u === 'https://app.fawaterk.com/api/v3/createTransaction') {
       auths.push(init.headers.Authorization);
       if (refuseNext) { refuseNext = false; return new Response('{"message":"Unauthenticated."}', { status: 401 }); }
-      return new Response(JSON.stringify({ status: 'success', data: { url: 'https://app.fawaterk.com/link/1', invoiceId: 1, invoiceKey: 'k1' } }));
+      return new Response(JSON.stringify({ status: 'success', data: { url: 'https://app.fawaterk.com/link/1', intent_key: `ik${auths.length}` } }));
     }
     return new Response('{}', { status: 404 });
   }) as any;
@@ -682,5 +683,47 @@ test('auto memberships are on (owner 2026-11-03), and the panel is told when Faw
     const h = (await studioPremium(e)).fawaterk;
     assert.equal(h.ok, false);
     assert.match(h.error, /createInvoiceLink 401/);
+  } finally { globalThis.fetch = real; }
+});
+
+test('Fawaterk v3 (the OAuth client): a hosted transaction, paid only when getTransactionData says so, in full', async () => {
+  const e = env({ PREMIUM_AUTO: '1', FAWATERK_CLIENT_ID: 'cid', FAWATERK_CLIENT_SECRET: 'csec' });
+  const s = await member(e);
+  const real = globalThis.fetch;
+  const made: any[] = []; const tx: Record<string, any> = {};
+  globalThis.fetch = (async (url: any, init: any) => {
+    const u = String(url);
+    if (u.endsWith('/oauth/token')) return new Response(JSON.stringify({ token_type: 'Bearer', expires_in: 31536000, access_token: 'tok' }));
+    if (u === 'https://app.fawaterk.com/api/v3/createTransaction') {
+      const b = JSON.parse(init.body); const ik = `ik-${made.length}`; made.push(b);
+      return new Response(JSON.stringify({ status: 'success', message: 'Transaction link created', data: { intent_key: ik, url: `https://app.fawaterk.com/ts/${ik}`, expires_in: 2592000 } }));
+    }
+    if (u === 'https://app.fawaterk.com/api/v3/getTransactionData') {
+      const ik = JSON.parse(init.body).intent_key;
+      return new Response(JSON.stringify({ status: 'success', data: { intent_key: ik, paid: 0, status_text: 'pending', ...(tx[ik] || {}) } }));
+    }
+    return new Response('{}', { status: 404 });
+  }) as any;
+  try {
+    const c = await call(e, '/premium/checkout', { currency: 'EGP', plan: 'm3' }, s.token);
+    assert.equal(c.body.url, 'https://app.fawaterk.com/ts/ik-0');
+    assert.equal(made[0].cartTotal, OFFERS.m3.EGP);
+    assert.equal(made[0].payment_method_id, undefined); // hosted checkout: the member picks how to pay
+    assert.equal(made[0].pay_load.member, s.member.id);
+    assert.match(made[0].redirectionUrls.webhookUrl, /\/premium\/webhook_json$/);
+    assert.equal((await call(e, '/premium/check', {}, s.token)).body.premium, 0);
+    // paid less than the plan: not on
+    tx['ik-0'] = { paid: 1, status_text: 'paid', total: 50, currency: 'EGP', payment_method: 'Fawry' };
+    assert.equal((await call(e, '/premium/check', {}, s.token)).body.premium, 0);
+    tx['ik-0'] = { paid: 1, status_text: 'paid', total: OFFERS.m3.EGP, currency: 'EGP', payment_method: 'Fawry', transaction_id: 77 };
+    const until = (await call(e, '/premium/check', {}, s.token)).body.premium;
+    assert.ok(until > Date.now() + 89 * 86_400_000);
+    // a dollar payment that Fawaterk reports in pounds, its original in financial_breakdown; told by the form-encoded webhook
+    const u = await call(e, '/premium/checkout', { currency: 'USD' }, s.token);
+    assert.equal(u.body.url, 'https://app.fawaterk.com/ts/ik-1');
+    tx['ik-1'] = { paid: 1, status_text: 'paid', total: 49, currency: 'EGP', financial_breakdown: { original_amount: 1, original_currency: 'USD' } };
+    const r = await handlePremium(new Request('https://w/premium/webhook', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: 'transaction_key=ik-1&status=paid&payment_method=Card' }), e, new URL('https://w/premium/webhook'));
+    assert.equal((await r.json() as any).paid, true);
+    assert.ok((await me(e, s.token)).premium > until + 29 * 86_400_000);
   } finally { globalThis.fetch = real; }
 });
