@@ -538,3 +538,11 @@ test("invisible characters are stripped by autoFix and an empty «()» is blocke
   assert.ok(!checkArticle("عنوان", "قال سيدريك (أوكرانيا) بعد ذلك.").some((i) => i.code === "empty_parens"));
   assert.ok(BLOCKING_QA_CODES.includes("invisible_char") && BLOCKING_QA_CODES.includes("empty_parens"));
 });
+
+test("«كواليس العرض» twice in one sentence is blocked (INCIDENTS #1030: «…مقابلة مع تريك ويليامز في كواليس العرض الذي أكد»)", () => {
+  const bad = "في كواليس العرض، أجرى بايرون ساكستون مقابلة مع تريك ويليامز في كواليس العرض الذي أكد أن خسارته ليست النهاية.";
+  const ok = "في كواليس العرض، أجرى بايرون ساكستون مقابلة مع تريك ويليامز، وأكد ويليامز أن خسارته ليست النهاية.";
+  assert.ok(checkArticle("عنوان", bad).some((i) => i.code === "repeated_backstage"));
+  assert.ok(!checkArticle("عنوان", ok).some((i) => i.code === "repeated_backstage"));
+  assert.ok(BLOCKING_QA_CODES.includes("repeated_backstage"));
+});
