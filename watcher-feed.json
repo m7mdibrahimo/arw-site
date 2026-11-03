@@ -1,5 +1,25 @@
 [
   {
+    "id": 337244,
+    "link": "https://www.fightful.com/wrestling/wwe-shop-selling-john-cena-classic-title-belt-for-799-99/",
+    "date": "2026-11-03T13:41:10",
+    "date_gmt": "2026-11-03T18:41:10",
+    "title": {
+      "rendered": "WWE Shop Selling John Cena Classic Title Belt For $799.99"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/03132244/HWKRgmaXkAAAzFQ-e1793730180901.jpg"
+  },
+  {
+    "id": 337216,
+    "link": "https://www.fightful.com/wrestling/paul-wight-darby-allin-is-the-ultimate-babyface/",
+    "date": "2026-11-03T13:37:05",
+    "date_gmt": "2026-11-03T18:37:05",
+    "title": {
+      "rendered": "Paul Wight: Darby Allin Is The Ultimate Babyface"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/15080528/Screenshot-2026-08-15-130459.png"
+  },
+  {
     "id": 337232,
     "link": "https://www.fightful.com/wrestling/mercedes-mone-hoping-to-compete-at-njpw-wrestle-kingdom-21/",
     "date": "2026-11-03T13:15:38",
@@ -278,25 +298,5 @@
       "rendered": "Jeff Cobb &amp; Chihiro Hashimoto vs. Shingo Takagi &amp; Natsupoi Added To NJPW Bound For Unbound"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/03034136/HWCqB0NagAApacL-e1793695320273.jpg"
-  },
-  {
-    "id": 337164,
-    "link": "https://www.fightful.com/wrestling/iwgp-junior-heavyweight-title-bout-yoh-sho-with-dual-stipulations-set-for-njpw-wrestle-kingdom-21/",
-    "date": "2026-11-03T03:33:53",
-    "date_gmt": "2026-11-03T08:33:53",
-    "title": {
-      "rendered": "IWGP Junior Heavyweight Title Bout With Dual Stipulations Set For NJPW Wrestle Kingdom 21"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/03033301/HWL9InYakAAo1qD.jpeg"
-  },
-  {
-    "id": 337155,
-    "link": "https://www.fightful.com/wrestling/mjf-vs-ryohei-oiwa-set-for-njpw-wrestle-kingdom-21/",
-    "date": "2026-11-03T02:55:29",
-    "date_gmt": "2026-11-03T07:55:29",
-    "title": {
-      "rendered": "MJF vs. Ryohei Oiwa Set For NJPW Wrestle Kingdom 21"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/07070119/HUBdTFKboAEYHZw.jpeg"
   }
 ]
