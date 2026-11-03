@@ -6,8 +6,13 @@ async function save() {
   const local = JSON.parse(fs.readFileSync(file, 'utf8'));
   const url = `https://api.github.com/repos/${process.env.GITHUB_REPOSITORY || 'm7mdibrahimo/arw-site'}/contents/${file}`;
   const headers = { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json', 'User-Agent': 'arw-reel-monitor' };
-  for (let attempt = 0; attempt < 5; attempt++) {
-    const response = await fetch(url + '?ref=main', { headers });
+  const transient = (status: number) => status >= 500 || status === 429;
+  for (let attempt = 0; attempt < 8; attempt++) {
+    // A transient GitHub 5xx / network error must not lose the publishing results (INCIDENTS #1038): wait and read again.
+    let response: Response;
+    try { response = await fetch(url + '?ref=main', { headers }); }
+    catch { await new Promise(r => setTimeout(r, 2000 * (attempt + 1))); continue; }
+    if (transient(response.status)) { await new Promise(r => setTimeout(r, 2000 * (attempt + 1))); continue; }
     if (!response.ok && response.status !== 404) throw new Error(`State read failed: ${response.status}`);
     const data: any = response.status === 404 ? {} : await response.json();
     const remote = data.content ? JSON.parse(Buffer.from(data.content, 'base64').toString('utf8')) : {};
@@ -33,9 +38,9 @@ async function save() {
       content: Buffer.from(JSON.stringify(merged, null, 2)).toString('base64'),
     }) });
     if (result.ok) { console.log('Publishing results saved.'); return; }
-    if (![409, 422].includes(result.status)) throw new Error(`State write failed: ${result.status}`);
+    if (![409, 422].includes(result.status) && !transient(result.status)) throw new Error(`State write failed: ${result.status}`);
     await new Promise(r => setTimeout(r, 1000));
   }
-  throw new Error('Publishing state could not be saved after five conflicts.');
+  throw new Error('Publishing state could not be saved after eight attempts.');
 }
 save().catch(error => { console.error(error.message); process.exitCode = 1; });

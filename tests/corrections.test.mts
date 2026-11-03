@@ -1375,3 +1375,21 @@ test("Robbie X, Yasuda and Yujiro Takahashi are spelled the glossary way (INCIDE
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /روب إكس|ياسدا|يوجيرو تاكا(?![؀-ۿ])/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #1038: «رويس getKeys» / «رويس كيس» / «حاول غازلها» / «ويبقى مالم يعلم» reached stories.
+test("code identifiers inside Arabic text are blocked and the #1038 mistakes are corrected", async () => {
+  const { applyCorrections, checkArticle } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("قبل مواجهة رويس getKeys أمام سولو"), "قبل مواجهة رويس كيز أمام سولو");
+  assert.equal(applyCorrections("حاول غازلها مرارا"), "حاول مغازلتها مرارا");
+  assert.equal(applyCorrections("ويبقى مالم يعلم ما إذا"), "ويبقى من غير المعروف ما إذا");
+  assert.ok(checkArticle("عنوان", "قبل مواجهة رويس getKeys أمام سولو سيكوا في عرض RAW").some(i => i.code === "code_identifier_in_text"));
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /getKeys|رويس كيس|حاول غازلها|مالم يعلم/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|image):.*$/gm, "")));
+  assert.deepEqual(bad, []);
+});
+
+// INCIDENTS #1038: one transient GitHub 5xx while reading the state file made the reel-state save fail and lose results.
+test("save-reel-state retries transient GitHub errors instead of failing", () => {
+  const src = fs.readFileSync("scripts/save-reel-state.ts", "utf-8");
+  assert.match(src, /transient\(response\.status\)/);
+  assert.match(src, /transient\(result\.status\)/);
+});
