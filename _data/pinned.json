@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/wwe-raw-02-11-2026/",
+    "title": "عرض الرو 02.11.2026 مترجم",
+    "subtitle": "WWE RAW 02.11.2026",
+    "image": "/content/images/s83p9akkdtiqqpej.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض الرو مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-nxt-halloween-havoc-2026/",
     "title": "عرض ان اكس تي هالوين هافوك 31.10.2026 مترجم",
     "subtitle": "WWE NXT Halloween Havoc (2026)",
@@ -53,28 +64,6 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض ان اكس تي مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-raw-26-10-2026/",
-    "title": "عرض الرو 26.10.2026 مترجم",
-    "subtitle": "WWE RAW 26.10.2026",
-    "image": "/content/images/01j2a38qm0m0uat0.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض الرو مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-raw-sami-zayn-vs-cody-rhodes-dark-match-19-10-2026/",
-    "title": "مباراة سامي زين ضد كودي رودز 19.10.2026 في عرض الرو دارك ماتش",
-    "subtitle": "WWE RAW Sami Zayn vs Cody Rhodes Dark Match 19.10.2026",
-    "image": "/content/images/7bx4ikautoikvp5d.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "مباراة سامي زين ضد كودي رودز في عرض الرو دارك ماتش بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/roh-on-honorclub-29-10-2026/",
