@@ -1,6 +1,7 @@
 ---
 federation: WWE
-title: "نزال في عرض WWE NXT Halloween Havoc يتسبب في فساد العرض بأكمله"
+permalink: "/news/20261103160144-نزال-في-عرض-wwe-nxt-halloween-havoc-يتسبب-في-فساد-العرض-بأكمله/index.html"
+title: "نزال في عرض WWE NXT Halloween Havoc يتسبب في إفساد العرض بأكمله"
 date: 2026-11-03T16:01:44.000+03:00
 published_at: 2026-11-03T13:04:09.991Z
 source_id: 802263050

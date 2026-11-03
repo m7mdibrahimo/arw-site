@@ -1401,3 +1401,9 @@ test("«الانكشافات» is corrected to «الانتقادات» (INCIDEN
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /الانكشافات/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+test("«ضربة رلوبة» and «فساد العرض» are corrected (INCIDENTS #1040)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("ووجه ضربة رلوبة قاضية"), "ووجه ضربة هيلوفا كيك قاضية");
+  assert.equal(applyCorrections("يتسبب في فساد العرض بأكمله"), "يتسبب في إفساد العرض بأكمله");
+});
