@@ -1,7 +1,7 @@
 ---
 title: "Royce Keys Believes 946 Will Reach Level of WWE's Most Popular Factions"
 slug: "royce-keys-believes-946-will-reach-level-of-wwes-most-popular-factions"
-description: "Royce Keys, leader of the 946 faction in WWE, believes his group is destined for major success and can reach the status of legendary groups like D-Generation X, the Four Horsemen, and The Bloodline."
+description: "Royce Keys, leader of the 946 faction in WWE, believes his group can reach the status of legendary factions like D-Generation X and The Bloodline."
 federation: WWE
 date: 2026-11-03T16:00:00.000Z
 source_id: 2048463465

@@ -221,3 +221,12 @@ test("a description is never cut before the main verb (INCIDENTS #1008)", async 
   assert.ok(!/Antoinette Nazar\.$/.test(d), d);
   assert.ok(d.startsWith("The conflict began"), d);
 });
+
+// round 2026-11-03: a name cut inside an over-long first sentence returned the whole 198-letter sentence
+test("an over-long first sentence cut inside a name does not exceed the limit", () => {
+  const t = "Royce Keys, leader of the 946 faction in WWE, believes his group is destined for major success and can reach the status of legendary groups like D-Generation X, the Four Horsemen, and The Bloodline. He made his debut earlier this year.";
+  const d = metaDescription(t);
+  assert.ok(d.length <= 185, d);
+  assert.match(d, /[.!؟]$/);
+  assert.ok(!/like\.$|Generation\.$/.test(d), d);
+});
