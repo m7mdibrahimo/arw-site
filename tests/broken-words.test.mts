@@ -811,3 +811,9 @@ test('corrections fix «الب قائلا», «الشارين», «يتعافي�
   assert.equal(applyCorrections('نزال التثبيت الأخير'), 'نزال الرجل الأخير الصامد');
   assert.equal(applyCorrections('مواجهة ريويس كيز'), 'مواجهة رويس كيز');
 });
+
+test('corrections fix «تتشارلي», «خططير», «تجعلني شعرت» (INCIDENTS #1047)', () => {
+  assert.equal(applyCorrections('هزيمة تتشارلي ديمبسي'), 'هزيمة تشارلي ديمبسي');
+  assert.equal(applyCorrections('ضمن خططير'), 'ضمن خططي');
+  assert.equal(applyCorrections('تجعلني شعرت وكأنني أستطيع'), 'تجعلني أشعر وكأنني أستطيع');
+});
