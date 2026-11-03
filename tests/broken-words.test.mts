@@ -798,3 +798,8 @@ test('corrections fix «عصر الأتيود» and «قمة الهرم الغذ
 test('corrections fix «بلاكهارت» (INCIDENTS #1024)', () => {
   assert.equal(applyCorrections('أبدت بلاكهارت حماسها'), 'أبدت بلاك هارت حماسها');
 });
+
+test('corrections unify the John Cena Classic name in Arabic (INCIDENTS #1026)', () => {
+  assert.equal(applyCorrections('بطولة جون سينا Classic'), 'بطولة جون سينا الكلاسيكية');
+  assert.equal(applyCorrections('بطولة جون سينا كلاسيك'), 'بطولة جون سينا الكلاسيكية');
+});
