@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/carmella-explains-why-shes-hesitant-return-wrestling": {
+  "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
+  "retry": true,
+  "at": "2026-11-03T16:40:33.743Z"
+ },
  "https://www.fightful.com/wrestling/ddt-ultimate-party-results-11-3-26-zack-sabre-jr-konosuke-takeshita-in-action": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kevin Owens",
   "retry": true,
@@ -53,11 +58,6 @@
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
   "at": "2026-11-03T16:17:39.114Z"
- },
- "https://www.ringsidenews.com/carmella-explains-why-shes-hesitant-return-wrestling": {
-  "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
-  "retry": true,
-  "at": "2026-11-03T16:17:29.459Z"
  },
  "https://www.ringsidenews.com/wwe-announces-date-location-avengers-themed-worlds-collide-event": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
