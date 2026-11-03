@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2303453/sami-zayn-never-dreamed-winning-wwe-title-main-eventing-wrestlemania": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-03T13:54:19.823Z"
+ },
  "https://www.fightful.com/wrestling/the-miz-credits-his-friends-in-ohio-with-giving-him-his-ring-name": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-22T02:10:28.615Z"
- },
- "https://www.fightful.com/wrestling/335089-aew-fright-night-dynamite": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-22T02:07:57.402Z"
  }
 }
