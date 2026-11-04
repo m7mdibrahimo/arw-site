@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/tko-president-speaks-about-chances-of-wwe-wrestlemania-43-moving-from-saudi-arabia-we-have-already-been-paid-half-upfront": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-04T23:00:20.999Z"
+ },
  "https://www.fightful.com/wrestling/337413-queen-aminata-tbs": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T22:57:33.185Z"
+  "at": "2026-11-04T23:00:20.539Z"
  },
  "https://www.fightful.com/wrestling/ricochet-for-the-most-part-people-put-away-their-egos-for-the-better-of-the-story-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T22:57:32.815Z"
+  "at": "2026-11-04T23:00:20.109Z"
  },
  "https://www.fightful.com/wrestling/taya-valkyrie-exits-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T22:57:32.024Z"
+  "at": "2026-11-04T23:00:19.193Z"
  },
  "https://www.fightful.com/wrestling/uspto-rejects-wwes-attempts-to-trademark-rko-for-wrestling-purposes-due-to-rko-pictures-overlap": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T22:57:31.782Z"
+  "at": "2026-11-04T23:00:18.915Z"
  },
  "https://www.fightful.com/wrestling/wwe-files-to-trademark-kato-sykes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T22:57:31.470Z"
+  "at": "2026-11-04T23:00:18.553Z"
  },
  "https://www.fightful.com/wrestling/yota-tsuji-says-his-match-with-kenny-omega-could-change-aew-njpw-relationship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T22:57:31.074Z"
+  "at": "2026-11-04T23:00:18.091Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-11-4": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-24T00:49:25.695Z"
- },
- "https://www.fightful.com/wrestling/an-update-on-sheamus-and-aew": {
-  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-10-23T22:40:41.692Z"
  }
 }
