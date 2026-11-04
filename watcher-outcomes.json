@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/queen-aminata-admits-she-didnt-expect-win-aew-tbs-title-dynamite": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-04T20:50:18.994Z"
+ },
  "https://www.ringsidenews.com/miz-addresses-his-wwe-retirement-plans-46": {
   "reason": "المراجعة رفضته: صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-23T19:47:04.987Z"
- },
- "https://www.fightful.com/wrestling/chicago-street-fight-for-mlw-tag-titles-added-to-mlw-saturday-night-superfight": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-23T19:41:58.492Z"
  }
 }
