@@ -17,7 +17,7 @@ tags:
 image: /content/images/3wpk2kbzq456pimu.jpg
 layout: post-layout.njk
 ---
-أقام اتحاد ATTACK! Pro Wrestling الليلة الأولى من عرض ATTACK! Goosebumps 11 يوم 24 أكتوبر في صالة كاثايز كوميونيتي سنتر في كارديف بويلز، وبث العرض عبر يوتيوب.
+أقام اتحاد ATTACK! Pro Wrestling الليلة الأولى من عرض ATTACK! Goosebumps 11 يوم 24 أكتوبر في صالة كاثايز كوميونيتي سنتر في كارديف في ويلز، وبث العرض عبر يوتيوب.
 
 ---
 

@@ -1450,3 +1450,20 @@ test("round 1064 corrections apply", async () => {
   const { applyCorrections } = await import("../scripts/news-qa");
   assert.equal(applyCorrections("رغم الهتافات رغم حديثه كشخصية محبوبة"), "رغم الهتافات أثناء حديثه كشخصية محبوبة");
 });
+
+// INCIDENTS #1065
+test("round 1065 corrections apply", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("ولا تمتالك الكثير"), "ولا تمتلك الكثير");
+  assert.equal(applyCorrections("ستة تسجلات قائمة"), "ستة تسجيلات قائمة");
+  assert.equal(applyCorrections("في كارديف بويلز"), "في كارديف في ويلز");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /تمتالك|تسجلات|كارديف بويلز/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
+
+test("same 3-word phrase twice in a sentence is blocked (INCIDENTS #1065)", async () => {
+  const { checkArticle } = await import("../scripts/news-qa");
+  const body = "نقل إلى الطوارئ بعد شعوره بضيق شديد في التنفس بعد شعوره بضيق التنفس بسبب انهيار الرئة أثناء النزال في العرض الأخير مع شقيقه والفريق كله. ".repeat(2);
+  const r = checkArticle("عنوان واضح للخبر هنا", body);
+  assert.ok(JSON.stringify(r).includes("repeated_phrase"));
+});
