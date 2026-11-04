@@ -1,5 +1,15 @@
 [
   {
+    "id": 1209637203,
+    "link": "https://www.wrestlinginc.com/2303472/tna-indi-hartwell-details-travel-schedule/",
+    "date": "Wed, 04 Nov 2026 13:30:00 +0000",
+    "date_gmt": "2026-11-04T13:30:00.000Z",
+    "title": {
+      "rendered": "Indi Hartwell Details TNA Travel Schedule"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/indi-hartwell-details-tna-travel-schedule/l-intro-1793569807.jpg"
+  },
+  {
     "id": 2876819823,
     "link": "https://www.wrestlinginc.com/2306175/royce-keys-946-appearance-wwe-nxt/",
     "date": "Wed, 04 Nov 2026 02:56:23 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Shawn Michaels Elaborates On Decision To Bring Zilla Fatu To WWE NXT"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/shawn-michaels-elaborates-on-decision-to-bring-zilla-fatu-to-wwe-nxt/l-intro-1793701020.jpg"
-  },
-  {
-    "id": 2572339594,
-    "link": "https://www.wrestlinginc.com/2305345/wwe-worlds-collide-avengers-doomsday-collaboration-upcoming-special/",
-    "date": "Tue, 03 Nov 2026 16:19:28 +0000",
-    "date_gmt": "2026-11-03T16:19:28.000Z",
-    "title": {
-      "rendered": "WWE Announces Avengers Doomsday Collaboration For Upcoming Worlds Collide Special"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-announces-avengers-doomsday-collaboration-for-upcoming-worlds-collide-special/l-intro-1793722533.jpg"
   }
 ]
