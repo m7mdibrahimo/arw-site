@@ -1483,3 +1483,8 @@ test("round 1067 corrections apply", async () => {
   assert.equal(applyCorrections("شخص أعلن للتو عن ميوله أمام عائلته"), "شخص أعلن للتو عن مثليته أمام عائلته");
   assert.equal(applyCorrections("لشخص أعلن ميوله"), "لشخص أعلن مثليته");
 });
+
+test("INCIDENTS #1068: «أريد لكم ذلك الوجه» → «أريد أن ألكم ذلك الوجه»", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("وكل ما في الأمر أنني أريد لكم ذلك الوجه"), "وكل ما في الأمر أنني أريد أن ألكم ذلك الوجه");
+});
