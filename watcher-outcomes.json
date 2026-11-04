@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/337413-queen-aminata-tbs": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-04T21:42:58.502Z"
+ },
  "https://www.fightful.com/wrestling/ricochet-for-the-most-part-people-put-away-their-egos-for-the-better-of-the-story-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T21:41:02.378Z"
+  "at": "2026-11-04T21:42:58.078Z"
  },
  "https://www.fightful.com/wrestling/taya-valkyrie-exits-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T21:41:01.466Z"
+  "at": "2026-11-04T21:42:57.175Z"
  },
  "https://www.fightful.com/wrestling/uspto-rejects-wwes-attempts-to-trademark-rko-for-wrestling-purposes-due-to-rko-pictures-overlap": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T21:41:01.187Z"
+  "at": "2026-11-04T21:42:56.897Z"
  },
  "https://www.fightful.com/wrestling/wwe-files-to-trademark-kato-sykes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T21:41:00.829Z"
+  "at": "2026-11-04T21:42:56.540Z"
  },
  "https://www.fightful.com/wrestling/yota-tsuji-says-his-match-with-kenny-omega-could-change-aew-njpw-relationship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T21:41:00.462Z"
+  "at": "2026-11-04T21:42:56.167Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-11-4": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T21:40:59.543Z"
+  "at": "2026-11-04T21:42:55.251Z"
  },
  "https://www.fightful.com/wrestling/337402-ricochet-pac-will-ospreay": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
@@ -1993,10 +1998,5 @@
   "reason": "نزل قبل كده على الموقع",
   "retry": false,
   "at": "2026-10-23T20:42:37.651Z"
- },
- "https://www.fightful.com/wrestling/michael-hayes-says-triple-h-wants-to-make-bobby-roode-the-next-michael-hayes": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-10-23T20:02:20.633Z"
  }
 }
