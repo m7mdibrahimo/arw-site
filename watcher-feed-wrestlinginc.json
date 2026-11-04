@@ -1,5 +1,25 @@
 [
   {
+    "id": 1537353199,
+    "link": "https://www.wrestlinginc.com/2306183/wwe-nxt-november-4-2026-results/",
+    "date": "Wed, 04 Nov 2026 22:00:00 +0000",
+    "date_gmt": "2026-11-04T22:00:00.000Z",
+    "title": {
+      "rendered": "WWE NXT Results 11/4/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-results-11426-w-live-updates/l-intro-1793764035.jpg"
+  },
+  {
+    "id": 1575098001,
+    "link": "https://www.wrestlinginc.com/2307145/aew-dynamite-november-4-2026-results/",
+    "date": "Wed, 04 Nov 2026 22:00:00 +0000",
+    "date_gmt": "2026-11-04T22:00:00.000Z",
+    "title": {
+      "rendered": "AEW Dynamite Results 11/4/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-results-11426-w-live-updates/l-intro-1793824700.jpg"
+  },
+  {
     "id": 1137063647,
     "link": "https://www.wrestlinginc.com/2307243/champion-grayson-waller-believes-outworking-wwe-nxt-roster/",
     "date": "Wed, 04 Nov 2026 21:30:57 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Bully Ray Explains Why WWE Raw Promo Was The Best Of Randy Orton's Career"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/bully-ray-explains-why-wwe-raw-promo-was-the-best-of-randy-ortons-career/l-intro-1793756842.jpg"
-  },
-  {
-    "id": 3276297628,
-    "link": "https://www.wrestlinginc.com/2306111/eric-bischoff-ric-flair-health-scare-indestructible/",
-    "date": "Tue, 03 Nov 2026 23:25:06 +0000",
-    "date_gmt": "2026-11-03T23:25:06.000Z",
-    "title": {
-      "rendered": "Eric Bischoff On Ric Flair's Health Scare: 'Ric Is Indestructible'"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/eric-bischoff-on-ric-flairs-health-scare-ric-is-indestructible/l-intro-1793748490.jpg"
-  },
-  {
-    "id": 4940581406,
-    "link": "https://www.wrestlinginc.com/2306090/aew-will-ospreay-public-request-united-empire-ahead-njpw-wrestle-kingdom-21-match/",
-    "date": "Tue, 03 Nov 2026 22:54:42 +0000",
-    "date_gmt": "2026-11-03T22:54:42.000Z",
-    "title": {
-      "rendered": "AEW's Will Ospreay Makes 'Public Request' To United Empire Ahead Of NJPW Wrestle Kingdom 21 Match"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-will-ospreay-makes-public-request-to-united-empire-ahead-of-njpw-wrestle-kingdom-21-match/l-intro-1793746070.jpg"
   }
 ]

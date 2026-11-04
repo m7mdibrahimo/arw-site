@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2306183/wwe-nxt-november-4-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-04T22:11:01.828Z"
+ },
+ "https://www.wrestlinginc.com/2307145/aew-dynamite-november-4-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-04T22:11:01.693Z"
+ },
  "https://www.fightful.com/wrestling/337413-queen-aminata-tbs": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1988,15 +1998,5 @@
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
   "at": "2026-10-23T22:40:41.692Z"
- },
- "https://www.fightful.com/wrestling/kiera-hogan-tasha-steelz-reunite-on-10-22-tna-impact": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-23T22:36:20.744Z"
- },
- "https://www.ringsidenews.com/aew-dynamite-viewership-sees-massive-increase-october-14-2026": {
-  "reason": "نزل قبل كده على الموقع",
-  "retry": false,
-  "at": "2026-10-23T20:42:37.651Z"
  }
 }
