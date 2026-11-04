@@ -1467,3 +1467,11 @@ test("same 3-word phrase twice in a sentence is blocked (INCIDENTS #1065)", asyn
   const r = checkArticle("عنوان واضح للخبر هنا", body);
   assert.ok(JSON.stringify(r).includes("repeated_phrase"));
 });
+
+// INCIDENTS #1066
+test("round 1066 corrections apply", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("وقد أنعيت أو لعنت بذكاء"), "وقد حظيت أو ابتليت بذكاء");
+  assert.equal(applyCorrections("أصبحت تايا مصارعة في سوق الأحرار رسميا"), "أصبحت تايا مصارعة حرة رسميا");
+  assert.equal(applyCorrections("تايا تصبح مصارعة بعد رفض"), "تايا تصبح مصارعة حرة بعد رفض");
+});
