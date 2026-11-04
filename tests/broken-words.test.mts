@@ -837,3 +837,8 @@ test('corrections fix garbled dark-match / WWE I.D. / indestructible phrases (IN
 test('corrections fix «ريف بريطانيا» (RevPro) (INCIDENTS #1052)', () => {
   assert.equal(applyCorrections('وفازت ببطولة ريف بريطانيا للسيدات بلا منازع'), 'وفازت ببطولة RevPro البريطانية للسيدات بلا منازع');
 });
+
+test('corrections fix Tragos spelling and alumni section (INCIDENTS #1053)', () => {
+  assert.equal(applyCorrections('حفل غيورغ تراغوس ولوي ثيز'), 'حفل جورج تراغوس ولوي ثيز');
+  assert.equal(applyCorrections('انتقل إلى قسم نجوم الكبار السابقين'), 'انتقل إلى قسم المصارعين السابقين');
+});

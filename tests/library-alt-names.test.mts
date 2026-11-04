@@ -62,3 +62,10 @@ test("a show's alternateName lists each spelling once (the layout's global drops
   const fs = await import("node:fs");
   assert.match(fs.readFileSync("eleventy.config.js", "utf-8"), /showNameForms\(\{[^}]*\}\)\.filter\(\(n\) => !seen\.has\(n\) && seen\.add\(n\)\)/);
 });
+
+test("show forms carry the month without hamza and the written date with «مترجم» (INCIDENTS #1053)", async () => {
+  const { showNameForms } = await import("../lib/show-seo.cjs");
+  const forms = showNameForms({ headline: "عرض سماك داون 30.10.2026 مترجم", programName: "WWE Smackdown", eventDate: "2026-10-30", aliases: ["عرض سماك داون"], isShow: true });
+  assert.ok(forms.includes("عرض سماك داون 30 اكتوبر 2026"));
+  assert.ok(forms.includes("عرض سماك داون 30 اكتوبر 2026 مترجم"));
+});

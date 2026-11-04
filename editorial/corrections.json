@@ -9763,6 +9763,16 @@
       "wrong": "ببطولة ريف بريطانيا للسيدات بلا منازع",
       "right": "ببطولة RevPro البريطانية للسيدات بلا منازع",
       "note": "RevPro Undisputed British Women's Championship اتكتب «ريف بريطانيا» — INCIDENTS #1052"
+    },
+    {
+      "wrong": "غيورغ تراغوس",
+      "right": "جورج تراغوس",
+      "note": "George Tragos — INCIDENTS #1053"
+    },
+    {
+      "wrong": "قسم نجوم الكبار السابقين",
+      "right": "قسم المصارعين السابقين",
+      "note": "ترجمة ركيكة لـ alumni section — INCIDENTS #1053"
     }
   ]
 }
