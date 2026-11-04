@@ -847,3 +847,7 @@ test('INCIDENTS #1054: cut word «القم» and missing waw between ROH names a
   assert.match(applyCorrections('تصدر القم مقطع توجيه'), /تصدر القائمة مقطع/);
   assert.match(applyCorrections('(توني نيزي آريا ديفاري)'), /توني نيزي وآريا ديفاري/);
 });
+
+test('INCIDENTS #1055: Lance Russell spelling', () => {
+  assert.equal(applyCorrections('جائزة لانس رسيل'), 'جائزة لانس راسل');
+});
