@@ -230,3 +230,9 @@ test('the TVSeries «about» names of an older episode drop the latest claims to
   assert.ok(about, 'TVSeries about block');
   assert.match(about, /concat\(ldAbout\.aliases\), 999\) \| dropLatestClaims\(\(showSeoData and showSeoData\.isLatest\) if page\.url\.startsWith\('\/shows\/'\)/);
 });
+
+test("a weekly show's names carry the day-first English date («wwe raw 2 november 2026»)", () => {
+  const names = showNameForms({ headline: "عرض الرو 02.11.2026 مترجم", title: "WWE RAW 02.11.2026", programName: "WWE RAW", eventDate: "2026-11-02", aliases: [], isShow: true, archive: false, isLatest: true });
+  assert.ok(names.includes("WWE RAW 2 November 2026"));
+  assert.ok(names.includes("WWE RAW 2/11/2026"));
+});
