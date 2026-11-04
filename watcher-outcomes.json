@@ -1,38 +1,38 @@
 {
- "https://www.wrestlinginc.com/2303467/xelina-zelina-veg-aleister-black-manager-wwe": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
-  "retry": true,
-  "at": "2026-11-04T02:43:35.351Z"
- },
  "https://www.fightful.com/wrestling/bruce-prichard-expected-to-work-remotely": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T02:43:18.302Z"
+  "at": "2026-11-04T02:46:29.163Z"
  },
  "https://www.fightful.com/wrestling/eva-marie-says-shed-need-a-lot-of-money-and-some-type-of-creative-control-to-wrestle-again": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T02:43:17.787Z"
+  "at": "2026-11-04T02:46:28.395Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-clarifies-that-he-isnt-under-contract-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T02:43:17.109Z"
+  "at": "2026-11-04T02:46:27.392Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-quit-smoking-five-weeks-ago-is-working-towards-a-procedure-to-get-himself-off-oxygen": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T02:43:16.919Z"
+  "at": "2026-11-04T02:46:27.110Z"
  },
  "https://www.fightful.com/wrestling/cm-punk-teases-working-john-cena-classic-wwe-worlds-collide-at-walt-disney-world": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-04T02:43:16.676Z"
+  "at": "2026-11-04T02:46:26.732Z"
  },
  "https://www.fightful.com/wrestling/wwe-shop-selling-john-cena-classic-title-belt-for-799-99": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T02:42:57.323Z"
+  "at": "2026-11-04T02:45:57.224Z"
+ },
+ "https://www.wrestlinginc.com/2303467/xelina-zelina-veg-aleister-black-manager-wwe": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
+  "retry": true,
+  "at": "2026-11-04T02:43:35.351Z"
  },
  "https://www.ringsidenews.com/cm-punks-status-wwes-john-cena-classic-worlds-collide": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)",
