@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/vince-mcmahon-accused-making-wwe-talent-feel-unimportant-during-creative-talks": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-04T14:59:11.993Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-11-4": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -18,11 +23,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-04T14:56:08.085Z"
- },
- "https://www.ringsidenews.com/vince-mcmahon-accused-making-wwe-talent-feel-unimportant-during-creative-talks": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-04T14:39:17.863Z"
  },
  "https://www.ringsidenews.com/cm-punks-status-wwes-john-cena-classic-worlds-collide": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
