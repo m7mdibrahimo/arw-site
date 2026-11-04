@@ -12,32 +12,37 @@
  "https://www.fightful.com/wrestling/ricochet-for-the-most-part-people-put-away-their-egos-for-the-better-of-the-story-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T20:46:55.618Z"
+  "at": "2026-11-04T20:55:20.863Z"
  },
  "https://www.fightful.com/wrestling/taya-valkyrie-exits-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T20:46:54.833Z"
+  "at": "2026-11-04T20:55:20.081Z"
  },
  "https://www.fightful.com/wrestling/uspto-rejects-wwes-attempts-to-trademark-rko-for-wrestling-purposes-due-to-rko-pictures-overlap": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T20:46:54.590Z"
+  "at": "2026-11-04T20:55:19.840Z"
  },
  "https://www.fightful.com/wrestling/wwe-files-to-trademark-kato-sykes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T20:46:54.279Z"
+  "at": "2026-11-04T20:55:19.531Z"
  },
  "https://www.fightful.com/wrestling/yota-tsuji-says-his-match-with-kenny-omega-could-change-aew-njpw-relationship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T20:46:53.958Z"
+  "at": "2026-11-04T20:55:19.211Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-11-4": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T20:46:53.164Z"
+  "at": "2026-11-04T20:55:18.416Z"
+ },
+ "https://www.ringsidenews.com/miz-addresses-his-wwe-retirement-plans-46": {
+  "reason": "المراجعة رفضته: صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
+  "retry": true,
+  "at": "2026-11-04T20:46:22.820Z"
  },
  "https://www.fightful.com/wrestling/wwe-doing-double-taping-of-raw-smackdown-in-washington-dc-on-12-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
