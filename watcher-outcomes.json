@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2306183/wwe-nxt-november-4-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-04T23:06:46.183Z"
+ },
+ "https://www.wrestlinginc.com/2307145/aew-dynamite-november-4-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-04T23:06:45.944Z"
+ },
  "https://www.fightful.com/wrestling/tko-president-speaks-about-chances-of-wwe-wrestlemania-43-moving-from-saudi-arabia-we-have-already-been-paid-half-upfront": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
