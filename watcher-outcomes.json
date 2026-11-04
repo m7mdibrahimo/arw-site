@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/wwe-doing-double-taping-of-raw-smackdown-in-washington-dc-on-12-21": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-04T04:11:43.145Z"
+ },
  "https://www.fightful.com/wrestling/bruce-prichard-expected-to-work-remotely": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T04:09:06.104Z"
+  "at": "2026-11-04T04:11:42.546Z"
  },
  "https://www.fightful.com/wrestling/eva-marie-says-shed-need-a-lot-of-money-and-some-type-of-creative-control-to-wrestle-again": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T04:09:05.446Z"
+  "at": "2026-11-04T04:11:41.784Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-clarifies-that-he-isnt-under-contract-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T04:09:04.582Z"
+  "at": "2026-11-04T04:11:40.781Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-quit-smoking-five-weeks-ago-is-working-towards-a-procedure-to-get-himself-off-oxygen": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T04:09:04.338Z"
+  "at": "2026-11-04T04:11:40.498Z"
  },
  "https://www.fightful.com/wrestling/cm-punk-teases-working-john-cena-classic-wwe-worlds-collide-at-walt-disney-world": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، جملة قصيرة مكررة ورا بعض — اكتبها مرة واحدة، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
-  "at": "2026-11-04T04:09:04.018Z"
+  "at": "2026-11-04T04:11:40.123Z"
  },
  "https://www.fightful.com/wrestling/wwe-shop-selling-john-cena-classic-title-belt-for-799-99": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T04:08:44.848Z"
+  "at": "2026-11-04T04:11:11.462Z"
  },
  "https://www.ringsidenews.com/cm-punks-status-wwes-john-cena-classic-worlds-collide": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-23T13:02:37.172Z"
- },
- "https://www.fightful.com/wrestling/shayna-baszler-signs-with-tna-wrestling": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-23T12:27:52.371Z"
  }
 }
