@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2306183/wwe-nxt-november-4-2026-results": {
+  "reason": "المراجعة رفضته: سطر «الفائز» بلا اسم — نتيجة مخترعة أو ناقصة (حصل: «تم حسم النتيجة وتحديد الفائز في أجواء تنافسية»)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، في التقرير 2 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
+  "retry": true,
+  "at": "2026-11-04T23:32:17.916Z"
+ },
+ "https://www.wrestlinginc.com/2307145/aew-dynamite-november-4-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-04T23:31:36.821Z"
+ },
  "https://www.fightful.com/wrestling/mark-shapiro-states-that-tko-fully-anticipates-that-wwe-ufc-events-in-middle-east-will-proceed-as-planned": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
