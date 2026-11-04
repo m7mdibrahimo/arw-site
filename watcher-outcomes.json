@@ -1,33 +1,33 @@
 {
- "https://www.ringsidenews.com/cm-punks-status-wwes-john-cena-classic-worlds-collide": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)",
-  "retry": true,
-  "at": "2026-11-04T11:24:26.528Z"
- },
  "https://www.fightful.com/wrestling/wwe-doing-double-taping-of-raw-smackdown-in-washington-dc-on-12-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T11:24:02.710Z"
+  "at": "2026-11-04T11:35:06.356Z"
  },
  "https://www.fightful.com/wrestling/bruce-prichard-expected-to-work-remotely": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T11:24:02.050Z"
+  "at": "2026-11-04T11:35:05.810Z"
  },
  "https://www.fightful.com/wrestling/eva-marie-says-shed-need-a-lot-of-money-and-some-type-of-creative-control-to-wrestle-again": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T11:24:01.211Z"
+  "at": "2026-11-04T11:35:05.120Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-clarifies-that-he-isnt-under-contract-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T11:24:00.119Z"
+  "at": "2026-11-04T11:35:04.157Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-quit-smoking-five-weeks-ago-is-working-towards-a-procedure-to-get-himself-off-oxygen": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T11:23:59.809Z"
+  "at": "2026-11-04T11:35:03.775Z"
+ },
+ "https://www.ringsidenews.com/cm-punks-status-wwes-john-cena-classic-worlds-collide": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)",
+  "retry": true,
+  "at": "2026-11-04T11:24:26.528Z"
  },
  "https://www.fightful.com/wrestling/cm-punk-teases-working-john-cena-classic-wwe-worlds-collide-at-walt-disney-world": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
