@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2306183/wwe-nxt-november-4-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-04T22:31:01.046Z"
+ },
+ "https://www.wrestlinginc.com/2307145/aew-dynamite-november-4-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-04T22:31:00.898Z"
+ },
  "https://www.fightful.com/wrestling/337413-queen-aminata-tbs": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -33,16 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-04T22:29:02.572Z"
- },
- "https://www.wrestlinginc.com/2306183/wwe-nxt-november-4-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-04T22:11:01.828Z"
- },
- "https://www.wrestlinginc.com/2307145/aew-dynamite-november-4-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-04T22:11:01.693Z"
  },
  "https://www.fightful.com/wrestling/337402-ricochet-pac-will-ospreay": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
