@@ -1127,6 +1127,12 @@ export function findAdjacentRepeatedPhrase(line: string): string | null {
       if (same) return words.slice(i, i + n).join(" ");
     }
   }
+  // Two-word «X ال…» phrase written twice («للوزن الثقيل للوزن الثقيل», INCIDENTS #1061). Only when the phrase carries an
+  // «ال» so repeated names («بيشوب داير») are left alone.
+  for (let i = 0; i + 4 <= words.length; i++) {
+    const [a, b] = [words[i], words[i + 1]];
+    if (a && b && /^[\u0621-\u064A]{4,}$/.test(a) && /^[\u0621-\u064A]{4,}$/.test(b) && a === words[i + 2] && b === words[i + 3] && (/^(?:[وبكفل])?(?:لل|ال)/.test(a) || /^ال/.test(b))) return `${a} ${b}`;
+  }
   return null;
 }
 

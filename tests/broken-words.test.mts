@@ -876,3 +876,14 @@ test('«واسرار» gets its hamza', () => {
     assert.ok(!fs.readFileSync('content/news/' + f, 'utf8').includes('واسرار'), f);
   }
 });
+
+// INCIDENTS #1061: «الععرض»، «المعليقين»، «للوزن الثقيل للوزن الثقيل» and «قضاء وقتا» reached the site.
+const filler = Array.from({ length: 80 }, (_, n) => 'كلمة' + 'أبجدهوزحطيكلمنسعفصقرشتثخذضظغ'[n % 28] + 'ء'.repeat(0) + String.fromCharCode(0x0621 + (n % 26)) + String.fromCharCode(0x0621 + ((n * 7) % 26))).join(' ');
+test('doubled-letter typos are corrected and a repeated two-word «ال» phrase is flagged (INCIDENTS #1061)', () => {
+  assert.equal(applyCorrections('يشهد الععرض مواجهة'), 'يشهد العرض مواجهة');
+  assert.equal(applyCorrections('طاولة المعليقين'), 'طاولة المعلقين');
+  const issues = checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'على بطولة Triple Crown للوزن الثقيل للوزن الثقيل واعتبرت ذلك تجربة ' + filler);
+  assert.ok(issues.some(i => i.code === 'repeated_phrase'));
+  const names = checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'واجه بيشوب داير بيشوب داير في العرض ' + filler);
+  assert.ok(!names.some(i => i.code === 'repeated_phrase'));
+});
