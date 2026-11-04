@@ -868,3 +868,11 @@ test('Villano is spelled فيلانو automatically', () => {
     assert.ok(!body.includes('فييانو'), f);
   }
 });
+
+// INCIDENTS #1060: «واسرار» without hamza.
+test('«واسرار» gets its hamza', () => {
+  assert.equal(applyCorrections('وفهمه لتفاصيل الكواليس واسرار الحلبة'), 'وفهمه لتفاصيل الكواليس وأسرار الحلبة');
+  for (const f of fs.readdirSync('content/news')) {
+    assert.ok(!fs.readFileSync('content/news/' + f, 'utf8').includes('واسرار'), f);
+  }
+});
