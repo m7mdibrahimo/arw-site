@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/cmll-martes-de-arena-mexico-results-11-3-2026-mascara-dorada-esfinge-esfinge-vs-villano-iii-jr-hermanos-chavez-more": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
+  "retry": true,
+  "at": "2026-11-04T07:02:44.443Z"
+ },
  "https://www.fightful.com/wrestling/wwe-doing-double-taping-of-raw-smackdown-in-washington-dc-on-12-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T06:59:39.468Z"
+  "at": "2026-11-04T07:02:30.957Z"
  },
  "https://www.fightful.com/wrestling/bruce-prichard-expected-to-work-remotely": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T06:59:38.873Z"
+  "at": "2026-11-04T07:02:30.564Z"
  },
  "https://www.fightful.com/wrestling/eva-marie-says-shed-need-a-lot-of-money-and-some-type-of-creative-control-to-wrestle-again": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T06:59:38.121Z"
+  "at": "2026-11-04T07:02:30.068Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-clarifies-that-he-isnt-under-contract-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T06:59:37.133Z"
+  "at": "2026-11-04T07:02:29.418Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-quit-smoking-five-weeks-ago-is-working-towards-a-procedure-to-get-himself-off-oxygen": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T06:59:36.853Z"
+  "at": "2026-11-04T07:02:29.236Z"
  },
  "https://www.fightful.com/wrestling/cm-punk-teases-working-john-cena-classic-wwe-worlds-collide-at-walt-disney-world": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
-  "at": "2026-11-04T06:59:36.482Z"
+  "at": "2026-11-04T07:02:28.993Z"
  },
  "https://www.fightful.com/wrestling/wwe-shop-selling-john-cena-classic-title-belt-for-799-99": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-15)",
   "retry": false,
   "at": "2026-10-23T13:53:52.958Z"
- },
- "https://www.fightful.com/wrestling/gabe-kidd-confronts-clark-connors-david-finlay-at-produce-volume-6": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-23T13:02:37.172Z"
  }
 }
