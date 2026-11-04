@@ -842,3 +842,8 @@ test('corrections fix Tragos spelling and alumni section (INCIDENTS #1053)', () 
   assert.equal(applyCorrections('حفل غيورغ تراغوس ولوي ثيز'), 'حفل جورج تراغوس ولوي ثيز');
   assert.equal(applyCorrections('انتقل إلى قسم نجوم الكبار السابقين'), 'انتقل إلى قسم المصارعين السابقين');
 });
+
+test('INCIDENTS #1054: cut word «القم» and missing waw between ROH names are corrected', () => {
+  assert.match(applyCorrections('تصدر القم مقطع توجيه'), /تصدر القائمة مقطع/);
+  assert.match(applyCorrections('(توني نيزي آريا ديفاري)'), /توني نيزي وآريا ديفاري/);
+});
