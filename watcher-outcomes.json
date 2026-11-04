@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/cm-punks-status-wwes-john-cena-classic-worlds-collide": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)",
+  "retry": true,
+  "at": "2026-11-04T11:44:25.520Z"
+ },
  "https://www.fightful.com/wrestling/wwe-doing-double-taping-of-raw-smackdown-in-washington-dc-on-12-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -23,11 +28,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-04T11:35:03.775Z"
- },
- "https://www.ringsidenews.com/cm-punks-status-wwes-john-cena-classic-worlds-collide": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)",
-  "retry": true,
-  "at": "2026-11-04T11:24:26.528Z"
  },
  "https://www.fightful.com/wrestling/cm-punk-teases-working-john-cena-classic-wwe-worlds-collide-at-walt-disney-world": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
