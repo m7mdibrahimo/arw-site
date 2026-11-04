@@ -1,5 +1,25 @@
 [
   {
+    "id": 2716710077,
+    "link": "https://www.wrestlinginc.com/2307361/wwe-return-enzo-amore-nxt/",
+    "date": "Wed, 04 Nov 2026 23:01:57 +0000",
+    "date_gmt": "2026-11-04T23:01:57.000Z",
+    "title": {
+      "rendered": "Backstage Update On Possible WWE Return Of Enzo Amore"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-possible-wwe-return-of-enzo-amore/l-intro-1793833264.jpg"
+  },
+  {
+    "id": 2617313078,
+    "link": "https://www.wrestlinginc.com/2307359/aew-kyle-fletcher-blames-doo-doo-head-kevin-knight-wrestledream-loss/",
+    "date": "Wed, 04 Nov 2026 22:59:43 +0000",
+    "date_gmt": "2026-11-04T22:59:43.000Z",
+    "title": {
+      "rendered": "AEW's Kyle Fletcher Blames 'Doo-Doo Head' Partner For WrestleDream Loss"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-kyle-fletcher-blames-doo-doo-head-partner-for-wrestledream-loss/l-intro-1793833023.jpg"
+  },
+  {
     "id": 2431123872,
     "link": "https://www.wrestlinginc.com/2307341/former-wwe-co-president-george-barrios-looks-back-partnership-vince-mcmahon/",
     "date": "Wed, 04 Nov 2026 22:34:58 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Indi Hartwell Details TNA Travel Schedule"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/indi-hartwell-details-tna-travel-schedule/l-intro-1793569807.jpg"
-  },
-  {
-    "id": 2876819823,
-    "link": "https://www.wrestlinginc.com/2306175/royce-keys-946-appearance-wwe-nxt/",
-    "date": "Wed, 04 Nov 2026 02:56:23 +0000",
-    "date_gmt": "2026-11-04T02:56:23.000Z",
-    "title": {
-      "rendered": "Royce Keys Teases 946 Appearance On WWE NXT"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/royce-keys-teases-946-appearance-on-wwe-nxt/l-intro-1793760892.jpg"
-  },
-  {
-    "id": 3776955823,
-    "link": "https://www.wrestlinginc.com/2303467/xelina-zelina-veg-aleister-black-manager-wwe/",
-    "date": "Wed, 04 Nov 2026 02:00:00 +0000",
-    "date_gmt": "2026-11-04T02:00:00.000Z",
-    "title": {
-      "rendered": "Xelina (Fka Zelina Vega) Says She Didn't Want To Be Aleister Black's Manager In WWE"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/xelina-fka-zelina-vega-says-she-didnt-want-to-be-aleister-blacks-manager-in-wwe/l-intro-1793566447.jpg"
   }
 ]
