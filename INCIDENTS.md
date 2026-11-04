@@ -9260,3 +9260,9 @@ Let me check git status to enumerate uncommitted changes.</think><tool_call>shel
 - **السبب:** Gemini بيفصل أداة التعريف عن الكلمة اللاتينية ومفيش تصحيح حتمي للحالة دي.
 - **الإصلاح:** الأخبار اتصلحت بنفس روابطها («الـHall»). اتضاف تصحيح regex في `editorial/corrections.json` (بيتطبق على كل خبر جديد وبيتعرض على Gemini) واختبار في `tests/broken-words.test.mts`.
 - **باقي الجولة:** `/health` فاضي، الموقع الحي على آخر بناء (eleventy 97 ثانية، 18895 ملف). عروض 48 ساعة (٨): الصفحة وsitemap وseo/new-shows وتيليجرام/فيسبوك/إنستجرام/ريل ✓، سيرفرات ٢–٤ شغالة والباقي unknown. ترتيب جوجل: قالب `lib/show-seo.cjs` اتعدّل للترتيب من أقل من ٢٤ ساعة (#1053) فسبته من غير تغيير عشان جوجل يعيد الزحف.
+
+## #1059 — 2026-11-04: «فييانو» بدل «فيلانو» (Villano) في أخبار CMLL (جولة المراقبة 10:00 UTC)
+- **اللي حصل:** اسم المصارع Villano III Jr. اتكتب «فييانو الثالث جونيور» في نتايج CMLL Martes de Arena México (٣ نوفمبر) وفي نتايج Noche de Campeones.
+- **السبب:** Gemini ترجم الاسم غلط ومفيش في القاموس ولا في التصحيحات الحتمية الاسم ده.
+- **الإصلاح:** الخبرين اتصلحوا بنفس روابطهم (permalink للقديم). اتضاف تصحيح «فييانو→فيلانو» في `editorial/corrections.json` (بيتطبق على كل خبر جديد وبيتعرض على Gemini) ومدخلين Villano III / Villano III Jr. في `scripts/wrestler-names.json`، وتست في `tests/broken-words.test.mts` بيفشل لو الكلمة رجعت في أي خبر.
+- **باقي الجولة:** `/health` فاضي، الموقع الحي على بناء 09:23 (eleventy 124 ثانية، 18900 ملف). عروض 48 ساعة (٨: njpw power-struggle، cmll lunes-clasico، raw 2/11، cmll tzompantli، nwa powerrr، ufc 292، njpw day-7، mlw fusion): الصفحة وsitemap وseo/new-shows والريل وتيليجرام/فيسبوك/إنستجرام ✓، سيرفرات ٢–٤ شغالة والباقي unknown. الترتيب: قالب `lib/show-seo.cjs` اتعدّل للترتيب النهارده (#1053) فسبته من غير تغيير لإعادة زحف جوجل؛ head آخر عرض فيه الاسمين والتاريخ ومترجم وكامل. صفحتين المكتبة (njpw-super-junior-tag-league، cmll-international-womens-grand-prix) في السايت ماب، index وكانونيك لنفسها، مستنيين زيارة جوجل.

@@ -859,3 +859,12 @@ test('«ال » before an English name gets its tatweel', () => {
   assert.equal(applyCorrections('الذكرى ال 14'), 'الذكرى الـ14');
   assert.equal(applyCorrections('أشاد الـHall of Famer'), 'أشاد الـHall of Famer');
 });
+
+// INCIDENTS #1059: Villano was written «فييانو» instead of «فيلانو».
+test('Villano is spelled فيلانو automatically', () => {
+  assert.equal(applyCorrections('فاز فييانو الثالث جونيور على أتلانتيس'), 'فاز فيلانو الثالث جونيور على أتلانتيس');
+  for (const f of fs.readdirSync('content/news')) {
+    const body = fs.readFileSync('content/news/' + f, 'utf8').split('\n').filter(l => !l.startsWith('permalink:')).join('\n');
+    assert.ok(!body.includes('فييانو'), f);
+  }
+});
