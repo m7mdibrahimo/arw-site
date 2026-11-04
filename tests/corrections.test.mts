@@ -1475,3 +1475,11 @@ test("round 1066 corrections apply", async () => {
   assert.equal(applyCorrections("أصبحت تايا مصارعة في سوق الأحرار رسميا"), "أصبحت تايا مصارعة بلا عقد رسميا");
   assert.equal(applyCorrections("تايا تصبح مصارعة بعد رفض"), "تايا تصبح مصارعة بلا عقد بعد رفض");
 });
+
+// INCIDENTS #1067
+test("round 1067 corrections apply", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("في فيديو عبر منصة كيميو"), "في فيديو عبر منصة كاميو");
+  assert.equal(applyCorrections("شخص أعلن للتو عن ميوله أمام عائلته"), "شخص أعلن للتو عن مثليته أمام عائلته");
+  assert.equal(applyCorrections("لشخص أعلن ميوله"), "لشخص أعلن مثليته");
+});
