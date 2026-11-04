@@ -299,6 +299,8 @@ export function fixSingularThey(text: string): string {
 }
 
 export const ENGLISH_FIXES: [RegExp, string][] = [
+  // «Lighting Match» — CMLL's quick format is a Lightning Match (CMLL Martes de Arena México story, round 2026-11-04)
+  [/\bLighting (Match(?:es)?)\b/g, "Lightning $1"],
   // A promotion acronym left in title case: «at Njpw Power Struggle» (Super Junior Tag League story, round 2026-11-03)
   [/\b(?:Njpw|Wwe|Aew|Tna|Roh|Mlw|Cmll|Gcw|Ufc|Nxt)\b/g, (m: string) => m.toUpperCase()],
   // «Rubbing His Success in Faces of Critics» — the article went missing from the idiom (Royce Keys story, round 2026-11-02)

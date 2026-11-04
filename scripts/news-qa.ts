@@ -444,6 +444,12 @@ export function winnersNotInMatch(body: string): string[] {
     const said = block.match(/(?:^|\s)(?:تفوق|تفوقت|تغلب|تغلبت|فاز|فازت|هزم|هزمت)\s+(?:فريق\s+|الثنائي\s+|الثلاثي\s+)?([\u0600-\u06FF][^،.]{1,40}?)\s+على\s/);
     const k = first(name), sk = said ? first(said[1]) : "";
     if (k && sk && k !== sk && !norm(block).includes(k)) out.push(name);
+    // The winner line names the LOSER: «فاز فريق بيرسيفوني وبريت بيكر على فريق داني لونا وهايان» above
+    // «🏆 الفائز: داني لونا وهايان» (AEW Dynamite/Collision 14/10)
+    else if (k && sk && k !== sk) {
+      const lost = block.match(/\sعلى\s+(?:فريق\s+|الثنائي\s+|الثلاثي\s+)?([\u0600-\u06FF][^،.]{1,40})/);
+      if (lost && first(lost[1]) === k) out.push(name);
+    }
     block = "";
   }
   return out;
@@ -1241,6 +1247,9 @@ export function autoFix(text: string): string {
   // on its own line (INCIDENTS #470)
   text = text.replace(/^([^>\n][^\n]*?[:：،])[ \t]+>[ \t]+(?=\S)/gm, "$1\n\n> ");
   text = repairMixedTitles(text);
+  // «فازت أوليمبيا على رينا إيسيس» above «🏆 **الفائز:** أوليمبيا»: a feminine verb with a masculine winner label
+  // (CMLL Martes de Arena México 3/11) — the label follows the sentence it closes
+  text = text.replace(/(^|\n)(فازت\s+(?:(?!\sو|\sعلى\s)[^\n])+\s+على\s[^\n]*\n(?:[ \t]*\n)?[ \t]*🏆[ \t]*\*\*)الفائز(?=:)/g, "$1$2الفائزة");
   // An instruction the writer echoed into the text: «خلال إضافة علامات التنصيص وعلامة الاستفهام كما في
   // المصدر، استرجع شيفاني…» went live (INCIDENTS #254) — the clause goes, the sentence stays
   text = text.replace(/(?:^|(?<=[\n.،]\s?))(?:خلال|مع|بعد|عبر)\s+إضافة\s+علامات\s+التنصيص[^،.\n]*(?:كما\s+(?:في|ورد\s+في)\s+المصدر)?[،,]\s*/g, "");

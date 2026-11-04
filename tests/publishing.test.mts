@@ -5470,3 +5470,24 @@ test('sanitizeWrestlingTerms drops a doubled «عرض» but keeps «استعرض
   assert.ok(sanitizeWrestlingTerms('مواجهة بعرض عرض AEW Redemption').includes('بعرض AEW Redemption'));
   assert.ok(sanitizeWrestlingTerms('بينما استعرض عرض TNA iMPACT باقة').includes('استعرض عرض TNA iMPACT'));
 });
+
+test('autoFix: «فازت X» above «الفائز:» becomes «الفائزة:» (CMLL 3/11), a team or a man stays', async () => {
+  const { autoFix } = await import('../scripts/news-qa');
+  const fixed = autoFix('**المواجهة الرابعة: نزال خاطف**\n\nفازت أوليمبيا على رينا إيسيس.\n\n🏆 **الفائز:** أوليمبيا\n');
+  assert.match(fixed, /🏆 \*\*الفائزة:\*\* أوليمبيا/);
+  const same = autoFix('فاز فريق إنفيرناليس على فريق فويرزا تاباتيا.\n\n🏆 **الفائز:** فريق إنفيرناليس\n');
+  assert.match(same, /🏆 \*\*الفائز:\*\* فريق إنفيرناليس/);
+});
+
+test('winnersNotInMatch: a winner line that names the loser is caught', async () => {
+  const { winnersNotInMatch } = await import('../scripts/news-qa');
+  const bad = '**المواجهة الثامنة: نزال فرق**\n\nفاز فريق بيرسيفوني وبريت بيكر على فريق داني لونا وهايان.\n\n🏆 **الفائز:** داني لونا وهايان\n';
+  assert.equal(winnersNotInMatch(bad).length, 1);
+  const ok = bad.replace('الفائز:** داني لونا وهايان', 'الفائز:** فريق بيرسيفوني وبريت بيكر');
+  assert.equal(winnersNotInMatch(ok).length, 0);
+});
+
+test('fixEnglishNames: «Lighting Match» becomes «Lightning Match»', async () => {
+  const { fixEnglishNames } = await import('../scripts/english-edition');
+  assert.equal(fixEnglishNames('Olympia def. Reyna Isis in a Lighting Match.'), 'Olympia def. Reyna Isis in a Lightning Match.');
+});

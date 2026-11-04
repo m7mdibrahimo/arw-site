@@ -15,13 +15,13 @@ CMLL held the Martes de Arena Mexico event on November 3, 2026, at Arena Mexico 
 
 Here are the results:
 
-Disturbio def. Eléctrico in a Lighting Match.
+Disturbio def. Eléctrico in a Lightning Match.
 
 Atrapasueños (Rey Cometa & Espíritu Negro) def. Troyano & Espartano in a 2/3 Falls Match.
 
 Viajeros del Espacio (Valiente Jr., Max Star, Futuro & Hombre Bala Jr.) def. Ola Negra (Espanto Jr., Raider, Dark Magic & Gallero) in a 2/3 Falls Match.
 
-Olympia def. Reyna Isis in a Lighting Match.
+Olympia def. Reyna Isis in a Lightning Match.
 
 Infernales (Averno, Euforia & Mephisto) def. Fuerza Tapatía (Star Black, Gallo Jr. & Fugaz) in a 2/3 Falls Match.
 
