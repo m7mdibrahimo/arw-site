@@ -1,38 +1,43 @@
 {
- "https://www.wrestlinginc.com/2303467/xelina-zelina-veg-aleister-black-manager-wwe": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+ "https://www.fightful.com/wrestling/wwe-raw-10-26-scores-2-3-million-global-views-on-netflix": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Women's World Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
   "retry": true,
-  "at": "2026-11-04T02:29:59.359Z"
+  "at": "2026-11-04T02:33:52.126Z"
  },
  "https://www.fightful.com/wrestling/bruce-prichard-expected-to-work-remotely": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T02:31:28.779Z"
+  "at": "2026-11-04T02:33:41.619Z"
  },
  "https://www.fightful.com/wrestling/eva-marie-says-shed-need-a-lot-of-money-and-some-type-of-creative-control-to-wrestle-again": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T02:31:28.050Z"
+  "at": "2026-11-04T02:33:40.968Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-clarifies-that-he-isnt-under-contract-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T02:31:27.100Z"
+  "at": "2026-11-04T02:33:40.116Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-quit-smoking-five-weeks-ago-is-working-towards-a-procedure-to-get-himself-off-oxygen": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T02:31:26.831Z"
+  "at": "2026-11-04T02:33:39.872Z"
  },
  "https://www.fightful.com/wrestling/cm-punk-teases-working-john-cena-classic-wwe-worlds-collide-at-walt-disney-world": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
-  "at": "2026-11-04T02:31:26.477Z"
+  "at": "2026-11-04T02:33:39.555Z"
  },
  "https://www.fightful.com/wrestling/wwe-shop-selling-john-cena-classic-title-belt-for-799-99": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T02:29:58.289Z"
+  "at": "2026-11-04T02:33:05.217Z"
+ },
+ "https://www.wrestlinginc.com/2303467/xelina-zelina-veg-aleister-black-manager-wwe": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-04T02:29:59.359Z"
  },
  "https://www.ringsidenews.com/cm-punks-status-wwes-john-cena-classic-worlds-collide": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-23T11:50:28.688Z"
- },
- "https://www.ringsidenews.com/triple-hs-plans-bobby-roodes-wwe-backstage-future-revealed": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-10-23T09:32:19.753Z"
  }
 }
