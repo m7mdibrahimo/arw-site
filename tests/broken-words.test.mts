@@ -827,3 +827,9 @@ test('corrections unify Brooks Jensen spelling (INCIDENTS #1050)', () => {
   assert.equal(applyCorrections('ضد بروكس جنسن'), 'ضد بروكس جينسن');
   assert.equal(applyCorrections('هروب بروكس جينسين'), 'هروب بروكس جينسن');
 });
+
+test('corrections fix garbled dark-match / WWE I.D. / indestructible phrases (INCIDENTS #1051)', () => {
+  assert.equal(applyCorrections('سبق له خوض نزال غير مذاع ونزال آخر'), 'سبق له خوض نزالات غير مذاعة');
+  assert.equal(applyCorrections('ضمن صفقته مع برنامج تطوير WWE'), 'ضمن صفقته مع برنامج WWE I.D.');
+  assert.equal(applyCorrections('فلير وظيفته الدائمة البقاء'), 'فلير لا يقهر');
+});
