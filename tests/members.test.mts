@@ -418,3 +418,28 @@ test('sign-up asks the first and second names first; they become the shown name 
   assert.match(fs.readFileSync('assets/account.js', 'utf-8'), /api\('\/signup', \{ first_name: fn, last_name: ln,/);
   assert.match(fs.readFileSync('studio/js/views/site-members.js', 'utf-8'), /fact\('الاسم', realName\(m\)/);
 });
+
+test('one address, one account, for good (owner 2026-11-04): the same inbox in another form, or an address its member left, opens no new account', async () => {
+  const { emailKey } = await import('../worker/src/members');
+  assert.equal(emailKey('Kareem.10+site@GoogleMail.com'), 'kareem10@gmail.com');
+  assert.equal(emailKey('k.a+x@outlook.com'), 'k.a@outlook.com');
+  const e = env();
+  const first = await signup(e, { email: 'kareem.ali@gmail.com' });
+  assert.equal(first.status, 200);
+  for (const [i, email] of ['kareemali@gmail.com', 'Kareem.Ali+2@gmail.com', 'kareemali@googlemail.com'].entries()) {
+    const r = await signup(e, { username: `kareem_x${i}`, email });
+    assert.equal(r.status, 409, email);
+    assert.equal(r.body.field, 'email');
+  }
+  // the member moves to another address: the one they left still opens no account
+  const moved = await call(e, '/email', { current: 'raw2026night', email: 'kareem.new@example.com' }, first.body.token);
+  assert.equal(moved.status, 200);
+  assert.equal((await signup(e, { username: 'kareem_back', email: 'kareem.ali@gmail.com' })).status, 409);
+  // …nor can another member take it
+  const other = await signup(e, { username: 'sara_22', email: 'sara@example.com' });
+  assert.equal((await call(e, '/email', { current: 'raw2026night', email: 'kareemali+z@gmail.com' }, other.body.token)).status, 409);
+  // the member can go back to their own old address
+  assert.equal((await call(e, '/email', { current: 'raw2026night', email: 'kareem.ali@gmail.com' }, first.body.token)).status, 200);
+  // a different address is free
+  assert.equal((await signup(e, { username: 'omar_7', email: 'omar@example.com' })).status, 200);
+});

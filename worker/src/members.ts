@@ -64,6 +64,7 @@ export async function ensureMembers(db: D1Database): Promise<void> {
   // the member's real name, asked first at sign-up (owner 2026-10-18: «لما حد يسجل بتكتب اسم الاول والاسم الثاني اول حاجة»)
   await db.prepare("ALTER TABLE members ADD COLUMN first_name TEXT NOT NULL DEFAULT ''").run().catch(() => null);
   await db.prepare("ALTER TABLE members ADD COLUMN last_name TEXT NOT NULL DEFAULT ''").run().catch(() => null);
+  await ensureEmails(db);
   ready.add(db);
 }
 
@@ -104,6 +105,39 @@ export function passwordProblem(p: string, username = ""): string | null {
   return null;
 }
 export const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[A-Za-z]{2,24}$/;
+
+// ── one address, one account, for good ─────────────────────────────────────
+// Owner 2026-11-04: «ال يسجل ب ايميله مستحيل يعرف يسجل بيه تاني هو ايميل واحد وبس اي ايميل عموما طالما اتسجل بيه في الموقع
+// هو لو الايميل بتاعي». Every address a member has ever had is kept (member_emails), even after they change it, and opens
+// no other account. Kept in the form that reaches the same inbox: «+anything» is dropped, and Gmail ignores dots.
+/** The inbox an address reaches: «Kareem.10+x@GoogleMail.com» → «kareem10@gmail.com» */
+export function emailKey(email: unknown): string {
+  const e = String(email || "").trim().toLowerCase();
+  const at = e.lastIndexOf("@");
+  if (at < 1) return e;
+  let local = e.slice(0, at).split("+")[0] || e.slice(0, at), domain = e.slice(at + 1);
+  if (domain === "googlemail.com") domain = "gmail.com";
+  if (domain === "gmail.com") local = local.replace(/\./g, "");
+  return `${local}@${domain}`;
+}
+const emailsReady = new WeakSet<D1Database>();
+async function ensureEmails(db: D1Database): Promise<void> {
+  if (emailsReady.has(db)) return;
+  await db.prepare("CREATE TABLE IF NOT EXISTS member_emails (ekey TEXT PRIMARY KEY, member INTEGER NOT NULL, email TEXT NOT NULL, at INTEGER NOT NULL)").run();
+  // members whose address isn't kept yet (the accounts made before this, and any added another way)
+  const missing = (await db.prepare("SELECT id, email, created FROM members m WHERE NOT EXISTS (SELECT 1 FROM member_emails e WHERE e.member = m.id AND e.email = m.email) ORDER BY id LIMIT 500").all<{ id: number; email: string; created: number }>()).results || [];
+  for (let i = 0; i < missing.length; i += 50) await db.batch(missing.slice(i, i + 50).map(m => db.prepare("INSERT OR IGNORE INTO member_emails (ekey, member, email, at) VALUES (?1, ?2, ?3, ?4)").bind(emailKey(m.email), m.id, m.email, Number(m.created) || 0)));
+  emailsReady.add(db);
+}
+/** The member who had this address (or the same inbox) first, other than `except`; 0 when it's free */
+export async function emailOwner(db: D1Database, email: string, except = 0): Promise<number> {
+  await ensureEmails(db);
+  const r = await db.prepare("SELECT member FROM member_emails WHERE ekey = ?1 AND member != ?2 LIMIT 1").bind(emailKey(email), except).first<{ member: number }>();
+  return r ? Number(r.member) : 0;
+}
+/** The address is the member's now, and stays theirs for good */
+export const keepEmail = (db: D1Database, member: number, email: string, now = Date.now()) =>
+  db.prepare("INSERT OR IGNORE INTO member_emails (ekey, member, email, at) VALUES (?1, ?2, ?3, ?4)").bind(emailKey(email), member, email, now);
 const ukeyOf = (u: string) => u.normalize("NFKC").toLowerCase();
 
 type Member = { id: number; username: string; email: string; first_name?: string; last_name?: string; salt: string; hash: string; iterations: number; recovery: string; display: string; pic: string; fav_fed: string; fav_star: string; bio: string; verified: number; banned: number; created: number; last_seen: number; official?: number; badge?: number; premium_until?: number };
@@ -316,11 +350,16 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     await ensureComments(db);
     // (only while activation is required: without mail no account is ever activated, so none may be taken over;
     // and never an account that has paid or been given the membership)
-    if (mustVerify(env)) await db.prepare(`DELETE FROM members WHERE (ukey = ?1 OR email = ?2) AND verified = 0 AND official = 0 AND created < ?3
-      AND premium_until = 0 AND NOT EXISTS (SELECT 1 FROM comments c WHERE c.member = members.id)`).bind(ukeyOf(username), email, now - DAY).run();
+    if (mustVerify(env)) {
+      const gone = (await db.prepare(`DELETE FROM members WHERE (ukey = ?1 OR email = ?2) AND verified = 0 AND official = 0 AND created < ?3
+        AND premium_until = 0 AND NOT EXISTS (SELECT 1 FROM comments c WHERE c.member = members.id) RETURNING id`).bind(ukeyOf(username), email, now - DAY).all<{ id: number }>()).results || [];
+      // an account never opened from its mail never had the address: it's free again (a mistyped address…)
+      for (const g of gone) await db.prepare("DELETE FROM member_emails WHERE member = ?1").bind(g.id).run().catch(() => {});
+    }
     const taken = await db.prepare("SELECT ukey = ?1 AS u, email = ?2 AS e FROM members WHERE ukey = ?1 OR email = ?2 LIMIT 1").bind(ukeyOf(username), email).first<{ u: number; e: number }>();
     if (taken?.u) return reply({ ok: false, error: "اسم المستخدم مستخدم من قبل، اختر اسما آخر.", field: "username" }, 409);
     if (taken?.e) return reply({ ok: false, error: "هذا البريد له حساب بالفعل، سجل دخولك.", field: "email" }, 409);
+    if (await emailOwner(db, email)) return reply({ ok: false, error: "هذا البريد سُجّل به حساب في الموقع من قبل، ولا يمكن إنشاء حساب آخر به. سجل دخولك بحسابك.", field: "email" }, 409);
     const { salt, hash, iterations } = await hashPassword(password);
     const code = recoveryCode();
     const country = String((request as any).cf?.country || "").slice(0, 2).toUpperCase();
@@ -331,6 +370,7 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     const ins = await db.prepare(`INSERT INTO members (username, ukey, email, salt, hash, iterations, recovery, display, created, last_seen, ip, country, badge, first_name, last_name)
       VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?11, ?8, ?8, ?9, ?10, 0, ?12, ?13) RETURNING *`).bind(username, ukeyOf(username), email, salt, hash, iterations, await sha(cleanCode(code)), now, ip, country, display, first.name, last.name).first<Member>();
     if (!ins) return reply({ ok: false, error: "تعذر إنشاء الحساب، حاول مرة أخرى." }, 500);
+    await keepEmail(db, ins.id, ins.email, now).run();
     await count(env.PUSH_KV, `su:${ip}`, 3600);
     const mailed = await sendVerify(env, db, ins, now).catch(() => false);
     // the account opens from the link in the mail
@@ -436,9 +476,9 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     const key = `members:email:${await sha(String(body.token || ""))}`;
     const want: any = JSON.parse(await env.PUSH_KV.get(key) || "null");
     if (!want) return reply({ ok: false, error: "رابط تأكيد البريد انتهت صلاحيته. غير البريد مرة أخرى من الإعدادات." }, 400);
-    const taken = await db.prepare("SELECT id FROM members WHERE email = ?1 AND id != ?2").bind(want.email, want.member).first();
+    const taken = await db.prepare("SELECT id FROM members WHERE email = ?1 AND id != ?2").bind(want.email, want.member).first() || await emailOwner(db, want.email, want.member);
     if (taken) { await env.PUSH_KV.delete(key); return reply({ ok: false, error: "هذا البريد مستخدم في حساب آخر." }, 409); }
-    await db.prepare("UPDATE members SET email = ?1, verified = 1 WHERE id = ?2").bind(want.email, want.member).run();
+    await db.batch([db.prepare("UPDATE members SET email = ?1, verified = 1 WHERE id = ?2").bind(want.email, want.member), keepEmail(db, want.member, want.email, now)]);
     await env.PUSH_KV.delete(key);
     return reply({ ok: true, email: want.email });
   }
@@ -533,9 +573,9 @@ export async function handleMembers(request: Request, env: MembersEnv, url: URL,
     if (email === me.email) return reply({ ok: false, error: "هذا هو بريدك الحالي." }, 400);
     if (await tooMany(env.PUSH_KV, `emq:${me.id}`, 10, 3600)) return reply({ ok: false, error: "طلبات كثيرة، حاول بعد ساعة." }, 429);
     await count(env.PUSH_KV, `emq:${me.id}`, 3600);
-    if (await db.prepare("SELECT id FROM members WHERE email = ?1").bind(email).first()) return reply({ ok: false, error: "هذا البريد مستخدم في حساب آخر." }, 409);
+    if (await db.prepare("SELECT id FROM members WHERE email = ?1").bind(email).first() || await emailOwner(db, email, me.id)) return reply({ ok: false, error: "هذا البريد مستخدم في حساب آخر." }, 409);
     if (!mustVerify(env)) {
-      await db.prepare("UPDATE members SET email = ?1 WHERE id = ?2").bind(email, me.id).run();
+      await db.batch([db.prepare("UPDATE members SET email = ?1 WHERE id = ?2").bind(email, me.id), keepEmail(db, me.id, email, now)]);
       const m = await db.prepare("SELECT * FROM members WHERE id = ?1").bind(me.id).first<Member>();
       return reply({ ok: true, member: mine(m!) });
     }
@@ -625,14 +665,15 @@ export async function studioOfficialAccount(env: MembersEnv, body: any = null, n
   if (bad) return { success: false, error: bad };
   const taken = await db.prepare("SELECT ukey = ?1 AS u, email = ?2 AS e FROM members WHERE (ukey = ?1 OR email = ?2) AND id != ?3 LIMIT 1").bind(ukeyOf(username), email, cur?.id || 0).first<{ u: number; e: number }>();
   if (taken?.u) return { success: false, error: "اسم المستخدم ده مستخدم لعضو تاني." };
-  if (taken?.e) return { success: false, error: "الإيميل ده عليه حساب عضو تاني." };
+  if (taken?.e || await emailOwner(db, email, cur?.id || 0)) return { success: false, error: "الإيميل ده عليه حساب عضو تاني، أو اتسجل بيه حساب قبل كده." };
   if (!cur) {
     const { salt, hash, iterations } = await hashPassword(password);
     const ins = await db.prepare(`INSERT INTO members (username, ukey, email, salt, hash, iterations, display, pic, verified, official, created, last_seen)
       VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, 'official', 1, 1, ?8, 0) RETURNING *`).bind(username, ukeyOf(username), email, salt, hash, iterations, OFFICIAL_NAME, now).first<Member>();
+    if (ins) await keepEmail(db, ins.id, ins.email, now).run();
     return { success: true, account: view(ins), created: true };
   }
-  const steps = [db.prepare("UPDATE members SET username = ?1, ukey = ?2, email = ?3, display = ?4, pic = 'official', verified = 1, banned = 0 WHERE id = ?5").bind(username, ukeyOf(username), email, OFFICIAL_NAME, cur.id)];
+  const steps = [db.prepare("UPDATE members SET username = ?1, ukey = ?2, email = ?3, display = ?4, pic = 'official', verified = 1, banned = 0 WHERE id = ?5").bind(username, ukeyOf(username), email, OFFICIAL_NAME, cur.id), keepEmail(db, cur.id, email, now)];
   if (password) {
     const { salt, hash, iterations } = await hashPassword(password);
     steps.push(db.prepare("UPDATE members SET salt = ?1, hash = ?2, iterations = ?3 WHERE id = ?4").bind(salt, hash, iterations, cur.id));
@@ -721,7 +762,7 @@ export async function studioEditMember(env: MembersEnv, id: unknown, b: any) {
   if (b.email !== undefined && String(b.email).trim().toLowerCase() !== m.email) {
     email = String(b.email).trim().toLowerCase();
     if (!EMAIL.test(email)) return { success: false, error: "اكتب بريد صحيح." };
-    if (await db.prepare("SELECT id FROM members WHERE email = ?1 AND id != ?2").bind(email, m.id).first()) return { success: false, error: "البريد ده مع عضو تاني." };
+    if (await db.prepare("SELECT id FROM members WHERE email = ?1 AND id != ?2").bind(email, m.id).first() || await emailOwner(db, email, m.id)) return { success: false, error: "البريد ده مع عضو تاني، أو اتسجل بيه حساب قبل كده." };
   }
   // a new password: the member is signed out everywhere and signs in with it
   const password = b.password === undefined || b.password === "" ? "" : String(b.password);
@@ -735,7 +776,7 @@ export async function studioEditMember(env: MembersEnv, id: unknown, b: any) {
     pic = await putPic(env.MEDIA, m.id, p);
   } else if (b.pic === "") pic = "";
   const steps = [db.prepare("UPDATE members SET display = ?1, bio = ?2, fav_star = ?3, pic = ?4, fav_fed = ?5, username = ?6, ukey = ?7, email = ?8, verified = CASE WHEN ?9 THEN 1 ELSE verified END WHERE id = ?10")
-    .bind(display, bio, fav_star, pic, fav_fed, username, ukeyOf(username), email, email !== m.email ? 1 : 0, m.id)];
+    .bind(display, bio, fav_star, pic, fav_fed, username, ukeyOf(username), email, email !== m.email ? 1 : 0, m.id), keepEmail(db, m.id, email)];
   if (password) {
     const { salt, hash, iterations } = await hashPassword(password);
     steps.push(db.prepare("UPDATE members SET salt = ?1, hash = ?2, iterations = ?3 WHERE id = ?4").bind(salt, hash, iterations, m.id));
