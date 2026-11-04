@@ -1,5 +1,15 @@
 [
   {
+    "id": 802263348,
+    "link": "https://www.ringsidenews.com/wwe-looking-bring-major-event-tokyo-2027/",
+    "date": "Wed, 04 Nov 2026 23:08:28 +0000",
+    "date_gmt": "2026-11-04T23:08:28.000Z",
+    "title": {
+      "rendered": "WWE Looking to Bring Major Event to Tokyo in 2027"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2024/05/wwe-announces-return-to-japan-with-first-tour-in-five-years-06.jpg?x55711"
+  },
+  {
     "id": 802263343,
     "link": "https://www.ringsidenews.com/grayson-waller-sends-message-cm-punk-john-cena-cody-rhodes-ahead-wwe-nxt/",
     "date": "Wed, 04 Nov 2026 22:58:53 +0000",
@@ -138,15 +148,5 @@
       "rendered": "Val Venis Says Republicans ‘Deserved to Lose’ the 2026 Midterm Elections"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/val-venis-says-republicans-deserved-to-lose-the-2026-midterm-elections-41.jpg?x55711"
-  },
-  {
-    "id": 802263254,
-    "link": "https://www.ringsidenews.com/pac-discussed-forming-new-aew-tag-team-before-his-passing/",
-    "date": "Wed, 04 Nov 2026 14:35:27 +0000",
-    "date_gmt": "2026-11-04T14:35:27.000Z",
-    "title": {
-      "rendered": "PAC Discussed Forming New AEW Tag Team Before His Passing"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/pac-discussed-forming-new-aew-tag-team-before-his-passing-42.jpg?x55711"
   }
 ]
