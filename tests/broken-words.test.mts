@@ -822,3 +822,8 @@ test('corrections fix «روبارتس», «انساني» (INCIDENTS #1049)', (
   assert.equal(applyCorrections('كشف روبارتس عن حالته'), 'كشف روبرتس عن حالته');
   assert.equal(applyCorrections('موقف انساني'), 'موقف إنساني');
 });
+
+test('corrections unify Brooks Jensen spelling (INCIDENTS #1050)', () => {
+  assert.equal(applyCorrections('ضد بروكس جنسن'), 'ضد بروكس جينسن');
+  assert.equal(applyCorrections('هروب بروكس جينسين'), 'هروب بروكس جينسن');
+});
