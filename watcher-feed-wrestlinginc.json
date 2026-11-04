@@ -1,5 +1,15 @@
 [
   {
+    "id": 3533104861,
+    "link": "https://www.wrestlinginc.com/2306259/wwe-matt-hardy-aj-styles-assesses-potential-creative-team/",
+    "date": "Wed, 04 Nov 2026 16:30:00 +0000",
+    "date_gmt": "2026-11-04T16:30:00.000Z",
+    "title": {
+      "rendered": "Matt Hardy Assesses AJ Styles' Potential On WWE's Creative Team"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/matt-hardy-assesses-aj-styles-potential-on-wwes-creative-team/l-intro-1793788767.jpg"
+  },
+  {
     "id": 4617993960,
     "link": "https://www.wrestlinginc.com/2306251/jake-the-snake-roberts-wwe-contract-health-issues/",
     "date": "Wed, 04 Nov 2026 16:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE NXT's Wren Sinclair Praises Kendal Grey Onscreen & Off: 'A Real Genuine Person'"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxts-wren-sinclair-praises-kendal-grey-onscreen-off-a-real-genuine-person/l-intro-1793731857.jpg"
-  },
-  {
-    "id": 2018286048,
-    "link": "https://www.wrestlinginc.com/2305631/jacob-fatu-wwe-tv-absence-expected-return-survivor-series/",
-    "date": "Tue, 03 Nov 2026 18:50:47 +0000",
-    "date_gmt": "2026-11-03T18:50:47.000Z",
-    "title": {
-      "rendered": "Backstage News On Jacob Fatu's Absence From WWE TV And Expected Return"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-jacob-fatus-absence-from-wwe-tv-and-expected-return/l-intro-1793731734.jpg"
   }
 ]
