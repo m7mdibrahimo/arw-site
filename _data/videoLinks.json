@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-03T23:57:48.248Z",
+ "checkedAt": "2026-11-04T01:27:20.670Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
@@ -8959,93 +8959,138 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-03T23:57:48.248Z",
+   "checked": "2026-11-04T01:27:20.670Z",
    "lastOk": "2026-11-03T15:13:33.482Z"
   },
   "https://hgcloud.to/e/gosrt5w23stg": {
    "page": "https://arab-wrestling.com/shows/cmll-tzompantli-de-mascaras-2026/",
-   "status": "broken",
-   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
-   "strikes": 2,
-   "checked": "2026-11-03T23:57:48.248Z",
-   "since": "2026-11-03T04:31:26.548Z"
+   "status": "ok",
+   "reason": "the video plays",
+   "strikes": 0,
+   "checked": "2026-11-04T01:27:20.670Z",
+   "lastOk": "2026-11-04T01:27:20.670Z"
   },
   "https://vidmoly.org/embed-ex9popbmwigy.html": {
    "page": "https://arab-wrestling.com/shows/cmll-tzompantli-de-mascaras-2026/",
    "status": "ok",
-   "reason": "the video plays",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-03T23:57:48.248Z",
-   "lastOk": "2026-11-03T23:57:48.248Z"
+   "checked": "2026-11-04T01:27:20.670Z",
+   "lastOk": "2026-11-04T01:27:20.670Z"
   },
   "https://ok.ru/videoembed/17922626882144": {
    "page": "https://arab-wrestling.com/shows/cmll-tzompantli-de-mascaras-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-03T23:57:48.248Z"
+   "checked": "2026-11-04T01:27:20.670Z"
   },
   "https://fembed.co/embed/3-J13wO_gCMM4": {
    "page": "https://arab-wrestling.com/shows/cmll-tzompantli-de-mascaras-2026/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-03T23:57:48.248Z",
-   "lastOk": "2026-11-03T23:57:48.248Z"
+   "checked": "2026-11-04T01:27:20.670Z",
+   "lastOk": "2026-11-04T01:27:20.670Z"
   },
   "https://uqload.vc/embed-objofrcrtfcv.html": {
    "page": "https://arab-wrestling.com/shows/cmll-tzompantli-de-mascaras-2026/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-03T23:57:48.248Z",
-   "lastOk": "2026-11-03T23:57:48.248Z"
+   "checked": "2026-11-04T01:27:20.670Z",
+   "lastOk": "2026-11-04T01:27:20.670Z"
   },
   "https://fembed.co/embed/2IGBss_5EK-be": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-02-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-03T23:57:48.248Z",
-   "lastOk": "2026-11-03T23:57:48.248Z"
+   "checked": "2026-11-04T01:27:20.670Z",
+   "lastOk": "2026-11-04T01:27:20.670Z"
   },
   "https://vidmoly.org/embed-8c7llgm3aox3.html": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-02-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-03T23:57:48.248Z",
-   "lastOk": "2026-11-03T23:57:48.248Z"
+   "checked": "2026-11-04T01:27:20.670Z",
+   "lastOk": "2026-11-04T01:27:20.670Z"
   },
   "https://hgcloud.to/e/yk7n7jpfw2j1": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-02-11-2026/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-03T23:57:48.248Z",
-   "lastOk": "2026-11-03T23:57:48.248Z"
+   "checked": "2026-11-04T01:27:20.670Z",
+   "lastOk": "2026-11-04T01:27:20.670Z"
   },
   "https://vidtube.one/embed-on58qbvq2vmm.html": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-02-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-03T23:57:48.248Z"
+   "checked": "2026-11-04T01:27:20.670Z"
   },
   "https://uqload.vc/embed-xejr2mc4bk0y.html": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-02-11-2026/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-03T23:57:48.248Z",
-   "lastOk": "2026-11-03T23:57:48.248Z"
+   "checked": "2026-11-04T01:27:20.670Z",
+   "lastOk": "2026-11-04T01:27:20.670Z"
   },
   "https://ok.ru/videoembed/17936333277792": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-02-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-03T23:57:48.248Z"
+   "checked": "2026-11-04T01:27:20.670Z"
+  },
+  "https://vidtube.one/embed-qen1odlrn9a6.html": {
+   "page": "https://arab-wrestling.com/shows/cmll-lunes-clasico-02-11-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-04T01:27:20.670Z"
+  },
+  "https://vidmoly.org/embed-xxln721s08d1.html": {
+   "page": "https://arab-wrestling.com/shows/cmll-lunes-clasico-02-11-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-04T01:27:20.670Z",
+   "lastOk": "2026-11-04T01:27:20.670Z"
+  },
+  "https://ok.ru/videoembed/17936789473888": {
+   "page": "https://arab-wrestling.com/shows/cmll-lunes-clasico-02-11-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-04T01:27:20.670Z"
+  },
+  "https://hgcloud.to/e/k1g77pk7fy9t": {
+   "page": "https://arab-wrestling.com/shows/cmll-lunes-clasico-02-11-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-04T01:27:20.670Z",
+   "lastOk": "2026-11-04T01:27:20.670Z"
+  },
+  "https://fembed.co/embed/4_Bt6M4A5C-HI": {
+   "page": "https://arab-wrestling.com/shows/cmll-lunes-clasico-02-11-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-04T01:27:20.670Z"
+  },
+  "https://uqload.vc/embed-17gxgbgptnsd.html": {
+   "page": "https://arab-wrestling.com/shows/cmll-lunes-clasico-02-11-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-04T01:27:20.670Z",
+   "lastOk": "2026-11-04T01:27:20.670Z"
   }
  },
  "broken": [
@@ -9070,7 +9115,6 @@
   "https://hgcloud.to/e/drmvd78ysjwh",
   "https://hgcloud.to/e/fqdvsjk1ne4j",
   "https://hgcloud.to/e/ggst7dw3iknh",
-  "https://hgcloud.to/e/gosrt5w23stg",
   "https://hgcloud.to/e/jhfyqghwv1ct",
   "https://hgcloud.to/e/jllf3u5zi30b",
   "https://hgcloud.to/e/k5vxdzfxwvr7",
