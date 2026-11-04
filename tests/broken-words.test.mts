@@ -851,3 +851,11 @@ test('INCIDENTS #1054: cut word «القم» and missing waw between ROH names a
 test('INCIDENTS #1055: Lance Russell spelling', () => {
   assert.equal(applyCorrections('جائزة لانس رسيل'), 'جائزة لانس راسل');
 });
+
+// INCIDENTS #1058: Gemini wrote «ال Hall of Famer» / «ال G1» (the article split from the English name).
+test('«ال » before an English name gets its tatweel', () => {
+  assert.equal(applyCorrections('أشاد ال Hall of Famer ميك فولي'), 'أشاد الـHall of Famer ميك فولي');
+  assert.equal(applyCorrections('بعد ختام ال G1 المثير'), 'بعد ختام الـG1 المثير');
+  assert.equal(applyCorrections('الذكرى ال 14'), 'الذكرى الـ14');
+  assert.equal(applyCorrections('أشاد الـHall of Famer'), 'أشاد الـHall of Famer');
+});

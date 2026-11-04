@@ -1,6 +1,6 @@
 ---
 federation: WWE
-title: "نهاية حقبة ال 148 يوما وسقوط الأبطال!.. The MFTs ينتزعون لقب WWE للفرق في SmackDown!"
+title: "نهاية حقبة الـ148 يوما وسقوط الأبطال!.. The MFTs ينتزعون لقب WWE للفرق في SmackDown!"
 permalink: "/news/نهاية-حقبة-ال-148-يوما-وسقوط-الأبطال-the-mfts-ينتزعون-لقب-wwe-للفرق-في-smackdown/index.html"
 date: 2026-08-15T06:00:00.000+03:00
 tags:

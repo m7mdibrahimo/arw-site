@@ -15,7 +15,7 @@ tags:
 image: /content/images/rgtnces5ftaaeqjo.jpg
 layout: post-layout.njk
 ---
-أقام اتحاد NJPW الجولة ال 16 من حلبات بطولة G1 Climax 36 في قاعة Act City Hamamatsu بمحافظة شيزوكا، حيث شهدت الليلة ختام مواجهات المجموعة الأولى (A Block) وحسم أول مقعدين في المربع الذهبي للبطولة.
+أقام اتحاد NJPW الجولة الـ16 من حلبات بطولة G1 Climax 36 في قاعة Act City Hamamatsu بمحافظة شيزوكا، حيث شهدت الليلة ختام مواجهات المجموعة الأولى (A Block) وحسم أول مقعدين في المربع الذهبي للبطولة.
 
 ### المواجهات الافتتاحية والإحماء (Non-Tournament Matches)
 

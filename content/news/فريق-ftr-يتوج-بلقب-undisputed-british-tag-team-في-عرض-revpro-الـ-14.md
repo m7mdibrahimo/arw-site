@@ -1,6 +1,6 @@
 ---
 federation: INDIE
-title: "فريق إف تي آر يتوج بلقب Undisputed British Tag Team في عرض RevPro ال 14"
+title: "فريق إف تي آر يتوج بلقب Undisputed British Tag Team في عرض RevPro الـ14"
 permalink: "/news/فريق-اف-تي-ار-يتوج-بلقب-undisputed-british-tag-team-في-عرض-ريف-برو-ال-14/index.html"
 date: 2026-08-30T06:56:00.000+03:00
 tags:
