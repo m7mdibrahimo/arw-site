@@ -833,3 +833,7 @@ test('corrections fix garbled dark-match / WWE I.D. / indestructible phrases (IN
   assert.equal(applyCorrections('ضمن صفقته مع برنامج تطوير WWE'), 'ضمن صفقته مع برنامج WWE I.D.');
   assert.equal(applyCorrections('فلير وظيفته الدائمة البقاء'), 'فلير لا يقهر');
 });
+
+test('corrections fix «ريف بريطانيا» (RevPro) (INCIDENTS #1052)', () => {
+  assert.equal(applyCorrections('وفازت ببطولة ريف بريطانيا للسيدات بلا منازع'), 'وفازت ببطولة RevPro البريطانية للسيدات بلا منازع');
+});

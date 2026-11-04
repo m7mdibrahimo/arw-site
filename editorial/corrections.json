@@ -9758,6 +9758,11 @@
       "wrong": "وظيفته الدائمة البقاء",
       "right": "لا يقهر",
       "note": "ترجمة بلا معنى لـ indestructible — INCIDENTS #1051"
+    },
+    {
+      "wrong": "ببطولة ريف بريطانيا للسيدات بلا منازع",
+      "right": "ببطولة RevPro البريطانية للسيدات بلا منازع",
+      "note": "RevPro Undisputed British Women's Championship اتكتب «ريف بريطانيا» — INCIDENTS #1052"
     }
   ]
 }
