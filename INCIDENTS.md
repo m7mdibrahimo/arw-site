@@ -9320,3 +9320,9 @@ Let me check git status to enumerate uncommitted changes.</think><tool_call>shel
 - **السبب:** Gemini ترجم الفعل punch كأنه حرف جر، ومفيش تصحيح حتمي للعبارة دي.
 - **الإصلاح:** الخبر اتصلح بنفس رابطه. اتضاف تصحيح في `editorial/corrections.json` (بيتطبق على كل خبر جديد وبيتعرض لـ Gemini) واختبار في `tests/corrections.test.mts`.
 - **باقي الجولة:** `/health` فاضي، الموقع الحي على آخر بناء (eleventy 143 ثانية — أبطأ من المعتاد لكن في نفس النطاق اللي تحت المراقبة، 19020 ملف من حد 100000). عروض 48 ساعة (٥: nwa-powerrr، tzompantli، raw 02-11، lunes-clasico، power-struggle): الصفحة وseo/new-shows والريل (فيسبوك/إنستجرام) والسيرفرات (٤ ok و٢ unknown لكل عرض) ✓. الترتيب: قالب `lib/show-seo.cjs` اتعدّل النهارده (#1062) فسبته لإعادة زحف جوجل. مفيش تغيير ظاهر للزائر.
+
+## #1069 — 2026-11-05: «مقارنة بالربع الثالث من عام 2026» في خبر مارك شابيرو (جولة المراقبة 23:00 UTC)
+- **اللي حصل:** خبر مارك شابيرو (عربي وإنجليزي) قال إن إيرادات WWE انخفضت ١٪ «مقارنة بالربع الثالث من عام 2026» — يعني الفترة بتتقارن بنفسها.
+- **السبب:** المصدر (Fightful) نفسه غلط مطبعي في السنة، وGemini نقله زي ما هو من غير ما يلاحظ.
+- **الإصلاح:** الخبران اتصلحوا بنفس رابطهم («مقارنة بالربع الثالث من العام الماضي»). اتضاف فحص بيوقف النشر `period_vs_itself` في `scripts/news-qa.ts` (blocking وretryable) وسطر في `editorial/style-guide.md` بيتعرض لـ Gemini، واختبار في `tests/corrections.test.mts`.
+- **باقي الجولة:** `/health` فاضي، الموقع الحي على آخر كوميت (eleventy 90 ثانية، 19051 ملف). عروض 48 ساعة (٨ عروض: raw 02-11، lunes-clasico، power-struggle، nwa-powerrr، tzompantli، njpw day-7، mlw-fusion، ufc 292): الصفحة وsitemap وseo/new-shows والسيرفرات والريل وpublish-state ✓. الترتيب: قالب `lib/show-seo.cjs` اتعدّل النهارده (#1062) فسبته لإعادة زحف جوجل. مفيش تغيير ظاهر للزائر.

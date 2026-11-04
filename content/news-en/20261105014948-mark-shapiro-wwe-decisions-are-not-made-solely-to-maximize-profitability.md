@@ -13,7 +13,7 @@ en_tags:
   - "Business"
 image: /content/images/cqo4jl1go9a9h0re.jpg
 ---
-TKO President Mark Shapiro addressed concerns regarding WWE's financial performance during the company's third-quarter 2026 earnings call on Wednesday. Despite a 1% revenue decline for WWE compared to the third quarter of 2026, which TKO attributed to fewer main roster Premium Live Events and lower SummerSlam sales, Shapiro defended the company's strategic direction.
+TKO President Mark Shapiro addressed concerns regarding WWE's financial performance during the company's third-quarter 2026 earnings call on Wednesday. Despite a 1% revenue decline for WWE compared to the third quarter of last year, which TKO attributed to fewer main roster Premium Live Events and lower SummerSlam sales, Shapiro defended the company's strategic direction.
 
 Responding to questions about ticket sales for SummerSlam and WrestleMania, Shapiro dismissed claims that WWE’s ticket performance is struggling, labeling such notions as "ghosts." He emphasized that the company prioritizes long-term growth and fan satisfaction over immediate bottom-line gains.
 

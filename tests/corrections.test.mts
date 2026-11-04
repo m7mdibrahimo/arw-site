@@ -1488,3 +1488,12 @@ test("INCIDENTS #1068: «أريد لكم ذلك الوجه» → «أريد أن
   const { applyCorrections } = await import("../scripts/news-qa");
   assert.equal(applyCorrections("وكل ما في الأمر أنني أريد لكم ذلك الوجه"), "وكل ما في الأمر أنني أريد أن ألكم ذلك الوجه");
 });
+
+test("INCIDENTS #1069: a period compared with itself is blocked", async () => {
+  const { checkArticle, BLOCKING_QA_CODES } = await import("../scripts/news-qa");
+  assert.ok(BLOCKING_QA_CODES.includes("period_vs_itself"));
+  const bad = "علق مارك شابيرو على نتائج الربع الثالث من عام 2026 يوم الأربعاء. وأوضح أن تراجع إيرادات WWE بنسبة 1% مقارنة بالربع الثالث من عام 2026 يعود إلى انخفاض مبيعات العرض الكبير في الصيف الماضي كما قالت الشركة. ".repeat(1);
+  assert.ok(checkArticle("عنوان واضح للخبر هنا", bad).some(i => i.code === "period_vs_itself"));
+  const good = bad.replace("مقارنة بالربع الثالث من عام 2026", "مقارنة بالربع الثالث من العام الماضي");
+  assert.ok(!checkArticle("عنوان واضح للخبر هنا", good).some(i => i.code === "period_vs_itself"));
+});
