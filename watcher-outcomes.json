@@ -1,33 +1,33 @@
 {
- "https://www.ringsidenews.com/cm-punks-status-wwes-john-cena-classic-worlds-collide": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-04T02:19:04.540Z"
- },
  "https://www.fightful.com/wrestling/eva-marie-says-shed-need-a-lot-of-money-and-some-type-of-creative-control-to-wrestle-again": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T02:12:58.012Z"
+  "at": "2026-11-04T02:22:37.010Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-clarifies-that-he-isnt-under-contract-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T02:12:57.305Z"
+  "at": "2026-11-04T02:22:36.001Z"
  },
  "https://www.fightful.com/wrestling/jake-roberts-quit-smoking-five-weeks-ago-is-working-towards-a-procedure-to-get-himself-off-oxygen": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T02:12:57.108Z"
+  "at": "2026-11-04T02:22:35.720Z"
  },
  "https://www.fightful.com/wrestling/cm-punk-teases-working-john-cena-classic-wwe-worlds-collide-at-walt-disney-world": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
-  "at": "2026-11-04T02:12:56.852Z"
+  "at": "2026-11-04T02:22:35.349Z"
  },
  "https://www.fightful.com/wrestling/wwe-shop-selling-john-cena-classic-title-belt-for-799-99": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-04T02:12:27.162Z"
+  "at": "2026-11-04T02:22:03.526Z"
+ },
+ "https://www.ringsidenews.com/cm-punks-status-wwes-john-cena-classic-worlds-collide": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-04T02:19:04.540Z"
  },
  "https://www.wrestlinginc.com/2303467/xelina-zelina-veg-aleister-black-manager-wwe": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
