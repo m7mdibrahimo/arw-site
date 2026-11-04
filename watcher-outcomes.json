@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/vince-mcmahon-accused-making-wwe-talent-feel-unimportant-during-creative-talks": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
+  "retry": true,
+  "at": "2026-11-04T15:18:32.580Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-11-4": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -18,11 +23,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-04T15:18:28.918Z"
- },
- "https://www.ringsidenews.com/vince-mcmahon-accused-making-wwe-talent-feel-unimportant-during-creative-talks": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-04T14:59:11.993Z"
  },
  "https://www.ringsidenews.com/cm-punks-status-wwes-john-cena-classic-worlds-collide": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
