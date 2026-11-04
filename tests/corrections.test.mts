@@ -1437,3 +1437,10 @@ test("«الثنائي التقى الثنائي» is corrected (INCIDENTS #1045
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /الثنائي التقى الثنائي/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #1063
+test("round 1063 corrections apply", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("على طريقتة الخاصة"), "على طريقته الخاصة");
+  assert.equal(applyCorrections("مع ترينت أسبورن"), "مع ترينت أوسبورن");
+});
