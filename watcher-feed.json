@@ -40,6 +40,26 @@
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/15142719/maxresdefault-86.jpg"
   },
   {
+    "id": 234901,
+    "link": "https://www.fightful.com/wrestling/full-wwe-nxt-rosters/",
+    "date": "2026-11-04T12:49:00",
+    "date_gmt": "2026-11-04T17:49:00",
+    "title": {
+      "rendered": "Full WWE NXT Roster"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/11114240/8.png"
+  },
+  {
+    "id": 49699,
+    "link": "https://www.fightful.com/wrestling/complete-wwe-roster/",
+    "date": "2026-11-04T12:47:00",
+    "date_gmt": "2026-11-04T17:47:00",
+    "title": {
+      "rendered": "Full WWE Rosters For Raw, Smackdown, &#038; Free Agents"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/11114234/5.png"
+  },
+  {
     "id": 337383,
     "link": "https://www.fightful.com/mma/deontay-wilder-to-face-jai-opetaia-on-fury-joshua-undercard/",
     "date": "2026-11-04T12:40:45",
@@ -278,25 +298,5 @@
       "rendered": "Austin Theory Speaks About His Run With The Vision, Dynamic With Maxxine Dupri"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/09125310/025_RAW_07062026GD_167930.jpg"
-  },
-  {
-    "id": 337327,
-    "link": "https://www.fightful.com/wrestling/wwe-doing-double-taping-of-raw-smackdown-in-washington-dc-on-12-21/",
-    "date": "2026-11-03T23:08:10",
-    "date_gmt": "2026-11-04T04:08:10",
-    "title": {
-      "rendered": "WWE Doing Double Taping Of Raw &amp; SmackDown In Washington, DC On 12/21"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2023/08/27220138/wwe-raw-smackdown.jpg"
-  },
-  {
-    "id": 337324,
-    "link": "https://www.fightful.com/wrestling/titus-oneil-to-receive-frank-gotch-award-at-2027-george-tragos-lou-thesz-pro-wrestling-hall-of-fame-ceremony/",
-    "date": "2026-11-03T22:39:04",
-    "date_gmt": "2026-11-04T03:39:04",
-    "title": {
-      "rendered": "Titus O&#8217;Neil To Receive Frank Gotch Award At 2027 George Tragos/Lou Thesz Pro Wrestling Hall of Fame Ceremony"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/03222807/20210406_HOF_Titus-43a4d3dffd29937189c546c45a6a82e1.jpg"
   }
 ]
