@@ -1444,3 +1444,9 @@ test("round 1063 corrections apply", async () => {
   assert.equal(applyCorrections("على طريقتة الخاصة"), "على طريقته الخاصة");
   assert.equal(applyCorrections("مع ترينت أسبورن"), "مع ترينت أوسبورن");
 });
+
+// INCIDENTS #1064
+test("round 1064 corrections apply", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("رغم الهتافات رغم حديثه كشخصية محبوبة"), "رغم الهتافات أثناء حديثه كشخصية محبوبة");
+});
