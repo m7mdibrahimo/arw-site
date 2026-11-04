@@ -817,3 +817,8 @@ test('corrections fix «تتشارلي», «خططير», «تجعلني شعر�
   assert.equal(applyCorrections('ضمن خططير'), 'ضمن خططي');
   assert.equal(applyCorrections('تجعلني شعرت وكأنني أستطيع'), 'تجعلني أشعر وكأنني أستطيع');
 });
+
+test('corrections fix «روبارتس», «انساني» (INCIDENTS #1049)', () => {
+  assert.equal(applyCorrections('كشف روبارتس عن حالته'), 'كشف روبرتس عن حالته');
+  assert.equal(applyCorrections('موقف انساني'), 'موقف إنساني');
+});

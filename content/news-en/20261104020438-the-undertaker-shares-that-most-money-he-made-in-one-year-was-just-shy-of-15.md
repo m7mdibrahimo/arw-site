@@ -14,6 +14,6 @@ image: /content/images/xhzpyl31l2vod3rb.jpg
 ---
 The Undertaker recently reflected on his professional wrestling career and his personal finances. During a conversation with The School Of Hard Knocks, the WWE Hall of Famer and Lucha Libre AAA booker revealed that he became a millionaire at the age of 27. When asked about the highest amount of money he earned in a single year, he replied that it was "just shy of $15 million."
 
-In other news, the Lucha Libre AAA brand is currently approaching the third week of its Héroes Inmortales special. The upcoming event is scheduled to feature a match between El Fiscal and Abismo Negro Jr., alongside the induction of Marisela Peñan into the AAA Hall of Fame by Rey Mysterio.
+In other news, the Lucha Libre AAA brand is currently approaching the third week of its Héroes Inmortales special. The upcoming event is scheduled to feature a match between El Fiscal and Abismo Negro Jr., alongside the induction of Marisela Peña into the AAA Hall of Fame by Rey Mysterio.
 
 https://www.instagram.com/p/DfSfCc_iIFT/
