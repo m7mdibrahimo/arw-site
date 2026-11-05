@@ -1,6 +1,6 @@
 ---
 federation: AEW
-title: "زلزال في عرض AEW Dynamite.. بطل العالم ويل أوسبراي يعلن رسمي تأسيس عصابة United Empire داخل AEW"
+title: "زلزال في عرض AEW Dynamite.. بطل العالم ويل أوسبراي يعلن رسميا تأسيس عصابة United Empire داخل AEW"
 permalink: "/news/زلزال-في-عرض-aew-dynamite-بطل-العالم-ويل-أوسبراي-يعلن-رسميا-تأسيس-عصابة-united-empire-داخل-aew/index.html"
 date: 2026-09-03T04:25:00.000+03:00
 tags:

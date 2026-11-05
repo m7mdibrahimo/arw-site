@@ -894,3 +894,16 @@ test('corrections fix Jason Sensation, WWE Intercontinental title and release-fr
   assert.equal(applyCorrections('فاز ببطولة WWE القارية'), 'فاز ببطولة القارات');
   assert.equal(applyCorrections('بمجرد حصوله على استغناء من عقده مع WWE'), 'بمجرد تحرره من عقده مع WWE');
 });
+
+// INCIDENTS #1087: «تعلن رسمي توسيع»، «تأكد رسمي إقامة»، «أعلن رسمي أن» — a verb right before «رسمي» always needs «رسميا».
+test('verb + «رسمي» is corrected and blocked whatever word follows', () => {
+  assert.equal(applyCorrections('تأكد رسمي إقامة العرض'), 'تأكد رسميا إقامة العرض');
+  assert.equal(applyCorrections('وأعلن رسمي أن اللقاء تأجل'), 'وأعلن رسميا أن اللقاء تأجل');
+  assert.equal(applyCorrections('تأكد رسميا إقامة العرض'), 'تأكد رسميا إقامة العرض');
+  const pad = ' كلام'.repeat(80);
+  for (const bad of ['تعلن رسمي توسيع جولتها', 'أصبح رسمي أول بطل', 'يعلن WWE رسمي عودته']) {
+    assert.ok(checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', bad + pad).some(i => i.code === 'adverb_without_alef'), bad);
+  }
+  const ok = checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'أكد مصدر رسمي أن العرض سيقام، وكشف الحساب الرسمي عن اللقاء' + pad);
+  assert.ok(!ok.some(i => i.code === 'adverb_without_alef'));
+});

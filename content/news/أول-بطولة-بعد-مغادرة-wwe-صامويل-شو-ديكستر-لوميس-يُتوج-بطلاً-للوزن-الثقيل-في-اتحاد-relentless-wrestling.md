@@ -19,7 +19,7 @@ layout: post-layout.njk
 
 ### التتويج بلقب الوزن الثقيل
 
-تمكن صامويل شو من التغلب على خصومه ليصبح رسمي بطل الوزن الثقيل الجديد لاتحاد Relentless Wrestling (*Relentless Heavyweight Champion*).
+تمكن صامويل شو من التغلب على خصومه ليصبح رسميا بطل الوزن الثقيل الجديد لاتحاد Relentless Wrestling (*Relentless Heavyweight Champion*).
 
 وأعلن الاتحاد رسميا عن تتويج شو عبر حساباته على منصات التواصل الاجتماعي قائلا:
 
