@@ -69,3 +69,11 @@ test('no Arabic story carries tashkeel in its title, description or text', () =>
   }
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #1077: «وعندما غادرتا» (past feminine dual verb of a regular verb) slipped through — only a few verbs were listed.
+test('past feminine dual verbs ending in تا (غادرتا/أظهرتا/خاضتا/أصبحتا…) are caught', () => {
+  for (const w of ['وعندما غادرتا حصلنا', 'أظهرتا هيمنة واضحة', 'حيث خاضتا مئات النزالات', 'وأصبحتا تتذكران ذلك', 'خسرتا أمام الثنائي']) {
+    const codes = checkArticle('عنوان', `تحدث الصحفي عن النزال المنتظر ${w} في الحلبة.`).map(i => i.code);
+    assert.ok(codes.includes('dual_form'), w);
+  }
+});
