@@ -1,28 +1,33 @@
 {
+ "https://www.fightful.com/wrestling/wwe-planning-to-celebrate-30-years-of-the-rock": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-05T19:54:06.596Z"
+ },
  "https://www.fightful.com/wrestling/wwe-to-roll-out-santahausen": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T19:52:03.243Z"
+  "at": "2026-11-05T19:54:06.278Z"
  },
  "https://www.fightful.com/wrestling/wwe-royal-rumble-2027-was-discussed-for-february-20th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T19:52:02.758Z"
+  "at": "2026-11-05T19:54:05.765Z"
  },
  "https://www.fightful.com/wrestling/wwe-offering-crew-members-3000-in-hazard-pay-for-trip-to-saudi-arabia-for-crown-jewel-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T19:52:02.389Z"
+  "at": "2026-11-05T19:54:05.356Z"
  },
  "https://www.fightful.com/wrestling/chris-jericho-talks-playing-gorgeous-george-in-the-greatest-says-he-watched-one-of-his-old-movies-to-prep-for-the-role": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T19:52:01.933Z"
+  "at": "2026-11-05T19:54:04.846Z"
  },
  "https://www.fightful.com/wrestling/the-miz-im-46-years-old-and-i-still-feel-very-good-in-the-ring-i-dont-feel-slow-or-sluggish": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T19:52:00.828Z"
+  "at": "2026-11-05T19:54:03.625Z"
  },
  "https://www.ringsidenews.com/aew-arrives-hulu-japan-following-streaming-deal-announcement": {
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-24T17:07:07.403Z"
- },
- "https://www.ringsidenews.com/ric-flair-shows-off-injured-eye-hospitalization-calls-out-reckless-facebook-posts": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-10-24T16:46:05.534Z"
  }
 }
