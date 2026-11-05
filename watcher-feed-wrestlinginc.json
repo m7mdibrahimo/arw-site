@@ -1,5 +1,25 @@
 [
   {
+    "id": 5078939238,
+    "link": "https://www.wrestlinginc.com/2307451/noam-dar-romeo-moreno-win-2026-wwe-nxt-dusty-rhodes-tag-team-classic/",
+    "date": "Thu, 05 Nov 2026 02:19:48 +0000",
+    "date_gmt": "2026-11-05T02:19:48.000Z",
+    "title": {
+      "rendered": "Noam Dar & Romeo Moreno Win 2026 WWE NXT Dusty Rhodes Tag Team Classic"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/noam-dar-romeo-moreno-win-2026-wwe-nxt-dusty-rhodes-tag-team-classic/l-intro-1793845088.jpg"
+  },
+  {
+    "id": 4362106569,
+    "link": "https://www.wrestlinginc.com/2307450/hangman-page-gives-in-texas-death-official-aew-full-gear/",
+    "date": "Thu, 05 Nov 2026 02:16:59 +0000",
+    "date_gmt": "2026-11-05T02:16:59.000Z",
+    "title": {
+      "rendered": "Hangman Page Gives In, 'Texas Death' Official For AEW Full Gear"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/hangman-page-gives-in-texas-death-official-for-aew-full-gear/l-intro-1793844954.jpg"
+  },
+  {
     "id": 1977022586,
     "link": "https://www.wrestlinginc.com/2303634/wwe-paul-heyman-seen-without-suit-tie/",
     "date": "Thu, 05 Nov 2026 02:00:00 +0000",
@@ -65,9 +85,9 @@
     "date": "Wed, 04 Nov 2026 22:00:00 +0000",
     "date_gmt": "2026-11-04T22:00:00.000Z",
     "title": {
-      "rendered": "AEW Dynamite Results 11/4/26 W/ Live Updates: Women's Blood & Guts"
+      "rendered": "AEW Dynamite Results 11/4/26 W/ Live Updates: Men's Blood & Guts"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-results-11426-w-live-updates/l-intro-1793841366.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-results-11426-w-live-updates/l-intro-1793845370.jpg"
   },
   {
     "id": 1137063647,
@@ -178,25 +198,5 @@
       "rendered": "Jinder Mahal Believes Current WWE Champ Is Doing The Best Character Work In Wrestling"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/jinder-mahal-believes-current-wwe-champ-is-doing-the-best-character-work-in-wrestling/l-intro-1793818260.jpg"
-  },
-  {
-    "id": 1591641541,
-    "link": "https://www.wrestlinginc.com/2306208/speedball-mike-bailey-reacts-ilja-dragunov-first-aew-opponent/",
-    "date": "Wed, 04 Nov 2026 15:00:00 +0000",
-    "date_gmt": "2026-11-04T15:00:00.000Z",
-    "title": {
-      "rendered": "Speedball Mike Bailey Reacts To Being Ilja Dragunov's First AEW Opponent"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/speedball-mike-bailey-reacts-to-being-ilja-dragunovs-first-aew-opponent/l-intro-1793777365.jpg"
-  },
-  {
-    "id": 3550531067,
-    "link": "https://www.wrestlinginc.com/2306202/kit-wilson-sings-praises-sleeper-hit-wwe-show-main-event/",
-    "date": "Wed, 04 Nov 2026 14:30:00 +0000",
-    "date_gmt": "2026-11-04T14:30:00.000Z",
-    "title": {
-      "rendered": "Kit Wilson Sings Praises Of 'Sleeper Hit' WWE Show"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/kit-wilson-sings-praises-of-sleeper-hit-wwe-show/l-intro-1793774723.jpg"
   }
 ]
