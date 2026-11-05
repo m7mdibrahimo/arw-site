@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/lee-moriarty-and-la-cherry-get-engaged/": {
-    "matchedFile": "20261020123500-نجم-aew-لي-موريارتي-يعلن-خطوبته-على-رفيقته-لا-تشيري.md",
-    "reason": "الخبر الجديد يتناول نفس واقعة الخطوبة التي تم تغطيتها بالفعل في الخبر رقم 0، والتفاصيل الإضافية مثل مكان الخطوبة لا تعد تطوراً جوهرياً يمنع كونه تكراراً.",
-    "at": "2026-10-20T17:58:14.296Z"
-  },
   "https://www.fightful.com/wrestling/kairi-on-upcoming-appearance-on-jericho-cruise-after-leaving-wwe-i-wanted-my-first-wrestling-related-activity-to-be-something-i-genuinely-wanted-to-do/": {
     "matchedFile": "20261020192902-كايري-توضح-موقفها-من-المشاركة-في-النزالات-على-متن-رحلة-كريس-جيريكو-البحرية-وسط-شائعات-انضمامها-إلى-aew.md",
     "reason": "الخبر الجديد يعيد سرد نفس المقابلة التي أجرتها كايري مع مجلة Weekly Pro Wrestling والحديث عن مشاركتها في رحلة كريس جيريكو البحرية كأول نشاط لها بعد WWE، وهي نفس التفاصيل والحدث الموجود في الخبر المنشور مسبقاً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261104232325-ذا-ميز-يتحدث-عن-خططه-للاعتزال-في-سن-السادسة-والأربعين.md",
     "reason": "الخبر الجديد يعيد نفس التصريحات التي أدلى بها ذا ميز في نفس المقابلة مع برنامج Z100 New York حول شعوره بحالة بدنية ممتازة وعدم شعوره بالبطء، وهي نفس تفاصيل الخبر المنشور رقم 0.",
     "at": "2026-11-05T14:08:41.804Z"
+  },
+  "https://www.ringsidenews.com/stone-cold-steve-austins-racist-role-longest-yard-gets-surprising-reaction-nelly/": {
+    "matchedFile": "20261105163736-نيلي-يتذكر-العمل-مع-ستيف-أوستن-في-فيلم-the-longest-yard.md",
+    "reason": "الخبر الجديد يعيد سرد نفس تصريحات نيلي في بودكاست 7PM in Brooklyn حول فيلم The Longest Yard ودور ستيف أوستن، وهو نفس الحدث والتفاصيل الموجودة في الخبر المنشور.",
+    "at": "2026-11-05T14:20:34.078Z"
   }
 }
