@@ -553,3 +553,16 @@ test("«تحتزام» (تحت الحزام ملزوقة) is blocked (INCIDENTS 
   assert.ok(checkArticle("عنوان", bad).some((i) => i.code === "broken_word"));
   assert.ok(!checkArticle("عنوان", ok).some((i) => i.code === "broken_word"));
 });
+
+test("construct duals before Latin names / «ال…» are blocked: «نزالي Blood & Guts», «مركزي الظهير» (round 2026-11-05)", () => {
+  const bad1 = checkArticle("اتحاد AEW يقيم نزالي Blood & Guts في عرض AEW Dynamite", "نص.");
+  assert.ok(bad1.some((i) => i.code === "dual_noun"));
+  const bad2 = checkArticle("عنوان", "الذي يلعب في مركزي الظهير والمستقبل.");
+  assert.ok(bad2.some((i) => i.code === "dual_noun"));
+  assert.ok(!checkArticle("اتحاد AEW يقيم نزال Blood & Guts مرتين في عرض AEW Dynamite", "يلعب في مركز المدافع ومركز مستقبل الكرة.").some((i) => i.code === "dual_noun"));
+});
+
+test("«شبكتي TBS وHBO Max» (dual network) is blocked (round 2026-11-05)", () => {
+  assert.ok(checkArticle("عنوان", "تم بث العرض عبر شبكتي TBS وHBO Max.").some((i) => i.code === "dual_noun"));
+  assert.ok(!checkArticle("عنوان", "تم بث العرض عبر شبكة TBS ومنصة HBO Max.").some((i) => i.code === "dual_noun"));
+});

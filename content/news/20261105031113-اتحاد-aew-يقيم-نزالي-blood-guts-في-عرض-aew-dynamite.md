@@ -1,6 +1,7 @@
 ---
 federation: AEW
-title: "اتحاد AEW يقيم نزالي Blood & Guts في عرض AEW Dynamite"
+permalink: "/news/اتحاد-aew-يقيم-نزالي-blood-guts-في-عرض-aew-dynamite/index.html"
+title: "اتحاد AEW يقيم نزال Blood & Guts مرتين في عرض AEW Dynamite"
 date: 2026-11-05T03:11:13.000+03:00
 published_at: 2026-11-05T00:26:38.412Z
 source_id: 337450
@@ -19,8 +20,8 @@ tags:
 image: /content/images/sphovdzft8mprkma.jpg
 layout: post-layout.njk
 ---
-أقام اتحاد AEW عرض AEW Dynamite Blood & Guts يوم 4 نوفمبر في صالة VyStar Veterans Memorial Arena بمدينة جاكسونفيل في ولاية فلوريدا. وقد تم بث العرض عبر شبكتي TBS وHBO Max.
+أقام اتحاد AEW عرض AEW Dynamite Blood & Guts يوم 4 نوفمبر في صالة VyStar Veterans Memorial Arena بمدينة جاكسونفيل في ولاية فلوريدا. وقد تم بث العرض عبر شبكة TBS ومنصة HBO Max.
 
-شهد العرض إقامة نزالي Blood & Guts الشهيرين، حيث استعرض الاتحاد قوته في هذا الحدث الخاص الذي تابعه جمهور غفير من عشاق المصارعة. يمكنكم متابعة التغطية الكاملة والنتائج التفصيلية لجميع نزالات العرض عبر موقعنا.
+شهد العرض إقامة نزال Blood & Guts الشهير مرتين، حيث استعرض الاتحاد قوته في هذا الحدث الخاص الذي تابعه جمهور غفير من عشاق المصارعة. يمكنكم متابعة التغطية الكاملة والنتائج التفصيلية لجميع نزالات العرض عبر موقعنا.
 
 https://www.youtube.com/watch?v=xDxVvjJ1Trc
