@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/kam-hendrix-reacts-john-cena-denies-him-entry-john-cena-classic": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-05T15:00:03.394Z"
+ },
  "https://www.fightful.com/wrestling/the-miz-im-46-years-old-and-i-still-feel-very-good-in-the-ring-i-dont-feel-slow-or-sluggish": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-24T14:55:08.638Z"
- },
- "https://www.fightful.com/wrestling/tyrese-haliburton-posts-wwe-inspired-comeback-video": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-24T14:39:08.357Z"
  }
 }
