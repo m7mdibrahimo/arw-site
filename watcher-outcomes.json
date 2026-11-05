@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2307527/wwe-nxt-aew-blood-guts-november-4-2026-3-things-hated-loved-opinion-review": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-05T09:26:24.192Z"
+ },
  "https://www.fightful.com/wrestling/report-enzo-amore-believed-to-have-signed-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,11 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-05T09:23:10.759Z"
- },
- "https://www.wrestlinginc.com/2307527/wwe-nxt-aew-blood-guts-november-4-2026-3-things-hated-loved-opinion-review": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-05T09:03:10.906Z"
  },
  "https://www.fightful.com/wrestling/maya-world-reveals-she-wasnt-supposed-to-be-at-aew-collision-where-nixon-newell-and-miranda-alize-left": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
