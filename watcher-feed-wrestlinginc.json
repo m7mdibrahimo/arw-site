@@ -1,5 +1,15 @@
 [
   {
+    "id": 4789329533,
+    "link": "https://www.wrestlinginc.com/2307441/wwe-nxt-womens-champion-kelani-jordan-defeats-returning-paige-upset-defense/",
+    "date": "Thu, 05 Nov 2026 01:44:15 +0000",
+    "date_gmt": "2026-11-05T01:44:15.000Z",
+    "title": {
+      "rendered": "WWE NXT Women's Champion Kelani Jordan Defeats Returning Paige In Upset Defense"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-womens-champion-kelani-jordan-defeats-returning-paige-in-upset-defense/l-intro-1793842996.jpg"
+  },
+  {
     "id": 2716710077,
     "link": "https://www.wrestlinginc.com/2307361/wwe-return-enzo-amore-nxt/",
     "date": "Wed, 04 Nov 2026 23:01:57 +0000",
@@ -35,9 +45,9 @@
     "date": "Wed, 04 Nov 2026 22:00:00 +0000",
     "date_gmt": "2026-11-04T22:00:00.000Z",
     "title": {
-      "rendered": "WWE NXT Results 11/4/26 W/ Live Updates"
+      "rendered": "WWE NXT Results 11/4/26 W/ Live Updates: Paige Challenges For The NXT Women's Title"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-results-11426-w-live-updates/l-intro-1793764035.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-results-11426-w-live-updates/l-intro-1793843070.jpg"
   },
   {
     "id": 1575098001,
@@ -188,15 +198,5 @@
       "rendered": "Steven Borden Looks Back On Concussion Suffered At AEW All Out 2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/steven-borden-looks-back-on-concussion-suffered-at-aew-all-out-2026/l-intro-1793772870.jpg"
-  },
-  {
-    "id": 1209637203,
-    "link": "https://www.wrestlinginc.com/2303472/tna-indi-hartwell-details-travel-schedule/",
-    "date": "Wed, 04 Nov 2026 13:30:00 +0000",
-    "date_gmt": "2026-11-04T13:30:00.000Z",
-    "title": {
-      "rendered": "Indi Hartwell Details TNA Travel Schedule"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/indi-hartwell-details-tna-travel-schedule/l-intro-1793569807.jpg"
   }
 ]
