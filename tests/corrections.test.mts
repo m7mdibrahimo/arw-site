@@ -1534,3 +1534,11 @@ test("INCIDENTS #1075: Don Callis Family opponents are not «كاوس وكاتس
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /كاوس وكاتسويوري شيباتا/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #1076: dual forms («موقعتين», «شريكتين», «عودا») inside a quote.
+test("INCIDENTS #1076: dual forms in quotes become plural", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("لم نكن موقعتين ولم نكن شريكتين، عودا مرة أخرى"), "لم نكن موقعات ولم نكن شريكات، عودوا مرة أخرى");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /لم نكن (موقعتين|شريكتين)|عودا مرة أخرى/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
