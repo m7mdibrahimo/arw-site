@@ -9969,6 +9969,11 @@
       "wrong": "لم نكن شريكتين",
       "right": "لم نكن شريكات",
       "note": "مثنى «شريكتين» (INCIDENTS #1076)"
+    },
+    {
+      "wrong": "داستي رودز Tag Team Classic",
+      "right": "Dusty Rhodes Tag Team Classic",
+      "note": "اسم البطولة بالكامل بالإنجليزي (مش نص عربي + نص إنجليزي)؛ فحص english_jargon كان بيمسكه غلط"
     }
   ]
 }

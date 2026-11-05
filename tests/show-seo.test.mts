@@ -243,3 +243,9 @@ test("no tilde in the search title of a show", () => {
   assert.ok(!r.title.includes("~") && !r.description.includes("~"));
   assert.ok(r.title.includes("03.11.2026"));
 });
+
+// INCIDENTS #1079: «دبليو دبليو إي راو 2 نوفمبر 2026» (position 4.1) — a WWE show's description carries the federation in Arabic letters with the date.
+test('a WWE show description has the Arabic federation name with the written date', () => {
+  const r = showSeoText({ headline: 'عرض الرو 02.11.2026 مترجم', title: 'WWE RAW (02.11.2026)', programName: 'WWE RAW', eventDate: '2026-11-02', day: '2 نوفمبر 2026', isLatest: true, description: '', aliases: [] });
+  assert.match(r.description, /دبليو دبليو إي الرو 2 نوفمبر 2026/);
+});

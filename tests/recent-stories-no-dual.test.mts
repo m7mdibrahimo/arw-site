@@ -77,3 +77,9 @@ test('past feminine dual verbs ending in تا (غادرتا/أظهرتا/خاض�
     assert.ok(codes.includes('dual_form'), w);
   }
 });
+
+// INCIDENTS #1079: «بطولة داستي رودز Tag Team Classic» (نص عربي + اسم إنجليزي) كان بيطلع english_jargon غلط.
+test('Dusty Rhodes Tag Team Classic is written in English and not flagged as jargon', () => {
+  const codes = checkArticle('فوز نوام دار في بطولة Dusty Rhodes Tag Team Classic', 'فاز الثنائي ببطولة Dusty Rhodes Tag Team Classic لعام 2026 في عرض NXT.').map(i => i.code);
+  assert.ok(!codes.includes('english_jargon'));
+});
