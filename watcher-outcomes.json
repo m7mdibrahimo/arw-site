@@ -1,28 +1,28 @@
 {
- "https://www.ringsidenews.com/aew-arrives-hulu-japan-following-streaming-deal-announcement": {
-  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": true,
-  "at": "2026-11-05T19:40:57.443Z"
- },
  "https://www.fightful.com/wrestling/wwe-royal-rumble-2027-was-discussed-for-february-20th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T19:40:05.450Z"
+  "at": "2026-11-05T19:44:17.706Z"
  },
  "https://www.fightful.com/wrestling/wwe-offering-crew-members-3000-in-hazard-pay-for-trip-to-saudi-arabia-for-crown-jewel-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T19:40:05.081Z"
+  "at": "2026-11-05T19:44:17.379Z"
  },
  "https://www.fightful.com/wrestling/chris-jericho-talks-playing-gorgeous-george-in-the-greatest-says-he-watched-one-of-his-old-movies-to-prep-for-the-role": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T19:40:04.633Z"
+  "at": "2026-11-05T19:44:16.973Z"
  },
  "https://www.fightful.com/wrestling/the-miz-im-46-years-old-and-i-still-feel-very-good-in-the-ring-i-dont-feel-slow-or-sluggish": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T19:40:03.538Z"
+  "at": "2026-11-05T19:44:15.989Z"
+ },
+ "https://www.ringsidenews.com/aew-arrives-hulu-japan-following-streaming-deal-announcement": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": true,
+  "at": "2026-11-05T19:40:57.443Z"
  },
  "https://www.fightful.com/wrestling/report-enzo-amore-believed-to-have-signed-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
