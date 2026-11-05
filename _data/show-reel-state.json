@@ -4789,7 +4789,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 03.11.2026 مترجم",
-    "lastAttempt": 1793865667726,
+    "lastAttempt": 1793866548862,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -4851,6 +4851,25 @@
       "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
     },
     "processing": [
+      "tiktok"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261105095631-wwe-nxt-04-11-2026": {
+    "publishedAt": 1793866572184,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ان اكس تي 04.11.2026 مترجم",
+    "lastAttempt": 1793866612814,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_reel",
       "tiktok"
     ],
     "reviewPlatforms": [],
