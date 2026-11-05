@@ -1526,3 +1526,11 @@ test("INCIDENTS #1074: Dax Harwood and Blood & Guts spellings", async () => {
   assert.equal(applyCorrections("على داكس هارود"), "على داكس هاروود");
   assert.equal(applyCorrections("نزال مينز بلود أند غاتس"), "نزال Blood & Guts للرجال");
 });
+
+// INCIDENTS #1075: Okada/Fletcher/Wardlow/Knight written as «كاوس وكاتسويوري شيباتا».
+test("INCIDENTS #1075: Don Callis Family opponents are not «كاوس وكاتسويوري شيباتا»", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("ضد كاوس وكاتسويوري شيباتا وآخرين"), "ضد كازوتشيكا أوكادا وكايل فليتشر وواردلو وكيفن نايت وآخرين");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /كاوس وكاتسويوري شيباتا/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
