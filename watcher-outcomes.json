@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2307527/wwe-nxt-aew-blood-guts-november-4-2026-3-things-hated-loved-opinion-review": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-05T09:03:10.906Z"
+ },
  "https://www.fightful.com/wrestling/report-enzo-amore-believed-to-have-signed-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
   "at": "2026-10-24T13:18:08.881Z"
- },
- "https://www.fightful.com/wrestling/report-ric-flair-taken-to-hospital-after-falling-and-injuring-his-face-outside-restaurant-in-florida": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-24T13:14:31.288Z"
  }
 }
