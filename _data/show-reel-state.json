@@ -4794,7 +4794,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261105085809-tna-xplosion-30-10-2026": {
     "publishedAt": 1793863932640,
@@ -4815,15 +4816,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض مين ايفنت 04.11.2026 مترجم",
-    "lastAttempt": 1793874357563,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1793875245871,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -4853,9 +4850,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض داينامايت 04.11.2026 مترجم",
-    "lastAttempt": 1793871780481,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1793875247810,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
