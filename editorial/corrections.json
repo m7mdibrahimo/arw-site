@@ -10024,6 +10024,26 @@
       "wrong": "أطاح بأنفاسه",
       "right": "أخرج الهواء من رئتيه",
       "note": "ترجمة حرفية بلا معنى لـ knocked the wind out (INCIDENTS #1085)"
+    },
+    {
+      "wrong": "جايسون سينيشن",
+      "right": "جيسون سينسيشن",
+      "note": "Jason Sensation — اسم واحد ثابت — INCIDENTS #1086"
+    },
+    {
+      "wrong": "سينيشن",
+      "right": "سينسيشن",
+      "note": "Sensation — INCIDENTS #1086"
+    },
+    {
+      "wrong": "ببطولة WWE القارية",
+      "right": "ببطولة القارات",
+      "note": "WWE Intercontinental = «القارات»؛ «القارية» لـ AEW Continental فقط — INCIDENTS #1086"
+    },
+    {
+      "wrong": "حصوله على استغناء من عقده",
+      "right": "تحرره من عقده",
+      "note": "release from contract ≠ «استغناء» — INCIDENTS #1086"
     }
   ]
 }

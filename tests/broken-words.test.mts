@@ -887,3 +887,10 @@ test('doubled-letter typos are corrected and a repeated two-word «ال» phrase
   const names = checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'واجه بيشوب داير بيشوب داير في العرض ' + filler);
   assert.ok(!names.some(i => i.code === 'repeated_phrase'));
 });
+
+// INCIDENTS #1086: «جايسون سينيشن», «ببطولة WWE القارية» and «استغناء من عقده» reached the Jason Sensation and Ethan Page stories.
+test('corrections fix Jason Sensation, WWE Intercontinental title and release-from-contract (INCIDENTS #1086)', () => {
+  assert.equal(applyCorrections('قال جايسون سينيشن إن'), 'قال جيسون سينسيشن إن');
+  assert.equal(applyCorrections('فاز ببطولة WWE القارية'), 'فاز ببطولة القارات');
+  assert.equal(applyCorrections('بمجرد حصوله على استغناء من عقده مع WWE'), 'بمجرد تحرره من عقده مع WWE');
+});
