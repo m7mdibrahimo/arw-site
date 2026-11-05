@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2307504/wwe-nxt-womens-champion-kelani-jordan-raw-debut": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Raquel Rodriguez",
+  "retry": true,
+  "at": "2026-11-05T15:05:38.938Z"
+ },
  "https://www.fightful.com/wrestling/the-miz-im-46-years-old-and-i-still-feel-very-good-in-the-ring-i-dont-feel-slow-or-sluggish": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-24T15:05:25.966Z"
- },
- "https://www.wrestlinginc.com/2290991/wwe-miz-fired-intense-talking-smack-promo": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-24T14:55:08.638Z"
  }
 }
