@@ -1,58 +1,63 @@
 {
- "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-november-4-2026": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+ "https://www.fightful.com/wrestling/wwe-nxt-results-11-4-cm-punk-vs-grayson-waller-john-cena-appears": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-05T00:11:24.367Z"
+  "at": "2026-11-05T00:16:13.880Z"
+ },
+ "https://www.fightful.com/wrestling/aew-dynamite-blood-guts-results-11-4": {
+  "reason": "المراجعة رفضته: العنوان مش جملة عربية (أقل من 3 كلمات عربية)، نص الخبر قصير جدًا أو فاضي",
+  "retry": false,
+  "at": "2026-11-05T00:16:13.690Z"
  },
  "https://www.fightful.com/wrestling/yota-tsuji-recalls-telling-kenny-omega-that-hell-beat-him-at-the-tokyo-dome-someday-two-years-ago": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-05T00:13:36.656Z"
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-05T00:15:34.573Z"
  },
  "https://www.fightful.com/wrestling/mark-shapiro-states-that-tko-fully-anticipates-that-wwe-ufc-events-in-middle-east-will-proceed-as-planned": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T00:12:21.116Z"
+  "at": "2026-11-05T00:15:34.405Z"
  },
  "https://www.fightful.com/wrestling/tko-president-speaks-about-chances-of-wwe-wrestlemania-43-moving-from-saudi-arabia-we-have-already-been-paid-half-upfront": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T00:12:20.761Z"
+  "at": "2026-11-05T00:15:33.937Z"
  },
  "https://www.fightful.com/wrestling/337413-queen-aminata-tbs": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T00:12:20.460Z"
+  "at": "2026-11-05T00:15:33.541Z"
  },
  "https://www.fightful.com/wrestling/ricochet-for-the-most-part-people-put-away-their-egos-for-the-better-of-the-story-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T00:12:20.171Z"
+  "at": "2026-11-05T00:15:33.160Z"
  },
  "https://www.fightful.com/wrestling/taya-valkyrie-exits-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T00:12:19.553Z"
+  "at": "2026-11-05T00:15:32.342Z"
  },
  "https://www.fightful.com/wrestling/uspto-rejects-wwes-attempts-to-trademark-rko-for-wrestling-purposes-due-to-rko-pictures-overlap": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T00:12:19.361Z"
+  "at": "2026-11-05T00:15:32.088Z"
  },
  "https://www.fightful.com/wrestling/wwe-files-to-trademark-kato-sykes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T00:12:19.111Z"
+  "at": "2026-11-05T00:15:31.755Z"
  },
  "https://www.fightful.com/wrestling/yota-tsuji-says-his-match-with-kenny-omega-could-change-aew-njpw-relationship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-05T00:12:18.795Z"
  },
- "https://www.fightful.com/wrestling/yota-tsuji-recalls-telling-kenny-omega-that-hell-beat-him-at-the-tokyo-dome-someday-two-years-ago": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+ "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-november-4-2026": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-05T00:10:05.612Z"
+  "at": "2026-11-05T00:11:24.367Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-11-4": {
   "reason": "مكرر مع خبر نزل قبل كده",
