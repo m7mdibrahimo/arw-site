@@ -1,58 +1,58 @@
 {
- "https://www.ringsidenews.com/paige-returns-wwe-nxt-13-years-only-lose-championship-match": {
-  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-11-05T01:46:54.221Z"
- },
  "https://www.fightful.com/wrestling/tna-contract-update-on-mustafa-ali": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T01:48:58.143Z"
+  "at": "2026-11-05T01:52:17.659Z"
  },
  "https://www.fightful.com/wrestling/maya-world-reveals-she-wasnt-supposed-to-be-at-aew-collision-where-nixon-newell-and-miranda-alize-left": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-05T01:48:57.736Z"
+  "at": "2026-11-05T01:52:17.395Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-10-30-viewership-and-demo-rating-increase": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T01:47:24.220Z"
+  "at": "2026-11-05T01:50:15.036Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-results-11-4-cm-punk-vs-grayson-waller-john-cena-appears": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T01:47:23.912Z"
+  "at": "2026-11-05T01:50:14.829Z"
  },
  "https://www.fightful.com/wrestling/yota-tsuji-recalls-telling-kenny-omega-that-hell-beat-him-at-the-tokyo-dome-someday-two-years-ago": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T01:47:23.533Z"
+  "at": "2026-11-05T01:50:14.543Z"
  },
  "https://www.fightful.com/wrestling/mark-shapiro-states-that-tko-fully-anticipates-that-wwe-ufc-events-in-middle-east-will-proceed-as-planned": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T01:47:23.329Z"
+  "at": "2026-11-05T01:50:14.406Z"
  },
  "https://www.fightful.com/wrestling/tko-president-speaks-about-chances-of-wwe-wrestlemania-43-moving-from-saudi-arabia-we-have-already-been-paid-half-upfront": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T01:47:22.757Z"
+  "at": "2026-11-05T01:50:14.025Z"
  },
  "https://www.fightful.com/wrestling/337413-queen-aminata-tbs": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T01:47:22.272Z"
+  "at": "2026-11-05T01:50:13.696Z"
  },
  "https://www.fightful.com/wrestling/ricochet-for-the-most-part-people-put-away-their-egos-for-the-better-of-the-story-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T01:47:21.807Z"
+  "at": "2026-11-05T01:50:13.384Z"
  },
  "https://www.fightful.com/wrestling/taya-valkyrie-exits-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-05T01:47:20.798Z"
+ },
+ "https://www.ringsidenews.com/paige-returns-wwe-nxt-13-years-only-lose-championship-match": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-05T01:46:54.221Z"
  },
  "https://www.fightful.com/wrestling/uspto-rejects-wwes-attempts-to-trademark-rko-for-wrestling-purposes-due-to-rko-pictures-overlap": {
   "reason": "مكرر مع خبر نزل قبل كده",
