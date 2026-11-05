@@ -5513,3 +5513,15 @@ test('«لم تكتضح» / «نزال الدموي» / «خططها السين�
     assert.ok(!/لم تكتضح|(^|[^ا-ي])نزال الدموي|خططها السيناريو/.test(t), f);
   }
 });
+
+test('«لححوق» is a permanent correction and gone; a headline repeating «الليلة» is blocked (INCIDENTS #1084)', async () => {
+  const c = JSON.parse(fs.readFileSync('editorial/corrections.json', 'utf-8')).corrections;
+  assert.ok(c.some((x: any) => x.wrong === 'لححوق' && x.right === 'لحقوق'));
+  for (const f of fs.readdirSync('content/news')) {
+    const t = fs.readFileSync(`content/news/${f}`, 'utf-8');
+    assert.ok(!/لححوق/.test(t), f);
+  }
+  const qa = await import('../scripts/news-qa.ts');
+  const bad = qa.checkArticle('دليل مشاهدة عرض TNA Impact الليلة: الموعد ومكان إقامة العرض الليلة', 'نص الخبر هنا.');
+  assert.ok(JSON.stringify(bad).includes('repeated_word'));
+});
