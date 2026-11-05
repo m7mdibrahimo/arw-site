@@ -1503,3 +1503,12 @@ test("INCIDENTS #1071: «مصاربو/مصاربي» → «مصارعو/مصار
   assert.equal(applyCorrections("مصاربو الاتحادات المستقلة يبدون آراءهم"), "مصارعو الاتحادات المستقلة يبدون آراءهم");
   assert.equal(applyCorrections("آراء مصاربي الاتحادات"), "آراء مصارعي الاتحادات");
 });
+
+// INCIDENTS #1073: «تكساس للموت» / «السول روكا» reached stories.
+test("Texas Death stays English and «السول» loses its extra «ال»", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("نزال تكساس للموت ونزال تكساس ديث"), "نزال Texas Death ونزال Texas Death");
+  assert.equal(applyCorrections("ظهرت السول روكا"), "ظهرت سول روكا");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /تكساس (للموت|ديث)|السول روكا/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
