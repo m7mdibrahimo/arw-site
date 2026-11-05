@@ -2316,6 +2316,11 @@ module.exports = function(eleventyConfig) {
     return pages;
   });
 
+  // «<meta charset>» first in every page's <head> (lib/charset-first.cjs)
+  eleventyConfig.addTransform("charsetFirst", function(content, outputPath) {
+    return outputPath && outputPath.endsWith(".html") ? require("./lib/charset-first.cjs").charsetFirst(content) : content;
+  });
+
   // Transform to strip all internal developer HTML comments from published pages for privacy & cleaner code
   eleventyConfig.addTransform("stripComments", function(content, outputPath) {
     if (outputPath && outputPath.endsWith(".html") && !outputPath.includes("/admin/")) {
