@@ -4786,16 +4786,14 @@
     "publishedAt": 1793862981160,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 03.11.2026 مترجم",
-    "lastAttempt": 1793864748543,
+    "lastAttempt": 1793865667726,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
     "reviewPlatforms": [],
@@ -4838,6 +4836,23 @@
     "lastAttempt": 1793864011922,
     "errors": {},
     "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261105093824-aew-dynamite-blood-guts-04-11-2026": {
+    "publishedAt": 1793865694160,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض داينامايت 04.11.2026 مترجم",
+    "lastAttempt": 1793865733875,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
