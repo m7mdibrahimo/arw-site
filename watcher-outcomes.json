@@ -1,68 +1,68 @@
 {
- "https://www.ringsidenews.com/wwe-nxt-announces-tag-team-title-match-more-november-10": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-05T03:29:06.832Z"
- },
  "https://www.fightful.com/wrestling/zilla-fatu-announced-for-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T03:34:25.020Z"
+  "at": "2026-11-05T03:40:27.618Z"
+ },
+ "https://www.fightful.com/wrestling/noam-dar-romeo-moreno-win-2026-nxt-dusty-rhodes-tag-team-classic": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-05T03:36:51.699Z"
+ },
+ "https://www.fightful.com/wrestling/kelani-jordan-def-paige-to-retain-nxt-womens-championship-on-11-4-wwe-nxt": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-05T03:36:51.431Z"
+ },
+ "https://www.fightful.com/wrestling/tna-contract-update-on-mustafa-ali": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-05T03:36:51.244Z"
+ },
+ "https://www.fightful.com/wrestling/maya-world-reveals-she-wasnt-supposed-to-be-at-aew-collision-where-nixon-newell-and-miranda-alize-left": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-05T03:36:50.853Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-smackdown-10-30-viewership-and-demo-rating-increase": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-05T03:36:16.008Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-nxt-results-11-4-cm-punk-vs-grayson-waller-john-cena-appears": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-05T03:36:15.721Z"
+ },
+ "https://www.fightful.com/wrestling/yota-tsuji-recalls-telling-kenny-omega-that-hell-beat-him-at-the-tokyo-dome-someday-two-years-ago": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-05T03:36:15.375Z"
+ },
+ "https://www.fightful.com/wrestling/mark-shapiro-states-that-tko-fully-anticipates-that-wwe-ufc-events-in-middle-east-will-proceed-as-planned": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-05T03:36:15.190Z"
+ },
+ "https://www.fightful.com/wrestling/tko-president-speaks-about-chances-of-wwe-wrestlemania-43-moving-from-saudi-arabia-we-have-already-been-paid-half-upfront": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-05T03:36:14.668Z"
+ },
+ "https://www.fightful.com/wrestling/337413-queen-aminata-tbs": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-05T03:36:14.217Z"
  },
  "https://www.fightful.com/wrestling/946-helps-cruz-montana-fight-off-darkstate-on-11-4-wwe-nxt": {
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
   "at": "2026-11-05T03:34:24.645Z"
  },
- "https://www.fightful.com/wrestling/noam-dar-romeo-moreno-win-2026-nxt-dusty-rhodes-tag-team-classic": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-05T03:33:40.619Z"
- },
- "https://www.fightful.com/wrestling/kelani-jordan-def-paige-to-retain-nxt-womens-championship-on-11-4-wwe-nxt": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-05T03:33:40.347Z"
- },
- "https://www.fightful.com/wrestling/tna-contract-update-on-mustafa-ali": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-05T03:33:40.158Z"
- },
- "https://www.fightful.com/wrestling/maya-world-reveals-she-wasnt-supposed-to-be-at-aew-collision-where-nixon-newell-and-miranda-alize-left": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
+ "https://www.ringsidenews.com/wwe-nxt-announces-tag-team-title-match-more-november-10": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-05T03:33:39.787Z"
- },
- "https://www.fightful.com/wrestling/wwe-smackdown-10-30-viewership-and-demo-rating-increase": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-05T03:33:03.703Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-results-11-4-cm-punk-vs-grayson-waller-john-cena-appears": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-05T03:33:03.418Z"
- },
- "https://www.fightful.com/wrestling/yota-tsuji-recalls-telling-kenny-omega-that-hell-beat-him-at-the-tokyo-dome-someday-two-years-ago": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-05T03:33:03.065Z"
- },
- "https://www.fightful.com/wrestling/mark-shapiro-states-that-tko-fully-anticipates-that-wwe-ufc-events-in-middle-east-will-proceed-as-planned": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-05T03:33:02.875Z"
- },
- "https://www.fightful.com/wrestling/tko-president-speaks-about-chances-of-wwe-wrestlemania-43-moving-from-saudi-arabia-we-have-already-been-paid-half-upfront": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-05T03:33:02.339Z"
- },
- "https://www.fightful.com/wrestling/337413-queen-aminata-tbs": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-05T03:33:01.880Z"
+  "at": "2026-11-05T03:29:06.832Z"
  },
  "https://www.wrestlinginc.com/2306183/wwe-nxt-november-4-2026-results": {
   "reason": "المراجعة رفضته: فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم",
