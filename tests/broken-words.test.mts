@@ -907,3 +907,11 @@ test('verb + «رسمي» is corrected and blocked whatever word follows', () =>
   const ok = checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'أكد مصدر رسمي أن العرض سيقام، وكشف الحساب الرسمي عن اللقاء' + pad);
   assert.ok(!ok.some(i => i.code === 'adverb_without_alef'));
 });
+
+// INCIDENTS #1089: «وهو حلا محلهم فريق أوسي أوبن» and «قبل أن يوقعا عقودا» (dual verbs) reached the Gabe Kidd story.
+test('dual verbs «حلا محل / يوقعا عقودا» are blocked (INCIDENTS #1089)', () => {
+  const pad = ' كلام'.repeat(80);
+  for (const bad of ['كوفلين وهو حلا محلهم في البطولة', 'قبل أن يوقعا عقودا مع الاتحاد']) {
+    assert.ok(checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', bad + pad).some(i => i.code === 'dual_form'), bad);
+  }
+});
