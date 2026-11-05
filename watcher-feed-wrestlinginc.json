@@ -1,5 +1,15 @@
 [
   {
+    "id": 4183845770,
+    "link": "https://www.wrestlinginc.com/2308722/wwe-raw-united-center-debut-among-newly-announced-dates/",
+    "date": "Thu, 05 Nov 2026 23:21:44 +0000",
+    "date_gmt": "2026-11-05T23:21:44.000Z",
+    "title": {
+      "rendered": "WWE Raw United Center Debut Among Newly Announced Dates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-united-center-debut-among-newly-announced-dates/l-intro-1793920682.jpg"
+  },
+  {
     "id": 4992892404,
     "link": "https://www.wrestlinginc.com/2308170/tna-thursday-night-impact-november-5-2026-results/",
     "date": "Thu, 05 Nov 2026 23:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Noam Dar & Romeo Moreno Win 2026 WWE NXT Dusty Rhodes Tag Team Classic"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/noam-dar-romeo-moreno-win-2026-wwe-nxt-dusty-rhodes-tag-team-classic/l-intro-1793845088.jpg"
-  },
-  {
-    "id": 4362106569,
-    "link": "https://www.wrestlinginc.com/2307450/hangman-page-gives-in-texas-death-official-aew-full-gear/",
-    "date": "Thu, 05 Nov 2026 02:16:59 +0000",
-    "date_gmt": "2026-11-05T02:16:59.000Z",
-    "title": {
-      "rendered": "Hangman Page Gives In, 'Texas Death' Official For AEW Full Gear"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/hangman-page-gives-in-texas-death-official-for-aew-full-gear/l-intro-1793844954.jpg"
   }
 ]
