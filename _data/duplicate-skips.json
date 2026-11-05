@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/kairi-on-upcoming-appearance-on-jericho-cruise-after-leaving-wwe-i-wanted-my-first-wrestling-related-activity-to-be-something-i-genuinely-wanted-to-do/": {
-    "matchedFile": "20261020192902-كايري-توضح-موقفها-من-المشاركة-في-النزالات-على-متن-رحلة-كريس-جيريكو-البحرية-وسط-شائعات-انضمامها-إلى-aew.md",
-    "reason": "الخبر الجديد يعيد سرد نفس المقابلة التي أجرتها كايري مع مجلة Weekly Pro Wrestling والحديث عن مشاركتها في رحلة كريس جيريكو البحرية كأول نشاط لها بعد WWE، وهي نفس التفاصيل والحدث الموجود في الخبر المنشور مسبقاً.",
-    "at": "2026-10-20T18:07:19.204Z"
-  },
   "https://www.wrestlinginc.com/2292098/santino-marella-tna-wrestling-wwe-re-signs/": {
     "matchedFile": "20261020182045-سانتينو-ماريلا-يجدد-عقده-مع-اتحاد-tna.md",
     "reason": "الخبر الجديد يعيد نفس خبر تجديد عقد سانتينو ماريلا مع اتحاد TNA ودوره الإداري وصراعه مع داريا ري، وهو نفس الحدث المذكور في الخبر المنشور.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261105163736-نيلي-يتذكر-العمل-مع-ستيف-أوستن-في-فيلم-the-longest-yard.md",
     "reason": "الخبر الجديد يعيد سرد نفس تصريحات نيلي في بودكاست 7PM in Brooklyn حول فيلم The Longest Yard ودور ستيف أوستن، وهو نفس الحدث والتفاصيل الموجودة في الخبر المنشور.",
     "at": "2026-11-05T14:20:34.078Z"
+  },
+  "https://www.ringsidenews.com/wwe-files-trademark-another-new-wrestler-name-following-two-recent-filings/": {
+    "matchedFile": "20261105144146-wwe-يسجل-العلامة-التجارية-marquis-journey-رسميا.md",
+    "reason": "الخبر الجديد يتحدث عن نفس حدث تسجيل WWE للعلامة التجارية Marquis Journey في 4 نوفمبر، وهو نفس الخبر المنشور مسبقاً من مصدر آخر.",
+    "at": "2026-11-05T14:36:01.090Z"
   }
 }
