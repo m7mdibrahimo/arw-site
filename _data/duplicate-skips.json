@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/kairi-aew-status-not-held-up-by-visa-issues/": {
-    "matchedFile": "20261018091520-توني-خان-يتحدث-عن-إمكانية-تعاقد-aew-مع-كايري-ساني.md",
-    "reason": "الخبر الجديد يغطي نفس الموضوع المتعلق بوضع كايري التعاقدي مع AEW وتأشيرة السفر، وهو تحديث تفصيلي لنفس الشائعات التي تناولها الخبر رقم 1.",
-    "at": "2026-10-20T00:31:30.523Z"
-  },
   "https://www.fightful.com/wrestling/wwe-raw-results-10-19-roman-reigns-appears-penta-competes/": {
     "matchedFile": "20261020023100-نتائج-عرض-wwe-raw-وأبرز-اللحظات-19-أكتوبر-2026.md",
     "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261105025633-ارتفاع-طفيف-في-نسب-مشاهدة-عرض-wwe-smackdown-يوم-30-أكتوبر-2026.md",
     "reason": "الخبر الجديد يتناول نفس أرقام المشاهدات ونسب الفئة العمرية لعرض WWE SmackDown بتاريخ 30 أكتوبر 2026 التي تم تغطيتها بالفعل في الخبر رقم 0.",
     "at": "2026-11-05T00:27:02.625Z"
+  },
+  "https://www.ringsidenews.com/aew-dynamite-blood-guts-results-highlights-key-moments-november-4-2026/": {
+    "matchedFile": "20261105031113-اتحاد-aew-يقيم-نزالي-blood-guts-في-عرض-aew-dynamite.md",
+    "reason": "الخبر الجديد يغطي نتائج نفس العرض (AEW Dynamite Blood & Guts بتاريخ 4 نوفمبر) الذي تم تغطيته بالفعل في الخبر رقم 0.",
+    "at": "2026-11-05T00:34:16.121Z"
   }
 }
