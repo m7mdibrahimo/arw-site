@@ -4803,9 +4803,9 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض تي ان ايه اكسبلوجن 30.10.2026 مترجم",
-    "lastAttempt": 1793871769323,
+    "lastAttempt": 1793872655210,
     "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
     },
     "processing": [
       "instagram_story"
@@ -4821,7 +4821,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض مين ايفنت 04.11.2026 مترجم",
-    "lastAttempt": 1793871770401,
+    "lastAttempt": 1793872656985,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -4872,16 +4872,15 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ان اكس تي 04.11.2026 مترجم",
-    "lastAttempt": 1793866612814,
+    "lastAttempt": 1793872666313,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
-      "tiktok"
+      "instagram_reel"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   }
 }
