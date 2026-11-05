@@ -1,5 +1,15 @@
 [
   {
+    "id": 337529,
+    "link": "https://www.fightful.com/wrestling/report-enzo-amore-believed-to-have-signed-with-wwe/",
+    "date": "2026-11-04T22:26:39",
+    "date_gmt": "2026-11-05T03:26:39",
+    "title": {
+      "rendered": "Report: Enzo Amore Believed To Have Signed With WWE"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2018/06/28025232/enzoamore1.jpg"
+  },
+  {
     "id": 337526,
     "link": "https://www.fightful.com/wrestling/nxt-tag-team-title-bout-more-set-for-11-10-wwe-nxt/",
     "date": "2026-11-04T22:18:27",
@@ -288,15 +298,5 @@
       "rendered": "TKO Reports Revenue Of $1.360 Billion For Third Quarter 2026"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/02/04210220/tko_1280x720_1.jpg"
-  },
-  {
-    "id": 337486,
-    "link": "https://www.fightful.com/wrestling/kevin-nash-praises-grand-theft-auto-iii/",
-    "date": "2026-11-04T15:56:34",
-    "date_gmt": "2026-11-04T20:56:34",
-    "title": {
-      "rendered": "Kevin Nash Praises Grand Theft Auto III"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/12/17212107/kevin_nash_17.jpg"
   }
 ]
