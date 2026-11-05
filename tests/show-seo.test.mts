@@ -249,3 +249,13 @@ test('a WWE show description has the Arabic federation name with the written dat
   const r = showSeoText({ headline: 'عرض الرو 02.11.2026 مترجم', title: 'WWE RAW (02.11.2026)', programName: 'WWE RAW', eventDate: '2026-11-02', day: '2 نوفمبر 2026', isLatest: true, description: '', aliases: [] });
   assert.match(r.description, /دبليو دبليو إي الرو 2 نوفمبر 2026/);
 });
+
+// A card named after its fighters is searched by a fighter's name («grayson مترجم», position 10.3 for the MLP Special):
+// each fighter's name + «مترجم» is in the structured data only.
+test('showNameForms: an "A vs B" special carries each fighter + مترجم', () => {
+  const f = showNameForms({ headline: 'عرض ام ال بي 21.10.2026 مترجم', title: 'MLP Special: Josh Alexander vs Stu Grayson 21.10.2026', programName: 'MLP Special', eventDate: '2026-10-21', aliases: [], isShow: true, archive: false });
+  assert.ok(f.includes('Stu Grayson مترجم'), 'right side');
+  assert.ok(f.includes('Josh Alexander مترجم'), 'left side');
+  const u = showNameForms({ headline: 'عرض يو اف سي فايت نايت 292 مترجم', title: 'UFC Fight Night 292 Moicano vs Nolan', programName: 'UFC Fight Night', eventDate: '2026-11-01', aliases: [], isShow: true, archive: false });
+  assert.ok(u.includes('Moicano مترجم') && u.includes('Nolan مترجم'));
+});
