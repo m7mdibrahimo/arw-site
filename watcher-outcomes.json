@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/wwe-announces-new-raw-smackdown-dates-for-early-2027": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-05T15:28:44.308Z"
+ },
  "https://www.fightful.com/wrestling/the-miz-im-46-years-old-and-i-still-feel-very-good-in-the-ring-i-dont-feel-slow-or-sluggish": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T15:25:57.380Z"
+  "at": "2026-11-05T15:27:50.069Z"
  },
  "https://www.fightful.com/wrestling/report-enzo-amore-believed-to-have-signed-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T15:25:56.415Z"
+  "at": "2026-11-05T15:27:49.223Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-announced-for-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T15:25:55.954Z"
+  "at": "2026-11-05T15:27:48.817Z"
  },
  "https://www.fightful.com/wrestling/noam-dar-romeo-moreno-win-2026-nxt-dusty-rhodes-tag-team-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T15:25:55.494Z"
+  "at": "2026-11-05T15:27:48.398Z"
  },
  "https://www.fightful.com/wrestling/kelani-jordan-def-paige-to-retain-nxt-womens-championship-on-11-4-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T15:25:55.258Z"
+  "at": "2026-11-05T15:27:48.194Z"
  },
  "https://www.fightful.com/wrestling/tna-contract-update-on-mustafa-ali": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T15:25:55.093Z"
+  "at": "2026-11-05T15:27:48.063Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-10-30-viewership-and-demo-rating-increase": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-24T15:12:45.004Z"
- },
- "https://www.fightful.com/wrestling/an-update-on-the-status-of-samantha-irvin": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-24T15:05:25.966Z"
  }
 }

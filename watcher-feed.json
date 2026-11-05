@@ -1,5 +1,15 @@
 [
   {
+    "id": 337565,
+    "link": "https://www.fightful.com/wrestling/wwe-announces-new-raw-smackdown-dates-for-early-2027/",
+    "date": "2026-11-05T10:27:28",
+    "date_gmt": "2026-11-05T15:27:28",
+    "title": {
+      "rendered": "WWE Announces New Raw &#038; SmackDown Dates For Early 2027"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2023/06/27221640/wwe_logo_1.png"
+  },
+  {
     "id": 337561,
     "link": "https://www.fightful.com/wrestling/chris-jericho-to-star-in-new-horror-film-i-am-the-teeth/",
     "date": "2026-11-05T10:06:33",
@@ -288,15 +298,5 @@
       "rendered": "UFC In Talks To Hold Event In Africa"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/04195336/Screenshot-586.png"
-  },
-  {
-    "id": 337461,
-    "link": "https://www.fightful.com/wrestling/wwe-smackdown-10-30-viewership-and-demo-rating-increase/",
-    "date": "2026-11-04T19:24:36",
-    "date_gmt": "2026-11-05T00:24:36",
-    "title": {
-      "rendered": "WWE SmackDown (10/30) Viewership And Demo Rating Increase"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/06/25192008/smackdown_6.jpg"
   }
 ]
