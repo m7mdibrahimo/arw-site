@@ -15000,16 +15000,16 @@
     "renderedAt": 1793856896888
   },
   {
-    "videoUrl": "/videos/reel-20261105085624-cmll-martes-populares-03-11-20.mp4",
-    "filename": "reel-20261105085624-cmll-martes-populares-03-11-20.mp4",
-    "title": "عرض سي ام ال ال مارتيس بوبيولاريس 03.11.2026 مترجم",
-    "secondaryTitle": "CMLL Martes Populares 03.11.2026",
-    "description": "عرض سي ام ال ال مارتيس بوبيولاريس مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261105085624-cmll-martes-populares-03-11-20",
+    "videoUrl": "/videos/reel-20261105090357-wwe-main-event-04-11-2026.mp4",
+    "filename": "reel-20261105090357-wwe-main-event-04-11-2026.mp4",
+    "title": "عرض مين ايفنت 04.11.2026 مترجم",
+    "secondaryTitle": "WWE Main Event 04.11.2026",
+    "description": "عرض مين ايفنت مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261105090357-wwe-main-event-04-11-2026",
     "kind": "show",
-    "slug": "20261105085624-cmll-martes-populares-03-11-20",
-    "image": "/content/images/uobb1qlllh56hb2b.jpg",
-    "renderedAt": 1793862030579
+    "slug": "20261105090357-wwe-main-event-04-11-2026",
+    "image": "/content/images/shzx4sumj3otp52v.jpg",
+    "renderedAt": 1793862711163
   },
   {
     "videoUrl": "/videos/reel-20261013151655-wwe-raw-12-10-2026.mp4",
@@ -15021,7 +15021,7 @@
     "kind": "show",
     "slug": "20261013151655-wwe-raw-12-10-2026",
     "image": "/content/images/faemffd4e1jw2s0p.jpg",
-    "renderedAt": 1793862134670
+    "renderedAt": 1793862780497
   },
   {
     "videoUrl": "/videos/reel-20261014173043-wwe-nxt-13-10-2026.mp4",
@@ -15033,7 +15033,7 @@
     "kind": "show",
     "slug": "20261014173043-wwe-nxt-13-10-2026",
     "image": "/content/images/hfs6wrxpz0wcby46.jpg",
-    "renderedAt": 1793862239390
+    "renderedAt": 1793862848317
   },
   {
     "videoUrl": "/videos/reel-20261014174915-nwa-powerrr-10-10-2026.mp4",
@@ -15045,7 +15045,7 @@
     "kind": "show",
     "slug": "20261014174915-nwa-powerrr-10-10-2026",
     "image": "/content/images/9vultb6udus9wy3d.jpg",
-    "renderedAt": 1793862341992
+    "renderedAt": 1793862917307
   },
   {
     "videoUrl": "/videos/reel-20261026203720-progress-chapter-199-bonestorm.mp4",
@@ -15057,6 +15057,42 @@
     "kind": "show",
     "slug": "20261026203720-progress-chapter-199-bonestorm",
     "image": "/content/images/5ijhpfljuucm6uw1.jpg",
-    "renderedAt": 1793862447837
+    "renderedAt": 1793862986558
+  },
+  {
+    "videoUrl": "/videos/reel-20261105085624-cmll-martes-populares-03-11-20.mp4",
+    "filename": "reel-20261105085624-cmll-martes-populares-03-11-20.mp4",
+    "title": "عرض سي ام ال ال مارتيس بوبيولاريس 03.11.2026 مترجم",
+    "secondaryTitle": "CMLL Martes Populares 03.11.2026",
+    "description": "عرض سي ام ال ال مارتيس بوبيولاريس مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261105085624-cmll-martes-populares-03-11-20",
+    "kind": "show",
+    "slug": "20261105085624-cmll-martes-populares-03-11-20",
+    "image": "/content/images/uobb1qlllh56hb2b.jpg",
+    "renderedAt": 1793863055801
+  },
+  {
+    "videoUrl": "/videos/reel-20261105085809-tna-xplosion-30-10-2026.mp4",
+    "filename": "reel-20261105085809-tna-xplosion-30-10-2026.mp4",
+    "title": "عرض تي ان ايه اكسبلوجن 30.10.2026 مترجم",
+    "secondaryTitle": "TNA Xplosion 30.10.2026",
+    "description": "عرض تي ان ايه اكسبلوجن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261105085809-tna-xplosion-30-10-2026",
+    "kind": "show",
+    "slug": "20261105085809-tna-xplosion-30-10-2026",
+    "image": "/content/images/t8rcmzaofqq16iqd.jpg",
+    "renderedAt": 1793863125560
+  },
+  {
+    "videoUrl": "/videos/reel-20261105090402-wwe-evolve-04-11-2026.mp4",
+    "filename": "reel-20261105090402-wwe-evolve-04-11-2026.mp4",
+    "title": "عرض ايفولف 04.11.2026 مترجم",
+    "secondaryTitle": "WWE Evolve 04.11.2026",
+    "description": "عرض ايفولف مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261105090402-wwe-evolve-04-11-2026",
+    "kind": "show",
+    "slug": "20261105090402-wwe-evolve-04-11-2026",
+    "image": "/content/images/6jyzpavxofjj19xi.jpg",
+    "renderedAt": 1793863192860
   }
 ]
