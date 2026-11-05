@@ -1,5 +1,15 @@
 [
   {
+    "id": 2146830820,
+    "link": "https://www.wrestlinginc.com/2308120/enzo-amore-wwe-nxt-returning-visited-backstage/",
+    "date": "Thu, 05 Nov 2026 17:44:24 +0000",
+    "date_gmt": "2026-11-05T17:44:24.000Z",
+    "title": {
+      "rendered": "Potentially Returning Star Enzo Amore Reportedly Visited Backstage At WWE NXT"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/potentially-returning-star-enzo-amore-reportedly-visited-backstage-at-wwe-nxt/l-intro-1793900467.jpg"
+  },
+  {
     "id": 4331415455,
     "link": "https://www.wrestlinginc.com/2308070/aew-blood-guts-mick-foley-megan-bayne-career-defining-performance/",
     "date": "Thu, 05 Nov 2026 17:20:59 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE NXT Results 11/4/26 W/ Live Updates: Two Titles On The Line, Main Roster Appearances"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-results-11426-w-live-updates/l-intro-1793895317.jpg"
-  },
-  {
-    "id": 1575098001,
-    "link": "https://www.wrestlinginc.com/2307145/aew-dynamite-november-4-2026-results/",
-    "date": "Wed, 04 Nov 2026 22:00:00 +0000",
-    "date_gmt": "2026-11-04T22:00:00.000Z",
-    "title": {
-      "rendered": "AEW Dynamite Results 11/4/26 W/ Live Updates"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-results-11426-w-live-updates/l-intro-1793851640.jpg"
   }
 ]
