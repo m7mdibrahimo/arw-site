@@ -1,5 +1,15 @@
 [
   {
+    "id": 337584,
+    "link": "https://www.fightful.com/wrestling/three-way-bout-added-to-mlw-saturday-night-superfight/",
+    "date": "2026-11-05T12:00:51",
+    "date_gmt": "2026-11-05T17:00:51",
+    "title": {
+      "rendered": "Three-Way Bout Added To MLW Saturday Night SuperFight"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/05120025/Screenshot-2026-11-05-at-11.57.40-AM.png"
+  },
+  {
     "id": 337581,
     "link": "https://www.fightful.com/wrestling/enzo-amore-joe-alonzo-were-backstage-at-11-4-wwe-nxt/",
     "date": "2026-11-05T11:59:17",
@@ -288,15 +298,5 @@
       "rendered": "Noam Dar &amp; Romeo Moreno Win 2026 NXT Dusty Rhodes Tag Team Classic"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/04210917/HWU6KwqXEAAdjCv.jpg"
-  },
-  {
-    "id": 337467,
-    "link": "https://www.fightful.com/wrestling/kris-statlander-harley-cameron-submit-julia-hart-to-secure-womens-blood-guts-victory/",
-    "date": "2026-11-04T21:02:41",
-    "date_gmt": "2026-11-05T02:02:41",
-    "title": {
-      "rendered": "Kris Statlander &#038; Harley Cameron Submit Julia Hart To Secure Women&#8217;s Blood &#038; Guts Victory"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/04210223/HWU4EKpWsAA2nSM.png"
   }
 ]

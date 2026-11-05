@@ -1,28 +1,28 @@
 {
- "https://www.fightful.com/wrestling/enzo-amore-joe-alonzo-were-backstage-at-11-4-wwe-nxt": {
-  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-11-05T17:00:24.970Z"
- },
  "https://www.fightful.com/wrestling/the-miz-im-46-years-old-and-i-still-feel-very-good-in-the-ring-i-dont-feel-slow-or-sluggish": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T17:00:01.600Z"
+  "at": "2026-11-05T17:01:48.243Z"
  },
  "https://www.fightful.com/wrestling/report-enzo-amore-believed-to-have-signed-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T17:00:00.466Z"
+  "at": "2026-11-05T17:01:47.449Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-announced-for-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T16:59:59.942Z"
+  "at": "2026-11-05T17:01:47.061Z"
  },
  "https://www.fightful.com/wrestling/noam-dar-romeo-moreno-win-2026-nxt-dusty-rhodes-tag-team-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T16:59:59.409Z"
+  "at": "2026-11-05T17:01:46.635Z"
+ },
+ "https://www.fightful.com/wrestling/enzo-amore-joe-alonzo-were-backstage-at-11-4-wwe-nxt": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-05T17:00:24.970Z"
  },
  "https://www.fightful.com/wrestling/kelani-jordan-def-paige-to-retain-nxt-womens-championship-on-11-4-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
