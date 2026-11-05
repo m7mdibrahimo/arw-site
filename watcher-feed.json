@@ -1,5 +1,15 @@
 [
   {
+    "id": 337561,
+    "link": "https://www.fightful.com/wrestling/chris-jericho-to-star-in-new-horror-film-i-am-the-teeth/",
+    "date": "2026-11-05T10:06:33",
+    "date_gmt": "2026-11-05T15:06:33",
+    "title": {
+      "rendered": "Chris Jericho To Star In New Horror Film &#8216;I Am The Teeth&#8217;"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/22212038/DSC00534-scaled.jpg"
+  },
+  {
     "id": 337557,
     "link": "https://www.fightful.com/wrestling/alpha-1-wrestling-final-act-13-results-11-1/",
     "date": "2026-11-05T09:54:02",
@@ -288,15 +298,5 @@
       "rendered": "WWE SmackDown (10/30) Viewership And Demo Rating Increase"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/06/25192008/smackdown_6.jpg"
-  },
-  {
-    "id": 337453,
-    "link": "https://www.fightful.com/wrestling/wwe-nxt-results-11-4-cm-punk-vs-grayson-waller-john-cena-appears/",
-    "date": "2026-11-04T19:15:00",
-    "date_gmt": "2026-11-05T00:15:00",
-    "title": {
-      "rendered": "WWE NXT Results (11/4): CM Punk vs. Grayson Waller, John Cena Appears"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/03145705/20261031_NXT_Match_WallerPunk_16x9_date.jpg"
   }
 ]

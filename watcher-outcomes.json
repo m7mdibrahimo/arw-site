@@ -1,48 +1,48 @@
 {
- "https://www.wrestlinginc.com/2307504/wwe-nxt-womens-champion-kelani-jordan-raw-debut": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Raquel Rodriguez",
-  "retry": true,
-  "at": "2026-11-05T15:05:38.938Z"
- },
  "https://www.fightful.com/wrestling/the-miz-im-46-years-old-and-i-still-feel-very-good-in-the-ring-i-dont-feel-slow-or-sluggish": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T15:06:29.914Z"
+  "at": "2026-11-05T15:09:26.601Z"
  },
  "https://www.fightful.com/wrestling/report-enzo-amore-believed-to-have-signed-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T15:06:28.818Z"
+  "at": "2026-11-05T15:09:25.458Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-announced-for-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T15:06:28.291Z"
+  "at": "2026-11-05T15:09:24.910Z"
  },
  "https://www.fightful.com/wrestling/noam-dar-romeo-moreno-win-2026-nxt-dusty-rhodes-tag-team-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T15:06:27.761Z"
+  "at": "2026-11-05T15:09:24.358Z"
  },
  "https://www.fightful.com/wrestling/kelani-jordan-def-paige-to-retain-nxt-womens-championship-on-11-4-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T15:06:27.490Z"
+  "at": "2026-11-05T15:09:24.079Z"
  },
  "https://www.fightful.com/wrestling/tna-contract-update-on-mustafa-ali": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T15:06:27.302Z"
+  "at": "2026-11-05T15:09:23.885Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-10-30-viewership-and-demo-rating-increase": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T15:06:26.762Z"
+  "at": "2026-11-05T15:09:23.331Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-results-11-4-cm-punk-vs-grayson-waller-john-cena-appears": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-05T15:06:26.463Z"
+ },
+ "https://www.wrestlinginc.com/2307504/wwe-nxt-womens-champion-kelani-jordan-raw-debut": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Raquel Rodriguez",
+  "retry": true,
+  "at": "2026-11-05T15:05:38.938Z"
  },
  "https://www.ringsidenews.com/kam-hendrix-reacts-john-cena-denies-him-entry-john-cena-classic": {
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
