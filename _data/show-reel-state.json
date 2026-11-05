@@ -4803,9 +4803,9 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض تي ان ايه اكسبلوجن 30.10.2026 مترجم",
-    "lastAttempt": 1793872655210,
+    "lastAttempt": 1793873508138,
     "errors": {
-      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
       "instagram_story"
@@ -4821,7 +4821,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض مين ايفنت 04.11.2026 مترجم",
-    "lastAttempt": 1793872656985,
+    "lastAttempt": 1793873508955,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -4839,17 +4839,16 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ايفولف 04.11.2026 مترجم",
-    "lastAttempt": 1793870064136,
+    "lastAttempt": 1793873518343,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
-      "tiktok"
+      "instagram_reel"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261105093824-aew-dynamite-blood-guts-04-11-2026": {
     "publishedAt": 1793865694160,
