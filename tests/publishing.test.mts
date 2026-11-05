@@ -5502,3 +5502,14 @@ test('«main roster stars» and «leaf blower» wording reaches every story (INC
     assert.ok(!/نجوم العروض الرئيسية|منفاخ الأوراق/.test(t), f);
   }
 });
+
+test('«لم تكتضح» / «نزال الدموي» / «خططها السيناريو» are permanent corrections and gone from stories (INCIDENTS #1083)', () => {
+  const c = JSON.parse(fs.readFileSync('editorial/corrections.json', 'utf-8')).corrections;
+  for (const [w, r] of [['لم تكتضح', 'لم تتضح'], ['نزال الدموي', 'النزال الدموي'], ['خططها السيناريو', 'خططها المكتوبة']]) {
+    assert.ok(c.some((x: any) => x.wrong === w && x.right === r), w);
+  }
+  for (const f of fs.readdirSync('content/news')) {
+    const t = fs.readFileSync(`content/news/${f}`, 'utf-8');
+    assert.ok(!/لم تكتضح|(^|[^ا-ي])نزال الدموي|خططها السيناريو/.test(t), f);
+  }
+});
