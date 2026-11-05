@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/wagner-brothers-hank-tank-advance-to-semifinals-of-nxt-dusty-rhodes-tag-team-classic/": {
-    "matchedFile": "20261020123552-دليل-مشاهدة-وتفاصيل-وموعد-انطلاق-عرض-wwe-nxt-الليلة-20-أكتوبر.md",
-    "reason": "الخبر الجديد يغطي نتائج مباريات بطولة Dusty Rhodes Tag Team Classic في عرض WWE NXT الذي أقيم يوم 20 أكتوبر، بينما الخبر المنشور بالفعل يغطي تفاصيل ومعاينة نفس العرض ونفس النزالات، حيث تعتبر النتيجة تكراراً لتقرير العرض.",
-    "at": "2026-10-21T01:37:30.538Z"
-  },
   "https://www.wrestlinginc.com/2292500/hank-tank-headed-wwe-nxt-dusty-rhodes-tag-classic-semifinals/": {
     "matchedFile": "20261021000000-نتائج-عرض-wwe-nxt-20-أكتوبر-2026-نزالات-ربع-نهائي-بطولة-dusty-rhodes-للفرق.md",
     "reason": "الخبر الجديد يغطي تفاصيل ونتائج نزالات بطولة Dusty Rhodes Tag Team Classic في عرض WWE NXT بتاريخ 20 أكتوبر 2026، وهي نفس النتائج والأحداث المغطاة بالفعل في تقرير نتائج العرض المنشور مسبقاً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261105182728-اتحاد-wwe-يعلن-عن-مواعيد-جديدة-لعرض-wwe-raw-وwwe-smackdown-في-أوائل-عام-2027.md",
     "reason": "الخبر الجديد يعيد سرد نفس جدول مواعيد عروض WWE لعام 2027 الذي تم الإعلان عنه مسبقاً، وتفاصيل أماكن العروض (مثل صالة United Center) تعتبر تفاصيل إضافية لنفس الإعلان وليست تطوراً جديداً.",
     "at": "2026-11-05T23:37:03.715Z"
+  },
+  "https://www.ringsidenews.com/wwe-making-major-production-changes-crown-jewel-2026-saudi-arabia/": {
+    "matchedFile": "20261106023358-تقارير-جزء-كبير-من-بث-عرض-wwe-crown-jewel-سيتم-إدارته-عن-بعد-من-مقر-wwe-في-ستامفورد.md",
+    "reason": "الخبر الجديد يتناول نفس الحدث الإنتاجي المتعلق بعرض Crown Jewel 2026، ولا يقدم أي تطور جديد أو معلومة إضافية جوهرية تختلف عن الخبر المنشور مسبقاً.",
+    "at": "2026-11-05T23:46:13.254Z"
   }
 }
