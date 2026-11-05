@@ -3391,7 +3391,7 @@ test('a show page title carries the dotted date people search with, only in the 
   const raw = { headline: 'عرض الرو 05.10.2026 مترجم', title: 'WWE RAW 05.10.2026', programName: 'WWE RAW', eventDate: new Date('2026-10-05'), day: '5 أكتوبر 2026', description: 'عرض الرو مترجم بالكامل مع جميع النزالات والأحداث.' };
   const latest = showSeoText({ ...raw, isLatest: true });
   assert.equal(latest.title, 'عرض الرو الأخير 05.10.2026 كامل مترجم — WWE RAW');
-  assert.equal(latest.description, 'مشاهدة وتحميل عرض الرو الأخير 05.10.2026 مترجم بالعربي كامل أونلاين وبجودة عالية، موعد العرض 5 أكتوبر 2026 (WWE RAW October 5, 2026)، مع كل النزالات وروابط المشاهدة والتحميل.');
+  assert.equal(latest.description, 'مشاهدة وتحميل عرض الرو الأخير 05.10.2026 مترجم بالعربي كامل أونلاين، موعد العرض 5 أكتوبر 2026 (دبليو دبليو إي الرو 5 أكتوبر 2026، WWE RAW October 5, 2026)، مع المشاهدة والتحميل.');
   // the program's other spellings stay in the structured data, never as a list in the description (INCIDENTS #428)
   assert.doesNotMatch(showSeoText({ ...raw, isLatest: true, aliases: ['راو', 'RAW'] }).description, /ويعرف أيضا|راو/);
   // one date in the title, short enough for Google to show whole (INCIDENTS #428)
@@ -4697,7 +4697,7 @@ test('a special event description carries its full English name, not only the pr
   const r = showSeoText({ headline: 'عرض جي سي دبليو فايت كلوب ذا ارت اوف وور جيمز الليلة الاولى 10.10.2026 مترجم', title: 'GCW Fight Club The Art Of War Games Night One (2026)', programName: 'GCW', eventDate: '2026-10-10', day: '10 أكتوبر 2026', isLatest: false });
   assert.match(r.description, /GCW Fight Club The Art Of War Games Night One October 10, 2026/);
   const w = showSeoText({ headline: 'عرض سماك داون 09.10.2026 مترجم', title: 'WWE SmackDown 09.10.2026', programName: 'WWE SmackDown', eventDate: '2026-10-09', day: '9 أكتوبر 2026', isLatest: true });
-  assert.match(w.description, /\(WWE SmackDown October 9, 2026\)/);
+  assert.match(w.description, /WWE SmackDown October 9, 2026\)/);
 });
 
 test('a yearly show\'s recap title carries the year once, like the show itself (INCIDENTS #463)', async () => {
@@ -5490,4 +5490,15 @@ test('winnersNotInMatch: a winner line that names the loser is caught', async ()
 test('fixEnglishNames: «Lighting Match» becomes «Lightning Match»', async () => {
   const { fixEnglishNames } = await import('../scripts/english-edition');
   assert.equal(fixEnglishNames('Olympia def. Reyna Isis in a Lighting Match.'), 'Olympia def. Reyna Isis in a Lightning Match.');
+});
+
+test('«main roster stars» and «leaf blower» wording reaches every story (INCIDENTS #1080)', () => {
+  const c = JSON.parse(fs.readFileSync('editorial/corrections.json', 'utf-8')).corrections;
+  assert.ok(c.some((x: any) => x.wrong === 'منفاخ الأوراق' && x.right === 'نافخ أوراق الشجر'));
+  assert.ok(c.some((x: any) => x.wrong === 'نجوم العروض الرئيسية' && x.right === 'نجوم القائمة الرئيسية'));
+  assert.ok(c.some((x: any) => x.wrong === 'نجوم WWE العروض الرئيسية'));
+  for (const f of fs.readdirSync('content/news')) {
+    const t = fs.readFileSync(`content/news/${f}`, 'utf-8');
+    assert.ok(!/نجوم العروض الرئيسية|منفاخ الأوراق/.test(t), f);
+  }
 });
