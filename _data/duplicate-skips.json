@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/ilja-dragunov-addresses-brock-lesnar-no-selling-his-chops-in-the-royal-rumble/": {
-    "matchedFile": "20261020220050-إيليا-دراغونوف-يتحدث-عن-تجاهل-بروك-ليسنر-لهجماته-في-عرض-wwe-royal-rumble.md",
-    "reason": "الخبر الجديد يتناول نفس التصريح الذي أدلى به إيليا دراغونوف حول واقعة تجاهل بروك ليسنر لهجماته في عرض رويال رامبل، وهو ما تم تغطيته بالفعل في الخبر المنشور.",
-    "at": "2026-10-20T22:53:36.138Z"
-  },
   "https://www.wrestlinginc.com/2292465/ilja-draunov-wwe-departure-offer-satisfying-aew/": {
     "matchedFile": "20261020212546-إيليا-دراغونوف-يكشف-محاولة-wwe-الاحتفاظ-به-قبل-الانتقال-إلى-aew.md",
     "reason": "الخبر الجديد يعيد سرد نفس تفاصيل رحيل إيليا دراغونوف عن WWE ومحاولات الاتحاد لتجديد عقده، وهي نفس المعلومات الواردة في الخبر رقم 3 من نفس المصدر (برنامج The Ariel Helwani Show).",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261105221854-wwe-ناقش-إمكانية-نقل-نزال-iron-survivor-challenge-إلى-القائمة-الرئيسية-في-wwe.md",
     "reason": "الخبر الجديد يتناول نفس المعلومة المتعلقة بمناقشة WWE لنقل نزال Iron Survivor Challenge للقائمة الرئيسية، وهي نفس المعلومة الواردة في الخبر المنشور مسبقاً.",
     "at": "2026-11-05T19:57:24.614Z"
+  },
+  "https://www.wrestlinginc.com/2308453/tko-mark-shapiro-wwe-wrestlemania-42-moving-saudi-arabia-half-upfront/": {
+    "matchedFile": "20261105015231-wwe-تضع-خطة-بديلة-لنقل-عرض-wrestlemania-2027-من-السعودية.md",
+    "reason": "الخبر الجديد يغطي نفس تصريحات مارك شابيرو خلال مكالمة الأرباح بخصوص خطط إقامة WrestleMania 43 في السعودية والبدائل المتاحة، وهو ما تم تغطيته بالفعل في الخبر رقم 0.",
+    "at": "2026-11-05T20:21:22.424Z"
   }
 }
