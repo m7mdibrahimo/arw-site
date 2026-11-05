@@ -931,3 +931,13 @@ test('Arabic name glued to English possessive is blocked; «الكعبرة» is 
   assert.ok(!checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', "في عرض Josh Barnett's Bloodsport X" + pad).some(i => i.code === 'arabic_possessive_s'));
   assert.equal(applyCorrections('كسر في عظمة الكعبرة'), 'كسر في عظمة الساعد');
 });
+
+test('unbalanced quotes and «يذكر أن» + verb-first are blocked (INCIDENTS #1092)', () => {
+  const pad = ' كلام كافي لتمرير فحص الطول '.repeat(12);
+  const t = 'عنوان تجريبي طويل بما يكفي للفحص هنا';
+  assert.ok(checkArticle(t, 'قال: "شكرا لكم. أنا مجرد مصارع «بسيط».' + pad).some(i => i.code === 'unbalanced_quotes'));
+  assert.ok(checkArticle(t, '> «مستحيل. مستحيل.» لسبب واحد."' + pad).some(i => i.code === 'unbalanced_quotes'));
+  assert.ok(!checkArticle(t, 'قال: «شكرا لكم» وكتب "نعم" أيضا.' + pad).some(i => i.code === 'unbalanced_quotes'));
+  assert.ok(checkArticle(t, 'يذكر أن أصبح إيكاروس وترافيس مصارعين أحرارا.' + pad).some(i => i.code === 'verb_after_yudhkar'));
+  assert.ok(!checkArticle(t, 'يذكر أن إيكاروس أصبح مصارعا حرا.' + pad).some(i => i.code === 'verb_after_yudhkar'));
+});
