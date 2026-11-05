@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/paige-returns-wwe-nxt-13-years-only-lose-championship-match": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-05T01:46:54.221Z"
+ },
  "https://www.fightful.com/wrestling/tna-contract-update-on-mustafa-ali": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-24T07:39:32.014Z"
- },
- "https://www.fightful.com/wrestling/skadi-wins-2026-cmll-amazonas-grand-prix": {
-  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
-  "retry": false,
-  "at": "2026-10-24T05:39:52.837Z"
  }
 }
