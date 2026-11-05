@@ -5525,3 +5525,12 @@ test('«لححوق» is a permanent correction and gone; a headline repeating «
   const bad = qa.checkArticle('دليل مشاهدة عرض TNA Impact الليلة: الموعد ومكان إقامة العرض الليلة', 'نص الخبر هنا.');
   assert.ok(JSON.stringify(bad).includes('repeated_word'));
 });
+
+test('«شريقي» / «اللقحات» / «أطاح بأنفاسه» are permanent corrections and gone from stories (INCIDENTS #1085)', () => {
+  const c = JSON.parse(fs.readFileSync('editorial/corrections.json', 'utf-8')).corrections;
+  for (const w of ['شريقي', 'اللقحات', 'أطاح بأنفاسه']) assert.ok(c.some((x: any) => x.wrong === w), w);
+  for (const f of fs.readdirSync('content/news')) {
+    const t = fs.readFileSync(`content/news/${f}`, 'utf-8');
+    assert.ok(!/شريقي|اللقحات|أطاح بأنفاسه/.test(t), f);
+  }
+});
