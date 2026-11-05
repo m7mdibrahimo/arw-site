@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/brawling-birds-pro-wrestling-eve-appearance-rescheduled-following-aew-blood-guts": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-05T16:00:29.843Z"
+ },
  "https://www.fightful.com/wrestling/the-miz-im-46-years-old-and-i-still-feel-very-good-in-the-ring-i-dont-feel-slow-or-sluggish": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T15:56:59.312Z"
+  "at": "2026-11-05T15:59:18.085Z"
  },
  "https://www.fightful.com/wrestling/report-enzo-amore-believed-to-have-signed-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T15:56:58.229Z"
+  "at": "2026-11-05T15:59:17.105Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-announced-for-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T15:56:57.707Z"
+  "at": "2026-11-05T15:59:16.629Z"
  },
  "https://www.fightful.com/wrestling/noam-dar-romeo-moreno-win-2026-nxt-dusty-rhodes-tag-team-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T15:56:57.180Z"
+  "at": "2026-11-05T15:59:16.150Z"
  },
  "https://www.fightful.com/wrestling/kelani-jordan-def-paige-to-retain-nxt-womens-championship-on-11-4-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T15:56:56.912Z"
+  "at": "2026-11-05T15:59:15.911Z"
  },
  "https://www.fightful.com/wrestling/tna-contract-update-on-mustafa-ali": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T15:56:56.724Z"
+  "at": "2026-11-05T15:59:15.740Z"
  },
  "https://www.fightful.com/wrestling/wwe-announces-new-raw-smackdown-dates-for-early-2027": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
   "retry": true,
   "at": "2026-10-24T15:21:34.669Z"
- },
- "https://www.fightful.com/wrestling/alice-crowley-reflects-on-her-career-speaks-about-future-goals": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-24T15:12:45.004Z"
  }
 }
