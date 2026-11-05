@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-november-4-2026": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-05T00:11:24.367Z"
+ },
  "https://www.fightful.com/wrestling/yota-tsuji-recalls-telling-kenny-omega-that-hell-beat-him-at-the-tokyo-dome-someday-two-years-ago": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مصارع في المتن غير موجود في المصدر: Money in the Bank",
   "retry": true,
   "at": "2026-10-24T01:27:08.180Z"
- },
- "https://www.fightful.com/wrestling/ari-emanuel-talks-wwe-crown-jewel-status-its-a-daily-monitoring": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-24T00:53:31.459Z"
  }
 }
