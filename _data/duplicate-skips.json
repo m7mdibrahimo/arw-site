@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/wwe-raw-results-10-19-roman-reigns-appears-penta-competes/": {
-    "matchedFile": "20261020023100-نتائج-عرض-wwe-raw-وأبرز-اللحظات-19-أكتوبر-2026.md",
-    "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
-    "at": "2026-10-20T01:22:32.927Z"
-  },
   "https://www.ringsidenews.com/former-wwe-evolve-star-anya-rune-announces-wrestling-hiatus/": {
     "matchedFile": "20261020042518-أنيا-رون-تعلن-ابتعادها-عن-عالم-المصارعة.md",
     "reason": "كلا الخبرين يغطيان نفس الإعلان الصادر عن المصارعة أنيا روني (إيريكا ديما) عبر وسائل التواصل الاجتماعي حول ابتعادها وتوقفها المؤقت عن المصارعة للحفاظ على صحتها واستعادة شغفها.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261105031113-اتحاد-aew-يقيم-نزالي-blood-guts-في-عرض-aew-dynamite.md",
     "reason": "الخبر الجديد يغطي نتائج نفس العرض (AEW Dynamite Blood & Guts بتاريخ 4 نوفمبر) الذي تم تغطيته بالفعل في الخبر رقم 0.",
     "at": "2026-11-05T00:34:16.121Z"
+  },
+  "https://www.ringsidenews.com/wwe-nxt-spoiler-lineup-november-4-2026-full-match-card-backstage-notes-revealed/": {
+    "matchedFile": "20261104150152-دليل-مشاهدة-وموعد-عرض-wwe-nxt-الليلة-والنزالات-الرسمية-الكبرى.md",
+    "reason": "الخبر الجديد يغطي نفس قائمة نزالات وتفاصيل عرض WWE NXT المقرر إقامته في 4 نوفمبر 2026، وهي معلومات تم نشرها بالفعل في الخبر رقم 0 والخبر رقم 1.",
+    "at": "2026-11-05T00:53:48.080Z"
   }
 }
