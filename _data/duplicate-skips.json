@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2292465/ilja-draunov-wwe-departure-offer-satisfying-aew/": {
-    "matchedFile": "20261020212546-إيليا-دراغونوف-يكشف-محاولة-wwe-الاحتفاظ-به-قبل-الانتقال-إلى-aew.md",
-    "reason": "الخبر الجديد يعيد سرد نفس تفاصيل رحيل إيليا دراغونوف عن WWE ومحاولات الاتحاد لتجديد عقده، وهي نفس المعلومات الواردة في الخبر رقم 3 من نفس المصدر (برنامج The Ariel Helwani Show).",
-    "at": "2026-10-20T23:31:16.617Z"
-  },
   "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-october-20-2026/": {
     "matchedFile": "20261021000000-نتائج-عرض-wwe-nxt-20-أكتوبر-2026-نزالات-ربع-نهائي-بطولة-dusty-rhodes-للفرق.md",
     "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261105015231-wwe-تضع-خطة-بديلة-لنقل-عرض-wrestlemania-2027-من-السعودية.md",
     "reason": "الخبر الجديد يغطي نفس تصريحات مارك شابيرو خلال مكالمة الأرباح بخصوص خطط إقامة WrestleMania 43 في السعودية والبدائل المتاحة، وهو ما تم تغطيته بالفعل في الخبر رقم 0.",
     "at": "2026-11-05T20:21:22.424Z"
+  },
+  "https://www.ringsidenews.com/wwe-pulled-chad-gables-planned-gcw-debut-last-minute/": {
+    "matchedFile": "20261105223746-تشاد-غيبل-كان-من-المقرر-أن-يواجه-جوناثان-غريشام-في-عرض-josh-barnetts-bloodsport-x.md",
+    "reason": "الخبر الجديد يتناول نفس واقعة إلغاء مشاركة تشاد غيبل في عرض Bloodsport X وتصريحات بريت لودرديل حولها، وهي نفس تفاصيل الخبر رقم 0.",
+    "at": "2026-11-05T20:45:06.652Z"
   }
 }
