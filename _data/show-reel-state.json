@@ -4803,7 +4803,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض تي ان ايه اكسبلوجن 30.10.2026 مترجم",
-    "lastAttempt": 1793870926702,
+    "lastAttempt": 1793871769323,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -4821,7 +4821,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض مين ايفنت 04.11.2026 مترجم",
-    "lastAttempt": 1793870033555,
+    "lastAttempt": 1793871770401,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -4858,15 +4858,12 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض داينامايت 04.11.2026 مترجم",
-    "lastAttempt": 1793865733875,
-    "errors": {
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
-    },
-    "processing": [
-      "tiktok"
-    ],
+    "lastAttempt": 1793871780481,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261105095631-wwe-nxt-04-11-2026": {
     "publishedAt": 1793866572184,
