@@ -1497,3 +1497,9 @@ test("INCIDENTS #1069: a period compared with itself is blocked", async () => {
   const good = bad.replace("مقارنة بالربع الثالث من عام 2026", "مقارنة بالربع الثالث من العام الماضي");
   assert.ok(!checkArticle("عنوان واضح للخبر هنا", good).some(i => i.code === "period_vs_itself"));
 });
+
+test("INCIDENTS #1071: «مصاربو/مصاربي» → «مصارعو/مصارعي»", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("مصاربو الاتحادات المستقلة يبدون آراءهم"), "مصارعو الاتحادات المستقلة يبدون آراءهم");
+  assert.equal(applyCorrections("آراء مصاربي الاتحادات"), "آراء مصارعي الاتحادات");
+});
