@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aew-arrives-hulu-japan-following-streaming-deal-announcement": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": true,
+  "at": "2026-11-05T19:40:57.443Z"
+ },
  "https://www.fightful.com/wrestling/wwe-royal-rumble-2027-was-discussed-for-february-20th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-24T16:22:50.406Z"
- },
- "https://www.fightful.com/wrestling/b-fab-and-michin-win-wwe-womens-tag-team-championship-on-10-23-wwe-smackdown": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-24T16:00:17.404Z"
  }
 }
