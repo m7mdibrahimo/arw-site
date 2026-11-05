@@ -1512,3 +1512,17 @@ test("Texas Death stays English and «السول» loses its extra «ال»", as
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /تكساس (للموت|ديث)|السول روكا/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #1074: dropped letters in verbs («دافت», «لتقى») and «اللاعب المحتفظ».
+test("dropped-letter verbs and «اللاعب المحتفظ» are corrected", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("دافت البطلة عن لقبها"), "دافعت البطلة عن لقبها");
+  assert.equal(applyCorrections("لتقى الثنائي"), "التقى الثنائي");
+  assert.equal(applyCorrections("الفائز واللاعب المحتفظ باللقب"), "الفائز والمصارع المحتفظ باللقب");
+});
+
+test("INCIDENTS #1074: Dax Harwood and Blood & Guts spellings", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("على داكس هارود"), "على داكس هاروود");
+  assert.equal(applyCorrections("نزال مينز بلود أند غاتس"), "نزال Blood & Guts للرجال");
+});
