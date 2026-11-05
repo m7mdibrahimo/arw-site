@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-october-20-2026/": {
-    "matchedFile": "20261021000000-نتائج-عرض-wwe-nxt-20-أكتوبر-2026-نزالات-ربع-نهائي-بطولة-dusty-rhodes-للفرق.md",
-    "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
-    "at": "2026-10-21T00:51:41.900Z"
-  },
   "https://www.wrestlinginc.com/2292493/izzi-dame-zaria-collide-wwe-nxt-halloween-havoc/": {
     "matchedFile": "20261021041211-زاريا-تواجه-إيزي-دايم-في-عرض-wwe-nxt-halloween-havoc.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (الإعلان عن مواجهة زاريا وإيزي دايم في عرض Halloween Havoc) مع تفاصيل متطابقة ولا يقدم أي تطور جديد أو معلومة إضافية جوهرية.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261105223746-تشاد-غيبل-كان-من-المقرر-أن-يواجه-جوناثان-غريشام-في-عرض-josh-barnetts-bloodsport-x.md",
     "reason": "الخبر الجديد يتناول نفس واقعة إلغاء مشاركة تشاد غيبل في عرض Bloodsport X وتصريحات بريت لودرديل حولها، وهي نفس تفاصيل الخبر رقم 0.",
     "at": "2026-11-05T20:45:06.652Z"
+  },
+  "https://www.wrestlinginc.com/2308544/wwe-crew-members-hazard-pay-traveling-riyadh-saudi-arabia-crown-jewel/": {
+    "matchedFile": "20261105215810-wwe-تقدم-أجور-مخاطر-لطاقم-العمل-في-رحلة-السعودية-بينما-يرفض-البعض-الذهاب.md",
+    "reason": "الخبر الجديد يغطي نفس واقعة تقديم WWE لأجور مخاطر لطاقم العمل المسافر للسعودية لعرض Crown Jewel، وهي المعلومة الأساسية التي تناولها الخبر رقم 0.",
+    "at": "2026-11-05T21:06:35.665Z"
   }
 }
