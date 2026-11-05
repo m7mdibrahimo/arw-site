@@ -1,28 +1,28 @@
 {
- "https://www.ringsidenews.com/wwe-scrapped-plans-move-2027-royal-rumble-different-date": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-05T19:04:04.558Z"
- },
  "https://www.fightful.com/wrestling/chris-jericho-talks-playing-gorgeous-george-in-the-greatest-says-he-watched-one-of-his-old-movies-to-prep-for-the-role": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T19:04:30.835Z"
+  "at": "2026-11-05T19:07:23.521Z"
  },
  "https://www.fightful.com/wrestling/the-miz-im-46-years-old-and-i-still-feel-very-good-in-the-ring-i-dont-feel-slow-or-sluggish": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T19:04:29.994Z"
+  "at": "2026-11-05T19:07:22.560Z"
  },
  "https://www.fightful.com/wrestling/report-enzo-amore-believed-to-have-signed-with-wwe": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T19:04:29.154Z"
+  "at": "2026-11-05T19:07:21.597Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-announced-for-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T19:04:28.748Z"
+  "at": "2026-11-05T19:07:21.118Z"
+ },
+ "https://www.ringsidenews.com/wwe-scrapped-plans-move-2027-royal-rumble-different-date": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-05T19:04:04.558Z"
  },
  "https://www.fightful.com/wrestling/noam-dar-romeo-moreno-win-2026-nxt-dusty-rhodes-tag-team-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
