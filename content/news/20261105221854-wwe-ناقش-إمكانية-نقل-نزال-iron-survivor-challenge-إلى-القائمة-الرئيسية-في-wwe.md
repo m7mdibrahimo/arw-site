@@ -1,6 +1,7 @@
 ---
 federation: WWE
-title: "WWE ناقش إمكانية نقل نزال Iron Survivor Challenge إلى القائمة الرئيسية في WWE"
+title: "WWE ناقش إمكانية نقل نزال Iron Survivor Challenge إلى القائمة الرئيسية"
+permalink: "/news/wwe-ناقش-إمكانية-نقل-نزال-iron-survivor-challenge-إلى-القائمة-الرئيسية-في-wwe/index.html"
 date: 2026-11-05T22:18:54.000+03:00
 published_at: 2026-11-05T19:20:59.559Z
 source_id: 802263780

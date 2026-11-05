@@ -252,7 +252,7 @@ test('India Sioux is always «إنديا سيوكس», in the rules, the glossar
   assert.equal(applyCorrections('تحدثت إنديا سيو وإنديا سيوك وإنديا سيوكس'), 'تحدثت إنديا سيوكس وإنديا سيوكس وإنديا سيوكس');
   const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'));
   assert.equal(names['India Sioux'], 'إنديا سيوكس');
-  const bad = loadNews().filter(n => /إنديا\s+سيو(?![ء-ي])|سيوك(?![ء-ي])/.test(n.title + n.body)).map(n => n.file);
+  const bad = loadNews().filter(n => /إنديا\s+سيو(?![ء-ي])|سيوك(?![ء-ي])(?!\s+هيون)/.test(n.title + n.body)).map(n => n.file);
   assert.deepEqual(bad, []);
 });
 
@@ -923,4 +923,11 @@ test('«عرض عروض» is corrected and blocked; promotions are not «بطو�
   assert.ok(checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'لعرض عروض Fusion كل خميس' + pad).some(i => i.code === 'doubled_show_word'));
   assert.equal(applyCorrections('حصة في بطولة Bare Knuckle Fighting Championships'), 'حصة في اتحاد Bare Knuckle Fighting Championships');
   assert.equal(applyCorrections('الفوز ببطولة WWE Intercontinental'), 'الفوز ببطولة القارات');
+});
+
+test('Arabic name glued to English possessive is blocked; «الكعبرة» is simplified (INCIDENTS #1091)', () => {
+  const pad = ' كلام'.repeat(80);
+  assert.ok(checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', "في عرض جوش بارنيت's Bloodsport X" + pad).some(i => i.code === 'arabic_possessive_s'));
+  assert.ok(!checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', "في عرض Josh Barnett's Bloodsport X" + pad).some(i => i.code === 'arabic_possessive_s'));
+  assert.equal(applyCorrections('كسر في عظمة الكعبرة'), 'كسر في عظمة الساعد');
 });
