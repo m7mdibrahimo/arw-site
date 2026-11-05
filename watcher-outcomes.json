@@ -1,58 +1,58 @@
 {
- "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-november-4-2026": {
-  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
-  "retry": false,
-  "at": "2026-11-05T01:19:01.117Z"
- },
  "https://www.fightful.com/wrestling/maya-world-reveals-she-wasnt-supposed-to-be-at-aew-collision-where-nixon-newell-and-miranda-alize-left": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-05T01:20:03.885Z"
+  "at": "2026-11-05T01:23:06.195Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-10-30-viewership-and-demo-rating-increase": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T01:16:34.365Z"
+  "at": "2026-11-05T01:22:03.730Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-results-11-4-cm-punk-vs-grayson-waller-john-cena-appears": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-05T01:16:34.055Z"
+  "at": "2026-11-05T01:22:03.488Z"
  },
  "https://www.fightful.com/wrestling/yota-tsuji-recalls-telling-kenny-omega-that-hell-beat-him-at-the-tokyo-dome-someday-two-years-ago": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T01:16:33.675Z"
+  "at": "2026-11-05T01:22:03.192Z"
  },
  "https://www.fightful.com/wrestling/mark-shapiro-states-that-tko-fully-anticipates-that-wwe-ufc-events-in-middle-east-will-proceed-as-planned": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T01:16:33.470Z"
+  "at": "2026-11-05T01:22:03.033Z"
  },
  "https://www.fightful.com/wrestling/tko-president-speaks-about-chances-of-wwe-wrestlemania-43-moving-from-saudi-arabia-we-have-already-been-paid-half-upfront": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T01:16:32.892Z"
+  "at": "2026-11-05T01:22:02.585Z"
  },
  "https://www.fightful.com/wrestling/337413-queen-aminata-tbs": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T01:16:32.405Z"
+  "at": "2026-11-05T01:22:02.206Z"
  },
  "https://www.fightful.com/wrestling/ricochet-for-the-most-part-people-put-away-their-egos-for-the-better-of-the-story-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T01:16:31.937Z"
+  "at": "2026-11-05T01:22:01.838Z"
  },
  "https://www.fightful.com/wrestling/taya-valkyrie-exits-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T01:16:30.930Z"
+  "at": "2026-11-05T01:22:01.055Z"
  },
  "https://www.fightful.com/wrestling/uspto-rejects-wwes-attempts-to-trademark-rko-for-wrestling-purposes-due-to-rko-pictures-overlap": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-05T01:16:30.612Z"
+  "at": "2026-11-05T01:22:00.809Z"
+ },
+ "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-november-4-2026": {
+  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
+  "retry": false,
+  "at": "2026-11-05T01:19:01.117Z"
  },
  "https://www.wrestlinginc.com/2307145/aew-dynamite-november-4-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
