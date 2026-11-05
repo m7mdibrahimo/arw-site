@@ -236,3 +236,10 @@ test("a weekly show's names carry the day-first English date («wwe raw 2 novemb
   assert.ok(names.includes("WWE RAW 2 November 2026"));
   assert.ok(names.includes("WWE RAW 2/11/2026"));
 });
+
+// A tilde in a show's name («باور ستراجيل ~ سوبر جونيور تاج ليج») must not reach the search title or description.
+test("no tilde in the search title of a show", () => {
+  const r = showSeoText({ headline: "عرض ان جيه بي دبليو باور ستراجيل ~ سوبر جونيور تاج ليج 03.11.2026 مترجم", title: "NJPW Power Struggle ~ Super Junior Tag League", programName: "NJPW Power Struggle", eventDate: "2026-11-03", day: "3 نوفمبر 2026", isLatest: false, description: "" });
+  assert.ok(!r.title.includes("~") && !r.description.includes("~"));
+  assert.ok(r.title.includes("03.11.2026"));
+});
