@@ -10254,6 +10254,21 @@
       "wrong": "يوقعا",
       "right": "يوقع",
       "note": "مثنى — INCIDENTS #1089"
+    },
+    {
+      "wrong": "بطولة WWE Intercontinental",
+      "right": "بطولة القارات",
+      "note": "WWE Intercontinental = «القارات» بالعربي — INCIDENTS #1090"
+    },
+    {
+      "wrong": "بطولة Bare Knuckle Fighting Championships",
+      "right": "اتحاد Bare Knuckle Fighting Championships",
+      "note": "BKFC اتحاد مش بطولة — INCIDENTS #1090"
+    },
+    {
+      "wrong": "عرض عروض",
+      "right": "بث عروض",
+      "note": "كلمتين متكررتين «عرض عروض» — INCIDENTS #1090"
     }
   ]
 }

@@ -259,3 +259,13 @@ test('showNameForms: an "A vs B" special carries each fighter + مترجم', () 
   const u = showNameForms({ headline: 'عرض يو اف سي فايت نايت 292 مترجم', title: 'UFC Fight Night 292 Moicano vs Nolan', programName: 'UFC Fight Night', eventDate: '2026-11-01', aliases: [], isShow: true, archive: false });
   assert.ok(u.includes('Moicano مترجم') && u.includes('Nolan مترجم'));
 });
+
+// INCIDENTS #1090: «مشاهدة عرض aew» (7.0), «colision مترجم» (9.0) for the 31.10 AEW Collision — non-WWE weekly pages carry the
+// federation + «عرض» words and the single-L spelling in their structured data; WWE pages are untouched.
+test('showNameForms: AEW Collision carries «مشاهدة عرض AEW» and «Colision مترجم»; WWE does not get them', () => {
+  const f = showNameForms({ headline: 'عرض اي ايه دبليو كوليجن 31.10.2026 مترجم', title: 'AEW Collision 31.10.2026', programName: 'AEW Collision', eventDate: '2026-10-31', aliases: ['عرض كوليجن'], isShow: true, archive: false, isLatest: true });
+  assert.ok(f.includes('مشاهدة عرض AEW'));
+  assert.ok(f.includes('Colision مترجم'));
+  const w = showNameForms({ headline: 'عرض الرو 02.11.2026 مترجم', title: 'WWE RAW 02.11.2026', programName: 'WWE RAW', eventDate: '2026-11-02', aliases: ['عرض الرو'], isShow: true, archive: false, isLatest: true });
+  assert.ok(!w.includes('مشاهدة عرض WWE'));
+});

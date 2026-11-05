@@ -915,3 +915,12 @@ test('dual verbs «حلا محل / يوقعا عقودا» are blocked (INCIDENT
     assert.ok(checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', bad + pad).some(i => i.code === 'dual_form'), bad);
   }
 });
+
+// INCIDENTS #1090: «سيبدأ عرض عروض AEW» and «بطولة Bare Knuckle Fighting Championships» / «بطولة WWE Intercontinental» reached stories.
+test('«عرض عروض» is corrected and blocked; promotions are not «بطولة» (INCIDENTS #1090)', () => {
+  const pad = ' كلام'.repeat(80);
+  assert.equal(applyCorrections('سيبدأ عرض عروض AEW Dynamite'), 'سيبدأ بث عروض AEW Dynamite');
+  assert.ok(checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', 'لعرض عروض Fusion كل خميس' + pad).some(i => i.code === 'doubled_show_word'));
+  assert.equal(applyCorrections('حصة في بطولة Bare Knuckle Fighting Championships'), 'حصة في اتحاد Bare Knuckle Fighting Championships');
+  assert.equal(applyCorrections('الفوز ببطولة WWE Intercontinental'), 'الفوز ببطولة القارات');
+});
