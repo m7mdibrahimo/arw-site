@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-nxt-announces-tag-team-title-match-more-november-10": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-05T02:47:56.175Z"
+ },
  "https://www.ringsidenews.com/john-cena-reveals-second-entrant-john-cena-classic-during-wwe-nxt": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-24T12:27:36.496Z"
- },
- "https://www.ringsidenews.com/gunther-puts-danhausen-notice-unaired-wwe-smackdown-footage": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-24T12:02:56.596Z"
  }
 }

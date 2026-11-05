@@ -1,5 +1,15 @@
 [
   {
+    "id": 802263505,
+    "link": "https://www.ringsidenews.com/wwe-nxt-announces-tag-team-title-match-more-november-10/",
+    "date": "Thu, 05 Nov 2026 02:43:58 +0000",
+    "date_gmt": "2026-11-05T02:43:58.000Z",
+    "title": {
+      "rendered": "WWE NXT Announces Tag Team Title Match and More for November 10"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/last-minute-match-revealed-for-september-8-wwe-nxt-46.jpg?x55711"
+  },
+  {
     "id": 802263464,
     "link": "https://www.ringsidenews.com/john-cena-reveals-second-entrant-john-cena-classic-during-wwe-nxt/",
     "date": "Thu, 05 Nov 2026 02:38:34 +0000",
@@ -138,15 +148,5 @@
       "rendered": "WWE Has Backup Plan to Move WrestleMania 2027 Out of Saudi Arabia"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/10/mark-shapiro-addresses-employee-safety-concerns-ahead-of-wwe-crown-jewel-2026-24.jpg?x55711"
-  },
-  {
-    "id": 802263328,
-    "link": "https://www.ringsidenews.com/kay-lee-ray-reveals-what-shes-looking-wwe-departure/",
-    "date": "Wed, 04 Nov 2026 22:39:29 +0000",
-    "date_gmt": "2026-11-04T22:39:29.000Z",
-    "title": {
-      "rendered": "Kay Lee Ray Reveals What She’s Looking for After WWE Departure"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/kay-lee-ray-reveals-what-shes-looking-for-after-wwe-departure-08.jpg?x55711"
   }
 ]
