@@ -976,3 +976,12 @@ test('«ابنها البغيض» / «مجهوما» / «أنه شعور بال�
   assert.equal(applyCorrections('مشيرا إلى أنه شعور بالقلق'), 'مشيرا إلى أنه شعر بالقلق');
   assert.equal(applyCorrections('تلقى مكالمة التسريحة'), 'تلقى مكالمة التسريح');
 });
+
+test('«ابدى» / «المرسعة» / «في ربكة» are corrected (INCIDENTS #1105)', () => {
+  assert.equal(applyCorrections('ابدى الأسطورة صدمته'), 'أبدى الأسطورة صدمته');
+  assert.equal(applyCorrections('تسبب في ربكة للخطط المرسعة'), 'تسبب في ارتباك للخطط المرسومة');
+});
+
+test('«ري هيخو ديل فيكينغو» (wrong wrestler) becomes «ري هوروس» (INCIDENTS #1105)', () => {
+  assert.equal(applyCorrections('عودة ري هيخو ديل فيكينغو إلى TNA'), 'عودة ري هوروس إلى TNA');
+});
