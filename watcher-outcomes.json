@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2309607/wwe-smackdown-november-6-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-06T22:15:19.866Z"
+ },
  "https://www.fightful.com/wrestling/chad-gable-comments-on-wwe-intercontinental-title-loss-to-ethan-page": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
   "retry": true,
   "at": "2026-10-25T21:00:21.934Z"
- },
- "https://www.ringsidenews.com/ric-flair-allegedly-made-botox-remark-woman-before-bloody-fall-that-sent-him-hospital": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-10-25T20:34:12.451Z"
  }
 }
