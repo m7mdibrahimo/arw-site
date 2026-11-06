@@ -1,5 +1,15 @@
 [
   {
+    "id": 337801,
+    "link": "https://www.fightful.com/wrestling/tna-releases-8-bit-arcade-game-on-website/",
+    "date": "2026-11-06T15:10:51",
+    "date_gmt": "2026-11-06T20:10:51",
+    "title": {
+      "rendered": "TNA Releases 8-Bit Arcade Game On Website"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/06151005/HWdsiHUXwAEfVCS.jpeg"
+  },
+  {
     "id": 337796,
     "link": "https://www.fightful.com/wrestling/harley-hudson-says-the-undertaker-is-her-favorite-wrestler/",
     "date": "2026-11-06T14:55:54",
@@ -288,15 +298,5 @@
       "rendered": "Rhea Ripley Makes Appearance At Motionless In White Concert"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/03/02214652/HCdCNFKbUAAMYGD.jpg"
-  },
-  {
-    "id": 337706,
-    "link": "https://www.fightful.com/wrestling/full-lineup-announced-for-njpw-tanahashi-jam-2-shion-obata-and-axe-wang-to-debut/",
-    "date": "2026-11-06T07:00:29",
-    "date_gmt": "2026-11-06T12:00:29",
-    "title": {
-      "rendered": "Full Lineup Announced For NJPW TANAHASHI JAM 2; Shion Obata And Axe Wang To Debut"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/06065926/20261119_TANAjam_005-%E3%82%B3%E3%83%94%E3%83%BC.jpg"
   }
 ]
