@@ -991,3 +991,7 @@ test('«يستعد … انطلاق» gets its ل (INCIDENTS #1106)', () => {
   assert.match(applyCorrections('يستعد اتحاد NJPW انطلاق بطولة وورلد تاج ليج'), /يستعد اتحاد NJPW لانطلاق بطولة/);
   assert.doesNotMatch(applyCorrections('بعد انطلاق البطولة يستعد الجميع'), /لانطلاق/);
 });
+
+test('correction fixes «تم تحذير بطل العالم» calque (Cookie Monster story)', () => {
+  assert.equal(applyCorrections('حيث تم تحذير بطل العالم 17 مرة'), 'حيث وجه الحساب تحذيرا لبطل العالم 17 مرة');
+});
