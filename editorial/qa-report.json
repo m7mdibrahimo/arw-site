@@ -1,5 +1,5 @@
 {
-  "scanned": 255,
+  "scanned": 250,
   "articles": [
     {
       "file": "20261104173000-كيت-ويلسون-يشيد-بعرض-wwe-main-event-ويصفه-بالعمل-الناجح-الخفي.md",
@@ -23,7 +23,7 @@
           "severity": "error",
           "field": "body",
           "message": "اسم لقب بالإنجليزي داخل النص (يُكتب بالعربية: بطولة العالم للوزن الثقيل...). أسماء الدورات (Cup/Classic/Tournament) تبقى بالإنجليزي",
-          "excerpt": "يمتلك بالفعل حصة في بطولة Bare Knuckle Fighting Championships، ويؤكد أنه سيخوض نزالا ب"
+          "excerpt": "يمتلك بالفعل حصة في اتحاد Bare Knuckle Fighting Championships، ويؤكد أنه سيخوض نزالا ب"
         }
       ]
     }
