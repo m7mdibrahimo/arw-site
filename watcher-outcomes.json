@@ -1,23 +1,28 @@
 {
- "https://www.wrestlinginc.com/2308840/marina-shafir-spoiled-little-s-mercedes-mone-aew-dynamite-full-gear": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
+ "https://www.fightful.com/wrestling/tomohiro-ishii-unable-to-compete-dangerous-tekkers-set-for-2026-njpw-world-tag-league": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-06T16:13:15.111Z"
+  "at": "2026-11-06T16:18:36.903Z"
  },
  "https://www.fightful.com/wrestling/rey-mysterio-says-aalyah-mysterio-had-first-pc-live-match-in-february-after-two-weeks-of-pc-training": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-06T16:15:41.936Z"
+  "at": "2026-11-06T16:17:53.902Z"
  },
  "https://www.fightful.com/wrestling/rey-mysterio-announces-team-usa-vs-team-mexico-bout-for-wwe-survivor-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T16:13:05.903Z"
+  "at": "2026-11-06T16:17:35.581Z"
  },
  "https://www.fightful.com/wrestling/rhea-ripley-makes-appearance-at-motionless-in-white-concert": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T16:13:05.592Z"
+  "at": "2026-11-06T16:17:35.322Z"
+ },
+ "https://www.wrestlinginc.com/2308840/marina-shafir-spoiled-little-s-mercedes-mone-aew-dynamite-full-gear": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
+  "retry": true,
+  "at": "2026-11-06T16:13:15.111Z"
  },
  "https://www.ringsidenews.com/aalyah-gutierrez-wrestled-first-live-match-wwe-performance-center": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-25T12:31:49.237Z"
- },
- "https://www.ringsidenews.com/ric-flair-returned-same-bar-night-bloody-fall-that-sent-him-hospital": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-10-25T12:06:07.157Z"
  }
 }
