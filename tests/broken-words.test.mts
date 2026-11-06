@@ -969,3 +969,10 @@ test('body slam and North American are corrected (INCIDENTS #1100)', () => {
 test('«النزال الافتتاحي، يشهد العرض النزال الافتتاحي لـ…» repetition is corrected (INCIDENTS #1102)', () => {
   assert.equal(applyCorrections('في النزال الافتتاحي، يشهد العرض النزال الافتتاحي لمصارع الهواة شيون'), 'في النزال الافتتاحي، يخوض مصارع الهواة شيون');
 });
+
+test('«ابنها البغيض» / «مجهوما» / «أنه شعور بالقلق» / «مكالمة التسريحة» are corrected (INCIDENTS #1104)', () => {
+  assert.equal(applyCorrections('بعد تعرض ابنها البغيض لإساءة'), 'بعد تعرض ابنها لإساءة');
+  assert.equal(applyCorrections('نشر حسابا مجهوما تعليقات'), 'نشر حسابا مجهولا تعليقات');
+  assert.equal(applyCorrections('مشيرا إلى أنه شعور بالقلق'), 'مشيرا إلى أنه شعر بالقلق');
+  assert.equal(applyCorrections('تلقى مكالمة التسريحة'), 'تلقى مكالمة التسريح');
+});
