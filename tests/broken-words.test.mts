@@ -959,3 +959,9 @@ test('«ينوي انطلاق» and «لاحظت هدسون ملاحظة» are c
   assert.match(applyCorrections('كان الاتحاد ينوي انطلاق البطولة'), /ينوي بدء البطولة/);
   assert.match(applyCorrections('ثم لاحظت هدسون ملاحظة بجانبها'), /لاحظت هدسون ورقة/);
 });
+
+// INCIDENTS #1100: «حركة صدمة البدن» (body slam) and «بطل NXT للقسم الشمالي» reached the site.
+test('body slam and North American are corrected (INCIDENTS #1100)', () => {
+  assert.match(applyCorrections('نفذت حركة صدمة البدن على ليون'), /رمية بودي سلام/);
+  assert.match(applyCorrections('بطل NXT للقسم الشمالي السابق'), /بطل NXT لأمريكا الشمالية/);
+});
