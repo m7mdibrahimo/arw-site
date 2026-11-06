@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2309790/wwe-matt-cardona-injury-update-not-finished": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-06T21:16:55.903Z"
+ },
  "https://www.fightful.com/wrestling/maven-says-he-has-had-headache-and-brain-fog-every-single-day-since-november-2025-surgery-is-definitely-on-the-horizon": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -38,11 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-06T21:10:02.629Z"
- },
- "https://www.wrestlinginc.com/2309790/wwe-matt-cardona-injury-update-not-finished": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-06T20:59:55.882Z"
  },
  "https://www.fightful.com/wrestling/rey-mysterio-announces-team-usa-vs-team-mexico-bout-for-wwe-survivor-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
