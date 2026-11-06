@@ -1,18 +1,23 @@
 {
- "https://www.fightful.com/wrestling/rey-mysterio-says-aalyah-mysterio-had-first-pc-live-match-in-february-after-two-weeks-of-pc-training": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+ "https://www.fightful.com/wrestling/rey-horus-returning-to-tna-at-destination-x": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-06T15:22:35.865Z"
+  "at": "2026-11-06T15:25:37.329Z"
+ },
+ "https://www.fightful.com/wrestling/rey-mysterio-says-aalyah-mysterio-had-first-pc-live-match-in-february-after-two-weeks-of-pc-training": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-06T15:25:23.362Z"
  },
  "https://www.fightful.com/wrestling/rey-mysterio-announces-team-usa-vs-team-mexico-bout-for-wwe-survivor-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T15:22:13.547Z"
+  "at": "2026-11-06T15:25:06.027Z"
  },
  "https://www.fightful.com/wrestling/rhea-ripley-makes-appearance-at-motionless-in-white-concert": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T15:22:13.240Z"
+  "at": "2026-11-06T15:25:05.725Z"
  },
  "https://www.ringsidenews.com/aalyah-gutierrez-wrestled-first-live-match-wwe-performance-center": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)، اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
   "retry": true,
   "at": "2026-10-25T11:51:05.939Z"
- },
- "https://www.ringsidenews.com/tony-khan-holds-paramount-skydance-meetings-amid-uncertainty-aews-future": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-10-25T11:25:54.766Z"
  }
 }
