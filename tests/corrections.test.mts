@@ -1542,3 +1542,9 @@ test("INCIDENTS #1076: dual forms in quotes become plural", async () => {
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /لم نكن (موقعتين|شريكتين)|عودا مرة أخرى/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #1093: Liv Morgan is the Women's World Champion, not «بطلة WWE للسيدات».
+test("Liv Morgan's title keeps «العالمية» (INCIDENTS #1093)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("مواجهة بطلة WWE للسيدات ليف مورغان"), "مواجهة بطلة WWE العالمية للسيدات ليف مورغان");
+});
