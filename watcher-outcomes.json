@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2308170/tna-thursday-night-impact-november-5-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-06T03:06:56.655Z"
+ },
  "https://www.fightful.com/wrestling/tna-impact-results-11-5-nemeths-vs-leon-slater-and-amazing-red": {
   "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي، العنوان بينتهي بكلمة مبتورة مش موجودة في الخبر — الاقتباس اتقطع، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، اسم مصارع في العنوان أو المتن غير موجود في المصدر: PROGRESS Tag Team Championships، اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: AAA Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Fatal Influence، تقرير نتائج بلا أي نتيجة",
   "retry": true,
@@ -33,11 +38,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-06T03:04:00.817Z"
- },
- "https://www.wrestlinginc.com/2308170/tna-thursday-night-impact-november-5-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-06T02:47:10.762Z"
  },
  "https://www.wrestlinginc.com/2304082/wwe-drew-mcintyre-vince-mcmahon-pitched-removing-arm-sword": {
   "reason": "المراجعة رفضته: علامة اقتباس اتفتحت ومتقفلتش (أو «» مع \" مخلوطين) — اقفل الاقتباس بنفس العلامة اللي اتفتح بيها",
