@@ -965,3 +965,7 @@ test('body slam and North American are corrected (INCIDENTS #1100)', () => {
   assert.match(applyCorrections('نفذت حركة صدمة البدن على ليون'), /رمية بودي سلام/);
   assert.match(applyCorrections('بطل NXT للقسم الشمالي السابق'), /بطل NXT لأمريكا الشمالية/);
 });
+
+test('«النزال الافتتاحي، يشهد العرض النزال الافتتاحي لـ…» repetition is corrected (INCIDENTS #1102)', () => {
+  assert.equal(applyCorrections('في النزال الافتتاحي، يشهد العرض النزال الافتتاحي لمصارع الهواة شيون'), 'في النزال الافتتاحي، يخوض مصارع الهواة شيون');
+});

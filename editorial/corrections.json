@@ -2,6 +2,11 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "يشهد العرض النزال الافتتاحي لمصارع",
+      "right": "يخوض مصارع",
+      "note": "«في النزال الافتتاحي، يشهد العرض النزال الافتتاحي لمصارع…» تكرار — خبر TANAHASHI JAM 2 (INCIDENTS #1102)"
+    },
+    {
       "wrong": "وانضم راف قد انضم",
       "right": "وانضم راف",
       "note": "فعل مكرر (INCIDENTS #1100)"
