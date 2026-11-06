@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, careerStartNotInSource, wrestlerNotInSource, fixNearGlossaryNames, type NewsFile } from "./news-qa";
+import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, wrestlerNotInSource, fixNearGlossaryNames, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -4522,6 +4522,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   const badAges = ageNotInSource(draft.body, `${rawTitle}\n${plainText}`);
   if (badAges.length) {
     blocking.push({ code: "age_not_in_source", severity: "error", field: "body", message: `سن في المتن غير موجود في المصدر: ${badAges.join("، ")}`, excerpt: badAges.join(" ") });
+    lastPostRetryable = true;
+  }
+  // «2 months ago» written as «قبل شهر»: a span the source states with another count (INCIDENTS #1111).
+  const badSpans = agoSpanNotInSource(draft.body, `${rawTitle}\n${plainText}`);
+  if (badSpans.length) {
+    blocking.push({ code: "span_not_in_source", severity: "error", field: "body", message: `مدة زمنية في المتن غير مطابقة للمصدر: ${badSpans.join("، ")}`, excerpt: badSpans.join(" ") });
     lastPostRetryable = true;
   }
   // A results report must report results (INCIDENTS #53: a SmackDown «results» article

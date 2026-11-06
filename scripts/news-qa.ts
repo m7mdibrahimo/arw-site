@@ -1081,6 +1081,34 @@ export function ageNotInSource(body: string, source: string): string[] {
   return found;
 }
 /**
+ * A span "ago" in the Arabic body that the source states differently: Matt Cardona's «surgery just over 2 months ago» became
+ * «قبل أكثر من شهر بقليل» (INCIDENTS #1111). Reads «قبل/منذ [أكثر من|نحو] شهر / شهرين / N أشهر» (month, week, year) and
+ * compares the count with every «N months» of the source; only blocks when the source states that unit with another count
+ * (a source that gives no count for the unit proves nothing). Returns the Arabic spans to block on.
+ */
+export function agoSpanNotInSource(body: string, source: string): string[] {
+  const text = String(body || "").replace(/https?:\/\/\S+/g, " ");
+  const WORDS: Record<string, number> = { a: 1, an: 1, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12 };
+  const unitOf = (u: string) => (/^month/i.test(u) ? "m" : /^week/i.test(u) ? "w" : "y");
+  const src = new Map<string, Set<number>>();
+  for (const m of String(source || "").toLowerCase().matchAll(/(?<![\w.])(\d{1,2}|a|an|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)[\s-]+(months?|weeks?|years?)(?![a-z])/g)) {
+    const n = /^\d/.test(m[1]) ? Number(m[1]) : WORDS[m[1]];
+    const u = unitOf(m[2]);
+    if (!src.has(u)) src.set(u, new Set());
+    src.get(u)!.add(n);
+  }
+  const found: string[] = [];
+  const re = /(?<![\u0621-\u064A])(?:قبل|منذ)\s+(?:أكثر\s+من\s+|نحو\s+|حوالي\s+|قرابة\s+)?(?:(\d{1,2})\s+(أشهر|شهور|اشهر|أسابيع|اسابيع|سنوات|أعوام)|(شهرين|أسبوعين|اسبوعين|سنتين|عامين)|(شهر|أسبوع|اسبوع|سنة|عام)(?![\u0621-\u064A]))/g;
+  for (const m of text.matchAll(re)) {
+    const word = m[2] || m[3] || m[4];
+    const u = /شهر|شهور|أشهر|اشهر/.test(word) ? "m" : /سبوع|سابيع/.test(word) ? "w" : "y";
+    const n = m[1] ? Number(m[1]) : m[3] ? 2 : 1;
+    const known = src.get(u);
+    if (known && known.size && !known.has(n)) found.push(m[0]);
+  }
+  return found;
+}
+/**
  * «بدأ مسيرته في عالم المصارعة عام 1987» must be what the source says (began / started his
  * career, debuted). "He started working for the then-WWFW in 1987" is a company start, not a
  * career start: the writer compressed it and gave the career a year that is not its own — Bruce

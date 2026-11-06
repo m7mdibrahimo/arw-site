@@ -5534,3 +5534,12 @@ test('«شريقي» / «اللقحات» / «أطاح بأنفاسه» are perm
     assert.ok(!/شريقي|اللقحات|أطاح بأنفاسه/.test(t), f);
   }
 });
+
+test('agoSpanNotInSource: «just over 2 months ago» written as «قبل شهر» is flagged (Cardona, INCIDENTS #1111)', async () => {
+  const { agoSpanNotInSource } = await import('../scripts/news-qa');
+  const src = 'I tore this tricep and got surgery just over 2 months ago.';
+  assert.deepEqual(agoSpanNotInSource('وأجريت جراحة قبل أكثر من شهر بقليل.', src), ['قبل أكثر من شهر']);
+  assert.deepEqual(agoSpanNotInSource('وأجريت جراحة قبل أكثر من شهرين بقليل.', src), []);
+  assert.deepEqual(agoSpanNotInSource('تعرض للإصابة قبل 3 أشهر', 'injured three months ago'), []);
+  assert.deepEqual(agoSpanNotInSource('تعرض للإصابة قبل شهر', 'injured in September'), []);
+});
