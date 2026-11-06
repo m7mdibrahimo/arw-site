@@ -1,18 +1,23 @@
 {
+ "https://www.fightful.com/wrestling/wwe-referee-daphanie-lashaunn-body-slams-leon-ruff": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-06T08:50:09.950Z"
+ },
  "https://www.fightful.com/wrestling/iron-survivor-challenge-match-has-been-discussed-for-wwe-main-roster": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T08:46:04.322Z"
+  "at": "2026-11-06T08:49:15.951Z"
  },
  "https://www.fightful.com/wrestling/wwe-planning-to-celebrate-30-years-of-the-rock": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T08:46:04.031Z"
+  "at": "2026-11-06T08:49:15.690Z"
  },
  "https://www.fightful.com/wrestling/wwe-to-roll-out-santahausen": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T08:46:03.736Z"
+  "at": "2026-11-06T08:49:15.425Z"
  },
  "https://www.fightful.com/wrestling/wwe-royal-rumble-2027-was-discussed-for-february-20th": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
   "retry": false,
   "at": "2026-10-25T01:09:43.739Z"
- },
- "https://www.fightful.com/wrestling/bang-bang-gang-and-the-dogs-alliance-officially-named-the-last-outfit-on-10-24-aew-collision": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-25T01:00:14.642Z"
  }
 }
