@@ -13,6 +13,6 @@ en_tags:
   - "AEW WrestleDream"
 image: /content/images/qa5u0qe1hn0toejf.jpg
 ---
-AEW Women's World Champion Mercedes Moné recently took to social media to reveal her ultimate career goal. Mone shared a post expressing her desire to share the ring with legendary Japanese wrestler Aja Kong. Kong made her debut in 1986 with All Japan Women's Pro-Wrestling and has captured numerous championships throughout her storied career. Mone is currently preparing to defend her title against Thekla at AEW WrestleDream.
+AEW Women's World Champion Mercedes Moné recently took to social media to reveal her ultimate career goal. Moné shared a post expressing her desire to share the ring with legendary Japanese wrestler Aja Kong. Kong made her debut in 1986 with All Japan Women's Pro-Wrestling and has captured numerous championships throughout her storied career. Moné is currently preparing to defend her title against Thekla at AEW WrestleDream.
 
 https://x.com/MercedesVarnado/status/2111485871958659289

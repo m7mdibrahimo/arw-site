@@ -390,7 +390,7 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   // the Saudi WrestleMania is number 43 (2027); the writer wrote «WrestleMania 23» (INCIDENTS #663)
   [/\bWrestleMania 23\b(?=[^.\n]{0,40}Saudi)/g, "WrestleMania 43"],
   // her ring name is «Mercedes Moné»; the writer drops the accent in some stories (INCIDENTS #682)
-  [/\bMercedes Mone(?![\wé])/g, "Mercedes Moné"],
+  [/\b(Mercedes )?Mone(?![\wé])/g, "$1Moné"], // also the surname alone («Mone's», «Mone cry»): INCIDENTS #1107
   [/\b(joining|join|joined|joins|between|with|of|and|by|from|against) 946\b/gi, "$1 The 946"],
 ];
 const SMALL_WORDS = new Set(["a", "an", "the", "and", "but", "or", "nor", "for", "at", "by", "in", "of", "on", "to", "as", "vs", "vs.", "via"]);

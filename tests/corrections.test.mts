@@ -1548,3 +1548,15 @@ test("Liv Morgan's title keeps «العالمية» (INCIDENTS #1093)", async ()
   const { applyCorrections } = await import("../scripts/news-qa");
   assert.equal(applyCorrections("مواجهة بطلة WWE للسيدات ليف مورغان"), "مواجهة بطلة WWE العالمية للسيدات ليف مورغان");
 });
+
+// INCIDENTS #1107: «Mone's» / «make Mone cry» (accent dropped from the surname alone) and «مجالات بث عروض اللياقة».
+test("Moné keeps its accent also as a surname alone, and the stray «بث» is corrected (INCIDENTS #1107)", async () => {
+  const { fixEnglishNames } = await import("../scripts/english-edition.ts");
+  assert.equal(fixEnglishNames("criticizing Mone's status"), "criticizing Moné's status");
+  assert.equal(fixEnglishNames("make Mone cry"), "make Moné cry");
+  assert.equal(fixEnglishNames("Mercedes Mone and Moné"), "Mercedes Moné and Moné");
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("من مجالات بث عروض اللياقة البدنية والتشجيع"), "من مجالات اللياقة البدنية والتشجيع");
+  const bad = fs.readdirSync("content/news-en").filter(f => /\bMone(?![\wé])/.test(fs.readFileSync(`content/news-en/${f}`, "utf-8").replace(/^---\n[\s\S]*?\n---\n/, "")));
+  assert.deepEqual(bad, []);
+});
