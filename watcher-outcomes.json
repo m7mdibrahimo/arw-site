@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aalyah-gutierrez-wrestled-first-live-match-wwe-performance-center": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-06T12:50:21.946Z"
+ },
  "https://www.fightful.com/wrestling/rey-mysterio-announces-team-usa-vs-team-mexico-bout-for-wwe-survivor-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-25T03:56:55.652Z"
- },
- "https://www.fightful.com/wrestling/gunther-to-do-something-special-for-danhausen-on-10-30-wwe-smackdown": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-25T02:43:10.212Z"
  }
 }
