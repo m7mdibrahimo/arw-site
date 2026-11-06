@@ -2,12 +2,12 @@
  "https://www.fightful.com/wrestling/aew-fright-night-collision-10-31-viewership-drops-on-halloween-night": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T17:16:51.684Z"
+  "at": "2026-11-06T17:19:28.498Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-10-29-viewership-drops-remains-over-200000-viewers": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-29)",
   "retry": false,
-  "at": "2026-11-06T17:16:51.303Z"
+  "at": "2026-11-06T17:19:28.127Z"
  },
  "https://www.wrestlinginc.com/2308863/austin-creed-bandido-aew-dynanmite-attack-kofi-swerve-strickland": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
@@ -17,17 +17,17 @@
  "https://www.fightful.com/wrestling/us-embassy-riyadh-issues-statement-about-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T17:16:51.109Z"
+  "at": "2026-11-06T17:19:27.940Z"
  },
  "https://www.fightful.com/wrestling/rey-mysterio-announces-team-usa-vs-team-mexico-bout-for-wwe-survivor-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T17:16:15.001Z"
+  "at": "2026-11-06T17:19:26.741Z"
  },
  "https://www.fightful.com/wrestling/rhea-ripley-makes-appearance-at-motionless-in-white-concert": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T17:16:14.687Z"
+  "at": "2026-11-06T17:19:26.441Z"
  },
  "https://www.wrestlinginc.com/2308863/austin-creed-bandido-aew-dynanmite-attack-kofi-swerve-strickland": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
@@ -38,16 +38,6 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-06T17:12:47.498Z"
- },
- "https://www.fightful.com/wrestling/rey-mysterio-announces-team-usa-vs-team-mexico-bout-for-wwe-survivor-series": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-06T17:12:32.723Z"
- },
- "https://www.fightful.com/wrestling/rhea-ripley-makes-appearance-at-motionless-in-white-concert": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-06T17:12:32.512Z"
  },
  "https://www.fightful.com/wrestling/tomohiro-ishii-unable-to-compete-dangerous-tekkers-set-for-2026-njpw-world-tag-league": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
