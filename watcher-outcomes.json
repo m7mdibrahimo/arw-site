@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2309790/wwe-matt-cardona-injury-update-not-finished": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-06T20:59:55.882Z"
+ },
  "https://www.fightful.com/wrestling/tna-releases-8-bit-arcade-game-on-website": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-25T15:59:43.040Z"
- },
- "https://www.fightful.com/wrestling/aaa-heroes-inmortales-results-10-24": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-25T15:05:22.385Z"
  }
 }
