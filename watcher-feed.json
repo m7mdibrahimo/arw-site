@@ -1,5 +1,15 @@
 [
   {
+    "id": 337779,
+    "link": "https://www.fightful.com/wrestling/njpw-academy-in-california-closing/",
+    "date": "2026-11-06T13:16:06",
+    "date_gmt": "2026-11-06T18:16:06",
+    "title": {
+      "rendered": "NJPW Academy In California Closing"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/06130754/images-26-e1793988925361.jpg"
+  },
+  {
     "id": 337764,
     "link": "https://www.fightful.com/wrestling/josh-bishop-credits-johnny-gargano-for-giving-him-the-best-advice-in-wrestling/",
     "date": "2026-11-06T13:02:00",
@@ -78,6 +88,16 @@
       "rendered": "US Embassy Riyadh Issues Statement About WWE Crown Jewel"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/04112806/NET_INTL_065804_CrownJewel26_LAUNCH_1920x1080.jpg"
+  },
+  {
+    "id": 71467,
+    "link": "https://www.fightful.com/wrestling/pro-wrestling-free-agents/",
+    "date": "2026-11-06T11:17:00",
+    "date_gmt": "2026-11-06T16:17:00",
+    "title": {
+      "rendered": "Pro Wrestling Free Agents"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/14160822/Resources1.jpg"
   },
   {
     "id": 337746,
@@ -278,25 +298,5 @@
       "rendered": "NJPW Announces Dates &amp; Locations For 2027 The New Beginning Tour"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/06010639/Untitled-Design-6.jpg"
-  },
-  {
-    "id": 337684,
-    "link": "https://www.fightful.com/wrestling/mustafa-ali-vs-frankie-kazarian-more-set-for-11-12-tna-impact/",
-    "date": "2026-11-05T23:23:35",
-    "date_gmt": "2026-11-06T04:23:35",
-    "title": {
-      "rendered": "Mustafa Ali vs. Frankie Kazarian, More Set For 11/12 TNA iMPACT"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/12/02122859/G7LBws8aUAA4Q2x.jpg"
-  },
-  {
-    "id": 337681,
-    "link": "https://www.fightful.com/wrestling/taryn-terrell-welcomes-harley-hudson-to-the-dollhouse-on-11-5-tna-impact/",
-    "date": "2026-11-05T23:16:48",
-    "date_gmt": "2026-11-06T04:16:48",
-    "title": {
-      "rendered": "Taryn Terrell Welcomes Harley Hudson To The Dollhouse On 11/5 TNA iMPACT"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/05230736/Screenshot-590.png"
   }
 ]
