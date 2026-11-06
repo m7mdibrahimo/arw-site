@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2292489/el-hijo-de-dr-wagner-galeno-upset-birthright-wwe-nxt-dusty-tag-classic/": {
-    "matchedFile": "20261021000000-نتائج-عرض-wwe-nxt-20-أكتوبر-2026-نزالات-ربع-نهائي-بطولة-dusty-rhodes-للفرق.md",
-    "reason": "الخبر الجديد يعرض تفاصيل مواجهة من بطولة Dusty Tag Classic في عرض WWE NXT، وهي نفس المواجهة والنتيجة التي تم ذكرها بالفعل ضمن تقرير نتائج عرض WWE NXT المنشور سابقاً.",
-    "at": "2026-10-21T01:45:27.330Z"
-  },
   "https://www.fightful.com/wrestling/wwe-nxt-results-10-20-2026-cruz-montana-vs-dion-lennox-dusty-cup-more/": {
     "matchedFile": "20261021000000-نتائج-عرض-wwe-nxt-20-أكتوبر-2026-نزالات-ربع-نهائي-بطولة-dusty-rhodes-للفرق.md",
     "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261106050337-ستيفاني-فاكير-تعود-إلى-الحلبة-في-عرض-wwe.md",
     "reason": "الخبر الجديد يغطي نفس واقعة عودة ستيفاني فاكير إلى الحلبة في عرض بورتلاند، وهي نفس الواقعة المغطاة في الخبر المنشور مسبقاً.",
     "at": "2026-11-06T02:11:29.729Z"
+  },
+  "https://www.wrestlinginc.com/2308796/tna-destination-x-matt-hardy-moose-syx-team-against/": {
+    "matchedFile": "20261106064348-فريق-سيكس-يواجه-مات-هاردي-وموس-في-عرض-tna-destination-x.md",
+    "reason": "الخبر الجديد يغطي نفس الإعلان عن مواجهة مات هاردي وموس ضد فريق سيكس في عرض TNA Destination X، وهي نفس الواقعة المذكورة في الخبر المنشور.",
+    "at": "2026-11-06T03:53:43.508Z"
   }
 }
