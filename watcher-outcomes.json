@@ -1,38 +1,38 @@
 {
- "https://www.fightful.com/wrestling/trey-miguel-doesnt-want-to-do-20-minute-flip-off-with-leon-slater-at-tna-destination-x-thinks-they-have-better-story-to-tell": {
-  "reason": "المراجعة رفضته: ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-06T01:31:35.498Z"
- },
  "https://www.fightful.com/wrestling/iron-survivor-challenge-match-has-been-discussed-for-wwe-main-roster": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T01:31:01.512Z"
+  "at": "2026-11-06T01:34:04.508Z"
  },
  "https://www.fightful.com/wrestling/wwe-planning-to-celebrate-30-years-of-the-rock": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T01:31:01.222Z"
+  "at": "2026-11-06T01:34:04.225Z"
  },
  "https://www.fightful.com/wrestling/wwe-to-roll-out-santahausen": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T01:31:00.936Z"
+  "at": "2026-11-06T01:34:03.939Z"
  },
  "https://www.fightful.com/wrestling/wwe-royal-rumble-2027-was-discussed-for-february-20th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T01:31:00.470Z"
+  "at": "2026-11-06T01:34:03.491Z"
  },
  "https://www.fightful.com/wrestling/wwe-offering-crew-members-3000-in-hazard-pay-for-trip-to-saudi-arabia-for-crown-jewel-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T01:31:00.098Z"
+  "at": "2026-11-06T01:34:03.123Z"
  },
  "https://www.fightful.com/wrestling/chris-jericho-talks-playing-gorgeous-george-in-the-greatest-says-he-watched-one-of-his-old-movies-to-prep-for-the-role": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T01:30:59.615Z"
+  "at": "2026-11-06T01:34:02.649Z"
+ },
+ "https://www.fightful.com/wrestling/trey-miguel-doesnt-want-to-do-20-minute-flip-off-with-leon-slater-at-tna-destination-x-thinks-they-have-better-story-to-tell": {
+  "reason": "المراجعة رفضته: ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-06T01:31:35.498Z"
  },
  "https://www.fightful.com/wrestling/the-miz-im-46-years-old-and-i-still-feel-very-good-in-the-ring-i-dont-feel-slow-or-sluggish": {
   "reason": "مكرر مع خبر نزل قبل كده",
