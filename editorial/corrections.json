@@ -2,6 +2,11 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "داريا راي",
+      "right": "داريا ري",
+      "note": "الاسم المعتمد في القاموس (Daria Rae) (INCIDENTS #1098)"
+    },
+    {
       "wrong": "عظمة الكعبرة",
       "right": "عظمة الساعد",
       "note": "«الكعبرة» كلمة تقيلة؛ الأبسط «عظمة الساعد» (INCIDENTS #1091)"

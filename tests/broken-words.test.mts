@@ -949,3 +949,7 @@ test('«نزال فرق بث» (broken phrase) is corrected (INCIDENTS #1096)', 
 test('«فينس وداش» is corrected to «فينسنت وداتش» (INCIDENTS #1097)', () => {
   assert.equal(applyCorrections('حاول فينس وداش تتويجها'), 'حاول فينسنت وداتش تتويجها');
 });
+
+test('«داريا راي» is corrected to the glossary spelling «داريا ري» (INCIDENTS #1098)', () => {
+  assert.equal(applyCorrections('أول نزال لداريا راي'), 'أول نزال لداريا ري'.replace('لداريا','لداريا'));
+});
