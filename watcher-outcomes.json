@@ -1,8 +1,8 @@
 {
- "https://www.wrestlinginc.com/2309607/wwe-smackdown-november-6-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+ "https://www.ringsidenews.com/nia-jax-reveals-what-she-loves-hates-most-about-wwe-fans": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-06T22:46:14.015Z"
+  "at": "2026-11-06T22:51:20.470Z"
  },
  "https://www.fightful.com/wrestling/chad-gable-comments-on-wwe-intercontinental-title-loss-to-ethan-page": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -53,6 +53,11 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-06T22:46:52.356Z"
+ },
+ "https://www.wrestlinginc.com/2309607/wwe-smackdown-november-6-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-06T22:46:14.015Z"
  },
  "https://www.fightful.com/wrestling/matt-cardona-in-my-head-im-almost-ready-i-dont-know-when-ill-be-cleared-to-return-to-the-ring-but-i-do-know-that-im-not-finished": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -1993,10 +1998,5 @@
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
   "retry": false,
   "at": "2026-10-25T22:30:39.288Z"
- },
- "https://www.fightful.com/wrestling/twe-chattanooga-nightmare-on-dayton-blvd-results-10-24": {
-  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
-  "retry": true,
-  "at": "2026-10-25T21:00:21.934Z"
  }
 }
