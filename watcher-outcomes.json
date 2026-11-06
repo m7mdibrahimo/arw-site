@@ -1,63 +1,68 @@
 {
- "https://www.wrestlinginc.com/2309607/wwe-smackdown-november-6-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+ "https://www.fightful.com/wrestling/mlw-fusion-results-11-5-killer-kross-vs-donovan-dijak": {
+  "reason": "المراجعة رفضته: جملة افتتاحية من غير فعل («عرض اتحاد X أحدث عرض من…») — ابدأ بفعل: «قدم اتحاد X أحدث حلقة من…» (INCIDENTS #783)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": true,
-  "at": "2026-11-06T23:21:25.157Z"
+  "at": "2026-11-06T23:23:35.171Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-blood-guts-does-240k-more-viewers-than-wwe-nxt-on-11-4": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T23:21:08.572Z"
+  "at": "2026-11-06T23:23:24.223Z"
  },
  "https://www.fightful.com/wrestling/chad-gable-comments-on-wwe-intercontinental-title-loss-to-ethan-page": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T23:21:08.203Z"
+  "at": "2026-11-06T23:23:23.974Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-draws-over-450000-viewers": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T23:21:07.915Z"
+  "at": "2026-11-06T23:23:23.782Z"
  },
  "https://www.fightful.com/wrestling/maven-says-he-has-had-headache-and-brain-fog-every-single-day-since-november-2025-surgery-is-definitely-on-the-horizon": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T23:21:07.456Z"
+  "at": "2026-11-06T23:23:23.432Z"
  },
  "https://www.fightful.com/wrestling/tna-releases-8-bit-arcade-game-on-website": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، كلمة عربية مقطوعة من حرفين («بت») — اكتب الكلمة كاملة، كلمة عربية مقطوعة من حرفين («بت») — اكتب الكلمة كاملة",
   "retry": true,
-  "at": "2026-11-06T23:21:06.994Z"
+  "at": "2026-11-06T23:23:23.128Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-commentary-team-to-call-crown-jewel-from-wwe-hq-in-stamford": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T23:20:50.775Z"
+  "at": "2026-11-06T23:23:09.577Z"
  },
  "https://www.fightful.com/wrestling/njpw-academy-in-california-closing": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T23:20:50.318Z"
+  "at": "2026-11-06T23:23:09.276Z"
  },
  "https://www.fightful.com/wrestling/report-george-iceman-departs-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T23:20:49.707Z"
+  "at": "2026-11-06T23:23:08.865Z"
  },
  "https://www.fightful.com/wrestling/aew-fright-night-collision-10-31-viewership-drops-on-halloween-night": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T23:20:49.415Z"
+  "at": "2026-11-06T23:23:08.672Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-10-29-viewership-drops-remains-over-200000-viewers": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-29)",
   "retry": false,
-  "at": "2026-11-06T23:20:49.046Z"
+  "at": "2026-11-06T23:23:08.424Z"
  },
  "https://www.fightful.com/wrestling/us-embassy-riyadh-issues-statement-about-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T23:20:48.858Z"
+  "at": "2026-11-06T23:23:08.299Z"
+ },
+ "https://www.wrestlinginc.com/2309607/wwe-smackdown-november-6-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-06T23:21:25.157Z"
  },
  "https://www.ringsidenews.com/nia-jax-reveals-what-she-loves-hates-most-about-wwe-fans": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
