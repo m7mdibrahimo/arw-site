@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/ilja-dragunov-thinks-he-sticks-out-from-the-rest-of-aew-roster/": {
-    "matchedFile": "20261021000526-إيليا-دراغونوف-لست-قلقا-من-ضياع-مكانتي-في-قائمة-مصارعي-aew-المزدحمة.md",
-    "reason": "الخبر الجديد يعيد نفس التصريحات التي أدلى بها إيليا دراغونوف في بودكاست Inside The Ring والتي تتطابق مع مضمون الخبر رقم 1 بشأن عدم قلقه من ازدحام قائمة AEW وثقته بقدراته وطريقة تقديمه.",
-    "at": "2026-10-21T12:46:04.216Z"
-  },
   "https://www.fightful.com/wrestling/report-dragon-lee-re-signs-with-wwe/": {
     "matchedFile": "20261021113853-دراغون-لي-يجدد-عقده-مع-wwe.md",
     "reason": "الخبر الجديد يعنحس نفس خبر تجديد عقد دراغون لي مع WWE والذي تم نشره مسبقاً بناءً على تقارير PWInsider.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261106054633-نتائج-عرض-tna-impact-5-نوفمبر-2026-فوز-فريق-ذا-نيميث-في-الحدث-الرئيسي.md",
     "reason": "الخبر الجديد يغطي نفس نتائج عرض TNA Impact بتاريخ 5 نوفمبر 2026 التي تم نشرها بالفعل في الخبر رقم 0.",
     "at": "2026-11-06T04:28:09.624Z"
+  },
+  "https://www.ringsidenews.com/njpw-dissolving-american-subsidiary-amid-major-business-restructuring/": {
+    "matchedFile": "20261106102102-اتحاد-njpw-يغلق-شركته-الفرعية-njpw-of-america-ويدخل-في-مرحلة-التصفية.md",
+    "reason": "الخبر الجديد ينقل نفس الإعلان الرسمي الخاص بإغلاق وتصفية شركة NJPW of America وإعادة هيكلة الموارد مع الاستمرار في العروض بدعم من TV Asahi.",
+    "at": "2026-11-06T12:04:35.205Z"
   }
 }
