@@ -1,48 +1,48 @@
 {
- "https://www.fightful.com/wrestling/matt-cardona-in-my-head-im-almost-ready-i-dont-know-when-ill-be-cleared-to-return-to-the-ring-but-i-do-know-that-im-not-finished": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-06T21:42:35.878Z"
- },
  "https://www.fightful.com/wrestling/maven-says-he-has-had-headache-and-brain-fog-every-single-day-since-november-2025-surgery-is-definitely-on-the-horizon": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T21:42:26.054Z"
+  "at": "2026-11-06T21:45:09.897Z"
  },
  "https://www.fightful.com/wrestling/tna-releases-8-bit-arcade-game-on-website": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، كلمة عربية مقطوعة من حرفين («بت») — اكتب الكلمة كاملة",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، كلمة عربية مقطوعة من حرفين («بت») — اكتب الكلمة كاملة، كلمة عربية مقطوعة من حرفين («بت») — اكتب الكلمة كاملة",
   "retry": true,
-  "at": "2026-11-06T21:42:25.546Z"
+  "at": "2026-11-06T21:45:09.408Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-commentary-team-to-call-crown-jewel-from-wwe-hq-in-stamford": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T21:42:08.278Z"
+  "at": "2026-11-06T21:44:50.537Z"
  },
  "https://www.fightful.com/wrestling/njpw-academy-in-california-closing": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T21:42:07.778Z"
+  "at": "2026-11-06T21:44:50.098Z"
  },
  "https://www.fightful.com/wrestling/report-george-iceman-departs-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T21:42:07.097Z"
+  "at": "2026-11-06T21:44:49.499Z"
  },
  "https://www.fightful.com/wrestling/aew-fright-night-collision-10-31-viewership-drops-on-halloween-night": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T21:42:06.777Z"
+  "at": "2026-11-06T21:44:49.216Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-10-29-viewership-drops-remains-over-200000-viewers": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-29)",
   "retry": false,
-  "at": "2026-11-06T21:42:06.364Z"
+  "at": "2026-11-06T21:44:48.851Z"
  },
  "https://www.fightful.com/wrestling/us-embassy-riyadh-issues-statement-about-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T21:42:06.158Z"
+  "at": "2026-11-06T21:44:48.668Z"
+ },
+ "https://www.fightful.com/wrestling/matt-cardona-in-my-head-im-almost-ready-i-dont-know-when-ill-be-cleared-to-return-to-the-ring-but-i-do-know-that-im-not-finished": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-06T21:42:35.878Z"
  },
  "https://www.wrestlinginc.com/2309790/wwe-matt-cardona-injury-update-not-finished": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
