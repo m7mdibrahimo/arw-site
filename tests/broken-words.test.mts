@@ -941,3 +941,7 @@ test('unbalanced quotes and «يذكر أن» + verb-first are blocked (INCIDENT
   assert.ok(checkArticle(t, 'يذكر أن أصبح إيكاروس وترافيس مصارعين أحرارا.' + pad).some(i => i.code === 'verb_after_yudhkar'));
   assert.ok(!checkArticle(t, 'يذكر أن إيكاروس أصبح مصارعا حرا.' + pad).some(i => i.code === 'verb_after_yudhkar'));
 });
+
+test('«نزال فرق بث» (broken phrase) is corrected (INCIDENTS #1096)', () => {
+  assert.equal(applyCorrections('شارك في نزال فرق بث في عرض TNA'), 'شارك في نزال فرق أذيع في عرض TNA');
+});
