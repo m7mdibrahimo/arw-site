@@ -1,5 +1,15 @@
 [
   {
+    "id": 337753,
+    "link": "https://www.fightful.com/wrestling/aew-fright-night-collision-10-31-viewership-drops-on-halloween-night/",
+    "date": "2026-11-06T11:55:34",
+    "date_gmt": "2026-11-06T16:55:34",
+    "title": {
+      "rendered": "AEW Fright Night Collision (10/31) Viewership Drops On Halloween Night"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/03/04215146/01-aew-collision-new-logo-2024-696x421-1.jpg"
+  },
+  {
     "id": 337747,
     "link": "https://www.fightful.com/wrestling/nia-jax-the-bloodline-can-call-me-naomi-or-tamina-whenever-they-need-us/",
     "date": "2026-11-06T11:34:05",
@@ -288,15 +298,5 @@
       "rendered": "TNA iMPACT! Results (11/5): Nemeths vs. Leon Slater And Amazing Red"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/04164738/c0930f58eb538d3cb2d102bda6636f43-1.jpg"
-  },
-  {
-    "id": 337657,
-    "link": "https://www.fightful.com/wrestling/templario-titan-vs-black-tiger-ultimo-guerrero-set-for-mlw-saturday-night-superfight/",
-    "date": "2026-11-05T21:26:02",
-    "date_gmt": "2026-11-06T02:26:02",
-    "title": {
-      "rendered": "Templario &amp; Titán vs. Black Tiger &amp; Último Guerrero Set For MLW Saturday Night SuperFight"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/04160552/Super-Fight-Wide.png.webp"
   }
 ]
