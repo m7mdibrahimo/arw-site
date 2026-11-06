@@ -1,5 +1,15 @@
 [
   {
+    "id": 337686,
+    "link": "https://www.fightful.com/wrestling/njpw-announces-dates-locations-for-2027-the-new-beginning-tour/",
+    "date": "2026-11-06T01:23:38",
+    "date_gmt": "2026-11-06T06:23:38",
+    "title": {
+      "rendered": "NJPW Announces Dates &amp; Locations For 2027 The New Beginning Tour"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/06010639/Untitled-Design-6.jpg"
+  },
+  {
     "id": 337684,
     "link": "https://www.fightful.com/wrestling/mustafa-ali-vs-frankie-kazarian-more-set-for-11-12-tna-impact/",
     "date": "2026-11-05T23:23:35",
@@ -288,15 +298,5 @@
       "rendered": "Gabe Kidd Talks Emotional Moment With Jon Moxley At AEW&#8217;s PAC Tribute Show"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/05141943/maxresdefault-17.jpg"
-  },
-  {
-    "id": 337603,
-    "link": "https://www.fightful.com/wrestling/wwe-offering-crew-members-3000-in-hazard-pay-for-trip-to-saudi-arabia-for-crown-jewel-2026/",
-    "date": "2026-11-05T14:06:21",
-    "date_gmt": "2026-11-05T19:06:21",
-    "title": {
-      "rendered": "WWE Offering Crew Members $3,000 In Hazard Pay For Trip To Saudi Arabia For Crown Jewel 2026"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/04112806/NET_INTL_065804_CrownJewel26_LAUNCH_1920x1080.jpg"
   }
 ]
