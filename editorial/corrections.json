@@ -2,6 +2,16 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "لاحظت هدسون ملاحظة",
+      "right": "لاحظت هدسون ورقة",
+      "note": "note = ورقة مكتوبة مش «ملاحظة» (INCIDENTS #1099)"
+    },
+    {
+      "wrong": "ينوي انطلاق",
+      "right": "ينوي بدء",
+      "note": "«ينوي» بعدها فعل مصدر مش اسم انطلاق (INCIDENTS #1099)"
+    },
+    {
       "wrong": "داريا راي",
       "right": "داريا ري",
       "note": "الاسم المعتمد في القاموس (Daria Rae) (INCIDENTS #1098)"

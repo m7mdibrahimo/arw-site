@@ -953,3 +953,9 @@ test('«فينس وداش» is corrected to «فينسنت وداتش» (INCIDEN
 test('«داريا راي» is corrected to the glossary spelling «داريا ري» (INCIDENTS #1098)', () => {
   assert.equal(applyCorrections('أول نزال لداريا راي'), 'أول نزال لداريا ري'.replace('لداريا','لداريا'));
 });
+
+// INCIDENTS #1099
+test('«ينوي انطلاق» and «لاحظت هدسون ملاحظة» are corrected', () => {
+  assert.match(applyCorrections('كان الاتحاد ينوي انطلاق البطولة'), /ينوي بدء البطولة/);
+  assert.match(applyCorrections('ثم لاحظت هدسون ملاحظة بجانبها'), /لاحظت هدسون ورقة/);
+});
