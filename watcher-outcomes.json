@@ -9,6 +9,11 @@
   "retry": false,
   "at": "2026-11-06T17:16:51.303Z"
  },
+ "https://www.wrestlinginc.com/2308863/austin-creed-bandido-aew-dynanmite-attack-kofi-swerve-strickland": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-06T17:12:48.184Z"
+ },
  "https://www.fightful.com/wrestling/us-embassy-riyadh-issues-statement-about-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
