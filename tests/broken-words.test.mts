@@ -945,3 +945,7 @@ test('unbalanced quotes and «يذكر أن» + verb-first are blocked (INCIDENT
 test('«نزال فرق بث» (broken phrase) is corrected (INCIDENTS #1096)', () => {
   assert.equal(applyCorrections('شارك في نزال فرق بث في عرض TNA'), 'شارك في نزال فرق أذيع في عرض TNA');
 });
+
+test('«فينس وداش» is corrected to «فينسنت وداتش» (INCIDENTS #1097)', () => {
+  assert.equal(applyCorrections('حاول فينس وداش تتويجها'), 'حاول فينسنت وداتش تتويجها');
+});
