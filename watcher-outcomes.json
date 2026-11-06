@@ -1,4 +1,34 @@
 {
+ "https://www.fightful.com/wrestling/report-george-iceman-departs-tna-wrestling": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-06T18:09:16.989Z"
+ },
+ "https://www.fightful.com/wrestling/aew-fright-night-collision-10-31-viewership-drops-on-halloween-night": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-06T18:09:16.729Z"
+ },
+ "https://www.fightful.com/wrestling/tna-impact-10-29-viewership-drops-remains-over-200000-viewers": {
+  "reason": "تقرير مشاهدة لعرض قديم (2026-10-29)",
+  "retry": false,
+  "at": "2026-11-06T18:09:16.391Z"
+ },
+ "https://www.fightful.com/wrestling/us-embassy-riyadh-issues-statement-about-wwe-crown-jewel": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-06T18:09:16.222Z"
+ },
+ "https://www.fightful.com/wrestling/rey-mysterio-announces-team-usa-vs-team-mexico-bout-for-wwe-survivor-series": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-06T18:09:15.142Z"
+ },
+ "https://www.fightful.com/wrestling/rhea-ripley-makes-appearance-at-motionless-in-white-concert": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-06T18:09:14.871Z"
+ },
  "https://www.ringsidenews.com/nia-jax-reveals-rock-told-her-hide-their-family-connection-during-wwe-tryout": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
