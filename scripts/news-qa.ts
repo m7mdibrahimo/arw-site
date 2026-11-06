@@ -1154,8 +1154,9 @@ export function findAdjacentRepeatedPhrase(line: string): string | null {
   for (let n = 3; n <= 12; n++) {
     for (let i = 0; i + 2 * n <= words.length; i++) {
       let same = true;
-      for (let k = 0; k < n && same; k++) same = !!words[i + k] && /^[\u0621-\u064A]+$/.test(words[i + k]) && words[i + k] === words[i + n + k];
-      if (same) return words.slice(i, i + n).join(" ");
+      for (let k = 0; k < n && same; k++) same = !!words[i + k] && /^[\u0621-\u064A0-9]+$/.test(words[i + k]) && words[i + k] === words[i + n + k];
+      // a phrase made only of digits/one Arabic word is a list («2020 2020») — needs 2+ Arabic words
+      if (same && words.slice(i, i + n).filter((w) => /[\u0621-\u064A]/.test(w)).length >= 2) return words.slice(i, i + n).join(" ");
     }
   }
   // Two-word «X ال…» phrase written twice («للوزن الثقيل للوزن الثقيل», INCIDENTS #1061). Only when the phrase carries an
