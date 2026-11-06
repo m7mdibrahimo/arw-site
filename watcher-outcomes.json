@@ -1,18 +1,23 @@
 {
- "https://www.ringsidenews.com/aalyah-gutierrez-wrestled-first-live-match-wwe-performance-center": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+ "https://www.fightful.com/wrestling/rey-mysterio-says-aalyah-mysterio-had-first-pc-live-match-in-february-after-two-weeks-of-pc-training": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-06T12:50:21.946Z"
+  "at": "2026-11-06T12:55:26.632Z"
  },
  "https://www.fightful.com/wrestling/rey-mysterio-announces-team-usa-vs-team-mexico-bout-for-wwe-survivor-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T12:51:29.077Z"
+  "at": "2026-11-06T12:55:06.499Z"
  },
  "https://www.fightful.com/wrestling/rhea-ripley-makes-appearance-at-motionless-in-white-concert": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T12:51:28.867Z"
+  "at": "2026-11-06T12:55:06.211Z"
+ },
+ "https://www.ringsidenews.com/aalyah-gutierrez-wrestled-first-live-match-wwe-performance-center": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-06T12:50:21.946Z"
  },
  "https://www.fightful.com/wrestling/wrestling-open-ri-results-11-2": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
   "retry": true,
   "at": "2026-10-25T04:06:15.281Z"
- },
- "https://www.fightful.com/wrestling/bryce-remsburg-says-conversations-are-being-had-about-what-aew-might-do-while-wwe-is-in-saudi-arabia-for-wrestlemania-43": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-25T03:56:55.652Z"
  }
 }
