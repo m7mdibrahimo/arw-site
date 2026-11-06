@@ -1,5 +1,15 @@
 [
   {
+    "id": 337805,
+    "link": "https://www.fightful.com/wrestling/john-cena-is-no-match-for-the-cookie-monster-in-a-cookie-eating-contest/",
+    "date": "2026-11-06T15:33:50",
+    "date_gmt": "2026-11-06T20:33:50",
+    "title": {
+      "rendered": "John Cena Is No Match For The Cookie Monster In A Cookie Eating Contest"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/06153303/Screenshot-2026-11-06-at-3.32.34-PM.png"
+  },
+  {
     "id": 337801,
     "link": "https://www.fightful.com/wrestling/tna-releases-8-bit-arcade-game-on-website/",
     "date": "2026-11-06T15:10:51",
@@ -288,15 +298,5 @@
       "rendered": "Rey Mysterio Announces Team USA vs. Team Mexico Bout For WWE Survivor Series"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/13130357/HNHcbGvXEAAKz-9-1.jpeg"
-  },
-  {
-    "id": 337709,
-    "link": "https://www.fightful.com/wrestling/rhea-ripley-makes-appearance-at-motionless-in-white-concert/",
-    "date": "2026-11-06T07:07:57",
-    "date_gmt": "2026-11-06T12:07:57",
-    "title": {
-      "rendered": "Rhea Ripley Makes Appearance At Motionless In White Concert"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/03/02214652/HCdCNFKbUAAMYGD.jpg"
   }
 ]
