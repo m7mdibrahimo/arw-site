@@ -1,5 +1,15 @@
 [
   {
+    "id": 337758,
+    "link": "https://www.fightful.com/wrestling/report-george-iceman-departs-tna-wrestling/",
+    "date": "2026-11-06T12:31:54",
+    "date_gmt": "2026-11-06T17:31:54",
+    "title": {
+      "rendered": "Report: George Iceman Departs TNA Wrestling"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/06123120/9813be8e9ef04f59373ae7c8da282883.webp"
+  },
+  {
     "id": 337753,
     "link": "https://www.fightful.com/wrestling/aew-fright-night-collision-10-31-viewership-drops-on-halloween-night/",
     "date": "2026-11-06T11:55:34",
@@ -288,15 +298,5 @@
       "rendered": "Athena Challenges Hyan For ROH Final Battle"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/08170232/maxresdefault-45.jpg"
-  },
-  {
-    "id": 337663,
-    "link": "https://www.fightful.com/wrestling/tna-impact-results-11-5-nemeths-vs-leon-slater-and-amazing-red/",
-    "date": "2026-11-05T21:46:33",
-    "date_gmt": "2026-11-06T02:46:33",
-    "title": {
-      "rendered": "TNA iMPACT! Results (11/5): Nemeths vs. Leon Slater And Amazing Red"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/04164738/c0930f58eb538d3cb2d102bda6636f43-1.jpg"
   }
 ]
