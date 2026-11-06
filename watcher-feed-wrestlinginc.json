@@ -1,5 +1,15 @@
 [
   {
+    "id": 3016567089,
+    "link": "https://www.wrestlinginc.com/2309735/wwe-christmas-danhausen-santa-santahausen/",
+    "date": "Fri, 06 Nov 2026 20:26:59 +0000",
+    "date_gmt": "2026-11-06T20:26:59.000Z",
+    "title": {
+      "rendered": "WWE Reportedly Planning To Roll Out Christmas-Themed Gimmick For Danhausen"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-reportedly-planning-to-roll-out-christmas-themed-gimmick-for-danhausen/l-intro-1793996744.jpg"
+  },
+  {
     "id": 3313628628,
     "link": "https://www.wrestlinginc.com/2309524/wwe-crown-jewel-2026-decision-move-saudi-arabian-government/",
     "date": "Fri, 06 Nov 2026 19:06:19 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE Crown Jewel 2026: Draws & Duds"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-crown-jewel-2026-draws-duds/l-intro-1793918942.jpg"
-  },
-  {
-    "id": 4183845770,
-    "link": "https://www.wrestlinginc.com/2308722/wwe-raw-united-center-debut-among-newly-announced-dates/",
-    "date": "Thu, 05 Nov 2026 23:21:44 +0000",
-    "date_gmt": "2026-11-05T23:21:44.000Z",
-    "title": {
-      "rendered": "WWE Raw United Center Debut Among Newly Announced Dates"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-united-center-debut-among-newly-announced-dates/l-intro-1793920682.jpg"
   }
 ]
