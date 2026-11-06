@@ -1,38 +1,43 @@
 {
- "https://www.wrestlinginc.com/2308170/tna-thursday-night-impact-november-5-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+ "https://www.fightful.com/wrestling/tna-impact-results-11-5-nemeths-vs-leon-slater-and-amazing-red": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، العنوان بينتهي بكلمة مبتورة مش موجودة في الخبر — الاقتباس اتقطع، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، اسم مصارع في العنوان أو المتن غير موجود في المصدر: PROGRESS Tag Team Championships، اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: AAA Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Fatal Influence، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
   "retry": true,
-  "at": "2026-11-06T02:47:10.762Z"
+  "at": "2026-11-06T02:51:21.647Z"
  },
  "https://www.fightful.com/wrestling/iron-survivor-challenge-match-has-been-discussed-for-wwe-main-roster": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T02:45:03.788Z"
+  "at": "2026-11-06T02:49:22.385Z"
  },
  "https://www.fightful.com/wrestling/wwe-planning-to-celebrate-30-years-of-the-rock": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T02:45:03.504Z"
+  "at": "2026-11-06T02:49:22.102Z"
  },
  "https://www.fightful.com/wrestling/wwe-to-roll-out-santahausen": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T02:45:03.220Z"
+  "at": "2026-11-06T02:49:21.817Z"
  },
  "https://www.fightful.com/wrestling/wwe-royal-rumble-2027-was-discussed-for-february-20th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T02:45:02.776Z"
+  "at": "2026-11-06T02:49:21.370Z"
  },
  "https://www.fightful.com/wrestling/wwe-offering-crew-members-3000-in-hazard-pay-for-trip-to-saudi-arabia-for-crown-jewel-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T02:45:02.405Z"
+  "at": "2026-11-06T02:49:21.005Z"
  },
  "https://www.fightful.com/wrestling/chris-jericho-talks-playing-gorgeous-george-in-the-greatest-says-he-watched-one-of-his-old-movies-to-prep-for-the-role": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T02:45:01.930Z"
+  "at": "2026-11-06T02:49:20.528Z"
+ },
+ "https://www.wrestlinginc.com/2308170/tna-thursday-night-impact-november-5-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-06T02:47:10.762Z"
  },
  "https://www.wrestlinginc.com/2304082/wwe-drew-mcintyre-vince-mcmahon-pitched-removing-arm-sword": {
   "reason": "المراجعة رفضته: علامة اقتباس اتفتحت ومتقفلتش (أو «» مع \" مخلوطين) — اقفل الاقتباس بنفس العلامة اللي اتفتح بيها",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-25T01:00:14.642Z"
- },
- "https://www.fightful.com/wrestling/angel-medina-of-da-baldies-in-ecw-retires": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-24T23:33:35.059Z"
  }
 }
