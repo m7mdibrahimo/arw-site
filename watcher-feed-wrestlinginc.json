@@ -1,5 +1,15 @@
 [
   {
+    "id": 1225340780,
+    "link": "https://www.wrestlinginc.com/2304082/wwe-drew-mcintyre-vince-mcmahon-pitched-removing-arm-sword/",
+    "date": "Fri, 06 Nov 2026 02:00:00 +0000",
+    "date_gmt": "2026-11-06T02:00:00.000Z",
+    "title": {
+      "rendered": "WWE's Drew McIntyre Pitched Vince McMahon On Removing Someone's Arm With Sword"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-drew-mcintyre-pitched-vince-mcmahon-on-removing-someones-arm-with-sword/l-intro-1793638044.jpg"
+  },
+  {
     "id": 2129891821,
     "link": "https://www.wrestlinginc.com/2308738/wwe-crown-jewel-2026-draws-duds-cody-rhodes-randy-orton-liv-morgan-chelsea-green/",
     "date": "Thu, 05 Nov 2026 23:46:17 +0000",
@@ -25,7 +35,7 @@
     "date": "Thu, 05 Nov 2026 23:00:00 +0000",
     "date_gmt": "2026-11-05T23:00:00.000Z",
     "title": {
-      "rendered": "TNA Thursday Night Impact Results 11/5/26 W/ Live Updates"
+      "rendered": "TNA Thursday Night Impact Results 11/5/26 W/ Live Updates: Avery Styles In Action"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-thursday-night-impact-results-11526-w-live-updates/l-intro-1793901961.jpg"
   },
@@ -188,15 +198,5 @@
       "rendered": "Kevin Owens Helps Grayson Waller Retain WWE NXT Title"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/kevin-owens-helps-grayson-waller-retain-wwe-nxt-title/l-intro-1793848319.jpg"
-  },
-  {
-    "id": 2564622528,
-    "link": "https://www.wrestlinginc.com/2307458/john-cena-names-first-participant-eponymous-wwe-tournament/",
-    "date": "Thu, 05 Nov 2026 02:54:05 +0000",
-    "date_gmt": "2026-11-05T02:54:05.000Z",
-    "title": {
-      "rendered": "John Cena Names First Participant In Eponymous WWE Tournament"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/john-cena-names-first-participant-in-eponymous-wwe-tournament/l-intro-1793847160.jpg"
   }
 ]
