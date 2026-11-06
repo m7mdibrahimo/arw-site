@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2292500/hank-tank-headed-wwe-nxt-dusty-rhodes-tag-classic-semifinals/": {
-    "matchedFile": "20261021000000-نتائج-عرض-wwe-nxt-20-أكتوبر-2026-نزالات-ربع-نهائي-بطولة-dusty-rhodes-للفرق.md",
-    "reason": "الخبر الجديد يغطي تفاصيل ونتائج نزالات بطولة Dusty Rhodes Tag Team Classic في عرض WWE NXT بتاريخ 20 أكتوبر 2026، وهي نفس النتائج والأحداث المغطاة بالفعل في تقرير نتائج العرض المنشور مسبقاً.",
-    "at": "2026-10-21T01:43:02.140Z"
-  },
   "https://www.wrestlinginc.com/2292489/el-hijo-de-dr-wagner-galeno-upset-birthright-wwe-nxt-dusty-tag-classic/": {
     "matchedFile": "20261021000000-نتائج-عرض-wwe-nxt-20-أكتوبر-2026-نزالات-ربع-نهائي-بطولة-dusty-rhodes-للفرق.md",
     "reason": "الخبر الجديد يعرض تفاصيل مواجهة من بطولة Dusty Tag Classic في عرض WWE NXT، وهي نفس المواجهة والنتيجة التي تم ذكرها بالفعل ضمن تقرير نتائج عرض WWE NXT المنشور سابقاً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261106023358-تقارير-جزء-كبير-من-بث-عرض-wwe-crown-jewel-سيتم-إدارته-عن-بعد-من-مقر-wwe-في-ستامفورد.md",
     "reason": "الخبر الجديد يتناول نفس الحدث الإنتاجي المتعلق بعرض Crown Jewel 2026، ولا يقدم أي تطور جديد أو معلومة إضافية جوهرية تختلف عن الخبر المنشور مسبقاً.",
     "at": "2026-11-05T23:46:13.254Z"
+  },
+  "https://www.ringsidenews.com/stephanie-vaquer-makes-wwe-ring-return-recent-absence/": {
+    "matchedFile": "20261106050337-ستيفاني-فاكير-تعود-إلى-الحلبة-في-عرض-wwe.md",
+    "reason": "الخبر الجديد يغطي نفس واقعة عودة ستيفاني فاكير إلى الحلبة في عرض بورتلاند، وهي نفس الواقعة المغطاة في الخبر المنشور مسبقاً.",
+    "at": "2026-11-06T02:11:29.729Z"
   }
 }
