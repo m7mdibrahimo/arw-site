@@ -488,3 +488,9 @@ test('promotion acronyms left in title case are restored (Njpw → NJPW)', async
   const fix = (t: string) => ENGLISH_FIXES.reduce((s, [re, to]) => s.replace(re, to as any), t);
   assert.equal(fix('in the final at Njpw Power Struggle and Wwe Raw'), 'in the final at NJPW Power Struggle and WWE Raw');
 });
+
+test('«Refuses to Post Her Children» gets its missing «photos of» (Brie Bella story, round 2026-11-06)', async () => {
+  const { fixEnglishNames } = await import('../scripts/english-edition.ts');
+  assert.equal(fixEnglishNames('Brie Bella Refuses to Post Her Children After Abuse'), 'Brie Bella Refuses to Post Photos of Her Children After Abuse');
+  assert.match(fixEnglishNames('vowing never to post her children online again'), /never to post photos of her children online/);
+});
