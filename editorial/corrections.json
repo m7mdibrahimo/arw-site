@@ -7423,9 +7423,10 @@
       "regex": true
     },
     {
-      "wrong": "تمكن بايج",
+      "wrong": "(?<!(?:إيثان|ايثان)\\s+بايج[\\s\\S]*)تمكن بايج",
       "right": "تمكن بيدج",
-      "note": "Hangman Page = بيدج في كل الأخبار — INCIDENTS #676"
+      "regex": true,
+      "note": "Hangman Page = بيدج في كل الأخبار — إلا لو الخبر عن إيثان بايج (Ethan Page) فبايج هي هو — INCIDENTS #676، #1110"
     },
     {
       "wrong": "برودي كيغ",

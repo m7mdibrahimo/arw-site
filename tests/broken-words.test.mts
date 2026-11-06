@@ -995,3 +995,20 @@ test('«يستعد … انطلاق» gets its ل (INCIDENTS #1106)', () => {
 test('correction fixes «تم تحذير بطل العالم» calque (Cookie Monster story)', () => {
   assert.equal(applyCorrections('حيث تم تحذير بطل العالم 17 مرة'), 'حيث وجه الحساب تحذيرا لبطل العالم 17 مرة');
 });
+
+// INCIDENTS #1110: «الفوز بالثلاثة» (pinfall) and «بيدج» for Ethan Page («بايج») in the Chad Gable story.
+test('«الفوز بالثلاثة» and «بيدج» after إيثان بايج block', () => {
+  const pad = ' كلام عادي كثير '.repeat(40);
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + pad).map((i) => i.code);
+  assert.ok(BLOCKING_QA_CODES.includes('inconsistent_name'));
+  assert.ok(codes('نفذ الحركة ليحقق الفوز بالثلاثة ويغادر.').includes('broken_word'));
+  assert.ok(!codes('نفذ الحركة ليحقق الفوز بالتثبيت ويغادر.').includes('broken_word'));
+  assert.ok(codes('خسر أمام إيثان بايج، بينما تمكن بيدج من النجاة.').includes('inconsistent_name'));
+  assert.ok(!codes('خسر أمام إيثان بايج، ثم ظهر آدم بيدج.').includes('inconsistent_name'));
+});
+
+// INCIDENTS #1110: «تمكن بايج» → «تمكن بيدج» (Adam Page) must not touch a story about Ethan Page.
+test('«تمكن بايج» stays when the story is about إيثان بايج', () => {
+  assert.equal(applyCorrections('خسر أمام إيثان بايج، بينما تمكن بايج من النجاة.'), 'خسر أمام إيثان بايج، بينما تمكن بايج من النجاة.');
+  assert.equal(applyCorrections('بينما تمكن بايج من النجاة.'), 'بينما تمكن بيدج من النجاة.');
+});
