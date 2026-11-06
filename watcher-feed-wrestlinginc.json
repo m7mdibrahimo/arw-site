@@ -1,5 +1,25 @@
 [
   {
+    "id": 4869277318,
+    "link": "https://www.wrestlinginc.com/2309312/njpw-new-japan-pro-wrestling-closure-american-subsidiary/",
+    "date": "Fri, 06 Nov 2026 17:24:39 +0000",
+    "date_gmt": "2026-11-06T17:24:39.000Z",
+    "title": {
+      "rendered": "NJPW Announces Closure Of American Subsidiary"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/njpw-announces-closure-of-american-subsidiary/l-intro-1793985655.jpg"
+  },
+  {
+    "id": 2065937840,
+    "link": "https://www.wrestlinginc.com/2309309/wwe-stephanie-vaquer-returns-live-event-november-2026/",
+    "date": "Fri, 06 Nov 2026 17:20:54 +0000",
+    "date_gmt": "2026-11-06T17:20:54.000Z",
+    "title": {
+      "rendered": "Stephanie Vaquer Returns At WWE Live Event"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/stephanie-vaquer-returns-at-wwe-live-event/l-intro-1793985547.jpg"
+  },
+  {
     "id": 1086260000,
     "link": "https://www.wrestlinginc.com/2308863/austin-creed-bandido-aew-dynanmite-attack-kofi-swerve-strickland/",
     "date": "Fri, 06 Nov 2026 17:00:00 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Kevin Nash Doesn't Think He'd Be A Good Fit For WWE Creative Role"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/kevin-nash-doesnt-think-hed-be-a-good-fit-for-wwe-creative-role/l-intro-1793915812.jpg"
-  },
-  {
-    "id": 2006617260,
-    "link": "https://www.wrestlinginc.com/2308544/wwe-crew-members-hazard-pay-traveling-riyadh-saudi-arabia-crown-jewel/",
-    "date": "Thu, 05 Nov 2026 21:03:44 +0000",
-    "date_gmt": "2026-11-05T21:03:44.000Z",
-    "title": {
-      "rendered": "Report: WWE Offering Crew Members Hazard Pay For Traveling To Riyadh For Crown Jewel"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/report-wwe-offering-crew-members-hazard-pay-for-traveling-to-riyadh-for-crown-jewel/l-intro-1793912401.jpg"
-  },
-  {
-    "id": 1973187306,
-    "link": "https://www.wrestlinginc.com/2308453/tko-mark-shapiro-wwe-wrestlemania-42-moving-saudi-arabia-half-upfront/",
-    "date": "Thu, 05 Nov 2026 20:14:15 +0000",
-    "date_gmt": "2026-11-05T20:14:15.000Z",
-    "title": {
-      "rendered": "TKO's Mark Shapiro Addresses Chances Of WWE WrestleMania 43 Moving From Saudi Arabia"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tkos-mark-shapiro-addresses-chances-of-wwe-wrestlemania-43-moving-from-saudi-arab/l-intro-1793909268.jpg"
   }
 ]
