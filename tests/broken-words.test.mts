@@ -1012,3 +1012,8 @@ test('«تمكن بايج» stays when the story is about إيثان بايج', 
   assert.equal(applyCorrections('خسر أمام إيثان بايج، بينما تمكن بايج من النجاة.'), 'خسر أمام إيثان بايج، بينما تمكن بايج من النجاة.');
   assert.equal(applyCorrections('بينما تمكن بايج من النجاة.'), 'بينما تمكن بيدج من النجاة.');
 });
+
+test('corrections fix «ومختتما» and «مصارعات المحترفين» (INCIDENTS #1112)', () => {
+  assert.equal(applyCorrections('الإغلاق، ومختتما بالقول إن العمل مستمر'), 'الإغلاق، واختتم بالقول إن العمل مستمر');
+  assert.match(applyCorrections('استهدف مصارعات المحترفين'), /المصارعات المحترفات/);
+});
