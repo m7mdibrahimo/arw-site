@@ -1,13 +1,13 @@
 {
+ "https://www.fightful.com/wrestling/iron-survivor-challenge-match-has-been-discussed-for-wwe-main-roster": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-06T12:07:50.549Z"
+ },
  "https://www.ringsidenews.com/michael-chandlers-wwe-future-november-4-nxt-appearance": {
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
   "at": "2026-11-06T12:06:12.453Z"
- },
- "https://www.fightful.com/wrestling/iron-survivor-challenge-match-has-been-discussed-for-wwe-main-roster": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-06T12:05:53.319Z"
  },
  "https://www.fightful.com/wrestling/wwe-planning-to-celebrate-30-years-of-the-rock": {
   "reason": "مكرر مع خبر نزل قبل كده",
