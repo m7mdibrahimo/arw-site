@@ -1560,3 +1560,11 @@ test("Moné keeps its accent also as a surname alone, and the stray «بث» is 
   const bad = fs.readdirSync("content/news-en").filter(f => /\bMone(?![\wé])/.test(fs.readFileSync(`content/news-en/${f}`, "utf-8").replace(/^---\n[\s\S]*?\n---\n/, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #1108: «صالة قاعة إيه إن بي» (glossary gives «قاعة X», Gemini added «صالة» before it).
+test("«صالة قاعة» is collapsed to «قاعة» and no story keeps it (INCIDENTS #1108)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("مباشر من صالة قاعة إيه إن بي بالرياض"), "مباشر من قاعة إيه إن بي بالرياض");
+  const bad = fs.readdirSync("content/news").filter(f => fs.readFileSync(`content/news/${f}`, "utf-8").includes("صالة قاعة"));
+  assert.deepEqual(bad, []);
+});
