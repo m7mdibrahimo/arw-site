@@ -9,6 +9,11 @@
   "retry": true,
   "at": "2026-11-06T16:17:53.902Z"
  },
+ "https://www.wrestlinginc.com/2308840/marina-shafir-spoiled-little-s-mercedes-mone-aew-dynamite-full-gear": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
+  "retry": true,
+  "at": "2026-11-06T16:13:15.111Z"
+ },
  "https://www.fightful.com/wrestling/rey-mysterio-announces-team-usa-vs-team-mexico-bout-for-wwe-survivor-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -23,11 +28,6 @@
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
   "retry": true,
   "at": "2026-11-06T16:13:15.111Z"
- },
- "https://www.ringsidenews.com/aalyah-gutierrez-wrestled-first-live-match-wwe-performance-center": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-06T16:05:17.357Z"
  },
  "https://www.fightful.com/wrestling/rey-horus-returning-to-tna-at-destination-x": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
