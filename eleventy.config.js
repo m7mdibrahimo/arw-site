@@ -1127,6 +1127,7 @@ module.exports = function(eleventyConfig) {
         tags: item.data && Array.isArray(item.data.tags) ? item.data.tags.map(t => String(t || "").trim().toLowerCase()) : null,
         time: getItemTimestamp(item)
       };
+      info.tagSet = info.tags ? new Set(info.tags) : null; // a Set lookup, not Array.includes, in the 7,800-pages x 5,000-stories loop (INCIDENTS #1094)
       relatedInfo.set(item, info);
     }
     return info;
@@ -1171,7 +1172,7 @@ module.exports = function(eleventyConfig) {
 
       let score = 0;
       if (targetFed && info.fed && targetFed === info.fed) score += 3;
-      if (currentTags.length && info.tags) for (const t of currentTags) if (info.tags.includes(t)) score += tagWeight(allContent, t);
+      if (currentTags.length && info.tagSet) for (const t of currentTags) if (info.tagSet.has(t)) score += tagWeight(allContent, t);
       if (!score) continue;
       const gap = isNaN(ref) ? 0 : Math.abs(info.time - ref);
       if (!isNaN(ref)) score += gap <= 2 * DAY ? 6 : gap <= 7 * DAY ? 4 : gap <= 30 * DAY ? 2 : 0;

@@ -81,3 +81,17 @@ test("an English story's structured data is about the tags its headline names, n
   assert.deepEqual(englishTopics("Liv Morgan Calls Cory Matthews Toxic After Rewatching Boy Meets World", ["Liv Morgan", "WWE", "Hot Ones", "Boy Meets World"]), ["Boy Meets World"]);
   assert.deepEqual(englishTopics("Kyle Fletcher to Challenge Will Ospreay at AEW Full Gear", ["AEW", "AEW Full Gear", "Kyle Fletcher"]), ["AEW Full Gear"]);
 });
+
+// build time (INCIDENTS #1094): the matching regexes were rebuilt for every glossary name on every story
+// (~45 s of the build). They are built once now; 1,500 headlines through all three functions took ~10 s before, ~0.5 s now.
+test("matching 1,500 headlines is fast (regexes are built once, not per story)", () => {
+  const { englishPersonMentions, englishTopics } = require("../lib/wrestler-mentions.cjs");
+  const t0 = Date.now();
+  for (let i = 0; i < 1500; i++) {
+    const h = `سامي زين يعتقد أن فرصة الفوز ضاعت ${i} Sami Zayn and CM Punk talk about WWE Royal Rumble ${i}`;
+    personMentions(h, 4, ["WWE"]);
+    englishPersonMentions(h);
+    englishTopics(h, ["WWE", "Royal Rumble"]);
+  }
+  assert.ok(Date.now() - t0 < 5000, `took ${Date.now() - t0} ms`);
+});
