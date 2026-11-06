@@ -1,5 +1,15 @@
 [
   {
+    "id": 337718,
+    "link": "https://www.fightful.com/wrestling/wrestling-open-ri-results-11-2/",
+    "date": "2026-11-06T07:37:33",
+    "date_gmt": "2026-11-06T12:37:33",
+    "title": {
+      "rendered": "Wrestling Open RI Results (11/2)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/06073702/HV968IsWAAEqXHT.jpeg"
+  },
+  {
     "id": 337698,
     "link": "https://www.fightful.com/wrestling/mick-foley-spoke-to-darby-allin-about-his-wrestling-style-says-allin-was-walking-a-little-gingerly-after-aew-blood-guts/",
     "date": "2026-11-06T07:30:00",
@@ -288,15 +298,5 @@
       "rendered": "Nixi XS: I Can’t Believe I’m Having To Come Out As White. This Is So Humiliating"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/05/08212427/hq720-9.jpg"
-  },
-  {
-    "id": 14463,
-    "link": "https://www.fightful.com/wrestling/confirmed-wrestling-contract-expirations/",
-    "date": "2026-11-05T16:24:00",
-    "date_gmt": "2026-11-05T21:24:00",
-    "title": {
-      "rendered": "Wrestling Contract Expiration Dates: WWE, AEW, NJPW, TNA, Misc."
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/14163827/Resources4.png"
   }
 ]
