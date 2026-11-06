@@ -73,11 +73,5 @@
 - ماكس كاستر — ترتيب 11.1، 106 ظهور، 3 نقرة ← /news/حذف-ماكس-كاستر-من-صفحة-قائمة-مصارعي-aew-بعد-الإعلان-عن-مشاركته-في-عرض-tna-bound-for-glory/
 - المصارعة — ترتيب 7.2، 152 ظهور، 2 نقرة ← /
 
-## مشاكل لازم تتصلح (7)
-- مش متفهرس (تم الزحف إلى الصفحة - لم تتم فهرستها حاليًا): https://arab-wrestling.com/news/عرض-tna-impact-ثلاثة-أمور-كرهناها-وثلاثة-أحببناها/
-- مش متفهرس (تم الزحف إلى الصفحة - لم تتم فهرستها حاليًا): https://arab-wrestling.com/news/نتائج-عرض-roh-tv-5-نوفمبر-2026-لي-موريارتي-ومارك-ديفيس-وإيدي-كينغستون-في-الحلبة/
-- فحص الرابط فشل: https://arab-wrestling.com/news/غولدبيرج-يكشف-سبب-رفضه-تغيير-اسمه-في-عالم-المصارعة/ — The operation was aborted due to timeout
-- فحص الرابط فشل: https://arab-wrestling.com/news/كايلا-براكستون-تكشف-عن-شروط-المواعدة-لمن-يريد-الارتباط-بها/ — The operation was aborted due to timeout
-- فحص الرابط فشل: https://arab-wrestling.com/news/wwe-تقدم-أجور-مخاطر-لطاقم-العمل-في-رحلة-السعودية-بينما-يرفض-البعض-الذهاب/ — The operation was aborted due to timeout
-- فحص الرابط فشل: https://arab-wrestling.com/news/إنزو-أموري-وجو-ألونسو-يتواجدان-في-كواليس-عرض-wwe-nxt-يوم-4-نوفمبر/ — The operation was aborted due to timeout
-- فحص الرابط فشل: https://arab-wrestling.com/news/جايسون-سينيشن-روود-دوغ-حذرني-من-غضب-مصارعي-wwe-بسبب-تقليدي-لهم/ — The operation was aborted due to timeout
+## مشاكل لازم تتصلح (1)
+- مش متفهرس (تم الزحف إلى الصفحة - لم تتم فهرستها حاليًا): https://arab-wrestling.com/news/ري-ميستيريو-يعلن-عن-نزال-بين-فريق-الولايات-المتحدة-وفريق-المكسيك-في-عرض-wwe-survivor-series/
