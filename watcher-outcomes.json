@@ -1,18 +1,18 @@
 {
  "https://www.fightful.com/wrestling/rey-mysterio-says-aalyah-mysterio-had-first-pc-live-match-in-february-after-two-weeks-of-pc-training": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-06T13:25:24.282Z"
+  "at": "2026-11-06T13:27:45.444Z"
  },
  "https://www.fightful.com/wrestling/rey-mysterio-announces-team-usa-vs-team-mexico-bout-for-wwe-survivor-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T13:25:07.701Z"
+  "at": "2026-11-06T13:27:32.421Z"
  },
  "https://www.fightful.com/wrestling/rhea-ripley-makes-appearance-at-motionless-in-white-concert": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T13:25:07.399Z"
+  "at": "2026-11-06T13:27:32.213Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-6": {
   "reason": "المراجعة رفضته: نفس العنوان منشور قبل كده — الخبر مكرر",
