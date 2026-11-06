@@ -1,48 +1,48 @@
 {
  "https://www.fightful.com/wrestling/tna-releases-8-bit-arcade-game-on-website": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، كلمة عربية مقطوعة من حرفين («بت») — اكتب الكلمة كاملة، كلمة عربية مقطوعة من حرفين («بت») — اكتب الكلمة كاملة",
   "retry": true,
-  "at": "2026-11-06T20:18:33.862Z"
+  "at": "2026-11-06T20:21:40.409Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-commentary-team-to-call-crown-jewel-from-wwe-hq-in-stamford": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T20:18:13.730Z"
+  "at": "2026-11-06T20:21:07.636Z"
  },
  "https://www.fightful.com/wrestling/njpw-academy-in-california-closing": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T20:18:13.302Z"
+  "at": "2026-11-06T20:21:07.193Z"
  },
  "https://www.fightful.com/wrestling/report-george-iceman-departs-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T20:18:12.720Z"
+  "at": "2026-11-06T20:21:06.592Z"
  },
  "https://www.fightful.com/wrestling/aew-fright-night-collision-10-31-viewership-drops-on-halloween-night": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T20:18:12.446Z"
+  "at": "2026-11-06T20:21:06.309Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-10-29-viewership-drops-remains-over-200000-viewers": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-29)",
   "retry": false,
-  "at": "2026-11-06T20:18:12.093Z"
+  "at": "2026-11-06T20:21:05.942Z"
  },
  "https://www.fightful.com/wrestling/us-embassy-riyadh-issues-statement-about-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T20:18:11.918Z"
+  "at": "2026-11-06T20:21:05.760Z"
  },
  "https://www.fightful.com/wrestling/rey-mysterio-announces-team-usa-vs-team-mexico-bout-for-wwe-survivor-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T20:18:10.712Z"
+  "at": "2026-11-06T20:21:04.519Z"
  },
  "https://www.fightful.com/wrestling/rhea-ripley-makes-appearance-at-motionless-in-white-concert": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-06T20:18:10.425Z"
+  "at": "2026-11-06T20:21:04.222Z"
  },
  "https://www.fightful.com/wrestling/gcw-set-to-debut-in-mississippi-tna-impact-highlights-more-fight-size": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kofi Kingston",
