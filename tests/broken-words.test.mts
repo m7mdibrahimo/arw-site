@@ -985,3 +985,9 @@ test('«ابدى» / «المرسعة» / «في ربكة» are corrected (INCID
 test('«ري هيخو ديل فيكينغو» (wrong wrestler) becomes «ري هوروس» (INCIDENTS #1105)', () => {
   assert.equal(applyCorrections('عودة ري هيخو ديل فيكينغو إلى TNA'), 'عودة ري هوروس إلى TNA');
 });
+
+// INCIDENTS #1106: «يستعد اتحاد NJPW انطلاق بطولة» (missing ل)
+test('«يستعد … انطلاق» gets its ل (INCIDENTS #1106)', () => {
+  assert.match(applyCorrections('يستعد اتحاد NJPW انطلاق بطولة وورلد تاج ليج'), /يستعد اتحاد NJPW لانطلاق بطولة/);
+  assert.doesNotMatch(applyCorrections('بعد انطلاق البطولة يستعد الجميع'), /لانطلاق/);
+});
