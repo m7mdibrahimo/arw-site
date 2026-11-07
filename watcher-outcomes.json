@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2310036/wwe-smackdown-november-6-2026-hated-loved-opinion-review": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، نفس العنوان منشور قبل كده — الخبر مكرر",
+  "retry": true,
+  "at": "2026-11-07T07:00:37.270Z"
+ },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-2026-preview-start-time-how-to-watch-location-11-7": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -68,11 +73,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-07T06:51:04.518Z"
- },
- "https://www.wrestlinginc.com/2310036/wwe-smackdown-november-6-2026-hated-loved-opinion-review": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، نفس العنوان منشور قبل كده — الخبر مكرر",
-  "retry": true,
-  "at": "2026-11-07T06:42:32.152Z"
  },
  "https://www.fightful.com/wrestling/report-george-iceman-departs-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
