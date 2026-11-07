@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/ric-flair-mike-tyson-score-major-legal-victory-multi-million-dollar-lawsuit": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-07T20:40:13.635Z"
+ },
+ "https://www.ringsidenews.com/mercedes-mone-mourns-passing-her-younger-sister-alexis": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
+  "retry": true,
+  "at": "2026-11-07T20:39:30.023Z"
+ },
  "https://www.fightful.com/wrestling/penta-and-jevon-evans-speak-after-winning-world-tag-team-titles-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -98,16 +108,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-07T20:36:00.359Z"
- },
- "https://www.ringsidenews.com/ric-flair-mike-tyson-score-major-legal-victory-multi-million-dollar-lawsuit": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة",
-  "retry": true,
-  "at": "2026-11-07T20:19:06.682Z"
- },
- "https://www.ringsidenews.com/mercedes-mone-mourns-passing-her-younger-sister-alexis": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-07T20:18:55.100Z"
  },
  "https://www.fightful.com/wrestling/rey-mysterio-to-lead-team-mexico-at-wwe-survivor-series-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
