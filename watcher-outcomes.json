@@ -1,68 +1,73 @@
 {
+ "https://www.fightful.com/wrestling/charlotte-flair-returns-on-11-6-wwe-smackdown": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-07T01:49:08.169Z"
+ },
  "https://www.fightful.com/wrestling/claudio-castagnoli-announces-t1-and-karmine-corp-during-2026-league-of-legends-world-championship-quarterfinals": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-07T01:43:09.658Z"
+  "at": "2026-11-07T01:48:29.085Z"
  },
  "https://www.fightful.com/wrestling/randy-orton-im-done-playing-games-i-need-number-15-and-i-need-it-sooner-than-later": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:42:49.000Z"
+  "at": "2026-11-07T01:48:06.071Z"
  },
  "https://www.fightful.com/wrestling/randy-orton-ive-always-been-the-last-man-standing-look-at-the-ovw-class-that-i-graduated-from-im-the-only-one-left": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:42:48.794Z"
+  "at": "2026-11-07T01:48:05.782Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-blood-guts-does-240k-more-viewers-than-wwe-nxt-on-11-4": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:42:48.472Z"
+  "at": "2026-11-07T01:48:05.329Z"
  },
  "https://www.fightful.com/wrestling/chad-gable-comments-on-wwe-intercontinental-title-loss-to-ethan-page": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:42:48.207Z"
+  "at": "2026-11-07T01:48:04.957Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-draws-over-450000-viewers": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:42:48.001Z"
+  "at": "2026-11-07T01:48:04.669Z"
  },
  "https://www.fightful.com/wrestling/maven-says-he-has-had-headache-and-brain-fog-every-single-day-since-november-2025-surgery-is-definitely-on-the-horizon": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:42:47.677Z"
+  "at": "2026-11-07T01:48:04.217Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-commentary-team-to-call-crown-jewel-from-wwe-hq-in-stamford": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:42:47.237Z"
+  "at": "2026-11-07T01:48:03.596Z"
  },
  "https://www.fightful.com/wrestling/njpw-academy-in-california-closing": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:42:46.915Z"
+  "at": "2026-11-07T01:48:03.142Z"
  },
  "https://www.fightful.com/wrestling/report-george-iceman-departs-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:42:46.474Z"
+  "at": "2026-11-07T01:48:02.523Z"
  },
  "https://www.fightful.com/wrestling/aew-fright-night-collision-10-31-viewership-drops-on-halloween-night": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:42:46.264Z"
+  "at": "2026-11-07T01:48:02.227Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-10-29-viewership-drops-remains-over-200000-viewers": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-29)",
   "retry": false,
-  "at": "2026-11-07T01:42:45.976Z"
+  "at": "2026-11-07T01:48:01.842Z"
  },
  "https://www.fightful.com/wrestling/us-embassy-riyadh-issues-statement-about-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:42:45.841Z"
+  "at": "2026-11-07T01:48:01.648Z"
  },
  "https://www.wrestlinginc.com/2309607/wwe-smackdown-november-6-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-26T11:43:43.314Z"
- },
- "https://www.ringsidenews.com/anna-jay-undergoes-shoulder-surgery-years-bone-deterioration": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-26T09:57:43.104Z"
  }
 }

@@ -1,5 +1,15 @@
 [
   {
+    "id": 337877,
+    "link": "https://www.fightful.com/wrestling/charlotte-flair-returns-on-11-6-wwe-smackdown/",
+    "date": "2026-11-06T20:46:21",
+    "date_gmt": "2026-11-07T01:46:21",
+    "title": {
+      "rendered": "Charlotte Flair Returns On 11/6 WWE SmackDown"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/06204505/HWfHq7jbIAAfQC3.jpg"
+  },
+  {
     "id": 337864,
     "link": "https://www.fightful.com/wrestling/claudio-castagnoli-announces-t1-and-karmine-corp-during-2026-league-of-legends-world-championship-quarterfinals/",
     "date": "2026-11-06T20:14:24",
@@ -288,15 +298,5 @@
       "rendered": "US Embassy Riyadh Issues Statement About WWE Crown Jewel"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/04112806/NET_INTL_065804_CrownJewel26_LAUNCH_1920x1080.jpg"
-  },
-  {
-    "id": 71467,
-    "link": "https://www.fightful.com/wrestling/pro-wrestling-free-agents/",
-    "date": "2026-11-06T11:17:00",
-    "date_gmt": "2026-11-06T16:17:00",
-    "title": {
-      "rendered": "Pro Wrestling Free Agents"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/14160822/Resources1.jpg"
   }
 ]
