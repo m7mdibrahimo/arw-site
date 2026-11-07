@@ -1,14 +1,4 @@
 {
-  "https://www.ringsidenews.com/real-reason-wwe-plans-load-nxt-against-aew-blood-guts/": {
-    "matchedFile": "20261023172316-نيك-خان-وراء-قرار-تعزيز-عرض-wwe-nxt-لمواجهة-aew-blood-guts.md",
-    "reason": "الخبر الجديد يتناول نفس الحدث (قرار تعزيز عرض NXT لمواجهة AEW Blood & Guts) ويستند إلى نفس المصدر (بريان آيفاريز) ونفس التفاصيل الجوهرية المذكورة في الخبر المنشور.",
-    "at": "2026-10-23T20:20:14.461Z"
-  },
-  "https://www.fightful.com/wrestling/cody-rhodes-says-its-his-plan-to-do-both-acting-and-wrestling-its-not-like-it-used-to-be-where-you-can-only-pick-one-or-the-other/": {
-    "matchedFile": "20261023224009-كودي-رودز-يكشف-خططه-الهوليوودية-بعد-نجاح-فيلم-street-fighter.md",
-    "reason": "الخبر الجديد يعيد سرد تصريحات كودي رودز من نفس المقابلة (The Rich Eisen Show) حول التوفيق بين التمثيل والمصارعة، وهي نفس النقاط التي غطاها الخبر رقم 0.",
-    "at": "2026-10-23T20:26:10.855Z"
-  },
   "https://www.wrestlinginc.com/2295878/wwe-ric-flair-rushed-hospital-fall-blood-clot/": {
     "matchedFile": "20261023222528-نقل-ريك-فلير-إلى-المستشفى-بعد-سقوط-دامي-خارج-مطعم-في-فلوريدا-وسط-مخاوف-من-جلطة-دموية.md",
     "reason": "الخبر الجديد يغطي نفس الواقعة (سقوط ريك فلير ونقله للمستشفى بعد إعلانه عن الجلطة) التي تم تناولها في الخبر المنشور، ولا يقدم أي تطور جديد أو معلومة إضافية جوهرية.",
@@ -2498,5 +2488,15 @@
     "matchedFile": "20261107224732-رومان-رينز-يهزم-سامي-زين-في-الحدث-الرئيسي-لعرض-wwe-crown-jewel-2026.md",
     "reason": "الخبر الجديد يغطي نفس نتيجة نزال الحدث الرئيسي في عرض WWE Crown Jewel 2026 التي تم تناولها بالفعل في الخبر المنشور.",
     "at": "2026-11-07T19:56:04.355Z"
+  },
+  "https://www.ringsidenews.com/triple-h-sends-message-about-roman-reigns-wwe-crown-jewel-2026-victory/": {
+    "matchedFile": "20261107224732-رومان-رينز-يهزم-سامي-زين-في-الحدث-الرئيسي-لعرض-wwe-crown-jewel-2026.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث (فوز رومان رينز في Crown Jewel 2026) وتصريح تريبل إتش يعتبر تفصيلة إضافية حول نفس الواقعة وليس تطوراً جوهرياً يغير من طبيعة الخبر المنشور مسبقاً.",
+    "at": "2026-11-07T20:06:11.231Z"
+  },
+  "https://www.ringsidenews.com/chelsea-green-addresses-tiffany-strattons-betrayal-title-loss-wwe-crown-jewel/": {
+    "matchedFile": "20261107215716-تيفاني-ستراتون-تخون-تشيلسي-غرين-وتستخدم-حقيبة-money-in-the-bank-في-عرض-wwe-crown-jewel-2026.md",
+    "reason": "الخبر الجديد عبارة عن تصريحات تشيلسي غرين حول نفس واقعة الخيانة التي تم تغطيتها بالفعل في الخبر المنشور، ولا يضيف تطوراً جديداً للحدث نفسه بل يعيد سرد مشاعرها تجاه ما حدث.",
+    "at": "2026-11-07T20:06:12.367Z"
   }
 }
