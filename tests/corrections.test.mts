@@ -1576,3 +1576,10 @@ test("«حصولهم لبطولة» is corrected and no story keeps it (INCIDENT
   const bad = fs.readdirSync("content/news").filter(f => /حصول(هم|ه|ها) لبطولة/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+test("«موضعا» becomes «موضحا» and no published story keeps it (INCIDENTS #1126)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("موضعا أن والديه عايشا أحداثا"), "موضحا أن والديه عايشا أحداثا");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(?<![ء-ي])موضعا(?![ء-ي])/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});

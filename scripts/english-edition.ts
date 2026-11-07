@@ -216,6 +216,8 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   if (offDay) issues.push(`date differs from the source headline: ${offDay}`);
   // «a X account» — X is read «ex», so the article is «an» (Tony Khan ratings story, INCIDENTS #1119)
   if (/\ba X(?=\s+(?:user|account|post|page|handle|post|thread|reply|video)\b|[,.])/.test(title + "\n" + body)) issues.push("misspelled word: «a X» should be «an X»");
+  // «at AEW All In her newsletter» — the second «in» went missing, so the show and the newsletter merged (Mercedes Moné story, INCIDENTS #1126)
+  if (/\b(?:at|on) (?:[A-Z][\w'’]*)(?: [A-Z][\w'’]*)* (?:her|his|their) (?:newsletter|podcast|YouTube|channel|Instagram|social)/.test(title + "\n" + body)) issues.push("missing «in» before «her/his newsletter»: the show name and the newsletter run together");
   // a plain misspelling reached the English site: «mutting sound» for «muting» (Netflix/Liv Morgan story, INCIDENTS #936)
   if (EN_MISSPELLED.test(title + "\n" + body)) issues.push("misspelled word");
   // «translated/translation» alone is a story word too: Sammy Guevara «translated» The Beast Mortos for Rush and the

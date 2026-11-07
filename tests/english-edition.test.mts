@@ -506,3 +506,8 @@ test('«a X account» is held back: X is read «ex», so it is «an X account» 
   assert.ok(checkEnglish({ ...good, body: good.body + ' A X account claimed the numbers.'.replace('A X', 'Then a X') }, input).some(i => i.includes('an X')));
   assert.deepEqual(checkEnglish({ ...good, body: good.body + ' Then an X account claimed the numbers.' }, input), []);
 });
+
+test('«at AEW All In her newsletter» is held back: the missing «in» merges show and newsletter (INCIDENTS #1126)', () => {
+  assert.ok(checkEnglish({ ...good, body: good.body + ' She won the title at AEW All In her newsletter, Moné Mag.' }, input).some(i => i.includes('missing «in»')));
+  assert.ok(!checkEnglish({ ...good, body: good.body + ' She won the title at AEW All In in her newsletter, Moné Mag.' }, input).some(i => i.includes('missing «in»')));
+});
