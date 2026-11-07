@@ -1568,3 +1568,11 @@ test("«صالة قاعة» is collapsed to «قاعة» and no story keeps it (
   const bad = fs.readdirSync("content/news").filter(f => fs.readFileSync(`content/news/${f}`, "utf-8").includes("صالة قاعة"));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #1120: «وحصولهم لبطولة NXT» (حصل لـ بدل حصل على / فاز ب) في خبر جوليوس كريد.
+test("«حصولهم لبطولة» is corrected and no story keeps it (INCIDENTS #1120)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("وحصولهم لبطولة NXT للفرق"), "وفوزهم ببطولة NXT للفرق");
+  const bad = fs.readdirSync("content/news").filter(f => /حصول(هم|ه|ها) لبطولة/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
