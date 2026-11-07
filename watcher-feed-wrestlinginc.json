@@ -1,5 +1,15 @@
 [
   {
+    "id": 1502283647,
+    "link": "https://www.wrestlinginc.com/2310155/wwe-crown-jewel-2026-roman-reigns-sami-zayn-wins-offers-respect/",
+    "date": "Sat, 07 Nov 2026 19:53:34 +0000",
+    "date_gmt": "2026-11-07T19:53:34.000Z",
+    "title": {
+      "rendered": "Roman Reigns Wins At WWE Crown Jewel, Offers Respect To Sami Zayn"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/roman-reigns-wins-at-wwe-crown-jewel-offers-respect-to-sami-zayn/l-intro-1794081113.jpg"
+  },
+  {
     "id": 3148879640,
     "link": "https://www.wrestlinginc.com/2306176/wwe-paul-heyman-okay-terribly-f-up-person-therapy-adhd/",
     "date": "Sat, 07 Nov 2026 19:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE Crown Jewel 2026 Full & Final Card"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-crown-jewel-2026-full-final-card/l-intro-1793925165.jpg"
-  },
-  {
-    "id": 2821279573,
-    "link": "https://www.wrestlinginc.com/2310036/wwe-smackdown-november-6-2026-hated-loved-opinion-review/",
-    "date": "Sat, 07 Nov 2026 05:00:18 +0000",
-    "date_gmt": "2026-11-07T05:00:18.000Z",
-    "title": {
-      "rendered": "WWE SmackDown 11/6/2026: 3 Things We Hated And 3 Things We Loved"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-1162026-3-things-we-hated-and-3-things-we-loved/l-intro-1794027097.jpg"
   }
 ]

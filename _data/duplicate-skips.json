@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/report-ric-flair-taken-to-hospital-after-falling-and-injuring-his-face-outside-restaurant-in-florida/": {
-    "matchedFile": "20261023222528-نقل-ريك-فلير-إلى-المستشفى-بعد-سقوط-دامي-خارج-مطعم-في-فلوريدا-وسط-مخاوف-من-جلطة-دموية.md",
-    "reason": "الخبر الجديد يغطي نفس واقعة سقوط ريك فلير خارج المطعم ونقله للمستشفى والمشكلة الصحية في ساقه المنشورة بالفعل في الخبر رقم [0].",
-    "at": "2026-10-23T19:33:40.220Z"
-  },
   "https://www.ringsidenews.com/real-reason-wwe-plans-load-nxt-against-aew-blood-guts/": {
     "matchedFile": "20261023172316-نيك-خان-وراء-قرار-تعزيز-عرض-wwe-nxt-لمواجهة-aew-blood-guts.md",
     "reason": "الخبر الجديد يتناول نفس الحدث (قرار تعزيز عرض NXT لمواجهة AEW Blood & Guts) ويستند إلى نفس المصدر (بريان آيفاريز) ونفس التفاصيل الجوهرية المذكورة في الخبر المنشور.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261107224732-رومان-رينز-يهزم-سامي-زين-في-الحدث-الرئيسي-لعرض-wwe-crown-jewel-2026.md",
     "reason": "الخبر الجديد يغطي نفس نزال الحدث الرئيسي في عرض WWE Crown Jewel 2026 ونتيجته التي تم تناولها بالفعل في الخبر المنشور.",
     "at": "2026-11-07T19:53:03.757Z"
+  },
+  "https://www.wrestlinginc.com/2310155/wwe-crown-jewel-2026-roman-reigns-sami-zayn-wins-offers-respect/": {
+    "matchedFile": "20261107224732-رومان-رينز-يهزم-سامي-زين-في-الحدث-الرئيسي-لعرض-wwe-crown-jewel-2026.md",
+    "reason": "الخبر الجديد يغطي نفس نتيجة نزال الحدث الرئيسي في عرض WWE Crown Jewel 2026 التي تم تناولها بالفعل في الخبر المنشور.",
+    "at": "2026-11-07T19:56:04.355Z"
   }
 }
