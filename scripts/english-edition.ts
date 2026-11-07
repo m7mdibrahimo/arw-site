@@ -214,6 +214,8 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   // «Thursday, November 5» when the source's headline says «Results 11/6/26» (INCIDENTS #1115)
   const offDay = enDateOffFromSourceTitle(title + "\n" + body, i.sourceTitle, i.sourceText);
   if (offDay) issues.push(`date differs from the source headline: ${offDay}`);
+  // «a X account» — X is read «ex», so the article is «an» (Tony Khan ratings story, INCIDENTS #1119)
+  if (/\ba X(?=\s+(?:user|account|post|page|handle|post|thread|reply|video)\b|[,.])/.test(title + "\n" + body)) issues.push("misspelled word: «a X» should be «an X»");
   // a plain misspelling reached the English site: «mutting sound» for «muting» (Netflix/Liv Morgan story, INCIDENTS #936)
   if (EN_MISSPELLED.test(title + "\n" + body)) issues.push("misspelled word");
   // «translated/translation» alone is a story word too: Sammy Guevara «translated» The Beast Mortos for Rush and the

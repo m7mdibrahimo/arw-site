@@ -501,3 +501,8 @@ test('enDateOffFromSourceTitle catches a date moved a day from the headline (INC
   assert.equal(enDateOffFromSourceTitle('aired on Friday, November 6, 2026, from', 'WWE SmackDown Results 11/6/26 W/ Live Updates', ''), null);
   assert.equal(enDateOffFromSourceTitle('a rematch from Thursday, November 5', 'Results 11/6/26', 'taped on November 5'), null);
 });
+
+test('«a X account» is held back: X is read «ex», so it is «an X account» (INCIDENTS #1119)', () => {
+  assert.ok(checkEnglish({ ...good, body: good.body + ' A X account claimed the numbers.'.replace('A X', 'Then a X') }, input).some(i => i.includes('an X')));
+  assert.deepEqual(checkEnglish({ ...good, body: good.body + ' Then an X account claimed the numbers.' }, input), []);
+});
