@@ -566,3 +566,9 @@ test("«شبكتي TBS وHBO Max» (dual network) is blocked (round 2026-11-05)"
   assert.ok(checkArticle("عنوان", "تم بث العرض عبر شبكتي TBS وHBO Max.").some((i) => i.code === "dual_noun"));
   assert.ok(!checkArticle("عنوان", "تم بث العرض عبر شبكة TBS ومنصة HBO Max.").some((i) => i.code === "dual_noun"));
 });
+
+test('«نزال فردي» فوقه فقرة «نزال ثلاثي» بيتمنع (INCIDENTS #1113)', () => {
+  const bad = 'مقدمة العرض.\n\n**المواجهة الثانية: نزال فردي**\n\nأقيم نزال ثلاثي جمع بين جامبو وجامبو مارتينيز وبريو كيلر.\n\n🏆 **الفائز:** جامبو';
+  assert.ok(checkArticle('نتائج عرض MLW Fusion', bad).some((i) => i.code === 'singles_label_multi_body'));
+  assert.ok(!checkArticle('نتائج عرض MLW Fusion', bad.replace('نزال فردي', 'نزال ثلاثي')).some((i) => i.code === 'singles_label_multi_body'));
+});
