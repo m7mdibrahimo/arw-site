@@ -1,78 +1,78 @@
 {
  "https://www.wrestlinginc.com/2309607/wwe-smackdown-november-6-2026-results": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
   "retry": true,
-  "at": "2026-11-07T03:11:14.512Z"
+  "at": "2026-11-07T03:16:33.808Z"
  },
  "https://www.fightful.com/wrestling/kevin-owens-defeats-cm-punk-in-no-holds-barred-match-on-11-6-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T03:05:25.945Z"
+  "at": "2026-11-07T03:14:53.698Z"
  },
  "https://www.fightful.com/wrestling/details-on-tiffany-strattons-money-in-the-bank-win": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T03:05:25.751Z"
+  "at": "2026-11-07T03:14:53.528Z"
  },
  "https://www.fightful.com/wrestling/charlotte-flair-returns-on-11-6-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T03:05:25.557Z"
+  "at": "2026-11-07T03:14:53.360Z"
  },
  "https://www.fightful.com/wrestling/claudio-castagnoli-announces-t1-and-karmine-corp-during-2026-league-of-legends-world-championship-quarterfinals": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-07T03:05:25.365Z"
+  "at": "2026-11-07T03:14:53.189Z"
  },
  "https://www.fightful.com/wrestling/randy-orton-im-done-playing-games-i-need-number-15-and-i-need-it-sooner-than-later": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T03:04:03.572Z"
+  "at": "2026-11-07T03:12:59.049Z"
  },
  "https://www.fightful.com/wrestling/randy-orton-ive-always-been-the-last-man-standing-look-at-the-ovw-class-that-i-graduated-from-im-the-only-one-left": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T03:04:03.268Z"
+  "at": "2026-11-07T03:12:58.792Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-blood-guts-does-240k-more-viewers-than-wwe-nxt-on-11-4": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T03:04:02.797Z"
+  "at": "2026-11-07T03:12:58.362Z"
  },
  "https://www.fightful.com/wrestling/chad-gable-comments-on-wwe-intercontinental-title-loss-to-ethan-page": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T03:04:02.425Z"
+  "at": "2026-11-07T03:12:58.036Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-draws-over-450000-viewers": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T03:04:02.136Z"
+  "at": "2026-11-07T03:12:57.777Z"
  },
  "https://www.fightful.com/wrestling/maven-says-he-has-had-headache-and-brain-fog-every-single-day-since-november-2025-surgery-is-definitely-on-the-horizon": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T03:04:01.682Z"
+  "at": "2026-11-07T03:12:57.372Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-commentary-team-to-call-crown-jewel-from-wwe-hq-in-stamford": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T03:04:01.060Z"
+  "at": "2026-11-07T03:12:56.830Z"
  },
  "https://www.fightful.com/wrestling/njpw-academy-in-california-closing": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T03:04:00.604Z"
+  "at": "2026-11-07T03:12:56.435Z"
  },
  "https://www.fightful.com/wrestling/report-george-iceman-departs-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T03:03:59.983Z"
+  "at": "2026-11-07T03:12:55.897Z"
  },
  "https://www.fightful.com/wrestling/aew-fright-night-collision-10-31-viewership-drops-on-halloween-night": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T03:03:59.683Z"
+  "at": "2026-11-07T03:12:55.645Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-10-29-viewership-drops-remains-over-200000-viewers": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-29)",
