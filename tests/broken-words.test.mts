@@ -1033,3 +1033,7 @@ test('corrections fix «قفزت عدد» and «بصفته فريقا» (INCIDEN
   assert.equal(applyCorrections('قفزت عدد المشاهدين'), 'قفز عدد المشاهدين');
   assert.equal(applyCorrections('نزاله المفضل بصفته فريقا مع زميله'), 'نزاله المفضل ضمن فريق مع زميله');
 });
+
+test('corrections fix «ميتشين ولايني لاك» to Lainey Reid (INCIDENTS #1116)', () => {
+  assert.equal(applyCorrections('تشابكت ميتشين ولايني لاك'), 'تشابكت ميتشين ولايني ريد');
+});
