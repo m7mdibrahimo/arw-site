@@ -144,6 +144,7 @@ test('english_title_name does not flag «Championship Wrestling» promotion name
   const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + ' كلام'.repeat(80)).map((i) => i.code);
   assert.ok(!codes('حيث تصارع لصالح اتحادات مثل Juggalo Championship Wrestling وغيرها').includes('english_title_name'));
   assert.ok(codes('وفاز ببطولة World Heavyweight Championship أمس').includes('english_title_name'));
+  assert.ok(!codes('يمتلك حصة في اتحاد Bare Knuckle Fighting Championships ويخوض نزالا').includes('english_title_name'));
 });
 
 // INCIDENTS #445: a scrubbed source left «من منصة *تقارير صحفية*» in the story.
