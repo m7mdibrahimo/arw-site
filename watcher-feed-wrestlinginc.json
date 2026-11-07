@@ -1,5 +1,15 @@
 [
   {
+    "id": 4489786547,
+    "link": "https://www.wrestlinginc.com/2305680/wwe-hofer-flattered-chelsea-green-halloween-costume/",
+    "date": "Sat, 07 Nov 2026 17:00:00 +0000",
+    "date_gmt": "2026-11-07T17:00:00.000Z",
+    "title": {
+      "rendered": "WWE HOFer Flattered By Chelsea Green's Halloween Costume"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-hofer-flattered-by-chelsea-greens-halloween-costume/l-intro-1793733447.jpg"
+  },
+  {
     "id": 4584565703,
     "link": "https://www.wrestlinginc.com/2310108/bloodsport-josh-barnett-njpw-america-take-over-program-academy/",
     "date": "Sat, 07 Nov 2026 16:31:16 +0000",
@@ -55,9 +65,9 @@
     "date": "Sat, 07 Nov 2026 14:00:00 +0000",
     "date_gmt": "2026-11-07T14:00:00.000Z",
     "title": {
-      "rendered": "WWE Crown Jewel Results 11/7/26 W/ Live Updates"
+      "rendered": "WWE Crown Jewel 11/7/26 W/ Live Updates: Cody Rhodes Vs. Randy Orton"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-crown-jewel-11726-w-live-updates/l-intro-1794026888.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-crown-jewel-11726-w-live-updates/l-intro-1794071142.jpg"
   },
   {
     "id": 5020215800,
@@ -188,15 +198,5 @@
       "rendered": "AEW's Chris Jericho Set To Star In New Horror Action Film"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-chris-jericho-set-to-star-in-new-horror-action-film/l-intro-1794002684.jpg"
-  },
-  {
-    "id": 4276404106,
-    "link": "https://www.wrestlinginc.com/2309607/wwe-smackdown-november-6-2026-results/",
-    "date": "Fri, 06 Nov 2026 22:00:00 +0000",
-    "date_gmt": "2026-11-06T22:00:00.000Z",
-    "title": {
-      "rendered": "WWE SmackDown Results 11/6/26 W/ Live Updates: Kevin Owens Vs. CM Punk"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-results-11626-w-live-updates/l-intro-1794021192.jpg"
   }
 ]
