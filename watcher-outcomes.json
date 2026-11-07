@@ -1,68 +1,73 @@
 {
+ "https://www.fightful.com/wrestling/kevin-owens-defeats-cm-punk-in-no-holds-barred-match-on-11-6-wwe-smackdown": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-07T02:49:06.656Z"
+ },
  "https://www.fightful.com/wrestling/details-on-tiffany-strattons-money-in-the-bank-win": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T02:46:04.970Z"
+  "at": "2026-11-07T02:49:06.487Z"
  },
  "https://www.fightful.com/wrestling/charlotte-flair-returns-on-11-6-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T02:46:04.801Z"
+  "at": "2026-11-07T02:49:06.320Z"
  },
  "https://www.fightful.com/wrestling/claudio-castagnoli-announces-t1-and-karmine-corp-during-2026-league-of-legends-world-championship-quarterfinals": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-07T02:46:04.632Z"
+  "at": "2026-11-07T02:49:06.150Z"
  },
  "https://www.fightful.com/wrestling/randy-orton-im-done-playing-games-i-need-number-15-and-i-need-it-sooner-than-later": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T02:45:46.458Z"
+  "at": "2026-11-07T02:48:48.637Z"
  },
  "https://www.fightful.com/wrestling/randy-orton-ive-always-been-the-last-man-standing-look-at-the-ovw-class-that-i-graduated-from-im-the-only-one-left": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T02:45:46.207Z"
+  "at": "2026-11-07T02:48:48.381Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-blood-guts-does-240k-more-viewers-than-wwe-nxt-on-11-4": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T02:45:45.812Z"
+  "at": "2026-11-07T02:48:47.979Z"
  },
  "https://www.fightful.com/wrestling/chad-gable-comments-on-wwe-intercontinental-title-loss-to-ethan-page": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T02:45:45.491Z"
+  "at": "2026-11-07T02:48:47.649Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-draws-over-450000-viewers": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T02:45:45.240Z"
+  "at": "2026-11-07T02:48:47.393Z"
  },
  "https://www.fightful.com/wrestling/maven-says-he-has-had-headache-and-brain-fog-every-single-day-since-november-2025-surgery-is-definitely-on-the-horizon": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T02:45:44.848Z"
+  "at": "2026-11-07T02:48:46.988Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-commentary-team-to-call-crown-jewel-from-wwe-hq-in-stamford": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T02:45:44.311Z"
+  "at": "2026-11-07T02:48:46.445Z"
  },
  "https://www.fightful.com/wrestling/njpw-academy-in-california-closing": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T02:45:43.919Z"
+  "at": "2026-11-07T02:48:46.043Z"
  },
  "https://www.fightful.com/wrestling/report-george-iceman-departs-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T02:45:43.385Z"
+  "at": "2026-11-07T02:48:45.485Z"
  },
  "https://www.fightful.com/wrestling/aew-fright-night-collision-10-31-viewership-drops-on-halloween-night": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T02:45:43.127Z"
+  "at": "2026-11-07T02:48:45.228Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-10-29-viewership-drops-remains-over-200000-viewers": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-29)",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-26T12:50:46.541Z"
- },
- "https://www.fightful.com/wrestling/raquel-rodriguez-vs-iyo-sky-chad-gable-dragon-lee-vs-big-cass-ethan-page-added-to-10-26-wwe-raw": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-26T12:32:38.254Z"
  }
 }
