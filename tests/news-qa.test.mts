@@ -572,3 +572,10 @@ test('«نزال فردي» فوقه فقرة «نزال ثلاثي» بيتمن
   assert.ok(checkArticle('نتائج عرض MLW Fusion', bad).some((i) => i.code === 'singles_label_multi_body'));
   assert.ok(!checkArticle('نتائج عرض MLW Fusion', bad.replace('نزال فردي', 'نزال ثلاثي')).some((i) => i.code === 'singles_label_multi_body'));
 });
+
+test("DDP's surname written «بايج» (Paige) is blocked, «بيج» passes (INCIDENTS #1122)", () => {
+  const bad = checkArticle("دايموند دالاس بيج يدعو كودي", "قال دايموند دالاس بيج كلاما. أوضح بايج أن كودي رائع.");
+  assert.ok(bad.some((i) => i.code === "ddp_surname"));
+  const good = checkArticle("دايموند دالاس بيج يدعو كودي", "قال دايموند دالاس بيج كلاما. أوضح بيج أن كودي رائع.");
+  assert.ok(!good.some((i) => i.code === "ddp_surname"));
+});
