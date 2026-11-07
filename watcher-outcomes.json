@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-crown-jewel-results-highlights-key-moments-november-7-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-07T15:22:16.275Z"
+ },
  "https://www.fightful.com/wrestling/keanu-carver-completely-removed-from-wwe-com-roster-absent-from-alumni-section": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -73,11 +78,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-07T15:20:58.689Z"
- },
- "https://www.ringsidenews.com/wwe-crown-jewel-results-highlights-key-moments-november-7-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-07T15:03:31.079Z"
  },
  "https://www.ringsidenews.com/paige-refusing-stay-quiet-about-wwe-cutting-womens-tv-time": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
