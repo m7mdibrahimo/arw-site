@@ -89,11 +89,6 @@
   "retry": true,
   "at": "2026-11-07T15:41:27.842Z"
  },
- "https://www.ringsidenews.com/wwe-crown-jewel-results-highlights-key-moments-november-7-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-07T15:40:54.185Z"
- },
  "https://www.fightful.com/wrestling/report-wwe-commentary-team-to-call-crown-jewel-from-wwe-hq-in-stamford": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
