@@ -568,6 +568,19 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
       issues.push({ code: "ddp_surname", severity: "error", field: "body", message: "اسم دايموند دالاس بيج اتكتب «بايج» (دي بايج المصارعة) — الصح «بيج»", excerpt: "بايج" });
     }
   }
+  // An English sentence glued in the middle of an Arabic paragraph (Arlovski story, 2026-11-07: «…World Series of Fighting 2. In 2013,
+  // Anthony Johnson defeated Andrei Arlovski by unanimous decision at World تعرض أرلوفسكي…») — the model leaked its own English draft.
+  // A run of 7+ Latin words with 4+ plain lowercase words is a sentence, not a name or a title (INCIDENTS #1127).
+  for (const line of String(body || "").split("\n")) {
+    if (/^\s*>/.test(line)) continue; // quotes are english_quote's job
+    for (const m of line.matchAll(/(?<![A-Za-z'’])(?:[A-Za-z0-9][A-Za-z0-9'’.,&-]*[ \t]+){6,}[A-Za-z0-9][A-Za-z0-9'’.]*/g)) {
+      const lower = m[0].split(/\s+/).filter(w => /^[a-z]{2,}[,.]?$/.test(w)).length;
+      if (lower >= 4 && /[\u0600-\u06FF]/.test(line)) {
+        issues.push({ code: "english_sentence_in_arabic", severity: "error", field: "body", message: "جملة إنجليزية كاملة وسط فقرة عربي (مسودة الموديل اتسربت) — لازم تتشال", excerpt: m[0].slice(0, 80) });
+        break;
+      }
+    }
+  }
   for (const tag of tags) if (isJunkTag(tag)) issues.push({ code: "junk_tag", severity: "error", field: "tags", message: "وسم عبارة عن تاريخ أو رقم", excerpt: tag });
   // A paragraph break left as «</p><p>» inside the Arabic text, which stripNonProse hides (INCIDENTS #751)
   const strayP = /[ء-ي.،»"]\s*<\/p>\s*<p>/.exec(body || "");
