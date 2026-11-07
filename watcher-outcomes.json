@@ -104,16 +104,6 @@
   "retry": false,
   "at": "2026-11-07T21:25:02.596Z"
  },
- "https://www.wrestlinginc.com/2307398/indie-hartwell-tna-samuel-shaw-wwe-dexter-lumis-index-syx": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-07T21:12:15.874Z"
- },
- "https://www.wrestlinginc.com/2306293/kit-wilson-discusses-working-miz-wwe": {
-  "reason": "المراجعة رفضته: مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)",
-  "retry": true,
-  "at": "2026-11-07T21:12:02.995Z"
- },
  "https://www.wrestlinginc.com/2309389/wwe-nxt-womens-champion-kelani-jordan-discusses-choices-success-tna": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
