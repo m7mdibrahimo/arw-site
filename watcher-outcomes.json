@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2305803/wwe-becky-lynch-first-years-overthinking-everything": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، العنوان بينتهي بكلمة مبتورة مش موجودة في الخبر — الاقتباس اتقطع",
+  "retry": true,
+  "at": "2026-11-07T19:22:09.686Z"
+ },
  "https://www.fightful.com/wrestling/tiffany-stratton-wins-wwe-womens-title-after-cashing-in-money-in-the-bank-on-chelsea-green-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-27T01:02:06.230Z"
- },
- "https://www.wrestlinginc.com/2297812/biggest-winners-losers-week-october-26-2026": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-26T23:07:04.490Z"
  }
 }
