@@ -1,5 +1,15 @@
 [
   {
+    "id": 338002,
+    "link": "https://www.fightful.com/wrestling/gcw-dead-on-arrival-results-11-6/",
+    "date": "2026-11-07T16:30:00",
+    "date_gmt": "2026-11-07T21:30:00",
+    "title": {
+      "rendered": "GCW Dead On Arrival Results (11/6)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/07152849/https3A2F2Fcdn.jpeg.webp"
+  },
+  {
     "id": 338009,
     "link": "https://www.fightful.com/mma/andrei-arlovski-on-mma-loss-to-anthony-johnson-im-the-winner-anyway-hes-dead-im-alive/",
     "date": "2026-11-07T16:21:24",
@@ -288,15 +298,5 @@
       "rendered": "The Rock Set To Produce &#8216;Medusa&#8217; Live Action Project"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2023/03/27224227/dwayne-johnson-the-rock-641.jpg"
-  },
-  {
-    "id": 337899,
-    "link": "https://www.fightful.com/wrestling/chelsea-green-im-at-the-top-of-mount-everest-i-need-to-prove-that-i-belong-there/",
-    "date": "2026-11-07T09:00:34",
-    "date_gmt": "2026-11-07T14:00:34",
-    "title": {
-      "rendered": "Chelsea Green: I&#8217;m At The Top Of Mount Everest, I Need To Prove That I Belong There"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/08085050/maxresdefault-57.jpg"
   }
 ]
