@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2309607/wwe-smackdown-november-6-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-07T01:40:25.434Z"
+ },
  "https://www.fightful.com/wrestling/claudio-castagnoli-announces-t1-and-karmine-corp-during-2026-league-of-legends-world-championship-quarterfinals": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -63,11 +68,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-07T01:40:00.159Z"
- },
- "https://www.wrestlinginc.com/2309607/wwe-smackdown-november-6-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-07T01:21:36.337Z"
  },
  "https://www.fightful.com/wrestling/tna-releases-8-bit-arcade-game-on-website": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
