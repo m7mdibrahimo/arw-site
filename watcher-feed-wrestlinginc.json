@@ -1,5 +1,15 @@
 [
   {
+    "id": 1046240724,
+    "link": "https://www.wrestlinginc.com/2309992/wwe-the-rock-30-year-anniversary-celebrations/",
+    "date": "Sat, 07 Nov 2026 00:07:01 +0000",
+    "date_gmt": "2026-11-07T00:07:01.000Z",
+    "title": {
+      "rendered": "Backstage News On Planned WWE Celebrations For 30-Year Anniversary Of The Rock's Debut"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-planned-wwe-celebrations-for-30-year-anniversary-of-the-rocks-debut/l-intro-1794009860.jpg"
+  },
+  {
     "id": 4903284239,
     "link": "https://www.wrestlinginc.com/2309981/gcw-bloodsport-chad-gable-wwe-scrapped-plans-brett-lauderdale/",
     "date": "Fri, 06 Nov 2026 23:42:57 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Backstage News On WWE WrestleMania 43 Date, When It's Expected To Be Announced"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-wwe-wrestlemania-43-date-when-its-expected-to-be-announced/l-intro-1793951843.jpg"
-  },
-  {
-    "id": 2164834869,
-    "link": "https://www.wrestlinginc.com/2309057/wwe-survivor-series-wargames-2026-rey-mysterio-high-profile-match-team-america-mexico/",
-    "date": "Fri, 06 Nov 2026 15:08:50 +0000",
-    "date_gmt": "2026-11-06T15:08:50.000Z",
-    "title": {
-      "rendered": "Rey Mysterio Announces High-Profile Match For WWE Survivor Series WarGames 2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/rey-mysterio-announces-high-profile-match-for-wwe-survivor-series-wargames-2026/l-intro-1793977628.jpg"
   }
 ]
