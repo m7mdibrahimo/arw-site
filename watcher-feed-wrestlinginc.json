@@ -1,5 +1,25 @@
 [
   {
+    "id": 2334651392,
+    "link": "https://www.wrestlinginc.com/2310034/wwe-crown-jewel-2026-results/",
+    "date": "Sat, 07 Nov 2026 14:00:00 +0000",
+    "date_gmt": "2026-11-07T14:00:00.000Z",
+    "title": {
+      "rendered": "WWE Crown Jewel 11/7/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-crown-jewel-11726-w-live-updates/l-intro-1794026888.jpg"
+  },
+  {
+    "id": 5020215800,
+    "link": "https://www.wrestlinginc.com/2304706/wwe-paul-heyman-love-life-never-get-married-trap/",
+    "date": "Sat, 07 Nov 2026 14:00:00 +0000",
+    "date_gmt": "2026-11-07T14:00:00.000Z",
+    "title": {
+      "rendered": "WWE's Paul Heyman Talks Love Life, Explains Why He'll Never Get Married"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-paul-heyman-talks-love-life-explains-why-hell-never-get-married/l-intro-1793652883.jpg"
+  },
+  {
     "id": 4892932699,
     "link": "https://www.wrestlinginc.com/2304702/paul-heyman-vince-mcmahon-work-ethic-ruthless-pursuit-success/",
     "date": "Sat, 07 Nov 2026 13:30:00 +0000",
@@ -178,25 +198,5 @@
       "rendered": "WWE Reportedly Planning To Roll Out Christmas-Themed Gimmick For Danhausen"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-reportedly-planning-to-roll-out-christmas-themed-gimmick-for-danhausen/l-intro-1793996744.jpg"
-  },
-  {
-    "id": 3313628628,
-    "link": "https://www.wrestlinginc.com/2309524/wwe-crown-jewel-2026-decision-move-saudi-arabian-government/",
-    "date": "Fri, 06 Nov 2026 19:06:19 +0000",
-    "date_gmt": "2026-11-06T19:06:19.000Z",
-    "title": {
-      "rendered": "Report: Decision To Move WWE Crown Jewel Was Made By Saudi Arabian Government"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/report-decision-to-move-wwe-crown-jewel-was-made-by-saudi-arabian-government/l-intro-1793991735.jpg"
-  },
-  {
-    "id": 5172057527,
-    "link": "https://www.wrestlinginc.com/2309438/wwe-creed-brothers-brutus-julius-exit-moved-alumni-roster/",
-    "date": "Fri, 06 Nov 2026 18:34:40 +0000",
-    "date_gmt": "2026-11-06T18:34:40.000Z",
-    "title": {
-      "rendered": "Creed Brothers Exit WWE, Moved To Alumni Roster"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/creed-brothers-exit-wwe-moved-to-alumni-roster/l-intro-1793993174.jpg"
   }
 ]
