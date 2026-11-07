@@ -1017,3 +1017,7 @@ test('corrections fix «ومختتما» and «مصارعات المحترفين
   assert.equal(applyCorrections('الإغلاق، ومختتما بالقول إن العمل مستمر'), 'الإغلاق، واختتم بالقول إن العمل مستمر');
   assert.match(applyCorrections('استهدف مصارعات المحترفين'), /المصارعات المحترفات/);
 });
+
+test('corrections fix «جايسون جوردان» and «بلاكوول» (INCIDENTS #1114)', () => {
+  assert.equal(applyCorrections('مع جايسون جوردان في بلاكوول'), 'مع جيسون جوردان في بلاكبول');
+});
