@@ -1,5 +1,25 @@
 [
   {
+    "id": 1835002162,
+    "link": "https://www.wrestlinginc.com/2310150/wwe-raquel-rodriguez-john-cena-high-school-crush/",
+    "date": "Sat, 07 Nov 2026 19:22:12 +0000",
+    "date_gmt": "2026-11-07T19:22:12.000Z",
+    "title": {
+      "rendered": "Raquel Rodriguez Had A High School Crush On WWE Co-Star"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/raquel-rodriguez-had-a-high-school-crush-on-wwe-co-star/l-intro-1794078983.jpg"
+  },
+  {
+    "id": 2426954105,
+    "link": "https://www.wrestlinginc.com/2310144/wwe-crown-jewel-2026-tiffany-stratton-chelsea-green-cashes-in-after-victory/",
+    "date": "Sat, 07 Nov 2026 19:09:19 +0000",
+    "date_gmt": "2026-11-07T19:09:19.000Z",
+    "title": {
+      "rendered": "Tiffany Stratton Cashes In On Chelsea Green After WWE Crown Jewel Victory"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tiffany-stratton-cashes-in-on-chelsea-green-after-wwe-crown-jewel-victory/l-intro-1794078456.jpg"
+  },
+  {
     "id": 2441097841,
     "link": "https://www.wrestlinginc.com/2306096/ecw-wwe-aew-cody-rhodes-jerry-lynn-asked-come-out-retirement-multiple-times/",
     "date": "Sat, 07 Nov 2026 18:30:00 +0000",
@@ -125,7 +145,7 @@
     "date": "Sat, 07 Nov 2026 14:00:00 +0000",
     "date_gmt": "2026-11-07T14:00:00.000Z",
     "title": {
-      "rendered": "WWE Crown Jewel 11/7/26 W/ Live Updates: Chelsea Green Takes On Liv Morgan"
+      "rendered": "WWE Crown Jewel 11/7/26 W/ Live Updates: Roman Reigns Takes On Sami Zayn"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-crown-jewel-11726-w-live-updates/l-intro-1794075889.jpg"
   },
@@ -178,25 +198,5 @@
       "rendered": "Kevin Owens Outlasts CM Punk, Wins Wild No Holds Barred Match To Close WWE SmackDown"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/kevin-owens-outlasts-cm-punk-wins-wild-no-holds-barred-match-to-close-wwe-smackdown/l-intro-1794020108.jpg"
-  },
-  {
-    "id": 1017205014,
-    "link": "https://www.wrestlinginc.com/2310019/wwe-smackdown-charlotte-flair-returns-womens-tag-title-match-no-contest/",
-    "date": "Sat, 07 Nov 2026 02:11:49 +0000",
-    "date_gmt": "2026-11-07T02:11:49.000Z",
-    "title": {
-      "rendered": "Charlotte Flair Returns, WWE Women's Tag Title Match Ends In No Contest On SmackDown"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/charlotte-flair-returns-wwe-womens-tag-title-match-ends-in-no-contest-on-smackdown/l-intro-1794017332.jpg"
-  },
-  {
-    "id": 4541251473,
-    "link": "https://www.wrestlinginc.com/2304518/aew-wwe-no-mercy-1999-adam-copeland-edge-identifies-first-star-making-moment/",
-    "date": "Sat, 07 Nov 2026 02:00:00 +0000",
-    "date_gmt": "2026-11-07T02:00:00.000Z",
-    "title": {
-      "rendered": "AEW's Adam Copeland Identifies His First 'Star-Making Moment' As Edge In WWE"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-adam-copeland-identifies-his-first-star-making-moment-as-edge-in-wwe/l-intro-1793647125.jpg"
   }
 ]
