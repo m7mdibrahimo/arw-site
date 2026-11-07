@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/austin-theory-claims-fans-cant-stand-how-good-he-maxxine-dupri-look-together": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-07T17:35:40.018Z"
+ },
  "https://www.fightful.com/wrestling/george-icemans-tna-contract-yet-to-expire-runs-through-till-end-of-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-26T20:19:37.752Z"
- },
- "https://www.fightful.com/wrestling/boxer-kickboxer-tenshin-nasukawa-to-compete-in-match-for-ddt-pro-wrestling": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-26T20:05:03.567Z"
  }
 }
