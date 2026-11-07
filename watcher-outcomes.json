@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/wwe-production-made-special-call-during-zilla-fatus-promo-november-4-nxt": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-07T15:41:27.842Z"
+ },
+ "https://www.ringsidenews.com/wwe-crown-jewel-results-highlights-key-moments-november-7-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-07T15:40:54.185Z"
+ },
  "https://www.fightful.com/wrestling/watch-countdown-to-wwe-crown-jewel-nov-7-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -83,11 +93,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-07T15:33:35.304Z"
- },
- "https://www.ringsidenews.com/wwe-crown-jewel-results-highlights-key-moments-november-7-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-07T15:22:16.275Z"
  },
  "https://www.ringsidenews.com/paige-refusing-stay-quiet-about-wwe-cutting-womens-tv-time": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-10-26T16:41:31.043Z"
- },
- "https://www.fightful.com/wrestling/cmll-domingo-familiar-results-10-25-2026-india-sioux-vs-queen-aminata-volador-jr-vs-esfinge-more": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-26T15:35:26.539Z"
  }
 }
