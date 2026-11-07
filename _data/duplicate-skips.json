@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2295975/njpw-el-desperado-injured-withdraws-super-junior-tag-league-mistico/": {
-    "matchedFile": "20261022070422-إل-ديسبيرادو-ينسحب-من-بطولة-super-jr-tag-league-في-اتحاد-njpw-بسبب-تضيق-العمود-الفقري-والفتق.md",
-    "reason": "الخبر الجديد يغطي نفس واقعة انسحاب إل ديسبيرادو من بطولة Super Junior Tag League بسبب الإصابة المذكورة في الخبر رقم 0، ولا يحتوي على تطورات جديدة جوهرية.",
-    "at": "2026-10-23T21:34:07.097Z"
-  },
   "https://www.ringsidenews.com/wwe-smackdown-spoiler-lineup-october-23-2026-full-match-card-backstage-notes-revealed/": {
     "matchedFile": "20261024003604-سامي-زين-يفتتح-عرض-wwe-smackdown-الليلة.md",
     "reason": "الخبر الجديد يغطي نفس قائمة نزالات وتفاصيل عرض WWE SmackDown بتاريخ 23 أكتوبر 2026 التي تم نشرها بالفعل في الخبر رقم 0، ولا يحتوي على أي تطورات جديدة جوهرية.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261107212329-فوز-بينتا-وجيفون-إيفانز-ببطولة-wwe-العالمية-للفرق-بمساعدة-أوبا-فيمي-في-عرض-wwe-crown-jewel.md",
     "reason": "الخبر الجديد يعيد سرد تفاصيل فوز بينتا وجيفون إيفانز ببطولة الفرق في عرض Crown Jewel، وهي نفس الواقعة المغطاة في الخبر رقم 0، وتصريحاتهم بعد العرض تعتبر تفاصيل إضافية لنفس الحدث ولا تشكل تطوراً جوهرياً مستقلاً.",
     "at": "2026-11-07T20:28:25.065Z"
+  },
+  "https://www.fightful.com/wrestling/cody-rhodes-proposes-that-he-lead-team-usa-at-wwe-survivor-series/": {
+    "matchedFile": "20261107231645-كودي-رودز-يرشح-نفسه-لقيادة-فريق-أمريكا-في-عرض-wwe-survivor-series.md",
+    "reason": "الخبر الجديد يتناول نفس تصريح كودي رودز ورغبته في قيادة فريق أمريكا ضد فريق ري ميستيريو في عرض Survivor Series، وهو نفس الحدث المغطى في الخبر المنشور.",
+    "at": "2026-11-07T20:39:49.670Z"
   }
 }
