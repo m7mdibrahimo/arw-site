@@ -269,3 +269,10 @@ test('showNameForms: AEW Collision carries «مشاهدة عرض AEW» and «Col
   const w = showNameForms({ headline: 'عرض الرو 02.11.2026 مترجم', title: 'WWE RAW 02.11.2026', programName: 'WWE RAW', eventDate: '2026-11-02', aliases: ['عرض الرو'], isShow: true, archive: false, isLatest: true });
   assert.ok(!w.includes('مشاهدة عرض WWE'));
 });
+
+// INCIDENTS #1117: «عروض المصارعة الحرة مترجمة» / «مشاهدة عروض المصارعة مترجمة» were only on weekly episodes, not on yearly shows.
+test("a yearly show also answers the category queries in the feminine spelling", async () => {
+  const { showNameForms } = await import("../lib/show-seo.cjs");
+  const forms = showNameForms({ headline: "عرض ان اكس تي هالوين هافوك 2026 مترجم 31.10.2026", title: "WWE NXT Halloween Havoc (2026)", programName: "WWE NXT Halloween Havoc", eventDate: "2026-10-31", aliases: ["عرض ان اكس تي هالوين هافوك"], isShow: true });
+  for (const q of ["عروض المصارعة الحرة مترجمة", "مشاهدة عروض المصارعة مترجمة"]) assert.ok(forms.includes(q), q);
+});
