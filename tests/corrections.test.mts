@@ -1583,3 +1583,10 @@ test("«موضعا» becomes «موضحا» and no published story keeps it (INC
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(?<![ء-ي])موضعا(?![ء-ي])/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+test("«أوستان ثيوري» becomes «أوستن ثيوري» and no published story keeps it (INCIDENTS #1128)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("أوستان ثيوري يفوز"), "أوستن ثيوري يفوز");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /أوستان/.test(fs.readFileSync(`content/news/${f}`, "utf-8").split("\n").slice(0, 6).join("\n")));
+  assert.deepEqual(bad, []);
+});

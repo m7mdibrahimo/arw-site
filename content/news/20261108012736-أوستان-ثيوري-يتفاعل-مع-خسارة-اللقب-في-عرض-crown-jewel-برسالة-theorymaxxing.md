@@ -1,6 +1,6 @@
 ---
 federation: WWE
-title: "أوستان ثيوري يتفاعل مع خسارة اللقب في عرض Crown Jewel برسالة «TheoryMaxxing»"
+title: "أوستن ثيوري يتفاعل مع خسارة اللقب في عرض Crown Jewel برسالة «TheoryMaxxing»"
 date: 2026-11-08T01:27:36.000+03:00
 published_at: 2026-11-07T22:31:05.027Z
 source_id: 802264749
@@ -19,6 +19,7 @@ tags:
   - جيفون إيفانز
   - Crown Jewel
 image: /content/images/fqc0ekhbvkjqwrco.jpg
+permalink: "/news/20261108012736-أوستان-ثيوري-يتفاعل-مع-خسارة-اللقب-في-عرض-crown-jewel-برسالة-theorymaxxing/index.html"
 layout: post-layout.njk
 ---
 خسر أوستن ثيوري لقب بطولة WWE العالمية للفرق في عرض Crown Jewel، لكنه أكد أن هذه الهزيمة لن تفسد ليلته. وعقب خسارته للبطولة برفقة برون بريكر أمام الثنائي بينتا وجيفون إيفانز، نشر ثيوري رسالة عبر منصة إكس أوضح فيها ثقته بنفسه رغم خسارة اللقب، مفضلا التركيز على مظهره وخططه لتناول العشاء.
