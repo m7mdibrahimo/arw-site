@@ -2,6 +2,26 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "تشلسي غرين",
+      "right": "تشيلسي غرين",
+      "note": "اسم واحد في كل الأخبار (INCIDENTS #1121)"
+    },
+    {
+      "wrong": "دايموند دالاس بايج",
+      "right": "دايموند دالاس بيج",
+      "note": "اسم واحد في كل الأخبار (INCIDENTS #1121)"
+    },
+    {
+      "wrong": "دياموند دالاس بيج",
+      "right": "دايموند دالاس بيج",
+      "note": "اسم واحد في كل الأخبار (INCIDENTS #1121)"
+    },
+    {
+      "wrong": "دياموند دالاس بايج",
+      "right": "دايموند دالاس بيج",
+      "note": "اسم واحد في كل الأخبار (INCIDENTS #1121)"
+    },
+    {
       "wrong": "قفزت عدد",
       "right": "قفز عدد",
       "note": "«عدد» مذكر: الفعل «قفز» مش «قفزت» — خبر مشاهدات AEW Dynamite (INCIDENTS #1115)"

@@ -58,3 +58,14 @@ test("no show, recap or nostalgia tag is a spelling corrections.json would rewri
   assert.equal((JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8")) as Record<string, string>)["Roman Reigns"], "رومان رينز");
   assert.ok(!fs.readFileSync("content/shows/20261027125824-wwe-raw-26-10-2026.md", "utf-8").includes("رومان راينز"));
 });
+
+// INCIDENTS #1121: Diamond Dallas Page was written 4 different ways and Chelsea Green «تشلسي» in published stories.
+test("Diamond Dallas Page and Chelsea Green have one spelling in the glossary, the corrections and every story", () => {
+  const glossary = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8")) as Record<string, string>;
+  assert.equal(glossary["Diamond Dallas Page"], "دايموند دالاس بيج");
+  const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string }[];
+  assert.ok(corrections.some(c => c.wrong === "دياموند دالاس بايج" && c.right === "دايموند دالاس بيج"));
+  assert.ok(corrections.some(c => c.wrong === "تشلسي غرين" && c.right === "تشيلسي غرين"));
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /د[يا]+موند دالاس ب[يا]+ج|تشلسي غرين/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|source_url):.*$/gm, "").replace(/دايموند دالاس بيج/g, "")) );
+  assert.deepEqual(bad, []);
+});
