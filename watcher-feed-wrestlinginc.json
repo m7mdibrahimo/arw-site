@@ -1,5 +1,15 @@
 [
   {
+    "id": 3127149414,
+    "link": "https://www.wrestlinginc.com/2308755/wwe-crown-jewel-2026-full-final-card-matches/",
+    "date": "Sat, 07 Nov 2026 11:00:00 +0000",
+    "date_gmt": "2026-11-07T11:00:00.000Z",
+    "title": {
+      "rendered": "WWE Crown Jewel 2026 Full & Final Card"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-crown-jewel-2026-full-final-card/l-intro-1793925165.jpg"
+  },
+  {
     "id": 2821279573,
     "link": "https://www.wrestlinginc.com/2310036/wwe-smackdown-november-6-2026-hated-loved-opinion-review/",
     "date": "Sat, 07 Nov 2026 05:00:18 +0000",
@@ -188,15 +198,5 @@
       "rendered": "NJPW Announces Closure Of American Subsidiary"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/njpw-announces-closure-of-american-subsidiary/l-intro-1793993847.jpg"
-  },
-  {
-    "id": 2065937840,
-    "link": "https://www.wrestlinginc.com/2309309/wwe-stephanie-vaquer-returns-live-event-november-2026/",
-    "date": "Fri, 06 Nov 2026 17:20:54 +0000",
-    "date_gmt": "2026-11-06T17:20:54.000Z",
-    "title": {
-      "rendered": "Stephanie Vaquer Returns At WWE Live Event"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/stephanie-vaquer-returns-at-wwe-live-event/l-intro-1793985547.jpg"
   }
 ]
