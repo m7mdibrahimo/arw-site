@@ -1037,3 +1037,10 @@ test('corrections fix «قفزت عدد» and «بصفته فريقا» (INCIDEN
 test('corrections fix «ميتشين ولايني لاك» to Lainey Reid (INCIDENTS #1116)', () => {
   assert.equal(applyCorrections('تشابكت ميتشين ولايني لاك'), 'تشابكت ميتشين ولايني ريد');
 });
+
+test('corrections fix the stale Punk-vs-Owens result put as tonight\'s result (INCIDENTS #1118)', () => {
+  assert.equal(
+    applyCorrections('بين سي ام بانك وكيفن أوينز، حيث تمكن سي ام بانك من هزيمة أوينز في مسقط رأسه في أغسطس ليحتفظ بلقبه.'),
+    'بين سي ام بانك وكيفن أوينز، وانتهى بفوز كيفن أوينز. وكان سي ام بانك قد هزم أوينز في مسقط رأسه في أغسطس وحافظ على لقبه.',
+  );
+});
