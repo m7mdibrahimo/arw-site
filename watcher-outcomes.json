@@ -1,78 +1,98 @@
 {
- "https://www.fightful.com/wrestling/wwe-smackdown-results-11-6-2026-cm-punk-vs-kevin-owens-in-no-holds-barred-more": {
-  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
+ "https://www.fightful.com/wrestling/wwe-road-to-survivor-series-live-results-11-6": {
+  "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T16:38:15.352Z"
+  "at": "2026-11-07T16:40:15.883Z"
+ },
+ "https://www.fightful.com/wrestling/sami-zayn-vs-roman-reigns-the-working-plan-to-main-event-wwe-crown-jewel": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-07T16:40:15.686Z"
+ },
+ "https://www.fightful.com/wrestling/aaa-heroes-inmortales-week-three-preview-start-time-how-to-watch-location-11-7": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-07T16:40:15.389Z"
  },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-results-11-7-2026-roman-reigns-vs-sami-zayn-chelsea-green-vs-liv-morgan-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-07T16:37:38.952Z"
+  "at": "2026-11-07T16:40:15.086Z"
+ },
+ "https://www.fightful.com/wrestling/jacob-fatu-expected-to-return-to-join-the-bloodline-for-survivor-series-wargames": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-07T16:40:14.887Z"
  },
  "https://www.fightful.com/wrestling/watch-countdown-to-wwe-crown-jewel-nov-7-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T16:37:26.956Z"
+  "at": "2026-11-07T16:40:14.410Z"
  },
  "https://www.fightful.com/wrestling/mlw-saturday-night-superfight-2026-preview-start-time-how-to-watch-location-11-7": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T16:37:26.699Z"
+  "at": "2026-11-07T16:40:14.113Z"
  },
  "https://www.fightful.com/wrestling/keanu-carver-completely-removed-from-wwe-com-roster-absent-from-alumni-section": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T16:37:26.442Z"
+  "at": "2026-11-07T16:40:13.816Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-rock-wrestling-rager-preview-start-time-how-to-watch-location-11-7": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T16:37:25.891Z"
+  "at": "2026-11-07T16:40:13.174Z"
  },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-2026-preview-start-time-how-to-watch-location-11-7": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T16:37:25.633Z"
+  "at": "2026-11-07T16:40:12.876Z"
  },
  "https://www.fightful.com/wrestling/rey-mysterio-to-lead-team-mexico-at-wwe-survivor-series-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T16:37:25.375Z"
+  "at": "2026-11-07T16:40:12.579Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-smackdown-results-11-6-2026-cm-punk-vs-kevin-owens-in-no-holds-barred-more": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-07T16:40:12.195Z"
  },
  "https://www.fightful.com/wrestling/kevin-owens-defeats-cm-punk-in-no-holds-barred-match-on-11-6-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T16:37:25.044Z"
+  "at": "2026-11-07T16:40:11.999Z"
  },
  "https://www.fightful.com/wrestling/details-on-tiffany-strattons-money-in-the-bank-win": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T16:37:24.874Z"
+  "at": "2026-11-07T16:40:11.802Z"
  },
  "https://www.fightful.com/wrestling/charlotte-flair-returns-on-11-6-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T16:37:24.705Z"
+  "at": "2026-11-07T16:40:11.606Z"
  },
  "https://www.fightful.com/wrestling/randy-orton-im-done-playing-games-i-need-number-15-and-i-need-it-sooner-than-later": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T16:37:24.463Z"
+  "at": "2026-11-07T16:40:11.324Z"
  },
  "https://www.fightful.com/wrestling/randy-orton-ive-always-been-the-last-man-standing-look-at-the-ovw-class-that-i-graduated-from-im-the-only-one-left": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T16:37:24.205Z"
+  "at": "2026-11-07T16:40:11.027Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-blood-guts-does-240k-more-viewers-than-wwe-nxt-on-11-4": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T16:37:23.794Z"
+  "at": "2026-11-07T16:40:10.552Z"
  },
  "https://www.fightful.com/wrestling/chad-gable-comments-on-wwe-intercontinental-title-loss-to-ethan-page": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T16:37:23.460Z"
+  "at": "2026-11-07T16:40:10.161Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-draws-over-450000-viewers": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1978,25 +1998,5 @@
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-26T18:55:31.201Z"
- },
- "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-10-26": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-26T18:20:43.157Z"
- },
- "https://www.ringsidenews.com/saudi-arabias-gea-chairman-pushes-wwe-crown-jewel-ticket-sales-despite-security-concerns": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-26T18:17:57.588Z"
- },
- "https://www.fightful.com/wrestling/myles-borne-on-grayson-waller-wearing-a-stephanie-vaquer-t-shirt-you-spent-money-on-her-shirt-youre-a-fan": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-26T17:58:38.571Z"
- },
- "https://www.fightful.com/wrestling/myles-borne-tells-fans-they-are-wasting-their-engery-by-chanting-what-at-him": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-26T17:43:37.961Z"
  }
 }
