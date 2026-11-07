@@ -1,5 +1,15 @@
 [
   {
+    "id": 1017205014,
+    "link": "https://www.wrestlinginc.com/2310019/wwe-smackdown-charlotte-flair-returns-womens-tag-title-match-no-contest/",
+    "date": "Sat, 07 Nov 2026 02:11:49 +0000",
+    "date_gmt": "2026-11-07T02:11:49.000Z",
+    "title": {
+      "rendered": "Charlotte Flair Returns, WWE Women's Tag Title Match Ends In No Contest On SmackDown"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/charlotte-flair-returns-wwe-womens-tag-title-match-ends-in-no-contest-on-smackdown/l-intro-1794017332.jpg"
+  },
+  {
     "id": 4541251473,
     "link": "https://www.wrestlinginc.com/2304518/aew-wwe-no-mercy-1999-adam-copeland-edge-identifies-first-star-making-moment/",
     "date": "Sat, 07 Nov 2026 02:00:00 +0000",
@@ -75,9 +85,9 @@
     "date": "Fri, 06 Nov 2026 22:00:00 +0000",
     "date_gmt": "2026-11-06T22:00:00.000Z",
     "title": {
-      "rendered": "WWE SmackDown Results 11/6/26 W/ Live Updates: Women's Tag Team Championship"
+      "rendered": "WWE SmackDown Results 11/6/26 W/ Live Updates: Kevin Owens Vs. CM Punk"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-results-11626-w-live-updates/l-intro-1793993502.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-results-11626-w-live-updates/l-intro-1794017121.jpg"
   },
   {
     "id": 1405592450,
@@ -188,15 +198,5 @@
       "rendered": "WWE Reportedly Considered Different Date In February For Royal Rumble 2027"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-reportedly-considered-different-date-in-february-for-royal-rumble-2027/l-intro-1793957845.jpg"
-  },
-  {
-    "id": 1513051751,
-    "link": "https://www.wrestlinginc.com/2309181/tna-impact-taryn-terrell-harley-hudson-returns-offers-friendship/",
-    "date": "Fri, 06 Nov 2026 16:19:49 +0000",
-    "date_gmt": "2026-11-06T16:19:49.000Z",
-    "title": {
-      "rendered": "Taryn Terrell Returns To TNA Impact, Offers Friendship To Harley Hudson"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/taryn-terrell-returns-to-tna-impact-offers-friendship-to-harley-hudson/l-intro-1793981906.jpg"
   }
 ]
