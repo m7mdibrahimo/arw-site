@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2310036/wwe-smackdown-november-6-2026-hated-loved-opinion-review": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، نفس العنوان منشور قبل كده — الخبر مكرر",
+  "retry": true,
+  "at": "2026-11-07T05:03:31.382Z"
+ },
  "https://www.fightful.com/wrestling/rey-mysterio-to-lead-team-mexico-at-wwe-survivor-series-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-15)",
   "retry": false,
   "at": "2026-10-26T13:06:38.455Z"
- },
- "https://www.fightful.com/wrestling/wildman-jack-armstrong-passes-away": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-26T12:54:20.852Z"
  }
 }

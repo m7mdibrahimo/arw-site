@@ -1,5 +1,15 @@
 [
   {
+    "id": 2821279573,
+    "link": "https://www.wrestlinginc.com/2310036/wwe-smackdown-november-6-2026-hated-loved-opinion-review/",
+    "date": "Sat, 07 Nov 2026 05:00:18 +0000",
+    "date_gmt": "2026-11-07T05:00:18.000Z",
+    "title": {
+      "rendered": "WWE SmackDown 11/6/2026: 3 Things We Hated And 3 Things We Loved"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-1162026-3-things-we-hated-and-3-things-we-loved/l-intro-1794027097.jpg"
+  },
+  {
     "id": 3427004957,
     "link": "https://www.wrestlinginc.com/2310024/wwe-smackdown-kevin-owens-cm-punk-no-holds-barred-main-event/",
     "date": "Sat, 07 Nov 2026 03:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Stephanie Vaquer Returns At WWE Live Event"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/stephanie-vaquer-returns-at-wwe-live-event/l-intro-1793985547.jpg"
-  },
-  {
-    "id": 1086260000,
-    "link": "https://www.wrestlinginc.com/2308863/austin-creed-bandido-aew-dynanmite-attack-kofi-swerve-strickland/",
-    "date": "Fri, 06 Nov 2026 17:00:00 +0000",
-    "date_gmt": "2026-11-06T17:00:00.000Z",
-    "title": {
-      "rendered": "Austin Creed Has Strong Words For Bandido Following AEW Dynamite Attack On Kofi"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/austin-creed-has-strong-words-for-bandido-following-aew-dynamite-attack-on-kofi/l-intro-1793962375.jpg"
   }
 ]
