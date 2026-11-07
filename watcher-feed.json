@@ -1,5 +1,15 @@
 [
   {
+    "id": 337884,
+    "link": "https://www.fightful.com/wrestling/kevin-owens-defeats-cm-punk-in-no-holds-barred-match-on-11-6-wwe-smackdown/",
+    "date": "2026-11-06T21:44:51",
+    "date_gmt": "2026-11-07T02:44:51",
+    "title": {
+      "rendered": "Kevin Owens Defeats CM Punk In No Holds Barred Match On 11/6 WWE SmackDown"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/06214256/HWfTZYYaUAA3q0g.jpg"
+  },
+  {
     "id": 337881,
     "link": "https://www.fightful.com/wrestling/details-on-tiffany-strattons-money-in-the-bank-win/",
     "date": "2026-11-06T21:14:43",
@@ -288,15 +298,5 @@
       "rendered": "Nia Jax: The Bloodline Can Call Me, Naomi, Or Tamina Whenever They Need Us"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/29212224/image-36.png"
-  },
-  {
-    "id": 337750,
-    "link": "https://www.fightful.com/wrestling/tna-impact-10-29-viewership-drops-remains-over-200000-viewers/",
-    "date": "2026-11-06T11:31:28",
-    "date_gmt": "2026-11-06T16:31:28",
-    "title": {
-      "rendered": "TNA iMPACT! (10/29) Viewership Drops, Remains Over 200,000 Viewers"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/01/26181456/48d23a281b51ea48d72d132dafab4752-1-1.jpg"
   }
 ]
