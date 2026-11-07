@@ -1,98 +1,93 @@
 {
- "https://www.ringsidenews.com/austin-theory-claims-fans-cant-stand-how-good-he-maxxine-dupri-look-together": {
-  "reason": "المراجعة رفضته: ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-07T17:50:16.203Z"
- },
  "https://www.fightful.com/wrestling/george-icemans-tna-contract-yet-to-expire-runs-through-till-end-of-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T17:50:54.394Z"
+  "at": "2026-11-07T17:53:53.093Z"
  },
  "https://www.fightful.com/wrestling/wwe-road-to-survivor-series-live-results-11-6": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T17:50:54.087Z"
+  "at": "2026-11-07T17:53:52.831Z"
  },
  "https://www.fightful.com/wrestling/sami-zayn-vs-roman-reigns-the-working-plan-to-main-event-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T17:50:53.865Z"
+  "at": "2026-11-07T17:53:52.664Z"
  },
  "https://www.fightful.com/wrestling/aaa-heroes-inmortales-week-three-preview-start-time-how-to-watch-location-11-7": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T17:50:53.608Z"
+  "at": "2026-11-07T17:53:52.407Z"
  },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-results-11-7-2026-roman-reigns-vs-sami-zayn-chelsea-green-vs-liv-morgan-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-07T17:50:53.352Z"
+  "at": "2026-11-07T17:53:52.152Z"
  },
  "https://www.fightful.com/wrestling/jacob-fatu-expected-to-return-to-join-the-bloodline-for-survivor-series-wargames": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T17:50:53.185Z"
+  "at": "2026-11-07T17:53:51.987Z"
  },
  "https://www.fightful.com/wrestling/watch-countdown-to-wwe-crown-jewel-nov-7-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T17:50:52.781Z"
+  "at": "2026-11-07T17:53:51.588Z"
  },
  "https://www.fightful.com/wrestling/mlw-saturday-night-superfight-2026-preview-start-time-how-to-watch-location-11-7": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T17:50:52.523Z"
+  "at": "2026-11-07T17:53:51.332Z"
  },
  "https://www.fightful.com/wrestling/keanu-carver-completely-removed-from-wwe-com-roster-absent-from-alumni-section": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T17:50:52.266Z"
+  "at": "2026-11-07T17:53:51.078Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-rock-wrestling-rager-preview-start-time-how-to-watch-location-11-7": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T17:50:51.713Z"
+  "at": "2026-11-07T17:53:50.536Z"
  },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-2026-preview-start-time-how-to-watch-location-11-7": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T17:50:51.455Z"
+  "at": "2026-11-07T17:53:50.282Z"
  },
  "https://www.fightful.com/wrestling/rey-mysterio-to-lead-team-mexico-at-wwe-survivor-series-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T17:50:51.196Z"
+  "at": "2026-11-07T17:53:50.027Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-11-6-2026-cm-punk-vs-kevin-owens-in-no-holds-barred-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T17:50:50.864Z"
+  "at": "2026-11-07T17:53:49.694Z"
  },
  "https://www.fightful.com/wrestling/kevin-owens-defeats-cm-punk-in-no-holds-barred-match-on-11-6-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T17:50:50.694Z"
+  "at": "2026-11-07T17:53:49.527Z"
  },
  "https://www.fightful.com/wrestling/details-on-tiffany-strattons-money-in-the-bank-win": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T17:50:50.524Z"
+  "at": "2026-11-07T17:53:49.360Z"
  },
  "https://www.fightful.com/wrestling/charlotte-flair-returns-on-11-6-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T17:50:50.355Z"
+  "at": "2026-11-07T17:53:49.193Z"
  },
  "https://www.fightful.com/wrestling/randy-orton-im-done-playing-games-i-need-number-15-and-i-need-it-sooner-than-later": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T17:50:50.112Z"
+  "at": "2026-11-07T17:53:48.953Z"
  },
  "https://www.fightful.com/wrestling/randy-orton-ive-always-been-the-last-man-standing-look-at-the-ovw-class-that-i-graduated-from-im-the-only-one-left": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T17:50:49.849Z"
+  "at": "2026-11-07T17:53:48.695Z"
  },
  "https://www.ringsidenews.com/austin-theory-claims-fans-cant-stand-how-good-he-maxxine-dupri-look-together": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة",
