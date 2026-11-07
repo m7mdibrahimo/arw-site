@@ -1,63 +1,68 @@
 {
+ "https://www.fightful.com/wrestling/claudio-castagnoli-announces-t1-and-karmine-corp-during-2026-league-of-legends-world-championship-quarterfinals": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-07T01:15:38.132Z"
+ },
  "https://www.fightful.com/wrestling/randy-orton-im-done-playing-games-i-need-number-15-and-i-need-it-sooner-than-later": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:11:18.668Z"
+  "at": "2026-11-07T01:15:09.973Z"
  },
  "https://www.fightful.com/wrestling/randy-orton-ive-always-been-the-last-man-standing-look-at-the-ovw-class-that-i-graduated-from-im-the-only-one-left": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:11:18.406Z"
+  "at": "2026-11-07T01:15:09.672Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-blood-guts-does-240k-more-viewers-than-wwe-nxt-on-11-4": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:11:18.002Z"
+  "at": "2026-11-07T01:15:09.203Z"
  },
  "https://www.fightful.com/wrestling/chad-gable-comments-on-wwe-intercontinental-title-loss-to-ethan-page": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:11:17.676Z"
+  "at": "2026-11-07T01:15:08.823Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-draws-over-450000-viewers": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:11:17.419Z"
+  "at": "2026-11-07T01:15:08.527Z"
  },
  "https://www.fightful.com/wrestling/maven-says-he-has-had-headache-and-brain-fog-every-single-day-since-november-2025-surgery-is-definitely-on-the-horizon": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:11:17.016Z"
+  "at": "2026-11-07T01:15:08.056Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-commentary-team-to-call-crown-jewel-from-wwe-hq-in-stamford": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:11:16.463Z"
+  "at": "2026-11-07T01:15:07.421Z"
  },
  "https://www.fightful.com/wrestling/njpw-academy-in-california-closing": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:11:16.065Z"
+  "at": "2026-11-07T01:15:06.962Z"
  },
  "https://www.fightful.com/wrestling/report-george-iceman-departs-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:11:15.525Z"
+  "at": "2026-11-07T01:15:06.337Z"
  },
  "https://www.fightful.com/wrestling/aew-fright-night-collision-10-31-viewership-drops-on-halloween-night": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:11:15.271Z"
+  "at": "2026-11-07T01:15:06.044Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-10-29-viewership-drops-remains-over-200000-viewers": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-29)",
   "retry": false,
-  "at": "2026-11-07T01:11:14.944Z"
+  "at": "2026-11-07T01:15:05.667Z"
  },
  "https://www.fightful.com/wrestling/us-embassy-riyadh-issues-statement-about-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-07T01:11:14.778Z"
+  "at": "2026-11-07T01:15:05.475Z"
  },
  "https://www.wrestlinginc.com/2309607/wwe-smackdown-november-6-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-26T09:57:43.104Z"
- },
- "https://www.wrestlinginc.com/2295617/tatum-paxley-discusses-wwe-main-roster-mentor": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-26T01:05:05.051Z"
  }
 }
