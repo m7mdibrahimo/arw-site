@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2310035/aew-collision-november-7-2026-results": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Mina Shirakawa، تقرير نتائج بلا أي نتيجة",
+  "retry": true,
+  "at": "2026-11-07T23:50:27.353Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-proposes-that-he-lead-team-usa-at-wwe-survivor-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
