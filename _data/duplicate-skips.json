@@ -1,29 +1,4 @@
 {
-  "https://www.ringsidenews.com/wwe-smackdown-preview-october-23-2026-confirmed-matches-start-time-how-watch/": {
-    "matchedFile": "20261022024418-تشيلسي-غرين-تدافع-عن-بطولة-wwe-للسيدات-ضد-روكسان-بيريز-في-عرض-wwe-smackdown-القادم.md",
-    "reason": "الخبر الجديد عبارة عن جدول نزالات وتفاصيل عرض WWE SmackDown القادم، وهو مكرر بشكل أساسي مع تفاصيل الخبر رقم 1 الذي يغطي نفس العرض ونفس النزالات المعلنة مثل نزال تشيلسي غرين وروكسان بيريز وباقي المواجهات مع تفاصيل إضافية طفيفة.",
-    "at": "2026-10-23T09:26:57.037Z"
-  },
-  "https://www.ringsidenews.com/wwe-crown-jewel-stadium-construction-underway-saudi-arabia-amid-security-concerns/": {
-    "matchedFile": "20261023120527-أري-إيمانويل-يناقش-احتمالية-نقل-عرض-wwe-crown-jewel-وسط-المخاوف-الأمنية.md",
-    "reason": "الخبر الجديد يعيد نفس تصريحات أري إيمانويل بشأن استمرار عرض Crown Jewel وتشكيل فريق لمتابعة الأوضاع وبحث البدائل وسط المخاوف الأمنية، وهي نفس المعلومات المذكورة في الخبر [0].",
-    "at": "2026-10-23T10:09:41.861Z"
-  },
-  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-10-23/": {
-    "matchedFile": "20261022024418-تشيلسي-غرين-تدافع-عن-بطولة-wwe-للسيدات-ضد-روكسان-بيريز-في-عرض-wwe-smackdown-القادم.md",
-    "reason": "الخبر الجديد يعرض جدول ونزالات عرض WWE SmackDown القادم وهو مطابق تماماً للخبر المنشور [0] الذي أعلن عن نفس النزالات (تشيلسي ضد روكسان، جوليا ضد بليك، وغيرها) مع إضافة تفاصيل مكان العرض والقنوات الناقلة وموعد الانطلاق والتي تعتبر تفاصيل إضافية لنفس الحدث وليست تطوراً جديداً.",
-    "at": "2026-10-23T12:01:38.245Z"
-  },
-  "https://www.fightful.com/wrestling/ari-emanuel-talks-wwe-crown-jewel-status-its-a-daily-monitoring/": {
-    "matchedFile": "20261023120527-أري-إيمانويل-يناقش-احتمالية-نقل-عرض-wwe-crown-jewel-وسط-المخاوف-الأمنية.md",
-    "reason": "الخبر الجديد يعيد نفس تصريحات أري إيمانويل لشبكة فوكس نيوز بشأن موقف عرض Crown Jewel وتشكيل فريق لمتابعة الوضع يومياً، وهي نفس التفاصيل المذكورة في الخبر رقم 0.",
-    "at": "2026-10-23T12:11:29.909Z"
-  },
-  "https://www.wrestlinginc.com/2295020/ilja-dragunov-aew-wwe-new-level-caught-attention/": {
-    "matchedFile": "20261021195022-إيليا-دراغونوف-يتحدث-عن-جذب-ظهور-فريق-ذا-نيو-ليفل-في-aew-انتباهه.md",
-    "reason": "الخبر الجديد يعيد نفس تصريحات إيليا دراغونوف حول جذب ظهور فريق ذا نيو ليفل لانتباهه، والتي تم نشرها بالفعل في الخبر رقم [0].",
-    "at": "2026-10-23T13:34:33.116Z"
-  },
   "https://www.ringsidenews.com/taya-valkyrie-drops-debut-music-ep-fake-weeks-teasing/": {
     "matchedFile": "20261023164642-تايا-فالكيري-تطلق-أسطوانتها-الموسيقية-الأولى-بعنوان-fake.md",
     "reason": "الخبر الجديد يتناول نفس الحدث تماماً وهو إطلاق تايا فالكيري لأسطوانتها الموسيقية الأولى Fake وتفاصيلها دون إضافة أي تطور جديد حقيقي.",
@@ -2498,5 +2473,30 @@
     "matchedFile": "20261106220619-تقارير-الحكومة-السعودية-هي-من-اتخذت-قرار-نقل-عرض-wwe-crown-jewel.md",
     "reason": "الخبر الجديد يغطي نتائج ونزالات عرض WWE Crown Jewel 2026، وهو نفس الحدث والعرض الذي تغطيه الأخبار المنشورة مسبقاً (0 و1) والتي تتحدث عن تفاصيل ونزالات ونفس الحدث المرتبط بالبطولة.",
     "at": "2026-11-07T16:18:23.127Z"
+  },
+  "https://www.fightful.com/wrestling/jacob-fatu-expected-to-return-to-join-the-bloodline-for-survivor-series-wargames/": {
+    "matchedFile": "20261107181938-موقف-جاكوب-فاتو-من-المشاركة-في-عرض-wwe-survivor-series-بعد-غيابه-عن-الشاشات.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث (عودة جاكوب فاتو للمشاركة في نزال WarGames) المذكور في الخبر رقم 0، ولا يقدم أي تطور جديد أو معلومة إضافية جوهرية.",
+    "at": "2026-11-07T16:37:38.781Z"
+  },
+  "https://www.fightful.com/wrestling/aaa-heroes-inmortales-week-three-preview-start-time-how-to-watch-location-11-7/": {
+    "matchedFile": "20261106040331-إضافة-نزال-ثلاثي-بين-كروز-ديل-تورو-وكينتو-وبرافو-أمريكانو-إلى-الأسبوع-الثالث-من-عرض-aaa-heroes-inmortales.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث (عرض AAA Heroes Inmortales) مع تفاصيل إضافية بسيطة (موعد ومكان) لا تشكل تطوراً جوهرياً جديداً عن الخبر المنشور مسبقاً.",
+    "at": "2026-11-07T16:37:48.265Z"
+  },
+  "https://www.fightful.com/wrestling/sami-zayn-vs-roman-reigns-the-working-plan-to-main-event-wwe-crown-jewel/": {
+    "matchedFile": "20261106220619-تقارير-الحكومة-السعودية-هي-من-اتخذت-قرار-نقل-عرض-wwe-crown-jewel.md",
+    "reason": "الخبر الجديد يكرر نفس تفاصيل النزالات الرئيسية (رومان رينز ضد سامي زين، وليف مورغان ضد تشيلسي غرين) التي تم ذكرها بالفعل في الخبر رقم 0 كجزء من تغطية عرض WWE Crown Jewel.",
+    "at": "2026-11-07T16:38:04.217Z"
+  },
+  "https://www.fightful.com/wrestling/wwe-road-to-survivor-series-live-results-11-6/": {
+    "matchedFile": "20261106152000-نتائج-عرض-wwe-road-to-survivor-series-5-نوفمبر-2026-فوز-سي-ام-بانك-في-الحدث-الرئيسي.md",
+    "reason": "الخبر الجديد يغطي نتائج عرض WWE Live بتاريخ 6 نوفمبر، وهو نفس العرض الذي تم تغطية نتائجه في الخبر رقم [0] (المشار إليه بـ 5 نوفمبر في العنوان، لكن المحتوى يطابق نفس النزالات والنتائج المذكورة في الخبر الجديد).",
+    "at": "2026-11-07T16:38:15.094Z"
+  },
+  "https://www.fightful.com/wrestling/wwe-smackdown-results-11-6-2026-cm-punk-vs-kevin-owens-in-no-holds-barred-more/": {
+    "matchedFile": "20261107010000-نتائج-عرض-wwe-smackdown-6-نوفمبر-2026-كيفن-أوينز-يواجه-سي-ام-بانك-ومعركة-على-بطولة-wwe-للفرق-للسيدات.md",
+    "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
+    "at": "2026-11-07T16:38:15.356Z"
   }
 }
