@@ -494,3 +494,10 @@ test('«Refuses to Post Her Children» gets its missing «photos of» (Brie Bell
   assert.equal(fixEnglishNames('Brie Bella Refuses to Post Her Children After Abuse'), 'Brie Bella Refuses to Post Photos of Her Children After Abuse');
   assert.match(fixEnglishNames('vowing never to post her children online again'), /never to post photos of her children online/);
 });
+
+test('enDateOffFromSourceTitle catches a date moved a day from the headline (INCIDENTS #1115)', async () => {
+  const { enDateOffFromSourceTitle } = await import('../scripts/english-edition.ts');
+  assert.equal(enDateOffFromSourceTitle('aired on Thursday, November 5, 2026, from', 'WWE SmackDown Results 11/6/26 W/ Live Updates', ''), 'Thursday, November 5, 2026');
+  assert.equal(enDateOffFromSourceTitle('aired on Friday, November 6, 2026, from', 'WWE SmackDown Results 11/6/26 W/ Live Updates', ''), null);
+  assert.equal(enDateOffFromSourceTitle('a rematch from Thursday, November 5', 'Results 11/6/26', 'taped on November 5'), null);
+});

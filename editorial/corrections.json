@@ -2,6 +2,31 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "قفزت عدد",
+      "right": "قفز عدد",
+      "note": "«عدد» مذكر: الفعل «قفز» مش «قفزت» — خبر مشاهدات AEW Dynamite (INCIDENTS #1115)"
+    },
+    {
+      "wrong": "ارتفعت عدد",
+      "right": "ارتفع عدد",
+      "note": "«عدد» مذكر: «ارتفع عدد» (INCIDENTS #1115)"
+    },
+    {
+      "wrong": "نزاله المفضل بصفته فريقا",
+      "right": "نزاله المفضل ضمن فريق",
+      "note": "«بصفته فريقا» ترجمة حرفية لـ as a team — خبر تشاد غيبل (INCIDENTS #1115)"
+    },
+    {
+      "wrong": "الانتهاء بالفوز عليها",
+      "right": "تنتهي بفوزها عليها",
+      "note": "«عداوة ضد تشيلسي غرين الانتهاء بالفوز عليها» جملة مكسورة (الانتهاء مصدر مكان فعل) — خبر تيفاني ستراتون (INCIDENTS #1115)"
+    },
+    {
+      "wrong": "تجمع بين تيفاني ستراتون وتشاركها",
+      "right": "تجمع بين تيفاني ستراتون و",
+      "note": "«وتشاركها» زيادة بلا معنى قبل الاسم — خبر تيفاني ستراتون (INCIDENTS #1115)"
+    },
+    {
       "wrong": "يشهد العرض النزال الافتتاحي لمصارع",
       "right": "يخوض مصارع",
       "note": "«في النزال الافتتاحي، يشهد العرض النزال الافتتاحي لمصارع…» تكرار — خبر TANAHASHI JAM 2 (INCIDENTS #1102)"

@@ -171,6 +171,20 @@ export function enWeekdayNotOnDate(text: string, now = new Date()): string | nul
   return null;
 }
 
+/** «aired on Thursday, November 5, 2026» when the source's headline says «Results 11/6/26»: the writer moved the date a
+ *  day (SmackDown results, INCIDENTS #1115). Returns the first weekday-date in the text whose month matches the
+ *  headline's numeric date but whose day doesn't (and the date isn't written in the source text), or null. */
+export function enDateOffFromSourceTitle(text: string, sourceTitle: string, sourceText = ""): string | null {
+  const t = String(sourceTitle || "").match(/\b(\d{1,2})\/(\d{1,2})\/(\d{2,4})\b/);
+  if (!t) return null;
+  const month = +t[1] - 1, day = +t[2];
+  const re = new RegExp(`\\b(?:${EN_DAYS.join("|")}),? (${EN_MONTHS_FULL.join("|")}) (\\d{1,2})(?:st|nd|rd|th)?\\b(?:,? \\d{4})?`, "g");
+  for (const m of String(text || "").matchAll(re)) {
+    if (EN_MONTHS_FULL.indexOf(m[1]) === month && +m[2] !== day && !new RegExp(`${m[1]} ${m[2]}\\b`).test(sourceText)) return m[0];
+  }
+  return null;
+}
+
 /** «on October 23, 2025» when the source only says «on October 23» and 2025 is nowhere in it: the writer guessed the
  *  year wrong (Ric Flair's fall, a 2026 story — INCIDENTS #971). A year that isn't the story's own and isn't in the
  *  source is dropped; the date is kept. With no source text nothing changes. */
@@ -197,6 +211,9 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   // «on Friday, October 17, 2026» for a Saturday (Toni Storm, Crown Jewel, Matt Hardy stories, INCIDENTS #962)
   const badDay = enWeekdayNotOnDate(title + "\n" + body);
   if (badDay) issues.push(`weekday does not match the date: ${badDay}`);
+  // «Thursday, November 5» when the source's headline says «Results 11/6/26» (INCIDENTS #1115)
+  const offDay = enDateOffFromSourceTitle(title + "\n" + body, i.sourceTitle, i.sourceText);
+  if (offDay) issues.push(`date differs from the source headline: ${offDay}`);
   // a plain misspelling reached the English site: «mutting sound» for «muting» (Netflix/Liv Morgan story, INCIDENTS #936)
   if (EN_MISSPELLED.test(title + "\n" + body)) issues.push("misspelled word");
   // «translated/translation» alone is a story word too: Sammy Guevara «translated» The Beast Mortos for Rush and the

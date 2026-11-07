@@ -1,7 +1,7 @@
 ---
 title: "WWE SmackDown Results 11/6/26: Women's Tag Team Title Match"
 slug: "wwe-smackdown-results-11-6-26-womens-tag-team-title-match"
-description: "WWE SmackDown aired on Thursday, November 5, 2026, from the Barclays Center in Brooklyn, New York."
+description: "WWE SmackDown aired on Friday, November 6, 2026, from the Barclays Center in Brooklyn, New York."
 federation: WWE
 date: 2026-11-06T22:00:00.000Z
 source_id: 4276404106
@@ -15,7 +15,7 @@ en_tags:
   - "WWE"
 image: /content/images/e9y8t9q5ocvoe6cb.jpg
 ---
-WWE SmackDown aired on Thursday, November 5, 2026, from the Barclays Center in Brooklyn, New York, broadcasting on the USA Network in the US and Netflix internationally after being pre-recorded during a double taping with WWE Raw. 
+WWE SmackDown aired on Friday, November 6, 2026, from the Barclays Center in Brooklyn, New York, broadcasting on the USA Network in the US and Netflix internationally after being pre-recorded during a double taping with WWE Raw. 
 
 Shinsuke Nakamura def. Tama Tonga
 

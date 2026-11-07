@@ -1021,3 +1021,15 @@ test('corrections fix «ومختتما» and «مصارعات المحترفين
 test('corrections fix «جايسون جوردان» and «بلاكوول» (INCIDENTS #1114)', () => {
   assert.equal(applyCorrections('مع جايسون جوردان في بلاكوول'), 'مع جيسون جوردان في بلاكبول');
 });
+
+test('corrections fix «عداوة ضد X الانتهاء بالفوز» (INCIDENTS #1115)', () => {
+  assert.equal(
+    applyCorrections('أن تخوض تيفاني ستراتون عداوة ضد تشيلسي غرين الانتهاء بالفوز عليها وانتزاع البطولة'),
+    'أن تخوض تيفاني ستراتون عداوة ضد تشيلسي غرين تنتهي بفوزها عليها وانتزاع البطولة',
+  );
+});
+
+test('corrections fix «قفزت عدد» and «بصفته فريقا» (INCIDENTS #1115)', () => {
+  assert.equal(applyCorrections('قفزت عدد المشاهدين'), 'قفز عدد المشاهدين');
+  assert.equal(applyCorrections('نزاله المفضل بصفته فريقا مع زميله'), 'نزاله المفضل ضمن فريق مع زميله');
+});
