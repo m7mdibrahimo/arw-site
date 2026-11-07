@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-06T17:02:06.799Z",
+ "checkedAt": "2026-11-07T15:11:59.970Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
@@ -9414,14 +9414,14 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-06T17:02:06.799Z"
+   "checked": "2026-11-07T15:11:59.970Z"
   },
   "https://hgcloud.to/e/4ci5heyfppcj": {
    "page": "https://arab-wrestling.com/shows/tna-impact-05-11-2026/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 2,
-   "checked": "2026-11-06T17:02:06.799Z",
+   "checked": "2026-11-07T15:11:59.970Z",
    "since": "2026-11-06T17:02:06.799Z"
   },
   "https://ok.ru/videoembed/17975331588704": {
@@ -9429,77 +9429,78 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-06T17:02:06.799Z"
+   "checked": "2026-11-07T15:11:59.970Z"
   },
   "https://vidmoly.org/embed-b6aopdcieo7i.html": {
    "page": "https://arab-wrestling.com/shows/tna-impact-05-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-06T17:02:06.799Z",
-   "lastOk": "2026-11-06T17:02:06.799Z"
+   "checked": "2026-11-07T15:11:59.970Z",
+   "lastOk": "2026-11-07T15:11:59.970Z"
   },
   "https://fembed.co/embed/x-iAW_MWcFpCC": {
    "page": "https://arab-wrestling.com/shows/tna-impact-05-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-06T17:02:06.799Z",
-   "lastOk": "2026-11-06T17:02:06.799Z"
+   "checked": "2026-11-07T15:11:59.970Z",
+   "lastOk": "2026-11-07T15:11:59.970Z"
   },
   "https://hgcloud.to/e/eakrejggshgl": {
    "page": "https://arab-wrestling.com/shows/roh-on-honorclub-05-11-2026/",
-   "status": "broken",
-   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
-   "strikes": 2,
-   "checked": "2026-11-06T17:02:06.799Z",
-   "since": "2026-11-06T17:02:06.799Z"
+   "status": "ok",
+   "reason": "the video plays",
+   "strikes": 0,
+   "checked": "2026-11-07T15:11:59.970Z",
+   "lastOk": "2026-11-07T15:11:59.970Z"
   },
   "https://uqload.vc/embed-iyi6kh8oogg9.html": {
    "page": "https://arab-wrestling.com/shows/tna-impact-05-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-06T17:02:06.799Z",
-   "lastOk": "2026-11-06T17:02:06.799Z"
+   "checked": "2026-11-07T15:11:59.970Z",
+   "lastOk": "2026-11-07T15:11:59.970Z"
   },
   "https://ok.ru/videoembed/17975331392096": {
    "page": "https://arab-wrestling.com/shows/roh-on-honorclub-05-11-2026/",
-   "status": "unknown",
-   "reason": "no stream seen",
+   "status": "ok",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-06T17:02:06.799Z"
+   "checked": "2026-11-07T15:11:59.970Z",
+   "lastOk": "2026-11-07T15:11:59.970Z"
   },
   "https://vidmoly.org/embed-il9n9kkizaeu.html": {
    "page": "https://arab-wrestling.com/shows/roh-on-honorclub-05-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-06T17:02:06.799Z",
-   "lastOk": "2026-11-06T17:02:06.799Z"
+   "checked": "2026-11-07T15:11:59.970Z",
+   "lastOk": "2026-11-07T15:11:59.970Z"
   },
   "https://uqload.vc/embed-tlmlboulch4a.html": {
    "page": "https://arab-wrestling.com/shows/roh-on-honorclub-05-11-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-06T17:02:06.799Z",
-   "lastOk": "2026-11-06T17:02:06.799Z"
+   "checked": "2026-11-07T15:11:59.970Z",
+   "lastOk": "2026-11-07T15:11:59.970Z"
   },
   "https://vidtube.one/embed-mwatqmoui9o6.html": {
    "page": "https://arab-wrestling.com/shows/roh-on-honorclub-05-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-06T17:02:06.799Z"
+   "checked": "2026-11-07T15:11:59.970Z"
   },
   "https://fembed.co/embed/c-Vt9D6BJ_hEm": {
    "page": "https://arab-wrestling.com/shows/roh-on-honorclub-05-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-06T17:02:06.799Z",
-   "lastOk": "2026-11-06T17:02:06.799Z"
+   "checked": "2026-11-07T15:11:59.970Z",
+   "lastOk": "2026-11-07T15:11:59.970Z"
   },
   "https://vidtube.one/embed-35tf6bisnpnp.html": {
    "page": "https://arab-wrestling.com/shows/wwe-nxt-04-11-2026/",
@@ -9546,6 +9547,45 @@
    "strikes": 0,
    "checked": "2026-11-06T17:02:06.799Z",
    "lastOk": "2026-11-06T17:02:06.799Z"
+  },
+  "https://fembed.co/embed/S-AqmxK_3Fioc": {
+   "page": "https://arab-wrestling.com/shows/wwe-smackdown-06-11-2026/",
+   "status": "ok",
+   "reason": "the video plays",
+   "strikes": 0,
+   "checked": "2026-11-07T15:11:59.970Z",
+   "lastOk": "2026-11-07T15:11:59.970Z"
+  },
+  "https://vidmoly.org/embed-2shgjyl8me5k.html": {
+   "page": "https://arab-wrestling.com/shows/wwe-smackdown-06-11-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-07T15:11:59.970Z",
+   "lastOk": "2026-11-07T15:11:59.970Z"
+  },
+  "https://vidtube.one/embed-v0h7lw4i10d9.html": {
+   "page": "https://arab-wrestling.com/shows/wwe-smackdown-06-11-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-07T15:11:59.970Z"
+  },
+  "https://hgcloud.to/e/bcyskamabbbf": {
+   "page": "https://arab-wrestling.com/shows/wwe-smackdown-06-11-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-07T15:11:59.970Z",
+   "lastOk": "2026-11-07T15:11:59.970Z"
+  },
+  "https://uqload.vc/embed-cnqm7yk33828.html": {
+   "page": "https://arab-wrestling.com/shows/wwe-smackdown-06-11-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-07T15:11:59.970Z",
+   "lastOk": "2026-11-07T15:11:59.970Z"
   }
  },
  "broken": [
@@ -9568,7 +9608,6 @@
   "https://hgcloud.to/e/cceehik1w8bf",
   "https://hgcloud.to/e/dl7csxc9theu",
   "https://hgcloud.to/e/drmvd78ysjwh",
-  "https://hgcloud.to/e/eakrejggshgl",
   "https://hgcloud.to/e/fqdvsjk1ne4j",
   "https://hgcloud.to/e/ggst7dw3iknh",
   "https://hgcloud.to/e/jhfyqghwv1ct",
