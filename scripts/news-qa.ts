@@ -45,10 +45,31 @@ export function decodeHtmlEntities(text: string): string {
     .replace(/&(amp|quot|apos|nbsp|ldquo|rdquo|lsquo|rsquo|ndash|mdash|hellip);/g, (_m, n) => named[n]);
 }
 
+/**
+ * Written number words 3–10 take the OPPOSITE gender of the counted noun's singular. Gemini keeps
+ * writing «ستة سنوات» / «أربعة مواجهات» (feminine nouns, masculine number) — INCIDENTS #1125.
+ * Only nouns whose gender is certain are converted. Idempotent.
+ */
+const NUMBER_WORD_FORMS: Array<[string, string]> = [ // [before a masculine noun, before a feminine noun]
+  ["ثلاثة", "ثلاث"], ["أربعة", "أربع"], ["خمسة", "خمس"], ["ستة", "ست"], ["سبعة", "سبع"], ["ثمانية", "ثماني"], ["تسعة", "تسع"], ["عشرة", "عشر"],
+];
+const FEM_COUNTED = "سنوات|مرات|مباريات|مواجهات|بطولات|حلقات|جولات|ساعات|دقائق|لحظات|فقرات|نقاط|ليال|حركات|صفقات|مفاجآت|محاولات|هزائم|إصابات|عمليات|نسخ|قصص";
+const MASC_COUNTED = "أيام|أشهر|أسابيع|أعوام|نزالات|ألقاب|عروض|أجزاء|أبطال|مصارعين|أسباب|أحداث|أهداف|مواسم|أشخاص|لاعبين";
+export function fixNumberGender(text: string): string {
+  let out = text;
+  for (const [masc, fem] of NUMBER_WORD_FORMS) {
+    const pre = `(?<![${AR}])(و|ب|ل|ك|ف|وب|ول)?`;
+    out = out
+      .replace(new RegExp(`${pre}${masc}(\\s+(?:${FEM_COUNTED})(?![${AR}]))`, "g"), (_m, p = "", rest) => `${p}${fem}${rest}`)
+      .replace(new RegExp(`${pre}${fem}(\\s+(?:${MASC_COUNTED})(?![${AR}]))`, "g"), (_m, p = "", rest) => `${p}${masc}${rest}`);
+  }
+  return out;
+}
+
 /** Applies every wrong→right rule from editorial/corrections.json. Idempotent. */
 export function applyCorrections(text: string, corrections = loadCorrections()): string {
   if (!text) return text;
-  let out = decodeHtmlEntities(text);
+  let out = fixNumberGender(decodeHtmlEntities(text));
   for (const c of corrections) {
     out = out.replace(correctionRegex(c), (m, prefix = "") =>
       // the text is already right: «لعودة→للعودة» read «للعودة» as «ل» + «لعودة» and wrote «لللعودة» (INCIDENTS #944)
