@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/cm-punk-explains-why-hes-taking-side-quests-wwe-nxt": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-07T16:48:14.536Z"
+ },
  "https://www.fightful.com/wrestling/wwe-road-to-survivor-series-live-results-11-6": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: جزء إنجليزي صغير الحروف وسط اسم عربي («كايل ayla Kassidy») — الاسم اتكسر: اكتبه كله بالعربي أو كله بالإنجليزي (INCIDENTS #819)",
   "retry": false,
   "at": "2026-10-26T19:26:09.875Z"
- },
- "https://www.fightful.com/wrestling/dustin-rhodes-says-hes-writing-a-second-book": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-26T18:55:31.201Z"
  }
 }
