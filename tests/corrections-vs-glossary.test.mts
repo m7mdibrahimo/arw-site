@@ -69,3 +69,16 @@ test("Diamond Dallas Page and Chelsea Green have one spelling in the glossary, t
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /د[يا]+موند دالاس ب[يا]+ج|تشلسي غرين/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^(permalink|source_url):.*$/gm, "").replace(/دايموند دالاس بيج/g, "")) );
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #1123: «الجريمة» for surgery, «بشكل معجزة», «الكافى», «إبان», «مسارها مغايرا», «ارتباط الرموز», «أو تونغا».
+test("known broken Arabic phrases are corrected and absent from every story", () => {
+  const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string }[];
+  const wrong = ["الكافى", "إبان", "بشكل معجزة", "الجريمة منحت", "مسارها مغايرا", "ارتباط الرموز", "أو تونغا"];
+  for (const w of wrong) assert.ok(corrections.some(c => c.wrong === w), `missing correction for ${w}`);
+  const bad: string[] = [];
+  for (const f of fs.readdirSync("content/news").filter(f => f.endsWith(".md"))) {
+    const t = fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "");
+    for (const w of wrong) if (new RegExp(`(?<![\\u0600-\\u06FF])${w}(?![\\u0600-\\u06FF])`).test(t)) bad.push(`${f}: ${w}`);
+  }
+  assert.deepEqual(bad, []);
+});
