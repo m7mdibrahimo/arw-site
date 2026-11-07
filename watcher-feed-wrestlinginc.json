@@ -1,5 +1,15 @@
 [
   {
+    "id": 3364006558,
+    "link": "https://www.wrestlinginc.com/2306180/wwe-joe-hendry-heel-turn-never-say-never/",
+    "date": "Sat, 07 Nov 2026 20:00:00 +0000",
+    "date_gmt": "2026-11-07T20:00:00.000Z",
+    "title": {
+      "rendered": "Joe Hendry Says 'Never Say Never' To Eventual WWE Heel Turn"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/joe-hendry-says-never-say-never-to-eventual-wwe-heel-turn/l-intro-1793762934.jpg"
+  },
+  {
     "id": 1502283647,
     "link": "https://www.wrestlinginc.com/2310155/wwe-crown-jewel-2026-roman-reigns-sami-zayn-wins-offers-respect/",
     "date": "Sat, 07 Nov 2026 19:53:34 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Paul Heyman Opens Up About Vince McMahon's Work Ethic, 'Ruthless Pursuit Of Success'"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/paul-heyman-opens-up-about-vince-mcmahons-work-ethic-ruthless-pursuit-of-success/l-intro-1793652335.jpg"
-  },
-  {
-    "id": 3127149414,
-    "link": "https://www.wrestlinginc.com/2308755/wwe-crown-jewel-2026-full-final-card-matches/",
-    "date": "Sat, 07 Nov 2026 11:00:00 +0000",
-    "date_gmt": "2026-11-07T11:00:00.000Z",
-    "title": {
-      "rendered": "WWE Crown Jewel 2026 Full & Final Card"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-crown-jewel-2026-full-final-card/l-intro-1793925165.jpg"
   }
 ]
