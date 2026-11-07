@@ -1,5 +1,15 @@
 [
   {
+    "id": 802264203,
+    "link": "https://www.ringsidenews.com/wwe-scrapped-planned-match-november-6-smackdown/",
+    "date": "Sat, 07 Nov 2026 12:32:56 +0000",
+    "date_gmt": "2026-11-07T12:32:56.000Z",
+    "title": {
+      "rendered": "WWE Scrapped Planned Match From November 6 SmackDown"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2025/02/several-major-changes-to-wwe-smackdown-plans-following-the-rocks-return-announcement-20.jpg?x55711"
+  },
+  {
     "id": 802264198,
     "link": "https://www.ringsidenews.com/wwe-scraps-planned-gunther-vs-finn-balor-match-crown-jewel-lineup/",
     "date": "Sat, 07 Nov 2026 12:14:16 +0000",
@@ -138,15 +148,5 @@
       "rendered": "WWE NXT Viewership Sees Slight Increase on November 4, 2026"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/02/NXT-Massive-Increase.jpg?x55711"
-  },
-  {
-    "id": 802264109,
-    "link": "https://www.ringsidenews.com/aew-dynamite-viewership-sees-massive-increase-november-4-2026/",
-    "date": "Fri, 06 Nov 2026 23:02:55 +0000",
-    "date_gmt": "2026-11-06T23:02:55.000Z",
-    "title": {
-      "rendered": "AEW Dynamite Viewership Sees Massive Increase on November 4, 2026"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/02/AEW-Dynamite-Massive-Increase-1.jpg?x55711"
   }
 ]
