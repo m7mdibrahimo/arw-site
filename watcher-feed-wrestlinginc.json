@@ -1,5 +1,15 @@
 [
   {
+    "id": 3427004957,
+    "link": "https://www.wrestlinginc.com/2310024/wwe-smackdown-kevin-owens-cm-punk-no-holds-barred-main-event/",
+    "date": "Sat, 07 Nov 2026 03:00:00 +0000",
+    "date_gmt": "2026-11-07T03:00:00.000Z",
+    "title": {
+      "rendered": "Kevin Owens Outlasts CM Punk, Wins Wild No Holds Barred Match To Close WWE SmackDown"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/kevin-owens-outlasts-cm-punk-wins-wild-no-holds-barred-match-to-close-wwe-smackdown/l-intro-1794020108.jpg"
+  },
+  {
     "id": 1017205014,
     "link": "https://www.wrestlinginc.com/2310019/wwe-smackdown-charlotte-flair-returns-womens-tag-title-match-no-contest/",
     "date": "Sat, 07 Nov 2026 02:11:49 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Austin Creed Has Strong Words For Bandido Following AEW Dynamite Attack On Kofi"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/austin-creed-has-strong-words-for-bandido-following-aew-dynamite-attack-on-kofi/l-intro-1793962375.jpg"
-  },
-  {
-    "id": 1089268507,
-    "link": "https://www.wrestlinginc.com/2308845/wwe-royal-rumble-2027-considered-february-20-super-bowl/",
-    "date": "Fri, 06 Nov 2026 16:30:00 +0000",
-    "date_gmt": "2026-11-06T16:30:00.000Z",
-    "title": {
-      "rendered": "WWE Reportedly Considered Different Date In February For Royal Rumble 2027"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-reportedly-considered-different-date-in-february-for-royal-rumble-2027/l-intro-1793957845.jpg"
   }
 ]
