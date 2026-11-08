@@ -1325,9 +1325,22 @@ export function dropRepeatedListItem(text: string): string {
  * Espectacular) and «…قال: > "…"» (Booker T, Lash Legend) rendered as plain text with a stray «>» or «**».
  * A match heading or a quote marker always starts its own paragraph (INCIDENTS #404).
  */
+export function splitQuoteNarration(text: string): string {
+  if (!text) return text;
+  const ATTR = /^((?:[A-Z][\w'.’-]*\s+){1,4}(?:said|says|wrote|tweeted|added|noted|explained|continued|interjected|stated|told\s+\S+|recalled|replied|admitted|revealed|posted|claimed)\b[^.!?]*[.!?])\s+(\S.*)$/;
+  return text.split("\n").map((line) => {
+    const m = /^(\s*>\s*)(["“][^"“”]*[.!?]["”])\s+([A-Z].*)$/.exec(line);
+    if (!m) return line;
+    const words = (t: string) => t.split(/\s+/).filter(Boolean).length;
+    const a = ATTR.exec(m[3]);
+    if (a) return words(a[2]) >= 4 && !/^["“]/.test(a[2]) ? `${m[1]}${m[2]} ${a[1]}\n\n${a[2]}` : line;
+    return words(m[3]) >= 6 ? `${m[1]}${m[2]}\n\n${m[3]}` : line;
+  }).join("\n");
+}
+
 export function splitGluedBlocks(text: string): string {
   if (!text) return text;
-  return text
+  return splitQuoteNarration(text)
     .replace(/([.!؟?)”"»:])[ \t]+(\*\*(?:المواجهة|الحدث الرئيسي)\s)/g, "$1\n\n$2")
     .replace(/([^\n>])[ \t]+> (?=["«“])/g, "$1\n\n> ");
 }

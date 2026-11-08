@@ -5543,3 +5543,12 @@ test('agoSpanNotInSource: «just over 2 months ago» written as «قبل شهر�
   assert.deepEqual(agoSpanNotInSource('تعرض للإصابة قبل 3 أشهر', 'injured three months ago'), []);
   assert.deepEqual(agoSpanNotInSource('تعرض للإصابة قبل شهر', 'injured in September'), []);
 });
+
+test('splitGluedBlocks: narration glued after an English blockquote gets its own paragraph (Paige/Raquel stories, 2026-11-08)', async () => {
+  const { splitGluedBlocks } = await import('../scripts/news-qa');
+  assert.equal(splitGluedBlocks('> "You are not talking to me." Paige expressed deep sympathy for the victim who was deceived.'), '> "You are not talking to me."\n\nPaige expressed deep sympathy for the victim who was deceived.');
+  assert.equal(splitGluedBlocks('> "It was great," Hardy said.'), '> "It was great," Hardy said.');
+  assert.equal(splitGluedBlocks('> "Good," Khan said. Dragunov had departed WWE earlier in August.'), '> "Good," Khan said. Dragunov had departed WWE earlier in August.');
+  assert.equal(splitGluedBlocks('> "It was good." Khan said. Dragunov had departed WWE earlier in August.'), '> "It was good." Khan said.\n\nDragunov had departed WWE earlier in August.');
+  assert.equal(splitGluedBlocks('> "I love you," Aminata tweeted. "I miss you so much."'), '> "I love you," Aminata tweeted. "I miss you so much."');
+});

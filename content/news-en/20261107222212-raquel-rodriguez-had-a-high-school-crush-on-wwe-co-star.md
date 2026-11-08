@@ -18,7 +18,9 @@ WWE star Raquel Rodriguez never expected that John Cena would evolve from her ad
 
 > "I think it started back in high school, when I saw John Cena live and I developed a crush for him," Rodriguez said.
 
-> "Then, I bought the inflatable hands...I remember hearing because I am from the border, which is a very small town. So, I remember hearing he went to Whataburger down in Hidalgo, and I was like, he loves Whataburger too. Oh, my God, he's the best." Rodriguez reflected on the surreal experience of sharing the ring with Cena last year during his "Farewell Tour" at Survivor Series. During his final Premium Live Event appearance, Rodriguez executed her signature Tejana Bomb on him, which allowed "Dirty" Dominik Mysterio to win the Men's Intercontinental Championship. For Rodriguez, the moment was a significant milestone in her career.
+> "Then, I bought the inflatable hands...I remember hearing because I am from the border, which is a very small town. So, I remember hearing he went to Whataburger down in Hidalgo, and I was like, he loves Whataburger too. Oh, my God, he's the best."
+
+Rodriguez reflected on the surreal experience of sharing the ring with Cena last year during his "Farewell Tour" at Survivor Series. During his final Premium Live Event appearance, Rodriguez executed her signature Tejana Bomb on him, which allowed "Dirty" Dominik Mysterio to win the Men's Intercontinental Championship. For Rodriguez, the moment was a significant milestone in her career.
 
 > "But then, I started to really grow and learn from John Cena and see how he worked and his amazing trajectory with WWE and everything that he was able to accomplish. And then, being put in the Judgment Day, and suddenly getting this moment to be in a storyline with him and Dominik, and having an actual moment on a PLE with John Cena, all of that was just very, very mind-blowing," she added.
 
