@@ -1,5 +1,25 @@
 [
   {
+    "id": 4074985204,
+    "link": "https://www.wrestlinginc.com/2308761/wwe-legend-john-cena-explains-importance-authenticity/",
+    "date": "Sun, 08 Nov 2026 16:30:00 +0000",
+    "date_gmt": "2026-11-08T16:30:00.000Z",
+    "title": {
+      "rendered": "WWE Legend John Cena Explains Importance Of Authenticity"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-legend-john-cena-explains-importance-of-authenticity/l-intro-1793926899.jpg"
+  },
+  {
+    "id": 4414562313,
+    "link": "https://www.wrestlinginc.com/2310280/aew-promoting-survivor-51-contestant-brady-booker/",
+    "date": "Sun, 08 Nov 2026 16:26:19 +0000",
+    "date_gmt": "2026-11-08T16:26:19.000Z",
+    "title": {
+      "rendered": "AEW Promoting 'Survivor 51' Contestant From ROH"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-promoting-survivor-51-contestant-from-roh/l-intro-1794155108.jpg"
+  },
+  {
     "id": 4198562093,
     "link": "https://www.wrestlinginc.com/2308452/wwe-jake-roberts-bray-wyatt-randy-orton-current-former-stars-remind-himself/",
     "date": "Sun, 08 Nov 2026 16:00:00 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Kit Wilson Discusses Working With The Miz In WWE"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/kit-wilson-discusses-working-with-the-miz-in-wwe/l-intro-1793794161.jpg"
-  },
-  {
-    "id": 3364006558,
-    "link": "https://www.wrestlinginc.com/2306180/wwe-joe-hendry-heel-turn-never-say-never/",
-    "date": "Sat, 07 Nov 2026 20:00:00 +0000",
-    "date_gmt": "2026-11-07T20:00:00.000Z",
-    "title": {
-      "rendered": "Joe Hendry Says 'Never Say Never' To Eventual WWE Heel Turn"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/joe-hendry-says-never-say-never-to-eventual-wwe-heel-turn/l-intro-1793762934.jpg"
-  },
-  {
-    "id": 1502283647,
-    "link": "https://www.wrestlinginc.com/2310155/wwe-crown-jewel-2026-roman-reigns-sami-zayn-wins-offers-respect/",
-    "date": "Sat, 07 Nov 2026 19:53:34 +0000",
-    "date_gmt": "2026-11-07T19:53:34.000Z",
-    "title": {
-      "rendered": "Roman Reigns Wins At WWE Crown Jewel, Offers Respect To Sami Zayn"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/roman-reigns-wins-at-wwe-crown-jewel-offers-respect-to-sami-zayn/l-intro-1794081113.jpg"
   }
 ]
