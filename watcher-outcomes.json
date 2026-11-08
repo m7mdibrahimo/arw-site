@@ -1,63 +1,63 @@
 {
- "https://www.wrestlinginc.com/2308017/indi-hartwell-tna-knockouts-world-title-first-australian": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-08T14:59:20.936Z"
- },
  "https://www.fightful.com/wrestling/tommaso-ciampa-reacts-to-winning-the-aew-national-championship-names-it-ruby": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:00:12.849Z"
+  "at": "2026-11-08T15:02:39.331Z"
  },
  "https://www.fightful.com/wrestling/andrade-el-idolo-reacts-to-losing-aew-national-championship-you-learn-more-from-losing-than-winning": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:00:12.651Z"
+  "at": "2026-11-08T15:02:39.141Z"
  },
  "https://www.fightful.com/wrestling/aaa-heroes-inmortales-week-three-results-11-7": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:00:12.194Z"
+  "at": "2026-11-08T15:02:38.697Z"
  },
  "https://www.fightful.com/wrestling/josh-bishop-wins-mlw-championship-from-killer-kross-at-mlw-saturday-night-superfight": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:00:11.907Z"
+  "at": "2026-11-08T15:02:38.424Z"
  },
  "https://www.fightful.com/wrestling/tommaso-ciampa-wins-aew-national-title-on-11-7-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:00:11.625Z"
+  "at": "2026-11-08T15:02:38.151Z"
  },
  "https://www.fightful.com/mma/dana-white-says-hes-meeting-with-donald-trump-on-monday-over-white-house-job-offer": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:00:10.828Z"
+  "at": "2026-11-08T15:02:37.383Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-proposes-that-he-lead-team-usa-at-wwe-survivor-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:00:10.102Z"
+  "at": "2026-11-08T15:02:36.763Z"
  },
  "https://www.fightful.com/wrestling/penta-and-jevon-evans-speak-after-winning-world-tag-team-titles-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:00:09.768Z"
+  "at": "2026-11-08T15:02:36.469Z"
  },
  "https://www.fightful.com/wrestling/tiffany-stratton-speaks-about-cashing-in-to-become-wwe-womens-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:00:09.549Z"
+  "at": "2026-11-08T15:02:36.279Z"
  },
  "https://www.fightful.com/wrestling/chelsea-green-comments-after-losing-womens-title-at-wwe-crown-jewel-i-didnt-just-lose-my-championship-but-i-lost-a-friend": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:00:09.149Z"
+  "at": "2026-11-08T15:02:35.892Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-wins-mens-crown-jewel-championship-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:00:08.944Z"
+  "at": "2026-11-08T15:02:35.696Z"
+ },
+ "https://www.wrestlinginc.com/2308017/indi-hartwell-tna-knockouts-world-title-first-australian": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-08T14:59:20.936Z"
  },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-post-show-nov-7-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
