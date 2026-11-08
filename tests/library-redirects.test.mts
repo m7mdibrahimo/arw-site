@@ -28,3 +28,26 @@ test('a library page that vanished redirects to the library its show is listed i
   // _redirects is full (2,000 static rules), so the build writes them as redirect pages
   assert.match(fs.readFileSync('eleventy.config.js', 'utf8'), /writeRedirectPages\(vanishedLibraryRedirects\(\), "_site"\)/);
 });
+
+// INCIDENTS #1137: library slugs that keep the year («njpw-g1-climax-36-2026», «njpw-destruction-in-kobe-2026») 404'd
+test('a vanished library slug that keeps the year redirects to the library its show is in now', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'lib-redir-year-'));
+  const site = path.join(dir, '_site');
+  const page = (p: string, html = '<html></html>') => { fs.mkdirSync(path.join(site, p), { recursive: true }); fs.writeFileSync(path.join(site, p, 'index.html'), html); };
+  page('shows/njpw-g1-climax-36-08-08-2026', '<a href="/library/njpw-g1-climax-36/">');
+  page('library/njpw-g1-climax-36');
+  page('shows/njpw-destruction-in-kobe-2026', '<a href="/library/njpw-road-to-destruction-2026/">');
+  page('library/njpw-road-to-destruction-2026');
+  const seo = path.join(dir, 'new-shows.json');
+  fs.writeFileSync(seo, JSON.stringify({ pages: {
+    'https://arab-wrestling.com/library/njpw-g1-climax-36-2026/': {},
+    'https://arab-wrestling.com/library/njpw-destruction-in-kobe-2026/': {},
+    'https://arab-wrestling.com/library/njpw-g1-climax-36/': {},
+  } }));
+  const redirects = path.join(dir, '_redirects');
+  fs.writeFileSync(redirects, '');
+  assert.deepEqual(vanishedLibraryRedirects(site, seo, redirects), [
+    ['/library/njpw-g1-climax-36-2026/', '/library/njpw-g1-climax-36/'],
+    ['/library/njpw-destruction-in-kobe-2026/', '/library/njpw-road-to-destruction-2026/'],
+  ]);
+});

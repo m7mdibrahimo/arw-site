@@ -518,3 +518,9 @@ test("English rules: joining two statements keeps each one's meaning (INCIDENTS 
   assert.match(rules, /never becomes "he had always wanted to be a wrestler until Bautista called him"/);
   assert.match(rules, /never "encouraged him to audition"/);
 });
+
+test("English rules: a precedent stays with the outcome the source ties it to (INCIDENTS #1136)", async () => {
+  const { englishStyleRules } = await import("../scripts/english-edition.ts");
+  const rules = englishStyleRules("https://www.wrestlinginc.com/x/");
+  assert.match(rules, /an OMEGA win would repeat the Tanahashi–Mutoh story/);
+});

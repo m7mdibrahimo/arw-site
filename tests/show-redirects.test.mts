@@ -47,3 +47,28 @@ test('a renamed show redirects from its English file-name address too', async ()
     ['/en/shows/roh-01-10-2026/', '/en/shows/roh-on-honorclub-01-10-2026/'],
   ]);
 });
+
+// INCIDENTS #1137: nostalgia pages whose title year was corrected (2019 → 2021) 404'd at the address Google had
+test('a nostalgia page whose year was corrected redirects from the old address', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'nost-redir-'));
+  const site = path.join(dir, '_site');
+  const content = path.join(dir, 'content');
+  const page = (p: string) => { fs.mkdirSync(path.join(site, p), { recursive: true }); fs.writeFileSync(path.join(site, p, 'index.html'), '<html></html>'); };
+  fs.mkdirSync(path.join(content, 'nostalgia'), { recursive: true });
+  fs.writeFileSync(path.join(content, 'nostalgia', '20261017211649-aew-dynamite-04-08-2019.md'), '---\ntitle: AEW Dynamite 04.08.2021\n---\n');
+  fs.writeFileSync(path.join(content, 'nostalgia', '20261017215234-aew-dynamite-11-08-2019.md'), '---\ntitle: AEW Dynamite 11.08.2021\n---\n');
+  page('nostalgia/aew-dynamite-04-08-2021');
+  page('nostalgia/aew-dynamite-11-08-2021');
+  const seo = path.join(dir, 'new-shows.json');
+  fs.writeFileSync(seo, JSON.stringify({ pages: {
+    'https://arab-wrestling.com/nostalgia/aew-dynamite-04-08-2019/': {},
+    'https://arab-wrestling.com/nostalgia/aew-dynamite-11-08-2019/': {},
+    'https://arab-wrestling.com/nostalgia/aew-dynamite-11-08-2021/': {},
+  } }));
+  const redirects = path.join(dir, '_redirects');
+  fs.writeFileSync(redirects, '');
+  assert.deepEqual(vanishedShowRedirects(site, seo, redirects, content), [
+    ['/nostalgia/aew-dynamite-04-08-2019/', '/nostalgia/aew-dynamite-04-08-2021/'],
+    ['/nostalgia/aew-dynamite-11-08-2019/', '/nostalgia/aew-dynamite-11-08-2021/'],
+  ]);
+});

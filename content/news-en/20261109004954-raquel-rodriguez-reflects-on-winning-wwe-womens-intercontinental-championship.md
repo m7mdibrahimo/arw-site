@@ -20,6 +20,6 @@ In an interview with Insight with Chris Van Vliet, Rodriguez discussed the signi
 
 > "It meant so much. I think all of you guys know I've had a very long journey with WWE. I've had so many ups and downs, so many nos, so many yeses. Then for a moment there, I thought I was just getting pigeonholed into just being a tag wrestler. But to know that they have faith in me to carry a title, to know that they have faith in me to stand here as your Intercontinental Champion, that means so much to me and so much to my journey with WWE and just my journey in general in life. So it's so cool."
 
-Rodriguez suffered a facial cut early in the title match against Ruca, leaving her covered in blood. Although she described the injury as painful, she stated that the outcome made every bit of physical pain worthwhile. Since winning the championship, Rodriguez has defended the title on WWE RAW against Ruca and retained it against challengers such as Nia Jax, Bayley, and Iyo Sky during WWE live events.
+Rodriguez suffered a facial cut early in the title match against Ruca, leaving her covered in blood. Although she described the injury as painful, she stated that the outcome made every bit of physical pain worthwhile. Since winning the championship, Rodriguez has defended the title once on WWE Raw and retained it at WWE live events against challengers such as Nia Jax, Bayley, Iyo Sky, and Ruca.
 
 https://www.youtube.com/watch?v=3AWM3C2kGQs

@@ -599,3 +599,18 @@ test("«Go to Answer» in an English headline becomes «Go-To Answer» (#1132)",
   const { fixEnglishNames } = await import("../scripts/english-edition.ts");
   assert.equal(fixEnglishNames("Swerve Strickland Says PAC Was His Go to Answer"), "Swerve Strickland Says PAC Was His Go-To Answer");
 });
+
+test("a team-size heading that contradicts its paragraph is blocked (INCIDENTS #1136)", () => {
+  const bad = "نتائج العرض كالتالي:\n\n**المواجهة الثانية: نزال فرق سداسي (Riot of Violence)**\n\nتغلب فريق سيشن موث مارتينا ونايلا روز ونايت شيد ولانا أوستن على فريق ريو وأليكسيس فالكون وسكاي سميتسون ومولي سبارتان في نزال فرق عشاري.\n\n🏆 **الفائز:** فريق سيشن موث مارتينا ونايلا روز\n";
+  assert.ok(checkArticle("نتائج عرض Pro Wrestling EVE 157", bad).some((i) => i.code === "team_size_label"));
+  assert.ok(!checkArticle("نتائج عرض Pro Wrestling EVE 157", bad.replace("فرق سداسي (", "فرق عشاري (")).some((i) => i.code === "team_size_label"));
+  assert.ok(BLOCKING_QA_CODES.includes("team_size_label"));
+});
+
+test("a woman's win with a masculine purpose verb is blocked (INCIDENTS #1136)", () => {
+  const bad = "تغير هذا المسار في عرض WWE RAW يوم 27 يوليو، عندما هزمت سول روكا ليفوز ببطولة القارات للسيدات. وتحدثت راكيل رودريغيز عن أهمية هذه اللحظة في مسيرتها الطويلة مع الشركة.";
+  assert.ok(checkArticle("راكيل رودريغيز تتحدث عن لقبها", bad).some((i) => i.code === "fem_win_masc_purpose"));
+  assert.ok(!checkArticle("راكيل رودريغيز تتحدث عن لقبها", bad.replace("ليفوز", "لتفوز")).some((i) => i.code === "fem_win_masc_purpose"));
+  assert.ok(!checkArticle("نتائج", "تغلب فريق هاي هاي ميت على فريق هايبر أكتيف ليحصد اللقب في نهاية النزال الكبير.").some((i) => i.code === "fem_win_masc_purpose"));
+  assert.ok(BLOCKING_QA_CODES.includes("fem_win_masc_purpose"));
+});
