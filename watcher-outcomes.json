@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2309776/wwe-aew-big-e-kofi-austin-creed-new-day-special-bond": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-08T22:32:24.187Z"
+ },
  "https://www.fightful.com/wrestling/report-wwe-roster-out-of-saudi-before-latest-missile-attack": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -38,11 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-08T22:29:09.606Z"
- },
- "https://www.wrestlinginc.com/2309776/wwe-aew-big-e-kofi-austin-creed-new-day-special-bond": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، مدة زمنية في المتن غير مطابقة للمصدر: قبل أسبوعين",
-  "retry": true,
-  "at": "2026-11-08T22:15:20.541Z"
  },
  "https://www.wrestlinginc.com/2310340/wwe-raquel-rodriguez-intercontinental-title-win-meaningful": {
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
