@@ -1,5 +1,15 @@
 [
   {
+    "id": 4364455833,
+    "link": "https://www.wrestlinginc.com/2310314/njpw-closing-los-angeles-dojo-details-wrestler-reaction/",
+    "date": "Sun, 08 Nov 2026 19:22:04 +0000",
+    "date_gmt": "2026-11-08T19:22:04.000Z",
+    "title": {
+      "rendered": "Details On Wrestler Reaction To NJPW Closing Los Angeles Dojo"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/details-on-wrestler-reaction-to-njpw-closing-los-angeles-dojo/l-intro-1794165377.jpg"
+  },
+  {
     "id": 1106152384,
     "link": "https://www.wrestlinginc.com/2310311/zilla-fatu-shows-off-wwe-john-cena-classic-gifts/",
     "date": "Sun, 08 Nov 2026 18:49:36 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW Dynamite Viewership & Ratings Report, 11/4/2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-viewership-ratings-report-1142026/l-intro-1794100910.jpg"
-  },
-  {
-    "id": 3494529307,
-    "link": "https://www.wrestlinginc.com/2310035/aew-collision-november-7-2026-results/",
-    "date": "Sat, 07 Nov 2026 22:00:00 +0000",
-    "date_gmt": "2026-11-07T22:00:00.000Z",
-    "title": {
-      "rendered": "AEW Collision Results 11/7/26 W/ Live Updates"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-collision-results-11726-w-live-updates/l-intro-1794110297.jpg"
   }
 ]
