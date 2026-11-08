@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/two-championship-matches-announced-october-30-wwe-smackdown/": {
-    "matchedFile": "20261024044455-سامي-زين-يدافع-عن-لقب-wwe-أمام-تريك-ويليامز-في-عرض-wwe-smackdown-القادم.md",
-    "reason": "الخبر الجديد يغطي نفس الإعلان عن النزالين في عرض 30 أكتوبر المذكورين بالفعل في الخبر رقم 0، ولا يقدم أي تطور جديد جوهري.",
-    "at": "2026-10-24T01:51:08.727Z"
-  },
   "https://www.fightful.com/wrestling/wwe-smackdown-results-10-23-2026-chelsea-green-vs-roxanne-perez-bakusai-vs-mft-giulia-vs-blake-monroe-more/": {
     "matchedFile": "20261024020000-نتائج-عرض-wwe-smackdown-23-أكتوبر-2026-وتغطية-مباشرة-للأحداث-فوز-بليك-مونرو-في-الحدث-الرئيسي.md",
     "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261108014456-إل-هيخو-ديل-ري-ميستيريو-يسقط-مشجعا-بضربة-قاضية-بعد-صفع-بطنه.md",
     "reason": "الخبر الجديد يغطي نفس الواقعة בדיוק (حادثة اقتحام المشجع للحلبة واعتدائه على إل هيخو ديل ري ميستيريو وردة فعل المصارع في عرض The Crash) من مصدر مختلف وبنفس التفاصيل الأساسية دون إضافة تطور جديد.",
     "at": "2026-11-08T12:28:11.891Z"
+  },
+  "https://www.fightful.com/wrestling/andrade-el-idolo-reacts-to-losing-aew-national-championship-you-learn-more-from-losing-than-winning/": {
+    "matchedFile": "20261108160822-أندرادي-يكشف-عن-خطوته-القادمة-بعد-خسارة-بطولة-aew-الوطنية.md",
+    "reason": "الخبر الجديد يكرر تصريح أندرادي إل إيدولو بشأن خسارته بطولة AEW الوطنية وهدفه القادم نحو بطولة AEW العالمية، وهو نفس المحتوى المذكور في الخبر رقم 0.",
+    "at": "2026-11-08T14:08:19.191Z"
   }
 }
