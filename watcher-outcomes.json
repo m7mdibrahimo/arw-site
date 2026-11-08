@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2310340/wwe-raquel-rodriguez-intercontinental-title-win-meaningful": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-08T22:06:24.811Z"
+ },
  "https://www.fightful.com/wrestling/report-wwe-roster-out-of-saudi-before-latest-missile-attack": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-28T15:28:49.516Z"
- },
- "https://www.fightful.com/wrestling/orange-cassidy-recalls-breaking-orbital-bone-as-his-worst-injury-vomiting-blood-as-a-result": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-28T14:31:58.121Z"
  }
 }
