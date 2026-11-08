@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2309776/wwe-aew-big-e-kofi-austin-creed-new-day-special-bond": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، مدة زمنية في المتن غير مطابقة للمصدر: قبل أسبوعين",
+  "retry": true,
+  "at": "2026-11-08T22:15:20.541Z"
+ },
  "https://www.fightful.com/wrestling/report-wwe-roster-out-of-saudi-before-latest-missile-attack": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,

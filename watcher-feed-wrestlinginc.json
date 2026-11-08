@@ -1,5 +1,15 @@
 [
   {
+    "id": 1635281357,
+    "link": "https://www.wrestlinginc.com/2309776/wwe-aew-big-e-kofi-austin-creed-new-day-special-bond/",
+    "date": "Sun, 08 Nov 2026 22:00:00 +0000",
+    "date_gmt": "2026-11-08T22:00:00.000Z",
+    "title": {
+      "rendered": "WWE's Big E Talks 'Special Bond' With Former New Day Members Kofi & Austin Creed"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-big-e-talks-special-bond-with-former-new-day-members-kofi-austin-creed/l-intro-1793995795.jpg"
+  },
+  {
     "id": 1954367294,
     "link": "https://www.wrestlinginc.com/2310340/wwe-raquel-rodriguez-intercontinental-title-win-meaningful/",
     "date": "Sun, 08 Nov 2026 21:49:54 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Tommaso Ciampa Leaves Jericho Cruise With AEW National Title"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/tommaso-ciampa-leaves-jericho-cruise-with-aew-national-title/l-intro-1794149760.jpg"
-  },
-  {
-    "id": 3163329425,
-    "link": "https://www.wrestlinginc.com/2308017/indi-hartwell-tna-knockouts-world-title-first-australian/",
-    "date": "Sun, 08 Nov 2026 14:30:00 +0000",
-    "date_gmt": "2026-11-08T14:30:00.000Z",
-    "title": {
-      "rendered": "Indi Hartwell Talks Being First Australian Wrestler To Win TNA Knockouts World Title"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/indi-hartwell-talks-being-first-australian-wrestler-to-win-tna-knockouts-world-title/l-intro-1793897432.jpg"
   }
 ]
