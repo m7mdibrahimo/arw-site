@@ -1,5 +1,5 @@
 ---
-title: "Swerve Strickland Says PAC Was His Go to Answer for AEW Stars That Could Potentially Become AEW World Champion"
+title: "Swerve Strickland Says PAC Was His Go-To Answer for AEW Stars That Could Potentially Become AEW World Champion"
 slug: "swerve-strickland-says-pac-was-his-go-to-answer-for-aew-stars-that-could"
 description: "Swerve Strickland recently revealed that PAC was his immediate answer when asked which AEW star could potentially become AEW World Champion."
 federation: AEW

@@ -14,7 +14,7 @@ en_tags:
   - "Wrestling"
 image: /content/images/6nf9gecl6q4jkrnz.jpg
 ---
-The Elegance Brand lost Mr. Elegance during the October 29 episode of TNA iMPACT. Ash By Elegance defended the Knockouts Television Championship against Jada Stone. During the match, M put Mr. Elegance in the path of Stone's moonsault, upsetting him. Heather by Elegance tried to distract the referee so Mr. Elegance could help M win, but Mr. Elegance shouted that he quit the Elegance brand. M retained the title and later tweeted: "quits?!!!! @AJZiggy1818 well you can’t quit!! cause i deem you UNelegant!!! -The New Leader of the Elegance Brand and 1st Ever @ThisIsTNA KO’s TV Champion". Heather by Elegance added: "Guys it’s getting lonely over here #TNAiMPACT #mrelegancejustfreakingquit". Mr. Elegance joined the group in January 2026.
+The Elegance Brand lost Mr. Elegance during the October 29 episode of TNA iMPACT. M By Elegance defended the Knockouts Television Championship against Jada Stone. During the match, M put Mr. Elegance in the path of Stone's moonsault, upsetting him. Heather by Elegance tried to distract the referee so Mr. Elegance could help M win, but Mr. Elegance shouted that he quit the Elegance brand. M retained the title and later tweeted: "quits?!!!! @AJZiggy1818 well you can’t quit!! cause i deem you UNelegant!!! -The New Leader of the Elegance Brand and 1st Ever @ThisIsTNA KO’s TV Champion". Heather by Elegance added: "Guys it’s getting lonely over here #TNAiMPACT #mrelegancejustfreakingquit". Mr. Elegance joined the group in January 2026.
 
 https://x.com/ThisIsTNA/status/2115975207538090154
 

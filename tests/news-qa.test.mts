@@ -579,3 +579,23 @@ test("DDP's surname written «بايج» (Paige) is blocked, «بيج» passes (
   const good = checkArticle("دايموند دالاس بيج يدعو كودي", "قال دايموند دالاس بيج كلاما. أوضح بيج أن كودي رائع.");
   assert.ok(!good.some((i) => i.code === "ddp_surname"));
 });
+
+// INCIDENTS #1132: «🤝 **النتيجة:** بلا نتيجة بسبب الاستبعاد» for a DQ win (CMLL Viernes Espectacular 6/11), and the dual
+// forms «تختاران»، «حافظتا على»، «قطعتين معدنيتين»، «بطلي فرق» went live.
+test("a DQ win written as «no result» and the new dual forms block publishing (#1132)", async () => {
+  const { checkArticle: check, BLOCKING_QA_CODES: codes } = await import("../scripts/news-qa.ts");
+  const pad = "\n" + "نص عادي عن النزال. ".repeat(30);
+  assert.ok(codes.includes("dq_as_no_result"));
+  assert.ok(check("نتائج عرض CMLL", "🤝 **النتيجة:** بلا نتيجة بسبب الاستبعاد" + pad).some((i: any) => i.code === "dq_as_no_result"));
+  assert.ok(!check("نتائج عرض CMLL", "🏆 **الفائز:** فيراس ديل رينغ (بالاستبعاد)" + pad).some((i: any) => i.code === "dq_as_no_result"));
+  assert.ok(!check("نتائج عرض CMLL", "🤝 **النتيجة:** بلا نتيجة بسبب التدخل" + pad).some((i: any) => i.code === "dq_as_no_result"));
+  for (const bad of ["أنيتا فون وسافاير ريد تختاران مواجهة بايلي", "عندما حافظتا على حزام الفرق", "إضافة إلى قطعتين معدنيتين", "وبطلي فرق WWE NXT فريق فانيتي بروجيكت"]) {
+    assert.ok(check("خبر", bad + pad).some((i: any) => i.code === "dual_form"), bad);
+  }
+  assert.ok(!check("خبر", "حافظ الثنائي على حزام الفرق واختار مواجهة بايلي" + pad).some((i: any) => i.code === "dual_form"));
+});
+
+test("«Go to Answer» in an English headline becomes «Go-To Answer» (#1132)", async () => {
+  const { fixEnglishNames } = await import("../scripts/english-edition.ts");
+  assert.equal(fixEnglishNames("Swerve Strickland Says PAC Was His Go to Answer"), "Swerve Strickland Says PAC Was His Go-To Answer");
+});

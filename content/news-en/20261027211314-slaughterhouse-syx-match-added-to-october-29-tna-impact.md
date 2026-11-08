@@ -22,6 +22,6 @@ The lineup for the upcoming TNA iMPACT! includes:
 
 Amazing Red vs. Cedric Alexander for the TNA X Division Championship
 John Skyler vs. A.J. Francis
-Ash By Elegance vs. Jada Stone for the TNA Knockouts Television Title
+M By Elegance vs. Jada Stone for the TNA Knockouts Television Title
 Elijah vs. Ryan Nemeth
 The Hardys vs. SYX in a Slaughterhouse SYX match

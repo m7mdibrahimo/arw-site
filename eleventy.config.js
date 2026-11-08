@@ -1529,6 +1529,12 @@ module.exports = function(eleventyConfig) {
           "lucha-libre-aaa": ["لوتشا ليبري ايه ايه ايه", "لوتشا ليبري AAA", "لوتشا ليبري", "لوشا ليبري", "ايه ايه ايه", "AAA", "Lucha Libre AAA", "Lucha Libre AAA مترجم", "AAA مترجم"],
           "mlw-fusion": ["ام ال دبليو فيوجن", "ام ال دبليو", "فيوجن", "فيوزن", "MLW Fusion", "MLW Fusion مترجم", "MLW مترجم"],
           "cmll-lunes-clasico": ["سي ام ال ال", "سي إم إل إل", "لونيس كلاسيكو", "لونس كلاسيكو", "لوتشا ليبري", "CMLL", "CMLL Lunes Clasico", "CMLL Lunes Clasico مترجم", "CMLL مترجم"],
+          // «كراون جول 2026» (8.2) and «عرض كراون جول 2026» (9.5–12.1) in Search Console for the 2026 show and its library page:
+          // the bare name and the ways it is misspelled were missing (the year forms come from show-seo). Head/structured data only (INCIDENTS #1133)
+          "wwe-crown-jewel": ["كراون جول", "كراون جويل", "كراون جيول", "كراون جوول", "WWE Crown Jewel", "Crown Jewel", "Crown Jewel مترجم", "عرض كراون جول مترجم", "كراون جول مترجم"],
+          // The next yearly shows get their names before they air, so their first day in Google is not lost (INCIDENTS #1133)
+          "wwe-survivor-series": ["سيرفايفر سيريس", "سرفايفر سيريس", "سيرفايفر سيريز", "سيرفايفر", "Survivor Series", "WWE Survivor Series", "Survivor Series مترجم", "عرض سيرفايفر سيريس مترجم", "سيرفايفر سيريس مترجم"],
+          "aew-full-gear": ["فول جير", "فل جير", "فول قير", "فول غير", "AEW Full Gear", "Full Gear", "Full Gear مترجم", "عرض فول جير مترجم", "فول جير مترجم"],
           "wwe-money-in-the-bank": ["موني إن ذا بانك", "موني ان ذا بانك 2026", "مني ان ذا بانك", "ام اي تي بي", "MITB", "WWE Money in the Bank", "Money in the Bank 2026"],
         };
         // Every program also answers to «<the federation said in Arabic> <the program>» («دبليو دبليو إي موني إن ذا بانك»,

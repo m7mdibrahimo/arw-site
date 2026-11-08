@@ -22,7 +22,7 @@ Allie & Kiera Hogan def. Alex Gracia & Ki Vibes
 
 Following their victory, Allie and Kiera stated they will face Zoey and a partner of her choice at Bound for Glory. AJ Francis, Brian Myers, The Home Town Man & Joe Alonzo secured a win in the eight-man tag team match after Joe Alonzo scored the pin to earn the number 20 entry spot in the Call Your Shot Gauntlet. The Righteous also offered to protect Harley Hudson in the gauntlet match.
 
-Order 4 held a final meeting prior to their civil war where they all threw in their badges, and Ali stated he would destroy them. Ash by Elegance defended the TNA Knockouts Television Championship against Elayna Black in a match that ended in a time limit draw.
+Order 4 held a final meeting prior to their civil war where they all threw in their badges, and Ali stated he would destroy them. M by Elegance defended the TNA Knockouts Television Championship against Elayna Black in a match that ended in a time limit draw.
 
 Ricky Sosa and Eddie Edwards exchanged words regarding their upcoming matchup, and Fabian Aichner defeated KC Navarro. Shayna Baszler was revealed as Zoey Serrano's partner for Bound for Glory, and Indi Hartwell and Xia Brookside delivered their final words ahead of their title bout.
 

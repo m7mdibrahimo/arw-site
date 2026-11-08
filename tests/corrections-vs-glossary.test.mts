@@ -44,7 +44,10 @@ test("Ash By Elegance has one spelling in the glossary, the corrections and ever
 // misspelling Google cannot connect to the wrestler's page.
 test("no show, recap or nostalgia tag is a spelling corrections.json would rewrite", () => {
   const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string; regex?: boolean }[];
-  const wrongOnes = corrections.filter(c => !c.regex && c.right !== c.wrong && /[\u0621-\u064A]/.test(c.wrong));
+  // A rule whose right side has no Arabic letters («كراون جول» → «Crown Jewel») is the news rule «show names stay in
+  // English», not a misspelling: a show page's Arabic program-name tag (typed by the owner in the panel) is how Arabic
+  // visitors search it (INCIDENTS #1131).
+  const wrongOnes = corrections.filter(c => !c.regex && c.right !== c.wrong && /[\u0621-\u064A]/.test(c.wrong) && /[\u0621-\u064A]/.test(c.right));
   const bad: string[] = [];
   for (const dir of ["content/shows", "content/nostalgia"]) {
     for (const f of fs.readdirSync(dir).filter(x => x.endsWith(".md"))) {
@@ -79,6 +82,44 @@ test("known broken Arabic phrases are corrected and absent from every story", ()
   for (const f of fs.readdirSync("content/news").filter(f => f.endsWith(".md"))) {
     const t = fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "");
     for (const w of wrong) if (new RegExp(`(?<![\\u0600-\\u06FF])${w}(?![\\u0600-\\u06FF])`).test(t)) bad.push(`${f}: ${w}`);
+  }
+  assert.deepEqual(bad, []);
+});
+
+// INCIDENTS #1130: corrections.json turned every spelling of «إم باي إليغانس» (M By Elegance, the Knockouts TV champion)
+// into «آش باي إليغانس» — another wrestler — and ENGLISH_FIXES did the same in English, so 30 stories gave the title
+// to the wrong woman. A misspelling's correction keeps the same name: when the «wrong» side, without vowels and
+// hamzas, is a glossary name, the «right» side must be that same glossary name — never someone else's.
+test("a correction never turns one glossary name into another wrestler's name", () => {
+  const glossary = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8")) as Record<string, string>;
+  const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string; right: string; regex?: boolean }[];
+  const skeleton = (s: string) => s.replace(/[ً-ْ]/g, "").replace(/[اأإآويىءئؤة]/g, "").replace(/\s+/g, " ").trim();
+  const names = new Map<string, string[]>();
+  for (const v of Object.values(glossary)) {
+    const k = skeleton(v);
+    if (k.length >= 5) names.set(k, [...(names.get(k) || []), v]);
+  }
+  const bad = corrections.filter(c => !c.regex).flatMap(c => {
+    const same = names.get(skeleton(c.wrong));
+    return same && !same.includes(c.right) ? [`«${c.wrong}» → «${c.right}» but the glossary name is «${same.join("/")}»`] : [];
+  });
+  assert.deepEqual(bad, []);
+  assert.equal(glossary["M By Elegance"], "إم باي إليغانس");
+});
+
+test("no English fix rewrites a wrestler the glossary knows into another name", async () => {
+  const { ENGLISH_FIXES } = await import("../scripts/english-edition.ts");
+  const glossary = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8")) as Record<string, string>;
+  const bad: string[] = [];
+  for (const name of Object.keys(glossary)) {
+    if (!/^[A-Z][\w.'-]*(?: [A-Z][\w.'-]*)+$/.test(name)) continue;
+    for (const [re, to] of ENGLISH_FIXES) {
+      re.lastIndex = 0;
+      const out = name.replace(re, to as string);
+      re.lastIndex = 0;
+      const plain = (x: string) => x.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(); // «Mone» → «Moné» is the same name
+      if (out !== name && plain(out) !== plain(name)) bad.push(`${name} → ${out} (${re})`);
+    }
   }
   assert.deepEqual(bad, []);
 });

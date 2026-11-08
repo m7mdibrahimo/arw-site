@@ -1,6 +1,7 @@
 ---
 federation: INDIE
-title: "نتائج عرض New Texas Pro 8 Year Anniversary (30 أكتوبر 2026): فوز براين كيث في الحدث الرئيسي"
+permalink: "/news/نتائج-عرض-new-texas-pro-8-year-anniversary-30-أكتوبر-2026-فوز-براين-كيث-في-الحدث-الرئيسي/index.html"
+title: "نتائج عرض New Texas Pro 8 Year Anniversary (30 أكتوبر 2026): فوز برايان كيث في الحدث الرئيسي"
 date: 2026-11-01T21:00:00.000+03:00
 published_at: 2026-11-01T18:10:08.953Z
 source_id: 336845
@@ -11,7 +12,7 @@ source_results: 11
 tags:
   - New Texas Pro
   - New Texas Pro 8 Year Anniversary Event
-  - براين كيث
+  - برايان كيث
   - كاتسويوري شيباتا
   - كريس مارسيل
 image: /content/images/gxiq2v0gq6u6qk8b.jpg
@@ -63,6 +64,6 @@ layout: post-layout.njk
 
 **الحدث الرئيسي (Main Event): بطولة New Texas Pro العالمية**
 
-في الحدث الرئيسي للعرض، دافع براين كيث عن بطولته العالمية بنجاح بعد أن حقق الفوز على منافسه داني أوريون.
+في الحدث الرئيسي للعرض، دافع برايان كيث عن بطولته العالمية بنجاح بعد أن حقق الفوز على منافسه داني أوريون.
 
-🏆 **الفائز:** براين كيث
+🏆 **الفائز:** برايان كيث

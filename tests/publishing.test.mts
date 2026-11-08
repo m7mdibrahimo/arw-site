@@ -4202,11 +4202,11 @@ test('Trey Miguel and Elayna Black have one spelling each and variants are auto-
   assert.ok(c.some((x: any) => x.wrong === 'إلينا بلاك' && x.right === 'إيلينا بلاك'));
 });
 
-test('English names are fixed before an English story is saved (#385)', async () => {
+test('M By Elegance stays M By Elegance in English stories (#385 was wrong — INCIDENTS #1130)', async () => {
   const { fixEnglishNames } = await import('../scripts/english-edition.ts');
-  assert.equal(fixEnglishNames('M By Elegance beat Elayna Black'), 'Ash By Elegance beat Elayna Black');
-  // The same slip with a lowercase «by» reached a live story (2026-10-27): the rule ignores case.
-  assert.equal(fixEnglishNames('M by Elegance vs. Jada Stone'), 'Ash By Elegance vs. Jada Stone');
+  // M By Elegance (Maggie Lee) and Ash By Elegance are two wrestlers; M is the Knockouts TV champion.
+  assert.equal(fixEnglishNames('M By Elegance beat Elayna Black'), 'M By Elegance beat Elayna Black');
+  assert.equal(fixEnglishNames('M by Elegance vs. Jada Stone'), 'M by Elegance vs. Jada Stone');
 });
 
 test('a server\'s own fullscreen never goes black: no page-to-page view transition, no layer effects under a fullscreen player (INCIDENTS #386)', () => {

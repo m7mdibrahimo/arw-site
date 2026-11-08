@@ -375,7 +375,8 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   [/\b((?:it|this|that) belong)( (?:to|in)\b)/gi, "$1s$2"],
   // «fallen in view of watching» is a broken idiom: it is «fallen in love with watching» (INCIDENTS #794)
   [/\bfallen in view of\b/g, "fallen in love with"],
-  [/\bM By Elegance\b/gi, "Ash By Elegance"],
+  // «His Go to Answer» in a Title Case headline: the compound adjective is «go-to» (Swerve Strickland story, INCIDENTS #1132)
+  [/\bGo to (Answer|Guy|Move|Person|Choice|Pick|Option|Finisher)\b/g, "Go-To $1"],
   // The wrestler is «PAC» in capitals (the glossary and every source); «Pac» went live in 16 stories (INCIDENTS #979)
   [/\bPac\b(?![-‐](?:Man|\d))/g, "PAC"],
   // Jey Uso written with Ilja Dragunov's surname (INCIDENTS #758)

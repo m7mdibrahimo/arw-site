@@ -18,7 +18,7 @@ Anita Vaughan and Safire Reed of the tag team Hyperactive discussed the prospect
 
 During an interview on Fightful Overbooked's In The Weeds, Vaughan shared their choices involving Bayley and Moné, The Kabuki Warriors, and Divine Dominion.
 
-> "I agree what you (Safire) said, we can submit our final answer. So we would like to we would like to wrestle Bayley and Mercedes. That would be nice. If possible, please. We will promo against the Kabuki Warriors in our best Japanese attempt, and we will tag with Divine Dominion and throw Safire Reed around and that is our final answer."
+> "I agree what you (Safire) said, we can submit our final answer. So we would like to wrestle Bayley and Mercedes. That would be nice. If possible, please. We will promo against the Kabuki Warriors in our best Japanese attempt, and we will tag with Divine Dominion and throw Safire Reed around and that is our final answer."
 
 Earlier this year, both Vaughan and Reed signed with Sendai Girls.
 
