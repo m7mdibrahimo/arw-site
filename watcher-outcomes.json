@@ -2,17 +2,12 @@
  "https://www.ringsidenews.com/aew-collision-results-highlights-key-moments-november-7-2026": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-08T00:32:07.151Z"
+  "at": "2026-11-08T00:34:19.003Z"
  },
  "https://www.ringsidenews.com/mercedes-mone-mourns-passing-her-younger-sister-alexis": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-08T00:32:07.058Z"
- },
- "https://www.wrestlinginc.com/2310035/aew-collision-november-7-2026-results": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Mina Shirakawa، تقرير نتائج بلا أي نتيجة",
-  "retry": true,
-  "at": "2026-11-08T00:30:18.059Z"
+  "at": "2026-11-08T00:34:18.868Z"
  },
  "https://www.fightful.com/mma/dana-white-says-hes-meeting-with-donald-trump-on-monday-over-white-house-job-offer": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -113,6 +108,11 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-08T00:30:46.247Z"
+ },
+ "https://www.wrestlinginc.com/2310035/aew-collision-november-7-2026-results": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Mina Shirakawa، تقرير نتائج بلا أي نتيجة",
+  "retry": true,
+  "at": "2026-11-08T00:30:18.059Z"
  },
  "https://www.ringsidenews.com/ric-flair-mike-tyson-score-major-legal-victory-multi-million-dollar-lawsuit": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة",
