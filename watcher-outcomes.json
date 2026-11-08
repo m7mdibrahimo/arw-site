@@ -1,98 +1,98 @@
 {
- "https://www.ringsidenews.com/mercedes-mone-mourns-passing-her-younger-sister-alexis": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-08T02:11:50.878Z"
- },
  "https://www.fightful.com/wrestling/ftr-ties-series-2-2-with-motor-city-machine-guns-on-11-7-aew-collision": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-08T02:14:09.125Z"
+  "at": "2026-11-08T02:16:42.542Z"
  },
  "https://www.fightful.com/mma/dana-white-says-hes-meeting-with-donald-trump-on-monday-over-white-house-job-offer": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T02:13:52.104Z"
+  "at": "2026-11-08T02:16:28.728Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-proposes-that-he-lead-team-usa-at-wwe-survivor-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T02:13:51.550Z"
+  "at": "2026-11-08T02:16:28.280Z"
  },
  "https://www.fightful.com/wrestling/penta-and-jevon-evans-speak-after-winning-world-tag-team-titles-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T02:13:51.291Z"
+  "at": "2026-11-08T02:16:28.073Z"
  },
  "https://www.fightful.com/wrestling/tiffany-stratton-speaks-about-cashing-in-to-become-wwe-womens-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T02:13:51.121Z"
+  "at": "2026-11-08T02:16:27.935Z"
  },
  "https://www.fightful.com/wrestling/chelsea-green-comments-after-losing-womens-title-at-wwe-crown-jewel-i-didnt-just-lose-my-championship-but-i-lost-a-friend": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T02:13:50.786Z"
+  "at": "2026-11-08T02:16:27.659Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-wins-mens-crown-jewel-championship-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T02:13:50.615Z"
+  "at": "2026-11-08T02:16:27.520Z"
  },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-post-show-nov-7-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T02:13:50.442Z"
+  "at": "2026-11-08T02:16:27.382Z"
  },
  "https://www.fightful.com/wrestling/tna-contract-of-rich-swann-set-to-expire-at-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T02:13:50.183Z"
+  "at": "2026-11-08T02:16:27.180Z"
  },
  "https://www.fightful.com/wrestling/tiffany-stratton-wins-wwe-womens-title-after-cashing-in-money-in-the-bank-on-chelsea-green-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T02:13:49.851Z"
+  "at": "2026-11-08T02:16:26.919Z"
  },
  "https://www.fightful.com/wrestling/chelsea-green-wins-the-womens-crown-jewel-championship-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T02:13:49.681Z"
+  "at": "2026-11-08T02:16:26.783Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-punts-randy-orton-wins-last-man-standing-match-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T02:13:49.435Z"
+  "at": "2026-11-08T02:16:26.589Z"
  },
  "https://www.fightful.com/wrestling/george-icemans-tna-contract-yet-to-expire-runs-through-till-end-of-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T02:13:49.189Z"
+  "at": "2026-11-08T02:16:26.398Z"
  },
  "https://www.fightful.com/wrestling/wwe-road-to-survivor-series-live-results-11-6": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T02:13:48.930Z"
+  "at": "2026-11-08T02:16:26.197Z"
  },
  "https://www.fightful.com/wrestling/sami-zayn-vs-roman-reigns-the-working-plan-to-main-event-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T02:13:48.760Z"
+  "at": "2026-11-08T02:16:26.059Z"
  },
  "https://www.fightful.com/wrestling/aaa-heroes-inmortales-week-three-preview-start-time-how-to-watch-location-11-7": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T02:13:48.497Z"
+  "at": "2026-11-08T02:16:25.857Z"
  },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-results-11-7-2026-roman-reigns-vs-sami-zayn-chelsea-green-vs-liv-morgan-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-08T02:13:48.232Z"
+  "at": "2026-11-08T02:16:25.656Z"
  },
  "https://www.fightful.com/wrestling/jacob-fatu-expected-to-return-to-join-the-bloodline-for-survivor-series-wargames": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T02:13:48.063Z"
+  "at": "2026-11-08T02:16:25.523Z"
+ },
+ "https://www.ringsidenews.com/mercedes-mone-mourns-passing-her-younger-sister-alexis": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-08T02:11:50.878Z"
  },
  "https://www.fightful.com/wrestling/watch-countdown-to-wwe-crown-jewel-nov-7-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
