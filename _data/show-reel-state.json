@@ -4917,5 +4917,24 @@
     "needsReview": false,
     "tiktok": true,
     "mediaDeleted": true
+  },
+  "20261108093956-wwe-crown-jewel-2026": {
+    "publishedAt": 1794125470707,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": false,
+    "title": "عرض كراون جول 07.11.2026 مترجم",
+    "lastAttempt": 1794125548242,
+    "errors": {
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_story",
+      "tiktok"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
