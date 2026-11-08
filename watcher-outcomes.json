@@ -1988,15 +1988,5 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-28T06:20:38.879Z"
- },
- "https://www.wrestlinginc.com/2299197/wwe-nxt-october-27-2026-3-things-hated-loved-opinion-review": {
-  "reason": "المراجعة رفضته: نفس العنوان منشور قبل كده — الخبر مكرر",
-  "retry": false,
-  "at": "2026-10-28T05:59:04.407Z"
- },
- "https://www.fightful.com/wrestling/cmll-dia-de-muertos-results-10-27-2026-calavera-jr-i-advances-to-the-rey-del-inframundo-finals-esfinge-wins-the-mexican-heavyweight-title-more": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-28T05:43:00.983Z"
  }
 }
