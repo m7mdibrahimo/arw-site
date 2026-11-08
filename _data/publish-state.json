@@ -1900,21 +1900,21 @@
   "bufferQuota": [
     {
       "window": "15m",
-      "remaining": 148,
-      "resetAt": 1794139788642,
-      "updatedAt": 1794138896642
+      "remaining": 149,
+      "resetAt": 1794162164324,
+      "updatedAt": 1794161264324
     },
     {
       "window": "24h",
-      "remaining": 584,
-      "resetAt": 1794160964642,
-      "updatedAt": 1794138896642
+      "remaining": 599,
+      "resetAt": 1794247664324,
+      "updatedAt": 1794161264324
     },
     {
       "window": "30d",
-      "remaining": 1380,
-      "resetAt": 1794840072642,
-      "updatedAt": 1794138896642
+      "remaining": 1379,
+      "resetAt": 1794840072324,
+      "updatedAt": 1794161264324
     }
   ],
   "videoCooldowns": {
