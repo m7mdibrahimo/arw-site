@@ -8,7 +8,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { splitGluedBlocks, decodeHtmlEntities, dropRepeatedListItem } from "./news-qa";
+import { splitGluedBlocks, decodeHtmlEntities, dropRepeatedListItem, claimNotInSource } from "./news-qa";
 import { metaDescription } from "../lib/meta-description.cjs";
 
 export const NEWS_EN_DIR = path.join(process.cwd(), "content", "news-en");
@@ -111,6 +111,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - A speaker's "the match with X" / "my match with X" is the speaker's OWN match against X: "after his match with EK Prosper", never "after a match between EK Prosper and another opponent" (Grayson Waller story, round 2026-10-29). A "spot" is one moment inside a match ("the ambulance spot", "a ladder spot"), never a match of its own.
 - When you join two of the source's statements in one sentence, keep what each one says: "he always wanted to be a wrestler, and acting never crossed his mind until Bautista asked him to be in The Killer's Game" never becomes "he had always wanted to be a wrestler until Bautista called him" (that says he stopped wanting to wrestle), and "asked him to be in the film" is never "encouraged him to audition" (INCIDENTS #1134).
 - A comparison or a historical precedent stays with the outcome the source ties it to: when the source weighs two outcomes ("a Tsuji win would…", "an Omega win would…"), give each outcome its own reasons in its own sentence. Meltzer said an OMEGA win would repeat the Tanahashi–Mutoh story; "a Tsuji win would cement him as the top domestic star, echoing NJPW's booking of Hiroshi Tanahashi and Keiji Mutoh" pinned it on the wrong outcome (INCIDENTS #1136).
+- A championship is exactly the one the source names: when the source says Chelsea Green beat Liv Morgan for the Women's Crown Jewel Championship, that is the Crown Jewel title, never "the vacant title" or the WWE Women's Championship. Never call a title vacant, a person a front-runner or candidate, or say someone cancelled bookings or appearances unless the source says it — the code blocks these (INCIDENTS #1138).
 - Never mention Arab Wrestling, translation, AI, or that this is a rewrite.
 - English letters only: never leave a word or a sentence in another script (Cyrillic, Greek, Hebrew, Chinese, Japanese, Korean) and never a translation arrow «->» or a pair of a foreign line and its English line. A quote is English only (INCIDENTS #872).`;
 }
@@ -210,6 +211,8 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   // one (INCIDENTS #872). Any other script, and any translation arrow, blocks the English edition.
   if (/[\u0370-\u03FF\u0400-\u058F\u0590-\u05FF\u0900-\u0DFF\u0E00-\u0E7F\u1000-\u109F\u10A0-\u10FF\u1200-\u137F\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF]/.test(title + "\n" + body)) issues.push("letters from another script");
   if (/->|→/.test(body)) issues.push("translation arrow left in the text");
+  // «the vacant title», «front-runner», «cancelled her bookings» with nothing in the source that says it (INCIDENTS #1138)
+  for (const c of claimNotInSource(title + "\n" + body, i.sourceText, "en")) issues.push(`claim not in the source: ${c}`);
   // «on Friday, October 17, 2026» for a Saturday (Toni Storm, Crown Jewel, Matt Hardy stories, INCIDENTS #962)
   const badDay = enWeekdayNotOnDate(title + "\n" + body);
   if (badDay) issues.push(`weekday does not match the date: ${badDay}`);

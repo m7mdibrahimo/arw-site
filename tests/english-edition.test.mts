@@ -524,3 +524,11 @@ test("English rules: a precedent stays with the outcome the source ties it to (I
   const rules = englishStyleRules("https://www.wrestlinginc.com/x/");
   assert.match(rules, /an OMEGA win would repeat the Tanahashi–Mutoh story/);
 });
+
+test('English edition: a vacant title the source never mentions is held back, and the rule is in the prompt (INCIDENTS #1138)', () => {
+  const src = { ...input, sourceText: "Stratton got the championship after Green had already gone through Liv Morgan to win the Women's Crown Jewel Championship. Tiffany initially looked like she was coming out to help her friend, but that friendship lasted right up until she decided it was finally Tiffy Time. Stratton hit the Prettiest Moonsault Ever." };
+  const e = { title: 'Tiffany Stratton Responds to Backlash Over Her Crown Jewel Cash-In', body: "Tiffany Stratton cashed in on Chelsea Green immediately after Green had defeated Liv Morgan to win the vacant title, and fans were not happy about it at all.\n\nStratton then hit the Prettiest Moonsault Ever to leave Riyadh as the new champion, according to Ringside News.", tags: ['WWE'] };
+  assert.ok(checkEnglish(e, src).some((x) => x.startsWith('claim not in the source')));
+  assert.ok(!checkEnglish({ ...e, body: e.body.replace('the vacant title', "the Women's Crown Jewel Championship") }, src).some((x) => x.startsWith('claim not in the source')));
+  assert.match(englishStyleRules('https://www.ringsidenews.com/x/'), /Women's Crown Jewel Championship/);
+});

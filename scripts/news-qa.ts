@@ -1183,6 +1183,39 @@ export function agoSpanNotInSource(body: string, source: string): string[] {
   return found;
 }
 /**
+ * A claim the source never makes, written in as a fact (INCIDENTS #1138): Cathy Kelley «برزت كمرشحة بارزة لخلافة جاما»
+ * when she had only tweeted she'd like the job; Jada Stone «أبلغت الاتحادات بإلغاء ارتباطاتها القادمة» when the source
+ * says nothing about her bookings; Chelsea Green won «the vacant title» when she beat Liv Morgan for the Crown Jewel
+ * Championship. Each rule is a claim and the words a source uses when it makes it; the claim with none of those words
+ * in the source is invented. Returns the claims to block on (Arabic text with `ar`, English with `en`).
+ */
+const SOURCE_CLAIMS: { label: string; ar: RegExp; en: RegExp; source: RegExp }[] = [
+  {
+    label: "مرشح بارز / candidate",
+    ar: /(?:مرشح(?:ة|ين)?\s+(?:بارز|قوي|أبرز|أول)|أبرز\s+المرشح|(?:المرشح|المرشحة)\s+(?:الأبرز|الأوفر|الأقرب)|مرشح(?:ة)?\s+(?:محتمل(?:ة)?\s+)?لخلافة|كمرشح(?:ة)?(?![\u0621-\u064A]))/,
+    en: /\b(?:front-?runner|top candidate|leading candidate|strong candidate|(?:the )?favou?rite to (?:replace|succeed|take over))\b/i,
+    source: /candidat|front-?runner|favou?rite|odds|in the running|short-?list|contender|linked|rumou?red|considered|in talks|pegged|tipped|top choice|being eyed/i,
+  },
+  {
+    label: "لقب شاغر / vacant",
+    ar: /الشاغر(?:ة)?(?![\u0621-\u064A])/,
+    en: /\bvacant\b/i,
+    source: /vacan|vacated|relinquish|stripped|forfeit/i,
+  },
+  {
+    label: "إلغاء ارتباطات / cancelled bookings",
+    ar: /(?:إلغاء|ألغى|ألغت|يلغي|تلغي)\s+(?:جميع\s+|كل\s+)?(?:ارتباطات|مواعيد|حجوزات|التزامات|مشاركات|ظهور)|(?:ارتباطات|التزامات|حجوزات)(?:ه|ها)\s+(?:القادمة|المقبلة)/,
+    en: /\b(?:cancel(?:l?ed|l?ing|lations?|s)?|pull(?:ed|ing)? out of|withdr[ae]w(?:n|ing)? from)\b[^.\n]{0,40}\b(?:bookings?|dates|appearances|commitments|shows|events)\b/i,
+    source: /cancel|pull(?:ed|ing|s)? out|withdr|\bmiss(?:ed|es|ing)?\b|off (?:of )?(?:upcoming|future|all)|out of (?:upcoming|future|all|his|her|their)|bookings|no-?show/i,
+  },
+];
+export function claimNotInSource(text: string, source: string, lang: "ar" | "en" = "ar"): string[] {
+  const src = String(source || "");
+  if (src.replace(/\s+/g, " ").trim().length < 200) return [];
+  const t = String(text || "").replace(/https?:\/\/\S+/g, " ");
+  return SOURCE_CLAIMS.filter(r => r[lang].test(t) && !r.source.test(src)).map(r => r.label);
+}
+/**
  * «بدأ مسيرته في عالم المصارعة عام 1987» must be what the source says (began / started his
  * career, debuted). "He started working for the then-WWFW in 1987" is a company start, not a
  * career start: the writer compressed it and gave the career a year that is not its own — Bruce

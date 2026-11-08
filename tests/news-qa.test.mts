@@ -614,3 +614,22 @@ test("a woman's win with a masculine purpose verb is blocked (INCIDENTS #1136)",
   assert.ok(!checkArticle("نتائج", "تغلب فريق هاي هاي ميت على فريق هايبر أكتيف ليحصد اللقب في نهاية النزال الكبير.").some((i) => i.code === "fem_win_masc_purpose"));
   assert.ok(BLOCKING_QA_CODES.includes("fem_win_masc_purpose"));
 });
+
+test("a claim the source never makes is caught: candidate, vacant title, cancelled bookings (INCIDENTS #1138)", async () => {
+  const { claimNotInSource } = await import("../scripts/news-qa.ts");
+  const pad = " Kelley has been with WWE since 2016, though there was a hiatus from 2020 to 2022. She became a familiar face on RAW and SmackDown over the years and hosts backstage segments every week.";
+  const kelley = "Maya Jama is leaving as the host of Love Island UK. With Jama out, WWE interviewer and personality Cathy Kelley is looking to tag in." + pad;
+  assert.deepEqual(claimNotInSource("من جهتها، برزت كاثي كيلي كمرشحة بارزة لخلافة جاما في تقديم البرنامج.", kelley), ["مرشح بارز / candidate"]);
+  assert.deepEqual(claimNotInSource("أبدت كاثي كيلي رغبتها في تقديم البرنامج.", kelley), []);
+  assert.deepEqual(claimNotInSource("كيلي من أبرز المرشحين للمهمة.", kelley + " She is among the odds-on favorites."), []);
+  const jada = "Jada Stone was hospitalized following a car wreck. Stone shared the update on her Instagram stories, saying she is okay. She posted photos of herself in the hospital and the smashed up car." + pad;
+  assert.deepEqual(claimNotInSource("وبسبب الحادث، قامت ستون بإبلاغ الاتحادات المنظمة بإلغاء ارتباطاتها القادمة.", jada), ["إلغاء ارتباطات / cancelled bookings"]);
+  assert.deepEqual(claimNotInSource("Stone has notified promoters regarding the cancellation of her upcoming bookings.", jada, "en"), ["إلغاء ارتباطات / cancelled bookings"]);
+  assert.deepEqual(claimNotInSource("ألغت ستون ارتباطاتها القادمة.", jada + " She has pulled out of upcoming dates."), []);
+  const green = "Stratton got the championship after Green had already gone through Liv Morgan to win the Women's Crown Jewel Championship." + pad;
+  assert.deepEqual(claimNotInSource("Green had defeated Liv Morgan to win the vacant title.", green, "en"), ["لقب شاغر / vacant"]);
+  assert.deepEqual(claimNotInSource("فازت باللقب الشاغر.", green), ["لقب شاغر / vacant"]);
+  assert.deepEqual(claimNotInSource("فازت باللقب الشاغر.", green + " The title was vacated last week."), []);
+  // too little source text proves nothing
+  assert.deepEqual(claimNotInSource("فازت باللقب الشاغر.", "short"), []);
+});

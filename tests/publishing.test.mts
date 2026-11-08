@@ -5552,3 +5552,18 @@ test('splitGluedBlocks: narration glued after an English blockquote gets its own
   assert.equal(splitGluedBlocks('> "It was good." Khan said. Dragunov had departed WWE earlier in August.'), '> "It was good." Khan said.\n\nDragunov had departed WWE earlier in August.');
   assert.equal(splitGluedBlocks('> "I love you," Aminata tweeted. "I miss you so much."'), '> "I love you," Aminata tweeted. "I miss you so much."');
 });
+
+test('a weekly episode with its own name keeps it in the head: «AAA Héroes Inmortales Week 3» under «Lucha Libre AAA» (INCIDENTS #1139)', async () => {
+  const { showSeoText, showNameForms } = (await import('../lib/show-seo.cjs')).default;
+  const aaa = { headline: 'عرض ايه ايه ايه 07.11.2026 مترجم', title: 'AAA Héroes Inmortales Week 3 07.11.2026', programName: 'Lucha Libre AAA', eventDate: '2026-11-07', day: '7 نوفمبر 2026', isLatest: true, description: 'عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث.' };
+  const t = showSeoText(aaa);
+  assert.equal(t.title, 'عرض ايه ايه ايه الأخير 07.11.2026 كامل مترجم — AAA Héroes Inmortales Week 3');
+  assert.match(t.description, /\(AAA Héroes Inmortales Week 3 November 7, 2026\)/);
+  assert.match(t.description, /من عروض المصارعة الحرة المترجمة/);
+  const names = showNameForms({ ...aaa, isShow: true });
+  for (const n of ['AAA Heroes Inmortales Week 3', 'AAA Heroes Inmortales', 'AAA Heroes Inmortales مترجم']) assert.ok(names.includes(n), n);
+  // the program's own episodes and a program whose name already holds the title are unchanged
+  const col = { headline: 'عرض كوليجن 07.11.2026 مترجم', title: 'AEW Collision 07.11.2026', programName: 'AEW Collision', eventDate: '2026-11-07', day: '7 نوفمبر 2026', isLatest: true, description: '' };
+  assert.equal(showSeoText(col).title, 'عرض كوليجن الأخير 07.11.2026 كامل مترجم — AEW Collision');
+  assert.equal(showSeoText({ ...col, title: 'Collision 07.11.2026' }).title, 'عرض كوليجن الأخير 07.11.2026 كامل مترجم — AEW Collision');
+});

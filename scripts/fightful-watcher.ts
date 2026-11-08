@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, wrestlerNotInSource, fixNearGlossaryNames, type NewsFile } from "./news-qa";
+import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, wrestlerNotInSource, fixNearGlossaryNames, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -3104,6 +3104,7 @@ async function rewriteWithGemini(
    - **ممنوع بتاتاً استخدام التشكيل نهائياً في الكلمات (بدون فتحة أو ضمة أو كسرة أو تنوين أو سكون أو شدة)**. اكتب النص واضحاً سلساً بدون أي علامات تشكيل.
    - **لا تحوّل «مؤخرا/حديثا» (recently) إلى «آخر/أول» ولا «أحد/واحد من» إلى «كل»**: كلمات الزمن والكمية تُنقل كما هي؛ لا تكتب «آخر نزال» أو «للمرة الأخيرة» أو «أول مرة» إلا لو المصدر قالها نصاً (حصل فعليا: «recently wrestled» اتترجمت «خاضا آخر نزال لهما» فبدا الخبر اعتزالاً).
    - **كلمة أجنبية عامية في المصدر (إسبانية/يابانية/لقب) ماتتكتبش حروف عربية من غير معنى**: لو المصدر فيه كلمة زي «sucias» أو أي سلانج، اكتبها بالعربي مرة واحدة مع معناها بين «» أو بعد «وتعني» (مثال: كلمة «سوسياس» الإسبانية ومعناها «القذرات»)، ولا تكتبها كلقب مبهم يفهمه القارئ غلط (INCIDENTS #1113).
+   - **ماتضيفش معلومة المصدر ماقالهاش، حتى لو باينة منطقية**: اللي كتب تغريدة إنه نفسه يقدم برنامج مش «مرشح بارز» ولا «مرشح لخلافة» حد؛ اللي عمل حادثة مش «ألغى ارتباطاته» إلا لو المصدر قال كده؛ واللقب اللي اتكسب في نزال هو نفس اللقب اللي المصدر سماه بالظبط — «Women's Crown Jewel Championship» = «بطولة Crown Jewel للسيدات»، مش «لقب سيدات WWE» ولا «اللقب الشاغر». الكود بيمنع نشر «مرشح بارز/الشاغر/إلغاء الارتباطات» لو مش في المصدر (INCIDENTS #1138).
    - **كل مقارنة أو سابقة تاريخية تفضل مع الاحتمال اللي المصدر ربطها بيه**: لو المصدر بيقول «فوز أوميغا هيبقى نفس قصة تاناهاشي قدام موتو» ماتكتبش إنها نتيجة فوز تسوجي؛ لما المصدر يقارن بين احتمالين (فوز فلان / فوز علان) اكتب كل احتمال بأسبابه ومقارنته في جملة لوحده (INCIDENTS #1136).
    - **العنوان نظيف ومحترم**: لا تنقل حرفياً عبارات مبتذلة أو جسدية فجّة من اقتباس المصدر في العنوان (مثل «أحشاءه خرجت من مؤخرته»)؛ اوصف الواقعة بجملة محايدة («أكثر حركة مؤلمة تعرض لها»). والمصطلحات الرياضية تُترجم بمعناها لا حرفياً (core = «عضلات الجذع» وليس «منطقة الجذر»).
 2. **التنسيق المنظم والفصل بين السطور**:
@@ -4524,6 +4525,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   const badAges = ageNotInSource(draft.body, `${rawTitle}\n${plainText}`);
   if (badAges.length) {
     blocking.push({ code: "age_not_in_source", severity: "error", field: "body", message: `سن في المتن غير موجود في المصدر: ${badAges.join("، ")}`, excerpt: badAges.join(" ") });
+    lastPostRetryable = true;
+  }
+  // «مرشحة بارزة»، «الشاغر»، «إلغاء ارتباطاتها» with nothing in the source that says it (INCIDENTS #1138).
+  const badClaims = claimNotInSource(`${draft.title}\n${draft.body}`, `${rawTitle}\n${plainText}`);
+  if (badClaims.length) {
+    blocking.push({ code: "claim_not_in_source", severity: "error", field: "body", message: `معلومة في الخبر غير موجودة في المصدر: ${badClaims.join("، ")}`, excerpt: badClaims.join(" ") });
     lastPostRetryable = true;
   }
   // «2 months ago» written as «قبل شهر»: a span the source states with another count (INCIDENTS #1111).
