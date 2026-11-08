@@ -1,5 +1,15 @@
 [
   {
+    "id": 3460345633,
+    "link": "https://www.wrestlinginc.com/2310218/wwe-nxt-viewership-ratings-report-november-4-2026/",
+    "date": "Sun, 08 Nov 2026 03:49:09 +0000",
+    "date_gmt": "2026-11-08T03:49:09.000Z",
+    "title": {
+      "rendered": "WWE NXT Viewership & Ratings Report, 11/4/2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-viewership-ratings-report-1142026/l-intro-1794109631.jpg"
+  },
+  {
     "id": 3034979970,
     "link": "https://www.wrestlinginc.com/2310201/aew-dynamite-viewership-ratings-report-november-4-2026/",
     "date": "Sun, 08 Nov 2026 01:24:11 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Backstage Update On Status Of WWE NXT's Iron Survivor Challenge Match"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-status-of-wwe-nxts-iron-survivor-challenge-match/l-intro-1794072538.jpg"
-  },
-  {
-    "id": 3089944325,
-    "link": "https://www.wrestlinginc.com/2305803/wwe-becky-lynch-first-years-overthinking-everything/",
-    "date": "Sat, 07 Nov 2026 17:30:00 +0000",
-    "date_gmt": "2026-11-07T17:30:00.000Z",
-    "title": {
-      "rendered": "Becky Lynch Spent Her First Years In WWE Overthinking Everything"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/becky-lynch-spent-her-first-years-in-wwe-overthinking-everything/l-intro-1793736534.jpg"
   }
 ]
