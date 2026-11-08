@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2296080/cody-rhodes-randy-orton-wwe-crown-jewel-last-man-standing-match-smackdown/": {
-    "matchedFile": "20261024041532-إضافة-نزال-راندي-أورتن-ضد-كودي-رودز-بنظام-آخر-رجل-صامد-إلى-عرض-wwe-crown-jewel-2026.md",
-    "reason": "الخبر الجديد يغطي نفس الحدث (إعلان نزال كودي رودز وراندي أورتن في Crown Jewel) الذي تم تغطيته بالفعل في الخبر رقم 0.",
-    "at": "2026-10-24T01:27:09.320Z"
-  },
   "https://www.fightful.com/wrestling/b-fab-and-michin-win-wwe-womens-tag-team-championship-on-10-23-wwe-smackdown/": {
     "matchedFile": "20261024042942-تتويج-بطلات-جديدات-لفرق-السيدات-في-عرض-wwe-smackdown-الليلة.md",
     "reason": "الخبر الجديد يغطي نفس نتيجة النزال والحدث الذي تم ذكره بالتفصيل في الخبر المنشور رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261108054523-شاهد-بالفيديو-أحداث-عرض-aaa-heroes-inmortales.md",
     "reason": "الخبر الجديد هو تقرير نتائج تفصيلي لنفس العرض الذي تم تغطيته مسبقاً في الخبر رقم 0، حيث يحتوي على نفس النزالات والفقرات المذكورة.",
     "at": "2026-11-08T05:01:53.498Z"
+  },
+  "https://www.ringsidenews.com/tiffany-strattons-cash-wwe-crown-jewel-flooded-dislikes-youtube/": {
+    "matchedFile": "20261107215716-تيفاني-ستراتون-تخون-تشيلسي-غرين-وتستخدم-حقيبة-money-in-the-bank-في-عرض-wwe-crown-jewel-2026.md",
+    "reason": "الخبر الجديد يعتبر متابعة تفصيلية لردود الفعل على نفس الحدث المنشور في الخبر رقم 0 (استخدام تيفاني ستراتون لحقيبة Money in the Bank في عرض Crown Jewel)، حيث يتحدث عن أرقام الديسلايك على يوتيوب المرتبطة بنفس الواقعة وتداعياتها التي تغطت بالفعل في الخبر الأساسي.",
+    "at": "2026-11-08T10:59:53.533Z"
   }
 }
