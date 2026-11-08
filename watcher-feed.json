@@ -1,5 +1,15 @@
 [
   {
+    "id": 338128,
+    "link": "https://www.fightful.com/wrestling/gcw-the-crossroads-results-11-7/",
+    "date": "2026-11-08T17:33:52",
+    "date_gmt": "2026-11-08T22:33:52",
+    "title": {
+      "rendered": "GCW The Crossroads Results (11/7)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/08173329/Screenshot-2026-11-08-at-5.30.44-PM.png"
+  },
+  {
     "id": 338125,
     "link": "https://www.fightful.com/wrestling/cathy-kelley-is-ready-to-host-love-island-uk/",
     "date": "2026-11-08T17:28:11",
@@ -288,15 +298,5 @@
       "rendered": "Marcus Mathers Makes AEW Singles Debut On 11/7 AEW Collision, Loses To Nick Wayne"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/07212150/HWkTkhaWoAAatPK.jpg"
-  },
-  {
-    "id": 338026,
-    "link": "https://www.fightful.com/wrestling/ftr-ties-series-2-2-with-motor-city-machine-guns-on-11-7-aew-collision/",
-    "date": "2026-11-07T21:05:27",
-    "date_gmt": "2026-11-08T02:05:27",
-    "title": {
-      "rendered": "FTR Ties Series 2-2 With Motor City Machine Guns On 11/7 AEW Collision"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/07204945/HWkSg0oXoAAcb7k.jpg"
   }
 ]
