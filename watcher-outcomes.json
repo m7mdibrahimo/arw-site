@@ -44,11 +44,6 @@
   "retry": false,
   "at": "2026-11-08T22:05:06.254Z"
  },
- "https://www.ringsidenews.com/tna-star-jada-stone-hospitalized-following-serious-car-accident": {
-  "reason": "المراجعة رفضته: علامة اقتباس اتفتحت ومتقفلتش (أو «» مع \" مخلوطين) — اقفل الاقتباس بنفس العلامة اللي اتفتح بيها، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-08T21:51:03.226Z"
- },
  "https://www.fightful.com/wrestling/eve-157-elite-encounters-2-results-11-8-multiple-title-changes": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Chantel Monroe، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
   "retry": true,
