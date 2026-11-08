@@ -1,5 +1,15 @@
 [
   {
+    "id": 5047425162,
+    "link": "https://www.wrestlinginc.com/2309045/wcw-eric-bischoff-rey-mysterio-dean-malenko-helped-elevate/",
+    "date": "Sun, 08 Nov 2026 18:30:00 +0000",
+    "date_gmt": "2026-11-08T18:30:00.000Z",
+    "title": {
+      "rendered": "Eric Bischoff Identifies WCW Star Who Helped Elevate Rey Mysterio"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/eric-bischoff-identifies-wcw-star-who-helped-elevate-rey-mysterio/l-intro-1793976970.jpg"
+  },
+  {
     "id": 3428525627,
     "link": "https://www.wrestlinginc.com/2308876/wwe-nxt-booker-t-vic-joseph-credits-broadcast-partner-elevating-commentator/",
     "date": "Sun, 08 Nov 2026 18:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Grayson Waller Explains Decision To Return To WWE NXT"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/grayson-waller-explains-decision-to-return-to-wwe-nxt/l-intro-1793874947.jpg"
-  },
-  {
-    "id": 1157466819,
-    "link": "https://www.wrestlinginc.com/2309745/wwe-nxt-tavion-heights-opens-excursion-pro-wrestling-noah/",
-    "date": "Sat, 07 Nov 2026 21:30:00 +0000",
-    "date_gmt": "2026-11-07T21:30:00.000Z",
-    "title": {
-      "rendered": "WWE NXT's Tavion Heights Opens Up About Excursion To Pro Wrestling NOAH"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxts-tavion-heights-opens-up-about-excursion-to-pro-wrestling-noah/l-intro-1793996920.jpg"
   }
 ]
