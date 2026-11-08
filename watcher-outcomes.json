@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2309319/wwe-drew-mcintyre-explains-decision-pursue-hollywood-career": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Solo Sikoa",
+  "retry": true,
+  "at": "2026-11-08T20:30:45.118Z"
+ },
  "https://www.fightful.com/wrestling/report-wwe-roster-out-of-saudi-before-latest-missile-attack": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-08T20:26:53.895Z"
- },
- "https://www.wrestlinginc.com/2309319/wwe-drew-mcintyre-explains-decision-pursue-hollywood-career": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Paul Heyman، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Solo Sikoa",
-  "retry": true,
-  "at": "2026-11-08T20:13:55.594Z"
  },
  "https://www.wrestlinginc.com/2310314/njpw-closing-los-angeles-dojo-details-wrestler-reaction": {
   "reason": "المراجعة رفضته: مدة زمنية في المتن غير مطابقة للمصدر: منذ عام",
