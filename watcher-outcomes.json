@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2310035/aew-collision-november-7-2026-results": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Mina Shirakawa، تقرير نتائج بلا أي نتيجة",
+  "retry": true,
+  "at": "2026-11-08T00:30:18.059Z"
+ },
  "https://www.fightful.com/mma/dana-white-says-hes-meeting-with-donald-trump-on-monday-over-white-house-job-offer": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
