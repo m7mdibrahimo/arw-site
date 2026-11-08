@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2310035/aew-collision-november-7-2026-results": {
+  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
+  "retry": true,
+  "at": "2026-11-08T01:09:34.619Z"
+ },
  "https://www.fightful.com/wrestling/aew-collision-rock-wrestling-rager-results-11-7-2026": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -108,11 +113,6 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-08T00:54:46.401Z"
- },
- "https://www.wrestlinginc.com/2310035/aew-collision-november-7-2026-results": {
-  "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Mina Shirakawa، في التقرير 3 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
-  "retry": true,
-  "at": "2026-11-08T00:49:22.013Z"
  },
  "https://www.fightful.com/wrestling/keanu-carver-completely-removed-from-wwe-com-roster-absent-from-alumni-section": {
   "reason": "مكرر مع خبر نزل قبل كده",
