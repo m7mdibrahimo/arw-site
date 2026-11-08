@@ -1,5 +1,15 @@
 [
   {
+    "id": 338118,
+    "link": "https://www.fightful.com/wrestling/eve-157-elite-encounters-2-results-11-8-multiple-title-changes/",
+    "date": "2026-11-08T16:13:26",
+    "date_gmt": "2026-11-08T21:13:26",
+    "title": {
+      "rendered": "EVE 157: Elite Encounters 2 Results (11/8): Multiple Title Changes"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/08161304/HWHpUXzXoAA0Flt.jpg.webp"
+  },
+  {
     "id": 338115,
     "link": "https://www.fightful.com/wrestling/report-wwe-roster-out-of-saudi-before-latest-missile-attack/",
     "date": "2026-11-08T13:59:59",
@@ -288,15 +298,5 @@
       "rendered": "AEW Collision Rock &amp; Wrestling Rager Results (11/7/2026): Andrade vs. Tommaso Ciampa, FTR vs. MCMG, Persephone vs. Mina Shirakawa, More"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/07192818/80913059-2D87-41FE-B31D-3FE523E85E90.jpeg"
-  },
-  {
-    "id": 338015,
-    "link": "https://www.fightful.com/mma/dana-white-says-hes-meeting-with-donald-trump-on-monday-over-white-house-job-offer/",
-    "date": "2026-11-07T19:06:49",
-    "date_gmt": "2026-11-08T00:06:49",
-    "title": {
-      "rendered": "Dana White Says He&#8217;s Meeting With Donald Trump On Monday Over White House Job Offer"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/07141702/2209982489.webp"
   }
 ]

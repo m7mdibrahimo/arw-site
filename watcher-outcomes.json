@@ -1,48 +1,53 @@
 {
- "https://www.ringsidenews.com/tna-star-jada-stone-hospitalized-following-serious-car-accident": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+ "https://www.fightful.com/wrestling/eve-157-elite-encounters-2-results-11-8-multiple-title-changes": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Chantel Monroe، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
   "retry": true,
-  "at": "2026-11-08T21:16:59.863Z"
+  "at": "2026-11-08T21:25:33.824Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-roster-out-of-saudi-before-latest-missile-attack": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T21:11:10.195Z"
+  "at": "2026-11-08T21:21:08.103Z"
  },
  "https://www.fightful.com/wrestling/randy-orton-ill-be-back-i-still-have-more-to-do": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T21:11:09.863Z"
+  "at": "2026-11-08T21:21:07.791Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-reveals-gifts-given-to-john-cena-classic-invitees": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T21:11:08.965Z"
+  "at": "2026-11-08T21:21:06.958Z"
  },
  "https://www.fightful.com/wrestling/tommaso-ciampa-reacts-to-winning-the-aew-national-championship-names-it-rubie": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T21:11:08.348Z"
+  "at": "2026-11-08T21:21:06.388Z"
  },
  "https://www.fightful.com/wrestling/andrade-el-idolo-reacts-to-losing-aew-national-championship-you-learn-more-from-losing-than-winning": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T21:11:08.131Z"
+  "at": "2026-11-08T21:21:06.185Z"
  },
  "https://www.fightful.com/wrestling/aaa-heroes-inmortales-week-three-results-11-7": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T21:11:07.634Z"
+  "at": "2026-11-08T21:21:05.724Z"
  },
  "https://www.fightful.com/wrestling/josh-bishop-wins-mlw-championship-from-killer-kross-at-mlw-saturday-night-superfight": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T21:11:07.324Z"
+  "at": "2026-11-08T21:21:05.436Z"
  },
  "https://www.fightful.com/wrestling/tommaso-ciampa-wins-aew-national-title-on-11-7-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T21:11:07.013Z"
+  "at": "2026-11-08T21:21:05.143Z"
+ },
+ "https://www.ringsidenews.com/tna-star-jada-stone-hospitalized-following-serious-car-accident": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-08T21:16:59.863Z"
  },
  "https://www.fightful.com/mma/dana-white-says-hes-meeting-with-donald-trump-on-monday-over-white-house-job-offer": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-10-28T14:31:58.121Z"
- },
- "https://www.fightful.com/wrestling/report-wwe-signs-sumo-football-athlete-hidetora-hanada": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-28T14:07:33.319Z"
  }
 }
