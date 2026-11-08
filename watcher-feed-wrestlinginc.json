@@ -1,5 +1,15 @@
 [
   {
+    "id": 4669177248,
+    "link": "https://www.wrestlinginc.com/2309152/wwe-sami-zayn-champ-aspect-personality-gift-curse-self-awareness/",
+    "date": "Sun, 08 Nov 2026 19:30:00 +0000",
+    "date_gmt": "2026-11-08T19:30:00.000Z",
+    "title": {
+      "rendered": "WWE Champ Sami Zayn Identifies Aspect Of His Personality That's 'A Gift & A Curse'"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-champ-sami-zayn-identifies-aspect-of-his-personality-thats-a-gift-a-curse/l-intro-1793980837.jpg"
+  },
+  {
     "id": 4364455833,
     "link": "https://www.wrestlinginc.com/2310314/njpw-closing-los-angeles-dojo-details-wrestler-reaction/",
     "date": "Sun, 08 Nov 2026 19:22:04 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE NXT Viewership & Ratings Report, 11/4/2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-viewership-ratings-report-1142026/l-intro-1794109631.jpg"
-  },
-  {
-    "id": 3034979970,
-    "link": "https://www.wrestlinginc.com/2310201/aew-dynamite-viewership-ratings-report-november-4-2026/",
-    "date": "Sun, 08 Nov 2026 01:24:11 +0000",
-    "date_gmt": "2026-11-08T01:24:11.000Z",
-    "title": {
-      "rendered": "AEW Dynamite Viewership & Ratings Report, 11/4/2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-viewership-ratings-report-1142026/l-intro-1794100910.jpg"
   }
 ]
