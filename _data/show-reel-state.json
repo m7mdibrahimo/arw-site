@@ -4952,15 +4952,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض ايه ايه ايه 07.11.2026 مترجم",
-    "lastAttempt": 1794175305921,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1794176186344,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
