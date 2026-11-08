@@ -1,5 +1,15 @@
 [
   {
+    "id": 338123,
+    "link": "https://www.fightful.com/wrestling/jada-stone-hospitalized-after-car-wreck/",
+    "date": "2026-11-08T17:11:29",
+    "date_gmt": "2026-11-08T22:11:29",
+    "title": {
+      "rendered": "Jada Stone Hospitalized After Car Wreck"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/17013123/fd7057d35779e2dd8971f3e66101ddc5-1-1-e1786944733809.jpg"
+  },
+  {
     "id": 338118,
     "link": "https://www.fightful.com/wrestling/eve-157-elite-encounters-2-results-11-8-multiple-title-changes/",
     "date": "2026-11-08T16:13:26",
@@ -288,15 +298,5 @@
       "rendered": "MLW Saturday Night SuperFight Results (11/7): Killer Kross, Yota Tsuji, Tessa Blanchard Compete"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/04160552/Super-Fight-Wide.png.webp"
-  },
-  {
-    "id": 338017,
-    "link": "https://www.fightful.com/wrestling/aew-collision-rock-wrestling-rager-results-11-7-2026-andrade-vs-tommaso-ciampa-ftr-vs-mcmg-persephone-vs-mina-shirakawa-more/",
-    "date": "2026-11-07T19:35:00",
-    "date_gmt": "2026-11-08T00:35:00",
-    "title": {
-      "rendered": "AEW Collision Rock &amp; Wrestling Rager Results (11/7/2026): Andrade vs. Tommaso Ciampa, FTR vs. MCMG, Persephone vs. Mina Shirakawa, More"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/07192818/80913059-2D87-41FE-B31D-3FE523E85E90.jpeg"
   }
 ]
