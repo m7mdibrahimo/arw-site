@@ -109,11 +109,6 @@
   "retry": true,
   "at": "2026-11-08T01:36:05.315Z"
  },
- "https://www.wrestlinginc.com/2310035/aew-collision-november-7-2026-results": {
-  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kofi Kingston",
-  "retry": true,
-  "at": "2026-11-08T01:31:31.220Z"
- },
  "https://www.fightful.com/wrestling/mlw-saturday-night-superfight-2026-preview-start-time-how-to-watch-location-11-7": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
