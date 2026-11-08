@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/baron-corbin-out-indefinitely-cody-rhodes-brutal-punt-kick-wwe-smackdown/": {
-    "matchedFile": "20261024035335-مايكل-كول-بارون-كوربين-يغيب-لأجل-غير-مسمى-بسبب-إصابته-بركلة-كودي-رودز-في-عرض-wwe-smackdown.md",
-    "reason": "الخبر الجديد يكرر نفس تفاصيل إصابة بارون كوربين وغيابه لأجل غير مسمى بسبب ركلة كودي رودز والتفاصيل الطبية التي كشف عنها مايكل كول، وهي مطابقة تماماً لما ورد في الخبر المنشور.",
-    "at": "2026-10-24T01:04:21.053Z"
-  },
   "https://www.fightful.com/wrestling/aew-dynamite-viewership-october-21/": {
     "matchedFile": "20261024025935-تراجع-طفيف-في-عدد-مشاهدات-عرض-aew-dynamite-يوم-21-أكتوبر-2026.md",
     "reason": "الخبر الجديد يغطي نفس واقعة نسب مشاهدات عرض AEW Dynamite بتاريخ 21 أكتوبر 2026 التي تم تناولها بالفعل في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261108033500-نتائج-عرض-aew-collision-7-نوفمبر-2026-أندرادي-يواجه-توماسو-تشامبا-وإف-تي-آر-ضد-موتور-سيتي-ماشين-جانز.md",
     "reason": "الخبر الجديد يغطي نتيجة نزال في عرض AEW Collision بتاريخ 7 نوفمبر، وهي نتيجة تم ذكرها بالفعل ضمن تقرير النتائج الكامل في الخبر رقم 0.",
     "at": "2026-11-08T03:28:49.010Z"
+  },
+  "https://www.fightful.com/wrestling/josh-bishop-wins-mlw-championship-from-killer-kross-at-mlw-saturday-night-superfight/": {
+    "matchedFile": "20261108040723-نتائج-عرض-mlw-saturday-night-superfight-7-نوفمبر-2026-كيلر-كروس-ويوتا-تسوجي-وتيسا-بلانشارد-يتنافسون.md",
+    "reason": "الخبر الجديد يتناول نتائج نزال رئيسي في عرض MLW Saturday Night SuperFight، وهو نفس العرض الذي تم تغطية نتائجه في الخبر رقم 0.",
+    "at": "2026-11-08T03:49:02.839Z"
   }
 }
