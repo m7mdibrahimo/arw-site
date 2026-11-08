@@ -64,11 +64,6 @@
   "retry": false,
   "at": "2026-11-08T15:28:57.414Z"
  },
- "https://www.wrestlinginc.com/2308017/indi-hartwell-tna-knockouts-world-title-first-australian": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-08T15:24:10.610Z"
- },
  "https://www.fightful.com/wrestling/roman-reigns-wins-mens-crown-jewel-championship-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1988,5 @@
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
   "retry": false,
   "at": "2026-10-28T01:25:31.810Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-results-10-27-2026-jackson-drake-vs-ek-prosper-dusty-classic-semifinals-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-28T00:50:34.464Z"
  }
 }
