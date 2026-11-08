@@ -1,48 +1,48 @@
 {
- "https://www.ringsidenews.com/tna-star-jada-stone-hospitalized-following-serious-car-accident": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+ "https://www.fightful.com/wrestling/anita-vaughan-and-safire-reed-play-partner-promo-punch-in-the-face-with-bayley-and-mercedes-mone-divine-dominion-and-the-kabuki-warriors": {
+  "reason": "المراجعة رفضته: صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، فعل أو اسم مثنى (يتحديان/كمالكين/كشريكين…) ممنوع — اكتب «ضد» أو «يواجه» أو اذكر الاسمين بفعل جمع، فعل مثنى (حلا محل/يوقعا عقودا…) ممنوع — اجمع الفعل أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-08T17:24:17.164Z"
- },
- "https://www.fightful.com/wrestling/anita-vaughan-and-safire-reed-play-promo-wrestle-or-punch-in-the-face-with-bayley-and-mercedes-mone-divine-dominion-and-the-kabuki-warriors": {
-  "reason": "المراجعة رفضته: صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، فعل أو اسم مثنى (يتحديان/كمالكين/كشريكين…) ممنوع — اكتب «ضد» أو «يواجه» أو اذكر الاسمين بفعل جمع، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى (حلا محل/يوقعا عقودا…) ممنوع — اجمع الفعل أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-08T17:25:24.518Z"
+  "at": "2026-11-08T17:28:32.632Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-reveals-gifts-given-to-john-cena-classic-invitees": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T17:25:04.991Z"
+  "at": "2026-11-08T17:28:03.513Z"
  },
  "https://www.fightful.com/wrestling/tommaso-ciampa-reacts-to-winning-the-aew-national-championship-names-it-rubie": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T17:25:04.457Z"
+  "at": "2026-11-08T17:28:02.948Z"
  },
  "https://www.fightful.com/wrestling/andrade-el-idolo-reacts-to-losing-aew-national-championship-you-learn-more-from-losing-than-winning": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T17:25:04.267Z"
+  "at": "2026-11-08T17:28:02.752Z"
  },
  "https://www.fightful.com/wrestling/aaa-heroes-inmortales-week-three-results-11-7": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T17:25:03.829Z"
+  "at": "2026-11-08T17:28:02.300Z"
  },
  "https://www.fightful.com/wrestling/josh-bishop-wins-mlw-championship-from-killer-kross-at-mlw-saturday-night-superfight": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T17:25:03.556Z"
+  "at": "2026-11-08T17:28:02.016Z"
  },
  "https://www.fightful.com/wrestling/tommaso-ciampa-wins-aew-national-title-on-11-7-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T17:25:03.284Z"
+  "at": "2026-11-08T17:28:01.733Z"
  },
  "https://www.fightful.com/mma/dana-white-says-hes-meeting-with-donald-trump-on-monday-over-white-house-job-offer": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T17:25:02.527Z"
+  "at": "2026-11-08T17:28:00.931Z"
+ },
+ "https://www.ringsidenews.com/tna-star-jada-stone-hospitalized-following-serious-car-accident": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-08T17:24:17.164Z"
  },
  "https://www.fightful.com/wrestling/anita-vaughan-and-safire-reed-play-promo-wrestle-or-punch-in-the-face-with-bayley-and-mercedes-mone-divine-dominion-and-the-kabuki-warriors": {
   "reason": "المراجعة رفضته: صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، فعل أو اسم مثنى (يتحديان/كمالكين/كشريكين…) ممنوع — اكتب «ضد» أو «يواجه» أو اذكر الاسمين بفعل جمع، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى (حلا محل/يوقعا عقودا…) ممنوع — اجمع الفعل أو كرر الاسم",
@@ -1998,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-28T05:43:00.983Z"
- },
- "https://www.fightful.com/wrestling/yota-tsuji-hirooki-goto-teaming-konosuke-takeshita-match-added-to-cmll-x-njpw-lucha-kingdom": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-28T05:10:50.105Z"
  }
 }
