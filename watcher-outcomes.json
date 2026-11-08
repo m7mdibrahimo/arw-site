@@ -7,42 +7,47 @@
  "https://www.fightful.com/wrestling/anita-vaughan-and-safire-reed-play-promo-wrestle-or-punch-in-the-face-with-bayley-and-mercedes-mone-divine-dominion-and-the-kabuki-warriors": {
   "reason": "المراجعة رفضته: صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، فعل أو اسم مثنى (يتحديان/كمالكين/كشريكين…) ممنوع — اكتب «ضد» أو «يواجه» أو اذكر الاسمين بفعل جمع، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى (حلا محل/يوقعا عقودا…) ممنوع — اجمع الفعل أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-08T17:18:11.445Z"
+  "at": "2026-11-08T17:25:24.518Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-reveals-gifts-given-to-john-cena-classic-invitees": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T17:17:51.529Z"
+  "at": "2026-11-08T17:25:04.991Z"
  },
  "https://www.fightful.com/wrestling/tommaso-ciampa-reacts-to-winning-the-aew-national-championship-names-it-rubie": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T17:17:51.042Z"
+  "at": "2026-11-08T17:25:04.457Z"
  },
  "https://www.fightful.com/wrestling/andrade-el-idolo-reacts-to-losing-aew-national-championship-you-learn-more-from-losing-than-winning": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T17:17:50.872Z"
+  "at": "2026-11-08T17:25:04.267Z"
  },
  "https://www.fightful.com/wrestling/aaa-heroes-inmortales-week-three-results-11-7": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T17:17:50.478Z"
+  "at": "2026-11-08T17:25:03.829Z"
  },
  "https://www.fightful.com/wrestling/josh-bishop-wins-mlw-championship-from-killer-kross-at-mlw-saturday-night-superfight": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T17:17:50.232Z"
+  "at": "2026-11-08T17:25:03.556Z"
  },
  "https://www.fightful.com/wrestling/tommaso-ciampa-wins-aew-national-title-on-11-7-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T17:17:49.988Z"
+  "at": "2026-11-08T17:25:03.284Z"
  },
  "https://www.fightful.com/mma/dana-white-says-hes-meeting-with-donald-trump-on-monday-over-white-house-job-offer": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T17:17:49.296Z"
+  "at": "2026-11-08T17:25:02.527Z"
+ },
+ "https://www.fightful.com/wrestling/anita-vaughan-and-safire-reed-play-promo-wrestle-or-punch-in-the-face-with-bayley-and-mercedes-mone-divine-dominion-and-the-kabuki-warriors": {
+  "reason": "المراجعة رفضته: صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، فعل أو اسم مثنى (يتحديان/كمالكين/كشريكين…) ممنوع — اكتب «ضد» أو «يواجه» أو اذكر الاسمين بفعل جمع، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى (حلا محل/يوقعا عقودا…) ممنوع — اجمع الفعل أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-08T17:18:11.445Z"
  },
  "https://www.wrestlinginc.com/2308017/indi-hartwell-tna-knockouts-world-title-first-australian": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
