@@ -1,48 +1,58 @@
 {
+ "https://www.fightful.com/?p=338077": {
+  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
+  "retry": true,
+  "at": "2026-11-08T15:32:14.826Z"
+ },
+ "https://www.fightful.com/wrestling/zilla-fatu-reveals-gifts-given-to-john-cena-classic-invitees": {
+  "reason": "المراجعة رفضته: صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
+  "retry": true,
+  "at": "2026-11-08T15:31:29.570Z"
+ },
  "https://www.fightful.com/wrestling/tommaso-ciampa-reacts-to-winning-the-aew-national-championship-names-it-ruby": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:29:00.493Z"
+  "at": "2026-11-08T15:31:12.062Z"
  },
  "https://www.fightful.com/wrestling/andrade-el-idolo-reacts-to-losing-aew-national-championship-you-learn-more-from-losing-than-winning": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:29:00.322Z"
+  "at": "2026-11-08T15:31:11.874Z"
  },
  "https://www.fightful.com/wrestling/aaa-heroes-inmortales-week-three-results-11-7": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:28:59.927Z"
+  "at": "2026-11-08T15:31:11.442Z"
  },
  "https://www.fightful.com/wrestling/josh-bishop-wins-mlw-championship-from-killer-kross-at-mlw-saturday-night-superfight": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:28:59.682Z"
+  "at": "2026-11-08T15:31:11.172Z"
  },
  "https://www.fightful.com/wrestling/tommaso-ciampa-wins-aew-national-title-on-11-7-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:28:59.437Z"
+  "at": "2026-11-08T15:31:10.903Z"
  },
  "https://www.fightful.com/mma/dana-white-says-hes-meeting-with-donald-trump-on-monday-over-white-house-job-offer": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:28:58.745Z"
+  "at": "2026-11-08T15:31:10.151Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-proposes-that-he-lead-team-usa-at-wwe-survivor-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:28:58.187Z"
+  "at": "2026-11-08T15:31:09.535Z"
  },
  "https://www.fightful.com/wrestling/penta-and-jevon-evans-speak-after-winning-world-tag-team-titles-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:28:57.926Z"
+  "at": "2026-11-08T15:31:09.243Z"
  },
  "https://www.fightful.com/wrestling/tiffany-stratton-speaks-about-cashing-in-to-become-wwe-womens-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:28:57.755Z"
+  "at": "2026-11-08T15:31:09.051Z"
  },
  "https://www.fightful.com/wrestling/chelsea-green-comments-after-losing-womens-title-at-wwe-crown-jewel-i-didnt-just-lose-my-championship-but-i-lost-a-friend": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1988,15 +1998,5 @@
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-19)",
   "retry": false,
   "at": "2026-10-27T23:08:25.168Z"
- },
- "https://www.ringsidenews.com/tna-talent-drawing-outside-interest-contract-nears-expiration": {
-  "reason": "المراجعة رفضته: اسم مصارع في المتن غير موجود في المصدر: Tony Khan",
-  "retry": true,
-  "at": "2026-10-27T21:26:33.612Z"
- },
- "https://www.fightful.com/wrestling/john-cena-says-the-speculation-ends-on-11-2-wwe-raw-lets-build-this-never-seen-classic": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-27T19:55:58.857Z"
  }
 }
