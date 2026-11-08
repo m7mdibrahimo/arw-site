@@ -1,5 +1,15 @@
 [
   {
+    "id": 1106152384,
+    "link": "https://www.wrestlinginc.com/2310311/zilla-fatu-shows-off-wwe-john-cena-classic-gifts/",
+    "date": "Sun, 08 Nov 2026 18:49:36 +0000",
+    "date_gmt": "2026-11-08T18:49:36.000Z",
+    "title": {
+      "rendered": "Zilla Fatu Shows Off His WWE John Cena Classic Gifts"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/zilla-fatu-shows-off-his-wwe-john-cena-classic-gifts/l-intro-1794163659.jpg"
+  },
+  {
     "id": 5047425162,
     "link": "https://www.wrestlinginc.com/2309045/wcw-eric-bischoff-rey-mysterio-dean-malenko-helped-elevate/",
     "date": "Sun, 08 Nov 2026 18:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW Collision Results 11/7/26 W/ Live Updates"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-collision-results-11726-w-live-updates/l-intro-1794110297.jpg"
-  },
-  {
-    "id": 3075498037,
-    "link": "https://www.wrestlinginc.com/2307550/grayson-waller-explains-decision-return-wwe-nxt/",
-    "date": "Sat, 07 Nov 2026 22:00:00 +0000",
-    "date_gmt": "2026-11-07T22:00:00.000Z",
-    "title": {
-      "rendered": "Grayson Waller Explains Decision To Return To WWE NXT"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/grayson-waller-explains-decision-to-return-to-wwe-nxt/l-intro-1793874947.jpg"
   }
 ]
