@@ -104,11 +104,6 @@
   "retry": true,
   "at": "2026-11-07T23:30:38.681Z"
  },
- "https://www.ringsidenews.com/mercedes-mone-mourns-passing-her-younger-sister-alexis": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-07T23:30:24.186Z"
- },
  "https://www.fightful.com/wrestling/gcw-dead-on-arrival-results-11-6": {
   "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
   "retry": true,
