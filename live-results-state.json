@@ -1,4 +1,13 @@
 {
+  "20261109013352-نتائج-عرض-gcw-the-crossroads-7-نوفمبر-2026-فوز-أتيكوس-كوجار-في-الحدث-الرئيسي.md": {
+    "lastSeenHash": "6119d31ce85f3e5fd9a982c6994430c11420293c",
+    "lastChangeAt": 1794178026508,
+    "lastRegenAt": 0,
+    "rewrites": 0,
+    "generatedResults": 10,
+    "generatedHash": "6119d31ce85f3e5fd9a982c6994430c11420293c",
+    "generatedLength": 1016
+  },
   "20261109001326-نتائج-عرض-pro-wrestling-eve-157-elite-encounters-2-8-نوفمبر-2026-تغييرات-في-الألقاب.md": {
     "lastSeenHash": "930c87ee7f227c1e0deef3bdd48d2e4d3d572628",
     "lastChangeAt": 1794173555573,
@@ -16,14 +25,5 @@
     "generatedResults": 6,
     "generatedHash": "33eb05a579bb0741a3c0eb188d193b6b305573fd",
     "generatedLength": 1066
-  },
-  "20261108173000-نتائج-عرض-cmll-viernes-espectacular-6-نوفمبر-2026-بانديدو-وتيتان-ونيون-يفوزون-على-سوبيرانو-جونيور-وأفيرنو-وبربارو-كافيرناريو.md": {
-    "lastSeenHash": "f668879c1c6660aa05626fcda8bbbc2c13c6e410",
-    "lastChangeAt": 1794149188818,
-    "lastRegenAt": 0,
-    "rewrites": 0,
-    "generatedResults": 6,
-    "generatedHash": "f668879c1c6660aa05626fcda8bbbc2c13c6e410",
-    "generatedLength": 1110
   }
 }
