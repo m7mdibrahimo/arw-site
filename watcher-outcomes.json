@@ -1,53 +1,53 @@
 {
- "https://www.ringsidenews.com/zilla-fatu-reveals-special-gifts-wwe-john-cena-classic-invitation": {
-  "reason": "المراجعة رفضته: صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
-  "retry": true,
-  "at": "2026-11-08T15:52:05.466Z"
- },
  "https://www.fightful.com/wrestling/zilla-fatu-reveals-gifts-given-to-john-cena-classic-invitees": {
-  "reason": "المراجعة رفضته: صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
+  "reason": "المراجعة رفضته: ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
   "retry": true,
-  "at": "2026-11-08T15:51:03.733Z"
+  "at": "2026-11-08T15:54:18.467Z"
  },
  "https://www.fightful.com/wrestling/tommaso-ciampa-reacts-to-winning-the-aew-national-championship-names-it-ruby": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:50:48.845Z"
+  "at": "2026-11-08T15:54:03.059Z"
  },
  "https://www.fightful.com/wrestling/andrade-el-idolo-reacts-to-losing-aew-national-championship-you-learn-more-from-losing-than-winning": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:50:48.674Z"
+  "at": "2026-11-08T15:54:02.890Z"
  },
  "https://www.fightful.com/wrestling/aaa-heroes-inmortales-week-three-results-11-7": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:50:48.279Z"
+  "at": "2026-11-08T15:54:02.499Z"
  },
  "https://www.fightful.com/wrestling/josh-bishop-wins-mlw-championship-from-killer-kross-at-mlw-saturday-night-superfight": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:50:48.034Z"
+  "at": "2026-11-08T15:54:02.255Z"
  },
  "https://www.fightful.com/wrestling/tommaso-ciampa-wins-aew-national-title-on-11-7-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:50:47.787Z"
+  "at": "2026-11-08T15:54:02.011Z"
  },
  "https://www.fightful.com/mma/dana-white-says-hes-meeting-with-donald-trump-on-monday-over-white-house-job-offer": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:50:47.089Z"
+  "at": "2026-11-08T15:54:01.331Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-proposes-that-he-lead-team-usa-at-wwe-survivor-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:50:46.527Z"
+  "at": "2026-11-08T15:54:00.775Z"
  },
  "https://www.fightful.com/wrestling/penta-and-jevon-evans-speak-after-winning-world-tag-team-titles-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T15:50:46.257Z"
+  "at": "2026-11-08T15:54:00.509Z"
+ },
+ "https://www.ringsidenews.com/zilla-fatu-reveals-special-gifts-wwe-john-cena-classic-invitation": {
+  "reason": "المراجعة رفضته: صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
+  "retry": true,
+  "at": "2026-11-08T15:52:05.466Z"
  },
  "https://www.fightful.com/wrestling/tiffany-stratton-speaks-about-cashing-in-to-become-wwe-womens-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
