@@ -2328,6 +2328,11 @@ module.exports = function(eleventyConfig) {
     return outputPath && outputPath.endsWith(".html") ? require("./lib/charset-first.cjs").charsetFirst(content) : content;
   });
 
+  // HTML entities inside the JSON-LD («Blood &amp; Guts») become the real characters (lib/jsonld-entities.cjs, INCIDENTS #1135)
+  eleventyConfig.addTransform("jsonLdEntities", function(content, outputPath) {
+    return outputPath && outputPath.endsWith(".html") ? require("./lib/jsonld-entities.cjs").fixJsonLdEntities(content) : content;
+  });
+
   // Transform to strip all internal developer HTML comments from published pages for privacy & cleaner code
   eleventyConfig.addTransform("stripComments", function(content, outputPath) {
     if (outputPath && outputPath.endsWith(".html") && !outputPath.includes("/admin/")) {

@@ -511,3 +511,10 @@ test('«at AEW All In her newsletter» is held back: the missing «in» merges s
   assert.ok(checkEnglish({ ...good, body: good.body + ' She won the title at AEW All In her newsletter, Moné Mag.' }, input).some(i => i.includes('missing «in»')));
   assert.ok(!checkEnglish({ ...good, body: good.body + ' She won the title at AEW All In in her newsletter, Moné Mag.' }, input).some(i => i.includes('missing «in»')));
 });
+
+test("English rules: joining two statements keeps each one's meaning (INCIDENTS #1134)", async () => {
+  const { englishStyleRules } = await import("../scripts/english-edition.ts");
+  const rules = englishStyleRules("https://www.wrestlinginc.com/x/");
+  assert.match(rules, /never becomes "he had always wanted to be a wrestler until Bautista called him"/);
+  assert.match(rules, /never "encouraged him to audition"/);
+});
