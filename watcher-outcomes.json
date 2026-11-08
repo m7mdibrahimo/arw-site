@@ -1,73 +1,73 @@
 {
- "https://www.ringsidenews.com/mercedes-mone-mourns-passing-her-younger-sister-alexis": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-08T07:14:56.191Z"
- },
  "https://www.fightful.com/wrestling/aaa-heroes-inmortales-week-three-results-11-7": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T07:07:08.213Z"
+  "at": "2026-11-08T07:17:30.256Z"
  },
  "https://www.fightful.com/wrestling/josh-bishop-wins-mlw-championship-from-killer-kross-at-mlw-saturday-night-superfight": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T07:07:07.928Z"
+  "at": "2026-11-08T07:17:30.068Z"
  },
  "https://www.fightful.com/wrestling/tommaso-ciampa-wins-aew-national-title-on-11-7-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T07:07:07.646Z"
+  "at": "2026-11-08T07:17:29.880Z"
  },
  "https://www.fightful.com/mma/dana-white-says-hes-meeting-with-donald-trump-on-monday-over-white-house-job-offer": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T07:07:06.849Z"
+  "at": "2026-11-08T07:17:29.356Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-proposes-that-he-lead-team-usa-at-wwe-survivor-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T07:07:06.212Z"
+  "at": "2026-11-08T07:17:28.930Z"
  },
  "https://www.fightful.com/wrestling/penta-and-jevon-evans-speak-after-winning-world-tag-team-titles-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T07:07:05.913Z"
+  "at": "2026-11-08T07:17:28.729Z"
  },
  "https://www.fightful.com/wrestling/tiffany-stratton-speaks-about-cashing-in-to-become-wwe-womens-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T07:07:05.716Z"
+  "at": "2026-11-08T07:17:28.592Z"
  },
  "https://www.fightful.com/wrestling/chelsea-green-comments-after-losing-womens-title-at-wwe-crown-jewel-i-didnt-just-lose-my-championship-but-i-lost-a-friend": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T07:07:05.334Z"
+  "at": "2026-11-08T07:17:28.339Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-wins-mens-crown-jewel-championship-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T07:07:05.138Z"
+  "at": "2026-11-08T07:17:28.210Z"
  },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-post-show-nov-7-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T07:07:04.943Z"
+  "at": "2026-11-08T07:17:28.079Z"
  },
  "https://www.fightful.com/wrestling/tna-contract-of-rich-swann-set-to-expire-at-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T07:07:04.636Z"
+  "at": "2026-11-08T07:17:27.877Z"
  },
  "https://www.fightful.com/wrestling/tiffany-stratton-wins-wwe-womens-title-after-cashing-in-money-in-the-bank-on-chelsea-green-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T07:07:04.242Z"
+  "at": "2026-11-08T07:17:27.616Z"
  },
  "https://www.fightful.com/wrestling/chelsea-green-wins-the-womens-crown-jewel-championship-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T07:07:04.042Z"
+  "at": "2026-11-08T07:17:27.482Z"
+ },
+ "https://www.ringsidenews.com/mercedes-mone-mourns-passing-her-younger-sister-alexis": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-08T07:14:56.191Z"
  },
  "https://www.fightful.com/wrestling/joseph-sawyer-loses-gcw-title-mance-warner-and-effy-return": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل أو اسم مثنى (يتحديان/كمالكين/كشريكين…) ممنوع — اكتب «ضد» أو «يواجه» أو اذكر الاسمين بفعل جمع",
