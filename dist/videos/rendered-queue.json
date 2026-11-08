@@ -16836,18 +16836,6 @@
     "renderedAt": 1794102043895
   },
   {
-    "videoUrl": "/videos/reel-20261108093956-wwe-crown-jewel-2026.mp4",
-    "filename": "reel-20261108093956-wwe-crown-jewel-2026.mp4",
-    "title": "عرض كراون جول 07.11.2026 مترجم",
-    "secondaryTitle": "WWE Crown Jewel (2026)",
-    "description": "عرض كراون جول مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261108093956-wwe-crown-jewel-2026",
-    "kind": "show",
-    "slug": "20261108093956-wwe-crown-jewel-2026",
-    "image": "/content/images/1n9f1boajnp25qxy.jpg",
-    "renderedAt": 1794123837080
-  },
-  {
     "videoUrl": "/videos/reel-20260929130409-wwe-raw-28-09-2026.mp4",
     "filename": "reel-20260929130409-wwe-raw-28-09-2026.mp4",
     "title": "عرض الرو 28.09.2026 مترجم",
@@ -16857,7 +16845,7 @@
     "kind": "show",
     "slug": "20260929130409-wwe-raw-28-09-2026",
     "image": "/content/images/qewchyxui5nm6d3m.jpg",
-    "renderedAt": 1794123937465
+    "renderedAt": 1794125300407
   },
   {
     "videoUrl": "/videos/reel-20261001130548-aew-dynamite-30-09-2026.mp4",
@@ -16869,7 +16857,7 @@
     "kind": "show",
     "slug": "20261001130548-aew-dynamite-30-09-2026",
     "image": "/content/images/d3znaep7usmqwk7z.jpg",
-    "renderedAt": 1794124034997
+    "renderedAt": 1794125393962
   },
   {
     "videoUrl": "/videos/reel-20261001135418-aaa-worlds-collide-2026.mp4",
@@ -16881,7 +16869,7 @@
     "kind": "show",
     "slug": "20261001135418-aaa-worlds-collide-2026",
     "image": "/content/images/s57awl84ejeui87w.jpg",
-    "renderedAt": 1794124137319
+    "renderedAt": 1794125491982
   },
   {
     "videoUrl": "/videos/reel-20261007171657-wwe-nxt-06-10-2026.mp4",
@@ -16893,7 +16881,7 @@
     "kind": "show",
     "slug": "20261007171657-wwe-nxt-06-10-2026",
     "image": "/content/images/g4ti2ektegcjavtp.jpg",
-    "renderedAt": 1794124237304
+    "renderedAt": 1794125588725
   },
   {
     "videoUrl": "/videos/reel-20261010142832-wwe-smackdown-09-10-2026.mp4",
@@ -16905,7 +16893,7 @@
     "kind": "show",
     "slug": "20261010142832-wwe-smackdown-09-10-2026",
     "image": "/content/images/dbs32voaupebsrcc.jpg",
-    "renderedAt": 1794124337705
+    "renderedAt": 1794125685297
   },
   {
     "videoUrl": "/videos/reel-20261012060623-cmll-sabados-de-coliseo-10-10-.mp4",
@@ -16917,7 +16905,7 @@
     "kind": "show",
     "slug": "20261012060623-cmll-sabados-de-coliseo-10-10-",
     "image": "/content/images/mz8zgvqls99u165t.jpg",
-    "renderedAt": 1794124438982
+    "renderedAt": 1794125782476
   },
   {
     "videoUrl": "/videos/reel-20261014044703-cmll-lunes-clasico-12-10-2026.mp4",
@@ -16929,7 +16917,7 @@
     "kind": "show",
     "slug": "20261014044703-cmll-lunes-clasico-12-10-2026",
     "image": "/content/images/zv1ij6mh1a4fwel3.jpg",
-    "renderedAt": 1794124539709
+    "renderedAt": 1794125879498
   },
   {
     "videoUrl": "/videos/reel-20261014173043-wwe-nxt-13-10-2026.mp4",
@@ -16941,7 +16929,7 @@
     "kind": "show",
     "slug": "20261014173043-wwe-nxt-13-10-2026",
     "image": "/content/images/hfs6wrxpz0wcby46.jpg",
-    "renderedAt": 1794124638106
+    "renderedAt": 1794125973972
   },
   {
     "videoUrl": "/videos/reel-20261014174915-nwa-powerrr-10-10-2026.mp4",
@@ -16953,7 +16941,7 @@
     "kind": "show",
     "slug": "20261014174915-nwa-powerrr-10-10-2026",
     "image": "/content/images/9vultb6udus9wy3d.jpg",
-    "renderedAt": 1794124737803
+    "renderedAt": 1794126067901
   },
   {
     "videoUrl": "/videos/reel-20261017160225-wwe-smackdown-16-10-2026.mp4",
@@ -16965,7 +16953,7 @@
     "kind": "show",
     "slug": "20261017160225-wwe-smackdown-16-10-2026",
     "image": "/content/images/dbgqg3wbhdpizx01.jpg",
-    "renderedAt": 1794124839003
+    "renderedAt": 1794126162342
   },
   {
     "videoUrl": "/videos/reel-20261026203117-cmll-domingo-familiar-25-10-20.mp4",
@@ -16977,7 +16965,7 @@
     "kind": "show",
     "slug": "20261026203117-cmll-domingo-familiar-25-10-20",
     "image": "/content/images/yqd2bkgafskc83zq.jpg",
-    "renderedAt": 1794124939873
+    "renderedAt": 1794126256414
   },
   {
     "videoUrl": "/videos/reel-20261026203411-gcw-shotzi-blackhearts-drive-i.mp4",
@@ -16989,6 +16977,18 @@
     "kind": "show",
     "slug": "20261026203411-gcw-shotzi-blackhearts-drive-i",
     "image": "/content/images/xcbpyka9rn5c472h.jpg",
-    "renderedAt": 1794125040349
+    "renderedAt": 1794126349835
+  },
+  {
+    "videoUrl": "/videos/reel-20261108093956-wwe-crown-jewel-2026.mp4",
+    "filename": "reel-20261108093956-wwe-crown-jewel-2026.mp4",
+    "title": "عرض كراون جول 07.11.2026 مترجم",
+    "secondaryTitle": "WWE Crown Jewel (2026)",
+    "description": "عرض كراون جول مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261108093956-wwe-crown-jewel-2026",
+    "kind": "show",
+    "slug": "20261108093956-wwe-crown-jewel-2026",
+    "image": "/content/images/1n9f1boajnp25qxy.jpg",
+    "renderedAt": 1794126444396
   }
 ]
