@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/tna-star-jada-stone-hospitalized-following-serious-car-accident": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-08T20:56:17.220Z"
+ },
  "https://www.fightful.com/wrestling/report-wwe-roster-out-of-saudi-before-latest-missile-attack": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-08T20:49:02.210Z"
- },
- "https://www.ringsidenews.com/tna-star-jada-stone-hospitalized-following-serious-car-accident": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-08T20:36:16.117Z"
  },
  "https://www.wrestlinginc.com/2309319/wwe-drew-mcintyre-explains-decision-pursue-hollywood-career": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Solo Sikoa",
