@@ -1,78 +1,83 @@
 {
- "https://www.ringsidenews.com/mercedes-mone-mourns-passing-her-younger-sister-alexis": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+ "https://www.fightful.com/wrestling/aaa-heroes-inmortales-week-three-results-11-7": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-08T03:58:25.924Z"
+  "at": "2026-11-08T04:03:55.297Z"
  },
  "https://www.fightful.com/wrestling/josh-bishop-wins-mlw-championship-from-killer-kross-at-mlw-saturday-night-superfight": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T04:00:38.478Z"
+  "at": "2026-11-08T04:03:55.010Z"
  },
  "https://www.fightful.com/wrestling/tommaso-ciampa-wins-aew-national-title-on-11-7-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T04:00:38.189Z"
+  "at": "2026-11-08T04:03:54.723Z"
  },
  "https://www.fightful.com/wrestling/ftr-ties-series-2-2-with-motor-city-machine-guns-on-11-7-aew-collision": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-08T04:00:37.632Z"
+  "at": "2026-11-08T04:03:54.174Z"
  },
  "https://www.fightful.com/mma/dana-white-says-hes-meeting-with-donald-trump-on-monday-over-white-house-job-offer": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T04:00:14.166Z"
+  "at": "2026-11-08T04:02:36.068Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-proposes-that-he-lead-team-usa-at-wwe-survivor-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T04:00:13.508Z"
+  "at": "2026-11-08T04:02:35.414Z"
  },
  "https://www.fightful.com/wrestling/penta-and-jevon-evans-speak-after-winning-world-tag-team-titles-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T04:00:13.199Z"
+  "at": "2026-11-08T04:02:35.111Z"
  },
  "https://www.fightful.com/wrestling/tiffany-stratton-speaks-about-cashing-in-to-become-wwe-womens-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T04:00:12.995Z"
+  "at": "2026-11-08T04:02:34.910Z"
  },
  "https://www.fightful.com/wrestling/chelsea-green-comments-after-losing-womens-title-at-wwe-crown-jewel-i-didnt-just-lose-my-championship-but-i-lost-a-friend": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T04:00:12.600Z"
+  "at": "2026-11-08T04:02:34.516Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-wins-mens-crown-jewel-championship-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T04:00:12.397Z"
+  "at": "2026-11-08T04:02:34.316Z"
  },
  "https://www.fightful.com/wrestling/wwe-crown-jewel-post-show-nov-7-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T04:00:12.184Z"
+  "at": "2026-11-08T04:02:34.117Z"
  },
  "https://www.fightful.com/wrestling/tna-contract-of-rich-swann-set-to-expire-at-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T04:00:11.872Z"
+  "at": "2026-11-08T04:02:33.802Z"
  },
  "https://www.fightful.com/wrestling/tiffany-stratton-wins-wwe-womens-title-after-cashing-in-money-in-the-bank-on-chelsea-green-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T04:00:11.470Z"
+  "at": "2026-11-08T04:02:33.391Z"
  },
  "https://www.fightful.com/wrestling/chelsea-green-wins-the-womens-crown-jewel-championship-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T04:00:11.266Z"
+  "at": "2026-11-08T04:02:33.190Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-punts-randy-orton-wins-last-man-standing-match-at-wwe-crown-jewel": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-08T04:00:10.974Z"
+  "at": "2026-11-08T04:02:32.891Z"
+ },
+ "https://www.ringsidenews.com/mercedes-mone-mourns-passing-her-younger-sister-alexis": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-08T03:58:25.924Z"
  },
  "https://www.fightful.com/wrestling/watch-aaa-heroes-inmortales-november-7-2026": {
   "reason": "المراجعة رفضته: العنوان مش جملة عربية (أقل من 3 كلمات عربية)، نص الخبر قصير جدًا أو فاضي",
