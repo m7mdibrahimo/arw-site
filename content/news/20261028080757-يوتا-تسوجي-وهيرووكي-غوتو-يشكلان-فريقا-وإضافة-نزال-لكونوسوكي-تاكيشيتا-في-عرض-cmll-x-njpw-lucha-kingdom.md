@@ -1,6 +1,7 @@
 ---
 federation: NJPW
-title: "يوتا تسوجي وهيرووكي غوتو يشكلان فريقا، وإضافة نزال لكونوسوكي تاكيشيتا في عرض CMLL x NJPW Lucha Kingdom"
+title: "يوتا تسوجي وهيرووكي غوتو يشكلون فريقا، وإضافة نزال لكونوسوكي تاكيشيتا في عرض CMLL x NJPW Lucha Kingdom"
+permalink: "/news/يوتا-تسوجي-وهيرووكي-غوتو-يشكلان-فريقا-وإضافة-نزال-لكونوسوكي-تاكيشيتا-في-عرض-cmll-x-njpw-lucha-kingdom/index.html"
 date: 2026-10-28T08:07:57.000+03:00
 published_at: 2026-10-28T05:13:32.394Z
 source_id: 336215

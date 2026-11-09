@@ -1,6 +1,7 @@
 ---
 federation: WWE
-title: "تريك ويليامز ولاش ليجند يزوران نادي The Wrestling Club قبل عرض WWE RAW"
+title: "تريك ويليامز ولاش ليجند يزورون نادي The Wrestling Club قبل عرض WWE RAW"
+permalink: "/news/تريك-ويليامز-ولاش-ليجند-يزوران-نادي-the-wrestling-club-قبل-عرض-wwe-raw/index.html"
 date: 2026-11-02T21:40:26.000+03:00
 published_at: 2026-11-02T18:56:16.571Z
 source_id: 337072

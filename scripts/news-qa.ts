@@ -566,6 +566,34 @@ export function titleMissingPreposition(title: string): string | null {
   return m[0];
 }
 
+/**
+ * A present-tense dual verb of any root: «يخطفان الأنظار»، «يحضران مباراة»، «سيلعبان»، «تقتحمان»، «يجسدانها».
+ * The dual_form rules list verbs one by one, so every new verb slipped through — 27 stories in two weeks and 164 in all
+ * carried one, 7 of them in the headline (Damian Priest story, round 2026-11-09, INCIDENTS #1157). The shape
+ * (ي|ت) + 3-6 letters + ان is a dual verb in this corpus except for names, so glossary words and a few known
+ * words (يستهان، يونان، فيشرمان…) are skipped; ت-words that start like transliterated names (تا/تو/تي/تر/تث) are skipped too.
+ */
+let DUAL_SKIP: Set<string> | null = null;
+function dualSkip(): Set<string> {
+  if (DUAL_SKIP) return DUAL_SKIP;
+  DUAL_SKIP = new Set(["يستهان", "يونان", "اليونان", "يونغستان", "فيشرمان", "تشاتمان", "يابان", "اليابان"]);
+  try {
+    const names = JSON.parse(fs.readFileSync(path.join(process.cwd(), "scripts", "wrestler-names.json"), "utf-8")) as Record<string, string>;
+    for (const ar of Object.values(names)) for (const w of String(ar).split(/\s+/)) if (w) DUAL_SKIP.add(w);
+  } catch { /* the glossary is optional here */ }
+  return DUAL_SKIP;
+}
+export function presentDualVerb(text: string): string | null {
+  const re = /(?<![ء-ي])[وفل]?س?(?:ي|ت(?![اويرث]))[ء-ي]{3,6}ان(?:ه|ها|هم|ني|نا)?(?![ء-ي])/g;
+  const skip = dualSkip();
+  for (const m of String(text || "").matchAll(re)) {
+    const w = m[0];
+    if (skip.has(w) || skip.has(w.replace(/^[وفل]/, "")) || skip.has(w.replace(/^[وفل]?س?/, ""))) continue;
+    return w;
+  }
+  return null;
+}
+
 export function checkArticle(title: string, body: string, tags: string[] = []): QaIssue[] {
   const issues: QaIssue[] = [];
   // Zero-width / bidi characters and an empty «()» left where the model dropped a name (Jake Paul quote, 2026-11-02: «يتحدى في الماضي (⁠⁠) بعد»)
@@ -700,6 +728,12 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
       issues.push({ code: "truncated_word", severity: "error", field, message: `كلمة عربية مقطوعة من حرفين («${m[0]}») — اكتب الكلمة كاملة`, excerpt: excerptAround(text, m.index, m[0].length) });
       break;
     }
+  }
+
+  // Any present-tense dual verb («يخطفان»، «يحضران»، «سيلعبان»، «تقتحمان»), not only the listed ones (INCIDENTS #1157)
+  for (const [field, text] of fields.slice(0, 2)) {
+    const dual = presentDualVerb(text);
+    if (dual) { issues.push({ code: "dual_form", severity: "error", field, message: `فعل مثنى («${dual}») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم`, excerpt: dual }); }
   }
 
   // The same paragraph/bullet twice (a Gemini list slip: INCIDENTS #400). Compared without «و», spaces and punctuation.
