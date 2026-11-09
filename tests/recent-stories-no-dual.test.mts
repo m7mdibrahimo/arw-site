@@ -83,3 +83,16 @@ test('Dusty Rhodes Tag Team Classic is written in English and not flagged as jar
   const codes = checkArticle('فوز نوام دار في بطولة Dusty Rhodes Tag Team Classic', 'فاز الثنائي ببطولة Dusty Rhodes Tag Team Classic لعام 2026 في عرض NXT.').map(i => i.code);
   assert.ok(!codes.includes('english_jargon'));
 });
+
+// INCIDENTS #1182: «خلال شهري أكتوبر ونوفمبر» (Lana story) and «بين عامي 2017 و2023» (50 stories) are construct
+// duals of a time word; they passed every dual check. The fix «عام 2017 وعام 2023» must stay allowed.
+test('construct duals «شهري X وY» and «عامي 2017 و2023» are caught, the plain form is not', () => {
+  for (const w of ['خلال شهري أكتوبر ونوفمبر', 'بين عامي 2017 و2023', 'لعامي 2027 و2028']) {
+    const codes = checkArticle('عنوان', `تحدثت النجمة عن مسيرتها ${w} في الحلبة.`).map(i => i.code);
+    assert.ok(codes.includes('dual_noun'), w);
+  }
+  for (const w of ['خلال شهر أكتوبر وشهر نوفمبر', 'بين عام 2017 وعام 2023', 'في عامي الأول مع الشركة', 'اشتراك شهري جديد']) {
+    const codes = checkArticle('عنوان', `تحدثت النجمة عن مسيرتها ${w} في الحلبة.`).map(i => i.code);
+    assert.ok(!codes.includes('dual_noun'), w);
+  }
+});

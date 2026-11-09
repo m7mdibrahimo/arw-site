@@ -19,7 +19,7 @@ layout: post-layout.njk
 
 محطات من مسيرته الاحترافية
 
-* فترة WWE الذهبية: تواجد مع الاتحاد بين عامي 2001 و2006، حيث خاض عداوات شهيرة كان أبرزها ضد "أندرتيكر" وفوزه ببطولة الفرق مع رود واريور أنيمال.
+* فترة WWE الذهبية: تواجد مع الاتحاد بين عام 2001 وعام 2006، حيث خاض عداوات شهيرة كان أبرزها ضد "أندرتيكر" وفوزه ببطولة الفرق مع رود واريور أنيمال.
 * الابتعاد عن الحلبات: غادر المصارعة بدوام كامل عام 2009، وكانت آخر مواجهة خاضها داخل الحلبة في عام 2018.
 
 <https://x.com/WrestlingAtomic/status/2090132760002166969?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2090132760002166969%7Ctwgr%5E6560e5fc20f3dadf90fe03f96c585bd851ca88cf%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fwww.fightful.com%2Fwrestling%2Fheidenreich-to-make-special-appearance-at-alw-we-wear-the-كراون%2F>
