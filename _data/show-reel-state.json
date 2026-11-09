@@ -5050,5 +5050,26 @@
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
+  },
+  "20261110001015-cmll-domingo-familiar-08-11-2026": {
+    "publishedAt": 1794262693738,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال دومينغو فاميليار 08.11.2026 مترجم",
+    "lastAttempt": 1794262738247,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story",
+      "tiktok"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
