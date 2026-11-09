@@ -1,5 +1,15 @@
 [
   {
+    "id": 338231,
+    "link": "https://www.fightful.com/wrestling/cody-rhodes-and-ethan-page-added-to-11-9-wwe-raw/",
+    "date": "2026-11-09T16:48:39",
+    "date_gmt": "2026-11-09T21:48:39",
+    "title": {
+      "rendered": "Cody Rhodes And Ethan Page Added To 11/9 WWE Raw"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/09164817/Screenshot-2026-11-09-at-4.47.00-PM.png"
+  },
+  {
     "id": 338234,
     "link": "https://www.fightful.com/wrestling/sami-zayn-you-cant-always-get-what-you-want-but-if-you-try-sometimes-youll-find-you-get-what-you-need/",
     "date": "2026-11-09T16:40:35",
@@ -288,15 +298,5 @@
       "rendered": "Wrestling Open Results (11/5)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/09065054/HWSVCz0WkAAszug.jpeg"
-  },
-  {
-    "id": 338142,
-    "link": "https://www.fightful.com/wrestling/wwe-nxt-live-results-11-7/",
-    "date": "2026-11-08T23:30:00",
-    "date_gmt": "2026-11-09T04:30:00",
-    "title": {
-      "rendered": "WWE NXT Live Results (11/7)"
-    },
-    "featured_image": "https://www.fightful.com/wp-content/uploads/2025/09/nxt-2024.jpg"
   }
 ]

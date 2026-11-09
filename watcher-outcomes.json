@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/cody-rhodes-and-ethan-page-added-to-11-9-wwe-raw": {
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، نص الخبر قصير جدًا أو فاضي",
+  "retry": true,
+  "at": "2026-11-09T21:51:06.580Z"
+ },
  "https://www.fightful.com/wrestling/john-cena-if-i-have-any-energy-left-in-my-intellectual-property-i-want-to-give-it-to-folks-who-are-clamoring-for-a-spot": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T21:47:37.782Z"
+  "at": "2026-11-09T21:50:26.942Z"
  },
  "https://www.fightful.com/wrestling/mlw-planning-a-roster-refresh": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
-  "at": "2026-11-09T21:47:37.496Z"
+  "at": "2026-11-09T21:50:26.708Z"
  },
  "https://www.fightful.com/wrestling/road-dogg-was-not-fired-by-wwe-over-support-of-chelsea-green": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T21:47:17.515Z"
+  "at": "2026-11-09T21:50:10.797Z"
  },
  "https://www.fightful.com/wrestling/mlw-fusion-spoilers-taped-on-11-8": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T21:47:17.157Z"
+  "at": "2026-11-09T21:50:10.499Z"
  },
  "https://www.fightful.com/wrestling/john-cena-shares-how-he-used-to-be-a-big-gift-giver-at-christmas-while-working-with-wwe-to-buy-through-his-workaholism": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T21:47:16.349Z"
+  "at": "2026-11-09T21:50:09.822Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-9": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T21:47:15.353Z"
+  "at": "2026-11-09T21:50:08.980Z"
  },
  "https://www.fightful.com/wrestling/sami-zayn-you-cant-always-get-what-you-want-but-if-you-try-sometimes-youll-find-you-get-what-you-need": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي، حروف من لغة أخرى (يابانية/روسية/عبرية/بورمية...) داخل النص",
   "retry": true,
   "at": "2026-10-29T16:58:53.155Z"
- },
- "https://www.fightful.com/wrestling/aew-dynamite-fright-night-results-10-28-2026-persephone-vs-queen-aminata-ftr-vs-mcmg-darby-allin-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-10-29T16:53:24.763Z"
  }
 }
