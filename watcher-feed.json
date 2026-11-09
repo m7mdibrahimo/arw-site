@@ -1,5 +1,15 @@
 [
   {
+    "id": 338234,
+    "link": "https://www.fightful.com/wrestling/sami-zayn-you-cant-always-get-what-you-want-but-if-you-try-sometimes-youll-find-you-get-what-you-need/",
+    "date": "2026-11-09T16:40:35",
+    "date_gmt": "2026-11-09T21:40:35",
+    "title": {
+      "rendered": "Sami Zayn: You Can’t Always Get What You Want, But If You Try Sometimes You’ll Find You Get What You Need"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/05/08093618/hq720-66.jpg"
+  },
+  {
     "id": 338227,
     "link": "https://www.fightful.com/wrestling/john-cena-if-i-have-any-energy-left-in-my-intellectual-property-i-want-to-give-it-to-folks-who-are-clamoring-for-a-spot/",
     "date": "2026-11-09T16:17:35",
@@ -288,15 +298,5 @@
       "rendered": "WWE NXT Live Results (11/7)"
     },
     "featured_image": "https://www.fightful.com/wp-content/uploads/2025/09/nxt-2024.jpg"
-  },
-  {
-    "id": 338149,
-    "link": "https://www.fightful.com/wrestling/cmll-domingo-familiar-results-11-8-2026-trios-tournament-brillante-jr-vs-capitan-suicida-more/",
-    "date": "2026-11-08T22:30:00",
-    "date_gmt": "2026-11-09T03:30:00",
-    "title": {
-      "rendered": "CMLL Domingo Familiar Results (11/8/2026): Trios Tournament, Brillante Jr. vs. Capitán Suicida, More"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/08220447/image-445.png"
   }
 ]
