@@ -323,3 +323,14 @@ test("RAW description says «دبليو دبليو إي راو» and SmackDown i
   const forms = showNameForms({ headline: "عرض سماك داون الأخير 06.11.2026 مترجم", title: "WWE Smackdown 06.11.2026", programName: "WWE Smackdown", eventDate: "2026-11-06", isShow: true });
   assert.ok(!forms.some((n: string) => /\bSmackdown\b/.test(n)), forms.filter((n: string) => /Smackdown/.test(n)).join(" | "));
 });
+
+// INCIDENTS #1189: «NJPW El Desperado "Gas" PE Invitational» under «NJPW Special Events» — the double quotes made the
+// English event name fail, so the head said «— NJPW Special Events» and the title showed «&quot;جاس&quot;».
+test("a nickname in double quotes keeps the English event name in the head and drops the quotes (INCIDENTS #1189)", () => {
+  const args = { headline: 'عرض ان جيه بي دبليو ال ديسبيرادو "جاس" بي اي انفيتيشنال 09.11.2026 مترجم', title: 'NJPW El Desperado "Gas" PE Invitational (2026)', programName: "NJPW Special Events", eventDate: "2026-11-09", day: "9 نوفمبر 2026", isLatest: true, description: 'عرض ان جيه بي دبليو ال ديسبيرادو "جاس" بي اي انفيتيشنال مترجم بالكامل مع جميع النزالات والأحداث.' };
+  const r = showSeoText(args);
+  assert.ok(r.title.includes("NJPW El Desperado Gas PE Invitational"), r.title);
+  assert.ok(!r.title.includes('"') && !r.title.includes("Special Events"), r.title);
+  assert.ok(r.description.includes("NJPW El Desperado Gas PE Invitational November 9, 2026"), r.description);
+  assert.ok(showNameForms({ ...args, isShow: true }).includes("NJPW El Desperado Gas PE Invitational"));
+});

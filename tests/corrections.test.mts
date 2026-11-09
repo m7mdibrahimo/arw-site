@@ -1667,3 +1667,17 @@ test("Last Man Standing, «للجماهير» and «في شهر <month>» are co
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /رجل أخير صامد|محبوبة? لجماهير|في غضون شهر (?:يناير|فبراير|مارس|أبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر)/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #1188: «العمل جاري», «أفلام جيمس بوند ... التي تابعته», «تحويل شخصيتها إلى المكروهة» and an empty
+// closing sentence («تحتفل الأسماء البارزة بمناسبات خاصة وشهدت الأحداث تفاصيل متنوعة») reached stories.
+test("«العمل مستمر», «التي تابعتها», «تحويلها إلى شخصية شريرة» and the filler block (INCIDENTS #1188)", async () => {
+  const { applyCorrections, checkArticle } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("وأكد أن العمل جاري لإيجاد استثمارات"), "وأكد أن العمل مستمر لإيجاد استثمارات");
+  assert.equal(applyCorrections("أفلام جيمس بوند الشهيرة التي تابعته مرارا"), "أفلام جيمس بوند الشهيرة التي تابعتها مرارا");
+  assert.equal(applyCorrections("ضمن خطط الاتحاد لتحويل شخصيتها إلى المكروهة مجددا"), "ضمن خطط الاتحاد لتحويلها إلى شخصية شريرة مجددا");
+  assert.equal(applyCorrections("حدث جاري في الحلبة"), "حدث جاري في الحلبة");
+  const body = "على صعيد آخر، يتقابل كودي رودز مع الجماهير هذا الأسبوع، بينما تحتفل الأسماء البارزة بمناسبات خاصة وشهدت الأحداث تفاصيل متنوعة عبر عروض المصارعة. " + "كلام عادي في الخبر ".repeat(30);
+  assert.ok(checkArticle("عنوان عربي كامل للخبر هنا", body, []).some(i => i.code === "vague_filler"));
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(?:العمل|التخطيط) جاري|التي تابعته مرارا|تحويل شخصيت(?:ها|ه) إلى (?:المكروه|الشرير)|بمناسبات خاصة/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
