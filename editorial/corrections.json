@@ -10549,6 +10549,9 @@
     {"wrong": "رافينا فيين", "right": "رافينا فين", "note": "Ravenna Vein (INCIDENTS #1145)"},
     {"wrong": "فاينتفيل", "right": "فاييتفيل", "note": "Fayetteville — مدينة عروض ACTION (INCIDENTS #1145)"},
     {"wrong": "باس بارن", "right": "باص بارن", "note": "Line Creek Brewing Bus Barn — «Bus» مش «Bass» (INCIDENTS #1145)"},
-    {"wrong": "لايلا ديجز", "right": "ليلى ديجز", "note": "Layla Diggs — زي القاموس (INCIDENTS #1146)"}
+    {"wrong": "لايلا ديجز", "right": "ليلى ديجز", "note": "Layla Diggs — زي القاموس (INCIDENTS #1146)"},
+    {"wrong": "ببارو كافيرناريو", "right": "باربارو كافيرناريو", "note": "Bárbaro Cavernario — زي القاموس (INCIDENTS #1148)"},
+    {"wrong": "بربارو كافيرناريو", "right": "باربارو كافيرناريو", "note": "Bárbaro Cavernario — زي القاموس (INCIDENTS #1148)"},
+    {"wrong": "بريلانتي جونيور", "right": "بريانتي جونيور", "note": "Brillante Jr. — النطق الإسباني، زي القاموس (INCIDENTS #1148)"}
   ]
 }

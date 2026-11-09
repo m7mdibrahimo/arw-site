@@ -1535,6 +1535,12 @@ module.exports = function(eleventyConfig) {
           // The next yearly shows get their names before they air, so their first day in Google is not lost (INCIDENTS #1133)
           "wwe-survivor-series": ["سيرفايفر سيريس", "سرفايفر سيريس", "سيرفايفر سيريز", "سيرفايفر", "Survivor Series", "WWE Survivor Series", "Survivor Series مترجم", "عرض سيرفايفر سيريس مترجم", "سيرفايفر سيريس مترجم"],
           "aew-full-gear": ["فول جير", "فل جير", "فول قير", "فول غير", "AEW Full Gear", "Full Gear", "Full Gear مترجم", "عرض فول جير مترجم", "فول جير مترجم"],
+          // NXT Halloween Havoc 2026 (show page 33.6, library 29.3 in Search Console, «عروض مصارعة مترجم», «wwe مترجم», «اكس ان مترجم»
+          // for «ان اكس») had no other names at all, unlike the weekly NXT shows; the next NXT and AEW yearly shows get theirs
+          // before they air. Head/structured data only (INCIDENTS #1149)
+          "wwe-nxt-halloween-havoc": ["هالوين هافوك", "هالووين هافوك", "هالوين هافك", "ان اكس تي هالوين هافوك", "إن إكس تي هالوين هافوك", "NXT Halloween Havoc", "WWE NXT Halloween Havoc", "Halloween Havoc", "Halloween Havoc مترجم", "NXT Halloween Havoc مترجم", "عرض هالوين هافوك مترجم", "ان اكس تي مترجم", "NXT مترجم", "wwe مترجم", "عروض مصارعة مترجم"],
+          "wwe-nxt-deadline": ["ديدلاين", "ديد لاين", "ان اكس تي ديدلاين", "إن إكس تي ديدلاين", "NXT Deadline", "WWE NXT Deadline", "NXT Deadline مترجم", "عرض ديدلاين مترجم", "ان اكس تي مترجم", "NXT مترجم"],
+          "aew-worlds-end": ["وورلدز إند", "وورلدز اند", "ورلدز اند", "ورلدز إند", "AEW Worlds End", "Worlds End", "Worlds End مترجم", "AEW Worlds End مترجم", "عرض وورلدز اند مترجم", "ايه اي دبليو مترجم"],
           "wwe-money-in-the-bank": ["موني إن ذا بانك", "موني ان ذا بانك 2026", "مني ان ذا بانك", "ام اي تي بي", "MITB", "WWE Money in the Bank", "Money in the Bank 2026"],
         };
         // Every program also answers to «<the federation said in Arabic> <the program>» («دبليو دبليو إي موني إن ذا بانك»,

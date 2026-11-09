@@ -1601,3 +1601,16 @@ test("ACTION Wrestling venue, town and names have one spelling", async () => {
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /فاينتفيل|باس بارن|كيلسي ريجان|رافينا فيين/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #1148: CMLL Domingo Familiar results wrote Bárbaro Cavernario «ببارو كافيرناريو»; other CMLL stories had «بربارو» and Brillante Jr. as «بريلانتي».
+test("CMLL names Bárbaro Cavernario and Brillante Jr. have one spelling", async () => {
+  const { applyCorrections, fixNearGlossaryNames } = await import("../scripts/news-qa");
+  const glossary = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8")) as Record<string, string>;
+  assert.equal(glossary["Bárbaro Cavernario"], "باربارو كافيرناريو");
+  assert.equal(glossary["Brillante Jr."], "بريانتي جونيور");
+  assert.equal(applyCorrections("فاز أفيرنو وببارو كافيرناريو وبربارو كافيرناريو على بريلانتي جونيور"), "فاز أفيرنو وباربارو كافيرناريو وباربارو كافيرناريو على بريانتي جونيور");
+  // a new misspelling of the same name is pulled back to the glossary before publishing
+  assert.equal(fixNearGlossaryNames("حقق أفيرنو و ببارو كافيرناريو الفوز", ["باربارو كافيرناريو"]), "حقق أفيرنو و باربارو كافيرناريو الفوز");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /ببارو كافيرناريو|بربارو كافيرناريو|بريلانتي جونيور/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});

@@ -39,3 +39,15 @@ test("Lucha Libre AAA carries the Arabic spellings visitors type (INCIDENTS #717
   const line = src.split("\n").find((l) => l.includes('"lucha-libre-aaa": ['))!;
   for (const q of ["لوتشا ليبري ايه ايه ايه", "لوتشا ليبري", "Lucha Libre AAA مترجم"]) assert.ok(line.includes(`"${q}"`), q);
 });
+
+test("NXT Halloween Havoc and the next NXT/AEW yearly shows carry their other names (INCIDENTS #1149)", async () => {
+  const src = readFileSync("eleventy.config.js", "utf8");
+  const { isOffTopicQuery } = await import("../scripts/seo-new-shows.ts");
+  for (const [slug, must] of [["wwe-nxt-halloween-havoc", ["هالوين هافوك", "NXT Halloween Havoc مترجم", "عروض مصارعة مترجم"]], ["wwe-nxt-deadline", ["ديدلاين", "NXT Deadline"]], ["aew-worlds-end", ["وورلدز اند", "AEW Worlds End"]]] as const) {
+    const line = src.split("\n").find((l) => l.includes(`"${slug}": [`))!;
+    assert.ok(line, slug);
+    for (const q of must) assert.ok(line.includes(`"${q}"`), `${slug}: ${q}`);
+    const aliases = [...line.matchAll(/"([^"]+)"/g)].map((m) => m[1]).slice(1);
+    assert.deepEqual(aliases.filter(isOffTopicQuery), [], slug);
+  }
+});
