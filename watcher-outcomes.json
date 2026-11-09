@@ -39,11 +39,6 @@
   "retry": false,
   "at": "2026-11-09T21:09:16.217Z"
  },
- "https://www.ringsidenews.com/rusev-fight-vince-mcmahon-keep-lanas-spot-wwe-wrestlemania-31": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Adam Copeland",
-  "retry": true,
-  "at": "2026-11-09T21:06:51.183Z"
- },
  "https://www.fightful.com/wrestling/rosemary-working-backstage-at-tna-while-sidelined": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
