@@ -1,43 +1,43 @@
 {
- "https://www.fightful.com/wrestling/wwe-files-to-trademark-spike-dudley": {
-  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
-  "retry": false,
-  "at": "2026-11-09T14:13:59.107Z"
- },
  "https://www.fightful.com/wrestling/swerve-strickland-i-would-say-kenny-omega-and-kazuchika-okada-at-dominion-is-the-greatest-wrestling-match-of-all-time": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Adam Page",
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Hangman Page",
   "retry": true,
-  "at": "2026-11-09T14:08:46.773Z"
+  "at": "2026-11-09T14:16:38.563Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-9": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T14:08:28.819Z"
+  "at": "2026-11-09T14:15:41.412Z"
  },
  "https://www.fightful.com/mma/donald-trump-says-he-was-only-kidding-about-offering-dana-white-the-press-secretary-job": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T14:08:28.221Z"
+  "at": "2026-11-09T14:15:40.629Z"
  },
  "https://www.fightful.com/wrestling/rosemary-working-backstage-at-tna-while-sidelined": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T14:08:27.966Z"
+  "at": "2026-11-09T14:15:40.294Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-roster-out-of-saudi-before-latest-missile-attack": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T14:08:27.483Z"
+  "at": "2026-11-09T14:15:39.662Z"
  },
  "https://www.fightful.com/wrestling/randy-orton-ill-be-back-i-still-have-more-to-do": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T14:08:27.278Z"
+  "at": "2026-11-09T14:15:39.396Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-reveals-gifts-given-to-john-cena-classic-invitees": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T14:08:26.733Z"
+  "at": "2026-11-09T14:15:38.695Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-files-to-trademark-spike-dudley": {
+  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
+  "retry": false,
+  "at": "2026-11-09T14:13:59.107Z"
  },
  "https://www.ringsidenews.com/kevin-nash-calls-major-trump-administration-officials-impeached-midterm-elections": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
