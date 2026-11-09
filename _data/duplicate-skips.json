@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/watch-aaa-heroes-inmortales-october-24-2026/": {
-    "matchedFile": "20261024172144-تفاصيل-وموعد-انطلاق-ودليل-مشاهدة-عرض-aaa-heroes-inmortales-الليلة.md",
-    "reason": "الخبر الجديد يغطي نفس عرض AAA Heroes Inmortales وتفاصيل النزالات المذكورة في الخبر رقم 0، ولا يقدم أي تطور جديد أو نتيجة.",
-    "at": "2026-10-25T01:31:40.119Z"
-  },
   "https://www.fightful.com/wrestling/darby-allin-to-defend-tnt-title-against-josh-alexander-at-aew-fright-night-dynamite/": {
     "matchedFile": "20261025042419-داربي-ألين-يدافع-عن-بطولة-tnt-في-عرض-aew-dynamite-يوم-28-أكتوبر.md",
     "reason": "الخبر الجديد يتناول نفس الإعلان عن نزال داربي ألين ضد جوش ألكسندر في عرض AEW Fright Night Dynamite، وهو نفس الحدث المذكور في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261109192334-دونوفان-ديجاك-يعلن-انتهاء-مشواره-مع-اتحاد-mlw.md",
     "reason": "الخبران يغطيان نفس الحدث ونفس الإعلان وهو رحيل دونوفان ديجاك عن اتحاد MLW ودخوله سوق المصارعين الأحرار مع ذكر نفس التفاصيل واستعراض نفس المواجهات وتوجهه للاتحادات المستقلة.",
     "at": "2026-11-09T17:51:29.084Z"
+  },
+  "https://www.wrestlinginc.com/2311154/garrett-steven-borden-win-tag-team-debut-independent-show-rhodes-wrestling-association/": {
+    "matchedFile": "20261109162004-أبناء-ستينج-يسجلون-ظهورهم-الأول-كفريق-ويحققون-فوزا-كبيرا.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث وهو الظهور الأول لأبناء ستينج كفريق وتحقيق الفوز في اتحاد Rhodes Wrestling Association ضمن عرض Fall Fury، وقد تم نشر خبر بنفس التفاصيل مسبقاً.",
+    "at": "2026-11-09T18:31:44.091Z"
   }
 }
