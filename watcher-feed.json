@@ -1,5 +1,15 @@
 [
   {
+    "id": 338227,
+    "link": "https://www.fightful.com/wrestling/john-cena-if-i-have-any-energy-left-in-my-intellectual-property-i-want-to-give-it-to-folks-who-are-clamoring-for-a-spot/",
+    "date": "2026-11-09T16:17:35",
+    "date_gmt": "2026-11-09T21:17:35",
+    "title": {
+      "rendered": "John Cena: If I Have Any Energy Left In My Intellectual Property, I Want To Give It To Folks Who Are Clamoring For A Spot"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/07/08022836/john_cena_wwe_1_1.jpg"
+  },
+  {
     "id": 338229,
     "link": "https://www.fightful.com/wrestling/mlw-planning-a-roster-refresh/",
     "date": "2026-11-09T16:10:04",
@@ -288,15 +298,5 @@
       "rendered": "CMLL Domingo Familiar Results (11/8/2026): Trios Tournament, Brillante Jr. vs. Capitán Suicida, More"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/08220447/image-445.png"
-  },
-  {
-    "id": 338146,
-    "link": "https://www.fightful.com/wrestling/muhammad-hassan-gets-physical-in-the-ring/",
-    "date": "2026-11-08T21:10:34",
-    "date_gmt": "2026-11-09T02:10:34",
-    "title": {
-      "rendered": "Muhammad Hassan Gets Physical In The Ring"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/08211012/Screenshot-2026-11-08-at-9.08.52-PM.png"
   }
 ]
