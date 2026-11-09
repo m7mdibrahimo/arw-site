@@ -5014,7 +5014,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال سابادوس دي كوليسيو 07.11.2026 مترجم",
-    "lastAttempt": 1794250479029,
+    "lastAttempt": 1794251333116,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5032,9 +5032,15 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض جي سي دبليو ذا كروس رودز 07.11.2026",
-    "lastAttempt": 1794245301931,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1794251369442,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_reel",
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
