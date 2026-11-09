@@ -1,38 +1,38 @@
 {
- "https://www.ringsidenews.com/alexa-bliss-reveals-shes-sick-two-months-cant-shake-it": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مدة زمنية في المتن غير مطابقة للمصدر: منذ شهر",
-  "retry": true,
-  "at": "2026-11-09T15:17:30.917Z"
- },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-9": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T15:17:45.773Z"
+  "at": "2026-11-09T15:20:31.021Z"
  },
  "https://www.fightful.com/mma/donald-trump-says-he-was-only-kidding-about-offering-dana-white-the-press-secretary-job": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T15:17:44.867Z"
+  "at": "2026-11-09T15:20:30.057Z"
  },
  "https://www.fightful.com/wrestling/rosemary-working-backstage-at-tna-while-sidelined": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T15:17:44.478Z"
+  "at": "2026-11-09T15:20:29.660Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-roster-out-of-saudi-before-latest-missile-attack": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T15:17:43.729Z"
+  "at": "2026-11-09T15:20:28.908Z"
  },
  "https://www.fightful.com/wrestling/randy-orton-ill-be-back-i-still-have-more-to-do": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T15:17:43.416Z"
+  "at": "2026-11-09T15:20:28.587Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-reveals-gifts-given-to-john-cena-classic-invitees": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T15:17:42.565Z"
+  "at": "2026-11-09T15:20:27.724Z"
+ },
+ "https://www.ringsidenews.com/alexa-bliss-reveals-shes-sick-two-months-cant-shake-it": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مدة زمنية في المتن غير مطابقة للمصدر: منذ شهر",
+  "retry": true,
+  "at": "2026-11-09T15:17:30.917Z"
  },
  "https://www.fightful.com/wrestling/swerve-strickland-i-would-say-kenny-omega-and-kazuchika-okada-at-dominion-is-the-greatest-wrestling-match-of-all-time": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Hangman Page",
