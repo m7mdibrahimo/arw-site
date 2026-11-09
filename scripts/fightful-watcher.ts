@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, wrestlerNotInSource, fixNearGlossaryNames, type NewsFile } from "./news-qa";
+import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -4531,6 +4531,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   const badClaims = claimNotInSource(`${draft.title}\n${draft.body}`, `${rawTitle}\n${plainText}`);
   if (badClaims.length) {
     blocking.push({ code: "claim_not_in_source", severity: "error", field: "body", message: `معلومة في الخبر غير موجودة في المصدر: ${badClaims.join("، ")}`, excerpt: badClaims.join(" ") });
+    lastPostRetryable = true;
+  }
+  // «Set For First Appearance» headlined as «يظهر علنا لأول مرة» — a coming event written as done (INCIDENTS #1167).
+  const doneVerb = upcomingTitleAsDone(draft.title, rawTitle);
+  if (doneVerb) {
+    blocking.push({ code: "upcoming_title_as_done", severity: "error", field: "title", message: `المصدر بيقول إن الحدث لسه هيحصل (set for / scheduled) والعنوان كتبه «${doneVerb}» كأنه حصل — اكتب «سيظهر» أو «يستعد لأول ظهور» أو حط الموعد`, excerpt: doneVerb });
     lastPostRetryable = true;
   }
   // «2 months ago» written as «قبل شهر»: a span the source states with another count (INCIDENTS #1111).

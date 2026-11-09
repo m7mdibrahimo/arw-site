@@ -1501,7 +1501,7 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
 </div>
 <div class="grid-12">
 {% set showCount = 0 %}
-{% for item in collections.shows %}
+{% for item in collections.shows | homeFirst(8) %}
 {% set isNostalgia = (item.data.nostalgia_series or ('nostalgia' in (item.data.tags or [])) or ('نوستالجيا' in (item.data.tags or [])) or ('content/nostalgia' in (item.inputPath or ''))) %}
 {% if not isNostalgia and showCount < 8 %}
 {% set showCount = showCount + 1 %}
@@ -1555,7 +1555,7 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
 </div>
 <div class="grid-12">
 {% set newsCount = 0 %}
-{% for item in collections.news %}
+{% for item in collections.news | homeFirst(12) %}
 {% set isNostalgia = (item.data.nostalgia_series or ('nostalgia' in (item.data.tags or [])) or ('نوستالجيا' in (item.data.tags or [])) or ('content/nostalgia' in (item.inputPath or ''))) %}
 {% if not isNostalgia and newsCount < 12 %}
 {% set newsCount = newsCount + 1 %}

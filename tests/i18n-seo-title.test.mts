@@ -56,7 +56,7 @@ test('the English page uses the search title only in the head, not in structured
 test('English news pages get their keywords from en_tags, head only', () => {
   const fs = require('node:fs');
   const layout = fs.readFileSync('_includes/post-layout.njk', 'utf-8') as string;
-  assert.match(layout, /\{% set ldTags = tags or en_tags %\}/);
+  assert.match(layout, /\{% set ldTags = headTags\(tags or en_tags\) %\}/);
   const keywordsLine = layout.split('\n').find((l: string) => l.includes('"keywords"') && l.includes('ldTags'));
   assert.ok(keywordsLine, 'JSON-LD keywords use ldTags');
   const tagBox = layout.slice(layout.indexOf('class="post-tags'));

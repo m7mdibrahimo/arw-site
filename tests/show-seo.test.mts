@@ -301,3 +301,11 @@ test('a federation-only program puts the English event name after the dash, and 
   // a multi-word program keeps its own tail
   assert.match(seoText({ ...args, headline: 'عرض كوليجن 07.11.2026', title: 'AEW Collision 07.11.2026', programName: 'AEW Collision', eventDate: '2026-11-07' }).title, /— AEW Collision$/);
 });
+
+// INCIDENTS #1168: the site's federation code «INDIE» was a keyword in the head of every GCW/indie show page.
+test('the head never offers the federation code INDIE as a keyword', () => {
+  const { headTags } = require('../lib/show-seo.cjs');
+  assert.deepEqual(headTags(['GCW', 'INDIE', 'GCW Dead On Arrival']), ['GCW', 'GCW Dead On Arrival']);
+  assert.deepEqual(headTags('WWE'), ['WWE']);
+  assert.deepEqual(headTags(undefined), []);
+});

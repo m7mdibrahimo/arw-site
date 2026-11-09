@@ -1835,6 +1835,22 @@ module.exports = function(eleventyConfig) {
   // got its own description instead of one sentence shared by all of them (INCIDENTS #275).
   // The newest episode of a weekly program is searched as «عرض الرو الأخير مترجم»: its cards (image alt, link label) on the home
   // page and the program's library page say «الأخير» next to the name, like its title does — attributes only, nothing visible.
+  // The home page's news loop walked all ~5,300 stories to show 12. A loop with an async shortcode ({% optImg %}) in
+  // it is run by Nunjucks as asyncEach, which recurses once per item: past ~5,250 stories the build died with
+  // «Maximum call stack size exceeded» (INCIDENTS #1169). The loop gets the first `n` items it would show — the same
+  // non-nostalgia test the template makes — so its depth no longer grows with the archive.
+  eleventyConfig.addNunjucksFilter("firstN", (items, n) => (Array.isArray(items) ? items.slice(0, n) : []));
+  eleventyConfig.addNunjucksFilter("homeFirst", function(items, n) {
+    const out = [];
+    for (const item of items || []) {
+      const d = (item && item.data) || {};
+      const tags = d.tags || []; // an array or a string: «in» in the template is includes() on either
+      if (d.nostalgia_series || tags.includes("nostalgia") || tags.includes("نوستالجيا") || String(item.inputPath || "").includes("content/nostalgia")) continue;
+      out.push(item);
+      if (out.length >= n) break;
+    }
+    return out;
+  });
   eleventyConfig.addNunjucksFilter("latestCardName", function(name, url, library) {
     const n = String(name || "");
     if (!n || /الأخير|الاخير/.test(n)) return n;
@@ -1863,6 +1879,9 @@ module.exports = function(eleventyConfig) {
   // A show's structured-data keywords: its tags, then up to `max` of its search names, each once. The tags and the
   // program's names overlap («داينامايت», «AEW Dynamite» twice) and the repeats used the slots of the episode's own
   // dated names (INCIDENTS #940)
+  eleventyConfig.addNunjucksGlobal("headTags", function(tags) {
+    return require("./lib/show-seo.cjs").headTags(tags);
+  });
   eleventyConfig.addNunjucksGlobal("keywordList", function(tags, names, max, datedFirst) {
     return require("./lib/show-seo.cjs").keywordList(tags, names, max, datedFirst);
   });

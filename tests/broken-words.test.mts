@@ -1062,3 +1062,17 @@ test('corrections fix Wellness Arena, Madisyn Maxxwell and «not perfect» (INCI
   assert.equal(names['Bon Secours Wellness Arena'], 'بون سيكورز ويلنس أرينا');
   assert.equal(names['Madisyn Maxxwell'], 'ماديسون ماكسويل');
 });
+
+// INCIDENTS #1167: «Ric Flair Set For First Wrestling Appearance Since Scary Fall» was headlined
+// «ريك فلير يظهر علنا لأول مرة منذ سقوطه الخطير» — an appearance two weeks away written as done.
+test('a scheduled appearance is never headlined as already done', async () => {
+  const { upcomingTitleAsDone } = await import('../scripts/news-qa');
+  const src = 'Ric Flair Set For First Wrestling Appearance Since Scary Fall & Hospitalization';
+  assert.equal(upcomingTitleAsDone('ريك فلير يظهر علنا لأول مرة منذ سقوطه الخطير ونقله إلى المستشفى', src), 'يظهر');
+  assert.equal(upcomingTitleAsDone('ريك فلير ظهر في ديترويت', src), 'ظهر');
+  assert.equal(upcomingTitleAsDone('ريك فلير يستعد لأول ظهور علني منذ سقوطه الخطير ونقله إلى المستشفى', src), '');
+  assert.equal(upcomingTitleAsDone('ريك فلير سيظهر علنا لأول مرة منذ سقوطه الخطير', src), '');
+  // A present verb before a named show reads as coming, and a source that is not about a coming event is left alone
+  assert.equal(upcomingTitleAsDone('ميكي جيمز تظهر في عرض TNA Bound for Glory', 'Mickie James To Appear At TNA Bound For Glory'), '');
+  assert.equal(upcomingTitleAsDone('ريك فلير يظهر علنا لأول مرة منذ سقوطه', 'Ric Flair Appears In Public For First Time Since Fall'), '');
+});

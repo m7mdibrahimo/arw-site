@@ -1249,6 +1249,25 @@ const SOURCE_CLAIMS: { label: string; ar: RegExp; en: RegExp; source: RegExp }[]
     source: /cancel|pull(?:ed|ing|s)? out|withdr|\bmiss(?:ed|es|ing)?\b|off (?:of )?(?:upcoming|future|all)|out of (?:upcoming|future|all|his|her|their)|bookings|no-?show/i,
   },
 ];
+/**
+ * «Ric Flair Set For First Wrestling Appearance Since Scary Fall» became «ريك فلير يظهر علنا لأول مرة منذ سقوطه…»:
+ * an appearance still two weeks away, headlined as if it had happened (INCIDENTS #1167). When the source headline
+ * says the thing is scheduled (set for / set to / scheduled / slated / will / to appear) and the Arabic headline
+ * carries a bare «يظهر/يعود/ظهر/عاد» with nothing that says it is coming (س…، يستعد، المقبل، موعد، date…),
+ * returns the verb so the story is rewritten before publishing.
+ */
+export function upcomingTitleAsDone(arTitle: string, sourceTitle: string): string {
+  const src = String(sourceTitle || "");
+  if (!/\b(?:set (?:for|to)|scheduled (?:for|to)|slated (?:for|to)|will (?:appear|return|make|be back)|to (?:appear|return|make (?:his|her|their) (?:return|debut|first)))\b/i.test(src)) return "";
+  const t = String(arTitle || "");
+  if (/(?:^|[\s«"])(?:سي|ست|سن)[\u0621-\u064A]{2,}|يستعد|تستعد|يتأهب|تتأهب|المقبل|القادم|موعد|مرتقب|يخطط|تخطط|الليلة|غدا|الأسبوع|الشهر|(?:في|يوم)\s+\d|بعد\s+غد/.test(t)) return "";
+  // A bare present verb before a named show («ميكي جيمز تظهر في عرض TNA Bound for Glory») reads as coming; past
+  // tense, or a present verb with «علنا» / «لأول مرة منذ», reads as already done.
+  const past = /(?<![\u0621-\u064A])(?:و)?(ظهر|ظهرت|عاد|عادت)(?![\u0621-\u064A])/.exec(t);
+  if (past) return past[1];
+  const present = /(?<![\u0621-\u064A])(?:و)?(يظهر|تظهر|يعود|تعود)(?![\u0621-\u064A])/.exec(t);
+  return present && /علنا|لأول\s+مرة\s+منذ/.test(t) ? present[1] : "";
+}
 export function claimNotInSource(text: string, source: string, lang: "ar" | "en" = "ar"): string[] {
   const src = String(source || "");
   if (src.replace(/\s+/g, " ").trim().length < 200) return [];

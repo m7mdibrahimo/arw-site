@@ -20,7 +20,9 @@
 {% set metaDesc = baseDesc | truncate(320, true, '') %}
 {#- English news files carry «en_tags», never «tags» (content/news-en/news-en.11tydata.js): without this the English
     article had no keywords at all in its structured data, while the Arabic twin had them (round 2026-10-27, INCIDENTS #900) -#}
-{% set ldTags = tags or en_tags %}
+{#- «INDIE» is the site's own federation code, never a search: it rode into the keywords meta, article:tag and the
+    VideoObject keywords of ~20 GCW/indie show pages (INCIDENTS #1168). Head only — the page's visible tags are elsewhere. -#}
+{% set ldTags = headTags(tags or en_tags) %}
 <meta name="description" content="{{ metaDesc }}">
 {% if ldTags and ldTags.length %}
 <meta name="keywords" content="{{ ldTags | join(', ') }}">
@@ -52,7 +54,7 @@
 <meta property="og:locale" content="ar_AR">
 <meta property="article:published_time" content="{{ page.date.toISOString() }}">
 <meta property="article:modified_time" content="{{ page.date.toISOString() }}">
-{% if federation %}<meta property="article:section" content="{{ federation }}">{% endif %}
+{% if federation %}<meta property="article:section" content="{{ 'الاتحادات المستقلة' if federation == 'INDIE' else federation }}">{% endif %}
 {% if ldTags and ldTags.length %}
 {% for t in ldTags %}
 <meta property="article:tag" content="{{ t }}">
