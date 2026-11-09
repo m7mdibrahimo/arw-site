@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, type NewsFile } from "./news-qa";
+import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -4532,6 +4532,11 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   if (badClaims.length) {
     blocking.push({ code: "claim_not_in_source", severity: "error", field: "body", message: `معلومة في الخبر غير موجودة في المصدر: ${badClaims.join("، ")}`, excerpt: badClaims.join(" ") });
     lastPostRetryable = true;
+  }
+  // A headline «نزال» over what the English edition of the same request calls a segment (INCIDENTS #1184).
+  {
+    const segMsg = titleSegmentAsMatch(draft.title, typeof (rewritten as { en_title?: unknown }).en_title === "string" ? (rewritten as { en_title: string }).en_title : null);
+    if (segMsg) { blocking.push({ code: "title_segment_as_match", severity: "error", field: "title", message: segMsg, excerpt: draft.title }); lastPostRetryable = true; }
   }
   // «مصارع WWE مات كاردونا» when the source never ties him to WWE — an invented affiliation (INCIDENTS #1176).
   const badPromos = promotionLabelNotInSource(`${draft.title}\n${draft.body}`, `${rawTitle}\n${plainText}`, WRESTLER_NAMES_MAP);

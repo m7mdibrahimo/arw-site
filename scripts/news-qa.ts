@@ -290,7 +290,7 @@ const RULES: Rule[] = [
   { code: "fem_win_masc_purpose", severity: "error", re: /(?:^|[\s«])(?:هزمت|تغلبت|فازت|انتصرت)\s[^.،\n]{0,80}?\sلي(?:فوز|حصد|توج|نتزع|حرز|ظفر)(?=[\s.،]|$)/g, message: "فعل الفوز مؤنث وبعده «ليفوز/ليحصد» مذكر — اكتب «لتفوز/لتحصد»", fields: ["title", "body"] },
   { code: "dq_as_no_result", severity: "error", re: /النتيجة:\*{0,2}\s*(?:انتهى\s+النزال\s+)?(?:بلا|بدون|دون)\s+(?:نتيجة|فائز)\s+(?:بسبب\s+|عبر\s+|ب)(?:ال)?(?:استبعاد|إقصاء|طرد)[^\n]*/g, message: "الفوز بالاستبعاد له فائز — اكتب «🏆 **الفائز:** <الاسم> (بالاستبعاد)» مش «بلا نتيجة بسبب الاستبعاد»", fields: ["body"] },
   // «تختاران»، «حافظتا على الحزام»، «قطعتين معدنيتين»، «بطلي فرق WWE NXT» went live in three stories (INCIDENTS #1132)
-  { code: "dual_form", severity: "error", re: /(?<![ء-ي])(?:[وف]?(?:ي|ت|سي|ست)(?:ختار|حافظ|كشف|عبر|ناقش|فضل|تمنى|رفض)ان|[وف]?حافظ(?:ا|تا)(?=\s+على)|[وف]?(?:ب|ل)?(?:ال)?قطعت(?:ين|ان)|[وف]?(?:ب|ل)?بطلي\s+(?:فرق|الفرق|بطولة|لقب))(?![ء-ي])/g, message: "صيغة مثنى (تختاران/حافظتا/قطعتين/بطلي فرق) ممنوعة — اجمع الفعل أو كرر الاسم", fields: ["title", "body"] },
+  { code: "dual_form", severity: "error", re: /(?<![ء-ي])(?:[وف]?(?:ي|ت|سي|ست)(?:ختار|حافظ|كشف|عبر|ناقش|فضل|تمنى|رفض)ان|[وف]?حافظ(?:ا|تا)(?=\s+على)|[وف]?(?:ب|ل)?(?:ال)?قطعت(?:ين|ان)|[وف]?(?:ب|ل)?بطلي\s+(?:فرق|الفرق|بطولة|لقب|العالم))(?![ء-ي])/g, message: "صيغة مثنى (تختاران/حافظتا/قطعتين/بطلي فرق) ممنوعة — اجمع الفعل أو كرر الاسم", fields: ["title", "body"] },
   { code: "draw_as_winner", severity: "error", re: /الفائز(?:ة|ان|تان|ون|ين|ات)?:\*{0,2}\s*(?:انتهى|انتهت|انتهاء|لا\s+يوجد|لا\s+فائز|بلا\s|بدون\s|تعادل|التعادل|النزال\s+(?:انتهى|بلا))[^\n]*/g, message: "سطر «الفائز» فيه تعادل أو «بلا نتيجة» — اكتبه «🤝 **النتيجة:** …» (حصل: «الفائز: انتهى النزال بالتعادل»)", fields: ["body"] },
   // A live report's headline written from a match with no result yet: «نتائج عرض WWE NXT (27 أكتوبر 2026): فوز ولم يتم
   // الإعلان عن نتيجة النزال في الحدث الرئيسي» (INCIDENTS #910). The headline names the match, never a missing result.
@@ -1867,4 +1867,14 @@ export function fixNearGlossaryNames(text: string, names: string[]): string {
     for (const [from, to] of hits.reverse()) out = out.slice(0, from) + name + out.slice(to);
   }
   return out;
+}
+
+/** The Arabic headline calls a «نزال» what the English edition (written in the same Gemini request from the same
+ *  source) calls a segment: «تفاصيل وموعد نزال غير معلن… عرض WWE RAW الليلة» over a Cody Rhodes / Rey Mysterio
+ *  segment — the source's URL said «unadvertised-match» (INCIDENTS #1184). Returns a message, or null. */
+export function titleSegmentAsMatch(arTitle: string, enTitle: string | undefined | null): string | null {
+  if (!enTitle || !arTitle) return null;
+  const enSegment = /\bsegments?\b/i.test(enTitle) && !/\b(?:match|matches|bout|fight)\b/i.test(enTitle);
+  const arMatch = /(?<![ء-ي])[وفبل]?(?:ال)?(?:نزال|نزالات|مواجهة|مباراة)(?![ء-ي])/.test(arTitle) && !/فقر(?:ة|ات)/.test(arTitle);
+  return enSegment && arMatch ? "العنوان العربي بيقول «نزال» والنسخة الإنجليزي بتقول segment (فقرة) — اكتب «فقرة» في العنوان" : null;
 }
