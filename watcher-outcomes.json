@@ -1,38 +1,43 @@
 {
+ "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-9": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-09T13:02:18.492Z"
+ },
  "https://www.fightful.com/mma/donald-trump-says-he-was-only-kidding-about-offering-dana-white-the-press-secretary-job": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T13:00:19.066Z"
+  "at": "2026-11-09T13:02:17.564Z"
  },
  "https://www.fightful.com/wrestling/rosemary-working-backstage-at-tna-while-sidelined": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T13:00:18.674Z"
+  "at": "2026-11-09T13:02:17.170Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-roster-out-of-saudi-before-latest-missile-attack": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T13:00:17.933Z"
+  "at": "2026-11-09T13:02:16.421Z"
  },
  "https://www.fightful.com/wrestling/randy-orton-ill-be-back-i-still-have-more-to-do": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T13:00:17.625Z"
+  "at": "2026-11-09T13:02:16.111Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-reveals-gifts-given-to-john-cena-classic-invitees": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T13:00:16.793Z"
+  "at": "2026-11-09T13:02:15.273Z"
  },
  "https://www.fightful.com/wrestling/tommaso-ciampa-reacts-to-winning-the-aew-national-championship-names-it-rubie": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T13:00:16.212Z"
+  "at": "2026-11-09T13:02:14.690Z"
  },
  "https://www.fightful.com/wrestling/andrade-el-idolo-reacts-to-losing-aew-national-championship-you-learn-more-from-losing-than-winning": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T13:00:16.004Z"
+  "at": "2026-11-09T13:02:14.482Z"
  },
  "https://www.fightful.com/wrestling/hyperactive-were-over-the-moon-when-eve-match-with-the-brawling-birds-was-announced-gutted-by-its-postponement": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل مثنى («يشعران») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-28T19:17:08.174Z"
- },
- "https://www.fightful.com/wrestling/shawn-michaels-and-nxt-roster-parody-raw-1000-ad-to-advertise-next-weeks-wwe-nxt": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-10-28T18:39:12.632Z"
  }
 }
