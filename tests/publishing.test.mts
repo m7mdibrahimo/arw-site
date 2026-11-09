@@ -2341,6 +2341,17 @@ test('the site watchdog checks pages, bots and platforms every minute and keeps 
     { name: 'B', status: 'in_progress', conclusion: null },
     { name: 'B', status: 'completed', conclusion: 'failure', created_at: '2026-09-30T09:00:00Z', html_url: 'u' },
   ]).map(f => f.name), ['B']);
+  // a run GitHub never started (zero jobs) is its outage: re-run, not reported (2026-11-09)
+  const { dropGithubOutages } = await import('../worker/src/health');
+  const calls: string[] = [];
+  const api = async (p: string, init?: RequestInit) => {
+    calls.push(`${init?.method || 'GET'} ${p}`);
+    return new Response(JSON.stringify({ total_count: p.startsWith('/actions/runs/1/') ? 0 : 2 }));
+  };
+  const kept = await dropGithubOutages([{ name: 'SEO', id: 1, attempt: 1 }, { name: 'Real', id: 2, attempt: 1 }], api);
+  assert.deepEqual(kept.map(f => f.name), ['Real']);
+  assert.ok(calls.includes('POST /actions/runs/1/rerun'));
+  assert.ok(!calls.includes('POST /actions/runs/2/rerun'));
   // on the site over an hour, not held, missing a platform
   const items = [
     { url: '/news/a/', title: 'أ', published_at: '2026-09-30T10:30:00Z' },

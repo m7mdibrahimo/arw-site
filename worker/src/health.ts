@@ -63,11 +63,29 @@ export function onlyBookkeeping(files: any[] | undefined | null): boolean {
   return Array.isArray(files) && files.length > 0 && files.length < 300 && files.every(f => INVISIBLE.test(String(f?.filename || "")));
 }
 
-export function failedWorkflows(runs: any[]): { name: string; at: number; url: string }[] {
+export function failedWorkflows(runs: any[]): { name: string; at: number; url: string; id: number; attempt: number }[] {
   const latest = new Map<string, any>();
   for (const r of runs) if (r?.status === "completed" && !latest.has(r.name)) latest.set(r.name, r);
   return [...latest.values()].filter(r => r.conclusion === "failure" || r.conclusion === "timed_out")
-    .map(r => ({ name: String(r.name), at: Date.parse(r.updated_at || r.created_at) || 0, url: String(r.html_url || "") }));
+    .map(r => ({ name: String(r.name), at: Date.parse(r.updated_at || r.created_at) || 0, url: String(r.html_url || ""), id: Number(r.id) || 0, attempt: Number(r.run_attempt) || 1 }));
+}
+
+/**
+ * A run GitHub never started (zero jobs, «workflow file issue») is GitHub's outage, not the site's: on 2026-11-09
+ * an Actions incident failed «SEO New Shows», «Playback Check» and «Publishing regression checks» at startup and
+ * each sat in the panel as an open problem. Such a run is re-run (up to the third attempt) and not reported.
+ */
+export async function dropGithubOutages<T extends { id: number; attempt: number }>(failed: T[], api: (path: string, init?: RequestInit) => Promise<Response>): Promise<T[]> {
+  const kept: T[] = [];
+  for (const f of failed) {
+    const jobs: any = f.id ? await api(`/actions/runs/${f.id}/jobs?per_page=1`).then(r => (r.ok ? r.json() : null)).catch(() => null) : null;
+    if (jobs && jobs.total_count === 0) {
+      if (f.attempt < 3) await api(`/actions/runs/${f.id}/rerun`, { method: "POST" }).catch(() => null);
+      continue;
+    }
+    kept.push(f);
+  }
+  return kept;
 }
 
 const PLATFORMS = ["telegram", "facebook", "instagram"] as const;
@@ -178,7 +196,10 @@ export async function runSiteHealthCheck(env: HealthEnv, minute: number, keyOf: 
       if (runsRes) problems = mergeProblems(problems, githubKeyProblems(runsRes.status, runsRes.headers.get("github-authentication-token-expiration"), now), ["github_key"], now);
       const runs = runsRes && runsRes.ok ? await runsRes.json().catch(() => null) as any : null;
       if (runs?.workflow_runs) {
-        const failed = failedWorkflows(runs.workflow_runs).map(f => ({ key: `ci:${f.name}`, code: "ci_failed", title: `تشغيل «${f.name}» فشل`, detail: f.url }));
+        const api = (path: string, init: RequestInit = {}) => fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}${path}`, {
+          ...init, headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json", "User-Agent": "arw-site-bot" },
+        });
+        const failed = (await dropGithubOutages(failedWorkflows(runs.workflow_runs), api)).map(f => ({ key: `ci:${f.name}`, code: "ci_failed", title: `تشغيل «${f.name}» فشل`, detail: f.url }));
         problems = mergeProblems(problems, failed, ["ci_failed"], now);
       }
       const build: any = await fetch(bust(`${origin}/build.json`)).then(r => (r.ok ? r.json() : null)).catch(() => null);
