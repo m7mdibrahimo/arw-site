@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/muhammad-hassan-makes-wrestling-return-eight-years-lays-out-krule": {
+  "reason": "المراجعة رفضته: مدة زمنية في المتن غير مطابقة للمصدر: منذ عام",
+  "retry": true,
+  "at": "2026-11-09T02:26:46.693Z"
+ },
  "https://www.fightful.com/mma/donald-trump-says-he-was-only-kidding-about-offering-dana-white-the-press-secretary-job": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-28T17:30:31.299Z"
- },
- "https://www.fightful.com/wrestling/robert-stone-predicts-kendal-grey-and-kelani-jordan-will-be-future-wrestlemania-main-eventers": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة",
-  "retry": true,
-  "at": "2026-10-28T16:23:20.134Z"
  }
 }
