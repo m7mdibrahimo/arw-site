@@ -1,33 +1,33 @@
 {
  "https://www.fightful.com/wrestling/mlw-planning-a-roster-refresh": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-09T21:12:39.260Z"
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-11-09T21:14:54.490Z"
  },
  "https://www.fightful.com/wrestling/road-dogg-was-not-fired-by-wwe-over-support-of-chelsea-green": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T21:12:18.617Z"
+  "at": "2026-11-09T21:14:39.087Z"
  },
  "https://www.fightful.com/wrestling/mlw-fusion-spoilers-taped-on-11-8": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T21:12:18.272Z"
+  "at": "2026-11-09T21:14:38.736Z"
  },
  "https://www.fightful.com/wrestling/beyond-wrestling-announces-wrestival-schedule": {
-  "reason": "المراجعة رفضته: فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم، اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
+  "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Ricky Saints",
   "retry": true,
-  "at": "2026-11-09T21:12:17.943Z"
+  "at": "2026-11-09T21:14:38.402Z"
  },
  "https://www.fightful.com/wrestling/john-cena-shares-how-he-used-to-be-a-big-gift-giver-at-christmas-while-working-with-wwe-to-buy-through-his-workaholism": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T21:11:26.920Z"
+  "at": "2026-11-09T21:14:18.958Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-9": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T21:11:25.973Z"
+  "at": "2026-11-09T21:14:18.007Z"
  },
  "https://www.fightful.com/mma/donald-trump-says-he-was-only-kidding-about-offering-dana-white-the-press-secretary-job": {
   "reason": "مكرر مع خبر نزل قبل كده",
