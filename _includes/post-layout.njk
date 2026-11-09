@@ -387,9 +387,15 @@
       {% set servers = servers | playableServers(videoHosts, videoLinks) %}
       {% set firstEmbedUrl = (servers[0].url | toEmbedUrl) %}
       {% endif %}
+      {#- «سيرفر مميز» and «تحميل مميز» for everyone (owner 2026-11-09: «يكونوا ظاهرين عن كل الاعضاء وهل الزوار … ولكن
+          ميشتغلش غير للمشتركين المميزين فقط»): built locked from the counts (_data/premiumMedia.js), never a link; a premium
+          member's own rows take their place (assets/post-player.js), anyone else gets the subscribe panel over the player -#}
+      {%- set pm = premiumMedia[pk] if pk else null -%}
+      {%- set pmSrv = pm and pm[0] and not earlyLock -%}
+      {%- set pmDl = pm and pm[1] and not earlyLock -%}
       {#- «غرفة التحكم»: one card at the column width, like the download box — the servers on the right, the player
           on the left (owner, 2026-10-06) -#}
-      <section class="watch-deck is-idle{% if servers.length < 2 %} is-single{% endif %}{% if earlyLock %} is-locked{% endif %}" id="watchDeck" aria-label="المشاهدة أونلاين"{% if pk %} data-pk="{{ pk }}"{% endif %}{% if earlyLock %} data-pub="{{ earlyPub }}"{% endif %}>
+      <section class="watch-deck is-idle{% if servers.length < 2 and not pmSrv %} is-single{% endif %}{% if earlyLock %} is-locked{% endif %}" id="watchDeck" aria-label="المشاهدة أونلاين"{% if pk %} data-pk="{{ pk }}"{% endif %}{% if earlyLock %} data-pub="{{ earlyPub }}"{% endif %}>
         <div class="wd-head">
           <h3>المشاهدة أونلاين</h3>
           <div class="player-actions wd-acts">
@@ -406,9 +412,16 @@
           </div>
         </div>
         <div class="wd-body">
-          {% if servers.length > 1 %}
+          {% if servers.length > 1 or pmSrv %}
           <div class="wd-side">
             <div class="wd-list" id="serverTabs" role="tablist" aria-label="سيرفرات المشاهدة">
+              {% if pmSrv %}
+              <button type="button" role="tab" aria-selected="false" class="srv-row is-prem is-mq is-locked" data-srv-name="سيرفر مميز" title="سيرفر مميز للمشتركين في العضوية المميزة">
+                <span class="srv-num"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg></span>
+                <span class="srv-name"><b>سيرفر مميز<i class="srv-lock-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></i></b><span class="srv-mq">متعدد الجودات</span></span>
+                <span class="srv-state srv-locked"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>للمشتركين</span></span>
+              </button>
+              {% endif %}
               {% for s in servers %}
               {% set mq = (s.url | toEmbedUrl) | isMultiQuality %}
               <button type="button" role="tab" aria-selected="{{ 'true' if loop.index0 == 0 else 'false' }}" class="srv-row{% if loop.index0 == 0 %} active{% endif %}{% if mq %} is-mq{% endif %}" data-srv="{{ (s.url | toEmbedUrl) | obfuscateUrl }}" data-srv-name="سيرفر {{ loop.index }}"{% if mq %} data-mq="1" title="سيرفر متعدد الجودات: اختر الجودة من إعدادات المشغل"{% endif %}>
@@ -446,6 +459,18 @@
                 </span>
               </div>
               {% endif %}
+              {% if pmSrv %}
+              <div class="wd-pm" id="wdPmLock" hidden>
+                <span class="wd-lock-tag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg><span>سيرفر مميز</span></span>
+                <b class="wd-lock-t">السيرفر المميز للمشتركين في العضوية المميزة</b>
+                <span class="wd-lock-s">{% if pm[1] %}شاهد العرض بجودة تختارها وبدون إعلانات، وحمّله تحميلًا مباشرًا وسريعًا.{% else %}شاهد العرض بجودة تختارها وبدون إعلانات.{% endif %}{% if servers.length %} العرض نفسه متاح مجانًا للجميع على باقي السيرفرات.{% endif %}</span>
+                <span class="wd-lock-acts">
+                  <a class="wd-lock-btn" href="/premium/#subscribe"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg><span>اشترك في العضوية المميزة</span></a>
+                  <a class="wd-lock-in wd-pm-in" href="/account/?back={{ (page.url | cleanUrl) | urlencode }}">لديك عضوية؟ سجّل دخولك</a>
+                </span>
+                {% if servers.length %}<button type="button" class="wd-pm-back" id="wdPmBack">أو شاهد على سيرفر 1 مجانًا</button>{% endif %}
+              </div>
+              {% endif %}
               <div class="video-loader is-hidden" id="videoLoader">
                 <div class="video-loader-spinner"></div>
                 <div class="video-loader-status" id="videoLoaderStatus">جاري الاتصال بالسيرفر وتشغيل الفيديو...</div>
@@ -463,7 +488,6 @@
         </div>
         {#- this show's premium line, in the page itself (_data/premiumMedia.js) instead of after the page asked the worker (owner
             2026-10-16: «تكون ظاهرة علطول»). A premium member gets their own rows (assets/post-player.js), asked for right here -#}
-        {%- set pm = premiumMedia[pk] if pk else null -%}
         {%- if pm %}
         <a class="wd-prem" id="wdPrem" href="/premium/"><span class="wd-prem-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg></span><span class="wd-prem-tx"><b>{% if pm[0] and pm[1] %}إضافة للأعضاء المميزين: سيرفر خاص متعدد الجودات وتحميل مباشر سريع{% elif pm[0] %}إضافة للأعضاء المميزين: سيرفر خاص متعدد الجودات بدون إعلانات{% else %}إضافة للأعضاء المميزين: تحميل مباشر وسريع بدون إعلانات{% endif %}</b><small>العرض متاح للجميع مجانًا على باقي السيرفرات، وهذه الإضافة للمشتركين في العضوية المميزة فقط.</small></span><span class="wd-prem-go">اشترك</span></a>
         <script>(function(){try{var s=JSON.parse(localStorage.getItem('arw-member')||'null'),m=s&&s.member;if(!(s&&s.token&&m&&(m.official||m.premium>Date.now())))return;document.getElementById('wdPrem').hidden=true;window.__arwPrem=fetch('https://arw-site-bot.m7mdibrahimpc.workers.dev/premium/media?k='+encodeURIComponent({{ pk | dump | safe }}),{headers:{Authorization:'Bearer '+s.token},credentials:'omit'}).then(function(r){return r.json().catch(function(){return {};}).then(function(d){d.status=r.status;return d;});});}catch(e){}})();</script>
@@ -477,10 +501,19 @@
     {% if earlyLock %}{% set dlGroups = { light: [], low: [], medium: [], high: [] } %}{% else %}
     {% set dlGroups = downloads | groupDownloadsByQuality(downloads_low, downloads_medium, downloads_high, downloads_light, downloads_multi) %}
     {% endif %}
-    {% if dlGroups.light.length or dlGroups.low.length or dlGroups.medium.length or dlGroups.high.length %}
+    {% set dlAny = dlGroups.light.length or dlGroups.low.length or dlGroups.medium.length or dlGroups.high.length %}
+    {% if dlAny or pmDl %}
     <div class="download-links reveal" id="downloads">
       <h3>روابط التحميل</h3>
       <div class="quality-grid">
+        {% if pmDl %}
+        <button type="button" class="quality-btn is-prem is-locked" data-tier="prem" data-modal="dlModalLocked" title="تحميل مميز للمشتركين في العضوية المميزة">
+          <span class="q-lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+          <span class="quality-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg></span>
+          <span class="quality-label">تحميل مميز</span>
+          <span class="quality-sub">مباشر وسريع</span>
+        </button>
+        {% endif %}
         {% if dlGroups.light.length %}
         <button type="button" class="quality-btn" data-tier="light" data-modal="dlModalLight">
           <span class="quality-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
@@ -718,6 +751,25 @@
 </div>
 {% endmacro %}
 
+{% if pmDl %}
+<div class="dl-modal-backdrop" id="dlModalLocked">
+  <div class="dl-modal dl-pm" role="dialog" aria-modal="true" aria-label="التحميل المميز">
+    <div class="dl-modal-head">
+      <h4>التحميل المميز</h4>
+      <button type="button" class="dl-modal-close" aria-label="إغلاق">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="dl-modal-body dl-pm-body">
+      <span class="dl-pm-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg></span>
+      <b class="dl-pm-t">التحميل المميز للمشتركين في العضوية المميزة</b>
+      <span class="dl-pm-s">حمّل العرض تحميلًا مباشرًا وسريعًا بدون إعلانات ولا انتظار.{% if dlAny %} روابط التحميل العادية متاحة مجانًا للجميع.{% endif %}</span>
+      <a class="wd-lock-btn" href="/premium/#subscribe"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8.5 7.5 12 12 5l4.5 7L21 8.5 19 18H5z"/><rect x="5" y="19.5" width="14" height="2" rx="1"/></svg><span>اشترك في العضوية المميزة</span></a>
+      <a class="dl-pm-in wd-pm-in" href="/account/?back={{ (page.url | cleanUrl) | urlencode }}">لديك عضوية؟ سجّل دخولك</a>
+    </div>
+  </div>
+</div>
+{% endif %}
 {% if dlGroups.light.length %}{{ dlModal("dlModalLight", "روابط التحميل - جودة خفيفة (360p)", "360p", dlGroups.light) }}{% endif %}
 {% if dlGroups.low.length %}{{ dlModal("dlModalLow", "روابط التحميل - جودة منخفضة (480p)", "480p", dlGroups.low) }}{% endif %}
 {% if dlGroups.medium.length %}{{ dlModal("dlModalMedium", "روابط التحميل - جودة متوسطة (720p)", "720p", dlGroups.medium) }}{% endif %}

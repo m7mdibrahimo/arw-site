@@ -234,6 +234,8 @@
     .wd-list{ position:static; display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:6px; border:0; border-radius:0; overflow:visible; }
     .srv-row, .srv-row:last-child{ min-height:48px; justify-content:center; padding:6px; border:1px solid var(--line); border-radius:10px; }
     .srv-num, .srv-state{ display:none !important; }
+    .srv-lock-i{ display:inline; color:#a86400; }
+    html.arw-dark .srv-lock-i{ color:var(--gold); }
     .srv-name{ flex:none; align-items:center; }
     .srv-name b{ font-size:13.5px; }
     .srv-mq{ font-size:10.5px; }
@@ -259,6 +261,27 @@
   html.arw-dark .srv-row.is-prem .srv-num, html.arw-dark .srv-row.is-prem .srv-name b{ color:var(--gold); }
   .srv-row.is-prem.active{ background:rgba(242,165,60,.13); }
   .srv-row.is-prem.active::before{ background:#e09a12; }
+  /* «سيرفر مميز» locked for anyone not premium (owner 2026-11-09): the same row, with «للمشتركين» always there */
+  .srv-row.is-locked .srv-state.srv-locked{ display:inline-flex; align-items:center; gap:4px; color:#a86400; }
+  .srv-row.is-locked .srv-state.srv-locked svg{ width:12px; height:12px; }
+  .srv-row.is-locked .srv-state.srv-locked > span{ display:inline; }
+  html.arw-dark .srv-row.is-locked .srv-state.srv-locked{ color:var(--gold); }
+  .srv-lock-i{ display:none; }
+  .srv-lock-i svg{ width:11px; height:11px; vertical-align:-1px; margin-inline-start:4px; }
+  .quality-btn.is-locked .q-lock{ position:absolute; top:10px; inset-inline-start:10px; width:22px; height:22px; border-radius:50%; display:grid; place-items:center; background:#3b2600; color:#ffd25a; }
+  .quality-btn.is-locked .q-lock svg{ width:12px; height:12px; }
+  a.quality-btn.is-locked{ text-decoration:none; color:inherit; }
+  /* …and its subscribe panel over the player (the second of three pictures), in the countdown's look (.wd-lock) */
+  .wd-pm{ position:absolute; inset:0; z-index:9; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; padding:20px; text-align:center; color:#fff; border-radius:inherit; background:radial-gradient(120% 90% at 50% 0%, rgba(224,154,18,.22), transparent 60%), linear-gradient(180deg, rgba(13,16,21,.74), rgba(13,16,21,.94)); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); }
+  .wd-pm[hidden]{ display:none; }
+  .wd-pm-back{ background:none; border:0; padding:4px 8px; color:rgba(255,255,255,.78); font:700 13px 'Cairo',sans-serif; cursor:pointer; }
+  .wd-pm-back:hover{ color:#fff; text-decoration:underline; text-underline-offset:3px; }
+  .dl-pm-body{ align-items:center; text-align:center; gap:12px; padding:22px 18px 24px; }
+  .dl-pm-ic{ width:56px; height:56px; border-radius:18px; display:grid; place-items:center; background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; box-shadow:0 12px 24px -8px rgba(224,154,18,.7); }
+  .dl-pm-ic svg{ width:28px; height:28px; }
+  .dl-pm-t{ font:900 18px/1.5 'Cairo',sans-serif; text-wrap:balance; }
+  .dl-pm-s{ font-size:14px; line-height:1.8; color:var(--muted); text-wrap:balance; }
+  .dl-pm-in{ font-size:13.5px; font-weight:700; color:var(--ink); text-decoration:underline; text-underline-offset:3px; }
   .wd-prem{ display:flex; align-items:center; gap:12px; margin:14px 0 0; padding:11px 14px; border-radius:12px; text-decoration:none; color:var(--ink); background:linear-gradient(135deg, rgba(255,210,90,.16), rgba(224,154,18,.08)); border:1px solid rgba(224,154,18,.35); transition:border-color .2s ease, background .2s ease; }
   .wd-prem[hidden]{ display:none; }
   .wd-prem:hover{ border-color:#e09a12; background:linear-gradient(135deg, rgba(255,210,90,.26), rgba(224,154,18,.12)); }
@@ -294,6 +317,9 @@
   .quality-btn[data-tier="prem"]{ background:linear-gradient(155deg, var(--card), rgba(255,210,90,.18)); }
   .quality-btn[data-tier="prem"]:hover{ border-color:#e09a12; box-shadow:0 12px 28px -10px rgba(224,154,18,.4); }
   @container (max-width:600px){
+    /* the subscribe panel is taller than the 16:9 box on a phone: the box grows to it */
+    .watch-deck.is-pmlock .video-embed{ aspect-ratio:auto; min-height:56.25cqw; }
+    .wd-pm{ position:relative; inset:auto; width:100%; min-height:inherit; padding:22px 14px; }
     .srv-row.is-prem .srv-name b{ font-size:12.5px; }
     .wd-prem{ margin-top:10px; padding:10px 12px; gap:10px; }
     .wd-prem-tx small{ display:none; }

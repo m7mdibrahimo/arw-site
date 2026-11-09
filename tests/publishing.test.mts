@@ -3645,6 +3645,25 @@ test('a shelved plan is frozen, never cancelled (INCIDENTS #291)', async () => {
   assert.match(watcher, /shelvedNotCancelled\(draft\.title, plainText\)/);
 });
 
+test('«سيرفر مميز» and «تحميل مميز» are on every show page with premium links, locked, never with a link (owner 2026-11-09)', () => {
+  const tpl = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
+  const js = fs.readFileSync('assets/post-player.js', 'utf-8');
+  // built from the counts alone, for everyone, outside an early-access window
+  assert.match(tpl, /set pmSrv = pm and pm\[0\] and not earlyLock/);
+  assert.match(tpl, /set pmDl = pm and pm\[1\] and not earlyLock/);
+  const row = tpl.slice(tpl.indexOf('class="srv-row is-prem is-mq is-locked"') - 60, tpl.indexOf('class="srv-row is-prem is-mq is-locked"') + 700);
+  assert.ok(row.includes('سيرفر مميز') && row.includes('للمشتركين'));
+  assert.doesNotMatch(row, /data-srv="/); // no stream address, not even encoded
+  assert.match(tpl, /class="quality-btn is-prem is-locked" data-tier="prem" data-modal="dlModalLocked"/);
+  // the panel over the player (the owner's pick of three), with the way back to a free server
+  assert.match(tpl, /<div class="wd-pm" id="wdPmLock" hidden>/);
+  assert.ok(tpl.includes('السيرفر المميز للمشتركين في العضوية المميزة') && tpl.includes('أو شاهد على سيرفر 1 مجانًا'));
+  assert.ok(tpl.includes('التحميل المميز للمشتركين في العضوية المميزة'));
+  // a click on the locked row opens the panel and plays nothing; a premium member's own rows take their place
+  assert.match(js, /if \(btn\.classList\.contains\('is-locked'\)\) \{ pmLock\(true, btn\); return; \}/);
+  assert.match(js, /\.srv-row\.is-locked, #downloads \.quality-btn\.is-locked, #wdPmLock, #dlModalLocked/);
+});
+
 test('the watch box: servers listed beside the player in one box, notice inside it (INCIDENTS #292)', () => {
   const layout = layoutSource();
   assert.match(layout, /<section class="watch-deck/);
@@ -3659,7 +3678,8 @@ test('the watch box: servers listed beside the player in one box, notice inside 
   assert.doesNotMatch(layout, /class="quality-notice"/);
   // the player script follows the new rows, not the old tabs
   assert.doesNotMatch(layout, /querySelectorAll\('\.server-tab'\)/);
-  assert.match(layout, /var srvRows = Array\.from\(document\.querySelectorAll\('\.srv-row'\)\);/);
+  // (a locked «سيرفر مميز» row is never one of them: owner 2026-11-09)
+  assert.match(layout, /var srvRows = Array\.from\(document\.querySelectorAll\('\.srv-row:not\(\.is-locked\)'\)\);/);
   // «وضع السينما» is gone: «ملء الشاشة» took its place (owner 2026-10-10)
   assert.doesNotMatch(layout, /cinema/i);
   assert.match(layout, /\.reveal\.is-visible\{ opacity:1; transform:none;/);

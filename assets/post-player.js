@@ -237,7 +237,8 @@
   // Mount initial video player on client load
   var embedBox = document.getElementById('videoEmbedBox') || document.querySelector('.video-embed');
   // the rows are read again whenever servers are added (a premium member's own servers, an early show's links)
-  var srvRows = Array.from(document.querySelectorAll('.srv-row'));
+  // a locked «سيرفر مميز» row (_includes/post-layout.njk) is never one of them: it opens the subscribe panel instead
+  var srvRows = Array.from(document.querySelectorAll('.srv-row:not(.is-locked)'));
   function markServer(btn) {
     srvRows.forEach(function(b){ var on = b === btn; b.classList.toggle('active', on); b.setAttribute('aria-selected', on ? 'true' : 'false'); });
     var now = document.getElementById('wdNow');
@@ -255,10 +256,26 @@
   var posterBtn = document.getElementById('wdPoster');
   if (posterBtn) posterBtn.addEventListener('click', startPlayback);
 
+  // «سيرفر مميز» for someone who isn't a premium member: the subscribe panel over the player (owner 2026-11-09, the second
+  // of three pictures); any free server, or «أو شاهد على سيرفر 1 مجانًا», takes it away
+  function pmLock(on, btn) {
+    var pane = document.getElementById('wdPmLock'), deck = document.getElementById('watchDeck');
+    if (on && !pane) { location.href = (document.documentElement.lang === 'en' ? '/en' : '') + '/premium/#subscribe'; return; }
+    if (!pane) return;
+    pane.hidden = !on;
+    if (deck) deck.classList.toggle('is-pmlock', !!on);
+    document.querySelectorAll('.srv-row.is-locked').forEach(function(b){ b.classList.toggle('active', !!on && b === btn); b.setAttribute('aria-selected', on && b === btn ? 'true' : 'false'); });
+    if (on) srvRows.forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+  }
+  var pmBack = document.getElementById('wdPmBack');
+  if (pmBack) pmBack.addEventListener('click', function(){ pmLock(false); if (srvRows[0]) srvRows[0].click(); });
+
   // Server tabs switcher
   document.addEventListener('click', function(e){
     var btn = e.target.closest && e.target.closest('.srv-row');
     if (!btn) return;
+    if (btn.classList.contains('is-locked')) { pmLock(true, btn); return; }
+    pmLock(false);
     (function(){
       markServer(btn);
       var rawEnc = (btn.dataset.srv || '').trim();
@@ -467,6 +484,8 @@
     var token = session && session.token || '';
     var known = session && session.member || null;
     var thinksPremium = !!(known && (known.official || known.premium > Date.now()));
+    // signed in already: no «سجّل دخولك» under the subscribe buttons
+    if (token) document.querySelectorAll('.wd-pm-in').forEach(function(x){ x.remove(); });
     function get(what) {
       // the page asked already, while it was still loading (_includes/post-layout.njk, next to the premium line)
       if (what === 'media' && window.__arwPrem) { var early = window.__arwPrem; window.__arwPrem = null; return early; }
@@ -531,7 +550,7 @@
         }
       });
       if (prem) tabs.insertBefore(frag, tabs.firstChild); else tabs.appendChild(frag);
-      srvRows = Array.from(document.querySelectorAll('.srv-row'));
+      srvRows = Array.from(document.querySelectorAll('.srv-row:not(.is-locked)'));
       deck.classList.toggle('is-single', srvRows.length < 2);
       if (box && !box.dataset.initSrv && srvRows[0]) box.dataset.initSrv = srvRows[0].dataset.srv;
       labelNextBtn();
@@ -582,9 +601,31 @@
     }
 
     // ── for everyone else: what this show has for premium members ──
+    var LOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+    // premium links the page wasn't built with (added in the panel since the last build): their locked row and card now
+    function lockedRows(servers, downloads) {
+      if (servers && !document.querySelector('.srv-row.is-locked') && !document.querySelector('.srv-row.is-prem')) {
+        addServers(['https://arab-wrestling.com/premium/'], true);
+        var r = document.querySelector('.srv-row.is-prem');
+        if (r) {
+          r.classList.add('is-locked'); delete r.dataset.srv; r.dataset.mq = '';
+          r.querySelector('.srv-state').outerHTML = '<span class="srv-state srv-locked">' + LOCK + '<span>للمشتركين</span></span>';
+          srvRows = Array.from(document.querySelectorAll('.srv-row:not(.is-locked)'));
+          if (srvRows[0] && !currentActiveServerSrc) markServer(srvRows[0]);
+        }
+      }
+      if (downloads && !document.querySelector('#downloads .quality-btn.is-prem')) {
+        var grid = document.querySelector('#downloads .quality-grid');
+        if (!grid) return;
+        var a = el('a', 'quality-btn is-prem is-locked', '<span class="q-lock">' + LOCK + '</span><span class="quality-icon">' + CROWN + '</span><span class="quality-label">تحميل مميز</span><span class="quality-sub">مباشر وسريع</span>');
+        a.href = HOME + '/premium/#subscribe'; a.setAttribute('data-tier', 'prem');
+        grid.insertBefore(a, grid.firstChild);
+      }
+    }
     function promo(servers, downloads) {
       var built = document.getElementById('wdPrem');
       if (!servers && !downloads) { if (built) built.remove(); return; }
+      lockedRows(servers, downloads);
       var what = servers && downloads ? 'إضافة للأعضاء المميزين: سيرفر خاص متعدد الجودات وتحميل مباشر سريع' : servers ? 'إضافة للأعضاء المميزين: سيرفر خاص متعدد الجودات بدون إعلانات' : 'إضافة للأعضاء المميزين: تحميل مباشر وسريع بدون إعلانات';
       // the page came with it (built from the worker's counts): only its words may have changed since
       if (built) { built.querySelector('b').textContent = what; built.hidden = false; return; }
@@ -667,12 +708,15 @@
       } catch (e) {}
     }
     function dropPrem() {
-      document.querySelectorAll('.srv-row.is-prem, #downloads .quality-btn.is-prem, #dlModalPrem').forEach(function(x){ x.remove(); });
-      srvRows = Array.from(document.querySelectorAll('.srv-row'));
+      document.querySelectorAll('.srv-row.is-prem:not(.is-locked), #downloads .quality-btn.is-prem:not(.is-locked), #dlModalPrem').forEach(function(x){ x.remove(); });
+      srvRows = Array.from(document.querySelectorAll('.srv-row:not(.is-locked)'));
     }
     function showPrem(links) {
       var b = document.getElementById('wdPrem');
       if (b) b.remove();
+      // the locked rows the page was built with give way to the member's own
+      pmLock(false);
+      document.querySelectorAll('.srv-row.is-locked, #downloads .quality-btn.is-locked, #wdPmLock, #dlModalLocked').forEach(function(x){ x.remove(); });
       addServers(links.servers, true); addDownloads(links.downloads, true);
     }
     function extras() {
