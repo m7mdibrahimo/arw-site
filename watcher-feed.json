@@ -1,5 +1,15 @@
 [
   {
+    "id": 338140,
+    "link": "https://www.fightful.com/wrestling/wwe-nxt-live-results-11-6/",
+    "date": "2026-11-08T20:24:32",
+    "date_gmt": "2026-11-09T01:24:32",
+    "title": {
+      "rendered": "WWE NXT Live Results (11/6)"
+    },
+    "featured_image": "https://www.fightful.com/wp-content/uploads/2025/09/nxt-2024.jpg"
+  },
+  {
     "id": 338137,
     "link": "https://www.fightful.com/wrestling/rosemary-working-backstage-at-tna-while-sidelined/",
     "date": "2026-11-08T19:49:35",
@@ -288,15 +298,5 @@
       "rendered": "Kazuchika Okada Defending AEW International Title Against Adam Copeland At AEW Full Gear"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/07220433/HWkhKhhXgAEH-qW.jpg"
-  },
-  {
-    "id": 338042,
-    "link": "https://www.fightful.com/wrestling/court-bauer-teases-special-project-with-njpw-and-cmll-in-2027/",
-    "date": "2026-11-07T22:00:12",
-    "date_gmt": "2026-11-08T03:00:12",
-    "title": {
-      "rendered": "Court Bauer Teases &#8216;Special Project&#8217; With NJPW And CMLL In 2027"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/07215950/HWkhKyBXwAAxEDi.jpeg"
   }
 ]
