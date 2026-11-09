@@ -1886,6 +1886,9 @@ module.exports = function(eleventyConfig) {
   });
 
   // The things an English headline names besides its people («Boy Meets World»), for the page's structured data only
+  eleventyConfig.addNunjucksGlobal("leadPerson", function(headline, mentions) {
+    return require("./lib/wrestler-mentions.cjs").leadPerson(headline, mentions);
+  });
   eleventyConfig.addNunjucksGlobal("englishTopics", function(headline, tags) {
     return require("./lib/wrestler-mentions.cjs").englishTopics(headline, tags);
   });

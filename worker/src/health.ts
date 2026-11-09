@@ -45,6 +45,17 @@ export function deployLag(buildCommitTimeSec: number, mainHeadMs: number, maxMs 
   return lag > maxMs ? lag : 0;
 }
 
+/** When the «site» branch already points at a newer main commit than the live build, the visible change was handed to
+ *  Cloudflare only when that «site» commit was made: the wait counts from there, not from the live build's (often much
+ *  older) commit. A news story pushed 46 minutes after a run of bookkeeping-only commits was called «stuck» one minute
+ *  after it went to Cloudflare (INCIDENTS #1158). Returns null when «site» is still on the live commit (old rule applies). */
+export function siteHandoffLag(buildCommit: string, siteMessage: string, siteAtMs: number, nowMs: number, maxMs = 40 * 60_000): number | null {
+  const of = /site-of: ([0-9a-f]{40})/.exec(String(siteMessage || ""))?.[1];
+  if (!of || !buildCommit || !siteAtMs || of === buildCommit) return null;
+  const lag = nowMs - siteAtMs;
+  return lag > maxMs ? lag : 0;
+}
+
 /** Files whose change makes no visible difference on the site (same list as .github/workflows/site-branch.yml, which skips the rebuild for them). */
 const INVISIBLE = /^(_data\/publish-state\.json|_data\/deliveries\/.*|worker\/.*|media-worker\/.*|seo\/.*|reports\/.*|editorial\/.*|content\/images\/.*|dist\/videos\/.*|watcher-state\.json|watcher-outcomes\.json|watcher-feed(-[a-z]+)?\.json|ringsidenews-state\.json|wrestlinginc-state\.json|live-results-state\.json|_data\/duplicate-skips\.json|\.github\/.*)$/;
 /** True when every changed file is bookkeeping, so the live site being "behind" main is expected (INCIDENTS #379). */
@@ -181,6 +192,13 @@ export async function runSiteHealthCheck(env: HealthEnv, minute: number, keyOf: 
           headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json", "User-Agent": "arw-site-bot" },
         }).then(r => (r.ok ? r.json() : null)).catch(() => null);
         if (onlyBookkeeping(cmp?.files)) lag = 0;
+      }
+      if (lag && build?.commit) {
+        const site: any = await fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/commits/site`, {
+          headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json", "User-Agent": "arw-site-bot" },
+        }).then(r => (r.ok ? r.json() : null)).catch(() => null);
+        const handoff = siteHandoffLag(String(build.commit), String(site?.commit?.message || ""), Date.parse(site?.commit?.committer?.date || ""), now);
+        if (handoff !== null) lag = handoff;
       }
       problems = mergeProblems(problems, lag ? [{ key: "deploy", code: "deploy_stale", title: "الموقع واقف على نسخة قديمة — بناء Cloudflare بيفشل أو متعطل", detail: `آخر نسخة ظاهرة أقدم من آخر تعديل بـ ${Math.round(lag / 60000)} دقيقة` }] : [], ["deploy_stale"], now);
       const lastAt = newest ? Date.parse(newest.published_at || newest.date) || 0 : 0;

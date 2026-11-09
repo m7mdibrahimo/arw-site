@@ -2320,7 +2320,7 @@ test('a card set more than a week out names the day instead of «القادم» 
 });
 
 test('the site watchdog checks pages, bots and platforms every minute and keeps a problem open until it is fixed (INCIDENTS #158)', async t => {
-  const { failedWorkflows, stuckOnSocial, mergeProblems, runSiteHealthCheck, siteHealth, deployLag, onlyBookkeeping } = await import('../worker/src/health');
+  const { failedWorkflows, stuckOnSocial, mergeProblems, runSiteHealthCheck, siteHealth, deployLag, onlyBookkeeping, siteHandoffLag } = await import('../worker/src/health');
   assert.equal(onlyBookkeeping([{ filename: 'watcher-state.json' }, { filename: 'seo/new-shows.json' }]), true, 'bookkeeping-only changes are not a stale deploy');
   assert.equal(onlyBookkeeping([{ filename: 'watcher-state.json' }, { filename: 'content/news/x.md' }]), false);
   assert.equal(onlyBookkeeping([]), false);
@@ -2328,6 +2328,11 @@ test('the site watchdog checks pages, bots and platforms every minute and keeps 
   assert.equal(deployLag(nowMs / 1000 - 3600, nowMs) > 0, true, 'a live build an hour behind main is a problem');
   assert.equal(deployLag(nowMs / 1000 - 600, nowMs), 0);
   assert.equal(deployLag(0, nowMs), 0);
+  // INCIDENTS #1158: «site» moved to a newer main a minute ago — Cloudflare is building it, not stuck
+  const live = 'a'.repeat(40), newer = 'b'.repeat(40);
+  assert.equal(siteHandoffLag(live, `feat(news): x\n\nsite-of: ${newer} 1`, nowMs - 60_000, nowMs), 0, 'a build handed over a minute ago is not stale');
+  assert.equal(siteHandoffLag(live, `x\n\nsite-of: ${newer} 1`, nowMs - 3600_000, nowMs) > 0, true, 'handed over an hour ago and still not live is stale');
+  assert.equal(siteHandoffLag(live, `x\n\nsite-of: ${live} 1`, nowMs - 3600_000, nowMs), null, '«site» on the live commit: the old rule decides');
   const now = Date.parse('2026-09-30T12:00:00Z');
   // latest finished run per workflow decides
   assert.deepEqual(failedWorkflows([
