@@ -17844,16 +17844,16 @@
     "renderedAt": 1794237530394
   },
   {
-    "videoUrl": "/videos/reel-20261109184853-cmll-viernes-espectacular-06-1.mp4",
-    "filename": "reel-20261109184853-cmll-viernes-espectacular-06-1.mp4",
-    "title": "عرض سي ام ال ال فيرنس اسبكتكيولار 06.11.2026 مترجم",
-    "secondaryTitle": "CMLL Viernes Espectacular 06.11.2026",
-    "description": "عرض سي ام ال ال فيرنس اسبكتكيولار مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261109184853-cmll-viernes-espectacular-06-1",
+    "videoUrl": "/videos/reel-20261109063825-gcw-dead-on-arrival-2026.mp4",
+    "filename": "reel-20261109063825-gcw-dead-on-arrival-2026.mp4",
+    "title": "عرض جي سي دبليو ديد اون ارايفال 06.11.2026",
+    "secondaryTitle": "GCW Dead On Arrival (2026)",
+    "description": "عرض جي سي دبليو ديد اون ارايفال بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261109063825-gcw-dead-on-arrival-2026",
     "kind": "show",
-    "slug": "20261109184853-cmll-viernes-espectacular-06-1",
-    "image": "/content/images/ythuzx2plghslnt2.jpg",
-    "renderedAt": 1794243182909
+    "slug": "20261109063825-gcw-dead-on-arrival-2026",
+    "image": "/content/images/qfd3qw458hve06i6.jpg",
+    "renderedAt": 1794243830780
   },
   {
     "videoUrl": "/videos/reel-20261004114737-mlw-fusion-03-10-2026.mp4",
@@ -17865,7 +17865,7 @@
     "kind": "show",
     "slug": "20261004114737-mlw-fusion-03-10-2026",
     "image": "/content/images/f7ca6qfbsdt20s5h.jpg",
-    "renderedAt": 1794243286934
+    "renderedAt": 1794243924093
   },
   {
     "videoUrl": "/videos/reel-20261030150220-tna-impact-29-10-2026.mp4",
@@ -17877,7 +17877,7 @@
     "kind": "show",
     "slug": "20261030150220-tna-impact-29-10-2026",
     "image": "/content/images/973uon358tk121y6.jpg",
-    "renderedAt": 1794243388611
+    "renderedAt": 1794244015738
   },
   {
     "videoUrl": "/videos/reel-20261031053901-njpw-super-junior-tag-league-d.mp4",
@@ -17889,7 +17889,7 @@
     "kind": "show",
     "slug": "20261031053901-njpw-super-junior-tag-league-d",
     "image": "/content/images/tqhf7faocgm01ehz.jpg",
-    "renderedAt": 1794243487985
+    "renderedAt": 1794244104761
   },
   {
     "videoUrl": "/videos/reel-20261106140429-tna-impact-05-11-2026.mp4",
@@ -17901,6 +17901,30 @@
     "kind": "show",
     "slug": "20261106140429-tna-impact-05-11-2026",
     "image": "/content/images/pjmyzwicsbf8dnij.jpg",
-    "renderedAt": 1794243588940
+    "renderedAt": 1794244194515
+  },
+  {
+    "videoUrl": "/videos/reel-20261109184853-cmll-viernes-espectacular-06-1.mp4",
+    "filename": "reel-20261109184853-cmll-viernes-espectacular-06-1.mp4",
+    "title": "عرض سي ام ال ال فيرنس اسبكتكيولار 06.11.2026 مترجم",
+    "secondaryTitle": "CMLL Viernes Espectacular 06.11.2026",
+    "description": "عرض سي ام ال ال فيرنس اسبكتكيولار مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261109184853-cmll-viernes-espectacular-06-1",
+    "kind": "show",
+    "slug": "20261109184853-cmll-viernes-espectacular-06-1",
+    "image": "/content/images/ythuzx2plghslnt2.jpg",
+    "renderedAt": 1794244286076
+  },
+  {
+    "videoUrl": "/videos/reel-20261109185058-cmll-sabados-de-coliseo-07-11-.mp4",
+    "filename": "reel-20261109185058-cmll-sabados-de-coliseo-07-11-.mp4",
+    "title": "عرض سي ام ال ال سابادوس دي كوليسيو 07.11.2026 مترجم",
+    "secondaryTitle": "CMLL Sabados De Coliseo 07.11.2026",
+    "description": "عرض سي ام ال ال سابادوس دي كوليسيو مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261109185058-cmll-sabados-de-coliseo-07-11-",
+    "kind": "show",
+    "slug": "20261109185058-cmll-sabados-de-coliseo-07-11-",
+    "image": "/content/images/dmb598pv5k2c0idt.jpg",
+    "renderedAt": 1794244376624
   }
 ]
