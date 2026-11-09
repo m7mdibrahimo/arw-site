@@ -1,7 +1,7 @@
 ---
 show_type: عرض
 federation: INDIE
-title: GCW The Last Frontier The Sequel 03.10.2026
+title: GCW The Last Frontier The Sequel (2026)
 headline: عرض جي سي دبليو ذا لاست فرونتير ذا سيكويل 03.10.2026 مترجم
 program_name: GCW
 is_annual: true
