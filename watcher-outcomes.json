@@ -1,33 +1,33 @@
 {
+ "https://www.fightful.com/wrestling/mlw-fusion-spoilers-taped-on-11-8": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-09T20:02:08.136Z"
+ },
  "https://www.fightful.com/wrestling/beyond-wrestling-announces-wrestival-schedule": {
   "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
   "retry": true,
-  "at": "2026-11-09T19:59:39.485Z"
+  "at": "2026-11-09T20:02:07.808Z"
  },
  "https://www.fightful.com/wrestling/john-cena-shares-how-he-used-to-be-a-big-gift-giver-at-christmas-while-working-with-wwe-to-buy-through-his-workaholism": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T19:59:22.318Z"
+  "at": "2026-11-09T20:01:52.911Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-9": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T19:59:21.375Z"
+  "at": "2026-11-09T20:01:51.934Z"
  },
  "https://www.fightful.com/mma/donald-trump-says-he-was-only-kidding-about-offering-dana-white-the-press-secretary-job": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T19:59:20.574Z"
+  "at": "2026-11-09T20:01:51.137Z"
  },
  "https://www.fightful.com/wrestling/rosemary-working-backstage-at-tna-while-sidelined": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T19:59:20.230Z"
- },
- "https://www.fightful.com/wrestling/mlw-fusion-spoilers-taped-on-11-8": {
-  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
-  "retry": true,
-  "at": "2026-11-09T19:57:30.004Z"
+  "at": "2026-11-09T20:01:50.791Z"
  },
  "https://www.ringsidenews.com/steve-austin-says-bret-hart-set-standard-realism-professional-wrestling": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
