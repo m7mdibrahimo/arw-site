@@ -276,3 +276,15 @@ test("a yearly show also answers the category queries in the feminine spelling",
   const forms = showNameForms({ headline: "عرض ان اكس تي هالوين هافوك 2026 مترجم 31.10.2026", title: "WWE NXT Halloween Havoc (2026)", programName: "WWE NXT Halloween Havoc", eventDate: "2026-10-31", aliases: ["عرض ان اكس تي هالوين هافوك"], isShow: true });
   for (const q of ["عروض المصارعة الحرة مترجمة", "مشاهدة عروض المصارعة مترجمة"]) assert.ok(forms.includes(q), q);
 });
+
+// INCIDENTS #1151: the studio's generic line without «مترجم» («عرض … بالكامل مع جميع النزالات والأحداث.») stayed as the
+// Google description of GCW Dead On Arrival — no English name, no date, no «مترجم».
+test("a generic description without «مترجم» is replaced too", () => {
+  const r = showSeoText({ headline: "عرض جي سي دبليو ديد اون ارايفال 06.11.2026", title: "GCW Dead On Arrival (2026)", programName: "GCW", eventDate: "2026-11-06", day: "6 نوفمبر 2026", isLatest: false, description: "عرض جي سي دبليو ديد اون ارايفال بالكامل مع جميع النزالات والأحداث." });
+  assert.match(r.description, /GCW Dead On Arrival November 6, 2026/);
+  assert.match(r.description, /مترجم/);
+  assert.match(r.description, /06\.11\.2026/);
+  // a hand-written description stays as it is
+  const own = "وصف كتبه المالك بنفسه عن العرض.";
+  assert.equal(showSeoText({ headline: "عرض جي سي دبليو ديد اون ارايفال 06.11.2026", title: "GCW Dead On Arrival (2026)", programName: "GCW", eventDate: "2026-11-06", day: "6 نوفمبر 2026", isLatest: false, description: own }).description, own);
+});

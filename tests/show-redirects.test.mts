@@ -72,3 +72,27 @@ test('a nostalgia page whose year was corrected redirects from the old address',
     ['/nostalgia/aew-dynamite-11-08-2019/', '/nostalgia/aew-dynamite-11-08-2021/'],
   ]);
 });
+
+// INCIDENTS #1152: «GCW The Score 26.09.2026» renamed «GCW The Score (2026)» in the panel — the old dated address 404'd,
+// because neither the file name (…-gcw-the-score-2026.md) nor the new address had «26-09». The event date now counts.
+test('a show renamed to its year redirects from its old dated address', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'show-redir-date-'));
+  const site = path.join(dir, '_site');
+  const content = path.join(dir, 'content');
+  fs.mkdirSync(path.join(content, 'shows'), { recursive: true });
+  fs.writeFileSync(path.join(content, 'shows', '20260927170600-gcw-the-score-2026.md'), '---\ntitle: GCW The Score (2026)\nevent_date: 2026-09-26\n---\n');
+  fs.writeFileSync(path.join(content, 'shows', '20260927052200-gcw-rock-bottom-2026.md'), '---\ntitle: GCW Rock Bottom (2026)\nevent_date: 2026-09-25\n---\n');
+  for (const p of ['shows/gcw-the-score-2026', 'shows/gcw-rock-bottom-2026']) { fs.mkdirSync(path.join(site, p), { recursive: true }); fs.writeFileSync(path.join(site, p, 'index.html'), '<html></html>'); }
+  const seo = path.join(dir, 'new-shows.json');
+  fs.writeFileSync(seo, JSON.stringify({ pages: {
+    'https://arab-wrestling.com/shows/gcw-the-score-26-09-2026/': {},
+    'https://arab-wrestling.com/shows/gcw-rock-bottom-25-09-2026/': {},
+    'https://arab-wrestling.com/shows/gcw-rock-bottom-26-09-2026/': {},
+  } }));
+  const redirects = path.join(dir, '_redirects');
+  fs.writeFileSync(redirects, '');
+  assert.deepEqual(vanishedShowRedirects(site, seo, redirects, content), [
+    ['/shows/gcw-the-score-26-09-2026/', '/shows/gcw-the-score-2026/'],
+    ['/shows/gcw-rock-bottom-25-09-2026/', '/shows/gcw-rock-bottom-2026/'],
+  ]);
+});
