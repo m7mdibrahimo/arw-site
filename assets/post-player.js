@@ -82,10 +82,14 @@
     url = url.replace(/^https?:\/\/(dood(?:stream)?\.[a-z]+)\/d\/([a-zA-Z0-9_-]+)/i, 'https://$1/e/$2');
     url = url.replace(/^https?:\/\/(?:[a-zA-Z0-9-]+\.)*(vidmoly\.[a-z]+)\/(?!embed-)(?:w\/)?([a-zA-Z0-9_-]+)(?:\.html)?(?:[\/?].*)?$/i, 'https://$1/embed-$2.html');
     url = url.replace(/^https?:\/\/(?:streamwish\.[a-z]+|swish\.[a-z]+|wishfast\.[a-z]+|awish\.[a-z]+|mwish\.[a-z]+|sfastwish\.[a-z]+)\/(?:[fe]\/)?([a-zA-Z0-9_-]+)/i, 'https://streamwish.to/e/$1');
-    url = url.replace(/^https?:\/\/(?:[a-zA-Z0-9-]+\.)*(?:hgcloud|streamhg|shgcloud|hgplayer|hgstream)\.[a-zA-Z0-9-]+\/(?:[dfe]\/)?([a-zA-Z0-9_-]+)(?:[\/?].*)?$/i, 'https://hgcloud.to/e/$1');
+    url = url.replace(/^https?:\/\/(?:[a-zA-Z0-9-]+\.)*(?:hgcloud|streamhg|shgcloud|hgplayer|hgstream|hanerix)\.[a-zA-Z0-9-]+\/(?:[dfe]\/)?([a-zA-Z0-9_-]+)(?:[\/?].*)?$/i, 'https://hgcloud.to/e/$1');
     url = url.replace(/^https?:\/\/(?:filelions\.[a-z]+|lion\.[a-z]+)\/(?:[vf]\/)?([a-zA-Z0-9_-]+)/i, 'https://filelions.to/v/$1');
     url = url.replace(/^https?:\/\/([a-z0-9.-]*fe(?:mbed|url)[a-z0-9.-]*)\/[vf]\/([a-zA-Z0-9_-]+)/i, 'https://$1/embed/$2');
-    url = url.replace(/^https?:\/\/pixeldrain\.com\/u\/([a-zA-Z0-9_-]+)(?:\?.*)?$/i, 'https://pixeldrain.com/api/file/$1');
+    // Send.now, VikingFile, PixelDrain, GoFile share links (owner 2026-11-09; what each host allows: lib/embed.cjs)
+    url = url.replace(/^https?:\/\/(?:www\.)?send\.(?:now|cm)\/(?:embed-)?([a-z0-9]{12})(?:[\/.?#].*)?$/i, function(m, id) { return 'https://send.now/embed-' + id.toLowerCase() + '.html'; });
+    url = url.replace(/^https?:\/\/(?:www\.)?vik[i1]ngf[i1]le\.[a-z0-9-]+(?:\.[a-z0-9-]+)*\/(?:f|e|d|embed)\/([a-zA-Z0-9_-]+)(?:[\/?#].*)?$/i, 'https://vikingfile.com/f/$1');
+    url = url.replace(/^https?:\/\/(?:www\.)?pixeldrain\.(?:com|net)\/(?:u|api\/file)\/([a-zA-Z0-9_-]+)\/?(?:[?#].*)?$/i, 'https://pixeldrain.com/api/file/$1');
+    url = url.replace(/^https?:\/\/(?:www\.)?gofile\.io\/d\/([a-zA-Z0-9_-]+)\/?(?:[?#].*)?$/i, 'https://gofile.io/d/$1');
     url = url.replace(/^https?:\/\/(?:cdn\.)?loadvid\.com\/(?:v|watch)\/([a-zA-Z0-9_-]+)/i, 'https://cdn.loadvid.com/videos/play/$1');
     url = url.replace(/^https?:\/\/turbovidhls\.com\/(?:v\/)?([a-zA-Z0-9_-]+)$/i, 'https://turbovidhls.com/t/$1');
     url = url.replace(/^https?:\/\/voe\.sx\/(?!e\/)([a-zA-Z0-9_-]+)$/i, 'https://voe.sx/e/$1');
@@ -95,6 +99,21 @@
     url = url.replace(/^https?:\/\/dai\.ly\/([a-zA-Z0-9_-]+)/i, 'https://www.dailymotion.com/embed/video/$1');
     url = url.replace(/^https?:\/\/(?:www\.)?vimeo\.com\/(\d+).*/i, 'https://player.vimeo.com/video/$1');
     return url;
+  }
+  // lib/embed.cjs playerKind / hostPage: «video» plays the file in the page's <video>, «page» can only open on the host
+  function playerKind(u) {
+    u = String(u || '');
+    if (/^https:\/\/gofile\.io\/d\//i.test(u)) return 'page';
+    if (/^https:\/\/pixeldrain\.com\/api\/file\/[a-zA-Z0-9_-]+\/?(?:[?#]|$)/i.test(u) || /^https?:\/\/[a-z0-9-]+\.gofile\.io\/download\//i.test(u) || /\.(?:mp4|webm)(?:\?|$)/i.test(u)) return 'video';
+    return 'iframe';
+  }
+  function hostPage(u) {
+    u = String(u || '');
+    var m = u.match(/^https:\/\/pixeldrain\.com\/api\/file\/([a-zA-Z0-9_-]+)/i);
+    if (m) return { name: 'PixelDrain', href: 'https://pixeldrain.com/u/' + m[1] };
+    m = u.match(/^https:\/\/gofile\.io\/d\/([a-zA-Z0-9_-]+)/i);
+    if (m) return { name: 'GoFile', href: 'https://gofile.io/d/' + m[1] };
+    return null;
   }
 
   var currentActiveServerSrc = '';
@@ -126,6 +145,33 @@
     }
   }
 
+  // A server whose host won't play its video inside another site (GoFile's pages, PixelDrain without Pro): a panel over
+  // the player with the host's own page, opened in a new tab, and the next server. null takes it away.
+  var EXT_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg>';
+  function showHostPage(box, page) {
+    var old = document.getElementById('wdExt');
+    if (old) old.remove();
+    if (watchDeck) watchDeck.classList.toggle('is-ext', !!page);
+    if (!page || !box) return;
+    var pane = document.createElement('div');
+    pane.className = 'wd-pm wd-ext';
+    pane.id = 'wdExt';
+    var tag = document.createElement('span'); tag.className = 'wd-lock-tag'; tag.innerHTML = EXT_ICON; tag.appendChild(document.createTextNode(page.name));
+    var t = document.createElement('b'); t.className = 'wd-lock-t'; t.textContent = 'يُشاهَد هذا السيرفر على موقع ' + page.name;
+    var sub = document.createElement('span'); sub.className = 'wd-lock-s'; sub.textContent = 'لا يتيح ' + page.name + ' تشغيل هذا الفيديو داخل المواقع الأخرى، فشاهده على صفحته في نافذة جديدة.';
+    var acts = document.createElement('span'); acts.className = 'wd-lock-acts';
+    var a = document.createElement('a'); a.className = 'wd-lock-btn'; a.href = page.href; a.target = '_blank'; a.rel = 'noopener noreferrer nofollow';
+    a.innerHTML = EXT_ICON; var at = document.createElement('span'); at.textContent = 'شاهد على ' + page.name; a.appendChild(at);
+    acts.appendChild(a);
+    pane.appendChild(tag); pane.appendChild(t); pane.appendChild(sub); pane.appendChild(acts);
+    if (srvRows.length > 1) {
+      var next = document.createElement('button'); next.type = 'button'; next.className = 'wd-pm-back'; next.textContent = 'أو جرّب سيرفرًا آخر';
+      next.addEventListener('click', function(){ switchToNextServer(); });
+      pane.appendChild(next);
+    }
+    box.appendChild(pane);
+  }
+
   // Every mount gets a number: a late load event from the previous server must not hide the new loader.
   var mountSeq = 0;
   function mountVideo(box, rawSrc, serverLabel) {
@@ -137,7 +183,18 @@
     var mountedAt = Date.now();
     currentActiveServerSrc = rawSrc;
     var src = toEmbedUrl(rawSrc);
-    var isDirect = src.includes('pixeldrain.com/api/file/') || /\.mp4(\?|$)/i.test(src) || /\.webm(\?|$)/i.test(src);
+    var kind = playerKind(src);
+    var isDirect = kind === 'video';
+    var page = hostPage(src);
+    showHostPage(box, null);
+    if (kind === 'page') {
+      var oldFrame = box.querySelector('#videoFrame'), oldVideo = box.querySelector('#videoPlayer');
+      if (oldFrame) oldFrame.remove();
+      if (oldVideo) { try { oldVideo.pause(); oldVideo.removeAttribute('src'); oldVideo.load(); } catch(e){} oldVideo.remove(); }
+      setLoader(false);
+      showHostPage(box, page);
+      return;
+    }
 
     setLoader(true, 'جاري الاتصال بـ ' + (serverLabel || 'السيرفر') + ' وتشغيل الفيديو...');
 
@@ -173,6 +230,8 @@
       v.addEventListener('canplay', function(){ if (seq === mountSeq) setLoader(false); });
       v.addEventListener('error', function(){
         if (seq !== mountSeq) return;
+        // PixelDrain plays a file on other sites only for its Pro accounts: the rest open on its own page
+        if (page) { setLoader(false); v.remove(); showHostPage(box, page); return; }
         if (loaderStatus) loaderStatus.textContent = 'هذا السيرفر لا يعمل حاليا، جرب سيرفرا آخر';
         if (loaderFallback) loaderFallback.style.display = 'flex';
       });
@@ -262,6 +321,7 @@
     var pane = document.getElementById('wdPmLock'), deck = document.getElementById('watchDeck');
     if (on && !pane) { location.href = (document.documentElement.lang === 'en' ? '/en' : '') + '/premium/#subscribe'; return; }
     if (!pane) return;
+    if (on) showHostPage(null, null);
     pane.hidden = !on;
     if (deck) deck.classList.toggle('is-pmlock', !!on);
     document.querySelectorAll('.srv-row.is-locked').forEach(function(b){ b.classList.toggle('active', !!on && b === btn); b.setAttribute('aria-selected', on && b === btn ? 'true' : 'false'); });

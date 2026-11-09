@@ -9,6 +9,9 @@ import {
 import { prepareImage, prepareImageFromUrl, kb } from '../image.js';
 import { html, raw, mount, $, $$, icon, toast, dialog, timeAgo, fmtDate, esc, can, sectionOf } from '../ui.js';
 import { marked } from '../../vendor/marked.esm.js';
+import embedLib from '../../../lib/embed.cjs';
+// A pasted Send.now / VikingFile / PixelDrain / GoFile share link is saved as its player link (owner 2026-11-09)
+const { fileHostEmbed } = embedLib;
 
 let S = null; // the open editor's state
 const localPreviews = {}; // image path → preview of a just-uploaded cover (the site shows it after the next build)
@@ -670,7 +673,9 @@ function bindPremium() {
 function bindServers() {
   const box = $('#servers'); if (!box) return;
   const redraw = () => { mount(box, html`${(S.data.servers || []).map((s, i) => serverRow(s.url, i))}`); const l = $('#sec-watch .list-head em'); if (l) l.textContent = `${(S.data.servers || []).length} سيرفر`; markDirty(); };
-  box.oninput = (e) => { const i = e.target.dataset.srv; if (i == null) return; S.data.servers[i] = { url: e.target.value.trim() }; e.target.previousElementSibling.textContent = hostName(e.target.value); markDirty(); };
+  box.oninput = (e) => { const i = e.target.dataset.srv; if (i == null) return; S.data.servers[i] = { url: e.target.value.trim() }; e.target.previousElementSibling.textContent = hostName(fileHostEmbed(e.target.value)); markDirty(); };
+  // a link typed or changed in its own row is cleaned when the row is left
+  box.onchange = (e) => { const i = e.target.dataset.srv; if (i == null) return; const u = fileHostEmbed(e.target.value); if (u !== e.target.value.trim()) { e.target.value = u; S.data.servers[i] = { url: u }; markDirty(); } };
   box.onclick = (e) => {
     const b = e.target.closest('button'); if (!b) return;
     const list = S.data.servers || [];
@@ -684,7 +689,7 @@ function bindServers() {
   if (!paste) return;
   // Added on paste, Enter or leaving the box — never while a link is still being typed
   const take = () => {
-    const urls = extractUrls(paste.value);
+    const urls = extractUrls(paste.value).map(fileHostEmbed);
     if (!urls.length) return;
     const have = new Set((S.data.servers || []).map(s => s.url));
     const added = urls.filter(u => !have.has(u));
@@ -892,7 +897,7 @@ async function save({ thenNew = false, force = false } = {}) {
   if (S.template && S.data.tags) S.data.tags = dropStaleTemplateTags(S.data.tags, S.template, S.data);
   const slug = S.slug || newFileSlug(S.collection, S.data);
   // Servers: drop empty rows
-  if (Array.isArray(S.data.servers)) S.data.servers = S.data.servers.filter(s => s && s.url);
+  if (Array.isArray(S.data.servers)) S.data.servers = S.data.servers.filter(s => s && s.url).map(s => ({ ...s, url: fileHostEmbed(s.url) }));
   const text = serializeFile(S.collection, S.data, S.body, S.keys, S.gap, S.eol);
   try {
     const r = await content.save({ collection: S.collection, slug, content: text, sha: S.sha, create, images: S.images.map(i => ({ path: i.path, base64: i.base64 })), force });
@@ -901,7 +906,7 @@ async function save({ thenNew = false, force = false } = {}) {
     S.images = [];
     S.dirty = false;
     if (S.premium && S.premium.dirty) {
-      try { await api.premiumMediaSave(premiumKey(slug), premLines(S.premium.servers), premLines(S.premium.downloads)); S.premium.dirty = false; }
+      try { await api.premiumMediaSave(premiumKey(slug), premLines(S.premium.servers).map(fileHostEmbed), premLines(S.premium.downloads)); S.premium.dirty = false; }
       catch (e) { toast(`العرض اتحفظ، بس روابط المميزين لأ: ${e.message}`, 'error', 7000); }
     }
     addPending({ collection: S.collection, slug, title: S.data.headline || S.data.title, image: S.data.image, federation: S.data.federation });

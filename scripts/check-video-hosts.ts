@@ -7,7 +7,7 @@
 //   npx tsx scripts/check-video-hosts.ts
 import fs from "fs";
 import path from "path";
-const { toEmbedUrl, hostOf } = require("../lib/embed.cjs");
+const { toEmbedUrl, hostOf, playerKind } = require("../lib/embed.cjs");
 
 const OUT = path.join(process.cwd(), "_data", "videoHosts.json");
 const DIRS = ["content/shows", "content/recaps", "content/nostalgia"];
@@ -24,7 +24,8 @@ export function samplePerHost(root = process.cwd()): Map<string, string[]> {
       for (const m of text.matchAll(/^\s*-\s*url:\s*(\S+)/gm)) {
         const embed = toEmbedUrl(m[1]);
         const host = hostOf(embed);
-        if (!host) continue;
+        // a GoFile page is never put in a frame (the player links to it), so its X-Frame-Options says nothing here
+        if (!host || playerKind(embed) === "page") continue;
         const list = out.get(host) || [];
         if (list.length < 2) list.push(embed);
         out.set(host, list);

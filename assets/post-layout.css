@@ -276,6 +276,11 @@
   .wd-pm[hidden]{ display:none; }
   .wd-pm-back{ background:none; border:0; padding:4px 8px; color:rgba(255,255,255,.78); font:700 13px 'Cairo',sans-serif; cursor:pointer; }
   .wd-pm-back:hover{ color:#fff; text-decoration:underline; text-underline-offset:3px; }
+  /* a server whose host plays only on its own page (GoFile, PixelDrain without Pro, lib/embed.cjs hostPage): the
+     «شاهد على …» panel over the player, the premium panel's shape in the site's teal */
+  .wd-ext{ background:radial-gradient(120% 90% at 50% 0%, rgba(28,181,179,.24), transparent 60%), linear-gradient(180deg, rgba(13,16,21,.84), rgba(13,16,21,.96)); }
+  .wd-ext .wd-lock-tag{ background:rgba(28,181,179,.18); color:#7fe3e1; border:1px solid rgba(28,181,179,.45); direction:ltr; }
+  .wd-ext .wd-lock-btn{ background:linear-gradient(135deg, #22c3c1, #0e9594); color:#fff; box-shadow:0 12px 26px -10px rgba(14,149,148,.85); }
   .dl-pm-body{ align-items:center; text-align:center; gap:12px; padding:22px 18px 24px; }
   .dl-pm-ic{ width:56px; height:56px; border-radius:18px; display:grid; place-items:center; background:linear-gradient(135deg, #ffd25a, #e09a12); color:#3b2600; box-shadow:0 12px 24px -8px rgba(224,154,18,.7); }
   .dl-pm-ic svg{ width:28px; height:28px; }
@@ -319,6 +324,7 @@
   @container (max-width:600px){
     /* the subscribe panel is taller than the 16:9 box on a phone: the box grows to it */
     .watch-deck.is-pmlock .video-embed{ aspect-ratio:auto; min-height:56.25cqw; }
+    .watch-deck.is-ext .video-embed{ aspect-ratio:auto; min-height:56.25cqw; }
     .wd-pm{ position:relative; inset:auto; width:100%; min-height:inherit; padding:22px 14px; }
     .srv-row.is-prem .srv-name b{ font-size:12.5px; }
     .wd-prem{ margin-top:10px; padding:10px 12px; gap:10px; }
