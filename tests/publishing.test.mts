@@ -4628,7 +4628,7 @@ test("the BroadcastEvent of a show episode carries the episode's name forms (rou
 
 test('program library description carries «<اسم> <السنة> مترجم» (INCIDENTS #447)', () => {
   const page = fs.readFileSync('pages/library-program.njk', 'utf-8');
-  assert.match(page, /pageDesc: "[^"]*arName \}\} \{\{ lp\.prog\.latest\.eventDate \| yearOf \}\} مترجم/);
+  assert.match(page, /pageDesc: "[^"]*arName\)? \}\} \{\{ lp\.prog\.latest\.eventDate \| yearOf \}\} مترجم/);
   assert.match(fs.readFileSync('eleventy.config.js', 'utf-8'), /addFilter\("yearOf"/);
 });
 
@@ -5330,8 +5330,8 @@ test('show description carries the full English name even when the title has a s
 // Library pages ranked 8–12 for «تحميل/مشاهدة عرض الرو الاخير مترجم»: the CollectionPage carries those phrasings as actions (head only).
 test('library program pages declare Watch/Download actions for the «الاخير مترجم» phrasings (head only)', () => {
   const tpl = fs.readFileSync('pages/library-program.njk', 'utf8');
-  assert.match(tpl, /"@type": "DownloadAction", "name": "تحميل \{\{ lp\.prog\.arName \| escape \}\} الاخير مترجم"/);
-  assert.match(tpl, /"@type": "WatchAction", "name": "مشاهدة \{\{ lp\.prog\.arName \| escape \}\} الاخير مترجم عربي"/);
+  assert.match(tpl, /"@type": "DownloadAction", "name": "تحميل \{\{ (?:\(lp\.prog\.arSearchName or )?lp\.prog\.arName\)? \| escape \}\} الاخير مترجم"/);
+  assert.match(tpl, /"@type": "WatchAction", "name": "مشاهدة \{\{ (?:\(lp\.prog\.arSearchName or )?lp\.prog\.arName\)? \| escape \}\} الاخير مترجم عربي"/);
 });
 
 // INCIDENTS #744: Quinton «Rampage» Jackson's nickname was turned into the show name «AEW Rampage» by the show-name cleanup.
@@ -5571,4 +5571,17 @@ test('a weekly episode with its own name keeps it in the head: «AAA Héroes Inm
   const col = { headline: 'عرض كوليجن 07.11.2026 مترجم', title: 'AEW Collision 07.11.2026', programName: 'AEW Collision', eventDate: '2026-11-07', day: '7 نوفمبر 2026', isLatest: true, description: '' };
   assert.equal(showSeoText(col).title, 'عرض كوليجن الأخير 07.11.2026 كامل مترجم — AEW Collision');
   assert.equal(showSeoText({ ...col, title: 'Collision 07.11.2026' }).title, 'عرض كوليجن الأخير 07.11.2026 كامل مترجم — AEW Collision');
+});
+
+// INCIDENTS #1163: «باور ستراجيل ~ سوبر جونيور تاج ليج» — no «~» in the names the head hands Google
+test('structured-data names never carry a tilde from the show title (INCIDENTS #1163)', async () => {
+  const seo = await import('../lib/show-seo.cjs');
+  const m = (seo as any).default || seo;
+  const names = m.showNameForms({ headline: 'عرض ان جيه بي دبليو باور ستراجيل ~ سوبر جونيور تاج ليج 2026 03.11.2026 مترجم', title: 'NJPW Power Struggle ~ Super Junior Tag League (2026)', programName: 'NJPW Power Struggle', eventDate: '2026-11-03', aliases: ['عرض ان جيه بي دبليو باور ستراجيل ~ سوبر جونيور تاج ليج'], isShow: true });
+  assert.ok(names.length > 3);
+  assert.ok(!names.some((n: string) => n.includes('~')), names.filter((n: string) => n.includes('~')).join(' | '));
+  assert.ok(!m.keywordList(['NJPW'], ['باور ستراجيل ~ سوبر جونيور تاج ليج', 'باور ستراجيل سوبر جونيور تاج ليج']).some((n: string) => n.includes('~')));
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
+  assert.match(cfg, /const searchArName = String\(arName \|\| ""\)\.replace\(\/\\s\*~\.\*\$\/, ""\)/);
+  assert.match(fs.readFileSync('pages/library-program.njk', 'utf8'), /"alternateName": \[\{% for a in \(\[lp\.prog\.arSearchName or lp\.prog\.arName\]/);
 });

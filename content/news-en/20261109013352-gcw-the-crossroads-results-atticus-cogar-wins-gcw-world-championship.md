@@ -1,5 +1,5 @@
 ---
-title: "GCW the Crossroads Results: Atticus Cogar Wins GCW World Championship"
+title: "GCW The Crossroads Results: Atticus Cogar Wins GCW World Championship"
 slug: "gcw-the-crossroads-results-atticus-cogar-wins-gcw-world-championship"
 description: "Game Changer Wrestling held its GCW The Crossroads event on November 7 from the Fountain Square Theater in Indianapolis, IN. The show aired on TrillerTV+."
 federation: INDIE

@@ -1511,7 +1511,9 @@ module.exports = function(eleventyConfig) {
         // /library/njpw-special-events/ read «عروض ان جيه بي دبليو تايتشي سكول برو ريسلنج 2 2026» and Google left it
         // «discovered, not indexed» for 157 hours (INCIDENTS #883). Head and structured data only; the page's H1 keeps arLibTitle.
         const HEAD_LIB_TITLES = { "njpw-special-events": "عروض ان جيه بي دبليو الخاصة مترجمة" };
-        const arHeadTitle = HEAD_LIB_TITLES[p.slug] || "";
+        // …and a section named with a «~» subtitle («عروض ان جيه بي دبليو باور ستراجيل ~ سوبر جونيور تاج ليج مترجمة») is named
+        // in the head by its program alone, without the tilde (INCIDENTS #1163)
+        const arHeadTitle = HEAD_LIB_TITLES[p.slug] || (/~/.test(arLibTitle) ? arLibTitle.replace(/\s*~[^]*?(?=\s+مترجمة$)/, "") : "");
         // Other spellings people search with (INCIDENTS #275)
         const ALIASES = {
           "wwe-raw": ["دبليو دبليو إي راو", "دبليو دبليو اي رو", "رو", "الرو", "راو", "عرض رو", "الرو الاخير", "الرو مترجم", "WWE Raw", "WWE RAW مترجم", "Monday Night Raw", "raw مترجم", "wwe مترجم", "مصارعة حرة مترجم", "عرض الرو الاخير مترجم نتفلكس", "WWE RAW Netflix", "الرو نتفلكس", "عرض الرو الاخير مترجم عربي", "عرض الرو الاخير كامل ومترجم", "عرض الرو الأخير مترجم كامل", "عرض رو الاخير مترجم", "عرض رو مترجم", "عرض الرو مترجم"],
@@ -1552,15 +1554,24 @@ module.exports = function(eleventyConfig) {
           : p.slug === "tna-xplosion" ? ["اكسبلوجن", "إكسبلوجن", "اكسبلوشن", "TNA Xplosion", "TNA Xplosion مترجم", "عرض اكسبلوجن مترجم", "تي ان ايه", "TNA مترجم"] // (INCIDENTS #963)
           : /^revpro/.test(p.slug) ? ["ريف برو", "ريفبرو", "ريفولوشن برو", "ريفولوشن برو ريسلنج", "RevPro", "Rev Pro", "Revolution Pro Wrestling", "RevPro مترجم", "شاهد برو"] : []);
         const fedSaid = FED_SAID[String(federation || "").toUpperCase()] || "";
-        const programSaid = String(arName || "").replace(/^(عرض|برنامج)\s+/, "").replace(/\s+(19|20)\d{2}$/, "").trim();
+        // «عرض ان جيه بي دبليو باور ستراجيل ~ سوبر جونيور تاج ليج»: the part after a tilde is that edition's subtitle, and
+        // a «~» is no one's search — 33 alternateNames of the Power Struggle page carried it and none was «باور ستراجيل»
+        // alone. The searched names are built from the program's own name; the full one goes in once without the tilde.
+        // Head/structured data only — the library page's visible heading keeps arName (INCIDENTS #1163).
+        const tildeFree = /~/.test(arName) ? [String(arName).replace(/\s*~\s*/g, " ").replace(/\s+/g, " ").trim()] : [];
+        const searchArName = String(arName || "").replace(/\s*~.*$/, "").trim();
+        if (searchArName !== arName && /[\u0600-\u06FF]/.test(searchArName)) {
+          tildeFree.push(searchArName, searchArName.replace(/^عرض\s+/, ""), searchArName.replace(/^عرض\s+(?:(?:ان|إن|جيه|جي|بي|دبليو|اي|إي|ايه|إيه|تي|اتش|إتش|ار|آر|او|أو|ام|إم|ال|إل|سي|اس|إس|اكس|إكس)\s+){2,}/, ""));
+        }
+        const programSaid = searchArName.replace(/^(عرض|برنامج)\s+/, "").replace(/\s+(19|20)\d{2}$/, "").trim();
         const generated = fedSaid && /[\u0600-\u06FF]/.test(programSaid) && !programSaid.startsWith(fedSaid)
           ? [fedSaid + " " + programSaid].concat(/(^|\s)ان\s/.test(programSaid) ? [fedSaid + " " + programSaid.replace(/(^|\s)ان\s/g, "$1إن ")] : []) : [];
         // How visitors really ask for a show: «تحميل/مشاهدة/اخر عرض <البرنامج>» — Google showed these for SmackDown at 3.4-6.7
         // while the aliases only had «مترجم»/«الاخير» forms. Added for every program (head/structured data only).
-        const askName = /[\u0600-\u06FF]/.test(arName) ? (/^عرض\s/.test(arName) ? arName : "عرض " + arName) : "";
+        const askName = /[\u0600-\u06FF]/.test(searchArName) ? (/^عرض\s/.test(searchArName) ? searchArName : "عرض " + searchArName) : "";
         const asked = askName ? ["تحميل " + askName, "مشاهدة " + askName, "اخر " + askName, "تحميل " + askName + " مترجم", askName + " مترجم", askName + " الاخير", askName + " الاخير مترجم", "مشاهدة " + askName + " مترجم"] : [];
-        const withGenerated = baseAliases.concat(generated.concat(asked).filter(function(g, i, a) { return baseAliases.indexOf(g) === -1 && a.indexOf(g) === i; }));
-        return { slug: p.slug, name: p.name, aliases: withGenerated, arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arLibTitle: arLibTitle, arHeadTitle: arHeadTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded,
+        const withGenerated = baseAliases.concat(tildeFree.concat(generated, asked).filter(function(g, i, a) { return baseAliases.indexOf(g) === -1 && a.indexOf(g) === i; }));
+        return { slug: p.slug, name: p.name, aliases: withGenerated, arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arSearchName: /[\u0600-\u06FF]/.test(searchArName) ? searchArName : "", arLibTitle: arLibTitle, arHeadTitle: arHeadTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded,
           promo: (function(x) { return { key: x.key, mark: x.mark, name: x.name, h: x.h, s: x.s, custom: !!x.custom }; })(libraryPromotionOf({
             name: p.name, federation: federation,
             chosen: (shows.find(function(e) { return e.libraryFederation; }) || {}).libraryFederation })) };
@@ -1802,7 +1813,7 @@ module.exports = function(eleventyConfig) {
       const want = String(programName).trim().toLowerCase();
       prog = (library || []).find(p => String(p.name || "").trim().toLowerCase() === want);
     }
-    return prog ? { slug: prog.slug, name: prog.name, arName: prog.arName || "", aliases: prog.aliases || [], promoKey: (prog.promo && prog.promo.key) || "" } : null;
+    return prog ? { slug: prog.slug, name: prog.name, arName: prog.arSearchName || prog.arName || "", aliases: prog.aliases || [], promoKey: (prog.promo && prog.promo.key) || "" } : null;
   });
   // Other Arabic spellings of a program for its library page description (سماكداون / سماك داون / الرو / راو):
   // people type them without spaces or with a different transliteration. Head only — nothing visible (INCIDENTS #477)

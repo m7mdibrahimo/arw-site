@@ -464,8 +464,10 @@ export function restoreTitleTheNames(title: string, body: string): string {
       const part = words.slice(0, n).join(" ");
       const esc = part.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       const after = `${esc}(?![\\w'’])`;
-      // the story writes «The X» after a lowercase word and never «the X»: an event name («Money in the Bank») has «the» in the body too
-      if (new RegExp(`(?<![A-Za-z])[a-z][a-z'’]*,? The ${after}`).test(body) && !new RegExp(`(?<![A-Za-z])the ${after}`).test(body)) return "The " + name;
+      // the story writes «The X» mid-sentence and never «the X»: an event name («Money in the Bank») has «the» in the body too.
+      // The word before may also be an acronym or a name followed by a comma: «GCW The Crossroads», «Shiloh Hill, The Dropouts» —
+      // never a Title-Cased word («Money In The Bank», «Fear Of The Dark» in a Title-Cased line) (INCIDENTS #1162)
+      if (new RegExp(`(?:(?<![A-Za-z])[a-z][a-z'’]*,?|(?<![A-Za-z0-9])[A-Z0-9]{2,}|[A-Za-z0-9'’]+,) The ${after}`).test(body) && !new RegExp(`(?<![A-Za-z])the ${after}`).test(body)) return "The " + name;
     }
     return m;
   });

@@ -742,6 +742,11 @@ test('«أغنيتين باهظتي الثمن» is a dual, «جيب كيد» fo
   const { restoreTitleTheNames } = await import("../scripts/english-edition.ts");
   assert.equal(restoreTitleTheNames('Bishop Kaun Details How the Demand Got Started', 'discussed the formation of The Demand, the AEW faction'), 'Bishop Kaun Details How The Demand Got Started');
   assert.equal(restoreTitleTheNames('Star Returns After the Show Ends', 'He returned after the show ended.'), 'Star Returns After the Show Ends');
+  // INCIDENTS #1162: the word before «The» in the story is an acronym or a name
+  assert.equal(restoreTitleTheNames('GCW the Crossroads Results: Atticus Cogar Wins', 'Game Changer Wrestling held its GCW The Crossroads event on November 7'), 'GCW The Crossroads Results: Atticus Cogar Wins');
+  assert.equal(restoreTitleTheNames('Shiloh Hill, Zilla Fatu and the Dropouts Win Main Event', 'the team of Shiloh Hill, The Dropouts (Jackson Goonrey and Tyran Tuckey)'), 'Shiloh Hill, Zilla Fatu and The Dropouts Win Main Event');
+  assert.equal(restoreTitleTheNames('Star Wins the Title', 'He won. The title is his. Then the title went home.'), 'Star Wins the Title');
+  assert.equal(restoreTitleTheNames('Penta Opens Up About WWE Money in the Bank Win', 'after WWE Money In The Bank 2026 he won'), 'Penta Opens Up About WWE Money in the Bank Win');
 });
 
 // INCIDENTS #898: «رسميا» without its alif after an English promotion name — «أعلن اتحاد WWE رسمي عن»,

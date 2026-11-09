@@ -1,5 +1,5 @@
 ---
-title: "WWE NXT Live Event Results From Gainesville (11/7): Shiloh Hill, Zilla Fatu and the Dropouts Win Main Event"
+title: "WWE NXT Live Event Results From Gainesville (11/7): Shiloh Hill, Zilla Fatu and The Dropouts Win Main Event"
 slug: "wwe-nxt-live-event-results-from-gainesville-11-7-shiloh-hill-zilla-fatu-and-the"
 description: "WWE hosted an NXT live event on November 7 at the MLK Center in Gainesville, Florida. In the opening match, Elio LeFleur defeated Ulka Sasaki."
 federation: WWE
