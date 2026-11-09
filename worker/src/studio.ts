@@ -38,6 +38,21 @@ export function cleanNameFields(text: string): string {
   return text.slice(0, m.index! + 4) + front + text.slice(m.index! + 4 + m[1].length);
 }
 
+/**
+ * A show/recap/nostalgia page's address comes from its `title` (or `permalink`): when an edit changes either, the page
+ * now lives at a new URL. `url_changed` records when, so the sitemap's <lastmod> and dateModified say the page is new and
+ * Google re-crawls it instead of keeping the old address as canonical (GCW Rock Bottom, INCIDENTS #1173).
+ */
+export function stampUrlChange(before: string, after: string, nowIso: string): string {
+  const fm = (t: string) => (t.match(/^---\r?\n([\s\S]*?)\r?\n---/) || [])[1] || '';
+  const val = (t: string, k: string) => ((fm(t).match(new RegExp(`^${k}:[ \\t]*(.*)$`, 'm')) || [])[1] || '').trim().replace(/^(["'])(.*)\1$/, '$2');
+  const a = fm(before), b = fm(after);
+  if (!a || !b || (val(before, 'title') === val(after, 'title') && val(before, 'permalink') === val(after, 'permalink'))) return after;
+  const m = after.match(/^---\r?\n([\s\S]*?)\r?\n---/)!;
+  const front = /^url_changed:.*$/m.test(m[1]) ? m[1].replace(/^url_changed:.*$/m, `url_changed: ${nowIso}`) : `${m[1]}\nurl_changed: ${nowIso}`;
+  return after.slice(0, m.index! + 4) + front + after.slice(m.index! + 4 + m[1].length);
+}
+
 export interface StudioEnv {
   GITHUB_OWNER: string; GITHUB_REPO: string; GITHUB_BRANCH: string; GITHUB_TOKEN: string;
   PUSH_KV: KVNamespace;
@@ -674,6 +689,7 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
       return json({ success: false, conflict: true, current: existing, error: 'الموضوع اتعدّل من مكان تاني بعد ما فتحته.' }, 409);
     }
     body.content = cleanNameFields(body.content);
+    if (existing && ['shows', 'recaps', 'nostalgia'].includes(collection)) body.content = stampUrlChange(existing.content, body.content, new Date().toISOString());
     // «العرض قبل الجميع»: during its window the file goes out without its links (they wait in D1, worker/src/early.ts)
     const early = await earlyOnSave(env.ANALYTICS, earlyKey(p), body.content);
     const changes: FileChange[] = [{ path: p, text: early.text }];

@@ -2,6 +2,21 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "تيمور الغري",
+      "right": "تيمور العظيم",
+      "note": "Timur The Great (INCIDENTS #1172)"
+    },
+    {
+      "wrong": "عضد الصالح",
+      "right": "عدي الصالح",
+      "note": "Oday Al-Saleh (INCIDENTS #1172)"
+    },
+    {
+      "wrong": "غرافسودي",
+      "right": "Grapsody",
+      "note": "اسم البودكاست بالإنجليزي زي باقي الأخبار (INCIDENTS #1172)"
+    },
+    {
       "wrong": "تشلسي غرين",
       "right": "تشيلسي غرين",
       "note": "اسم واحد في كل الأخبار (INCIDENTS #1121)"

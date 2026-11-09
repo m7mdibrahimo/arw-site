@@ -82,7 +82,7 @@
         "caption": "{{ pageTitle | escape }}"
       },
       "datePublished": {{ page.date | jsonify | safe }},
-      "dateModified": {{ page.date | jsonify | safe }},
+      "dateModified": {{ page.date | lastChange(url_changed) | jsonify | safe }},
       {% if federation %}"articleSection": "{{ federation }}",{% endif %}
       {% set ldAbout = libraryProgramOf(page.url, collections.library, program_name) if (page.url.startsWith('/shows/') or page.url.startsWith('/recaps/')) else null %}
       {#- a recap or nostalgia special is searched by the same names as a show («ملخص عرض موني ان ذا بانك 2026 مترجم»): the article's keywords carry them, head only (INCIDENTS #679) -#}

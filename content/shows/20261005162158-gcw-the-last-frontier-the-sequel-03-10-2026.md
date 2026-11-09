@@ -8,6 +8,7 @@ is_annual: true
 description: عرض جي سي دبليو مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-10-03
 date: 2026-10-05T16:15:46.000+03:00
+url_changed: 2026-11-09T04:33:25.000Z
 duration: 02:37:28
 tags:
   - GCW

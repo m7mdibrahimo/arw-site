@@ -703,6 +703,15 @@ module.exports = function(eleventyConfig) {
     return `${z[1]}|${GUIDE_DAYS[w.day]}|${String(h).padStart(2, "0")}:${m[2]}`;
   });
   eleventyConfig.addFilter("yearOf", function(d) { const t = new Date(d); return isNaN(t) ? "" : String(t.getUTCFullYear()); });
+  // A page's last change for the sitemap <lastmod> and dateModified: its date, or `url_changed` (stamped by the panel when a
+  // title edit moves the page to a new address) when that is later. GCW Rock Bottom / The Score were renamed to «(2026)» on
+  // 2026-11-09 and their new address kept «lastmod 2026-09-27», so Google had no reason to re-crawl the page it last saw
+  // as a noindex redirect and kept the old dated URL as canonical (INCIDENTS #1173). Head and sitemap only.
+  eleventyConfig.addFilter("lastChange", function(date, changed) {
+    const a = new Date(date), b = new Date(changed || "");
+    if (isNaN(a)) return isNaN(b) ? new Date() : b;
+    return !isNaN(b) && b > a ? b : a;
+  });
   eleventyConfig.addFilter("isoDay", function(v) { const d = new Date(v); return isNaN(d) ? new Date().toISOString().slice(0, 10) : d.toISOString().slice(0, 10); });
   // The end of the show for the BroadcastEvent structured data: start + the page's own duration
   // («02:25:26»). A show with no duration keeps only its startDate. Head only (INCIDENTS #915).

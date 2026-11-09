@@ -1625,3 +1625,16 @@ test("broken plurals that don't take tanween lose the alif «مهاما→مها
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && re.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #1172: Sting's sons' opponents Timur The Great / Oday Al-Saleh became «تيمور الغري» / «عضد الصالح»,
+// and the Grapsody podcast was transliterated «غرافسودي» while every other story keeps it in English.
+test("Timur The Great, Oday Al-Saleh and Grapsody are spelled right", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  const glossary = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8")) as Record<string, string>;
+  assert.equal(glossary["Timur The Great"], "تيمور العظيم");
+  assert.equal(glossary["Oday Al-Saleh"], "عدي الصالح");
+  assert.equal(applyCorrections("فريق The 8th Day المكون من تيمور الغري وعضد الصالح"), "فريق The 8th Day المكون من تيمور العظيم وعدي الصالح");
+  assert.equal(applyCorrections("خلال مشاركته في بودكاست غرافسودي"), "خلال مشاركته في بودكاست Grapsody");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /تيمور الغري|عضد الصالح|غرافسودي/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
