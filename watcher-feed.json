@@ -1,5 +1,15 @@
 [
   {
+    "id": 338134,
+    "link": "https://www.fightful.com/wrestling/action-wrestling-tell-me-goodbye-results-11-6/",
+    "date": "2026-11-08T19:31:54",
+    "date_gmt": "2026-11-09T00:31:54",
+    "title": {
+      "rendered": "ACTION Wrestling Tell Me Goodbye Results (11/6)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/08193120/HT4QguTW8AAc5-D.jpg.webp"
+  },
+  {
     "id": 338128,
     "link": "https://www.fightful.com/wrestling/gcw-the-crossroads-results-11-7/",
     "date": "2026-11-08T17:33:52",
@@ -45,7 +55,7 @@
     "date": "2026-11-08T13:59:59",
     "date_gmt": "2026-11-08T18:59:59",
     "title": {
-      "rendered": "Report: WWE Roster Out Of Saudi Before Latest Missile Attack"
+      "rendered": "Report: WWE Roster Out Of Saudi Before Latest Missile Attack, Back In The US"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2023/07/27220842/febwwesaudi_1.jpg"
   },
@@ -288,15 +298,5 @@
       "rendered": "Watch: AAA Héroes Inmortales: November 7, 2026"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/07224659/maxresdefault-31.jpg"
-  },
-  {
-    "id": 338035,
-    "link": "https://www.fightful.com/wrestling/marcus-mathers-makes-aew-singles-debut-on-11-7-aew-collision-loses-to-nick-wayne/",
-    "date": "2026-11-07T21:26:29",
-    "date_gmt": "2026-11-08T02:26:29",
-    "title": {
-      "rendered": "Marcus Mathers Makes AEW Singles Debut On 11/7 AEW Collision, Loses To Nick Wayne"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/07212150/HWkTkhaWoAAatPK.jpg"
   }
 ]
