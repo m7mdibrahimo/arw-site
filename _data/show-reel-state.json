@@ -5029,7 +5029,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض جي سي دبليو ذا كروس رودز 07.11.2026",
-    "lastAttempt": 1794254857442,
+    "lastAttempt": 1794255709885,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5047,16 +5047,15 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض يو اف سي فايت نايت 07.11.2026 مترجم",
-    "lastAttempt": 1794252245282,
+    "lastAttempt": 1794255721145,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
-      "tiktok"
+      "instagram_reel"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   }
 }
