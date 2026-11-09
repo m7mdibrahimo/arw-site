@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/alexa-bliss-reveals-shes-sick-two-months-cant-shake-it": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-09T14:38:23.324Z"
+ },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-9": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -33,11 +38,6 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Hangman Page",
   "retry": true,
   "at": "2026-11-09T14:32:34.402Z"
- },
- "https://www.ringsidenews.com/alexa-bliss-reveals-shes-sick-two-months-cant-shake-it": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مدة زمنية في المتن غير مطابقة للمصدر: منذ شهر",
-  "retry": true,
-  "at": "2026-11-09T14:24:06.516Z"
  },
  "https://www.ringsidenews.com/kevin-nash-calls-major-trump-administration-officials-impeached-midterm-elections": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
