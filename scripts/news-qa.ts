@@ -1739,6 +1739,17 @@ export function fixNearGlossaryNames(text: string, names: string[]): string {
   let out = String(text || "");
   for (const name of names) {
     const words = String(name || "").split(" ").filter(Boolean);
+    // A one-word name of 5+ letters written with one letter swapped (\u00AB\u0641\u064A\u0631\u0648\u0633\u00BB for Feroz \u00AB\u0641\u064A\u0631\u0648\u0632\u00BB, INCIDENTS #1156):
+    // only a whole word of the same length (or with a leading \u00AB\u0648\u00BB), exactly one letter different, takes the glossary spelling.
+    if (words.length === 1 && /^[\u0621-\u064A]{5,}$/.test(name) && !out.includes(name)) {
+      out = out.replace(/(?<![\u0621-\u064A])(\u0648?)([\u0621-\u064A]+)(?![\u0621-\u064A])/g, (all, pre: string, w: string) => {
+        if (w.length !== name.length) return all;
+        let diff = 0;
+        for (let k = 0; k < w.length; k++) if (w[k] !== name[k]) diff++;
+        return diff === 1 ? pre + name : all;
+      });
+      continue;
+    }
     if (words.length < 2 || !words.every(w => /^[\u0621-\u064A]+$/.test(w)) || out.includes(name)) continue;
     const flat = normalizeArabic(name).replace(/ /g, "");
     const limit = flat.length >= 10 ? 2 : 1;
