@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2310917/wwe-raw-november-9-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-09T23:02:04.916Z"
+ },
  "https://www.fightful.com/wrestling/john-cena-if-i-have-any-energy-left-in-my-intellectual-property-i-want-to-give-it-to-folks-who-are-clamoring-for-a-spot": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -33,11 +38,6 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يستعدان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
   "at": "2026-11-09T22:56:24.963Z"
- },
- "https://www.wrestlinginc.com/2310917/wwe-raw-november-9-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-09T22:43:03.838Z"
  },
  "https://www.ringsidenews.com/rusev-fight-vince-mcmahon-keep-lanas-spot-wwe-wrestlemania-31": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Adam Copeland",
