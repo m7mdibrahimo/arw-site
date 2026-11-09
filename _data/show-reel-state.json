@@ -5005,7 +5005,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261109185058-cmll-sabados-de-coliseo-07-11-2026": {
     "publishedAt": 1794244478744,
@@ -5025,20 +5026,19 @@
     "publishedAt": 1794245288411,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض جي سي دبليو ذا كروس رودز 07.11.2026",
-    "lastAttempt": 1794251369442,
+    "lastAttempt": 1794254857442,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
-      "tiktok"
+      "instagram_story"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261109190448-ufc-fight-night-293-cortes-acosta-vs-walker": {
     "publishedAt": 1794245329847,
