@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-09T04:41:17.580Z",
+ "checkedAt": "2026-11-09T04:53:36.974Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
@@ -9607,60 +9607,60 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-09T04:41:17.580Z"
+   "checked": "2026-11-09T04:53:36.974Z"
   },
   "https://ok.ru/videoembed/18003105483360": {
    "page": "https://arab-wrestling.com/shows/wwe-crown-jewel-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-09T04:41:17.580Z"
+   "checked": "2026-11-09T04:53:36.974Z"
   },
   "https://hgcloud.to/e/q99sqsdvoejl": {
    "page": "https://arab-wrestling.com/shows/wwe-crown-jewel-2026/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-09T04:41:17.580Z",
-   "lastOk": "2026-11-09T04:41:17.580Z"
+   "checked": "2026-11-09T04:53:36.974Z",
+   "lastOk": "2026-11-09T04:53:36.974Z"
   },
   "https://vidmoly.org/embed-cn81a6mdbrbj.html": {
    "page": "https://arab-wrestling.com/shows/wwe-crown-jewel-2026/",
    "status": "ok",
-   "reason": "the video plays",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-09T04:41:17.580Z",
-   "lastOk": "2026-11-09T04:41:17.580Z"
+   "checked": "2026-11-09T04:53:36.974Z",
+   "lastOk": "2026-11-09T04:53:36.974Z"
   },
   "https://fembed.co/embed/bl_xyjc-rDsK6": {
    "page": "https://arab-wrestling.com/shows/wwe-crown-jewel-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-09T04:41:17.580Z",
-   "lastOk": "2026-11-09T04:41:17.580Z"
+   "checked": "2026-11-09T04:53:36.974Z",
+   "lastOk": "2026-11-09T04:53:36.974Z"
   },
   "https://uqload.vc/embed-am4i5iu8ixyb.html": {
    "page": "https://arab-wrestling.com/shows/wwe-crown-jewel-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-09T04:41:17.580Z",
-   "lastOk": "2026-11-09T04:41:17.580Z"
+   "checked": "2026-11-09T04:53:36.974Z",
+   "lastOk": "2026-11-09T04:53:36.974Z"
   },
   "https://vidtube.one/embed-swo8oc2lxitq.html": {
    "page": "https://arab-wrestling.com/shows/aew-collision-07-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-09T04:41:17.580Z"
+   "checked": "2026-11-09T04:53:36.974Z"
   },
   "https://hgcloud.to/e/9b4d7xagicu4": {
    "page": "https://arab-wrestling.com/shows/aew-collision-07-11-2026/",
    "status": "broken",
    "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
    "strikes": 2,
-   "checked": "2026-11-09T04:41:17.580Z",
+   "checked": "2026-11-09T04:53:36.974Z",
    "since": "2026-11-08T21:28:00.817Z"
   },
   "https://vidmoly.org/embed-akcnfm1ouxxr.html": {
@@ -9668,83 +9668,120 @@
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-09T04:41:17.580Z",
-   "lastOk": "2026-11-09T04:41:17.580Z"
+   "checked": "2026-11-09T04:53:36.974Z",
+   "lastOk": "2026-11-09T04:53:36.974Z"
   },
   "https://ok.ru/videoembed/18012838169184": {
    "page": "https://arab-wrestling.com/shows/aew-collision-07-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-09T04:41:17.580Z"
+   "checked": "2026-11-09T04:53:36.974Z"
   },
   "https://fembed.co/embed/o_1hY-ZxPLvTP": {
    "page": "https://arab-wrestling.com/shows/aew-collision-07-11-2026/",
    "status": "ok",
-   "reason": "the video plays",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-09T04:41:17.580Z",
-   "lastOk": "2026-11-09T04:41:17.580Z"
+   "checked": "2026-11-09T04:53:36.974Z",
+   "lastOk": "2026-11-09T04:53:36.974Z"
   },
   "https://fembed.co/embed/Ditt-1_VeXj5E": {
    "page": "https://arab-wrestling.com/shows/aaa-heroes-inmortales-week-3-07-11-2026/",
    "status": "ok",
-   "reason": "the video plays",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-09T04:41:17.580Z",
-   "lastOk": "2026-11-09T04:41:17.580Z"
+   "checked": "2026-11-09T04:53:36.974Z",
+   "lastOk": "2026-11-09T04:53:36.974Z"
   },
   "https://vidtube.one/embed-oh60oajakbsl.html": {
    "page": "https://arab-wrestling.com/shows/aaa-heroes-inmortales-week-3-07-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-09T04:41:17.580Z"
+   "checked": "2026-11-09T04:53:36.974Z"
   },
   "https://vidmoly.org/embed-g4p7z6ehdr43.html": {
    "page": "https://arab-wrestling.com/shows/aaa-heroes-inmortales-week-3-07-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-09T04:41:17.580Z",
-   "lastOk": "2026-11-09T04:41:17.580Z"
+   "checked": "2026-11-09T04:53:36.974Z",
+   "lastOk": "2026-11-09T04:53:36.974Z"
   },
   "https://ok.ru/videoembed/18012976908896": {
    "page": "https://arab-wrestling.com/shows/aaa-heroes-inmortales-week-3-07-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-09T04:41:17.580Z"
+   "checked": "2026-11-09T04:53:36.974Z"
   },
-  "https://fembed.co/embed/w-HQXGe2_ieKg": {
-   "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-03-11-2026/",
-   "status": "ok",
-   "reason": "the video plays",
-   "strikes": 0,
-   "checked": "2026-11-09T04:41:17.580Z",
-   "lastOk": "2026-11-09T04:41:17.580Z"
-  },
-  "https://vidmoly.org/embed-hn1sku9vix3f.html": {
-   "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-03-11-2026/",
-   "status": "ok",
-   "reason": "the stream arrives",
-   "strikes": 0,
-   "checked": "2026-11-09T04:41:17.580Z",
-   "lastOk": "2026-11-09T04:41:17.580Z"
-  },
-  "https://ok.ru/videoembed/18012976843360": {
-   "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-03-11-2026/",
+  "https://vidtube.one/embed-pqci7mwwi9qm.html": {
+   "page": "https://arab-wrestling.com/shows/gcw-dead-on-arrival-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-09T04:41:17.580Z"
+   "checked": "2026-11-09T04:53:36.974Z"
+  },
+  "https://hgcloud.to/e/d8hzi3wytn7f": {
+   "page": "https://arab-wrestling.com/shows/gcw-dead-on-arrival-2026/",
+   "status": "broken",
+   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
+   "strikes": 1,
+   "checked": "2026-11-09T04:53:36.974Z"
+  },
+  "https://vidmoly.org/embed-k0ws3m55acjf.html": {
+   "page": "https://arab-wrestling.com/shows/gcw-dead-on-arrival-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-09T04:53:36.974Z",
+   "lastOk": "2026-11-09T04:53:36.974Z"
+  },
+  "https://ok.ru/videoembed/18012976777824": {
+   "page": "https://arab-wrestling.com/shows/gcw-dead-on-arrival-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-09T04:53:36.974Z"
+  },
+  "https://fembed.co/embed/pUT1aMC_8l-nC": {
+   "page": "https://arab-wrestling.com/shows/gcw-dead-on-arrival-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-09T04:53:36.974Z",
+   "lastOk": "2026-11-09T04:53:36.974Z"
   },
   "https://vidtube.one/embed-dqrpbcn76a0a.html": {
    "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-03-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-09T04:41:17.580Z"
+   "checked": "2026-11-09T04:53:36.974Z"
+  },
+  "https://ok.ru/videoembed/18012976843360": {
+   "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-03-11-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-09T04:53:36.974Z"
+  },
+  "https://vidmoly.org/embed-hn1sku9vix3f.html": {
+   "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-03-11-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-09T04:53:36.974Z",
+   "lastOk": "2026-11-09T04:53:36.974Z"
+  },
+  "https://fembed.co/embed/w-HQXGe2_ieKg": {
+   "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-03-11-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-09T04:53:36.974Z",
+   "lastOk": "2026-11-09T04:53:36.974Z"
   }
  },
  "broken": [
