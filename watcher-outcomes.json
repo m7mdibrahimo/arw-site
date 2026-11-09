@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/rusev-fight-vince-mcmahon-keep-lanas-spot-wwe-wrestlemania-31": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Adam Copeland",
+  "retry": true,
+  "at": "2026-11-09T19:45:31.307Z"
+ },
+ "https://www.ringsidenews.com/steve-austin-says-bret-hart-set-standard-realism-professional-wrestling": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-09T19:45:17.296Z"
+ },
  "https://www.fightful.com/wrestling/beyond-wrestling-announces-wrestival-schedule": {
   "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
   "retry": true,
@@ -23,16 +33,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-09T19:44:03.581Z"
- },
- "https://www.ringsidenews.com/rusev-fight-vince-mcmahon-keep-lanas-spot-wwe-wrestlemania-31": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Adam Copeland",
-  "retry": true,
-  "at": "2026-11-09T19:27:47.262Z"
- },
- "https://www.ringsidenews.com/steve-austin-says-bret-hart-set-standard-realism-professional-wrestling": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-09T19:27:34.149Z"
  },
  "https://www.fightful.com/wrestling/kyle-fletcher-i-dont-think-theres-another-couple-like-me-and-skye-blue-in-the-world-i-think-were-pretty-unique": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
