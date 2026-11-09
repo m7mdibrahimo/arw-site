@@ -1,5 +1,15 @@
 [
   {
+    "id": 338142,
+    "link": "https://www.fightful.com/wrestling/wwe-nxt-live-results-11-7/",
+    "date": "2026-11-08T23:30:00",
+    "date_gmt": "2026-11-09T04:30:00",
+    "title": {
+      "rendered": "WWE NXT Live Results (11/7)"
+    },
+    "featured_image": "https://www.fightful.com/wp-content/uploads/2025/09/nxt-2024.jpg"
+  },
+  {
     "id": 338149,
     "link": "https://www.fightful.com/wrestling/cmll-domingo-familiar-results-11-8-2026-trios-tournament-brillante-jr-vs-capitan-suicida-more/",
     "date": "2026-11-08T22:30:00",
@@ -288,15 +298,5 @@
       "rendered": "UFC Fight Night: Cortes-Acosta vs. Walker Results (11/7)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/05160637/4f8538dc-dcd4-4491-9e68-1e3362dab372.webp"
-  },
-  {
-    "id": 338058,
-    "link": "https://www.fightful.com/wrestling/josh-bishop-wins-mlw-championship-from-killer-kross-at-mlw-saturday-night-superfight/",
-    "date": "2026-11-07T22:44:59",
-    "date_gmt": "2026-11-08T03:44:59",
-    "title": {
-      "rendered": "Josh Bishop Wins MLW Championship From Killer Kross At MLW Saturday Night SuperFight"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/07224422/HWkrpJ0W4AAOUEW.jpeg"
   }
 ]
