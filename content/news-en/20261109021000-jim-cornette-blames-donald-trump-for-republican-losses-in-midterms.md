@@ -1,7 +1,7 @@
 ---
 title: "Jim Cornette Blames Donald Trump for Republican Losses in Midterms"
 slug: "jim-cornette-blames-donald-trump-for-republican-losses-in-midterms"
-description: "Jim Cornette has offered his perspective on the 2026 midterms, asserting that Donald Trump is solely responsible for the Republican party's poor."
+description: "Jim Cornette has offered his perspective on the 2026 midterms, asserting that Donald Trump is solely responsible for the Republican party's poor performance at the polls."
 federation: INDIE
 date: 2026-11-08T23:10:00.000Z
 source_id: 802265107

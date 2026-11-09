@@ -633,3 +633,10 @@ test("a claim the source never makes is caught: candidate, vacant title, cancell
   // too little source text proves nothing
   assert.deepEqual(claimNotInSource("فازت باللقب الشاغر.", "short"), []);
 });
+
+test("dual demonstratives and «إنهما/لأنهما» block publishing (INCIDENTS #1141)", () => {
+  for (const body of ["قال: «كان هذان الرجلان إشبينين في حفل زفافي، إنهما بمثابة عائلتي».", "يعود الفضل للمخرج والمنتج لأنهما سمحا لنا بالتصوير.", "لا يشاركها في حصد هذين اللقبين سوى ستيفاني."]) {
+    assert.ok(checkArticle("بيج إي يتحدث عن أصدقائه", body).some((i) => i.code === "dual_form"), body);
+  }
+  assert.ok(!checkArticle("بيج إي يتحدث عن أصدقائه", "قال إنهم بمثابة عائلته، وهؤلاء النجوم أصدقاؤه.").some((i) => i.code === "dual_form"));
+});

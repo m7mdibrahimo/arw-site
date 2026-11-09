@@ -75,3 +75,16 @@ test('a big weekly program keeps «الأخير» in its library head (the #547 
   assert.match(h.title, /^عرض الرو الأخير كامل مترجم \(19 أكتوبر 2026\) — WWE RAW$/);
   assert.match(h.desc, /^مشاهدة وتحميل عرض الرو الاخير كامل ومترجم بالعربي \(19 أكتوبر 2026\)/);
 });
+
+test("a card named by its main event keeps the matchup in the head title (INCIDENTS #1142)", () => {
+  const { showSeoText } = require('../lib/show-seo.cjs');
+  const mlp = showSeoText({ headline: 'عرض ام ال بي 21.10.2026 مترجم', title: 'MLP Special: Josh Alexander vs Stu Grayson 21.10.2026', programName: 'MLP Special', eventDate: '2026-10-21', day: '21 أكتوبر 2026', isLatest: false });
+  assert.match(mlp.title, /— MLP Special: Josh Alexander vs Stu Grayson$/);
+  const ufc = showSeoText({ headline: 'عرض يو اف سي 332 مين كارد', title: 'UFC 332: Silva vs Wang (Main Card)', programName: 'UFC', eventDate: '2026-10-03', day: '3 أكتوبر 2026', isLatest: false });
+  assert.match(ufc.title, /— UFC 332: Silva vs Wang$/);
+  // two matchups: only the first, so the title stays short
+  const two = showSeoText({ headline: 'عرض ام ال بي', title: 'MLP Special: Rohan vs. Andrade / Priscilla Kelly vs. Storm 28.10.2026', programName: 'MLP Special', eventDate: '2026-10-28', day: '28 أكتوبر 2026', isLatest: false });
+  assert.match(two.title, /— MLP Special: Rohan vs\. Andrade$/);
+  const raw = showSeoText({ headline: 'عرض الرو 02.11.2026', title: 'WWE Raw 02.11.2026', programName: 'WWE Raw', eventDate: '2026-11-02', day: '2 نوفمبر 2026', isLatest: false });
+  assert.match(raw.title, /— WWE Raw$/);
+});

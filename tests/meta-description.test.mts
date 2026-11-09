@@ -235,3 +235,23 @@ test("a description never ends on a dangling «following»", () => {
   const d = metaDescription("Mercedes Moné has expressed her desire to compete at the Tokyo Dome as the match card for New Japan Pro-Wrestling's Wrestle Kingdom 21 takes shape following the 2026 Power Struggle event. She replied.");
   assert.ok(!/\b(?:following|including|despite)\.?$/i.test(d), d);
 });
+
+test("the comma of a date is not where a description ends (INCIDENTS #1140)", () => {
+  const d = metaDescription("Damian Priest and Lola Vice stepped away from their WWE commitments to walk the red carpet in New York City for the November 8, 2026, premiere of the new Netflix animated film, Steps. The pair posed for photos together.");
+  assert.ok(!/November 8, 2026\.$/.test(d), d);
+  assert.ok(!/November 8\.$/.test(d), d);
+  // a clause that really ends with its date still ends there
+  const e = metaDescription("Ilja Dragunov officially made his debut at AEW WrestleDream on October 17, 2026, attacking the champion after the main event and standing tall as the show went off the air in front of the fans.");
+  assert.match(e, /October 17, 2026\.$/);
+});
+
+test("a word cut never ends on an adjective that needs its noun (INCIDENTS #1140)", () => {
+  const d = metaDescription("Jim Cornette has offered his perspective on the 2026 midterms, asserting that Donald Trump is solely responsible for the Republican party's poor performance at the polls. According to Cornette, Trump alienated several voting groups.");
+  assert.ok(!/\b(?:poor|main|recent)\.$/.test(d), d);
+});
+
+test("no published English description ends on «main/recent/poor.» (INCIDENTS #1140)", () => {
+  const dir = path.join(process.cwd(), "content/news-en");
+  const bad = fs.readdirSync(dir).filter((f) => /\b(?:the main|a recent|following recent|party's poor|the November \d{1,2}, \d{4}|on the [A-Z][a-z]+ \d{1,2})\.$/.test(String(matter(fs.readFileSync(path.join(dir, f), "utf8")).data.description || "")));
+  assert.deepEqual(bad, []);
+});

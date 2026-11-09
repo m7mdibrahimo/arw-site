@@ -1,7 +1,7 @@
 ---
 title: "Shawn Michaels Admits WWE Main Roster Call-Ups Leave NXT Creative 'Scrambling'"
 slug: "shawn-michaels-admits-wwe-main-roster-call-ups-leave-nxt-creative-scrambling"
-description: "Shawn Michaels acknowledges that building long-term stories in WWE NXT comes with a frustrating challenge because WWE can pull his top stars to the main."
+description: "Shawn Michaels acknowledges that building long-term stories in WWE NXT comes with a frustrating challenge because WWE can pull his top stars to the main roster at any moment."
 federation: WWE
 date: 2026-10-30T16:11:05.000Z
 source_id: 802261373

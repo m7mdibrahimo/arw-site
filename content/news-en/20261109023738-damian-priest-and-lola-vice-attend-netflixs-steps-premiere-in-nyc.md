@@ -1,7 +1,7 @@
 ---
 title: "Damian Priest and Lola Vice Attend Netflix's 'Steps' Premiere in NYC"
 slug: "damian-priest-and-lola-vice-attend-netflixs-steps-premiere-in-nyc"
-description: "Damian Priest and Lola Vice stepped away from their WWE commitments to walk the red carpet in New York City for the November 8, 2026."
+description: "Damian Priest and Lola Vice stepped away from their WWE commitments to walk the red carpet in New York City for the November 8, 2026, premiere of the Netflix film Steps."
 federation: WWE
 date: 2026-11-08T23:37:38.000Z
 source_id: 802265123
