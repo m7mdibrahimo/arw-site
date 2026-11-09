@@ -1,48 +1,53 @@
 {
+ "https://www.fightful.com/wrestling/cmll-domingo-familiar-results-11-8-2026-trios-tournament-brillante-jr-vs-capitan-suicida-more": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: PROGRESS Tag Team Championships، اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: AAA Tag Team Championship، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
+  "retry": true,
+  "at": "2026-11-09T03:32:12.950Z"
+ },
  "https://www.fightful.com/mma/donald-trump-says-he-was-only-kidding-about-offering-dana-white-the-press-secretary-job": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T03:29:07.437Z"
+  "at": "2026-11-09T03:31:31.339Z"
  },
  "https://www.fightful.com/wrestling/rosemary-working-backstage-at-tna-while-sidelined": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T03:29:07.050Z"
+  "at": "2026-11-09T03:31:31.071Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-roster-out-of-saudi-before-latest-missile-attack": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T03:29:06.316Z"
+  "at": "2026-11-09T03:31:30.567Z"
  },
  "https://www.fightful.com/wrestling/randy-orton-ill-be-back-i-still-have-more-to-do": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T03:29:06.015Z"
+  "at": "2026-11-09T03:31:30.359Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-reveals-gifts-given-to-john-cena-classic-invitees": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T03:29:05.191Z"
+  "at": "2026-11-09T03:31:29.793Z"
  },
  "https://www.fightful.com/wrestling/tommaso-ciampa-reacts-to-winning-the-aew-national-championship-names-it-rubie": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T03:29:04.629Z"
+  "at": "2026-11-09T03:31:29.405Z"
  },
  "https://www.fightful.com/wrestling/andrade-el-idolo-reacts-to-losing-aew-national-championship-you-learn-more-from-losing-than-winning": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T03:29:04.431Z"
+  "at": "2026-11-09T03:31:29.269Z"
  },
  "https://www.fightful.com/wrestling/aaa-heroes-inmortales-week-three-results-11-7": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T03:29:03.973Z"
+  "at": "2026-11-09T03:31:28.953Z"
  },
  "https://www.fightful.com/wrestling/josh-bishop-wins-mlw-championship-from-killer-kross-at-mlw-saturday-night-superfight": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T03:29:03.688Z"
+  "at": "2026-11-09T03:31:28.756Z"
  },
  "https://www.ringsidenews.com/muhammad-hassan-makes-wrestling-return-eight-years-lays-out-krule": {
   "reason": "المراجعة رفضته: مدة زمنية في المتن غير مطابقة للمصدر: منذ عام",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-28T17:57:45.530Z"
- },
- "https://www.fightful.com/wrestling/watch-danhausens-very-nice-very-evil-halloween-special": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-28T17:30:31.299Z"
  }
 }
