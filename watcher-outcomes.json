@@ -1,38 +1,43 @@
 {
+ "https://www.fightful.com/wrestling/wwe-files-to-trademark-spike-dudley": {
+  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
+  "retry": false,
+  "at": "2026-11-09T14:13:59.107Z"
+ },
  "https://www.fightful.com/wrestling/swerve-strickland-i-would-say-kenny-omega-and-kazuchika-okada-at-dominion-is-the-greatest-wrestling-match-of-all-time": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Hangman Page",
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Adam Page",
   "retry": true,
-  "at": "2026-11-09T14:06:02.556Z"
+  "at": "2026-11-09T14:08:46.773Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-9": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T14:05:49.083Z"
+  "at": "2026-11-09T14:08:28.819Z"
  },
  "https://www.fightful.com/mma/donald-trump-says-he-was-only-kidding-about-offering-dana-white-the-press-secretary-job": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T14:05:48.458Z"
+  "at": "2026-11-09T14:08:28.221Z"
  },
  "https://www.fightful.com/wrestling/rosemary-working-backstage-at-tna-while-sidelined": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T14:05:48.184Z"
+  "at": "2026-11-09T14:08:27.966Z"
  },
  "https://www.fightful.com/wrestling/report-wwe-roster-out-of-saudi-before-latest-missile-attack": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T14:05:47.678Z"
+  "at": "2026-11-09T14:08:27.483Z"
  },
  "https://www.fightful.com/wrestling/randy-orton-ill-be-back-i-still-have-more-to-do": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T14:05:47.463Z"
+  "at": "2026-11-09T14:08:27.278Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-reveals-gifts-given-to-john-cena-classic-invitees": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T14:05:46.900Z"
+  "at": "2026-11-09T14:08:26.733Z"
  },
  "https://www.ringsidenews.com/kevin-nash-calls-major-trump-administration-officials-impeached-midterm-elections": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -1993,10 +1998,5 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-28T23:15:44.660Z"
- },
- "https://www.ringsidenews.com/reason-behind-tna-stars-extended-television-absence": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Shiloh Hill",
-  "retry": true,
-  "at": "2026-10-28T22:05:13.135Z"
  }
 }
