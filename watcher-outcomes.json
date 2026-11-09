@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/steve-austin-says-bret-hart-set-standard-realism-professional-wrestling": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-09T18:40:47.688Z"
+ },
  "https://www.fightful.com/wrestling/beyond-wrestling-announces-wrestival-schedule": {
   "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-29T10:44:49.928Z"
- },
- "https://www.ringsidenews.com/spoiler-absent-aew-stars-return-during-collision-taping-st-louis": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-29T10:43:36.906Z"
  }
 }
