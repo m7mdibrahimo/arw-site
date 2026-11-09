@@ -15,6 +15,6 @@ image: /content/images/3hkhcflbwbldfjer.jpg
 ---
 Muhammad Hassan, known as Marc Copani, made an in-ring return at a recent independent event. During the match, Hassan engaged physically with Krule, who grabbed him by the throat. Hassan responded by breaking free, landing three punches, and executing a flatliner, leaving Krule down in the ring.
 
-Hassan previously stepped away from wrestling in 2018. His initial WWE run lasted from 2002 to 2005 before he was released following a controversial storyline that coincided with the London bombings. He briefly returned to the independent circuit in 2018 for a few matches before departing again. He was also the subject of a 2025 episode of "Dark Side of the Ring."
+Hassan had not wrestled since 2018. His initial WWE run lasted from 2002 to 2005 before he was released following a controversial storyline that coincided with the London bombings. He briefly returned to the independent circuit in 2018 for a few matches before departing again. He was also the subject of a 2025 episode of "Dark Side of the Ring."
 
 https://www.instagram.com/p/Dff5xfQROJ8/

@@ -18,7 +18,7 @@ tags:
 image: /content/images/ipwwa78qc33uzz70.jpg
 layout: post-layout.njk
 ---
-أقام اتحاد ACTION Wrestling عرض ACTION Tell Me Goodbye يوم 6 نوفمبر في صالة لاين كريك بروينغ باس بارن بمدينة فاينتفيل في ولاية جورجيا، وأذيع العرض عبر منصة IWTV.
+أقام اتحاد ACTION Wrestling عرض ACTION Tell Me Goodbye يوم 6 نوفمبر في صالة لاين كريك بروينغ باص بارن بمدينة فاييتفيل في ولاية جورجيا، وأذيع العرض عبر منصة IWTV.
 
 **المواجهة الأولى**
 
@@ -64,6 +64,6 @@ layout: post-layout.njk
 ---
 **الحدث الرئيسي (Main Event): نزال فرق سداسي**
 
-فريق Not Safe For Wrestling (غرايسون بيرس وهيركولون ريج وكورين جوي) يحقق الفوز على داريان بينغستون وفريق The Thirst (كيلسي ريجان ورافينا فيين).
+فريق Not Safe For Wrestling (غرايسون بيرس وهيركولون ريج وكورين جوي) يحقق الفوز على داريان بينغستون وفريق The Thirst (كيلسي ريغان ورافينا فين).
 
 🏆 **الفائز:** فريق Not Safe For Wrestling

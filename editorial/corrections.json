@@ -10544,6 +10544,10 @@
     {"wrong": "أعاد للأبد ذكريات", "right": "أعاد إلى الأذهان ذكريات", "note": "جملة مكسورة في خبر توماسو تشامبا (INCIDENTS #1132)"},
     {"wrong": "الاسمنتية", "right": "الإسمنتية", "note": "همزة «إسمنت» — في خبر كودي رودز وسانتينو (INCIDENTS #1141)"},
     {"wrong": "الاسمنت", "right": "الإسمنت", "note": "همزة «إسمنت» (INCIDENTS #1141)"},
-    {"wrong": "اسمنتية", "right": "إسمنتية", "note": "همزة «إسمنت» (INCIDENTS #1141)"}
+    {"wrong": "اسمنتية", "right": "إسمنتية", "note": "همزة «إسمنت» (INCIDENTS #1141)"},
+    {"wrong": "كيلسي ريجان", "right": "كيلسي ريغان", "note": "Kelsey Raegan — اسم واحد في كل أخبار ACTION (INCIDENTS #1145)"},
+    {"wrong": "رافينا فيين", "right": "رافينا فين", "note": "Ravenna Vein (INCIDENTS #1145)"},
+    {"wrong": "فاينتفيل", "right": "فاييتفيل", "note": "Fayetteville — مدينة عروض ACTION (INCIDENTS #1145)"},
+    {"wrong": "باس بارن", "right": "باص بارن", "note": "Line Creek Brewing Bus Barn — «Bus» مش «Bass» (INCIDENTS #1145)"}
   ]
 }

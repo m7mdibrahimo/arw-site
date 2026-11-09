@@ -1590,3 +1590,14 @@ test("«أوستان ثيوري» becomes «أوستن ثيوري» and no publi
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /أوستان/.test(fs.readFileSync(`content/news/${f}`, "utf-8").split("\n").slice(0, 6).join("\n")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #1145: ACTION Wrestling results spelled Fayetteville «فاينتفيل», Bus Barn «باس بارن», Kelsey Raegan «ريجان» (another story «ريغان»).
+test("ACTION Wrestling venue, town and names have one spelling", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  const glossary = JSON.parse(fs.readFileSync("scripts/wrestler-names.json", "utf-8")) as Record<string, string>;
+  assert.equal(glossary["Kelsey Raegan"], "كيلسي ريغان");
+  assert.equal(glossary["Ravenna Vein"], "رافينا فين");
+  assert.equal(applyCorrections("في صالة لاين كريك بروينغ باس بارن بمدينة فاينتفيل مع كيلسي ريجان ورافينا فيين"), "في صالة لاين كريك بروينغ باص بارن بمدينة فاييتفيل مع كيلسي ريغان ورافينا فين");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /فاينتفيل|باس بارن|كيلسي ريجان|رافينا فيين/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
