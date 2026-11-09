@@ -288,3 +288,16 @@ test("a generic description without «مترجم» is replaced too", () => {
   const own = "وصف كتبه المالك بنفسه عن العرض.";
   assert.equal(showSeoText({ headline: "عرض جي سي دبليو ديد اون ارايفال 06.11.2026", title: "GCW Dead On Arrival (2026)", programName: "GCW", eventDate: "2026-11-06", day: "6 نوفمبر 2026", isLatest: false, description: own }).description, own);
 });
+
+// INCIDENTS #1155: a federation-only program («GCW») with a named event: the head title ended «— GCW» with no English
+// event name, and the structured data carried a cut stub («Dead مترجم», «مشاهدة Dead»)
+test('a federation-only program puts the English event name after the dash, and no cut first-word stubs', () => {
+  const { showSeoText: seoText, showNameForms: nameForms } = require('../lib/show-seo.cjs');
+  const args = { headline: 'عرض جي سي دبليو ديد اون ارايفال 06.11.2026', title: 'GCW Dead On Arrival (2026)', programName: 'GCW', eventDate: '2026-11-06', day: '6 نوفمبر 2026', isLatest: false, description: 'x', aliases: [] };
+  assert.match(seoText(args).title, /— GCW Dead On Arrival$/);
+  const forms = nameForms({ ...args, isShow: true, archive: false });
+  assert.ok(!forms.some((f: string) => /^(?:مشاهدة )?Dead(?: مترجم| 2026)?$/.test(f)), forms.filter((f: string) => /Dead/.test(f)).join(' | '));
+  assert.ok(forms.includes('Dead On Arrival مترجم'));
+  // a multi-word program keeps its own tail
+  assert.match(seoText({ ...args, headline: 'عرض كوليجن 07.11.2026', title: 'AEW Collision 07.11.2026', programName: 'AEW Collision', eventDate: '2026-11-07' }).title, /— AEW Collision$/);
+});

@@ -86,6 +86,21 @@ export function findReelVideo(slug: string, files: string[]): string | null {
   // The generator uses exactly 45 characters. Never select an unrelated fuzzy match.
   return [`reel-${slug}.mp4`, `reel-${slug.slice(0, 45)}.mp4`].find(f => files.includes(f)) || null;
 }
+/**
+ * A reel already in R2 whose manifest entry was lost: two renders pushed at once and the second rebase (-X theirs) kept
+ * only its own line at the top of the manifest. CMLL Martes De Glamour 03-11 went out on Facebook, then the monitor
+ * waited for a «rendered video» that the site was serving all along, and Instagram/TikTok never got it (INCIDENTS #1153).
+ * Asks the site for the same two exact names before giving up.
+ */
+export async function findReelOnSite(slug: string, fetcher: typeof fetch = fetch): Promise<string | null> {
+  for (const f of [...new Set([`reel-${slug}.mp4`, `reel-${slug.slice(0, 45)}.mp4`])]) {
+    try {
+      const r = await fetcher(new URL(`/videos/${encodeURIComponent(f)}`, ORIGIN).href, { method: 'HEAD', signal: AbortSignal.timeout(15_000) });
+      if (r.ok && /^video\//i.test(r.headers.get('content-type') || '')) return f;
+    } catch {}
+  }
+  return null;
+}
 // A platform still mid-processing (Instagram's async video encoding) isn't a real
 // failure — it resumes on a later run without duplicating the post. Neither is a
 // platform the Worker deliberately skipped because it isn't configured/enabled yet
@@ -214,7 +229,8 @@ export async function main() {
     let pending = PLATFORMS.filter(p => !previous?.[p] && !review.includes(p) && (p !== 'tiktok' || wantsTikTok(data, previous, tiktokReady)));
     if (!pending.length) continue;
     if (previous?.lastAttempt && Date.now() - previous.lastAttempt < retryDelayMs(previous, pending)) continue;
-    const file = findReelVideo(slug, videos);
+    let file = findReelVideo(slug, videos);
+    if (!file && (file = await findReelOnSite(slug))) console.log(`${slug}: not in the manifest, but the site serves ${file} — using it.`);
     if (!file) { console.log(`${slug}: waiting for rendered video.`); continue; }
     pending = takePlatformBudget(pending, budget);
     if (!pending.length) continue;
