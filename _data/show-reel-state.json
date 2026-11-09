@@ -4983,5 +4983,26 @@
     ],
     "reviewPlatforms": [],
     "needsReview": false
+  },
+  "20261109063825-gcw-dead-on-arrival-2026": {
+    "publishedAt": 1794200592488,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض جي سي دبليو ديد اون ارايفال 06.11.2026",
+    "lastAttempt": 1794200684767,
+    "errors": {
+      "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story",
+      "tiktok"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
