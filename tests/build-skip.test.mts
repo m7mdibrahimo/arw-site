@@ -189,6 +189,8 @@ test('every slide gets the slow zoom for as long as it is shown, not only the fi
   assert.match(home, /\.spotlight-slide\.leaving \.spotlight-bg-img \{ will-change: transform;/);
   assert.match(home, /@keyframes spotlight-bar-run \{ from \{ transform: translateX\(100%\); \} to \{ transform: translateX\(0\); \} \}/);
   assert.doesNotMatch(home, /fill\.style\.width/);
+  // Firefox rounded the plain scale to whole pixels (frozen frames, then a jump): there the zoom carries a 0.02° turn
+  assert.match(home, /@supports \(-moz-appearance: none\) \{\n  @keyframes spotlight-zoom-in \{ from \{ transform: scale\(1\) rotate\(0\.02deg\); \} to \{ transform: scale\(1\.08\) rotate\(0\.02deg\); \} \}\n  @keyframes spotlight-zoom-out \{ from \{ transform: scale\(1\.08\) rotate\(0\.02deg\); \} to \{ transform: scale\(1\) rotate\(0\.02deg\); \} \}\n\}/);
   assert.match(fs.readFileSync('assets/motion.js', 'utf8'), /img\.closest\('[^']*\.spotlight-container[^']*'\)/);
   assert.doesNotMatch(home, /transition: transform 7s cubic-bezier\(0\.1, 0\.9, 0\.2, 1\)/);
 });

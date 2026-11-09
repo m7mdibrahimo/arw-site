@@ -591,6 +591,14 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
    (hover, drag), and takes turns: one slide moves in, the next moves out, on a soft ease-in-out curve. */
 @keyframes spotlight-zoom-in { from { transform: scale(1); } to { transform: scale(1.08); } }
 @keyframes spotlight-zoom-out { from { transform: scale(1.08); } to { transform: scale(1); } }
+/* Firefox only (owner 2026-11-09, INCIDENTS #1171): Firefox rounds a plain scale to whole pixels on every frame, so the
+   slow zoom (about 0.08 px a frame) sat still for several frames and then jumped a pixel — 25 of 39 frames frozen.
+   A 0.02° turn (invisible: under 0.3 px at the picture's corners) keeps Firefox from rounding: 0 frozen frames.
+   Chrome keeps the plain scale above. */
+@supports (-moz-appearance: none) {
+  @keyframes spotlight-zoom-in { from { transform: scale(1) rotate(0.02deg); } to { transform: scale(1.08) rotate(0.02deg); } }
+  @keyframes spotlight-zoom-out { from { transform: scale(1.08) rotate(0.02deg); } to { transform: scale(1) rotate(0.02deg); } }
+}
 .spotlight-slide.active .spotlight-bg-img,
 .spotlight-slide.leaving .spotlight-bg-img { animation: spotlight-zoom-in 6.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) both; }
 .spotlight-slide[data-zoom="out"].active .spotlight-bg-img,
