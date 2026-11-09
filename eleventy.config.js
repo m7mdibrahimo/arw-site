@@ -1541,7 +1541,9 @@ module.exports = function(eleventyConfig) {
           "wwe-nxt-halloween-havoc": ["هالوين هافوك", "هالووين هافوك", "هالوين هافك", "ان اكس تي هالوين هافوك", "إن إكس تي هالوين هافوك", "NXT Halloween Havoc", "WWE NXT Halloween Havoc", "Halloween Havoc", "Halloween Havoc مترجم", "NXT Halloween Havoc مترجم", "عرض هالوين هافوك مترجم", "ان اكس تي مترجم", "NXT مترجم", "wwe مترجم", "عروض مصارعة مترجم"],
           "wwe-nxt-deadline": ["ديدلاين", "ديد لاين", "ان اكس تي ديدلاين", "إن إكس تي ديدلاين", "NXT Deadline", "WWE NXT Deadline", "NXT Deadline مترجم", "عرض ديدلاين مترجم", "ان اكس تي مترجم", "NXT مترجم"],
           "aew-worlds-end": ["وورلدز إند", "وورلدز اند", "ورلدز اند", "ورلدز إند", "AEW Worlds End", "Worlds End", "Worlds End مترجم", "AEW Worlds End مترجم", "عرض وورلدز اند مترجم", "ايه اي دبليو مترجم"],
-          "wwe-money-in-the-bank": ["موني إن ذا بانك", "موني ان ذا بانك 2026", "مني ان ذا بانك", "ام اي تي بي", "MITB", "WWE Money in the Bank", "Money in the Bank 2026"],
+          // «عرض موني ان ذا بانك 2026» 8.4 (1258 impressions) and «موني ان ذا بانك 2026» 9.2 in seo/search-console.md: the bare
+          // name «موني ان ذا بانك», «ماني ان ذا بانك» and the «مترجم»/English forms were missing. Head/structured data only (INCIDENTS #1161)
+          "wwe-money-in-the-bank": ["موني ان ذا بانك", "موني إن ذا بانك", "موني ان ذا بانك 2026", "مني ان ذا بانك", "ماني ان ذا بانك", "موني ان ذا بنك", "ام اي تي بي", "MITB", "WWE Money in the Bank", "Money in the Bank", "Money in the Bank 2026", "Money in the Bank مترجم", "موني ان ذا بانك مترجم", "عرض موني ان ذا بانك مترجم"],
         };
         // Every program also answers to «<the federation said in Arabic> <the program>» («دبليو دبليو إي موني إن ذا بانك»,
         // 111 impressions at 10.4 on a show that had no such name), with «إن» and «ان» both (INCIDENTS #564)

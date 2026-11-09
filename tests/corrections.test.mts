@@ -1614,3 +1614,14 @@ test("CMLL names Bárbaro Cavernario and Brillante Jr. have one spelling", async
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /ببارو كافيرناريو|بربارو كافيرناريو|بريلانتي جونيور/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #1160: «روزماري تتولى مهاما» — a broken plural (مفاعل/مفاعيل) never takes the tanween alif.
+test("broken plurals that don't take tanween lose the alif «مهاما→مهام»", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("روزماري تتولى مهاما خلف الكواليس"), "روزماري تتولى مهام خلف الكواليس");
+  assert.equal(applyCorrections("حقق مكاسبا كبيرة ونتائجا رائعة"), "حقق مكاسب كبيرة ونتائج رائعة");
+  assert.equal(applyCorrections("قدم مهام جديدة"), "قدم مهام جديدة");
+  const re = /(?<![ء-ي])(?:مهاما|رسائلا|مسائلا|مشاكلا|معاركا|مكاسبا|مناصبا|مواقعا|أماكنا|مواهبا|مشاريعا|تفاصيلا|مواعيدا|جوائزا|مراكزا|مقاعدا|مواسما|نتائجا)(?![ء-ي])/;
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && re.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});
