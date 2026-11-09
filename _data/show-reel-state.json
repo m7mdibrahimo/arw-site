@@ -5035,7 +5035,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261109190448-ufc-fight-night-293-cortes-acosta-vs-walker": {
     "publishedAt": 1794245329847,
@@ -5058,9 +5059,9 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال دومينغو فاميليار 08.11.2026 مترجم",
-    "lastAttempt": 1794263575760,
+    "lastAttempt": 1794264348756,
     "errors": {
-      "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا.",
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
