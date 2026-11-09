@@ -4998,15 +4998,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض سي ام ال ال فيرنس اسبكتكيولار 06.11.2026 مترجم",
-    "lastAttempt": 1794246117116,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1794246996780,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
