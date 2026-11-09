@@ -227,6 +227,9 @@ function ytFacade(ytId) {
 
 module.exports = function(eleventyConfig) {
   console.log("=== ELEVENTY CONFIG EXECUTING ===");
+  // A Cloudflare build of «site» that a newer «site» commit replaced stops itself, so a panel save never waits for the
+  // bots' build to finish first (lib/superseded-build.cjs, INCIDENTS #1183)
+  require("./lib/superseded-build.cjs").watch();
   // Which post-build step eats the build time (INCIDENTS #638): every «eleventy.after» step slower than 3 s says so in the log.
   {
     const on = eleventyConfig.on.bind(eleventyConfig);
@@ -2562,6 +2565,8 @@ module.exports = function(eleventyConfig) {
     // #617): here, after the minifying, so a name is always of the bytes that go out
     const named = require("./lib/asset-names.cjs").nameAssetsByContent("_site");
     console.log(`[assets] ${named.files} scripts and styles named by their content, on ${named.pages} pages`);
+    // the last step of the build: an older version never goes out over a newer one (INCIDENTS #1183)
+    require("./lib/superseded-build.cjs").finalCheck();
   });
 
   return {

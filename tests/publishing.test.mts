@@ -3904,7 +3904,9 @@ test('the site builds from a «site» branch without the original pictures and r
   // panel saves too: «site» never moves while Cloudflare still builds the last version, so it never queues builds
   // (INCIDENTS #343) — and a save goes out the moment that build is done, not a fixed 2.5 minutes later (INCIDENTS #352)
   assert.match(wf, /checks: read/);
-  assert.match(gather, /GAP=0 /);
+  // …except a save from the panel or a device: it goes out at once, and the build that was running stops itself
+  // (lib/superseded-build.cjs, tests/superseded-build.test.mts)
+  assert.match(gather, /grep -qE 'لوحة التحكم\|\^\(Create\|Update\|Delete\) '; then[\s\S]*?echo "a save from the panel or a device: going out now"; exit 0\n\s*fi/);
   // the build mark is the «Workers Builds: arw-site-static» check run (the site moved to Workers Static Assets, INCIDENTS #1005); the old Pages mark still counts
   assert.match(gather, /commits\/\$SITE\/check-runs\?per_page=100/);
   assert.match(gather, /Workers Builds: arw-site-static/);

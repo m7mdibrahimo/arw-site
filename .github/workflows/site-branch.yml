@@ -47,6 +47,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 9
     steps:
+      # A save from the panel or a device no longer waits here (INCIDENTS #1183): «site» moves at once and the build
+      # that was running stops itself. Only the bots' news still waits for Cloudflare and gathers, as below.
       # Cloudflare (free plan) builds one version at a time, ~2 minutes each, and builds every version it is
       # given, even one a newer version already covers: five saves from the panel in a row had queued five builds
       # and the site ran 16 minutes behind (INCIDENTS #343). So «site» never moves while Cloudflare is still building
@@ -74,7 +76,10 @@ jobs:
           [ -n "$PREV" ] || exit 0
           GAP=$BATCH
           if [ "$EVENT" = "push" ] || api "https://api.github.com/repos/$REPO/compare/$PREV...main" | jq -r '.commits[].commit.message' | grep -qE 'لوحة التحكم|^(Create|Update|Delete) '; then
-            GAP=0   # a save from the panel or a device: only as long as Cloudflare is busy
+            # a save from the panel or a device goes out at once: the build Cloudflare is running (the bots' news, nearly
+            # always) sees «site» move and stops itself (lib/superseded-build.cjs), so the save no longer waits 2-5 minutes
+            # for it and then its own build too (INCIDENTS #1183). Several saves in a row: only the last one builds.
+            echo "a save from the panel or a device: going out now"; exit 0
           fi
           SITE_AT=$(date -d "$(jq -r .committer.date s.json)" +%s)
           built() { api "https://api.github.com/repos/$REPO/commits/$SITE/check-runs?per_page=100" | jq -e '[.check_runs[] | select((.name == "Workers Builds: arw-site-static" or .name == "Cloudflare Pages") and .status == "completed")] | length > 0' > /dev/null; }
