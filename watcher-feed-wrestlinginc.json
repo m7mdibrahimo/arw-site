@@ -1,5 +1,15 @@
 [
   {
+    "id": 1946580933,
+    "link": "https://www.wrestlinginc.com/2311418/wwe-john-cena-classic-shares-new-information/",
+    "date": "Mon, 09 Nov 2026 20:16:21 +0000",
+    "date_gmt": "2026-11-09T20:16:21.000Z",
+    "title": {
+      "rendered": "John Cena Shares New Information On WWE's Upcoming John Cena Classic"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/john-cena-shares-new-information-on-wwes-upcoming-john-cena-classic/l-intro-1794255268.jpg"
+  },
+  {
     "id": 3261045307,
     "link": "https://www.wrestlinginc.com/2311353/former-wwe-star-donovan-dijak-announces-departure-mlw/",
     "date": "Mon, 09 Nov 2026 19:47:48 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Details On Wrestler Reaction To NJPW Closing Los Angeles Dojo"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/details-on-wrestler-reaction-to-njpw-closing-los-angeles-dojo/l-intro-1794165377.jpg"
-  },
-  {
-    "id": 1106152384,
-    "link": "https://www.wrestlinginc.com/2310311/zilla-fatu-shows-off-wwe-john-cena-classic-gifts/",
-    "date": "Sun, 08 Nov 2026 18:49:36 +0000",
-    "date_gmt": "2026-11-08T18:49:36.000Z",
-    "title": {
-      "rendered": "Zilla Fatu Shows Off His WWE John Cena Classic Gifts"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/zilla-fatu-shows-off-his-wwe-john-cena-classic-gifts/l-intro-1794163659.jpg"
   }
 ]
