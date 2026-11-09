@@ -1050,3 +1050,15 @@ test('corrections fix the stale Punk-vs-Owens result put as tonight\'s result (I
     'بين سي ام بانك وكيفن أوينز، وانتهى بفوز كيفن أوينز. وكان سي ام بانك قد هزم أوينز في مسقط رأسه في أغسطس وحافظ على لقبه.',
   );
 });
+
+// INCIDENTS #1164: «بون سيكورز فيلبيس أرينا» (Wellness), «مادي سين ماكسويل» and «البشر ليسوا أتقياء» for «not perfect».
+test('corrections fix Wellness Arena, Madisyn Maxxwell and «not perfect» (INCIDENTS #1164)', () => {
+  const out = applyCorrections('من صالة بون سيكورز فيلبيس أرينا، وتغلبت على مادي سين ماكسويل، مؤكدة أن البشر ليسوا أتقياء ولسنا أتقياء');
+  assert.match(out, /بون سيكورز ويلنس أرينا/);
+  assert.match(out, /ماديسون ماكسويل/);
+  assert.match(out, /البشر ليسوا معصومين من الخطأ/);
+  assert.doesNotMatch(out, /أتقياء|فيلبيس|مادي سين/);
+  const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'));
+  assert.equal(names['Bon Secours Wellness Arena'], 'بون سيكورز ويلنس أرينا');
+  assert.equal(names['Madisyn Maxxwell'], 'ماديسون ماكسويل');
+});

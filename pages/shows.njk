@@ -19,7 +19,7 @@ permalink: "/shows/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 {% set pageNum = pagination.pageNumber + 1 %}
 <title>عروض مصارعة مترجمة WWE, AEW, TNA, ROH{% if pageNum > 1 %} - صفحة {{ pageNum }}{% endif %} | عرب راسلنج</title>
-<meta name="description" content="شاهد وحمّل جميع عروض المصارعة الحرة مترجمة بالعربية: WWE Raw, SmackDown, NXT, AEW Dynamite وغيرها.{% if pageNum > 1 %} صفحة {{ pageNum }} من أرشيف العروض.{% endif %}">
+<meta name="description" content="مشاهدة وتحميل جميع عروض المصارعة الحرة مترجمة بالعربية اون لاين (Watch Wrestling): WWE Raw, SmackDown, NXT, AEW Dynamite وغيرها.{% if pageNum > 1 %} صفحة {{ pageNum }} من أرشيف العروض.{% endif %}">
 <link rel="canonical" href="https://arab-wrestling.com{{ page.url | cleanUrl }}">
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
@@ -44,6 +44,8 @@ permalink: "/shows/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "عروض المصارعة",
+  "alternateName": ["عروض المصارعة الحرة مترجمة", "مشاهدة المصارعة اون لاين", "واتش ريسلينج", "Watch Wrestling"],
+  "description": "مشاهدة وتحميل جميع عروض المصارعة الحرة مترجمة بالعربية اون لاين (Watch Wrestling): WWE Raw, SmackDown, NXT, AEW Dynamite وغيرها.",
   "url": "https://arab-wrestling.com{{ page.url | cleanUrl }}",
   "isPartOf": { "@id": "https://arab-wrestling.com/#website" },
   "breadcrumb": { "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://arab-wrestling.com/" }, { "@type": "ListItem", "position": 2, "name": "عروض المصارعة", "item": "https://arab-wrestling.com/shows/" } ] },
