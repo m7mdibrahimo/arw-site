@@ -640,3 +640,10 @@ test("dual demonstratives and «إنهما/لأنهما» block publishing (INCI
   }
   assert.ok(!checkArticle("بيج إي يتحدث عن أصدقائه", "قال إنهم بمثابة عائلته، وهؤلاء النجوم أصدقاؤه.").some((i) => i.code === "dual_form"));
 });
+
+test("a venue named «Pop's Nightclub» is not English wrestling jargon, but «pop» alone still is (INCIDENTS #1143)", () => {
+  const jargon = (b: string) => checkArticle("نتائج عرض GCW الأخير في ولاية إيلينوي", b, []).some((i) => i.code === "english_jargon");
+  assert.ok(!jargon("أقام اتحاد GCW عرضه في صالة Pop's Nightclub & Concert Venue بمدينة ساوجيت."));
+  assert.ok(!jargon("أقيم العرض في صالة Pop’s Nightclub بمدينة ساوجيت."));
+  assert.ok(jargon("حصل المصارع على pop كبير من الجمهور."));
+});
