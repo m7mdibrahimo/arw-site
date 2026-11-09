@@ -1,7 +1,7 @@
 ---
 show_type: عرض
 federation: INDIE
-title: GCW Shotzi Blackhearts Drive In From Hell 25.10.2026
+title: GCW Shotzi Blackhearts Drive In From Hell (2026)
 headline: عرض جي سي دبليو شوتزي بلاكهارتس درايف ان فروم هيل 25.10.2026 مترجم
 card_title: name
 program_name: GCW
