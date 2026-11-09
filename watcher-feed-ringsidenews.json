@@ -1,5 +1,15 @@
 [
   {
+    "id": 802265415,
+    "link": "https://www.ringsidenews.com/spoiler-closing-segment-wwe-raw-november-9-2026-revealed/",
+    "date": "Mon, 09 Nov 2026 20:08:59 +0000",
+    "date_gmt": "2026-11-09T20:08:59.000Z",
+    "title": {
+      "rendered": "Spoiler: Closing Segment for WWE RAW on November 9, 2026 Revealed"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/spoiler-absent-wwe-star-spotted-arriving-at-raw-in-brooklyn-09.jpg?x79221"
+  },
+  {
     "id": 802265414,
     "link": "https://www.ringsidenews.com/wwe-crown-jewel-2026-airport-claims-shut-down-new-travel-details-emerge/",
     "date": "Mon, 09 Nov 2026 19:58:05 +0000",
@@ -138,15 +148,5 @@
       "rendered": "Another Name Confirmed for TNA World X-Cup at Destination X 2026"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/former-tna-star-returning-after-four-years-for-destination-x-2026-54.jpg?x79221"
-  },
-  {
-    "id": 802265310,
-    "link": "https://www.ringsidenews.com/dijak-leaves-mlw-two-years-announces-free-agency/",
-    "date": "Mon, 09 Nov 2026 16:17:47 +0000",
-    "date_gmt": "2026-11-09T16:17:47.000Z",
-    "title": {
-      "rendered": "Dijak Leaves MLW After Two Years and Announces Free Agency"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/dijak-leaves-mlw-after-two-years-and-announces-free-agency-05.jpg?x79221"
   }
 ]
