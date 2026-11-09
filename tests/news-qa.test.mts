@@ -478,6 +478,9 @@ test("a source name spelled one letter off takes the glossary spelling, other na
   // a different wrestler with the same family name is not «fixed»
   assert.equal(fixNearGlossaryNames("فاز جيمي يوسو", ["جاي يوسو"]), "فاز جيمي يوسو");
   assert.equal(fixNearGlossaryNames("فاز جيف هاردي", ["مات هاردي"]), "فاز جيف هاردي");
+  // Long vowels written another way take the glossary spelling (INCIDENTS #1146)
+  assert.equal(fixNearGlossaryNames("دافعت كيلاني جوردان عن لقبها ضد لايلا ديجز.", ["ليلى ديجز"]), "دافعت كيلاني جوردان عن لقبها ضد ليلى ديجز.");
+  assert.equal(fixNearGlossaryNames("فاز جيمي يوسو", ["جاي يوسو"]), "فاز جيمي يوسو");
 });
 
 // Round 2026-10-29 05:15 UTC: «قصة النزال الموت» and «غير ترابطية» in the AEW Dynamite review (INCIDENTS #958)

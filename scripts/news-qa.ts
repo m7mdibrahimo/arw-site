@@ -1731,6 +1731,7 @@ export function wrestlerNotInSource(body: string, source: string, glossary: Reco
  * never writes. A run of the same number of words in a row, one of them identical, one letter off in all
  * (two in names of 10+ letters), takes the glossary spelling.
  */
+const vowelSkeleton = (s: string) => s.replace(/[اويء]/g, "");
 export function fixNearGlossaryNames(text: string, names: string[]): string {
   let out = String(text || "");
   for (const name of names) {
@@ -1744,8 +1745,11 @@ export function fixNearGlossaryNames(text: string, names: string[]): string {
       const run = tokens.slice(i, i + words.length);
       if (run.some((t, k) => k > 0 && out.slice(run[k - 1].index! + run[k - 1][0].length, t.index) !== " ")) continue;
       if (!run.some((t, k) => t[0] === words[k])) continue;
-      const d = editDistance(normalizeArabic(run.map(t => t[0]).join("")), flat);
-      if (d > 0 && d <= limit) { hits.push([run[0].index!, run[run.length - 1].index! + run[run.length - 1][0].length]); i += words.length - 1; }
+      const got = normalizeArabic(run.map(t => t[0]).join(""));
+      const d = editDistance(got, flat);
+      // Long vowels written another way («لايلا ديجز» for «ليلى ديجز», INCIDENTS #1146): same consonants, up to 3 vowel letters off.
+      const sameSkeleton = d > 0 && d <= 3 && vowelSkeleton(got) === vowelSkeleton(flat);
+      if ((d > 0 && d <= limit) || sameSkeleton) { hits.push([run[0].index!, run[run.length - 1].index! + run[run.length - 1][0].length]); i += words.length - 1; }
     }
     for (const [from, to] of hits.reverse()) out = out.slice(0, from) + name + out.slice(to);
   }

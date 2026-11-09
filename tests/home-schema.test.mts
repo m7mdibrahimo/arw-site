@@ -30,6 +30,12 @@ test("the home page says what the biggest whole-site queries ask, in its head on
   }
   const alt = (home.match(/"alternateName": \[([^\]]*)\],\s*\n\s*"isPartOf"/) || [])[1] || "";
   assert.ok(alt.includes("موقع المصارعة الحرة"), alt);
+  // Whole-site opportunities of 2026-11-08 (INCIDENTS #1147); the year follows the build, never a fixed one.
+  for (const q of ["المصارعة الحرة اليوم", "عرض الرو الاخير", "عرض سماك داون الاخير", "نتائج عرض الرو الاخير"]) {
+    assert.ok(keywords.includes(`"${q}"`), `keywords is missing «${q}»`);
+  }
+  assert.ok(keywords.includes('"مصارعة حرة {{ buildTime | yearOf }}"') && alt.includes("المصارعة الحرة اليوم"), alt);
+  assert.ok(!/مصارعة حرة 20\d\d/.test((keywords + alt).replace(/\{#[\s\S]*?#\}/g, "")), "a fixed year goes stale");
   // no JSON-LD comment leaks into the rendered script
   assert.ok(!/"keywords": \[[^\]]*\/\//.test(home));
 });
