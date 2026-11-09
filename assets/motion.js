@@ -62,7 +62,9 @@
     if (seen.has(img)) return;
     seen.add(img);
     if (img.complete && img.naturalWidth) return;
-    if (img.closest('header, .spotlight, .hero, nav, footer')) return;
+    // the home slider (.spotlight-container) has its own fade and zoom: the blur/scale fade on top of it re-drew the
+    // picture on the main thread and fought the zoom's transform (owner 2026-11-09)
+    if (img.closest('header, .spotlight, .spotlight-container, .hero, nav, footer')) return;
     img.classList.add('m-img');
     var done = function () { img.classList.add('m-loaded'); };
     img.addEventListener('load', done, { once: true });

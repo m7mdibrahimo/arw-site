@@ -180,8 +180,16 @@ test('every slide gets the slow zoom for as long as it is shown, not only the fi
   assert.match(home, /animation: spotlight-zoom-in 6\.5s/);
   assert.match(home, /const DURATION = 6500;/);
   assert.match(home, /data-zoom="\{\{ 'out' if loop\.index0 % 2 else 'in' \}\}"/);
-  assert.match(home, /\.spotlight-slide\.leaving \.spotlight-bg-img,\n#spotlightHero\.is-paused \.spotlight-slide\.active \.spotlight-bg-img \{ animation-play-state: paused; \}/);
   assert.match(home, /hero\.addEventListener\('mouseenter', pauseAuto\);/);
+  // owner 2026-11-09 «مش سموز»: pausing glides the zoom to a stop and back (no instant freeze), the slide fading out
+  // keeps gliding, the shown picture stays on its own GPU layer, and nothing in the slider is redrawn every frame
+  assert.match(home, /function pauseAuto\(\) \{[^\n]*easeZoomTo\(0\); \}/);
+  assert.match(home, /function resumeAuto\(\) \{[^\n]*easeZoomTo\(1\); \}/);
+  assert.doesNotMatch(home, /\.spotlight-slide\.leaving \.spotlight-bg-img[,\s]*(#spotlightHero[^{]*)?\{ animation-play-state: paused; \}/);
+  assert.match(home, /\.spotlight-slide\.leaving \.spotlight-bg-img \{ will-change: transform;/);
+  assert.match(home, /@keyframes spotlight-bar-run \{ from \{ transform: translateX\(100%\); \} to \{ transform: translateX\(0\); \} \}/);
+  assert.doesNotMatch(home, /fill\.style\.width/);
+  assert.match(fs.readFileSync('assets/motion.js', 'utf8'), /img\.closest\('[^']*\.spotlight-container[^']*'\)/);
   assert.doesNotMatch(home, /transition: transform 7s cubic-bezier\(0\.1, 0\.9, 0\.2, 1\)/);
 });
 

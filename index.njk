@@ -595,9 +595,17 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 .spotlight-slide.leaving .spotlight-bg-img { animation: spotlight-zoom-in 6.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) both; }
 .spotlight-slide[data-zoom="out"].active .spotlight-bg-img,
 .spotlight-slide[data-zoom="out"].leaving .spotlight-bg-img { animation-name: spotlight-zoom-out; }
-.spotlight-slide.leaving .spotlight-bg-img,
-#spotlightHero.is-paused .spotlight-slide.active .spotlight-bg-img { animation-play-state: paused; }
-@media (prefers-reduced-motion: reduce) { .spotlight-slide.active .spotlight-bg-img, .spotlight-slide.leaving .spotlight-bg-img { animation: none; } }
+/* Smooth zoom (owner 2026-11-09):
+   - the slide fading out keeps gliding to the end of its own curve (still no jump back) instead of freezing mid-move
+     when an arrow, a bar or a swipe changes the slide;
+   - pausing (hover, drag) slows the zoom to a stop and back in the script (easeZoomTo) instead of freezing it on the
+     spot; browsers without getAnimations keep the plain freeze (.zoom-css-pause);
+   - the shown picture sits on its own GPU layer for the whole time it is on screen, so the zoom runs on the
+     compositor and is never handed back to the main thread mid-fade. Only the shown and fading slides get it. */
+#spotlightHero.zoom-css-pause.is-paused .spotlight-slide.active .spotlight-bg-img { animation-play-state: paused; }
+.spotlight-slide.active .spotlight-bg-img,
+.spotlight-slide.leaving .spotlight-bg-img { will-change: transform; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+@media (prefers-reduced-motion: reduce) { .spotlight-slide.active .spotlight-bg-img, .spotlight-slide.leaving .spotlight-bg-img { animation: none; will-change: auto; } }
 
 /* Floating Play Icon for Shows */
 .spotlight-play-float {
@@ -879,18 +887,26 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
   width: 56px;
   background: rgba(255, 255, 255, 0.25);
 }
+/* The fill slides in (transform) instead of growing its width every frame from script: the width redraw re-laid out and
+   repainted the hero on every frame and made the zoom above it stutter (owner 2026-11-09). Same look: the fill is the
+   segment's full width, pushed out past its rounded edge, and moves in over the slide's 6.5 s (the autoplay DURATION). */
 .spotlight-bar-fill {
   position: absolute;
   top: 0;
   right: 0;
   height: 100%;
-  width: 0%;
+  width: 100%;
   background: var(--teal);
   border-radius: 4px;
+  transform: translateX(100%);
 }
+@keyframes spotlight-bar-run { from { transform: translateX(100%); } to { transform: translateX(0); } }
 .spotlight-bar-seg.active .spotlight-bar-fill {
   background: linear-gradient(90deg, var(--teal), #38bdf8);
+  will-change: transform;
+  animation: spotlight-bar-run 6.5s linear both;
 }
+#spotlightHero.is-paused .spotlight-bar-seg.active .spotlight-bar-fill { animation-play-state: paused; }
 
 .spotlight-nav-group {
   display: flex;
@@ -1700,12 +1716,45 @@ header.classList.remove('header-hidden');
   let isPaused = false;
   // Pausing keeps the time already shown (the bar and the zoom carry on from where they stopped, INCIDENTS #489)
   let pausedAt = 0;
-  function pauseAuto() { if (isPaused) return; isPaused = true; pausedAt = Date.now(); hero.classList.add('is-paused'); }
-  function resumeAuto() { if (!isPaused) return; isPaused = false; startTime += Date.now() - pausedAt; hero.classList.remove('is-paused'); }
+  function pauseAuto() { if (isPaused) return; isPaused = true; pausedAt = Date.now(); hero.classList.add('is-paused'); easeZoomTo(0); }
+  function resumeAuto() { if (!isPaused) return; isPaused = false; startTime += Date.now() - pausedAt; hero.classList.remove('is-paused'); easeZoomTo(1); }
+
+  // The zoom glides to a stop when the slider pauses (hover, touch) and glides back, instead of freezing on the spot
+  // (owner 2026-11-09: the instant freeze read as a jolt). Its speed ramps over ZOOM_EASE_MS; the time it gains while
+  // slowing down it gives back while speeding up, so it still ends with the slide.
+  const ZOOM_EASE_MS = 450;
+  let zoomRate = 1, zoomRaf = 0;
+  if (!Element.prototype.getAnimations) hero.classList.add('zoom-css-pause');
+  function zoomAnims(slide) {
+    const img = slide && slide.querySelector('.spotlight-bg-img');
+    return img && img.getAnimations ? img.getAnimations().filter(a => String(a.animationName || '').indexOf('spotlight-zoom') === 0) : [];
+  }
+  function setZoomRate(r) { zoomAnims(slides[currentIndex]).forEach(a => { if (a.playbackRate !== r) a.playbackRate = r; }); }
+  function easeZoomTo(target) {
+    cancelAnimationFrame(zoomRaf);
+    let last = performance.now();
+    const step = (now) => {
+      const d = (now - last) / ZOOM_EASE_MS; last = now;
+      zoomRate = target > zoomRate ? Math.min(target, zoomRate + d) : Math.max(target, zoomRate - d);
+      setZoomRate(zoomRate);
+      if (zoomRate !== target) zoomRaf = requestAnimationFrame(step);
+    };
+    zoomRaf = requestAnimationFrame(step);
+  }
 
   function loadSlideImg(i) {
     const img = slides[(i + total) % total].querySelector('img[data-src]');
-    if (img) { img.src = img.getAttribute('data-src'); img.removeAttribute('data-src'); }
+    if (img) {
+      img.src = img.getAttribute('data-src'); img.removeAttribute('data-src');
+      // decoded ahead of its turn, so the first frames of its fade-in and zoom don't wait on the decoder
+      if (img.decode) img.decode().catch(() => {});
+    }
+  }
+
+  // the bar starts again from empty with the timer (startAutoplay resets it when the slider scrolls back into view)
+  function restartBar() {
+    const fill = barSegs[currentIndex] && barSegs[currentIndex].querySelector('.spotlight-bar-fill');
+    if (fill) { fill.style.animation = 'none'; void fill.offsetWidth; fill.style.animation = ''; }
   }
 
   function updateSlide(idx) {
@@ -1724,13 +1773,11 @@ header.classList.remove('header-hidden');
       s.classList.toggle('active', i === currentIndex);
     });
     if (isPaused) pausedAt = Date.now();
+    setZoomRate(zoomRate); // a slide shown while paused starts held, like the bar
 
-    barSegs.forEach((bar, i) => {
-      const isActive = (i === currentIndex);
-      bar.classList.toggle('active', isActive);
-      const fill = bar.querySelector('.spotlight-bar-fill');
-      if (fill) fill.style.width = '0%';
-    });
+    // the fill runs as a CSS animation (no per-frame width); a segment that stays active restarts it from empty
+    if (barSegs[currentIndex] && barSegs[currentIndex].classList.contains('active')) restartBar();
+    barSegs.forEach((bar, i) => bar.classList.toggle('active', i === currentIndex));
 
     const fed = slides[currentIndex].getAttribute('data-fed') || 'wwe';
     if(glow) {
@@ -1746,14 +1793,8 @@ header.classList.remove('header-hidden');
 
     function tick() {
       if (!isPaused) {
+        // timing only: nothing on the page is touched per frame (the bar and the zoom run on the compositor)
         const elapsed = Date.now() - startTime;
-        const pct = Math.min((elapsed / DURATION) * 100, 100);
-        const activeBar = barSegs[currentIndex];
-        if (activeBar) {
-          const fill = activeBar.querySelector('.spotlight-bar-fill');
-          if (fill) fill.style.width = `${pct}%`;
-        }
-
         if (elapsed >= DURATION) {
           updateSlide(currentIndex + 1);
         }
@@ -1921,7 +1962,7 @@ header.classList.remove('header-hidden');
   // No progress-bar animation while the slider is scrolled out of view (it repainted every frame for nothing).
   if ('IntersectionObserver' in window) {
     new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) startAutoplay();
+      if (entries[0].isIntersecting) { restartBar(); startAutoplay(); }
       else cancelAnimationFrame(animFrame);
     }).observe(hero);
   }
