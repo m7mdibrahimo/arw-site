@@ -1,4 +1,44 @@
 {
+ "https://www.fightful.com/wrestling/donovan-dijak-announces-hes-finished-up-with-mlw": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-09T16:27:03.458Z"
+ },
+ "https://www.fightful.com/wrestling/jason-hotch-announced-for-tna-world-x-cup": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-09T16:26:09.785Z"
+ },
+ "https://www.fightful.com/wrestling/kacy-catanzaro-reflects-on-2019-royal-rumble-spot-im-super-proud-of-that": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kofi Kingston",
+  "retry": true,
+  "at": "2026-11-09T16:25:25.656Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-9": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-09T16:24:42.831Z"
+ },
+ "https://www.fightful.com/mma/donald-trump-says-he-was-only-kidding-about-offering-dana-white-the-press-secretary-job": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-09T16:24:42.003Z"
+ },
+ "https://www.fightful.com/wrestling/rosemary-working-backstage-at-tna-while-sidelined": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-09T16:24:41.651Z"
+ },
+ "https://www.fightful.com/wrestling/report-wwe-roster-out-of-saudi-before-latest-missile-attack": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-09T16:24:40.980Z"
+ },
+ "https://www.fightful.com/wrestling/randy-orton-ill-be-back-i-still-have-more-to-do": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-09T16:24:40.698Z"
+ },
  "https://www.ringsidenews.com/dijak-leaves-mlw-two-years-announces-free-agency": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -8,41 +48,6 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-09T16:20:12.016Z"
- },
- "https://www.fightful.com/wrestling/jason-hotch-announced-for-tna-world-x-cup": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-09T16:23:01.469Z"
- },
- "https://www.fightful.com/wrestling/kacy-catanzaro-reflects-on-2019-royal-rumble-spot-im-super-proud-of-that": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kofi Kingston",
-  "retry": true,
-  "at": "2026-11-09T16:22:31.604Z"
- },
- "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-9": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-09T16:21:03.362Z"
- },
- "https://www.fightful.com/mma/donald-trump-says-he-was-only-kidding-about-offering-dana-white-the-press-secretary-job": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-09T16:21:02.458Z"
- },
- "https://www.fightful.com/wrestling/rosemary-working-backstage-at-tna-while-sidelined": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-09T16:21:02.072Z"
- },
- "https://www.fightful.com/wrestling/report-wwe-roster-out-of-saudi-before-latest-missile-attack": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-09T16:21:01.340Z"
- },
- "https://www.fightful.com/wrestling/randy-orton-ill-be-back-i-still-have-more-to-do": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-09T16:21:01.028Z"
  },
  "https://www.ringsidenews.com/mvp-calls-out-entitled-wrestling-fans-who-dont-respect-personal-boundaries": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («تصنعان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
   "retry": true,
   "at": "2026-10-29T02:38:00.231Z"
- },
- "https://www.wrestlinginc.com/2300606/aew-dynamite-fright-night-darby-allin-josh-alexander-tnt-title": {
-  "reason": "المراجعة رفضته: ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-29T02:21:08.646Z"
  }
 }
