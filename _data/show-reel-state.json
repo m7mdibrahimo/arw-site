@@ -5014,9 +5014,9 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال سابادوس دي كوليسيو 07.11.2026 مترجم",
-    "lastAttempt": 1794251333116,
+    "lastAttempt": 1794252215245,
     "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
     },
     "processing": [
       "instagram_story"
@@ -5051,9 +5051,15 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض يو اف سي فايت نايت 07.11.2026 مترجم",
-    "lastAttempt": 1794245342539,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1794252245282,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_reel",
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
