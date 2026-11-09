@@ -1275,6 +1275,50 @@ export function claimNotInSource(text: string, source: string, lang: "ar" | "en"
   return SOURCE_CLAIMS.filter(r => r[lang].test(t) && !r.source.test(src)).map(r => r.label);
 }
 /**
+ * «يملك مصارع WWE مات كاردونا مجموعة ضخمة…» when the source never ties Cardona to WWE (it named WWE only for his
+ * wife, INCIDENTS #1176): a promotion label glued to a wrestler is a fact, and the writer invents it. For each
+ * «مصارع/نجم <PROMO> <name>» whose name is in the glossary, the source must name that promotion (or its shows)
+ * within ~150 letters of that wrestler. Returns the labels with no such support («WWE مات كاردونا»).
+ */
+const PROMO_ALIASES: Record<string, RegExp> = {
+  WWE: /\b(?:WWE|WWF|Raw|SmackDown|NXT)\b/i,
+  AEW: /\b(?:AEW|Dynamite|Collision|Rampage)\b/i,
+};
+export function promotionLabelNotInSource(text: string, source: string, glossary: Record<string, string>): string[] {
+  const src = String(source || "").normalize("NFD").replace(/[̀-ͯ]/g, "");
+  if (src.replace(/\s+/g, " ").trim().length < 120) return [];
+  const rev = new Map<string, string[]>();
+  for (const [en, ar] of Object.entries(glossary || {})) {
+    if (!ar || !en) continue;
+    rev.set(ar, [...(rev.get(ar) || []), en]);
+  }
+  const out: string[] = [];
+  const re = /(?<![ء-ي])(?:ال)?(?:مصارع|مصارعة|نجم|نجمة)\s+(?:اتحاد\s+)?(WWE|AEW|TNA|NJPW|ROH|NXT|WCW|ECW|CMLL|AAA|GCW|MLW)\s+((?:[ء-ي]+\s+){0,2}[ء-ي]+)/g;
+  for (const m of String(text || "").matchAll(re)) {
+    const promo = m[1];
+    const words = m[2].split(/\s+/);
+    let ar = "", ens: string[] = [];
+    for (let n = Math.min(3, words.length); n >= 1 && !ens.length; n--) {
+      const cand = words.slice(0, n).join(" ");
+      if (rev.has(cand)) { ar = cand; ens = rev.get(cand)!; }
+    }
+    if (!ens.length) continue;
+    const alias = PROMO_ALIASES[promo] || new RegExp(`\\b${promo}\\b`, "i");
+    let seen = false, backed = false;
+    for (const en of ens) {
+      const nameRe = new RegExp(en.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\s+/g, "\\s+"), "gi");
+      for (const hit of src.matchAll(nameRe)) {
+        seen = true;
+        const i = hit.index || 0;
+        if (alias.test(src.slice(Math.max(0, i - 150), i + hit[0].length + 150))) { backed = true; break; }
+      }
+      if (backed) break;
+    }
+    if (seen && !backed) out.push(`${promo} ${ar}`);
+  }
+  return out;
+}
+/**
  * «بدأ مسيرته في عالم المصارعة عام 1987» must be what the source says (began / started his
  * career, debuted). "He started working for the then-WWFW in 1987" is a company start, not a
  * career start: the writer compressed it and gave the career a year that is not its own — Bruce
