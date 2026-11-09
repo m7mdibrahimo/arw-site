@@ -16,4 +16,4 @@ Fanatics sent word to Ringside News on November 9, 2026, announcing a new partne
 
 Initial designs include WWE star Cody Rhodes alongside other sports figures such as Karl-Anthony Towns and Joe Burrow. Cardholders can earn rewards redeemable for wrestling merchandise, collectibles, and event tickets across the Fanatics platform.
 
-Fanatics Financial Services President Greg Lisiewski explained the goal behind the product.
+Fanatics Financial Services President Greg Lisiewski explained that the card is designed to be a badge of fandom that rewards fans in new ways. Invitations to apply for the card will roll out later.

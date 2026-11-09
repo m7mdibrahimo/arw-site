@@ -261,6 +261,10 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
     return q.split(/\s+/).filter(Boolean).length < 3 && !/^[A-Z][^.!?]*[.!?]$/.test(q);
   });
   if (fragments.length) issues.push("blockquote is a fragment, not a statement");
+  // the story ends on a lead-in whose quote never came: «Fanatics Financial Services President Greg Lisiewski explained
+  // the goal behind the product.» was the last line of the American Express story (INCIDENTS #1174)
+  const lastProse = bl.map((l) => l.trim()).filter((l) => l && !/^(?:<)?https?:\/\//.test(l)).pop() || "";
+  if (/:\s*$/.test(lastProse) || /\b(?:explained|shared|revealed|detailed|outlined|discussed|described)\s+(?:the\s+|his\s+|her\s+|their\s+)?(?:goal|reason|idea|thinking|vision|purpose|motivation|reasoning|story)s?\s+(?:behind|for)\s+[^.!?"”]{0,60}\.\s*$/i.test(lastProse)) issues.push("ends on a lead-in with no quote after it");
   // padded: far longer than the source
   const prose = body.replace(/<https?:\/\/[^>]+>/g, "").replace(/\s+/g, " ").length;
   if (i.sourceText.length < 800 && prose > i.sourceText.length * 3.5) issues.push("padded");

@@ -1638,3 +1638,21 @@ test("Timur The Great, Oday Al-Saleh and Grapsody are spelled right", async () =
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /تيمور الغري|عضد الصالح|غرافسودي/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #1174: «إسقاط الستار», «جو بيرو» (Joe Burrow), «منتجات ومنسوجات» and «المقيمين طويلي الأجل» reached the site;
+// the English American Express story ended on «… explained the goal behind the product.» with no quote after it.
+test("round 1174 wording is corrected and the English lead-in check catches a missing quote", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("بعد إسقاط الستار عليها"), "بعد إسدال الستار عليها");
+  assert.equal(applyCorrections("كارل أنطوني تاونز وجو بيرو"), "كارل أنطوني تاونز وجو بورو");
+  assert.equal(applyCorrections("على منتجات ومنسوجات المصارعة"), "على منتجات ومقتنيات المصارعة");
+  assert.equal(applyCorrections("بدلا من المقيمين طويلي الأجل"), "بدلا من المقيمين منذ سنوات طويلة");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /إسقاط الستار|جو بيرو|منتجات ومنسوجات|طويلي الأجل/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+  const { checkEnglish } = await import("../scripts/english-edition");
+  const src = "Fanatics announced a partnership with American Express. ".repeat(6);
+  const input: any = { sourceText: src, sourceUrl: "https://www.ringsidenews.com/x/", sourceTitle: "x", arabicTitle: "x", arabicBody: "x" };
+  const body = "Fanatics sent word on November 9, 2026, announcing a new partnership with American Express to launch a line of credit cards that feature more than 500 athletes across WWE, the NFL, NBA, and UFC.\n\n";
+  assert.ok(checkEnglish({ title: "WWE Superstars to Be Featured on Credit Cards", body: body + "Fanatics Financial Services President Greg Lisiewski explained the goal behind the product." } as any, input).includes("ends on a lead-in with no quote after it"));
+  assert.ok(!checkEnglish({ title: "WWE Superstars to Be Featured on Credit Cards", body: body + "Lisiewski explained that the card rewards fans in new ways." } as any, input).includes("ends on a lead-in with no quote after it"));
+});

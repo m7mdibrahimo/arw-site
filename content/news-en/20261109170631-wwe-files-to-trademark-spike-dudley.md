@@ -13,6 +13,6 @@ en_tags:
   - "Jeremy Lambert"
 image: /content/images/rpyb0wkbt5kqowvw.jpg
 ---
-WWE has filed a new trademark on "Spike Dudley." On November 6, WWE filed to trademark "Spike Dudley."
+WWE filed a new trademark on "Spike Dudley" on November 6.
 
 Matthew Hyson, the man who portrayed the character, filed for the trademark in May, but WWE opposed the filing. Hyson has since abandoned his application, which has allowed WWE to submit a new filing for the trademark.

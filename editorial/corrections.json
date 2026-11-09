@@ -10590,6 +10590,10 @@
     {"wrong": "فيلبيس أرينا", "right": "ويلنس أرينا", "note": "Bon Secours Wellness Arena — «Wellness» = «ويلنس» (INCIDENTS #1164)"},
     {"wrong": "مادي سين ماكسويل", "right": "ماديسون ماكسويل", "note": "Madisyn Maxxwell — زي القاموس (INCIDENTS #1164)"},
     {"wrong": "ليسوا أتقياء", "right": "ليسوا معصومين من الخطأ", "note": "«not perfect» معناها مش معصومين من الخطأ، مش «أتقياء» — خبر نيكي بيلا (INCIDENTS #1164)"},
-    {"wrong": "لسنا أتقياء", "right": "لسنا معصومين من الخطأ", "note": "«we're not perfect» = لسنا معصومين من الخطأ (INCIDENTS #1164)"}
+    {"wrong": "لسنا أتقياء", "right": "لسنا معصومين من الخطأ", "note": "«we're not perfect» = لسنا معصومين من الخطأ (INCIDENTS #1164)"},
+    {"wrong": "إسقاط الستار", "right": "إسدال الستار", "note": "التعبير الصح «إسدال الستار» — خبر جون سينا (INCIDENTS #1174)"},
+    {"wrong": "جو بيرو", "right": "جو بورو", "note": "Joe Burrow (NFL) — خبر بطاقات أمريكان إكسبريس (INCIDENTS #1174)"},
+    {"wrong": "منتجات ومنسوجات", "right": "منتجات ومقتنيات", "note": "merchandise, collectibles = منتجات ومقتنيات، مش «منسوجات» (INCIDENTS #1174)"},
+    {"wrong": "طويلي الأجل", "right": "منذ سنوات طويلة", "note": "long-term residents = المقيمين منذ سنوات طويلة — جمع مضاف تقيل (INCIDENTS #1174)"}
   ]
 }
