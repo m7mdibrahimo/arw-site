@@ -4997,22 +4997,19 @@
     "publishedAt": 1794244403085,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال فيرنس اسبكتكيولار 06.11.2026 مترجم",
-    "lastAttempt": 1794244449014,
+    "lastAttempt": 1794245261260,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
-      "instagram_story",
-      "tiktok"
+      "instagram_story"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261109185058-cmll-sabados-de-coliseo-07-11-2026": {
     "publishedAt": 1794244478744,
@@ -5022,6 +5019,32 @@
     "instagram_story": false,
     "title": "عرض سي ام ال ال سابادوس دي كوليسيو 07.11.2026 مترجم",
     "lastAttempt": 1794244490111,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261109190003-gcw-the-crossroads-2026": {
+    "publishedAt": 1794245288411,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض جي سي دبليو ذا كروس رودز 07.11.2026",
+    "lastAttempt": 1794245301931,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261109190448-ufc-fight-night-293-cortes-acosta-vs-walker": {
+    "publishedAt": 1794245329847,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض يو اف سي فايت نايت 07.11.2026 مترجم",
+    "lastAttempt": 1794245342539,
     "errors": {},
     "processing": [],
     "reviewPlatforms": [],
