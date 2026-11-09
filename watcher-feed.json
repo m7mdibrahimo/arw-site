@@ -1,5 +1,15 @@
 [
   {
+    "id": 338209,
+    "link": "https://www.fightful.com/wrestling/tommaso-ciampa-vs-speedball-mike-bailey-for-aew-national-title-added-to-three-hour-dynamite-collision/",
+    "date": "2026-11-09T12:19:31",
+    "date_gmt": "2026-11-09T17:19:31",
+    "title": {
+      "rendered": "Tommaso Ciampa vs. &#8216;Speedball&#8217; Mike Bailey For AEW National Title Added To Three-Hour Dynamite/Collision"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/18024858/aew-dynamite-logo.jpg"
+  },
+  {
     "id": 338194,
     "link": "https://www.fightful.com/wrestling/tjpw-announces-conditions-for-unlimited-princess-title-match-to-take-place/",
     "date": "2026-11-09T12:10:29",
@@ -288,15 +298,5 @@
       "rendered": "Randy Orton: I&#8217;ll Be Back. I Still Have More To Do"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/04/20184344/maxresdefault-36.jpg"
-  },
-  {
-    "id": 338109,
-    "link": "https://www.fightful.com/wrestling/curry-man-and-glacier-appear-in-aew-thanksgiving-ad/",
-    "date": "2026-11-08T12:25:58",
-    "date_gmt": "2026-11-08T17:25:58",
-    "title": {
-      "rendered": "Curry Man And Glacier Appear In AEW Thanksgiving Ad"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/08122530/Screenshot-2026-11-08-at-12.20.00-PM-scaled.png"
   }
 ]
