@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/dijak-leaves-mlw-two-years-announces-free-agency": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-09T16:21:05.444Z"
+ },
+ "https://www.ringsidenews.com/alexa-bliss-reveals-shes-sick-two-months-cant-shake-it": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-09T16:20:12.016Z"
+ },
  "https://www.fightful.com/wrestling/jason-hotch-announced-for-tna-world-x-cup": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -33,11 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-09T16:17:45.521Z"
- },
- "https://www.ringsidenews.com/alexa-bliss-reveals-shes-sick-two-months-cant-shake-it": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-09T16:05:50.996Z"
  },
  "https://www.ringsidenews.com/mvp-calls-out-entitled-wrestling-fans-who-dont-respect-personal-boundaries": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («تصنعان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
   "retry": true,
   "at": "2026-10-29T02:21:08.646Z"
- },
- "https://www.fightful.com/wrestling/ilja-dragunov-vs-the-beast-mortos-the-cut-vs-the-conglomeration-more-set-for-aew-fright-night-collision": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-29T02:16:23.553Z"
  }
 }
