@@ -1,6 +1,7 @@
 ---
 federation: AEW
-title: "توماسو تشامبا يواجه سبيدبول مايك بيلي على بطولة AEW الوطنية ضمن عرض AEW Dynamite وAEW Collision الثلاثي"
+title: "توماسو تشامبا يواجه سبيدبول مايك بيلي على بطولة AEW الوطنية في عرض AEW Dynamite وAEW Collision المشترك"
+permalink: "/news/توماسو-تشامبا-يواجه-سبيدبول-مايك-بيلي-على-بطولة-aew-الوطنية-ضمن-عرض-aew-dynamite-وaew-collision-الثلاثي/index.html"
 date: 2026-11-09T20:19:31.000+03:00
 published_at: 2026-11-09T17:23:26.053Z
 source_id: 338209

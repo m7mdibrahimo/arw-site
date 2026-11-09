@@ -417,7 +417,9 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   [/\bStreet Fight (movie|film)\b/g, "Street Fighter $1"],
   // the faction is «The 946»; the source drops «The» after a preposition (INCIDENTS #598)
   // «Will Ospreay» came out «Will OSDAY» in a preview (INCIDENTS #651)
-  [/\bWill (?:OSDAY|Osday)\b/g, "Will Ospreay"],
+  // and «Will Ospersay» in the Kyle Fletcher Blood and Guts story (INCIDENTS #1179)
+  [/\bWill (?:OSDAY|Osday|Ospersay|Osprey|Ospray|Ospery|Ospreary)\b/g, "Will Ospreay"],
+  [/\bOspersay\b/g, "Ospreay"],
   // the Saudi WrestleMania is number 43 (2027); the writer wrote «WrestleMania 23» (INCIDENTS #663)
   [/\bWrestleMania 23\b(?=[^.\n]{0,40}Saudi)/g, "WrestleMania 43"],
   // her ring name is «Mercedes Moné»; the writer drops the accent in some stories (INCIDENTS #682)
