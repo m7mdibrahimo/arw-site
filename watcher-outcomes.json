@@ -1,43 +1,38 @@
 {
- "https://www.ringsidenews.com/spoiler-unadvertised-match-november-9-wwe-raw": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-09T20:32:37.619Z"
- },
- "https://www.ringsidenews.com/rusev-fight-vince-mcmahon-keep-lanas-spot-wwe-wrestlemania-31": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Adam Copeland",
-  "retry": true,
-  "at": "2026-11-09T20:30:19.954Z"
- },
  "https://www.fightful.com/wrestling/mlw-fusion-spoilers-taped-on-11-8": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T20:34:35.966Z"
+  "at": "2026-11-09T20:38:20.494Z"
  },
  "https://www.fightful.com/wrestling/beyond-wrestling-announces-wrestival-schedule": {
-  "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
+  "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Ricky Saints",
   "retry": true,
-  "at": "2026-11-09T20:34:35.623Z"
+  "at": "2026-11-09T20:38:20.115Z"
  },
  "https://www.fightful.com/wrestling/john-cena-shares-how-he-used-to-be-a-big-gift-giver-at-christmas-while-working-with-wwe-to-buy-through-his-workaholism": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T20:34:14.653Z"
+  "at": "2026-11-09T20:36:31.261Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-9": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T20:34:13.689Z"
+  "at": "2026-11-09T20:36:30.180Z"
  },
  "https://www.fightful.com/mma/donald-trump-says-he-was-only-kidding-about-offering-dana-white-the-press-secretary-job": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T20:34:12.886Z"
+  "at": "2026-11-09T20:36:29.264Z"
  },
  "https://www.fightful.com/wrestling/rosemary-working-backstage-at-tna-while-sidelined": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T20:34:12.498Z"
+  "at": "2026-11-09T20:36:28.866Z"
+ },
+ "https://www.ringsidenews.com/spoiler-unadvertised-match-november-9-wwe-raw": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-09T20:32:37.619Z"
  },
  "https://www.ringsidenews.com/rusev-fight-vince-mcmahon-keep-lanas-spot-wwe-wrestlemania-31": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Adam Copeland",
