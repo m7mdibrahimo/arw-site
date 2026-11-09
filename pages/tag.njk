@@ -14,8 +14,8 @@ permalink: "{{ tagPage.permalink }}"
 <script>if(!['arab-wrestling.com','localhost','127.0.0.1'].includes(location.hostname)){location.replace('https://arab-wrestling.com'+location.pathname+location.search+location.hash);}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-{# One robots tag only: thin tags (<3 articles) stay out of the index, the rest are indexable. #}
-{% if tagObj.count < 3 %}<meta name="robots" content="noindex, follow">{% else %}<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">{% endif %}
+{# One robots tag only: thin tags (<3 articles) and page 2+ (sitelinks, 2026-11-09) stay out of the index, the rest are indexable. #}
+{% if tagObj.count < 3 or tagPage.pageNumber > 1 %}<meta name="robots" content="noindex, follow">{% else %}<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">{% endif %}
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
 <link rel="icon" type="image/png" href="/favicon.png?v=3">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">

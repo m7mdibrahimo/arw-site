@@ -13,7 +13,8 @@ permalink: "/federations/{% if pagination.pageNumber > 0 %}{{ pagination.pageNum
 <script>if(!['arab-wrestling.com','localhost','127.0.0.1'].includes(location.hostname)){location.replace('https://arab-wrestling.com'+location.pathname+location.search+location.hash);}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+{#- Sitelinks (owner, 2026-11-09): this hub lists every item 20 at a time (~250 pages); «الاتحادات» and «صفحة 119» kept taking the slots under the site name meant for the owner's four sections. Off the index, links followed; each federation page stays indexed. -#}
+<meta name="robots" content="noindex, follow">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
 <link rel="icon" type="image/png" href="/favicon.png?v=3">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">

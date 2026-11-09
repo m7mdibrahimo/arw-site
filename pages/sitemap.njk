@@ -15,6 +15,7 @@ eleventyExcludeFromCollections: true
     <changefreq>always</changefreq>
     <priority>1.0</priority>
   </url>
+  {#- Sitelinks (owner, 2026-11-09): the four sections under the site name — عروض المصارعة /shows/، مكتبة العروض /library/، الأخبار /news/، نوستالجيا /nostalgia/ — carry 0.9, right under the home page. /federations/, /about/, /apps/ and /support/ are noindex now, so they are not listed (a sitemap never names a noindex page). -#}
   <url>
     <loc>https://arab-wrestling.com/news/</loc>
     <lastmod>{{ latestNewsDate }}</lastmod>
@@ -28,40 +29,16 @@ eleventyExcludeFromCollections: true
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://arab-wrestling.com/federations/</loc>
-    <lastmod>{{ latestDate }}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://arab-wrestling.com/nostalgia/</loc>
     <lastmod>{{ latestNostalgiaDate }}</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://arab-wrestling.com/apps/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://arab-wrestling.com/tags/</loc>
     <lastmod>{{ latestDate }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://arab-wrestling.com/support/</loc>
-    <lastmod>2026-09-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://arab-wrestling.com/about/</loc>
-    <lastmod>2026-09-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
   </url>
   <url>
     <loc>https://arab-wrestling.com/contact/</loc>
@@ -92,7 +69,7 @@ eleventyExcludeFromCollections: true
     <loc>https://arab-wrestling.com/federation/{{ fed }}/</loc>
     <lastmod>{{ latestDate }}</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   {% endfor %}
   {# The show library and each program's page («عرض الرو الأخير مترجم») were missing from the sitemap (INCIDENTS #275) #}

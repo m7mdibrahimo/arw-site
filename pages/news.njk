@@ -13,7 +13,8 @@ permalink: "/news/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
 <script>if(!['arab-wrestling.com','localhost','127.0.0.1'].includes(location.hostname)){location.replace('https://arab-wrestling.com'+location.pathname+location.search+location.hash);}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+{#- Sitelinks (owner, 2026-11-09): page 2+ of a listing is a duplicate archive slice — Google showed «صفحة 119» and «/shows/3/» under the site name. Off the index, links still followed; self-canonical stays. -#}
+{% if pagination.pageNumber > 0 %}<meta name="robots" content="noindex, follow">{% else %}<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">{% endif %}
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
 <link rel="icon" type="image/png" href="/favicon.png?v=3">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
