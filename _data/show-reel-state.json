@@ -4975,7 +4975,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261109063825-gcw-dead-on-arrival-2026": {
     "publishedAt": 1794200592488,
