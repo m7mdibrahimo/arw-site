@@ -1,5 +1,25 @@
 [
   {
+    "id": 4745106560,
+    "link": "https://www.wrestlinginc.com/2310917/wwe-raw-november-9-2026-results/",
+    "date": "Mon, 09 Nov 2026 22:00:00 +0000",
+    "date_gmt": "2026-11-09T22:00:00.000Z",
+    "title": {
+      "rendered": "WWE Raw Results 11/9/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-results-11926-w-live-updates/l-intro-1794241740.jpg"
+  },
+  {
+    "id": 3102823210,
+    "link": "https://www.wrestlinginc.com/2311603/gunther-reportedly-opted-out-wwe-crown-jewel/",
+    "date": "Mon, 09 Nov 2026 21:53:26 +0000",
+    "date_gmt": "2026-11-09T21:53:26.000Z",
+    "title": {
+      "rendered": "Gunther Reportedly Opted Out Of WWE Crown Jewel"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/gunther-reportedly-opted-out-of-wwe-crown-jewel/l-intro-1794261074.jpg"
+  },
+  {
     "id": 4810026470,
     "link": "https://www.wrestlinginc.com/2311511/wwe-star-r-truth-mourns-death-father/",
     "date": "Mon, 09 Nov 2026 21:02:19 +0000",
@@ -178,25 +198,5 @@
       "rendered": "WWE Roster Left Saudi Arabia Before Recent Attacks On Riyadh"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-roster-left-saudi-arabia-before-recent-attacks-on-riyadh/l-intro-1794171561.jpg"
-  },
-  {
-    "id": 2749391071,
-    "link": "https://www.wrestlinginc.com/2309319/wwe-drew-mcintyre-explains-decision-pursue-hollywood-career/",
-    "date": "Sun, 08 Nov 2026 20:00:00 +0000",
-    "date_gmt": "2026-11-08T20:00:00.000Z",
-    "title": {
-      "rendered": "WWE's Drew McIntyre Explains Decision To Pursue Hollywood Career"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-drew-mcintyre-explains-decision-to-pursue-hollywood-career/l-intro-1793986061.jpg"
-  },
-  {
-    "id": 4625757399,
-    "link": "https://www.wrestlinginc.com/2310318/aew-njpw-wrestle-kingdom-21-dave-meltzer-breaks-down-backstage-politics-presence/",
-    "date": "Sun, 08 Nov 2026 19:57:21 +0000",
-    "date_gmt": "2026-11-08T19:57:21.000Z",
-    "title": {
-      "rendered": "Dave Meltzer Breaks Down Backstage Politics Of AEW Presence At NJPW Wrestle Kingdom"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/dave-meltzer-breaks-down-backstage-politics-of-aew-presence-at-njpw-wrestle-kingdom/l-intro-1794167755.jpg"
   }
 ]

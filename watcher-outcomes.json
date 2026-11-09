@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2310917/wwe-raw-november-9-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-09T22:02:45.899Z"
+ },
  "https://www.ringsidenews.com/rusev-fight-vince-mcmahon-keep-lanas-spot-wwe-wrestlemania-31": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Adam Copeland",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-29T17:00:50.994Z"
- },
- "https://www.fightful.com/wrestling/stardom-crimson-nightmare-results-10-29-26-shingo-takagi-hirooki-goto-in-mixed-tag-team-action": {
-  "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي، حروف من لغة أخرى (يابانية/روسية/عبرية/بورمية...) داخل النص",
-  "retry": true,
-  "at": "2026-10-29T16:58:53.155Z"
  }
 }
