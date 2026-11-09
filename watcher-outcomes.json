@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/rusev-fight-vince-mcmahon-keep-lanas-spot-wwe-wrestlemania-31": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Adam Copeland",
+  "retry": true,
+  "at": "2026-11-09T20:26:01.017Z"
+ },
  "https://www.fightful.com/wrestling/mlw-fusion-spoilers-taped-on-11-8": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -28,11 +33,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-09T20:25:48.387Z"
- },
- "https://www.ringsidenews.com/rusev-fight-vince-mcmahon-keep-lanas-spot-wwe-wrestlemania-31": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Adam Copeland",
-  "retry": true,
-  "at": "2026-11-09T20:17:31.925Z"
  },
  "https://www.ringsidenews.com/steve-austin-says-bret-hart-set-standard-realism-professional-wrestling": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
