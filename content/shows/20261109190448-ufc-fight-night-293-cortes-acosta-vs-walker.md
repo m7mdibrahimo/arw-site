@@ -34,4 +34,5 @@ downloads_medium: |-
   https://vidmoly.me/v/etmcy1zlpf0g
   https://hgcloud.to/kcykx0i0lpig
 layout: post-layout.njk
+card_title: name
 ---
