@@ -28,7 +28,7 @@ test("a library page title never repeats the year already in the program name (I
 test("a weekly show carries the English program name without the federation", async () => {
   const { showNameForms } = await import("../lib/show-seo.cjs");
   const forms = showNameForms({ headline: "عرض سماك داون 16.10.2026 مترجم", programName: "WWE Smackdown", eventDate: "2026-10-16", aliases: ["عرض سماك داون"], isShow: true });
-  for (const q of ["Smackdown مترجم", "Smackdown الاخير مترجم", "مشاهدة Smackdown", "Smackdown 2026 مترجم"]) assert.ok(forms.includes(q), q);
+  for (const q of ["SmackDown مترجم", "SmackDown الاخير مترجم", "مشاهدة SmackDown", "SmackDown 2026 مترجم"]) assert.ok(forms.includes(q), q);
 });
 
 test("Money in the Bank is also written «مونى» with a final alef maqsura (INCIDENTS #734)", async () => {

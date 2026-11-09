@@ -247,7 +247,7 @@ test("no tilde in the search title of a show", () => {
 // INCIDENTS #1079: «دبليو دبليو إي راو 2 نوفمبر 2026» (position 4.1) — a WWE show's description carries the federation in Arabic letters with the date.
 test('a WWE show description has the Arabic federation name with the written date', () => {
   const r = showSeoText({ headline: 'عرض الرو 02.11.2026 مترجم', title: 'WWE RAW (02.11.2026)', programName: 'WWE RAW', eventDate: '2026-11-02', day: '2 نوفمبر 2026', isLatest: true, description: '', aliases: [] });
-  assert.match(r.description, /دبليو دبليو إي الرو 2 نوفمبر 2026/);
+  assert.match(r.description, /دبليو دبليو إي راو 2 نوفمبر 2026/);
 });
 
 // A card named after its fighters is searched by a fighter's name («grayson مترجم», position 10.3 for the MLP Special):
@@ -308,4 +308,18 @@ test('the head never offers the federation code INDIE as a keyword', () => {
   assert.deepEqual(headTags(['GCW', 'INDIE', 'GCW Dead On Arrival']), ['GCW', 'GCW Dead On Arrival']);
   assert.deepEqual(headTags('WWE'), ['WWE']);
   assert.deepEqual(headTags(undefined), []);
+});
+
+// INCIDENTS #1187: «دبليو دبليو إي الرو» in every RAW description (the query is «دبليو دبليو إي راو 2 نوفمبر 2026»), and
+// «WWE Smackdown» (studio casing) in every SmackDown head.
+test("RAW description says «دبليو دبليو إي راو» and SmackDown is cased officially in the head (INCIDENTS #1187)", async () => {
+  const { showSeoText, showNameForms } = await import("../lib/show-seo.cjs");
+  const raw = showSeoText({ headline: "عرض الرو الأخير 02.11.2026 مترجم", title: "WWE RAW 02.11.2026", programName: "WWE RAW", eventDate: "2026-11-02", day: "2 نوفمبر 2026", isLatest: true, description: "" });
+  assert.match(raw.description, /دبليو دبليو إي راو 2 نوفمبر 2026/);
+  assert.doesNotMatch(raw.description, /دبليو دبليو إي الرو/);
+  const sd = showSeoText({ headline: "عرض سماك داون الأخير 06.11.2026 مترجم", title: "WWE Smackdown 06.11.2026", programName: "WWE Smackdown", eventDate: "2026-11-06", day: "6 نوفمبر 2026", isLatest: true, description: "" });
+  assert.match(sd.title, /WWE SmackDown/);
+  assert.doesNotMatch(sd.title + sd.description, /Smackdown/);
+  const forms = showNameForms({ headline: "عرض سماك داون الأخير 06.11.2026 مترجم", title: "WWE Smackdown 06.11.2026", programName: "WWE Smackdown", eventDate: "2026-11-06", isShow: true });
+  assert.ok(!forms.some((n: string) => /\bSmackdown\b/.test(n)), forms.filter((n: string) => /Smackdown/.test(n)).join(" | "));
 });

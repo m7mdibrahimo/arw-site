@@ -3407,9 +3407,9 @@ test('a show page title carries the dotted date people search with, only in the 
   const raw = { headline: 'عرض الرو 05.10.2026 مترجم', title: 'WWE RAW 05.10.2026', programName: 'WWE RAW', eventDate: new Date('2026-10-05'), day: '5 أكتوبر 2026', description: 'عرض الرو مترجم بالكامل مع جميع النزالات والأحداث.' };
   const latest = showSeoText({ ...raw, isLatest: true });
   assert.equal(latest.title, 'عرض الرو الأخير 05.10.2026 كامل مترجم — WWE RAW');
-  assert.equal(latest.description, 'مشاهدة وتحميل عرض الرو الأخير 05.10.2026 مترجم بالعربي كامل أونلاين، موعد العرض 5 أكتوبر 2026 (دبليو دبليو إي الرو 5 أكتوبر 2026، WWE RAW October 5, 2026)، مصارعة حرة مترجمة.');
+  assert.equal(latest.description, 'مشاهدة وتحميل عرض الرو الأخير 05.10.2026 مترجم بالعربي كامل أونلاين، موعد العرض 5 أكتوبر 2026 (دبليو دبليو إي راو 5 أكتوبر 2026، WWE RAW October 5, 2026)، مصارعة حرة مترجمة.');
   // the program's other spellings stay in the structured data, never as a list in the description (INCIDENTS #428)
-  assert.doesNotMatch(showSeoText({ ...raw, isLatest: true, aliases: ['راو', 'RAW'] }).description, /ويعرف أيضا|راو/);
+  assert.doesNotMatch(showSeoText({ ...raw, isLatest: true, aliases: ['راو', 'RAW'] }).description, /ويعرف أيضا/); // «راو» once in «دبليو دبليو إي راو <date>» is the query itself (INCIDENTS #1187), not a spelling list
   // one date in the title, short enough for Google to show whole (INCIDENTS #428)
   assert.ok(latest.title.length + ' | عرب راسلنج'.length <= 70, latest.title);
   assert.ok(latest.description.length <= 180, latest.description);
@@ -4560,8 +4560,8 @@ test('recap pages get a searchable title and description with program, date and 
   const { createRequire } = await import('node:module');
   const { recapSeoText } = createRequire(import.meta.url)('../lib/show-seo.cjs');
   const r = recapSeoText({ headline: 'ملخص عرض سماك داون 09.10.2026 مترجم', title: 'WWE Smackdown Highlights 09.10.2026', programName: 'WWE Smackdown', eventDate: '2026-10-09', day: '9 أكتوبر 2026', description: 'ملخص عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث.' });
-  assert.equal(r.title, 'ملخص عرض سماك داون 09.10.2026 مترجم — WWE Smackdown');
-  assert.match(r.description, /WWE Smackdown Highlights October 9, 2026/);
+  assert.equal(r.title, 'ملخص عرض سماك داون 09.10.2026 مترجم — WWE SmackDown');
+  assert.match(r.description, /WWE SmackDown Highlights October 9, 2026/);
   assert.doesNotMatch(r.description, /بالكامل مع جميع/);
   const own = recapSeoText({ headline: 'ملخص عرض الرو', title: 'x', programName: 'WWE RAW', eventDate: '2026-10-05', day: '5 أكتوبر 2026', description: 'وصف خاص بالمحرر.' });
   assert.equal(own.description, 'وصف خاص بالمحرر.');
@@ -4572,7 +4572,7 @@ test('the newest recap of a weekly program says «الأخير» in its head tit
   const { recapSeoText } = createRequire(import.meta.url)('../lib/show-seo.cjs');
   const f = { headline: 'ملخص عرض سماك داون 23.10.2026 مترجم', title: 'WWE Smackdown Highlights 23.10.2026', programName: 'WWE Smackdown', eventDate: '2026-10-23', day: '23 أكتوبر 2026', description: 'ملخص عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث.' };
   const latest = recapSeoText({ ...f, isLatest: true });
-  assert.equal(latest.title, 'ملخص عرض سماك داون الأخير 23.10.2026 مترجم — WWE Smackdown');
+  assert.equal(latest.title, 'ملخص عرض سماك داون الأخير 23.10.2026 مترجم — WWE SmackDown');
   assert.match(latest.description, /ملخص عرض سماك داون الأخير 23\.10\.2026/);
   const older = recapSeoText({ ...f, isLatest: false });
   assert.doesNotMatch(older.title, /الأخير/);

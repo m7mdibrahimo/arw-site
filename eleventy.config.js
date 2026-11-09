@@ -1891,6 +1891,8 @@ module.exports = function(eleventyConfig) {
   // A show's structured-data keywords: its tags, then up to `max` of its search names, each once. The tags and the
   // program's names overlap («داينامايت», «AEW Dynamite» twice) and the repeats used the slots of the episode's own
   // dated names (INCIDENTS #940)
+  // «WWE Smackdown» (the studio's casing) → «WWE SmackDown» in the head's structured data (INCIDENTS #1187). Head only.
+  eleventyConfig.addFilter("officialCase", (x) => require("./lib/show-seo.cjs").officialCase(x == null ? "" : x));
   eleventyConfig.addNunjucksGlobal("headTags", function(tags) {
     return require("./lib/show-seo.cjs").headTags(tags);
   });

@@ -2,6 +2,27 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "نزال رجل أخير صامد",
+      "right": "نزال الرجل الأخير الصامد",
+      "note": "Last Man Standing اتكتب «نزال رجل أخير صامد» في خبر كودي رودز وإيثان بايج — الصح «الرجل الأخير الصامد» زي باقي الأخبار (INCIDENTS #1186)"
+    },
+    {
+      "wrong": "محبوبة لجماهير",
+      "right": "محبوبة للجماهير",
+      "note": "«كمحبوبة لجماهير» ناقصة «ال» في خبر تيفاني ستراتون (INCIDENTS #1186)"
+    },
+    {
+      "wrong": "محبوب لجماهير",
+      "right": "محبوب للجماهير",
+      "note": "نفس غلطة «محبوبة لجماهير» للمذكر (INCIDENTS #1186)"
+    },
+    {
+      "wrong": "في غضون(?= شهر (?:يناير|فبراير|مارس|أبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر))",
+      "right": "في",
+      "regex": true,
+      "note": "«في غضون شهر أغسطس الماضي» — «في غضون» معناها «خلال مدة» مش تاريخ؛ الصح «في شهر أغسطس» (خبر ريا ريبلي، INCIDENTS #1186)"
+    },
+    {
       "wrong": "نجوم WWE والقسم الرئيسي",
       "right": "نجوم القسم الرئيسي في WWE",
       "note": "«superstars from WWE's main roster and NXT» split into «WWE and the main roster» in the John Cena Classic story (INCIDENTS #1180)"

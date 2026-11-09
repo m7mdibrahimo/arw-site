@@ -1656,3 +1656,14 @@ test("round 1174 wording is corrected and the English lead-in check catches a mi
   assert.ok(checkEnglish({ title: "WWE Superstars to Be Featured on Credit Cards", body: body + "Fanatics Financial Services President Greg Lisiewski explained the goal behind the product." } as any, input).includes("ends on a lead-in with no quote after it"));
   assert.ok(!checkEnglish({ title: "WWE Superstars to Be Featured on Credit Cards", body: body + "Lisiewski explained that the card rewards fans in new ways." } as any, input).includes("ends on a lead-in with no quote after it"));
 });
+
+// INCIDENTS #1186: «نزال رجل أخير صامد», «كمحبوبة لجماهير», «في غضون شهر أغسطس الماضي» reached stories.
+test("Last Man Standing, «للجماهير» and «في شهر <month>» are corrected (INCIDENTS #1186)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("فوز في نزال رجل أخير صامد ضمن العرض"), "فوز في نزال الرجل الأخير الصامد ضمن العرض");
+  assert.equal(applyCorrections("مسيرتها كمحبوبة لجماهير لم تنجح"), "مسيرتها كمحبوبة للجماهير لم تنجح");
+  assert.equal(applyCorrections("جراحة في غضون شهر أغسطس الماضي"), "جراحة في شهر أغسطس الماضي");
+  assert.equal(applyCorrections("يعود في غضون أسبوعين"), "يعود في غضون أسبوعين");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /رجل أخير صامد|محبوبة? لجماهير|في غضون شهر (?:يناير|فبراير|مارس|أبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر)/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
+  assert.deepEqual(bad, []);
+});

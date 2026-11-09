@@ -32,5 +32,5 @@ test('«مشاهدين العرض» and «نك» are corrected before publishing
 test('a recap video keeps only recap names, not the full show names', () => {
   const names = ['عرض سماك داون الاخير مترجم كامل', 'عرض سماك داون مترجم', 'WWE Smackdown October 23 2026', 'سماك داون 23.10.2026',
     'ملخص عرض سماك داون 23/10/2026', 'WWE Smackdown Highlights October 23 2026', 'نتائج سماك داون', 'اخر ملخص سماك داون', 'WWE Smackdown 2026 results'];
-  assert.deepEqual(recapOnlyNames(names), ['ملخص عرض سماك داون 23/10/2026', 'WWE Smackdown Highlights October 23 2026', 'نتائج سماك داون', 'اخر ملخص سماك داون', 'WWE Smackdown 2026 results']);
+  assert.deepEqual(recapOnlyNames(names), ['ملخص عرض سماك داون 23/10/2026', 'WWE SmackDown Highlights October 23 2026', 'نتائج سماك داون', 'اخر ملخص سماك داون', 'WWE SmackDown 2026 results']);
 });
