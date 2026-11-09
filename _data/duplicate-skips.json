@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/eddie-guerreros-daughter-sherilyn-guerrero-set-make-wrestling-debut-heated-confrontation/": {
-    "matchedFile": "20261025065732-شيريلين-غيريرو-تسجل-ظهورها-الأول-على-الحلبة-في-عرض-reality-of-wrestling-يوم-14-نوفمبر.md",
-    "reason": "الخبر الجديد يغطي نفس الحدث تماماً (استعداد شيريلين غيريرو لخوض أول نزال في Reality of Wrestling يوم 14 نوفمبر بعد المشادة مع ميستي ماركس) وهو مكرر للخبر المنشور بالرقم 0 من نفس المصدر.",
-    "at": "2026-10-25T10:48:52.428Z"
-  },
   "https://www.fightful.com/wrestling/wwf-red-letter-intercontinental-championship-belt-becomes-most-valuable-wrestling-title-ever-sold-at-716750/": {
     "matchedFile": "20261025135944-بيع-حزام-بطولة-القارات-الخاص-براندي-سافج-في-عرض-wrestlemania-iii-بمبلغ-ضخم-في-مزاد-علني.md",
     "reason": "الخبر الجديد يعرض نفس الحدث والتفاصيل تماماً (بيع حزام بطولة WWF للقارات بمبلغ 716,750 دولار عبر دار Heritage Auctions) وهو مكرر للخبر المنشور بالفعل.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261109143338-تفاصيل-وموعد-انطلاق-ودليل-مشاهدة-عرض-wwe-raw-الليلة-والنزالات-المؤكدة.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (عرض WWE RAW بتاريخ 9 نوفمبر 2026) الذي تم تغطيته في الخبر رقم 3، حيث يتناول تفاصيل افتتاح العرض والنزالات والظهور المتوقع للنجوم في نفس العرض.",
     "at": "2026-11-09T19:49:56.349Z"
+  },
+  "https://www.fightful.com/wrestling/mlw-fusion-spoilers-taped-on-11-8/": {
+    "matchedFile": "20261108040723-نتائج-عرض-mlw-saturday-night-superfight-7-نوفمبر-2026-كيلر-كروس-ويوتا-تسوجي-وتيسا-بلانشارد-يتنافسون.md",
+    "reason": "الخبر الجديد يغطي نتائج عروض اتحاد MLW وتسجيلاتها في نفس الفترة (عرض Saturday Night SuperFight وعرض Fusion في صالة سيسيرو ستاديوم بشيكاغو)، وتتطابق النزالات والعديد من التفاصيل المذكورة في الخبر المنشور بالفعل.",
+    "at": "2026-11-09T19:59:50.689Z"
   }
 }
