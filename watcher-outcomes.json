@@ -17,27 +17,32 @@
  "https://www.fightful.com/wrestling/beyond-wrestling-announces-wrestival-schedule": {
   "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
   "retry": true,
-  "at": "2026-11-09T19:06:54.568Z"
+  "at": "2026-11-09T19:15:47.783Z"
  },
  "https://www.fightful.com/wrestling/john-cena-shares-how-he-used-to-be-a-big-gift-giver-at-christmas-while-working-with-wwe-to-buy-through-his-workaholism": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T19:05:44.860Z"
+  "at": "2026-11-09T19:10:25.097Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-9": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T19:05:43.766Z"
+  "at": "2026-11-09T19:10:23.898Z"
  },
  "https://www.fightful.com/mma/donald-trump-says-he-was-only-kidding-about-offering-dana-white-the-press-secretary-job": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T19:05:42.851Z"
+  "at": "2026-11-09T19:10:22.894Z"
  },
  "https://www.fightful.com/wrestling/rosemary-working-backstage-at-tna-while-sidelined": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-09T19:05:42.450Z"
+  "at": "2026-11-09T19:10:22.454Z"
+ },
+ "https://www.fightful.com/wrestling/kyle-fletcher-i-dont-think-theres-another-couple-like-me-and-skye-blue-in-the-world-i-think-were-pretty-unique": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-09T19:07:46.314Z"
  },
  "https://www.fightful.com/wrestling/kacy-catanzaro-reflects-on-2019-royal-rumble-spot-im-super-proud-of-that": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kofi Kingston",
