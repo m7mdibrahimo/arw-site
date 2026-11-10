@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/steve-maclin-details-suffering-broken-fibula-ten-weeks-before-adam-copeland-match-at-mlp-northern-rising/": {
-    "matchedFile": "20261026055548-ستيف-ماكلين-يكشف-عن-شعوره-بعد-عرض-mlp-northern-rising-ويتحدث-عن-تعافيه-من-الإصابة.md",
-    "reason": "الخبر الجديد يعيد سرد تفاصيل الإصابة وكيفية حدوثها أمام إيساياه برونر قبل مواجهة آدم كوبلاند في عرض MLP Northern Rising، وهي نفس الواقعة وتفاصيل الإصابة التي تم تناولها في الخبر المنشور سابقاً.",
-    "at": "2026-10-26T16:02:42.163Z"
-  },
   "https://www.fightful.com/wrestling/channing-stacks-lorenzo-provides-update-after-suffering-injury-at-nxt-house-show/": {
     "matchedFile": "20261026125254-تشانينج-ستاكس-يكشف-مستجدات-تعافيه-بعد-دخوله-المستشفى-بسبب-إصابته-المرعبة-في-عرض-wwe-nxt.md",
     "reason": "الخبر الجديد يتناول نفس الواقعة (إصابة تشانينج ستاكس في عرض NXT) ونفس التصريحات التي تم تغطيتها بالفعل في الخبر المنشور، ولا يقدم تطوراً جديداً جوهرياً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261110175314-جوش-بارنيت-لم-أستشر-بشأن-عرض-bloodsport-reborn.md",
     "reason": "الخبر الجديد يعالج نفس الحدث المتعلق بإعلان اتحاد GCW عن عرض Bloodsport Reborn ورد جوش بارنيت بأنه لم يُستشر، وهو نفس مضمون الخبر المنشور برقم 0.",
     "at": "2026-11-10T16:24:37.051Z"
+  },
+  "https://www.fightful.com/wrestling/home-town-man-announced-for-tna-world-x-cup/": {
+    "matchedFile": "20261110181643-تأكيد-الاسم-الثالث-المشارك-في-بطولة-tna-world-x-cup-في-عرض-tna-destination-x-2026.md",
+    "reason": "الخبر الجديد يعلن عن مشاركة المصارع هوم تاون مان في بطولة TNA World X-Cup، وهو نفس الحدث والخبر تماما الذي تم تغطيته في الخبر المنشور رقم [0] والذي أكد انضمام نفس المصارع لنفس البطولة في نفس العرض.",
+    "at": "2026-11-10T16:33:46.076Z"
   }
 }
