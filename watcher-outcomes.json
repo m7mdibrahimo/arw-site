@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/jeff-cobb-admits-he-considered-retirement-wwe-release": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-10T12:32:25.131Z"
+ },
+ "https://www.ringsidenews.com/nxt-preview-november-10-2026-confirmed-matches-start-time-how-watch": {
+  "reason": "المراجعة رفضته: نفس العنوان منشور قبل كده — الخبر مكرر",
+  "retry": false,
+  "at": "2026-11-10T12:30:34.596Z"
+ },
  "https://www.fightful.com/wrestling/jeff-cobb-says-jonah-and-jafar-smash-were-potential-wwe-names": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -28,11 +38,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-10T12:29:49.253Z"
- },
- "https://www.ringsidenews.com/nxt-preview-november-10-2026-confirmed-matches-start-time-how-watch": {
-  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
-  "retry": true,
-  "at": "2026-11-10T12:24:02.234Z"
  },
  "https://www.wrestlinginc.com/2311676/wwe-alexa-bliss-ill-past-two-months": {
   "reason": "المراجعة رفضته: فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-30T01:28:07.489Z"
- },
- "https://www.wrestlinginc.com/2301731/dave-meltzer-wwe-crown-jewel-venue-change-riyadh-saudi-arabia": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-10-29T21:12:35.055Z"
  }
 }
