@@ -1,5 +1,15 @@
 [
   {
+    "id": 5142394706,
+    "link": "https://www.wrestlinginc.com/2311789/wwe-nxt-november-10-2026-results/",
+    "date": "Tue, 10 Nov 2026 22:00:00 +0000",
+    "date_gmt": "2026-11-10T22:00:00.000Z",
+    "title": {
+      "rendered": "WWE NXT Results 11/10/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-results-111026-w-live-updates/l-intro-1794286409.jpg"
+  },
+  {
     "id": 1977413354,
     "link": "https://www.wrestlinginc.com/2312847/bayley-michin-mia-yim-wwe-raw-wrestling-responds/",
     "date": "Tue, 10 Nov 2026 21:48:37 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Cody Rhodes To Officially Lead Team USA At WWE Survivor Series, CM Punk Joins Team"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/cody-rhodes-to-officially-lead-team-usa-at-wwe-survivor-series-cm-punk-joins-team/l-intro-1794278446.jpg"
-  },
-  {
-    "id": 3298315940,
-    "link": "https://www.wrestlinginc.com/2311753/wwe-raw-rey-fenix-intercontinental-title-no-1-contender-946/",
-    "date": "Tue, 10 Nov 2026 02:20:34 +0000",
-    "date_gmt": "2026-11-10T02:20:34.000Z",
-    "title": {
-      "rendered": "Rey Fénix Wins WWE Intercontinental Title No. 1 Contender's Match On Raw, 946 Attacks"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/rey-fnix-wins-wwe-intercontinental-title-no-1-contenders-match-on-raw-946-attacks/l-intro-1794276628.jpg"
   }
 ]
