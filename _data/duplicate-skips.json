@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/alexa-bliss-says-traveling-with-her-daughter-was-worked-into-wwe-contract-thats-a-non-negotiable/": {
-    "matchedFile": "20261026181711-أليكسا-بليس-تكشف-عن-شرط-غير-قابل-للتفاوض-قبل-عودتها-إلى-wwe.md",
-    "reason": "الخبر الجديد يعيد سرد نفس التصريحات التي أدلت بها أليكسا بليس في برنامج Shot of Brandi حول شرط اصطحاب ابنتها في عقدها مع WWE، وهو نفس المحتوى المذكور في الخبر رقم 0.",
-    "at": "2026-10-26T17:47:15.373Z"
-  },
   "https://www.fightful.com/wrestling/alexa-bliss-states-that-she-bray-wyatt-were-supposed-to-reunite-on-wwe-programming/": {
     "matchedFile": "20261026180305-أليكسا-بليس-تكشف-خطط-wwe-لجمعها-مع-براي-وايت-قبل-وفاته.md",
     "reason": "الخبر الجديد يكرر نفس التصريحات التي أدلت بها أليكسا بليس حول خطط اتحاد WWE لجمعها مجددا مع الراحل براي وايت ومشاركتها في فعالية الهالوين.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261110144931-بيكي-لينش-تتهم-ليف-مورغان-بإسقاط-مستوى-قسم-السيدات-في-wwe.md",
     "reason": "الخبر الجديد يعيد صياغة نفس التصريحات التي أدلت بها بيكي لينش في برنامج WWE Now والمذكورة في الخبر رقم 0، بما في ذلك الإشارة إلى عدم دفاع ليف مورغان عن لقبها لمدة 100 يوم، وهو ما يعتبر تكراراً لنفس المحتوى.",
     "at": "2026-11-10T18:26:25.017Z"
+  },
+  "https://www.fightful.com/wrestling/bret-hart-says-wrestling-is-starting-to-become-hokey-it-doesnt-try-to-be-real-anymore/": {
+    "matchedFile": "20261110180451-بريت-هارت-المصارعة-الحديثة-أصبحت-سخيفة-ولا-تحاول-أن-تبدو-حقيقية.md",
+    "reason": "الخبر الجديد يعيد نفس التصريحات التي أدلى بها بريت هارت في برنامج Johnny I Pro Show والتي تم نشرها بالفعل في الخبر السابق.",
+    "at": "2026-11-10T19:30:45.022Z"
   }
 }
