@@ -9,7 +9,7 @@ source_url: "https://www.ringsidenews.com/iyo-sky-could-getting-wwe-womens-inter
 en_tags:
   - "WWE"
   - "WWE RAW"
-  - "Iyo Sky"
+  - "IYO SKY"
   - "Raquel Rodriguez"
 image: /content/images/5wd61fht5ogb8y8k.jpg
 ---

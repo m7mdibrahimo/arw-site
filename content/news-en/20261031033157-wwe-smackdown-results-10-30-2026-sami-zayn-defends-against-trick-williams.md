@@ -17,7 +17,7 @@ image: /content/images/idf4jp2p6tkvi6lk.jpg
 ---
 Welcome to Wrestling Inc.'s coverage of WWE SmackDown on October 30, 2026, from the Charleston Coliseum in Charleston, WV. On Halloween Eve, Danhausen presents a special theme for the night. In the main event, Sami Zayn defends his Undisputed Championship against United States Champion Trick Williams.
 
-Chelsea Green successfully defends the WWE Women's Championship against Nikki Bella, securing a pinfall win with a little help from the ropes. Following the match, Iyo Sky and Damage CTRL make their presence felt as other contenders square off.
+Chelsea Green successfully defends the WWE Women's Championship against Nikki Bella, securing a pinfall win with a little help from the ropes. Following the match, IYO SKY and Damage CTRL make their presence felt as other contenders square off.
 
 Rey Fénix defeats Ricky Saints to retain the AAA Cruiserweight Championship after a hard-fought encounter. Meanwhile, Jade Cargill picks up a victory over Tatum Paxley with her signature Jaded finisher.
 

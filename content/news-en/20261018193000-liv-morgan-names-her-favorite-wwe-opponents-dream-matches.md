@@ -9,14 +9,14 @@ source_url: "https://www.wrestlinginc.com/2288405/wwe-liv-morgan-favorite-oppone
 en_tags:
   - "Liv Morgan"
   - "Rhea Ripley"
-  - "Iyo Sky"
+  - "IYO SKY"
   - "WWE"
   - "Stephanie McMahon"
 image: /content/images/llmwjkkopq65vzqk.jpg
 gallery:
   - /content/images/xvk31mosxaimi9m6.webp
 ---
-WWE Women's World Champion Liv Morgan recently opened up about her favorite opponents in the ring during an appearance on the Six Feet Under podcast. Morgan highlighted Rhea Ripley and Iyo Sky as the competitors who bring out the best in her. She explained that both stars present unique physical challenges, which forces her to dig deeper and match their intensity during matches.
+WWE Women's World Champion Liv Morgan recently opened up about her favorite opponents in the ring during an appearance on the Six Feet Under podcast. Morgan highlighted Rhea Ripley and IYO SKY as the competitors who bring out the best in her. She explained that both stars present unique physical challenges, which forces her to dig deeper and match their intensity during matches.
 
 Morgan and Ripley share a long history that began as a tag team before turning into a heated rivalry when Ripley betrayed her. Meanwhile, Morgan's battles with Sky include high-profile singles matches, such as the Queen of the Ring tournament finals and a title defense at SummerSlam.
 

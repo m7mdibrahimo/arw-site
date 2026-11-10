@@ -18,7 +18,7 @@ WWE readied a major lineup for Monday Night RAW on October 26 as General Manager
 
 Bayley vs. Lyra Valkyria — No Disqualification Match
 
-Raquel Rodriguez (c) vs. Iyo Sky — Women's Intercontinental Championship
+Raquel Rodriguez (c) vs. IYO SKY — Women's Intercontinental Championship
 
 Chad Gable & Dragon Lee vs. Big Cass & Ethan Page
 

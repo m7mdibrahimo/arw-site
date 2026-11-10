@@ -372,6 +372,8 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   [/\b(?:Njpw|Wwe|Aew|Tna|Roh|Mlw|Cmll|Gcw|Ufc|Nxt)\b/g, (m: string) => m.toUpperCase()],
   // «Rubbing His Success in Faces of Critics» — the article went missing from the idiom (Royce Keys story, round 2026-11-02)
   [/\b((?:[Rr]ubbing|[Rr]ubs?|[Rr]ubbed|[Tt]hrowing|[Tt]hrows?)) ((?:[\w'’]+ ){0,3})in (F|f)aces of\b/g, "$1 $2in the $3aces of"],
+  // «Iyo Sky» / «IYO Sky» — WWE writes her name IYO SKY, and 12 other stories did (IYO SKY title-match story, INCIDENTS #1201)
+  [/\b(?:Iyo|IYO) Sky\b|\bIyo SKY\b/g, "IYO SKY"],
   // «Royce Key» — the surname is Keys (WWE RAW card story, INCIDENTS #999)
   [/\bRoyce Key\b(?!s)/g, "Royce Keys"],
   // «Marisela Peñan» — a stray «n» after the surname of Marisela Peña (AAA Hall of Fame story, INCIDENTS #995)

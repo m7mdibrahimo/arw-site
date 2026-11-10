@@ -2430,6 +2430,34 @@ export function isEmptyResultsStub(plainText: string, modifiedGmt?: string): boo
   return resultLines < 3 && stillUpdating;
 }
 
+/**
+ * A live results page caught in the middle of a match: the last «… Match:» heading comes after the
+ * last result phrase and the play-by-play has started («The match starts off…», «then hits…»).
+ * Gemini then invented the finish — WWE RAW 9/11: Ringside's page stopped at «Liv Morgan then grabs her
+ * leg, allowing Rodriguez to hit … a Tejana Bomb» and the report said Raquel and Roxanne won; IYO SKY and
+ * Becky Lynch won (INCIDENTS #1201). Returns the text without that unfinished match (the live results
+ * updater adds it once the source has its winner), or the text unchanged.
+ */
+export function dropUnfinishedLastMatch(plainText: string, modifiedGmt?: string): string {
+  const text = String(plainText || "");
+  if (modifiedGmt) {
+    const modified = new Date(modifiedGmt.endsWith("Z") ? modifiedGmt : modifiedGmt + "Z").getTime();
+    if (Number.isFinite(modified) && Date.now() - modified > 45 * 60_000) return text;
+  }
+  const heading = /\b(?:Singles|Tag Team|Six[- ](?:Man|Woman)(?: Tag(?: Team)?)?|Triple Threat|Fatal (?:4|Four)[- ]Way|(?:Four|Five|Six)[- ]Way|Handicap|Ladder|Street Fight|Steel Cage|No Disqualification|Mixed Tag(?: Team)?|Women's(?: Tag Team)?|Championship|Title)(?: [A-Z][\w'-]*){0,3} Match\s*:/g;
+  let lastHeading = -1;
+  for (const m of text.matchAll(heading)) lastHeading = m.index ?? -1;
+  if (lastHeading < 0) return text;
+  const tail = text.slice(lastHeading);
+  const resultRe = /\bdef\.|\b(?:defeats?|defeated|retains?|retained|wins|won|no contest|draw|for the (?:win|victory)|the winners? (?:of|is|are)|winner:|picks? up the (?:win|victory)|gets? the (?:win|pin)|pinfall victory|by disqualification|count[- ]?out)\b/i;
+  if (resultRe.test(tail)) return text;
+  if (!/\b(?:match (?:starts|begins|gets underway|kicks off)|bell rings|then (?:hits|goes for|sends|grabs|counters))\b/i.test(tail)) return text;
+  const head = text.slice(0, lastHeading);
+  // Keep a page that has no finished result at all as it is: isEmptyResultsStub decides about it.
+  if (countResultLines(head) === 0) return text;
+  return head.trimEnd();
+}
+
 let lastPostRetryable = false;
 /** True when the last processPost() call skipped an article that is expected to
  *  become publishable later (e.g. results not filled in yet): don't mark it processed. */
@@ -4168,7 +4196,14 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   }
 
   // Clean plain text for AI
-  const plainText = htmlToPlainText(contentHtml);
+  let plainText = htmlToPlainText(contentHtml);
+  if (isShowResultsArticle(rawTitle, plainText)) {
+    const finished = dropUnfinishedLastMatch(plainText, post.modified_gmt);
+    if (finished.length < plainText.length) {
+      console.log(`[Watcher] ✂️ #${postId}: the last match on the live page has no winner yet — written without it (INCIDENTS #1201).`);
+      plainText = finished;
+    }
+  }
   if (plainText.length < 25) {
     console.warn(`[Watcher] Post #${postId} has insufficient text content, skipping.`);
     noteOutcome(postUrl, "المصدر مفيهوش نص كفاية يتكتب منه خبر");
