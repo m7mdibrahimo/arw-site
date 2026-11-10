@@ -66,10 +66,43 @@ export function fixNumberGender(text: string): string {
   return out;
 }
 
+/**
+ * «الشهرين الماضيين» / «أسبوعين» are dual nouns the dual_noun check blocks, and Gemini wrote them for
+ * every rewrite of one story: Alexa Bliss «ill for the past two months» was refused 13 times in a row,
+ * one Gemini request each (INCIDENTS #1207). Two months/weeks have an exact non-dual form — eight weeks,
+ * fourteen days — so they are rewritten before the check instead of refused. «شهرين ونصف» is left alone
+ * (no exact form). Idempotent.
+ */
+const DUAL_SPANS: Record<string, { count: string; plural: string; defCount: string }> = {
+  "شهر": { count: "ثمانية أسابيع", plural: "الأسابيع", defCount: "الثمانية" },
+  "أسبوع": { count: "أربعة عشر يوما", plural: "الأيام", defCount: "الأربعة عشر" },
+};
+const DUAL_SPAN_ADJ: Record<string, string> = {
+  "الماضيين": "الماضية", "الماضيان": "الماضية", "الأخيرين": "الأخيرة", "الأخيران": "الأخيرة",
+  "القادمين": "القادمة", "القادمان": "القادمة", "المقبلين": "المقبلة", "المقبلان": "المقبلة",
+  "الأولين": "الأولى", "الأولان": "الأولى", "السابقين": "السابقة", "السابقان": "السابقة",
+  "قادمين": "قادمة", "مقبلين": "مقبلة", "متتاليين": "متواصلة", "متتاليان": "متواصلة", "كاملين": "كاملة",
+  "كاملان": "كاملة", "إضافيين": "إضافية", "آخرين": "أخرى", "فقط": "فقط",
+};
+export function fixTimeDuals(text: string): string {
+  if (!text) return text;
+  const adj = Object.keys(DUAL_SPAN_ADJ).join("|");
+  // group 1: «لل» / «وال» / «بال»… (definite) or a bare joined letter; group 2: the unit; group 3: an adjective
+  const re = new RegExp(`(?<![${AR}])((?:و|ف)?لل|(?:و|ف|ب|ك|وب|فب)?ال|(?:و|ف|ب|ل|ك|وب|ول|فب|فل)?)(شهر|أسبوع)(?:ين|ان)(?![${AR}])(?!\\s+ونصف)(?:\\s+(${adj})(?![${AR}]))?`, "g");
+  return text.replace(re, (m, pre: string, unit: string, a?: string) => {
+    const f = DUAL_SPANS[unit];
+    const tail = a ? ` ${DUAL_SPAN_ADJ[a]}` : "";
+    if (pre.endsWith("لل")) return `${pre}${f.plural.slice(2)} ${f.defCount}${tail}`; // «للشهرين» → «للأسابيع»
+    if (pre.endsWith("ال")) return `${pre}${f.plural.slice(2)} ${f.defCount}${tail}`; // «بالشهرين» → «بالأسابيع»
+    if (a && a.startsWith("ال")) return m; // «شهرين الماضيين» without «ال» on the noun: unusual, leave it
+    return `${pre}${f.count}${tail}`;
+  });
+}
+
 /** Applies every wrong→right rule from editorial/corrections.json. Idempotent. */
 export function applyCorrections(text: string, corrections = loadCorrections()): string {
   if (!text) return text;
-  let out = fixNumberGender(decodeHtmlEntities(text));
+  let out = fixTimeDuals(fixNumberGender(decodeHtmlEntities(text)));
   for (const c of corrections) {
     out = out.replace(correctionRegex(c), (m, prefix = "") =>
       // the text is already right: «لعودة→للعودة» read «للعودة» as «ل» + «لعودة» and wrote «لللعودة» (INCIDENTS #944)

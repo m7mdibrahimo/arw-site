@@ -1663,7 +1663,7 @@ test("Last Man Standing, «للجماهير» and «في شهر <month>» are co
   assert.equal(applyCorrections("فوز في نزال رجل أخير صامد ضمن العرض"), "فوز في نزال الرجل الأخير الصامد ضمن العرض");
   assert.equal(applyCorrections("مسيرتها كمحبوبة لجماهير لم تنجح"), "مسيرتها كمحبوبة للجماهير لم تنجح");
   assert.equal(applyCorrections("جراحة في غضون شهر أغسطس الماضي"), "جراحة في شهر أغسطس الماضي");
-  assert.equal(applyCorrections("يعود في غضون أسبوعين"), "يعود في غضون أسبوعين");
+  assert.equal(applyCorrections("يعود في غضون أسبوعين"), "يعود في غضون أربعة عشر يوما"); // «في غضون» stays; the dual becomes 14 days (#1207)
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /رجل أخير صامد|محبوبة? لجماهير|في غضون شهر (?:يناير|فبراير|مارس|أبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر)/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });

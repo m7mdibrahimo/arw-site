@@ -366,6 +366,11 @@ export function newMedicalOutcome(draft: { title: string }, matched: { title: st
 /** A duplicate-check reason that concludes the story is new news, not a copy. */
 export const NOT_DUPLICATE_REASON = /(?:لا\s+(?:يُ?عتبر|يُ?عد|تُ?عتبر|تُ?عد|يمثل|يشكل)|ليس(?:ت)?|غير)\s+(?:(?!إلا)\S+\s+)?(?:تكرار|مكرر)|\bnot\s+(?:a\s+)?duplicate\b/i;
 
+/** A reason describing the new story as a reply to / denial of the published claim. */
+export const DENIAL_REASON = /(?<![ء-ي])(?:رد(?:اً|ا)?\s+و\s*(?:نفي|تفنيد|تكذيب)|(?:لل|ل)?رد\s+على\s+و\s*نفي|رد\s+صاحب\s+الشأن|(?:و|ل|ب)?(?:نفي|تفنيد|تكذيب)(?:اً|ا|ه|ها)?(?![ء-ي])|(?:ي|ت)(?:نفي|كذب|فند)(?![ء-ي]))/;
+/** …unless it says that denial is itself a repeat of what is already on the site. */
+export const REPEATED_REASON = /(?<![ء-ي])(?:يكرر|يعيد|مطابق|تغطيته\s+بالكامل|نفس\s+(?:المحتوى|محتوى|المعلومة|التصريح|التصريحات|النفي)|ولا\s+يقدم|دون\s+(?:أي\s+)?(?:تطور|جديد)|لا\s+يضيف)/;
+
 export function parseDuplicateAnswer(raw: string | null, candidates: NewsFile[]): { file: string; reason: string } | null {
   if (!raw) return null;
   try {
@@ -377,6 +382,10 @@ export function parseDuplicateAnswer(raw: string | null, candidates: NewsFile[])
     // الشائعة الذي لا يعتبر تكراراً» (Road Dogg's denial was dropped as a copy of the rumour —
     // INCIDENTS #1206). The reason is the verdict: a reason that rules out a duplicate wins.
     if (NOT_DUPLICATE_REASON.test(reason)) return null;
+    // …or calls the new story a reply/denial of what the published one claimed — the prompt's own
+    // «not a duplicate» case — unless it says the denial itself was already published (INCIDENTS #1207:
+    // «يعتبر رداً ونفياً مباشراً للشائعات المذكورة في الخبر السابق» dropped Road Dogg's denial again).
+    if (DENIAL_REASON.test(reason) && !REPEATED_REASON.test(reason)) return null;
     return { file: candidates[i].file, reason };
   } catch {
     return null;
