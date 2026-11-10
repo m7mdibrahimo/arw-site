@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/jasmin-st-claire-accuses-sonny-onoo-inappropriate-behavior-going-behind-her-back-great-muta-deal": {
+  "reason": "المراجعة رفضته: كلمة عربية مقطوعة من حرفين («بت») — اكتب الكلمة كاملة",
+  "retry": true,
+  "at": "2026-11-10T16:11:56.802Z"
+ },
  "https://www.fightful.com/wrestling/jim-ross-undergoing-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-30T05:53:44.797Z"
- },
- "https://www.wrestlinginc.com/2301913/tna-impact-october-29-2026-hated-loved-opinion-review": {
-  "reason": "المراجعة رفضته: نفس العنوان منشور قبل كده — الخبر مكرر",
-  "retry": false,
-  "at": "2026-10-30T04:18:05.305Z"
  }
 }
