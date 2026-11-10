@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2311789/wwe-nxt-november-10-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-10T23:30:47.914Z"
+ },
  "https://www.fightful.com/wrestling/bret-hart-wcw-shouldve-been-sued-for-putting-me-in-the-ring-with-goldberg": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -28,11 +33,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-10T23:30:34.171Z"
- },
- "https://www.wrestlinginc.com/2311789/wwe-nxt-november-10-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-10T23:07:52.080Z"
  },
  "https://www.wrestlinginc.com/2312847/bayley-michin-mia-yim-wwe-raw-wrestling-responds": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
