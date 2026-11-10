@@ -1,23 +1,28 @@
 {
+ "https://www.fightful.com/wrestling/jim-ross-undergoing-shunt-surgery": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T14:25:20.882Z"
+ },
  "https://www.fightful.com/wrestling/jeff-cobb-says-he-thought-about-retiring-after-wwe-release": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T14:22:26.419Z"
+  "at": "2026-11-10T14:25:20.393Z"
  },
  "https://www.fightful.com/wrestling/jeff-cobb-says-jonah-and-jafar-smash-were-potential-wwe-names": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T14:22:25.392Z"
+  "at": "2026-11-10T14:25:19.462Z"
  },
  "https://www.fightful.com/wrestling/gcw-bloodsport-reborn-announced": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T14:22:24.267Z"
+  "at": "2026-11-10T14:25:18.438Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-9-2026-cody-rhodes-bayley-vs-michin-judgment-day-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T14:22:23.716Z"
+  "at": "2026-11-10T14:25:17.938Z"
  },
  "https://www.fightful.com/wrestling/john-cena-if-i-have-any-energy-left-in-my-intellectual-property-i-want-to-give-it-to-folks-who-are-clamoring-for-a-spot": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: حرف منفرد — كلمة مبتورة (حصل: «ق ليحكم»، «تضرب الح للمرة»)",
   "retry": true,
   "at": "2026-10-30T03:23:43.258Z"
- },
- "https://www.fightful.com/wrestling/roh-tv-results-10-29": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Lizzy Rain",
-  "retry": true,
-  "at": "2026-10-30T03:16:58.983Z"
  }
 }
