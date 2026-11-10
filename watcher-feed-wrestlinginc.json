@@ -1,5 +1,15 @@
 [
   {
+    "id": 3317837974,
+    "link": "https://www.wrestlinginc.com/2312589/wwe-nxt-john-cena-classic-invitees-revealed-tonight/",
+    "date": "Tue, 10 Nov 2026 20:02:43 +0000",
+    "date_gmt": "2026-11-10T20:02:43.000Z",
+    "title": {
+      "rendered": "More John Cena Classic Invitees To Be Revealed Tonight On WWE NXT"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/more-john-cena-classic-invitees-to-be-revealed-tonight-on-wwe-nxt/l-intro-1794340830.jpg"
+  },
+  {
     "id": 3040031225,
     "link": "https://www.wrestlinginc.com/2312469/dave-meltzer-gunther-wwe-dark-match-crown-jewel-trick-williams/",
     "date": "Tue, 10 Nov 2026 19:09:50 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW's Queen Aminata Shares Reaction To Winning TBS Championship"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-queen-aminata-shares-reaction-to-winning-tbs-championship/l-intro-1794264307.jpg"
-  },
-  {
-    "id": 4745106560,
-    "link": "https://www.wrestlinginc.com/2310917/wwe-raw-november-9-2026-results/",
-    "date": "Mon, 09 Nov 2026 22:00:00 +0000",
-    "date_gmt": "2026-11-09T22:00:00.000Z",
-    "title": {
-      "rendered": "WWE Raw Results 11/9/26 W/ Live Updates: Roman Reigns Confronts Royce Keys"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-results-11926-w-live-updates/l-intro-1794283875.jpg"
   }
 ]
