@@ -1,33 +1,33 @@
 {
- "https://www.wrestlinginc.com/2311296/wwe-booker-t-aew-change-people-watch-wrestling-cm-punk-hurt-syndicate": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-10T13:37:59.954Z"
- },
  "https://www.fightful.com/wrestling/jeff-cobb-says-jonah-and-jafar-smash-were-potential-wwe-names": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T13:39:19.088Z"
+  "at": "2026-11-10T13:42:10.996Z"
  },
  "https://www.fightful.com/wrestling/gcw-bloodsport-reborn-announced": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T13:39:18.122Z"
+  "at": "2026-11-10T13:42:09.975Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-9-2026-cody-rhodes-bayley-vs-michin-judgment-day-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T13:39:17.657Z"
+  "at": "2026-11-10T13:42:09.494Z"
  },
  "https://www.fightful.com/wrestling/john-cena-if-i-have-any-energy-left-in-my-intellectual-property-i-want-to-give-it-to-folks-who-are-clamoring-for-a-spot": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T13:39:16.965Z"
+  "at": "2026-11-10T13:42:08.773Z"
  },
  "https://www.fightful.com/wrestling/mlw-planning-a-roster-refresh": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T13:39:16.662Z"
+  "at": "2026-11-10T13:42:08.457Z"
+ },
+ "https://www.wrestlinginc.com/2311296/wwe-booker-t-aew-change-people-watch-wrestling-cm-punk-hurt-syndicate": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-10T13:37:59.954Z"
  },
  "https://www.fightful.com/wrestling/mlw-fusion-spoilers-taped-on-11-8": {
   "reason": "مكرر مع خبر نزل قبل كده",
