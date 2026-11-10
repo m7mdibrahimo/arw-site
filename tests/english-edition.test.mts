@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import matter from 'gray-matter';
-import { englishStyleRules, checkEnglish, stripBold, saveEnglishEdition, writeEnglishEdition, findEnglishEdition, englishSlug, dedupeEnglishEditions, englishPrompt, wordCount, embedLines, syncEnglishFromArabic, catchUpEnglishEditions, copiedRun, retryFeedback, type EnglishInput } from '../scripts/english-edition.ts';
+import { englishStyleRules, checkEnglish, stripBold, saveEnglishEdition, writeEnglishEdition, findEnglishEdition, englishSlug, dedupeEnglishEditions, englishPrompt, wordCount, embedLines, syncEnglishFromArabic, catchUpEnglishEditions, copiedRun, retryFeedback, alteredQuoteSentence, type EnglishInput } from '../scripts/english-edition.ts';
 
 const source = 'Cody Rhodes is making the first major change to the American Nightmare logo since he returned to WWE in 2022. The update honors his late dog Pharaoh, who appeared at many WWE events and became a fan favorite on social media. Rhodes said the change was something he had wanted to do for months and that fans will see it on merchandise soon.';
 const input: EnglishInput = {
@@ -531,4 +531,16 @@ test('English edition: a vacant title the source never mentions is held back, an
   assert.ok(checkEnglish(e, src).some((x) => x.startsWith('claim not in the source')));
   assert.ok(!checkEnglish({ ...e, body: e.body.replace('the vacant title', "the Women's Crown Jewel Championship") }, src).some((x) => x.startsWith('claim not in the source')));
   assert.match(englishStyleRules('https://www.ringsidenews.com/x/'), /Women's Crown Jewel Championship/);
+});
+
+test('a quote taken from the source with a word lost is caught (Paige story, INCIDENTS #1216)', () => {
+  const src = 'Paige told Metro: "I think WWE knows that already. And I feel like they love me for it. At the same time, it might be a pain in the ass to deal with me sometimes!"';
+  const bad = '> "I think WWE knows that already. And I feel like me for it. At the same time, it might be a pain in the ass to deal with me sometimes!"';
+  assert.equal(alteredQuoteSentence(bad, src), 'And I feel like me for it.');
+  assert.equal(alteredQuoteSentence(bad.replace('like me', 'like they love me'), src), null);
+  // a quote from a video the source text doesn't carry is not judged
+  assert.equal(alteredQuoteSentence('> "We are going to win the titles tonight. Nobody can stop us now."', src), null);
+  // a censored sentence is left alone
+  assert.equal(alteredQuoteSentence('> "I think WWE knows that already. It might be a pain in the a** to deal with me sometimes!"', src), null);
+  assert.ok(checkEnglish({ ...good, body: good.body + '\n\n' + bad }, { ...input, sourceText: source + ' ' + src }).some((x) => x.startsWith('quote changed from the source')));
 });

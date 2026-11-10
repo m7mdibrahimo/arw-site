@@ -1673,6 +1673,10 @@ export function autoFix(text: string): string {
     return true;
   }).join("\n").replace(/(\n-{3,}[ \t]*)(?:\n[ \t]*)*\n-{3,}[ \t]*(?=\n)/g, "$1").replace(/\n{3,}/g, "\n\n");
   out = headUnheadedMatches(out);
+  // A prose paragraph that stops with no full stop before the next one: «…إلى اليابان للتعلم واكتساب الخبرات» then a blank
+  // line (Hyperactive story, INCIDENTS #1216). Only a long Arabic sentence ending on a letter — never a heading, a list,
+  // a quote or a card line.
+  out = out.replace(/^([ء-ي][^\n*#>|🏆\u0000]*[ء-ي])[ \t]*(?=\n[ \t]*\n)/gm, (m: string, line: string) => (line.split(/\s+/).length >= 12 ? line + "." : m));
   out = out
     // "TNA iMPACT (9/24/2026)": an American M/D/YYYY date copied from the source
     // title used to get the whole article blocked (mangled_date) — convert it.

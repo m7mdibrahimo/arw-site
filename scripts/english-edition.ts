@@ -300,6 +300,10 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   // the goal behind the product.» was the last line of the American Express story (INCIDENTS #1174)
   const lastProse = bl.map((l) => l.trim()).filter((l) => l && !/^(?:<)?https?:\/\//.test(l)).pop() || "";
   if (/:\s*$/.test(lastProse) || /\b(?:explained|shared|revealed|detailed|outlined|discussed|described)\s+(?:the\s+|his\s+|her\s+|their\s+)?(?:goal|reason|idea|thinking|vision|purpose|motivation|reasoning|story)s?\s+(?:behind|for)\s+[^.!?"”]{0,60}\.\s*$/i.test(lastProse)) issues.push("ends on a lead-in with no quote after it");
+  // a quote that is the source's but with words lost: «I think WWE knows that already. And I feel like me for it.»
+  // (Paige story, source «…they love me for it.», INCIDENTS #1216)
+  const altered = alteredQuoteSentence(body, i.sourceText);
+  if (altered) issues.push(`quote changed from the source: «${altered}» — copy the speaker's sentence word for word`);
   // padded: far longer than the source
   const prose = body.replace(/<https?:\/\/[^>]+>/g, "").replace(/\s+/g, " ").length;
   if (i.sourceText.length < 800 && prose > i.sourceText.length * 3.5) issues.push("padded");
@@ -327,6 +331,26 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
     }
   }
   return issues;
+}
+
+const normQuote = (t: string) => t.toLowerCase().replace(/[’‘]/g, "'").replace(/[^a-z0-9' ]+/g, " ").replace(/\s+/g, " ").trim();
+/** A sentence of a «>» quote that is not in the source, when another sentence of the same quote is — the quote came
+ *  from the source but a word was lost or changed («And I feel like me for it.» for «And I feel like they love me
+ *  for it.», INCIDENTS #1216). Censored («a**»), cut («…») or bracketed sentences are left alone. */
+export function alteredQuoteSentence(body: string, sourceText: string): string | null {
+  const src = normQuote(sourceText || "");
+  if (!src) return null;
+  for (const line of body.split("\n")) {
+    if (!/^\s*>/.test(line)) continue;
+    const q = line.replace(/^\s*>\s*/, "").replace(/["“”]/g, " ");
+    const sentences = q.split(/(?<=[.!?])\s+/).map((x) => x.trim()).filter((x) => x.split(/\s+/).length >= 4 && !/[*\[\]…]|\.\.\./.test(x));
+    if (sentences.length < 2) continue;
+    const found = sentences.filter((x) => src.includes(normQuote(x)));
+    if (!found.length) continue; // a quote from a video or a post the source text doesn't carry
+    const lost = sentences.find((x) => !src.includes(normQuote(x)));
+    if (lost) return lost;
+  }
+  return null;
 }
 
 /** The first run of 14 words the edition's prose copies from the source (outside quotes, blockquotes and card lines), or null. */

@@ -1076,3 +1076,12 @@ test('a scheduled appearance is never headlined as already done', async () => {
   assert.equal(upcomingTitleAsDone('ميكي جيمز تظهر في عرض TNA Bound for Glory', 'Mickie James To Appear At TNA Bound For Glory'), '');
   assert.equal(upcomingTitleAsDone('ريك فلير يظهر علنا لأول مرة منذ سقوطه', 'Ric Flair Appears In Public For First Time Since Fall'), '');
 });
+
+test('a prose paragraph with no full stop before the next one gets one (Hyperactive story, INCIDENTS #1216)', async () => {
+  const { autoFix } = await import('../scripts/news-qa.ts');
+  const t = 'وأشارت إلى أن هذا يفسر توجه أفضل المصارعين في العالم إلى اليابان للتعلم واكتساب الخبرات\n\nمن جانبها، أوضحت سافاير ريد أن العيش مختلف.';
+  assert.ok(autoFix(t).includes('واكتساب الخبرات.\n\nمن جانبها'));
+  // a heading or a short label line is left alone
+  assert.ok(autoFix('**المواجهة الأولى**\n\nفاز كودي رودز على درو ماكنتاير بعد نزال قوي جدا.').includes('**المواجهة الأولى**\n\n'));
+  assert.ok(autoFix('نتائج العرض\n\nفاز كودي رودز على درو ماكنتاير بعد نزال قوي جدا.').startsWith('نتائج العرض\n\n'));
+});
