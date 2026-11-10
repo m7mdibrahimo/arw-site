@@ -1,5 +1,15 @@
 [
   {
+    "id": 338246,
+    "link": "https://www.fightful.com/?p=338246",
+    "date": "2026-11-09T19:15:00",
+    "date_gmt": "2026-11-10T00:15:00",
+    "title": {
+      "rendered": "WWE Raw Results (11/9/2026): Cody Rhodes, Bayley vs. Michin, Judgment Day, More"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/09180609/image-447.png?v=20261109230825"
+  },
+  {
     "id": 338252,
     "link": "https://www.fightful.com/wrestling/338252-josh-barnett-jake-hager/",
     "date": "2026-11-09T18:25:50",
@@ -288,15 +298,5 @@
       "rendered": "Andrade Gives More Insight Into 2025 WWE Departure"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/09081911/maxresdefault-36.jpg"
-  },
-  {
-    "id": 338121,
-    "link": "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-9/",
-    "date": "2026-11-09T08:00:00",
-    "date_gmt": "2026-11-09T13:00:00",
-    "title": {
-      "rendered": "WWE Raw Preview, Start Time, How To Watch, Location (11/9)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/08155213/20241212_New_RAWlogo_16x9_v3-b740f7ebe55e1bac6be3c18159c8ac10.jpg"
   }
 ]
