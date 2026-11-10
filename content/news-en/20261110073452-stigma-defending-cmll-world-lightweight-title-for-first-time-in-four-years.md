@@ -1,7 +1,7 @@
 ---
 title: "Stigma Defending CMLL World Lightweight Title for First Time in Four Years"
 slug: "stigma-defending-cmll-world-lightweight-title-for-first-time-in-four-years"
-description: "Stigma is finally set to defend his title. CMLL announced that Stigma will defend the CMLL World Lightweight Championship against Calavera Jr. I. This."
+description: "Stigma is finally set to defend his title. CMLL announced that Stigma will defend the CMLL World Lightweight Championship against Calavera Jr. I."
 federation: INDIE
 date: 2026-11-10T04:34:52.000Z
 source_id: 338317

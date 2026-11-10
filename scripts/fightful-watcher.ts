@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, type NewsFile } from "./news-qa";
+import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, timeLimitWinAsDraw, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -3121,7 +3121,7 @@ async function rewriteWithGemini(
      [جملة أو جملتان تنقلان ما ذكره المصدر عن هذه المواجهة فقط: الأطراف، اللقب إن وجد، وأي تفصيل مذكور في المصدر (تدخل، حركة الحسم، ما حدث بعدها). إذا كان المصدر يذكر النتيجة في سطر واحد فقط فاكتب جملة واحدة تذكر الطرفين واللقب — ممنوع اختراع مجريات أو حركات أو سيطرة أو تدخلات غير مذكورة]
      
      🏆 **الفائز:** [اسم الفائز بالعربي]
-     (لو النزال انتهى بتعادل أو بلا نتيجة أو لم يُذكر فائز: ممنوع سطر «الفائز»، اكتب بدله «🤝 **النتيجة:** تعادل بسبب انتهاء الوقت» أو «🤝 **النتيجة:** بلا نتيجة بسبب التدخل». وممنوع تضع كلمة «فوز» في العنوان لنزال بلا فائز. الفوز بالاستبعاد أو بالعد خارج الحلبة (via DQ / Disqualification / Count-Out) له فائز: اكتب «🏆 **الفائز:** <الاسم> (بالاستبعاد)» — ممنوع «بلا نتيجة بسبب الاستبعاد».)
+     (لو النزال انتهى بتعادل أو بلا نتيجة أو لم يُذكر فائز: ممنوع سطر «الفائز»، اكتب بدله «🤝 **النتيجة:** تعادل بسبب انتهاء الوقت» أو «🤝 **النتيجة:** بلا نتيجة بسبب التدخل». وممنوع تضع كلمة «فوز» في العنوان لنزال بلا فائز. و«X def. Y via time limit expiration» فوز لـX (البطل يحتفظ باللقب بعد انتهاء الوقت) مش تعادل: اكتب «🏆 **الفائز:** X (بعد انتهاء الوقت)»؛ التعادل بس لو المصدر قال draw. الفوز بالاستبعاد أو بالعد خارج الحلبة (via DQ / Disqualification / Count-Out) له فائز: اكتب «🏆 **الفائز:** <الاسم> (بالاستبعاد)» — ممنوع «بلا نتيجة بسبب الاستبعاد».)
    - في الحدث الرئيسي (Main Event):
      ---
      **الحدث الرئيسي (Main Event): [طبيعة النزال]**
@@ -4522,6 +4522,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // A wrestler the source never names but the story keeps naming is a swapped name (INCIDENTS #461).
   for (const en of wrestlerNotInSource(`${draft.title}\n${draft.body}`, `${rawTitle}\n${plainText}`, WRESTLER_NAMES_MAP)) {
     blocking.push({ code: "name_not_in_source", severity: "error", field: "body", message: `اسم مصارع في العنوان أو المتن غير موجود في المصدر: ${en}`, excerpt: en });
+  }
+  // "def. … via time limit expiration" is a win, not a draw (INCIDENTS #1199).
+  const tlDraw = timeLimitWinAsDraw(draft.body, `${rawTitle}\n${plainText}`);
+  if (tlDraw) {
+    blocking.push({ code: "time_limit_win_as_draw", severity: "error", field: "body", message: "المصدر بيقول إن النزال له فائز بعد انتهاء الوقت (def. … via time limit) — مش تعادل", excerpt: tlDraw });
+    lastPostRetryable = true;
   }
   const badAges = ageNotInSource(draft.body, `${rawTitle}\n${plainText}`);
   if (badAges.length) {

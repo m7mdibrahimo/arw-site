@@ -1068,6 +1068,21 @@ export function shelvedNotCancelled(text: string, source: string): string {
  * «مغادرة فينس مكمان لاتحاد JCW» while its own body said «روسو» (INCIDENTS #294). When the source names
  * Russo and never McMahon, every «مكمان» in the draft is Russo.
  */
+/**
+ * "X def. Y via time limit expiration to retain" is a WIN (a title rule where the champion keeps the belt
+ * when time runs out), not a draw: the NWA Powerrr results said «انتهى النزال بالتعادل … 🤝 النتيجة: تعادل»
+ * for MZRY's retained TV title (INCIDENTS #1199). When every time-limit line of the source has a winner
+ * ("def." / "retains") and none says draw, a «تعادل» in the story is a wrong result.
+ */
+export function timeLimitWinAsDraw(body: string, source: string): string {
+  const lines = source.split(/\n+/).filter(l => /time[ -]limit|time expir|time ran out|clock ran out/i.test(l));
+  if (!lines.length) return "";
+  if (lines.some(l => /\bdraw\b|\bno winner\b|\bno contest\b|ended (?:in )?a tie/i.test(l))) return "";
+  if (!lines.every(l => /\bdef\.|\bdefeat(?:s|ed)\b|\bretain(?:s|ed)?\b|\bwins?\b|\bbeat(?:s)?\b/i.test(l))) return "";
+  const m = body.match(/[^\n]{0,60}(?:ال)?تعادل[^\n]{0,40}/);
+  return m ? m[0].trim() : "";
+}
+
 export function vinceIsRusso(text: string, source: string): string {
   if (!/\bRusso\b/i.test(source) || /\bMcMahon\b/i.test(source)) return text;
   return text.replace(/(^|[^ء-ي])(و?[بل]?)(?:ماك\s?ماهون|مكماهون|مكمان)(?![ء-ي])/g, "$1$2روسو");
