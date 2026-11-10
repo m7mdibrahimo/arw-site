@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-9-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-10T00:52:14.835Z"
+ },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-9-2026-cody-rhodes-bayley-vs-michin-judgment-day-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -43,11 +48,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-10T00:39:48.201Z"
- },
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-9-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-10T00:31:50.059Z"
  },
  "https://www.wrestlinginc.com/2311717/biggest-winners-losers-week-november-9-2026": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
