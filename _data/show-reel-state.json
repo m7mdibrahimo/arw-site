@@ -5090,9 +5090,9 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض الرو 09.11.2026 مترجم",
-    "lastAttempt": 1794316654564,
+    "lastAttempt": 1794317509572,
     "errors": {
-      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
       "instagram_story"
