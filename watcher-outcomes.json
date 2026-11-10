@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2312134/tna-rich-swann-backstage-update-contract-status-expiring": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: TNA International Championship",
+  "retry": true,
+  "at": "2026-11-10T16:25:57.386Z"
+ },
  "https://www.fightful.com/wrestling/jim-ross-undergoing-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-30T11:23:58.524Z"
- },
- "https://www.wrestlinginc.com/2301894/tna-impact-destination-x-world-x-cup-fabian-aichner-ricky-sosa-declare-themselves": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-30T05:53:44.797Z"
  }
 }
