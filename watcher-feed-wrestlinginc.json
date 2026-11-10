@@ -1,5 +1,15 @@
 [
   {
+    "id": 3300360238,
+    "link": "https://www.wrestlinginc.com/2311773/wwe-raw-roman-reigns-survivor-series-challenge-bloodline-946-war-games/",
+    "date": "Tue, 10 Nov 2026 03:51:18 +0000",
+    "date_gmt": "2026-11-10T03:51:18.000Z",
+    "title": {
+      "rendered": "Roman Reigns Makes WWE Survivor Series Challenge, Bloodline To Meet 946 In WarGames"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/roman-reigns-makes-wwe-survivor-series-challenge-bloodline-to-meet-946-in-wargames/l-intro-1794282612.jpg"
+  },
+  {
     "id": 2941655031,
     "link": "https://www.wrestlinginc.com/2311772/wwe-raw-tag-champs-penta-jevon-evans-opposing-teams-usa-mexico-survivor-series/",
     "date": "Tue, 10 Nov 2026 03:48:43 +0000",
@@ -95,9 +105,9 @@
     "date": "Mon, 09 Nov 2026 22:00:00 +0000",
     "date_gmt": "2026-11-09T22:00:00.000Z",
     "title": {
-      "rendered": "WWE Raw Results 11/9/26 W/ Live Updates: CM Punk Joins Cody Rhodes' Survivor Series Team"
+      "rendered": "WWE Raw Results 11/9/26 W/ Live Updates: Roman Reigns Confronts Royce Keys"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-results-11926-w-live-updates/l-intro-1794277683.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-results-11926-w-live-updates/l-intro-1794281281.jpg"
   },
   {
     "id": 3102823210,
@@ -188,15 +198,5 @@
       "rendered": "Garrett & Steven Borden Win Tag Team Debut On Independent Show"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/garrett-steven-borden-win-tag-team-debut-on-independent-show/l-intro-1794248756.jpg"
-  },
-  {
-    "id": 2287522079,
-    "link": "https://www.wrestlinginc.com/2311047/wwe-wrestlemania-43-aew-report-political-jockeying-delay-reveal/",
-    "date": "Mon, 09 Nov 2026 17:34:14 +0000",
-    "date_gmt": "2026-11-09T17:34:14.000Z",
-    "title": {
-      "rendered": "Report: WWE's 'Political Jockeying' With AEW Behind Delay In WrestleMania Reveal"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/report-wwes-political-jockeying-with-aew-behind-delay-in-wrestlemania-reveal/l-intro-1794245405.jpg"
   }
 ]
