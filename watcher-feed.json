@@ -1,5 +1,15 @@
 [
   {
+    "id": 338317,
+    "link": "https://www.fightful.com/wrestling/stigma-defending-cmll-world-lightweight-title-for-first-time-in-four-years/",
+    "date": "2026-11-09T23:34:52",
+    "date_gmt": "2026-11-10T04:34:52",
+    "title": {
+      "rendered": "Stigma Defending CMLL World Lightweight Title For First Time In Four Years"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2020/12/28014207/cmll_logo_4.jpg"
+  },
+  {
     "id": 338279,
     "link": "https://www.fightful.com/wrestling/nwa-powerrr-results-11-7/",
     "date": "2026-11-09T23:30:00",
@@ -288,15 +298,5 @@
       "rendered": "Tommaso Ciampa vs. &#8216;Speedball&#8217; Mike Bailey For AEW National Title Added To Three-Hour Dynamite/Collision"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/18024858/aew-dynamite-logo.jpg"
-  },
-  {
-    "id": 338194,
-    "link": "https://www.fightful.com/wrestling/tjpw-announces-conditions-for-unlimited-princess-title-match-to-take-place/",
-    "date": "2026-11-09T12:10:29",
-    "date_gmt": "2026-11-09T17:10:29",
-    "title": {
-      "rendered": "TJPW Announces Conditions For Unlimited Princess Title Match To Take Place"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/09110258/%E3%83%99%E3%83%AB%E3%83%88.jpg"
   }
 ]
