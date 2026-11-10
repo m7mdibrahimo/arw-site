@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2311296/wwe-booker-t-aew-change-people-watch-wrestling-cm-punk-hurt-syndicate": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-10T13:37:59.954Z"
+ },
  "https://www.fightful.com/wrestling/jeff-cobb-says-jonah-and-jafar-smash-were-potential-wwe-names": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-10-30T02:42:48.533Z"
- },
- "https://www.fightful.com/wrestling/queen-aminata-comments-on-aew-tbs-title-win": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T02:32:41.041Z"
  }
 }
