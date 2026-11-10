@@ -7,37 +7,42 @@
  "https://www.fightful.com/wrestling/becky-lynch-liv-morgan-is-best-known-for-not-doing-anything-and-i-think-that-sums-her-up": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T19:30:39.996Z"
+  "at": "2026-11-10T19:32:46.425Z"
  },
  "https://www.fightful.com/wrestling/westside-gunn-meets-with-wwe-thanks-nick-khan-for-making-everything-right": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T19:30:39.724Z"
+  "at": "2026-11-10T19:32:46.082Z"
  },
  "https://www.fightful.com/wrestling/renee-paquette-announces-passing-of-her-and-jon-moxleys-dog-blue": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T19:30:39.144Z"
+  "at": "2026-11-10T19:32:45.347Z"
  },
  "https://www.fightful.com/wrestling/home-town-man-announced-for-tna-world-x-cup": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T19:30:38.632Z"
+  "at": "2026-11-10T19:32:44.708Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-undergoing-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T19:30:37.949Z"
+  "at": "2026-11-10T19:32:43.883Z"
  },
  "https://www.fightful.com/wrestling/trick-williams-def-gunther-in-dark-match-prior-to-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T19:30:37.524Z"
+  "at": "2026-11-10T19:32:43.345Z"
  },
  "https://www.fightful.com/wrestling/jeff-cobb-says-he-thought-about-retiring-after-wwe-release": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T19:30:37.345Z"
+  "at": "2026-11-10T19:32:43.119Z"
+ },
+ "https://www.ringsidenews.com/bronson-reed-still-hospitalized-saudi-arabia-rib-kidney-injury": {
+  "reason": "المراجعة رفضته: اسم المصدر اتمسح وسابله جملة مكسورة («تقارير صحفية» مكررة) — لازم تتكتب من غير الاسم",
+  "retry": true,
+  "at": "2026-11-10T19:28:37.188Z"
  },
  "https://www.fightful.com/wrestling/jeff-cobb-says-jonah-and-jafar-smash-were-potential-wwe-names": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-30T16:24:32.825Z"
- },
- "https://www.fightful.com/wrestling/kayla-becker-previews-her-upcoming-movies-paper-made-chicken-head-and-stranglehold": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-30T16:14:28.942Z"
  }
 }
