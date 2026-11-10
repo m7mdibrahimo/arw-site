@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/seth-rollins-calls-triple-h-finally-give-him-wrestlemania-night-two-main-event": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-10T21:34:40.863Z"
+ },
  "https://www.fightful.com/wrestling/bret-hart-wcw-shouldve-been-sued-for-putting-me-in-the-ring-with-goldberg": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
   "retry": true,
   "at": "2026-10-30T19:14:04.481Z"
- },
- "https://www.ringsidenews.com/hulk-hogans-widow-sued-allegedly-supplying-alcohol-minors-party-linked-sexual-assault-case": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-10-30T19:08:06.280Z"
  }
 }
