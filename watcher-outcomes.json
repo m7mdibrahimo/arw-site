@@ -1,38 +1,38 @@
 {
- "https://www.wrestlinginc.com/2312134/tna-rich-swann-backstage-update-contract-status-expiring": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: TNA International Championship",
-  "retry": true,
-  "at": "2026-11-10T16:25:57.386Z"
- },
  "https://www.fightful.com/wrestling/jim-ross-undergoing-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T16:26:05.923Z"
+  "at": "2026-11-10T16:29:11.563Z"
  },
  "https://www.fightful.com/wrestling/trick-williams-def-gunther-in-dark-match-prior-to-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T16:26:05.501Z"
+  "at": "2026-11-10T16:29:11.073Z"
  },
  "https://www.fightful.com/wrestling/jeff-cobb-says-he-thought-about-retiring-after-wwe-release": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T16:26:05.325Z"
+  "at": "2026-11-10T16:29:10.868Z"
  },
  "https://www.fightful.com/wrestling/jeff-cobb-says-jonah-and-jafar-smash-were-potential-wwe-names": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T16:26:04.519Z"
+  "at": "2026-11-10T16:29:09.917Z"
  },
  "https://www.fightful.com/wrestling/gcw-bloodsport-reborn-announced": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T16:26:03.635Z"
+  "at": "2026-11-10T16:29:08.879Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-9-2026-cody-rhodes-bayley-vs-michin-judgment-day-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T16:26:03.197Z"
+  "at": "2026-11-10T16:29:08.367Z"
+ },
+ "https://www.wrestlinginc.com/2312134/tna-rich-swann-backstage-update-contract-status-expiring": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: TNA International Championship",
+  "retry": true,
+  "at": "2026-11-10T16:25:57.386Z"
  },
  "https://www.ringsidenews.com/jasmin-st-claire-accuses-sonny-onoo-inappropriate-behavior-going-behind-her-back-great-muta-deal": {
   "reason": "المراجعة رفضته: كلمة عربية مقطوعة من حرفين («بت») — اكتب الكلمة كاملة",
