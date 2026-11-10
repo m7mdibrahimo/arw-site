@@ -1,28 +1,33 @@
 {
+ "https://www.fightful.com/wrestling/renee-paquette-announces-passing-of-her-and-jon-moxleys-dog-blue": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T17:46:09.513Z"
+ },
  "https://www.fightful.com/wrestling/home-town-man-announced-for-tna-world-x-cup": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:43:55.919Z"
+  "at": "2026-11-10T17:46:09.019Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-undergoing-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:43:55.159Z"
+  "at": "2026-11-10T17:46:08.379Z"
  },
  "https://www.fightful.com/wrestling/trick-williams-def-gunther-in-dark-match-prior-to-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:43:54.664Z"
+  "at": "2026-11-10T17:46:07.963Z"
  },
  "https://www.fightful.com/wrestling/jeff-cobb-says-he-thought-about-retiring-after-wwe-release": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:43:54.458Z"
+  "at": "2026-11-10T17:46:07.789Z"
  },
  "https://www.fightful.com/wrestling/jeff-cobb-says-jonah-and-jafar-smash-were-potential-wwe-names": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:43:53.518Z"
+  "at": "2026-11-10T17:46:06.986Z"
  },
  "https://www.wrestlinginc.com/2312275/aew-all-out-blood-guts-steven-borden-injury-in-ring-return": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: نفس العنوان منشور قبل كده — الخبر مكرر",
   "retry": false,
   "at": "2026-10-30T12:09:21.612Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-10-27-viewership-drops-21-against-world-series": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-30T12:02:00.514Z"
  }
 }
