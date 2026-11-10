@@ -1,7 +1,7 @@
 ---
 title: "Becky Lynch Returns on WWE Raw, Set to Challenge Liv Morgan at WWE Survivor Series"
 slug: "becky-lynch-returns-on-wwe-raw-set-to-challenge-liv-morgan-at-wwe-survivor"
-description: "Becky Lynch made her return to WWE television on the November 10 episode of WWE RAW."
+description: "Becky Lynch made her return to WWE television on the November 9 episode of WWE Raw."
 federation: WWE
 date: 2026-11-10T03:16:59.000Z
 source_id: 338263
@@ -14,7 +14,7 @@ en_tags:
   - "Survivor Series"
 image: /content/images/jsf5087zqdzpv47d.jpg
 ---
-Becky Lynch made her return to WWE television on the November 10 episode of WWE RAW. The show featured a tag team bout where The Judgment Day's Roxanne Perez and Raquel Rodriguez took on IYO SKY and a mystery partner. After making her entrance, SKY revealed Lynch as her partner to the crowd.
+Becky Lynch made her return to WWE television on the November 9 episode of WWE Raw. The show featured a tag team bout where The Judgment Day's Roxanne Perez and Raquel Rodriguez took on IYO SKY and a mystery partner. After making her entrance, SKY revealed Lynch as her partner to the crowd.
 
 Lynch helped lead their team to victory, as SKY secured the pinfall over Raquel Rodriguez with a moonsault. Following the win, Lynch laid down a challenge to Liv Morgan for the Women's World Championship, advising Morgan to leave The Judgment Day behind.
 

@@ -14,6 +14,6 @@ en_tags:
   - "WWE Raw"
 image: /content/images/qh82ckgtqye3t94l.jpg
 ---
-Stephanie Vaquer is unable to compete. During the October 27 episode of WWE Raw, Adam Pearce announced that Stephanie Vaquer has not been cleared for her scheduled match against Becky Lynch. The bout was originally set to determine the new number one contender for the Women's World Championship. As a result, Pearce confirmed that Becky Lynch will bypass the contender match and challenge Liv Morgan for the Women's World Championship later on tonight's show. Further updates regarding Stephanie Vaquer's injury status will be provided as they become available.
+Stephanie Vaquer is unable to compete. During the October 26 episode of WWE Raw, Adam Pearce announced that Stephanie Vaquer has not been cleared for her scheduled match against Becky Lynch. The bout was originally set to determine the new number one contender for the Women's World Championship. As a result, Pearce confirmed that Becky Lynch will bypass the contender match and challenge Liv Morgan for the Women's World Championship later on tonight's show. Further updates regarding Stephanie Vaquer's injury status will be provided as they become available.
 
 https://x.com/WWE/status/2114871858893893939

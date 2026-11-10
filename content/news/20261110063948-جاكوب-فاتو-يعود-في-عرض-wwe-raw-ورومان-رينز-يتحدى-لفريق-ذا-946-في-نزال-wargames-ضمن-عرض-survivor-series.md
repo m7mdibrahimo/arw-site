@@ -1,6 +1,7 @@
 ---
 federation: WWE
-title: "جاكوب فاتو يعود في عرض WWE RAW، ورومان رينز يتحدى لفريق ذا 946 في نزال WarGames ضمن عرض Survivor Series"
+title: "جاكوب فاتو يعود في عرض WWE RAW، ورومان رينز يتحدى فريق ذا 946 في نزال WarGames ضمن عرض Survivor Series"
+permalink: "/news/جاكوب-فاتو-يعود-في-عرض-wwe-raw-ورومان-رينز-يتحدى-لفريق-ذا-946-في-نزال-wargames-ضمن-عرض-survivor-series/index.html"
 date: 2026-11-10T06:39:48.000+03:00
 published_at: 2026-11-10T03:48:11.789Z
 source_id: 338299

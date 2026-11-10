@@ -104,6 +104,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - Never glue two words into one: every word is separated by a space, "Life-Altering Injury", never "Life-AlteringInjury" (the code fixes it, but write it right).
 - One name per person in the headline and the body: use the name the source's text uses (the body says "Miro", so the headline says "Miro", not "Rusev"; a source headline may carry the old ring name) (round 2026-10-27).
 - No markdown headings (#), no bold, no lists with bullets, no links in the text.
+- Weekly TV dates are the US air date: Raw is a Monday, NXT a Tuesday, Dynamite a Wednesday, SmackDown a Friday, Collision a Saturday. A story published after midnight UTC still says "the November 9 episode of WWE Raw", never the next day (INCIDENTS #1197).
 - Times and time zones: keep each start time in the zone the source gives (8 pm local time in Mexico, 10 pm ET); never relabel a local time as ET (INCIDENTS #808).
 - Dates and weekdays: a specific date takes "on" plus the date and the day of the week the source names ("on Wednesday, November 4"), never the indefinite "on a Wednesday"; a weekday with no date is "on Wednesday" (round 2026-10-28). The weekday must be the real day of that date in that year — sources get it wrong (WrestleDream, October 17, 2026 was a Saturday, not a Friday; INCIDENTS #962); if you are not sure of it, write the date without a weekday.
 - Never give a wrestler a title or status the source does not state: "as the NXT Women's Champion" and "commented on winning the WWE Championship" were invented (a hypothetical "Maybe I'd be WWE Champion" or another wrestler's reign is NOT that wrestler's title).
@@ -175,6 +176,36 @@ export function enWeekdayNotOnDate(text: string, now = new Date()): string | nul
   return null;
 }
 
+const EN_SHOW_WEEKDAY: [RegExp, number][] = [[/^(?:WWE )?Raw$/i, 1], [/^(?:WWE )?NXT$/i, 2], [/^(?:AEW )?Dynamite$/i, 3], [/^(?:TNA )?iMPACT!?$/i, 4], [/^(?:WWE )?SmackDown$/i, 5], [/^(?:AEW )?Collision$/i, 6]];
+/** «the November 10 episode of WWE RAW» when Raw airs on Mondays and November 10 is a Tuesday: the writer took the
+ *  date from the UTC time of the source (Becky Lynch story, INCIDENTS #1197). Only the day right after the air day,
+ *  for a show of the last two days, counts. Returns the first such excerpt, or null. */
+export function enShowOnWrongWeekday(text: string, now = new Date(), sourceText = ""): string | null {
+  const year = now.getUTCFullYear(), month = now.getUTCMonth();
+  const shows = "(?:WWE |AEW |TNA )?(?:Raw|NXT|Dynamite|iMPACT!?|SmackDown|Collision)";
+  const date = `(${EN_MONTHS_FULL.join("|")}) (\\d{1,2})(?:st|nd|rd|th)?(?:,? (\\d{4}))?`;
+  const res = [
+    new RegExp(`\\b${date}(?:,)? (?:episode|edition|broadcast) of (${shows})\\b`, "gi"),
+    new RegExp(`\\b(${shows}) (?:on|from) (?:(?:Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday),? )?${date}`, "gi"),
+  ];
+  for (const [k, re] of res.entries()) {
+    for (const m of String(text || "").matchAll(re)) {
+      const [show, mon, day, yr] = k === 0 ? [m[4], m[1], m[2], m[3]] : [m[1], m[2], m[3], m[4]];
+      const want = EN_SHOW_WEEKDAY.find(([r]) => r.test(show.trim()))?.[1];
+      const mi = EN_MONTHS_FULL.findIndex(x => x.toLowerCase() === mon.toLowerCase());
+      if (want === undefined || mi < 0) continue;
+      if (/house show|live event|tour/i.test(m[0])) continue;
+      // the source itself gives that date (NXT really aired on Wednesday, November 4, 2026): the date is right
+      if (sourceText && (new RegExp(`\\b${EN_MONTHS_FULL[mi]} ${+day}(?!\\d)`, "i").test(sourceText) || new RegExp(`(?<![\\d/])${mi + 1}/${+day}(?![\\d])`).test(sourceText))) continue;
+      const d = new Date(Date.UTC(yr ? +yr : year + (mi - month > 6 ? -1 : month - mi > 6 ? 1 : 0), mi, +day));
+      // only the UTC slip itself: the day right after the air day, for a show that aired in the last two days — shows
+      // do move (NXT on a Wednesday, Collision on a Wednesday, SmackDown on Thursdays in 2002), so any other day passes
+      if (d.getUTCDate() === +day && d.getUTCDay() === (want + 1) % 7 && Math.abs(now.getTime() - d.getTime()) < 2 * 86400000) return m[0];
+    }
+  }
+  return null;
+}
+
 /** «aired on Thursday, November 5, 2026» when the source's headline says «Results 11/6/26»: the writer moved the date a
  *  day (SmackDown results, INCIDENTS #1115). Returns the first weekday-date in the text whose month matches the
  *  headline's numeric date but whose day doesn't (and the date isn't written in the source text), or null. */
@@ -217,6 +248,9 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   // «on Friday, October 17, 2026» for a Saturday (Toni Storm, Crown Jewel, Matt Hardy stories, INCIDENTS #962)
   const badDay = enWeekdayNotOnDate(title + "\n" + body);
   if (badDay) issues.push(`weekday does not match the date: ${badDay}`);
+  // «the November 10 episode of WWE RAW» — Raw is on Mondays; the date was the UTC day after (INCIDENTS #1197)
+  const showDay = enShowOnWrongWeekday(title + "\n" + body, new Date(), `${i.sourceTitle || ""}\n${i.sourceText || ""}`);
+  if (showDay) issues.push(`weekly show dated to a day it does not air on: ${showDay}`);
   // «Thursday, November 5» when the source's headline says «Results 11/6/26» (INCIDENTS #1115)
   const offDay = enDateOffFromSourceTitle(title + "\n" + body, i.sourceTitle, i.sourceText);
   if (offDay) issues.push(`date differs from the source headline: ${offDay}`);

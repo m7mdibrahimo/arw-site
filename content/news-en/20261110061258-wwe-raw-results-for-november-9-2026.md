@@ -23,4 +23,4 @@ Rey Fenix def. Big Cass and Chad Gable in a triple threat match to become the nu
 
 Bayley def. Michin in a singles match after sending her into the ring and executing a flying elbow drop for the pin.
 
-IYO SKY and Becky Lynch def. The Judgment Day consisting of Raquel Rodriguez and Roxanne Perez in the main event tag team match after SKY reversed Rodriguez's attempt and hit an over the moonsault to secure the pin.
+IYO SKY and Becky Lynch def. The Judgment Day consisting of Raquel Rodriguez and Roxanne Perez in the main event tag team match after SKY reversed Rodriguez's attempt and hit an Over the Moonsault to secure the pin.

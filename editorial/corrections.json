@@ -1,6 +1,26 @@
 {
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
+  {
+    "wrong": "تهاد غيبل",
+    "right": "تشاد غيبل",
+    "note": "Chad Gable في القاموس «تشاد غيبل» — نتائج عرض WWE RAW 9 نوفمبر كتبت «تهاد غيبل» (INCIDENTS #1197)"
+  },
+  {
+    "wrong": "مسؤول الإدارة آدم بيرس",
+    "right": "المدير العام آدم بيرس",
+    "note": "آدم بيرس هو المدير العام لعرض RAW — خبر آيو سكاي كتب «مسؤول الإدارة» (INCIDENTS #1197)"
+  },
+  {
+    "wrong": "يتحدى لفريق",
+    "right": "يتحدى فريق",
+    "note": "«يتحدى» بيتعدى بنفسه — عنوان خبر جاكوب فاتو «رومان رينز يتحدى لفريق ذا 946» (INCIDENTS #1197)"
+  },
+  {
+    "wrong": "تتحدى لفريق",
+    "right": "تتحدى فريق",
+    "note": "«تتحدى» بيتعدى بنفسه (INCIDENTS #1197)"
+  },
     {
       "wrong": "قائمة نزال الأحداث الرئيسية",
       "right": "النزالات الرئيسية",
