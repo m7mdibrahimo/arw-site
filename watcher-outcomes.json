@@ -1,43 +1,38 @@
 {
- "https://www.wrestlinginc.com/2311676/wwe-alexa-bliss-ill-past-two-months": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-10T10:34:41.953Z"
- },
  "https://www.fightful.com/wrestling/gcw-bloodsport-reborn-announced": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T10:36:10.550Z"
+  "at": "2026-11-10T10:47:16.630Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-9-2026-cody-rhodes-bayley-vs-michin-judgment-day-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T10:36:10.089Z"
+  "at": "2026-11-10T10:47:16.205Z"
  },
  "https://www.fightful.com/wrestling/john-cena-if-i-have-any-energy-left-in-my-intellectual-property-i-want-to-give-it-to-folks-who-are-clamoring-for-a-spot": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T10:36:09.400Z"
+  "at": "2026-11-10T10:47:15.569Z"
  },
  "https://www.fightful.com/wrestling/mlw-planning-a-roster-refresh": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T10:36:09.105Z"
+  "at": "2026-11-10T10:47:15.299Z"
  },
  "https://www.fightful.com/wrestling/road-dogg-was-not-fired-by-wwe-over-support-of-chelsea-green": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T10:36:08.808Z"
+  "at": "2026-11-10T10:47:15.025Z"
  },
  "https://www.fightful.com/wrestling/mlw-fusion-spoilers-taped-on-11-8": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T10:36:08.417Z"
+  "at": "2026-11-10T10:47:14.671Z"
  },
- "https://www.fightful.com/wrestling/road-dogg-was-not-fired-by-wwe-over-support-of-chelsea-green": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T10:14:48.900Z"
+ "https://www.wrestlinginc.com/2311676/wwe-alexa-bliss-ill-past-two-months": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-10T10:34:41.953Z"
  },
  "https://www.wrestlinginc.com/2311791/wwe-raw-november-9-2026-hated-loved-opinion-review": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
