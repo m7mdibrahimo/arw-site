@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2311676/wwe-alexa-bliss-ill-past-two-months": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-10T01:19:39.134Z"
+ },
+ "https://www.wrestlinginc.com/2310917/wwe-raw-november-9-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-10T01:19:22.800Z"
+ },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-9-2026-cody-rhodes-bayley-vs-michin-judgment-day-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -33,16 +43,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-10T01:12:05.647Z"
- },
- "https://www.wrestlinginc.com/2311676/wwe-alexa-bliss-ill-past-two-months": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
-  "retry": true,
-  "at": "2026-11-10T01:06:15.798Z"
- },
- "https://www.wrestlinginc.com/2310917/wwe-raw-november-9-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-10T01:05:56.385Z"
  },
  "https://www.fightful.com/wrestling/brett-lauderdale-feels-theres-no-reason-for-a-wrestler-to-sign-with-mlw-they-also-have-a-clause-that-says-you-cant-wrestle-for-gcw": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
