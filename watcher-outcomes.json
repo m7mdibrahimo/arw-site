@@ -10,44 +10,44 @@
   "at": "2026-11-10T03:29:31.360Z"
  },
  "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-9-2026": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "reason": "المراجعة رفضته: المواجهة مكتوبة «نزال فردي» والفقرة تحتها بتقول «نزال ثلاثي/فرق» — صحح العنوان حسب سطر المصدر، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
   "retry": true,
-  "at": "2026-11-10T03:16:02.251Z"
+  "at": "2026-11-10T03:30:13.747Z"
  },
  "https://www.fightful.com/wrestling/gcw-bloodsport-reborn-announced": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T03:15:24.922Z"
+  "at": "2026-11-10T03:17:47.405Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-9-2026-cody-rhodes-bayley-vs-michin-judgment-day-more": {
-  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
+  "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T03:15:24.485Z"
+  "at": "2026-11-10T03:17:47.019Z"
  },
  "https://www.fightful.com/wrestling/john-cena-if-i-have-any-energy-left-in-my-intellectual-property-i-want-to-give-it-to-folks-who-are-clamoring-for-a-spot": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T03:15:23.741Z"
+  "at": "2026-11-10T03:17:46.448Z"
  },
  "https://www.fightful.com/wrestling/mlw-planning-a-roster-refresh": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T03:15:23.464Z"
+  "at": "2026-11-10T03:17:46.192Z"
  },
  "https://www.fightful.com/wrestling/road-dogg-was-not-fired-by-wwe-over-support-of-chelsea-green": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T03:15:23.189Z"
+  "at": "2026-11-10T03:17:45.944Z"
  },
  "https://www.fightful.com/wrestling/mlw-fusion-spoilers-taped-on-11-8": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T03:15:22.827Z"
+  "at": "2026-11-10T03:17:45.609Z"
  },
  "https://www.fightful.com/wrestling/john-cena-shares-how-he-used-to-be-a-big-gift-giver-at-christmas-while-working-with-wwe-to-buy-through-his-workaholism": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T03:15:22.023Z"
+  "at": "2026-11-10T03:17:44.876Z"
  },
  "https://www.fightful.com/wrestling/brett-lauderdale-feels-theres-no-reason-for-a-wrestler-to-sign-with-mlw-they-also-have-a-clause-that-says-you-cant-wrestle-for-gcw": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
