@@ -15,6 +15,6 @@ en_tags:
   - "Big Cass"
 image: /content/images/6cgmagrgeqfoifsr.jpg
 ---
-Rey Fenix secured a shot at the Intercontinental Championship on the November 9 episode of WWE Raw. Ethan Page celebrated his title victory from the previous week before Chad Gable, Rey Fenix, and Big Cass interrupted to challenge him. Adam Pearce then announced an impromptu number one contender's match. Fenix pinned Big Cass with a splash while Big Cass was already pinning Gable, and then Fenix pinned Gable himself to win the match.
+Rey Fenix secured a shot at the Intercontinental Championship on the November 9 episode of WWE Raw. Ethan Page celebrated his title victory from the previous week before Chad Gable, Rey Fenix, and Big Cass interrupted to challenge him. Adam Pearce then announced an impromptu number one contender's match. Fenix crushed Big Cass with a splash while Big Cass was pinning Gable, and then Fenix pinned Gable himself to win the match.
 
 https://x.com/WWE/status/2119973390668751355
