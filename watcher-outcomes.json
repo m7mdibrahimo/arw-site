@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/matt-sydal-reflects-on-shooting-star-press-rko-counter-says-he-is-now-immune-to-rkos": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kofi Kingston",
+  "retry": true,
+  "at": "2026-11-10T17:05:36.209Z"
+ },
  "https://www.fightful.com/wrestling/home-town-man-announced-for-tna-world-x-cup": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:01:13.195Z"
+  "at": "2026-11-10T17:04:58.452Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-undergoing-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:01:12.444Z"
+  "at": "2026-11-10T17:04:57.757Z"
  },
  "https://www.fightful.com/wrestling/trick-williams-def-gunther-in-dark-match-prior-to-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:01:11.958Z"
+  "at": "2026-11-10T17:04:57.335Z"
  },
  "https://www.fightful.com/wrestling/jeff-cobb-says-he-thought-about-retiring-after-wwe-release": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:01:11.755Z"
+  "at": "2026-11-10T17:04:57.159Z"
  },
  "https://www.fightful.com/wrestling/jeff-cobb-says-jonah-and-jafar-smash-were-potential-wwe-names": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:01:10.830Z"
+  "at": "2026-11-10T17:04:56.349Z"
  },
  "https://www.fightful.com/wrestling/gcw-bloodsport-reborn-announced": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:01:09.812Z"
+  "at": "2026-11-10T17:04:55.464Z"
  },
  "https://www.fightful.com/wrestling/matt-sydal-wants-to-reunite-with-kofi-and-team-with-the-new-level-in-place-of-swerve-strickland": {
   "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»، فعل مثنى («يحركاننا») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-30T11:47:48.042Z"
- },
- "https://www.fightful.com/wrestling/wwe-has-backup-blueprint-for-hosting-wrestlemania-43-domestically": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T11:47:47.781Z"
  }
 }
