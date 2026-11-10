@@ -16,7 +16,7 @@ image: /content/images/w19d4bsx7hn1hhsg.jpg
 ---
 John Cena never intended to be just another wrestler releasing a rap album to capitalize on his fame. The WWE legend sought genuine respect from the hip-hop community, knowing that simply attaching his name to a record would not suffice. During an appearance on The Romesh Ranganathan Show to promote Matchbox: The Movie, Cena explained that he wanted professional rappers to take his music seriously, despite initial skepticism regarding a wrestler entering their industry.
 
-> "That was really the the roots of like how can I get the hip-hop community like the rap community to understand that I'm I'm trying to be authentic. I'm doing my best."
+> "That was really the roots of how can I get the rap community to understand that I'm trying to be authentic. I'm doing my best."
 
 Instead of relying solely on his WWE popularity, Cena collaborated with artists from the New England hip-hop scene and worked closely with Bumpy Knuckles to oversee his 2005 debut album, You Can't See Me. He aimed for hip-hop enthusiasts to be impressed by the final product, describing the entire endeavor as a passion project he truly enjoyed.
 

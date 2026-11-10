@@ -556,3 +556,24 @@ test("the present perfect with a finished time becomes the simple past (INCIDENT
   assert.equal(fixPerfectWithPastTime(`He said, "He has died on Sunday."`), `He said, "He has died on Sunday."`);
   assert.equal(fixEnglishNames("The show will air live from Disneyworld in Orlando."), "The show will air live from Disney World in Orlando.");
 });
+
+test("a machine-transcript quote is cleaned, and a false start is sent back (INCIDENTS #1219)", async () => {
+  const { cleanSpokenFillers, cleanSpokenQuotes, garbledSpeech, fixEnglishNames, alteredQuoteSentence, checkEnglish } = await import("../scripts/english-edition.ts");
+  assert.equal(cleanSpokenFillers("So you know I'm very proud of her, you know what I mean?"), "So I'm very proud of her.");
+  assert.equal(cleanSpokenFillers("eventually the the company adopts you. So I'm I'm proud"), "eventually the company adopts you. So I'm proud");
+  assert.equal(cleanSpokenFillers("> \"Um yeah, I don't know.\""), "> \"yeah, I don't know.\"");
+  assert.equal(cleanSpokenFillers("Do you know I was there?"), "Do you know I was there?");
+  assert.equal(cleanSpokenFillers("You know what time it is."), "You know what time it is.");
+  // only what a person says changes: the report's own words stay
+  assert.equal(cleanSpokenQuotes('The the show aired. He said, "the the company won."'), 'The the show aired. He said, "the company won."');
+  assert.equal(garbledSpeech('> "Sure, why not? Let\'s just we got a I got a couple left in me."'), "just we");
+  assert.equal(garbledSpeech('He said, "there\'s not you\'re not a company person."'), "not you're not");
+  assert.equal(garbledSpeech('He said, "that\'s cuz she I\'m sure was ready."'), "she I'm sure");
+  assert.equal(garbledSpeech('> "He won the I Quit match, and whether or not I like it, he did it."'), null);
+  assert.equal(garbledSpeech('Cody will face a we-the-people champion, and I am fine.'), null);
+  assert.equal(fixEnglishNames("Carlito, the former The Judgment Day member, spoke."), "Carlito, the former Judgment Day member, spoke.");
+  // a cleaned quote still counts as the source's words
+  const src = "“So you know I’m very proud of her that she you know she made them believe in her, you know what I mean? I think the the fans saw it too and they loved it.”";
+  assert.equal(alteredQuoteSentence('> "So I\'m very proud of her that she made them believe in her. I think the fans saw it too and they loved it."', src), null);
+  assert.ok(checkEnglish({ title: "Carlito Talks About His Wrestling Future and the Road Ahead", body: `> "Sure, why not? Let's just we got a I got a couple left in me at this point still."\n\n${"Carlito discussed his future on a recent podcast appearance. ".repeat(12)}`, tags: ["WWE"] } as any, { sourceTitle: "Carlito", sourceText: "Carlito discussed his future on a recent podcast appearance. Let's just we got a I got a couple left in me at this point still.", sourceUrl: "https://example.com/a/" } as any).some((x: string) => x.includes("broken speech")));
+});

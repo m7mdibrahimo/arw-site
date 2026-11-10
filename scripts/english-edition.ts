@@ -103,6 +103,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - Pronouns after a preposition take the object form: "with him and his group", "between him and Cody", "for her and the team" — never "with he", "between he", "for she" (INCIDENTS #870).
 - Never glue two words into one: every word is separated by a space, "Life-Altering Injury", never "Life-AlteringInjury" (the code fixes it, but write it right).
 - One name per person in the headline and the body: use the name the source's text uses (the body says "Miro", so the headline says "Miro", not "Rusev"; a source headline may carry the old ring name) (round 2026-10-27).
+- Interview quotes in the source are often machine transcripts ("Um yeah", "the the company", "you know I feel like", "Let's just we got a I got"): never copy false starts or fillers. Quote only a clean, complete sentence, or report the point in your own words (INCIDENTS #1219).
 - No markdown headings (#), no bold, no lists with bullets, no links in the text.
 - Weekly TV dates are the US air date: Raw is a Monday, NXT a Tuesday, Dynamite a Wednesday, SmackDown a Friday, Collision a Saturday. A story published after midnight UTC still says "the November 9 episode of WWE Raw", never the next day (INCIDENTS #1197).
 - Times and time zones: keep each start time in the zone the source gives (8 pm local time in Mexico, 10 pm ET); never relabel a local time as ET (INCIDENTS #808).
@@ -330,10 +331,41 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
       }
     }
   }
+  const garbled = garbledSpeech(body);
+  if (garbled) issues.push(`a quote copies broken speech ("${garbled}"): keep only a clean sentence of it, or say it in your own words`);
   return issues;
 }
 
-const normQuote = (t: string) => t.toLowerCase().replace(/[’‘]/g, "'").replace(/[^a-z0-9' ]+/g, " ").replace(/\s+/g, " ").trim();
+/** The source's interview quotes are often machine transcripts («Um yeah, I'm just…», «the the company», «you know I feel
+ *  like»), and they were copied as written (INCIDENTS #1219). Inside a quote only: «um/uh», a filler «you know» before a
+ *  speaker's next words, «, you know what I mean?» and a doubled small word go. A real «do you know I…» stays. */
+const DOUBLABLE = "the|a|an|I|I'm|I’m|and|of|to|in|is|was|it's|it’s|we|he|she|they";
+export function cleanSpokenFillers(quote: string): string {
+  return String(quote)
+    .replace(/,?\s*you know what I mean\s*\?/gi, ".")
+    .replace(/(^|[\s"“>])(?:um+|uh+)\b,?\s*/gi, "$1")
+    .replace(/(?<!\b(?:do|did|don't|don’t|didn't|didn’t|if|as|what|how|when|that|would|should|could|might|may|never|ever)\s)\byou know\b,?\s+(?=(?:I|I'm|I’m|she|he|they|we|it's|it’s|there's|there’s|like)\b)/gi, "")
+    .replace(new RegExp(`\\b(${DOUBLABLE})(\\s+\\1)+\\b`, "gi"), "$1");
+}
+/** Apply it to what a person says: every «>» line and every quoted part of a line. */
+export function cleanSpokenQuotes(text: string): string {
+  return String(text).split("\n").map((line) => {
+    if (/^\s*>/.test(line)) return cleanSpokenFillers(line);
+    return line.split(/((?:“[^”]*”)|(?:"[^"\n]*"))/).map((part, k) => (k % 2 ? cleanSpokenFillers(part) : part)).join("");
+  }).join("\n");
+}
+/** A false start the code can't repair, left in a quote («Let's just we got a I got a couple left», «you're not one of you're
+ *  not a company person», «cuz she I'm sure»): the story must keep only the clean sentence or report it in its own words. */
+export function garbledSpeech(text: string): string | null {
+  const FALSE_START = /\b(?:[Aa]n?|[Tt]he|of|to|just)\s+(?:I|I'm|I’m|we|you're|you’re|they're|they’re|he's|he’s|she's|she’s)\b(?![- ]Quit)|\b(?:she|he|they|we)\s+I(?:'m|’m)?\s+(?:sure|think|mean|guess)\b|\bnot\s+you(?:'re|’re)\s+not\b/;
+  for (const line of String(text).split("\n")) {
+    const parts = /^\s*>/.test(line) ? [line] : line.split(/((?:“[^”]*”)|(?:"[^"\n]*"))/).filter((_, k) => k % 2);
+    for (const p of parts) { const m = FALSE_START.exec(cleanSpokenFillers(p)); if (m) return m[0]; }
+  }
+  return null;
+}
+
+const normQuote = (t: string) => cleanSpokenFillers(t).toLowerCase().replace(/[’‘]/g, "'").replace(/[^a-z0-9' ]+/g, " ").replace(/\s+/g, " ").trim();
 /** A sentence of a «>» quote that is not in the source, when another sentence of the same quote is — the quote came
  *  from the source but a word was lost or changed («And I feel like me for it.» for «And I feel like they love me
  *  for it.», INCIDENTS #1216). Censored («a**»), cut («…») or bracketed sentences are left alone. */
@@ -488,6 +520,7 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   // her ring name is «Mercedes Moné»; the writer drops the accent in some stories (INCIDENTS #682)
   [/\b(Mercedes )?Mone(?![\wé])/g, "$1Moné"], // also the surname alone («Mone's», «Mone cry»): INCIDENTS #1107
   [/\b(joining|join|joined|joins|between|with|of|and|by|from|against) 946\b/gi, "$1 The 946"],
+  [/\bformer The ((?:[A-Z][\w'’-]*\s+){1,3}(?:member|stablemate|leader|teammate))\b/g, "former $1"], // «the former The Judgment Day member» (INCIDENTS #1219)
 ];
 const SMALL_WORDS = new Set(["a", "an", "the", "and", "but", "or", "nor", "for", "at", "by", "in", "of", "on", "to", "as", "vs", "vs.", "via"]);
 /** Words that are never small in a Title Case headline when left lowercase: «I am Thankful» → «I Am Thankful» (INCIDENTS #489) */
@@ -626,7 +659,7 @@ export function englishGrammarSlips(text: string): string[] {
   return aToAn(fixIre(fixPronounCase(text))) === String(text) ? [] : ["a/an, I're or pronoun-case typo"];
 }
 export function fixEnglishNames(text: string): string {
-  return fixPerfectWithPastTime(fixSingularThey(aToAn(fixIre(fixPronounCase(twitterToX(dropRepeatedListItem(collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text))))))))));
+  return cleanSpokenQuotes(fixPerfectWithPastTime(fixSingularThey(aToAn(fixIre(fixPronounCase(twitterToX(dropRepeatedListItem(collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text)))))))))));
 }
 
 export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEWS_EN_DIR): string {

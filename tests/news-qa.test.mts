@@ -664,3 +664,18 @@ test("«push» written as money words is caught when the source has no money (IN
   assert.deepEqual(claimNotInSource("وتم خصم من راتب المصارع بعد رفضه السفر.", src + " His pay was docked."), []);
   assert.deepEqual(claimNotInSource("It could lead to adjusted pushes.", src, "en"), []);
 });
+
+test("Hardys story: reaction duals block, «صرف الحقيبة» and «ثنائي يخطب» fix themselves (INCIDENTS #1219)", async () => {
+  const { checkArticle, applyCorrections } = await import("../scripts/news-qa.ts");
+  const dual = (b: string) => checkArticle("مات هاردي وجيف هاردي في الرحلة البحرية يتحدثون عن الموقف", b).some((i: any) => i.code === "dual_form");
+  assert.equal(dual("تابع مات وجيف الموقف بحماس كبير وصفقا بحرارة للثنائي."), true);
+  assert.equal(dual("طلب يد صديقته أمام عيني مات وجيف مباشرة."), true);
+  assert.equal(dual("رأيت الحادث أمام عيني مباشرة."), false);
+  assert.equal(dual("تابع مات وجيف الموقف بحماس كبير وصفقوا بحرارة للثنائي."), false);
+  assert.equal(applyCorrections("ثنائي يخطب أمام ذا هارديز"), "شاب يخطب صديقته أمام ذا هارديز");
+  assert.equal(applyCorrections("عندما صرفت حقيبة Money in the Bank"), "عندما استخدمت حقيبة Money in the Bank");
+  assert.equal(applyCorrections("بعد صرف الحقيبة أمام البطل"), "بعد استخدام الحقيبة أمام البطل");
+  assert.equal(applyCorrections("ثم صرف الحقيبة أمام البطل"), "ثم استخدم الحقيبة أمام البطل");
+  assert.equal(applyCorrections("عضو فريق ذا جادجمنت داي (The Judgment Day) تحدث"), "عضو فريق ذا جادجمنت داي تحدث");
+});
+

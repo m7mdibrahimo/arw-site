@@ -115,3 +115,20 @@ test('renamed show moves keep room in _redirects; tag page numbers that do not f
   assert.ok(out.filter((l) => !/[*:]/.test(l.split(' ')[0])).length <= 2000);
   assert.ok(tooLong.some(([from]) => /^\/tag\/a\/\d+\/$/.test(from)), 'page numbers that did not fit become stub pages');
 });
+
+// INCIDENTS #1220: the page-number cap looked only at the rules written so far, so numbers of the first tags filled the
+// file and the hundreds of tags after them pushed it to 2031/2000: the whole build died.
+test('tag page numbers never push _redirects past the limit, wherever the tags without pages sit', async () => {
+  const { toPagesRedirects } = await import('../lib/redirects.cjs');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'redir-firm-'));
+  const site = path.join(dir, '_site');
+  const lines: string[] = [];
+  for (let i = 0; i < 100; i++) { fs.mkdirSync(path.join(site, 'tag', `dyn-${i}`, '2'), { recursive: true }); lines.push(`/t/dyn-${i}/* /tag/dyn-${i}/:splat 301`); }
+  for (let i = 0; i < 150; i++) { for (let n = 2; n <= 11; n++) fs.mkdirSync(path.join(site, 'tag', `big-${i}`, String(n)), { recursive: true }); lines.push(`/t/big-${i}/* /tag/big-${i}/:splat 301`); }
+  for (let i = 0; i < 400; i++) lines.push(`/t/none-${i}/* /tag/none-${i}/:splat 301`);
+  const tooLong: string[][] = [];
+  const out = toPagesRedirects(lines.join('\n') + '\n', site, [], tooLong).trim().split('\n');
+  assert.ok(out.filter((l) => !/[*:]/.test(l.split(' ')[0])).length <= 2000);
+  assert.ok(out.includes('/t/none-399/ /tag/none-399/ 301'), 'the last tag still got its rule');
+  assert.ok(tooLong.length > 0, 'the page numbers that did not fit became stub pages');
+});
