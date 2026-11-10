@@ -1,33 +1,33 @@
 {
  "https://www.fightful.com/wrestling/jeff-cobb-says-jonah-and-jafar-smash-were-potential-wwe-names": {
-  "reason": "المراجعة رفضته: حروف عربي ملزوقة في حروف إنجليزي جوه نفس الاسم (حصل: «يOH»، «نagai») — اكتب الاسم كله إنجليزي أو كله عربي",
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-10T12:16:48.067Z"
+  "at": "2026-11-10T12:20:52.339Z"
  },
  "https://www.fightful.com/wrestling/gcw-bloodsport-reborn-announced": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T12:16:28.539Z"
+  "at": "2026-11-10T12:20:26.768Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-9-2026-cody-rhodes-bayley-vs-michin-judgment-day-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T12:16:28.055Z"
+  "at": "2026-11-10T12:20:26.272Z"
  },
  "https://www.fightful.com/wrestling/john-cena-if-i-have-any-energy-left-in-my-intellectual-property-i-want-to-give-it-to-folks-who-are-clamoring-for-a-spot": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T12:16:27.324Z"
+  "at": "2026-11-10T12:20:25.538Z"
  },
  "https://www.fightful.com/wrestling/mlw-planning-a-roster-refresh": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T12:16:27.014Z"
+  "at": "2026-11-10T12:20:25.225Z"
  },
  "https://www.fightful.com/wrestling/mlw-fusion-spoilers-taped-on-11-8": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T12:16:26.518Z"
+  "at": "2026-11-10T12:20:24.724Z"
  },
  "https://www.wrestlinginc.com/2311676/wwe-alexa-bliss-ill-past-two-months": {
   "reason": "المراجعة رفضته: فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم",
