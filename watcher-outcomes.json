@@ -1,33 +1,33 @@
 {
- "https://www.wrestlinginc.com/2312275/aew-all-out-blood-guts-steven-borden-injury-in-ring-return": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
-  "retry": true,
-  "at": "2026-11-10T17:40:27.901Z"
- },
  "https://www.fightful.com/wrestling/home-town-man-announced-for-tna-world-x-cup": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:39:14.389Z"
+  "at": "2026-11-10T17:43:55.919Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-undergoing-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:39:13.628Z"
+  "at": "2026-11-10T17:43:55.159Z"
  },
  "https://www.fightful.com/wrestling/trick-williams-def-gunther-in-dark-match-prior-to-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:39:13.123Z"
+  "at": "2026-11-10T17:43:54.664Z"
  },
  "https://www.fightful.com/wrestling/jeff-cobb-says-he-thought-about-retiring-after-wwe-release": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:39:12.913Z"
+  "at": "2026-11-10T17:43:54.458Z"
  },
  "https://www.fightful.com/wrestling/jeff-cobb-says-jonah-and-jafar-smash-were-potential-wwe-names": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:39:11.959Z"
+  "at": "2026-11-10T17:43:53.518Z"
+ },
+ "https://www.wrestlinginc.com/2312275/aew-all-out-blood-guts-steven-borden-injury-in-ring-return": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
+  "retry": true,
+  "at": "2026-11-10T17:40:27.901Z"
  },
  "https://www.ringsidenews.com/renee-paquette-jon-moxley-mourn-loss-their-dog-blueberry-j-good": {
   "reason": "المراجعة رفضته: فعل مثنى («يودعان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، المصدر مابيربطش المصارع بالاتحاد ده: AEW جون موكسلي — اكتب «المصارع <الاسم>» من غير اسم اتحاد",

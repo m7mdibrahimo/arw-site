@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2297064/wwe-nxt-cw-beyond-the-bell-vic-joseph-commentator-new-series/": {
-    "matchedFile": "20261024193944-إطلاق-برنامج-nxt-beyond-the-bell-عبر-شبكة-cw-network.md",
-    "reason": "الخبر الجديد يتناول نفس الإعلان عن برنامج Beyond The Bell بنفس التفاصيل الأساسية والمصدر المذكور، ولا يقدم تطوراً جديداً جوهرياً.",
-    "at": "2026-10-26T16:36:19.724Z"
-  },
   "https://www.fightful.com/wrestling/brooke-hogan-reacts-to-sale-of-hulk-hogans-florida-mansion-the-sick-feeling-is-indescribable/": {
     "matchedFile": "20261024221431-بروك-هوجان-تنتقد-بيع-قصر-هالك-هوجان-في-فلوريدا.md",
     "reason": "الخبر الجديد يعيد سرد نفس واقعة بيع قصر هالك هوجان ورد فعل ابنته بروك هوجان التي تم تغطيتها بالفعل في الأخبار السابقة، ولا يقدم تطوراً جديداً جوهرياً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261110063533-تروث-ماجنوم-يطلب-الزواج-من-صديقته-خلال-عرض-jericho-cruise.md",
     "reason": "الخبر الجديد يتحدث عن نفس الحدث تماماً (خطوبة تروث ماجنوم في رحلة كريس جيريكو البحرية وطلب الزواج داخل الحلبة) وقد تم نشر الخبر مسبقاً بناءً على تغطية موقع Fightful ونفس التفاصيل.",
     "at": "2026-11-10T17:39:41.859Z"
+  },
+  "https://www.fightful.com/wrestling/renee-paquette-announces-passing-of-her-and-jon-moxleys-dog-blue/": {
+    "matchedFile": "20261110195748-رينيه-باكيت-وجون-موكسلي-ينعون-وفاة-كلبهم-بلوبري-j-good.md",
+    "reason": "الخبر الجديد يتناول نفس واقعة وفاة الكلب بلو التي تم تغطيتها بالفعل في الخبر رقم 0، ولا يقدم أي تطور جديد أو معلومة إضافية جوهرية.",
+    "at": "2026-11-10T17:44:11.431Z"
   }
 }
