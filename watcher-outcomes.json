@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2312275/aew-all-out-blood-guts-steven-borden-injury-in-ring-return": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
+  "retry": true,
+  "at": "2026-11-10T17:40:27.901Z"
+ },
  "https://www.fightful.com/wrestling/home-town-man-announced-for-tna-world-x-cup": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-30T12:02:00.514Z"
- },
- "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-night-five-results-10-30": {
-  "reason": "المراجعة رفضته: أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
-  "retry": true,
-  "at": "2026-10-30T11:52:35.856Z"
  }
 }
