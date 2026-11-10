@@ -1,38 +1,38 @@
 {
- "https://www.fightful.com/wrestling/matt-sydal-reflects-on-shooting-star-press-rko-counter-says-he-is-now-immune-to-rkos": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kofi Kingston",
-  "retry": true,
-  "at": "2026-11-10T17:09:37.639Z"
- },
  "https://www.fightful.com/wrestling/home-town-man-announced-for-tna-world-x-cup": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:08:27.701Z"
+  "at": "2026-11-10T17:11:35.625Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-undergoing-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:08:26.945Z"
+  "at": "2026-11-10T17:11:34.967Z"
  },
  "https://www.fightful.com/wrestling/trick-williams-def-gunther-in-dark-match-prior-to-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:08:26.454Z"
+  "at": "2026-11-10T17:11:34.542Z"
  },
  "https://www.fightful.com/wrestling/jeff-cobb-says-he-thought-about-retiring-after-wwe-release": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:08:26.249Z"
+  "at": "2026-11-10T17:11:34.363Z"
  },
  "https://www.fightful.com/wrestling/jeff-cobb-says-jonah-and-jafar-smash-were-potential-wwe-names": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:08:25.316Z"
+  "at": "2026-11-10T17:11:33.547Z"
  },
  "https://www.fightful.com/wrestling/gcw-bloodsport-reborn-announced": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T17:08:24.290Z"
+  "at": "2026-11-10T17:11:32.652Z"
+ },
+ "https://www.fightful.com/wrestling/matt-sydal-reflects-on-shooting-star-press-rko-counter-says-he-is-now-immune-to-rkos": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kofi Kingston",
+  "retry": true,
+  "at": "2026-11-10T17:09:37.639Z"
  },
  "https://www.fightful.com/wrestling/matt-sydal-wants-to-reunite-with-kofi-and-team-with-the-new-level-in-place-of-swerve-strickland": {
   "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»، فعل مثنى («يحركاننا») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
