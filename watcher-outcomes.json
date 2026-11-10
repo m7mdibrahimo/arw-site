@@ -1,48 +1,43 @@
 {
- "https://www.ringsidenews.com/bronson-reeds-injury-considered-fairly-serious-saudi-arabia-hospital-stay-continues": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": true,
-  "at": "2026-11-10T21:39:58.868Z"
- },
- "https://www.ringsidenews.com/seth-rollins-calls-triple-h-finally-give-him-wrestlemania-night-two-main-event": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-10T21:34:40.863Z"
- },
  "https://www.fightful.com/wrestling/bret-hart-wcw-shouldve-been-sued-for-putting-me-in-the-ring-with-goldberg": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T21:41:27.410Z"
+  "at": "2026-11-10T21:43:57.700Z"
  },
  "https://www.fightful.com/wrestling/bret-hart-says-wrestling-is-starting-to-become-hokey-it-doesnt-try-to-be-real-anymore": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T21:41:26.985Z"
+  "at": "2026-11-10T21:43:57.277Z"
  },
  "https://www.fightful.com/wrestling/becky-lynch-liv-morgan-is-best-known-for-not-doing-anything-and-i-think-that-sums-her-up": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T21:41:26.405Z"
+  "at": "2026-11-10T21:43:56.696Z"
  },
  "https://www.fightful.com/wrestling/westside-gunn-meets-with-wwe-thanks-nick-khan-for-making-everything-right": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T21:41:26.135Z"
+  "at": "2026-11-10T21:43:56.424Z"
  },
  "https://www.fightful.com/wrestling/renee-paquette-announces-passing-of-her-and-jon-moxleys-dog-blue": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T21:41:25.559Z"
+  "at": "2026-11-10T21:43:55.843Z"
  },
  "https://www.fightful.com/wrestling/home-town-man-announced-for-tna-world-x-cup": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T21:41:25.007Z"
+  "at": "2026-11-10T21:43:55.334Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-undergoing-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T21:41:24.331Z"
+  "at": "2026-11-10T21:43:54.667Z"
+ },
+ "https://www.ringsidenews.com/bronson-reeds-injury-considered-fairly-serious-saudi-arabia-hospital-stay-continues": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": true,
+  "at": "2026-11-10T21:39:58.868Z"
  },
  "https://www.ringsidenews.com/seth-rollins-calls-triple-h-finally-give-him-wrestlemania-night-two-main-event": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
