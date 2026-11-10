@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/jasmin-st-claire-accuses-sonny-onoo-inappropriate-behavior-going-behind-her-back-great-muta-deal": {
+  "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي",
+  "retry": false,
+  "at": "2026-11-10T16:33:00.009Z"
+ },
  "https://www.fightful.com/wrestling/jim-ross-undergoing-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -33,11 +38,6 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: TNA International Championship",
   "retry": true,
   "at": "2026-11-10T16:25:57.386Z"
- },
- "https://www.ringsidenews.com/jasmin-st-claire-accuses-sonny-onoo-inappropriate-behavior-going-behind-her-back-great-muta-deal": {
-  "reason": "المراجعة رفضته: كلمة عربية مقطوعة من حرفين («بت») — اكتب الكلمة كاملة",
-  "retry": true,
-  "at": "2026-11-10T16:11:56.802Z"
  },
  "https://www.ringsidenews.com/third-name-confirmed-tna-world-x-cup-destination-x-2026": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
