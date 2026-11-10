@@ -1,5 +1,15 @@
 [
   {
+    "id": 3298315940,
+    "link": "https://www.wrestlinginc.com/2311753/wwe-raw-rey-fenix-intercontinental-title-no-1-contender-946/",
+    "date": "Tue, 10 Nov 2026 02:20:34 +0000",
+    "date_gmt": "2026-11-10T02:20:34.000Z",
+    "title": {
+      "rendered": "Rey Fénix Wins WWE Intercontinental Title No. 1 Contender's Match On Raw, 946 Attacks"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/rey-fnix-wins-wwe-intercontinental-title-no-1-contenders-match-on-raw-946-attacks/l-intro-1794276628.jpg"
+  },
+  {
     "id": 2958851165,
     "link": "https://www.wrestlinginc.com/2310170/wwe-bully-ray-pat-patterson-vince-mcmahon-paul-heyman-three-figures-taught-most/",
     "date": "Tue, 10 Nov 2026 02:00:00 +0000",
@@ -55,9 +65,9 @@
     "date": "Mon, 09 Nov 2026 22:00:00 +0000",
     "date_gmt": "2026-11-09T22:00:00.000Z",
     "title": {
-      "rendered": "WWE Raw Results 11/9/26 W/ Live Updates: Intercontinental Title No. 1 Contender's Match"
+      "rendered": "WWE Raw Results 11/9/26 W/ Live Updates: CM Punk Joins Cody Rhodes' Survivor Series Team"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-results-11926-w-live-updates/l-intro-1794275315.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-results-11926-w-live-updates/l-intro-1794277683.jpg"
   },
   {
     "id": 3102823210,
@@ -188,15 +198,5 @@
       "rendered": "Report On WWE Delaying GUNTHER Vs. Finn Balor From Crown Jewel"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/report-on-wwe-delaying-gunther-vs-finn-balor-from-crown-jewel/l-intro-1794241554.jpg"
-  },
-  {
-    "id": 4104854406,
-    "link": "https://www.wrestlinginc.com/2309822/tna-shayna-baszler-wwe-pure-fusion-collective-hated-name/",
-    "date": "Mon, 09 Nov 2026 13:30:00 +0000",
-    "date_gmt": "2026-11-09T13:30:00.000Z",
-    "title": {
-      "rendered": "TNA's Shayna Baszler Looks Back On WWE Run With Pure Fusion Collective Stable"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tnas-shayna-baszler-looks-back-on-wwe-run-with-pure-fusion-collective-stable/l-intro-1793998486.jpg"
   }
 ]
