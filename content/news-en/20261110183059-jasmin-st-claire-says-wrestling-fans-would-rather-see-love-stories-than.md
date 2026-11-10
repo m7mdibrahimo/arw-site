@@ -1,7 +1,7 @@
 ---
 title: "Jasmin St. Claire Says Wrestling Fans Would Rather See Love Stories Than Wrestlers Going Through 30 Light Tubes"
 slug: "jasmin-st-claire-says-wrestling-fans-would-rather-see-love-stories-than"
-description: "Jasmin St. Claire believes that deathmatch wrestling has gone too far and that fans would rather watch a compelling love story than a wrestler getting."
+description: "Jasmin St. Claire believes that deathmatch wrestling has gone too far and that fans would rather watch a compelling love story."
 federation: INDIE
 date: 2026-11-10T15:30:59.000Z
 source_id: 802265912
