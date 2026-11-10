@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/nxt-preview-november-10-2026-confirmed-matches-start-time-how-watch": {
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
+  "retry": true,
+  "at": "2026-11-10T12:24:02.234Z"
+ },
  "https://www.fightful.com/wrestling/jeff-cobb-says-jonah-and-jafar-smash-were-potential-wwe-names": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
   "at": "2026-10-29T21:12:35.055Z"
- },
- "https://www.fightful.com/wrestling/336389-grayson-waller-john-cena": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-29T20:31:02.790Z"
  }
 }
