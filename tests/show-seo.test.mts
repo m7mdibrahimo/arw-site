@@ -334,3 +334,12 @@ test("a nickname in double quotes keeps the English event name in the head and d
   assert.ok(r.description.includes("NJPW El Desperado Gas PE Invitational November 9, 2026"), r.description);
   assert.ok(showNameForms({ ...args, isShow: true }).includes("NJPW El Desperado Gas PE Invitational"));
 });
+
+// INCIDENTS #1194: the Arabic alternateNames still carried the nickname's quotes («ديسبيرادو "جاس" بي اي انفيتيشنال»).
+test("no alternateName of a show keeps double quotes from the Arabic headline (INCIDENTS #1194)", () => {
+  const args = { headline: 'عرض ان جيه بي دبليو ال ديسبيرادو "جاس" بي اي انفيتيشنال 09.11.2026 مترجم', title: 'NJPW El Desperado "Gas" PE Invitational (2026)', programName: "NJPW Special Events", eventDate: "2026-11-09", isShow: true };
+  const forms = showNameForms(args);
+  assert.ok(forms.length > 5, String(forms.length));
+  assert.ok(!forms.some((f) => /["«»“”]/.test(f)), forms.filter((f) => /["«»]/.test(f)).join(" | "));
+  assert.ok(forms.includes("عرض ان جيه بي دبليو ال ديسبيرادو جاس بي اي انفيتيشنال 9 نوفمبر 2026"), forms.slice(0, 6).join(" | "));
+});
