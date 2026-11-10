@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/renee-paquette-jon-moxley-mourn-loss-their-dog-blueberry-j-good": {
+  "reason": "المراجعة رفضته: فعل مثنى («يودعان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، المصدر مابيربطش المصارع بالاتحاد ده: AEW جون موكسلي — اكتب «المصارع <الاسم>» من غير اسم اتحاد",
+  "retry": true,
+  "at": "2026-11-10T17:20:11.490Z"
+ },
  "https://www.fightful.com/wrestling/home-town-man-announced-for-tna-world-x-cup": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
   "retry": true,
   "at": "2026-10-30T11:52:35.856Z"
- },
- "https://www.fightful.com/wrestling/tony-khan-aew-has-the-most-affordable-tickets-in-tv-wrestling-were-not-going-to-take-an-arm-and-a-leg": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T11:47:48.042Z"
  }
 }
