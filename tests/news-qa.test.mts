@@ -679,3 +679,11 @@ test("Hardys story: reaction duals block, «صرف الحقيبة» and «ثنا
   assert.equal(applyCorrections("عضو فريق ذا جادجمنت داي (The Judgment Day) تحدث"), "عضو فريق ذا جادجمنت داي تحدث");
 });
 
+test('INCIDENTS #1221: a sentence opening with «ومقره في» is blocked; motion graphics and Lingerie are corrected', () => {
+  const issuesOf = (body: string) => checkArticle('اتحاد Power Slap يوجه إنذارا قانونيا إلى منافس جديد', body).map((i) => i.code);
+  assert.ok(issuesOf('تعتمد المنافسة على الصفع في Power Slap. ومقره في مدينة لاس فيغاس بولاية نيفادا، ويستعد الاتحاد للإعلان.').includes('dangling_headquarters'));
+  assert.ok(!issuesOf('وتستعد الشركة، التي يقع مقرها في مدينة لاس فيغاس بولاية نيفادا، للإعلان عن الأمر.').includes('dangling_headquarters'));
+  assert.ok(BLOCKING_QA_CODES.includes('dangling_headquarters'));
+  assert.equal(applyCorrections('منصب منتج مشارك للرسوم المتحركة'), 'منصب منتج مشارك للغرافيك المتحرك');
+  assert.equal(applyCorrections('شركة Lingere Fighting Championships'), 'شركة Lingerie Fighting Championships');
+});
