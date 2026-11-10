@@ -1,33 +1,38 @@
 {
- "https://www.ringsidenews.com/jasmin-st-claire-accuses-sonny-onoo-inappropriate-behavior-going-behind-her-back-great-muta-deal": {
-  "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي",
+ "https://www.fightful.com/wrestling/home-town-man-announced-for-tna-world-x-cup": {
+  "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T16:33:00.009Z"
+  "at": "2026-11-10T16:35:37.370Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-undergoing-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T16:33:30.555Z"
+  "at": "2026-11-10T16:35:36.842Z"
  },
  "https://www.fightful.com/wrestling/trick-williams-def-gunther-in-dark-match-prior-to-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T16:33:30.119Z"
+  "at": "2026-11-10T16:35:36.501Z"
  },
  "https://www.fightful.com/wrestling/jeff-cobb-says-he-thought-about-retiring-after-wwe-release": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T16:33:29.936Z"
+  "at": "2026-11-10T16:35:36.356Z"
  },
  "https://www.fightful.com/wrestling/jeff-cobb-says-jonah-and-jafar-smash-were-potential-wwe-names": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T16:33:29.105Z"
+  "at": "2026-11-10T16:35:35.694Z"
  },
  "https://www.fightful.com/wrestling/gcw-bloodsport-reborn-announced": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-10T16:33:28.190Z"
+  "at": "2026-11-10T16:35:34.964Z"
+ },
+ "https://www.ringsidenews.com/jasmin-st-claire-accuses-sonny-onoo-inappropriate-behavior-going-behind-her-back-great-muta-deal": {
+  "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي",
+  "retry": false,
+  "at": "2026-11-10T16:33:00.009Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-9-2026-cody-rhodes-bayley-vs-michin-judgment-day-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-30T11:47:47.781Z"
- },
- "https://www.fightful.com/wrestling/wwe-has-no-plans-to-reshape-taping-schedule-for-smackdown-to-go-head-to-head-live-with-aew-new-years-smash": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T11:23:58.524Z"
  }
 }
