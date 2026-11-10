@@ -320,6 +320,7 @@ ${list}
 - تفصيلة صغيرة زيادة على نفس الإعلان (لقب على المحك، مكان العرض، اسم القاعة، ترتيب النزالات) مش تطور جديد = تكرار.
 - جدول أو بطاقة نزالات نفس العرض الجاي من مصدرين = تكرار، إلا لو الجديد فيه نزال أو فقرة اتعلنت بعد الخبر القديم ومش موجودة فيه. مثال: «بطولة AAA الكروزرويت وبيكي لينش ضد ليف مورغان في رو 5 أكتوبر» و«عودة رومان رينز ونزالات عدة في رو 5 أكتوبر» (فيه بيكي وليف وري فينيكس وإيثان بايج) = تكرار.
 
+إذا انتهيت إلى أن الخبر ليس تكراراً (مثلاً رد أو نفي أو تطور جديد) فاجعل duplicate_of قيمته null.
 أعد JSON فقط: {"duplicate_of": رقم الخبر المكرر أو null, "reason": "سبب مختصر"}`;
 }
 
@@ -362,13 +363,21 @@ export function newMedicalOutcome(draft: { title: string }, matched: { title: st
   return medical.test(`${matched.title}\n${matched.body}`) ? hit[0] : null;
 }
 
+/** A duplicate-check reason that concludes the story is new news, not a copy. */
+export const NOT_DUPLICATE_REASON = /(?:لا\s+(?:يُ?عتبر|يُ?عد|تُ?عتبر|تُ?عد|يمثل|يشكل)|ليس(?:ت)?|غير)\s+(?:(?!إلا)\S+\s+)?(?:تكرار|مكرر)|\bnot\s+(?:a\s+)?duplicate\b/i;
+
 export function parseDuplicateAnswer(raw: string | null, candidates: NewsFile[]): { file: string; reason: string } | null {
   if (!raw) return null;
   try {
     const json = JSON.parse(raw.replace(/^```(?:json)?\s*|\s*```$/g, ""));
     const i = json?.duplicate_of;
     if (typeof i !== "number" || !candidates[i]) return null;
-    return { file: candidates[i].file, reason: String(json.reason || "") };
+    const reason = String(json.reason || "");
+    // The model sometimes names a story yet explains it is NOT the same news: «…رد صاحب الشأن أو نفي
+    // الشائعة الذي لا يعتبر تكراراً» (Road Dogg's denial was dropped as a copy of the rumour —
+    // INCIDENTS #1206). The reason is the verdict: a reason that rules out a duplicate wins.
+    if (NOT_DUPLICATE_REASON.test(reason)) return null;
+    return { file: candidates[i].file, reason };
   } catch {
     return null;
   }
