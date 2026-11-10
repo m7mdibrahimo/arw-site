@@ -2,6 +2,31 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
   {
+    "wrong": "تزاوجا",
+    "right": "تزوجوا",
+    "note": "«الثنائي تزاوجا» — التزاوج للحيوانات، والموقع مبيكتبش مثنى: «تزوجوا» (خبر ستيف ماكلين، INCIDENTS #1211)"
+  },
+  {
+    "wrong": "لأبق",
+    "right": "لأبقى",
+    "note": "«ما كنت لأبق حيا» — بعد لام التعليل الفعل بياخد الألف: «لأبقى» (خبر ستيف ماكلين، INCIDENTS #1211)"
+  },
+  {
+    "wrong": "في أوقات الشوائب",
+    "right": "في الأوقات الصعبة",
+    "note": "«دعمها في أوقات الشوائب» جملة مالهاش معنى؛ المقصود الأوقات الصعبة (خبر ستيف ماكلين، INCIDENTS #1211)"
+  },
+  {
+    "wrong": "أنت وأنا سواسية",
+    "right": "وأنا أيضا",
+    "note": "«You and me both» يعني «وأنا أيضا» مش «أنت وأنا سواسية» (خبر جوش بارنيت، INCIDENTS #1211)"
+  },
+  {
+    "wrong": "يتطلب تقديرا هائلا",
+    "right": "يتطلب تفانيا كبيرا",
+    "note": "«it takes a huge dedication» اتترجمت «يتطلب تقديرا هائلا» — dedication = تفان (خبر كايل فليتشر، INCIDENTS #1211)"
+  },
+  {
     "wrong": "ووزيلا",
     "right": "وزيلا",
     "note": "«كودي رودز ووزيلا فاتو» — واو زيادة قبل اسم Zilla Fatu (خبر بطولة جون سينا الكلاسيكية، INCIDENTS #1210)"

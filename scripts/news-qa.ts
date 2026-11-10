@@ -1596,6 +1596,8 @@ export function autoFix(text: string): string {
   text = text.replace(/["“”]+(\*{0,2})«/g, "$1«").replace(/»(\*{0,2})["“”]+/g, "»$1");
   // A space inside the brackets: «أوكس آدامز ( برفقة بريت رايان غوسيلين)» (INCIDENTS #979)
   text = text.replace(/\([ \t]+(?=\S)/g, "(").replace(/(?<=\S)[ \t]+\)/g, ")");
+  // A sentence glued to the end of a quote: «…لولا وجودك».يذكر أن… (Steve Maclin story, INCIDENTS #1211)
+  text = text.replace(/»([.،؛])(?=[ء-ي])/g, "»$1 ");
   // A quote marker written in the middle of a sentence («وقال بيشوف: > نعم…») shows as a literal «>» — the quote goes
   // on its own line (INCIDENTS #470)
   text = text.replace(/^([^>\n][^\n]*?[:：،])[ \t]+>[ \t]+(?=\S)/gm, "$1\n\n> ");
@@ -1874,7 +1876,11 @@ export function wrestlerNotInSource(body: string, source: string, glossary: Reco
     if (words.length < 2 || ar.length < 8 || !/^[؀-ۿ ]+$/.test(ar)) continue;
     let hits = 0;
     for (let i = text.indexOf(ar); i !== -1 && hits < 2; i = text.indexOf(ar, i + ar.length)) {
-      if (!/[ء-ي]/.test(text[i - 1] || "") && !/[ء-ي]/.test(text[i + ar.length] || "")) hits++;
+      // «وكاتسويوري شيباتا»: a one-letter prefix (و/ب/ل/ف/ك) is part of the written word — the invented name in the
+      // Lance Storm story hid behind its «و» (INCIDENTS #1211)
+      const before = text[i - 1] || "";
+      const free = !/[ء-ي]/.test(before) || (/[وبلفك]/.test(before) && !/[ء-ي]/.test(text[i - 2] || ""));
+      if (free && !/[ء-ي]/.test(text[i + ar.length] || "")) hits++;
     }
     // One mention is enough when the surname is not in the source: «يوشيكي إينامورا» stood for Yuki Iino in a NOAH
     // story (INCIDENTS #463), and «جورج آيسمان» stood for George Barrios once in the title and once in the text — the
