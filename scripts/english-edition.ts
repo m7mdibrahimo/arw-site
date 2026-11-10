@@ -392,6 +392,8 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   [/\b(refuse[sd]?|refusing|decid(?:e[sd]?|ing)|vow(?:s|ed|ing)?) (to|not to|never to) (post|share) (her|his|their|my|our) (children|kids|son|daughter|baby|babies)\b/gi, (_m: string, v: string, to: string, post: string, her: string, who: string) => /^[A-Z]/.test(v) ? `${v} ${to} ${post} Photos of ${her[0].toUpperCase() + her.slice(1)} ${who[0].toUpperCase() + who.slice(1)}` : `${v} ${to} ${post} photos of ${her} ${who}`],
   // «Lighting Match» — CMLL's quick format is a Lightning Match (CMLL Martes de Arena México story, round 2026-11-04)
   [/\bLighting (Match(?:es)?)\b/g, "Lightning $1"],
+  // «broadcast live from Disneyworld» — the resort is two words (John Cena Classic story, INCIDENTS #1217)
+  [/\bDisneyworld\b/g, "Disney World"],
   // A promotion acronym left in title case: «at Njpw Power Struggle» (Super Junior Tag League story, round 2026-11-03)
   [/\b(?:Njpw|Wwe|Aew|Tna|Roh|Mlw|Cmll|Gcw|Ufc|Nxt)\b/g, (m: string) => m.toUpperCase()],
   // «Rubbing His Success in Faces of Critics» — the article went missing from the idiom (Royce Keys story, round 2026-11-02)
@@ -606,12 +608,25 @@ export function fixLineStarts(text: string): string {
     return line;
   }).join("\n");
 }
+/**
+ * «Denis Gauthier has passed away at the age of 83 on Sunday night» — the present perfect never takes a finished
+ * time (on Sunday, last night, yesterday): it is the simple past (Gauthier story, INCIDENTS #1217). Only the
+ * narration changes; quotes and quote lines keep the speaker's words.
+ */
+const PAST_TIME = String.raw`(?:on (?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)|(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday) (?:night|morning|afternoon|evening)|last night|yesterday|earlier today)\b(?!'s)`;
+const PERFECT_WITH_PAST_TIME = new RegExp(String.raw`(?<!\b(?:would|could|should|might|must|may|will|to|not) )\b(?:has|have) (?:(passed away|died)(?=(?:(?! (?:that|following|after|before|since|when|while|and)\b)[^.!?,;\n"“”]){0,40}? ${PAST_TIME})|(announced|revealed|confirmed)(?= (?:it|this|the news) ${PAST_TIME}))`, "g");
+export function fixPerfectWithPastTime(text: string): string {
+  return String(text).split("\n").map((line) => {
+    if (SKIP_LINE.test(line)) return line;
+    return line.split(QUOTED).map((part, k) => (k % 2 ? part : part.replace(PERFECT_WITH_PAST_TIME, (_m, a?: string, b?: string) => a || b || _m))).join("");
+  }).join("\n");
+}
 /** The English prose mistakes still in a story: «a experimental», «I’re», «with he» (empty = fine) */
 export function englishGrammarSlips(text: string): string[] {
   return aToAn(fixIre(fixPronounCase(text))) === String(text) ? [] : ["a/an, I're or pronoun-case typo"];
 }
 export function fixEnglishNames(text: string): string {
-  return fixSingularThey(aToAn(fixIre(fixPronounCase(twitterToX(dropRepeatedListItem(collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text)))))))));
+  return fixPerfectWithPastTime(fixSingularThey(aToAn(fixIre(fixPronounCase(twitterToX(dropRepeatedListItem(collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text))))))))));
 }
 
 export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEWS_EN_DIR): string {

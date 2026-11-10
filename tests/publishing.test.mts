@@ -1931,7 +1931,7 @@ test('a news story whose title was edited keeps its first URL alive: the build r
   } finally {
     fs.rmSync(dir, { recursive: true, force: true }); fs.rmSync(site, { recursive: true, force: true });
   }
-  assert.match(fs.readFileSync('eleventy.config.js', 'utf8'), /toPagesRedirects\(fs\.readFileSync\("_redirects", "utf-8"\), "_site", renamedArticleRedirects\(\), tooLong, dropped\)/);
+  assert.match(fs.readFileSync('eleventy.config.js', 'utf8'), /toPagesRedirects\(fs\.readFileSync\("_redirects", "utf-8"\), "_site", \[\.\.\.showMoves, \.\.\.renamedArticleRedirects\(\)\], tooLong, dropped\)/);
 });
 
 test('no «\\b» next to an Arabic letter in scripts/ or worker/src/ — JS «\\b» only knows ASCII, so the rule is silently dead', async () => {

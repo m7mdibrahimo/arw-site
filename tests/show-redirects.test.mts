@@ -30,7 +30,11 @@ test('an in-between show address Google was sent redirects to the show it became
     ['/shows/mlp-special-josh-alexander-vs-stu-grayson-northern-rising-21-10-2026/', '/shows/mlp-special-josh-alexander-vs-stu-grayson-21-10-2026/'],
     ['/en/shows/mlp-special-josh-alexander-vs-stu-grayson-northern-rising-21-10-2026/', '/en/shows/mlp-special-josh-alexander-vs-stu-grayson-21-10-2026/'],
   ]);
-  assert.match(fs.readFileSync('eleventy.config.js', 'utf8'), /writeRedirectPages\(require\("\.\/lib\/redirects\.cjs"\)\.vanishedShowRedirects\(\), "_site"\)/);
+  // the moves are written as stub pages AND as real 301s in _redirects (INCIDENTS #1218: Google kept the old address as canonical)
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
+  assert.match(cfg, /const showMoves = require\("\.\/lib\/redirects\.cjs"\)\.vanishedShowRedirects\(\);/);
+  assert.match(cfg, /toPagesRedirects\([^\n]*\[\.\.\.showMoves, \.\.\.renamedArticleRedirects\(\)\]/);
+  assert.match(cfg, /writeRedirectPages\(showMoves, "_site"\)/);
 });
 
 // INCIDENTS #961: a show renamed after it went live redirected from its Arabic file-name address, but its English copy 404'd
@@ -95,4 +99,19 @@ test('a show renamed to its year redirects from its old dated address', () => {
     ['/shows/gcw-the-score-26-09-2026/', '/shows/gcw-the-score-2026/'],
     ['/shows/gcw-rock-bottom-25-09-2026/', '/shows/gcw-rock-bottom-2026/'],
   ]);
+});
+
+// INCIDENTS #1218: old tag page numbers had filled _redirects to 1,982 rules, so renamed shows got only a noindex stub
+// and Google kept the old GCW Rock Bottom address as the canonical. Moves keep their room; extra page numbers become stubs.
+test('renamed show moves keep room in _redirects; tag page numbers that do not fit become redirect pages', async () => {
+  const { toPagesRedirects } = await import('../lib/redirects.cjs');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'redir-room-'));
+  const site = path.join(dir, '_site');
+  for (let n = 2; n <= 1950; n++) fs.mkdirSync(path.join(site, 'tag', 'b', String(n)), { recursive: true });
+  const moves = Array.from({ length: 10 }, (_, i) => [`/shows/old-${i}/`, `/shows/new-${i}/`]);
+  const tooLong: string[][] = [];
+  const out = toPagesRedirects('/tag/a/* /tag/b/:splat 301\n/tag/a/* /tag/b/:splat 301\n', site, moves, tooLong).trim().split('\n');
+  for (const [from, to] of moves) assert.ok(out.includes(`${from} ${to} 301`), from);
+  assert.ok(out.filter((l) => !/[*:]/.test(l.split(' ')[0])).length <= 2000);
+  assert.ok(tooLong.some(([from]) => /^\/tag\/a\/\d+\/$/.test(from)), 'page numbers that did not fit become stub pages');
 });

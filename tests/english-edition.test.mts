@@ -544,3 +544,15 @@ test('a quote taken from the source with a word lost is caught (Paige story, INC
   assert.equal(alteredQuoteSentence('> "I think WWE knows that already. It might be a pain in the a** to deal with me sometimes!"', src), null);
   assert.ok(checkEnglish({ ...good, body: good.body + '\n\n' + bad }, { ...input, sourceText: source + ' ' + src }).some((x) => x.startsWith('quote changed from the source')));
 });
+
+test("the present perfect with a finished time becomes the simple past (INCIDENTS #1217)", async () => {
+  const { fixPerfectWithPastTime, fixEnglishNames } = await import("../scripts/english-edition.ts");
+  assert.equal(fixPerfectWithPastTime("Former wrestler Denis Gauthier has passed away at the age of 83 on Sunday night."), "Former wrestler Denis Gauthier passed away at the age of 83 on Sunday night.");
+  assert.equal(fixPerfectWithPastTime("WWE has announced it on Monday."), "WWE announced it on Monday.");
+  // a conditional, a later clause, a quote and «within the last week» stay as they are
+  assert.equal(fixPerfectWithPastTime("Cena would have announced it on Monday."), "Cena would have announced it on Monday.");
+  assert.equal(fixPerfectWithPastTime("She has signed with TNA following her appearance on Tuesday."), "She has signed with TNA following her appearance on Tuesday.");
+  assert.equal(fixPerfectWithPastTime("> He has passed away on Sunday."), "> He has passed away on Sunday.");
+  assert.equal(fixPerfectWithPastTime(`He said, "He has died on Sunday."`), `He said, "He has died on Sunday."`);
+  assert.equal(fixEnglishNames("The show will air live from Disneyworld in Orlando."), "The show will air live from Disney World in Orlando.");
+});

@@ -2457,12 +2457,16 @@ module.exports = function(eleventyConfig) {
     if (fs.existsSync("_redirects")) {
       const { toPagesRedirects, renamedArticleRedirects, vanishedLibraryRedirects, writeRedirectPages } = require("./lib/redirects.cjs");
       const tooLong = [], dropped = [];
-      fs.writeFileSync("_site/_redirects", toPagesRedirects(fs.readFileSync("_redirects", "utf-8"), "_site", renamedArticleRedirects(), tooLong, dropped));
+      // A renamed show's old address as a real 301 too, not only a noindex refresh page: Google kept the old dated
+      // GCW Rock Bottom address as the canonical of the new one for days (INCIDENTS #1218). Shows go first (fewer,
+      // and each one is a page people search for); the stub page below stays as the fallback.
+      const showMoves = require("./lib/redirects.cjs").vanishedShowRedirects();
+      fs.writeFileSync("_site/_redirects", toPagesRedirects(fs.readFileSync("_redirects", "utf-8"), "_site", [...showMoves, ...renamedArticleRedirects()], tooLong, dropped));
       for (const [from, to] of dropped) console.warn(`[redirects] skipped ${from} → ${to}: it would send a live page to a missing one (INCIDENTS #455)`);
       writeRedirectPages(tooLong, "_site"); // over-long Arabic redirects (INCIDENTS #200)
       writeRedirectPages(vanishedLibraryRedirects(), "_site"); // library pages whose show moved to another program (INCIDENTS #951)
       writeRedirectPages(require("./lib/redirects.cjs").orphanEnglishRedirects(), "_site"); // English stories whose Arabic story was deleted (INCIDENTS #982)
-      writeRedirectPages(require("./lib/redirects.cjs").vanishedShowRedirects(), "_site"); // in-between show addresses after quick title edits (INCIDENTS #961)
+      writeRedirectPages(showMoves, "_site"); // in-between show addresses after quick title edits (INCIDENTS #961)
       writeRedirectPages(require("./lib/redirects.cjs").legacyArticleAddresses(), "_site"); // old article addresses Google still holds (INCIDENTS #274)
       writeRedirectPages(require("./lib/redirects.cjs").contentFolderAddresses(), "_site"); // «/content/<section>/<file>/» addresses (INCIDENTS #284)
       writeRedirectPages(require("./lib/redirects.cjs").removedRecapRedirects().filter(([from]) => !from.startsWith("/en/")), "_site"); // the removed «ملخصات العروض» (owner 2026-11-03)

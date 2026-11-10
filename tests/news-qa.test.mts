@@ -650,3 +650,17 @@ test("a venue named «Pop's Nightclub» is not English wrestling jargon, but «p
   assert.ok(!jargon("أقيم العرض في صالة Pop’s Nightclub بمدينة ساوجيت."));
   assert.ok(jargon("حصل المصارع على pop كبير من الجمهور."));
 });
+
+test("«push» written as money words is caught when the source has no money (INCIDENTS #1217)", async () => {
+  const { claimNotInSource } = await import("../scripts/news-qa.ts");
+  const pad = " Meltzer pointed out that while WWE had initially been ambivalent over talents that decided not to travel to past Saudi shows, that had changed over the last few years and the babyface goes over in dark matches.";
+  const src = "And then it got where if you say no to going, well you can say no, but we're going to have to readjust your push." + pad;
+  assert.deepEqual(claimNotInSource("قد تغيرت لتشمل تعديل الدفعات أو خسارة الألقاب قبل العروض.", src), ["دفعات مالية / payments"]);
+  assert.deepEqual(claimNotInSource("وحصل العديد من النجوم الشباب على دفعات قوية.", src), ["دفعات مالية / payments"]);
+  assert.deepEqual(claimNotInSource("قد تغيرت لتشمل تراجع مكانة المصارع في القصص.", src), []);
+  // «دفعات تصعيد المواهب» = batches of call-ups, not money
+  assert.deepEqual(claimNotInSource("تم تصعيده للعروض الرئيسية ضمن دفعات تصعيد المواهب.", src), []);
+  // money in the source: the money word stands
+  assert.deepEqual(claimNotInSource("وتم خصم من راتب المصارع بعد رفضه السفر.", src + " His pay was docked."), []);
+  assert.deepEqual(claimNotInSource("It could lead to adjusted pushes.", src, "en"), []);
+});

@@ -1,7 +1,7 @@
 ---
 title: "Denis Gauthier Passes Away"
 slug: "denis-gauthier-passes-away"
-description: "According to Fightful, former professional wrestler Denis Gauthier has passed away at the age of 83 on Sunday night."
+description: "According to Fightful, former professional wrestler Denis Gauthier passed away Sunday night at the age of 83."
 federation: INDIE
 date: 2026-11-10T19:25:28.000Z
 source_id: 338414
@@ -14,7 +14,7 @@ en_tags:
   - "Fightful"
 image: /content/images/3h8bs0m1nwwkj50i.jpg
 ---
-According to Fightful, former professional wrestler Denis Gauthier has passed away at the age of 83 on Sunday night.
+According to Fightful, former professional wrestler Denis Gauthier passed away Sunday night at the age of 83.
 
 Pat Laprade shared the news on X, stating:
 

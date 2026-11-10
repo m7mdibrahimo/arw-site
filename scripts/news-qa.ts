@@ -1333,6 +1333,14 @@ const SOURCE_CLAIMS: { label: string; ar: RegExp; en: RegExp; source: RegExp }[]
     en: /\b(?:cancel(?:l?ed|l?ing|lations?|s)?|pull(?:ed|ing)? out of|withdr[ae]w(?:n|ing)? from)\b[^.\n]{0,40}\b(?:bookings?|dates|appearances|commitments|shows|events)\b/i,
     source: /cancel|pull(?:ed|ing|s)? out|withdr|\bmiss(?:ed|es|ing)?\b|off (?:of )?(?:upcoming|future|all)|out of (?:upcoming|future|all|his|her|their)|bookings|no-?show/i,
   },
+  {
+    // "we're going to have to readjust your push" became «تعديل الدفعات» (payments) — Meltzer on GUNTHER, INCIDENTS #1217.
+    // A push is a wrestler's place on the card; money words need money in the source.
+    label: "دفعات مالية / payments",
+    ar: /(?<![ء-ي])(?:وال|بال|لل|ال)?(?:دفعات|مدفوعات|المستحقات|أجور|رواتب)(?:ه|ها|هم)?(?![ء-ي])(?!\s+(?:تصعيد|من\s|جديدة\s+من))|(?<![ء-ي])(?:خصم|تخفيض|تقليص)\s+(?:من\s+)?(?:راتب|أجر|مستحقات)/,
+    en: /\b(?:payments?|pay ?cuts?|docked (?:his |her |their )?pay|paychecks?|salar(?:y|ies))\b/i,
+    source: /\bpa(?:y|id|yment|ycheck)|salar|money|wage|dock|compensat|\$\s?\d|\bearn|financ|bonus|fine[ds]?\b/i,
+  },
 ];
 /**
  * «Ric Flair Set For First Wrestling Appearance Since Scary Fall» became «ريك فلير يظهر علنا لأول مرة منذ سقوطه…»:
