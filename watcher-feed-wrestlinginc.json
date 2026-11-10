@@ -1,5 +1,25 @@
 [
   {
+    "id": 1463016773,
+    "link": "https://www.wrestlinginc.com/2312751/tna-impact-viewership-ratings-october-29-2026/",
+    "date": "Tue, 10 Nov 2026 21:01:45 +0000",
+    "date_gmt": "2026-11-10T21:01:45.000Z",
+    "title": {
+      "rendered": "TNA Impact Viewership & Ratings Report: 10/29/2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-impact-viewership-ratings-report-10292026/l-intro-1794344262.jpg"
+  },
+  {
+    "id": 4858581763,
+    "link": "https://www.wrestlinginc.com/2312748/wwe-raw-viewership-ratings-report-november-2-2026/",
+    "date": "Tue, 10 Nov 2026 21:00:33 +0000",
+    "date_gmt": "2026-11-10T21:00:33.000Z",
+    "title": {
+      "rendered": "WWE Raw Viewership & Ratings Report, 11/2/2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-viewership-ratings-report-1122026/l-intro-1794344319.jpg"
+  },
+  {
     "id": 2785049132,
     "link": "https://www.wrestlinginc.com/2312725/wwe-crown-jewel-2026-bronson-reed-other-staff-still-saudi-arabia/",
     "date": "Tue, 10 Nov 2026 20:49:21 +0000",
@@ -17,7 +37,7 @@
     "title": {
       "rendered": "More John Cena Classic Invitees To Be Revealed Tonight On WWE NXT"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/more-john-cena-classic-invitees-to-be-revealed-tonight-on-wwe-nxt/l-intro-1794340830.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/more-john-cena-classic-invitees-to-be-revealed-tonight-on-wwe-nxt/l-intro-1794343912.jpg"
   },
   {
     "id": 3040031225,
@@ -178,25 +198,5 @@
       "rendered": "Jason Hotch Added To World X-Cup At TNA Destination X"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/jason-hotch-added-to-world-x-cup-at-tna-destination-x/l-intro-1794269463.jpg"
-  },
-  {
-    "id": 935528258,
-    "link": "https://www.wrestlinginc.com/2311717/biggest-winners-losers-week-november-9-2026/",
-    "date": "Tue, 10 Nov 2026 00:07:50 +0000",
-    "date_gmt": "2026-11-10T00:07:50.000Z",
-    "title": {
-      "rendered": "Biggest Winners And Losers Of The Week — 11/9/2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/biggest-winners-and-losers-of-the-week-1192026/l-intro-1794269087.jpg"
-  },
-  {
-    "id": 1987489057,
-    "link": "https://www.wrestlinginc.com/2311676/wwe-alexa-bliss-ill-past-two-months/",
-    "date": "Mon, 09 Nov 2026 23:09:07 +0000",
-    "date_gmt": "2026-11-09T23:09:07.000Z",
-    "title": {
-      "rendered": "WWE's Alexa Bliss Says She's Been Ill For The Past Two Months"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-alexa-bliss-says-shes-been-ill-for-the-past-two-months/l-intro-1794265686.jpg"
   }
 ]

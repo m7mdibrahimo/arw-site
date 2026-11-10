@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2312751/tna-impact-viewership-ratings-october-29-2026": {
+  "reason": "تقرير مشاهدة لعرض قديم (2026-10-29)",
+  "retry": false,
+  "at": "2026-11-10T21:10:56.069Z"
+ },
+ "https://www.wrestlinginc.com/2312748/wwe-raw-viewership-ratings-report-november-2-2026": {
+  "reason": "تقرير مشاهدة لعرض قديم (2026-11-02)",
+  "retry": false,
+  "at": "2026-11-10T21:10:55.942Z"
+ },
  "https://www.fightful.com/wrestling/bret-hart-wcw-shouldve-been-sued-for-putting-me-in-the-ring-with-goldberg": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1988,15 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-30T18:28:48.217Z"
- },
- "https://www.fightful.com/wrestling/chris-jericho-says-tv-series-about-early-portion-of-his-career-is-close-to-filming-pilot-episode": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T18:28:48.065Z"
- },
- "https://www.fightful.com/wrestling/tony-dangelo-if-the-show-is-not-doing-numbers-they-looked-at-me-as-the-champion": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T17:57:56.406Z"
  }
 }
