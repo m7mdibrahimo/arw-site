@@ -1,38 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/gcw-bloodsport-reborn-announced": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T10:26:32.166Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-raw-results-11-9-2026-cody-rhodes-bayley-vs-michin-judgment-day-more": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T10:26:31.678Z"
+ },
+ "https://www.fightful.com/wrestling/john-cena-if-i-have-any-energy-left-in-my-intellectual-property-i-want-to-give-it-to-folks-who-are-clamoring-for-a-spot": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T10:26:30.942Z"
+ },
+ "https://www.fightful.com/wrestling/mlw-planning-a-roster-refresh": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T10:26:30.625Z"
+ },
+ "https://www.fightful.com/wrestling/mlw-fusion-spoilers-taped-on-11-8": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T10:26:08.015Z"
+ },
  "https://www.wrestlinginc.com/2311676/wwe-alexa-bliss-ill-past-two-months": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-10T10:15:21.823Z"
  },
- "https://www.fightful.com/wrestling/gcw-bloodsport-reborn-announced": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T10:14:50.472Z"
- },
- "https://www.fightful.com/wrestling/wwe-raw-results-11-9-2026-cody-rhodes-bayley-vs-michin-judgment-day-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T10:14:50.057Z"
- },
- "https://www.fightful.com/wrestling/john-cena-if-i-have-any-energy-left-in-my-intellectual-property-i-want-to-give-it-to-folks-who-are-clamoring-for-a-spot": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T10:14:49.433Z"
- },
- "https://www.fightful.com/wrestling/mlw-planning-a-roster-refresh": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T10:14:49.168Z"
- },
  "https://www.fightful.com/wrestling/road-dogg-was-not-fired-by-wwe-over-support-of-chelsea-green": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-10T10:14:48.900Z"
- },
- "https://www.fightful.com/wrestling/mlw-fusion-spoilers-taped-on-11-8": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T10:14:48.551Z"
  },
  "https://www.wrestlinginc.com/2311791/wwe-raw-november-9-2026-hated-loved-opinion-review": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
