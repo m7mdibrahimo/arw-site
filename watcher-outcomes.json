@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/third-name-confirmed-tna-world-x-cup-destination-x-2026": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-10T15:33:52.417Z"
+ },
  "https://www.fightful.com/wrestling/jim-ross-undergoing-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -28,11 +33,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-10T15:32:11.995Z"
- },
- "https://www.ringsidenews.com/third-name-confirmed-tna-world-x-cup-destination-x-2026": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-10T15:19:52.840Z"
  },
  "https://www.fightful.com/wrestling/john-cena-if-i-have-any-energy-left-in-my-intellectual-property-i-want-to-give-it-to-folks-who-are-clamoring-for-a-spot": {
   "reason": "مكرر مع خبر نزل قبل كده",
