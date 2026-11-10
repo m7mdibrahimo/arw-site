@@ -1,5 +1,25 @@
 [
   {
+    "id": 338299,
+    "link": "https://www.fightful.com/wrestling/338299-jacob-fatu-roman-reigns-wargames/",
+    "date": "2026-11-09T22:39:48",
+    "date_gmt": "2026-11-10T03:39:48",
+    "title": {
+      "rendered": "Jacob Fatu Returns, Roman Reigns Makes WarGames Challenge For WWE Survivor Series"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/09223847/HWu-IIIb0AENW27.jpg"
+  },
+  {
+    "id": 338301,
+    "link": "https://www.fightful.com/wrestling/truth-magnum-proposes-on-jericho-cruise/",
+    "date": "2026-11-09T22:35:33",
+    "date_gmt": "2026-11-10T03:35:33",
+    "title": {
+      "rendered": "Truth Magnum Proposes On Jericho Cruise"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/09223514/Screenshot-2026-11-09-at-10.29.36-PM.png"
+  },
+  {
     "id": 338294,
     "link": "https://www.fightful.com/wrestling/338294-iyo-sky-womens/",
     "date": "2026-11-09T22:23:52",
@@ -25,7 +45,7 @@
     "date": "2026-11-09T21:34:48",
     "date_gmt": "2026-11-10T02:34:48",
     "title": {
-      "rendered": "CM Punk Joins Team USA For WWE Survivor Series Match"
+      "rendered": "CM Punk &#038; Je&#8217;Von Evans Join Team USA, Penta Joins Team Mexico For WWE Survivor Series Match"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/09213239/HWuur-zaEAAEIuJ-e1794277968607.jpg"
   },
@@ -278,25 +298,5 @@
       "rendered": "John Cena Shares How He Used To Be A &#8216;Big Gift Giver&#8217; At Christmas While Working With WWE To &#8216;Buy Through His Workaholism&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/17123302/maxresdefault-113.jpg"
-  },
-  {
-    "id": 338198,
-    "link": "https://www.fightful.com/wrestling/donovan-dijak-announces-hes-finished-up-with-mlw/",
-    "date": "2026-11-09T11:23:34",
-    "date_gmt": "2026-11-09T16:23:34",
-    "title": {
-      "rendered": "Donovan Dijak Announces He&#8217;s Finished Up With MLW"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/09/30123012/Donovan-Dijak-MLW-Tag-Team-Champion.png"
-  },
-  {
-    "id": 338192,
-    "link": "https://www.fightful.com/wrestling/jason-hotch-announced-for-tna-world-x-cup/",
-    "date": "2026-11-09T11:05:57",
-    "date_gmt": "2026-11-09T16:05:57",
-    "title": {
-      "rendered": "Jason Hotch Announced For TNA World X-Cup"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/09110320/Screenshot-2026-11-09-at-10.37.23-AM.png"
   }
 ]
