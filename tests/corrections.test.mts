@@ -1695,3 +1695,10 @@ test("«منصة باراماونت+» and the same «… بكثير» twice in 
   const stories = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /شركة باراماونت\+/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(stories, []);
 });
+
+// INCIDENTS #1195: «main event» came out as «قائمة نزال الأحداث الرئيسية» in the Bully Ray story.
+test("main event is «النزالات الرئيسية / النزال الرئيسي», never «نزال الأحداث الرئيسية» (INCIDENTS #1195)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("وساعدوه على الوصول إلى قائمة نزال الأحداث الرئيسية في عروض المصارعة."), "وساعدوه على الوصول إلى النزالات الرئيسية في عروض المصارعة.");
+  assert.equal(applyCorrections("خاض نزال الأحداث الرئيسية في العرض."), "خاض النزال الرئيسي في العرض.");
+});
