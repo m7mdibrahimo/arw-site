@@ -1,4 +1,44 @@
 {
+ "https://www.fightful.com/wrestling/nwa-powerrr-results-11-7": {
+  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
+  "retry": true,
+  "at": "2026-11-10T04:31:42.692Z"
+ },
+ "https://www.fightful.com/wrestling/gcw-bloodsport-reborn-announced": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T04:31:11.104Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-raw-results-11-9-2026-cody-rhodes-bayley-vs-michin-judgment-day-more": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T04:31:10.649Z"
+ },
+ "https://www.fightful.com/wrestling/john-cena-if-i-have-any-energy-left-in-my-intellectual-property-i-want-to-give-it-to-folks-who-are-clamoring-for-a-spot": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T04:31:09.966Z"
+ },
+ "https://www.fightful.com/wrestling/mlw-planning-a-roster-refresh": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T04:31:09.674Z"
+ },
+ "https://www.fightful.com/wrestling/road-dogg-was-not-fired-by-wwe-over-support-of-chelsea-green": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T04:31:09.376Z"
+ },
+ "https://www.fightful.com/wrestling/mlw-fusion-spoilers-taped-on-11-8": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T04:31:08.988Z"
+ },
+ "https://www.fightful.com/wrestling/john-cena-shares-how-he-used-to-be-a-big-gift-giver-at-christmas-while-working-with-wwe-to-buy-through-his-workaholism": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T04:27:54.702Z"
+ },
  "https://www.wrestlinginc.com/2311772/wwe-raw-tag-champs-penta-jevon-evans-opposing-teams-usa-mexico-survivor-series": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى («ينضمان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
@@ -8,41 +48,6 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-10T04:24:50.879Z"
- },
- "https://www.fightful.com/wrestling/gcw-bloodsport-reborn-announced": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T04:27:57.841Z"
- },
- "https://www.fightful.com/wrestling/wwe-raw-results-11-9-2026-cody-rhodes-bayley-vs-michin-judgment-day-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T04:27:57.360Z"
- },
- "https://www.fightful.com/wrestling/john-cena-if-i-have-any-energy-left-in-my-intellectual-property-i-want-to-give-it-to-folks-who-are-clamoring-for-a-spot": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T04:27:56.628Z"
- },
- "https://www.fightful.com/wrestling/mlw-planning-a-roster-refresh": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T04:27:56.320Z"
- },
- "https://www.fightful.com/wrestling/road-dogg-was-not-fired-by-wwe-over-support-of-chelsea-green": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T04:27:56.014Z"
- },
- "https://www.fightful.com/wrestling/mlw-fusion-spoilers-taped-on-11-8": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T04:27:55.613Z"
- },
- "https://www.fightful.com/wrestling/john-cena-shares-how-he-used-to-be-a-big-gift-giver-at-christmas-while-working-with-wwe-to-buy-through-his-workaholism": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T04:27:54.702Z"
  },
  "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-9-2026": {
   "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
   "retry": true,
   "at": "2026-10-29T20:07:37.199Z"
- },
- "https://www.fightful.com/wrestling/tna-impact-preview-start-time-how-to-watch-location-10-29": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-29T19:50:52.729Z"
  }
 }

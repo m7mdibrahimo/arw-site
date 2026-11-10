@@ -1,5 +1,15 @@
 [
   {
+    "id": 338279,
+    "link": "https://www.fightful.com/wrestling/nwa-powerrr-results-11-7/",
+    "date": "2026-11-09T23:30:00",
+    "date_gmt": "2026-11-10T04:30:00",
+    "title": {
+      "rendered": "NWA Powerrr Results (11/7)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/25195147/Screenshot-2026-08-25-at-7.49.25-PM.png"
+  },
+  {
     "id": 338299,
     "link": "https://www.fightful.com/wrestling/338299-jacob-fatu-roman-reigns-wargames/",
     "date": "2026-11-09T22:39:48",
@@ -288,15 +298,5 @@
       "rendered": "TJPW Announces Conditions For Unlimited Princess Title Match To Take Place"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/09110258/%E3%83%99%E3%83%AB%E3%83%88.jpg"
-  },
-  {
-    "id": 338189,
-    "link": "https://www.fightful.com/wrestling/john-cena-shares-how-he-used-to-be-a-big-gift-giver-at-christmas-while-working-with-wwe-to-buy-through-his-workaholism/",
-    "date": "2026-11-09T11:37:33",
-    "date_gmt": "2026-11-09T16:37:33",
-    "title": {
-      "rendered": "John Cena Shares How He Used To Be A &#8216;Big Gift Giver&#8217; At Christmas While Working With WWE To &#8216;Buy Through His Workaholism&#8217;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/17123302/maxresdefault-113.jpg"
   }
 ]
