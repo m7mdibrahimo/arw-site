@@ -310,6 +310,8 @@ const RULES: Rule[] = [
   // alif wasl dropped after «ال»: «القتناع» ← «الاقتناع» (the writer glued ال to a word that starts with a hidden alif) — INCIDENTS #499
   { code: "dropped_alef", severity: "error", re: /(?<![ء-ي])[لبوفك]?ال(?:قتناع|ستخدام|ستمرار|نتصار|نتقال|نتظار|جتماع|حتفال|ختيار|عتماد|ستعداد|نسحاب|نضمام|ستقالة|ستثناء|ستقرار|ستقبال|رتباط|نطلاق|نتهاء|عتراف|عتذار|فتتاح|ستسلام|ستحقاق|نفجار|نقسام|ستلام)(?![ء-ي])/g, message: "ألف الوصل ساقطة بعد «ال» (القتناع ← الاقتناع)", fields: ["title", "body"] },
   { code: "broken_word", severity: "error", re: /(?<=[\u0600-\u06FF]) (?!vs\b)(?:[a-z]{2,14})(?=[\s،,.؛:!؟?)]|$)(?! [A-Za-z])/g, message: "كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي", fields: ["title", "body"] },
+  // «بأنها» glued to the verb before it: «ووصفتهابأنها» (INCIDENTS #1222). No Arabic word ends in «…بأنها» after four letters.
+  { code: "glued_arabic_words", severity: "error", re: /(?<![\u0600-\u06FF])[\u0621-\u064A]{4,}بأن(?:ها|ه|هم|ني|نا)?(?![\u0600-\u06FF])/g, message: "كلمتين عربي ملزوقين من غير مسافة (مثل: ووصفتهابأنها)", fields: ["title", "body"] },
   // Two Arabic words run together with no space: «ترقب جماهيريدائم» (INCIDENTS #680). A nisba ending in ي glued to a common adjective/noun.
   // A dual pronoun glued to the next word, as Gemini wrote «العداوة المستمرة بينهمامستمرة بينهم» (INCIDENTS #740)
   { code: "glued_arabic_words", severity: "error", re: /(?<![\u0600-\u06FF])(?:بينهما|عليهما|منهما|عنهما|معهما|فيهما|ضدهما)[\u0621-\u064A]{3,}(?![\u0600-\u06FF])/g, message: "كلمتين عربي ملزوقين من غير مسافة (مثل: بينهمامستمرة)", fields: ["title", "body"] },
@@ -407,6 +409,8 @@ const RULES: Rule[] = [
   // Construct duals of a time word before two dates: «خلال شهري أكتوبر ونوفمبر»، «بين عامي 2017 و2023» (Lana story; 51 stories had it — INCIDENTS #1182)
   { code: "dual_noun", severity: "error", re: /(?<![ء-ي])[وفبل]?(?:ال)?(?:عامي\s+\d{4}\s+و\s*\d{4}|شهري\s+(?:يناير|فبراير|مارس|أبريل|إبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر)\s+و(?:يناير|فبراير|مارس|أبريل|إبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر))(?![ء-ي])/g, message: "مثنى «عامي 2017 و2023 / شهري أكتوبر ونوفمبر» ممنوع — اكتب «عام 2017 وعام 2023» أو «شهر أكتوبر وشهر نوفمبر»", fields: ["title", "body"] },
   // «عرضي AEW Dynamite وAEW Collision»، «في حلقتي مسلسل Visionquest» (INCIDENTS #945)
+  // «تحت اسمي دابينا روز وميا يم»: two ring names as a dual (INCIDENTS #1222); «تحت اسمي الحقيقي» in a quote is "my name" and stays allowed.
+  { code: "dual_noun", severity: "error", re: /(?<![ء-ي])تحت\s+اسمي(?![ء-ي])(?!\s+(?:الحقيقي|الأصلي|الخاص))/g, message: "اسم مثنى (تحت اسمي فلان وفلان) ممنوع — اكتب «باسم دابينا روز وباسم ميا يم»" },
   { code: "dual_noun", severity: "error", re: /(?<![ء-ي])[وفبل]?(?:عرضي(?=\s+[A-Za-z])|حلقتي(?=\s+(?:مسلسل|برنامج|بودكاست|فيلم)))/g, message: "اسم مثنى (عرضي WWE RAW وSmackDown / حلقتي مسلسل) ممنوع — «عرض X وY» أو «حلقات من مسلسل»", fields: ["title", "body"] },
   // «أحدهم … والآخر» pairs "one of them" with "the other" of TWO things — the dual «أحدهما» was lost («عقدين، أحدهم كمصارع والآخر…», Billy Gunn story, INCIDENTS #816)
   { code: "one_of_two", severity: "error", re: /(?<![ء-ي])أحدهم(?![ء-ي])[^.\n]{0,40}(?<![ء-ي])و?(?:الآخر|الأخر)(?![ء-ي])/g, message: "«أحدهم … والآخر» بتتقال عن اتنين (مثنى ممنوع) — قول «واحد … وواحد» أو «الأول … والتاني»", fields: ["body"] },
