@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2312847/bayley-michin-mia-yim-wwe-raw-wrestling-responds": {
+  "reason": "المراجعة رفضته: العنوان بينتهي بكلمة مبتورة مش موجودة في الخبر — الاقتباس اتقطع",
+  "retry": true,
+  "at": "2026-11-10T21:57:58.770Z"
+ },
  "https://www.fightful.com/wrestling/bret-hart-wcw-shouldve-been-sued-for-putting-me-in-the-ring-with-goldberg": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-30T20:11:50.981Z"
- },
- "https://www.ringsidenews.com/wwes-original-plans-world-tag-team-title-match-crown-jewel-2026": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
-  "retry": true,
-  "at": "2026-10-30T19:27:47.751Z"
  }
 }
