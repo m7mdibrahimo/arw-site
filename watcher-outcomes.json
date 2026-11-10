@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/bronson-reed-still-hospitalized-saudi-arabia-rib-kidney-injury": {
+  "reason": "المراجعة رفضته: اسم المصدر اتمسح وسابله جملة مكسورة («تقارير صحفية» مكررة) — لازم تتكتب من غير الاسم",
+  "retry": true,
+  "at": "2026-11-10T19:28:37.188Z"
+ },
  "https://www.fightful.com/wrestling/becky-lynch-liv-morgan-is-best-known-for-not-doing-anything-and-i-think-that-sums-her-up": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-30T16:14:28.942Z"
- },
- "https://www.fightful.com/wrestling/report-lei-ying-lee-still-under-contract-with-tna": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-30T15:17:40.964Z"
  }
 }
