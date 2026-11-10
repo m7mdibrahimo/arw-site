@@ -1,8 +1,8 @@
 {
  "https://www.ringsidenews.com/bronson-reed-still-hospitalized-saudi-arabia-rib-kidney-injury": {
-  "reason": "المراجعة رفضته: اسم المصدر اتمسح وسابله جملة مكسورة («تقارير صحفية» مكررة) — لازم تتكتب من غير الاسم",
-  "retry": true,
-  "at": "2026-11-10T19:28:37.188Z"
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-11-10T19:31:19.671Z"
  },
  "https://www.fightful.com/wrestling/becky-lynch-liv-morgan-is-best-known-for-not-doing-anything-and-i-think-that-sums-her-up": {
   "reason": "مكرر مع خبر نزل قبل كده",
