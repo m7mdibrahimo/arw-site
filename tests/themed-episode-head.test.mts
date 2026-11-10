@@ -21,3 +21,21 @@ test("a themed weekly episode carries its theme alone, with «and» for «&»; a
   const raw = showNameForms({ headline: "عرض الرو 02.11.2026 مترجم", title: "WWE Raw 02.11.2026", programName: "WWE Raw", eventDate: "2026-11-02", isShow: true });
   assert.ok(!raw.includes("WWE 2026") && !raw.includes("2026 مترجم"));
 });
+
+// INCIDENTS #1191: «AEW Dynamite Blood & Guts» was titled «… — AEW Dynamite» (no episode name), «AEW Fright Night Dynamite»
+// (theme in the middle) had no «AEW Fright Night»/«Fright Night 2026», and «MLP Special: Josh Alexander vs Stu Grayson»
+// had no Arabic name of either fighter.
+test("themed episode name in the title tail, a mid-name theme's forms, and a card's fighters in Arabic (INCIDENTS #1191)", () => {
+  const bg = { headline: "عرض داينامايت 04.11.2026 مترجم", title: "AEW Dynamite Blood & Guts 04.11.2026", programName: "AEW Dynamite", eventDate: "2026-11-04", day: "4 نوفمبر 2026", isLatest: false };
+  assert.ok(showSeoText(bg).title.endsWith("— AEW Dynamite Blood & Guts"), showSeoText(bg).title);
+  const raw = { headline: "عرض الرو 02.11.2026 مترجم", title: "WWE Raw 02.11.2026", programName: "WWE Raw", eventDate: "2026-11-02", day: "2 نوفمبر 2026", isLatest: false };
+  assert.ok(showSeoText(raw).title.endsWith("— WWE Raw"));
+  const rager = { headline: "عرض كوليجن 07.11.2026 مترجم", title: "AEW Collision Chris Jericho’s Rock N’ Wrestling Rager 07.11.2026", programName: "AEW Collision", eventDate: "2026-11-07", day: "7 نوفمبر 2026", isLatest: false };
+  assert.ok(showSeoText(rager).title.length <= 75);
+  const fn = showNameForms({ headline: "عرض داينامايت 28.10.2026 مترجم", title: "AEW Fright Night Dynamite 28.10.2026", programName: "AEW Dynamite", eventDate: "2026-10-28", isShow: true });
+  for (const f of ["Fright Night", "AEW Fright Night", "AEW Fright Night 2026", "Fright Night Dynamite"]) assert.ok(fn.includes(f), f);
+  const mlp = showNameForms({ headline: "عرض ام ال بي 21.10.2026 مترجم", title: "MLP Special: Josh Alexander vs Stu Grayson 21.10.2026", programName: "MLP Special", eventDate: "2026-10-21", isShow: true });
+  for (const f of ["جوش ألكسندر ضد ستو غرايسون", "ستو غرايسون مترجم"]) assert.ok(mlp.includes(f), f);
+  const ufc = showNameForms({ headline: "عرض يو اف سي فايت نايت 285 مترجم", title: "UFC Fight Night 285: Hernandez vs. Rodrigues", programName: "UFC Fight Night", eventDate: "2026-09-20", isShow: true });
+  assert.ok(!ufc.some((f) => /[ء-ي]+ مترجم$/.test(f) && /هيرنانديز/.test(f)));
+});

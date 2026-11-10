@@ -213,6 +213,8 @@ const RULES: Rule[] = [
   // «عرض» is too short for repeated_word: «في مواجهة بدون قوانين بعرض عرض AEW Redemption» (Jericho story, INCIDENTS #965)
   // The same preposition+two-word phrase twice (names lists legitimately repeat, so only «بعد/قبل/أثناء…» phrases) within a few words: «بعد شعوره بضيق شديد في التنفس بعد شعوره بضيق التنفس» (Gurv Sihra story, INCIDENTS #1065)
   { code: "repeated_phrase", severity: "error", re: new RegExp(`(?<![${AR}])((?:بعد|قبل|أثناء|خلال|بسبب|رغم|عند|حول|ضد|بين|لدى|عقب)\\s+[${AR}]{3,}\\s+[${AR}]{3,})(?![${AR}])[^.\\n]{0,30}?(?<![${AR}])\\1(?![${AR}])`, "g"), message: "نفس العبارة (٣ كلمات) مكررة في نفس الجملة — اكتبها مرة واحدة", fields: ["title", "body"] },
+  // «خيارات أفضل بكثير ... خيارا أفضل بكثير» in one sentence (INCIDENTS #1190)
+  { code: "repeated_phrase", severity: "error", re: new RegExp(`(?<![${AR}])([${AR}]{3,}\\s+بكثير)(?![${AR}])[^.\\n]{0,150}?(?<![${AR}])\\1(?![${AR}])`, "g"), message: "نفس الوصف («أفضل بكثير») مكرر في نفس الجملة — اكتبه مرة واحدة", fields: ["title", "body"] },
   { code: "repeated_word", severity: "error", re: /(?<![ء-ي])[وفبل]?عرض\s+عرض(?![ء-ي])/g, message: "كلمة «عرض» مكررة مرتين ورا بعض — اكتبها مرة واحدة" },
   // «أجرى X مقابلة مع Y في كواليس العرض الذي أكد…» — the place named twice in one sentence made «الذي» point at the show (SmackDown results, INCIDENTS #1030)
   { code: "repeated_backstage", severity: "error", re: /كواليس\s+(?:ال)?عرض[^.\n]{0,60}كواليس\s+(?:ال)?عرض/g, message: "«كواليس العرض» مكررة في نفس الجملة (و«الذي» بعدها تشير للعرض) — اذكرها مرة واحدة" },

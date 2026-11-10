@@ -2,6 +2,12 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "شركة باراماونت\\+",
+      "right": "منصة باراماونت+",
+      "regex": true,
+      "note": "باراماونت+ منصة بث مش شركة — خبر HBO Max كتب «خدمة البث التابعة لشركة باراماونت+» (INCIDENTS #1190)"
+    },
+    {
       "wrong": "نزال رجل أخير صامد",
       "right": "نزال الرجل الأخير الصامد",
       "note": "Last Man Standing اتكتب «نزال رجل أخير صامد» في خبر كودي رودز وإيثان بايج — الصح «الرجل الأخير الصامد» زي باقي الأخبار (INCIDENTS #1186)"

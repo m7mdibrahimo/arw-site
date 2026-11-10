@@ -1681,3 +1681,17 @@ test("«العمل مستمر», «التي تابعتها», «تحويلها �
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /(?:العمل|التخطيط) جاري|التي تابعته مرارا|تحويل شخصيت(?:ها|ه) إلى (?:المكروه|الشرير)|بمناسبات خاصة/.test(fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "")));
   assert.deepEqual(bad, []);
 });
+
+// INCIDENTS #1190: «خدمة البث التابعة لشركة باراماونت+» and «خيارات أفضل بكثير ... خيارا أفضل بكثير» reached stories.
+test("«منصة باراماونت+» and the same «… بكثير» twice in one sentence (INCIDENTS #1190)", async () => {
+  const { applyCorrections, checkArticle } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("دمج HBO Max مع خدمة البث التابعة لشركة باراماونت+ قريبا"), "دمج HBO Max مع خدمة البث التابعة لمنصة باراماونت+ قريبا");
+  assert.equal(applyCorrections("استحواذ شركة باراماونت على الشركة"), "استحواذ شركة باراماونت على الشركة");
+  const filler = " كلام عادي في الخبر".repeat(30);
+  const bad = "وأكد أن هناك خيارات أفضل بكثير لمسيرته، مشددا على أن العودة كانت خيارا أفضل بكثير." + filler;
+  assert.ok(checkArticle("عنوان عربي كامل للخبر هنا", bad, []).some(i => i.code === "repeated_phrase" && /بكثير/.test(i.excerpt || "")));
+  const ok = "وأكد أن أمامه خيارات أفضل بكثير لمسيرته. وكانت حالته أفضل بكثير من العام الماضي." + filler;
+  assert.ok(!checkArticle("عنوان عربي كامل للخبر هنا", ok, []).some(i => i.code === "repeated_phrase" && /بكثير/.test(i.excerpt || "")));
+  const stories = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /شركة باراماونت\+/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(stories, []);
+});
