@@ -99,11 +99,27 @@ export function fixTimeDuals(text: string): string {
   });
 }
 
+/**
+ * A rule written with «ال» («المصارعة الحرة→المصارعة») never matched its «لل» form: «ل» + «المصارعة»
+ * is written «للمصارعة», so «كل ما يمكن للمصارعة الحرة» was published (INCIDENTS #1213). Every plain
+ * rule whose wrong AND right start with «ال» also gets its «لل» twin («للمصارعة الحرة→للمصارعة»).
+ */
+function withLamAlefForms(corrections: Correction[]): Correction[] {
+  const out: Correction[] = [];
+  for (const c of corrections) {
+    out.push(c);
+    if (!c.regex && c.wrong.startsWith("ال") && c.wrong.length > 3 && c.right.startsWith("ال")) {
+      out.push({ ...c, wrong: "لل" + c.wrong.slice(2), right: "لل" + c.right.slice(2) });
+    }
+  }
+  return out;
+}
+
 /** Applies every wrong→right rule from editorial/corrections.json. Idempotent. */
 export function applyCorrections(text: string, corrections = loadCorrections()): string {
   if (!text) return text;
   let out = fixTimeDuals(fixNumberGender(decodeHtmlEntities(text)));
-  for (const c of corrections) {
+  for (const c of withLamAlefForms(corrections)) {
     out = out.replace(correctionRegex(c), (m, prefix = "") =>
       // the text is already right: «لعودة→للعودة» read «للعودة» as «ل» + «لعودة» and wrote «لللعودة» (INCIDENTS #944)
       m === c.right ? m :
