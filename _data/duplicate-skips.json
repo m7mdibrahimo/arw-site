@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/aaa-heroes-inmortales-spoiler-results-week-two-there/": {
-    "matchedFile": "20261025050251-نتائج-عرض-aaa-heroes-inmortales-24-أكتوبر-2026-الدفاع-عن-الألقاب-وتكريم-في-قاعة-المشاهير.md",
-    "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
-    "at": "2026-10-25T22:30:39.298Z"
-  },
   "https://www.fightful.com/wrestling/eric-young-and-wwe-details/": {
     "matchedFile": "20261025044320-تقارير-إريك-يانج-يعمل-لصالح-wwe-كمنتج-في-عرض-wwe-nxt.md",
     "reason": "الخبر الجديد يكرر نفس المعلومة المنشورة مسبقاً حول عمل إريك يانج كمنتج في عرض NXT منذ شهر يوليو الماضي ورحيله عن اتحاد TNA.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261110013245-جوش-بارنيت-يكشف-تفاصيل-البحث-عن-مستثمرين-جدد-لتقديم-عروض-bloodsport.md",
     "reason": "الخبر الجديد يعلن رسميا عودة عرض Bloodsport Reborn وتصريحات جوش بارنيت حول الاهتمام بإعادته، وهو نفس الحدث والتفاصيل الخاصة بمستقبل عروض Bloodsport وتصريحات بارنيت الموجودة بالفعل في الخبر رقم 3.",
     "at": "2026-11-10T02:17:53.832Z"
+  },
+  "https://www.wrestlinginc.com/2311758/wwe-raw-cody-rhodes-team-usa-survivor-series-cm-punk-dominik-mysterio/": {
+    "matchedFile": "20261110053448-سي-ام-بانك-ينضم-إلى-فريق-أمريكا-في-نزال-عرض-wwe-survivor-series.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث (انضمام سي ام بانك لفريق أمريكا في Survivor Series والمواجهة التي حدثت في عرض Raw) وهو ما تم تغطيته بالفعل في الخبر رقم 0.",
+    "at": "2026-11-10T02:59:07.624Z"
   }
 }
