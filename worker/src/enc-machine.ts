@@ -57,3 +57,15 @@ export function encBusyText(rs: { name: string; why: "busy" | "price" }[]): stri
   if (dear.length) parts.push(`${joinAr(dear)} ${dear.length > 1 ? "أسعارهم زادت" : "سعره زاد"} عن اللي وافقت عليه`);
   return parts.length ? parts.join("، و") : "مفيش جهاز في قائمتك";
 }
+
+/** how much of a show a subtitle file covers: the end of its last line, in minutes (0 = none). 2026-11-10: RAW's
+ *  subtitles covered 10 minutes of a 3-hour show and the panel called them ready */
+export function srtMinutes(srt: string): number {
+  let end = 0;
+  for (const m of String(srt || "").matchAll(/-->\s*(\d+):(\d{2}):(\d{2})[,.](\d{1,3})/g)) {
+    const t = Number(m[1]) * 3600 + Number(m[2]) * 60 + Number(m[3]);
+    if (t > end) end = t;
+  }
+  return Math.round(end / 60);
+}
+export const ENC_SHORT_MIN = 20; // shorter than this isn't a whole show (the machine's SHORT_MIN)

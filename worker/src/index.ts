@@ -45,7 +45,7 @@ import { handleWatch } from "./watch";
 import { handlePredict, studioPredict, studioPredictPicks, studioPredictSave, studioPredictResult, studioPredictDelete, studioPredictPrize } from "./predict";
 import { seedPredictions } from "./predict-seed";
 import { once } from "./once";
-import { encInstOf, encHealth, encStuckStep, encBusyText, encMinutes, type EncBeat } from "./enc-machine";
+import { encInstOf, encHealth, encStuckStep, encBusyText, encMinutes, srtMinutes, ENC_SHORT_MIN, type EncBeat } from "./enc-machine";
 import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatClear, studioChatMute, studioChatDismiss, studioChatRooms, studioChatBg, chatKick, chatRebadge, chatExpirySweep } from "./chat";
 export { ChatRoom } from "./chat";
 import { handleMembers, sendMail, studioMembers, studioBanMember, studioMemberDetail, studioOfficialAccount, studioBadgeMember, studioVerifyMember, studioEditMember, resetAutoBadges } from "./members";
@@ -3294,6 +3294,9 @@ export default {
           const text = await request.text();
           if (text.length > 5_000_000) return json({ success: false, error: "too big" }, 413);
           await env.PUSH_KV.put(`enc:${kind}:${name}`, text, { expirationTtl: 30 * 86400 });
+          // English subtitles covering only a few minutes are not a show's: the bell says so (a machine on an older
+          // bundle has no check of its own before writing them down)
+          if (kind === "en") { const mins = srtMinutes(text); if (mins < ENC_SHORT_MIN) await encEvent(env, "short-subs", `${name} (${mins || 0} دقيقة)`); }
           return json({ success: true });
         }
         // the machine asks every few seconds what the panel wants (a link opened in its browser can't wait for the
@@ -3341,7 +3344,7 @@ export default {
           const r = await v("/commands/rclone/", { method: "POST", body: JSON.stringify({ src: "/workspace/drive-out/", dst: "/", instance_id: Number(iid), selected: conn.id, transfer: "Instance To Cloud", flags: [] }) });
           return json({ success: !!(r && r.success), log: r && r.result_url ? String(r.result_url) : undefined, error: r && !r.success ? r.msg || r.error : undefined });
         } else if (path === "/tools/arw-event") {
-          if (["subs-start", "merge-start", "cancelled", "novideo", "no-nvenc", "needlang"].includes(body.kind)) await encEvent(env, body.kind, String(body.name || ""));
+          if (["subs-start", "merge-start", "cancelled", "novideo", "no-nvenc", "needlang", "short"].includes(body.kind)) await encEvent(env, body.kind, String(body.name || ""));
         } else {
           const t = (v: any) => Math.min(now + 60_000, Math.max(0, Math.round(Number(v) || 0)));
           await env.ANALYTICS.prepare("INSERT INTO enc_jobs (name, step, started, finished, ok) VALUES (?, ?, ?, ?, ?)")
@@ -3647,7 +3650,7 @@ export default {
             data = { name };
           } else if (b.kind === "clean" || b.kind === "resub" || b.kind === "reupload" || b.kind === "setqual" || b.kind === "remerge" || b.kind === "unqueue") {
             if (!name) return json({ success: false, error: "مفيش اسم" });
-            data = b.kind === "resub" ? { name, lang } : b.kind === "setqual" ? { name, qual: b.qual === "720" ? "720" : "all" } : { name };
+            data = b.kind === "resub" ? { name, lang, ...(b.shortOk ? { shortOk: true } : {}) } : b.kind === "setqual" ? { name, qual: b.qual === "720" ? "720" : "all" } : { name };
           } else return json({ success: false, error: "طلب مش معروف" });
           await env.ANALYTICS.prepare("INSERT INTO enc_cmds (kind, data, created) VALUES (?, ?, ?)").bind(b.kind, JSON.stringify(data), Date.now()).run();
           return json({ success: true });

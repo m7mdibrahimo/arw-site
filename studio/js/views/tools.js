@@ -668,6 +668,7 @@ export async function renderServerTool(page) {
     if (s.ar) return { text: 'مستني الدمج', tone: 'wait' };
     if (s.en) return { text: 'الترجمة الإنجليزي جاهزة', tone: 'ok' };
     if (s.subsFailed) return { text: 'التفريغ فشل', tone: 'bad' };
+    if (s.short) return { text: `الملف ${num(s.short)} دقيقة بس — شكله ناقص`, tone: 'bad' };
     if (s.needLang) return { text: 'مستني تختار لغة الصوت', tone: 'bad' };
     if (s.video) return { text: 'مستني التفريغ', tone: 'wait' };
     return { text: '', tone: '' };
@@ -697,6 +698,9 @@ export async function renderServerTool(page) {
           ${MERGE && !busy && s.ar && !s.merged ? html`<button class="btn btn-sm" data-unqueue="${n}">${icon('x')} إلغاء الدمج</button>` : ''}
           ${busy ? '' : html`<button class="btn btn-sm btn-ghost danger" data-clean="${n}">${icon('trash')} امسحه من السيرفر</button>`}
         </div>
+        ${s.short && !busy ? html`<div class="srv-needlang"><b>${icon('alert')} الملف ده مدته ${num(s.short)} دقيقة بس، والعرض الكامل أطول من كده بكتير.</b>
+          <p class="muted">غالبًا الفيديو مكانش خلص تحميل لما اتطلّع منه الصوت، أو الرفع وقف في النص. ارفع الملف الكامل بنفس الاسم من «ارفع من جهازك» والتفريغ هيبدأ لوحده. ولو هو كده فعلًا، دوس «فرّغه كده».</p>
+          <div><button class="btn btn-sm" data-shortok="${n}">${icon('bolt')} فرّغه كده</button></div></div>` : ''}
         ${s.needLang && startedSubs[s.name] ? html`<p class="srv-wait">${icon('clock')} التفريغ بيبدأ (${LANG_NAME[startedSubs[s.name]] || ''}) — خلال ثواني هتشوف النسبة.</p>`
         : s.needLang ? html`<div class="srv-needlang"><b>${icon('alert')} اختار لغة الصوت، وبعدين دوس «ابدأ التفريغ»:</b>
           <div class="srv-langs">${LANGS.map(l => html`<button class="srv-q ${pickedLang[s.name] === l.key ? 'on' : ''}" data-picklang="${n}:${l.key}">${l.name}</button>`)}</div>
@@ -736,6 +740,7 @@ export async function renderServerTool(page) {
       if (!(await send({ kind: 'resub', name: s.name, lang: l }, `التفريغ بيبدأ — ${LANG_NAME[l]}`))) { b.disabled = false; return; }
       startedSubs[s.name] = l; delete pickedLang[s.name]; drawShows(last);
     });
+    $$('[data-shortok]').forEach(b => b.onclick = () => { const s = list[+b.dataset.shortok]; send({ kind: 'resub', name: s.name, lang: s.lang || 'en', shortOk: true }, 'تمام — هيتفرّغ زي ما هو'); });
     $$('[data-setlang]').forEach(b => b.onclick = () => { const [n, l] = b.dataset.setlang.split(':'); send({ kind: 'resub', name: list[+n].name, lang: l }, list[+n].needLang ? `لغة الصوت: ${LANG_NAME[l]} — التفريغ هيبدأ خلال ثواني` : `لغة الصوت: ${LANG_NAME[l]}`); });
     $$('[data-q]').forEach(b => b.onclick = () => { const [n, q] = b.dataset.q.split(':'); chosenQ[list[+n].name] = q; drawShows(last); });
     $$('[data-ar]').forEach(inp => inp.onchange = async () => {

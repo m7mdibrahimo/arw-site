@@ -71,3 +71,12 @@ test('why his list could not start, machine by machine', () => {
   assert.equal(encBusyText([{ name: 'كندا (٣٠٦٠ تي)', why: 'busy' }]), 'كندا مشغول مع ناس تانيين');
   assert.equal(encBusyText([]), 'مفيش جهاز في قائمتك');
 });
+
+test('how much of a show subtitles cover: RAW 2026-11-09 came out 10 minutes of a 3-hour show', async () => {
+  const { srtMinutes, ENC_SHORT_MIN } = await import('../worker/src/enc-machine');
+  const raw = '106\n00:09:56,500 --> 00:09:56,660\nYeah!\n\n107\n00:09:56,880 --> 00:09:58,200\nWe did it this and now!\n';
+  assert.equal(srtMinutes(raw), 10);
+  assert.ok(srtMinutes(raw) < ENC_SHORT_MIN);
+  assert.equal(srtMinutes('1\n02:58:10,000 --> 02:58:12,500\nGoodnight!\n'), 178);
+  assert.equal(srtMinutes(''), 0);
+});
