@@ -598,11 +598,14 @@ export async function renderServerTool(page) {
   const drawStatus = (d) => {
     const st = d.status, now = d.now || Date.now();
     const alive = st && st.state === 'on' && now - st.at < 90_000;
+    // the machine as the rental site has it, judged by whether it answers (2026-11-10: it ran there without answering
+    // and the button kept saying «شغال أصلًا»)
+    const mach = !alive && d.machine ? d.machine.health : null;
     const job = alive ? st.job : null;
     const q = (st && st.queue) || {};
     mount(box, html`<section class="panel srv-card">
       <div class="srv-top">
-        <div class="srv-state"><i class="srv-dot ${alive ? 'on' : ''}"></i><b>${alive ? 'السيرفر شغال' : 'السيرفر مقفول'}</b></div>
+        <div class="srv-state"><i class="srv-dot ${alive ? 'on' : ''}"></i><b>${alive ? 'السيرفر شغال' : mach === 'setting-up' ? 'السيرفر بيشتغل' : mach === 'stuck' ? 'السيرفر مش بيرد' : 'السيرفر مقفول'}</b></div>
         ${alive ? (job ? '' : html`<button class="btn btn-sm btn-ghost" id="srv-stop">${icon('x')} اقفل السيرفر</button>`)
           : d.waiting ? html`<button class="btn btn-sm btn-ghost" id="srv-stop">${icon('x')} بطّل الانتظار</button>`
           : d.vastKey ? html`<button class="btn btn-primary" id="srv-start">${icon('bolt')} شغّل السيرفر</button>`
@@ -619,9 +622,11 @@ export async function renderServerTool(page) {
           <p><b>متصفح السيرفر:</b> متصفح شغال على السيرفر نفسه. افتح منه موقع التورنت أو موقع التحميل ونزّل الملف عادي، وهينزل لوحده في فولدر الفيديوهات ويبدأ. ده الحل لموقع التورنت اللي لازم التحميل يكون من نفس الجهاز اللي نزّل ملف التورنت.</p>
         </details>` : ''}
       <p class="muted srv-sub">${alive ? `آخر إشارة منه: ${timeAgo(st.at)} — اشتغل الساعة ${dayClock(st.boot)}`
+        : mach === 'setting-up' ? (d.machine.fresh ? `جهاز جديد اشتغل ${timeAgo(d.machine.since)} وبيجهّز نفسه — التجهيز بياخد حوالي ١٠ دقايق` : `اتشغّل ${timeAgo(d.machine.since)} وبيقوم`)
+        : mach === 'stuck' ? 'شغال على موقع التأجير بس مش بيرد على اللوحة — هعيد تشغيله لوحدي خلال دقايق، أو دوس «شغّل السيرفر» دلوقتي'
         : st ? `مقفول من ${dayClock(st.at)}` : 'لسه مبعتش أي إشارة'}</p>
       ${!alive && d.waiting ? html`<div class="srv-job"><b>${icon('clock')} مستني جهازك يفضى</b>
-          <p class="muted">الأجهزة اللي في قائمتك (${[d.prefName, ...(d.altNames || [])].filter(Boolean).map(n => n.replace(/\s*\(.*\)$/, '')).join('، ')}) مشغولين كلهم مع ناس تانيين. بحاول عليهم بالترتيب كل دقيقتين من الساعة ${dayClock(d.waiting)}، وأول ما واحد يفضى هيشتغل لوحده ويوصلك إشعار. لو عايز تشتغل دلوقتي حالًا خد أقرب جهاز ليه.</p>
+          <p class="muted">${d.waitWhy ? `${d.waitWhy}.` : `الأجهزة اللي في قائمتك (${[d.prefName, ...(d.altNames || [])].filter(Boolean).map(n => n.replace(/\s*\(.*\)$/, '')).join('، ')}) مشغولين كلهم مع ناس تانيين.`} بحاول عليهم بالترتيب كل دقيقتين من الساعة ${dayClock(d.waiting)}، وأول ما واحد يفضى هيشتغل لوحده ويوصلك إشعار. لو عايز تشتغل دلوقتي حالًا خد أقرب جهاز ليه.</p>
           <div class="srv-actions"><button class="btn btn-sm" id="srv-any">${icon('bolt')} خد أقرب جهاز ليه</button></div></div>`
         : !alive ? html`<p class="muted srv-note">${d.vastKey ? `دوس «شغّل السيرفر» وخلاص: هياخد أول جهاز فاضي من قائمتك بالترتيب (${[d.prefName, ...(d.altNames || [])].filter(Boolean).map(n => n.replace(/\s*\(.*\)$/, '')).join('، ')}). ولو كلهم مشغولين، هفضل أحاول عليهم لحد ما واحد يفضى وأشغّله لوحده. اللي طلبته وهو مقفول هيتعمل أول ما يشتغل.` : 'عشان تشغّله بضغطة واحدة من هنا، حط مفتاح موقع التأجير مرة واحدة في «زرار التشغيل» تحت.'}</p>` : ''}
       ${job ? html`<div class="srv-job">
