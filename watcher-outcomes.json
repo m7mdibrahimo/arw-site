@@ -1,4 +1,34 @@
 {
+ "https://www.fightful.com/wrestling/jeff-cobb-says-jonah-and-jafar-smash-were-potential-wwe-names": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T12:35:00.621Z"
+ },
+ "https://www.fightful.com/wrestling/gcw-bloodsport-reborn-announced": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T12:34:59.750Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-raw-results-11-9-2026-cody-rhodes-bayley-vs-michin-judgment-day-more": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T12:34:59.327Z"
+ },
+ "https://www.fightful.com/wrestling/john-cena-if-i-have-any-energy-left-in-my-intellectual-property-i-want-to-give-it-to-folks-who-are-clamoring-for-a-spot": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T12:34:58.700Z"
+ },
+ "https://www.fightful.com/wrestling/mlw-planning-a-roster-refresh": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T12:34:58.431Z"
+ },
+ "https://www.fightful.com/wrestling/mlw-fusion-spoilers-taped-on-11-8": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-10T12:34:58.005Z"
+ },
  "https://www.ringsidenews.com/jeff-cobb-admits-he-considered-retirement-wwe-release": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
@@ -8,36 +38,6 @@
   "reason": "المراجعة رفضته: نفس العنوان منشور قبل كده — الخبر مكرر",
   "retry": false,
   "at": "2026-11-10T12:30:34.596Z"
- },
- "https://www.fightful.com/wrestling/jeff-cobb-says-jonah-and-jafar-smash-were-potential-wwe-names": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T12:33:09.952Z"
- },
- "https://www.fightful.com/wrestling/gcw-bloodsport-reborn-announced": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T12:33:08.886Z"
- },
- "https://www.fightful.com/wrestling/wwe-raw-results-11-9-2026-cody-rhodes-bayley-vs-michin-judgment-day-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T12:33:08.392Z"
- },
- "https://www.fightful.com/wrestling/john-cena-if-i-have-any-energy-left-in-my-intellectual-property-i-want-to-give-it-to-folks-who-are-clamoring-for-a-spot": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T12:33:07.659Z"
- },
- "https://www.fightful.com/wrestling/mlw-planning-a-roster-refresh": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T12:33:07.346Z"
- },
- "https://www.fightful.com/wrestling/mlw-fusion-spoilers-taped-on-11-8": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T12:33:06.842Z"
  },
  "https://www.wrestlinginc.com/2311676/wwe-alexa-bliss-ill-past-two-months": {
   "reason": "المراجعة رفضته: فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم",
