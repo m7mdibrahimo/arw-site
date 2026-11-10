@@ -2,6 +2,16 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
   {
+    "wrong": "الفائزان",
+    "right": "الفائزون",
+    "note": "مثنى ممنوع في سطر الفائز وفي النص — خبر NWA Powerrr كتب «🏆 الفائزان» و١٠٧ خبر قديم فيهم نفس الصيغة (INCIDENTS #1205)"
+  },
+  {
+    "wrong": "الفائزتان",
+    "right": "الفائزات",
+    "note": "مثنى ممنوع في سطر الفائز وفي النص — خبر NWA Powerrr كتب «🏆 الفائزان» و١٠٧ خبر قديم فيهم نفس الصيغة (INCIDENTS #1205)"
+  },
+  {
     "wrong": "لقبيهما",
     "right": "لقبهم",
     "note": "ضمير مثنى ممنوع — خبر بينتا وجيفون إيفانز كتب «فريقيهما» و«الزميلان» (INCIDENTS #1204)"
