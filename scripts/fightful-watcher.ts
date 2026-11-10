@@ -520,8 +520,10 @@ export function sanitizeWrestlingTerms(text: string): string {
     return `__ARW_SAFE_URL_${safeUrls.length - 1}__`;
   });
 
-  const arBoundL = "(?<![\\u0600-\\u06FF])";
-  const arBoundR = "(?![\\u0600-\\u06FF])";
+  // Letters only: the whole \u0600-\u06FF block also holds the Arabic comma «،», so
+  // «اتحاد دبليو دبليو إف، قبل» never matched and stayed transliterated (INCIDENTS #1209).
+  const arBoundL = "(?<![\\u0621-\\u064A\\u066E-\\u06D3])";
+  const arBoundR = "(?![\\u0621-\\u064A\\u066E-\\u06D3])";
   const arWord = (pattern: string, flags = "g") => new RegExp(arBoundL + "(?:" + pattern + ")" + arBoundR, flags);
 
   // Gemini occasionally transliterates a word using Persian letterforms (ک ی گ چ پ ژ)
