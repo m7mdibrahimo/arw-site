@@ -1,4 +1,19 @@
 {
+ "https://www.wrestlinginc.com/2311717/biggest-winners-losers-week-november-9-2026": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-10T00:22:03.837Z"
+ },
+ "https://www.wrestlinginc.com/2311676/wwe-alexa-bliss-ill-past-two-months": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-10T00:21:31.111Z"
+ },
+ "https://www.wrestlinginc.com/2310917/wwe-raw-november-9-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-10T00:20:55.308Z"
+ },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-9-2026-cody-rhodes-bayley-vs-michin-judgment-day-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -1983,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-29T17:38:33.222Z"
- },
- "https://www.fightful.com/wrestling/update-on-timeless-toni-storm": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-29T17:33:50.544Z"
  }
 }
