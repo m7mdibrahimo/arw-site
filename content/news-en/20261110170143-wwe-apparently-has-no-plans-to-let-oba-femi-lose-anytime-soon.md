@@ -1,7 +1,7 @@
 ---
 title: "WWE Apparently Has No Plans to Let Oba Femi Lose Anytime Soon"
 slug: "wwe-apparently-has-no-plans-to-let-oba-femi-lose-anytime-soon"
-description: "Oba Femi continues to make a strong impression on WWE television, but according to Dave Meltzer."
+description: "Oba Femi continues to make a strong impression on WWE television, but according to Dave Meltzer, the company has no immediate plans to let him suffer a clean defeat."
 federation: WWE
 date: 2026-11-10T14:01:43.000Z
 source_id: 802265861

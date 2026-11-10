@@ -1,7 +1,7 @@
 ---
 title: "Jonathan Coachman Claims WWE Fired Road Dogg Over His Support for Chelsea Green"
 slug: "jonathan-coachman-claims-wwe-fired-road-dogg-over-his-support-for-chelsea-green"
-description: "Jonathan Coachman claimed that Brian James, known as Road Dogg, was fired from WWE because he supported Chelsea Green and believed the company should have."
+description: "Jonathan Coachman claimed that Brian James, known as Road Dogg, was fired from WWE because he supported Chelsea Green and believed the company should have done more."
 federation: WWE
 date: 2026-11-08T10:57:50.000Z
 source_id: 802264926

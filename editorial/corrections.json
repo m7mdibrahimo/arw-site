@@ -2,6 +2,48 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
   {
+    "wrong": "ووزيلا",
+    "right": "وزيلا",
+    "note": "«كودي رودز ووزيلا فاتو» — واو زيادة قبل اسم Zilla Fatu (خبر بطولة جون سينا الكلاسيكية، INCIDENTS #1210)"
+  },
+  {
+    "wrong": "للسماح لخسارة",
+    "right": "للسماح بخسارة",
+    "note": "نفس «السماح لخسارة» بعد «لـ» (خبر أوبا فيمي، INCIDENTS #1210)"
+  },
+  {
+    "wrong": "للسماح لهزيمة",
+    "right": "للسماح بهزيمة",
+    "note": "نفس «السماح لخسارة» بعد «لـ» (خبر أوبا فيمي، INCIDENTS #1210)"
+  },
+  {
+    "wrong": "حول وطيئه",
+    "right": "حول خصره",
+    "note": "«يحمل البطولة حول وطيئه» — كلمة مش موجودة؛ الحزام حول الخصر (خبر أندرادي وإيثان بايج، (INCIDENTS #1210))"
+  },
+  {
+    "wrong": "سالما (?:و|ب)قطعة واحدة",
+    "right": "سالما",
+    "regex": true,
+    "note": "«خرجت سالما وقطعة واحدة» ترجمة حرفية لـ in one piece — «سالما» تكفي (خبر كايل فليتشر، (INCIDENTS #1210))"
+  },
+  {
+    "wrong": "سليما (?:و|ب)قطعة واحدة",
+    "right": "سليما",
+    "regex": true,
+    "note": "نفس «in one piece» (خبر كايل فليتشر، (INCIDENTS #1210))"
+  },
+  {
+    "wrong": "السماح لخسارة",
+    "right": "السماح بخسارة",
+    "note": "«ليس لديه خطط للسماح لخسارة أوبا فيمي» — «يسمح بالشيء» مش «لـ» (خبر أوبا فيمي، (INCIDENTS #1210))"
+  },
+  {
+    "wrong": "السماح لهزيمة",
+    "right": "السماح بهزيمة",
+    "note": "نفس «السماح لخسارة» (خبر أوبا فيمي، (INCIDENTS #1210))"
+  },
+  {
     "wrong": "الفائزان",
     "right": "الفائزون",
     "note": "مثنى ممنوع في سطر الفائز وفي النص — خبر NWA Powerrr كتب «🏆 الفائزان» و١٠٧ خبر قديم فيهم نفس الصيغة (INCIDENTS #1205)"

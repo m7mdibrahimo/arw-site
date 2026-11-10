@@ -1,7 +1,7 @@
 ---
 title: "Arn Anderson Allegedly Complained About Not Being Used as an AEW Agent"
 slug: "arn-anderson-allegedly-complained-about-not-being-used-as-an-aew-agent"
-description: "Former WWE writer and producer Robert Karpeles stated that Arn Anderson felt sidelined behind the scenes in AEW and that his extensive experience was."
+description: "Former WWE writer and producer Robert Karpeles stated that Arn Anderson felt sidelined behind the scenes in AEW and that his extensive experience was not utilized to help young stars."
 federation: AEW
 date: 2026-11-05T13:39:01.000Z
 source_id: 802263634

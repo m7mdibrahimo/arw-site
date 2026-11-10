@@ -1,7 +1,7 @@
 ---
 title: "D-Von Dudley Blames Nikki Bella's High Standards for Dating Struggles"
 slug: "d-von-dudley-blames-nikki-bellas-high-standards-for-dating-struggles"
-description: "Nikki Bella has been open about the challenges of re-entering the dating pool, and according to D-Von Dudley."
+description: "Nikki Bella has been open about the challenges of re-entering the dating pool."
 federation: WWE
 date: 2026-11-07T11:01:53.000Z
 source_id: 802264143
