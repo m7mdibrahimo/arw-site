@@ -1881,3 +1881,16 @@ export function titleSegmentAsMatch(arTitle: string, enTitle: string | undefined
   const arMatch = /(?<![ء-ي])[وفبل]?(?:ال)?(?:نزال|نزالات|مواجهة|مباراة)(?![ء-ي])/.test(arTitle) && !/فقر(?:ة|ات)/.test(arTitle);
   return enSegment && arMatch ? "العنوان العربي بيقول «نزال» والنسخة الإنجليزي بتقول segment (فقرة) — اكتب «فقرة» في العنوان" : null;
 }
+
+/** The Arabic headline ties two claims with «بسبب/لأن» while the source title lists them as separate facts
+ *  («…No Reason For A Wrestler To Sign With MLW, They Also Have A Clause That Says You Can't Wrestle For GCW» headlined
+ *  «لا يوجد سبب… للتوقيع مع اتحاد MLW بسبب بند يمنعهم…» — INCIDENTS #1192). Returns a message, or null. */
+export function titleCauseNotInSource(arTitle: string, sourceTitle: string | undefined | null): string | null {
+  if (!arTitle || !sourceTitle) return null;
+  const arCause = /(?<![ء-ي])(?:بسبب|لأن|لأنه|لأنها|نظرا\s+ل)(?![ء-ي])/.test(arTitle);
+  const srcAlso = /(?:[,;:]\s*(?:and\s+)?(?:they|he|she|it|we|i)?\s*also\b|\bthey\s+also\b|\bplus\b)/i.test(sourceTitle);
+  const srcCause = /\b(?:because|due\s+to|over|as\s+a\s+result|after|amid|following|thanks\s+to|caus\w*|since)\b/i.test(sourceTitle);
+  return arCause && srcAlso && !srcCause
+    ? "العنوان ربط معلومتين بـ«بسبب/لأن» والمصدر بيقول إنهم معلومتين منفصلتين (also) — افصلهم بـ«،» أو «و»"
+    : null;
+}

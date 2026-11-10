@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, type NewsFile } from "./news-qa";
+import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -2151,6 +2151,7 @@ export async function optimizeTitleForSEOAndCTR(
   - **مهمتك الأساسية**: صياغة العنوان العربي ليكون **إعادة صياغة بفصحى بيضاء بسيطة وأمينة 100% لنفس وقائع العنوان الأصلي بدقة**:
     - انقل نفس أطراف الحدث بالكامل (من عاد؟ من فاز؟ من تحالف مع من؟ في أي مواجهة؟).
     - **ممنوع منعاً باتاً** حذف أي طرف أو تفصيل مذكور في العنوان الأصلي.
+    - **ممنوع تربط معلومتين بـ«بسبب» أو «لأن» إلا لو العنوان الأصلي نفسه بيقول إن الأولى سبب التانية** (because / due to / over). لو العنوان الأصلي بيقول «They Also Have…» أو «, Also…» فدي معلومة تانية منفصلة: اكتبها بعد «،» أو «و». مثال: "No Reason To Sign With MLW, They Also Have A Clause That Says You Can't Wrestle For GCW" ← ✅ "لا يوجد سبب للتوقيع مع اتحاد MLW، وعقوده تمنع المشاركة في عروض GCW" مش ❌ "لا يوجد سبب للتوقيع مع MLW بسبب بند يمنع…" (INCIDENTS #1192).
     - **ممنوع منعاً باتاً** اختلاق أي أحداث أو استبدال الوقائع بعبارات تهويل كاذبة فارغة (مثل: ❌ "يفاجئ الجميع", ❌ "عودته الصاعقة", ❌ "زلزال", ❌ "صدمة مدوية", ❌ "يهز الحلبات").
     - **مثال حي للتطبيق الصحيح**:
       - العنوان الأصلي: "El Grande Americano Returns To WWE Raw, Teams With Stephanie Vaquer In Mixed Tag Action"
@@ -4537,6 +4538,11 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   {
     const segMsg = titleSegmentAsMatch(draft.title, typeof (rewritten as { en_title?: unknown }).en_title === "string" ? (rewritten as { en_title: string }).en_title : null);
     if (segMsg) { blocking.push({ code: "title_segment_as_match", severity: "error", field: "title", message: segMsg, excerpt: draft.title }); lastPostRetryable = true; }
+  }
+  // «لا يوجد سبب للتوقيع مع MLW بسبب بند…» over a source title whose second claim starts with «They Also» — a cause the source never gave (INCIDENTS #1192).
+  {
+    const causeMsg = titleCauseNotInSource(draft.title, rawTitle);
+    if (causeMsg) { blocking.push({ code: "title_cause_not_in_source", severity: "error", field: "title", message: causeMsg, excerpt: draft.title }); lastPostRetryable = true; }
   }
   // «مصارع WWE مات كاردونا» when the source never ties him to WWE — an invented affiliation (INCIDENTS #1176).
   const badPromos = promotionLabelNotInSource(`${draft.title}\n${draft.body}`, `${rawTitle}\n${plainText}`, WRESTLER_NAMES_MAP);
