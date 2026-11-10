@@ -2,6 +2,41 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
   {
+    "wrong": "لقبيهما",
+    "right": "لقبهم",
+    "note": "ضمير مثنى ممنوع — خبر بينتا وجيفون إيفانز كتب «فريقيهما» و«الزميلان» (INCIDENTS #1204)"
+  },
+  {
+    "wrong": "عقديهما",
+    "right": "عقودهم",
+    "note": "ضمير مثنى ممنوع — خبر بينتا وجيفون إيفانز كتب «فريقيهما» و«الزميلان» (INCIDENTS #1204)"
+  },
+  {
+    "wrong": "مقعديهما",
+    "right": "مقاعدهم",
+    "note": "ضمير مثنى ممنوع — خبر بينتا وجيفون إيفانز كتب «فريقيهما» و«الزميلان» (INCIDENTS #1204)"
+  },
+  {
+    "wrong": "منافسيهما",
+    "right": "منافسيهم",
+    "note": "ضمير مثنى ممنوع — خبر بينتا وجيفون إيفانز كتب «فريقيهما» و«الزميلان» (INCIDENTS #1204)"
+  },
+  {
+    "wrong": "نفسيهما",
+    "right": "أنفسهم",
+    "note": "ضمير مثنى ممنوع — خبر بينتا وجيفون إيفانز كتب «فريقيهما» و«الزميلان» (INCIDENTS #1204)"
+  },
+  {
+    "wrong": "لكليهما",
+    "right": "للاثنين",
+    "note": "ضمير مثنى ممنوع — خبر بينتا وجيفون إيفانز كتب «فريقيهما» و«الزميلان» (INCIDENTS #1204)"
+  },
+  {
+    "wrong": "فريقيهما",
+    "right": "فريقهم",
+    "note": "ضمير مثنى ممنوع — خبر بينتا وجيفون إيفانز كتب «فريقيهما» و«الزميلان» (INCIDENTS #1204)"
+  },
+  {
     "wrong": "تهاد غيبل",
     "right": "تشاد غيبل",
     "note": "Chad Gable في القاموس «تشاد غيبل» — نتائج عرض WWE RAW 9 نوفمبر كتبت «تهاد غيبل» (INCIDENTS #1197)"

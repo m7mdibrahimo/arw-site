@@ -2608,13 +2608,37 @@ export function sourceNamesMissing(sourceText: string, body: string): string[] {
  * dated it by the UTC day (INCIDENTS #249). When the source names the show's date («october-2-2026»,
  * «(10/2)», «October 2, 2026»), the «(D شهر YYYY)» in the Arabic title follows it.
  */
-export function alignTitleDateToSource(title: string, source: string): string {
+/** The show's (US) month/day the source gives — «november-9-2026» in its URL, «(11/9)» or «11/9/2026» in its title — else null. */
+export function sourceShowMonthDay(source: string, bareSlash = false): { m: number; d: number } | null {
   const src = String(source || "").toLowerCase();
   let m: number | null = null, d: number | null = null;
   const named = src.match(new RegExp(`\\b(${EN_MONTHS.join("|")})[-\\s]+(\\d{1,2})(?:st|nd|rd|th)?,?[-\\s]+(?:20\\d{2})\\b`));
   if (named) { m = EN_MONTHS.indexOf(named[1]); d = +named[2]; }
-  else { const slash = src.match(/\((\d{1,2})\/(\d{1,2})(?:\/\d{2,4})?\)/); if (slash) { m = +slash[1] - 1; d = +slash[2]; } }
-  if (m === null || d === null || m < 0 || m > 11 || d < 1 || d > 31) return title;
+  else {
+    const slash = src.match(/\((\d{1,2})\/(\d{1,2})(?:\/\d{2,4})?\)/) || (bareSlash ? src.match(/(?<![\d\/])(\d{1,2})\/(\d{1,2})\/(?:20)?\d{2}(?![\d\/])/) : null);
+    if (slash) { m = +slash[1] - 1; d = +slash[2]; }
+  }
+  if (m === null || d === null || m < 0 || m > 11 || d < 1 || d > 31) return null;
+  return { m, d };
+}
+
+/**
+ * The «(9 نوفمبر)» added to a headline another story already uses is the SHOW's date, not the day the bot
+ * published: «عرض WWE RAW: ثلاثة أمور كرهناها… (10 نوفمبر)» for the 9 November RAW (INCIDENTS #1203). Source
+ * date first, then the first date the story's own body gives, then the publish day.
+ */
+export function duplicateTitleDateSuffix(source: string, body: string, iso: string): string {
+  const src = sourceShowMonthDay(source, true);
+  if (src) return `${src.d} ${AR_MONTHS[src.m]}`;
+  const inBody = String(body || "").match(new RegExp(`(?<!\\d)(\\d{1,2})\\s+(${AR_MONTHS.join("|")})`));
+  if (inBody) return `${+inBody[1]} ${inBody[2]}`;
+  return `${Number(iso.slice(8, 10))} ${AR_MONTH_NAMES[Number(iso.slice(5, 7)) - 1]}`;
+}
+
+export function alignTitleDateToSource(title: string, source: string): string {
+  const md = sourceShowMonthDay(source);
+  if (!md) return title;
+  const { m, d } = md;
   return String(title || "").replace(new RegExp(`\\((\\d{1,2}|أول)\\s+(${AR_MONTHS.join("|")})\\s+(\\d{4})\\)`), (_all, _d, _mo, y) => `(${d} ${AR_MONTHS[m!]} ${y})`);
 }
 
@@ -4668,7 +4692,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // A title another story already uses (the weekly «three things we hated and loved» came twice) gets its date, so two
   // stories never share a title or write the same page and break the build (INCIDENTS #398)
   if (!keptPermalink && newsSlugTakenByOther(generateSlug(rewritten.title), String(postId))) {
-    rewritten.title = `${rewritten.title} (${Number(iso.slice(8, 10))} ${AR_MONTH_NAMES[Number(iso.slice(5, 7)) - 1]})`;
+    rewritten.title = `${rewritten.title} (${duplicateTitleDateSuffix(`${postUrl} ${rawTitle}`, draft.body, iso)})`;
     console.log(`[Watcher] 🔗 Title already used by another story — date added: ${rewritten.title}`);
   }
   const slug = keptPermalink ? keptPermalink.replace(/^\/news\/|\/index\.html$/g, "") : generateSlug(rewritten.title);
