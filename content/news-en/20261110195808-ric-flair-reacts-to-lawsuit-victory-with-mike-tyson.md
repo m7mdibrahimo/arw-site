@@ -1,7 +1,7 @@
 ---
 title: "Ric Flair Reacts to Lawsuit Victory With Mike Tyson"
 slug: "ric-flair-reacts-to-lawsuit-victory-with-mike-tyson"
-description: "Ric Flair expressed his great happiness following a significant legal victory alongside boxing legend Mike Tyson in a $50 million lawsuit involving."
+description: "Ric Flair expressed his great happiness following a significant legal victory alongside boxing legend Mike Tyson in a $50 million lawsuit."
 federation: WWE
 date: 2026-11-10T16:58:08.000Z
 source_id: 802265942

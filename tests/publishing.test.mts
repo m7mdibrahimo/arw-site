@@ -5618,3 +5618,11 @@ test('structured-data names never carry a tilde from the show title (INCIDENTS #
   assert.match(cfg, /const searchArName = String\(arName \|\| ""\)\.replace\(\/\\s\*~\.\*\$\/, ""\)/);
   assert.match(fs.readFileSync('pages/library-program.njk', 'utf8'), /"alternateName": \[\{% for a in \(\[lp\.prog\.arSearchName or lp\.prog\.arName\]/);
 });
+
+test('agoSpanNotInSource: «In June of last year» written as «العام قبل الماضي» is flagged (Roxanne Perez, INCIDENTS #1214)', async () => {
+  const { agoSpanNotInSource } = await import('../scripts/news-qa');
+  const src = 'In June of last year, Roxanne would join The Judgment Day.';
+  assert.deepEqual(agoSpanNotInSource('وانضمت روكسان إلى الفريق في شهر يونيو من العام قبل الماضي.', src), ['العام قبل الماضي']);
+  assert.deepEqual(agoSpanNotInSource('وانضمت روكسان إلى الفريق في شهر يونيو من العام الماضي.', src), []);
+  assert.deepEqual(agoSpanNotInSource('في العام قبل الماضي', 'two years ago, and again last year'), []);
+});

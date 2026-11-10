@@ -14,4 +14,4 @@ en_tags:
   - "Jeff Cobb"
 image: /content/images/grkxzz5vljlee06j.jpg
 ---
-Yota Tsuji will face Ares at New Japan Pro-Wrestling's Bound for Unbound show on November 20 at Korakuen Hall in Tokyo. Unbound Co., presented by the faction, features its leader and IWGP Heavyweight Champion Yota Tsuji taking on Ares, whom he recruited to NJPW. Also added to the card is a singles match between Robbie X and Dragon Lee. The updated card features Yota Tsuji vs. Ares, Drilla Moloney vs. Daiki Nagai, Natsupoi and Shingo Takagi vs. Chihiro Hashimoto and Jeff Cobb, alongside Robbie X vs. Dragon Lee.
+Yota Tsuji will face Ares at New Japan Pro-Wrestling's Bound for Unbound show on November 20 at Korakuen Hall in Tokyo. The show is presented by the Unbound Co. faction, and its leader, IWGP Heavyweight Champion Yota Tsuji, takes on Ares, whom he recruited to NJPW. Also added to the card is a singles match between Robbie X and Dragon Lee. The updated card features Yota Tsuji vs. Ares, Drilla Moloney vs. Daiki Nagai, Natsupoi and Shingo Takagi vs. Chihiro Hashimoto and Jeff Cobb, alongside Robbie X vs. Dragon Lee.

@@ -1298,6 +1298,13 @@ export function agoSpanNotInSource(body: string, source: string): string[] {
     const known = src.get(u);
     if (known && known.size && !known.has(n)) found.push(m[0]);
   }
+  // «In June of last year» became «في شهر يونيو من العام قبل الماضي» (Roxanne Perez, INCIDENTS #1214): the year before
+  // last only when the source says so.
+  const lastYear = /\blast year\b/i.test(String(source || ""));
+  const twoYears = /year before last|two years ago|2 years ago/i.test(String(source || ""));
+  for (const m of text.matchAll(/(?:العام|السنة|عام|سنة)\s+(?:قبل\s+الماضي(?:ة)?|ما\s+قبل\s+الماضي(?:ة)?)/g)) {
+    if (lastYear && !twoYears) found.push(m[0]);
+  }
   return found;
 }
 /**
@@ -1972,4 +1979,22 @@ export function titleCauseNotInSource(arTitle: string, sourceTitle: string | und
   return arCause && srcAlso && !srcCause
     ? "العنوان ربط معلومتين بـ«بسبب/لأن» والمصدر بيقول إنهم معلومتين منفصلتين (also) — افصلهم بـ«،» أو «و»"
     : null;
+}
+
+/**
+ * A quote in the English headline that is not the source's words: «Explains Why He Feels 'Weird'» became
+ * «Why He Feels 'I'm Weird'» (Ethan Page, INCIDENTS #1214). Every '…' / "…" / “…” phrase of the English title must be
+ * found in the source title or text (case and curly quotes ignored). Returns the quotes to block on.
+ */
+export function quotedTitleNotInSource(enTitle: string, source: string): string[] {
+  const norm = (s: string) => String(s || "").replace(/[‘’ʼ]/g, "'").replace(/[“”]/g, '"').replace(/\s+/g, " ").toLowerCase();
+  const title = norm(enTitle);
+  const src = norm(source);
+  const found: string[] = [];
+  // a quote opens after a space or the start and closes before a space, punctuation or the end (so «He's» is no quote)
+  for (const m of title.matchAll(/(?:^|[\s(])(['"])(\S.{0,78}?\S)\1(?=$|[\s,.:;!?)])/g)) {
+    const q = m[2].trim().replace(/[,.:;!?]+$/, "");
+    if (q && !src.includes(q)) found.push(q);
+  }
+  return found;
 }

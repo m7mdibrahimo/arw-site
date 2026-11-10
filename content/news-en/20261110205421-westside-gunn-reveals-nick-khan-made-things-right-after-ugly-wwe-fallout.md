@@ -1,7 +1,7 @@
 ---
 title: "Westside Gunn Reveals Nick Khan Made Things Right After Ugly WWE Fallout"
 slug: "westside-gunn-reveals-nick-khan-made-things-right-after-ugly-wwe-fallout"
-description: "Westside Gunn's feud with WWE appears to be over. Almost a year after publicly cutting ties with the company."
+description: "Westside Gunn's feud with WWE appears to be over. Almost a year after publicly cutting ties with the company, Gunn left a meeting with Nick Khan on good terms."
 federation: WWE
 date: 2026-11-10T17:54:21.000Z
 source_id: 802265975

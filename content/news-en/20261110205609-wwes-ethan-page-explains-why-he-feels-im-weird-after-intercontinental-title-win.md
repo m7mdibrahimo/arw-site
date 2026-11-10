@@ -1,5 +1,5 @@
 ---
-title: "WWE's Ethan Page Explains Why He Feels 'I'm Weird' After Intercontinental Title Win"
+title: "WWE's Ethan Page Explains Why He Feels 'Weird' After Intercontinental Title Win"
 slug: "wwes-ethan-page-explains-why-he-feels-im-weird-after-intercontinental-title-win"
 description: "Ethan Page won the Intercontinental Championship on WWE Raw by defeating Chad Gable."
 federation: WWE
