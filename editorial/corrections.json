@@ -11386,6 +11386,36 @@
     "wrong": "أي زد إم",
     "right": "ازوم",
     "note": "AZM كما يكتب في الموقع — INCIDENTS #1226"
+  },
+  {
+    "wrong": "ما زالا",
+    "right": "ما زالوا",
+    "note": "مثنى: «وما زالا البطلين» في نتائج NXT — INCIDENTS #1227"
+  },
+  {
+    "wrong": "وما زالوا البطلين",
+    "right": "وما زالوا الأبطال",
+    "note": "مثنى في سطر الفائزين بنتائج العروض — INCIDENTS #1227"
+  },
+  {
+    "wrong": "عطلة عرض",
+    "right": "أيام عرض",
+    "note": "weekend = أيام العرض، و«عطلة» معناها إجازة — INCIDENTS #1227"
+  },
+  {
+    "wrong": "عطلة SummerSlam",
+    "right": "أيام عرض SummerSlam",
+    "note": "weekend = أيام العرض — INCIDENTS #1227"
+  },
+  {
+    "wrong": "عطلة WrestleMania",
+    "right": "أيام عرض WrestleMania",
+    "note": "weekend = أيام العرض — INCIDENTS #1227"
+  },
+  {
+    "wrong": "Rock N/Wrestling",
+    "right": "Rock N Wrestling",
+    "note": "اسم رحلة كريس جيريكو — INCIDENTS #1227"
   }
 ]
 }

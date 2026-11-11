@@ -424,6 +424,7 @@ export function fixSingularThey(text: string): string {
 }
 
 export const ENGLISH_FIXES: [RegExp, string][] = [
+  [/\bC\.J\. Perry\b/g, "CJ Perry"], // how the site spells her everywhere — INCIDENTS #1227
   // «Refuses to Post Her Children» — photos went missing (Brie Bella story, round 2026-11-06)
   [/\b(refuse[sd]?|refusing|decid(?:e[sd]?|ing)|vow(?:s|ed|ing)?) (to|not to|never to) (post|share) (her|his|their|my|our) (children|kids|son|daughter|baby|babies)\b/gi, (_m: string, v: string, to: string, post: string, her: string, who: string) => /^[A-Z]/.test(v) ? `${v} ${to} ${post} Photos of ${her[0].toUpperCase() + her.slice(1)} ${who[0].toUpperCase() + who.slice(1)}` : `${v} ${to} ${post} photos of ${her} ${who}`],
   // «Lighting Match» — CMLL's quick format is a Lightning Match (CMLL Martes de Arena México story, round 2026-11-04)

@@ -149,6 +149,9 @@
 - X crushed/hit Y with a splash while Y was pinning Z ← «قفز فوق Y وقطع محاولة التثبيت» — ده مش تثبيت لـ Y؛ اللي اتثبت هو اللي المصدر قال pinned بس (خبر ري فينيكس وبيج كاس، INCIDENTS #1196).
 - drop the title / drop the belt ← «يخسر اللقب» في نزال (وليس «يتنازل عن اللقب»، فالتنازل = relinquish/vacate، أي التخلي عنه دون نزال).
 - push ← دور أكبر / اهتمام أكبر / فرصة أكبر في القصص — أبدا «دفعات»: «دفعات» معناها فلوس (readjust your push = «تراجع مكانته في القصص» مش «تعديل الدفعات»)
+- SummerSlam weekend / WrestleMania weekend ← «خلال أيام عرض SummerSlam» — أبدا «عطلة عرض»: «عطلة» معناها إجازة (أما weekend وحدها فـ«عطلة نهاية الأسبوع»)
+- tagged alongside / teamed with ← «خاض نزال فرق مع فلان» — أبدا «شارك مع فلان» من غير ما تقول شارك في إيه
+- got his vengeance / got his revenge ← الفعل يعود على من ثأر: لا تكتب أن الطرف الآخر «أنهى العداوة»، ولا تكتب «لينهي عداوة» إلا لو المصدر قال إنها انتهت
 - card / match card ← جدول النزالات
 - main event (داخل الجملة) ← الحدث الرئيسي؛ أما اسم العرض WWE Main Event فيبقى بالإنجليزي
 - heel / face (babyface) ← شرير / محبوب الجماهير

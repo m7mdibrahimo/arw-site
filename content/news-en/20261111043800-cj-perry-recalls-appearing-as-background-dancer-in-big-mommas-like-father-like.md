@@ -1,7 +1,7 @@
 ---
 title: "CJ Perry Recalls Appearing as Background Dancer in ‘Big Mommas: Like Father, Like Son’"
 slug: "cj-perry-recalls-appearing-as-background-dancer-in-big-mommas-like-father-like"
-description: "C.J. Perry recently reflected on her experience working as a background dancer in the 2011 film 'Big Mommas: Like Father, Like Son.'"
+description: "CJ Perry recently reflected on her experience working as a background dancer in the 2011 film 'Big Mommas: Like Father, Like Son.'"
 federation: WWE
 date: 2026-11-11T01:38:00.000Z
 source_id: 338281
