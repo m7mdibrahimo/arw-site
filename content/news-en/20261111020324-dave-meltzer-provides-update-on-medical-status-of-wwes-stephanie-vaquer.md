@@ -18,4 +18,5 @@ According to Wrestling Inc, Dave Meltzer provided an update on Stephanie Vaquer 
 
 > "She's healthy."
 > "She worked the house shows. She was not on the show tonight, but she's cleared and everything like that...She'll return to TV when they figure out what to do to get her to return to TV. They probably had this TV written."
+
 Vaquer competed at three live events over the weekend, teaming with IYO SKY and Lola Vice to pick up victories over Fatal Influence and defeating Jacy Jayne via disqualification in a Women's United States Championship match. Her weekend ring work led to speculation that she would appear on television, though WWE opted instead to have Becky Lynch team with SKY.

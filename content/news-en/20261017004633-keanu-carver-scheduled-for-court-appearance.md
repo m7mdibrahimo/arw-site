@@ -17,4 +17,5 @@ Keanu Carver is set to appear in a Seminole County, Florida, court on Tuesday, O
 
 > "yall gone sound dumb ash in a month"
 > "Fake ass virtue signaling mfs everything done inna dark come to light."
+
 Those posts and his account have since been deleted.

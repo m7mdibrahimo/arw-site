@@ -1601,7 +1601,19 @@ export function splitGluedBlocks(text: string): string {
   if (!text) return text;
   return splitQuoteNarration(text)
     .replace(/([.!؟?)”"»:])[ \t]+(\*\*(?:المواجهة|الحدث الرئيسي)\s)/g, "$1\n\n$2")
-    .replace(/([^\n>])[ \t]+> (?=["«“])/g, "$1\n\n> ");
+    .replace(/([^\n>])[ \t]+> (?=["«“])/g, "$1\n\n> ")
+    // A line of narration right under a quote line becomes part of the quote in Markdown (lazy continuation): the
+    // Stephanie Vaquer story showed «Vaquer competed at three live events…» inside Meltzer's quote (INCIDENTS #1223)
+    .replace(/^(>[^\n]*)\n(?=[ \t]*[^>\s])/gm, "$1\n\n");
+}
+
+/**
+ * «وفي سياق متصل،» and «على صعيد آخر،» open a sentence and say nothing: the style guide bans them, and 184 stories had
+ * them when the Rhio roundup went live (INCIDENTS #1223). At the start of a sentence the phrase simply goes.
+ */
+export function dropFillerOpeners(text: string): string {
+  if (!text) return text;
+  return text.replace(/(?<=^|[.؟!»"][ \t]+)(?:و?في سياق متصل|و?على صعيد (?:آخر|متصل)|و?من جهة أخرى)[،,][ \t]*(?=\S)/gm, "");
 }
 
 /**
@@ -1625,6 +1637,7 @@ export function autoFix(text: string): string {
   text = text.replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF\u00AD]/g, "");
   text = splitGluedBlocks(text);
   text = dropRepeatedListItem(text);
+  text = dropFillerOpeners(text);
   text = fixHalfEnglishNames(fixTripledLetters(text));
   // «عرض» is masculine: «في عرض SmackDown الأخيرة» went live in 28 stories (INCIDENTS #621) — the adjective agrees with it
   text = text.replace(/(عرض\s+(?:[A-Za-z0-9'’!.&*-]+\s+){0,5}[A-Za-z0-9'’!.&*-]+\s+)(الأخير|الاخير|القادم|الماضي)ة(?![\u0621-\u064A])/g, "$1$2");
