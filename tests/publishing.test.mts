@@ -4382,6 +4382,27 @@ test('site-branch.yml builds again when Cloudflare failed the last site commit (
   assert.match(wf, /conclusion == "failure"/);
 });
 
+test('a «site» commit Cloudflare never started (lost GitHub webhook) is sent again once (INCIDENTS #1245)', async () => {
+  const { missedSiteBuild, siteRetryMessage } = await import('../worker/src/health');
+  const now = Date.parse('2026-11-11T21:20:00Z');
+  const live = '8333174e9579f64c3e34ebd23bc71baf9ccd8e35';
+  const of = 'dc3308e6598d6ca714e2150cd614f1a4bc300668';
+  const msg = `feat(news): auto-publish from Ringside News\n\nsite-of: ${of} 1794430754`;
+  const at = Date.parse('2026-11-11T21:00:39Z');
+  assert.equal(missedSiteBuild(msg, at, 0, live, now), true, 'the real case: 20 minutes, no check run, site still on the 20:10 build');
+  assert.equal(missedSiteBuild(msg, at, 1, live, now), false, 'Cloudflare queued or ran it: not lost');
+  assert.equal(missedSiteBuild(msg, at, -1, live, now), false, 'check runs could not be read: do nothing');
+  assert.equal(missedSiteBuild(msg, now - 5 * 60_000, 0, live, now), false, 'too early: Cloudflare may still report it');
+  assert.equal(missedSiteBuild(msg, at, 0, of, now), false, 'already live');
+  assert.equal(missedSiteBuild(siteRetryMessage(msg), at, 0, live, now), false, 'a retry is never retried again');
+  assert.equal(missedSiteBuild('fix: a main commit', at, 0, live, now), false, 'not a «site» commit');
+  const retry = siteRetryMessage(msg);
+  assert.match(retry.split('\n')[0], /\[site-retry\]$/);
+  assert.match(retry, new RegExp(`^site-of: ${of} 1794430754$`, 'm'), 'the build still finds its main commit');
+  const src = fs.readFileSync('worker/src/health.ts', 'utf-8');
+  assert.match(src, /still\?\.object\?\.sha === site\.sha/, 'a newer «site» commit is never replaced by the retry');
+});
+
 test('«ب» glued to a number is corrected to «بـ» and no story has it (#399)', () => {
   assert.equal(applyCorrections('مقارنة ب339 ألف مشاهد'), 'مقارنة بـ339 ألف مشاهد');
   const dir = path.join(process.cwd(), 'content/news');

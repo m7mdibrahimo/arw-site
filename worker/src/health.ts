@@ -56,6 +56,25 @@ export function siteHandoffLag(buildCommit: string, siteMessage: string, siteAtM
   return lag > maxMs ? lag : 0;
 }
 
+/** Cloudflare never even started a build of the newest «site» commit: GitHub lost the push webhook to Cloudflare
+ *  (GitHub's Webhooks incident, 2026-11-11 20:22 UTC: two «site» commits got no build and no check run at all, and
+ *  the site stayed 70 minutes on an older version — the monitor round's fixes among the waiting changes). site-branch.yml
+ *  only retries a build that FAILED, and with nothing new to publish nothing would ever move «site» again.
+ *  True when the «site» commit is 15+ minutes old, has no «Workers Builds: arw-site-static» check run of any state,
+ *  the live build.json is on another main commit, and it is not already a retry (once only) (INCIDENTS #1245). */
+export function missedSiteBuild(siteMessage: string, siteAtMs: number, staticRuns: number, liveCommit: string, nowMs: number, minMs = 15 * 60_000): boolean {
+  const msg = String(siteMessage || "");
+  const of = /site-of: ([0-9a-f]{40})/.exec(msg)?.[1];
+  if (!of || !liveCommit || of === liveCommit || /site-retry/.test(msg)) return false;
+  if (!siteAtMs || nowMs - siteAtMs < minMs) return false;
+  return staticRuns === 0;
+}
+
+/** The retry commit: same tree, same parent (main), same «site-of» line, first line marked [site-retry]. */
+export function siteRetryMessage(siteMessage: string): string {
+  return String(siteMessage || "").replace(/^([^\n]*)/, "$1 [site-retry]");
+}
+
 /** Files whose change makes no visible difference on the site (same list as .github/workflows/site-branch.yml, which skips the rebuild for them). */
 const INVISIBLE = /^(_data\/publish-state\.json|_data\/deliveries\/.*|worker\/.*|media-worker\/.*|seo\/.*|reports\/.*|editorial\/.*|content\/images\/.*|dist\/videos\/.*|watcher-state\.json|watcher-outcomes\.json|watcher-feed(-[a-z]+)?\.json|ringsidenews-state\.json|wrestlinginc-state\.json|live-results-state\.json|_data\/duplicate-skips\.json|\.github\/.*)$/;
 /** True when every changed file is bookkeeping, so the live site being "behind" main is expected (INCIDENTS #379). */
@@ -220,6 +239,28 @@ export async function runSiteHealthCheck(env: HealthEnv, minute: number, keyOf: 
         }).then(r => (r.ok ? r.json() : null)).catch(() => null);
         const handoff = siteHandoffLag(String(build.commit), String(site?.commit?.message || ""), Date.parse(site?.commit?.committer?.date || ""), now);
         if (handoff !== null) lag = handoff;
+      }
+      // A «site» commit Cloudflare never heard of (lost webhook): send the same content again as a new «site» commit
+      if (build?.commit) {
+        const gh = (path: string, init: RequestInit = {}) => fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}${path}`, {
+          ...init, headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json", "User-Agent": "arw-site-bot", "Content-Type": "application/json" },
+        });
+        const site: any = await gh(`/commits/site`).then(r => (r.ok ? r.json() : null)).catch(() => null);
+        const msg = String(site?.commit?.message || "");
+        const siteAt = Date.parse(site?.commit?.committer?.date || "");
+        if (site?.sha && /site-of: /.test(msg) && !/site-retry/.test(msg) && now - siteAt >= 15 * 60_000 && String(build.commit) !== (/site-of: ([0-9a-f]{40})/.exec(msg)?.[1] || "")) {
+          const runs: any = await gh(`/commits/${site.sha}/check-runs?per_page=100`).then(r => (r.ok ? r.json() : null)).catch(() => null);
+          const staticRuns = Array.isArray(runs?.check_runs) ? runs.check_runs.filter((c: any) => c?.name === "Workers Builds: arw-site-static").length : -1;
+          if (missedSiteBuild(msg, siteAt, staticRuns, String(build.commit), now)) {
+            const made: any = await gh(`/git/commits`, { method: "POST", body: JSON.stringify({ message: siteRetryMessage(msg), tree: site.commit.tree.sha, parents: (site.parents || []).map((p: any) => p.sha) }) }).then(r => (r.ok ? r.json() : null)).catch(() => null);
+            // «site» must not have moved meanwhile: a newer «site» commit is never replaced by the retry
+            const still: any = await gh(`/git/ref/heads/site`).then(r => (r.ok ? r.json() : null)).catch(() => null);
+            if (made?.sha && still?.object?.sha === site.sha) {
+              const moved = await gh(`/git/refs/heads/site`, { method: "PATCH", body: JSON.stringify({ sha: made.sha, force: true }) }).then(r => r.ok).catch(() => false);
+              console.log(`[health] Cloudflare never built site ${String(site.sha).slice(0, 10)}: sent again as ${String(made.sha).slice(0, 10)} (${moved ? "ok" : "refused"})`);
+            }
+          }
+        }
       }
       problems = mergeProblems(problems, lag ? [{ key: "deploy", code: "deploy_stale", title: "الموقع واقف على نسخة قديمة — بناء Cloudflare بيفشل أو متعطل", detail: `آخر نسخة ظاهرة أقدم من آخر تعديل بـ ${Math.round(lag / 60000)} دقيقة` }] : [], ["deploy_stale"], now);
       const lastAt = newest ? Date.parse(newest.published_at || newest.date) || 0 : 0;
