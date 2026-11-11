@@ -8,7 +8,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { splitGluedBlocks, decodeHtmlEntities, dropRepeatedListItem, claimNotInSource, tonyKhanTweetMisattributed } from "./news-qa";
+import { splitGluedBlocks, splitQuoteNarration, decodeHtmlEntities, dropRepeatedListItem, claimNotInSource, tonyKhanTweetMisattributed } from "./news-qa";
 import { metaDescription } from "../lib/meta-description.cjs";
 
 export const NEWS_EN_DIR = path.join(process.cwd(), "content", "news-en");
@@ -782,6 +782,11 @@ export function syncEnglishFromArabic(dir = NEWS_EN_DIR, newsDir = NEWS_DIR): nu
     const ar = id ? arabic.get(id) : undefined;
     if (!m || !ar) continue;
     let [fm, body] = [m[1], m[2].replace(/\s+$/, "")];
+    // A «>» quote line that goes on with the writer's own sentence after the closing mark («…top spot." Elsewhere in
+    // the conversation, Jax shared…») showed the narration inside the quote box on 22 stories, 4 of them written after
+    // the save-time split existed (INCIDENTS #1238). This pass runs on every bot run, needs no request, and puts the
+    // narration in its own paragraph whatever path wrote the file.
+    body = splitQuoteNarration(body);
     const missing = embedLines(ar.body).filter((l) => !body.includes(linkOf(l)));
     if (missing.length) body = `${body}\n\n${missing.join("\n\n")}`;
     const fmNoGallery = fm.replace(/^gallery:\n(?:  - .*\n?)*/m, "").replace(/\n$/, "");

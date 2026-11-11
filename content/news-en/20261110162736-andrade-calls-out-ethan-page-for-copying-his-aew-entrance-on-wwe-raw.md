@@ -17,7 +17,9 @@ Andrade El Idolo has accused Ethan Page of copying his signature ring entrance a
 
 Noticing the strong similarities to his own presentations, Andrade took to Instagram to share a side-by-side comparison of Page's entrance and his own from AEW All In London.
 
-> "Someone saw my ALL IN entrance in London!!! Mi nombre es ANDRADE EL IDOLO THE REAL LATINO MAN!" Andrade has famously utilized expensive suits and female companions during his appearances in AEW, including at major events, and even brought independent wrestlers into those segments. Fans quickly took to the comments to praise Andrade's presentation over Page's.
+> "Someone saw my ALL IN entrance in London!!! Mi nombre es ANDRADE EL IDOLO THE REAL LATINO MAN!"
+
+Andrade has famously utilized expensive suits and female companions during his appearances in AEW, including at major events, and even brought independent wrestlers into those segments. Fans quickly took to the comments to praise Andrade's presentation over Page's.
 
 Page has not publicly addressed Andrade's remarks, and there is no confirmation that WWE intentionally mirrored the AEW star's presentation. While Page currently holds the Intercontinental Championship, Andrade made it clear who he believes originated the suit-and-women entrance style.
 
