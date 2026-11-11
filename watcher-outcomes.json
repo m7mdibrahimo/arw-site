@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/sheamus-shows-off-wild-bahrain-comic-con-adventure-amid-wrestling-free-agency": {
+  "reason": "المراجعة رفضته: العنوان بينتهي بكلمة مبتورة مش موجودة في الخبر — الاقتباس اتقطع",
+  "retry": true,
+  "at": "2026-11-11T19:28:51.941Z"
+ },
  "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -38,11 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-11T19:12:56.076Z"
- },
- "https://www.ringsidenews.com/sheamus-shows-off-wild-bahrain-comic-con-adventure-amid-wrestling-free-agency": {
-  "reason": "المراجعة رفضته: العنوان بينتهي بكلمة مبتورة مش موجودة في الخبر — الاقتباس اتقطع",
-  "retry": true,
-  "at": "2026-11-11T19:08:56.453Z"
  },
  "https://www.fightful.com/wrestling/hyperactive-share-that-john-cena-told-them-they-remind-him-of-dx-during-lodestone-camp": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
