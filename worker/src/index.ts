@@ -2280,9 +2280,14 @@ export function isSingleMatchSpoiler(rawTitle: string = "", plainText: string = 
   const hasArabicWin = ar("يتوج بلقب|يتوج ببطولة|يخطف لقب|يقتنص بطولة|يفوز بلقب|يفوز ببطولة|ينتزع لقب|ينتزع بطولة|يصبح المنافس الأول").test(title);
   if (hasArabicDefeat || hasArabicQualifier || hasArabicRetain || hasArabicWin) return true;
   // A win someone is aiming for is not a result: «كاسي لي: الفوز ببطولة AEW… هو هدفي الأبرز» (INCIDENTS #155).
+  // A win that «would» do something is a hope, not a result: «كايل فليتشر: الفوز ببطولة AEW العالمية
+  // سيثبت مكانتي…» (before his title match) was held off social (INCIDENTS #1242). A win phrase whose
+  // verb is future («سيثبت/سيجعل/سيكون») or after «لو/إذا/إن» is dropped like a goal — only the generic
+  // «الفوز ب…» / first-person «فوزي»: «فوز رولينز باللقب سيغير خطط WWE» names a win that happened.
+  const hypotheticalWin = new RegExp(ar("(?:(?:لو|إذا|اذا|إن|ان)\\s+(?:فاز|فازت|يفوز|تفوز|توج|توجت|تُوج))|(?:ب|ل)?(?:الفوز|فوزي|التتويج|تتويجي)\\s+(?:ب|بـ)?\\S+(?:\\s+\\S+){0,5}?\\s+(?=(?:س|ست)[\\u0600-\\u06FF]{3,})").source, "gi");
   const goalTitle = ar("(?:يطمح|تطمح|يسعى|تسعى|يحلم|تحلم|يريد|تريد|يرغب|ترغب|يتمنى|تتمنى|يأمل|تأمل|هدف(?:ه|ها|ي|هم)?|حلم(?:ه|ها|ي|هم)?|طموح(?:ه|ها|ي|هم)?)(?![\\u0600-\\u06FF])").test(title)
     ? title.replace(new RegExp(ar("(?:ب|ل|إلى\\s+|الى\\s+|في\\s+)?(?:ال)?فوز\\s+(?:ب|بـ)").source, "gi"), " ")
-    : title;
+    : title.replace(hypotheticalWin, " ");
   // Betting odds before a card are a preview, not a result: «الكشف عن ترشيحات ونسب الفوز لمواجهات
   // UFC 332» was held (INCIDENTS #216).
   // Not needing / not chasing wins is not a result: «جيريكو يؤكد أنه لا يحتاج لتحقيق أي انتصار آخر» (INCIDENTS #237)

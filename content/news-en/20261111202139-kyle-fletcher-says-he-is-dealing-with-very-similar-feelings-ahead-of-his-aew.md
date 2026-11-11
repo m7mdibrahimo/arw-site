@@ -14,7 +14,7 @@ en_tags:
   - "AEW"
 image: /content/images/jar9d1hors3a98oo.jpg
 ---
-Kyle Fletcher stated that he is experiencing very similar feelings ahead of his upcoming AEW Full Gear rematch against Will Ospreay this year. At AEW Full Gear 2024, Fletcher and Ospreay squared off in a singles match after Fletcher turned on Ospreay and aligned with Don Callis Family. They battled for nearly 25 minutes, with Fletcher securing the victory in what remains one of the biggest matches of his career. This year, Fletcher enters another high-stakes clash with Ospreay, this time with the AEW World Championship on the line. Speaking with SI's The Takedown's SP3 in a new interview, Fletcher discussed his mindset heading into the world title bout.
+Kyle Fletcher stated that he is experiencing very similar feelings ahead of his upcoming AEW Full Gear rematch against Will Ospreay this year. At AEW Full Gear 2024, Fletcher and Ospreay squared off in a singles match after Fletcher turned on Ospreay and aligned with the Don Callis Family. They battled for nearly 25 minutes, with Fletcher securing the victory in what remains one of the biggest matches of his career. This year, Fletcher enters another high-stakes clash with Ospreay, this time with the AEW World Championship on the line. Speaking with SI's The Takedown's SP3 in a new interview, Fletcher discussed his mindset heading into the world title bout.
 
 > "Yeah I mean, I will say they’re pretty similar, I would say up until that point, that was the biggest match of my career, so it definitely, you know, the feeling is pretty similar. This is, I think, the biggest match of my career to date, so very similar feelings. If anything, I’d say this is probably feeling a bit even more nervous than that."
 

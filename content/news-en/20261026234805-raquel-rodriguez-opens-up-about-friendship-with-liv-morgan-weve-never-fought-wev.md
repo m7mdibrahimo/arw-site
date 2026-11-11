@@ -12,7 +12,7 @@ en_tags:
   - "WWE"
 image: /content/images/fmm9xijabpw3agyr.jpg
 ---
-WWE star Raquel Rodriguez spoke openly about her deep bond with Judgment Day member and current WWE Women's World Champion Liv Morgan during a recent interview with The Sporting Tribune. Rodriguez expressed her strong loyalty to Morgan, emphasizing that their relationship feels like family.
+WWE star Raquel Rodriguez spoke openly about her deep bond with the Judgment Day member and current WWE Women's World Champion Liv Morgan during a recent interview with The Sporting Tribune. Rodriguez expressed her strong loyalty to Morgan, emphasizing that their relationship feels like family.
 
 Reflecting on their success as four-time WWE Women's Tag Team Champions, Rodriguez mentioned that their personalities balance each other out perfectly. She noted that while she prefers being organized and grounded, Morgan brings high energy to their dynamic, creating a unique connection that has kept them close.
 

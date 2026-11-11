@@ -14,7 +14,7 @@ en_tags:
   - "Chris Van Vliet"
 image: /content/images/29ktozu40dckx7xj.jpg
 ---
-Raquel Rodriguez revealed that WWE previously discussed a potential romantic storyline involving her and Carlito prior to his departure. During an appearance on Insight with Chris Van Vliet, Rodriguez discussed working alongside Carlito and R-Truth during their time with Judgment Day, noting that their constant efforts to make her laugh created a great working atmosphere.
+Raquel Rodriguez revealed that WWE previously discussed a potential romantic storyline involving her and Carlito prior to his departure. During an appearance on Insight with Chris Van Vliet, Rodriguez discussed working alongside Carlito and R-Truth during their time with the Judgment Day, noting that their constant efforts to make her laugh created a great working atmosphere.
 
 Rodriguez explained that Carlito repeatedly flirted with her during their shared segments, leading her to wish that management had given the two characters a chance to go on an official date. She confirmed that the idea was brought up in casual discussions between them, believing the concept would have been a lot of fun.
 

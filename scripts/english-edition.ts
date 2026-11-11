@@ -527,6 +527,8 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   // her ring name is «Mercedes Moné»; the writer drops the accent in some stories (INCIDENTS #682)
   [/\b(Mercedes )?Mone(?![\wé])/g, "$1Moné"], // also the surname alone («Mone's», «Mone cry»): INCIDENTS #1107
   [/\b(joining|join|joined|joins|between|with|of|and|by|from|against) 946\b/gi, "$1 The 946"],
+  // a faction named «… Family» needs its article: «aligned with Don Callis Family» (INCIDENTS #1242)
+  [/\b(aligning|aligned|aligns|align|joining|joined|joins|join|with|of|from|leaving|left|leaves) (Don Callis Family|Wyatt Family|Bloodline|Judgment Day|Hurt Business)\b/g, "$1 the $2"],
   [/\bformer The ((?:[A-Z][\w'’-]*\s+){1,3}(?:member|stablemate|leader|teammate))\b/g, "former $1"], // «the former The Judgment Day member» (INCIDENTS #1219)
 ];
 const SMALL_WORDS = new Set(["a", "an", "the", "and", "but", "or", "nor", "for", "at", "by", "in", "of", "on", "to", "as", "vs", "vs.", "via"]);

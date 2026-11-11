@@ -2254,6 +2254,15 @@ test('a medical clearance to return does not hold a story off social (INCIDENTS 
   assert.equal(isSingleMatchSpoiler('كيندال غراي تعود في عرض WWE NXT'), true);
 });
 
+test('a win that «would» prove something is a hope, not a result (INCIDENTS #1242)', async () => {
+  const { isSingleMatchSpoiler } = await import('../worker/src/index');
+  assert.equal(isSingleMatchSpoiler('كايل فليتشر: الفوز ببطولة AEW العالمية سيثبت مكانتي ضمن قائمة الأفضل في العالم'), false);
+  assert.equal(isSingleMatchSpoiler('يؤكد المصارع كايل فليتشر أن الفوز ببطولة AEW العالمية سيساهم بشكل كبير في إقناعه'), false);
+  assert.equal(isSingleMatchSpoiler('سيث رولينز: لو فاز رومان رينز سأعتزل'), false);
+  assert.equal(isSingleMatchSpoiler('كايل فليتشر يفوز ببطولة AEW العالمية'), true);
+  assert.equal(isSingleMatchSpoiler('فوز سيث رولينز باللقب في عرض الرو سيغير خطط WWE'), true);
+});
+
 test('a title win someone is aiming for, and a return to training, do not hold a story off social (INCIDENTS #155)', async () => {
   const { isSingleMatchSpoiler } = await import('../worker/src/index');
   assert.equal(isSingleMatchSpoiler('كاسي لي: الفوز ببطولة AEW العالمية للفرق للسيدات هو هدفي الأبرز في عالم المصارعة'), false);

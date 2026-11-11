@@ -1702,3 +1702,9 @@ test("main event is «النزالات الرئيسية / النزال الرئ�
   assert.equal(applyCorrections("وساعدوه على الوصول إلى قائمة نزال الأحداث الرئيسية في عروض المصارعة."), "وساعدوه على الوصول إلى النزالات الرئيسية في عروض المصارعة.");
   assert.equal(applyCorrections("خاض نزال الأحداث الرئيسية في العرض."), "خاض النزال الرئيسي في العرض.");
 });
+
+test("a faction named «… Family» keeps its article in English (INCIDENTS #1242)", async () => {
+  const { fixEnglishNames } = await import("../scripts/english-edition.ts");
+  assert.equal(fixEnglishNames("after Fletcher turned on Ospreay and aligned with Don Callis Family."), "after Fletcher turned on Ospreay and aligned with the Don Callis Family.");
+  assert.equal(fixEnglishNames("he aligned with The Don Callis Family"), "he aligned with The Don Callis Family");
+});
