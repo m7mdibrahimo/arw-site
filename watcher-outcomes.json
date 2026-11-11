@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-november-10-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-11T01:23:39.310Z"
+ },
  "https://www.fightful.com/wrestling/wwe-nxt-results-11-10-2026-nxt-tag-title-match-wren-sinclair-kam-hendrix-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -38,11 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-11T01:22:10.781Z"
- },
- "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-november-10-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-11T01:13:30.303Z"
  },
  "https://www.fightful.com/wrestling/seth-rollins-reacts-to-josh-allen-being-la-knights-nfl-wwe-comparison-one-of-them-is-talented": {
   "reason": "المراجعة رفضته: صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
