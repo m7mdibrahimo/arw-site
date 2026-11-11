@@ -1,43 +1,43 @@
 {
- "https://www.wrestlinginc.com/2312949/mercedes-mone-death-younger-sister-alexis-remembers-aew-wwe-pac": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-11T08:03:32.339Z"
- },
  "https://www.fightful.com/wrestling/kelani-jordan-vs-kendal-grey-for-nxt-womens-title-set-for-11-17-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T07:58:13.287Z"
+  "at": "2026-11-11T08:09:31.163Z"
  },
  "https://www.fightful.com/wrestling/kelani-jordan-joins-wwe-john-cena-classic-field": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T07:58:12.885Z"
+  "at": "2026-11-11T08:09:30.805Z"
  },
  "https://www.fightful.com/wrestling/noam-dar-romeo-moreno-set-for-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T07:58:11.754Z"
+  "at": "2026-11-11T08:09:29.811Z"
  },
  "https://www.fightful.com/wrestling/mason-rook-returns-to-nxt-attacks-grayson-waller": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T07:58:11.429Z"
+  "at": "2026-11-11T08:09:29.531Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-results-11-10-2026-nxt-tag-title-match-wren-sinclair-kam-hendrix-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T07:58:11.120Z"
+  "at": "2026-11-11T08:09:29.270Z"
  },
  "https://www.fightful.com/wrestling/seth-rollins-i-feel-like-i-have-never-been-in-a-main-event-of-wrestlemania": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T07:58:10.824Z"
+  "at": "2026-11-11T08:09:29.007Z"
  },
  "https://www.fightful.com/wrestling/bret-hart-wcw-shouldve-been-sued-for-putting-me-in-the-ring-with-goldberg": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T07:58:09.790Z"
+  "at": "2026-11-11T08:09:28.085Z"
+ },
+ "https://www.wrestlinginc.com/2312949/mercedes-mone-death-younger-sister-alexis-remembers-aew-wwe-pac": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-11T08:03:32.339Z"
  },
  "https://www.wrestlinginc.com/2313057/wwe-nxt-november-10-2026-3-things-hated-loved-opinion-review": {
   "reason": "المراجعة رفضته: جزء إنجليزي صغير الحروف وسط اسم عربي («كايل ayla Kassidy») — الاسم اتكسر: اكتبه كله بالعربي أو كله بالإنجليزي (INCIDENTS #819)، نفس العنوان منشور قبل كده — الخبر مكرر",
