@@ -8,7 +8,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { splitGluedBlocks, decodeHtmlEntities, dropRepeatedListItem, claimNotInSource } from "./news-qa";
+import { splitGluedBlocks, decodeHtmlEntities, dropRepeatedListItem, claimNotInSource, tonyKhanTweetMisattributed } from "./news-qa";
 import { metaDescription } from "../lib/meta-description.cjs";
 
 export const NEWS_EN_DIR = path.join(process.cwd(), "content", "news-en");
@@ -247,6 +247,9 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   if (/->|→/.test(body)) issues.push("translation arrow left in the text");
   // «the vacant title», «front-runner», «cancelled her bookings» with nothing in the source that says it (INCIDENTS #1138)
   for (const c of claimNotInSource(title + "\n" + body, i.sourceText, "en")) issues.push(`claim not in the source: ${c}`);
+  // Tony Khan's tweet credited to the team it talks about (INCIDENTS #1225)
+  const tkPhrase = tonyKhanTweetMisattributed(title + "\n" + body, `${body}\n${i.arabicBody || ""}`, "en");
+  if (tkPhrase) issues.push(`Tony Khan's tweet credited to someone else: ${tkPhrase}`);
   // «on Friday, October 17, 2026» for a Saturday (Toni Storm, Crown Jewel, Matt Hardy stories, INCIDENTS #962)
   const badDay = enWeekdayNotOnDate(title + "\n" + body);
   if (badDay) issues.push(`weekday does not match the date: ${badDay}`);

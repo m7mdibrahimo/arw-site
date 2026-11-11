@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, timeLimitWinAsDraw, type NewsFile } from "./news-qa";
+import { tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, timeLimitWinAsDraw, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -3157,6 +3157,7 @@ async function rewriteWithGemini(
    - **القاعدة الذهبية لما يُكتب بالإنجليزية**: الشيء الوحيد المسموح بكتابته بالإنجليزية هو اسم الاتحاد واسم العرض بما فيها كلمة "Live" (مثل: WWE NXT Live, WWE Live, TNA Live). ممنوع ترجمة "Live" إلى "الحي" أو "المباشر" أبداً عند وجودها كجزء من اسم العرض — اكتبها دائماً Live. كل شيء آخر (المصارعين، الفرق، البطولات، الحركات) يُترجم ويُكتب بالعربية حصراً!
    - **قاعدة اللغة العربية السلسة والمبسطة وحظر صيغ التثنية تماماً**: اكتب بفصحى بيضاء مبسطة جدا (القسم 0 في دليل التحرير): كلمات يومية سهلة وجمل قصيرة، بلا عامية. ممنوع بتاتاً الألفاظ المعقدة أو التراثية أو صيغ التثنية الغريبة (مثل: ❌ "نجلا الأسطورة", ❌ "نجلا", ❌ "ابنا الأسطورة", ❌ "ابنا ستينغ"؛ استخدم دائماً صيغة الجمع الطبيعية: "أبناء الأسطورة ستينغ" أو "أبناء ستينغ").
    - **ممنوع بتاتاً استخدام التشكيل نهائياً في الكلمات (بدون فتحة أو ضمة أو كسرة أو تنوين أو سكون أو شدة)**. اكتب النص واضحاً سلساً بدون أي علامات تشكيل.
+   - **صاحب التغريدة هو المعلن**: تغريدة x.com/TonyKhan يعلن فيها نزالا = «أعلن توني خان»، وليس الفريق الذي يتحدث عنه.
    - **ما حدث يبقى حدث، وما سيحدث يبقى قادما**: لو المصدر قال إن شخصا شرح أو كشف شيئا بالفعل («has shed light», «has detailed», «revealed») اكتبه بالماضي؛ ولا تختم الخبر بجملة «ومن المتوقع أن يكشف… خلال الأيام القادمة» إلا لو المصدر وعد بذلك نصا (حصل فعليا: «Cena has also shed more light» اتكتبت «من المتوقع أن يكشف سينا المزيد»).
    - **لا تحوّل «مؤخرا/حديثا» (recently) إلى «آخر/أول» ولا «أحد/واحد من» إلى «كل»**: كلمات الزمن والكمية تُنقل كما هي؛ لا تكتب «آخر نزال» أو «للمرة الأخيرة» أو «أول مرة» إلا لو المصدر قالها نصاً (حصل فعليا: «recently wrestled» اتترجمت «خاضا آخر نزال لهما» فبدا الخبر اعتزالاً).
    - **كلمة أجنبية عامية في المصدر (إسبانية/يابانية/لقب) ماتتكتبش حروف عربية من غير معنى**: لو المصدر فيه كلمة زي «sucias» أو أي سلانج، اكتبها بالعربي مرة واحدة مع معناها بين «» أو بعد «وتعني» (مثال: كلمة «سوسياس» الإسبانية ومعناها «القذرات»)، ولا تكتبها كلقب مبهم يفهمه القارئ غلط (INCIDENTS #1113).
@@ -4617,6 +4618,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     const enT = typeof (rewritten as { en_title?: unknown }).en_title === "string" ? (rewritten as { en_title: string }).en_title : "";
     const badQuotes = enT ? quotedTitleNotInSource(enT, `${rawTitle}\n${plainText}`) : [];
     if (badQuotes.length) { blocking.push({ code: "title_quote_not_in_source", severity: "error", field: "title", message: `اقتباس في العنوان الإنجليزي مش موجود في المصدر: ${badQuotes.join("، ")} — انقل كلام المصدر بحروفه`, excerpt: enT }); lastPostRetryable = true; }
+  }
+  // Tony Khan's tweet credited to the team it talks about (INCIDENTS #1225).
+  const tkPhrase = tonyKhanTweetMisattributed(`${draft.title}\n${draft.body}`, embeds.join("\n"));
+  if (tkPhrase) {
+    blocking.push({ code: "claim_not_in_source", severity: "error", field: "body", message: `التغريدة بتاعة توني خان والخبر نسبها لغيره: ${tkPhrase} — اكتب «أعلن توني خان»`, excerpt: tkPhrase });
+    lastPostRetryable = true;
   }
   // «مصارع WWE مات كاردونا» when the source never ties him to WWE — an invented affiliation (INCIDENTS #1176).
   const badPromos = promotionLabelNotInSource(`${draft.title}\n${draft.body}`, `${rawTitle}\n${plainText}`, WRESTLER_NAMES_MAP);

@@ -16,7 +16,7 @@ image: /content/images/o9qpboqhh71n1g1y.jpg
 ---
 The five-match series between FTR and the Motor City Machine Guns is nearing its conclusion. The deciding fifth match of the series between FTR (Dax Harwood and Cash Wheeler) and the Motor City Machine Guns (Alex Shelley and Chris Sabin) is scheduled for the November 11th three-hour edition of AEW Dynamite/Collision.
 
-FTR announced the matchup on social media, noting that they have evened the series at 2-2 following a classic encounter last weekend. The following lineup has been announced for the show:
+Tony Khan announced the matchup on social media, noting that FTR have evened the series at 2-2 following a classic encounter last weekend. The following lineup has been announced for the show:
 
 Jay White and Mercedes Moné vs. Death Riders (Jon Moxley and Marina Shafir)
 The New Level (Austin Creed and Kofi) vs. Brodido (Bandido and Brody King)
