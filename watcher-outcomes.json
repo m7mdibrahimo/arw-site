@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/cody-rhodes-reacts-john-cena-saying-they-stunk-joint-wrestlemania-41": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-11T17:40:39.453Z"
+ },
  "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
   "at": "2026-10-31T17:23:21.225Z"
- },
- "https://www.ringsidenews.com/rock-goes-above-beyond-young-fan-who-dressed-him-halloween": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-31T16:54:15.516Z"
  }
 }
