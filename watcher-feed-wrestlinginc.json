@@ -1,5 +1,15 @@
 [
   {
+    "id": 2078760716,
+    "link": "https://www.wrestlinginc.com/2313032/john-cena-adds-new-competitors-eponymous-wwe-event/",
+    "date": "Wed, 11 Nov 2026 02:49:05 +0000",
+    "date_gmt": "2026-11-11T02:49:05.000Z",
+    "title": {
+      "rendered": "John Cena Adds New Competitors To Eponymous WWE Event"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/john-cena-adds-new-competitors-to-eponymous-wwe-event/l-intro-1794365239.jpg"
+  },
+  {
     "id": 3258052727,
     "link": "https://www.wrestlinginc.com/2310330/booker-t-cm-punk-current-wwe-run-better-first/",
     "date": "Wed, 11 Nov 2026 02:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Backstage Update On Rich Swann's TNA Contract Status"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-rich-swanns-tna-contract-status/l-intro-1794327215.jpg"
-  },
-  {
-    "id": 3936189104,
-    "link": "https://www.wrestlinginc.com/2312130/gcw-return-josh-barnett-bloodsport-reborn/",
-    "date": "Tue, 10 Nov 2026 16:15:21 +0000",
-    "date_gmt": "2026-11-10T16:15:21.000Z",
-    "title": {
-      "rendered": "GCW Teases Return Of Former Josh Barnett Promoted Event Bloodsport"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/gcw-teases-return-of-former-josh-barnett-promoted-event-bloodsport/l-intro-1794327005.jpg"
   }
 ]
