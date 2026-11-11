@@ -1,5 +1,25 @@
 [
   {
+    "id": 3148775241,
+    "link": "https://www.wrestlinginc.com/2313138/wwe-royce-keys-946-drawing-extreme-reactions-threw-beer/",
+    "date": "Wed, 11 Nov 2026 16:30:00 +0000",
+    "date_gmt": "2026-11-11T16:30:00.000Z",
+    "title": {
+      "rendered": "WWE's Royce Keys Says 946 Is Drawing Extreme Reactions: 'They Threw Beer At Us'"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-royce-keys-says-946-is-drawing-extreme-reactions-they-threw-beer-at-us/l-intro-1794393025.jpg"
+  },
+  {
+    "id": 1513871548,
+    "link": "https://www.wrestlinginc.com/2313567/tko-wwe-employees-increasingly-frustrated-saudi-arabia-relationship/",
+    "date": "Wed, 11 Nov 2026 16:24:50 +0000",
+    "date_gmt": "2026-11-11T16:24:50.000Z",
+    "title": {
+      "rendered": "Report: TKO Employees 'Increasingly Frustrated' With Saudi Arabia Relationship"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/report-tko-employees-increasingly-frustrated-with-saudi-arabia-relationship/l-intro-1794414091.jpg"
+  },
+  {
     "id": 2998585052,
     "link": "https://www.wrestlinginc.com/2313106/aew-andrade-el-idolo-wwe-departure-aaa/",
     "date": "Wed, 11 Nov 2026 16:00:00 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Westside Gunn Thanks Nick Khan For 'Making Everything Right,' Teases WWE Collaboration"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/westside-gunn-thanks-nick-khan-for-making-everything-right-teases-wwe-collaboration/l-intro-1794346636.jpg"
-  },
-  {
-    "id": 1463016773,
-    "link": "https://www.wrestlinginc.com/2312751/tna-impact-viewership-ratings-october-29-2026/",
-    "date": "Tue, 10 Nov 2026 21:01:45 +0000",
-    "date_gmt": "2026-11-10T21:01:45.000Z",
-    "title": {
-      "rendered": "TNA Impact Viewership & Ratings Report: 10/29/2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-impact-viewership-ratings-report-10292026/l-intro-1794344262.jpg"
-  },
-  {
-    "id": 4858581763,
-    "link": "https://www.wrestlinginc.com/2312748/wwe-raw-viewership-ratings-report-november-2-2026/",
-    "date": "Tue, 10 Nov 2026 21:00:33 +0000",
-    "date_gmt": "2026-11-10T21:00:33.000Z",
-    "title": {
-      "rendered": "WWE Raw Viewership & Ratings Report, 11/2/2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-viewership-ratings-report-1122026/l-intro-1794344319.jpg"
   }
 ]
