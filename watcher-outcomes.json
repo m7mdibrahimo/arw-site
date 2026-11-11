@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/why-becky-lynch-seth-rollins-havent-faced-common-marriage-problem": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، مثنى (فريقيهما/لقبيهما/الزميلان) ممنوع — قول «فريقهم/لقبهم/الزملاء» أو كرر الأسماء، فعل مثنى («يعانيان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-11T14:36:34.262Z"
+ },
  "https://www.fightful.com/wrestling/defense-for-ludwig-kaiser-files-motion-seeking-medical-record-of-alleged-victim": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,11 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-11T14:17:13.988Z"
- },
- "https://www.ringsidenews.com/why-becky-lynch-seth-rollins-havent-faced-common-marriage-problem": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-11T14:11:01.281Z"
  },
  "https://www.fightful.com/wrestling/nia-jax-explains-the-origins-of-her-ring-name-tv-show-that-influenced-it": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Women's World Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
