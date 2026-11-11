@@ -1,58 +1,63 @@
 {
- "https://www.ringsidenews.com/why-becky-lynch-seth-rollins-havent-faced-common-marriage-problem": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-11T14:11:01.281Z"
+ "https://www.fightful.com/wrestling/defense-for-ludwig-kaiser-files-motion-seeking-medical-record-of-alleged-victim": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-11-11T14:18:32.594Z"
  },
  "https://www.fightful.com/wrestling/stu-hart-memorial-bridge-opens-on-highway-8-west-of-calgary": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T14:12:22.398Z"
+  "at": "2026-11-11T14:17:18.142Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-and-collision-preview-start-time-how-to-watch-location-11-11": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T14:12:21.899Z"
+  "at": "2026-11-11T14:17:17.674Z"
  },
  "https://www.fightful.com/wrestling/report-tko-employees-frustrated-with-company-going-to-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T14:12:21.580Z"
+  "at": "2026-11-11T14:17:17.376Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-speaks-on-being-part-of-the-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T14:12:21.081Z"
+  "at": "2026-11-11T14:17:16.907Z"
  },
  "https://www.fightful.com/wrestling/kelani-jordan-vs-kendal-grey-for-nxt-womens-title-set-for-11-17-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T14:12:20.496Z"
+  "at": "2026-11-11T14:17:16.335Z"
  },
  "https://www.fightful.com/wrestling/kelani-jordan-joins-wwe-john-cena-classic-field": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T14:12:20.089Z"
+  "at": "2026-11-11T14:17:15.947Z"
  },
  "https://www.fightful.com/wrestling/noam-dar-romeo-moreno-set-for-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T14:12:18.959Z"
+  "at": "2026-11-11T14:17:14.879Z"
  },
  "https://www.fightful.com/wrestling/mason-rook-returns-to-nxt-attacks-grayson-waller": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T14:12:18.643Z"
+  "at": "2026-11-11T14:17:14.560Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-results-11-10-2026-nxt-tag-title-match-wren-sinclair-kam-hendrix-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T14:12:18.342Z"
+  "at": "2026-11-11T14:17:14.277Z"
  },
  "https://www.fightful.com/wrestling/seth-rollins-i-feel-like-i-have-never-been-in-a-main-event-of-wrestlemania": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T14:12:18.039Z"
+  "at": "2026-11-11T14:17:13.988Z"
+ },
+ "https://www.ringsidenews.com/why-becky-lynch-seth-rollins-havent-faced-common-marriage-problem": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-11T14:11:01.281Z"
  },
  "https://www.fightful.com/wrestling/nia-jax-explains-the-origins-of-her-ring-name-tv-show-that-influenced-it": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Women's World Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-31T14:49:06.265Z"
- },
- "https://www.fightful.com/wrestling/paul-heyman-reacts-to-christian-watson-ambulance-return-we-did-this-in-1991": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-31T14:38:51.465Z"
  }
 }
