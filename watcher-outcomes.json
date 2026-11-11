@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/jonathan-coachman-accuses-espn-executives-sabotaging-his-relationship-nick-khan": {
+  "reason": "المراجعة رفضته: فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-11T14:47:08.558Z"
+ },
+ "https://www.ringsidenews.com/why-becky-lynch-seth-rollins-havent-faced-common-marriage-problem": {
+  "reason": "المراجعة رفضته: صيغة مثنى (تختاران/حافظتا/قطعتين/بطلي فرق) ممنوعة — اجمع الفعل أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى («يكشفان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، فعل مثنى («يكونان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-11T14:45:41.566Z"
+ },
  "https://www.fightful.com/wrestling/defense-for-ludwig-kaiser-files-motion-seeking-medical-record-of-alleged-victim": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -48,11 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-11T14:39:29.200Z"
- },
- "https://www.ringsidenews.com/why-becky-lynch-seth-rollins-havent-faced-common-marriage-problem": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، مثنى (فريقيهما/لقبيهما/الزميلان) ممنوع — قول «فريقهم/لقبهم/الزملاء» أو كرر الأسماء، فعل مثنى («يعانيان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-11T14:36:34.262Z"
  },
  "https://www.fightful.com/wrestling/seth-rollins-i-feel-like-i-have-never-been-in-a-main-event-of-wrestlemania": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-31T14:53:55.881Z"
- },
- "https://www.ringsidenews.com/ric-flair-turns-hospital-photo-ai-generated-pirate-look-halloween": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-31T14:49:06.265Z"
  }
 }
