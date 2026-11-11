@@ -11416,6 +11416,16 @@
     "wrong": "Rock N/Wrestling",
     "right": "Rock N Wrestling",
     "note": "اسم رحلة كريس جيريكو — INCIDENTS #1227"
+  },
+  {
+    "wrong": "استعاداه",
+    "right": "استعادوه",
+    "note": "مثنى: «لقبهم الذي استعاداه» — INCIDENTS #1227"
+  },
+  {
+    "wrong": "استعادا",
+    "right": "استعادوا",
+    "note": "مثنى — INCIDENTS #1227"
   }
 ]
 }

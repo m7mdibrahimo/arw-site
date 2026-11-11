@@ -9,6 +9,7 @@ const codes = (body: string, title = "عنوان خبر عادي عن عرض WWE
 test("#1227: dual «البطلين» and «ما زالا» never reach a story", () => {
   assert.equal(applyCorrections("🏆 **الفائزون (وما زالا البطلين):** فانيتي بروجيكت"), "🏆 **الفائزون (وما زالوا الأبطال):** فانيتي بروجيكت");
   assert.ok(codes("وحسم النزال أحد البطلين في النهاية.").includes("dual_noun"));
+  assert.equal(applyCorrections("لقبهم الذي استعاداه من تافيون"), "لقبهم الذي استعادوه من تافيون");
 });
 
 test("#1227: «SummerSlam weekend» is «أيام عرض», never «عطلة عرض»; a real weekend stays", () => {
