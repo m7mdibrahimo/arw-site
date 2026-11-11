@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2314240/aew-dynamite-november-11-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-11T23:54:18.086Z"
+ },
  "https://www.fightful.com/wrestling/jim-ross-undergoes-successful-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -33,11 +38,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-11T23:42:16.604Z"
- },
- "https://www.wrestlinginc.com/2314240/aew-dynamite-november-11-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-11T23:34:26.524Z"
  },
  "https://www.ringsidenews.com/carlito-says-wwe-wasted-undertakers-wrestlemania-streak-brock-lesnar": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Adam Copeland",
