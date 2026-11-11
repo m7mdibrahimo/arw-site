@@ -335,6 +335,9 @@ export function htmlToPlainText(html: string): string {
     .replace(/<blockquote class="instagram-media"[\s\S]*?<\/blockquote>/gi, "")
     .replace(/<blockquote class="tiktok-embed"[\s\S]*?<\/blockquote>/gi, "")
     .replace(/<div class="stream-item[\s\S]*?<\/div>/gi, "")
+    // a paragraph that only points to another story («Elsewhere in another interview, Paul Wight spoke about… You can read
+    // more about that here.») is the site's own link, not the news: Gemini put it as the story's last sentence (INCIDENTS #1239)
+    .replace(/<p\b[^>]*>(?:(?!<\/p>)[\s\S])*?(?:read more about (?:that|this|it) here|you can read more (?:about )?(?:that|this|it)?|click here to read)(?:(?!<\/p>)[\s\S])*<\/p>/gi, "")
     .replace(/<[^>]+>/g, " ")
     .replace(/&amp;/g, "&")
     .replace(/&quot;/g, '"')

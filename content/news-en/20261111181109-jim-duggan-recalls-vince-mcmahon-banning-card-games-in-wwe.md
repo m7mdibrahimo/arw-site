@@ -18,5 +18,3 @@ Jim Duggan recently recalled Vince McMahon banning card games in the WWE locker 
 Duggan explained that these games caused wrestlers to miss their entrance music. He shared a funny story about forgetting a pack of cards inside his knee pad during a match, which flew everywhere when he hit his finisher.
 
 > "Skaaland's like, ‘Duggan, where'd those cards come from?' I said, Fan must have thrown them in the ring."
-
-In another interview, Paul Wight discussed believing that Jim Duggan was meant to play Captain Insano.
