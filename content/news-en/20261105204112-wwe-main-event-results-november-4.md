@@ -1,7 +1,7 @@
 ---
 title: "WWE Main Event Results (November 4)"
 slug: "wwe-main-event-results-november-4"
-description: "WWE aired the latest episode of WWE Main Event on November 4 via the Rumble platform. In the opening match, Nia Jax def. Guilia. Paige def."
+description: "WWE aired the latest episode of WWE Main Event on November 4 via the Rumble platform. In the opening match, Nia Jax def. Guilia."
 federation: WWE
 date: 2026-11-05T17:41:12.000Z
 source_id: 337593

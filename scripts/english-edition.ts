@@ -503,7 +503,8 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   // «Entrances Themes» is not English: the noun before «theme» is singular (INCIDENTS #700)
   [/\b(Entrance|entrance)s (Themes?|Music|Songs?)\b/g, "$1 $2"],
   // «Def.» is a results-line abbreviation, not a headline word (INCIDENTS #688)
-  [/\bDef\. (?=[A-Z])/g, "Defeats "],
+  // … but a team can be named «Fly Def»: «Royal Prestige def. Fly Def. Adrian Thomas won…» became «def. Fly Defeats Adrian» (INCIDENTS #1229)
+  [/(?<!\bdef\.[^.\n]{0,40})\bDef\. (?=[A-Z])/g, "Defeats "],
   // Title Case capitalised the small word of an event name (INCIDENTS #441)
   [/\bBound For Glory\b/g, "Bound for Glory"],
   [/\bsyX\b/g, "Syx"],

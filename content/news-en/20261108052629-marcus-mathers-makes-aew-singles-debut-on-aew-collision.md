@@ -1,7 +1,7 @@
 ---
 title: "Marcus Mathers Makes AEW Singles Debut on AEW Collision"
 slug: "marcus-mathers-makes-aew-singles-debut-on-aew-collision"
-description: "Marcus Mathers made his singles debut for AEW during the November 7 episode of AEW Collision, squaring off against Nick Wayne. Nick Wayne def."
+description: "Marcus Mathers made his singles debut for AEW during the November 7 episode of AEW Collision, squaring off against Nick Wayne."
 federation: AEW
 date: 2026-11-08T02:26:29.000Z
 source_id: 338035

@@ -1,7 +1,7 @@
 ---
 title: "WWE NXT Results: John Cena Adds Dusty Classic Winners to John Cena Classic"
 slug: "wwe-nxt-results-john-cena-adds-dusty-classic-winners-to-john-cena-classic"
-description: "On the November 10, 2026, episode of WWE NXT, live from the WWE Performance Center in Orlando, Florida."
+description: "On the November 10, 2026, episode of WWE NXT, live from the WWE Performance Center in Orlando, Florida, the show opened with Grayson Waller discussing his recent victory over CM Punk."
 federation: WWE
 date: 2026-11-11T02:14:42.000Z
 source_id: 5142394706

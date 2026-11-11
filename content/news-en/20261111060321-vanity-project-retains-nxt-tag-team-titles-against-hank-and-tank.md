@@ -1,7 +1,7 @@
 ---
 title: "Vanity Project Retains NXT Tag Team Titles Against Hank and Tank"
 slug: "vanity-project-retains-nxt-tag-team-titles-against-hank-and-tank"
-description: "Brad Baylor and Ricky Smokes of Vanity Project successfully defended their Tag Team Championship against Hank Walker."
+description: "Brad Baylor and Ricky Smokes of Vanity Project successfully defended their Tag Team Championship against Hank Walker and Tank Ledger."
 federation: WWE
 date: 2026-11-11T03:03:21.000Z
 source_id: 961173815
