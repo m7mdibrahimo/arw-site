@@ -1351,6 +1351,15 @@ const SOURCE_CLAIMS: { label: string; ar: RegExp; en: RegExp; source: RegExp }[]
     en: /\b(?:payments?|pay ?cuts?|docked (?:his |her |their )?pay|paychecks?|salar(?:y|ies))\b/i,
     source: /\bpa(?:y|id|yment|ycheck)|salar|money|wage|dock|compensat|\$\s?\d|\bearn|financ|bonus|fine[ds]?\b/i,
   },
+  {
+    // "Cena has also shed more light on the details" (already done) became «ومن المتوقع أن يكشف سينا المزيد من
+    // التفاصيل خلال الأيام القادمة» and "he will provide further details soon" — John Cena Classic, INCIDENTS #1224.
+    // A promise of details to come needs a promise in the source.
+    label: "تفاصيل هتتكشف قريب / details to come",
+    ar: /(?<![ء-ي])و?من\s+المتوقع\s+أن\s+[يت](?:كشف|علن|وضح|قدم|شارك|عطي)(?![ء-ي])/,
+    en: /\b(?:will|is expected to|plans to|is set to|is going to)\s+(?:\w+\s+){0,2}?(?:provide|reveal|share|give|announce|offer|disclose|unveil)\s+(?:\S+\s+){0,3}?(?:details?|information|updates?)\b/i,
+    source: /\b(?:will|expected to|set to|plans? to|going to|intends? to|hopes? to|promised to|looks? to|about to)\s+(?:\w+\s+){0,3}?(?:reveal|announc|shar|explain|provid|giv|detail|discuss|unveil|disclos|shed|address|talk)|\bmore (?:details|information)\b[^.]{0,60}\b(?:soon|later|coming|next)\b|\bstay tuned\b|\bteas(?:e|ed|es|ing)\b/i,
+  },
 ];
 /**
  * «Ric Flair Set For First Wrestling Appearance Since Scary Fall» became «ريك فلير يظهر علنا لأول مرة منذ سقوطه…»:
