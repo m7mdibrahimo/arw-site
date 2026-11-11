@@ -1,7 +1,6 @@
 {
   "enabled": true,
   "processedIds": [
-    326450,
     328999,
     336238,
     332291,
@@ -1000,9 +999,10 @@
     333020,
     336232,
     338469,
-    338482
+    338482,
+    333037
   ],
   "lastChecked": "2026-11-11T00:16:27.210Z",
-  "apiCallsToday": 0,
+  "apiCallsToday": 3,
   "apiCallDate": "2026-11-11"
 }
