@@ -2,6 +2,11 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "ليعلن نفسه المنافس",
+      "right": "ليصبح المنافس",
+      "note": "«حسم النزال… ليعلن نفسه المنافس الأول» — الفائز بنزال تحديد المنافس بيبقى المنافس الأول، هو ماعلنش حاجة (نتائج PWS، INCIDENTS #1232)"
+    },
+    {
       "wrong": "بال ايه نايت",
       "right": "بالمصارع ال ايه نايت",
       "note": "«تشبيه جوش ألين بال ايه نايت» — الباء لازقة في «ال» فبتتقرا كلمة «بال» (خبر سيث رولينز، INCIDENTS #1223)"
