@@ -1,48 +1,53 @@
 {
- "https://www.ringsidenews.com/why-becky-lynch-seth-rollins-havent-faced-common-marriage-problem": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم، فعل مثنى («يستمتعان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-11T13:04:28.638Z"
+ "https://www.fightful.com/wrestling/aew-dynamite-and-collision-preview-start-time-how-to-watch-location-11-11": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-11T13:06:48.537Z"
  },
  "https://www.fightful.com/wrestling/report-tko-employees-frustrated-with-company-going-to-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T13:02:12.637Z"
+  "at": "2026-11-11T13:06:48.294Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-speaks-on-being-part-of-the-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T13:02:12.201Z"
+  "at": "2026-11-11T13:06:47.915Z"
  },
  "https://www.fightful.com/wrestling/kelani-jordan-vs-kendal-grey-for-nxt-womens-title-set-for-11-17-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T13:02:11.688Z"
+  "at": "2026-11-11T13:06:47.465Z"
  },
  "https://www.fightful.com/wrestling/kelani-jordan-joins-wwe-john-cena-classic-field": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T13:02:11.332Z"
+  "at": "2026-11-11T13:06:47.154Z"
  },
  "https://www.fightful.com/wrestling/noam-dar-romeo-moreno-set-for-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T13:02:10.355Z"
+  "at": "2026-11-11T13:06:46.301Z"
  },
  "https://www.fightful.com/wrestling/mason-rook-returns-to-nxt-attacks-grayson-waller": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T13:02:10.078Z"
+  "at": "2026-11-11T13:06:46.081Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-results-11-10-2026-nxt-tag-title-match-wren-sinclair-kam-hendrix-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T13:02:09.821Z"
+  "at": "2026-11-11T13:06:45.855Z"
  },
  "https://www.fightful.com/wrestling/seth-rollins-i-feel-like-i-have-never-been-in-a-main-event-of-wrestlemania": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T13:02:09.563Z"
+  "at": "2026-11-11T13:06:45.628Z"
+ },
+ "https://www.ringsidenews.com/why-becky-lynch-seth-rollins-havent-faced-common-marriage-problem": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم، فعل مثنى («يستمتعان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-11T13:04:28.638Z"
  },
  "https://www.fightful.com/wrestling/nia-jax-explains-the-origins-of-her-ring-name-tv-show-that-influenced-it": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Women's World Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-31T14:27:56.494Z"
- },
- "https://www.ringsidenews.com/aew-dynamite-will-not-go-head-head-wwe-smackdown-january-1-all": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-10-31T13:44:57.903Z"
  }
 }
