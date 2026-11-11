@@ -1,5 +1,5 @@
 ---
-title: "Carmelo Hayes After Brutal Samoan Drop From Jacob Fatu on WWE RAW: Still Alive and Ima Keep Double Stomping Ya'll"
+title: "Carmelo Hayes After Brutal Samoan Drop From Jacob Fatu on WWE RAW: Still Alive and Ima Keep Double Stomping Y'all"
 slug: "carmelo-hayes-after-brutal-samoan-drop-from-jacob-fatu-on-wwe-raw-still-alive"
 description: "Carmelo Hayes has responded to fans discussing the brutal Samoan Drop he received from Jacob Fatu on this week's episode of WWE RAW."
 federation: WWE

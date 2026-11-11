@@ -1708,3 +1708,17 @@ test("a faction named «… Family» keeps its article in English (INCIDENTS #12
   assert.equal(fixEnglishNames("after Fletcher turned on Ospreay and aligned with Don Callis Family."), "after Fletcher turned on Ospreay and aligned with the Don Callis Family.");
   assert.equal(fixEnglishNames("he aligned with The Don Callis Family"), "he aligned with The Don Callis Family");
 });
+
+test("«ساك بلاك» → «جاك بلاك», «مواجهة … ضده مع» loses «ضده», and «Ya'll» is «Y'all» (INCIDENTS #1243)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa.ts");
+  const { fixEnglishNames } = await import("../scripts/english-edition.ts");
+  assert.equal(applyCorrections("رفقة كيفن هارت وساك بلاك وكارين جيلان"), "رفقة كيفن هارت وجاك بلاك وكارين جيلان");
+  assert.equal(applyCorrections("يرى كايل فليتشر أن مواجهة مرتقبة ضده مع إيليا دراغونوف أمر حتمي"), "يرى كايل فليتشر أن مواجهة مرتقبة مع إيليا دراغونوف أمر حتمي");
+  assert.equal(applyCorrections("تمهيدا لإقامة مواجهة ضخمة ومرتقبة ضده أمام أوبا فيمي."), "تمهيدا لإقامة مواجهة ضخمة ومرتقبة مع أوبا فيمي.");
+  // «ضده» away from a match noun stays
+  assert.equal(applyCorrections("وقف ضده مع زملائه"), "وقف ضده مع زملائه");
+  assert.equal(fixEnglishNames("Still Alive and Ima Keep Double Stomping Ya'll"), "Still Alive and Ima Keep Double Stomping Y'all");
+  assert.equal(fixEnglishNames("keep stomping ya’ll"), "keep stomping y’all");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /ساك بلاك/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});

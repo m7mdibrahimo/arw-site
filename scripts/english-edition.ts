@@ -530,6 +530,8 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   // a faction named «… Family» needs its article: «aligned with Don Callis Family» (INCIDENTS #1242)
   [/\b(aligning|aligned|aligns|align|joining|joined|joins|join|with|of|from|leaving|left|leaves) (Don Callis Family|Wyatt Family|Bloodline|Judgment Day|Hurt Business)\b/g, "$1 the $2"],
   [/\bformer The ((?:[A-Z][\w'’-]*\s+){1,3}(?:member|stablemate|leader|teammate))\b/g, "former $1"], // «the former The Judgment Day member» (INCIDENTS #1219)
+  // the source's headline wrote «Ya'll»; American English is «y'all» (Carmelo Hayes story, INCIDENTS #1243)
+  [/\b(Y|y)a(['’])ll\b/g, "$1$2all"],
 ];
 const SMALL_WORDS = new Set(["a", "an", "the", "and", "but", "or", "nor", "for", "at", "by", "in", "of", "on", "to", "as", "vs", "vs.", "via"]);
 /** Words that are never small in a Title Case headline when left lowercase: «I am Thankful» → «I Am Thankful» (INCIDENTS #489) */
@@ -705,7 +707,8 @@ export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEW
     `source_id: ${i.sourceId}`,
     `source_url: ${yaml(i.sourceUrl)}`,
     `en_tags:`,
-    ...[...new Set((e.tags || []).map((t) => String(t).trim()).filter((t) => t && !AR.test(t)))].slice(0, 6).map((t) => `  - ${yaml(t)}`),
+    // a tag gets the same name fixes as the story: the tag «Twitter» reached the head of the Kayla Braxton story (INCIDENTS #1243)
+    ...[...new Set((e.tags || []).map((t) => fixEnglishNames(String(t).trim())).filter((t) => t && !AR.test(t)))].slice(0, 6).map((t) => `  - ${yaml(t)}`),
     `image: ${i.image}`,
     ...galleryYaml(i.gallery),
     "---",

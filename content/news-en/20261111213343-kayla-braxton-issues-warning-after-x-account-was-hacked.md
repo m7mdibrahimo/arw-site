@@ -9,7 +9,7 @@ source_url: "https://www.ringsidenews.com/kayla-braxton-issues-warning-twitter-a
 en_tags:
   - "Kayla Braxton"
   - "WWE"
-  - "Twitter"
+  - "X"
   - "Social Media"
 image: /content/images/zo75wq1qyzrcx48g.jpg
 ---

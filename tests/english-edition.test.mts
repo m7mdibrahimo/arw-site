@@ -577,3 +577,9 @@ test("a machine-transcript quote is cleaned, and a false start is sent back (INC
   assert.equal(alteredQuoteSentence('> "So I\'m very proud of her that she made them believe in her. I think the fans saw it too and they loved it."', src), null);
   assert.ok(checkEnglish({ title: "Carlito Talks About His Wrestling Future and the Road Ahead", body: `> "Sure, why not? Let's just we got a I got a couple left in me at this point still."\n\n${"Carlito discussed his future on a recent podcast appearance. ".repeat(12)}`, tags: ["WWE"] } as any, { sourceTitle: "Carlito", sourceText: "Carlito discussed his future on a recent podcast appearance. Let's just we got a I got a couple left in me at this point still.", sourceUrl: "https://example.com/a/" } as any).some((x: string) => x.includes("broken speech")));
 });
+
+test('a tag gets the story\'s name fixes: «Twitter» is «X» in en_tags (INCIDENTS #1243)', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'news-en-'));
+  const file = saveEnglishEdition({ ...good, tags: ['Kayla Braxton', 'Twitter', 'Social Media'] }, input, dir);
+  assert.deepEqual(matter(fs.readFileSync(file, 'utf8')).data.en_tags, ['Kayla Braxton', 'X', 'Social Media']);
+});
