@@ -1,5 +1,15 @@
 [
   {
+    "id": 338542,
+    "link": "https://www.fightful.com/wrestling/last-resort-a-tribute-to-mark-wolf-results-11-1/",
+    "date": "2026-11-11T06:58:58",
+    "date_gmt": "2026-11-11T11:58:58",
+    "title": {
+      "rendered": "Last Resort: A Tribute To Mark Wolf Results (11/1)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/11065819/HQ-dnQPWwAABFt5.jpg.webp"
+  },
+  {
     "id": 338540,
     "link": "https://www.fightful.com/wrestling/tay-melo-removed-from-aew-roster-page/",
     "date": "2026-11-11T06:51:35",
@@ -288,15 +298,5 @@
       "rendered": "Bret Hart: WCW Should&#8217;ve Been Sued For Putting Me In The Ring With Goldberg"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/10145959/maxresdefault-49.jpg"
-  },
-  {
-    "id": 338424,
-    "link": "https://www.fightful.com/wrestling/mlw-x-cmll-azteca-lucha-announced-for-may-15-2027/",
-    "date": "2026-11-10T14:57:20",
-    "date_gmt": "2026-11-10T19:57:20",
-    "title": {
-      "rendered": "MLW x CMLL Azteca Lucha Announced For May 15, 2027"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/10145650/HWydBjoXgAAwbHM.jpeg"
   }
 ]

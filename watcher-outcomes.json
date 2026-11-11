@@ -1,38 +1,43 @@
 {
+ "https://www.fightful.com/wrestling/last-resort-a-tribute-to-mark-wolf-results-11-1": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-11T12:03:15.590Z"
+ },
  "https://www.fightful.com/wrestling/kelani-jordan-vs-kendal-grey-for-nxt-womens-title-set-for-11-17-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T11:58:52.044Z"
+  "at": "2026-11-11T12:02:40.695Z"
  },
  "https://www.fightful.com/wrestling/kelani-jordan-joins-wwe-john-cena-classic-field": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T11:58:51.696Z"
+  "at": "2026-11-11T12:02:40.405Z"
  },
  "https://www.fightful.com/wrestling/noam-dar-romeo-moreno-set-for-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T11:58:50.734Z"
+  "at": "2026-11-11T12:02:39.583Z"
  },
  "https://www.fightful.com/wrestling/mason-rook-returns-to-nxt-attacks-grayson-waller": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T11:58:50.465Z"
+  "at": "2026-11-11T12:02:39.357Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-results-11-10-2026-nxt-tag-title-match-wren-sinclair-kam-hendrix-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T11:58:50.211Z"
+  "at": "2026-11-11T12:02:39.146Z"
  },
  "https://www.fightful.com/wrestling/seth-rollins-i-feel-like-i-have-never-been-in-a-main-event-of-wrestlemania": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T11:58:49.952Z"
+  "at": "2026-11-11T12:02:38.933Z"
  },
  "https://www.fightful.com/wrestling/bret-hart-wcw-shouldve-been-sued-for-putting-me-in-the-ring-with-goldberg": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T11:58:49.052Z"
+  "at": "2026-11-11T12:02:38.192Z"
  },
  "https://www.ringsidenews.com/why-becky-lynch-seth-rollins-havent-faced-common-marriage-problem": {
   "reason": "المراجعة رفضته: صيغة مثنى (تختاران/حافظتا/قطعتين/بطلي فرق) ممنوعة — اجمع الفعل أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يكشفان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، فعل مثنى («ويعانيان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-10-31T12:34:03.002Z"
- },
- "https://www.fightful.com/wrestling/rusev-says-he-got-sick-after-suffering-injury-on-wwe-raw-doesnt-think-the-two-incidents-were-related": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-31T11:59:51.342Z"
  }
 }
