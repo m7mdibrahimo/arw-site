@@ -100,6 +100,29 @@ export function fixTimeDuals(text: string): string {
 }
 
 /**
+ * «طفلين صغيرين» (two young children) is a dual noun the dual_noun check blocks, and Gemini wrote it
+ * for every rewrite of one story: Mercedes Moné's sister «left behind two young children» was refused
+ * again and again, one Gemini request each (INCIDENTS #1234). Two people of a masculine-plural noun have
+ * a plain non-dual form the site already uses — «اثنين من الأطفال» / «اثنان من الأطفال» — so the
+ * indefinite dual is rewritten before the check. A definite dual («الطفلين») is left to the check.
+ * Idempotent.
+ */
+const DUAL_PEOPLE: Record<string, string> = {
+  "طفل": "الأطفال", "ابن": "الأبناء", "شقيق": "الأشقاء", "صديق": "الأصدقاء", "نجم": "النجوم", "ولد": "الأولاد",
+};
+const DUAL_PEOPLE_ADJ: Record<string, string> = {
+  "صغيرين": "الصغار", "صغيران": "الصغار", "كبيرين": "الكبار", "كبيران": "الكبار", "آخرين": "الآخرين", "آخران": "الآخرين",
+};
+export function fixCountDuals(text: string): string {
+  if (!text) return text;
+  const units = Object.keys(DUAL_PEOPLE).join("|");
+  const adj = Object.keys(DUAL_PEOPLE_ADJ).join("|");
+  const re = new RegExp(`(?<![${AR}])(و|ف|ب|ل|ك|وب|ول|فب|فل)?(${units})(ين|ان)(?![${AR}])(?:\\s+(${adj})(?![${AR}]))?`, "g");
+  return text.replace(re, (_m, pre = "", unit: string, end: string, a?: string) =>
+    `${pre}${end === "ان" && !pre ? "اثنان" : "اثنين"} من ${DUAL_PEOPLE[unit]}${a ? ` ${DUAL_PEOPLE_ADJ[a]}` : ""}`);
+}
+
+/**
  * A rule written with «ال» («المصارعة الحرة→المصارعة») never matched its «لل» form: «ل» + «المصارعة»
  * is written «للمصارعة», so «كل ما يمكن للمصارعة الحرة» was published (INCIDENTS #1213). Every plain
  * rule whose wrong AND right start with «ال» also gets its «لل» twin («للمصارعة الحرة→للمصارعة»).
@@ -118,7 +141,7 @@ function withLamAlefForms(corrections: Correction[]): Correction[] {
 /** Applies every wrong→right rule from editorial/corrections.json. Idempotent. */
 export function applyCorrections(text: string, corrections = loadCorrections()): string {
   if (!text) return text;
-  let out = fixTimeDuals(fixNumberGender(decodeHtmlEntities(text)));
+  let out = fixCountDuals(fixTimeDuals(fixNumberGender(decodeHtmlEntities(text))));
   for (const c of withLamAlefForms(corrections)) {
     out = out.replace(correctionRegex(c), (m, prefix = "") =>
       // the text is already right: «لعودة→للعودة» read «للعودة» as «ل» + «لعودة» and wrote «لللعودة» (INCIDENTS #944)
