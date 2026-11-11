@@ -1,13 +1,13 @@
 {
  "https://www.wrestlinginc.com/2313057/wwe-nxt-november-10-2026-3-things-hated-loved-opinion-review": {
-  "reason": "المراجعة رفضته: أداة إسبانية إنجليزي (Los/La/El) ملزوقة في اسم عربي («Los بيروس ديل مال») — اكتب الاسم كله بالعربي («لوس بيروس ديل مال») أو كله إنجليزي",
-  "retry": true,
-  "at": "2026-11-11T06:56:03.384Z"
+  "reason": "المراجعة رفضته: جزء إنجليزي صغير الحروف وسط اسم عربي («كايل ayla Kassidy») — الاسم اتكسر: اكتبه كله بالعربي أو كله بالإنجليزي (INCIDENTS #819)، نفس العنوان منشور قبل كده — الخبر مكرر",
+  "retry": false,
+  "at": "2026-11-11T07:07:38.884Z"
  },
  "https://www.wrestlinginc.com/2312949/mercedes-mone-death-younger-sister-alexis-remembers-aew-wwe-pac": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-11T06:50:35.475Z"
+  "at": "2026-11-11T07:07:11.901Z"
  },
  "https://www.fightful.com/wrestling/kelani-jordan-vs-kendal-grey-for-nxt-womens-title-set-for-11-17-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
