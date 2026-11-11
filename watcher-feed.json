@@ -1,5 +1,15 @@
 [
   {
+    "id": 338529,
+    "link": "https://www.fightful.com/wrestling/romeo-malverde-santos-escobar-wins-jericho-cruise-oceanic-championship/",
+    "date": "2026-11-10T22:13:13",
+    "date_gmt": "2026-11-11T03:13:13",
+    "title": {
+      "rendered": "Romeo Malverde (Santos Escobar) Wins Jericho Cruise Oceanic Championship"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/10221242/Screenshot-2026-11-10-at-10.12.27-PM.png"
+  },
+  {
     "id": 338519,
     "link": "https://www.fightful.com/wrestling/kelani-jordan-joins-wwe-john-cena-classic-field/",
     "date": "2026-11-10T21:13:52",
@@ -288,15 +298,5 @@
       "rendered": "Denis Gauthier Passes Away"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/10141512/Untitled-Design-9.jpg"
-  },
-  {
-    "id": 338386,
-    "link": "https://www.fightful.com/wrestling/pro-wrestling-noah-results-11-9-26-tetsuya-naito-retains-ghc-heavyweight-title-jr-grand-prix-begins/",
-    "date": "2026-11-10T14:03:28",
-    "date_gmt": "2026-11-10T19:03:28",
-    "title": {
-      "rendered": "Pro Wrestling NOAH Results (11/9/26): Tetsuya Naito Retains GHC Heavyweight Title, Jr. Grand Prix Begins"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/04/26062200/noalogo.jpeg"
   }
 ]
