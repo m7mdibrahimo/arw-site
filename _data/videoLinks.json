@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-11T06:32:04.697Z",
+ "checkedAt": "2026-11-11T11:27:32.448Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
@@ -9986,7 +9986,7 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-11T06:32:04.697Z"
+   "checked": "2026-11-11T11:27:32.448Z"
   },
   "https://fembed.co/embed/HAoQK7_87-jVN": {
    "page": "https://arab-wrestling.com/shows/ufc-fight-night-293-cortes-acosta-vs-walker/",
@@ -9997,25 +9997,26 @@
   },
   "https://vidmoly.org/embed-tqtn5hriyhln.html": {
    "page": "https://arab-wrestling.com/shows/gcw-the-crossroads-2026/",
-   "status": "unknown",
-   "reason": "no stream seen",
-   "strikes": 2,
-   "checked": "2026-11-11T06:32:04.697Z",
-   "since": "2026-11-09T19:09:09.249Z"
+   "status": "ok",
+   "reason": "the stream comes back when fetched directly (the browser check missed it)",
+   "strikes": 0,
+   "checked": "2026-11-11T11:27:32.448Z",
+   "lastOk": "2026-11-11T11:27:32.448Z"
   },
   "https://hgcloud.to/e/pql2z3ooc2p5": {
    "page": "https://arab-wrestling.com/shows/gcw-the-crossroads-2026/",
-   "status": "unknown",
-   "reason": "no stream seen",
+   "status": "ok",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-11T06:32:04.697Z"
+   "checked": "2026-11-11T11:27:32.448Z",
+   "lastOk": "2026-11-11T11:27:32.448Z"
   },
   "https://vidtube.one/embed-45lb2qkjn2xa.html": {
    "page": "https://arab-wrestling.com/shows/gcw-the-crossroads-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 2,
-   "checked": "2026-11-11T06:32:04.697Z",
+   "checked": "2026-11-11T11:27:32.448Z",
    "since": "2026-11-09T22:45:56.887Z",
    "lastOk": "2026-11-09T19:09:09.249Z"
   },
@@ -10024,7 +10025,7 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 2,
-   "checked": "2026-11-11T06:32:04.697Z",
+   "checked": "2026-11-11T11:27:32.448Z",
    "since": "2026-11-10T11:10:59.638Z",
    "lastOk": "2026-11-09T22:45:56.887Z"
   },
@@ -10071,31 +10072,31 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-11T06:32:04.697Z"
+   "checked": "2026-11-11T11:27:32.448Z"
   },
   "https://vidtube.one/embed-axygtaajo08b.html": {
    "page": "https://arab-wrestling.com/shows/njpw-el-desperado-gas-pe-invitational-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 2,
-   "checked": "2026-11-11T06:32:04.697Z",
+   "checked": "2026-11-11T11:27:32.448Z",
    "since": "2026-11-10T15:07:58.495Z",
    "lastOk": "2026-11-10T03:49:37.214Z"
   },
   "https://vidmoly.org/embed-1swaikhrls37.html": {
    "page": "https://arab-wrestling.com/shows/njpw-el-desperado-gas-pe-invitational-2026/",
-   "status": "unknown",
-   "reason": "no stream seen",
-   "strikes": 2,
-   "checked": "2026-11-11T06:32:04.697Z",
-   "since": "2026-11-10T03:49:37.214Z"
+   "status": "ok",
+   "reason": "the stream comes back when fetched directly (the browser check missed it)",
+   "strikes": 0,
+   "checked": "2026-11-11T11:27:32.448Z",
+   "lastOk": "2026-11-11T11:27:32.448Z"
   },
   "https://hgcloud.to/e/pwkmv6y8xtyh": {
    "page": "https://arab-wrestling.com/shows/njpw-el-desperado-gas-pe-invitational-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-11T06:32:04.697Z"
+   "checked": "2026-11-11T11:27:32.448Z"
   },
   "https://ok.ru/videoembed/18030391134816": {
    "page": "https://arab-wrestling.com/shows/cmll-domingo-familiar-08-11-2026/",
@@ -10114,10 +10115,10 @@
   },
   "https://fembed.co/embed/S-dQzi_xs9FZ6": {
    "page": "https://arab-wrestling.com/shows/njpw-el-desperado-gas-pe-invitational-2026/",
-   "status": "broken",
-   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
+   "status": "unknown",
+   "reason": "no stream seen",
    "strikes": 2,
-   "checked": "2026-11-11T06:32:04.697Z",
+   "checked": "2026-11-11T11:27:32.448Z",
    "since": "2026-11-11T06:32:04.697Z"
   },
   "https://hgcloud.to/e/2imj970etd1x": {
@@ -10145,10 +10146,10 @@
   },
   "https://vidtube.one/embed-yf3eh5smalvp.html": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-09-11-2026/",
-   "status": "broken",
-   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
+   "status": "unknown",
+   "reason": "no stream seen",
    "strikes": 2,
-   "checked": "2026-11-11T06:32:04.697Z",
+   "checked": "2026-11-11T11:27:32.448Z",
    "since": "2026-11-11T06:32:04.697Z",
    "lastOk": "2026-11-10T15:07:58.495Z"
   },
@@ -10157,29 +10158,29 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-11T06:32:04.697Z"
+   "checked": "2026-11-11T11:27:32.448Z"
   },
   "https://hgcloud.to/e/qtsq785vhp45": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-09-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-11T06:32:04.697Z"
+   "checked": "2026-11-11T11:27:32.448Z"
   },
   "https://vidmoly.org/embed-eryoj5v86y9d.html": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-09-11-2026/",
-   "status": "unknown",
-   "reason": "no stream seen",
-   "strikes": 2,
-   "checked": "2026-11-11T06:32:04.697Z",
-   "since": "2026-11-10T15:07:58.495Z"
+   "status": "ok",
+   "reason": "the stream comes back when fetched directly (the browser check missed it)",
+   "strikes": 0,
+   "checked": "2026-11-11T11:27:32.448Z",
+   "lastOk": "2026-11-11T11:27:32.448Z"
   },
   "https://fembed.co/embed/gSSO_W-fODU0F": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-09-11-2026/",
-   "status": "unknown",
-   "reason": "no stream seen",
-   "strikes": 0,
-   "checked": "2026-11-11T06:32:04.697Z"
+   "status": "broken",
+   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
+   "strikes": 1,
+   "checked": "2026-11-11T11:27:32.448Z"
   }
  },
  "broken": [
@@ -10224,9 +10225,6 @@
   "https://hgcloud.to/e/ylwpeku211ph",
   "https://hgcloud.to/e/zyg5qa846siw",
   "https://uqload.vc/embed-u1813bj0i3l0.html",
-  "https://vidmoly.org/embed-1swaikhrls37.html",
-  "https://vidmoly.org/embed-eryoj5v86y9d.html",
-  "https://vidmoly.org/embed-tqtn5hriyhln.html",
   "https://vidtube.one/embed-45lb2qkjn2xa.html",
   "https://vidtube.one/embed-axygtaajo08b.html",
   "https://vidtube.one/embed-yf3eh5smalvp.html"

@@ -2053,6 +2053,30 @@ export function wrestlerNotInSource(body: string, source: string, glossary: Reco
  * (two in names of 10+ letters), takes the glossary spelling.
  */
 const vowelSkeleton = (s: string) => s.replace(/[اويء]/g, "");
+// A full first name the source gives, cut to its short form in Arabic: «Alexis» (Mercedes Moné's sister) came out
+// «أليكس» (INCIDENTS #1235). When the source has the long name and never the short one, the short Arabic word is the
+// long name cut short, so it takes the full spelling.
+const SHORTENED_FIRST_NAMES: [long: string, short: string, arLong: string, arShort: string][] = [
+  ["Alexis", "Alex", "أليكسيس", "أليكس"],
+  ["Christopher", "Chris", "كريستوفر", "كريس"],
+  ["Christina", "Chris", "كريستينا", "كريس"],
+  ["Nicholas", "Nick", "نيكولاس", "نيك"],
+  ["Matthew", "Matt", "ماثيو", "مات"],
+  ["Samantha", "Sam", "سامانثا", "سام"],
+  ["Jacqueline", "Jackie", "جاكلين", "جاكي"],
+  ["Michael", "Mike", "مايكل", "مايك"],
+  ["Daniel", "Dan", "دانيال", "دان"],
+  ["Anthony", "Tony", "أنتوني", "توني"],
+];
+export function fixShortenedFirstNames(text: string, source: string): string {
+  let out = text;
+  for (const [long, short, arLong, arShort] of SHORTENED_FIRST_NAMES) {
+    if (!new RegExp(`\\b${long}\\b`).test(source) || new RegExp(`\\b${short}\\b`).test(source)) continue;
+    out = out.replace(new RegExp(`(^|[\\s«(\\[،"])([وبلك]?)${arShort}(?=$|[\\s»)\\]،.:؛!؟"])`, "gu"), `$1$2${arLong}`);
+  }
+  return out;
+}
+
 export function fixNearGlossaryNames(text: string, names: string[]): string {
   let out = String(text || "");
   for (const name of names) {

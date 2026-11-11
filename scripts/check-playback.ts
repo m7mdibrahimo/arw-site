@@ -66,6 +66,44 @@ export function nextState(prev: State, results: { url: string; page: string; sta
   return { checkedAt: now, links, broken };
 }
 
+/** The stream a player page hands its player in plain text (vidmoly: `sources: [{file: '…master.m3u8'}]`), if any. */
+export function embedStream(html: string): string | null {
+  const m = html.match(/sources\s*:\s*\[\s*\{\s*file\s*:\s*["']([^"']+\.(?:m3u8|mp4)[^"']*)["']/i);
+  return m ? m[1] : null;
+}
+
+/** Second opinion without a browser (INCIDENTS #1235): fetch the player page, its manifest and the first piece of video
+ *  the way the player would. A stream that really comes back is playing for viewers, whatever the headless Chrome said
+ *  (vidmoly gave the checker «JW Player Error 232011» and later «no stream seen» while its files played at home).
+ *  Anything less proves nothing: the result stays as the browser saw it. */
+export async function streamProof(url: string, get: (u: string, h: Record<string, string>) => Promise<{ status: number; type: string; body: string; size: number }> = fetchPiece): Promise<boolean> {
+  try {
+    const origin = new URL(url).origin;
+    const h = { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36", Referer: origin + "/", Origin: origin };
+    const page = await get(url, { "User-Agent": h["User-Agent"], Referer: ORIGIN + "/" });
+    if (page.status >= 400) return false;
+    let next = embedStream(page.body);
+    for (let hop = 0; next && hop < 3; hop++) {
+      const r = await get(next, h);
+      if (r.status >= 400) return false;
+      if (!/mpegurl|m3u8/i.test(r.type) && !r.body.startsWith("#EXTM3U")) return /video|octet|mp2t/i.test(r.type) && r.size > 50000;
+      const line = r.body.split(/\r?\n/).find(l => l && !l.startsWith("#"));
+      if (!line) return false;
+      next = new URL(line, next).href;
+      if (!/\.m3u8/i.test(line)) { const seg = await get(next, h); return seg.status < 400 && seg.size > 50000; }
+    }
+  } catch {}
+  return false;
+}
+
+async function fetchPiece(u: string, headers: Record<string, string>) {
+  const media = !/\.m3u8|\.html?(\?|$)|\/e\/|embed/i.test(u);
+  const r = await fetch(u, { headers: media ? { ...headers, Range: "bytes=0-262143" } : headers, signal: AbortSignal.timeout(20000) });
+  const type = r.headers.get("content-type") || "";
+  if (/text|html|mpegurl|json|javascript/i.test(type) || /\.m3u8|\.html?(\?|$)/.test(u)) { const body = await r.text(); return { status: r.status, type, body, size: body.length }; }
+  const buf = await r.arrayBuffer(); return { status: r.status, type, body: "", size: buf.byteLength };
+}
+
 const deobfuscate = (s: string) => { try { return Buffer.from(s.split("").reverse().join(""), "base64").toString("utf-8"); } catch { return ""; } };
 const obfuscate = (s: string) => Buffer.from(s, "utf-8").toString("base64").split("").reverse().join("");
 
@@ -209,7 +247,8 @@ async function main() {
       while (next < jobs.length) {
         const { page, url, index } = jobs[next++];
         const ev = await b.play(page, url, index).catch((e: Error) => ({ mediaOk: [], mediaFail: [], playerErrors: [], frameText: `checker error ${e.message}`, progressed: false }));
-        const c = classify(ev);
+        let c = classify(ev);
+        if (c.status !== "ok" && await streamProof(url)) c = { status: "ok", reason: "the stream comes back when fetched directly (the browser check missed it)" };
         results.push({ url, page, ...c });
         console.log(`[Play] ${c.status.padEnd(7)} ${decodeURI(page.replace(ORIGIN, ""))} ${url} — ${c.reason}`);
       }

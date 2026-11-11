@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, timeLimitWinAsDraw, type NewsFile } from "./news-qa";
+import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, fixShortenedFirstNames, timeLimitWinAsDraw, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -4580,6 +4580,11 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   {
     const want = sourceNamesMissing(`${rawTitle}\n${plainText}`, `${draft.title}\n${draft.body}`).map(n => WRESTLER_NAMES_MAP[n]);
     if (want.length) draft = { title: fixNearGlossaryNames(draft.title, want), body: fixNearGlossaryNames(draft.body, want), tags: canonicalTags(draft.tags.map(t => fixNearGlossaryNames(t, want))) };
+  }
+  // «Alexis» written «أليكس»: a full first name in the source keeps its full spelling (INCIDENTS #1235).
+  {
+    const src = `${rawTitle}\n${plainText}`;
+    draft = { title: fixShortenedFirstNames(draft.title, src), body: fixShortenedFirstNames(draft.body, src), tags: draft.tags.map(t => fixShortenedFirstNames(t, src)) };
   }
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
