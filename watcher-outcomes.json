@@ -54,11 +54,6 @@
   "retry": false,
   "at": "2026-11-11T15:35:17.565Z"
  },
- "https://www.ringsidenews.com/jonathan-coachman-accuses-espn-executives-sabotaging-his-relationship-nick-khan": {
-  "reason": "المراجعة رفضته: فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-11T15:30:11.796Z"
- },
  "https://www.ringsidenews.com/fourth-name-confirmed-tna-world-x-cup-destination-x-2026": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
