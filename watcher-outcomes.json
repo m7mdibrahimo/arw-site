@@ -1,43 +1,43 @@
 {
- "https://www.ringsidenews.com/why-damian-priests-aaa-run-abruptly-came-end": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-11T20:59:07.527Z"
- },
  "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T20:58:49.060Z"
+  "at": "2026-11-11T21:01:57.357Z"
  },
  "https://www.fightful.com/wrestling/john-cena-i-took-a-big-swing-at-wrestlemania-41-and-we-stunk-up-the-joint-we-failed": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T20:58:48.608Z"
+  "at": "2026-11-11T21:01:56.822Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-surgery-postponed-after-good-ct-scan": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T20:58:48.308Z"
+  "at": "2026-11-11T21:01:56.469Z"
  },
  "https://www.fightful.com/wrestling/defense-for-ludwig-kaiser-files-motion-seeking-medical-record-of-alleged-victim": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T20:58:47.754Z"
+  "at": "2026-11-11T21:01:55.808Z"
  },
  "https://www.fightful.com/wrestling/stu-hart-memorial-bridge-opens-on-highway-8-west-of-calgary": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T20:58:47.453Z"
+  "at": "2026-11-11T21:01:55.456Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-and-collision-preview-start-time-how-to-watch-location-11-11": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T20:58:46.978Z"
+  "at": "2026-11-11T21:01:54.904Z"
  },
  "https://www.fightful.com/wrestling/report-tko-employees-frustrated-with-company-going-to-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T20:58:46.669Z"
+  "at": "2026-11-11T21:01:54.546Z"
+ },
+ "https://www.ringsidenews.com/why-damian-priests-aaa-run-abruptly-came-end": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-11T20:59:07.527Z"
  },
  "https://www.fightful.com/wrestling/vinny-pacifico-discusses-juggling-acting-and-wrestling-being-strategic-with-is-planning-to-avoid-being-overwhelmed": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
