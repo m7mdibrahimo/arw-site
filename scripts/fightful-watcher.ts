@@ -378,6 +378,8 @@ function removeTashkeel(text: string): string {
  * This is the permanent solution: add any name to wrestler-names.json
  * and it automatically applies everywhere without touching the code.
  */
+const KEEP_ENGLISH_AFTER_WAW = /^(?:[A-Z0-9 &-]+|.*\b(?:Wrestling|Bros|Discovery|Paramount|Speed|Glory|Limitless|Championship)\b.*)$/;
+const NAME_START = "(?:(?<!\\p{L})|(?<=(?<!\\p{L})[وفبلك]ـ?))";
 export function applyNamesGlossary(text: string): string {
   if (!text || typeof text !== "string") return text;
   if (Object.keys(WRESTLER_NAMES_MAP).length === 0) return text;
@@ -400,13 +402,17 @@ export function applyNamesGlossary(text: string): string {
       // \b treats only [A-Za-z0-9_] as "word" characters, so it silently fails
       // to anchor next to accented letters (Moné, Sadè, Ídolo...) — a lookaround
       // against \p{L} (any Unicode letter) covers those correctly.
-      const pattern = new RegExp(`(?<!\\p{L})${escaped}(?!\\p{L})`, "giu");
+      // A name written straight after «و/ف/ب/ل/ك» («هارلي كاميرون وShotzi») sat behind a letter, so the lookbehind refused
+      // it and the Latin stayed in the Arabic story while the same name without the «و» was translated (BRCW results, INCIDENTS #1226).
+      const pattern = new RegExp(`${NAME_START}${escaped}(?!\\p{L})`, "giu");
       // A name inside an English phrase is part of a show/event name and stays English:
       // «TNT Extreme Effy's Big Gay Brunch» became «TNT Extreme إيفي's بيغ (…) Gay Brunch»
       // (INCIDENTS #90). Skip it when both neighbours are Latin words.
       result = result.replace(pattern, (m: string, offset: number, whole: string) => {
         const before = whole.slice(Math.max(0, offset - 2), offset);
         const after = whole.slice(offset + m.length, offset + m.length + 3);
+        // Behind «و» only people are translated: «عروض GCW وEVOLVE» and «وWarner Bros. Discovery» are companies and stay English (INCIDENTS #1226)
+        if (/[\u0600-\u06FF]$/.test(before) && KEEP_ENGLISH_AFTER_WAW.test(english.trim())) return m;
         if (/[A-Za-z]\s$|[A-Za-z]$/.test(before) && /^(?:['’]s\b|\s+[A-Za-z])/.test(after)) return m;
         // …and when an English word other than a federation code or «vs/and» leads into it: «Being The
         // Elite» became «Being ذا إيليت», «The Extreme Life of Matt Hardy» «…of مات هاردي» (INCIDENTS #234)
@@ -468,7 +474,7 @@ export function findKnownArabicNames(text: string): string[] {
     if (FEDERATION_OR_SHOW_NAME.test(english.trim())) continue;
     try {
       const escaped = english.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      if (new RegExp(`(?<!\\p{L})${escaped}(?!\\p{L})`, "iu").test(text)) found.add(arabic);
+      if (new RegExp(`${NAME_START}${escaped}(?!\\p{L})`, "iu").test(text)) found.add(arabic);
     } catch (e) {}
   }
   return [...found];
@@ -3158,6 +3164,7 @@ async function rewriteWithGemini(
    - **قاعدة اللغة العربية السلسة والمبسطة وحظر صيغ التثنية تماماً**: اكتب بفصحى بيضاء مبسطة جدا (القسم 0 في دليل التحرير): كلمات يومية سهلة وجمل قصيرة، بلا عامية. ممنوع بتاتاً الألفاظ المعقدة أو التراثية أو صيغ التثنية الغريبة (مثل: ❌ "نجلا الأسطورة", ❌ "نجلا", ❌ "ابنا الأسطورة", ❌ "ابنا ستينغ"؛ استخدم دائماً صيغة الجمع الطبيعية: "أبناء الأسطورة ستينغ" أو "أبناء ستينغ").
    - **ممنوع بتاتاً استخدام التشكيل نهائياً في الكلمات (بدون فتحة أو ضمة أو كسرة أو تنوين أو سكون أو شدة)**. اكتب النص واضحاً سلساً بدون أي علامات تشكيل.
    - **صاحب التغريدة هو المعلن**: تغريدة x.com/TonyKhan يعلن فيها نزالا = «أعلن توني خان»، وليس الفريق الذي يتحدث عنه.
+   - **الاقتباس يبقى كلام صاحبه**: لا تضف داخل الاقتباس شرحا من عندك مثل «نيا جاكس المصارعة التي تعرف بـ…»، ولو المصدر عدد أسماء (قائمة مشاركين أو طاقم برنامج) انقلها كلها ولا تسقط منها اسما.
    - **ما حدث يبقى حدث، وما سيحدث يبقى قادما**: لو المصدر قال إن شخصا شرح أو كشف شيئا بالفعل («has shed light», «has detailed», «revealed») اكتبه بالماضي؛ ولا تختم الخبر بجملة «ومن المتوقع أن يكشف… خلال الأيام القادمة» إلا لو المصدر وعد بذلك نصا (حصل فعليا: «Cena has also shed more light» اتكتبت «من المتوقع أن يكشف سينا المزيد»).
    - **لا تحوّل «مؤخرا/حديثا» (recently) إلى «آخر/أول» ولا «أحد/واحد من» إلى «كل»**: كلمات الزمن والكمية تُنقل كما هي؛ لا تكتب «آخر نزال» أو «للمرة الأخيرة» أو «أول مرة» إلا لو المصدر قالها نصاً (حصل فعليا: «recently wrestled» اتترجمت «خاضا آخر نزال لهما» فبدا الخبر اعتزالاً).
    - **كلمة أجنبية عامية في المصدر (إسبانية/يابانية/لقب) ماتتكتبش حروف عربية من غير معنى**: لو المصدر فيه كلمة زي «sucias» أو أي سلانج، اكتبها بالعربي مرة واحدة مع معناها بين «» أو بعد «وتعني» (مثال: كلمة «سوسياس» الإسبانية ومعناها «القذرات»)، ولا تكتبها كلقب مبهم يفهمه القارئ غلط (INCIDENTS #1113).

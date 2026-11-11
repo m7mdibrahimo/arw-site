@@ -21,6 +21,6 @@ Lacey Lane def. Harley Cameron and Shotzi to retain the BRCW Women’s Champions
 Gangrel & The Righteous def. Samuel Shaw, Erick Redbeard & Joseph Sawyer to retain the BRCW Six-Man Tag Team Championship
 Sons of Boca def. Grizzled Young Veterans to retain the BRCW Tag Team Championship
 Matt Taven def. Stallion Rogers to become the number one contender for the BRCW Championship
-Chris Farrow def. Cha Charlie to retain the BRCW Cha Championship
+Chris Farrow def. Cha Cha Charlie to retain the BRCW Cha Cha Championship
 Emily Jaye def. Shotzi in a Queen of the Seas match
 Bull James won the High Seas Rumble
