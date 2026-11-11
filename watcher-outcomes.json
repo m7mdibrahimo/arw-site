@@ -1,4 +1,44 @@
 {
+ "https://www.fightful.com/wrestling/wwe-nxt-results-11-10-2026-nxt-tag-title-match-wren-sinclair-kam-hendrix-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-11T01:03:57.484Z"
+ },
+ "https://www.fightful.com/wrestling/seth-rollins-i-feel-like-i-have-never-been-in-a-main-event-of-wrestlemania": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-11T01:03:57.233Z"
+ },
+ "https://www.fightful.com/wrestling/bret-hart-wcw-shouldve-been-sued-for-putting-me-in-the-ring-with-goldberg": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-11T01:03:56.346Z"
+ },
+ "https://www.fightful.com/wrestling/bret-hart-says-wrestling-is-starting-to-become-hokey-it-doesnt-try-to-be-real-anymore": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-11T01:03:55.922Z"
+ },
+ "https://www.fightful.com/wrestling/becky-lynch-liv-morgan-is-best-known-for-not-doing-anything-and-i-think-that-sums-her-up": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-11T01:03:55.350Z"
+ },
+ "https://www.fightful.com/wrestling/westside-gunn-meets-with-wwe-thanks-nick-khan-for-making-everything-right": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-11T01:03:55.081Z"
+ },
+ "https://www.fightful.com/wrestling/renee-paquette-announces-passing-of-her-and-jon-moxleys-dog-blue": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-11T01:03:54.507Z"
+ },
+ "https://www.fightful.com/wrestling/home-town-man-announced-for-tna-world-x-cup": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-11T01:03:54.003Z"
+ },
  "https://www.wrestlinginc.com/2312949/mercedes-mone-death-younger-sister-alexis-remembers-aew-wwe-pac": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -8,46 +48,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-11T01:01:53.058Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-results-11-10-2026-nxt-tag-title-match-wren-sinclair-kam-hendrix-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-11T01:01:58.709Z"
- },
- "https://www.fightful.com/wrestling/seth-rollins-i-feel-like-i-have-never-been-in-a-main-event-of-wrestlemania": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-11T01:01:58.454Z"
- },
- "https://www.fightful.com/wrestling/bret-hart-wcw-shouldve-been-sued-for-putting-me-in-the-ring-with-goldberg": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-11T01:01:57.563Z"
- },
- "https://www.fightful.com/wrestling/bret-hart-says-wrestling-is-starting-to-become-hokey-it-doesnt-try-to-be-real-anymore": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-11T01:01:57.138Z"
- },
- "https://www.fightful.com/wrestling/becky-lynch-liv-morgan-is-best-known-for-not-doing-anything-and-i-think-that-sums-her-up": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-11T01:01:56.561Z"
- },
- "https://www.fightful.com/wrestling/westside-gunn-meets-with-wwe-thanks-nick-khan-for-making-everything-right": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-11T01:01:56.288Z"
- },
- "https://www.fightful.com/wrestling/renee-paquette-announces-passing-of-her-and-jon-moxleys-dog-blue": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-11T01:01:55.712Z"
- },
- "https://www.fightful.com/wrestling/home-town-man-announced-for-tna-world-x-cup": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-11T01:01:55.208Z"
  },
  "https://www.fightful.com/wrestling/seth-rollins-reacts-to-josh-allen-being-la-knights-nfl-wwe-comparison-one-of-them-is-talented": {
   "reason": "المراجعة رفضته: صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
