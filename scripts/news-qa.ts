@@ -1727,6 +1727,8 @@ export function autoFix(text: string): string {
   // «عرض» is masculine: «في عرض SmackDown الأخيرة» went live in 28 stories (INCIDENTS #621) — the adjective agrees with it
   text = text.replace(/(عرض\s+(?:[A-Za-z0-9'’!.&*-]+\s+){0,5}[A-Za-z0-9'’!.&*-]+\s+)(الأخير|الاخير|القادم|الماضي)ة(?![\u0621-\u064A])/g, "$1$2");
   text = dualPronounsToPlural(text);
+  // «مواجهة بين فريق A ضد فريق B» mixes two ways of naming a match; «بين» goes, «A ضد B» stays (INCIDENTS #1247)
+  text = text.replace(/(?<![\u0621-\u064A])(مواجهة|مواجهات|نزال|نزالا|نزالات|مباراة) بين ((?:(?!\sبين\s)[^.،؛\n]){3,60}?) ضد /g, "$1 $2 ضد ");
   // A match card copied from the source keeps «(c)» for the champion: «كيلاني جوردان (c) ضد رين سنكلير» went live (INCIDENTS #508)
   text = text.replace(/(^[^\n]*\n(?:[^\n]*\n){0,2}?)?([^\n]*?)\s*\(c\)/gim, (m: string, prev: string | undefined, line: string) =>
     `${prev || ""}${line} (${/للسيدات|السيدات|للنساء/.test((prev || "") + line) ? "البطلة" : "البطل"})`);
@@ -2134,6 +2136,27 @@ export function fixLetterDigitHandles(text: string, source: string): string {
     out = out.replace(re, (all, pre: string, ar: string) => NOT_A_NAME.has(ar) ? all : `${pre}${word} ${letter}${digits}`);
   }
   return out;
+}
+
+// A name tag spelled two letters off from a glossary name the story itself uses
+// («ليوه روش» as a tag while the body says «ليو راش», INCIDENTS #1247) takes the
+// story's spelling. Only a tag that appears nowhere in the story, with the same
+// number of words, and only names written in the title/body are candidates.
+export function snapTagsToStoryNames(tags: string[], title: string, body: string, glossary: Record<string, string>): string[] {
+  const text = `${title}\n${body}`;
+  const used = [...new Set(Object.values(glossary))].filter(v => /^[\u0621-\u064A]+( [\u0621-\u064A]+)+$/.test(v) && text.includes(v));
+  return [...new Set(tags.map(tag => {
+    const t = String(tag || "").trim();
+    if (!/^[\u0621-\u064A]+( [\u0621-\u064A]+)+$/.test(t) || text.includes(t) || used.includes(t) || Object.values(glossary).includes(t)) return t;
+    const flat = normalizeArabic(t).replace(/ /g, "");
+    let best = "", bestD = 3;
+    for (const name of used) {
+      if (name.split(" ").length !== t.split(" ").length) continue;
+      const d = editDistance(flat, normalizeArabic(name).replace(/ /g, ""));
+      if (d > 0 && d < bestD && flat.length >= 5) { best = name; bestD = d; }
+    }
+    return best || t;
+  }))];
 }
 
 export function fixNearGlossaryNames(text: string, names: string[]): string {

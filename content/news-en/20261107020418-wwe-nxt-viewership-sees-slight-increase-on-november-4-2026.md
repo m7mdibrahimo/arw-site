@@ -1,7 +1,7 @@
 ---
 title: "WWE NXT Viewership Sees Slight Increase on November 4, 2026"
 slug: "wwe-nxt-viewership-sees-slight-increase-on-november-4-2026"
-description: "According to PWInsider via Ringside News, the November 4, 2026 episode of WWE NXT on The CW Network saw a slight increase in viewership compared."
+description: "According to PWInsider via Ringside News, the November 4, 2026 episode of WWE NXT on The CW Network saw a slight increase in viewership."
 federation: WWE
 date: 2026-11-06T23:04:18.000Z
 source_id: 802264110

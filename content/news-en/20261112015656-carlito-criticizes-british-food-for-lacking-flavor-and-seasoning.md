@@ -1,7 +1,7 @@
 ---
 title: "Carlito Criticizes British Food for Lacking Flavor and Seasoning"
 slug: "carlito-criticizes-british-food-for-lacking-flavor-and-seasoning"
-description: "Carlito discussed his experiences in the United Kingdom, asserting that British cuisine suffers from a lack of sufficient flavor and seasoning compared."
+description: "Carlito says the stereotype about British food is true, criticizing it for lacking flavor and seasoning on his wrestling trips to England and Wales."
 federation: WWE
 date: 2026-11-11T22:56:56.000Z
 source_id: 802266565
