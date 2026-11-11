@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2310330/booker-t-cm-punk-current-wwe-run-better-first": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-11T02:35:48.936Z"
+ },
+ "https://www.wrestlinginc.com/2312949/mercedes-mone-death-younger-sister-alexis-remembers-aew-wwe-pac": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-11T02:35:23.781Z"
+ },
  "https://www.fightful.com/wrestling/kelani-jordan-joins-wwe-john-cena-classic-field": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -33,16 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-11T02:33:10.838Z"
- },
- "https://www.wrestlinginc.com/2310330/booker-t-cm-punk-current-wwe-run-better-first": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-11T02:16:20.515Z"
- },
- "https://www.wrestlinginc.com/2312949/mercedes-mone-death-younger-sister-alexis-remembers-aew-wwe-pac": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-11T02:15:19.820Z"
  },
  "https://www.fightful.com/wrestling/brcw-cruisin-for-a-bruisin-4-results-11-6": {
   "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
