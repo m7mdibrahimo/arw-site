@@ -1,48 +1,53 @@
 {
+ "https://www.fightful.com/wrestling/jim-duggan-takes-shots-at-wrestlers-crying-and-whining-about-wrestling-on-dark-side-of-the-ring": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-11-11T15:35:17.565Z"
+ },
  "https://www.fightful.com/wrestling/john-cena-i-took-a-big-swing-at-wrestlemania-41-and-we-stunk-up-the-joint-we-failed": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T15:30:28.825Z"
+  "at": "2026-11-11T15:33:54.265Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-surgery-postponed-after-good-ct-scan": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T15:30:28.541Z"
+  "at": "2026-11-11T15:33:53.940Z"
  },
  "https://www.fightful.com/wrestling/defense-for-ludwig-kaiser-files-motion-seeking-medical-record-of-alleged-victim": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T15:30:28.015Z"
+  "at": "2026-11-11T15:33:53.352Z"
  },
  "https://www.fightful.com/wrestling/stu-hart-memorial-bridge-opens-on-highway-8-west-of-calgary": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T15:30:27.732Z"
+  "at": "2026-11-11T15:33:53.034Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-and-collision-preview-start-time-how-to-watch-location-11-11": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T15:30:27.287Z"
+  "at": "2026-11-11T15:33:52.537Z"
  },
  "https://www.fightful.com/wrestling/report-tko-employees-frustrated-with-company-going-to-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T15:30:27.002Z"
+  "at": "2026-11-11T15:33:52.218Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-speaks-on-being-part-of-the-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T15:30:26.556Z"
+  "at": "2026-11-11T15:33:51.716Z"
  },
  "https://www.fightful.com/wrestling/kelani-jordan-vs-kendal-grey-for-nxt-womens-title-set-for-11-17-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T15:30:26.025Z"
+  "at": "2026-11-11T15:33:51.118Z"
  },
  "https://www.fightful.com/wrestling/kelani-jordan-joins-wwe-john-cena-classic-field": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T15:30:25.658Z"
+  "at": "2026-11-11T15:33:50.708Z"
  },
  "https://www.ringsidenews.com/jonathan-coachman-accuses-espn-executives-sabotaging-his-relationship-nick-khan": {
   "reason": "المراجعة رفضته: فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-10-31T15:40:39.989Z"
- },
- "https://www.wrestlinginc.com/2297843/xelina-zelina-vega-wwe-cody-rhodes-john-cena-giulia-longer-match": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-31T15:26:49.301Z"
  }
 }
