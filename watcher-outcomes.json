@@ -34,11 +34,6 @@
   "retry": true,
   "at": "2026-11-11T02:06:45.556Z"
  },
- "https://www.ringsidenews.com/john-cena-adds-wwe-nxt-womens-champion-kelani-jordan-john-cena-classic": {
-  "reason": "المراجعة رفضته: ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-11T02:00:35.159Z"
- },
  "https://www.fightful.com/wrestling/becky-lynch-liv-morgan-is-best-known-for-not-doing-anything-and-i-think-that-sums-her-up": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
