@@ -1,43 +1,43 @@
 {
  "https://www.wrestlinginc.com/2311789/wwe-nxt-november-10-2026-results": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "reason": "المراجعة رفضته: صيغة مثنى (تختاران/حافظتا/قطعتين/بطلي فرق) ممنوعة — اجمع الفعل أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
   "retry": true,
-  "at": "2026-11-11T02:51:33.004Z"
+  "at": "2026-11-11T02:58:22.771Z"
  },
  "https://www.fightful.com/wrestling/kelani-jordan-joins-wwe-john-cena-classic-field": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T02:50:43.612Z"
+  "at": "2026-11-11T02:52:49.232Z"
  },
  "https://www.fightful.com/wrestling/noam-dar-romeo-moreno-set-for-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T02:50:42.834Z"
+  "at": "2026-11-11T02:52:48.433Z"
  },
  "https://www.fightful.com/wrestling/mason-rook-returns-to-nxt-attacks-grayson-waller": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T02:50:42.616Z"
+  "at": "2026-11-11T02:52:48.210Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-results-11-10-2026-nxt-tag-title-match-wren-sinclair-kam-hendrix-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T02:50:42.415Z"
+  "at": "2026-11-11T02:52:47.996Z"
  },
  "https://www.fightful.com/wrestling/seth-rollins-i-feel-like-i-have-never-been-in-a-main-event-of-wrestlemania": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T02:50:42.207Z"
+  "at": "2026-11-11T02:52:47.779Z"
  },
  "https://www.fightful.com/wrestling/bret-hart-wcw-shouldve-been-sued-for-putting-me-in-the-ring-with-goldberg": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T02:50:41.513Z"
+  "at": "2026-11-11T02:52:47.026Z"
  },
  "https://www.fightful.com/wrestling/bret-hart-says-wrestling-is-starting-to-become-hokey-it-doesnt-try-to-be-real-anymore": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T02:50:41.178Z"
+  "at": "2026-11-11T02:52:46.643Z"
  },
  "https://www.wrestlinginc.com/2310330/booker-t-cm-punk-current-wwe-run-better-first": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
