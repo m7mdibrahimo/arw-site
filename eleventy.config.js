@@ -1935,6 +1935,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addNunjucksGlobal("leadPerson", function(headline, mentions) {
     return require("./lib/wrestler-mentions.cjs").leadPerson(headline, mentions);
   });
+  eleventyConfig.addNunjucksGlobal("headlinePeople", function(headline, mentions) {
+    return require("./lib/wrestler-mentions.cjs").headlinePeople(headline, mentions);
+  });
   eleventyConfig.addNunjucksGlobal("englishTopics", function(headline, tags) {
     return require("./lib/wrestler-mentions.cjs").englishTopics(headline, tags);
   });
