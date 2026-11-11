@@ -1577,7 +1577,9 @@ module.exports = function(eleventyConfig) {
         }
         const programSaid = searchArName.replace(/^(عرض|برنامج)\s+/, "").replace(/\s+(19|20)\d{2}$/, "").trim();
         const generated = fedSaid && /[\u0600-\u06FF]/.test(programSaid) && !programSaid.startsWith(fedSaid)
-          ? [fedSaid + " " + programSaid].concat(/(^|\s)ان\s/.test(programSaid) ? [fedSaid + " " + programSaid.replace(/(^|\s)ان\s/g, "$1إن ")] : []) : [];
+          ? [fedSaid + " " + programSaid].concat(/(^|\s)ان\s/.test(programSaid) ? [fedSaid + " " + programSaid.replace(/(^|\s)ان\s/g, "$1إن ")] : [],
+            // «دبليو دبليو إي إن إكس تي» (NXT 04-11 at 7.0) — the all-hamza spelling, «إن» AND «إكس» (INCIDENTS #1244)
+            /(^|\s)اكس(?=\s|$)/.test(programSaid) ? [fedSaid + " " + programSaid.replace(/(^|\s)ان(?=\s)/g, "$1إن").replace(/(^|\s)اكس(?=\s|$)/g, "$1إكس")] : []) : [];
         // How visitors really ask for a show: «تحميل/مشاهدة/اخر عرض <البرنامج>» — Google showed these for SmackDown at 3.4-6.7
         // while the aliases only had «مترجم»/«الاخير» forms. Added for every program (head/structured data only).
         const askName = /[\u0600-\u06FF]/.test(searchArName) ? (/^عرض\s/.test(searchArName) ? searchArName : "عرض " + searchArName) : "";

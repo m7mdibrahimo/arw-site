@@ -19,3 +19,12 @@ test("the corrected story passes the dual_noun check", () => {
   const issues = checkArticle("ميرسيدس موني تتذكر شقيقتها", body, []);
   assert.ok(!issues.some((i) => i.code === "dual_noun"), JSON.stringify(issues));
 });
+
+// INCIDENTS #1244: «فينس روسو يتوقع تسريح عضوين على الأقل» and «اختيار عضوين إضافيين» reached the site
+test("«عضوين» becomes «اثنين من الأعضاء» and is blocked when left", () => {
+  assert.equal(fixCountDuals("يتوقع تسريح عضوين على الأقل"), "يتوقع تسريح اثنين من الأعضاء على الأقل");
+  assert.equal(fixCountDuals("اختيار عضوين إضافيين"), "اختيار اثنين من الأعضاء الإضافيين");
+  assert.equal(fixCountDuals("بأنهما عضوان"), "بأنهما اثنان من الأعضاء");
+  const issues = checkArticle("روسو يتوقع تسريح عضوين", "قال روسو إن الاتحاد سيسرح العضوين.", []);
+  assert.ok(issues.some((i) => i.code === "dual_noun"), JSON.stringify(issues));
+});
