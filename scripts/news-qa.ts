@@ -2077,6 +2077,31 @@ export function fixShortenedFirstNames(text: string, source: string): string {
   return out;
 }
 
+// «Jimmy Jacobs serving as the special enforcer» came out «وجود جيمي جاكوبز حكما خاصا» (INCIDENTS #1236): an enforcer
+// stands at ringside, he is not the referee. When the source says enforcer and never referee, the Arabic says «مراقب».
+export function fixEnforcerAsReferee(text: string, source: string): string {
+  if (!/\benforcer\b/i.test(source) || /\breferee\b/i.test(source)) return text;
+  return String(text || "")
+    .replace(/حكما خاصا/g, "مراقبا خاصا").replace(/حكمًا خاصًا/g, "مراقبا خاصا")
+    .replace(/(^|[^ء-ي])([وبلك]?)حكم خاص(?![ء-ي])/g, "$1$2مراقب خاص");
+}
+
+// «IWA Originals (2 Tuff Tony, Corporal Robinson, Hy-Zaya, …)» came out «كوربورال روبنسون هاي-زايا» — two wrestlers
+// read as one name (INCIDENTS #1236). Two names the source lists one after the other (comma or «and»), written back to
+// back in Arabic with only a space between them, get their «و».
+export function fixJoinedListedNames(text: string, source: string, names: Record<string, string>): string {
+  let out = String(text || "");
+  const keys = Object.keys(names).filter(k => k.length > 2 && source.includes(k)).sort((a, b) => b.length - a.length);
+  const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  for (const a of keys) for (const b of keys) {
+    if (a === b || !new RegExp(`${esc(a)}\\s*(?:,|,? and)\\s*${esc(b)}`).test(source)) continue;
+    const arA = names[a], arB = names[b];
+    if (!arA || !arB || arA === arB) continue;
+    out = out.replace(new RegExp(`${esc(arA)} (?=${esc(arB)}(?![\\u0621-\\u064A]))`, "g"), `${arA} و`);
+  }
+  return out;
+}
+
 export function fixNearGlossaryNames(text: string, names: string[]): string {
   let out = String(text || "");
   for (const name of names) {

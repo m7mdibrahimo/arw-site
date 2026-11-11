@@ -66,6 +66,18 @@ export function nextState(prev: State, results: { url: string; page: string; sta
   return { checkedAt: now, links, broken };
 }
 
+/** The script that puts one server in the page's player. The button is found by its link, never by its place:
+ *  the live page has a locked «سيرفر مميز» row first (no data-srv in the HTML), so «the n-th server of the HTML»
+ *  is not the n-th .srv-row — every check clicked the server before it, server 1's check clicked the locked row
+ *  and «no stream seen» kept hidden servers hidden for good (INCIDENTS #1236). A hidden link goes on the first
+ *  button a visitor can press (never a locked one). */
+export function pickServerScript(code: string): string {
+  return `(()=>{const code=${JSON.stringify(code)}; const rows=[...document.querySelectorAll('.srv-row')]; const box=document.getElementById('videoEmbedBox');
+    const mine=rows.find(r=>(r.dataset.srv||'').trim()===code); if(mine&&!mine.classList.contains('is-locked')){mine.click();return 'own'}
+    const free=rows.find(r=>!r.classList.contains('is-locked')&&r.dataset.srv); if(free){free.dataset.srv=code;free.click();return 'borrowed'}
+    if(box){box.dataset.initSrv=code;const p=document.getElementById('wdPoster'); if(p) p.click(); return 'poster'} return 'none'})()`;
+}
+
 /** The stream a player page hands its player in plain text (vidmoly: `sources: [{file: '…master.m3u8'}]`), if any. */
 export function embedStream(html: string): string | null {
   const m = html.match(/sources\s*:\s*\[\s*\{\s*file\s*:\s*["']([^"']+\.(?:m3u8|mp4)[^"']*)["']/i);
@@ -188,10 +200,7 @@ class Browser {
       await this.send("Page.navigate", { url: page }, sessionId);
       await sleep(5000);
       // the server's own button when the page shows it; a hidden (broken) link is put on the first button
-      await this.send("Runtime.evaluate", { expression: `(()=>{const rows=[...document.querySelectorAll('.srv-row')]; const box=document.getElementById('videoEmbedBox');
-        if(${isOnPage}>=0&&rows[${isOnPage}]){rows[${isOnPage}].click();return}
-        if(rows[0]){rows[0].dataset.srv=${JSON.stringify(obfuscate(url))};rows[0].click();return}
-        if(box){box.dataset.initSrv=${JSON.stringify(obfuscate(url))};document.getElementById('wdPoster').click()}})()` }, sessionId);
+      await this.send("Runtime.evaluate", { expression: pickServerScript(obfuscate(url)) }, sessionId);
       await sleep(7000);
       // a real click in the middle of the player (some players ignore script clicks), then play muted
       const r = await this.send("Runtime.evaluate", { expression: `(()=>{const f=document.getElementById('videoFrame'); if(!f) return ''; f.scrollIntoView({block:'center'}); const b=f.getBoundingClientRect(); return JSON.stringify({x:b.left+b.width/2,y:b.top+b.height/2})})()`, returnByValue: true }, sessionId);
