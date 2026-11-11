@@ -2102,6 +2102,27 @@ export function fixJoinedListedNames(text: string, source: string, names: Record
   return out;
 }
 
+// «speaking to Jimmy V3» came out «مقابلة مع جيمي في 3» — the letter V spelled «في» reads «in 3» (INCIDENTS #1237).
+// A name the source writes as a word + one capital letter with digits (Jimmy V3, Rhyno X2…) keeps its English
+// spelling when the Arabic spelled the letter out and left the number beside it.
+const LETTER_SPELLINGS: Record<string, string[]> = {
+  V: ["في", "فى"], X: ["إكس", "اكس", "أكس"], B: ["بي"], C: ["سي"], D: ["دي"], G: ["جي"], P: ["بي"], T: ["تي"],
+  Z: ["زد", "زي"], K: ["كيه", "كاي"], J: ["جيه", "جاي"], M: ["إم", "ام"], N: ["إن", "ان"], R: ["آر", "ار"],
+  S: ["إس", "اس"], L: ["إل"], E: ["إي"], F: ["إف", "اف"], H: ["إتش", "اتش"], Q: ["كيو"], Y: ["واي"], W: ["دبليو"],
+};
+const NOT_A_NAME = new Set(["مع", "في", "عن", "من", "إلى", "على", "لدى", "عبر", "قناة", "برنامج", "بودكاست", "مقابلة"]);
+export function fixLetterDigitHandles(text: string, source: string): string {
+  let out = String(text || "");
+  for (const m of String(source || "").matchAll(/\b([A-Z][A-Za-z]{2,}) ([A-Z])(\d{1,3})\b/g)) {
+    const [, word, letter, digits] = m;
+    const spells = LETTER_SPELLINGS[letter];
+    if (!spells) continue;
+    const re = new RegExp(`(^|[^\\u0621-\\u064A])([\\u0621-\\u064A]{3,}) (?:${spells.join("|")})[ -]?${digits}(?![0-9٠-٩])`, "g");
+    out = out.replace(re, (all, pre: string, ar: string) => NOT_A_NAME.has(ar) ? all : `${pre}${word} ${letter}${digits}`);
+  }
+  return out;
+}
+
 export function fixNearGlossaryNames(text: string, names: string[]): string {
   let out = String(text || "");
   for (const name of names) {

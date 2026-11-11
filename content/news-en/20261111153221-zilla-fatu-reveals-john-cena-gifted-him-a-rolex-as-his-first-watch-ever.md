@@ -15,7 +15,7 @@ image: /content/images/wv2eoahmhmjhj79m.jpg
 ---
 John Cena did not just invite Zilla Fatu to the John Cena Classic. The WWE legend also gifted the son of Umaga a Rolex, which turned out to be the first watch Fatu has ever owned in his life. Appearing on Busted Open After Dark, Fatu spoke with Bully Ray about his recent encounter with Cena on WWE NXT. While chatting, Bully noticed the watch on Fatu's wrist and asked if it was a Rolex, prompting Fatu to share the story behind it.
 
-> "It's a John Cino Rolex my first ever watch. Isn't it crazy? Look at that dude."
+> "It's a John Cena Rolex my first ever watch. Isn't it crazy? Look at that dude."
 
 Bully Ray was shocked by the revelation, and Fatu confirmed that Cena gave him the expensive timepiece, admitting that he even wears it to bed. 
 
