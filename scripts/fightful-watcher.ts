@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, timeLimitWinAsDraw, type NewsFile } from "./news-qa";
+import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, timeLimitWinAsDraw, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -4625,6 +4625,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     const enT = typeof (rewritten as { en_title?: unknown }).en_title === "string" ? (rewritten as { en_title: string }).en_title : "";
     const badQuotes = enT ? quotedTitleNotInSource(enT, `${rawTitle}\n${plainText}`) : [];
     if (badQuotes.length) { blocking.push({ code: "title_quote_not_in_source", severity: "error", field: "title", message: `اقتباس في العنوان الإنجليزي مش موجود في المصدر: ${badQuotes.join("، ")} — انقل كلام المصدر بحروفه`, excerpt: enT }); lastPostRetryable = true; }
+  }
+  // A results report that swaps one stable for another: Arabic «ذا 946» where the source and the English say DarkState (INCIDENTS #1228).
+  if (isShowResultsArticle(rawTitle, plainText)) {
+    const enB = typeof (rewritten as { en_body?: unknown }).en_body === "string" ? (rewritten as { en_body: string }).en_body : "";
+    const swap = stableSwappedFromEnglish(draft.body, enB, WRESTLER_NAMES_MAP);
+    if (swap) { blocking.push({ code: "stable_swapped", severity: "error", field: "body", message: `اسم فريق في التقرير العربي مختلف عن الإنجليزي: العربي ذكر ${swap.arabicOnly.join("، ")} والإنجليزي ذكر ${swap.englishOnly.join("، ")} — انقل اسم الفريق كما في المصدر`, excerpt: swap.arabicOnly.join(" ") }); lastPostRetryable = true; }
   }
   // Tony Khan's tweet credited to the team it talks about (INCIDENTS #1225).
   const tkPhrase = tonyKhanTweetMisattributed(`${draft.title}\n${draft.body}`, embeds.join("\n"));

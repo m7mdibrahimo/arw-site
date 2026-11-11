@@ -33,11 +33,11 @@ test("WWE Evolve describes itself with the full category; so do RAW/SmackDown (#
   assert.match(sd.description, /من عروض المصارعة الحرة المترجمة\.$/); // INCIDENTS #1221
 });
 
-test("weekly pages (not NXT yet) carry «تحميل عروض المصارعة» in structured data", () => {
+test("weekly pages carry «تحميل عروض المصارعة» in structured data", () => {
   const ev = seo.showNameForms({ headline: "عرض ايفولف 04.11.2026 مترجم", title: "WWE Evolve 04.11.2026", programName: "WWE Evolve", eventDate: "2026-11-04", isShow: true, isLatest: false });
   assert.ok(ev.includes("تحميل عروض المصارعة"), "evolve");
   const raw = seo.showNameForms({ headline: "عرض الرو 02.11.2026 مترجم", title: "WWE RAW 02.11.2026", programName: "WWE RAW", eventDate: "2026-11-02", isShow: true, isLatest: false });
   assert.ok(raw.includes("تحميل عروض المصارعة"), "raw, INCIDENTS #1221");
   const nxt = seo.showNameForms({ headline: "عرض ان اكس تي 04.11.2026 مترجم", title: "WWE NXT 04.11.2026", programName: "WWE NXT", eventDate: "2026-11-04", isShow: true, isLatest: false });
-  assert.ok(!nxt.includes("تحميل عروض المصارعة"), "nxt waits for 24h after #1198");
+  assert.ok(nxt.includes("تحميل عروض المصارعة"), "nxt, INCIDENTS #1228");
 });

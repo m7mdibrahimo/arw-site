@@ -1947,6 +1947,29 @@ if (require.main === module) cli();
  * named in a death (INCIDENTS #462). Returns the English names to block on. The name's last word must be
  * missing from the source, so nicknames and partial names don't trip it.
  */
+// One stable swapped for another: the NXT 10 Nov results closed on «فرق ذا 946 وبيرثرايت…» while the source and the English
+// written in the same request say DarkState. «The 946» is in the source (a promo mentions it), so wrestlerNotInSource can't see
+// it; the paired English can: the Arabic names a stable the English doesn't while the English names one the Arabic doesn't
+// (INCIDENTS #1228). Real stables only: «The Man»/«The World» are ordinary English.
+export const STABLE_NAMES = ["The 946", "DarkState", "BirthRight", "Los Perros del Mal", "The Vision", "The Bloodline", "The Usos", "The Young Bucks", "The Elite", "The Hurt Syndicate", "The Hardys", "The Hardy Boyz", "The Wyatt Sicks", "The Acclaimed", "The Skyscrapers", "The Good Brothers", "The Opps", "Death Riders", "Vanity Project", "The Dropouts", "The Conglomeration", "FTR", "Motor City Machine Guns", "The Rascalz", "The System", "Fatal Influence"];
+export function stableSwappedFromEnglish(arBody: string, enBody: string, glossary: Record<string, string>): { arabicOnly: string[]; englishOnly: string[] } | null {
+  const ar = String(arBody || "");
+  const en = String(enBody || "");
+  if (!ar || en.length < 80) return null;
+  const arabicOnly: string[] = [];
+  const englishOnly: string[] = [];
+  for (const name of STABLE_NAMES) {
+    const arName = glossary[name];
+    if (!arName) continue;
+    const bare = name.replace(/^The\s+/, "");
+    const inEnglish = en.includes(bare);
+    const inArabic = ar.includes(arName) || ar.includes(arName.replace(/^ذا\s+/, "")) || ar.includes(bare);
+    if (inArabic && !inEnglish) arabicOnly.push(name);
+    if (inEnglish && !inArabic) englishOnly.push(name);
+  }
+  return arabicOnly.length && englishOnly.length ? { arabicOnly, englishOnly } : null;
+}
+
 export function wrestlerNotInSource(body: string, source: string, glossary: Record<string, string>): string[] {
   const text = String(body || "").replace(/https?:\/\/\S+/g, " ");
   const src = String(source || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
