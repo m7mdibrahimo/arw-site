@@ -39,11 +39,6 @@
   "retry": false,
   "at": "2026-11-11T21:21:42.345Z"
  },
- "https://www.ringsidenews.com/why-damian-priests-aaa-run-abruptly-came-end": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-11T20:59:07.527Z"
- },
  "https://www.fightful.com/wrestling/vinny-pacifico-discusses-juggling-acting-and-wrestling-being-strategic-with-is-planning-to-avoid-being-overwhelmed": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
