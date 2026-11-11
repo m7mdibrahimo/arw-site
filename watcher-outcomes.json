@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/sheamus-shows-off-wild-bahrain-comic-con-adventure-amid-wrestling-free-agency": {
+  "reason": "المراجعة رفضته: العنوان بينتهي بكلمة مبتورة مش موجودة في الخبر — الاقتباس اتقطع",
+  "retry": true,
+  "at": "2026-11-11T19:08:56.453Z"
+ },
  "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-31T17:55:40.834Z"
- },
- "https://www.wrestlinginc.com/2298894/drew-mcintyre-wwe-hell-in-a-cell-cm-punk-wrestling-at-its-best": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-10-31T17:38:22.288Z"
  }
 }
