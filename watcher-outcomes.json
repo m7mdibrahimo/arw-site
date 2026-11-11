@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/why-damian-priests-aaa-run-abruptly-came-end": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-11T20:59:07.527Z"
+ },
  "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-10-31T19:15:55.399Z"
- },
- "https://www.fightful.com/wrestling/the-demon-finn-balor-returns-on-10-30-wwe-smackdown-takes-out-gunther": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-10-31T18:03:52.196Z"
  }
 }
