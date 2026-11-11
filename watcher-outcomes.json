@@ -1,38 +1,38 @@
 {
- "https://www.wrestlinginc.com/2314240/aew-dynamite-november-11-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-11T23:54:18.086Z"
- },
  "https://www.fightful.com/wrestling/jim-ross-undergoes-successful-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T23:55:23.619Z"
+  "at": "2026-11-11T23:58:40.393Z"
  },
  "https://www.fightful.com/wrestling/gabe-sapolsky-lists-seven-things-to-consider-when-signing-a-contract": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T23:55:23.024Z"
+  "at": "2026-11-11T23:58:39.793Z"
  },
  "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T23:55:21.416Z"
+  "at": "2026-11-11T23:58:38.187Z"
  },
  "https://www.fightful.com/wrestling/john-cena-i-took-a-big-swing-at-wrestlemania-41-and-we-stunk-up-the-joint-we-failed": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T23:55:20.930Z"
+  "at": "2026-11-11T23:58:37.674Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-surgery-postponed-after-good-ct-scan": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T23:55:20.606Z"
+  "at": "2026-11-11T23:58:37.343Z"
  },
  "https://www.fightful.com/wrestling/defense-for-ludwig-kaiser-files-motion-seeking-medical-record-of-alleged-victim": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T23:55:20.006Z"
+  "at": "2026-11-11T23:58:36.728Z"
+ },
+ "https://www.wrestlinginc.com/2314240/aew-dynamite-november-11-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-11T23:54:18.086Z"
  },
  "https://www.fightful.com/wrestling/stu-hart-memorial-bridge-opens-on-highway-8-west-of-calgary": {
   "reason": "مكرر مع خبر نزل قبل كده",
