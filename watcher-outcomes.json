@@ -1,58 +1,58 @@
 {
- "https://www.wrestlinginc.com/2313184/tna-leon-slater-doesnt-see-stepping-stone-other-promotions": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
-  "retry": true,
-  "at": "2026-11-11T17:12:40.417Z"
- },
  "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T17:13:57.428Z"
+  "at": "2026-11-11T17:16:29.061Z"
  },
  "https://www.fightful.com/wrestling/john-cena-i-took-a-big-swing-at-wrestlemania-41-and-we-stunk-up-the-joint-we-failed": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T17:13:56.930Z"
+  "at": "2026-11-11T17:16:28.641Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-surgery-postponed-after-good-ct-scan": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T17:13:56.608Z"
+  "at": "2026-11-11T17:16:28.362Z"
  },
  "https://www.fightful.com/wrestling/defense-for-ludwig-kaiser-files-motion-seeking-medical-record-of-alleged-victim": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T17:13:56.006Z"
+  "at": "2026-11-11T17:16:27.846Z"
  },
  "https://www.fightful.com/wrestling/stu-hart-memorial-bridge-opens-on-highway-8-west-of-calgary": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T17:13:55.685Z"
+  "at": "2026-11-11T17:16:27.569Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-and-collision-preview-start-time-how-to-watch-location-11-11": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T17:13:55.188Z"
+  "at": "2026-11-11T17:16:27.132Z"
  },
  "https://www.fightful.com/wrestling/report-tko-employees-frustrated-with-company-going-to-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T17:13:54.868Z"
+  "at": "2026-11-11T17:16:26.854Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-speaks-on-being-part-of-the-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T17:13:54.368Z"
+  "at": "2026-11-11T17:16:26.422Z"
  },
  "https://www.fightful.com/wrestling/kelani-jordan-vs-kendal-grey-for-nxt-womens-title-set-for-11-17-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T17:13:53.756Z"
+  "at": "2026-11-11T17:16:25.899Z"
  },
  "https://www.fightful.com/wrestling/kelani-jordan-joins-wwe-john-cena-classic-field": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T17:13:53.328Z"
+  "at": "2026-11-11T17:16:25.528Z"
+ },
+ "https://www.wrestlinginc.com/2313184/tna-leon-slater-doesnt-see-stepping-stone-other-promotions": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
+  "retry": true,
+  "at": "2026-11-11T17:12:40.417Z"
  },
  "https://www.ringsidenews.com/jonathan-coachman-accuses-espn-executives-sabotaging-his-relationship-nick-khan": {
   "reason": "المراجعة رفضته: فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم",
