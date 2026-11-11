@@ -2,37 +2,37 @@
  "https://www.fightful.com/wrestling/kelani-jordan-joins-wwe-john-cena-classic-field": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T02:23:04.142Z"
+  "at": "2026-11-11T02:25:17.085Z"
  },
  "https://www.fightful.com/wrestling/noam-dar-romeo-moreno-set-for-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T02:23:03.211Z"
+  "at": "2026-11-11T02:25:15.858Z"
  },
  "https://www.fightful.com/wrestling/mason-rook-returns-to-nxt-attacks-grayson-waller": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T02:23:02.942Z"
+  "at": "2026-11-11T02:25:15.515Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-results-11-10-2026-nxt-tag-title-match-wren-sinclair-kam-hendrix-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-11T02:23:02.693Z"
+  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
+  "retry": false,
+  "at": "2026-11-11T02:25:15.184Z"
  },
  "https://www.fightful.com/wrestling/seth-rollins-i-feel-like-i-have-never-been-in-a-main-event-of-wrestlemania": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T02:23:02.444Z"
+  "at": "2026-11-11T02:25:14.721Z"
  },
  "https://www.fightful.com/wrestling/bret-hart-wcw-shouldve-been-sued-for-putting-me-in-the-ring-with-goldberg": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T02:23:01.574Z"
+  "at": "2026-11-11T02:25:13.544Z"
  },
  "https://www.fightful.com/wrestling/bret-hart-says-wrestling-is-starting-to-become-hokey-it-doesnt-try-to-be-real-anymore": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-11T02:23:01.152Z"
+  "at": "2026-11-11T02:25:12.986Z"
  },
  "https://www.wrestlinginc.com/2310330/booker-t-cm-punk-current-wwe-run-better-first": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
