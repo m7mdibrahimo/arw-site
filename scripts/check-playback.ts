@@ -30,14 +30,19 @@ const MEDIA = /\.m3u8|\.ts(\?|$)|\.mp4(\?|$)|\.m4s|master\.txt|index-[^/]*\.txt|
 const NOT_MEDIA = /videoPreview|get_slides|\.(jpe?g|png|webp|gif|svg|css|js|woff2?)(\?|$)/i;
 export const isMedia = (u: string) => MEDIA.test(u) && !NOT_MEDIA.test(u);
 const DEAD = /cannot be played|file (was |has been )?(deleted|removed)|file (is )?not found|video (not found|is not available|has been (removed|deleted)|unavailable)|no longer available|embeds? disabled|has been deleted|does not exist|غير متوفر|تم حذف/i;
+const SEGMENT = /\.ts(\?|$)|\/seg-|\.m4s/i;
 const CHALLENGE = /just a moment|attention required|checking your browser|verify you are human|cf-chl/i;
 
 /** ok: the stream really came; broken: the player or the stream says no; unknown: can't tell (never hides anything). */
 export function classify(ev: Evidence): { status: "ok" | "broken" | "unknown"; reason: string } {
   if (CHALLENGE.test(ev.frameText)) return { status: "unknown", reason: "bot check on the host" };
   if (DEAD.test(ev.frameText)) return { status: "broken", reason: `the player says: ${ev.frameText.replace(/\s+/g, " ").match(DEAD)![0]}` };
+  // the video moving forward, or several pieces of video arriving, beats an error the player logged on the way:
+  // StreamHG (hgcloud.to) tries a first stream server that sends no CORS header, logs «JW Player Error 232011», then
+  // falls back to a second one and plays — the checker hid working hgcloud servers on 40+ pages for that (INCIDENTS #1259)
+  if (ev.progressed) return { status: "ok", reason: ev.playerErrors.length ? "the video plays (after the player's first source failed)" : "the video plays" };
+  if (ev.playerErrors.length && ev.mediaOk.filter(u => SEGMENT.test(u)).length >= 2) return { status: "ok", reason: "the stream arrives (after the player's first source failed)" };
   if (ev.playerErrors.length) return { status: "broken", reason: ev.playerErrors[0] };
-  if (ev.progressed) return { status: "ok", reason: "the video plays" };
   if (ev.mediaFail.length && !ev.mediaOk.length) return { status: "broken", reason: `the stream is refused: ${ev.mediaFail[0]}` };
   if (ev.mediaOk.length) return { status: "ok", reason: "the stream arrives" };
   return { status: "unknown", reason: "no stream seen" };

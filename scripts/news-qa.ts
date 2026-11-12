@@ -2223,6 +2223,37 @@ export function fixShortenedFirstNames(text: string, source: string): string {
   return out;
 }
 
+// «during an episode of his Kliq This podcast» came out «في برنامج الكواليس الخاص به» (INCIDENTS #1259): a podcast or
+// show the source names in English keeps its English name in the Arabic story (editorial/style-guide.md). Returns the
+// names the source gives that the story translated away (the story speaks of «برنامج/بودكاست» but never names it).
+export const KNOWN_PODCASTS = [
+  "Kliq This", "What Do You Want To Talk About?", "Busted Open", "Grilling JR", "83 Weeks", "Something to Wrestle",
+  "Talk Is Jericho", "Insight with Chris Van Vliet", "Out of Character", "Marking Out", "The Bump", "Bear Hug",
+  "Gabby AF", "The Ringer Wrestling Show", "Wrestling Observer Radio", "Wrestling with Freddie", "Notsam Wrestling",
+  "Ariel Helwani Show", "The Kurt Angle Show", "Oh You Didn't Know", "Hey! (EW)", "Partners in Rhyme",
+  "My World with Jeff Jarrett", "Strictly Business", "The Undertaker's Six Feet Under", "Six Feet Under",
+  "Bully Ray's Busted Open", "Power Alley", "Uncle Howdy", "Raw Recap", "Cheap Heat", "Swerve City Podcast",
+];
+export function podcastNameTranslated(text: string, source: string): string[] {
+  const story = String(text || "").toLowerCase();
+  // only when the story gives the show an Arabic name of its own («برنامج الكواليس») — «برنامجه»، «البرنامج»،
+  // «بودكاست حول…» or a plain description («برنامج الحواري/الشهير/الخاص») is left alone
+  if (!/(?<![ء-ي])[وبلف]?(?:برنامج|بودكاست)\s+ال(?!(?:خاص|شهير|حواري|بودكاست|واقع|تطوير|إذاعي|اذاعي|أسبوعي|جديد|أشهر|رسمي|صوتي|معروف|يومي|تلفزيوني|مخصص|ذي|تي|تابع)(?![ء-ي]))[ء-ي]{3,}/.test(text)) return [];
+  const norm = (s: string) => s.toLowerCase().replace(/[?!']/g, "");
+  return KNOWN_PODCASTS.filter(n => new RegExp(`(^|[^A-Za-z])${n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^A-Za-z]|$)`, "i").test(source))
+    .filter(n => !norm(story).includes(norm(n)))
+    // a longer known name that contains this one and is in the story covers it («Six Feet Under» inside «The Undertaker's Six Feet Under»)
+    .filter((n, _i, all) => !all.some(m => m !== n && m.includes(n)));
+}
+
+// «You were the first person that came to me» came out «كنت أول شخص يأتي إلي» — with no tashkeel that reads «I was»
+// and the quote means nothing (INCIDENTS #1259). When the source says «you were the first», a quote that opens with
+// «كنت أول» gets its «أنت».
+export function fixYouWereQuote(text: string, source: string): string {
+  if (!/\byou were the (?:first|only|one)\b/i.test(source)) return text;
+  return String(text || "").replace(/([«"]\s*)كنت (أول|الوحيد|الوحيدة|من)(?![ء-ي])/g, "$1أنت $2");
+}
+
 // «Jimmy Jacobs serving as the special enforcer» came out «وجود جيمي جاكوبز حكما خاصا» (INCIDENTS #1236): an enforcer
 // stands at ringside, he is not the referee. When the source says enforcer and never referee, the Arabic says «مراقب».
 export function fixEnforcerAsReferee(text: string, source: string): string {

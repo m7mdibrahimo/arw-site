@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, type NewsFile } from "./news-qa";
+import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -4698,6 +4698,8 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     draft = { ...draft, body: fixJoinedListedNames(fixEnforcerAsReferee(draft.body, src), src, WRESTLER_NAMES_MAP) };
     // «Jimmy V3» written «جيمي في 3» (INCIDENTS #1237).
     draft = { ...draft, title: fixLetterDigitHandles(draft.title, src), body: fixLetterDigitHandles(draft.body, src) };
+    // «You were the first…» written «كنت أول…» (reads «I was», INCIDENTS #1259).
+    draft = { ...draft, body: fixYouWereQuote(draft.body, src) };
   }
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
@@ -4727,6 +4729,14 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   if (badClaims.length) {
     blocking.push({ code: "claim_not_in_source", severity: "error", field: "body", message: `معلومة في الخبر غير موجودة في المصدر: ${badClaims.join("، ")}`, excerpt: badClaims.join(" ") });
     lastPostRetryable = true;
+  }
+  // «his Kliq This podcast» written «برنامج الكواليس الخاص به»: a podcast keeps its English name (INCIDENTS #1259).
+  {
+    const lost = podcastNameTranslated(`${draft.title}\n${draft.body}`, `${rawTitle}\n${plainText}`);
+    if (lost.length) {
+      blocking.push({ code: "podcast_name_translated", severity: "error", field: "body", message: `اسم البرنامج/البودكاست اتترجم للعربي — اكتبه بالإنجليزي زي المصدر: ${lost.join("، ")}`, excerpt: lost.join(" ") });
+      lastPostRetryable = true;
+    }
   }
   // A headline «نزال» over what the English edition of the same request calls a segment (INCIDENTS #1184).
   {
