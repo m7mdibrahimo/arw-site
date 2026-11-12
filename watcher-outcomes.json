@@ -1,48 +1,58 @@
 {
+ "https://www.fightful.com/wrestling/tony-khan-very-impressed-by-marcus-mathers-expects-to-see-more-of-him-in-aew-roh": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، مثنى (فريقيهما/لقبيهما/الزميلان) ممنوع — قول «فريقهم/لقبهم/الزملاء» أو كرر الأسماء",
+  "retry": true,
+  "at": "2026-11-12T20:13:59.169Z"
+ },
+ "https://www.fightful.com/wrestling/lei-ying-lee-departs-tna-wrestling": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-12T20:13:24.584Z"
+ },
  "https://www.fightful.com/wrestling/338753-joe-hendry-wwe-tag-teams": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T20:11:18.361Z"
+  "at": "2026-11-12T20:13:23.978Z"
  },
  "https://www.fightful.com/wrestling/wwe-considered-licensing-mainstream-song-for-the-946s-entrance-music": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T20:11:17.754Z"
+  "at": "2026-11-12T20:13:23.452Z"
  },
  "https://www.fightful.com/wrestling/338742-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T20:11:17.431Z"
+  "at": "2026-11-12T20:13:23.169Z"
  },
  "https://www.fightful.com/wrestling/338737-wwe-raw-attraction": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T20:11:17.104Z"
+  "at": "2026-11-12T20:13:22.890Z"
  },
  "https://www.fightful.com/wrestling/338442-chavo-guerrero-wrestling-brad-small": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T20:11:16.501Z"
+  "at": "2026-11-12T20:13:22.371Z"
  },
  "https://www.fightful.com/wrestling/chelsea-green-says-plaza-hotel-has-not-made-escort-accusations-right": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T20:11:15.993Z"
+  "at": "2026-11-12T20:13:21.932Z"
  },
  "https://www.fightful.com/wrestling/damian-priest-stands-by-previous-comments-about-wwe-main-event-scene-thats-on-me-to-make-it-different": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T20:11:15.575Z"
+  "at": "2026-11-12T20:13:21.572Z"
  },
  "https://www.fightful.com/wrestling/338699-damian-priest-aaa": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T20:11:15.058Z"
+  "at": "2026-11-12T20:13:21.132Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-if-umaga-had-half-face-paint-its-because-he-was-running-late": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T20:11:14.443Z"
+  "at": "2026-11-12T20:13:20.608Z"
  },
  "https://www.ringsidenews.com/josh-barnett-blasts-matt-riddle-claiming-he-created-bloodsport-accuses-him-ripping-off-movie": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1988,15 +1998,5 @@
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-02T04:48:09.103Z"
- },
- "https://www.fightful.com/wrestling/syuri-and-asuka-reunite": {
-  "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-02T02:16:57.680Z"
- },
- "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-2026-finals-set": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-02T02:10:10.065Z"
  }
 }
