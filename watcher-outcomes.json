@@ -1,4 +1,34 @@
 {
+ "https://www.fightful.com/wrestling/aew-dynamite-results-11-11-2026-will-ospreay-kyle-fletcher-face-to-face-merecedes-mone-jay-white-vs-death-riders-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-12T01:44:38.327Z"
+ },
+ "https://www.fightful.com/wrestling/jim-ross-undergoes-successful-shunt-surgery": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-12T01:44:38.125Z"
+ },
+ "https://www.fightful.com/wrestling/gabe-sapolsky-lists-seven-things-to-consider-when-signing-a-contract": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-12T01:44:37.729Z"
+ },
+ "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-12T01:44:36.598Z"
+ },
+ "https://www.fightful.com/wrestling/john-cena-i-took-a-big-swing-at-wrestlemania-41-and-we-stunk-up-the-joint-we-failed": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-12T01:44:36.269Z"
+ },
+ "https://www.fightful.com/wrestling/jim-ross-surgery-postponed-after-good-ct-scan": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-12T01:44:36.047Z"
+ },
  "https://www.ringsidenews.com/kyle-fletcher-brings-will-ospreays-wife-son-heated-confrontation-1111-aew-dynamite": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -13,36 +43,6 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-12T01:39:53.982Z"
- },
- "https://www.fightful.com/wrestling/aew-dynamite-results-11-11-2026-will-ospreay-kyle-fletcher-face-to-face-merecedes-mone-jay-white-vs-death-riders-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-12T01:36:51.359Z"
- },
- "https://www.fightful.com/wrestling/jim-ross-undergoes-successful-shunt-surgery": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-12T01:36:51.162Z"
- },
- "https://www.fightful.com/wrestling/gabe-sapolsky-lists-seven-things-to-consider-when-signing-a-contract": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-12T01:36:50.772Z"
- },
- "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-12T01:36:49.723Z"
- },
- "https://www.fightful.com/wrestling/john-cena-i-took-a-big-swing-at-wrestlemania-41-and-we-stunk-up-the-joint-we-failed": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-12T01:36:49.405Z"
- },
- "https://www.fightful.com/wrestling/jim-ross-surgery-postponed-after-good-ct-scan": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-12T01:36:49.187Z"
  },
  "https://www.wrestlinginc.com/2314401/wwe-cody-rhodes-john-cena-classic-worlds-collide-doomsday-disney": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
