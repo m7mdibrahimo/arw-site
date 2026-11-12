@@ -1,5 +1,15 @@
 [
   {
+    "id": 1265823336,
+    "link": "https://www.wrestlinginc.com/2314473/wwe-romeo-malverde-santos-escobar-wins-title-jericho-cruise/",
+    "date": "Thu, 12 Nov 2026 16:00:00 +0000",
+    "date_gmt": "2026-11-12T16:00:00.000Z",
+    "title": {
+      "rendered": "Former WWE Star Romeo Malverde (FKA Santos Escobar) Wins Title On Jericho Cruise"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/former-wwe-star-romeo-malverde-fka-santos-escobar-wins-title-on-jericho-cruise/l-intro-1794469379.jpg"
+  },
+  {
     "id": 2260978226,
     "link": "https://www.wrestlinginc.com/2314462/josh-barnett-wwe-matt-riddle-differing-takes-bloodsport-origins-gcw/",
     "date": "Thu, 12 Nov 2026 15:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "John Cena On Final WWE WrestleMania Match With Cody Rhodes: 'We Stunk Up The Joint'"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/john-cena-on-final-wwe-wrestlemania-match-with-cody-rhodes-we-stunk-up-the-joint/l-intro-1794421319.jpg"
-  },
-  {
-    "id": 2064551054,
-    "link": "https://www.wrestlinginc.com/2313825/paige-wwe-return-grateful-fighting-tv-time/",
-    "date": "Wed, 11 Nov 2026 17:55:28 +0000",
-    "date_gmt": "2026-11-11T17:55:28.000Z",
-    "title": {
-      "rendered": "Paige Says Being Grateful For WWE Return Won't Stop Her For Fighting For TV Time"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/paige-says-being-grateful-for-wwe-return-wont-stop-her-for-fighting-for-tv-time/l-intro-1794419551.jpg"
   }
 ]
