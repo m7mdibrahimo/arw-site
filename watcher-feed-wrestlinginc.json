@@ -1,5 +1,25 @@
 [
   {
+    "id": 3891655312,
+    "link": "https://www.wrestlinginc.com/2314459/wwe-raw-backstage-segment-sol-ruca-lyra-valkyria/",
+    "date": "Thu, 12 Nov 2026 15:00:00 +0000",
+    "date_gmt": "2026-11-12T15:00:00.000Z",
+    "title": {
+      "rendered": "WWE Releases Backstage Raw Segment Featuring Sol Ruca And Lyra Valkyria"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-releases-backstage-raw-segment-featuring-sol-ruca-and-lyra-valkyria/l-intro-1794465693.jpg"
+  },
+  {
+    "id": 3804172471,
+    "link": "https://www.wrestlinginc.com/2314451/wwe-cody-rhodes-potential-heel-turn-alliance-paul-heyman/",
+    "date": "Thu, 12 Nov 2026 14:30:00 +0000",
+    "date_gmt": "2026-11-12T14:30:00.000Z",
+    "title": {
+      "rendered": "WWE's Cody Rhodes Opens Up About Potential Heel Turn, Alliance With Paul Heyman"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-cody-rhodes-opens-up-about-potential-heel-turn-alliance-with-paul-heyman/l-intro-1794464338.jpg"
+  },
+  {
     "id": 1135834290,
     "link": "https://www.wrestlinginc.com/2314381/aew-full-gear-2026-draws-duds-texas-death-new-level-adam-copeland-okada/",
     "date": "Thu, 12 Nov 2026 14:00:00 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Additional Details On Injuries Keeping WWE's Bronson Reed In Saudi Arabia"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/additional-details-on-injuries-keeping-wwes-bronson-reed-in-saudi-arabia/l-intro-1794416959.jpg"
-  },
-  {
-    "id": 3938742747,
-    "link": "https://www.wrestlinginc.com/2313184/tna-leon-slater-doesnt-see-stepping-stone-other-promotions/",
-    "date": "Wed, 11 Nov 2026 17:00:00 +0000",
-    "date_gmt": "2026-11-11T17:00:00.000Z",
-    "title": {
-      "rendered": "Leon Slater Doesn't View TNA As A 'Stepping Stone' To Other Promotions"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/leon-slater-doesnt-view-tna-as-a-stepping-stone-to-other-promotions/l-intro-1794398951.jpg"
-  },
-  {
-    "id": 3148775241,
-    "link": "https://www.wrestlinginc.com/2313138/wwe-royce-keys-946-drawing-extreme-reactions-threw-beer/",
-    "date": "Wed, 11 Nov 2026 16:30:00 +0000",
-    "date_gmt": "2026-11-11T16:30:00.000Z",
-    "title": {
-      "rendered": "WWE's Royce Keys Says 946 Is Drawing Extreme Reactions: 'They Threw Beer At Us'"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-royce-keys-says-946-is-drawing-extreme-reactions-they-threw-beer-at-us/l-intro-1794393025.jpg"
   }
 ]
