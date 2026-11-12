@@ -1,18 +1,23 @@
 {
+ "https://www.fightful.com/wrestling/zilla-fatu-if-umaga-had-half-face-paint-its-because-he-was-running-late": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-12T12:10:11.076Z"
+ },
  "https://www.fightful.com/wrestling/338670-aew-full-gear-national-championship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T12:05:53.920Z"
+  "at": "2026-11-12T12:10:10.461Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-undergoes-successful-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T12:05:53.171Z"
+  "at": "2026-11-12T12:10:09.698Z"
  },
  "https://www.fightful.com/wrestling/gabe-sapolsky-lists-seven-things-to-consider-when-signing-a-contract": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T12:05:52.652Z"
+  "at": "2026-11-12T12:10:09.171Z"
  },
  "https://www.ringsidenews.com/marty-scurll-claims-several-people-have-pushing-tna-sign-him": {
   "reason": "المراجعة رفضته: فعل مثنى («يتوليان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: The Hardys",
@@ -1993,10 +1998,5 @@
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-24)",
   "retry": false,
   "at": "2026-11-01T03:39:53.622Z"
- },
- "https://www.fightful.com/mma/ufc-fight-night-moicano-vs-nolan-results": {
-  "reason": "المراجعة رفضته: العنوان مش جملة عربية (أقل من 3 كلمات عربية)",
-  "retry": false,
-  "at": "2026-11-01T03:22:45.794Z"
  }
 }
