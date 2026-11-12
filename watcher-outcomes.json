@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/marty-scurll-claims-several-people-have-pushing-tna-sign-him": {
+  "reason": "المراجعة رفضته: فعل مثنى («يديران») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-12T12:35:53.692Z"
+ },
  "https://www.fightful.com/wrestling/zilla-fatu-if-umaga-had-half-face-paint-its-because-he-was-running-late": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -18,11 +23,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-12T12:36:42.490Z"
- },
- "https://www.ringsidenews.com/marty-scurll-claims-several-people-have-pushing-tna-sign-him": {
-  "reason": "المراجعة رفضته: فعل مثنى («يتولان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: The Hardys",
-  "retry": true,
-  "at": "2026-11-12T12:23:35.236Z"
  },
  "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
   "reason": "مكرر مع خبر نزل قبل كده",
