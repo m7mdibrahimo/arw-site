@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/cody-rhodes-says-more-hollywood-projects-could-announced-within-weeks": {
+  "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
+  "retry": true,
+  "at": "2026-11-12T14:38:51.789Z"
+ },
  "https://www.fightful.com/wrestling/damian-priest-stands-by-previous-comments-about-wwe-main-event-scene-thats-on-me-to-make-it-different": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-01T15:14:48.764Z"
- },
- "https://www.fightful.com/wrestling/watch-countdown-to-nxt-halloween-havoc-oct-31-2026": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-01T15:01:05.614Z"
  }
 }
