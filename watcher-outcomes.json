@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2315200/bully-ray-wwe-cody-rhodes-compromised-anakin-skywalker-punt-randy-orton": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-12T19:11:15.609Z"
+ },
  "https://www.fightful.com/wrestling/338753-joe-hendry-wwe-tag-teams": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -48,11 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-12T19:10:49.620Z"
- },
- "https://www.wrestlinginc.com/2315200/bully-ray-wwe-cody-rhodes-compromised-anakin-skywalker-punt-randy-orton": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-12T18:53:12.233Z"
  },
  "https://www.fightful.com/wrestling/john-cena-classic-could-potentially-feature-multi-person-matches": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
