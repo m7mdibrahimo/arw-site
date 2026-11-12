@@ -328,7 +328,11 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   if (copiedRun(body, i.sourceText)) issues.push("copied from the source");
   // a number the source never says (INCIDENTS #516: «150 to 200 matches» became «150 and 250»)
   const srcDigits = i.sourceText.replace(/(\d),(?=\d{3})/g, "$1");
-  const odd = (body.replace(/(\d),(?=\d{3})/g, "$1").match(/(?<![\d.$])\d{3,4}(?![\d.])/g) || []).filter((n) => !/^(19|20)\d\d$/.test(n) && !srcDigits.includes(n));
+  // Links are left out, and digits glued to letters are not a number: the YouTube link «watch?v=gJJd504TKZI» under the
+  // Asuka/Fight Size story read as «504» (the source's embed is stripped from sourceText), so its English edition was
+  // refused every bot run — two Gemini requests each time — and never written (INCIDENTS #1256).
+  const numberText = body.replace(/<https?:\/\/[^>]+>|https?:\/\/\S+/g, " ").replace(/(\d),(?=\d{3})/g, "$1");
+  const odd = (numberText.match(/(?<![\w.$])\d{3,4}(?![\d.])/g) || []).filter((n) => !/^(19|20)\d\d$/.test(n) && !srcDigits.includes(n));
   if (odd.length) issues.push(`number not in source: ${odd[0]}`);
   // an announced card written as results (INCIDENTS #679: «Perros Del Mal def. La Parka…» for a lineup announcement)
   if (/\bdef\./.test(body) && !/def\.|\b(?:defeat\w*|beat|beats|beaten|won|wins?|victor\w*|retain\w*|captur\w*)\b/i.test(i.sourceText)) issues.push("result wording (def.) but the source reports no result");
