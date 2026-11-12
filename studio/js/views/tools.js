@@ -486,6 +486,17 @@ export async function renderServerTool(page) {
   mount(page, html`<div class="wrap page-in">
     ${header('سيرفر التفريغ', 'من هنا كل حاجة: تحط رابط العرض، والسيرفر يحمّله ويفرّغه، وتاخد الترجمة الإنجليزي من هنا أو من جوجل درايف. لما يخلص كل العروض بيقفل نفسه.')}
     <div id="srv"><div class="loading-page"><div class="spinner"></div></div></div>
+    <section class="panel srv-up" id="srv-up-box">
+      <header class="panel-head"><h2>${icon('upload')} ارفع ملف من جهازك</h2></header>
+      <p class="muted">اختار ملف العرض (الفيديو، أو الصوت بس اللي طلّعته بـ«طلّع-الصوت»)، واختار لغة صوته، ودوس «ارفع». الملف بيروح للسيرفر والتفريغ بيبدأ لوحده. لو على السيرفر ملف بنفس الاسم (زي ملف ناقص)، الجديد بياخد مكانه.</p>
+      <div class="srv-up-row">
+        <input class="input" type="file" id="srv-file" multiple accept=".mkv,.mp4,.ts,.avi,.mka,.m4a,.mp3,.aac,.opus,.wav,.flac,.mov,.webm,.m4v">
+        <select class="input" id="srv-up-lang">${LANGS.map(l => html`<option value="${l.key}">${l.name}</option>`)}</select>
+        <button class="btn btn-primary" id="srv-up-go">${icon('upload')} ارفع</button>
+      </div>
+      <div id="srv-up-list"></div>
+      <p class="muted srv-note">سيب الصفحة دي مفتوحة لحد ما الرفع يخلص. لو السيرفر مقفول، الملف بيستناه على الموقع، ودوس «شغّل السيرفر» وهينزل عليه أول ما يشتغل.</p>
+    </section>
     <section class="panel srv-new">
       <header class="panel-head"><h2>${icon('plus')} عرض جديد</h2></header>
       <p class="muted">لكل عرض: الزق رابط التحميل نفسه (أو رابط التورنت)، واختار لغة الصوت. تقدر تضيف كذا عرض مرة واحدة، والسيرفر هيعملهم ورا بعض.</p>
@@ -572,6 +583,84 @@ export async function renderServerTool(page) {
     if (ok < rows.length) toast(`${num(rows.length - ok)} عرض متبعتش — جرّب تاني`, 'error');
   };
 
+  // «ارفع ملف من جهازك»: each file in 20 MB pieces to the site's storage (3 at a time, each tried again if the line
+  // drops), then the machine fetches it (worker/src/enc-upload.ts) — no link to the machine's own file page needed
+  let uploading = 0;
+  window.addEventListener('beforeunload', (e) => { if (uploading) { e.preventDefault(); e.returnValue = ''; } });
+  const upOne = async (file, lang, row) => {
+    const bar = row.querySelector('.srv-bar > div'), info = row.querySelector('.srv-up-info');
+    const say = (t) => { info.textContent = t; };
+    const s = await tools.serverUpStart(file.name, file.size);
+    const size = s.partSize, count = Math.max(1, Math.ceil(file.size / size));
+    const done = new Array(count).fill(0), parts = [];
+    const t0 = Date.now();
+    const show = () => {
+      const sent = done.reduce((a, b) => a + b, 0), pct = Math.min(100, Math.floor(sent / file.size * 100));
+      bar.style.width = `${pct}%`;
+      const rate = sent / Math.max(1, (Date.now() - t0) / 1000);
+      say(`${num(pct)}٪ — ${num(Math.round(sent / 1048576))} من ${num(Math.round(file.size / 1048576))} ميجا${rate > 0 && pct < 100 ? ` — فاضل ${span((file.size - sent) / rate * 1000)}` : ''}`);
+    };
+    let next = 0;
+    const worker = async () => {
+      while (next < count) {
+        const n = ++next, blob = file.slice((n - 1) * size, Math.min(file.size, n * size));
+        for (let tries = 1; ; tries++) {
+          try {
+            const r = await tools.serverUpPart(s.key, s.uploadId, n, blob, (b) => { done[n - 1] = b; show(); });
+            done[n - 1] = blob.size; parts.push({ partNumber: n, etag: r.etag }); show();
+            break;
+          } catch (e) {
+            done[n - 1] = 0;
+            if (tries >= 5) throw e;
+            say(`الاتصال وقف — بحاول تاني (${num(tries)})…`);
+            await new Promise(r => setTimeout(r, tries * 3000));
+          }
+        }
+      }
+    };
+    try {
+      await Promise.all([worker(), worker(), worker()]);
+      say('بيخلّص…');
+      await tools.serverUpDone(s.key, s.uploadId, parts, lang);
+    } catch (e) {
+      tools.serverUpAbort(s.key, s.uploadId).catch(() => {});
+      throw e;
+    }
+  };
+  $('#srv-up-go').onclick = async () => {
+    const input = $('#srv-file'), files = [...(input.files || [])], lang = $('#srv-up-lang').value;
+    if (!files.length) return toast('اختار الملف الأول', 'error');
+    const bad = files.filter(f => !/\.(mkv|mp4|ts|avi|mka|m4a|mp3|aac|opus|wav|flac|mov|webm|m4v)$/i.test(f.name));
+    if (bad.length) return toast(`«${bad[0].name}» مش فيديو ولا صوت`, 'error');
+    input.value = '';
+    const list = $('#srv-up-list');
+    for (const f of files) {
+      const row = document.createElement('div');
+      row.className = 'srv-dl';
+      mount(row, html`<div class="srv-dl-head"><span dir="ltr">${f.name}</span><b class="srv-up-state">مستني</b></div>
+        <div class="srv-bar srv-bar-sm"><div style="width:0%"></div></div><small class="muted srv-up-info"></small>`);
+      list.appendChild(row);
+      f._row = row;
+    }
+    for (const f of files) {
+      const row = f._row, state = row.querySelector('.srv-up-state');
+      state.textContent = 'بيترفع'; uploading++;
+      try {
+        await upOne(f, lang, row);
+        state.textContent = 'اترفع ✓';
+        const alive = last && last.status && last.status.state === 'on' && (last.now - last.status.at) < 90_000;
+        row.querySelector('.srv-up-info').textContent = alive ? 'السيرفر بينزّله دلوقتي، والتفريغ هيبدأ لوحده — تابعه تحت في «العروض».'
+          : 'السيرفر مقفول: دوس «شغّل السيرفر» فوق، وهينزّل الملف ويفرّغه أول ما يشتغل.';
+        toast(`اترفع: ${f.name}`, 'ok', 6000);
+      } catch (e) {
+        state.textContent = 'مترفعش';
+        row.querySelector('.srv-up-info').textContent = `${e.message || 'حصلت مشكلة'} — اختار الملف تاني ودوس «ارفع».`;
+        toast(e.message || 'الرفع وقف', 'error', 8000);
+      } finally { uploading--; }
+    }
+    setTimeout(tick, 1500);
+  };
+
   const power = async (which) => {
     const b = $(which === 'start' ? '#srv-start' : '#srv-stop');
     if (b) { b.disabled = true; b.textContent = which === 'start' ? 'بيشغّل…' : 'بيقفل…'; }
@@ -618,7 +707,7 @@ export async function renderServerTool(page) {
         </div>
         <details class="srv-help"><summary>إزاي أرفع من جهازي أو أستخدم متصفح السيرفر؟</summary>
           <p><b>الأوفر:</b> لو العرض عندك على سيرفر الويندوز، حطه جنب ملف «طلّع-الصوت» ودوس عليه دبل كليك. هيطلّع الصوت في فولدر «audio» في ثواني (حوالي ١٠٠ ميجا بدل ١٠ جيجا). ارفع ملفات الصوت دي من «ارفع من جهازك» بدل الفيديو، والعرض يتكلّف أقل من النص. أول ما الملف يوصل هيظهر تحت في «العروض»، اختار لغة الصوت والتفريغ يبدأ.</p>
-          <p><b>ارفع من جهازك:</b> هيفتح فولدر الفيديوهات على السيرفر. دوس زرار الرفع فوق، واختار الفيديوهات أو ملفات التورنت (تقدر تختار كذا ملف مرة واحدة)، ودوس الزرار الأزرق جنب كل ملف. أول ما الرفع يخلص، العرض هيظهر هنا تحت «العروض»، واختار لغة صوته من هناك.</p>
+          <p><b>ارفع من جهازك:</b> الأسهل من مربع «ارفع ملف من جهازك» تحت. زرار «ارفع من جهازك» هنا (لما يظهر) بيفتح فولدر الفيديوهات على السيرفر نفسه. دوس زرار الرفع فوق، واختار الفيديوهات أو ملفات التورنت (تقدر تختار كذا ملف مرة واحدة)، ودوس الزرار الأزرق جنب كل ملف. أول ما الرفع يخلص، العرض هيظهر هنا تحت «العروض»، واختار لغة صوته من هناك.</p>
           <p><b>متصفح السيرفر:</b> متصفح شغال على السيرفر نفسه. افتح منه موقع التورنت أو موقع التحميل ونزّل الملف عادي، وهينزل لوحده في فولدر الفيديوهات ويبدأ. ده الحل لموقع التورنت اللي لازم التحميل يكون من نفس الجهاز اللي نزّل ملف التورنت.</p>
         </details>` : ''}
       <p class="muted srv-sub">${alive ? `آخر إشارة منه: ${timeAgo(st.at)} — اشتغل الساعة ${dayClock(st.boot)}`

@@ -69,6 +69,27 @@ async function upload(path, blob) {
   return data;
 }
 
+/** One piece of a file going up to «سيرفر التفريغ» (worker/src/enc-upload.ts), with its progress as it goes */
+function uploadPiece(path, blob, onProgress) {
+  return new Promise((resolve, reject) => {
+    const x = new XMLHttpRequest();
+    x.open('POST', `${WORKER}${path}`);
+    x.setRequestHeader('Content-Type', 'application/octet-stream');
+    x.setRequestHeader('Authorization', `Bearer ${getToken()}`);
+    x.upload.onprogress = (e) => { if (onProgress && e.lengthComputable) onProgress(e.loaded); };
+    x.onload = () => {
+      let data = {};
+      try { data = JSON.parse(x.responseText || '{}'); } catch {}
+      if (x.status >= 200 && x.status < 300 && data.success !== false) resolve(data);
+      else reject(new ApiError(data.error || `خطأ ${x.status}`, x.status, data));
+    };
+    x.onerror = () => reject(new ApiError('الاتصال اتقطع', 0));
+    x.ontimeout = () => reject(new ApiError('الاتصال اتأخر', 0));
+    x.timeout = 10 * 60_000;
+    x.send(blob);
+  });
+}
+
 /** Like call(), but hands back a «didn't work» answer (success:false) instead of throwing —
  *  the publishing tools show each platform's own result. Network/permission errors still throw. */
 async function callResult(path, opts = {}) {
@@ -99,6 +120,10 @@ export const tools = {
   serverCmd: (body) => call('/api/studio/tools/server/cmd', { method: 'POST', body }),
   serverEn: (name) => call(`/api/studio/tools/server/en?name=${encodeURIComponent(name)}`),
   serverPower: (which, opts = {}) => call(`/api/studio/tools/server/${which === 'stop' ? 'stop' : 'start'}`, { method: 'POST', body: opts }),
+  serverUpStart: (name, size) => call('/api/studio/tools/server/upload/start', { method: 'POST', body: { name, size } }),
+  serverUpPart: (key, uploadId, n, blob, onProgress) => uploadPiece(`/api/studio/tools/server/upload/part?key=${encodeURIComponent(key)}&uploadId=${encodeURIComponent(uploadId)}&n=${n}`, blob, onProgress),
+  serverUpDone: (key, uploadId, parts, lang) => call('/api/studio/tools/server/upload/done', { method: 'POST', body: { key, uploadId, parts, lang } }),
+  serverUpAbort: (key, uploadId) => call('/api/studio/tools/server/upload/abort', { method: 'POST', body: { key, uploadId } }),
   serverVastKey: (key) => call('/api/studio/tools/server/vastkey', { method: 'POST', body: { key } }),
   serverHosts: (body) => body ? call('/api/studio/tools/server/hosts', { method: 'POST', body }) : call('/api/studio/tools/server/hosts'),
   reelCheck: (slug) => callResult(`/api/videos/check?slug=${encodeURIComponent(slug)}`),

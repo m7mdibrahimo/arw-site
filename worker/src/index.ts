@@ -45,6 +45,7 @@ import { handleWatch } from "./watch";
 import { handlePredict, studioPredict, studioPredictPicks, studioPredictSave, studioPredictResult, studioPredictDelete, studioPredictPrize } from "./predict";
 import { seedPredictions } from "./predict-seed";
 import { once } from "./once";
+import { encUploadStudio, encUploadMachine, encUploadSweep } from "./enc-upload";
 import { encInstOf, encHealth, encStuckStep, encBusyText, encMinutes, srtMinutes, ENC_SHORT_MIN, type EncBeat } from "./enc-machine";
 import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatClear, studioChatMute, studioChatDismiss, studioChatRooms, studioChatBg, chatKick, chatRebadge, chatExpirySweep } from "./chat";
 export { ChatRoom } from "./chat";
@@ -3283,10 +3284,13 @@ export default {
       // «الأكثر مشاهدة» for the home page (INCIDENTS #180)
       // The owner's rented encoding machine sets itself up from these (reports/سيرفر-التفريغ): a new machine's
       // template runs /tools/arw-provision, which pulls /tools/arw-bundle (scripts, logo, fonts) from KV. Private: only the key's SHA-256 is here, the key is in the owner's template.
-      if ((path === "/tools/arw-heartbeat" || path === "/tools/arw-job" || path === "/tools/arw-event" || path === "/tools/arw-cloudcopy" || path === "/tools/arw-file" || path === "/tools/arw-cmds") && (request.method === "POST" || ((path === "/tools/arw-file" || path === "/tools/arw-cmds") && request.method === "GET"))) {
+      if ((path === "/tools/arw-heartbeat" || path === "/tools/arw-job" || path === "/tools/arw-event" || path === "/tools/arw-cloudcopy" || path === "/tools/arw-file" || path === "/tools/arw-cmds" || path === "/tools/arw-fetch" || path === "/tools/arw-fetched") && (request.method === "POST" || ((path === "/tools/arw-file" || path === "/tools/arw-cmds" || path === "/tools/arw-fetch") && request.method === "GET"))) {
         const k = url.searchParams.get("k") || "";
         const digest = [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(k)))].map(b => b.toString(16).padStart(2, "0")).join("");
         if (k.length < 24 || digest !== TOOLS_KEY_SHA256 || !env.ANALYTICS) return new Response("not found", { status: 404 });
+        // a file the owner uploaded in the panel, fetched by the machine (enc-upload.ts)
+        const fetched = await encUploadMachine(request, env as any, path, url, json);
+        if (fetched) return fetched;
         // subtitle files between the panel and the machine: the machine sends each show's English .srt (kind=en) and
         // fetches the Arabic one the owner uploaded in the panel (kind=ar); kept 30 days in KV
         if (path === "/tools/arw-file") {
@@ -3335,7 +3339,8 @@ export default {
           // hand the machine what the panel asked for since its last heartbeat, and the owner's standing settings
           const cmds = (await env.ANALYTICS.prepare("SELECT id, kind, data FROM enc_cmds WHERE taken = 0 ORDER BY id LIMIT 20").all()).results as any[] || [];
           if (cmds.length) await env.ANALYTICS.prepare(`UPDATE enc_cmds SET taken = ? WHERE id IN (${cmds.map(() => "?").join(",")})`).bind(now, ...cmds.map(c => c.id)).run();
-          return json({ success: true, settings: { subsOnly: (await env.PUSH_KV.get("tools:subs-only")) === "1" }, commands: cmds.map(c => { try { return { kind: c.kind, ...JSON.parse(c.data) }; } catch { return { kind: c.kind }; } }) });
+          // hold: a file is going up from the panel right now — the machine stays on for it (enc-upload.ts)
+          return json({ success: true, settings: { subsOnly: (await env.PUSH_KV.get("tools:subs-only")) === "1", hold: !!(await env.PUSH_KV.get("tools:upload-hold")) }, commands: cmds.map(c => { try { return { kind: c.kind, ...JSON.parse(c.data) }; } catch { return { kind: c.kind }; } }) });
         } else if (path === "/tools/arw-cloudcopy") {
           // Drive through the owner's own connection on the rental site (owner 2026-10-27: «مش عايز انا كل شوية اعمل توصيل
           // ب درايف»): its copy takes /workspace/drive-out/ (the machine keeps «سيرفر عرب راسلنج/…» there as hard links)
@@ -3627,6 +3632,9 @@ export default {
       }
       if (path.startsWith("/api/studio/tools/")) {
         if (!(await studioAuthorized(request, env, "tools"))) return json({ success: false, denied: true, error: "مش مسموحلك تستخدم أدوات النشر." }, 403);
+        // «ارفع ملف من جهازك» on «سيرفر التفريغ»: straight to the site's storage, the machine fetches it (enc-upload.ts)
+        const uploaded = await encUploadStudio(request, env as any, path, url, json);
+        if (uploaded) return uploaded;
         if (path === "/api/studio/tools/social" && request.method === "POST") return json(await studioSocialStatus(env, await request.json().catch(() => ({}))));
         if (path === "/api/studio/tools/sources" && request.method === "GET") return json(await studioSources(env));
         if (path === "/api/studio/tools/reels" && request.method === "GET") return json(await studioReels(env));
@@ -4625,6 +4633,7 @@ export default {
       minute === 20 ? runPremiumReminders(env as any, _controller.scheduledTime).catch(() => {}) : Promise.resolve(),
       // the rented encoding machine, off for 12 hours, is deleted so its disk isn't paid for (owner 2026-10-26)
       minute === 33 ? encIdleSweep(env).catch((e: any) => console.log("[enc] sweep:", e?.message || e)) : Promise.resolve(),
+      minute === 34 ? encUploadSweep(env as any).catch((e: any) => console.log("[enc] upload sweep:", e?.message || e)) : Promise.resolve(),
       minute % 5 === 2 ? encOfflineCheck(env).catch(() => {}) : Promise.resolve(),
       minute % 5 === 4 ? encStuckSweep(env).catch((e: any) => console.log("[enc] stuck:", e?.message || e)) : Promise.resolve(),
       minute === 47 && new Date(_controller.scheduledTime).getUTCHours() === 7 ? encListCheck(env).catch((e: any) => console.log("[enc] list:", e?.message || e)) : Promise.resolve(),

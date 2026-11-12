@@ -1205,6 +1205,12 @@ section.panel + section.panel { margin-top: 16px; }
 .srv-lang-pick { align-items: center; margin-top: 8px; }
 .srv-job > b, .srv-show .srv-name { overflow-wrap: anywhere; word-break: break-word; }
 .srv-keyrow { display: flex; gap: 8px; align-items: center; margin-top: 8px; }
+/* «ارفع ملف من جهازك» (سيرفر التفريغ) */
+.srv-up-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 10px 0; }
+.srv-up-row input[type=file] { flex: 1 1 260px; min-width: 0; }
+.srv-up-row select { flex: 0 1 200px; }
+#srv-up-list { display: flex; flex-direction: column; gap: 12px; margin: 6px 0 10px; }
+#srv-up-list:empty { display: none; }
 .srv-keyrow .input { max-width: 420px; }
 .cy-clear { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 12px; }
 .srv-bar-sm { height: 10px; margin: 8px 0 4px; }
