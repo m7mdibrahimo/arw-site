@@ -32,3 +32,10 @@ test("a meta description never stops inside a name or on one side of «between»
   const rey = metaDescription("Rey Mysterio revealed that he is in talks with Adam Pearce and Nick Aldis about organizing a classic five-on-five Survivor Series match between Team USA and Team Mexico at this year's Survivor Series event in Houston, which is set for later this month.");
   assert.doesNotMatch(rey, /between Team USA\.$/);
 });
+
+test("«free agent» written «أصبحت الآن مصارعة» is corrected to «بلا عقد» (Lei Ying Lee story, INCIDENTS #1265)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa.ts");
+  const out = applyCorrections("النجمة السابقة في WWE أصبحت الآن مصارعة وبدأت بالفعل في إجراء محادثات.");
+  const text = typeof out === "string" ? out : (out as any).text ?? JSON.stringify(out);
+  assert.match(text, /أصبحت الآن بلا عقد وبدأت/);
+});
