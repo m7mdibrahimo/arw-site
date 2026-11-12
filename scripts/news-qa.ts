@@ -161,9 +161,40 @@ export function fixDrawTrophy(text: string): string {
   return text.replace(/🏆(\s*\*\*\s*النتيجة\s*:?\s*\*\*\s*(?:ب?ال)?تعادل)/g, "🤝$1");
 }
 
+/**
+ * «**الحدث الرئيسي (Main Event): …**» with more match headings after it: the writer called a mid-card match the main
+ * event. AEW Dynamite 11 Nov listed the mixed tag as «الحدث الرئيسي» and then «المواجهة السادسة» and «السابعة» under
+ * it (and the title said «فوز … في الحدث الرئيسي»); Focus Pro 24/10 and CSW 9/10 did the same (INCIDENTS #1253).
+ * Only the last match heading can be the main event: an earlier one takes its place number.
+ */
+const MATCH_ORDINALS = ["الأولى", "الثانية", "الثالثة", "الرابعة", "الخامسة", "السادسة", "السابعة", "الثامنة", "التاسعة", "العاشرة", "الحادية عشرة", "الثانية عشرة", "الثالثة عشرة", "الرابعة عشرة", "الخامسة عشرة", "السادسة عشرة", "السابعة عشرة", "الثامنة عشرة", "التاسعة عشرة", "العشرون"];
+export function fixMidCardMainEvent(text: string): string {
+  if (!text || !text.includes("الحدث الرئيسي")) return text;
+  const heading = /^\*\*(?:المواجهة|النزال|المباراة|الحدث الرئيسي)[^\n]*\*\*[ \t]*$/gm;
+  const heads = [...text.matchAll(heading)];
+  const mainAt = (h: RegExpMatchArray) => /^\*\*الحدث الرئيسي/.test(h[0]);
+  if (heads.length < 2 || !heads.slice(0, -1).some(mainAt) || heads.length > MATCH_ORDINALS.length) return text;
+  // longest ordinals first: «الحادية عشرة» before «الحادية»
+  const ord = [...MATCH_ORDINALS].sort((a, b) => b.length - a.length).join("|");
+  let out = text;
+  for (let i = heads.length - 1; i >= 0; i--) {
+    const h = heads[i];
+    let fixed = h[0];
+    if (mainAt(h) && i < heads.length - 1) {
+      const rest = (h[0].match(/^\*\*الحدث الرئيسي(?:\s*\(Main Event\))?\s*(?::\s*(.*?))?\s*\*\*[ \t]*$/i)?.[1] || "").trim();
+      fixed = `**المواجهة ${MATCH_ORDINALS[i]}${rest ? `: ${rest}` : ""}**`;
+    } else {
+      // the headings after it move up one place number: «المواجهة السادسة» after a 6th «الحدث الرئيسي» is the 7th
+      fixed = h[0].replace(new RegExp(`^\\*\\*المواجهة (?:${ord})(?=[:*\\s])`), `**المواجهة ${MATCH_ORDINALS[i]}`);
+    }
+    out = out.slice(0, h.index!) + fixed + out.slice(h.index! + h[0].length);
+  }
+  return out;
+}
+
 export function applyCorrections(text: string, corrections = loadCorrections()): string {
   if (!text) return text;
-  let out = fixDrawTrophy(fixSubjunctiveDuals(fixCountDuals(fixTimeDuals(fixNumberGender(decodeHtmlEntities(text))))));
+  let out = fixMidCardMainEvent(fixDrawTrophy(fixSubjunctiveDuals(fixCountDuals(fixTimeDuals(fixNumberGender(decodeHtmlEntities(text)))))));
   for (const c of withLamAlefForms(corrections)) {
     out = out.replace(correctionRegex(c), (m, prefix = "") =>
       // the text is already right: «لعودة→للعودة» read «للعودة» as «ل» + «لعودة» and wrote «لللعودة» (INCIDENTS #944)
@@ -2102,6 +2133,15 @@ export function wrestlerNotInSource(body: string, source: string, glossary: Reco
   const src = String(source || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
   if (src.length < 200) return [];
   const found: string[] = [];
+  // A one-word stable the source never names, written once in place of another: «فريق بيرثرايت» for the source's
+  // «Brawling Birds» (AEW Dynamite 11 Nov, INCIDENTS #1253). One-word names are skipped below, so stables count here.
+  for (const name of STABLE_NAMES) {
+    const ar = glossary[name];
+    const bare = name.replace(/^The\s+/, "");
+    if (!ar || bare.includes(" ") || ar.replace(/^ذا\s+/, "").length < 5) continue;
+    if (src.includes(bare.toLowerCase())) continue;
+    if (new RegExp(`(?<![ء-ي])(?:[وبلفك])?${ar.replace(/^ذا\s+/, "")}(?![ء-ي])`).test(text)) found.push(name);
+  }
   // Aliases share one Arabic name («Stephanie McHare» and «Stephanie Vaquer»): any alias in the source clears it.
   const named = new Set<string>();
   for (const [en, ar] of Object.entries(glossary)) {

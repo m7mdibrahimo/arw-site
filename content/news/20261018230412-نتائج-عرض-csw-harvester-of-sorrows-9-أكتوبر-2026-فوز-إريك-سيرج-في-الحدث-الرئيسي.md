@@ -1,6 +1,7 @@
 ---
 federation: INDIE
-title: "نتائج عرض CSW Harvester of Sorrows (9 أكتوبر 2026): فوز إريك سيرج في الحدث الرئيسي"
+title: "نتائج عرض CSW Harvester of Sorrows (9 أكتوبر 2026): فوز إريك سيرج بنزال Ring of Destiny"
+permalink: "/news/نتائج-عرض-csw-harvester-of-sorrows-9-أكتوبر-2026-فوز-إريك-سيرج-في-الحدث-الرئيسي/index.html"
 date: 2026-10-18T23:04:12.000+03:00
 published_at: 2026-10-18T20:10:35.288Z
 source_id: 334578
@@ -17,7 +18,7 @@ tags:
 image: /content/images/ywg0lz686jv2ga35.jpg
 layout: post-layout.njk
 ---
-أقام اتحاد CSW عرض CSW Harvester of Sorrows يوم 9 أكتوبر في صالة American Legion في فرانكلين بارك، إلينوي. تم بث العرض عبر منصة IWTV، وشهد سلسلة من النزالات على الألقاب والحدث الرئيسي السنوي.
+أقام اتحاد CSW عرض CSW Harvester of Sorrows يوم 9 أكتوبر في صالة American Legion في فرانكلين بارك، إلينوي. تم بث العرض عبر منصة IWTV، وشهد سلسلة من النزالات على الألقاب ونزال Ring of Destiny.
 
 ---
 **المواجهة الأولى: نزال فردي**
@@ -69,7 +70,7 @@ layout: post-layout.njk
 🏆 **الفائز:** شاين بوتشر
 
 ---
-**الحدث الرئيسي (Main Event): نزال Ring of Destiny**
+**المواجهة الثامنة: نزال Ring of Destiny**
 
 فاز إريك سيرج بنزال Ring of Destiny بعد إقصاء رافائيل كوينتيرو في النهاية، ليحصل بذلك على فرصة للمنافسة على بطولة CSW في التاريخ الذي يختاره. شارك في النزال أيضا كل من أكسل ريكو، فيكتور أنالوج، هانز كاردن، جيك بينتر، ستيف بوز، شاك جوردان، إف إكس بي، آدم ستاليون، كريس ميلر، شين هوليستر، وإريك شولتز.
 

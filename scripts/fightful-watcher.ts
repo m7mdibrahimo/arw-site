@@ -2658,7 +2658,17 @@ export function unbackedOrEmptyMatches(sourceText: string, body: string, names: 
     const win = text.match(/🏆[^\n]*/);
     if (!win) continue;
     const ens = [...byArabic.entries()].filter(([ar]) => win[0].includes(ar)).flatMap(([, en]) => en);
-    if (ens.length && !inLines(src, ens)) unbacked.push(head);
+    if (ens.length && !inLines(src, ens)) { unbacked.push(head); continue; }
+    // A winner line with no glossary name («🏆 الفائزون: سكاي فريق»): judge it by the match's wrestlers. When the
+    // source names them but none stands in a result line, the match had no result yet (ROH tag titles, Dynamite
+    // 11 Nov, INCIDENTS #1253).
+    if (!ens.length && !NO_WINNER_VALUE.test(win[0].replace(/^🏆[^:]*:\**\s*/, "").trim())) {
+      const sides = [...byArabic.entries()].filter(([ar]) => text.includes(ar)).flatMap(([, en]) => en);
+      const lines = String(sourceText || "").replace(/[‘’ʼ]/g, "'").split(/\n+/);
+      const named = sides.filter((en) => inLines(lines, [en]));
+      const resultLines = lines.filter((l) => countResultLines(l) > 0 || /\b(?:pins?|pinned|pinfall|submits?|submitted|submission|taps? out|tapped out|victory|victorious|count-?out|disqualification|DQ)\b/i.test(l));
+      if (named.length >= 2 && !inLines(resultLines, named)) unbacked.push(head);
+    }
   }
   return { unbacked, empty };
 }
@@ -2666,7 +2676,24 @@ export function unbackedOrEmptyMatches(sourceText: string, body: string, names: 
 export function extraWinners(sourceText: string, body: string): number {
   const winners = [...String(body || "").matchAll(/🏆[ \t]*\*{0,2}[ \t]*الفائز(?:ة|ان|تان|ون|ات)?[ \t]*:?[ \t]*\*{0,2}[ \t]*:?[ \t]*([^\n]+)/g)]
     .filter(m => !NO_WINNER_VALUE.test(m[1].trim())).length;
-  return Math.max(0, winners - countResultLines(sourceText));
+  return Math.max(0, winners - countDistinctResults(sourceText));
+}
+
+/**
+ * countResultLines, with «def. … to retain the title» counted once: «retain» on a line that already has another
+ * outcome word is the same result. Dynamite 11 Nov: «Tommaso Ciampa (c) def. "Speedball" Mike Bailey to retain the
+ * title» counted twice, so the ROH tag match — only «vs.» in the source — got an invented winner and 7 winners
+ * matched 7 «results» (INCIDENTS #1253).
+ */
+export function countDistinctResults(plainText: string): number {
+  let n = 0;
+  for (const line of String(plainText || "").split(/\n+/)) {
+    const all = countResultLines(line);
+    if (!all) continue;
+    const retains = (line.match(/\b(?:retains?|retained)\b/gi) || []).length;
+    n += all - retains > 0 ? all - retains : 1;
+  }
+  return n;
 }
 
 /**
