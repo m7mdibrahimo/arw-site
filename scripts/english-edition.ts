@@ -350,7 +350,10 @@ export function cleanSpokenFillers(quote: string): string {
     .replace(/,?\s*you know what I mean\s*\?/gi, ".")
     .replace(/(^|[\s"“>])(?:um+|uh+)\b,?\s*/gi, "$1")
     .replace(/(?<!\b(?:do|did|don't|don’t|didn't|didn’t|if|as|what|how|when|that|would|should|could|might|may|never|ever)\s)\byou know\b,?\s+(?=(?:I|I'm|I’m|she|he|they|we|it's|it’s|there's|there’s|like)\b)/gi, "")
-    .replace(new RegExp(`\\b(${DOUBLABLE})(\\s+\\1)+\\b`, "gi"), "$1");
+    .replace(new RegExp(`\\b(${DOUBLABLE})(\\s+\\1)+\\b`, "gi"), "$1")
+    // a stammered two-word start or name in a transcript: «not with not with Brock», «Did Brock Brock didn't» (INCIDENTS #1248)
+    .replace(/\b([A-Za-z]+\s+[A-Za-z]+)\s+\1\b/gi, (m, p: string) => (/^(?:bang|cha|boom|ha|he|no|so|very|yeah|na|la|ho)\s|\s(?:and|or|by|after|upon|to|for|over|on)$/i.test(p) ? m : p))
+    .replace(/\b([A-Z][a-z]{2,})\s+\1\b/g, (m, w: string) => (LEGIT_EN_DOUBLES.has(w.toLowerCase()) ? m : w));
 }
 /** Apply it to what a person says: every «>» line and every quoted part of a line. */
 export function cleanSpokenQuotes(text: string): string {
@@ -362,7 +365,7 @@ export function cleanSpokenQuotes(text: string): string {
 /** A false start the code can't repair, left in a quote («Let's just we got a I got a couple left», «you're not one of you're
  *  not a company person», «cuz she I'm sure»): the story must keep only the clean sentence or report it in its own words. */
 export function garbledSpeech(text: string): string | null {
-  const FALSE_START = /\b(?:[Aa]n?|[Tt]he|of|to|just)\s+(?:I|I'm|I’m|we|you're|you’re|they're|they’re|he's|he’s|she's|she’s)\b(?![- ]Quit)|\b(?:she|he|they|we)\s+I(?:'m|’m)?\s+(?:sure|think|mean|guess)\b|\bnot\s+you(?:'re|’re)\s+not\b/;
+  const FALSE_START = /\b(?:[Dd]id|[Dd]oes|[Dd]o)\s+[A-Z][a-z]+\s+(?:didn't|didn’t|doesn't|doesn’t|don't|don’t)\b|\b(?:[Aa]n?|[Tt]he|of|to|just)\s+(?:I|I'm|I’m|we|you're|you’re|they're|they’re|he's|he’s|she's|she’s)\b(?![- ]Quit)|\b(?:she|he|they|we)\s+I(?:'m|’m)?\s+(?:sure|think|mean|guess)\b|\bnot\s+you(?:'re|’re)\s+not\b/;
   for (const line of String(text).split("\n")) {
     const parts = /^\s*>/.test(line) ? [line] : line.split(/((?:“[^”]*”)|(?:"[^"\n]*"))/).filter((_, k) => k % 2);
     for (const p of parts) { const m = FALSE_START.exec(cleanSpokenFillers(p)); if (m) return m[0]; }

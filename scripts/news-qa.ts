@@ -867,6 +867,14 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
     if (rep) { issues.push({ code: "repeated_phrase", severity: "error", field: "body", message: "جملة قصيرة مكررة ورا بعض — اكتبها مرة واحدة", excerpt: rep }); break; }
   }
 
+  // The same dated fact written twice in one sentence with a few words changed: «يذكر أن رينز هزم أندرتيكر لاحقا في عرض
+  // WrestleMania 33 عام 2017، لكن السلسلة كانت قد انتهت بالفعل، ورومان رينز هزم أندرتيكر في WrestleMania 33 عام 2017»
+  // (Carlito story, INCIDENTS #1248). dropRepeatedClause wants seven identical words; this one skips «في/عرض/لاحقا…».
+  for (const line of stripNonProse(body || "").split(/\n+/)) {
+    const rep = findRepeatedFact(line);
+    if (rep) { issues.push({ code: "repeated_phrase", severity: "error", field: "body", message: "نفس المعلومة (بتاريخها) مكتوبة مرتين في نفس الجملة — اكتبها مرة واحدة", excerpt: rep }); break; }
+  }
+
   // A result block whose prose says one wrestler won while the «الفائز» line names the other
   // (INCIDENTS #437: «حسم سوسا النتيجة» above «الفائز: إدي إدواردز»).
   for (const block of (body || "").split(/\n(?=\*\*المواجهة)/)) {
@@ -1566,6 +1574,26 @@ const ORD_UNITS: Record<string, number> = { حادية: 1, ثانية: 2, ثال
 const HUNDREDS: Record<string, number> = { مائة: 100, مئة: 100, مائتي: 200, مائتين: 200, ثلاثمائة: 300, أربعمائة: 400, خمسمائة: 500, ستمائة: 600, سبعمائة: 700, ثمانمائة: 800, تسعمائة: 900 };
 
 /** First phrase of 3+ Arabic words that is immediately repeated (ignoring punctuation and a leading «و»), or null. */
+/** A fact carrying a year («هزم أندرتيكر في WrestleMania 33 عام 2017») written twice in one sentence, with filler words
+ *  («في، عرض، لاحقا، بالفعل…») ignored (INCIDENTS #1248). Six words, two of them Arabic and one a year. Quotes are left alone. */
+const FACT_FILLERS = new Set(["في", "عرض", "بعرض", "لاحقا", "بالفعل", "فعليا", "قد", "عام", "خلال", "ضمن"]);
+export function findRepeatedFact(line: string, n = 6): string | null {
+  if (/^\s*(?:>|https?:)/.test(line)) return null;
+  for (const sentence of line.replace(/«[^»]*»|"[^"\n]*"|“[^”]*”/g, " ").split(/[.!?؟](?=\s|$)/)) {
+    const w = [...sentence.matchAll(/\S+/g)].map((m) => m[0].replace(/[،,:؛«»"()]/g, "").replace(/^و(?=[\u0621-\u064A]{3,})/, "")).filter((x) => x && !FACT_FILLERS.has(x));
+    for (let i = 0; i + n <= w.length; i++) {
+      for (let j = i + n; j + n <= w.length; j++) {
+        let k = 0;
+        while (k < n && w[i + k] === w[j + k]) k++;
+        if (k < n) continue;
+        const g = w.slice(i, i + n);
+        if (g.filter((x) => /[\u0621-\u064A]{3,}/.test(x)).length >= 2 && g.some((x) => /^(?:19|20)\d\d$/.test(x))) return g.join(" ");
+      }
+    }
+  }
+  return null;
+}
+
 export function findAdjacentRepeatedPhrase(line: string): string | null {
   const words = [...line.matchAll(/\S+/g)].map(m => m[0].replace(/[،,.:؛!?؟«»"()]/g, "").replace(/^و(?=[\u0621-\u064A]{3,})/, ""));
   for (let n = 3; n <= 12; n++) {
