@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2315463/wwe-offered-jeff-cobb-bronson-reed-njpw-name": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-12T22:07:38.835Z"
+ },
  "https://www.fightful.com/wrestling/josh-barnett-gives-his-side-of-using-bloodsport-after-matt-riddle": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-02T13:23:12.957Z"
- },
- "https://www.fightful.com/wrestling/fred-rosser-clarifies-that-he-was-a-guest-coach-at-wwe-performance-center": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-02T13:18:55.774Z"
  }
 }
