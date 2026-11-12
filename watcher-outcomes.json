@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2315200/bully-ray-wwe-cody-rhodes-compromised-anakin-skywalker-punt-randy-orton": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-12T18:53:12.233Z"
+ },
  "https://www.fightful.com/wrestling/john-cena-classic-could-potentially-feature-multi-person-matches": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-02T00:49:37.301Z"
- },
- "https://www.fightful.com/wrestling/cody-rhodes-brock-lesnars-speed-was-genuinely-terrifying-from-a-performative-standpoint-in-the-ufc": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-02T00:34:31.295Z"
  }
 }
