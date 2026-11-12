@@ -1,43 +1,43 @@
 {
- "https://www.fightful.com/wrestling/oskar-vs-lance-archer-added-to-njpw-bound-for-unbound": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-12T16:50:21.780Z"
- },
  "https://www.fightful.com/wrestling/chelsea-green-says-plaza-hotel-has-not-made-escort-accusations-right": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T16:49:19.872Z"
+  "at": "2026-11-12T16:52:34.468Z"
  },
  "https://www.fightful.com/wrestling/damian-priest-stands-by-previous-comments-about-wwe-main-event-scene-thats-on-me-to-make-it-different": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T16:49:19.450Z"
+  "at": "2026-11-12T16:52:34.050Z"
  },
  "https://www.fightful.com/wrestling/338699-damian-priest-aaa": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T16:49:18.940Z"
+  "at": "2026-11-12T16:52:33.518Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-if-umaga-had-half-face-paint-its-because-he-was-running-late": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T16:49:18.339Z"
+  "at": "2026-11-12T16:52:32.910Z"
  },
  "https://www.fightful.com/wrestling/338670-aew-full-gear-national-championship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T16:49:17.644Z"
+  "at": "2026-11-12T16:52:32.207Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-undergoes-successful-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T16:49:16.765Z"
+  "at": "2026-11-12T16:52:31.308Z"
  },
  "https://www.fightful.com/wrestling/gabe-sapolsky-lists-seven-things-to-consider-when-signing-a-contract": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T16:49:16.070Z"
+  "at": "2026-11-12T16:52:30.587Z"
+ },
+ "https://www.fightful.com/wrestling/oskar-vs-lance-archer-added-to-njpw-bound-for-unbound": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-12T16:50:21.780Z"
  },
  "https://www.wrestlinginc.com/2314462/josh-barnett-wwe-matt-riddle-differing-takes-bloodsport-origins-gcw": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، فعل مثنى («يقدمان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
