@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/marty-scurll-claims-several-people-have-pushing-tna-sign-him": {
+  "reason": "المراجعة رفضته: فعل مثنى («يتوليان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: The Hardys",
+  "retry": true,
+  "at": "2026-11-12T12:03:15.419Z"
+ },
  "https://www.fightful.com/wrestling/338670-aew-full-gear-national-championship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -18,11 +23,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-12T11:44:08.856Z"
- },
- "https://www.ringsidenews.com/marty-scurll-claims-several-people-have-pushing-tna-sign-him": {
-  "reason": "المراجعة رفضته: فعل مثنى («يتوليان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: The Hardy Boyz",
-  "retry": true,
-  "at": "2026-11-12T11:39:55.032Z"
  },
  "https://www.wrestlinginc.com/2314467/aew-dynamite-collision-november-11-2026-3-things-hated-loved-opinion-review": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
