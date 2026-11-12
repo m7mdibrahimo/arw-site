@@ -106,7 +106,7 @@ eleventyExcludeFromCollections: true
   {% for item in collections.allContent %}
   <url>
     <loc>https://arab-wrestling.com{{ item.url | cleanUrl }}</loc>
-    <lastmod>{{ item.date | lastChange(item.data.url_changed) | isoDay }}</lastmod>
+    <lastmod>{{ (item.inputPath | pageDates(item.date, item.data)).modifiedMs | isoDay }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     {% if item.data.image %}

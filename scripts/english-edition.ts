@@ -716,6 +716,9 @@ export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEW
   // rewrites and a visitor cannot read. It now ends where a sentence or clause ends (INCIDENTS #862).
   const description = metaDescription(lead);
   const file = keptSlug && existing ? existing : path.join(dir, `${i.filePrefix}-${slug}.md`);
+  // When the English page really went up (its `date` is the Arabic story's): datePublished in its head (lib/page-dates.cjs,
+  // INCIDENTS #1257). A rewrite keeps the first stamp; a page written before stamps existed keeps none.
+  const createdAt = existing ? ((fs.readFileSync(existing, "utf-8").match(/^created_at:[ \t]*(\S+)/m) || [])[1] || "") : new Date().toISOString();
   const fm = [
     "---",
     `title: ${yaml(e.title.trim())}`,
@@ -723,6 +726,7 @@ export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEW
     `description: ${yaml(description)}`,
     `federation: ${i.federation || "WWE"}`,
     `date: ${i.date}`,
+    ...(createdAt ? [`created_at: ${createdAt}`] : []),
     `source_id: ${i.sourceId}`,
     `source_url: ${yaml(i.sourceUrl)}`,
     `en_tags:`,

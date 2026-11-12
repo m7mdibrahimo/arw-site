@@ -52,8 +52,11 @@
 <meta property="og:image:secure_url" content="{{ schemaImage }}">
 <meta property="og:site_name" content="عرب راسلنج">
 <meta property="og:locale" content="ar_AR">
-<meta property="article:published_time" content="{{ page.date.toISOString() }}">
-<meta property="article:modified_time" content="{{ page.date.toISOString() }}">
+{#- when the page really went up and last really changed — never the air date (lib/page-dates.cjs, INCIDENTS #1257). Head only -#}
+{% set pd = page.inputPath | pageDates(page.date, { published_at: published_at, created_at: created_at, edited_at: edited_at, url_changed: url_changed }) %}
+<meta property="article:published_time" content="{{ pd.published }}">
+<meta property="article:modified_time" content="{{ pd.modified }}">
+<meta property="og:updated_time" content="{{ pd.modified }}">
 {% if federation %}<meta property="article:section" content="{{ 'الاتحادات المستقلة' if federation == 'INDIE' else federation }}">{% endif %}
 {% if ldTags and ldTags.length %}
 {% for t in ldTags %}
@@ -81,8 +84,8 @@
         "url": "{{ schemaImage }}",
         "caption": "{{ pageTitle | escape }}"
       },
-      "datePublished": {{ page.date | jsonify | safe }},
-      "dateModified": {{ page.date | lastChange(url_changed) | jsonify | safe }},
+      "datePublished": {{ pd.published | jsonify | safe }},
+      "dateModified": {{ pd.modified | jsonify | safe }},
       {% if federation %}"articleSection": "{{ federation }}",{% endif %}
       {% set ldAbout = libraryProgramOf(page.url, collections.library, program_name) if (page.url.startsWith('/shows/') or page.url.startsWith('/recaps/')) else null %}
       {#- a recap or nostalgia special is searched by the same names as a show («ملخص عرض موني ان ذا بانك 2026 مترجم»): the article's keywords carry them, head only (INCIDENTS #679) -#}
@@ -141,9 +144,10 @@
       "description": "{{ (description or baseDesc) | escape }}",
       "thumbnailUrl": ["{{ schemaImage }}"],
       "embedUrl": {{ ldEmbed | jsonify | safe }},
-      "uploadDate": {{ page.date | jsonify | safe }},
+      "uploadDate": {{ pd.published | jsonify | safe }},
       {% if duration and (duration | isoDuration) %}"duration": "{{ duration | isoDuration }}",{% endif %}
-      {% if eventDate or event_date %}"datePublished": {{ (eventDate or event_date) | jsonify | safe }},{% endif %}
+      {#- the video went up with the page: its air date gave Google «قبل يوم واحد» on a show published minutes earlier (INCIDENTS #1257); the air date stays on the BroadcastEvent below -#}
+      "datePublished": {{ pd.published | jsonify | safe }},
       "inLanguage": "ar",
       {#- free to watch, and what kind of video it is: the plain facts Google reads for a video page, nothing visible (INCIDENTS #837) -#}
       "isAccessibleForFree": true,

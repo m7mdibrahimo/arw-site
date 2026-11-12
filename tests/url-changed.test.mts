@@ -23,7 +23,9 @@ test("a panel edit that changes the title stamps url_changed", async () => {
 });
 
 test("the sitemap and dateModified use url_changed when it is later than the date", () => {
-  assert.match(fs.readFileSync("pages/sitemap.njk", "utf8"), /item\.date \| lastChange\(item\.data\.url_changed\) \| isoDay/);
-  assert.match(fs.readFileSync("_includes/post-layout.njk", "utf8"), /"dateModified": \{\{ page\.date \| lastChange\(url_changed\)/);
+  // both read lib/page-dates.cjs now, which takes url_changed into the last change (INCIDENTS #1257)
+  assert.match(fs.readFileSync("pages/sitemap.njk", "utf8"), /item\.inputPath \| pageDates\(item\.date, item\.data\)\)\.modifiedMs \| isoDay/);
+  assert.match(fs.readFileSync("_includes/post-layout.njk", "utf8"), /url_changed: url_changed \}\) %\}/);
+  assert.match(fs.readFileSync("_includes/post-layout.njk", "utf8"), /"dateModified": \{\{ pd\.modified/);
   assert.match(fs.readFileSync("content/shows/20260927052200-gcw-rock-bottom-2026.md", "utf8"), /^url_changed: 2026-11-09/m);
 });

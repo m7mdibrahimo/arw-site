@@ -53,6 +53,34 @@ export function stampUrlChange(before: string, after: string, nowIso: string): s
   return after.slice(0, m.index! + 4) + front + after.slice(m.index! + 4 + m[1].length);
 }
 
+/** Sets one front-matter key (replacing it when the file has it already). */
+function setFrontKey(text: string, key: string, value: string): string {
+  const m = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  if (!m) return text;
+  const re = new RegExp(`^${key}:.*$`, 'm');
+  const front = re.test(m[1]) ? m[1].replace(re, `${key}: ${value}`) : `${m[1]}\n${key}: ${value}`;
+  return text.slice(0, m.index! + 4) + front + text.slice(m.index! + 4 + m[1].length);
+}
+
+/**
+ * When a page really went up and when it last really changed, for its head only (datePublished, dateModified,
+ * article:*_time, the sitemap's <lastmod> — lib/page-dates.cjs). `date` can't say it: the panel fills it when the form
+ * opens, the owner may date a page later, and a show's air date sat in its VideoObject, so Google dated AEW Dynamite
+ * 11.11.2026 «a day ago» minutes after it went up (INCIDENTS #1257).
+ *  - a new file gets `created_at` (kept if it somehow has one);
+ *  - an edit that changes anything gets `edited_at` — re-saving the same text, or only re-stamping, changes nothing.
+ */
+export function stampPageTimes(before: string | null, after: string, nowIso: string): string {
+  if (!/^---\r?\n[\s\S]*?\r?\n---/.test(after)) return after;
+  const fm = (t: string) => (t.match(/^---\r?\n([\s\S]*?)\r?\n---/) || [])[1] || '';
+  const created = (t: string) => (fm(t).match(/^created_at:[ \t]*(\S.*)$/m) || [])[1];
+  if (before == null) return created(after) ? after : setFrontKey(after, 'created_at', nowIso);
+  // the editor still open after the first save sends the file without the stamp the worker added: keep it
+  if (created(before) && !created(after)) after = setFrontKey(after, 'created_at', created(before)!.trim());
+  const strip = (t: string) => t.replace(/^(?:edited_at|url_changed):.*\r?\n?/gm, '').replace(/\s+$/, '');
+  return strip(before) === strip(after) ? after : setFrontKey(after, 'edited_at', nowIso);
+}
+
 export interface StudioEnv {
   GITHUB_OWNER: string; GITHUB_REPO: string; GITHUB_BRANCH: string; GITHUB_TOKEN: string;
   PUSH_KV: KVNamespace;
@@ -690,6 +718,7 @@ export async function handleStudio(request: Request, env: StudioEnv, path: strin
     }
     body.content = cleanNameFields(body.content);
     if (existing && ['shows', 'recaps', 'nostalgia'].includes(collection)) body.content = stampUrlChange(existing.content, body.content, new Date().toISOString());
+    if (collection !== 'nostalgia_series') body.content = stampPageTimes(existing ? existing.content : null, body.content, new Date().toISOString());
     // «العرض قبل الجميع»: during its window the file goes out without its links (they wait in D1, worker/src/early.ts)
     const early = await earlyOnSave(env.ANALYTICS, earlyKey(p), body.content);
     const changes: FileChange[] = [{ path: p, text: early.text }];

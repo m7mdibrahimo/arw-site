@@ -715,6 +715,9 @@ module.exports = function(eleventyConfig) {
     if (isNaN(a)) return isNaN(b) ? new Date() : b;
     return !isNaN(b) && b > a ? b : a;
   });
+  // The real publication time and last change of a page, with the Cairo offset, for its head and the sitemap — never
+  // the show's air date, which only the BroadcastEvent carries (lib/page-dates.cjs, INCIDENTS #1257).
+  eleventyConfig.addFilter("pageDates", function(inputPath, date, data) { return require("./lib/page-dates.cjs").pageDates(inputPath, date, data); });
   eleventyConfig.addFilter("isoDay", function(v) { const d = new Date(v); return isNaN(d) ? new Date().toISOString().slice(0, 10) : d.toISOString().slice(0, 10); });
   // The end of the show for the BroadcastEvent structured data: start + the page's own duration
   // («02:25:26»). A show with no duration keeps only its startDate. Head only (INCIDENTS #915).
