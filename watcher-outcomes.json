@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/chelsea-green-claims-plaza-hotel-failed-honor-promise-escort-accusation": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-12T13:13:43.242Z"
+ },
+ "https://www.ringsidenews.com/marty-scurll-claims-several-people-have-pushing-tna-sign-him": {
+  "reason": "المراجعة رفضته: حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)، فعل مثنى («يتولان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: The Hardy Boyz",
+  "retry": true,
+  "at": "2026-11-12T13:12:54.586Z"
+ },
  "https://www.fightful.com/wrestling/zilla-fatu-if-umaga-had-half-face-paint-its-because-he-was-running-late": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -18,11 +28,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-12T13:13:38.250Z"
- },
- "https://www.ringsidenews.com/marty-scurll-claims-several-people-have-pushing-tna-sign-him": {
-  "reason": "المراجعة رفضته: فعل مثنى («يديران») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: The Hardy Boyz",
-  "retry": true,
-  "at": "2026-11-12T12:57:48.470Z"
  },
  "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
   "at": "2026-11-01T04:25:30.085Z"
- },
- "https://www.wrestlinginc.com/2303383/aew-collision-viewership-ratings-october-24-2026": {
-  "reason": "تقرير مشاهدة لعرض قديم (2026-10-24)",
-  "retry": false,
-  "at": "2026-11-01T03:39:53.622Z"
  }
 }
