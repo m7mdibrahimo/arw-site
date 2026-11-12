@@ -683,10 +683,15 @@ export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEW
   e.title = restoreTitleAcronyms(e.title, e.body);
   e.title = restoreTitleTheNames(e.title, e.body);
   fs.mkdirSync(dir, { recursive: true });
-  let slug = englishSlug(e.title) || `story-${i.sourceId}`;
   const existing = findEnglishEdition(i.sourceId, dir);
+  // A story already on the English site keeps its address when it is written again (live results rewritten
+  // after every match, a repair): a new title used to give it a new slug and file, so its old URL became a 404
+  // — the Dynamite/Collision results of 11 November had three addresses in one hour and 57 older English
+  // stories lost theirs the same way (INCIDENTS #1251). Only a brand-new story takes its slug from the title.
+  const keptSlug = existing ? (fs.readFileSync(existing, "utf-8").match(/^slug:\s*"?([^"\n]+?)"?\s*$/m) || [])[1] : undefined;
+  let slug = keptSlug || englishSlug(e.title) || `story-${i.sourceId}`;
   // another story already has this address: the source id keeps it unique
-  if (fs.readdirSync(dir).some((f) => f.endsWith(`-${slug}.md`) && (!existing || path.join(dir, f) !== existing))) slug = `${slug}-${i.sourceId}`;
+  if (!keptSlug && fs.readdirSync(dir).some((f) => f.endsWith(`-${slug}.md`) && (!existing || path.join(dir, f) !== existing))) slug = `${slug}-${i.sourceId}`;
   const body = trailingEmbedsLast(splitGluedBlocks(e.body.replace(/\r/g, "")).replace(/\n{3,}/g, "\n\n").trim(), i.arabicBody);
   // the embeds the Arabic story has and the English one left out go at its end
   const missing = embedLines(i.arabicBody).filter((l) => !body.includes(linkOf(l)));
@@ -699,7 +704,7 @@ export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEW
   // A description cut at 155 letters ended mid-sentence with «…» (1,536 of 1,564 stories): a snippet Google
   // rewrites and a visitor cannot read. It now ends where a sentence or clause ends (INCIDENTS #862).
   const description = metaDescription(lead);
-  const file = path.join(dir, `${i.filePrefix}-${slug}.md`);
+  const file = keptSlug && existing ? existing : path.join(dir, `${i.filePrefix}-${slug}.md`);
   const fm = [
     "---",
     `title: ${yaml(e.title.trim())}`,

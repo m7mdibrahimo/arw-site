@@ -126,6 +126,20 @@ export function fixCountDuals(text: string): string {
 }
 
 /**
+ * The dual subjunctive of a result verb — «ليحسما السلسلة» (MCMG, Dynamite/Collision results of 11 November),
+ * «ليتوجا رسميا»، «أن يخوضا» — passed every dual check: the lists named the past and present forms
+ * only (فازا، يفوزان) and the subjunctive drops the «ن». 40 published stories had one (INCIDENTS #1251). A
+ * masculine one has one plain plural form — «ليحسموا»، «أن يخوضوا» — so it is rewritten before the check; a
+ * feminine one («لتحصلا») has no single right form and is blocked by dual_form. «يضمنا» is left out: it is
+ * also «يضم» + «نا» («آمن بنا بما يكفي ليضمنا إلى صفوفه»). Idempotent.
+ */
+const SUBJ_DUAL_VERBS = "حسم|حقق|فوز|توج|حافظ|حتفظ|صبح|تأهل|واجه|عود|نتزع|ستعيد|نال|كمل|خطف|ثبت|حصل|خوض|نجح|تغلب|هزم|دافع|نضم|ظهر|شارك";
+export function fixSubjunctiveDuals(text: string): string {
+  if (!text) return text;
+  return text.replace(new RegExp(`(?<![${AR}])(ل|ف|و|ول|ك|لكي|كي)?ي(${SUBJ_DUAL_VERBS})ا(?![${AR}])`, "g"), (_m, pre = "", stem: string) => `${pre}ي${stem}وا`);
+}
+
+/**
  * A rule written with «ال» («المصارعة الحرة→المصارعة») never matched its «لل» form: «ل» + «المصارعة»
  * is written «للمصارعة», so «كل ما يمكن للمصارعة الحرة» was published (INCIDENTS #1213). Every plain
  * rule whose wrong AND right start with «ال» also gets its «لل» twin («للمصارعة الحرة→للمصارعة»).
@@ -144,7 +158,7 @@ function withLamAlefForms(corrections: Correction[]): Correction[] {
 /** Applies every wrong→right rule from editorial/corrections.json. Idempotent. */
 export function applyCorrections(text: string, corrections = loadCorrections()): string {
   if (!text) return text;
-  let out = fixCountDuals(fixTimeDuals(fixNumberGender(decodeHtmlEntities(text))));
+  let out = fixSubjunctiveDuals(fixCountDuals(fixTimeDuals(fixNumberGender(decodeHtmlEntities(text)))));
   for (const c of withLamAlefForms(corrections)) {
     out = out.replace(correctionRegex(c), (m, prefix = "") =>
       // the text is already right: «لعودة→للعودة» read «للعودة» as «ل» + «لعودة» and wrote «لللعودة» (INCIDENTS #944)
@@ -431,6 +445,8 @@ const RULES: Rule[] = [
   // «ظهرا» also means «at noon» («الساعة 2 ظهرا في…») — only the verb sense (followed by للمرة/معا/مع…) is flagged.
   { code: "dual_form", severity: "error", re: /(?<![ء-ي])(?:و|ف)?(?:ظهرا(?=\s+(?:للمرة|معا|سويا|مع\s|بجانب|ضمن))|(?:(?<!ننا\s)تمكنا(?=\s+من)|تحالفا(?=\s+(?:في|ضد|لمواجهة))|(?<![0-9٠-٩]\s)ظهرا(?=\s+(?:في|على|خلال|أيضا|مؤخرا|ك[ء-ي]))|اجتمعا|ارتبطا|تعاونا(?=\s+(?:في|مع|على))|انفصلا|تصارعا|تقاتلا|واجها(?=\s)|اشتكيا|اشتكتا|يتحولان|تتحولان|تحولتا|يتقمصان|تتقمصان|تجتمعان|يجتمعان|اجتمعتا|تحالفتا|(?:غادر|قام|حصل|شارك|خاض|هزم|ظهر|وصل|أعلن|أكد|قال|انضم|عمل|بدأ|رحل|فقد|خسر|أصبح|كسب|تعرض|ارتد|أظهر|أطاح|أنهت|دخل|عاد|تحدث|فاز)تا(?=\s)|تتقابلان|يتقابلان|تتحدثان|يتناولان|تتناولان|تتصالحان|يتصالحان|يكونا|تكونا|بقيا(?=\s)|ظلا(?=\s)|حققاها|حققاه|سمعاها|سمعاه|سمعاهم|انضما(?=\s)|اشتهرا(?=\s)|كانا(?=\s)|كانتا(?=\s)|قالا(?=\s)|أضافا|تحدثا|شاهدا|لاحظا|تلقيا|تحالفا(?=\s+مع\s)|تنافسا(?=\s+(?:على|ضد|مع|في)\s)|التقي(?:ا|تا)|التقتا|تزوجا|قررا|احتفظا|غادرا|تواجه(?:ا|تا)|أصبحا|اختارا|أعلنا|يتواجهان|الاثنان|يعرفان|يخوضان|يتقاسمان|يجمعان|يتشاركان|يشتركان|يحاولان|يقدمان|يسعيان|يملكان|يمتلكان|يتمتعان|يمثلان|يبدوان|يعتبران|يطمئنان|(?:ي|ت)(?:حقق|سجل|واصل|جذب|تصدر|حصد|تجاوز|كمل|ستمر|ستحوذ|حتل|صنع|قدم|ضم|تخطى|بلغ|رتفع|نخفض|تراجع|عيد|رقص|مثل)ان|(?:ال)?عرضا(?=\s+[A-Za-z])|يمتلكا|يحملان|يتبادلان|يقودان|يريدان|يلتقيان|يستعدان|يتأهلان|يدافعان|(?:ي|ت)(?:علق|تحدث|عبر|شكر|رد|ؤكد|صرح|كشف|ناقش|علن|روي|ستعرض|وجه|نشر|شيد|حتفل)ان|يعملان|يشاركان|ترتبطان|تصبحان|تستعدان|تتواجهان|تلتقيان|تشاركان|تتنافسان|تستمران|تواجهان|تظهران|تتحديان|تتحدان|دفعاه|دفعاها|دفعاهم|دفعتاه|(?:ألهم|ساعد|شجع|أقنع|حفز)(?:تا|ا)(?:ه|ها|هم)|جعلاه|جعلاها|جعلتاه|تسببا(?=\s+في)|تسببتا(?=\s+في)|ساهمتا|ساهما(?=\s+في)|تراجعا(?=\s+عن)|تراجعتا(?=\s+عن)|(?:ل|ف|و)?يقررا|منحاه(?:ا|م)?|أكسباه(?:ا|م)?|وهباه(?:ا|م)?|جلباه(?:ا|م)?|(?:س|ل|ف|و)?يتحالفان|(?:س|ل|ف|و)?تتحالفان|(?:س|ل|ف|و)?يتحدان|(?:س|ل|ف|و)?يتعاونان)(?![ء-ي]))/g, message: "فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم", fields: ["title", "body"] },
   // Reaction verbs with two people as the subject, and «أمام عيني X وY» (the Hardys story, INCIDENTS #1219).
+  // the feminine dual subjunctive «لتحصلا على الأحزمة»، «لتنضما إلى البطاقة» (INCIDENTS #1251); the masculine one is rewritten by fixSubjunctiveDuals
+  { code: "dual_form", severity: "error", re: new RegExp(`(?<![ء-ي])(?:[لفوك]|ول)?(?:ت|ي)(?:${SUBJ_DUAL_VERBS}|لتقي)ا(?![ء-ي])`, "g"), message: "فعل مثنى منصوب (لتحصلا/ليحسما/أن يلتقيا) ممنوع — اجمع الفعل («ليحسموا») أو استخدم المفرد لغير العاقل («لتنضم إلى البطاقة»)", fields: ["title", "body"] },
   { code: "dual_form", severity: "error", re: /(?<![ء-ي])(?:[وف]?(?:صفقا|هتفا|احتفلا|تعانقا|تبادلا|حرصا(?=\s+(?:بشدة|كثيرا|دائما|جميعا)))|أمام\s+عيني\s+[ء-ي]+\s+و[ء-ي]+)(?![ء-ي])/g, message: "صيغة مثنى (صفقا/احتفلا/أمام عيني X وY…) ممنوعة: اكتب فعل جمع («مات وجيف صفقوا») أو «أمام X وY»." },
   // Dual verbs and the dual verb with a pronoun glued on, which the lists above miss: «يقدمانها»، «يخوضانه»، «انتقدا»، «يخططان»، «واتفقا»، «أنهيا» (INCIDENTS #812)
   { code: "dual_form", severity: "error", re: /(?<![ء-ي])(?:(?:ي|ت)(?:قدم|خوض|خطط|نتقد|طلب|واجه|شارك|عمل|لعب|حقق)ان(?:ه|ها|هم|ته|تها)?|[وف]?(?:انتقدا|أعجبا|ابتكرا|اتفقا|اختلفا|أنهيا|أكملا|وافقا|بدأا))(?![ء-ي])/g, message: "صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة", fields: ["title", "body"] },

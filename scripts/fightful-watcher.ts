@@ -2586,6 +2586,71 @@ export function winnerlessMatchSections(body: string): boolean {
   return sections >= 3 && winners * 2 < sections;
 }
 
+/**
+ * A match the source reports a winner for, written with no result line. The Dynamite/Collision results of
+ * 11 November listed the mixed tag (Moné & Jay White vs. Shafir & Moxley) as «يواجه … فريق ديث رايدرز» with
+ * no «🏆» line, while Ringside's page said «The winners of the Mixed Tag Team Match, The Death Riders (Marina
+ * Shafir and … Jon Moxley)!» (INCIDENTS #1251). A section whose wrestlers stand in a source winner line
+ * («def.», «defeats», «the winner(s) of», «for the win») and that has no «🏆»/«🤝»/«النتيجة» line is
+ * returned by its heading. A match the source has not finished yet has no such line and is left alone.
+ */
+function sourceWinnerLines(sourceText: string): string[] {
+  return String(sourceText || "").replace(/[‘’ʼ]/g, "'").split(/\n+/)
+    .filter((l) => /\bdef\.|\b(?:defeats?|defeated|the winners? (?:of|and)|for the (?:win|victory)|pins? \S+(?: \S+)? for the win)\b/i.test(l));
+}
+function arabicToEnglishNames(names: Record<string, string>): Map<string, string[]> {
+  const byArabic = new Map<string, string[]>();
+  for (const [en, ar] of Object.entries(names || {})) {
+    if (!en || !ar || !/[ء-ي]/.test(ar) || ar.trim().split(/\s+/).length < 2) continue;
+    // a belt or a show is no wrestler: «بطولة TBS» matched «…her TBS Championship… for the win» of another match
+    if (FEDERATION_OR_SHOW_NAME.test(en.trim()) || /\b(?:Championship|Title|Cup|Tournament|Classic|Series|Grand Prix)\b/i.test(en)) continue;
+    byArabic.set(ar.trim(), [...(byArabic.get(ar.trim()) || []), en]);
+  }
+  return byArabic;
+}
+function matchSections(body: string): { head: string; text: string }[] {
+  const out: { head: string; text: string }[] = [];
+  for (const part of String(body || "").split(/^(?=\*\*(?:المواجهة|النزال|المباراة|الحدث الرئيسي)[^\n]*\*\*\s*$)/m)) {
+    const head = part.match(/^\*\*((?:المواجهة|النزال|المباراة|الحدث الرئيسي)[^\n]*)\*\*/);
+    if (head) out.push({ head: head[1].trim(), text: part.slice(head[0].length).split(/\n-{3,}\s*(?:\n|$)/)[0] });
+  }
+  return out;
+}
+const inLines = (lines: string[], ens: string[]) => lines.some((l) => ens.some((en) => new RegExp(`(?<![A-Za-z])${en.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![A-Za-z])`, "i").test(l)));
+
+export function droppedMatchResults(sourceText: string, body: string, names: Record<string, string> = WRESTLER_NAMES_MAP): string[] {
+  const src = sourceWinnerLines(sourceText);
+  if (!src.length) return [];
+  const byArabic = arabicToEnglishNames(names);
+  const out: string[] = [];
+  for (const { head, text } of matchSections(body)) {
+    if (/🏆|🤝|النتيجة\s*:|الفائز/.test(text)) continue;
+    const ens = [...byArabic.entries()].filter(([ar]) => text.includes(ar)).flatMap(([, en]) => en);
+    if (ens.length && inLines(src, ens)) out.push(head);
+  }
+  return out;
+}
+
+/**
+ * The reverse, and an empty section. The 04:33 rewrite of the same report gave the TBS three-way — still under
+ * way on Ringside's page — «🏆 الفائزة: كوين أميناتا … ونجحت في الاحتفاظ بلقبها», and left two match headings
+ * with nothing under them (INCIDENTS #1251). A «🏆» line naming glossary wrestlers none of whom stands in a
+ * source winner line, and a match heading with no text, are returned by their heading.
+ */
+export function unbackedOrEmptyMatches(sourceText: string, body: string, names: Record<string, string> = WRESTLER_NAMES_MAP): { unbacked: string[]; empty: string[] } {
+  const src = sourceWinnerLines(sourceText);
+  const byArabic = arabicToEnglishNames(names);
+  const unbacked: string[] = [], empty: string[] = [];
+  for (const { head, text } of matchSections(body)) {
+    if (!text.replace(/\s+/g, "")) { empty.push(head); continue; }
+    const win = text.match(/🏆[^\n]*/);
+    if (!win) continue;
+    const ens = [...byArabic.entries()].filter(([ar]) => win[0].includes(ar)).flatMap(([, en]) => en);
+    if (ens.length && !inLines(src, ens)) unbacked.push(head);
+  }
+  return { unbacked, empty };
+}
+
 export function extraWinners(sourceText: string, body: string): number {
   const winners = [...String(body || "").matchAll(/🏆[ \t]*\*{0,2}[ \t]*الفائز(?:ة|ان|تان|ون|ات)?[ \t]*:?[ \t]*\*{0,2}[ \t]*:?[ \t]*([^\n]+)/g)]
     .filter(m => !NO_WINNER_VALUE.test(m[1].trim())).length;
@@ -4680,6 +4745,20 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // (AEW Fright Night Dynamite 28/10, INCIDENTS #956): the live updater then keeps the older version.
   if (isShowResultsArticle(rawTitle, plainText) && winnerlessMatchSections(draft.body)) {
     blocking.push({ code: "results_missing_winners", severity: "error", field: "body", message: "أغلب نزالات التقرير من غير سطر «🏆 الفائز»", excerpt: "" });
+    lastPostRetryable = true;
+  }
+  const dropped = isShowResultsArticle(rawTitle, plainText) ? droppedMatchResults(plainText, draft.body) : [];
+  if (dropped.length) {
+    blocking.push({ code: "match_result_dropped", severity: "error", field: "body", message: `المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: ${dropped.join("، ")} — اكتب الفائز زي المصدر وبالماضي`, excerpt: dropped.join(" | ") });
+    lastPostRetryable = true;
+  }
+  const odd = isShowResultsArticle(rawTitle, plainText) ? unbackedOrEmptyMatches(plainText, draft.body) : { unbacked: [], empty: [] };
+  if (odd.unbacked.length) {
+    blocking.push({ code: "invented_winner", severity: "error", field: "body", message: `فائز مش موجود في نتايج المصدر (النزال لسه ما خلصش؟): ${odd.unbacked.join("، ")}`, excerpt: odd.unbacked.join(" | ") });
+    lastPostRetryable = true;
+  }
+  if (odd.empty.length) {
+    blocking.push({ code: "results_missing_winners", severity: "error", field: "body", message: `عنوان نزال من غير أي كلام تحته: ${odd.empty.join("، ")}`, excerpt: odd.empty.join(" | ") });
     lastPostRetryable = true;
   }
   const tooMany = isShowResultsArticle(rawTitle, plainText) ? extraWinners(plainText, draft.body) : 0;
