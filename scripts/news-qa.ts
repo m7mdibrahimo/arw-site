@@ -353,6 +353,8 @@ const RULES: Rule[] = [
   // The same preposition+two-word phrase twice (names lists legitimately repeat, so only «بعد/قبل/أثناء…» phrases) within a few words: «بعد شعوره بضيق شديد في التنفس بعد شعوره بضيق التنفس» (Gurv Sihra story, INCIDENTS #1065)
   { code: "repeated_phrase", severity: "error", re: new RegExp(`(?<![${AR}])((?:بعد|قبل|أثناء|خلال|بسبب|رغم|عند|حول|ضد|بين|لدى|عقب)\\s+[${AR}]{3,}\\s+[${AR}]{3,})(?![${AR}])[^.\\n]{0,30}?(?<![${AR}])\\1(?![${AR}])`, "g"), message: "نفس العبارة (٣ كلمات) مكررة في نفس الجملة — اكتبها مرة واحدة", fields: ["title", "body"] },
   // «خيارات أفضل بكثير ... خيارا أفضل بكثير» in one sentence (INCIDENTS #1190)
+  // «خلال عرض AEW Collision في عرض AEW Collision يوم 24 أكتوبر» — the show name twice in a row; the 3-Arabic-words rule above misses Latin names (INCIDENTS #1266)
+  { code: "repeated_phrase", severity: "error", re: /((?:عرض|عروض)\s+[A-Za-z][A-Za-z0-9'&.+-]*(?:\s+[A-Za-z0-9][A-Za-z0-9'&.+-]*){0,4})\s+(?:في|خلال|ضمن)\s+\1(?![A-Za-z0-9])/g, message: "اسم العرض مكرر ورا بعض («خلال عرض AEW Collision في عرض AEW Collision») — اكتبه مرة واحدة", fields: ["title", "body"] },
   { code: "repeated_phrase", severity: "error", re: new RegExp(`(?<![${AR}])([${AR}]{3,}\\s+بكثير)(?![${AR}])[^.\\n]{0,150}?(?<![${AR}])\\1(?![${AR}])`, "g"), message: "نفس الوصف («أفضل بكثير») مكرر في نفس الجملة — اكتبه مرة واحدة", fields: ["title", "body"] },
   // Two words typed twice in a row: «لم أصب بالذهول من قبل من قبل» (Tyreek Hill story, INCIDENTS #1238). Every such
   // repeat in 9,000+ stories was a slip. A name may stand twice («واجه بيشوب داير بيشوب داير»: two wrestlers, one
