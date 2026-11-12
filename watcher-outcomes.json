@@ -1,23 +1,18 @@
 {
+ "https://www.ringsidenews.com/chelsea-green-claims-plaza-hotel-failed-honor-promise-escort-accusation": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-12T14:09:17.524Z"
+ },
+ "https://www.ringsidenews.com/marty-scurll-claims-several-people-have-pushing-tna-sign-him": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: The Hardys",
+  "retry": true,
+  "at": "2026-11-12T14:07:28.452Z"
+ },
  "https://www.ringsidenews.com/steve-austin-says-bret-hart-came-key-moment-during-their-wrestlemania-13-match": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-12T14:04:34.372Z"
- },
- "https://www.ringsidenews.com/cody-rhodes-trying-land-corporate-role-wwe": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Paul Heyman",
-  "retry": true,
-  "at": "2026-11-12T13:58:06.930Z"
- },
- "https://www.ringsidenews.com/chelsea-green-claims-plaza-hotel-failed-honor-promise-escort-accusation": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-12T13:49:02.329Z"
- },
- "https://www.ringsidenews.com/marty-scurll-claims-several-people-have-pushing-tna-sign-him": {
-  "reason": "المراجعة رفضته: حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)، فعل مثنى («يديران») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: The Hardys",
-  "retry": true,
-  "at": "2026-11-12T13:47:25.829Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-if-umaga-had-half-face-paint-its-because-he-was-running-late": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -38,6 +33,11 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-12T14:00:59.951Z"
+ },
+ "https://www.ringsidenews.com/cody-rhodes-trying-land-corporate-role-wwe": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Paul Heyman",
+  "retry": true,
+  "at": "2026-11-12T13:58:06.930Z"
  },
  "https://www.wrestlinginc.com/2311489/aew-njpw-gabe-kidd-experienced-psychotic-episode-tail-end-run": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
