@@ -1,7 +1,7 @@
 ---
 title: "Tommaso Ciampa vs. 'Speedball' Mike Bailey for AEW National Title Added to Three-Hour Dynamite/Collision"
 slug: "tommaso-ciampa-vs-speedball-mike-bailey-for-aew-national-title-added-to-three"
-description: "Tommaso Ciampa will defend the AEW National Championship against 'Speedball' Mike Bailey on the upcoming three-hour episode."
+description: "Tommaso Ciampa will defend the AEW National Championship against 'Speedball' Mike Bailey on the upcoming three-hour episode of AEW Dynamite and AEW Collision on November 11."
 federation: AEW
 date: 2026-11-09T17:19:31.000Z
 source_id: 338209

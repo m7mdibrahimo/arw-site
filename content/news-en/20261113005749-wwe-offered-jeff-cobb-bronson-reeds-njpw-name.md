@@ -1,7 +1,7 @@
 ---
 title: "WWE Offered Jeff Cobb Bronson Reed's NJPW Name"
 slug: "wwe-offered-jeff-cobb-bronson-reeds-njpw-name"
-description: "During his time in WWE, Jeff Cobb was known as JC Mateo. However, as Cobb revealed on \"Insight With Chris Van Vliet,\" he was presented with a list."
+description: "During his time in WWE, Jeff Cobb was known as JC Mateo. However, as Cobb revealed on \"Insight With Chris Van Vliet,\" he was presented with a list of potential ring names."
 federation: WWE
 date: 2026-11-12T21:57:49.000Z
 created_at: 2026-11-12T22:47:38.981Z

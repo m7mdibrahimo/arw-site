@@ -1,7 +1,7 @@
 ---
 title: "Former WWE Star Says She Got Longer Title Match Because of Cody Rhodes and John Cena"
 slug: "former-wwe-star-says-she-got-longer-title-match-because-of-cody-rhodes-and-john"
-description: "Former WWE star Xelina credited Cody Rhodes and John Cena for allowing her to get extra time in a WWE championship match that she considers one."
+description: "Former WWE star Xelina credited Cody Rhodes and John Cena for allowing her to get extra time in a WWE championship match that she considers one of her favorite bouts of her career."
 federation: WWE
 date: 2026-10-31T13:30:00.000Z
 source_id: 1982109764

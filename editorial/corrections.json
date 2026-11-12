@@ -4639,6 +4639,28 @@
       "note": "اسم الاتحاد يبقى بالإنجليزي"
     },
     {
+      "wrong": "دبليو دبليو إف تاف إنف",
+      "right": "WWF Tough Enough",
+      "note": "اسم البرنامج والاتحاد بالإنجليزي (خبر إيريك بيشوف، (INCIDENTS #1269))"
+    },
+    {
+      "wrong": "مليون دولار تاف إنف",
+      "right": "Million Dollar Tough Enough",
+      "note": "اسم البرنامج بالإنجليزي (INCIDENTS #1269)"
+    },
+    {
+      "wrong": "تاف (?:إ|ا)نا?ف",
+      "right": "Tough Enough",
+      "regex": true,
+      "note": "اسم برنامج WWE بالإنجليزي زي باقي العروض — مش «تاف إنف» (خبر إيريك بيشوف، (INCIDENTS #1269))"
+    },
+    {
+      "wrong": "(?:إ|ا)م تي في",
+      "right": "MTV",
+      "regex": true,
+      "note": "اسم القناة بالإنجليزي زي USA Network وTNT (خبر إيريك بيشوف، (INCIDENTS #1269))"
+    },
+    {
       "wrong": "تريلر تي في",
       "right": "TrillerTV",
       "note": "اسم المنصة بالإنجليزي"

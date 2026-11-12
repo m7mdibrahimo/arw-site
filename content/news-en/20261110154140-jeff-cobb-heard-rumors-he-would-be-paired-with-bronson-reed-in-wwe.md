@@ -1,7 +1,7 @@
 ---
 title: "Jeff Cobb Heard Rumors He Would Be Paired With Bronson Reed in WWE"
 slug: "jeff-cobb-heard-rumors-he-would-be-paired-with-bronson-reed-in-wwe"
-description: "Jeff Cobb, who now goes by JC Mateo in WWE after signing with the company in May 2025 and debuting at WWE Backlash alongside Solo Sikoa as part."
+description: "Jeff Cobb, who now goes by JC Mateo in WWE after signing with the company in May 2025 and debuting at WWE Backlash alongside Solo Sikoa as part of the new Bloodline."
 federation: WWE
 date: 2026-11-10T12:41:40.000Z
 source_id: 338332

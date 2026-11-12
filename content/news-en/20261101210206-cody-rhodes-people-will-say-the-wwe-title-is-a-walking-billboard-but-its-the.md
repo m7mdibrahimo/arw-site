@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes: People Will Say the WWE Title Is a Walking Billboard, but It’s the One Connected to the Wrestlers"
 slug: "cody-rhodes-people-will-say-the-wwe-title-is-a-walking-billboard-but-its-the"
-description: "During a recent appearance on the Double Coverage Podcast, Cody Rhodes opened up about his favorite title in professional wrestling and discussed the history."
+description: "During a recent appearance on the Double Coverage Podcast, Cody Rhodes opened up about his favorite title in professional wrestling and discussed the history of the WWE Championship."
 federation: WWE
 date: 2026-11-01T18:02:06.000Z
 source_id: 336918

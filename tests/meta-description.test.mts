@@ -255,3 +255,10 @@ test("no published English description ends on «main/recent/poor.» (INCIDENTS 
   const bad = fs.readdirSync(dir).filter((f) => /\b(?:the main|a recent|following recent|party's poor|the November \d{1,2}, \d{4}|on the [A-Z][a-z]+ \d{1,2})\.$/.test(String(matter(fs.readFileSync(path.join(dir, f), "utf8")).data.description || "")));
   assert.deepEqual(bad, []);
 });
+
+test("a word cut never leaves a noun whose «of» complement was dropped (INCIDENTS #1269)", () => {
+  const d = metaDescription('During his time in WWE, Jeff Cobb was known as JC Mateo. However, as Cobb revealed on "Insight With Chris Van Vliet," he was presented with a list of potential ring names before his debut, which coincided with Backlash 2025. One of those names was "JONAH."');
+  assert.ok(!/a list\.$/.test(d), d);
+  assert.match(d, /a list of potential ring names/);
+  assert.ok(d.length <= 185, d);
+});
