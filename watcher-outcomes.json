@@ -1,4 +1,24 @@
 {
+ "https://www.fightful.com/wrestling/338670-aew-full-gear-national-championship": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-12T03:53:52.337Z"
+ },
+ "https://www.fightful.com/wrestling/jim-ross-undergoes-successful-shunt-surgery": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-12T03:53:51.588Z"
+ },
+ "https://www.fightful.com/wrestling/gabe-sapolsky-lists-seven-things-to-consider-when-signing-a-contract": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-12T03:53:51.075Z"
+ },
+ "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-12T03:53:49.690Z"
+ },
  "https://www.ringsidenews.com/why-damian-priests-aaa-run-abruptly-came-end": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -8,26 +28,6 @@
   "reason": "المراجعة رفضته: الفائز مش مذكور في وصف نزاله (1) — اكتب النزال من المصدر بأسماء الطرفين",
   "retry": true,
   "at": "2026-11-12T03:51:20.764Z"
- },
- "https://www.fightful.com/wrestling/338670-aew-full-gear-national-championship": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-12T03:50:52.730Z"
- },
- "https://www.fightful.com/wrestling/jim-ross-undergoes-successful-shunt-surgery": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-12T03:50:52.146Z"
- },
- "https://www.fightful.com/wrestling/gabe-sapolsky-lists-seven-things-to-consider-when-signing-a-contract": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-12T03:50:51.737Z"
- },
- "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-12T03:50:50.557Z"
  },
  "https://www.fightful.com/wrestling/mybookie-betting-odds-for-aew-full-gear-2026": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
