@@ -1,7 +1,7 @@
 ---
 title: "Layla Says WWE Head Writer Told Her Nobody Cared About the Women’s Division"
 slug: "layla-says-wwe-head-writer-told-her-nobody-cared-about-the-womens-division"
-description: "Former WWE star Layla recalled that during her time as Divas Champion in 2012."
+description: "Former WWE star Layla recalled that during her time as Divas Champion in 2012, a head writer told her that people in production meetings simply did not care about the women's division."
 federation: WWE
 date: 2026-11-12T21:31:41.000Z
 created_at: 2026-11-12T21:41:03.330Z

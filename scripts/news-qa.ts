@@ -194,7 +194,7 @@ export function fixMidCardMainEvent(text: string): string {
 
 export function applyCorrections(text: string, corrections = loadCorrections()): string {
   if (!text) return text;
-  let out = fixMidCardMainEvent(fixDrawTrophy(fixSubjunctiveDuals(fixCountDuals(fixTimeDuals(fixNumberGender(decodeHtmlEntities(text)))))));
+  let out = fixEraCalledShow(fixMidCardMainEvent(fixDrawTrophy(fixSubjunctiveDuals(fixCountDuals(fixTimeDuals(fixNumberGender(decodeHtmlEntities(text))))))));
   for (const c of withLamAlefForms(corrections)) {
     out = out.replace(correctionRegex(c), (m, prefix = "", ...rest) => {
       // a regex rule may carry named parts over: «نكوص (?<who>…) ب(?<what>وعده)» → «تراجع $<who> عن $<what>» (INCIDENTS #1261)
@@ -510,7 +510,7 @@ const RULES: Rule[] = [
   // A quote block opened with a straight " and never closed: «> "بعض الناس يرثون… إلى الأبد.» (Brooke Hogan story, INCIDENTS #812)
   { code: "unclosed_straight_quote", severity: "error", re: /^>\s*["“][^"”\n]{5,}$/gm, message: "اقتباس بدأ بعلامة \" ومتقفلش — اقفله بنفس العلامة", fields: ["body"] },
   // Duals the lists above missed, found in published stories: «ابنيه/ابنيها/شقيقيه» (dual noun + pronoun), «اتحادا WWE وAEW» (dual noun before Latin names), «مواجهتي بطولة / لقبي بطولة» (construct dual) — INCIDENTS #815
-  { code: "dual_noun", severity: "error", re: /(?<![ء-ي])(?:[وفبلك]?(?:ال)?|لل)(?:ابني|ابنتي|شقيقي|شقيقتي|أخوي|زميلي|ولدي|طفلي|صديقي)(?:ه|ها|هم|هن)(?![ء-ي])|(?<![ء-ي])[وفبلك]?اتحادا(?=\s+[A-Za-z])|(?<![ء-ي])(?:مواجهتي|نزالي|لقبي|بطولتي|عرضي|فريقي)\s+(?:بطولة|لقب|على\s+(?:لقب|بطولة)|ضمن)(?![ء-ي])|(?<![ء-ي])[وفبل]?(?:نزالي|مواجهتي|لقبي|بطولتي|مباراتي|حدثي|مركزي|شبكتي|قناتي|منصتي|موقعي)\s+(?=[A-Za-z]|ال[ء-ي])/g, message: "اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»", fields: ["title", "body"] },
+  { code: "dual_noun", severity: "error", re: /(?<![ء-ي])(?:[وفبلك]?(?:ال)?|لل)(?:ابني|ابنتي|شقيقي|شقيقتي|أخوي|زميلي|ولدي|طفلي|صديقي)(?:ه|ها|هم|هن)(?![ء-ي])|(?<![ء-ي])[وفبلك]?اتحادا(?=\s+[A-Za-z])|(?<![ء-ي])(?:مواجهتي|نزالي|لقبي|بطولتي|عرضي|فريقي)\s+(?:بطولة|لقب|على\s+(?:لقب|بطولة)|ضمن)(?![ء-ي])|(?<![ء-ي])[وفبل]?(?:نزالي|مواجهتي|لقبي|بطولتي|مباراتي|حدثي|مركزي|شبكتي|قناتي|منصتي|موقعي)\s+(?=[A-Za-z]|ال[ء-ي])|(?<![ء-ي])[وفبل]?(?:نزالي|مواجهتي)\s+(?=أل[ء-ي]|فرق(?![ء-ي])|سلم|طاولات|سيدات)/g, message: "اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»", fields: ["title", "body"] },
   // Construct duals of a time word before two dates: «خلال شهري أكتوبر ونوفمبر»، «بين عامي 2017 و2023» (Lana story; 51 stories had it — INCIDENTS #1182)
   { code: "dual_noun", severity: "error", re: /(?<![ء-ي])[وفبل]?(?:ال)?(?:عامي\s+\d{4}\s+و\s*\d{4}|شهري\s+(?:يناير|فبراير|مارس|أبريل|إبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر)\s+و(?:يناير|فبراير|مارس|أبريل|إبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر))(?![ء-ي])/g, message: "مثنى «عامي 2017 و2023 / شهري أكتوبر ونوفمبر» ممنوع — اكتب «عام 2017 وعام 2023» أو «شهر أكتوبر وشهر نوفمبر»", fields: ["title", "body"] },
   // «عرضي AEW Dynamite وAEW Collision»، «في حلقتي مسلسل Visionquest» (INCIDENTS #945)
@@ -2271,6 +2271,21 @@ export function fixEventCalledMovie(text: string, source: string): string {
     const movie = new RegExp(`\\b(?:movie|film|picture)s?\\s+(?:called\\s+|titled\\s+|the\\s+)?${n}|${n}['’]?s?\\s+(?:\\(\\d{4}\\)\\s+)?(?:\\w+\\s+){0,2}(?:movie|film)|\\b\\d{4}\\s+(?:\\w+\\s+)?(?:movie|film)\\s+${n}|${n}\\s*\\(\\d{4}\\)`, "i");
     return movie.test(src) ? m : `${pre}${pfx}عرض${sp}${name}`;
   });
+}
+
+// «during the Divas Era» came out «خلال فترة عرض Divas Era» (Layla story, INCIDENTS #1268): an era is a period, not a
+// show. «(فترة) عرض X Era» becomes «حقبة X» («Divas Era» → «حقبة الديفاز»), for every story, before publishing.
+export function fixEraCalledShow(text: string): string {
+  return String(text || "").replace(/(^|[^ء-ي])([وبلف]?)(?:(?:فترة|حقبة|عصر)\s+)?عرض\s+((?:[A-Z][A-Za-z'’-]*\s+){0,2}[A-Z][A-Za-z'’-]*)\s+Era(?![A-Za-z0-9]|\s+[A-Za-z0-9])/g,
+    (_m, pre, pfx, name: string) => `${pre}${pfx}حقبة ${/^Divas$/i.test(name.trim()) ? "الديفاز" : name}`);
+}
+
+// «after I came back from my injury and I was Divas Champion» came out «وكنت بطلة WWE للسيدات» (Layla story, INCIDENTS
+// #1268): the Divas Championship is its own title. When the source says Divas Champion and never Women's Champion,
+// «بطلة WWE للسيدات» becomes «بطلة الديفاز».
+export function fixDivasChampion(text: string, source: string): string {
+  if (!/\bDivas?\s+Champion/i.test(source) || /\bWomen['’]?s\s+Champion/i.test(source)) return text;
+  return String(text || "").replace(/(^|[^ء-ي])([وبلفك]?)(بطلة|لقب|بطولة)\s+WWE\s+للسيدات(?![ء-ي])/g, (_m, pre, pfx, w) => `${pre}${pfx}${w} الديفاز`);
 }
 
 // «You were the first person that came to me» came out «كنت أول شخص يأتي إلي» — with no tashkeel that reads «I was»
