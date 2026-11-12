@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2314462/josh-barnett-wwe-matt-riddle-differing-takes-bloodsport-origins-gcw": {
+  "reason": "المراجعة رفضته: فعل مثنى («يختلفان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-12T15:54:28.276Z"
+ },
  "https://www.fightful.com/wrestling/chelsea-green-says-plaza-hotel-has-not-made-escort-accusations-right": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -38,11 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-12T15:51:03.175Z"
- },
- "https://www.wrestlinginc.com/2314462/josh-barnett-wwe-matt-riddle-differing-takes-bloodsport-origins-gcw": {
-  "reason": "المراجعة رفضته: فعل مثنى («يختلفان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-12T15:35:10.787Z"
  },
  "https://www.ringsidenews.com/cody-rhodes-says-more-hollywood-projects-could-announced-within-weeks": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
