@@ -1,28 +1,33 @@
 {
- "https://www.ringsidenews.com/aew-dynamitecollision-results-highlights-key-moments-november-11-2026": {
-  "reason": "المراجعة رفضته: الفائز مش مذكور في وصف نزاله (2) — اكتب النزال من المصدر بأسماء الطرفين",
+ "https://www.fightful.com/wrestling/aew-dynamite-results-11-11-2026-will-ospreay-kyle-fletcher-face-to-face-merecedes-mone-jay-white-vs-death-riders-more": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-12T04:27:23.639Z"
+  "at": "2026-11-12T04:33:00.801Z"
  },
  "https://www.fightful.com/wrestling/338670-aew-full-gear-national-championship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T04:26:16.862Z"
+  "at": "2026-11-12T04:30:01.950Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-undergoes-successful-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T04:26:15.973Z"
+  "at": "2026-11-12T04:30:01.172Z"
  },
  "https://www.fightful.com/wrestling/gabe-sapolsky-lists-seven-things-to-consider-when-signing-a-contract": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T04:26:15.365Z"
+  "at": "2026-11-12T04:30:00.635Z"
  },
  "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T04:26:13.716Z"
+  "at": "2026-11-12T04:29:59.193Z"
+ },
+ "https://www.ringsidenews.com/aew-dynamitecollision-results-highlights-key-moments-november-11-2026": {
+  "reason": "المراجعة رفضته: الفائز مش مذكور في وصف نزاله (2) — اكتب النزال من المصدر بأسماء الطرفين",
+  "retry": true,
+  "at": "2026-11-12T04:27:23.639Z"
  },
  "https://www.fightful.com/wrestling/338677-el-clon-aew-collision": {
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
@@ -43,11 +48,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-12T03:05:42.875Z"
- },
- "https://www.fightful.com/wrestling/aew-dynamite-results-11-11-2026-will-ospreay-kyle-fletcher-face-to-face-merecedes-mone-jay-white-vs-death-riders-more": {
-  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
-  "retry": true,
-  "at": "2026-11-12T03:04:41.695Z"
  },
  "https://www.ringsidenews.com/motor-city-machine-guns-win-best-five-series-against-ftr-aew-dynamite": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
