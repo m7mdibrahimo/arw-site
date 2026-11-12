@@ -1993,10 +1993,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-01T18:08:48.296Z"
- },
- "https://www.fightful.com/wrestling/zilla-fatu-overcomes-birthright-to-defeat-charlie-dempsey-at-nxt-halloween-havoc": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-01T17:57:07.742Z"
  }
 }
