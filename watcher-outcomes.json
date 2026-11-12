@@ -1,23 +1,23 @@
 {
- "https://www.ringsidenews.com/marty-scurll-claims-several-people-have-pushing-tna-sign-him": {
-  "reason": "المراجعة رفضته: فعل مثنى («يتوليان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: The Hardys",
-  "retry": true,
-  "at": "2026-11-12T12:03:15.419Z"
- },
  "https://www.fightful.com/wrestling/338670-aew-full-gear-national-championship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T12:02:46.997Z"
+  "at": "2026-11-12T12:05:53.920Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-undergoes-successful-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T12:02:46.306Z"
+  "at": "2026-11-12T12:05:53.171Z"
  },
  "https://www.fightful.com/wrestling/gabe-sapolsky-lists-seven-things-to-consider-when-signing-a-contract": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T12:02:45.855Z"
+  "at": "2026-11-12T12:05:52.652Z"
+ },
+ "https://www.ringsidenews.com/marty-scurll-claims-several-people-have-pushing-tna-sign-him": {
+  "reason": "المراجعة رفضته: فعل مثنى («يتوليان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: The Hardys",
+  "retry": true,
+  "at": "2026-11-12T12:03:15.419Z"
  },
  "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
   "reason": "مكرر مع خبر نزل قبل كده",
