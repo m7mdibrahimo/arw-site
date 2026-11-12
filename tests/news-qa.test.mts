@@ -644,6 +644,18 @@ test("dual demonstratives and «إنهما/لأنهما» block publishing (INCI
   assert.ok(!checkArticle("بيج إي يتحدث عن أصدقائه", "قال إنهم بمثابة عائلته، وهؤلاء النجوم أصدقاؤه.").some((i) => i.code === "dual_form"));
 });
 
+test("«أنهما/بأنهما» and «العملاقين» block publishing; «انمت/مستلقة/الغيت» are corrected (INCIDENTS #1263)", () => {
+  for (const body of ["أخبرها اثنان من الأطباء في غرفة العمليات بأنهما من معجبيها.", "أعلنت الإدارة عن مواجهة بين العملاقين أوسكار ولانس آرتشر.", "مشيرا إلى أنهما بنيا علاقة مهنية قوية."]) {
+    assert.ok(checkArticle("تشيلسي غرين تتحدث عن جراحتها", body).some((i) => i.code === "dual_form" && BLOCKING_QA_CODES.includes(i.code)), body);
+  }
+  assert.ok(!checkArticle("تشيلسي غرين تتحدث عن جراحتها", "أخبرها بعض الأطباء بأنهم من معجبيها، وقالت إنها بخير.").some((i) => i.code === "dual_form"));
+  assert.equal(applyCorrections("ردت على الاعتقاد بأنها انمت إلى المنصة"), "ردت على الاعتقاد بأنها انضمت إلى المنصة");
+  assert.equal(applyCorrections("كانت مستلقة على طاولة العمليات"), "كانت مستلقية على طاولة العمليات");
+  assert.equal(applyCorrections("وكانت الحلقة قد الغيت من العرض"), "وكانت الحلقة قد ألغيت من العرض");
+  assert.equal(applyCorrections("عزف على الغيتار"), "عزف على الغيتار");
+  assert.equal(applyCorrections("أشخاص مقربين بهذه العمق في حياته"), "أشخاص مقربين بهذا العمق في حياته");
+});
+
 test("a venue named «Pop's Nightclub» is not English wrestling jargon, but «pop» alone still is (INCIDENTS #1143)", () => {
   const jargon = (b: string) => checkArticle("نتائج عرض GCW الأخير في ولاية إيلينوي", b, []).some((i) => i.code === "english_jargon");
   assert.ok(!jargon("أقام اتحاد GCW عرضه في صالة Pop's Nightclub & Concert Venue بمدينة ساوجيت."));

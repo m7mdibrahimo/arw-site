@@ -122,9 +122,13 @@ export function hasRealFailure(results: Record<string, any>, requested: readonly
 // usually ready within minutes, so waiting the full 45-minute retry gate held a
 // finished reel/story back for most of an hour (seen 2026-09-24). Real failures
 // keep the long gate so platform rate limits aren't hammered.
+// A platform the last run never tried (the per-run Instagram/TikTok budget held it back) has no error: it is not a
+// failure either. Counting it as one put TNA Xplosion 06-11's Instagram reel and story behind the 45-minute gate,
+// and they waited two hours behind news posts (INCIDENTS #1263).
 export function retryDelayMs(previous: Entry | undefined, pending: readonly Platform[]): number {
   const stillProcessing = new Set(previous?.processing || []);
-  return pending.length > 0 && pending.every(p => stillProcessing.has(p)) ? 10 * 60_000 : 45 * 60_000;
+  const errors = previous?.errors || {};
+  return pending.length > 0 && pending.every(p => stillProcessing.has(p) || !errors[p]) ? 10 * 60_000 : 45 * 60_000;
 }
 export function applyResults(existing: Entry | undefined, results: Record<string, any>, requested: readonly Platform[], title: string): Entry {
   const entry: Entry = { publishedAt: existing?.publishedAt || null,

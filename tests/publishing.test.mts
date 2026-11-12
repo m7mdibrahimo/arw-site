@@ -843,6 +843,14 @@ test('platforms still processing are retried after 10 minutes, real failures aft
   assert.equal(retryDelayMs(failed, ['instagram_story']), 45 * 60_000);
 });
 
+test('a platform the per-run budget skipped does not push the show to the 45-minute gate (INCIDENTS #1263)', () => {
+  // 16:11: the reel hit Instagram's spacing (processing), the story was never tried (budget of 2 per run)
+  const entry = applyResults(undefined, { instagram_reel: { ok: false, status: 'processing', error: 'spacing' }, facebook_reel: { ok: true } } as any, ['instagram_reel', 'facebook_reel'], 'x');
+  assert.equal(retryDelayMs(entry, ['instagram_reel', 'instagram_story']), 10 * 60_000);
+  const failed = applyResults(entry, { instagram_story: { ok: false, error: 'boom' } } as any, ['instagram_story'], 'x');
+  assert.equal(retryDelayMs(failed, ['instagram_reel', 'instagram_story']), 45 * 60_000);
+});
+
 test('copy editor may not undo an approved spelling', async () => {
   const { editIsAnImprovement } = await import('../scripts/editorial');
   assert.equal(editIsAnImprovement('ذا يانغ باكس', 'يانغ باكس'), false);
