@@ -1,5 +1,15 @@
 [
   {
+    "id": 338769,
+    "link": "https://www.fightful.com/wrestling/lei-ying-lee-departs-tna-wrestling/",
+    "date": "2026-11-12T15:09:33",
+    "date_gmt": "2026-11-12T20:09:33",
+    "title": {
+      "rendered": "Lei Ying Lee Departs TNA Wrestling"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/29142010/l-intro-1773428723.jpg"
+  },
+  {
     "id": 338764,
     "link": "https://www.fightful.com/wrestling/tony-khan-details-talent-travel-issues-for-11-11-aew-taping-still-thinks-the-show-came-out-great/",
     "date": "2026-11-12T15:06:43",
@@ -288,15 +298,5 @@
       "rendered": "TBS Title Match Set For AEW Full Gear Tailgate Brawl Pre-Show"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/11233728/HW5fS7VW0AAcBHc-e1794458258684.jpg"
-  },
-  {
-    "id": 338654,
-    "link": "https://www.fightful.com/wrestling/wwe-evolve-results-11-11/",
-    "date": "2026-11-11T23:00:00",
-    "date_gmt": "2026-11-12T04:00:00",
-    "title": {
-      "rendered": "WWE EVOLVE Results (11/11)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/03/04212900/wwe_evolve_1.jpg"
   }
 ]
