@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/josh-barnett-blasts-matt-riddle-claiming-he-created-bloodsport-accuses-him-ripping-off-movie": {
+  "reason": "المراجعة رفضته: اسم عربي ملزوق فيه 's الإنجليزية («جوش بارنيت's») — اكتب الاسم كله بالإنجليزي («Josh Barnett's») أو أعد الصياغة",
+  "retry": true,
+  "at": "2026-11-12T19:37:55.040Z"
+ },
  "https://www.fightful.com/wrestling/338753-joe-hendry-wwe-tag-teams": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
