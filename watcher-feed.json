@@ -1,5 +1,25 @@
 [
   {
+    "id": 338654,
+    "link": "https://www.fightful.com/wrestling/wwe-evolve-results-11-11/",
+    "date": "2026-11-11T23:00:00",
+    "date_gmt": "2026-11-12T04:00:00",
+    "title": {
+      "rendered": "WWE EVOLVE Results (11/11)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/03/04212900/wwe_evolve_1.jpg"
+  },
+  {
+    "id": 338677,
+    "link": "https://www.fightful.com/wrestling/338677-el-clon-aew-collision/",
+    "date": "2026-11-11T22:59:50",
+    "date_gmt": "2026-11-12T03:59:50",
+    "title": {
+      "rendered": "El Clon Returns To The Ring For AEW On 11/11 Collision"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/11225921/HW5RuJEXUAAv6PK.jpg"
+  },
+  {
     "id": 338670,
     "link": "https://www.fightful.com/wrestling/338670-aew-full-gear-national-championship/",
     "date": "2026-11-11T22:11:51",
@@ -278,25 +298,5 @@
       "rendered": "Amir Jordan Announced For TNA World X Cup"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/11103206/Screenshot-2026-11-11-at-10.19.03-AM.png"
-  },
-  {
-    "id": 338572,
-    "link": "https://www.fightful.com/wrestling/jim-duggan-takes-shots-at-wrestlers-crying-and-whining-about-wrestling-on-dark-side-of-the-ring/",
-    "date": "2026-11-11T10:32:29",
-    "date_gmt": "2026-11-11T15:32:29",
-    "title": {
-      "rendered": "Jim Duggan Takes Shots At Wrestlers &#8216;Crying And Whining&#8217; About Wrestling On Dark Side Of The Ring"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2022/12/27230451/jim-duggan.jpg"
-  },
-  {
-    "id": 338568,
-    "link": "https://www.fightful.com/wrestling/jim-duggan-recalls-vince-mcmahon-banning-card-games-in-the-wwe-locker-room/",
-    "date": "2026-11-11T10:11:09",
-    "date_gmt": "2026-11-11T15:11:09",
-    "title": {
-      "rendered": "Jim Duggan Recalls Vince McMahon Banning Card Games In The WWE Locker Room"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/09/07072940/vince_mcmahon_12.jpg"
   }
 ]

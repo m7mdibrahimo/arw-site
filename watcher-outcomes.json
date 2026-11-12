@@ -1,23 +1,33 @@
 {
+ "https://www.fightful.com/wrestling/wwe-evolve-results-11-11": {
+  "reason": "المراجعة رفضته: جملة افتتاحية من غير فعل («عرض اتحاد X أحدث عرض من…») — ابدأ بفعل: «قدم اتحاد X أحدث حلقة من…» (INCIDENTS #783)",
+  "retry": false,
+  "at": "2026-11-12T04:03:28.899Z"
+ },
+ "https://www.fightful.com/wrestling/338677-el-clon-aew-collision": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-12T04:02:27.744Z"
+ },
  "https://www.fightful.com/wrestling/338670-aew-full-gear-national-championship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T03:58:54.177Z"
+  "at": "2026-11-12T04:02:01.378Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-undergoes-successful-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T03:58:53.431Z"
+  "at": "2026-11-12T04:02:00.616Z"
  },
  "https://www.fightful.com/wrestling/gabe-sapolsky-lists-seven-things-to-consider-when-signing-a-contract": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T03:58:52.915Z"
+  "at": "2026-11-12T04:02:00.090Z"
  },
  "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T03:58:51.525Z"
+  "at": "2026-11-12T04:01:58.711Z"
  },
  "https://www.ringsidenews.com/why-damian-priests-aaa-run-abruptly-came-end": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -1988,15 +1998,5 @@
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-01T02:10:55.523Z"
- },
- "https://www.fightful.com/wrestling/shiloh-hill-scores-win-over-naraku-at-nxt-halloween-havoc": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-01T01:31:23.042Z"
- },
- "https://www.ringsidenews.com/kelani-jordan-retains-nxt-womens-championship-controversial-finish-halloween-havoc-2026": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-11-01T01:12:43.884Z"
  }
 }
