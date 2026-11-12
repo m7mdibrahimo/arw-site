@@ -417,6 +417,9 @@ export function applyNamesGlossary(text: string): string {
         // Behind «و» only people are translated: «عروض GCW وEVOLVE» and «وWarner Bros. Discovery» are companies and stay English (INCIDENTS #1226)
         if (/[\u0600-\u06FF]$/.test(before) && KEEP_ENGLISH_AFTER_WAW.test(english.trim())) return m;
         if (/[A-Za-z]\s$|[A-Za-z]$/.test(before) && /^(?:['’]s\b|\s+[A-Za-z])/.test(after)) return m;
+        // A name followed by a lower-case English connector and another English word opens an English event or match
+        // name: «نزال Anarchy in the Arena» became «نزال أناركي in the Arena» (Marina Shafir story, INCIDENTS #1265).
+        if (/^\s+(?:in|of|at|on|for|from|to|the)\s+(?:the\s+)?[A-Z]/.test(whole.slice(offset + m.length, offset + m.length + 24))) return m;
         // …and when an English word other than a federation code or «vs/and» leads into it: «Being The
         // Elite» became «Being ذا إيليت», «The Extreme Life of Matt Hardy» «…of مات هاردي» (INCIDENTS #234)
         const lead = whole.slice(Math.max(0, offset - 24), offset).match(/([A-Za-z]+)\s+$/)?.[1] || "";

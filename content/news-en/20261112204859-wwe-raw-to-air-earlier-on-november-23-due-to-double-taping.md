@@ -17,6 +17,6 @@ image: /content/images/67hn7fsi9zswthb9.jpg
 ---
 Wrestling fans should prepare for a temporary schedule change, as WWE RAW will air earlier than usual on November 23. This adjustment is part of the company's plan to accommodate the Thanksgiving holiday, with both RAW and SmackDown being recorded in a single night to provide talent and crew with extra time off.
 
-The live broadcast on Netflix is scheduled to begin at 6 PM ET from the INTRUST Bank Arena in Wichita, Kansas. The event will feature the live recording of RAW, alongside the taping of SmackDown for its November 27 broadcast. Doors for fans attending the venue will open at 4:30 PM local time.
+The live broadcast on Netflix is scheduled to begin at 6 PM ET from the INTRUST Bank Arena in Wichita, Kansas. The night will feature a live RAW broadcast, alongside the taping of SmackDown for its November 27 broadcast. Doors for fans attending the venue will open at 4:30 PM local time.
 
 These tapings are significant as they serve as the final television shows before Survivor Series: WarGames on November 28 in Houston, Texas. Attention is focused on the ongoing developments between The Bloodline and The 946, as the night will finalize the storylines and matches heading into the major event.

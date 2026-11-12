@@ -1,7 +1,7 @@
 ---
 title: "Rey Mysterio Announces Team USA vs. Team Mexico Match for WWE Survivor Series"
 slug: "rey-mysterio-announces-team-usa-vs-team-mexico-match-for-wwe-survivor-series"
-description: "Rey Mysterio revealed that he is in talks with Adam Pearce and Nick Aldis about organizing a classic five-on-five Survivor Series match between Team USA."
+description: "Rey Mysterio revealed that he is in talks with Adam Pearce and Nick Aldis about organizing a classic five-on-five Survivor Series match between Team USA and Team Mexico."
 federation: WWE
 date: 2026-11-06T11:58:22.000Z
 source_id: 802263862

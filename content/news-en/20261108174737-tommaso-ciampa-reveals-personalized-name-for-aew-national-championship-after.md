@@ -1,7 +1,7 @@
 ---
 title: "Tommaso Ciampa Reveals Personalized Name for AEW National Championship After Jericho Cruise Victory"
 slug: "tommaso-ciampa-reveals-personalized-name-for-aew-national-championship-after"
-description: "Tommaso Ciampa has given his newly won AEW National Championship a personalized name following his victory aboard Chris Jericho's Rock 'N' Wrestling Rager."
+description: "Tommaso Ciampa has given his newly won AEW National Championship a personalized name following his victory aboard Chris Jericho's Rock 'N' Wrestling Rager at Sea."
 federation: AEW
 date: 2026-11-08T14:47:37.000Z
 source_id: 802265010
