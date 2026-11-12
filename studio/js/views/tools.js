@@ -490,7 +490,8 @@ export async function renderServerTool(page) {
       <header class="panel-head"><h2>${icon('upload')} ارفع ملف من جهازك</h2></header>
       <p class="muted">اختار ملف العرض (الفيديو، أو الصوت بس اللي طلّعته بـ«طلّع-الصوت»)، واختار لغة صوته، ودوس «ارفع». الملف بيروح للسيرفر والتفريغ بيبدأ لوحده. لو على السيرفر ملف بنفس الاسم (زي ملف ناقص)، الجديد بياخد مكانه.</p>
       <div class="srv-up-row">
-        <input class="input" type="file" id="srv-file" multiple accept=".mkv,.mp4,.ts,.avi,.mka,.m4a,.mp3,.aac,.opus,.wav,.flac,.mov,.webm,.m4v">
+        <label class="btn srv-pick">${icon('folder')} اختار الملف<input type="file" id="srv-file" multiple hidden accept=".mkv,.mp4,.ts,.avi,.mka,.m4a,.mp3,.aac,.opus,.wav,.flac,.mov,.webm,.m4v"></label>
+        <span class="muted srv-picked-name" id="srv-file-name" dir="auto">لسه مختارتش ملف</span>
         <select class="input" id="srv-up-lang">${LANGS.map(l => html`<option value="${l.key}">${l.name}</option>`)}</select>
         <button class="btn btn-primary" id="srv-up-go">${icon('upload')} ارفع</button>
       </div>
@@ -627,12 +628,16 @@ export async function renderServerTool(page) {
       throw e;
     }
   };
+  $('#srv-file').onchange = () => {
+    const fs = [...($('#srv-file').files || [])];
+    $('#srv-file-name').textContent = !fs.length ? 'لسه مختارتش ملف' : fs.length === 1 ? fs[0].name : `${num(fs.length)} ملفات`;
+  };
   $('#srv-up-go').onclick = async () => {
     const input = $('#srv-file'), files = [...(input.files || [])], lang = $('#srv-up-lang').value;
     if (!files.length) return toast('اختار الملف الأول', 'error');
     const bad = files.filter(f => !/\.(mkv|mp4|ts|avi|mka|m4a|mp3|aac|opus|wav|flac|mov|webm|m4v)$/i.test(f.name));
     if (bad.length) return toast(`«${bad[0].name}» مش فيديو ولا صوت`, 'error');
-    input.value = '';
+    input.value = ''; $('#srv-file-name').textContent = 'لسه مختارتش ملف';
     const list = $('#srv-up-list');
     for (const f of files) {
       const row = document.createElement('div');

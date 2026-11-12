@@ -1207,7 +1207,8 @@ section.panel + section.panel { margin-top: 16px; }
 .srv-keyrow { display: flex; gap: 8px; align-items: center; margin-top: 8px; }
 /* «ارفع ملف من جهازك» (سيرفر التفريغ) */
 .srv-up-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 10px 0; }
-.srv-up-row input[type=file] { flex: 1 1 260px; min-width: 0; }
+.srv-pick { cursor: pointer; }
+.srv-picked-name { flex: 1 1 180px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
 .srv-up-row select { flex: 0 1 200px; }
 #srv-up-list { display: flex; flex-direction: column; gap: 12px; margin: 6px 0 10px; }
 #srv-up-list:empty { display: none; }
