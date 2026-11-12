@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/rob-van-dam-denies-blame-tna-wrestling-getting-banned-twitch-threesome-segment": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-12T23:55:15.993Z"
+ },
  "https://www.fightful.com/wrestling/josh-barnett-gives-his-side-of-using-bloodsport-after-matt-riddle": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-02T15:28:02.779Z"
- },
- "https://www.fightful.com/uncategorized/full-lineup-announced-for-brcw-cruisin-for-a-bruisin-4": {
-  "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-02T15:25:50.605Z"
  }
 }
