@@ -7,32 +7,22 @@
  "https://www.fightful.com/wrestling/338670-aew-full-gear-national-championship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T04:43:31.606Z"
+  "at": "2026-11-12T04:45:20.565Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-undergoes-successful-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T04:43:30.834Z"
+  "at": "2026-11-12T04:45:19.965Z"
  },
  "https://www.fightful.com/wrestling/gabe-sapolsky-lists-seven-things-to-consider-when-signing-a-contract": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T04:43:30.301Z"
+  "at": "2026-11-12T04:45:19.492Z"
  },
  "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T04:43:28.874Z"
- },
- "https://www.fightful.com/wrestling/aew-dynamite-results-11-11-2026-will-ospreay-kyle-fletcher-face-to-face-merecedes-mone-jay-white-vs-death-riders-more": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، فعل مثنى («يواجهان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
-  "retry": true,
-  "at": "2026-11-12T04:40:27.973Z"
- },
- "https://www.ringsidenews.com/aew-dynamitecollision-results-highlights-key-moments-november-11-2026": {
-  "reason": "المراجعة رفضته: الفائز مش مذكور في وصف نزاله (2) — اكتب النزال من المصدر بأسماء الطرفين",
-  "retry": true,
-  "at": "2026-11-12T04:27:23.639Z"
+  "at": "2026-11-12T04:45:18.315Z"
  },
  "https://www.fightful.com/wrestling/338677-el-clon-aew-collision": {
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
