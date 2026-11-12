@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2314462/josh-barnett-wwe-matt-riddle-differing-takes-bloodsport-origins-gcw": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، فعل مثنى («يقدمان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-12T16:35:27.039Z"
+ },
  "https://www.fightful.com/wrestling/chelsea-green-says-plaza-hotel-has-not-made-escort-accusations-right": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -38,11 +43,6 @@
   "reason": "المراجعة رفضته: المصدر مابيربطش المصارع بالاتحاد ده: WWE ريا ريبلي — اكتب «المصارع <الاسم>» من غير اسم اتحاد",
   "retry": true,
   "at": "2026-11-12T16:19:25.213Z"
- },
- "https://www.wrestlinginc.com/2314462/josh-barnett-wwe-matt-riddle-differing-takes-bloodsport-origins-gcw": {
-  "reason": "المراجعة رفضته: فعل مثنى («يختلفان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-12T16:07:19.932Z"
  },
  "https://www.fightful.com/wrestling/kairi-makes-run-in-during-jericho-cruise-main-event": {
   "reason": "مكرر مع خبر نزل قبل كده",
