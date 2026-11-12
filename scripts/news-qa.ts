@@ -2259,6 +2259,20 @@ export function podcastNameTranslated(text: string, source: string): string[] {
     .filter((n, _i, all) => !all.some(m => m !== n && m.includes(n)));
 }
 
+// «Last we saw each other was backstage at Natural Born Killers» (a GCW/Bloodsport event) came out «في كواليس فيلم
+// Natural Born Killers» because the story is about a movie (INCIDENTS #1267). An English name the story calls «فيلم»
+// becomes «عرض» when the source names it but never calls it a movie or film.
+export function fixEventCalledMovie(text: string, source: string): string {
+  const src = String(source || "");
+  const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return String(text || "").replace(/(^|[^ء-ي])([وبلف]?)فيلم(\s+)([A-Z][A-Za-z0-9'&.:-]*(?:\s+[A-Z0-9][A-Za-z0-9'&.:-]*){0,5})/g, (m, pre, pfx, sp, name) => {
+    const n = esc(name.replace(/[.:]+$/, ""));
+    if (!new RegExp(`(^|[^A-Za-z])${n}([^A-Za-z]|$)`, "i").test(src)) return m;
+    const movie = new RegExp(`\\b(?:movie|film|picture)s?\\s+(?:called\\s+|titled\\s+|the\\s+)?${n}|${n}['’]?s?\\s+(?:\\(\\d{4}\\)\\s+)?(?:\\w+\\s+){0,2}(?:movie|film)|\\b\\d{4}\\s+(?:\\w+\\s+)?(?:movie|film)\\s+${n}|${n}\\s*\\(\\d{4}\\)`, "i");
+    return movie.test(src) ? m : `${pre}${pfx}عرض${sp}${name}`;
+  });
+}
+
 // «You were the first person that came to me» came out «كنت أول شخص يأتي إلي» — with no tashkeel that reads «I was»
 // and the quote means nothing (INCIDENTS #1259). When the source says «you were the first», a quote that opens with
 // «كنت أول» gets its «أنت».

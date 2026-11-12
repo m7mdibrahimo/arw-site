@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, type NewsFile } from "./news-qa";
+import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixEventCalledMovie, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -4703,6 +4703,8 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     draft = { ...draft, title: fixLetterDigitHandles(draft.title, src), body: fixLetterDigitHandles(draft.body, src) };
     // «You were the first…» written «كنت أول…» (reads «I was», INCIDENTS #1259).
     draft = { ...draft, body: fixYouWereQuote(draft.body, src) };
+    // «backstage at Natural Born Killers» (an event) written «في كواليس فيلم Natural Born Killers» (INCIDENTS #1267).
+    draft = { ...draft, title: fixEventCalledMovie(draft.title, src), body: fixEventCalledMovie(draft.body, src) };
   }
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
