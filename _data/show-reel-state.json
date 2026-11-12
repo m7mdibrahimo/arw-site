@@ -5135,9 +5135,9 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال لونيس كلاسيكو 09.11.2026 مترجم",
-    "lastAttempt": 1794498153230,
+    "lastAttempt": 1794498948402,
     "errors": {
-      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
       "instagram_story"
