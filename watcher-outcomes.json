@@ -1,63 +1,68 @@
 {
- "https://www.ringsidenews.com/ethan-page-says-he-only-wants-money-wrestling-now": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+ "https://www.fightful.com/wrestling/revpro-live-in-eastbourne-results-11-8": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يدافعان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-12T21:52:51.700Z"
+  "at": "2026-11-12T21:58:07.259Z"
  },
  "https://www.fightful.com/wrestling/josh-barnett-gives-his-side-of-using-bloodsport-after-matt-riddle": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T21:53:20.605Z"
+  "at": "2026-11-12T21:56:29.100Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-explains-the-last-outfits-name-change-to-the-cut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T21:53:20.279Z"
+  "at": "2026-11-12T21:56:28.766Z"
  },
  "https://www.fightful.com/wrestling/lei-ying-lee-departs-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T21:53:19.843Z"
+  "at": "2026-11-12T21:56:28.347Z"
  },
  "https://www.fightful.com/wrestling/338753-joe-hendry-wwe-tag-teams": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T21:53:19.141Z"
+  "at": "2026-11-12T21:56:27.632Z"
  },
  "https://www.fightful.com/wrestling/wwe-considered-licensing-mainstream-song-for-the-946s-entrance-music": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T21:53:18.533Z"
+  "at": "2026-11-12T21:56:27.020Z"
  },
  "https://www.fightful.com/wrestling/338742-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T21:53:18.208Z"
+  "at": "2026-11-12T21:56:26.693Z"
  },
  "https://www.fightful.com/wrestling/338737-wwe-raw-attraction": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T21:53:17.872Z"
+  "at": "2026-11-12T21:56:26.367Z"
  },
  "https://www.fightful.com/wrestling/338442-chavo-guerrero-wrestling-brad-small": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T21:53:17.265Z"
+  "at": "2026-11-12T21:56:25.755Z"
  },
  "https://www.fightful.com/wrestling/chelsea-green-says-plaza-hotel-has-not-made-escort-accusations-right": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T21:53:16.754Z"
+  "at": "2026-11-12T21:56:25.232Z"
  },
  "https://www.fightful.com/wrestling/damian-priest-stands-by-previous-comments-about-wwe-main-event-scene-thats-on-me-to-make-it-different": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T21:53:16.333Z"
+  "at": "2026-11-12T21:56:24.795Z"
  },
  "https://www.fightful.com/wrestling/338699-damian-priest-aaa": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T21:53:15.815Z"
+  "at": "2026-11-12T21:56:24.274Z"
+ },
+ "https://www.ringsidenews.com/ethan-page-says-he-only-wants-money-wrestling-now": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-12T21:52:51.700Z"
  },
  "https://www.ringsidenews.com/former-tna-x-division-champion-set-surprise-return-destination-x-2026": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-02T13:18:55.774Z"
- },
- "https://www.fightful.com/wrestling/santino-marella-says-he-pitched-cobra-vs-mr-socko-battle-in-the-2012-royal-rumble-match-says-they-had-more-planned": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-02T12:58:59.327Z"
  }
 }
