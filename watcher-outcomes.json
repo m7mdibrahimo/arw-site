@@ -1,4 +1,19 @@
 {
+ "https://www.ringsidenews.com/kyle-fletcher-brings-will-ospreays-wife-son-heated-confrontation-1111-aew-dynamite": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-12T02:01:14.840Z"
+ },
+ "https://www.ringsidenews.com/aew-dynamitecollision-results-highlights-key-moments-november-11-2026": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تقرير نتائج بلا أي نتيجة",
+  "retry": true,
+  "at": "2026-11-12T02:00:08.560Z"
+ },
+ "https://www.ringsidenews.com/why-damian-priests-aaa-run-abruptly-came-end": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": true,
+  "at": "2026-11-12T01:59:50.979Z"
+ },
  "https://www.fightful.com/wrestling/kyle-fletcher-takes-credit-for-breaking-will-ospreays-neck-in-heated-promo-on-aew-dynamite": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -33,21 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-12T01:53:49.210Z"
- },
- "https://www.ringsidenews.com/kyle-fletcher-brings-will-ospreays-wife-son-heated-confrontation-1111-aew-dynamite": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-12T01:41:02.165Z"
- },
- "https://www.ringsidenews.com/aew-dynamitecollision-results-highlights-key-moments-november-11-2026": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، تقرير نتائج بلا أي نتيجة",
-  "retry": true,
-  "at": "2026-11-12T01:40:22.379Z"
- },
- "https://www.ringsidenews.com/why-damian-priests-aaa-run-abruptly-came-end": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-12T01:39:53.982Z"
  },
  "https://www.wrestlinginc.com/2314401/wwe-cody-rhodes-john-cena-classic-worlds-collide-doomsday-disney": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
