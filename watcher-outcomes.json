@@ -1,48 +1,48 @@
 {
- "https://www.wrestlinginc.com/2314462/josh-barnett-wwe-matt-riddle-differing-takes-bloodsport-origins-gcw": {
-  "reason": "المراجعة رفضته: فعل مثنى («يختلفان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-12T15:35:10.787Z"
- },
  "https://www.fightful.com/wrestling/chelsea-green-says-plaza-hotel-has-not-made-escort-accusations-right": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T15:36:50.138Z"
+  "at": "2026-11-12T15:42:19.369Z"
  },
  "https://www.fightful.com/wrestling/damian-priest-stands-by-previous-comments-about-wwe-main-event-scene-thats-on-me-to-make-it-different": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T15:36:49.778Z"
+  "at": "2026-11-12T15:42:18.907Z"
  },
  "https://www.fightful.com/wrestling/338699-damian-priest-aaa": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T15:36:49.344Z"
+  "at": "2026-11-12T15:42:18.343Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-if-umaga-had-half-face-paint-its-because-he-was-running-late": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T15:36:48.835Z"
+  "at": "2026-11-12T15:42:17.684Z"
  },
  "https://www.fightful.com/wrestling/kairi-makes-run-in-during-jericho-cruise-main-event": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T15:36:48.477Z"
+  "at": "2026-11-12T15:42:17.206Z"
  },
  "https://www.fightful.com/wrestling/338670-aew-full-gear-national-championship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T15:36:48.062Z"
+  "at": "2026-11-12T15:42:16.674Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-undergoes-successful-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T15:36:47.314Z"
+  "at": "2026-11-12T15:42:15.717Z"
  },
  "https://www.fightful.com/wrestling/gabe-sapolsky-lists-seven-things-to-consider-when-signing-a-contract": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T15:36:46.798Z"
+  "at": "2026-11-12T15:42:15.058Z"
+ },
+ "https://www.wrestlinginc.com/2314462/josh-barnett-wwe-matt-riddle-differing-takes-bloodsport-origins-gcw": {
+  "reason": "المراجعة رفضته: فعل مثنى («يختلفان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-12T15:35:10.787Z"
  },
  "https://www.ringsidenews.com/cody-rhodes-says-more-hollywood-projects-could-announced-within-weeks": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
@@ -1998,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-01T17:57:07.742Z"
- },
- "https://www.fightful.com/wrestling/multiple-wwe-superstars-did-not-want-to-be-booked-for-wwe-crown-jewel-due-to-safety-concerns": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-01T17:14:49.637Z"
  }
 }
