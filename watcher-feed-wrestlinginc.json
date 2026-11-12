@@ -1,5 +1,15 @@
 [
   {
+    "id": 3590040669,
+    "link": "https://www.wrestlinginc.com/2315009/tna-thursday-night-impact-november-12-2026-results/",
+    "date": "Thu, 12 Nov 2026 23:00:00 +0000",
+    "date_gmt": "2026-11-12T23:00:00.000Z",
+    "title": {
+      "rendered": "TNA Thursday Night Impact Results 11/12/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-thursday-night-impact-results-111226-w-live-updates/l-intro-1794503482.jpg"
+  },
+  {
     "id": 2691307151,
     "link": "https://www.wrestlinginc.com/2315463/wwe-offered-jeff-cobb-bronson-reed-njpw-name/",
     "date": "Thu, 12 Nov 2026 21:57:49 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Tommaso Ciampa Retains AEW National Title, Will Defend At Full Gear"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/tommaso-ciampa-retains-aew-national-title-will-defend-at-full-gear/l-intro-1794453401.jpg"
-  },
-  {
-    "id": 1958641430,
-    "link": "https://www.wrestlinginc.com/2314417/mcmg-wins-best-5-series-against-ftr-aew-dynamite/",
-    "date": "Thu, 12 Nov 2026 02:50:52 +0000",
-    "date_gmt": "2026-11-12T02:50:52.000Z",
-    "title": {
-      "rendered": "MCMG Wins Best Of 5 Series Against FTR On AEW Dynamite"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/mcmg-wins-best-of-5-series-against-ftr-on-aew-dynamite/l-intro-1794451626.jpg"
   }
 ]
