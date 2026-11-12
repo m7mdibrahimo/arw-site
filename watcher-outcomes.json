@@ -1993,10 +1993,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-01T20:23:38.276Z"
- },
- "https://www.ringsidenews.com/wwe-sign-guy-rick-achberger-honored-celebration-life": {
-  "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
-  "retry": true,
-  "at": "2026-11-01T20:14:42.635Z"
  }
 }
