@@ -1,8 +1,8 @@
 {
- "https://www.ringsidenews.com/why-damian-priests-aaa-run-abruptly-came-end": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+ "https://www.wrestlinginc.com/2314240/aew-dynamite-november-11-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-12T00:11:12.834Z"
+  "at": "2026-11-12T00:13:23.845Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-undergoes-successful-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -13,6 +13,11 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-12T00:11:13.157Z"
+ },
+ "https://www.ringsidenews.com/why-damian-priests-aaa-run-abruptly-came-end": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-12T00:11:12.834Z"
  },
  "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -33,11 +38,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-12T00:11:10.578Z"
- },
- "https://www.wrestlinginc.com/2314240/aew-dynamite-november-11-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-11T23:54:18.086Z"
  },
  "https://www.fightful.com/wrestling/stu-hart-memorial-bridge-opens-on-highway-8-west-of-calgary": {
   "reason": "مكرر مع خبر نزل قبل كده",
