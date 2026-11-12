@@ -1,48 +1,53 @@
 {
+ "https://www.fightful.com/wrestling/338753-joe-hendry-wwe-tag-teams": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-12T19:06:27.712Z"
+ },
  "https://www.fightful.com/wrestling/wwe-considered-licensing-mainstream-song-for-the-946s-entrance-music": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T19:03:59.561Z"
+  "at": "2026-11-12T19:06:27.182Z"
  },
  "https://www.fightful.com/wrestling/338742-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T19:03:59.230Z"
+  "at": "2026-11-12T19:06:26.899Z"
  },
  "https://www.fightful.com/wrestling/338737-wwe-raw-attraction": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T19:03:58.896Z"
+  "at": "2026-11-12T19:06:26.616Z"
  },
  "https://www.fightful.com/wrestling/338442-chavo-guerrero-wrestling-brad-small": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T19:03:58.281Z"
+  "at": "2026-11-12T19:06:26.090Z"
  },
  "https://www.fightful.com/wrestling/chelsea-green-says-plaza-hotel-has-not-made-escort-accusations-right": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T19:03:57.759Z"
+  "at": "2026-11-12T19:06:25.646Z"
  },
  "https://www.fightful.com/wrestling/damian-priest-stands-by-previous-comments-about-wwe-main-event-scene-thats-on-me-to-make-it-different": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T19:03:57.335Z"
+  "at": "2026-11-12T19:06:25.282Z"
  },
  "https://www.fightful.com/wrestling/338699-damian-priest-aaa": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T19:03:56.815Z"
+  "at": "2026-11-12T19:06:24.836Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-if-umaga-had-half-face-paint-its-because-he-was-running-late": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T19:03:56.199Z"
+  "at": "2026-11-12T19:06:24.313Z"
  },
  "https://www.fightful.com/wrestling/338670-aew-full-gear-national-championship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T19:03:55.472Z"
+  "at": "2026-11-12T19:06:23.699Z"
  },
  "https://www.wrestlinginc.com/2315200/bully-ray-wwe-cody-rhodes-compromised-anakin-skywalker-punt-randy-orton": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: العنوان مش جملة عربية (أقل من 3 كلمات عربية)",
   "retry": false,
   "at": "2026-11-02T01:25:31.654Z"
- },
- "https://www.fightful.com/wrestling/darby-allin-completes-new-york-city-marathon-in-just-over-five-and-a-half-hours": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-02T00:49:37.301Z"
  }
 }
