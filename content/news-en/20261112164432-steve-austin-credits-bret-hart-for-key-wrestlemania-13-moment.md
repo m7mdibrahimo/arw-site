@@ -14,7 +14,7 @@ en_tags:
   - "WrestleMania 13"
 image: /content/images/uz7g6ozuql4w524z.jpg
 ---
-Stone Cold Steve Austin and Bret Hart delivered one of the most iconic matches in WWE history at WrestleMania 13, but Austin recently revealed that Hart was responsible for a crucial moment during their legendary encounter. Austin explained that Hart recognized his potential while they were both in WCW and specifically chose to work with him following his return from knee surgery in 1996.
+Stone Cold Steve Austin and Bret Hart delivered one of the most iconic matches in WWE history at WrestleMania 13, but Austin recently revealed that Hart was responsible for a crucial moment during their legendary encounter. Austin explained that Hart recognized his potential while Austin was still in WCW, and Hart specifically chose to work with him following his return from knee surgery in 1996.
 
 According to Austin, the two collaborated behind the scenes to plan their match in Chicago. He noted that Hart suggested a specific idea that was executed during the bout, which ultimately played a significant role in his career trajectory.
 

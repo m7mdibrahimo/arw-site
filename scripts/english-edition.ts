@@ -96,6 +96,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - In a return story, the result the source gives right after mentioning an earlier match as background ("Before this, he last wrestled in August… He ended up losing the match for his team after a BTE Trigger") belongs to the NEW match the story is about, unless the source dates it — put it with the new match (El Clon story, INCIDENTS #1254).
 - Keep the tense of the source: what someone has already explained or revealed stays in the past. Never close with "he will provide more details soon" unless the source promises it (the John Cena Classic story turned "has also shed more light" into a promise, INCIDENTS #1224).
 - A former ring name belongs only to the person who used it, and keep who did what with whom as the source has it: "Moné, who worked with PAC when he was known as Neville in NXT, had known him since FCW" must never become "who worked with him during their time as Neville" — and never shorten a first name (Alexis is not Alex) (Mercedes Moné story, INCIDENTS #1235). In Arabic the same: «عملت معه عندما كان يحمل اسم نيفيل».
+- Keep who was in which promotion exactly as the source says: "He saw me coming up when I was in WCW" means only the speaker was in WCW — never "while they were both in WCW" (Bret Hart was in the WWF; Steve Austin story, INCIDENTS #1260).
 - Never add a word in square brackets inside a quote («[which]», «[sic]»): a quote keeps the source's own words. If the source's quote is broken there, close it with an ellipsis (…) or leave that part out.
 - Punctuation: a show or event name that ends with «!» or «?» («TNA iMPACT!») is never followed by a full stop — the name's own mark ends the sentence, never «TNA iMPACT!.»; never two full stops in a row.
 - Donald Trump is the sitting US President (2025–2029): never write "former President Trump" or "the previous administration" about him unless the source says so explicitly about his first term (INCIDENTS #609).
@@ -243,6 +244,23 @@ export function enYearNotInSource(text: string, sourceText: string, storyDate?: 
     +year === own || new RegExp(`(?<!\\d)${year}(?!\\d)`).test(sourceText) || !new RegExp(`\\b${date}\\b(?!,?\\s?(?:19|20)\\d{2})`).test(sourceText) ? whole : `${date}${comma}`);
 }
 
+/** «Hart recognized his potential while they were both in WCW» when the source only says «He saw me coming up when I
+ *  was in WCW» — Hart was in the WWF; the writer put both men in the speaker's promotion (Steve Austin / Bret Hart
+ *  story, INCIDENTS #1260). A «both in/with <promotion>» the source never says (no «both» in the source
+ *  sentence that names that promotion) is returned, else null. */
+export function bothInPromotionNotInSource(text: string, sourceText: string): string | null {
+  const src = String(sourceText || "");
+  if (src.length < 200) return null;
+  // a plural subject is required: «found success both in WWE EVOLVE and on the indies» is not the mistake
+  const re = /\b(?:(?:they|we|the two(?: men| women)?|the pair|the duo)\s+(?:were\s+)?both|both\s+(?:men|women|of them)\s+were)\s+(?:still\s+)?(?:in|with|at|working (?:in|for)|wrestling (?:in|for)|competing (?:in|for)|signed (?:to|with))\s+(?:the\s+)?(WCW|WWF|WWE|ECW|AEW|TNA|ROH|NJPW|AJPW|NOAH|MLW|CMLL|AAA|NXT|OVW|IMPACT|Impact|Stampede|Smoky Mountain|USWA|GCW)\b/g;
+  for (const m of String(text || "").matchAll(re)) {
+    const org = m[1];
+    const sentences = src.split(/(?<=[.!?”"])\s+/).filter((x) => new RegExp(`\\b${org}\\b`, "i").test(x));
+    if (!sentences.some((x) => /\b(?:both|the two of us|we were (?:in|with|at))\b/i.test(x))) return m[0];
+  }
+  return null;
+}
+
 export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   const issues: string[] = [];
   const title = String(e?.title || "").trim(), body = String(e?.body || "").trim();
@@ -258,6 +276,9 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   // Tony Khan's tweet credited to the team it talks about (INCIDENTS #1225)
   const tkPhrase = tonyKhanTweetMisattributed(title + "\n" + body, `${body}\n${i.arabicBody || ""}`, "en");
   if (tkPhrase) issues.push(`Tony Khan's tweet credited to someone else: ${tkPhrase}`);
+  // «while they were both in WCW» when the source says only the speaker was there (INCIDENTS #1260)
+  const both = bothInPromotionNotInSource(title + "\n" + body, i.sourceText);
+  if (both) issues.push(`puts both people in one promotion, the source does not: «${both}» — say who was where, as the source does`);
   // «on Friday, October 17, 2026» for a Saturday (Toni Storm, Crown Jewel, Matt Hardy stories, INCIDENTS #962)
   const badDay = enWeekdayNotOnDate(title + "\n" + body);
   if (badDay) issues.push(`weekday does not match the date: ${badDay}`);

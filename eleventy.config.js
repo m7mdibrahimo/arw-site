@@ -644,6 +644,7 @@ module.exports = function(eleventyConfig) {
       .trim();
   };
   eleventyConfig.addFilter("stripDate", stripDate);
+  eleventyConfig.addFilter("datedTonightTitle", (title, date) => require("./lib/news-head-title.cjs").datedTonightTitle(title, date));
   eleventyConfig.addNunjucksFilter("stripDate", stripDate);
   // A meta description cut at a fixed length ended mid-word/mid-sentence («…بدلا من...»): this one ends
   // where a sentence or clause ends. Head only, nothing visible (INCIDENTS #862).
