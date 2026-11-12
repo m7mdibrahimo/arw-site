@@ -2618,6 +2618,18 @@ function matchSections(body: string): { head: string; text: string }[] {
 }
 const inLines = (lines: string[], ens: string[]) => lines.some((l) => ens.some((en) => new RegExp(`(?<![A-Za-z])${en.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![A-Za-z])`, "i").test(l)));
 
+/** The prose of a results report before its first match heading: the opening and the backstage/promo scenes. */
+function resultsOpening(body: string): string {
+  const lines = body.split("\n");
+  const firstHeading = lines.findIndex(l => /^\s*\*\*[^*\n]+\*\*\s*$/.test(l));
+  return (firstHeading < 0 ? [] : lines.slice(0, firstHeading)).filter(l => !/^\s*https?:\/\//.test(l)).join(" ").replace(/\s+/g, " ").trim();
+}
+/** True when a rewrite of a published results report threw away most of its opening scenes (INCIDENTS #1252). */
+export function resultsUpdateLostNarrative(oldBody: string, newBody: string): boolean {
+  const before = resultsOpening(oldBody).length;
+  const after = resultsOpening(newBody).length;
+  return before >= 300 && after < before * 0.5;
+}
 export function droppedMatchResults(sourceText: string, body: string, names: Record<string, string> = WRESTLER_NAMES_MAP): string[] {
   const src = sourceWinnerLines(sourceText);
   if (!src.length) return [];
@@ -4756,6 +4768,18 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   if (odd.unbacked.length) {
     blocking.push({ code: "invented_winner", severity: "error", field: "body", message: `فائز مش موجود في نتايج المصدر (النزال لسه ما خلصش؟): ${odd.unbacked.join("، ")}`, excerpt: odd.unbacked.join(" | ") });
     lastPostRetryable = true;
+  }
+  // A live update that keeps every result but throws away the story around them — the backstage scenes,
+  // the promos, how each match ended — read «واجه X Y، وانتهى النزال بفوز X» ten times over (Dynamite/Collision
+  // 11 نوفمبر, 05:02 UTC, INCIDENTS #1252). It is refused and the fuller published version stays.
+  if (options.keepUrl && existingFile && isShowResultsArticle(rawTitle, plainText)) {
+    try {
+      const oldBody = matter(fs.readFileSync(existingFile.filePath, "utf-8")).content;
+      if (resultsUpdateLostNarrative(oldBody, draft.body)) {
+        blocking.push({ code: "results_update_shrunk", severity: "error", field: "body", message: "التحديث شال فقرات الكواليس وتفاصيل النزالات من التقرير المنشور — اكتب التقرير كامل وزوّد الجديد", excerpt: "" });
+        lastPostRetryable = true;
+      }
+    } catch { /* the published file is optional here */ }
   }
   if (odd.empty.length) {
     blocking.push({ code: "results_missing_winners", severity: "error", field: "body", message: `عنوان نزال من غير أي كلام تحته: ${odd.empty.join("، ")}`, excerpt: odd.empty.join(" | ") });

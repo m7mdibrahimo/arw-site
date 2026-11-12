@@ -19,4 +19,5 @@ Yota Tsuji expressed appreciation for Kenny Omega, emphasizing that he values hi
 During a new interview, Yota Tsuji discussed facing Kenny Omega, noting that he fully respects Omega's desire to wrestle in a non-title three-way match in Hiroshima rather than immediately requesting a championship bout as past AEW stars have done, which reflects deep respect for NJPW.
 
 Yota Tsuji is getting ready to face Kenny Omega in Hiroshima while planning to avenge his G1 loss to Oleg Boltin in pursuit of an IWGP Heavyweight Championship singles match against him at the upcoming Wrestle Kingdom event at Tokyo Dome.
+
 https://www.youtube.com/watch?v=7Lg9KJo8Oo8

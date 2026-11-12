@@ -5052,6 +5052,10 @@ async function runScheduleBackstopCron(env: Env): Promise<void> {
     // native schedules stayed silent for hours (INCIDENTS #305).
     { workflow: "seo-new-shows.yml", kvKey: "last_seo_new_shows_trigger_ts", throttleMs: 59 * 60 * 1000 },
     { workflow: "video-hosts.yml", kvKey: "last_video_hosts_trigger_ts", throttleMs: 359 * 60 * 1000 },
+    // The servers check («17 */3») ran at 14:29 and 21:56 UTC on 2026-11-11 and
+    // then skipped 00:17 and 03:17 — the shows' servers went 7+ hours unchecked
+    // (INCIDENTS #1252). A backstop every 3 hours, whatever the native schedule did.
+    { workflow: "playback-check.yml", kvKey: "last_playback_check_trigger_ts", throttleMs: 179 * 60 * 1000 },
     // The daily report's 05:15 tick hadn't fired by 06:20 on its first
     // scheduled day — the morning round reads it (INCIDENTS #324). Once a
     // UTC day, from 05:40, whatever the native schedule did.

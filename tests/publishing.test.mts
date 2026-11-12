@@ -3814,7 +3814,7 @@ test('every watch server is played for real; one that fails twice is hidden unti
 test('every scheduled workflow the round depends on has the Worker backstop trigger (INCIDENTS #305)', () => {
   const src = fs.readFileSync('worker/src/index.ts', 'utf-8');
   const block = src.slice(src.indexOf('async function runScheduleBackstopCron'), src.indexOf('async function runScheduleBackstopCron') + 3000);
-  for (const wf of ['show-reel-monitor.yml', 'wrestlinginc-watcher.yml', 'ringsidenews-watcher.yml', 'seo-new-shows.yml', 'video-hosts.yml', 'search-console.yml']) {
+  for (const wf of ['show-reel-monitor.yml', 'wrestlinginc-watcher.yml', 'ringsidenews-watcher.yml', 'seo-new-shows.yml', 'video-hosts.yml', 'search-console.yml', 'playback-check.yml']) {
     assert.ok(block.includes(`workflow: "${wf}"`), wf);
     assert.ok(fs.readFileSync(`.github/workflows/${wf}`, 'utf-8').includes('workflow_dispatch'), wf);
   }

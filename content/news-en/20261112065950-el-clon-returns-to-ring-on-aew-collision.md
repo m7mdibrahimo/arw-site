@@ -1,7 +1,7 @@
 ---
 title: "El Clon Returns to Ring on AEW Collision"
 slug: "el-clon-returns-to-ring-on-aew-collision"
-description: "El Clon made his in-ring return for AEW, pairing up alongside Brian Cage and Kevin Knight to battle Jack Perry and the Young Bucks during the November 11."
+description: "El Clon made his in-ring return for AEW, pairing up alongside Brian Cage and Kevin Knight to battle Jack Perry and the Young Bucks during the November 11 episode of AEW Collision."
 federation: AEW
 date: 2026-11-12T03:59:50.000Z
 source_id: 338677

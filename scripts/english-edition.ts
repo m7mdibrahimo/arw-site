@@ -62,6 +62,12 @@ export function isCardOrResultLine(line: string): boolean {
   return t.split(/\s+/).length <= 60;
 }
 /** The embed lines of a story, kept as they are */
+/** A post/video link glued under the last sentence («…wrestle more matches.\nhttps://youtube…») is part of that
+ *  paragraph in Markdown and never becomes an embed: it gets its own paragraph (Damian Priest story, INCIDENTS #1252). */
+export function embedOwnParagraph(body: string): string {
+  return body.replace(/^([^\n]*\S[^\n]*)\n(https?:\/\/\S+[ \t]*)$/gm, (m, prev, url) => /^https?:\/\//.test(prev.trim()) ? m : `${prev}\n\n${url}`);
+}
+
 export function embedLines(body: string): string[] {
   return String(body || "").split("\n").map((l) => l.trim()).filter(isEmbedLine);
 }
@@ -695,7 +701,7 @@ export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEW
   const body = trailingEmbedsLast(splitGluedBlocks(e.body.replace(/\r/g, "")).replace(/\n{3,}/g, "\n\n").trim(), i.arabicBody);
   // the embeds the Arabic story has and the English one left out go at its end
   const missing = embedLines(i.arabicBody).filter((l) => !body.includes(linkOf(l)));
-  const finalBody = missing.length ? `${body}\n\n${missing.join("\n\n")}` : body;
+  const finalBody = embedOwnParagraph(missing.length ? `${body}\n\n${missing.join("\n\n")}` : body);
   // The description used to be built from the FIRST prose line only. When that line is the writer's short
   // topic sentence — «Monica Monroe was recruited by AJ Styles.» — the snippet under the title said nothing
   // about the story (a 40-letter description on live pages, 2026-10-27). The first prose paragraphs are given
@@ -802,6 +808,7 @@ export function syncEnglishFromArabic(dir = NEWS_EN_DIR, newsDir = NEWS_DIR): nu
     body = splitQuoteNarration(body);
     const missing = embedLines(ar.body).filter((l) => !body.includes(linkOf(l)));
     if (missing.length) body = `${body}\n\n${missing.join("\n\n")}`;
+    body = embedOwnParagraph(body);
     const fmNoGallery = fm.replace(/^gallery:\n(?:  - .*\n?)*/m, "").replace(/\n$/, "");
     const fmNew = ar.gallery.length ? fmNoGallery.replace(/^(image:.*)$/m, (l) => [l, ...galleryYaml(ar.gallery)].join("\n")) : fmNoGallery;
     const out = `---\n${fmNew}\n---\n${body}\n`;
