@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/aew-dynamite-and-collision-11-11-2026/",
+    "title": "عرض داينامايت 11.11.2026 مترجم",
+    "subtitle": "AEW Dynamite and Collision 11.11.2026",
+    "image": "/content/images/kd3gnqc93pi48max.jpg?w=800",
+    "federation": "AEW",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض داينامايت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-nxt-10-11-2026/",
     "title": "عرض ان اكس تي 10.11.2026 مترجم",
     "subtitle": "WWE NXT 10.11.2026",
@@ -75,17 +86,6 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض ار او اتش اون اونر كلوب مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aew-dynamite-blood-guts-04-11-2026/",
-    "title": "عرض داينامايت 04.11.2026 مترجم",
-    "subtitle": "AEW Dynamite Blood & Guts 04.11.2026",
-    "image": "/content/images/3zd997irv7ovan7z.jpg?w=800",
-    "federation": "AEW",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض داينامايت مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/wwe-evolve-04-11-2026/",
