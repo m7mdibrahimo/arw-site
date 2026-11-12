@@ -16,7 +16,7 @@ image: /content/images/p8bh6vvu2wo9ylcw.jpg
 ---
 Tommaso Ciampa successfully defended the AEW National Championship against Mike Bailey during the November 11 episode of AEW Dynamite, immediately facing a new challenge from Ilja Dragunov, who appeared right after the match to demand a title shot. Their bout featured intense action and hard hits before the champion secured the victory with a running knee strike. Barely had Ciampa finished celebrating when the lights went out and Ilja Dragunov made his entrance to a massive crowd reaction, standing face-to-face with the titleholder to set up their upcoming clash.
 
-This confrontation follows weeks of tension between the two competitors, as Dragunov has targeted the championship for some time, giving Ciampa a major test just days after his grueling encounter against Bailey. The updated AEW Full Gear 2026 card, scheduled for November 14 in Phoenix, Arizona, features the following lineup:
+This confrontation follows weeks of tension between the two competitors. Dragunov previously confronted Ciampa after the champion claimed to be the biggest signing in AEW history, and Ciampa refused to fight him at the time. Now Ciampa faces a major test just days after his grueling encounter against Bailey. The updated AEW Full Gear 2026 card, scheduled for November 14 in Phoenix, Arizona, features the following lineup:
 
 AEW World Championship: Will Ospreay (c) vs. Kyle Fletcher
 AEW National Championship: Tommaso Ciampa (c) vs. Ilja Dragunov

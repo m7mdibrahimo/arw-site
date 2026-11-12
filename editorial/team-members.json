@@ -1,0 +1,12 @@
+{
+  "_note": "Known members of tag teams/trios (Arabic, as in scripts/wrestler-names.json). news-qa wrong_team_members blocks «<team> (A و B)» when A or B is a different wrestler or the team itself (INCIDENTS #1250: «ذا نيو ليفل (مارك ديفيس وجيك دويل)»). Add a team only when its roster is certain.",
+  "teams": {
+    "ذا نيو ليفل": ["أوستن كريد", "كوفي", "كوفي كينغستون", "إكسافير وودز"],
+    "ذا يانغ باكس": ["مات جاكسون", "نيك جاكسون", "مات", "نيك"],
+    "إف تي آر": ["كاش ويلر", "داكس هاروود"],
+    "موتور سيتي ماشين جانز": ["أليكس شيلي", "كريس سابين"],
+    "بروديدو": ["برودي كينج", "بانديدو"],
+    "ذا أوسوز": ["جيمي أوسو", "جي أوسو"],
+    "ذا كريد برذرز": ["جوليوس كريد", "بروتوس كريد"]
+  }
+}
