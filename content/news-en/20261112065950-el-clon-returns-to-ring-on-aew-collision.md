@@ -13,9 +13,9 @@ en_tags:
   - "Young Bucks"
 image: /content/images/rotitn2f7mze5sss.jpg
 ---
-El Clon made his in-ring return for AEW, pairing up alongside Brian Cage and Kevin Knight to battle Jack Perry and the Young Bucks during the November 11 episode of AEW Collision.
+El Clon made his in-ring return for AEW, pairing up alongside Brian Cage and Kevin Knight to battle Jack Perry and the Young Bucks during the November 11 episode of AEW Collision. He ended up taking the loss for his team after a BTE Trigger from the Young Bucks.
 
-His prior appearance for the promotion occurred in August, when he joined forces with Jake Doyle and Mark Davis to take on the Young Bucks and Kenny Omega. Unfortunately, he suffered the defeat for his side after absorbing a BTE Trigger from the Young Bucks.
+His prior appearance for the promotion occurred in August, when he joined forces with Jake Doyle and Mark Davis to take on the Young Bucks and Kenny Omega.
 
 Clon's most recent victory in AEW took place back in July, when he scored a win over Lio Rush on an episode of Collision.
 
