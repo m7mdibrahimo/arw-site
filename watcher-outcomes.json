@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/aew-dynamitecollision-results-highlights-key-moments-november-11-2026": {
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، تقرير نتائج بلا أي نتيجة",
+  "retry": true,
+  "at": "2026-11-12T01:33:58.956Z"
+ },
+ "https://www.ringsidenews.com/why-damian-priests-aaa-run-abruptly-came-end": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-12T01:33:40.749Z"
+ },
  "https://www.fightful.com/wrestling/aew-dynamite-results-11-11-2026-will-ospreay-kyle-fletcher-face-to-face-merecedes-mone-jay-white-vs-death-riders-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -28,16 +38,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-12T01:33:21.716Z"
- },
- "https://www.ringsidenews.com/aew-dynamitecollision-results-highlights-key-moments-november-11-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-12T01:13:34.246Z"
- },
- "https://www.ringsidenews.com/why-damian-priests-aaa-run-abruptly-came-end": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-12T01:13:34.129Z"
  },
  "https://www.wrestlinginc.com/2314401/wwe-cody-rhodes-john-cena-classic-worlds-collide-doomsday-disney": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
