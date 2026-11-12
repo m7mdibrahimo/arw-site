@@ -2,6 +2,16 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "اللتي",
+      "right": "اللاتي",
+      "note": "«لولا فايس اللتي يحصلن» — خطأ إملائي، الصح «اللاتي» (خبر سول روكا وليرا فالكيريا، INCIDENTS #1262)"
+    },
+    {
+      "wrong": "بيداي",
+      "right": "بيدي",
+      "note": "«وأنا ألوح بيداي» — بعد حرف الجر الصح «بيدي» (خبر ويل فريدل، INCIDENTS #1262)"
+    },
+    {
       "wrong": "الفاعليات",
       "right": "الفعاليات",
       "note": "«ظهر كحكم خاص في إحدى الفاعليات» — خطأ إملائي، الصح «الفعاليات» (خبر ام جيه اف، INCIDENTS #1258)"
