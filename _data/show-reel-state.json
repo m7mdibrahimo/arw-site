@@ -5133,15 +5133,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض سي ام ال ال لونيس كلاسيكو 09.11.2026 مترجم",
-    "lastAttempt": 1794498948402,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1794499860502,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -5153,9 +5149,15 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض تي ان ايه اكسبلوجن 06.11.2026 مترجم",
-    "lastAttempt": 1794496415019,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1794499891661,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_reel",
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
