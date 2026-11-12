@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/damian-priest-says-he-didnt-have-to-read-or-audition-for-steps-role": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-12T14:56:10.256Z"
+ },
  "https://www.fightful.com/wrestling/damian-priest-stands-by-previous-comments-about-wwe-main-event-scene-thats-on-me-to-make-it-different": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T14:49:21.540Z"
+  "at": "2026-11-12T14:54:39.645Z"
  },
  "https://www.fightful.com/wrestling/338699-damian-priest-aaa": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T14:49:21.103Z"
+  "at": "2026-11-12T14:54:39.285Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-if-umaga-had-half-face-paint-its-because-he-was-running-late": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T14:49:20.589Z"
+  "at": "2026-11-12T14:54:38.873Z"
  },
  "https://www.fightful.com/wrestling/338670-aew-full-gear-national-championship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T14:49:19.994Z"
+  "at": "2026-11-12T14:54:38.408Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-undergoes-successful-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T14:49:19.248Z"
+  "at": "2026-11-12T14:54:37.799Z"
  },
  "https://www.fightful.com/wrestling/gabe-sapolsky-lists-seven-things-to-consider-when-signing-a-contract": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T14:49:18.727Z"
+  "at": "2026-11-12T14:54:37.394Z"
  },
  "https://www.ringsidenews.com/cody-rhodes-says-more-hollywood-projects-could-announced-within-weeks": {
   "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-01T15:54:50.708Z"
- },
- "https://www.fightful.com/wrestling/njpw-super-junior-tag-league-night-seven-results-11-1": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-01T15:14:48.764Z"
  }
 }
