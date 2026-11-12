@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2311489/aew-njpw-gabe-kidd-experienced-psychotic-episode-tail-end-run": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-12T13:33:06.433Z"
+ },
  "https://www.fightful.com/wrestling/zilla-fatu-if-umaga-had-half-face-paint-its-because-he-was-running-late": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-01T12:53:53.127Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-results-10-31-2026-danhausen-hosts-grayson-waller-kelani-jordan-zilla-fatu-more": {
-  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-11-01T04:25:30.085Z"
  }
 }
