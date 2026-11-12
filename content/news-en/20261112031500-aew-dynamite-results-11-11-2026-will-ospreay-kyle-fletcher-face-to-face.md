@@ -1,24 +1,24 @@
 ---
-title: "AEW Dynamite Results (11/11/2026): Will Ospreay & Kyle Fletcher Face-to-Face"
+title: "AEW Dynamite Results (11/11/2026): Will Ospreay and Kyle Fletcher Face-to-Face, Mercedes Moné and Jay White in Action"
 slug: "aew-dynamite-results-11-11-2026-will-ospreay-kyle-fletcher-face-to-face"
-description: "All Elite Wrestling presented a new episode of Dynamite on Wednesday, November 11, 2026."
+description: "Full results for the November 11, 2026, edition of AEW Dynamite on TBS, broadcast live from the Maverik Center in West Valley City, Utah."
 federation: AEW
-date: 2026-11-12T00:15:00.000Z
+date: 2026-11-12T03:07:45.000Z
 source_id: 338639
 source_url: "https://www.fightful.com/wrestling/aew-dynamite-results-11-11-2026-will-ospreay-kyle-fletcher-face-to-face-merecedes-mone-jay-white-vs-death-riders-more/"
 en_tags:
+  - "AEW"
   - "AEW Dynamite"
   - "Will Ospreay"
   - "Kyle Fletcher"
-  - "AEW"
-  - "Full Gear"
-image: /content/images/q1gx7d2liozgkvd4.jpg
+  - "Jon Moxley"
+  - "Mercedes Moné"
+image: /content/images/kyext3fsprwtl3d5.jpg
 ---
-All Elite Wrestling presented a new episode of Dynamite on Wednesday, November 11, 2026, broadcast live on TBS from the Maverik Center in West Valley City, Utah. The event featured a face-to-face confrontation between Will Ospreay and Kyle Fletcher to build toward their upcoming bout at AEW Full Gear. During the segment, Fletcher expressed gratitude for Ospreay's mentorship, though he promised to bring a halt to Ospreay's reign. Ospreay noted that Fletcher had made significant progress since their previous encounter. Following a broadcast of clips from All In London, Ospreay inquired about Fletcher's actual emotions upon capturing the championship. Fletcher admitted to feeling envious while remaining aware of what lay ahead for him, and vowed to strip Ospreay of everything. Ospreay maintained his composure and, despite absorbing a slap from Fletcher, stated he would demonstrate that he operates on a completely different tier.
+Full results for the November 11, 2026, edition of AEW Dynamite on TBS, broadcast live from the Maverik Center in West Valley City, Utah. Will Ospreay and Kyle Fletcher met face-to-face ahead of their upcoming match on AEW Full Gear. Fletcher thanked Ospreay for the lessons but vowed to end Ospreay's reign. Ospreay acknowledged Fletcher's improvement since their last encounter. After showing footage from AEW All In London, Ospreay asked Fletcher how he really felt after winning the title. Fletcher admitted he was jealous but knew what was coming next, vowing to take everything from Ospreay. Despite being slapped by Fletcher, Ospreay remained composed and stated he would prove he was on another level.
 
-A vignette later highlighted Will Ospreay and Adam Copeland following AEW Blood and Guts. Backstage after that event, Wrathlander and Brawling Birds engaged in a heated argument. Andrade El Idolo voiced his displeasure regarding his loss of the AEW National Championship while turning his attention toward the World Title. Big Stoke delivered a promo expressing confidence that FTR will secure the victory in their best-of-five series. Hangman Page and Brodido participated in a backstage interview, during which Bandido stated that Swerve Strickland and New Level will face their fate at AEW Full Gear, according to Fightful.
+Brodido (Bandido and Brody King) faced New Level (Austin Creed and Kofi) in a match that ended in a count-out. David Finlay defeated Orange Cassidy. Andrade El Idolo expressed his disappointment over losing the AEW National Championship and stated his sights are now set on the World Title. Big Stoke cut a promo predicting that FTR will win the Best of 5 Series. Persephone, accompanied by Britt Baker, defeated Gypsy Mac. Hangman Page and Bandido were interviewed backstage, with Bandido warning that Swerve Strickland and New Level will meet their fate at AEW Full Gear.
 
-Brodido (Bandido and Brody King) vs. New Level (Austin Creed and Kofi) ended in a Count-out
-David Finlay def. Orange Cassidy
-Persephone (w/ Britt Baker) def. Gypsy Mac
-FTR (Dax Harwood & Cash Wheeler) def. Motor City Machine Guns (Alex Shelley & Chris Sabin)
+In the fifth match of the Best of 5 Series, Motor City Machine Guns (Alex Shelley and Chris Sabin) defeated FTR (Dax Harwood and Cash Wheeler). Tommaso Ciampa defeated “Speedball” Mike Bailey to retain the AEW National Championship. Following the match, a future bout between Ilja Dragunov and Ciampa was announced for AEW Full Gear. In the main event, Marina Shafir and Jon Moxley defeated Mercedes Moné and Jay White in a mixed tag team match, which led to a post-match brawl involving The Conglomeration, Death Riders, and The Cut.
+
+In other action, The Elite (Jack Perry, Matt Jackson, and Nick Jackson) faced Kevin Knight, El Clon, and Brian Cage. Divine Dominion declared they would bring the violence following their loss at AEW Blood and Guts. During a backstage interview, The Young Bucks and Jack Perry spoke, with Perry expressing his desire for a rematch with Samoa Joe. Wardlow defeated Nick Comorotto. In the ROH World Tag Team Championship match, Sky Team (Mistico and Mascara Dorada) successfully defended their titles against The Swirl (Blake Christian and Lee Johnson).
