@@ -1,5 +1,5 @@
 ---
-title: "Real Reason Marty Scurll Turned Down AEW Offer"
+title: "Marty Scurll Reveals the Real Reason He Turned Down an AEW Offer"
 slug: "real-reason-marty-scurll-turned-down-aew-offer"
 description: "Marty Scurll had the opportunity to sign with AEW during the company's early days in 2019, but he ultimately chose to remain with Ring of Honor."
 federation: ROH

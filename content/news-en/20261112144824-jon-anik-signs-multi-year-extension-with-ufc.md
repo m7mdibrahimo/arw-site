@@ -16,4 +16,4 @@ image: /content/images/pfkji5jygsppwzb1.jpg
 ---
 Jon Anik is remaining with the UFC on a multi-year contract extension. The promotion announced the deal with Anik, who has served as a play-by-play commentator for 15 years.
 
-Anik will continue his role as the lead voice of the UFC broadcast on Paramount+, beginning with UFC 334: GANE vs HOKIT at Madison Square Garden in New York on Saturday, November 14. Anik expressed his gratitude for his tenure with the organization and his excitement for the future.
+Anik will continue his role as the lead voice of the UFC broadcast on Paramount+, beginning with UFC 334: Gane vs. Hokit at Madison Square Garden in New York on Saturday, November 14. Anik expressed his gratitude for his tenure with the organization and his excitement for the future.

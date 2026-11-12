@@ -439,7 +439,11 @@ export function fixSingularThey(text: string): string {
 }
 
 export const ENGLISH_FIXES: [RegExp, string][] = [
-  [/\bC\.J\. Perry\b/g, "CJ Perry"], // how the site spells her everywhere — INCIDENTS #1227
+  [/\bC\.J\. Perry\b/g, "CJ Perry"],
+  // «UFC 334: GANE vs HOKIT» — the UFC event name copied in capitals from the source; fighters' names are never acronyms (Jon Anik story, INCIDENTS #1258)
+  [/\b(UFC (?:\d+|Fight Night)\s*:\s*)([A-Z][A-Z'’-]{2,}) (vs\.?) ([A-Z][A-Z'’-]{2,})\b/g, (_m: string, ev: string, a: string, vs: string, b: string) => `${ev}${a[0] + a.slice(1).toLowerCase()} ${vs} ${b[0] + b.slice(1).toLowerCase()}`],
+  // «Damian Priest recently admitted that his recent partnership» — «recent» said twice in one clause (INCIDENTS #1258)
+  [/\b([Rr])ecently (\w+ (?:that )?(?:his|her|their|its) )recent\b/g, (_m: string, r: string, mid: string) => `${r === "R" ? mid[0].toUpperCase() + mid.slice(1) : mid}recent`], // how the site spells her everywhere — INCIDENTS #1227
   // «Refuses to Post Her Children» — photos went missing (Brie Bella story, round 2026-11-06)
   [/\b(refuse[sd]?|refusing|decid(?:e[sd]?|ing)|vow(?:s|ed|ing)?) (to|not to|never to) (post|share) (her|his|their|my|our) (children|kids|son|daughter|baby|babies)\b/gi, (_m: string, v: string, to: string, post: string, her: string, who: string) => /^[A-Z]/.test(v) ? `${v} ${to} ${post} Photos of ${her[0].toUpperCase() + her.slice(1)} ${who[0].toUpperCase() + who.slice(1)}` : `${v} ${to} ${post} photos of ${her} ${who}`],
   // «Lighting Match» — CMLL's quick format is a Lightning Match (CMLL Martes de Arena México story, round 2026-11-04)

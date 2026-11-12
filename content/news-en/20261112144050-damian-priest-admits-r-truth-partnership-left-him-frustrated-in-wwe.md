@@ -14,7 +14,7 @@ en_tags:
   - "SmackDown"
 image: /content/images/0x12qr3lfxo9u3sw.jpg
 ---
-Damian Priest recently admitted that his recent partnership with R-Truth in WWE left him feeling frustrated, as it was not the direction he wanted for his career. Speaking on Complex Graps, Priest explained that he is tired of carrying partners and wants to focus on his singles career and championship opportunities.
+Damian Priest admitted that his recent partnership with R-Truth in WWE left him feeling frustrated, as it was not the direction he wanted for his career. Speaking on Complex Graps, Priest explained that he is tired of carrying partners and wants to focus on his singles career and championship opportunities.
 
 Priest noted that being paired with others, from The Judgment Day to Rhea Ripley and even Bad Bunny, has followed him throughout his WWE career. Now, he wants to prove himself as a singles competitor and warned SmackDown General Manager Nick Aldis that he will start targeting people if he does not get the championship opportunities he believes he deserves.
 

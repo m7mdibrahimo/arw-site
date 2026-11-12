@@ -2,6 +2,21 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "الفاعليات",
+      "right": "الفعاليات",
+      "note": "«ظهر كحكم خاص في إحدى الفاعليات» — خطأ إملائي، الصح «الفعاليات» (خبر ام جيه اف، INCIDENTS #1258)"
+    },
+    {
+      "wrong": "فاعليات",
+      "right": "فعاليات",
+      "note": "نفس الخطأ من غير «ال» (INCIDENTS #1258)"
+    },
+    {
+      "wrong": "ترك وشأنه",
+      "right": "تركه وشأنه",
+      "note": "«بينما يضمن ترك وشأنه قضاء الجميع وقتا هادئا» — ناقصة الضمير، الصح «تركه وشأنه» (خبر إيثان بايج، INCIDENTS #1258)"
+    },
+    {
       "wrong": "ليعلن نفسه المنافس",
       "right": "ليصبح المنافس",
       "note": "«حسم النزال… ليعلن نفسه المنافس الأول» — الفائز بنزال تحديد المنافس بيبقى المنافس الأول، هو ماعلنش حاجة (نتائج PWS، INCIDENTS #1232)"
