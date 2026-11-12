@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/why-damian-priests-aaa-run-abruptly-came-end": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": true,
+  "at": "2026-11-12T04:11:43.598Z"
+ },
  "https://www.fightful.com/wrestling/wwe-evolve-results-11-11": {
   "reason": "المراجعة رفضته: جملة افتتاحية من غير فعل («عرض اتحاد X أحدث عرض من…») — ابدأ بفعل: «قدم اتحاد X أحدث حلقة من…» (INCIDENTS #783)",
   "retry": false,
@@ -28,11 +33,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-12T04:01:58.711Z"
- },
- "https://www.ringsidenews.com/why-damian-priests-aaa-run-abruptly-came-end": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-12T03:51:37.224Z"
  },
  "https://www.ringsidenews.com/aew-dynamitecollision-results-highlights-key-moments-november-11-2026": {
   "reason": "المراجعة رفضته: الفائز مش مذكور في وصف نزاله (1) — اكتب النزال من المصدر بأسماء الطرفين",
