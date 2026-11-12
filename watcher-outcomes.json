@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2315009/tna-thursday-night-impact-november-12-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-12T23:22:14.412Z"
+ },
  "https://www.fightful.com/wrestling/josh-barnett-gives-his-side-of-using-bloodsport-after-matt-riddle": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,11 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-12T23:18:53.267Z"
- },
- "https://www.wrestlinginc.com/2315009/tna-thursday-night-impact-november-12-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-12T23:06:12.633Z"
  },
  "https://www.ringsidenews.com/eric-bischoff-plans-wcw-reality-show-before-wwe-tough-enough": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
