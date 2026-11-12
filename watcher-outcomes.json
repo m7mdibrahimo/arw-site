@@ -14,26 +14,6 @@
   "retry": true,
   "at": "2026-11-12T03:04:41.695Z"
  },
- "https://www.fightful.com/wrestling/jim-ross-undergoes-successful-shunt-surgery": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-12T03:04:16.582Z"
- },
- "https://www.fightful.com/wrestling/gabe-sapolsky-lists-seven-things-to-consider-when-signing-a-contract": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-12T03:04:15.976Z"
- },
- "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-12T03:04:14.342Z"
- },
- "https://www.fightful.com/wrestling/john-cena-i-took-a-big-swing-at-wrestlemania-41-and-we-stunk-up-the-joint-we-failed": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-12T03:04:13.847Z"
- },
  "https://www.ringsidenews.com/aew-dynamitecollision-results-highlights-key-moments-november-11-2026": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
