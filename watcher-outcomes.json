@@ -10,29 +10,34 @@
   "at": "2026-11-12T04:03:28.899Z"
  },
  "https://www.fightful.com/wrestling/338677-el-clon-aew-collision": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
-  "at": "2026-11-12T04:02:27.744Z"
+  "at": "2026-11-12T04:08:38.903Z"
  },
  "https://www.fightful.com/wrestling/338670-aew-full-gear-national-championship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T04:02:01.378Z"
+  "at": "2026-11-12T04:07:56.480Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-undergoes-successful-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T04:02:00.616Z"
+  "at": "2026-11-12T04:07:55.724Z"
  },
  "https://www.fightful.com/wrestling/gabe-sapolsky-lists-seven-things-to-consider-when-signing-a-contract": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T04:02:00.090Z"
+  "at": "2026-11-12T04:07:55.202Z"
  },
  "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T04:01:58.711Z"
+  "at": "2026-11-12T04:07:53.813Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-evolve-results-11-11": {
+  "reason": "المراجعة رفضته: جملة افتتاحية من غير فعل («عرض اتحاد X أحدث عرض من…») — ابدأ بفعل: «قدم اتحاد X أحدث حلقة من…» (INCIDENTS #783)",
+  "retry": false,
+  "at": "2026-11-12T04:03:28.899Z"
  },
  "https://www.ringsidenews.com/aew-dynamitecollision-results-highlights-key-moments-november-11-2026": {
   "reason": "المراجعة رفضته: الفائز مش مذكور في وصف نزاله (1) — اكتب النزال من المصدر بأسماء الطرفين",
