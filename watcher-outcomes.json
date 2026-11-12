@@ -1,43 +1,48 @@
 {
- "https://www.wrestlinginc.com/2314462/josh-barnett-wwe-matt-riddle-differing-takes-bloodsport-origins-gcw": {
-  "reason": "المراجعة رفضته: فعل مثنى («يختلفان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-12T16:07:19.932Z"
- },
  "https://www.fightful.com/wrestling/chelsea-green-says-plaza-hotel-has-not-made-escort-accusations-right": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T16:05:59.772Z"
+  "at": "2026-11-12T16:19:27.654Z"
  },
  "https://www.fightful.com/wrestling/damian-priest-stands-by-previous-comments-about-wwe-main-event-scene-thats-on-me-to-make-it-different": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T16:05:59.416Z"
+  "at": "2026-11-12T16:19:27.378Z"
  },
  "https://www.fightful.com/wrestling/338699-damian-priest-aaa": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T16:05:58.979Z"
+  "at": "2026-11-12T16:19:27.045Z"
  },
  "https://www.fightful.com/wrestling/zilla-fatu-if-umaga-had-half-face-paint-its-because-he-was-running-late": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T16:05:58.464Z"
+  "at": "2026-11-12T16:19:26.651Z"
  },
  "https://www.fightful.com/wrestling/338670-aew-full-gear-national-championship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T16:05:57.867Z"
+  "at": "2026-11-12T16:19:26.196Z"
  },
  "https://www.fightful.com/wrestling/jim-ross-undergoes-successful-shunt-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T16:05:57.111Z"
+  "at": "2026-11-12T16:19:25.618Z"
+ },
+ "https://www.fightful.com/wrestling/chris-of-motionless-in-white-opens-up-about-friendship-with-rhea-ripley": {
+  "reason": "المراجعة رفضته: المصدر مابيربطش المصارع بالاتحاد ده: WWE ريا ريبلي — اكتب «المصارع <الاسم>» من غير اسم اتحاد",
+  "retry": true,
+  "at": "2026-11-12T16:19:25.213Z"
  },
  "https://www.fightful.com/wrestling/gabe-sapolsky-lists-seven-things-to-consider-when-signing-a-contract": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-12T16:05:56.590Z"
+  "at": "2026-11-12T16:11:43.315Z"
+ },
+ "https://www.wrestlinginc.com/2314462/josh-barnett-wwe-matt-riddle-differing-takes-bloodsport-origins-gcw": {
+  "reason": "المراجعة رفضته: فعل مثنى («يختلفان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-12T16:07:19.932Z"
  },
  "https://www.fightful.com/wrestling/kairi-makes-run-in-during-jericho-cruise-main-event": {
   "reason": "مكرر مع خبر نزل قبل كده",
