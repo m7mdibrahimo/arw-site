@@ -196,11 +196,15 @@ export function applyCorrections(text: string, corrections = loadCorrections()):
   if (!text) return text;
   let out = fixMidCardMainEvent(fixDrawTrophy(fixSubjunctiveDuals(fixCountDuals(fixTimeDuals(fixNumberGender(decodeHtmlEntities(text)))))));
   for (const c of withLamAlefForms(corrections)) {
-    out = out.replace(correctionRegex(c), (m, prefix = "") =>
+    out = out.replace(correctionRegex(c), (m, prefix = "", ...rest) => {
+      // a regex rule may carry named parts over: «نكوص (?<who>…) ب(?<what>وعده)» → «تراجع $<who> عن $<what>» (INCIDENTS #1261)
+      const groups = typeof rest[rest.length - 1] === "object" ? rest[rest.length - 1] as Record<string, string | undefined> : undefined;
+      const right = c.regex && groups ? c.right.replace(/\$<(\w+)>/g, (_g, n: string) => groups[n] ?? "") : c.right;
       // the text is already right: «لعودة→للعودة» read «للعودة» as «ل» + «لعودة» and wrote «لللعودة» (INCIDENTS #944)
-      m === c.right ? m :
+      return m === right ? m :
       // "بـWWE SmackDown": a joined preposition before an English name takes a tatweel
-      prefix && /^[A-Za-z]/.test(c.right) && !prefix.endsWith("و") ? `${prefix}ـ${c.right}` : `${prefix}${c.right}`);
+      prefix && /^[A-Za-z]/.test(right) && !prefix.endsWith("و") ? `${prefix}ـ${right}` : `${prefix}${right}`;
+    });
     // a rule that deletes a phrase leaves a double space behind
     if (!c.right) out = out.replace(/(\S) {2,}(?=\S)/g, "$1 ");
   }

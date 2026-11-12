@@ -1,5 +1,5 @@
 ---
-title: "Chelsea Green Admits Her Match Standard Has Raised in WWE"
+title: "Chelsea Green Admits Her Match Standard Has Risen in WWE"
 slug: "chelsea-green-admits-her-match-standard-has-raised-in-wwe"
 description: "Chelsea Green has enjoyed several notable moments during her career, most notably winning the WWE Women's Championship in a ladder match at WWE SummerSlam."
 federation: WWE

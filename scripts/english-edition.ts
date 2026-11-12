@@ -460,6 +460,8 @@ export function fixSingularThey(text: string): string {
 }
 
 export const ENGLISH_FIXES: [RegExp, string][] = [
+  // «Her Match Standard Has Raised» — «raise» needs an object; a standard, bar or level that goes up «has risen» (Chelsea Green story, INCIDENTS #1261)
+  [/\b((?:standards?|bar|level|stakes|expectations|prices?|temperature|numbers|ratings|viewership) (?:has|have|had) )([Rr])aised\b(?!\s+(?:the|a|an|his|her|their|its|my|our|your|money|funds|awareness|concerns?|questions?|eyebrows|over|\$|\d))/gi, (_m: string, head: string, r: string) => `${head}${r === "R" ? "R" : "r"}isen`],
   [/\bC\.J\. Perry\b/g, "CJ Perry"],
   // «UFC 334: GANE vs HOKIT» — the UFC event name copied in capitals from the source; fighters' names are never acronyms (Jon Anik story, INCIDENTS #1258)
   [/\b(UFC (?:\d+|Fight Night)\s*:\s*)([A-Z][A-Z'’-]{2,}) (vs\.?) ([A-Z][A-Z'’-]{2,})\b/g, (_m: string, ev: string, a: string, vs: string, b: string) => `${ev}${a[0] + a.slice(1).toLowerCase()} ${vs} ${b[0] + b.slice(1).toLowerCase()}`],
