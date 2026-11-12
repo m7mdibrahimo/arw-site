@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/tavion-heights-vs-myles-borne-in-weapons-wild-match-added-to-nxt-halloween-havoc/": {
-    "matchedFile": "20261028043605-تافيون-هايتس-ومايلز-بورن-يحددان-نوع-مواجهتهم-في-عرض-wwe-nxt-halloween-havoc.md",
-    "reason": "الخبر الجديد يغطي نفس الحدث (تحديد نوع المواجهة بين تافيون هايتس ومايلز بورن في عرض Halloween Havoc) الذي تم تغطيته بالفعل في الخبر رقم 0، ولا يحتوي على أي تطورات جديدة جوهرية.",
-    "at": "2026-10-28T01:46:37.994Z"
-  },
   "https://www.fightful.com/wrestling/report-bruce-prichard-expected-to-retire-as-executive-director-after-wrestlemania-season/": {
     "matchedFile": "20261028023753-تطورات-مهمة-حول-مستقبل-بروس-بريتشارد-في-wwe.md",
     "reason": "الخبر الجديد يغطي نفس الحدث المتعلق باعتزال بروس بريتشارد لمنصبه الإداري بعد موسم WrestleMania، وهي نفس المعلومة الجوهرية الواردة في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261111042225-تحديد-موعد-النزال-الخامس-بين-فريق-إف-تي-آر-وفريق-موتور-سيتي-ماشين-جانز-في-عرض-aew-dynamite-collision.md",
     "reason": "الخبر الجديد يغطي نتائج نفس العرض (AEW Dynamite/Collision 11 نوفمبر) الذي تم الإعلان عن نزالاته مسبقاً في الخبر رقم 0، ولا يقدم تطوراً جوهرياً يتجاوز سرد نتائج النزالات التي كانت مدرجة بالفعل في بطاقة العرض.",
     "at": "2026-11-12T00:51:43.212Z"
+  },
+  "https://www.wrestlinginc.com/2314401/wwe-cody-rhodes-john-cena-classic-worlds-collide-doomsday-disney/": {
+    "matchedFile": "20261110164600-الفائزون-ببطولة-جون-سينا-الكلاسيكية-قد-لا-يحصلون-على-أي-دفعة-في-wwe-رغم-تصويت-الجماهير.md",
+    "reason": "الخبر الجديد يعيد تكرار تفاصيل بطولة جون سينا الكلاسيكية ومشاركة كودي رودز وعرض Worlds Collide في عالم ديزني، وهي معلومات تمت تغطيتها مسبقاً في الأخبار [1] و[2] و[4].",
+    "at": "2026-11-12T01:20:11.550Z"
   }
 }
