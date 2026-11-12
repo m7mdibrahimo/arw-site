@@ -29,11 +29,6 @@
   "retry": true,
   "at": "2026-11-12T14:09:17.524Z"
  },
- "https://www.ringsidenews.com/marty-scurll-claims-several-people-have-pushing-tna-sign-him": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: The Hardys",
-  "retry": true,
-  "at": "2026-11-12T14:07:28.452Z"
- },
  "https://www.ringsidenews.com/steve-austin-says-bret-hart-came-key-moment-during-their-wrestlemania-13-match": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
