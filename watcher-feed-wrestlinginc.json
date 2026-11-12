@@ -1,5 +1,15 @@
 [
   {
+    "id": 1606986390,
+    "link": "https://www.wrestlinginc.com/2314401/wwe-cody-rhodes-john-cena-classic-worlds-collide-doomsday-disney/",
+    "date": "Thu, 12 Nov 2026 00:47:31 +0000",
+    "date_gmt": "2026-11-12T00:47:31.000Z",
+    "title": {
+      "rendered": "WWE's Cody Rhodes Comments On Upcoming John Cena Classic, Worlds Collide: Doomsday"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-cody-rhodes-comments-on-upcoming-john-cena-classic-worlds-collide-doomsday/l-intro-1794444323.jpg"
+  },
+  {
     "id": 4959007287,
     "link": "https://www.wrestlinginc.com/2314359/wwe-nxt-mason-rook-select-few-severity-come-back/",
     "date": "Wed, 11 Nov 2026 23:07:27 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Vanity Project Overcome Surprise WWE NXT Tag Title Challengers"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/vanity-project-overcome-surprise-wwe-nxt-tag-title-challengers/l-intro-1794366083.jpg"
-  },
-  {
-    "id": 2078760716,
-    "link": "https://www.wrestlinginc.com/2313032/john-cena-adds-new-competitors-eponymous-wwe-event/",
-    "date": "Wed, 11 Nov 2026 02:49:05 +0000",
-    "date_gmt": "2026-11-11T02:49:05.000Z",
-    "title": {
-      "rendered": "John Cena Adds New Competitors To Eponymous WWE Event"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/john-cena-adds-new-competitors-to-eponymous-wwe-event/l-intro-1794365239.jpg"
   }
 ]
