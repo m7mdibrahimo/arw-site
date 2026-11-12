@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-12T11:18:05.201Z",
+ "checkedAt": "2026-11-12T13:42:56.538Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
@@ -10195,68 +10195,68 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-12T11:18:05.201Z"
+   "checked": "2026-11-12T13:42:56.538Z"
   },
   "https://vidmoly.org/embed-dfgjt8g9t4th.html": {
    "page": "https://arab-wrestling.com/shows/wwe-nxt-10-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-12T11:18:05.201Z",
-   "lastOk": "2026-11-12T11:18:05.201Z"
+   "checked": "2026-11-12T13:42:56.538Z",
+   "lastOk": "2026-11-12T13:42:56.538Z"
   },
   "https://hgcloud.to/e/qhm1bt148ze9": {
    "page": "https://arab-wrestling.com/shows/wwe-nxt-10-11-2026/",
-   "status": "broken",
-   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
-   "strikes": 2,
-   "checked": "2026-11-12T11:18:05.201Z",
-   "since": "2026-11-11T14:45:48.490Z"
+   "status": "ok",
+   "reason": "the video plays (after the player's first source failed)",
+   "strikes": 0,
+   "checked": "2026-11-12T13:42:56.538Z",
+   "lastOk": "2026-11-12T13:42:56.538Z"
   },
   "https://ok.ru/videoembed/18051844606560": {
    "page": "https://arab-wrestling.com/shows/wwe-nxt-10-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-12T11:18:05.201Z"
+   "checked": "2026-11-12T13:42:56.538Z"
   },
   "https://fembed.co/embed/4_uT-6VPuLHFH": {
    "page": "https://arab-wrestling.com/shows/wwe-nxt-10-11-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-12T11:18:05.201Z",
-   "lastOk": "2026-11-12T11:18:05.201Z"
+   "checked": "2026-11-12T13:42:56.538Z",
+   "lastOk": "2026-11-12T13:42:56.538Z"
   },
   "https://fembed.co/embed/a_D-lALJwGSgF": {
    "page": "https://arab-wrestling.com/shows/aew-dynamite-and-collision-11-11-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-12T11:18:05.201Z",
-   "lastOk": "2026-11-12T11:18:05.201Z"
+   "checked": "2026-11-12T13:42:56.538Z",
+   "lastOk": "2026-11-12T13:42:56.538Z"
   },
   "https://vidmoly.org/embed-drzj8q5fyatk.html": {
    "page": "https://arab-wrestling.com/shows/aew-dynamite-and-collision-11-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-12T11:18:05.201Z",
-   "lastOk": "2026-11-12T11:18:05.201Z"
+   "checked": "2026-11-12T13:42:56.538Z",
+   "lastOk": "2026-11-12T13:42:56.538Z"
   },
   "https://vidtube.one/embed-5dudfzi5t7yv.html": {
    "page": "https://arab-wrestling.com/shows/aew-dynamite-and-collision-11-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-12T11:18:05.201Z"
+   "checked": "2026-11-12T13:42:56.538Z"
   },
   "https://ok.ru/videoembed/18067092343392": {
    "page": "https://arab-wrestling.com/shows/aew-dynamite-and-collision-11-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-12T11:18:05.201Z"
+   "checked": "2026-11-12T13:42:56.538Z"
   }
  },
  "broken": [
@@ -10293,7 +10293,6 @@
   "https://hgcloud.to/e/pwkmv6y8xtyh",
   "https://hgcloud.to/e/pyks6kd3f95d",
   "https://hgcloud.to/e/q69uzk91kcq7",
-  "https://hgcloud.to/e/qhm1bt148ze9",
   "https://hgcloud.to/e/sgbf693fuisc",
   "https://hgcloud.to/e/te08b3a0lkmk",
   "https://hgcloud.to/e/v764tmwczrv5",
