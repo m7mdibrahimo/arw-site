@@ -1,68 +1,68 @@
 {
+ "https://www.fightful.com/mma/eight-people-sentenced-to-prison-in-usman-nurmagomedov-and-merab-dvalishvili-brawl": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-13T13:59:16.969Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-13": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T13:58:11.343Z"
+ },
+ "https://www.fightful.com/wrestling/338828-tony-khan-aew": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T13:58:11.055Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-nxt-11-10-viewership-increases-with-return-to-tuesday": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T13:58:10.768Z"
+ },
+ "https://www.fightful.com/wrestling/bobby-lashley-wins-4th-rope-heavyweight-championship": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-13T13:58:10.225Z"
+ },
+ "https://www.fightful.com/wrestling/mens-ultimate-x-field-world-x-cup-matches-set-for-tna-destination-x": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T13:57:46.223Z"
+ },
+ "https://www.fightful.com/wrestling/josh-barnett-gives-his-side-of-using-bloodsport-after-matt-riddle": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T13:57:45.283Z"
+ },
+ "https://www.fightful.com/wrestling/tony-khan-explains-the-last-outfits-name-change-to-the-cut": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T13:57:44.999Z"
+ },
+ "https://www.fightful.com/wrestling/lei-ying-lee-departs-tna-wrestling": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T13:57:44.632Z"
+ },
+ "https://www.fightful.com/wrestling/338753-joe-hendry-wwe-tag-teams": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T13:57:44.018Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-says-hed-cut-one-promo-as-a-heel-and-then-someone-else-would-speak-for-him": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-13T13:55:19.503Z"
  },
- "https://www.fightful.com/mma/eight-people-sentenced-to-prison-in-usman-nurmagomedov-and-merab-dvalishvili-brawl": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+ "https://www.ringsidenews.com/bobby-lashley-captures-4th-rope-heavyweight-championship": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
-  "at": "2026-11-13T13:54:06.757Z"
- },
- "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-13": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T13:51:45.706Z"
- },
- "https://www.fightful.com/wrestling/338828-tony-khan-aew": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T13:51:45.474Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-11-10-viewership-increases-with-return-to-tuesday": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T13:51:45.239Z"
- },
- "https://www.fightful.com/wrestling/bobby-lashley-wins-4th-rope-heavyweight-championship": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-13T13:51:44.804Z"
- },
- "https://www.fightful.com/wrestling/mens-ultimate-x-field-world-x-cup-matches-set-for-tna-destination-x": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T13:51:30.388Z"
- },
- "https://www.fightful.com/wrestling/josh-barnett-gives-his-side-of-using-bloodsport-after-matt-riddle": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T13:51:29.581Z"
- },
- "https://www.fightful.com/wrestling/tony-khan-explains-the-last-outfits-name-change-to-the-cut": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T13:51:29.339Z"
- },
- "https://www.fightful.com/wrestling/lei-ying-lee-departs-tna-wrestling": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T13:51:29.025Z"
- },
- "https://www.fightful.com/wrestling/338753-joe-hendry-wwe-tag-teams": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T13:51:28.506Z"
+  "at": "2026-11-13T13:50:15.853Z"
  },
  "https://www.wrestlinginc.com/2311541/former-wwe-co-president-george-barrios-remembers-success-wwe-network": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-13T13:42:39.314Z"
- },
- "https://www.ringsidenews.com/bobby-lashley-captures-4th-rope-heavyweight-championship": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-11-13T13:50:15.853Z"
  },
  "https://www.fightful.com/wrestling/wwe-considered-licensing-mainstream-song-for-the-946s-entrance-music": {
   "reason": "مكرر مع خبر نزل قبل كده",
