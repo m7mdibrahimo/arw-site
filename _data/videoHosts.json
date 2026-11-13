@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-12T05:20:31.052Z",
+  "checkedAt": "2026-11-13T17:18:32.156Z",
   "dead": [
     "turbovidhls.com"
   ],
@@ -7,6 +7,7 @@
     "multiup.io"
   ],
   "strikes": {
-    "turbovidhls.com": 2
+    "turbovidhls.com": 2,
+    "uqload.vc": 1
   }
 }
