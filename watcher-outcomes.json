@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/bobby-lashley-captures-4th-rope-heavyweight-championship": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مصارع في العنوان أو المتن غير موجود في المصدر: The Hurt Business",
+  "retry": true,
+  "at": "2026-11-13T15:23:40.691Z"
+ },
  "https://www.fightful.com/wrestling/tna-impact-11-5-viewership-drops-below-200000-viewers": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-11-05)",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: ROH World Trios Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Trios Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Trios Championships",
   "retry": true,
   "at": "2026-11-03T08:12:08.795Z"
- },
- "https://www.fightful.com/wrestling/revpro-live-in-london-113-results-11-1": {
-  "reason": "المراجعة رفضته: أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
-  "retry": true,
-  "at": "2026-11-03T04:11:57.988Z"
  }
 }
