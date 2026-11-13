@@ -1,58 +1,63 @@
 {
+ "https://www.fightful.com/?p=338846": {
+  "reason": "تقرير مشاهدة لعرض قديم (2026-11-05)",
+  "retry": false,
+  "at": "2026-11-13T15:06:43.166Z"
+ },
  "https://www.fightful.com/wrestling/trey-miguel-says-tna-contract-expires-at-the-end-of-the-year-hoping-to-re-sign-on-a-longer-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T15:03:27.898Z"
+  "at": "2026-11-13T15:06:42.698Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-11-7-viewership-increases-from-halloween-night": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T15:03:27.659Z"
+  "at": "2026-11-13T15:06:42.504Z"
  },
  "https://www.fightful.com/mma/eight-people-sentenced-to-prison-in-usman-nurmagomedov-and-merab-dvalishvili-brawl": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T15:03:26.874Z"
+  "at": "2026-11-13T15:06:41.895Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-13": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T15:03:26.504Z"
+  "at": "2026-11-13T15:06:41.612Z"
  },
  "https://www.fightful.com/wrestling/338828-tony-khan-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T15:03:26.140Z"
+  "at": "2026-11-13T15:06:41.327Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-11-10-viewership-increases-with-return-to-tuesday": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T15:03:25.777Z"
+  "at": "2026-11-13T15:06:41.045Z"
  },
  "https://www.fightful.com/wrestling/bobby-lashley-wins-4th-rope-heavyweight-championship": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-13T15:03:25.126Z"
+  "at": "2026-11-13T15:06:40.539Z"
  },
  "https://www.fightful.com/wrestling/mens-ultimate-x-field-world-x-cup-matches-set-for-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T15:01:19.536Z"
+  "at": "2026-11-13T15:05:19.575Z"
  },
  "https://www.fightful.com/wrestling/josh-barnett-gives-his-side-of-using-bloodsport-after-matt-riddle": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T15:01:18.345Z"
+  "at": "2026-11-13T15:05:18.654Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-explains-the-last-outfits-name-change-to-the-cut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T15:01:17.980Z"
+  "at": "2026-11-13T15:05:18.367Z"
  },
  "https://www.fightful.com/wrestling/lei-ying-lee-departs-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T15:01:17.515Z"
+  "at": "2026-11-13T15:05:18.001Z"
  },
  "https://www.fightful.com/wrestling/joe-coffey-re-signs-with-mlw": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-03T03:46:19.949Z"
- },
- "https://www.wrestlinginc.com/2303334/wwe-raw-november-2-2026-results": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
-  "retry": true,
-  "at": "2026-11-03T02:00:03.971Z"
  }
 }
