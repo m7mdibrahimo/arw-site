@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixElijahAsIlya, fixEventCalledMovie, fixDivasChampion, type NewsFile } from "./news-qa";
+import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, fixTitleSubjectGender, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixElijahAsIlya, fixEventCalledMovie, fixDivasChampion, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -4887,7 +4887,8 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     noteOutcome(postUrl, `المراجعة رفضته: ${blocking.map(i => i.message).join("، ")}`, lastPostRetryable);
     return false;
   }
-  rewritten.title = numberWordsInTitle(resultsTitleOutcome(draft.title, draft.body));
+  // A man's name with a feminine title verb («بروس بريتشارد تطالب») takes «ي» (INCIDENTS #1279).
+  rewritten.title = numberWordsInTitle(resultsTitleOutcome(fixTitleSubjectGender(draft.title, draft.body), draft.body));
   if (!isShowResultsArticle(rawTitle, plainText)) rewritten.title = tonightInTitle(rewritten.title);
   rewritten.title = dropTimezoneFromTitle(rewritten.title);
   // A results report's title date is the show's (US) date from the source, never today's UTC date

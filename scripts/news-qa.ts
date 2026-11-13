@@ -1395,6 +1395,31 @@ function mainEventTitle(title: string, body: string): string {
   return `${m[1]}فوز ${winner} في الحدث الرئيسي`;
 }
 
+/**
+ * A man's name opens the title with a feminine present verb: «بروس بريتشارد تطالب الجماهير بالهدوء» went
+ * live while the body said «أعرب بروس بريتشارد… وقال بريتشارد» (INCIDENTS #1279). When the body speaks of the
+ * title's subject only with masculine verbs, the title verb takes «ي». Only verbs whose «ت» form can never be a
+ * masculine past tense are touched («تحدث/تذكر/تعرض» stay as they are).
+ */
+const FEM_PRESENT_TITLE_VERBS = new Set(["تطالب", "تكشف", "تؤكد", "توضح", "تعلق", "ترد", "تعلن", "تنتقد", "تشيد", "تصف", "تعترف", "تهاجم", "تسخر", "تريد", "تأمل", "تنفي", "تفتح", "تعود", "تقول", "تواجه", "تحذر", "تثني", "تدعو", "تعبر", "ترفض", "تنضم", "تغادر", "تحتفل", "تطلق", "تشارك", "تفسر", "تنشر", "تبدي", "تعرب", "تمدح", "تهنئ", "تعتذر", "تقترب", "ترغب", "تسعى", "تصرح", "تلمح", "تكرم", "تستعيد", "تفكر", "تبحث", "تنصح", "تشرح", "تروي", "تحسم", "تهدد", "تصدم", "توجه", "تحكي", "تودع", "تطمئن", "تعد", "تتحدث", "تتذكر", "تتلقى", "تتعرض", "تستعد", "تتهم", "تتمنى", "تتراجع", "تتوقع", "تتحدى", "تتعهد", "تتساءل", "تتطلع", "تستذكر", "تستبعد", "تستهدف"]);
+const MASC_SPEECH = "قال|أعرب|أكد|كشف|أوضح|تحدث|أشار|أضاف|علق|صرح|اعترف|كتب|نشر|عاد|ظهر|طالب|وجه|ختم|تابع|استرجع|تطرق|شدد|يرى|يقول|يؤكد|يكشف|يعتقد";
+export function fixTitleSubjectGender(title: string, body: string): string {
+  const m = title.match(/^((?:[\u0621-\u064A]+\s+){1,3}?)(ت[\u0621-\u064A]{2,6})(?=\s)/);
+  if (!m || !FEM_PRESENT_TITLE_VERBS.has(m[2])) return title;
+  const names = m[1].trim().split(/\s+/).filter(w => w.length > 2);
+  if (!names.length) return title;
+  // «جاسبر تروي يكشف»: the «verb» is the man's surname when the body writes the two together, or a verb follows it
+  const next = title.slice(m[0].length).trim().split(/\s+/)[0] || "";
+  if (body.includes(`${m[1].trim()} ${m[2]}`) || /^[يت][\u0621-\u064A]{2,}$/.test(next) && FEM_PRESENT_TITLE_VERBS.has(`ت${next.slice(1)}`)) return title;
+  const nameRe = `(?:${names.map(n => n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})`;
+  const before = (verbs: string) => new RegExp(`(?<![\u0621-\u064A])[وف]?(?:${verbs})\\s+(?:(?:المصارع|المصارعة|النجم|النجمة|الأسطورة)\\s+)?${nameRe}(?![\u0621-\u064A])`);
+  const masc = before(MASC_SPEECH).test(body) || new RegExp(`(?<![\u0621-\u064A])(?:المصارع|النجم|المسؤول|المعلق|المدير)\\s+(?:[\u0621-\u064A]+\\s+){0,4}?${nameRe}(?![\u0621-\u064A])`).test(body);
+  const femVerbs = MASC_SPEECH.split("|").filter(v => !v.startsWith("ي")).map(v => v + "ت").join("|");
+  const fem = before(femVerbs).test(body) || new RegExp(`(?<![\u0621-\u064A])(?:المصارعة|النجمة|البطلة)\\s+${nameRe}(?![\u0621-\u064A])`).test(body);
+  if (!masc || fem) return title;
+  return title.replace(m[1] + m[2], m[1] + "ي" + m[2].slice(1));
+}
+
 export function resultsTitleOutcome(title: string, body: string): string {
   if (!/^نتائج\s+(?:عرض|نهائي|الليلة|تسريبات)/.test(title)) return title;
   const byMain = mainEventTitle(title, body);
@@ -1889,6 +1914,8 @@ export function autoFix(text: string): string {
   text = fixHalfEnglishNames(fixTripledLetters(text));
   // «عرض» is masculine: «في عرض SmackDown الأخيرة» went live in 28 stories (INCIDENTS #621) — the adjective agrees with it
   text = text.replace(/(عرض\s+(?:[A-Za-z0-9'’!.&*-]+\s+){0,5}[A-Za-z0-9'’!.&*-]+\s+)(الأخير|الاخير|القادم|الماضي)ة(?![\u0621-\u064A])/g, "$1$2");
+  // «103.7 درجات» — a decimal count takes the singular «درجة» (Alexa Bliss story, INCIDENTS #1279)
+  text = text.replace(/(\d+[.,٫]\d+)\s+درجات(?![\u0621-\u064A])/g, "$1 درجة");
   text = dualPronounsToPlural(text);
   text = teamVerbSingular(text);
   text = showRelativeMasculine(text);
