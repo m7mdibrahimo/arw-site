@@ -1,58 +1,68 @@
 {
- "https://www.wrestlinginc.com/2316201/aew-young-bucks-blood-guts-lie-told-themselves": {
+ "https://www.fightful.com/wrestling/john-cena-explains-why-he-doesnt-want-talent-to-call-him-out-were-never-gonna-deliver-on-this": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-13T17:59:39.384Z"
+  "at": "2026-11-13T18:03:43.676Z"
+ },
+ "https://www.fightful.com/wrestling/spike-dudley-announces-hes-signed-a-wwe-legends-deal": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T18:02:55.392Z"
  },
  "https://www.fightful.com/wrestling/alleged-victim-in-ludwig-kaiser-battery-case-claims-he-suffered-torn-rotator-cuff-concussion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T18:00:05.070Z"
+  "at": "2026-11-13T18:02:55.031Z"
  },
  "https://www.fightful.com/wrestling/john-cena-explains-wardrobe-change-on-wwe-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T18:00:04.789Z"
+  "at": "2026-11-13T18:02:54.671Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-11-5-viewership-drops-below-200000-viewers": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-11-05)",
   "retry": false,
-  "at": "2026-11-13T18:00:04.186Z"
+  "at": "2026-11-13T18:02:53.902Z"
  },
  "https://www.fightful.com/wrestling/trey-miguel-says-tna-contract-expires-at-the-end-of-the-year-hoping-to-re-sign-on-a-longer-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T18:00:04.005Z"
+  "at": "2026-11-13T18:02:53.670Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-11-7-viewership-increases-from-halloween-night": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T18:00:03.822Z"
+  "at": "2026-11-13T18:02:53.438Z"
  },
  "https://www.fightful.com/mma/eight-people-sentenced-to-prison-in-usman-nurmagomedov-and-merab-dvalishvili-brawl": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T18:00:03.218Z"
+  "at": "2026-11-13T18:02:52.678Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-13": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T18:00:02.935Z"
+  "at": "2026-11-13T18:02:52.322Z"
  },
  "https://www.fightful.com/wrestling/338828-tony-khan-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T18:00:02.652Z"
+  "at": "2026-11-13T18:02:51.960Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-11-10-viewership-increases-with-return-to-tuesday": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T18:00:02.370Z"
+  "at": "2026-11-13T18:02:51.603Z"
  },
  "https://www.fightful.com/wrestling/mens-ultimate-x-field-world-x-cup-matches-set-for-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T18:00:01.703Z"
+  "at": "2026-11-13T18:02:50.760Z"
+ },
+ "https://www.wrestlinginc.com/2316201/aew-young-bucks-blood-guts-lie-told-themselves": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-13T17:59:39.384Z"
  },
  "https://www.ringsidenews.com/spike-dudley-signs-wwe-legends-deal": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1988,15 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-03T17:21:15.155Z"
- },
- "https://www.wrestlinginc.com/2305034/bully-ray-blake-monroe-female-version-ecw-sandman": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-03T17:14:12.010Z"
- },
- "https://www.fightful.com/wrestling/ryohei-oiwa-hartley-jackson-declare-for-2026-njpw-world-tag-league": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-03T16:47:22.215Z"
  }
 }
