@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/eddie-guerreros-daughter-sherilyn-says-21-years-without-her-dad-only-made-pain-worse": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-13T20:13:14.383Z"
+ },
+ "https://www.ringsidenews.com/what-went-wrong-naraku-shiloh-hills-bizarre-wwe-nxt-halloween-havoc-match": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-13T20:11:33.911Z"
+ },
  "https://www.fightful.com/wrestling/finn-balor-vs-gunther-added-to-11-13-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -68,11 +78,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-13T20:08:22.846Z"
- },
- "https://www.ringsidenews.com/what-went-wrong-naraku-shiloh-hills-bizarre-wwe-nxt-halloween-havoc-match": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يهلوسان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-13T20:00:52.636Z"
  },
  "https://www.fightful.com/wrestling/mens-ultimate-x-field-world-x-cup-matches-set-for-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Intercontinental Championship",
   "retry": true,
   "at": "2026-11-03T19:35:20.237Z"
- },
- "https://www.fightful.com/wrestling/paul-wight-ive-learned-quite-a-few-things-from-shaquille-oneal": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-03T18:44:26.592Z"
  }
 }
