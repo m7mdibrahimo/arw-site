@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2311541/former-wwe-co-president-george-barrios-remembers-success-wwe-network": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-13T13:42:39.314Z"
+ },
  "https://www.ringsidenews.com/bobby-lashley-captures-4th-rope-heavyweight-championship": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-02T23:56:55.479Z"
- },
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-2-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-02T23:35:25.340Z"
  }
 }
