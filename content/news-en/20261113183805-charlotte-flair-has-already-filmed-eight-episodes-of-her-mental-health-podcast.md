@@ -19,6 +19,6 @@ Flair noted that she has already filmed eight episodes and is currently awaiting
 
 > "To be honest, I didn't wake up and go, 'Oh man, I want to have a podcast.' But, when I was out injured, I took the opportunity to invest in a nonprofit organization, mental health is something very dear and important to my heart," Flair said.
 
-She added that hosting the podcast has given her new insights into the lives of other athletes. Fans can check out the latest lineup for WWE SmackDown as the brand prepares for its upcoming events.
+She added that hosting the podcast has given her new insights into the lives of other athletes.
 
 https://www.youtube.com/watch?v=Wg6MwifmX8I

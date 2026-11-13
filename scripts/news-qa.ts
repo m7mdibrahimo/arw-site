@@ -513,6 +513,10 @@ const RULES: Rule[] = [
   { code: "dual_form", severity: "error", re: /(?<![ء-ي])(?:[وف]?(?:صفقا|هتفا|احتفلا|تعانقا|تبادلا|حرصا(?=\s+(?:بشدة|كثيرا|دائما|جميعا)))|أمام\s+عيني\s+[ء-ي]+\s+و[ء-ي]+)(?![ء-ي])/g, message: "صيغة مثنى (صفقا/احتفلا/أمام عيني X وY…) ممنوعة: اكتب فعل جمع («مات وجيف صفقوا») أو «أمام X وY»." },
   // Dual verbs and the dual verb with a pronoun glued on, which the lists above miss: «يقدمانها»، «يخوضانه»، «انتقدا»، «يخططان»، «واتفقا»، «أنهيا» (INCIDENTS #812)
   { code: "dual_form", severity: "error", re: /(?<![ء-ي])(?:(?:ي|ت)(?:قدم|خوض|خطط|نتقد|طلب|واجه|شارك|عمل|لعب|حقق)ان(?:ه|ها|هم|ته|تها)?|[وف]?(?:انتقدا|أعجبا|ابتكرا|اتفقا|اختلفا|أنهيا|أكملا|وافقا|بدأا))(?![ء-ي])/g, message: "صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة", fields: ["title", "body"] },
+  // «لأننا مجنونان بما يكفي» (Young Bucks quote) and «الوقت الذي قضياه معا» (Eddie Guerrero's daughter; also two older stories with «قضياها»)
+  // passed every dual check: a dual adjective in «ان» and the dual of a weak past verb with a pronoun (INCIDENTS #1282).
+  // Only the «ان» ending: «سعيدين/مستعدين» is also the sound masculine plural; «سعيا/مشيا» are left out (also the masdar «سعيا وراء»).
+  { code: "dual_form", severity: "error", re: /(?<![ء-ي])(?:[وفل]?(?:مجنون|سعيد|مستعد|قادر|جاهز|متحمس|فخور|مصمم|عازم|مقتنع|راض)ان|[وف]?(?:قض|أمض)(?:يا|تا)(?:ه|ها|هم)?)(?![ء-ي])/g, message: "صيغة مثنى (مجنونان/مستعدان/قضياه/أمضيا…) ممنوعة — اجمع («مجانين»، «قضوها») أو أعد صياغة الجملة («الوقت الذي قضته معه»)", fields: ["title", "body"] },
   // «don't expect him to visit a therapist anytime soon» written word for word: «لكن لا يتوقع أحد أن يزور طبيبا قريبا» (Heyman story, INCIDENTS #986)
   { code: "dont_expect_literal", severity: "error", re: /لكن(?:ه)?\s+لا\s+(?:يتوقع|تتوقع|ينتظر)\s+أحد\s+أن/g, message: "«لا يتوقع أحد أن…» ترجمة حرفية لـ«don't expect him to…» — اكتب «لكنه لا ينوي…» أو «لكنه لن…»", fields: ["title", "body"] },
   // A quote block opened with a straight " and never closed: «> "بعض الناس يرثون… إلى الأبد.» (Brooke Hogan story, INCIDENTS #812)

@@ -1,7 +1,7 @@
 ---
 title: "WWE Scrapped Plans to Add Ridge Holland as Third New Day Member"
 slug: "wwe-scrapped-plans-to-add-ridge-holland-as-third-new-day-member"
-description: "WWE reportedly considered a major creative shift for The New Day following their betrayal of Big E. According."
+description: "WWE reportedly considered a major creative shift for The New Day following their betrayal of Big E."
 federation: WWE
 date: 2026-11-13T15:57:47.000Z
 created_at: 2026-11-13T16:02:48.077Z
