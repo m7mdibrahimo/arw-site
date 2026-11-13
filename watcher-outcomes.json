@@ -54,11 +54,6 @@
   "retry": false,
   "at": "2026-11-13T16:14:17.293Z"
  },
- "https://www.ringsidenews.com/what-went-wrong-naraku-shiloh-hills-bizarre-wwe-nxt-halloween-havoc-match": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-13T16:00:27.420Z"
- },
  "https://www.fightful.com/wrestling/lei-ying-lee-departs-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
