@@ -5165,9 +5165,9 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 10.11.2026 مترجم",
-    "lastAttempt": 1794612641232,
+    "lastAttempt": 1794613492896,
     "errors": {
-      "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا.",
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
@@ -5177,5 +5177,61 @@
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
+  },
+  "20261114004735-wwe-evolve-11-11-2026": {
+    "publishedAt": 1794613523617,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ايفولف 11.11.2026 مترجم",
+    "lastAttempt": 1794613569069,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261114004956-wwe-main-event-11-11-2026": {
+    "publishedAt": 1794613598944,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض مين ايفنت 11.11.2026 مترجم",
+    "lastAttempt": 1794613613367,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261114005223-roh-on-honorclub-12-11-2026": {
+    "publishedAt": 1794613647309,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ار او اتش اون اونر كلوب 12.11.2026 مترجم",
+    "lastAttempt": 1794613661445,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261114005620-tna-impact-12-11-2026": {
+    "publishedAt": 1794613688143,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض تي ان ايه امباكت 12.11.2026 مترجم",
+    "lastAttempt": 1794613702704,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
