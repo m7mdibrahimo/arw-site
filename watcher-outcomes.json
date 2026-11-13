@@ -7,7 +7,7 @@
  "https://www.fightful.com/wrestling/bobby-lashley-wins-4th-rope-heavyweight-championship": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-13T12:11:10.908Z"
+  "at": "2026-11-13T12:20:47.065Z"
  },
  "https://www.ringsidenews.com/nikki-bella-recalls-drunken-night-left-her-stranded-dark-without-money-phone": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -17,42 +17,47 @@
  "https://www.fightful.com/wrestling/mens-ultimate-x-field-world-x-cup-matches-set-for-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T12:09:24.930Z"
+  "at": "2026-11-13T12:20:25.819Z"
  },
  "https://www.fightful.com/wrestling/josh-barnett-gives-his-side-of-using-bloodsport-after-matt-riddle": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T12:09:23.858Z"
+  "at": "2026-11-13T12:20:24.738Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-explains-the-last-outfits-name-change-to-the-cut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T12:09:23.533Z"
+  "at": "2026-11-13T12:20:24.415Z"
  },
  "https://www.fightful.com/wrestling/lei-ying-lee-departs-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T12:09:23.109Z"
+  "at": "2026-11-13T12:20:23.998Z"
  },
  "https://www.fightful.com/wrestling/338753-joe-hendry-wwe-tag-teams": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T12:09:22.412Z"
+  "at": "2026-11-13T12:20:23.300Z"
  },
  "https://www.fightful.com/wrestling/wwe-considered-licensing-mainstream-song-for-the-946s-entrance-music": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T12:09:21.805Z"
+  "at": "2026-11-13T12:20:22.693Z"
  },
  "https://www.fightful.com/wrestling/338742-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T12:09:21.481Z"
+  "at": "2026-11-13T12:20:22.367Z"
  },
  "https://www.fightful.com/wrestling/338737-wwe-raw-attraction": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T12:09:21.154Z"
+  "at": "2026-11-13T12:20:22.032Z"
+ },
+ "https://www.ringsidenews.com/nikki-bella-recalls-drunken-night-left-her-stranded-dark-without-money-phone": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-13T12:10:20.747Z"
  },
  "https://www.fightful.com/wrestling/338442-chavo-guerrero-wrestling-brad-small": {
   "reason": "مكرر مع خبر نزل قبل كده",
