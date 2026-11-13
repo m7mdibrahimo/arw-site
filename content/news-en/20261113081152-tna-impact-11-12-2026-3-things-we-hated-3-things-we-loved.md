@@ -39,7 +39,7 @@ Loved: Apex squashes the King Bees
 - The squash match served as a strong final statement to Indi Hartwell ahead of the Knockouts World Championship match at Destination X.
 
 Hated: Mundane event
-- The main event featured Nic Nemeth defending his World Championship rematch against Elijah in a match booked on the fly.
+- The main event featured a World Championship rematch between Nic Nemeth and Elijah that was booked on the fly.
 - Critics noted that the booking felt uninspired, with many other available talents left off the card.
 
 Loved: The Dollhouse seemingly expands

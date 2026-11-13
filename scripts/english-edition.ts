@@ -460,6 +460,9 @@ export function fixSingularThey(text: string): string {
 }
 
 export const ENGLISH_FIXES: [RegExp, string][] = [
+  // «featured Nic Nemeth defending his World Championship rematch against Elijah» — a title is defended, a rematch never is:
+  // «<Name> defending his <title> rematch against <Name>» → «a <title> rematch between <Name> and <Name>» (TNA Impact review, INCIDENTS #1277)
+  [/\b((?:[A-Z][\w.'’-]*\s+){0,3}[A-Z][\w.'’-]*) defend(?:ing|ed|s)? (?:his|her|their) ((?:[A-Z][\w-]*\s+){0,4})rematch against ((?:[A-Z][\w.'’-]*\s+){0,3}[A-Z][\w.'’-]*)/g, (_m: string, a: string, t: string, b: string) => `a ${t}rematch between ${a} and ${b}`],
   // «Her Match Standard Has Raised» — «raise» needs an object; a standard, bar or level that goes up «has risen» (Chelsea Green story, INCIDENTS #1261)
   [/\b((?:standards?|bar|level|stakes|expectations|prices?|temperature|numbers|ratings|viewership) (?:has|have|had) )([Rr])aised\b(?!\s+(?:the|a|an|his|her|their|its|my|our|your|money|funds|awareness|concerns?|questions?|eyebrows|over|\$|\d))/gi, (_m: string, head: string, r: string) => `${head}${r === "R" ? "R" : "r"}isen`],
   [/\bC\.J\. Perry\b/g, "CJ Perry"],
