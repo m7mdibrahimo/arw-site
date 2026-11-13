@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2316501/tna-impact-viewership-ratings-november-5-2026": {
+  "reason": "تقرير مشاهدة لعرض قديم (2026-11-05)",
+  "retry": false,
+  "at": "2026-11-13T20:45:57.905Z"
+ },
  "https://www.fightful.com/wrestling/clark-connors-opens-up-about-aews-the-last-outfit-changing-name-to-the-cut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-03T20:35:57.561Z"
- },
- "https://www.fightful.com/wrestling/kenny-omega-pins-yota-tsuji-at-njpw-power-struggle-2026": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-03T19:56:06.171Z"
  }
 }
