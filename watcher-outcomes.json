@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2315009/tna-thursday-night-impact-november-12-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-13T00:02:12.362Z"
+ },
  "https://www.ringsidenews.com/rob-van-dam-denies-blame-tna-wrestling-getting-banned-twitch-threesome-segment": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -58,11 +63,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-12T23:52:06.796Z"
- },
- "https://www.wrestlinginc.com/2315009/tna-thursday-night-impact-november-12-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-12T23:42:08.890Z"
  },
  "https://www.ringsidenews.com/eric-bischoff-plans-wcw-reality-show-before-wwe-tough-enough": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
