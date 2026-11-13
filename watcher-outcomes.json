@@ -7,67 +7,67 @@
  "https://www.fightful.com/mma/ufc-334-gane-vs-hokit-weigh-in-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-13T19:41:37.916Z"
+  "at": "2026-11-13T19:44:27.410Z"
  },
  "https://www.fightful.com/wrestling/wwe-main-event-results-11-12": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Cruz Del Toro",
   "retry": true,
-  "at": "2026-11-13T19:41:37.700Z"
+  "at": "2026-11-13T19:44:27.199Z"
  },
  "https://www.fightful.com/wrestling/marina-shafir-talks-possibility-of-ronda-rousey-returning-to-aew-joining-the-death-riders": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T19:41:27.122Z"
+  "at": "2026-11-13T19:44:00.448Z"
  },
  "https://www.fightful.com/wrestling/spike-dudley-announces-hes-signed-a-wwe-legends-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T19:41:26.802Z"
+  "at": "2026-11-13T19:44:00.142Z"
  },
  "https://www.fightful.com/wrestling/alleged-victim-in-ludwig-kaiser-battery-case-claims-he-suffered-torn-rotator-cuff-concussion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T19:41:26.471Z"
+  "at": "2026-11-13T19:43:59.818Z"
  },
  "https://www.fightful.com/wrestling/john-cena-explains-wardrobe-change-on-wwe-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T19:41:26.140Z"
+  "at": "2026-11-13T19:43:59.483Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-11-5-viewership-drops-below-200000-viewers": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-11-05)",
   "retry": false,
-  "at": "2026-11-13T19:41:25.414Z"
+  "at": "2026-11-13T19:43:58.775Z"
  },
  "https://www.fightful.com/wrestling/trey-miguel-says-tna-contract-expires-at-the-end-of-the-year-hoping-to-re-sign-on-a-longer-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T19:41:25.199Z"
+  "at": "2026-11-13T19:43:58.561Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-11-7-viewership-increases-from-halloween-night": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T19:41:24.982Z"
+  "at": "2026-11-13T19:43:58.345Z"
  },
  "https://www.fightful.com/mma/eight-people-sentenced-to-prison-in-usman-nurmagomedov-and-merab-dvalishvili-brawl": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T19:41:24.270Z"
+  "at": "2026-11-13T19:43:57.620Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-13": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T19:41:23.932Z"
+  "at": "2026-11-13T19:43:57.286Z"
  },
  "https://www.fightful.com/wrestling/338828-tony-khan-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T19:41:23.594Z"
+  "at": "2026-11-13T19:43:56.948Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-11-10-viewership-increases-with-return-to-tuesday": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T19:41:23.256Z"
+  "at": "2026-11-13T19:43:56.613Z"
  },
  "https://www.ringsidenews.com/what-went-wrong-naraku-shiloh-hills-bizarre-wwe-nxt-halloween-havoc-match": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى («يتصارعان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
