@@ -11970,6 +11970,57 @@
       "right": "$<head> أو غيرهم",
       "regex": true,
       "note": "«سواء كان فريق ديث رايدرز أو فريق ذا كونجلوميريشن غيرهم» — ناقصة «أو» قبل «غيرهم» (خبر اسم عصابة جاي وايت، INCIDENTS #1266)"
+    },
+    {
+      "wrong": "بطولة ROH النسائية للوزن النقي",
+      "right": "بطولة ROH بيور للسيدات",
+      "note": "ROH Women's Pure Championship اسمها «بطولة ROH بيور للسيدات» زي القاموس — «الوزن النقي» ملهاش معنى (INCIDENTS #1272)"
+    },
+    {
+      "wrong": "بطولة ROH للسيدات للوزن النقي",
+      "right": "بطولة ROH بيور للسيدات",
+      "note": "INCIDENTS #1272"
+    },
+    {
+      "wrong": "بطولة ROH للوزن النقي",
+      "right": "بطولة ROH بيور",
+      "note": "ROH Pure Championship = «بطولة ROH بيور» (نتائج ROH TV 12 نوفمبر، INCIDENTS #1272)"
+    },
+    {
+      "wrong": "(?:لل|ال)وزن النقي",
+      "right": "بيور",
+      "regex": true,
+      "note": "«Pure» في بطولات ROH مش وزن — «بيور» (INCIDENTS #1272)"
+    },
+    {
+      "wrong": "كارلي برايفر",
+      "right": "كارلي برافو",
+      "note": "Carlie Bravo (INCIDENTS #1272)"
+    },
+    {
+      "wrong": "كيران غاري",
+      "right": "كيران غراي",
+      "note": "Kiran Grey (INCIDENTS #1272)"
+    },
+    {
+      "wrong": "كيران غري",
+      "right": "كيران غراي",
+      "note": "Kiran Grey (INCIDENTS #1272)"
+    },
+    {
+      "wrong": "تيهوتي مائلز",
+      "right": "تيهوتي مايلز",
+      "note": "Tehuti Miles (INCIDENTS #1272)"
+    },
+    {
+      "wrong": "تيهوتي ميلز",
+      "right": "تيهوتي مايلز",
+      "note": "Tehuti Miles (INCIDENTS #1272)"
+    },
+    {
+      "wrong": "بيبيكا",
+      "right": "بيكا",
+      "note": "B3CCA تتنطق Becca (INCIDENTS #1272)"
     }
   ]
 }

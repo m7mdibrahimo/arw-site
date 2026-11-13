@@ -133,7 +133,8 @@ export function fixCountDuals(text: string): string {
  * feminine one («لتحصلا») has no single right form and is blocked by dual_form. «يضمنا» is left out: it is
  * also «يضم» + «نا» («آمن بنا بما يكفي ليضمنا إلى صفوفه»). Idempotent.
  */
-const SUBJ_DUAL_VERBS = "حسم|حقق|فوز|توج|حافظ|حتفظ|صبح|تأهل|واجه|عود|نتزع|ستعيد|نال|كمل|خطف|ثبت|حصل|خوض|نجح|تغلب|هزم|دافع|نضم|ظهر|شارك";
+const SUBJ_DUAL_VERBS = "حسم|حقق|فوز|توج|حافظ|حتفظ|صبح|تأهل|واجه|عود|نتزع|ستعيد|نال|كمل|خطف|ثبت|حصل|خوض|نجح|تغلب|هزم|دافع|نضم|ظهر|شارك|قتنص|نتصر|خرج|حجز|عزل";
+// «ليقتنصا التثبيت ويخرجا بانتصار» (ROH TV 27 Aug, SmackDown 4 Sep) — «قتنص|نتصر|خرج|حجز|عزل» added in INCIDENTS #1272.
 // «يبقيا/ينتهيا» are left to the dual_form check: their subject is often a thing («الصداقة والاحترام يجب أن تبقى»), where «يبقوا» is wrong too.
 const WEAK_SUBJ_DUAL_VERBS = "حظ|لتق|نه|مض|سع|رتق|كتف";
 export function fixSubjunctiveDuals(text: string): string {
@@ -2397,12 +2398,16 @@ export function fixNearGlossaryNames(text: string, names: string[]): string {
     for (let i = 0; i + words.length <= tokens.length; i++) {
       const run = tokens.slice(i, i + words.length);
       if (run.some((t, k) => k > 0 && out.slice(run[k - 1].index! + run[k - 1][0].length, t.index) !== " ")) continue;
-      if (!run.some((t, k) => t[0] === words[k])) continue;
-      const got = normalizeArabic(run.map(t => t[0]).join(""));
+      // «وكارلي برايفر» for «كارلي برافو» (ROH TV 12 Nov, INCIDENTS #1272): a one-letter prefix (و/ب/ل/ف/ك) joined to
+      // the first word is not part of the name — it is kept and the rest is compared.
+      const pre = run[0][0] !== words[0] && run[0][0].length > words[0].length && /^[وبلفك]/.test(run[0][0]) && run[0][0].slice(1) === words[0] ? run[0][0][0] : "";
+      const word0 = (t: RegExpMatchArray, k: number) => k === 0 && pre ? t[0].slice(1) : t[0];
+      if (!run.some((t, k) => word0(t, k) === words[k])) continue;
+      const got = normalizeArabic(run.map((t, k) => word0(t, k)).join(""));
       const d = editDistance(got, flat);
       // Long vowels written another way («لايلا ديجز» for «ليلى ديجز», INCIDENTS #1146): same consonants, up to 3 vowel letters off.
       const sameSkeleton = d > 0 && d <= 3 && vowelSkeleton(got) === vowelSkeleton(flat);
-      if ((d > 0 && d <= limit) || sameSkeleton) { hits.push([run[0].index!, run[run.length - 1].index! + run[run.length - 1][0].length]); i += words.length - 1; }
+      if ((d > 0 && d <= limit) || sameSkeleton) { hits.push([run[0].index! + pre.length, run[run.length - 1].index! + run[run.length - 1][0].length]); i += words.length - 1; }
     }
     for (const [from, to] of hits.reverse()) out = out.slice(0, from) + name + out.slice(to);
   }
