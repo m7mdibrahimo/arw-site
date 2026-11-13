@@ -1,5 +1,15 @@
 [
   {
+    "id": 802267423,
+    "link": "https://www.ringsidenews.com/wwe-announces-more-matches-november-13-smackdown-just-hours-before-show/",
+    "date": "Fri, 13 Nov 2026 22:53:06 +0000",
+    "date_gmt": "2026-11-13T22:53:06.000Z",
+    "title": {
+      "rendered": "WWE Announces More Matches for November 13 SmackDown Just Hours Before Show"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/02/last-minute-match-confirmed-for-february-27-wwe-smackdown-06.jpg?x27122"
+  },
+  {
     "id": 802267424,
     "link": "https://www.ringsidenews.com/tna-destination-x-could-serious-trouble-nationwide-flight-shutdown/",
     "date": "Fri, 13 Nov 2026 22:42:06 +0000",
@@ -138,15 +148,5 @@
       "rendered": "Spike Dudley Signs WWE Legends Deal"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/spike-dudley-signs-wwe-legends-deal-57.jpg?x27122"
-  },
-  {
-    "id": 802267322,
-    "link": "https://www.ringsidenews.com/aj-styles-wwe-nxt-role-clarified-amid-shawn-michaels-replacement-plans/",
-    "date": "Fri, 13 Nov 2026 17:13:26 +0000",
-    "date_gmt": "2026-11-13T17:13:26.000Z",
-    "title": {
-      "rendered": "AJ Styles’ WWE NXT Role Clarified Amid Shawn Michaels Replacement Plans"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/aj-styles-wwe-nxt-role-clarified-amid-shawn-michaels-replacement-plans-55.jpg?x27122"
   }
 ]
