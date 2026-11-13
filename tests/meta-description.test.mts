@@ -262,3 +262,12 @@ test("a word cut never leaves a noun whose «of» complement was dropped (INCIDE
   assert.match(d, /a list of potential ring names/);
   assert.ok(d.length <= 185, d);
 });
+
+test("an opening phrase alone is never the description (INCIDENTS #1278)", async () => {
+  const { metaDescription } = await import("../lib/meta-description.cjs");
+  const nikki = metaDescription("During a recent episode of The Nikki & Brie Show, Nikki Bella recalled a chaotic night out with Brie Bella and Bryan Danielson after closing on a property for Bonita. After lingering over French champagne while waiting for Bryan in traffic, Nikki realized her phone was missing.");
+  assert.notEqual(nikki, "During a recent episode of The Nikki & Brie Show.");
+  assert.match(nikki, /Nikki Bella recalled/);
+  const hayes = metaDescription("During a recent appearance on Stephanie McMahon's What's Your Story? podcast, WWE producer Michael Hayes discussed his role within the company and revealed that Chief Content Officer Paul 'Triple H' Levesque has already identified a potential successor for him. Hayes shared more.");
+  assert.match(hayes, /Michael Hayes discussed his role/);
+});

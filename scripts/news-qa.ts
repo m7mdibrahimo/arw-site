@@ -1891,6 +1891,7 @@ export function autoFix(text: string): string {
   text = text.replace(/(عرض\s+(?:[A-Za-z0-9'’!.&*-]+\s+){0,5}[A-Za-z0-9'’!.&*-]+\s+)(الأخير|الاخير|القادم|الماضي)ة(?![\u0621-\u064A])/g, "$1$2");
   text = dualPronounsToPlural(text);
   text = teamVerbSingular(text);
+  text = showRelativeMasculine(text);
   // «مواجهة بين فريق A ضد فريق B» mixes two ways of naming a match; «بين» goes, «A ضد B» stays (INCIDENTS #1247)
   text = text.replace(/(?<![\u0621-\u064A])(مواجهة|مواجهات|نزال|نزالا|نزالات|مباراة) بين ((?:(?!\sبين\s)[^.،؛\n]){3,60}?) ضد /g, "$1 $2 ضد ");
   // A match card copied from the source keeps «(c)» for the champion: «كيلاني جوردان (c) ضد رين سنكلير» went live (INCIDENTS #508)
@@ -2483,6 +2484,16 @@ export function quotedTitleNotInSource(enTitle: string, source: string): string[
 // «فريق بوم آند دوم (Boom & Doom) قد حققوا الفوز» went live (INCIDENTS #1276): the no-dual rule pushes Gemini to a
 // plural verb, but «فريق <name>» is one subject — the verb right after it is singular. «أعضاء فريق X فازوا» and a
 // subject joined by «و/مع» («فريق X وزميلهم فازوا») keep the plural.
+// «ومقارنة بعرض يوم 4 نوفمبر 2026، والتي سجلت 552 ألف مشاهد» went live (INCIDENTS #1278): «عرض» is masculine, so the
+// relative pronoun and its verb are «الذي سجل». Only a bare «عرض <English name> (date)» right before «والتي» is fixed:
+// «أحداث/نسخة/حلقة/فقرة عرض X، والتي» refer to the feminine or plural word and stay.
+export function showRelativeMasculine(text: string): string {
+  if (!text) return text;
+  return text.replace(
+    /(?<![ء-ي])(?<!(?:أحداث|نسخة|حلقة|فقرة|ليلة|سهرة|نسخ|حلقات|بطاقة|قائمة)\s)((?:ب|ل)?عرض(?:\s+[A-Za-z][A-Za-z0-9.&'’ -]{0,30}?)?(?:\s+\([^)\n]{0,30}\))?(?:\s+يوم\s+\d{1,2}\s+[ء-ي]+(?:\s+\d{4})?)?)\s*،?\s+والتي\s+(سجل|حقق|استقطب|شهد|جذب|جمع|حصد)ت(?![ء-ي])/g,
+    "$1، الذي $2");
+}
+
 export function teamVerbSingular(text: string): string {
   if (!text) return text;
   return text.replace(

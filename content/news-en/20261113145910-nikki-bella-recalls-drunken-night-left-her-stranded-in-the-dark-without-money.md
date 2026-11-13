@@ -1,7 +1,7 @@
 ---
 title: "Nikki Bella Recalls Drunken Night Left Her Stranded in the Dark Without Money or Phone"
 slug: "nikki-bella-recalls-drunken-night-left-her-stranded-in-the-dark-without-money"
-description: "During a recent episode of The Nikki & Brie Show."
+description: "During a recent episode of The Nikki & Brie Show, Nikki Bella recalled a chaotic night out with Brie Bella and Bryan Danielson after closing on a property for Bonita."
 federation: WWE
 date: 2026-11-13T11:59:10.000Z
 created_at: 2026-11-13T12:14:21.513Z

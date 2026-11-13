@@ -222,6 +222,12 @@ export function editIsAnImprovement(find: string, replace: string): boolean {
 }
 
 /** Applies only safe, verifiable edits: the text to replace must exist verbatim, and an edit may not balloon into a rewrite. */
+const TITLE_MONTHS = "يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر";
+/** The dates a title carries («12 نوفمبر», «2026», «12.11.2026»), for the rule that a title edit never drops one. */
+export function titleDates(t: string): string[] {
+  return [...String(t || "").matchAll(new RegExp(`\\d{1,2}\\s+(?:${TITLE_MONTHS})|\\b(?:19|20)\\d{2}\\b|\\d{1,2}[./-]\\d{1,2}[./-]\\d{2,4}`, "g"))].map((m) => m[0].replace(/\s+/g, " "));
+}
+
 export function applyProofEdits(article: ArticleDraft, edits: ProofEdit[], sourceText = ""): { article: ArticleDraft; applied: ProofEdit[] } {
   const out = { title: article.title, body: article.body, tags: [...article.tags] };
   const applied: ProofEdit[] = [];
@@ -253,6 +259,10 @@ export function applyProofEdits(article: ArticleDraft, edits: ProofEdit[], sourc
       out.tags[i] = replace;
     } else {
       if (e.field === "title" && !replace) continue;
+      // A date is what tells a weekly piece from last week's: the copy editor dropped «(12 نوفمبر)» from «عرض TNA iMPACT:
+      // ثلاثة أمور كرهناها وثلاثة أحببناها» and the story got the same title as the 6 November one (INCIDENTS #1278).
+      // A title edit never removes a day-and-month or a year (correcting one to another date is still allowed).
+      if (e.field === "title" && titleDates(replace).length < titleDates(find).length) continue;
       // Whole words only: a find that ends mid-word ("فايولنت جا" inside
       // "فايولنت جاي") used to produce "فايولنت جايي".
       const whole = new RegExp(`(?<![\\p{L}\\p{N}])${find.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![\\p{L}\\p{N}])`, "gu");
