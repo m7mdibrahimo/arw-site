@@ -15,7 +15,7 @@ en_tags:
   - "NXT"
 image: /content/images/9gblbrb3hs7xsinz.jpg
 ---
-The Federal Aviation Administration issued a nationwide ground stop for all departing flights across the United States. According to Fightful, the agency stated in an official release that the directive was issued \"due to extraordinary circumstances and for reasons of safety,\" and added that \"All departing traffic should remain ground stopped until further notice.\"
+The Federal Aviation Administration issued a nationwide ground stop for all departing flights across the United States. According to Fightful, the agency stated in an official release that the directive was issued "due to extraordinary circumstances and for reasons of safety," and added that "All departing traffic should remain ground stopped until further notice."
 
 Authorities provided no further details, and the duration of the halt remains unknown, leaving it unclear if it will impact scheduled wrestling events across North America. This weekend's slate features AEW Full Gear located in Arizona and TNA Destination X taking place in Edmonton, Alberta, Canada.
 
