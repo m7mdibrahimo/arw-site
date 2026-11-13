@@ -1,5 +1,15 @@
 [
   {
+    "id": 802267359,
+    "link": "https://www.ringsidenews.com/wwe-announces-gunther-vs-finn-balor-smackdown-scrapped-crown-jewel-match/",
+    "date": "Fri, 13 Nov 2026 19:38:05 +0000",
+    "date_gmt": "2026-11-13T19:38:05.000Z",
+    "title": {
+      "rendered": "WWE Announces Gunther vs. Finn Balor for SmackDown After Scrapped Crown Jewel Match"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/wwe-announces-gunther-vs-finn-balor-for-smackdown-after-scrapped-crown-jewel-match-36.jpg?x41682"
+  },
+  {
     "id": 802267353,
     "link": "https://www.ringsidenews.com/how-spike-dudleys-wwe-legends-deal-came-together/",
     "date": "Fri, 13 Nov 2026 19:25:42 +0000",
@@ -138,15 +148,5 @@
       "rendered": "Ludwig Kaiser’s Accuser Claims He Suffered Concussion and Torn Rotator Cuff During Altercation"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/06/digital-evidence-turned-over-in-ludwig-kaiser-battery-case-02.jpg?x41682"
-  },
-  {
-    "id": 802267263,
-    "link": "https://www.ringsidenews.com/tna-impact-viewership-sees-slight-drop-november-5-2026/",
-    "date": "Fri, 13 Nov 2026 14:41:09 +0000",
-    "date_gmt": "2026-11-13T14:41:09.000Z",
-    "title": {
-      "rendered": "TNA iMPACT Viewership Sees Slight Drop on November 5, 2026"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/02/TNA-iMPACT-Decrease.jpg?x41682"
   }
 ]

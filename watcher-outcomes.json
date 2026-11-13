@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/what-went-wrong-naraku-shiloh-hills-bizarre-wwe-nxt-halloween-havoc-match": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-13T19:40:45.824Z"
+ },
  "https://www.fightful.com/mma/ufc-334-gane-vs-hokit-weigh-in-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
