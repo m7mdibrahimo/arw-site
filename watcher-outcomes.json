@@ -15,59 +15,64 @@
   "at": "2026-11-13T02:27:11.726Z"
  },
  "https://www.fightful.com/wrestling/bayley-says-she-wont-be-appearing-at-11-13-wwe-nxt-live-event-added-to-11-15-event": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
   "retry": true,
-  "at": "2026-11-13T02:26:51.650Z"
+  "at": "2026-11-13T02:29:55.310Z"
  },
  "https://www.fightful.com/wrestling/josh-barnett-gives-his-side-of-using-bloodsport-after-matt-riddle": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T02:25:56.046Z"
+  "at": "2026-11-13T02:29:17.005Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-explains-the-last-outfits-name-change-to-the-cut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T02:25:55.828Z"
+  "at": "2026-11-13T02:29:16.680Z"
  },
  "https://www.fightful.com/wrestling/lei-ying-lee-departs-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T02:25:55.541Z"
+  "at": "2026-11-13T02:29:16.260Z"
  },
  "https://www.fightful.com/wrestling/338753-joe-hendry-wwe-tag-teams": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T02:25:55.067Z"
+  "at": "2026-11-13T02:29:15.559Z"
  },
  "https://www.fightful.com/wrestling/wwe-considered-licensing-mainstream-song-for-the-946s-entrance-music": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T02:25:54.657Z"
+  "at": "2026-11-13T02:29:14.949Z"
  },
  "https://www.fightful.com/wrestling/338742-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T02:25:54.154Z"
+  "at": "2026-11-13T02:29:14.624Z"
  },
  "https://www.fightful.com/wrestling/338737-wwe-raw-attraction": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T02:25:53.937Z"
+  "at": "2026-11-13T02:29:14.298Z"
  },
  "https://www.fightful.com/wrestling/338442-chavo-guerrero-wrestling-brad-small": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T02:25:53.521Z"
+  "at": "2026-11-13T02:29:13.690Z"
  },
  "https://www.fightful.com/wrestling/chelsea-green-says-plaza-hotel-has-not-made-escort-accusations-right": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T02:25:53.178Z"
+  "at": "2026-11-13T02:29:13.169Z"
  },
  "https://www.fightful.com/wrestling/damian-priest-stands-by-previous-comments-about-wwe-main-event-scene-thats-on-me-to-make-it-different": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T02:25:52.894Z"
+  "at": "2026-11-13T02:29:12.749Z"
+ },
+ "https://www.fightful.com/wrestling/field-set-for-knockouts-ultimate-x-match-tna-world-tag-title-bout-added-to-destination-x": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-13T02:27:11.726Z"
  },
  "https://www.fightful.com/wrestling/338699-damian-priest-aaa": {
   "reason": "مكرر مع خبر نزل قبل كده",
