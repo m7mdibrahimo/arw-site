@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/ludwig-kaisers-accuser-claims-he-suffered-concussion-torn-rotator-cuff-during-altercation": {
+  "reason": "المراجعة رفضته: المصدر مابيربطش المصارع بالاتحاد ده: WWE لودفيغ كايزر — اكتب «المصارع <الاسم>» من غير اسم اتحاد",
+  "retry": true,
+  "at": "2026-11-13T15:31:00.507Z"
+ },
  "https://www.fightful.com/wrestling/tna-impact-11-5-viewership-drops-below-200000-viewers": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-11-05)",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Tony Khan",
   "retry": true,
   "at": "2026-11-03T11:55:31.610Z"
- },
- "https://www.fightful.com/wrestling/swerve-strickland-to-be-in-action-at-4thropes-11-12-show": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: ROH World Trios Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Trios Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Trios Championships",
-  "retry": true,
-  "at": "2026-11-03T08:12:08.795Z"
  }
 }
