@@ -1,5 +1,15 @@
 [
   {
+    "id": 4017490980,
+    "link": "https://www.wrestlinginc.com/2315587/wwe-smackdown-november-13-2026-results/",
+    "date": "Fri, 13 Nov 2026 22:00:00 +0000",
+    "date_gmt": "2026-11-13T22:00:00.000Z",
+    "title": {
+      "rendered": "WWE SmackDown Results 11/13/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-results-111326-w-live-updates/l-intro-1794539340.jpg"
+  },
+  {
     "id": 4975231554,
     "link": "https://www.wrestlinginc.com/2316627/aew-skydance-tony-khan-elaborates-confidence-level/",
     "date": "Fri, 13 Nov 2026 21:43:18 +0000",
@@ -188,15 +198,5 @@
       "rendered": "TNA Announces Competitors For Men's And Women's Ultimate X Matches At Destination X"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-announces-competitors-for-mens-and-womens-ultimate-x-matches-at-destination-x/l-intro-1794541924.jpg"
-  },
-  {
-    "id": 4624046244,
-    "link": "https://www.wrestlinginc.com/2315595/tna-lei-ying-lee-major-update-status/",
-    "date": "Fri, 13 Nov 2026 03:51:17 +0000",
-    "date_gmt": "2026-11-13T03:51:17.000Z",
-    "title": {
-      "rendered": "Major Update On Lei Ying Lee's TNA Status"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/major-update-on-lei-ying-lees-tna-status/l-intro-1794541352.jpg"
   }
 ]
