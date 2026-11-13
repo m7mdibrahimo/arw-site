@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/nikki-bella-recalls-drunken-night-left-her-stranded-dark-without-money-phone": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-13T12:10:20.747Z"
+ },
  "https://www.fightful.com/wrestling/bobby-lashley-wins-4th-rope-heavyweight-championship": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-13T12:05:52.760Z"
- },
- "https://www.ringsidenews.com/nikki-bella-recalls-drunken-night-left-her-stranded-dark-without-money-phone": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-13T12:01:56.764Z"
  },
  "https://www.fightful.com/wrestling/338442-chavo-guerrero-wrestling-brad-small": {
   "reason": "مكرر مع خبر نزل قبل كده",
