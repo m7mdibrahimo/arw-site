@@ -227,8 +227,8 @@ function ytFacade(ytId) {
 
 module.exports = function(eleventyConfig) {
   console.log("=== ELEVENTY CONFIG EXECUTING ===");
-  // A Cloudflare build of «site» that a newer «site» commit replaced stops itself, so a panel save never waits for the
-  // bots' build to finish first (lib/superseded-build.cjs, INCIDENTS #1183)
+  // A Cloudflare build of «site» skips itself only when that can't leave the site behind: never mid-build just because
+  // «site» moved (lib/superseded-build.cjs, INCIDENTS #1183, #1285)
   require("./lib/superseded-build.cjs").watch();
   // Which post-build step eats the build time (INCIDENTS #638): every «eleventy.after» step slower than 3 s says so in the log.
   {
