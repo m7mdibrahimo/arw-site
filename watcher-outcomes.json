@@ -1,18 +1,18 @@
 {
  "https://www.ringsidenews.com/alexa-bliss-recalls-nearly-dying-doctors-missed-serious-pregnancy-complication": {
-  "reason": "المراجعة رفضته: المصدر مابيربطش المصارع بالاتحاد ده: WWE أليكسا بليس — اكتب «المصارع <الاسم>» من غير اسم اتحاد",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-13T12:19:51.958Z"
- },
- "https://www.ringsidenews.com/nikki-bella-recalls-drunken-night-left-her-stranded-dark-without-money-phone": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-13T12:10:20.747Z"
+  "at": "2026-11-13T12:23:39.874Z"
  },
  "https://www.fightful.com/wrestling/bobby-lashley-wins-4th-rope-heavyweight-championship": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-13T12:11:10.908Z"
+ },
+ "https://www.ringsidenews.com/nikki-bella-recalls-drunken-night-left-her-stranded-dark-without-money-phone": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-13T12:10:20.747Z"
  },
  "https://www.fightful.com/wrestling/mens-ultimate-x-field-world-x-cup-matches-set-for-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
