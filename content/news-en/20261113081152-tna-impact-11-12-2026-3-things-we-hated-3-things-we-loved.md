@@ -1,7 +1,7 @@
 ---
 title: "TNA Impact 11/12/2026: 3 Things We Hated & 3 Things We Loved"
 slug: "tna-impact-11-12-2026-3-things-we-hated-3-things-we-loved"
-description: "Tonight's TNA Impact served as the go-home show for Destination X, though it did not quite feel like the lead-in to a major event."
+description: "This week's TNA Impact served as the go-home show for Destination X, though it did not quite feel like the lead-in to a major event."
 federation: TNA
 date: 2026-11-13T05:11:52.000Z
 created_at: 2026-11-13T05:24:29.303Z
@@ -20,7 +20,7 @@ gallery:
   - /content/images/8d19wn5qndmoacix.webp
   - /content/images/8ywnma0fpyjmd7hc.webp
 ---
-Tonight's TNA Impact served as the go-home show for Destination X, though it did not quite feel like the lead-in to a major event. Writing for Wrestling Inc., Max Everett and Brie Coder shared their thoughts on the highs and lows of the episode, ranging from the opening match to the main event.
+This week's TNA Impact served as the go-home show for Destination X, though it did not quite feel like the lead-in to a major event. Writing for Wrestling Inc., Max Everett and Brie Coder shared their thoughts on the highs and lows of the episode, ranging from the opening match to the main event.
 
 Hated: Technical difficulties
 - The TNA+ app lagged significantly and played a choppy version of the show, a widespread issue among viewers ahead of a major pay-per-view.

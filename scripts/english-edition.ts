@@ -706,12 +706,24 @@ export function fixPerfectWithPastTime(text: string): string {
     return line.split(QUOTED).map((part, k) => (k % 2 ? part : part.replace(PERFECT_WITH_PAST_TIME, (_m, a?: string, b?: string) => a || b || _m))).join("");
   }).join("\n");
 }
+/**
+ * «Tonight's TNA Impact served as the go-home show…» stays on the English page for good, read the next
+ * morning and months later (INCIDENTS #1275). A show that already aired (a past verb follows its name)
+ * is «This week's» — a preview («Tonight's Raw will feature») is left alone, and so are quotes.
+ */
+const TONIGHT_AIRED = /\bTonight's ((?:(?:[A-Z0-9][\w.&+\/!'-]*|and)\s+){1,7}?)(aired|airing|served|emanated|featured|delivered|saw|was|opened|ended|took place|kicked off|began|started)\b/g;
+export function fixTonightAired(text: string): string {
+  return String(text).split("\n").map((line) => {
+    if (SKIP_LINE.test(line)) return line;
+    return line.split(QUOTED).map((part, k) => (k % 2 ? part : part.replace(TONIGHT_AIRED, "This week's $1$2"))).join("");
+  }).join("\n");
+}
 /** The English prose mistakes still in a story: «a experimental», «I’re», «with he» (empty = fine) */
 export function englishGrammarSlips(text: string): string[] {
   return aToAn(fixIre(fixPronounCase(text))) === String(text) ? [] : ["a/an, I're or pronoun-case typo"];
 }
 export function fixEnglishNames(text: string): string {
-  return cleanSpokenQuotes(fixPerfectWithPastTime(fixSingularThey(aToAn(fixIre(fixPronounCase(twitterToX(dropRepeatedListItem(collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text)))))))))));
+  return fixTonightAired(cleanSpokenQuotes(fixPerfectWithPastTime(fixSingularThey(aToAn(fixIre(fixPronounCase(twitterToX(dropRepeatedListItem(collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text))))))))))));
 }
 
 export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEWS_EN_DIR): string {

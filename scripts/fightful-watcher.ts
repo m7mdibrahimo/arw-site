@@ -1775,6 +1775,8 @@ interface ShowTimingInfo {
   isTonight: boolean;
   isFuture: boolean;
   isPreview: boolean;
+  /** the show's date in the source title is before the day the story came out — it already aired */
+  isPast?: boolean;
   daysAhead?: number;
   showMonth?: number;
   showDay?: number;
@@ -1859,7 +1861,7 @@ export function analyzeShowTiming(originalTitle: string, postDate?: string): Sho
     if (showDate.getTime() === postMidnight.getTime()) {
       return { isTonight: true, isFuture: false, isPreview };
     }
-    return { isTonight: false, isFuture: false, isPreview };
+    return { isTonight: false, isFuture: false, isPreview, isPast: true, showMonth, showDay };
   }
 
   // Previews of weekly TV shows (Collision, SmackDown, Dynamite, Raw, NXT, iMPACT) without a future date are for tonight
@@ -1871,6 +1873,16 @@ export function analyzeShowTiming(originalTitle: string, postDate?: string): Sho
 }
 
 // Helper to remove repetitive clickbait / cliché prefixes and enforce accurate timing words (الليلة vs القادم)
+/**
+ * A show that already aired is never «الليلة»: «Mila Moore Joins The Dollhouse On 11/12 TNA iMPACT»
+ * came out on the 13th titled «… في عرض TNA iMPACT الليلة», which reads as if it is still to come
+ * (INCIDENTS #1275). Only «عرض <English show name> الليلة» is touched, so a quote about «الليلة» stays.
+ */
+export function dropTonightForAiredShow(text: string, postDate?: string, originalTitle?: string): string {
+  if (!text || !originalTitle || !analyzeShowTiming(originalTitle, postDate).isPast) return text;
+  return text.replace(/(عرض\s+[A-Za-z][A-Za-z0-9!&'.\-]*(?:\s+[A-Za-z0-9!&'.\-]+)*)\s+(?:الليلة|هذه\s+الليلة)(?=\s|$|[،.:؟!])/g, "$1");
+}
+
 function cleanHeadlineClichés(title: string, postDate?: string, originalTitle?: string): string {
   if (!title) return title;
   let cleaned = title
@@ -1903,6 +1915,7 @@ function cleanHeadlineClichés(title: string, postDate?: string, originalTitle?:
         .replace(/القادم\s+القادم/g, "القادم");
       cleaned = farFutureShowDate(cleaned, originalTitle || "", postDate);
     } else {
+      cleaned = dropTonightForAiredShow(cleaned, postDate, originalTitle);
       // General news: remove awkward numeric date fragments without falsely adding "القادم"
       cleaned = cleaned
         .replace(/\s*بتاريخ\s+\d+(\/\d+|\s+(?:يناير|فبراير|مارس|أبريل|ابريل|مايو|يونيو|يوليو|أغسطس|اغسطس|سبتمبر|أكتوبر|اكتوبر|نوفمبر|ديسمبر))?/g, "")
@@ -2305,7 +2318,7 @@ export async function optimizeTitleForSEOAndCTR(
 3. **الأمانة التامة لوقائع العنوان الأصلي ودقة التوقيت الزمني**:
    - ممنوع إضافة أي وقائع أو تفاصيل أو تكهنات لم ترد في العنوان الأصلي.
    - **قاعدة توقيت العروض (الليلة vs القادم)**:
-${timing.isTonight || (timing.isPreview && !timing.isFuture) ? `     - 🚨 هذا العرض يقام **الليلة** (${arabicDate})، ممنوع منعاً باتاً كتابة "القادم"! اكتب "الليلة" أو اذكر اسم العرض فقط دون إضافات (مثال: "دليل مشاهدة وتفاصيل وموعد انطلاق عرض AEW Collision الليلة").` : timing.isFuture ? `     - إذا كان الخبر يتحدث عن ظهور مصارع في العرض الأسبوعي التالي أو نزال قادم: اكتب بوضوح وسلاسة "في عرض [الاتحاد والعرض] القادم".${(timing.daysAhead ?? 0) > 7 ? ` 🚨 لكن العرض ده بعد أكتر من أسبوع، فاكتب "يوم ${arabicDayOrdinal(timing.showDay!)} من ${AR_MONTH_NAMES[timing.showMonth! - 1]}" بدل "القادم".` : ""}` : `     - اذكر اسم العرض مسبوقاً باسم الاتحاد دون استخدام كلمة "القادم" إلا للعروض المستقبلية المؤكدة.`}
+${timing.isTonight || (timing.isPreview && !timing.isFuture) ? `     - 🚨 هذا العرض يقام **الليلة** (${arabicDate})، ممنوع منعاً باتاً كتابة "القادم"! اكتب "الليلة" أو اذكر اسم العرض فقط دون إضافات (مثال: "دليل مشاهدة وتفاصيل وموعد انطلاق عرض AEW Collision الليلة").` : timing.isFuture ? `     - إذا كان الخبر يتحدث عن ظهور مصارع في العرض الأسبوعي التالي أو نزال قادم: اكتب بوضوح وسلاسة "في عرض [الاتحاد والعرض] القادم".${(timing.daysAhead ?? 0) > 7 ? ` 🚨 لكن العرض ده بعد أكتر من أسبوع، فاكتب "يوم ${arabicDayOrdinal(timing.showDay!)} من ${AR_MONTH_NAMES[timing.showMonth! - 1]}" بدل "القادم".` : ""}` : `     - اذكر اسم العرض مسبوقاً باسم الاتحاد دون استخدام كلمة "القادم" إلا للعروض المستقبلية المؤكدة.${timing.isPast ? ` 🚨 العرض ده اتذاع خلاص (${timing.showDay}/${timing.showMonth}): ممنوع كلمة "الليلة" عنه في العنوان والمتن — اكتب "في عرض [اسم العرض]" أو "في عرض [اسم العرض] الذي أقيم يوم [اليوم والشهر]".` : ""}`}
    - إذا كان العنوان الأصلي يحتوي على نزال محدد، اذكره بالأسماء الصريحة والمباشرة واسم العرض بدقة.
    - إذا كان العنوان الأصلي يحتوي على تصريح لمصارع، اذكر اسم المصارع والاقتباس بوضوح بين علامتي تنصيص.
    - إذا كان العنوان الأصلي يحتوي على حدث أو إصابة أو ظهور، اذكره مباشرة كما هو (مثل: "تيفاني ستراتون تتعرض لسقوط مخيف فوق الحبل العلوي").
@@ -3537,7 +3550,7 @@ ${jointEnglishRules(sourceUrl)}
     if (isResultsPost) {
       parsed.title = sanitizeResultsTitleSpoilers(parsed.title);
     }
-    parsed.body_markdown = formatResultsMarkdown(sanitizeWrestlingTerms(parsed.body_markdown));
+    parsed.body_markdown = dropTonightForAiredShow(formatResultsMarkdown(sanitizeWrestlingTerms(parsed.body_markdown)), postDate, originalTitle);
     if (timing.isTonight || (timing.isPreview && !timing.isFuture)) {
       parsed.body_markdown = parsed.body_markdown
         .replace(/عرض\s+([A-Z0-9\s\-]+?)\s+القادم\s+يوم\s+[^\n،.]+/g, "عرض $1 الليلة");
