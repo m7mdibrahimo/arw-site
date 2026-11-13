@@ -1,5 +1,25 @@
 [
   {
+    "id": 338884,
+    "link": "https://www.fightful.com/wrestling/clark-connors-opens-up-about-aews-the-last-outfit-changing-name-to-the-cut/",
+    "date": "2026-11-13T15:10:27",
+    "date_gmt": "2026-11-13T20:10:27",
+    "title": {
+      "rendered": "Clark Connors Opens Up About AEW&#8217;s The Last Outfit Changing Name To The Cut"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/13142909/maxresdefault-62.jpg"
+  },
+  {
+    "id": 338890,
+    "link": "https://www.fightful.com/wrestling/gabe-kidd-reflects-on-15-years-since-his-first-match-in-pro-wrestling/",
+    "date": "2026-11-13T15:09:31",
+    "date_gmt": "2026-11-13T20:09:31",
+    "title": {
+      "rendered": "Gabe Kidd Reflects On 15 Years Since His First Match In Pro Wrestling"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/19225144/Screenshot-2026-08-19-at-10.51.25-PM.png"
+  },
+  {
     "id": 338885,
     "link": "https://www.fightful.com/wrestling/finn-balor-vs-gunther-added-to-11-13-wwe-smackdown/",
     "date": "2026-11-13T14:47:47",
@@ -278,25 +298,5 @@
       "rendered": "WWE Live Results (11/12): Sami Zayn vs. Cody Rhodes"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/16075502/images-21.jpg"
-  },
-  {
-    "id": 338821,
-    "link": "https://www.fightful.com/wrestling/njpw-x-cmll-fantasticamania-2027-lineup-announced/",
-    "date": "2026-11-13T06:55:35",
-    "date_gmt": "2026-11-13T11:55:35",
-    "title": {
-      "rendered": "NJPW x CMLL Fantasticamania 2027 Lineup Announced"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/13065447/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88-2026-11-13-110750-1.png"
-  },
-  {
-    "id": 338818,
-    "link": "https://www.fightful.com/wrestling/yuto-ice-vs-fuminori-abe-added-to-njpw-bound-for-unbound/",
-    "date": "2026-11-13T06:49:50",
-    "date_gmt": "2026-11-13T11:49:50",
-    "title": {
-      "rendered": "Yuto-Ice vs. Fuminori Abe Added To NJPW Bound For Unbound"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/13064846/20261113_Ice%C3%97abe.jpg"
   }
 ]
