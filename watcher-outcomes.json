@@ -1,53 +1,58 @@
 {
+ "https://www.fightful.com/wrestling/mens-ultimate-x-field-world-x-cup-matches-set-for-tna-destination-x": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T04:27:21.965Z"
+ },
  "https://www.fightful.com/wrestling/tna-impact-results-11-12-nic-nemeth-elijah-moose-compete": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Santino Marella",
   "retry": true,
-  "at": "2026-11-13T04:23:26.154Z"
+  "at": "2026-11-13T04:27:21.600Z"
  },
  "https://www.fightful.com/wrestling/big-boom-aj-and-qt-marshall-issue-challenge-for-aew-full-gear": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل مثنى («يوجهان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، فعل مثنى («سيحضران») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-13T04:22:27.314Z"
+  "at": "2026-11-13T04:26:22.705Z"
  },
  "https://www.fightful.com/wrestling/josh-barnett-gives-his-side-of-using-bloodsport-after-matt-riddle": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T04:21:43.705Z"
+  "at": "2026-11-13T04:25:37.579Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-explains-the-last-outfits-name-change-to-the-cut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T04:21:43.426Z"
+  "at": "2026-11-13T04:25:37.243Z"
  },
  "https://www.fightful.com/wrestling/lei-ying-lee-departs-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T04:21:43.067Z"
+  "at": "2026-11-13T04:25:36.817Z"
  },
  "https://www.fightful.com/wrestling/338753-joe-hendry-wwe-tag-teams": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T04:21:42.469Z"
+  "at": "2026-11-13T04:25:36.112Z"
  },
  "https://www.fightful.com/wrestling/wwe-considered-licensing-mainstream-song-for-the-946s-entrance-music": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T04:21:41.951Z"
+  "at": "2026-11-13T04:25:35.498Z"
  },
  "https://www.fightful.com/wrestling/338742-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T04:21:41.673Z"
+  "at": "2026-11-13T04:25:35.160Z"
  },
  "https://www.fightful.com/wrestling/338737-wwe-raw-attraction": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T04:21:41.393Z"
+  "at": "2026-11-13T04:25:34.832Z"
  },
  "https://www.fightful.com/wrestling/338442-chavo-guerrero-wrestling-brad-small": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T04:21:40.867Z"
+  "at": "2026-11-13T04:25:34.219Z"
  },
  "https://www.wrestlinginc.com/2315009/tna-thursday-night-impact-november-12-2026-results": {
   "reason": "المراجعة رفضته: المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الثالثة: نزال فردي — اكتب الفائز زي المصدر وبالماضي",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-02T19:37:05.500Z"
- },
- "https://www.fightful.com/wrestling/wwe-announces-date-for-wwe-royal-rumble-2027": {
-  "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
-  "retry": true,
-  "at": "2026-11-02T18:41:27.091Z"
  }
 }
