@@ -56,7 +56,7 @@ test('a one-show library page has a collection head, never the newest episode he
   };
   const h = head(prog);
   // the collection's title: plural, the year (people search it) and how many shows it holds — no episode pitch
-  assert.match(h.title, /^عروض .+ 2026 المترجمة \(عرض واحد\) — NJPW Special Events$/);
+  assert.match(h.title, /^عروض .+ 2026 المترجمة \(عرض واحد\) — مشاهدة وتحميل NJPW Special Events$/);
   assert.doesNotMatch(h.title, /كامل|17 أكتوبر/);
   assert.match(h.desc, /^كل عروض NJPW Special Events 2026 المترجمة بالعربي \(عرض واحد\)/);
   assert.match(h.desc, /روابط المشاهدة والتحميل/);

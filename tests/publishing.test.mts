@@ -5654,7 +5654,7 @@ test('structured-data names never carry a tilde from the show title (INCIDENTS #
   assert.ok(!m.keywordList(['NJPW'], ['باور ستراجيل ~ سوبر جونيور تاج ليج', 'باور ستراجيل سوبر جونيور تاج ليج']).some((n: string) => n.includes('~')));
   const cfg = fs.readFileSync('eleventy.config.js', 'utf8');
   assert.match(cfg, /const searchArName = String\(arName \|\| ""\)\.replace\(\/\\s\*~\.\*\$\/, ""\)/);
-  assert.match(fs.readFileSync('pages/library-program.njk', 'utf8'), /"alternateName": \[\{% for a in \(\[lp\.prog\.arSearchName or lp\.prog\.arName\]/);
+  assert.match(fs.readFileSync('pages/library-program.njk', 'utf8'), /"alternateName": \[\{% for a in \(\(\[lp\.prog\.arSearchName or lp\.prog\.arName\]/);
 });
 
 test('agoSpanNotInSource: «In June of last year» written as «العام قبل الماضي» is flagged (Roxanne Perez, INCIDENTS #1214)', async () => {

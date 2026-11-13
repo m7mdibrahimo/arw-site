@@ -1948,6 +1948,16 @@ module.exports = function(eleventyConfig) {
     return require("./lib/wrestler-mentions.cjs").englishTopics(headline, tags);
   });
 
+  // A name list said once each: the Crown Jewel library page's TVSeries alternateName carried «مشاهدة عرض كراون جول» and
+  // «تحميل عرض كراون جول» twice (the program's asked forms and libraryNameForms both add them). Head only (INCIDENTS #1270)
+  eleventyConfig.addFilter("uniqueNames", function(list) {
+    const seen = new Set();
+    return (Array.isArray(list) ? list : []).filter(function(n) {
+      const k = String(n || "").replace(/\s+/g, " ").trim();
+      if (!k || seen.has(k)) return false;
+      seen.add(k); return true;
+    });
+  });
   // The ways visitors write a program's library page, for its structured data only (INCIDENTS #503)
   eleventyConfig.addNunjucksGlobal("libraryNameForms", function(prog, year) {
     return require("./lib/show-seo.cjs").libraryNameForms({ arName: prog && prog.arName, name: prog && prog.name, aliases: (prog && prog.aliases) || [], year, count: (prog && prog.count) || 0, latest: prog && prog.latest && prog.latest.eventDate });

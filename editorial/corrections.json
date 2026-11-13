@@ -2,6 +2,51 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "اتحاد هاوس أوف جلوري",
+      "right": "اتحاد House of Glory",
+      "note": "أسماء الاتحادات بالإنجليزي (HOG/House of Glory) — القاموس نفسه كان بيعرّبها (خبر شوتزي وزيلا، INCIDENTS #1270)"
+    },
+    {
+      "wrong": "هاوس أوف جلوري",
+      "right": "House of Glory",
+      "note": "أسماء الاتحادات بالإنجليزي — INCIDENTS #1270"
+    },
+    {
+      "wrong": "لوتشا ليبري AAA وورلد وايد",
+      "right": "AAA",
+      "note": "اسم الاتحاد AAA بالإنجليزي، مش «لوتشا ليبري ... وورلد وايد» — INCIDENTS #1270"
+    },
+    {
+      "wrong": "بروفيشنال فايترز ليج",
+      "right": "PFL",
+      "note": "اسم منظمة PFL بالإنجليزي — INCIDENTS #1270"
+    },
+    {
+      "wrong": "ريزين فايتينج فيدريشن",
+      "right": "Rizin",
+      "note": "اسم منظمة Rizin بالإنجليزي — INCIDENTS #1270"
+    },
+    {
+      "wrong": "ريسلينج دونتاكو",
+      "right": "Wrestling Dontaku",
+      "note": "أسماء العروض بالإنجليزي — INCIDENTS #1270"
+    },
+    {
+      "wrong": "وورلد تاج ليج",
+      "right": "World Tag League",
+      "note": "اسم بطولة NJPW بالإنجليزي — INCIDENTS #1270"
+    },
+    {
+      "wrong": "جينفر",
+      "right": "جينيفر",
+      "note": "Jennifer = «جينيفر» زي جينيفر ويتز (خبر روب فان دام، INCIDENTS #1270)"
+    },
+    {
+      "wrong": "كاتي فوربس",
+      "right": "كاتي فوربز",
+      "note": "Katie Forbes = «كاتي فوربز» زي القاموس — INCIDENTS #1270"
+    },
+    {
       "wrong": "قسم FCW",
       "right": "اتحاد FCW التطويري",
       "note": "FCW كان اتحاد WWE التطويري مش «قسم» (خبر لايلا وكاتي لي بورشيل، INCIDENTS #1268)"
