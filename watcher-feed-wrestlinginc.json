@@ -1,5 +1,15 @@
 [
   {
+    "id": 2498533682,
+    "link": "https://www.wrestlinginc.com/2315610/wwe-smackdown-viewership-ratings-november-6-2026/",
+    "date": "Fri, 13 Nov 2026 14:00:00 +0000",
+    "date_gmt": "2026-11-13T14:00:00.000Z",
+    "title": {
+      "rendered": "WWE Smackdown Viewership & Ratings Report: 11/6/2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-viewership-ratings-report-1162026/l-intro-1794549202.jpg"
+  },
+  {
     "id": 1082119261,
     "link": "https://www.wrestlinginc.com/2311541/former-wwe-co-president-george-barrios-remembers-success-wwe-network/",
     "date": "Fri, 13 Nov 2026 13:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Josh Barnett & Ex-WWE Star Matt Riddle Provide Differing Takes On Bloodsport Origins"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/josh-barnett-ex-wwe-star-matt-riddle-provide-differing-takes-on-bloodsport-origins/l-intro-1794467374.jpg"
-  },
-  {
-    "id": 3891655312,
-    "link": "https://www.wrestlinginc.com/2314459/wwe-raw-backstage-segment-sol-ruca-lyra-valkyria/",
-    "date": "Thu, 12 Nov 2026 15:00:00 +0000",
-    "date_gmt": "2026-11-12T15:00:00.000Z",
-    "title": {
-      "rendered": "WWE Releases Backstage Raw Segment Featuring Sol Ruca And Lyra Valkyria"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-releases-backstage-raw-segment-featuring-sol-ruca-and-lyra-valkyria/l-intro-1794465693.jpg"
   }
 ]
