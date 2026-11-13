@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2315009/tna-thursday-night-impact-november-12-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-13T02:57:34.604Z"
+ },
  "https://www.fightful.com/wrestling/big-boom-aj-and-qt-marshall-issue-challenge-for-aew-full-gear": {
   "reason": "المراجعة رفضته: فعل مثنى («سيكونان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
@@ -63,11 +68,6 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-13T02:38:40.947Z"
- },
- "https://www.wrestlinginc.com/2315009/tna-thursday-night-impact-november-12-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-13T02:38:13.940Z"
  },
  "https://www.fightful.com/wrestling/field-set-for-knockouts-ultimate-x-match-tna-world-tag-title-bout-added-to-destination-x": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
