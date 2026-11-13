@@ -1,4 +1,69 @@
 {
+ "https://www.fightful.com/wrestling/wwe-main-event-results-11-12": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-13T18:33:38.832Z"
+ },
+ "https://www.fightful.com/wrestling/marina-shafir-talks-possibility-of-ronda-rousey-returning-to-aew-joining-the-death-riders": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T18:32:44.859Z"
+ },
+ "https://www.fightful.com/wrestling/spike-dudley-announces-hes-signed-a-wwe-legends-deal": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T18:32:44.547Z"
+ },
+ "https://www.fightful.com/wrestling/alleged-victim-in-ludwig-kaiser-battery-case-claims-he-suffered-torn-rotator-cuff-concussion": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T18:32:44.221Z"
+ },
+ "https://www.fightful.com/wrestling/john-cena-explains-wardrobe-change-on-wwe-tv": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T18:32:43.891Z"
+ },
+ "https://www.fightful.com/wrestling/tna-impact-11-5-viewership-drops-below-200000-viewers": {
+  "reason": "تقرير مشاهدة لعرض قديم (2026-11-05)",
+  "retry": false,
+  "at": "2026-11-13T18:32:43.192Z"
+ },
+ "https://www.fightful.com/wrestling/trey-miguel-says-tna-contract-expires-at-the-end-of-the-year-hoping-to-re-sign-on-a-longer-deal": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T18:32:42.980Z"
+ },
+ "https://www.fightful.com/wrestling/aew-collision-11-7-viewership-increases-from-halloween-night": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T18:32:42.766Z"
+ },
+ "https://www.fightful.com/mma/eight-people-sentenced-to-prison-in-usman-nurmagomedov-and-merab-dvalishvili-brawl": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T18:32:42.071Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-13": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T18:32:41.748Z"
+ },
+ "https://www.fightful.com/wrestling/338828-tony-khan-aew": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T18:32:41.419Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-nxt-11-10-viewership-increases-with-return-to-tuesday": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T18:32:41.093Z"
+ },
+ "https://www.fightful.com/wrestling/mens-ultimate-x-field-world-x-cup-matches-set-for-tna-destination-x": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-13T18:32:40.319Z"
+ },
  "https://www.ringsidenews.com/miz-calls-out-john-cena-snubbing-him-john-cena-classic": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -8,61 +73,6 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى («يتصارعان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
   "at": "2026-11-13T18:26:02.107Z"
- },
- "https://www.fightful.com/wrestling/spike-dudley-announces-hes-signed-a-wwe-legends-deal": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T18:28:48.156Z"
- },
- "https://www.fightful.com/wrestling/alleged-victim-in-ludwig-kaiser-battery-case-claims-he-suffered-torn-rotator-cuff-concussion": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T18:28:47.829Z"
- },
- "https://www.fightful.com/wrestling/john-cena-explains-wardrobe-change-on-wwe-tv": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T18:28:47.494Z"
- },
- "https://www.fightful.com/wrestling/tna-impact-11-5-viewership-drops-below-200000-viewers": {
-  "reason": "تقرير مشاهدة لعرض قديم (2026-11-05)",
-  "retry": false,
-  "at": "2026-11-13T18:28:46.795Z"
- },
- "https://www.fightful.com/wrestling/trey-miguel-says-tna-contract-expires-at-the-end-of-the-year-hoping-to-re-sign-on-a-longer-deal": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T18:28:46.582Z"
- },
- "https://www.fightful.com/wrestling/aew-collision-11-7-viewership-increases-from-halloween-night": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T18:28:46.369Z"
- },
- "https://www.fightful.com/mma/eight-people-sentenced-to-prison-in-usman-nurmagomedov-and-merab-dvalishvili-brawl": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T18:28:45.666Z"
- },
- "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-13": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T18:28:45.339Z"
- },
- "https://www.fightful.com/wrestling/338828-tony-khan-aew": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T18:28:45.010Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-11-10-viewership-increases-with-return-to-tuesday": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T18:28:44.678Z"
- },
- "https://www.fightful.com/wrestling/mens-ultimate-x-field-world-x-cup-matches-set-for-tna-destination-x": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T18:28:43.898Z"
  },
  "https://www.fightful.com/wrestling/john-cena-explains-why-he-doesnt-want-talent-to-call-him-out-were-never-gonna-deliver-on-this": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1988,15 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-03T17:58:07.929Z"
- },
- "https://www.fightful.com/wrestling/john-cena-to-appear-at-wwe-survivor-series-wargames-2026": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-03T17:35:06.309Z"
- },
- "https://www.fightful.com/wrestling/337121-john-cena-classic-cody-rhodes": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-03T17:35:06.017Z"
  }
 }
