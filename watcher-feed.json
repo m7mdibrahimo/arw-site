@@ -1,5 +1,15 @@
 [
   {
+    "id": 338878,
+    "link": "https://www.fightful.com/wrestling/nas-attends-4th-rope-wrestling-event/",
+    "date": "2026-11-13T14:23:14",
+    "date_gmt": "2026-11-13T19:23:14",
+    "title": {
+      "rendered": "Nas Attends 4th Rope Wrestling Event"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/13140525/HW-4_8dWAAAux4Q-scaled-e1794596752116.jpg"
+  },
+  {
     "id": 338871,
     "link": "https://www.fightful.com/wrestling/drew-mcintyre-attends-premiere-for-his-new-film-hexed-tna-impact-highlights-more-fight-size/",
     "date": "2026-11-13T14:00:00",
@@ -288,15 +298,5 @@
       "rendered": "Mila Moore Joins The Dollhouse On 11/12 TNA iMPACT"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/12231112/Screenshot-598.png"
-  },
-  {
-    "id": 338804,
-    "link": "https://www.fightful.com/wrestling/mens-ultimate-x-field-world-x-cup-matches-set-for-tna-destination-x/",
-    "date": "2026-11-12T22:39:36",
-    "date_gmt": "2026-11-13T03:39:36",
-    "title": {
-      "rendered": "Men&#8217;s Ultimate X Field, World X Cup Matches Set For TNA Destination X"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/12223014/HW-YSZ_XUAA-4ME.png"
   }
 ]
