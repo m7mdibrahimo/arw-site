@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2316201/aew-young-bucks-blood-guts-lie-told-themselves": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-13T17:59:39.384Z"
+ },
  "https://www.fightful.com/wrestling/alleged-victim-in-ludwig-kaiser-battery-case-claims-he-suffered-torn-rotator-cuff-concussion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
