@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/alexa-bliss-recalls-nearly-dying-doctors-missed-serious-pregnancy-complication": {
+  "reason": "المراجعة رفضته: المصدر مابيربطش المصارع بالاتحاد ده: WWE أليكسا بليس — اكتب «المصارع <الاسم>» من غير اسم اتحاد",
+  "retry": true,
+  "at": "2026-11-13T12:19:51.958Z"
+ },
  "https://www.ringsidenews.com/nikki-bella-recalls-drunken-night-left-her-stranded-dark-without-money-phone": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
