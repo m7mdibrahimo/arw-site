@@ -1,68 +1,63 @@
 {
- "https://www.wrestlinginc.com/2315009/tna-thursday-night-impact-november-12-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-13T00:02:12.362Z"
- },
- "https://www.ringsidenews.com/rob-van-dam-denies-blame-tna-wrestling-getting-banned-twitch-threesome-segment": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-12T23:55:15.993Z"
- },
  "https://www.fightful.com/wrestling/josh-barnett-gives-his-side-of-using-bloodsport-after-matt-riddle": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T00:03:01.302Z"
+  "at": "2026-11-13T00:14:20.713Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-explains-the-last-outfits-name-change-to-the-cut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T00:03:01.012Z"
+  "at": "2026-11-13T00:14:20.374Z"
  },
  "https://www.fightful.com/wrestling/lei-ying-lee-departs-tna-wrestling": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T00:03:00.647Z"
+  "at": "2026-11-13T00:14:19.944Z"
  },
  "https://www.fightful.com/wrestling/338753-joe-hendry-wwe-tag-teams": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T00:03:00.049Z"
+  "at": "2026-11-13T00:14:19.241Z"
  },
  "https://www.fightful.com/wrestling/wwe-considered-licensing-mainstream-song-for-the-946s-entrance-music": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T00:02:59.534Z"
+  "at": "2026-11-13T00:14:18.649Z"
  },
  "https://www.fightful.com/wrestling/338742-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T00:02:59.256Z"
+  "at": "2026-11-13T00:14:18.327Z"
  },
  "https://www.fightful.com/wrestling/338737-wwe-raw-attraction": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T00:02:58.980Z"
+  "at": "2026-11-13T00:14:18.009Z"
  },
  "https://www.fightful.com/wrestling/338442-chavo-guerrero-wrestling-brad-small": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T00:02:58.458Z"
+  "at": "2026-11-13T00:14:17.411Z"
  },
  "https://www.fightful.com/wrestling/chelsea-green-says-plaza-hotel-has-not-made-escort-accusations-right": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T00:02:58.017Z"
+  "at": "2026-11-13T00:14:16.909Z"
  },
  "https://www.fightful.com/wrestling/damian-priest-stands-by-previous-comments-about-wwe-main-event-scene-thats-on-me-to-make-it-different": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T00:02:57.659Z"
+  "at": "2026-11-13T00:14:16.489Z"
  },
  "https://www.fightful.com/wrestling/338699-damian-priest-aaa": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T00:02:57.217Z"
+  "at": "2026-11-13T00:14:15.977Z"
+ },
+ "https://www.wrestlinginc.com/2315009/tna-thursday-night-impact-november-12-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-13T00:02:12.362Z"
  },
  "https://www.ringsidenews.com/rob-van-dam-denies-blame-tna-wrestling-getting-banned-twitch-threesome-segment": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
