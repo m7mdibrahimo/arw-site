@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2315587/wwe-smackdown-november-13-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-13T23:16:54.968Z"
+ },
  "https://www.fightful.com/wrestling/brie-bella-is-hoping-to-resume-in-ring-training-in-january": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,11 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-13T23:15:39.028Z"
- },
- "https://www.wrestlinginc.com/2315587/wwe-smackdown-november-13-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-13T23:11:30.401Z"
  },
  "https://www.fightful.com/wrestling/drew-mcintyre-cm-punk-has-got-charles-manson-like-qualities-he-believes-the-bs-he-says-and-everyone-follows-him-like-freaking-zombies": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
