@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixEventCalledMovie, fixDivasChampion, type NewsFile } from "./news-qa";
+import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixElijahAsIlya, fixEventCalledMovie, fixDivasChampion, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -3955,6 +3955,9 @@ export function showResultsKey(title: string): { name: string; md: string } {
   const md = (t.match(/\b(\d{1,2})\/(\d{1,2})\b/) || []).slice(1, 3).map(Number).join("/") || (named ? `${EN_MONTHS.indexOf(named[1]) + 1}/${+named[2]}` : "");
   const head = t.split(/\bresults?\b|\bspoilers?\b|\blive coverage\b|\blive recap\b/)[0] || t;
   const name = head.replace(/\(.*?\)/g, " ").replace(/\b\d{1,2}\/\d{1,2}(?:\/\d{2,4})?\b/g, " ").replace(/\b(?:19|20)\d\d\b/g, " ")
+    // «TNA Thursday Night Impact» (Wrestling Inc) and «TNA iMPACT!» (Fightful) are one show: the weekday is dropped
+    // (but not «Saturday Night's Main Event», a different show from «Main Event») (INCIDENTS #1274).
+    .replace(/\b(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b(?!\s+night'?s)/g, " ")
     .replace(/\b(?:live|full|quick|night|day|the)\b/g, " ").replace(/[^a-z0-9]+/g, " ").trim();
   return { name, md };
 }
@@ -4703,6 +4706,8 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     draft = { ...draft, title: fixLetterDigitHandles(draft.title, src), body: fixLetterDigitHandles(draft.body, src) };
     // «You were the first…» written «كنت أول…» (reads «I was», INCIDENTS #1259).
     draft = { ...draft, body: fixYouWereQuote(draft.body, src) };
+    // «Elijah» written «إيليا» instead of the glossary's «إلياس» (INCIDENTS #1274).
+    draft = { ...draft, title: fixElijahAsIlya(draft.title, src), body: fixElijahAsIlya(draft.body, src), tags: draft.tags.map(t => fixElijahAsIlya(t, src)) };
     // «backstage at Natural Born Killers» (an event) written «في كواليس فيلم Natural Born Killers» (INCIDENTS #1267).
     draft = { ...draft, title: fixDivasChampion(fixEventCalledMovie(draft.title, src), src), body: fixDivasChampion(fixEventCalledMovie(draft.body, src), src) };
   }

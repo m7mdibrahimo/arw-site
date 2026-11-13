@@ -20,4 +20,4 @@ Elayna Black def. Heather By Elegance
 Apex (Shayna Baszler & Zoey Serrano) def. The King Bees (Charity King & Danni Bee)
 Moose def. Samuel Shaw by DQ
 Mustafa Ali def. Frankie Kazarian
-Nic Nemeth def. Harley Hudson
+Nic Nemeth def. Elijah
