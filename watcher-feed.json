@@ -1,5 +1,15 @@
 [
   {
+    "id": 338812,
+    "link": "https://www.fightful.com/wrestling/bobby-lashley-wins-4th-rope-heavyweight-championship/",
+    "date": "2026-11-13T00:34:06",
+    "date_gmt": "2026-11-13T05:34:06",
+    "title": {
+      "rendered": "Bobby Lashley Wins 4th Rope Heavyweight Championship"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/13002957/IMG_8787-e1794547817432.jpg"
+  },
+  {
     "id": 338807,
     "link": "https://www.fightful.com/wrestling/mila-moore-joins-the-dollhouse-on-11-12-tna-impact/",
     "date": "2026-11-12T23:32:20",
@@ -288,15 +298,5 @@
       "rendered": "Chavo Guerrero Starting Wrestling Agency With Brad Small, Says He&#8217;s Talked With Tony Khan And People In WWE"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/11141341/maxresdefault-55.jpg"
-  },
-  {
-    "id": 338723,
-    "link": "https://www.fightful.com/wrestling/oskar-vs-lance-archer-added-to-njpw-bound-for-unbound/",
-    "date": "2026-11-12T11:48:52",
-    "date_gmt": "2026-11-12T16:48:52",
-    "title": {
-      "rendered": "OSKAR vs. Lance Archer Added To NJPW Bound For Unbound"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/12112743/OSKAR%C3%97Archer.jpg"
   }
 ]
