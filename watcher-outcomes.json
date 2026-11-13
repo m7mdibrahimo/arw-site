@@ -1,8 +1,13 @@
 {
+ "https://www.wrestlinginc.com/2315575/tna-destination-x-impact-nic-ryan-nemeth-added-match-defend-tag-title": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-13T02:38:40.947Z"
+ },
  "https://www.wrestlinginc.com/2315009/tna-thursday-night-impact-november-12-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-13T02:27:54.323Z"
+  "at": "2026-11-13T02:38:13.940Z"
  },
  "https://www.fightful.com/wrestling/field-set-for-knockouts-ultimate-x-match-tna-world-tag-title-bout-added-to-destination-x": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-02T17:26:49.097Z"
- },
- "https://www.fightful.com/wrestling/cody-rhodes-says-no-wrestler-has-ever-said-that-they-want-lose-their-title": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-02T17:14:07.587Z"
  }
 }
