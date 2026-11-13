@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/aew-fright-night-dynamite-results-highlights-key-moments-october-28-2026/": {
-    "matchedFile": "20261029033227-جون-موكسلي-يطلق-تحدي-نزال-anarchy-in-the-arena-في-عرض-aew-full-gear.md",
-    "reason": "الخبر الجديد يغطي نفس نتائج عرض AEW Fright Night Dynamite التي تم تناولها بالفعل في الخبر رقم 1، حيث أن تفاصيل نزال موكسلي وتحدي Anarchy in the Arena مذكورة مسبقاً.",
-    "at": "2026-10-29T01:04:07.133Z"
-  },
   "https://www.wrestlinginc.com/2300592/kyle-fletcher-will-ospreay-aew-world-title-full-gear-2026-challenge/": {
     "matchedFile": "20261029040928-كايل-فليتشر-يتحدى-ويل-أوسبراي-على-بطولة-aew-العالمية-في-عرض-aew-full-gear.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (تحدي كايل فليتشر لويل أوسبراي في عرض Full Gear) المذكور في الخبر رقم 0، والتفاصيل الإضافية مثل نزال Blood and Guts لا تغير من جوهر الخبر الأساسي.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261113051900-تحديد-مصارعات-نزال-ألتيميت-إكس-وإضافة-مواجهة-على-بطولة-tna-العالمية-للفرق-في-عرض-tna-destination-x.md",
     "reason": "الخبر الجديد يكرر الإعلان عن قائمة المشاركات في نزال ألتيميت إكس للسيدات وتفاصيل العرض التي تم نشرها بالفعل في الخبر رقم 0، كما أن إضافة أسماء المشاركين في نزال الرجال لا تعتبر تطوراً جوهرياً يبرر نشر خبر منفصل عن نفس الحدث.",
     "at": "2026-11-13T04:10:49.472Z"
+  },
+  "https://www.fightful.com/wrestling/mens-ultimate-x-field-world-x-cup-matches-set-for-tna-destination-x/": {
+    "matchedFile": "20261113051900-تحديد-مصارعات-نزال-ألتيميت-إكس-وإضافة-مواجهة-على-بطولة-tna-العالمية-للفرق-في-عرض-tna-destination-x.md",
+    "reason": "الخبر الجديد يعرض نفس تفاصيل وجدول نزالات عرض TNA Destination X والإعلانات المتعلقة بنزالات ألتيميت إكس وكأس العالم والتي تم تغطيتها بالفعل في الخبر المنشور.",
+    "at": "2026-11-13T04:23:27.391Z"
   }
 }
