@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2300589/jon-moxley-death-riders-the-cut-anarchy-in-the-arena-aew-full-gear-2026/": {
-    "matchedFile": "20261029033227-جون-موكسلي-يطلق-تحدي-نزال-anarchy-in-the-arena-في-عرض-aew-full-gear.md",
-    "reason": "الخبر الجديد يغطي نفس واقعة تحدي نزال Anarchy in the Arena في عرض AEW Full Gear التي تم تناولها في الخبر المنشور رقم 0.",
-    "at": "2026-10-29T00:48:59.342Z"
-  },
   "https://www.ringsidenews.com/aew-fright-night-dynamite-results-highlights-key-moments-october-28-2026/": {
     "matchedFile": "20261029033227-جون-موكسلي-يطلق-تحدي-نزال-anarchy-in-the-arena-في-عرض-aew-full-gear.md",
     "reason": "الخبر الجديد يغطي نفس نتائج عرض AEW Fright Night Dynamite التي تم تناولها بالفعل في الخبر رقم 1، حيث أن تفاصيل نزال موكسلي وتحدي Anarchy in the Arena مذكورة مسبقاً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261112221540-لي-يينغ-تغادر-اتحاد-tna-وسط-موجة-من-رحيل-المصارعين.md",
     "reason": "الخبر الجديد يغطي نفس الحدث المتعلق برحيل لي يينغ لي عن اتحاد TNA وتحولها إلى مصارعة بلا عقد مع إجراء محادثات مع اتحادات أخرى، وهو نفس مضمون الخبر المنشور برقم 1 من مصدر آخر.",
     "at": "2026-11-13T03:54:27.670Z"
+  },
+  "https://www.wrestlinginc.com/2315596/tna-impact-destination-x-ultimate-x-matches-announces-competitors-mens-womens/": {
+    "matchedFile": "20261113051900-تحديد-مصارعات-نزال-ألتيميت-إكس-وإضافة-مواجهة-على-بطولة-tna-العالمية-للفرق-في-عرض-tna-destination-x.md",
+    "reason": "الخبر الجديد يكرر الإعلان عن قائمة المشاركات في نزال ألتيميت إكس للسيدات وتفاصيل العرض التي تم نشرها بالفعل في الخبر رقم 0، كما أن إضافة أسماء المشاركين في نزال الرجال لا تعتبر تطوراً جوهرياً يبرر نشر خبر منفصل عن نفس الحدث.",
+    "at": "2026-11-13T04:10:49.472Z"
   }
 }
