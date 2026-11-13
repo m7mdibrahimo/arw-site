@@ -59,6 +59,11 @@
   "retry": true,
   "at": "2026-11-13T00:02:12.362Z"
  },
+ "https://www.wrestlinginc.com/2315009/tna-thursday-night-impact-november-12-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-13T00:02:12.362Z"
+ },
  "https://www.ringsidenews.com/rob-van-dam-denies-blame-tna-wrestling-getting-banned-twitch-threesome-segment": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-02T16:36:40.270Z"
- },
- "https://www.fightful.com/wrestling/cody-rhodes-addresses-hardcore-fans-not-always-loving-the-wwe-nil-system": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-02T15:28:02.779Z"
  }
 }
