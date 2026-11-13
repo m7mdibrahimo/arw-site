@@ -1,5 +1,49 @@
 [
   {
+    "url": "/shows/tna-impact-12-11-2026/",
+    "title": "عرض تي ان ايه امباكت 12.11.2026 مترجم",
+    "subtitle": "TNA iMPACT 12.11.2026",
+    "image": "/content/images/72v2wabd1w9mfdo1.jpg?w=800",
+    "federation": "TNA",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض تي ان ايه امباكت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/roh-on-honorclub-12-11-2026/",
+    "title": "عرض ار او اتش اون اونر كلوب 12.11.2026 مترجم",
+    "subtitle": "ROH on HonorClub 12.11.2026",
+    "image": "/content/images/vpxzjtmeest4nqxb.jpg?w=800",
+    "federation": "ROH",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ار او اتش اون اونر كلوب مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/wwe-main-event-11-11-2026/",
+    "title": "عرض مين ايفنت 11.11.2026 مترجم",
+    "subtitle": "WWE Main Event 11.11.2026",
+    "image": "/content/images/clnszlfq35on7twy.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض مين ايفنت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/wwe-evolve-11-11-2026/",
+    "title": "عرض ايفولف 11.11.2026 مترجم",
+    "subtitle": "WWE Evolve 11.11.2026",
+    "image": "/content/images/v7oywhs0aff5c15i.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ايفولف مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/aew-dynamite-and-collision-11-11-2026/",
     "title": "عرض داينامايت 11.11.2026 مترجم",
     "subtitle": "AEW Dynamite and Collision 11.11.2026",
@@ -64,49 +108,5 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/tna-impact-05-11-2026/",
-    "title": "عرض تي ان ايه امباكت 05.11.2026 مترجم",
-    "subtitle": "TNA iMPACT 05.11.2026",
-    "image": "/content/images/pjmyzwicsbf8dnij.jpg?w=800",
-    "federation": "TNA",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض تي ان ايه امباكت مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/roh-on-honorclub-05-11-2026/",
-    "title": "عرض ار او اتش اون اونر كلوب 05.11.2026 مترجم",
-    "subtitle": "ROH on HonorClub 05.11.2026",
-    "image": "/content/images/5lm0l9c2b9dnv0gd.jpg?w=800",
-    "federation": "ROH",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ار او اتش اون اونر كلوب مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-evolve-04-11-2026/",
-    "title": "عرض ايفولف 04.11.2026 مترجم",
-    "subtitle": "WWE Evolve 04.11.2026",
-    "image": "/content/images/6jyzpavxofjj19xi.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ايفولف مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-main-event-04-11-2026/",
-    "title": "عرض مين ايفنت 04.11.2026 مترجم",
-    "subtitle": "WWE Main Event 04.11.2026",
-    "image": "/content/images/shzx4sumj3otp52v.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض مين ايفنت مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
