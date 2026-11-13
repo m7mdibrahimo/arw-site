@@ -1,83 +1,88 @@
 {
- "https://www.wrestlinginc.com/2316501/tna-impact-viewership-ratings-november-5-2026": {
-  "reason": "تقرير مشاهدة لعرض قديم (2026-11-05)",
-  "retry": false,
-  "at": "2026-11-13T20:45:57.905Z"
+ "https://www.fightful.com/wrestling/clark-connors-weighs-in-on-njpw-of-america-closing-down-i-think-its-a-smart-business-decision": {
+  "reason": "المراجعة رفضته: العنوان بينتهي بكلمة مبتورة مش موجودة في الخبر — الاقتباس اتقطع",
+  "retry": true,
+  "at": "2026-11-13T20:53:22.784Z"
  },
  "https://www.fightful.com/wrestling/clark-connors-opens-up-about-aews-the-last-outfit-changing-name-to-the-cut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T20:49:13.045Z"
+  "at": "2026-11-13T20:52:07.122Z"
  },
  "https://www.fightful.com/wrestling/finn-balor-vs-gunther-added-to-11-13-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T20:49:12.674Z"
+  "at": "2026-11-13T20:52:06.744Z"
  },
  "https://www.fightful.com/mma/ufc-334-gane-vs-hokit-weigh-in-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-13T20:49:12.144Z"
+  "at": "2026-11-13T20:52:06.197Z"
  },
  "https://www.fightful.com/wrestling/wwe-main-event-results-11-12": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Cruz Del Toro",
   "retry": true,
-  "at": "2026-11-13T20:49:11.959Z"
+  "at": "2026-11-13T20:52:06.008Z"
  },
  "https://www.fightful.com/wrestling/marina-shafir-talks-possibility-of-ronda-rousey-returning-to-aew-joining-the-death-riders": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T20:47:32.709Z"
+  "at": "2026-11-13T20:51:45.862Z"
  },
  "https://www.fightful.com/wrestling/spike-dudley-announces-hes-signed-a-wwe-legends-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T20:47:32.442Z"
+  "at": "2026-11-13T20:51:45.584Z"
  },
  "https://www.fightful.com/wrestling/alleged-victim-in-ludwig-kaiser-battery-case-claims-he-suffered-torn-rotator-cuff-concussion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T20:47:32.158Z"
+  "at": "2026-11-13T20:51:45.281Z"
  },
  "https://www.fightful.com/wrestling/john-cena-explains-wardrobe-change-on-wwe-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T20:47:31.872Z"
+  "at": "2026-11-13T20:51:44.983Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-11-5-viewership-drops-below-200000-viewers": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-11-05)",
   "retry": false,
-  "at": "2026-11-13T20:47:31.265Z"
+  "at": "2026-11-13T20:51:44.357Z"
  },
  "https://www.fightful.com/wrestling/trey-miguel-says-tna-contract-expires-at-the-end-of-the-year-hoping-to-re-sign-on-a-longer-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T20:47:31.084Z"
+  "at": "2026-11-13T20:51:44.169Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-11-7-viewership-increases-from-halloween-night": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T20:47:30.900Z"
+  "at": "2026-11-13T20:51:43.978Z"
  },
  "https://www.fightful.com/mma/eight-people-sentenced-to-prison-in-usman-nurmagomedov-and-merab-dvalishvili-brawl": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T20:47:30.293Z"
+  "at": "2026-11-13T20:51:43.346Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-13": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T20:47:30.007Z"
+  "at": "2026-11-13T20:51:43.054Z"
  },
  "https://www.fightful.com/wrestling/338828-tony-khan-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T20:47:29.718Z"
+  "at": "2026-11-13T20:51:42.758Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-11-10-viewership-increases-with-return-to-tuesday": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-13T20:47:29.428Z"
+  "at": "2026-11-13T20:51:42.457Z"
+ },
+ "https://www.wrestlinginc.com/2316501/tna-impact-viewership-ratings-november-5-2026": {
+  "reason": "تقرير مشاهدة لعرض قديم (2026-11-05)",
+  "retry": false,
+  "at": "2026-11-13T20:45:57.905Z"
  },
  "https://www.ringsidenews.com/eddie-guerreros-daughter-sherilyn-says-21-years-without-her-dad-only-made-pain-worse": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-03T21:02:24.295Z"
- },
- "https://www.fightful.com/wrestling/the-miz-credits-his-friends-in-ohio-with-giving-him-his-ring-name": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-03T20:35:57.561Z"
  }
 }
