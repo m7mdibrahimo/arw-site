@@ -19,13 +19,14 @@ permalink: "/shows/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 
 <link rel="icon" type="image/png" href="/favicon.png?v=3">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 {% set pageNum = pagination.pageNumber + 1 %}
-<title>عروض مصارعة مترجمة WWE, AEW, TNA, ROH{% if pageNum > 1 %} - صفحة {{ pageNum }}{% endif %} | عرب راسلنج</title>
+{#- «واتش ريسلينج» (705 ظهور، ترتيب 7.1) و«المصارعة» (ترتيب 7.4) بيوصلوا للصفحة دي: الاسمين في العنوان نفسه، و«عروض المصارعة» زي اسم القسم في روابط جوجل (INCIDENTS #1283). -#}
+<title>عروض المصارعة مترجمة WWE, AEW, TNA, ROH{% if pageNum > 1 %} - صفحة {{ pageNum }}{% else %} — واتش ريسلينج{% endif %} | عرب راسلنج</title>
 <meta name="description" content="مشاهدة وتحميل جميع عروض المصارعة الحرة مترجمة بالعربية اون لاين (واتش ريسلينج Watch Wrestling): WWE Raw, SmackDown, NXT, AEW Dynamite وغيرها.{% if pageNum > 1 %} صفحة {{ pageNum }} من أرشيف العروض.{% endif %}">
 <link rel="canonical" href="https://arab-wrestling.com{{ page.url | cleanUrl }}">
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://arab-wrestling.com{{ page.url | cleanUrl }}">
-<meta property="og:title" content="عروض مصارعة مترجمة WWE, AEW, TNA, ROH | عرب راسلنج">
+<meta property="og:title" content="عروض المصارعة مترجمة WWE, AEW, TNA, ROH — واتش ريسلينج | عرب راسلنج">
 <meta property="og:description" content="شاهد وحمّل جميع عروض المصارعة الحرة مترجمة بالعربية اون لاين بأعلى جودة (واتش ريسلينج Watch Wrestling).">
 <meta property="og:image" content="https://arab-wrestling.com/assets/logo.png">
 <meta property="og:image:secure_url" content="https://arab-wrestling.com/assets/logo.png">
@@ -37,7 +38,7 @@ permalink: "/shows/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 
 <meta property="og:locale" content="ar_AR">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="عروض مصارعة مترجمة WWE, AEW, TNA, ROH | عرب راسلنج">
+<meta name="twitter:title" content="عروض المصارعة مترجمة WWE, AEW, TNA, ROH — واتش ريسلينج | عرب راسلنج">
 <meta name="twitter:description" content="شاهد وحمّل جميع عروض المصارعة الحرة مترجمة بالعربية بأعلى جودة.">
 <meta name="twitter:image" content="https://arab-wrestling.com/assets/logo.png">
 <script type="application/ld+json">

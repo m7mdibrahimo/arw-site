@@ -12,7 +12,7 @@ import { showUrl, findReelVideo, applyResults, isShowEligible, shouldProcessShow
 import { toPagesRedirects, writeRedirectPages } from '../lib/redirects.cjs';
 import { applyProofEdits } from '../scripts/editorial';
 import { checkArticle, autoFix, headUnheadedMatches, applyCorrections, BLOCKING_QA_CODES, RETRYABLE_QA_CODES } from '../scripts/news-qa';
-import { extractBodyImages, extractEmbeds, sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, buildNamesGlossaryHint, isEmptyResultsStub, clearlyDifferentStories, analyzeShowTiming, titleAlreadyPublished } from '../scripts/fightful-watcher';
+import { extractBodyImages, extractEmbeds, sanitizeWrestlingTerms, findLikelyDuplicateStory, findLikelyDuplicateStoryByTagsAndBody, legalOrDeathEvent, buildNamesGlossaryHint, isEmptyResultsStub, clearlyDifferentStories, analyzeShowTiming, titleAlreadyPublished } from '../scripts/fightful-watcher';
 
 const env = { GITHUB_OWNER: 'owner', GITHUB_REPO: 'repo', GITHUB_BRANCH: 'main', GITHUB_TOKEN: 'test-token' };
 function ledger() {
@@ -5663,4 +5663,20 @@ test('agoSpanNotInSource: «In June of last year» written as «العام قب�
   assert.deepEqual(agoSpanNotInSource('وانضمت روكسان إلى الفريق في شهر يونيو من العام قبل الماضي.', src), ['العام قبل الماضي']);
   assert.deepEqual(agoSpanNotInSource('وانضمت روكسان إلى الفريق في شهر يونيو من العام الماضي.', src), []);
   assert.deepEqual(agoSpanNotInSource('في العام قبل الماضي', 'two years ago, and again last year'), []);
+});
+
+test('the same arrest of the same person from two outlets is one story (INCIDENTS #1283)', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'arw-dedupe-arrest-'));
+  try {
+    fs.writeFileSync(path.join(dir, 'a.md'),
+      '---\nsource_url: "https://www.ringsidenews.com/former-wwe-star-chad-wicks-arrested-again-iowa/"\n---\nbody');
+    const dupe = findLikelyDuplicateStory('Report: Chad Wicks Arrested For Driving With A Suspended License', 24, dir);
+    assert.equal(dupe.isDuplicate, true);
+    assert.equal(findLikelyDuplicateStory('Chad Wicks Opens Up About His Run In WWE With The Dicks', 24, dir).isDuplicate, false);
+    assert.equal(findLikelyDuplicateStory('Former WWE Star Matt Hardy Arrested In Texas', 24, dir).isDuplicate, false, 'a different person is a different story');
+    assert.equal(legalOrDeathEvent('Report: Chad Wicks Arrested For Driving'), 'arrest');
+    assert.equal(legalOrDeathEvent('CM Punk Wins The Title'), '');
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
 });

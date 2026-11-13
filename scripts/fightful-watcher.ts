@@ -4016,6 +4016,16 @@ export function titleAlreadyPublished(title: string, newsDir: string = NEWS_DIR)
   return false;
 }
 
+/** The kind of legal or death event a headline reports, or "" — the same person with the same event within a day is one story. */
+export function legalOrDeathEvent(title: string): string {
+  const t = " " + (title || "").toLowerCase().replace(/[-_]/g, " ") + " ";
+  if (/\b(?:arrest(?:ed|s)?|jailed|booked into|in custody)\b/.test(t)) return "arrest";
+  if (/\b(?:charged|indicted|pleads? (?:guilty|not guilty))\b/.test(t)) return "charge";
+  if (/\b(?:sentenced|sentence)\b/.test(t)) return "sentence";
+  if (/\b(?:dies|died|dead|passes away|passed away|death of)\b/.test(t)) return "death";
+  return "";
+}
+
 export function findLikelyDuplicateStory(rawTitle: string, hoursWindow: number = 24, newsDir: string = NEWS_DIR): { isDuplicate: boolean; matchedFile?: string } {
   if (!fs.existsSync(newsDir)) return { isDuplicate: false };
   // Federation and show-name words say nothing about the STORY: "WWE Main Event
@@ -4045,6 +4055,14 @@ export function findLikelyDuplicateStory(rawTitle: string, hoursWindow: number =
       const sharedStoryWords = shared.filter(t => !SHOW_NAME_TOKENS.has(t)).length;
       if (shared.length >= 3 && overlapRatio >= 0.6 && sharedStoryWords >= 2 && !clearlyDifferentStories(rawTitle, slug)) {
         return { isDuplicate: true, matchedFile: file };
+      }
+      // An arrest, a charge, a death is ONE event for one person: Ringside News's «Former WWE Star Chad Wicks
+      // Arrested Again In Iowa» and Fightful's «Report: Chad Wicks Arrested For Driving With A Suspended License»
+      // shared only 3 of 7 words (0.43) and the same arrest went out twice, an hour apart (INCIDENTS #1283).
+      const eventA = legalOrDeathEvent(rawTitle), eventB = legalOrDeathEvent(slug);
+      if (eventA && eventA === eventB) {
+        const pa = peopleIn(rawTitle), pb = peopleIn(slug);
+        if ([...pa].some(n => pb.has(n))) return { isDuplicate: true, matchedFile: file };
       }
     } catch (e) {
       continue;

@@ -1,7 +1,7 @@
 ---
 title: "WWE NXT Star Osiris Griffin Wakes Up to Smashed Car"
 slug: "wwe-nxt-star-osiris-griffin-wakes-up-to-smashed-car"
-description: "WWE NXT star Osiris Griffin, who performs alongside Cutler James in DarkState."
+description: "WWE NXT star Osiris Griffin encountered an unfortunate situation outside the ring when he discovered severe damage to his car ahead of NXT Tuesday."
 federation: WWE
 date: 2026-10-20T15:11:25.000Z
 source_id: 802257792

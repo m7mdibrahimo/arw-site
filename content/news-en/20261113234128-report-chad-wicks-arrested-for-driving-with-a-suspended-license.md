@@ -1,7 +1,7 @@
 ---
 title: "Report: Chad Wicks Arrested for Driving With a Suspended License"
 slug: "report-chad-wicks-arrested-for-driving-with-a-suspended-license"
-description: "Chad Wicks was reportedly arrested on November 12. PWInsider reports that Wicks, also known to fans as Chad Dick."
+description: "Chad Wicks was reportedly arrested on November 12."
 federation: WWE
 date: 2026-11-13T20:41:28.000Z
 created_at: 2026-11-13T20:43:21.534Z
