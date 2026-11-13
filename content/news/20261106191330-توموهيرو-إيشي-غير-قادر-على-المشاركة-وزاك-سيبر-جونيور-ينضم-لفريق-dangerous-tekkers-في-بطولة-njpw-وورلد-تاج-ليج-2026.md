@@ -17,7 +17,7 @@ tags:
   - توموهيرو إيشي
   - زاك سيبر جونيور
   - تايتشي
-  - وورلد تاج ليج
+  - World Tag League
 image: /content/images/4u1d96hw42v4p2v1.jpg
 layout: post-layout.njk
 ---
