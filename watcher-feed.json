@@ -1,5 +1,15 @@
 [
   {
+    "id": 338874,
+    "link": "https://www.fightful.com/mma/ufc-334-gane-vs-hokit-weigh-in-results/",
+    "date": "2026-11-13T13:34:23",
+    "date_gmt": "2026-11-13T18:34:23",
+    "title": {
+      "rendered": "UFC 334: Gane vs. Hokit Weigh-In Results"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/13133405/261114_MSG_UFC334_EDP-VLP_1024x576_1_1791984064201.jpg"
+  },
+  {
     "id": 338870,
     "link": "https://www.fightful.com/wrestling/wwe-main-event-results-11-12/",
     "date": "2026-11-13T13:27:21",
@@ -288,15 +298,5 @@
       "rendered": "TNA iMPACT! Results (11/12): Nic Nemeth, Elijah, Moose Compete"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/11202422/853c1ac9ecda7aa978716920006ceda6-1.jpg"
-  },
-  {
-    "id": 338799,
-    "link": "https://www.fightful.com/wrestling/roh-tv-results-11-12-multiple-title-matches/",
-    "date": "2026-11-12T21:48:59",
-    "date_gmt": "2026-11-13T02:48:59",
-    "title": {
-      "rendered": "ROH TV Results (11/12): Multiple Title Matches"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/12214829/LeeMOriartyvsARFoxROH.jpeg"
   }
 ]
