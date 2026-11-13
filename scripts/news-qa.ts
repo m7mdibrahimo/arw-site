@@ -1890,6 +1890,7 @@ export function autoFix(text: string): string {
   // «عرض» is masculine: «في عرض SmackDown الأخيرة» went live in 28 stories (INCIDENTS #621) — the adjective agrees with it
   text = text.replace(/(عرض\s+(?:[A-Za-z0-9'’!.&*-]+\s+){0,5}[A-Za-z0-9'’!.&*-]+\s+)(الأخير|الاخير|القادم|الماضي)ة(?![\u0621-\u064A])/g, "$1$2");
   text = dualPronounsToPlural(text);
+  text = teamVerbSingular(text);
   // «مواجهة بين فريق A ضد فريق B» mixes two ways of naming a match; «بين» goes, «A ضد B» stays (INCIDENTS #1247)
   text = text.replace(/(?<![\u0621-\u064A])(مواجهة|مواجهات|نزال|نزالا|نزالات|مباراة) بين ((?:(?!\sبين\s)[^.،؛\n]){3,60}?) ضد /g, "$1 $2 ضد ");
   // A match card copied from the source keeps «(c)» for the champion: «كيلاني جوردان (c) ضد رين سنكلير» went live (INCIDENTS #508)
@@ -2477,4 +2478,14 @@ export function quotedTitleNotInSource(enTitle: string, source: string): string[
     if (q && !src.includes(q)) found.push(q);
   }
   return found;
+}
+
+// «فريق بوم آند دوم (Boom & Doom) قد حققوا الفوز» went live (INCIDENTS #1276): the no-dual rule pushes Gemini to a
+// plural verb, but «فريق <name>» is one subject — the verb right after it is singular. «أعضاء فريق X فازوا» and a
+// subject joined by «و/مع» («فريق X وزميلهم فازوا») keep the plural.
+export function teamVerbSingular(text: string): string {
+  if (!text) return text;
+  return text.replace(
+    /(?<![ء-ي])(?<!(?:أعضاء|أفراد|عناصر|نجوم|مصارعو|مصارعي|لاعبو|لاعبي)\s)(فريق\s+(?:(?!\s(?:و|مع|من|إلى|على|في|بعد|عندما|حين)[ء-ي]*\s)[^.،؛:\n]){2,45}?\s+(?:قد\s+)?)(حقق|نجح|فاز|تمكن|خسر|توج|تغلب|انتصر)وا(?![ء-ي])/g,
+    "$1$2");
 }
