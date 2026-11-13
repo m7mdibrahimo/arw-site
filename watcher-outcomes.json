@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/cody-rhodes-blames-peter-rosenberg-stirring-unnecessary-roman-reigns-drama-backstage": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين",
+  "retry": true,
+  "at": "2026-11-13T12:28:00.179Z"
+ },
  "https://www.ringsidenews.com/alexa-bliss-recalls-nearly-dying-doctors-missed-serious-pregnancy-complication": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -1998,10 +2003,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-02T20:30:46.579Z"
- },
- "https://www.fightful.com/wrestling/triple-threat-revolver-returning-at-tna-wrestling-tapings-in-calgary": {
-  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-11-02T19:50:49.332Z"
  }
 }
