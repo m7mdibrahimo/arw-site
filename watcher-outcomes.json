@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/spike-dudley-signs-wwe-legends-deal": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-13T17:34:41.928Z"
+ },
+ "https://www.ringsidenews.com/what-went-wrong-naraku-shiloh-hills-bizarre-wwe-nxt-halloween-havoc-match": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-13T17:32:48.424Z"
+ },
  "https://www.fightful.com/wrestling/tna-impact-11-5-viewership-drops-below-200000-viewers": {
   "reason": "تقرير مشاهدة لعرض قديم (2026-11-05)",
   "retry": false,
@@ -48,11 +58,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-13T17:19:22.375Z"
- },
- "https://www.ringsidenews.com/what-went-wrong-naraku-shiloh-hills-bizarre-wwe-nxt-halloween-havoc-match": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يهلوسان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-13T17:17:13.110Z"
  },
  "https://www.fightful.com/wrestling/josh-barnett-gives-his-side-of-using-bloodsport-after-matt-riddle": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
   "at": "2026-11-03T16:17:39.114Z"
- },
- "https://www.ringsidenews.com/wwe-announces-date-location-avengers-themed-worlds-collide-event": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": true,
-  "at": "2026-11-03T16:16:58.184Z"
  }
 }
