@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2316897/big-boom-aj-big-justice-aew-full-gear-2026": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-14T20:04:18.873Z"
+ },
+ "https://www.wrestlinginc.com/2312412/aew-bishop-kaun-reflects-carrying-trios-titles-historic-venue": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: ROH World Trios Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Trios Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Trios Championships",
+  "retry": true,
+  "at": "2026-11-14T19:58:06.299Z"
+ },
  "https://www.fightful.com/wrestling/tko-chief-administrative-officer-senior-counsel-says-he-will-be-transitioning-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,16 +53,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-14T19:50:45.191Z"
- },
- "https://www.wrestlinginc.com/2316897/big-boom-aj-big-justice-aew-full-gear-2026": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-14T19:39:40.262Z"
- },
- "https://www.wrestlinginc.com/2312412/aew-bishop-kaun-reflects-carrying-trios-titles-historic-venue": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: ROH World Trios Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Trios Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Trios Championships",
-  "retry": true,
-  "at": "2026-11-14T19:37:54.581Z"
  },
  "https://www.ringsidenews.com/bobby-lashley-pushes-back-against-age-concerns-about-his-wrestling-future": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
