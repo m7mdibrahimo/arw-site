@@ -659,9 +659,9 @@ export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYea
  * dual_noun / dual_form joined them in INCIDENTS #471: ~4% of stories reached the site with «نزالين» / «حققا» / «أنهما»
  * although the style guide bans the dual. english_title_name is not blocking: «Championship» is also part of tournament names.
  */
-export const BLOCKING_QA_CODES = ["duplicate_match", "unnamed_person_title", "wrong_team_members", "verb_missing_object", "repeated_win_clause", "dangling_headquarters", "repeated_phrase", "betting_promo", "title_no_result", "invented_winner", "adverb_without_alef", "title_not_arabic", "english_quote", "english_caption_line", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "dq_as_no_result", "fem_win_masc_purpose", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "glued_prefix_quote", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "singles_label_multi_body", "team_size_label", "glued_arabic_words", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "verbless_opening", "lowercase_latin_fragment", "orphan_in_favor", "inconsistent_name", "spanish_article_mixed", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "same_title_published", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", "hidden_stipulation_title", "hidden_match_title", "federation_as_championship", "half_english_name", "tripled_letter", "crowned_new_belt", "title_champions_no_name", "pair_singular_verb", "title_vague_topic", "dont_expect_literal", "invisible_char", "empty_parens", "repeated_backstage", "period_vs_itself", "winner_not_in_match", "doubled_show_word", "arabic_possessive_s", "unbalanced_quotes", "ddp_surname", "mixed_verb_gender", "indefinite_noun_definite_adjective", "stuttered_word", "doubled_first_letter", "played_against", "draw_trophy", "redundant_soon", "forbidden_door_arabic", "dangling_scheduled", "team_faces_show", ];
+export const BLOCKING_QA_CODES = ["duplicate_match", "unnamed_person_title", "wrong_team_members", "verb_missing_object", "repeated_win_clause", "dangling_headquarters", "repeated_phrase", "betting_promo", "title_no_result", "invented_winner", "adverb_without_alef", "title_not_arabic", "english_quote", "english_caption_line", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "dq_as_no_result", "fem_win_masc_purpose", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "glued_prefix_quote", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "singles_label_multi_body", "team_size_label", "glued_arabic_words", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "verbless_opening", "lowercase_latin_fragment", "orphan_in_favor", "inconsistent_name", "spanish_article_mixed", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "same_title_published", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", "hidden_stipulation_title", "hidden_match_title", "federation_as_championship", "half_english_name", "tripled_letter", "crowned_new_belt", "title_champions_no_name", "pair_singular_verb", "title_vague_topic", "dont_expect_literal", "invisible_char", "empty_parens", "repeated_backstage", "period_vs_itself", "winner_not_in_match", "doubled_show_word", "arabic_possessive_s", "unbalanced_quotes", "ddp_surname", "mixed_verb_gender", "indefinite_noun_definite_adjective", "stuttered_word", "doubled_first_letter", "played_against", "draw_trophy", "redundant_soon", "forbidden_door_arabic", "dangling_scheduled", "team_faces_show", "title_name_not_in_body", ];
 /** Blocking codes that are one-off Gemini glitches: a fresh translation on the next run usually comes out clean. */
-export const RETRYABLE_QA_CODES = ["duplicate_match", "unnamed_person_title", "wrong_team_members", "verb_missing_object", "repeated_win_clause", "dangling_headquarters", "repeated_phrase", "artifact", "title_no_result", "invented_winner", "adverb_without_alef", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "fem_win_masc_purpose", "english_quote", "english_caption_line", "mixed_script_word", "name_not_in_source", "spanish_article_mixed", "orphan_in_favor", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "singles_label_multi_body", "team_size_label", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", "hidden_stipulation_title", "hidden_match_title", "federation_as_championship", "half_english_name", "tripled_letter", "crowned_new_belt", "title_champions_no_name", "pair_singular_verb", "title_vague_topic", "dont_expect_literal", "repeated_backstage", "period_vs_itself", "winner_not_in_match", "doubled_show_word", "arabic_possessive_s", "unbalanced_quotes", "mixed_verb_gender", "indefinite_noun_definite_adjective", "stuttered_word", "doubled_first_letter", "redundant_soon", "forbidden_door_arabic", "dangling_scheduled", "team_faces_show", ];
+export const RETRYABLE_QA_CODES = ["duplicate_match", "unnamed_person_title", "wrong_team_members", "verb_missing_object", "repeated_win_clause", "dangling_headquarters", "repeated_phrase", "artifact", "title_no_result", "invented_winner", "adverb_without_alef", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "fem_win_masc_purpose", "english_quote", "english_caption_line", "mixed_script_word", "name_not_in_source", "spanish_article_mixed", "orphan_in_favor", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "singles_label_multi_body", "team_size_label", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", "hidden_stipulation_title", "hidden_match_title", "federation_as_championship", "half_english_name", "tripled_letter", "crowned_new_belt", "title_champions_no_name", "pair_singular_verb", "title_vague_topic", "dont_expect_literal", "repeated_backstage", "period_vs_itself", "winner_not_in_match", "doubled_show_word", "arabic_possessive_s", "unbalanced_quotes", "mixed_verb_gender", "indefinite_noun_definite_adjective", "stuttered_word", "doubled_first_letter", "redundant_soon", "forbidden_door_arabic", "dangling_scheduled", "team_faces_show", "title_name_not_in_body", ];
 
 
 /** Winners («🏆 **الفائز:** …») whose name isn't in the text of their own match block. */
@@ -818,6 +818,53 @@ export function wrongTeamMembers(text: string): string | null {
     }
   }
   return null;
+}
+
+// Glossary names of two words or more («يوتا تسوجي», «ديث رايدرز», «تريبل إتش») by their Arabic spelling, with the
+// English spellings that map to each (a story may keep «The Undertaker» in English inside the text).
+let TITLE_NAMES: Map<string, string[]> | null = null;
+const AR_WORD = /[\u0621-\u064A]+/g;
+const SHORT_NAME_PARTS = new Set(["ذا", "دي", "فان", "دا", "لا", "إل", "ال"]);
+/** Glossary names written in the headline that the text never mentions (no part of the name, no English spelling). */
+export function titleNamesMissingFromBody(title: string, body: string): string[] {
+  if (!TITLE_NAMES) {
+    TITLE_NAMES = new Map();
+    try {
+      const names = JSON.parse(fs.readFileSync(path.join(process.cwd(), "scripts", "wrestler-names.json"), "utf-8")) as Record<string, string>;
+      for (const [en, ar] of Object.entries(names)) {
+        const v = String(ar || "").trim();
+        if (!/^[\u0621-\u064A]+(?: [\u0621-\u064A]+)+$/.test(v)) continue;
+        TITLE_NAMES.set(v, [...(TITLE_NAMES.get(v) || []), en]);
+      }
+    } catch { /* the glossary is optional here */ }
+  }
+  if (!TITLE_NAMES.size || !body.trim()) return [];
+  const plain = body.replace(/https?:\/\/\S+/g, " ");
+  const bodyWords = new Set<string>();
+  for (const w of plain.match(AR_WORD) || []) {
+    bodyWords.add(w);
+    for (const pre of ["و", "ب", "ل", "ف", "ك", "وب", "ول", "لل", "ال", "وال", "بال", "فال"]) if (w.startsWith(pre) && w.length - pre.length >= 3) bodyWords.add(w.slice(pre.length));
+  }
+  const lower = plain.toLowerCase();
+  const words = (title.match(AR_WORD) || []).map((w) => (/^[وبلف]/.test(w) && TITLE_NAMES!.has(w.slice(1)) ? w.slice(1) : w));
+  const missing: string[] = [];
+  for (let i = 0; i < words.length; i++) {
+    for (let n = 4; n >= 2; n--) {
+      let first = words[i];
+      const tryNames = [words.slice(i, i + n).join(" ")];
+      if (/^[وبلف]/.test(first)) tryNames.push([first.slice(1), ...words.slice(i + 1, i + n)].join(" "));
+      const name = tryNames.find((g) => TITLE_NAMES!.has(g));
+      if (!name) continue;
+      i += n - 1;
+      const parts = name.split(" ").filter((p) => p.length >= 3 && !SHORT_NAME_PARTS.has(p));
+      // a team written as a plural («ذا هارديز», «ذا أوسوز») is in the text as its members («جيف هاردي», «جي أوسو»)
+      const inBody = parts.length ? parts.some((p) => bodyWords.has(p) || (p.length >= 5 && p.endsWith("ز") && bodyWords.has(p.slice(0, -1)))) : plain.includes(name);
+      const english = (TITLE_NAMES!.get(name) || []).some((en) => en.length >= 3 && lower.includes(en.toLowerCase()));
+      if (!inBody && !english && !missing.includes(name)) missing.push(name);
+      break;
+    }
+  }
+  return missing;
 }
 
 export function checkArticle(title: string, body: string, tags: string[] = []): QaIssue[] {
@@ -1143,6 +1190,10 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
   if (/(?:^|\s)(?:ب|ل|و|مع\s+)?(?:ال)?(?:عضو|عضوة|زميل|زميلة|شريك|شريكة|رفيق|رفيقة)\s+(?:ال)?سابق(?:ة)?\s+(?:في|ب|لـ?)\s*(?:فريق|مجموعة|جماعة|تحالف|ثنائي)(?:\s+\S+){1,4}$/.test(t)) issues.push({ code: "unnamed_person_title", severity: "error", field: "title", message: "العنوان بيقول «العضو السابق في فريق…» من غير اسمه — اكتب اسم الشخص اللي في الخبر", excerpt: t });
   // «ري ميستيريو يقدم العضو الجديد لفريق المكسيك» — the headline hides who joined (Rey Fénix; INCIDENTS #1293)
   if (/(?<![ء-ي])[وبل]?(?:ال|لل)(?:عضو|عضوة|منضم|منضمة|وافد|وافدة)\s+(?:ال)?جديد(?:ة)?(?![ء-ي])/.test(t)) issues.push({ code: "unnamed_person_title", severity: "error", field: "title", message: "العنوان بيقول «العضو الجديد» من غير اسمه — اكتب اسم المصارع («ري ميستيريو يقدم ري فينيكس عضوا جديدا في فريق المكسيك»)", excerpt: t });
+  // «نتائج عرض CMLL Viernes Espectacular: لم شمل سكاي تيم وظهور يوتا تسوجي» named a wrestler the text never mentions,
+  // and «كارل فريدريكس يكشف … دعم تريبل إتش لإدارة ترامب» put a name on what the text calls «مسؤولي الاتحاد»: every
+  // glossary name in a headline must be in the story (INCIDENTS #1294)
+  for (const name of titleNamesMissingFromBody(t, body || "")) issues.push({ code: "title_name_not_in_body", severity: "error", field: "title", message: `العنوان فيه «${name}» والنص مفيهوش الاسم ده خالص — يا تكتب في النص اللي حصل معاه زي المصدر، يا تشيل الاسم من العنوان`, excerpt: name });
   // «قرب انتهاء عقد نجمة أخرى في اتحاد TNA» — the headline hides who the story is about (INCIDENTS #1287)
   if (/(?<![ء-ي])(?:ال)?(?:نجم|نجمة|مصارع|بطل|بطلة)\s+(?:آخر|أخرى)(?![ء-ي])/.test(t)) issues.push({ code: "unnamed_person_title", severity: "error", field: "title", message: "العنوان بيقول «نجمة أخرى/نجم آخر» من غير اسم — اكتب اسم المصارع اللي في الخبر («قرب انتهاء عقد كسيا بروكسايد مع اتحاد TNA»)", excerpt: t });
   // «تافيون هايتس ومايلز بورن يحددان نوع مواجهتهم…» hid the one fact of the story (a Weapons Wild match, picked by a

@@ -52,6 +52,10 @@ export function classify(ev: Evidence): { status: "ok" | "broken" | "unknown"; r
  *  try before it counts: StreamHG's fallback to its second stream server is slower on the GitHub runner than at home,
  *  so a working hgcloud server (SmackDown 13.11.2026, AEW Dynamite 06.10, Raw 28.06.2010) hit the 9-second window
  *  twice and stayed hidden while it played on the owner's Mac (INCIDENTS #1293). */
+/** The second try's wait: a slow fallback (StreamHG on the GitHub runner, and sometimes at home) played in 9 s one
+ *  check and not the next, so a working server collected two strikes and was hidden (SmackDown 13.11.2026, INCIDENTS #1294). */
+export const RETRY_SETTLE_MS = 25000;
+
 export function worthRetry(ev: Evidence, c: { status: string }): boolean {
   return c.status === "broken" && !DEAD.test(ev.frameText) && ev.playerErrors.length > 0;
 }
@@ -202,7 +206,9 @@ class Browser {
     }
   }
   /** Play one link inside the live page; returns what was seen. */
-  async play(page: string, url: string, isOnPage: number): Promise<Evidence> {
+  /** `settleMs`: how long the video gets to move once play is pressed; the second try of a player-error-only «broken»
+   *  waits longer, because StreamHG's fallback to its second stream server can take 15–20 s (INCIDENTS #1294). */
+  async play(page: string, url: string, isOnPage: number, settleMs = 9000): Promise<Evidence> {
     const { result: { targetId } } = await this.send("Target.createTarget", { url: "about:blank" });
     const { result: { sessionId } } = await this.send("Target.attachToTarget", { targetId, flatten: true });
     const ev: Evidence = { mediaOk: [], mediaFail: [], playerErrors: [], frameText: "", progressed: false };
@@ -230,7 +236,7 @@ class Browser {
       const STATE = `JSON.stringify({t:(document.body&&document.body.innerText||'').slice(0,400), v:(()=>{const v=document.querySelector('video'); return v?v.currentTime:0})()})`;
       const before: Record<string, number> = {};
       for (const f of this.frames.get(sessionId) || []) { const s = await this.send("Runtime.evaluate", { expression: STATE, returnByValue: true }, f); try { before[f] = JSON.parse(s.result.result.value).v; } catch {} }
-      await sleep(9000);
+      await sleep(settleMs);
       for (const f of this.frames.get(sessionId) || []) {
         const s = await this.send("Runtime.evaluate", { expression: STATE, returnByValue: true }, f);
         try { const o = JSON.parse(s.result.result.value); ev.frameText += " " + o.t; if (o.v > 0.5 && o.v > (before[f] || 0)) ev.progressed = true; } catch {}
@@ -271,7 +277,7 @@ async function main() {
         const ev = await b.play(page, url, index).catch((e: Error) => ({ mediaOk: [], mediaFail: [], playerErrors: [], frameText: `checker error ${e.message}`, progressed: false }));
         let c = classify(ev);
         if (worthRetry(ev, c)) {
-          const again = await b.play(page, url, index).catch(() => null);
+          const again = await b.play(page, url, index, RETRY_SETTLE_MS).catch(() => null);
           if (again) { const c2 = classify(again); if (c2.status !== "broken") c = { ...c2, reason: c2.reason + " (second try)" }; }
         }
         if (c.status !== "ok" && await streamProof(url)) c = { status: "ok", reason: "the stream comes back when fetched directly (the browser check missed it)" };
