@@ -37,12 +37,12 @@
  "https://www.wrestlinginc.com/2316897/big-boom-aj-big-justice-aew-full-gear-2026": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-14T19:34:37.478Z"
+  "at": "2026-11-14T19:39:40.262Z"
  },
  "https://www.wrestlinginc.com/2312412/aew-bishop-kaun-reflects-carrying-trios-titles-historic-venue": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: ROH World Trios Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Trios Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Trios Championships، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kofi Kingston",
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: ROH World Trios Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Trios Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Trios Championships",
   "retry": true,
-  "at": "2026-11-14T19:33:15.645Z"
+  "at": "2026-11-14T19:37:54.581Z"
  },
  "https://www.ringsidenews.com/bobby-lashley-pushes-back-against-age-concerns-about-his-wrestling-future": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1993,5 @@
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
   "retry": false,
   "at": "2026-11-05T01:19:01.117Z"
- },
- "https://www.wrestlinginc.com/2307145/aew-dynamite-november-4-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-05T01:10:13.689Z"
  }
 }
