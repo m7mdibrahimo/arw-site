@@ -234,7 +234,7 @@ async function settlePending() {
     if (b) for (const n of waiting.filter(n => inBuild(b, n))) markLive(n.commit);
   } catch {}
   try {
-    const still = localItems().filter(n => n.status === 'pending' && n.commit && n.type === 'create');
+    const still = localItems().filter(n => n.status === 'pending' && n.commit && (n.type === 'create' || n.type === 'edit'));
     if (still.length) { const pages = await fastLanePages(); for (const n of still.filter(n => inFastLane(pages, n))) markLive(n.commit); }
   } catch {}
   // nothing settled it in two hours: no more «جاري…»
@@ -245,11 +245,10 @@ async function settlePending() {
   if (localItems().some(n => n.status === 'pending' && n.commit)) settleTimer = setTimeout(settlePending, 15_000);
 }
 
-/** A NEW show or story the site already shows through «النشر السريع» (worker/src/fast-lane.ts, INCIDENTS #1296) before
- *  its full build: its own file's fast copy, of this save's commit or a later one. Only a new page: an edit of a page
- *  the site already has waits for the full build (the site keeps its real file until then). */
+/** A saved show or story (new or edited) the site already shows through «النشر السريع» (worker/src/fast-lane.ts,
+ *  INCIDENTS #1296) before its full build: its own file's fast copy, of this save's commit or a later one. */
 export function inFastLane(pages, n) {
-  if (!n || n.type !== 'create' || (n.collection !== 'shows' && n.collection !== 'news') || !n.slug) return false;
+  if (!n || (n.type !== 'create' && n.type !== 'edit') || (n.collection !== 'shows' && n.collection !== 'news') || !n.slug) return false;
   const input = `content/${n.collection}/${n.slug}.md`;
   return (pages || []).some(p => p && p.input === input && (p.commit === n.commit || Number(p.commitTime) * 1000 > n.at + 5000));
 }

@@ -3,9 +3,9 @@
 // NOT read by Cloudflare Pages (the file name is not wrangler.jsonc): the Pages project keeps serving the site until
 // the owner points the domain at this Worker. Test: `npx wrangler dev --config wrangler.static.jsonc` after a build.
 //
-// «النشر السريع» (INCIDENTS #1296): site-worker/ runs only for an address with no file and for the three listings
-// (run_worker_first); every real file is served straight from the assets as before. It shows a page the panel saved a
-// moment ago from arw-site-bot (FAST) until this deployment has it, never after (site-worker/fast.js).
+// «النشر السريع» (INCIDENTS #1296): site-worker/ runs for the three listings and the show and story pages
+// (run_worker_first) and for any address with no file; every other file is served straight from the assets. It shows a
+// page saved a moment ago (arw-site-bot, FAST) only until this deployment has it, never after (site-worker/fast.js).
 {
   "name": "arw-site-static",
   "main": "site-worker/index.js",
@@ -15,7 +15,7 @@
     "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "none",
-    "run_worker_first": ["/", "/shows/", "/news/"]
+    "run_worker_first": ["/", "/shows/*", "/news/*"]
   },
   "services": [{ "binding": "FAST", "service": "arw-site-bot" }]
 }

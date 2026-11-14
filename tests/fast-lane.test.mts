@@ -126,6 +126,25 @@ test('the three listings show their fast copy only while it is newer; a browser\
   assert.equal(s.calls.filter((c) => c === '/fast-lane/index').length, 1);
 });
 
+test('a saved edit of a page the site already has shows before its full build; a fresh isolate never waits for it', async () => {
+  const s = site({ fast: [{ url: '/shows/old-show/', commit: A, commitTime: 2000, html: page('FAST EDIT') }] });
+  assert.equal(await (await s.get('/shows/old-show/')).text(), 'REAL OLD SHOW', 'the first visitor of a fresh isolate: the real file at once');
+  await new Promise((r) => setTimeout(r, 5));
+  const r = await s.get('/shows/old-show/', { headers: { 'If-None-Match': '"real"' } });
+  assert.equal(r.status, 200);
+  assert.match(await r.text(), /FAST EDIT/);
+  assert.equal(r.headers.get('ETag'), null);
+  assert.equal(r.headers.get('X-Frame-Options'), 'SAMEORIGIN');
+  const slashless = await s.get('/shows/old-show');
+  assert.equal(slashless.status, 307);
+  // once the deployment has it: the real file, even with the list already loaded
+  const built = site({ build: { commit: B, commitTime: 2000, recent: [B] }, fast: [{ url: '/shows/old-show/', commit: A, commitTime: 2000, html: page('FAST EDIT') }] });
+  await built.get('/'); // the list loaded
+  assert.equal(await (await built.get('/shows/old-show/')).text(), 'REAL OLD SHOW');
+  // without the binding: plain assets
+  _reset();
+});
+
 test('the bot down or broken: the site is exactly as without the fast lane', async () => {
   const s = site({ botDown: true, fast: [{ url: '/', commit: A, commitTime: 2000, html: page('FAST HOME') }] });
   assert.equal(await (await s.get('/')).text(), 'REAL HOME');
@@ -148,7 +167,7 @@ test('a missing address is the nearest 404.html with status 404, as not_found_ha
   assert.equal(s.calls.length, 1);
   const cfg = fs.readFileSync('wrangler.static.jsonc', 'utf8');
   assert.match(cfg, /"not_found_handling": "none"/);
-  assert.match(cfg, /"run_worker_first": \["\/", "\/shows\/", "\/news\/"\]/);
+  assert.match(cfg, /"run_worker_first": \["\/", "\/shows\/\*", "\/news\/\*"\]/);
   assert.match(cfg, /"main": "site-worker\/index\.js"/);
   assert.match(cfg, /"services": \[\{ "binding": "FAST", "service": "arw-site-bot" \}\]/);
   assert.equal(typeof notFound, 'function');
@@ -270,7 +289,7 @@ test('the render: only the saved pages and the first page of each listing, nothi
   assert.match(wf, /!\/content\/images\/\n\s+!\/dist\/videos\//);
 });
 
-test('the bell says «ظهر على الموقع» for a new show the fast lane already shows, never for an edit', () => {
+test('the bell says «ظهر على الموقع» for a saved show or story the fast lane already shows', () => {
   const src = fs.readFileSync('studio/js/notify.js', 'utf8');
   const body = src.slice(src.indexOf('export function inFastLane'), src.indexOf('export function setupBell'));
   const inFastLane = new Function(`${body.replace('export ', '')}; return inFastLane;`)();
@@ -279,8 +298,11 @@ test('the bell says «ظهر على الموقع» for a new show the fast lane 
   assert.equal(inFastLane(pages, { type: 'create', collection: 'shows', slug: '2026-smackdown', commit: A, at }), true);
   assert.equal(inFastLane(pages, { type: 'create', collection: 'shows', slug: '2026-smackdown', commit: B, at: at - 60_000 }), true, 'a later save\'s copy has it too');
   assert.equal(inFastLane(pages, { type: 'create', collection: 'shows', slug: '2026-smackdown', commit: B, at: at + 60_000 }), false, 'an older copy doesn\'t have this save');
-  assert.equal(inFastLane(pages, { type: 'edit', collection: 'shows', slug: '2026-smackdown', commit: A, at }), false);
+  assert.equal(inFastLane(pages, { type: 'edit', collection: 'shows', slug: '2026-smackdown', commit: A, at }), true, 'an edit too');
+  assert.equal(inFastLane(pages, { type: 'delete', collection: 'shows', slug: '2026-smackdown', commit: A, at }), false);
+  assert.equal(inFastLane(pages, { type: 'create', collection: 'nostalgia', slug: '2026-smackdown', commit: A, at }), false);
   assert.equal(inFastLane(pages, { type: 'create', collection: 'shows', slug: 'other', commit: A, at }), false);
+  assert.match(src, /n\.type === 'create' \|\| n\.type === 'edit'/);
   assert.match(src, /const pages = await fastLanePages\(\); for \(const n of still\.filter\(n => inFastLane\(pages, n\)\)\) markLive\(n\.commit\);/);
 });
 

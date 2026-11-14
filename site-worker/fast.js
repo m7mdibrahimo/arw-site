@@ -1,12 +1,11 @@
 // arw-site-static's own script (wrangler.static.jsonc): «النشر السريع» (fast lane, INCIDENTS #1296).
 //
-// Every real file is still served straight from the deployment's assets, this script never runs for it. It runs only:
-//   • for an address with no file (a show or story saved a moment ago, before the full build has it), and
-//   • for the three listings «/», «/shows/», «/news/» (run_worker_first).
-// There it shows the fast copy that the panel's save made (worker/src/fast-lane.ts, through the FAST service binding)
-// ONLY when it is of a newer main commit than this deployment's own /build.json. A deployment's /build.json never
-// changes, so the moment the full build with that save is out, its copies are never shown again. Anything that goes
-// wrong here (the bot down, slow, an odd answer) is the plain asset, as before this script existed.
+// It runs only for the three listings «/», «/shows/», «/news/», the show and story pages (run_worker_first), and any
+// address with no file; every other file is served straight from the deployment's assets without it. On those it shows
+// the fast copy that a save made (worker/src/fast-lane.ts, through the FAST service binding) ONLY when it is of a
+// newer main commit than this deployment's own /build.json: a new page before its full build, or a saved edit of a
+// page. A deployment's /build.json never changes, so the moment the full build with that save is out, its copies are
+// never shown again. Anything that goes wrong here (the bot down, slow, an odd answer) is the plain asset.
 const LISTINGS = new Set(["/", "/shows/", "/news/"]);
 const CONTENT = /^\/(shows|news)\/[^/]+\/$/;
 const INDEX_FRESH_MS = 4000;
@@ -120,42 +119,39 @@ function decoded(pathname) {
 
 /** The whole script: arw-site-static's fetch */
 export async function handle(request, env, ctx) {
-    const u = new URL(request.url);
-    const method = request.method;
-    if (method !== "GET" && method !== "HEAD") return env.ASSETS.fetch(request);
-    if (LISTINGS.has(u.pathname)) {
-      if (!env.FAST) return env.ASSETS.fetch(request);
-      try {
-        const [pages, b] = await Promise.all([fastPages(env, ctx, u.origin), buildInfo(env)]);
-        const entry = pages.get(u.pathname);
-        if (newer(entry, b)) {
-          const html = await fastBody(env, ctx, u.origin, u.pathname, entry);
-          // the asset's headers from an unconditional ask: a browser's «If-None-Match» would get a 304 for its old copy
-          const like = html ? await env.ASSETS.fetch(new Request(u.toString(), { method: "GET" })) : null;
-          if (html && like.status === 200) return respond(request, html, like, null);
-        }
-      } catch {}
-      return env.ASSETS.fetch(request);
+  const u = new URL(request.url);
+  if (request.method !== "GET" && request.method !== "HEAD") return env.ASSETS.fetch(request);
+  const path = decoded(u.pathname);
+  const slash = path.endsWith("/") ? path : path + "/";
+  const key = LISTINGS.has(u.pathname) ? u.pathname : CONTENT.test(slash) ? slash : null;
+  if (!key || !env.FAST) return notFound(request, env); // (the asset itself whenever there is one)
+  try {
+    const b = await buildInfo(env);
+    // a listing waits for the list of fast copies the first time; a show or story page never does: a fresh isolate
+    // serves the real file while it asks, and only an address with no file waits (below)
+    let pages;
+    if (LISTINGS.has(key) || index.at) pages = await fastPages(env, ctx, u.origin);
+    else ctx.waitUntil(loadIndex(env, ctx, u.origin));
+    let entry = pages && pages.get(key);
+    if (!newer(entry, b)) {
+      const asset = await notFound(request, env);
+      if (asset.status !== 404 || LISTINGS.has(key)) return asset;
+      entry = (await fastPages(env, ctx, u.origin)).get(key);
+      if (!newer(entry, b)) return asset;
     }
-    // no file at this address: a page saved a moment ago, or a real «not found»
-    const path = decoded(u.pathname);
-    const slash = path.endsWith("/") ? path : path + "/";
-    if (CONTENT.test(slash) && env.FAST) {
-      try {
-        const [pages, b] = await Promise.all([fastPages(env, ctx, u.origin), buildInfo(env)]);
-        const entry = pages.get(slash);
-        if (newer(entry, b)) {
-          // «/shows/x» → «/shows/x/», as the assets' own trailing-slash rule does for a real page
-          if (!path.endsWith("/")) return new Response(null, { status: 307, headers: { Location: u.pathname + "/" + u.search } });
-          const html = await fastBody(env, ctx, u.origin, slash, entry);
-          if (html) {
-            const like = await notFound(request, env); // the request's own _headers rules, like a real page here
-            return respond(request, html, like, "public, max-age=0, must-revalidate");
-          }
-        }
-      } catch {}
-    }
+    // «/shows/x» → «/shows/x/», as the assets' own trailing-slash rule does for a real page
+    if (key !== u.pathname && !path.endsWith("/")) return new Response(null, { status: 307, headers: { Location: u.pathname + "/" + u.search } });
+    const html = await fastBody(env, ctx, u.origin, key, entry);
+    if (!html) return notFound(request, env);
+    // the real file's headers from an unconditional ask (a browser's «If-None-Match» would get a 304 for its old copy);
+    // a page with no file yet: the headers a real page at this address gets (_headers' rules, the default cache rule)
+    const plain = new Request(u.toString(), { method: "GET" });
+    const like = await env.ASSETS.fetch(plain);
+    if (like.status === 200) return respond(request, html, like, null);
+    return respond(request, html, await notFound(plain, env), "public, max-age=0, must-revalidate");
+  } catch {
     return notFound(request, env);
+  }
 }
 
 /** For the tests: a fresh isolate */
