@@ -1,38 +1,53 @@
 {
- "https://www.wrestlinginc.com/2312412/aew-bishop-kaun-reflects-carrying-trios-titles-historic-venue": {
+ "https://www.fightful.com/wrestling/muhammad-hassan-says-he-never-had-a-bad-interaction-with-vince-mcmahon": {
+  "reason": "المراجعة رفضته: مثنى «عامي 2017 و2023 / شهري أكتوبر ونوفمبر» ممنوع — اكتب «عام 2017 وعام 2023» أو «شهر أكتوبر وشهر نوفمبر»",
+  "retry": true,
+  "at": "2026-11-14T20:37:23.357Z"
+ },
+ "https://www.fightful.com/wrestling/muhammad-hassan-regardless-of-what-happened-in-july-of-2005-in-london-i-think-that-character-was-on-a-trajectory-that-was-going-to-get-him-pulled-from-tv": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-14T20:29:28.604Z"
+  "at": "2026-11-14T20:36:53.921Z"
+ },
+ "https://www.fightful.com/wrestling/muhammad-hassan-i-dont-think-i-have-another-match-left-in-me-i-feel-like-if-i-take-more-than-one-bump-at-a-time-im-going-to-shatter": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T20:36:09.590Z"
  },
  "https://www.fightful.com/wrestling/tko-chief-administrative-officer-senior-counsel-says-he-will-be-transitioning-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T20:28:22.458Z"
+  "at": "2026-11-14T20:36:08.865Z"
  },
  "https://www.fightful.com/wrestling/aew-full-gear-results-11-14-2026-will-ospreay-vs-kyle-fletcher-texas-death-anarchy-in-the-arena-mercedes-mone-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-14T20:28:21.911Z"
+  "at": "2026-11-14T20:36:08.333Z"
  },
  "https://www.fightful.com/wrestling/4th-rope-x-mass-appeal-present-heelmatic-results-11-12": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T20:28:21.375Z"
+  "at": "2026-11-14T20:36:07.822Z"
  },
  "https://www.fightful.com/wrestling/aaa-on-fox-start-time-how-to-watch-location-11-14": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T20:28:20.956Z"
+  "at": "2026-11-14T20:36:07.408Z"
  },
  "https://www.fightful.com/wrestling/aew-full-gear-2026-preview-start-time-how-to-watch-location-11-14": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T20:28:20.205Z"
+  "at": "2026-11-14T20:36:06.664Z"
  },
  "https://www.fightful.com/wrestling/stephanie-vaquer-returns-on-11-13-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T20:28:19.321Z"
+  "at": "2026-11-14T20:36:05.839Z"
+ },
+ "https://www.wrestlinginc.com/2312412/aew-bishop-kaun-reflects-carrying-trios-titles-historic-venue": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-14T20:29:28.604Z"
  },
  "https://www.fightful.com/wrestling/faa-lifts-nationwide-ground-stop-on-flights": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1983,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-05T01:28:15.132Z"
- },
- "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-november-4-2026": {
-  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
-  "retry": false,
-  "at": "2026-11-05T01:19:01.117Z"
  }
 }
