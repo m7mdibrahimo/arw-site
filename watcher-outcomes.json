@@ -1988,15 +1988,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-04T22:48:27.094Z"
- },
- "https://www.fightful.com/wrestling/337402-ricochet-pac-will-ospreay": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-11-04T20:57:17.733Z"
- },
- "https://www.ringsidenews.com/queen-aminata-admits-she-didnt-expect-win-aew-tbs-title-dynamite": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-04T20:50:18.994Z"
  }
 }
