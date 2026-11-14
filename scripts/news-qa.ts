@@ -1742,6 +1742,14 @@ const SOURCE_CLAIMS: { label: string; ar: RegExp; en: RegExp; source: RegExp }[]
     en: /\b(?:will|is expected to|plans to|is set to|is going to)\s+(?:\w+\s+){0,2}?(?:provide|reveal|share|give|announce|offer|disclose|unveil)\s+(?:\S+\s+){0,3}?(?:details?|information|updates?)\b/i,
     source: /\b(?:will|expected to|set to|plans? to|going to|intends? to|hopes? to|promised to|looks? to|about to)\s+(?:\w+\s+){0,3}?(?:reveal|announc|shar|explain|provid|giv|detail|discuss|unveil|disclos|shed|address|talk)|\bmore (?:details|information)\b[^.]{0,60}\b(?:soon|later|coming|next)\b|\bstay tuned\b|\bteas(?:e|ed|es|ing)\b/i,
   },
+  {
+    // Deonna Purrazzo: "that's what's going to get us those storylines" became «هو السبيل الوحيد للحصول على قصص أطول» —
+    // "the only way" is a claim the speaker never made (INCIDENTS #1310). A negated «ليس الحل الوحيد» stays allowed.
+    label: "السبيل الوحيد / the only way",
+    ar: /(?<!(?:ليس|ليست|لا\s+يعد|لا\s+تعد|ليسا)\s+)(?<![ء-ي])(?:ال)?(?:سبيل|طريق|طريقة|حل|خيار)\s+(?:ال)?وحيد(?:ة)?(?![ء-ي])/,
+    en: /(?<!\bnot\s)\bthe only (?:way|path|route|solution|option)\b/i,
+    source: /\bonly\b|\bsole(?:ly)?\b|\bnothing else\b|\bthe one (?:way|thing)\b|\bexclusive(?:ly)?\b/i,
+  },
 ];
 /**
  * «Ric Flair Set For First Wrestling Appearance Since Scary Fall» became «ريك فلير يظهر علنا لأول مرة منذ سقوطه…»:
