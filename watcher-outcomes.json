@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/d-von-dudley-admits-he-hated-his-wwe-producer-job-nearly-two-years": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-14T16:05:03.436Z"
+ },
  "https://www.fightful.com/wrestling/aaa-on-fox-start-time-how-to-watch-location-11-14": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-04T16:10:47.842Z"
- },
- "https://www.ringsidenews.com/vince-mcmahon-accused-making-wwe-talent-feel-unimportant-during-creative-talks": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-04T15:24:11.518Z"
  }
 }
