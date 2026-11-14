@@ -2,37 +2,37 @@
  "https://www.fightful.com/wrestling/muhammad-hassan-i-dont-think-i-have-another-match-left-in-me-i-feel-like-if-i-take-more-than-one-bump-at-a-time-im-going-to-shatter": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T21:32:09.429Z"
+  "at": "2026-11-14T21:35:19.651Z"
  },
  "https://www.fightful.com/wrestling/tko-chief-administrative-officer-senior-counsel-says-he-will-be-transitioning-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T21:32:08.809Z"
+  "at": "2026-11-14T21:35:18.933Z"
  },
  "https://www.fightful.com/wrestling/aew-full-gear-results-11-14-2026-will-ospreay-vs-kyle-fletcher-texas-death-anarchy-in-the-arena-mercedes-mone-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-14T21:32:08.352Z"
+  "at": "2026-11-14T21:35:18.405Z"
  },
  "https://www.fightful.com/wrestling/4th-rope-x-mass-appeal-present-heelmatic-results-11-12": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T21:32:07.916Z"
+  "at": "2026-11-14T21:35:17.899Z"
  },
  "https://www.fightful.com/wrestling/aaa-on-fox-start-time-how-to-watch-location-11-14": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T21:32:07.563Z"
+  "at": "2026-11-14T21:35:17.489Z"
  },
  "https://www.fightful.com/wrestling/aew-full-gear-2026-preview-start-time-how-to-watch-location-11-14": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T21:32:06.948Z"
+  "at": "2026-11-14T21:35:16.753Z"
  },
  "https://www.fightful.com/wrestling/stephanie-vaquer-returns-on-11-13-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T21:32:06.242Z"
+  "at": "2026-11-14T21:35:15.938Z"
  },
  "https://www.ringsidenews.com/rvds-illinois-comic-con-appearance-canceled-following-bomb-threat": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -43,41 +43,6 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يطلقان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، فعل مثنى («يتمتعان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
   "at": "2026-11-14T21:26:32.600Z"
- },
- "https://www.fightful.com/wrestling/muhammad-hassan-i-dont-think-i-have-another-match-left-in-me-i-feel-like-if-i-take-more-than-one-bump-at-a-time-im-going-to-shatter": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T21:27:22.007Z"
- },
- "https://www.fightful.com/wrestling/tko-chief-administrative-officer-senior-counsel-says-he-will-be-transitioning-out": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T21:27:21.279Z"
- },
- "https://www.fightful.com/wrestling/aew-full-gear-results-11-14-2026-will-ospreay-vs-kyle-fletcher-texas-death-anarchy-in-the-arena-mercedes-mone-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-14T21:27:20.746Z"
- },
- "https://www.fightful.com/wrestling/4th-rope-x-mass-appeal-present-heelmatic-results-11-12": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T21:27:20.235Z"
- },
- "https://www.fightful.com/wrestling/aaa-on-fox-start-time-how-to-watch-location-11-14": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T21:27:19.818Z"
- },
- "https://www.fightful.com/wrestling/aew-full-gear-2026-preview-start-time-how-to-watch-location-11-14": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T21:27:19.088Z"
- },
- "https://www.fightful.com/wrestling/stephanie-vaquer-returns-on-11-13-wwe-smackdown": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T21:27:18.249Z"
  },
  "https://www.fightful.com/wrestling/muhammad-hassan-says-he-never-had-a-bad-interaction-with-vince-mcmahon": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
