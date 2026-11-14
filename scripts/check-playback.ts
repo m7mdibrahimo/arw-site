@@ -29,7 +29,11 @@ export interface Evidence {
 const MEDIA = /\.m3u8|\.ts(\?|$)|\.mp4(\?|$)|\.m4s|master\.txt|index-[^/]*\.txt|\/seg-|\/hls\d?\/|vkuser\.net\/expires|\/videoplayback|\/expires\/\d+/i;
 const NOT_MEDIA = /videoPreview|get_slides|\.(jpe?g|png|webp|gif|svg|css|js|woff2?)(\?|$)/i;
 export const isMedia = (u: string) => MEDIA.test(u) && !NOT_MEDIA.test(u);
-const DEAD = /cannot be played|file (was |has been )?(deleted|removed)|file (is )?not found|video (not found|is not available|has been (removed|deleted)|unavailable)|no longer available|embeds? disabled|has been deleted|does not exist|غير متوفر|تم حذف/i;
+// «This video file cannot be played (Error Code: 232011)» is JW Player's own message for a stream it couldn't load (a
+// network or CORS failure), not a deleted file: vidmoly showed it on three new shows at 09:05 on 2026-11-14 and the same
+// servers played 15 minutes later, so it counts as a player error that gets the second try (INCIDENTS #1295).
+const PLAYER_FAIL = /cannot be played/i;
+const DEAD = /file (was |has been )?(deleted|removed)|file (is )?not found|video (not found|is not available|has been (removed|deleted)|unavailable)|no longer available|embeds? disabled|has been deleted|does not exist|غير متوفر|تم حذف/i;
 const SEGMENT = /\.ts(\?|$)|\/seg-|\.m4s/i;
 const CHALLENGE = /just a moment|attention required|checking your browser|verify you are human|cf-chl/i;
 
@@ -42,6 +46,7 @@ export function classify(ev: Evidence): { status: "ok" | "broken" | "unknown"; r
   // falls back to a second one and plays — the checker hid working hgcloud servers on 40+ pages for that (INCIDENTS #1259)
   if (ev.progressed) return { status: "ok", reason: ev.playerErrors.length ? "the video plays (after the player's first source failed)" : "the video plays" };
   if (ev.playerErrors.length && ev.mediaOk.filter(u => SEGMENT.test(u)).length >= 2) return { status: "ok", reason: "the stream arrives (after the player's first source failed)" };
+  if (PLAYER_FAIL.test(ev.frameText)) return { status: "broken", reason: `the player says: ${ev.frameText.replace(/\s+/g, " ").match(PLAYER_FAIL)![0]}` };
   if (ev.playerErrors.length) return { status: "broken", reason: ev.playerErrors[0] };
   if (ev.mediaFail.length && !ev.mediaOk.length) return { status: "broken", reason: `the stream is refused: ${ev.mediaFail[0]}` };
   if (ev.mediaOk.length) return { status: "ok", reason: "the stream arrives" };
@@ -57,7 +62,7 @@ export function classify(ev: Evidence): { status: "ok" | "broken" | "unknown"; r
 export const RETRY_SETTLE_MS = 25000;
 
 export function worthRetry(ev: Evidence, c: { status: string }): boolean {
-  return c.status === "broken" && !DEAD.test(ev.frameText) && ev.playerErrors.length > 0;
+  return c.status === "broken" && !DEAD.test(ev.frameText) && (ev.playerErrors.length > 0 || PLAYER_FAIL.test(ev.frameText));
 }
 
 export interface LinkState { page: string; status: string; reason: string; strikes: number; since?: string; lastOk?: string; checked: string }
