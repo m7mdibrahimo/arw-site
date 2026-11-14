@@ -19,7 +19,14 @@ test('other words are left alone', () => {
 test('Feroz is in the glossary and no published CMLL story spells him «فيروس»', () => {
   const names = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'));
   assert.equal(names['Feroz'], 'فيروز');
+  assert.equal(names['Virus'], 'فيروس');
   const dir = 'content/news';
-  const bad = fs.readdirSync(dir).filter((f) => /cmll/i.test(f)).filter((f) => /(?<![ء-ي])و?فيروس(?![ء-ي])/.test(fs.readFileSync(path.join(dir, f), 'utf8')));
+  // CMLL also has a luchador really named Virus («فيروس»): a story whose English twin lists «Virus» is right (INCIDENTS #1293)
+  const enVirus = new Set(fs.readdirSync('content/news-en').map((f) => fs.readFileSync(path.join('content/news-en', f), 'utf8'))
+    .filter((t) => /\bVirus\b/.test(t)).map((t) => (t.match(/^source_id:\s*(\S+)/m) || [])[1]));
+  const bad = fs.readdirSync(dir).filter((f) => /cmll/i.test(f)).filter((f) => {
+    const t = fs.readFileSync(path.join(dir, f), 'utf8');
+    return /(?<![ء-ي])و?فيروس(?![ء-ي])/.test(t) && !enVirus.has((t.match(/^source_id:\s*(\S+)/m) || [])[1]);
+  });
   assert.deepEqual(bad, []);
 });
