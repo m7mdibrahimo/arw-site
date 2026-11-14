@@ -1,58 +1,58 @@
 {
- "https://www.wrestlinginc.com/2316758/wwe-smackdown-rey-mysterio-rey-fenix-team-mexico-survivor-series": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»، فعل مثنى («يتحدثان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-14T04:54:14.780Z"
- },
  "https://www.fightful.com/wrestling/stephanie-vaquer-returns-on-11-13-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T04:54:21.597Z"
+  "at": "2026-11-14T04:58:00.621Z"
  },
  "https://www.fightful.com/wrestling/faa-lifts-nationwide-ground-stop-on-flights": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T04:54:21.310Z"
+  "at": "2026-11-14T04:58:00.350Z"
  },
  "https://www.fightful.com/wrestling/tna-contract-of-xia-brookside-expires-at-the-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T04:54:20.823Z"
+  "at": "2026-11-14T04:57:59.904Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-11-13-2026-john-cena-appears-tiffany-stratton-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T04:54:20.421Z"
+  "at": "2026-11-14T04:57:59.536Z"
  },
  "https://www.fightful.com/wrestling/brie-bella-is-hoping-to-resume-in-ring-training-in-january": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T04:54:20.040Z"
+  "at": "2026-11-14T04:57:59.188Z"
  },
  "https://www.fightful.com/wrestling/clark-connors-opens-up-about-aews-the-last-outfit-changing-name-to-the-cut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T04:54:19.280Z"
+  "at": "2026-11-14T04:57:58.497Z"
  },
  "https://www.fightful.com/wrestling/finn-balor-vs-gunther-added-to-11-13-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T04:54:18.879Z"
+  "at": "2026-11-14T04:57:58.131Z"
  },
  "https://www.fightful.com/mma/ufc-334-gane-vs-hokit-weigh-in-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-14T04:54:18.304Z"
+  "at": "2026-11-14T04:57:57.603Z"
  },
  "https://www.fightful.com/wrestling/marina-shafir-talks-possibility-of-ronda-rousey-returning-to-aew-joining-the-death-riders": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T04:54:18.020Z"
+  "at": "2026-11-14T04:57:57.339Z"
  },
  "https://www.fightful.com/wrestling/spike-dudley-announces-hes-signed-a-wwe-legends-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T04:54:17.731Z"
+  "at": "2026-11-14T04:57:57.067Z"
+ },
+ "https://www.wrestlinginc.com/2316758/wwe-smackdown-rey-mysterio-rey-fenix-team-mexico-survivor-series": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»، فعل مثنى («يتحدثان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-14T04:54:14.780Z"
  },
  "https://www.fightful.com/wrestling/alleged-victim-in-ludwig-kaiser-battery-case-claims-he-suffered-torn-rotator-cuff-concussion": {
   "reason": "مكرر مع خبر نزل قبل كده",
