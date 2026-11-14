@@ -699,3 +699,20 @@ test('INCIDENTS #1221: a sentence opening with «ومقره في» is blocked; m
   assert.equal(applyCorrections('منصب منتج مشارك للرسوم المتحركة'), 'منصب منتج مشارك للغرافيك المتحرك');
   assert.equal(applyCorrections('شركة Lingere Fighting Championships'), 'شركة Lingerie Fighting Championships');
 });
+
+test('INCIDENTS #1300: «وسط ترقب جماهيري كبير» and «تقام هذه الفعالية ضمن التمهيد…» filler are dropped; facts stay', () => {
+  assert.equal(
+    autoFix('تضم البطاقة نزالا ثلاثيا بين كوين أميناتا وبيرسيفوني ومايا وورلد. وتقام هذه الفعالية ضمن التمهيد لعروض AEW المرتقبة وسط ترقب جماهيري كبير.'),
+    'تضم البطاقة نزالا ثلاثيا بين كوين أميناتا وبيرسيفوني ومايا وورلد.',
+  );
+  assert.equal(autoFix('سيدافع رينز عن لقبه أمام نايت، وسط ترقب جماهيري واسع لما ستسفر عنه المنافسات القادمة.'), 'سيدافع رينز عن لقبه أمام نايت.');
+  const fact = 'ستنطلق المنظمة عام 2027 وسط ترقب جماهيري هائل ودعم استثماري ضخم يصل إلى ستين مليون دولار.';
+  assert.equal(autoFix(fact), fact);
+  const fact2 = 'تواجه مينا شيراكاوا كوين أميناتا، وسط ترقب جماهيري كبير لمواكبة تعليق مرسيدس موني التي ستتواجد على طاولة المعلقين.';
+  assert.equal(autoFix(fact2), fact2);
+});
+
+test('INCIDENTS #1300: a «وسط ترقب جماهيري» tail with a relative clause keeps its fact', () => {
+  const s = 'ستنطلق الفعاليات الثامنة مساء، وسط ترقب جماهيري كبير لهذه المواجهة القوية التي تبث مباشرة وبالمجان عبر منصة يوتيوب.';
+  assert.equal(autoFix(s), s);
+});

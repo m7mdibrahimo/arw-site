@@ -2083,6 +2083,12 @@ export function autoFix(text: string): string {
     .replace(/(?:^|(?<=[\n.]\s*))تجهيزا\s+(?:للمنافسات|للمنافسة|للمواجهة|للنزال)(?:\s+(?:القوية|الكبرى|المرتقبة))?[،,]\s*/g, "")
     .replace(new RegExp(`[،,]\\s*(?:و)?شهد(?:ت)?\\s+(?:العرض|الأمسية|الليلة)\\s+(?:${FILLER_NOUNS})\\s+(?:${FILLER_ADJ})[^.\\n]*(?=\\.)`, "g"), "")
     .replace(new RegExp(`(^|[.!])[ \\t]*(?:و)?شهد(?:ت)?\\s+(?:العرض|الأمسية|الليلة)\\s+(?:${FILLER_NOUNS})\\s+(?:${FILLER_ADJ})[^.\\n]*\\.[ \\t]*`, "gm"), "$1")
+    // «…، وسط ترقب جماهيري كبير.» closing a sentence, and a whole sentence «وتقام هذه الفعالية ضمن
+    // التمهيد لعروض AEW المرتقبة» — no source says it (AEW Full Gear Tailgate Brawl 14/11 — INCIDENTS #1300).
+    // Only the bare clause or its generic tails («لما ستسفر عنه…», «لهذه المواجهة») go: a tail with a
+    // digit, a comma, a relative clause («التي تبث مجانا عبر يوتيوب») or more than ten words stays.
+    .replace(/(?:[،,]\s*|[ \t]+)وسط\s+ترقب\s+جماهيري(?:\s+(?:كبير|واسع|هائل))?(?:\s+(?:لما\s+(?:ستسفر|سيسفر|سيقدمه|ستقدمه|سيحدث)|لهذه\s+(?:المواجهة|المواجهات|القمة))(?:\s+(?!(?:التي|الذي|عبر|بالمجان|مجانا)(?![؀-ۿ]))[^\s.\n،,\d]+){0,10})?(?=[.\n]|$)/g, "")
+    .replace(/(?<=^|\n|[.!؟])[ \t]*(?:و)?(?:تقام|يقام|تأتي|يأتي)\s+(?:هذه|هذا)\s+(?:الفعالية|العرض|المواجهة|الحدث|النزال)\s+ضمن\s+(?:التمهيد|التحضيرات|الاستعدادات)[^.\n\d]*\./g, "")
     // Empty filler Gemini writes when the source has no intro text: «لا تفاصيل أخرى، وإليك نتائج
     // المواجهات كما وردت في العرض---» (CMLL Lunes Clásico 02/11 — INCIDENTS #1029). It says nothing and its
     // «---» glued to the end (and the lone separator before it) rendered as stray lines on the page.
