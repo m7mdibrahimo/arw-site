@@ -32,6 +32,7 @@
 import { deliverOnce, authorizeAdmin } from "./delivery";
 import { PROMO_FILE, PROMO_PLATFORMS, type PromoPlatform, promoCaption, promoFacebook, facebookPostOf, pinFacebook, promoTelegram, pinTelegram } from "./promo";
 import { handleStudio, studioAuthorized, studioUser, readRepoFile, commitFiles, audit as studioAudit, auditLog } from "./studio";
+import { handleFastLane, fastLaneCleanup } from "./fast-lane";
 import { releaseEarly } from "./early";
 import { syncOk } from "./okru";
 import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRetainVideo, facebookReelState } from "./video-publishing";
@@ -3275,6 +3276,9 @@ export default {
     const path = url.pathname;
 
     try {
+      // «النشر السريع» (worker/src/fast-lane.ts, INCIDENTS #1296): the fast copies of just-saved pages for arw-site-static
+      const fast = await handleFastLane(request, env as any, path, url);
+      if (fast) return fast;
       // The owner's panel (/admin/): its own login and sessions, checked inside handleStudio.
       if (path === "/api/studio/overview" && request.method === "POST") {
         if (!(await studioAuthorized(request, env, "status"))) return json({ success: false, denied: true, error: "مش مسموحلك تشوف حالة الموقع." }, 403);
@@ -4622,6 +4626,8 @@ export default {
       runNewsWatcherCron(env),
       runFeedWatchCron(env),
       runScheduleBackstopCron(env),
+      // «النشر السريع»: the fast copies the live site now has go (worker/src/fast-lane.ts)
+      fastLaneCleanup(env as any).catch((e: any) => console.log("[fast-lane]", e?.message || e)),
       // once: the automatic blue badge of the first members goes, the owner's own stay (worker/src/members.ts)
       minute % 10 === 7 ? oneTimeBadgeReset(env).catch(() => {}) : Promise.resolve(),
       // «العرض قبل الجميع»: a show whose window ended gets its links back in its file, and the site rebuilds (worker/src/early.ts)

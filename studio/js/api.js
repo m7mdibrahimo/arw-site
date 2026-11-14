@@ -300,6 +300,13 @@ export function addPending(item) {
   } catch {}
 }
 
+/** «النشر السريع» (worker/src/fast-lane.ts): the just-saved pages the site already shows before its full build */
+export async function fastLanePages() {
+  if (LOCAL) return [];
+  const r = await fetch(`${WORKER}/fast-lane/index?_=${Date.now()}`, { cache: 'no-store' });
+  return r.ok ? ((await r.json()).pages || []) : [];
+}
+
 // ── «ظهر على الموقع ✓» ─────────────────────────────────────────────────────
 // After a save the site rebuilds on its own; /build.json says which commits the live copy has.
 const LIVE_KEY = 'arw_studio_live';

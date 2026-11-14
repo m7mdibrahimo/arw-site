@@ -230,11 +230,16 @@ module.exports = function(eleventyConfig) {
   // A Cloudflare build of «site» skips itself only when that can't leave the site behind: never mid-build just because
   // «site» moved (lib/superseded-build.cjs, INCIDENTS #1183, #1285)
   require("./lib/superseded-build.cjs").watch();
+  // «النشر السريع» (lib/fast-lane-render.cjs, INCIDENTS #1296): ARW_FAST_LANE renders only the saved pages and the listings,
+  // with only the after-steps marked «fastLane» (the scripts' and styles' names). A normal build never sets it.
+  const FAST = require("./lib/fast-lane-render.cjs");
+  const FAST_ON = FAST.enabled();
   // Which post-build step eats the build time (INCIDENTS #638): every «eleventy.after» step slower than 3 s says so in the log.
   {
     const on = eleventyConfig.on.bind(eleventyConfig);
     eleventyConfig.on = (event, fn) => {
       if (event !== "eleventy.after") return on(event, fn);
+      if (FAST_ON && !fn.fastLane) return;
       const name = String(fn).replace(/\s+/g, " ").slice(0, 90);
       return on(event, (...args) => {
         const t = Date.now();
@@ -2530,18 +2535,22 @@ module.exports = function(eleventyConfig) {
 
   // The English copy of the interface under /en/ (lib/i18n/mirror.cjs), from the finished Arabic pages. It runs last,
   // after the assets are copied. Every Arabic word left on an English page outside the news goes to the log.
-  eleventyConfig.on("eleventy.after", () => {
+  // (in the fast lane too: it puts the language button and hreflang links on the Arabic pages; its English copies of
+  // the few fast pages are never sent, their links to other pages would be Arabic)
+  const englishCopy = () => {
     if (process.env.ARW_NO_EN === "1") return;
     try {
-      const { summary, leftovers } = require("./lib/i18n/mirror.cjs").buildEnglish("_site", { content: I18N_CONTENT, pages: I18N_PAGES, news: I18N_NEWS });
+      const { summary, leftovers } = require("./lib/i18n/mirror.cjs").buildEnglish("_site", { content: I18N_CONTENT, pages: I18N_PAGES, news: I18N_NEWS, allTwins: FAST_ON });
       console.log(`[en] ${JSON.stringify(summary)}`);
       // the English copies of renamed shows' old addresses, now that /en/ exists (INCIDENTS #961)
       const R = require("./lib/redirects.cjs");
       R.writeRedirectPages(R.contentFolderAddresses().concat(R.vanishedShowRedirects(), R.removedRecapRedirects()).filter(([from]) => from.startsWith("/en/")), "_site");
       leftovers.slice(0, 20).forEach(function(x) { console.log(`[en] still Arabic (${x[1]} pages): ${x[0].slice(0, 120)}`); });
-      fs.writeFileSync("node_modules/.cache-arw-i18n-content.json", JSON.stringify({ content: I18N_CONTENT, pages: I18N_PAGES, news: I18N_NEWS }));
+      if (!FAST_ON) fs.writeFileSync("node_modules/.cache-arw-i18n-content.json", JSON.stringify({ content: I18N_CONTENT, pages: I18N_PAGES, news: I18N_NEWS }));
     } catch (e) { console.log(`[en] skipped: ${e.stack}`); }
-  });
+  };
+  englishCopy.fastLane = true;
+  eleventyConfig.on("eleventy.after", englishCopy);
 
   // Cloudflare Pages refuses a deployment of more than 20,000 files — the build «succeeds» and the deploy fails, so the
   // site silently stays on its last version (INCIDENTS #368). Counted last, after every page, picture and redirect
@@ -2568,10 +2577,20 @@ module.exports = function(eleventyConfig) {
     } catch (e) { console.log(`[files] count skipped: ${e.message}`); }
   });
 
+  // «النشر السريع»: only the saved pages and the listings render, and they are listed in _site/fast-lane.json
+  if (FAST_ON) {
+    let written = [];
+    eleventyConfig.on("eleventy.before", async () => { written = await FAST.install(FAST.parseInputs()); });
+    const listWritten = () => { console.log(`[fast-lane] ${FAST.writeManifest(written).length} pages written`); };
+    listWritten.fastLane = true;
+    eleventyConfig.on("eleventy.after", listWritten);
+  }
+
   // The site's own scripts and styles go out minified (owner 2026-10-15: «الموقع كله يكون سريع وخفيف»): about a quarter
   // less to download and read on every page, the sources stay as they are. Each file is written beside and renamed over
   // the copy (never changed in place, so a linked source can't be touched); one that fails to minify goes out as it was.
-  eleventyConfig.on("eleventy.after", async () => {
+  // (in the fast lane too: its pages link to the same content-named files as the full build's)
+  eleventyConfig.on("eleventy.after", Object.assign(async () => {
     const es = require("esbuild"), dir = "_site/assets";
     let saved = 0, n = 0;
     for (const f of fs.existsSync(dir) ? fs.readdirSync(dir) : []) {
@@ -2591,8 +2610,8 @@ module.exports = function(eleventyConfig) {
     const named = require("./lib/asset-names.cjs").nameAssetsByContent("_site");
     console.log(`[assets] ${named.files} scripts and styles named by their content, on ${named.pages} pages`);
     // the last step of the build: an older version never goes out over a newer one (INCIDENTS #1183)
-    require("./lib/superseded-build.cjs").finalCheck();
-  });
+    if (!FAST_ON) require("./lib/superseded-build.cjs").finalCheck();
+  }, { fastLane: true }));
 
   return {
     dir: {

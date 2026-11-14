@@ -1,0 +1,74 @@
+name: Fast Lane
+
+# ═══════════════════════════════════════════════════════
+#  «النشر السريع» (الحادثة ١٢٩٦): العرض أو الخبر اللي اتحفظ من اللوحة يظهر على الموقع في حوالي دقيقة،
+#  من غير ما يستنى البناء الكامل في Cloudflare (حوالي ٤ دقايق). البناء الكامل زي ما هو، وبياخد مكانه أول ما ينزل.
+#  بيبني بنفس القوالب الصفحات اللي اتغيرت بس + الرئيسية و/shows/ و/news/ (lib/fast-lane-render.cjs)،
+#  ويبعتها لـarw-site-bot بتوقيع GitHub نفسه (OIDC، من غير أي سر)، والموقع بيعرضها لحد ما البناء الكامل يوصل
+#  (site-worker/fast.js). رفع البوتات بمفتاح GitHub الداخلي مش بيشغّل push، فبعد كل دورة لبوت الأخبار بيشتغل بـworkflow_run.
+# ═══════════════════════════════════════════════════════
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/shows/**'
+      - 'content/news/**'
+  # the news bots push with GitHub's own key, which never starts another workflow: after each of their runs
+  workflow_run:
+    workflows:
+      - Fightful News Auto Watcher
+      - Ringside News Auto Watcher
+      - Wrestling Inc Auto Watcher
+    types: [completed]
+  workflow_dispatch:
+
+# A newer save replaces a save's run still going: it renders everything changed since the live build, its pages too.
+# The bots' runs queue apart (one waiting at most), so a bot every few minutes never cancels a save. Two runs at once
+# are safe: arw-site-bot keeps a page only from a newer commit than the copy it has (worker/src/fast-lane.ts).
+concurrency:
+  group: fast-lane-${{ github.event_name == 'workflow_run' && 'bots' || 'saves' }}
+  cancel-in-progress: ${{ github.event_name != 'workflow_run' }}
+
+permissions:
+  contents: read
+  id-token: write   # GitHub's signed token: arw-site-bot takes pages only from this workflow on main
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      # the tree Cloudflare builds («site»: main without the original pictures and reels, served by arw-media)
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            /*
+            !/content/images/
+            !/dist/videos/
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - id: modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: fast-lane-modules-${{ runner.os }}-node22-${{ hashFiles('package-lock.json', 'scripts/patch-eleventy.js') }}
+      - if: steps.modules.outputs.cache-hit != 'true'
+        run: npm ci --no-audit --no-fund
+      - id: plan
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/fast-lane.mjs plan
+      - name: Render only the saved pages and the listings
+        if: steps.plan.outputs.skip != '1'
+        env:
+          ARW_FAST_LANE: ${{ steps.plan.outputs.inputs || ' ' }}
+        run: |
+          start=$(date +%s)
+          node --stack-size=4096 ./node_modules/@11ty/eleventy/cmd.cjs
+          echo "render took $(( $(date +%s) - start ))s"
+      - name: Send them to the site
+        if: steps.plan.outputs.skip != '1'
+        run: node scripts/fast-lane.mjs send

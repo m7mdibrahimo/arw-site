@@ -2,12 +2,20 @@
 // deployment; a Worker with static assets takes up to 100,000 on a paid plan (the account has Workers Paid).
 // NOT read by Cloudflare Pages (the file name is not wrangler.jsonc): the Pages project keeps serving the site until
 // the owner points the domain at this Worker. Test: `npx wrangler dev --config wrangler.static.jsonc` after a build.
+//
+// «النشر السريع» (INCIDENTS #1296): site-worker/ runs only for an address with no file and for the three listings
+// (run_worker_first); every real file is served straight from the assets as before. It shows a page the panel saved a
+// moment ago from arw-site-bot (FAST) until this deployment has it, never after (site-worker/fast.js).
 {
   "name": "arw-site-static",
+  "main": "site-worker/index.js",
   "compatibility_date": "2026-11-01",
   "assets": {
     "directory": "./_site",
+    "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
-    "not_found_handling": "404-page"
-  }
+    "not_found_handling": "none",
+    "run_worker_first": ["/", "/shows/", "/news/"]
+  },
+  "services": [{ "binding": "FAST", "service": "arw-site-bot" }]
 }
