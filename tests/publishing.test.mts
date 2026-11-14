@@ -5140,7 +5140,8 @@ test("the library description of a yearly one-event program says the year and do
   // «كل عروض … 2026 المترجمة (عرض واحد) … مع نتائج كل عرض وروابط المشاهدة والتحميل» — the year stays in the
   // description of a one-event program, and download/watch stays too (INCIDENTS #862 kept both when it made the
   // head clearly a collection's, not the episode's).
-  assert.ok(/كل عروض \{\{ lp\.prog\.name \}\}\{% if not \(lp\.prog\.name \| string\)\.endsWith\(lp\.prog\.latest\.eventDate \| yearOf \| string\) %\} \{\{ lp\.prog\.latest\.eventDate \| yearOf \}\}/.test(t));
+  // …only while the event has no show page of its own: once it has one, the dated search belongs there (INCIDENTS #1289, #1306).
+  assert.ok(/كل عروض \{\{ lp\.prog\.name \}\}\{% if not lp\.prog\.latest\.url and not \(lp\.prog\.name \| string\)\.endsWith\(lp\.prog\.latest\.eventDate \| yearOf \| string\) %\} \{\{ lp\.prog\.latest\.eventDate \| yearOf \}\}/.test(t));
   assert.ok(t.includes("روابط المشاهدة والتحميل"));
 });
 
@@ -5681,4 +5682,10 @@ test('the same arrest of the same person from two outlets is one story (INCIDENT
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
+});
+
+test('a yearly program whose newest show has its own page keeps the year out of its library meta description too (INCIDENTS #1306)', () => {
+  const tpl = fs.readFileSync('pages/library-program.njk', 'utf8');
+  const desc = tpl.match(/pageDesc: "([^\n]*)/)![1];
+  assert.match(desc, /\{% if not lp\.prog\.latest\.url and not \(lp\.prog\.name \| string\)\.endsWith/);
 });

@@ -1111,3 +1111,11 @@ test("INCIDENTS #1289: Bakusai spelling, «البطول», «أسقط X بحرك
   assert.equal(applyCorrections("سقط بقوة على الأرض"), "سقط بقوة على الأرض");
   assert.equal(applyCorrections("اللاتي استجوبن قراره"), "اللاتي سألن عن قراره");
 });
+
+test("a past dual verb before «معا» is blocked: «أن عملا معا» (Lashley/Lio Rush story, INCIDENTS #1306)", () => {
+  const pad = " وأضاف المصارع أنه سعيد بما حققه خلال مسيرته الطويلة في عالم المصارعة الحرة.".repeat(4);
+  const codes = (b: string) => checkArticle("عنوان تجريبي طويل بما يكفي للفحص هنا", b + pad).map((i) => i.code);
+  assert.ok(codes("وسبق للاشلي وراش أن عملا معا لفترة طويلة.").includes("dual_form"));
+  assert.ok(codes("حيث سافرا معا إلى جزيرة في فلوريدا.").includes("dual_form"));
+  assert.ok(!codes("وسبق أن عمل لاشلي وراش معا لفترة طويلة.").includes("dual_form"));
+});
