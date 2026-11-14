@@ -1662,6 +1662,14 @@ export function agoSpanNotInSource(body: string, source: string): string[] {
  */
 const SOURCE_CLAIMS: { label: string; ar: RegExp; en: RegExp; source: RegExp }[] = [
   {
+    // Lars Sullivan / Brody King story: «F*** ICE» chants became «هتفت الجماهير بشعارات مناهضة للهجرة» and «anti-immigration
+    // slogans» — chants against the immigration agency (ICE) turned into chants against immigrants, the opposite (INCIDENTS #1307)
+    label: "مناهض للهجرة بدل ضد دائرة الهجرة (ICE) / anti-immigration for anti-ICE",
+    ar: /(?<![ء-ي])(?:ال)?(?:مناهض|معاد|معادي|رافض)(?:ة|ين|ون)?\s+(?:لل|ل)هجرة(?![ء-ي])|(?<![ء-ي])ضد\s+(?:ال)?هجرة(?![ء-ي])/,
+    en: /\banti-?immigration\b|\bagainst immigration\b/i,
+    source: /\banti-?immigra|\bagainst (?:immigration|immigrants)\b|\bimmigrants? (?:out|go home)\b/i,
+  },
+  {
     // Booker T story: «واجه كيفن أوينز لينهي عداوة قديمة»; the source said Owens "finally got his vengeance" — INCIDENTS #1227
     label: "لينهي عداوة / to end the feud",
     ar: /(?<![ء-ي])[وف]?لين?هي(?:ا|وا)?\s+(?:بذلك\s+)?(?:ال)?(?:عداوة|صراع|خلاف)(?![ء-ي])/,
