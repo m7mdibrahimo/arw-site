@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2312412/aew-bishop-kaun-reflects-carrying-trios-titles-historic-venue": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: PROGRESS Tag Team Championships، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ROH World Trios Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: AAA Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Trios Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Trios Championships، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kofi Kingston",
+  "retry": true,
+  "at": "2026-11-14T21:02:57.205Z"
+ },
  "https://www.fightful.com/wrestling/muhammad-hassan-i-dont-think-i-have-another-match-left-in-me-i-feel-like-if-i-take-more-than-one-bump-at-a-time-im-going-to-shatter": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -48,11 +53,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-14T20:39:48.048Z"
- },
- "https://www.wrestlinginc.com/2312412/aew-bishop-kaun-reflects-carrying-trios-titles-historic-venue": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-14T20:29:28.604Z"
  },
  "https://www.fightful.com/wrestling/faa-lifts-nationwide-ground-stop-on-flights": {
   "reason": "مكرر مع خبر نزل قبل كده",
