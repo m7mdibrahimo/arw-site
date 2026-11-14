@@ -2,6 +2,26 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "بطولة WWE القارية للسيدات",
+      "right": "بطولة WWE للقارات للسيدات",
+      "note": "Women's Intercontinental Championship = «بطولة WWE للقارات للسيدات»؛ «القارية» لـ AEW Continental بس — خبر نزال أفضلية WarGames (INCIDENTS #1291)"
+    },
+    {
+      "wrong": "بطولة WWE القارية",
+      "right": "بطولة القارات",
+      "note": "WWE Intercontinental = «بطولة القارات» (كانت بتتصلح بعد «ب» بس) — INCIDENTS #1291"
+    },
+    {
+      "wrong": "الأفضلية في عرض WarGames",
+      "right": "الأفضلية في نزال WarGames",
+      "note": "WarGames نزال جوه Survivor Series مش عرض — INCIDENTS #1291"
+    },
+    {
+      "wrong": "إلى جدول أعمال عرض",
+      "right": "إلى بطاقة عرض",
+      "note": "added to the card = «إلى بطاقة عرض» مش «جدول أعمال» — INCIDENTS #1291"
+    },
+    {
       "wrong": "دوتان",
       "right": "دوثان",
       "note": "Dothan (ألاباما، مكان تسجيل TNA iMPACT) = «دوثان» — INCIDENTS #1274"

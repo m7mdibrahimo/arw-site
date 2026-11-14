@@ -17,3 +17,11 @@ test('a real theme still gets its theme names', () => {
   const f = showNameForms({ headline: 'عرض داينامايت 04.11.2026 مترجم', title: 'AEW Dynamite Blood & Guts 04.11.2026', programName: 'AEW Dynamite', eventDate: '2026-11-04', isShow: true });
   assert.ok(f.includes('AEW Blood and Guts 2026'));
 });
+
+// INCIDENTS #1291: the theme was only in English — «بلود اند جتس» is how it's typed in Arabic
+test('a themed episode carries its theme in Arabic letters', () => {
+  const f = showNameForms({ headline: 'عرض داينامايت 04.11.2026 مترجم', title: 'AEW Dynamite Blood & Guts 04.11.2026', programName: 'AEW Dynamite', eventDate: '2026-11-04', isShow: true });
+  for (const want of ['بلود اند جتس', 'عرض بلود اند جتس 2026', 'بلود اند جتس مترجم']) assert.ok(f.includes(want), want);
+  const plain = showNameForms({ headline: 'عرض داينامايت 11.11.2026 مترجم', title: 'AEW Dynamite 11.11.2026', programName: 'AEW Dynamite', eventDate: '2026-11-11', isShow: true });
+  assert.ok(!plain.some((x: string) => x.includes('بلود')));
+});
