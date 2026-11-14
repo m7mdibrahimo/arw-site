@@ -5104,7 +5104,9 @@ test("a one-off program's library page title leads with the year, as visitors se
   const tpl = readFileSync(new URL("../pages/library-program.njk", import.meta.url), "utf8");
   // Still holds after INCIDENTS #862: the year stays right after the name, but the title is the collection's
   // («عروض … المترجمة (عرض واحد)»), never the newest episode's own title again.
-  assert.match(tpl, /lp\.prog\.count < 4 and \(lp\.prog\.latest\.eventDate \| yearOf\) and lp\.prog\.arLibTitle\s*%\}\{\{ \(lp\.prog\.arHeadTitle or lp\.prog\.arLibTitle\) \| replace\(' مترجمة', ''\) \}\} \{\{ lp\.prog\.latest\.eventDate \| yearOf \}\} المترجمة \(/);
+  // INCIDENTS #1289: when the newest show has its own page the dated search («عرض كراون جول 2026») is that page's, so the
+  // section's title drops the year (the two pages split it 9.9 vs 8.5); without a show page the year stays.
+  assert.match(tpl, /lp\.prog\.count < 4 and \(lp\.prog\.latest\.eventDate \| yearOf\) and lp\.prog\.arLibTitle\s*%\}\{\{ \(lp\.prog\.arHeadTitle or lp\.prog\.arLibTitle\) \| replace\(' مترجمة', ''\) \}\}\{% if not lp\.prog\.latest\.url %\} \{\{ lp\.prog\.latest\.eventDate \| yearOf \}\}\{% endif %\} المترجمة \(/);
 });
 
 test('weekly shows carry the generic «عروض المصارعة الحرة مترجم» in their structured-data names (INCIDENTS #550)', async () => {

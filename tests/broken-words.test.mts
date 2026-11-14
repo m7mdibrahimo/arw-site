@@ -1101,3 +1101,13 @@ test("INCIDENTS #1287: object case after «خاض», «تفاجؤ», Xia Brooksi
   assert.ok(!checkArticle("قرب انتهاء عقد كسيا بروكسايد مع اتحاد TNA والاتحاد يقدم لها عرضا جديدا", body, []).some(i => i.code === "unnamed_person_title"));
   assert.ok(!checkArticle("فينس روسو يحدد شروط الانضمام إلى شركة مصارعة أخرى", body, []).some(i => i.code === "unnamed_person_title"));
 });
+
+// INCIDENTS #1289: «باكساي» (glossary: باكوساي), «حزام البطول», «وسقط بجارجانو بحركة Stunner», «اللاتي استجوبن قراره».
+test("INCIDENTS #1289: Bakusai spelling, «البطول», «أسقط X بحركة» and «استجوبن»", () => {
+  assert.equal(applyCorrections("هاجم فريق وار رايدرز فريق باكساي"), "هاجم فريق وار رايدرز فريق باكوساي");
+  assert.equal(applyCorrections("يريد حزام البطول لنفسه"), "يريد حزام البطولة لنفسه");
+  assert.equal(applyCorrections("حزام البطولة"), "حزام البطولة");
+  assert.equal(applyCorrections("لكن أوينز رد وسقط بجارجانو بحركة Stunner"), "لكن أوينز رد وأسقط جارجانو بحركة Stunner");
+  assert.equal(applyCorrections("سقط بقوة على الأرض"), "سقط بقوة على الأرض");
+  assert.equal(applyCorrections("اللاتي استجوبن قراره"), "اللاتي سألن عن قراره");
+});
