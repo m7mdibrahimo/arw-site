@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/sami-zayn-retains-undisputed-wwe-championship-against-trick-williams-controversial-finish-smackdown/": {
-    "matchedFile": "20261031000000-نتائج-عرض-wwe-smackdown-30-أكتوبر-2026-تغطية-مباشرة-وتحديثات-مستمرة.md",
-    "reason": "الخبر الجديد يغطي نفس نتيجة نزال بطولة WWE بلا منازع التي تم ذكرها بالفعل في تقرير نتائج عرض SmackDown بتاريخ 30 أكتوبر 2026.",
-    "at": "2026-10-31T02:06:16.333Z"
-  },
   "https://www.wrestlinginc.com/2303189/wwe-smackdown-rey-fenix-defeats-ricky-saints-aaa-cruiserweight-title/": {
     "matchedFile": "20261031000000-نتائج-عرض-wwe-smackdown-30-أكتوبر-2026-تغطية-مباشرة-وتحديثات-مستمرة.md",
     "reason": "الخبر الجديد هو تقرير مفصل لنزال ري فينيكس وريكي سينتس في عرض SmackDown الذي تم نشر نتائجه الكاملة من قبل في الخبر رقم [0] بما في ذلك نفس النزال ونفس النتيجة.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261115011245-توني-خان-يعلن-عن-تغييرات-في-اللحظات-الأخيرة-لحدث-aew-full-gear-tailgate-brawl.md",
     "reason": "الخبر الجديد يعيد سرد نفس أزمة الطيران وتأثيرها على عرض AEW Full Gear وتصريحات توني خان التي تم تغطيتها بالفعل في الخبر رقم 0، مع إضافة تفاصيل عامة عن اتحادات أخرى لا تشكل تطوراً جوهرياً للحدث الرئيسي.",
     "at": "2026-11-14T22:36:15.857Z"
+  },
+  "https://www.ringsidenews.com/tony-khan-announces-aew-continental-classic-selection-special-during-nfl-halftime/": {
+    "matchedFile": "20261115011929-اتحاد-aew-يكشف-عن-المشاركين-في-بطولة-continental-classic-خلال-استراحة-عرض-monday-night-football.md",
+    "reason": "الخبر الجديد يغطي نفس الإعلان الخاص ببطولة Continental Classic وتفاصيل المشاركين وموعد الإعلان، وهي تفاصيل سبق ذكرها في الخبر رقم 1.",
+    "at": "2026-11-14T22:43:02.815Z"
   }
 }
