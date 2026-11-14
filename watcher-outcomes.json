@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-smackdown-results-highlights-key-moments-november-13-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-14T00:33:06.421Z"
+ },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-11-13-2026-john-cena-appears-tiffany-stratton-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-04T00:11:47.834Z"
- },
- "https://www.ringsidenews.com/sunil-singh-cleared-ring-return-suffering-collapsed-lung": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-03T22:50:35.038Z"
  }
 }
