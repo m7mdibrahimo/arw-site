@@ -36,3 +36,19 @@ test("the patched Eleventy wrapper fails when the build is killed (an old patch 
   spawnSync(process.execPath, ["scripts/patch-eleventy.js", file]);
   assert.equal(fs.readFileSync(file, "utf8"), patched);
 });
+
+// INCIDENTS #1301: the build crossed the 6 GB heap and every build died. A wrapper patched with the old heap (a cached
+// node_modules) gets the new one, once.
+test("a wrapper patched with a 6 GB heap is re-patched to 7 GB", () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "patch-11ty-"));
+  const file = path.join(dir, "cmd.cjs");
+  fs.writeFileSync(file, OLD);
+  spawnSync(process.execPath, ["scripts/patch-eleventy.js", file]);
+  const at7 = fs.readFileSync(file, "utf8");
+  fs.writeFileSync(file, at7.replace("--max-old-space-size=7168", "--max-old-space-size=6144"));
+  spawnSync(process.execPath, ["scripts/patch-eleventy.js", file]);
+  const again = fs.readFileSync(file, "utf8");
+  assert.equal(again, at7);
+  assert.ok(again.includes("--max-old-space-size=7168"));
+  assert.equal((again.match(/INCREASED_STACK !== "1"/g) || []).length, 1);
+});
