@@ -1,5 +1,15 @@
 [
   {
+    "id": 338955,
+    "link": "https://www.fightful.com/wrestling/charlotte-flair-set-for-john-cena-classic/",
+    "date": "2026-11-13T20:21:48",
+    "date_gmt": "2026-11-14T01:21:48",
+    "title": {
+      "rendered": "Charlotte Flair Set For John Cena Classic"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/13201924/HXDEcrwasAA9jA6.jpg"
+  },
+  {
     "id": 338815,
     "link": "https://www.fightful.com/wrestling/wwe-smackdown-results-11-13-2026-john-cena-appears-tiffany-stratton-more/",
     "date": "2026-11-13T19:15:00",
@@ -288,15 +298,5 @@
       "rendered": "AEW Collision (11/7) Viewership Increases From Halloween Night"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/03/04215146/01-aew-collision-new-logo-2024-696x421-1.jpg"
-  },
-  {
-    "id": 338840,
-    "link": "https://www.fightful.com/wrestling/joe-coffey-re-signs-with-mlw/",
-    "date": "2026-11-13T09:16:40",
-    "date_gmt": "2026-11-13T14:16:40",
-    "title": {
-      "rendered": "Joe Coffey Re-Signs With MLW"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/13091622/joe-coffey-mlw.jpg.webp"
   }
 ]
