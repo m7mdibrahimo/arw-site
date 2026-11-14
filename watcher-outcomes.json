@@ -49,11 +49,6 @@
   "retry": true,
   "at": "2026-11-14T15:57:56.632Z"
  },
- "https://www.wrestlinginc.com/2312412/aew-bishop-kaun-reflects-carrying-trios-titles-historic-venue": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: PROGRESS Tag Team Championships، اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: AAA Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kofi Kingston",
-  "retry": true,
-  "at": "2026-11-14T15:56:56.944Z"
- },
  "https://www.fightful.com/wrestling/finn-balor-vs-gunther-added-to-11-13-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
