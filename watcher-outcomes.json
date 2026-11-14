@@ -1,4 +1,39 @@
 {
+ "https://www.fightful.com/wrestling/tko-chief-administrative-officer-senior-counsel-says-he-will-be-transitioning-out": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T18:59:46.098Z"
+ },
+ "https://www.fightful.com/wrestling/aew-full-gear-results-11-14-2026-will-ospreay-vs-kyle-fletcher-texas-death-anarchy-in-the-arena-mercedes-mone-more": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-14T18:59:45.722Z"
+ },
+ "https://www.fightful.com/wrestling/4th-rope-x-mass-appeal-present-heelmatic-results-11-12": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T18:59:45.342Z"
+ },
+ "https://www.fightful.com/wrestling/aaa-on-fox-start-time-how-to-watch-location-11-14": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T18:59:45.048Z"
+ },
+ "https://www.fightful.com/wrestling/aew-full-gear-2026-preview-start-time-how-to-watch-location-11-14": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T18:59:44.540Z"
+ },
+ "https://www.fightful.com/wrestling/stephanie-vaquer-returns-on-11-13-wwe-smackdown": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T18:59:43.967Z"
+ },
+ "https://www.fightful.com/wrestling/faa-lifts-nationwide-ground-stop-on-flights": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T18:59:43.741Z"
+ },
  "https://www.ringsidenews.com/bobby-lashley-pushes-back-against-age-concerns-about-his-wrestling-future": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -8,51 +43,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-14T18:56:09.643Z"
- },
- "https://www.ringsidenews.com/jimmy-wang-yang-krissy-vaine-launch-adult-content-platform-together": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، فعل مثنى («يطلقان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، فعل مثنى («يقدمانه») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-14T18:54:58.498Z"
- },
- "https://www.ringsidenews.com/d-von-dudley-admits-he-hated-his-wwe-producer-job-nearly-two-years": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-14T18:54:39.545Z"
- },
- "https://www.fightful.com/wrestling/tko-chief-administrative-officer-senior-counsel-says-he-will-be-transitioning-out": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T18:56:36.125Z"
- },
- "https://www.fightful.com/wrestling/aew-full-gear-results-11-14-2026-will-ospreay-vs-kyle-fletcher-texas-death-anarchy-in-the-arena-mercedes-mone-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-14T18:56:35.769Z"
- },
- "https://www.fightful.com/wrestling/4th-rope-x-mass-appeal-present-heelmatic-results-11-12": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T18:56:35.421Z"
- },
- "https://www.fightful.com/wrestling/aaa-on-fox-start-time-how-to-watch-location-11-14": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T18:56:35.140Z"
- },
- "https://www.fightful.com/wrestling/aew-full-gear-2026-preview-start-time-how-to-watch-location-11-14": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T18:56:34.655Z"
- },
- "https://www.fightful.com/wrestling/stephanie-vaquer-returns-on-11-13-wwe-smackdown": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T18:56:34.096Z"
- },
- "https://www.fightful.com/wrestling/faa-lifts-nationwide-ground-stop-on-flights": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T18:56:33.878Z"
  },
  "https://www.wrestlinginc.com/2316897/big-boom-aj-big-justice-aew-full-gear-2026": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى («يتمرنان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
