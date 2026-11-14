@@ -283,3 +283,38 @@ test('the bell says «ظهر على الموقع» for a new show the fast lane 
   assert.equal(inFastLane(pages, { type: 'create', collection: 'shows', slug: 'other', commit: A, at }), false);
   assert.match(src, /const pages = await fastLanePages\(\); for \(const n of still\.filter\(n => inFastLane\(pages, n\)\)\) markLive\(n\.commit\);/);
 });
+
+test('the fast render\'s tag index gives exactly Eleventy\'s own collections (same items, same order, new arrays)', async () => {
+  const src = 'node_modules/@11ty/eleventy/src/';
+  const TemplateCollection = (await import(`../${src}TemplateCollection.js`)).default;
+  const TemplateData = (await import(`../${src}Data/TemplateData.js`)).default;
+  const TemplateMap = (await import(`../${src}TemplateMap.js`)).default;
+  const { TemplatePath } = await import('@11ty/eleventy-utils');
+  class Fast extends TemplateCollection {}
+  render.speedUpTags(Fast, TemplateData);
+  const plain = new TemplateCollection(), fast = new Fast();
+  const tags = ['WWE', 'AEW', 'RAW', 'TNA', 'رو'];
+  for (let i = 0; i < 300; i++) {
+    const t = [tags[i % 5], tags[(i * 7) % 5], i % 11 === 0 ? 'WWE,AEW' : tags[(i * 3) % 5]];
+    const item = { inputPath: `./content/news/${(i * 37) % 300}.md`, date: new Date(Date.UTC(2026, 10, 1 + (i % 9))), data: { tags: i % 13 === 0 ? 'WWE' : t, eleventyExcludeFromCollections: i % 17 === 0 ? ['RAW'] : undefined } };
+    plain.add(item); fast.add(item);
+  }
+  for (const tag of [...tags, 'WWE,AEW', 'none', '', undefined]) {
+    const a = plain.getFilteredByTag(tag as any), b = fast.getFilteredByTag(tag as any);
+    assert.deepEqual(b.map((x: any) => x.inputPath), a.map((x: any) => x.inputPath), String(tag));
+    assert.notEqual(b, fast.getFilteredByTag(tag as any), 'a new array each time');
+  }
+  assert.deepEqual(fast.getAllSorted().map((x: any) => x.inputPath), plain.getAllSorted().map((x: any) => x.inputPath));
+  // an item added later is in the next answer
+  const late = { inputPath: './content/news/late.md', date: new Date(Date.UTC(2026, 10, 5)), data: { tags: ['AEW'] } };
+  plain.add(late); fast.add(late);
+  assert.deepEqual(fast.getFilteredByTag('AEW').map((x: any) => x.inputPath), plain.getFilteredByTag('AEW').map((x: any) => x.inputPath));
+  // the map lookup: the first entry with that path, relative or absolute
+  class FastMap extends TemplateMap {}
+  render.speedUpLookup(FastMap, TemplatePath);
+  const m: any = Object.create(FastMap.prototype), p: any = Object.create(TemplateMap.prototype);
+  m.map = p.map = [{ inputPath: './a.md', n: 1 }, { inputPath: TemplatePath.absolutePath('./b.md'), n: 2 }, { inputPath: './b.md', n: 3 }, { inputPath: './a.md', n: 4 }];
+  for (const k of ['./a.md', './b.md', TemplatePath.absolutePath('./a.md'), './c.md']) assert.equal(m.getMapEntryForInputPath(k)?.n, p.getMapEntryForInputPath(k)?.n, k);
+  m.map.push({ inputPath: './c.md', n: 5 });
+  assert.equal(m.getMapEntryForInputPath('./c.md')?.n, 5);
+});
