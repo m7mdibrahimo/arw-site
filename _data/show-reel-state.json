@@ -5230,7 +5230,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261114070445-wwe-smackdown-13-11-2026": {
     "publishedAt": 1794633734469,
