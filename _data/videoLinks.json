@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-14T10:51:55.317Z",
+ "checkedAt": "2026-11-14T11:25:40.541Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
@@ -4923,12 +4923,11 @@
   },
   "https://hgcloud.to/e/8x36eehbw4kh": {
    "page": "https://arab-wrestling.com/nostalgia/aew-dynamite-11-08-2021/",
-   "status": "broken",
-   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
-   "strikes": 2,
-   "checked": "2026-11-14T10:30:35.133Z",
-   "since": "2026-10-21T12:14:02.844Z",
-   "lastOk": "2026-10-21T00:18:18.443Z"
+   "status": "ok",
+   "reason": "the video plays (after the player's first source failed)",
+   "strikes": 0,
+   "checked": "2026-11-14T11:24:46.173Z",
+   "lastOk": "2026-11-14T11:24:46.173Z"
   },
   "https://fembed.co/embed/4iMyOF_nFR-XN": {
    "page": "https://arab-wrestling.com/nostalgia/aew-rampage-13-08-2021/",
@@ -4951,39 +4950,39 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z"
+   "checked": "2026-11-14T11:24:46.173Z"
   },
   "https://uqload.vc/embed-whnn5yy9om17.html": {
    "page": "https://arab-wrestling.com/nostalgia/aew-dynamite-11-08-2021/",
    "status": "ok",
-   "reason": "the video plays",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z",
-   "lastOk": "2026-11-14T10:30:35.133Z"
+   "checked": "2026-11-14T11:24:46.173Z",
+   "lastOk": "2026-11-14T11:24:46.173Z"
   },
   "https://vidmoly.org/embed-djfnwf6ecp3u.html": {
    "page": "https://arab-wrestling.com/nostalgia/aew-dynamite-11-08-2021/",
    "status": "ok",
-   "reason": "the video plays",
+   "reason": "the stream comes back when fetched directly (the browser check missed it)",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z",
-   "lastOk": "2026-11-14T10:30:35.133Z"
+   "checked": "2026-11-14T11:24:46.173Z",
+   "lastOk": "2026-11-14T11:24:46.173Z"
   },
   "https://vidtube.one/embed-3easo1ea5uk9.html": {
    "page": "https://arab-wrestling.com/nostalgia/aew-dynamite-11-08-2021/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z",
-   "lastOk": "2026-11-14T10:30:35.133Z"
+   "checked": "2026-11-14T11:24:46.173Z",
+   "lastOk": "2026-11-14T11:24:46.173Z"
   },
   "https://fembed.co/embed/4-rM_aVdhba18": {
    "page": "https://arab-wrestling.com/nostalgia/aew-dynamite-11-08-2021/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z",
-   "lastOk": "2026-11-14T10:30:35.133Z"
+   "checked": "2026-11-14T11:24:46.173Z",
+   "lastOk": "2026-11-14T11:24:46.173Z"
   },
   "https://vidtube.one/embed-vrq6zrd4avli.html": {
    "page": "https://arab-wrestling.com/nostalgia/aew-all-out-2021/",
@@ -5365,94 +5364,94 @@
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z",
-   "lastOk": "2026-11-14T10:30:35.133Z"
+   "checked": "2026-11-14T11:23:51.795Z",
+   "lastOk": "2026-11-14T11:23:51.795Z"
   },
   "https://hgcloud.to/e/36exbd0j0w1l": {
    "page": "https://arab-wrestling.com/shows/revpro-cmll-fantastica-mania-uk-2026-show-1/",
-   "status": "broken",
-   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
-   "strikes": 2,
-   "checked": "2026-11-14T10:30:35.133Z",
-   "since": "2026-10-18T05:00:17.849Z"
+   "status": "ok",
+   "reason": "the video plays (after the player's first source failed)",
+   "strikes": 0,
+   "checked": "2026-11-14T11:23:51.795Z",
+   "lastOk": "2026-11-14T11:23:51.795Z"
   },
   "https://vidmoly.org/embed-o5hces9oxyck.html": {
    "page": "https://arab-wrestling.com/shows/revpro-cmll-fantastica-mania-uk-2026-show-1/",
    "status": "ok",
-   "reason": "the video plays",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z",
-   "lastOk": "2026-11-14T10:30:35.133Z"
+   "checked": "2026-11-14T11:23:51.795Z",
+   "lastOk": "2026-11-14T11:23:51.795Z"
   },
   "https://ok.ru/videoembed/17693452995168": {
    "page": "https://arab-wrestling.com/shows/revpro-cmll-fantastica-mania-uk-2026-show-1/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z"
+   "checked": "2026-11-14T11:23:51.795Z"
   },
   "https://fembed.co/embed/0_yNHW-g5KM0W": {
    "page": "https://arab-wrestling.com/shows/revpro-cmll-fantastica-mania-uk-2026-show-1/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z",
-   "lastOk": "2026-11-14T10:30:35.133Z"
+   "checked": "2026-11-14T11:23:51.795Z",
+   "lastOk": "2026-11-14T11:23:51.795Z"
   },
   "https://uqload.vc/embed-reprb0ssxepg.html": {
    "page": "https://arab-wrestling.com/shows/revpro-cmll-fantastica-mania-uk-2026-show-1/",
-   "status": "ok",
-   "reason": "the video plays",
+   "status": "unknown",
+   "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z",
+   "checked": "2026-11-14T11:23:51.795Z",
    "lastOk": "2026-11-14T10:30:35.133Z"
   },
   "https://vidtube.one/embed-54w7czyl7fxi.html": {
    "page": "https://arab-wrestling.com/shows/revpro-cmll-fantastica-mania-uk-2026-show-2/",
    "status": "ok",
-   "reason": "the video plays",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z",
-   "lastOk": "2026-11-14T10:30:35.133Z"
+   "checked": "2026-11-14T11:25:40.541Z",
+   "lastOk": "2026-11-14T11:25:40.541Z"
   },
   "https://vidmoly.org/embed-s0caf3ydzzji.html": {
    "page": "https://arab-wrestling.com/shows/revpro-cmll-fantastica-mania-uk-2026-show-2/",
    "status": "ok",
-   "reason": "the stream comes back when fetched directly (the browser check missed it)",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z",
-   "lastOk": "2026-11-14T10:30:35.133Z"
+   "checked": "2026-11-14T11:25:40.541Z",
+   "lastOk": "2026-11-14T11:25:40.541Z"
   },
   "https://ok.ru/videoembed/17693453060704": {
    "page": "https://arab-wrestling.com/shows/revpro-cmll-fantastica-mania-uk-2026-show-2/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z"
+   "checked": "2026-11-14T11:25:40.541Z"
   },
   "https://hgcloud.to/e/b20d2pvuh02d": {
    "page": "https://arab-wrestling.com/shows/revpro-cmll-fantastica-mania-uk-2026-show-2/",
-   "status": "broken",
-   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
-   "strikes": 2,
-   "checked": "2026-11-14T10:30:35.133Z",
-   "since": "2026-10-18T05:55:05.501Z"
+   "status": "ok",
+   "reason": "the stream arrives (after the player's first source failed)",
+   "strikes": 0,
+   "checked": "2026-11-14T11:25:40.541Z",
+   "lastOk": "2026-11-14T11:25:40.541Z"
   },
   "https://fembed.co/embed/P-gOCN_NV1atw": {
    "page": "https://arab-wrestling.com/shows/revpro-cmll-fantastica-mania-uk-2026-show-2/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z",
-   "lastOk": "2026-11-14T10:30:35.133Z"
+   "checked": "2026-11-14T11:25:40.541Z",
+   "lastOk": "2026-11-14T11:25:40.541Z"
   },
   "https://uqload.vc/embed-unkphrdq4p4p.html": {
    "page": "https://arab-wrestling.com/shows/revpro-cmll-fantastica-mania-uk-2026-show-2/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z",
-   "lastOk": "2026-11-14T10:30:35.133Z"
+   "checked": "2026-11-14T11:25:40.541Z",
+   "lastOk": "2026-11-14T11:25:40.541Z"
   },
   "https://vidtube.one/embed-ty6ga1weyzi5.html": {
    "page": "https://arab-wrestling.com/shows/aew-wrestledream-tailgate-brawl-2026/",
@@ -8601,11 +8600,11 @@
   },
   "https://hgcloud.to/e/0ra72mzk13ip": {
    "page": "https://arab-wrestling.com/shows/cmll-rey-del-inframundo-2026/",
-   "status": "broken",
-   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
-   "strikes": 2,
-   "checked": "2026-11-14T10:30:35.133Z",
-   "since": "2026-11-02T01:06:38.635Z"
+   "status": "ok",
+   "reason": "the video plays (after the player's first source failed)",
+   "strikes": 0,
+   "checked": "2026-11-14T11:22:46.489Z",
+   "lastOk": "2026-11-14T11:22:46.489Z"
   },
   "https://uqload.vc/embed-3ndhvifn7o7u.html": {
    "page": "https://arab-wrestling.com/shows/njpw-super-junior-tag-league-day-6-31-10-2026/",
@@ -8620,7 +8619,7 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z",
+   "checked": "2026-11-14T11:22:46.489Z",
    "lastOk": "2026-11-12T13:46:41.455Z"
   },
   "https://uqload.vc/embed-bnfsaooe634y.html": {
@@ -8628,32 +8627,32 @@
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z",
-   "lastOk": "2026-11-14T10:30:35.133Z"
+   "checked": "2026-11-14T11:22:46.489Z",
+   "lastOk": "2026-11-14T11:22:46.489Z"
   },
   "https://vidmoly.org/embed-nr9zrvxgyb20.html": {
    "page": "https://arab-wrestling.com/shows/cmll-rey-del-inframundo-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z",
-   "lastOk": "2026-11-14T10:30:35.133Z"
+   "checked": "2026-11-14T11:22:46.489Z",
+   "lastOk": "2026-11-14T11:22:46.489Z"
   },
   "https://vidtube.one/embed-g8vismm9q6wy.html": {
    "page": "https://arab-wrestling.com/shows/cmll-rey-del-inframundo-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z",
-   "lastOk": "2026-11-14T10:30:35.133Z"
+   "checked": "2026-11-14T11:22:46.489Z",
+   "lastOk": "2026-11-14T11:22:46.489Z"
   },
   "https://fembed.co/embed/HWR0-Z_cXQboc": {
    "page": "https://arab-wrestling.com/shows/cmll-rey-del-inframundo-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-14T10:30:35.133Z",
-   "lastOk": "2026-11-14T10:30:35.133Z"
+   "checked": "2026-11-14T11:22:46.489Z",
+   "lastOk": "2026-11-14T11:22:46.489Z"
   },
   "https://vidtube.one/embed-66bl78zc9v6r.html": {
    "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-27-10-2026/",
@@ -10592,49 +10591,45 @@
   },
   "https://vidtube.one/embed-ylve4ajvaxtx.html": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-13-11-2026/",
-   "status": "unknown",
-   "reason": "no stream seen",
+   "status": "ok",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-14T10:51:55.317Z",
-   "lastOk": "2026-11-14T10:30:35.133Z"
+   "checked": "2026-11-14T11:21:44.238Z",
+   "lastOk": "2026-11-14T11:21:44.238Z"
   },
   "https://hgcloud.to/e/8akxbmvbsnig": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-13-11-2026/",
-   "status": "broken",
-   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
-   "strikes": 1,
-   "checked": "2026-11-14T10:51:55.317Z",
-   "lastOk": "2026-11-14T10:21:11.126Z"
+   "status": "ok",
+   "reason": "the video plays (after the player's first source failed) (second try)",
+   "strikes": 0,
+   "checked": "2026-11-14T11:21:44.238Z",
+   "lastOk": "2026-11-14T11:21:44.238Z"
   },
   "https://ok.ru/videoembed/18094684310112": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-13-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-14T10:51:55.317Z"
+   "checked": "2026-11-14T11:21:44.238Z"
   },
   "https://vidmoly.org/embed-df1fv1azc3uj.html": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-13-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-14T10:51:55.317Z",
-   "lastOk": "2026-11-14T10:51:55.317Z"
+   "checked": "2026-11-14T11:21:44.238Z",
+   "lastOk": "2026-11-14T11:21:44.238Z"
   },
   "https://fembed.co/embed/Q_mno8BC-MWpm": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-13-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-14T10:51:55.317Z",
-   "lastOk": "2026-11-14T10:51:55.317Z"
+   "checked": "2026-11-14T11:21:44.238Z",
+   "lastOk": "2026-11-14T11:21:44.238Z"
   }
  },
  "broken": [
-  "https://hgcloud.to/e/0ra72mzk13ip",
-  "https://hgcloud.to/e/36exbd0j0w1l",
-  "https://hgcloud.to/e/8x36eehbw4kh",
-  "https://hgcloud.to/e/b20d2pvuh02d",
   "https://hgcloud.to/e/drmvd78ysjwh",
   "https://uqload.vc/embed-u1813bj0i3l0.html"
  ]

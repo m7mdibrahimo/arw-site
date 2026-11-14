@@ -47,8 +47,17 @@ export function fallbackArrived(ev: Evidence): boolean {
   return ev.mediaOk.some(seg => SEGMENT.test(seg) && !failed.has(hostOf(seg))
     && ev.mediaOk.some(m => /\.m3u8|master\.txt/i.test(m) && hostOf(m) === hostOf(seg)));
 }
-/** ok: the stream really came; broken: the player or the stream says no; unknown: can't tell (never hides anything). */
-export function classify(ev: Evidence): { status: "ok" | "broken" | "unknown"; reason: string } {
+/** StreamHG / HGCloud and its mirror domains (the same list lib/embed.cjs turns into hgcloud.to/e/<id>). */
+export const STREAMHG = /(^|\.)(hgcloud|streamhg|shgcloud|hgplayer|hgstream|hanerix)\.[a-z0-9-]+$/i;
+const isStreamHG = (url?: string) => { try { return !!url && STREAMHG.test(new URL(url).host); } catch { return false; } };
+/** ok: the stream really came; broken: the player or the stream says no; unknown: can't tell (never hides anything).
+ *  `url` is the server being played: on StreamHG, the first source's refused stream and its logged «JW Player Error
+ *  232011» are how every working file starts (it then falls back to a second stream server). On the GitHub runner
+ *  that fallback often hadn't come inside the window, so four rounds of wider windows (#1293, #1294, #1297) still
+ *  hid working hgcloud servers — SmackDown 13.11.2026 four times, and four more pages that played at once on the
+ *  owner's Mac (INCIDENTS #1298). So on StreamHG only what the player SHOWS can say broken («file deleted», «cannot
+ *  be played»); a logged error or a refused first source with nothing on screen is «still trying» = unknown. */
+export function classify(ev: Evidence, url?: string): { status: "ok" | "broken" | "unknown"; reason: string } {
   if (CHALLENGE.test(ev.frameText)) return { status: "unknown", reason: "bot check on the host" };
   if (DEAD.test(ev.frameText)) return { status: "broken", reason: `the player says: ${ev.frameText.replace(/\s+/g, " ").match(DEAD)![0]}` };
   // the video moving forward, or several pieces of video arriving, beats an error the player logged on the way:
@@ -57,6 +66,7 @@ export function classify(ev: Evidence): { status: "ok" | "broken" | "unknown"; r
   if (ev.progressed) return { status: "ok", reason: ev.playerErrors.length ? "the video plays (after the player's first source failed)" : "the video plays" };
   if (ev.playerErrors.length && (ev.mediaOk.filter(u => SEGMENT.test(u)).length >= 2 || fallbackArrived(ev))) return { status: "ok", reason: "the stream arrives (after the player's first source failed)" };
   if (PLAYER_FAIL.test(ev.frameText)) return { status: "broken", reason: `the player says: ${ev.frameText.replace(/\s+/g, " ").match(PLAYER_FAIL)![0]}` };
+  if (isStreamHG(url) && (ev.playerErrors.length || ev.mediaFail.length)) return { status: "unknown", reason: `StreamHG's first source failed and its fallback hadn't come yet (${ev.playerErrors[0] || "refused stream"})` };
   if (ev.playerErrors.length) return { status: "broken", reason: ev.playerErrors[0] };
   if (ev.mediaFail.length && !ev.mediaOk.length) return { status: "broken", reason: `the stream is refused: ${ev.mediaFail[0]}` };
   if (ev.mediaOk.length) return { status: "ok", reason: "the stream arrives" };
@@ -72,7 +82,7 @@ export function classify(ev: Evidence): { status: "ok" | "broken" | "unknown"; r
 export const RETRY_SETTLE_MS = 25000;
 
 export function worthRetry(ev: Evidence, c: { status: string }): boolean {
-  return c.status === "broken" && !DEAD.test(ev.frameText) && (ev.playerErrors.length > 0 || PLAYER_FAIL.test(ev.frameText));
+  return (c.status === "broken" || c.status === "unknown") && !DEAD.test(ev.frameText) && (ev.playerErrors.length > 0 || PLAYER_FAIL.test(ev.frameText));
 }
 
 export interface LinkState { page: string; status: string; reason: string; strikes: number; since?: string; lastOk?: string; checked: string }
@@ -290,10 +300,10 @@ async function main() {
       while (next < jobs.length) {
         const { page, url, index } = jobs[next++];
         const ev = await b.play(page, url, index).catch((e: Error) => ({ mediaOk: [], mediaFail: [], playerErrors: [], frameText: `checker error ${e.message}`, progressed: false }));
-        let c = classify(ev);
+        let c = classify(ev, url);
         if (worthRetry(ev, c)) {
           const again = await b.play(page, url, index, RETRY_SETTLE_MS).catch(() => null);
-          if (again) { const c2 = classify(again); if (c2.status !== "broken") c = { ...c2, reason: c2.reason + " (second try)" }; }
+          if (again) { const c2 = classify(again, url); if (c2.status === "ok" || (c.status === "broken" && c2.status !== "broken")) c = { ...c2, reason: c2.reason + " (second try)" }; }
         }
         if (c.status !== "ok" && await streamProof(url)) c = { status: "ok", reason: "the stream comes back when fetched directly (the browser check missed it)" };
         results.push({ url, page, ...c });
