@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/jimmy-wang-yang-krissy-vaine-launch-adult-content-platform-together": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل مثنى («يطلقان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-14T20:54:33.916Z"
+ },
  "https://www.fightful.com/wrestling/muhammad-hassan-i-dont-think-i-have-another-match-left-in-me-i-feel-like-if-i-take-more-than-one-bump-at-a-time-im-going-to-shatter": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
   "at": "2026-11-05T01:46:54.221Z"
- },
- "https://www.fightful.com/wrestling/uspto-rejects-wwes-attempts-to-trademark-rko-for-wrestling-purposes-due-to-rko-pictures-overlap": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-05T01:28:15.132Z"
  }
 }
