@@ -789,6 +789,67 @@ export function presentDualVerb(text: string): string | null {
   return null;
 }
 
+/**
+ * «ال» glued to a person's surname: «الكراوس يغادر» after «سيث كراوس» (Seth Krauss story, INCIDENTS #1303), «لعائلة الهاردي»,
+ * «فريق الليثال تويست», «عائلة التونغا». A word counts as a surname when the same text has it right after a glossary first
+ * name («سيث كراوس») and its «ال» form is rare in the published stories (an ordinary word like «الفائز»/«الرسمي» is not).
+ * The «ال» is dropped and a joined «و/ف/ب/ل» stays: «والكراوس» → «وكراوس»، «بالهاردي» → «بهاردي»، «للهاردي» → «لهاردي».
+ */
+let NAME_FIRSTS: Set<string> | null = null;
+// borrowed common nouns that rightly take «ال» («اتفاق النوستالجيا») even right after a name
+const DEFINITE_OK = new Set(["نوستالجيا", "هاردكور"]);
+let DEFINITE_COUNTS: Map<string, number> | null = null;
+function nameFirsts(): Set<string> {
+  if (NAME_FIRSTS) return NAME_FIRSTS;
+  NAME_FIRSTS = new Set();
+  try {
+    const names = JSON.parse(fs.readFileSync(path.join(process.cwd(), "scripts", "wrestler-names.json"), "utf-8")) as Record<string, string>;
+    const words = new Set<string>();
+    for (const v of Object.values(names)) for (const w of String(v).split(/\s+/)) words.add(w);
+    for (const [en, v] of Object.entries(names)) {
+      const ar = String(v).trim().split(/\s+/), e = en.trim().split(/\s+/);
+      if (ar.length < 2 || ar.length !== e.length || !/^[\u0621-\u064A]{3,}$/.test(ar[0]) || ar[0].startsWith("ال")) continue;
+      if (SHORT_NAME_PARTS.has(ar[0]) || words.has(`ال${ar[0]}`) || !/^[A-Z]/.test(e[0]) || /^(?:The|El|La|Los|Las|Team|Mr|Big|Bad|Iron)$/.test(e[0])) continue;
+      NAME_FIRSTS.add(ar[0]);
+    }
+  } catch { /* the glossary is optional here */ }
+  return NAME_FIRSTS;
+}
+function definiteCounts(): Map<string, number> {
+  if (DEFINITE_COUNTS) return DEFINITE_COUNTS;
+  DEFINITE_COUNTS = new Map();
+  const dir = path.join(process.cwd(), "content", "news");
+  let files: string[] = [];
+  try { files = fs.readdirSync(dir).filter((f) => f.endsWith(".md")); } catch { /* no stories here */ }
+  for (const f of files) {
+    let t = "";
+    try { t = fs.readFileSync(path.join(dir, f), "utf-8"); } catch { continue; }
+    for (const m of t.matchAll(/(?<![\u0621-\u064A])ال([\u0621-\u064A]{3,})/g)) DEFINITE_COUNTS.set(m[1], (DEFINITE_COUNTS.get(m[1]) || 0) + 1);
+  }
+  return DEFINITE_COUNTS;
+}
+/** The surnames in `text` written with «ال» («الكراوس»), or [] — see above. */
+export function definiteSurnames(text: string): string[] {
+  const firsts = nameFirsts();
+  if (!firsts.size || !text) return [];
+  const plain = String(text).replace(/https?:\/\/\S+/g, " ");
+  const found: string[] = [];
+  for (const m of plain.matchAll(/(?<![\u0621-\u064A])([\u0621-\u064A]{3,}) ([\u0621-\u064A]{4,})(?![\u0621-\u064A])/g)) {
+    const x = m[2];
+    if (!firsts.has(m[1]) || x.startsWith("ال") || found.includes(x) || DEFINITE_OK.has(x)) continue;
+    if (!new RegExp(`(?<![\\u0621-\\u064A])(?:[وفبك]|وب|فب)?(?:ال|لل)${x}(?![\\u0621-\\u064A])`).test(plain)) continue;
+    if ((definiteCounts().get(x) || 0) > 2) continue;
+    found.push(x);
+  }
+  return found;
+}
+export function fixDefiniteSurnames(text: string): string {
+  for (const x of definiteSurnames(text)) {
+    text = text.replace(new RegExp(`(?<![\\u0621-\\u064A])([وفبك]|وب|فب)?(ال|لل)${x}(?![\\u0621-\\u064A])`, "g"), (_m, pre = "", art: string) => `${pre}${art === "لل" ? "ل" : ""}${x}`);
+  }
+  return text;
+}
+
 // Known rosters (editorial/team-members.json): «<team> (A و B)» where A or B is another glossary wrestler, or the team's
 // own name, is a member list copied from the wrong line — «ذا نيو ليفل (مارك ديفيس وجيك دويل)» in the Full Gear odds
 // story, «(كوفي وأوستن غان)», «بروديدو (بروديدو)» (INCIDENTS #1250).
@@ -1977,6 +2038,7 @@ export function autoFix(text: string): string {
   text = dropFillerOpeners(text);
   text = dropLinkPointerSentences(text);
   text = fixHalfEnglishNames(fixTripledLetters(text));
+  text = fixDefiniteSurnames(text);
   // «عرض» is masculine: «في عرض SmackDown الأخيرة» went live in 28 stories (INCIDENTS #621) — the adjective agrees with it
   text = text.replace(/(عرض\s+(?:[A-Za-z0-9'’!.&*-]+\s+){0,5}[A-Za-z0-9'’!.&*-]+\s+)(الأخير|الاخير|القادم|الماضي)ة(?![\u0621-\u064A])/g, "$1$2");
   // «103.7 درجات» — a decimal count takes the singular «درجة» (Alexa Bliss story, INCIDENTS #1279)

@@ -1600,7 +1600,12 @@ module.exports = function(eleventyConfig) {
         // while the aliases only had «مترجم»/«الاخير» forms. Added for every program (head/structured data only).
         const askName = /[\u0600-\u06FF]/.test(searchArName) ? (/^عرض\s/.test(searchArName) ? searchArName : "عرض " + searchArName) : "";
         const asked = askName ? ["تحميل " + askName, "مشاهدة " + askName, "اخر " + askName, "تحميل " + askName + " مترجم", askName + " مترجم", askName + " الاخير", askName + " الاخير مترجم", "مشاهدة " + askName + " مترجم"] : [];
-        const withGenerated = baseAliases.concat(tildeFree.concat(generated, asked).filter(function(g, i, a) { return baseAliases.indexOf(g) === -1 && a.indexOf(g) === i; }));
+        // «G» written «غ» in the program's Arabic name is searched with «ج» too, the Egyptian way: «مارتيس دي جلامور»,
+        // «بلود آند جتس» (CMLL Martes De Glamour 10.11, round 2026-11-14, INCIDENTS #1303). Two names, structured data only.
+        const jimSaid = /غ/.test(programSaid) && /[\u0600-\u06FF]/.test(programSaid) ? programSaid.replace(/غ/g, "ج") : "";
+        const jimBare = jimSaid.replace(/^(?:(?:ان|إن|جيه|جي|بي|دبليو|اي|إي|ايه|إيه|تي|اتش|إتش|ار|آر|او|أو|ام|إم|ال|إل|سي|اس|إس|اكس|إكس)\s+){2,}/, "");
+        const jim = jimSaid ? [jimSaid, "عرض " + jimSaid].concat(jimBare !== jimSaid && /[\u0600-\u06FF]{3}/.test(jimBare) ? [jimBare] : []) : [];
+        const withGenerated = baseAliases.concat(tildeFree.concat(generated, asked, jim).filter(function(g, i, a) { return baseAliases.indexOf(g) === -1 && a.indexOf(g) === i; }));
         return { slug: p.slug, name: p.name, aliases: withGenerated, arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arSearchName: /[\u0600-\u06FF]/.test(searchArName) ? searchArName : "", arLibTitle: arLibTitle, arHeadTitle: arHeadTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded,
           promo: (function(x) { return { key: x.key, mark: x.mark, name: x.name, h: x.h, s: x.s, custom: !!x.custom }; })(libraryPromotionOf({
             name: p.name, federation: federation,
