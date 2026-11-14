@@ -1,4 +1,44 @@
 {
+ "https://www.fightful.com/wrestling/4th-rope-x-mass-appeal-present-heelmatic-results-11-12": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T17:10:02.623Z"
+ },
+ "https://www.fightful.com/wrestling/aaa-on-fox-start-time-how-to-watch-location-11-14": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T17:10:02.268Z"
+ },
+ "https://www.fightful.com/wrestling/aew-full-gear-2026-preview-start-time-how-to-watch-location-11-14": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T17:10:01.653Z"
+ },
+ "https://www.fightful.com/wrestling/stephanie-vaquer-returns-on-11-13-wwe-smackdown": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T17:10:00.949Z"
+ },
+ "https://www.fightful.com/wrestling/faa-lifts-nationwide-ground-stop-on-flights": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T17:10:00.679Z"
+ },
+ "https://www.fightful.com/wrestling/tna-contract-of-xia-brookside-expires-at-the-end-of-the-year": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T17:10:00.227Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-smackdown-results-11-13-2026-john-cena-appears-tiffany-stratton-more": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T17:09:59.858Z"
+ },
+ "https://www.fightful.com/wrestling/brie-bella-is-hoping-to-resume-in-ring-training-in-january": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T17:09:59.507Z"
+ },
  "https://www.wrestlinginc.com/2314384/lance-storm-wwe-john-cena-classic-undermines-fundamental-principle-pro-wrestling": {
   "reason": "المراجعة رفضته: فعل مثنى («يقوضان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
@@ -8,46 +48,6 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: ROH World Trios Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Trios Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Trios Championships",
   "retry": true,
   "at": "2026-11-14T17:07:13.929Z"
- },
- "https://www.fightful.com/wrestling/4th-rope-x-mass-appeal-present-heelmatic-results-11-12": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T17:07:01.965Z"
- },
- "https://www.fightful.com/wrestling/aaa-on-fox-start-time-how-to-watch-location-11-14": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T17:07:01.684Z"
- },
- "https://www.fightful.com/wrestling/aew-full-gear-2026-preview-start-time-how-to-watch-location-11-14": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T17:07:01.193Z"
- },
- "https://www.fightful.com/wrestling/stephanie-vaquer-returns-on-11-13-wwe-smackdown": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T17:07:00.636Z"
- },
- "https://www.fightful.com/wrestling/faa-lifts-nationwide-ground-stop-on-flights": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T17:07:00.423Z"
- },
- "https://www.fightful.com/wrestling/tna-contract-of-xia-brookside-expires-at-the-end-of-the-year": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T17:07:00.063Z"
- },
- "https://www.fightful.com/wrestling/wwe-smackdown-results-11-13-2026-john-cena-appears-tiffany-stratton-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T17:06:59.767Z"
- },
- "https://www.fightful.com/wrestling/brie-bella-is-hoping-to-resume-in-ring-training-in-january": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T17:06:59.488Z"
  },
  "https://www.fightful.com/wrestling/chavo-guerrero-recalls-a-time-when-wrestling-promotions-didnt-want-to-deal-with-agents-it-was-almost-very-shunned-upon": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Mojo Brookzz",
