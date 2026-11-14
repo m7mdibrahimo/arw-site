@@ -56,6 +56,18 @@ export function siteHandoffLag(buildCommit: string, siteMessage: string, siteAtM
   return lag > maxMs ? lag : 0;
 }
 
+/** Cloudflare FAILS every build while the bots keep moving «site» every few minutes: siteHandoffLag counts from the
+ *  newest «site» commit, so the wait never reached 40 minutes and /health stayed empty while the site sat 50+ minutes on
+ *  one version (every build out of memory, INCIDENTS #1301). Measured instead between the main commit the newest «site»
+ *  carries («site-of: <sha> <time>») and the live build's: when that build failed and the gap is over maxMs, it is
+ *  the lag. 0 otherwise (a build still running, a success, or a short gap). */
+export function failingSiteLag(siteMessage: string, liveCommitTimeSec: number, staticConclusion: string, maxMs = 30 * 60_000): number {
+  const t = Number(/site-of: [0-9a-f]{40} (\d+)/.exec(String(siteMessage || ""))?.[1]) || 0;
+  if (!t || !liveCommitTimeSec || staticConclusion !== "failure") return 0;
+  const lag = (t - liveCommitTimeSec) * 1000;
+  return lag > maxMs ? lag : 0;
+}
+
 /** Cloudflare never even started a build of the newest «site» commit: GitHub lost the push webhook to Cloudflare
  *  (GitHub's Webhooks incident, 2026-11-11 20:22 UTC: two «site» commits got no build and no check run at all, and
  *  the site stayed 70 minutes on an older version — the monitor round's fixes among the waiting changes). site-branch.yml
@@ -239,6 +251,18 @@ export async function runSiteHealthCheck(env: HealthEnv, minute: number, keyOf: 
         }).then(r => (r.ok ? r.json() : null)).catch(() => null);
         const handoff = siteHandoffLag(String(build.commit), String(site?.commit?.message || ""), Date.parse(site?.commit?.committer?.date || ""), now);
         if (handoff !== null) lag = handoff;
+      }
+      if (!lag && build?.commit) {
+        const site: any = await fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/commits/site`, {
+          headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json", "User-Agent": "arw-site-bot" },
+        }).then(r => (r.ok ? r.json() : null)).catch(() => null);
+        if (site?.sha && /site-of: /.test(String(site?.commit?.message || ""))) {
+          const runs: any = await fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/commits/${site.sha}/check-runs?per_page=100`, {
+            headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json", "User-Agent": "arw-site-bot" },
+          }).then(r => (r.ok ? r.json() : null)).catch(() => null);
+          const run = (Array.isArray(runs?.check_runs) ? runs.check_runs : []).find((c: any) => c?.name === "Workers Builds: arw-site-static");
+          lag = failingSiteLag(String(site.commit.message), Number(build.commitTime), String(run?.conclusion || ""));
+        }
       }
       // A «site» commit Cloudflare never heard of (lost webhook): send the same content again as a new «site» commit
       if (build?.commit) {
