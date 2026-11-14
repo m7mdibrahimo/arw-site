@@ -13,6 +13,6 @@ en_tags:
   - "AEW"
 image: /content/images/8quaz139n5vq9nai.jpg
 ---
-Val Venis showed up outside the Mortgage Matchup Center in Phoenix, Arizona, hours before AEW Full Gear on November 14 to carry out man-on-the-street interviews about political issues. Venis spoke with an 18-year-old fan about an anti-abortion sign he was carrying before another passing AEW fan flipped him off and yelled at him to leave. Venis sarcastically thanked the fan and continued with his interviews as planned, having previously announced his intention to challenge fans outside the venue.
+Val Venis showed up outside the Mortgage Matchup Center in Phoenix, Arizona, hours before AEW Full Gear on November 14 to carry out man-on-the-street interviews about political issues. Venis asked an 18-year-old fan about the anti-abortion sign Venis was carrying, and while they talked, another passing AEW fan flipped him off and yelled at him to leave. Venis sarcastically thanked the fan and continued with his interviews as planned, having announced back in October that he would be outside the venue to debate AEW fans.
 
 https://x.com/ValVenisEnt/status/2121714810564047032

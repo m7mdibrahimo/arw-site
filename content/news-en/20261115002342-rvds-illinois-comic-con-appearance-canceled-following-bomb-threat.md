@@ -14,7 +14,7 @@ en_tags:
   - "Peoria"
 image: /content/images/7kvobvcoluolu2mz.jpg
 ---
-Rob Van Dam’s scheduled appearance at Illinois Comic Con on Saturday was called off after his flight was disrupted and the entire convention in Peoria was canceled due to a bomb threat. RVD initially blamed FAA travel issues for his travel troubles before learning that the event at the Peoria Civic Center had been shut down by authorities. Comic Con organizers confirmed the cancellation for Saturday, while Sunday’s portion of the event remains uncertain depending on the ongoing search. Refunds are being offered for unused Saturday tickets, with options to transfer them to Sunday if the venue reopens.
+Rob Van Dam’s scheduled appearance at Illinois Comic Con on Saturday was called off after his flight was disrupted and the entire convention in Peoria was canceled due to a bomb threat. RVD initially blamed the nationwide FAA problems for his disrupted flight, then learned that organizers had called off Saturday at the Peoria Civic Center because of the bomb threat. Comic Con organizers confirmed the cancellation for Saturday, while Sunday’s portion of the event remains uncertain depending on the ongoing search. Refunds are being offered for unused Saturday tickets, with options to transfer them to Sunday if the venue reopens.
 
 https://x.com/TherealRVD/status/2121663596388335739
 
