@@ -5165,7 +5165,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 10.11.2026 مترجم",
-    "lastAttempt": 1794614403266,
+    "lastAttempt": 1794615290407,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5183,9 +5183,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ايفولف 11.11.2026 مترجم",
-    "lastAttempt": 1794614413159,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1794615291457,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -5197,9 +5201,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض مين ايفنت 11.11.2026 مترجم",
-    "lastAttempt": 1794613613367,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1794615321388,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
