@@ -1,5 +1,15 @@
 [
   {
+    "id": 3706617336,
+    "link": "https://www.wrestlinginc.com/2316758/wwe-smackdown-rey-mysterio-rey-fenix-team-mexico-survivor-series/",
+    "date": "Sat, 14 Nov 2026 02:36:46 +0000",
+    "date_gmt": "2026-11-14T02:36:46.000Z",
+    "title": {
+      "rendered": "Rey Mysterio Introduces Newest Member Of Team Mexico On WWE SmackDown"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/rey-mysterio-introduces-newest-member-of-team-mexico-on-wwe-smackdown/l-intro-1794623583.jpg"
+  },
+  {
     "id": 1750249486,
     "link": "https://www.wrestlinginc.com/2316753/wwe-smackdown-fatal-influence-invitees-john-cena-classic/",
     "date": "Sat, 14 Nov 2026 02:14:03 +0000",
@@ -95,7 +105,7 @@
     "date": "Fri, 13 Nov 2026 22:00:00 +0000",
     "date_gmt": "2026-11-13T22:00:00.000Z",
     "title": {
-      "rendered": "WWE SmackDown Results 11/13/26 W/ Live Updates: Stephanie Vaquer Returns For WarGames"
+      "rendered": "WWE SmackDown Results 11/13/26 W/ Live Updates: GUNTHER Vs. Finn Balor"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-results-111326-w-live-updates/l-intro-1794539340.jpg"
   },
@@ -188,15 +198,5 @@
       "rendered": "Tony Khan Comments On Flight Issues Changing AEW Dynamite Plans, Lengthy Running Time"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/tony-khan-comments-on-flight-issues-changing-aew-dynamite-plans-lengthy-running-time/l-intro-1794591554.jpg"
-  },
-  {
-    "id": 4124726241,
-    "link": "https://www.wrestlinginc.com/2316171/aew-tony-khan-cut-addresses-quick-name-change/",
-    "date": "Fri, 13 Nov 2026 17:32:12 +0000",
-    "date_gmt": "2026-11-13T17:32:12.000Z",
-    "title": {
-      "rendered": "AEW's Tony Khan Addresses Quick Name Change For The Cut"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-tony-khan-addresses-quick-name-change-for-the-cut/l-intro-1794590768.jpg"
   }
 ]
