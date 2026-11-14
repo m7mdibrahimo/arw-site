@@ -1,5 +1,15 @@
 [
   {
+    "id": 802267699,
+    "link": "https://www.ringsidenews.com/wwe-wargames-advantage-match-november-16-raw/",
+    "date": "Sat, 14 Nov 2026 11:48:39 +0000",
+    "date_gmt": "2026-11-14T11:48:39.000Z",
+    "title": {
+      "rendered": "WWE WarGames Advantage Match for November 16 RAW"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/06/another-title-match-revealed-for-june-8-wwe-raw-in-paris-47.jpg?x54779"
+  },
+  {
     "id": 802267598,
     "link": "https://www.ringsidenews.com/stephanie-vaquer-returns-wwe-smackdown-during-massive-womens-division-brawl/",
     "date": "Sat, 14 Nov 2026 02:28:26 +0000",
@@ -138,15 +148,5 @@
       "rendered": "TNA Destination X Could Be in Serious Trouble Over Nationwide Flight Shutdown"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/tna-destination-x-could-be-in-serious-trouble-over-nationwide-flight-shutdown-43.jpg?x54779"
-  },
-  {
-    "id": 802267418,
-    "link": "https://www.ringsidenews.com/aew-wrestlers-stranded-ahead-full-gear-2026-due-nationwide-flight-shutdown/",
-    "date": "Fri, 13 Nov 2026 22:30:11 +0000",
-    "date_gmt": "2026-11-13T22:30:11.000Z",
-    "title": {
-      "rendered": "AEW Wrestlers Stranded Ahead of Full Gear 2026 Due to Nationwide Flight Shutdown"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/aew-wrestlers-stranded-ahead-of-full-gear-2026-due-to-nationwide-flight-shutdown-16.jpg?x54779"
   }
 ]
