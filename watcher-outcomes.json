@@ -1,4 +1,44 @@
 {
+ "https://www.fightful.com/wrestling/4th-rope-x-mass-appeal-present-heelmatic-results-11-12": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T16:51:19.021Z"
+ },
+ "https://www.fightful.com/wrestling/aaa-on-fox-start-time-how-to-watch-location-11-14": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T16:51:18.641Z"
+ },
+ "https://www.fightful.com/wrestling/aew-full-gear-2026-preview-start-time-how-to-watch-location-11-14": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T16:51:17.974Z"
+ },
+ "https://www.fightful.com/wrestling/stephanie-vaquer-returns-on-11-13-wwe-smackdown": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T16:51:17.224Z"
+ },
+ "https://www.fightful.com/wrestling/faa-lifts-nationwide-ground-stop-on-flights": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T16:51:16.933Z"
+ },
+ "https://www.fightful.com/wrestling/tna-contract-of-xia-brookside-expires-at-the-end-of-the-year": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T16:51:16.442Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-smackdown-results-11-13-2026-john-cena-appears-tiffany-stratton-more": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T16:51:16.039Z"
+ },
+ "https://www.fightful.com/wrestling/brie-bella-is-hoping-to-resume-in-ring-training-in-january": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-14T16:51:15.660Z"
+ },
  "https://www.ringsidenews.com/lars-sullivan-calls-brody-king-fat-antifa-dork-anti-ice-stance": {
   "reason": "المراجعة رفضته: المصدر مابيربطش المصارع بالاتحاد ده: AEW برودي كينج — اكتب «المصارع <الاسم>» من غير اسم اتحاد",
   "retry": true,
@@ -8,46 +48,6 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-14T16:47:57.595Z"
- },
- "https://www.fightful.com/wrestling/4th-rope-x-mass-appeal-present-heelmatic-results-11-12": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T16:47:49.073Z"
- },
- "https://www.fightful.com/wrestling/aaa-on-fox-start-time-how-to-watch-location-11-14": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T16:47:48.669Z"
- },
- "https://www.fightful.com/wrestling/aew-full-gear-2026-preview-start-time-how-to-watch-location-11-14": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T16:47:47.960Z"
- },
- "https://www.fightful.com/wrestling/stephanie-vaquer-returns-on-11-13-wwe-smackdown": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T16:47:47.161Z"
- },
- "https://www.fightful.com/wrestling/faa-lifts-nationwide-ground-stop-on-flights": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T16:47:46.853Z"
- },
- "https://www.fightful.com/wrestling/tna-contract-of-xia-brookside-expires-at-the-end-of-the-year": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T16:47:46.326Z"
- },
- "https://www.fightful.com/wrestling/wwe-smackdown-results-11-13-2026-john-cena-appears-tiffany-stratton-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T16:47:45.892Z"
- },
- "https://www.fightful.com/wrestling/brie-bella-is-hoping-to-resume-in-ring-training-in-january": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T16:47:45.484Z"
  },
  "https://www.fightful.com/wrestling/johnny-gargano-says-he-was-over-the-moon-when-he-found-out-about-wwe-and-disneys-partnership": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
