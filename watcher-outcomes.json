@@ -1,48 +1,48 @@
 {
- "https://www.ringsidenews.com/d-von-dudley-admits-he-hated-his-wwe-producer-job-nearly-two-years": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-14T16:05:03.436Z"
- },
  "https://www.fightful.com/wrestling/aaa-on-fox-start-time-how-to-watch-location-11-14": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T16:06:25.064Z"
+  "at": "2026-11-14T16:07:53.133Z"
  },
  "https://www.fightful.com/wrestling/aew-full-gear-2026-preview-start-time-how-to-watch-location-11-14": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T16:06:24.337Z"
+  "at": "2026-11-14T16:07:52.617Z"
  },
  "https://www.fightful.com/wrestling/stephanie-vaquer-returns-on-11-13-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T16:06:23.503Z"
+  "at": "2026-11-14T16:07:51.967Z"
  },
  "https://www.fightful.com/wrestling/faa-lifts-nationwide-ground-stop-on-flights": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T16:06:23.186Z"
+  "at": "2026-11-14T16:07:51.736Z"
  },
  "https://www.fightful.com/wrestling/tna-contract-of-xia-brookside-expires-at-the-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T16:06:22.640Z"
+  "at": "2026-11-14T16:07:51.349Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-11-13-2026-john-cena-appears-tiffany-stratton-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T16:06:22.210Z"
+  "at": "2026-11-14T16:07:51.038Z"
  },
  "https://www.fightful.com/wrestling/brie-bella-is-hoping-to-resume-in-ring-training-in-january": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T16:06:21.799Z"
+  "at": "2026-11-14T16:07:50.743Z"
  },
  "https://www.fightful.com/wrestling/clark-connors-opens-up-about-aews-the-last-outfit-changing-name-to-the-cut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T16:06:20.980Z"
+  "at": "2026-11-14T16:07:50.109Z"
+ },
+ "https://www.ringsidenews.com/d-von-dudley-admits-he-hated-his-wwe-producer-job-nearly-two-years": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-14T16:05:03.436Z"
  },
  "https://www.fightful.com/wrestling/bobby-lashley-i-hope-before-i-do-retire-i-get-an-opportunity-to-work-with-lio-rush-again": {
   "reason": "المراجعة رفضته: صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل مثنى («يتواجدان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
