@@ -20796,16 +20796,16 @@
     "renderedAt": 1794650583765
   },
   {
-    "videoUrl": "/videos/reel-20261114004554-cmll-martes-populares-10-11-20.mp4",
-    "filename": "reel-20261114004554-cmll-martes-populares-10-11-20.mp4",
-    "title": "عرض سي ام ال ال مارتيس بوبيولاريس 10.11.2026 مترجم",
-    "secondaryTitle": "CMLL Martes Populares 10.11.2026",
-    "description": "عرض سي ام ال ال مارتيس بوبيولاريس مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261114004554-cmll-martes-populares-10-11-20",
+    "videoUrl": "/videos/reel-20261114135455-cmll-martes-de-glamour-10-11-2.mp4",
+    "filename": "reel-20261114135455-cmll-martes-de-glamour-10-11-2.mp4",
+    "title": "عرض سي ام ال ال مارتيس دي غلامور 10.11.2026 مترجم",
+    "secondaryTitle": "CMLL Martes De Glamour 10.11.2026",
+    "description": "عرض سي ام ال ال مارتيس دي غلامور مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261114135455-cmll-martes-de-glamour-10-11-2",
     "kind": "show",
-    "slug": "20261114004554-cmll-martes-populares-10-11-20",
-    "image": "/content/images/tegv542yh3f8rwv0.jpg",
-    "renderedAt": 1794657450452
+    "slug": "20261114135455-cmll-martes-de-glamour-10-11-2",
+    "image": "/content/images/yag2sa7h55m69474.jpg",
+    "renderedAt": 1794657998965
   },
   {
     "videoUrl": "/videos/reel-20260930152942-cmll-lunes-clasico-28-09-2026.mp4",
@@ -20817,7 +20817,7 @@
     "kind": "show",
     "slug": "20260930152942-cmll-lunes-clasico-28-09-2026",
     "image": "/content/images/j3xjrcjkl1zmhqyu.jpg",
-    "renderedAt": 1794657531168
+    "renderedAt": 1794658087595
   },
   {
     "videoUrl": "/videos/reel-20261001001401-dark-side-of-the-cage-s02e01-0.mp4",
@@ -20829,7 +20829,7 @@
     "kind": "show",
     "slug": "20261001001401-dark-side-of-the-cage-s02e01-0",
     "image": "/content/images/r6yh0b1u0q2f3o1z.jpg",
-    "renderedAt": 1794657610804
+    "renderedAt": 1794658174567
   },
   {
     "videoUrl": "/videos/reel-20261101224259-cmll-martes-de-glamour-27-10-2.mp4",
@@ -20841,7 +20841,7 @@
     "kind": "show",
     "slug": "20261101224259-cmll-martes-de-glamour-27-10-2",
     "image": "/content/images/ds7dqjjstppzic3m.jpg",
-    "renderedAt": 1794657690181
+    "renderedAt": 1794658263237
   },
   {
     "videoUrl": "/videos/reel-20261108093956-wwe-crown-jewel-2026.mp4",
@@ -20853,6 +20853,6 @@
     "kind": "show",
     "slug": "20261108093956-wwe-crown-jewel-2026",
     "image": "/content/images/1n9f1boajnp25qxy.jpg",
-    "renderedAt": 1794657766239
+    "renderedAt": 1794658351826
   }
 ]
