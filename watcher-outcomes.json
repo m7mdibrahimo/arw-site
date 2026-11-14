@@ -1,63 +1,68 @@
 {
- "https://www.wrestlinginc.com/2316758/wwe-smackdown-rey-mysterio-rey-fenix-team-mexico-survivor-series": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+ "https://www.fightful.com/mma/gable-steveson-return-fight-set-for-ufc-336": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-14T02:49:56.286Z"
+  "at": "2026-11-14T02:54:17.332Z"
  },
  "https://www.fightful.com/wrestling/faa-lifts-nationwide-ground-stop-on-flights": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T02:50:33.556Z"
+  "at": "2026-11-14T02:53:58.644Z"
  },
  "https://www.fightful.com/wrestling/tna-contract-of-xia-brookside-expires-at-the-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T02:50:33.220Z"
+  "at": "2026-11-14T02:53:58.190Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-11-13-2026-john-cena-appears-tiffany-stratton-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-14T02:50:32.946Z"
+  "at": "2026-11-14T02:53:57.821Z"
  },
  "https://www.fightful.com/wrestling/brie-bella-is-hoping-to-resume-in-ring-training-in-january": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T02:50:32.684Z"
+  "at": "2026-11-14T02:53:57.473Z"
  },
  "https://www.fightful.com/wrestling/clark-connors-opens-up-about-aews-the-last-outfit-changing-name-to-the-cut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T02:50:32.164Z"
+  "at": "2026-11-14T02:53:56.779Z"
  },
  "https://www.fightful.com/wrestling/finn-balor-vs-gunther-added-to-11-13-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T02:50:31.889Z"
+  "at": "2026-11-14T02:53:56.412Z"
  },
  "https://www.fightful.com/mma/ufc-334-gane-vs-hokit-weigh-in-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-14T02:50:31.488Z"
+  "at": "2026-11-14T02:53:55.883Z"
  },
  "https://www.fightful.com/wrestling/marina-shafir-talks-possibility-of-ronda-rousey-returning-to-aew-joining-the-death-riders": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T02:50:31.286Z"
+  "at": "2026-11-14T02:53:55.618Z"
  },
  "https://www.fightful.com/wrestling/spike-dudley-announces-hes-signed-a-wwe-legends-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T02:50:31.081Z"
+  "at": "2026-11-14T02:53:55.350Z"
  },
  "https://www.fightful.com/wrestling/alleged-victim-in-ludwig-kaiser-battery-case-claims-he-suffered-torn-rotator-cuff-concussion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T02:50:30.863Z"
+  "at": "2026-11-14T02:53:55.056Z"
  },
  "https://www.fightful.com/wrestling/john-cena-explains-wardrobe-change-on-wwe-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-14T02:50:30.640Z"
+  "at": "2026-11-14T02:53:54.760Z"
+ },
+ "https://www.wrestlinginc.com/2316758/wwe-smackdown-rey-mysterio-rey-fenix-team-mexico-survivor-series": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-14T02:49:56.286Z"
  },
  "https://www.fightful.com/wrestling/rey-fenix-joins-team-mexico-for-wwe-survivor-series-match": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
   "retry": true,
   "at": "2026-11-04T03:50:18.795Z"
- },
- "https://www.wrestlinginc.com/2303467/xelina-zelina-veg-aleister-black-manager-wwe": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
-  "retry": true,
-  "at": "2026-11-04T03:03:16.583Z"
  }
 }

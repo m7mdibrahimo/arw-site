@@ -1,5 +1,25 @@
 [
   {
+    "id": 338975,
+    "link": "https://www.fightful.com/wrestling/stephanie-vaquer-returns-on-11-13-wwe-smackdown/",
+    "date": "2026-11-13T21:53:03",
+    "date_gmt": "2026-11-14T02:53:03",
+    "title": {
+      "rendered": "Stephanie Vaquer Returns On 11/13 WWE SmackDown"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/13214606/HXDUY_BXgAA9tHx.jpg"
+  },
+  {
+    "id": 338977,
+    "link": "https://www.fightful.com/mma/gable-steveson-return-fight-set-for-ufc-336/",
+    "date": "2026-11-13T21:52:55",
+    "date_gmt": "2026-11-14T02:52:55",
+    "title": {
+      "rendered": "Gable Steveson Return Fight Set For UFC 336"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/04/11234745/HFrMryAWcAAvDs5.jpeg"
+  },
+  {
     "id": 338974,
     "link": "https://www.fightful.com/wrestling/faa-lifts-nationwide-ground-stop-on-flights/",
     "date": "2026-11-13T21:42:01",
@@ -278,25 +298,5 @@
       "rendered": "Wrestling Open RI Results (11/9)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/13121344/HWijC22XMAAEg5x.jpeg"
-  },
-  {
-    "id": 338450,
-    "link": "https://www.fightful.com/wrestling/338450-chavo-contracts/",
-    "date": "2026-11-13T12:00:00",
-    "date_gmt": "2026-11-13T17:00:00",
-    "title": {
-      "rendered": "Chavo Guerrero: Wrestling Contracts Are Notoriously One-Sided, They Really Favor The Promotion"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/11141341/maxresdefault-55.jpg"
-  },
-  {
-    "id": 338853,
-    "link": "https://www.fightful.com/wrestling/marina-shafir-there-is-no-sidekick-mentality-with-the-death-riders-we-are-teammates/",
-    "date": "2026-11-13T11:47:30",
-    "date_gmt": "2026-11-13T16:47:30",
-    "title": {
-      "rendered": "Marina Shafir: There Is No Sidekick Mentality With The Death Riders, We Are Teammates"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/25094546/Screenshot-2026-10-25-134521.png"
   }
 ]
