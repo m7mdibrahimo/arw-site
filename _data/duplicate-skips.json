@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/rusev-says-he-got-sick-after-suffering-injury-on-wwe-raw-doesnt-think-the-two-incidents-were-related/": {
-    "matchedFile": "20261030193400-سي-جيه-بيري-تعلن-عن-العمل-على-تحويل-روايتها-bulletproof-angel-إلى-فيلم-سينمائي.md",
-    "reason": "الخبر الجديد يعتمد على نفس المقابلة المصدرية المذكورة في الخبر رقم 1، ويقدم تفاصيل إضافية حول نفس التصريحات التي أدلى بها روسيف بخصوص غيابه عن العروض، مما يجعله تحديثاً لنفس الحدث وليس خبراً مستقلاً.",
-    "at": "2026-10-30T16:59:10.320Z"
-  },
   "https://www.fightful.com/wrestling/tatum-paxley-to-appear-as-panelist-at-nxt-halloween-havoc-2026/": {
     "matchedFile": "20261030185142-نجمة-قائمة-wwe-smackdown-تايتوم-باكسلي-تعود-للظهور-في-عرض-wwe-nxt-halloween-havoc-2026.md",
     "reason": "الخبر الجديد يعيد نفس الإعلان والحدث الخاص بعودة تايتوم باكسلي كمحللة في عرض WWE NXT Halloween Havoc 2026، وقد تم نشر نفس الخبر مسبقاً بنفس التفاصيل والمصدر.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261114150000-دليل-مشاهدة-وموعد-انطلاق-عرض-aew-full-gear-tailgate-brawl.md",
     "reason": "الخبر الجديد يغطي نفس بطاقة نزالات عرض AEW Full Gear وتفاصيل العرض الموجودة بالفعل في الأخبار المنشورة مسبقاً.",
     "at": "2026-11-14T12:13:38.323Z"
+  },
+  "https://www.fightful.com/wrestling/aew-full-gear-2026-preview-start-time-how-to-watch-location-11-14/": {
+    "matchedFile": "20261114150000-دليل-مشاهدة-وموعد-انطلاق-عرض-aew-full-gear-tailgate-brawl.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث (عرض AEW Full Gear 2026 وموعده ومكان إقامته وتفاصيل بطاقة النزالات) المذكور بالفعل في الخبر المنشور لنفس العرض.",
+    "at": "2026-11-14T13:04:27.577Z"
   }
 }
