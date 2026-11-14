@@ -547,6 +547,10 @@ const RULES: Rule[] = [
   { code: "dual_form", severity: "error", re: /(?<![ء-ي])(?:[وف]?(?:حلا|حلتا)(?=\s+(?:محل|مكان))|(?:ي|ت)?(?:وقع|حل|غاد|رحل|ترك|أخذ|اخذ|وضع)(?:ا|تا)(?=\s+(?:عقود|عقد|محل|مكان|مكانهم|بدل))|(?:ي|ت)وقعان)(?![ء-ي])/g, message: "فعل مثنى (حلا محل/يوقعا عقودا…) ممنوع — اجمع الفعل أو كرر الاسم", fields: ["title", "body"] },
   // Dual demonstratives and «إنهما/لأنهما» the lists above missed: «كان هذان الرجلان إشبينين… إنهما بمثابة عائلتي» (Big E story),
   // «لأنهما سمحا لنا», «هذين اللقبين» — found in 13 published stories (INCIDENTS #1141).
+  // «مشيرا إلى أن اثنين من النجوم عرضا السفر جوا» (خبر Destination X، INCIDENTS #1309): a past verb in the dual right
+  // after «اثنين من <noun>» — any verb, so the rule looks at the shape (a short word ending in «ا» after the count),
+  // minus the adverbs that end the same way («اثنين من النجوم أيضا»). One hit in all published stories: this one.
+  { code: "dual_form", severity: "error", re: /(?<![ء-ي])[وف]?(?:اثنين|اثنان|اثنتين|اثنتان)\s+من\s+(?:ال)?[ء-ي]+\s+(?!(?:أيضا|معا|سويا|حاليا|سابقا|مؤخرا|رسميا|تقريبا|جدا|كثيرا|دائما|أبدا|غالبا|يوما|كذلك|هذا|هنا|كما|ربما|عندما|بينما|بعدما|حينما|ممن|إما|أما|لما|فقط|أخيرا|علنا|سرا|جميعا|سنويا|أسبوعيا|شهريا|يوميا|تماما|أولا|ثانيا|لاحقا|مجددا|سريعا|مبكرا|فعليا|عمليا|تدريجيا|خصيصا)(?![ء-ي]))(?![ء-ي]{1,5}وا(?![ء-ي]))[وف]?[ء-ي]{2,5}ا(?![ء-ي])/g, message: "فعل مثنى بعد «اثنين من…» («اثنين من النجوم عرضا») ممنوع — اجمع الفعل: «اثنين من النجوم عرضوا السفر…»", fields: ["title", "body"] },
   // «أنهما/بأنهما» and «العملاقين» passed it into 21 stories («أخبرها اثنان من الأطباء بأنهما من معجبيها»، «بين العملاقين أوسكار ولانس آرتشر», INCIDENTS #1263)
   { code: "dual_form", severity: "error", re: /(?<![ء-ي])(?:[وفل]?(?:هذان|هاتان|هذين|هاتين)|[وف]?(?:إنهما|لأنهما|كأنهما|وكأنهما|لكنهما|أنهما|بأنهما)|(?:[وفبلك]|لل)?(?:ال)?عملاق(?:ين|ان)|(?:ال)?إشبين(?:ين|ان)|(?:ال)?رجلان)(?![ء-ي])/g, message: "صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين", fields: ["title", "body"] },
   // Second-person dual pronouns and a dual vocative inside quotes: «مرحبا بكما في العالم يا طفلي الرائعين» (Nina Samuels twins story) — INCIDENTS #849
@@ -931,6 +935,26 @@ export function titleNamesMissingFromBody(title: string, body: string): string[]
   return missing;
 }
 
+// «كايل فليتشر ينسب الفضل إلى أحد نجوم AEW في ابتكار لقبه» copied the source's teaser («an AEW original») while the
+// text itself names him two lines down («ليقوم أنجيليكو بالبحث…»): when the headline says «أحد نجوم <promo>» and the
+// text, right after its own «أحد نجوم…», names a glossary wrestler the headline doesn't, the headline must name him
+// (INCIDENTS #1309). Blocking+retryable: the writer retries with the name.
+export function teaserTitleHidesName(title: string, body: string): string | null {
+  const teaser = /(?<![ء-ي])(?:[لبو]|إلى\s+|من\s+)?(?:أحد|إحدى)\s+(?:نجوم|نجمات|أساطير|مصارعي|مصارعات|أعضاء|أبطال|مواهب)\s+(?:اتحاد\s+)?[A-Z]{2,5}(?![A-Za-z])/;
+  if (!teaser.test(title || "")) return null;
+  if (!GLOSSARY_AR) glossaryNamesIn("");
+  const text = (body || "").replace(/https?:\/\/\S+/g, " ");
+  const m = /(?<![ء-ي])(?:[وبل]|ول)?(?:أحد|إحدى)\s+(?:نجوم|نجمات|أساطير|مصارعي|مصارعات|أعضاء|أبطال|مواهب)(?![ء-ي])/.exec(text);
+  if (!m) return null;
+  const before = text.slice(0, m.index);
+  const after = text.slice(m.index + m[0].length, m.index + m[0].length + 320);
+  const has = (hay: string, name: string) => new RegExp(`(?<![ء-ي])(?:[وبلف]|وب|ول)?${name.replace(/ /g, "\\s+")}(?![ء-ي])`).test(hay);
+  for (const name of GLOSSARY_AR || []) {
+    if (has(after, name) && !has(before, name) && !has(title, name)) return name;
+  }
+  return null;
+}
+
 export function checkArticle(title: string, body: string, tags: string[] = []): QaIssue[] {
   const issues: QaIssue[] = [];
   // Zero-width / bidi characters and an empty «()» left where the model dropped a name (Jake Paul quote, 2026-11-02: «يتحدى في الماضي (⁠⁠) بعد»)
@@ -1258,6 +1282,10 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
   // and «كارل فريدريكس يكشف … دعم تريبل إتش لإدارة ترامب» put a name on what the text calls «مسؤولي الاتحاد»: every
   // glossary name in a headline must be in the story (INCIDENTS #1294)
   for (const name of titleNamesMissingFromBody(t, body || "")) issues.push({ code: "title_name_not_in_body", severity: "error", field: "title", message: `العنوان فيه «${name}» والنص مفيهوش الاسم ده خالص — يا تكتب في النص اللي حصل معاه زي المصدر، يا تشيل الاسم من العنوان`, excerpt: name });
+  {
+    const hidden = teaserTitleHidesName(t, body || "");
+    if (hidden) issues.push({ code: "unnamed_person_title", severity: "error", field: "title", message: `العنوان بيقول «أحد نجوم…» والنص نفسه بيسميه «${hidden}» — اكتب الاسم في العنوان`, excerpt: hidden });
+  }
   // «قرب انتهاء عقد نجمة أخرى في اتحاد TNA» — the headline hides who the story is about (INCIDENTS #1287)
   if (/(?<![ء-ي])(?:ال)?(?:نجم|نجمة|مصارع|بطل|بطلة)\s+(?:آخر|أخرى)(?![ء-ي])/.test(t)) issues.push({ code: "unnamed_person_title", severity: "error", field: "title", message: "العنوان بيقول «نجمة أخرى/نجم آخر» من غير اسم — اكتب اسم المصارع اللي في الخبر («قرب انتهاء عقد كسيا بروكسايد مع اتحاد TNA»)", excerpt: t });
   // «تافيون هايتس ومايلز بورن يحددان نوع مواجهتهم…» hid the one fact of the story (a Weapons Wild match, picked by a

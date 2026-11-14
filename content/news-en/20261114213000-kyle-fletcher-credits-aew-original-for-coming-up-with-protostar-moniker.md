@@ -1,5 +1,5 @@
 ---
-title: "Kyle Fletcher Credits AEW Original for Coming Up With Protostar Moniker"
+title: "Kyle Fletcher Credits Angelico for Coming Up With His Protostar Moniker"
 slug: "kyle-fletcher-credits-aew-original-for-coming-up-with-protostar-moniker"
 description: "During a recent appearance on \"What Happened When,\" Kyle Fletcher revealed how he came up with his \"Protostar\" moniker while serving as the ROH World Television Champion."
 federation: AEW
