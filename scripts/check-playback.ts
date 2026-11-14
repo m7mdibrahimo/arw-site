@@ -37,6 +37,16 @@ const DEAD = /file (was |has been )?(deleted|removed)|file (is )?not found|video
 const SEGMENT = /\.ts(\?|$)|\/seg-|\.m4s/i;
 const CHALLENGE = /just a moment|attention required|checking your browser|verify you are human|cf-chl/i;
 
+const hostOf = (line: string) => { try { return new URL(line.split(" ").pop() || "").host; } catch { return ""; } };
+/** StreamHG's fallback server answered with its manifest AND a piece of video, and nothing on that server failed: the
+ *  stream reached the player, even if the video hadn't moved yet when the check looked. SmackDown 13.11.2026's hgcloud
+ *  server got manifest + first segment from cdn-centaurus.com 20 s after the first source's CORS error, only one segment
+ *  in the window, so it was hidden for the third time while it played at home (INCIDENTS #1297). */
+export function fallbackArrived(ev: Evidence): boolean {
+  const failed = new Set(ev.mediaFail.map(hostOf));
+  return ev.mediaOk.some(seg => SEGMENT.test(seg) && !failed.has(hostOf(seg))
+    && ev.mediaOk.some(m => /\.m3u8|master\.txt/i.test(m) && hostOf(m) === hostOf(seg)));
+}
 /** ok: the stream really came; broken: the player or the stream says no; unknown: can't tell (never hides anything). */
 export function classify(ev: Evidence): { status: "ok" | "broken" | "unknown"; reason: string } {
   if (CHALLENGE.test(ev.frameText)) return { status: "unknown", reason: "bot check on the host" };
@@ -45,7 +55,7 @@ export function classify(ev: Evidence): { status: "ok" | "broken" | "unknown"; r
   // StreamHG (hgcloud.to) tries a first stream server that sends no CORS header, logs «JW Player Error 232011», then
   // falls back to a second one and plays — the checker hid working hgcloud servers on 40+ pages for that (INCIDENTS #1259)
   if (ev.progressed) return { status: "ok", reason: ev.playerErrors.length ? "the video plays (after the player's first source failed)" : "the video plays" };
-  if (ev.playerErrors.length && ev.mediaOk.filter(u => SEGMENT.test(u)).length >= 2) return { status: "ok", reason: "the stream arrives (after the player's first source failed)" };
+  if (ev.playerErrors.length && (ev.mediaOk.filter(u => SEGMENT.test(u)).length >= 2 || fallbackArrived(ev))) return { status: "ok", reason: "the stream arrives (after the player's first source failed)" };
   if (PLAYER_FAIL.test(ev.frameText)) return { status: "broken", reason: `the player says: ${ev.frameText.replace(/\s+/g, " ").match(PLAYER_FAIL)![0]}` };
   if (ev.playerErrors.length) return { status: "broken", reason: ev.playerErrors[0] };
   if (ev.mediaFail.length && !ev.mediaOk.length) return { status: "broken", reason: `the stream is refused: ${ev.mediaFail[0]}` };
