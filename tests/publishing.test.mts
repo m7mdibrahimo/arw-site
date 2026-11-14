@@ -3924,9 +3924,9 @@ test('the site builds from a «site» branch without the original pictures and r
   // …except a save from the panel or a device: it goes out at once, and the build that was running stops itself
   // (lib/superseded-build.cjs, tests/superseded-build.test.mts)
   assert.match(gather, /grep -qE 'لوحة التحكم\|\^\(Create\|Update\|Delete\) '; then[\s\S]*?echo "a save from the panel or a device: going out now"; exit 0\n\s*fi/);
-  // the build mark is the «Workers Builds: arw-site-static» check run (the site moved to Workers Static Assets, INCIDENTS #1005); the old Pages mark still counts
-  assert.match(gather, /commits\/\$SITE\/check-runs\?per_page=100/);
-  assert.match(gather, /Workers Builds: arw-site-static/);
+  // the bots wait until the live /build.json has the last «site» version, not merely «Cloudflare finished a build»: a
+  // build that stepped aside finishes too (INCIDENTS #1285, #1286; tests/superseded-build.test.mts)
+  assert.match(gather, /built\(\) \{[^\n]*arab-wrestling\.com\/build\.json/);
   assert.match(gather, /BUSY_MAX: '300'/);
   assert.ok(!/MIN_GAP/.test(wf));
   assert.match(gather, /\[ "\$EVENT" = "push" \]/);

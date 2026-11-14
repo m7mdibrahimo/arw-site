@@ -47,9 +47,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 9
     steps:
-      # A save from the panel or a device no longer waits here (INCIDENTS #1183): «site» moves at once and Cloudflare
-      # builds it next to the one running. A running build is never stopped because «site» moved, or a busy night left
-      # the site 23 minutes behind (#1285, lib/superseded-build.cjs). Only the bots' news still waits and gathers.
+      # A save from the panel or a device no longer waits here (INCIDENTS #1183): «site» moves at once, and a running
+      # build of only the bots' news steps aside for it (#1286). A build carrying a save is never stopped mid-build, or a
+      # busy night left the site 23 minutes behind (#1285, lib/superseded-build.cjs). Only the bots' news waits and gathers.
       # Cloudflare (free plan) builds one version at a time, ~2 minutes each, and builds every version it is
       # given, even one a newer version already covers: five saves from the panel in a row had queued five builds
       # and the site ran 16 minutes behind (INCIDENTS #343). So «site» never moves while Cloudflare is still building
@@ -77,13 +77,16 @@ jobs:
           [ -n "$PREV" ] || exit 0
           GAP=$BATCH
           if [ "$EVENT" = "push" ] || api "https://api.github.com/repos/$REPO/compare/$PREV...main" | jq -r '.commits[].commit.message' | grep -qE 'لوحة التحكم|^(Create|Update|Delete) '; then
-            # a save from the panel or a device goes out at once and Cloudflare builds it beside the running build, so
-            # the save no longer waits 2-5 minutes for it first (INCIDENTS #1183). The running build still goes out:
-            # stopping it starved the site on a busy night (#1285, lib/superseded-build.cjs).
+            # a save from the panel or a device goes out at once (INCIDENTS #1183): a running build of only the bots'
+            # news steps aside for it, a running build of another save never does (#1285, #1286, lib/superseded-build.cjs).
             echo "a save from the panel or a device: going out now"; exit 0
           fi
           SITE_AT=$(date -d "$(jq -r .committer.date s.json)" +%s)
-          built() { api "https://api.github.com/repos/$REPO/commits/$SITE/check-runs?per_page=100" | jq -e '[.check_runs[] | select((.name == "Workers Builds: arw-site-static" or .name == "Cloudflare Pages") and .status == "completed")] | length > 0' > /dev/null; }
+          # «built» = the live site really has the last «site» version (its /build.json), not merely «Cloudflare finished
+          # a build»: a build that stepped aside also finishes, and counting it let the next batch go out at once and
+          # stop the following build too (INCIDENTS #1285, #1286)
+          SITE_OF_AT=$(jq -r .message s.json | sed -n 's/^site-of: [0-9a-f]\{40\} \([0-9]\+\).*/\1/p' | head -1)
+          built() { local live; live=$(curl -fsS --max-time 15 -H 'Cache-Control: no-cache' "https://arab-wrestling.com/build.json?b=$(date +%s%N)" | jq -r '.commitTime // 0') || return 1; [ -n "$SITE_OF_AT" ] && [ "$live" -ge "$SITE_OF_AT" ]; }
           while :; do
             AGE=$(( $(date +%s) - SITE_AT ))
             if [ "$AGE" -ge "$GAP" ]; then
@@ -150,7 +153,19 @@ jobs:
           # a visible change always builds: the skip markers of the newest commit don't apply to the ones under it
           MSG=$(jq -r .message c.json | sed -E 's/\[(skip ci|ci skip|skip-ci|CF-Pages-Skip)\]//Ig')
           [ "$RETRY" = "1" ] && MSG="$MSG [site-retry]"
-          COMMIT=$(jq -n --arg m "$MSG"$'\n\n'"site-of: $MAIN $CT" --arg t "$TREE" --arg p "$MAIN" '{message:$m, tree:$t, parents:[$p]}' | api -X POST "$BASE/commits" -d @- | jq -r .sha)
+          # «panel-save: yes» when this version carries a save from the panel or a device that isn't live yet: a running
+          # build of only the bots' news steps aside for it, and nothing ever stops it mid-build (lib/superseded-build.cjs,
+          # INCIDENTS #1286). A save still on its way out is carried over to the next version too.
+          TRAILER=""
+          SAVES='لوحة التحكم|^(Create|Update|Delete) '
+          if [ -z "$PREV" ] || api "https://api.github.com/repos/$REPO/compare/$PREV...$MAIN" | jq -r '.commits[].commit.message' | grep -qE "$SAVES"; then
+            TRAILER=$'\n'"panel-save: yes"
+          elif [ -n "${SMSG:-}" ] || { [ -n "$SITE" ] && [ "$SITE" != "null" ] && SMSG=$(api "$BASE/commits/$SITE" | jq -r .message); }; then
+            SAT=$(sed -n 's/^site-of: [0-9a-f]\{40\} \([0-9]\+\).*/\1/p' <<<"$SMSG" | head -1)
+            LIVE_AT=$(curl -fsS --max-time 15 -H 'Cache-Control: no-cache' "https://arab-wrestling.com/build.json?b=$(date +%s%N)" | jq -r '.commitTime // 0' || echo 0)
+            if grep -q '^panel-save: yes$' <<<"$SMSG" && [ -n "$SAT" ] && [ "${LIVE_AT:-0}" -lt "$SAT" ]; then TRAILER=$'\n'"panel-save: yes"; fi
+          fi
+          COMMIT=$(jq -n --arg m "$MSG"$'\n\n'"site-of: $MAIN $CT$TRAILER" --arg t "$TREE" --arg p "$MAIN" '{message:$m, tree:$t, parents:[$p]}' | api -X POST "$BASE/commits" -d @- | jq -r .sha)
           if [ -n "$SITE" ] && [ "$SITE" != "null" ]; then
             jq -n --arg s "$COMMIT" '{sha:$s, force:true}' | api -X PATCH "$BASE/refs/heads/site" -d @- > /dev/null
           else
