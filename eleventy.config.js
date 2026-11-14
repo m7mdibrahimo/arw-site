@@ -257,8 +257,15 @@ module.exports = function(eleventyConfig) {
   // (INCIDENTS #698). It is left out of the data cascade; the scripts read these files straight from disk.
   eleventyConfig.on("eleventy.globalDataFiles", (files) => {
     for (let i = files.length - 1; i >= 0; i--) {
-      if (/(^|\/)_data\/(deliveries\/|publish-state\.json$|duplicate-skips\.json$|show-reel-state\.json$)/.test(String(files[i]).replace(/\\/g, "/"))) files.splice(i, 1);
+      if (/(^|\/)_data\/(deliveries\/|publish-state\.json$|duplicate-skips\.json$|show-reel-state\.json$|videoLinks\.json$)/.test(String(files[i]).replace(/\\/g, "/"))) files.splice(i, 1);
     }
+  });
+  // _data/videoLinks.json (the playback check's record of every link, ~1,400 objects) IS read by the show pages, but
+  // as a global data file it was deep-copied into each page's data the same way: ~2 GB, and the build was dying out
+  // of memory again (#1296 round). Eleventy shares a frozen object instead of copying it, so it comes in once, frozen.
+  const deepFreeze = (v) => { if (v && typeof v === "object" && !Object.isFrozen(v)) { Object.freeze(v); for (const k of Object.keys(v)) deepFreeze(v[k]); } return v; };
+  eleventyConfig.addGlobalData("videoLinks", () => {
+    try { return deepFreeze(JSON.parse(fs.readFileSync(path.join(__dirname, "_data/videoLinks.json"), "utf8"))); } catch { return deepFreeze({ links: {}, broken: [] }); }
   });
   // One line per written file (5000+) only slows the host's build log down.
   eleventyConfig.setQuietMode(true);
