@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/first-look-aew-full-gear-2026-stage-setup-mortgage-matchup-center": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-14T22:58:20.639Z"
+ },
+ "https://www.ringsidenews.com/jimmy-wang-yang-krissy-vaine-launch-adult-content-platform-together": {
+  "reason": "المراجعة رفضته: فعل مثنى («يطلقان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-14T22:58:00.327Z"
+ },
  "https://www.fightful.com/wrestling/grounded-flights-cause-travel-issues-for-wwe-aew-tna-and-convention": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
