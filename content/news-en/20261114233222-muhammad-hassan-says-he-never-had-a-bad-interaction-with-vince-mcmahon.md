@@ -14,7 +14,7 @@ en_tags:
   - "The Undertaker"
 image: /content/images/y2owet707efeje7n.jpg
 ---
-Muhammad Hassan reflected on his time in WWE and his experiences working with Vince McMahon during an appearance on Monte & The Pharaoh. Hassan performed for WWE from 2002 to 2005, famously portraying an Arab American character before his run ended following a controversial segment and a defeat against The Undertaker at WWE The Great American Bash 2005. Discussing what McMahon was like behind the scenes, Hassan noted that he did not have many direct conversations with the former chairman, but every interaction he experienced was positive. 
+Muhammad Hassan reflected on his time in WWE and his experiences working with Vince McMahon during an appearance on Monte & The Pharaoh. Hassan performed for WWE from 2002 to 2005, playing an Arab American character on television. His last match with the company came at WWE The Great American Bash 2005, where he lost to The Undertaker. Discussing what McMahon was like behind the scenes, Hassan noted that he did not have many direct conversations with the former chairman, but every interaction he experienced was positive. 
 
 > "I didn't have a ton of interactions with him. I never had a bad one, personally, 2004 and 2005. I heard the stories. You see the things that are happening, but I was pretty sheltered from it. I wasn't in the inside circle. Every time I talked to Vince, it was helpful. He obviously knows wrestling better than most people."
 

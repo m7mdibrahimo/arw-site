@@ -531,7 +531,7 @@ const RULES: Rule[] = [
   // Duals the lists above missed, found in published stories: «ابنيه/ابنيها/شقيقيه» (dual noun + pronoun), «اتحادا WWE وAEW» (dual noun before Latin names), «مواجهتي بطولة / لقبي بطولة» (construct dual) — INCIDENTS #815
   { code: "dual_noun", severity: "error", re: /(?<![ء-ي])(?:[وفبلك]?(?:ال)?|لل)(?:ابني|ابنتي|شقيقي|شقيقتي|أخوي|زميلي|ولدي|طفلي|صديقي)(?:ه|ها|هم|هن)(?![ء-ي])|(?<![ء-ي])[وفبلك]?اتحادا(?=\s+[A-Za-z])|(?<![ء-ي])(?:مواجهتي|نزالي|لقبي|بطولتي|عرضي|فريقي)\s+(?:بطولة|لقب|على\s+(?:لقب|بطولة)|ضمن)(?![ء-ي])|(?<![ء-ي])[وفبل]?(?:نزالي|مواجهتي|لقبي|بطولتي|مباراتي|حدثي|مركزي|شبكتي|قناتي|منصتي|موقعي)\s+(?=[A-Za-z]|ال[ء-ي])|(?<![ء-ي])[وفبل]?(?:نزالي|مواجهتي)\s+(?=أل[ء-ي]|فرق(?![ء-ي])|سلم|طاولات|سيدات)/g, message: "اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»", fields: ["title", "body"] },
   // Construct duals of a time word before two dates: «خلال شهري أكتوبر ونوفمبر»، «بين عامي 2017 و2023» (Lana story; 51 stories had it — INCIDENTS #1182)
-  { code: "dual_noun", severity: "error", re: /(?<![ء-ي])[وفبل]?(?:ال)?(?:عامي\s+\d{4}\s+و\s*\d{4}|شهري\s+(?:يناير|فبراير|مارس|أبريل|إبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر)\s+و(?:يناير|فبراير|مارس|أبريل|إبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر))(?![ء-ي])/g, message: "مثنى «عامي 2017 و2023 / شهري أكتوبر ونوفمبر» ممنوع — اكتب «عام 2017 وعام 2023» أو «شهر أكتوبر وشهر نوفمبر»", fields: ["title", "body"] },
+  { code: "dual_noun", severity: "error", re: /(?<![ء-ي])[وفبل]?(?:ال)?(?:عامي\s+\d{4}\s+و\s*\d{4}|شهري\s+(?:يناير|فبراير|مارس|أبريل|إبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر)\s+و(?:يناير|فبراير|مارس|أبريل|إبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر))(?![ء-ي])/g, message: "مثنى «عامي 2017 و2023 / شهري أكتوبر ونوفمبر» ممنوع — للمدة اكتب «من 2017 إلى 2023» أو «بين عام 2017 وعام 2023»، وللعامين بعينهما «عام 2017 وعام 2023» أو «شهر أكتوبر وشهر نوفمبر»", fields: ["title", "body"] },
   // «عرضي AEW Dynamite وAEW Collision»، «في حلقتي مسلسل Visionquest» (INCIDENTS #945)
   // «تحت اسمي دابينا روز وميا يم»: two ring names as a dual (INCIDENTS #1222); «تحت اسمي الحقيقي» in a quote is "my name" and stays allowed.
   { code: "dual_noun", severity: "error", re: /(?<![ء-ي])تحت\s+اسمي(?![ء-ي])(?!\s+(?:الحقيقي|الأصلي|الخاص))/g, message: "اسم مثنى (تحت اسمي فلان وفلان) ممنوع — اكتب «باسم دابينا روز وباسم ميا يم»" },
@@ -1790,7 +1790,27 @@ export function claimNotInSource(text: string, source: string, lang: "ar" | "en"
   const src = String(source || "");
   if (src.replace(/\s+/g, " ").trim().length < 200) return [];
   const t = String(text || "").replace(/https?:\/\/\S+/g, " ");
-  return SOURCE_CLAIMS.filter(r => r[lang].test(t) && !r.source.test(src)).map(r => r.label);
+  const out = SOURCE_CLAIMS.filter(r => r[lang].test(t) && !r.source.test(src)).map(r => r.label);
+  if (lang === "ar" && yearRangeAsTwoYears(t, src)) out.push(YEAR_RANGE_LABEL);
+  return out;
+}
+export const YEAR_RANGE_LABEL = "مدة «من 2002 إلى 2005» صارت عامين «عام 2002 وعام 2005»";
+/**
+ * «عمل محمد حسن مع الاتحاد عام 2002 وعام 2005» when the source says "worked for WWE from 2002 to 2005" (INCIDENTS
+ * #1311): the dual «عامي 2002 و2005» is banned, the writer drops it for «عام 2002 وعام 2005», and a three-year run
+ * reads as two single years. A pair with no «بين/من» before it, whose years the source joins with to/-/through/until
+ * (or between … and), is a range written as two years. Returns the Arabic phrase.
+ */
+export function yearRangeAsTwoYears(text: string, source: string): string {
+  const src = String(source || "");
+  for (const m of String(text || "").matchAll(/(?<![ء-ي])(?:(?:خلال|في|بين|من)\s+)?(?:ال)?عام\s+(\d{4})\s+وعام\s+(\d{4})/g)) {
+    if (/^(?:بين|من)\s/.test(m[0])) continue;
+    const [a, b] = [m[1], m[2]];
+    if (Number(b) - Number(a) < 2) continue;
+    const range = new RegExp(`\\b${a}\\s*(?:to|-|–|—|through|until|till)\\s*(?:${b}|${b.slice(2)})\\b|\\bbetween\\s+${a}\\s+and\\s+${b}\\b`, "i");
+    if (range.test(src)) return m[0];
+  }
+  return "";
 }
 /**
  * «يملك مصارع WWE مات كاردونا مجموعة ضخمة…» when the source never ties Cardona to WWE (it named WWE only for his
