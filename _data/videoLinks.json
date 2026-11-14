@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-14T06:35:43.578Z",
+ "checkedAt": "2026-11-14T07:22:57.795Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
@@ -2036,40 +2036,40 @@
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-12T13:46:41.455Z",
-   "lastOk": "2026-11-12T13:46:41.455Z"
+   "checked": "2026-11-14T07:21:09.059Z",
+   "lastOk": "2026-11-14T07:21:09.059Z"
   },
   "https://ok.ru/videoembed/17548819565152": {
    "page": "https://arab-wrestling.com/shows/aew-dynamite-06-10-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-12T13:46:41.455Z",
+   "checked": "2026-11-14T07:21:09.059Z",
    "lastOk": "2026-10-12T11:13:26.092Z"
   },
   "https://vidmoly.org/embed-eue2o0jbk3x3.html": {
    "page": "https://arab-wrestling.com/shows/aew-dynamite-06-10-2026/",
    "status": "ok",
-   "reason": "the video plays",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-12T13:46:41.455Z",
-   "lastOk": "2026-11-12T13:46:41.455Z"
+   "checked": "2026-11-14T07:21:09.059Z",
+   "lastOk": "2026-11-14T07:21:09.059Z"
   },
   "https://hgcloud.to/e/1s6j34m110f6": {
    "page": "https://arab-wrestling.com/shows/aew-dynamite-06-10-2026/",
-   "status": "broken",
-   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
-   "strikes": 2,
-   "checked": "2026-11-12T13:46:41.455Z",
-   "since": "2026-10-07T18:53:03.280Z"
+   "status": "ok",
+   "reason": "the video plays (after the player's first source failed)",
+   "strikes": 0,
+   "checked": "2026-11-14T07:21:09.059Z",
+   "lastOk": "2026-11-14T07:21:09.059Z"
   },
   "https://fembed.co/embed/yUvwTtn-1C_cL": {
    "page": "https://arab-wrestling.com/shows/aew-dynamite-06-10-2026/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-12T13:46:41.455Z",
-   "lastOk": "2026-11-12T13:46:41.455Z"
+   "checked": "2026-11-14T07:21:09.059Z",
+   "lastOk": "2026-11-14T07:21:09.059Z"
   },
   "https://hgcloud.to/e/d77xu8034obm": {
    "page": "https://arab-wrestling.com/shows/wwe-nxt-06-10-2026/",
@@ -2084,8 +2084,8 @@
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-12T13:46:41.455Z",
-   "lastOk": "2026-11-12T13:46:41.455Z"
+   "checked": "2026-11-14T07:21:09.059Z",
+   "lastOk": "2026-11-14T07:21:09.059Z"
   },
   "https://ok.ru/videoembed/17549648792160": {
    "page": "https://arab-wrestling.com/shows/wwe-nxt-06-10-2026/",
@@ -2622,12 +2622,11 @@
   },
   "https://hgcloud.to/e/814moty0mp4b": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-28-06-2010/",
-   "status": "broken",
-   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
-   "strikes": 2,
-   "checked": "2026-11-12T13:46:41.455Z",
-   "since": "2026-10-09T15:34:27.141Z",
-   "lastOk": "2026-10-09T01:42:56.820Z"
+   "status": "ok",
+   "reason": "the video plays (after the player's first source failed)",
+   "strikes": 0,
+   "checked": "2026-11-14T07:22:57.795Z",
+   "lastOk": "2026-11-14T07:22:57.795Z"
   },
   "https://fembed.co/embed/GY2_vxSta-T86": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-smackdown-02-07-2010/",
@@ -2650,7 +2649,7 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-12T13:46:41.455Z",
+   "checked": "2026-11-14T07:22:57.795Z",
    "lastOk": "2026-10-15T00:22:33.464Z"
   },
   "https://uqload.vc/embed-s15yuyvlhtgg.html": {
@@ -2658,32 +2657,32 @@
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-12T13:46:41.455Z",
-   "lastOk": "2026-11-12T13:46:41.455Z"
+   "checked": "2026-11-14T07:22:57.795Z",
+   "lastOk": "2026-11-14T07:22:57.795Z"
   },
   "https://vidmoly.org/embed-3upasacc51nn.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-28-06-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-12T13:46:41.455Z",
-   "lastOk": "2026-11-12T13:46:41.455Z"
+   "checked": "2026-11-14T07:22:57.795Z",
+   "lastOk": "2026-11-14T07:22:57.795Z"
   },
   "https://vidtube.one/embed-2lysop4i7s6f.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-28-06-2010/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-12T13:46:41.455Z",
-   "lastOk": "2026-11-12T13:46:41.455Z"
+   "checked": "2026-11-14T07:22:57.795Z",
+   "lastOk": "2026-11-14T07:22:57.795Z"
   },
   "https://fembed.co/embed/z4QncIV_K-MFz": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-raw-28-06-2010/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-12T13:46:41.455Z",
-   "lastOk": "2026-11-12T13:46:41.455Z"
+   "checked": "2026-11-14T07:22:57.795Z",
+   "lastOk": "2026-11-14T07:22:57.795Z"
   },
   "https://vidtube.one/embed-195i2865vy6m.html": {
    "page": "https://arab-wrestling.com/nostalgia/wwe-money-in-the-bank-2010/",
@@ -10593,51 +10592,49 @@
   },
   "https://vidtube.one/embed-ylve4ajvaxtx.html": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-13-11-2026/",
-   "status": "unknown",
-   "reason": "no stream seen",
+   "status": "ok",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-14T06:35:43.578Z"
+   "checked": "2026-11-14T07:20:01.993Z",
+   "lastOk": "2026-11-14T07:20:01.993Z"
   },
   "https://hgcloud.to/e/8akxbmvbsnig": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-13-11-2026/",
-   "status": "broken",
-   "reason": "[helpers/jwplayer/api/core-shim]: JW Player Error 232011",
-   "strikes": 2,
-   "checked": "2026-11-14T06:35:43.578Z",
-   "since": "2026-11-14T06:35:43.578Z"
+   "status": "ok",
+   "reason": "the video plays (after the player's first source failed)",
+   "strikes": 0,
+   "checked": "2026-11-14T07:20:01.993Z",
+   "lastOk": "2026-11-14T07:20:01.993Z"
   },
   "https://ok.ru/videoembed/18094684310112": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-13-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-14T06:35:43.578Z"
+   "checked": "2026-11-14T07:20:01.993Z"
   },
   "https://vidmoly.org/embed-df1fv1azc3uj.html": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-13-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-14T06:35:43.578Z",
-   "lastOk": "2026-11-14T06:35:43.578Z"
+   "checked": "2026-11-14T07:20:01.993Z",
+   "lastOk": "2026-11-14T07:20:01.993Z"
   },
   "https://fembed.co/embed/Q_mno8BC-MWpm": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-13-11-2026/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-14T06:35:43.578Z",
-   "lastOk": "2026-11-14T06:35:43.578Z"
+   "checked": "2026-11-14T07:20:01.993Z",
+   "lastOk": "2026-11-14T07:20:01.993Z"
   }
  },
  "broken": [
   "https://hgcloud.to/e/0ra72mzk13ip",
-  "https://hgcloud.to/e/1s6j34m110f6",
   "https://hgcloud.to/e/36exbd0j0w1l",
   "https://hgcloud.to/e/3exivogev6oq",
   "https://hgcloud.to/e/3r44pyl6vi00",
-  "https://hgcloud.to/e/814moty0mp4b",
-  "https://hgcloud.to/e/8akxbmvbsnig",
   "https://hgcloud.to/e/8x36eehbw4kh",
   "https://hgcloud.to/e/9jnk3bnlmgza",
   "https://hgcloud.to/e/b20d2pvuh02d",

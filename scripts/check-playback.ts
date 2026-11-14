@@ -48,6 +48,14 @@ export function classify(ev: Evidence): { status: "ok" | "broken" | "unknown"; r
   return { status: "unknown", reason: "no stream seen" };
 }
 
+/** A «broken» that rests only on an error the player logged (no «file deleted» text, no refused stream) gets one more
+ *  try before it counts: StreamHG's fallback to its second stream server is slower on the GitHub runner than at home,
+ *  so a working hgcloud server (SmackDown 13.11.2026, AEW Dynamite 06.10, Raw 28.06.2010) hit the 9-second window
+ *  twice and stayed hidden while it played on the owner's Mac (INCIDENTS #1293). */
+export function worthRetry(ev: Evidence, c: { status: string }): boolean {
+  return c.status === "broken" && !DEAD.test(ev.frameText) && ev.playerErrors.length > 0;
+}
+
 export interface LinkState { page: string; status: string; reason: string; strikes: number; since?: string; lastOk?: string; checked: string }
 export interface State { checkedAt?: string; links: Record<string, LinkState>; broken: string[] }
 
@@ -262,6 +270,10 @@ async function main() {
         const { page, url, index } = jobs[next++];
         const ev = await b.play(page, url, index).catch((e: Error) => ({ mediaOk: [], mediaFail: [], playerErrors: [], frameText: `checker error ${e.message}`, progressed: false }));
         let c = classify(ev);
+        if (worthRetry(ev, c)) {
+          const again = await b.play(page, url, index).catch(() => null);
+          if (again) { const c2 = classify(again); if (c2.status !== "broken") c = { ...c2, reason: c2.reason + " (second try)" }; }
+        }
         if (c.status !== "ok" && await streamProof(url)) c = { status: "ok", reason: "the stream comes back when fetched directly (the browser check missed it)" };
         results.push({ url, page, ...c });
         console.log(`[Play] ${c.status.padEnd(7)} ${decodeURI(page.replace(ORIGIN, ""))} ${url} — ${c.reason}`);
