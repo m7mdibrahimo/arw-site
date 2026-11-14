@@ -394,6 +394,9 @@ export function applyNamesGlossary(text: string): string {
   // Apply each name replacement (longest first, already sorted in JSON)
   for (const [english, arabic] of Object.entries(WRESTLER_NAMES_MAP)) {
     if (!english || !arabic || english === arabic) continue;
+    // A key with no letter is a number, never a name: «128» → «وان توينتي إيت» turned «نمو 128%» in the
+    // Collision viewership story into «نمو وان توينتي إيت%» (INCIDENTS #1288).
+    if (!/\p{L}/u.test(english)) continue;
     // Skip federation abbreviations AND show names — they MUST stay in English
     const KEEP_ENGLISH = /^(WWE|AEW|TNA|ROH|NJPW|MLW|AAA|CMLL|GCW|MLP|UFC|NXT|RAW|SmackDown|iMPACT|Dynamite|Collision|Rampage|PPV|WrestleMania|SummerSlam|Survivor Series|Royal Rumble|Hell in a Cell|Elimination Chamber|Money in the Bank|Night of Champions|Clash at the Castle|TripleMania|All Out|All In|Full Gear|Double or Nothing|Revolution|Forbidden Door|WrestleDream|Grand Slam|Worlds Collide|Payback|Backlash|NXT TakeOver|War Games|Battleground|Vengeance Day|Stand and Deliver|Northern Rising|Mayhem|Fusion|Rebellion)$/i;
     if (KEEP_ENGLISH.test(english.trim())) continue;
