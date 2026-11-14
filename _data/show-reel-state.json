@@ -5193,7 +5193,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض مين ايفنت 11.11.2026 مترجم",
-    "lastAttempt": 1794623249251,
+    "lastAttempt": 1794624114496,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5211,9 +5211,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ار او اتش اون اونر كلوب 12.11.2026 مترجم",
-    "lastAttempt": 1794617886640,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1794624115824,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
