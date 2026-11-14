@@ -1,5 +1,25 @@
 [
   {
+    "id": 4785519823,
+    "link": "https://www.wrestlinginc.com/2312912/wwe-booker-t-ilja-dragunov-aew/",
+    "date": "Sat, 14 Nov 2026 14:00:00 +0000",
+    "date_gmt": "2026-11-14T14:00:00.000Z",
+    "title": {
+      "rendered": "WWE's Booker T Comments On Ilja Dragunov's Arrival To AEW"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-booker-t-comments-on-ilja-dragunovs-arrival-to-aew/l-intro-1794351930.jpg"
+  },
+  {
+    "id": 4142925130,
+    "link": "https://www.wrestlinginc.com/2316734/aew-full-gear-2026-full-final-card-matches/",
+    "date": "Sat, 14 Nov 2026 14:00:00 +0000",
+    "date_gmt": "2026-11-14T14:00:00.000Z",
+    "title": {
+      "rendered": "AEW Full Gear 2026 Full & Final Card"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-full-gear-2026-full-final-card/l-intro-1794616980.jpg"
+  },
+  {
     "id": 5162212119,
     "link": "https://www.wrestlinginc.com/2312412/aew-bishop-kaun-reflects-carrying-trios-titles-historic-venue/",
     "date": "Sat, 14 Nov 2026 13:30:00 +0000",
@@ -178,25 +198,5 @@
       "rendered": "AEW's Mercedes Mone Reflects On Attending 2026 Forbes Power Women's Summit"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-mercedes-mone-reflects-on-attending-2026-forbes-power-womens-summit/l-intro-1794599591.jpg"
-  },
-  {
-    "id": 3955284972,
-    "link": "https://www.wrestlinginc.com/2316433/wwe-glenn-jacobs-kane-considered-us-senator-appointment/",
-    "date": "Fri, 13 Nov 2026 19:34:01 +0000",
-    "date_gmt": "2026-11-13T19:34:01.000Z",
-    "title": {
-      "rendered": "Report: WWE HOFer Glenn Jacobs (AKA Kane) Being Considered For US Senator Appointment"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/report-wwe-hofer-glenn-jacobs-aka-kane-being-considered-for-us-senator-appointment/l-intro-1794602915.jpg"
-  },
-  {
-    "id": 2389722861,
-    "link": "https://www.wrestlinginc.com/2316412/aew-ricochet-97-percent-locker-room-wants-best-company/",
-    "date": "Fri, 13 Nov 2026 19:24:38 +0000",
-    "date_gmt": "2026-11-13T19:24:38.000Z",
-    "title": {
-      "rendered": "Ricochet Says '97%' Of AEW's Locker Room Want The Best For The Company"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/ricochet-says-97-of-aews-locker-room-want-the-best-for-the-company/l-intro-1794597606.jpg"
   }
 ]
