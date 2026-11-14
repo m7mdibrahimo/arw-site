@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2312412/aew-bishop-kaun-reflects-carrying-trios-titles-historic-venue": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: PROGRESS Tag Team Championships، اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: AAA Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kofi Kingston",
+  "retry": true,
+  "at": "2026-11-14T15:56:56.944Z"
+ },
  "https://www.fightful.com/wrestling/bobby-lashley-i-hope-before-i-do-retire-i-get-an-opportunity-to-work-with-lio-rush-again": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (مجنونان/مستعدان/قضياه/أمضيا…) ممنوعة — اجمع («مجانين»، «قضوها») أو أعد صياغة الجملة («الوقت الذي قضته معه»)، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Tony Khan",
   "retry": true,
@@ -48,11 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-14T15:41:07.710Z"
- },
- "https://www.wrestlinginc.com/2312412/aew-bishop-kaun-reflects-carrying-trios-titles-historic-venue": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: ROH World Trios Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Trios Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Trios Championships، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kofi Kingston",
-  "retry": true,
-  "at": "2026-11-14T15:36:52.342Z"
  },
  "https://www.fightful.com/mma/ufc-334-gane-vs-hokit-weigh-in-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
