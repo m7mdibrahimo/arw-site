@@ -1,5 +1,25 @@
 [
   {
+    "id": 2242381166,
+    "link": "https://www.wrestlinginc.com/2316748/wwe-smackdown-tag-title-no-contest-war-raiders-bakusai-mft/",
+    "date": "Sat, 14 Nov 2026 01:43:53 +0000",
+    "date_gmt": "2026-11-14T01:43:53.000Z",
+    "title": {
+      "rendered": "WWE SmackDown Tag Title Match Ends In No Contest When War Raiders Interfere"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-tag-title-match-ends-in-no-contest-when-war-raiders-interfere/l-intro-1794620517.jpg"
+  },
+  {
+    "id": 3838982201,
+    "link": "https://www.wrestlinginc.com/2316747/wwe-smackdown-john-cena-classic-charlotte-flair-invite-world-champion/",
+    "date": "Sat, 14 Nov 2026 01:42:55 +0000",
+    "date_gmt": "2026-11-14T01:42:55.000Z",
+    "title": {
+      "rendered": "John Cena Invites Multi-Time WWE World Champion To John Cena Classic On SmackDown"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/john-cena-invites-multi-time-wwe-world-champion-to-john-cena-classic-on-smackdown/l-intro-1794620396.jpg"
+  },
+  {
     "id": 976910959,
     "link": "https://www.wrestlinginc.com/2316743/wwe-brie-bella-injury-scapula-goal-date-training/",
     "date": "Sat, 14 Nov 2026 01:16:34 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Nic Nemeth Hopes WWE Explains Logic Behind 946 Lineup"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/nic-nemeth-hopes-wwe-explains-logic-behind-946-lineup/l-intro-1794554859.jpg"
-  },
-  {
-    "id": 2956985591,
-    "link": "https://www.wrestlinginc.com/2315908/wwe-john-cena-classic-considering-multiple-match-types/",
-    "date": "Fri, 13 Nov 2026 15:19:19 +0000",
-    "date_gmt": "2026-11-13T15:19:19.000Z",
-    "title": {
-      "rendered": "WWE Reportedly Considering Multiple Match Types For John Cena Classic"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-reportedly-considering-multiple-match-types-for-john-cena-classic/l-intro-1794583065.jpg"
-  },
-  {
-    "id": 4240518387,
-    "link": "https://www.wrestlinginc.com/2315618/wwe-crown-jewel-2026-jbl-vince-mcmahon-pushes-back-idea-rescheduled/",
-    "date": "Fri, 13 Nov 2026 15:00:00 +0000",
-    "date_gmt": "2026-11-13T15:00:00.000Z",
-    "title": {
-      "rendered": "JBL Pushes Back On Idea That Vince McMahon Would've Rescheduled WWE Crown Jewel 2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/jbl-pushes-back-on-idea-that-vince-mcmahon-wouldve-rescheduled-wwe-crown-jewel-2026/l-intro-1794552936.jpg"
   }
 ]
