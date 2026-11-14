@@ -5170,7 +5170,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261114004735-wwe-evolve-11-11-2026": {
     "publishedAt": 1794613523617,
@@ -5207,12 +5208,14 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ار او اتش اون اونر كلوب 12.11.2026 مترجم",
-    "lastAttempt": 1794624987772,
+    "lastAttempt": 1794625847682,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel"
+      "instagram_reel",
+      "instagram_story"
     ],
     "reviewPlatforms": [],
     "needsReview": false,
