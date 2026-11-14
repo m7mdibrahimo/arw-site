@@ -1,5 +1,15 @@
 [
   {
+    "id": 338815,
+    "link": "https://www.fightful.com/wrestling/wwe-smackdown-results-11-13-2026-john-cena-appears-tiffany-stratton-more/",
+    "date": "2026-11-13T19:15:00",
+    "date_gmt": "2026-11-14T00:15:00",
+    "title": {
+      "rendered": "WWE SmackDown Results (11/13/2026): John Cena Appears, Tiffany Stratton, More"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/13010827/image-450.png"
+  },
+  {
     "id": 338946,
     "link": "https://www.fightful.com/wrestling/jacy-jayne-vs-charlotte-flair-wwe-tag-team-title-match-added-to-11-13-wwe-smackdown/",
     "date": "2026-11-13T17:42:02",
@@ -288,15 +298,5 @@
       "rendered": "Joe Coffey Re-Signs With MLW"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/13091622/joe-coffey-mlw.jpg.webp"
-  },
-  {
-    "id": 338839,
-    "link": "https://www.fightful.com/wrestling/ethan-page-no-one-should-be-allowed-to-become-a-wrestler-until-they-run-three-events-of-their-own/",
-    "date": "2026-11-13T09:15:16",
-    "date_gmt": "2026-11-13T14:15:16",
-    "title": {
-      "rendered": "Ethan Page: No One Should Be Allowed To Become A Wrestler Until They Run Three Events Of Their Own"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/03093533/Screenshot-297-e1785764150789.png"
   }
 ]
