@@ -734,3 +734,5 @@ http://arab-wrestling.pages.dev/* https://arab-wrestling.com/:splat 301!
 /tag/لوتشا-ليبري-aaa-وورلد-وايد/* /tag/aaa/:splat 301!
 /tag/كاتي-فوربس/* /tag/كاتي-فوربز/:splat 301!
 /tag/وورلد-تاج-ليج/* /tag/world-tag-league/:splat 301!
+/tag/ديلان-بويستيك/* /tag/ديلان-بوستيك/:splat 301!
+/tag/كرويل/* /tag/كرول/:splat 301!
