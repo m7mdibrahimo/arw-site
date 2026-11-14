@@ -3925,7 +3925,7 @@ test('the site builds from a «site» branch without the original pictures and r
   // (lib/superseded-build.cjs, tests/superseded-build.test.mts)
   assert.match(gather, /grep -qE 'لوحة التحكم\|\^\(Create\|Update\|Delete\) '; then[\s\S]*?echo "a save from the panel or a device: going out now"; exit 0\n\s*fi/);
   // the bots wait until the live /build.json has the last «site» version, not merely «Cloudflare finished a build»: a
-  // build that stepped aside finishes too (INCIDENTS #1285, #1286; tests/superseded-build.test.mts)
+  // build that stepped aside finishes too (INCIDENTS #1285, #1292; tests/superseded-build.test.mts)
   assert.match(gather, /built\(\) \{[^\n]*arab-wrestling\.com\/build\.json/);
   assert.match(gather, /BUSY_MAX: '300'/);
   assert.ok(!/MIN_GAP/.test(wf));

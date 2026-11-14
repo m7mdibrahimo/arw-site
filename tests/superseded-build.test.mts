@@ -1,4 +1,4 @@
-// When a Cloudflare build of «site» steps aside (INCIDENTS #1183, #1285, #1286).
+// When a Cloudflare build of «site» steps aside (INCIDENTS #1183, #1285, #1292).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -50,7 +50,7 @@ test('a busy night never starves the site: a running build is never stopped just
   assert.deepEqual(S.ownSite(read), { sha: A, time: 1794257340, panel: false });
 });
 
-test('a save from the panel never waits for the bots\' news build, and saves never stop each other (#1286)', () => {
+test('a save from the panel never waits for the bots\' news build, and saves never stop each other (#1292)', () => {
   const T = 1794632688;
   const news = { sha: A, time: T - 120, panel: false };
   const save = { sha: A, time: T - 120, panel: true };
