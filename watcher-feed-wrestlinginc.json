@@ -1,5 +1,15 @@
 [
   {
+    "id": 3304639385,
+    "link": "https://www.wrestlinginc.com/2313438/wwe-rey-mysterio-dominik-compares-contrasts-upbringing-son/",
+    "date": "Sat, 14 Nov 2026 17:30:00 +0000",
+    "date_gmt": "2026-11-14T17:30:00.000Z",
+    "title": {
+      "rendered": "WWE's Rey Mysterio Compares & Contrasts His Upbringing With Son Dominik Mysterio"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-rey-mysterio-compares-contrasts-his-upbringing-with-son-dominik-mysterio/l-intro-1794409017.jpg"
+  },
+  {
     "id": 4521324439,
     "link": "https://www.wrestlinginc.com/2316885/aew-full-gear-talent-status-us-flight-cancelations/",
     "date": "Sat, 14 Nov 2026 17:06:21 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW Collision Viewership & Ratings Report: 11/7/2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-collision-viewership-ratings-report-1172026/l-intro-1794610891.jpg"
-  },
-  {
-    "id": 3693630721,
-    "link": "https://www.wrestlinginc.com/2316663/flights-grounded-faa-ground-stop-us-airports-weekend-wrestling/",
-    "date": "Fri, 13 Nov 2026 22:21:54 +0000",
-    "date_gmt": "2026-11-13T22:21:54.000Z",
-    "title": {
-      "rendered": "Flights Grounded At All US Airports, Potentially Impacting Weekend Wrestling Shows"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/flights-grounded-at-all-us-airports-potentially-impacting-weekend-wrestling-shows/l-intro-1794608407.jpg"
   }
 ]

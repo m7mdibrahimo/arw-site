@@ -49,11 +49,6 @@
   "retry": false,
   "at": "2026-11-14T17:34:58.219Z"
  },
- "https://www.wrestlinginc.com/2312412/aew-bishop-kaun-reflects-carrying-trios-titles-historic-venue": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: PROGRESS Tag Team Championships، اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: AAA Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kofi Kingston",
-  "retry": true,
-  "at": "2026-11-14T17:22:54.832Z"
- },
  "https://www.wrestlinginc.com/2314384/lance-storm-wwe-john-cena-classic-undermines-fundamental-principle-pro-wrestling": {
   "reason": "المراجعة رفضته: فعل مثنى («يقوضان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
