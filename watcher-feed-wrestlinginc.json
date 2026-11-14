@@ -1,5 +1,15 @@
 [
   {
+    "id": 990493589,
+    "link": "https://www.wrestlinginc.com/2314384/lance-storm-wwe-john-cena-classic-undermines-fundamental-principle-pro-wrestling/",
+    "date": "Sat, 14 Nov 2026 17:00:00 +0000",
+    "date_gmt": "2026-11-14T17:00:00.000Z",
+    "title": {
+      "rendered": "Lance Storm: John Cena Classic 'Undermines The Fundamental Principle Of Pro Wrestling'"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/lance-storm-john-cena-classic-undermines-the-fundamental-principle-of-pro-wrestling/l-intro-1794442126.jpg"
+  },
+  {
     "id": 1649598128,
     "link": "https://www.wrestlinginc.com/2312992/wwe-nic-nemeth-difficulties-ppvs-longer-cards/",
     "date": "Sat, 14 Nov 2026 16:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE SmackDown Results 11/13/26 W/ Live Updates: GUNTHER Vs. Finn Balor"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-results-111326-w-live-updates/l-intro-1794627262.jpg"
-  },
-  {
-    "id": 4975231554,
-    "link": "https://www.wrestlinginc.com/2316627/aew-skydance-tony-khan-elaborates-confidence-level/",
-    "date": "Fri, 13 Nov 2026 21:43:18 +0000",
-    "date_gmt": "2026-11-13T21:43:18.000Z",
-    "title": {
-      "rendered": "AEW's Tony Khan Elaborates On His Confidence Level Working With Skydance"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-tony-khan-elaborates-on-his-confidence-level-working-with-skydance/l-intro-1794605781.jpg"
   }
 ]
