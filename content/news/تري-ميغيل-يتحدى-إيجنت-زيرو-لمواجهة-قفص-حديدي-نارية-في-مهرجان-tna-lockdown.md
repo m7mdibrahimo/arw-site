@@ -42,7 +42,7 @@ layout: post-layout.njk
  * جيسون هوتش (البطل) ضد مصطفى علي.
 * بطولة العالم للنوك أوتس (TNA Knockouts World Championship) – نزال قفص:
 
- * شيا بروكسايد (البطلة) ضد إيلينا بلاك.
+ * كسيا بروكسايد (البطلة) ضد إيلينا بلاك.
 * بطولة الفرق للنوك أوتس (TNA Knockouts Tag Team Championship) – نزال قفص:
 
  * فريق DemonXBunny (ألي وروسماري) (البطلات) ضد فريق The Elegance Brand (هيذر باي إليجانس وإم باي إليجانس).

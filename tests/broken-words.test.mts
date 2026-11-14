@@ -1085,3 +1085,19 @@ test('a prose paragraph with no full stop before the next one gets one (Hyperact
   assert.ok(autoFix('**المواجهة الأولى**\n\nفاز كودي رودز على درو ماكنتاير بعد نزال قوي جدا.').includes('**المواجهة الأولى**\n\n'));
   assert.ok(autoFix('نتائج العرض\n\nفاز كودي رودز على درو ماكنتاير بعد نزال قوي جدا.').startsWith('نتائج العرض\n\n'));
 });
+
+// INCIDENTS #1287: «خاض مونتانا نزال بلا قوانين», «أدى إلى تفاجئ العاملين», «زيا/شيا بروكسايد», and a headline
+// «قرب انتهاء عقد نجمة أخرى في اتحاد TNA» that never named Xia Brookside.
+test("INCIDENTS #1287: object case after «خاض», «تفاجؤ», Xia Brookside spelling and «نجمة أخرى» headlines", () => {
+  assert.equal(applyCorrections("خاض مونتانا نزال بلا قوانين ضد ديون لينوكس"), "خاض مونتانا نزالا بلا قوانين ضد ديون لينوكس");
+  assert.equal(applyCorrections("سيخوض نزال ضد كودي رودس"), "سيخوض نزالا ضد كودي رودس");
+  assert.equal(applyCorrections("خاض أول نزال ضد رومان رينز"), "خاض أول نزال ضد رومان رينز");
+  assert.equal(applyCorrections("خاض الرباعي نزال طاولات"), "خاض الرباعي نزال طاولات");
+  assert.equal(applyCorrections("أدى إلى تفاجئ العاملين"), "أدى إلى تفاجؤ العاملين");
+  assert.equal(applyCorrections("قد تفاجئ الجماهير"), "قد تفاجئ الجماهير");
+  assert.equal(applyCorrections("تتحدى زيا بروكسايد وشيا بروكسايد"), "تتحدى كسيا بروكسايد وكسيا بروكسايد");
+  const body = "يواجه اتحاد TNA قرارات جديدة بشأن عقود بعض نجومه قبل نهاية عام 2026، وتعد كسيا بروكسايد أحدث الأسماء. ".repeat(4);
+  assert.ok(checkArticle("قرب انتهاء عقد نجمة أخرى في اتحاد TNA وسط تحديات جديدة", body, []).some(i => i.code === "unnamed_person_title"));
+  assert.ok(!checkArticle("قرب انتهاء عقد كسيا بروكسايد مع اتحاد TNA والاتحاد يقدم لها عرضا جديدا", body, []).some(i => i.code === "unnamed_person_title"));
+  assert.ok(!checkArticle("فينس روسو يحدد شروط الانضمام إلى شركة مصارعة أخرى", body, []).some(i => i.code === "unnamed_person_title"));
+});

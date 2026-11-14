@@ -1139,6 +1139,8 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
   // <group>» must name him. Blocking+retryable: the writer retries with the name (INCIDENTS #1271). A name right after
   // the group («…في فريق ذا شيلد دين أمبروز يعود») is longer than the four words allowed after «فريق».
   if (/(?:^|\s)(?:ب|ل|و|مع\s+)?(?:ال)?(?:عضو|عضوة|زميل|زميلة|شريك|شريكة|رفيق|رفيقة)\s+(?:ال)?سابق(?:ة)?\s+(?:في|ب|لـ?)\s*(?:فريق|مجموعة|جماعة|تحالف|ثنائي)(?:\s+\S+){1,4}$/.test(t)) issues.push({ code: "unnamed_person_title", severity: "error", field: "title", message: "العنوان بيقول «العضو السابق في فريق…» من غير اسمه — اكتب اسم الشخص اللي في الخبر", excerpt: t });
+  // «قرب انتهاء عقد نجمة أخرى في اتحاد TNA» — the headline hides who the story is about (INCIDENTS #1287)
+  if (/(?<![ء-ي])(?:ال)?(?:نجم|نجمة|مصارع|بطل|بطلة)\s+(?:آخر|أخرى)(?![ء-ي])/.test(t)) issues.push({ code: "unnamed_person_title", severity: "error", field: "title", message: "العنوان بيقول «نجمة أخرى/نجم آخر» من غير اسم — اكتب اسم المصارع اللي في الخبر («قرب انتهاء عقد كسيا بروكسايد مع اتحاد TNA»)", excerpt: t });
   // «تافيون هايتس ومايلز بورن يحددان نوع مواجهتهم…» hid the one fact of the story (a Weapons Wild match, picked by a
   // wheel): a headline that only says a match type was set must say which one (INCIDENTS #922)
   if (/(?:^|\s)(?:يحدد|يحددان|تحدد|تحددان|يحددون|تحديد|يكشف|يكشفان|تكشف|الكشف\s+عن|الإعلان\s+عن|يعلن\s+عن|الاستقرار\s+على)\s+(?:نوع|شرط|طبيعة|شكل)\s+(?:مواجهت|نزال|المواجهة|النزال|مباراة|المباراة)/.test(t)) issues.push({ code: "hidden_stipulation_title", severity: "error", field: "title", message: "العنوان بيقول إن نوع النزال اتحدد من غير ما يقول هو إيه — اكتب نوع النزال نفسه في العنوان (مثلا «نزال Weapons Wild بين…»)", excerpt: t });
