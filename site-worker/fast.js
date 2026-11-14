@@ -9,10 +9,12 @@
 const LISTINGS = new Set(["/", "/shows/", "/news/"]);
 const CONTENT = /^\/(shows|news)\/[^/]+\/$/;
 const INDEX_FRESH_MS = 4000;
-const WAIT_MS = 1500;
+const WAIT_MS = 1500; // a page body
+const INDEX_WAIT_MS = 3000; // the list (D1 behind a cold bot can take over a second)
+const RETRY_MS = 1000; // a failed list is asked again this soon, not after INDEX_FRESH_MS
 
 let build = null; // this deployment's /build.json: { commitTime, recent:Set }
-let index = { at: 0, pages: new Map(), loading: null };
+let index = { at: 0, pages: new Map(), loading: null, failed: false };
 const bodies = new Map(); // url → { commit, html }: a fast copy never changes for its commit
 
 const withTimeout = (p, ms) => Promise.race([p, new Promise((_, no) => setTimeout(() => no(new Error("timeout")), ms))]);
@@ -46,15 +48,15 @@ async function buildInfo(env) {
 
 function loadIndex(env, ctx, origin) {
   if (!index.loading) {
-    index.loading = withTimeout(viaEdge(ctx, origin + "/__fast-lane/index", 4, () => env.FAST.fetch("https://arw-site-bot/fast-lane/index")), WAIT_MS)
+    index.loading = withTimeout(viaEdge(ctx, origin + "/__fast-lane/index", 4, () => env.FAST.fetch("https://arw-site-bot/fast-lane/index")), INDEX_WAIT_MS)
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
       .then((d) => {
         const pages = new Map();
         for (const p of (d && d.pages) || []) if (p && typeof p.url === "string") pages.set(p.url, { commit: String(p.commit), commitTime: Number(p.commitTime) });
-        index = { at: Date.now(), pages, loading: null };
+        index = { at: Date.now(), pages, loading: null, failed: false };
         for (const u of bodies.keys()) if (!pages.has(u)) bodies.delete(u);
       })
-      .catch(() => { index = { ...index, at: Date.now(), loading: null }; });
+      .catch(() => { index = { ...index, at: Date.now() - INDEX_FRESH_MS + RETRY_MS, loading: null, failed: true }; });
   }
   return index.loading;
 }
@@ -137,6 +139,8 @@ export async function handle(request, env, ctx) {
       const asset = await notFound(request, env);
       if (asset.status !== 404 || LISTINGS.has(key)) return asset;
       entry = (await fastPages(env, ctx, u.origin)).get(key);
+      // the list didn't come (a cold bot, a slow D1): a new page asks once more rather than a 404
+      if (!entry && index.failed) { await loadIndex(env, ctx, u.origin); entry = index.pages.get(key); }
       if (!newer(entry, b)) return asset;
     }
     // «/shows/x» → «/shows/x/», as the assets' own trailing-slash rule does for a real page
@@ -157,6 +161,6 @@ export async function handle(request, env, ctx) {
 /** For the tests: a fresh isolate */
 export function _reset() {
   build = null;
-  index = { at: 0, pages: new Map(), loading: null };
+  index = { at: 0, pages: new Map(), loading: null, failed: false };
   bodies.clear();
 }

@@ -26,7 +26,7 @@ const A = 'a'.repeat(40), B = 'b'.repeat(40), C = 'c'.repeat(40);
 const page = (word: string) => `<!DOCTYPE html><html lang="ar"><head><title>${word}</title></head><body>${word} ${'x'.repeat(300)}</body></html>`;
 
 // ── the site's script (site-worker/fast.js) with a fake deployment and a fake bot ──────────────────────────────
-function site({ build = { commit: C, commitTime: 1000, recent: [C] } as any, fast = [] as any[], botDown = false } = {}) {
+function site({ build = { commit: C, commitTime: 1000, recent: [C] } as any, fast = [] as any[], botDown = false, failIndex = 0 } = {}) {
   _reset();
   const files: Record<string, { body: string; headers?: Record<string, string> }> = {
     '/': { body: 'REAL HOME', headers: { 'Cache-Control': 'no-cache, must-revalidate' } },
@@ -54,6 +54,7 @@ function site({ build = { commit: C, commitTime: 1000, recent: [C] } as any, fas
       const u = new URL(typeof req === 'string' ? req : req.url);
       calls.push(u.pathname + u.search);
       if (botDown) throw new Error('down');
+      if (u.pathname === '/fast-lane/index' && failIndex > 0) { failIndex--; return new Response('busy', { status: 503 }); }
       if (u.pathname === '/fast-lane/index') return Response.json({ pages: fast.map(({ html, ...p }) => p) });
       const p = fast.find((x) => x.url === u.searchParams.get('url'));
       return p ? new Response(p.html, { headers: { 'X-Fast-Commit': p.commit } }) : new Response('nf', { status: 404 });
@@ -143,6 +144,19 @@ test('a saved edit of a page the site already has shows before its full build; a
   assert.equal(await (await built.get('/shows/old-show/')).text(), 'REAL OLD SHOW');
   // without the binding: plain assets
   _reset();
+});
+
+test('the list failing once (a cold bot, a slow D1): a new page still shows, and the list is asked again soon', async () => {
+  const s = site({ failIndex: 1, fast: [{ url: '/shows/new-show/', commit: A, commitTime: 2000, html: page('FAST NEW') }] });
+  const r = await s.get('/shows/new-show/');
+  assert.equal(r.status, 200, 'the first ask failed: the page asks once more instead of a 404');
+  assert.match(await r.text(), /FAST NEW/);
+  const t = site({ failIndex: 1, fast: [{ url: '/', commit: A, commitTime: 2000, html: page('FAST HOME') }] });
+  assert.equal(await (await t.get('/')).text(), 'REAL HOME', 'a listing never waits twice: the real page');
+  await new Promise((r) => setTimeout(r, 1100));
+  await t.get('/'); // past RETRY_MS: asked again in the background
+  await new Promise((r) => setTimeout(r, 5));
+  assert.match(await (await t.get('/')).text(), /FAST HOME/);
 });
 
 test('the bot down or broken: the site is exactly as without the fast lane', async () => {
