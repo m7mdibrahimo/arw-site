@@ -1899,20 +1899,20 @@
     {
       "window": "15m",
       "remaining": 149,
-      "resetAt": 1794635554760,
-      "updatedAt": 1794634654760
+      "resetAt": 1794659904346,
+      "updatedAt": 1794659004346
     },
     {
       "window": "24h",
-      "remaining": 566,
-      "resetAt": 1794683264760,
-      "updatedAt": 1794634654760
+      "remaining": 565,
+      "resetAt": 1794683275346,
+      "updatedAt": 1794659004346
     },
     {
       "window": "30d",
-      "remaining": 1214,
-      "resetAt": 1794840072760,
-      "updatedAt": 1794634654760
+      "remaining": 1213,
+      "resetAt": 1794840083346,
+      "updatedAt": 1794659004346
     }
   ],
   "videoCooldowns": {
