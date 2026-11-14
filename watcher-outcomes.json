@@ -1,8 +1,13 @@
 {
- "https://www.ringsidenews.com/d-von-dudley-admits-he-hated-his-wwe-producer-job-nearly-two-years": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+ "https://www.ringsidenews.com/lars-sullivan-calls-brody-king-fat-antifa-dork-anti-ice-stance": {
+  "reason": "المراجعة رفضته: المصدر مابيربطش المصارع بالاتحاد ده: AEW برودي كينج — اكتب «المصارع <الاسم>» من غير اسم اتحاد",
   "retry": true,
-  "at": "2026-11-14T16:45:45.772Z"
+  "at": "2026-11-14T16:48:32.074Z"
+ },
+ "https://www.ringsidenews.com/d-von-dudley-admits-he-hated-his-wwe-producer-job-nearly-two-years": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-14T16:47:57.595Z"
  },
  "https://www.fightful.com/wrestling/4th-rope-x-mass-appeal-present-heelmatic-results-11-12": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1988,10 +1993,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-04T19:46:58.738Z"
- },
- "https://www.ringsidenews.com/first-look-chris-jericho-gorgeous-george-greatest-series": {
-  "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
-  "retry": true,
-  "at": "2026-11-04T19:29:03.919Z"
  }
 }
