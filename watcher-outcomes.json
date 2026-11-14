@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2316758/wwe-smackdown-rey-mysterio-rey-fenix-team-mexico-survivor-series": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-14T03:24:28.571Z"
+ },
  "https://www.fightful.com/wrestling/stephanie-vaquer-returns-on-11-13-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -58,11 +63,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-14T03:12:36.175Z"
- },
- "https://www.wrestlinginc.com/2316758/wwe-smackdown-rey-mysterio-rey-fenix-team-mexico-survivor-series": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-14T03:04:32.276Z"
  },
  "https://www.fightful.com/mma/gable-steveson-return-fight-set-for-ufc-336": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
