@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2312412/aew-bishop-kaun-reflects-carrying-trios-titles-historic-venue": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-14T23:57:58.383Z"
+ },
  "https://www.fightful.com/wrestling/watch-aew-full-gear-buy-in-live-tonight": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,11 +58,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-14T23:47:34.195Z"
- },
- "https://www.wrestlinginc.com/2312412/aew-bishop-kaun-reflects-carrying-trios-titles-historic-venue": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-14T23:39:09.295Z"
  },
  "https://www.ringsidenews.com/first-look-aew-full-gear-2026-stage-setup-mortgage-matchup-center": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
