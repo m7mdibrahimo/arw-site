@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2302471/aew-ilja-dragunov-continental-classic-entering-comments/": {
-    "matchedFile": "20261030071002-إيليا-دراغونوف-يبدي-رغبته-في-المشاركة-ببطولة-aew-continental-classic.md",
-    "reason": "الخبر الجديد يغطي نفس التصريحات التي أدلى بها إيليا دراغونوف في برنامج AEW Advance حول مشاركته في بطولة Continental Classic، وهي نفس الواقعة المذكورة في الخبر رقم 0.",
-    "at": "2026-10-30T16:39:34.411Z"
-  },
   "https://www.fightful.com/wrestling/rusev-says-he-got-sick-after-suffering-injury-on-wwe-raw-doesnt-think-the-two-incidents-were-related/": {
     "matchedFile": "20261030193400-سي-جيه-بيري-تعلن-عن-العمل-على-تحويل-روايتها-bulletproof-angel-إلى-فيلم-سينمائي.md",
     "reason": "الخبر الجديد يعتمد على نفس المقابلة المصدرية المذكورة في الخبر رقم 1، ويقدم تفاصيل إضافية حول نفس التصريحات التي أدلى بها روسيف بخصوص غيابه عن العروض، مما يجعله تحديثاً لنفس الحدث وليس خبراً مستقلاً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261114063253-إضافة-نزال-لتحديد-أفضلية-wargames-إلى-عرض-wwe-raw-القادم.md",
     "reason": "الخبر الجديد يكرر نفس إعلان نزال تحديد أفضلية WarGames بين ذا أوسوز وفريقي كارميلو هايز وكروز مونتانا في عرض RAW القادم والذي سبق نشره بالفعل بحذافيره.",
     "at": "2026-11-14T11:51:34.121Z"
+  },
+  "https://www.ringsidenews.com/aew-full-gear-2026-preview-confirmed-matches-start-time-how-watch/": {
+    "matchedFile": "20261114150000-دليل-مشاهدة-وموعد-انطلاق-عرض-aew-full-gear-tailgate-brawl.md",
+    "reason": "الخبر الجديد يغطي نفس بطاقة نزالات عرض AEW Full Gear وتفاصيل العرض الموجودة بالفعل في الأخبار المنشورة مسبقاً.",
+    "at": "2026-11-14T12:13:38.323Z"
   }
 }
