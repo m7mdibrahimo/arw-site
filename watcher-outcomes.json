@@ -44,11 +44,6 @@
   "retry": false,
   "at": "2026-11-14T17:52:13.166Z"
  },
- "https://www.ringsidenews.com/d-von-dudley-admits-he-hated-his-wwe-producer-job-nearly-two-years": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-14T17:43:49.740Z"
- },
  "https://www.fightful.com/wrestling/brie-bella-is-hoping-to-resume-in-ring-training-in-january": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
