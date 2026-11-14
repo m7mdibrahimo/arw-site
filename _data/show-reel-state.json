@@ -5208,7 +5208,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ار او اتش اون اونر كلوب 12.11.2026 مترجم",
-    "lastAttempt": 1794627602950,
+    "lastAttempt": 1794628492447,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5226,9 +5226,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض تي ان ايه امباكت 12.11.2026 مترجم",
-    "lastAttempt": 1794618722107,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1794628493781,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
