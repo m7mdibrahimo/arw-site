@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2316758/wwe-smackdown-rey-mysterio-rey-fenix-team-mexico-survivor-series": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يتحدثان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-14T05:08:17.170Z"
+ },
  "https://www.fightful.com/wrestling/stephanie-vaquer-returns-on-11-13-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -48,11 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-14T05:08:35.947Z"
- },
- "https://www.wrestlinginc.com/2316758/wwe-smackdown-rey-mysterio-rey-fenix-team-mexico-survivor-series": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»، فعل مثنى («يتحدثان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-14T04:54:14.780Z"
  },
  "https://www.fightful.com/wrestling/alleged-victim-in-ludwig-kaiser-battery-case-claims-he-suffered-torn-rotator-cuff-concussion": {
   "reason": "مكرر مع خبر نزل قبل كده",
