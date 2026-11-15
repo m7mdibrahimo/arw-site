@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/creed-brothers-make-surprise-aew-debut-casper-brothers-align-ftr-full-gear-2026": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-15T02:28:36.359Z"
+ },
  "https://www.fightful.com/wrestling/kasper-brothers-creed-brothers-debut-for-aew-at-full-gear-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Raquel Rodriguez",
   "retry": true,
   "at": "2026-11-05T15:05:38.938Z"
- },
- "https://www.ringsidenews.com/kam-hendrix-reacts-john-cena-denies-him-entry-john-cena-classic": {
-  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-11-05T15:00:03.394Z"
  }
 }
