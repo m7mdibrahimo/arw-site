@@ -343,3 +343,16 @@ test("no alternateName of a show keeps double quotes from the Arabic headline (I
   assert.ok(!forms.some((f) => /["«»“”]/.test(f)), forms.filter((f) => /["«»]/.test(f)).join(" | "));
   assert.ok(forms.includes("عرض ان جيه بي دبليو ال ديسبيرادو جاس بي اي انفيتيشنال 9 نوفمبر 2026"), forms.slice(0, 6).join(" | "));
 });
+
+// INCIDENTS #1324: a pre-show's Google title ended with the main event's name («— AEW Full Gear») and «Tailgate Brawl» was nowhere in it.
+test("a pre-show's title tail names the pre-show, not the main event", () => {
+  const mk = (h: string, t: string, p: string, d: string) => showSeoText({ headline: h, title: t, programName: p, eventDate: d, day: "x", isLatest: false, description: "" }).title;
+  const pre = mk("عرض فول جير تيلغيت برول 14.11.2026 مترجم", "AEW Full Gear Tailgate Brawl (2026)", "AEW Full Gear", "2026-11-14");
+  assert.ok(pre.endsWith("— AEW Tailgate Brawl"), pre);
+  assert.ok(pre.length <= 75, pre);
+  const main = mk("عرض فول جير 15.11.2026 مترجم", "AEW Full Gear (2026)", "AEW Full Gear", "2026-11-15");
+  assert.ok(main.endsWith("— AEW Full Gear"), main);
+  assert.notEqual(pre, main);
+  // a weekly episode keeps its program tail
+  assert.ok(mk("عرض سماك داون 13.11.2026 مترجم", "WWE SmackDown", "WWE SmackDown", "2026-11-13").endsWith("— WWE SmackDown"));
+});
