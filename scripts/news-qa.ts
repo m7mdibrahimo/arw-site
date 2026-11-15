@@ -339,14 +339,15 @@ function halfNames(): { re: RegExp; ar: string }[] {
     for (const [en, ar] of Object.entries(names)) {
       const e = en.trim().split(/\s+/), a = String(ar).trim().split(/\s+/);
       if (e.length !== 2 || a.length !== 2 || !e.every(w => /^[A-Za-z][A-Za-z'.-]{2,}$/.test(w)) || !a.every(w => /^[\u0621-\u064A]{2,}$/.test(w))) continue;
-      HALF_NAMES.push({ re: new RegExp(`(?:(?<![\\u0621-\\u064A])${esc(a[0])}\\s+${esc(e[1])}|(?<![A-Za-z])${esc(e[0])}\\s+${esc(a[1])})(?![\\p{L}])`, "giu"), ar: String(ar).trim() });
+      // An optional «و/ف/ب/ل» before the Arabic half: «وجادا Stone» went live (INCIDENTS #1333) — the prefix is kept.
+      HALF_NAMES.push({ re: new RegExp(`(?:(?<![\\u0621-\\u064A])([وفبل]?)${esc(a[0])}\\s+${esc(e[1])}|(?<![A-Za-z])${esc(e[0])}\\s+${esc(a[1])})(?![\\p{L}])`, "giu"), ar: String(ar).trim() });
     }
   } catch { /* the glossary is optional here */ }
   return HALF_NAMES;
 }
 export function fixHalfEnglishNames(text: string): string {
   if (!text || !/[A-Za-z]/.test(text) || !/[\u0621-\u064A]/.test(text)) return text;
-  for (const { re, ar } of halfNames()) { re.lastIndex = 0; if (re.test(text)) text = text.replace(re, ar); }
+  for (const { re, ar } of halfNames()) { re.lastIndex = 0; if (re.test(text)) text = text.replace(re, (_m, pre) => (pre || "") + ar); }
   return text;
 }
 // A letter typed three times: «ترددداته» (Orange Cassidy story), «لللعودة» and «لللقاءات» went live (INCIDENTS #935).
