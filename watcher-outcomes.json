@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2315660/luke-gallows-good-brothers-miserable-grumpy-a-holes-wwe-vince-mcmahon": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين",
+  "retry": true,
+  "at": "2026-11-15T18:47:25.989Z"
+ },
+ "https://www.wrestlinginc.com/2315550/wwe-rey-mysterio-eddie-guerrero-dragon-lee-friendship-reminds": {
+  "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين",
+  "retry": true,
+  "at": "2026-11-15T18:46:26.523Z"
+ },
  "https://www.fightful.com/wrestling/aew-posts-toni-storm-teaser-with-play-me-written-on-package": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
