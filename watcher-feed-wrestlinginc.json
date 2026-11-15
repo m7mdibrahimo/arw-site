@@ -1,5 +1,15 @@
 [
   {
+    "id": 1718441224,
+    "link": "https://www.wrestlinginc.com/2317009/aew-full-gear-2026-kazuchika-okada-adam-copeland-international-title/",
+    "date": "Sun, 15 Nov 2026 01:40:48 +0000",
+    "date_gmt": "2026-11-15T01:40:48.000Z",
+    "title": {
+      "rendered": "Kazuchika Okada Beats Adam Copeland, Retains AEW International Title At Full Gear 2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/kazuchika-okada-beats-adam-copeland-retains-aew-international-title-at-full-gear-2026/l-intro-1794706736.jpg"
+  },
+  {
     "id": 1571766744,
     "link": "https://www.wrestlinginc.com/2316990/aew-full-gear-tailbate-brawl-queen-aminata-tbs-jack-perry-big-boom-aj/",
     "date": "Sun, 15 Nov 2026 01:04:15 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE's Rey Mysterio Compares & Contrasts His Upbringing With Son Dominik Mysterio"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-rey-mysterio-compares-contrasts-his-upbringing-with-son-dominik-mysterio/l-intro-1794409017.jpg"
-  },
-  {
-    "id": 4521324439,
-    "link": "https://www.wrestlinginc.com/2316885/aew-full-gear-talent-status-us-flight-cancelations/",
-    "date": "Sat, 14 Nov 2026 17:06:21 +0000",
-    "date_gmt": "2026-11-14T17:06:21.000Z",
-    "title": {
-      "rendered": "Backstage Update On Talent Status For AEW Full Gear In Wake Of US Flight Cancelations"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-talent-status-for-aew-full-gear-in-wake-of-us-flight-cancelations/l-intro-1794675737.jpg"
   }
 ]
