@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/liv-morgan-drops-500-puppy-she-found-side-road": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-15T01:48:37.328Z"
+ },
+ "https://www.ringsidenews.com/aew-full-gear-results-highlights-key-moments-november-14-2026": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-15T01:47:37.522Z"
+ },
  "https://www.fightful.com/wrestling/queen-aminata-retains-aew-tbs-title-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1988,10 +1998,5 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
   "retry": true,
   "at": "2026-11-05T12:33:15.682Z"
- },
- "https://www.fightful.com/wrestling/tko-president-speaks-about-chances-of-wwe-wrestlemania-43-moving-from-saudi-arabia-we-have-already-been-paid-half-upfront": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-05T12:30:58.546Z"
  }
 }
