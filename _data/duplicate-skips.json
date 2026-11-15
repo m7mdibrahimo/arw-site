@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/watch-countdown-to-nxt-halloween-havoc-oct-31-2026/": {
-    "matchedFile": "20261030185142-نجمة-قائمة-wwe-smackdown-تايتوم-باكسلي-تعود-للظهور-في-عرض-wwe-nxt-halloween-havoc-2026.md",
-    "reason": "الخبر الجديد يتحدث عن لجنة التحليل لعرض NXT Halloween Havoc، وهو نفس الحدث الذي تم تغطيته في الخبر رقم 1 والذي أعلن عن مشاركة تايتوم باكسلي في نفس اللجنة.",
-    "at": "2026-10-31T21:37:08.417Z"
-  },
   "https://www.fightful.com/wrestling/wwe-crown-jewel-venue-moved-for-safety-reasons/": {
     "matchedFile": "20261030181607-الكشف-رسميا-عن-موقع-جديد-لإقامة-عرض-wwe-crown-jewel-في-السعودية.md",
     "reason": "الخبر الجديد يغطي نفس واقعة تغيير مكان إقامة عرض Crown Jewel إلى صالة The Venue، وهي معلومة تم ذكرها بالفعل في الخبر رقم 1.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261115055910-سويرف-ستريكلاند-وفريق-ذا-نيو-ليفل-يفوزون-ببطولة-aew-العالمية-للفرق-الثلاثية-في-نزال-texas-death-ضمن-عرض-aew-full-gear.md",
     "reason": "الخبر الجديد يتطابق كلياً مع الخبر المنشور، حيث يغطي نفس نتيجة نزال Texas Deathmatch وتتويج Swerve Strickland وفريق New Level ببطولة AEW World Trios في عرض AEW Full Gear من مصدر مختلف.",
     "at": "2026-11-15T03:08:45.946Z"
+  },
+  "https://www.wrestlinginc.com/2317041/aew-full-gear-2026-swerve-strickland-new-level-texas-death-brodido-hangman/": {
+    "matchedFile": "20261115055910-سويرف-ستريكلاند-وفريق-ذا-نيو-ليفل-يفوزون-ببطولة-aew-العالمية-للفرق-الثلاثية-في-نزال-texas-death-ضمن-عرض-aew-full-gear.md",
+    "reason": "الخبر الجديد يغطي نفس نتيجة نزال بطولة AEW Trios في عرض Full Gear 2026 والفائزين به، وهو مطابق للخبر المنشور بالفعل.",
+    "at": "2026-11-15T03:27:03.695Z"
   }
 }
