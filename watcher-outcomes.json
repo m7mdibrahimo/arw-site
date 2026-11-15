@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/paige-collett-flashes-referee-during-jcw-match-new-orleans-tapings": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-15T19:44:58.900Z"
+ },
  "https://www.fightful.com/wrestling/kofi-comments-after-competing-and-surviving-in-texas-deathmatch-at-aew-full-gear": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -1983,10 +1988,5 @@
   "reason": "تقرير مشاهدة لعرض قديم (2026-10-29)",
   "retry": false,
   "at": "2026-11-06T14:51:02.698Z"
- },
- "https://www.ringsidenews.com/hardys-stance-potential-wwe-hall-fame-induction-while-still-active": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-06T13:44:13.259Z"
  }
 }
