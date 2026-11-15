@@ -1,7 +1,7 @@
 ---
 title: "UFC 334: Gane vs. Hokit Results"
 slug: "ufc-334-gane-vs-hokit-results"
-description: "UFC 334: Gane vs. Hokit took place on Saturday, November 14 from Madison Square Garden in New York, NY, airing live on Paramount+."
+description: "UFC 334: Gane vs. Hokit took place on Saturday, November 14 from Madison Square Garden in New York, NY. The event aired on Paramount+. Full results are below."
 federation: MMA
 date: 2026-11-15T00:07:05.000Z
 created_at: 2026-11-15T00:07:10.927Z
@@ -10,21 +10,26 @@ source_url: "https://www.fightful.com/mma/ufc-334-gane-vs-hokit-results/"
 en_tags:
   - "UFC"
   - "UFC 334"
-  - "Gane vs. Hokit"
-  - "Madison Square Garden"
-  - "Paramount+"
-image: /content/images/k75f2uyporct4c41.jpg
+  - "Stephen Thompson"
+  - "Jim Miller"
+image: /content/images/36g4o8t2vgtpqvj1.jpg
 ---
-UFC 334: Gane vs. Hokit took place on Saturday, November 14 from Madison Square Garden in New York, NY, airing live on Paramount+.
+UFC 334: Gane vs. Hokit took place on Saturday, November 14 from Madison Square Garden in New York, NY. The event aired on Paramount+. Full results are below.
 
-In the opening bout, Evan Elder defeated Samuel Sanches by unanimous decision with scores of 30-26 across all three judges.
+Evan Elder def. Samuel Sanches by unanimous decision (30-26, 30-26, 30-26)
 
-In a bantamweight contest where Juan Diaz missed weight, Juan Diaz secured a unanimous decision victory over Alatengheili, with all three judges scoring it 30-27.
+Bantamweight (Diaz missed weight): Juan Diaz def. Alatengheili by unanimous decision (30-27, 30-27, 30-27)
 
-In the women's bantamweight division, Bia Mesquita forced Macy Chiasson to tap out via a rear-naked choke submission at 3:23 of the opening round.
+Women's Bantamweight: Bia Mesquita def. Macy Chiasson by submission (rear-naked choke) at 3:23 of Round 1
 
-In a lightweight matchup, Melquizael Costa defeated Jared Gordon by unanimous decision, with the judges scoring the bout 29-28 three times.
+Lightweight: Melquizael Costa def. Jared Gordon by unanimous decision (29-28, 29-28, 29-28)
 
-In a 190-pound catchweight bout, Cesar Almeida defeated Donte Johnson via TKO with punches at 3:20 of the first round.
+190-pound Catchweight: Cesar Almeida def. Donte Johnson by TKO (punches) at 3:20 of Round 1
 
-In a lightweight encounter where Terrance McKinney missed weight, Terrance McKinney knocked out Jim Miller with punches at 1:53 of the first round.
+Lightweight (McKinney missed weight): Terrance McKinney def. Jim Miller by knockout (punches) at 1:53 of Round 1
+
+Lightweight: Chris Duncan def. Drew Dober by unanimous decision (30-27, 30-27, 29-28)
+
+Welterweight: Stephen Thompson def. Charles Radtke by TKO (kick) at 2:54 of Round 3
+
+Flyweight: Luis Gurule def. Bilal Hasan by split decision (28-29, 29-28, 29-28)
