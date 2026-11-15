@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/noam-dar-admits-he-considered-retirement-back-back-injuries": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-15T12:18:56.607Z"
+ },
  "https://www.fightful.com/wrestling/tna-destination-x-2026-preview-start-time-how-to-watch-11-15": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: علامة اقتباس اتفتحت ومتقفلتش (أو «» مع \" مخلوطين) — اقفل الاقتباس بنفس العلامة اللي اتفتح بيها",
   "retry": true,
   "at": "2026-11-06T02:08:44.212Z"
- },
- "https://www.fightful.com/wrestling/trey-miguel-doesnt-want-to-do-20-minute-flip-off-with-leon-slater-at-tna-destination-x-thinks-they-have-better-story-to-tell": {
-  "reason": "المراجعة رفضته: ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-06T01:31:35.498Z"
  }
 }
