@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/multiple-wwe-superstars-did-not-want-to-be-booked-for-wwe-crown-jewel-due-to-safety-concerns/": {
-    "matchedFile": "20261030173608-wwe-لا-تشجع-مصارعيها-على-رفض-المشاركة-في-رحلة-عرض-wwe-crown-jewel-بالسعودية.md",
-    "reason": "تكرار لنفس القصة والتقارير الصحفية حول قلق ورفض بعض المصارعين السفر إلى السعودية لعرض Crown Jewel ورد مسؤولي WWE",
-    "at": "2026-10-31T23:58:28.443Z"
-  },
   "https://www.fightful.com/wrestling/zilla-fatu-overcomes-birthright-to-defeat-charlie-dempsey-at-nxt-halloween-havoc/": {
     "matchedFile": "20261101032725-زيلا-فاتو-يهزم-تشارلي-ديمبسي-في-نزال-مثير-في-عرض-wwe-nxt-halloween-havoc-2026.md",
     "reason": "الخبر الجديد يغطي نفس نزال ونتيجة مواجهة زيلا فاتو وتشارلي ديمبسي في عرض NXT Halloween Havoc 2026 وتدخلات فريق BirthRight المشروحة في الخبر المنشور رقم [0].",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261115062306-فوز-كريس-ستاتلاندر-وهارلي-كاميرون-ببطولة-aew-العالمية-للفرق-للسيدات-في-عرض-aew-full-gear-2026.md",
     "reason": "الخبر الجديد يعنْوَن ويغطي نفس النزال ونفس النتيجة لفوز كريس ستاتلاندر وهارلي كاميرون ببطولة AEW العالمية للفرق للسيدات في نفس العرض، وهو تكرار لنفس الحدث المنشور مسبقاً.",
     "at": "2026-11-15T03:31:52.861Z"
+  },
+  "https://www.wrestlinginc.com/2317052/aew-full-gear-2026-wrathlander-brawling-birds-womens-tag-titles/": {
+    "matchedFile": "20261115062306-فوز-كريس-ستاتلاندر-وهارلي-كاميرون-ببطولة-aew-العالمية-للفرق-للسيدات-في-عرض-aew-full-gear-2026.md",
+    "reason": "الخبر يغطي نفس نتيجة النزال وفوز كريس ستاتلاندر وهارلي كاميرون ببطولة الفرق للسيدات في عرض Full Gear 2026",
+    "at": "2026-11-15T03:45:30.211Z"
   }
 }
