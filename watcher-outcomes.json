@@ -1,48 +1,48 @@
 {
- "https://www.wrestlinginc.com/2316787/tna-destination-x-november-15-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T20:24:28.420Z"
- },
  "https://www.fightful.com/wrestling/rey-horus-out-world-x-cup-will-be-decided-in-an-elimination-match-between-home-town-man-vs-ricky-sosa-vs-amir-jordan-vs-fabian-aichner-vs-jason-hotch-at-tna-destination-x": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-15T20:26:17.848Z"
+  "at": "2026-11-15T20:28:58.634Z"
  },
  "https://www.fightful.com/wrestling/ken-anderson-confirms-he-has-signed-a-wwe-legends-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T20:25:36.097Z"
+  "at": "2026-11-15T20:28:37.765Z"
  },
  "https://www.fightful.com/wrestling/aew-posts-toni-storm-teaser-with-play-me-written-on-package": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T20:25:35.734Z"
+  "at": "2026-11-15T20:28:37.522Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-when-i-came-into-aew-i-promised-that-the-landscape-is-about-to-change-why-because-i-am-here": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T20:25:35.187Z"
+  "at": "2026-11-15T20:28:37.136Z"
  },
  "https://www.fightful.com/wrestling/tna-destination-x-2026-preview-start-time-how-to-watch-11-15": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T20:25:33.564Z"
+  "at": "2026-11-15T20:28:35.979Z"
  },
  "https://www.fightful.com/wrestling/tony-khan-says-if-he-hadnt-sent-private-planes-a-lot-of-scheduled-wrestlers-for-aew-full-gear-wouldnt-have-made-the-show": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T20:25:33.006Z"
+  "at": "2026-11-15T20:28:35.611Z"
  },
  "https://www.fightful.com/wrestling/will-ospreay-def-kyle-fletcher-to-retain-aew-world-title-at-full-gear-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T20:25:32.550Z"
+  "at": "2026-11-15T20:28:35.309Z"
  },
  "https://www.fightful.com/wrestling/mjf-returns-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T20:25:32.321Z"
+  "at": "2026-11-15T20:28:35.158Z"
+ },
+ "https://www.wrestlinginc.com/2316787/tna-destination-x-november-15-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-15T20:24:28.420Z"
  },
  "https://www.fightful.com/wrestling/watch-aew-full-gear-post-show-media-scrum-11-14-26": {
   "reason": "مكرر مع خبر نزل قبل كده",
