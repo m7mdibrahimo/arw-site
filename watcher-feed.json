@@ -1,5 +1,15 @@
 [
   {
+    "id": 339212,
+    "link": "https://www.fightful.com/wrestling/wwe-nxt-holiday-live-tour-results-11-14/",
+    "date": "2026-11-15T09:00:00",
+    "date_gmt": "2026-11-15T14:00:00",
+    "title": {
+      "rendered": "WWE NXT Holiday Live Tour Results (11/14)"
+    },
+    "featured_image": "https://www.fightful.com/wp-content/uploads/2025/09/nxt-2024.jpg"
+  },
+  {
     "id": 339236,
     "link": "https://www.fightful.com/wrestling/ricky-sosa-says-that-it-is-a-big-big-honor-to-represent-belgium-in-the-tna-world-x-cup/",
     "date": "2026-11-15T08:46:11",
@@ -288,15 +298,5 @@
       "rendered": "Queen Aminata Retains AEW TBS Title At AEW Full Gear Tailgate Brawl"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/14200224/HXIKlU3XIAA0jcP.jpeg"
-  },
-  {
-    "id": 339115,
-    "link": "https://www.fightful.com/wrestling/big-boom-aj-remains-undefeated-in-aew/",
-    "date": "2026-11-14T19:42:57",
-    "date_gmt": "2026-11-15T00:42:57",
-    "title": {
-      "rendered": "Big Boom AJ Remains Undefeated In AEW"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/14194236/HXIGX4LXAAAAD_G.jpeg"
   }
 ]
