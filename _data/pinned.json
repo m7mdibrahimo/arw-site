@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/aew-full-gear-tailgate-brawl-2026/",
+    "title": "عرض فول جير تيلغيت برول 14.11.2026 مترجم",
+    "subtitle": "AEW Full Gear Tailgate Brawl (2026)",
+    "image": "/content/images/id5kxfu6f5hqlxsm.jpg?w=800",
+    "federation": "AEW",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض فول جير تيلغيت برول مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-smackdown-13-11-2026/",
     "title": "عرض سماك داون 13.11.2026 مترجم",
     "subtitle": "WWE Smackdown 13.11.2026",
@@ -97,16 +108,5 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-crown-jewel-2026/",
-    "title": "عرض كراون جول 07.11.2026 مترجم",
-    "subtitle": "WWE Crown Jewel (2026)",
-    "image": "/content/images/1n9f1boajnp25qxy.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض كراون جول مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
