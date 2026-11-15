@@ -1,5 +1,25 @@
 [
   {
+    "id": 339200,
+    "link": "https://www.fightful.com/wrestling/the-cut-defeats-death-riders-and-the-conglomeration-in-anarchy-in-the-arena-match-at-aew-full-gear-2026-kemalito-wheeler-yuta-and-more-make-appearances/",
+    "date": "2026-11-15T00:20:34",
+    "date_gmt": "2026-11-15T05:20:34",
+    "title": {
+      "rendered": "The Cut Defeats Death Riders And The Conglomeration In Anarchy In The Arena Match At AEW Full Gear 2026; KeMalito, Wheeler Yuta, And More Make Appearances"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/15001403/HXJD1raWIAAd3wK.jpg"
+  },
+  {
+    "id": 339199,
+    "link": "https://www.fightful.com/wrestling/samoa-joe-vs-jack-perry-set-for-11-18-aew-dynamite/",
+    "date": "2026-11-15T00:17:19",
+    "date_gmt": "2026-11-15T05:17:19",
+    "title": {
+      "rendered": "Samoa Joe vs. Jack Perry Set For 11/18 AEW Dynamite"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/18024858/aew-dynamite-logo.jpg"
+  },
+  {
     "id": 339203,
     "link": "https://www.fightful.com/wrestling/watch-aew-full-gear-post-show-media-scrum-11-14-26/",
     "date": "2026-11-15T00:15:47",
@@ -278,25 +298,5 @@
       "rendered": "AEW Landed Licensed Songs For Full Gear"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/16161946/fullgearpac.jpg"
-  },
-  {
-    "id": 339088,
-    "link": "https://www.fightful.com/wrestling/aew-dynamite-and-collision-averages-over-620000-viewers-on-cable-tv/",
-    "date": "2026-11-14T17:56:22",
-    "date_gmt": "2026-11-14T22:56:22",
-    "title": {
-      "rendered": "AEW Dynamite And Collision Averages Over 620,000 Viewers On Cable TV"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/10194242/dynamite-2024-1-2.jpg"
-  },
-  {
-    "id": 339086,
-    "link": "https://www.fightful.com/wrestling/grounded-flights-cause-travel-issues-for-wwe-aew-tna-and-convention/",
-    "date": "2026-11-14T17:30:20",
-    "date_gmt": "2026-11-14T22:30:20",
-    "title": {
-      "rendered": "Grounded Flights Cause Travel Issues For WWE, AEW, TNA, And Convention"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/13163219/Screenshot-2026-11-13-at-4.32.02-PM.png"
   }
 ]

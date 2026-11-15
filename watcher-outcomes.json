@@ -5,64 +5,69 @@
   "at": "2026-11-15T05:34:03.508Z"
  },
  "https://www.fightful.com/wrestling/watch-aew-full-gear-post-show-media-scrum-11-14-26": {
-  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي، المتن (296 حرف) أطول بكثير من المصدر (46 حرف) — حشو",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-15T05:31:05.163Z"
+ },
+ "https://www.fightful.com/wrestling/cm-punk-says-he-isnt-retiring-soon-youre-stuck-with-me-for-at-least-five-more-years": {
+  "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:23:32.270Z"
+  "at": "2026-11-15T05:25:40.292Z"
  },
  "https://www.fightful.com/wrestling/sherilyn-guerrero-pays-tribute-to-father-eddie-guerrero-in-in-ring-debut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:17:18.949Z"
+  "at": "2026-11-15T05:25:39.980Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-defeats-tommaso-ciampa-to-win-aew-national-championship-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:17:18.681Z"
+  "at": "2026-11-15T05:25:39.597Z"
  },
  "https://www.fightful.com/wrestling/kris-statlander-harley-cameron-capture-aew-womens-world-tag-team-titles-at-full-gear-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:17:18.475Z"
+  "at": "2026-11-15T05:25:39.279Z"
  },
  "https://www.fightful.com/wrestling/swerve-strickland-and-new-level-win-texas-deathmatch-to-capture-aew-world-trios-title-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:17:18.268Z"
+  "at": "2026-11-15T05:25:38.989Z"
  },
  "https://www.fightful.com/wrestling/kasper-brothers-creed-brothers-debut-for-aew-at-full-gear-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:17:17.875Z"
+  "at": "2026-11-15T05:25:38.415Z"
  },
  "https://www.fightful.com/wrestling/watch-full-episode-lucha-libre-aaa-november-14-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:17:17.732Z"
+  "at": "2026-11-15T05:25:38.214Z"
  },
  "https://www.fightful.com/wrestling/queen-aminata-retains-aew-tbs-title-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:17:17.388Z"
+  "at": "2026-11-15T05:25:37.727Z"
  },
  "https://www.fightful.com/wrestling/big-boom-aj-remains-undefeated-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:17:17.244Z"
+  "at": "2026-11-15T05:25:37.527Z"
  },
  "https://www.fightful.com/wrestling/aew-redesigns-trios-titles-to-pay-tribute-to-pac": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:17:16.961Z"
+  "at": "2026-11-15T05:25:37.128Z"
  },
  "https://www.fightful.com/wrestling/watch-aew-full-gear-buy-in-live-tonight": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:17:16.555Z"
+  "at": "2026-11-15T05:25:36.551Z"
  },
  "https://www.fightful.com/wrestling/report-trey-miguel-expected-to-miss-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:17:16.334Z"
+  "at": "2026-11-15T05:25:36.238Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-and-collision-averages-over-620000-viewers-on-cable-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
