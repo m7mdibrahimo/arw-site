@@ -376,7 +376,8 @@ const RULES: Rule[] = [
   { code: "doubled_first_letter", severity: "error", re: new RegExp(`(?<![${AR}])[وفبكل]?ال([^ماتنيلأإآءوهب\\s])\\1[${AR}]+`, "g"), message: "حرف مكتوب مرتين في أول الكلمة بعد «ال» («الععد»، «الششهيرة») — غلطة كتابة" },
   // «… إلى بطاقة عرض WWE SmackDown المقرر إقامته.» — the sentence ends before saying when (INCIDENTS #1286)
   { code: "dangling_scheduled", severity: "error", re: /المقرر\s+(?:إقامته|إقامتها|عقده|عقدها|بثه|بثها|إذاعته|إذاعتها)\s*[.،:]/g, message: "«المقرر إقامته» والجملة خلصت من غير ما تقول إمتى — اكتب اليوم والتاريخ أو اشطبها" },
-  { code: "repeated_word", severity: "error", re: /(?<![ء-ي])[وفبل]?عرض\s+عرض(?![ء-ي])/g, message: "كلمة «عرض» مكررة مرتين ورا بعض — اكتبها مرة واحدة" },
+  // Blocking (it was a warning-only «repeated_word»): «أثناء استضافة الرحلة لعرض عرض AEW Collision» went live (Kairi story, INCIDENTS #1315)
+  { code: "doubled_show_word", severity: "error", re: /(?<![ء-ي])[وفبل]?عرض\s+عرض(?![ء-ي])/g, message: "كلمة «عرض» مكررة مرتين ورا بعض — اكتبها مرة واحدة" },
   // «أجرى X مقابلة مع Y في كواليس العرض الذي أكد…» — the place named twice in one sentence made «الذي» point at the show (SmackDown results, INCIDENTS #1030)
   { code: "repeated_backstage", severity: "error", re: /كواليس\s+(?:ال)?عرض[^.\n]{0,60}كواليس\s+(?:ال)?عرض/g, message: "«كواليس العرض» مكررة في نفس الجملة (و«الذي» بعدها تشير للعرض) — اذكرها مرة واحدة" },
   { code: "repeated_word_waw", severity: "error", re: new RegExp(`(?<![${AR}])(?:لل|ال|بال|كال)(?!كثير|نهائي|قمصان)([${AR}]{3,})\\s+وال\\1(?![${AR}])`, "g"), message: "نفس الكلمة مكررة حوالين «و» («للدعم والدعم المعنوي») — اشطب التكرار" },
@@ -2645,6 +2646,11 @@ export function fixNearGlossaryNames(text: string, names: string[]): string {
     // only a whole word of the same length (or with a leading \u00AB\u0648\u00BB), exactly one letter different, takes the glossary spelling.
     if (words.length === 1 && /^[\u0621-\u064A]{5,}$/.test(name) && !out.includes(name)) {
       out = out.replace(/(?<![\u0621-\u064A])(\u0648?)([\u0621-\u064A]+)(?![\u0621-\u064A])/g, (all, pre: string, w: string) => {
+        // One long vowel (\u0627/\u0648/\u064A) left out: \u00AB\u0647\u064A\u0627\u0646\u00BB for Hyan \u00AB\u0647\u0627\u064A\u0627\u0646\u00BB (Full Gear Tailgate Brawl, INCIDENTS #1315).
+        if (w.length === name.length - 1 && w.length >= 4) {
+          for (let k = 1; k < name.length - 1; k++) if ("\u0627\u0648\u064A".includes(name[k]) && name.slice(0, k) + name.slice(k + 1) === w) return pre + name;
+          return all;
+        }
         if (w.length !== name.length) return all;
         let diff = 0;
         for (let k = 0; k < w.length; k++) if (w[k] !== name[k]) diff++;

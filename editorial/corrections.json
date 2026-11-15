@@ -2,6 +2,24 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "(?<pre>[وفبل]?)عرض\\s+عرض(?![\\u0621-\\u064A])",
+      "right": "$<pre>عرض",
+      "regex": true,
+      "note": "«عرض» مكررة ورا بعض («لعرض عرض AEW Collision») بتيجي من المراجع اللغوي بعد التنظيف الأول — خبر كايري (INCIDENTS #1315)؛ «استعرض عرض» ماتتلمسش"
+    },
+    {
+      "wrong": "نزال (?:ال)?(?:تايلغيت|تيلغيت|تايلجيت|تيلجيت|تايل جيت|تيل جيت) براول",
+      "right": "العرض التمهيدي Tailgate Brawl",
+      "regex": true,
+      "note": "Tailgate Brawl هو العرض التمهيدي قبل AEW Full Gear مش نزال، واسمه يتكتب بالإنجليزي — خبر دون كاليس فاميلي (INCIDENTS #1315)"
+    },
+    {
+      "wrong": "(?:ال)?(?:تايلغيت|تيلغيت|تايلجيت|تيلجيت|تايل جيت|تيل جيت) براول",
+      "right": "Tailgate Brawl",
+      "regex": true,
+      "note": "اسم العرض التمهيدي يتكتب بالإنجليزي (INCIDENTS #1315)"
+    },
+    {
       "wrong": "(?<=(?:Center|Centre|Arena|Stadium|Garden|Coliseum|Dome|Hall|Pavilion|Amphitheatre|Amphitheater|Field|Park|Theatre|Theater)\\s)ري فينيكس",
       "right": "في فينيكس",
       "regex": true,

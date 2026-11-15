@@ -496,9 +496,9 @@ test("third-person feminine plural verbs and Street Profits are corrected (INCID
 });
 
 test("«بعرض عرض AEW Redemption» (a doubled 3-letter «عرض») is blocked, «استعرض عرض» is not (INCIDENTS #965)", () => {
-  assert.ok(checkArticle("عنوان", "في مواجهة بدون قوانين بعرض عرض AEW Redemption.").some((i) => i.code === "repeated_word"));
-  assert.ok(checkArticle("عنوان", "قدم عرض عرض AEW Dynamite مواجهة قوية.").some((i) => i.code === "repeated_word"));
-  assert.ok(!checkArticle("عنوان", "بينما استعرض عرض TNA iMPACT باقة من أبرز لقطاته.").some((i) => i.code === "repeated_word"));
+  assert.ok(checkArticle("عنوان", "في مواجهة بدون قوانين بعرض عرض AEW Redemption.").some((i) => i.code === "repeated_word" || i.code === "doubled_show_word"));
+  assert.ok(checkArticle("عنوان", "قدم عرض عرض AEW Dynamite مواجهة قوية.").some((i) => i.code === "repeated_word" || i.code === "doubled_show_word"));
+  assert.ok(!checkArticle("عنوان", "بينما استعرض عرض TNA iMPACT باقة من أبرز لقطاته.").some((i) => i.code === "repeated_word" || i.code === "doubled_show_word"));
 });
 
 test("team members written twice, «النتيجة صالحه», a lone «ك» before a quote and the duals «يعيدان»/«بدلتين مطابقتين» (round 2026-10-30)", () => {
