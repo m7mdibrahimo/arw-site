@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aew-full-gear-results-highlights-key-moments-november-14-2026": {
+  "reason": "المراجعة رفضته: صيغة مثنى (صفقا/احتفلا/أمام عيني X وY…) ممنوعة: اكتب فعل جمع («مات وجيف صفقوا») أو «أمام X وY».",
+  "retry": true,
+  "at": "2026-11-15T02:01:16.484Z"
+ },
  "https://www.fightful.com/wrestling/queen-aminata-retains-aew-tbs-title-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,11 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-15T01:58:50.783Z"
- },
- "https://www.ringsidenews.com/aew-full-gear-results-highlights-key-moments-november-14-2026": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T01:51:59.399Z"
  },
  "https://www.ringsidenews.com/liv-morgan-drops-500-puppy-she-found-side-road": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
