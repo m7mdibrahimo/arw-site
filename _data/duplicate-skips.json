@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/wwe-nxt-halloween-havoc-2026-betting-odds-reveal-favorites-championship-matches/": {
-    "matchedFile": "20261030012652-wwe-nxt-halloween-havoc-2026-أبرز-نقاط-الجذب-والإخفاقات-في-العرض.md",
-    "reason": "الخبر الجديد يناقش تفاصيل نزالات عرض WWE NXT Halloween Havoc 2026 وأرقام المراهنات الخاصة بها، وهو مرتبط ارتباطاً وثيقاً بالعرض ونزالاته التي تم تناولها بالفعل في الخبر المنشور [0] (مثل نزال غرايسون والر وتوني دي أنجيلو، ونزال كيلاني جوردان، ونزال شايلو هيل وإيزي دايم)، ويعتبر تفصيلاً إضافياً لبطاقة النزالات وليس تطوراً إخبارياً مستقلاً.",
-    "at": "2026-10-31T13:11:05.268Z"
-  },
   "https://www.ringsidenews.com/aew-dynamite-viewership-sees-slight-drop-october-28-2026/": {
     "matchedFile": "20261031162830-تقرير-نسب-مشاهدة-وتقييمات-عرض-aew-dynamite-بتاريخ-28-أكتوبر-2026.md",
     "reason": "الخبر الجديد يغطي نفس نسب المشاهدة لعرض AEW Dynamite بتاريخ 28 أكتوبر 2026 (620 ألف مشاهد) والتي تم تغطيتها بالفعل في الخبر المنشور.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261115011929-اتحاد-aew-يكشف-عن-المشاركين-في-بطولة-continental-classic-خلال-استراحة-عرض-monday-night-football.md",
     "reason": "الخبر الجديد يعيد سرد نفس تفاصيل الإعلان عن بطولة Continental Classic وموعد الكشف عن المشاركين بين شوطي مباراة كرة القدم الأمريكية، وهي تفاصيل تم تغطيتها بالفعل في الخبر رقم 1.",
     "at": "2026-11-15T01:11:27.618Z"
+  },
+  "https://www.fightful.com/wrestling/queen-aminata-retains-aew-tbs-title-at-aew-full-gear/": {
+    "matchedFile": "20261115040415-كوين-أميناتا-تحتفظ-بلقب-aew-tbs-في-عرض-full-gear-2026-tailgate-brawl.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث (نزال لقب AEW TBS في عرض Tailgate Brawl) ونفس تفاصيل تغيير النزال بسبب مشاكل السفر، وهو ما تم تغطيته بالفعل في الخبر المنشور.",
+    "at": "2026-11-15T01:17:08.041Z"
   }
 }
