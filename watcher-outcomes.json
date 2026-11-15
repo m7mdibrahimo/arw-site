@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/cm-punk-shuts-down-retirement-rumors-reveals-how-much-longer-he-plans-wrestle": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-15T04:45:15.232Z"
+ },
  "https://www.ringsidenews.com/aew-full-gear-results-highlights-key-moments-november-14-2026": {
   "reason": "المراجعة رفضته: العنوان فيه «ويل أوسبراي» والنص مفيهوش الاسم ده خالص — يا تكتب في النص اللي حصل معاه زي المصدر، يا تشيل الاسم من العنوان، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-05T16:57:59.874Z"
- },
- "https://www.fightful.com/wrestling/tna-contract-update-on-mustafa-ali": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-05T16:29:46.914Z"
  }
 }
