@@ -49,11 +49,6 @@
   "retry": true,
   "at": "2026-11-15T23:18:00.669Z"
  },
- "https://www.ringsidenews.com/paige-collett-wants-obi-wan-kenobi-inside-her-says-force-choked-would-complete-her-life": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T23:16:26.721Z"
- },
  "https://www.fightful.com/wrestling/tony-khan-says-if-he-hadnt-sent-private-planes-a-lot-of-scheduled-wrestlers-for-aew-full-gear-wouldnt-have-made-the-show": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
