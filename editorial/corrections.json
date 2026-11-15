@@ -2,6 +2,23 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "لانس دورادو",
+      "right": "لينس دورادو",
+      "note": "Lince Dorado — «لينس» مش «لانس» — خبر جاك كارتويل (INCIDENTS #1317)"
+    },
+    {
+      "wrong": "(?<a>ال|لل)أخوة(?=\\s+(?!(?:في|بين|التي|الذي|عن|من|على|مع)(?![\\u0621-\\u064A]))(?!و|ال)[\\u0621-\\u064A])",
+      "right": "$<a>إخوة",
+      "regex": true,
+      "note": "«الأخوة كاسبر» — الإخوة (brothers) بكسرة تحت الألف، «الأخوة» معناها الأخوّة/الصداقة — خبر الإخوة كاسبر (INCIDENTS #1317)"
+    },
+    {
+      "wrong": "ليضع حد النهاية ل(?<w>مسيرته|مسيرتها)(?:\\s+داخل\\s+(?:الحلبة|القفص|الأوكتاغون))?",
+      "right": "ليختم بذلك $<w>",
+      "regex": true,
+      "note": "«ليضع حد النهاية لمسيرته داخل الحلبة» جملة مكسورة — «ليختم بذلك مسيرته» — خبر اعتزال ستيفن طومسون (INCIDENTS #1317)"
+    },
+    {
       "wrong": "(?<!(?:حلقة|حلقات|نسخة|ليلة|فعاليات|أمسية|دورة|مواجهة|مباراة)\\s)عرض\\s+(?<name>[A-Za-z][A-Za-z0-9&.'\\- ]{0,40}?)\\s+(?<w>و?)التي\\s+أقيمت(?![\\u0621-\\u064A])",
       "right": "عرض $<name> $<w>الذي أقيم",
       "regex": true,
@@ -12463,6 +12480,11 @@
       "right": "$<pre>في $<p>",
       "regex": true,
       "note": "اسم الاتحاد لوحده مش عرض: «نجاحي في المنافسات الفردية داخل عرض AEW تحقق» = «في AEW» (خبر كايل فليتشر، INCIDENTS #1311)"
+    },
+    {
+      "wrong": "ديل فيكينغو",
+      "right": "ديل فيكينجو",
+      "note": "El Hijo del Vikingo — في قاموس الأسماء «إل هيخو ديل فيكينجو» — خبر ري ميستيريو ودوريان رولدان (INCIDENTS #1317)"
     }
   ]
 }

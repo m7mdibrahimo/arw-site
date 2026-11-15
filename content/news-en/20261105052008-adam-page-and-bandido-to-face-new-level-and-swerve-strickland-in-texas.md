@@ -1,5 +1,5 @@
 ---
-title: "Adam Page and Bandido to Face New Level and Swerve Strickland in Texas Deathmatch at AEW Full Gear"
+title: "Adam Page and Brodido to Face New Level and Swerve Strickland in Texas Deathmatch at AEW Full Gear"
 slug: "adam-page-and-bandido-to-face-new-level-and-swerve-strickland-in-texas"
 description: "Bandido approached Page backstage to express his frustration with the disrespect Strickland has shown him."
 federation: AEW

@@ -163,6 +163,16 @@ function withLamAlefForms(corrections: Correction[]): Correction[] {
 }
 
 /** Applies every wrong→right rule from editorial/corrections.json. Idempotent. */
+/**
+ * «Hangman Page» written «هانغمان بيدج» and then «بايج» further down: the Swerve trios story said «استهدف بايج وبروديدو»
+ * (INCIDENTS #1317). A story that names Hangman as «بيدج» writes him «بيدج» every time, unless a Paige (Saraya, Paige
+ * VanZant) is in it too.
+ */
+export function fixHangmanPage(text: string): string {
+  if (!text || !/بيدج/.test(text) || !/(?<![\u0621-\u064A])بايج(?![\u0621-\u064A])/.test(text) || /سارايا|بايج\s+فان|Saraya|VanZant/i.test(text)) return text;
+  return text.replace(/(?<![\u0621-\u064A])(و|ل|ب)?بايج(?![\u0621-\u064A])/g, (_m, p = "") => `${p}بيدج`);
+}
+
 /** A draw is never under the winner's trophy: «🏆 **النتيجة:** تعادل…» → «🤝 **النتيجة:** تعادل…» (7 reports, INCIDENTS #1252). */
 export function fixDrawTrophy(text: string): string {
   return text.replace(/🏆(\s*\*\*\s*النتيجة\s*:?\s*\*\*\s*(?:ب?ال)?تعادل)/g, "🤝$1");
@@ -199,9 +209,38 @@ export function fixMidCardMainEvent(text: string): string {
   return out;
 }
 
+/**
+ * A results report written while the show is still on: the source lists the finishes so far with no «Main Event»
+ * label, and the writer called the last finish it had «الحدث الرئيسي». UFC 334: Gane vs. Hokit labelled McKinney vs.
+ * Miller (a prelim) the main event an hour before Gane vs. Hokit happened (INCIDENTS #1317). When the source title
+ * names the headliner («…: Gane vs. Hokit») and the source never says «main event», the heading stays a main event
+ * only once the source has a result line naming both headliners; until then it takes its place number.
+ */
+export function demoteUnplayedMainEvent(body: string, sourceTitle: string, sourceText: string): string {
+  if (!body || !body.includes("الحدث الرئيسي") || /main[\s-]*event/i.test(sourceText || "")) return body;
+  const m = String(sourceTitle || "").replace(/\s*(?:\(|\b(?:Live\s+)?(?:Results?|Coverage|Recap|Preview)\b).*$/i, "").match(/:\s*([A-Z][\p{L}'.-]+(?:\s+[A-Z][\p{L}'.-]+)?)\s+vs\.?\s+([A-Z][\p{L}'.-]+(?:\s+[A-Z][\p{L}'.-]+)?)/u);
+  if (!m) return body;
+  const last = (s: string) => s.trim().split(/\s+/).pop()!.toLowerCase();
+  const [a, b] = [last(m[1]), last(m[2])];
+  const played = String(sourceText || "").split(/\n+/).some(l => {
+    const low = l.toLowerCase();
+    return low.includes(a) && low.includes(b) && /\b(?:def\.|defeats?\b|defeated\b|draw\b|no contest\b|beat\b)/.test(low);
+  });
+  if (played) return body;
+  const heads = [...body.matchAll(/^\*\*(?:المواجهة|النزال|المباراة|الحدث الرئيسي)[^\n]*\*\*[ \t]*$/gm)];
+  let out = body;
+  for (let i = heads.length - 1; i >= 0; i--) {
+    const h = heads[i];
+    if (!/^\*\*الحدث الرئيسي/.test(h[0]) || i >= MATCH_ORDINALS.length) continue;
+    const rest = (h[0].match(/^\*\*الحدث الرئيسي(?:\s*\(Main Event\))?\s*(?::\s*(.*?))?\s*\*\*[ \t]*$/i)?.[1] || "").trim();
+    out = out.slice(0, h.index!) + `**المواجهة ${MATCH_ORDINALS[i]}${rest ? `: ${rest}` : ""}**` + out.slice(h.index! + h[0].length);
+  }
+  return out;
+}
+
 export function applyCorrections(text: string, corrections = loadCorrections()): string {
   if (!text) return text;
-  let out = fixEraCalledShow(fixMidCardMainEvent(fixDrawTrophy(fixSubjunctiveDuals(fixCountDuals(fixTimeDuals(fixNumberGender(decodeHtmlEntities(text))))))));
+  let out = fixHangmanPage(fixEraCalledShow(fixMidCardMainEvent(fixDrawTrophy(fixSubjunctiveDuals(fixCountDuals(fixTimeDuals(fixNumberGender(decodeHtmlEntities(text)))))))));
   for (const c of withLamAlefForms(corrections)) {
     out = out.replace(correctionRegex(c), (m, prefix = "", ...rest) => {
       // a regex rule may carry named parts over: «نكوص (?<who>…) ب(?<what>وعده)» → «تراجع $<who> عن $<what>» (INCIDENTS #1261)
@@ -2741,4 +2780,35 @@ export function teamVerbSingular(text: string): string {
   return text.replace(
     /(?<![ء-ي])(?<!(?:أعضاء|أفراد|عناصر|نجوم|مصارعو|مصارعي|لاعبو|لاعبي)\s)(فريق\s+(?:(?!\s(?:و|مع|من|إلى|على|في|بعد|عندما|حين)[ء-ي]*\s)[^.،؛:\n]){2,45}?\s+(?:قد\s+)?)(حقق|نجح|فاز|تمكن|خسر|توج|تغلب|انتصر)وا(?![ء-ي])/g,
     "$1$2");
+}
+
+/**
+ * A show dated by the embedded tweet's sign-off instead of the show's own day. AEW Full Gear was on Saturday 14
+ * November (US time); Tony Khan's tweet is signed «— Tony Khan (@TonyKhan) November 15, 2026» (UTC), and both the
+ * Arabic and the English story of the Kasper Brothers said «Full Gear … on November 15» (INCIDENTS #1317).
+ * Returns the article's date phrase when that day/month appears in the source only inside tweet sign-offs, and the
+ * article ties it to a show («عرض … يوم 15 نوفمبر», «at … on November 15», «the November 15 episode»), and that day is
+ * today in UTC while it is still the day before in the US; else null.
+ */
+const QA_EN_MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const QA_AR_MONTHS = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+export function tweetDateAsShowDate(text: string, sourceText: string, now = new Date()): string | null {
+  const src = String(sourceText || "");
+  // only while the UTC day is already the next one in the US (00:00–08:00 UTC): a sign-off date is then a day ahead
+  const et = new Date(now.getTime() - 5 * 3600_000);
+  if (et.getUTCDate() === now.getUTCDate()) return null;
+  const utcToday = `${now.getUTCMonth()}-${now.getUTCDate()}`;
+  const signoff = new RegExp(`\\(@\\w+\\)\\s+(${QA_EN_MONTHS.join("|")})\\s+(\\d{1,2}),\\s+\\d{4}`, "g");
+  const tweetDays = new Set([...src.matchAll(signoff)].map(m => `${QA_EN_MONTHS.indexOf(m[1])}-${+m[2]}`));
+  if (!tweetDays.size) return null;
+  const rest = src.replace(signoff, " ");
+  const said = new Set([...rest.matchAll(new RegExp(`\\b(${QA_EN_MONTHS.join("|")})\\s+(\\d{1,2})(?:st|nd|rd|th)?\\b`, "g"))].map(m => `${QA_EN_MONTHS.indexOf(m[1])}-${+m[2]}`));
+  for (const m of rest.matchAll(/\b(\d{1,2})\/(\d{1,2})(?:\/\d{2,4})?\b/g)) said.add(`${+m[1] - 1}-${+m[2]}`);
+  const bad = (k: string) => k === utcToday && tweetDays.has(k) && !said.has(k);
+  const t = String(text || "");
+  const ar = new RegExp(`عرض[^\\n.]{0,80}?(?:يوم|بتاريخ|في)\\s+(\\d{1,2})\\s+(${QA_AR_MONTHS.join("|")})`, "g");
+  for (const m of t.matchAll(ar)) if (bad(`${QA_AR_MONTHS.indexOf(m[2])}-${+m[1]}`)) return m[0].slice(-40);
+  const en = new RegExp(`(?:\\b(?:at|during)\\s+(?:the\\s+)?[A-Z][^\\n.]{0,60}?\\s+on\\s+(?:[A-Z][a-z]+day,\\s+)?|\\bthe\\s+)(${QA_EN_MONTHS.join("|")})\\s+(\\d{1,2})\\b`, "g");
+  for (const m of t.matchAll(en)) if (bad(`${QA_EN_MONTHS.indexOf(m[1])}-${+m[2]}`)) return m[0].slice(-40);
+  return null;
 }

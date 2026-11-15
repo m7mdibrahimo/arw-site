@@ -8,7 +8,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { splitGluedBlocks, splitQuoteNarration, decodeHtmlEntities, dropRepeatedListItem, claimNotInSource, tonyKhanTweetMisattributed } from "./news-qa";
+import { splitGluedBlocks, splitQuoteNarration, decodeHtmlEntities, dropRepeatedListItem, claimNotInSource, tonyKhanTweetMisattributed, tweetDateAsShowDate } from "./news-qa";
 import { metaDescription } from "../lib/meta-description.cjs";
 
 export const NEWS_EN_DIR = path.join(process.cwd(), "content", "news-en");
@@ -100,7 +100,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - Never add a word in square brackets inside a quote («[which]», «[sic]»): a quote keeps the source's own words. If the source's quote is broken there, close it with an ellipsis (…) or leave that part out.
 - Punctuation: a show or event name that ends with «!» or «?» («TNA iMPACT!») is never followed by a full stop — the name's own mark ends the sentence, never «TNA iMPACT!.»; never two full stops in a row.
 - Donald Trump is the sitting US President (2025–2029): never write "former President Trump" or "the previous administration" about him unless the source says so explicitly about his first term (INCIDENTS #609).
-- Event and team names are written exactly as the promotion writes them: "Bound for Glory" (lowercase "for"), "Syx" (never "syX"), "Wrestlepalooza".
+- Event and team names are written exactly as the promotion writes them: "Bound for Glory" (lowercase "for"), "Syx" (never "syX"), "Wrestlepalooza". A team name stays the team name: "Hangman Page and Brodido" (Brody King & Bandido) is never "Hangman Page and Bandido" (Swerve trios story, INCIDENTS #1317).
 - Headline: never name a promotion the story itself does not say the person joined or signed with (a source headline «Signs With AAA/WWE» when the text says only AAA becomes «Signs With AAA»; INCIDENTS #853).
 - Headline: name the person the story is about ("George Iceman Drawing Outside Interest as TNA Contract Nears Expiration", "Report: Bruce Prichard to Leave WWE Role After WrestleMania 43"). Never a vague stand-in ("TNA Talent…", "A Backstage Figure…") and never "Major Update on X's Future" or "X's Future" without saying what happens (round 2026-10-28).
 - Headline: Title Case with the small words (a, an, the, and, but, or, for, at, by, in, of, on, to, as, vs) in lowercase unless first or last (the code enforces this), clear and specific, under 90 characters, no clickbait, no emoji, no all caps, grammatically correct (when you shorten the source headline keep its meaning and its verbs: "After Deciding He Wanted to Try Wrestling" becomes "After Deciding to Try Wrestling", never "After Deciding He Tried Wrestling" — INCIDENTS #942), never a copied slang line or a curse word (say what happened: "Logan Paul Praises WWE's Women's Roster", not a quote with a swear word).
@@ -117,7 +117,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - No markdown headings (#), no bold, no lists with bullets, no links in the text.
 - Weekly TV dates are the US air date: Raw is a Monday, NXT a Tuesday, Dynamite a Wednesday, SmackDown a Friday, Collision a Saturday. A story published after midnight UTC still says "the November 9 episode of WWE Raw", never the next day (INCIDENTS #1197).
 - Times and time zones: keep each start time in the zone the source gives (8 pm local time in Mexico, 10 pm ET); never relabel a local time as ET (INCIDENTS #808).
-- Dates and weekdays: a specific date takes "on" plus the date and the day of the week the source names ("on Wednesday, November 4"), never the indefinite "on a Wednesday"; a weekday with no date is "on Wednesday" (round 2026-10-28). The weekday must be the real day of that date in that year — sources get it wrong (WrestleDream, October 17, 2026 was a Saturday, not a Friday; INCIDENTS #962); if you are not sure of it, write the date without a weekday.
+- Dates and weekdays: a specific date takes "on" plus the date and the day of the week the source names ("on Wednesday, November 4"), never the indefinite "on a Wednesday"; a weekday with no date is "on Wednesday" (round 2026-10-28). The weekday must be the real day of that date in that year — sources get it wrong (WrestleDream, October 17, 2026 was a Saturday, not a Friday; INCIDENTS #962); if you are not sure of it, write the date without a weekday. A show's date is the US date the source gives; a tweet's sign-off ("— Tony Khan (@TonyKhan) November 15, 2026") is in UTC and often the day after an evening show — never date the show by it (Full Gear was November 14; Kasper Brothers story, INCIDENTS #1317).
 - Never give a wrestler a title or status the source does not state: "as the NXT Women's Champion" and "commented on winning the WWE Championship" were invented (a hypothetical "Maybe I'd be WWE Champion" or another wrestler's reign is NOT that wrestler's title).
 - Never add a "what's next" sentence the source does not have: no "will return to action at …", "will face … for the … Championship", "is set to appear at …" unless the SOURCE says it (a story about how Sami Zayn chose his name ended with a Crown Jewel match the source never mentioned, INCIDENTS #862). The story ends where the source ends.
 - A speaker's "the match with X" / "my match with X" is the speaker's OWN match against X: "after his match with EK Prosper", never "after a match between EK Prosper and another opponent" (Grayson Waller story, round 2026-10-29). A "spot" is one moment inside a match ("the ambulance spot", "a ladder spot"), never a match of its own.
@@ -288,6 +288,9 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   // «Thursday, November 5» when the source's headline says «Results 11/6/26» (INCIDENTS #1115)
   const offDay = enDateOffFromSourceTitle(title + "\n" + body, i.sourceTitle, i.sourceText);
   if (offDay) issues.push(`date differs from the source headline: ${offDay}`);
+  // «made their debut at AEW Full Gear on November 15» — the tweet's UTC sign-off date, not the show's day (INCIDENTS #1317)
+  const tweetDay = tweetDateAsShowDate(title + "\n" + body, i.sourceText);
+  if (tweetDay) issues.push(`show dated by the embedded tweet's sign-off (UTC), not the show's own day: «${tweetDay}» — use the source's date or none`);
   // «a X account» — X is read «ex», so the article is «an» (Tony Khan ratings story, INCIDENTS #1119)
   if (/\ba X(?=\s+(?:user|account|post|page|handle|post|thread|reply|video)\b|[,.])/.test(title + "\n" + body)) issues.push("misspelled word: «a X» should be «an X»");
   // «at AEW All In her newsletter» — the second «in» went missing, so the show and the newsletter merged (Mercedes Moné story, INCIDENTS #1126)

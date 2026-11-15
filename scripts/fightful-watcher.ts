@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, fixTitleSubjectGender, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixElijahAsIlya, fixEventCalledMovie, fixDivasChampion, type NewsFile } from "./news-qa";
+import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, fixTitleSubjectGender, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixElijahAsIlya, fixEventCalledMovie, fixDivasChampion, demoteUnplayedMainEvent, tweetDateAsShowDate, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -3296,6 +3296,7 @@ async function rewriteWithGemini(
    - **الاقتباس يبقى كلام صاحبه**: لا تضف داخل الاقتباس شرحا من عندك مثل «نيا جاكس المصارعة التي تعرف بـ…»، ولو المصدر عدد أسماء (قائمة مشاركين أو طاقم برنامج) انقلها كلها ولا تسقط منها اسما.
    - **ما حدث يبقى حدث، وما سيحدث يبقى قادما**: لو المصدر قال إن شخصا شرح أو كشف شيئا بالفعل («has shed light», «has detailed», «revealed») اكتبه بالماضي؛ ولا تختم الخبر بجملة «ومن المتوقع أن يكشف… خلال الأيام القادمة» إلا لو المصدر وعد بذلك نصا (حصل فعليا: «Cena has also shed more light» اتكتبت «من المتوقع أن يكشف سينا المزيد»).
    - **الشريك في نزال الفرق لا يسقط**: لو المصدر قال «X is scheduled to team with Y against Z» فاكتب «يتحد X مع Y لمواجهة Z» — لا تكتب «يستعد X لمواجهة فريق Z» وحده. و«expected to take some time off soon» = «من المتوقع أن يأخذ فترة راحة قريبا» (وليس «يبتعد لفترة قريبة»). وجملة «Fans can check out the lineup here» رابط وليست خبرا: احذفها ولا تكتب «يمكن للجماهير الاطلاع على القائمة عبر الموقع الرسمي». ولا تختم الخبر بجملة حماس من عندك («من المتوقع أن تضفي مزيدا من الإثارة»). وكلمة «عرض» مذكرة: «عرض AEW Dynamite الذي أقيم» (وليس «التي أقيمت»)، ولا تصف النزال بـ«الحماسي» أو «الملحمي» من عندك. وترجم الصفات بمعناها لا حرفيا: «chunky puppy» = «جرو ممتلئ الجسم» (وليس «ذي اللحم البارز») (INCIDENTS #1316).
+   - **تاريخ العرض من المصدر لا من التغريدة**: توقيع التغريدة («— Tony Khan (@TonyKhan) November 15, 2026») بتوقيت جرينتش، وعرض أمريكي بليل تاريخه فيه هو اليوم اللي بعده: AEW Full Gear أقيم يوم 14 نوفمبر مش 15. اكتب يوم العرض زي ما المصدر بيقوله أو من غير تاريخ. واسم الفريق يفضل اسم الفريق: «Brodido» = «بروديدو» (برودي كينج وبانديدو) مش «بانديدو» وحده. و«Brothers» في اسم فريق = «الإخوة» (بكسرة) مش «الأخوة» (INCIDENTS #1317).
    - **«in past years» ليست وعدا**: لو المصدر قال إن شيئا حدث «في السنوات الماضية» أو «عادة» (have taken place at X in past years) فلا تكتبه كأنه مقرر هذا العام («على أن تقام النهائيات في X»)؛ اكتب «كما جرت العادة في السنوات الماضية». ومباراة دوري NFL مثل Monday Night Football «مباراة» وليست «عرضا».
    - **لا تحوّل «مؤخرا/حديثا» (recently) إلى «آخر/أول» ولا «أحد/واحد من» إلى «كل»**: كلمات الزمن والكمية تُنقل كما هي؛ لا تكتب «آخر نزال» أو «للمرة الأخيرة» أو «أول مرة» إلا لو المصدر قالها نصاً (حصل فعليا: «recently wrestled» اتترجمت «خاضا آخر نزال لهما» فبدا الخبر اعتزالاً).
    - **كلمة أجنبية عامية في المصدر (إسبانية/يابانية/لقب) ماتتكتبش حروف عربية من غير معنى**: لو المصدر فيه كلمة زي «sucias» أو أي سلانج، اكتبها بالعربي مرة واحدة مع معناها بين «» أو بعد «وتعني» (مثال: كلمة «سوسياس» الإسبانية ومعناها «القذرات»)، ولا تكتبها كلقب مبهم يفهمه القارئ غلط (INCIDENTS #1113).
@@ -4750,6 +4751,8 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     draft = { ...draft, title: fixElijahAsIlya(draft.title, src), body: fixElijahAsIlya(draft.body, src), tags: draft.tags.map(t => fixElijahAsIlya(t, src)) };
     // «backstage at Natural Born Killers» (an event) written «في كواليس فيلم Natural Born Killers» (INCIDENTS #1267).
     draft = { ...draft, title: fixDivasChampion(fixEventCalledMovie(draft.title, src), src), body: fixDivasChampion(fixEventCalledMovie(draft.body, src), src) };
+    // a results page still growing: the last finish so far is not «الحدث الرئيسي» while the headliner is unplayed (INCIDENTS #1317).
+    draft = { ...draft, body: demoteUnplayedMainEvent(draft.body, rawTitle, plainText) };
   }
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
@@ -4768,6 +4771,11 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   if (tlDraw) {
     blocking.push({ code: "time_limit_win_as_draw", severity: "error", field: "body", message: "المصدر بيقول إن النزال له فائز بعد انتهاء الوقت (def. … via time limit) — مش تعادل", excerpt: tlDraw });
     lastPostRetryable = true;
+  }
+  // «عرض AEW Full Gear الذي أقيم يوم 15 نوفمبر» — the tweet's UTC sign-off date, not the show's day (INCIDENTS #1317).
+  {
+    const tweetDay = tweetDateAsShowDate(`${draft.title}\n${draft.body}`, plainText);
+    if (tweetDay) { blocking.push({ code: "tweet_date_as_show_date", severity: "error", field: "body", message: `تاريخ العرض مأخوذ من توقيع التغريدة (توقيت جرينتش) مش من يوم العرض — اكتب يوم العرض بتوقيت أمريكا زي المصدر أو شيل التاريخ: ${tweetDay}`, excerpt: tweetDay }); lastPostRetryable = true; }
   }
   const badAges = ageNotInSource(draft.body, `${rawTitle}\n${plainText}`);
   if (badAges.length) {
