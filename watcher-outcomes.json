@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/update-fan-accidentally-kicked-face-mjf-aew-full-gear": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-15T07:52:32.122Z"
+ },
  "https://www.fightful.com/wrestling/tony-khan-says-if-he-hadnt-sent-private-planes-a-lot-of-scheduled-wrestlers-for-aew-full-gear-wouldnt-have-made-the-show": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-06T00:27:13.746Z"
- },
- "https://www.fightful.com/mma/ufc-fight-night-cortes-acosta-vs-walker-odds-courtesy-of-mybookie": {
-  "reason": "المراجعة رفضته: خبر ترويجي لموقع مراهنات (MyBookie…) — مش خبر",
-  "retry": false,
-  "at": "2026-11-05T21:29:52.195Z"
  }
 }
