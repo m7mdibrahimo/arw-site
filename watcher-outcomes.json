@@ -59,11 +59,6 @@
   "retry": false,
   "at": "2026-11-15T00:59:53.205Z"
  },
- "https://www.ringsidenews.com/aew-full-gear-results-highlights-key-moments-november-14-2026": {
-  "reason": "المراجعة رفضته: المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الرابعة: نزال رباعي على بطولة AEW TBS (عرض Pre-Show) — اكتب الفائز زي المصدر وبالماضي",
-  "retry": true,
-  "at": "2026-11-15T00:56:30.875Z"
- },
  "https://www.fightful.com/wrestling/more-names-to-be-involved-in-anarchy-in-the-arena": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
