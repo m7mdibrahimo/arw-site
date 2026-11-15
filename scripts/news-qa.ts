@@ -133,7 +133,8 @@ export function fixCountDuals(text: string): string {
  * feminine one («لتحصلا») has no single right form and is blocked by dual_form. «يضمنا» is left out: it is
  * also «يضم» + «نا» («آمن بنا بما يكفي ليضمنا إلى صفوفه»). Idempotent.
  */
-const SUBJ_DUAL_VERBS = "حسم|حقق|فوز|توج|حافظ|حتفظ|صبح|تأهل|واجه|عود|نتزع|ستعيد|نال|كمل|خطف|ثبت|حصل|خوض|نجح|تغلب|هزم|دافع|نضم|ظهر|شارك|قتنص|نتصر|خرج|حجز|عزل";
+const SUBJ_DUAL_VERBS = "حسم|حقق|فوز|توج|حافظ|حتفظ|صبح|تأهل|واجه|عود|نتزع|ستعيد|نال|كمل|خطف|ثبت|حصل|خوض|نجح|تغلب|هزم|دافع|نضم|ظهر|شارك|قتنص|نتصر|خرج|حجز|عزل|تمكن|ستطيع";
+// «لن يتمكنا من اللحاق» (Destination X travel story) — «تمكن|ستطيع» added in INCIDENTS #1335; the feminine «لن تتمكنا» is blocked by dual_form.
 // «ليقتنصا التثبيت ويخرجا بانتصار» (ROH TV 27 Aug, SmackDown 4 Sep) — «قتنص|نتصر|خرج|حجز|عزل» added in INCIDENTS #1272.
 // «يبقيا/ينتهيا» are left to the dual_form check: their subject is often a thing («الصداقة والاحترام يجب أن تبقى»), where «يبقوا» is wrong too.
 const WEAK_SUBJ_DUAL_VERBS = "حظ|لتق|نه|مض|سع|رتق|كتف";
@@ -587,7 +588,11 @@ const RULES: Rule[] = [
   // Sportsbook ad copy («UFC 333 odds courtesy of MyBookie») is an advert, not news — never publish a story that promotes a betting site.
   { code: "betting_promo", severity: "error", re: /(?<![A-Za-z])(?:MyBookie|MyBookkie|BetOnline|Bovada|DraftKings|FanDuel|BetMGM|Stake\.com|1xBet)(?![A-Za-z])|برعاية\s+(?:موقع\s+)?(?:مراهنات|رهانات)/gi, message: "خبر ترويجي لموقع مراهنات (MyBookie…) — مش خبر", fields: ["title", "body"] },
   // «2 عرض متتاليين» (the RAW 6pm story): the digit 2 before a singular noun is a dual in disguise, and «متتاليين» is a dual adjective.
-  { code: "dual_noun", severity: "error", re: /(?<![\d.\/:-])2\s+(?:عرض|نزال|لقب|مباراة|مصارع|فريق|حدث|ليلة|مواجهة)(?![ء-ي])|(?<![ء-ي])(?:متتالي(?:ين|ان)|منفصل(?:ين|ان)|مختلف(?:ين|ان)|مقيدت(?:ين|ان)|شديد(?:ين|ان)|شديدت(?:ين|ان))(?![ء-ي])/g, message: "مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)", fields: ["title", "body"] },
+  // «لن تتمكنا من اللحاق بالعرض» (Hartwell and Brookside, Destination X travel story, INCIDENTS #1335): a feminine dual
+  // subjunctive after «لن/أن/كي/لكي» passed every dual check (the lists had only the indicative «تفوزان»). It has no
+  // single right form (two women → «لن تتمكنا» must become «لن تتمكن أي منهما» or a plural «لن تتمكن هارتويل وبروكسايد»), so it blocks.
+  { code: "dual_form", severity: "error", re: /(?<![ء-ي])(?:لن|أن|ألا|كي|لكي|حتى)\s+ت(?:تمكن|ستطيع|حسم|حقق|فوز|توج|حافظ|حتفظ|صبح|تأهل|واجه|عود|نتزع|ستعيد|نال|كمل|خطف|حصل|خوض|نجح|تغلب|هزم|دافع|نضم|ظهر|شارك|نتصر|خرج|حجز|لحق|صل|حضر|سافر)ا(?![ء-ي])/g, message: "صيغة مثنى مؤنث بعد «لن/أن» (لن تتمكنا/أن تفوزا) ممنوعة — اكتب الجملة بالجمع أو بالمفرد", fields: ["title", "body"] },
+  { code: "dual_noun", severity: "error", re: /(?<![\d.\/:-])2\s+(?:عرض|نزال|لقب|مباراة|مصارع|فريق|حدث|ليلة|مواجهة)(?![ء-ي])|(?<![ء-ي])(?:متتالي(?:ين|ان)|منفصل(?:ين|ان)|مختلف(?:ين|ان)|مقيدت(?:ين|ان)|شديد(?:ين|ان)|شديدت(?:ين|ان)|[وفبل]?(?:ال)?جديد(?:ين|ان)|[وفبل]?(?:ال)?جديدت(?:ين|ان))(?![ء-ي])/g, message: "مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)", fields: ["title", "body"] },
   { code: "dual_form", severity: "error", re: /(?<![ء-ي])(?:اللذان|اللذين|اللتان|اللتين|قاما|واصلا|(?<!جي\s)فازا|حققا|(?:ي|ت|سي|ست)(?:واجه|شارك|ستعد|خوض|نضم|لتق|ظهر|تنافس)ان|قدما(?=\s+(?:دعم|(?!عندما|بعدما|حينما|بينما|مثلما|كلما|ربما|حيثما|طالما)[ء-ي]+ا\s))|(?:ي|ت)(?:فوز|حتفظ|هزم|تغلب|نجح|تعاون|دخل|عود|علن|حصل|خسر|تأهل|نتصر|ستعيد|دافع|توج)ان|(?:ل|[وف])?(?!تدخلا)(?:ت)?(?:احتفظ|تغلب|هزم|نجح|توج|دخل|عاد|تعمد)(?:ا|تا)|(?:فازتا|حققتا|واصلتا)|(?:ال|ب)?بطلت(?:ين|ان)|بطلتا(?=\s)|بطلا\s+(?:العالم|الفرق|الزوجي)|حاملت(?:ي|ا)\s+(?:ال|لقب)|(?:[بلوفك]|وب|ول|فب|فل)?اتحادي(?=\s)|اتحادا(?=(?:\s+[ء-ي]+){1,3}\s+و(?!أن|إن|ان|لم|لا|لن|ما|هو|هي|كان|قد|كل|بين)[ء-ي])|أجريتا|أجرتا|[ء-ي]{2,}تيهما|(?:و|ف)?(?:عرفا|كشفا|شاركا|أكدا|هزما|خسرا|دخلا|عادا|نجحا|حصلا|وصلا)(?=\s)|(?:ال)?(?:نجمان|ثنائيان|مصارعان|فريقان|خصمان|بطلان|طريقيهما)|حياتهما|(?:ل)?صالحهما|(?:ب|و|ف)?(?:بينهما|عليهما|معهما|عنهما|إليهما|فيهما)|خاضا|ارتديا|(?:ي|س)?يرتديان|ليقحما|نفسيهما|مواجهتهما|أنهما|كلاهما|كليهما|كلتاهما|كليكما|كلاكما|[ء-ي]{3,}تهما)(?![ء-ي])/g, message: "صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم", fields: ["title", "body"] },
   // Past/present dual verbs the list above missed: «ظهرا للمرة الأولى»، «تحالفا مع»، «تنافسا»، «يتأهلان» (Kofi/Creed story, INCIDENTS #540).
   // «ظهرا» also means «at noon» («الساعة 2 ظهرا في…») — only the verb sense (followed by للمرة/معا/مع…) is flagged.
@@ -1894,6 +1899,29 @@ const SOURCE_CLAIMS: { label: string; ar: RegExp; en: RegExp; source: RegExp }[]
     source: /\bonly\b|\bsole(?:ly)?\b|\bnothing else\b|\bthe one (?:way|thing)\b|\bexclusive(?:ly)?\b/i,
   },
 ];
+/**
+ * «Hangman Adam Page, Brody King, and Bandido defended their belts against Swerve Strickland and the New Level …
+ * Following their victory, Kofi …» became «دافع هانغمان آدم بيدج وبرودي كينج وبانديدو عن ألقابهم أمام سويرف … وبعد الفوز
+ * وتحقيق اللقب» (and "Page … defended … Following their victory"): the challengers won the titles, the story reads as
+ * if the champions kept them (Kofi/Full Gear story, INCIDENTS #1335). When the source says the belts changed hands
+ * (recaptured / captured / won the … titles / new champions / dethroned / "We are your … Champions") and never says
+ * «retain», a story that only says «دافع … أمام» / "defended … against" with no word for the change is refused.
+ * Returns the phrase.
+ */
+export function titleChangeWrittenAsDefense(text: string, source: string, lang: "ar" | "en" = "ar"): string {
+  const src = String(source || "");
+  if (/\bretain(?:s|ed|ing)?\b|\bsuccessfully defended\b|\bstill champions?\b/i.test(src)) return "";
+  if (!/\b(?:re)?captur(?:e|es|ed|ing) (?:the |their |his |her )?[^.\n]{0,40}\b(?:titles?|championships?|belts?|gold)\b|\bwon the [^.\n]{0,40}\b(?:titles?|championships?|belts?)\b|\bnew [^.\n]{0,30}\bchampions?\b|\bdethron(?:e|es|ed|ing)\b|\bwe are (?:your|the) [^.\n]{0,40}\bchampions?\b|\btitle change\b/i.test(src)) return "";
+  const t = String(text || "").replace(/https?:\/\/\S+/g, " ");
+  if (lang === "en") {
+    const m = /\bdefended (?:the |their |his |her )?[^.\n]{0,80}\bagainst\b[^.\n]{0,80}/i.exec(t);
+    if (!m || /\b(?:won|win|wins|captur\w*|recaptur\w*|took|dethron\w*|new champions?|lost|dropped)\b/i.test(t)) return "";
+    return m[0];
+  }
+  const m = /(?<![\u0621-\u064A])(?:و|ف)?(?:دافع|يدافع|دافعوا|دافعت|تدافع)(?![\u0621-\u064A])[^.\n،]{0,80}?عن\s+(?:ألقاب|لقب|بطول|حزام|أحزمة)[^.\n]{0,80}?أمام[^.\n]{0,60}/.exec(t);
+  if (!m || /(?<![\u0621-\u064A])(?:و|ف|ل)?(?:انتزع|ينتزع|استعاد|يستعيد|استعادة|انتزاع|توج|تتويج|خسر|يخسر|خسارة|فقد|يفقد|أطاح|سلب)|الأبطال\s+الجدد|أبطال\s+جدد|بطل(?:ة)?\s+جديد|(?:فاز|فازوا|فازت|يفوز|يفوزون|الفوز)(?![ء-ي])[^.\n]{0,40}?ب(?:ال)?(?:لقب|ألقاب|بطول|حزام)/.test(t)) return "";
+  return m[0];
+}
 /**
  * «Ric Flair Set For First Wrestling Appearance Since Scary Fall» became «ريك فلير يظهر علنا لأول مرة منذ سقوطه…»:
  * an appearance still two weeks away, headlined as if it had happened (INCIDENTS #1167). When the source headline

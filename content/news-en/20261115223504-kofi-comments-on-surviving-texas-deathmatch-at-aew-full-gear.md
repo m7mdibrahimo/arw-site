@@ -15,7 +15,7 @@ en_tags:
   - "Full Gear"
 image: /content/images/f2ql9z5qkx26qi4h.jpg
 ---
-Kofi discussed surviving the brutal Texas Deathmatch at AEW Full Gear. During the event, Hangman Adam Page, Brody King, and Bandido defended the AEW World Trios Titles against Swerve Strickland and The New Level, consisting of Austin Creed and Kofi. Following their victory, Kofi expressed his pride in the team's performance on social media.
+Kofi discussed surviving the brutal Texas Deathmatch at AEW Full Gear. During the event, Swerve Strickland and The New Level (Austin Creed and Kofi) won the AEW World Trios Titles from Hangman Adam Page, Brody King, and Bandido. Following the win, Kofi expressed his pride in the team's performance on social media.
 
 > "Through timber, through steel, through fire, glass and razor wire; we walked through it all for the honor to be baptized in the sacred pools of blood. For the people, for the glory, for the legacy; for the love and adoration of the game. We are your World Trios Champions, once again. Pro Wrestling Bucket List: ✅ Compete in a Death Match and survive"
 

@@ -8,7 +8,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { splitGluedBlocks, splitQuoteNarration, decodeHtmlEntities, dropRepeatedListItem, claimNotInSource, tonyKhanTweetMisattributed, tweetDateAsShowDate } from "./news-qa";
+import { splitGluedBlocks, splitQuoteNarration, decodeHtmlEntities, dropRepeatedListItem, claimNotInSource, tonyKhanTweetMisattributed, tweetDateAsShowDate, titleChangeWrittenAsDefense } from "./news-qa";
 import { metaDescription } from "../lib/meta-description.cjs";
 
 export const NEWS_EN_DIR = path.join(process.cwd(), "content", "news-en");
@@ -359,6 +359,9 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   const numberText = body.replace(/<https?:\/\/[^>]+>|https?:\/\/\S+/g, " ").replace(/(\d),(?=\d{3})/g, "$1");
   const odd = (numberText.match(/(?<![\w.$])\d{3,4}(?![\d.])/g) || []).filter((n) => !/^(19|20)\d\d$/.test(n) && !srcDigits.includes(n));
   if (odd.length) issues.push(`number not in source: ${odd[0]}`);
+  // "Page, King and Bandido defended the titles against Swerve and The New Level" when the challengers won them (INCIDENTS #1335)
+  const defense = titleChangeWrittenAsDefense(body, i.sourceText, "en");
+  if (defense) issues.push(`title change written as a defense: ${defense}`);
   // an announced card written as results (INCIDENTS #679: «Perros Del Mal def. La Parka…» for a lineup announcement)
   if (/\bdef\./.test(body) && !/def\.|\b(?:defeat\w*|beat|beats|beaten|won|wins?|victor\w*|retain\w*|captur\w*)\b/i.test(i.sourceText)) issues.push("result wording (def.) but the source reports no result");
   // an episode date that contradicts the date in the source's own address (INCIDENTS #781: «the October 13 episode» for a story whose address says 10-20)
