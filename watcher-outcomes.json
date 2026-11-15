@@ -1,73 +1,78 @@
 {
+ "https://www.fightful.com/wrestling/mjf-to-appear-on-11-18-aew-dynamite": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Katsuyori Shibata",
+  "retry": true,
+  "at": "2026-11-15T07:36:45.988Z"
+ },
  "https://www.fightful.com/wrestling/tony-khan-says-if-he-hadnt-sent-private-planes-a-lot-of-scheduled-wrestlers-for-aew-full-gear-wouldnt-have-made-the-show": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T07:30:33.483Z"
+  "at": "2026-11-15T07:35:46.029Z"
  },
  "https://www.fightful.com/wrestling/will-ospreay-def-kyle-fletcher-to-retain-aew-world-title-at-full-gear-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T07:30:33.178Z"
+  "at": "2026-11-15T07:35:45.739Z"
  },
  "https://www.fightful.com/wrestling/mjf-returns-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T07:30:33.016Z"
+  "at": "2026-11-15T07:35:45.591Z"
  },
  "https://www.fightful.com/wrestling/watch-aew-full-gear-post-show-media-scrum-11-14-26": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T07:30:32.723Z"
+  "reason": "المراجعة رفضته: المتن (334 حرف) أطول بكثير من المصدر (46 حرف) — حشو",
+  "retry": false,
+  "at": "2026-11-15T07:35:45.313Z"
  },
  "https://www.fightful.com/wrestling/cm-punk-says-he-isnt-retiring-soon-youre-stuck-with-me-for-at-least-five-more-years": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T07:29:53.147Z"
+  "at": "2026-11-15T07:35:09.256Z"
  },
  "https://www.fightful.com/wrestling/sherilyn-guerrero-pays-tribute-to-father-eddie-guerrero-in-in-ring-debut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T07:29:52.918Z"
+  "at": "2026-11-15T07:35:09.034Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-defeats-tommaso-ciampa-to-win-aew-national-championship-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T07:29:52.638Z"
+  "at": "2026-11-15T07:35:08.767Z"
  },
  "https://www.fightful.com/wrestling/kris-statlander-harley-cameron-capture-aew-womens-world-tag-team-titles-at-full-gear-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T07:29:52.423Z"
+  "at": "2026-11-15T07:35:08.563Z"
  },
  "https://www.fightful.com/wrestling/swerve-strickland-and-new-level-win-texas-deathmatch-to-capture-aew-world-trios-title-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T07:29:52.209Z"
+  "at": "2026-11-15T07:35:08.357Z"
  },
  "https://www.fightful.com/wrestling/kasper-brothers-creed-brothers-debut-for-aew-at-full-gear-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T07:29:51.794Z"
+  "at": "2026-11-15T07:35:07.967Z"
  },
  "https://www.fightful.com/wrestling/watch-full-episode-lucha-libre-aaa-november-14-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T07:29:51.644Z"
+  "at": "2026-11-15T07:35:07.823Z"
  },
  "https://www.fightful.com/wrestling/queen-aminata-retains-aew-tbs-title-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T07:29:51.282Z"
+  "at": "2026-11-15T07:35:07.476Z"
  },
  "https://www.fightful.com/wrestling/big-boom-aj-remains-undefeated-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T07:29:51.132Z"
+  "at": "2026-11-15T07:35:07.333Z"
  },
  "https://www.fightful.com/wrestling/aew-redesigns-trios-titles-to-pay-tribute-to-pac": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T07:29:50.830Z"
+  "at": "2026-11-15T07:35:07.036Z"
  },
  "https://www.ringsidenews.com/aew-full-gear-results-highlights-key-moments-november-14-2026": {
   "reason": "المراجعة رفضته: «لصالح» من غير ضمير قبل «ضد/على» أو قبل علامة ترقيم («حسم النزال لصالح ضد منافسه»، «حسمه ري فينيكس لصالح،») — اكتب «لصالحه …» أو شيل «لصالح» (INCIDENTS #1208)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (صفقا/احتفلا/أمام عيني X وY…) ممنوعة: اكتب فعل جمع («مات وجيف صفقوا») أو «أمام X وY».",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: خبر ترويجي لموقع مراهنات (MyBookie…) — مش خبر",
   "retry": false,
   "at": "2026-11-05T21:29:52.195Z"
- },
- "https://www.fightful.com/wrestling/judas-icarus-fractures-radial-bone": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-05T20:24:33.577Z"
  }
 }
