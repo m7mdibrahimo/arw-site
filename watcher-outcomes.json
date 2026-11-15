@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aew-full-gear-results-highlights-key-moments-november-14-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-15T00:15:37.443Z"
+ },
  "https://www.fightful.com/wrestling/watch-aew-full-gear-buy-in-live-tonight": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-15T00:14:55.541Z"
- },
- "https://www.ringsidenews.com/aew-full-gear-results-highlights-key-moments-november-14-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T00:08:20.435Z"
  },
  "https://www.fightful.com/wrestling/more-names-to-be-involved-in-anarchy-in-the-arena": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
