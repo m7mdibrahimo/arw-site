@@ -1,5 +1,25 @@
 [
   {
+    "id": 2192575259,
+    "link": "https://www.wrestlinginc.com/2317182/wwe-talent-staff-grounded-flights-faa-smackdown/",
+    "date": "Sun, 15 Nov 2026 17:30:16 +0000",
+    "date_gmt": "2026-11-15T17:30:16.000Z",
+    "title": {
+      "rendered": "Backstage News On How WWE Talent Was Affected By Grounded Flights Following SmackDown"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-how-wwe-talent-was-affected-by-grounded-flights-following-smackdown/l-intro-1794763554.jpg"
+  },
+  {
+    "id": 2658349865,
+    "link": "https://www.wrestlinginc.com/2312495/wwe-star-miz-assesses-future-age-46/",
+    "date": "Sun, 15 Nov 2026 17:30:00 +0000",
+    "date_gmt": "2026-11-15T17:30:00.000Z",
+    "title": {
+      "rendered": "WWE Star The Miz Assesses His Future At Age 46"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-star-the-miz-assesses-his-future-at-age-46/l-intro-1794338421.jpg"
+  },
+  {
     "id": 3398081072,
     "link": "https://www.wrestlinginc.com/2315534/aew-chris-jericho-discusses-gorgeous-george-amazon-prime-limited-series/",
     "date": "Sun, 15 Nov 2026 17:00:00 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Backstage Update On Former WWE Star Kairi's AEW Status Ahead Of Full Gear 2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-former-wwe-star-kairis-aew-status-ahead-of-full-gear-2026/l-intro-1794703312.jpg"
-  },
-  {
-    "id": 3332738419,
-    "link": "https://www.wrestlinginc.com/2316982/tna-destination-x-main-event-doubt-travel-disruptions-trey-miguel/",
-    "date": "Sun, 15 Nov 2026 00:41:52 +0000",
-    "date_gmt": "2026-11-15T00:41:52.000Z",
-    "title": {
-      "rendered": "TNA Destination X Main Event Thrown In Doubt By Travel Disruptions"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-destination-x-main-event-thrown-in-doubt-by-travel-disruptions/l-intro-1794703237.jpg"
-  },
-  {
-    "id": 2641487636,
-    "link": "https://www.wrestlinginc.com/2316975/aew-world-champion-mjf-expected-return-full-gear-2026/",
-    "date": "Sun, 15 Nov 2026 00:23:39 +0000",
-    "date_gmt": "2026-11-15T00:23:39.000Z",
-    "title": {
-      "rendered": "Former AEW World Champion Reportedly Expected To Return At Full Gear 2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/former-aew-world-champion-reportedly-expected-to-return-at-full-gear-2026/l-intro-1794702165.jpg"
   }
 ]
