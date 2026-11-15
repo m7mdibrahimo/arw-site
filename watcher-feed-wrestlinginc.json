@@ -1,5 +1,15 @@
 [
   {
+    "id": 2752926963,
+    "link": "https://www.wrestlinginc.com/2317063/aew-full-gear-2026-ilja-dragunov-tommaso-ciampa-national-title/",
+    "date": "Sun, 15 Nov 2026 04:04:14 +0000",
+    "date_gmt": "2026-11-15T04:04:14.000Z",
+    "title": {
+      "rendered": "Ilja Dragunov Defeats Tommaso Ciampa At AEW Full Gear 2026, Captures National Title"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/ilja-dragunov-defeats-tommaso-ciampa-at-aew-full-gear-2026-captures-national-title/l-intro-1794715314.jpg"
+  },
+  {
     "id": 3894426976,
     "link": "https://www.wrestlinginc.com/2317052/aew-full-gear-2026-wrathlander-brawling-birds-womens-tag-titles/",
     "date": "Sun, 15 Nov 2026 03:34:42 +0000",
@@ -125,7 +135,7 @@
     "date": "Sat, 14 Nov 2026 21:00:00 +0000",
     "date_gmt": "2026-11-14T21:00:00.000Z",
     "title": {
-      "rendered": "AEW Full Gear Results 11/14/26 W/ Live Updates: Ilja Dragunov Vs. Tommaso Ciampa"
+      "rendered": "AEW Full Gear Results 11/14/26 W/ Live Updates: Mercedes Mone Vs. Marina Shafir"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-full-gear-results-111426-w-live-updates/l-intro-1794631665.jpg"
   },
@@ -188,15 +198,5 @@
       "rendered": "Cody Rhodes Shares CM Punk's List Of Suggestions For WWE Survivor Series Team Members"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/cody-rhodes-shares-cm-punks-list-of-suggestions-for-wwe-survivor-series-team-members/l-intro-1794706590.jpg"
-  },
-  {
-    "id": 5148041017,
-    "link": "https://www.wrestlinginc.com/2316903/wwe-participants-womens-war-games-survivor-series-2026/",
-    "date": "Sat, 14 Nov 2026 18:43:54 +0000",
-    "date_gmt": "2026-11-14T18:43:54.000Z",
-    "title": {
-      "rendered": "WWE Confirms Participants In Women's WarGames Match At Survivor Series 2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-confirms-participants-in-womens-wargames-match-at-survivor-series-2026/l-intro-1794681739.jpg"
   }
 ]
