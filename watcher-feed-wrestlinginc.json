@@ -1,5 +1,25 @@
 [
   {
+    "id": 3013131764,
+    "link": "https://www.wrestlinginc.com/2313625/aew-andrade-el-idolo-ric-flair-heart-attack-last-match/",
+    "date": "Sun, 15 Nov 2026 19:30:00 +0000",
+    "date_gmt": "2026-11-15T19:30:00.000Z",
+    "title": {
+      "rendered": "AEW's Andrade El Idolo Didn't Realize Ric Flair Was Having Heart Attack In Last Match"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-andrade-el-idolo-didnt-realize-ric-flair-was-having-heart-attack-in-last-match/l-intro-1794415442.jpg"
+  },
+  {
+    "id": 5155040661,
+    "link": "https://www.wrestlinginc.com/2317205/tony-khan-private-aviation-aew-phoenix-full-gear-2026-faa/",
+    "date": "Sun, 15 Nov 2026 19:20:20 +0000",
+    "date_gmt": "2026-11-15T19:20:20.000Z",
+    "title": {
+      "rendered": "Tony Khan Details How Private Aviation Got AEW Stars To Phoenix In Time For Full Gear"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tony-khan-details-how-private-aviation-got-aew-stars-to-phoenix-in-time-for-full-gear/l-intro-1794770209.jpg"
+  },
+  {
     "id": 4099934659,
     "link": "https://www.wrestlinginc.com/2316787/tna-destination-x-november-15-2026-results/",
     "date": "Sun, 15 Nov 2026 19:00:00 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Kasper Brothers (Fka Creeds In WWE) Make AEW Debut After Full Gear Tag Title Defense"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/kasper-brothers-fka-creeds-in-wwe-make-aew-debut-after-full-gear-tag-title-defense/l-intro-1794709644.jpg"
-  },
-  {
-    "id": 1718441224,
-    "link": "https://www.wrestlinginc.com/2317009/aew-full-gear-2026-kazuchika-okada-adam-copeland-international-title/",
-    "date": "Sun, 15 Nov 2026 01:40:48 +0000",
-    "date_gmt": "2026-11-15T01:40:48.000Z",
-    "title": {
-      "rendered": "Kazuchika Okada Beats Adam Copeland, Retains AEW International Title At Full Gear 2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/kazuchika-okada-beats-adam-copeland-retains-aew-international-title-at-full-gear-2026/l-intro-1794706736.jpg"
-  },
-  {
-    "id": 1571766744,
-    "link": "https://www.wrestlinginc.com/2316990/aew-full-gear-tailbate-brawl-queen-aminata-tbs-jack-perry-big-boom-aj/",
-    "date": "Sun, 15 Nov 2026 01:04:15 +0000",
-    "date_gmt": "2026-11-15T01:04:15.000Z",
-    "title": {
-      "rendered": "Queen Aminata Retaining AEW TBS Title Headlines Full Gear 2026 Tailgate Brawl"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/queen-aminata-retaining-aew-tbs-title-headlines-full-gear-2026-tailgate-brawl/l-intro-1794704563.jpg"
   }
 ]
