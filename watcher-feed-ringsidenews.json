@@ -1,5 +1,15 @@
 [
   {
+    "id": 802268647,
+    "link": "https://www.ringsidenews.com/tna-confirms-major-changes-both-ultimate-x-matches-destination-x-2026/",
+    "date": "Sun, 15 Nov 2026 20:44:46 +0000",
+    "date_gmt": "2026-11-15T20:44:46.000Z",
+    "title": {
+      "rendered": "TNA Confirms Major Changes to Both Ultimate X Matches at Destination X 2026"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/tna-confirms-major-changes-to-both-ultimate-x-matches-at-destination-x-2026-05.jpg?x54779"
+  },
+  {
     "id": 802268642,
     "link": "https://www.ringsidenews.com/tna-teases-another-major-destination-x-title-match-change/",
     "date": "Sun, 15 Nov 2026 20:36:41 +0000",
@@ -138,15 +148,5 @@
       "rendered": "TNA Has Backup Destination X Main Event Ready as Trey Miguel Races to Edmonton"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/tna-has-backup-destination-x-main-event-ready-as-trey-miguel-races-to-edmonton-01.jpg?x54779"
-  },
-  {
-    "id": 802268561,
-    "link": "https://www.ringsidenews.com/tna-destination-x-card-limbo-multiple-stars-still-stuck-airports/",
-    "date": "Sun, 15 Nov 2026 16:33:28 +0000",
-    "date_gmt": "2026-11-15T16:33:28.000Z",
-    "title": {
-      "rendered": "TNA Destination X Card in Limbo With Multiple Stars Still Stuck at Airports"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/tna-destination-x-card-in-limbo-with-multiple-stars-still-stuck-at-airports-42.jpg?x54779"
   }
 ]
