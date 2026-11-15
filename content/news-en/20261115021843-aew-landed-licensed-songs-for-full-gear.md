@@ -13,4 +13,4 @@ en_tags:
   - "Wrestling"
 image: /content/images/jx3go0phrbo6dcps.jpg
 ---
-AEW will use licensed music for the Full Gear event tonight. Fightful Select reports that the promotion has secured multiple licensed songs for the show, including at least one mainstream track. AEW has previously utilized licensed music for major events, such as the Anarchy in the Arena match, which featured the song "Bodies" by Drowning Pool last year.
+AEW will use licensed music for the Full Gear event tonight. Fightful Select reports that the promotion has secured multiple licensed songs for the show, including at least one mainstream track. AEW has often used licensed music for Anarchy in the Arena, and last year's match featured the song "Bodies" by Drowning Pool throughout.

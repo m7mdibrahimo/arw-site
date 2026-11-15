@@ -2,6 +2,12 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "(?<=(?:Center|Centre|Arena|Stadium|Garden|Coliseum|Dome|Hall|Pavilion|Amphitheatre|Amphitheater|Field|Park|Theatre|Theater)\\s)ري فينيكس",
+      "right": "في فينيكس",
+      "regex": true,
+      "note": "مدينة Phoenix بعد اسم الصالة = «في فينيكس»؛ Gemini خلطها بالمصارع ري فينيكس وكتب «Mortgage Matchup Center ري فينيكس» — خبر أحزمة الفرق الثلاثية (INCIDENTS #1314)"
+    },
+    {
       "wrong": "(?:لقب|بطولة) (?:AEW )?Continental Champion(?![A-Za-z])",
       "right": "البطولة القارية",
       "regex": true,
