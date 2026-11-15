@@ -2,6 +2,29 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "أناركي (?:في (?:ال)?أ(?:رينا|رينة)?|إن ذا أ)(?![\\u0621-\\u064A])",
+      "right": "أناركي إن ذا أرينا",
+      "regex": true,
+      "note": "«ونزال أناركي في الأ» — اسم نزال Anarchy in the Arena اتقطع؛ الصح «أناركي إن ذا أرينا» — مراجعة Full Gear 2026 (INCIDENTS #1322)"
+    },
+    {
+      "wrong": "النيو ليفل",
+      "right": "ذا نيو ليفل",
+      "note": "«فريق النيو ليفل» — القاموس «ذا نيو ليفل» (The New Level) — مراجعة Full Gear 2026 (INCIDENTS #1322)"
+    },
+    {
+      "wrong": "(?<pre>(?:إن|أن|بأن) [\\u0621-\\u064A]+) (?:شخصية|شخص) (?<what>موقعة?)(?![\\u0621-\\u064A])",
+      "right": "$<pre> $<what>",
+      "regex": true,
+      "note": "«إن بيرسيفوني شخصية موقعة مع AEW» ترجمة حرفية لـ«is somebody that is signed» — الصح «إن بيرسيفوني موقعة» (INCIDENTS #1322)"
+    },
+    {
+      "wrong": "(?<pre>لم [تي]سبب (?:له|لها|لهم)) أضرار (?<adj>بالغة|كبيرة|جسيمة|خطيرة)(?![\\u0621-\\u064A])",
+      "right": "$<pre> أضرارا $<adj>",
+      "regex": true,
+      "note": "«لم تسبب لها أضرار بالغة» — مفعول به منصوب: «أضرارا بالغة» — خبر المشجعة وام جيه اف (INCIDENTS #1322)"
+    },
+    {
       "wrong": "(?<pre>نزال(?: [\\u0621-\\u064A]+){1,6}) (?:المثير|الحماسي|الملحمي)(?![\\u0621-\\u064A])",
       "right": "$<pre>",
       "regex": true,
