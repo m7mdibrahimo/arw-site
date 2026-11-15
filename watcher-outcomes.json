@@ -1,78 +1,78 @@
 {
- "https://www.wrestlinginc.com/2315468/wwe-rey-mysterio-thought-debut-without-mask": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T05:15:05.640Z"
- },
- "https://www.ringsidenews.com/aew-full-gear-results-highlights-key-moments-november-14-2026": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الفائز مش مذكور في وصف نزاله (1) — اكتب النزال من المصدر بأسماء الطرفين",
-  "retry": true,
-  "at": "2026-11-15T05:10:01.205Z"
+ "https://www.fightful.com/wrestling/watch-aew-full-gear-post-show-media-scrum-11-14-26": {
+  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي، المتن (296 حرف) أطول بكثير من المصدر (46 حرف) — حشو",
+  "retry": false,
+  "at": "2026-11-15T05:23:32.270Z"
  },
  "https://www.fightful.com/wrestling/sherilyn-guerrero-pays-tribute-to-father-eddie-guerrero-in-in-ring-debut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:12:39.468Z"
+  "at": "2026-11-15T05:17:18.949Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-defeats-tommaso-ciampa-to-win-aew-national-championship-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:12:39.049Z"
+  "at": "2026-11-15T05:17:18.681Z"
  },
  "https://www.fightful.com/wrestling/kris-statlander-harley-cameron-capture-aew-womens-world-tag-team-titles-at-full-gear-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:12:38.729Z"
+  "at": "2026-11-15T05:17:18.475Z"
  },
  "https://www.fightful.com/wrestling/swerve-strickland-and-new-level-win-texas-deathmatch-to-capture-aew-world-trios-title-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:12:38.408Z"
+  "at": "2026-11-15T05:17:18.268Z"
  },
  "https://www.fightful.com/wrestling/kasper-brothers-creed-brothers-debut-for-aew-at-full-gear-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:12:37.799Z"
+  "at": "2026-11-15T05:17:17.875Z"
  },
  "https://www.fightful.com/wrestling/watch-full-episode-lucha-libre-aaa-november-14-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:12:37.579Z"
+  "at": "2026-11-15T05:17:17.732Z"
  },
  "https://www.fightful.com/wrestling/queen-aminata-retains-aew-tbs-title-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:12:37.055Z"
+  "at": "2026-11-15T05:17:17.388Z"
  },
  "https://www.fightful.com/wrestling/big-boom-aj-remains-undefeated-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:12:36.835Z"
+  "at": "2026-11-15T05:17:17.244Z"
  },
  "https://www.fightful.com/wrestling/aew-redesigns-trios-titles-to-pay-tribute-to-pac": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:12:36.407Z"
+  "at": "2026-11-15T05:17:16.961Z"
  },
  "https://www.fightful.com/wrestling/watch-aew-full-gear-buy-in-live-tonight": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:12:35.786Z"
+  "at": "2026-11-15T05:17:16.555Z"
  },
  "https://www.fightful.com/wrestling/report-trey-miguel-expected-to-miss-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:12:35.452Z"
+  "at": "2026-11-15T05:17:16.334Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-and-collision-averages-over-620000-viewers-on-cable-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:12:35.018Z"
+  "at": "2026-11-15T05:17:16.043Z"
  },
  "https://www.fightful.com/wrestling/grounded-flights-cause-travel-issues-for-wwe-aew-tna-and-convention": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:12:34.666Z"
+  "at": "2026-11-15T05:17:15.812Z"
+ },
+ "https://www.wrestlinginc.com/2315468/wwe-rey-mysterio-thought-debut-without-mask": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-15T05:15:05.640Z"
  },
  "https://www.ringsidenews.com/aew-full-gear-results-highlights-key-moments-november-14-2026": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الفائز مش مذكور في وصف نزاله (1) — اكتب النزال من المصدر بأسماء الطرفين",
@@ -1998,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-05T17:21:49.024Z"
- },
- "https://www.fightful.com/wrestling/enzo-amore-joe-alonzo-were-backstage-at-11-4-wwe-nxt": {
-  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-11-05T17:00:24.970Z"
  }
 }
