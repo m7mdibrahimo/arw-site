@@ -1,4 +1,49 @@
 {
+ "https://www.fightful.com/wrestling/tna-destination-x-2026-preview-start-time-how-to-watch-11-15": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-15T17:53:06.220Z"
+ },
+ "https://www.fightful.com/wrestling/tony-khan-says-if-he-hadnt-sent-private-planes-a-lot-of-scheduled-wrestlers-for-aew-full-gear-wouldnt-have-made-the-show": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-15T17:53:05.870Z"
+ },
+ "https://www.fightful.com/wrestling/will-ospreay-def-kyle-fletcher-to-retain-aew-world-title-at-full-gear-2026": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-15T17:53:05.583Z"
+ },
+ "https://www.fightful.com/wrestling/mjf-returns-at-aew-full-gear": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-15T17:53:05.438Z"
+ },
+ "https://www.fightful.com/wrestling/watch-aew-full-gear-post-show-media-scrum-11-14-26": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-15T17:53:05.164Z"
+ },
+ "https://www.fightful.com/wrestling/cm-punk-says-he-isnt-retiring-soon-youre-stuck-with-me-for-at-least-five-more-years": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-15T17:53:04.930Z"
+ },
+ "https://www.fightful.com/wrestling/sherilyn-guerrero-pays-tribute-to-father-eddie-guerrero-in-in-ring-debut": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-15T17:53:04.693Z"
+ },
+ "https://www.fightful.com/wrestling/ilja-dragunov-defeats-tommaso-ciampa-to-win-aew-national-championship-at-aew-full-gear": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-15T17:53:04.419Z"
+ },
+ "https://www.fightful.com/wrestling/kris-statlander-harley-cameron-capture-aew-womens-world-tag-team-titles-at-full-gear-2026": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-15T17:53:04.205Z"
+ },
  "https://www.wrestlinginc.com/2317182/wwe-talent-staff-grounded-flights-faa-smackdown": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -18,51 +63,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-15T17:47:54.685Z"
- },
- "https://www.fightful.com/wrestling/tna-destination-x-2026-preview-start-time-how-to-watch-11-15": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T17:50:23.516Z"
- },
- "https://www.fightful.com/wrestling/tony-khan-says-if-he-hadnt-sent-private-planes-a-lot-of-scheduled-wrestlers-for-aew-full-gear-wouldnt-have-made-the-show": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T17:50:22.934Z"
- },
- "https://www.fightful.com/wrestling/will-ospreay-def-kyle-fletcher-to-retain-aew-world-title-at-full-gear-2026": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T17:50:22.458Z"
- },
- "https://www.fightful.com/wrestling/mjf-returns-at-aew-full-gear": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T17:50:22.219Z"
- },
- "https://www.fightful.com/wrestling/watch-aew-full-gear-post-show-media-scrum-11-14-26": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T17:50:21.769Z"
- },
- "https://www.fightful.com/wrestling/cm-punk-says-he-isnt-retiring-soon-youre-stuck-with-me-for-at-least-five-more-years": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T17:50:21.393Z"
- },
- "https://www.fightful.com/wrestling/sherilyn-guerrero-pays-tribute-to-father-eddie-guerrero-in-in-ring-debut": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T17:50:21.020Z"
- },
- "https://www.fightful.com/wrestling/ilja-dragunov-defeats-tommaso-ciampa-to-win-aew-national-championship-at-aew-full-gear": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T17:50:20.573Z"
- },
- "https://www.fightful.com/wrestling/kris-statlander-harley-cameron-capture-aew-womens-world-tag-team-titles-at-full-gear-2026": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T17:50:20.225Z"
  },
  "https://www.fightful.com/wrestling/chavo-guerrero-on-wrestlers-in-hollywood-it-can-only-help-wrestling": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
