@@ -74,11 +74,6 @@
   "retry": false,
   "at": "2026-11-15T05:17:15.812Z"
  },
- "https://www.wrestlinginc.com/2315468/wwe-rey-mysterio-thought-debut-without-mask": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T05:15:05.640Z"
- },
  "https://www.ringsidenews.com/aew-full-gear-results-highlights-key-moments-november-14-2026": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الفائز مش مذكور في وصف نزاله (1) — اكتب النزال من المصدر بأسماء الطرفين",
   "retry": true,
