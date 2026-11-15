@@ -54,25 +54,10 @@
   "retry": false,
   "at": "2026-11-15T17:58:59.399Z"
  },
- "https://www.wrestlinginc.com/2317182/wwe-talent-staff-grounded-flights-faa-smackdown": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T17:49:53.746Z"
- },
  "https://www.wrestlinginc.com/2312495/wwe-star-miz-assesses-future-age-46": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-15T17:48:49.238Z"
- },
- "https://www.wrestlinginc.com/2315660/luke-gallows-good-brothers-miserable-grumpy-a-holes-wwe-vince-mcmahon": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين",
-  "retry": true,
-  "at": "2026-11-15T17:48:31.516Z"
- },
- "https://www.wrestlinginc.com/2315550/wwe-rey-mysterio-eddie-guerrero-dragon-lee-friendship-reminds": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T17:47:54.685Z"
  },
  "https://www.fightful.com/wrestling/chavo-guerrero-on-wrestlers-in-hollywood-it-can-only-help-wrestling": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
