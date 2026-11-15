@@ -1,5 +1,15 @@
 [
   {
+    "id": 4959512866,
+    "link": "https://www.wrestlinginc.com/2316971/tna-destination-x-2026-faa-grounding-order-disruptions/",
+    "date": "Sun, 15 Nov 2026 00:14:22 +0000",
+    "date_gmt": "2026-11-15T00:14:22.000Z",
+    "title": {
+      "rendered": "TNA Provides Update On Destination X After FAA Grounding Order & Disruptions"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-provides-update-on-destination-x-after-faa-grounding-order-disruptions/l-intro-1794701586.jpg"
+  },
+  {
     "id": 2903745898,
     "link": "https://www.wrestlinginc.com/2316969/tony-khan-aew-full-gear-2026-travel-disruptions/",
     "date": "Sun, 15 Nov 2026 00:05:49 +0000",
@@ -25,7 +35,7 @@
     "date": "Sat, 14 Nov 2026 21:00:00 +0000",
     "date_gmt": "2026-11-14T21:00:00.000Z",
     "title": {
-      "rendered": "AEW Full Gear Results 11/14//26 W/ Live Updates"
+      "rendered": "AEW Full Gear Results 11/14/26 W/ Live Updates: Tailgate Brawl"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-full-gear-results-111426-w-live-updates/l-intro-1794631665.jpg"
   },
@@ -188,15 +198,5 @@
       "rendered": "WWE's Booker T Comments On Ilja Dragunov's Arrival To AEW"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-booker-t-comments-on-ilja-dragunovs-arrival-to-aew/l-intro-1794351930.jpg"
-  },
-  {
-    "id": 5162212119,
-    "link": "https://www.wrestlinginc.com/2312412/aew-bishop-kaun-reflects-carrying-trios-titles-historic-venue/",
-    "date": "Sat, 14 Nov 2026 13:30:00 +0000",
-    "date_gmt": "2026-11-14T13:30:00.000Z",
-    "title": {
-      "rendered": "AEW's Bishop Kaun Reflects On Carrying Trios Titles In Historic Venue"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-bishop-kaun-reflects-on-carrying-trios-titles-in-historic-venue/l-intro-1794336202.jpg"
   }
 ]
