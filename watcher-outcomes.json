@@ -1,4 +1,19 @@
 {
+ "https://www.ringsidenews.com/paige-collett-wants-obi-wan-kenobi-inside-her-says-force-choked-would-complete-her-life": {
+  "reason": "المراجعة رفضته: همزات ساقطة في 3 مواضع — النص يحتاج إعادة ترجمة",
+  "retry": true,
+  "at": "2026-11-15T22:32:09.214Z"
+ },
+ "https://www.ringsidenews.com/dawn-marie-claims-wwe-hid-fact-when-women-outdrew-male-stars-ratings": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-15T22:31:03.555Z"
+ },
+ "https://www.ringsidenews.com/tna-destination-x-results-highlights-key-moments-november-15-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-15T22:30:03.891Z"
+ },
  "https://www.fightful.com/wrestling/mjf-somebody-tell-that-lady-to-watch-where-shes-going": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
