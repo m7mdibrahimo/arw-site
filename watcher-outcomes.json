@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aaa-fox-results-stream-highlights-key-moments-november-14-2026": {
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
+  "retry": true,
+  "at": "2026-11-15T02:57:14.516Z"
+ },
  "https://www.fightful.com/wrestling/kasper-brothers-creed-brothers-debut-for-aew-at-full-gear-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
