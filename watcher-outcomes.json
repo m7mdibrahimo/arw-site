@@ -1,63 +1,63 @@
 {
- "https://www.ringsidenews.com/aaa-fox-results-stream-highlights-key-moments-november-14-2026": {
-  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
-  "retry": true,
-  "at": "2026-11-15T02:57:14.516Z"
- },
  "https://www.fightful.com/wrestling/kasper-brothers-creed-brothers-debut-for-aew-at-full-gear-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:57:49.624Z"
+  "at": "2026-11-15T03:00:27.823Z"
  },
  "https://www.fightful.com/wrestling/watch-full-episode-lucha-libre-aaa-november-14-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:57:49.402Z"
+  "at": "2026-11-15T03:00:27.598Z"
  },
  "https://www.fightful.com/wrestling/queen-aminata-retains-aew-tbs-title-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:57:48.855Z"
+  "at": "2026-11-15T03:00:27.060Z"
  },
  "https://www.fightful.com/wrestling/big-boom-aj-remains-undefeated-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:57:48.633Z"
+  "at": "2026-11-15T03:00:26.837Z"
  },
  "https://www.fightful.com/wrestling/aew-redesigns-trios-titles-to-pay-tribute-to-pac": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:57:48.187Z"
+  "at": "2026-11-15T03:00:26.394Z"
  },
  "https://www.fightful.com/wrestling/watch-aew-full-gear-buy-in-live-tonight": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:57:47.551Z"
+  "at": "2026-11-15T03:00:25.766Z"
  },
  "https://www.fightful.com/wrestling/report-trey-miguel-expected-to-miss-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:57:47.212Z"
+  "at": "2026-11-15T03:00:25.427Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-and-collision-averages-over-620000-viewers-on-cable-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:57:46.773Z"
+  "at": "2026-11-15T03:00:24.981Z"
  },
  "https://www.fightful.com/wrestling/grounded-flights-cause-travel-issues-for-wwe-aew-tna-and-convention": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:57:46.434Z"
+  "at": "2026-11-15T03:00:24.641Z"
  },
  "https://www.fightful.com/wrestling/muhammad-hassan-i-dont-think-i-have-another-match-left-in-me-i-feel-like-if-i-take-more-than-one-bump-at-a-time-im-going-to-shatter": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:57:45.800Z"
+  "at": "2026-11-15T03:00:24.010Z"
  },
  "https://www.fightful.com/wrestling/tko-chief-administrative-officer-senior-counsel-says-he-will-be-transitioning-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:57:45.054Z"
+  "at": "2026-11-15T03:00:23.275Z"
+ },
+ "https://www.ringsidenews.com/aaa-fox-results-stream-highlights-key-moments-november-14-2026": {
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
+  "retry": true,
+  "at": "2026-11-15T02:57:14.516Z"
  },
  "https://www.fightful.com/wrestling/the-kasper-brothers-sign-with-all-elite-wrestling": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة",
