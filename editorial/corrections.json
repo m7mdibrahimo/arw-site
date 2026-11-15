@@ -79,6 +79,17 @@
       "note": "اسم العرض التمهيدي يتكتب بالإنجليزي (INCIDENTS #1315)"
     },
     {
+      "wrong": "تبديل الأدوار مع",
+      "right": "لمس يد",
+      "note": "tagged in داخل النزال = «لمس يد فلان»؛ «تبديل الأدوار» معناها تبادل الشخصيات — خبر ستاتلاندر وكاميرون في Full Gear (INCIDENTS #1318)"
+    },
+    {
+      "wrong": "بطولة (?:منافسي|المنافسين على|منافسين على) (?:بطولة|لقب)",
+      "right": "بطولة تحديد المنافس على لقب",
+      "regex": true,
+      "note": "Contenders Tournament = «بطولة تحديد المنافس على لقب…»؛ «بطولة منافسي بطولة» كلمة مكررة ومش مفهومة — خبر جاك كارتويل (INCIDENTS #1318)"
+    },
+    {
       "wrong": "(?<=(?:Center|Centre|Arena|Stadium|Garden|Coliseum|Dome|Hall|Pavilion|Amphitheatre|Amphitheater|Field|Park|Theatre|Theater)\\s)ري فينيكس",
       "right": "في فينيكس",
       "regex": true,

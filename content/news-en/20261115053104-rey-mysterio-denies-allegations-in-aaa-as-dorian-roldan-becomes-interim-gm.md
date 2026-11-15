@@ -14,7 +14,7 @@ en_tags:
   - "AAA on FOX"
 image: /content/images/1gh8fkksk437sovz.jpg
 ---
-Tensions have escalated between Rey Mysterio and Dorian Roldan during recent broadcasts of AAA on FOX. Dorian Roldan publicly accused Mysterio of engaging in an affair with his mother, Marisela Pena, claiming Mysterio used the relationship to gain influence and created an unsafe work environment. Roldan pointed to an injury suffered by El Hijo del Vikingo and a physical altercation involving Mysterio and Omos as examples of this environment.
+Tensions have escalated between Rey Mysterio and Dorian Roldan during recent broadcasts of AAA on FOX. Dorian Roldan publicly accused Mysterio of engaging in an affair with his mother, Marisela Pena, claiming Mysterio used the relationship to gain influence and created an unsafe work environment. Roldan pointed to an injury suffered by El Hijo del Vikingo and Mysterio attacking a fan (Omos) as examples of this environment.
 
 On the November 14 episode of AAA on FOX, Roldan repeated the accusations on air, prompting Mysterio to confront him directly. Mysterio denied all allegations and stated that Roldan was disrespecting his own mother. Following the confrontation, Roldan announced his appointment as the Interim General Manager while Mysterio remains suspended, using his new position to immediately remove Mysterio from the arena.
 
