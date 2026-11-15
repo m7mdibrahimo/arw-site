@@ -12383,10 +12383,10 @@
       "note": "Winnebago County = وينيباغو — خبر تشاد ويكس — INCIDENTS #1283"
     },
     {
-      "wrong": "[إا]دموندون",
+      "wrong": "[إا]دموندون|(?<=(?:إلى|في|من|مدينة|بمدينة|لمدينة) )[إا]دموند(?![\\u0621-\\u064A])",
       "right": "إدمونتون",
       "regex": true,
-      "note": "Edmonton = إدمونتون (بالتاء) — خبر TNA Destination X — INCIDENTS #1286"
+      "note": "Edmonton = إدمونتون (بالتاء) — أخبار TNA Destination X — INCIDENTS #1286، #1329 («إلى إدموند»)"
     },
     {
       "wrong": "مشخصا إياه",
