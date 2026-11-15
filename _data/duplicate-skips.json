@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/john-cena-appears-spoil-his-big-wwe-raw-announcement-instagram-post/": {
-    "matchedFile": "20261102013622-عرض-جون-سينا-الكلاسيكي-قد-يقام-في-مواجهة-مباشرة-مع-عرض-aew-worlds-end.md",
-    "reason": "الخبر الجديد يكرر تفاصيل إعلان جون سينا عن بطولته الكلاسيكية في عرض RAW وموعدها المحتمل في 19 ديسمبر، وهي نفس المعلومات الموجودة في الخبر المنشور رقم 0.",
-    "at": "2026-11-02T15:02:12.586Z"
-  },
   "https://www.wrestlinginc.com/2304029/wwe-crown-jewel-2026-dave-meltzer-saudi-arabia-maintains-no-stars-refused-travel/": {
     "matchedFile": "20261102162048-توضيح-موقف-سي-ام-بانك-وكيفن-أوينز-في-عرض-wwe-crown-jewel-وسط-مخاوف-أمان-المواهب.md",
     "reason": "الخبر الجديد يكرر مناقشة شائعات رفض نجوم WWE السفر إلى السعودية لعرض Crown Jewel وتأكيد ديف ميلتزر عكس ذلك، وهو نفس المحور الأساسي للخبر المنشور رقم [0].",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261114213816-اتحاد-tna-يؤكد-إقامة-عرض-destination-x-يوم-15-نوفمبر-رغم-أزمة-السفر.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (عرض TNA Destination X 2026) وموعد إقامته، وتفاصيل البث المجاني لا تعتبر تطوراً جوهرياً يمنع كونه تكراراً لنفس الإعلان.",
     "at": "2026-11-15T21:42:23.215Z"
+  },
+  "https://www.ringsidenews.com/elijah-announces-tna-wrestling-radio-partnership-iheartradio-following-wwes-radio-launch/": {
+    "matchedFile": "20261116014939-tna-wrestling-تطلق-برنامجا-إذاعيا-جديدا-عبر-شراكة-مع-iheartradio.md",
+    "reason": "الخبر الجديد يغطي نفس واقعة إعلان الشراكة بين TNA وiHeartRadio لإطلاق إذاعة TNA Wrestling Radio، وهي نفس الواقعة المغطاة في الخبر المنشور مسبقاً.",
+    "at": "2026-11-15T22:56:44.171Z"
   }
 }
