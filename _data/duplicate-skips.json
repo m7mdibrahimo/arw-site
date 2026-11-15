@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/wwe-nxt-halloween-havoc-results-highlights-key-moments-october-31-2026/": {
-    "matchedFile": "20261101032725-زيلا-فاتو-يهزم-تشارلي-ديمبسي-في-نزال-مثير-في-عرض-wwe-nxt-halloween-havoc-2026.md",
-    "reason": "الخبر الجديد عبارة عن ملخص لنتائج عرض WWE NXT Halloween Havoc، وهو يكرر نتائج النزالات التي تم تغطيتها بالفعل في الأخبار [0]، [1]، و[3] بشكل منفصل.",
-    "at": "2026-11-01T00:49:04.641Z"
-  },
   "https://www.fightful.com/wrestling/aew-fight-night-collision-results-10-31-ilja-dragunov-competes/": {
     "matchedFile": "20261101000000-نتائج-عرض-aew-collision-31-أكتوبر-2026-توماسو-تشامبا-يواجه-مات-سايدال-وظهور-فريق-ذا-هيرت-سنديكيت.md",
     "reason": "الخبر الجديد يغطي نفس نتائج عرض AEW Collision بتاريخ 31 أكتوبر 2026 التي تم نشرها بالفعل في الخبر رقم 1، ولا يقدم تطورات جديدة جوهرية تبرر اعتباره خبراً منفصلاً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261115023100-نتائج-عرض-aew-full-gear-14-نوفمبر-2026-أبرز-المواجهات-واللحظات-الكبرى.md",
     "reason": "الخبر الجديد يتناول نتيجة نزال إيليا دراغونوف وتوماسو تشامبا في عرض AEW Full Gear 2026 وتتويجه ببطولة AEW الوطنية، وهو نفس الحدث والنتيجة المغطاة ضمن نتائج عرض AEW Full Gear في الخبر المنشور برقم 0.",
     "at": "2026-11-15T04:12:22.151Z"
+  },
+  "https://www.ringsidenews.com/ilja-dragunov-wins-aew-national-championship-brutal-match-tommaso-ciampa-full-gear-2026/": {
+    "matchedFile": "20261115023100-نتائج-عرض-aew-full-gear-14-نوفمبر-2026-أبرز-المواجهات-واللحظات-الكبرى.md",
+    "reason": "الخبر الجديد يتناول نتيجة نزال فوز إيليا دراغونوف ببطولة AEW الوطنية ضد توماسو تشامبا في عرض AEW Full Gear 2026، وهي نفس النتيجة والحدث المغطى بالفعل ضمن تقرير نتائج عرض AEW Full Gear المنشور في العنصر رقم 0.",
+    "at": "2026-11-15T04:21:11.189Z"
   }
 }
