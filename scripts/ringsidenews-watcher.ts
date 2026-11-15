@@ -58,6 +58,7 @@ interface RsnFeedItem {
   pubDate: string;
   contentHtml: string;
   thumbnail: string;
+  categories?: string[];
 }
 
 export function parseRingsideNewsFeed(xml: string): RsnFeedItem[] {
@@ -79,6 +80,8 @@ export function parseRingsideNewsFeed(xml: string): RsnFeedItem[] {
       pubDate: extractTag(block, "pubDate"),
       contentHtml,
       thumbnail: imgMatch ? imgMatch[1] : "",
+      // the promotion desk the story is filed under («TNA Wrestling News») — processPost trusts it (INCIDENTS #1327)
+      categories: [...block.matchAll(/<category[^>]*>\s*(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?\s*<\/category>/gi)].map(m => decodeXmlEntities(m[1].trim())).filter(Boolean),
     });
   }
   return items;
@@ -169,9 +172,10 @@ export function extractRingsideArticle(page: string): string | null {
   return page.slice(start, end > start ? end : start + 80000);
 }
 
-function toWpPost(item: { title: string; link: string; pubDate: string; contentHtml: string; thumbnail: string }, id: number) {
+function toWpPost(item: { title: string; link: string; pubDate: string; contentHtml: string; thumbnail: string; categories?: string[] }, id: number) {
   return {
     id,
+    source_categories: item.categories || [],
     title: { rendered: item.title },
     content: { rendered: item.contentHtml },
     link: item.link,

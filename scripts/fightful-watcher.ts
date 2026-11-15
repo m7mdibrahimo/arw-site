@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, fixTitleSubjectGender, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixElijahAsIlya, fixEventCalledMovie, fixDivasChampion, demoteUnplayedMainEvent, tweetDateAsShowDate, type NewsFile } from "./news-qa";
+import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, liveEventInResults, fixTitleSubjectGender, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixElijahAsIlya, fixEventCalledMovie, fixDivasChampion, demoteUnplayedMainEvent, tweetDateAsShowDate, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -4237,6 +4237,32 @@ export function federationFromHistory(federation: string, tags: string[], source
 }
 
 /**
+ * Ringside News files each story under its promotion's desk («TNA Wrestling News», «WWE News», «AEW News»). The
+ * Jeff Hardy family story — a «TNA Wrestling News» item whose text names no promotion — came out «WWE» from the
+ * model's memory, and his mixed history (TNA, WWE, AEW) gave federationFromHistory no clear answer (INCIDENTS #1327).
+ * When the source's desk names exactly one promotion and the text never names the one the writer picked, the desk wins.
+ */
+const DESK_PROMOTION: [RegExp, string][] = [[/^WWE\b/i, "WWE"], [/^AEW\b/i, "AEW"], [/^(?:TNA|Impact)\b/i, "TNA"], [/^(?:ROH|Ring of Honor)\b/i, "ROH"], [/^(?:NJPW|New Japan)\b/i, "NJPW"]];
+export function federationFromSourceDesk(federation: string, tags: string[], categories: unknown, sourceText: string): { federation: string; tags: string[] } {
+  const fed = String(federation || "").toUpperCase();
+  const desks = new Set<string>();
+  for (const c of Array.isArray(categories) ? categories : []) {
+    const name = String(c || "").trim();
+    if (!/\b(?:News|Videos|Photos|Featured|Results)$/i.test(name)) continue;  // «Jeff Hardy», «AEW Full Gear» are topics, not desks
+    const hit = DESK_PROMOTION.find(([re]) => re.test(name));
+    if (hit) desks.add(hit[1]);
+  }
+  if (desks.size !== 1) return { federation, tags };
+  const desk = [...desks][0];
+  const said = PROMOTION_IN_TEXT[fed];
+  if (desk === fed || (said && said.test(sourceText))) return { federation, tags };
+  const oldTag = new RegExp(`(?:^|\\s)${fed}(?:\\s|$)`, "i");
+  const kept = fed ? tags.filter(t => !oldTag.test(t)) : [...tags];
+  if (!kept.some(t => t.toUpperCase() === desk)) kept.unshift(desk);
+  return { federation: desk, tags: kept };
+}
+
+/**
  * A wrestler named in the headline is a tag: «سيرينا لينتون» (her ROH debut) and «لايلا» (the Kelly
  * Kelly story about her) were in the title but not in the tags, so the story never reached their tag
  * pages (INCIDENTS #140). Names come from the glossary (people, not titles or shows).
@@ -4564,6 +4590,9 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     const fixed = federationFromHistory(rewritten.federation || "", rewritten.tags || [], `${rawTitle}\n${plainText}`, loadNews(NEWS_DIR));
     if (fixed.federation !== rewritten.federation) console.log(`[Watcher] Federation ${rewritten.federation} → ${fixed.federation} (the source never names it; the site's recent stories on ${fixed.by} do)`);
     rewritten.federation = fixed.federation; rewritten.tags = fixed.tags;
+    const desk = federationFromSourceDesk(rewritten.federation || "", rewritten.tags || [], post?.source_categories, `${rawTitle}\n${plainText}`);
+    if (desk.federation !== rewritten.federation) console.log(`[Watcher] Federation ${rewritten.federation} → ${desk.federation} (the source files it under that promotion and never names the other)`);
+    rewritten.federation = desk.federation; rewritten.tags = desk.tags;
   }
   console.log(`[Watcher] Federation: ${rewritten.federation} | Tags (${rewritten.tags.length}): ${rewritten.tags.join(", ")}`);
 
@@ -4932,6 +4961,8 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   }
   // A man's name with a feminine title verb («بروس بريتشارد تطالب») takes «ي» (INCIDENTS #1279).
   rewritten.title = numberWordsInTitle(resultsTitleOutcome(fixTitleSubjectGender(draft.title, draft.body), draft.body));
+  // A live event / tour is never titled as the TV episode: «WWE NXT» → «WWE NXT Holiday Live Tour» (INCIDENTS #1327).
+  { const live = liveEventInResults(rewritten.title, draft.body, decodeHtmlEntities(rawTitle)); rewritten.title = live.title; draft = { ...draft, body: live.body }; }
   if (!isShowResultsArticle(rawTitle, plainText)) rewritten.title = tonightInTitle(rewritten.title);
   rewritten.title = dropTimezoneFromTitle(rewritten.title);
   // A results report's title date is the show's (US) date from the source, never today's UTC date
