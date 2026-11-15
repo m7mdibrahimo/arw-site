@@ -1,5 +1,15 @@
 [
   {
+    "id": 339214,
+    "link": "https://www.fightful.com/wrestling/mjf-returns-at-aew-full-gear/",
+    "date": "2026-11-15T01:07:12",
+    "date_gmt": "2026-11-15T06:07:12",
+    "title": {
+      "rendered": "MJF Returns At AEW Full Gear"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/15010637/HXJQbCoXQAA8awf.jpeg"
+  },
+  {
     "id": 339200,
     "link": "https://www.fightful.com/wrestling/the-cut-defeats-death-riders-and-the-conglomeration-in-anarchy-in-the-arena-match-at-aew-full-gear-2026-kemalito-wheeler-yuta-and-more-make-appearances/",
     "date": "2026-11-15T00:20:34",
@@ -288,15 +298,5 @@
       "rendered": "Report: Trey Miguel Expected To Miss TNA Destination X"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/15231905/HUtom6rWMAMudTE-e1792120759714.jpg"
-  },
-  {
-    "id": 339091,
-    "link": "https://www.fightful.com/wrestling/aew-landed-licensed-songs-for-full-gear/",
-    "date": "2026-11-14T18:18:43",
-    "date_gmt": "2026-11-14T23:18:43",
-    "title": {
-      "rendered": "AEW Landed Licensed Songs For Full Gear"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/16161946/fullgearpac.jpg"
   }
 ]
