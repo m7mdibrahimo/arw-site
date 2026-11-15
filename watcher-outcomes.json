@@ -1,63 +1,68 @@
 {
- "https://www.ringsidenews.com/aew-full-gear-results-highlights-key-moments-november-14-2026": {
-  "reason": "المراجعة رفضته: صيغة مثنى (صفقا/احتفلا/أمام عيني X وY…) ممنوعة: اكتب فعل جمع («مات وجيف صفقوا») أو «أمام X وY».",
+ "https://www.fightful.com/wrestling/the-young-bucks-retain-aew-world-tag-team-titles-at-aew-full-gear": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-15T02:01:16.484Z"
+  "at": "2026-11-15T02:04:58.425Z"
  },
  "https://www.fightful.com/wrestling/queen-aminata-retains-aew-tbs-title-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:01:51.880Z"
+  "at": "2026-11-15T02:04:21.639Z"
  },
  "https://www.fightful.com/wrestling/big-boom-aj-remains-undefeated-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:01:51.721Z"
+  "at": "2026-11-15T02:04:21.450Z"
  },
  "https://www.fightful.com/wrestling/aew-redesigns-trios-titles-to-pay-tribute-to-pac": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:01:51.393Z"
+  "at": "2026-11-15T02:04:21.067Z"
  },
  "https://www.fightful.com/wrestling/watch-aew-full-gear-buy-in-live-tonight": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:01:50.938Z"
+  "at": "2026-11-15T02:04:20.512Z"
  },
  "https://www.fightful.com/wrestling/report-trey-miguel-expected-to-miss-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:01:50.696Z"
+  "at": "2026-11-15T02:04:20.215Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-and-collision-averages-over-620000-viewers-on-cable-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:01:50.386Z"
+  "at": "2026-11-15T02:04:19.827Z"
  },
  "https://www.fightful.com/wrestling/grounded-flights-cause-travel-issues-for-wwe-aew-tna-and-convention": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:01:50.146Z"
+  "at": "2026-11-15T02:04:19.463Z"
  },
  "https://www.fightful.com/wrestling/muhammad-hassan-i-dont-think-i-have-another-match-left-in-me-i-feel-like-if-i-take-more-than-one-bump-at-a-time-im-going-to-shatter": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:01:49.697Z"
+  "at": "2026-11-15T02:04:18.894Z"
  },
  "https://www.fightful.com/wrestling/tko-chief-administrative-officer-senior-counsel-says-he-will-be-transitioning-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:01:49.158Z"
+  "at": "2026-11-15T02:04:18.242Z"
  },
  "https://www.fightful.com/wrestling/aew-full-gear-results-11-14-2026-will-ospreay-vs-kyle-fletcher-texas-death-anarchy-in-the-arena-mercedes-mone-more": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: نزال فردي، المواجهة الثانية: نزال فرق سداسي، المواجهة الثالثة: نزال فرق ثماني، المواجهة الرابعة: بطولة TBS، المواجهة الخامسة: بطولة AEW الدولية، المواجهة السادسة: بطولة AEW العالمية للفرق، المواجهة السابعة: بطولة AEW الوطنية، المواجهة الثامنة: بطولة AEW العالمية للفرق للسيدات، المواجهة التاسعة: بطولة AEW العالمية للفرق الثلاثية - نزال Texas Death، المواجهة العاشرة: بطولة AEW العالمية للسيدات، المواجهة الحادية عشرة: نزال Anarchy in the Arena، الحدث الرئيسي: بطولة AEW العالمية — اكتب الفائز زي المصدر وبالماضي",
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Trent Beretta، في التقرير 7 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
   "retry": true,
-  "at": "2026-11-15T02:01:48.763Z"
+  "at": "2026-11-15T02:04:17.776Z"
  },
  "https://www.fightful.com/wrestling/4th-rope-x-mass-appeal-present-heelmatic-results-11-12": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T02:01:19.864Z"
+  "at": "2026-11-15T02:03:55.068Z"
+ },
+ "https://www.ringsidenews.com/aew-full-gear-results-highlights-key-moments-november-14-2026": {
+  "reason": "المراجعة رفضته: صيغة مثنى (صفقا/احتفلا/أمام عيني X وY…) ممنوعة: اكتب فعل جمع («مات وجيف صفقوا») أو «أمام X وY».",
+  "retry": true,
+  "at": "2026-11-15T02:01:16.484Z"
  },
  "https://www.ringsidenews.com/liv-morgan-drops-500-puppy-she-found-side-road": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
   "at": "2026-11-05T12:34:13.347Z"
- },
- "https://www.ringsidenews.com/injury-status-aew-talent-following-blood-guts-2026": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»",
-  "retry": true,
-  "at": "2026-11-05T12:33:15.682Z"
  }
 }
