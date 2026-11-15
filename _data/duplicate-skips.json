@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/sheamus-im-just-taking-time-off-im-on-vacation/": {
-    "matchedFile": "20261031235238-شيماس-يأخذ-فترة-استراحة-من-المصارعة-بعد-مغادرته-wwe.md",
-    "reason": "الخبر الجديد يتناول نفس التصريح الذي أدلى به شيماس حول كونه في فترة راحة وليس معتزلاً، وهو جوهر الخبر المنشور مسبقاً.",
-    "at": "2026-10-31T21:01:55.286Z"
-  },
   "https://www.fightful.com/wrestling/watch-countdown-to-nxt-halloween-havoc-oct-31-2026/": {
     "matchedFile": "20261030185142-نجمة-قائمة-wwe-smackdown-تايتوم-باكسلي-تعود-للظهور-في-عرض-wwe-nxt-halloween-havoc-2026.md",
     "reason": "الخبر الجديد يتحدث عن لجنة التحليل لعرض NXT Halloween Havoc، وهو نفس الحدث الذي تم تغطيته في الخبر رقم 1 والذي أعلن عن مشاركة تايتوم باكسلي في نفس اللجنة.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261115053104-ري-ميستيريو-ينفي-اتهامات-الخيانة-في-عرض-aaa-وتعيين-دوريان-رولدان-مديرا-عاما-مؤقتا.md",
     "reason": "الخبر الجديد يعيد سرد نفس أحداث عرض AAA بتاريخ 15 نوفمبر التي تم تغطيتها بالفعل في الخبر رقم 1، بما في ذلك اتهامات رولدان، رد ميستيريو، وتعيين رولدان مديراً عاماً.",
     "at": "2026-11-15T03:01:13.449Z"
+  },
+  "https://www.fightful.com/wrestling/swerve-strickland-and-new-level-win-texas-deathmatch-to-capture-aew-world-trios-title-at-aew-full-gear/": {
+    "matchedFile": "20261115055910-سويرف-ستريكلاند-وفريق-ذا-نيو-ليفل-يفوزون-ببطولة-aew-العالمية-للفرق-الثلاثية-في-نزال-texas-death-ضمن-عرض-aew-full-gear.md",
+    "reason": "الخبر الجديد يتطابق كلياً مع الخبر المنشور، حيث يغطي نفس نتيجة نزال Texas Deathmatch وتتويج Swerve Strickland وفريق New Level ببطولة AEW World Trios في عرض AEW Full Gear من مصدر مختلف.",
+    "at": "2026-11-15T03:08:45.946Z"
   }
 }
