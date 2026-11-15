@@ -12,42 +12,47 @@
  "https://www.fightful.com/wrestling/tna-destination-x-results-11-15-two-ultimate-x-matches": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-15T23:27:07.375Z"
+  "at": "2026-11-15T23:34:02.737Z"
  },
  "https://www.fightful.com/wrestling/mjf-somebody-tell-that-lady-to-watch-where-shes-going": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T23:27:07.061Z"
+  "at": "2026-11-15T23:34:02.316Z"
  },
  "https://www.fightful.com/wrestling/countdown-to-tna-destination-x-2026-live-and-free-at-5pm-et-on-november-15th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T23:27:06.888Z"
+  "at": "2026-11-15T23:34:02.095Z"
  },
  "https://www.fightful.com/wrestling/indi-hartwell-says-she-cant-make-it-to-tna-destination-x-to-defend-her-knockouts-world-championship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T23:27:06.626Z"
+  "at": "2026-11-15T23:34:01.753Z"
  },
  "https://www.fightful.com/wrestling/ken-anderson-confirms-he-has-signed-a-wwe-legends-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T23:27:06.145Z"
+  "at": "2026-11-15T23:34:01.118Z"
  },
  "https://www.fightful.com/wrestling/aew-posts-toni-storm-teaser-with-play-me-written-on-package": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T23:27:05.882Z"
+  "at": "2026-11-15T23:34:00.768Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-when-i-came-into-aew-i-promised-that-the-landscape-is-about-to-change-why-because-i-am-here": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T23:27:05.475Z"
+  "at": "2026-11-15T23:34:00.231Z"
  },
  "https://www.fightful.com/wrestling/tna-destination-x-2026-preview-start-time-how-to-watch-11-15": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T23:27:04.257Z"
+  "at": "2026-11-15T23:33:58.620Z"
+ },
+ "https://www.ringsidenews.com/tna-destination-x-results-highlights-key-moments-november-15-2026": {
+  "reason": "المراجعة رفضته: حروف عربي ملزوقة في حروف إنجليزي جوه نفس الاسم (حصل: «يOH»، «نagai») — اكتب الاسم كله إنجليزي أو كله عربي، فعل مثنى («تشيبمان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، التحديث شال فقرات الكواليس وتفاصيل النزالات من التقرير المنشور — اكتب التقرير كامل وزوّد الجديد",
+  "retry": true,
+  "at": "2026-11-15T23:28:35.487Z"
  },
  "https://www.ringsidenews.com/wwe-concerned-some-superstars-may-miss-november-16-raw-due-flight-chaos": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
