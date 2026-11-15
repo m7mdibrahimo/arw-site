@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, liveEventInResults, fixTitleSubjectGender, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixElijahAsIlya, fixEventCalledMovie, fixDivasChampion, demoteUnplayedMainEvent, tweetDateAsShowDate, titleChangeWrittenAsDefense, type NewsFile } from "./news-qa";
+import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, liveEventInResults, fixTitleSubjectGender, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, fixNearGlossaryNames, fixSwappedSurnames, threeWayAsCount, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixElijahAsIlya, fixEventCalledMovie, fixDivasChampion, demoteUnplayedMainEvent, tweetDateAsShowDate, titleChangeWrittenAsDefense, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -4771,6 +4771,9 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   {
     const want = sourceNamesMissing(`${rawTitle}\n${plainText}`, `${draft.title}\n${draft.body}`).map(n => WRESTLER_NAMES_MAP[n]);
     if (want.length) draft = { title: fixNearGlossaryNames(draft.title, want), body: fixNearGlossaryNames(draft.body, want), tags: canonicalTags(draft.tags.map(t => fixNearGlossaryNames(t, want))) };
+    // «تري مونتانا» for Trey Miguel: the first name kept, another glossary wrestler's surname glued on (INCIDENTS #1336).
+    const src = `${rawTitle}\n${plainText}`;
+    if (want.length) draft = { title: fixSwappedSurnames(draft.title, want, src), body: fixSwappedSurnames(draft.body, want, src), tags: canonicalTags(draft.tags.map(t => fixSwappedSurnames(t, want, src))) };
   }
   // «Alexis» written «أليكس»: a full first name in the source keeps its full spelling (INCIDENTS #1235).
   {
@@ -4802,6 +4805,11 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   // A wrestler the source never names but the story keeps naming is a swapped name (INCIDENTS #461).
   for (const en of wrestlerNotInSource(`${draft.title}\n${draft.body}`, `${rawTitle}\n${plainText}`, WRESTLER_NAMES_MAP)) {
     blocking.push({ code: "name_not_in_source", severity: "error", field: "body", message: `اسم مصارع في العنوان أو المتن غير موجود في المصدر: ${en}`, excerpt: en });
+  }
+  // «ثلاثة نزالات» for «Two Three-Way Matches»: three-way is the kind of match, not the count (INCIDENTS #1336).
+  {
+    const threeWay = threeWayAsCount(`${draft.title}\n${draft.body}`, `${rawTitle}\n${plainText}`);
+    if (threeWay) { blocking.push({ code: "three_way_as_count", severity: "error", field: "body", message: `المصدر بيقول three-way (نزال ثلاثي، يعني ٣ مصارعين) والخبر كتبها عدد نزالات: «${threeWay}» — اكتب «نزال ثلاثي» وعدد النزالات زي المصدر`, excerpt: threeWay }); lastPostRetryable = true; }
   }
   // "def. … via time limit expiration" is a win, not a draw (INCIDENTS #1199).
   const tlDraw = timeLimitWinAsDraw(draft.body, `${rawTitle}\n${plainText}`);

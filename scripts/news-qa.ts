@@ -2831,9 +2831,12 @@ export function fixNearGlossaryNames(text: string, names: string[]): string {
       // the first word is not part of the name — it is kept and the rest is compared.
       const pre = run[0][0] !== words[0] && run[0][0].length > words[0].length && /^[وبلفك]/.test(run[0][0]) && run[0][0].slice(1) === words[0] ? run[0][0][0] : "";
       const word0 = (t: RegExpMatchArray, k: number) => k === 0 && pre ? t[0].slice(1) : t[0];
-      if (!run.some((t, k) => word0(t, k) === words[k])) continue;
       const got = normalizeArabic(run.map((t, k) => word0(t, k)).join(""));
       const d = editDistance(got, flat);
+      // «وآيفري ستيلز» for «إيفري ستايلز» (TNA Destination X, INCIDENTS #1336): no word written exactly, but the same
+      // consonants word by word and at most two letters off still is the source's name.
+      const wordSkeletons = run.every((t, k) => normalizeArabic(word0(t, k))[0] === normalizeArabic(words[k])[0] && vowelSkeleton(normalizeArabic(word0(t, k))) === vowelSkeleton(normalizeArabic(words[k])));
+      if (!run.some((t, k) => word0(t, k) === words[k]) && !(wordSkeletons && d > 0 && d <= 2)) continue;
       // Long vowels written another way («لايلا ديجز» for «ليلى ديجز», INCIDENTS #1146): same consonants, up to 3 vowel letters off.
       const sameSkeleton = d > 0 && d <= 3 && vowelSkeleton(got) === vowelSkeleton(flat);
       if ((d > 0 && d <= limit) || sameSkeleton) { hits.push([run[0].index! + pre.length, run[run.length - 1].index! + run[run.length - 1][0].length]); i += words.length - 1; }
@@ -2841,6 +2844,51 @@ export function fixNearGlossaryNames(text: string, names: string[]): string {
     for (const [from, to] of hits.reverse()) out = out.slice(0, from) + name + out.slice(to);
   }
   return out;
+}
+
+/**
+ * «تري مونتانا» for Trey Miguel (TNA Destination X story, INCIDENTS #1336): the story kept the source person's first
+ * name (same consonants as the glossary «تراي») but glued on the surname of another glossary wrestler (Cruz Montana)
+ * whom the source never names. `names` are the glossary Arabic names of source people missing from the story;
+ * every such «<first> <borrowed surname>» pair becomes the source's name. Only when exactly one wanted name fits.
+ */
+export function fixSwappedSurnames(text: string, names: string[], source: string): string {
+  let out = String(text || "");
+  const src = String(source || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  let gl: Record<string, string> = {};
+  try { gl = JSON.parse(fs.readFileSync(path.join(process.cwd(), "scripts", "wrestler-names.json"), "utf-8")); } catch { return out; }
+  const knownAr = new Set(Object.values(gl));
+  // Arabic surname → its English surnames; a surname counts as borrowed only when none of them is in the source
+  const surnames = new Map<string, string[]>();
+  for (const [en, ar] of Object.entries(gl)) {
+    const p = en.split(/\s+/), a = String(ar).split(/\s+/);
+    if (p.length === 2 && a.length === 2 && /^[ء-ي]{4,}$/.test(a[1])) surnames.set(a[1], [...(surnames.get(a[1]) || []), p[1]]);
+  }
+  const borrowed = (w: string) => {
+    const ens = surnames.get(w);
+    return !!ens && !ens.some(e => src.includes(e.toLowerCase().slice(0, Math.max(4, e.length - 2))));
+  };
+  const sk = (w: string) => vowelSkeleton(normalizeArabic(w));
+  const wanted = names.map(n => String(n || "").split(" ")).filter(w => w.length === 2 && w.every(x => /^[ء-ي]+$/.test(x)) && sk(w[0]).length >= 2);
+  out = out.replace(/(?<![ء-ي])([وبلفك]?)([ء-ي]{2,}) ([ء-ي]{4,})(?![ء-ي])/g, (all, pre: string, first: string, last: string) => {
+    if (knownAr.has(`${pre}${first} ${last}`) || knownAr.has(`${first} ${last}`) || !borrowed(last)) return all;
+    const fits = wanted.filter(([f, l]) => l !== last && (sk(f) === sk(first) || (pre && sk(f) === sk(pre + first))));
+    if (fits.length !== 1) return all;
+    const [f, l] = fits[0];
+    return (sk(f) === sk(first) ? pre : "") + `${f} ${l}`;
+  });
+  return out;
+}
+
+/**
+ * «كان من المخطط إقامة ثلاثة نزالات» for the source's «Two Three-Way Matches» (World X Cup, TNA Destination X,
+ * INCIDENTS #1336): «three-way» is the kind of match (ثلاثي), not how many. Returns the Arabic phrase, or "".
+ */
+export function threeWayAsCount(text: string, source: string): string {
+  const src = String(source || "");
+  if (!/\bthree[-\s]way\b/i.test(src) || /\b(?:three|3)\s+(?:matches|bouts|fights)\b/i.test(src)) return "";
+  const m = String(text || "").match(/(?<![ء-ي])ثلاث(?:ة)?\s+(?:نزالات|مواجهات|مباريات)(?![ء-ي])/);
+  return m ? m[0] : "";
 }
 
 /** The Arabic headline calls a «نزال» what the English edition (written in the same Gemini request from the same
