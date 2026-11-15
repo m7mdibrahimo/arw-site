@@ -1,7 +1,7 @@
 ---
 title: "Tony Khan Confirms Long-Term Contract for Persephone"
 slug: "tony-khan-confirms-long-term-contract-for-persephone"
-description: "Tony Khan provided an update regarding the future of Persephone, confirming that she remains with AEW for many years."
+description: "Tony Khan provided an update regarding the future of Persephone, confirming that she will remain with AEW for many years to come."
 federation: AEW
 date: 2026-11-15T07:08:02.000Z
 created_at: 2026-11-15T07:14:38.066Z
@@ -15,7 +15,7 @@ en_tags:
   - "Full Gear"
 image: /content/images/ie6fnl14l4m0meqx.jpg
 ---
-Tony Khan provided an update regarding the future of Persephone, confirming that she remains with AEW for many years. Persephone entered into a dual agreement with AEW and CMLL in January 2026, though the Wrestling Observer previously reported that her deal was scheduled to expire before the end of the year. Following the AEW Full Gear event, Khan addressed her status during a press conference.
+Tony Khan provided an update regarding the future of Persephone, confirming that she will remain with AEW for many years to come. Persephone entered into a dual agreement with AEW and CMLL in January 2026, though the Wrestling Observer previously reported that her deal was scheduled to expire before the end of the year. Following the AEW Full Gear event, Khan addressed her status during a press conference.
 
 > "I'm happy to say that Persephone is somebody that is signed to AEW for years to come. I believe she is going to be a big part of AEW and CMLL for years to come."
 

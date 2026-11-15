@@ -1722,3 +1722,15 @@ test("«ساك بلاك» → «جاك بلاك», «مواجهة … ضده م�
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /ساك بلاك/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+test("«build» is «التمهيد», never «البناء الكافي»; «all-timer classic» and «remains with AEW for many years» fixed (INCIDENTS #1323)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa.ts");
+  const { fixEnglishNames } = await import("../scripts/english-edition.ts");
+  assert.equal(applyCorrections("- غياب البناء الكافي عن نزال فرق السيدات، حيث تأثر"), "- ضعف التمهيد قبل نزال فرق السيدات، حيث تأثر");
+  assert.equal(applyCorrections("بسبب البناء الدرامي للقصة"), "بسبب البناء الدرامي للقصة");
+  assert.equal(fixEnglishNames("the main event provided an all-timer classic performance"), "the main event provided an all-time classic performance");
+  assert.equal(fixEnglishNames("confirming that she remains with AEW for many years."), "confirming that she will remain with AEW for many years.");
+  assert.equal(fixEnglishNames("he remains with WWE for years now"), "he remains with WWE for years now");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /البناء الكافي/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});

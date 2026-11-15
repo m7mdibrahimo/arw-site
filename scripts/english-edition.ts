@@ -580,6 +580,10 @@ export const ENGLISH_FIXES: [RegExp, string][] = [
   [/\bformer The ((?:[A-Z][\w'’-]*\s+){1,3}(?:member|stablemate|leader|teammate))\b/g, "former $1"], // «the former The Judgment Day member» (INCIDENTS #1219)
   // the source's headline wrote «Ya'll»; American English is «y'all» (Carmelo Hayes story, INCIDENTS #1243)
   [/\b(Y|y)a(['’])ll\b/g, "$1$2all"],
+  // «provided an all-timer classic performance» — «all-timer» is a noun; with «classic» it is «an all-time classic» (Full Gear review, INCIDENTS #1323)
+  [/\ball-timer (classic|great|performance|match)\b/gi, "all-time $1"],
+  // «confirming that she remains with AEW for many years» — a contract «for years (to come)» is the future: «will remain» (Persephone story, INCIDENTS #1323)
+  [/\b(she|he|they) remains? (with [A-Z][\w&]*(?: [A-Z][\w&]*)? for (?:many |several )?years)\b(?! now)(?! already)/g, "$1 will remain $2"],
 ];
 const SMALL_WORDS = new Set(["a", "an", "the", "and", "but", "or", "nor", "for", "at", "by", "in", "of", "on", "to", "as", "vs", "vs.", "via"]);
 /** Words that are never small in a Title Case headline when left lowercase: «I am Thankful» → «I Am Thankful» (INCIDENTS #489) */
