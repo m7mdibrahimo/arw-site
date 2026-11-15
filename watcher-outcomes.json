@@ -1,73 +1,73 @@
 {
- "https://www.ringsidenews.com/cm-punk-shuts-down-retirement-rumors-reveals-how-much-longer-he-plans-wrestle": {
-  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-11-15T04:45:15.232Z"
- },
  "https://www.ringsidenews.com/aew-full-gear-results-highlights-key-moments-november-14-2026": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تقرير نتائج بلا أي نتيجة",
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى («وتستمدان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، العنوان فيه «ويل أوسبراي» والنص مفيهوش الاسم ده خالص — يا تكتب في النص اللي حصل معاه زي المصدر، يا تشيل الاسم من العنوان، العنوان فيه «كايل فليتشر» والنص مفيهوش الاسم ده خالص — يا تكتب في النص اللي حصل معاه زي المصدر، يا تشيل الاسم من العنوان، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: الحدث الرئيسي: نزال Anarchy in the Arena — اكتب الفائز زي المصدر وبالماضي",
   "retry": true,
-  "at": "2026-11-15T04:46:23.717Z"
+  "at": "2026-11-15T04:49:59.802Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-defeats-tommaso-ciampa-to-win-aew-national-championship-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T04:32:09.991Z"
+  "at": "2026-11-15T04:48:30.803Z"
  },
  "https://www.fightful.com/wrestling/kris-statlander-harley-cameron-capture-aew-womens-world-tag-team-titles-at-full-gear-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T04:32:09.659Z"
+  "at": "2026-11-15T04:48:30.479Z"
  },
  "https://www.fightful.com/wrestling/swerve-strickland-and-new-level-win-texas-deathmatch-to-capture-aew-world-trios-title-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T04:32:09.334Z"
+  "at": "2026-11-15T04:48:30.161Z"
  },
  "https://www.fightful.com/wrestling/kasper-brothers-creed-brothers-debut-for-aew-at-full-gear-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T04:32:08.717Z"
+  "at": "2026-11-15T04:48:29.554Z"
  },
  "https://www.fightful.com/wrestling/watch-full-episode-lucha-libre-aaa-november-14-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T04:32:08.493Z"
+  "at": "2026-11-15T04:48:29.334Z"
  },
  "https://www.fightful.com/wrestling/queen-aminata-retains-aew-tbs-title-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T04:32:07.949Z"
+  "at": "2026-11-15T04:48:28.806Z"
  },
  "https://www.fightful.com/wrestling/big-boom-aj-remains-undefeated-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T04:32:07.726Z"
+  "at": "2026-11-15T04:48:28.589Z"
  },
  "https://www.fightful.com/wrestling/aew-redesigns-trios-titles-to-pay-tribute-to-pac": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T04:32:07.288Z"
+  "at": "2026-11-15T04:48:28.160Z"
  },
  "https://www.fightful.com/wrestling/watch-aew-full-gear-buy-in-live-tonight": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T04:32:06.648Z"
+  "at": "2026-11-15T04:48:27.540Z"
  },
  "https://www.fightful.com/wrestling/report-trey-miguel-expected-to-miss-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T04:32:06.309Z"
+  "at": "2026-11-15T04:48:27.207Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-and-collision-averages-over-620000-viewers-on-cable-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T04:32:05.871Z"
+  "at": "2026-11-15T04:48:26.778Z"
  },
  "https://www.fightful.com/wrestling/grounded-flights-cause-travel-issues-for-wwe-aew-tna-and-convention": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T04:32:05.529Z"
+  "at": "2026-11-15T04:48:26.432Z"
+ },
+ "https://www.ringsidenews.com/cm-punk-shuts-down-retirement-rumors-reveals-how-much-longer-he-plans-wrestle": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-15T04:45:15.232Z"
  },
  "https://www.fightful.com/wrestling/muhammad-hassan-i-dont-think-i-have-another-match-left-in-me-i-feel-like-if-i-take-more-than-one-bump-at-a-time-im-going-to-shatter": {
   "reason": "مكرر مع خبر نزل قبل كده",
