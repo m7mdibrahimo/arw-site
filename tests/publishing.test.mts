@@ -957,6 +957,9 @@ test('same event or same wording is not the same story', () => {
   assert.ok(!clearlyDifferentStories('Trick Williams Beats Baron Corbin In WWE SmackDown Steel Cage Match', 'trick-williams-retains-us-title-steel-cage-smackdown'));
   // INCIDENTS #507: the slug drops the apostrophe the title keeps — still one man, not «different people»
   assert.ok(!clearlyDifferentStories("Tony D'Angelo Seeks To Regain WWE NXT Title At Halloween Havoc", 'tony-dangelo-challenging-grayson-waller-for-nxt-championship-at-halloween-havoc'));
+  // INCIDENTS #1325: a day-of watch guide is not a copy of a news item about the same show; two guides still go to the check
+  assert.ok(clearlyDifferentStories('TNA Destination X 2026 Preview, Start Time, How To Watch (11/15)', 'tna-destination-x-main-event-likely-change-major-travel-problems'));
+  assert.ok(!clearlyDifferentStories('TNA Destination X 2026 Preview, Start Time, How To Watch (11/15)', 'tna-destination-x-2026-preview-confirmed-matches-start-time-how-watch'));
 });
 
 test('a draft that dropped its hamzas is blocked, names and N-1 are not', () => {

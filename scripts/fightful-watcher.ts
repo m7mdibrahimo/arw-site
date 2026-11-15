@@ -3965,6 +3965,11 @@ function peopleIn(text: string): Set<string> {
 export function clearlyDifferentStories(a: string, b: string): boolean {
   const ka = storyKind(a), kb = storyKind(b);
   if (ka !== "other" && kb !== "other" && ka !== kb) return true;
+  // A day-of watch guide («TNA Destination X 2026 preview, start time, how to watch») is its own story:
+  // a news item about the same show («Destination X main event likely to change») never carries the
+  // card and the start time — both previews of 15 Nov were skipped as copies of it (INCIDENTS #1325).
+  const guide = (x: string) => /\b(?:start time|how to watch|where to watch)\b/.test(x.toLowerCase().replace(/[-_]/g, " "));
+  if (guide(a) !== guide(b) && (guide(a) ? kb : ka) === "other") return true;
   const pa = peopleIn(a), pb = peopleIn(b);
   if (pa.size && pb.size && ![...pa].some(n => pb.has(n))) return true;
   const norm = (x: string) => x.replace(/[-_]/g, " ").replace(/[’‘]/g, "'");
