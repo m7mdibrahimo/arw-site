@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/paige-tells-fan-you-cant-this-stupid-impersonation-scam": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-15T18:56:18.864Z"
+ },
  "https://www.fightful.com/wrestling/ken-anderson-confirms-he-has-signed-a-wwe-legends-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: الفائز مش مذكور في وصف نزاله (1) — اكتب النزال من المصدر بأسماء الطرفين",
   "retry": true,
   "at": "2026-11-06T12:39:25.365Z"
- },
- "https://www.fightful.com/wrestling/wwe-road-to-survivor-series-live-results-11-5": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Candice LeRae، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
-  "retry": true,
-  "at": "2026-11-06T12:21:16.015Z"
  }
 }
