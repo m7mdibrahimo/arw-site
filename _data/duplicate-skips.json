@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2303360/kelani-jordan-overcomes-wren-sinclair-retan-wwe-nxt-womens-title/": {
-    "matchedFile": "20261101041225-كيلاني-جوردان-تحتفظ-ببطولة-nxt-للسيدات-في-عرض-halloween-havoc.md",
-    "reason": "الخبر الجديد يغطي نفس نزال احتفاظ كيلاني جوردان ببطولة NXT للسيدات ضد رين سنكلير في عرض Halloween Havoc والذي تم نشره بالفعل في الخبر السابق.",
-    "at": "2026-11-01T01:26:47.941Z"
-  },
   "https://www.ringsidenews.com/kelani-jordan-retains-nxt-womens-championship-controversial-finish-halloween-havoc-2026/": {
     "matchedFile": "20261101041225-كيلاني-جوردان-تحتفظ-ببطولة-nxt-للسيدات-في-عرض-halloween-havoc.md",
     "reason": "الخبر الجديد يغطي نفس الحدث والنتيجة لنزال كيلاني جوردان ضد رين سنكلير في عرض Halloween Havoc 2026 والذي تم نشر تقرير عنه مسبقاً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261115072638-مرسيدس-موني-تهزم-مارينا-شافير-وتحتفظ-ببطولة-aew-العالمية-للسيدات-في-عرض-full-gear-2026.md",
     "reason": "الخبر الجديد يغطي نفس نزال بطولة AEW للسيدات في عرض Full Gear 2026 الذي تم تغطيته بالفعل في الخبر المنشور، ولا يقدم تطوراً جديداً أو تفاصيل إضافية تخرجه عن كونه تكراراً لنفس الحدث.",
     "at": "2026-11-15T04:42:39.183Z"
+  },
+  "https://www.fightful.com/wrestling/sherilyn-guerrero-pays-tribute-to-father-eddie-guerrero-in-in-ring-debut/": {
+    "matchedFile": "20261115072618-شيريلين-غيريرو-ابنة-إيدي-غيريرو-تخوض-أول-نزال-في-مسيرتها-داخل-الحلبة-في-عرض-reality-of-wrestling-fall-fury.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث وهو أول نزال لشيريلين غيريرو في اتحاد Reality of Wrestling وتكريمها لوالدها إيدي غيريرو، وهو نفس الخبر المنشور مسبقاً بنفس التفاصيل الأساسية للنزال.",
+    "at": "2026-11-15T04:59:11.581Z"
   }
 }
