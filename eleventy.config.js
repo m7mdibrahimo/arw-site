@@ -1975,6 +1975,11 @@ module.exports = function(eleventyConfig) {
       seen.add(k); return true;
     });
   });
+  // A yearly program's section whose newest show has its own page keeps only the program's names: the watch/download/
+  // «latest» forms belong to that show page, both pages claimed them and split the query (INCIDENTS #1332). Head only.
+  eleventyConfig.addFilter("leaveIntentToShow", function(list, active) {
+    return require("./lib/show-seo.cjs").leaveIntentToShow(list, !!active);
+  });
   // The ways visitors write a program's library page, for its structured data only (INCIDENTS #503)
   eleventyConfig.addNunjucksGlobal("libraryNameForms", function(prog, year) {
     return require("./lib/show-seo.cjs").libraryNameForms({ arName: prog && prog.arName, name: prog && prog.name, aliases: (prog && prog.aliases) || [], year, count: (prog && prog.count) || 0, latest: prog && prog.latest && prog.latest.eventDate });

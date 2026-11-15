@@ -46,6 +46,7 @@ import { handleWatch } from "./watch";
 import { handlePredict, studioPredict, studioPredictPicks, studioPredictSave, studioPredictResult, studioPredictDelete, studioPredictPrize } from "./predict";
 import { seedPredictions } from "./predict-seed";
 import { once } from "./once";
+import { UNCERTAIN as UNCERTAIN_SEND, channelHasPost, publicChannelName } from "./telegram-check";
 import { encUploadStudio, encUploadMachine, encUploadSweep } from "./enc-upload";
 import { encInstOf, encHealth, encStuckStep, encBusyText, encMinutes, srtMinutes, ENC_SHORT_MIN, type EncBeat } from "./enc-machine";
 import { handleChat, studioChat, studioChatRoom, studioChatDelete, studioChatClear, studioChatMute, studioChatDismiss, studioChatRooms, studioChatBg, chatKick, chatRebadge, chatExpirySweep } from "./chat";
@@ -2680,6 +2681,7 @@ export async function runWatcherPoll(env: Env): Promise<void> {
 
   const recentEvents = recentEventWords(items);
   const recentReturns = returnedNames(items, state.held);
+  let channelHtml: string | undefined;
   for (const { item, freshFrom, key, tgDone, fbDone, igDone, xDone } of toProcess) {
     if (processedInThisTick >= MAX_PER_TICK || platformAttempts >= MAX_PLATFORM_ACTIONS_PER_TICK) break;
 
@@ -2745,6 +2747,20 @@ export async function runWatcherPoll(env: Env): Promise<void> {
         for (const [k, h] of Object.entries(state.held)) if (now - (h?.at || 0) > 7 * 86400_000) delete state.held[k];
         await githubWriteState(env, state, currentSha, `social shield: skip single-match spoiler ${key}`).catch(() => {});
         continue;
+      }
+    }
+
+    // An «uncertain» Telegram send (no answer came back) is looked up on the channel's public page:
+    // found there → marked sent, never posted again (INCIDENTS #1330). The local deferral stays, so
+    // this tick can't send it either way.
+    if (!tgDone && item.url && Number(state.deferrals?.[`telegram:${key}`]) === UNCERTAIN_SEND) {
+      if (channelHtml === undefined) {
+        channelHtml = await fetch(`https://t.me/s/${publicChannelName(env.TELEGRAM_CHAT_ID)}`, { headers: { "User-Agent": "Mozilla/5.0" }, signal: AbortSignal.timeout(8000) })
+          .then(r => (r.ok ? r.text() : "")).catch(() => "");
+      }
+      if (channelHtml && channelHasPost(channelHtml, item.url)) {
+        await markSendSuccess(env, "telegram", key, contentFileId(item)).catch(() => {});
+        console.log(`[Publish] uncertain Telegram send found on the channel, marked sent: ${key}`);
       }
     }
 
