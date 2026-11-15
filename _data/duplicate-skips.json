@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2303282/tko-president-mark-shapiro-saudi-arabia-safety-town-hall-meeting/": {
-    "matchedFile": "20261031005545-رئيس-tko-مارك-شابيرو-يناقش-السلامة-والجانب-التجاري-لعرض-wwe-crown-jewel-في-اجتماع-عام.md",
-    "reason": "الخبر الجديد يعيد نفس تفاصيل اجتماع مارك شابيرو الداخلي وحديثه عن أمن الموظفين وإمكانية إلغاء عرض Crown Jewel بسبب المخاطر الإقليمية، وهو نفس الحدث والتصريحات المغطاة في الخبر رقم 0.",
-    "at": "2026-10-31T16:39:57.746Z"
-  },
   "https://www.ringsidenews.com/kelani-jordan-reveals-disney-villain-plans-wwe-nxt-halloween-havoc/": {
     "matchedFile": "20261030012652-wwe-nxt-halloween-havoc-2026-أبرز-نقاط-الجذب-والإخفاقات-في-العرض.md",
     "reason": "الخبر الجديد يغطي نفس الحدث المتعلق بعرض WWE NXT Halloween Havoc، وتحديداً مباراة كيلاني جوردان ضد رين سنكلير على لقب السيدات وأجواء الهالوين، وهي تفاصيل تم ذكرها بالفعل في تقرير العرض المنشور مسبقاً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261115043731-كازوتشيكا-أوكادا-يهزم-آدم-كوبلاند-ويحتفظ-ببطولة-aew-الدولية-في-عرض-aew-full-gear-2026.md",
     "reason": "الخبر الجديد يغطي نفس نزال فوز كازوتشيكا أوكادا على آدم كوبلاند والاحتفاظ ببطولة AEW الدولية في عرض Full Gear 2026 والذي تم تغطيته بالفعل في الخبر المنشور.",
     "at": "2026-11-15T01:55:58.566Z"
+  },
+  "https://www.fightful.com/wrestling/aew-full-gear-results-11-14-2026-will-ospreay-vs-kyle-fletcher-texas-death-anarchy-in-the-arena-mercedes-mone-more/": {
+    "matchedFile": "20261115023100-نتائج-عرض-aew-full-gear-14-نوفمبر-2026-أبرز-المواجهات-واللحظات-الكبرى.md",
+    "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
+    "at": "2026-11-15T02:13:28.510Z"
   }
 }
