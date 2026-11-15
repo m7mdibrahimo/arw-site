@@ -49,15 +49,10 @@
   "retry": true,
   "at": "2026-11-15T21:54:02.576Z"
  },
- "https://www.ringsidenews.com/dawn-marie-claims-wwe-hid-fact-when-women-outdrew-male-stars-ratings": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T21:39:49.861Z"
- },
- "https://www.ringsidenews.com/tna-destination-x-results-highlights-key-moments-november-15-2026": {
+ "https://www.wrestlinginc.com/2316787/tna-destination-x-november-15-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-15T21:37:19.961Z"
+  "at": "2026-11-15T21:54:02.576Z"
  },
  "https://www.fightful.com/wrestling/mjf-returns-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
