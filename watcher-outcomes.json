@@ -1,73 +1,78 @@
 {
  "https://www.ringsidenews.com/aew-full-gear-results-highlights-key-moments-november-14-2026": {
-  "reason": "المراجعة رفضته: فعل مثنى («يزالان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، العنوان فيه «ويل أوسبراي» والنص مفيهوش الاسم ده خالص — يا تكتب في النص اللي حصل معاه زي المصدر، يا تشيل الاسم من العنوان، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى («ويحتفظان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-15T05:44:28.988Z"
+  "at": "2026-11-15T05:50:05.881Z"
+ },
+ "https://www.fightful.com/wrestling/the-cut-defeats-death-riders-and-the-conglomeration-in-anarchy-in-the-arena-match-at-aew-full-gear-2026-kemalito-wheeler-yuta-and-more-make-appearances": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-15T05:49:11.483Z"
  },
  "https://www.fightful.com/wrestling/watch-aew-full-gear-post-show-media-scrum-11-14-26": {
-  "reason": "المراجعة رفضته: المتن (339 حرف) أطول بكثير من المصدر (46 حرف) — حشو",
+  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي، المتن (277 حرف) أطول بكثير من المصدر (46 حرف) — حشو",
   "retry": false,
-  "at": "2026-11-15T05:41:19.157Z"
+  "at": "2026-11-15T05:46:57.479Z"
  },
  "https://www.fightful.com/wrestling/cm-punk-says-he-isnt-retiring-soon-youre-stuck-with-me-for-at-least-five-more-years": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:40:57.310Z"
+  "at": "2026-11-15T05:46:36.894Z"
  },
  "https://www.fightful.com/wrestling/sherilyn-guerrero-pays-tribute-to-father-eddie-guerrero-in-in-ring-debut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:40:57.011Z"
+  "at": "2026-11-15T05:46:36.550Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-defeats-tommaso-ciampa-to-win-aew-national-championship-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:40:56.647Z"
+  "at": "2026-11-15T05:46:36.129Z"
  },
  "https://www.fightful.com/wrestling/kris-statlander-harley-cameron-capture-aew-womens-world-tag-team-titles-at-full-gear-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:40:56.368Z"
+  "at": "2026-11-15T05:46:35.792Z"
  },
  "https://www.fightful.com/wrestling/swerve-strickland-and-new-level-win-texas-deathmatch-to-capture-aew-world-trios-title-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:40:56.088Z"
+  "at": "2026-11-15T05:46:35.467Z"
  },
  "https://www.fightful.com/wrestling/kasper-brothers-creed-brothers-debut-for-aew-at-full-gear-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:40:55.551Z"
+  "at": "2026-11-15T05:46:34.840Z"
  },
  "https://www.fightful.com/wrestling/watch-full-episode-lucha-libre-aaa-november-14-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:40:55.357Z"
+  "at": "2026-11-15T05:46:34.612Z"
  },
  "https://www.fightful.com/wrestling/queen-aminata-retains-aew-tbs-title-at-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:40:54.889Z"
+  "at": "2026-11-15T05:46:34.068Z"
  },
  "https://www.fightful.com/wrestling/big-boom-aj-remains-undefeated-in-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:40:54.696Z"
+  "at": "2026-11-15T05:46:33.843Z"
  },
  "https://www.fightful.com/wrestling/aew-redesigns-trios-titles-to-pay-tribute-to-pac": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:40:54.316Z"
+  "at": "2026-11-15T05:46:33.405Z"
  },
  "https://www.fightful.com/wrestling/watch-aew-full-gear-buy-in-live-tonight": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:40:53.756Z"
+  "at": "2026-11-15T05:46:32.761Z"
  },
  "https://www.fightful.com/wrestling/report-trey-miguel-expected-to-miss-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-15T05:40:53.450Z"
+  "at": "2026-11-15T05:46:32.412Z"
  },
  "https://www.ringsidenews.com/mason-rook-makes-ring-return-serious-medical-scare": {
   "reason": "المراجعة رفضته: مدة زمنية في المتن غير مطابقة للمصدر: منذ شهر",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-05T19:18:16.782Z"
- },
- "https://www.ringsidenews.com/wwe-scrapped-plans-move-2027-royal-rumble-different-date": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين/مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-05T19:04:04.558Z"
  }
 }
