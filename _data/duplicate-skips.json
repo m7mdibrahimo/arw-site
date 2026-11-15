@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2303204/wwe-nxt-halloween-havoc-2026-predictions-winners/": {
-    "matchedFile": "20261030012652-wwe-nxt-halloween-havoc-2026-أبرز-نقاط-الجذب-والإخفاقات-في-العرض.md",
-    "reason": "الخبر الجديد يغطي نفس بطاقة النزالات والمعلومات العامة لعرض WWE NXT Halloween Havoc 2026 المذكورة بالفعل في الخبر المنشور رقم 0، حيث تتطابق تفاصيل المباريات والحدث دون تقديم تطور جديد حقيقي.",
-    "at": "2026-10-31T10:01:58.518Z"
-  },
   "https://www.fightful.com/wrestling/wwe-nxt-halloween-havoc-2026-preview-start-time-how-to-watch-10-31/": {
     "matchedFile": "20261030012652-wwe-nxt-halloween-havoc-2026-أبرز-نقاط-الجذب-والإخفاقات-في-العرض.md",
     "reason": "الخبر الجديد يغطي نفس تفاصيل وموعد ودليل مشاهدة عرض WWE NXT Halloween Havoc ومواجهاته، وهو ما تم تناوله بالفعل في الخبر رقم 1 كتقرير عن العرض ومواجهاته.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261114150000-دليل-مشاهدة-وموعد-انطلاق-عرض-aew-full-gear-tailgate-brawl.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (عرض AEW Full Gear) ويقدم رابطاً لمشاهدة العرض التمهيدي (Buy In)، وهو جزء من التغطية المباشرة لنفس العرض الذي تم الإعلان عن موعده وتفاصيله في الخبر رقم 0.",
     "at": "2026-11-14T23:53:14.822Z"
+  },
+  "https://www.wrestlinginc.com/2316969/tony-khan-aew-full-gear-2026-travel-disruptions/": {
+    "matchedFile": "20261115011245-توني-خان-يعلن-عن-تغييرات-في-اللحظات-الأخيرة-لحدث-aew-full-gear-tailgate-brawl.md",
+    "reason": "الخبر الجديد يعيد سرد نفس تصريحات توني خان حول أزمة الطيران وتأثيرها على عرض Full Gear وحدث Tailgate Brawl، وهي نفس المعلومات الواردة في الخبر رقم 0.",
+    "at": "2026-11-15T00:20:15.043Z"
   }
 }
