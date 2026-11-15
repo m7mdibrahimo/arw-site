@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2316787/tna-destination-x-november-15-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-15T20:24:28.420Z"
+ },
  "https://www.fightful.com/wrestling/rey-horus-out-world-x-cup-will-be-decided-in-an-elimination-match-between-home-town-man-vs-ricky-sosa-vs-amir-jordan-vs-fabian-aichner-vs-jason-hotch-at-tna-destination-x": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-15T20:12:43.979Z"
- },
- "https://www.wrestlinginc.com/2316787/tna-destination-x-november-15-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T20:03:26.335Z"
  },
  "https://www.wrestlinginc.com/2315550/wwe-rey-mysterio-eddie-guerrero-dragon-lee-friendship-reminds": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
