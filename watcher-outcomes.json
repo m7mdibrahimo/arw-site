@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/mason-rook-makes-ring-return-serious-medical-scare": {
+  "reason": "المراجعة رفضته: مدة زمنية في المتن غير مطابقة للمصدر: منذ شهر",
+  "retry": true,
+  "at": "2026-11-15T05:54:22.300Z"
+ },
  "https://www.ringsidenews.com/aew-full-gear-results-highlights-key-moments-november-14-2026": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى («ويحتفظان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
@@ -73,11 +78,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-15T05:46:32.412Z"
- },
- "https://www.ringsidenews.com/mason-rook-makes-ring-return-serious-medical-scare": {
-  "reason": "المراجعة رفضته: مدة زمنية في المتن غير مطابقة للمصدر: منذ شهر",
-  "retry": true,
-  "at": "2026-11-15T05:34:03.508Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-and-collision-averages-over-620000-viewers-on-cable-tv": {
   "reason": "مكرر مع خبر نزل قبل كده",
