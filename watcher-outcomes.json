@@ -1,4 +1,49 @@
 {
+ "https://www.fightful.com/wrestling/ken-anderson-confirms-he-has-signed-a-wwe-legends-deal": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-15T19:57:07.799Z"
+ },
+ "https://www.fightful.com/wrestling/aew-posts-toni-storm-teaser-with-play-me-written-on-package": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-15T19:57:07.581Z"
+ },
+ "https://www.fightful.com/wrestling/ilja-dragunov-when-i-came-into-aew-i-promised-that-the-landscape-is-about-to-change-why-because-i-am-here": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-15T19:57:07.238Z"
+ },
+ "https://www.fightful.com/wrestling/tna-destination-x-2026-preview-start-time-how-to-watch-11-15": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-15T19:57:06.207Z"
+ },
+ "https://www.fightful.com/wrestling/tony-khan-says-if-he-hadnt-sent-private-planes-a-lot-of-scheduled-wrestlers-for-aew-full-gear-wouldnt-have-made-the-show": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-15T19:57:05.861Z"
+ },
+ "https://www.fightful.com/wrestling/will-ospreay-def-kyle-fletcher-to-retain-aew-world-title-at-full-gear-2026": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-15T19:57:05.576Z"
+ },
+ "https://www.fightful.com/wrestling/mjf-returns-at-aew-full-gear": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-15T19:57:05.435Z"
+ },
+ "https://www.fightful.com/wrestling/watch-aew-full-gear-post-show-media-scrum-11-14-26": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-15T19:57:05.167Z"
+ },
+ "https://www.fightful.com/wrestling/cm-punk-says-he-isnt-retiring-soon-youre-stuck-with-me-for-at-least-five-more-years": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-15T19:57:04.942Z"
+ },
  "https://www.wrestlinginc.com/2316787/tna-destination-x-november-15-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -8,51 +53,6 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»، مثنى (فريقيهما/لقبيهما/الزميلان) ممنوع — قول «فريقهم/لقبهم/الزملاء» أو كرر الأسماء، فعل مثنى («يعيدان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
   "at": "2026-11-15T19:52:43.414Z"
- },
- "https://www.fightful.com/wrestling/ken-anderson-confirms-he-has-signed-a-wwe-legends-deal": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T19:54:23.200Z"
- },
- "https://www.fightful.com/wrestling/aew-posts-toni-storm-teaser-with-play-me-written-on-package": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T19:54:22.859Z"
- },
- "https://www.fightful.com/wrestling/ilja-dragunov-when-i-came-into-aew-i-promised-that-the-landscape-is-about-to-change-why-because-i-am-here": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T19:54:22.322Z"
- },
- "https://www.fightful.com/wrestling/tna-destination-x-2026-preview-start-time-how-to-watch-11-15": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T19:54:20.684Z"
- },
- "https://www.fightful.com/wrestling/tony-khan-says-if-he-hadnt-sent-private-planes-a-lot-of-scheduled-wrestlers-for-aew-full-gear-wouldnt-have-made-the-show": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T19:54:20.143Z"
- },
- "https://www.fightful.com/wrestling/will-ospreay-def-kyle-fletcher-to-retain-aew-world-title-at-full-gear-2026": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T19:54:19.693Z"
- },
- "https://www.fightful.com/wrestling/mjf-returns-at-aew-full-gear": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T19:54:19.464Z"
- },
- "https://www.fightful.com/wrestling/watch-aew-full-gear-post-show-media-scrum-11-14-26": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T19:54:19.041Z"
- },
- "https://www.fightful.com/wrestling/cm-punk-says-he-isnt-retiring-soon-youre-stuck-with-me-for-at-least-five-more-years": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T19:54:18.694Z"
  },
  "https://www.ringsidenews.com/paige-collett-flashes-referee-during-jcw-match-new-orleans-tapings": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
