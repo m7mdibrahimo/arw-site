@@ -64,11 +64,6 @@
   "retry": false,
   "at": "2026-11-15T02:30:33.182Z"
  },
- "https://www.ringsidenews.com/creed-brothers-make-surprise-aew-debut-casper-brothers-align-ftr-full-gear-2026": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-15T02:28:36.359Z"
- },
  "https://www.fightful.com/mma/stephen-thompson-scores-tko-victory-in-retirement-fight": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
