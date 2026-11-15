@@ -1,7 +1,7 @@
 ---
 title: "Liv Morgan Explains How Backstage Heat Spills Into WWE TV"
 slug: "liv-morgan-explains-how-backstage-heat-spills-into-wwe-tv"
-description: "During a recent appearance on Hot Ones with Sean Evans, WWE star Liv Morgan discussed how legitimate personal friction and disrespect between wrestlers can."
+description: "On Hot Ones, WWE star Liv Morgan discussed how real friction between wrestlers can sometimes bleed into television matches and unscripted promos."
 federation: WWE
 date: 2026-10-08T15:39:06.000Z
 source_id: 802252422

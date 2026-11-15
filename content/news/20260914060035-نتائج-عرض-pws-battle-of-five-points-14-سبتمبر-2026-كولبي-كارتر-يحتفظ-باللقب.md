@@ -14,7 +14,7 @@ tags:
 image: /content/images/41tt1ow97zgr5qe3.jpg
 layout: post-layout.njk
 ---
-شهد اتحاد Pro Wrestling Symphony إقامة عرض PWS Battle of Five Points المثير في إيست ناشفيل، حيث أقيمت مجموعة من النزالات القوية والحماسية التي حسمت العديد من الألقاب والعداوات.
+شهد اتحاد Pro Wrestling Symphony إقامة عرض PWS Battle of Five Points في إيست ناشفيل، حيث أقيمت مجموعة من النزالات القوية والحماسية التي حسمت العديد من الألقاب والعداوات.
 
 **المواجهة الأولى (نزال طاولات على بطولات الفرق): رايال بريستيج ضد ذا جود هاند**
 

@@ -2,6 +2,38 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "(?<n>نزال|عرض) (?<name>[A-Za-z0-9][A-Za-z0-9'’&.\\- ]*[A-Za-z0-9]) (?:المثير|الحماسي|الملحمي)(?![\\u0621-\\u064A])",
+      "right": "$<n> $<name>",
+      "regex": true,
+      "note": "«نزال Anarchy in the Arena المثير» — وصف حماسي من البوت مش في المصدر بعد اسم النزال — خبر أغنية DMX (INCIDENTS #1319)"
+    },
+    {
+      "wrong": "(?:روودريك|روديريك) سترونغ|روودريك سترونج",
+      "right": "روديريك سترونج",
+      "regex": true,
+      "note": "Roderick Strong كما في القاموس — خبر أغنية DMX (INCIDENTS #1319)"
+    },
+    {
+      "wrong": "قطع دابر",
+      "right": "إنهاء",
+      "note": "تعبير قديم وتقيل — العربي البسيط «إنهاء» — خبر سي ام بانك (INCIDENTS #1319)"
+    },
+    {
+      "wrong": "لن اعتزل",
+      "right": "لن أعتزل",
+      "note": "همزة المضارع بعد «لن» — خبر سي ام بانك (INCIDENTS #1319)"
+    },
+    {
+      "wrong": "كرر الحكم العد",
+      "right": "أكمل الحكم العد",
+      "note": "الحكم بيكمل العد لثلاثة مش بيكرره — خبر شيريلين غيريرو (INCIDENTS #1319)"
+    },
+    {
+      "wrong": "الحكم أوبري إدواردز",
+      "right": "الحكمة أوبري إدواردز",
+      "note": "Aubrey Edwards حكمة (ست) — خبر مرسيدس موني (INCIDENTS #1319)"
+    },
+    {
       "wrong": "لانس دورادو",
       "right": "لينس دورادو",
       "note": "Lince Dorado — «لينس» مش «لانس» — خبر جاك كارتويل (INCIDENTS #1317)"
@@ -49,7 +81,7 @@
       "note": "نفس القاعدة («التي شهدت» ← «الذي شهد») (INCIDENTS #1316)"
     },
     {
-      "wrong": "(?<n>النزال|المواجهة|المباراة|العرض) (?:الحماسي|الحماسية|الملحمي|الملحمية)(?![\\u0621-\\u064A])",
+      "wrong": "(?<n>النزال|المواجهة|المباراة|العرض) (?:الحماسي|الحماسية|الملحمي|الملحمية|المثير|المثيرة)(?![\\u0621-\\u064A])",
       "right": "$<n>",
       "regex": true,
       "note": "وصف حماسي من البوت مش في المصدر («خلال النزال الحماسي») — الخبر يحكي من غير مبالغة — خبر ذا يانغ باكس (INCIDENTS #1316)"

@@ -1,7 +1,7 @@
 ---
 title: "AEW Uses DMX Song for Anarchy in the Arena at Full Gear 2026"
 slug: "aew-uses-dmx-song-for-anarchy-in-the-arena-at-full-gear-2026"
-description: "The 2026 AEW Full Gear pay-per-view featured an Anarchy in the Arena match between The Cut."
+description: "The 2026 AEW Full Gear pay-per-view featured an Anarchy in the Arena match."
 federation: AEW
 date: 2026-11-15T04:40:10.000Z
 created_at: 2026-11-15T04:48:57.528Z
