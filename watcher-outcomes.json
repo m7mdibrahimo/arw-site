@@ -1993,10 +1993,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-05T15:06:26.463Z"
- },
- "https://www.wrestlinginc.com/2307504/wwe-nxt-womens-champion-kelani-jordan-raw-debut": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Raquel Rodriguez",
-  "retry": true,
-  "at": "2026-11-05T15:05:38.938Z"
  }
 }
