@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2317253/wwe-raw-november-16-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-16T22:25:09.948Z"
+ },
+ "https://www.wrestlinginc.com/2317718/wwe-raw-faa-grounding-order-may-be-affected": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-16T22:25:09.815Z"
+ },
  "https://www.fightful.com/wrestling/cole-karter-fired-by-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -33,16 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-16T22:17:37.303Z"
- },
- "https://www.wrestlinginc.com/2317253/wwe-raw-november-16-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-16T22:04:48.647Z"
- },
- "https://www.wrestlinginc.com/2317718/wwe-raw-faa-grounding-order-may-be-affected": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-16T22:04:48.523Z"
  },
  "https://www.fightful.com/wrestling/fallon-henley-says-wrestling-saved-her-life-after-she-was-lost-in-college": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
