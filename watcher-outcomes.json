@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/alex-shelley-dealt-elbow-injury-illness-amid-aew-full-gear-travel-chaos": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-16T19:43:36.353Z"
+ },
  "https://www.fightful.com/wrestling/details-on-tna-wrestling-radio-on-iheartradio": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -28,11 +33,6 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Intercontinental Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Raquel Rodriguez",
   "retry": true,
   "at": "2026-11-16T19:33:09.147Z"
- },
- "https://www.ringsidenews.com/alex-shelley-dealt-elbow-injury-illness-amid-aew-full-gear-travel-chaos": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (مجنونان/مستعدان/قضياه/أمضيا…) ممنوعة — اجمع («مجانين»، «قضوها») أو أعد صياغة الجملة («الوقت الذي قضته معه»)، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل مثنى («يندمان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-16T19:22:23.607Z"
  },
  "https://www.ringsidenews.com/jimmy-korderas-goes-nuclear-aew-full-gear-excessive-blood-hardcore-matches": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
