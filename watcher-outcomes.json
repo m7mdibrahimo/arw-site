@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2317718/wwe-raw-faa-grounding-order-may-be-affected": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Intercontinental Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Raquel Rodriguez",
+  "retry": true,
+  "at": "2026-11-16T19:33:09.147Z"
+ },
  "https://www.fightful.com/wrestling/details-on-tna-wrestling-radio-on-iheartradio": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-07T19:18:00.195Z"
- },
- "https://www.fightful.com/wrestling/randy-orton-ive-always-been-the-last-man-standing-look-at-the-ovw-class-that-i-graduated-from-im-the-only-one-left": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-07T19:05:08.331Z"
  }
 }
