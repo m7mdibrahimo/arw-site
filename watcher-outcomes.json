@@ -2,27 +2,27 @@
  "https://www.fightful.com/wrestling/details-on-tna-wrestling-radio-on-iheartradio": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T20:22:20.990Z"
+  "at": "2026-11-16T20:25:33.877Z"
  },
  "https://www.fightful.com/wrestling/cmll-sabado-de-coliseo-results-11-14-2026-templario-esfinge-vs-guerreros-laguneros-dragones-vs-herederos-more": {
-  "reason": "المراجعة رفضته: فائز مش موجود في نتايج المصدر (النزال لسه ما خلصش؟): المواجهة الخامسة: نزال فرق من ثلاث جولات، في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
+  "reason": "المراجعة رفضته: أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الثانية: نزال من جولة من أصل ثلاث جولات، المواجهة الثالثة: نزال من جولة من أصل ثلاث جولات — اكتب الفائز زي المصدر وبالماضي",
   "retry": true,
-  "at": "2026-11-16T20:22:20.114Z"
+  "at": "2026-11-16T20:25:33.002Z"
  },
  "https://www.fightful.com/wrestling/ken-anderson-would-like-to-wrestle-cm-punk-as-part-of-his-pro-wrestling-bucket-list": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T20:20:39.043Z"
+  "at": "2026-11-16T20:24:16.430Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-holiday-live-tour-from-chicago-il-results-11-15": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T20:20:38.744Z"
+  "at": "2026-11-16T20:24:16.124Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-16": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T20:20:37.872Z"
+  "at": "2026-11-16T20:24:15.248Z"
  },
  "https://www.wrestlinginc.com/2317718/wwe-raw-faa-grounding-order-may-be-affected": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Intercontinental Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Raquel Rodriguez",
