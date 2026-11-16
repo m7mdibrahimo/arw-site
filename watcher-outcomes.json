@@ -1,18 +1,13 @@
 {
  "https://www.ringsidenews.com/jimmy-korderas-goes-nuclear-aew-full-gear-excessive-blood-hardcore-matches": {
-  "reason": "المراجعة رفضته: مثنى «عامي 2017 و2023 / شهري أكتوبر ونوفمبر» ممنوع — للمدة اكتب «من 2017 إلى 2023» أو «بين عام 2017 وعام 2023»، وللعامين بعينهما «عام 2017 وعام 2023» أو «شهر أكتوبر وشهر نوفمبر»",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-16T19:04:19.823Z"
+  "at": "2026-11-16T19:08:20.056Z"
  },
  "https://www.ringsidenews.com/johnny-gargano-explains-how-wwe-travel-schedule-him-scrambling-avoid-marvel-spoilers": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-16T19:02:51.377Z"
- },
- "https://www.ringsidenews.com/paige-collett-says-creepy-wrestling-fans-tracked-down-her-gym-showed-drunk-her-job": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-16T18:58:05.741Z"
+  "at": "2026-11-16T19:06:45.294Z"
  },
  "https://www.fightful.com/wrestling/details-on-tna-wrestling-radio-on-iheartradio": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -43,6 +38,11 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-16T18:59:17.584Z"
+ },
+ "https://www.ringsidenews.com/paige-collett-says-creepy-wrestling-fans-tracked-down-her-gym-showed-drunk-her-job": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-16T18:58:05.741Z"
  },
  "https://www.fightful.com/wrestling/the-sandman-to-face-dct-at-bcw-10th-anniversary": {
   "reason": "المراجعة رفضته: اسم عربي ملزوق فيه 's الإنجليزية («جوش بارنيت's») — اكتب الاسم كله بالإنجليزي («Josh Barnett's») أو أعد الصياغة",
