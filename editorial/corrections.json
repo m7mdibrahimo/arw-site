@@ -1,6 +1,11 @@
 {
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
+    {"wrong":"غريغ غاريسون","right":"جريف جاريسون","note":"Griff Garrison اتكتب «غريغ غاريسون» في خبر كول كارتر — الصح «جريف جاريسون» زي القاموس (INCIDENTS #1367)"},
+    {"wrong":"غريف غاريسون","right":"جريف جاريسون","note":"Griff Garrison — الصح «جريف جاريسون» زي القاموس (INCIDENTS #1367)"},
+    {"wrong":"فرق الفرق","right":"الفرق","note":"«عددا كبيرا من فرق الفرق» تكرار مالوش معنى — الصح «من الفرق» (INCIDENTS #1367)"},
+    {"wrong":"في حبل واحد","right":"في عرض واحد","note":"«جمع نجوم العرض الرئيسي مع مصارعي NXT في حبل واحد» مالهاش معنى — الصح «في عرض واحد» (INCIDENTS #1367)"},
+    {"wrong":"التخليط","right":"الخلط","note":"«التخليط» عامية — الصح «الخلط» (INCIDENTS #1367)"},
     {
       "wrong": "بيج كوليت",
       "right": "بايج كوليت",

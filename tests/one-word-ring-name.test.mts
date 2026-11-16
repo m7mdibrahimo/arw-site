@@ -21,3 +21,10 @@ test('«لقب AEW الوطنية», «الكونتيننتال كلاسيك» a
   assert.equal(applyCorrections('المصارعة بيج كوليت'), 'المصارعة بايج كوليت');
   assert.equal(applyCorrections('وبيج شو'), 'وبيج شو');
 });
+
+test('«غريغ غاريسون», «فرق الفرق», «في حبل واحد» and «التخليط» are corrected (INCIDENTS #1367)', () => {
+  assert.equal(applyCorrections('إلى جانب غريغ غاريسون وبريستون فانس'), 'إلى جانب جريف جاريسون وبريستون فانس');
+  assert.equal(applyCorrections('يمتلك عددا كبيرا من فرق الفرق في عروضه'), 'يمتلك عددا كبيرا من الفرق في عروضه');
+  assert.equal(applyCorrections('مع مصارعي NXT في حبل واحد'), 'مع مصارعي NXT في عرض واحد');
+  assert.equal(applyCorrections('أن هذا التخليط لن ينجح'), 'أن هذا الخلط لن ينجح');
+});
