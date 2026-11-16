@@ -1,48 +1,48 @@
 {
- "https://www.ringsidenews.com/wwe-plans-massive-100-million-nxt-performance-center-seeks-7-million-orlando": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-11-16T22:46:28.867Z"
- },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-16-2026-the-usos-vs-946-john-cena-appears-iyo-sky-vs-raquel-rodriguez-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-16T22:48:33.260Z"
+  "at": "2026-11-16T22:50:42.581Z"
  },
  "https://www.fightful.com/wrestling/cole-karter-fired-by-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T22:48:32.869Z"
+  "at": "2026-11-16T22:50:42.289Z"
  },
  "https://www.fightful.com/wrestling/alex-shelley-and-chris-sabin-detail-travel-health-issues-that-they-dealt-with-before-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T22:48:32.437Z"
+  "at": "2026-11-16T22:50:41.992Z"
  },
  "https://www.fightful.com/wrestling/aj-styles-podcast-to-launch-on-wwe-platforms": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T22:48:32.111Z"
+  "at": "2026-11-16T22:50:41.760Z"
  },
  "https://www.fightful.com/wrestling/details-on-tna-wrestling-radio-on-iheartradio": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T22:48:31.124Z"
+  "at": "2026-11-16T22:50:41.059Z"
  },
  "https://www.fightful.com/wrestling/cmll-sabado-de-coliseo-results-11-14-2026-templario-esfinge-vs-guerreros-laguneros-dragones-vs-herederos-more": {
-  "reason": "المراجعة رفضته: فائز مش موجود في نتايج المصدر (النزال لسه ما خلصش؟): المواجهة الخامسة: نزال من ثلاث جولات، في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-16T22:48:30.193Z"
+  "at": "2026-11-16T22:50:40.362Z"
  },
  "https://www.fightful.com/wrestling/ken-anderson-would-like-to-wrestle-cm-punk-as-part-of-his-pro-wrestling-bucket-list": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T22:47:53.508Z"
+  "at": "2026-11-16T22:50:09.448Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-holiday-live-tour-from-chicago-il-results-11-15": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T22:47:53.174Z"
+  "at": "2026-11-16T22:50:09.210Z"
+ },
+ "https://www.ringsidenews.com/wwe-plans-massive-100-million-nxt-performance-center-seeks-7-million-orlando": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-11-16T22:46:28.867Z"
  },
  "https://www.wrestlinginc.com/2317253/wwe-raw-november-16-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
