@@ -1734,3 +1734,12 @@ test("«build» is «التمهيد», never «البناء الكافي»; «al
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /البناء الكافي/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+test("Star Wars terms: Jedi is «الجيداي», Force choke is «الخنق بالقوة», McGregor is «ماكغريغور» (INCIDENTS #1357)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("تعرضها للخنق بقوة الجدي"), "تعرضها للخنق بقوة الجيداي");
+  assert.equal(applyCorrections("على يد معلم الجدي"), "على يد معلم الجيداي");
+  assert.equal(applyCorrections("الطابع الجدي للقصة"), "الطابع الجدي للقصة");
+  assert.equal(applyCorrections("وتؤكد أن خنق القوة سيجعل حياتها مكتملة"), "وتؤكد أن الخنق بالقوة سيجعل حياتها مكتملة");
+  assert.equal(applyCorrections("الممثل ايوان مكريغور"), "الممثل ايوان ماكغريغور");
+});
