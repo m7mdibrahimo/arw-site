@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/paige-collett-wants-obi-wan-kenobi-inside-her-says-force-choked-would-complete-her-life": {
+  "reason": "المراجعة رفضته: همزات ساقطة في 3 مواضع — النص يحتاج إعادة ترجمة",
+  "retry": true,
+  "at": "2026-11-16T08:51:12.142Z"
+ },
  "https://www.fightful.com/wrestling/tjp-returns-to-tna-during-ultimate-x-match-at-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,11 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-16T08:44:40.383Z"
- },
- "https://www.ringsidenews.com/paige-collett-wants-obi-wan-kenobi-inside-her-says-force-choked-would-complete-her-life": {
-  "reason": "المراجعة رفضته: همزات ساقطة في 4 مواضع — النص يحتاج إعادة ترجمة",
-  "retry": true,
-  "at": "2026-11-16T08:31:03.972Z"
  },
  "https://www.wrestlinginc.com/2314949/wwe-good-brothers-passing-death-aew-pac-neville-gallows-anderson": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يتحدثان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
