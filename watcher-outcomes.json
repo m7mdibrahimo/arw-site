@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/paige-collett-says-creepy-wrestling-fans-tracked-down-her-gym-showed-drunk-her-job": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-16T18:58:05.741Z"
+ },
+ "https://www.ringsidenews.com/johnny-gargano-explains-how-wwe-travel-schedule-him-scrambling-avoid-marvel-spoilers": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-16T18:57:21.356Z"
+ },
  "https://www.fightful.com/wrestling/details-on-tna-wrestling-radio-on-iheartradio": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
