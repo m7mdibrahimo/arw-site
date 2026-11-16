@@ -2,6 +2,17 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "بيج كوليت",
+      "right": "بايج كوليت",
+      "note": "Paige Collett اتكتبت «بيج كوليت» في خبر واحد و«بايج» في الباقي — الصح «بايج كوليت» (INCIDENTS #1364)"
+    },
+    {
+      "wrong": "لقب\\s+(?<p>AEW|GHC|ROH|TNA)\\s+الوطنية",
+      "right": "بطولة $<p> الوطنية",
+      "regex": true,
+      "note": "«لقب AEW الوطنية» (لقب مذكر وصفته مؤنثة) — الصح «بطولة AEW الوطنية» زي القاموس (INCIDENTS #1364)"
+    },
+    {
       "wrong": "جري(?=\\s+(?:بين|خلال|في|أمس))",
       "right": "جرى",
       "regex": true,
@@ -4090,7 +4101,7 @@
       "note": "أسماء العروض والاتحادات تبقى بالإنجليزي"
     },
     {
-      "wrong": "كونتيننتال\\s+كلاسيك|كونتيننتال\\s+كلاسيك",
+      "wrong": "(?:ال)?كونتيننتال\\s+كلاسيك",
       "right": "Continental Classic",
       "regex": true,
       "note": "أسماء البطولات والعروض تبقى بالإنجليزي"

@@ -2622,6 +2622,16 @@ export function wrestlerNotInSource(body: string, source: string, glossary: Reco
     if (src.includes(bare.toLowerCase())) continue;
     if (new RegExp(`(?<![ء-ي])(?:[وبلفك])?${ar.replace(/^ذا\s+/, "")}(?![ء-ي])`).test(text)) found.push(name);
   }
+  // A one-word «The X» ring name the source never names: «ذا أندرتيكر» written for The Sandman in a BCW story
+  // (INCIDENTS #1364). The two-word rule below skips «The Undertaker» (one word of 4+ letters), so it counts here,
+  // even once and with or without its «ذا».
+  for (const [en, ar] of Object.entries(glossary)) {
+    const m = /^The ([A-Za-z]{6,})$/.exec(en);
+    const bareAr = String(ar).replace(/^ذا\s+/, "");
+    if (!m || STABLE_NAMES.includes(en) || !/^ذا\s+[ء-ي]{6,}$/.test(String(ar))) continue;
+    if (src.includes(m[1].toLowerCase().slice(0, Math.max(5, m[1].length - 2)))) continue;
+    if (new RegExp(`(?<![ء-ي])(?:[وبلفك])?(?:ذا\\s+)?${bareAr}(?![ء-ي])`).test(text)) found.push(en);
+  }
   // Aliases share one Arabic name («Stephanie McHare» and «Stephanie Vaquer»): any alias in the source clears it.
   const named = new Set<string>();
   for (const [en, ar] of Object.entries(glossary)) {
