@@ -1,5 +1,5 @@
 ---
-title: "Johnny Gargano Says Current NXT Roster Get 'Such Better Opportunities' Than When He Was in NXT"
+title: "Johnny Gargano Says Current NXT Stars Get 'Such Better Opportunities' Than When He Was in NXT"
 slug: "johnny-gargano-says-current-nxt-roster-get-such-better-opportunities-than-when"
 description: "Johnny Gargano discussed the differences between the opportunities available to the current NXT roster and those from his time on the brand."
 federation: WWE
