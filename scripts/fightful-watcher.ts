@@ -383,7 +383,10 @@ function removeTashkeel(text: string): string {
  * This is the permanent solution: add any name to wrestler-names.json
  * and it automatically applies everywhere without touching the code.
  */
-const KEEP_ENGLISH_AFTER_WAW = /^(?:[A-Z0-9 &-]+|.*\b(?:Wrestling|Bros|Discovery|Paramount|Speed|Glory|Limitless|Championship)\b.*)$/;
+// Only companies, channels and brands stay English behind «و». An all-caps key is NOT a company by itself:
+// «وانضم إيه جيه فرانسيس وTJP» kept «TJP» in Latin although the glossary has «تي جيه بي», and every
+// person written in capitals (MJF, MVP, RVD, KENTA, PENTA, ODB…) did the same (KC Navarro story, INCIDENTS #1340).
+const KEEP_ENGLISH_AFTER_WAW = /^(?:EVOLVE|CNN|MTV|UPN|ABC|WWF|AXS TV|MXM TV|PFL MENA|UFC APEX|WWE NXT|TUF|PPV|BOSJ|DWCS|.*\b(?:Wrestling|Bros|Discovery|Paramount|Speed|Glory|Limitless|Championship)\b.*)$/;
 const NAME_START = "(?:(?<!\\p{L})|(?<=(?<!\\p{L})[وفبلك]ـ?))";
 export function applyNamesGlossary(text: string): string {
   if (!text || typeof text !== "string") return text;
