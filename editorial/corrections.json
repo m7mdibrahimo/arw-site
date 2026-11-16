@@ -2,6 +2,12 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "جري(?=\\s+(?:بين|خلال|في|أمس))",
+      "right": "جرى",
+      "regex": true,
+      "note": "«التفاعل الذي جري بينهم» (MVP عن مونتيز فورد) — الصح «جرى» (INCIDENTS #1362)"
+    },
+    {
       "wrong": "بايج شو",
       "right": "بيج شو",
       "note": "Big Show اتكتب «بايج شو» في خبر كيفن ناش عن بول وايت — الصح «بيج شو» (INCIDENTS #1361)"

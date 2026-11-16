@@ -668,7 +668,8 @@ export function repeatedEnglishWords(text: string): string[] {
 export function twitterToX(text: string): string {
   return String(text).split("\n").map((line) => {
     if (SKIP_LINE.test(line)) return line;
-    return line.split(QUOTED).map((part, k) => (k % 2 ? part : part.replace(/\bTwitter\b/g, "X"))).join("");
+    // «took to X/Twitter» became «X/X» (Rehwoldt Destination X story, INCIDENTS #1362): the pair collapses to one «X»
+    return line.split(QUOTED).map((part, k) => (k % 2 ? part : part.replace(/\bTwitter\b/g, "X").replace(/\bX(?:\s*\/\s*X|\s+\(X\)|\s+\(formerly X\))(?![A-Za-z0-9])/g, "X"))).join("");
   }).join("\n");
 }
 /** «a experimental match» → «an experimental match» (a vowel-sound word after «a»; «a one», «a user», «a European», «a unanimous» stay) */
