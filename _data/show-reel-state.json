@@ -5285,7 +5285,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض فول جير 14.11.2026 مترجم",
-    "lastAttempt": 1794797025760,
+    "lastAttempt": 1794797809864,
     "errors": {
       "facebook_story": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
@@ -5307,9 +5307,15 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال فيرنس اسبكتكيولار 13.11.2026 مترجم",
-    "lastAttempt": 1794797066141,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1794797839909,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_reel",
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
