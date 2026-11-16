@@ -1,4 +1,64 @@
 {
+ "https://www.fightful.com/wrestling/cmll-sabado-de-coliseo-results-11-14-2026-templario-esfinge-vs-guerreros-laguneros-dragones-vs-herederos-more": {
+  "reason": "المراجعة رفضته: النص بيقول إن حد فاز والسطر اللي تحته بيقول النتيجة ما اتعلنتش — فوز مخترع، فائز مش موجود في نتايج المصدر (النزال لسه ما خلصش؟): المواجهة الخامسة: نزال من ثلاث جولات، في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
+  "retry": true,
+  "at": "2026-11-16T15:49:19.809Z"
+ },
+ "https://www.fightful.com/wrestling/ken-anderson-would-like-to-wrestle-cm-punk-as-part-of-his-pro-wrestling-bucket-list": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T15:47:38.750Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-nxt-holiday-live-tour-from-chicago-il-results-11-15": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T15:47:38.409Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-16": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T15:47:37.381Z"
+ },
+ "https://www.fightful.com/wrestling/tjp-returns-to-tna-during-ultimate-x-match-at-tna-destination-x": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T15:47:36.728Z"
+ },
+ "https://www.fightful.com/wrestling/kc-navarro-wins-mens-ultimate-x-match-at-tna-destination-x-becomes-no-1-contender-to-x-division-title": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T15:47:36.506Z"
+ },
+ "https://www.fightful.com/wrestling/ricky-sosa-wins-2026-tna-world-x-cup-at-destination-x": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T15:47:36.283Z"
+ },
+ "https://www.fightful.com/wrestling/tasha-steelz-wins-knockouts-ultimate-x-match-at-tna-destination-x": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T15:47:35.961Z"
+ },
+ "https://www.fightful.com/wrestling/tna-destination-x-results-11-15-two-ultimate-x-matches": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T15:47:35.739Z"
+ },
+ "https://www.fightful.com/wrestling/mjf-somebody-tell-that-lady-to-watch-where-shes-going": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T15:47:35.318Z"
+ },
+ "https://www.fightful.com/wrestling/countdown-to-tna-destination-x-2026-live-and-free-at-5pm-et-on-november-15th": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T15:47:35.087Z"
+ },
+ "https://www.fightful.com/wrestling/indi-hartwell-says-she-cant-make-it-to-tna-destination-x-to-defend-her-knockouts-world-championship": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T15:47:34.728Z"
+ },
  "https://www.ringsidenews.com/johnny-gargano-reveals-how-wwe-smackdown-schedule-keeps-ruining-his-disney-cruise-plans": {
   "reason": "المراجعة رفضته: معلومة في الخبر غير موجودة في المصدر: السبيل الوحيد / the only way",
   "retry": true,
@@ -18,61 +78,6 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، مثنى (فريقيهما/لقبيهما/الزميلان) ممنوع — قول «فريقهم/لقبهم/الزملاء» أو كرر الأسماء، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين",
   "retry": true,
   "at": "2026-11-16T15:37:46.314Z"
- },
- "https://www.fightful.com/wrestling/ken-anderson-would-like-to-wrestle-cm-punk-as-part-of-his-pro-wrestling-bucket-list": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-16T15:33:36.670Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-holiday-live-tour-from-chicago-il-results-11-15": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-16T15:33:36.326Z"
- },
- "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-16": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-16T15:33:35.302Z"
- },
- "https://www.fightful.com/wrestling/tjp-returns-to-tna-during-ultimate-x-match-at-tna-destination-x": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-16T15:33:34.654Z"
- },
- "https://www.fightful.com/wrestling/kc-navarro-wins-mens-ultimate-x-match-at-tna-destination-x-becomes-no-1-contender-to-x-division-title": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-16T15:33:34.420Z"
- },
- "https://www.fightful.com/wrestling/ricky-sosa-wins-2026-tna-world-x-cup-at-destination-x": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-16T15:33:34.194Z"
- },
- "https://www.fightful.com/wrestling/tasha-steelz-wins-knockouts-ultimate-x-match-at-tna-destination-x": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-16T15:33:33.869Z"
- },
- "https://www.fightful.com/wrestling/tna-destination-x-results-11-15-two-ultimate-x-matches": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-16T15:33:33.643Z"
- },
- "https://www.fightful.com/wrestling/mjf-somebody-tell-that-lady-to-watch-where-shes-going": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-16T15:33:33.220Z"
- },
- "https://www.fightful.com/wrestling/countdown-to-tna-destination-x-2026-live-and-free-at-5pm-et-on-november-15th": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-16T15:33:32.991Z"
- },
- "https://www.fightful.com/wrestling/indi-hartwell-says-she-cant-make-it-to-tna-destination-x-to-defend-her-knockouts-world-championship": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-16T15:33:32.634Z"
  },
  "https://www.fightful.com/wrestling/ken-anderson-confirms-he-has-signed-a-wwe-legends-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-07T16:10:05.596Z"
- },
- "https://www.fightful.com/wrestling/the-young-bucks-says-they-tell-tony-khan-never-again-after-each-aew-blood-and-guts-appearance": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل أو اسم مثنى (يتحديان/كمالكين/كشريكين…) ممنوع — اكتب «ضد» أو «يواجه» أو اذكر الاسمين بفعل جمع",
-  "retry": true,
-  "at": "2026-11-07T15:55:27.034Z"
  }
 }
