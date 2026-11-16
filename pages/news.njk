@@ -19,8 +19,9 @@ permalink: "/news/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
 <link rel="icon" type="image/png" href="/favicon.png?v=3">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 {% set pageNum = pagination.pageNumber + 1 %}
-<title>أخبار المصارعة الحرة اليوم{% if pageNum > 1 %} - صفحة {{ pageNum }}{% endif %} | عرب راسلنج</title>
-<meta name="description" content="آخر أخبار المصارعة الحرة بالعربية: انتقالات، إصابات، وقرارات WWE وAEW وTNA أولاً بأول.{% if pageNum > 1 %} صفحة {{ pageNum }} من أرشيف الأخبار.{% endif %}">
+{#- «اخبار المصارعة الحرة wwe» (8.3، 180 ظهور) و«اخبار المصارعة» (5.8) و«اخبار المصارعة الحرة» (5.3) بيوصلوا للرئيسية مش للأخبار: الصفحة دي بتسمّي WWE وAEW في عنوانها وبياناتها (INCIDENTS #1348). -#}
+<title>أخبار المصارعة الحرة اليوم{% if pageNum > 1 %} - صفحة {{ pageNum }}{% else %} — أخبار WWE وAEW{% endif %} | عرب راسلنج</title>
+<meta name="description" content="آخر أخبار المصارعة الحرة اليوم بالعربية: أخبار WWE وAEW وTNA، انتقالات وإصابات وقرارات ونتائج العروض أولاً بأول.{% if pageNum > 1 %} صفحة {{ pageNum }} من أرشيف الأخبار.{% endif %}">
 <link rel="canonical" href="https://arab-wrestling.com{{ page.url | cleanUrl }}">
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
@@ -45,6 +46,8 @@ permalink: "/news/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "أخبار المصارعة الحرة",
+  "alternateName": ["أخبار المصارعة الحرة اليوم", "اخبار المصارعة", "اخبار المصارعة الحرة", "اخبار المصارعة الحرة WWE", "أخبار WWE", "أخبار AEW", "أخبار WWE بالعربي", "Wrestling News in Arabic"],
+  "description": "آخر أخبار المصارعة الحرة اليوم بالعربية: أخبار WWE وAEW وTNA أولاً بأول.",
   "url": "https://arab-wrestling.com{{ page.url | cleanUrl }}",
   "isPartOf": { "@id": "https://arab-wrestling.com/#website" },
   "breadcrumb": { "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://arab-wrestling.com/" }, { "@type": "ListItem", "position": 2, "name": "الأخبار", "item": "https://arab-wrestling.com/news/" } ] },
