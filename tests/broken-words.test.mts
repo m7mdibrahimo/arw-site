@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { applyCorrections, checkArticle, BLOCKING_QA_CODES, RETRYABLE_QA_CODES } from '../scripts/news-qa';
+import { applyCorrections, checkArticle, fixSubjunctiveDuals, BLOCKING_QA_CODES, RETRYABLE_QA_CODES } from '../scripts/news-qa';
 
 // INCIDENTS #409: «حركة مونس ault» and «في صعد القمة» reached the site.
 test('known broken words are corrected automatically', () => {
@@ -1118,4 +1118,13 @@ test("a past dual verb before «معا» is blocked: «أن عملا معا» (L
   assert.ok(codes("وسبق للاشلي وراش أن عملا معا لفترة طويلة.").includes("dual_form"));
   assert.ok(codes("حيث سافرا معا إلى جزيرة في فلوريدا.").includes("dual_form"));
   assert.ok(!codes("وسبق أن عمل لاشلي وراش معا لفترة طويلة.").includes("dual_form"));
+});
+
+// INCIDENTS #1359: «مسيرتهم تقاطعتا … دون أن يتواها» (Mr. Kennedy story) reached the site.
+test('INCIDENTS #1359: «تقاطعتا» is blocked and «يتواها/يتواجها» are corrected', () => {
+  const codes = (b: string) => checkArticle('عنوان تجريبي طويل بما يكفي للفحص هنا', b + ' كلام'.repeat(80)).map((i) => i.code);
+  assert.ok(codes('بعد أن تقاطعتا في نزال رباعي سابق').includes('dual_form'));
+  assert.ok(codes('مسيرتهما تقاطعا لفترة قصيرة').includes('dual_form'));
+  assert.match(applyCorrections('دون أن يتواها بشكل كامل'), /يتواجهوا/);
+  assert.match(fixSubjunctiveDuals('دون أن يتواجها داخل الحلبة'), /يتواجهوا/);
 });
