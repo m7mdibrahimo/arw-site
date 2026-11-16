@@ -1,5 +1,15 @@
 [
   {
+    "id": 3364732623,
+    "link": "https://www.wrestlinginc.com/2317969/aew-collision-residency-arlington-texas-early-2027/",
+    "date": "Mon, 16 Nov 2026 17:37:39 +0000",
+    "date_gmt": "2026-11-16T17:37:39.000Z",
+    "title": {
+      "rendered": "AEW Announces Residency For Early 2027"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-announces-residency-for-early-2027/l-intro-1794850423.jpg"
+  },
+  {
     "id": 3485999789,
     "link": "https://www.wrestlinginc.com/2317957/wwe-cm-punk-downplays-rumors-retirement-wheels-fall-off/",
     "date": "Mon, 16 Nov 2026 17:30:06 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Tony Khan Offers Update On Status Of AEW Star Christian Cage"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/tony-khan-offers-update-on-status-of-aew-star-christian-cage/l-intro-1794777107.jpg"
-  },
-  {
-    "id": 3456766130,
-    "link": "https://www.wrestlinginc.com/2314447/aew-steven-borden-sting-doesnt-wear-face-paint/",
-    "date": "Sun, 15 Nov 2026 21:00:00 +0000",
-    "date_gmt": "2026-11-15T21:00:00.000Z",
-    "title": {
-      "rendered": "Steven Borden Explains Why He Doesn't Wear Sting's Face Paint In AEW"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/steven-borden-explains-why-he-doesnt-wear-stings-face-paint-in-aew/l-intro-1794456367.jpg"
   }
 ]

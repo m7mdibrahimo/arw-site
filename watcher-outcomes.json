@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2317718/wwe-raw-faa-grounding-order-may-be-affected": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-16T17:48:45.437Z"
+ },
  "https://www.fightful.com/wrestling/details-on-tna-wrestling-radio-on-iheartradio": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
