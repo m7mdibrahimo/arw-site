@@ -5277,5 +5277,30 @@
     "needsReview": false,
     "tiktok": true,
     "mediaDeleted": true
+  },
+  "20261116040244-aew-full-gear-2026": {
+    "publishedAt": 1794796084752,
+    "facebook_reel": true,
+    "facebook_story": false,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض فول جير 14.11.2026 مترجم",
+    "lastAttempt": 1794796115665,
+    "errors": {
+      "facebook_story": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة.",
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story",
+      "tiktok"
+    ],
+    "reviewPlatforms": [
+      "facebook_story"
+    ],
+    "needsReview": true,
+    "reviewNotified": false
   }
 }
