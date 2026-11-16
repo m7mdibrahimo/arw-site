@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2316787/tna-destination-x-november-15-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-16T00:03:38.096Z"
+ },
  "https://www.ringsidenews.com/paige-collett-wants-obi-wan-kenobi-inside-her-says-force-choked-would-complete-her-life": {
   "reason": "المراجعة رفضته: همزات ساقطة في 3 مواضع — النص يحتاج إعادة ترجمة",
   "retry": true,
@@ -58,11 +63,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-15T23:58:04.513Z"
- },
- "https://www.wrestlinginc.com/2316787/tna-destination-x-november-15-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T23:45:28.992Z"
  },
  "https://www.ringsidenews.com/wwe-concerned-some-superstars-may-miss-november-16-raw-due-flight-chaos": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
