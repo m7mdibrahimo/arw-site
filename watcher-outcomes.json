@@ -2,27 +2,27 @@
  "https://www.fightful.com/wrestling/details-on-tna-wrestling-radio-on-iheartradio": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T19:57:30.677Z"
+  "at": "2026-11-16T20:00:51.338Z"
  },
  "https://www.fightful.com/wrestling/cmll-sabado-de-coliseo-results-11-14-2026-templario-esfinge-vs-guerreros-laguneros-dragones-vs-herederos-more": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
   "retry": true,
-  "at": "2026-11-16T19:49:10.913Z"
+  "at": "2026-11-16T20:00:50.685Z"
  },
  "https://www.fightful.com/wrestling/ken-anderson-would-like-to-wrestle-cm-punk-as-part-of-his-pro-wrestling-bucket-list": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T19:50:37.850Z"
+  "at": "2026-11-16T20:00:05.455Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-holiday-live-tour-from-chicago-il-results-11-15": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T19:50:37.571Z"
+  "at": "2026-11-16T20:00:05.224Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-16": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T19:50:36.773Z"
+  "at": "2026-11-16T20:00:04.555Z"
  },
  "https://www.ringsidenews.com/spoiler-opening-segment-revealed-november-16-wwe-raw": {
   "reason": "المراجعة رفضته: العنوان بيقول «العضو الجديد» من غير اسمه — اكتب اسم المصارع («ري ميستيريو يقدم ري فينيكس عضوا جديدا في فريق المكسيك»)",
