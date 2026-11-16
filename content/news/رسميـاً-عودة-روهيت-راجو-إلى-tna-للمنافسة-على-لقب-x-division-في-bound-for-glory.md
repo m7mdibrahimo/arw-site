@@ -8,7 +8,7 @@ tags:
   - TNA Wrestling
   - Rohit Raju
   - روهيت راجو
-  - فابيان آيشنر
+  - فابيان أيتشنر
   - Bound for Glory
   - مصارعة
 image: /content/images/8kwlcv0l167ylpl2.jpg
