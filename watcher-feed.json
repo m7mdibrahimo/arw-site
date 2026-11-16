@@ -1,5 +1,15 @@
 [
   {
+    "id": 339346,
+    "link": "https://www.fightful.com/wrestling/ryzin-to-retire-in-2027/",
+    "date": "2026-11-16T07:00:00",
+    "date_gmt": "2026-11-16T12:00:00",
+    "title": {
+      "rendered": "RYZIN To Retire In 2027"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/15184148/Screenshot-2026-11-15-at-6.38.16-PM.png"
+  },
+  {
     "id": 339375,
     "link": "https://www.fightful.com/wrestling/the-dollhouse-to-appear-on-11-19-tna-impact/",
     "date": "2026-11-15T21:12:47",
@@ -288,15 +298,5 @@
       "rendered": "Nia Jax: Nepotism Is A Great Thing, They&#8217;re Not Getting In The Ring For Me"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/09/07065002/nia_jax_6.jpg"
-  },
-  {
-    "id": 339239,
-    "link": "https://www.fightful.com/wrestling/nia-jax-if-you-bring-a-friend-whos-not-a-wrestling-fan-to-an-actual-show-in-person-theyre-going-to-leave-a-wrestling-fan/",
-    "date": "2026-11-15T10:04:14",
-    "date_gmt": "2026-11-15T15:04:14",
-    "title": {
-      "rendered": "Nia Jax: If You Bring A Friend Who&#8217;s Not A Wrestling Fan To An Actual Show In Person, They&#8217;re Going To Leave A Wrestling Fan"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/01/04184933/nia_jax_8.jpg"
   }
 ]
