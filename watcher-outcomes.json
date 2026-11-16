@@ -1,68 +1,68 @@
 {
- "https://www.ringsidenews.com/paige-collett-wants-obi-wan-kenobi-inside-her-says-force-choked-would-complete-her-life": {
-  "reason": "المراجعة رفضته: همزات ساقطة في 3 مواضع — النص يحتاج إعادة ترجمة",
-  "retry": true,
-  "at": "2026-11-16T02:13:27.879Z"
- },
  "https://www.ringsidenews.com/tna-destination-x-results-highlights-key-moments-november-15-2026": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "reason": "المراجعة رفضته: التحديث شال فقرات الكواليس وتفاصيل النزالات من التقرير المنشور — اكتب التقرير كامل وزوّد الجديد",
   "retry": true,
-  "at": "2026-11-16T02:16:41.164Z"
+  "at": "2026-11-16T02:20:10.306Z"
  },
  "https://www.fightful.com/wrestling/tjp-returns-to-tna-during-ultimate-x-match-at-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T02:13:59.266Z"
+  "at": "2026-11-16T02:19:31.708Z"
  },
  "https://www.fightful.com/wrestling/kc-navarro-wins-mens-ultimate-x-match-at-tna-destination-x-becomes-no-1-contender-to-x-division-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T02:13:59.077Z"
+  "at": "2026-11-16T02:19:31.478Z"
  },
  "https://www.fightful.com/wrestling/ricky-sosa-wins-2026-tna-world-x-cup-at-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T02:13:58.889Z"
+  "at": "2026-11-16T02:19:31.256Z"
  },
  "https://www.fightful.com/wrestling/tasha-steelz-wins-knockouts-ultimate-x-match-at-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T02:13:58.617Z"
+  "at": "2026-11-16T02:19:30.937Z"
  },
  "https://www.fightful.com/wrestling/tna-destination-x-results-11-15-two-ultimate-x-matches": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T02:13:58.428Z"
+  "at": "2026-11-16T02:19:30.715Z"
  },
  "https://www.fightful.com/wrestling/mjf-somebody-tell-that-lady-to-watch-where-shes-going": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T02:13:58.071Z"
+  "at": "2026-11-16T02:19:30.295Z"
  },
  "https://www.fightful.com/wrestling/countdown-to-tna-destination-x-2026-live-and-free-at-5pm-et-on-november-15th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T02:13:57.877Z"
+  "at": "2026-11-16T02:19:30.067Z"
  },
  "https://www.fightful.com/wrestling/indi-hartwell-says-she-cant-make-it-to-tna-destination-x-to-defend-her-knockouts-world-championship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T02:13:57.584Z"
+  "at": "2026-11-16T02:19:29.725Z"
  },
  "https://www.fightful.com/wrestling/ken-anderson-confirms-he-has-signed-a-wwe-legends-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T02:13:57.043Z"
+  "at": "2026-11-16T02:19:29.091Z"
  },
  "https://www.fightful.com/wrestling/aew-posts-toni-storm-teaser-with-play-me-written-on-package": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T02:13:56.751Z"
+  "at": "2026-11-16T02:19:28.748Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-when-i-came-into-aew-i-promised-that-the-landscape-is-about-to-change-why-because-i-am-here": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T02:13:56.286Z"
+  "at": "2026-11-16T02:19:28.203Z"
+ },
+ "https://www.ringsidenews.com/paige-collett-wants-obi-wan-kenobi-inside-her-says-force-choked-would-complete-her-life": {
+  "reason": "المراجعة رفضته: همزات ساقطة في 3 مواضع — النص يحتاج إعادة ترجمة",
+  "retry": true,
+  "at": "2026-11-16T02:13:27.879Z"
  },
  "https://www.ringsidenews.com/val-venis-plans-confront-fans-abortion-debate-wwe-royal-rumble-2027": {
   "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
