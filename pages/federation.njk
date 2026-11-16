@@ -34,7 +34,7 @@ permalink: "{{ fedPage.permalink }}"
   "name": "مصارعة {{ fed.code }}: عروض وأخبار {{ fed.code }} مترجمة",
   "url": "https://arab-wrestling.com{{ fedPage.url }}",
   "description": "شاهد وحمّل جميع عروض وأخبار {{ fed.code }} ({{ fed.name }}) مترجمة باللغة العربية بجودة عالية.",{% if fedWrestling %}
-  "alternateName": ["مصارعة حرة {{ fed.code }}", "مصارعة {{ fed.code }} الحرة", "مصارعة {{ fed.code }} مترجمة", "عروض {{ fed.code }} مترجمة", "اخبار {{ fed.code }}", "مصارعة {{ fedAr }}"],
+  "alternateName": ["مصارعة حرة {{ fed.code }}", "مصارعة {{ fed.code }} الحرة", "مصارعة {{ fed.code }} مترجمة", "عروض {{ fed.code }} مترجمة", "اخبار {{ fed.code }}", "مصارعة {{ fedAr }}", "{{ fed.code }} بالعربي", "{{ fed.code }} عربي", "{{ fed.code }} Arabia"],{#- «wwe arabia» (5.8، 170 ظهور) is searched for this page: the Arabic-edition forms of the federation’s name (INCIDENTS #1352) -#}
   "about": { "@type": "SportsOrganization", "name": "{{ fed.name }}", "alternateName": ["{{ fed.code }}", "{{ fedAr }}"], "sport": "Professional wrestling" },{% endif %}
   "isPartOf": { "@id": "https://arab-wrestling.com/#website" },
   "breadcrumb": {
