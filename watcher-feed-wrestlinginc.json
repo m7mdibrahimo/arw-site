@@ -1,5 +1,15 @@
 [
   {
+    "id": 2564246141,
+    "link": "https://www.wrestlinginc.com/2317320/tony-khan-kofi-austin-creed-aew-full-gear-texas-death-match/",
+    "date": "Mon, 16 Nov 2026 15:00:00 +0000",
+    "date_gmt": "2026-11-16T15:00:00.000Z",
+    "title": {
+      "rendered": "Tony Khan Talks Working With Kofi & Austin Creed Following AEW Full Gear Death Match"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tony-khan-talks-working-with-kofi-austin-creed-following-aew-full-gear-death-match/l-intro-1794814719.jpg"
+  },
+  {
     "id": 2711012375,
     "link": "https://www.wrestlinginc.com/2317309/tna-trey-miguel-contract-status/",
     "date": "Mon, 16 Nov 2026 14:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Backstage News On How WWE Talent Was Affected By Grounded Flights Following SmackDown"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-how-wwe-talent-was-affected-by-grounded-flights-following-smackdown/l-intro-1794763554.jpg"
-  },
-  {
-    "id": 2658349865,
-    "link": "https://www.wrestlinginc.com/2312495/wwe-star-miz-assesses-future-age-46/",
-    "date": "Sun, 15 Nov 2026 17:30:00 +0000",
-    "date_gmt": "2026-11-15T17:30:00.000Z",
-    "title": {
-      "rendered": "WWE Star The Miz Assesses His Future At Age 46"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-star-the-miz-assesses-his-future-at-age-46/l-intro-1794338421.jpg"
   }
 ]
