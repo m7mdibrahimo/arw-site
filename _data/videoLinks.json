@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-16T02:15:05.413Z",
+ "checkedAt": "2026-11-16T02:27:26.819Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
@@ -10671,135 +10671,165 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-16T02:15:05.413Z"
+   "checked": "2026-11-16T02:27:26.819Z"
   },
   "https://hgcloud.to/e/4veyjicx0sfh": {
    "page": "https://arab-wrestling.com/shows/aew-full-gear-tailgate-brawl-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-16T02:15:05.413Z",
-   "lastOk": "2026-11-16T02:15:05.413Z"
+   "checked": "2026-11-16T02:27:26.819Z",
+   "lastOk": "2026-11-16T02:27:26.819Z"
   },
   "https://vidmoly.org/embed-csr8gs4xiuis.html": {
    "page": "https://arab-wrestling.com/shows/aew-full-gear-tailgate-brawl-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-16T02:15:05.413Z",
-   "lastOk": "2026-11-16T02:15:05.413Z"
+   "checked": "2026-11-16T02:27:26.819Z",
+   "lastOk": "2026-11-16T02:27:26.819Z"
   },
   "https://ok.ru/videoembed/18113655933536": {
    "page": "https://arab-wrestling.com/shows/aew-full-gear-tailgate-brawl-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-16T02:15:05.413Z"
+   "checked": "2026-11-16T02:27:26.819Z"
   },
   "https://fembed.co/embed/jTg_lh-SOIHEg": {
    "page": "https://arab-wrestling.com/shows/aew-full-gear-tailgate-brawl-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-16T02:15:05.413Z",
-   "lastOk": "2026-11-16T02:15:05.413Z"
+   "checked": "2026-11-16T02:27:26.819Z",
+   "lastOk": "2026-11-16T02:27:26.819Z"
+  },
+  "https://fembed.co/embed/FmH-xluf14_vw": {
+   "page": "https://arab-wrestling.com/shows/lucha-libre-aaa-14-11-2026/",
+   "status": "ok",
+   "reason": "the video plays",
+   "strikes": 0,
+   "checked": "2026-11-16T02:27:26.819Z",
+   "lastOk": "2026-11-16T02:27:26.819Z"
+  },
+  "https://vidmoly.org/embed-6ijg7296042p.html": {
+   "page": "https://arab-wrestling.com/shows/lucha-libre-aaa-14-11-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-16T02:27:26.819Z",
+   "lastOk": "2026-11-16T02:27:26.819Z"
+  },
+  "https://vidtube.one/embed-h893iwd7h9qc.html": {
+   "page": "https://arab-wrestling.com/shows/lucha-libre-aaa-14-11-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-16T02:27:26.819Z"
+  },
+  "https://ok.ru/videoembed/18121971796576": {
+   "page": "https://arab-wrestling.com/shows/lucha-libre-aaa-14-11-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-16T02:27:26.819Z"
   },
   "https://fembed.co/embed/tq4dk-P_zVKbT": {
    "page": "https://arab-wrestling.com/shows/mlw-fusion-14-11-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-16T02:15:05.413Z",
-   "lastOk": "2026-11-16T02:15:05.413Z"
-  },
-  "https://vidmoly.org/embed-q6h9kjfpovuy.html": {
-   "page": "https://arab-wrestling.com/shows/mlw-fusion-14-11-2026/",
-   "status": "ok",
-   "reason": "the stream arrives",
-   "strikes": 0,
-   "checked": "2026-11-16T02:15:05.413Z",
-   "lastOk": "2026-11-16T02:15:05.413Z"
-  },
-  "https://vidtube.one/embed-ufszhgsaoxw3.html": {
-   "page": "https://arab-wrestling.com/shows/mlw-fusion-14-11-2026/",
-   "status": "unknown",
-   "reason": "no stream seen",
-   "strikes": 0,
-   "checked": "2026-11-16T02:15:05.413Z"
+   "checked": "2026-11-16T02:27:26.819Z",
+   "lastOk": "2026-11-16T02:27:26.819Z"
   },
   "https://ok.ru/videoembed/18121971862112": {
    "page": "https://arab-wrestling.com/shows/mlw-fusion-14-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-16T02:15:05.413Z"
+   "checked": "2026-11-16T02:27:26.819Z"
   },
-  "https://ok.ru/videoembed/18121971731040": {
-   "page": "https://arab-wrestling.com/shows/cmll-viernes-espectacular-13-11-2026/",
+  "https://vidmoly.org/embed-q6h9kjfpovuy.html": {
+   "page": "https://arab-wrestling.com/shows/mlw-fusion-14-11-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-16T02:27:26.819Z",
+   "lastOk": "2026-11-16T02:27:26.819Z"
+  },
+  "https://vidtube.one/embed-ufszhgsaoxw3.html": {
+   "page": "https://arab-wrestling.com/shows/mlw-fusion-14-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-16T02:15:05.413Z"
+   "checked": "2026-11-16T02:27:26.819Z"
   },
   "https://fembed.co/embed/4ijQ6G_x-h1MB": {
    "page": "https://arab-wrestling.com/shows/cmll-viernes-espectacular-13-11-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-16T02:15:05.413Z",
-   "lastOk": "2026-11-16T02:15:05.413Z"
+   "checked": "2026-11-16T02:27:26.819Z",
+   "lastOk": "2026-11-16T02:27:26.819Z"
   },
   "https://vidmoly.org/embed-dnzngtpe5pwg.html": {
    "page": "https://arab-wrestling.com/shows/cmll-viernes-espectacular-13-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-16T02:15:05.413Z",
-   "lastOk": "2026-11-16T02:15:05.413Z"
+   "checked": "2026-11-16T02:27:26.819Z",
+   "lastOk": "2026-11-16T02:27:26.819Z"
+  },
+  "https://ok.ru/videoembed/18121971731040": {
+   "page": "https://arab-wrestling.com/shows/cmll-viernes-espectacular-13-11-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-16T02:27:26.819Z"
   },
   "https://vidtube.one/embed-ah999rnozg1w.html": {
    "page": "https://arab-wrestling.com/shows/cmll-viernes-espectacular-13-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-16T02:15:05.413Z"
+   "checked": "2026-11-16T02:27:26.819Z"
   },
   "https://vidtube.one/embed-e4wanuvkz72j.html": {
    "page": "https://arab-wrestling.com/shows/aew-full-gear-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-16T02:15:05.413Z"
+   "checked": "2026-11-16T02:27:26.819Z"
   },
   "https://ok.ru/videoembed/18121948334688": {
    "page": "https://arab-wrestling.com/shows/aew-full-gear-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-16T02:15:05.413Z"
+   "checked": "2026-11-16T02:27:26.819Z"
   },
   "https://vidmoly.org/embed-xr0dcj5e5ebd.html": {
    "page": "https://arab-wrestling.com/shows/aew-full-gear-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-16T02:15:05.413Z",
-   "lastOk": "2026-11-16T02:15:05.413Z"
+   "checked": "2026-11-16T02:27:26.819Z",
+   "lastOk": "2026-11-16T02:27:26.819Z"
   },
   "https://fembed.co/embed/RYk-WuuBNs_ug": {
    "page": "https://arab-wrestling.com/shows/aew-full-gear-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-16T02:15:05.413Z",
-   "lastOk": "2026-11-16T02:15:05.413Z"
+   "checked": "2026-11-16T02:27:26.819Z",
+   "lastOk": "2026-11-16T02:27:26.819Z"
   },
   "https://hgcloud.to/e/bwvsu43eohsz": {
    "page": "https://arab-wrestling.com/shows/aew-full-gear-2026/",
    "status": "unknown",
    "reason": "StreamHG's first source failed and its fallback hadn't come yet ([helpers/jwplayer/api/core-shim]: JW Player Error 232011)",
    "strikes": 0,
-   "checked": "2026-11-16T02:15:05.413Z"
+   "checked": "2026-11-16T02:27:26.819Z"
   }
  },
  "broken": [
