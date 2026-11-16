@@ -5324,7 +5324,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261116041017-lucha-libre-aaa-14-11-2026": {
     "publishedAt": 1794797130255,
