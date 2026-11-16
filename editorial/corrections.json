@@ -12792,6 +12792,8 @@
     {"wrong": "(?<a>ال)?ركبات(?![ء-ي])", "right": "$<a>ركب", "regex": true, "note": "جمع «ركبة» = «ركب» — «الركبات» غلط (خبر PRIDE في EA UFC 6، INCIDENTS #1363)"},
     {"wrong": "قطع عرضا كلاميا", "right": "قدم عرضا كلاميا", "note": "«cut a promo» يعني قدّم عرضا كلاميا، مش «قطع» (خبر جيفون إيفانز، INCIDENTS #1365)"},
     {"wrong": "قطعت عرضا كلاميا", "right": "قدمت عرضا كلاميا", "note": "«cut a promo» = «قدمت عرضا كلاميا» (INCIDENTS #1365)"},
-    {"wrong": "عرض The Iron Claw", "right": "فيلم The Iron Claw", "note": "The Iron Claw فيلم مش عرض مصارعة (خبر تشافو غيريرو، INCIDENTS #1363)"}
+    {"wrong": "عرض The Iron Claw", "right": "فيلم The Iron Claw", "note": "The Iron Claw فيلم مش عرض مصارعة (خبر تشافو غيريرو، INCIDENTS #1363)"},
+    {"wrong": "(?<p>[وبل]?)(?:ال)?لياش(?![ء-ي])", "right": "$<p>مقاود", "regex": true, "note": "«leash» = «مقود» وجمعه «مقاود» — «لياش» كلمة مش عربي (خبر آدم كوبلاند والدبة، INCIDENTS #1366)"},
+    {"wrong": "أم دبة", "right": "دبة", "note": "«mother bear» = «دبة» (أو دبة مع صغارها) — «أم دبة» ركيكة (INCIDENTS #1366)"}
   ]
 }
