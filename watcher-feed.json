@@ -1,5 +1,15 @@
 [
   {
+    "id": 339408,
+    "link": "https://www.fightful.com/wrestling/wwe-nxt-holiday-live-tour-from-chicago-il-results-11-15/",
+    "date": "2026-11-16T10:04:55",
+    "date_gmt": "2026-11-16T15:04:55",
+    "title": {
+      "rendered": "WWE NXT Holiday Live Tour From Chicago, IL Results (11/15)"
+    },
+    "featured_image": "https://www.fightful.com/wp-content/uploads/2025/09/nxt-2024.jpg"
+  },
+  {
     "id": 339396,
     "link": "https://www.fightful.com/wrestling/bushi-returning-to-njpw-at-bound-for-unbound/",
     "date": "2026-11-16T10:01:41",
@@ -288,15 +298,5 @@
       "rendered": "MLW Fusion Results (11/12)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/02161708/Fusion-26.jpg"
-  },
-  {
-    "id": 339274,
-    "link": "https://www.fightful.com/wrestling/mustafa-ali-vs-frankie-kazarian-added-to-tna-destination-x/",
-    "date": "2026-11-15T13:14:14",
-    "date_gmt": "2026-11-15T18:14:14",
-    "title": {
-      "rendered": "Mustafa Ali vs. Frankie Kazarian Added To TNA Destination X"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/15132903/Screenshot-2026-11-15-at-1.28.45-PM.png"
   }
 ]
