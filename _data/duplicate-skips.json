@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/njpw-power-struggle-2026-preview-start-time-how-to-watch-location-11-3/": {
-    "matchedFile": "20261102145443-الكشف-عن-جدول-نزالات-عرض-njpw-power-struggle-بالكامل.md",
-    "reason": "الخبر الجديد يقدم تفاصيل إضافية (توقيت العرض، القاعة، القائمة الكاملة للنزالات) لنفس الحدث الذي تم تغطيته مسبقاً، ولا يعتبر تطوراً جديداً أو خبراً مختلفاً.",
-    "at": "2026-11-02T19:06:35.124Z"
-  },
   "https://www.ringsidenews.com/wwe-royal-rumble-2027-date-revealed/": {
     "matchedFile": "20261102210948-wwe-تعلن-موعد-إقامة-عرض-wwe-royal-rumble-2027.md",
     "reason": "الخبر الجديد يعلن نفس تفاصيل موعد ومكان عرض WWE Royal Rumble 2027 (6 فبراير 2027 في State Farm Stadium) التي تم نشرها بالفعل في الخبر السابق.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261116022120-تاشا-ستيلز-تفوز-بنزال-ألتيميت-إكس-للسيدات-في-عرض-tna-destination-x-2026.md",
     "reason": "الخبر مكرر بالكامل عن فوز تاشا ستيلز بنزال ألتيميت إكس للسيدات في عرض TNA Destination X المنشور في الخبر [0]",
     "at": "2026-11-16T00:07:36.516Z"
+  },
+  "https://www.fightful.com/wrestling/ricky-sosa-wins-2026-tna-world-x-cup-at-destination-x/": {
+    "matchedFile": "20261115164611-ريكي-سوسا-يصف-تمثيل-بلجيكا-في-بطولة-tna-world-x-cup-بالشرف-الكبير.md",
+    "reason": "الخبر الجديد يغطي نتائج نزال World X Cup في عرض Destination X، بينما الخبر المنشور يتحدث عن نفس الحدث والبطولة، والخبر الجديد يعتبر تفصيلاً لنتائج النزال الذي تم الإشارة إليه مسبقاً.",
+    "at": "2026-11-16T00:25:13.145Z"
   }
 }
