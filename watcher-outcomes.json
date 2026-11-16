@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/kevin-nash-demands-rfk-jrs-removal-trump-administration-measles-outbreaks": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-16T14:06:15.336Z"
+ },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-16": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
   "retry": true,
   "at": "2026-11-07T03:16:33.808Z"
- },
- "https://www.fightful.com/wrestling/tna-impact-10-29-viewership-drops-remains-over-200000-viewers": {
-  "reason": "تقرير مشاهدة لعرض قديم (2026-10-29)",
-  "retry": false,
-  "at": "2026-11-07T02:40:48.540Z"
  }
 }
