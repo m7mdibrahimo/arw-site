@@ -5318,7 +5318,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ام ال دبليو فيوجن 14.11.2026 مترجم",
-    "lastAttempt": 1794803906680,
+    "lastAttempt": 1794804782680,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5336,9 +5336,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ايه ايه ايه 14.11.2026 مترجم",
-    "lastAttempt": 1794802240242,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1794804783694,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
