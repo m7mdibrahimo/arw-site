@@ -2,7 +2,7 @@
 // item, never a CI failure — and the review alert must fire once, not on every run.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { applyResults, needsReviewAlert, settleReview, REVIEW_GRACE_MS } from '../scripts/show-reel-monitor';
+import { applyResults, needsReviewAlert, settleReview, shouldAskFacebook, REVIEW_GRACE_MS, REVIEW_LOOKUP_MAX_MS } from '../scripts/show-reel-monitor';
 import { facebookReelState, reelCaptionMatches } from '../worker/src/video-publishing';
 
 const ambiguous = { ok: false, ambiguous: true, id: '1234', error: 'تم قبول الفيديو ولم يتأكد ظهوره بعد؛ راجع فيسبوك.' };
@@ -89,4 +89,18 @@ test('facebookReelState finds a reel by its caption title when the id was lost',
     assert.equal(await facebookReelState({ pageId: 'p', token: 't', id: '9' }), 'pending');
     assert.equal(await facebookReelState({ pageId: 'p', token: 't', title: 'غير موجود' }), 'missing');
   } finally { globalThis.fetch = orig; }
+});
+
+// INCIDENTS #1344: the lookup was dead code after #908 — the monitor must ask Facebook about a fresh unconfirmed reel,
+// keep its id for that, and never ask about (and so never re-queue) a review item older than a day.
+test('a fresh unconfirmed Facebook reel is looked up; an old one or a story is not', async () => {
+  const now = Date.now();
+  const entry = applyResults(undefined, { facebook_reel: ambiguous }, ['facebook_reel'], 'عرض');
+  assert.equal(entry.reviewIds?.facebook_reel, '1234');
+  assert.equal(shouldAskFacebook(entry, now), true);
+  assert.equal(shouldAskFacebook({ ...entry, lastAttempt: now - REVIEW_LOOKUP_MAX_MS - 1 }, now), false);
+  const story = applyResults(undefined, { facebook_story: { ok: false, ambiguous: true } }, ['facebook_story'], 'عرض');
+  assert.equal(shouldAskFacebook(story, now), false);
+  const src = (await import('node:fs')).readFileSync(new URL('../scripts/show-reel-monitor.ts', import.meta.url), 'utf8');
+  assert.match(src.slice(src.indexOf('export async function main')), /shouldAskFacebook\(previous\)[\s\S]*facebook-reel-status[\s\S]*settleReview\(/);
 });

@@ -11,6 +11,7 @@ type Platform = typeof PLATFORMS[number];
 type Entry = Record<Platform, boolean> & {
   publishedAt: number | null; lastAttempt?: number; title?: string;
   errors?: Record<string, string>; reviewPlatforms?: Platform[]; needsReview?: boolean; reviewNotified?: boolean; note?: string;
+  reviewIds?: Partial<Record<Platform, string>>;
   processing?: Platform[];
   mediaDeleted?: boolean;
 };
@@ -163,6 +164,13 @@ export function applyResults(existing: Entry | undefined, results: Record<string
   // (NJPW Super Junior Tag League Day 4, INCIDENTS #906).
   if (!review.size) delete entry.reviewNotified;
   else if (grew) entry.reviewNotified = false;
+  // the platform's id of an unconfirmed upload, so a later run can ask Facebook what became of it (settleReview)
+  const ids = { ...existing?.reviewIds };
+  for (const p of requested) {
+    if (review.has(p) && results[p]?.id) ids[p] = String(results[p].id);
+    else if (!review.has(p)) delete ids[p];
+  }
+  if (Object.keys(ids).length) entry.reviewIds = ids; else delete entry.reviewIds;
   return entry;
 }
 /** True only for a review item that has not been reported yet — the run fails once to flag it, then stays green. */
@@ -191,6 +199,11 @@ export function settleReview(entry: Entry, platform: Platform, state: string, no
   next.needsReview = review.size > 0;
   if (!Object.keys(next.reviewIds!).length) delete next.reviewIds;
   return { entry: next, failing: next.needsReview && graced };
+}
+/** A Facebook reel still «for review» less than a day after its last attempt: worth asking Facebook about (#1344). */
+export const REVIEW_LOOKUP_MAX_MS = 24 * 60 * 60_000;
+export function shouldAskFacebook(entry: Entry | undefined, now = Date.now()): boolean {
+  return !!entry?.needsReview && !!entry.reviewPlatforms?.includes('facebook_reel') && now - (entry.lastAttempt || 0) < REVIEW_LOOKUP_MAX_MS;
 }
 export async function main() {
   const root = process.cwd();
@@ -221,8 +234,23 @@ export async function main() {
   for (const filename of fs.readdirSync(dir).filter(f => f.endsWith('.md')).sort()) {
     const { data } = matter(fs.readFileSync(path.join(dir, filename), 'utf8'));
     const slug = filename.replace(/\.md$/, '');
-    const previous = state[slug];
+    let previous = state[slug];
     if (!shouldProcessShow(filename, data, previous)) continue;
+    // INCIDENTS #1344: the Facebook lookup (#901) was lost when #908 rewrote this block, so an unconfirmed reel stayed
+    // parked forever. Ask the Worker again — only for a fresh one: a review item older than a day is left alone, so a
+    // weeks-old reel is never sent back to the retry queue and re-posted.
+    if (shouldAskFacebook(previous) && !dryRun) {
+      let answer = 'unknown';
+      try {
+        const r = await fetch(`${WORKER}/api/videos/facebook-reel-status`, { method: 'POST', signal: AbortSignal.timeout(30_000),
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${process.env.GITHUB_TOKEN}` },
+          body: JSON.stringify({ id: previous!.reviewIds?.facebook_reel, title: previous!.title || data.headline || data.title }) });
+        answer = ((await r.json()) as any).state || 'unknown';
+      } catch {}
+      console.log(`${slug}: facebook_reel on Facebook → ${answer}`);
+      const settled = settleReview(previous!, 'facebook_reel', answer);
+      if (JSON.stringify(settled.entry) !== JSON.stringify(previous)) { state[slug] = previous = settled.entry; save(); }
+    }
     if (needsReviewAlert(previous)) {
       console.error(`${slug}: uncertain platforms need review.`);
       failures++;
