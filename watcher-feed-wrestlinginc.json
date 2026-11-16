@@ -1,5 +1,15 @@
 [
   {
+    "id": 2422453657,
+    "link": "https://www.wrestlinginc.com/2317247/kc-navarro-wins-mens-tna-ultimate-x-match/",
+    "date": "Mon, 16 Nov 2026 01:34:54 +0000",
+    "date_gmt": "2026-11-16T01:34:54.000Z",
+    "title": {
+      "rendered": "KC Navarro Wins Men's TNA Ultimate X Match"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/kc-navarro-wins-mens-tna-ultimate-x-match/l-intro-1794792800.jpg"
+  },
+  {
     "id": 5083226685,
     "link": "https://www.wrestlinginc.com/2317239/ricky-sosa-wins-5-way-elimination-match-tna-world-x-cup/",
     "date": "Mon, 16 Nov 2026 00:24:59 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Will Ospreay Retains AEW World Title, Gets Leveled By Returning MJF At Full Gear 2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/will-ospreay-retains-aew-world-title-gets-leveled-by-returning-mjf-at-full-gear-2026/l-intro-1794723588.jpg"
-  },
-  {
-    "id": 1257359481,
-    "link": "https://www.wrestlinginc.com/2317070/aew-full-gear-2026-the-cut-anarchy-in-the-arena-death-riders-conglomeration/",
-    "date": "Sun, 15 Nov 2026 05:23:32 +0000",
-    "date_gmt": "2026-11-15T05:23:32.000Z",
-    "title": {
-      "rendered": "The Cut Emerges Victorious After Wild Anarchy In The Arena Match At AEW Full Gear 2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/the-cut-emerges-victorious-after-wild-anarchy-in-the-arena-match-at-aew-full-gear-2026/l-intro-1794720152.jpg"
   }
 ]
