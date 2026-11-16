@@ -1,4 +1,19 @@
 {
+ "https://www.ringsidenews.com/paige-collett-reveals-vince-russo-directed-promo-banned-jcw-lunacy-broadcast": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-16T18:06:03.799Z"
+ },
+ "https://www.ringsidenews.com/johnny-gargano-explains-how-wwe-travel-schedule-him-scrambling-avoid-marvel-spoilers": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-16T18:04:55.701Z"
+ },
+ "https://www.ringsidenews.com/kevin-nash-says-former-wcw-star-alex-wright-would-get-huge-heat-wrestling-today": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-16T18:04:55.567Z"
+ },
  "https://www.fightful.com/wrestling/details-on-tna-wrestling-radio-on-iheartradio": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1983,15 +1998,5 @@
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-07T18:12:28.203Z"
- },
- "https://www.ringsidenews.com/austin-theory-claims-fans-cant-stand-how-good-he-maxxine-dupri-look-together": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة",
-  "retry": true,
-  "at": "2026-11-07T17:46:18.224Z"
- },
- "https://www.fightful.com/wrestling/aew-dynamite-blood-guts-does-240k-more-viewers-than-wwe-nxt-on-11-4": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-07T17:44:48.124Z"
  }
 }
