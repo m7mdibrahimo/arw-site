@@ -1,5 +1,15 @@
 [
   {
+    "id": 3126203205,
+    "link": "https://www.wrestlinginc.com/2317355/tna-amazing-red-reacts-full-time-return/",
+    "date": "Mon, 16 Nov 2026 16:00:00 +0000",
+    "date_gmt": "2026-11-16T16:00:00.000Z",
+    "title": {
+      "rendered": "Amazing Red Reacts To Full-Time TNA Return"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/amazing-red-reacts-to-full-time-tna-return/l-intro-1794820320.jpg"
+  },
+  {
     "id": 5192697754,
     "link": "https://www.wrestlinginc.com/2317718/wwe-raw-faa-grounding-order-may-be-affected/",
     "date": "Mon, 16 Nov 2026 15:51:52 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Tony Khan Details How Private Aviation Got AEW Stars To Phoenix In Time For Full Gear"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/tony-khan-details-how-private-aviation-got-aew-stars-to-phoenix-in-time-for-full-gear/l-intro-1794770209.jpg"
-  },
-  {
-    "id": 4099934659,
-    "link": "https://www.wrestlinginc.com/2316787/tna-destination-x-november-15-2026-results/",
-    "date": "Sun, 15 Nov 2026 19:00:00 +0000",
-    "date_gmt": "2026-11-15T19:00:00.000Z",
-    "title": {
-      "rendered": "TNA Destination X Results 11/15/26 W/ Live Updates: Belgium Wins World X-Cup"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-destination-x-results-111526-w-live-updates/l-intro-1794795774.jpg"
   }
 ]
