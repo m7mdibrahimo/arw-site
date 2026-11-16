@@ -1,53 +1,48 @@
 {
- "https://www.wrestlinginc.com/2317718/wwe-raw-faa-grounding-order-may-be-affected": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-16T17:48:45.437Z"
- },
  "https://www.fightful.com/wrestling/details-on-tna-wrestling-radio-on-iheartradio": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T17:50:48.747Z"
+  "at": "2026-11-16T17:53:20.049Z"
  },
  "https://www.fightful.com/wrestling/cmll-sabado-de-coliseo-results-11-14-2026-templario-esfinge-vs-guerreros-laguneros-dragones-vs-herederos-more": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: فائز مش موجود في نتايج المصدر (النزال لسه ما خلصش؟): المواجهة الخامسة: نزال من ثلاث جولات، في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
   "retry": true,
-  "at": "2026-11-16T17:50:47.735Z"
+  "at": "2026-11-16T17:53:19.355Z"
  },
  "https://www.fightful.com/wrestling/ken-anderson-would-like-to-wrestle-cm-punk-as-part-of-his-pro-wrestling-bucket-list": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T17:50:03.162Z"
+  "at": "2026-11-16T17:52:51.317Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-holiday-live-tour-from-chicago-il-results-11-15": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T17:50:02.788Z"
+  "at": "2026-11-16T17:52:51.078Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-16": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T17:50:01.765Z"
+  "at": "2026-11-16T17:52:50.383Z"
  },
  "https://www.fightful.com/wrestling/tjp-returns-to-tna-during-ultimate-x-match-at-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T17:50:01.121Z"
+  "at": "2026-11-16T17:52:49.947Z"
  },
  "https://www.fightful.com/wrestling/kc-navarro-wins-mens-ultimate-x-match-at-tna-destination-x-becomes-no-1-contender-to-x-division-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T17:50:00.888Z"
+  "at": "2026-11-16T17:52:49.794Z"
  },
  "https://www.fightful.com/wrestling/ricky-sosa-wins-2026-tna-world-x-cup-at-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T17:50:00.665Z"
+  "at": "2026-11-16T17:52:49.636Z"
  },
  "https://www.fightful.com/wrestling/tasha-steelz-wins-knockouts-ultimate-x-match-at-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T17:50:00.328Z"
+  "at": "2026-11-16T17:52:49.407Z"
  },
  "https://www.fightful.com/wrestling/tna-destination-x-results-11-15-two-ultimate-x-matches": {
   "reason": "مكرر مع خبر نزل قبل كده",
