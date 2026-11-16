@@ -21,9 +21,40 @@ permalink: "{{ tagPage.permalink }}"
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 {# A wrestler's name is what people search («درو ماكنتاير», 391 impressions at #11 — INCIDENTS #284): it leads the title, with a real description #}
 <title>{{ tagObj.name }}: آخر الأخبار والعروض والنتائج{% if tagPage.pageNumber > 1 %} - صفحة {{ tagPage.pageNumber }}{% endif %} | عرب راسلنج</title>
-<meta name="description" content="آخر أخبار {{ tagObj.name }} بالعربي أول بأول، مع العروض المترجمة والنتائج المتعلقة بـ{{ tagObj.name }} على عرب راسلنج.">
+{# A person's tag also names them in English and carries CollectionPage + Person structured data — head only
+   (tag pages had none; «كروز مونتانا» ranked 7.7 on a news story instead of this page, INCIDENTS #1355) #}
+{% set tagWho = tagPerson(tagObj.name) %}
+<meta name="description" content="آخر أخبار {{ tagObj.name }}{% if tagWho %} ({{ tagWho.en }}){% endif %} بالعربي أول بأول، مع العروض المترجمة والنتائج المتعلقة بـ{{ tagObj.name }} على عرب راسلنج.">
 
 <link rel="canonical" href="https://arab-wrestling.com{{ tagPage.url }}">
+{% if tagObj.count >= 3 and tagPage.pageNumber <= 1 %}
+{% set tagUrl = "https://arab-wrestling.com" + tagPage.url %}
+{% if tagWho %}{% set tagAbout = { "@type": "Person", "name": tagObj.name, "alternateName": [tagWho.en] } %}{% else %}{% set tagAbout = { "@type": "Thing", "name": tagObj.name } %}{% endif %}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": tagUrl + "#page",
+      "url": tagUrl,
+      "name": tagObj.name + ": آخر الأخبار والعروض والنتائج",
+      "description": "آخر أخبار " + tagObj.name + (" (" + tagWho.en + ")" if tagWho else "") + " بالعربي أول بأول، مع العروض المترجمة والنتائج المتعلقة بـ" + tagObj.name + ".",
+      "inLanguage": "ar",
+      "about": tagAbout,
+      "isPartOf": { "@type": "WebSite", "name": "عرب راسلنج", "url": "https://arab-wrestling.com/" },
+      "breadcrumb": { "@id": tagUrl + "#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": tagUrl + "#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://arab-wrestling.com/" },
+        { "@type": "ListItem", "position": 2, "name": tagObj.name, "item": tagUrl }
+      ]
+    }
+  ]
+} | dump | safe }}</script>
+{% endif %}
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://arab-wrestling.com{{ tagPage.url }}">

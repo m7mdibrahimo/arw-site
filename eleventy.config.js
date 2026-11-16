@@ -1950,6 +1950,10 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addNunjucksGlobal("resultsAltHeadline", function(title) {
     return require("./lib/results-headline.cjs").resultsAltHeadline(title);
   });
+  // A tag that is a person's whole name → { name, en } for the tag page's structured data (INCIDENTS #1355)
+  eleventyConfig.addNunjucksGlobal("tagPerson", function(name) {
+    return require("./lib/wrestler-mentions.cjs").tagPerson(name);
+  });
   eleventyConfig.addNunjucksGlobal("personMentions", function(headline, tags) {
     return require("./lib/wrestler-mentions.cjs").personMentions(headline, 4, tags);
   });
