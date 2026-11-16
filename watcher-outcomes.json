@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/why-aj-styles-ended-his-podcast-finally-makes-sense-wwes-new-announcement": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، جملة قصيرة مكررة ورا بعض — اكتبها مرة واحدة",
+  "retry": true,
+  "at": "2026-11-16T20:45:46.518Z"
+ },
  "https://www.wrestlinginc.com/2317718/wwe-raw-faa-grounding-order-may-be-affected": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Intercontinental Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Raquel Rodriguez",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-07T19:37:04.586Z"
- },
- "https://www.wrestlinginc.com/2305803/wwe-becky-lynch-first-years-overthinking-everything": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، العنوان بينتهي بكلمة مبتورة مش موجودة في الخبر — الاقتباس اتقطع",
-  "retry": true,
-  "at": "2026-11-07T19:22:09.686Z"
  }
 }
