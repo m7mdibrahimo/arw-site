@@ -12790,6 +12790,8 @@
     {"wrong": "(?<v>أعلن|كشف|أكد) اتحاد EA", "right": "$<v>ت شركة EA", "regex": true, "note": "EA Sports شركة ألعاب مش اتحاد مصارعة (INCIDENTS #1363)"},
     {"wrong": "اتحاد EA", "right": "شركة EA", "note": "EA Sports شركة ألعاب مش اتحاد (INCIDENTS #1363)"},
     {"wrong": "(?<a>ال)?ركبات(?![ء-ي])", "right": "$<a>ركب", "regex": true, "note": "جمع «ركبة» = «ركب» — «الركبات» غلط (خبر PRIDE في EA UFC 6، INCIDENTS #1363)"},
+    {"wrong": "قطع عرضا كلاميا", "right": "قدم عرضا كلاميا", "note": "«cut a promo» يعني قدّم عرضا كلاميا، مش «قطع» (خبر جيفون إيفانز، INCIDENTS #1365)"},
+    {"wrong": "قطعت عرضا كلاميا", "right": "قدمت عرضا كلاميا", "note": "«cut a promo» = «قدمت عرضا كلاميا» (INCIDENTS #1365)"},
     {"wrong": "عرض The Iron Claw", "right": "فيلم The Iron Claw", "note": "The Iron Claw فيلم مش عرض مصارعة (خبر تشافو غيريرو، INCIDENTS #1363)"}
   ]
 }

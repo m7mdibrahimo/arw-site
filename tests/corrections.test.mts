@@ -1743,3 +1743,11 @@ test("Star Wars terms: Jedi is «الجيداي», Force choke is «الخنق �
   assert.equal(applyCorrections("وتؤكد أن خنق القوة سيجعل حياتها مكتملة"), "وتؤكد أن الخنق بالقوة سيجعل حياتها مكتملة");
   assert.equal(applyCorrections("الممثل ايوان مكريغور"), "الممثل ايوان ماكغريغور");
 });
+
+test("«cut a promo» is «قدم عرضا كلاميا», never «قطع عرضا كلاميا» (INCIDENTS #1365)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("حين قطع عرضا كلاميا وهو صغير"), "حين قدم عرضا كلاميا وهو صغير");
+  assert.equal(applyCorrections("قطعت عرضا كلاميا"), "قدمت عرضا كلاميا");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /قطعت? عرضا كلاميا|المصارعة ستشهد انطلاق عرض/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
