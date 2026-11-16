@@ -5346,21 +5346,18 @@
     "publishedAt": 1794840555627,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض تي ان ايه ديستينيشن اكس 15.11.2026 مترجم",
-    "lastAttempt": 1794840606487,
+    "lastAttempt": 1794841419587,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
-      "instagram_story",
-      "tiktok"
+      "instagram_story"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   }
 }
