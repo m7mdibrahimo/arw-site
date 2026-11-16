@@ -78,6 +78,8 @@
     {
       "@type": "NewsArticle",
       "headline": "{{ pageTitle | escape }}",
+      {#- a weekly show's results story under the program's Arabic name and the English «Results» form (INCIDENTS #1350) - head only -#}
+      {% set resultsAlt = resultsAltHeadline(pageTitle) if page.url.startsWith('/news/') else '' %}{% if resultsAlt %}"alternativeHeadline": "{{ resultsAlt | escape }}",{% endif %}
       "description": "{{ (description or baseDesc) | escape }}",
       "image": {
         "@type": "ImageObject",

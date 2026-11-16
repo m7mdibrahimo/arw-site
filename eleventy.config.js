@@ -1947,6 +1947,9 @@ module.exports = function(eleventyConfig) {
   });
 
   // The people a news headline names, for the story's structured data only (mentions — nothing on the page)
+  eleventyConfig.addNunjucksGlobal("resultsAltHeadline", function(title) {
+    return require("./lib/results-headline.cjs").resultsAltHeadline(title);
+  });
   eleventyConfig.addNunjucksGlobal("personMentions", function(headline, tags) {
     return require("./lib/wrestler-mentions.cjs").personMentions(headline, 4, tags);
   });
