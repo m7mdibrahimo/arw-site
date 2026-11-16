@@ -1,4 +1,59 @@
 {
+ "https://www.fightful.com/wrestling/tjp-returns-to-tna-during-ultimate-x-match-at-tna-destination-x": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T01:40:20.965Z"
+ },
+ "https://www.fightful.com/wrestling/kc-navarro-wins-mens-ultimate-x-match-at-tna-destination-x-becomes-no-1-contender-to-x-division-title": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T01:40:20.748Z"
+ },
+ "https://www.fightful.com/wrestling/ricky-sosa-wins-2026-tna-world-x-cup-at-destination-x": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T01:40:20.529Z"
+ },
+ "https://www.fightful.com/wrestling/tasha-steelz-wins-knockouts-ultimate-x-match-at-tna-destination-x": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T01:40:20.215Z"
+ },
+ "https://www.fightful.com/wrestling/tna-destination-x-results-11-15-two-ultimate-x-matches": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T01:40:19.996Z"
+ },
+ "https://www.fightful.com/wrestling/mjf-somebody-tell-that-lady-to-watch-where-shes-going": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T01:40:19.586Z"
+ },
+ "https://www.fightful.com/wrestling/countdown-to-tna-destination-x-2026-live-and-free-at-5pm-et-on-november-15th": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T01:40:19.368Z"
+ },
+ "https://www.fightful.com/wrestling/indi-hartwell-says-she-cant-make-it-to-tna-destination-x-to-defend-her-knockouts-world-championship": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T01:40:19.033Z"
+ },
+ "https://www.fightful.com/wrestling/ken-anderson-confirms-he-has-signed-a-wwe-legends-deal": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T01:40:18.400Z"
+ },
+ "https://www.fightful.com/wrestling/aew-posts-toni-storm-teaser-with-play-me-written-on-package": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T01:40:18.065Z"
+ },
+ "https://www.fightful.com/wrestling/ilja-dragunov-when-i-came-into-aew-i-promised-that-the-landscape-is-about-to-change-why-because-i-am-here": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T01:40:17.523Z"
+ },
  "https://www.ringsidenews.com/val-venis-plans-confront-fans-abortion-debate-wwe-royal-rumble-2027": {
   "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
   "retry": true,
@@ -1943,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-06T21:42:35.878Z"
- },
- "https://www.wrestlinginc.com/2309790/wwe-matt-cardona-injury-update-not-finished": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-06T21:30:19.676Z"
  }
 }
