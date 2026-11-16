@@ -2,27 +2,27 @@
  "https://www.fightful.com/wrestling/details-on-tna-wrestling-radio-on-iheartradio": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T20:49:00.600Z"
+  "at": "2026-11-16T20:56:13.163Z"
  },
  "https://www.fightful.com/wrestling/cmll-sabado-de-coliseo-results-11-14-2026-templario-esfinge-vs-guerreros-laguneros-dragones-vs-herederos-more": {
-  "reason": "المراجعة رفضته: أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الثانية: نزال 2/3 من السقوط، المواجهة الثالثة: نزال 2/3 من السقوط، المواجهة الرابعة: نزال ثلاثي للفرق — اكتب الفائز زي المصدر وبالماضي",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فائز مش موجود في نتايج المصدر (النزال لسه ما خلصش؟): المواجهة الخامسة: نزال من ثلاث جولات، في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
   "retry": true,
-  "at": "2026-11-16T20:48:59.576Z"
+  "at": "2026-11-16T20:56:12.287Z"
  },
  "https://www.fightful.com/wrestling/ken-anderson-would-like-to-wrestle-cm-punk-as-part-of-his-pro-wrestling-bucket-list": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T20:48:19.006Z"
+  "at": "2026-11-16T20:53:03.263Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-holiday-live-tour-from-chicago-il-results-11-15": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T20:48:18.624Z"
+  "at": "2026-11-16T20:53:02.964Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-16": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T20:48:17.557Z"
+  "at": "2026-11-16T20:53:02.094Z"
  },
  "https://www.ringsidenews.com/why-aj-styles-ended-his-podcast-finally-makes-sense-wwes-new-announcement": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، جملة قصيرة مكررة ورا بعض — اكتبها مرة واحدة",
