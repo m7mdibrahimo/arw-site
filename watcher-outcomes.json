@@ -12,27 +12,32 @@
  "https://www.fightful.com/wrestling/details-on-tna-wrestling-radio-on-iheartradio": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T20:37:18.418Z"
+  "at": "2026-11-16T20:45:47.061Z"
  },
  "https://www.fightful.com/wrestling/cmll-sabado-de-coliseo-results-11-14-2026-templario-esfinge-vs-guerreros-laguneros-dragones-vs-herederos-more": {
-  "reason": "المراجعة رفضته: أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الثانية: نزال فرق من نوع 2/3 Falls، المواجهة الثالثة: نزال فرق من نوع 2/3 Falls، المواجهة الرابعة: نزال فرق ثلاثي — اكتب الفائز زي المصدر وبالماضي",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-16T20:37:17.666Z"
+  "at": "2026-11-16T20:45:46.171Z"
  },
  "https://www.fightful.com/wrestling/ken-anderson-would-like-to-wrestle-cm-punk-as-part-of-his-pro-wrestling-bucket-list": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T20:36:44.426Z"
+  "at": "2026-11-16T20:44:01.966Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-holiday-live-tour-from-chicago-il-results-11-15": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T20:36:44.170Z"
+  "at": "2026-11-16T20:44:01.664Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-16": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T20:36:43.403Z"
+  "at": "2026-11-16T20:44:00.803Z"
+ },
+ "https://www.wrestlinginc.com/2317718/wwe-raw-faa-grounding-order-may-be-affected": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Intercontinental Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Raquel Rodriguez",
+  "retry": true,
+  "at": "2026-11-16T20:40:53.304Z"
  },
  "https://www.ringsidenews.com/spoiler-opening-segment-revealed-november-16-wwe-raw": {
   "reason": "المراجعة رفضته: العنوان بيقول «العضو الجديد» من غير اسمه — اكتب اسم المصارع («ري ميستيريو يقدم ري فينيكس عضوا جديدا في فريق المكسيك»)",
