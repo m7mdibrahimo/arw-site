@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-plans-massive-100-million-nxt-performance-center-seeks-7-million-orlando": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-11-16T22:46:28.867Z"
+ },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-16-2026-the-usos-vs-946-john-cena-appears-iyo-sky-vs-raquel-rodriguez-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
   "retry": true,
   "at": "2026-11-07T21:39:48.288Z"
- },
- "https://www.wrestlinginc.com/2309389/wwe-nxt-womens-champion-kelani-jordan-discusses-choices-success-tna": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-07T20:42:31.393Z"
  }
 }
