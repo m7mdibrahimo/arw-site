@@ -5282,25 +5282,61 @@
     "publishedAt": 1794796084752,
     "facebook_reel": true,
     "facebook_story": false,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض فول جير 14.11.2026 مترجم",
-    "lastAttempt": 1794796115665,
+    "lastAttempt": 1794797025760,
     "errors": {
       "facebook_story": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة.",
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
-      "instagram_story",
-      "tiktok"
+      "instagram_story"
     ],
     "reviewPlatforms": [
       "facebook_story"
     ],
     "needsReview": true,
-    "reviewNotified": false
+    "reviewNotified": true,
+    "tiktok": true
+  },
+  "20261116040514-cmll-viernes-espectacular-13-11-2026": {
+    "publishedAt": 1794797052795,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال فيرنس اسبكتكيولار 13.11.2026 مترجم",
+    "lastAttempt": 1794797066141,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261116040645-mlw-fusion-14-11-2026": {
+    "publishedAt": 1794797091135,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ام ال دبليو فيوجن 14.11.2026 مترجم",
+    "lastAttempt": 1794797104287,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261116041017-lucha-libre-aaa-14-11-2026": {
+    "publishedAt": 1794797130255,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ايه ايه ايه 14.11.2026 مترجم",
+    "lastAttempt": 1794797144645,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
