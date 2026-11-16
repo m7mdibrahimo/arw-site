@@ -21756,16 +21756,16 @@
     "renderedAt": 1794787993416
   },
   {
-    "videoUrl": "/videos/reel-20261116040244-aew-full-gear-2026.mp4",
-    "filename": "reel-20261116040244-aew-full-gear-2026.mp4",
-    "title": "عرض فول جير 14.11.2026 مترجم",
-    "secondaryTitle": "AEW Full Gear (2026)",
-    "description": "عرض فول جير مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261116040244-aew-full-gear-2026",
+    "videoUrl": "/videos/reel-20261116041017-lucha-libre-aaa-14-11-2026.mp4",
+    "filename": "reel-20261116041017-lucha-libre-aaa-14-11-2026.mp4",
+    "title": "عرض ايه ايه ايه 14.11.2026 مترجم",
+    "secondaryTitle": "Lucha Libre AAA 14.11.2026",
+    "description": "عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261116041017-lucha-libre-aaa-14-11-2026",
     "kind": "show",
-    "slug": "20261116040244-aew-full-gear-2026",
-    "image": "/content/images/n7d6duot17xryjd0.jpg",
-    "renderedAt": 1794794856547
+    "slug": "20261116041017-lucha-libre-aaa-14-11-2026",
+    "image": "/content/images/84v8xiztlb61yu0t.jpg",
+    "renderedAt": 1794795556257
   },
   {
     "videoUrl": "/videos/reel-20261106140429-tna-impact-05-11-2026.mp4",
@@ -21777,7 +21777,7 @@
     "kind": "show",
     "slug": "20261106140429-tna-impact-05-11-2026",
     "image": "/content/images/pjmyzwicsbf8dnij.jpg",
-    "renderedAt": 1794794958931
+    "renderedAt": 1794795655624
   },
   {
     "videoUrl": "/videos/reel-20261108222542-aew-collision-07-11-2026.mp4",
@@ -21789,7 +21789,7 @@
     "kind": "show",
     "slug": "20261108222542-aew-collision-07-11-2026",
     "image": "/content/images/zfcvdmuouenn0tys.jpg",
-    "renderedAt": 1794795064927
+    "renderedAt": 1794795758391
   },
   {
     "videoUrl": "/videos/reel-20261109063825-gcw-dead-on-arrival-2026.mp4",
@@ -21801,7 +21801,7 @@
     "kind": "show",
     "slug": "20261109063825-gcw-dead-on-arrival-2026",
     "image": "/content/images/qfd3qw458hve06i6.jpg",
-    "renderedAt": 1794795165642
+    "renderedAt": 1794795856328
   },
   {
     "videoUrl": "/videos/reel-20261109184853-cmll-viernes-espectacular-06-1.mp4",
@@ -21813,6 +21813,42 @@
     "kind": "show",
     "slug": "20261109184853-cmll-viernes-espectacular-06-1",
     "image": "/content/images/ythuzx2plghslnt2.jpg",
-    "renderedAt": 1794795269912
+    "renderedAt": 1794795957149
+  },
+  {
+    "videoUrl": "/videos/reel-20261116040244-aew-full-gear-2026.mp4",
+    "filename": "reel-20261116040244-aew-full-gear-2026.mp4",
+    "title": "عرض فول جير 14.11.2026 مترجم",
+    "secondaryTitle": "AEW Full Gear (2026)",
+    "description": "عرض فول جير مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261116040244-aew-full-gear-2026",
+    "kind": "show",
+    "slug": "20261116040244-aew-full-gear-2026",
+    "image": "/content/images/n7d6duot17xryjd0.jpg",
+    "renderedAt": 1794796060002
+  },
+  {
+    "videoUrl": "/videos/reel-20261116040514-cmll-viernes-espectacular-13-1.mp4",
+    "filename": "reel-20261116040514-cmll-viernes-espectacular-13-1.mp4",
+    "title": "عرض سي ام ال ال فيرنس اسبكتكيولار 13.11.2026 مترجم",
+    "secondaryTitle": "CMLL Viernes Espectacular 13.11.2026",
+    "description": "عرض سي ام ال ال فيرنس اسبكتكيولار مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261116040514-cmll-viernes-espectacular-13-1",
+    "kind": "show",
+    "slug": "20261116040514-cmll-viernes-espectacular-13-1",
+    "image": "/content/images/b7p6ufgmg9bx1lf0.jpg",
+    "renderedAt": 1794796161899
+  },
+  {
+    "videoUrl": "/videos/reel-20261116040645-mlw-fusion-14-11-2026.mp4",
+    "filename": "reel-20261116040645-mlw-fusion-14-11-2026.mp4",
+    "title": "عرض ام ال دبليو فيوجن 14.11.2026 مترجم",
+    "secondaryTitle": "MLW Fusion 14.11.2026",
+    "description": "عرض ام ال دبليو فيوجن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261116040645-mlw-fusion-14-11-2026",
+    "kind": "show",
+    "slug": "20261116040645-mlw-fusion-14-11-2026",
+    "image": "/content/images/un6dx2ffo3ma8e6q.jpg",
+    "renderedAt": 1794796263067
   }
 ]
