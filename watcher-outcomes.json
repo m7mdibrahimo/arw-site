@@ -1,28 +1,33 @@
 {
+ "https://www.fightful.com/wrestling/aj-styles-podcast-to-launch-on-wwe-platforms": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-16T20:59:39.480Z"
+ },
  "https://www.fightful.com/wrestling/details-on-tna-wrestling-radio-on-iheartradio": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T20:56:13.163Z"
+  "at": "2026-11-16T20:59:11.138Z"
  },
  "https://www.fightful.com/wrestling/cmll-sabado-de-coliseo-results-11-14-2026-templario-esfinge-vs-guerreros-laguneros-dragones-vs-herederos-more": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فائز مش موجود في نتايج المصدر (النزال لسه ما خلصش؟): المواجهة الخامسة: نزال من ثلاث جولات، في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-16T20:56:12.287Z"
+  "at": "2026-11-16T20:59:10.260Z"
  },
  "https://www.fightful.com/wrestling/ken-anderson-would-like-to-wrestle-cm-punk-as-part-of-his-pro-wrestling-bucket-list": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T20:53:03.263Z"
+  "at": "2026-11-16T20:58:12.528Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-holiday-live-tour-from-chicago-il-results-11-15": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T20:53:02.964Z"
+  "at": "2026-11-16T20:58:12.048Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-16": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T20:53:02.094Z"
+  "at": "2026-11-16T20:58:11.160Z"
  },
  "https://www.ringsidenews.com/why-aj-styles-ended-his-podcast-finally-makes-sense-wwes-new-announcement": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، جملة قصيرة مكررة ورا بعض — اكتبها مرة واحدة",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-07T19:50:38.724Z"
- },
- "https://www.fightful.com/wrestling/charlotte-flair-returns-on-11-6-wwe-smackdown": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-07T19:37:04.586Z"
  }
 }
