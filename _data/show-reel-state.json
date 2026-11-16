@@ -5283,16 +5283,13 @@
     "facebook_reel": true,
     "facebook_story": false,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض فول جير 14.11.2026 مترجم",
-    "lastAttempt": 1794797809864,
+    "lastAttempt": 1794798743286,
     "errors": {
-      "facebook_story": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة.",
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "facebook_story": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة."
     },
-    "processing": [
-      "instagram_story"
-    ],
+    "processing": [],
     "reviewPlatforms": [
       "facebook_story"
     ],
@@ -5307,17 +5304,16 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال فيرنس اسبكتكيولار 13.11.2026 مترجم",
-    "lastAttempt": 1794797839909,
+    "lastAttempt": 1794798753187,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
-      "tiktok"
+      "instagram_reel"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261116040645-mlw-fusion-14-11-2026": {
     "publishedAt": 1794797091135,
