@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2317718/wwe-raw-faa-grounding-order-may-be-affected": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-16T21:48:43.088Z"
+ },
  "https://www.fightful.com/wrestling/cole-karter-fired-by-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-07T20:18:48.992Z"
- },
- "https://www.fightful.com/wrestling/wwe-smackdown-results-11-6-2026-cm-punk-vs-kevin-owens-in-no-holds-barred-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-07T20:12:58.492Z"
  }
 }
