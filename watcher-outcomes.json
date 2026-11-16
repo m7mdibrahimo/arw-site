@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/paige-collett-wants-obi-wan-kenobi-inside-her-says-force-choked-would-complete-her-life": {
+  "reason": "المراجعة رفضته: همزات ساقطة في 3 مواضع — النص يحتاج إعادة ترجمة",
+  "retry": true,
+  "at": "2026-11-16T04:35:36.463Z"
+ },
  "https://www.fightful.com/wrestling/tjp-returns-to-tna-during-ultimate-x-match-at-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,11 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-16T04:30:14.136Z"
- },
- "https://www.ringsidenews.com/paige-collett-wants-obi-wan-kenobi-inside-her-says-force-choked-would-complete-her-life": {
-  "reason": "المراجعة رفضته: همزات ساقطة في 4 مواضع — النص يحتاج إعادة ترجمة",
-  "retry": true,
-  "at": "2026-11-16T04:15:11.650Z"
  },
  "https://www.ringsidenews.com/tna-destination-x-results-highlights-key-moments-november-15-2026": {
   "reason": "المراجعة رفضته: أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: نزال ألتيميت إكس لتحديد المنافسة على بطولة TNA العالمية للسيدات، المواجهة الثانية: نزال World X-Cup الخماسي للإقصاء لعام 2026، المواجهة الرابعة: نزال ألتيميت إكس لتحديد المنافس الأول على بطولة TNA X Division، المواجهة الخامسة: بطولة TNA العالمية — اكتب الفائز زي المصدر وبالماضي، التحديث شال فقرات الكواليس وتفاصيل النزالات من التقرير المنشور — اكتب التقرير كامل وزوّد الجديد",
