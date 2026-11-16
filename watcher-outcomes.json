@@ -12,52 +12,57 @@
  "https://www.fightful.com/wrestling/ricky-sosa-wins-2026-tna-world-x-cup-at-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T00:51:02.303Z"
+  "at": "2026-11-16T00:54:13.207Z"
  },
  "https://www.fightful.com/mma/josh-hokit-and-jon-jones-trade-insults-and-accusations-on-social-media": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يتبادلان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-16T00:51:02.121Z"
+  "at": "2026-11-16T00:54:13.014Z"
  },
  "https://www.fightful.com/wrestling/tasha-steelz-wins-knockouts-ultimate-x-match-at-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T00:50:38.749Z"
+  "at": "2026-11-16T00:53:46.137Z"
  },
  "https://www.fightful.com/wrestling/tna-destination-x-results-11-15-two-ultimate-x-matches": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T00:50:38.589Z"
+  "at": "2026-11-16T00:53:45.941Z"
  },
  "https://www.fightful.com/wrestling/mjf-somebody-tell-that-lady-to-watch-where-shes-going": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T00:50:38.253Z"
+  "at": "2026-11-16T00:53:45.585Z"
  },
  "https://www.fightful.com/wrestling/countdown-to-tna-destination-x-2026-live-and-free-at-5pm-et-on-november-15th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T00:50:38.090Z"
+  "at": "2026-11-16T00:53:45.394Z"
  },
  "https://www.fightful.com/wrestling/indi-hartwell-says-she-cant-make-it-to-tna-destination-x-to-defend-her-knockouts-world-championship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T00:50:37.847Z"
+  "at": "2026-11-16T00:53:45.100Z"
  },
  "https://www.fightful.com/wrestling/ken-anderson-confirms-he-has-signed-a-wwe-legends-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T00:50:37.393Z"
+  "at": "2026-11-16T00:53:44.557Z"
  },
  "https://www.fightful.com/wrestling/aew-posts-toni-storm-teaser-with-play-me-written-on-package": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T00:50:37.152Z"
+  "at": "2026-11-16T00:53:44.261Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-when-i-came-into-aew-i-promised-that-the-landscape-is-about-to-change-why-because-i-am-here": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T00:50:36.743Z"
+  "at": "2026-11-16T00:53:43.795Z"
+ },
+ "https://www.ringsidenews.com/tna-destination-x-results-highlights-key-moments-november-15-2026": {
+  "reason": "المراجعة رفضته: «لصالح» من غير ضمير قبل «ضد/على» أو قبل علامة ترقيم («حسم النزال لصالح ضد منافسه»، «حسمه ري فينيكس لصالح،») — اكتب «لصالحه …» أو شيل «لصالح» (INCIDENTS #1208)، حروف عربي ملزوقة في حروف إنجليزي جوه نفس الاسم (حصل: «يOH»، «نagai») — اكتب الاسم كله إنجليزي أو كله عربي، التحديث شال فقرات الكواليس وتفاصيل النزالات من التقرير المنشور — اكتب التقرير كامل وزوّد الجديد",
+  "retry": true,
+  "at": "2026-11-16T00:51:46.490Z"
  },
  "https://www.fightful.com/wrestling/tna-destination-x-2026-preview-start-time-how-to-watch-11-15": {
   "reason": "مكرر مع خبر نزل قبل كده",
