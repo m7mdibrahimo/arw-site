@@ -2,6 +2,17 @@
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
     {
+      "wrong": "(?:ذا )?نظيرة دي إن أن",
+      "right": "ذا نيشن أوف دومينيشن",
+      "regex": true,
+      "note": "«فريق ذا نظيرة دي إن أن» — اسم Nation of Domination اتكتب غلط؛ الصح «ذا نيشن أوف دومينيشن» (INCIDENTS #1360)"
+    },
+    {
+      "wrong": "المشر العقد",
+      "right": "العقد",
+      "note": "«خلال المشر العقد الماضي» — كلمة مكسورة قبل «العقد» (INCIDENTS #1360)"
+    },
+    {
       "wrong": "أناركي (?:في (?:ال)?أ(?:رينا|رينة)?|إن ذا أ)(?![\\u0621-\\u064A])",
       "right": "أناركي إن ذا أرينا",
       "regex": true,
