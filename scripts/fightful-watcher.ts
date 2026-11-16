@@ -450,7 +450,9 @@ export function applyNamesGlossary(text: string): string {
 // English, so the name in it goes back to the glossary's English (only when one English key has it).
 let ARABIC_TO_ENGLISH: Map<string, string> | null = null;
 export function restoreEnglishTitleNames(text: string): string {
-  if (!text || typeof text !== "string" || !/[A-Za-z]\s+with\s+[\u0600-\u06FF]/i.test(text)) return text;
+  if (!text || typeof text !== "string") return text;
+  const quoted = /«(?:[A-Za-z][\w'’.-]*\s+)+[\u0600-\u06FF][\u0600-\u06FF ]*»/.test(text);
+  if (!quoted && !/[A-Za-z]\s+with\s+[\u0600-\u06FF]/i.test(text)) return text;
   if (!ARABIC_TO_ENGLISH) {
     const keys = new Map<string, string[]>();
     for (const [english, arabic] of Object.entries(WRESTLER_NAMES_MAP)) {
@@ -459,6 +461,12 @@ export function restoreEnglishTitleNames(text: string): string {
     }
     ARABIC_TO_ENGLISH = new Map([...keys].filter(([, e]) => e.length === 1).map(([a, e]) => [a, e[0]]));
   }
+  // A quoted English title that ends in a name: Hendry's song «Fire Logan Paul» was written «Fire لوغان بول»
+  // (INCIDENTS #1363) — the whole quote is English, so the name goes back to English too.
+  if (quoted) text = text.replace(/«((?:[A-Za-z][\w'’.-]*\s+)+)([\u0600-\u06FF][\u0600-\u06FF ]*[\u0600-\u06FF])»/g, (m, lead: string, tail: string) => {
+    const english = ARABIC_TO_ENGLISH!.get(tail.trim());
+    return english ? `«${lead}${english}»` : m;
+  });
   return text.replace(/([A-Za-z]+\s+with\s+)([\u0600-\u06FF][\u0600-\u06FF ]*[\u0600-\u06FF])/gi, (m, lead: string, tail: string) => {
     const words = tail.split(" ");
     // the longest glossary name at the start of what follows «with»
