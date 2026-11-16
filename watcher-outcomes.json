@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/the-sandman-to-face-dct-at-bcw-10th-anniversary": {
+  "reason": "المراجعة رفضته: اسم عربي ملزوق فيه 's الإنجليزية («جوش بارنيت's») — اكتب الاسم كله بالإنجليزي («Josh Barnett's») أو أعد الصياغة",
+  "retry": true,
+  "at": "2026-11-16T18:44:05.256Z"
+ },
  "https://www.fightful.com/wrestling/details-on-tna-wrestling-radio-on-iheartradio": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T18:39:50.400Z"
+  "at": "2026-11-16T18:43:32.138Z"
  },
  "https://www.fightful.com/wrestling/cmll-sabado-de-coliseo-results-11-14-2026-templario-esfinge-vs-guerreros-laguneros-dragones-vs-herederos-more": {
-  "reason": "المراجعة رفضته: النص بيقول إن حد فاز والسطر اللي تحته بيقول النتيجة ما اتعلنتش — فوز مخترع، فائز مش موجود في نتايج المصدر (النزال لسه ما خلصش؟): المواجهة الخامسة: نزال من ثلاث جولات، في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، جملة قصيرة مكررة ورا بعض — اكتبها مرة واحدة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الثانية: نزال فرق (من جولتين)، المواجهة الثالثة: نزال فرق (من جولتين)، المواجهة الرابعة: نزال ثلاثي للفرق — اكتب الفائز زي المصدر وبالماضي",
   "retry": true,
-  "at": "2026-11-16T18:39:49.450Z"
+  "at": "2026-11-16T18:43:31.180Z"
  },
  "https://www.fightful.com/wrestling/ken-anderson-would-like-to-wrestle-cm-punk-as-part-of-his-pro-wrestling-bucket-list": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T18:38:51.820Z"
+  "at": "2026-11-16T18:42:45.908Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-holiday-live-tour-from-chicago-il-results-11-15": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T18:38:51.489Z"
+  "at": "2026-11-16T18:42:45.583Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-16": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T18:38:50.541Z"
+  "at": "2026-11-16T18:42:44.651Z"
  },
  "https://www.fightful.com/wrestling/tjp-returns-to-tna-during-ultimate-x-match-at-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T18:38:49.922Z"
+  "at": "2026-11-16T18:42:44.042Z"
  },
  "https://www.fightful.com/wrestling/kc-navarro-wins-mens-ultimate-x-match-at-tna-destination-x-becomes-no-1-contender-to-x-division-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
