@@ -1,58 +1,58 @@
 {
- "https://www.wrestlinginc.com/2316787/tna-destination-x-november-15-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-16T00:23:59.848Z"
- },
- "https://www.ringsidenews.com/paige-collett-wants-obi-wan-kenobi-inside-her-says-force-choked-would-complete-her-life": {
-  "reason": "المراجعة رفضته: همزات ساقطة في 3 مواضع — النص يحتاج إعادة ترجمة",
-  "retry": true,
-  "at": "2026-11-16T00:21:24.995Z"
+ "https://www.fightful.com/wrestling/ricky-sosa-wins-2026-tna-world-x-cup-at-destination-x": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-16T00:27:45.806Z"
  },
  "https://www.fightful.com/mma/josh-hokit-and-jon-jones-trade-insults-and-accusations-on-social-media": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يتبادلان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-16T00:25:11.984Z"
+  "at": "2026-11-16T00:27:45.641Z"
  },
  "https://www.fightful.com/wrestling/tasha-steelz-wins-knockouts-ultimate-x-match-at-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T00:24:33.331Z"
+  "at": "2026-11-16T00:27:16.170Z"
  },
  "https://www.fightful.com/wrestling/tna-destination-x-results-11-15-two-ultimate-x-matches": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T00:24:33.176Z"
+  "at": "2026-11-16T00:27:16.015Z"
  },
  "https://www.fightful.com/wrestling/mjf-somebody-tell-that-lady-to-watch-where-shes-going": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T00:24:32.861Z"
+  "at": "2026-11-16T00:27:15.732Z"
  },
  "https://www.fightful.com/wrestling/countdown-to-tna-destination-x-2026-live-and-free-at-5pm-et-on-november-15th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T00:24:32.690Z"
+  "at": "2026-11-16T00:27:15.582Z"
  },
  "https://www.fightful.com/wrestling/indi-hartwell-says-she-cant-make-it-to-tna-destination-x-to-defend-her-knockouts-world-championship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T00:24:32.457Z"
+  "at": "2026-11-16T00:27:15.349Z"
  },
  "https://www.fightful.com/wrestling/ken-anderson-confirms-he-has-signed-a-wwe-legends-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T00:24:32.037Z"
+  "at": "2026-11-16T00:27:14.921Z"
  },
  "https://www.fightful.com/wrestling/aew-posts-toni-storm-teaser-with-play-me-written-on-package": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T00:24:31.811Z"
+  "at": "2026-11-16T00:27:14.689Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-when-i-came-into-aew-i-promised-that-the-landscape-is-about-to-change-why-because-i-am-here": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T00:24:31.447Z"
+  "at": "2026-11-16T00:27:14.324Z"
+ },
+ "https://www.wrestlinginc.com/2316787/tna-destination-x-november-15-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-16T00:23:59.848Z"
  },
  "https://www.ringsidenews.com/paige-collett-wants-obi-wan-kenobi-inside-her-says-force-choked-would-complete-her-life": {
   "reason": "المراجعة رفضته: همزات ساقطة في 3 مواضع — النص يحتاج إعادة ترجمة",
@@ -1998,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-06T20:32:02.420Z"
- },
- "https://www.fightful.com/wrestling/gcw-set-to-debut-in-mississippi-tna-impact-highlights-more-fight-size": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kofi Kingston",
-  "retry": true,
-  "at": "2026-11-06T19:56:37.845Z"
  }
 }
