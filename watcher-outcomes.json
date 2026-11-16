@@ -1,73 +1,73 @@
 {
- "https://www.ringsidenews.com/dlo-brown-nearly-broke-ahmed-johnsons-arm-during-wwe-backstage-fight": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-16T13:29:59.250Z"
- },
  "https://www.fightful.com/wrestling/nia-jax-names-a-tv-cage-match-and-a-big-hoss-match-as-her-bucket-list-items-in-wrestling": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
+  "reason": "المراجعة رفضته: صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
   "retry": true,
-  "at": "2026-11-16T13:23:23.723Z"
+  "at": "2026-11-16T13:33:19.050Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-16": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T13:23:04.449Z"
+  "at": "2026-11-16T13:33:02.333Z"
  },
  "https://www.fightful.com/wrestling/tjp-returns-to-tna-during-ultimate-x-match-at-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T13:23:03.907Z"
+  "at": "2026-11-16T13:33:01.785Z"
  },
  "https://www.fightful.com/wrestling/kc-navarro-wins-mens-ultimate-x-match-at-tna-destination-x-becomes-no-1-contender-to-x-division-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T13:23:03.717Z"
+  "at": "2026-11-16T13:33:01.595Z"
  },
  "https://www.fightful.com/wrestling/ricky-sosa-wins-2026-tna-world-x-cup-at-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T13:23:03.526Z"
+  "at": "2026-11-16T13:33:01.402Z"
  },
  "https://www.fightful.com/wrestling/tasha-steelz-wins-knockouts-ultimate-x-match-at-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T13:23:03.250Z"
+  "at": "2026-11-16T13:33:01.126Z"
  },
  "https://www.fightful.com/wrestling/tna-destination-x-results-11-15-two-ultimate-x-matches": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T13:23:03.059Z"
+  "at": "2026-11-16T13:33:00.936Z"
  },
  "https://www.fightful.com/wrestling/mjf-somebody-tell-that-lady-to-watch-where-shes-going": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T13:23:02.696Z"
+  "at": "2026-11-16T13:33:00.578Z"
  },
  "https://www.fightful.com/wrestling/countdown-to-tna-destination-x-2026-live-and-free-at-5pm-et-on-november-15th": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T13:23:02.504Z"
+  "at": "2026-11-16T13:33:00.387Z"
  },
  "https://www.fightful.com/wrestling/indi-hartwell-says-she-cant-make-it-to-tna-destination-x-to-defend-her-knockouts-world-championship": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T13:23:02.208Z"
+  "at": "2026-11-16T13:33:00.093Z"
  },
  "https://www.fightful.com/wrestling/ken-anderson-confirms-he-has-signed-a-wwe-legends-deal": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T13:23:01.665Z"
+  "at": "2026-11-16T13:32:59.550Z"
  },
  "https://www.fightful.com/wrestling/aew-posts-toni-storm-teaser-with-play-me-written-on-package": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T13:23:01.374Z"
+  "at": "2026-11-16T13:32:59.258Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-when-i-came-into-aew-i-promised-that-the-landscape-is-about-to-change-why-because-i-am-here": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T13:23:00.907Z"
+  "at": "2026-11-16T13:32:58.797Z"
+ },
+ "https://www.ringsidenews.com/dlo-brown-nearly-broke-ahmed-johnsons-arm-during-wwe-backstage-fight": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-16T13:29:59.250Z"
  },
  "https://www.ringsidenews.com/mr-kennedy-wants-wrestle-cm-punk-signing-wwe-legends-deal": {
   "reason": "المراجعة رفضته: العنوان فيه «عقد الأساطير» والنص مفيهوش الاسم ده خالص — يا تكتب في النص اللي حصل معاه زي المصدر، يا تشيل الاسم من العنوان، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Legends contract",
