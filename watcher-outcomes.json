@@ -34,11 +34,6 @@
   "retry": true,
   "at": "2026-11-16T20:45:46.518Z"
  },
- "https://www.wrestlinginc.com/2317718/wwe-raw-faa-grounding-order-may-be-affected": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Intercontinental Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Raquel Rodriguez",
-  "retry": true,
-  "at": "2026-11-16T20:40:53.304Z"
- },
  "https://www.ringsidenews.com/spoiler-opening-segment-revealed-november-16-wwe-raw": {
   "reason": "المراجعة رفضته: العنوان بيقول «العضو الجديد» من غير اسمه — اكتب اسم المصارع («ري ميستيريو يقدم ري فينيكس عضوا جديدا في فريق المكسيك»)",
   "retry": true,
