@@ -1,6 +1,8 @@
 {
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
+    {"wrong":"بسبب أسباب","right":"لأسباب","note":"«بسبب أسباب مرضية» تكرار — الصح «لأسباب مرضية» (خبر ستيفاني فاكير، INCIDENTS #1368)"},
+    {"wrong":"ادعى تعرض","right":"ادعى أنه تعرض","note":"«الإصابات التي ادعى تعرض لها» ناقصة — الصح «ادعى أنه تعرض» (خبر لودفيغ كايزر، INCIDENTS #1368)"},
     {"wrong":"غريغ غاريسون","right":"جريف جاريسون","note":"Griff Garrison اتكتب «غريغ غاريسون» في خبر كول كارتر — الصح «جريف جاريسون» زي القاموس (INCIDENTS #1367)"},
     {"wrong":"غريف غاريسون","right":"جريف جاريسون","note":"Griff Garrison — الصح «جريف جاريسون» زي القاموس (INCIDENTS #1367)"},
     {"wrong":"فرق الفرق","right":"الفرق","note":"«عددا كبيرا من فرق الفرق» تكرار مالوش معنى — الصح «من الفرق» (INCIDENTS #1367)"},

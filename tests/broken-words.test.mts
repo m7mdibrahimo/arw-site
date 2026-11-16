@@ -1128,3 +1128,9 @@ test('INCIDENTS #1359: «تقاطعتا» is blocked and «يتواها/يتوا
   assert.match(applyCorrections('دون أن يتواها بشكل كامل'), /يتواجهوا/);
   assert.match(fixSubjunctiveDuals('دون أن يتواجها داخل الحلبة'), /يتواجهوا/);
 });
+
+test('corrections fix «بسبب أسباب» and «ادعى تعرض» (INCIDENTS #1368)', () => {
+  assert.equal(applyCorrections('لعدم حصولها على التصريح بسبب أسباب مرضية'), 'لعدم حصولها على التصريح لأسباب مرضية');
+  assert.equal(applyCorrections('الإصابات التي ادعى تعرض لها'), 'الإصابات التي ادعى أنه تعرض لها');
+  assert.equal(applyCorrections('ادعى تعرضه لارتجاج'), 'ادعى تعرضه لارتجاج');
+});
