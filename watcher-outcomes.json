@@ -2,32 +2,32 @@
  "https://www.fightful.com/wrestling/details-on-tna-wrestling-radio-on-iheartradio": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T18:47:37.978Z"
+  "at": "2026-11-16T18:54:16.932Z"
  },
  "https://www.fightful.com/wrestling/cmll-sabado-de-coliseo-results-11-14-2026-templario-esfinge-vs-guerreros-laguneros-dragones-vs-herederos-more": {
-  "reason": "المراجعة رفضته: فائز مش موجود في نتايج المصدر (النزال لسه ما خلصش؟): المواجهة الخامسة: نزال من ثلاث جولات، في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-16T18:47:37.101Z"
+  "at": "2026-11-16T18:54:15.884Z"
  },
  "https://www.fightful.com/wrestling/ken-anderson-would-like-to-wrestle-cm-punk-as-part-of-his-pro-wrestling-bucket-list": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T18:46:16.469Z"
+  "at": "2026-11-16T18:52:30.297Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-holiday-live-tour-from-chicago-il-results-11-15": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T18:46:16.168Z"
+  "at": "2026-11-16T18:52:29.954Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-16": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T18:46:15.308Z"
+  "at": "2026-11-16T18:52:28.951Z"
  },
  "https://www.fightful.com/wrestling/tjp-returns-to-tna-during-ultimate-x-match-at-tna-destination-x": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-16T18:46:14.750Z"
+  "at": "2026-11-16T18:52:28.296Z"
  },
  "https://www.fightful.com/wrestling/the-sandman-to-face-dct-at-bcw-10th-anniversary": {
   "reason": "المراجعة رفضته: اسم عربي ملزوق فيه 's الإنجليزية («جوش بارنيت's») — اكتب الاسم كله بالإنجليزي («Josh Barnett's») أو أعد الصياغة",
