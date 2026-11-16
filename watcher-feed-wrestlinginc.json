@@ -1,15 +1,5 @@
 [
   {
-    "id": 2282508122,
-    "link": "https://www.wrestlinginc.com/2314949/wwe-good-brothers-passing-death-aew-pac-neville-gallows-anderson/",
-    "date": "Mon, 16 Nov 2026 04:59:00 +0000",
-    "date_gmt": "2026-11-16T04:59:00.000Z",
-    "title": {
-      "rendered": "Former WWE Stars The Good Brothers Comment On Passing Of AEW's Pac"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/former-wwe-stars-the-good-brothers-comment-on-passing-of-aews-pac/l-intro-1794501903.jpg"
-  },
-  {
     "id": 914629329,
     "link": "https://www.wrestlinginc.com/2317273/tna-destination-x-2026-3-things-hated-loved-opinion-review/",
     "date": "Mon, 16 Nov 2026 04:16:52 +0000",
@@ -198,5 +188,15 @@
       "rendered": "The Miz Is Aiming To Win WWE's John Cena Classic"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/the-miz-is-aiming-to-win-wwes-john-cena-classic/l-intro-1794520987.jpg"
+  },
+  {
+    "id": 1219772689,
+    "link": "https://www.wrestlinginc.com/2315550/wwe-rey-mysterio-eddie-guerrero-dragon-lee-friendship-reminds/",
+    "date": "Sun, 15 Nov 2026 13:30:00 +0000",
+    "date_gmt": "2026-11-15T13:30:00.000Z",
+    "title": {
+      "rendered": "Rey Mysterio's Friendship With Current WWE Star Reminds Him Of Eddie Guerrero"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/rey-mysterios-friendship-with-current-wwe-star-reminds-him-of-eddie-guerrero/l-intro-1794531109.jpg"
   }
 ]
