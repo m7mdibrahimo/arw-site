@@ -5304,7 +5304,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال فيرنس اسبكتكيولار 13.11.2026 مترجم",
-    "lastAttempt": 1794800495517,
+    "lastAttempt": 1794801297859,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5322,9 +5322,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ام ال دبليو فيوجن 14.11.2026 مترجم",
-    "lastAttempt": 1794800504281,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1794801298666,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -5336,9 +5340,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ايه ايه ايه 14.11.2026 مترجم",
-    "lastAttempt": 1794797144645,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1794801328124,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
