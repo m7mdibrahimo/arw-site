@@ -15,54 +15,59 @@
   "at": "2026-11-17T14:27:22.103Z"
  },
  "https://www.fightful.com/wrestling/fallon-henley-says-she-feels-like-she-made-it-when-she-sees-the-bella-twins-in-the-wwe-locker-room": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-17T14:36:03.192Z"
- },
- "https://www.fightful.com/wrestling/fallon-henley-says-she-feels-like-she-made-it-when-she-sees-the-bella-twins-in-the-wwe-locker-room": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-17T14:34:38.018Z"
+  "at": "2026-11-17T14:42:12.683Z"
  },
  "https://www.fightful.com/wrestling/fallon-henley-says-she-wanted-to-burst-into-tears-after-fatal-influence-captured-the-wwe-womens-tag-titles": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-17T14:32:19.739Z"
+  "at": "2026-11-17T14:41:34.742Z"
  },
  "https://www.fightful.com/wrestling/wwe-shop-selling-custom-rocky-maivia-ic-title-to-celebrate-30-years-of-the-rock": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T14:30:37.469Z"
+  "at": "2026-11-17T14:40:46.808Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-11-17": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-17T14:39:08.757Z"
+ },
+ "https://www.fightful.com/wrestling/cmll-x-njpw-lucha-kingdom-results-11-16-2026-mistico-ultimo-guerrero-def-yota-tsuji-hirooki-goto-zack-sabre-jr-vs-hechicero-syuri-more": {
+  "reason": "المراجعة رفضته: آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Capitán Suicida، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
+  "retry": true,
+  "at": "2026-11-17T14:39:08.107Z"
+ },
+ "https://www.fightful.com/wrestling/339522-iyo-sky-womens-ic-title": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-17T14:38:17.374Z"
+ },
+ "https://www.fightful.com/wrestling/339502-liv-morgan-john-cena-classic": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-17T14:38:17.086Z"
+ },
+ "https://www.fightful.com/wrestling/new-hearing-in-keanu-carver-case-set-for-february-2027": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-17T14:38:16.643Z"
+ },
+ "https://www.ringsidenews.com/paige-collett-claims-er-doctors-thought-she-seeking-drugs-wrestling-heart-scare": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-17T14:31:27.823Z"
  },
  "https://www.fightful.com/wrestling/charlotte-flair-when-its-tatum-paxleys-time-i-really-think-the-sky-is-the-limit-for-her": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Jade Cargill",
   "retry": true,
   "at": "2026-11-17T14:30:37.236Z"
  },
- "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-11-17": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-17T14:30:02.054Z"
- },
- "https://www.fightful.com/wrestling/cmll-x-njpw-lucha-kingdom-results-11-16-2026-mistico-ultimo-guerrero-def-yota-tsuji-hirooki-goto-zack-sabre-jr-vs-hechicero-syuri-more": {
+ "https://www.ringsidenews.com/paige-collett-claims-er-doctors-thought-she-was-seeking-drugs-after-wrestling-heart-scare": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-17T14:30:01.048Z"
- },
- "https://www.fightful.com/wrestling/339522-iyo-sky-womens-ic-title": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-17T14:28:55.371Z"
- },
- "https://www.fightful.com/wrestling/339502-liv-morgan-john-cena-classic": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-17T14:28:54.942Z"
- },
- "https://www.fightful.com/wrestling/new-hearing-in-keanu-carver-case-set-for-february-2027": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-17T14:28:54.289Z"
+  "at": "2026-11-17T14:27:22.103Z"
  },
  "https://www.fightful.com/wrestling/cole-karter-fired-by-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
