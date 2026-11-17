@@ -22512,16 +22512,16 @@
     "renderedAt": 1794893393736
   },
   {
-    "videoUrl": "/videos/reel-20261117135811-wwe-raw-16-11-2026.mp4",
-    "filename": "reel-20261117135811-wwe-raw-16-11-2026.mp4",
-    "title": "عرض الرو 16.11.2026 مترجم",
-    "secondaryTitle": "WWE RAW 16.11.2026",
-    "description": "عرض الرو مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261117135811-wwe-raw-16-11-2026",
+    "videoUrl": "/videos/reel-20261117141636-ufc-334-gane-vs-hokit.mp4",
+    "filename": "reel-20261117141636-ufc-334-gane-vs-hokit.mp4",
+    "title": "عرض يو اف سي 334 مترجم",
+    "secondaryTitle": "UFC 334: Gane vs. Hokit",
+    "description": "عرض يو اف سي 334 مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261117141636-ufc-334-gane-vs-hokit",
     "kind": "show",
-    "slug": "20261117135811-wwe-raw-16-11-2026",
-    "image": "/content/images/cwi2e1692n9xk6d9.jpg",
-    "renderedAt": 1794916959892
+    "slug": "20261117141636-ufc-334-gane-vs-hokit",
+    "image": "/content/images/9nwlagqhewkusqhc.jpg",
+    "renderedAt": 1794918352504
   },
   {
     "videoUrl": "/videos/reel-20260927094300-ufc-fight-night-289-rosas-jr-v.mp4",
@@ -22533,7 +22533,7 @@
     "kind": "show",
     "slug": "20260927094300-ufc-fight-night-289-rosas-jr-v",
     "image": "/content/images/tp327u5m38fcpjtd.jpg",
-    "renderedAt": 1794917035580
+    "renderedAt": 1794918432523
   },
   {
     "videoUrl": "/videos/reel-20260927104500-aew-all-out-2026.mp4",
@@ -22545,7 +22545,7 @@
     "kind": "show",
     "slug": "20260927104500-aew-all-out-2026",
     "image": "/content/images/4stbd0j9f6nrxzaa.jpg",
-    "renderedAt": 1794917112444
+    "renderedAt": 1794918514061
   },
   {
     "videoUrl": "/videos/reel-20260930132546-wwe-nxt-29-09-2026.mp4",
@@ -22557,7 +22557,7 @@
     "kind": "show",
     "slug": "20260930132546-wwe-nxt-29-09-2026",
     "image": "/content/images/qultpltsjy7kplny.jpg",
-    "renderedAt": 1794917185861
+    "renderedAt": 1794918592461
   },
   {
     "videoUrl": "/videos/reel-20261011140515-cmll-martes-de-glamour-06-10-2.mp4",
@@ -22569,7 +22569,7 @@
     "kind": "show",
     "slug": "20261011140515-cmll-martes-de-glamour-06-10-2",
     "image": "/content/images/7b3n3rwq4uytui4l.jpg",
-    "renderedAt": 1794917264097
+    "renderedAt": 1794918669744
   },
   {
     "videoUrl": "/videos/reel-20261015174619-aew-collision-14-10-2026.mp4",
@@ -22581,7 +22581,7 @@
     "kind": "show",
     "slug": "20261015174619-aew-collision-14-10-2026",
     "image": "/content/images/vsd1is5p8q46tzs8.jpg",
-    "renderedAt": 1794917343617
+    "renderedAt": 1794918747825
   },
   {
     "videoUrl": "/videos/reel-20261015174830-wwe-evolve-14-10-2026.mp4",
@@ -22593,7 +22593,7 @@
     "kind": "show",
     "slug": "20261015174830-wwe-evolve-14-10-2026",
     "image": "/content/images/v1z9la4e2rwkfcj5.jpg",
-    "renderedAt": 1794917422454
+    "renderedAt": 1794918825447
   },
   {
     "videoUrl": "/videos/reel-20261025192644-aew-collision-24-10-2026.mp4",
@@ -22605,7 +22605,7 @@
     "kind": "show",
     "slug": "20261025192644-aew-collision-24-10-2026",
     "image": "/content/images/ze3qsghgvpiznp01.jpg",
-    "renderedAt": 1794917500680
+    "renderedAt": 1794918905462
   },
   {
     "videoUrl": "/videos/reel-20261025193204-ufc-333-volkanovski-vs-evloev-.mp4",
@@ -22617,7 +22617,7 @@
     "kind": "show",
     "slug": "20261025193204-ufc-333-volkanovski-vs-evloev-",
     "image": "/content/images/2y74srnfllu824qu.jpg",
-    "renderedAt": 1794917577957
+    "renderedAt": 1794918985456
   },
   {
     "videoUrl": "/videos/reel-20261025194555-mlw-fusion-24-10-2026.mp4",
@@ -22629,7 +22629,7 @@
     "kind": "show",
     "slug": "20261025194555-mlw-fusion-24-10-2026",
     "image": "/content/images/l5p0u8bnbxsa1p6q.jpg",
-    "renderedAt": 1794917656022
+    "renderedAt": 1794919067206
   },
   {
     "videoUrl": "/videos/reel-20261028212556-tna-xplosion-23-10-2026.mp4",
@@ -22641,7 +22641,7 @@
     "kind": "show",
     "slug": "20261028212556-tna-xplosion-23-10-2026",
     "image": "/content/images/x4hviwmdavtrdohq.jpg",
-    "renderedAt": 1794917732222
+    "renderedAt": 1794919147112
   },
   {
     "videoUrl": "/videos/reel-20261029093918-mlp-special-josh-alexander-vs-.mp4",
@@ -22653,7 +22653,19 @@
     "kind": "show",
     "slug": "20261029093918-mlp-special-josh-alexander-vs-",
     "image": "/content/images/b7fon3mbts63adde.jpg",
-    "renderedAt": 1794917812204
+    "renderedAt": 1794919230449
+  },
+  {
+    "videoUrl": "/videos/reel-20261101224259-cmll-martes-de-glamour-27-10-2.mp4",
+    "filename": "reel-20261101224259-cmll-martes-de-glamour-27-10-2.mp4",
+    "title": "عرض سي ام ال ال مارتيس دي غلامور 27.10.2026 مترجم",
+    "secondaryTitle": "CMLL Martes De Glamour 27.10.2026",
+    "description": "عرض سي ام ال ال مارتيس دي غلامور مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261101224259-cmll-martes-de-glamour-27-10-2",
+    "kind": "show",
+    "slug": "20261101224259-cmll-martes-de-glamour-27-10-2",
+    "image": "/content/images/ds7dqjjstppzic3m.jpg",
+    "renderedAt": 1794919310537
   },
   {
     "videoUrl": "/videos/reel-20261101224611-cmll-rey-del-inframundo-2026.mp4",
@@ -22665,7 +22677,7 @@
     "kind": "show",
     "slug": "20261101224611-cmll-rey-del-inframundo-2026",
     "image": "/content/images/6phaurkozij73zjz.jpg",
-    "renderedAt": 1794917891907
+    "renderedAt": 1794919390117
   },
   {
     "videoUrl": "/videos/reel-20261101224901-njpw-super-junior-tag-league-d.mp4",
@@ -22677,7 +22689,19 @@
     "kind": "show",
     "slug": "20261101224901-njpw-super-junior-tag-league-d",
     "image": "/content/images/old0dy3w8gbhszb9.jpg",
-    "renderedAt": 1794917971281
+    "renderedAt": 1794919467787
+  },
+  {
+    "videoUrl": "/videos/reel-20261108093956-wwe-crown-jewel-2026.mp4",
+    "filename": "reel-20261108093956-wwe-crown-jewel-2026.mp4",
+    "title": "عرض كراون جول 07.11.2026 مترجم",
+    "secondaryTitle": "WWE Crown Jewel (2026)",
+    "description": "عرض كراون جول مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261108093956-wwe-crown-jewel-2026",
+    "kind": "show",
+    "slug": "20261108093956-wwe-crown-jewel-2026",
+    "image": "/content/images/1n9f1boajnp25qxy.jpg",
+    "renderedAt": 1794919546366
   },
   {
     "videoUrl": "/videos/reel-20261114070445-wwe-smackdown-13-11-2026.mp4",
@@ -22689,6 +22713,18 @@
     "kind": "show",
     "slug": "20261114070445-wwe-smackdown-13-11-2026",
     "image": "/content/images/q82g7dhsyot1xxu2.jpg",
-    "renderedAt": 1794918052444
+    "renderedAt": 1794919625240
+  },
+  {
+    "videoUrl": "/videos/reel-20261117135811-wwe-raw-16-11-2026.mp4",
+    "filename": "reel-20261117135811-wwe-raw-16-11-2026.mp4",
+    "title": "عرض الرو 16.11.2026 مترجم",
+    "secondaryTitle": "WWE RAW 16.11.2026",
+    "description": "عرض الرو مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261117135811-wwe-raw-16-11-2026",
+    "kind": "show",
+    "slug": "20261117135811-wwe-raw-16-11-2026",
+    "image": "/content/images/cwi2e1692n9xk6d9.jpg",
+    "renderedAt": 1794919705209
   }
 ]
