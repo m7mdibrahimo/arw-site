@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2318853/wwe-aaa-damian-priest-plans-hold": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-17T17:09:20.309Z"
+ },
+ "https://www.wrestlinginc.com/2318806/wwe-wrestlepalooza-2026-cody-rhodes-john-cena-classic-explains-plans-involvement": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-17T17:07:11.273Z"
+ },
  "https://www.ringsidenews.com/kasper-brothers-next-appearance-aew-full-gear-debut": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -43,11 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-17T16:58:00.633Z"
- },
- "https://www.wrestlinginc.com/2318806/wwe-wrestlepalooza-2026-cody-rhodes-john-cena-classic-explains-plans-involvement": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-17T16:36:58.958Z"
  },
  "https://www.ringsidenews.com/linda-hogan-deletes-tiktok-account-disgusted-animal-abuse-videos": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
