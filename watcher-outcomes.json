@@ -39,6 +39,11 @@
   "retry": true,
   "at": "2026-11-17T16:11:08.680Z"
  },
+ "https://www.ringsidenews.com/elayna-black-admits-she-panicked-during-first-cruise-because-shes-terrified-ocean": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-17T16:06:08.495Z"
+ },
  "https://www.fightful.com/wrestling/339522-iyo-sky-womens-ic-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
