@@ -5362,15 +5362,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض الرو 16.11.2026 مترجم",
-    "lastAttempt": 1794923511680,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1794924418621,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -5382,7 +5378,7 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض يو اف سي 334 مترجم",
-    "lastAttempt": 1794923513115,
+    "lastAttempt": 1794924420369,
     "errors": {
       "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5414,15 +5410,12 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال سابادوس دي كوليسيو 14.11.2026 مترجم",
-    "lastAttempt": 1794923544009,
-    "errors": {
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
-    },
-    "processing": [
-      "tiktok"
-    ],
+    "lastAttempt": 1794924430350,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261117144121-gcw-massacre-in-missoula-2026": {
     "publishedAt": 1794921125862,
