@@ -1,4 +1,19 @@
 {
+ "https://www.wrestlinginc.com/2318710/biggest-winners-losers-week-november-19-2026": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-17T01:16:55.919Z"
+ },
+ "https://www.wrestlinginc.com/2317253/wwe-raw-november-16-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-17T01:15:29.671Z"
+ },
+ "https://www.wrestlinginc.com/2317718/wwe-raw-faa-grounding-order-may-be-affected": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Intercontinental Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Raquel Rodriguez",
+  "retry": true,
+  "at": "2026-11-17T01:15:29.490Z"
+ },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-16-2026-the-usos-vs-946-john-cena-appears-iyo-sky-vs-raquel-rodriguez-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -43,16 +58,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-17T01:05:53.641Z"
- },
- "https://www.wrestlinginc.com/2318710/biggest-winners-losers-week-november-19-2026": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
-  "retry": true,
-  "at": "2026-11-17T00:56:40.371Z"
- },
- "https://www.wrestlinginc.com/2317718/wwe-raw-faa-grounding-order-may-be-affected": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Raquel Rodriguez",
-  "retry": true,
-  "at": "2026-11-17T00:55:34.559Z"
  },
  "https://www.ringsidenews.com/cj-perry-reveals-full-name-baby-boy-rusev": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
