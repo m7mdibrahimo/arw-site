@@ -5364,9 +5364,9 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض الرو 16.11.2026 مترجم",
-    "lastAttempt": 1794919309020,
+    "lastAttempt": 1794920151929,
     "errors": {
-      "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا.",
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
@@ -5376,5 +5376,22 @@
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
+  },
+  "20261117141636-ufc-334-gane-vs-hokit": {
+    "publishedAt": 1794920177445,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض يو اف سي 334 مترجم",
+    "lastAttempt": 1794920223378,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
