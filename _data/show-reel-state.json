@@ -5429,7 +5429,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261117144440-gcw-bedlam-in-boise-2026": {
     "publishedAt": 1794921164369,
