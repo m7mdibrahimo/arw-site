@@ -5364,9 +5364,9 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض الرو 16.11.2026 مترجم",
-    "lastAttempt": 1794921838374,
+    "lastAttempt": 1794922713331,
     "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
     },
     "processing": [
       "instagram_story"
@@ -5382,7 +5382,7 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض يو اف سي 334 مترجم",
-    "lastAttempt": 1794921839587,
+    "lastAttempt": 1794922715215,
     "errors": {
       "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5400,15 +5400,12 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ان دبليو ايه باور 14.11.2026 مترجم",
-    "lastAttempt": 1794921871741,
-    "errors": {
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
-    },
-    "processing": [
-      "tiktok"
-    ],
+    "lastAttempt": 1794922724985,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261117143655-cmll-sabados-de-coliseo-14-11-2026": {
     "publishedAt": 1794921085595,
