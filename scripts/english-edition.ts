@@ -659,13 +659,20 @@ export function restoreTitleTheNames(title: string, body: string): string {
 /** A word said twice in a row by the writer («With With His Own Money», «Kevin Kevin Owens») is collapsed to one (INCIDENTS #590).
  *  Quotes (a «> » line or text inside quotation marks) are the speaker's own words and stay; ring names that ARE a double stay. */
 const LEGIT_EN_DOUBLES = new Set(["cha", "shay", "bang", "kelly", "boom", "pago", "bye", "ha", "blah", "no", "so", "very", "had", "that", "can", "hee", "ho", "la", "na", "ra", "ya", "yeah", "wow", "oh"]);
-const REPEATED_EN_WORD = /\b([A-Za-z][A-Za-z']+)(\s+)\1\b/gi;
+// «fans at AT&T Stadium» is not «at at»: a word followed by «&» or «-» is part of a longer name, and a lowercase word
+// before the same letters in capitals («at AT», «us US») is two different words (INCIDENTS #1380).
+const REPEATED_EN_WORD = /\b([A-Za-z][A-Za-z']+)(\s+)\1\b(?![&-]\w)/gi;
+const isRealDouble = (m: string, w: string): boolean => {
+  const second = m.slice(m.search(/\s/)).trim();
+  if (second.length > 1 && second === second.toUpperCase() && w !== w.toUpperCase()) return false;
+  return !LEGIT_EN_DOUBLES.has(w.toLowerCase());
+};
 const SKIP_LINE = /^\s*(?:>|<|\{%)/;
 const QUOTED = /((?:“[^”]*”)|(?:"[^"\n]*"))/;
 export function collapseRepeatedEnglishWords(text: string): string {
   return String(text).split("\n").map((line) => {
     if (SKIP_LINE.test(line)) return line;
-    return line.split(QUOTED).map((part, k) => (k % 2 ? part : part.replace(REPEATED_EN_WORD, (m, w: string) => (LEGIT_EN_DOUBLES.has(w.toLowerCase()) ? m : w)))).join("");
+    return line.split(QUOTED).map((part, k) => (k % 2 ? part : part.replace(REPEATED_EN_WORD, (m, w: string) => (isRealDouble(m, w) ? w : m)))).join("");
   }).join("\n");
 }
 /** The repeated words still in an English story (empty = fine) */
@@ -673,7 +680,7 @@ export function repeatedEnglishWords(text: string): string[] {
   const left: string[] = [];
   for (const line of String(text).split("\n")) {
     if (SKIP_LINE.test(line)) continue;
-    line.split(QUOTED).forEach((part, k) => { if (k % 2) return; for (const m of part.matchAll(REPEATED_EN_WORD)) if (!LEGIT_EN_DOUBLES.has(m[1].toLowerCase())) left.push(m[0]); });
+    line.split(QUOTED).forEach((part, k) => { if (k % 2) return; for (const m of part.matchAll(REPEATED_EN_WORD)) if (isRealDouble(m[0], m[1])) left.push(m[0]); });
   }
   return left;
 }

@@ -596,3 +596,11 @@ test("normalizeEnglishTitle keeps «All In» capital as a show name", async () =
   assert.equal(normalizeEnglishTitle("AEW May Have Already Decided on Main Event for All in 2027"), "AEW May Have Already Decided on Main Event for All In 2027");
   assert.equal(normalizeEnglishTitle("Will Ospreay Talks All In Plans"), "Will Ospreay Talks All In Plans");
 });
+
+test("a lowercase word before the same letters in a name is not a doubled word («fans at AT&T Stadium», INCIDENTS #1380)", async () => {
+  const { collapseRepeatedEnglishWords, repeatedEnglishWords } = await import("../scripts/english-edition.ts");
+  assert.equal(collapseRepeatedEnglishWords("106,000 fans at AT&T Stadium left her nervous"), "106,000 fans at AT&T Stadium left her nervous");
+  assert.equal(collapseRepeatedEnglishWords("he told us US fans matter"), "he told us US fans matter");
+  assert.deepEqual(repeatedEnglishWords("fans at AT&T Stadium"), []);
+  assert.equal(collapseRepeatedEnglishWords("He won at at the show"), "He won at the show");
+});
