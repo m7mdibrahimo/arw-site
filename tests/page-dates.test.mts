@@ -65,7 +65,7 @@ test("the page head never dates the page or its video by the air date; the air d
   for (const line of tpl.split("\n").filter((l) => /event_date|eventDate/.test(l))) {
     assert.doesNotMatch(line, /"(datePublished|dateModified|uploadDate|dateCreated)"\s*:\s*\{\{\s*\(?\s*(eventDate|event_date)/, line.slice(0, 120));
   }
-  assert.match(tpl, /"startDate": \{\{ \(eventDate or event_date\) \| jsonify \| safe \}\}/);
+  assert.match(tpl, /\{% set ldStart = \(eventDate or event_date\) \| airStart\(page\.url\) %\}"startDate": \{\{ ldStart \| jsonify \| safe \}\}/);
   assert.doesNotMatch(tpl, /page\.date\.toISOString\(\)/);
   assert.match(fs.readFileSync("pages/sitemap.njk", "utf8"), /<lastmod>\{\{ \(item\.inputPath \| pageDates\(item\.date, item\.data\)\)\.modifiedMs \| isoDay \}\}<\/lastmod>/);
 });

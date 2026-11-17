@@ -734,6 +734,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("isoDay", function(v) { const d = new Date(v); return isNaN(d) ? new Date().toISOString().slice(0, 10) : d.toISOString().slice(0, 10); });
   // The end of the show for the BroadcastEvent structured data: start + the page's own duration
   // («02:25:26»). A show with no duration keeps only its startDate. Head only (INCIDENTS #915).
+  // A bare event_date becomes the program's local air time with its offset, never midnight UTC (lib/air-start.cjs, INCIDENTS #1375).
+  eleventyConfig.addFilter("airStart", function(date, url) { return require("./lib/air-start.cjs").airStart(date, url); });
   eleventyConfig.addFilter("eventEnd", function(start, duration) {
     const d = new Date(start);
     const m = /^(\d{1,2}):(\d{2})(?::(\d{2}))?$/.exec(String(duration || "").trim());

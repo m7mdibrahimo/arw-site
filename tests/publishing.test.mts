@@ -4696,7 +4696,7 @@ test("the BroadcastEvent of a show episode carries the episode's name forms (rou
   const i = layout.indexOf('"@type": "BroadcastEvent"');
   assert.ok(i >= 0, "a BroadcastEvent is emitted for a show's episode");
   const pub = layout.slice(i, i + 900);
-  assert.match(pub, /"startDate": \{\{ \(eventDate or event_date\) \| jsonify \| safe \}\}/);
+  assert.match(pub, /\{% set ldStart = \(eventDate or event_date\) \| airStart\(page\.url\) %\}"startDate": \{\{ ldStart \| jsonify \| safe \}\}/);
   assert.match(pub, /"alternateName": \[\{% for a in ldNames %\}/);
 });
 
