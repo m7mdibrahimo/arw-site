@@ -1759,3 +1759,8 @@ test("«مسارحهن» → «مسيراتهن» and «1 كولد ماندرز�
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /مسارحهن|1 كولد ماندرز/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+test("INCIDENTS #1377: «التكساس ديث» → «Texas Death»", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("انتقادات حادة لنزال التكساس ديث في العرض"), "انتقادات حادة لنزال Texas Death في العرض");
+});

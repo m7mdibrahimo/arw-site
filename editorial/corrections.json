@@ -10620,6 +10620,16 @@
       "note": "«المصاربين» خطأ كتابة لـ «المصارعين» (INCIDENTS #1071)"
     },
     {
+      "wrong": "التكساس ديث",
+      "right": "Texas Death",
+      "note": "«ال» ملزوقة في اسم النزال الإنجليزي — خبر كورديراس، INCIDENTS #1377"
+    },
+    {
+      "wrong": "التكساس للموت",
+      "right": "Texas Death",
+      "note": "INCIDENTS #1377"
+    },
+    {
       "wrong": "تكساس للموت",
       "right": "Texas Death",
       "note": "اسم نوع النزال بالإنجليزي كما في دليل الأسلوب (INCIDENTS #1073)"
@@ -12834,6 +12844,7 @@
     {"wrong": "مجموعة الذهب", "right": "المجموعة الذهبية", "note": "Gold League = «المجموعة الذهبية» مش «مجموعة الذهب» (خبر Continental Classic، INCIDENTS #1373)"},
     {"wrong": "مجموعة الأزرق", "right": "المجموعة الزرقاء", "note": "Blue League = «المجموعة الزرقاء» مش «مجموعة الأزرق» (INCIDENTS #1373)"},
     {"wrong": "مسارحهن", "right": "مسيراتهن", "note": "careers = «مسيراتهن» مش «مسارحهن» (مسارح = خشبات المسرح) — خبر مرسيدس موني، INCIDENTS #1374"},
-    {"wrong": "مسارحهم", "right": "مسيراتهم", "note": "careers = «مسيراتهم» مش «مسارحهم» — INCIDENTS #1374"}
+    {"wrong": "مسارحهم", "right": "مسيراتهم", "note": "careers = «مسيراتهم» مش «مسارحهم» — INCIDENTS #1374"},
+    {"wrong": "شبكة CW Network", "right": "شبكة CW", "note": "«شبكة» + «Network» = تكرار — معاينة NXT، INCIDENTS #1377"}
   ]
 }

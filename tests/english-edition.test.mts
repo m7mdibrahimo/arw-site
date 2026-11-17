@@ -590,3 +590,9 @@ test('a sentence cut in two by a blockquote is caught (INCIDENTS #1373)', () => 
   const fine = { ...good, body: good.body + `\n\nMontana told Hayes to focus:\n\n> "We need this."\n\nThey won.` };
   assert.ok(!checkEnglish(fine, input).includes('sentence split by a blockquote'));
 });
+
+test("normalizeEnglishTitle keeps «All In» capital as a show name", async () => {
+  const { normalizeEnglishTitle } = await import("../scripts/english-edition.ts");
+  assert.equal(normalizeEnglishTitle("AEW May Have Already Decided on Main Event for All in 2027"), "AEW May Have Already Decided on Main Event for All In 2027");
+  assert.equal(normalizeEnglishTitle("Will Ospreay Talks All In Plans"), "Will Ospreay Talks All In Plans");
+});

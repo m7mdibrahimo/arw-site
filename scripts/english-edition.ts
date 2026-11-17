@@ -626,6 +626,8 @@ export function normalizeEnglishTitle(title: string): string {
     if (bare === lower && /^[a-z]+$/.test(bare) && ALWAYS_CAPITAL.has(lower)) return w.replace(bare, lower[0].toUpperCase() + lower.slice(1));
     return w;
   }).join(" ").replace(THE_NAMES, "The $1")
+    // «in» is part of the show's name: «Main Event for All in 2027» → «All In 2027» (INCIDENTS #1377)
+    .replace(/\bAll in\b/g, "All In")
     // a small word inside a hyphenated compound stays lowercase: «2-Out-Of-3 Falls» → «2-Out-of-3 Falls» (INCIDENTS #622)
     .replace(/(?<=[A-Za-z0-9])-(Of|To|In|On|At|By|For|And|Or|The|As)(?=-[A-Za-z0-9])/g, (_m, w: string) => "-" + w.toLowerCase());
 }

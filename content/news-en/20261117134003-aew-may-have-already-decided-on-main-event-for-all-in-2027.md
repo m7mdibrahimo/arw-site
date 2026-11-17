@@ -1,5 +1,5 @@
 ---
-title: "AEW May Have Already Decided on Main Event for All in 2027"
+title: "AEW May Have Already Decided on Main Event for All In 2027"
 slug: "aew-may-have-already-decided-on-main-event-for-all-in-2027"
 description: "Will Ospreay’s position at the top of AEW is reportedly shaping major plans for the future."
 federation: AEW
