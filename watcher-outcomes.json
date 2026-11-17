@@ -1988,10 +1988,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-09T03:43:18.460Z"
- },
- "https://www.ringsidenews.com/muhammad-hassan-makes-wrestling-return-eight-years-lays-out-krule": {
-  "reason": "المراجعة رفضته: مدة زمنية في المتن غير مطابقة للمصدر: منذ عام",
-  "retry": true,
-  "at": "2026-11-09T02:26:46.693Z"
  }
 }
