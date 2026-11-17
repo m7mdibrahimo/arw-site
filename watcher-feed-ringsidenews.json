@@ -1,5 +1,15 @@
 [
   {
+    "id": 802268988,
+    "link": "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-16-2026/",
+    "date": "Tue, 17 Nov 2026 00:31:00 +0000",
+    "date_gmt": "2026-11-17T00:31:00.000Z",
+    "title": {
+      "rendered": "WWE RAW Results, Highlights and Key Moments for November 16, 2026"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/wwe-raw-preview-for-november-16-2026-confirmed-matches-start-time-and-how-to-watch-51.jpg?x54779"
+  },
+  {
     "id": 802269241,
     "link": "https://www.ringsidenews.com/spoiler-major-wwe-return-planned-november-16-raw/",
     "date": "Tue, 17 Nov 2026 00:28:27 +0000",
@@ -138,15 +148,5 @@
       "rendered": "Spoiler: Unadvertised Match Revealed for November 16 WWE RAW"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2024/02/WWE-RAW-Spoiler-Lineup.jpg?x54779"
-  },
-  {
-    "id": 802269140,
-    "link": "https://www.ringsidenews.com/spoiler-closing-match-revealed-november-16-wwe-raw/",
-    "date": "Mon, 16 Nov 2026 19:54:56 +0000",
-    "date_gmt": "2026-11-16T19:54:56.000Z",
-    "title": {
-      "rendered": "Spoiler: Closing Match Revealed for November 16 WWE RAW"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/06/spoiler-closing-match-for-june-8-wwe-raw-revealed-43.jpg?x54779"
   }
 ]
