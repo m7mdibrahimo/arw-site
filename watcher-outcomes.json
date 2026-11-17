@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/paige-collett-claims-er-doctors-thought-she-was-seeking-drugs-after-wrestling-heart-scare": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-17T14:27:22.103Z"
+ },
  "https://www.fightful.com/wrestling/fallon-henley-says-she-feels-like-she-made-it-when-she-sees-the-bella-twins-in-the-wwe-locker-room": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
   "retry": true,
   "at": "2026-11-08T14:38:42.064Z"
- },
- "https://www.fightful.com/wrestling/tna-contract-of-rich-swann-set-to-expire-at-end-of-the-year": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-08T14:22:30.536Z"
  }
 }
