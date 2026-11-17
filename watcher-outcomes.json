@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/multiple-wwe-stars-took-jet-raw-travel-nightmare": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-17T01:42:48.682Z"
+ },
+ "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-16-2026": {
+  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: نزال فردي — اكتب الفائز زي المصدر وبالماضي",
+  "retry": true,
+  "at": "2026-11-17T01:35:41.113Z"
+ },
  "https://www.fightful.com/wrestling/taiji-ishimori-titan-capture-strong-openweight-tag-team-titles-at-cmll-x-njpw-lucha-kingdom": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى («يفوزان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
@@ -1988,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-08T03:08:27.410Z"
- },
- "https://www.fightful.com/wrestling/watch-countdown-to-wwe-crown-jewel-nov-7-2026": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-08T02:04:46.912Z"
  }
 }
