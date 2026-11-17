@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/946-secures-mens-wargames-advantage-chaotic-wwe-raw-main-event": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-17T03:37:06.132Z"
+ },
  "https://www.fightful.com/wrestling/339522-iyo-sky-womens-ic-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-08T03:43:43.820Z"
- },
- "https://www.fightful.com/wrestling/will-ospreay-kyle-fletcher-face-to-face-two-matches-added-to-11-11-aew-dynamite-collision": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-08T03:37:54.310Z"
  }
 }
