@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/paige-collett-claims-er-doctors-thought-she-seeking-drugs-wrestling-heart-scare": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-17T14:31:27.823Z"
+ },
  "https://www.ringsidenews.com/paige-collett-claims-er-doctors-thought-she-was-seeking-drugs-after-wrestling-heart-scare": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-08T14:50:31.336Z"
- },
- "https://www.fightful.com/wrestling/cmll-viernes-espectacular-results-11-6-2026-bandido-titan-neon-vs-soberano-jr-averno-barbaro-cavernario-more": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
-  "retry": true,
-  "at": "2026-11-08T14:38:42.064Z"
  }
 }
