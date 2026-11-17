@@ -240,6 +240,35 @@ export function demoteUnplayedMainEvent(body: string, sourceTitle: string, sourc
   return out;
 }
 
+/**
+ * «الحدث الرئيسي» given to a match that was not the show's last: WWE Raw 16 Nov put 946 vs. The Usos (the last
+ * result on Fightful) first and called Iyo Sky's title win the main event, title «فوز آيو سكاي في الحدث الرئيسي»
+ * (INCIDENTS #1376). The source's last result line (or the last one it calls «main event») names the headliner's
+ * winner: when none of its glossary names is in the report's «الحدث الرئيسي» block but one is in another match
+ * block, the report is out of order. Returns the English winner, or null.
+ */
+export function mainEventNotLastResult(body: string, sourceText: string, glossary: Record<string, string>): string | null {
+  if (!body || !body.includes("الحدث الرئيسي")) return null;
+  const isResult = (l: string) => /\bdef\.|\bdefeat(?:s|ed)\b/i.test(l) && !/\b(?:dark match|pre-?show|post-?show|kickoff|after the show|before the show)\b/i.test(l);
+  const lines = String(sourceText || "").split(/\n+/).filter(isResult);
+  if (!lines.length) return null;
+  const labelled = lines.filter(l => /main[\s-]*event/i.test(l));
+  const line = (labelled.length ? labelled : lines).pop()!;
+  const winnerSide = line.replace(/^.*?main[\s-]*event\s*[:\-–]?\s*/i, "").split(/\s+(?:def\.|defeat(?:s|ed)\b)/i)[0]
+    .replace(/\((?:w\/|with)[^)]*\)/gi, " ").replace(/\((?:c|cc)\)/gi, " ");
+  const byLower = new Map(Object.entries(glossary).map(([en, ar]) => [en.toLowerCase(), String(ar)]));
+  const names = winnerSide.split(/[()&,]|\s+and\s+/i).map(x => x.trim()).filter(Boolean)
+    .map(en => [en, byLower.get(en.toLowerCase())] as const).filter((x): x is readonly [string, string] => !!x[1] && x[1].length >= 4);
+  if (!names.length) return null;
+  const blocks = body.split(/\n(?=\s*\*\*(?:المواجهة|النزال|المباراة|الحدث الرئيسي)[^\n]*\*\*)/);
+  const main = blocks.filter(b => /^\s*\*\*الحدث الرئيسي/.test(b));
+  const others = blocks.filter(b => /^\s*\*\*(?:المواجهة|النزال|المباراة)/.test(b));
+  if (main.length !== 1 || !others.length) return null;
+  const has = (b: string) => names.some(([, ar]) => b.includes(ar));
+  if (has(main[0]) || !others.some(has)) return null;
+  return names[0][0];
+}
+
 export function applyCorrections(text: string, corrections = loadCorrections()): string {
   if (!text) return text;
   let out = fixHangmanPage(fixEraCalledShow(fixMidCardMainEvent(fixDrawTrophy(fixSubjunctiveDuals(fixCountDuals(fixTimeDuals(fixNumberGender(decodeHtmlEntities(text)))))))));

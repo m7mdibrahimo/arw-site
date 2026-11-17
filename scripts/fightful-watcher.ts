@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, liveEventInResults, fixTitleSubjectGender, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, mainWrestlerMissing, fixNearGlossaryNames, fixSwappedSurnames, threeWayAsCount, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixElijahAsIlya, fixEventCalledMovie, fixDivasChampion, demoteUnplayedMainEvent, tweetDateAsShowDate, titleChangeWrittenAsDefense, type NewsFile } from "./news-qa";
+import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, liveEventInResults, fixTitleSubjectGender, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, mainWrestlerMissing, fixNearGlossaryNames, fixSwappedSurnames, threeWayAsCount, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixElijahAsIlya, fixEventCalledMovie, fixDivasChampion, demoteUnplayedMainEvent, mainEventNotLastResult, tweetDateAsShowDate, titleChangeWrittenAsDefense, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -4808,6 +4808,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
 
   const blocking = checkArticle(draft.title, draft.body, draft.tags)
     .filter(i => BLOCKING_QA_CODES.includes(i.code));
+  // the match called «الحدث الرئيسي» is not the source's last result (WWE Raw 16 Nov, INCIDENTS #1376).
+  const lastWinner = mainEventNotLastResult(draft.body, plainText, WRESTLER_NAMES_MAP);
+  if (lastWinner) {
+    blocking.push({ code: "main_event_not_last", severity: "error", field: "body", message: `آخر نزال في المصدر (الحدث الرئيسي) فاز فيه ${lastWinner}، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه`, excerpt: lastWinner });
+    lastPostRetryable = true;
+  }
   // The same headline already published (a re-post of an old story by another site) is a duplicate whatever its age (INCIDENTS #850).
   if (!options.manual && titleAlreadyPublished(draft.title)) {
     blocking.push({ code: "same_title_published", severity: "error", field: "title", message: "نفس العنوان منشور قبل كده — الخبر مكرر", excerpt: draft.title });
