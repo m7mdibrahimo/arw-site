@@ -1,5 +1,15 @@
 [
   {
+    "id": 2171809865,
+    "link": "https://www.wrestlinginc.com/2319841/wwe-raw-viewership-ratings-report-november-9-2026/",
+    "date": "Tue, 17 Nov 2026 20:59:10 +0000",
+    "date_gmt": "2026-11-17T20:59:10.000Z",
+    "title": {
+      "rendered": "WWE Raw Viewership & Ratings Report, 11/9/2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-viewership-ratings-report-1192026/l-intro-1794949021.jpg"
+  },
+  {
     "id": 1592334310,
     "link": "https://www.wrestlinginc.com/2319702/aew-full-gear-2026-incident-mjf-kicking-fan/",
     "date": "Tue, 17 Nov 2026 19:50:21 +0000",
@@ -188,15 +198,5 @@
       "rendered": "IYO SKY Defeats Raquel Rodriguez, Wins Women's Intercontinental Title On WWE Raw"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/iyo-sky-defeats-raquel-rodriguez-wins-womens-intercontinental-title-on-wwe-raw/l-intro-1794884614.jpg"
-  },
-  {
-    "id": 4655938721,
-    "link": "https://www.wrestlinginc.com/2318745/rey-mysterio-dragon-lee-fourth-member-team-mexico-wwe-survivor-series/",
-    "date": "Tue, 17 Nov 2026 02:57:32 +0000",
-    "date_gmt": "2026-11-17T02:57:32.000Z",
-    "title": {
-      "rendered": "Rey Mysterio Invites Fourth Member To Team Mexico For WWE Survivor Series 2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/rey-mysterio-invites-fourth-member-to-team-mexico-for-wwe-survivor-series-2026/l-intro-1794884168.jpg"
   }
 ]
