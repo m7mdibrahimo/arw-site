@@ -1,38 +1,43 @@
 {
+ "https://www.fightful.com/wrestling/ryzin-details-decision-to-retire-in-2027-says-he-was-overwhelmed-by-the-reaction-to-his-initial-announcement": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-17T22:05:48.838Z"
+ },
+ "https://www.fightful.com/wrestling/alyssa-daniele-reveals-she-suffered-a-shoulder-dislocation-that-requires-surgery": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-17T22:05:48.586Z"
+ },
  "https://www.fightful.com/wrestling/wwe-raw-11-9-scores-2-4-million-global-views-on-netflix": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T22:01:35.511Z"
+  "at": "2026-11-17T22:05:48.251Z"
  },
  "https://www.fightful.com/wrestling/elayna-black-the-best-advice-cm-punk-gave-me-was-to-not-give-a-fuck": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T22:01:34.686Z"
+  "at": "2026-11-17T22:05:47.616Z"
  },
  "https://www.fightful.com/wrestling/fallon-henley-says-she-wanted-to-burst-into-tears-after-fatal-influence-captured-the-wwe-womens-tag-titles": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T22:01:33.286Z"
+  "at": "2026-11-17T22:05:46.537Z"
  },
  "https://www.fightful.com/wrestling/wwe-shop-selling-custom-rocky-maivia-ic-title-to-celebrate-30-years-of-the-rock": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T22:01:33.067Z"
+  "at": "2026-11-17T22:05:46.367Z"
  },
  "https://www.fightful.com/wrestling/charlotte-flair-when-its-tatum-paxleys-time-i-really-think-the-sky-is-the-limit-for-her": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T22:01:32.849Z"
+  "at": "2026-11-17T22:05:46.199Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-11-17": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T22:01:32.502Z"
- },
- "https://www.fightful.com/wrestling/cmll-x-njpw-lucha-kingdom-results-11-16-2026-mistico-ultimo-guerrero-def-yota-tsuji-hirooki-goto-zack-sabre-jr-vs-hechicero-syuri-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-17T21:57:54.892Z"
+  "at": "2026-11-17T22:05:45.942Z"
  },
  "https://www.ringsidenews.com/hulk-hogan-sky-daily-allegedly-living-separately-before-his-death": {
   "reason": "المراجعة رفضته: مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يعيشان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، فعل مثنى («يعيشان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
@@ -43,6 +48,11 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-17T21:59:29.785Z"
+ },
+ "https://www.fightful.com/wrestling/cmll-x-njpw-lucha-kingdom-results-11-16-2026-mistico-ultimo-guerrero-def-yota-tsuji-hirooki-goto-zack-sabre-jr-vs-hechicero-syuri-more": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-17T21:57:54.892Z"
  },
  "https://www.ringsidenews.com/zilla-fatu-match-added-november-17-wwe-nxt-lineup": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1988,15 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-08T23:40:34.098Z"
- },
- "https://www.wrestlinginc.com/2309776/wwe-aew-big-e-kofi-austin-creed-new-day-special-bond": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-08T23:03:27.948Z"
- },
- "https://www.fightful.com/wrestling/gcw-the-crossroads-results-11-7": {
-  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
-  "retry": true,
-  "at": "2026-11-08T22:41:09.301Z"
  }
 }
