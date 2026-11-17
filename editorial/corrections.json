@@ -12845,6 +12845,10 @@
     {"wrong": "مجموعة الأزرق", "right": "المجموعة الزرقاء", "note": "Blue League = «المجموعة الزرقاء» مش «مجموعة الأزرق» (INCIDENTS #1373)"},
     {"wrong": "مسارحهن", "right": "مسيراتهن", "note": "careers = «مسيراتهن» مش «مسارحهن» (مسارح = خشبات المسرح) — خبر مرسيدس موني، INCIDENTS #1374"},
     {"wrong": "مسارحهم", "right": "مسيراتهم", "note": "careers = «مسيراتهم» مش «مسارحهم» — INCIDENTS #1374"},
-    {"wrong": "شبكة CW Network", "right": "شبكة CW", "note": "«شبكة» + «Network» = تكرار — معاينة NXT، INCIDENTS #1377"}
+    {"wrong": "شبكة CW Network", "right": "شبكة CW", "note": "«شبكة» + «Network» = تكرار — معاينة NXT، INCIDENTS #1377"},
+    {"wrong": "مضكدة", "right": "مؤكدة", "note": "خطأ إملائي «مضكدة» — الصح «مؤكدة» (خبر سي جيه بيري، INCIDENTS #1378)"},
+    {"wrong": "مضكدا", "right": "مؤكدا", "note": "INCIDENTS #1378"},
+    {"wrong": "نزال طاولة", "right": "نزال طاولات", "note": "Tables Match = «نزال طاولات» (INCIDENTS #1378)"},
+    {"wrong": "النجمات الحاليين", "right": "النجمات الحاليات", "note": "صفة جمع مؤنث (INCIDENTS #1378)"}
   ]
 }

@@ -1136,3 +1136,19 @@ test('corrections fix «بسبب أسباب» and «ادعى تعرض» (INCIDEN
   assert.equal(applyCorrections('الإصابات التي ادعى تعرض لها'), 'الإصابات التي ادعى أنه تعرض لها');
   assert.equal(applyCorrections('ادعى تعرضه لارتجاج'), 'ادعى تعرضه لارتجاج');
 });
+
+// INCIDENTS #1378: «مضكدة», «نزال طاولة», «النجمات الحاليين» and a headline opening with «إخبار …».
+test('corrections fix مؤكدة, نزال طاولات, الحاليات (INCIDENTS #1378)', () => {
+  const out = applyCorrections('مضكدة أن النجمات الحاليين فزن في نزال طاولة');
+  assert.match(out, /مؤكدة/);
+  assert.match(out, /النجمات الحاليات/);
+  assert.match(out, /نزال طاولات/);
+});
+
+test('a headline opening with a passive verbal noun («إخبار X بأن…») is blocked (INCIDENTS #1378)', () => {
+  const body = 'كلام '.repeat(90);
+  const codes = (t: string) => checkArticle(t, body).map((i) => i.code);
+  assert.ok(codes('إخبار زوي سيرانو قبل أربعة عشر يوما من عرض WrestleMania 42 بأن WWE تملك خططا لعودتها').includes('title_verbal_noun_passive'));
+  assert.ok(!codes('زوي سيرانو: WWE أخبرتني قبل أربعة عشر يوما من WrestleMania 42 بوجود خطط لعودتي').includes('title_verbal_noun_passive'));
+  assert.ok(BLOCKING_QA_CODES.includes('title_verbal_noun_passive'));
+});
