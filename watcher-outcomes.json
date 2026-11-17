@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-16-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-17T01:02:42.818Z"
+ },
+ "https://www.wrestlinginc.com/2317253/wwe-raw-november-16-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-17T01:00:20.766Z"
+ },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-16-2026-the-usos-vs-946-john-cena-appears-iyo-sky-vs-raquel-rodriguez-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -43,16 +53,6 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
   "retry": true,
   "at": "2026-11-17T00:56:40.371Z"
- },
- "https://www.wrestlinginc.com/2317253/wwe-raw-november-16-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-17T01:00:20.766Z"
- },
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-16-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-17T00:55:34.766Z"
  },
  "https://www.wrestlinginc.com/2317718/wwe-raw-faa-grounding-order-may-be-affected": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Raquel Rodriguez",
