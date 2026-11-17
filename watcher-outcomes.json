@@ -12,47 +12,52 @@
  "https://www.fightful.com/wrestling/fallon-henley-says-she-feels-like-she-made-it-when-she-sees-the-bella-twins-in-the-wwe-locker-room": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-17T14:26:27.548Z"
+  "at": "2026-11-17T14:36:03.192Z"
+ },
+ "https://www.fightful.com/wrestling/fallon-henley-says-she-feels-like-she-made-it-when-she-sees-the-bella-twins-in-the-wwe-locker-room": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-17T14:34:38.018Z"
  },
  "https://www.fightful.com/wrestling/fallon-henley-says-she-wanted-to-burst-into-tears-after-fatal-influence-captured-the-wwe-womens-tag-titles": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Madison Square Garden",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-17T14:25:34.637Z"
+  "at": "2026-11-17T14:32:19.739Z"
  },
  "https://www.fightful.com/wrestling/wwe-shop-selling-custom-rocky-maivia-ic-title-to-celebrate-30-years-of-the-rock": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T14:23:04.039Z"
+  "at": "2026-11-17T14:30:37.469Z"
  },
  "https://www.fightful.com/wrestling/charlotte-flair-when-its-tatum-paxleys-time-i-really-think-the-sky-is-the-limit-for-her": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل مثنى («تعملان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Lyra Valkyria، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kelani Jordan، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Jade Cargill",
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Jade Cargill",
   "retry": true,
-  "at": "2026-11-17T14:23:03.841Z"
+  "at": "2026-11-17T14:30:37.236Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-11-17": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T14:20:38.978Z"
+  "at": "2026-11-17T14:30:02.054Z"
  },
  "https://www.fightful.com/wrestling/cmll-x-njpw-lucha-kingdom-results-11-16-2026-mistico-ultimo-guerrero-def-yota-tsuji-hirooki-goto-zack-sabre-jr-vs-hechicero-syuri-more": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-17T14:20:38.123Z"
+  "at": "2026-11-17T14:30:01.048Z"
  },
  "https://www.fightful.com/wrestling/339522-iyo-sky-womens-ic-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T14:13:31.932Z"
+  "at": "2026-11-17T14:28:55.371Z"
  },
  "https://www.fightful.com/wrestling/339502-liv-morgan-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T14:13:31.566Z"
+  "at": "2026-11-17T14:28:54.942Z"
  },
  "https://www.fightful.com/wrestling/new-hearing-in-keanu-carver-case-set-for-february-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T14:13:31.003Z"
+  "at": "2026-11-17T14:28:54.289Z"
  },
  "https://www.fightful.com/wrestling/cole-karter-fired-by-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
