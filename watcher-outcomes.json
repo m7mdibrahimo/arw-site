@@ -39,11 +39,6 @@
   "retry": true,
   "at": "2026-11-17T17:46:05.575Z"
  },
- "https://www.wrestlinginc.com/2318853/wwe-aaa-damian-priest-plans-hold": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-17T17:30:45.648Z"
- },
  "https://www.wrestlinginc.com/2318806/wwe-wrestlepalooza-2026-cody-rhodes-john-cena-classic-explains-plans-involvement": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
