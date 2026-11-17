@@ -5364,7 +5364,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض الرو 16.11.2026 مترجم",
-    "lastAttempt": 1794921005907,
+    "lastAttempt": 1794921838374,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5382,9 +5382,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض يو اف سي 334 مترجم",
-    "lastAttempt": 1794921018279,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1794921839587,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -5396,9 +5400,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ان دبليو ايه باور 14.11.2026 مترجم",
-    "lastAttempt": 1794921060348,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1794921871741,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
