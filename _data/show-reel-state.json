@@ -5361,16 +5361,14 @@
     "publishedAt": 1794918370682,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض الرو 16.11.2026 مترجم",
-    "lastAttempt": 1794920151929,
+    "lastAttempt": 1794921005907,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
     "reviewPlatforms": [],
@@ -5384,13 +5382,62 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض يو اف سي 334 مترجم",
-    "lastAttempt": 1794920223378,
-    "errors": {
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
-    },
-    "processing": [
-      "tiktok"
-    ],
+    "lastAttempt": 1794921018279,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false,
+    "tiktok": true
+  },
+  "20261117142113-nwa-powerrr-14-11-2026": {
+    "publishedAt": 1794921048218,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ان دبليو ايه باور 14.11.2026 مترجم",
+    "lastAttempt": 1794921060348,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261117143655-cmll-sabados-de-coliseo-14-11-2026": {
+    "publishedAt": 1794921085595,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال سابادوس دي كوليسيو 14.11.2026 مترجم",
+    "lastAttempt": 1794921099385,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261117144121-gcw-massacre-in-missoula-2026": {
+    "publishedAt": 1794921125862,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض جي سي دبليو ماساكر ان ميسولا 14.11.2026 مترجم",
+    "lastAttempt": 1794921138747,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261117144440-gcw-bedlam-in-boise-2026": {
+    "publishedAt": 1794921164369,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض جي سي دبليو بيدلام ان بويزي 15.11.2026 مترجم",
+    "lastAttempt": 1794921176563,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }
