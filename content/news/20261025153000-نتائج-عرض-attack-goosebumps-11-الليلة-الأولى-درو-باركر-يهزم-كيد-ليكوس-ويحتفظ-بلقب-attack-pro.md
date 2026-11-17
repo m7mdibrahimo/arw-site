@@ -55,7 +55,7 @@ layout: post-layout.njk
 
 **المواجهة السادسة: بطولة ATTACK! Pro Tag Team**
 
-نجح فريق Principle Of Brilliance (آرون مكراي وجيمس إيليس) في الدفاع عن لقب الفرق بنجاح ضد فريق Greedy Souls (برندان وايت وداني جونز).
+نجح فريق Principle Of Brilliance (آرون مكراي وجيمس إيليس) في الدفاع عن لقب الفرق ضد فريق Greedy Souls (برندان وايت وداني جونز).
 
 🏆 **الفائز:** فريق Principle Of Brilliance (آرون مكراي وجيمس إيليس)
 
