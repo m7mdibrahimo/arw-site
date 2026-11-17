@@ -130,6 +130,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - A championship is exactly the one the source names: when the source says Chelsea Green beat Liv Morgan for the Women's Crown Jewel Championship, that is the Crown Jewel title, never "the vacant title" or the WWE Women's Championship. Never call a title vacant, a person a front-runner or candidate, or say someone cancelled bookings or appearances unless the source says it — the code blocks these (INCIDENTS #1138).
 - Wrestling idioms keep their wrestling meaning: "left them lying" / "laid them out" means they were left down on the mat — never "incapacitated" or "injured"; "crushed Big Cass with a splash while he was pinning Gable" means the splash broke up that pin — never "pinned Big Cass" (only the person the source says was pinned was pinned). (INCIDENTS #1196).
 - Never mention Arab Wrestling, translation, AI, or that this is a rewrite.
+- A quote never carries a sexual or graphic-cruelty description (bestiality, torture detail): end the quote before it with an ellipsis (…) or leave that sentence out — Linda Hogan's TikTok quote reached the site with «people fucking camels… boiling dogs alive» (INCIDENTS #1383).
 - English letters only: never leave a word or a sentence in another script (Cyrillic, Greek, Hebrew, Chinese, Japanese, Korean) and never a translation arrow «->» or a pair of a foreign line and its English line. A quote is English only (INCIDENTS #872).`;
 }
 
