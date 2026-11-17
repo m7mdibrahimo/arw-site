@@ -7,7 +7,12 @@
  "https://www.wrestlinginc.com/2318806/wwe-wrestlepalooza-2026-cody-rhodes-john-cena-classic-explains-plans-involvement": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-17T16:36:58.958Z"
+  "at": "2026-11-17T16:47:56.255Z"
+ },
+ "https://www.wrestlinginc.com/2318806/wwe-wrestlepalooza-2026-cody-rhodes-john-cena-classic-explains-plans-involvement": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-17T16:46:45.796Z"
  },
  "https://www.fightful.com/wrestling/fallon-henley-says-she-wanted-to-burst-into-tears-after-fatal-influence-captured-the-wwe-womens-tag-titles": {
   "reason": "مكرر مع خبر نزل قبل كده",
