@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2318853/wwe-aaa-damian-priest-plans-hold": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-17T18:15:24.111Z"
+ },
  "https://www.fightful.com/wrestling/zoey-serrano-says-she-has-no-limitations-on-her-knee-but-barely-passed-wwe-testing": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-08T15:58:23.403Z"
- },
- "https://www.fightful.com/wrestling/penta-and-jevon-evans-speak-after-winning-world-tag-team-titles-at-wwe-crown-jewel": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-08T15:58:23.089Z"
  }
 }
