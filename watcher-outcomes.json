@@ -1,38 +1,43 @@
 {
+ "https://www.fightful.com/wrestling/339502-liv-morgan-john-cena-classic": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-17T02:04:59.310Z"
+ },
  "https://www.fightful.com/wrestling/taiji-ishimori-titan-capture-strong-openweight-tag-team-titles-at-cmll-x-njpw-lucha-kingdom": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى («يفوزان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-17T02:01:39.810Z"
+  "at": "2026-11-17T02:04:58.933Z"
  },
  "https://www.fightful.com/wrestling/new-hearing-in-keanu-carver-case-set-for-february-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T02:01:18.009Z"
+  "at": "2026-11-17T02:03:48.461Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-16-2026-the-usos-vs-946-john-cena-appears-iyo-sky-vs-raquel-rodriguez-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-17T02:01:17.510Z"
+  "at": "2026-11-17T02:03:47.953Z"
  },
  "https://www.fightful.com/wrestling/cole-karter-fired-by-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T02:01:17.227Z"
+  "at": "2026-11-17T02:03:47.667Z"
  },
  "https://www.fightful.com/wrestling/alex-shelley-and-chris-sabin-detail-travel-health-issues-that-they-dealt-with-before-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T02:01:16.839Z"
+  "at": "2026-11-17T02:03:47.365Z"
  },
  "https://www.fightful.com/wrestling/aj-styles-podcast-to-launch-on-wwe-platforms": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T02:01:16.399Z"
+  "at": "2026-11-17T02:03:47.130Z"
  },
  "https://www.fightful.com/wrestling/details-on-tna-wrestling-radio-on-iheartradio": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T02:01:15.710Z"
+  "at": "2026-11-17T02:03:46.423Z"
  },
  "https://www.ringsidenews.com/multiple-wwe-stars-took-jet-raw-travel-nightmare": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
@@ -1993,10 +1998,5 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-08T03:22:12.040Z"
- },
- "https://www.fightful.com/wrestling/jacob-fatu-expected-to-return-to-join-the-bloodline-for-survivor-series-wargames": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-08T03:08:27.410Z"
  }
 }
