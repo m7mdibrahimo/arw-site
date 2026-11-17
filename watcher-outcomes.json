@@ -37,12 +37,22 @@
  "https://www.ringsidenews.com/triple-h-says-working-rock-honor-wwe-celebrates-his-30-year-career": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-17T21:34:08.661Z"
+  "at": "2026-11-17T21:46:55.159Z"
+ },
+ "https://www.ringsidenews.com/zilla-fatu-match-added-november-17-wwe-nxt-lineup": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-17T21:40:15.560Z"
+ },
+ "https://www.ringsidenews.com/triple-h-says-working-rock-honor-wwe-celebrates-his-30-year-career": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-11-17T21:39:27.442Z"
  },
  "https://www.ringsidenews.com/young-bucks-considered-signing-elsewhere-before-aew-created": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-17T21:33:08.736Z"
+  "at": "2026-11-17T21:38:53.375Z"
  },
  "https://www.ringsidenews.com/wwe-raw-ranks-7-globally-netflix-november-9-2026": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
