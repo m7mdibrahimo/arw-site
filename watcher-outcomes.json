@@ -1,13 +1,18 @@
 {
- "https://www.ringsidenews.com/young-bucks-considered-signing-elsewhere-before-aew-created": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يعانيان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-17T20:33:04.667Z"
- },
- "https://www.ringsidenews.com/rock-takes-shoey-refuses-use-straw-because-he-doesnt-want-become-meme": {
+ "https://www.ringsidenews.com/triple-h-says-working-rock-honor-wwe-celebrates-his-30-year-career": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-17T20:31:37.165Z"
+  "at": "2026-11-17T20:38:03.714Z"
+ },
+ "https://www.ringsidenews.com/young-bucks-considered-signing-elsewhere-before-aew-created": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-17T20:36:50.471Z"
+ },
+ "https://www.ringsidenews.com/rock-takes-shoey-refuses-use-straw-because-he-doesnt-want-become-meme": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-11-17T20:35:59.628Z"
  },
  "https://www.fightful.com/wrestling/elayna-black-the-best-advice-cm-punk-gave-me-was-to-not-give-a-fuck": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: مدة زمنية في المتن غير مطابقة للمصدر: منذ عام",
   "retry": true,
   "at": "2026-11-08T19:26:56.131Z"
- },
- "https://www.ringsidenews.com/nikki-bella-admits-shes-nearing-end-her-wwe-career": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-08T18:35:16.949Z"
  }
 }
