@@ -5414,7 +5414,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261117144121-gcw-massacre-in-missoula-2026": {
     "publishedAt": 1794921125862,
