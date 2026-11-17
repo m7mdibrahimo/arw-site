@@ -1,8 +1,13 @@
 {
+ "https://www.ringsidenews.com/cj-perry-wants-rusev-play-mafia-villain-upcoming-movie": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-17T14:39:35.082Z"
+ },
  "https://www.ringsidenews.com/paige-collett-claims-er-doctors-thought-she-seeking-drugs-wrestling-heart-scare": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-17T14:31:27.823Z"
+  "at": "2026-11-17T14:38:05.385Z"
  },
  "https://www.ringsidenews.com/paige-collett-claims-er-doctors-thought-she-was-seeking-drugs-after-wrestling-heart-scare": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1998,10 +2003,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-08T15:12:40.626Z"
- },
- "https://www.fightful.com/wrestling/wwe-crown-jewel-post-show-nov-7-2026": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-08T14:50:31.336Z"
  }
 }
