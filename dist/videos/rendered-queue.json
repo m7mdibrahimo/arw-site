@@ -22713,18 +22713,90 @@
     "kind": "show",
     "slug": "20261114070445-wwe-smackdown-13-11-2026",
     "image": "/content/images/q82g7dhsyot1xxu2.jpg",
-    "renderedAt": 1794919625240
+    "renderedAt": 1794918052444
   },
   {
-    "videoUrl": "/videos/reel-20261117135811-wwe-raw-16-11-2026.mp4",
-    "filename": "reel-20261117135811-wwe-raw-16-11-2026.mp4",
-    "title": "عرض الرو 16.11.2026 مترجم",
-    "secondaryTitle": "WWE RAW 16.11.2026",
-    "description": "عرض الرو مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261117135811-wwe-raw-16-11-2026",
+    "videoUrl": "/videos/reel-20261117144440-gcw-bedlam-in-boise-2026.mp4",
+    "filename": "reel-20261117144440-gcw-bedlam-in-boise-2026.mp4",
+    "title": "عرض جي سي دبليو بيدلام ان بويزي 15.11.2026 مترجم",
+    "secondaryTitle": "GCW Bedlam in Boise (2026)",
+    "description": "عرض جي سي دبليو بيدلام ان بويزي مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261117144440-gcw-bedlam-in-boise-2026",
     "kind": "show",
-    "slug": "20261117135811-wwe-raw-16-11-2026",
-    "image": "/content/images/cwi2e1692n9xk6d9.jpg",
-    "renderedAt": 1794919705209
+    "slug": "20261117144440-gcw-bedlam-in-boise-2026",
+    "image": "/content/images/1nn2m7gvq47lrisu.jpg",
+    "renderedAt": 1794919993517
+  },
+  {
+    "videoUrl": "/videos/reel-20261101224259-cmll-martes-de-glamour-27-10-2.mp4",
+    "filename": "reel-20261101224259-cmll-martes-de-glamour-27-10-2.mp4",
+    "title": "عرض سي ام ال ال مارتيس دي غلامور 27.10.2026 مترجم",
+    "secondaryTitle": "CMLL Martes De Glamour 27.10.2026",
+    "description": "عرض سي ام ال ال مارتيس دي غلامور مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261101224259-cmll-martes-de-glamour-27-10-2",
+    "kind": "show",
+    "slug": "20261101224259-cmll-martes-de-glamour-27-10-2",
+    "image": "/content/images/ds7dqjjstppzic3m.jpg",
+    "renderedAt": 1794920094721
+  },
+  {
+    "videoUrl": "/videos/reel-20261108093956-wwe-crown-jewel-2026.mp4",
+    "filename": "reel-20261108093956-wwe-crown-jewel-2026.mp4",
+    "title": "عرض كراون جول 07.11.2026 مترجم",
+    "secondaryTitle": "WWE Crown Jewel (2026)",
+    "description": "عرض كراون جول مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261108093956-wwe-crown-jewel-2026",
+    "kind": "show",
+    "slug": "20261108093956-wwe-crown-jewel-2026",
+    "image": "/content/images/1n9f1boajnp25qxy.jpg",
+    "renderedAt": 1794920194524
+  },
+  {
+    "videoUrl": "/videos/reel-20261117141636-ufc-334-gane-vs-hokit.mp4",
+    "filename": "reel-20261117141636-ufc-334-gane-vs-hokit.mp4",
+    "title": "عرض يو اف سي 334 مترجم",
+    "secondaryTitle": "UFC 334: Gane vs. Hokit",
+    "description": "عرض يو اف سي 334 مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261117141636-ufc-334-gane-vs-hokit",
+    "kind": "show",
+    "slug": "20261117141636-ufc-334-gane-vs-hokit",
+    "image": "/content/images/9nwlagqhewkusqhc.jpg",
+    "renderedAt": 1794920294863
+  },
+  {
+    "videoUrl": "/videos/reel-20261117142113-nwa-powerrr-14-11-2026.mp4",
+    "filename": "reel-20261117142113-nwa-powerrr-14-11-2026.mp4",
+    "title": "عرض ان دبليو ايه باور 14.11.2026 مترجم",
+    "secondaryTitle": "NWA Powerrr 14.11.2026",
+    "description": "عرض ان دبليو ايه باور مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261117142113-nwa-powerrr-14-11-2026",
+    "kind": "show",
+    "slug": "20261117142113-nwa-powerrr-14-11-2026",
+    "image": "/content/images/8d98xnyl0huymt5e.jpg",
+    "renderedAt": 1794920393732
+  },
+  {
+    "videoUrl": "/videos/reel-20261117143655-cmll-sabados-de-coliseo-14-11-.mp4",
+    "filename": "reel-20261117143655-cmll-sabados-de-coliseo-14-11-.mp4",
+    "title": "عرض سي ام ال ال سابادوس دي كوليسيو 14.11.2026 مترجم",
+    "secondaryTitle": "CMLL Sabados De Coliseo 14.11.2026",
+    "description": "عرض سي ام ال ال سابادوس دي كوليسيو مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261117143655-cmll-sabados-de-coliseo-14-11-",
+    "kind": "show",
+    "slug": "20261117143655-cmll-sabados-de-coliseo-14-11-",
+    "image": "/content/images/wocgzuuo06cjeoly.jpg",
+    "renderedAt": 1794920494552
+  },
+  {
+    "videoUrl": "/videos/reel-20261117144121-gcw-massacre-in-missoula-2026.mp4",
+    "filename": "reel-20261117144121-gcw-massacre-in-missoula-2026.mp4",
+    "title": "عرض جي سي دبليو ماساكر ان ميسولا 14.11.2026 مترجم",
+    "secondaryTitle": "GCW Massacre in Missoula (2026)",
+    "description": "عرض جي سي دبليو ماساكر ان ميسولا مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261117144121-gcw-massacre-in-missoula-2026",
+    "kind": "show",
+    "slug": "20261117144121-gcw-massacre-in-missoula-2026",
+    "image": "/content/images/xwkv1lcb7ha2r9gt.jpg",
+    "renderedAt": 1794920593303
   }
 ]
