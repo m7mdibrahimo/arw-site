@@ -1,28 +1,33 @@
 {
- "https://www.fightful.com/wrestling/cmll-x-njpw-lucha-kingdom-results-11-16-2026-mistico-ultimo-guerrero-def-yota-tsuji-hirooki-goto-zack-sabre-jr-vs-hechicero-syuri-more": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى («يفوزان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Capitán Suicida، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، فائز مش موجود في نتايج المصدر (النزال لسه ما خلصش؟): المواجهة الثالثة: نزال فرق ثماني",
+ "https://www.fightful.com/wrestling/charlotte-flair-when-its-tatum-paxleys-time-i-really-think-the-sky-is-the-limit-for-her": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Lyra Valkyria، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kelani Jordan، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Jade Cargill",
   "retry": true,
-  "at": "2026-11-17T13:00:15.192Z"
+  "at": "2026-11-17T13:09:48.858Z"
+ },
+ "https://www.fightful.com/wrestling/cmll-x-njpw-lucha-kingdom-results-11-16-2026-mistico-ultimo-guerrero-def-yota-tsuji-hirooki-goto-zack-sabre-jr-vs-hechicero-syuri-more": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى («يفوزان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Capitán Suicida، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
+  "retry": true,
+  "at": "2026-11-17T13:08:34.206Z"
  },
  "https://www.fightful.com/wrestling/339522-iyo-sky-womens-ic-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T12:58:40.610Z"
+  "at": "2026-11-17T13:07:30.436Z"
  },
  "https://www.fightful.com/wrestling/339502-liv-morgan-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T12:58:40.276Z"
+  "at": "2026-11-17T13:07:30.148Z"
  },
  "https://www.fightful.com/wrestling/new-hearing-in-keanu-carver-case-set-for-february-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T12:58:39.794Z"
+  "at": "2026-11-17T13:07:29.707Z"
  },
  "https://www.fightful.com/wrestling/cole-karter-fired-by-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T12:58:38.975Z"
+  "at": "2026-11-17T13:07:28.994Z"
  },
  "https://www.fightful.com/wrestling/alex-shelley-and-chris-sabin-detail-travel-health-issues-that-they-dealt-with-before-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل أو اسم مثنى (يتحديان/كمالكين/كشريكين…) ممنوع — اكتب «ضد» أو «يواجه» أو اذكر الاسمين بفعل جمع",
   "retry": true,
   "at": "2026-11-08T04:44:12.274Z"
- },
- "https://www.fightful.com/wrestling/aew-collision-rock-wrestling-rager-results-11-7-2026-andrade-vs-tommaso-ciampa-ftr-vs-mcmg-persephone-vs-mina-shirakawa-more": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
-  "retry": true,
-  "at": "2026-11-08T04:28:24.835Z"
  }
 }
