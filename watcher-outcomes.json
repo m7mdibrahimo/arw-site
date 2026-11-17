@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-aew-load-december-2026-major-shows-wrestling-betting-remains-complicated": {
+  "reason": "المراجعة رفضته: خبر ترويجي لموقع مراهنات (MyBookie…) — مش خبر، فعل مثنى («يعززان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-17T13:35:00.118Z"
+ },
  "https://www.fightful.com/wrestling/charlotte-flair-when-its-tatum-paxleys-time-i-really-think-the-sky-is-the-limit-for-her": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Lyra Valkyria، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kelani Jordan",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)",
   "retry": false,
   "at": "2026-11-08T13:38:07.502Z"
- },
- "https://www.ringsidenews.com/mercedes-mone-mourns-passing-her-younger-sister-alexis": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-08T10:45:39.138Z"
  }
 }
