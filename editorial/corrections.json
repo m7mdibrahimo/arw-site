@@ -1,6 +1,9 @@
 {
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
+    {"wrong":"شركتي\\s+(?<a>[A-Za-z][A-Za-z0-9.&\\- ]*?)\\s+و(?=[A-Za-z])","right":"شركة $<a> وشركة ","regex":true,"note":"«مشروع مشترك بين شركتي Orlando Performance Center SPE LLC وWWE PC Holdings LLC» مثنى — الصح «بين شركة X وشركة Y» (خبر مقر WWE في أورلاندو، INCIDENTS #1369)"},
+    {"wrong":"الكونغلوميريشن","right":"ذا كونجلوميريشن","note":"The Conglomeration في القاموس «ذا كونجلوميريشن» (INCIDENTS #1369)"},
+    {"wrong":"كونغلوميريشن","right":"كونجلوميريشن","note":"The Conglomeration اتكتبت «كونغلوميريشن» في 15 خبر والقاموس «ذا كونجلوميريشن» (INCIDENTS #1369)"},
     {"wrong":"بسبب أسباب","right":"لأسباب","note":"«بسبب أسباب مرضية» تكرار — الصح «لأسباب مرضية» (خبر ستيفاني فاكير، INCIDENTS #1368)"},
     {"wrong":"ادعى تعرض","right":"ادعى أنه تعرض","note":"«الإصابات التي ادعى تعرض لها» ناقصة — الصح «ادعى أنه تعرض» (خبر لودفيغ كايزر، INCIDENTS #1368)"},
     {"wrong":"غريغ غاريسون","right":"جريف جاريسون","note":"Griff Garrison اتكتب «غريغ غاريسون» في خبر كول كارتر — الصح «جريف جاريسون» زي القاموس (INCIDENTS #1367)"},
