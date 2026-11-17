@@ -1,5 +1,15 @@
 [
   {
+    "id": 2446921577,
+    "link": "https://www.wrestlinginc.com/2318817/wwe-new-day-ridge-holland-considered-adding/",
+    "date": "Tue, 17 Nov 2026 14:30:00 +0000",
+    "date_gmt": "2026-11-17T14:30:00.000Z",
+    "title": {
+      "rendered": "WWE Reportedly Considered Adding Ridge Holland To The New Day"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-reportedly-considered-adding-ridge-holland-to-the-new-day/l-intro-1794902640.jpg"
+  },
+  {
     "id": 2971387619,
     "link": "https://www.wrestlinginc.com/2318799/wwe-womens-world-champion-liv-morgan-invited-john-cena-classic/",
     "date": "Tue, 17 Nov 2026 14:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "TNA Wrestling Launching Radio Station"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-wrestling-launching-radio-station/l-intro-1794863806.jpg"
-  },
-  {
-    "id": 2733721851,
-    "link": "https://www.wrestlinginc.com/2318346/aew-full-gear-2026-timeless-toni-storm-return-teaser/",
-    "date": "Mon, 16 Nov 2026 20:16:56 +0000",
-    "date_gmt": "2026-11-16T20:16:56.000Z",
-    "title": {
-      "rendered": "Latest Update On Toni Storm's AEW Return"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/latest-update-on-toni-storms-aew-return/l-intro-1794860087.jpg"
   }
 ]
