@@ -1,14 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2305275/aew-njpw-wrestle-kingdom-21-kenny-omega-jon-moxley-will-ospreay-mjf-gabe-kidd-matches-announced/": {
-    "matchedFile": "20261103115947-الإعلان-عن-نزال-جون-موكسلي-ضد-شينغو-تاكاغي-في-عرض-njpw-wrestle-kingdom-21.md",
-    "reason": "الخبر الجديد يغطي نفس إعلانات نزالات عرض NJPW Wrestle Kingdom 21 الخاصة بنجوم AEW مثل جون موكسلي وK-Omega والتي تم الإعلان عنها بالفعل في الخبر المنشور لنفس العرض.",
-    "at": "2026-11-03T15:33:41.320Z"
-  },
-  "https://www.ringsidenews.com/wwe-announces-date-location-avengers-themed-worlds-collide-event/": {
-    "matchedFile": "20261103191928-wwe-تعلن-عن-تعاون-مع-فيلم-avengers-doomsday-في-عرض-wwe-worlds-collide-القادم.md",
-    "reason": "الخبر الجديد يغطي نفس الحدث (عرض Worlds Collide) مع إضافة تفاصيل ثانوية مثل موعد طرح التذاكر وتفاصيل عرض جون سينا، وهي تفاصيل لا تشكل تطوراً جوهرياً يمنع اعتباره تكراراً لنفس الإعلان.",
-    "at": "2026-11-03T16:39:36.477Z"
-  },
   "https://www.fightful.com/wrestling/wwe-to-host-avengers-doomsday-themed-worlds-collide-event-on-december-15th/": {
     "matchedFile": "20261103191928-wwe-تعلن-عن-تعاون-مع-فيلم-avengers-doomsday-في-عرض-wwe-worlds-collide-القادم.md",
     "reason": "الخبر الجديد يعالج نفس حدث إعلان تعاون WWE مع فيلم Avengers Doomsday وعرض Worlds Collide يوم 15 ديسمبر، وهو مطابق تماماً للخبر المنشور رقم 0 من حيث التفاصيل والمضمون دون وجود تطور جديد حقيقي.",
@@ -2498,5 +2488,15 @@
     "matchedFile": "20261117014609-تأجيل-جلسة-المحكمة-لنجم-wwe-nxt-السابق-كيانو-كارفر-مجددا-مع-استمرار-أمر-الحماية.md",
     "reason": "الخبر الجديد يعيد سرد نفس تفاصيل جلسة 13 نوفمبر وتأجيلها إلى 16 فبراير 2027 الخاصة بالمصارع كيانو كارفر، وهي نفس الواقعة والمعلومات المنشورة بالفعل في الخبر السابق.",
     "at": "2026-11-17T01:22:54.298Z"
+  },
+  "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-16-2026/": {
+    "matchedFile": "20261117043700-ال-ايه-نايت-يعود-ويهزم-ذا-ميز-ليحجز-مقعده-في-فريق-الولايات-المتحدة-لعرض-wwe-survivor-series.md",
+    "reason": "الخبر الجديد يغطي نفس نتائج عرض WWE RAW وتحديداً فوز ال ايه نايت على ذا ميز ليحجز مقعده في فريق الولايات المتحدة، وهو نفس الحدث والنتيجة المغطاة في الخبر المنشور رقم [0].",
+    "at": "2026-11-17T01:45:36.590Z"
+  },
+  "https://www.ringsidenews.com/la-knight-earns-team-usa-spot-wwe-survivor-series-surprise-raw-return/": {
+    "matchedFile": "20261117043700-ال-ايه-نايت-يعود-ويهزم-ذا-ميز-ليحجز-مقعده-في-فريق-الولايات-المتحدة-لعرض-wwe-survivor-series.md",
+    "reason": "الخبر الجديد يعالج نفس الحدث تماماً (عودة LA Knight وفوزه على The Miz ليحجز مقعده في Team USA لعرض Survivor Series خلال عرض RAW)، وهو مطابق لما ورد في الخبر المنشور مسبقاً برقم 0.",
+    "at": "2026-11-17T01:46:10.951Z"
   }
 }
