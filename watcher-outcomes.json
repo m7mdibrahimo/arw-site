@@ -1,4 +1,34 @@
 {
+ "https://www.fightful.com/wrestling/elayna-black-the-best-advice-cm-punk-gave-me-was-to-not-give-a-fuck": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-17T21:38:37.084Z"
+ },
+ "https://www.fightful.com/wrestling/fallon-henley-says-she-wanted-to-burst-into-tears-after-fatal-influence-captured-the-wwe-womens-tag-titles": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-17T21:38:36.125Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-shop-selling-custom-rocky-maivia-ic-title-to-celebrate-30-years-of-the-rock": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-17T21:38:35.975Z"
+ },
+ "https://www.fightful.com/wrestling/charlotte-flair-when-its-tatum-paxleys-time-i-really-think-the-sky-is-the-limit-for-her": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-17T21:38:35.823Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-11-17": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-17T21:38:35.587Z"
+ },
+ "https://www.fightful.com/wrestling/cmll-x-njpw-lucha-kingdom-results-11-16-2026-mistico-ultimo-guerrero-def-yota-tsuji-hirooki-goto-zack-sabre-jr-vs-hechicero-syuri-more": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-17T21:38:34.944Z"
+ },
  "https://www.ringsidenews.com/triple-h-says-working-rock-honor-wwe-celebrates-his-30-year-career": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -8,36 +38,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-17T21:33:08.736Z"
- },
- "https://www.fightful.com/wrestling/elayna-black-the-best-advice-cm-punk-gave-me-was-to-not-give-a-fuck": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-17T21:24:35.862Z"
- },
- "https://www.fightful.com/wrestling/fallon-henley-says-she-wanted-to-burst-into-tears-after-fatal-influence-captured-the-wwe-womens-tag-titles": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-17T21:24:34.371Z"
- },
- "https://www.fightful.com/wrestling/wwe-shop-selling-custom-rocky-maivia-ic-title-to-celebrate-30-years-of-the-rock": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-17T21:24:34.137Z"
- },
- "https://www.fightful.com/wrestling/charlotte-flair-when-its-tatum-paxleys-time-i-really-think-the-sky-is-the-limit-for-her": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-17T21:24:33.904Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-11-17": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-17T21:24:33.545Z"
- },
- "https://www.fightful.com/wrestling/cmll-x-njpw-lucha-kingdom-results-11-16-2026-mistico-ultimo-guerrero-def-yota-tsuji-hirooki-goto-zack-sabre-jr-vs-hechicero-syuri-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-17T21:24:32.564Z"
  },
  "https://www.ringsidenews.com/wwe-raw-ranks-7-globally-netflix-november-9-2026": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
