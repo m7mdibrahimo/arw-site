@@ -5399,7 +5399,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261117143655-cmll-sabados-de-coliseo-14-11-2026": {
     "publishedAt": 1794921085595,
@@ -5436,7 +5437,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض جي سي دبليو بيدلام ان بويزي 15.11.2026 مترجم",
-    "lastAttempt": 1794936691043,
+    "lastAttempt": 1794937489453,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
