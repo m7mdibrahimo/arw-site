@@ -5406,7 +5406,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال سابادوس دي كوليسيو 14.11.2026 مترجم",
-    "lastAttempt": 1794930567525,
+    "lastAttempt": 1794931443335,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5424,9 +5424,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض جي سي دبليو ماساكر ان ميسولا 14.11.2026 مترجم",
-    "lastAttempt": 1794926213183,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1794931444888,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
