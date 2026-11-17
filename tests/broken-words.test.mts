@@ -223,6 +223,8 @@ test('«ال الليلة» never comes out of tonightInTitle and «ثمنية»
   const us = new Date('2026-10-12T20:00:00-04:00').getTime();
   assert.equal(tonightInTitle('بينتا يفتتح عرض WWE RAW ال 12 أكتوبر وفقا للتقارير', us), 'بينتا يفتتح عرض WWE RAW الليلة وفقا للتقارير');
   assert.equal(tonightInTitle('الكشف عن عرض WWE RAW يوم 12 أكتوبر', us), 'الكشف عن عرض WWE RAW الليلة');
+  assert.equal(tonightInTitle('دعوة جديدة في عرض WWE RAW ل 12 أكتوبر', us), 'دعوة جديدة في عرض WWE RAW الليلة');
+  assert.equal(tonightInTitle('دعوة جديدة في عرض WWE RAW لـ 12 أكتوبر', us), 'دعوة جديدة في عرض WWE RAW الليلة');
   assert.ok(!/ثمنية/.test(applyCorrections('رقم مئة وثمنية وثلاثين رطلا')));
 });
 
