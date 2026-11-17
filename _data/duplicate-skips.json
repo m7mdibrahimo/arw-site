@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/wwe-to-host-avengers-doomsday-themed-worlds-collide-event-on-december-15th/": {
-    "matchedFile": "20261103191928-wwe-تعلن-عن-تعاون-مع-فيلم-avengers-doomsday-في-عرض-wwe-worlds-collide-القادم.md",
-    "reason": "الخبر الجديد يعالج نفس حدث إعلان تعاون WWE مع فيلم Avengers Doomsday وعرض Worlds Collide يوم 15 ديسمبر، وهو مطابق تماماً للخبر المنشور رقم 0 من حيث التفاصيل والمضمون دون وجود تطور جديد حقيقي.",
-    "at": "2026-11-03T16:45:54.889Z"
-  },
   "https://www.wrestlinginc.com/2305397/wwe-shawn-michaels-main-roster-call-ups-more-seamless-past/": {
     "matchedFile": "20261103055814-شون-مايكلز-يحتفل-بظهور-كروز-مونتانا-الأول-في-عرض-wwe-raw.md",
     "reason": "الخبر الجديد يعيد سرد نفس التصريحات التي أدلى بها شون مايكلز بخصوص صعود كروز مونتانا وعدد النجوم الـ 19 الذين صعدوا خلال العام الماضي، وهي تفاصيل تم تغطيتها بالفعل في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261117043700-ال-ايه-نايت-يعود-ويهزم-ذا-ميز-ليحجز-مقعده-في-فريق-الولايات-المتحدة-لعرض-wwe-survivor-series.md",
     "reason": "الخبر الجديد يعالج نفس الحدث تماماً (عودة LA Knight وفوزه على The Miz ليحجز مقعده في Team USA لعرض Survivor Series خلال عرض RAW)، وهو مطابق لما ورد في الخبر المنشور مسبقاً برقم 0.",
     "at": "2026-11-17T01:46:10.951Z"
+  },
+  "https://www.ringsidenews.com/john-cena-invites-liv-morgan-john-cena-classic-during-november-16-wwe-raw/": {
+    "matchedFile": "20261117040403-تفاصيل-المشاركة-القادمة-في-بطولة-جون-سينا-الكلاسيكية-في-عرض-wwe-raw-ل-الليلة.md",
+    "reason": "الخبر الجديد يتناول نفس الحدث وهو دعوة جون سينا لليف مورغان للمشاركة في بطولة جون سينا الكلاسيكية خلال عرض RAW في 16 نوفمبر 2026، وهو نفس مضمون الخبر المنشور مسبقاً.",
+    "at": "2026-11-17T01:58:39.914Z"
   }
 }
