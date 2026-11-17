@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2318773/wwe-nxt-november-17-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-17T22:19:01.693Z"
+ },
  "https://www.fightful.com/wrestling/ryzin-details-decision-to-retire-in-2027-says-he-was-overwhelmed-by-the-reaction-to-his-initial-announcement": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-09T02:07:59.921Z"
- },
- "https://www.ringsidenews.com/damian-priest-lola-vice-steal-spotlight-netflixs-steps-premiere-nyc": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-08T23:40:34.098Z"
  }
 }
