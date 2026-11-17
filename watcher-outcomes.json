@@ -1,48 +1,48 @@
 {
  "https://www.fightful.com/wrestling/cmll-revolucion-de-campeones-results-11-16-2026-volador-jr-vs-villano-iii-jr-calavera-jr-i-wins-the-cmll-world-lightweight-more": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-17T07:15:05.590Z"
- },
- "https://www.fightful.com/wrestling/cmll-x-njpw-lucha-kingdom-results-11-16-2026-mistico-ultimo-guerrero-def-yota-tsuji-hirooki-goto-zack-sabre-jr-vs-hechicero-syuri-more": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-17T07:14:24.122Z"
+  "at": "2026-11-17T07:20:16.051Z"
+ },
+ "https://www.fightful.com/wrestling/cmll-x-njpw-lucha-kingdom-results-11-16-2026-mistico-ultimo-guerrero-def-yota-tsuji-hirooki-goto-zack-sabre-jr-vs-hechicero-syuri-more": {
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة السابعة: نزال فردي — اكتب الفائز زي المصدر وبالماضي",
+  "retry": true,
+  "at": "2026-11-17T07:19:02.545Z"
  },
  "https://www.fightful.com/wrestling/339522-iyo-sky-womens-ic-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T07:13:55.973Z"
+  "at": "2026-11-17T07:18:34.069Z"
  },
  "https://www.fightful.com/wrestling/339502-liv-morgan-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T07:13:55.590Z"
+  "at": "2026-11-17T07:18:33.638Z"
  },
  "https://www.fightful.com/wrestling/new-hearing-in-keanu-carver-case-set-for-february-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T07:13:54.975Z"
+  "at": "2026-11-17T07:18:32.990Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-16-2026-the-usos-vs-946-john-cena-appears-iyo-sky-vs-raquel-rodriguez-more": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-17T07:13:54.270Z"
+  "at": "2026-11-17T07:18:32.227Z"
  },
  "https://www.fightful.com/wrestling/cole-karter-fired-by-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T07:13:12.497Z"
+  "at": "2026-11-17T07:17:59.595Z"
  },
  "https://www.fightful.com/wrestling/alex-shelley-and-chris-sabin-detail-travel-health-issues-that-they-dealt-with-before-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T07:13:12.105Z"
+  "at": "2026-11-17T07:17:59.145Z"
  },
  "https://www.fightful.com/wrestling/aj-styles-podcast-to-launch-on-wwe-platforms": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T07:13:11.790Z"
+  "at": "2026-11-17T07:17:58.793Z"
  },
  "https://www.fightful.com/wrestling/details-on-tna-wrestling-radio-on-iheartradio": {
   "reason": "مكرر مع خبر نزل قبل كده",
