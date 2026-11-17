@@ -2,42 +2,37 @@
  "https://www.fightful.com/wrestling/wwe-raw-11-9-scores-2-4-million-global-views-on-netflix": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T21:47:14.463Z"
+  "at": "2026-11-17T21:48:48.281Z"
  },
  "https://www.fightful.com/wrestling/elayna-black-the-best-advice-cm-punk-gave-me-was-to-not-give-a-fuck": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T21:47:13.917Z"
+  "at": "2026-11-17T21:48:47.682Z"
  },
  "https://www.fightful.com/wrestling/fallon-henley-says-she-wanted-to-burst-into-tears-after-fatal-influence-captured-the-wwe-womens-tag-titles": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T21:47:12.978Z"
+  "at": "2026-11-17T21:48:46.652Z"
  },
  "https://www.fightful.com/wrestling/wwe-shop-selling-custom-rocky-maivia-ic-title-to-celebrate-30-years-of-the-rock": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T21:47:12.831Z"
+  "at": "2026-11-17T21:48:46.494Z"
  },
  "https://www.fightful.com/wrestling/charlotte-flair-when-its-tatum-paxleys-time-i-really-think-the-sky-is-the-limit-for-her": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T21:47:12.685Z"
+  "at": "2026-11-17T21:48:46.332Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-11-17": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T21:47:12.457Z"
+  "at": "2026-11-17T21:48:46.087Z"
  },
  "https://www.fightful.com/wrestling/cmll-x-njpw-lucha-kingdom-results-11-16-2026-mistico-ultimo-guerrero-def-yota-tsuji-hirooki-goto-zack-sabre-jr-vs-hechicero-syuri-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T21:47:11.836Z"
- },
- "https://www.ringsidenews.com/triple-h-says-working-rock-honor-wwe-celebrates-his-30-year-career": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-17T21:46:55.159Z"
+  "at": "2026-11-17T21:48:45.420Z"
  },
  "https://www.ringsidenews.com/zilla-fatu-match-added-november-17-wwe-nxt-lineup": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -2003,10 +1998,5 @@
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
   "at": "2026-11-08T22:06:24.811Z"
- },
- "https://www.fightful.com/wrestling/eve-157-elite-encounters-2-results-11-8-multiple-title-changes": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Chantel Monroe، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
-  "retry": true,
-  "at": "2026-11-08T21:30:23.993Z"
  }
 }
