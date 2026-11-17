@@ -2,42 +2,42 @@
  "https://www.fightful.com/wrestling/339522-iyo-sky-womens-ic-title": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T04:03:05.780Z"
+  "at": "2026-11-17T04:10:36.028Z"
  },
  "https://www.fightful.com/wrestling/339502-liv-morgan-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T04:03:05.418Z"
+  "at": "2026-11-17T04:10:35.725Z"
  },
  "https://www.fightful.com/wrestling/new-hearing-in-keanu-carver-case-set-for-february-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T04:03:04.860Z"
+  "at": "2026-11-17T04:10:35.265Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-16-2026-the-usos-vs-946-john-cena-appears-iyo-sky-vs-raquel-rodriguez-more": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Ethan Page، تقرير نتائج بلا أي نتيجة",
   "retry": true,
-  "at": "2026-11-17T04:03:04.220Z"
+  "at": "2026-11-17T04:10:34.735Z"
  },
  "https://www.fightful.com/wrestling/cole-karter-fired-by-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T04:03:03.859Z"
+  "at": "2026-11-17T04:08:30.184Z"
  },
  "https://www.fightful.com/wrestling/alex-shelley-and-chris-sabin-detail-travel-health-issues-that-they-dealt-with-before-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T04:03:03.478Z"
+  "at": "2026-11-17T04:08:29.869Z"
  },
  "https://www.fightful.com/wrestling/aj-styles-podcast-to-launch-on-wwe-platforms": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T04:03:03.178Z"
+  "at": "2026-11-17T04:08:29.628Z"
  },
  "https://www.fightful.com/wrestling/details-on-tna-wrestling-radio-on-iheartradio": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-17T04:03:02.290Z"
+  "at": "2026-11-17T04:08:28.903Z"
  },
  "https://www.ringsidenews.com/946-secures-mens-wargames-advantage-chaotic-wwe-raw-main-event": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
