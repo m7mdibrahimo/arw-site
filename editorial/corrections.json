@@ -1,6 +1,7 @@
 {
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
+    {"wrong":"نزالات الجوع","right":"The Hunger Games","note":"اسم فيلم The Hunger Games اتترجم «نزالات الجوع» في تعليق شيماس — أسماء الأفلام تفضل بالإنجليزي (INCIDENTS #1388)"},
     {"wrong":"شركتي\\s+(?<a>[A-Za-z][A-Za-z0-9.&\\- ]*?)\\s+و(?=[A-Za-z])","right":"شركة $<a> وشركة ","regex":true,"note":"«مشروع مشترك بين شركتي Orlando Performance Center SPE LLC وWWE PC Holdings LLC» مثنى — الصح «بين شركة X وشركة Y» (خبر مقر WWE في أورلاندو، INCIDENTS #1369)"},
     {"wrong":"الكونغلوميريشن","right":"ذا كونجلوميريشن","note":"The Conglomeration في القاموس «ذا كونجلوميريشن» (INCIDENTS #1369)"},
     {"wrong":"كونغلوميريشن","right":"كونجلوميريشن","note":"The Conglomeration اتكتبت «كونغلوميريشن» في 15 خبر والقاموس «ذا كونجلوميريشن» (INCIDENTS #1369)"},
