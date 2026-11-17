@@ -1152,3 +1152,12 @@ test('a headline opening with a passive verbal noun («إخبار X بأن…»)
   assert.ok(!codes('زوي سيرانو: WWE أخبرتني قبل أربعة عشر يوما من WrestleMania 42 بوجود خطط لعودتي').includes('title_verbal_noun_passive'));
   assert.ok(BLOCKING_QA_CODES.includes('title_verbal_noun_passive'));
 });
+
+// INCIDENTS #1382: CRPS as «الألم الناحي الممرض المعقد», «بطولة WWE للسيدات للولايات المتحدة», «تواجه بطلة العرض راكيل».
+test('corrections fix CRPS, Women\'s US title and «بطلة العرض» for a champion (INCIDENTS #1382)', () => {
+  const out = applyCorrections('تعاني من متلازمة الألم الناحي الممرض المعقد، وفازت ببطولة WWE للسيدات للولايات المتحدة، قبل أن تواجه بطلة العرض راكيل رودريغيز، وباستهداف بطل العرض توني دي أنجيلو');
+  assert.match(out, /الألم الناحي المركب/);
+  assert.match(out, /ببطولة الولايات المتحدة للسيدات/);
+  assert.match(out, /تواجه حاملة اللقب راكيل/);
+  assert.match(out, /باستهداف حامل اللقب توني/);
+});
