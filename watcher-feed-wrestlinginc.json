@@ -1,5 +1,15 @@
 [
   {
+    "id": 3394256785,
+    "link": "https://www.wrestlinginc.com/2318780/wwe-raw-november-16-2026-hated-loved-opinion-review/",
+    "date": "Tue, 17 Nov 2026 05:43:02 +0000",
+    "date_gmt": "2026-11-17T05:43:02.000Z",
+    "title": {
+      "rendered": "WWE RAW 11/16/2026: 3 Things We Hated & 3 Things We Loved"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-11162026-3-things-we-hated-3-things-we-loved/l-intro-1794894057.jpg"
+  },
+  {
     "id": 3094693690,
     "link": "https://www.wrestlinginc.com/2318761/aew-tony-khan-2026-continental-classic-tournament-participants/",
     "date": "Tue, 17 Nov 2026 03:50:03 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Backstage Update On MJF Accidentally Striking Fan During Full Gear Return"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-mjf-accidentally-striking-fan-during-full-gear-return/l-intro-1794856674.jpg"
-  },
-  {
-    "id": 4461095036,
-    "link": "https://www.wrestlinginc.com/2318143/aew-darby-allin-regrets-not-training-marathon/",
-    "date": "Mon, 16 Nov 2026 18:58:30 +0000",
-    "date_gmt": "2026-11-16T18:58:30.000Z",
-    "title": {
-      "rendered": "AEW's Darby Allin Regrets Not Training For Recent Marathon"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-darby-allin-regrets-not-training-for-recent-marathon/l-intro-1794855335.jpg"
   }
 ]
