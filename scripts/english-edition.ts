@@ -337,6 +337,17 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
     return q.split(/\s+/).filter(Boolean).length < 3 && !/^[A-Z][^.!?]*[.!?]$/.test(q);
   });
   if (fragments.length) issues.push("blockquote is a fragment, not a statement");
+  // a sentence split by a blockquote: «Montana told Hayes to focus because» + «> "we need this." 946 maintained control…»
+  // reached the English site (RAW WarGames story, INCIDENTS #1373) — the line before the quote stops with no full stop or colon
+  const splitByQuote = bl.some((l, i) => {
+    if (!/^\s*>/.test(l)) return false;
+    let j = i - 1;
+    while (j >= 0 && !bl[j].trim()) j--;
+    const prev = j >= 0 ? bl[j].trim() : "";
+    const cutBefore = !!prev && !/^\s*>/.test(prev) && !SKIP_LINE.test(prev) && !/^(?:<)?https?:\/\//.test(prev) && /[A-Za-z0-9]$/.test(prev);
+    return cutBefore;
+  });
+  if (splitByQuote) issues.push("sentence split by a blockquote");
   // the story ends on a lead-in whose quote never came: «Fanatics Financial Services President Greg Lisiewski explained
   // the goal behind the product.» was the last line of the American Express story (INCIDENTS #1174)
   const lastProse = bl.map((l) => l.trim()).filter((l) => l && !/^(?:<)?https?:\/\//.test(l)).pop() || "";

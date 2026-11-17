@@ -19,8 +19,6 @@ Susan Haber, her representative, spoke to the outlet about the project.
 
 > "I've known Brooke for nearly 20 years, and she's carried a great deal privately. Telling her story in her own words could be incredibly cathartic."
 
-Haber added that she is sitting on some pretty "explosive" stuff that she has never spoken about publicly and that
-
-> "she shouldn't have to carry that weight forever."
+Haber added that she is sitting on some pretty "explosive" stuff that she has never spoken about publicly and that "she shouldn't have to carry that weight forever."
 
 A final choice regarding the offers is anticipated to be made on Wednesday. Brooke recently commented on the sale of Hulk Hogan's mansion, sharing her side of their relationship following his passing last year after it had grown strained.

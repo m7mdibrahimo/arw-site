@@ -583,3 +583,10 @@ test('a tag gets the story\'s name fixes: «Twitter» is «X» in en_tags (INCID
   const file = saveEnglishEdition({ ...good, tags: ['Kayla Braxton', 'Twitter', 'Social Media'] }, input, dir);
   assert.deepEqual(matter(fs.readFileSync(file, 'utf8')).data.en_tags, ['Kayla Braxton', 'X', 'Social Media']);
 });
+
+test('a sentence cut in two by a blockquote is caught (INCIDENTS #1373)', () => {
+  const broken = { ...good, body: good.body + `\n\nMontana told Hayes to focus because\n\n> "we need this." 946 maintained control for most of the bout and won.` };
+  assert.ok(checkEnglish(broken, input).includes('sentence split by a blockquote'));
+  const fine = { ...good, body: good.body + `\n\nMontana told Hayes to focus:\n\n> "We need this."\n\nThey won.` };
+  assert.ok(!checkEnglish(fine, input).includes('sentence split by a blockquote'));
+});

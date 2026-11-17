@@ -16,9 +16,7 @@ image: /content/images/pb1ifvcppl0bgpls.jpg
 ---
 Despite recent reports regarding backstage dissatisfaction among some WWE wrestlers concerning the upcoming trip to Saudi Arabia for WWE Crown Jewel, it appears the promotion is not encouraging talent to skip the event. According to Dave Meltzer in the Wrestling Observer Newsletter, there are no reports of any wrestlers withdrawing from the show, and it remains unclear if talent were even given the option to decline the trip.
 
-In a conversation with one of WWE’s top stars, Meltzer reported that turning down the assignment is
-
-> "very much not being encouraged."
+In a conversation with one of WWE’s top stars, Meltzer reported that turning down the assignment is "very much not being encouraged."
 
 While no official refusals have occurred, this adds context to previous claims regarding Kevin Owens. Owens is currently scheduled to face CM Punk in a match taped at the Barclays Center, though there is no confirmation this change resulted from a refusal to travel.
 
