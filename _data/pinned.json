@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/wwe-raw-16-11-2026/",
+    "title": "عرض الرو 16.11.2026 مترجم",
+    "subtitle": "WWE RAW 16.11.2026",
+    "image": "/content/images/cwi2e1692n9xk6d9.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض الرو مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/tna-destination-x-2026/",
     "title": "عرض تي ان ايه ديستينيشن اكس 15.11.2026 مترجم",
     "subtitle": "TNA Destination X (2026)",
@@ -119,16 +130,5 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض ان اكس تي مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-raw-09-11-2026/",
-    "title": "عرض الرو 09.11.2026 مترجم",
-    "subtitle": "WWE RAW 09.11.2026",
-    "image": "/content/images/n3oxhiffsvlqyueq.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض الرو مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
