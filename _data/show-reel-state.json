@@ -5376,15 +5376,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض يو اف سي 334 مترجم",
-    "lastAttempt": 1794926992679,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1794927924350,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -5396,7 +5392,7 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ان دبليو ايه باور 14.11.2026 مترجم",
-    "lastAttempt": 1794926994129,
+    "lastAttempt": 1794927926140,
     "errors": {
       "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5442,14 +5438,11 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض جي سي دبليو بيدلام ان بويزي 15.11.2026 مترجم",
-    "lastAttempt": 1794927025607,
-    "errors": {
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
-    },
-    "processing": [
-      "tiktok"
-    ],
+    "lastAttempt": 1794927936025,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   }
 }
