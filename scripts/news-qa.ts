@@ -2458,6 +2458,9 @@ export function autoFix(text: string): string {
     // digit, a comma, a relative clause («التي تبث مجانا عبر يوتيوب») or more than ten words stays.
     .replace(/(?:[،,]\s*|[ \t]+)وسط\s+ترقب\s+جماهيري(?:\s+(?:كبير|واسع|هائل))?(?:\s+(?:لما\s+(?:ستسفر|سيسفر|سيقدمه|ستقدمه|سيحدث)|لهذه\s+(?:المواجهة|المواجهات|القمة))(?:\s+(?!(?:التي|الذي|عبر|بالمجان|مجانا)(?![؀-ۿ]))[^\s.\n،,\d]+){0,10})?(?=[.\n]|$)/g, "")
     .replace(/(?<=^|\n|[.!؟])[ \t]*(?:و)?(?:تقام|يقام|تأتي|يأتي)\s+(?:هذه|هذا)\s+(?:الفعالية|العرض|المواجهة|الحدث|النزال)\s+ضمن\s+(?:التمهيد|التحضيرات|الاستعدادات)[^.\n\d]*\./g, "")
+    // A closing sentence no source says: «وتواصل المنصة مراقبة أداء عروض WWE بالتزامن مع توسع انتشارها
+    // الدولي.» (WWE RAW on Netflix ratings 17/11 — INCIDENTS #1387). Only a whole sentence with no digit goes.
+    .replace(/(?<=^|\n|[.!؟])[ \t]*(?:و)?(?:تواصل|يواصل|تستمر|يستمر)\s+(?:المنصة|الشبكة|الشركة|الاتحاد|Netflix|WWE|AEW)\s+(?:في\s+)?(?:مراقبة|متابعة|رصد)\s+(?:أداء|نسب|أرقام)[^.\n\d]*\./g, "")
     // Empty filler Gemini writes when the source has no intro text: «لا تفاصيل أخرى، وإليك نتائج
     // المواجهات كما وردت في العرض---» (CMLL Lunes Clásico 02/11 — INCIDENTS #1029). It says nothing and its
     // «---» glued to the end (and the lone separator before it) rendered as stray lines on the page.

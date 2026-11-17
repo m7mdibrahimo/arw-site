@@ -716,3 +716,16 @@ test('INCIDENTS #1300: a «وسط ترقب جماهيري» tail with a relative
   const s = 'ستنطلق الفعاليات الثامنة مساء، وسط ترقب جماهيري كبير لهذه المواجهة القوية التي تبث مباشرة وبالمجان عبر منصة يوتيوب.';
   assert.equal(autoFix(s), s);
 });
+
+test('INCIDENTS #1387: a closing «وتواصل المنصة مراقبة أداء…» sentence is dropped; a sentence with a number stays', () => {
+  assert.equal(
+    autoFix('سجل العرض انخفاضا سنويا بنسبة 14.3% في المشاهدات العالمية. وتواصل المنصة مراقبة أداء عروض WWE بالتزامن مع توسع انتشارها الدولي.'),
+    'سجل العرض انخفاضا سنويا بنسبة 14.3% في المشاهدات العالمية.',
+  );
+  const fact = 'وتواصل WWE متابعة أداء العرض بعد تسجيل 2,400,000 مشاهدة.';
+  assert.equal(autoFix(fact), fact);
+});
+
+test('INCIDENTS #1387: «جابي فورزا» is corrected to the glossary spelling «غابي فورزا»', () => {
+  assert.equal(applyCorrections('واجهت جابي فورزا البطلة'), 'واجهت غابي فورزا البطلة');
+});
