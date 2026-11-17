@@ -1751,3 +1751,11 @@ test("«cut a promo» is «قدم عرضا كلاميا», never «قطع عرض
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /قطعت? عرضا كلاميا|المصارعة ستشهد انطلاق عرض/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
 });
+
+test("«مسارحهن» → «مسيراتهن» and «1 كولد ماندرز» → «1 Called Manders» (INCIDENTS #1374)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("ودعم مسارحهن الفردية"), "ودعم مسيراتهن الفردية");
+  assert.equal(applyCorrections("فريق ذا كاوبوي واي (1 كولد ماندرز وتوماس شاير)"), "فريق ذا كاوبوي واي (1 Called Manders وتوماس شاير)");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /مسارحهن|1 كولد ماندرز/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
