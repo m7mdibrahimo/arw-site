@@ -1,7 +1,7 @@
 ---
 title: "The Rock Announces He Will Be at WWE Survivor Series 2026"
 slug: "the-rock-announces-he-will-be-at-wwe-survivor-series-2026"
-description: "The Rock stated on The Pat McAfeeShow that he will attend WWE Survivor Series 2026 later this month."
+description: "The Rock stated on The Pat McAfee Show that he will attend WWE Survivor Series 2026 later this month."
 federation: WWE
 date: 2026-11-18T18:20:13.000Z
 created_at: 2026-11-18T18:25:06.014Z
@@ -14,7 +14,7 @@ en_tags:
   - "The Pat McAfee Show"
 image: /content/images/cvk6ihjnfbwgbl4l.jpg
 ---
-The Rock stated on The Pat McAfeeShow that he will attend WWE Survivor Series 2026 later this month. WWE is currently celebrating the 30th anniversary of his professional wrestling career with exclusive merchandise and other celebrations.
+The Rock stated on The Pat McAfee Show that he will attend WWE Survivor Series 2026 later this month. WWE is currently celebrating the 30th anniversary of his professional wrestling career with exclusive merchandise and other celebrations.
 
 While appearing on the show on November 18, the star confirmed that he will be present at the event scheduled for November 28 in Houston. He stated:
 

@@ -1,6 +1,9 @@
 {
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
+    {"wrong":"شعر الجماهير","right":"شعرت الجماهير","note":"الجماهير جمع تكسير: الفعل الماضي قبلها مؤنث — «وكيف شعر الجماهير» في خبر كيني أوميغا (round 2026-11-18)"},
+    {"wrong":"أحد ظهوره الأخيرة","right":"أحد ظهوراته الأخيرة","note":"«أحد» بعدها جمع: «أحد ظهوراته» مش «أحد ظهوره» (خبر AEW All In 2027، round 2026-11-18)"},
+    {"wrong":"طلبني (?<w>[\\u0621-\\u064A]+(?:\\s+[\\u0621-\\u064A]+){0,3}) إلى مكتبه","right":"استدعاني $<w> إلى مكتبه","regex":true,"note":"«طلبني فينس مكمان الأب إلى مكتبه» ترجمة حرفية لـ called me into his office — الصح «استدعاني» (خبر جيم دوغان، round 2026-11-18)"},
     {"wrong":"بيكي بيلا","right":"بري بيلا","note":"Brie Bella اتكتبت «بيكي بيلا» في خبر فالون هينلي (INCIDENTS #1405)"},
     {"wrong":"مقاطعة ألبرت","right":"مقاطعة ألبرتا","note":"Alberta اتكتبت «ألبرت» (INCIDENTS #1405)"},
     {"wrong":"عائلة كاسبر","right":"الإخوة كاسبر","note":"Kasper Brothers اتترجمت «عائلة كاسبر» (INCIDENTS #1405)"},

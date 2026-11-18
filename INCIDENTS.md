@@ -11352,3 +11352,8 @@ Let me check git status to enumerate uncommitted changes.</think><tool_call>shel
 - اللي حصل: Brie Bella اتكتبت «بيكي بيلا»، وAlberta «ألبرت»، وKasper Brothers «عائلة كاسبر»، وكام كلمة مش دقيقة («موقف طريف»، «قدستهن»).
 - السبب: الأسماء دي مكانتش في القاموس فـ Gemini خمّنها.
 - الإصلاح: الأسماء اتضافت لـ wrestler-names.json، و3 تصحيحات في editorial/corrections.json، واختبار tests/corrections-1405، والأخبار اتصلحت في مكانها.
+
+## #1406 — 2026-11-18: أخطاء صغيرة في أخبار المساء
+اللي حصل: «شعر الجماهير» (أوميغا)، «أحد ظهوره الأخيرة» (All In 2027)، «طلبني فينس إلى مكتبه» و«آلة تحضير وطحنا» (دوغان وبيكي)، و«The Pat McAfeeShow» في النسخة الإنجليزية لخبر ذا روك.
+السبب: Gemini بيترجم حرفيا وبيلزق اسم البرنامج من حساب إكس @PatMcAfeeShow.
+الإصلاح: اتصلحت الخمس أخبار، واتضافت قواعد في corrections.json وقاعدة McAfeeShow في ENGLISH_FIXES (من غير ما تلمس الروابط)، واختبار tests/corrections-1406.

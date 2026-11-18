@@ -508,6 +508,8 @@ export function fixSingularThey(text: string): string {
 }
 
 export const ENGLISH_FIXES: [RegExp, string][] = [
+  // «The Pat McAfeeShow» — the show name glued together from the X handle @PatMcAfeeShow; links keep the handle (The Rock story, round 2026-11-18)
+  [/(?<![\w/@.])McAfeeShow\b/g, "McAfee Show"],
   // «featured Nic Nemeth defending his World Championship rematch against Elijah» — a title is defended, a rematch never is:
   // «<Name> defending his <title> rematch against <Name>» → «a <title> rematch between <Name> and <Name>» (TNA Impact review, INCIDENTS #1277)
   [/\b((?:[A-Z][\w.'’-]*\s+){0,3}[A-Z][\w.'’-]*) defend(?:ing|ed|s)? (?:his|her|their) ((?:[A-Z][\w-]*\s+){0,4})rematch against ((?:[A-Z][\w.'’-]*\s+){0,3}[A-Z][\w.'’-]*)/g, (_m: string, a: string, t: string, b: string) => `a ${t}rematch between ${a} and ${b}`],
