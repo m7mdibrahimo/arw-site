@@ -604,3 +604,11 @@ test("a lowercase word before the same letters in a name is not a doubled word (
   assert.deepEqual(repeatedEnglishWords("fans at AT&T Stadium"), []);
   assert.equal(collapseRepeatedEnglishWords("He won at at the show"), "He won at the show");
 });
+
+// Round 2026-11-18: the Shiloh Hill / John Cena Classic story's English edition was refused «copied from the source» on every
+// try — the only 14 matching words were the source's roster of ten names, which can only be written one way (INCIDENTS #1392)
+test('a roster of names is not «copied from the source», a copied sentence still is (round 2026-11-18)', () => {
+  const src = 'Hill becomes the latest NXT Superstar added to the event. Other confirmed names include Cody Rhodes, Zilla Fatu, Noam Dar, Romeo Moreno, Kelani Jordan, Charlotte Flair, Jacy Jayne, Fallon Henley, Lainey Reid and Liv Morgan. Hill has been working hard to establish himself on NXT, and now he is getting an opportunity that could put him in front of an even bigger audience.';
+  assert.equal(copiedRun('He joins a list that includes Cody Rhodes, Zilla Fatu, Noam Dar, Romeo Moreno, Kelani Jordan, Charlotte Flair, Jacy Jayne, Fallon Henley, Lainey Reid and Liv Morgan.', src), null);
+  assert.ok(copiedRun('Hill has been working hard to establish himself on NXT, and now he is getting an opportunity that could matter.', src));
+});

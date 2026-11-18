@@ -450,9 +450,15 @@ export function alteredQuoteSentence(body: string, sourceText: string): string |
 /** The first run of 14 words the edition's prose copies from the source (outside quotes, blockquotes and card lines), or null. */
 export function copiedRun(body: string, sourceText: string): string | null {
   const src = sourceText.toLowerCase().replace(/[“”"]/g, '"').replace(/\s+/g, " ");
-  const prosLines = body.split("\n").filter((l) => !/^\s*>/.test(l) && !/^<https?:/.test(l.trim()) && !isCardOrResultLine(l)).join(" ").toLowerCase().replace(/[“”"]/g, '"');
+  const prosLines = body.split("\n").filter((l) => !/^\s*>/.test(l) && !/^<https?:/.test(l.trim()) && !isCardOrResultLine(l)).join(" ").replace(/[“”"]/g, '"');
   const words = prosLines.replace(/"[^"]*"/g, " ").split(/\s+/).filter(Boolean);
-  for (let k = 0; k + 14 <= words.length; k++) { const run = words.slice(k, k + 14).join(" "); if (src.includes(run)) return run; }
+  for (let k = 0; k + 14 <= words.length; k++) {
+    const slice = words.slice(k, k + 14);
+    // A roster of names («Cody Rhodes, Zilla Fatu, Noam Dar, … and Liv Morgan») can only be written one way: it is not copying
+    // (Shiloh Hill / John Cena Classic story never reached the English site, INCIDENTS #1392)
+    if (slice.filter((w) => !/^(?:[A-Z0-9]|and,?$|&$|vs\.?,?$)/.test(w)).length <= 3) continue;
+    const run = slice.join(" ").toLowerCase(); if (src.includes(run)) return run;
+  }
   return null;
 }
 
