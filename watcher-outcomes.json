@@ -44,11 +44,6 @@
   "retry": true,
   "at": "2026-11-18T18:54:21.085Z"
  },
- "https://www.ringsidenews.com/mick-foley-reveals-craziest-item-fan-ever-asked-him-sign": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-18T18:46:32.965Z"
- },
  "https://www.fightful.com/wrestling/myka-lockwood-to-be-sole-woman-in-eight-person-tag-bout-womens-north-american-title-match-set-for-11-24-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
