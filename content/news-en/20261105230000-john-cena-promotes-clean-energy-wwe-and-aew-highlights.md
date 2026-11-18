@@ -14,7 +14,9 @@ en_tags:
   - "NXT"
 image: /content/images/0uar8cyhv6qt00as.jpg
 ---
-John Cena is promoting Big Power, Zero Drama, a new campaign focused on clean energy in the United States. In other news, WWE NXT highlights included Nattie and TJ Wilson's dungeon session with Angelo Dawkins and B-Fab. AEW Dynamite Blood & Guts highlights were also released. Additionally, DEFY, ActWres Girl'z, and KHAO are now available on Dropkickd, and a vintage Roman Reigns t-shirt is available at WWE Shop. Joey Janela and Flyin Ryan are set to face Alec Price and Jordan Oliver at GCW The Crossroads, while Megan Bayne, Tony Deppen, and Slade have been signed for GCW Til Infinity. Amira Blair commented on her In The Weeds appearance, and Cheeseburger expressed interest in wrestling Providence Mayor David Morales. Finally, full matches and events were released, including the Hell in a Cell 2013 main event and a 1987 WWE Houston show.
+John Cena is promoting Big Power, Zero Drama, a new campaign focused on clean energy in the United States. In other news, WWE NXT highlights included Nattie and TJ Wilson's dungeon session with Angelo Dawkins and B-Fab. AEW Dynamite Blood & Guts highlights were also released.
+
+Additionally, DEFY, ActWres Girl'z, and KHAO are now available on Dropkickd, and a vintage Roman Reigns t-shirt is available at WWE Shop. Joey Janela and Flyin Ryan are set to face Alec Price and Jordan Oliver at GCW The Crossroads, while Megan Bayne, Tony Deppen, and Slade have been signed for GCW Til Infinity. Amira Blair commented on her In The Weeds appearance, and Cheeseburger expressed interest in wrestling Providence Mayor David Morales. Finally, full matches and events were released, including the Hell in a Cell 2013 main event and a 1987 WWE Houston show.
 
 https://www.youtube.com/watch?v=nRnVEHSsXSM
 

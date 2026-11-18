@@ -14,6 +14,8 @@ en_tags:
   - "Wembley Stadium"
 image: /content/images/ofms22dpikgoeljt.jpg
 ---
-AEW President Tony Khan recently stated that the company is experiencing its most successful year ever in terms of pay-per-view business, with record-breaking numbers achieved throughout 2026. Speaking during an interview with WPRK 91.5 FM, Khan pointed to increased viewership across television and successful events on HBO Max as key drivers of this growth. He highlighted that pay-per-view buyrates have seen a significant upward trend, specifically comparing the success of All Out 2026 to the previous year. Khan noted that AEW All In at Wembley Stadium in London generated the company's highest pay-per-view figures to date, cementing 2026 as a historic year for the promotion. He also discussed AEW's ongoing media partnerships, expressing optimism about working with Skydance and David Ellison to secure an even stronger future for the company.
+AEW President Tony Khan recently stated that the company is experiencing its most successful year ever in terms of pay-per-view business, with record-breaking numbers achieved throughout 2026. Speaking during an interview with WPRK 91.5 FM, Khan pointed to increased viewership across television and successful events on HBO Max as key drivers of this growth. He highlighted that pay-per-view buyrates have seen a significant upward trend, specifically comparing the success of All Out 2026 to the previous year.
+
+Khan noted that AEW All In at Wembley Stadium in London generated the company's highest pay-per-view figures to date, cementing 2026 as a historic year for the promotion. He also discussed AEW's ongoing media partnerships, expressing optimism about working with Skydance and David Ellison to secure an even stronger future for the company.
 
 https://www.youtube.com/watch?v=kbWdlrworZQ

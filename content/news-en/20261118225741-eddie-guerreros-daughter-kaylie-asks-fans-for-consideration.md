@@ -1,5 +1,5 @@
 ---
-title: "Eddie Guerrero’s Daughter Kaylie Asks Fans for Consideration"
+title: "Eddie Guerrero’s Daughter Kaylie Asks Fans Not to Tag Her in Photos of Her Father"
 slug: "eddie-guerreros-daughter-kaylie-asks-fans-for-consideration"
 description: "Wrestling fans worldwide continue to honor and remember Eddie Guerrero, particularly as the anniversary of his passing approaches."
 federation: WWE

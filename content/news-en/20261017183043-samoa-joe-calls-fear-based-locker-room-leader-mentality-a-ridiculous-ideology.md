@@ -13,6 +13,8 @@ en_tags:
   - "AEW"
 image: /content/images/pfyqd5t68f5jx1d5.jpg
 ---
-Samoa Joe recently shared his thoughts on locker room leadership during an interview with SHAK Wrestling, explaining why he believes controlling wrestlers through fear is a ridiculous ideology. Joe stated that a true leader earns respect naturally through professionalism and fairness rather than by threatening careers. He noted that great men are never led by fear, but rather by those whose knowledge and opinions they respect. Joe also addressed the traditional image of a physically domineering veteran who rules through unwritten laws, making it clear that such concepts do not reflect how real respect is built. He discussed the legacy of The Undertaker in WWE, suggesting that his respected status came from who he was as a person rather than any career fear. Finally, Joe highlighted that leadership begins with simple respect and rapport, reflecting his own decades of experience in the wrestling industry.
+Samoa Joe recently shared his thoughts on locker room leadership during an interview with SHAK Wrestling, explaining why he believes controlling wrestlers through fear is a ridiculous ideology. Joe stated that a true leader earns respect naturally through professionalism and fairness rather than by threatening careers. He noted that great men are never led by fear, but rather by those whose knowledge and opinions they respect.
+
+Joe also addressed the traditional image of a physically domineering veteran who rules through unwritten laws, making it clear that such concepts do not reflect how real respect is built. He discussed the legacy of The Undertaker in WWE, suggesting that his respected status came from who he was as a person rather than any career fear. Finally, Joe highlighted that leadership begins with simple respect and rapport, reflecting his own decades of experience in the wrestling industry.
 
 https://www.youtube.com/watch?v=er2P8ACM09o

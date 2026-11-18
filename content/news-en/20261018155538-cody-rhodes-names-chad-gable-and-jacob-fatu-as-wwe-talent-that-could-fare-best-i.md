@@ -14,6 +14,8 @@ en_tags:
   - "Corey Brennan"
 image: /content/images/hdojcd0x8aey4ltw.jpg
 ---
-Cody Rhodes recently discussed which WWE talent would succeed if they entered a Street Fighter World Warrior tournament. The Street Fighter film is now releasing worldwide, featuring professional wrestlers including Cody Rhodes and Roman Reigns playing Guile and Akuma. Speaking in an interview with Brandon Davis, Rhodes considered who would excel in such a tournament. "In a good old fashioned World Warrior Tournament? I think you really wanna go with the crafty. Who is in there? Do you have a guess? You got some parallels with a Blanka and a Jacob Fatu, just a madness. You've seen Jacob Fatu fire up. I think really you picked the right two guys though, if there was a World Warrior Tournament. Actually no, I stand corrected and you know this, World Warrior Tournament at WWE, Chad Gable. A shooter's shooter."
+Cody Rhodes recently discussed which WWE talent would succeed if they entered a Street Fighter World Warrior tournament. The Street Fighter film is now releasing worldwide, featuring professional wrestlers including Cody Rhodes and Roman Reigns playing Guile and Akuma. Speaking in an interview with Brandon Davis, Rhodes considered who would excel in such a tournament.
+
+> "In a good old fashioned World Warrior Tournament? I think you really wanna go with the crafty. Who is in there? Do you have a guess? You got some parallels with a Blanka and a Jacob Fatu, just a madness. You've seen Jacob Fatu fire up. I think really you picked the right two guys though, if there was a World Warrior Tournament. Actually no, I stand corrected and you know this, World Warrior Tournament at WWE, Chad Gable. A shooter's shooter."
 
 https://www.youtube.com/watch?v=z2xsJjVSNJk

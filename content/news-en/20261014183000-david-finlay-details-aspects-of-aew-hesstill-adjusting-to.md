@@ -13,6 +13,8 @@ en_tags:
   - "Chris Jericho"
 image: /content/images/u5n91oqejl893z6m.jpg
 ---
-David Finlay has opened up about the various adjustments he has had to make since transitioning from NJPW to AEW earlier this year. After spending over a decade in NJPW and holding the IWGP Global Heavyweight Championship twice, Finlay admits that he is still adapting to the distinct wrestling style in AEW. Speaking on Talk is Jericho, he noted that while the work-style differs completely, the schedule is much more manageable compared to grueling tours like the G1 Climax. Finlay also discussed his ongoing adjustment to AEW's television production, particularly the camera work and strict time limits for matches and segments, contrasting it with NJPW's more flexible main event timing. Since arriving in AEW, Finlay has teamed up with former NJPW stars Clark Connors and Gabe Kidd, capturing the AEW World Trios Championship briefly during their run.
+David Finlay has opened up about the various adjustments he has had to make since transitioning from NJPW to AEW earlier this year. After spending over a decade in NJPW and holding the IWGP Global Heavyweight Championship twice, Finlay admits that he is still adapting to the distinct wrestling style in AEW. Speaking on Talk is Jericho, he noted that while the work-style differs completely, the schedule is much more manageable compared to grueling tours like the G1 Climax.
+
+Finlay also discussed his ongoing adjustment to AEW's television production, particularly the camera work and strict time limits for matches and segments, contrasting it with NJPW's more flexible main event timing. Since arriving in AEW, Finlay has teamed up with former NJPW stars Clark Connors and Gabe Kidd, capturing the AEW World Trios Championship briefly during their run.
 
 https://www.youtube.com/watch?v=YWGMmWP-Tqw

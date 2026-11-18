@@ -14,7 +14,11 @@ en_tags:
   - "Don Callis Family"
 image: /content/images/0ot36bcffu1azikt.jpg
 ---
-Adam Copeland surrendered at the demand of Kyle Fletcher during the Men's Blood & Guts Match on AEW Dynamite. The bout featured Will Ospreay, The Young Bucks, Adam Copeland, Darby Allin, and Steven Borden facing Kazuchika Okada, Kyle Fletcher, Wardlow, Kevin Knight, Mark Davis, and Jake Doyle. The action saw weapons introduced early, including Darby Allin's skateboard and a trash can used by Matt Jackson. Wardlow later drove Copeland through a table with a Swanton, while Steven Borden delivered signature corner splashes. Fletcher and Don Callis eventually targeted Allin, leading to a brawl on top of the cage where Wardlow tossed Allin down. Inside the ring, Copeland was chained to the structure by Kazuchika Okada and Rocky Romero. Fletcher threatened Will Ospreay with a screwdriver, forcing Copeland to surrender to protect his teammate. The show ended with the Don Callis Family standing tall.
+Adam Copeland surrendered at the demand of Kyle Fletcher during the Men's Blood & Guts Match on AEW Dynamite. The bout featured Will Ospreay, The Young Bucks, Adam Copeland, Darby Allin, and Steven Borden facing Kazuchika Okada, Kyle Fletcher, Wardlow, Kevin Knight, Mark Davis, and Jake Doyle. The action saw weapons introduced early, including Darby Allin's skateboard and a trash can used by Matt Jackson.
+
+Wardlow later drove Copeland through a table with a Swanton, while Steven Borden delivered signature corner splashes. Fletcher and Don Callis eventually targeted Allin, leading to a brawl on top of the cage where Wardlow tossed Allin down. Inside the ring, Copeland was chained to the structure by Kazuchika Okada and Rocky Romero.
+
+Fletcher threatened Will Ospreay with a screwdriver, forcing Copeland to surrender to protect his teammate. The show ended with the Don Callis Family standing tall.
 
 https://x.com/AEW/status/2118182634903753127
 

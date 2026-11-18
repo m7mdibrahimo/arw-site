@@ -15,4 +15,8 @@ en_tags:
   - "Austin Aries"
 image: /content/images/vzoel2h0cpy5ir0z.jpg
 ---
-Major League Wrestling aired the latest episode of MLW Fusion on November 12, broadcasting on Tubi. Donovan Dijak confronted the new MLW World Heavyweight Champion Josh Bishop upon his arrival. In the Opera Cup semifinals, Austin Aries defeated LaBron Kozone. Footage aired of Contra attacking Mistico at SuperFight. Trevor Lee issued a challenge to Brick Savage. Jumbo picked up a victory against Foxx Vinyer, Just Jay, and Flip Sequoyah. Matt Riddle stated that Aries is running out of time. Contra launched an attack on Beastman, Kimchee, and Rodriguez, while Diego Hill attempted a make-shift save before being taken out as well. Dijak declared that the Skyscrapers are no more. In the final match of the night, Shotzi Blackheart, Zamaya, and Scarlett Bordeaux secured a win over Lady Frost and HATE, which consists of Rina and Saya Kamitani.
+Major League Wrestling aired the latest episode of MLW Fusion on November 12, broadcasting on Tubi. Donovan Dijak confronted the new MLW World Heavyweight Champion Josh Bishop upon his arrival. In the Opera Cup semifinals, Austin Aries defeated LaBron Kozone.
+
+Footage aired of Contra attacking Mistico at SuperFight. Trevor Lee issued a challenge to Brick Savage. Jumbo picked up a victory against Foxx Vinyer, Just Jay, and Flip Sequoyah.
+
+Matt Riddle stated that Aries is running out of time. Contra launched an attack on Beastman, Kimchee, and Rodriguez, while Diego Hill attempted a make-shift save before being taken out as well. Dijak declared that the Skyscrapers are no more. In the final match of the night, Shotzi Blackheart, Zamaya, and Scarlett Bordeaux secured a win over Lady Frost and HATE, which consists of Rina and Saya Kamitani.

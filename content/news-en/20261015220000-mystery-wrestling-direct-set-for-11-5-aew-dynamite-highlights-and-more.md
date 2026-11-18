@@ -14,7 +14,13 @@ en_tags:
   - "CM Punk"
 image: /content/images/jxil56b01ezk817u.jpg
 ---
-Mystery Wrestling will host a Direct event on November 5 to reveal their future plans. AEW Dynamite and Collision featured several highlights this week. ShopAEW is now selling limited edition art prints of Darby Allin, while WWE Shop released a new retro CM Punk shirt. John Cena commented on a viral clip of him rapping his theme song. NHB 104 has announced a matchup between Vixsin and Eric Ryan. Additionally, Cody Rhodes, The Miz, Liv Morgan, and Trick Williams will engage with fans on WhatsApp during the upcoming NFL game between the Cowboys and Packers. Dan Spivey praised Royce Keys for his performance in WWE. Caprice Coleman is set for PRODUCE Vol. 7, and the former Apollo Crews will return to PCW UK later this month. Nick Gage and Mr. Danger are confirmed for GCW Highest In The Room 5. Rey Fenix shared his thoughts on his recent loss on WWE Raw. Finally, Southern Underground Pro announced they will not stream their first show back.
+Mystery Wrestling will host a Direct event on November 5 to reveal their future plans. AEW Dynamite and Collision featured several highlights this week. ShopAEW is now selling limited edition art prints of Darby Allin, while WWE Shop released a new retro CM Punk shirt.
+
+John Cena commented on a viral clip of him rapping his theme song. NHB 104 has announced a matchup between Vixsin and Eric Ryan. Additionally, Cody Rhodes, The Miz, Liv Morgan, and Trick Williams will engage with fans on WhatsApp during the upcoming NFL game between the Cowboys and Packers.
+
+Dan Spivey praised Royce Keys for his performance in WWE. Caprice Coleman is set for PRODUCE Vol. 7, and the former Apollo Crews will return to PCW UK later this month. Nick Gage and Mr. Danger are confirmed for GCW Highest In The Room 5.
+
+Rey Fenix shared his thoughts on his recent loss on WWE Raw. Finally, Southern Underground Pro announced they will not stream their first show back.
 
 https://www.youtube.com/watch?v=vO8MJEp8bqg
 

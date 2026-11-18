@@ -13,6 +13,8 @@ en_tags:
   - "Randy Orton"
 image: /content/images/e520uzqvuv4g380e.jpg
 ---
-WWE has announced that Cody Rhodes and Randy Orton will face each other in a Last Man Standing Match at WWE Crown Jewel 2026. The two superstars have been feuding for weeks, and the match was made official following a tense confrontation on the October 23 episode of WWE SmackDown. Orton began the segment by taunting Rhodes, praising him for using a punt kick against Baron Corbin but warning that doing the same to him would be a different challenge. Rhodes responded by calling Orton a coward and bringing up his past attacks on Triple H, Shawn Michaels, and Dusty Rhodes. After Nick Aldis intervened to prevent a brawl, he proposed the Last Man Standing Match for the event on November 7 in Riyadh, Saudi Arabia. Both men agreed, setting the stage for their showdown.
+WWE has announced that Cody Rhodes and Randy Orton will face each other in a Last Man Standing Match at WWE Crown Jewel 2026. The two superstars have been feuding for weeks, and the match was made official following a tense confrontation on the October 23 episode of WWE SmackDown. Orton began the segment by taunting Rhodes, praising him for using a punt kick against Baron Corbin but warning that doing the same to him would be a different challenge.
+
+Rhodes responded by calling Orton a coward and bringing up his past attacks on Triple H, Shawn Michaels, and Dusty Rhodes. After Nick Aldis intervened to prevent a brawl, he proposed the Last Man Standing Match for the event on November 7 in Riyadh, Saudi Arabia. Both men agreed, setting the stage for their showdown.
 
 https://x.com/WWE/status/2113800599351304434

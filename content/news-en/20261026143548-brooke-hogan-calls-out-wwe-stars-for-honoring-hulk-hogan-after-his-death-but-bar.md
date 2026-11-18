@@ -13,6 +13,8 @@ en_tags:
   - "Triple H"
 image: /content/images/u0sgbi3wgq5381fs.jpg
 ---
-Brooke Hogan has strongly criticized the WWE Superstars and legends who appeared on television to honor her late father, Hulk Hogan, accusing them of barely visiting him while he was alive. Sharing a photo of the tribute on the stage, Brooke claimed that not a single person present spent more than an hour visiting him in the hospital, and some never showed up at all. The tribute featured Triple H and numerous company legends participating in a ten-bell salute and a career video package. However, Brooke expressed frustration over the public display, contrasting it with the lack of personal support during his health struggles. This follows her recent anger over the sale of her father's Clearwater Beach mansion for 5.9 million dollars, a home filled with family memories, which she believes was sold for profit by people taking advantage of him.
+Brooke Hogan has strongly criticized the WWE Superstars and legends who appeared on television to honor her late father, Hulk Hogan, accusing them of barely visiting him while he was alive. Sharing a photo of the tribute on the stage, Brooke claimed that not a single person present spent more than an hour visiting him in the hospital, and some never showed up at all. The tribute featured Triple H and numerous company legends participating in a ten-bell salute and a career video package.
+
+However, Brooke expressed frustration over the public display, contrasting it with the lack of personal support during his health struggles. This follows her recent anger over the sale of her father's Clearwater Beach mansion for 5.9 million dollars, a home filled with family memories, which she believes was sold for profit by people taking advantage of him.
 
 https://x.com/stevecarrier_/status/2114680916811366818

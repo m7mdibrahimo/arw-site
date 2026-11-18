@@ -14,7 +14,13 @@ en_tags:
   - "TNA"
 image: /content/images/zox6btx9s18f7h4v.jpg
 ---
-Billie Starkz will reach her eight-year anniversary in wrestling on October 13. Liv Morgan is set to return to WWE RAW as the Women’s World Champion. Ethan Page celebrated Thanksgiving in Canada on social media. Southern Underground Pro announced Adam Priest, Jaden Newman, Tim Bosby, and Corinne Joy for their return show. Mauro Ranallo approved of Veda Scott, while TWE Nightmare On Dayton Boulevard will stream live on IWTV. Carmen Michael will miss PRODUCE Volume 5 due to travel issues, and Beyond Wrestling announced dates for this year's Wrestival. AEW rebranded its youth merchandise section. Ricochet celebrated his 37th birthday on October 11. Atticus Cogar, Bear Bronson, Vipress, and Gabby Forza are set for GCW Deck The Halls. Chris Hero will host a seminar for Absolute Intense Wrestling on October 13. Finally, the former Zoey Stark is urging TNA to meet Shayna Baszler's demands.
+Billie Starkz will reach her eight-year anniversary in wrestling on October 13. Liv Morgan is set to return to WWE RAW as the Women’s World Champion. Ethan Page celebrated Thanksgiving in Canada on social media.
+
+Southern Underground Pro announced Adam Priest, Jaden Newman, Tim Bosby, and Corinne Joy for their return show. Mauro Ranallo approved of Veda Scott, while TWE Nightmare On Dayton Boulevard will stream live on IWTV. Carmen Michael will miss PRODUCE Volume 5 due to travel issues, and Beyond Wrestling announced dates for this year's Wrestival.
+
+AEW rebranded its youth merchandise section. Ricochet celebrated his 37th birthday on October 11. Atticus Cogar, Bear Bronson, Vipress, and Gabby Forza are set for GCW Deck The Halls.
+
+Chris Hero will host a seminar for Absolute Intense Wrestling on October 13. Finally, the former Zoey Stark is urging TNA to meet Shayna Baszler's demands.
 
 https://www.youtube.com/watch?v=ovwghJlVMKs
 

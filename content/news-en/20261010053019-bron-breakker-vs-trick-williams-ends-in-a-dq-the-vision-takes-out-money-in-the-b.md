@@ -14,7 +14,11 @@ en_tags:
   - "Money in the Bank"
 image: /content/images/367tvntbchb9ttet.jpg
 ---
-Bron Breakker and Trick Williams faced off in the main event of the October 9 episode of WWE SmackDown, which ended in a disqualification. Earlier in the night, Breakker had a segment with Williams and Lil Yachty and tried to start a fight. The Raw General Manager suggested the match, and Nick Aldis made it official. Near the end of the bout, The Vision members Austin Theory and Logan Paul interfered to help Breakker, causing a disqualification. Je’Von Evans rushed out to make the save and dropped Theory, but Breakker and Theory teamed up to take down Evans. Penta then entered the ring, hit Breakker and Theory with kicks, and launched himself at Theory and Paul outside. Bronson Reed attacked Penta from behind and turned his attention to Evans and Williams. The show concluded with Breakker hitting a spear on Williams, followed by a Tsunami splash from Reed.
+Bron Breakker and Trick Williams faced off in the main event of the October 9 episode of WWE SmackDown, which ended in a disqualification. Earlier in the night, Breakker had a segment with Williams and Lil Yachty and tried to start a fight. The Raw General Manager suggested the match, and Nick Aldis made it official.
+
+Near the end of the bout, The Vision members Austin Theory and Logan Paul interfered to help Breakker, causing a disqualification. Je’Von Evans rushed out to make the save and dropped Theory, but Breakker and Theory teamed up to take down Evans. Penta then entered the ring, hit Breakker and Theory with kicks, and launched himself at Theory and Paul outside.
+
+Bronson Reed attacked Penta from behind and turned his attention to Evans and Williams. The show concluded with Breakker hitting a spear on Williams, followed by a Tsunami splash from Reed.
 
 https://www.youtube.com/watch?v=B-IEYPKYg6s
 

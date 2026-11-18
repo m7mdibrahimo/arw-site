@@ -811,6 +811,51 @@ export function closeOpenQuoteLines(body: string): string {
   }).join("\n");
 }
 
+/** A story written as ONE long block — «Charli Evans…» was 228 words and 18 sentences in a single paragraph, and
+ *  about one English story in ten came out that way (INCIDENTS #1409). A prose paragraph of 130+ words that has 4+
+ *  sentences (a whole quote counts as one) is cut at sentence ends that are outside any quote into paragraphs of about three sentences; a whole quoted
+ *  statement standing as its own sentence run becomes its own «>» quote line, as the style rules ask. Lists, quotes,
+ *  embeds and short paragraphs are never touched. */
+const ABBREV = /(?:^|\s)(?:St|Mr|Mrs|Ms|Dr|Jr|Sr|vs|No|Vol|Pt|Lt|Gen|Sgt|Mt|Ft|Inc|Co|[A-Z])\.$/;
+export function splitLongParagraphs(body: string): string {
+  return body.split(/\n\s*\n/).map((para) => {
+    const p = para.trim();
+    if (!p || p.includes("\n") || /^\s*[>|#*\-\d]/.test(p) || isEmbedLine(p) || p.split(/\s+/).length < 130) return para;
+    const parts: string[] = [];
+    let start = 0, inQ = false;
+    for (let k = 0; k < p.length; k++) {
+      const c = p[k];
+      if (c === "\u201c") inQ = true;
+      else if (c === "\u201d") inQ = false;
+      else if (c === '"') inQ = !inQ;
+      if (!/[.!?]/.test(c) || (inQ && !/["\u201d]/.test(p[k + 1] || ""))) continue;
+      let e = k + 1;
+      while (e < p.length && /["\u201d')]/.test(p[e])) { if (p[e] !== ")") inQ = false; e++; }
+      if (p[e] !== " " || !/["\u201cA-Z0-9]/.test(p[e + 1] || "")) continue;
+      if (c === "." && ABBREV.test(p.slice(Math.max(0, k - 5), k + 1))) continue;
+      parts.push(p.slice(start, e).trim());
+      start = e + 1;
+      k = e;
+    }
+    parts.push(p.slice(start).trim());
+    if (parts.length < 4) return para;
+    const isQuote = (x: string) => /^["\u201c]/.test(x) && /["\u201d]$/.test(x) && !/["\u201d][^"\u201d]*["\u201c]/.test(x.slice(1, -1));
+    const out: string[] = [];
+    let cur: string[] = [];
+    for (const s of parts.filter(Boolean)) {
+      if (isQuote(s) && s.split(/\s+/).length >= 8) { if (cur.length) out.push(cur.join(" ")); cur = []; out.push(`> ${s}`); continue; }
+      cur.push(s);
+      if (cur.length >= 3) { out.push(cur.join(" ")); cur = []; }
+    }
+    if (cur.length) {
+      // a lone last sentence joins the paragraph before it rather than standing alone
+      if (cur.length === 1 && out.length && !out[out.length - 1].startsWith(">")) out[out.length - 1] += ` ${cur[0]}`;
+      else out.push(cur.join(" "));
+    }
+    return out.join("\n\n");
+  }).join("\n\n");
+}
+
 export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEWS_EN_DIR): string {
   // a literal «\n» typed as text (INCIDENTS #736: «…limited schedule. \n\n> "Shingo…») is a line break, and a
   // literal «\"» is a plain quote mark (the FAA ground-stop story showed «\"due to extraordinary circumstances…\"»
@@ -832,7 +877,7 @@ export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEW
   const body = trailingEmbedsLast(splitGluedBlocks(e.body.replace(/\r/g, "")).replace(/\n{3,}/g, "\n\n").trim(), i.arabicBody);
   // the embeds the Arabic story has and the English one left out go at its end
   const missing = embedLines(i.arabicBody).filter((l) => !body.includes(linkOf(l)));
-  const finalBody = embedOwnParagraph(missing.length ? `${body}\n\n${missing.join("\n\n")}` : body);
+  const finalBody = splitLongParagraphs(embedOwnParagraph(missing.length ? `${body}\n\n${missing.join("\n\n")}` : body));
   // The description used to be built from the FIRST prose line only. When that line is the writer's short
   // topic sentence — «Monica Monroe was recruited by AJ Styles.» — the snippet under the title said nothing
   // about the story (a 40-letter description on live pages, 2026-10-27). The first prose paragraphs are given
@@ -943,7 +988,7 @@ export function syncEnglishFromArabic(dir = NEWS_EN_DIR, newsDir = NEWS_DIR): nu
     body = splitQuoteNarration(body);
     const missing = embedLines(ar.body).filter((l) => !body.includes(linkOf(l)));
     if (missing.length) body = `${body}\n\n${missing.join("\n\n")}`;
-    body = embedOwnParagraph(body);
+    body = splitLongParagraphs(embedOwnParagraph(body));
     const fmNoGallery = fm.replace(/^gallery:\n(?:  - .*\n?)*/m, "").replace(/\n$/, "");
     const fmNew = ar.gallery.length ? fmNoGallery.replace(/^(image:.*)$/m, (l) => [l, ...galleryYaml(ar.gallery)].join("\n")) : fmNoGallery;
     const out = `---\n${fmNew}\n---\n${body}\n`;

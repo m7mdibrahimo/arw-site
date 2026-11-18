@@ -12,6 +12,8 @@ en_tags:
   - "Going Ringside"
 image: /content/images/4fqc3odwkx69to9i.jpg
 ---
-Orange Cassidy has spent years enduring brutal matches and physical punishment in AEW. During a recent appearance on Going Ringside, Cassidy discussed the physical toll of his career since 2019 with host Scott Johnson. While he admitted that the wear and tear is real, he revealed a unique way of coping with the pain by simply choosing not to dwell on it. Cassidy explained, "Yeah, sure. But, uh, you know, you kind of block out that from your brain and, uh, try not to think about it because if I think about it then things start to hurt but if I don't think about it then things don't hurt." Although he did not mention any specific injuries, he acknowledged that his body has not escaped the damage from years of high-impact action and ongoing rivalries against opponents like the Death Riders.
+Orange Cassidy has spent years enduring brutal matches and physical punishment in AEW. During a recent appearance on Going Ringside, Cassidy discussed the physical toll of his career since 2019 with host Scott Johnson. While he admitted that the wear and tear is real, he revealed a unique way of coping with the pain by simply choosing not to dwell on it.
+
+Cassidy explained, "Yeah, sure. But, uh, you know, you kind of block out that from your brain and, uh, try not to think about it because if I think about it then things start to hurt but if I don't think about it then things don't hurt." Although he did not mention any specific injuries, he acknowledged that his body has not escaped the damage from years of high-impact action and ongoing rivalries against opponents like the Death Riders.
 
 https://www.youtube.com/watch?v=tiLYxpClbPE

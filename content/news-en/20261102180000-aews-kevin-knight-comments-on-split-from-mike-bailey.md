@@ -14,6 +14,8 @@ en_tags:
   - "AEW"
 image: /content/images/0ng4mzabqi7jn8gd.jpg
 ---
-AEW's Kevin Knight has discussed his split from former tag team partner Mike Bailey after turning heel earlier this year. The duo, known as JetSpeed, formed last year before Knight turned on Bailey and ended their partnership. In an interview with TMZ's Inside The Ring, Knight admitted he might have been a bit harsh on Bailey for not choosing his side at the time, but noted that they are both thriving on their own now. Knight added that he does not want to get on Bailey's bad side again due to his vicious kicks, stating that as long as they stay on separate sides, everything is good. Although Bailey was shocked by the betrayal during their match on the June 3 episode of AEW Dynamite, Knight did not rule out a potential future reunion.
+AEW's Kevin Knight has discussed his split from former tag team partner Mike Bailey after turning heel earlier this year. The duo, known as JetSpeed, formed last year before Knight turned on Bailey and ended their partnership. In an interview with TMZ's Inside The Ring, Knight admitted he might have been a bit harsh on Bailey for not choosing his side at the time, but noted that they are both thriving on their own now.
+
+Knight added that he does not want to get on Bailey's bad side again due to his vicious kicks, stating that as long as they stay on separate sides, everything is good. Although Bailey was shocked by the betrayal during their match on the June 3 episode of AEW Dynamite, Knight did not rule out a potential future reunion.
 
 https://www.youtube.com/watch?v=EAr1A3YQPRA

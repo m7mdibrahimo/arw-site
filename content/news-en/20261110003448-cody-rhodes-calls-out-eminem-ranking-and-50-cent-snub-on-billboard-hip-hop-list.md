@@ -14,6 +14,8 @@ en_tags:
   - "Billboard"
 image: /content/images/1ehb98cqf49q5gnu.jpg
 ---
-Cody Rhodes questioned a recent Billboard hip-hop ranking that placed Eminem at number four, arguing he should be higher, and criticized the complete exclusion of 50 Cent from the top 15. Speaking on the Double Coverage podcast with Zach Hirsch, Rhodes shared his thoughts on the list while discussing his musical tastes. Rhodes noted that while Tupac ranking third made sense to him, he could not understand why Eminem was not in the top two and why 50 Cent missed the list entirely. He also praised 50 Cent's work ethic and physique, recalling how impressed he was by the rapper's dedication during their time filming Street Fighter, where 50 Cent portrayed Balrog and even rented out an entire Australian amusement park for the cast and their families. Rhodes admitted he is no rap expert, noting that his sister, a massive Atlanta hip-hop fan, agreed with his assessment that 50 Cent deserved a spot on the list.
+Cody Rhodes questioned a recent Billboard hip-hop ranking that placed Eminem at number four, arguing he should be higher, and criticized the complete exclusion of 50 Cent from the top 15. Speaking on the Double Coverage podcast with Zach Hirsch, Rhodes shared his thoughts on the list while discussing his musical tastes. Rhodes noted that while Tupac ranking third made sense to him, he could not understand why Eminem was not in the top two and why 50 Cent missed the list entirely.
+
+He also praised 50 Cent's work ethic and physique, recalling how impressed he was by the rapper's dedication during their time filming Street Fighter, where 50 Cent portrayed Balrog and even rented out an entire Australian amusement park for the cast and their families. Rhodes admitted he is no rap expert, noting that his sister, a massive Atlanta hip-hop fan, agreed with his assessment that 50 Cent deserved a spot on the list.
 
 https://www.youtube.com/watch?v=hDgGhlcL5Ik

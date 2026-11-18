@@ -14,7 +14,9 @@ en_tags:
   - "WCW"
 image: /content/images/2b7hevhmaybfmk8w.jpg
 ---
-Green Bay Packers wide receiver Christian Watson made a dramatic exit from an ambulance on Thursday after suffering a rib injury during his team's game against the Carolina Panthers. After being cleared to return to the field following a hospital visit, Watson's exit from the vehicle drew immediate comparisons to a famous 1991 WCW angle involving Sting. During that era, Sting, who was the United States Champion, famously charged out of an ambulance at Clash of Champions 17 to defend his title against Rick Rude. WWE Hall of Famer Paul Heyman, who managed Rick Rude during that 1991 encounter, took to X to address the comparisons. Heyman praised the NFL creative team for the moment, stating that the industry has successfully repeated the trope several times since his original WCW experience.
+Green Bay Packers wide receiver Christian Watson made a dramatic exit from an ambulance on Thursday after suffering a rib injury during his team's game against the Carolina Panthers. After being cleared to return to the field following a hospital visit, Watson's exit from the vehicle drew immediate comparisons to a famous 1991 WCW angle involving Sting. During that era, Sting, who was the United States Champion, famously charged out of an ambulance at Clash of Champions 17 to defend his title against Rick Rude.
+
+WWE Hall of Famer Paul Heyman, who managed Rick Rude during that 1991 encounter, took to X to address the comparisons. Heyman praised the NFL creative team for the moment, stating that the industry has successfully repeated the trope several times since his original WCW experience.
 
 https://www.youtube.com/watch?v=_bY01QgjgCs
 

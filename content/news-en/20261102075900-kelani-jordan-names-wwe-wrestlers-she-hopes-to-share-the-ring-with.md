@@ -16,7 +16,9 @@ image: /content/images/w8du9lucwo2j6obq.jpg
 gallery:
   - /content/images/xs7yqem4e5i4a9iu.webp
 ---
-Kelani Jordan recently gained experience on the main roster by competing in a Women's Money in the Bank qualifying match on "WWE Raw." In a recent interview with "Wrastlin' with E & Matt," Jordan shared her aspirations for future main roster opponents. "There's a lot of them," she said. "I mean, honestly, I want to be the top one. So anyone, especially if they're holding a championship, then I'm coming for them. I would say Rhea [Ripley]. I really want to get in the ring with Rhea. I really want to get in the ring with Becky [Lynch], and when Bianca [Belair] and Naomi come back from their babies, they're always going to be a mom, but when they come back, I want to get in the ring with them."
+Kelani Jordan recently gained experience on the main roster by competing in a Women's Money in the Bank qualifying match on "WWE Raw." In a recent interview with "Wrastlin' with E & Matt," Jordan shared her aspirations for future main roster opponents. "There's a lot of them," she said.
+
+> "I mean, honestly, I want to be the top one. So anyone, especially if they're holding a championship, then I'm coming for them. I would say Rhea [Ripley]. I really want to get in the ring with Rhea. I really want to get in the ring with Becky [Lynch], and when Bianca [Belair] and Naomi come back from their babies, they're always going to be a mom, but when they come back, I want to get in the ring with them."
 
 Jordan also identified Naomi, Bianca Belair, and Sasha Banks (Mercedes Moné) as major inspirations for her career. "In wrestling, I still look up to Naomi to this day, and Sasha Banks, another huge inspiration," Jordan explained. "So those two, definitely within wrestling, because they're not just good wrestlers for a woman, they're good wrestlers in general. They have a lot of personality, charisma, they look good, so those two are my two. Even when I got into wrestling myself, Bianca Belair also was on the rise too in NXT and then she got the main roster. She was another one that I really looked up to."
 

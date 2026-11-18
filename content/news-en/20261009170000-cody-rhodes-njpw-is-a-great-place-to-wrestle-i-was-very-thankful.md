@@ -12,6 +12,10 @@ en_tags:
   - "Hirooki Goto"
 image: /content/images/17200zy4mf73enme.jpg
 ---
-During a recent appearance on the Flagrant podcast, Cody Rhodes praised NJPW and discussed its top stars. When asked about Hirooki Goto, Rhodes called him one of the promotion's top stars for quite some time, though he clarified that comparing him to figures like The Undertaker or John Cena might not sit well with hardcore fans. Rhodes admitted he never wrestled Goto in a one-on-one match, adding that he would have liked to face both Goto and Tomohiro Ishii. Speaking about his time in Japan, Rhodes expressed his gratitude and highlighted the unique atmosphere of the promotion. "Japan wrestling is treated very sport heavy. Sport first. They definitely have sports entertainment and they'd understand that, but it's very sport first. It's a great place to wrestle, I was very thankful."
+During a recent appearance on the Flagrant podcast, Cody Rhodes praised NJPW and discussed its top stars. When asked about Hirooki Goto, Rhodes called him one of the promotion's top stars for quite some time, though he clarified that comparing him to figures like The Undertaker or John Cena might not sit well with hardcore fans. Rhodes admitted he never wrestled Goto in a one-on-one match, adding that he would have liked to face both Goto and Tomohiro Ishii.
+
+Speaking about his time in Japan, Rhodes expressed his gratitude and highlighted the unique atmosphere of the promotion.
+
+> "Japan wrestling is treated very sport heavy. Sport first. They definitely have sports entertainment and they'd understand that, but it's very sport first. It's a great place to wrestle, I was very thankful."
 
 https://www.youtube.com/watch?v=VfnxmJGeEZg

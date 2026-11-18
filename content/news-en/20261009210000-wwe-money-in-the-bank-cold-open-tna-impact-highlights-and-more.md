@@ -14,7 +14,13 @@ en_tags:
   - "Triple H"
 image: /content/images/n2ev2r65cyojn66x.jpg
 ---
-Triple H has unveiled the cold open for the upcoming WWE Money In The Bank event. Meanwhile, TNA iMPACT featured several highlights during its latest episode. In other news, Jaden Newman is set to make his debut for Georgia Pro Wrestling on November 20, and 'The Wall' Tyler Stephens will take on Christian Taylor at ACTION Tell Me Goodbye in November. WWE ID Champion Max Abrams will appear at Viral Pro Wrestling on October 10. Darian Bengston and Darius Lockhart are co-curating a show for PRODUCE on November 27. The live sports television market is now 95% controlled by Disney, Fox, NBC Universal, and Skydance. Jay White is celebrating his birthday. The Toronto Raptors will host a WWE Night on February 7. PRODUCE heads to St. Petersburg, Florida on November 29, and GCW presents For All The Dogs in Arizona on December 20. Tracy Williams vs. Matt Mako is scheduled for PRODUCE on November 14. Gabbi Tuft shared her reaction to a 2011 clip, while Chelsea Green surprised Matt Cardona with a toy hunt, and Lola Vice showcased her intense Money in the Bank workout.
+Triple H has unveiled the cold open for the upcoming WWE Money In The Bank event. Meanwhile, TNA iMPACT featured several highlights during its latest episode. In other news, Jaden Newman is set to make his debut for Georgia Pro Wrestling on November 20, and 'The Wall' Tyler Stephens will take on Christian Taylor at ACTION Tell Me Goodbye in November.
+
+WWE ID Champion Max Abrams will appear at Viral Pro Wrestling on October 10. Darian Bengston and Darius Lockhart are co-curating a show for PRODUCE on November 27. The live sports television market is now 95% controlled by Disney, Fox, NBC Universal, and Skydance.
+
+Jay White is celebrating his birthday. The Toronto Raptors will host a WWE Night on February 7. PRODUCE heads to St. Petersburg, Florida on November 29, and GCW presents For All The Dogs in Arizona on December 20.
+
+Tracy Williams vs. Matt Mako is scheduled for PRODUCE on November 14. Gabbi Tuft shared her reaction to a 2011 clip, while Chelsea Green surprised Matt Cardona with a toy hunt, and Lola Vice showcased her intense Money in the Bank workout.
 
 https://www.youtube.com/watch?v=15YuqvbCrlo
 

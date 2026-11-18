@@ -15,7 +15,9 @@ en_tags:
   - "NJPW"
 image: /content/images/mh9tr9tzijop6sv6.jpg
 ---
-Shingo Takagi and his wife, Natsupoi, are joining forces for a mixed tag team match. During the October 11 event for World Wonder Ring STARDOM, Natsupoi challenged High Speed Champion Yuna Mizumori to a title match. Although Mizumori successfully defended her championship, Natsupoi immediately requested a rematch and called her husband, NJPW star Shingo Takagi, to the ring to issue a challenge. As a result, Takagi and Natsupoi will face Mizumori and NJPW wrestler Hirooki Goto at the STARDOM event on October 29. Takagi also teased a potential appearance alongside Natsupoi at the November 20 'Bound For Unbound' show presented by the NJPW faction Unbound Co. In a backstage interview, the couple expressed interest in facing other wrestling couples, specifically naming IYO SKY and NARAKU, as well as Konosuke Takeshita and Yuka Sakazaki.
+Shingo Takagi and his wife, Natsupoi, are joining forces for a mixed tag team match. During the October 11 event for World Wonder Ring STARDOM, Natsupoi challenged High Speed Champion Yuna Mizumori to a title match. Although Mizumori successfully defended her championship, Natsupoi immediately requested a rematch and called her husband, NJPW star Shingo Takagi, to the ring to issue a challenge.
+
+As a result, Takagi and Natsupoi will face Mizumori and NJPW wrestler Hirooki Goto at the STARDOM event on October 29. Takagi also teased a potential appearance alongside Natsupoi at the November 20 'Bound For Unbound' show presented by the NJPW faction Unbound Co. In a backstage interview, the couple expressed interest in facing other wrestling couples, specifically naming IYO SKY and NARAKU, as well as Konosuke Takeshita and Yuka Sakazaki.
 
 https://x.com/stardomworld/status/2109152143483752953
 

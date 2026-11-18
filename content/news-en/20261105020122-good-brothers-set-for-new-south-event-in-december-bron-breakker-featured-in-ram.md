@@ -15,7 +15,9 @@ en_tags:
   - "GCW"
 image: /content/images/vlkyj44o78oef371.jpg
 ---
-The Good Brothers are scheduled to appear at a New South event this December. Elsewhere, Bron Breakker is featured in a new "Show of Power" advertisement for Ram. In other wrestling news, Kenzie Paige vs. Clara Carter is set for TWE Hate And Jealousy, and Hoodfoot will return to Paradigm Pro in two weeks. Mance Warner recently shared a clip of himself watching WCW while on a treadmill, and Effy is slated to face Slade in a Bounty Match at PRODUCE x Assembly on November 14. Additionally, Saraya is appearing at Rhode Island Comic Con this weekend, and Brett Lauderdale has announced the date for GCW's return to Dallas. Nigel McGuinness also took to social media to call out Paul Wight, while a full match between Cody Rhodes and Seth Rollins from Crown Jewel 2025 has been released. Finally, tonight's episode of WWE Main Event will begin at a special start time of 10 PM ET, and Stunt Marshall vs. Tyson Malrick is announced for ACTION Tell Me Goodbye.
+The Good Brothers are scheduled to appear at a New South event this December. Elsewhere, Bron Breakker is featured in a new "Show of Power" advertisement for Ram. In other wrestling news, Kenzie Paige vs. Clara Carter is set for TWE Hate And Jealousy, and Hoodfoot will return to Paradigm Pro in two weeks.
+
+Mance Warner recently shared a clip of himself watching WCW while on a treadmill, and Effy is slated to face Slade in a Bounty Match at PRODUCE x Assembly on November 14. Additionally, Saraya is appearing at Rhode Island Comic Con this weekend, and Brett Lauderdale has announced the date for GCW's return to Dallas. Nigel McGuinness also took to social media to call out Paul Wight, while a full match between Cody Rhodes and Seth Rollins from Crown Jewel 2025 has been released. Finally, tonight's episode of WWE Main Event will begin at a special start time of 10 PM ET, and Stunt Marshall vs. Tyson Malrick is announced for ACTION Tell Me Goodbye.
 
 https://www.youtube.com/watch?v=e_F1HDuTt98
 

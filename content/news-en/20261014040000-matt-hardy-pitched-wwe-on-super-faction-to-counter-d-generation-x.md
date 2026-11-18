@@ -14,6 +14,8 @@ en_tags:
   - "Syx"
 image: /content/images/a3zzt4nlwlyh6cgx.jpg
 ---
-During his "Extreme Life" podcast, Matt Hardy revealed he once pitched an idea to WWE to form a super-faction featuring himself, Jeff Hardy, Edge, and Christian. Hardy believed this group could have served as a formidable rival to stables like D-Generation X during the "Attitude Era". He recalled the pitch came after their iconic ladder match at WWE No Mercy 1999, noting that they had developed a unique mutual respect and represented the future of professional wrestling. However, the proposal was ultimately rejected in favor of other creative plans, leading the two teams to continue their legendary rivalry instead. Meanwhile, Matt and Jeff Hardy are currently embroiled in a feud with Joseph Sawyer and Samuel Shaw, known collectively in TNA as Syx. The two teams faced off at TNA Bound for Glory this past Sunday.
+During his "Extreme Life" podcast, Matt Hardy revealed he once pitched an idea to WWE to form a super-faction featuring himself, Jeff Hardy, Edge, and Christian. Hardy believed this group could have served as a formidable rival to stables like D-Generation X during the "Attitude Era". He recalled the pitch came after their iconic ladder match at WWE No Mercy 1999, noting that they had developed a unique mutual respect and represented the future of professional wrestling.
+
+However, the proposal was ultimately rejected in favor of other creative plans, leading the two teams to continue their legendary rivalry instead. Meanwhile, Matt and Jeff Hardy are currently embroiled in a feud with Joseph Sawyer and Samuel Shaw, known collectively in TNA as Syx. The two teams faced off at TNA Bound for Glory this past Sunday.
 
 https://www.youtube.com/watch?v=0j0Fd6lpnBA

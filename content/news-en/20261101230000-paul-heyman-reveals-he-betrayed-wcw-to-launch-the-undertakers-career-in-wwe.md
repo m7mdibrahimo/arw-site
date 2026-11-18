@@ -14,6 +14,12 @@ en_tags:
   - "Vince McMahon"
 image: /content/images/ey90kow6234pxee3.jpg
 ---
-Paul Heyman recently opened up about how he helped launch the career of the Undertaker by secretly arranging a meeting with Vince McMahon while under contract with WCW. In his interview with Graham Bensinger, Heyman explained that Ole Anderson did not believe in Mark Calaway and attempted to lowball him when his contract came up in September 1990. Heyman recounted how he violated his WCW contract to sneak Calaway into a meeting with Vince McMahon through a mutual contact, leading to the legendary career that followed. "Ole didn't believe in Mark, to the point where when Mark's contract came up in September 1990, they tried to lowball him," Heyman said. "There was someone in WCW that violated their contract with Turner Broadcasting and WCW, and snuck Mark into a meeting through a mutual friend or a friend that I had in WWE, snuck him into the meeting with Vince McMahon." Heyman added, "And that meeting led to Mark being signed by the WWE and becoming the Undertaker... I thought it was great because I was that person."
+Paul Heyman recently opened up about how he helped launch the career of the Undertaker by secretly arranging a meeting with Vince McMahon while under contract with WCW. In his interview with Graham Bensinger, Heyman explained that Ole Anderson did not believe in Mark Calaway and attempted to lowball him when his contract came up in September 1990. Heyman recounted how he violated his WCW contract to sneak Calaway into a meeting with Vince McMahon through a mutual contact, leading to the legendary career that followed.
+
+"Ole didn't believe in Mark, to the point where when Mark's contract came up in September 1990, they tried to lowball him," Heyman said.
+
+> "There was someone in WCW that violated their contract with Turner Broadcasting and WCW, and snuck Mark into a meeting through a mutual friend or a friend that I had in WWE, snuck him into the meeting with Vince McMahon."
+
+Heyman added, "And that meeting led to Mark being signed by the WWE and becoming the Undertaker... I thought it was great because I was that person."
 
 https://www.youtube.com/watch?v=Ufa5pl22SVA

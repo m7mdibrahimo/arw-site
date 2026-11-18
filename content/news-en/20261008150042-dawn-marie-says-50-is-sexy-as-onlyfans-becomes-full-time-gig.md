@@ -13,6 +13,8 @@ en_tags:
   - "OnlyFans"
 image: /content/images/p25hx74tndnipaxo.jpg
 ---
-Former WWE and ECW star Dawn Marie has transitioned from the wrestling ring to OnlyFans, establishing the platform as her full-time career rather than a side venture. Speaking on Velvet Ropes, she emphasized that sex appeal has no expiration date as she approaches 56 years old. She constructed a home studio equipped with costumes, music, backdrops, and live streaming capabilities to manage the daily operations herself. Dawn compared the creative challenge of keeping audiences engaged week after week to her professional wrestling career. She stated that she is not trying to recreate her past persona from two decades ago, but rather reflecting who she is today. Although she has ruled out an in-ring return, she views this digital platform as a new stage to continue performing on her own terms.
+Former WWE and ECW star Dawn Marie has transitioned from the wrestling ring to OnlyFans, establishing the platform as her full-time career rather than a side venture. Speaking on Velvet Ropes, she emphasized that sex appeal has no expiration date as she approaches 56 years old. She constructed a home studio equipped with costumes, music, backdrops, and live streaming capabilities to manage the daily operations herself.
+
+Dawn compared the creative challenge of keeping audiences engaged week after week to her professional wrestling career. She stated that she is not trying to recreate her past persona from two decades ago, but rather reflecting who she is today. Although she has ruled out an in-ring return, she views this digital platform as a new stage to continue performing on her own terms.
 
 https://www.youtube.com/watch?v=SKl4KWBLH4Q

@@ -14,6 +14,8 @@ en_tags:
   - "Trey Miguel"
 image: /content/images/gchgn58l5fjt2e3b.jpg
 ---
-New TNA World Champion Leon Slater has spoken about winning the title and vowed to shape its future. Slater captured the championship at Bound for Glory by defeating Nic Nemeth, becoming the youngest TNA World Champion in history. During a recent appearance on the I Love Wrestling Podcast, he admitted that the achievement still feels surreal. He explained that it took time to settle in because he was so used to seeing the belt with Nemeth. Slater noted that his daily routine has remained the same, spending time with friends and playing video games, but now he has the world title sitting near his TV. He added that he is eager to take the championship in a new direction and create memorable moments. Since winning the belt, Slater has already identified potential challengers, starting with Trey Miguel, who earned the number one contender spot by winning a ladder match on TNA iMPACT after Bound for Glory.
+New TNA World Champion Leon Slater has spoken about winning the title and vowed to shape its future. Slater captured the championship at Bound for Glory by defeating Nic Nemeth, becoming the youngest TNA World Champion in history. During a recent appearance on the I Love Wrestling Podcast, he admitted that the achievement still feels surreal.
+
+He explained that it took time to settle in because he was so used to seeing the belt with Nemeth. Slater noted that his daily routine has remained the same, spending time with friends and playing video games, but now he has the world title sitting near his TV. He added that he is eager to take the championship in a new direction and create memorable moments. Since winning the belt, Slater has already identified potential challengers, starting with Trey Miguel, who earned the number one contender spot by winning a ladder match on TNA iMPACT after Bound for Glory.
 
 https://www.youtube.com/watch?v=zWHNyhIfte0

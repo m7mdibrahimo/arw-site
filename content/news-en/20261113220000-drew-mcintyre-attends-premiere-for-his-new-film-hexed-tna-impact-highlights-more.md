@@ -15,7 +15,13 @@ en_tags:
   - "Frankie Kazarian"
 image: /content/images/wasyucpg2mxrkrmd.jpg
 ---
-Drew McIntyre attended a premiere event for his new film 'Hexed'. Thursday's episode of TNA iMPACT featured several highlights, and Diamante announced on social media that her mother is cancer-free. Additionally, 1FW will return to McDonogh, Georgia, for a television taping on Saturday, December 12. Anthony Bowens recently attended a high-profile party, while Angel Metro is set to clash with The Bev at NHB 105 in Indiana. Je'Von Evans will appear at the Venom Nightclub in Raleigh following Raw. One year ago today, Frankie Kazarian won the TNA World Heavyweight Championship. Ron Bass Jr. and Daniel Starling will face off at Paradigm Pro's return show on November 20. Twenty-one years ago today, the wrestling world mourned the loss of Eddie Guerrero. Mistico thanked fans in Salt Lake City after AEW's recent visit. Anakin Murphy vs. Dr. Redacted is announced for GCW For All The Dogs on December 20. Mystery Wrestling's event in Chile is officially sold out, and Atticus Cogar has been revealed as a late addition for GCW Bedlam In Boise.
+Drew McIntyre attended a premiere event for his new film 'Hexed'. Thursday's episode of TNA iMPACT featured several highlights, and Diamante announced on social media that her mother is cancer-free. Additionally, 1FW will return to McDonogh, Georgia, for a television taping on Saturday, December 12.
+
+Anthony Bowens recently attended a high-profile party, while Angel Metro is set to clash with The Bev at NHB 105 in Indiana. Je'Von Evans will appear at the Venom Nightclub in Raleigh following Raw. One year ago today, Frankie Kazarian won the TNA World Heavyweight Championship.
+
+Ron Bass Jr. and Daniel Starling will face off at Paradigm Pro's return show on November 20. Twenty-one years ago today, the wrestling world mourned the loss of Eddie Guerrero. Mistico thanked fans in Salt Lake City after AEW's recent visit.
+
+Anakin Murphy vs. Dr. Redacted is announced for GCW For All The Dogs on December 20. Mystery Wrestling's event in Chile is officially sold out, and Atticus Cogar has been revealed as a late addition for GCW Bedlam In Boise.
 
 https://www.youtube.com/watch?v=SEBZ3huqYFQ
 

@@ -14,7 +14,11 @@ en_tags:
   - "Brian Cage"
 image: /content/images/s3hxe1geuf6vvoyv.jpg
 ---
-AEW is returning to Twitch ahead of Blood & Guts. WWE released the top 10 moments from WWE RAW. Dragon Gate Pro Wrestling and OTT Wrestling are now featured on the Dropkickd platform, and Rudy Lockhart has been announced for Produit Part Deux in December. RJ City is done with big porn. Beyond needs to sell 200 tickets every week in November to keep Wrestling Open running in Connecticut. Darian Bengston will defend his ACTION World Championship against Martin Stone at PRODUCE Fresh, and Dolphin Funeral faces Eden and Mateo Marcelos at Lucha Fresca in November, while Lou Nixon meets Danny O'Doherty at NHB x Rise UK. Mina Shirakawa is heading to Crimson City Fights in January. Becky Lynch thanked a local Fresno theater for welcoming her. Brian Cage shared a hot take about Hereditary, and Bayley spoke with Toned In Entertainment. Finally, WWE found footage of Kane in the Vault, and Monsters Week features titanic battles with Lesnar, Undertaker, and Vader.
+AEW is returning to Twitch ahead of Blood & Guts. WWE released the top 10 moments from WWE RAW. Dragon Gate Pro Wrestling and OTT Wrestling are now featured on the Dropkickd platform, and Rudy Lockhart has been announced for Produit Part Deux in December.
+
+RJ City is done with big porn. Beyond needs to sell 200 tickets every week in November to keep Wrestling Open running in Connecticut. Darian Bengston will defend his ACTION World Championship against Martin Stone at PRODUCE Fresh, and Dolphin Funeral faces Eden and Mateo Marcelos at Lucha Fresca in November, while Lou Nixon meets Danny O'Doherty at NHB x Rise UK.
+
+Mina Shirakawa is heading to Crimson City Fights in January. Becky Lynch thanked a local Fresno theater for welcoming her. Brian Cage shared a hot take about Hereditary, and Bayley spoke with Toned In Entertainment. Finally, WWE found footage of Kane in the Vault, and Monsters Week features titanic battles with Lesnar, Undertaker, and Vader.
 
 https://www.youtube.com/watch?v=O5eEfGDSzbI
 

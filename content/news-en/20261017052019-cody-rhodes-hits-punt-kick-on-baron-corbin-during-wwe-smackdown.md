@@ -14,7 +14,9 @@ en_tags:
   - "WWE"
 image: /content/images/jhh6mr8jwrkknzas.jpg
 ---
-Cody Rhodes delivered a Punt Kick to Baron Corbin during the October 16 episode of WWE SmackDown. The segment began with Baron Corbin interrupting a promo by Cody Rhodes, which led to an impromptu match between the two. Randy Orton eventually interfered, resulting in a chaotic brawl outside the ring. After returning to the ring, Orton attempted a Punt Kick on Rhodes, but Rhodes countered with a Cody Cutter. As Rhodes prepared to retaliate with a Punt Kick, Corbin attacked him, only for Rhodes to hit a Super Cutter and finally connect with a Punt Kick on Corbin to end the show. According to reports, the episode was internally titled "Punt It Down The Rhodes." This follows Rhodes' previous hesitation to use the move during his match against Orton at Saturday Night's Main Event.
+Cody Rhodes delivered a Punt Kick to Baron Corbin during the October 16 episode of WWE SmackDown. The segment began with Baron Corbin interrupting a promo by Cody Rhodes, which led to an impromptu match between the two. Randy Orton eventually interfered, resulting in a chaotic brawl outside the ring.
+
+After returning to the ring, Orton attempted a Punt Kick on Rhodes, but Rhodes countered with a Cody Cutter. As Rhodes prepared to retaliate with a Punt Kick, Corbin attacked him, only for Rhodes to hit a Super Cutter and finally connect with a Punt Kick on Corbin to end the show. According to reports, the episode was internally titled "Punt It Down The Rhodes." This follows Rhodes' previous hesitation to use the move during his match against Orton at Saturday Night's Main Event.
 
 https://x.com/WWE/status/2111276956167606413
 

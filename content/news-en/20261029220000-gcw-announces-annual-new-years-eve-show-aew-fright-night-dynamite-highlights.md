@@ -14,7 +14,9 @@ en_tags:
   - "WWE"
 image: /content/images/9pijybtzb4i3pr2d.jpg
 ---
-GCW has officially announced that their annual New Year's Eve event will return this year. MJF praised Queen Aminata following her TBS Championship victory on AEW Dynamite. Additionally, new merchandise for Queen Aminata is now available on ShopAEW.com, and artist Rob Schamberger has released new prints featuring Maya World. Other updates include birthday celebrations for Tatum Paxley and Alvaro Riojas, and Steph De Lander celebrating her wedding anniversary with Mance Warner after regaining access to her X account. Dillon McQueen has officially retired from professional wrestling. Furthermore, a new photo from Nattie's dungeon training session has been released, and a significant trios match has been confirmed for PRODUCE x ASSEMBLY. The update concludes with a WWE Playlist video highlighting 25 moments where Superstars crashed through glass, and the latest content from Fightful Overbooked.
+GCW has officially announced that their annual New Year's Eve event will return this year. MJF praised Queen Aminata following her TBS Championship victory on AEW Dynamite. Additionally, new merchandise for Queen Aminata is now available on ShopAEW.com, and artist Rob Schamberger has released new prints featuring Maya World.
+
+Other updates include birthday celebrations for Tatum Paxley and Alvaro Riojas, and Steph De Lander celebrating her wedding anniversary with Mance Warner after regaining access to her X account. Dillon McQueen has officially retired from professional wrestling. Furthermore, a new photo from Nattie's dungeon training session has been released, and a significant trios match has been confirmed for PRODUCE x ASSEMBLY. The update concludes with a WWE Playlist video highlighting 25 moments where Superstars crashed through glass, and the latest content from Fightful Overbooked.
 
 https://www.youtube.com/watch?v=GfvwH0AeAzE
 

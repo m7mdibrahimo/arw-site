@@ -14,6 +14,8 @@ en_tags:
   - "Hart Foundation"
 image: /content/images/ztezpkgjdcvw9np3.jpg
 ---
-Bret Hart recently reflected on the infamous night the Hart Foundation was supposed to drop the WWE Tag Team Championships to The Rockers, only for a broken top rope to ruin the match. Speaking to Inside The Ropes, Hart explained that both teams had spent the whole day planning what they believed would be a classic match, but a snapped turnbuckle left them unable to perform their moves. Hart noted that referee Freddie Sparta ignored his repeated requests to stop the match and repair the rope, forcing them to finish a bout that Hart considered one of the worst of his career. Although The Rockers briefly won the titles, Vince McMahon ultimately decided to scrap the entire change and act as though it never happened. Hart expressed frustration that years later, Shawn Michaels suggested the disaster may have been intentional, calling the remark a cheap shot from his former rival.
+Bret Hart recently reflected on the infamous night the Hart Foundation was supposed to drop the WWE Tag Team Championships to The Rockers, only for a broken top rope to ruin the match. Speaking to Inside The Ropes, Hart explained that both teams had spent the whole day planning what they believed would be a classic match, but a snapped turnbuckle left them unable to perform their moves. Hart noted that referee Freddie Sparta ignored his repeated requests to stop the match and repair the rope, forcing them to finish a bout that Hart considered one of the worst of his career.
+
+Although The Rockers briefly won the titles, Vince McMahon ultimately decided to scrap the entire change and act as though it never happened. Hart expressed frustration that years later, Shawn Michaels suggested the disaster may have been intentional, calling the remark a cheap shot from his former rival.
 
 https://www.youtube.com/watch?v=Nj63oCaQtnA

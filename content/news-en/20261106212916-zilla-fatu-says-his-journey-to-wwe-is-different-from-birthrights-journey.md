@@ -14,4 +14,8 @@ en_tags:
   - "BirthRight"
 image: /content/images/9ivtzrqd8pjbv9f5.jpg
 ---
-Zilla Fatu spoke about his recent program with BirthRight on Busted Open. Fatu finished his feud with the group, consisting of Charlie Dempsey, Channing 'Stacks' Lorenzo, Arianna Grace, Lexis King, and Uriah Connors, at the NXT Halloween Havoc Premium Live Event where he defeated Dempsey in a 'Very Nice, Very Evil' Match. Fatu emphasized that his path to WWE stands apart from the members of BirthRight. "We have a different story, uce. I have a way different story from all these individuals in BirthRight. They don’t have The Main One’s story. I got here a different way. I didn’t rely on my family’s name. I didn’t rely on my dad’s legacy or none of that. I literally grinded on the independents and worked my way here. I got here, you know?" On the November 4 episode of NXT, Fatu accepted an invitation from John Cena to participate in the John Cena Classic.
+Zilla Fatu spoke about his recent program with BirthRight on Busted Open. Fatu finished his feud with the group, consisting of Charlie Dempsey, Channing 'Stacks' Lorenzo, Arianna Grace, Lexis King, and Uriah Connors, at the NXT Halloween Havoc Premium Live Event where he defeated Dempsey in a 'Very Nice, Very Evil' Match. Fatu emphasized that his path to WWE stands apart from the members of BirthRight.
+
+> "We have a different story, uce. I have a way different story from all these individuals in BirthRight. They don’t have The Main One’s story. I got here a different way. I didn’t rely on my family’s name. I didn’t rely on my dad’s legacy or none of that. I literally grinded on the independents and worked my way here. I got here, you know?"
+
+On the November 4 episode of NXT, Fatu accepted an invitation from John Cena to participate in the John Cena Classic.

@@ -14,6 +14,12 @@ en_tags:
   - "All Elite Wrestling"
 image: /content/images/74wav67o8hfntuw9.jpg
 ---
-As 2026 ends, All Elite Wrestling is moving in a positive direction, according to Ricochet. Despite the deaths of performers "The Butcher" Andy Williams and PAC this year, AEW has shown resilience. Ricochet, the leader of The Demand who joined the company in 2024, believes the current locker room shares a level of closeness he has not seen in years. "Honestly, I think it's kind of bittersweet, but at the same time, we have such a good locker room right now. And honestly, since I've gotten there in 2024...it's been awesome," Ricochet told The Takedown On SI. "It just reminds me of, like, back in the day, on the indies, when we would all travel, and everyone was just there to help the show be great. Obviously, everyone has their egos, everyone has their personalities, everyone has their...attitudes, whatever you want to say. But at the end of the day, I think 97 percent of who we got in our locker room, I think everyone wants to make AEW the best, the biggest that it can be." Ricochet added that despite individual egos, many talents are willing to set aside differences to tell a monumental story. AEW is now preparing for the Full Gear pay-per-view, which takes place this Saturday at the Mortgage Matchup Center in Phoenix, Arizona.
+As 2026 ends, All Elite Wrestling is moving in a positive direction, according to Ricochet. Despite the deaths of performers "The Butcher" Andy Williams and PAC this year, AEW has shown resilience. Ricochet, the leader of The Demand who joined the company in 2024, believes the current locker room shares a level of closeness he has not seen in years.
+
+"Honestly, I think it's kind of bittersweet, but at the same time, we have such a good locker room right now. And honestly, since I've gotten there in 2024...it's been awesome," Ricochet told The Takedown On SI.
+
+> "It just reminds me of, like, back in the day, on the indies, when we would all travel, and everyone was just there to help the show be great. Obviously, everyone has their egos, everyone has their personalities, everyone has their...attitudes, whatever you want to say. But at the end of the day, I think 97 percent of who we got in our locker room, I think everyone wants to make AEW the best, the biggest that it can be."
+
+Ricochet added that despite individual egos, many talents are willing to set aside differences to tell a monumental story. AEW is now preparing for the Full Gear pay-per-view, which takes place this Saturday at the Mortgage Matchup Center in Phoenix, Arizona.
 
 https://www.youtube.com/watch?v=NfCT_a7F3iY

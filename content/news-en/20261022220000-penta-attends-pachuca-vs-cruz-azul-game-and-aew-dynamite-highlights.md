@@ -14,7 +14,11 @@ en_tags:
   - "GCW"
 image: /content/images/5vo5cemuzxtpu0cd.jpg
 ---
-Penta recently attended the match between Pachuca and Cruz Azul. AEW Dynamite featured several top highlights. Kelani Jordan celebrated a birthday, and Danny Darko versus Antonio Gonzalez was signed for NHB 103. Lance Storm will embark on a media tour for TNA in November, while Cheeseburger versus Rain Conway was announced for Two-Headed Monster on October 24. New South Pro Wrestling canceled their RassleVania event on October 24. Maya World expressed happiness about returning to the ring, and Taya Valkyrie celebrated a birthday. Nixi XS expressed interest in the Jericho Cruise, and a match between SUBCULTURE, Christian Cage, and Adam Copeland remains a possibility. Nattie shared a photo from a recent dungeon session, and Nick Gage, Vipress, Mr. Danger, and Nino Extremo signed for GCW For All The Dogs in December, with Megan Bayne also signing for GCW's upcoming Idaho show. Frankie Kazarian shared his thoughts on the Halloween franchise, and Kasey Owens versus Oldman Youngboy was set for ACTION Tell Me Goodbye in November. Finally, WWE released a playlist highlighting Penta's career-defining moments alongside a full documentary on Eric Bischoff.
+Penta recently attended the match between Pachuca and Cruz Azul. AEW Dynamite featured several top highlights. Kelani Jordan celebrated a birthday, and Danny Darko versus Antonio Gonzalez was signed for NHB 103.
+
+Lance Storm will embark on a media tour for TNA in November, while Cheeseburger versus Rain Conway was announced for Two-Headed Monster on October 24. New South Pro Wrestling canceled their RassleVania event on October 24. Maya World expressed happiness about returning to the ring, and Taya Valkyrie celebrated a birthday.
+
+Nixi XS expressed interest in the Jericho Cruise, and a match between SUBCULTURE, Christian Cage, and Adam Copeland remains a possibility. Nattie shared a photo from a recent dungeon session, and Nick Gage, Vipress, Mr. Danger, and Nino Extremo signed for GCW For All The Dogs in December, with Megan Bayne also signing for GCW's upcoming Idaho show. Frankie Kazarian shared his thoughts on the Halloween franchise, and Kasey Owens versus Oldman Youngboy was set for ACTION Tell Me Goodbye in November. Finally, WWE released a playlist highlighting Penta's career-defining moments alongside a full documentary on Eric Bischoff.
 
 https://www.youtube.com/watch?v=wjoPM2rWACk
 

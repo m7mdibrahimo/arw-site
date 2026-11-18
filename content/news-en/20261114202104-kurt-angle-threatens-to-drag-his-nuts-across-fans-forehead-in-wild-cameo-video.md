@@ -14,6 +14,8 @@ en_tags:
   - "TikTok"
 image: /content/images/bmf8e38wohs8t0id.jpg
 ---
-Kurt Angle recently responded to a fan's request for gym motivation with a hilariously aggressive Cameo video. When asked to help kickstart a workout routine, the WWE Hall of Famer wasted no time going after the fan for spending too much time eating cheeseburgers instead of hitting the gym. Angle warned the fan that he would drag his nuts across their forehead if they did not get off the couch and start working out. He then pointed to his legendary Olympic gold medal win, reminding the fan that he competed with a broken neck and that having a family is no excuse to skip training. Angle wrapped up his motivational message by threatening to personally kick the fan's ass if the fast food was not replaced with actual gym time, finishing with his famous catchphrase.
+Kurt Angle recently responded to a fan's request for gym motivation with a hilariously aggressive Cameo video. When asked to help kickstart a workout routine, the WWE Hall of Famer wasted no time going after the fan for spending too much time eating cheeseburgers instead of hitting the gym. Angle warned the fan that he would drag his nuts across their forehead if they did not get off the couch and start working out.
+
+He then pointed to his legendary Olympic gold medal win, reminding the fan that he competed with a broken neck and that having a family is no excuse to skip training. Angle wrapped up his motivational message by threatening to personally kick the fan's ass if the fast food was not replaced with actual gym time, finishing with his famous catchphrase.
 
 https://www.tiktok.com/@wrestlersdaily/video/7707410063568178462

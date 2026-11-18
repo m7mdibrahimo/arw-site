@@ -14,7 +14,9 @@ en_tags:
   - "TNA World Championship"
 image: /content/images/6cb370utu4snv0n2.jpg
 ---
-Leon Slater captured the TNA World Championship at TNA Bound for Glory on October 11, 2026, in Tampa, Florida. Slater, known as "The Youngest In Charge," defeated the veteran Nic Nemeth in the main event after surviving a series of high-impact maneuvers, including a Famouser, the Danger Zone, and a standing sleeper hold. The match featured a back-and-forth exchange, with both competitors trading near-falls and momentum throughout the contest. Slater eventually seized control by hitting a Blue Thunder Bomb and a high-risk dive to the outside. Upon returning to the ring, Slater connected with a splash followed by a Swanton 450 to secure the pinfall victory. This win marks the culmination of Slater's decision to vacate his X-Division Championship under Option C to challenge for the top title. Nemeth was unable to keep Slater down despite landing multiple superkicks and a Skull Crushing Finale.
+Leon Slater captured the TNA World Championship at TNA Bound for Glory on October 11, 2026, in Tampa, Florida. Slater, known as "The Youngest In Charge," defeated the veteran Nic Nemeth in the main event after surviving a series of high-impact maneuvers, including a Famouser, the Danger Zone, and a standing sleeper hold. The match featured a back-and-forth exchange, with both competitors trading near-falls and momentum throughout the contest.
+
+Slater eventually seized control by hitting a Blue Thunder Bomb and a high-risk dive to the outside. Upon returning to the ring, Slater connected with a splash followed by a Swanton 450 to secure the pinfall victory. This win marks the culmination of Slater's decision to vacate his X-Division Championship under Option C to challenge for the top title. Nemeth was unable to keep Slater down despite landing multiple superkicks and a Skull Crushing Finale.
 
 https://x.com/ThisIsTNA/status/2109429274805445090
 

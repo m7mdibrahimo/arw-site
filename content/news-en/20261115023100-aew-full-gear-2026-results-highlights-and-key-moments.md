@@ -16,4 +16,8 @@ en_tags:
   - "MJF"
 image: /content/images/l16hvj6xux86o13z.jpg
 ---
-AEW Full Gear took place on November 14, 2026, at the Mortgage Matchup Center in Phoenix, Arizona. In the main event, Will Ospreay successfully defended the AEW World Championship against Kyle Fletcher. Following the match, MJF returned to attack Ospreay. Ilja Dragunov defeated Tommaso Ciampa to become the new AEW National Champion. Kazuchika Okada retained the AEW International Championship against Adam Copeland. Mercedes Moné successfully defended the AEW Women’s World Championship against Marina Shafir. In the Anarchy in the Arena match, The Cut defeated The Death Riders and The Conglomeration. Swerve Strickland and The New Level captured the AEW World Trios Championship in a Texas Death Match against Adam Page and Brodido. Wrathlander became the new AEW Women’s World Tag Team Champions by defeating The Brawling Birds. The Young Bucks retained the AEW World Tag Team Championship against Mark Davis and Jake Doyle.
+AEW Full Gear took place on November 14, 2026, at the Mortgage Matchup Center in Phoenix, Arizona. In the main event, Will Ospreay successfully defended the AEW World Championship against Kyle Fletcher. Following the match, MJF returned to attack Ospreay.
+
+Ilja Dragunov defeated Tommaso Ciampa to become the new AEW National Champion. Kazuchika Okada retained the AEW International Championship against Adam Copeland. Mercedes Moné successfully defended the AEW Women’s World Championship against Marina Shafir.
+
+In the Anarchy in the Arena match, The Cut defeated The Death Riders and The Conglomeration. Swerve Strickland and The New Level captured the AEW World Trios Championship in a Texas Death Match against Adam Page and Brodido. Wrathlander became the new AEW Women’s World Tag Team Champions by defeating The Brawling Birds. The Young Bucks retained the AEW World Tag Team Championship against Mark Davis and Jake Doyle.

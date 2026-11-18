@@ -13,6 +13,8 @@ en_tags:
   - "WrestleMania"
 image: /content/images/ucvg6uk8ylqm3gfb.jpg
 ---
-John Cena believes that CM Punk's long-term obsession with headlining WrestleMania created unnecessary pressure and weight on his shoulders. During a recent appearance, Cena discussed how wrestlers can become overly focused on top labels and main event spots. While expressing deep respect for Punk and praising his ongoing personal evolution, Cena explained that chasing specific career milestones often burdens performers with heavy expectations they do not need. Cena compared the pressure to weightlifting, noting that the bar is already heavy enough without adding extra expectations. He also pointed out that being the top star in wrestling is always temporary, referencing legends like Steve Austin and Hulk Hogan. Ultimately, Cena feels that while Punk achieved his goal of headlining WrestleMania, the journey might have been much easier without letting that single ambition define his entire career.
+John Cena believes that CM Punk's long-term obsession with headlining WrestleMania created unnecessary pressure and weight on his shoulders. During a recent appearance, Cena discussed how wrestlers can become overly focused on top labels and main event spots. While expressing deep respect for Punk and praising his ongoing personal evolution, Cena explained that chasing specific career milestones often burdens performers with heavy expectations they do not need.
+
+Cena compared the pressure to weightlifting, noting that the bar is already heavy enough without adding extra expectations. He also pointed out that being the top star in wrestling is always temporary, referencing legends like Steve Austin and Hulk Hogan. Ultimately, Cena feels that while Punk achieved his goal of headlining WrestleMania, the journey might have been much easier without letting that single ambition define his entire career.
 
 https://www.youtube.com/watch?v=PYO6E8uT0hs

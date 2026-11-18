@@ -15,7 +15,15 @@ en_tags:
   - "Cody Rhodes"
 image: /content/images/3yuq7s5dg1fnqme6.jpg
 ---
-Mercedes Martinez provided an injury update through social media. Penta and Je'Von Evans returned to WWE Raw as champions, featured in WWE Now for November 9, 2026. Satu Jinn versus Ron Voyage was signed for Jeff Cannonball's tribute event on Friday, November 20. Megan Bayne displayed her Scooby-Doo themed gear on social media. Fightful sends condolences and well wishes to R-Truth. Beyond Wrestling released an updated schedule for this year's Wrestival. Cody Rhodes will meet and greet fans in Florida this week. Billie Starkz has a strict requirement regarding her current or next boyfriend. Chris Jericho and Alex Windsor celebrated their birthdays. Tim Bosby expressed his desire to run trios with The Creed Brothers. WWE Playlist highlighted the formation of The 946. A full match grab bag marathon featured matches from the 1980s through the 2020s. Classic 90s Survivor Series opens as WWE's fall spectacular kicks off. Finally, the latest updates from Fightful Overbooked were released.
+Mercedes Martinez provided an injury update through social media. Penta and Je'Von Evans returned to WWE Raw as champions, featured in WWE Now for November 9, 2026. Satu Jinn versus Ron Voyage was signed for Jeff Cannonball's tribute event on Friday, November 20.
+
+Megan Bayne displayed her Scooby-Doo themed gear on social media. Fightful sends condolences and well wishes to R-Truth. Beyond Wrestling released an updated schedule for this year's Wrestival.
+
+Cody Rhodes will meet and greet fans in Florida this week. Billie Starkz has a strict requirement regarding her current or next boyfriend. Chris Jericho and Alex Windsor celebrated their birthdays.
+
+Tim Bosby expressed his desire to run trios with The Creed Brothers. WWE Playlist highlighted the formation of The 946. A full match grab bag marathon featured matches from the 1980s through the 2020s.
+
+Classic 90s Survivor Series opens as WWE's fall spectacular kicks off. Finally, the latest updates from Fightful Overbooked were released.
 
 https://www.youtube.com/watch?v=_sTxnhptuAg
 
