@@ -1,63 +1,63 @@
 {
  "https://www.fightful.com/wrestling/wwe-nxt-results-11-17-2026-kelani-jordan-vs-kelani-jordan-zilla-fatu-tony-dangelo-more": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، المواجهة مكتوبة «نزال فردي» والفقرة تحتها بتقول «نزال ثلاثي/فرق» — صحح العنوان حسب سطر المصدر، في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-18T06:48:58.676Z"
+  "at": "2026-11-18T06:52:04.999Z"
+ },
+ "https://www.fightful.com/wrestling/myka-lockwood-to-be-sole-woman-in-eight-person-tag-bout-womens-north-american-title-match-set-for-11-24-wwe-nxt": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T06:51:02.681Z"
+ },
+ "https://www.fightful.com/wrestling/shiloh-hill-izzi-dame-joins-wwe-john-cena-classic-field": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T06:51:02.232Z"
+ },
+ "https://www.fightful.com/wrestling/ash-by-elegance-announces-pregnancy-opens-up-about-health-issues-provides-update-on-tna-contract": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T06:51:01.989Z"
+ },
+ "https://www.fightful.com/wrestling/anthony-bowens-expected-to-remain-with-aew": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T06:51:01.747Z"
+ },
+ "https://www.fightful.com/wrestling/continental-classic-matches-tbs-title-four-way-announced-for-11-18-aew-dynamite": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T06:51:01.504Z"
+ },
+ "https://www.fightful.com/wrestling/wrestling-world-reacts-to-passing-of-cowboy-bill-watts": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T06:51:01.262Z"
+ },
+ "https://www.fightful.com/wrestling/ryzin-details-decision-to-retire-in-2027-says-he-was-overwhelmed-by-the-reaction-to-his-initial-announcement": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T06:51:00.528Z"
+ },
+ "https://www.fightful.com/wrestling/alyssa-daniele-reveals-she-suffered-a-shoulder-dislocation-that-requires-surgery": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T06:51:00.284Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-raw-11-9-scores-2-4-million-global-views-on-netflix": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T06:50:59.971Z"
+ },
+ "https://www.fightful.com/wrestling/elayna-black-the-best-advice-cm-punk-gave-me-was-to-not-give-a-fuck": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T06:50:59.376Z"
  },
  "https://www.fightful.com/wrestling/cmll-martes-de-arena-mexico-results-11-17-2026-atlantis-titan-esfinge-vs-infernales-templario-vs-yutani-persephone-more": {
   "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
   "retry": true,
   "at": "2026-11-18T06:47:36.060Z"
- },
- "https://www.fightful.com/wrestling/myka-lockwood-to-be-sole-woman-in-eight-person-tag-bout-womens-north-american-title-match-set-for-11-24-wwe-nxt": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T06:45:28.207Z"
- },
- "https://www.fightful.com/wrestling/shiloh-hill-izzi-dame-joins-wwe-john-cena-classic-field": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T06:45:27.557Z"
- },
- "https://www.fightful.com/wrestling/ash-by-elegance-announces-pregnancy-opens-up-about-health-issues-provides-update-on-tna-contract": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T06:45:27.198Z"
- },
- "https://www.fightful.com/wrestling/anthony-bowens-expected-to-remain-with-aew": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T06:45:26.848Z"
- },
- "https://www.fightful.com/wrestling/continental-classic-matches-tbs-title-four-way-announced-for-11-18-aew-dynamite": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T06:45:26.501Z"
- },
- "https://www.fightful.com/wrestling/wrestling-world-reacts-to-passing-of-cowboy-bill-watts": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T06:45:26.154Z"
- },
- "https://www.fightful.com/wrestling/ryzin-details-decision-to-retire-in-2027-says-he-was-overwhelmed-by-the-reaction-to-his-initial-announcement": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T06:45:25.110Z"
- },
- "https://www.fightful.com/wrestling/alyssa-daniele-reveals-she-suffered-a-shoulder-dislocation-that-requires-surgery": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T06:45:24.761Z"
- },
- "https://www.fightful.com/wrestling/wwe-raw-11-9-scores-2-4-million-global-views-on-netflix": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T06:45:24.312Z"
- },
- "https://www.fightful.com/wrestling/elayna-black-the-best-advice-cm-punk-gave-me-was-to-not-give-a-fuck": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T06:45:23.472Z"
  },
  "https://www.wrestlinginc.com/2320027/bully-ray-perfect-wwe-remaining-spots-fifth-team-usa-mexico-survivor-series": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
