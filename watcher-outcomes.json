@@ -57,22 +57,22 @@
  "https://www.ringsidenews.com/aj-styles-criticizes-wrestlers-who-rely-leg-slaps-make-their-kicks-look-real": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-18T16:05:56.343Z"
+  "at": "2026-11-18T16:23:29.054Z"
  },
  "https://www.ringsidenews.com/aj-styles-admits-he-didnt-know-who-meiko-satomura-despite-his-wrestling-history-japan": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-18T16:04:31.009Z"
+  "at": "2026-11-18T16:18:20.365Z"
  },
  "https://www.ringsidenews.com/bayley-reveals-she-wrestling-through-injury-during-meiko-satomuras-final-wwe-match": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-18T15:58:27.739Z"
+  "at": "2026-11-18T16:16:35.173Z"
  },
  "https://www.ringsidenews.com/why-kayla-braxton-never-slept-swoozie-during-30-day-dating-experiment": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين",
   "retry": true,
-  "at": "2026-11-18T15:57:01.137Z"
+  "at": "2026-11-18T16:10:18.651Z"
  },
  "https://www.fightful.com/wrestling/ryzin-details-decision-to-retire-in-2027-says-he-was-overwhelmed-by-the-reaction-to-his-initial-announcement": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1993,5 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Adam Copeland",
   "retry": true,
   "at": "2026-11-09T22:00:09.296Z"
- },
- "https://www.fightful.com/wrestling/cody-rhodes-and-ethan-page-added-to-11-9-wwe-raw": {
-  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، نص الخبر قصير جدًا أو فاضي",
-  "retry": true,
-  "at": "2026-11-09T21:51:06.580Z"
  }
 }
