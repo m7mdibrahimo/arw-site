@@ -34,11 +34,6 @@
   "retry": true,
   "at": "2026-11-18T17:47:02.078Z"
  },
- "https://www.ringsidenews.com/mick-foley-reveals-craziest-item-fan-ever-asked-him-sign": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-18T17:32:21.978Z"
- },
  "https://www.ringsidenews.com/bayley-reveals-she-wrestling-through-injury-during-meiko-satomuras-final-wwe-match": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -48,11 +43,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-18T17:28:07.053Z"
- },
- "https://www.ringsidenews.com/why-kayla-braxton-never-slept-swoozie-during-30-day-dating-experiment": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل مثنى («يعرفان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-18T17:27:21.917Z"
  },
  "https://www.fightful.com/wrestling/chavo-guerrero-says-early-versions-of-lucha-underground-vignettes-kind-of-sucked": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1988,15 +1978,5 @@
   "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
   "retry": true,
   "at": "2026-11-10T04:31:42.692Z"
- },
- "https://www.fightful.com/wrestling/john-cena-shares-how-he-used-to-be-a-big-gift-giver-at-christmas-while-working-with-wwe-to-buy-through-his-workaholism": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T04:27:54.702Z"
- },
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-9-2026": {
-  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
-  "retry": true,
-  "at": "2026-11-10T03:48:50.869Z"
  }
 }
