@@ -477,6 +477,10 @@ const RULES: Rule[] = [
   // starts with two identical letters, so after «ال» a doubled first letter only comes from a prefix (م ت ن ي:
   // «الممثل»، «التتويج») or a borrowed word with «ب» («الببغاء»، «الببتيدات») — every other doubled letter is a typo.
   { code: "doubled_first_letter", severity: "error", re: new RegExp(`(?<![${AR}])[وفبكل]?ال([^ماتنيلأإآءوهب\\s])\\1[${AR}]+`, "g"), message: "حرف مكتوب مرتين في أول الكلمة بعد «ال» («الععد»، «الششهيرة») — غلطة كتابة" },
+  // The same slip right after a one-letter prefix: «غريتا بصصحبة ميس ستار»، «لصصلحهم»، «لبانك وررودز» (INCIDENTS #1396).
+  // Only «و/ب/ل»: «ف» and «ك» stand before words that start with their own letter («ففاز»، «ككل»), and «د» is left
+  // out for «بددت». Every other hit in 9,000+ stories was a typo.
+  { code: "doubled_first_letter", severity: "error", re: new RegExp(`(?<![${AR}])[وبل]([^ماتنيلأإآءوهبكفد\\s])\\1[${AR}]+`, "g"), message: "حرف مكتوب مرتين بعد حرف الجر أو الواو («بصصحبة»، «لصصلحهم»، «وررودز») — غلطة كتابة" },
   // «… إلى بطاقة عرض WWE SmackDown المقرر إقامته.» — the sentence ends before saying when (INCIDENTS #1286)
   { code: "dangling_scheduled", severity: "error", re: /المقرر\s+(?:إقامته|إقامتها|عقده|عقدها|بثه|بثها|إذاعته|إذاعتها)\s*[.،:]/g, message: "«المقرر إقامته» والجملة خلصت من غير ما تقول إمتى — اكتب اليوم والتاريخ أو اشطبها" },
   // Blocking (it was a warning-only «repeated_word»): «أثناء استضافة الرحلة لعرض عرض AEW Collision» went live (Kairi story, INCIDENTS #1315)

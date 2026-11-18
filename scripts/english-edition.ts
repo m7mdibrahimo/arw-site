@@ -266,6 +266,23 @@ export function bothInPromotionNotInSource(text: string, sourceText: string): st
   return null;
 }
 
+/** «after spending over seven weeks dealing with severe injuries» when the source says «more than a week» (Bronson
+ *  Reed story, INCIDENTS #1396): a count of days/weeks/months/years the source never gives. The count is looked for in
+ *  the source as a digit or a word («seven weeks», «7 weeks», «seven-week»); a source under 200 letters is not judged. */
+const EN_COUNT_WORDS = ["two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
+export function enDurationNotInSource(text: string, sourceText: string): string | null {
+  const src = String(sourceText || "");
+  if (src.length < 200) return null;
+  const re = new RegExp(`\\b(${EN_COUNT_WORDS.join("|")}|\\d{1,2})[ -](day|week|month|year)s?\\b`, "gi");
+  for (const m of String(text || "").matchAll(re)) {
+    const n = m[1].toLowerCase(), idx = EN_COUNT_WORDS.indexOf(n);
+    const forms = idx >= 0 ? [n, String(idx + 2)] : [n, ...(+n >= 2 && +n <= 12 ? [EN_COUNT_WORDS[+n - 2]] : [])];
+    const ok = forms.some((f) => new RegExp(`\\b${f}[ -]${m[2]}s?\\b`, "i").test(src));
+    if (!ok) return m[0];
+  }
+  return null;
+}
+
 export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   const issues: string[] = [];
   const title = String(e?.title || "").trim(), body = String(e?.body || "").trim();
@@ -284,6 +301,9 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   // «while they were both in WCW» when the source says only the speaker was there (INCIDENTS #1260)
   const both = bothInPromotionNotInSource(title + "\n" + body, i.sourceText);
   if (both) issues.push(`puts both people in one promotion, the source does not: «${both}» — say who was where, as the source does`);
+  // «over seven weeks» when the source says «more than a week» (Bronson Reed story, INCIDENTS #1396)
+  const dur = enDurationNotInSource(title + "\n" + body, i.sourceText);
+  if (dur) issues.push(`a length of time the source does not give: «${dur}» — use the source's own figure`);
   // «on Friday, October 17, 2026» for a Saturday (Toni Storm, Crown Jewel, Matt Hardy stories, INCIDENTS #962)
   const badDay = enWeekdayNotOnDate(title + "\n" + body);
   if (badDay) issues.push(`weekday does not match the date: ${badDay}`);
