@@ -2403,9 +2403,20 @@ ${articleSummary.slice(0, 3000)}
 }
 
 // Format markdown to ensure clean spacing between lines and match sections
+/** A results report («🏆 الفائز») where the model dressed a one-line «X def. Y» in its own praise:
+ *  «مواجهة قوية»، «نزال حماسي»، «مواجهة نارية»، «نزالا قويا» — 131 of 428 results stories had it
+ *  (CMLL Martes 17 Nov: «شهد النزال مواجهة مثيرة»، «نزال قوي جمع بين»). The source never says it,
+ *  so the adjective goes and the noun stays («في نزال جمع بين»); one followed by «و…» stays, since «قوية وسريعة» would leave «مواجهة وسريعة». Quotes («> …») keep their words (INCIDENTS #1398). */
+const HYPE_ADJ = "(?:قوي|قويا|قوية|مثير|مثيرا|مثيرة|حماسي|حماسيا|حماسية|ناري|ناريا|نارية|ملحمي|ملحميا|ملحمية|شرس|شرسا|شرسة)";
+const HYPE_RE = new RegExp(`(?<![\u0621-\u064A])((?:ال)?(?:مواجهة|مواجهات|نزال|نزالا|نزالات))\\s+(?:ال)?${HYPE_ADJ}(?:\\s+و(?:ال)?${HYPE_ADJ})*(?:\\s+(?:جدا|للغاية))?(?![\u0621-\u064A])(?!\\s+و)`, "g");
+export function stripInventedMatchHype(text: string): string {
+  if (!text || !text.includes("🏆")) return text;
+  return text.split("\n").map((line) => (/^\s*>/.test(line) ? line : line.replace(HYPE_RE, "$1"))).join("\n");
+}
+
 function formatResultsMarkdown(text: string): string {
   if (!text) return text;
-  return noWinnerLines(text)
+  return noWinnerLines(stripInventedMatchHype(text))
     // Ensure every match line has its own paragraph
     .replace(/(🏆\s*\*\*الفائز(?:ون|تان|ة)?:?\*\*)/g, "\n\n$1")
     .replace(/(\*\*تفاصيل النزال:\*\*)/g, "\n\n$1")
