@@ -21,6 +21,6 @@ Big Boom AJ discussed how Tony Khan ensured his presence at AEW Full Gear amid r
 
 He noted that flights included a trip out of Orlando, another from North Carolina carrying Adam Page and Adam Copeland, and a third from New York, while The Young Bucks drove from Los Angeles to arrive on time.
 
-AJ expressed his great happiness in participating with AEW, thanking the Phoenix crowd for their high-energy interaction throughout the event.
+AJ said he was thrilled to be part of AEW and thanked the Phoenix crowd for their energy throughout the event.
 
 https://x.com/Cultaholic/status/2123033843426787531

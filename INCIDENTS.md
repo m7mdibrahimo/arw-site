@@ -11347,3 +11347,8 @@ Let me check git status to enumerate uncommitted changes.</think><tool_call>shel
 - اللي حصل: AZM اتكتبت حروف «إيه جيه ام»، و«أشاد ستايلز بايلي» من غير الباء، و«تميز» بدل «تمييز» و«بطريقة أطوار شخصيتها» جملة مش مفهومة.
 - السبب: Gemini نطق اسم AZM حرف حرف وترجم overthinking her persona وtell whether ترجمة غلط.
 - الإصلاح: الأخبار اتصلحت، و3 تصحيحات جديدة في editorial/corrections.json بتتطبق على كل خبر، واختبار tests/corrections-1404.test.mts.
+
+## #1405 — 2026-11-18: أسماء وكلمات غلط في أخبار فالون هينلي وجيا ميلر وبيج بوم إيه جي
+- اللي حصل: Brie Bella اتكتبت «بيكي بيلا»، وAlberta «ألبرت»، وKasper Brothers «عائلة كاسبر»، وكام كلمة مش دقيقة («موقف طريف»، «قدستهن»).
+- السبب: الأسماء دي مكانتش في القاموس فـ Gemini خمّنها.
+- الإصلاح: الأسماء اتضافت لـ wrestler-names.json، و3 تصحيحات في editorial/corrections.json، واختبار tests/corrections-1405، والأخبار اتصلحت في مكانها.

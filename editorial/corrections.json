@@ -1,6 +1,9 @@
 {
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
+    {"wrong":"بيكي بيلا","right":"بري بيلا","note":"Brie Bella اتكتبت «بيكي بيلا» في خبر فالون هينلي (INCIDENTS #1405)"},
+    {"wrong":"مقاطعة ألبرت","right":"مقاطعة ألبرتا","note":"Alberta اتكتبت «ألبرت» (INCIDENTS #1405)"},
+    {"wrong":"عائلة كاسبر","right":"الإخوة كاسبر","note":"Kasper Brothers اتترجمت «عائلة كاسبر» (INCIDENTS #1405)"},
     {"wrong":"ناهشو","right":"ناتشو","note":"Nacho (اسم مدرب التمثيل في كلام شارلوت فلير) اتكتب «ناهشو» — الصح «ناتشو» (INCIDENTS #1400)"},
     {"wrong":"(?<v>يتفق|اتفق|يتفقوا|اتفقوا|تتفق|اتفقت)\\s+مسبقا\\s+(?<n>ذا\\s+[\\u0621-\\u064A]+|أندرتيكر)","right":"$<v> مسبقا مع $<n>","regex":true,"note":"«لم يتفق مسبقا ذا أندرتيكر» ناقصة «مع» (خبر تريك ويليامز وأندرتيكر، INCIDENTS #1400)"},
     {"wrong":"عرض\\s+(?<t>[A-Za-z][A-Za-z0-9' ]*:\\s*The\\s+Movie)","right":"فيلم $<t>","regex":true,"note":"«عرض Psych: The Movie» — ده فيلم مش عرض مصارعة (خبر شارلوت فلير، INCIDENTS #1400)"},
