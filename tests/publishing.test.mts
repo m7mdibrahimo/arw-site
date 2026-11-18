@@ -5090,7 +5090,9 @@ test('the episode VideoObject names its program (isPartOf) and has a WatchAction
 
 test('the episode VideoObject carries its program names as keywords too (INCIDENTS #653)', () => {
   const layout = fs.readFileSync('_includes/post-layout.njk', 'utf8');
-  assert.match(layout, /"keywords": "\{% for a in ldNames %\}/);
+  assert.match(layout, /"keywords": "\{\{ vidKw \| join\(', '\) \| escape \}\}"/);
+  // a show's 14 are chosen like the article's (INCIDENTS #1395); an Arabic-commentary show keeps its own order (#1393)
+  assert.match(layout, /\{% set vidKw = keywordList\(\[\], ldNames, 14, true\) if \(page\.url\.startsWith\('\/shows\/'\) and not arabicCommentary\) else ldNames\.slice\(0, 14\) %\}/);
 });
 
 test("a program's library page structured data carries dateModified and its names as keywords (INCIDENTS #655)", () => {
