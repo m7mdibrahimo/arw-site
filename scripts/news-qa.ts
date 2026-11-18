@@ -2360,6 +2360,18 @@ export function dualPronounsToPlural(text: string): string {
   });
 }
 
+/** A prose paragraph that stops with no full stop («…في كواليس العروض» at the end of the Tiffany Stratton story,
+ *  INCIDENTS #1408) gets one. Prose only: long Arabic lines, never a quote, list, heading, card or link line. */
+export function endProseParagraphs(body: string): string {
+  return String(body || "").split("\n").map((line) => {
+    const t = line.trimEnd();
+    if (t.length < 60 || /^\s*(?:[>#*|\-–•]|\d+[.)-]|https?:|<|!\[|\{)/.test(t)) return line;
+    if ((t.match(/[\u0621-\u064A]/g) || []).length < 30 || t.split(/\s+/).length < 10) return line;
+    if (/🏆|\*\*|:\s(?!«)/.test(t)) return line; // winner lines and labelled card lines are not prose
+    return /[\u0621-\u064A]»?$/.test(t) ? `${t}.` : line;
+  }).join("\n");
+}
+
 export function autoFix(text: string): string {
   if (!text) return text;
   text = text.replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF\u00AD]/g, "");

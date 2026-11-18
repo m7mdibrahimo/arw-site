@@ -1,7 +1,7 @@
 ---
 title: "Tiffany Stratton: I Know I'm Better as a Heel"
 slug: "tiffany-stratton-i-know-im-better-as-a-heel"
-description: "Following a run as a fan favorite, Tiffany Stratton shifted her alignment at WWE Crown Jewel by attacking Chelsea Green and cashing in her Money."
+description: "Following a run as a fan favorite, Tiffany Stratton shifted her alignment at WWE Crown Jewel by attacking Chelsea Green."
 federation: WWE
 date: 2026-11-18T19:47:53.000Z
 created_at: 2026-11-18T19:53:14.215Z

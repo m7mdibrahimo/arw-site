@@ -799,12 +799,24 @@ export function fixEnglishNames(text: string): string {
 /** A quote mark Gemini escaped twice in its JSON reaches the text as «\\"»: it is a plain «"». */
 export function unescapeQuotes(t: string): string { return t.replace(/\\+"/g, '"'); }
 
+/** A «> "…» quote line Gemini left open («…will cherish them all.» with no closing mark, Erik Watts story,
+ *  INCIDENTS #1408) is closed with the mark it opened with. */
+export function closeOpenQuoteLines(body: string): string {
+  return String(body).split("\n").map((line) => {
+    const m = /^(>\s*)(["“])(.*?)\s*$/.exec(line);
+    if (!m) return line;
+    const rest = m[3];
+    if (m[2] === "“") return /”/.test(rest) ? line : `${m[1]}“${rest}”`;
+    return (rest.match(/"/g) || []).length % 2 === 0 && !/”/.test(rest) ? `${m[1]}"${rest}"` : line;
+  }).join("\n");
+}
+
 export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEWS_EN_DIR): string {
   // a literal «\n» typed as text (INCIDENTS #736: «…limited schedule. \n\n> "Shingo…») is a line break, and a
   // literal «\"» is a plain quote mark (the FAA ground-stop story showed «\"due to extraordinary circumstances…\"»
   // on its page, INCIDENTS #1284)
   // the broken-sentence fix is for the whole story only: a single phrase handed to fixEnglishNames keeps its letter
-  e = { ...e, title: fixEnglishNames(normalizeEnglishTitle(unescapeQuotes(e.title))), body: enYearNotInSource(fixLineStarts(fixEnglishNames(unescapeQuotes(e.body).replace(/[ \t]*\\n/g, "\n"))), i.sourceText, i.date) };
+  e = { ...e, title: fixEnglishNames(normalizeEnglishTitle(unescapeQuotes(e.title))), body: enYearNotInSource(closeOpenQuoteLines(fixLineStarts(fixEnglishNames(unescapeQuotes(e.body).replace(/[ \t]*\\n/g, "\n")))), i.sourceText, i.date) };
   e.title = restoreTitleAcronyms(e.title, e.body);
   e.title = restoreTitleTheNames(e.title, e.body);
   fs.mkdirSync(dir, { recursive: true });
