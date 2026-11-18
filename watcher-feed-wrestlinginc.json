@@ -1,5 +1,15 @@
 [
   {
+    "id": 4436143516,
+    "link": "https://www.wrestlinginc.com/2321280/wwe-matt-riddle-boxing-match-nxt-edris-enofe/",
+    "date": "Wed, 18 Nov 2026 22:40:09 +0000",
+    "date_gmt": "2026-11-18T22:40:09.000Z",
+    "title": {
+      "rendered": "Ex-WWE Star Matt Riddle Announced For Boxing Match Against Former NXT Talent"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/ex-wwe-star-matt-riddle-announced-for-boxing-match-against-former-nxt-talent/l-intro-1795041326.jpg"
+  },
+  {
     "id": 3530438265,
     "link": "https://www.wrestlinginc.com/2320150/aew-dynamite-november-18-2026-results/",
     "date": "Wed, 18 Nov 2026 22:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Kelani Jordan Retains WWE NXT Women's Title In Main Event DQ"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/kelani-jordan-retains-wwe-nxt-womens-title-in-main-event-dq/l-intro-1794971545.jpg"
-  },
-  {
-    "id": 3775949238,
-    "link": "https://www.wrestlinginc.com/2320135/more-nxt-stars-added-wwe-john-cena-classic/",
-    "date": "Wed, 18 Nov 2026 02:49:13 +0000",
-    "date_gmt": "2026-11-18T02:49:13.000Z",
-    "title": {
-      "rendered": "More NXT Stars Added To WWE John Cena Classic"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/more-nxt-stars-added-to-wwe-john-cena-classic/l-intro-1794970051.jpg"
   }
 ]
