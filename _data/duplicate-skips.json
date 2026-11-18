@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/stone-cold-steve-austins-racist-role-longest-yard-gets-surprising-reaction-nelly/": {
-    "matchedFile": "20261105163736-نيلي-يتذكر-العمل-مع-ستيف-أوستن-في-فيلم-the-longest-yard.md",
-    "reason": "الخبر الجديد يعيد سرد نفس تصريحات نيلي في بودكاست 7PM in Brooklyn حول فيلم The Longest Yard ودور ستيف أوستن، وهو نفس الحدث والتفاصيل الموجودة في الخبر المنشور.",
-    "at": "2026-11-05T14:20:34.078Z"
-  },
   "https://www.ringsidenews.com/wwe-files-trademark-another-new-wrestler-name-following-two-recent-filings/": {
     "matchedFile": "20261105144146-wwe-يسجل-العلامة-التجارية-marquis-journey-رسميا.md",
     "reason": "الخبر الجديد يتحدث عن نفس حدث تسجيل WWE للعلامة التجارية Marquis Journey في 4 نوفمبر، وهو نفس الخبر المنشور مسبقاً من مصدر آخر.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261118232159-جايد-كارغيل-تكشف-عن-تلقيها-نصائح-من-سي-ام-بانك-للتعامل-مع-الانتقادات.md",
     "reason": "الخبر الجديد يعيد سرد نفس التصريحات التي أدلت بها جايد كارغيل حول نصائح سي ام بانك، وهي نفس الواقعة والمحتوى المذكور في الخبر رقم 0.",
     "at": "2026-11-18T21:15:42.767Z"
+  },
+  "https://www.wrestlinginc.com/2321160/kenny-omega-njpw-aew-iwgp-heavyweight-title-prioritize/": {
+    "matchedFile": "20261118205146-كيني-أوميغا-يؤكد-أن-نزالات-njpw-ستكون-لها-الأولوية-على-جدوله-في-aew-إذا-فاز-ببطولة-iwgp-للوزن-الثقيل.md",
+    "reason": "الخبر الجديد يتناول نفس التصريح الذي أدلى به كيني أوميغا حول أولوياته في NJPW مقارنة بـ AEW، وهو نفس المحتوى المذكور في الخبر المنشور مسبقاً.",
+    "at": "2026-11-18T21:25:26.289Z"
   }
 }
