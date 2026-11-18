@@ -5493,16 +5493,14 @@
     "publishedAt": 1795037616116,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال × ان جي بي دبليو لوتشا كينجدوم 16.11.2026 مترجم",
-    "lastAttempt": 1795044417614,
+    "lastAttempt": 1795045349520,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
     "reviewPlatforms": [],
@@ -5516,19 +5514,17 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ان اكس تي 17.11.2026 مترجم",
-    "lastAttempt": 1795044446933,
+    "lastAttempt": 1795045362194,
     "errors": {
-      "facebook_story": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "facebook_story": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة."
     },
-    "processing": [
-      "tiktok"
-    ],
+    "processing": [],
     "reviewPlatforms": [
       "facebook_story"
     ],
     "needsReview": true,
-    "reviewNotified": true
+    "reviewNotified": true,
+    "tiktok": true
   },
   "20261118212903-wwe-nxt-17-11-2026-تعليق-عربي": {
     "publishedAt": 1795037685164,
