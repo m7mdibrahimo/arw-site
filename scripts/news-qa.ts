@@ -269,6 +269,21 @@ export function mainEventNotLastResult(body: string, sourceText: string, glossar
   return names[0][0];
 }
 
+/**
+ * A champion who LOST by disqualification on purpose (slapped the referee to cause the DQ) and kept the title only
+ * because a title does not change hands on a DQ, written as «دافعت بنجاح عن البطولة … واحتفظت بلقبها بالاستبعاد»
+ * (WWE NXT 17 Nov 2026, Kelani Jordan vs Kendal Grey, INCIDENTS #1397). When the source says the DQ was caused on
+ * purpose / kept via champion's advantage, a sentence with both «دافع… بنجاح» and «استبعاد» is wrong. Returns it, or null.
+ */
+export function champDqLossAsDefense(text: string, sourceText: string): string | null {
+  const src = String(sourceText || "");
+  if (!/\bto (?:cause|draw|force|get)\s+(?:the|a|herself|himself|themselves)?\s*(?:DQ|disqualif\w*)|champion'?s advantage|(?:retain|keep)\w*\s+(?:the|her|his|their)\s+(?:title|championship|belt)s?\s+via\s+(?:DQ|disqualification)/i.test(src)) return null;
+  for (const sentence of String(text || "").split(/[.\n؛]+/)) {
+    if (/دافع(?:ت|وا|ن)?\s+(?:[^\s]+\s+){0,4}بنجاح/.test(sentence) && /استبعاد/.test(sentence)) return sentence.trim();
+  }
+  return null;
+}
+
 export function applyCorrections(text: string, corrections = loadCorrections()): string {
   if (!text) return text;
   let out = fixHangmanPage(fixEraCalledShow(fixMidCardMainEvent(fixDrawTrophy(fixSubjunctiveDuals(fixCountDuals(fixTimeDuals(fixNumberGender(decodeHtmlEntities(text)))))))));

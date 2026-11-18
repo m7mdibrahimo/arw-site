@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, liveEventInResults, fixTitleSubjectGender, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, mainWrestlerMissing, fixNearGlossaryNames, fixSwappedSurnames, threeWayAsCount, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixElijahAsIlya, fixEventCalledMovie, fixDivasChampion, demoteUnplayedMainEvent, mainEventNotLastResult, tweetDateAsShowDate, titleChangeWrittenAsDefense, type NewsFile } from "./news-qa";
+import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, liveEventInResults, fixTitleSubjectGender, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, mainWrestlerMissing, fixNearGlossaryNames, fixSwappedSurnames, threeWayAsCount, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixElijahAsIlya, fixEventCalledMovie, fixDivasChampion, demoteUnplayedMainEvent, mainEventNotLastResult, champDqLossAsDefense, tweetDateAsShowDate, titleChangeWrittenAsDefense, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -4813,6 +4813,11 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   if (lastWinner) {
     blocking.push({ code: "main_event_not_last", severity: "error", field: "body", message: `آخر نزال في المصدر (الحدث الرئيسي) فاز فيه ${lastWinner}، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه`, excerpt: lastWinner });
     lastPostRetryable = true;
+  }
+  // A champion who caused the DQ on purpose and kept the title written as «دافعت بنجاح … بالاستبعاد» (INCIDENTS #1397).
+  {
+    const dq = champDqLossAsDefense(`${draft.title}\n${draft.body}`, `${rawTitle}\n${plainText}`);
+    if (dq) { blocking.push({ code: "champ_dq_loss_as_defense", severity: "error", field: "body", message: `المصدر بيقول البطل تسبب في الاستبعاد عمدا (خسر النزال بالاستبعاد واحتفظ باللقب لأن البطولة لا تنتقل بالاستبعاد)، والخبر كتبها «دفاع ناجح»: «${dq}» — اكتب «خسر بالاستبعاد واحتفظ بالبطولة لأن اللقب لا ينتقل بالاستبعاد»`, excerpt: dq }); lastPostRetryable = true; }
   }
   // The same headline already published (a re-post of an old story by another site) is a duplicate whatever its age (INCIDENTS #850).
   if (!options.manual && titleAlreadyPublished(draft.title)) {
