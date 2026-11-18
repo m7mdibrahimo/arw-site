@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2320027/bully-ray-perfect-wwe-remaining-spots-fifth-team-usa-mexico-survivor-series": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
+  "retry": true,
+  "at": "2026-11-18T01:17:45.914Z"
+ },
+ "https://www.wrestlinginc.com/2318773/wwe-nxt-november-17-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-18T01:17:22.818Z"
+ },
  "https://www.fightful.com/wrestling/wrestling-world-reacts-to-passing-of-cowboy-bill-watts": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -33,16 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-18T01:07:00.725Z"
- },
- "https://www.wrestlinginc.com/2320027/bully-ray-perfect-wwe-remaining-spots-fifth-team-usa-mexico-survivor-series": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، فعل مثنى («يقدمان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-18T01:03:50.197Z"
- },
- "https://www.wrestlinginc.com/2318773/wwe-nxt-november-17-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-18T01:02:12.764Z"
  },
  "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-november-17-2026": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
