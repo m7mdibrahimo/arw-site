@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/charlotte-flair-takes-playful-shot-ric-flairs-gym-habits": {
+  "reason": "المراجعة رفضته: همزات ساقطة في 4 مواضع — النص يحتاج إعادة ترجمة",
+  "retry": true,
+  "at": "2026-11-18T14:11:09.959Z"
+ },
  "https://www.fightful.com/wrestling/aew-dynamite-preview-start-time-how-to-watch-location-11-18": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-09T19:45:17.296Z"
- },
- "https://www.fightful.com/wrestling/kyle-fletcher-i-dont-think-theres-another-couple-like-me-and-skye-blue-in-the-world-i-think-were-pretty-unique": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-09T19:07:46.314Z"
  }
 }
