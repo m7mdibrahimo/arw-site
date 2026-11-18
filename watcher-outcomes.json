@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/bayley-reveals-she-wrestling-through-injury-during-meiko-satomuras-final-wwe-match": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-18T17:08:06.005Z"
+ },
+ "https://www.ringsidenews.com/why-kayla-braxton-never-slept-swoozie-during-30-day-dating-experiment": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-18T17:05:48.313Z"
+ },
  "https://www.wrestlinginc.com/2320592/aew-full-gear-2026-big-boom-aj-kasper-brothers-tony-khan-flew-private-jet-debuting-stars": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -58,16 +68,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-18T16:47:09.381Z"
- },
- "https://www.ringsidenews.com/bayley-reveals-she-wrestling-through-injury-during-meiko-satomuras-final-wwe-match": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-18T16:43:25.015Z"
- },
- "https://www.ringsidenews.com/why-kayla-braxton-never-slept-swoozie-during-30-day-dating-experiment": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-18T16:42:08.326Z"
  },
  "https://www.fightful.com/wrestling/continental-classic-matches-tbs-title-four-way-announced-for-11-18-aew-dynamite": {
   "reason": "مكرر مع خبر نزل قبل كده",
