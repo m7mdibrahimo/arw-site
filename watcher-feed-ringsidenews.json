@@ -1,5 +1,15 @@
 [
   {
+    "id": 802270044,
+    "link": "https://www.ringsidenews.com/wwe-announces-three-matches-november-24-nxt-including-championship-match/",
+    "date": "Wed, 18 Nov 2026 02:47:42 +0000",
+    "date_gmt": "2026-11-18T02:47:42.000Z",
+    "title": {
+      "rendered": "WWE Announces Three Matches for November 24 NXT Including Championship Match"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/09/last-minute-match-revealed-for-september-8-wwe-nxt-46.jpg?x69784"
+  },
+  {
     "id": 802269998,
     "link": "https://www.ringsidenews.com/wwe-pays-tribute-cowboy-bill-watts-during-nxt-following-his-death/",
     "date": "Wed, 18 Nov 2026 02:11:25 +0000",
@@ -138,15 +148,5 @@
       "rendered": "Hulk Hogan and Sky Daily Were Allegedly Living Separately Before His Death"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/hulk-hogan-and-sky-daily-were-allegedly-living-separately-before-his-death-52.jpg?x69784"
-  },
-  {
-    "id": 802269836,
-    "link": "https://www.ringsidenews.com/zilla-fatu-match-added-november-17-wwe-nxt-lineup/",
-    "date": "Tue, 17 Nov 2026 21:33:14 +0000",
-    "date_gmt": "2026-11-17T21:33:14.000Z",
-    "title": {
-      "rendered": "Zilla Fatu Match Added to November 17 WWE NXT Lineup"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/zilla-fatu-match-added-to-november-17-wwe-nxt-lineup-51.jpg?x69784"
   }
 ]
