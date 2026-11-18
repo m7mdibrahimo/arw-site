@@ -12,32 +12,32 @@
  "https://www.fightful.com/wrestling/wrestling-world-reacts-to-passing-of-cowboy-bill-watts": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T01:10:29.988Z"
+  "at": "2026-11-18T01:12:59.835Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-results-11-17-2026-kelani-jordan-vs-kelani-jordan-zilla-fatu-tony-dangelo-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-18T01:10:29.426Z"
+  "at": "2026-11-18T01:12:59.275Z"
  },
  "https://www.fightful.com/wrestling/ryzin-details-decision-to-retire-in-2027-says-he-was-overwhelmed-by-the-reaction-to-his-initial-announcement": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T01:10:28.785Z"
+  "at": "2026-11-18T01:12:58.620Z"
  },
  "https://www.fightful.com/wrestling/alyssa-daniele-reveals-she-suffered-a-shoulder-dislocation-that-requires-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T01:10:28.435Z"
+  "at": "2026-11-18T01:12:58.265Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-11-9-scores-2-4-million-global-views-on-netflix": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T01:10:27.979Z"
+  "at": "2026-11-18T01:12:57.807Z"
  },
  "https://www.fightful.com/wrestling/elayna-black-the-best-advice-cm-punk-gave-me-was-to-not-give-a-fuck": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T01:10:27.101Z"
+  "at": "2026-11-18T01:12:56.930Z"
  },
  "https://www.fightful.com/wrestling/fallon-henley-says-she-wanted-to-burst-into-tears-after-fatal-influence-captured-the-wwe-womens-tag-titles": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1993,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-09T14:15:57.575Z"
- },
- "https://www.fightful.com/wrestling/wwe-files-to-trademark-spike-dudley": {
-  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
-  "retry": false,
-  "at": "2026-11-09T14:13:59.107Z"
  }
 }
