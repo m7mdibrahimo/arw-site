@@ -1,48 +1,48 @@
 {
- "https://www.fightful.com/wrestling/film-being-developed-based-on-nattie-neidharts-book-life-story": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-18T23:34:10.633Z"
- },
  "https://www.fightful.com/wrestling/roman-reigns-featured-on-wwe-royal-rumble-poster-wwe-nxt-highlights-more-fight-size": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T23:33:46.022Z"
+  "at": "2026-11-18T23:36:44.880Z"
  },
  "https://www.fightful.com/wrestling/gofundme-set-up-to-support-emily-jayes-family-after-tragic-loss": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-18T23:33:45.787Z"
+  "at": "2026-11-18T23:36:44.639Z"
  },
  "https://www.fightful.com/wrestling/339789-cm-punk-best-advice": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T23:33:15.365Z"
+  "at": "2026-11-18T23:36:09.310Z"
  },
  "https://www.fightful.com/wrestling/toronto-discussed-as-potential-landing-spot-for-aew-all-in-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T23:33:15.077Z"
+  "at": "2026-11-18T23:36:09.013Z"
  },
  "https://www.fightful.com/wrestling/bronson-reed-back-home-following-injury-in-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T23:33:14.847Z"
+  "at": "2026-11-18T23:36:08.782Z"
  },
  "https://www.fightful.com/wrestling/jade-cargill-further-addresses-criticism-about-her-skipping-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T23:33:14.498Z"
+  "at": "2026-11-18T23:36:08.417Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-celebrates-the-rocks-30th-anniversary-thank-you-for-paving-the-way-for-so-many-of-us": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T23:33:13.955Z"
+  "at": "2026-11-18T23:36:07.853Z"
  },
  "https://www.fightful.com/wrestling/tony-schiavone-admits-swerve-strickland-drinking-hangman-pages-blood-was-pretty-gross": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T23:33:13.085Z"
+  "at": "2026-11-18T23:36:06.960Z"
+ },
+ "https://www.fightful.com/wrestling/film-being-developed-based-on-nattie-neidharts-book-life-story": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-18T23:34:10.633Z"
  },
  "https://www.wrestlinginc.com/2321297/young-bucks-drove-six-hours-aew-full-gear-flight-cancelation": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل مثنى («يقودان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
