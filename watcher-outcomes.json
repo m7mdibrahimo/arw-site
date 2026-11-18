@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/mick-foley-reveals-craziest-item-fan-ever-asked-him-sign": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-18T19:56:08.915Z"
+ },
  "https://www.fightful.com/wrestling/toronto-discussed-as-potential-landing-spot-for-aew-all-in-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -38,11 +43,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-18T19:31:13.211Z"
- },
- "https://www.ringsidenews.com/mick-foley-reveals-craziest-item-fan-ever-asked-him-sign": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-18T19:30:28.414Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-11-13-viewership-drops-remains-above-1-1-million-viewers": {
   "reason": "مكرر مع خبر نزل قبل كده",
