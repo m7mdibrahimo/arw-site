@@ -5446,5 +5446,99 @@
     "needsReview": false,
     "tiktok": true,
     "mediaDeleted": true
+  },
+  "20261118024636-wwe-raw-16-11-2026-تعليق-عربي": {
+    "publishedAt": 1795037418210,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": true,
+    "instagram_story": false,
+    "title": "عرض الرو 16.11.2026 (تعليق عربي)",
+    "lastAttempt": 1795037510330,
+    "errors": {
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_story",
+      "tiktok"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261118112130-cmll-domingo-familiar-15-11-2026": {
+    "publishedAt": 1795037537541,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال دومينغو فاميليار 15.11.2026 مترجم",
+    "lastAttempt": 1795037549920,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261118112619-cmll-revolucion-de-campeones-16-11-2026": {
+    "publishedAt": 1795037576136,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال ريفولوسيون دي كامبيونيس 16.11.2026 مترجم",
+    "lastAttempt": 1795037590701,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261118113226-cmll-x-njpw-lucha-kingdom-2026": {
+    "publishedAt": 1795037616116,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال × ان جي بي دبليو لوتشا كينجدوم 16.11.2026 مترجم",
+    "lastAttempt": 1795037627702,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261118191539-wwe-nxt-17-11-2026": {
+    "publishedAt": 1795037657196,
+    "facebook_reel": true,
+    "facebook_story": false,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ان اكس تي 17.11.2026 مترجم",
+    "lastAttempt": 1795037657229,
+    "errors": {
+      "facebook_story": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة."
+    },
+    "processing": [],
+    "reviewPlatforms": [
+      "facebook_story"
+    ],
+    "needsReview": true,
+    "reviewNotified": false
+  },
+  "20261118212903-wwe-nxt-17-11-2026-تعليق-عربي": {
+    "publishedAt": 1795037685164,
+    "facebook_reel": true,
+    "facebook_story": false,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ان اكس تي 17.11.2026 (تعليق عربي)",
+    "lastAttempt": 1795037685201,
+    "errors": {
+      "facebook_story": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة."
+    },
+    "processing": [],
+    "reviewPlatforms": [
+      "facebook_story"
+    ],
+    "needsReview": true,
+    "reviewNotified": false
   }
 }
