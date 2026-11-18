@@ -1,4 +1,24 @@
 {
+ "https://www.ringsidenews.com/aj-styles-criticizes-wrestlers-who-rely-leg-slaps-make-their-kicks-look-real": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-18T16:05:56.343Z"
+ },
+ "https://www.ringsidenews.com/aj-styles-admits-he-didnt-know-who-meiko-satomura-despite-his-wrestling-history-japan": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-18T16:04:31.009Z"
+ },
+ "https://www.ringsidenews.com/bayley-reveals-she-wrestling-through-injury-during-meiko-satomuras-final-wwe-match": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-18T15:58:27.739Z"
+ },
+ "https://www.ringsidenews.com/why-kayla-braxton-never-slept-swoozie-during-30-day-dating-experiment": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-18T15:57:01.137Z"
+ },
  "https://www.fightful.com/wrestling/maya-worlds-plans-for-wednesday-evening-winning-the-tbs-title-and-playing-gta-6": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -53,11 +73,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-18T15:59:24.563Z"
- },
- "https://www.ringsidenews.com/why-kayla-braxton-never-slept-swoozie-during-30-day-dating-experiment": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل مثنى («يعرفان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-18T15:07:18.894Z"
  },
  "https://www.fightful.com/wrestling/ryzin-details-decision-to-retire-in-2027-says-he-was-overwhelmed-by-the-reaction-to-his-initial-announcement": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1983,20 +1998,5 @@
   "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، نص الخبر قصير جدًا أو فاضي",
   "retry": true,
   "at": "2026-11-09T21:51:06.580Z"
- },
- "https://www.fightful.com/wrestling/sami-zayn-you-cant-always-get-what-you-want-but-if-you-try-sometimes-youll-find-you-get-what-you-need": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-09T21:45:07.147Z"
- },
- "https://www.fightful.com/wrestling/beyond-wrestling-announces-wrestival-schedule": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Bon Secours Wellness Arena",
-  "retry": true,
-  "at": "2026-11-09T21:27:22.701Z"
- },
- "https://www.fightful.com/mma/donald-trump-says-he-was-only-kidding-about-offering-dana-white-the-press-secretary-job": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-09T21:09:16.217Z"
  }
 }
