@@ -5459,7 +5459,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261118112130-cmll-domingo-familiar-15-11-2026": {
     "publishedAt": 1795037537541,
@@ -5496,7 +5497,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال × ان جي بي دبليو لوتشا كينجدوم 16.11.2026 مترجم",
-    "lastAttempt": 1795045349520,
+    "lastAttempt": 1795046210574,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5514,11 +5515,14 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ان اكس تي 17.11.2026 مترجم",
-    "lastAttempt": 1795045362194,
+    "lastAttempt": 1795046211562,
     "errors": {
-      "facebook_story": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة."
+      "facebook_story": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة.",
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
-    "processing": [],
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [
       "facebook_story"
     ],
@@ -5533,11 +5537,14 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ان اكس تي 17.11.2026 (تعليق عربي)",
-    "lastAttempt": 1795037685201,
+    "lastAttempt": 1795046240241,
     "errors": {
-      "facebook_story": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة."
+      "facebook_story": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
     },
-    "processing": [],
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [
       "facebook_story"
     ],
