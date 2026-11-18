@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-november-17-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-18T01:38:26.730Z"
+ },
  "https://www.fightful.com/wrestling/ash-by-elegance-announces-pregnancy-opens-up-about-health-issues-provides-update-on-tna-contract": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-09T15:28:07.014Z"
- },
- "https://www.fightful.com/wrestling/swerve-strickland-i-would-say-kenny-omega-and-kazuchika-okada-at-dominion-is-the-greatest-wrestling-match-of-all-time": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Hangman Page",
-  "retry": true,
-  "at": "2026-11-09T14:32:34.402Z"
  }
 }
