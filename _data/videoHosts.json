@@ -1,13 +1,14 @@
 {
-  "checkedAt": "2026-11-18T20:40:37.749Z",
+  "checkedAt": "2026-11-18T23:09:33.201Z",
   "dead": [
-    "turbovidhls.com"
+    "turbovidhls.com",
+    "uqload.vc"
   ],
   "noEmbed": [
     "multiup.io"
   ],
   "strikes": {
     "turbovidhls.com": 2,
-    "uqload.vc": 1
+    "uqload.vc": 2
   }
 }
