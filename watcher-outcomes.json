@@ -1,58 +1,58 @@
 {
- "https://www.ringsidenews.com/charlotte-flair-takes-playful-shot-ric-flairs-gym-habits": {
-  "reason": "المراجعة رفضته: همزات ساقطة في 4 مواضع — النص يحتاج إعادة ترجمة",
-  "retry": true,
-  "at": "2026-11-18T14:11:09.959Z"
- },
  "https://www.fightful.com/wrestling/aew-dynamite-preview-start-time-how-to-watch-location-11-18": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T14:16:59.127Z"
+  "at": "2026-11-18T14:23:25.572Z"
  },
  "https://www.fightful.com/wrestling/big-boom-aj-reveals-he-was-on-the-same-private-plane-as-kasper-brothers-to-aew-full-gear": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": true,
-  "at": "2026-11-18T14:16:58.653Z"
+  "at": "2026-11-18T14:23:25.111Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-11-13-viewership-drops-remains-above-1-1-million-viewers": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T14:10:20.556Z"
+  "at": "2026-11-18T14:22:23.550Z"
  },
  "https://www.fightful.com/wrestling/myka-lockwood-to-be-sole-woman-in-eight-person-tag-bout-womens-north-american-title-match-set-for-11-24-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T14:10:19.893Z"
+  "at": "2026-11-18T14:22:22.895Z"
  },
  "https://www.fightful.com/wrestling/shiloh-hill-izzi-dame-joins-wwe-john-cena-classic-field": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T14:10:19.223Z"
+  "at": "2026-11-18T14:22:22.246Z"
  },
  "https://www.fightful.com/wrestling/ash-by-elegance-announces-pregnancy-opens-up-about-health-issues-provides-update-on-tna-contract": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T14:10:18.867Z"
+  "at": "2026-11-18T14:22:21.900Z"
  },
  "https://www.fightful.com/wrestling/anthony-bowens-expected-to-remain-with-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T14:10:18.512Z"
+  "at": "2026-11-18T14:22:21.554Z"
  },
  "https://www.fightful.com/wrestling/continental-classic-matches-tbs-title-four-way-announced-for-11-18-aew-dynamite": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T14:10:18.154Z"
+  "at": "2026-11-18T14:22:21.206Z"
  },
  "https://www.fightful.com/wrestling/wrestling-world-reacts-to-passing-of-cowboy-bill-watts": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T14:10:17.795Z"
+  "at": "2026-11-18T14:22:20.856Z"
  },
  "https://www.fightful.com/wrestling/ryzin-details-decision-to-retire-in-2027-says-he-was-overwhelmed-by-the-reaction-to-his-initial-announcement": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T14:10:16.720Z"
+  "at": "2026-11-18T14:22:19.804Z"
+ },
+ "https://www.ringsidenews.com/charlotte-flair-takes-playful-shot-ric-flairs-gym-habits": {
+  "reason": "المراجعة رفضته: همزات ساقطة في 4 مواضع — النص يحتاج إعادة ترجمة",
+  "retry": true,
+  "at": "2026-11-18T14:11:09.959Z"
  },
  "https://www.fightful.com/wrestling/alyssa-daniele-reveals-she-suffered-a-shoulder-dislocation-that-requires-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
