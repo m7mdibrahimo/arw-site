@@ -29,3 +29,12 @@ test("every step that installs the renderer skips onnxruntime's CUDA download", 
     }
   }
 });
+
+test("the reel generator never re-renders a show whose reel was already posted and deleted", () => {
+  // a posted reel leaves R2 and the manifest (#313); the first run after the outage re-rendered 58 of them
+  const text = readFileSync(`${dir}/auto-show-reel.yml`, "utf-8");
+  const lists = text.match(/mediaDeleted[^\n]*reels-posted\.txt/g) || [];
+  assert.equal(lists.length, 2, "both the scan job and the render step must list the posted shows");
+  assert.match(text, /grep -qxF "\$\(basename "\$F" \.md\)" "\$RUNNER_TEMP\/reels-posted\.txt" && continue/, "the scan must skip posted shows");
+  assert.match(text, /if grep -qxF "\$\(basename "\$T" \.md\)" "\$RUNNER_TEMP\/reels-posted\.txt"; then/, "the render loop must skip posted shows");
+});

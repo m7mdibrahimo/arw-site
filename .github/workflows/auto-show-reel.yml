@@ -51,6 +51,10 @@ jobs:
       - name: Find eligible shows without a reel video
         id: scan
         run: |
+          # A posted reel is deleted from R2 and the manifest (INCIDENTS #313), so «missing from the manifest» is not
+          # «never rendered»: shows whose reel was posted and deleted (mediaDeleted in show-reel-state.json) are done.
+          # Without this, the first run after a pause re-rendered 58 already-posted reels (INCIDENTS #1407).
+          node -e 'try{for(const[k,v]of Object.entries(require("./_data/show-reel-state.json")))if(v&&v.mediaDeleted)console.log(k)}catch{}' > "$RUNNER_TEMP/reels-posted.txt"
           MISSING=false
           NOW=$(date -u +%s)
           for F in $(ls content/shows/*.md 2>/dev/null | grep -E 'content/shows/[0-9]{14}-' | sort); do
@@ -59,6 +63,7 @@ jobs:
             SLUG=$(basename "$F" .md | cut -c 1-45)
             # the reel files live in R2 (INCIDENTS #313): the manifest says which were rendered
             grep -qF "\"reel-${SLUG}" dist/videos/manifest.json 2>/dev/null && continue
+            grep -qxF "$(basename "$F" .md)" "$RUNNER_TEMP/reels-posted.txt" && continue
             [ -n "$(find dist/videos -name "reel-${SLUG}*.mp4" 2>/dev/null)" ] && continue
             D=$(grep -m1 '^date:' "$F" | sed 's/^date:[[:space:]]*//; s/["'"'"']//g')
             T=$(date -u -d "$D" +%s 2>/dev/null || echo 0)
@@ -145,6 +150,10 @@ jobs:
           INPUT_SLUG: ${{ github.event.inputs.slug }}
         run: |
           echo "🔍 Scanning for eligible shows to generate reel videos..."
+          # A posted reel is deleted from R2 and the manifest (INCIDENTS #313), so «missing from the manifest» is not
+          # «never rendered»: shows whose reel was posted and deleted (mediaDeleted in show-reel-state.json) are done.
+          # Without this, the first run after a pause re-rendered 58 already-posted reels (INCIDENTS #1407).
+          node -e 'try{for(const[k,v]of Object.entries(require("./_data/show-reel-state.json")))if(v&&v.mediaDeleted)console.log(k)}catch{}' > "$RUNNER_TEMP/reels-posted.txt"
           TARGETS=()
 
           if [ -n "$INPUT_SLUG" ] && [ "$INPUT_SLUG" != "latest" ]; then
@@ -195,6 +204,10 @@ jobs:
           echo "🎬 Shows to render: ${TARGETS[*]}"
           for T in "${TARGETS[@]}"; do
             echo "════════════════════════════════════════"
+            if grep -qxF "$(basename "$T" .md)" "$RUNNER_TEMP/reels-posted.txt"; then
+              echo "Already posted (its reel was deleted after posting): $T"
+              continue
+            fi
             if ! npx tsx scripts/check-show-eligibility.ts "$T"; then
               echo "Skipping old or undated show: $T"
               continue
