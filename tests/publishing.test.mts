@@ -155,7 +155,21 @@ test('a show already tracked with partial progress keeps retrying past the eligi
   // this is exactly what orphaned the UFC 331 shows' Facebook reel/story forever.
   const partial = { facebook_reel: false, facebook_story: false, instagram_reel: true, instagram_story: true, tiktok: false, publishedAt: null } as any;
   assert.equal(shouldProcessShow('old.md', oldShowData, partial), true);
-  assert.equal(shouldProcessShow('new.md', { date: '2026-09-21T19:13:59Z' }, undefined), true);
+  const justAdded = Date.parse('2026-09-21T20:00:00Z');
+  assert.equal(shouldProcessShow('20260921193000-new.md', { date: '2026-09-21T19:13:59Z' }, undefined, justAdded), true);
+});
+test('INCIDENTS #1407: a show added more than 36 hours ago never STARTS on social media, even when its reel is new', () => {
+  const now = Date.parse('2026-11-18T21:30:00Z');
+  const aired = { date: '2026-11-15T22:00:00Z' };
+  // the catch-up render made reels for shows added weeks ago — none of them may start posting
+  assert.equal(shouldProcessShow('20260924110700-cmll-sabados-de-coliseo-19-09-2026.md', { date: '2026-09-20T03:00:00Z' }, undefined, now), false);
+  assert.equal(shouldProcessShow('20261115124210-aew-full-gear-tailgate-brawl-2026.md', aired, undefined, now), false);
+  // a show added today still posts
+  assert.equal(shouldProcessShow('20261118212903-wwe-nxt-17-11-2026-تعليق-عربي.md', { date: '2026-11-18T19:00:00Z' }, undefined, now), true);
+  // a show with no 14-digit prefix can't prove its age: never started
+  assert.equal(shouldProcessShow('nxt.md', aired, undefined, now), false);
+  // already in the pipeline: still finishes its platforms, however old
+  assert.equal(shouldProcessShow('20260924110700-cmll-sabados-de-coliseo-19-09-2026.md', { date: '2026-09-20T03:00:00Z' }, { instagram_reel: true } as any, now), true);
 });
 test('reel matching uses exact generator filename, never broad partial matches', () => {
   const slug = '20260921002200-ufc-331-van-vs-pantoja-2-early-prelims';

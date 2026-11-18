@@ -72,8 +72,20 @@ export function reelDone(entry: Entry | undefined, now = Date.now(), tiktok = TI
   return last > 0 && now - last >= REEL_KEEP_MS;
 }
 
-export function shouldProcessShow(filename: string, data: Record<string, any>, previous: Entry | undefined): boolean {
-  return isShowEligible(filename, data) || previous !== undefined;
+/** INCIDENTS #1407: a show added to the site more than 36 hours ago is never STARTED on social media (the same rule
+ *  as stale holds). A late catch-up render — e.g. 63 reels at once after the reel generator was down — must not post
+ *  weeks-old shows; a show already in the pipeline (has a state entry) still finishes its pending platforms. */
+export const START_MAX_AGE_MS = 36 * 3600_000;
+export function addedAt(filename: string): number {
+  const m = filename.match(/^(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})-/);
+  // the 14-digit prefix is the panel's local time (Cairo); reading it as UTC errs by ≤3h on the safe side
+  return m ? Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]) : NaN;
+}
+export function shouldProcessShow(filename: string, data: Record<string, any>, previous: Entry | undefined, now = Date.now()): boolean {
+  if (previous !== undefined) return true;
+  const added = addedAt(filename);
+  if (!Number.isFinite(added) || now - added > START_MAX_AGE_MS) return false;
+  return isShowEligible(filename, data);
 }
 export function showUrl(filename: string, data: Record<string, any>, origin = ORIGIN): string {
   const link = typeof data.permalink === 'string' && !data.permalink.includes('{{')
