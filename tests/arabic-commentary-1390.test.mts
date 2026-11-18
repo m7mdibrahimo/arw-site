@@ -50,11 +50,14 @@ test('«عن العرض» says «بتعليق عربي» for an Arabic-commentar
 const { showPath } = require('../lib/show-permalink.cjs');
 // file → its own front-matter lines; dated 2001 so no real show shares a title or address
 const SAMPLES: Record<string, string> = {
-  'zz-test-1350-commentary.md': `title: WWE RAW 08.01.2001 (تعليق عربي)\nheadline: عرض الرو 08.01.2001 (تعليق عربي)\nprogram_name: WWE RAW (تعليق للعربي)\nevent_date: 2001-01-08\ndescription: عرض الرو (تعليق عربي) بالكامل مع جميع النزالات والأحداث.`,
+  'zz-test-1350-commentary.md': `title: WWE RAW 08.01.2001 (تعليق عربي)\nheadline: عرض الرو 08.01.2001 (تعليق عربي)\nprogram_name: WWE Test 1390 (تعليق للعربي)\nevent_date: 2001-01-08\ndescription: عرض الرو (تعليق عربي) بالكامل مع جميع النزالات والأحداث.`,
   'zz-test-1350-flag.md': `title: WWE SmackDown 11.01.2001\nheadline: عرض سماك داون 11.01.2001\nprogram_name: WWE SmackDown\narabic_commentary: true\nevent_date: 2001-01-11\ndescription: عرض سماك داون 11.01.2001 مترجم بالكامل مع جميع النزالات والأحداث.`,
   'zz-test-1350-normal.md': `title: WWE RAW 15.01.2001\nheadline: عرض الرو 15.01.2001 مترجم\nprogram_name: WWE RAW\nevent_date: 2001-01-15\ndescription: عرض الرو 15.01.2001 مترجم بالكامل مع جميع النزالات والأحداث.`,
 };
 const fm = (own: string) => `---\nshow_type: عرض\nfederation: WWE\n${own}\ndate: 2001-01-20T01:00:00.000+02:00\nduration: 02:10:00\ntags:\n  - WWE\nservers:\n  - url: https://ok.ru/video/1\n  - url: https://vidmoly.org/embed-abc.html\n---\n\n`;
+const { arabicSlug } = require('../lib/slug.cjs');
+// the sample program's own library page (/library/<slug>/), and a normal program's for comparison
+const LIB = `library/${arabicSlug('WWE Test 1390 (تعليق للعربي)')}/index.html`, LIB_NORMAL = 'library/wwe-raw/index.html';
 const urlOf = (file: string) => showPath(file, (SAMPLES[file].match(/^title: (.+)$/m) || [])[1], path.join('content', 'shows'), true);
 
 // what the page says about ITSELF: its head, its H1, «عن العرض», its body text and every JSON-LD block. The cards of other
@@ -71,14 +74,14 @@ function built(file: string, en = false): string {
   return fs.readFileSync(out, 'utf8');
 }
 
-test('a built Arabic-commentary show has no «مترجم» or subtitle claim anywhere, a normal show keeps «مترجم»', { timeout: 300_000 }, () => {
+test('a built Arabic-commentary show and its program page have no «مترجم» or subtitle claim anywhere, a normal show keeps «مترجم»', { timeout: 300_000 }, () => {
   const files = Object.keys(SAMPLES).map((f) => path.join('content', 'shows', f));
   const urls: string[] = [];
   try {
     Object.entries(SAMPLES).forEach(([, own], i) => fs.writeFileSync(files[i], fm(own)));
     urls.push(...Object.keys(SAMPLES).map(urlOf));
     const r = spawnSync(process.execPath, ['--stack-size=4096', './node_modules/@11ty/eleventy/cmd.cjs'], {
-      env: { ...process.env, ARW_FAST_LANE: files.join(',') }, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
+      env: { ...process.env, ARW_FAST_LANE: files.join(','), ARW_FAST_LANE_EXTRA: [LIB, LIB_NORMAL].join(',') }, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
     });
     assert.equal(r.status, 0, (r.stderr || '') + (r.stdout || '').slice(-2000));
 
@@ -101,8 +104,23 @@ test('a built Arabic-commentary show has no «مترجم» or subtitle claim any
     assert.match(normal, /"subtitleLanguage": "ar"/);
     assert.match(normal, /<h2 id="show-about-h">[^<]*كامل مترجم/);
     assert.match(built('zz-test-1350-normal.md', true), /with Arabic subtitles in full/);
+
+    // the program's library page: H1, count, intro, «الأخير» heading, head and JSON-LD — and its English copy
+    const lib = fs.readFileSync(path.join('_site', LIB), 'utf8');
+    assert.match(lib, /<meta name="arw-commentary" content="ar">/);
+    assert.ok(!lib.includes('مترجم'), `library: «${(lib.match(/.{60}مترجم.{30}/) || [''])[0]}»`);
+    assert.match(lib, /<h1 class="hero-title"><bdi>عروض الرو بتعليق عربي<\/bdi><span class="u">عرض واحد<\/span><\/h1>/);
+    assert.match(lib, /<p>شاهد أحدث عروض الرو بتعليق عربي، وتصفّح أرشيف/);
+    assert.match(lib, /<h2 style="color:var\(--gold\);">عرض الرو الأخير بتعليق عربي<\/h2>/);
+    const libEn = fs.readFileSync(path.join('_site', 'en', LIB), 'utf8');
+    assert.ok(!/مترجم|subtitle|translated/i.test(libEn), `library (en): «${(libEn.match(/.{60}(?:مترجم|subtitle|translated).{30}/i) || [''])[0]}»`);
+    assert.match(libEn, /shows with Arabic commentary/);
+    const libNormal = fs.readFileSync(path.join('_site', LIB_NORMAL), 'utf8');
+    assert.ok(!libNormal.includes('arw-commentary'));
+    assert.match(libNormal, /<h1 class="hero-title"><bdi>عروض الرو مترجمة<\/bdi>/);
+    assert.match(libNormal, /الأخير مترجم<\/h2>/);
   } finally {
     for (const f of files) fs.rmSync(f, { force: true });
-    for (const u of urls) for (const d of ['_site', '_site/en']) fs.rmSync(path.join(d, u), { recursive: true, force: true });
+    for (const u of [...urls, path.dirname(LIB)]) for (const d of ['_site', '_site/en']) fs.rmSync(path.join(d, u), { recursive: true, force: true });
   }
 });

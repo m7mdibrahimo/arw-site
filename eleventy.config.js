@@ -1533,10 +1533,13 @@ module.exports = function(eleventyConfig) {
         arName = arName.replace(/\s+(19|20)\d{2}$/, "");
         // The library page is a collection, so its title is always plural (owner, 2026-10-06):
         // «عرض الرو» → «عروض الرو مترجمة», «برنامج …» → «حلقات برنامج … مترجمة»
+        // …and a program with Arabic commentary («WWE RAW (تعليق للعربي)») is never «مترجمة»: «عروض الرو بتعليق عربي» (INCIDENTS #1390)
+        const arabicCommentary = require("./lib/arabic-commentary.cjs").isArabicCommentary(p.name, p.slug);
+        const libWord = arabicCommentary ? " بتعليق عربي" : " مترجمة";
         const arLibTitle = !/[\u0600-\u06FF]/.test(arName) ? ""
-          : /^عرض\s/.test(arName) ? arName.replace(/^عرض\s/, "عروض ") + " مترجمة"
-          : /^(برنامج|مسلسل)\s/.test(arName) ? "حلقات " + arName + " مترجمة"
-          : "عروض " + arName + " مترجمة";
+          : /^عرض\s/.test(arName) ? arName.replace(/^عرض\s/, "عروض ") + libWord
+          : /^(برنامج|مسلسل)\s/.test(arName) ? "حلقات " + arName + libWord
+          : "عروض " + arName + libWord;
         // A catch-all section for one-off events is not named after its only show in the head: the title of
         // /library/njpw-special-events/ read «عروض ان جيه بي دبليو تايتشي سكول برو ريسلنج 2 2026» and Google left it
         // «discovered, not indexed» for 157 hours (INCIDENTS #883). Head and structured data only; the page's H1 keeps arLibTitle.
@@ -1610,7 +1613,7 @@ module.exports = function(eleventyConfig) {
         const jimBare = jimSaid.replace(/^(?:(?:ان|إن|جيه|جي|بي|دبليو|اي|إي|ايه|إيه|تي|اتش|إتش|ار|آر|او|أو|ام|إم|ال|إل|سي|اس|إس|اكس|إكس)\s+){2,}/, "");
         const jim = jimSaid ? [jimSaid, "عرض " + jimSaid].concat(jimBare !== jimSaid && /[\u0600-\u06FF]{3}/.test(jimBare) ? [jimBare] : []) : [];
         const withGenerated = baseAliases.concat(tildeFree.concat(generated, asked, jim).filter(function(g, i, a) { return baseAliases.indexOf(g) === -1 && a.indexOf(g) === i; }));
-        return { slug: p.slug, name: p.name, aliases: withGenerated, arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arSearchName: /[\u0600-\u06FF]/.test(searchArName) ? searchArName : "", arLibTitle: arLibTitle, arHeadTitle: arHeadTitle, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded,
+        return { slug: p.slug, name: p.name, aliases: withGenerated, arName: /[\u0600-\u06FF]/.test(arName) ? arName : "", arSearchName: /[\u0600-\u06FF]/.test(searchArName) ? searchArName : "", arLibTitle: arLibTitle, arHeadTitle: arHeadTitle, arabicCommentary: arabicCommentary, federation: federation, shows: shows, count: shows.length, latest: shows[0] || null, firstAdded: firstAdded,
           promo: (function(x) { return { key: x.key, mark: x.mark, name: x.name, h: x.h, s: x.s, custom: !!x.custom }; })(libraryPromotionOf({
             name: p.name, federation: federation,
             chosen: (shows.find(function(e) { return e.libraryFederation; }) || {}).libraryFederation })) };

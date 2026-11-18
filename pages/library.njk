@@ -473,7 +473,7 @@ eleventyComputed:
     <a class="lib-card reveal" href="/library/{{ p.slug }}/" data-name="{{ (p.name + ' ' + (p.arName or '')) | lower }}">
       <div class="lib-thumb">
         <img src="{% optImg p.latest.image, 'https://images.unsplash.com/photo-1563844528129-067e06a638e5?w=800&auto=format&fit=crop' %}" alt="{{ p.name }}" loading="lazy" width="400" height="225">
-        <span class="lib-count"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg>{{ p.count | arCount("عرض واحد مترجم", "عرضان مترجمان", "عروض مترجمة", "عرض مترجم") }}</span>
+        <span class="lib-count"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86a1 1 0 0 0-1.5.86z"/></svg>{% if p.arabicCommentary %}{{ p.count | arCount("عرض واحد", "عرضان", "عروض", "عرض") }}{% else %}{{ p.count | arCount("عرض واحد مترجم", "عرضان مترجمان", "عروض مترجمة", "عرض مترجم") }}{% endif %}</span>
       </div>
       <div class="lib-body">
         <h3 class="lib-name"><bdi>{{ p.name }}</bdi></h3>

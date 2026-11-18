@@ -3744,7 +3744,9 @@ test('library pages: plural title from the program\'s own name, no «آخر عر
   assert.match(page, /شاهد أحدث \{\{ lp\.prog\.arLibTitle \| replace\(" مترجمة", ""\) \}\} مترجمة إلى العربية، وتصفّح أرشيف/);
   assert.doesNotMatch(page, /معروف كمان باسم/);
   const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
-  assert.match(cfg, /arName\.replace\(\/\^عرض\\s\/, "عروض "\) \+ " مترجمة"/);
+  // «مترجمة» — or «بتعليق عربي» for a program with Arabic commentary (INCIDENTS #1390)
+  assert.match(cfg, /const libWord = arabicCommentary \? " بتعليق عربي" : " مترجمة";/);
+  assert.match(cfg, /arName\.replace\(\/\^عرض\\s\/, "عروض "\) \+ libWord/);
   assert.match(cfg, /"progress-wrestling": "عرض بروجرس ريسلينج"/);
   // a series' season and episode and a yearly event's year never end up in the program's name
   assert.match(cfg, /\.replace\(\/\\s\*\(\?:الموسم\|موسم\)\\s\*\\d\+\/g, " "\)/);

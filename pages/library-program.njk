@@ -16,6 +16,8 @@ eleventyComputed:
 <script>if(!['arab-wrestling.com','localhost','127.0.0.1'].includes(location.hostname)){location.replace('https://arab-wrestling.com'+location.pathname+location.search+location.hash);}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{#- a program with Arabic commentary is never «مترجم»: the «arabicCommentary» transform rewrites the head (lib/arabic-commentary.cjs, INCIDENTS #1390) -#}
+{% if lp.prog.arabicCommentary %}<meta name="arw-commentary" content="ar">{% endif %}
 {#- Sitelinks (owner, 2026-11-09): page 2+ of a listing is a duplicate archive slice — Google showed «صفحة 119» and «/shows/3/» under the site name. Off the index, links still followed; self-canonical stays. -#}
 {% if lp.pageNumber > 1 %}<meta name="robots" content="noindex, follow">{% else %}<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">{% endif %}
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
@@ -418,9 +420,9 @@ eleventyComputed:
 <div class="hero" style="background: linear-gradient(180deg, rgba(10,12,16,.65) 0%, rgba(10,12,16,.82) 55%, var(--bg) 100%), url('{% optImg lp.prog.latest.image, "https://i.ibb.co/1fd4qVfY/9ovb3phc5b2u3q4d.jpg" %}') center 30%/cover no-repeat;">
   <div class="hero-inner">
     <span class="eyebrow">مكتبة العروض</span>
-    <h1 class="hero-title"><bdi>{% if lp.prog.arLibTitle and lp.pageNumber == 1 %}{{ lp.prog.arLibTitle }}{% else %}{{ lp.prog.name }}{% endif %}</bdi><span class="u">{{ lp.prog.count | arCount("عرض واحد مترجم", "عرضان مترجمان", "عروض مترجمة", "عرض مترجم") }}</span></h1>
+    <h1 class="hero-title"><bdi>{% if lp.prog.arLibTitle and lp.pageNumber == 1 %}{{ lp.prog.arLibTitle }}{% else %}{{ lp.prog.name }}{% endif %}</bdi><span class="u">{% if lp.prog.arabicCommentary %}{{ lp.prog.count | arCount("عرض واحد", "عرضان", "عروض", "عرض") }}{% else %}{{ lp.prog.count | arCount("عرض واحد مترجم", "عرضان مترجمان", "عروض مترجمة", "عرض مترجم") }}{% endif %}</span></h1>
     {#- one line under the title, the same on every program page (owner chose this wording, 2026-10-06) -#}
-    <p>{% if lp.prog.arLibTitle %}شاهد أحدث {{ lp.prog.arLibTitle | replace(" مترجمة", "") }} مترجمة إلى العربية، وتصفّح أرشيف <bdi>{{ lp.prog.name }}</bdi> كاملًا من الأحدث إلى الأقدم.{% else %}تصفّح أرشيف عروض <bdi>{{ lp.prog.name }}</bdi> المترجمة إلى العربية كاملًا من الأحدث إلى الأقدم.{% endif %}</p>
+    <p>{% if lp.prog.arabicCommentary %}{% if lp.prog.arLibTitle %}شاهد أحدث {{ lp.prog.arLibTitle | replace(" بتعليق عربي", "") }} بتعليق عربي، وتصفّح أرشيف <bdi>{{ lp.prog.name }}</bdi> كاملًا من الأحدث إلى الأقدم.{% else %}تصفّح أرشيف عروض <bdi>{{ lp.prog.name }}</bdi> بالتعليق العربي كاملًا من الأحدث إلى الأقدم.{% endif %}{% elif lp.prog.arLibTitle %}شاهد أحدث {{ lp.prog.arLibTitle | replace(" مترجمة", "") }} مترجمة إلى العربية، وتصفّح أرشيف <bdi>{{ lp.prog.name }}</bdi> كاملًا من الأحدث إلى الأقدم.{% else %}تصفّح أرشيف عروض <bdi>{{ lp.prog.name }}</bdi> المترجمة إلى العربية كاملًا من الأحدث إلى الأقدم.{% endif %}</p>
     {% from "follow-btn.njk" import followBtn, fedLabelOf %}
     <div class="arw-follow-row">
       {{ followBtn("program", lp.prog.slug, lp.prog.name) }}
@@ -431,7 +433,7 @@ eleventyComputed:
 
 <div class="page-head reveal">
   <nav class="lib-crumbs" aria-label="مسار التنقل"><a href="/">الرئيسية</a><span>‹</span><a href="/library/">مكتبة العروض</a><span>‹</span>{% if lp.prog.promo %}<a href="/library/federation/{{ lp.prog.promo.key }}/"><bdi>{{ lp.prog.promo.mark }}</bdi></a><span>‹</span>{% endif %}<span><bdi>{{ lp.prog.name }}</bdi></span></nav>
-  <h2 style="color:var(--gold);">{% if lp.prog.arName and lp.pageNumber == 1 %}{{ lp.prog.arName }} الأخير مترجم{% else %}عروض <bdi>{{ lp.prog.name }}</bdi>{% endif %}</h2>
+  <h2 style="color:var(--gold);">{% if lp.prog.arName and lp.pageNumber == 1 %}{{ lp.prog.arName }} الأخير {{ "بتعليق عربي" if lp.prog.arabicCommentary else "مترجم" }}{% else %}عروض <bdi>{{ lp.prog.name }}</bdi>{% endif %}</h2>
 </div>
 <section class="content"><div class="wrap"><div class="grid-12">
 {% for item in lp.items %}
