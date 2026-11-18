@@ -19,36 +19,6 @@
   "retry": true,
   "at": "2026-11-18T16:58:19.224Z"
  },
- "https://www.fightful.com/wrestling/tony-schiavone-admits-swerve-strickland-drinking-hangman-pages-blood-was-pretty-gross": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T16:56:42.215Z"
- },
- "https://www.fightful.com/wrestling/aew-dynamite-preview-start-time-how-to-watch-location-11-18": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T16:56:41.544Z"
- },
- "https://www.fightful.com/wrestling/big-boom-aj-reveals-he-was-on-the-same-private-plane-as-kasper-brothers-to-aew-full-gear": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يستعدان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": true,
-  "at": "2026-11-18T16:56:41.135Z"
- },
- "https://www.fightful.com/wrestling/wwe-smackdown-11-13-viewership-drops-remains-above-1-1-million-viewers": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T16:55:57.320Z"
- },
- "https://www.fightful.com/wrestling/myka-lockwood-to-be-sole-woman-in-eight-person-tag-bout-womens-north-american-title-match-set-for-11-24-wwe-nxt": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T16:55:56.752Z"
- },
- "https://www.fightful.com/wrestling/shiloh-hill-izzi-dame-joins-wwe-john-cena-classic-field": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T16:55:56.179Z"
- },
  "https://www.fightful.com/wrestling/ash-by-elegance-announces-pregnancy-opens-up-about-health-issues-provides-update-on-tna-contract": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1988,15 +1958,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-10T00:39:58.609Z"
- },
- "https://www.wrestlinginc.com/2311717/biggest-winners-losers-week-november-9-2026": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-10T00:22:03.837Z"
- },
- "https://www.fightful.com/?p=338246": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-10T00:15:27.098Z"
  }
 }
