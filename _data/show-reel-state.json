@@ -5452,19 +5452,14 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض الرو 16.11.2026 (تعليق عربي)",
-    "lastAttempt": 1795037510330,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
-    },
-    "processing": [
-      "instagram_story",
-      "tiktok"
-    ],
+    "lastAttempt": 1795038337058,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261118112130-cmll-domingo-familiar-15-11-2026": {
     "publishedAt": 1795037537541,
@@ -5473,9 +5468,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال دومينغو فاميليار 15.11.2026 مترجم",
-    "lastAttempt": 1795037549920,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1795038339007,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
@@ -5521,7 +5520,7 @@
       "facebook_story"
     ],
     "needsReview": true,
-    "reviewNotified": false
+    "reviewNotified": true
   },
   "20261118212903-wwe-nxt-17-11-2026-تعليق-عربي": {
     "publishedAt": 1795037685164,
@@ -5539,6 +5538,6 @@
       "facebook_story"
     ],
     "needsReview": true,
-    "reviewNotified": false
+    "reviewNotified": true
   }
 }
