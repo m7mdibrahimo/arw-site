@@ -1,19 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/mark-shapiro-states-that-tko-fully-anticipates-that-wwe-ufc-events-in-middle-east-will-proceed-as-planned/": {
-    "matchedFile": "20261105015231-wwe-تضع-خطة-بديلة-لنقل-عرض-wrestlemania-2027-من-السعودية.md",
-    "reason": "الخبر الجديد يعيد سرد نفس تصريحات مارك شابيرو حول استمرار فعاليات الشرق الأوسط التي تم تناولها بالفعل في الخبر رقم 1.",
-    "at": "2026-11-04T23:09:28.228Z"
-  },
-  "https://www.fightful.com/wrestling/yota-tsuji-recalls-telling-kenny-omega-that-hell-beat-him-at-the-tokyo-dome-someday-two-years-ago/": {
-    "matchedFile": "20261104081800-كيني-أوميغا-يواجه-يوتا-تسوجي-على-بطولة-iwgp-للوزن-الثقيل-والإعلان-عن-نزالات-عرض-njpw-wrestle-kingdom-21.md",
-    "reason": "الخبر الجديد يعيد سرد تفاصيل الإعلان عن مواجهة كيني أوميغا ويوتا تسوجي في عرض Wrestle Kingdom 21 والتي سبق تغطيتها بشكل كامل في الخبر رقم 1.",
-    "at": "2026-11-05T00:12:39.988Z"
-  },
-  "https://www.fightful.com/wrestling/wwe-smackdown-10-30-viewership-and-demo-rating-increase/": {
-    "matchedFile": "20261105025633-ارتفاع-طفيف-في-نسب-مشاهدة-عرض-wwe-smackdown-يوم-30-أكتوبر-2026.md",
-    "reason": "الخبر الجديد يتناول نفس أرقام المشاهدات ونسب الفئة العمرية لعرض WWE SmackDown بتاريخ 30 أكتوبر 2026 التي تم تغطيتها بالفعل في الخبر رقم 0.",
-    "at": "2026-11-05T00:27:02.625Z"
-  },
   "https://www.ringsidenews.com/aew-dynamite-blood-guts-results-highlights-key-moments-november-4-2026/": {
     "matchedFile": "20261105031113-اتحاد-aew-يقيم-نزالي-blood-guts-في-عرض-aew-dynamite.md",
     "reason": "الخبر الجديد يغطي نتائج نفس العرض (AEW Dynamite Blood & Guts بتاريخ 4 نوفمبر) الذي تم تغطيته بالفعل في الخبر رقم 0.",
@@ -2498,5 +2483,20 @@
     "matchedFile": "20261118054742-اتحاد-wwe-يعلن-عن-ثلاثة-نزالات-لعرض-wwe-nxt-يوم-24-نوفمبر-يتضمن-نزالا-على-بطولة.md",
     "reason": "",
     "at": "2026-11-18T03:11:49.172Z"
+  },
+  "https://www.wrestlinginc.com/2318773/wwe-nxt-november-17-2026-results/": {
+    "matchedFile": "20261118031500-نتائج-عرض-wwe-nxt-17-نوفمبر-2026-مواجهة-كيلاني-جوردان-وكيندال-غراي-ومشاركة-زيلا-فاتو-وتوني-دي-أنجيلو.md",
+    "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
+    "at": "2026-11-18T03:27:50.761Z"
+  },
+  "https://www.wrestlinginc.com/2320135/more-nxt-stars-added-wwe-john-cena-classic/": {
+    "matchedFile": "20261118042104-جون-سينا-يدعو-إيزي-دايم-للمشاركة-في-بطولة-جون-سينا-الكلاسيكية-في-عرض-wwe-nxt.md",
+    "reason": "الخبر الجديد يجمع بين خبرين تم نشرهما بالفعل (الخبر 0 والخبر 1) حول دعوة إيزي دايم وشايلو هيل للمشاركة في البطولة، ولا يقدم أي تطور جديد أو معلومة إضافية لم تكن موجودة في الأخبار السابقة.",
+    "at": "2026-11-18T03:40:59.846Z"
+  },
+  "https://www.wrestlinginc.com/2320139/kelani-jordan-retains-wwe-nxt-womens-title-main-event-dq/": {
+    "matchedFile": "20261118031500-نتائج-عرض-wwe-nxt-17-نوفمبر-2026-مواجهة-كيلاني-جوردان-وكيندال-غراي-ومشاركة-زيلا-فاتو-وتوني-دي-أنجيلو.md",
+    "reason": "الخبر الجديد يغطي نتيجة نزال الحدث الرئيسي لعرض WWE NXT بتاريخ 17 نوفمبر 2026، وهي نفس النتيجة والحدث الذي تم تغطيته بالفعل في الخبر رقم [1] الذي استعرض نتائج العرض بالكامل.",
+    "at": "2026-11-18T03:41:10.033Z"
   }
 }

@@ -1,4 +1,19 @@
 {
+ "https://www.wrestlinginc.com/2316716/former-co-president-george-barrios-details-exit-wwe": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-18T03:40:46.333Z"
+ },
+ "https://www.wrestlinginc.com/2320027/bully-ray-perfect-wwe-remaining-spots-fifth-team-usa-mexico-survivor-series": {
+  "reason": "المراجعة رفضته: صيغة مثنى (مجنونان/مستعدان/قضياه/أمضيا…) ممنوعة — اجمع («مجانين»، «قضوها») أو أعد صياغة الجملة («الوقت الذي قضته معه»)، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل مثنى («سيكونان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-18T03:33:10.968Z"
+ },
+ "https://www.wrestlinginc.com/2318773/wwe-nxt-november-17-2026-results": {
+  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
+  "retry": false,
+  "at": "2026-11-18T03:27:50.755Z"
+ },
  "https://www.fightful.com/wrestling/myka-lockwood-to-be-sole-woman-in-eight-person-tag-bout-womens-north-american-title-match-set-for-11-24-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,21 +68,6 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Dave Meltzer، المصدر بيتكلم عن Bryan Alvarez (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
   "retry": true,
   "at": "2026-11-18T03:34:27.791Z"
- },
- "https://www.wrestlinginc.com/2316716/former-co-president-george-barrios-details-exit-wwe": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يريدان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-18T02:51:12.537Z"
- },
- "https://www.wrestlinginc.com/2320027/bully-ray-perfect-wwe-remaining-spots-fifth-team-usa-mexico-survivor-series": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-18T02:50:34.226Z"
- },
- "https://www.wrestlinginc.com/2318773/wwe-nxt-november-17-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-18T02:48:21.802Z"
  },
  "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-november-17-2026": {
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",

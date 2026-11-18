@@ -1,5 +1,25 @@
 [
   {
+    "id": 2468719431,
+    "link": "https://www.wrestlinginc.com/2320139/kelani-jordan-retains-wwe-nxt-womens-title-main-event-dq/",
+    "date": "Wed, 18 Nov 2026 03:13:26 +0000",
+    "date_gmt": "2026-11-18T03:13:26.000Z",
+    "title": {
+      "rendered": "Kelani Jordan Retains WWE NXT Women's Title In Main Event DQ"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/kelani-jordan-retains-wwe-nxt-womens-title-in-main-event-dq/l-intro-1794971545.jpg"
+  },
+  {
+    "id": 3775949238,
+    "link": "https://www.wrestlinginc.com/2320135/more-nxt-stars-added-wwe-john-cena-classic/",
+    "date": "Wed, 18 Nov 2026 02:49:13 +0000",
+    "date_gmt": "2026-11-18T02:49:13.000Z",
+    "title": {
+      "rendered": "More NXT Stars Added To WWE John Cena Classic"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/more-nxt-stars-added-to-wwe-john-cena-classic/l-intro-1794970051.jpg"
+  },
+  {
     "id": 2067996421,
     "link": "https://www.wrestlinginc.com/2320134/njpw-signs-grandson-wwe-hofer-antonio-inoki/",
     "date": "Wed, 18 Nov 2026 02:42:15 +0000",
@@ -178,25 +198,5 @@
       "rendered": "AEW Source Pushes Back On Report Of Cole Karter Being Fired"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-source-pushes-back-on-report-of-cole-karter-being-fired/l-intro-1794940761.jpg"
-  },
-  {
-    "id": 4055259158,
-    "link": "https://www.wrestlinginc.com/2319489/wwe-ethan-page-john-cena-classic-idiot-enter/",
-    "date": "Tue, 17 Nov 2026 18:08:49 +0000",
-    "date_gmt": "2026-11-17T18:08:49.000Z",
-    "title": {
-      "rendered": "WWE's Ethan Page: 'I Would Be An Idiot' To Enter John Cena Classic"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-ethan-page-i-would-be-an-idiot-to-enter-john-cena-classic/l-intro-1794938648.jpg"
-  },
-  {
-    "id": 2506832421,
-    "link": "https://www.wrestlinginc.com/2319442/usa-wrestling-collaboration-aew-mercedes-mone-2028-olympics/",
-    "date": "Tue, 17 Nov 2026 17:53:22 +0000",
-    "date_gmt": "2026-11-17T17:53:22.000Z",
-    "title": {
-      "rendered": "USA Wrestling Announces Collaboration With AEW, Mercedes Mone Ahead Of 2028 Olympics"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/usa-wrestling-announces-collaboration-with-aew-mercedes-mone-ahead-of-2028-olympics/l-intro-1794937832.jpg"
   }
 ]
