@@ -11317,3 +11317,8 @@ Let me check git status to enumerate uncommitted changes.</think><tool_call>shel
 - اللي حصل: تقرير CMLL Martes 17 نوفمبر (و119 تقرير نتائج قبله) فيه «مواجهة مثيرة»، «نزال قوي»، «ثلاثي الأساطير» والمصدر سطر «X def. Y» بس، والحدث الرئيسي من غير الفائز في جملته.
 - السبب: Gemini بيتجاهل قاعدة «النتائج كما في المصدر» ويزوّق الوصف.
 - الإصلاح: stripInventedMatchHype في formatResultsMarkdown بتشيل الصفات دي من أي تقرير نتائج (مش من الاقتباسات) قبل النشر، واتطبقت على التقارير المنشورة، واتعدل تقرير CMLL يدوي، واختبار tests/results-hype-1398.
+
+## #1399 — 2026-11-18: «بطل Continental المعزز»
+اللي حصل: خبر عرض AEW Dynamite ترجم «reigning Continental Champion» لـ«بطل Continental المعزز».
+السبب: Gemini ترجم «reigning» حرفيًا ومفيش تصحيح ثابت ليها.
+الإصلاح: تصحيح في editorial/corrections.json بيحوّل «بطل… المعزز/بطلة… المعززة» لـ«الحالي/الحالية» في كل خبر، مع اختبار tests/corrections-1399.
