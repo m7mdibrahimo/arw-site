@@ -1,5 +1,15 @@
 [
   {
+    "id": 4649047092,
+    "link": "https://www.wrestlinginc.com/2320170/wwe-smackdown-ratings-viewership-report-november-13-2026/",
+    "date": "Wed, 18 Nov 2026 14:00:00 +0000",
+    "date_gmt": "2026-11-18T14:00:00.000Z",
+    "title": {
+      "rendered": "WWE Smackdown Ratings & Viewership Report: 11/13/2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-ratings-viewership-report-11132026/l-intro-1794984734.jpg"
+  },
+  {
     "id": 2044544270,
     "link": "https://www.wrestlinginc.com/2317162/andrade-el-idolo-wwe-aew-promos-character/",
     "date": "Wed, 18 Nov 2026 13:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Backstage Update On Incident Involving MJF Kicking Fan At AEW Full Gear 2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-incident-involving-mjf-kicking-fan-at-aew-full-gear-2026/l-intro-1794944924.jpg"
-  },
-  {
-    "id": 3833697006,
-    "link": "https://www.wrestlinginc.com/2319700/wwe-miz-assesses-prospects-against-roman-reigns/",
-    "date": "Tue, 17 Nov 2026 19:48:58 +0000",
-    "date_gmt": "2026-11-17T19:48:58.000Z",
-    "title": {
-      "rendered": "WWE's The Miz Assesses His Prospects Against Roman Reigns"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-the-miz-assesses-his-prospects-against-roman-reigns/l-intro-1794944243.jpg"
   }
 ]
