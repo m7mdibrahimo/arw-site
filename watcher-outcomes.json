@@ -1,43 +1,43 @@
 {
- "https://www.ringsidenews.com/mick-foley-reveals-craziest-item-fan-ever-asked-him-sign": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-18T20:37:49.233Z"
- },
  "https://www.fightful.com/wrestling/toronto-discussed-as-potential-landing-spot-for-aew-all-in-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T20:39:58.874Z"
+  "at": "2026-11-18T20:42:27.999Z"
  },
  "https://www.fightful.com/wrestling/bronson-reed-back-home-following-injury-in-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T20:39:58.521Z"
+  "at": "2026-11-18T20:42:27.650Z"
  },
  "https://www.fightful.com/wrestling/jade-cargill-further-addresses-criticism-about-her-skipping-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T20:39:57.965Z"
+  "at": "2026-11-18T20:42:27.102Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-celebrates-the-rocks-30th-anniversary-thank-you-for-paving-the-way-for-so-many-of-us": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T20:39:57.099Z"
+  "at": "2026-11-18T20:42:26.265Z"
  },
  "https://www.fightful.com/wrestling/tony-schiavone-admits-swerve-strickland-drinking-hangman-pages-blood-was-pretty-gross": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T20:39:55.711Z"
+  "at": "2026-11-18T20:42:24.933Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-preview-start-time-how-to-watch-location-11-18": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T20:39:54.940Z"
+  "at": "2026-11-18T20:42:24.172Z"
  },
  "https://www.fightful.com/wrestling/big-boom-aj-reveals-he-was-on-the-same-private-plane-as-kasper-brothers-to-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T20:39:54.470Z"
+  "at": "2026-11-18T20:42:23.704Z"
+ },
+ "https://www.ringsidenews.com/mick-foley-reveals-craziest-item-fan-ever-asked-him-sign": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-18T20:37:49.233Z"
  },
  "https://www.ringsidenews.com/erik-watts-breaks-silence-father-cowboy-bill-watts-death-heartbreaking-statement": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
