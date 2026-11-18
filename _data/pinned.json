@@ -1,5 +1,27 @@
 [
   {
+    "url": "/shows/wwe-nxt-17-11-2026-تعليق-عربي/",
+    "title": "عرض ان اكس تي 17.11.2026 (تعليق عربي)",
+    "subtitle": "WWE NXT 17.11.2026 (تعليق عربي)",
+    "image": "/content/images/3tsl8410sz1tb8xb.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري بتعليق عربي",
+    "description": "عرض ان اكس تي (تعليق عربي) بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/wwe-nxt-17-11-2026/",
+    "title": "عرض ان اكس تي 17.11.2026 مترجم",
+    "subtitle": "WWE NXT 17.11.2026",
+    "image": "/content/images/8h00e228ncbvl81z.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ان اكس تي مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-raw-16-11-2026-تعليق-عربي/",
     "title": "عرض الرو 16.11.2026 (تعليق عربي)",
     "subtitle": "WWE RAW 16.11.2026 (تعليق عربي)",
@@ -130,16 +152,5 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض داينامايت مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-nxt-10-11-2026/",
-    "title": "عرض ان اكس تي 10.11.2026 مترجم",
-    "subtitle": "WWE NXT 10.11.2026",
-    "image": "/content/images/0k55yu1tvlkpp2kn.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ان اكس تي مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
