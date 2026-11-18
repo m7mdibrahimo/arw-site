@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/shawn-michaels-allegedly-snapped-wwe-developmental-wrestler-drug-testing-question": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-18T13:22:55.928Z"
+ },
  "https://www.fightful.com/wrestling/aew-dynamite-preview-start-time-how-to-watch-location-11-18": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kofi Kingston",
   "retry": true,
   "at": "2026-11-09T18:57:20.616Z"
- },
- "https://www.fightful.com/wrestling/report-wwe-roster-out-of-saudi-before-latest-missile-attack": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-09T17:54:06.957Z"
  }
 }
