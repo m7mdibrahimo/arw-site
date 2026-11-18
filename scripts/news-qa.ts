@@ -1179,6 +1179,10 @@ export function checkArticle(title: string, body: string, tags: string[] = []): 
   }
   const vagueTopic = titleVagueTopic(title || "");
   if (vagueTopic) issues.push({ code: "title_vague_topic", severity: "error", field: "title", message: "العنوان موضوع عام من غير خبر («مستقبل…»، «آخر المستجدات حول…») — اكتب اللي حصل أو هيحصل («اتحاد TNA يخطط لتسجيل عروض Xplosion في صالة OVW»)", excerpt: vagueTopic });
+  // «… يتضمن نزالا على بطولة» (WWE NXT November 24 story, 2026-11-18): the headline ends on an indefinite
+  // «بطولة/لقب» and never says WHICH championship — the reader learns nothing. Name it (INCIDENTS #1394).
+  const bareTitle = /(?<![\u0621-\u064A])(?:على|ب|في)\s+(?:بطولة|لقب)\s*$/.exec((title || "").trim());
+  if (bareTitle) issues.push({ code: "title_vague_topic", severity: "error", field: "title", message: "العنوان بيخلص بـ«على بطولة» من غير اسم البطولة — اكتب أي بطولة («على بطولة أمريكا الشمالية للسيدات»)", excerpt: bareTitle[0] });
   const missingPrep = titleMissingPreposition(title || "");
   const champsOnly = titleChampionsWithoutName(title || "");
   if (champsOnly) issues.push({ code: "title_champions_no_name", severity: "error", field: "title", message: "العنوان بيذكر صاحب الكلام بلقبه بس («أبطال AEW العالمي للفرق:») — اكتب اسمه («ذا يانغ باكس:»)", excerpt: champsOnly });
