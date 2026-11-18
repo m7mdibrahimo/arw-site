@@ -1,8 +1,13 @@
 {
+ "https://www.ringsidenews.com/erik-watts-breaks-silence-father-cowboy-bill-watts-death-heartbreaking-statement": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-18T19:31:13.211Z"
+ },
  "https://www.ringsidenews.com/mick-foley-reveals-craziest-item-fan-ever-asked-him-sign": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-18T19:27:24.636Z"
+  "at": "2026-11-18T19:30:28.414Z"
  },
  "https://www.fightful.com/wrestling/toronto-discussed-as-potential-landing-spot-for-aew-all-in-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-10T12:35:31.625Z"
- },
- "https://www.ringsidenews.com/nxt-preview-november-10-2026-confirmed-matches-start-time-how-watch": {
-  "reason": "المراجعة رفضته: نفس العنوان منشور قبل كده — الخبر مكرر",
-  "retry": false,
-  "at": "2026-11-10T12:30:34.596Z"
  }
 }
