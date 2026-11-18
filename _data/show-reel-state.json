@@ -5466,15 +5466,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض سي ام ال ال دومينغو فاميليار 15.11.2026 مترجم",
-    "lastAttempt": 1795040101946,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1795041026924,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -5486,12 +5482,14 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال ريفولوسيون دي كامبيونيس 16.11.2026 مترجم",
-    "lastAttempt": 1795040104409,
+    "lastAttempt": 1795041059811,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
     },
     "processing": [
-      "instagram_reel"
+      "instagram_reel",
+      "tiktok"
     ],
     "reviewPlatforms": [],
     "needsReview": false
