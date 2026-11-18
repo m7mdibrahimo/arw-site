@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/bronson-reed-finally-back-home-surgery-following-wwe-crown-jewel-injury": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Dave Meltzer، المصدر بيتكلم عن Bryan Alvarez (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
+  "retry": true,
+  "at": "2026-11-18T03:54:28.801Z"
+ },
  "https://www.fightful.com/wrestling/myka-lockwood-to-be-sole-woman-in-eight-person-tag-bout-womens-north-american-title-match-set-for-11-24-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
