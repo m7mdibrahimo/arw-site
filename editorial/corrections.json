@@ -1,6 +1,9 @@
 {
   "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
   "corrections": [
+    {"wrong":"ناهشو","right":"ناتشو","note":"Nacho (اسم مدرب التمثيل في كلام شارلوت فلير) اتكتب «ناهشو» — الصح «ناتشو» (INCIDENTS #1400)"},
+    {"wrong":"(?<v>يتفق|اتفق|يتفقوا|اتفقوا|تتفق|اتفقت)\\s+مسبقا\\s+(?<n>ذا\\s+[\\u0621-\\u064A]+|أندرتيكر)","right":"$<v> مسبقا مع $<n>","regex":true,"note":"«لم يتفق مسبقا ذا أندرتيكر» ناقصة «مع» (خبر تريك ويليامز وأندرتيكر، INCIDENTS #1400)"},
+    {"wrong":"عرض\\s+(?<t>[A-Za-z][A-Za-z0-9' ]*:\\s*The\\s+Movie)","right":"فيلم $<t>","regex":true,"note":"«عرض Psych: The Movie» — ده فيلم مش عرض مصارعة (خبر شارلوت فلير، INCIDENTS #1400)"},
     {"wrong":"كاونتر جينتللمن","right":"كانتري جنتلمن","note":"فريق The Country Gentlemen اتكتب «ذا كاونتر جينتللمن» في نتائج NWA Powerrr (INCIDENTS #1396)"},
     {"wrong":"جينتللمن","right":"جنتلمن","note":"Gentlemen تتكتب «جنتلمن» مش «جينتللمن» (INCIDENTS #1396)"},
     {"wrong":"نزالات الجوع","right":"The Hunger Games","note":"اسم فيلم The Hunger Games اتترجم «نزالات الجوع» في تعليق شيماس — أسماء الأفلام تفضل بالإنجليزي (INCIDENTS #1388)"},
