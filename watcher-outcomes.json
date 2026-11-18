@@ -54,11 +54,6 @@
   "retry": true,
   "at": "2026-11-17T23:37:59.910Z"
  },
- "https://www.wrestlinginc.com/2318773/wwe-nxt-november-17-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-17T23:37:11.506Z"
- },
  "https://www.fightful.com/wrestling/gcw-returning-to-the-american-dream-in-january-2027-wwe-raw-highlights-more-fight-size": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
