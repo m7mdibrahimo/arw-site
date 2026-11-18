@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/jim-duggan-recalls-getting-banned-from-a-chinese-restaurant-all-you-can-eat-buffet-along-with-haku": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-11-18T19:02:18.709Z"
+ },
  "https://www.fightful.com/wrestling/jade-cargill-further-addresses-criticism-about-her-skipping-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T18:58:08.184Z"
+  "at": "2026-11-18T19:00:35.166Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-celebrates-the-rocks-30th-anniversary-thank-you-for-paving-the-way-for-so-many-of-us": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T18:58:07.601Z"
+  "at": "2026-11-18T19:00:34.315Z"
  },
  "https://www.fightful.com/wrestling/tony-schiavone-admits-swerve-strickland-drinking-hangman-pages-blood-was-pretty-gross": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T18:58:06.685Z"
+  "at": "2026-11-18T19:00:32.989Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-preview-start-time-how-to-watch-location-11-18": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T18:58:06.166Z"
+  "at": "2026-11-18T19:00:32.255Z"
  },
  "https://www.fightful.com/wrestling/big-boom-aj-reveals-he-was-on-the-same-private-plane-as-kasper-brothers-to-aew-full-gear": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T18:58:05.851Z"
+  "at": "2026-11-18T19:00:31.813Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-11-13-viewership-drops-remains-above-1-1-million-viewers": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T18:58:05.538Z"
+  "at": "2026-11-18T19:00:31.364Z"
  },
  "https://www.ringsidenews.com/danhausen-reacts-rocks-wwe-survivor-series-2026-return-hilarious-throwback-photo": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-10T11:28:57.459Z"
- },
- "https://www.wrestlinginc.com/2311791/wwe-raw-november-9-2026-hated-loved-opinion-review": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-10T06:22:56.706Z"
  }
 }
