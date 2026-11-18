@@ -14,6 +14,6 @@ en_tags:
   - "Michael Jackson"
 image: /content/images/kj0lyz98a4wwj9e5.jpg
 ---
-Joey Janela appeared as a guest on a live stream hosted by musical artist and social media streamer LoozeCannon on TikTok. During the stream, the two participated in a TikTok battle, and Janela performed a dance. Janela's dog was also present during the broadcast. LoozeCannon recently went viral on social media for his song 'Big Michael,' which he performed while using a filter of Michael Jackson to hide his face. Jaafar Jackson, the nephew of Michael Jackson, commented on the performance, stating that he has seen the video and finds it humorous.
+Joey Janela appeared as a guest on a live stream hosted by musical artist and social media streamer LoozeCannon on TikTok. During the stream, the two participated in a TikTok battle, and Janela performed a dance. Janela's dog was also present during the broadcast. LoozeCannon recently went viral on social media for his song 'Big Michael Michael,' which he performed while using a filter of Michael Jackson to hide his face. Jaafar Jackson, the nephew of Michael Jackson, commented on the performance, stating that he has seen the video and finds it humorous.
 
 https://x.com/MJFisMid/status/2122287639030014072

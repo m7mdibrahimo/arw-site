@@ -629,6 +629,8 @@ export function normalizeEnglishTitle(title: string): string {
   }).join(" ").replace(THE_NAMES, "The $1")
     // «in» is part of the show's name: «Main Event for All in 2027» → «All In 2027» (INCIDENTS #1377)
     .replace(/\bAll in\b/g, "All In")
+    // «By» is part of the Elegance ring names: «Ash by Elegance» → «Ash By Elegance» (INCIDENTS #1391)
+    .replace(/\b(Ash|Heather|Brittany|Ash and Heather) by Elegance\b/g, "$1 By Elegance")
     // a small word inside a hyphenated compound stays lowercase: «2-Out-Of-3 Falls» → «2-Out-of-3 Falls» (INCIDENTS #622)
     .replace(/(?<=[A-Za-z0-9])-(Of|To|In|On|At|By|For|And|Or|The|As)(?=-[A-Za-z0-9])/g, (_m, w: string) => "-" + w.toLowerCase());
 }
@@ -669,7 +671,8 @@ const isRealDouble = (m: string, w: string): boolean => {
   return !LEGIT_EN_DOUBLES.has(w.toLowerCase());
 };
 const SKIP_LINE = /^\s*(?:>|<|\{%)/;
-const QUOTED = /((?:“[^”]*”)|(?:"[^"\n]*"))/;
+// single quotes too: the song «'Big Michael Michael'» lost a word (INCIDENTS #1391); an apostrophe after a letter («Janela's») never opens a quote
+const QUOTED = /((?:“[^”]*”)|(?:"[^"\n]*")|(?:‘[^’\n]*’)|(?:(?<![A-Za-z0-9])'[^'\n]+'(?![A-Za-z])))/;
 export function collapseRepeatedEnglishWords(text: string): string {
   return String(text).split("\n").map((line) => {
     if (SKIP_LINE.test(line)) return line;

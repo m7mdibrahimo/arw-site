@@ -1,5 +1,5 @@
 ---
-title: "Ash by Elegance Reveals She Is 32 Weeks Pregnant After Health Battle"
+title: "Ash By Elegance Reveals She Is 32 Weeks Pregnant After Health Battle"
 slug: "ash-by-elegance-reveals-she-is-32-weeks-pregnant-after-health-battle"
 description: "Ash By Elegance is expecting a baby boy, sharing the difficult journey that preceded this joyful moment with her fans."
 federation: TNA
