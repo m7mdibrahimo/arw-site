@@ -105,8 +105,20 @@ jobs:
 
       # The video renderer (~280 MB with its AI/browser parts) is only needed here, so it is
       # not in package.json: that keeps the site build and the news bots' installs small.
+      # onnxruntime-node (pulled in by hyperframes) downloads an extra CUDA build from GitHub in
+      # its postinstall. These runners have no GPU, so that build is never used — and on
+      # 2026-11-17 Microsoft's v1.21.1 release vanished (404), which failed EVERY reel render
+      # (INCIDENTS #1407). Skipping it is the package's own documented switch; the CPU build
+      # ships inside the npm package. A transient network error gets two more tries.
       - name: Install video renderer
-        run: npm install --no-save --no-audit --no-fund hyperframes@0.8.46
+        env:
+          ONNXRUNTIME_NODE_INSTALL_CUDA: skip
+        run: |
+          for TRY in 1 2 3; do
+            npm install --no-save --no-audit --no-fund hyperframes@0.8.46 && exit 0
+            echo "renderer install failed (try $TRY/3)"; sleep 20
+          done
+          exit 1
 
       - name: Cache Chrome Headless Shell
         id: cache-puppeteer
