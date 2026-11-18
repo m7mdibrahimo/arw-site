@@ -1427,7 +1427,7 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
         <span class="spotlight-pill fed-pill-{{ fedLower }}">{{ item.federation or "WWE" }}</span>
         <span class="spotlight-pill type-pill">{{ item.kindLabel or "خبر" }}</span>
         {% if item.badge and ('مثبت' not in item.badge) %}
-        <span class="spotlight-pill custom-badge">{{ item.badge }}</span>
+        <span class="spotlight-pill custom-badge">{{ item.badge | commentaryWords(item.title, item.subtitle, item.url) }}</span>
         {% endif %}
       </div>
 

@@ -1,0 +1,108 @@
+// INCIDENTS #1390: a show with Arabic commentary («تعليق عربي») was called «مترجم» everywhere on its page (title,
+// description, keywords, JSON-LD names, «subtitleLanguage», «عن العرض», the English copy's «with Arabic subtitles»).
+// Owner 2026-11-18: this show and every future Arabic-commentary show are never «مترجم». Other shows stay as they were.
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { spawnSync } from 'node:child_process';
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+const c = require('../lib/arabic-commentary.cjs');
+const { showAbout } = require('../lib/show-about.cjs');
+
+test('the rule is read from the show itself: title, headline, program, address or the front-matter flag', () => {
+  for (const t of ['WWE RAW 16.11.2026 (تعليق عربي)', 'WWE RAW (تعليق للعربي)', 'عرض سماك داون بالتعليق العربي', 'عرض الرو بتعليق عربي',
+    '/shows/wwe-raw-16-11-2026-%D8%AA%D8%B9%D9%84%D9%8A%D9%82-%D8%B9%D8%B1%D8%A8%D9%8A/', '/shows/wwe-raw-16-11-2026-تعليق-عربي/', 'WWE RAW Arabic Commentary']) {
+    assert.ok(c.isArabicCommentary(t), t);
+  }
+  for (const t of ['WWE RAW (16.11.2026)', 'عرض الرو 16.11.2026 مترجم', 'التعليقات العربية', 'تعليقات الجمهور', '']) assert.ok(!c.isArabicCommentary(t), t);
+  assert.ok(c.isArabicCommentaryShow({ title: 'WWE RAW (16.11.2026)', arabic_commentary: true }));
+  assert.ok(!c.isArabicCommentaryShow({ title: 'WWE RAW (16.11.2026)', headline: 'عرض الرو 16.11.2026 مترجم', program_name: 'WWE RAW' }));
+});
+
+test('«مترجم» becomes «تعليق عربي»; a phrase that already names the commentary just loses the word', () => {
+  assert.equal(c.noSubtitleClaim('عرض الرو الأخير 16.11.2026 كامل مترجم — WWE RAW (تعليق للعربي)'), 'عرض الرو الأخير 16.11.2026 كامل بتعليق عربي — WWE RAW (تعليق للعربي)');
+  assert.equal(c.noSubtitleClaim('مشاهدة وتحميل عرض الرو 16.11.2026 مترجم بالعربي كامل أونلاين، من عروض المصارعة الحرة المترجمة.'),
+    'مشاهدة وتحميل عرض الرو 16.11.2026 بتعليق عربي كامل أونلاين، من عروض المصارعة الحرة بالتعليق العربي.');
+  assert.equal(c.noSubtitleClaim('WWE RAW (تعليق للعربي) كامل مترجم').trim(), 'WWE RAW (تعليق للعربي) كامل');
+  assert.equal(c.noSubtitleList('عرض الرو مترجم, WWE RAW (تعليق للعربي) مترجم, WWE RAW (تعليق للعربي), عرض الرو بتعليق عربي'), 'عرض الرو بتعليق عربي, WWE RAW (تعليق للعربي)');
+  const ld = c.noSubtitleJson({ '@type': 'VideoObject', name: 'عرض الرو كامل مترجم', alternateName: ['عرض الرو مترجم', 'عرض الرو بتعليق عربي'], publication: { '@type': 'BroadcastEvent', subtitleLanguage: 'ar' } });
+  assert.deepEqual(ld, { '@type': 'VideoObject', name: 'عرض الرو كامل بتعليق عربي', alternateName: ['عرض الرو بتعليق عربي'], publication: { '@type': 'BroadcastEvent' } });
+  // an unmarked page is never touched
+  const page = '<html><head><title>عرض الرو مترجم</title></head><body></body></html>';
+  assert.equal(c.commentaryHead(page), page);
+});
+
+test('«عن العرض» says «بتعليق عربي» for an Arabic-commentary show and stays «مترجم» for the others', () => {
+  const base = { name: 'عرض الرو', dot: '16.11.2026', programName: 'WWE RAW (تعليق للعربي)', federation: 'WWE', eventDate: '2026-11-16', day: '16 نوفمبر 2026', duration: '02:29:33', servers: 4, qualities: ['720p'] };
+  const ar = showAbout({ ...base, commentary: true });
+  assert.equal(ar.heading, 'عن عرض الرو 16.11.2026 كامل بتعليق عربي');
+  assert.ok(!JSON.stringify(ar).includes('مترجم'), JSON.stringify(ar));
+  assert.match(ar.paragraphs.join(' '), /بالتعليق العربي كاملًا/);
+  const plain = showAbout({ ...base, programName: 'WWE RAW' });
+  assert.equal(plain.heading, 'عن عرض الرو 16.11.2026 كامل مترجم');
+  assert.match(plain.paragraphs.join(' '), /مترجمًا إلى العربية كاملًا/);
+});
+
+// ── a real build of sample shows (the fast-lane render: only these pages and their English copies, ~10–40 s) ─────────
+const { showPath } = require('../lib/show-permalink.cjs');
+// file → its own front-matter lines; dated 2001 so no real show shares a title or address
+const SAMPLES: Record<string, string> = {
+  'zz-test-1350-commentary.md': `title: WWE RAW 08.01.2001 (تعليق عربي)\nheadline: عرض الرو 08.01.2001 (تعليق عربي)\nprogram_name: WWE RAW (تعليق للعربي)\nevent_date: 2001-01-08\ndescription: عرض الرو (تعليق عربي) بالكامل مع جميع النزالات والأحداث.`,
+  'zz-test-1350-flag.md': `title: WWE SmackDown 11.01.2001\nheadline: عرض سماك داون 11.01.2001\nprogram_name: WWE SmackDown\narabic_commentary: true\nevent_date: 2001-01-11\ndescription: عرض سماك داون 11.01.2001 مترجم بالكامل مع جميع النزالات والأحداث.`,
+  'zz-test-1350-normal.md': `title: WWE RAW 15.01.2001\nheadline: عرض الرو 15.01.2001 مترجم\nprogram_name: WWE RAW\nevent_date: 2001-01-15\ndescription: عرض الرو 15.01.2001 مترجم بالكامل مع جميع النزالات والأحداث.`,
+};
+const fm = (own: string) => `---\nshow_type: عرض\nfederation: WWE\n${own}\ndate: 2001-01-20T01:00:00.000+02:00\nduration: 02:10:00\ntags:\n  - WWE\nservers:\n  - url: https://ok.ru/video/1\n  - url: https://vidmoly.org/embed-abc.html\n---\n\n`;
+const urlOf = (file: string) => showPath(file, (SAMPLES[file].match(/^title: (.+)$/m) || [])[1], path.join('content', 'shows'), true);
+
+// what the page says about ITSELF: its head, its H1, «عن العرض», its body text and every JSON-LD block. The cards of other
+// (translated) shows under it keep their own «مترجم».
+function own(html: string): string {
+  const pick = (re: RegExp) => (html.match(re) || []).join('\n');
+  return [html.slice(0, html.indexOf('</head>')), pick(/<h1[\s\S]*?<\/h1>/g), pick(/<section class="show-about[\s\S]*?<\/section>/g),
+    pick(/<div class="post-body">[\s\S]*?<\/div>/g), pick(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g)].join('\n');
+}
+
+function built(file: string, en = false): string {
+  const out = path.join('_site', en ? 'en' : '', urlOf(file), 'index.html');
+  assert.ok(fs.existsSync(out), `${out} was built`);
+  return fs.readFileSync(out, 'utf8');
+}
+
+test('a built Arabic-commentary show has no «مترجم» or subtitle claim anywhere, a normal show keeps «مترجم»', { timeout: 300_000 }, () => {
+  const files = Object.keys(SAMPLES).map((f) => path.join('content', 'shows', f));
+  const urls: string[] = [];
+  try {
+    Object.entries(SAMPLES).forEach(([, own], i) => fs.writeFileSync(files[i], fm(own)));
+    urls.push(...Object.keys(SAMPLES).map(urlOf));
+    const r = spawnSync(process.execPath, ['--stack-size=4096', './node_modules/@11ty/eleventy/cmd.cjs'], {
+      env: { ...process.env, ARW_FAST_LANE: files.join(',') }, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
+    });
+    assert.equal(r.status, 0, (r.stderr || '') + (r.stdout || '').slice(-2000));
+
+    for (const slug of ['zz-test-1350-commentary.md', 'zz-test-1350-flag.md']) {
+      const ar = own(built(slug));
+      assert.match(ar, /<meta name="arw-commentary" content="ar">/, slug);
+      assert.ok(!ar.includes('مترجم'), `${slug}: «${(ar.match(/.{60}مترجم.{30}/) || [''])[0]}»`);
+      assert.ok(!/subtitleLanguage/.test(ar), slug);
+      assert.match(ar, /<title>[^<]*تعليق عربي[^<]*<\/title>/, slug);
+      assert.match(ar, /<h2 id="show-about-h">[^<]*بتعليق عربي/, slug);
+      const en = own(built(slug, true));
+      assert.ok(!en.includes('مترجم'), `${slug} (en): «${(en.match(/.{60}مترجم.{30}/) || [''])[0]}»`);
+      assert.ok(!/subtitle|translated/i.test(en), `${slug} (en): «${(en.match(/.{60}(?:subtitle|translated).{30}/i) || [''])[0]}»`);
+      assert.match(en, /Arabic commentary/, slug);
+    }
+
+    const normal = built('zz-test-1350-normal.md');
+    assert.ok(!normal.includes('arw-commentary'));
+    assert.match(normal, /<title>[^<]*كامل مترجم[^<]*<\/title>/);
+    assert.match(normal, /"subtitleLanguage": "ar"/);
+    assert.match(normal, /<h2 id="show-about-h">[^<]*كامل مترجم/);
+    assert.match(built('zz-test-1350-normal.md', true), /with Arabic subtitles in full/);
+  } finally {
+    for (const f of files) fs.rmSync(f, { force: true });
+    for (const u of urls) for (const d of ['_site', '_site/en']) fs.rmSync(path.join(d, u), { recursive: true, force: true });
+  }
+});

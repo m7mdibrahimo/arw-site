@@ -314,7 +314,7 @@ export async function renderPinnedTool(page) {
       const it = index.find(x => x.url === b.dataset.pin);
       const news = it.kind === 'news';
       items.push({ url: it.url, title: it.headline || it.title, subtitle: it.headline && it.title !== it.headline ? it.title : '', image: it.image, federation: it.federation || 'WWE',
-        kind: it.kind || 'show', kindLabel: it.kindLabel || KIND[it.kind] || 'عرض', badge: news ? 'عاجل' : 'حصري ومترجم', description: it.description || '' });
+        kind: it.kind || 'show', kindLabel: it.kindLabel || KIND[it.kind] || 'عرض', badge: news ? 'عاجل' : /(?<![\u0621-\u064A])[وب]?(?:ال)?تعليق\s*(?:لل|بال|ال|ب)?عربي(?![\u0621-\u064A])/.test(`${it.headline || ''} ${it.title || ''}`) ? 'حصري بتعليق عربي' : 'حصري ومترجم', /* Arabic commentary is not translated: lib/arabic-commentary.cjs, INCIDENTS #1390 */ description: it.description || '' });
       mark(); drawPinned(); drawAvail();
     });
   };

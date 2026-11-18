@@ -4651,7 +4651,7 @@ test('every show page says in words what it is: «عن العرض» with true fa
   assert.deepEqual(a.facts.map((f: string[]) => f[0]), ['الاتحاد', 'البرنامج', 'تاريخ العرض', 'المدة', 'المشاهدة', 'التحميل']);
   // the layout puts it on show pages, from the show's own description (not the search one)
   const layout = fs.readFileSync('_includes/post-layout.njk', 'utf-8');
-  assert.match(layout, /showAboutFor\(headline, title, program_name, event_date, duration, servers, dlGroups, federation, ownDescription, collections\.news\)/);
+  assert.match(layout, /showAboutFor\(headline, title, program_name, event_date, duration, servers, dlGroups, federation, ownDescription, collections\.news, arabicCommentary\)/);
   assert.match(layout, /تنبيه: تكشف نتائج النزالات/);
 });
 

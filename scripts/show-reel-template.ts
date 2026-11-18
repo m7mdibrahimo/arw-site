@@ -125,7 +125,7 @@ export function showReelHtml(d: ShowReelData): string {
     <div class="info" id="info">
       <div><small>ليلة العرض</small><b>${esc(d.dateLabel)}</b></div>
       <div><small>المدة</small><b>${esc(d.duration)}</b></div>
-      <div><small>النسخة</small><b>كاملة ومترجمة</b></div>
+      <div><small>النسخة</small><b>${/(?<![\u0621-\u064A])[وب]?(?:ال)?تعليق\s*(?:لل|بال|ال|ب)?عربي(?![\u0621-\u064A])|arabic\s+commentary/i.test(`${d.arTitle} ${d.enTitle}`) ? 'كاملة بتعليق عربي' : 'كاملة ومترجمة'}</b></div>
     </div>
     <div class="cta" id="cta"><div class="a"><small>العرض كامل</small><b id="watch">شاهده الآن</b></div><div class="b"><span>arab-wrestling.com</span></div><div class="shine" id="ctaShine"></div></div>
   </div>

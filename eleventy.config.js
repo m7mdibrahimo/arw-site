@@ -2018,7 +2018,11 @@ module.exports = function(eleventyConfig) {
   // fields, and its results story when the bots wrote one. Results stories are found once per build by their date.
   eleventyConfig.addFilter("videoEmbedUrl", (servers) => require("./lib/show-about.cjs").videoEmbedUrl(servers));
   let resultsIndex = null, resultsFor = null;
-  eleventyConfig.addNunjucksGlobal("showAboutFor", function(headline, title, programName, eventDate, duration, servers, dlGroups, federation, description, news) {
+  // A show with Arabic commentary («تعليق عربي») is never «مترجم» (owner 2026-11-18, lib/arabic-commentary.cjs, INCIDENTS #1390)
+  // a slider badge («حصري ومترجم») on a pinned Arabic-commentary show says «حصري بتعليق عربي»
+  eleventyConfig.addFilter("commentaryWords", (text, ...about) => { const c = require("./lib/arabic-commentary.cjs"); return c.isArabicCommentary(...about) ? c.noSubtitleClaim(text) : text; });
+  eleventyConfig.addNunjucksGlobal("isArabicCommentaryShow", (data) => require("./lib/arabic-commentary.cjs").isArabicCommentaryShow(data || {}));
+  eleventyConfig.addNunjucksGlobal("showAboutFor", function(headline, title, programName, eventDate, duration, servers, dlGroups, federation, description, news, commentary) {
     const { showNameParts } = require("./lib/show-seo.cjs");
     const { showAbout, findResults } = require("./lib/show-about.cjs");
     const { arName, dot } = showNameParts(headline, title, eventDate);
@@ -2035,7 +2039,7 @@ module.exports = function(eleventyConfig) {
     const results = findResults(resultsIndex.get(day) || [], programName, day);
     const g = dlGroups || {};
     const qualities = [["light", "360p"], ["low", "480p"], ["medium", "720p"], ["high", "1080p"]].filter(([k]) => g[k] && g[k].length).map(([, v]) => v);
-    return showAbout({ name: arName, dot, programName, federation, eventDate, day, duration, servers: Array.isArray(servers) ? servers.length : 0, qualities, description, results });
+    return showAbout({ name: arName, dot, programName, federation, eventDate, day, duration, servers: Array.isArray(servers) ? servers.length : 0, qualities, description, results, commentary: !!commentary });
   });
 
   // ===== نوستالجيا: بيجمع أي عرض/ملخص مكتوب فيه "nostalgia_series" في مجموعة (سلسلة) واحدة =====
@@ -2438,6 +2442,12 @@ module.exports = function(eleventyConfig) {
   // HTML entities inside the JSON-LD («Blood &amp; Guts») become the real characters (lib/jsonld-entities.cjs, INCIDENTS #1135)
   eleventyConfig.addTransform("jsonLdEntities", function(content, outputPath) {
     return outputPath && outputPath.endsWith(".html") ? require("./lib/jsonld-entities.cjs").fixJsonLdEntities(content) : content;
+  });
+
+  // A page marked <meta name="arw-commentary" content="ar"> (a show with Arabic commentary): the head's title, description,
+  // keywords, og/twitter and JSON-LD say «تعليق عربي», never «مترجم», and claim no subtitles (lib/arabic-commentary.cjs, INCIDENTS #1390)
+  eleventyConfig.addTransform("arabicCommentary", function(content, outputPath) {
+    return outputPath && outputPath.endsWith(".html") && content.includes('name="arw-commentary"') ? require("./lib/arabic-commentary.cjs").commentaryHead(content) : content;
   });
 
   // Transform to strip all internal developer HTML comments from published pages for privacy & cleaner code

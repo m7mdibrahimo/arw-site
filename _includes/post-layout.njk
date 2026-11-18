@@ -11,6 +11,8 @@
 <link rel="icon" type="image/png" href="/favicon.png?v=3">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 {% set pageTitle = headline or title %}
+{#- a show with Arabic commentary is never «مترجم» (lib/arabic-commentary.cjs, INCIDENTS #1390): marked in the head, the «arabicCommentary» transform rewrites the head's words -#}
+{% set arabicCommentary = isArabicCommentaryShow({ arabic_commentary: arabic_commentary, title: title, headline: headline, program_name: program_name, url: page.url }) if (page.inputPath and "content/shows" in page.inputPath) else false %}
 {% set ownDescription = description %}{% if page.inputPath and ("content/shows" in page.inputPath or "content/nostalgia" in page.inputPath) %}{% set showSeoData = showSeo(headline, title, program_name, event_date, page.url, collections.library, description) %}{% set pageTitle = showSeoData.title %}{% set description = showSeoData.description %}{% endif %}
 {% if page.inputPath and "content/recaps" in page.inputPath and not nostalgia_series %}{% set recapSeoData = recapSeo(headline, title, program_name, event_date, description, collections.library) %}{% set pageTitle = recapSeoData.title %}{% set description = recapSeoData.description %}{% endif %}
 {% set isNostalgiaItem = (kind == 'nostalgia') or (page.inputPath and ("content/nostalgia" in page.inputPath)) or nostalgia_series or (page.url and page.url.startsWith('/nostalgia/')) %}
@@ -48,7 +50,7 @@
 <meta property="og:image" content="{{ schemaImage }}">
 {% if image and not isNews %}{% optThumbMeta image %}{% endif %}
 {# The short Arabic name for cards built in the browser («عرض الرو 28.09.2026 مترجم»), not the search title (INCIDENTS #287) #}
-{% if not isNews and (headline or title) %}<meta name="arw-card-title" content="{{ (headline or title) | escape }}">{% endif %}
+{% if arabicCommentary %}<meta name="arw-commentary" content="ar">{% endif %}{% if not isNews and (headline or title) %}<meta name="arw-card-title" content="{{ (headline or title) | escape }}">{% endif %}
 <meta property="og:image:secure_url" content="{{ schemaImage }}">
 <meta property="og:site_name" content="عرب راسلنج">
 <meta property="og:locale" content="ar_AR">
@@ -78,7 +80,7 @@
     {
       "@type": "NewsArticle",
       "headline": "{{ pageTitle | escape }}",
-      {#- a weekly show's results story under the program's Arabic name and the English «Results» form (INCIDENTS #1350) - head only -#}
+      {#- a weekly show's results story under the program's Arabic name and the English «Results» form (INCIDENTS #1390) - head only -#}
       {% set resultsAlt = resultsAltHeadline(pageTitle) if page.url.startsWith('/news/') else '' %}{% if resultsAlt %}"alternativeHeadline": "{{ resultsAlt | escape }}",{% endif %}
       "description": "{{ (description or baseDesc) | escape }}",
       "image": {
@@ -162,7 +164,7 @@
       {% if page.url.startsWith('/shows/') or page.url.startsWith('/recaps/') %}{% set ldNames = ldNames.concat(showNameForms(headline, title, program_name, event_date, ldNames, page.url.startsWith('/shows/'), false, showSeoData and showSeoData.isLatest)) %}{% elif page.url.startsWith('/nostalgia/') and series_type == 'shows' %}{#- a nostalgia special (Money in the Bank 2010) is searched like a new one: «تحميل عرض money in the bank», its date and year (INCIDENTS #512) -#}{% set ldNames = ldNames.concat(showNameForms(headline, title, title | replace(r/\s*\(.*\)\s*$/, ''), event_date, [], true, true)) %}{% endif %}
       {#- a recap's video is the recap: only its own «ملخص/Highlights» names, the full show's names belong to the show page (INCIDENTS #981) -#}{% if page.url.startsWith('/recaps/') %}{% set ldNames = ldNames | recapOnlyNames %}{% endif %}
       {% if ldNames.length %}"alternateName": [{% for a in ldNames %}"{{ a | escape }}"{% if not loop.last %}, {% endif %}{% endfor %}],{#- the same names as the video's keywords (INCIDENTS #653) -#}"keywords": "{% for a in ldNames %}{% if loop.index0 < 14 %}{{ a | escape }}{% if not loop.last and loop.index0 < 13 %}, {% endif %}{% endif %}{% endfor %}",{% endif %}
-      {% if (eventDate or event_date) and (page.url.startsWith('/shows/') or (page.url.startsWith('/nostalgia/') and series_type == 'shows')) %}"publication": { "@type": "BroadcastEvent", "name": "{{ pageTitle | escape }}", "isLiveBroadcast": false, "subtitleLanguage": "ar", "eventStatus": "https://schema.org/EventScheduled", "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode", {% set ldStart = (eventDate or event_date) | airStart(page.url) %}"startDate": {{ ldStart | jsonify | safe }}{% set ldEnd = ldStart | eventEnd(duration) %}{% if ldEnd %}, "endDate": {{ ldEnd | jsonify | safe }}{% endif %}{% if ldNames and ldNames.length %}, "alternateName": [{% for a in ldNames %}"{{ a | escape }}"{% if not loop.last %}, {% endif %}{% endfor %}]{% endif %} },{% endif %}
+      {% if (eventDate or event_date) and (page.url.startsWith('/shows/') or (page.url.startsWith('/nostalgia/') and series_type == 'shows')) %}"publication": { "@type": "BroadcastEvent", "name": "{{ pageTitle | escape }}", "isLiveBroadcast": false, {% if not arabicCommentary %}"subtitleLanguage": "ar", {% endif %}"eventStatus": "https://schema.org/EventScheduled", "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode", {% set ldStart = (eventDate or event_date) | airStart(page.url) %}"startDate": {{ ldStart | jsonify | safe }}{% set ldEnd = ldStart | eventEnd(duration) %}{% if ldEnd %}, "endDate": {{ ldEnd | jsonify | safe }}{% endif %}{% if ldNames and ldNames.length %}, "alternateName": [{% for a in ldNames %}"{{ a | escape }}"{% if not loop.last %}, {% endif %}{% endfor %}]{% endif %} },{% endif %}
       {#- the episode belongs to its program's library page and is watched on this page: the link between an episode and its program, and the WatchAction Google reads for «مشاهدة …» searches (INCIDENTS #541) -#}
       {#- the program's Arabic name on the video's own series too («عرض سماك داون» beside «WWE SmackDown»): Arabic searches for the program match the video, not only the article (INCIDENTS #1327) -#}
       {% if ldAbout %}"isPartOf": { "@type": "TVSeries", "name": "{{ ldAbout.name | officialCase | escape }}"{% if ldAbout.arName %}, "alternateName": "{{ ldAbout.arName | escape }}"{% endif %}, "url": "https://arab-wrestling.com/library/{{ ldAbout.slug }}/" },{% endif %}
@@ -273,7 +275,7 @@
           {% if "عرض" in title or "تغطية" in title or "ملخص" in title or "برنامج" in title or "مسلسل" in title %}
             {{ title | arabicShowName | stripDate | latestH1(showSeoData and showSeoData.isLatest) }}
           {% else %}
-            {{ show_type or "عرض" }} {{ title | arabicShowName | stripDate }} مترجم
+            {{ show_type or "عرض" }} {{ title | arabicShowName | stripDate }}{% if not arabicCommentary %} مترجم{% endif %}
           {% endif %}
         {% else %}
           عروض المصارعة المترجمة
@@ -616,7 +618,7 @@
     {% endif %}
 
     {% if isShow and not isNostalgiaItem and page.url.startsWith('/shows/') %}
-    {% set about = showAboutFor(headline, title, program_name, event_date, duration, servers, dlGroups, federation, ownDescription, collections.news) %}
+    {% set about = showAboutFor(headline, title, program_name, event_date, duration, servers, dlGroups, federation, ownDescription, collections.news, arabicCommentary) %}
     {% if about %}
     {# «عن العرض»: what the page is, in words (owner 2026-10-11, INCIDENTS #435) #}
     <section class="show-about reveal" aria-labelledby="show-about-h">

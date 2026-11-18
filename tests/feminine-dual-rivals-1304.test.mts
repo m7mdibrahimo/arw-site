@@ -24,5 +24,5 @@ test("preeclampsia is written «تسمم الحمل»", () => {
 import fs from "node:fs";
 test("a show's BroadcastEvent says its subtitles are Arabic («مترجم»)", () => {
   const layout = fs.readFileSync("_includes/post-layout.njk", "utf8");
-  assert.match(layout, /"@type": "BroadcastEvent", "name": [^\n]*?"isLiveBroadcast": false, "subtitleLanguage": "ar"/);
+  assert.match(layout, /"@type": "BroadcastEvent", "name": [^\n]*?"isLiveBroadcast": false, \{% if not arabicCommentary %\}"subtitleLanguage": "ar"/, "every show but an Arabic-commentary one (INCIDENTS #1390)");
 });

@@ -94,7 +94,7 @@ function followNews() {
             };
             if (it.image) opts.image = it.image;
             var pred = /^\/predictions\//.test(it.url);
-            return self.registration.showNotification(pred ? (en ? 'Your predictions results 🏆' : 'نتائج توقعاتك 🏆') : en ? 'New translated show 🔔' : 'عرض جديد مترجم 🔔' + (it.program ? ' | ' + it.program : ''), opts);
+            return self.registration.showNotification(pred ? (en ? 'Your predictions results 🏆' : 'نتائج توقعاتك 🏆') : (/(?:^|[^\u0621-\u064A])[وب]?(?:ال)?تعليق\s*(?:لل|بال|ال|ب)?عربي(?![\u0621-\u064A])/.test((it.title || '') + ' ' + (it.program || '')) /* Arabic commentary is not translated (INCIDENTS #1390) */ ? (en ? 'New show with Arabic commentary 🔔' : 'عرض جديد بتعليق عربي 🔔' + (it.program ? ' | ' + it.program : '')) : en ? 'New translated show 🔔' : 'عرض جديد مترجم 🔔' + (it.program ? ' | ' + it.program : '')), opts);
           })).then(function () { return true; });
         });
       })
