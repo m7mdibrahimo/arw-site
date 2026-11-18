@@ -1,53 +1,53 @@
 {
- "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-november-17-2026": {
-  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
-  "retry": false,
-  "at": "2026-11-18T02:13:29.543Z"
- },
  "https://www.fightful.com/wrestling/shiloh-hill-izzi-dame-joins-wwe-john-cena-classic-field": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T02:14:18.056Z"
+  "at": "2026-11-18T02:17:39.059Z"
  },
  "https://www.fightful.com/wrestling/ash-by-elegance-announces-pregnancy-opens-up-about-health-issues-provides-update-on-tna-contract": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T02:14:17.756Z"
+  "at": "2026-11-18T02:17:38.690Z"
  },
  "https://www.fightful.com/wrestling/anthony-bowens-expected-to-remain-with-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T02:14:17.458Z"
+  "at": "2026-11-18T02:17:38.327Z"
  },
  "https://www.fightful.com/wrestling/continental-classic-matches-tbs-title-four-way-announced-for-11-18-aew-dynamite": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T02:14:17.160Z"
+  "at": "2026-11-18T02:17:37.961Z"
  },
  "https://www.fightful.com/wrestling/wrestling-world-reacts-to-passing-of-cowboy-bill-watts": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T02:14:16.853Z"
+  "at": "2026-11-18T02:17:37.609Z"
  },
  "https://www.fightful.com/wrestling/ryzin-details-decision-to-retire-in-2027-says-he-was-overwhelmed-by-the-reaction-to-his-initial-announcement": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T02:14:15.952Z"
+  "at": "2026-11-18T02:17:36.529Z"
  },
  "https://www.fightful.com/wrestling/alyssa-daniele-reveals-she-suffered-a-shoulder-dislocation-that-requires-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T02:14:15.652Z"
+  "at": "2026-11-18T02:17:36.178Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-11-9-scores-2-4-million-global-views-on-netflix": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T02:14:15.269Z"
+  "at": "2026-11-18T02:17:35.724Z"
  },
  "https://www.fightful.com/wrestling/elayna-black-the-best-advice-cm-punk-gave-me-was-to-not-give-a-fuck": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T02:14:14.533Z"
+  "at": "2026-11-18T02:17:34.857Z"
+ },
+ "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-november-17-2026": {
+  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
+  "retry": false,
+  "at": "2026-11-18T02:13:29.543Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-results-11-17-2026-kelani-jordan-vs-kelani-jordan-zilla-fatu-tony-dangelo-more": {
   "reason": "المراجعة رفضته: المصدر بيتكلم عن Izzi Dame (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن John Cena (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
