@@ -1,58 +1,58 @@
 {
- "https://www.fightful.com/wrestling/wwe-nxt-results-11-17-2026-kelani-jordan-vs-kelani-jordan-zilla-fatu-tony-dangelo-more": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
-  "retry": true,
-  "at": "2026-11-18T09:59:05.304Z"
- },
  "https://www.fightful.com/wrestling/myka-lockwood-to-be-sole-woman-in-eight-person-tag-bout-womens-north-american-title-match-set-for-11-24-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T09:58:30.802Z"
+  "at": "2026-11-18T10:08:08.848Z"
  },
  "https://www.fightful.com/wrestling/shiloh-hill-izzi-dame-joins-wwe-john-cena-classic-field": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T09:58:30.136Z"
+  "at": "2026-11-18T10:08:08.408Z"
  },
  "https://www.fightful.com/wrestling/ash-by-elegance-announces-pregnancy-opens-up-about-health-issues-provides-update-on-tna-contract": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T09:58:29.790Z"
+  "at": "2026-11-18T10:08:08.174Z"
  },
  "https://www.fightful.com/wrestling/anthony-bowens-expected-to-remain-with-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T09:58:29.442Z"
+  "at": "2026-11-18T10:08:07.941Z"
  },
  "https://www.fightful.com/wrestling/continental-classic-matches-tbs-title-four-way-announced-for-11-18-aew-dynamite": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T09:58:29.090Z"
+  "at": "2026-11-18T10:08:07.711Z"
  },
  "https://www.fightful.com/wrestling/wrestling-world-reacts-to-passing-of-cowboy-bill-watts": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T09:58:28.740Z"
+  "at": "2026-11-18T10:08:07.481Z"
  },
  "https://www.fightful.com/wrestling/ryzin-details-decision-to-retire-in-2027-says-he-was-overwhelmed-by-the-reaction-to-his-initial-announcement": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T09:58:27.670Z"
+  "at": "2026-11-18T10:08:06.784Z"
  },
  "https://www.fightful.com/wrestling/alyssa-daniele-reveals-she-suffered-a-shoulder-dislocation-that-requires-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T09:58:27.321Z"
+  "at": "2026-11-18T10:08:06.552Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-11-9-scores-2-4-million-global-views-on-netflix": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T09:58:26.864Z"
+  "at": "2026-11-18T10:08:06.255Z"
  },
  "https://www.fightful.com/wrestling/elayna-black-the-best-advice-cm-punk-gave-me-was-to-not-give-a-fuck": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T09:58:25.992Z"
+  "at": "2026-11-18T10:08:05.684Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-nxt-results-11-17-2026-kelani-jordan-vs-kelani-jordan-zilla-fatu-tony-dangelo-more": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
+  "retry": true,
+  "at": "2026-11-18T09:59:05.304Z"
  },
  "https://www.fightful.com/wrestling/cmll-martes-de-arena-mexico-results-11-17-2026-atlantis-titan-esfinge-vs-infernales-templario-vs-yutani-persephone-more": {
   "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
