@@ -5479,16 +5479,14 @@
     "publishedAt": 1795037576136,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال ريفولوسيون دي كامبيونيس 16.11.2026 مترجم",
-    "lastAttempt": 1795041836877,
+    "lastAttempt": 1795042710998,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
     "reviewPlatforms": [],
@@ -5502,9 +5500,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال × ان جي بي دبليو لوتشا كينجدوم 16.11.2026 مترجم",
-    "lastAttempt": 1795037627702,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1795042740612,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
