@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/grayson-waller-sends-message-cm-punk-john-cena-cody-rhodes-ahead-wwe-nxt/": {
-    "matchedFile": "20261104150152-دليل-مشاهدة-وموعد-عرض-wwe-nxt-الليلة-والنزالات-الرسمية-الكبرى.md",
-    "reason": "الخبر الجديد يعيد سرد تفاصيل عرض NXT الليلة والنزالات المعلنة (مثل نزال والر ضد بانك) التي تم تغطيتها بالفعل في الخبر رقم 2، ولا يقدم تطوراً جديداً جوهرياً يتجاوز ما تم ذكره.",
-    "at": "2026-11-04T23:05:37.402Z"
-  },
   "https://www.fightful.com/wrestling/mark-shapiro-states-that-tko-fully-anticipates-that-wwe-ufc-events-in-middle-east-will-proceed-as-planned/": {
     "matchedFile": "20261105015231-wwe-تضع-خطة-بديلة-لنقل-عرض-wrestlemania-2027-من-السعودية.md",
     "reason": "الخبر الجديد يعيد سرد نفس تصريحات مارك شابيرو حول استمرار فعاليات الشرق الأوسط التي تم تناولها بالفعل في الخبر رقم 1.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261118034419-حفيد-أنطونيو-إينوكي-ناوتو-إينوكي-ينضم-إلى-njpw.md",
     "reason": "الخبر الجديد يغطي نفس واقعة انضمام ناوتو إينوكي لاتحاد NJPW، والتفاصيل الإضافية (مثل تاريخ الاختبار وتفاصيل التدريب) تعتبر معلومات تكميلية لنفس الحدث وليست تطوراً جوهرياً جديداً.",
     "at": "2026-11-18T02:58:33.702Z"
+  },
+  "https://www.fightful.com/wrestling/myka-lockwood-to-be-sole-woman-in-eight-person-tag-bout-womens-north-american-title-match-set-for-11-24-wwe-nxt/": {
+    "matchedFile": "20261118054742-اتحاد-wwe-يعلن-عن-ثلاثة-نزالات-لعرض-wwe-nxt-يوم-24-نوفمبر-يتضمن-نزالا-على-بطولة.md",
+    "reason": "",
+    "at": "2026-11-18T03:11:49.172Z"
   }
 }
