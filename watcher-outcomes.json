@@ -1,48 +1,48 @@
 {
- "https://www.ringsidenews.com/young-bucks-considered-signing-elsewhere-before-aew-created": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-18T00:03:10.452Z"
- },
  "https://www.fightful.com/wrestling/ryzin-details-decision-to-retire-in-2027-says-he-was-overwhelmed-by-the-reaction-to-his-initial-announcement": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T00:02:32.950Z"
+  "at": "2026-11-18T00:05:31.898Z"
  },
  "https://www.fightful.com/wrestling/alyssa-daniele-reveals-she-suffered-a-shoulder-dislocation-that-requires-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T00:02:32.600Z"
+  "at": "2026-11-18T00:05:31.539Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-11-9-scores-2-4-million-global-views-on-netflix": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T00:02:32.149Z"
+  "at": "2026-11-18T00:05:31.082Z"
  },
  "https://www.fightful.com/wrestling/elayna-black-the-best-advice-cm-punk-gave-me-was-to-not-give-a-fuck": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T00:02:31.287Z"
+  "at": "2026-11-18T00:05:30.198Z"
  },
  "https://www.fightful.com/wrestling/fallon-henley-says-she-wanted-to-burst-into-tears-after-fatal-influence-captured-the-wwe-womens-tag-titles": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T00:02:29.821Z"
+  "at": "2026-11-18T00:05:28.727Z"
  },
  "https://www.fightful.com/wrestling/wwe-shop-selling-custom-rocky-maivia-ic-title-to-celebrate-30-years-of-the-rock": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T00:02:29.591Z"
+  "at": "2026-11-18T00:05:28.497Z"
  },
  "https://www.fightful.com/wrestling/charlotte-flair-when-its-tatum-paxleys-time-i-really-think-the-sky-is-the-limit-for-her": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T00:02:29.359Z"
+  "at": "2026-11-18T00:05:28.267Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-11-17": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T00:02:29.001Z"
+  "at": "2026-11-18T00:05:27.909Z"
+ },
+ "https://www.ringsidenews.com/young-bucks-considered-signing-elsewhere-before-aew-created": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-18T00:03:10.452Z"
  },
  "https://www.ringsidenews.com/hulk-hogan-allegedly-discussed-filing-divorce-before-his-passing": {
   "reason": "المراجعة رفضته: مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل مثنى («يعيشان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
