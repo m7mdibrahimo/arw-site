@@ -122,6 +122,8 @@ permalink: "/index.html"
         "المصارعة الحرة اليوم", "مصارعة حرة {{ buildTime | yearOf }}", "عرض الرو الاخير", "عرض سماك داون الاخير", "نتائج عرض الرو الاخير", "اخبار المصارعة الحرة wwe",
         {#- Whole-site opportunities of 2026-11-12 that the list above didn't answer: «أحدث مصارعة هذا الأسبوع» 8.6 (481)، «عرض الرو» 4.5 (455)، «عرض سماك داون» 4.4 (345)، «عرض سماك داون الاخير اليوم» 3.9 (419)، «مصارعة حرة wwe» 7.9، «المصارعه» 7.6. Head only (INCIDENTS #1250). -#}
         "أحدث مصارعة هذا الأسبوع", "عرض الرو", "عرض سماك داون", "عرض سماك داون الاخير اليوم", "مصارعة حرة wwe", "المصارعه", "المصارعة"
+        {#- shows with Arabic commentary on the site: the ways they are searched as a whole, head only, only while there are some (INCIDENTS #1393) -#}
+        {%- if (collections.library | commentaryPrograms).length %}, "عروض المصارعة بالتعليق العربي", "مصارعة حرة بالتعليق العربي", "عروض المصارعة بالصوت العربي", "مصارعة بالتعليق العربي"{% for cp in collections.library | commentaryPrograms %}{% if cp.arHeadTitle %}, "{{ cp.arHeadTitle | escape }}"{% endif %}{% endfor %}{% endif %}
       ],
       "alternateName": ["موقع المصارعة الحرة", "مصارعة حرة اون لاين", "عروض المصارعة الحرة مترجمة", "موقع عرب راسلنج للمصارعة الحرة", "مصارعه حره اون لاين", "مصارعة حرة جديدة مترجمة", "المصارعة الحرة اليوم", "مصارعة حرة {{ buildTime | yearOf }} مترجمة", "مصارعة حرة WWE", "مصارعة WWE", "مصارعه حره مترجمه", "أحدث عروض المصارعة هذا الأسبوع"],
       "isPartOf": { "@id": "https://arab-wrestling.com/#website" },

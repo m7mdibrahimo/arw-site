@@ -18,6 +18,10 @@ eleventyComputed:
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {#- a program with Arabic commentary is never «مترجم»: the «arabicCommentary» transform rewrites the head (lib/arabic-commentary.cjs, INCIDENTS #1390) -#}
 {% if lp.prog.arabicCommentary %}<meta name="arw-commentary" content="ar">{% endif %}
+{#- …and is searched «عروض الرو بالتعليق العربي», «الرو بالصوت العربي»: its head title and description say both, short and natural (INCIDENTS #1393). Head only -#}
+{% if lp.prog.arabicCommentary and lp.prog.arHeadTitle and lp.pageNumber == 1 %}{% set acEn = lp.prog.name | englishProgram %}
+{% if lp.prog.count < 4 %}{% set pageTitle = lp.prog.arHeadTitle + " (" + (lp.prog.count | arCount("عرض واحد", "عرضان", "عروض", "عرض")) + ") — مشاهدة وتحميل " + acEn + " بالصوت العربي" %}{% else %}{% set pageTitle = (lp.prog.arSearchName or lp.prog.arName) + " الأخير كامل بالتعليق العربي (" + (lp.prog.latest.eventDate | date) + ") — " + acEn %}{% endif %}
+{% set pageDesc = "كل " + lp.prog.arHeadTitle + " (" + (lp.prog.count | arCount("عرض واحد", "عرضان", "عروض", "عرض")) + ") — " + acEn + " بالصوت العربي كامل، مشاهدة وتحميل أونلاين مرتبة من الأحدث للأقدم على عرب راسلنج، وأحدثها " + (lp.prog.arSearchName or lp.prog.arName) + " " + (lp.prog.latest.eventDate | date) + " بالتعليق العربي." %}{% endif %}
 {#- Sitelinks (owner, 2026-11-09): page 2+ of a listing is a duplicate archive slice — Google showed «صفحة 119» and «/shows/3/» under the site name. Off the index, links still followed; self-canonical stays. -#}
 {% if lp.pageNumber > 1 %}<meta name="robots" content="noindex, follow">{% else %}<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">{% endif %}
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">

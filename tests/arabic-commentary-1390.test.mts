@@ -23,13 +23,13 @@ test('the rule is read from the show itself: title, headline, program, address o
 });
 
 test('«مترجم» becomes «تعليق عربي»; a phrase that already names the commentary just loses the word', () => {
-  assert.equal(c.noSubtitleClaim('عرض الرو الأخير 16.11.2026 كامل مترجم — WWE RAW (تعليق للعربي)'), 'عرض الرو الأخير 16.11.2026 كامل بتعليق عربي — WWE RAW (تعليق للعربي)');
+  assert.equal(c.noSubtitleClaim('عرض الرو الأخير 16.11.2026 كامل مترجم — WWE RAW (تعليق للعربي)'), 'عرض الرو الأخير 16.11.2026 كامل بالتعليق العربي — WWE RAW (تعليق للعربي)');
   assert.equal(c.noSubtitleClaim('مشاهدة وتحميل عرض الرو 16.11.2026 مترجم بالعربي كامل أونلاين، من عروض المصارعة الحرة المترجمة.'),
-    'مشاهدة وتحميل عرض الرو 16.11.2026 بتعليق عربي كامل أونلاين، من عروض المصارعة الحرة بالتعليق العربي.');
+    'مشاهدة وتحميل عرض الرو 16.11.2026 بالتعليق العربي كامل أونلاين، من عروض المصارعة الحرة بالتعليق العربي.');
   assert.equal(c.noSubtitleClaim('WWE RAW (تعليق للعربي) كامل مترجم').trim(), 'WWE RAW (تعليق للعربي) كامل');
-  assert.equal(c.noSubtitleList('عرض الرو مترجم, WWE RAW (تعليق للعربي) مترجم, WWE RAW (تعليق للعربي), عرض الرو بتعليق عربي'), 'عرض الرو بتعليق عربي, WWE RAW (تعليق للعربي)');
-  const ld = c.noSubtitleJson({ '@type': 'VideoObject', name: 'عرض الرو كامل مترجم', alternateName: ['عرض الرو مترجم', 'عرض الرو بتعليق عربي'], publication: { '@type': 'BroadcastEvent', subtitleLanguage: 'ar' } });
-  assert.deepEqual(ld, { '@type': 'VideoObject', name: 'عرض الرو كامل بتعليق عربي', alternateName: ['عرض الرو بتعليق عربي'], publication: { '@type': 'BroadcastEvent' } });
+  assert.equal(c.noSubtitleList('عرض الرو مترجم, WWE RAW (تعليق للعربي) مترجم, WWE RAW (تعليق للعربي), عرض الرو بالتعليق العربي'), 'عرض الرو بالتعليق العربي, WWE RAW (تعليق للعربي)');
+  const ld = c.noSubtitleJson({ '@type': 'VideoObject', name: 'عرض الرو كامل مترجم', alternateName: ['عرض الرو مترجم', 'عرض الرو بالتعليق العربي'], publication: { '@type': 'BroadcastEvent', subtitleLanguage: 'ar' } });
+  assert.deepEqual(ld, { '@type': 'VideoObject', name: 'عرض الرو كامل بالتعليق العربي', alternateName: ['عرض الرو بالتعليق العربي'], publication: { '@type': 'BroadcastEvent' } });
   // an unmarked page is never touched
   const page = '<html><head><title>عرض الرو مترجم</title></head><body></body></html>';
   assert.equal(c.commentaryHead(page), page);
@@ -44,6 +44,35 @@ test('«عن العرض» says «بتعليق عربي» for an Arabic-commentar
   const plain = showAbout({ ...base, programName: 'WWE RAW' });
   assert.equal(plain.heading, 'عن عرض الرو 16.11.2026 كامل مترجم');
   assert.match(plain.paragraphs.join(' '), /مترجمًا إلى العربية كاملًا/);
+});
+
+// INCIDENTS #1393: an Arabic-commentary show is searched «عرض الرو بالتعليق العربي», «رو بالصوت العربي», «… 16.11.2026 بالتعليق العربي»
+test('the commentary search forms: each name with «بالتعليق العربي» / «بالصوت العربي», the intents, the dates, English', () => {
+  const names = ['عرض الرو', 'دبليو دبليو إي الرو', 'تحميل عرض الرو', 'عرض الرو مترجم', 'الرو', 'رو', 'راو', 'WWE RAW', 'عرض الرو 16.11.2026'];
+  const f = c.commentaryForms({ names, eventDate: '2026-11-16', programName: 'WWE RAW (تعليق للعربي)', isLatest: true });
+  for (const want of ['عرض الرو بالتعليق العربي', 'عرض الرو بالصوت العربي', 'عرض الرو تعليق عربي', 'عرض الرو معلق عربي', 'عرض الرو بالعربي',
+    'مشاهدة عرض الرو بالتعليق العربي', 'تحميل عرض الرو بالتعليق العربي', 'عرض الرو بالتعليق العربي كامل', 'عرض الرو بالتعليق العربي اون لاين',
+    'الرو بالتعليق العربي', 'رو بالصوت العربي', 'راو بالتعليق العربي', 'عرض الرو الأخير بالتعليق العربي',
+    'عرض الرو 16.11.2026 بالتعليق العربي', 'عرض الرو 16/11/2026 بالتعليق العربي', 'عرض الرو 16 نوفمبر 2026 بالتعليق العربي',
+    'WWE RAW November 16 2026 Arabic commentary', 'WWE RAW Arabic commentary']) assert.ok(f.includes(want), want);
+  assert.ok(f.every((x) => !/مترجم|تحميل تحميل|\(/.test(x)), f.join(' | '));
+  assert.ok(f.length <= 45, `no stuffing: ${f.length}`);
+  assert.equal(new Set(f).size, f.length);
+  assert.ok(!c.commentaryForms({ names, programName: 'WWE RAW', isLatest: false }).some((x) => /الأخير|الاخير|\d/.test(x)), 'a program page: no date, no «الأخير»');
+  assert.equal(c.englishProgram('WWE RAW (تعليق للعربي)'), 'WWE RAW');
+});
+
+test('the Google title and description of an Arabic-commentary show say «بالتعليق العربي» and «بالصوت العربي», short, one date', () => {
+  const { showSeoText } = require('../lib/show-seo.cjs');
+  const r = showSeoText({ headline: 'عرض الرو 16.11.2026 (تعليق عربي)', title: 'WWE RAW 16.11.2026 (تعليق عربي)', programName: 'WWE RAW (تعليق للعربي)', eventDate: '2026-11-16', day: '16 نوفمبر 2026', isLatest: true, description: 'عرض الرو (تعليق عربي) بالكامل مع جميع النزالات والأحداث.', commentary: true });
+  assert.equal(r.title, 'عرض الرو الأخير 16.11.2026 كامل بالتعليق العربي — WWE RAW');
+  assert.ok(r.title.length <= 75);
+  assert.match(r.description, /كامل بالتعليق العربي أونلاين/);
+  assert.match(r.description, /بالصوت العربي/);
+  assert.match(r.description, /WWE RAW November 16, 2026 Arabic commentary/);
+  assert.ok(!/مترجم|تعليق للعربي/.test(r.title + r.description), r.title + ' / ' + r.description);
+  const plain = showSeoText({ headline: 'عرض الرو 16.11.2026 مترجم', title: 'WWE RAW (16.11.2026)', programName: 'WWE RAW', eventDate: '2026-11-16', day: '16 نوفمبر 2026', isLatest: true, description: '' });
+  assert.match(plain.title, /كامل مترجم — WWE RAW$/);
 });
 
 // ── a real build of sample shows (the fast-lane render: only these pages and their English copies, ~10–40 s) ─────────
@@ -90,12 +119,17 @@ test('a built Arabic-commentary show and its program page have no «مترجم»
       assert.match(ar, /<meta name="arw-commentary" content="ar">/, slug);
       assert.ok(!ar.includes('مترجم'), `${slug}: «${(ar.match(/.{60}مترجم.{30}/) || [''])[0]}»`);
       assert.ok(!/subtitleLanguage/.test(ar), slug);
-      assert.match(ar, /<title>[^<]*تعليق عربي[^<]*<\/title>/, slug);
+      assert.match(ar, /<title>[^<]*تعليق (?:ال)?عربي[^<]*<\/title>/, slug);
+      // the search forms (INCIDENTS #1393): first in the keywords and alternate names, the audio in Arabic on the broadcast
+      assert.match(ar, /"keywords": ?"[^"]*بالتعليق العربي[^"]*بالصوت العربي/, slug);
+      assert.match(ar, /"alternateName": ?\["[^"\]]*بالتعليق العربي"/, slug);
+      assert.match(ar, /"@type": ?"BroadcastEvent"[^}]*"inLanguage": ?"ar"/, slug);
       assert.match(ar, /<h2 id="show-about-h">[^<]*بتعليق عربي/, slug);
       const en = own(built(slug, true));
       assert.ok(!en.includes('مترجم'), `${slug} (en): «${(en.match(/.{60}مترجم.{30}/) || [''])[0]}»`);
       assert.ok(!/subtitle|translated/i.test(en), `${slug} (en): «${(en.match(/.{60}(?:subtitle|translated).{30}/i) || [''])[0]}»`);
       assert.match(en, /Arabic commentary/, slug);
+      assert.match(en, /<title>[^<]*with Arabic Commentary[^<]*<\/title>/, slug);
     }
 
     const normal = built('zz-test-1350-normal.md');
@@ -112,9 +146,16 @@ test('a built Arabic-commentary show and its program page have no «مترجم»
     assert.match(lib, /<h1 class="hero-title"><bdi>عروض الرو بتعليق عربي<\/bdi><span class="u">عرض واحد<\/span><\/h1>/);
     assert.match(lib, /<p>شاهد أحدث عروض الرو بتعليق عربي، وتصفّح أرشيف/);
     assert.match(lib, /<h2 style="color:var\(--gold\);">عرض الرو الأخير بتعليق عربي<\/h2>/);
+    // its head (INCIDENTS #1393): «… بالتعليق العربي … بالصوت العربي», the search forms in its keywords
+    assert.match(lib, /<title>عروض الرو بالتعليق العربي \(عرض واحد\) — مشاهدة وتحميل WWE Test 1390 بالصوت العربي \| عرب راسلنج<\/title>/);
+    assert.match(lib, /<meta name="description" content="كل عروض الرو بالتعليق العربي[^"]*بالصوت العربي/);
+    assert.match(lib, /"keywords": ?"[^"]*الرو بالتعليق العربي/);
     const libEn = fs.readFileSync(path.join('_site', 'en', LIB), 'utf8');
     assert.ok(!/مترجم|subtitle|translated/i.test(libEn), `library (en): «${(libEn.match(/.{60}(?:مترجم|subtitle|translated).{30}/i) || [''])[0]}»`);
     assert.match(libEn, /shows with Arabic commentary/);
+    assert.match(libEn, /<title>WWE Test 1390 Shows with Arabic Commentary \| Arab Wrestling<\/title>/);
+    // the home page names these shows as a whole in its structured data, head only
+    assert.match(fs.readFileSync('_site/index.html', 'utf8'), /"عروض المصارعة بالتعليق العربي"/);
     const libNormal = fs.readFileSync(path.join('_site', LIB_NORMAL), 'utf8');
     assert.ok(!libNormal.includes('arw-commentary'));
     assert.match(libNormal, /<h1 class="hero-title"><bdi>عروض الرو مترجمة<\/bdi>/);

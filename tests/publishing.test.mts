@@ -3416,9 +3416,9 @@ test('source-folder addresses of shows, recaps and news redirect to their pages 
 
 test('program pages are in the sitemap and show pages get search-worded titles (INCIDENTS #275)', () => {
   assert.match(fs.readFileSync('pages/sitemap.njk', 'utf-8'), /for prog in collections\.library/);
-  assert.match(layoutSource(), /showSeo\(headline, title, program_name, event_date, page\.url, collections\.library, description\)/);
+  assert.match(layoutSource(), /showSeo\(headline, title, program_name, event_date, page\.url, collections\.library, description, arabicCommentary\)/);
   const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
-  assert.match(cfg, /showSeoText\(\{ headline, title, programName, eventDate, day, isLatest, description, aliases \}\)/);
+  assert.match(cfg, /showSeoText\(\{ headline, title, programName, eventDate, day, isLatest, description, aliases, commentary: !!commentary \}\)/);
   assert.match(fs.readFileSync('_redirects', 'utf-8'), /^\/raw\/\* \/library\/wwe-raw\/ 301!$/m);
 });
 

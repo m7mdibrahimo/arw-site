@@ -1546,7 +1546,8 @@ module.exports = function(eleventyConfig) {
         const HEAD_LIB_TITLES = { "njpw-special-events": "عروض ان جيه بي دبليو الخاصة مترجمة" };
         // …and a section named with a «~» subtitle («عروض ان جيه بي دبليو باور ستراجيل ~ سوبر جونيور تاج ليج مترجمة») is named
         // in the head by its program alone, without the tilde (INCIDENTS #1163)
-        const arHeadTitle = HEAD_LIB_TITLES[p.slug] || (/~/.test(arLibTitle) ? arLibTitle.replace(/\s*~[^]*?(?=\s+مترجمة$)/, "") : "");
+        // a program with Arabic commentary is searched «… بالتعليق العربي»: its head title says that (the H1 keeps «بتعليق عربي», INCIDENTS #1393)
+        const arHeadTitle = HEAD_LIB_TITLES[p.slug] || (/~/.test(arLibTitle) ? arLibTitle.replace(/\s*~[^]*?(?=\s+مترجمة$)/, "") : "") || (arabicCommentary && arLibTitle ? arLibTitle.replace(/ بتعليق عربي$/, " بالتعليق العربي") : "");
         // Other spellings people search with (INCIDENTS #275)
         const ALIASES = {
           "wwe-raw": ["دبليو دبليو إي راو", "دبليو دبليو اي رو", "رو", "الرو", "راو", "عرض رو", "الرو الاخير", "الرو مترجم", "WWE Raw", "WWE RAW مترجم", "Monday Night Raw", "raw مترجم", "wwe مترجم", "مصارعة حرة مترجم", "عرض الرو الاخير مترجم نتفلكس", "WWE RAW Netflix", "الرو نتفلكس", "عرض الرو الاخير مترجم عربي", "عرض الرو الاخير كامل ومترجم", "عرض الرو الأخير مترجم كامل", "عرض رو الاخير مترجم", "عرض رو مترجم", "عرض الرو مترجم"],
@@ -1907,7 +1908,7 @@ module.exports = function(eleventyConfig) {
     if (!isLatest || !t || /الأخير|الاخير/.test(t)) return t;
     return /\sمترجم$/.test(t) ? t.replace(/\s(مترجم)$/, " الأخير $1") : t;
   });
-  eleventyConfig.addNunjucksGlobal("showSeo", function(headline, title, programName, eventDate, url, library, description) {
+  eleventyConfig.addNunjucksGlobal("showSeo", function(headline, title, programName, eventDate, url, library, description, commentary) {
     const day = eventDate ? formatDate(eventDate) : "";
     const isLatest = (library || []).some(p => p.latest && p.latest.url === url);
     const owner = (library || []).find(p => (p.shows || []).some(s => s.url === url));
@@ -1915,8 +1916,14 @@ module.exports = function(eleventyConfig) {
     // Nostalgia episodes carry an Arabic series name as program_name: the English name is the front-matter title without its year («WWE Money in the Bank (2010)»), INCIDENTS #495.
     if (String(url || "").startsWith("/nostalgia/") && /^[A-Za-z]/.test(String(title || ""))) programName = String(title).replace(/\s*\(\s*\d{4}\s*\)\s*$/, "").replace(/\s*\d{1,2}[.\/-]\d{1,2}[.\/-]\d{4}\s*$/, "").trim();
     // The dotted date people search with («عرض الرو 05.10.2026 مترجم») joins the title (INCIDENTS #296).
-    return require("./lib/show-seo.cjs").showSeoText({ headline, title, programName, eventDate, day, isLatest, description, aliases });
+    return require("./lib/show-seo.cjs").showSeoText({ headline, title, programName, eventDate, day, isLatest, description, aliases, commentary: !!commentary });
   });
+  // An Arabic-commentary show's / program's search forms («عرض الرو بالتعليق العربي», «رو بالصوت العربي»…) before its own names (INCIDENTS #1393)
+  eleventyConfig.addNunjucksGlobal("withCommentaryForms", (names, eventDate, programName, isLatest) =>
+    require("./lib/arabic-commentary.cjs").withCommentaryForms(Array.isArray(names) ? names : [], { eventDate: eventDate ? new Date(eventDate).toISOString().slice(0, 10) : "", programName, isLatest: !!isLatest }));
+  eleventyConfig.addFilter("englishProgram", (name) => require("./lib/arabic-commentary.cjs").englishProgram(name) || String(name || ""));
+  // the programs with Arabic commentary (of one federation): the home and federation pages name them in their structured data
+  eleventyConfig.addFilter("commentaryPrograms", (library, fed) => (library || []).filter((p) => p.arabicCommentary && (!fed || String(p.federation || "").toUpperCase() === String(fed).toUpperCase())));
 
   // A show's structured-data keywords: its tags, then up to `max` of its search names, each once. The tags and the
   // program's names overlap («داينامايت», «AEW Dynamite» twice) and the repeats used the slots of the episode's own
@@ -1996,7 +2003,9 @@ module.exports = function(eleventyConfig) {
   });
   // The ways visitors write a program's library page, for its structured data only (INCIDENTS #503)
   eleventyConfig.addNunjucksGlobal("libraryNameForms", function(prog, year) {
-    return require("./lib/show-seo.cjs").libraryNameForms({ arName: prog && prog.arName, name: prog && prog.name, aliases: (prog && prog.aliases) || [], year, count: (prog && prog.count) || 0, latest: prog && prog.latest && prog.latest.eventDate });
+    const forms = require("./lib/show-seo.cjs").libraryNameForms({ arName: prog && prog.arName, name: prog && prog.name, aliases: (prog && prog.aliases) || [], year, count: (prog && prog.count) || 0, latest: prog && prog.latest && prog.latest.eventDate });
+    // a program with Arabic commentary: «الرو بالتعليق العربي», «رو بالصوت العربي», «WWE RAW Arabic commentary» first (INCIDENTS #1393)
+    return prog && prog.arabicCommentary ? require("./lib/arabic-commentary.cjs").withCommentaryForms([prog.arSearchName, prog.arName].concat(prog.aliases || [], forms).filter(Boolean), { programName: prog.name }).filter((n) => n !== prog.arSearchName && n !== prog.arName) : forms;
   });
 
   eleventyConfig.addNunjucksGlobal("recapSeo", function(headline, title, programName, eventDate, description, library) {
@@ -2023,7 +2032,7 @@ module.exports = function(eleventyConfig) {
   let resultsIndex = null, resultsFor = null;
   // A show with Arabic commentary («تعليق عربي») is never «مترجم» (owner 2026-11-18, lib/arabic-commentary.cjs, INCIDENTS #1390)
   // a slider badge («حصري ومترجم») on a pinned Arabic-commentary show says «حصري بتعليق عربي»
-  eleventyConfig.addFilter("commentaryWords", (text, ...about) => { const c = require("./lib/arabic-commentary.cjs"); return c.isArabicCommentary(...about) ? c.noSubtitleClaim(text) : text; });
+  eleventyConfig.addFilter("commentaryWords", (text, ...about) => { const c = require("./lib/arabic-commentary.cjs"); return c.isArabicCommentary(...about) ? (String(text || "").trim() === "حصري ومترجم" ? "حصري بتعليق عربي" : c.noSubtitleClaim(text)) : text; });
   eleventyConfig.addNunjucksGlobal("isArabicCommentaryShow", (data) => require("./lib/arabic-commentary.cjs").isArabicCommentaryShow(data || {}));
   eleventyConfig.addNunjucksGlobal("showAboutFor", function(headline, title, programName, eventDate, duration, servers, dlGroups, federation, description, news, commentary) {
     const { showNameParts } = require("./lib/show-seo.cjs");
