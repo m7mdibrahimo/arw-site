@@ -5,7 +5,7 @@ title: CMLL Revolucion de Campeones 16.11.2026
 headline: عرض سي ام ال ال ريفولوسيون دي كامبيونيس 16.11.2026 مترجم
 program_name: CMLL Lunes Clasico
 library_federation: cmll
-description: عرض سي ام ال ال دومينغو فاميليار مترجم بالكامل مع جميع النزالات والأحداث.
+description: عرض سي ام ال ال ريفولوسيون دي كامبيونيس مترجم بالكامل مع جميع النزالات والأحداث.
 event_date: 2026-11-16
 date: 2026-11-18T11:21:53.000+02:00
 duration: 02:04:30
@@ -31,5 +31,5 @@ downloads_medium: |-
   https://vidmoly.me/v/3pk4k4x6xbcq
 layout: post-layout.njk
 created_at: 2026-11-18T09:26:20.279Z
-edited_at: 2026-11-18T09:28:02.417Z
+edited_at: 2026-11-18T09:28:12.199Z
 ---
