@@ -1,5 +1,25 @@
 [
   {
+    "id": 3530438265,
+    "link": "https://www.wrestlinginc.com/2320150/aew-dynamite-november-18-2026-results/",
+    "date": "Wed, 18 Nov 2026 22:00:00 +0000",
+    "date_gmt": "2026-11-18T22:00:00.000Z",
+    "title": {
+      "rendered": "AEW Dynamite Results 11/18/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-results-111826-w-live-updates/l-intro-1794974543.jpg"
+  },
+  {
+    "id": 4279888093,
+    "link": "https://www.wrestlinginc.com/2321226/wwe-cm-punk-bayley-drove-across-country-nxt-live-event/",
+    "date": "Wed, 18 Nov 2026 21:55:11 +0000",
+    "date_gmt": "2026-11-18T21:55:11.000Z",
+    "title": {
+      "rendered": "WWE Stars CM Punk And Bayley Reportedly Drove Across The Country For NXT Live Event"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-stars-cm-punk-and-bayley-reportedly-drove-across-the-country-for-nxt-live-event/l-intro-1795038852.jpg"
+  },
+  {
     "id": 4655821535,
     "link": "https://www.wrestlinginc.com/2321160/kenny-omega-njpw-aew-iwgp-heavyweight-title-prioritize/",
     "date": "Wed, 18 Nov 2026 21:19:04 +0000",
@@ -178,25 +198,5 @@
       "rendered": "More NXT Stars Added To WWE John Cena Classic"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/more-nxt-stars-added-to-wwe-john-cena-classic/l-intro-1794970051.jpg"
-  },
-  {
-    "id": 2067996421,
-    "link": "https://www.wrestlinginc.com/2320134/njpw-signs-grandson-wwe-hofer-antonio-inoki/",
-    "date": "Wed, 18 Nov 2026 02:42:15 +0000",
-    "date_gmt": "2026-11-18T02:42:15.000Z",
-    "title": {
-      "rendered": "NJPW Signs Grandson Of WWE HOFer Antonio Inoki"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/njpw-signs-grandson-of-wwe-hofer-antonio-inoki/l-intro-1794969647.jpg"
-  },
-  {
-    "id": 3083311195,
-    "link": "https://www.wrestlinginc.com/2320128/izzi-dame-finally-requests-wwe-nxt-womens-na-title-match/",
-    "date": "Wed, 18 Nov 2026 02:07:44 +0000",
-    "date_gmt": "2026-11-18T02:07:44.000Z",
-    "title": {
-      "rendered": "Izzi Dame Finally Requests WWE NXT Women's NA Title Match"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/izzi-dame-finally-requests-wwe-nxt-womens-na-title-match/l-intro-1794967585.jpg"
   }
 ]
