@@ -7,52 +7,52 @@
  "https://www.fightful.com/wrestling/wwe-smackdown-11-13-viewership-drops-remains-above-1-1-million-viewers": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T12:33:21.596Z"
+  "at": "2026-11-18T12:36:33.510Z"
  },
  "https://www.fightful.com/wrestling/myka-lockwood-to-be-sole-woman-in-eight-person-tag-bout-womens-north-american-title-match-set-for-11-24-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T12:33:21.150Z"
+  "at": "2026-11-18T12:36:32.856Z"
  },
  "https://www.fightful.com/wrestling/shiloh-hill-izzi-dame-joins-wwe-john-cena-classic-field": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T12:33:20.703Z"
+  "at": "2026-11-18T12:36:32.190Z"
  },
  "https://www.fightful.com/wrestling/ash-by-elegance-announces-pregnancy-opens-up-about-health-issues-provides-update-on-tna-contract": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T12:33:20.462Z"
+  "at": "2026-11-18T12:36:31.835Z"
  },
  "https://www.fightful.com/wrestling/anthony-bowens-expected-to-remain-with-aew": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T12:33:20.215Z"
+  "at": "2026-11-18T12:36:31.485Z"
  },
  "https://www.fightful.com/wrestling/continental-classic-matches-tbs-title-four-way-announced-for-11-18-aew-dynamite": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T12:33:19.974Z"
+  "at": "2026-11-18T12:36:31.134Z"
  },
  "https://www.fightful.com/wrestling/wrestling-world-reacts-to-passing-of-cowboy-bill-watts": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T12:33:19.732Z"
+  "at": "2026-11-18T12:36:30.773Z"
  },
  "https://www.fightful.com/wrestling/ryzin-details-decision-to-retire-in-2027-says-he-was-overwhelmed-by-the-reaction-to-his-initial-announcement": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T12:33:19.009Z"
+  "at": "2026-11-18T12:36:29.725Z"
  },
  "https://www.fightful.com/wrestling/alyssa-daniele-reveals-she-suffered-a-shoulder-dislocation-that-requires-surgery": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T12:33:18.768Z"
+  "at": "2026-11-18T12:36:29.377Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-11-9-scores-2-4-million-global-views-on-netflix": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-18T12:33:18.457Z"
+  "at": "2026-11-18T12:36:28.932Z"
  },
  "https://www.fightful.com/wrestling/elayna-black-the-best-advice-cm-punk-gave-me-was-to-not-give-a-fuck": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1993,5 @@
   "reason": "المراجعة رفضته: حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)",
   "retry": false,
   "at": "2026-11-09T17:45:59.555Z"
- },
- "https://www.fightful.com/wrestling/donovan-dijak-announces-hes-finished-up-with-mlw": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": true,
-  "at": "2026-11-09T17:43:47.056Z"
  }
 }
