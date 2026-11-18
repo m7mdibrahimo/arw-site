@@ -5468,17 +5468,16 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال دومينغو فاميليار 15.11.2026 مترجم",
-    "lastAttempt": 1795039254969,
+    "lastAttempt": 1795040101946,
     "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_story",
-      "tiktok"
+      "instagram_story"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261118112619-cmll-revolucion-de-campeones-16-11-2026": {
     "publishedAt": 1795037576136,
@@ -5487,9 +5486,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال ريفولوسيون دي كامبيونيس 16.11.2026 مترجم",
-    "lastAttempt": 1795037590701,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1795040104409,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
