@@ -1,8 +1,63 @@
 {
+ "https://www.fightful.com/wrestling/myka-lockwood-to-be-sole-woman-in-eight-person-tag-bout-womens-north-american-title-match-set-for-11-24-wwe-nxt": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T03:43:06.067Z"
+ },
+ "https://www.fightful.com/wrestling/shiloh-hill-izzi-dame-joins-wwe-john-cena-classic-field": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T03:43:05.506Z"
+ },
+ "https://www.fightful.com/wrestling/ash-by-elegance-announces-pregnancy-opens-up-about-health-issues-provides-update-on-tna-contract": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T03:43:05.208Z"
+ },
+ "https://www.fightful.com/wrestling/anthony-bowens-expected-to-remain-with-aew": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T03:43:04.909Z"
+ },
+ "https://www.fightful.com/wrestling/continental-classic-matches-tbs-title-four-way-announced-for-11-18-aew-dynamite": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T03:43:04.611Z"
+ },
+ "https://www.fightful.com/wrestling/wrestling-world-reacts-to-passing-of-cowboy-bill-watts": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T03:43:04.311Z"
+ },
+ "https://www.fightful.com/wrestling/ryzin-details-decision-to-retire-in-2027-says-he-was-overwhelmed-by-the-reaction-to-his-initial-announcement": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T03:43:03.405Z"
+ },
+ "https://www.fightful.com/wrestling/alyssa-daniele-reveals-she-suffered-a-shoulder-dislocation-that-requires-surgery": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T03:43:03.106Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-raw-11-9-scores-2-4-million-global-views-on-netflix": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T03:43:02.720Z"
+ },
+ "https://www.fightful.com/wrestling/elayna-black-the-best-advice-cm-punk-gave-me-was-to-not-give-a-fuck": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-18T03:43:01.988Z"
+ },
  "https://www.wrestlinginc.com/2316716/former-co-president-george-barrios-details-exit-wwe": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-18T03:40:46.333Z"
+ },
+ "https://www.ringsidenews.com/bronson-reed-finally-back-home-surgery-following-wwe-crown-jewel-injury": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Dave Meltzer، المصدر بيتكلم عن Bryan Alvarez (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
+  "retry": true,
+  "at": "2026-11-18T03:34:27.791Z"
  },
  "https://www.wrestlinginc.com/2320027/bully-ray-perfect-wwe-remaining-spots-fifth-team-usa-mexico-survivor-series": {
   "reason": "المراجعة رفضته: صيغة مثنى (مجنونان/مستعدان/قضياه/أمضيا…) ممنوعة — اجمع («مجانين»، «قضوها») أو أعد صياغة الجملة («الوقت الذي قضته معه»)، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل مثنى («سيكونان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
@@ -13,61 +68,6 @@
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
   "retry": false,
   "at": "2026-11-18T03:27:50.755Z"
- },
- "https://www.fightful.com/wrestling/myka-lockwood-to-be-sole-woman-in-eight-person-tag-bout-womens-north-american-title-match-set-for-11-24-wwe-nxt": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T03:39:10.387Z"
- },
- "https://www.fightful.com/wrestling/shiloh-hill-izzi-dame-joins-wwe-john-cena-classic-field": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T03:39:09.809Z"
- },
- "https://www.fightful.com/wrestling/ash-by-elegance-announces-pregnancy-opens-up-about-health-issues-provides-update-on-tna-contract": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T03:39:09.509Z"
- },
- "https://www.fightful.com/wrestling/anthony-bowens-expected-to-remain-with-aew": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T03:39:09.206Z"
- },
- "https://www.fightful.com/wrestling/continental-classic-matches-tbs-title-four-way-announced-for-11-18-aew-dynamite": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T03:39:08.892Z"
- },
- "https://www.fightful.com/wrestling/wrestling-world-reacts-to-passing-of-cowboy-bill-watts": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T03:39:08.592Z"
- },
- "https://www.fightful.com/wrestling/ryzin-details-decision-to-retire-in-2027-says-he-was-overwhelmed-by-the-reaction-to-his-initial-announcement": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T03:39:07.682Z"
- },
- "https://www.fightful.com/wrestling/alyssa-daniele-reveals-she-suffered-a-shoulder-dislocation-that-requires-surgery": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T03:39:07.381Z"
- },
- "https://www.fightful.com/wrestling/wwe-raw-11-9-scores-2-4-million-global-views-on-netflix": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T03:39:06.991Z"
- },
- "https://www.fightful.com/wrestling/elayna-black-the-best-advice-cm-punk-gave-me-was-to-not-give-a-fuck": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T03:39:06.255Z"
- },
- "https://www.ringsidenews.com/bronson-reed-finally-back-home-surgery-following-wwe-crown-jewel-injury": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Dave Meltzer، المصدر بيتكلم عن Bryan Alvarez (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
-  "retry": true,
-  "at": "2026-11-18T03:34:27.791Z"
  },
  "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-november-17-2026": {
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
