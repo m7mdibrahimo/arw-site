@@ -39,11 +39,6 @@
   "retry": false,
   "at": "2026-11-18T21:02:23.295Z"
  },
- "https://www.ringsidenews.com/mick-foley-reveals-craziest-item-fan-ever-asked-him-sign": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Legends contract",
-  "retry": true,
-  "at": "2026-11-18T20:56:34.205Z"
- },
  "https://www.ringsidenews.com/erik-watts-breaks-silence-father-cowboy-bill-watts-death-heartbreaking-statement": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
