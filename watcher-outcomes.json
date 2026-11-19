@@ -44,11 +44,6 @@
   "retry": false,
   "at": "2026-11-19T18:51:31.660Z"
  },
- "https://www.wrestlinginc.com/2322076/dave-meltzer-clarifies-rock-wwe-survivor-series-participation": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-19T18:48:59.291Z"
- },
  "https://www.fightful.com/wrestling/rj-city-has-an-aew-bio-still-doesnt-have-a-graphic": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
