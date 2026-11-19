@@ -49,11 +49,6 @@
   "retry": false,
   "at": "2026-11-19T13:13:04.828Z"
  },
- "https://www.ringsidenews.com/titus-oneil-forced-drive-his-own-uber-25-hours-driver-started-falling-asleep": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-19T12:57:33.282Z"
- },
  "https://www.ringsidenews.com/santos-escobar-allegedly-refusing-return-500-deposit-canceled-big-event-ny-appearance": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
