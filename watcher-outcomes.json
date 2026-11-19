@@ -1,33 +1,33 @@
 {
  "https://www.fightful.com/wrestling/rj-city-has-an-aew-bio-still-doesnt-have-a-graphic": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-19T18:11:06.726Z"
+  "at": "2026-11-19T18:20:56.596Z"
+ },
+ "https://www.fightful.com/wrestling/tna-impact-spoilers-from-calgary-taped-on-11-18": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T18:17:16.230Z"
+ },
+ "https://www.fightful.com/wrestling/titus-oneil-tells-story-of-taking-over-uber-driving-himself-to-destination": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-19T18:17:15.839Z"
+ },
+ "https://www.fightful.com/wrestling/njpw-tanahashi-jam-2-results-11-19": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T18:13:23.536Z"
+ },
+ "https://www.fightful.com/wrestling/hechicero-challenges-zack-sabre-jr-for-wrestle-kingdom-21": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T18:13:22.617Z"
  },
  "https://www.fightful.com/wrestling/list-of-pro-wrestling-moves-added-to-gta-6": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-19T18:09:32.742Z"
- },
- "https://www.fightful.com/wrestling/tna-impact-spoilers-from-calgary-taped-on-11-18": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-19T18:02:21.560Z"
- },
- "https://www.fightful.com/wrestling/titus-oneil-tells-story-of-taking-over-uber-driving-himself-to-destination": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-19T18:02:21.156Z"
- },
- "https://www.fightful.com/wrestling/njpw-tanahashi-jam-2-results-11-19": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-19T18:00:55.797Z"
- },
- "https://www.fightful.com/wrestling/hechicero-challenges-zack-sabre-jr-for-wrestle-kingdom-21": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-19T18:00:54.848Z"
  },
  "https://www.fightful.com/uncategorized/rj-city-has-an-aew-bio-still-doesnt-have-a-graphic": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
