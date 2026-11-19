@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2321518/wwe-crown-jewel-2026-chelsea-green-favorite-crowds": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-19T15:47:55.203Z"
+ },
  "https://www.fightful.com/wrestling/undertaker-still-encounters-people-that-ask-him-if-he-is-actually-related-to-kane": {
   "reason": "المراجعة رفضته: فعل مثنى بعد «اثنين من…» («اثنين من النجوم عرضا») ممنوع — اجمع الفعل: «اثنين من النجوم عرضوا السفر…»",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-10T21:52:48.535Z"
- },
- "https://www.ringsidenews.com/bronson-reeds-injury-considered-fairly-serious-saudi-arabia-hospital-stay-continues": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": true,
-  "at": "2026-11-10T21:39:58.868Z"
  }
 }
