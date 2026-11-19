@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/details-on-feature-film-about-nattie-neidharts-book-life-story": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T19:19:07.558Z"
+ },
  "https://www.fightful.com/wrestling/the-rocks-wwe-return-announcement-surprised-many-people-at-wwe-hq": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T19:13:20.443Z"
+  "at": "2026-11-19T19:19:07.058Z"
  },
  "https://www.fightful.com/wrestling/jeff-hardy-im-manifesting-a-feud-with-cm-punk": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T19:13:20.243Z"
+  "at": "2026-11-19T19:19:06.907Z"
  },
  "https://www.fightful.com/wrestling/report-anthem-considering-cutting-back-on-number-of-tna-ppvs-for-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T19:13:19.931Z"
+  "at": "2026-11-19T19:19:06.671Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-spoilers-from-calgary-taped-on-11-18": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T19:13:19.168Z"
+  "at": "2026-11-19T19:19:06.094Z"
+ },
+ "https://www.fightful.com/wrestling/njpw-tanahashi-jam-2-results-11-19": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T19:15:31.445Z"
  },
  "https://www.fightful.com/wrestling/titus-oneil-tells-story-of-taking-over-uber-driving-himself-to-destination": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-19T19:13:18.776Z"
- },
- "https://www.fightful.com/wrestling/njpw-tanahashi-jam-2-results-11-19": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-19T19:12:57.511Z"
  },
  "https://www.fightful.com/wrestling/wwe-looking-to-feature-perros-del-mal-more-prominently-on-mainstream-programming-in-the-coming-years": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
