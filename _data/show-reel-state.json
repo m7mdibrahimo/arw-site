@@ -5590,7 +5590,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261119180600-wwe-main-event-18-11-2026": {
     "publishedAt": 1795105646970,
