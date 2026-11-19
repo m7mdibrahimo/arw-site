@@ -14,6 +14,6 @@ en_tags:
   - "WrestleVotes"
 image: /content/images/u6sd4wu6reu9y9a5.jpg
 ---
-Several individuals within TKO Group Holdings are reportedly against the idea of Cody Rhodes turning heel. During an episode of WrestleVotes Radio on Fightful Select, it was revealed that key figures in TKO strongly oppose a heel turn for Rhodes, regardless of any potential storyline directions. Meanwhile, Rhodes is preparing to co-lead Team USA at WWE Survivor Series: WarGames in a traditional five-on-one match against Team Mexico.
+Several individuals within TKO Group Holdings are reportedly against the idea of Cody Rhodes turning heel. During an episode of WrestleVotes Radio on Fightful Select, it was revealed that key figures in TKO strongly oppose a heel turn for Rhodes, regardless of any potential storyline directions. Meanwhile, Rhodes is preparing to co-lead Team USA at WWE Survivor Series: WarGames in a traditional five-on-five match against Team Mexico.
 
 https://x.com/Fightful/status/2123480390077693987
