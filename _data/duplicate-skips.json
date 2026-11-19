@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/chris-jericho-talks-playing-gorgeous-george-in-the-greatest-says-he-watched-one-of-his-old-movies-to-prep-for-the-role/": {
-    "matchedFile": "20261104222414-كريس-جيريكو-يظهر-بشخصية-جورجوس-جورج-في-مسلسل-the-greatest.md",
-    "reason": "الخبر الجديد يغطي نفس الحدث (مشاركة كريس جيريكو في مسلسل The Greatest وتجسيده لشخصية جورجيوس جورج) مع إضافة تصريحات تفصيلية حول التحضير للدور، وهو ما يندرج تحت بند 'صاحب الواقعة يحكي في مقابلة إزاي عملها' والذي يعتبر في سياق تعليماتك تكراراً للحدث الأساسي المنشور مسبقاً.",
-    "at": "2026-11-05T17:25:04.799Z"
-  },
   "https://www.wrestlinginc.com/2308070/aew-blood-guts-mick-foley-megan-bayne-career-defining-performance/": {
     "matchedFile": "20261105143417-ميك-فولي-ينحني-احتراما-لميجان-باين-بعد-عرض-aew-blood-guts.md",
     "reason": "الخبر الجديد يعيد سرد نفس تصريح ميك فولي وتفاعله مع أداء ميجان باين في نزال Blood and Guts الذي تم تغطيته بالفعل في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261117060831-الإعلان-عن-المشاركين-في-بطولة-aew-continental-classic-لعام-2026.md",
     "reason": "الخبر الجديد يعيد سرد تفاصيل انطلاق البطولة وقواعدها والمشاركين فيها، وهي معلومات تم تغطيتها بالفعل في الأخبار المنشورة مسبقاً.",
     "at": "2026-11-19T02:57:56.725Z"
+  },
+  "https://www.ringsidenews.com/mjf-challenges-will-ospreay-title-vs-title-match-aew-worlds-end/": {
+    "matchedFile": "20261119052334-ام-جيه-اف-يتحدى-ويل-أوسبراي-في-نزال-على-نسختي-البطولة-ضمن-عرض-aew-worlds-end.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث (تحدي ام جيه اف لويل أوسبراي في عرض AEW Worlds End) الذي تم نشره بالفعل في الخبر رقم 0، ولا يحتوي على أي تطورات جديدة أو تفاصيل إضافية جوهرية.",
+    "at": "2026-11-19T03:25:25.027Z"
   }
 }
