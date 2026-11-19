@@ -18,7 +18,7 @@ WWE President Nick Khan recently praised Oba Femi, calling him the company's "ne
 
 Khan explained how Femi was discovered, noting that he was a shot putter at the University of Alabama when he caught the attention of The Undertaker. Khan highlighted Femi's rapid development, noting that despite not having an American football background, he possessed raw athletic skills that transitioned well into wrestling. Khan expressed his confidence in Femi's potential, stating:
 
-> "So one of our big superstars now is a wrestler named Oba Femi. He was a shot putter at the University of Alabama five years ago, and when Undertaker went to go speak to them, saw a big athlete, strong athlete. Grew up in Nigeria before he came to the United States so didn’t play American football as a kid. DIdn’t sort of develop that skillset, but had that raw, athletic skillset that could easily translate over to WWE. He’s sort of our next big thing, if you will, and again, there’s never been a wrestler who’s looked or felt like him."
+> "So one of our big superstars now is a wrestler named Oba Femi. He was a shot putter at the University of Alabama five years ago, and when Undertaker went to go speak to them, saw a big athlete, strong athlete. Grew up in Nigeria before he came to the United States so didn’t play American football as a kid. Didn’t sort of develop that skillset, but had that raw, athletic skillset that could easily translate over to WWE. He’s sort of our next big thing, if you will, and again, there’s never been a wrestler who’s looked or felt like him."
 
 Oba Femi is currently the King of the Ring. He made an appearance on the November 16 episode of WWE RAW.
 

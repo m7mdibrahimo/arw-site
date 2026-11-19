@@ -14,6 +14,6 @@ en_tags:
   - "All Elite Wrestling"
 image: /content/images/lz66p26hg3qducdn.jpg
 ---
-A celebration of life was held to honor the life and career of late wrestler and musician Andy Williams, known as The Butcher, who passed away in September 2026. Colleagues from All Elite Wrestling, where he was formerly under contract, attended the event. The gathering was streamed live on his YouTube channel to pay tribute to his journeys in professional wrestling and the music industry.
+A celebration of life was held to honor the life and career of late wrestler and musician Andy Williams, known as The Butcher, who passed away in September 2026. Colleagues from All Elite Wrestling, where he was formerly under contract, attended the event. The gathering was streamed live on his YouTube channel to pay tribute to his career in professional wrestling and music.
 
 https://www.youtube.com/watch?v=gTAkGDqY9x0
