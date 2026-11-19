@@ -678,7 +678,12 @@ export function sanitizeWrestlingTerms(text: string): string {
     // «استعرض عرض TNA iMPACT» is a verb then the show and stays as written.
     .replace(/(?<![\u0621-\u064A])([وفبل]?)عرض(?:\s+عرض)+(?![\u0621-\u064A])/g, "$1عرض")
 
+    // Doubled quote marks «««…»»» left when a quote is wrapped twice (INCIDENTS #1429)
+    .replace(/««([^«»]*(?:«[^«»]*»[^«»]*)*)»»/g, "«$1»")
+
     // 4. Total Scrub of Fightful & foreign journalist branding to keep all news 100% clean and neutral
+    // He is the other side of a feud, not a report — «يرد بعنف على تقارير صحفية مطلعة» (INCIDENTS #1429)
+    .replace(/(?<![\u0621-\u064A])(على|ضد|يهاجم|هاجم|ينتقد|انتقد|يرد على|رد على)\s+(?:الصحفي\s+)?(?:Sean\s*Ross\s*Sapp|شون\s*روس\s*ساب)/gi, "$1 صحفي")
     .replace(/Sean\s*Ross\s*Sapp/gi, "تقارير صحفية مطلعة")
     .replace(/Sean\s*Ross/gi, "تقارير صحفية")
     .replace(arWord("شون\\s*روس\\s*ساب"), "تقارير صحفية مطلعة")
