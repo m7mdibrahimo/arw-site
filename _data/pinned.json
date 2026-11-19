@@ -130,27 +130,5 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض ار او اتش اون اونر كلوب مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-main-event-11-11-2026/",
-    "title": "عرض مين ايفنت 11.11.2026 مترجم",
-    "subtitle": "WWE Main Event 11.11.2026",
-    "image": "/content/images/clnszlfq35on7twy.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض مين ايفنت مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-evolve-11-11-2026/",
-    "title": "عرض ايفولف 11.11.2026 مترجم",
-    "subtitle": "WWE Evolve 11.11.2026",
-    "image": "/content/images/v7oywhs0aff5c15i.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ايفولف مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
