@@ -2,6 +2,11 @@
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
   {
+   "wrong": "بينهماد",
+   "right": "بينهم",
+   "note": "حرف زيادة في آخر «بينهما» (والمثنى ممنوع فبقت «بينهم») («المواجهة الكلامية التي حدثت بينهماد») وصل لخبر (round 2026-11-19)"
+  },
+  {
    "wrong": "(?<!(?:مالاكي|جاكوب|جيكوب) )فريدمان",
    "right": "ام جيه اف",
    "regex": true,
