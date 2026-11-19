@@ -5552,7 +5552,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 17.11.2026 مترجم",
-    "lastAttempt": 1795056760969,
+    "lastAttempt": 1795057607537,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "tiktok": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة."
@@ -5573,9 +5573,15 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض تي ان ايه اكسبلوجن 13.11.2026 مترجم",
-    "lastAttempt": 1795056161248,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1795057637710,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_reel",
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
