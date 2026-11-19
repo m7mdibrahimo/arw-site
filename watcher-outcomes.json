@@ -1,38 +1,43 @@
 {
+ "https://www.fightful.com/wrestling/rj-city-has-an-aew-bio-still-doesnt-have-a-graphic": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-19T18:11:06.726Z"
+ },
+ "https://www.fightful.com/wrestling/list-of-pro-wrestling-moves-added-to-gta-6": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-19T18:09:32.742Z"
+ },
+ "https://www.fightful.com/wrestling/tna-impact-spoilers-from-calgary-taped-on-11-18": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T18:02:21.560Z"
+ },
+ "https://www.fightful.com/wrestling/titus-oneil-tells-story-of-taking-over-uber-driving-himself-to-destination": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-19T18:02:21.156Z"
+ },
+ "https://www.fightful.com/wrestling/njpw-tanahashi-jam-2-results-11-19": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T18:00:55.797Z"
+ },
+ "https://www.fightful.com/wrestling/hechicero-challenges-zack-sabre-jr-for-wrestle-kingdom-21": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T18:00:54.848Z"
+ },
  "https://www.fightful.com/uncategorized/rj-city-has-an-aew-bio-still-doesnt-have-a-graphic": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-19T17:58:34.490Z"
  },
- "https://www.fightful.com/wrestling/list-of-pro-wrestling-moves-added-to-gta-6": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-19T17:56:25.781Z"
- },
  "https://www.fightful.com/wrestling/sheamus-proves-he-has-zero-ring-rust-despite-being-out-of-action-for-a-year": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-19T17:53:24.210Z"
- },
- "https://www.fightful.com/wrestling/tna-impact-spoilers-from-calgary-taped-on-11-18": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-19T17:51:07.943Z"
- },
- "https://www.fightful.com/wrestling/titus-oneil-tells-story-of-taking-over-uber-driving-himself-to-destination": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-19T17:51:07.497Z"
- },
- "https://www.fightful.com/wrestling/njpw-tanahashi-jam-2-results-11-19": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-19T17:50:45.871Z"
- },
- "https://www.fightful.com/wrestling/hechicero-challenges-zack-sabre-jr-for-wrestle-kingdom-21": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-19T17:50:44.809Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
   "retry": true,
   "at": "2026-11-11T02:06:45.556Z"
- },
- "https://www.fightful.com/wrestling/becky-lynch-liv-morgan-is-best-known-for-not-doing-anything-and-i-think-that-sums-her-up": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-11T01:58:11.963Z"
  }
 }
