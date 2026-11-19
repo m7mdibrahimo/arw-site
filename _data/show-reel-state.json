@@ -5549,24 +5549,22 @@
     "publishedAt": 1795055903095,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 17.11.2026 مترجم",
-    "lastAttempt": 1795056090179,
+    "lastAttempt": 1795056760969,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "tiktok": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
     "reviewPlatforms": [
       "tiktok"
     ],
     "needsReview": true,
-    "reviewNotified": false
+    "reviewNotified": true
   },
   "20261119041658-tna-xplosion-13-11-2026": {
     "publishedAt": 1795056145811,
