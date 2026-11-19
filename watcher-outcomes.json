@@ -42,12 +42,7 @@
  "https://www.wrestlinginc.com/2322560/speedball-mike-bailey-continental-classic-loss-nick-wayne-aew-dynamite": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-19T23:37:34.991Z"
- },
- "https://www.wrestlinginc.com/2321436/tna-thursday-night-impact-november-19-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-19T23:35:11.391Z"
+  "at": "2026-11-19T23:41:07.043Z"
  },
  "https://www.ringsidenews.com/jeff-hardy-issues-emotional-apology-past-drunk-driving-admits-he-could-have-killed-someone": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
@@ -1993,10 +1988,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-11T15:22:56.132Z"
- },
- "https://www.fightful.com/wrestling/noam-dar-romeo-moreno-set-for-wwe-john-cena-classic": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-11T15:09:44.223Z"
  }
 }
