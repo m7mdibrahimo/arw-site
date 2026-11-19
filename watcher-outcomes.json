@@ -2,47 +2,47 @@
  "https://www.fightful.com/wrestling/hechicero-challenges-zack-sabre-jr-for-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T04:13:00.534Z"
+  "at": "2026-11-19T04:15:55.931Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-19T04:12:59.626Z"
+  "at": "2026-11-19T04:15:55.065Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-results-11-18-2026-hangman-page-vs-bandido-tbs-title-match-mjf-mercedes-mone-more": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: نزال في المجموعة الذهبية، المواجهة الثانية: نزال في المجموعة الذهبية، المواجهة الثالثة: نزال فرق، المواجهة الرابعة: نزال فردي، المواجهة الخامسة: نزال على بطولة AEW TBS، المواجهة السادسة: نزال في المجموعة الزرقاء — اكتب الفائز زي المصدر وبالماضي",
   "retry": true,
-  "at": "2026-11-19T04:12:59.064Z"
+  "at": "2026-11-19T04:15:54.521Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-featured-on-wwe-royal-rumble-poster-wwe-nxt-highlights-more-fight-size": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T04:11:04.022Z"
+  "at": "2026-11-19T04:15:27.228Z"
  },
  "https://www.fightful.com/wrestling/gofundme-set-up-to-support-emily-jayes-family-after-tragic-loss": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T04:11:03.663Z"
+  "at": "2026-11-19T04:15:26.877Z"
  },
  "https://www.fightful.com/wrestling/339789-cm-punk-best-advice": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T04:11:02.994Z"
+  "at": "2026-11-19T04:15:26.213Z"
  },
  "https://www.fightful.com/wrestling/toronto-discussed-as-potential-landing-spot-for-aew-all-in-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T04:11:02.510Z"
+  "at": "2026-11-19T04:15:25.763Z"
  },
  "https://www.fightful.com/wrestling/bronson-reed-back-home-following-injury-in-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T04:11:02.149Z"
+  "at": "2026-11-19T04:15:25.408Z"
  },
  "https://www.fightful.com/wrestling/jade-cargill-further-addresses-criticism-about-her-skipping-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T04:11:01.577Z"
+  "at": "2026-11-19T04:15:24.844Z"
  },
  "https://www.wrestlinginc.com/2320150/aew-dynamite-november-18-2026-results": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
