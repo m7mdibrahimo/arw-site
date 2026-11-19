@@ -5504,7 +5504,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261118191539-wwe-nxt-17-11-2026": {
     "publishedAt": 1795037657196,
