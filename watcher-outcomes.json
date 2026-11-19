@@ -104,11 +104,6 @@
   "retry": true,
   "at": "2026-11-19T14:48:50.514Z"
  },
- "https://www.ringsidenews.com/sheamus-says-too-many-wwe-wrestlers-look-same-today": {
-  "reason": "المراجعة رفضته: صيغة مثنى (جعلا/متشابهتان) ممنوعة — «X وY جعلت…» أو «X تشبه Y»",
-  "retry": true,
-  "at": "2026-11-19T14:44:08.282Z"
- },
  "https://www.ringsidenews.com/titus-oneil-forced-drive-his-own-uber-25-hours-driver-started-falling-asleep": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
