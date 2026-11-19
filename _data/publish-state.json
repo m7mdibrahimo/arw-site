@@ -1990,20 +1990,20 @@
     {
       "window": "15m",
       "remaining": 149,
-      "resetAt": 1795109153045,
-      "updatedAt": 1795108253045
+      "resetAt": 1795118811323,
+      "updatedAt": 1795117911323
     },
     {
       "window": "24h",
-      "remaining": 544,
-      "resetAt": 1795117546045,
-      "updatedAt": 1795108253045
+      "remaining": 599,
+      "resetAt": 1795204311323,
+      "updatedAt": 1795117911323
     },
     {
       "window": "30d",
-      "remaining": 1882,
-      "resetAt": 1797432579045,
-      "updatedAt": 1795108253045
+      "remaining": 1881,
+      "resetAt": 1797432579323,
+      "updatedAt": 1795117911323
     }
   ],
   "videoCooldowns": {
