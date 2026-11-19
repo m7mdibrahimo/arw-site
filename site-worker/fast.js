@@ -100,6 +100,21 @@ function respond(request, html, like, cacheControl) {
 export async function notFound(request, env) {
   const bare = await env.ASSETS.fetch(request);
   if (bare.status !== 404) return bare;
+  return uncached(await notFoundPage(request, env, bare));
+}
+
+/** INCIDENTS #1425: a 404 is never cached. A new build reaches Cloudflare's machines a few seconds apart, so a page of
+ *  the new build can ask a machine still on the old one for its own new files (/admin/<build>/studio.css): that 404
+ *  carried the folder's _headers rule «max-age=31536000, immutable», and the browser kept «missing» for a year — the
+ *  panel opened with no styles and no reload could fix it. */
+export function uncached(r) {
+  const h = new Headers(r.headers);
+  h.set("Cache-Control", "no-store");
+  h.delete("etag");
+  return new Response(r.body, { status: r.status, statusText: r.statusText, headers: h });
+}
+
+async function notFoundPage(request, env, bare) {
   const u = new URL(request.url);
   const segs = u.pathname.split("/").filter(Boolean);
   if (!u.pathname.endsWith("/")) segs.pop();
@@ -109,7 +124,6 @@ export async function notFound(request, env) {
     if (page.status !== 200) continue;
     const h = new Headers(bare.headers);
     h.set("Content-Type", page.headers.get("content-type") || "text/html");
-    if (!h.has("Cache-Control")) h.set("Cache-Control", "public, max-age=0, must-revalidate");
     return new Response(request.method === "HEAD" ? null : page.body, { status: 404, headers: h });
   }
   return bare;

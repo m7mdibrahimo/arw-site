@@ -44,6 +44,8 @@ function site({ build = { commit: C, commitTime: 1000, recent: [C] } as any, fas
       const u = new URL(r.url);
       const f = files[u.pathname];
       const h = new Headers({ 'X-Frame-Options': 'SAMEORIGIN', 'Content-Type': 'text/html', ...(f?.headers || {}) });
+      // _headers' «/admin/:build/*» rule reaches a missing file's answer too (it did on the live site)
+      if (u.pathname.startsWith('/admin/') && u.pathname.split('/').length > 3) h.set('Cache-Control', 'public, max-age=31536000, immutable');
       if (!f) return new Response(null, { status: 404, headers: h });
       if (r.headers.get('If-None-Match')) return new Response(null, { status: 304, headers: h });
       return new Response(r.method === 'HEAD' ? null : f.body, { status: 200, headers: { ...Object.fromEntries(h), ETag: '"real"' } });
@@ -189,7 +191,7 @@ test('a missing address is the nearest 404.html with status 404, as not_found_ha
     assert.equal(r.status, 404, path);
     assert.equal(await r.text(), body, path);
     assert.equal(r.headers.get('X-Frame-Options'), 'SAMEORIGIN');
-    assert.equal(r.headers.get('Cache-Control'), 'public, max-age=0, must-revalidate');
+    assert.equal(r.headers.get('Cache-Control'), 'no-store', path);
   }
   // only a show or story address ever asks the bot
   await s.get('/wp-login.php');
@@ -368,4 +370,27 @@ test('the fast render\'s tag index gives exactly Eleventy\'s own collections (sa
   for (const k of ['./a.md', './b.md', TemplatePath.absolutePath('./a.md'), './c.md']) assert.equal(m.getMapEntryForInputPath(k)?.n, p.getMapEntryForInputPath(k)?.n, k);
   m.map.push({ inputPath: './c.md', n: 5 });
   assert.equal(m.getMapEntryForInputPath('./c.md')?.n, 5);
+});
+
+test('INCIDENTS #1425: a missing file is never cached — not even under a folder whose _headers rule says «immutable»', async () => {
+  const s = site();
+  // a page of the new build asking a machine still on the old build for its own new stylesheet
+  for (const path of ['/admin/newbuild1/studio.css', '/admin/newbuild1/js/app.js', '/assets/nope.css', '/nope/']) {
+    const r = await s.get(path);
+    assert.equal(r.status, 404, path);
+    assert.equal(r.headers.get('Cache-Control'), 'no-store', path);
+    assert.equal(r.headers.get('ETag'), null, path);
+  }
+  const head = await s.get('/admin/newbuild1/studio.css', { method: 'HEAD' });
+  assert.equal(head.headers.get('Cache-Control'), 'no-store');
+});
+
+test('INCIDENTS #1425: the panel asks again for a stylesheet or script that failed to load, at a fresh address', () => {
+  const njk = fs.readFileSync('pages/studio.njk', 'utf8');
+  assert.match(njk, /<link rel="stylesheet" href="\/admin\/\{\{ studioVersion \}\}\/studio\.css" onerror="arwRetry\(this\)">/);
+  assert.match(njk, /<script type="module" src="\/admin\/\{\{ studioVersion \}\}\/js\/app\.js" onerror="arwRetry\(this\)"><\/script>/);
+  // the helper is defined before the stylesheet that may call it, and tries at a new address a few times
+  assert.ok(njk.indexOf('window.arwRetry') < njk.indexOf('studio.css'));
+  assert.match(njk, /'\?r=' \+ Date\.now\(\)/);
+  assert.match(njk, /\[1000, 3000, 6000, 12000\]/);
 });

@@ -16,7 +16,27 @@ eleventyExcludeFromCollections: true
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800;900&display=swap"></noscript>
-  <link rel="stylesheet" href="/admin/{{ studioVersion }}/studio.css">
+  <script>
+    // INCIDENTS #1425: right after a deploy this page can reach a machine still on the old build, whose answer for the
+    // new build's files is «not found». The file is asked for again (1s, 3s, 6s, 12s) at a fresh address, so neither
+    // that machine's answer nor a cached «not found» can leave the panel without its styles or its code.
+    window.arwRetry = function (el) {
+      var n = +(el.getAttribute('data-try') || 0);
+      if (n >= 4) return;
+      var css = el.tagName === 'LINK', attr = css ? 'href' : 'src';
+      var base = el.getAttribute(attr).split('?')[0];
+      setTimeout(function () {
+        var copy = document.createElement(el.tagName);
+        if (css) copy.rel = 'stylesheet'; else copy.type = 'module';
+        copy.setAttribute('data-try', String(n + 1));
+        copy.onerror = function () { window.arwRetry(copy); };
+        copy.setAttribute(attr, base + '?r=' + Date.now());
+        el.parentNode.insertBefore(copy, el.nextSibling);
+        el.parentNode.removeChild(el);
+      }, [1000, 3000, 6000, 12000][n]);
+    };
+  </script>
+  <link rel="stylesheet" href="/admin/{{ studioVersion }}/studio.css" onerror="arwRetry(this)">
   <link rel="modulepreload" href="/admin/{{ studioVersion }}/js/app.js">
   <script>
     // Saved theme before the first paint (no light flash)
@@ -26,6 +46,6 @@ eleventyExcludeFromCollections: true
 <body>
   <div id="app"><div class="boot"><img src="/assets/brand-logo.png?v=2" alt=""><div class="spinner"></div></div></div>
   <noscript>اللوحة محتاجة جافاسكربت.</noscript>
-  <script type="module" src="/admin/{{ studioVersion }}/js/app.js"></script>
+  <script type="module" src="/admin/{{ studioVersion }}/js/app.js" onerror="arwRetry(this)"></script>
 </body>
 </html>
