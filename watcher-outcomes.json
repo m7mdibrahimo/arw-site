@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/titus-oneil-forced-drive-his-own-uber-25-hours-driver-started-falling-asleep": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-19T12:36:55.796Z"
+ },
  "https://www.fightful.com/wrestling/hechicero-challenges-zack-sabre-jr-for-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-10T19:01:11.433Z"
- },
- "https://www.fightful.com/wrestling/paige-im-grateful-to-be-in-the-ring-but-that-doesnt-mean-i-wont-put-my-foot-down-when-it-comes-to-tv-time": {
-  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-11-10T18:31:11.485Z"
  }
 }
