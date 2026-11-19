@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2308722/wwe-raw-united-center-debut-among-newly-announced-dates/": {
-    "matchedFile": "20261105182728-اتحاد-wwe-يعلن-عن-مواعيد-جديدة-لعرض-wwe-raw-وwwe-smackdown-في-أوائل-عام-2027.md",
-    "reason": "الخبر الجديد يعيد سرد نفس جدول مواعيد عروض WWE لعام 2027 الذي تم الإعلان عنه مسبقاً، وتفاصيل أماكن العروض (مثل صالة United Center) تعتبر تفاصيل إضافية لنفس الإعلان وليست تطوراً جديداً.",
-    "at": "2026-11-05T23:37:03.715Z"
-  },
   "https://www.ringsidenews.com/wwe-making-major-production-changes-crown-jewel-2026-saudi-arabia/": {
     "matchedFile": "20261106023358-تقارير-جزء-كبير-من-بث-عرض-wwe-crown-jewel-سيتم-إدارته-عن-بعد-من-مقر-wwe-في-ستامفورد.md",
     "reason": "الخبر الجديد يتناول نفس الحدث الإنتاجي المتعلق بعرض Crown Jewel 2026، ولا يقدم أي تطور جديد أو معلومة إضافية جوهرية تختلف عن الخبر المنشور مسبقاً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261119170255-تورو-يانو-يفوز-ببطولة-njpw-world-tv-في-عرض-tanahashi-jam-2-بمساعدة-هيروشي-تاناهاشي.md",
     "reason": "الخبر الجديد يغطي نفس حدث عرض NJPW TANAHASHI Jam 2 ونتائجه، وتم نشر خبر مسبق يشمل تفاصيل فوز تورو يانو ببطولة NJPW WORLD TV في نفس العرض.",
     "at": "2026-11-19T15:02:07.154Z"
+  },
+  "https://www.wrestlinginc.com/2321493/dwayne-rock-johnson-reflects-30-anniversary-wwe-debut/": {
+    "matchedFile": "20261118212013-ذا-روك-يعلن-حضوره-عرض-wwe-survivor-series-2026.md",
+    "reason": "الخبر الجديد يعيد سرد نفس تفاصيل ظهور ذا روك في برنامج The Pat McAfee Show وحديثه عن حضور عرض Survivor Series وعودته المنتظرة، وهو ما تم تغطيته مسبقاً في الخبر رقم [1].",
+    "at": "2026-11-19T15:11:52.533Z"
   }
 }
