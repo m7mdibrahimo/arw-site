@@ -44,6 +44,11 @@
   "retry": true,
   "at": "2026-11-19T00:29:05.705Z"
  },
+ "https://www.wrestlinginc.com/2320150/aew-dynamite-november-18-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-19T00:29:05.705Z"
+ },
  "https://www.fightful.com/wrestling/tony-schiavone-admits-swerve-strickland-drinking-hangman-pages-blood-was-pretty-gross": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا»، فعل مثنى («يحركاننا») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
   "at": "2026-11-10T16:50:27.827Z"
- },
- "https://www.ringsidenews.com/jasmin-st-claire-accuses-sonny-onoo-inappropriate-behavior-going-behind-her-back-great-muta-deal": {
-  "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي",
-  "retry": false,
-  "at": "2026-11-10T16:33:00.009Z"
  }
 }
