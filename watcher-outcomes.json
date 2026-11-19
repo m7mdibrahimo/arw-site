@@ -1,4 +1,54 @@
 {
+ "https://www.fightful.com/wrestling/339827-aew-continental-classic": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-19T03:54:03.295Z"
+ },
+ "https://www.fightful.com/wrestling/hechicero-challenges-zack-sabre-jr-for-wrestle-kingdom-21": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T03:53:33.653Z"
+ },
+ "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-19T03:52:08.770Z"
+ },
+ "https://www.fightful.com/wrestling/aew-dynamite-results-11-18-2026-hangman-page-vs-bandido-tbs-title-match-mjf-mercedes-mone-more": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-19T03:52:08.381Z"
+ },
+ "https://www.fightful.com/wrestling/roman-reigns-featured-on-wwe-royal-rumble-poster-wwe-nxt-highlights-more-fight-size": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T03:51:37.288Z"
+ },
+ "https://www.fightful.com/wrestling/gofundme-set-up-to-support-emily-jayes-family-after-tragic-loss": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T03:51:37.035Z"
+ },
+ "https://www.fightful.com/wrestling/339789-cm-punk-best-advice": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T03:51:36.556Z"
+ },
+ "https://www.fightful.com/wrestling/toronto-discussed-as-potential-landing-spot-for-aew-all-in-2027": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T03:51:36.230Z"
+ },
+ "https://www.fightful.com/wrestling/bronson-reed-back-home-following-injury-in-saudi-arabia": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T03:51:35.967Z"
+ },
+ "https://www.fightful.com/wrestling/jade-cargill-further-addresses-criticism-about-her-skipping-nxt": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T03:51:35.557Z"
+ },
  "https://www.wrestlinginc.com/2321432/aew-continental-classic-2026-opening-round": {
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Adam Page",
   "retry": true,
