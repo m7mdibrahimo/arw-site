@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/hulk-hogans-real-american-freestyle-reaches-deal-acquire-world-wrestling/": {
-    "matchedFile": "20261105193258-اتحاد-raf-يستحوذ-على-اتحاد-world-of-wrestling.md",
-    "reason": "الخبر الجديد يغطي نفس واقعة الاستحواذ التي تم الإعلان عنها بالفعل، مع إضافة تصريح لهالك هوجان لا يغير من جوهر الحدث أو يمثل تطوراً جديداً في مسار الصفقة.",
-    "at": "2026-11-05T17:06:47.635Z"
-  },
   "https://www.fightful.com/wrestling/chris-jericho-talks-playing-gorgeous-george-in-the-greatest-says-he-watched-one-of-his-old-movies-to-prep-for-the-role/": {
     "matchedFile": "20261104222414-كريس-جيريكو-يظهر-بشخصية-جورجوس-جورج-في-مسلسل-the-greatest.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (مشاركة كريس جيريكو في مسلسل The Greatest وتجسيده لشخصية جورجيوس جورج) مع إضافة تصريحات تفصيلية حول التحضير للدور، وهو ما يندرج تحت بند 'صاحب الواقعة يحكي في مقابلة إزاي عملها' والذي يعتبر في سياق تعليماتك تكراراً للحدث الأساسي المنشور مسبقاً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261119051131-فريق-إف-تي-آر-والإخوة-كاسبر-يواجهون-ذا-يانغ-باكس-وموتور-سيتي-ماشين-جانز-في-عرض-aew-winter-is-coming.md",
     "reason": "الخبر الجديد يغطي نفس الحدث (نزال الفرق الثماني في عرض Winter Is Coming) الذي تم الإعلان عنه وتغطيته بالفعل في الخبر المنشور رقم 0.",
     "at": "2026-11-19T02:49:59.496Z"
+  },
+  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive/": {
+    "matchedFile": "20261117060831-الإعلان-عن-المشاركين-في-بطولة-aew-continental-classic-لعام-2026.md",
+    "reason": "الخبر الجديد يعيد سرد تفاصيل انطلاق البطولة وقواعدها والمشاركين فيها، وهي معلومات تم تغطيتها بالفعل في الأخبار المنشورة مسبقاً.",
+    "at": "2026-11-19T02:57:56.725Z"
   }
 }
