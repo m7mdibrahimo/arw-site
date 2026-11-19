@@ -2,6 +2,23 @@
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
   {
+   "wrong": "(?<=(?<![\\u0621-\\u064A])(?!ال|بال|لل|وال|فال|كال|كان|كانت|يكون|تكون|أصبح|أصبحت|بات|باتت|ليس|ليست|صار|ظل)[\\u0621-\\u064A]+ )قاسي",
+   "right": "قاس",
+   "regex": true,
+   "note": "الصفة المنقوصة النكرة بتتكتب من غير ياء: «لهجوم قاس» مش «لهجوم قاسي» (خبر جيف هاردي، INCIDENTS #1423)"
+  },
+  {
+   "wrong": "ضغط العتبة",
+   "right": "ضغط الصدر",
+   "note": "Bench press = تمرين ضغط الصدر، «ضغط العتبة» ترجمة حرفية ملهاش معنى (خبر شيماس، INCIDENTS #1423)"
+  },
+  {
+   "wrong": "(?<=(?:يحاول|تحاول|حاول|حاولت|يريد|تريد|أراد|أرادت) )بناؤ(?<s>ه|ها|هم)",
+   "right": "بناء$<s>",
+   "regex": true,
+   "note": "المفعول به منصوب: «يحاول بناءه» مش «بناؤه» (خبر شيماس، INCIDENTS #1423)"
+  },
+  {
    "wrong": "لم تعاني",
    "right": "لم تعان",
    "note": "الفعل المجزوم بـ«لم» بيحذف حرف العلة — سي جيه بيري (INCIDENTS #1422)"
