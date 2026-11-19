@@ -1,43 +1,43 @@
 {
- "https://www.ringsidenews.com/triple-h-tony-khan-blamed-driving-millions-fans-away-wrestling": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-19T22:18:03.705Z"
- },
  "https://www.fightful.com/wrestling/motion-to-compel-hearing-date-set-in-ludwig-kaiser-battery-case": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T22:10:08.115Z"
+  "at": "2026-11-19T22:19:47.930Z"
  },
  "https://www.fightful.com/wrestling/details-on-feature-film-about-nattie-neidharts-book-life-story": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T22:10:07.655Z"
+  "at": "2026-11-19T22:19:47.461Z"
  },
  "https://www.fightful.com/wrestling/the-rocks-wwe-return-announcement-surprised-many-people-at-wwe-hq": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T22:10:07.116Z"
+  "at": "2026-11-19T22:19:46.914Z"
  },
  "https://www.fightful.com/wrestling/jeff-hardy-im-manifesting-a-feud-with-cm-punk": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T22:10:06.955Z"
+  "at": "2026-11-19T22:19:46.749Z"
  },
  "https://www.fightful.com/wrestling/report-anthem-considering-cutting-back-on-number-of-tna-ppvs-for-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T22:10:06.707Z"
+  "at": "2026-11-19T22:19:46.495Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-spoilers-from-calgary-taped-on-11-18": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T22:10:06.100Z"
+  "at": "2026-11-19T22:19:45.870Z"
  },
  "https://www.fightful.com/wrestling/njpw-tanahashi-jam-2-results-11-19": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T22:10:05.310Z"
+  "at": "2026-11-19T22:19:45.066Z"
+ },
+ "https://www.ringsidenews.com/triple-h-tony-khan-blamed-driving-millions-fans-away-wrestling": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-19T22:18:03.705Z"
  },
  "https://www.ringsidenews.com/jeff-hardy-issues-emotional-apology-past-drunk-driving-admits-he-could-have-killed-someone": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
