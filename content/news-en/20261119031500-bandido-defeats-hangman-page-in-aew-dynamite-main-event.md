@@ -27,7 +27,7 @@ Darby Allin delivered a message declaring that he was coming for Wardlow and Kyl
 
 The Young Bucks and Motor City Machine Guns appeared to challenge FTR and the Kasper Brothers for Winter Is Coming, and Stokely Hathaway accepted the challenge.
 
-Kasper Brothers (Drew Kasper and Jacob Kasper) def. Two Enhancement Talents.
+Kasper Brothers (Drew Kasper and Jacob Kasper) def. two enhancement talents.
 
 MJF appeared for a promo detailing three specific instances involving himself and Will Ospreay, ultimately declaring himself the true champion of AEW. The Death Riders delivered a backstage promo, with PAC calling out The Dogs and Daniel Garcia stating that it was time for the playoffs.
 

@@ -2,6 +2,17 @@
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
   {
+   "wrong": "استرعاء(?=\\s+(?:بطولة|البطولة|بطولات|لقب|اللقب|ألقاب|الألقاب|الحزام))",
+   "right": "استعادة",
+   "regex": true,
+   "note": "«باسترعاء بطولة العالم للفرق الثلاثية» — Recapturing = استعادة، و«استرعاء» معناها لفت الانتباه (نتائج AEW Dynamite) (INCIDENTS #1419)"
+  },
+  {
+   "wrong": "ذا دنجرس ذا نيو ليفل",
+   "right": "ذا دينجرس نيو ليفل",
+   "note": "The Dangerous New Level اتكتب «ذا دنجرس ذا نيو ليفل» (INCIDENTS #1419)"
+  },
+  {
    "wrong": "بينهماد",
    "right": "بينهم",
    "note": "حرف زيادة في آخر «بينهما» (والمثنى ممنوع فبقت «بينهم») («المواجهة الكلامية التي حدثت بينهماد») وصل لخبر (round 2026-11-19)"
@@ -4633,7 +4644,7 @@
    "note": "كلمة مبتورة"
   },
   {
-   "wrong": "(?<!(?:ذا|The|the)\\s)نيو\\s+ليفل",
+   "wrong": "(?<!(?:ذا|The|the|دينجرس)\\s)نيو\\s+ليفل",
    "right": "ذا نيو ليفل",
    "regex": true,
    "note": "اسم فريق (The New Level)"
