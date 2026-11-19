@@ -5474,7 +5474,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261118112619-cmll-revolucion-de-campeones-16-11-2026": {
     "publishedAt": 1795037576136,
@@ -5508,17 +5509,15 @@
     "publishedAt": 1795037657196,
     "facebook_reel": true,
     "facebook_story": false,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ان اكس تي 17.11.2026 مترجم",
-    "lastAttempt": 1795048017655,
+    "lastAttempt": 1795048899693,
     "errors": {
       "facebook_story": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة.",
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
     "reviewPlatforms": [
