@@ -2,6 +2,17 @@
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
   {
+   "wrong": "بيكي مونتويا",
+   "right": "بينكي مونتويا",
+   "note": "Pinky Montoya اتكتبت «بيكي» (INCIDENTS #1421)"
+  },
+  {
+   "wrong": "(?<=(?:مشاكل|مشكلات|أزمة|أزمات|اضطرابات)\\s+(?:السفر\\s+و)?الطيران\\s+)الشهيرة",
+   "right": "الواسعة",
+   "regex": true,
+   "note": "«مشاكل الطيران الشهيرة» — Widespread flight issues = الواسعة مش الشهيرة (INCIDENTS #1421)"
+  },
+  {
    "wrong": "استرعاء(?=\\s+(?:بطولة|البطولة|بطولات|لقب|اللقب|ألقاب|الألقاب|الحزام))",
    "right": "استعادة",
    "regex": true,
