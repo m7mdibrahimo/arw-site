@@ -1,43 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/njpw-tanahashi-jam-2-results-11-19": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T15:52:17.305Z"
+ },
+ "https://www.fightful.com/wrestling/hechicero-challenges-zack-sabre-jr-for-wrestle-kingdom-21": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T15:52:16.589Z"
+ },
+ "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T15:52:16.003Z"
+ },
+ "https://www.fightful.com/wrestling/roman-reigns-featured-on-wwe-royal-rumble-poster-wwe-nxt-highlights-more-fight-size": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T15:52:15.498Z"
+ },
+ "https://www.fightful.com/wrestling/gofundme-set-up-to-support-emily-jayes-family-after-tragic-loss": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T15:52:15.251Z"
+ },
  "https://www.wrestlinginc.com/2321518/wwe-crown-jewel-2026-chelsea-green-favorite-crowds": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-19T15:47:55.203Z"
  },
- "https://www.fightful.com/wrestling/undertaker-still-encounters-people-that-ask-him-if-he-is-actually-related-to-kane": {
-  "reason": "المراجعة رفضته: فعل مثنى بعد «اثنين من…» («اثنين من النجوم عرضا») ممنوع — اجمع الفعل: «اثنين من النجوم عرضوا السفر…»",
-  "retry": true,
-  "at": "2026-11-19T15:48:43.389Z"
- },
  "https://www.fightful.com/wrestling/dirty-finish-in-this-bitch-results-10-25-darian-bengston-hunter-drake-more-compete": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، فعل مثنى («يشاركان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
   "at": "2026-11-19T15:41:32.503Z"
- },
- "https://www.fightful.com/wrestling/njpw-tanahashi-jam-2-results-11-19": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-19T15:40:23.614Z"
- },
- "https://www.fightful.com/wrestling/hechicero-challenges-zack-sabre-jr-for-wrestle-kingdom-21": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-19T15:40:22.891Z"
- },
- "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-19T15:40:22.300Z"
- },
- "https://www.fightful.com/wrestling/roman-reigns-featured-on-wwe-royal-rumble-poster-wwe-nxt-highlights-more-fight-size": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-19T15:40:21.791Z"
- },
- "https://www.fightful.com/wrestling/gofundme-set-up-to-support-emily-jayes-family-after-tragic-loss": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-19T15:40:21.542Z"
  },
  "https://www.fightful.com/wrestling/undertaker-still-encounters-people-that-ask-him-if-he-is-actually-related-to-kane": {
   "reason": "المراجعة رفضته: فعل مثنى بعد «اثنين من…» («اثنين من النجوم عرضا») ممنوع — اجمع الفعل: «اثنين من النجوم عرضوا السفر…»",
