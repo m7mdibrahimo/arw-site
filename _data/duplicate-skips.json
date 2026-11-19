@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/rhea-ripley-makes-appearance-at-motionless-in-white-concert/": {
-    "matchedFile": "20261106145157-ريا-ريبلي-تظهر-بشكل-مفاجئ-خلال-حفل-موسيقي-لفريق-motionless-in-white.md",
-    "reason": "الخبر الجديد يغطي نفس الحدث تماماً (ظهور ريا ريبلي في حفل فريق Motionless in White في أورلاندو وفترة تعافيها من الإصابة) وهو تكرار لنفس الواقعة المنشورة سابقاً.",
-    "at": "2026-11-06T12:12:09.929Z"
-  },
   "https://www.fightful.com/uncategorized/rey-mysterio-announces-team-usa-vs-team-mexico-bout-for-wwe-survivor-series/": {
     "matchedFile": "20261106145822-ري-ميستيريو-يعلن-عن-نزال-بين-فريق-الولايات-المتحدة-وفريق-المكسيك-في-عرض-wwe-survivor-series.md",
     "reason": "الخبر الجديد يعلن نفس الحدث والتصريح الخاص بنزال فريق الولايات المتحدة ضد فريق المكسيك في عرض Survivor Series الذي أعلنه ري ميستيريو بالفعل في الخبر المنشور.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261119151226-جيف-هاردي-يريد-خوض-عداوة-جديدة-ضد-سي-ام-بانك-في-wwe.md",
     "reason": "الخبر الجديد يتناول نفس التصريح الذي أدلى به جيف هاردي في بودكاست Insight مع كريس فان فليت، وهو نفس المصدر والحدث المذكور في الخبر المنشور مسبقاً.",
     "at": "2026-11-19T18:28:37.131Z"
+  },
+  "https://www.fightful.com/wrestling/the-rocks-wwe-return-announcement-surprised-many-people-at-wwe-hq/": {
+    "matchedFile": "20261118212013-ذا-روك-يعلن-حضوره-عرض-wwe-survivor-series-2026.md",
+    "reason": "الخبر الجديد يغطي نفس واقعة إعلان ذا روك عن حضوره لعرض Survivor Series 2026 عبر برنامج بات ماك أفي، وهي تفاصيل مكررة تم تناولها بالفعل في الخبر رقم 1.",
+    "at": "2026-11-19T18:34:36.233Z"
   }
 }
