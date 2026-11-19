@@ -1,8 +1,13 @@
 {
- "https://www.ringsidenews.com/aew-dynamite-results-highlights-key-moments-november-18-2026": {
+ "https://www.wrestlinginc.com/2321406/new-aew-signees-kasper-brothers-set-major-winter-coming-match": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-19T02:29:24.570Z"
+ },
+ "https://www.wrestlinginc.com/2320150/aew-dynamite-november-18-2026-results": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-19T02:14:15.484Z"
+  "at": "2026-11-19T02:28:01.112Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
