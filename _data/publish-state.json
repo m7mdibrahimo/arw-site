@@ -2009,20 +2009,20 @@
     {
       "window": "15m",
       "remaining": 149,
-      "resetAt": 1795048053092,
-      "updatedAt": 1795047153092
+      "resetAt": 1795055758703,
+      "updatedAt": 1795054858703
     },
     {
       "window": "24h",
-      "remaining": 574,
-      "resetAt": 1795117546092,
-      "updatedAt": 1795047153092
+      "remaining": 573,
+      "resetAt": 1795117548703,
+      "updatedAt": 1795054858703
     },
     {
       "window": "30d",
-      "remaining": 1912,
-      "resetAt": 1797432579092,
-      "updatedAt": 1795047153092
+      "remaining": 1911,
+      "resetAt": 1797432581703,
+      "updatedAt": 1795054858703
     }
   ],
   "videoCooldowns": {
