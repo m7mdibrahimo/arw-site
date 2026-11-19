@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/iron-survivor-challenge-match-has-been-discussed-for-wwe-main-roster/": {
-    "matchedFile": "20261105221854-wwe-ناقش-إمكانية-نقل-نزال-iron-survivor-challenge-إلى-القائمة-الرئيسية-في-wwe.md",
-    "reason": "الخبر الجديد يتناول نفس المعلومة المتعلقة بمناقشة WWE لنقل نزال Iron Survivor Challenge للقائمة الرئيسية، وهي نفس المعلومة الواردة في الخبر المنشور مسبقاً.",
-    "at": "2026-11-05T19:57:24.614Z"
-  },
   "https://www.wrestlinginc.com/2308453/tko-mark-shapiro-wwe-wrestlemania-42-moving-saudi-arabia-half-upfront/": {
     "matchedFile": "20261105015231-wwe-تضع-خطة-بديلة-لنقل-عرض-wrestlemania-2027-من-السعودية.md",
     "reason": "الخبر الجديد يغطي نفس تصريحات مارك شابيرو خلال مكالمة الأرباح بخصوص خطط إقامة WrestleMania 43 في السعودية والبدائل المتاحة، وهو ما تم تغطيته بالفعل في الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261119063659-ملخص-الليلة-الأولى-من-بطولة-aew-continental-classic-لعام-2026.md",
     "reason": "الخبر الجديد يغطي نفس أحداث الليلة الأولى من بطولة AEW Continental Classic التي أقيمت في عرض 18 نوفمبر 2026 وتم تغطيتها مسبقاً في الخبر رقم 2.",
     "at": "2026-11-19T05:48:06.635Z"
+  },
+  "https://www.wrestlinginc.com/2320150/aew-dynamite-november-18-2026-results/": {
+    "matchedFile": "20261119031500-نتائج-عرض-aew-dynamite-18-نوفمبر-2026-فوز-بانديدو-في-الحدث-الرئيسي.md",
+    "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
+    "at": "2026-11-19T08:22:12.953Z"
   }
 }
