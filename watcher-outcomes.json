@@ -49,11 +49,6 @@
   "retry": false,
   "at": "2026-11-19T03:27:11.071Z"
  },
- "https://www.wrestlinginc.com/2320150/aew-dynamite-november-18-2026-results": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-19T02:59:57.256Z"
- },
  "https://www.wrestlinginc.com/2321406/new-aew-signees-kasper-brothers-set-major-winter-coming-match": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
