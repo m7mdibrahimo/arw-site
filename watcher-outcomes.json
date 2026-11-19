@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/list-of-pro-wrestling-moves-added-to-gta-6": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-19T17:48:16.811Z"
+ },
  "https://www.fightful.com/wrestling/sheamus-proves-he-has-zero-ring-rust-despite-being-out-of-action-for-a-year": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-19T17:38:12.793Z"
+  "at": "2026-11-19T17:46:54.111Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-spoilers-from-calgary-taped-on-11-18": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T17:33:47.124Z"
+  "at": "2026-11-19T17:42:48.586Z"
  },
  "https://www.fightful.com/wrestling/titus-oneil-tells-story-of-taking-over-uber-driving-himself-to-destination": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-19T17:33:46.819Z"
+  "at": "2026-11-19T17:42:48.196Z"
  },
  "https://www.fightful.com/wrestling/njpw-tanahashi-jam-2-results-11-19": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T17:32:49.083Z"
+  "at": "2026-11-19T17:40:14.735Z"
  },
  "https://www.fightful.com/wrestling/hechicero-challenges-zack-sabre-jr-for-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T17:32:48.368Z"
+  "at": "2026-11-19T17:40:13.818Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T17:32:47.762Z"
+  "at": "2026-11-19T17:40:13.052Z"
  },
  "https://www.fightful.com/wrestling/ryzin-details-nixed-plans-for-him-to-join-dark-order-in-aew": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-11T01:43:28.585Z"
- },
- "https://www.fightful.com/wrestling/renee-paquette-announces-passing-of-her-and-jon-moxleys-dog-blue": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-11T01:36:08.134Z"
  }
 }
