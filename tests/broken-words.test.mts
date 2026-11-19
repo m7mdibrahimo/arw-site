@@ -1161,3 +1161,11 @@ test('corrections fix CRPS, Women\'s US title and «بطلة العرض» for a 
   assert.match(out, /تواجه حاملة اللقب راكيل/);
   assert.match(out, /باستهداف حامل اللقب توني/);
 });
+
+// round 2026-11-19: «steel steps» became «الدرج الإسمنتي» in the EVOLVE results.
+test('corrections turn concrete steps into steel steps, not concrete floors', () => {
+  const out = applyCorrections('خسر بعد أن استخدم الدرج الإسمنتي، ثم ضربه في السلالم الاسمنتية وارتطم بالأرضية الإسمنتية');
+  assert.match(out, /الدرج الحديدي/);
+  assert.match(out, /السلالم الحديدية/);
+  assert.match(out, /بالأرضية الإسمنتية/);
+});
