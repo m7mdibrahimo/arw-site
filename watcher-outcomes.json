@@ -1,48 +1,48 @@
 {
- "https://www.ringsidenews.com/santos-escobar-allegedly-refusing-return-500-deposit-canceled-big-event-ny-appearance": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-19T12:05:03.811Z"
- },
  "https://www.fightful.com/wrestling/hechicero-challenges-zack-sabre-jr-for-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T11:57:45.858Z"
+  "at": "2026-11-19T12:07:47.752Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T11:57:45.287Z"
+  "at": "2026-11-19T12:07:47.130Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-featured-on-wwe-royal-rumble-poster-wwe-nxt-highlights-more-fight-size": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T11:57:44.795Z"
+  "at": "2026-11-19T12:07:46.575Z"
  },
  "https://www.fightful.com/wrestling/gofundme-set-up-to-support-emily-jayes-family-after-tragic-loss": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T11:57:44.557Z"
+  "at": "2026-11-19T12:07:46.329Z"
  },
  "https://www.fightful.com/wrestling/339789-cm-punk-best-advice": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T11:57:44.121Z"
+  "at": "2026-11-19T12:07:45.849Z"
  },
  "https://www.fightful.com/wrestling/toronto-discussed-as-potential-landing-spot-for-aew-all-in-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T11:57:43.821Z"
+  "at": "2026-11-19T12:07:45.524Z"
  },
  "https://www.fightful.com/wrestling/bronson-reed-back-home-following-injury-in-saudi-arabia": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T11:57:43.585Z"
+  "at": "2026-11-19T12:07:45.265Z"
  },
  "https://www.fightful.com/wrestling/jade-cargill-further-addresses-criticism-about-her-skipping-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T11:57:43.212Z"
+  "at": "2026-11-19T12:07:44.856Z"
+ },
+ "https://www.ringsidenews.com/santos-escobar-allegedly-refusing-return-500-deposit-canceled-big-event-ny-appearance": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-19T12:05:03.811Z"
  },
  "https://www.wrestlinginc.com/2320150/aew-dynamite-november-18-2026-results": {
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
