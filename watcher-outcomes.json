@@ -1,23 +1,33 @@
 {
+ "https://www.fightful.com/wrestling/kieran-culkin-wears-sami-zayn-shirt-on-the-tonight-show": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-19T16:18:55.727Z"
+ },
+ "https://www.fightful.com/wrestling/titus-oneil-tells-story-of-taking-over-uber-driving-himself-to-destination": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-19T16:16:08.330Z"
+ },
  "https://www.fightful.com/wrestling/njpw-tanahashi-jam-2-results-11-19": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T15:52:17.305Z"
+  "at": "2026-11-19T16:09:47.229Z"
  },
  "https://www.fightful.com/wrestling/hechicero-challenges-zack-sabre-jr-for-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T15:52:16.589Z"
+  "at": "2026-11-19T16:09:46.278Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T15:52:16.003Z"
+  "at": "2026-11-19T16:09:45.523Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-featured-on-wwe-royal-rumble-poster-wwe-nxt-highlights-more-fight-size": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T15:52:15.498Z"
+  "at": "2026-11-19T16:09:44.873Z"
  },
  "https://www.fightful.com/wrestling/gofundme-set-up-to-support-emily-jayes-family-after-tragic-loss": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1988,15 +1998,5 @@
   "reason": "المراجعة رفضته: صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
   "retry": true,
   "at": "2026-11-11T00:14:10.423Z"
- },
- "https://www.wrestlinginc.com/2312847/bayley-michin-mia-yim-wwe-raw-wrestling-responds": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-10T22:46:30.441Z"
- },
- "https://www.fightful.com/wrestling/jim-ross-undergoing-shunt-surgery": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T21:52:48.535Z"
  }
 }
