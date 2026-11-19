@@ -1,5 +1,5 @@
 ---
-title: "The Rock Responds to Roman Reigns"
+title: "The Rock Responds to Roman Reigns: 'You Are One of One, the GOAT'"
 slug: "the-rock-responds-to-roman-reigns"
 description: "WWE is celebrating the 30th anniversary of The Rock, and Roman Reigns sent a message to his WrestleMania XL tag team partner on social media."
 federation: WWE

@@ -139,8 +139,11 @@ export async function handle(request, env, ctx) {
       const asset = await notFound(request, env);
       if (asset.status !== 404 || LISTINGS.has(key)) return asset;
       entry = (await fastPages(env, ctx, u.origin)).get(key);
-      // the list didn't come (a cold bot, a slow D1): a new page asks once more rather than a 404
-      if (!entry && index.failed) { await loadIndex(env, ctx, u.origin); entry = index.pages.get(key); }
+      // the list didn't come (a cold bot, a slow D1), or it is an old one (an isolate that served nothing for a while
+      // keeps the list it had, from before this page — Googlebot got a 404 for two new stories this way, INCIDENTS #1414):
+      // a new page asks for the current list rather than a 404
+      if (!entry && (index.failed || Date.now() - index.at >= INDEX_FRESH_MS)) await loadIndex(env, ctx, u.origin);
+      if (!entry) entry = index.pages.get(key); // (the list that came meanwhile, not the old one fastPages handed back)
       if (!newer(entry, b)) return asset;
     }
     // «/shows/x» → «/shows/x/», as the assets' own trailing-slash rule does for a real page

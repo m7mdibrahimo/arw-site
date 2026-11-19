@@ -33,9 +33,12 @@ test("the names glossary never turns a promotion or event name into Arabic lette
 
 // /library/wwe-crown-jewel/ at 5.1–5.9 for «تحميل/مشاهدة عرض كراون جول 2026»: a few-show library page's head title says
 // «مشاهدة وتحميل» after the collection name (still the collection's, #862), and its alternateName says each name once (INCIDENTS #1270)
-test("a few-show library page's head title carries «مشاهدة وتحميل» and its alternateName has no repeats", () => {
+// Since INCIDENTS #1415 «مشاهدة وتحميل» stays only when the newest show has no page of its own: with one, watching belongs to
+// the show page (#1332) and the section is «أرشيف» — the library still split 6.0 vs the show's 4.1 with it.
+test("a few-show library page's head title leaves «مشاهدة وتحميل» to its show page and its alternateName has no repeats", () => {
   const njk = fs.readFileSync("pages/library-program.njk", "utf8");
-  assert.ok(njk.includes("— مشاهدة وتحميل {{ lp.prog.name }}{% else %}"));
+  assert.ok(njk.includes("— {% if lp.prog.latest.url %}أرشيف{% else %}مشاهدة وتحميل{% endif %} {{ lp.prog.name }}{% else %}"));
+  assert.ok(njk.includes("مع نتائج كل عرض{% if not lp.prog.latest.url %} وروابط المشاهدة والتحميل أونلاين{% endif %}."));
   assert.ok(njk.includes("| uniqueNames %}"));
   assert.match(fs.readFileSync("eleventy.config.js", "utf8"), /addFilter\("uniqueNames"/);
 });

@@ -159,6 +159,21 @@ test('the list failing once (a cold bot, a slow D1): a new page still shows, and
   assert.match(await (await t.get('/')).text(), /FAST HOME/);
 });
 
+test('an isolate with an old list (nothing served for a while): a page stored since then is never a 404 (INCIDENTS #1414)', async () => {
+  const fast: any[] = [];
+  const s = site({ fast });
+  assert.equal(await (await s.get('/')).text(), 'REAL HOME'); // the list is loaded: empty
+  fast.push({ url: '/news/new-story/', commit: A, commitTime: 2000, html: page('FAST STORY') });
+  const now = Date.now;
+  Date.now = () => now() + 60_000; // a minute later, no visitor in between: the isolate's list is from before the story
+  try {
+    const r = await s.get('/news/new-story/');
+    assert.equal(r.status, 200, 'the old list did not have it: the current one is asked before a 404');
+    assert.match(await r.text(), /FAST STORY/);
+    assert.equal((await s.get('/news/missing-story/')).status, 404, 'a page that truly is not there is still a 404');
+  } finally { Date.now = now; }
+});
+
 test('the bot down or broken: the site is exactly as without the fast lane', async () => {
   const s = site({ botDown: true, fast: [{ url: '/', commit: A, commitTime: 2000, html: page('FAST HOME') }] });
   assert.equal(await (await s.get('/')).text(), 'REAL HOME');
