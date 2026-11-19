@@ -5605,7 +5605,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261119180824-wwe-evolve-18-11-2026": {
     "publishedAt": 1795105728267,
