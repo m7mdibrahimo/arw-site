@@ -1,33 +1,38 @@
 {
+ "https://www.fightful.com/wrestling/produce-x-assembly-results-11-14": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-19T20:11:48.912Z"
+ },
  "https://www.fightful.com/wrestling/details-on-feature-film-about-nattie-neidharts-book-life-story": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T20:04:31.875Z"
+  "at": "2026-11-19T20:06:30.515Z"
  },
  "https://www.fightful.com/wrestling/the-rocks-wwe-return-announcement-surprised-many-people-at-wwe-hq": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T20:04:31.157Z"
+  "at": "2026-11-19T20:06:29.848Z"
  },
  "https://www.fightful.com/wrestling/jeff-hardy-im-manifesting-a-feud-with-cm-punk": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T20:04:30.934Z"
+  "at": "2026-11-19T20:06:29.650Z"
  },
  "https://www.fightful.com/wrestling/report-anthem-considering-cutting-back-on-number-of-tna-ppvs-for-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T20:04:30.598Z"
+  "at": "2026-11-19T20:06:29.341Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-spoilers-from-calgary-taped-on-11-18": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T20:04:29.765Z"
+  "at": "2026-11-19T20:06:28.584Z"
  },
  "https://www.fightful.com/wrestling/njpw-tanahashi-jam-2-results-11-19": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T20:04:28.679Z"
+  "at": "2026-11-19T20:06:27.590Z"
  },
  "https://www.ringsidenews.com/val-venis-goes-off-sean-ross-sapp-rf-video-accusation-drags-wwe-legends-fight": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kevin Owens، اسم مصارع في العنوان أو المتن غير موجود في المصدر: The Dudley Boyz، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Dudley Boyz",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-11T12:30:46.255Z"
- },
- "https://www.fightful.com/wrestling/bret-hart-wcw-shouldve-been-sued-for-putting-me-in-the-ring-with-goldberg": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-11T12:13:02.321Z"
  }
 }
