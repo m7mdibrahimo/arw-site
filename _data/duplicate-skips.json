@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/former-tna-star-returning-four-years-destination-x-2026/": {
-    "matchedFile": "20261106182307-ري-هوروس-يعود-إلى-اتحاد-tna-في-عرض-destination-x.md",
-    "reason": "الخبر الجديد يعلن عن عودة ري هوروس للمشاركة في بطولة World X-Cup في عرض Destination X، وهو نفس الحدث والإعلان المذكور بالفعل في الخبر رقم 0.",
-    "at": "2026-11-06T15:35:13.359Z"
-  },
   "https://www.wrestlinginc.com/2309181/tna-impact-taryn-terrell-harley-hudson-returns-offers-friendship/": {
     "matchedFile": "20261106071648-تارين-تيريل-ترحب-بهارلي-هدسون-في-فريق-ذا-دول-هاوس-خلال-عرض-tna-impact.md",
     "reason": "الخبر الجديد يغطي نفس أحداث عرض TNA Impact التي تم تناولها في الخبر المنشور، بما في ذلك هجوم كسيا بروكسايد على هارلي هدسون وظهور تارين تيريل.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261119214726-مسؤولو-wwe-يعتقدون-أن-ملعب-camping-world-stadium-في-أورلاندو-هو-المرشح-الأبرز-لاستضافة-عرض-royal-rumble-2028.md",
     "reason": "الخبر الجديد يتناول نفس الحدث (استضافة أورلاندو لعرض Royal Rumble 2028) ونفس التفاصيل الأساسية المذكورة في الخبر المنشور، ولا يقدم تطوراً جديداً جوهرياً.",
     "at": "2026-11-19T19:23:34.102Z"
+  },
+  "https://www.wrestlinginc.com/2322232/the-rock-wwe-survivor-series-2026-surprise-interally-stamford/": {
+    "matchedFile": "20261119211547-ديف-ميلتزر-يوضح-تفاصيل-مشاركة-ذا-روك-في-عرض-wwe-survivor-series.md",
+    "reason": "الخبر الجديد يعيد تدوير معلومات عودة ذا روك إلى Survivor Series وتفاصيل تصريحات ديف ميلتزر عبر برنامج Wrestling Observer Radio وكواليس عدم خوضه نزالاً، وهي تفاصيل سبق نشرها في الخبر [1].",
+    "at": "2026-11-19T19:34:46.092Z"
   }
 }
