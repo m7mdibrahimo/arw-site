@@ -3114,6 +3114,12 @@
    "note": "أسماء العروض والاتحادات تبقى بالإنجليزي"
   },
   {
+   "wrong": "Survivor(?=Series)",
+   "right": "Survivor ",
+   "regex": true,
+   "note": "«SurvivorSeries» ملزوقة — INCIDENTS #1426"
+  },
+  {
    "wrong": "سرفايفر سيريز: وور جيمز",
    "right": "Survivor Series: WarGames",
    "note": "أسماء العروض والاتحادات تبقى بالإنجليزي"
