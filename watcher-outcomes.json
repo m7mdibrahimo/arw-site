@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/sheamus-says-too-many-wwe-wrestlers-look-same-today": {
+  "reason": "المراجعة رفضته: صيغة مثنى (جعلا/متشابهتان) ممنوعة — «X وY جعلت…» أو «X تشبه Y»، صيغة مثنى (جعلا/متشابهتان) ممنوعة — «X وY جعلت…» أو «X تشبه Y»",
+  "retry": true,
+  "at": "2026-11-19T14:20:30.960Z"
+ },
+ "https://www.ringsidenews.com/titus-oneil-forced-drive-his-own-uber-25-hours-driver-started-falling-asleep": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-19T14:19:17.383Z"
+ },
  "https://www.fightful.com/wrestling/hechicero-challenges-zack-sabre-jr-for-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -38,11 +48,6 @@
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-19T14:01:42.409Z"
- },
- "https://www.ringsidenews.com/titus-oneil-forced-drive-his-own-uber-25-hours-driver-started-falling-asleep": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-19T14:00:28.757Z"
  },
  "https://www.fightful.com/wrestling/jade-cargill-further-addresses-criticism-about-her-skipping-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-10T20:36:47.226Z"
- },
- "https://www.fightful.com/wrestling/jeff-cobb-says-he-thought-about-retiring-after-wwe-release": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T20:25:48.320Z"
  }
 }
