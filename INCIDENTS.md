@@ -11433,3 +11433,8 @@ Let me check git status to enumerate uncommitted changes.</think><tool_call>shel
 - اللي حصل: خبر ظهور Pinky Montoya في TNA كتب اسمها «بيكي»، وخبر سانتوس إسكوبار ترجم widespread flight issues لـ«مشاكل الطيران الشهيرة».
 - السبب: الاسم مكانش في القاموس، وGemini ترجم widespread بكلمة غلط.
 - الإصلاح: الخبرين اتصلحوا، واتضاف الاسم للقاموس وتصحيحين في corrections.json واختبار tests/corrections-1421.
+
+## #1422 — 2026-11-19: أسماء إنجليزي غلط قريبة من القاموس + أخطاء صغيرة في أخبار النهارده
+- اللي حصل: «Indi Hallwell» و«Xia Brousbride» في معاينة TNA iMPACT، وعرضها العربي قال إن كالغاري في كولومبيا البريطانية، و«لم تعاني» في خبر سي جيه بيري، و«ريك فلير الدريفت» بدل اسم الأغنية؛ ولقينا 6 أسماء تانية غلط بنفس الشكل في أخبار إنجليزي قديمة (Paul Heymon، Clark Conners…).
+- السبب: مفيش أي فحص بيقارن الاسم الإنجليزي بقاموس الأسماء لو اتكتب بحرف أو اتنين غلط، والأخطاء العربية دي مكانتش في corrections.json.
+- الإصلاح: fixNearGlossaryNames في scripts/english-edition.ts بتصحح الاسم الأخير لأي مصارع في القاموس لو قريب منه بحرف أو اتنين (من غير الملكية والجمع وأسماء الفرق)، و5 تصحيحات جديدة في corrections.json، واختبار tests/english-near-glossary-name-1422.test.mts.

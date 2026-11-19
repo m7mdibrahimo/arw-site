@@ -794,8 +794,51 @@ export function fixTonightAired(text: string): string {
 export function englishGrammarSlips(text: string): string[] {
   return aToAn(fixIre(fixPronounCase(text))) === String(text) ? [] : ["a/an, I're or pronoun-case typo"];
 }
+/** «Indi Hallwell» for Indi Hartwell, «Paul Heymon», «Clark Conners»: the writer misspelled the last name of a wrestler
+ *  in the names glossary (TNA iMPACT preview, INCIDENTS #1422). A two-word name whose first word is a glossary first
+ *  name and whose last word is one or two letters away from exactly one glossary last name of that first name (6+
+ *  letters; two letters only for 8+) takes the glossary spelling. Possessives, plurals, team names and the real
+ *  names that look like misspellings (Rey Misterio) are left alone. */
+let NEAR_GLOSSARY: Map<string, string[]> | null = null;
+let GLOSSARY_FULL: Set<string> = new Set();
+const NEAR_GLOSSARY_KEEP = new Set(["Rey Misterio"]);
+const NEAR_GLOSSARY_SKIP_FIRST = new Set(["The", "Four", "Trios", "Royal", "United", "Team", "House", "New", "Los", "La", "El"]);
+function nearGlossary(): Map<string, string[]> {
+  if (NEAR_GLOSSARY) return NEAR_GLOSSARY;
+  NEAR_GLOSSARY = new Map();
+  try {
+    const g = JSON.parse(fs.readFileSync(path.join(process.cwd(), "scripts", "wrestler-names.json"), "utf8"));
+    GLOSSARY_FULL = new Set(Object.keys(g));
+    for (const k of Object.keys(g)) {
+      const m = /^([A-Z][a-z]+) ([A-Z][A-Za-z-]{5,})$/.exec(k);
+      if (!m || NEAR_GLOSSARY_SKIP_FIRST.has(m[1])) continue;
+      (NEAR_GLOSSARY.get(m[1]) || NEAR_GLOSSARY.set(m[1], []).get(m[1])!).push(m[2]);
+    }
+  } catch { /* no glossary: nothing to fix */ }
+  return NEAR_GLOSSARY;
+}
+function letterDistance(a: string, b: string): number {
+  const d = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) {
+    let prev = d[0]; d[0] = i;
+    for (let j = 1; j <= b.length; j++) { const t = d[j]; d[j] = Math.min(d[j] + 1, d[j - 1] + 1, prev + (a[i - 1] === b[j - 1] ? 0 : 1)); prev = t; }
+  }
+  return d[b.length];
+}
+export function fixNearGlossaryNames(text: string): string {
+  const map = nearGlossary();
+  if (!map.size) return String(text);
+  return String(text).replace(/\b([A-Z][a-z]+) ([A-Z][A-Za-z-]{5,})\b/g, (whole, first: string, last: string) => {
+    const lasts = map.get(first);
+    if (!lasts || GLOSSARY_FULL.has(whole) || NEAR_GLOSSARY_KEEP.has(whole)) return whole;
+    const lim = last.length >= 8 ? 2 : 1;
+    const hits = lasts.filter((l) => l !== last && l.toLowerCase() !== last.toLowerCase() + "s" && l.toLowerCase() + "s" !== last.toLowerCase()
+      && letterDistance(l.toLowerCase(), last.toLowerCase()) <= lim);
+    return hits.length === 1 ? `${first} ${hits[0]}` : whole;
+  });
+}
 export function fixEnglishNames(text: string): string {
-  return fixTonightAired(cleanSpokenQuotes(fixPerfectWithPastTime(fixSingularThey(aToAn(fixIre(fixPronounCase(twitterToX(dropRepeatedListItem(collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text))))))))))));
+  return fixNearGlossaryNames(fixTonightAired(cleanSpokenQuotes(fixPerfectWithPastTime(fixSingularThey(aToAn(fixIre(fixPronounCase(twitterToX(dropRepeatedListItem(collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text)))))))))))));
 }
 
 /** A quote mark Gemini escaped twice in its JSON reaches the text as «\\"»: it is a plain «"». */

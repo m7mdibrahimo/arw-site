@@ -22,4 +22,4 @@ Speaking on his My World podcast, Jarrett explained that he selects his appearan
 
 > "I pick my spots here and there."
 
-At the event, Blue Panther def. Jeff Jarrett in under nine minutes. In another match, Hechicero def. Claudio Castagnolo and Zack Sabre Jr. to successfully defend his title.
+At the event, Blue Panther def. Jeff Jarrett in under nine minutes. In another match, Hechicero def. Claudio Castagnoli and Zack Sabre Jr. to successfully defend his title.

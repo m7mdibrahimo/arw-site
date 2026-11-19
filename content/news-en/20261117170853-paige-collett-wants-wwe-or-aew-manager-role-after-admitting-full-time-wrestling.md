@@ -20,7 +20,7 @@ Paige Collett is seeking a managerial role in WWE or AEW, as she can no longer h
 
 Collett is not retiring yet, however. She hopes to follow in Paul Heyman's footsteps by managing other talent while occasionally competing in matches. She noted,
 
-> "I've also mentioned wanting to be the female Paul Heymon, like how fun would it be to just have a job as a manager, and I'm okay with that and occasionally doing a match. Like, I want a job like that, but again, realistically, I'm not in remission. My body's sick. I'm not going to be able to endure a wrestling full-time, but I would like a job hopefully like with AEW or WWE as a manager."
+> "I've also mentioned wanting to be the female Paul Heyman, like how fun would it be to just have a job as a manager, and I'm okay with that and occasionally doing a match. Like, I want a job like that, but again, realistically, I'm not in remission. My body's sick. I'm not going to be able to endure a wrestling full-time, but I would like a job hopefully like with AEW or WWE as a manager."
 
 Collett has faced significant health challenges since suffering a wrestling injury during training under Rikishi, which triggered CRPS and left her wheelchair-bound for years. Although she returned to the ring, she is now prioritizing a sustainable career behind the scenes, such as producing or agenting, after a few more years in the business.
 

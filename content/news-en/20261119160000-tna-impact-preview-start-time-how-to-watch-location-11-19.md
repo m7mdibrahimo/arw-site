@@ -17,6 +17,6 @@ image: /content/images/sufmi1nnmvvqkxll.jpg
 ---
 Viewing information and lineup for TNA iMPACT! on November 19, 2026. TNA iMPACT! will emanate from the WinSport Event Centre in Calgary, Alberta, Canada, starting at 9 pm ET. Fans can watch the show live on AMC and AMC+.
 
-The lineup features an eight-person tag team match as Indi Hallwell, Gabby Forza, Shotzi Blackheart, and Allie take on Apex (Shayna Baszler & Zoey Serrano) and Fire N Flava (Kiera Hogan & Tasha Steelz). Additionally, The Dollhouse (Mila Moore, Harley Hudson, & Taryn Terrell) are scheduled to appear.
+The lineup features an eight-person tag team match as Indi Hartwell, Gabby Forza, Shotzi Blackheart, and Allie take on Apex (Shayna Baszler & Zoey Serrano) and Fire N Flava (Kiera Hogan & Tasha Steelz). Additionally, The Dollhouse (Mila Moore, Harley Hudson, & Taryn Terrell) are scheduled to appear.
 
-In championship action, Leon Slater will defend the TNA World Championship against Nic Nemeth. The card also includes KC Navarro vs. Bear Bronson, an appearance by Trey Miguel, and Xia Brousbride in action. Fightful will have coverage of iMPACT! beginning at 9 p.m. ET on Thursday.
+In championship action, Leon Slater will defend the TNA World Championship against Nic Nemeth. The card also includes KC Navarro vs. Bear Bronson, an appearance by Trey Miguel, and Xia Brookside in action. Fightful will have coverage of iMPACT! beginning at 9 p.m. ET on Thursday.
