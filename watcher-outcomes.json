@@ -1,28 +1,33 @@
 {
+ "https://www.fightful.com/wrestling/sheamus-proves-he-has-zero-ring-rust-despite-being-out-of-action-for-a-year": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-19T17:24:00.292Z"
+ },
  "https://www.fightful.com/wrestling/tna-impact-spoilers-from-calgary-taped-on-11-18": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T17:17:59.067Z"
+  "at": "2026-11-19T17:22:26.643Z"
  },
  "https://www.fightful.com/wrestling/titus-oneil-tells-story-of-taking-over-uber-driving-himself-to-destination": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-19T17:17:58.761Z"
+  "at": "2026-11-19T17:22:26.185Z"
  },
  "https://www.fightful.com/wrestling/njpw-tanahashi-jam-2-results-11-19": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T17:16:27.278Z"
+  "at": "2026-11-19T17:20:39.319Z"
  },
  "https://www.fightful.com/wrestling/hechicero-challenges-zack-sabre-jr-for-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T17:16:26.547Z"
+  "at": "2026-11-19T17:20:38.256Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T17:16:25.936Z"
+  "at": "2026-11-19T17:20:37.365Z"
  },
  "https://www.fightful.com/wrestling/ryzin-details-nixed-plans-for-him-to-join-dark-order-in-aew": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-11T01:36:08.134Z"
- },
- "https://www.ringsidenews.com/wwe-nxt-results-highlights-key-moments-november-10-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-11T01:23:39.310Z"
  }
 }
