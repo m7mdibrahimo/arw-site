@@ -473,6 +473,8 @@ const RULES: Rule[] = [
   // The future «س» cut off its verb: «"س تكون طريقة رائعة"» (Matt Hardy story, INCIDENTS #945)
   { code: "detached_prefix", severity: "error", re: /(?<![ء-ي\w])س\s+(?=[تينأ][ء-ي]{2,})/g, message: "«س» منفصلة عن الفعل (مثل: س تكون ← ستكون)" },
   { code: "repeated_word", severity: "error", re: new RegExp(`(?<![${AR}])([${AR}]{4,})\\s+\\1(?![${AR}])`, "g"), message: "كلمة مكررة مرتين متتاليتين" },
+  // «مستوحية ذلك من المسيرة المميزة لفيكي فيكي غيريرو» went live: the first copy carries «ل/ب» glued to it, so the rule above never saw it (round 2026-11-19)
+  { code: "repeated_word", severity: "error", re: new RegExp(`(?<![${AR}])[لب]([${AR}]{4,})\\s+\\1(?![${AR}])`, "g"), message: "كلمة مكررة مرتين متتاليتين (الأولى لازق فيها حرف جر: «لفيكي فيكي»)", fields: ["title", "body"] },
   // A word typed twice where the first try stopped and restarted: «لكي أثبت للعالع العالم أجمع» — «العال» + the
   // first letter again, then the whole word (Kyle Fletcher story, INCIDENTS #1210). The broken copy ends with the
   // letter its stem starts with, and the real word follows (any prefix, but not «و»: «لايلا وايلد» is a name).

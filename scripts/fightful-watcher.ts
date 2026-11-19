@@ -2437,7 +2437,10 @@ function formatResultsMarkdown(text: string): string {
 let glossaryNameValues: Set<string> | null = null;
 export function isUnrelatedNameTag(tag: string, title: string, body: string): boolean {
   if (!glossaryNameValues) {
-    glossaryNameValues = new Set(Object.values(WRESTLER_NAMES_MAP).filter(v => /[\u0600-\u06FF]/.test(v) && !/^بطولة|^جائزة|^حقيبة/.test(v)));
+    const names = Object.values(WRESTLER_NAMES_MAP).filter(v => /[\u0600-\u06FF]/.test(v) && !/^بطولة|^جائزة|^حقيبة/.test(v));
+    // «أندرتيكر» is the glossary's «ذا أندرتيكر» without its article: a Zelina Vega story got that tag with no word of
+    // him in it (round 2026-11-19) because only the full form was judged. The bare form is judged too.
+    glossaryNameValues = new Set([...names, ...names.filter(v => /^ذا\s+\S/.test(v)).map(v => v.replace(/^ذا\s+/, ""))]);
   }
   const bare = tag.replace(/^فريق\s+/, "").trim();
   if (!glossaryNameValues.has(tag) && !glossaryNameValues.has(bare)) return false;

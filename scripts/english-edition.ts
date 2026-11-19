@@ -508,6 +508,8 @@ export function fixSingularThey(text: string): string {
 }
 
 export const ENGLISH_FIXES: [RegExp, string][] = [
+  // «bookings require a 50 percentage retainer» — after a number the word is «percent» (Santos Escobar story, round 2026-11-19)
+  [/\b(\d+(?:\.\d+)?) percentage\b(?! points?\b)/g, "$1 percent"],
   // «The Pat McAfeeShow» — the show name glued together from the X handle @PatMcAfeeShow; links keep the handle (The Rock story, round 2026-11-18)
   [/(?<![\w/@.])McAfeeShow\b/g, "McAfee Show"],
   // «featured Nic Nemeth defending his World Championship rematch against Elijah» — a title is defended, a rematch never is:
