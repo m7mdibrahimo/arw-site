@@ -933,7 +933,15 @@ type Ask = (prompt: string, json?: boolean, temperature?: number) => Promise<str
 /** «**bold**» the model sometimes puts around a name is only markup: dropped, instead of throwing the whole edition
  *  away (Vince McMahon / WWE Network story never reached the English site, INCIDENTS #948). */
 export function stripBold(text: string): string {
-  return String(text).replace(/\*\*([^*\n]+?)\*\*/g, "$1");
+  return String(text).replace(/\*\*([^*\n]+?)\*\*/g, "$1")
+    // «## Creative Ambitions» subheads: a short line with no full stop is dropped; a «#» before a whole sentence only loses
+    // the «#». The Cody Rhodes creative-role story never reached the English site over this (INCIDENTS #1416).
+    .split("\n").flatMap((l) => {
+      const m = l.match(/^\s*#{1,6}\s+(.*)$/);
+      if (!m) return [l];
+      const t = m[1].replace(/\s*#+\s*$/, "").trim();
+      return t.split(/\s+/).length >= 8 && /[.!?"”]$/.test(t) ? [t] : [];
+    }).join("\n").replace(/\n{3,}/g, "\n\n").replace(/\*\*/g, "");
 }
 
 const parse = (raw: string | null): EnglishEdition | null => {
