@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/wwe-planning-to-celebrate-30-years-of-the-rock/": {
-    "matchedFile": "20261105220225-wwe-تخطط-لإصدار-حزام-بطولة-خاص-بمناسبة-الذكرى-الثلاثين-لمسيرة-ذا-روك.md",
-    "reason": "الخبران يتناولان نفس الإعلان ونفس التسريب من المصدر ذاته (Fightful/WrestleVotes) حول خطط WWE للاحتفال بالذكرى الـ30 لبداية ذا روك وإصدار حزام تذكاري ومنتجات وحملة إعلامية.",
-    "at": "2026-11-05T19:52:07.064Z"
-  },
   "https://www.fightful.com/wrestling/iron-survivor-challenge-match-has-been-discussed-for-wwe-main-roster/": {
     "matchedFile": "20261105221854-wwe-ناقش-إمكانية-نقل-نزال-iron-survivor-challenge-إلى-القائمة-الرئيسية-في-wwe.md",
     "reason": "الخبر الجديد يتناول نفس المعلومة المتعلقة بمناقشة WWE لنقل نزال Iron Survivor Challenge للقائمة الرئيسية، وهي نفس المعلومة الواردة في الخبر المنشور مسبقاً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261119063659-ملخص-الليلة-الأولى-من-بطولة-aew-continental-classic-لعام-2026.md",
     "reason": "الخبر الجديد يغطي نفس نتائج نزالات عرض AEW Dynamite بتاريخ 18 نوفمبر 2026 التي تم نشرها بالفعل في الخبر رقم 0.",
     "at": "2026-11-19T04:13:22.310Z"
+  },
+  "https://www.wrestlinginc.com/2321437/aew-dynamite-november-18-2026-3-things-hated-loved-opinion-review/": {
+    "matchedFile": "20261119063659-ملخص-الليلة-الأولى-من-بطولة-aew-continental-classic-لعام-2026.md",
+    "reason": "الخبر الجديد يغطي نفس أحداث الليلة الأولى من بطولة AEW Continental Classic التي أقيمت في عرض 18 نوفمبر 2026 وتم تغطيتها مسبقاً في الخبر رقم 2.",
+    "at": "2026-11-19T05:48:06.635Z"
   }
 }
