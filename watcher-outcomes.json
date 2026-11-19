@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/santos-escobar-allegedly-refusing-return-500-deposit-canceled-big-event-ny-appearance": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-19T12:05:03.811Z"
+ },
  "https://www.fightful.com/wrestling/hechicero-challenges-zack-sabre-jr-for-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
   "at": "2026-11-10T18:31:11.485Z"
- },
- "https://www.fightful.com/wrestling/hyperactive-discuss-wrestling-in-japan-signing-with-sendai-girls-and-what-they-have-learned-from-their-time-there": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-10T18:22:03.100Z"
  }
 }
