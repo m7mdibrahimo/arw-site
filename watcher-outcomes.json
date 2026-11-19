@@ -1,38 +1,38 @@
 {
- "https://www.ringsidenews.com/val-venis-goes-off-sean-ross-sapp-rf-video-accusation-drags-wwe-legends-fight": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kevin Owens، اسم مصارع في العنوان أو المتن غير موجود في المصدر: The Dudley Boyz، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Dudley Boyz",
-  "retry": true,
-  "at": "2026-11-19T19:59:37.977Z"
- },
  "https://www.fightful.com/wrestling/details-on-feature-film-about-nattie-neidharts-book-life-story": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T20:01:13.875Z"
+  "at": "2026-11-19T20:04:31.875Z"
  },
  "https://www.fightful.com/wrestling/the-rocks-wwe-return-announcement-surprised-many-people-at-wwe-hq": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T20:01:13.357Z"
+  "at": "2026-11-19T20:04:31.157Z"
  },
  "https://www.fightful.com/wrestling/jeff-hardy-im-manifesting-a-feud-with-cm-punk": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T20:01:13.207Z"
+  "at": "2026-11-19T20:04:30.934Z"
  },
  "https://www.fightful.com/wrestling/report-anthem-considering-cutting-back-on-number-of-tna-ppvs-for-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T20:01:12.969Z"
+  "at": "2026-11-19T20:04:30.598Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-spoilers-from-calgary-taped-on-11-18": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T20:01:12.396Z"
+  "at": "2026-11-19T20:04:29.765Z"
  },
  "https://www.fightful.com/wrestling/njpw-tanahashi-jam-2-results-11-19": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T20:01:11.651Z"
+  "at": "2026-11-19T20:04:28.679Z"
+ },
+ "https://www.ringsidenews.com/val-venis-goes-off-sean-ross-sapp-rf-video-accusation-drags-wwe-legends-fight": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Kevin Owens، اسم مصارع في العنوان أو المتن غير موجود في المصدر: The Dudley Boyz، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Dudley Boyz",
+  "retry": true,
+  "at": "2026-11-19T19:59:37.977Z"
  },
  "https://www.ringsidenews.com/shiloh-hill-says-gta-vi-lost-plot-realistic-crime-consequences": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
