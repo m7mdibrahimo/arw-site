@@ -5599,7 +5599,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض مين ايفنت 18.11.2026 مترجم",
-    "lastAttempt": 1795106514421,
+    "lastAttempt": 1795107352957,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5617,9 +5617,15 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ايفولف 18.11.2026 مترجم",
-    "lastAttempt": 1795105740041,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1795107383022,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_reel",
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
