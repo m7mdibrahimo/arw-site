@@ -729,3 +729,11 @@ test('INCIDENTS #1387: a closing «وتواصل المنصة مراقبة أدا
 test('INCIDENTS #1387: «جابي فورزا» is corrected to the glossary spelling «غابي فورزا»', () => {
   assert.equal(applyCorrections('واجهت جابي فورزا البطلة'), 'واجهت غابي فورزا البطلة');
 });
+
+// INCIDENTS #1431: «ومع … وستشهد …» — a broken sentence with no main clause
+test("a «ومع …» clause followed by «وس…» is caught (INCIDENTS #1431)", () => {
+  const bad = checkArticle("عنوان", "ومع تأكيد المواعيد القضائية الجديدة لثمانية أسابيع ديسمبر وستشهد القضايا مزيدا من التطورات.", []);
+  assert.ok(bad.some(i => i.code === "waw_after_ma_clause"));
+  const ok = checkArticle("عنوان", "ومع توجه كل من بيكي لينش وستيفاني فوكون إلى العرض، تزداد الإثارة. ومع تحديد مواعيد جديدة، ستشهد القضية تطورات.", []);
+  assert.ok(!ok.some(i => i.code === "waw_after_ma_clause"));
+});

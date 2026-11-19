@@ -271,3 +271,10 @@ test("an opening phrase alone is never the description (INCIDENTS #1278)", async
   const hayes = metaDescription("During a recent appearance on Stephanie McMahon's What's Your Story? podcast, WWE producer Michael Hayes discussed his role within the company and revealed that Chief Content Officer Paul 'Triple H' Levesque has already identified a potential successor for him. Hayes shared more.");
   assert.match(hayes, /Michael Hayes discussed his role/);
 });
+
+// INCIDENTS #1431: a word cut one word before the end of the first sentence changed its meaning
+test("a word cut never drops only the last word of the first sentence (INCIDENTS #1431)", async () => {
+  const { metaDescription } = await import("../lib/meta-description.cjs");
+  const d = metaDescription("The Rock is officially heading back to WWE for Survivor Series, but former writer Vince Russo believes the company has a much bigger reason to need him right now. Russo is convinced that WWE has been struggling creatively for months.");
+  assert.match(d, /need him right now\.$/, d);
+});

@@ -2,7 +2,7 @@
 title: "Jeff Hardy Issues Apology for Past Drunk Driving"
 slug: "jeff-hardy-issues-apology-for-past-drunk-driving"
 description: "Jeff Hardy offered an emotional apology for his past drunk driving arrests."
-federation: AEW
+federation: WWE
 date: 2026-11-19T20:49:33.000Z
 created_at: 2026-11-19T21:04:13.506Z
 source_id: 802270779

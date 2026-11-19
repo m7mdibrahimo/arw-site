@@ -4,10 +4,10 @@ import showSeo from "../lib/show-seo.cjs";
 const { showSeoText } = showSeo as any;
 
 // INCIDENTS #1279: «اخر عرض الرو» 5.2 / «اخر عرض سماك داون» 9.4 — the newest WWE weekly episode says «آخر عرض <date>»;
-// an older one keeps «موعد العرض».
+// an older one keeps «موعد العرض». INCIDENTS #1432: the program name follows «آخر» («آخر عرض الرو 9 نوفمبر») — the query «اخر عرض الرو».
 test("the newest WWE weekly episode's description says «آخر عرض»", () => {
   const raw = { headline: "عرض الرو 09.11.2026 مترجم", title: "WWE RAW 09.11.2026", programName: "WWE RAW", eventDate: new Date("2026-11-09"), day: "9 نوفمبر 2026", description: "عرض الرو مترجم بالكامل مع جميع النزالات والأحداث." };
-  assert.match(showSeoText({ ...raw, isLatest: true }).description, /أونلاين، آخر عرض 9 نوفمبر 2026 \(دبليو دبليو إي راو/);
+  assert.match(showSeoText({ ...raw, isLatest: true }).description, /أونلاين، آخر عرض الرو 9 نوفمبر 2026 \(دبليو دبليو إي راو/);
   assert.match(showSeoText({ ...raw, isLatest: false }).description, /موعد العرض 9 نوفمبر 2026/);
 });
 

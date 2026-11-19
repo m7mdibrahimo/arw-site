@@ -1,7 +1,7 @@
 ---
 title: "Vince Russo Says WWE Needs The Rock to Save Survivor Series"
 slug: "vince-russo-says-wwe-needs-the-rock-to-save-survivor-series"
-description: "The Rock is officially heading back to WWE for Survivor Series, but former writer Vince Russo believes the company has a much bigger reason to need him right."
+description: "The Rock is officially heading back to WWE for Survivor Series, but former writer Vince Russo believes the company has a much bigger reason to need him right now."
 federation: WWE
 date: 2026-11-19T22:05:00.000Z
 created_at: 2026-11-19T22:12:48.373Z
