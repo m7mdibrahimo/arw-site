@@ -5530,16 +5530,13 @@
     "facebook_reel": true,
     "facebook_story": false,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض ان اكس تي 17.11.2026 (تعليق عربي)",
-    "lastAttempt": 1795053276482,
+    "lastAttempt": 1795054084679,
     "errors": {
-      "facebook_story": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة.",
-      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
+      "facebook_story": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة."
     },
-    "processing": [
-      "instagram_story"
-    ],
+    "processing": [],
     "reviewPlatforms": [
       "facebook_story"
     ],
