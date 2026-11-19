@@ -1,33 +1,43 @@
 {
- "https://www.wrestlinginc.com/2322076/dave-meltzer-clarifies-rock-wwe-survivor-series-participation": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-19T18:32:12.530Z"
+ "https://www.fightful.com/wrestling/the-rocks-wwe-return-announcement-surprised-many-people-at-wwe-hq": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T18:41:06.273Z"
+ },
+ "https://www.fightful.com/wrestling/jeff-hardy-im-manifesting-a-feud-with-cm-punk": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-19T18:41:06.071Z"
  },
  "https://www.fightful.com/wrestling/report-anthem-considering-cutting-back-on-number-of-tna-ppvs-for-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T18:32:20.884Z"
+  "at": "2026-11-19T18:41:05.755Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-spoilers-from-calgary-taped-on-11-18": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T18:32:19.966Z"
+  "at": "2026-11-19T18:41:04.921Z"
  },
  "https://www.fightful.com/wrestling/titus-oneil-tells-story-of-taking-over-uber-driving-himself-to-destination": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-19T18:32:19.509Z"
+  "at": "2026-11-19T18:41:04.532Z"
  },
  "https://www.fightful.com/wrestling/njpw-tanahashi-jam-2-results-11-19": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T18:31:18.908Z"
+  "at": "2026-11-19T18:36:45.616Z"
  },
  "https://www.fightful.com/wrestling/hechicero-challenges-zack-sabre-jr-for-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-19T18:31:17.822Z"
+  "at": "2026-11-19T18:36:44.695Z"
+ },
+ "https://www.wrestlinginc.com/2322076/dave-meltzer-clarifies-rock-wwe-survivor-series-participation": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-19T18:32:12.530Z"
  },
  "https://www.fightful.com/wrestling/rj-city-has-an-aew-bio-still-doesnt-have-a-graphic": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
@@ -1988,15 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-11T04:29:52.949Z"
- },
- "https://www.wrestlinginc.com/2311789/wwe-nxt-november-10-2026-results": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Death Riders",
-  "retry": true,
-  "at": "2026-11-11T03:34:09.223Z"
- },
- "https://www.wrestlinginc.com/2310330/booker-t-cm-punk-current-wwe-run-better-first": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-11T03:00:09.897Z"
  }
 }
