@@ -1,5 +1,15 @@
 [
   {
+    "id": 2880108900,
+    "link": "https://www.wrestlinginc.com/2321432/aew-continental-classic-2026-opening-round/",
+    "date": "Thu, 19 Nov 2026 03:39:01 +0000",
+    "date_gmt": "2026-11-19T03:39:01.000Z",
+    "title": {
+      "rendered": "AEW Continental Classic 2026 Opening Night Round Up"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-continental-classic-2026-opening-night-round-up/l-intro-1795059429.jpg"
+  },
+  {
     "id": 3517802893,
     "link": "https://www.wrestlinginc.com/2321430/queen-aminata-aew-tbs-title-dynamite-four-way/",
     "date": "Thu, 19 Nov 2026 03:15:29 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Charlotte Flair On Recent WWE Run: 'Having The Time Of My Life'"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/charlotte-flair-on-recent-wwe-run-having-the-time-of-my-life/l-intro-1794994361.jpg"
-  },
-  {
-    "id": 2115141277,
-    "link": "https://www.wrestlinginc.com/2320189/wwe-cole-karter-aew-contract-status-clarification/",
-    "date": "Wed, 18 Nov 2026 15:00:00 +0000",
-    "date_gmt": "2026-11-18T15:00:00.000Z",
-    "title": {
-      "rendered": "Further Clarification On Former WWE Star Cole Karter's Contract Status With AEW"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/further-clarification-on-former-wwe-star-cole-karters-contract-status-with-aew/l-intro-1794990030.jpg"
   }
 ]
