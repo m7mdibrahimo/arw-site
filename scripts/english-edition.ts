@@ -115,7 +115,7 @@ export function englishStyleRules(sourceUrl: string): string {
 - Grammar: "an" before a vowel sound (an experimental match, an emotional message), "a" before a consonant sound (a unanimous decision); a speaker's contraction is "I'm", never "I're" (the code fixes both, but write them right).
 - Pronouns after a preposition take the object form: "with him and his group", "between him and Cody", "for her and the team" — never "with he", "between he", "for she" (INCIDENTS #870).
 - Never glue two words into one: every word is separated by a space, "Life-Altering Injury", never "Life-AlteringInjury" (the code fixes it, but write it right).
-- One name per person in the headline and the body: use the name the source's text uses (the body says "Miro", so the headline says "Miro", not "Rusev"; a source headline may carry the old ring name) (round 2026-10-27).
+- One name per person in the headline and the body: use the name the source's text uses (the body says "Miro", so the headline says "Miro", not "Rusev"; a source headline may carry the old ring name) (round 2026-10-27). When the source's body uses a legal name for a wrestler fans know by a ring name (Fightful writes "Stephen Farrelly" for Sheamus), write the ring name everywhere and add the legal name once: "Sheamus (Stephen Farrelly)" (round 2026-11-19).
 - Interview quotes in the source are often machine transcripts ("Um yeah", "the the company", "you know I feel like", "Let's just we got a I got"): never copy false starts or fillers. Quote only a clean, complete sentence, or report the point in your own words (INCIDENTS #1219).
 - No markdown headings (#), no bold, no lists with bullets, no links in the text.
 - Weekly TV dates are the US air date: Raw is a Monday, NXT a Tuesday, Dynamite a Wednesday, SmackDown a Friday, Collision a Saturday. A story published after midnight UTC still says "the November 9 episode of WWE Raw", never the next day (INCIDENTS #1197).
@@ -283,6 +283,18 @@ export function enDurationNotInSource(text: string, sourceText: string): string 
   return null;
 }
 
+/** Ring name → legal name a source switches to once a wrestler leaves WWE (Fightful writes «Stephen Farrelly» for Sheamus). */
+export const REAL_NAMES: Record<string, string> = { "Sheamus": "Stephen Farrelly", "Big E": "Ettore Ewen" };
+
+/** The headline names the ring name but the body only the legal name: a reader can't tell they are one man (round 2026-11-19). */
+export function realNameSwitch(title: string, body: string): string | null {
+  for (const [ring, real] of Object.entries(REAL_NAMES)) {
+    const r = new RegExp(`\\b${ring}\\b`);
+    if (r.test(title) && body.includes(real) && !r.test(body)) return `${ring} → ${real}`;
+  }
+  return null;
+}
+
 export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   const issues: string[] = [];
   const title = String(e?.title || "").trim(), body = String(e?.body || "").trim();
@@ -293,6 +305,8 @@ export function checkEnglish(e: EnglishEdition, i: EnglishInput): string[] {
   // one (INCIDENTS #872). Any other script, and any translation arrow, blocks the English edition.
   if (/[\u0370-\u03FF\u0400-\u058F\u0590-\u05FF\u0900-\u0DFF\u0E00-\u0E7F\u1000-\u109F\u10A0-\u10FF\u1200-\u137F\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF]/.test(title + "\n" + body)) issues.push("letters from another script");
   if (/->|→/.test(body)) issues.push("translation arrow left in the text");
+  const switched = realNameSwitch(title, body);
+  if (switched) issues.push(`headline ring name, body only the legal name: ${switched}`);
   // «the vacant title», «front-runner», «cancelled her bookings» with nothing in the source that says it (INCIDENTS #1138)
   for (const c of claimNotInSource(title + "\n" + body, i.sourceText, "en")) issues.push(`claim not in the source: ${c}`);
   // Tony Khan's tweet credited to the team it talks about (INCIDENTS #1225)

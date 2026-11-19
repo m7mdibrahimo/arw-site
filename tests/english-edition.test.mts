@@ -612,3 +612,10 @@ test('a roster of names is not «copied from the source», a copied sentence sti
   assert.equal(copiedRun('He joins a list that includes Cody Rhodes, Zilla Fatu, Noam Dar, Romeo Moreno, Kelani Jordan, Charlotte Flair, Jacy Jayne, Fallon Henley, Lainey Reid and Liv Morgan.', src), null);
   assert.ok(copiedRun('Hill has been working hard to establish himself on NXT, and now he is getting an opportunity that could matter.', src));
 });
+
+test('headline ring name with a body that only uses the legal name is blocked (round 2026-11-19)', async () => {
+  const { realNameSwitch } = await import('../scripts/english-edition.ts');
+  assert.equal(realNameSwitch('Sheamus Shows No Ring Rust', 'Stephen Farrelly demonstrated his readiness.'), 'Sheamus → Stephen Farrelly');
+  assert.equal(realNameSwitch('Sheamus Shows No Ring Rust', 'Sheamus (Stephen Farrelly) demonstrated his readiness.'), null);
+  assert.equal(realNameSwitch('Cody Wins', 'Stephen Farrelly watched.'), null);
+});
