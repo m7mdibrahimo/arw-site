@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/titus-oneil-forced-drive-his-own-uber-25-hours-driver-started-falling-asleep": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-19T13:41:35.163Z"
+ },
  "https://www.fightful.com/wrestling/hechicero-challenges-zack-sabre-jr-for-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,

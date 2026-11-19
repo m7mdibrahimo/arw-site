@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2308453/tko-mark-shapiro-wwe-wrestlemania-42-moving-saudi-arabia-half-upfront/": {
-    "matchedFile": "20261105015231-wwe-تضع-خطة-بديلة-لنقل-عرض-wrestlemania-2027-من-السعودية.md",
-    "reason": "الخبر الجديد يغطي نفس تصريحات مارك شابيرو خلال مكالمة الأرباح بخصوص خطط إقامة WrestleMania 43 في السعودية والبدائل المتاحة، وهو ما تم تغطيته بالفعل في الخبر رقم 0.",
-    "at": "2026-11-05T20:21:22.424Z"
-  },
   "https://www.ringsidenews.com/wwe-pulled-chad-gables-planned-gcw-debut-last-minute/": {
     "matchedFile": "20261105223746-تشاد-غيبل-كان-من-المقرر-أن-يواجه-جوناثان-غريشام-في-عرض-josh-barnetts-bloodsport-x.md",
     "reason": "الخبر الجديد يتناول نفس واقعة إلغاء مشاركة تشاد غيبل في عرض Bloodsport X وتصريحات بريت لودرديل حولها، وهي نفس تفاصيل الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261119031500-نتائج-عرض-aew-dynamite-18-نوفمبر-2026-فوز-بانديدو-في-الحدث-الرئيسي.md",
     "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
     "at": "2026-11-19T08:22:12.953Z"
+  },
+  "https://www.ringsidenews.com/offset-hurt-ric-flairs-claim-he-only-made-39000-ric-flair-drip/": {
+    "matchedFile": "20261119161144-أوفست-يقول-إن-ريك-فلير-جرح-مشاعره-بعد-ادعائه-أنه-ربح-39-ألف-دولار-فقط-من-أغنية-ric-flair-drip.md",
+    "reason": "الخبر الجديد يكرر نفس التصريحات ورد أوفست على ادعاءات ريك فلير بشأن أرباح أغنية Ric Flair Drip والتي تم نشرها بالفعل في الخبر السابق.",
+    "at": "2026-11-19T13:43:12.547Z"
   }
 }
