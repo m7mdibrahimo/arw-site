@@ -11,6 +11,28 @@
     "description": "عرض داينامايت مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
+    "url": "/shows/wwe-main-event-18-11-2026/",
+    "title": "عرض مين ايفنت 18.11.2026 مترجم",
+    "subtitle": "WWE Main Event 18.11.2026",
+    "image": "/content/images/sv1mn3e1g3bw7ulu.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض مين ايفنت مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/wwe-evolve-18-11-2026/",
+    "title": "عرض ايفولف 18.11.2026 مترجم",
+    "subtitle": "WWE Evolve 18.11.2026",
+    "image": "/content/images/1pwzl4gz8qqw85re.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ايفولف مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-nxt-17-11-2026-تعليق-عربي/",
     "title": "عرض ان اكس تي 17.11.2026 (تعليق عربي)",
     "subtitle": "WWE NXT 17.11.2026 (تعليق عربي)",
