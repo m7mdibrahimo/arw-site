@@ -73,13 +73,5 @@
 - wrestling in arabic — ترتيب 8.8، 115 ظهور، 1 نقرة ← /
 - نتائج عرض سماك داون الاخير 2026 — ترتيب 6.5، 144 ظهور، 10 نقرة ← /
 
-## مشاكل لازم تتصلح (9)
-- فحص الرابط فشل: https://arab-wrestling.com/news/فريق-إف-تي-آر-والإخوة-كاسبر-يواجهون-ذا-يانغ-باكس-وموتور-سيتي-ماشين-جانز-في-عرض-aew-winter-is-coming/ — The operation was aborted due to timeout
-- فحص الرابط فشل: https://arab-wrestling.com/news/ويل-أوسبراي-لم-يحصل-على-تصريح-طبي-للسفر-بعد-مشاركته-في-عرض-aew-full-gear/ — The operation was aborted due to timeout
-- فحص الرابط فشل: https://arab-wrestling.com/news/تطوير-فيلم-سينمائي-مستوحى-من-كتاب-وقصة-حياة-ناتاليا/ — The operation was aborted due to timeout
-- فحص الرابط فشل: https://arab-wrestling.com/news/الكشف-عن-الموقع-المحتمل-لعرض-aew-all-in-2027/ — The operation was aborted due to timeout
-- فحص الرابط فشل: https://arab-wrestling.com/news/دانهاوزن-يعلق-على-عودة-ذا-روك-إلى-عرض-wwe-survivor-series-2026-بصورة-قديمة-ساخرة/ — The operation was aborted due to timeout
-- فحص الرابط فشل: https://arab-wrestling.com/news/خطط-مايا-وورلد-لأمسية-الأربعاء-الفوز-ببطولة-tbs-ولعب-gta-6/ — The operation was aborted due to timeout
-- فحص الرابط فشل: https://arab-wrestling.com/news/سبيدبول-مايك-بيلي-يؤكد-عدم-وجود-تقاليد-أو-خرافات-تتعلق-بالمصارعة-أنا-متشكك-تماما/ — The operation was aborted due to timeout
-- فحص الرابط فشل: https://arab-wrestling.com/news/شارلوت-فلير-تمازح-والدها-ريك-فلير-بشأن-عاداته-في-صالة-الألعاب-الرياضية/ — The operation was aborted due to timeout
+## مشاكل لازم تتصلح (1)
 - ظهور كتير ونقرات قليلة (1626 ظهور، 0.8٪، ترتيب 5.4): https://arab-wrestling.com/shows/raw-24-08-2026/
