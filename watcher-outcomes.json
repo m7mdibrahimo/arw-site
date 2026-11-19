@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2321493/dwayne-rock-johnson-reflects-30-anniversary-wwe-debut": {
+  "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا/شركة X وشركة Y»",
+  "retry": true,
+  "at": "2026-11-19T14:48:50.514Z"
+ },
  "https://www.fightful.com/wrestling/hechicero-challenges-zack-sabre-jr-for-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "تقرير مشاهدة لعرض قديم (2026-11-02)",
   "retry": false,
   "at": "2026-11-10T21:10:55.942Z"
- },
- "https://www.fightful.com/wrestling/trick-williams-def-gunther-in-dark-match-prior-to-wwe-raw": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-10T20:36:47.226Z"
  }
 }
