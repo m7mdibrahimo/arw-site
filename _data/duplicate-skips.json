@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/uncategorized/rey-mysterio-announces-team-usa-vs-team-mexico-bout-for-wwe-survivor-series/": {
-    "matchedFile": "20261106145822-ري-ميستيريو-يعلن-عن-نزال-بين-فريق-الولايات-المتحدة-وفريق-المكسيك-في-عرض-wwe-survivor-series.md",
-    "reason": "الخبر الجديد يعلن نفس الحدث والتصريح الخاص بنزال فريق الولايات المتحدة ضد فريق المكسيك في عرض Survivor Series الذي أعلنه ري ميستيريو بالفعل في الخبر المنشور.",
-    "at": "2026-11-06T12:15:53.607Z"
-  },
   "https://www.fightful.com/wrestling/rey-mysterio-announces-team-usa-vs-team-mexico-bout-for-wwe-survivor-series/": {
     "matchedFile": "20261106145822-ري-ميستيريو-يعلن-عن-نزال-بين-فريق-الولايات-المتحدة-وفريق-المكسيك-في-عرض-wwe-survivor-series.md",
     "reason": "الخبر الجديد يعلن نفس الحدث والتصريح الخاص بنزال فريق الولايات المتحدة ضد فريق المكسيك في Survivor Series الذي أعلنه ري ميستيريو بالفعل في الخبر المنشور مسبقاً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261118212013-ذا-روك-يعلن-حضوره-عرض-wwe-survivor-series-2026.md",
     "reason": "الخبر الجديد يغطي نفس واقعة إعلان ذا روك عن حضوره لعرض Survivor Series 2026 عبر برنامج بات ماك أفي، وهي تفاصيل مكررة تم تناولها بالفعل في الخبر رقم 1.",
     "at": "2026-11-19T18:34:36.233Z"
+  },
+  "https://www.wrestlinginc.com/2322124/tna-ash-by-elegance-dana-brooke-wwe-pregnancy-crohns-disease/": {
+    "matchedFile": "20261118035630-آش-باي-إليغانس-تعلن-حملها-في-الأسبوع-32-بعد-فقدان-جنين-ومعاناة-صحية-قاسية.md",
+    "reason": "الخبر الجديد يعيد سرد نفس تفاصيل رحلة آش باي إليغانس الصحية وحملها وتشخيص مرض كرون التي تم تغطيتها بالفعل في الخبر رقم 0.",
+    "at": "2026-11-19T18:49:53.574Z"
   }
 }

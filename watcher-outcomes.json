@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2322076/dave-meltzer-clarifies-rock-wwe-survivor-series-participation": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-19T18:48:59.291Z"
+ },
  "https://www.fightful.com/wrestling/the-rocks-wwe-return-announcement-surprised-many-people-at-wwe-hq": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -33,11 +38,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-19T18:43:32.139Z"
- },
- "https://www.wrestlinginc.com/2322076/dave-meltzer-clarifies-rock-wwe-survivor-series-participation": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-19T18:32:12.530Z"
  },
  "https://www.fightful.com/wrestling/rj-city-has-an-aew-bio-still-doesnt-have-a-graphic": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
