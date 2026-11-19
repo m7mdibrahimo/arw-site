@@ -5550,16 +5550,13 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 17.11.2026 مترجم",
-    "lastAttempt": 1795057607537,
+    "lastAttempt": 1795058496607,
     "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "tiktok": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة."
     },
-    "processing": [
-      "instagram_story"
-    ],
+    "processing": [],
     "reviewPlatforms": [
       "tiktok"
     ],
@@ -5573,16 +5570,15 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض تي ان ايه اكسبلوجن 13.11.2026 مترجم",
-    "lastAttempt": 1795057637710,
+    "lastAttempt": 1795058507944,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
-      "tiktok"
+      "instagram_reel"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   }
 }
