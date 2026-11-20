@@ -22,6 +22,6 @@ This return comes just days before Survivor Series WarGames, making Garcia the o
 
 > "WICHITA, KANSAS… are you READY?! See you LIVE!!"
 
-Garcia has made several previous appearances on WWE shows since leaving her full-time position on WWE SmackDown in March 2025, having recently returned at various times to cover for absent announcers. Details have not yet clarified whether this participation is limited to a single night or part of a longer-term arrangement.
+Garcia has made several previous appearances on WWE shows since leaving her full-time position on WWE SmackDown in March 2025, having recently returned at various times to cover for absent announcers. It has not yet been clarified whether this participation is limited to a single night or part of a longer-term arrangement.
 
 https://www.instagram.com/p/Df90jNFFh2d/
