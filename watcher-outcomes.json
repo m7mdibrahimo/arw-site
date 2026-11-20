@@ -1,58 +1,58 @@
 {
- "https://www.fightful.com/wrestling/sherilyn-guerrero-says-my-palms-started-sweating-when-she-was-told-she-would-main-event-her-first-match": {
-  "reason": "المراجعة رفضته: فعل مثنى («تعرقان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، فعل مثنى («تعرقان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-20T20:25:29.334Z"
- },
  "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:25:14.714Z"
+  "at": "2026-11-20T20:31:06.481Z"
  },
  "https://www.fightful.com/wrestling/wwe-survivor-series-odds-courtesy-of-mybookie": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:25:13.981Z"
+  "at": "2026-11-20T20:31:05.469Z"
  },
  "https://www.fightful.com/wrestling/roh-tv-results-11-19-hyan-teams-with-maya-world": {
-  "reason": "المراجعة رفضته: فعل مثنى («سينافسان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "reason": "المراجعة رفضته: جملة افتتاحية من غير فعل («عرض اتحاد X أحدث عرض من…») — ابدأ بفعل: «قدم اتحاد X أحدث حلقة من…» (INCIDENTS #783)، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه AR Fox، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
   "retry": true,
-  "at": "2026-11-20T20:25:13.495Z"
+  "at": "2026-11-20T20:31:04.777Z"
  },
  "https://www.fightful.com/wrestling/toni-storm-tapes-to-premiere-on-november-27": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:24:38.624Z"
+  "at": "2026-11-20T20:28:40.806Z"
  },
  "https://www.fightful.com/wrestling/johnny-gargano-sami-zayn-is-hope-for-guys-like-me": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:24:38.353Z"
+  "at": "2026-11-20T20:28:40.427Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-11-17-viewership-increases-demo-remains-the-same": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:24:37.914Z"
+  "at": "2026-11-20T20:28:39.857Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-20": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:24:37.412Z"
+  "at": "2026-11-20T20:28:39.172Z"
  },
  "https://www.fightful.com/wrestling/rich-swann-confirms-he-will-be-a-free-agent-at-the-end-of-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:24:36.982Z"
+  "at": "2026-11-20T20:28:38.589Z"
  },
  "https://www.fightful.com/wrestling/spoilers-title-changes-at-11-19-tna-impact-tapings": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:24:36.623Z"
+  "at": "2026-11-20T20:28:38.115Z"
  },
  "https://www.fightful.com/wrestling/zack-sabre-jr-vs-hechicero-added-to-njpw-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:24:36.440Z"
+  "at": "2026-11-20T20:28:37.875Z"
+ },
+ "https://www.fightful.com/wrestling/sherilyn-guerrero-says-my-palms-started-sweating-when-she-was-told-she-would-main-event-her-first-match": {
+  "reason": "المراجعة رفضته: فعل مثنى («تعرقان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، فعل مثنى («تعرقان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-20T20:25:29.334Z"
  },
  "https://www.wrestlinginc.com/2323508/wwe-survivor-series-wargames-2026-bully-ray-rock-dwayne-johnson-needs-endgame-involved": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
