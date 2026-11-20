@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/randy-orton-im-done-playing-games-i-need-number-15-and-i-need-it-sooner-than-later/": {
-    "matchedFile": "20261107005036-راندي-أورتن-يدعي-أنه-كان-متحفظا-في-نزاله-ضد-كودي-رودز-في-عرض-wrestlemania.md",
-    "reason": "الخبر الجديد يعيد نفس التصريحات التي أدلى بها راندي أورتن بشأن نزاله ضد كودي رودز في عرض Crown Jewel ومراجعته لتصرفه في WrestleMania، وهي نفس التفاصيل والعبارات الموجودة في الخبر المنشور رقم 0.",
-    "at": "2026-11-07T00:42:22.122Z"
-  },
   "https://www.fightful.com/wrestling/details-on-tiffany-strattons-money-in-the-bank-win/": {
     "matchedFile": "20261107043842-كشف-تفاصيل-كواليس-فوز-تيفاني-ستراتون-بمواجهة-money-in-the-bank-في-wwe.md",
     "reason": "الخبر الجديد يكرر نفس تفاصيل كواليس فوز تيفاني ستراتون بحقيبة Money in the Bank وتوقيت إبلاغ المشاركات بالنتيجة المذكورة بالفعل في الخبر المنشور.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261120183547-اتحاد-aew-يعلن-عن-سلسلة-من-خمسة-أجزاء-بعنوان-the-toni-storm-tapes-وسط-اختفاء-توني-ستورم-الغامض.md",
     "reason": "الخبر الجديد يعنح نفس تفاصيل إطلاق سلسلة The Toni Storm Tapes من اتحاد AEW وموعد عرضها في 27 نوفمبر تماماً مثل الخبر المنشور مسبقاً.",
     "at": "2026-11-20T15:58:23.378Z"
+  },
+  "https://www.wrestlinginc.com/2323037/aew-toni-storm-tapes-announces-five-part-limited-series/": {
+    "matchedFile": "20261120183547-اتحاد-aew-يعلن-عن-سلسلة-من-خمسة-أجزاء-بعنوان-the-toni-storm-tapes-وسط-اختفاء-توني-ستورم-الغامض.md",
+    "reason": "الخبر الجديد يعبر عن نفس الإعلان الرسمي لسلسلة The Toni Storm Tapes وتفاصيلها ومواعيد عرضها المنشورة بالفعل في الخبر السابق.",
+    "at": "2026-11-20T16:38:35.872Z"
   }
 }
