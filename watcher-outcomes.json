@@ -1,58 +1,63 @@
 {
- "https://www.fightful.com/wrestling/adriana-rizzo-recalls-being-told-of-wwe-release-showed-interest-in-other-aspects-while-injured": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+ "https://www.fightful.com/wrestling/wwe-files-to-trademark-gringo-anonimo-and-anonimo-gringo": {
+  "reason": "المراجعة رفضته: مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، صفة مثنى مؤنث (الأخيرتين/الأولتين/السابقتين…) ممنوعة — اكتب «ختام» أو «آخر الجولات» بدون مثنى (INCIDENTS #850)",
   "retry": true,
-  "at": "2026-11-20T13:04:24.701Z"
+  "at": "2026-11-20T13:08:50.536Z"
  },
  "https://www.fightful.com/wrestling/rich-swann-confirms-he-will-be-a-free-agent-at-the-end-of-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:00:18.572Z"
+  "at": "2026-11-20T13:06:55.503Z"
  },
  "https://www.fightful.com/wrestling/spoilers-title-changes-at-11-19-tna-impact-tapings": {
   "reason": "المراجعة رفضته: فائز مش موجود في نتايج المصدر (النزال لسه ما خلصش؟): المواجهة الأولى: نزال على البطولة الدولية، المواجهة الثانية: نزال على بطولة التلفزيون للسيدات",
   "retry": true,
-  "at": "2026-11-20T13:00:18.248Z"
+  "at": "2026-11-20T13:06:55.100Z"
  },
  "https://www.fightful.com/wrestling/zack-sabre-jr-vs-hechicero-added-to-njpw-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T12:58:24.716Z"
+  "at": "2026-11-20T13:06:28.056Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-results-11-19-leon-slater-vs-nic-nemeth": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T12:58:24.395Z"
+  "at": "2026-11-20T13:06:27.657Z"
  },
  "https://www.fightful.com/wrestling/keanu-carver-placed-on-psychiatric-hold": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T12:58:23.874Z"
+  "at": "2026-11-20T13:06:27.009Z"
  },
  "https://www.fightful.com/wrestling/motion-to-compel-hearing-date-set-in-ludwig-kaiser-battery-case": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T12:58:23.611Z"
+  "at": "2026-11-20T13:06:26.692Z"
  },
  "https://www.fightful.com/wrestling/details-on-feature-film-about-nattie-neidharts-book-life-story": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T12:58:23.152Z"
+  "at": "2026-11-20T13:06:26.115Z"
  },
  "https://www.fightful.com/wrestling/the-rocks-wwe-return-announcement-surprised-many-people-at-wwe-hq": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T12:58:22.630Z"
+  "at": "2026-11-20T13:06:25.427Z"
  },
  "https://www.fightful.com/wrestling/jeff-hardy-im-manifesting-a-feud-with-cm-punk": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T12:58:22.470Z"
+  "at": "2026-11-20T13:06:25.224Z"
  },
  "https://www.fightful.com/wrestling/report-anthem-considering-cutting-back-on-number-of-tna-ppvs-for-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T12:58:22.224Z"
+  "at": "2026-11-20T13:06:24.910Z"
+ },
+ "https://www.fightful.com/wrestling/adriana-rizzo-recalls-being-told-of-wwe-release-showed-interest-in-other-aspects-while-injured": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-20T13:04:24.701Z"
  },
  "https://www.ringsidenews.com/velvet-sky-says-shes-finally-free-mentally-emotionally-abusive-man": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
   "at": "2026-11-11T20:04:54.145Z"
- },
- "https://www.ringsidenews.com/sheamus-shows-off-wild-bahrain-comic-con-adventure-amid-wrestling-free-agency": {
-  "reason": "المراجعة رفضته: العنوان بينتهي بكلمة مبتورة مش موجودة في الخبر — الاقتباس اتقطع",
-  "retry": true,
-  "at": "2026-11-11T19:28:51.941Z"
  }
 }
