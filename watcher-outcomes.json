@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2321436/tna-thursday-night-impact-november-19-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-20T02:41:07.999Z"
+ },
  "https://www.fightful.com/wrestling/rocky-romero-and-volador-jr-to-challenge-for-roh-tag-team-titles": {
   "reason": "المراجعة رفضته: فعل مثنى («ينافسان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، فعل مثنى («سينافسان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-20T02:29:22.497Z"
- },
- "https://www.wrestlinginc.com/2321436/tna-thursday-night-impact-november-19-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-20T02:20:42.514Z"
  },
  "https://www.ringsidenews.com/triple-h-tony-khan-blamed-driving-millions-fans-away-wrestling": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
