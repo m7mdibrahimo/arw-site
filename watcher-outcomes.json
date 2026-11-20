@@ -1,4 +1,19 @@
 {
+ "https://www.ringsidenews.com/wwe-smackdown-preview-november-20-2026-confirmed-matches-start-time-how-watch": {
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
+  "retry": true,
+  "at": "2026-11-20T12:04:46.907Z"
+ },
+ "https://www.ringsidenews.com/nikki-bella-trying-set-date-mystery-man-she-spotted-ufc-event": {
+  "reason": "المراجعة رفضته: مثنى (فريقيهما/لقبيهما/الزميلان) ممنوع — قول «فريقهم/لقبهم/الزملاء» أو كرر الأسماء",
+  "retry": true,
+  "at": "2026-11-20T12:01:35.322Z"
+ },
+ "https://www.ringsidenews.com/spoiler-new-champions-crowned-during-tna-tapings-calgary": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، اسم مصارع في العنوان أو المتن غير موجود في المصدر: TV Championship",
+  "retry": true,
+  "at": "2026-11-20T12:01:17.079Z"
+ },
  "https://www.fightful.com/wrestling/zack-sabre-jr-vs-hechicero-added-to-njpw-wrestle-kingdom-21": {
   "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا/شركة X وشركة Y»",
   "retry": true,
@@ -43,11 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-20T11:57:05.661Z"
- },
- "https://www.ringsidenews.com/spoiler-new-champions-crowned-during-tna-tapings-calgary": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، اسم مصارع في العنوان أو المتن غير موجود في المصدر: TV Championship",
-  "retry": true,
-  "at": "2026-11-20T11:52:08.477Z"
  },
  "https://www.wrestlinginc.com/2321436/tna-thursday-night-impact-november-19-2026-results": {
   "reason": "المراجعة رفضته: المواجهة مكتوبة «نزال فردي» والفقرة تحتها بتقول «نزال ثلاثي/فرق» — صحح العنوان حسب سطر المصدر، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Gabby Forza، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، المصدر بيتكلم عن John Skyler (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
@@ -1988,15 +1998,5 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-11T17:40:39.453Z"
- },
- "https://www.fightful.com/wrestling/kyle-fletcher-says-he-is-dealing-with-very-similar-feelings-ahead-of-his-aew-full-gear-rematch-with-will-ospreay": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-11T17:23:15.824Z"
- },
- "https://www.wrestlinginc.com/2313184/tna-leon-slater-doesnt-see-stepping-stone-other-promotions": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
-  "retry": true,
-  "at": "2026-11-11T17:12:40.417Z"
  }
 }
