@@ -1,5 +1,5 @@
 ---
-title: "Ricochet Names DC Comics Character as Inspiration for His AEW Persona"
+title: "Ricochet Names DC Comics Characters as Inspiration for His AEW Persona"
 slug: "ricochet-names-dc-comics-character-as-inspiration-for-his-aew-persona"
 description: "Ricochet has explained that his current heel persona in AEW draws inspiration from DC Comics characters like the Joker, Lex Luthor, and the Reverse-Flash."
 federation: AEW

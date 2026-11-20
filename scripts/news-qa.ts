@@ -76,6 +76,8 @@ export function fixNumberGender(text: string): string {
 const DUAL_SPANS: Record<string, { count: string; plural: string; defCount: string }> = {
   "شهر": { count: "ثمانية أسابيع", plural: "الأسابيع", defCount: "الثمانية" },
   "أسبوع": { count: "أربعة عشر يوما", plural: "الأيام", defCount: "الأربعة عشر" },
+  // «two days» came out as «أربعة وعشرين ساعة» (DDP story) because «يومين» is blocked: convert it instead
+  "يوم": { count: "ثماني وأربعين ساعة", plural: "الساعات", defCount: "الثماني والأربعين" },
 };
 const DUAL_SPAN_ADJ: Record<string, string> = {
   "الماضيين": "الماضية", "الماضيان": "الماضية", "الأخيرين": "الأخيرة", "الأخيران": "الأخيرة",
@@ -88,7 +90,7 @@ export function fixTimeDuals(text: string): string {
   if (!text) return text;
   const adj = Object.keys(DUAL_SPAN_ADJ).join("|");
   // group 1: «لل» / «وال» / «بال»… (definite) or a bare joined letter; group 2: the unit; group 3: an adjective
-  const re = new RegExp(`(?<![${AR}])((?:و|ف)?لل|(?:و|ف|ب|ك|وب|فب)?ال|(?:و|ف|ب|ل|ك|وب|ول|فب|فل)?)(شهر|أسبوع)(?:ين|ان)(?![${AR}])(?!\\s+ونصف)(?:\\s+(${adj})(?![${AR}]))?`, "g");
+  const re = new RegExp(`(?<![${AR}])((?:و|ف)?لل|(?:و|ف|ب|ك|وب|فب)?ال|(?:و|ف|ب|ل|ك|وب|ول|فب|فل)?)(شهر|أسبوع|يوم)(?:ين|ان)(?![${AR}])(?!\\s+(?:ونصف|\\d))(?:\\s+(${adj})(?![${AR}]))?`, "g");
   return text.replace(re, (m, pre: string, unit: string, a?: string) => {
     const f = DUAL_SPANS[unit];
     const tail = a ? ` ${DUAL_SPAN_ADJ[a]}` : "";
@@ -679,7 +681,7 @@ const RULES: Rule[] = [
   // «عرضي AEW Dynamite وAEW Collision»، «في حلقتي مسلسل Visionquest» (INCIDENTS #945)
   // «واجه روب فان دام عائقين … تمثلا في»، «لسببين»، «أمران أساسيان»، «خيارين» passed every dual check — the noun lists named
   // matches, titles and people, not reasons, things and options (RVD story; 13 published stories had them — INCIDENTS #1312).
-  { code: "dual_noun", severity: "error", re: /(?<![ء-ي])(?:[وفبلك]|لل)?(?:ال)?(?:سبب(?:ين|ان)|أمر(?:ين|ان)|خيار(?:ين|ان)|عائق(?:ين|ان)|مشكلت(?:ين|ان)|عقبت(?:ين|ان)|احتمال(?:ين|ان)|سيناريو(?:ين|هان)|طريق(?:ين|ان))(?![ء-ي])|(?<![ء-ي])[وف]?(?:تمثلا|تمثلتا|يتمثلان|تتمثلان)(?![ء-ي])/g, message: "مثنى (سببين/أمرين/خيارين/عائقين/تمثلا) ممنوع — اكتب «لأكثر من سبب: أولها…»، «أكثر من خيار»، «مشكلة مزدوجة: …» أو اذكر الشيئين باسميهما", fields: ["title", "body"] },
+  { code: "dual_noun", severity: "error", re: /(?<![ء-ي])(?:[وفبلك]|لل)?(?:ال)?(?:سبب(?:ين|ان)|أمر(?:ين|ان)|طلب(?:ين|ان)|علامت(?:ين|ان)|تجاريت(?:ين|ان)|خيار(?:ين|ان)|عائق(?:ين|ان)|مشكلت(?:ين|ان)|عقبت(?:ين|ان)|احتمال(?:ين|ان)|سيناريو(?:ين|هان)|طريق(?:ين|ان))(?![ء-ي])|(?<![ء-ي])[وف]?(?:تمثلا|تمثلتا|يتمثلان|تتمثلان)(?![ء-ي])/g, message: "مثنى (سببين/أمرين/خيارين/عائقين/تمثلا) ممنوع — اكتب «لأكثر من سبب: أولها…»، «أكثر من خيار»، «مشكلة مزدوجة: …» أو اذكر الشيئين باسميهما", fields: ["title", "body"] },
   // «تحت اسمي دابينا روز وميا يم»: two ring names as a dual (INCIDENTS #1222); «تحت اسمي الحقيقي» in a quote is "my name" and stays allowed.
   { code: "dual_noun", severity: "error", re: /(?<![ء-ي])تحت\s+اسمي(?![ء-ي])(?!\s+(?:الحقيقي|الأصلي|الخاص))/g, message: "اسم مثنى (تحت اسمي فلان وفلان) ممنوع — اكتب «باسم دابينا روز وباسم ميا يم»" },
   { code: "dual_noun", severity: "error", re: /(?<![ء-ي])[وفبل]?(?:عرضي(?=\s+[A-Za-z])|حلقتي(?=\s+(?:مسلسل|برنامج|بودكاست|فيلم)))/g, message: "اسم مثنى (عرضي WWE RAW وSmackDown / حلقتي مسلسل) ممنوع — «عرض X وY» أو «حلقات من مسلسل»", fields: ["title", "body"] },
@@ -2550,11 +2552,17 @@ export function autoFix(text: string): string {
     .replace(new RegExp(`(?<![${AR}])([${AR}]{4,})(?:\\s+\\1)+(?![${AR}])`, "g"), (m, w) => LEGIT_DOUBLES.has(w) ? m : w)
     // "آدم بيرس (آدم بيرس)" → "آدم بيرس"
     .replace(/(?<![^\s(«"])((?:[^\s()]+\s){0,3}[^\s()]+)\s*\(\1\)/g, "$1")
-    .replace(/،\s*،/g, "،").replace(/:\s*:/g, ":").replace(/؟\s*؟/g, "؟");
+    .replace(/،\s*،/g, "،").replace(/:\s*:/g, ":").replace(/؟\s*؟/g, "؟")
+    // «"كيف تعاملكم لعبة GTA VI?"»: an Arabic quote ending on a Latin question mark (Markova story, INCIDENTS #1439)
+    .replace(/(["«“])([\u0621-\u064A][^"«»“”\n?]*?)\?(?=["»”])/g, "$1$2؟");
   // A paragraph ending on a comma («…بسبب إصابة في الظهر عام 2022، »): the source's
   // "…which you can read here" link was dropped mid-sentence (INCIDENTS #93) — close it.
   out = out.split("\n").map(line => /^[ \t]*[-*#|>]/.test(line) || line.trim().length < 40 ? line
     : line.replace(/[،,][ \t]*$/, ".")).join("\n");
+  // «… في AEW?» / «… في حدث Fallout?"»: an Arabic line whose question ends on an English word kept the Latin
+  // question mark at the END of the line (four titles, one quote; «What's Your Story? هنا» mid-line stays — INCIDENTS #1439). URLs («watch?v=») are left alone.
+  out = out.split("\n").map(line => !/[\u0621-\u064A]/.test(line) ? line
+    : line.replace(/(^|\s)(\S*?)\?(?=["»”*).]*\s*$)/g, (m, a: string, w: string) => /:\/\//.test(w) ? m : `${a}${w}؟`)).join("\n");
   // The glossary turns «بـRoman Reigns» into «بـرومان رينز» and leaves the tatweel behind. A tatweel joins a
   // preposition to an ENGLISH name only («بـWWE»); before an Arabic name it is a typo («لـرويس كيس»,
   // «بـتايتشي» sat in ~200 stories — INCIDENTS #564)
