@@ -1,5 +1,15 @@
 [
   {
+    "id": 1432734271,
+    "link": "https://www.wrestlinginc.com/2323846/tna-spoiler-report-upcoming-title-changes/",
+    "date": "Fri, 20 Nov 2026 22:25:12 +0000",
+    "date_gmt": "2026-11-20T22:25:12.000Z",
+    "title": {
+      "rendered": "Spoiler Report On Upcoming TNA Title Changes"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/spoiler-report-on-upcoming-tna-title-changes/l-intro-1795213648.jpg"
+  },
+  {
     "id": 5189069225,
     "link": "https://www.wrestlinginc.com/2323064/wwe-smackdown-november-20-2026-results/",
     "date": "Fri, 20 Nov 2026 22:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "TNA Impact Results 11/19/26 W/ Live Updates: Leon Slater Defends Against Nic Nemeth"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-thursday-night-impact-results-111926-w-live-updates/l-intro-1795148967.jpg"
-  },
-  {
-    "id": 3613719638,
-    "link": "https://www.wrestlinginc.com/2322496/noam-dar-reflects-wwe-dusty-rhodes-classic-win/",
-    "date": "Thu, 19 Nov 2026 22:11:25 +0000",
-    "date_gmt": "2026-11-19T22:11:25.000Z",
-    "title": {
-      "rendered": "Noam Dar Reflects On WWE Dusty Rhodes Tag Classic Win"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/noam-dar-reflects-on-wwe-dusty-rhodes-tag-classic-win/l-intro-1795126168.jpg"
   }
 ]
