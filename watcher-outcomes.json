@@ -1,53 +1,58 @@
 {
+ "https://www.fightful.com/wrestling/sherilyn-guerrero-says-my-palms-started-sweating-when-she-was-told-she-would-main-event-her-first-match": {
+  "reason": "المراجعة رفضته: فعل مثنى («تتعرقان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-20T20:15:37.215Z"
+ },
  "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:11:58.401Z"
+  "at": "2026-11-20T20:15:01.328Z"
  },
  "https://www.fightful.com/wrestling/wwe-survivor-series-odds-courtesy-of-mybookie": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:11:57.715Z"
+  "at": "2026-11-20T20:15:00.227Z"
  },
  "https://www.fightful.com/wrestling/roh-tv-results-11-19-hyan-teams-with-maya-world": {
-  "reason": "المراجعة رفضته: فعل مثنى («سينافسان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "reason": "المراجعة رفضته: فعل مثنى («سينافسان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الثانية: نزال فردي، المواجهة الثالثة: بطولة ROH التلفزيونية، المواجهة الرابعة: نزال فردي، المواجهة الخامسة: نزال فرق سداسي، المواجهة السادسة: نزال فردي، المواجهة السابعة: نزال فرق، المواجهة الثامنة: نزال فردي — اكتب الفائز زي المصدر وبالماضي",
   "retry": true,
-  "at": "2026-11-20T20:11:57.239Z"
+  "at": "2026-11-20T20:14:59.467Z"
  },
  "https://www.fightful.com/wrestling/toni-storm-tapes-to-premiere-on-november-27": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:11:18.068Z"
+  "at": "2026-11-20T20:14:25.070Z"
  },
  "https://www.fightful.com/wrestling/johnny-gargano-sami-zayn-is-hope-for-guys-like-me": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:11:17.826Z"
+  "at": "2026-11-20T20:14:24.675Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-11-17-viewership-increases-demo-remains-the-same": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:11:17.442Z"
+  "at": "2026-11-20T20:14:24.043Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-20": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:11:16.992Z"
+  "at": "2026-11-20T20:14:23.306Z"
  },
  "https://www.fightful.com/wrestling/rich-swann-confirms-he-will-be-a-free-agent-at-the-end-of-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:11:16.601Z"
+  "at": "2026-11-20T20:14:22.680Z"
  },
  "https://www.fightful.com/wrestling/spoilers-title-changes-at-11-19-tna-impact-tapings": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:11:16.280Z"
+  "at": "2026-11-20T20:14:22.164Z"
  },
  "https://www.fightful.com/wrestling/zack-sabre-jr-vs-hechicero-added-to-njpw-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:11:16.118Z"
+  "at": "2026-11-20T20:14:21.906Z"
  },
  "https://www.wrestlinginc.com/2323508/wwe-survivor-series-wargames-2026-bully-ray-rock-dwayne-johnson-needs-endgame-involved": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Paul Heyman",
   "retry": true,
   "at": "2026-11-12T13:58:06.930Z"
- },
- "https://www.wrestlinginc.com/2311489/aew-njpw-gabe-kidd-experienced-psychotic-episode-tail-end-run": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-12T13:33:06.433Z"
  }
 }
