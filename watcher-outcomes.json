@@ -1,58 +1,58 @@
 {
- "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: EVOLVE Wrestling",
-  "retry": true,
-  "at": "2026-11-20T19:15:31.745Z"
- },
  "https://www.fightful.com/wrestling/wwe-survivor-series-odds-courtesy-of-mybookie": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T19:14:13.467Z"
+  "at": "2026-11-20T19:18:10.251Z"
  },
  "https://www.fightful.com/wrestling/roh-tv-results-11-19-hyan-teams-with-maya-world": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: فعل مثنى («سينافسان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه AR Fox، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
   "retry": true,
-  "at": "2026-11-20T19:14:12.941Z"
+  "at": "2026-11-20T19:18:09.780Z"
  },
  "https://www.fightful.com/wrestling/toni-storm-tapes-to-premiere-on-november-27": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T19:13:18.374Z"
+  "at": "2026-11-20T19:17:36.712Z"
  },
  "https://www.fightful.com/wrestling/johnny-gargano-sami-zayn-is-hope-for-guys-like-me": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T19:13:18.110Z"
+  "at": "2026-11-20T19:17:36.462Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-11-17-viewership-increases-demo-remains-the-same": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T19:13:17.682Z"
+  "at": "2026-11-20T19:17:36.066Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-20": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T19:13:17.187Z"
+  "at": "2026-11-20T19:17:35.598Z"
  },
  "https://www.fightful.com/wrestling/rich-swann-confirms-he-will-be-a-free-agent-at-the-end-of-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T19:13:16.772Z"
+  "at": "2026-11-20T19:17:35.205Z"
  },
  "https://www.fightful.com/wrestling/spoilers-title-changes-at-11-19-tna-impact-tapings": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T19:13:16.432Z"
+  "at": "2026-11-20T19:17:34.884Z"
  },
  "https://www.fightful.com/wrestling/zack-sabre-jr-vs-hechicero-added-to-njpw-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T19:13:16.259Z"
+  "at": "2026-11-20T19:17:34.722Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-results-11-19-leon-slater-vs-nic-nemeth": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T19:13:15.911Z"
+  "at": "2026-11-20T19:17:34.393Z"
+ },
+ "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: EVOLVE Wrestling",
+  "retry": true,
+  "at": "2026-11-20T19:15:31.745Z"
  },
  "https://www.fightful.com/wrestling/john-cena-classic-tickets-on-sale-tna-impact-highlights-more-fight-size": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
