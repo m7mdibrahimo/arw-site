@@ -1,5 +1,15 @@
 [
   {
+    "id": 340072,
+    "link": "https://www.fightful.com/wrestling/tna-impact-thanksgiving-special-will-not-broadcast-on-amc-will-be-available-on-amc/",
+    "date": "2026-11-20T14:21:43",
+    "date_gmt": "2026-11-20T19:21:43",
+    "title": {
+      "rendered": "TNA iMPACT Thanksgiving Special Will Not Broadcast On AMC, Will Be Available On AMC+"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/20141736/HXiiagaXUAAVmAN.jpg"
+  },
+  {
     "id": 340070,
     "link": "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year/",
     "date": "2026-11-20T14:08:06",
@@ -288,15 +298,5 @@
       "rendered": "Triple Threat Revolver, International Title Match Announced For 12/3 TNA iMPACT"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/12/02122859/G7LBws8aUAA4Q2x.jpg"
-  },
-  {
-    "id": 339998,
-    "link": "https://www.fightful.com/wrestling/tna-impact-results-11-19-leon-slater-vs-nic-nemeth/",
-    "date": "2026-11-19T22:09:26",
-    "date_gmt": "2026-11-20T03:09:26",
-    "title": {
-      "rendered": "TNA iMPACT! Results (11/19): Leon Slater vs. Nic Nemeth"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/18204122/2722935b77655fb476943fa89c403282-1.jpg"
   }
 ]
