@@ -1,48 +1,48 @@
 {
- "https://www.ringsidenews.com/triple-h-tony-khan-blamed-driving-millions-fans-away-wrestling": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-20T00:21:41.976Z"
- },
  "https://www.fightful.com/wrestling/keanu-carver-placed-on-psychiatric-hold": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T00:22:23.634Z"
+  "at": "2026-11-20T00:24:24.083Z"
  },
  "https://www.fightful.com/wrestling/motion-to-compel-hearing-date-set-in-ludwig-kaiser-battery-case": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T00:22:23.391Z"
+  "at": "2026-11-20T00:24:23.837Z"
  },
  "https://www.fightful.com/wrestling/details-on-feature-film-about-nattie-neidharts-book-life-story": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T00:22:22.938Z"
+  "at": "2026-11-20T00:24:23.375Z"
  },
  "https://www.fightful.com/wrestling/the-rocks-wwe-return-announcement-surprised-many-people-at-wwe-hq": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T00:22:22.404Z"
+  "at": "2026-11-20T00:24:22.848Z"
  },
  "https://www.fightful.com/wrestling/jeff-hardy-im-manifesting-a-feud-with-cm-punk": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T00:22:22.246Z"
+  "at": "2026-11-20T00:24:22.690Z"
  },
  "https://www.fightful.com/wrestling/report-anthem-considering-cutting-back-on-number-of-tna-ppvs-for-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T00:22:22.001Z"
+  "at": "2026-11-20T00:24:22.441Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-spoilers-from-calgary-taped-on-11-18": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T00:22:21.400Z"
+  "at": "2026-11-20T00:24:21.834Z"
  },
  "https://www.fightful.com/wrestling/njpw-tanahashi-jam-2-results-11-19": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T00:22:20.621Z"
+  "at": "2026-11-20T00:24:21.042Z"
+ },
+ "https://www.ringsidenews.com/triple-h-tony-khan-blamed-driving-millions-fans-away-wrestling": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-20T00:21:41.976Z"
  },
  "https://www.wrestlinginc.com/2321436/tna-thursday-night-impact-november-19-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
