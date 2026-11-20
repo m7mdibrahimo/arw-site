@@ -1,5 +1,5 @@
 ---
-title: "Lance Storm Discusses Trusting TNA Stars and Their Matching Styles"
+title: "Lance Storm on Trusting TNA Stars: I Don't Want Them to Have a Lance Storm Match"
 slug: "lance-storm-discusses-trusting-tna-stars-and-their-matching-styles"
 description: "Lance Storm places a great deal of confidence in the TNA Wrestling roster."
 federation: TNA
