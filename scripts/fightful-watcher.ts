@@ -698,6 +698,11 @@ export function sanitizeWrestlingTerms(text: string): string {
     .replace(arWord("فايت\\s*فول"), "التقارير الصحفية")
     .replace(arWord("فايتفول"), "التقارير الصحفية")
     .replace(/\*?Fightful\*?/gi, "التقارير الصحفية")
+    // The surname survived the scrub and the outlet came back twice in one sentence —
+    // «أكد تقارير صحفية الساب خلال بث مباشر عبر تقارير صحفية أن…» (INCIDENTS #1445)
+    .replace(/تقارير\s+صحفية(?:\s+مطلعة)?\s+(?:ال)?سا+ب(?![\u0621-\u064A])/g, "تقارير صحفية مطلعة")
+    .replace(/(تقارير\s+صحفية[^.!؟\n]*?)\s+(?:عبر|من\s+خلال|على)\s+(?:ال)?تقارير\s+(?:ال)?صحفية(?:\s+مطلعة)?/g, "$1")
+    .replace(/(?<![\u0621-\u064A])(و?)(أكد|كشف|ذكر|أوضح|أشار|نقل|أفاد)\s+((?:ال)?تقارير\s+(?:ال)?صحفية)/g, "$1$2ت $3")
 
     // 4.1 Strict purge of "مصادرنا الخاصة" / "مصادرنا" claim (as instructed by user)
     .replace(/(?:و\s*)?(?:أفادت|افادت|أكدت|اكدت|كشفت|أوضحت|اوضحت|ذكرت|علمت)\s+(?:مصادرنا\s+الخاص[ةه]|مصادرنا)(?:\s+(?:في|لدى|لموقع)?\s*(?:موقع\s+)?عرب\s*راسلنج)?\s+(?:بأن|بان|أن|ان)?\s*/gi, "كشفت تقارير صحفية أن ")
@@ -4888,7 +4893,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
       lastPostRetryable = true;
     }
   }
-  // «documentary series titled The Toni Storm Tapes» written «بعنوان توني ستورم التقديمية» (INCIDENTS #1441).
+  // «documentary series titled The Toni Storm Tapes» written «بعنوان توني ستورم التقديمية» (INCIDENTS #1445).
   {
     const lost = seriesTitleTranslated(`${draft.title}\n${draft.body}`, `${rawTitle}\n${plainText}`);
     if (lost.length) {

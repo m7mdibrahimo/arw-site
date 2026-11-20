@@ -530,7 +530,7 @@ const RULES: Rule[] = [
   // Chad Gable's whole answer (half of it with Arabic words dropped in the middle), West's tweet (INCIDENTS #376).
   // 6 English words in a row inside a «> » line; names, show titles and hashtags are shorter than that.
   // The source's name was scrubbed to «تقارير صحفية» and left a sentence that says it twice: «الصحفي البارز تقارير صحفية مطلعة من تقارير صحفية» (INCIDENTS #840)
-  { code: "scrubbed_source_garbage", severity: "error", re: /تقارير\s+صحفية(?:\s+مطلعة)?\s+من\s+تقارير\s+صحفية|الصحفي(?:\s+\S+)?\s+تقارير\s+صحفية|تقارير\s+صحفية\s+و\*?تقارير\s+صحفية|(?<![؀-ۿ])مع\s+\S+(?:\s+\S+)?\s+من\s+تقارير\s+صحفية/g, message: "اسم المصدر اتمسح وسابله جملة مكسورة («تقارير صحفية» مكررة) — لازم تتكتب من غير الاسم", fields: ["title", "body"] },
+  { code: "scrubbed_source_garbage", severity: "error", re: /تقارير\s+صحفية(?:\s+مطلعة)?\s+(?:ال)?سا+ب(?![ء-ي])|تقارير\s+صحفية[^.!؟\n]*?\s(?:عبر|من\s+خلال)\s+(?:ال)?تقارير\s+(?:ال)?صحفية|تقارير\s+صحفية(?:\s+مطلعة)?\s+من\s+تقارير\s+صحفية|الصحفي(?:\s+\S+)?\s+تقارير\s+صحفية|تقارير\s+صحفية\s+و\*?تقارير\s+صحفية|(?<![؀-ۿ])مع\s+\S+(?:\s+\S+)?\s+من\s+تقارير\s+صحفية/g, message: "اسم المصدر اتمسح وسابله جملة مكسورة («تقارير صحفية» مكررة) — لازم تتكتب من غير الاسم", fields: ["title", "body"] },
   // «يذكر أن توجت باكسلي وبليس…» — the subject must come before the verb after «يذكر أن» (INCIDENTS #841)
   { code: "verb_after_yudhkar", severity: "error", re: /يذكر أن (?:توجت|توج|خاض|خاضت|فاز|فازت|حقق|حققت|انضم|انضمت|عاد|عادت|ظهر|ظهرت|احتفظ|احتفظت|هزم|هزمت|تغلب|تغلبت|أنهى|أنهت|دخل|دخلت|فازا|حققا|خاضا|أصبح|أصبحت|أعلن|أعلنت|كان|كانت|قرر|قررت|وقع|وقعت|غادر|غادرت|تعرض|تعرضت|شارك|شاركت|حصل|حصلت|فقد|فقدت|بدأ|بدأت|ترك|تركت|رحل|رحلت)(?![\u0600-\u06FF])/g, message: "بعد «يذكر أن» لازم الفاعل يسبق الفعل (يذكر أن باكسلي توجت)", fields: ["title", "body"] },
   // …also when it sits inside «»: «have diverticulitis, he would've never been defeated in UFC…» closed the Heyman/Lesnar
@@ -2860,7 +2860,7 @@ export function podcastNameTranslated(text: string, source: string): string[] {
 }
 
 // «a five-part documentary series titled The Toni Storm Tapes» came out «سلسلة … بعنوان توني ستورم التقديمية»
-// (INCIDENTS #1441): a series, documentary, film or book titled in English keeps its English name. Returns the names
+// (INCIDENTS #1445): a series, documentary, film or book titled in English keeps its English name. Returns the names
 // the source gives after «series/documentary/docuseries/film/book/episode … titled/called/named» that the story lost.
 export function seriesTitleTranslated(text: string, source: string): string[] {
   const story = String(text || "").toLowerCase().replace(/[‘’'"“”]/g, "");

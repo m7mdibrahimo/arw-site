@@ -11548,3 +11548,8 @@ Let me check git status to enumerate uncommitted changes.</think><tool_call>shel
 اللي حصل: خبر آر جي سيتي (عربي وإنجليزي) اتقفل بجملة مش في المصدر «في إطار الطابع الساخر لتصريحاته / highlighting the satirical nature»، و«ار جي سيتي» من غير مدة، و«graphic» اتترجمت «تصميم»، و«homoerotic» اتترجمت «طبيعتها المثلية»، و«اتحاد WWE وAEW».
 السبب: مفيش فحص بيشيل جملة بتشرح النكتة، والاسم مكانش في القاموس.
 الإصلاح: dropJokeExplainers (عربي) وdropEnglishJokeExplainers بيشيلوا الجملة دي لوحدهم، وRJ City في القاموس و«ار جي→آر جي» في corrections.json، والأخبار اتصلحت بنفس الروابط؛ وفي الـhead بس: BroadcastEvent لكل عرض فيه VirtualLocation وorganizer، والعروض السنوية الإنجليزي فيها «<Event> <year> Full Show (Download)» (اختبار tests/joke-explainers).
+
+## #1445 — 2026-11-20: جملة مصدر ممسوح مكسورة وأخطاء صغيرة في أخبار الليلة
+اللي حصل: خبر أوبا فيمي قال «أكد تقارير صحفية الساب ... عبر تقارير صحفية»، وخبر أليخاندرا فيه «أما لكن»، وخبر TNA فيه «العرض الخاصة لن تبث».
+السبب: مسح اسم شون روس ساب ساب بقية الاسم و«Fightful» اتحولت «تقارير صحفية» تاني في نفس الجملة، والفعل فضل مذكر.
+الإصلاح: sanitizeWrestlingTerms بيشيل بقية الاسم والتكرار ويأنث الفعل، وscrubbed_source_garbage بيوقف النشر، و«أما لكن» في corrections.json، مع اختبار.

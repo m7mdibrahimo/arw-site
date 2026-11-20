@@ -1169,3 +1169,14 @@ test('corrections turn concrete steps into steel steps, not concrete floors', ()
   assert.match(out, /السلالم الحديدية/);
   assert.match(out, /بالأرضية الإسمنتية/);
 });
+
+test('scrubbed reporter: leftover surname and the outlet twice in one sentence are cleaned and blocked (INCIDENTS #1445)', async () => {
+  const { sanitizeWrestlingTerms } = await import('../scripts/fightful-watcher');
+  const raw = "أكد شون روس الساب خلال بث مباشر للأسئلة والأجوبة عبر Fightful أن إدارة WWE لا تحمل أوبا فيمي المسؤولية.";
+  const out = sanitizeWrestlingTerms(raw);
+  assert.ok(!/الساب/.test(out), out);
+  assert.equal((out.match(/تقارير\s+صحفية/g) || []).length, 1, out);
+  assert.ok(/أكدت تقارير صحفية/.test(out), out);
+  const bad = "أكد تقارير صحفية الساب خلال بث مباشر للأسئلة والأجوبة عبر تقارير صحفية أن إدارة WWE لا تحمل أوبا فيمي المسؤولية. ".repeat(3);
+  assert.ok(checkArticle("الكشف عن موقف أوبا فيمي خلف الكواليس", bad, []).some(i => i.code === "scrubbed_source_garbage"));
+});
