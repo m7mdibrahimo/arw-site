@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/randy-orton-ive-always-been-the-last-man-standing-look-at-the-ovw-class-that-i-graduated-from-im-the-only-one-left/": {
-    "matchedFile": "20261107005036-راندي-أورتن-يدعي-أنه-كان-متحفظا-في-نزاله-ضد-كودي-رودز-في-عرض-wrestlemania.md",
-    "reason": "الخبر الجديد عبارة عن تصريحات لراندي أورتن حول نزاله مع كودي رودز في عرض Crown Jewel، وتعتبر امتداداً لنفس التصريحات والسياق الموجودة في الخبر المنشور رقم 0 الذي يتحدث عن نفس المواجهة وتصريحات أورتن حول كودي والجانب المظلم.",
-    "at": "2026-11-07T00:42:08.329Z"
-  },
   "https://www.fightful.com/wrestling/randy-orton-im-done-playing-games-i-need-number-15-and-i-need-it-sooner-than-later/": {
     "matchedFile": "20261107005036-راندي-أورتن-يدعي-أنه-كان-متحفظا-في-نزاله-ضد-كودي-رودز-في-عرض-wrestlemania.md",
     "reason": "الخبر الجديد يعيد نفس التصريحات التي أدلى بها راندي أورتن بشأن نزاله ضد كودي رودز في عرض Crown Jewel ومراجعته لتصرفه في WrestleMania، وهي نفس التفاصيل والعبارات الموجودة في الخبر المنشور رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261120183547-اتحاد-aew-يعلن-عن-سلسلة-من-خمسة-أجزاء-بعنوان-the-toni-storm-tapes-وسط-اختفاء-توني-ستورم-الغامض.md",
     "reason": "الخبر الجديد يغطي نفس الإعلان الرسمي عن سلسلة 'The Toni Tapes' وموعد عرضها وتفاصيلها، ولا يقدم تطوراً جديداً أو معلومة إضافية جوهرية تختلف عما تم نشره بالفعل.",
     "at": "2026-11-20T15:54:01.815Z"
+  },
+  "https://www.fightful.com/wrestling/toni-storm-tapes-to-premiere-on-november-27/": {
+    "matchedFile": "20261120183547-اتحاد-aew-يعلن-عن-سلسلة-من-خمسة-أجزاء-بعنوان-the-toni-storm-tapes-وسط-اختفاء-توني-ستورم-الغامض.md",
+    "reason": "الخبر الجديد يعنح نفس تفاصيل إطلاق سلسلة The Toni Storm Tapes من اتحاد AEW وموعد عرضها في 27 نوفمبر تماماً مثل الخبر المنشور مسبقاً.",
+    "at": "2026-11-20T15:58:23.378Z"
   }
 }
