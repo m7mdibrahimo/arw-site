@@ -1,68 +1,73 @@
 {
- "https://www.ringsidenews.com/aj-styles-wants-nothing-running-wwe-nxt-backstage-shakeup-hits-roadblock": {
-  "reason": "المراجعة رفضته: المصدر بيتكلم عن Dave Meltzer (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
-  "retry": true,
-  "at": "2026-11-20T16:57:28.448Z"
- },
- "https://www.fightful.com/wrestling/roh-tv-results-11-19-hyan-teams-with-maya-world": {
+ "https://www.fightful.com/wrestling/338629-chavo-guerrero-aro-lucha": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-20T17:00:10.477Z"
+  "at": "2026-11-20T17:11:04.078Z"
+ },
+ "https://www.fightful.com/wrestling/chad-gable-says-triple-h-directly-addressed-shorty-g-when-he-was-in-talks-to-re-sign-with-wwe": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-20T17:07:46.073Z"
  },
  "https://www.fightful.com/wrestling/roh-tv-results-11-19-hyan-teams-with-maya-world": {
-  "reason": "المراجعة رفضته: فعل مثنى («سينافسان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه AR Fox، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: نزال فردي، المواجهة الثانية: نزال على بطولة ROH التلفزيونية، المواجهة الثالثة: نزال فردي، المواجهة الرابعة: نزال فرق سداسي، المواجهة الخامسة: نزال فردي، المواجهة السادسة: نزال فرق ثماني، المواجهة السابعة: نزال فردي، الحدث الرئيسي: نزال فرق ثنائي — اكتب الفائز زي المصدر وبالماضي",
+  "reason": "المراجعة رفضته: فعل مثنى («سينافسان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: نزال فردي — اكتب الفائز زي المصدر وبالماضي",
   "retry": true,
-  "at": "2026-11-20T16:58:33.397Z"
+  "at": "2026-11-20T17:05:13.889Z"
  },
  "https://www.fightful.com/wrestling/toni-storm-tapes-to-premiere-on-november-27": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:56:38.054Z"
+  "at": "2026-11-20T17:02:12.093Z"
  },
  "https://www.fightful.com/wrestling/johnny-gargano-sami-zayn-is-hope-for-guys-like-me": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:56:37.692Z"
+  "at": "2026-11-20T17:02:11.844Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-11-17-viewership-increases-demo-remains-the-same": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:56:37.133Z"
+  "at": "2026-11-20T17:02:11.457Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-20": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:56:36.467Z"
+  "at": "2026-11-20T17:02:10.998Z"
  },
  "https://www.fightful.com/wrestling/rich-swann-confirms-he-will-be-a-free-agent-at-the-end-of-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:56:35.904Z"
+  "at": "2026-11-20T17:02:10.608Z"
  },
  "https://www.fightful.com/wrestling/spoilers-title-changes-at-11-19-tna-impact-tapings": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:56:35.438Z"
+  "at": "2026-11-20T17:02:10.290Z"
  },
  "https://www.fightful.com/wrestling/zack-sabre-jr-vs-hechicero-added-to-njpw-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:56:35.207Z"
+  "at": "2026-11-20T17:02:10.129Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-results-11-19-leon-slater-vs-nic-nemeth": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:56:34.744Z"
+  "at": "2026-11-20T17:02:09.808Z"
  },
  "https://www.fightful.com/wrestling/keanu-carver-placed-on-psychiatric-hold": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:56:33.984Z"
+  "at": "2026-11-20T17:02:09.294Z"
  },
  "https://www.fightful.com/wrestling/motion-to-compel-hearing-date-set-in-ludwig-kaiser-battery-case": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:56:33.608Z"
+  "at": "2026-11-20T17:02:09.042Z"
+ },
+ "https://www.ringsidenews.com/aj-styles-wants-nothing-running-wwe-nxt-backstage-shakeup-hits-roadblock": {
+  "reason": "المراجعة رفضته: المصدر بيتكلم عن Dave Meltzer (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
+  "retry": true,
+  "at": "2026-11-20T16:57:28.448Z"
  },
  "https://www.fightful.com/wrestling/details-on-feature-film-about-nattie-neidharts-book-life-story": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1988,15 +1993,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-12T03:05:42.875Z"
- },
- "https://www.ringsidenews.com/motor-city-machine-guns-win-best-five-series-against-ftr-aew-dynamite": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-12T02:48:41.372Z"
- },
- "https://www.fightful.com/wrestling/jim-ross-surgery-postponed-after-good-ct-scan": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-12T02:43:41.343Z"
  }
 }
