@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/spoiler-new-champions-crowned-during-tna-tapings-calgary": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، اسم مصارع في العنوان أو المتن غير موجود في المصدر: TV Championship",
+  "retry": true,
+  "at": "2026-11-20T11:52:08.477Z"
+ },
  "https://www.fightful.com/wrestling/tna-impact-results-11-19-leon-slater-vs-nic-nemeth": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-11T16:59:21.152Z"
- },
- "https://www.fightful.com/wrestling/jim-duggan-believes-his-generation-of-wrestlers-were-much-more-creative-current-generation-is-much-more-athletic": {
-  "reason": "المراجعة رفضته: اقتباس بالإنجليزي جوه الخبر العربي — لازم يتترجم للعربي",
-  "retry": true,
-  "at": "2026-11-11T16:26:36.917Z"
  }
 }
