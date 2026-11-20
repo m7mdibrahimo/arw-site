@@ -1,43 +1,43 @@
 {
  "https://www.fightful.com/wrestling/tna-issues-statement-on-departures-of-the-personal-concierge-referee-michael-romo": {
-  "reason": "المراجعة رفضته: كلمة عربية مقطوعة من حرفين («كر») — اكتب الكلمة كاملة، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": true,
-  "at": "2026-11-20T23:33:09.250Z"
+  "at": "2026-11-20T23:44:30.445Z"
  },
  "https://www.fightful.com/wrestling/lilian-garcia-returning-to-the-mic-for-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T23:32:25.256Z"
+  "at": "2026-11-20T23:43:42.102Z"
  },
  "https://www.fightful.com/wrestling/sherilyn-guerrero-says-dominik-mysterio-texted-her-after-her-in-ring-debut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T23:32:25.051Z"
+  "at": "2026-11-20T23:43:41.861Z"
  },
  "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T23:32:24.391Z"
+  "at": "2026-11-20T23:43:41.093Z"
  },
  "https://www.fightful.com/wrestling/wwe-survivor-series-odds-courtesy-of-mybookie": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T23:32:23.497Z"
+  "at": "2026-11-20T23:43:40.084Z"
  },
  "https://www.fightful.com/wrestling/toni-storm-tapes-to-premiere-on-november-27": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T23:32:22.727Z"
+  "at": "2026-11-20T23:43:39.192Z"
  },
  "https://www.fightful.com/wrestling/johnny-gargano-sami-zayn-is-hope-for-guys-like-me": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T23:32:22.405Z"
+  "at": "2026-11-20T23:43:38.824Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-11-17-viewership-increases-demo-remains-the-same": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T23:32:21.901Z"
+  "at": "2026-11-20T23:43:38.144Z"
  },
  "https://www.wrestlinginc.com/2323064/wwe-smackdown-november-20-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
