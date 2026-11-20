@@ -2844,6 +2844,21 @@ export function podcastNameTranslated(text: string, source: string): string[] {
     .filter((n, _i, all) => !all.some(m => m !== n && m.includes(n)));
 }
 
+// «a five-part documentary series titled The Toni Storm Tapes» came out «سلسلة … بعنوان توني ستورم التقديمية»
+// (INCIDENTS #1441): a series, documentary, film or book titled in English keeps its English name. Returns the names
+// the source gives after «series/documentary/docuseries/film/book/episode … titled/called/named» that the story lost.
+export function seriesTitleTranslated(text: string, source: string): string[] {
+  const story = String(text || "").toLowerCase().replace(/[‘’'"“”]/g, "");
+  const out: string[] = [];
+  const re = /\b(?:series|docuseries|documentary|docu-series|film|movie|book|miniseries)\b[^.\n]{0,40}?\b(?:titled|entitled|called|named)\s+["“‘']?((?:The\s+)?[A-Z][A-Za-z0-9'’&:-]*(?:\s+(?:of|the|and|in|on|a|[A-Z0-9][A-Za-z0-9'’&:-]*)){0,6})/g;
+  for (const m of String(source || "").matchAll(re)) {
+    const name = m[1].replace(/\s+(?:of|the|and|in|on|a)$/i, "").replace(/[:’']+$/, "").trim();
+    if (name.split(/\s+/).length < 2) continue;
+    if (!story.includes(name.toLowerCase().replace(/[‘’'"“”]/g, ""))) out.push(name);
+  }
+  return [...new Set(out)];
+}
+
 // «Last we saw each other was backstage at Natural Born Killers» (a GCW/Bloodsport event) came out «في كواليس فيلم
 // Natural Born Killers» because the story is about a movie (INCIDENTS #1267). An English name the story calls «فيلم»
 // becomes «عرض» when the source names it but never calls it a movie or film.

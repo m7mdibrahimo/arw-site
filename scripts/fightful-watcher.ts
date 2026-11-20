@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, liveEventInResults, fixTitleSubjectGender, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, mainWrestlerMissing, fixNearGlossaryNames, fixSwappedSurnames, threeWayAsCount, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixElijahAsIlya, fixEventCalledMovie, fixDivasChampion, demoteUnplayedMainEvent, mainEventNotLastResult, champDqLossAsDefense, tweetDateAsShowDate, titleChangeWrittenAsDefense, endProseParagraphs, type NewsFile } from "./news-qa";
+import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, liveEventInResults, fixTitleSubjectGender, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, mainWrestlerMissing, fixNearGlossaryNames, fixSwappedSurnames, threeWayAsCount, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixElijahAsIlya, fixEventCalledMovie, fixDivasChampion, seriesTitleTranslated, demoteUnplayedMainEvent, mainEventNotLastResult, champDqLossAsDefense, tweetDateAsShowDate, titleChangeWrittenAsDefense, endProseParagraphs, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -4885,6 +4885,14 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     const lost = podcastNameTranslated(`${draft.title}\n${draft.body}`, `${rawTitle}\n${plainText}`);
     if (lost.length) {
       blocking.push({ code: "podcast_name_translated", severity: "error", field: "body", message: `اسم البرنامج/البودكاست اتترجم للعربي — اكتبه بالإنجليزي زي المصدر: ${lost.join("، ")}`, excerpt: lost.join(" ") });
+      lastPostRetryable = true;
+    }
+  }
+  // «documentary series titled The Toni Storm Tapes» written «بعنوان توني ستورم التقديمية» (INCIDENTS #1441).
+  {
+    const lost = seriesTitleTranslated(`${draft.title}\n${draft.body}`, `${rawTitle}\n${plainText}`);
+    if (lost.length) {
+      blocking.push({ code: "series_title_translated", severity: "error", field: "body", message: `اسم السلسلة/الفيلم اتترجم للعربي — اكتبه بالإنجليزي زي المصدر: ${lost.join("، ")}`, excerpt: lost.join(" ") });
       lastPostRetryable = true;
     }
   }

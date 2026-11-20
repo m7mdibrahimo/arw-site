@@ -21,7 +21,7 @@ Working for All Japan Pro Wrestling meant Giant Baba paid him considerably more 
 
 Sabu told him,
 
-> "You getting over, me and you are the most over guys here. You should be getting paid more than than than everyone else."
+> "You getting over, me and you are the most over guys here. You should be getting paid more than everyone else."
 
 RVD eventually joined ECW and evolved into one of the greatest stars in the promotion's history, continuously protecting his financial value throughout his professional wrestling career.
 
