@@ -1,5 +1,5 @@
 ---
-title: "TNA Star Leaving Promotion Once Contract Expires"
+title: "Rich Swann Leaving TNA Once His Contract Expires"
 slug: "tna-star-leaving-promotion-once-contract-expires"
 description: "Rich Swann has officially decided not to renew his TNA contract, confirming he will become a free agent on December 31."
 federation: TNA
