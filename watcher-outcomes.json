@@ -1,68 +1,68 @@
 {
- "https://www.fightful.com/mma/ufc-fight-night-jiri-vs-stirling-odds-courtesy-of-mybookie": {
-  "reason": "المراجعة رفضته: اسمين مصارعين جنب بعض من غير «و» («بين أوستن آريز لابرون كوزون») — اكتب «بين أوستن آريز ولابرون كوزون»",
-  "retry": true,
-  "at": "2026-11-20T13:16:47.779Z"
- },
  "https://www.fightful.com/wrestling/wwe-files-to-trademark-gringo-anonimo-and-anonimo-gringo": {
   "reason": "المراجعة رفضته: مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)",
   "retry": true,
-  "at": "2026-11-20T13:15:38.522Z"
+  "at": "2026-11-20T13:21:46.503Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-20": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:14:44.872Z"
+  "at": "2026-11-20T13:20:59.673Z"
  },
  "https://www.fightful.com/wrestling/rich-swann-confirms-he-will-be-a-free-agent-at-the-end-of-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:14:44.292Z"
+  "at": "2026-11-20T13:20:59.173Z"
  },
  "https://www.fightful.com/wrestling/spoilers-title-changes-at-11-19-tna-impact-tapings": {
-  "reason": "المراجعة رفضته: فائز مش موجود في نتايج المصدر (النزال لسه ما خلصش؟): المواجهة الأولى: نزال على البطولة الدولية، المواجهة الثانية: نزال على بطولة التلفزيون للسيدات",
+  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة",
   "retry": true,
-  "at": "2026-11-20T13:14:43.819Z"
+  "at": "2026-11-20T13:20:58.762Z"
  },
  "https://www.fightful.com/wrestling/zack-sabre-jr-vs-hechicero-added-to-njpw-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:14:12.586Z"
+  "at": "2026-11-20T13:19:13.191Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-results-11-19-leon-slater-vs-nic-nemeth": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:14:12.109Z"
+  "at": "2026-11-20T13:19:12.789Z"
  },
  "https://www.fightful.com/wrestling/keanu-carver-placed-on-psychiatric-hold": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:14:11.341Z"
+  "at": "2026-11-20T13:19:12.129Z"
  },
  "https://www.fightful.com/wrestling/motion-to-compel-hearing-date-set-in-ludwig-kaiser-battery-case": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:14:10.954Z"
+  "at": "2026-11-20T13:19:11.811Z"
  },
  "https://www.fightful.com/wrestling/details-on-feature-film-about-nattie-neidharts-book-life-story": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:14:10.279Z"
+  "at": "2026-11-20T13:19:11.227Z"
  },
  "https://www.fightful.com/wrestling/the-rocks-wwe-return-announcement-surprised-many-people-at-wwe-hq": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:14:09.499Z"
+  "at": "2026-11-20T13:19:10.552Z"
  },
  "https://www.fightful.com/wrestling/jeff-hardy-im-manifesting-a-feud-with-cm-punk": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:14:09.263Z"
+  "at": "2026-11-20T13:19:10.350Z"
  },
  "https://www.fightful.com/wrestling/report-anthem-considering-cutting-back-on-number-of-tna-ppvs-for-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:14:08.899Z"
+  "at": "2026-11-20T13:19:10.029Z"
+ },
+ "https://www.fightful.com/mma/ufc-fight-night-jiri-vs-stirling-odds-courtesy-of-mybookie": {
+  "reason": "المراجعة رفضته: اسمين مصارعين جنب بعض من غير «و» («بين أوستن آريز لابرون كوزون») — اكتب «بين أوستن آريز ولابرون كوزون»",
+  "retry": true,
+  "at": "2026-11-20T13:16:47.779Z"
  },
  "https://www.fightful.com/wrestling/adriana-rizzo-recalls-being-told-of-wwe-release-showed-interest-in-other-aspects-while-injured": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
