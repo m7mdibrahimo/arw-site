@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2323064/wwe-smackdown-november-20-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-20T23:44:47.257Z"
+ },
  "https://www.fightful.com/wrestling/tna-issues-statement-on-departures-of-the-personal-concierge-referee-michael-romo": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": true,
@@ -38,11 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-20T23:43:38.144Z"
- },
- "https://www.wrestlinginc.com/2323064/wwe-smackdown-november-20-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-20T23:25:31.398Z"
  },
  "https://www.ringsidenews.com/tna-wrestling-confirms-referee-michael-romo-out-company": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
