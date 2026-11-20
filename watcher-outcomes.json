@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/adam-cole-may-never-wrestle-again-aew-return-outlook-gets-even-worse": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-20T19:34:10.259Z"
+ },
  "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-12T11:44:08.856Z"
- },
- "https://www.wrestlinginc.com/2314467/aew-dynamite-collision-november-11-2026-3-things-hated-loved-opinion-review": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-12T07:46:59.257Z"
  }
 }
