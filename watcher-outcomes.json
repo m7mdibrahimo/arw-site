@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/ddp-reveals-not-single-wwe-nxt-talent-practiced-breathing-exercise-he-assigned": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-20T13:50:38.523Z"
+ },
+ "https://www.ringsidenews.com/elayna-black-says-tna-gave-women-opportunities-wwe-divas-didnt-have": {
+  "reason": "المراجعة رفضته: حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)",
+  "retry": false,
+  "at": "2026-11-20T13:46:20.189Z"
+ },
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-20": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
