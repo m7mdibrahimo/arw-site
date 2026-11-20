@@ -1,58 +1,68 @@
 {
- "https://www.ringsidenews.com/indie-star-alejandra-lion-involved-serious-car-accident": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+ "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: EVOLVE Wrestling",
   "retry": true,
-  "at": "2026-11-20T19:03:37.247Z"
+  "at": "2026-11-20T19:11:25.742Z"
+ },
+ "https://www.fightful.com/wrestling/john-cena-classic-tickets-on-sale-tna-impact-highlights-more-fight-size": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-20T19:11:14.561Z"
  },
  "https://www.fightful.com/wrestling/wwe-survivor-series-odds-courtesy-of-mybookie": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T19:05:15.878Z"
+  "at": "2026-11-20T19:09:46.211Z"
  },
  "https://www.fightful.com/wrestling/roh-tv-results-11-19-hyan-teams-with-maya-world": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: فعل مثنى («سينافسان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: نزال فردي، المواجهة الثانية: بطولة ROH للتلفزيون، المواجهة الثالثة: نزال فردي، المواجهة الرابعة: نزال فرق سداسي، المواجهة الخامسة: نزال فردي، المواجهة السادسة: نزال فرق ثماني، المواجهة السابعة: نزال فردي، الحدث الرئيسي: نزال فرق — اكتب الفائز زي المصدر وبالماضي",
   "retry": true,
-  "at": "2026-11-20T19:05:15.384Z"
+  "at": "2026-11-20T19:09:45.617Z"
  },
  "https://www.fightful.com/wrestling/toni-storm-tapes-to-premiere-on-november-27": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T19:03:49.900Z"
+  "at": "2026-11-20T19:09:15.326Z"
  },
  "https://www.fightful.com/wrestling/johnny-gargano-sami-zayn-is-hope-for-guys-like-me": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T19:03:49.646Z"
+  "at": "2026-11-20T19:09:15.014Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-11-17-viewership-increases-demo-remains-the-same": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T19:03:49.245Z"
+  "at": "2026-11-20T19:09:14.508Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-20": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T19:03:48.768Z"
+  "at": "2026-11-20T19:09:13.910Z"
  },
  "https://www.fightful.com/wrestling/rich-swann-confirms-he-will-be-a-free-agent-at-the-end-of-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T19:03:48.360Z"
+  "at": "2026-11-20T19:09:13.416Z"
  },
  "https://www.fightful.com/wrestling/spoilers-title-changes-at-11-19-tna-impact-tapings": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T19:03:48.033Z"
+  "at": "2026-11-20T19:09:13.011Z"
  },
  "https://www.fightful.com/wrestling/zack-sabre-jr-vs-hechicero-added-to-njpw-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T19:03:47.475Z"
+  "at": "2026-11-20T19:09:12.807Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-results-11-19-leon-slater-vs-nic-nemeth": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T19:03:47.137Z"
+  "at": "2026-11-20T19:09:12.390Z"
+ },
+ "https://www.ringsidenews.com/indie-star-alejandra-lion-involved-serious-car-accident": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-20T19:03:37.247Z"
  },
  "https://www.fightful.com/wrestling/338629-chavo-guerrero-aro-lucha": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة",
@@ -1988,15 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-12T07:46:59.257Z"
- },
- "https://www.fightful.com/wrestling/aew-dynamite-results-11-11-2026-will-ospreay-kyle-fletcher-face-to-face-merecedes-mone-jay-white-vs-death-riders-more": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، فعل مثنى («يواجهان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، التحديث شال فقرات الكواليس وتفاصيل النزالات من التقرير المنشور — اكتب التقرير كامل وزوّد الجديد، في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
-  "retry": true,
-  "at": "2026-11-12T05:38:48.523Z"
- },
- "https://www.ringsidenews.com/aew-dynamitecollision-results-highlights-key-moments-november-11-2026": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (صفقا/احتفلا/أمام عيني X وY…) ممنوعة: اكتب فعل جمع («مات وجيف صفقوا») أو «أمام X وY».",
-  "retry": true,
-  "at": "2026-11-12T04:59:21.302Z"
  }
 }
