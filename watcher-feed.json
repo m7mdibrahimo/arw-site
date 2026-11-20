@@ -1,5 +1,15 @@
 [
   {
+    "id": 340000,
+    "link": "https://www.fightful.com/wrestling/triple-threat-revolver-international-title-match-announced-for-12-3-tna-impact/",
+    "date": "2026-11-19T23:10:27",
+    "date_gmt": "2026-11-20T04:10:27",
+    "title": {
+      "rendered": "Triple Threat Revolver, International Title Match Announced For 12/3 TNA iMPACT"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/12/02122859/G7LBws8aUAA4Q2x.jpg"
+  },
+  {
     "id": 339998,
     "link": "https://www.fightful.com/wrestling/tna-impact-results-11-19-leon-slater-vs-nic-nemeth/",
     "date": "2026-11-19T22:09:26",
@@ -288,15 +298,5 @@
       "rendered": "Nick Khan Calls Oba Femi WWE&#8217;s &#8216;Next Big Thing&#8217;: &#8220;There’s Never Been A Wrestler Who’s Looked Or Felt Like Him&#8221;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/06/27132844/HL1j20TW0AAmDrn-1.jpg"
-  },
-  {
-    "id": 339894,
-    "link": "https://www.fightful.com/wrestling/jeff-hardy-i-have-a-little-more-time-in-a-wwe-ring-before-its-over/",
-    "date": "2026-11-19T10:28:29",
-    "date_gmt": "2026-11-19T15:28:29",
-    "title": {
-      "rendered": "Jeff Hardy: I Have A Little More Time In A WWE Ring Before It&#8217;s Over"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/30122759/Screenshot-279-e1785428904409.png"
   }
 ]

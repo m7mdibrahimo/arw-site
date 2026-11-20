@@ -1,43 +1,48 @@
 {
+ "https://www.fightful.com/wrestling/triple-threat-revolver-international-title-match-announced-for-12-3-tna-impact": {
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
+  "retry": true,
+  "at": "2026-11-20T04:15:08.031Z"
+ },
  "https://www.fightful.com/wrestling/tna-impact-results-11-19-leon-slater-vs-nic-nemeth": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T04:09:38.328Z"
+  "at": "2026-11-20T04:13:39.373Z"
  },
  "https://www.fightful.com/wrestling/keanu-carver-placed-on-psychiatric-hold": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T04:09:37.814Z"
+  "at": "2026-11-20T04:13:38.557Z"
  },
  "https://www.fightful.com/wrestling/motion-to-compel-hearing-date-set-in-ludwig-kaiser-battery-case": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T04:09:37.567Z"
+  "at": "2026-11-20T04:13:38.169Z"
  },
  "https://www.fightful.com/wrestling/details-on-feature-film-about-nattie-neidharts-book-life-story": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T04:09:37.101Z"
+  "at": "2026-11-20T04:13:37.439Z"
  },
  "https://www.fightful.com/wrestling/the-rocks-wwe-return-announcement-surprised-many-people-at-wwe-hq": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T04:09:36.567Z"
+  "at": "2026-11-20T04:13:36.605Z"
  },
  "https://www.fightful.com/wrestling/jeff-hardy-im-manifesting-a-feud-with-cm-punk": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T04:09:36.406Z"
+  "at": "2026-11-20T04:13:36.349Z"
  },
  "https://www.fightful.com/wrestling/report-anthem-considering-cutting-back-on-number-of-tna-ppvs-for-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T04:09:36.154Z"
+  "at": "2026-11-20T04:13:35.958Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-spoilers-from-calgary-taped-on-11-18": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T04:09:35.545Z"
+  "at": "2026-11-20T04:13:34.997Z"
  },
  "https://www.wrestlinginc.com/2321436/tna-thursday-night-impact-november-19-2026-results": {
   "reason": "المراجعة رفضته: الفائز مش مذكور في وصف نزاله (1) — اكتب النزال من المصدر بأسماء الطرفين، المصدر بيتكلم عن Kiera Hogan (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن John Skyler (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اقتباس بالإنجليزي جوه الخبر العربي — لازم يتترجم للعربي",
   "retry": true,
   "at": "2026-11-11T16:26:36.917Z"
- },
- "https://www.fightful.com/wrestling/amir-jordan-announced-for-tna-x-cup": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-11T15:40:10.239Z"
  }
 }
