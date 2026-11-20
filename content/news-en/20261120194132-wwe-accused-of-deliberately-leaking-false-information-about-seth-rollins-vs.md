@@ -16,7 +16,9 @@ image: /content/images/bhd32v5hj9g6c9ok.jpg
 ---
 Jinder Mahal recently revealed that WWE deliberately leaked false information to dirt sheets ahead of his World Heavyweight Championship match against Seth Rollins on the January 15, 2024, episode of WWE Raw. Speaking on The Sportster, Mahal explained that management wanted to stir up the rumor mill and make fans wonder if a shock title change was genuinely possible.
 
-Mahal noted that the controversy surrounding his unexpected opportunity, which even drew public remarks from Tony Khan, actually helped build anticipation. He even pitched the idea of winning the title briefly or having Damian Priest cash in his Money in the Bank contract immediately. To heighten the suspense, misinformation regarding extra pyro was intentionally circulated. > We had actually leaked to the dirt sheets, like, 'Oh, extra pyro is coming,' to kind of stir the crowd a little bit.
+Mahal noted that the controversy surrounding his unexpected opportunity, which even drew public remarks from Tony Khan, actually helped build anticipation. He even pitched the idea of winning the title briefly or having Damian Priest cash in his Money in the Bank contract immediately. To heighten the suspense, misinformation regarding extra pyro was intentionally circulated.
+
+> "We had actually leaked to the dirt sheets, like, 'Oh, extra pyro is coming,' to kind of stir the crowd a little bit."
 
 Ultimately, Mahal did not capture the title, and Rollins unfortunately suffered a knee injury during the bout, forcing them to adjust the finish live on air. Despite that, the simple trick successfully captured the audience's attention and fueled online speculation.
 

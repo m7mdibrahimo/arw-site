@@ -2329,6 +2329,9 @@ export function splitGluedBlocks(text: string): string {
   return splitQuoteNarration(text)
     .replace(/([.!؟?)”"»:])[ \t]+(\*\*(?:المواجهة|الحدث الرئيسي)\s)/g, "$1\n\n$2")
     .replace(/([^\n>])[ \t]+> (?=["«“])/g, "$1\n\n> ")
+    // «…حول إعداد ألعاب نارية إضافية للعرض. > لقد سربنا…»: a quote with no opening mark glued after a sentence
+    // showed a literal «>» in the Jinder Mahal story, Arabic and English (INCIDENTS #1442)
+    .replace(/([.!؟?”"»])[ \t]+>[ \t]+(?=[^\s>])/g, "$1\n\n> ")
     // A line of narration right under a quote line becomes part of the quote in Markdown (lazy continuation): the
     // Stephanie Vaquer story showed «Vaquer competed at three live events…» inside Meltzer's quote (INCIDENTS #1223)
     .replace(/^(>[^\n]*)\n(?=[ \t]*[^>\s])/gm, "$1\n\n");
