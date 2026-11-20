@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aj-styles-wants-nothing-running-wwe-nxt-backstage-shakeup-hits-roadblock": {
+  "reason": "المراجعة رفضته: المصدر بيتكلم عن Dave Meltzer (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
+  "retry": true,
+  "at": "2026-11-20T17:36:31.916Z"
+ },
  "https://www.fightful.com/wrestling/wwe-survivor-series-odds-courtesy-of-mybookie": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -63,11 +68,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-20T17:31:52.387Z"
- },
- "https://www.ringsidenews.com/aj-styles-wants-nothing-running-wwe-nxt-backstage-shakeup-hits-roadblock": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-20T17:18:03.750Z"
  },
  "https://www.fightful.com/wrestling/chad-gable-says-triple-h-directly-addressed-shorty-g-when-he-was-in-talks-to-re-sign-with-wwe": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
