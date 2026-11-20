@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2323064/wwe-smackdown-november-20-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-20T22:10:31.472Z"
+ },
  "https://www.fightful.com/wrestling/lilian-garcia-returning-to-the-mic-for-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-12T15:51:04.895Z"
- },
- "https://www.ringsidenews.com/cody-rhodes-says-more-hollywood-projects-could-announced-within-weeks": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-11-12T15:05:22.850Z"
  }
 }
