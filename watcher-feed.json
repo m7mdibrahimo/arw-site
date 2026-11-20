@@ -1,5 +1,15 @@
 [
   {
+    "id": 340027,
+    "link": "https://www.fightful.com/wrestling/wwe-nxt-11-17-viewership-increases-demo-remains-the-same/",
+    "date": "2026-11-20T09:50:25",
+    "date_gmt": "2026-11-20T14:50:25",
+    "title": {
+      "rendered": "WWE NXT (11/17) Viewership Increases, Demo Remains The Same"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/06/25191506/nxt2024_25.jpg"
+  },
+  {
     "id": 340025,
     "link": "https://www.fightful.com/wrestling/lance-storm-on-trusting-tna-stars-i-dont-want-them-to-have-a-lance-storm-match/",
     "date": "2026-11-20T09:30:37",
@@ -288,15 +298,5 @@
       "rendered": "Jeff Hardy: I&#8217;m Manifesting A Feud With CM Punk"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/03/05025412/jeff-hardy-cm-punk_crop_exact.0.jpg"
-  },
-  {
-    "id": 339929,
-    "link": "https://www.fightful.com/wrestling/report-anthem-considering-cutting-back-on-number-of-tna-ppvs-for-2027/",
-    "date": "2026-11-19T13:19:52",
-    "date_gmt": "2026-11-19T18:19:52",
-    "title": {
-      "rendered": "Report: Anthem Considering Cutting Back On Number Of TNA PPVs For 2027"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/06/07134154/0b70438aee684b20bef7ada08b7bc559-1-8.jpg"
   }
 ]
