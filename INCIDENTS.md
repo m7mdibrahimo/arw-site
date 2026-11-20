@@ -11563,3 +11563,8 @@ Let me check git status to enumerate uncommitted changes.</think><tool_call>shel
 اللي حصل: خبر ليليان غارسيا قال إنها راجعة «للتعليق الصوتي» وهي مقدمة نزالات، وكتب Wichita «ويتشاتا» و«التي ستبث» على «عرض»، وخبر GCW كتب «عرض GCW وBloodsport».
 السبب: مفيش قاعدة لـ ring announcer ولا تصحيح لاسم المدينة.
 الإصلاح: اتصلح الخبرين بنفس الرابط، واتضافت قاعدة ring announcer في style-guide وتصحيح «ويتشاتا» في corrections.json مع اختبار corrections-1447.
+
+## #1448 — 2026-11-21: أخطاء ترجمة في خبر SmackDown وخبر TNA الإنجليزي
+اللي حصل: خبر SmackDown كتب «إيفانزوبوليس» بدل إيفانزفيل و«قفص الهيكل» بدل القفص الحديدي و«خطط قد قابلة للتغيير»، والإنجليزي لخبر TNA كتب «captured the ... Champion».
+السبب: ترجمة حرفية لأسماء أماكن وأنواع نزالات من غير تصحيح ثابت.
+الإصلاح: اتصلح الخبرين، واتضافت التلات صيغ لـ editorial/corrections.json مع اختبار tests/corrections-1448.test.mts.
