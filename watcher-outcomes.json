@@ -1,48 +1,53 @@
 {
- "https://www.ringsidenews.com/spoiler-new-champions-crowned-during-tna-tapings-calgary": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، اسم مصارع في العنوان أو المتن غير موجود في المصدر: TV Championship",
+ "https://www.fightful.com/wrestling/zack-sabre-jr-vs-hechicero-added-to-njpw-wrestle-kingdom-21": {
+  "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا/شركة X وشركة Y»",
   "retry": true,
-  "at": "2026-11-20T11:52:08.477Z"
+  "at": "2026-11-20T11:57:26.423Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-results-11-19-leon-slater-vs-nic-nemeth": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T11:46:40.428Z"
+  "at": "2026-11-20T11:57:09.128Z"
  },
  "https://www.fightful.com/wrestling/keanu-carver-placed-on-psychiatric-hold": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T11:46:39.932Z"
+  "at": "2026-11-20T11:57:08.483Z"
  },
  "https://www.fightful.com/wrestling/motion-to-compel-hearing-date-set-in-ludwig-kaiser-battery-case": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T11:46:39.685Z"
+  "at": "2026-11-20T11:57:08.175Z"
  },
  "https://www.fightful.com/wrestling/details-on-feature-film-about-nattie-neidharts-book-life-story": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T11:46:39.238Z"
+  "at": "2026-11-20T11:57:07.598Z"
  },
  "https://www.fightful.com/wrestling/the-rocks-wwe-return-announcement-surprised-many-people-at-wwe-hq": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T11:46:38.721Z"
+  "at": "2026-11-20T11:57:06.935Z"
  },
  "https://www.fightful.com/wrestling/jeff-hardy-im-manifesting-a-feud-with-cm-punk": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T11:46:38.566Z"
+  "at": "2026-11-20T11:57:06.734Z"
  },
  "https://www.fightful.com/wrestling/report-anthem-considering-cutting-back-on-number-of-tna-ppvs-for-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T11:46:38.321Z"
+  "at": "2026-11-20T11:57:06.420Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-spoilers-from-calgary-taped-on-11-18": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T11:46:37.728Z"
+  "at": "2026-11-20T11:57:05.661Z"
+ },
+ "https://www.ringsidenews.com/spoiler-new-champions-crowned-during-tna-tapings-calgary": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، اسم مصارع في العنوان أو المتن غير موجود في المصدر: TV Championship",
+  "retry": true,
+  "at": "2026-11-20T11:52:08.477Z"
  },
  "https://www.wrestlinginc.com/2321436/tna-thursday-night-impact-november-19-2026-results": {
   "reason": "المراجعة رفضته: المواجهة مكتوبة «نزال فردي» والفقرة تحتها بتقول «نزال ثلاثي/فرق» — صحح العنوان حسب سطر المصدر، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Gabby Forza، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، المصدر بيتكلم عن John Skyler (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
   "retry": true,
   "at": "2026-11-11T17:12:40.417Z"
- },
- "https://www.ringsidenews.com/jonathan-coachman-accuses-espn-executives-sabotaging-his-relationship-nick-khan": {
-  "reason": "المراجعة رفضته: فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-11T16:59:21.152Z"
  }
 }
