@@ -1,5 +1,15 @@
 [
   {
+    "id": 4237942983,
+    "link": "https://www.wrestlinginc.com/2323915/gcw-bloodsport-return-32-man-tournament/",
+    "date": "Fri, 20 Nov 2026 23:12:19 +0000",
+    "date_gmt": "2026-11-20T23:12:19.000Z",
+    "title": {
+      "rendered": "GCW Announces Details Of Bloodsport Return Featuring 32-Man Tournament"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/gcw-announces-details-of-bloodsport-return-featuring-32-man-tournament/l-intro-1795216279.jpg"
+  },
+  {
     "id": 1432734271,
     "link": "https://www.wrestlinginc.com/2323846/tna-spoiler-report-upcoming-title-changes/",
     "date": "Fri, 20 Nov 2026 22:25:12 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Backstage News On Status Of TNA December PPV, Potential PPV Cutback In 2027"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-news-on-status-of-tna-december-ppv-potential-ppv-cutback-in-2027/l-intro-1795129495.jpg"
-  },
-  {
-    "id": 5002964863,
-    "link": "https://www.wrestlinginc.com/2321436/tna-thursday-night-impact-november-19-2026-results/",
-    "date": "Thu, 19 Nov 2026 23:00:00 +0000",
-    "date_gmt": "2026-11-19T23:00:00.000Z",
-    "title": {
-      "rendered": "TNA Impact Results 11/19/26 W/ Live Updates: Leon Slater Defends Against Nic Nemeth"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-thursday-night-impact-results-111926-w-live-updates/l-intro-1795148967.jpg"
   }
 ]
