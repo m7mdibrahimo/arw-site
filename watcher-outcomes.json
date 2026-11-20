@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/velvet-sky-says-shes-finally-free-mentally-emotionally-abusive-man": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-20T12:38:53.949Z"
+ },
+ "https://www.ringsidenews.com/spoiler-new-champions-crowned-during-tna-tapings-calgary": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، اسم مصارع في العنوان أو المتن غير موجود في المصدر: TV Championship",
+  "retry": true,
+  "at": "2026-11-20T12:36:53.860Z"
+ },
  "https://www.fightful.com/wrestling/rich-swann-confirms-he-will-be-a-free-agent-at-the-end-of-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -48,16 +58,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-20T12:37:35.446Z"
- },
- "https://www.ringsidenews.com/velvet-sky-says-shes-finally-free-mentally-emotionally-abusive-man": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-20T12:25:48.782Z"
- },
- "https://www.ringsidenews.com/spoiler-new-champions-crowned-during-tna-tapings-calgary": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: TV Championship",
-  "retry": true,
-  "at": "2026-11-20T12:24:45.509Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-spoilers-from-calgary-taped-on-11-18": {
   "reason": "مكرر مع خبر نزل قبل كده",
