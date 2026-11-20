@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/zelina-vega-calls-out-wwe-performance-center-instructor-questionable-self-defense-techniques": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-20T20:37:54.621Z"
+ },
  "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-12T14:04:34.372Z"
- },
- "https://www.ringsidenews.com/cody-rhodes-trying-land-corporate-role-wwe": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Paul Heyman",
-  "retry": true,
-  "at": "2026-11-12T13:58:06.930Z"
  }
 }
