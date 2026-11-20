@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aj-styles-wants-nothing-running-wwe-nxt-backstage-shakeup-hits-roadblock": {
+  "reason": "المراجعة رفضته: المصدر بيتكلم عن Dave Meltzer (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
+  "retry": true,
+  "at": "2026-11-20T16:57:28.448Z"
+ },
  "https://www.fightful.com/wrestling/roh-tv-results-11-19-hyan-teams-with-maya-world": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-12T02:43:41.343Z"
- },
- "https://www.fightful.com/wrestling/kyle-fletcher-takes-credit-for-breaking-will-ospreays-neck-in-heated-promo-on-aew-dynamite": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-12T02:06:19.888Z"
  }
 }
