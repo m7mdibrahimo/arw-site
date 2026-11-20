@@ -2,62 +2,62 @@
  "https://www.fightful.com/wrestling/rich-swann-confirms-he-will-be-a-free-agent-at-the-end-of-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T12:20:48.395Z"
+  "at": "2026-11-20T12:25:26.093Z"
+ },
+ "https://www.fightful.com/wrestling/spoilers-title-changes-at-11-19-tna-impact-tapings": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-20T12:23:03.550Z"
+ },
+ "https://www.fightful.com/wrestling/zack-sabre-jr-vs-hechicero-added-to-njpw-wrestle-kingdom-21": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-20T12:23:03.393Z"
+ },
+ "https://www.fightful.com/wrestling/tna-impact-results-11-19-leon-slater-vs-nic-nemeth": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-20T12:23:03.074Z"
+ },
+ "https://www.fightful.com/wrestling/keanu-carver-placed-on-psychiatric-hold": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-20T12:23:02.563Z"
+ },
+ "https://www.fightful.com/wrestling/motion-to-compel-hearing-date-set-in-ludwig-kaiser-battery-case": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-20T12:23:02.316Z"
+ },
+ "https://www.fightful.com/wrestling/details-on-feature-film-about-nattie-neidharts-book-life-story": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-20T12:23:01.849Z"
+ },
+ "https://www.fightful.com/wrestling/the-rocks-wwe-return-announcement-surprised-many-people-at-wwe-hq": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-20T12:23:01.317Z"
+ },
+ "https://www.fightful.com/wrestling/jeff-hardy-im-manifesting-a-feud-with-cm-punk": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-20T12:23:01.157Z"
+ },
+ "https://www.fightful.com/wrestling/report-anthem-considering-cutting-back-on-number-of-tna-ppvs-for-2027": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-20T12:23:00.906Z"
+ },
+ "https://www.fightful.com/wrestling/tna-impact-spoilers-from-calgary-taped-on-11-18": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-20T12:23:00.293Z"
  },
  "https://www.fightful.com/wrestling/njpw-bound-for-unbound-results-11-20": {
   "reason": "المراجعة رفضته: آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Yota Tsuji، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: نزال فردي، المواجهة الثانية: نزال فردي، المواجهة الرابعة: نزال فردي، المواجهة الخامسة: نزال فردي، المواجهة السادسة: نزال فردي — اكتب الفائز زي المصدر وبالماضي",
   "retry": true,
   "at": "2026-11-20T12:20:48.078Z"
- },
- "https://www.fightful.com/wrestling/spoilers-title-changes-at-11-19-tna-impact-tapings": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-20T12:19:51.341Z"
- },
- "https://www.fightful.com/wrestling/zack-sabre-jr-vs-hechicero-added-to-njpw-wrestle-kingdom-21": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-20T12:19:51.140Z"
- },
- "https://www.fightful.com/wrestling/tna-impact-results-11-19-leon-slater-vs-nic-nemeth": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-20T12:19:50.741Z"
- },
- "https://www.fightful.com/wrestling/keanu-carver-placed-on-psychiatric-hold": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-20T12:19:50.093Z"
- },
- "https://www.fightful.com/wrestling/motion-to-compel-hearing-date-set-in-ludwig-kaiser-battery-case": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-20T12:19:49.785Z"
- },
- "https://www.fightful.com/wrestling/details-on-feature-film-about-nattie-neidharts-book-life-story": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-20T12:19:49.203Z"
- },
- "https://www.fightful.com/wrestling/the-rocks-wwe-return-announcement-surprised-many-people-at-wwe-hq": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-20T12:19:48.536Z"
- },
- "https://www.fightful.com/wrestling/jeff-hardy-im-manifesting-a-feud-with-cm-punk": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-20T12:19:48.336Z"
- },
- "https://www.fightful.com/wrestling/report-anthem-considering-cutting-back-on-number-of-tna-ppvs-for-2027": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-20T12:19:48.024Z"
- },
- "https://www.fightful.com/wrestling/tna-impact-spoilers-from-calgary-taped-on-11-18": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-20T12:19:47.253Z"
  },
  "https://www.ringsidenews.com/wwe-smackdown-preview-november-20-2026-confirmed-matches-start-time-how-watch": {
   "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
