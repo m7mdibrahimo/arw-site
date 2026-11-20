@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/velvet-sky-says-shes-finally-free-mentally-emotionally-abusive-man": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-20T12:25:48.782Z"
+ },
+ "https://www.ringsidenews.com/spoiler-new-champions-crowned-during-tna-tapings-calgary": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: TV Championship",
+  "retry": true,
+  "at": "2026-11-20T12:24:45.509Z"
+ },
  "https://www.fightful.com/wrestling/rich-swann-confirms-he-will-be-a-free-agent-at-the-end-of-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -68,11 +78,6 @@
   "reason": "المراجعة رفضته: مثنى (فريقيهما/لقبيهما/الزميلان) ممنوع — قول «فريقهم/لقبهم/الزملاء» أو كرر الأسماء",
   "retry": true,
   "at": "2026-11-20T12:01:35.322Z"
- },
- "https://www.ringsidenews.com/spoiler-new-champions-crowned-during-tna-tapings-calgary": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، اسم مصارع في العنوان أو المتن غير موجود في المصدر: TV Championship",
-  "retry": true,
-  "at": "2026-11-20T12:01:17.079Z"
  },
  "https://www.wrestlinginc.com/2321436/tna-thursday-night-impact-november-19-2026-results": {
   "reason": "المراجعة رفضته: المواجهة مكتوبة «نزال فردي» والفقرة تحتها بتقول «نزال ثلاثي/فرق» — صحح العنوان حسب سطر المصدر، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Gabby Forza، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، المصدر بيتكلم عن John Skyler (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-11T19:12:56.076Z"
- },
- "https://www.fightful.com/wrestling/hyperactive-share-that-john-cena-told-them-they-remind-him-of-dx-during-lodestone-camp": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-11T18:09:11.543Z"
  }
 }
