@@ -1982,20 +1982,20 @@
     {
       "window": "15m",
       "remaining": 149,
-      "resetAt": 1795216865167,
-      "updatedAt": 1795215965167
+      "resetAt": 1795217791419,
+      "updatedAt": 1795216891419
     },
     {
       "window": "24h",
-      "remaining": 588,
-      "resetAt": 1795290946167,
-      "updatedAt": 1795215965167
+      "remaining": 587,
+      "resetAt": 1795290957419,
+      "updatedAt": 1795216891419
     },
     {
       "window": "30d",
-      "remaining": 1864,
-      "resetAt": 1797432579167,
-      "updatedAt": 1795215965167
+      "remaining": 1863,
+      "resetAt": 1797432590419,
+      "updatedAt": 1795216891419
     }
   ],
   "videoCooldowns": {
