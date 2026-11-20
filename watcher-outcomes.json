@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2323508/wwe-survivor-series-wargames-2026-bully-ray-rock-dwayne-johnson-needs-endgame-involved": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-20T19:55:03.559Z"
+ },
  "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-12T13:33:06.433Z"
- },
- "https://www.fightful.com/wrestling/jacob-fatu-announced-for-indie-appearance": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-12T11:44:08.856Z"
  }
 }
