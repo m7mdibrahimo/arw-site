@@ -1,53 +1,53 @@
 {
- "https://www.ringsidenews.com/zelina-vega-calls-out-wwe-performance-center-instructor-questionable-self-defense-techniques": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-20T20:37:54.621Z"
- },
  "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:39:04.498Z"
+  "at": "2026-11-20T20:40:38.242Z"
  },
  "https://www.fightful.com/wrestling/wwe-survivor-series-odds-courtesy-of-mybookie": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:39:03.637Z"
+  "at": "2026-11-20T20:40:37.589Z"
  },
  "https://www.fightful.com/wrestling/toni-storm-tapes-to-premiere-on-november-27": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:37:07.999Z"
+  "at": "2026-11-20T20:40:37.006Z"
  },
  "https://www.fightful.com/wrestling/johnny-gargano-sami-zayn-is-hope-for-guys-like-me": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:37:07.686Z"
+  "at": "2026-11-20T20:40:36.769Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-11-17-viewership-increases-demo-remains-the-same": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:37:07.195Z"
+  "at": "2026-11-20T20:40:36.388Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-20": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:37:06.603Z"
+  "at": "2026-11-20T20:40:35.942Z"
  },
  "https://www.fightful.com/wrestling/rich-swann-confirms-he-will-be-a-free-agent-at-the-end-of-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:37:06.109Z"
+  "at": "2026-11-20T20:40:35.562Z"
  },
  "https://www.fightful.com/wrestling/spoilers-title-changes-at-11-19-tna-impact-tapings": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:37:05.699Z"
+  "at": "2026-11-20T20:40:35.248Z"
  },
  "https://www.fightful.com/wrestling/zack-sabre-jr-vs-hechicero-added-to-njpw-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T20:37:05.494Z"
+  "at": "2026-11-20T20:40:35.085Z"
+ },
+ "https://www.ringsidenews.com/zelina-vega-calls-out-wwe-performance-center-instructor-questionable-self-defense-techniques": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-20T20:37:54.621Z"
  },
  "https://www.fightful.com/wrestling/roh-tv-results-11-19-hyan-teams-with-maya-world": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: نزال فردي، المواجهة الثانية: نزال على بطولة ROH التلفزيونية، المواجهة الثالثة: نزال فردي، المواجهة الرابعة: نزال فرق سداسي، المواجهة الخامسة: نزال فردي، المواجهة السادسة: نزال فرق ثماني، المواجهة السابعة: نزال فردي، الحدث الرئيسي: نزال فرق — اكتب الفائز زي المصدر وبالماضي",
