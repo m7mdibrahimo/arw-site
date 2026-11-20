@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/triple-h-tony-khan-blamed-driving-millions-fans-away-wrestling": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-20T00:41:39.073Z"
+ },
  "https://www.wrestlinginc.com/2321436/tna-thursday-night-impact-november-19-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-20T00:32:18.634Z"
- },
- "https://www.ringsidenews.com/triple-h-tony-khan-blamed-driving-millions-fans-away-wrestling": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-20T00:21:41.976Z"
  },
  "https://www.wrestlinginc.com/2322560/speedball-mike-bailey-continental-classic-loss-nick-wayne-aew-dynamite": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
