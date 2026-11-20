@@ -69,11 +69,6 @@
   "retry": false,
   "at": "2026-11-20T16:52:06.900Z"
  },
- "https://www.wrestlinginc.com/2323039/wwe-wrestlemania-43-tko-exec-stream-prime-hours-united-states": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-20T16:46:22.862Z"
- },
  "https://www.fightful.com/wrestling/joe-lando-announces-dislocated-elbow-injury-my-2026-comes-to-an-abrupt-end": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
