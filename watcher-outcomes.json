@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-bringing-back-familiar-voice-raw-ahead-survivor-series-wargames": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-20T21:29:18.023Z"
+ },
  "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: حرف عربي ملزوق بكلمة إنجليزية (مثل: AEW Liveة، بWWE — اكتب «في WWE» أو «لـ WWE»)، اسم مصارع في العنوان أو المتن غير موجود في المصدر: The Hardy Boyz",
   "retry": true,
   "at": "2026-11-12T14:28:48.578Z"
- },
- "https://www.ringsidenews.com/chelsea-green-claims-plaza-hotel-failed-honor-promise-escort-accusation": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-12T14:09:17.524Z"
  }
 }
