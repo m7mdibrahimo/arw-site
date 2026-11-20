@@ -852,8 +852,16 @@ export function fixNearGlossaryNames(text: string): string {
     return hits.length === 1 ? `${first} ${hits[0]}` : whole;
   });
 }
+/** The English twin of dropJokeExplainers (news-qa.ts): «It is worth noting that attending high school to earn a degree
+ *  is unusual, highlighting the satirical nature of his comments.» (RJ City story 20/11 — INCIDENTS #1444). A whole
+ *  sentence outside a quote that names the satirical/humorous nature of the remarks, with no digit, goes. */
+export function dropEnglishJokeExplainers(text: string): string {
+  if (!text || !/nature/i.test(text)) return text;
+  const out = text.replace(/(?<=^|[.!?”"][ \t]+)(?![>])[^.!?\n“”"\d]*\b(?:satirical|humorous|comedic|tongue-in-cheek|joking|lighthearted|light-hearted|playful)\s+nature\s+of\s+(?:his|her|their|the)\s+(?:comments?|remarks?|statements?|words|post|response|reply)[^.!?\n“”"\d]*\.[ \t]*/gim, "");
+  return out === text ? text : out.replace(/[ \t]+\n/g, "\n").replace(/\n{3,}/g, "\n\n").trim();
+}
 export function fixEnglishNames(text: string): string {
-  return fixNearGlossaryNames(fixTonightAired(cleanSpokenQuotes(fixPerfectWithPastTime(fixSingularThey(aToAn(fixIre(fixPronounCase(twitterToX(dropRepeatedListItem(collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text)))))))))))));
+  return dropEnglishJokeExplainers(fixNearGlossaryNames(fixTonightAired(cleanSpokenQuotes(fixPerfectWithPastTime(fixSingularThey(aToAn(fixIre(fixPronounCase(twitterToX(dropRepeatedListItem(collapseRepeatedEnglishWords(ENGLISH_FIXES.reduce((t, [re, to]) => t.replace(re, to), decodeHtmlEntities(text))))))))))))));
 }
 
 /** A quote mark Gemini escaped twice in its JSON reaches the text as «\\"»: it is a plain «"». */

@@ -19,6 +19,4 @@ During a new interview, RJ City joked that he plans to return to high school to 
 
 > "I'm working on various idiotic things and I still don't have an All Elite graphic, which is fine, I'm not worried about it. This is what I'm going to high school for, he said if I get my degree, I can [have it]."
 
-It is worth noting that attending high school to earn a degree is unusual, highlighting the satirical nature of his comments.
-
 https://www.youtube.com/watch?v=WAjcMwaT-hU

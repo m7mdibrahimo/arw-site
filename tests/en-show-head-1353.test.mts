@@ -34,5 +34,6 @@ test('the English structured data lists each alternate name once, capitalised', 
   const doc = mirror.translatePage(html, { url: '/shows/wwe-crown-jewel-2026/', tr, english: new Map(), pages: {} });
   const out = render(doc, { encodeEntities: 'utf8', decodeEntities: true });
   const ld = JSON.parse(out.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)![1]);
-  assert.deepEqual(ld.alternateName, ['WWE Crown Jewel', 'WWE Crown Jewel 2026', 'Crown Jewel', 'AEW Full Gear']);
+  // a show page's «<Event> <year>» name also goes in with «Full Show» / «Full Show Download» (INCIDENTS #1444)
+  assert.deepEqual(ld.alternateName, ['WWE Crown Jewel', 'WWE Crown Jewel 2026', 'Crown Jewel', 'AEW Full Gear', 'WWE Crown Jewel 2026 Full Show', 'WWE Crown Jewel 2026 Full Show Download']);
 });

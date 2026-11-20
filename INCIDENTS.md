@@ -11543,3 +11543,8 @@ Let me check git status to enumerate uncommitted changes.</think><tool_call>shel
 اللي حصل: خبر رايزن خلّى «تيرا رايزينج» يبان اسمه هو مش اسم تريبل إتش القديم، وخبر Survivor Series كتب «المجرى النهائي»، وخبر فيدا سكوت كتب «يوم ذكرى ضحايا التحول الجنسي».
 السبب: ترجمة حرفية وضمير مش واضح صاحبه.
 الإصلاح: الأخبار اتصلحت، واتضاف تصحيحين في editorial/corrections.json وسطر في style-guide عن الاسم القديم، واختبار tests/corrections-1443.test.mts.
+
+## #1444 — 2026-11-20: جملة بتشرح النكتة في خبر آر جي سيتي، وأخطاء صغيرة في أخبار الجولة، وتحسين بيانات صفحات العروض
+اللي حصل: خبر آر جي سيتي (عربي وإنجليزي) اتقفل بجملة مش في المصدر «في إطار الطابع الساخر لتصريحاته / highlighting the satirical nature»، و«ار جي سيتي» من غير مدة، و«graphic» اتترجمت «تصميم»، و«homoerotic» اتترجمت «طبيعتها المثلية»، و«اتحاد WWE وAEW».
+السبب: مفيش فحص بيشيل جملة بتشرح النكتة، والاسم مكانش في القاموس.
+الإصلاح: dropJokeExplainers (عربي) وdropEnglishJokeExplainers بيشيلوا الجملة دي لوحدهم، وRJ City في القاموس و«ار جي→آر جي» في corrections.json، والأخبار اتصلحت بنفس الروابط؛ وفي الـhead بس: BroadcastEvent لكل عرض فيه VirtualLocation وorganizer، والعروض السنوية الإنجليزي فيها «<Event> <year> Full Show (Download)» (اختبار tests/joke-explainers).

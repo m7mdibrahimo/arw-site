@@ -2351,6 +2351,17 @@ export function dropLinkPointerSentences(text: string): string {
   return out === text ? text : out.replace(/\n{3,}/g, "\n\n").trim();
 }
 
+/**
+ * A closing sentence that explains the joke instead of reporting it: «يذكر أنه من غير المعتاد الذهاب إلى المدرسة الثانوية
+ * للحصول على شهادة جامعية، في إطار الطابع الساخر لتصريحاته.» (RJ City story 20/11 — INCIDENTS #1444). No source says it:
+ * a whole sentence outside a quote that names the «ساخر/هزلي/طريف/مازح» nature of the remarks, with no digit, goes.
+ */
+export function dropJokeExplainers(text: string): string {
+  if (!text || !/الطابع|طابع/.test(text)) return text;
+  const out = text.replace(/(?<=^|[.؟!»"][ \t]+)[^.؟!\n«»"\d]*(?:ال)?طابع\s+(?:ال)?(?:ساخر|هزلي|طريف|مازح|فكاهي|كوميدي)\s+(?:ل|في\s+)?(?:تصريحات|حديث|كلام|تعليق|منشور|رد)(?:ه|ها|هم)?[^.؟!\n«»"\d]*\.[ \t]*/gm, "");
+  return out === text ? text : out.replace(/[ \t]+\n/g, "\n").replace(/\n{3,}/g, "\n\n").trim();
+}
+
 export function dropFillerOpeners(text: string): string {
   if (!text) return text;
   return text.replace(/(?<=^|[.؟!»"][ \t]+)(?:و?في سياق متصل|و?على صعيد (?:آخر|متصل)|و?من جهة أخرى)[،,][ \t]*(?=\S)/gm, "");
@@ -2391,6 +2402,7 @@ export function autoFix(text: string): string {
   text = dropRepeatedListItem(text);
   text = dropFillerOpeners(text);
   text = dropLinkPointerSentences(text);
+  text = dropJokeExplainers(text);
   text = fixNamesWithoutWaw(fixHalfEnglishNames(fixDoubledAlef(fixTripledLetters(text))));
   text = fixDefiniteSurnames(text);
   // «عرض» is masculine: «في عرض SmackDown الأخيرة» went live in 28 stories (INCIDENTS #621) — the adjective agrees with it
