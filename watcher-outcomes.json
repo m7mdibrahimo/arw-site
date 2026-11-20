@@ -1,58 +1,63 @@
 {
  "https://www.fightful.com/wrestling/wwe-files-to-trademark-gringo-anonimo-and-anonimo-gringo": {
-  "reason": "المراجعة رفضته: مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، صفة مثنى مؤنث (الأخيرتين/الأولتين/السابقتين…) ممنوعة — اكتب «ختام» أو «آخر الجولات» بدون مثنى (INCIDENTS #850)",
+  "reason": "المراجعة رفضته: صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة، نص الخبر قصير جدًا أو فاضي",
   "retry": true,
-  "at": "2026-11-20T13:08:50.536Z"
+  "at": "2026-11-20T13:11:40.733Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-20": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-20T13:11:28.740Z"
  },
  "https://www.fightful.com/wrestling/rich-swann-confirms-he-will-be-a-free-agent-at-the-end-of-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:06:55.503Z"
+  "at": "2026-11-20T13:11:28.294Z"
  },
  "https://www.fightful.com/wrestling/spoilers-title-changes-at-11-19-tna-impact-tapings": {
-  "reason": "المراجعة رفضته: فائز مش موجود في نتايج المصدر (النزال لسه ما خلصش؟): المواجهة الأولى: نزال على البطولة الدولية، المواجهة الثانية: نزال على بطولة التلفزيون للسيدات",
+  "reason": "المراجعة رفضته: فائز مش موجود في نتايج المصدر (النزال لسه ما خلصش؟): المواجهة الأولى: بطولة TNA الدولية، المواجهة الثانية: بطولة TNA التلفزيونية للسيدات",
   "retry": true,
-  "at": "2026-11-20T13:06:55.100Z"
+  "at": "2026-11-20T13:11:27.933Z"
  },
  "https://www.fightful.com/wrestling/zack-sabre-jr-vs-hechicero-added-to-njpw-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:06:28.056Z"
+  "at": "2026-11-20T13:11:05.212Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-results-11-19-leon-slater-vs-nic-nemeth": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:06:27.657Z"
+  "at": "2026-11-20T13:11:04.856Z"
  },
  "https://www.fightful.com/wrestling/keanu-carver-placed-on-psychiatric-hold": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:06:27.009Z"
+  "at": "2026-11-20T13:11:04.284Z"
  },
  "https://www.fightful.com/wrestling/motion-to-compel-hearing-date-set-in-ludwig-kaiser-battery-case": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:06:26.692Z"
+  "at": "2026-11-20T13:11:04.006Z"
  },
  "https://www.fightful.com/wrestling/details-on-feature-film-about-nattie-neidharts-book-life-story": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:06:26.115Z"
+  "at": "2026-11-20T13:11:03.489Z"
  },
  "https://www.fightful.com/wrestling/the-rocks-wwe-return-announcement-surprised-many-people-at-wwe-hq": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:06:25.427Z"
+  "at": "2026-11-20T13:11:02.893Z"
  },
  "https://www.fightful.com/wrestling/jeff-hardy-im-manifesting-a-feud-with-cm-punk": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:06:25.224Z"
+  "at": "2026-11-20T13:11:02.716Z"
  },
  "https://www.fightful.com/wrestling/report-anthem-considering-cutting-back-on-number-of-tna-ppvs-for-2027": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T13:06:24.910Z"
+  "at": "2026-11-20T13:11:02.429Z"
  },
  "https://www.fightful.com/wrestling/adriana-rizzo-recalls-being-told-of-wwe-release-showed-interest-in-other-aspects-while-injured": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -1983,10 +1988,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-11T21:56:22.831Z"
- },
- "https://www.fightful.com/wrestling/vinny-pacifico-discusses-juggling-acting-and-wrestling-being-strategic-with-is-planning-to-avoid-being-overwhelmed": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-11-11T20:04:54.145Z"
  }
 }
