@@ -1,58 +1,63 @@
 {
+ "https://www.fightful.com/wrestling/roh-tv-results-11-19-hyan-teams-with-maya-world": {
+  "reason": "المراجعة رفضته: فعل مثنى («سينافسان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه AR Fox، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: نزال فردي، المواجهة الثانية: نزال على بطولة ROH للتلفزيون، المواجهة الثالثة: نزال فردي، المواجهة الرابعة: نزال فرق سداسي، المواجهة الخامسة: نزال فردي، المواجهة السادسة: نزال فرق ثماني، المواجهة السابعة: نزال فردي، الحدث الرئيسي: نزال فرق — اكتب الفائز زي المصدر وبالماضي",
+  "retry": true,
+  "at": "2026-11-20T16:33:10.582Z"
+ },
  "https://www.fightful.com/wrestling/toni-storm-tapes-to-premiere-on-november-27": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:26:18.696Z"
+  "at": "2026-11-20T16:31:01.020Z"
  },
  "https://www.fightful.com/wrestling/johnny-gargano-sami-zayn-is-hope-for-guys-like-me": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:26:18.337Z"
+  "at": "2026-11-20T16:31:00.691Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-11-17-viewership-increases-demo-remains-the-same": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:26:17.762Z"
+  "at": "2026-11-20T16:31:00.178Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-20": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:26:17.083Z"
+  "at": "2026-11-20T16:30:59.576Z"
  },
  "https://www.fightful.com/wrestling/rich-swann-confirms-he-will-be-a-free-agent-at-the-end-of-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:26:16.513Z"
+  "at": "2026-11-20T16:30:59.066Z"
  },
  "https://www.fightful.com/wrestling/spoilers-title-changes-at-11-19-tna-impact-tapings": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:26:16.028Z"
+  "at": "2026-11-20T16:30:58.653Z"
  },
  "https://www.fightful.com/wrestling/zack-sabre-jr-vs-hechicero-added-to-njpw-wrestle-kingdom-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:26:15.793Z"
+  "at": "2026-11-20T16:30:58.436Z"
  },
  "https://www.fightful.com/wrestling/tna-impact-results-11-19-leon-slater-vs-nic-nemeth": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:26:15.320Z"
+  "at": "2026-11-20T16:30:58.024Z"
  },
  "https://www.fightful.com/wrestling/keanu-carver-placed-on-psychiatric-hold": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:26:14.559Z"
+  "at": "2026-11-20T16:30:57.353Z"
  },
  "https://www.fightful.com/wrestling/motion-to-compel-hearing-date-set-in-ludwig-kaiser-battery-case": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:26:14.189Z"
+  "at": "2026-11-20T16:30:57.027Z"
  },
  "https://www.fightful.com/wrestling/details-on-feature-film-about-nattie-neidharts-book-life-story": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-20T16:26:13.504Z"
+  "at": "2026-11-20T16:30:56.405Z"
  },
  "https://www.fightful.com/wrestling/joe-lando-announces-dislocated-elbow-injury-my-2026-comes-to-an-abrupt-end": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-12T02:01:14.840Z"
- },
- "https://www.wrestlinginc.com/2314401/wwe-cody-rhodes-john-cena-classic-worlds-collide-doomsday-disney": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-12T01:00:46.776Z"
  }
 }
