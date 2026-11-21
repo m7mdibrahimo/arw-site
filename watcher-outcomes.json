@@ -1,83 +1,48 @@
 {
  "https://www.fightful.com/wrestling/ken-anderson-says-he-loved-mini-mr-kennedy": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Vince McMahon",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-21T14:52:16.140Z"
+  "at": "2026-11-21T15:02:11.836Z"
  },
  "https://www.fightful.com/wrestling/roh-womens-pure-title-match-tag-title-bout-added-to-final-battle-ppv": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-21T14:46:16.341Z"
+  "at": "2026-11-21T14:59:27.034Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-to-unveil-team-usas-final-member-on-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T14:45:57.847Z"
+  "at": "2026-11-21T14:54:00.100Z"
  },
  "https://www.fightful.com/wrestling/hacksaw-jim-duggan-returns-on-11-20-wwe-smackdown-joins-team-usa-and-then-immediately-backs-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T14:45:57.522Z"
+  "at": "2026-11-21T14:53:59.753Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-11-20-2026-charlotte-flair-vs-jade-cargill-trick-williams-bakusai-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T14:45:57.007Z"
+  "at": "2026-11-21T14:53:59.180Z"
  },
  "https://www.fightful.com/wrestling/lilian-garcia-returning-to-the-mic-for-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T14:45:56.706Z"
+  "at": "2026-11-21T14:53:58.838Z"
  },
  "https://www.fightful.com/wrestling/sherilyn-guerrero-says-dominik-mysterio-texted-her-after-her-in-ring-debut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T14:45:56.546Z"
+  "at": "2026-11-21T14:53:58.657Z"
  },
  "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T14:45:56.036Z"
+  "at": "2026-11-21T14:53:58.090Z"
  },
  "https://www.ringsidenews.com/several-top-aew-tag-teams-absences-explained-months-off-television": {
   "reason": "المراجعة رفضته: المصدر بيتكلم عن Top Flight (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
   "retry": true,
   "at": "2026-11-21T14:50:17.650Z"
- },
- "https://www.fightful.com/wrestling/roh-womens-pure-title-match-tag-title-bout-added-to-final-battle-ppv": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، صفة مثنى مؤنث (الأخيرتين/الأولتين/السابقتين…) ممنوعة — اكتب «ختام» أو «آخر الجولات» بدون مثنى (INCIDENTS #850)",
-  "retry": true,
-  "at": "2026-11-21T14:25:52.686Z"
- },
- "https://www.fightful.com/wrestling/cody-rhodes-to-unveil-team-usas-final-member-on-11-23-wwe-raw": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-21T14:24:46.889Z"
- },
- "https://www.fightful.com/wrestling/hacksaw-jim-duggan-returns-on-11-20-wwe-smackdown-joins-team-usa-and-then-immediately-backs-out": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-21T14:24:46.559Z"
- },
- "https://www.fightful.com/wrestling/wwe-smackdown-results-11-20-2026-charlotte-flair-vs-jade-cargill-trick-williams-bakusai-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-21T14:24:46.030Z"
- },
- "https://www.fightful.com/wrestling/lilian-garcia-returning-to-the-mic-for-11-23-wwe-raw": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-21T14:24:45.719Z"
- },
- "https://www.fightful.com/wrestling/sherilyn-guerrero-says-dominik-mysterio-texted-her-after-her-in-ring-debut": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-21T14:24:45.556Z"
- },
- "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-21T14:24:45.031Z"
  },
  "https://www.wrestlinginc.com/2318687/wwe-becky-lynch-liv-morgan-judgment-day-roxanne-perez-dominik-mysterio": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
