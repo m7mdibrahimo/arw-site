@@ -5652,5 +5652,24 @@
     "needsReview": false,
     "tiktok": true,
     "mediaDeleted": true
+  },
+  "20261121160351-wwe-smackdown-20-11-2026": {
+    "publishedAt": null,
+    "facebook_reel": false,
+    "facebook_story": false,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سماك داون 20.11.2026 مترجم",
+    "lastAttempt": 1795270126257,
+    "errors": {
+      "facebook_reel": "النشر متاح للمحتوى الجديد فقط من وقت بدء التشغيل؛ المحتوى القديم أو غير المؤكد مستبعد.",
+      "facebook_story": "النشر متاح للمحتوى الجديد فقط من وقت بدء التشغيل؛ المحتوى القديم أو غير المؤكد مستبعد.",
+      "instagram_reel": "النشر متاح للمحتوى الجديد فقط من وقت بدء التشغيل؛ المحتوى القديم أو غير المؤكد مستبعد.",
+      "instagram_story": "النشر متاح للمحتوى الجديد فقط من وقت بدء التشغيل؛ المحتوى القديم أو غير المؤكد مستبعد.",
+      "tiktok": "النشر متاح للمحتوى الجديد فقط من وقت بدء التشغيل؛ المحتوى القديم أو غير المؤكد مستبعد."
+    },
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
