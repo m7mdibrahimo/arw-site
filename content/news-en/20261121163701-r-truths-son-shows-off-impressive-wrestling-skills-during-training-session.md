@@ -1,7 +1,7 @@
 ---
 title: "R-Truth’s Son Shows Off Impressive Wrestling Skills During Training Session"
 slug: "r-truths-son-shows-off-impressive-wrestling-skills-during-training-session"
-description: "R-Truth's family may feature a new wrestler in the future, as his son Christopher was spotted performing impressive moves inside the ring with complete."
+description: "R-Truth's family may feature a new wrestler in the future."
 federation: WWE
 date: 2026-11-21T13:37:01.000Z
 created_at: 2026-11-21T13:43:05.914Z

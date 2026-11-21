@@ -1,7 +1,7 @@
 ---
 title: "Jim Cornette Says AEW Anarchy in the Arena Match Was So Bad It Made Him Want to Quit Watching Wrestling"
 slug: "jim-cornette-says-aew-anarchy-in-the-arena-match-was-so-bad-it-made-him-want-to"
-description: "Jim Cornette made it clear that he has reached his limit with AEW, expressing that the Anarchy in the Arena match at AEW Full Gear 2026 left him considering."
+description: "Jim Cornette made it clear that he has reached his limit with AEW."
 federation: AEW
 date: 2026-11-21T13:11:46.000Z
 created_at: 2026-11-21T13:14:50.765Z
