@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2320492/wwe-spike-dudley-comments-legends-deal": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-21T19:47:34.495Z"
+ },
  "https://www.fightful.com/wrestling/jake-hager-retained-some-sight-in-the-eye-after-two-surgeries": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-13T12:55:39.178Z"
- },
- "https://www.fightful.com/wrestling/338737-wwe-raw-attraction": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T12:54:49.591Z"
  }
 }
