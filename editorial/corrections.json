@@ -13871,6 +13871,9 @@
   {"wrong": "هاكساو", "right": "هاكسو", "note": "Hacksaw Jim Duggan — «هاكسو» (INCIDENTS #1452)"},
   {"wrong": "المسور الحديدي", "right": "السور الحديدي", "note": "barricade — «السور الحديدي» (INCIDENTS #1452)"},
   {"wrong": "إيفانسفيل", "right": "إيفانزفيل", "note": "Evansville — كتابة واحدة زي #1448 (INCIDENTS #1452)"},
-  {"wrong": "عروض العرض", "right": "حلقات العرض", "note": "episodes of the show — «حلقات العرض» مش «عروض العرض» (INCIDENTS #1453)"}
+  {"wrong": "عروض العرض", "right": "حلقات العرض", "note": "episodes of the show — «حلقات العرض» مش «عروض العرض» (INCIDENTS #1453)"},
+  {"wrong": "ماستر وواتو", "right": "ماستر واتو", "note": "Máster Wato مصارع واحد — الواو الزيادة بتقسمه لاسمين (نتائج CMLL 20 نوفمبر و NJPW 13 سبتمبر، INCIDENTS #1454)"},
+  {"wrong": "ووكومورا", "right": "وأوكومورا", "note": "Okumura = أوكومورا، وواو العطف قبلها «وأوكومورا» (INCIDENTS #1454)"},
+  {"wrong": "إنفراستروموندو", "right": "إنفراموندو", "note": "Reyes del Inframundo = رييس ديل إنفراموندو (INCIDENTS #1454)"}
  ]
 }

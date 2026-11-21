@@ -17,3 +17,10 @@ test('corrections carry the viewership and «مهزلة» fixes (round 2026-11-2
   assert.equal(get('في مهزلة التغييرات'), 'في دوامة التغييرات');
   assert.equal(get('مؤشرا ثقة'), 'مؤشر ثقة');
 });
+
+test('CMLL names are not split or misspelled: Máster Wato, Okumura, Reyes del Inframundo (INCIDENTS #1454)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa.ts');
+  assert.equal(applyCorrections('كوشيدا وماستر وواتو ووكومورا'), 'كوشيدا وماستر واتو وأوكومورا');
+  assert.equal(applyCorrections('فريق رييس ديل إنفراستروموندو'), 'فريق رييس ديل إنفراموندو');
+  assert.equal(applyCorrections('شوما كاتو وأوكومورا'), 'شوما كاتو وأوكومورا');
+});
