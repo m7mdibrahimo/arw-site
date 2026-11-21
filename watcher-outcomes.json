@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2323064/wwe-smackdown-november-20-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-21T02:10:43.666Z"
+ },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-11-20-2026-charlotte-flair-vs-jade-cargill-trick-williams-bakusai-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -33,11 +38,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-21T02:11:35.658Z"
- },
- "https://www.wrestlinginc.com/2323064/wwe-smackdown-november-20-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-21T01:56:30.542Z"
  },
  "https://www.fightful.com/wrestling/jade-cargill-defeats-charlotte-flair-to-secure-wargames-advantage-for-her-team": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
