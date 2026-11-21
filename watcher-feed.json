@@ -1,5 +1,15 @@
 [
   {
+    "id": 340186,
+    "link": "https://www.fightful.com/wrestling/marina-shafir-i-like-to-call-wrestling-action-theater/",
+    "date": "2026-11-21T11:06:12",
+    "date_gmt": "2026-11-21T16:06:12",
+    "title": {
+      "rendered": "Marina Shafir: I Like To Call Wrestling &#8216;Action Theater&#8217;"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/16083601/Screenshot-229-e1784205379843.png"
+  },
+  {
     "id": 340200,
     "link": "https://www.fightful.com/wrestling/the-rock-puts-pat-mcafee-through-a-table-with-the-rock-bottom/",
     "date": "2026-11-21T11:02:40",
@@ -288,15 +298,5 @@
       "rendered": "TNA iMPACT Thanksgiving Special Will Not Broadcast On AMC, Will Be Available On AMC+"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/20141736/HXiiagaXUAAVmAN.jpg"
-  },
-  {
-    "id": 340070,
-    "link": "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year/",
-    "date": "2026-11-20T14:08:06",
-    "date_gmt": "2026-11-20T19:08:06",
-    "title": {
-      "rendered": "TNA Contract Of BDE Set To Expire At The End Of The Year"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/01211413/HTlm4PaXkAAfcjB.jpg"
   }
 ]
