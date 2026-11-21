@@ -1,5 +1,15 @@
 [
   {
+    "id": 5194646896,
+    "link": "https://www.wrestlinginc.com/2323970/wwe-smackdown-jade-cargill-charlotte-flair-war-games-advantage/",
+    "date": "Sat, 21 Nov 2026 01:49:52 +0000",
+    "date_gmt": "2026-11-21T01:49:52.000Z",
+    "title": {
+      "rendered": "Jade Cargill Defeats Charlotte Flair On WWE SmackDown, Wins WarGames Match Advantage"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/jade-cargill-defeats-charlotte-flair-on-wwe-smackdown-wins-wargames-match-advantage/l-intro-1795225651.jpg"
+  },
+  {
     "id": 1545180898,
     "link": "https://www.wrestlinginc.com/2323950/jeff-jarrett-aew-full-gear-2026-travel-nation-wide-faa-ground-stop/",
     "date": "Sat, 21 Nov 2026 00:57:42 +0000",
@@ -55,7 +65,7 @@
     "date": "Fri, 20 Nov 2026 22:00:00 +0000",
     "date_gmt": "2026-11-20T22:00:00.000Z",
     "title": {
-      "rendered": "WWE SmackDown Results 11/20/26 W/ Live Updates: Women's WarGames Advantage Match"
+      "rendered": "WWE SmackDown Results 11/20/26 W/ Live Updates: War Raiders Vs. BAKUSAI"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-results-112026-w-live-updates/l-intro-1795192523.jpg"
   },
@@ -188,15 +198,5 @@
       "rendered": "TNA Impact 11/19/2026: 3 Things We Hated & 3 Things We Loved"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/tna-impact-11192026-3-things-we-hated-3-things-we-loved/l-intro-1795150636.jpg"
-  },
-  {
-    "id": 1714729620,
-    "link": "https://www.wrestlinginc.com/2322640/tna-impact-leon-slater-nic-nemeth-successfully-defends-world-championship/",
-    "date": "Fri, 20 Nov 2026 04:12:52 +0000",
-    "date_gmt": "2026-11-20T04:12:52.000Z",
-    "title": {
-      "rendered": "Leon Slater Successfully Defends TNA World Championship Against Nic Nemeth On Impact"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/leon-slater-successfully-defends-tna-world-championship-against-nic-nemeth-on-impact/l-intro-1795147857.jpg"
   }
 ]
