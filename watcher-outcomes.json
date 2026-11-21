@@ -1,13 +1,8 @@
 {
  "https://www.wrestlinginc.com/2318687/wwe-becky-lynch-liv-morgan-judgment-day-roxanne-perez-dominik-mysterio": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يبدوان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-21T14:18:01.166Z"
- },
- "https://www.fightful.com/wrestling/ken-anderson-recalls-meeting-his-wife-at-a-wrestling-event-her-laughing-off-his-insults-in-character": {
-  "reason": "المراجعة رفضته: اقتباس بالإنجليزي جوه الخبر العربي — لازم يتترجم للعربي",
-  "retry": true,
-  "at": "2026-11-21T14:22:37.534Z"
+  "at": "2026-11-21T14:34:59.735Z"
  },
  "https://www.fightful.com/wrestling/ken-anderson-recalls-meeting-his-wife-at-a-wrestling-event-her-laughing-off-his-insults-in-character": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
