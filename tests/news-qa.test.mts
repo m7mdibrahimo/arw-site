@@ -737,3 +737,12 @@ test("a «ومع …» clause followed by «وس…» is caught (INCIDENTS #1431
   const ok = checkArticle("عنوان", "ومع توجه كل من بيكي لينش وستيفاني فوكون إلى العرض، تزداد الإثارة. ومع تحديد مواعيد جديدة، ستشهد القضية تطورات.", []);
   assert.ok(!ok.some(i => i.code === "waw_after_ma_clause"));
 });
+
+test("source's own coverage written as ours, «حجزين» and «الإجار» are caught (AEW Collision preview / Willie Mack 21/11)", () => {
+  const promo = checkArticle("موعد انطلاق عرض AEW Collision الليلة", "يقام العرض الليلة.\n\nتتوفر تغطية حية للعرض عبر موقعنا بالتزامن مع انطلاقه، يعقبها بث مباشر عبر قناة اليوتيوب الخاصة بنا.");
+  assert.ok(promo.some((i) => i.code === "source_self_promo"));
+  assert.ok(BLOCKING_QA_CODES.includes("source_self_promo"));
+  assert.ok(!checkArticle("موعد انطلاق عرض AEW Collision الليلة", "يقام العرض الليلة عبر شبكة TNT ومنصة Max.").some((i) => i.code === "source_self_promo"));
+  assert.ok(checkArticle("ويلي ماك يتحدث عن عقده", "طلب تأمين حجزين له في الشهر.").some((i) => i.code === "dual_noun"));
+  assert.equal(applyCorrections("لدفع أجر الإجار"), "لدفع الإيجار");
+});

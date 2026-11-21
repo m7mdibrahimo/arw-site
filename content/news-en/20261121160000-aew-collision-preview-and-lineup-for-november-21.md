@@ -15,4 +15,4 @@ en_tags:
   - "AEW"
 image: /content/images/g5mhd7843ud2nwci.jpg
 ---
-AEW Collision takes place tonight at the Resch Center in Green Bay, Wisconsin, starting at 8 pm ET on TNT and Max. The card features Continental Classic matches, with Daniel Garcia facing Brody King and Ricochet meeting Jay White in Blue League action. In the Gold League, Kevin Knight battles Tommaso Ciampa. In addition, Ilja Dragunov defends the AEW National Championship against El Clon. Fightful provides live coverage every Saturday beginning at 8 p.m. ET, followed by a post-show review podcast on YouTube.
+AEW Collision takes place tonight at the Resch Center in Green Bay, Wisconsin, starting at 8 pm ET on TNT and Max. The card features Continental Classic matches, with Daniel Garcia facing Brody King and Ricochet meeting Jay White in Blue League action. In the Gold League, Kevin Knight battles Tommaso Ciampa. In addition, Ilja Dragunov defends the AEW National Championship against El Clon.
