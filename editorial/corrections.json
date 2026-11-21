@@ -13866,6 +13866,10 @@
    "wrong": "مينيسابوليس",
    "right": "مينيابوليس",
    "note": "Minneapolis (INCIDENTS #1451)"
-  }
+  },
+  {"wrong": "فاغنر جونيور وغالينو فانتاسما", "right": "فاغنر جونيور وغالينو ديل مال", "note": "Galeno del Mal (AAA، شريك El Hijo de Dr. Wagner Jr.) — مش Galeón Fantasma (CMLL) (INCIDENTS #1452)"},
+  {"wrong": "هاكساو", "right": "هاكسو", "note": "Hacksaw Jim Duggan — «هاكسو» (INCIDENTS #1452)"},
+  {"wrong": "المسور الحديدي", "right": "السور الحديدي", "note": "barricade — «السور الحديدي» (INCIDENTS #1452)"},
+  {"wrong": "إيفانسفيل", "right": "إيفانزفيل", "note": "Evansville — كتابة واحدة زي #1448 (INCIDENTS #1452)"}
  ]
 }
