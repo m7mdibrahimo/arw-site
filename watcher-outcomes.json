@@ -1,38 +1,43 @@
 {
+ "https://www.fightful.com/wrestling/marina-shafir-says-the-aew-womens-locker-room-fighting-to-prove-that-they-have-just-as-much-to-offer-as-the-men-is-a-forever-battle": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-21T16:27:46.348Z"
+ },
  "https://www.fightful.com/wrestling/the-rock-puts-pat-mcafee-through-a-table-with-the-rock-bottom": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T16:24:55.607Z"
+  "at": "2026-11-21T16:26:57.802Z"
  },
  "https://www.fightful.com/wrestling/roh-womens-pure-title-match-tag-title-bout-added-to-final-battle-ppv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T16:24:54.722Z"
+  "at": "2026-11-21T16:26:57.045Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-to-unveil-team-usas-final-member-on-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T16:24:54.105Z"
+  "at": "2026-11-21T16:26:56.528Z"
  },
  "https://www.fightful.com/wrestling/hacksaw-jim-duggan-returns-on-11-20-wwe-smackdown-joins-team-usa-and-then-immediately-backs-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T16:24:53.672Z"
+  "at": "2026-11-21T16:26:56.164Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-11-20-2026-charlotte-flair-vs-jade-cargill-trick-williams-bakusai-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T16:24:53.000Z"
+  "at": "2026-11-21T16:26:55.593Z"
  },
  "https://www.fightful.com/wrestling/lilian-garcia-returning-to-the-mic-for-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T16:24:52.605Z"
+  "at": "2026-11-21T16:26:55.258Z"
  },
  "https://www.fightful.com/wrestling/sherilyn-guerrero-says-dominik-mysterio-texted-her-after-her-in-ring-debut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T16:24:52.394Z"
+  "at": "2026-11-21T16:26:55.079Z"
  },
  "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-13T02:27:11.726Z"
- },
- "https://www.fightful.com/wrestling/338699-damian-priest-aaa": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T02:16:13.792Z"
  }
 }
