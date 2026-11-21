@@ -5664,8 +5664,8 @@ test('a weekly episode with its own name keeps it in the head: «AAA Héroes Inm
   for (const n of ['AAA Heroes Inmortales Week 3', 'AAA Heroes Inmortales', 'AAA Heroes Inmortales مترجم']) assert.ok(names.includes(n), n);
   // the program's own episodes and a program whose name already holds the title are unchanged
   const col = { headline: 'عرض كوليجن 07.11.2026 مترجم', title: 'AEW Collision 07.11.2026', programName: 'AEW Collision', eventDate: '2026-11-07', day: '7 نوفمبر 2026', isLatest: true, description: '' };
-  assert.equal(showSeoText(col).title, 'عرض كوليجن الأخير 07.11.2026 كامل مترجم — AEW Collision');
-  assert.equal(showSeoText({ ...col, title: 'Collision 07.11.2026' }).title, 'عرض كوليجن الأخير 07.11.2026 كامل مترجم — AEW Collision');
+  assert.equal(showSeoText(col).title, 'عرض AEW كوليجن الأخير 07.11.2026 كامل مترجم — AEW Collision');
+  assert.equal(showSeoText({ ...col, title: 'Collision 07.11.2026' }).title, 'عرض AEW كوليجن الأخير 07.11.2026 كامل مترجم — AEW Collision');
 });
 
 // INCIDENTS #1163: «باور ستراجيل ~ سوبر جونيور تاج ليج» — no «~» in the names the head hands Google

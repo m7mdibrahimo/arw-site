@@ -1,5 +1,5 @@
 ---
-title: "Ken Anderson Says He 'Loved' Mini Mr Kennedy"
+title: "Ken Anderson Says He 'Loved' Mini Mr. Kennedy"
 slug: "ken-anderson-says-he-loved-mini-mr-kennedy"
 description: "Ken Anderson recently shared his thoughts on the 2008 Royal Rumble match that featured mini versions of WWE superstars."
 federation: WWE

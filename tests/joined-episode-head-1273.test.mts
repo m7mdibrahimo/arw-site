@@ -14,7 +14,7 @@ test('a joined episode names both programs in Arabic in the head title and descr
 
 test('a plain or themed Dynamite keeps its own title', () => {
   const plain = showSeoText({ headline: 'عرض داينامايت 04.11.2026 مترجم', title: 'AEW Dynamite (04.11.2026)', programName: 'AEW Dynamite', eventDate: '2026-11-04', day: '4 نوفمبر 2026', isLatest: false, description: '' });
-  assert.equal(plain.title, 'عرض داينامايت 04.11.2026 كامل مترجم — AEW Dynamite');
+  assert.equal(plain.title, 'عرض AEW داينامايت 04.11.2026 كامل مترجم — AEW Dynamite'); // «عرض AEW» since #1459
   const themed = showSeoText({ headline: 'عرض داينامايت 04.11.2026 مترجم', title: 'AEW Dynamite Blood & Guts (04.11.2026)', programName: 'AEW Dynamite', eventDate: '2026-11-04', day: '4 نوفمبر 2026', isLatest: false, description: '' });
   assert.ok(!themed.title.includes(' و'), themed.title);
 });
