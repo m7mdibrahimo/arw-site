@@ -1,48 +1,48 @@
 {
- "https://www.ringsidenews.com/ddp-reveals-years-legitimate-backstage-heat-ric-flair-how-they-squashed-it": {
-  "reason": "المراجعة رفضته: اسم دايموند دالاس بيج اتكتب «بايج» (دي بايج المصارعة) — الصح «بيج»، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين",
-  "retry": true,
-  "at": "2026-11-21T23:52:08.558Z"
- },
  "https://www.fightful.com/wrestling/raj-dhesi-says-randy-orton-got-him-into-united-states-title-match-at-wrestlemania-34": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE United States Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Vince McMahon",
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE United States Championship",
   "retry": true,
-  "at": "2026-11-21T23:46:23.912Z"
+  "at": "2026-11-21T23:56:43.773Z"
  },
  "https://www.fightful.com/wrestling/jake-hager-retained-some-sight-in-the-eye-after-two-surgeries": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:45:37.289Z"
+  "at": "2026-11-21T23:56:22.671Z"
  },
  "https://www.fightful.com/wrestling/the-rock-im-coming-to-houston-to-say-thank-you-and-i-love-you": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:45:36.946Z"
+  "at": "2026-11-21T23:56:22.377Z"
  },
  "https://www.fightful.com/wrestling/mjf-responds-to-claim-he-stayed-with-aew-as-a-safe-bet": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:45:36.473Z"
+  "at": "2026-11-21T23:56:21.966Z"
  },
  "https://www.fightful.com/wrestling/the-rock-puts-pat-mcafee-through-a-table-with-the-rock-bottom": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:45:35.792Z"
+  "at": "2026-11-21T23:56:21.364Z"
  },
  "https://www.fightful.com/wrestling/roh-womens-pure-title-match-tag-title-bout-added-to-final-battle-ppv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:45:34.780Z"
+  "at": "2026-11-21T23:56:20.488Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-to-unveil-team-usas-final-member-on-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:45:34.100Z"
+  "at": "2026-11-21T23:56:19.894Z"
  },
  "https://www.fightful.com/wrestling/hacksaw-jim-duggan-returns-on-11-20-wwe-smackdown-joins-team-usa-and-then-immediately-backs-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:45:33.619Z"
+  "at": "2026-11-21T23:56:19.473Z"
+ },
+ "https://www.ringsidenews.com/ddp-reveals-years-legitimate-backstage-heat-ric-flair-how-they-squashed-it": {
+  "reason": "المراجعة رفضته: اسم دايموند دالاس بيج اتكتب «بايج» (دي بايج المصارعة) — الصح «بيج»، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين",
+  "retry": true,
+  "at": "2026-11-21T23:52:08.558Z"
  },
  "https://www.wrestlinginc.com/2324005/aew-collision-november-21-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
