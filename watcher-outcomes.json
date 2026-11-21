@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2324135/charlotte-flair-the-rock-40th-wwe-royal-rumble": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-21T19:18:04.362Z"
+ },
+ "https://www.wrestlinginc.com/2319284/bret-hart-modern-wrestlers-arent-making-effort-feel-real": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-21T19:17:38.042Z"
+ },
  "https://www.fightful.com/wrestling/jake-hager-retained-some-sight-in-the-eye-after-two-surgeries": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1988,15 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-13T12:23:39.874Z"
- },
- "https://www.ringsidenews.com/nikki-bella-recalls-drunken-night-left-her-stranded-dark-without-money-phone": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-13T12:10:20.747Z"
- },
- "https://www.fightful.com/wrestling/338442-chavo-guerrero-wrestling-brad-small": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T11:46:52.948Z"
  }
 }
