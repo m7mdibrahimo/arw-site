@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/wwe-smackdown-20-11-2026/",
+    "title": "عرض سماك داون 20.11.2026 مترجم",
+    "subtitle": "WWE Smackdown 20.11.2026",
+    "image": "/content/images/nts2010erfxz9i2n.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/tna-impact-19-11-2026/",
     "title": "عرض تي ان ايه امباكت 19.11.2026 مترجم",
     "subtitle": "TNA iMPACT 19.11.2026",
@@ -141,16 +152,5 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض فول جير تيلغيت برول مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-smackdown-13-11-2026/",
-    "title": "عرض سماك داون 13.11.2026 مترجم",
-    "subtitle": "WWE Smackdown 13.11.2026",
-    "image": "/content/images/q82g7dhsyot1xxu2.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
