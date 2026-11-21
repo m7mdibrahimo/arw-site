@@ -1,53 +1,53 @@
 {
- "https://www.ringsidenews.com/wwe-smackdown-results-highlights-key-moments-november-20-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-21T00:56:27.314Z"
- },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-11-20-2026-charlotte-flair-vs-jade-cargill-trick-williams-bakusai-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-21T00:54:51.539Z"
+  "at": "2026-11-21T01:03:36.064Z"
  },
  "https://www.fightful.com/wrestling/tna-issues-statement-on-departures-of-the-personal-concierge-referee-michael-romo": {
-  "reason": "المراجعة رفضته: صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة، اسم مصارع في العنوان أو المتن غير موجود في المصدر: The Vanity Project، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Vanity Project، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": true,
-  "at": "2026-11-21T00:54:51.299Z"
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-11-21T01:03:35.859Z"
  },
  "https://www.fightful.com/wrestling/lilian-garcia-returning-to-the-mic-for-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T00:54:31.240Z"
+  "at": "2026-11-21T01:03:12.937Z"
  },
  "https://www.fightful.com/wrestling/sherilyn-guerrero-says-dominik-mysterio-texted-her-after-her-in-ring-debut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T00:54:30.993Z"
+  "at": "2026-11-21T01:03:12.724Z"
  },
  "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T00:54:30.241Z"
+  "at": "2026-11-21T01:03:12.063Z"
  },
  "https://www.fightful.com/wrestling/wwe-survivor-series-odds-courtesy-of-mybookie": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T00:54:29.268Z"
+  "at": "2026-11-21T01:03:11.191Z"
  },
  "https://www.fightful.com/wrestling/toni-storm-tapes-to-premiere-on-november-27": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T00:54:28.387Z"
+  "at": "2026-11-21T01:03:10.432Z"
  },
  "https://www.fightful.com/wrestling/johnny-gargano-sami-zayn-is-hope-for-guys-like-me": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T00:54:28.023Z"
+  "at": "2026-11-21T01:03:10.116Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-11-17-viewership-increases-demo-remains-the-same": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T00:54:27.448Z"
+  "at": "2026-11-21T01:03:09.617Z"
+ },
+ "https://www.ringsidenews.com/wwe-smackdown-results-highlights-key-moments-november-20-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-21T00:56:27.314Z"
  },
  "https://www.wrestlinginc.com/2323064/wwe-smackdown-november-20-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
