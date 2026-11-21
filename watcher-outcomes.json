@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/willie-mack-claims-aew-still-restricts-some-outside-bookings-despite-ending-his-salary": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-21T12:13:40.998Z"
+ },
  "https://www.ringsidenews.com/aew-collision-preview-november-21-2026-confirmed-matches-start-time-how-watch": {
   "reason": "المراجعة رفضته: نفس العنوان منشور قبل كده — الخبر مكرر",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-12T19:57:43.982Z"
- },
- "https://www.fightful.com/mma/ufc-334-gane-vs-hokit-betting-odds-courtesy-of-mybookie": {
-  "reason": "المراجعة رفضته: خبر ترويجي لموقع مراهنات (MyBookie…) — مش خبر، خبر ترويجي لموقع مراهنات (MyBookie…) — مش خبر",
-  "retry": false,
-  "at": "2026-11-12T19:29:22.318Z"
  }
 }
