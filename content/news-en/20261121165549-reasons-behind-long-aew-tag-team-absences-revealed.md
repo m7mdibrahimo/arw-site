@@ -16,7 +16,7 @@ en_tags:
   - "Marq Quen"
 image: /content/images/m3xxx2ae574buxor.jpg
 ---
-AEW has been missing several notable tag teams from television, and recent reports have shed light on the real reasons behind their long absence. Both Top and Private Party have been absent from the tag team championship picture due to injuries sidelining three wrestlers without an exact return timeline.
+AEW has been missing several notable tag teams from television, and recent reports have shed light on the real reasons behind their long absence. Both Top Flight and Private Party have been absent from the tag team championship picture due to injuries sidelining three wrestlers without an exact return timeline.
 
 According to reports during a Q and A session, Dante Martin has been out of action for roughly a month, and both Isiah Kassidy and Marq Quen of Private Party are dealing with injuries. Dante's final match took place against Myron Reed on AEW Collision, while his previous appearance alongside his brother Darius occurred at a Ring of Honor taping in September.
 

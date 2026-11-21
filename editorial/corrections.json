@@ -1,6 +1,7 @@
 {
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
+  {"wrong": "الإراك", "right": "الإدراك", "note": "خطأ إملائي: «الإدراك البصري» (خبر جيك هاجر، INCIDENTS #1457)"},
   {"wrong": "ارتتاح", "right": "ارتياح", "note": "خطأ إملائي: «بكل ثقة وارتياح» (خبر ابن آر تروث، INCIDENTS #1456)"},
   {"wrong": "يا أبتاه", "right": "يا أبي", "note": "«يا أبتاه» لغة قديمة؛ الموقع بيكتب عربي بسيط: «يا أبي» (خبر ابن آر تروث، INCIDENTS #1456)"},
   {"wrong": "حركة رماية الذراع", "right": "حركة آرم دراج", "note": "arm drag اتترجمت «رماية الذراع» ومعناها مش مفهوم؛ اسم الحركة بيتكتب زي ما هو (INCIDENTS #1456)"},
