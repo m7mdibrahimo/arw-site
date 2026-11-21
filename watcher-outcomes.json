@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2318687/wwe-becky-lynch-liv-morgan-judgment-day-roxanne-perez-dominik-mysterio": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-21T14:18:01.166Z"
+ },
  "https://www.fightful.com/wrestling/ken-anderson-recalls-meeting-his-wife-at-a-wrestling-event-her-laughing-off-his-insults-in-character": {
   "reason": "المراجعة رفضته: اقتباس بالإنجليزي جوه الخبر العربي — لازم يتترجم للعربي",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-12T22:27:51.609Z"
- },
- "https://www.fightful.com/wrestling/revpro-live-in-eastbourne-results-11-8": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يدافعان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-12T21:58:07.259Z"
  }
 }
