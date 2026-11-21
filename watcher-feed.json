@@ -1,5 +1,15 @@
 [
   {
+    "id": 340214,
+    "link": "https://www.fightful.com/wrestling/the-rock-im-coming-to-houston-to-say-thank-you-and-i-love-you/",
+    "date": "2026-11-21T12:38:50",
+    "date_gmt": "2026-11-21T17:38:50",
+    "title": {
+      "rendered": "The Rock: I&#8217;m Coming To Houston To Say, ‘Thank You’ And ‘I Love You’"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/14132012/Screenshot-2026-08-14-at-1.20.04-PM.png"
+  },
+  {
     "id": 340212,
     "link": "https://www.fightful.com/wrestling/wwe-nxt-live-results-11-20/",
     "date": "2026-11-21T12:24:08",
@@ -288,15 +298,5 @@
       "rendered": "Sherilyn Guerrero Says Dominik Mysterio Texted Her After Her In-Ring Debut"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/20162923/Sherilyn-Guerrero-ROH-11-14-26-645x370-1.png"
-  },
-  {
-    "id": 340092,
-    "link": "https://www.fightful.com/wrestling/sherilyn-guerrero-details-training-at-wwe-performance-center/",
-    "date": "2026-11-20T16:19:25",
-    "date_gmt": "2026-11-20T21:19:25",
-    "title": {
-      "rendered": "Sherilyn Guerrero Details Her Experience At WWE Performance Center"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/20161744/HXJhxXXW4AAkbF9.jpg"
   }
 ]
