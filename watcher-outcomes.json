@@ -1,4 +1,39 @@
 {
+ "https://www.fightful.com/wrestling/cody-rhodes-to-unveil-team-usas-final-member-on-11-23-wwe-raw": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-21T03:45:43.958Z"
+ },
+ "https://www.fightful.com/wrestling/hacksaw-jim-duggan-returns-on-11-20-wwe-smackdown-joins-team-usa-and-then-immediately-backs-out": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-21T03:45:43.641Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-smackdown-results-11-20-2026-charlotte-flair-vs-jade-cargill-trick-williams-bakusai-more": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-21T03:45:43.126Z"
+ },
+ "https://www.fightful.com/wrestling/lilian-garcia-returning-to-the-mic-for-11-23-wwe-raw": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-21T03:45:42.821Z"
+ },
+ "https://www.fightful.com/wrestling/sherilyn-guerrero-says-dominik-mysterio-texted-her-after-her-in-ring-debut": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-21T03:45:42.655Z"
+ },
+ "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-21T03:45:42.140Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-survivor-series-odds-courtesy-of-mybookie": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-21T03:45:41.464Z"
+ },
  "https://www.wrestlinginc.com/2323995/wwe-smackdown-kevin-owens-gunther-main-event-sami-zayn": {
   "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي، كلمة مقطوعة بعد «ال» + حرف واحد («أناركي في الأ» بدل «أناركي إن ذا أرينا») — اكتب الكلمة كاملة، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Katsuyori Shibata",
   "retry": true,
@@ -8,41 +43,6 @@
   "reason": "المراجعة رفضته: «لعب… ضد» تعبير كرة — في المصارعة «واجه» أو «فاز على»، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، المصدر بيتكلم عن Shinsuke Nakamura (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن Johnny Gargano (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن Chelsea Green (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن Cathy Kelley (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن Cody Rhodes (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن Nick Aldis (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن Jim Duggan (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
   "retry": true,
   "at": "2026-11-21T03:43:30.589Z"
- },
- "https://www.fightful.com/wrestling/cody-rhodes-to-unveil-team-usas-final-member-on-11-23-wwe-raw": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-21T03:42:44.942Z"
- },
- "https://www.fightful.com/wrestling/hacksaw-jim-duggan-returns-on-11-20-wwe-smackdown-joins-team-usa-and-then-immediately-backs-out": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-21T03:42:44.534Z"
- },
- "https://www.fightful.com/wrestling/wwe-smackdown-results-11-20-2026-charlotte-flair-vs-jade-cargill-trick-williams-bakusai-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-21T03:42:43.882Z"
- },
- "https://www.fightful.com/wrestling/lilian-garcia-returning-to-the-mic-for-11-23-wwe-raw": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-21T03:42:43.497Z"
- },
- "https://www.fightful.com/wrestling/sherilyn-guerrero-says-dominik-mysterio-texted-her-after-her-in-ring-debut": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-21T03:42:43.294Z"
- },
- "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-21T03:42:42.638Z"
- },
- "https://www.fightful.com/wrestling/wwe-survivor-series-odds-courtesy-of-mybookie": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-21T03:42:41.777Z"
  },
  "https://www.fightful.com/wrestling/toni-storm-tapes-to-premiere-on-november-27": {
   "reason": "مكرر مع خبر نزل قبل كده",
