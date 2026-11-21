@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2323931/tna-departure-elegance-brand-personal-concierge-referee-michael-romo": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-11-21T00:11:59.568Z"
+ },
+ "https://www.wrestlinginc.com/2323064/wwe-smackdown-november-20-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-21T00:11:29.172Z"
+ },
  "https://www.fightful.com/wrestling/tna-issues-statement-on-departures-of-the-personal-concierge-referee-michael-romo": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
@@ -38,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-21T00:09:08.387Z"
- },
- "https://www.wrestlinginc.com/2323064/wwe-smackdown-november-20-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-21T00:04:05.096Z"
  },
  "https://www.ringsidenews.com/tna-wrestling-confirms-referee-michael-romo-out-company": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-12T17:30:29.946Z"
- },
- "https://www.fightful.com/wrestling/oskar-vs-lance-archer-added-to-njpw-bound-for-unbound": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-12T16:50:21.780Z"
  }
 }
