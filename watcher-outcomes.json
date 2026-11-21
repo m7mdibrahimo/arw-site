@@ -1,48 +1,48 @@
 {
- "https://www.ringsidenews.com/vince-russo-violent-j-have-discussed-bringing-him-back-jcw": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-21T22:14:37.513Z"
- },
  "https://www.fightful.com/wrestling/raj-dhesi-says-randy-orton-got-him-into-united-states-title-match-at-wrestlemania-34": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE United States Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Vince McMahon",
   "retry": true,
-  "at": "2026-11-21T22:16:46.593Z"
+  "at": "2026-11-21T22:21:50.408Z"
  },
  "https://www.fightful.com/wrestling/jake-hager-retained-some-sight-in-the-eye-after-two-surgeries": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T22:16:20.810Z"
+  "at": "2026-11-21T22:21:16.632Z"
  },
  "https://www.fightful.com/wrestling/the-rock-im-coming-to-houston-to-say-thank-you-and-i-love-you": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T22:16:20.513Z"
+  "at": "2026-11-21T22:21:16.392Z"
  },
  "https://www.fightful.com/wrestling/mjf-responds-to-claim-he-stayed-with-aew-as-a-safe-bet": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T22:16:20.093Z"
+  "at": "2026-11-21T22:21:16.059Z"
  },
  "https://www.fightful.com/wrestling/the-rock-puts-pat-mcafee-through-a-table-with-the-rock-bottom": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T22:16:19.494Z"
+  "at": "2026-11-21T22:21:15.582Z"
  },
  "https://www.fightful.com/wrestling/roh-womens-pure-title-match-tag-title-bout-added-to-final-battle-ppv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T22:16:18.619Z"
+  "at": "2026-11-21T22:21:14.883Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-to-unveil-team-usas-final-member-on-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T22:16:18.033Z"
+  "at": "2026-11-21T22:21:14.408Z"
  },
  "https://www.fightful.com/wrestling/hacksaw-jim-duggan-returns-on-11-20-wwe-smackdown-joins-team-usa-and-then-immediately-backs-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T22:16:17.618Z"
+  "at": "2026-11-21T22:21:14.069Z"
+ },
+ "https://www.ringsidenews.com/vince-russo-violent-j-have-discussed-bringing-him-back-jcw": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-21T22:14:37.513Z"
  },
  "https://www.wrestlinginc.com/2324005/aew-collision-november-21-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
