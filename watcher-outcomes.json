@@ -1,8 +1,8 @@
 {
- "https://www.wrestlinginc.com/2320492/wwe-spike-dudley-comments-legends-deal": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Legends contract",
+ "https://www.wrestlinginc.com/2319510/wwe-cody-rhodes-latest-thoughts-prospect-heel-turn": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-21T20:10:17.499Z"
+  "at": "2026-11-21T20:17:03.020Z"
  },
  "https://www.fightful.com/wrestling/jake-hager-retained-some-sight-in-the-eye-after-two-surgeries": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -48,6 +48,11 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-21T20:13:14.199Z"
+ },
+ "https://www.wrestlinginc.com/2320492/wwe-spike-dudley-comments-legends-deal": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Legends contract",
+  "retry": true,
+  "at": "2026-11-21T20:10:17.499Z"
  },
  "https://www.wrestlinginc.com/2319284/bret-hart-modern-wrestlers-arent-making-effort-feel-real": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-13T12:56:41.618Z"
- },
- "https://www.ringsidenews.com/bruce-prichard-tells-people-chill-out-stop-social-media-negativity": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-13T12:55:39.178Z"
  }
 }
