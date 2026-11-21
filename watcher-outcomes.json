@@ -1,53 +1,53 @@
 {
- "https://www.wrestlinginc.com/2320593/aew-wwe-bobby-lashley-lio-rush-hopes-work-former-associate-before-retirement": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-21T21:17:26.586Z"
- },
  "https://www.fightful.com/wrestling/raj-dhesi-says-randy-orton-got-him-into-united-states-title-match-at-wrestlemania-34": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE United States Championship",
   "retry": true,
-  "at": "2026-11-21T21:18:53.177Z"
+  "at": "2026-11-21T21:23:34.794Z"
  },
  "https://www.fightful.com/wrestling/jake-hager-retained-some-sight-in-the-eye-after-two-surgeries": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T21:17:29.936Z"
+  "at": "2026-11-21T21:23:15.701Z"
  },
  "https://www.fightful.com/wrestling/the-rock-im-coming-to-houston-to-say-thank-you-and-i-love-you": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T21:17:29.529Z"
+  "at": "2026-11-21T21:23:15.353Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-live-results-11-20": {
-  "reason": "المراجعة رفضته: آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Elio LeFleur، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: نزال فردي، المواجهة الثانية: نزال فردي، المواجهة الثالثة: نزال فرق، المواجهة الرابعة: نزال فردي، المواجهة الخامسة: نزال فرق، المواجهة السادسة: نزال فردي، المواجهة السابعة: نزال فردي، المواجهة الثامنة: نزال فرق — اكتب الفائز زي المصدر وبالماضي",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-21T21:17:29.060Z"
+  "at": "2026-11-21T21:23:14.958Z"
  },
  "https://www.fightful.com/wrestling/mjf-responds-to-claim-he-stayed-with-aew-as-a-safe-bet": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T21:17:06.529Z"
+  "at": "2026-11-21T21:21:35.821Z"
  },
  "https://www.fightful.com/wrestling/the-rock-puts-pat-mcafee-through-a-table-with-the-rock-bottom": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T21:17:05.932Z"
+  "at": "2026-11-21T21:21:35.133Z"
  },
  "https://www.fightful.com/wrestling/roh-womens-pure-title-match-tag-title-bout-added-to-final-battle-ppv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T21:17:05.066Z"
+  "at": "2026-11-21T21:21:34.137Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-to-unveil-team-usas-final-member-on-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T21:17:04.469Z"
+  "at": "2026-11-21T21:21:33.462Z"
  },
  "https://www.fightful.com/wrestling/hacksaw-jim-duggan-returns-on-11-20-wwe-smackdown-joins-team-usa-and-then-immediately-backs-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T21:17:04.037Z"
+  "at": "2026-11-21T21:21:32.979Z"
+ },
+ "https://www.wrestlinginc.com/2320593/aew-wwe-bobby-lashley-lio-rush-hopes-work-former-associate-before-retirement": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-21T21:17:26.586Z"
  },
  "https://www.ringsidenews.com/vince-russo-violent-j-have-discussed-bringing-him-back-jcw": {
   "reason": "المراجعة رفضته: صيغة مثنى (تختاران/حافظتا/قطعتين/بطلي فرق) ممنوعة — اجمع الفعل أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يناقشان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
