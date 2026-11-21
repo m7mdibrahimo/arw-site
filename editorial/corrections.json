@@ -1,6 +1,11 @@
 {
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
+  {"wrong": "اثبات", "right": "إثبات", "note": "همزة القطع: «نجح في إثبات قوته» (خبر داميان بريست، جولة 2026-11-21)"},
+  {"wrong": "لاثبات", "right": "لإثبات", "note": "همزة القطع: «لإثبات» (جولة 2026-11-21)"},
+  {"wrong": "واثبات", "right": "وإثبات", "note": "همزة القطع: «وإثبات» (جولة 2026-11-21)"},
+  {"wrong": "أنني ستكون لدي", "right": "أنني سأملك", "note": "المتكلم مع «أنني» فعله «سأ…» مش «ستكون لدي»: «لم أكن أعتقد أنني سأملك القدرة» (خبر شايلو هيل، جولة 2026-11-21)"},
+  {"wrong": "في قلبه الأبد", "right": "في قلبه إلى الأبد", "note": "«إلى الأبد» مش «الأبد» وحدها (خبر فريد روسر، جولة 2026-11-21)"},
   {"wrong": "الإراك", "right": "الإدراك", "note": "خطأ إملائي: «الإدراك البصري» (خبر جيك هاجر، INCIDENTS #1457)"},
   {"wrong": "ارتتاح", "right": "ارتياح", "note": "خطأ إملائي: «بكل ثقة وارتياح» (خبر ابن آر تروث، INCIDENTS #1456)"},
   {"wrong": "يا أبتاه", "right": "يا أبي", "note": "«يا أبتاه» لغة قديمة؛ الموقع بيكتب عربي بسيط: «يا أبي» (خبر ابن آر تروث، INCIDENTS #1456)"},

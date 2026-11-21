@@ -278,3 +278,18 @@ test("a word cut never drops only the last word of the first sentence (INCIDENTS
   const d = metaDescription("The Rock is officially heading back to WWE for Survivor Series, but former writer Vince Russo believes the company has a much bigger reason to need him right now. Russo is convinced that WWE has been struggling creatively for months.");
   assert.match(d, /need him right now\.$/, d);
 });
+
+// round 2026-11-21: a hanging-phrase cut went back to the comma after a subject's aside
+test("a cut never leaves only the subject and its aside (Fred Rosser story, round 2026-11-21)", async () => {
+  const { metaDescription } = await import("../lib/meta-description.cjs");
+  const d = metaDescription("Fred Rosser, known in WWE as Darren Young, spent over three years as a trainer at the NJPW Academy and the NJPW Los Angeles dojo after signing with the promotion in August 2020. Earlier in November, it was announced that NJPW would close its American subsidiary.");
+  assert.notEqual(d, "Fred Rosser, known in WWE as Darren Young.");
+  assert.match(d, /spent over three years as a trainer/, d);
+});
+
+test("a comma after a subject's aside is not a clause end (Ludwig Kaiser story, round 2026-11-21)", async () => {
+  const { metaDescription } = await import("../lib/meta-description.cjs");
+  const d = metaDescription("WWE star Ludwig Kaiser, also known as El Grande Americano, continues to face misdemeanor battery charges following his April arrest after a physical altercation with Richard Reap in a Florida hotel elevator. Recent legal filings indicate that Kaiser's defense team is attempting to subpoena Reap.");
+  assert.notEqual(d, "WWE star Ludwig Kaiser, also known as El Grande Americano.");
+  assert.match(d, /continues to face/, d);
+});

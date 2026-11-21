@@ -1,7 +1,7 @@
 ---
 title: "Latest Legal Developments in Ludwig Kaiser Battery Case"
 slug: "latest-legal-developments-in-ludwig-kaiser-battery-case"
-description: "WWE star Ludwig Kaiser, also known as El Grande Americano."
+description: "WWE star Ludwig Kaiser, also known as El Grande Americano, continues to face misdemeanor battery charges following his April arrest."
 federation: WWE
 date: 2026-11-16T22:19:48.000Z
 created_at: 2026-11-16T22:55:36.945Z

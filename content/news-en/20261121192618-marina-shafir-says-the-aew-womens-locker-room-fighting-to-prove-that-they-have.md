@@ -1,5 +1,5 @@
 ---
-title: "Marina Shafir Says the AEW Women's Locker Room Fighting to Prove That They Have Just as Much to Offer as the Men Is a 'Forever Battle'"
+title: "Marina Shafir Says AEW Women Proving They Match the Men Is a 'Forever Battle'"
 slug: "marina-shafir-says-the-aew-womens-locker-room-fighting-to-prove-that-they-have"
 description: "Marina Shafir discussed the ongoing effort by the AEW women's division to prove they have just as much to offer as the men."
 federation: AEW

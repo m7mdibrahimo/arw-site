@@ -1,7 +1,7 @@
 ---
 title: "Former WWE Star Fred Rosser Comments on Shuttering of NJPW Academy"
 slug: "former-wwe-star-fred-rosser-comments-on-shuttering-of-njpw-academy"
-description: "Fred Rosser, known in WWE as Darren Young."
+description: "Fred Rosser, known in WWE as Darren Young, spent over three years as a trainer at the NJPW Academy and the NJPW Los Angeles dojo after signing with the promotion in August 2020."
 federation: NJPW
 date: 2026-11-21T17:00:00.000Z
 created_at: 2026-11-21T17:14:51.276Z
