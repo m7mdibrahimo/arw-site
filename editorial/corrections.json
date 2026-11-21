@@ -1,6 +1,11 @@
 {
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
+  {"wrong": "نسبة مشاهدات بلغت", "right": "عدد مشاهدين بلغ", "note": "الرقم عدد مشاهدين مش نسبة: «سجل العرض عدد مشاهدين بلغ 727 ألف» (خبر AEW Dynamite 18 نوفمبر، جولة 2026-11-21)"},
+  {"wrong": "نسبة مشاهدات مستقرة بلغت", "right": "عدد مشاهدين مستقر بلغ", "note": "الرقم عدد مشاهدين مش نسبة (جولة 2026-11-21)"},
+  {"wrong": "نسبة مشاهدات وصلت إلى", "right": "عدد مشاهدين وصل إلى", "note": "الرقم عدد مشاهدين مش نسبة (جولة 2026-11-21)"},
+  {"wrong": "في مهزلة التغييرات", "right": "في دوامة التغييرات", "note": "«مهزلة» يعني سخرية/فضيحة ومالهاش معنى هنا — خبر فريق الولايات المتحدة في WarGames (جولة 2026-11-21)"},
+  {"wrong": "مؤشرا ثقة", "right": "مؤشر ثقة", "note": "مضاف ومضاف إليه: «ليس مؤشر ثقة» مش «مؤشرا ثقة» (خبر جيف جاريت، جولة 2026-11-21)"},
   {
    "wrong": "(?<=(?<![\\u0621-\\u064A])(?!ال|بال|لل|وال|فال|كال|كان|كانت|يكون|تكون|أصبح|أصبحت|بات|باتت|ليس|ليست|صار|ظل)[\\u0621-\\u064A]+ )قاسي",
    "right": "قاس",

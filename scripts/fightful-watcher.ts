@@ -2458,6 +2458,18 @@ export function isUnrelatedNameTag(tag: string, title: string, body: string): bo
   return !text.includes(bare);
 }
 
+/** A one-word Arabic topic tag the story never mentions in any form is noise: the Jeff Jarrett
+ *  flight-delay story got «تطعيم» (vaccination) as a tag with no word of it (round 2026-11-21).
+ *  The word is matched loosely (no «ال»/«ة», alef/yaa forms folded) so «التطعيم» in the body keeps «تطعيم». */
+export function isUnrelatedTopicTag(tag: string, title: string, body: string): boolean {
+  const t = String(tag || "").trim();
+  if (!/^[\u0621-\u064A]{3,}$/.test(t)) return false;
+  const fold = (x: string) => x.replace(/[\u064B-\u0652\u0640]/g, "").replace(/[أإآ]/g, "ا").replace(/ى/g, "ي").replace(/ة/g, "ه");
+  const stem = fold(t).replace(/^ال/, "").replace(/ه$/, "");
+  if (stem.length < 3) return false;
+  return !fold(`${title}\n${body}`).includes(stem);
+}
+
 export function tagInArabic(tag: string): string {
   // A nickname in quotes doesn't belong in a tag: «تشانينغ “ستاكس” لورينزو» (INCIDENTS #147)
   const t = tag.replace(/\s*[“"«][^”"»]*[”"»]\s*/g, " ").replace(/\s{2,}/g, " ").trim();
@@ -4801,7 +4813,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   }
   // The editor must never reintroduce a known mistake.
   const fixText = (t: string) => applyCorrections(autoFix(applyCorrections(t)));
-  draft = { title: fixText(draft.title), body: spelledAgesToDigits(spelledMoneyToDigits(fixText(draft.body))), tags: [...new Set(draft.tags.map(fixText).map(tagInArabic))].filter(t => !isJunkTag(t) && !isHeadlineTag(t, draft.title) && !isUnrelatedNameTag(t, draft.title, draft.body)) };
+  draft = { title: fixText(draft.title), body: spelledAgesToDigits(spelledMoneyToDigits(fixText(draft.body))), tags: [...new Set(draft.tags.map(fixText).map(tagInArabic))].filter(t => !isJunkTag(t) && !isHeadlineTag(t, draft.title) && !isUnrelatedNameTag(t, draft.title, draft.body) && !isUnrelatedTopicTag(t, draft.title, draft.body)) };
   draft.tags = canonicalTags(dropPartialNameTags(titleNamesAsTags(draft.title, draft.tags)));
   // A source name the story spells one letter off («قوين أميناتا»، «جوش أكسندر») takes the glossary spelling (INCIDENTS #956).
   {
