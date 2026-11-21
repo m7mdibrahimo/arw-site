@@ -1,5 +1,15 @@
 [
   {
+    "id": 2679298979,
+    "link": "https://www.wrestlinginc.com/2324005/aew-collision-november-21-2026-results/",
+    "date": "Sat, 21 Nov 2026 22:00:00 +0000",
+    "date_gmt": "2026-11-21T22:00:00.000Z",
+    "title": {
+      "rendered": "AEW Collision Results 11/21/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-collision-results-112126-w-live-updates/l-intro-1795236749.jpg"
+  },
+  {
     "id": 2861427636,
     "link": "https://www.wrestlinginc.com/2320808/wwe-cody-rhodes-hollywood-similarities/",
     "date": "Sat, 21 Nov 2026 21:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Jeff Jarrett Details AEW Full Gear Travel Issues Following Nation-Wide FAA Ground Stop"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/jeff-jarrett-details-aew-full-gear-travel-issues-following-nation-wide-faa-ground-stop/l-intro-1795222561.jpg"
-  },
-  {
-    "id": 4753479514,
-    "link": "https://www.wrestlinginc.com/2323937/lillian-garcia-wwe-raw-return-november-23-ring-announcer/",
-    "date": "Sat, 21 Nov 2026 00:17:36 +0000",
-    "date_gmt": "2026-11-21T00:17:36.000Z",
-    "title": {
-      "rendered": "Ring Announcer Lillian Garcia Announces Imminent WWE Raw Return"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/ring-announcer-lillian-garcia-announces-imminent-wwe-raw-return/l-intro-1795220187.jpg"
   }
 ]
