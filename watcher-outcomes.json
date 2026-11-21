@@ -1,43 +1,43 @@
 {
- "https://www.wrestlinginc.com/2323064/wwe-smackdown-november-20-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-21T01:30:28.554Z"
- },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-11-20-2026-charlotte-flair-vs-jade-cargill-trick-williams-bakusai-more": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-21T01:31:39.266Z"
+  "at": "2026-11-21T01:34:36.533Z"
  },
  "https://www.fightful.com/wrestling/lilian-garcia-returning-to-the-mic-for-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T01:31:38.814Z"
+  "at": "2026-11-21T01:34:36.075Z"
  },
  "https://www.fightful.com/wrestling/sherilyn-guerrero-says-dominik-mysterio-texted-her-after-her-in-ring-debut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T01:31:38.576Z"
+  "at": "2026-11-21T01:34:35.832Z"
  },
  "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T01:31:37.810Z"
+  "at": "2026-11-21T01:34:35.044Z"
  },
  "https://www.fightful.com/wrestling/wwe-survivor-series-odds-courtesy-of-mybookie": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T01:31:36.815Z"
+  "at": "2026-11-21T01:34:34.039Z"
  },
  "https://www.fightful.com/wrestling/toni-storm-tapes-to-premiere-on-november-27": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T01:31:35.916Z"
+  "at": "2026-11-21T01:34:33.134Z"
  },
  "https://www.fightful.com/wrestling/johnny-gargano-sami-zayn-is-hope-for-guys-like-me": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T01:31:35.550Z"
+  "at": "2026-11-21T01:34:32.762Z"
+ },
+ "https://www.wrestlinginc.com/2323064/wwe-smackdown-november-20-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-21T01:30:28.554Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-11-17-viewership-increases-demo-remains-the-same": {
   "reason": "مكرر مع خبر نزل قبل كده",
