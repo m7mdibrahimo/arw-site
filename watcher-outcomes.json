@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/rvd-reveals-explains-why-he-turned-down-bigger-role-aew": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Swerve Strickland",
+  "retry": true,
+  "at": "2026-11-21T12:29:30.215Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-to-unveil-team-usas-final-member-on-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-12T20:16:38.406Z"
- },
- "https://www.fightful.com/wrestling/338670-aew-full-gear-national-championship": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-12T19:57:43.982Z"
  }
 }
