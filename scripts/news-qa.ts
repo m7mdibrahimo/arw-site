@@ -286,9 +286,49 @@ export function champDqLossAsDefense(text: string, sourceText: string): string |
   return null;
 }
 
+/**
+ * A results report whose tag and multi-person matches came out as a bare «🏆 الفائزون: X وY (بفوزهم على …)» line
+ * with no match heading, hanging under the match before it: WWE NXT Live 20 Nov had headings 1, 2, 4, 6, 7 and four
+ * winners (3, 5, 8 and the main event) inside other matches' blocks (INCIDENTS #1465). Each extra result line in one
+ * block gets its own heading, and every «المواجهة <ترتيب>» heading is renumbered in order.
+ */
+export function fixHeadlessResults(text: string): string {
+  if (!text || !text.includes("المواجهة")) return text;
+  const lines = text.split("\n");
+  // «**الحدث الرئيسي:** بطولة …», «****المواجهة …****» and a heading with text after it are headings too
+  const isHead = (l: string) => /^\*{2,}(?:المواجهة|النزال|المباراة|الحدث الرئيسي)/.test(l.trim());
+  const isResult = (l: string) => /^\s*(?:🏆|🤝)/.test(l);
+  if (lines.filter(isHead).length < 2) return text;
+  const out: string[] = [];
+  let inBlock = false, results = 0, changed = false, seen: string[] = [];
+  for (const l of lines) {
+    if (isHead(l)) { inBlock = true; results = 0; seen = []; out.push(l); continue; }
+    if (inBlock && isResult(l)) {
+      // the same winner line twice in one block (PROGRESS 198) is a copy, not another match
+      if (seen.includes(l.trim())) { while (out.length && !out[out.length - 1].trim()) out.pop(); changed = true; continue; }
+      seen.push(l.trim());
+      results++;
+      if (results > 1) {
+        const w = l.match(/الفائز(ة|ون|ات)?/)?.[1] || "";
+        const kind = w === "ون" ? "نزال فرق" : w === "ات" ? "نزال فرق للسيدات" : "نزال فردي";
+        while (out.length && !out[out.length - 1].trim()) out.pop();
+        out.push("", `**المواجهة الأولى: ${kind}**`, "");
+        results = 1;
+        changed = true;
+      }
+    }
+    out.push(l);
+  }
+  if (!changed) return text;
+  let i = 0;
+  // every heading takes a place, so «الحدث الرئيسي» in the middle keeps the numbers after it right
+  return out.join("\n").replace(new RegExp(`^(\\*{2,})(?:المواجهة (?:${[...MATCH_ORDINALS].sort((a, b) => b.length - a.length).join("|")})(?=[:*\\s])|(?:النزال|المباراة|الحدث الرئيسي))`, "gm"),
+    (m, stars) => { const n = i++; return /^\*+المواجهة/.test(m) && n < MATCH_ORDINALS.length ? `${stars}المواجهة ${MATCH_ORDINALS[n]}` : m; });
+}
+
 export function applyCorrections(text: string, corrections = loadCorrections()): string {
   if (!text) return text;
-  let out = fixHangmanPage(fixEraCalledShow(fixMidCardMainEvent(fixDrawTrophy(fixSubjunctiveDuals(fixCountDuals(fixTimeDuals(fixNumberGender(decodeHtmlEntities(text)))))))));
+  let out = fixHangmanPage(fixEraCalledShow(fixMidCardMainEvent(fixHeadlessResults(fixDrawTrophy(fixSubjunctiveDuals(fixCountDuals(fixTimeDuals(fixNumberGender(decodeHtmlEntities(text))))))))));
   for (const c of withLamAlefForms(corrections)) {
     out = out.replace(correctionRegex(c), (m, prefix = "", ...rest) => {
       // a regex rule may carry named parts over: «نكوص (?<who>…) ب(?<what>وعده)» → «تراجع $<who> عن $<what>» (INCIDENTS #1261)
@@ -2731,14 +2771,29 @@ export function stableSwappedFromEnglish(arBody: string, enBody: string, glossar
 // Look-alike names swapped against the English written in the same request: the TNA Personal Concierge story listed
 // «آش باي إليغانس» where the English says M By Elegance, and the ROH Final Battle story gave Athena «بطولة ROH بيور
 // للسيدات» while the English says ROH Women's Championship (INCIDENTS #1451). Returns the mismatches to block on.
-export const CONFUSABLE_NAME_GROUPS: string[][] = [["Ash By Elegance", "M By Elegance", "Heather By Elegance"]];
+// «ذا هيرت بيزنس» (MVP's old WWE stable) written for The Hurt Syndicate, his AEW one, in the Lashley/Lio Rush story (INCIDENTS #1465).
+export const CONFUSABLE_NAME_GROUPS: string[][] = [["Ash By Elegance", "M By Elegance", "Heather By Elegance"], ["The Hurt Syndicate", "The Hurt Business"]];
+
+/**
+ * «the late 2010s» written «أواخر عشرينيات القرن الماضي» (the 1920s) in the Lashley/Lio Rush story (INCIDENTS #1465). When the
+ * paired English names one decade of this century and no decade of the last, «<عقد>يات القرن الماضي» is that decade of this one.
+ */
+const AR_DECADES: Record<string, string> = { "عشرينيات": "2", "ثلاثينيات": "3", "أربعينيات": "4", "خمسينيات": "5", "ستينيات": "6", "سبعينيات": "7", "ثمانينيات": "8", "تسعينيات": "9" };
+const THIS_CENTURY_DECADES: Record<string, string> = { "2000s": "العقد الأول من القرن الحالي", "2010s": "العقد الثاني من القرن الحالي", "2020s": "عشرينيات القرن الحالي" };
+export function fixDecadeFromEnglish(arText: string, enText: string): string {
+  const ar = String(arText || ""), en = String(enText || "");
+  if (!ar.includes("القرن الماضي") || /\b19\d0s\b|'[1-9]0s\b|\b[1-9]0s\b/.test(en.replace(/\b20\d0s\b/g, ""))) return ar;
+  const found = [...new Set((en.match(/\b20[012]0s\b/g) || []))];
+  if (found.length !== 1) return ar;
+  return ar.replace(new RegExp(`(?:ال)?(?:${Object.keys(AR_DECADES).join("|")}) القرن الماضي`, "g"), THIS_CENTURY_DECADES[found[0]]);
+}
 export function confusableSwappedFromEnglish(arBody: string, enBody: string, glossary: Record<string, string>): string[] {
   const ar = String(arBody || "");
   const en = String(enBody || "");
   if (!ar || en.length < 80) return [];
   const out: string[] = [];
   for (const group of CONFUSABLE_NAME_GROUPS) {
-    const has = group.map(name => ({ name, inEn: en.toLowerCase().includes(name.toLowerCase()), inAr: !!glossary[name] && ar.includes(glossary[name]) }));
+    const has = group.map(name => ({ name, inEn: en.toLowerCase().includes(name.replace(/^The\s+/, "").toLowerCase()), inAr: !!glossary[name] && ar.includes(glossary[name]) }));
     if (!has.some(h => h.inAr)) continue;
     for (const h of has) if (h.inEn && !h.inAr && glossary[h.name]) out.push(h.name);
   }
@@ -2921,7 +2976,8 @@ export function fixEventCalledMovie(text: string, source: string): string {
   return String(text || "").replace(/(^|[^ء-ي])([وبلف]?)فيلم(\s+)([A-Z][A-Za-z0-9'&.:-]*(?:\s+[A-Z0-9][A-Za-z0-9'&.:-]*){0,5})/g, (m, pre, pfx, sp, name) => {
     const n = esc(name.replace(/[.:]+$/, ""));
     if (!new RegExp(`(^|[^A-Za-z])${n}([^A-Za-z]|$)`, "i").test(src)) return m;
-    const movie = new RegExp(`\\b(?:movie|film|picture)s?\\s+(?:called\\s+|titled\\s+|the\\s+)?${n}|${n}['’]?s?\\s+(?:\\(\\d{4}\\)\\s+)?(?:\\w+\\s+){0,2}(?:movie|film)|\\b\\d{4}\\s+(?:\\w+\\s+)?(?:movie|film)\\s+${n}|${n}\\s*\\(\\d{4}\\)`, "i");
+    // «the 2026 adaptation of Street Fighter» is a film: «فيلم Street Fighter» became «عرض Street Fighter» (Cody Rhodes story, INCIDENTS #1465)
+    const movie = new RegExp(`\\b(?:movie|film|picture)s?\\s+(?:called\\s+|titled\\s+|the\\s+)?${n}|\\b(?:adaptation|remake|reboot|biopic)s?\\s+of\\s+(?:the\\s+)?${n}|${n}\\s+(?:adaptation|remake|reboot|biopic)\\b|${n}['’]?s?\\s+(?:\\(\\d{4}\\)\\s+)?(?:\\w+\\s+){0,2}(?:movie|film)|\\b\\d{4}\\s+(?:\\w+\\s+)?(?:movie|film)\\s+${n}|${n}\\s*\\(\\d{4}\\)`, "i");
     return movie.test(src) ? m : `${pre}${pfx}عرض${sp}${name}`;
   });
 }
