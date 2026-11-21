@@ -1,58 +1,53 @@
 {
- "https://www.wrestlinginc.com/2319510/wwe-cody-rhodes-latest-thoughts-prospect-heel-turn": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-21T20:17:03.020Z"
- },
  "https://www.fightful.com/wrestling/jake-hager-retained-some-sight-in-the-eye-after-two-surgeries": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T20:19:55.869Z"
+  "at": "2026-11-21T20:22:45.731Z"
  },
  "https://www.fightful.com/wrestling/the-rock-im-coming-to-houston-to-say-thank-you-and-i-love-you": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T20:19:55.570Z"
+  "at": "2026-11-21T20:22:45.388Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-live-results-11-20": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Elio LeFleur، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
   "retry": true,
-  "at": "2026-11-21T20:19:55.254Z"
+  "at": "2026-11-21T20:22:45.018Z"
  },
  "https://www.fightful.com/wrestling/mjf-responds-to-claim-he-stayed-with-aew-as-a-safe-bet": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T20:15:53.855Z"
+  "at": "2026-11-21T20:22:22.287Z"
  },
  "https://www.fightful.com/wrestling/the-rock-puts-pat-mcafee-through-a-table-with-the-rock-bottom": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T20:15:53.292Z"
+  "at": "2026-11-21T20:22:21.608Z"
  },
  "https://www.fightful.com/wrestling/roh-womens-pure-title-match-tag-title-bout-added-to-final-battle-ppv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T20:15:52.458Z"
+  "at": "2026-11-21T20:22:20.621Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-to-unveil-team-usas-final-member-on-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T20:15:51.861Z"
+  "at": "2026-11-21T20:22:19.939Z"
  },
  "https://www.fightful.com/wrestling/hacksaw-jim-duggan-returns-on-11-20-wwe-smackdown-joins-team-usa-and-then-immediately-backs-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T20:15:51.465Z"
+  "at": "2026-11-21T20:22:19.454Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-11-20-2026-charlotte-flair-vs-jade-cargill-trick-williams-bakusai-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T20:15:50.833Z"
+  "at": "2026-11-21T20:22:18.686Z"
  },
- "https://www.wrestlinginc.com/2320492/wwe-spike-dudley-comments-legends-deal": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Legends contract",
+ "https://www.wrestlinginc.com/2319510/wwe-cody-rhodes-latest-thoughts-prospect-heel-turn": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-21T20:10:17.499Z"
+  "at": "2026-11-21T20:17:03.020Z"
  },
  "https://www.wrestlinginc.com/2320492/wwe-spike-dudley-comments-legends-deal": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Legends contract",
