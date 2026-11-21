@@ -39,11 +39,6 @@
   "retry": false,
   "at": "2026-11-21T02:52:56.376Z"
  },
- "https://www.wrestlinginc.com/2323064/wwe-smackdown-november-20-2026-results": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، المصدر بيتكلم عن Cathy Kelley (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
-  "retry": true,
-  "at": "2026-11-21T02:50:41.997Z"
- },
  "https://www.fightful.com/wrestling/johnny-gargano-sami-zayn-is-hope-for-guys-like-me": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
