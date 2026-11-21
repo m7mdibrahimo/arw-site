@@ -1,8 +1,8 @@
 {
- "https://www.ringsidenews.com/ddp-reveals-years-legitimate-backstage-heat-ric-flair-how-they-squashed-it": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+ "https://www.wrestlinginc.com/2324005/aew-collision-november-21-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-21T23:17:43.195Z"
+  "at": "2026-11-21T23:21:18.048Z"
  },
  "https://www.fightful.com/wrestling/raj-dhesi-says-randy-orton-got-him-into-united-states-title-match-at-wrestlemania-34": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE United States Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Vince McMahon",
@@ -44,10 +44,10 @@
   "retry": false,
   "at": "2026-11-21T23:18:22.331Z"
  },
- "https://www.wrestlinginc.com/2324005/aew-collision-november-21-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+ "https://www.ringsidenews.com/ddp-reveals-years-legitimate-backstage-heat-ric-flair-how-they-squashed-it": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-21T23:01:02.403Z"
+  "at": "2026-11-21T23:17:43.195Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-live-results-11-20": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
