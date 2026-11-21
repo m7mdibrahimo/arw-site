@@ -368,6 +368,10 @@ export function pairSingularVerb(text: string): { index: number; match: string }
 // headline holds no present/future verb («مستقبل كايري ساني مع AEW يظل غير حاسم» says something and stays).
 export function titleVagueTopic(title: string): string | null {
   const t = (title || "").trim();
+  // «تقارير تشكك في حسم المرشح الأول لاستضافة عرض WWE Royal Rumble 2028» hid the news (Orlando is no longer the
+  // frontrunner) behind «doubt about settling the candidate» (INCIDENTS #1449).
+  const doubt = t.match(/(?<![ء-ي])[تي]شكك\s+في\s+حسم(?![ء-ي])|(?<![ء-ي])حسم\s+(?:هوية\s+)?المرشح(?![ء-ي])/);
+  if (doubt) return doubt[0];
   const topic = /^(?:آخر\s+(?:المستجدات|التطورات)|تطورات(?:\s+[^\s:]+)?|مستجدات)\s+(?:حول|بشأن)\s/.test(t) && !t.includes(":");
   if (!topic && !/^مستقبل\s/.test(t)) return null;
   const rest = t.split(/\s+/).slice(1).join(" ");
