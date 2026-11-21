@@ -1,5 +1,15 @@
 [
   {
+    "id": 1488017098,
+    "link": "https://www.wrestlinginc.com/2323995/wwe-smackdown-kevin-owens-gunther-main-event-sami-zayn/",
+    "date": "Sat, 21 Nov 2026 03:29:01 +0000",
+    "date_gmt": "2026-11-21T03:29:01.000Z",
+    "title": {
+      "rendered": "Kevin Owens Defeats GUNTHER In WWE SmackDown Main Event, Gets Leveled By Sami Zayn"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/kevin-owens-defeats-gunther-in-wwe-smackdown-main-event-gets-leveled-by-sami-zayn/l-intro-1795231594.jpg"
+  },
+  {
     "id": 2717109410,
     "link": "https://www.wrestlinginc.com/2323988/wwe-smackdown-hacksaw-jim-duggan-trick-williams-cody-rhodes-team-usa/",
     "date": "Sat, 21 Nov 2026 02:56:55 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW Announces The Toni Storm Tapes, A Five-Part Limited Series"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-announces-the-toni-storm-tapes-a-five-part-limited-series/l-intro-1795199900.jpg"
-  },
-  {
-    "id": 2342316496,
-    "link": "https://www.wrestlinginc.com/2322905/wwe-royal-rumble-2028-host-city-orlando-florida-frontrunner/",
-    "date": "Fri, 20 Nov 2026 15:12:38 +0000",
-    "date_gmt": "2026-11-20T15:12:38.000Z",
-    "title": {
-      "rendered": "Backstage Confirmation On 'Clear Frontrunner' For WWE Royal Rumble 2028 Host City"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-confirmation-on-clear-frontrunner-for-wwe-royal-rumble-2028-host-city/l-intro-1795187433.jpg"
   }
 ]
