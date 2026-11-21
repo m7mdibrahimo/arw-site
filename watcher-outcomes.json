@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2324005/aew-collision-november-21-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-21T23:01:02.403Z"
+ },
  "https://www.fightful.com/wrestling/raj-dhesi-says-randy-orton-got-him-into-united-states-title-match-at-wrestlemania-34": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE United States Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Vince McMahon",
   "retry": true,
@@ -38,11 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-21T22:58:06.097Z"
- },
- "https://www.wrestlinginc.com/2324005/aew-collision-november-21-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-21T22:41:47.088Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-live-results-11-20": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
