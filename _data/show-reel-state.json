@@ -5635,7 +5635,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261121003519-tna-impact-19-11-2026": {
     "publishedAt": 1795215061476,
