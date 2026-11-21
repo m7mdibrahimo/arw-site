@@ -1,6 +1,13 @@
 {
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
+  {"wrong": "بيري ساتيرلي", "right": "بيري ساترن", "note": "Perry Saturn اسمه «بيري ساترن»؛ «ساتيرلي» اسم باك الحقيقي (خبر ساترن، INCIDENTS #1461)"},
+  {"wrong": "بري ساتيرلي", "right": "بيري ساترن", "note": "Perry Saturn = «بيري ساترن» (INCIDENTS #1461)"},
+  {"wrong": "الخلف الكواليس", "right": "خلف الكواليس", "note": "«خلف» ظرف ومايتعرفش: «نجوم خلف الكواليس» (خبر بريت هارت، INCIDENTS #1461)"},
+  {"wrong": "الابتمام", "right": "الابتعاد", "note": "خطأ إملائي: «يفضل الابتعاد عن هذا المجال» (خبر ساترن، INCIDENTS #1461)"},
+  {"wrong": "أو استعداد الظهور", "right": "أو استعداده للظهور", "note": "ناقص الضمير وحرف الجر: «أو استعداده للظهور» (خبر هيث سلاتر، INCIDENTS #1461)"},
+  {"wrong": "قناة شايس", "right": "قناة تشيس", "note": "Chase بيتكتب «تشيس» (خبر ساترن، INCIDENTS #1461)"},
+  {"wrong": "اقترح شايس", "right": "اقترح تشيس", "note": "Chase بيتكتب «تشيس» (INCIDENTS #1461)"},
   {"wrong": "اثبات", "right": "إثبات", "note": "همزة القطع: «نجح في إثبات قوته» (خبر داميان بريست، جولة 2026-11-21)"},
   {"wrong": "لاثبات", "right": "لإثبات", "note": "همزة القطع: «لإثبات» (جولة 2026-11-21)"},
   {"wrong": "واثبات", "right": "وإثبات", "note": "همزة القطع: «وإثبات» (جولة 2026-11-21)"},
