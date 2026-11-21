@@ -13856,6 +13856,16 @@
    "wrong": "قد قابل",
    "right": "قابل",
    "note": "«قد» مايجيش قبل صفة (INCIDENTS #1448)"
+  },
+  {
+   "wrong": "أش باي إليغانس",
+   "right": "آش باي إليغانس",
+   "note": "Ash By Elegance اسمها «آش» بالمد زي القاموس (INCIDENTS #1451)"
+  },
+  {
+   "wrong": "مينيسابوليس",
+   "right": "مينيابوليس",
+   "note": "Minneapolis (INCIDENTS #1451)"
   }
  ]
 }

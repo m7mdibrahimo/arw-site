@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { stableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, liveEventInResults, fixTitleSubjectGender, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, mainWrestlerMissing, fixNearGlossaryNames, fixSwappedSurnames, threeWayAsCount, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixElijahAsIlya, fixEventCalledMovie, fixDivasChampion, seriesTitleTranslated, demoteUnplayedMainEvent, mainEventNotLastResult, champDqLossAsDefense, tweetDateAsShowDate, titleChangeWrittenAsDefense, endProseParagraphs, type NewsFile } from "./news-qa";
+import { stableSwappedFromEnglish, confusableSwappedFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, liveEventInResults, fixTitleSubjectGender, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, mainWrestlerMissing, fixNearGlossaryNames, fixSwappedSurnames, threeWayAsCount, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixElijahAsIlya, fixEventCalledMovie, fixDivasChampion, seriesTitleTranslated, demoteUnplayedMainEvent, mainEventNotLastResult, champDqLossAsDefense, tweetDateAsShowDate, titleChangeWrittenAsDefense, endProseParagraphs, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -4934,6 +4934,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     const enB = typeof (rewritten as { en_body?: unknown }).en_body === "string" ? (rewritten as { en_body: string }).en_body : "";
     const swap = stableSwappedFromEnglish(draft.body, enB, WRESTLER_NAMES_MAP);
     if (swap) { blocking.push({ code: "stable_swapped", severity: "error", field: "body", message: `اسم فريق في التقرير العربي مختلف عن الإنجليزي: العربي ذكر ${swap.arabicOnly.join("، ")} والإنجليزي ذكر ${swap.englishOnly.join("، ")} — انقل اسم الفريق كما في المصدر`, excerpt: swap.arabicOnly.join(" ") }); lastPostRetryable = true; }
+  }
+  // Look-alike names/titles swapped against the paired English: «آش باي إليغانس» for M By Elegance, «بيور» for the Women's title (INCIDENTS #1451).
+  {
+    const enB = typeof (rewritten as { en_body?: unknown }).en_body === "string" ? (rewritten as { en_body: string }).en_body : "";
+    const swapped = confusableSwappedFromEnglish(draft.body, enB, WRESTLER_NAMES_MAP);
+    if (swapped.length) { blocking.push({ code: "stable_swapped", severity: "error", field: "body", message: `اسم في الخبر العربي مختلف عن الإنجليزي: ${swapped.join("، ")} — انقل الاسم أو اللقب كما في المصدر (آش/إم/هيذر باي إليغانس مصارعات مختلفات، و«بيور» لقب غير بطولة السيدات العالمية)`, excerpt: swapped.join(" ") }); lastPostRetryable = true; }
   }
   // Tony Khan's tweet credited to the team it talks about (INCIDENTS #1225).
   const tkPhrase = tonyKhanTweetMisattributed(`${draft.title}\n${draft.body}`, embeds.join("\n"));

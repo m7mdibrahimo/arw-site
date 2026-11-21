@@ -2719,6 +2719,24 @@ export function stableSwappedFromEnglish(arBody: string, enBody: string, glossar
   return arabicOnly.length && englishOnly.length ? { arabicOnly, englishOnly } : null;
 }
 
+// Look-alike names swapped against the English written in the same request: the TNA Personal Concierge story listed
+// «آش باي إليغانس» where the English says M By Elegance, and the ROH Final Battle story gave Athena «بطولة ROH بيور
+// للسيدات» while the English says ROH Women's Championship (INCIDENTS #1451). Returns the mismatches to block on.
+export const CONFUSABLE_NAME_GROUPS: string[][] = [["Ash By Elegance", "M By Elegance", "Heather By Elegance"]];
+export function confusableSwappedFromEnglish(arBody: string, enBody: string, glossary: Record<string, string>): string[] {
+  const ar = String(arBody || "");
+  const en = String(enBody || "");
+  if (!ar || en.length < 80) return [];
+  const out: string[] = [];
+  for (const group of CONFUSABLE_NAME_GROUPS) {
+    const has = group.map(name => ({ name, inEn: en.toLowerCase().includes(name.toLowerCase()), inAr: !!glossary[name] && ar.includes(glossary[name]) }));
+    if (!has.some(h => h.inAr)) continue;
+    for (const h of has) if (h.inEn && !h.inAr && glossary[h.name]) out.push(h.name);
+  }
+  if (/(?<![ء-ي])بيور(?![ء-ي])/.test(ar) && !/\bPure\b/i.test(en)) out.push("Pure Championship");
+  return out;
+}
+
 // A wrestler the source is about (full name + surname 4+ times) missing from the story is a swapped name:
 // «Women's United States Champion Jacy Jayne» written «جايد كارغيل», another wrestler in the same source (INCIDENTS #1366).
 export function mainWrestlerMissing(story: string, source: string, glossary: Record<string, string>): string[] {
