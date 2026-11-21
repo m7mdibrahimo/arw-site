@@ -1,43 +1,48 @@
 {
+ "https://www.fightful.com/wrestling/mjf-responds-to-claim-he-stayed-with-aew-as-a-safe-bet": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-21T16:57:29.242Z"
+ },
  "https://www.fightful.com/wrestling/roh-fortnite-to-final-battle-results-11-20": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Survival of the Fittest Tournament",
   "retry": true,
-  "at": "2026-11-21T16:54:02.039Z"
+  "at": "2026-11-21T16:57:28.864Z"
  },
  "https://www.fightful.com/wrestling/the-rock-puts-pat-mcafee-through-a-table-with-the-rock-bottom": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T16:53:40.219Z"
+  "at": "2026-11-21T16:57:01.531Z"
  },
  "https://www.fightful.com/wrestling/roh-womens-pure-title-match-tag-title-bout-added-to-final-battle-ppv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T16:53:39.539Z"
+  "at": "2026-11-21T16:57:00.516Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-to-unveil-team-usas-final-member-on-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T16:53:39.066Z"
+  "at": "2026-11-21T16:56:59.818Z"
  },
  "https://www.fightful.com/wrestling/hacksaw-jim-duggan-returns-on-11-20-wwe-smackdown-joins-team-usa-and-then-immediately-backs-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T16:53:38.734Z"
+  "at": "2026-11-21T16:56:59.335Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-11-20-2026-charlotte-flair-vs-jade-cargill-trick-williams-bakusai-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T16:53:38.219Z"
+  "at": "2026-11-21T16:56:58.568Z"
  },
  "https://www.fightful.com/wrestling/lilian-garcia-returning-to-the-mic-for-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T16:53:37.914Z"
+  "at": "2026-11-21T16:56:58.093Z"
  },
  "https://www.fightful.com/wrestling/sherilyn-guerrero-says-dominik-mysterio-texted-her-after-her-in-ring-debut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T16:53:37.752Z"
+  "at": "2026-11-21T16:56:57.854Z"
  },
  "https://www.fightful.com/wrestling/marina-shafir-says-the-aew-womens-locker-room-fighting-to-prove-that-they-have-just-as-much-to-offer-as-the-men-is-a-forever-battle": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-13T02:44:47.402Z"
- },
- "https://www.wrestlinginc.com/2315575/tna-destination-x-impact-nic-ryan-nemeth-added-match-defend-tag-title": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-13T02:38:40.947Z"
  }
 }
