@@ -11588,3 +11588,8 @@ Let me check git status to enumerate uncommitted changes.</think><tool_call>shel
 اللي حصل: خبر AAA كتب Galeno del Mal «غالينو فانتاسما»، وخبر تريك ويليامز كتب «المسور الحديدي» وقال إن بريست ضربه «بقدمه» بالجرس، وDuggan اتكتب «هاكساو» و«هاكسو» وEvansville «إيفانسفيل».
 السبب: القاموس فيه Galeno لوحده فـGemini خلطه بـGaleón Fantasma، ومفيش كتابة ثابتة لـHacksaw وEvansville.
 الإصلاح: Galeno del Mal وHacksaw Jim Duggan في القاموس + 4 تصحيحات ثابتة في corrections.json واختبار corrections-1452، والأخبار اتصلحت في مكانها.
+
+## #1453 — 2026-11-21: «عروض العرض» وجمل ركيكة في خبرين
+اللي حصل: خبر TNA iMPACT كتب «ستتوفر عروض العرض للمشاهدة» وخبر سماكداون فيه «مما… مما» و«كنزال… ضمنيا».
+السبب: الصياغة دي مكانتش في التصحيحات الثابتة.
+الإصلاح: اتصلح الخبرين بنفس الرابط، واتضاف «عروض العرض ← حلقات العرض» في editorial/corrections.json مع اختبار.
