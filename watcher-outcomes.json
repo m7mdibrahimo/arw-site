@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/several-top-aew-tag-teams-absences-explained-months-off-television": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-21T14:38:24.746Z"
+ },
  "https://www.wrestlinginc.com/2318687/wwe-becky-lynch-liv-morgan-judgment-day-roxanne-perez-dominik-mysterio": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يبدوان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-12T22:39:40.442Z"
- },
- "https://www.wrestlinginc.com/2315463/wwe-offered-jeff-cobb-bronson-reed-njpw-name": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-12T22:27:51.609Z"
  }
 }
