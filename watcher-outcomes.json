@@ -1988,10 +1988,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-13T14:14:57.660Z"
- },
- "https://www.fightful.com/wrestling/cody-rhodes-says-hed-cut-one-promo-as-a-heel-and-then-someone-else-would-speak-for-him": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-13T13:55:19.503Z"
  }
 }
