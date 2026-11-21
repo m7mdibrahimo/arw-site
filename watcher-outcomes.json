@@ -7,42 +7,47 @@
  "https://www.fightful.com/wrestling/ken-anderson-recalls-meeting-his-wife-at-a-wrestling-event-her-laughing-off-his-insults-in-character": {
   "reason": "المراجعة رفضته: اقتباس بالإنجليزي جوه الخبر العربي — لازم يتترجم للعربي",
   "retry": true,
-  "at": "2026-11-21T13:58:50.545Z"
+  "at": "2026-11-21T14:22:37.534Z"
+ },
+ "https://www.fightful.com/wrestling/ken-anderson-recalls-meeting-his-wife-at-a-wrestling-event-her-laughing-off-his-insults-in-character": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": true,
+  "at": "2026-11-21T14:11:13.539Z"
  },
  "https://www.fightful.com/wrestling/roh-womens-pure-title-match-tag-title-bout-added-to-final-battle-ppv": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-21T13:57:53.409Z"
+  "at": "2026-11-21T14:05:27.181Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-to-unveil-team-usas-final-member-on-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T13:57:03.857Z"
+  "at": "2026-11-21T14:03:10.558Z"
  },
  "https://www.fightful.com/wrestling/hacksaw-jim-duggan-returns-on-11-20-wwe-smackdown-joins-team-usa-and-then-immediately-backs-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T13:57:03.382Z"
+  "at": "2026-11-21T14:03:10.147Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-11-20-2026-charlotte-flair-vs-jade-cargill-trick-williams-bakusai-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T13:57:02.620Z"
+  "at": "2026-11-21T14:03:09.470Z"
  },
  "https://www.fightful.com/wrestling/lilian-garcia-returning-to-the-mic-for-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T13:57:02.171Z"
+  "at": "2026-11-21T14:03:09.013Z"
  },
  "https://www.fightful.com/wrestling/sherilyn-guerrero-says-dominik-mysterio-texted-her-after-her-in-ring-debut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T13:57:01.934Z"
+  "at": "2026-11-21T14:03:08.763Z"
  },
  "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T13:57:01.174Z"
+  "at": "2026-11-21T14:03:08.045Z"
  },
  "https://www.fightful.com/wrestling/wwe-survivor-series-odds-courtesy-of-mybookie": {
   "reason": "مكرر مع خبر نزل قبل كده",
