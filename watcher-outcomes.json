@@ -1,48 +1,48 @@
 {
- "https://www.ringsidenews.com/ddp-reveals-years-legitimate-backstage-heat-ric-flair-how-they-squashed-it": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-21T23:32:53.030Z"
- },
  "https://www.fightful.com/wrestling/raj-dhesi-says-randy-orton-got-him-into-united-states-title-match-at-wrestlemania-34": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Heavyweight Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE United States Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE United States Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Vince McMahon",
   "retry": true,
-  "at": "2026-11-21T23:34:20.931Z"
+  "at": "2026-11-21T23:37:23.675Z"
  },
  "https://www.fightful.com/wrestling/jake-hager-retained-some-sight-in-the-eye-after-two-surgeries": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:32:39.855Z"
+  "at": "2026-11-21T23:36:58.231Z"
  },
  "https://www.fightful.com/wrestling/the-rock-im-coming-to-houston-to-say-thank-you-and-i-love-you": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:32:39.522Z"
+  "at": "2026-11-21T23:36:57.851Z"
  },
  "https://www.fightful.com/wrestling/mjf-responds-to-claim-he-stayed-with-aew-as-a-safe-bet": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:32:39.058Z"
+  "at": "2026-11-21T23:36:57.332Z"
  },
  "https://www.fightful.com/wrestling/the-rock-puts-pat-mcafee-through-a-table-with-the-rock-bottom": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:32:38.403Z"
+  "at": "2026-11-21T23:36:56.551Z"
  },
  "https://www.fightful.com/wrestling/roh-womens-pure-title-match-tag-title-bout-added-to-final-battle-ppv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:32:37.439Z"
+  "at": "2026-11-21T23:36:55.443Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-to-unveil-team-usas-final-member-on-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:32:36.785Z"
+  "at": "2026-11-21T23:36:54.689Z"
  },
  "https://www.fightful.com/wrestling/hacksaw-jim-duggan-returns-on-11-20-wwe-smackdown-joins-team-usa-and-then-immediately-backs-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:32:36.321Z"
+  "at": "2026-11-21T23:36:54.152Z"
+ },
+ "https://www.ringsidenews.com/ddp-reveals-years-legitimate-backstage-heat-ric-flair-how-they-squashed-it": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-21T23:32:53.030Z"
  },
  "https://www.wrestlinginc.com/2324005/aew-collision-november-21-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
