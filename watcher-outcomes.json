@@ -1,48 +1,43 @@
 {
  "https://www.fightful.com/wrestling/roh-womens-pure-title-match-tag-title-bout-added-to-final-battle-ppv": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)",
   "retry": true,
-  "at": "2026-11-21T13:47:46.023Z"
+  "at": "2026-11-21T13:50:38.303Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-to-unveil-team-usas-final-member-on-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T13:46:15.661Z"
+  "at": "2026-11-21T13:49:50.743Z"
  },
  "https://www.fightful.com/wrestling/hacksaw-jim-duggan-returns-on-11-20-wwe-smackdown-joins-team-usa-and-then-immediately-backs-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T13:46:15.247Z"
+  "at": "2026-11-21T13:49:50.417Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-results-11-20-2026-charlotte-flair-vs-jade-cargill-trick-williams-bakusai-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T13:46:14.585Z"
+  "at": "2026-11-21T13:49:49.900Z"
  },
  "https://www.fightful.com/wrestling/lilian-garcia-returning-to-the-mic-for-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T13:46:14.192Z"
+  "at": "2026-11-21T13:49:49.597Z"
  },
  "https://www.fightful.com/wrestling/sherilyn-guerrero-says-dominik-mysterio-texted-her-after-her-in-ring-debut": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T13:46:13.987Z"
+  "at": "2026-11-21T13:49:49.436Z"
  },
  "https://www.fightful.com/wrestling/tna-contract-of-bde-set-to-expire-at-the-end-of-the-year": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T13:46:13.330Z"
+  "at": "2026-11-21T13:49:48.923Z"
  },
  "https://www.fightful.com/wrestling/wwe-survivor-series-odds-courtesy-of-mybookie": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T13:46:12.473Z"
- },
- "https://www.ringsidenews.com/r-truths-son-shows-off-impressive-wrestling-skills-during-training-session": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة، فعل مثنى («يتشاركان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-21T13:39:52.980Z"
+  "at": "2026-11-21T13:49:48.246Z"
  },
  "https://www.ringsidenews.com/r-truths-son-shows-off-impressive-wrestling-skills-during-training-session": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة، فعل مثنى («يتشاركان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
