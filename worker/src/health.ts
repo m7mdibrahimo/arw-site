@@ -74,6 +74,10 @@ export function failingSiteLag(siteMessage: string, liveCommitTimeSec: number, s
  *  only retries a build that FAILED, and with nothing new to publish nothing would ever move «site» again.
  *  True when the «site» commit is 15+ minutes old, has no «Workers Builds: arw-site-static» check run of any state,
  *  the live build.json is on another main commit, and it is not already a retry (once only) (INCIDENTS #1245). */
+/** The check run of a «site» build: Cloudflare's own (Workers Builds) until 2026-11-22, then GitHub's free build
+ *  (.github/workflows/site-build.yml): Cloudflare charged for every build minute over 6,000 a month (INCIDENTS #1476). */
+export const STATIC_BUILD = /^(Workers Builds|Site Build): arw-site-static$/;
+
 export function missedSiteBuild(siteMessage: string, siteAtMs: number, staticRuns: number, liveCommit: string, nowMs: number, minMs = 15 * 60_000): boolean {
   const msg = String(siteMessage || "");
   const of = /site-of: ([0-9a-f]{40})/.exec(msg)?.[1];
@@ -260,7 +264,7 @@ export async function runSiteHealthCheck(env: HealthEnv, minute: number, keyOf: 
           const runs: any = await fetch(`https://api.github.com/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/commits/${site.sha}/check-runs?per_page=100`, {
             headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json", "User-Agent": "arw-site-bot" },
           }).then(r => (r.ok ? r.json() : null)).catch(() => null);
-          const run = (Array.isArray(runs?.check_runs) ? runs.check_runs : []).find((c: any) => c?.name === "Workers Builds: arw-site-static");
+          const run = (Array.isArray(runs?.check_runs) ? runs.check_runs : []).find((c: any) => STATIC_BUILD.test(String(c?.name)));
           lag = failingSiteLag(String(site.commit.message), Number(build.commitTime), String(run?.conclusion || ""));
         }
       }
@@ -274,7 +278,7 @@ export async function runSiteHealthCheck(env: HealthEnv, minute: number, keyOf: 
         const siteAt = Date.parse(site?.commit?.committer?.date || "");
         if (site?.sha && /site-of: /.test(msg) && !/site-retry/.test(msg) && now - siteAt >= 15 * 60_000 && String(build.commit) !== (/site-of: ([0-9a-f]{40})/.exec(msg)?.[1] || "")) {
           const runs: any = await gh(`/commits/${site.sha}/check-runs?per_page=100`).then(r => (r.ok ? r.json() : null)).catch(() => null);
-          const staticRuns = Array.isArray(runs?.check_runs) ? runs.check_runs.filter((c: any) => c?.name === "Workers Builds: arw-site-static").length : -1;
+          const staticRuns = Array.isArray(runs?.check_runs) ? runs.check_runs.filter((c: any) => STATIC_BUILD.test(String(c?.name))).length : -1;
           if (missedSiteBuild(msg, siteAt, staticRuns, String(build.commit), now)) {
             const made: any = await gh(`/git/commits`, { method: "POST", body: JSON.stringify({ message: siteRetryMessage(msg), tree: site.commit.tree.sha, parents: (site.parents || []).map((p: any) => p.sha) }) }).then(r => (r.ok ? r.json() : null)).catch(() => null);
             // «site» must not have moved meanwhile: a newer «site» commit is never replaced by the retry

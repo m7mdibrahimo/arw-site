@@ -40,7 +40,8 @@ concurrency:
 
 permissions:
   contents: write
-  checks: read   # Cloudflare's «done» mark on the last «site» commit
+  checks: read   # the build's «done» mark on the last «site» commit
+  actions: write # starts site-build.yml (INCIDENTS #1476)
 
 jobs:
   slim:
@@ -100,6 +101,7 @@ jobs:
       # All on GitHub's side through its API: the new tree is main's tree minus the two folders, so no picture or
       # video is downloaded or uploaded (a git push from a partial clone pulled the pictures in, INCIDENTS #312)
       - name: Point «site» at the latest main, without pictures and reels
+        id: point
         env:
           REPO: ${{ github.repository }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -120,7 +122,7 @@ jobs:
           RETRY=0
           if [ -n "$SITE" ] && [ "$SITE" != "null" ]; then
             SMSG=$(api "$BASE/commits/$SITE" | jq -r .message)
-            if ! grep -q 'site-retry' <<<"$SMSG" && api "https://api.github.com/repos/$REPO/commits/$SITE/check-runs?per_page=100" | jq -e '[.check_runs[] | select(.name == "Workers Builds: arw-site-static" and .status == "completed" and .conclusion == "failure")] | length > 0' > /dev/null; then
+            if ! grep -q 'site-retry' <<<"$SMSG" && api "https://api.github.com/repos/$REPO/commits/$SITE/check-runs?per_page=100" | jq -e '[.check_runs[] | select((.name == "Workers Builds: arw-site-static" or .name == "Site Build: arw-site-static") and .status == "completed" and .conclusion == "failure")] | length > 0' > /dev/null; then
               RETRY=1; echo "Cloudflare's build of $SITE failed: building it again"
               if [ "$PREV" = "$MAIN" ] || [ -z "$PREV" ]; then PREV=""; fi
             fi
@@ -172,3 +174,17 @@ jobs:
             jq -n --arg s "$COMMIT" '{ref:"refs/heads/site", sha:$s}' | api -X POST "$BASE/refs" -d @- > /dev/null
           fi
           echo "site ← $MAIN as $COMMIT"
+          echo "moved=1" >> "$GITHUB_OUTPUT"
+      # GitHub builds «site» now, for free (INCIDENTS #1476): Cloudflare charged for every build minute over 6,000 a month.
+      # A ref moved with GitHub's own key starts no workflow, so the build is started here.
+      - name: Build the new «site» on GitHub
+        if: steps.point.outputs.moved == '1' && vars.SITE_BUILD_ON_GITHUB == '1'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          for TRY in 1 2 3 4; do
+            gh workflow run site-build.yml -R "$REPO" --ref site && exit 0
+            echo "could not start the build (try $TRY/4)"; sleep 5
+          done
+          exit 1
