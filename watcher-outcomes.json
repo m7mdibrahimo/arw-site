@@ -1,13 +1,13 @@
 {
+ "https://www.ringsidenews.com/zelina-vega-reveals-she-made-first-move-aleister-black-awkward-first-meeting": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-22T17:50:53.416Z"
+ },
  "https://www.wrestlinginc.com/2324351/aew-wcw-tony-schiavone-jim-herd-commentator-reacts-death": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-22T17:46:53.042Z"
- },
- "https://www.wrestlinginc.com/2322289/andrade-el-idolo-origins-current-aew-gimmick-how-you-know": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Aubrey Edwards",
-  "retry": true,
-  "at": "2026-11-22T17:45:28.230Z"
  },
  "https://www.fightful.com/wrestling/mjf-promises-he-will-get-brody-king-fired-following-daniel-garcia-injury-on-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -33,6 +33,11 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-22T17:46:27.651Z"
+ },
+ "https://www.wrestlinginc.com/2322289/andrade-el-idolo-origins-current-aew-gimmick-how-you-know": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Aubrey Edwards",
+  "retry": true,
+  "at": "2026-11-22T17:45:28.230Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -63,11 +68,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-22T17:43:43.257Z"
- },
- "https://www.ringsidenews.com/zelina-vega-reveals-she-made-first-move-aleister-black-awkward-first-meeting": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-22T17:31:13.130Z"
  },
  "https://www.ringsidenews.com/vince-russo-says-spending-thanksgiving-alone-first-time-his-life-absolutely-sucks": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
