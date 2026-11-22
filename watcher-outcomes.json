@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2324351/aew-wcw-tony-schiavone-jim-herd-commentator-reacts-death": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-22T17:46:53.042Z"
+ },
+ "https://www.wrestlinginc.com/2322289/andrade-el-idolo-origins-current-aew-gimmick-how-you-know": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Aubrey Edwards",
+  "retry": true,
+  "at": "2026-11-22T17:45:28.230Z"
+ },
  "https://www.fightful.com/wrestling/mjf-promises-he-will-get-brody-king-fired-following-daniel-garcia-injury-on-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1988,15 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-14T01:55:27.526Z"
- },
- "https://www.fightful.com/wrestling/aew-collision-11-7-viewership-increases-from-halloween-night": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T01:43:32.980Z"
- },
- "https://www.ringsidenews.com/wwe-smackdown-results-highlights-key-moments-november-13-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-14T01:32:21.866Z"
  }
 }
