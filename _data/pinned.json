@@ -1,5 +1,27 @@
 [
   {
+    "url": "/shows/aew-collision-21-11-2026/",
+    "title": "عرض كوليجن 21.11.2026 مترجم",
+    "subtitle": "AEW Collision 21.11.2026",
+    "image": "/content/images/kqo9edpay4kofy8j.jpg?w=800",
+    "federation": "AEW",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/lucha-libre-aaa-21-11-2026/",
+    "title": "عرض ايه ايه ايه 21.11.2026 مترجم",
+    "subtitle": "Lucha Libre AAA 21.11.2026",
+    "image": "/content/images/ic2o84y8gfmxjlnk.jpg?w=800",
+    "federation": "INDIE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-smackdown-20-11-2026-تعليق-عربي/",
     "title": "عرض سماك داون 20.11.2026 (تعليق عربي)",
     "subtitle": "WWE Smackdown 20.11.2026 (تعليق عربي)",
@@ -141,27 +163,5 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض فول جير مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/lucha-libre-aaa-14-11-2026/",
-    "title": "عرض ايه ايه ايه 14.11.2026 مترجم",
-    "subtitle": "Lucha Libre AAA 14.11.2026",
-    "image": "/content/images/84v8xiztlb61yu0t.jpg?w=800",
-    "federation": "INDIE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/aew-full-gear-tailgate-brawl-2026/",
-    "title": "عرض فول جير تيلغيت برول 14.11.2026 مترجم",
-    "subtitle": "AEW Full Gear Tailgate Brawl (2026)",
-    "image": "/content/images/id5kxfu6f5hqlxsm.jpg?w=800",
-    "federation": "AEW",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض فول جير تيلغيت برول مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
