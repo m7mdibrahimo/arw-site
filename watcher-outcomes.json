@@ -2,57 +2,57 @@
  "https://www.fightful.com/wrestling/mjf-promises-he-will-get-brody-king-fired-following-daniel-garcia-injury-on-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T17:21:08.708Z"
+  "at": "2026-11-22T17:23:44.562Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-live-results-11-21": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Elijah Holyfield، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
   "retry": true,
-  "at": "2026-11-22T17:21:08.545Z"
+  "at": "2026-11-22T17:23:44.437Z"
  },
  "https://www.fightful.com/wrestling/la-knight-asks-fans-to-respect-his-ex-girlfriends-privacy-she-didnt-sign-up-to-be-a-public-figure": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T17:18:24.294Z"
+  "at": "2026-11-22T17:23:24.752Z"
  },
  "https://www.fightful.com/wrestling/charlotte-flair-says-alexa-bliss-episode-will-be-first-when-her-podcast-comes-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T17:18:23.997Z"
+  "at": "2026-11-22T17:23:24.499Z"
  },
  "https://www.fightful.com/wrestling/dawn-marie-says-her-best-paying-year-in-wwe-was-2200000-with-over-120000-in-expenses": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-22T17:18:23.809Z"
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-22T17:23:24.311Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T17:18:01.324Z"
+  "at": "2026-11-22T17:22:57.481Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-night-two-recap": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T17:18:01.226Z"
+  "at": "2026-11-22T17:22:57.404Z"
  },
  "https://www.fightful.com/wrestling/aaa-on-fox-results-11-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T17:18:01.021Z"
+  "at": "2026-11-22T17:22:57.247Z"
  },
  "https://www.fightful.com/wrestling/daniel-garcia-suffers-arm-injury-on-11-21-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T17:18:00.785Z"
+  "at": "2026-11-22T17:22:57.062Z"
  },
  "https://www.fightful.com/wrestling/details-on-mike-romos-exit-from-tna": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T17:18:00.532Z"
+  "at": "2026-11-22T17:22:56.872Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-results-11-21-2026-ilja-dragunov-vs-el-clon-continental-classic-continues-divine-dominion-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T17:18:00.364Z"
+  "at": "2026-11-22T17:22:56.744Z"
  },
  "https://www.ringsidenews.com/zelina-vega-reveals-she-made-first-move-aleister-black-awkward-first-meeting": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
