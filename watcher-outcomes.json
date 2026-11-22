@@ -1,4 +1,19 @@
 {
+ "https://www.ringsidenews.com/trick-williams-admits-he-thought-he-went-too-far-undertaker": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-22T20:37:38.748Z"
+ },
+ "https://www.ringsidenews.com/cody-rhodes-talks-trash-about-steelers-61-year-winless-streak-philadelphia-during-eagles-game": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مدة زمنية في المتن غير مطابقة للمصدر: منذ عام، منذ عام",
+  "retry": true,
+  "at": "2026-11-22T20:34:04.422Z"
+ },
+ "https://www.ringsidenews.com/zelina-vega-reveals-she-made-first-move-aleister-black-awkward-first-meeting": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-22T20:33:03.193Z"
+ },
  "https://www.ringsidenews.com/trick-williams-reveals-what-really-happened-when-wwe-called-him-up-to-the-main-roster": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -1928,10 +1943,5 @@
   "reason": "المراجعة رفضته: صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل مثنى («يتواجدان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
   "at": "2026-11-14T15:57:56.632Z"
- },
- "https://www.fightful.com/wrestling/finn-balor-vs-gunther-added-to-11-13-wwe-smackdown": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T15:41:07.710Z"
  }
 }
