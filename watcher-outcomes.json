@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2324005/aew-collision-november-21-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-22T01:58:05.026Z"
+ },
  "https://www.fightful.com/wrestling/gail-kim-and-alisha-edwards-holding-auction-to-benefit-rebel": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى («تقومان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
@@ -48,11 +53,6 @@
   "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
   "retry": false,
   "at": "2026-11-22T01:44:39.144Z"
- },
- "https://www.wrestlinginc.com/2324005/aew-collision-november-21-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-22T01:39:37.555Z"
  },
  "https://www.ringsidenews.com/aew-collision-results-highlights-key-moments-november-21-2026": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
