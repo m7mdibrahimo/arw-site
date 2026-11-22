@@ -5710,7 +5710,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261122161459-njpw-bound-for-unbound-2026": {
     "publishedAt": 1795357438299,
@@ -5733,7 +5734,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض كوليجن 21.11.2026 مترجم",
-    "lastAttempt": 1795369619607,
+    "lastAttempt": 1795370523169,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5751,9 +5752,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض يو اف سي فايت نايت 21.11.2026 مترجم",
-    "lastAttempt": 1795365241046,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1795370524050,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
