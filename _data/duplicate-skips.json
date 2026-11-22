@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2310218/wwe-nxt-viewership-ratings-report-november-4-2026/": {
-    "matchedFile": "20261107020418-ارتفاع-طفيف-في-نسب-مشاهدة-عرض-wwe-nxt-في-الرابع-من-نوفمبر-2026.md",
-    "reason": "الخبر الجديد يغطي نفس حدث نسب مشاهدات عرض WWE NXT بتاريخ 4 نوفمبر 2026 المذكور في الخبر رقم 1، حيث يتضمن نفس الأرقام والإحصائيات الأساسية.",
-    "at": "2026-11-08T04:00:00.173Z"
-  },
   "https://www.fightful.com/wrestling/aaa-heroes-inmortales-week-three-results-11-7/": {
     "matchedFile": "20261108054523-شاهد-بالفيديو-أحداث-عرض-aaa-heroes-inmortales.md",
     "reason": "الخبر الجديد هو تقرير نتائج تفصيلي لنفس العرض الذي تم تغطيته مسبقاً في الخبر رقم 0، حيث يحتوي على نفس النزالات والفقرات المذكورة.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261122102506-تريك-ويليامز-يكشف-عن-العمل-على-مشروع-موسيقي-كامل.md",
     "reason": "الخبر الجديد يتناول نفس التصريح الذي أدلى به تريك ويليامز في بودكاست Double Coverage حول عمله على مشروع موسيقي كامل مع ليل ياتي، وهو ما تم تغطيته بالفعل في الخبر رقم 0.",
     "at": "2026-11-22T19:39:01.399Z"
+  },
+  "https://www.fightful.com/wrestling/trick-williams-comments-on-dark-match-with-gunther-the-punishment-to-gunther-was-putting-him-in-the-ring-with-me-knowing-that-he-cant-hang-with-the-big-dog/": {
+    "matchedFile": "20261122094834-تريك-ويليامز-ينفي-تكهنات-معاقبة-wwe-لغونتر-بخسارته-في-نزال-غير-مذاع.md",
+    "reason": "الخبر الجديد يعيد سرد نفس التصريحات التي أدلى بها تريك ويليامز في بودكاست Double Coverage بخصوص نزاله ضد غونتر، وهي نفس التصريحات التي غطاها الخبر رقم 0.",
+    "at": "2026-11-22T20:02:49.283Z"
   }
 }
