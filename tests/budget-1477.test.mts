@@ -41,8 +41,7 @@ test('INCIDENTS #1477: last period (85 million CPU-ms, 11,611 build minutes) wou
   assert.deepEqual(s.warn.sort(), ['buildMinutes', 'cpuMs']);
   const p = budgetProblems(s, now);
   assert.equal(p[0].code, 'budget_high');
-  assert.match(p[0].title, /واقفين لحد يوم ٢٢/); // 285% of the CPU allowance: the hard stop of INCIDENTS #1478
-  assert.match(budgetProblems(judge({ cpuMs: 23_000_000 }, now), now)[0].title, /تصغير الصور الجديدة واقف/);
+  assert.match(p[0].title, /تصغير الصور الجديدة واقف/);
 });
 
 test('INCIDENTS #1477: a quiet period neither brakes nor warns, and the first hours never alarm on projection alone', () => {
@@ -85,6 +84,10 @@ test('INCIDENTS #1477: one GraphQL call reads every metric', async () => {
 });
 
 test('INCIDENTS #1477: the bot checks hourly and /health raises the alert', () => {
-  assert.match(fs.readFileSync('worker/src/index.ts', 'utf8'), /CHECK_MINUTES\.includes\(minute\) \? runBudgetCheck\(env as any, _controller\.scheduledTime\)/);
+  assert.match(fs.readFileSync('worker/src/index.ts', 'utf8'), /minute === 5 \? runBudgetCheck\(env as any, _controller\.scheduledTime\)/);
   assert.match(fs.readFileSync('worker/src/health.ts', 'utf8'), /mergeProblems\(problems, budgetProblems\(budget, now\), \["budget_high"\], now\)/);
+});
+
+test('INCIDENTS #1477: while the brake holds, arw-media does not recompress old pictures either (CPU time)', () => {
+  assert.match(media, /resizeBraked\(env\)\.then\(\(braked\) => braked \? 0 : compressStored\(env\)\)/);
 });
