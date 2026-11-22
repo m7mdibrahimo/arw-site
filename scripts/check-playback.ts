@@ -169,8 +169,28 @@ export function pageServers(html: string): string[] {
   return init ? [deobfuscate(init[1])] : [];
 }
 
+export const CHROME_START_TRIES = 120;   // × 500 ms = 60 s
+export async function waitForDevtools(port: number, tries: number, pause = 500): Promise<any | null> {
+  for (let k = 0; k < tries; k++) {
+    await sleep(pause);
+    try { const r = await fetch(`http://127.0.0.1:${port}/json/version`); if (r.ok) return await r.json(); } catch {}
+  }
+  return null;
+}
+
+// A network blip on the sitemap must not fail the whole check: three tries, 10 s apart.
+async function fetchText(u: string, tries = 3): Promise<string> {
+  let err: any;
+  for (let k = 0; k < tries; k++) {
+    try { const r = await fetch(u, { signal: AbortSignal.timeout(60000) }); if (r.ok) return await r.text(); err = new Error(`HTTP ${r.status} ${u}`); }
+    catch (e) { err = e; }
+    if (k < tries - 1) await sleep(10000);
+  }
+  throw err;
+}
+
 async function recentPages(days: number): Promise<string[]> {
-  const xml = await (await fetch(`${ORIGIN}/sitemap.xml`, { signal: AbortSignal.timeout(60000) })).text();
+  const xml = await fetchText(`${ORIGIN}/sitemap.xml`);
   const cut = Date.now() - days * 86400_000;
   const out: string[] = [];
   for (const m of xml.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
@@ -190,11 +210,17 @@ class Browser {
   async start() {
     const bin = CHROMES.find(p => p && fs.existsSync(p));
     if (!bin) throw new Error("no Chrome found (set CHROME_PATH)");
-    const port = 9400 + Math.floor(Math.random() * 500);
-    const prof = fs.mkdtempSync(path.join(require("os").tmpdir(), "arw-play-"));
-    this.proc = spawn(bin, [process.env.HEADLESS_ARG || "--headless", `--remote-debugging-port=${port}`, `--user-data-dir=${prof}`, "--no-first-run", "--no-default-browser-check", "--autoplay-policy=no-user-gesture-required", "--mute-audio", "--window-size=1280,900", "--no-sandbox", "about:blank"], { stdio: "ignore" });
-    for (let k = 0; k < 60; k++) { await sleep(500); try { await fetch(`http://127.0.0.1:${port}/json`); break; } catch {} }
-    const ver: any = await (await fetch(`http://127.0.0.1:${port}/json/version`)).json();
+    // Chrome on a busy runner can take longer than 30 s to open its debugging port (run 45000687145
+    // died with a bare «fetch failed»): wait up to 60 s, and start a fresh Chrome once more before giving up.
+    let ver: any = null;
+    for (let attempt = 0; attempt < 2 && !ver; attempt++) {
+      if (attempt) { try { this.proc.kill(); } catch {} }
+      const port = 9400 + Math.floor(Math.random() * 500);
+      const prof = fs.mkdtempSync(path.join(require("os").tmpdir(), "arw-play-"));
+      this.proc = spawn(bin, [process.env.HEADLESS_ARG || "--headless", `--remote-debugging-port=${port}`, `--user-data-dir=${prof}`, "--no-first-run", "--no-default-browser-check", "--autoplay-policy=no-user-gesture-required", "--mute-audio", "--window-size=1280,900", "--no-sandbox", "about:blank"], { stdio: "ignore" });
+      ver = await waitForDevtools(port, CHROME_START_TRIES);
+    }
+    if (!ver) throw new Error("Chrome did not open its debugging port (tried twice)");
     this.ws = new WebSocket(ver.webSocketDebuggerUrl);
     this.ws.onmessage = (e: any) => this.onMessage(JSON.parse(String(e.data)));
     await new Promise(r => (this.ws.onopen = r));

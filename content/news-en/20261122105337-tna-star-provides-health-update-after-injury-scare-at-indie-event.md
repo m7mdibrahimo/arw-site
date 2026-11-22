@@ -1,5 +1,5 @@
 ---
-title: "TNA Star Provides Health Update After Injury Scare at Indie Event"
+title: "Bear Bronson Provides Health Update After Injury Scare at Indie Event"
 slug: "tna-star-provides-health-update-after-injury-scare-at-indie-event"
 description: "Bear Bronson gave Beyond Wrestling fans a scare at the end of the Rent Free event, but fortunately, the situation was not as serious as it initially appeared."
 federation: TNA
