@@ -5701,15 +5701,15 @@
     "publishedAt": 1795357400741,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ان جيه بي دبليو تاناهاشي جام 2 19.11.2026 مترجم",
-    "lastAttempt": 1795360069173,
+    "lastAttempt": 1795360956305,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel"
+      "instagram_story"
     ],
     "reviewPlatforms": [],
     "needsReview": false,
@@ -5722,9 +5722,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ان جيه بي دبليو باوند فور انباوند 20.11.2026 مترجم",
-    "lastAttempt": 1795357451636,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1795360986203,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
