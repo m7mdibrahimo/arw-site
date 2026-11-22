@@ -1,63 +1,68 @@
 {
+ "https://www.fightful.com/wrestling/trick-williams-comments-on-dark-match-with-gunther-the-punishment-to-gunther-was-putting-him-in-the-ring-with-me-knowing-that-he-cant-hang-with-the-big-dog": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-22T20:09:48.397Z"
+ },
  "https://www.fightful.com/wrestling/trick-williams-says-whole-project-with-lil-yachty-is-on-the-way": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T20:02:31.753Z"
+  "at": "2026-11-22T20:09:48.250Z"
  },
  "https://www.fightful.com/wrestling/csw-second-city-showdown-vi-results-11-20": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الثالثة: نزال على بطولة CSW للسيدات، المواجهة السادسة: نزال فرق للسيدات، المواجهة الثامنة: نزال سكرامبل — اكتب الفائز زي المصدر وبالماضي",
   "retry": true,
-  "at": "2026-11-22T20:02:31.613Z"
+  "at": "2026-11-22T20:09:48.088Z"
  },
  "https://www.fightful.com/wrestling/three-unseen-matches-added-to-tna-impact-thanksgiving-special": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T20:01:09.837Z"
+  "at": "2026-11-22T20:08:43.783Z"
  },
  "https://www.fightful.com/wrestling/nhb-because-the-night-a-tribute-to-jeff-cannonball-results-11-20": {
-  "reason": "المراجعة رفضته: آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Marcus Mathers، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Marcus Mathers، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
   "retry": true,
-  "at": "2026-11-22T20:01:09.695Z"
+  "at": "2026-11-22T20:08:43.633Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-appearance-more-added-to-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T19:57:34.697Z"
+  "at": "2026-11-22T20:05:54.495Z"
  },
  "https://www.fightful.com/wrestling/mjf-promises-he-will-get-brody-king-fired-following-daniel-garcia-injury-on-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T19:57:34.456Z"
+  "at": "2026-11-22T20:05:54.223Z"
  },
  "https://www.fightful.com/wrestling/la-knight-asks-fans-to-respect-his-ex-girlfriends-privacy-she-didnt-sign-up-to-be-a-public-figure": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T19:57:34.289Z"
+  "at": "2026-11-22T20:05:54.034Z"
  },
  "https://www.fightful.com/wrestling/charlotte-flair-says-alexa-bliss-episode-will-be-first-when-her-podcast-comes-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T19:57:34.082Z"
+  "at": "2026-11-22T20:05:53.794Z"
  },
  "https://www.fightful.com/wrestling/dawn-marie-says-her-best-paying-year-in-wwe-was-2200000-with-over-120000-in-expenses": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-22T19:57:33.948Z"
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-22T20:05:53.636Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T19:57:07.633Z"
+  "at": "2026-11-22T20:05:14.531Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-night-two-recap": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T19:57:07.552Z"
+  "at": "2026-11-22T20:05:14.442Z"
  },
  "https://www.fightful.com/wrestling/aaa-on-fox-results-11-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T19:57:07.376Z"
+  "at": "2026-11-22T20:05:14.248Z"
  },
  "https://www.fightful.com/wrestling/daniel-garcia-suffers-arm-injury-on-11-21-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-14T14:06:36.624Z"
- },
- "https://www.ringsidenews.com/alexa-bliss-reveals-boy-calling-her-thunder-thighs-led-life-threatening-eating-disorder": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-11-14T13:04:57.633Z"
  }
 }
