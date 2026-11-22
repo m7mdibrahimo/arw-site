@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/zelina-vega-reveals-she-made-first-move-aleister-black-awkward-first-meeting": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-22T17:05:15.379Z"
+ },
  "https://www.fightful.com/wrestling/mjf-promises-he-will-get-brody-king-fired-following-daniel-garcia-injury-on-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -58,11 +63,6 @@
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-22T16:55:07.994Z"
- },
- "https://www.ringsidenews.com/zelina-vega-reveals-she-made-first-move-aleister-black-awkward-first-meeting": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Tony Schiavone",
-  "retry": true,
-  "at": "2026-11-22T16:53:18.153Z"
  },
  "https://www.fightful.com/wrestling/cmll-sabado-de-coliseo-results-11-21-2026-barbaro-cavernario-vs-bandido-vs-ultimo-guerrero-national-trios-title-match-blue-panther-vs-francesco-akira-more": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
