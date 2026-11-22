@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2322555/aew-kenny-omega-njpw-g1-climax-yuya-uemura-ryohei-oiwa": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-22T18:46:23.796Z"
+ },
+ "https://www.wrestlinginc.com/2324377/tna-bde-another-star-reportedly-headed-towards-contract-expiration": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-22T18:45:10.121Z"
+ },
  "https://www.ringsidenews.com/zelina-vega-reveals-she-made-first-move-aleister-black-awkward-first-meeting": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -1988,15 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-14T03:12:36.175Z"
- },
- "https://www.fightful.com/mma/gable-steveson-return-fight-set-for-ufc-336": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-14T02:54:17.332Z"
- },
- "https://www.fightful.com/wrestling/rey-fenix-joins-team-mexico-for-wwe-survivor-series-match": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-14T02:33:42.621Z"
  }
 }
