@@ -64,11 +64,6 @@
   "retry": false,
   "at": "2026-11-22T19:17:45.503Z"
  },
- "https://www.ringsidenews.com/zelina-vega-reveals-she-made-first-move-aleister-black-awkward-first-meeting": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-22T19:11:26.847Z"
- },
  "https://www.wrestlinginc.com/2322555/aew-kenny-omega-njpw-g1-climax-yuya-uemura-ryohei-oiwa": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
