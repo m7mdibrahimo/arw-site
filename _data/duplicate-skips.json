@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/roman-reigns-wins-mens-crown-jewel-championship-at-wwe-crown-jewel/": {
-    "matchedFile": "20261107224732-رومان-رينز-يهزم-سامي-زين-في-الحدث-الرئيسي-لعرض-wwe-crown-jewel-2026.md",
-    "reason": "الخبر الجديد يغطي نفس نزال الحدث الرئيسي في عرض WWE Crown Jewel 2026 ونتيجته التي تم تناولها بالفعل في الخبر المنشور.",
-    "at": "2026-11-07T19:53:03.757Z"
-  },
   "https://www.wrestlinginc.com/2310155/wwe-crown-jewel-2026-roman-reigns-sami-zayn-wins-offers-respect/": {
     "matchedFile": "20261107224732-رومان-رينز-يهزم-سامي-زين-في-الحدث-الرئيسي-لعرض-wwe-crown-jewel-2026.md",
     "reason": "الخبر الجديد يغطي نفس نتيجة نزال الحدث الرئيسي في عرض WWE Crown Jewel 2026 التي تم تناولها بالفعل في الخبر المنشور.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261122033100-نتائج-عرض-aew-collision-21-نوفمبر-2026-أبرز-اللحظات-والمواجهات-الكبرى.md",
     "reason": "الخبر الجديد يعرض نتائج نزالات بطولة AEW Continental Classic في عرض AEW Collision بتاريخ 21 نوفمبر، وهي نفس النتائج التي تم تغطيتها ونشرها بالفعل في تقرير نتائج العرض (الخبر رقم 1).",
     "at": "2026-11-22T03:31:14.094Z"
+  },
+  "https://www.wrestlinginc.com/2324005/aew-collision-november-21-2026-results/": {
+    "matchedFile": "20261122033100-نتائج-عرض-aew-collision-21-نوفمبر-2026-أبرز-اللحظات-والمواجهات-الكبرى.md",
+    "reason": "تقرير نتائج لنفس العرض منشور بالفعل",
+    "at": "2026-11-22T03:38:08.175Z"
   }
 }
