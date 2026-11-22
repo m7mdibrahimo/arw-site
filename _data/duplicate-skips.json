@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/chelsea-green-comments-after-losing-womens-title-at-wwe-crown-jewel-i-didnt-just-lose-my-championship-but-i-lost-a-friend/": {
-    "matchedFile": "20261107215716-تيفاني-ستراتون-تخون-تشيلسي-غرين-وتستخدم-حقيبة-money-in-the-bank-في-عرض-wwe-crown-jewel-2026.md",
-    "reason": "الخبر الجديد عبارة عن تصريحات تشيلسي غرين حول نفس واقعة خيانة تيفاني ستراتون لها في عرض Crown Jewel، وهي واقعة مغطاة بالفعل في الخبر رقم 1.",
-    "at": "2026-11-07T20:13:55.199Z"
-  },
   "https://www.fightful.com/wrestling/tiffany-stratton-speaks-about-cashing-in-to-become-wwe-womens-champion/": {
     "matchedFile": "20261107215716-تيفاني-ستراتون-تخون-تشيلسي-غرين-وتستخدم-حقيبة-money-in-the-bank-في-عرض-wwe-crown-jewel-2026.md",
     "reason": "الخبر الجديد يغطي نفس واقعة خيانة تيفاني ستراتون لتشيلسي غرين في عرض Crown Jewel 2026 واستخدامها للحقيبة، وتصريحاتها تعتبر تفصيلاً إضافياً لنفس الحدث المنشور مسبقاً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261122160000-شارلوت-فلير-تعلق-على-ميم-استخدام-الحقيبة-وتعتبر-الجملة-رائعة.md",
     "reason": "الخبر الجديد يغطي نفس مقابلة بودكاست Ring the Belle وتصريحات شارلوت فلير حول ميم استخدام الحقيبة والقمصان الرسمية المذكورة في الخبر رقم 0",
     "at": "2026-11-22T15:01:44.496Z"
+  },
+  "https://www.ringsidenews.com/charlotte-flair-names-three-wwe-stars-who-could-make-massive-royal-rumble-returns/": {
+    "matchedFile": "20261122163000-شارلوت-فلير-لا-أستطيع-تخيل-ردة-فعل-الجماهير-إذا-عادت-بيانكا-بيلير-أو-نايومي-في-عرض-royal-rumble-2027.md",
+    "reason": "الخبر الجديد يعيد سرد نفس التصريحات التي أدلت بها شارلوت فلير في بودكاست Ring the Belle بخصوص توقعاتها لعودة النجمات في عرض Royal Rumble، وهي نفس المعلومات الواردة في الخبر رقم 0.",
+    "at": "2026-11-22T15:05:07.247Z"
   }
 }
