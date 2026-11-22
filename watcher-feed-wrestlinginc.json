@@ -1,5 +1,25 @@
 [
   {
+    "id": 1765444251,
+    "link": "https://www.wrestlinginc.com/2324298/aew-continental-classic-round-up-11-21-collision/",
+    "date": "Sun, 22 Nov 2026 15:30:22 +0000",
+    "date_gmt": "2026-11-22T15:30:22.000Z",
+    "title": {
+      "rendered": "AEW Continental Classic 2026 Round Up, 11/21 Collision"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-continental-classic-2026-round-up-1121-collision/l-intro-1795361352.jpg"
+  },
+  {
+    "id": 3513162413,
+    "link": "https://www.wrestlinginc.com/2321358/wwe-zoey-serrano-pure-fusion-collective-faction-hindered-weak-name/",
+    "date": "Sun, 22 Nov 2026 15:30:00 +0000",
+    "date_gmt": "2026-11-22T15:30:00.000Z",
+    "title": {
+      "rendered": "Zoey Serrano Believes WWE Faction Was Hindered By Its Weak Name"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/zoey-serrano-believes-wwe-faction-was-hindered-by-its-weak-name/l-intro-1795049092.jpg"
+  },
+  {
     "id": 3265972541,
     "link": "https://www.wrestlinginc.com/2319808/wwe-damian-priest-r-truth-explains-frustrated-partnership/",
     "date": "Sun, 22 Nov 2026 14:00:00 +0000",
@@ -178,25 +198,5 @@
       "rendered": "AEW's Tony Schiavone Thinks WWE Star Is 'Pretty Cool'"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-tony-schiavone-thinks-wwe-star-is-pretty-cool/l-intro-1794862018.jpg"
-  },
-  {
-    "id": 3922817244,
-    "link": "https://www.wrestlinginc.com/2324007/wwe-smackdown-november-20-2026-hated-loved-opinion-review/",
-    "date": "Sat, 21 Nov 2026 05:21:37 +0000",
-    "date_gmt": "2026-11-21T05:21:37.000Z",
-    "title": {
-      "rendered": "WWE SmackDown 11/20/2026: 3 Things We Hated And 3 Things We Loved"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-11202026-3-things-we-hated-and-3-things-we-loved/l-intro-1795238358.jpg"
-  },
-  {
-    "id": 1488017098,
-    "link": "https://www.wrestlinginc.com/2323995/wwe-smackdown-kevin-owens-gunther-main-event-sami-zayn/",
-    "date": "Sat, 21 Nov 2026 03:29:01 +0000",
-    "date_gmt": "2026-11-21T03:29:01.000Z",
-    "title": {
-      "rendered": "Kevin Owens Defeats GUNTHER In WWE SmackDown Main Event, Gets Leveled By Sami Zayn"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/kevin-owens-defeats-gunther-in-wwe-smackdown-main-event-gets-leveled-by-sami-zayn/l-intro-1795231594.jpg"
   }
 ]
