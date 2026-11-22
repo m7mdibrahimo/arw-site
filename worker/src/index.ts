@@ -36,6 +36,7 @@ import { handleFastLane, fastLaneCleanup } from "./fast-lane";
 import { releaseEarly } from "./early";
 import { syncOk } from "./okru";
 import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRetainVideo, facebookReelState } from "./video-publishing";
+import { runBudgetCheck } from "./budget";
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
 import { recordView, pruneAnalytics } from "./analytics";
@@ -113,6 +114,8 @@ export interface Env {
   BUFFER_TIKTOK_CHANNEL_ID?: string;
 
   // KV binding
+  // the account's usage, read hourly for the 5-dollar ceiling (worker/src/budget.ts; token «arw-site-bot usage read»)
+  CF_USAGE_TOKEN?: string;
   PUSH_KV: KVNamespace;
   // Mail to the members (worker/src/members.ts): a Resend key, set by the owner in Cloudflare (Variables and Secrets).
   // Without it, sign-up works the same and a recovery code is the way back into an account.
@@ -4664,6 +4667,8 @@ export default {
       runFollowNotify(env as any, _controller.scheduledTime).then(() => runFollowPush(env as any, _controller.scheduledTime)).catch(() => {}),
       // a subscription that just ended drops its look in the community rooms too
       minute % 10 === 0 ? chatExpirySweep(env as any, _controller.scheduledTime).catch(() => {}) : Promise.resolve(),
+      // the 5-dollar ceiling: hourly usage against what the plan includes, the picture brake, the alert (worker/src/budget.ts)
+      minute === 5 ? runBudgetCheck(env as any, _controller.scheduledTime).catch((e: any) => console.log("[budget]", e?.message || e)) : Promise.resolve(),
       // The site's own watchdog: pages, bots, freshness and platforms (INCIDENTS #158)
       runSiteHealthCheck(env, minute, (it: any) => sanitizeKey(normalizeArticleUrl(env.SITE_ORIGIN + (it.url || ""))), () => githubReadState(env).then(r => r.state),
         async () => { const b = await instagramBudget(env); return (p: unknown) => instagramAllowedFor(p, b.used, b.cap); },

@@ -9,6 +9,8 @@
 // («site_health»), show in the panel's bell, are served (titles only) at /health, and a new
 // problem sends the owner one Telegram message when ADMIN_TELEGRAM_CHAT_ID is set.
 
+import { BUDGET_KEY, budgetProblems } from "./budget";
+
 export interface HealthProblem { key: string; code: string; title: string; detail: string; since: number }
 export interface HealthState { checkedAt: number; problems: HealthProblem[]; pages?: Record<string, { status: number; ms: number }>; told?: string[] }
 
@@ -293,6 +295,9 @@ export async function runSiteHealthCheck(env: HealthEnv, minute: number, keyOf: 
       problems = mergeProblems(problems, lag ? [{ key: "deploy", code: "deploy_stale", title: "الموقع واقف على نسخة قديمة — بناء Cloudflare بيفشل أو متعطل", detail: `آخر نسخة ظاهرة أقدم من آخر تعديل بـ ${Math.round(lag / 60000)} دقيقة` }] : [], ["deploy_stale"], now);
       const lastAt = newest ? Date.parse(newest.published_at || newest.date) || 0 : 0;
       const quiet = lastAt && now - lastAt > 6 * 3600_000;
+      // the 5-dollar ceiling (worker/src/budget.ts, INCIDENTS #1477)
+      const budget = await env.PUSH_KV.get(BUDGET_KEY).then(t => (t ? JSON.parse(t) : null)).catch(() => null);
+      problems = mergeProblems(problems, budgetProblems(budget, now), ["budget_high"], now);
       problems = mergeProblems(problems, quiet ? [{ key: "stale", code: "news_stale", title: "مفيش خبر جديد نزل من أكتر من ٦ ساعات", detail: `آخر خبر: ${String(newest?.title || "").slice(0, 100)}` }] : [], ["news_stale"], now);
       const state = await readState().catch(() => null);
       // the owner stopped social posting for now (KV social:paused): nothing is «stuck»; and once it's back, what came out
