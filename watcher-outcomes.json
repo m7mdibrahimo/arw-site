@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/trick-williams-unloads-damian-priest-saying-he-doesnt-deserve-world-title-shot": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-22T07:26:58.017Z"
+ },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -48,11 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-22T07:21:55.848Z"
- },
- "https://www.ringsidenews.com/trick-williams-unloads-damian-priest-saying-he-doesnt-deserve-world-title-shot": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-22T07:06:47.943Z"
  },
  "https://www.wrestlinginc.com/2321123/aew-bobby-lashley-isnt-considering-retirement-lot-left-tank": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى («تجعلانه») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
