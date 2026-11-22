@@ -5763,15 +5763,47 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ايه ايه ايه 21.11.2026 مترجم",
-    "lastAttempt": 1795374805946,
+    "lastAttempt": 1795375607611,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel"
+      "instagram_reel",
+      "instagram_story"
     ],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
+  },
+  "20261122211059-mlw-fusion-21-11-2026": {
+    "publishedAt": 1795375636931,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ام ال دبليو فيوجن 21.11.2026 مترجم",
+    "lastAttempt": 1795375677037,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261122211404-nwa-powerrr-21-11-2026": {
+    "publishedAt": 1795375704641,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ان دبليو ايه باور 21.11.2026 مترجم",
+    "lastAttempt": 1795375716424,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
   }
 }
