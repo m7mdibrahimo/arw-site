@@ -1,6 +1,6 @@
 ---
 federation: WWE
-title: "قناة ESPN2 تعرض عرض خاص من WWE Survivor Series: WarGames في عيد الشكر"
+title: "قناة ESPN2 تعرض عرضا خاصا من WWE Survivor Series: WarGames في عيد الشكر"
 date: 2026-11-23T01:13:18.000+03:00
 published_at: 2026-11-22T22:14:01.868Z
 source_id: 340399
@@ -20,6 +20,7 @@ tags:
   - بيكي لينش
 image: /content/images/zabztm12ycceg7r2.jpg
 layout: post-layout.njk
+permalink: "/news/قناة-espn2-تعرض-عرض-خاص-من-wwe-survivor-series-wargames-في-عيد-الشكر/index.html"
 ---
 تستعد شبكة ESPN2 لبث محتوى خاص تابع لاتحاد WWE، حيث أدرج جدول القناة عرضا خاصا لحدث WWE Survivor Series: WarGames يوم الخميس 26 نوفمبر في تمام الساعة الخامسة والنصف مساء بتوقيت شرق أمريكا، ومن المقرر أن يستمر العرض لمدة 30 دقيقة، بينما سيبث الحدث كاملا عبر تطبيق ESPN Unlimited.
 
