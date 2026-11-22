@@ -205,7 +205,8 @@ export default {
   async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext) {
     // hourly: a few big stored pictures made small; once a day (03:17 UTC): reels older than 30 days removed
     // (status/compress.json: when the hourly job last ran and what it did — read by the monitoring round)
-    ctx.waitUntil(compressStored(env).then(async (n) => {
+    // while the usage brake holds (INCIDENTS #1477/#1478) the pictures aren't recompressed: that is CPU time
+    ctx.waitUntil(resizeBraked(env).then((braked) => braked ? 0 : compressStored(env)).then(async (n) => {
       if (n) console.log(`[media] ${n} stored pictures made smaller`);
       await env.MEDIA?.put("status/compress.json", JSON.stringify({ at: new Date().toISOString(), done: n }), { httpMetadata: { contentType: "application/json" } });
     }).catch((e) => console.log(`[media] hourly compress failed: ${e?.stack || e}`)));
