@@ -2830,6 +2830,17 @@ export function mainWrestlerMissing(story: string, source: string, glossary: Rec
   return missing;
 }
 
+// Arabic form → the words the English source must have for it.
+export const FAMOUS_TEAMS_AR: [string, string][] = [
+  ["(?:ذا\\s+)?جادجمنت\\s+داي", "judgment day"],
+  ["(?:ذا\\s+)?نيو\\s+داي", "new day"],
+  ["وار\\s+رايدرز", "war raiders"],
+  ["(?:الإخوة|الأخوة)\\s+فاغنر", "wagner"],
+  ["(?:ذا\\s+)?هيرت\\s+سينديكيت", "hurt syndicate"],
+  ["(?:ذا\\s+)?يونغ\\s+باكس", "young bucks"],
+  ["(?:ذا\\s+)?وايت\\s+سيكس", "wyatt sicks"],
+];
+
 export function wrestlerNotInSource(body: string, source: string, glossary: Record<string, string>): string[] {
   const text = String(body || "").replace(/https?:\/\/\S+/g, " ");
   const src = String(source || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
@@ -2843,6 +2854,13 @@ export function wrestlerNotInSource(body: string, source: string, glossary: Reco
     if (!ar || bare.includes(" ") || ar.replace(/^ذا\s+/, "").length < 5) continue;
     if (src.includes(bare.toLowerCase())) continue;
     if (new RegExp(`(?<![ء-ي])(?:[وبلفك])?${ar.replace(/^ذا\s+/, "")}(?![ء-ي])`).test(text)) found.push(name);
+  }
+  // A famous team the source never names, written for a small promotion's team: Fightful's «King Bees (Danni Bee &
+  // Charity King)» came out «ذا جادجمنت داي (داني بي وتشاريتي كينغ)» in a Marvelous Pro report (INCIDENTS #1472).
+  // These names are two words, so the glossary checks above and below skip them.
+  for (const [ar, en] of FAMOUS_TEAMS_AR) {
+    if (src.includes(en)) continue;
+    if (new RegExp(`(?<![ء-ي])(?:[وبلفك])?${ar}(?![ء-ي])`).test(text)) found.push(en.replace(/\b\w/g, c => c.toUpperCase()));
   }
   // A one-word «The X» ring name the source never names: «ذا أندرتيكر» written for The Sandman in a BCW story
   // (INCIDENTS #1364). The two-word rule below skips «The Undertaker» (one word of 4+ letters), so it counts here,

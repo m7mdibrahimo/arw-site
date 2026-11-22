@@ -1,6 +1,6 @@
 ---
 federation: INDIE
-title: "نتائج عرض Marvelous Pro Wrestling (20 نوفمبر 2026): ميو مومونو تهزم ميكو ألانا"
+title: "نتائج عرض Marvelous Pro Wrestling (21 نوفمبر 2026): ميو مومونو تهزم ميكو ألانا"
 date: 2026-11-22T07:30:00.000+03:00
 published_at: 2026-11-22T04:31:38.480Z
 source_id: 340264
@@ -17,6 +17,7 @@ tags:
   - Marvelous Pro Wrestling
 image: /content/images/67oktdhhqyh49e0j.jpg
 layout: post-layout.njk
+permalink: "/news/نتائج-عرض-marvelous-pro-wrestling-20-نوفمبر-2026-ميو-مومونو-تهزم-ميكو-ألانا/index.html"
 ---
 أقام اتحاد New Texas Pro Wrestling بالتعاون مع اتحاد West Coast Pro Wrestling عرض West Coast & New Texas Present Marvelous Pro Wrestling يوم 21 نوفمبر في صالة Pinballz Lake Creek في مدينة أوستن بولاية تكساس، وتم بث العرض عبر منصة YouTube.
 
@@ -28,15 +29,15 @@ layout: post-layout.njk
 
 **المواجهة الثانية: نزال فردي**
 
-شهدت المواجهة تفوق سورا أيامي على كاليينتيتا ماجينتا.
+شهدت المواجهة تفوق سورا أيامي على كاليينتيتا.
 
 🏆 **الفائزة:** سورا أيامي
 
 **المواجهة الثالثة: نزال فرق**
 
-نجح ثنائي ماري وريكو في الانتصار على فريق ذا جادجمنت داي (داني بي وتشاريتي كينغ).
+نجح فريق ماجينتا (ماريا وريكو) في الانتصار على فريق كينغ بيز (داني بي وتشاريتي كينغ).
 
-🏆 **الفائزات:** ماري وريكو
+🏆 **الفائزات:** ماريا وريكو
 
 **المواجهة الرابعة: نزال فرق سداسي**
 

@@ -2820,10 +2820,15 @@ export function duplicateTitleDateSuffix(source: string, body: string, iso: stri
   return `${Number(iso.slice(8, 10))} ${AR_MONTH_NAMES[Number(iso.slice(5, 7)) - 1]}`;
 }
 
-export function alignTitleDateToSource(title: string, source: string): string {
+export function alignTitleDateToSource(title: string, source: string, body = ""): string {
   const md = sourceShowMonthDay(source);
   if (!md) return title;
-  const { m, d } = md;
+  let { m, d } = md;
+  // Fightful's headline said «(11/20)» and its text «November 21»: the story's body followed the text and the title was
+  // moved to 20, so title and body disagreed (Marvelous Pro report, INCIDENTS #1472). When the body gives one other day of
+  // that month, one day away, and never the headline's day, the title follows the body.
+  const bodyDays = [...String(body || "").matchAll(new RegExp(`(?<!\\d)(\\d{1,2})\\s+${AR_MONTHS[m]}`, "g"))].map(x => +x[1]);
+  if (bodyDays.length && !bodyDays.includes(d) && new Set(bodyDays).size === 1 && Math.abs(bodyDays[0] - d) === 1) d = bodyDays[0];
   return String(title || "").replace(new RegExp(`\\((\\d{1,2}|أول)\\s+(${AR_MONTHS.join("|")})\\s+(\\d{4})\\)`), (_all, _d, _mo, y) => `(${d} ${AR_MONTHS[m!]} ${y})`);
 }
 
@@ -3554,6 +3559,7 @@ ${isListOrReviewArticle(originalTitle) ? `   - **مقال قائمة/تقييم 
          - سيث رولينز (Seth Rollins - ممنوع منعاً باتاً كتابة ستيف رولينز)، سولو سيكوا (Solo Sikoa)، ار تروث (ممنوع بتاتاً R-Truth)، سي ام بانك (CM Punk)، ال ايه نايت (LA Knight)، ام جيه اف (MJF)، ام في بي (MVP)، كودي رودز، رومان رينز، جون سينا، داميان بريست، درو ماكنتاير، ليف مورغان، ستيفاني فاكير، دومينيك ميستيريو، ري ميستيريو، اوموس، برايان كيج.
     - **قاعدة أسماء الفرق والعصابات (حظر التعريب الصوتي الشاذ والكلمات الغريبة)**:
        - اكتب الفرق المعروفة بالعربية دائماً: فريق الإخوة فاغنر، فريق وار رايدرز، فريق ذا بلودلاين، فريق ذا جادجمنت داي، فريق ذا نيو داي، فريق بيروس ديل مال، فريق غريزلد يونغ فيترانز.
+       - **هذه القائمة للفرق المذكورة في المصدر فقط**: فريق غير معروف في المصدر (مثل King Bees) يُكتب باسمه كما هو أو بأسماء أعضائه، وممنوع منعاً باتاً استبداله باسم فريق مشهور من القائمة (King Bees ❌ "ذا جادجمنت داي"). واسم الفريق قبل القوس في سطر النتيجة (Magenta (Maria & RIKO)) هو اسم هذا الفريق، وليس جزءاً من اسم المصارع في السطر السابق.
        - **ممنوع بتاتاً كتابة كلمات معربة صوتياً تبدو كأنها كلام هندي أو غير مفهوم** (مثل: ❌ "ديماند" أو ❌ "نيوليف").
        - اكتب دائماً أسماء النجوم والمصارعين صراحة وبالعربية: "الثلاثي ريكوشيه وبيشوب كاون وتوا ليونا"، و"سويرف ستريكلاند وكوفي واوستن كريد"، وإذا لزم ذكر اسم الفريق اكتبه بأسلوب صحفي راقٍ ومفهوم: (فريق The Demand / فريق New Level) مقروناً دائماً بأسماء أعضائه، دون نحت كلمات عربية مشوهة.
     - **قاعدة أسماء الألقاب والبطولات بالعربية الخالصة ودون تكرار اسم الاتحاد (Championship Titles)**:
@@ -5060,7 +5066,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   if (!isShowResultsArticle(rawTitle, plainText)) rewritten.title = tonightInTitle(rewritten.title);
   rewritten.title = dropTimezoneFromTitle(rewritten.title);
   // A results report's title date is the show's (US) date from the source, never today's UTC date
-  rewritten.title = alignTitleDateToSource(rewritten.title, `${postUrl} ${rawTitle}`);
+  rewritten.title = alignTitleDateToSource(rewritten.title, `${postUrl} ${rawTitle}`, draft.body);
   finalBody = draft.body;
   rewritten.tags = draft.tags;
 

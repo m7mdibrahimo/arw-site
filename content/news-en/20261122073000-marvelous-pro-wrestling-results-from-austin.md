@@ -1,7 +1,7 @@
 ---
 title: "Marvelous Pro Wrestling Results From Austin"
 slug: "marvelous-pro-wrestling-results-from-austin"
-description: "New Texas Pro Wrestling and West Coast Pro Wrestling joined forces to produce a joint show on November 21 originating from Pinballz Lake Creek located."
+description: "New Texas Pro Wrestling and West Coast Pro Wrestling joined forces to produce a joint show on November 21 originating from Pinballz Lake Creek in Austin, Texas."
 federation: INDIE
 date: 2026-11-22T04:30:00.000Z
 created_at: 2026-11-22T04:31:52.847Z
