@@ -1,0 +1,47 @@
+name: Bot Deploy
+
+# ═══════════════════════════════════════════════════════
+#  بينشر الـWorker «arw-site-bot» من مجلد worker/ لما يتغير على main. قبل كده Cloudflare كان بيعمله (Workers Builds)،
+#  ودقايق البناء هناك بتتحسب فلوس فوق الـ٦٠٠٠ في الشهر؛ هنا على GitHub ببلاش، فدقايق البناء على Cloudflare بقت صفر
+#  (المالك: خطة الـ٥ دولار ومن غير ولا سنت زيادة، الحادثة ١٤٧٧).
+# ═══════════════════════════════════════════════════════
+
+on:
+  push:
+    branches: [main]
+    paths: ['worker/**']
+  workflow_dispatch:
+
+concurrency:
+  group: bot-deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: 'Bot Deploy: arw-site-bot'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: worker/package-lock.json
+      - name: Install
+        working-directory: worker
+        run: npm ci --no-audit --no-fund
+      - name: Deploy arw-site-bot
+        working-directory: worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: c6e90e83557c9ac6cb996a9f6c21a016
+        run: |
+          for TRY in 1 2 3; do
+            npx wrangler deploy && exit 0
+            echo "deploy failed (try $TRY/3)"; sleep 20
+          done
+          exit 1
