@@ -2609,6 +2609,12 @@ export function autoFix(text: string): string {
     // "NXTبطولة" / "عرضMLP" → add the missing space
     .replace(new RegExp(`([A-Za-z])([${AR}])`, "g"), "$1 $2")
     .replace(new RegExp(`([${AR}]{2})([A-Za-z])`, "g"), "$1 $2")
+    // «ك مصارع» → «كمصارع»: the preposition «ك» is always joined to its word; a lone «ك» before an
+    // Arabic word is debris (Bully Ray story, INCIDENTS #1488)
+    .replace(new RegExp(`(^|[\\s(«">])ك\\s+(?=[${AR}])`, "gm"), "$1ك")
+    // «وأوضح بطولة العالم للوزن الثقيل السابق»: a speaking verb whose subject is «بطولة … السابق/الحالي»
+    // means the champion — «بطل» (Bully Ray story, INCIDENTS #1488)
+    .replace(new RegExp(`(?<![${AR}])([وف]?(?:قال|أوضح|أكد|أشار|صرح|اعترف|أقر|تابع|كشف))\\s+بطولة(?=(?:\\s+[^\\s.،]+){1,6}?\\s+(?:السابق|الحالي)(?![${AR}]))`, "g"), "$1 بطل")
     // «> كلام…»: a blockquote that lost its opening « (INCIDENTS #500)
     .replace(/^(>[ \t]*)([^«»\n]+»)/gm, "$1«$2")
     // "ل زينا" → "لـزينا", "ل *NXT" → "لـ *NXT", "و سامي" → "وسامي"

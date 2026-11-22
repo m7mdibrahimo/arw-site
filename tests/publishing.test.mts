@@ -5713,3 +5713,10 @@ test('a yearly program whose newest show has its own page keeps the year out of 
   const desc = tpl.match(/pageDesc: "([^\n]*)/)![1];
   assert.match(desc, /\{% if not lp\.prog\.latest\.url and not \(lp\.prog\.name \| string\)\.endsWith/);
 });
+
+test('autoFix joins a lone «ك» and turns a speaking «بطولة … السابق» into «بطل» (INCIDENTS #1488)', async () => {
+  const { autoFix } = await import('../scripts/news-qa');
+  assert.equal(autoFix('> "ك مصارع، كلما سألت نفسي'), '> "كمصارع، كلما سألت نفسي');
+  assert.equal(autoFix('وأوضح بطولة العالم للوزن الثقيل السابق أنه'), 'وأوضح بطل العالم للوزن الثقيل السابق أنه');
+  assert.equal(autoFix('أضاف بطولة جديدة إلى رصيده'), 'أضاف بطولة جديدة إلى رصيده');
+});
