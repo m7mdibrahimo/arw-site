@@ -23820,16 +23820,16 @@
     "renderedAt": 1795357368660
   },
   {
-    "videoUrl": "/videos/reel-20261122164638-aew-collision-21-11-2026.mp4",
-    "filename": "reel-20261122164638-aew-collision-21-11-2026.mp4",
-    "title": "عرض كوليجن 21.11.2026 مترجم",
-    "secondaryTitle": "AEW Collision 21.11.2026",
-    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261122164638-aew-collision-21-11-2026",
+    "videoUrl": "/videos/reel-20261122165003-ufc-fight-night-294-prochazka-.mp4",
+    "filename": "reel-20261122165003-ufc-fight-night-294-prochazka-.mp4",
+    "title": "عرض يو اف سي فايت نايت 21.11.2026 مترجم",
+    "secondaryTitle": "UFC Fight Night 294: Prochazka vs Stirling",
+    "description": "عرض يو اف سي فايت نايت مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261122165003-ufc-fight-night-294-prochazka-",
     "kind": "show",
-    "slug": "20261122164638-aew-collision-21-11-2026",
-    "image": "/content/images/kqo9edpay4kofy8j.jpg",
-    "renderedAt": 1795359084077
+    "slug": "20261122165003-ufc-fight-night-294-prochazka-",
+    "image": "/content/images/36lraekgxx3474i3.jpg",
+    "renderedAt": 1795359458754
   },
   {
     "videoUrl": "/videos/reel-20261024154929-aew-dynamite-21-10-2026.mp4",
@@ -23841,6 +23841,18 @@
     "kind": "show",
     "slug": "20261024154929-aew-dynamite-21-10-2026",
     "image": "/content/images/zhpj9w8wx1hmw8qf.jpg",
-    "renderedAt": 1795359188021
+    "renderedAt": 1795359561742
+  },
+  {
+    "videoUrl": "/videos/reel-20261122164638-aew-collision-21-11-2026.mp4",
+    "filename": "reel-20261122164638-aew-collision-21-11-2026.mp4",
+    "title": "عرض كوليجن 21.11.2026 مترجم",
+    "secondaryTitle": "AEW Collision 21.11.2026",
+    "description": "عرض كوليجن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261122164638-aew-collision-21-11-2026",
+    "kind": "show",
+    "slug": "20261122164638-aew-collision-21-11-2026",
+    "image": "/content/images/kqo9edpay4kofy8j.jpg",
+    "renderedAt": 1795359660894
   }
 ]
