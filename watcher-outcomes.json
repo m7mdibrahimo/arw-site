@@ -2,72 +2,72 @@
  "https://www.fightful.com/wrestling/trick-williams-says-whole-project-with-lil-yachty-is-on-the-way": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T19:43:09.958Z"
+  "at": "2026-11-22T19:50:00.810Z"
  },
  "https://www.fightful.com/wrestling/csw-second-city-showdown-vi-results-11-20": {
-  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Aalyah Gutierrez، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Aalyah Mysterio، في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
   "retry": true,
-  "at": "2026-11-22T19:43:09.856Z"
+  "at": "2026-11-22T19:50:00.634Z"
  },
  "https://www.fightful.com/wrestling/raj-dhesi-says-becoming-a-commentator-is-a-goal-for-him": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-22T19:42:45.586Z"
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-22T19:48:34.360Z"
  },
  "https://www.fightful.com/wrestling/three-unseen-matches-added-to-tna-impact-thanksgiving-special": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T19:42:17.247Z"
+  "at": "2026-11-22T19:47:24.911Z"
  },
  "https://www.fightful.com/wrestling/nhb-because-the-night-a-tribute-to-jeff-cannonball-results-11-20": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Marcus Mathers، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
   "retry": true,
-  "at": "2026-11-22T19:42:17.142Z"
+  "at": "2026-11-22T19:47:24.734Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-appearance-more-added-to-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T19:40:57.960Z"
+  "at": "2026-11-22T19:46:12.768Z"
  },
  "https://www.fightful.com/wrestling/mjf-promises-he-will-get-brody-king-fired-following-daniel-garcia-injury-on-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T19:40:57.756Z"
+  "at": "2026-11-22T19:46:12.457Z"
  },
  "https://www.fightful.com/wrestling/la-knight-asks-fans-to-respect-his-ex-girlfriends-privacy-she-didnt-sign-up-to-be-a-public-figure": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T19:40:57.623Z"
+  "at": "2026-11-22T19:46:12.239Z"
  },
  "https://www.fightful.com/wrestling/charlotte-flair-says-alexa-bliss-episode-will-be-first-when-her-podcast-comes-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T19:40:57.456Z"
+  "at": "2026-11-22T19:46:11.966Z"
  },
  "https://www.fightful.com/wrestling/dawn-marie-says-her-best-paying-year-in-wwe-was-2200000-with-over-120000-in-expenses": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-22T19:40:57.348Z"
+  "at": "2026-11-22T19:46:11.793Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T19:40:35.617Z"
+  "at": "2026-11-22T19:45:34.521Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-night-two-recap": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T19:40:35.552Z"
+  "at": "2026-11-22T19:45:34.417Z"
  },
  "https://www.fightful.com/wrestling/aaa-on-fox-results-11-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T19:40:35.423Z"
+  "at": "2026-11-22T19:45:34.202Z"
  },
  "https://www.fightful.com/wrestling/daniel-garcia-suffers-arm-injury-on-11-21-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T19:40:35.259Z"
+  "at": "2026-11-22T19:45:33.945Z"
  },
  "https://www.ringsidenews.com/vince-mcmahon-accuser-janel-grant-warns-about-fake-social-media-accounts-scammers": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
