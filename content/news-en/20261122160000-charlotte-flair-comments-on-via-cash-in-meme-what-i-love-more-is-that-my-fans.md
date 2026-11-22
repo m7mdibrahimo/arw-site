@@ -1,5 +1,5 @@
 ---
-title: "Charlotte Flair Comments on 'Via Cash in' Meme: What I Love More Is That My Fans That Remembered That. I Thought the Line Was Great"
+title: "Charlotte Flair Comments on 'Via Cash In' Meme"
 slug: "charlotte-flair-comments-on-via-cash-in-meme-what-i-love-more-is-that-my-fans"
 description: "Charlotte Flair recently talked about the popular \"via cash in\" meme."
 federation: WWE

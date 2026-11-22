@@ -656,6 +656,20 @@ const ALWAYS_CAPITAL = new Set(["am", "is", "are", "was", "were", "be", "been", 
 /** «the» is part of these names, so a headline keeps it capital: «With the Rock» → «With The Rock» (INCIDENTS #551) */
 const THE_NAMES = /\bthe (Rock|Miz|Undertaker|Bloodline|Usos|Judgment Day|Street Profits|Young Bucks|Elite|Acclaimed|Shield|946|Hardys|Righteous|Wyatt Family|Brood)\b/g;
 /** One consistent Title Case: small words lowercase (first, last and after a colon stay capital); a word with its own capitals (AEW, McIntyre, iMPACT) is never touched (INCIDENTS #443) */
+/** A headline that is the source's whole pull quote after a colon («…Meme: What I Love More Is That My Fans That Remembered
+ *  That. I Thought the Line Was Great», 106 letters, INCIDENTS #1479) keeps only the part before the colon. Only for a title
+ *  over 90 letters whose tail reads like a quote (a sentence stop inside it, a first-person word, or an opening quote mark). */
+export function dropQuoteTailFromTitle(title: string): string {
+  const t = String(title || "").trim();
+  if (t.length <= 90) return t;
+  const m = t.match(/^(.{25,}?):\s+(.+)$/);
+  if (!m) return t;
+  const tail = m[2];
+  if (/\b(?:Results|Spoilers?|Preview|Lineup|Card)\b/i.test(m[1])) return t; // a results headline's match list is its content
+  if (!(/[a-z]{3,}[.!?]\s+\S/.test(tail) || /\b(?:I|I'm|I've|My|We|We're|Our|Me)\b/.test(tail) || /^["'“‘]/.test(tail))) return t;
+  return m[1].trim();
+}
+
 export function normalizeEnglishTitle(title: string): string {
   // a contraction glued to the next word: «He'sStill» → «He's Still» (INCIDENTS #535)
   const words = String(title).trim().replace(/([A-Za-z]['’](?:s|t|re|ve|ll|d|m))(?=[A-Z][a-z])/g, "$1 ").split(/\s+/);
@@ -931,7 +945,7 @@ export function saveEnglishEdition(e: EnglishEdition, i: EnglishInput, dir = NEW
   // literal «\"» is a plain quote mark (the FAA ground-stop story showed «\"due to extraordinary circumstances…\"»
   // on its page, INCIDENTS #1284)
   // the broken-sentence fix is for the whole story only: a single phrase handed to fixEnglishNames keeps its letter
-  e = { ...e, title: fixEnglishNames(normalizeEnglishTitle(unescapeQuotes(e.title))), body: enYearNotInSource(closeOpenQuoteLines(fixLineStarts(fixEnglishNames(unescapeQuotes(e.body).replace(/[ \t]*\\n/g, "\n")))), i.sourceText, i.date) };
+  e = { ...e, title: fixEnglishNames(normalizeEnglishTitle(dropQuoteTailFromTitle(unescapeQuotes(e.title)))), body: enYearNotInSource(closeOpenQuoteLines(fixLineStarts(fixEnglishNames(unescapeQuotes(e.body).replace(/[ \t]*\\n/g, "\n")))), i.sourceText, i.date) };
   e.title = restoreTitleAcronyms(e.title, e.body);
   e.title = restoreTitleTheNames(e.title, e.body);
   fs.mkdirSync(dir, { recursive: true });
