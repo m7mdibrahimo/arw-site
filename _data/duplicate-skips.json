@@ -1,14 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/tiffany-stratton-speaks-about-cashing-in-to-become-wwe-womens-champion/": {
-    "matchedFile": "20261107215716-تيفاني-ستراتون-تخون-تشيلسي-غرين-وتستخدم-حقيبة-money-in-the-bank-في-عرض-wwe-crown-jewel-2026.md",
-    "reason": "الخبر الجديد يغطي نفس واقعة خيانة تيفاني ستراتون لتشيلسي غرين في عرض Crown Jewel 2026 واستخدامها للحقيبة، وتصريحاتها تعتبر تفصيلاً إضافياً لنفس الحدث المنشور مسبقاً.",
-    "at": "2026-11-07T20:26:04.480Z"
-  },
-  "https://www.fightful.com/wrestling/penta-and-jevon-evans-speak-after-winning-world-tag-team-titles-at-wwe-crown-jewel/": {
-    "matchedFile": "20261107212329-فوز-بينتا-وجيفون-إيفانز-ببطولة-wwe-العالمية-للفرق-بمساعدة-أوبا-فيمي-في-عرض-wwe-crown-jewel.md",
-    "reason": "الخبر الجديد يعيد سرد تفاصيل فوز بينتا وجيفون إيفانز ببطولة الفرق في عرض Crown Jewel، وهي نفس الواقعة المغطاة في الخبر رقم 0، وتصريحاتهم بعد العرض تعتبر تفاصيل إضافية لنفس الحدث ولا تشكل تطوراً جوهرياً مستقلاً.",
-    "at": "2026-11-07T20:28:25.065Z"
-  },
   "https://www.fightful.com/wrestling/cody-rhodes-proposes-that-he-lead-team-usa-at-wwe-survivor-series/": {
     "matchedFile": "20261107231645-كودي-رودز-يرشح-نفسه-لقيادة-فريق-أمريكا-في-عرض-wwe-survivor-series.md",
     "reason": "الخبر الجديد يتناول نفس تصريح كودي رودز ورغبته في قيادة فريق أمريكا ضد فريق ري ميستيريو في عرض Survivor Series، وهو نفس الحدث المغطى في الخبر المنشور.",
@@ -2498,5 +2488,15 @@
     "matchedFile": "20261122163000-شارلوت-فلير-لا-أستطيع-تخيل-ردة-فعل-الجماهير-إذا-عادت-بيانكا-بيلير-أو-نايومي-في-عرض-royal-rumble-2027.md",
     "reason": "الخبر الجديد يعيد سرد نفس التصريحات التي أدلت بها شارلوت فلير في بودكاست Ring the Belle بخصوص توقعاتها لعودة النجمات في عرض Royal Rumble، وهي نفس المعلومات الواردة في الخبر رقم 0.",
     "at": "2026-11-22T15:05:07.247Z"
+  },
+  "https://www.fightful.com/wrestling/charlotte-flair-says-alexa-bliss-episode-will-be-first-when-her-podcast-comes-out/": {
+    "matchedFile": "20261122175349-شارلوت-فلير-تكشف-أن-أليكسا-بليس-ساعدتها-في-تجاوز-فترة-عصيبة-من-حياتها.md",
+    "reason": "الخبر الجديد يكرر تفاصيل مقابلة شارلوت فلير في بودكاست Ring the Belle وإعلانها أن أليكسا بليس ستكون ضيفتها الأولى والدعم الذي قدمته لها، وهي نفس المعلومات المذكورة في الخبر رقم 0.",
+    "at": "2026-11-22T15:11:08.711Z"
+  },
+  "https://www.fightful.com/wrestling/la-knight-asks-fans-to-respect-his-ex-girlfriends-privacy-she-didnt-sign-up-to-be-a-public-figure/": {
+    "matchedFile": "20261121215655-ال-ايه-نايت-يوضح-حقيقة-وضعه-العاطفي-بعد-رسائله-المتبادلة-مع-نيكي-بيلا.md",
+    "reason": "الخبر الجديد يعالج نفس الحدث المتعلق بتوضيح LA Knight لحالته الاجتماعية ودفاعه عن صديقته السابقة بعد الشائعات، وهو مكرر لنفس الموضوع المنشور في الخبر [0] وإن تضمن تفاصيل إضافية طفيفة.",
+    "at": "2026-11-22T15:13:02.251Z"
   }
 }
