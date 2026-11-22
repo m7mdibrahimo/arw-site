@@ -28,6 +28,9 @@ test('INCIDENTS #1481: pictures go from R2 only after the deletion reached main,
   assert.match(wf, /cron: '23 2 \* \* \*'/);
   assert.ok(wf.indexOf('git push origin HEAD:main') < wf.indexOf('--drop-pictures'));
   assert.match(wf, /if: steps\.expire\.outputs\.pushed == '1'/);
+  // the retry loop never writes over the first list (the first run removed no picture that way)
+  assert.equal(wf.match(/--out \/tmp\/expired-pictures\.json/g)!.length, 1);
+  assert.match(wf, /--drop-pictures \/tmp\/expired-again\.json/);
   const src = fs.readFileSync('scripts/expire-news.ts', 'utf8');
   assert.match(src, /filter\(\(p\) => !used\.has\(p\)\)/);
 });

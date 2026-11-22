@@ -42,7 +42,7 @@ jobs:
           for i in {1..8}; do
             git pull --rebase -X theirs origin main || (git rebase --abort 2>/dev/null || true; git pull -X theirs --no-edit origin main) || true
             # a story another bot touched meanwhile is still expired: delete again what came back
-            npx tsx scripts/expire-news.ts --out /tmp/expired-pictures.json >/dev/null
+            npx tsx scripts/expire-news.ts --out /tmp/expired-again.json >/dev/null
             if [[ -n $(git status -s content/news) ]]; then git add -A content/news; git commit -q --amend --no-edit; fi
             if git push origin HEAD:main; then echo "pushed=1" >> "$GITHUB_OUTPUT"; exit 0; fi
             sleep $((3 + RANDOM % 5))
@@ -52,4 +52,7 @@ jobs:
         if: steps.expire.outputs.pushed == '1'
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: npx tsx scripts/expire-news.ts --drop-pictures /tmp/expired-pictures.json
+        # (the second list: stories that came back in a rebase and were deleted again — never written over the first)
+        run: |
+          npx tsx scripts/expire-news.ts --drop-pictures /tmp/expired-pictures.json
+          npx tsx scripts/expire-news.ts --drop-pictures /tmp/expired-again.json
