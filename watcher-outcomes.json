@@ -2,17 +2,12 @@
  "https://www.wrestlinginc.com/2322555/aew-kenny-omega-njpw-g1-climax-yuya-uemura-ryohei-oiwa": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-22T18:46:23.796Z"
+  "at": "2026-11-22T18:49:34.462Z"
  },
  "https://www.wrestlinginc.com/2324377/tna-bde-another-star-reportedly-headed-towards-contract-expiration": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-22T18:45:10.121Z"
- },
- "https://www.ringsidenews.com/zelina-vega-reveals-she-made-first-move-aleister-black-awkward-first-meeting": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-22T18:40:12.226Z"
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-22T18:48:38.403Z"
  },
  "https://www.fightful.com/wrestling/three-unseen-matches-added-to-tna-impact-thanksgiving-special": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -73,6 +68,11 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-22T18:44:31.251Z"
+ },
+ "https://www.ringsidenews.com/zelina-vega-reveals-she-made-first-move-aleister-black-awkward-first-meeting": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-22T18:40:12.226Z"
  },
  "https://www.ringsidenews.com/zelina-vega-reveals-she-made-first-move-aleister-black-awkward-first-meeting": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
