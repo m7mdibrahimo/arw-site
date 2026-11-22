@@ -248,7 +248,8 @@ test("«متهم إياه» becomes «متهما إياه»", async () => {
 test("names joined with «&» get «و» and the PRODUCE results story is clean (INCIDENTS #690)", async () => {
   const { applyCorrections } = await import("../scripts/news-qa");
   assert.equal(applyCorrections("فريق Cowboy Way المكون من 1 Called Manders توماس شاير"), "فريق Cowboy Way المكون من 1 Called Manders وتوماس شاير");
-  const f = fs.readdirSync("content/news").find(n => n.startsWith("20261018191951-"))!;
+  const f = fs.readdirSync("content/news").find(n => n.startsWith("20261018191951-"));
+  if (!f) return; // deleted after 30 days (INCIDENTS #1481)
   const text = fs.readFileSync(`content/news/${f}`, "utf-8").replace(/^permalink:.*$/m, "");
   assert.ok(!/وخالدة|Manders توماس/.test(text));
 });
@@ -256,7 +257,8 @@ test("names joined with «&» get «و» and the PRODUCE results story is clean 
 // INCIDENTS #690: the Arabic Ciampa story said «القارية» (source: AEW TNT Championship) and the Dreamer story named
 // Scott D'Amore as the man he agreed the exit with (source: Carlos Silva).
 test("Ciampa TNT title and Dreamer's exit agreement match the sources (INCIDENTS #690)", () => {
-  const read = (p: string) => fs.readFileSync(`content/news/${fs.readdirSync("content/news").find(n => n.startsWith(p))!}`, "utf-8");
+  const read = (p: string) => { const f = fs.readdirSync("content/news").find(n => n.startsWith(p)); return f ? fs.readFileSync(`content/news/${f}`, "utf-8") : null; };
+  if (read("20261018203000-") === null || read("20261018195538-") === null) return; // deleted after 30 days (INCIDENTS #1481)
   assert.ok(!/AEW القارية/.test(read("20261018203000-")) && /بطولة TNT/.test(read("20261018203000-")));
   assert.ok(/كارلوس سيلفا/.test(read("20261018195538-")) && !/اتفاق ودي مع سكوت دي أمور/.test(read("20261018195538-")));
 });
@@ -698,7 +700,8 @@ test("«رسميا» is never rewritten, and the learner refuses words the site 
   assert.ok(usesInPublishedNews("رسميا") >= 10);
   const corrections = JSON.parse(fs.readFileSync("editorial/corrections.json", "utf-8")).corrections as { wrong: string }[];
   assert.ok(!corrections.some(c => c.wrong === "رسميا"));
-  assert.ok(!fs.readFileSync("content/news/ويل-أوسبري-يرحب-بالظهور-المشترك-مع-زوجته-أليكس-ويندسور-على-شاشات-المصارعة.md", "utf-8").includes("تمت رسمي في"));
+  const ospreay = "content/news/ويل-أوسبري-يرحب-بالظهور-المشترك-مع-زوجته-أليكس-ويندسور-على-شاشات-المصارعة.md";
+  if (fs.existsSync(ospreay)) assert.ok(!fs.readFileSync(ospreay, "utf-8").includes("تمت رسمي في")); // deleted after 30 days (INCIDENTS #1481)
 });
 
 // INCIDENTS #792: «OTM» became «أوني كيم ووسيط كرم» and «فوتوغرافيات» (with a wrong number) reached stories.

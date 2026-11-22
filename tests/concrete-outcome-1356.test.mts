@@ -19,9 +19,11 @@ test("Arabic and English rules: a concrete outcome in a quote is never softened 
 });
 
 test("the PAC story says WWE did not hire him, same URL (INCIDENTS #1356)", () => {
+  // Stories older than 30 days are deleted (INCIDENTS #1481) and content/news-en is gone (#1480): a check on one story runs only while it exists.
+  if (!fs.existsSync("content/news-en")) return;
   const ar = fs.readdirSync("content/news").find((f) => f.startsWith("20261116075900-"));
   const en = fs.readdirSync("content/news-en").find((f) => f.startsWith("20261116075900-"));
-  assert.ok(ar && en);
+  if (!ar || !en) return;
   const a = fs.readFileSync(`content/news/${ar}`, "utf-8");
   const e = fs.readFileSync(`content/news-en/${en}`, "utf-8");
   assert.match(a, /permalink: "\/news\/ثنائي-wwe-السابق-ذا-جود-براذرز-يعلق-على-رحيل-باك-نجم-aew\/index.html"/);

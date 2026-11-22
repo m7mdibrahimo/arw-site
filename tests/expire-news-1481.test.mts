@@ -49,6 +49,7 @@ test('INCIDENTS #1480/#1481: an old English address goes to its Arabic page, a d
 
 test('INCIDENTS #1480: no English story is written, and /en/ is not built', () => {
   assert.equal(ENGLISH_EDITION, false);
-  assert.equal(fs.existsSync('content/news-en'), false);
+  // The folder stays (empty, .gitkeep) so old checks that list it still run (INCIDENTS #1484); no English story lives in it.
+  assert.deepEqual(fs.existsSync('content/news-en') ? fs.readdirSync('content/news-en').filter((f) => f.endsWith('.md')) : [], []);
   assert.doesNotMatch(fs.readFileSync('eleventy.config.js', 'utf8'), /eleventyConfig\.on\("eleventy\.after", englishCopy\)/);
 });

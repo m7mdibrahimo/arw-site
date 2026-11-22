@@ -22,8 +22,9 @@ test('Feroz is in the glossary and no published CMLL story spells him «فيرو
   assert.equal(names['Virus'], 'فيروس');
   const dir = 'content/news';
   // CMLL also has a luchador really named Virus («فيروس»): a story whose English twin lists «Virus» is right (INCIDENTS #1293)
-  const enVirus = new Set(fs.readdirSync('content/news-en').map((f) => fs.readFileSync(path.join('content/news-en', f), 'utf8'))
-    .filter((t) => /\bVirus\b/.test(t)).map((t) => (t.match(/^source_id:\s*(\S+)/m) || [])[1]));
+  // content/news-en is gone (INCIDENTS #1480): the CMLL Viernes 13-11 report was checked against its source in #1293 (Virus wrestled there).
+  const enVirus = new Set(['338998', ...(fs.existsSync('content/news-en') ? fs.readdirSync('content/news-en') : []).map((f) => fs.readFileSync(path.join('content/news-en', f), 'utf8'))
+    .filter((t) => /\bVirus\b/.test(t)).map((t) => (t.match(/^source_id:\s*(\S+)/m) || [])[1])]);
   const bad = fs.readdirSync(dir).filter((f) => /cmll/i.test(f)).filter((f) => {
     const t = fs.readFileSync(path.join(dir, f), 'utf8');
     return /(?<![ء-ي])و?فيروس(?![ء-ي])/.test(t) && !enVirus.has((t.match(/^source_id:\s*(\S+)/m) || [])[1]);

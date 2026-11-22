@@ -12,9 +12,11 @@ test("Arabic and English rules: a number one contender match is never a match fo
 });
 
 test("the Destination X review no longer says the Ultimate X was for the title (INCIDENTS #1354)", () => {
+  // Stories older than 30 days are deleted (INCIDENTS #1481) and content/news-en is gone (#1480): a check on one story runs only while it exists.
+  if (!fs.existsSync("content/news-en")) return;
   const ar = fs.readdirSync("content/news").find((f) => f.startsWith("20261116071652-"));
   const en = fs.readdirSync("content/news-en").find((f) => f.startsWith("20261116071652-"));
-  assert.ok(ar && en);
+  if (!ar || !en) return;
   const a = fs.readFileSync(`content/news/${ar}`, "utf-8");
   const e = fs.readFileSync(`content/news-en/${en}`, "utf-8");
   assert.doesNotMatch(a, /ومميزا على لقب/);

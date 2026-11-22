@@ -20,6 +20,9 @@ test("squash match and «منافس تال» are handled", async () => {
   assert.equal(typeof out === "string" ? out : (out as { text: string }).text, "وظهور إيليا دراغونوف كمنافس قادم.");
   const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /نزال الإطاحة السريع|كمنافس تال\b/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
   assert.deepEqual(bad, []);
-  const en = fs.readFileSync(fs.readdirSync("content/news-en").filter(f => f.startsWith("20261112065950-")).map(f => `content/news-en/${f}`)[0], "utf-8");
+  if (!fs.existsSync("content/news-en")) return; // English edition removed (INCIDENTS #1480)
+  const enFile = fs.readdirSync("content/news-en").filter(f => f.startsWith("20261112065950-")).map(f => `content/news-en/${f}`)[0];
+  if (!enFile) return;
+  const en = fs.readFileSync(enFile, "utf-8");
   assert.ok(!/August[^\n]*BTE Trigger/.test(en.split("His prior")[1] || ""));
 });
