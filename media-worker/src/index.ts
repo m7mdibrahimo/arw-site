@@ -2,7 +2,7 @@
 // addresses, so the Pages build no longer carries ~800 MB of them (INCIDENTS #312). A file comes from R2; the first
 // request for a file R2 doesn't have yet takes it from the repo (the bots and the panel keep committing there) and
 // stores it in R2 for every request after.
-import { widthFor } from "./sizes";
+import { WIDTHS, widthFor } from "./sizes";
 import { backupMedia } from "./backup";
 import LEGACY from "./legacy-img.json";
 export interface Env { MEDIA?: R2Bucket; MEDIA_BACKUP?: R2Bucket; REPO_RAW: string; GITHUB_OWNER: string; GITHUB_REPO: string }
@@ -59,7 +59,9 @@ async function upload(req: Request, env: Env): Promise<Response> {
   const key = repoPathOf(url.pathname.replace(/^\/upload/, ""));
   if (!key) return json({ ok: false, error: "bad path" }, 400);
   if (!(await canWriteRepo(req.headers.get("Authorization"), env))) return json({ ok: false, error: "forbidden" }, 403);
-  if (req.method === "DELETE") { await env.MEDIA.delete(key); return json({ ok: true, key, deleted: true }); }
+  // a replaced or deleted picture's stored sizes go too (made again from the new one on the next request)
+  const dropSized = () => (isPicture(key) ? env.MEDIA!.delete(WIDTHS.map((w) => sizedKeyOf(key, w))).catch(() => {}) : Promise.resolve());
+  if (req.method === "DELETE") { await env.MEDIA.delete(key); await dropSized(); return json({ ok: true, key, deleted: true }); }
   let body = await req.arrayBuffer();
   if (!body.byteLength || body.byteLength > 95 * 1024 * 1024) return json({ ok: false, error: "empty or too big" }, 400);
   if (url.searchParams.get("replace") !== "1" && (await env.MEDIA.head(key))) return json({ ok: true, key, existed: true });
@@ -74,6 +76,7 @@ async function upload(req: Request, env: Env): Promise<Response> {
     } catch (e: any) { console.log(`[media] compress ${key}: ${e?.message || e}`); }
   }
   await env.MEDIA.put(key, body, { httpMetadata: { contentType, cacheControl: CACHE }, customMetadata: { checked: "1" } });
+  if (url.searchParams.get("replace") === "1") await dropSized();
   return json({ ok: true, key, bytes: body.byteLength, ...(before !== body.byteLength ? { compressedFrom: before } : {}) });
 }
 
@@ -107,8 +110,16 @@ async function original(key: string, env: Env, ctx: ExecutionContext): Promise<{
   return { buf, type: typeOf(key) };
 }
 
-/** One picture at one width, as WebP, kept in the edge cache (never in R2). If resizing fails the original is sent,
- *  so a picture is never missing. */
+/** Where a resized copy is kept in R2: «sized/<width>/<name>.webp». Not under «content/», so the hourly backup leaves
+ *  it alone (it is made again from the original whenever it's missing). */
+export function sizedKeyOf(key: string, width: number): string {
+  return `sized/${width}/${key.replace(/^content\/images\//, "")}.webp`;
+}
+
+/** One picture at one width, as WebP. Made ONCE and kept in R2 (sized/…), then in the edge cache of each data centre.
+ *  Before, only the edge cache kept it: every data centre resized every picture again, ~67 million CPU-milliseconds a
+ *  month, over twice what the 5-dollar plan includes (INCIDENTS #1477). If resizing fails the original is sent, so a
+ *  picture is never missing. */
 async function serveSized(req: Request, env: Env, ctx: ExecutionContext, key: string, width: number): Promise<Response> {
   const cache = (globalThis as any).caches?.default as Cache | undefined;
   const cacheKey = new Request(`${new URL(req.url).origin}/${key}?w=${width}`, { method: "GET" });
@@ -116,6 +127,12 @@ async function serveSized(req: Request, env: Env, ctx: ExecutionContext, key: st
     const hit = await cache.match(cacheKey);
     if (hit) return req.method === "HEAD" ? new Response(null, hit) : hit;
   }
+  const keep = (r: Response) => { if (cache) ctx.waitUntil(cache.put(cacheKey, r.clone())); return req.method === "HEAD" ? new Response(null, r) : r; };
+  const stored = env.MEDIA ? await env.MEDIA.get(sizedKeyOf(key, width)).catch(() => null) : null;
+  if (stored) {
+    return keep(new Response(stored.body, { status: 200, headers: headersFor(key, { "Content-Type": "image/webp", "Cache-Control": RESIZED_CACHE, "Content-Length": String(stored.size), "X-Resized": String(width), "X-Sized-From": "r2" }) }));
+  }
+  if (await resizeBraked(env)) return new Response(null, { status: 302, headers: { Location: "/" + key.split("/").map(encodeURIComponent).join("/"), "Cache-Control": "public, max-age=600" } });
   const src = await original(key, env, ctx);
   if (!src) return new Response("Not found", { status: 404, headers: { "Cache-Control": "public, max-age=60" } });
   let res: Response;
@@ -124,12 +141,25 @@ async function serveSized(req: Request, env: Env, ctx: ExecutionContext, key: st
     const { resizedWebp } = await import("./resize");
     const webp = await resizedWebp(src.buf, src.type, width);
     res = new Response(webp, { status: 200, headers: headersFor(key, { "Content-Type": "image/webp", "Cache-Control": RESIZED_CACHE, "Content-Length": String(webp.byteLength), "X-Resized": String(width) }) });
+    if (env.MEDIA) ctx.waitUntil(env.MEDIA.put(sizedKeyOf(key, width), webp, { httpMetadata: { contentType: "image/webp", cacheControl: RESIZED_CACHE } }).catch(() => {}));
   } catch (e: any) {
     console.log(`[media] resize ${key} @${width}: ${e?.message || e}`);
     return new Response(req.method === "HEAD" ? null : src.buf, { status: 200, headers: headersFor(key, { "Content-Type": src.type, "Cache-Control": "public, max-age=3600", "X-Resized": "failed" }) });
   }
-  if (cache) ctx.waitUntil(cache.put(cacheKey, res.clone()));
-  return req.method === "HEAD" ? new Response(null, res) : res;
+  return keep(res);
+}
+
+/** The usage brake (INCIDENTS #1477): «status/budget.json» in R2, written by arw-site-bot's daily usage check, says
+ *  whether this month's CPU time is close to what the 5-dollar plan includes. While it is, a picture that has no stored
+ *  copy yet is not resized: the visitor gets the original (already ≤1280×720, ~150 KB), which costs no CPU. Read at most
+ *  once every 10 minutes per isolate. */
+let brake = { at: 0, on: false };
+async function resizeBraked(env: Env, now = Date.now()): Promise<boolean> {
+  if (now - brake.at < 600_000) return brake.on;
+  let on = false;
+  try { const o = await env.MEDIA?.get("status/budget.json"); const b: any = o ? await o.json() : null; on = !!(b && b.brakeCpu); } catch { on = false; }
+  brake = { at: now, on };
+  return on;
 }
 
 const isPicture = (key: string) => /^content\/images\/.+\.(jpe?g|png|webp)$/i.test(key);
