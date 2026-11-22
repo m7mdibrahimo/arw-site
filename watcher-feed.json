@@ -1,5 +1,15 @@
 [
   {
+    "id": 340387,
+    "link": "https://www.fightful.com/wrestling/trick-williams-says-he-wants-to-face-the-rock/",
+    "date": "2026-11-22T15:08:10",
+    "date_gmt": "2026-11-22T20:08:10",
+    "title": {
+      "rendered": "Trick Williams Says He Wants To Face The Rock"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/06203532/HRkty7xXUAIIJcW.jpg"
+  },
+  {
     "id": 340383,
     "link": "https://www.fightful.com/wrestling/trick-williams-comments-on-dark-match-with-gunther-the-punishment-to-gunther-was-putting-him-in-the-ring-with-me-knowing-that-he-cant-hang-with-the-big-dog/",
     "date": "2026-11-22T14:56:34",
@@ -288,15 +298,5 @@
       "rendered": "Demonio Inferna Debuts On AAA On Fox"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/21214258/Screenshot-2026-11-21-at-9.41.05-PM.png"
-  },
-  {
-    "id": 340278,
-    "link": "https://www.fightful.com/wrestling/volume-up-teaser-video-airs-on-aaa-on-fox/",
-    "date": "2026-11-21T21:32:46",
-    "date_gmt": "2026-11-22T02:32:46",
-    "title": {
-      "rendered": "&#8216;Volume Up&#8217; Teaser Video Airs On AAA on FOX"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/21213222/Screenshot-2026-11-21-at-9.24.43-PM.png"
   }
 ]
