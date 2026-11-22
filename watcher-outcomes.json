@@ -64,11 +64,6 @@
   "retry": true,
   "at": "2026-11-22T15:49:57.660Z"
  },
- "https://www.ringsidenews.com/tna-wrestling-announces-thanksgiving-impact-matches-major-tv-schedule-change": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-22T15:48:13.585Z"
- },
  "https://www.fightful.com/wrestling/sol-ruca-names-her-favorite-part-of-creating-her-own-ring-gear": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
