@@ -1,58 +1,63 @@
 {
+ "https://www.fightful.com/wrestling/kevin-knight-says-don-callis-has-put-that-pressure-on-his-back-to-win-the-continental-classic": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-22T15:59:20.488Z"
+ },
  "https://www.fightful.com/wrestling/mjf-promises-he-will-get-brody-king-fired-following-daniel-garcia-injury-on-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T15:53:05.314Z"
+  "at": "2026-11-22T15:58:02.525Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-live-results-11-21": {
-  "reason": "المراجعة رفضته: آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Elijah Holyfield، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
+  "reason": "المراجعة رفضته: آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Elijah Holyfield، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، فائز مش موجود في نتايج المصدر (النزال لسه ما خلصش؟): المواجهة الخامسة: نزال فرق",
   "retry": true,
-  "at": "2026-11-22T15:53:05.185Z"
+  "at": "2026-11-22T15:58:02.386Z"
  },
  "https://www.fightful.com/wrestling/la-knight-asks-fans-to-respect-his-ex-girlfriends-privacy-she-didnt-sign-up-to-be-a-public-figure": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T15:52:07.267Z"
+  "at": "2026-11-22T15:57:34.696Z"
  },
  "https://www.fightful.com/wrestling/charlotte-flair-says-alexa-bliss-episode-will-be-first-when-her-podcast-comes-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T15:52:07.078Z"
+  "at": "2026-11-22T15:57:34.483Z"
  },
  "https://www.fightful.com/wrestling/dawn-marie-says-her-best-paying-year-in-wwe-was-2200000-with-over-120000-in-expenses": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-22T15:52:06.958Z"
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-22T15:57:34.346Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T15:51:38.771Z"
+  "at": "2026-11-22T15:56:21.048Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-night-two-recap": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T15:51:38.696Z"
+  "at": "2026-11-22T15:56:20.966Z"
  },
  "https://www.fightful.com/wrestling/aaa-on-fox-results-11-21": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T15:51:38.544Z"
+  "at": "2026-11-22T15:56:20.793Z"
  },
  "https://www.fightful.com/wrestling/daniel-garcia-suffers-arm-injury-on-11-21-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T15:51:38.359Z"
+  "at": "2026-11-22T15:56:20.595Z"
  },
  "https://www.fightful.com/wrestling/details-on-mike-romos-exit-from-tna": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T15:51:38.171Z"
+  "at": "2026-11-22T15:56:20.385Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-results-11-21-2026-ilja-dragunov-vs-el-clon-continental-classic-continues-divine-dominion-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T15:51:38.050Z"
+  "at": "2026-11-22T15:56:20.245Z"
  },
  "https://www.fightful.com/wrestling/njpw-road-to-world-tag-league-results-11-21": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-13T21:31:08.386Z"
- },
- "https://www.fightful.com/wrestling/wwe-main-event-results-11-12": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Cruz Del Toro",
-  "retry": true,
-  "at": "2026-11-13T21:28:55.605Z"
  }
 }
