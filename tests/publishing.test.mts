@@ -2225,7 +2225,7 @@ test('Kendal Grey is always «كيندال غراي» — never «غري» or «
   assert.equal(names['Kendal Grey'], 'كيندال غراي');
   const wrong = /كيندال (جراي|غري)/;
   for (const dir of ['content/news', 'content/shows']) {
-    for (const f of fs.readdirSync(dir).filter(n => n.endsWith('.md'))) {
+    for (const f of fs.readdirSync(dir).filter(n => n.endsWith('.md') && !n.startsWith('zz-test-'))) {
       const body = fs.readFileSync(`${dir}/${f}`, 'utf8').replace(/^permalink:.*$/m, '');
       assert.doesNotMatch(body, wrong, f);
     }

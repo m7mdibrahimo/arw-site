@@ -89,7 +89,8 @@ test('the page\'s player turns every link into the same player link as the build
   const corpus = new Set<string>([...CASES.map(c => c[0]), ...UNTOUCHED, 'https://hanerix.com/eid6vpj41xti', 'https://ok.ru/video/123', 'https://www.youtube.com/watch?v=abc']);
   for (const dir of ['content/shows', 'content/recaps', 'content/nostalgia']) {
     if (!fs.existsSync(dir)) continue;
-    for (const f of fs.readdirSync(dir).filter(x => x.endsWith('.md'))) {
+    // zz-test-* are another test's samples (arabic-commentary-1390), written and removed while this runs in parallel (INCIDENTS #1475)
+    for (const f of fs.readdirSync(dir).filter(x => x.endsWith('.md') && !x.startsWith('zz-test-'))) {
       for (const m of fs.readFileSync(`${dir}/${f}`, 'utf-8').matchAll(/^\s*-\s*url:\s*['"]?(https?:\/\/[^'"\s]+)/gm)) corpus.add(m[1]);
     }
   }

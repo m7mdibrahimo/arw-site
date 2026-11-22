@@ -11698,3 +11698,8 @@ Let me check git status to enumerate uncommitted changes.</think><tool_call>shel
 - **اللي حصل:** فحص السيرفرات وقع كله بعد ٣٢ ثانية لأن كروم مفتحش منفذه في الـ٣٠ ثانية؛ وخبر بير برونسون اتكتب «بيرونسون» وعنوانه الإنجليزي «TNA Star Provides…» من غير اسم، وخبر تشاد غيبل قال «جدوله اليومي» للعروض الحية.
 - **السبب:** `scripts/check-playback.ts` كان بيستنى ٣٠ ثانية بس ومن غير محاولة تانية، وفحص العنوان الإنجليزي المبهم مكانش فيه أفعال زي Provides/Gives، والاسم مكانش في `editorial/corrections.json`.
 - **الإصلاح:** كروم بياخد ٦٠ ثانية ولو مفتحش بيتشغل من جديد مرة، وخريطة الموقع بتتجرب ٣ مرات؛ أفعال جديدة في فحص «vague headline» في `scripts/english-edition.ts`؛ تصحيح «بيرونسون ← برونسون»؛ الأخبار اتصلحت بنفس الرابط (ومعاها خبر 30 أكتوبر). اختبارات: `tests/playback-chrome-start-1474.test.mts` و`tests/english-edition.test.mts`.
+
+## #1475 — 2026-11-22: فحص «Publishing regression checks» وقع من غير عيب حقيقي
+اللي حصل: اختبار video-hosts فشل لأنه قرا ملف content/shows/zz-test-1350-commentary.md واختبار تاني كان لسه ماسحه.
+السبب: اختبار التعليق العربي (#1390) بيكتب عروض تجريبية zz-test-* في content/shows وقت ما اختبارات تانية بتلف على نفس المجلد بالتوازي.
+الإصلاح: الاختبارات اللي بتقرا content/shows (video-hosts وفحص اسم كيندال غراي في publishing) بقت بتتجاهل ملفات zz-test-*.
