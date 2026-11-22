@@ -538,6 +538,9 @@ const RULES: Rule[] = [
   // repeat in 9,000+ stories was a slip. A name may stand twice («واجه بيشوب داير بيشوب داير»: two wrestlers, one
   // name), so only a run that opens with a small word or holds an «ال» word is blocked.
   { code: "repeated_phrase", severity: "error", re: new RegExp(`(?<![${AR}])((?:(?:من|في|على|إلى|عن|مع|قد|لم|لن|ما|لا|هذا|هذه|ذلك|تلك|كل|حتى|ثم|أن|إن|كان|كانت)\\s+[${AR}]{2,}|[${AR}]{2,}\\s+[وفبكل]?(?:ال|لل)[${AR}]{2,}|[وفبكل]?(?:ال|لل)[${AR}]{2,}\\s+[${AR}]{2,}))\\s+\\1(?![${AR}])`, "g"), message: "كلمتين مكررين ورا بعض («من قبل من قبل») — اكتبهم مرة واحدة", fields: ["title", "body"] },
+  // A pair of names written twice around one verb: «أن داكس هاروود وكاش ويلر سيدافع داكس هاروود وكاش ويلر عن بطولة» (FTR story,
+  // INCIDENTS #1468). No published story of 9,000+ had it on purpose.
+  { code: "repeated_phrase", severity: "error", re: new RegExp(`(?<![${AR}])([${AR}]{2,}\\s+[${AR}]{2,}\\s+و[${AR}]{2,}(?:\\s+[${AR}]{2,})?)\\s+[${AR}]{2,}\\s+\\1(?![${AR}])`, "g"), message: "نفس الاسمين مكتوبين مرتين حوالين فعل («داكس هاروود وكاش ويلر سيدافع داكس هاروود وكاش ويلر») — اكتبهم مرة واحدة", fields: ["title", "body"] },
   // A letter typed twice right after «ال»: «يصل إلى الععد في موعده», «الششهيرة» (INCIDENTS #1238). No Arabic root
   // starts with two identical letters, so after «ال» a doubled first letter only comes from a prefix (م ت ن ي:
   // «الممثل»، «التتويج») or a borrowed word with «ب» («الببغاء»، «الببتيدات») — every other doubled letter is a typo.
