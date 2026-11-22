@@ -1767,3 +1767,12 @@ test("INCIDENTS #1377: «التكساس ديث» → «Texas Death»", async () 
   const { applyCorrections } = await import("../scripts/news-qa");
   assert.equal(applyCorrections("انتقادات حادة لنزال التكساس ديث في العرض"), "انتقادات حادة لنزال Texas Death في العرض");
 });
+
+// INCIDENTS #1490: PAC's real name spelled «بنيامين» instead of «بنجامين ساتيرلي».
+test("PAC's real name is «بنجامين ساتيرلي»", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa");
+  assert.equal(applyCorrections("للراحل بنيامين باك ساتيرلي"), "للراحل بنجامين باك ساتيرلي");
+  assert.equal(applyCorrections("بنيامين ساتيرلي"), "بنجامين ساتيرلي");
+  const bad = fs.readdirSync("content/news").filter(f => f.endsWith(".md") && /بنيامين (?:باك )?ساتيرلي/.test(fs.readFileSync(`content/news/${f}`, "utf-8")));
+  assert.deepEqual(bad, []);
+});
