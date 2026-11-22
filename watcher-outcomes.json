@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/eddie-guerreros-daughter-sherilyn-tells-ex-get-lost-he-reappears-following-wrestling-debut": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-22T20:55:33.232Z"
+ },
  "https://www.fightful.com/wrestling/anna-jay-provides-another-update-on-shoulder-injury": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-14T16:24:01.928Z"
- },
- "https://www.fightful.com/wrestling/bobby-lashley-i-hope-before-i-do-retire-i-get-an-opportunity-to-work-with-lio-rush-again": {
-  "reason": "المراجعة رفضته: صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل مثنى («يتواجدان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-14T15:57:56.632Z"
  }
 }
