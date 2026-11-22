@@ -198,7 +198,8 @@ test('a missing address is the nearest 404.html with status 404, as not_found_ha
   assert.equal(s.calls.length, 1);
   const cfg = fs.readFileSync('wrangler.static.jsonc', 'utf8');
   assert.match(cfg, /"not_found_handling": "none"/);
-  assert.match(cfg, /"run_worker_first": \["\/", "\/shows\/\*", "\/news\/\*"\]/);
+  // INCIDENTS #1476: never first for the listings and pages any more (~108,000 Worker requests a day; free plan 100,000)
+  assert.doesNotMatch(cfg, /run_worker_first/);
   assert.match(cfg, /"main": "site-worker\/index\.js"/);
   assert.match(cfg, /"services": \[\{ "binding": "FAST", "service": "arw-site-bot" \}\]/);
   assert.equal(typeof notFound, 'function');
