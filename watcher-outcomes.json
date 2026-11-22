@@ -1,48 +1,53 @@
 {
  "https://www.ringsidenews.com/aew-collision-results-highlights-key-moments-november-21-2026": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، المواجهة مكتوبة «نزال فردي» والفقرة تحتها بتقول «نزال ثلاثي/فرق» — صحح العنوان حسب سطر المصدر",
+  "reason": "المراجعة رفضته: صيغة مثنى (صفقا/احتفلا/أمام عيني X وY…) ممنوعة: اكتب فعل جمع («مات وجيف صفقوا») أو «أمام X وY».، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
   "retry": true,
-  "at": "2026-11-22T03:28:57.125Z"
+  "at": "2026-11-22T03:32:10.667Z"
+ },
+ "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-22T03:31:14.322Z"
  },
  "https://www.fightful.com/wrestling/aaa-on-fox-results-11-21": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-22T03:22:40.173Z"
+  "at": "2026-11-22T03:30:59.893Z"
  },
  "https://www.fightful.com/wrestling/daniel-garcia-suffers-arm-injury-on-11-21-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T03:22:39.591Z"
+  "at": "2026-11-22T03:30:59.406Z"
  },
  "https://www.fightful.com/wrestling/details-on-mike-romos-exit-from-tna": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T03:22:38.989Z"
+  "at": "2026-11-22T03:30:58.895Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-results-11-21-2026-ilja-dragunov-vs-el-clon-continental-classic-continues-divine-dominion-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T03:22:38.610Z"
+  "at": "2026-11-22T03:30:58.574Z"
  },
  "https://www.fightful.com/wrestling/jake-hager-retained-some-sight-in-the-eye-after-two-surgeries": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T03:22:37.598Z"
+  "at": "2026-11-22T03:30:57.715Z"
  },
  "https://www.fightful.com/wrestling/the-rock-im-coming-to-houston-to-say-thank-you-and-i-love-you": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T03:22:37.246Z"
+  "at": "2026-11-22T03:30:57.405Z"
  },
  "https://www.fightful.com/wrestling/mjf-responds-to-claim-he-stayed-with-aew-as-a-safe-bet": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T03:22:36.760Z"
+  "at": "2026-11-22T03:30:56.985Z"
  },
  "https://www.fightful.com/wrestling/the-rock-puts-pat-mcafee-through-a-table-with-the-rock-bottom": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T03:22:36.068Z"
+  "at": "2026-11-22T03:30:56.373Z"
  },
  "https://www.wrestlinginc.com/2324005/aew-collision-november-21-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
@@ -558,11 +563,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-19T17:53:24.210Z"
- },
- "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-19T17:40:13.052Z"
  },
  "https://www.fightful.com/wrestling/ryzin-details-nixed-plans-for-him-to-join-dark-order-in-aew": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
