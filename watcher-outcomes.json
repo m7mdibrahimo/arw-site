@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2321124/wcw-eric-bischoff-explains-came-up-idea-joining-nwo": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-22T13:44:21.212Z"
+ },
  "https://www.ringsidenews.com/rob-van-dam-admits-he-destroyed-mans-mustang-while-traveling-sabu-ecw": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-13T18:03:43.676Z"
- },
- "https://www.wrestlinginc.com/2316201/aew-young-bucks-blood-guts-lie-told-themselves": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-13T17:59:39.384Z"
  }
 }
