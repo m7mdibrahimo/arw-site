@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/trick-williams-unloads-damian-priest-saying-he-doesnt-deserve-world-title-shot": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-22T07:06:47.943Z"
+ },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-13T17:11:35.709Z"
- },
- "https://www.ringsidenews.com/cm-punk-groomed-replace-shawn-michaels-wwe-nxt-boss": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-13T17:11:03.927Z"
  }
 }
