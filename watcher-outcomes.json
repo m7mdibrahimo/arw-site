@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2321123/aew-bobby-lashley-isnt-considering-retirement-lot-left-tank": {
+  "reason": "المراجعة رفضته: اسم في الخبر العربي مختلف عن الإنجليزي: The Hurt Syndicate — انقل الاسم أو اللقب كما في المصدر (آش/إم/هيذر باي إليغانس مصارعات مختلفات، و«بيور» لقب غير بطولة السيدات العالمية)",
+  "retry": true,
+  "at": "2026-11-22T05:04:52.896Z"
+ },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
