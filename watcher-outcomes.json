@@ -7,42 +7,42 @@
  "https://www.fightful.com/wrestling/raj-dhesi-says-randy-orton-got-him-into-united-states-title-match-at-wrestlemania-34": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE United States Championship",
   "retry": true,
-  "at": "2026-11-21T23:56:43.773Z"
+  "at": "2026-11-22T00:02:51.166Z"
  },
  "https://www.fightful.com/wrestling/jake-hager-retained-some-sight-in-the-eye-after-two-surgeries": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:56:22.671Z"
+  "at": "2026-11-22T00:02:33.702Z"
  },
  "https://www.fightful.com/wrestling/the-rock-im-coming-to-houston-to-say-thank-you-and-i-love-you": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:56:22.377Z"
+  "at": "2026-11-22T00:02:33.471Z"
  },
  "https://www.fightful.com/wrestling/mjf-responds-to-claim-he-stayed-with-aew-as-a-safe-bet": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:56:21.966Z"
+  "at": "2026-11-22T00:02:33.151Z"
  },
  "https://www.fightful.com/wrestling/the-rock-puts-pat-mcafee-through-a-table-with-the-rock-bottom": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:56:21.364Z"
+  "at": "2026-11-22T00:02:32.685Z"
  },
  "https://www.fightful.com/wrestling/roh-womens-pure-title-match-tag-title-bout-added-to-final-battle-ppv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:56:20.488Z"
+  "at": "2026-11-22T00:02:32.007Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-to-unveil-team-usas-final-member-on-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:56:19.894Z"
+  "at": "2026-11-22T00:02:31.549Z"
  },
  "https://www.fightful.com/wrestling/hacksaw-jim-duggan-returns-on-11-20-wwe-smackdown-joins-team-usa-and-then-immediately-backs-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-21T23:56:19.473Z"
+  "at": "2026-11-22T00:02:31.213Z"
  },
  "https://www.ringsidenews.com/ddp-reveals-years-legitimate-backstage-heat-ric-flair-how-they-squashed-it": {
   "reason": "المراجعة رفضته: اسم دايموند دالاس بيج اتكتب «بايج» (دي بايج المصارعة) — الصح «بيج»، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين",
@@ -1993,10 +1993,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-13T14:23:35.354Z"
- },
- "https://www.fightful.com/wrestling/338753-joe-hendry-wwe-tag-teams": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T14:14:57.660Z"
  }
 }
