@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-22T14:25:35.304Z",
+ "checkedAt": "2026-11-22T14:38:36.145Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
@@ -11509,165 +11509,164 @@
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z",
-   "lastOk": "2026-11-22T14:25:35.304Z"
+   "checked": "2026-11-22T14:38:36.145Z",
+   "lastOk": "2026-11-22T14:38:36.145Z"
   },
   "https://vidmoly.org/embed-9y46o2w2sdx6.html": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-20-11-2026/",
-   "status": "ok",
-   "reason": "the stream arrives",
-   "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z",
-   "lastOk": "2026-11-22T14:25:35.304Z"
+   "status": "broken",
+   "reason": "the player says: cannot be played",
+   "strikes": 1,
+   "checked": "2026-11-22T14:38:36.145Z",
+   "lastOk": "2026-11-21T17:15:33.914Z"
   },
   "https://vidtube.one/embed-15twdd6tgidk.html": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-20-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z"
+   "checked": "2026-11-22T14:38:36.145Z"
   },
   "https://ok.ru/videoembed/18204313848416": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-20-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z"
+   "checked": "2026-11-22T14:38:36.145Z"
   },
   "https://vidtube.one/embed-m84vufv1uqfv.html": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-20-11-2026-تعليق-عربي/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z"
+   "checked": "2026-11-22T14:38:36.145Z"
   },
   "https://vidmoly.org/embed-glajy5v0p2h3.html": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-20-11-2026-تعليق-عربي/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z",
-   "lastOk": "2026-11-22T14:25:35.304Z"
+   "checked": "2026-11-22T14:38:36.145Z",
+   "lastOk": "2026-11-22T14:38:36.145Z"
   },
   "https://ok.ru/videoembed/18206113991264": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-20-11-2026-تعليق-عربي/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z"
+   "checked": "2026-11-22T14:38:36.145Z"
   },
   "https://fembed.co/embed/X_GIy-iKSQtMd": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-20-11-2026-تعليق-عربي/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z",
-   "lastOk": "2026-11-22T14:25:35.304Z"
+   "checked": "2026-11-22T14:38:36.145Z",
+   "lastOk": "2026-11-22T14:38:36.145Z"
   },
   "https://hgcloud.to/e/7kgrvbhohpob": {
    "page": "https://arab-wrestling.com/shows/wwe-smackdown-20-11-2026-تعليق-عربي/",
    "status": "ok",
-   "reason": "the video plays",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z",
-   "lastOk": "2026-11-22T14:25:35.304Z"
+   "checked": "2026-11-22T14:38:36.145Z",
+   "lastOk": "2026-11-22T14:38:36.145Z"
   },
   "https://fembed.co/embed/VX_doshV3r-Kq": {
    "page": "https://arab-wrestling.com/shows/njpw-bound-for-unbound-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z",
-   "lastOk": "2026-11-22T14:25:35.304Z"
+   "checked": "2026-11-22T14:38:36.145Z",
+   "lastOk": "2026-11-22T14:38:36.145Z"
   },
   "https://vidmoly.org/embed-v2gsvff04hrb.html": {
    "page": "https://arab-wrestling.com/shows/njpw-bound-for-unbound-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z",
-   "lastOk": "2026-11-22T14:25:35.304Z"
+   "checked": "2026-11-22T14:38:36.145Z",
+   "lastOk": "2026-11-22T14:38:36.145Z"
   },
   "https://vidtube.one/embed-h34jrk2rfv0o.html": {
    "page": "https://arab-wrestling.com/shows/njpw-bound-for-unbound-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z"
+   "checked": "2026-11-22T14:38:36.145Z"
   },
   "https://ok.ru/videoembed/18221795838560": {
    "page": "https://arab-wrestling.com/shows/njpw-bound-for-unbound-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z"
+   "checked": "2026-11-22T14:38:36.145Z"
   },
   "https://fembed.co/embed/hiv_voNd-kY9H": {
    "page": "https://arab-wrestling.com/shows/njpw-tanahashi-jam-2-2026/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z",
-   "lastOk": "2026-11-22T14:25:35.304Z"
+   "checked": "2026-11-22T14:38:36.145Z",
+   "lastOk": "2026-11-22T14:38:36.145Z"
   },
   "https://ok.ru/videoembed/18221795707488": {
    "page": "https://arab-wrestling.com/shows/njpw-tanahashi-jam-2-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z"
-  },
-  "https://vidmoly.org/embed-9yjilaa3y83y.html": {
-   "page": "https://arab-wrestling.com/shows/njpw-tanahashi-jam-2-2026/",
-   "status": "ok",
-   "reason": "the stream arrives",
-   "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z",
-   "lastOk": "2026-11-22T14:25:35.304Z"
+   "checked": "2026-11-22T14:38:36.145Z"
   },
   "https://vidtube.one/embed-6v8w177oy4zw.html": {
    "page": "https://arab-wrestling.com/shows/njpw-tanahashi-jam-2-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z"
+   "checked": "2026-11-22T14:38:36.145Z"
   },
-  "https://vidtube.one/embed-qr8vwuu2018z.html": {
+  "https://vidmoly.org/embed-e7ol2sn97eo7.html": {
    "page": "https://arab-wrestling.com/shows/cmll-viernes-espectacular-20-11-2026/",
-   "status": "unknown",
-   "reason": "no stream seen",
+   "status": "ok",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z"
+   "checked": "2026-11-22T14:38:36.145Z",
+   "lastOk": "2026-11-22T14:38:36.145Z"
   },
   "https://ok.ru/videoembed/18221795969632": {
    "page": "https://arab-wrestling.com/shows/cmll-viernes-espectacular-20-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z"
+   "checked": "2026-11-22T14:38:36.145Z"
   },
-  "https://vidmoly.org/embed-e7ol2sn97eo7.html": {
-   "page": "https://arab-wrestling.com/shows/cmll-viernes-espectacular-20-11-2026/",
-   "status": "ok",
-   "reason": "the stream arrives",
-   "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z",
-   "lastOk": "2026-11-22T14:25:35.304Z"
+  "https://vidmoly.org/embed-9yjilaa3y83y.html": {
+   "page": "https://arab-wrestling.com/shows/njpw-tanahashi-jam-2-2026/",
+   "status": "broken",
+   "reason": "the player says: cannot be played",
+   "strikes": 1,
+   "checked": "2026-11-22T14:38:36.145Z"
   },
   "https://fembed.co/embed/G-J22f6i_7327": {
    "page": "https://arab-wrestling.com/shows/cmll-viernes-espectacular-20-11-2026/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z",
-   "lastOk": "2026-11-22T14:25:35.304Z"
+   "checked": "2026-11-22T14:38:36.145Z",
+   "lastOk": "2026-11-22T14:38:36.145Z"
+  },
+  "https://vidtube.one/embed-qr8vwuu2018z.html": {
+   "page": "https://arab-wrestling.com/shows/cmll-viernes-espectacular-20-11-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-22T14:38:36.145Z"
   },
   "https://hgcloud.to/e/ntot7obo0ose": {
    "page": "https://arab-wrestling.com/shows/cmll-viernes-espectacular-20-11-2026/",
    "status": "unknown",
    "reason": "StreamHG's first source failed and its fallback hadn't come yet ([helpers/jwplayer/api/core-shim]: JW Player Error 232011)",
    "strikes": 0,
-   "checked": "2026-11-22T14:25:35.304Z"
+   "checked": "2026-11-22T14:38:36.145Z"
   }
  },
  "broken": [
