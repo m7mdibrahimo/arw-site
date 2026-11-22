@@ -1180,3 +1180,14 @@ test('scrubbed reporter: leftover surname and the outlet twice in one sentence a
   const bad = "أكد تقارير صحفية الساب خلال بث مباشر للأسئلة والأجوبة عبر تقارير صحفية أن إدارة WWE لا تحمل أوبا فيمي المسؤولية. ".repeat(3);
   assert.ok(checkArticle("الكشف عن موقف أوبا فيمي خلف الكواليس", bad, []).some(i => i.code === "scrubbed_source_garbage"));
 });
+
+test('AAA names, «تنظمن» and present-tense «يذكر أن يعرف» (INCIDENTS #1470)', () => {
+  const pad = ' كلام كافي لتمرير فحص الطول '.repeat(12);
+  const t = 'عنوان تجريبي طويل بما يكفي للفحص هنا';
+  assert.equal(applyCorrections('جيل كيم وأليشا إدواردز تنظمن مزادا خيريا'), 'جيل كيم وأليشا إدواردز ينظمن مزادا خيريا');
+  assert.equal(applyCorrections('أمام إل ميسياس وموتش وولف'), 'أمام إل مسياس وميكا وولف');
+  assert.equal(applyCorrections('هجوم من إل تيكسانو جونيور'), 'هجوم من تيكسانو جونيور');
+  assert.equal(applyCorrections('هي تتضمن وتكمن وتزامن'), 'هي تتضمن وتكمن وتزامن');
+  assert.ok(checkArticle(t, 'يذكر أن يعرف تيكسانو وإنفيرنا باسم فريق واحد.' + pad).some(i => i.code === 'verb_after_yudhkar'));
+  assert.ok(!checkArticle(t, 'ويعرف تيكسانو وإنفيرنا معا باسم فريق واحد.' + pad).some(i => i.code === 'verb_after_yudhkar'));
+});
