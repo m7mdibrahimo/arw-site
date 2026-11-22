@@ -1,9 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2310130/wwe-crown-jewel-2026-jevon-evans-penta-vision-bron-breakker-austin-theory-beat-world-tag-team-title/": {
-    "matchedFile": "20261107212329-فوز-بينتا-وجيفون-إيفانز-ببطولة-wwe-العالمية-للفرق-بمساعدة-أوبا-فيمي-في-عرض-wwe-crown-jewel.md",
-    "reason": "الخبر الجديد يغطي نفس نتيجة نزال بطولة WWE العالمية للفرق في عرض Crown Jewel الذي تم نشره بالفعل.",
-    "at": "2026-11-07T18:41:48.547Z"
-  },
   "https://www.fightful.com/wrestling/chelsea-green-wins-the-womens-crown-jewel-championship-at-wwe-crown-jewel/": {
     "matchedFile": "20261107215412-تشيلسي-غرين-تحقق-فوزا-مفاجئا-على-ليف-مورغان-في-عرض-wwe-crown-jewel-2026.md",
     "reason": "الخبر الجديد يعيد سرد نفس نتيجة نزال تشيلسي غرين وليف مورغان في عرض Crown Jewel وتتويجها بالبطولة مع تفاصيل سير النزال، وهو نفس الحدث المغطى في الخبر المنشور سابقاً.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261122053246-بث-مقطع-تشويقي-يحمل-عنوان-volume-up-في-عرض-aaa-on-fox.md",
     "reason": "الخبر الجديد يغطي نفس المقطع التشويقي الذي بث في عرض AAA on FOX يوم 21 نوفمبر وتحدث عنه الخبر المنشور بنفس التفاصيل تماماً المتعلقة بجواكين وايلد وفريق LWO.",
     "at": "2026-11-22T02:43:50.403Z"
+  },
+  "https://www.ringsidenews.com/el-texano-jr-returns-aaa-new-ally-attack-tag-team-champions/": {
+    "matchedFile": "20261122054325-ظهور-ديمونيو-إنفيرنا-لأول-مرة-في-عرض-aaa-on-fox.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث تماما (عودة إل تيكسانو جونيور وديمونيو إنفيرنا ومهاجمة أبطال الفرق في عرض AAA on FOX) وهو مكرر للخبر المنشور برقم 0.",
+    "at": "2026-11-22T02:51:39.162Z"
   }
 }
