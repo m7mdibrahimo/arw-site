@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/rob-van-dam-admits-he-destroyed-mans-mustang-while-traveling-sabu-ecw": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-22T13:40:07.406Z"
+ },
  "https://www.fightful.com/wrestling/johnny-gargano-i-think-i-planned-and-had-ideas-for-some-of-my-best-matches-at-disney-world": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين",
   "retry": true,
@@ -48,11 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-22T13:28:27.606Z"
- },
- "https://www.ringsidenews.com/rob-van-dam-admits-he-destroyed-mans-mustang-while-traveling-sabu-ecw": {
-  "reason": "المراجعة رفضته: حروف عربي ملزوقة في حروف إنجليزي جوه نفس الاسم (حصل: «يOH»، «نagai») — اكتب الاسم كله إنجليزي أو كله عربي",
-  "retry": true,
-  "at": "2026-11-22T13:20:11.523Z"
  },
  "https://www.fightful.com/wrestling/the-rock-puts-pat-mcafee-through-a-table-with-the-rock-bottom": {
   "reason": "مكرر مع خبر نزل قبل كده",
