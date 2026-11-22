@@ -1,0 +1,55 @@
+name: Expire News
+
+# ═══════════════════════════════════════════════════════
+#  كل خبر بيفضل على الموقع شهر بس (المالك ٢٠٢٦-١١-٢٢: «خلي ان الاخبار تتمسح بعد شهر من اضافتها في الموقع عشان
+#  الاستهلاك والمساحة»، الحادثة ١٤٨١). كل يوم: الأخبار اللي عدّى على نشرها أكتر من ٣٠ يوم بتتمسح، وبعد ما المسح يوصل
+#  لـmain صورها بتتمسح من R2 لو مفيش صفحة تانية بتستخدمها. العنوان القديم بيحوّل على صفحة الأخبار (site-worker/fast.js).
+# ═══════════════════════════════════════════════════════
+
+on:
+  schedule:
+    - cron: '23 2 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: expire-news
+  cancel-in-progress: false
+
+permissions:
+  contents: write   # the commit, and arw-media deletes only for a key that can write the repo
+
+jobs:
+  expire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install --prefer-offline --no-audit --no-fund
+      - name: Delete stories older than a month
+        id: expire
+        run: |
+          npx tsx scripts/expire-news.ts --out /tmp/expired-pictures.json
+          if [[ -z $(git status -s content/news) ]]; then echo "Nothing to delete."; exit 0; fi
+          git config --local user.email "action@github.com"
+          git config --local user.name "ARW News Bot"
+          N=$(git status -s content/news | wc -l | tr -d ' ')
+          git add -A content/news
+          git commit -q -m "chore(news): stories older than a month deleted ($N) — INCIDENTS #1481"
+          for i in {1..8}; do
+            git pull --rebase -X theirs origin main || (git rebase --abort 2>/dev/null || true; git pull -X theirs --no-edit origin main) || true
+            # a story another bot touched meanwhile is still expired: delete again what came back
+            npx tsx scripts/expire-news.ts --out /tmp/expired-pictures.json >/dev/null
+            if [[ -n $(git status -s content/news) ]]; then git add -A content/news; git commit -q --amend --no-edit; fi
+            if git push origin HEAD:main; then echo "pushed=1" >> "$GITHUB_OUTPUT"; exit 0; fi
+            sleep $((3 + RANDOM % 5))
+          done
+          echo "push failed" >&2; exit 1
+      - name: Remove their pictures from R2
+        if: steps.expire.outputs.pushed == '1'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: npx tsx scripts/expire-news.ts --drop-pictures /tmp/expired-pictures.json

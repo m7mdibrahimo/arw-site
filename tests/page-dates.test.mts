@@ -35,7 +35,9 @@ test("a page with no stamp falls back to its first commit when that is later tha
   assert.equal(iso(pageTimes("./content/news/b.md", new Date("2026-10-07T21:00:00Z"), {}, map).published), "2026-10-07T21:00:00.000Z");
   // the real map: an English story written hours after its Arabic twin
   const real = JSON.parse(fs.readFileSync("lib/first-commit.json", "utf8"));
-  const [file, when] = Object.entries(real).find(([f]) => f.startsWith("content/news-en/"))! as [string, string];
+  const hit = Object.entries(real).find(([f]) => f.startsWith("content/news-en/") && fs.existsSync(f)) as [string, string] | undefined;
+  if (!hit) return; // the English edition is gone (INCIDENTS #1480)
+  const [file, when] = hit;
   const date = (fs.readFileSync(file, "utf8").match(/^date:\s*(.+)$/m) || [])[1];
   assert.ok(Date.parse(when) - Date.parse(date) > 30 * 60_000);
   assert.equal(pageDates("./" + file, new Date(date), {}).published, isoZoned(when));

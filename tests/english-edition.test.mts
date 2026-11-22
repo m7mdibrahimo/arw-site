@@ -262,7 +262,7 @@ test('a singular subject with «belong» gets its s (INCIDENTS #813)', async () 
   assert.equal(fixEnglishNames('Says It Belong to Australian Wrestling'), 'Says It Belongs to Australian Wrestling');
   assert.equal(fixEnglishNames('The titles belong to them'), 'The titles belong to them');
   const fs = await import('node:fs');
-  assert.deepEqual(fs.readdirSync('content/news-en').filter((f) => f.endsWith('.md') && /\b[Ii]t [Bb]elong (to|in)\b/i.test(fs.readFileSync(`content/news-en/${f}`, 'utf8'))), []);
+  if (fs.existsSync('content/news-en')) assert.deepEqual(fs.readdirSync('content/news-en').filter((f) => f.endsWith('.md') && /\b[Ii]t [Bb]elong (to|in)\b/i.test(fs.readFileSync(`content/news-en/${f}`, 'utf8'))), []);
 });
 
 test('an article glued to the next word by a hyphen is held back («on the-ring», INCIDENTS #829)', () => {
@@ -298,7 +298,7 @@ test('a show name ending in «!» or «?» is never followed by a full stop (rou
   // a normal sentence keeps its full stop, and an ellipsis stays
   assert.equal(fixEnglishNames('He waited... Then he left.'), 'He waited... Then he left.');
   const fs = await import('node:fs');
-  assert.deepEqual(fs.readdirSync('content/news-en').filter((f) => f.endsWith('.md') && /[!?]\.(?:\s|$)/.test(fs.readFileSync(`content/news-en/${f}`, 'utf8'))), []);
+  if (fs.existsSync('content/news-en')) assert.deepEqual(fs.readdirSync('content/news-en').filter((f) => f.endsWith('.md') && /[!?]\.(?:\s|$)/.test(fs.readFileSync(`content/news-en/${f}`, 'utf8'))), []);
 });
 
 test('the writer never inserts a bracketed word into a direct quote (round 2026-10-27)', async () => {
@@ -317,7 +317,7 @@ test('a word dropped from a transcribed quote is put back («One the things», r
   const { fixEnglishNames } = await import('../scripts/english-edition.ts');
   assert.equal(fixEnglishNames('One the things he said that he noticed was that I was athletic.'), 'One of the things he said that he noticed was that I was athletic.');
   const fs = await import('node:fs');
-  assert.deepEqual(fs.readdirSync('content/news-en').filter((f) => f.endsWith('.md') && /\bOne the things\b/.test(fs.readFileSync(`content/news-en/${f}`, 'utf8'))), []);
+  if (fs.existsSync('content/news-en')) assert.deepEqual(fs.readdirSync('content/news-en').filter((f) => f.endsWith('.md') && /\bOne the things\b/.test(fs.readFileSync(`content/news-en/${f}`, 'utf8'))), []);
 });
 
 // INCIDENTS #883: the description was built from the first prose line only, so a story whose opening line is a short

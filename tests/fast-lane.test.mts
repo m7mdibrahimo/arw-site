@@ -172,7 +172,10 @@ test('an isolate with an old list (nothing served for a while): a page stored si
     const r = await s.get('/news/new-story/');
     assert.equal(r.status, 200, 'the old list did not have it: the current one is asked before a 404');
     assert.match(await r.text(), /FAST STORY/);
-    assert.equal((await s.get('/news/missing-story/')).status, 404, 'a page that truly is not there is still a 404');
+    // a story address with no page is a deleted story (a month old, INCIDENTS #1481): it goes to the news page
+    const gone = await s.get('/news/missing-story/');
+    assert.equal(gone.status, 301, 'a page that truly is not there goes to the news page');
+    assert.equal(gone.headers.get('Location'), '/news/');
   } finally { Date.now = now; }
 });
 
@@ -186,7 +189,13 @@ test('the bot down or broken: the site is exactly as without the fast lane', asy
 
 test('a missing address is the nearest 404.html with status 404, as not_found_handling «404-page» did', async () => {
   const s = site();
-  for (const [path, body] of [['/nope/', 'NOT FOUND PAGE'], ['/a/b/c', 'NOT FOUND PAGE'], ['/en/nope/', 'ENGLISH NOT FOUND'], ['/en/shows/x', 'ENGLISH NOT FOUND'], ['/shows/missing/', 'NOT FOUND PAGE']] as const) {
+  // (an /en/ address goes to its Arabic page now, INCIDENTS #1480)
+  for (const [from, to] of [['/en/nope/', '/nope/'], ['/en/shows/x', '/shows/x'], ['/en/', '/'], ['/en/news/old-story/', '/news/']] as const) {
+    const r = await s.get(from);
+    assert.equal(r.status, 301, from);
+    assert.equal(r.headers.get('Location'), to, from);
+  }
+  for (const [path, body] of [['/nope/', 'NOT FOUND PAGE'], ['/a/b/c', 'NOT FOUND PAGE'], ['/shows/missing/', 'NOT FOUND PAGE']] as const) {
     const r = await s.get(path);
     assert.equal(r.status, 404, path);
     assert.equal(await r.text(), body, path);

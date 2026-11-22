@@ -2600,7 +2600,10 @@ module.exports = function(eleventyConfig) {
     } catch (e) { console.log(`[en] skipped: ${e.stack}`); }
   };
   englishCopy.fastLane = true;
-  eleventyConfig.on("eleventy.after", englishCopy);
+  // The English edition is gone (owner 2026-11-22: «خليها عربي وبس»; INCIDENTS #1480): /en/ isn't built any more, so the
+  // Arabic pages carry no language button and no hreflang links. arw-site-static sends every old /en/ address to its
+  // Arabic page (site-worker/fast.js goneTarget).
+  void englishCopy;
 
   // Cloudflare Pages refuses a deployment of more than 20,000 files — the build «succeeds» and the deploy fails, so the
   // site silently stays on its last version (INCIDENTS #368). Counted last, after every page, picture and redirect

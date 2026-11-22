@@ -2002,7 +2002,13 @@ let geminiBlocked = false;
  *  about the article, so callers must NOT mark it processed (INCIDENTS #37). */
 /** English editions the last day's stories still lack (INCIDENTS #354): the source page fetched again, a few a run.
  *  Only this bot's own outlet's stories (INCIDENTS #355); Fightful's bot also takes the ones from anywhere else. */
+/** The English edition is gone (owner 2026-11-22: «شيله بتاع لغة الموقع وان من كل حاجة نسختين عربي وانجليزي خليها عربي
+ *  وبس»; INCIDENTS #1480): no English story is written or caught up. The prompt still asks for the English draft first —
+ *  the Arabic story is written from it, and that is how the Arabic quality was tuned — it just isn't saved. */
+export const ENGLISH_EDITION = false;
+
 export async function englishCatchUp(outlets: string[] = ["Fightful", ""], limit = 2): Promise<number> {
+  if (!ENGLISH_EDITION) return 0;
   try { dedupeEnglishEditions(); pruneDuplicateOrphanEnglish(); syncEnglishFromArabic(); } catch (e: any) { console.warn("[English] sync skipped:", e?.message || e); } // no request: always
   if (geminiQuotaExhausted() || newsBotsPaused()) return 0;
   return catchUpEnglishEditions(queryGemini, async (url) => {
@@ -4425,6 +4431,17 @@ export function staleRatingsReport(title: string, url: string, sourceDate: strin
   return posted - show > STALE_RATINGS_DAYS * 86400_000 ? new Date(show).toISOString().slice(0, 10) : null;
 }
 
+/** Only the news people read (owner 2026-11-22: «الاخبار عندي كتير ملهاش لازمة ومحدش بيشوفها خليك في المهم ال ممكن يتشاف
+ *  فقط»; INCIDENTS #1479). The site's own statistics for the stories of 8–20 Nov: "high" 4.2 views each on average, WWE and
+ *  AEW "normal" 2.5, everything else 0.3–1.6 with about a third never opened at all. So: a show's results report and any
+ *  "high" story always; a "normal" one only from WWE or AEW; "low" never. An unrated story (the rating call failed) counts
+ *  as "normal", so a bad hour at Gemini doesn't empty the site. */
+export function newsWorthPublishing(priority: string | undefined, federation: string | undefined, resultsReport: boolean): boolean {
+  if (resultsReport || priority === "high") return true;
+  if (priority === "low") return false;
+  return /^(WWE|AEW)$/i.test(String(federation || "").trim());
+}
+
 export async function processPost(post: any, customDate?: Date | string, bypassSpoilerFilter: boolean = false, options: { manual?: boolean; keepUrl?: boolean } = {}): Promise<boolean> {
   lastPostRetryable = false;
   const postId = post.id;
@@ -5099,6 +5116,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     socialVerdict = { spoils: true, kind: "show", age: "recent", note: "حصل جوه عرض اتذاع في آخر ٦ ساعات، فهو حرق من العرض" };
   }
   if (socialVerdict) console.log(`[Watcher] Social check: ${socialVerdict.spoils ? `🛡️ spoils (${socialVerdict.kind})` : "clean"} — ${socialVerdict.note}`);
+  // Only the news people read (INCIDENTS #1479): automatic runs skip the rest — remembered as done, never tried again
+  if (!options.manual && !options.keepUrl && !newsWorthPublishing(socialVerdict?.priority, rewritten.federation || "WWE", isShowResultsArticle(rawTitle, plainText))) {
+    console.log(`[Watcher] ⏭️ Post #${postId} skipped: not important enough (${socialVerdict?.priority || "unrated"}, ${rewritten.federation || "WWE"}) — «${rewritten.title}»`);
+    noteOutcome(postUrl, "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس");
+    return false;
+  }
   const socialYaml = socialVerdict ? `\nsocial_spoiler: ${socialVerdict.spoils}\nsocial_spoiler_kind: ${socialVerdict.kind}\nsocial_spoiler_age: ${socialVerdict.age}\nsocial_spoiler_note: ${JSON.stringify(cleanSpoilerNote(socialVerdict.note))}${socialVerdict.priority ? `\nsocial_priority: ${socialVerdict.priority}` : ""}` : "";
   let markdownContent = `---
 federation: ${rewritten.federation || "WWE"}
@@ -5149,7 +5172,7 @@ ${finalBody}
       arabicTitle: rewritten.title, arabicBody: finalBody, federation: rewritten.federation || "WWE",
       image: localImagePath, gallery, date: new Date(iso).toISOString(), filePrefix: prefix,
     };
-    if (!saveJointEnglishEdition(rewritten, enInput) && !geminiQuotaExhausted()) await writeEnglishEdition(enInput, queryGemini);
+    if (ENGLISH_EDITION && !saveJointEnglishEdition(rewritten, enInput) && !geminiQuotaExhausted()) await writeEnglishEdition(enInput, queryGemini);
   } catch (e: any) { console.warn("[English] skipped:", e?.message || e); }
 
   // Optional background auto-reel generation if enabled

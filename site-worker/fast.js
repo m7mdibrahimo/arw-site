@@ -133,8 +133,28 @@ function decoded(pathname) {
   try { return decodeURIComponent(pathname); } catch { return pathname; }
 }
 
+/** Where a page that is gone now lives (INCIDENTS #1480, #1481): the English edition was removed — an /en/ address goes
+ *  to the same page in Arabic, an English story to the news page; and a story is deleted a month after it was published —
+ *  its address goes to the news page. A permanent redirect, so Google moves its links over and stops asking. */
+export function goneTarget(path) {
+  if (path === "/en" || path.startsWith("/en/")) {
+    const rest = path.slice(3) || "/";
+    return /^\/news\/./.test(rest) ? "/news/" : rest;
+  }
+  if (/^\/news\/[^/]+\/?$/.test(path)) return "/news/";
+  return null;
+}
+
 /** The whole script: arw-site-static's fetch */
 export async function handle(request, env, ctx) {
+  const r = await serve(request, env, ctx);
+  if (r.status !== 404) return r;
+  const to = goneTarget(decoded(new URL(request.url).pathname));
+  if (!to) return r;
+  return new Response(null, { status: 301, headers: { Location: encodeURI(to), "Cache-Control": "public, max-age=600" } });
+}
+
+async function serve(request, env, ctx) {
   const u = new URL(request.url);
   if (request.method !== "GET" && request.method !== "HEAD") return env.ASSETS.fetch(request);
   const path = decoded(u.pathname);

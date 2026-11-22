@@ -289,6 +289,7 @@ test("every English story without an Arabic pair has a redirect (INCIDENTS #772)
   const redirects = fs.readFileSync("_redirects", "utf-8");
   // the build writes a redirect page for each of them itself (INCIDENTS #982)
   const generated = new Set(require("../lib/redirects.cjs").orphanEnglishRedirects("content", "/nonexistent-site").map(([from]: [string]) => from));
+  if (!fs.existsSync("content/news-en")) return; // the English edition is gone (INCIDENTS #1480)
   const missing = fs.readdirSync("content/news-en").filter(f => f.endsWith(".md")).filter(f => {
     const t = fs.readFileSync(`content/news-en/${f}`, "utf-8");
     const id = t.match(/^source_id:\s*"?(\d+)/m)?.[1];

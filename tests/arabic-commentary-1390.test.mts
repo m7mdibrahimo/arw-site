@@ -125,11 +125,7 @@ test('a built Arabic-commentary show and its program page have no «مترجم»
       assert.match(ar, /"alternateName": ?\["[^"\]]*بالتعليق العربي"/, slug);
       assert.match(ar, /"@type": ?"BroadcastEvent"[^}]*"inLanguage": ?"ar"/, slug);
       assert.match(ar, /<h2 id="show-about-h">[^<]*بتعليق عربي/, slug);
-      const en = own(built(slug, true));
-      assert.ok(!en.includes('مترجم'), `${slug} (en): «${(en.match(/.{60}مترجم.{30}/) || [''])[0]}»`);
-      assert.ok(!/subtitle|translated/i.test(en), `${slug} (en): «${(en.match(/.{60}(?:subtitle|translated).{30}/i) || [''])[0]}»`);
-      assert.match(en, /Arabic commentary/, slug);
-      assert.match(en, /<title>[^<]*with Arabic Commentary[^<]*<\/title>/, slug);
+      // (the English page went with the English edition, INCIDENTS #1480)
     }
 
     const normal = built('zz-test-1350-normal.md');
@@ -137,7 +133,6 @@ test('a built Arabic-commentary show and its program page have no «مترجم»
     assert.match(normal, /<title>[^<]*كامل مترجم[^<]*<\/title>/);
     assert.match(normal, /"subtitleLanguage": "ar"/);
     assert.match(normal, /<h2 id="show-about-h">[^<]*كامل مترجم/);
-    assert.match(built('zz-test-1350-normal.md', true), /with Arabic subtitles in full/);
 
     // the program's library page: H1, count, intro, «الأخير» heading, head and JSON-LD — and its English copy
     const lib = fs.readFileSync(path.join('_site', LIB), 'utf8');
@@ -150,10 +145,6 @@ test('a built Arabic-commentary show and its program page have no «مترجم»
     assert.match(lib, /<title>عروض الرو بالتعليق العربي \(عرض واحد\) — مشاهدة وتحميل WWE Test 1390 بالصوت العربي \| عرب راسلنج<\/title>/);
     assert.match(lib, /<meta name="description" content="كل عروض الرو بالتعليق العربي[^"]*بالصوت العربي/);
     assert.match(lib, /"keywords": ?"[^"]*الرو بالتعليق العربي/);
-    const libEn = fs.readFileSync(path.join('_site', 'en', LIB), 'utf8');
-    assert.ok(!/مترجم|subtitle|translated/i.test(libEn), `library (en): «${(libEn.match(/.{60}(?:مترجم|subtitle|translated).{30}/i) || [''])[0]}»`);
-    assert.match(libEn, /shows with Arabic commentary/);
-    assert.match(libEn, /<title>WWE Test 1390 Shows with Arabic Commentary \| Arab Wrestling<\/title>/);
     // the home page names these shows as a whole in its structured data, head only
     assert.match(fs.readFileSync('_site/index.html', 'utf8'), /"عروض المصارعة بالتعليق العربي"/);
     const libNormal = fs.readFileSync(path.join('_site', LIB_NORMAL), 'utf8');
