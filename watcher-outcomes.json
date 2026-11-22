@@ -1,53 +1,53 @@
 {
- "https://www.wrestlinginc.com/2324005/aew-collision-november-21-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-22T02:37:32.907Z"
- },
  "https://www.ringsidenews.com/aew-collision-results-highlights-key-moments-november-21-2026": {
-  "reason": "المراجعة رفضته: المصدر بيتكلم عن Death Riders (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن Megan Bayne (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، المواجهة مكتوبة «نزال فردي» والفقرة تحتها بتقول «نزال ثلاثي/فرق» — صحح العنوان حسب سطر المصدر، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
   "retry": true,
-  "at": "2026-11-22T02:39:15.558Z"
+  "at": "2026-11-22T02:42:25.973Z"
  },
  "https://www.fightful.com/wrestling/daniel-garcia-suffers-arm-injury-on-11-21-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T02:38:53.967Z"
+  "at": "2026-11-22T02:41:42.810Z"
  },
  "https://www.fightful.com/wrestling/details-on-mike-romos-exit-from-tna": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T02:38:53.557Z"
+  "at": "2026-11-22T02:41:42.167Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-results-11-21-2026-ilja-dragunov-vs-el-clon-continental-classic-continues-divine-dominion-more": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T02:38:53.303Z"
+  "at": "2026-11-22T02:41:41.759Z"
  },
  "https://www.fightful.com/wrestling/jake-hager-retained-some-sight-in-the-eye-after-two-surgeries": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T02:38:52.617Z"
+  "at": "2026-11-22T02:41:40.659Z"
  },
  "https://www.fightful.com/wrestling/the-rock-im-coming-to-houston-to-say-thank-you-and-i-love-you": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T02:38:52.379Z"
+  "at": "2026-11-22T02:41:40.282Z"
  },
  "https://www.fightful.com/wrestling/mjf-responds-to-claim-he-stayed-with-aew-as-a-safe-bet": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T02:38:52.051Z"
+  "at": "2026-11-22T02:41:39.747Z"
  },
  "https://www.fightful.com/wrestling/the-rock-puts-pat-mcafee-through-a-table-with-the-rock-bottom": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T02:38:51.583Z"
+  "at": "2026-11-22T02:41:38.985Z"
  },
  "https://www.fightful.com/wrestling/roh-womens-pure-title-match-tag-title-bout-added-to-final-battle-ppv": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-22T02:38:50.890Z"
+  "at": "2026-11-22T02:41:37.867Z"
+ },
+ "https://www.wrestlinginc.com/2324005/aew-collision-november-21-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-22T02:37:32.907Z"
  },
  "https://www.fightful.com/wrestling/gail-kim-and-alisha-edwards-holding-auction-to-benefit-rebel": {
   "reason": "المراجعة رفضته: فعل مثنى («تنظمان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
