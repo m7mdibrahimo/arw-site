@@ -5716,15 +5716,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض ان جيه بي دبليو باوند فور انباوند 20.11.2026 مترجم",
-    "lastAttempt": 1795365229017,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1795366167890,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -5736,7 +5732,7 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض كوليجن 21.11.2026 مترجم",
-    "lastAttempt": 1795365229897,
+    "lastAttempt": 1795366169394,
     "errors": {
       "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5768,9 +5764,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ايه ايه ايه 21.11.2026 مترجم",
-    "lastAttempt": 1795360187495,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1795366196885,
+    "errors": {
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
