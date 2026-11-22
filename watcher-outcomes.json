@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/espn2-adds-wwe-survivor-series-special-thanksgiving-tv-schedule": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-22T21:43:31.662Z"
+ },
  "https://www.fightful.com/wrestling/trick-williams-wants-to-headline-his-first-wrestlemania-against-cody-rhodes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Mojo Brookzz",
   "retry": true,
   "at": "2026-11-14T17:01:40.664Z"
- },
- "https://www.ringsidenews.com/lars-sullivan-calls-brody-king-fat-antifa-dork-anti-ice-stance": {
-  "reason": "المراجعة رفضته: المصدر مابيربطش المصارع بالاتحاد ده: AEW برودي كينج — اكتب «المصارع <الاسم>» من غير اسم اتحاد",
-  "retry": true,
-  "at": "2026-11-14T16:48:32.074Z"
  }
 }
