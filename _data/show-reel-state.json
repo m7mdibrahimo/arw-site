@@ -5732,15 +5732,11 @@
     "facebook_reel": true,
     "facebook_story": true,
     "instagram_reel": true,
-    "instagram_story": false,
+    "instagram_story": true,
     "title": "عرض كوليجن 21.11.2026 مترجم",
-    "lastAttempt": 1795370523169,
-    "errors": {
-      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
-    },
-    "processing": [
-      "instagram_story"
-    ],
+    "lastAttempt": 1795371383379,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -5752,7 +5748,7 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض يو اف سي فايت نايت 21.11.2026 مترجم",
-    "lastAttempt": 1795370524050,
+    "lastAttempt": 1795371384775,
     "errors": {
       "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
