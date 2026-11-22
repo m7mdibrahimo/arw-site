@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/chad-gable-explains-unexpected-downside-wwe-cutting-back-live-events": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-22T07:39:04.197Z"
+ },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-13T17:19:22.375Z"
- },
- "https://www.fightful.com/wrestling/josh-barnett-gives-his-side-of-using-bloodsport-after-matt-riddle": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T17:11:35.709Z"
  }
 }
