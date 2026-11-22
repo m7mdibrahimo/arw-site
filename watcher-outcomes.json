@@ -1,18 +1,18 @@
 {
- "https://www.wrestlinginc.com/2322555/aew-kenny-omega-njpw-g1-climax-yuya-uemura-ryohei-oiwa": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-22T19:07:38.955Z"
+ "https://www.ringsidenews.com/vince-mcmahon-accuser-janel-grant-warns-about-fake-social-media-accounts-scammers": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-11-22T19:17:45.503Z"
  },
  "https://www.ringsidenews.com/zelina-vega-reveals-she-made-first-move-aleister-black-awkward-first-meeting": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-22T19:03:05.474Z"
+  "at": "2026-11-22T19:11:26.847Z"
  },
- "https://www.ringsidenews.com/chris-masters-claims-trump-derangement-syndrome-believing-donald-trump-good-president": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-22T19:00:16.340Z"
+ "https://www.wrestlinginc.com/2322555/aew-kenny-omega-njpw-g1-climax-yuya-uemura-ryohei-oiwa": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-22T19:07:38.955Z"
  },
  "https://www.fightful.com/wrestling/three-unseen-matches-added-to-tna-impact-thanksgiving-special": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
@@ -48,6 +48,11 @@
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-22T19:04:43.931Z"
+ },
+ "https://www.ringsidenews.com/chris-masters-claims-trump-derangement-syndrome-believing-donald-trump-good-president": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-22T19:00:16.340Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-14T06:26:33.599Z"
- },
- "https://www.fightful.com/wrestling/alleged-victim-in-ludwig-kaiser-battery-case-claims-he-suffered-torn-rotator-cuff-concussion": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T03:31:59.036Z"
  }
 }
