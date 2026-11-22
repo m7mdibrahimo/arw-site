@@ -5718,7 +5718,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ان جيه بي دبليو باوند فور انباوند 20.11.2026 مترجم",
-    "lastAttempt": 1795364413261,
+    "lastAttempt": 1795365229017,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5736,9 +5736,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض كوليجن 21.11.2026 مترجم",
-    "lastAttempt": 1795363562981,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1795365229897,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
@@ -5750,15 +5754,12 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض يو اف سي فايت نايت 21.11.2026 مترجم",
-    "lastAttempt": 1795364442058,
-    "errors": {
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
-    },
-    "processing": [
-      "tiktok"
-    ],
+    "lastAttempt": 1795365241046,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261122165330-lucha-libre-aaa-21-11-2026": {
     "publishedAt": 1795360175578,
