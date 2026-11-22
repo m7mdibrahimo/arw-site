@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/tna-wrestling-announces-thanksgiving-impact-matches-major-tv-schedule-change": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-22T15:48:13.585Z"
+ },
  "https://www.fightful.com/wrestling/njpw-road-to-world-tag-league-results-11-21": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Cruz Del Toro",
   "retry": true,
   "at": "2026-11-13T21:28:55.605Z"
- },
- "https://www.fightful.com/wrestling/338828-tony-khan-aew": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-13T21:22:13.647Z"
  }
 }
