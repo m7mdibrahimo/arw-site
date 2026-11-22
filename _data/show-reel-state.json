@@ -5770,7 +5770,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261122211059-mlw-fusion-21-11-2026": {
     "publishedAt": 1795375636931,
@@ -5793,7 +5794,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ان دبليو ايه باور 21.11.2026 مترجم",
-    "lastAttempt": 1795385187076,
+    "lastAttempt": 1795385986968,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
