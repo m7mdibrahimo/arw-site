@@ -44,3 +44,9 @@ test('INCIDENTS #1476: the members and inbox lookups have their indexes (100 mil
   assert.match(fs.readFileSync('worker/src/members.ts', 'utf8'), /CREATE INDEX IF NOT EXISTS member_emails_member ON member_emails \(member, email\)/);
   assert.match(fs.readFileSync('worker/src/follows.ts', 'utf8'), /CREATE INDEX IF NOT EXISTS member_inbox_unpushed ON member_inbox \(pushed, read, at\)/);
 });
+
+test('INCIDENTS #1476: the visitor salt is read from KV once per isolate, not on every page view or comment', () => {
+  const a = fs.readFileSync('worker/src/analytics.ts', 'utf8');
+  assert.match(a, /if \(SALT\) return SALT;/);
+  assert.doesNotMatch(fs.readFileSync('worker/src/comments.ts', 'utf8'), /PUSH_KV\.get\("analytics:salt"\)/);
+});

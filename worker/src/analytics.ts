@@ -37,10 +37,14 @@ export function pagePath(raw: unknown): string | null {
   return p.endsWith("/") ? p : `${p}/`;
 }
 
-async function salt(env: AnalyticsEnv): Promise<string> {
+// The salt never changes once made: kept in the isolate, so a page view no longer reads KV each time (one read per
+// isolate instead of one per visit; the free plan allows 100,000 KV reads a day, INCIDENTS #1476)
+let SALT: string | null = null;
+export async function salt(env: { PUSH_KV: KVNamespace }): Promise<string> {
+  if (SALT) return SALT;
   let s = await env.PUSH_KV.get("analytics:salt");
   if (!s) { s = crypto.randomUUID(); await env.PUSH_KV.put("analytics:salt", s); }
-  return s;
+  return (SALT = s);
 }
 async function visitorHash(env: AnalyticsEnv, day: string, ip: string, ua: string): Promise<string> {
   const data = new TextEncoder().encode(`${await salt(env)}|${day}|${ip}|${ua}`);

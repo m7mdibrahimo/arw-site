@@ -23,7 +23,7 @@
 // Published at once, so the guards are here: only from the site's own pages, never from a bot or a form filled in
 // under 2 seconds (or with the hidden field filled), no links, no 5th comment in 10 minutes or 31st in a day from the
 // same visitor, no same comment twice on a page, a picture only from the site's list or a small square image.
-import { BOT_UA, cairo, fromSite, pagePath } from "./analytics";
+import { BOT_UA, cairo, fromSite, pagePath, salt } from "./analytics";
 import { notifyOwner, ownerOf, savePush, validEndpoint, vapidKeys } from "./comment-push";
 import { ensureMembers, memberOf } from "./members";
 
@@ -87,8 +87,7 @@ export const WRESTLER_PIC = /^w:[a-z0-9-]{2,40}$/;
 const UPLOAD = /^data:image\/(webp|jpeg|png);base64,([A-Za-z0-9+/=]+)$/;
 
 async function visitor(env: CommentsEnv, request: Request, day: string): Promise<string> {
-  let s = await env.PUSH_KV.get("analytics:salt");
-  if (!s) { s = crypto.randomUUID(); await env.PUSH_KV.put("analytics:salt", s); }
+  const s = await salt(env);
   const data = new TextEncoder().encode(`${s}|comments|${request.headers.get("CF-Connecting-IP") || ""}|${request.headers.get("User-Agent") || ""}`);
   const h = new Uint8Array(await crypto.subtle.digest("SHA-256", data));
   return Array.from(h.slice(0, 10), b => b.toString(16).padStart(2, "0")).join("");
