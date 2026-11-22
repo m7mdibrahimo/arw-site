@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2324005/aew-collision-november-21-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-22T02:17:10.136Z"
+ },
  "https://www.fightful.com/wrestling/gail-kim-and-alisha-edwards-holding-auction-to-benefit-rebel": {
   "reason": "المراجعة رفضته: فعل مثنى («تنظمان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
@@ -38,11 +43,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-22T02:11:43.721Z"
- },
- "https://www.wrestlinginc.com/2324005/aew-collision-november-21-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-22T01:58:05.026Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-to-unveil-team-usas-final-member-on-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
