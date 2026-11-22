@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/tiffany-stratton-wins-wwe-womens-title-after-cashing-in-money-in-the-bank-on-chelsea-green-at-wwe-crown-jewel/": {
-    "matchedFile": "20261107215716-تيفاني-ستراتون-تخون-تشيلسي-غرين-وتستخدم-حقيبة-money-in-the-bank-في-عرض-wwe-crown-jewel-2026.md",
-    "reason": "الخبر الجديد يغطي نفس واقعة فوز تيفاني ستراتون ببطولة السيدات باستخدام حقيبة Money in the Bank في عرض Crown Jewel، وهي نفس الواقعة التي غطاها الخبر رقم 0.",
-    "at": "2026-11-07T19:08:46.768Z"
-  },
   "https://www.ringsidenews.com/tiffany-stratton-breaks-silence-money-bank-cash-wwe-crown-jewel/": {
     "matchedFile": "20261107215716-تيفاني-ستراتون-تخون-تشيلسي-غرين-وتستخدم-حقيبة-money-in-the-bank-في-عرض-wwe-crown-jewel-2026.md",
     "reason": "الخبر الجديد يعيد سرد نفس الواقعة الخاصة بصدمة استخدام تيفاني ستراتون لحقيبة موني إن دي بانك ضد تشيلسي غرين في عرض كراون جيويل، والتصريح المذكور هو جزء من نفس سياق الاحتفال بالتتويج المنشور بالفعل في الخبر السابق.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261122055050-سافيو-فيغا-يظهر-في-عرض-aaa-على-قناة-fox.md",
     "reason": "الخبر الجديد يعالج نفس الحدث والظهور لسافيو فيغا في كواليس عرض AAA على قناة Fox بتاريخ 21 نوفمبر وتفاعله مع نفس المصارعين (إل ميسياس، ميكا وولف، ولينس دورادو) مع إعادة صياغة لنفس التفاصيل.",
     "at": "2026-11-22T02:58:13.897Z"
+  },
+  "https://www.wrestlinginc.com/2324205/aew-dynamite-viewership-ratings-report-november-18-2026/": {
+    "matchedFile": "20261121031740-عرض-aew-dynamite-في-18-نوفمبر-يجذب-أكثر-من-725-ألف-مشاهد.md",
+    "reason": "الخبر الجديد يغطي نفس الحدث والبيانات الخاصة بنسب مشاهدة عرض AEW Dynamite ليوم 18 نوفمبر 2026 وأرقام ديف ميلتزر والتي تم نشرها مسبقاً في الخبر رقم 2.",
+    "at": "2026-11-22T03:16:55.179Z"
   }
 }

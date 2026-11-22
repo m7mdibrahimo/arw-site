@@ -1,5 +1,15 @@
 [
   {
+    "id": 3005714940,
+    "link": "https://www.wrestlinginc.com/2324205/aew-dynamite-viewership-ratings-report-november-18-2026/",
+    "date": "Sun, 22 Nov 2026 03:04:13 +0000",
+    "date_gmt": "2026-11-22T03:04:13.000Z",
+    "title": {
+      "rendered": "AEW Dynamite Viewership & Ratings Report, 11/18/2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-viewership-ratings-report-11182026/l-intro-1795316534.jpg"
+  },
+  {
     "id": 2679298979,
     "link": "https://www.wrestlinginc.com/2324005/aew-collision-november-21-2026-results/",
     "date": "Sat, 21 Nov 2026 22:00:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Jade Cargill Defeats Charlotte Flair On WWE SmackDown, Wins WarGames Match Advantage"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/jade-cargill-defeats-charlotte-flair-on-wwe-smackdown-wins-wargames-match-advantage/l-intro-1795225651.jpg"
-  },
-  {
-    "id": 1545180898,
-    "link": "https://www.wrestlinginc.com/2323950/jeff-jarrett-aew-full-gear-2026-travel-nation-wide-faa-ground-stop/",
-    "date": "Sat, 21 Nov 2026 00:57:42 +0000",
-    "date_gmt": "2026-11-21T00:57:42.000Z",
-    "title": {
-      "rendered": "Jeff Jarrett Details AEW Full Gear Travel Issues Following Nation-Wide FAA Ground Stop"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/jeff-jarrett-details-aew-full-gear-travel-issues-following-nation-wide-faa-ground-stop/l-intro-1795222561.jpg"
   }
 ]
