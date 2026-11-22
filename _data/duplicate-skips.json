@@ -1,9 +1,4 @@
 {
-  "https://www.fightful.com/wrestling/chelsea-green-wins-the-womens-crown-jewel-championship-at-wwe-crown-jewel/": {
-    "matchedFile": "20261107215412-تشيلسي-غرين-تحقق-فوزا-مفاجئا-على-ليف-مورغان-في-عرض-wwe-crown-jewel-2026.md",
-    "reason": "الخبر الجديد يعيد سرد نفس نتيجة نزال تشيلسي غرين وليف مورغان في عرض Crown Jewel وتتويجها بالبطولة مع تفاصيل سير النزال، وهو نفس الحدث المغطى في الخبر المنشور سابقاً.",
-    "at": "2026-11-07T18:58:10.374Z"
-  },
   "https://www.fightful.com/wrestling/tiffany-stratton-wins-wwe-womens-title-after-cashing-in-money-in-the-bank-on-chelsea-green-at-wwe-crown-jewel/": {
     "matchedFile": "20261107215716-تيفاني-ستراتون-تخون-تشيلسي-غرين-وتستخدم-حقيبة-money-in-the-bank-في-عرض-wwe-crown-jewel-2026.md",
     "reason": "الخبر الجديد يغطي نفس واقعة فوز تيفاني ستراتون ببطولة السيدات باستخدام حقيبة Money in the Bank في عرض Crown Jewel، وهي نفس الواقعة التي غطاها الخبر رقم 0.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261122054325-ظهور-ديمونيو-إنفيرنا-لأول-مرة-في-عرض-aaa-on-fox.md",
     "reason": "الخبر الجديد يغطي نفس الحدث تماما (عودة إل تيكسانو جونيور وديمونيو إنفيرنا ومهاجمة أبطال الفرق في عرض AAA on FOX) وهو مكرر للخبر المنشور برقم 0.",
     "at": "2026-11-22T02:51:39.162Z"
+  },
+  "https://www.ringsidenews.com/savio-vega-teases-new-screen-role-aaa/": {
+    "matchedFile": "20261122055050-سافيو-فيغا-يظهر-في-عرض-aaa-على-قناة-fox.md",
+    "reason": "الخبر الجديد يعالج نفس الحدث والظهور لسافيو فيغا في كواليس عرض AAA على قناة Fox بتاريخ 21 نوفمبر وتفاعله مع نفس المصارعين (إل ميسياس، ميكا وولف، ولينس دورادو) مع إعادة صياغة لنفس التفاصيل.",
+    "at": "2026-11-22T02:58:13.897Z"
   }
 }
