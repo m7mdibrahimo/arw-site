@@ -293,3 +293,8 @@ test("a comma after a subject's aside is not a clause end (Ludwig Kaiser story, 
   assert.notEqual(d, "WWE star Ludwig Kaiser, also known as El Grande Americano.");
   assert.match(d, /continues to face/, d);
 });
+
+test("a «During…» scene cut at its last comma keeps the whole first sentence (Daniel Garcia story, 2026-11-22)", () => {
+  const d = metaDescription("During the November 21, 2026, broadcast of AEW Collision from Green Bay, Wisconsin, a Continental Classic match between Daniel Garcia and Brody King ended suddenly. The referee stopped the match after Garcia appeared to be in pain following a maneuver by King.");
+  assert.match(d, /ended suddenly\.$/);
+});

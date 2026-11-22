@@ -1,7 +1,7 @@
 ---
 title: "Cody Rhodes Explains Valuable Hollywood Lesson He Learned From The Rock"
 slug: "cody-rhodes-explains-valuable-hollywood-lesson-he-learned-from-the-rock"
-description: "During an appearance on Insight with Chris Van Vliet, Cody Rhodes discussed the valuable insight he received from Dwayne \"The Rock\" Johnson regarding."
+description: "During an appearance on Insight with Chris Van Vliet, Cody Rhodes discussed the valuable insight he received."
 federation: WWE
 date: 2026-10-31T01:00:00.000Z
 source_id: 1359567531

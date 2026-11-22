@@ -1,7 +1,7 @@
 ---
 title: "AEW Collision Match Abruptly Stopped After Daniel Garcia Appears Hurt"
 slug: "aew-collision-match-abruptly-stopped-after-daniel-garcia-appears-hurt"
-description: "During the November 21, 2026, broadcast of AEW Collision from Green Bay, Wisconsin."
+description: "During the November 21, 2026, broadcast of AEW Collision from Green Bay, Wisconsin, a Continental Classic match between Daniel Garcia and Brody King ended suddenly."
 federation: AEW
 date: 2026-11-22T01:55:26.000Z
 created_at: 2026-11-22T01:57:30.168Z
