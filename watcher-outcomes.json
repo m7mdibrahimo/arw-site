@@ -54,11 +54,6 @@
   "retry": true,
   "at": "2026-11-22T14:42:40.849Z"
  },
- "https://www.ringsidenews.com/dawn-marie-reveals-how-much-money-she-actually-made-wwe-massive-expenses": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-22T14:32:08.354Z"
- },
  "https://www.fightful.com/wrestling/the-rock-im-coming-to-houston-to-say-thank-you-and-i-love-you": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1988,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-13T20:55:31.576Z"
- },
- "https://www.fightful.com/wrestling/clark-connors-weighs-in-on-njpw-of-america-closing-down-i-think-its-a-smart-business-decision": {
-  "reason": "المراجعة رفضته: العنوان بينتهي بكلمة مبتورة مش موجودة في الخبر — الاقتباس اتقطع",
-  "retry": true,
-  "at": "2026-11-13T20:53:22.784Z"
  }
 }
