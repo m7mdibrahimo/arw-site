@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/dawn-marie-reveals-how-much-money-she-actually-made-wwe-massive-expenses": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-22T14:32:08.354Z"
+ },
  "https://www.fightful.com/wrestling/sol-ruca-names-her-favorite-part-of-creating-her-own-ring-gear": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "تقرير مشاهدة لعرض قديم (2026-11-05)",
   "retry": false,
   "at": "2026-11-13T20:45:57.905Z"
- },
- "https://www.ringsidenews.com/eddie-guerreros-daughter-sherilyn-says-21-years-without-her-dad-only-made-pain-worse": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-13T20:13:14.383Z"
  }
 }
