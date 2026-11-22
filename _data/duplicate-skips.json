@@ -1,9 +1,4 @@
 {
-  "https://www.ringsidenews.com/chelsea-green-addresses-tiffany-strattons-betrayal-title-loss-wwe-crown-jewel/": {
-    "matchedFile": "20261107215716-تيفاني-ستراتون-تخون-تشيلسي-غرين-وتستخدم-حقيبة-money-in-the-bank-في-عرض-wwe-crown-jewel-2026.md",
-    "reason": "الخبر الجديد عبارة عن تصريحات تشيلسي غرين حول نفس واقعة الخيانة التي تم تغطيتها بالفعل في الخبر المنشور، ولا يضيف تطوراً جديداً للحدث نفسه بل يعيد سرد مشاعرها تجاه ما حدث.",
-    "at": "2026-11-07T20:06:12.367Z"
-  },
   "https://www.fightful.com/wrestling/chelsea-green-comments-after-losing-womens-title-at-wwe-crown-jewel-i-didnt-just-lose-my-championship-but-i-lost-a-friend/": {
     "matchedFile": "20261107215716-تيفاني-ستراتون-تخون-تشيلسي-غرين-وتستخدم-حقيبة-money-in-the-bank-في-عرض-wwe-crown-jewel-2026.md",
     "reason": "الخبر الجديد عبارة عن تصريحات تشيلسي غرين حول نفس واقعة خيانة تيفاني ستراتون لها في عرض Crown Jewel، وهي واقعة مغطاة بالفعل في الخبر رقم 1.",
@@ -2498,5 +2493,10 @@
     "matchedFile": "20261122173627-برودي-كينج-أخبرت-دانيال-غارسيا-أنني-أدين-له-بضربة-قوية-لكن-الأمور-لم-يكن-مفترضا-أن-تنتهي-هكذا.md",
     "reason": "الخبر الجديد يكرر نفس التصريحات التي أدلى بها برودي كينج حول عدم استحقاقه للننقاط وأن داني غارسيا مدين له بضربة، وهي مطابقة لما ورد في الخبر المنشور رقم [2].",
     "at": "2026-11-22T14:57:21.929Z"
+  },
+  "https://www.ringsidenews.com/charlotte-flair-exposes-what-really-happened-her-infamous-via-cash-wwe-promo/": {
+    "matchedFile": "20261122160000-شارلوت-فلير-تعلق-على-ميم-استخدام-الحقيبة-وتعتبر-الجملة-رائعة.md",
+    "reason": "الخبر الجديد يغطي نفس مقابلة بودكاست Ring the Belle وتصريحات شارلوت فلير حول ميم استخدام الحقيبة والقمصان الرسمية المذكورة في الخبر رقم 0",
+    "at": "2026-11-22T15:01:44.496Z"
   }
 }
