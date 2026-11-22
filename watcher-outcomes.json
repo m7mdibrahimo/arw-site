@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/carlitos-attempt-shoot-his-shot-miss-universe-contestant-ends-failure": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-22T13:52:33.103Z"
+ },
  "https://www.fightful.com/wrestling/dawn-marie-says-her-best-paying-year-in-wwe-was-2200000-with-over-120000-in-expenses": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-13T19:23:12.806Z"
- },
- "https://www.ringsidenews.com/miz-calls-out-john-cena-snubbing-him-john-cena-classic": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-13T18:49:18.673Z"
  }
 }
