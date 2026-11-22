@@ -5725,7 +5725,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261122164638-aew-collision-21-11-2026": {
     "publishedAt": 1795360094141,
@@ -5748,7 +5749,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض يو اف سي فايت نايت 21.11.2026 مترجم",
-    "lastAttempt": 1795373068277,
+    "lastAttempt": 1795373864441,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5766,9 +5767,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ايه ايه ايه 21.11.2026 مترجم",
-    "lastAttempt": 1795367037358,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1795373865144,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
