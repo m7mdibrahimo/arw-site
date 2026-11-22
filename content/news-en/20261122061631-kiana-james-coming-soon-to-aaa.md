@@ -1,7 +1,7 @@
 ---
 title: "Kiana James Coming Soon to AAA"
 slug: "kiana-james-coming-soon-to-aaa"
-description: "Kiana James is preparing to join AAA. During the November 21 episode of AAA on FOX."
+description: "Kiana James is preparing to join AAA. During the November 21 episode of AAA on FOX, a promotional vignette aired for James featuring the caption \"Coming Soon.\""
 federation: INDIE
 date: 2026-11-22T03:16:31.000Z
 created_at: 2026-11-22T03:19:31.408Z
@@ -12,7 +12,7 @@ en_tags:
   - "AAA"
   - "WWE"
   - "NXT"
-  - "Guilia"
+  - "Giulia"
 image: /content/images/h3oqo2kxcqgw7s26.jpg
 ---
 Kiana James is preparing to join AAA. During the November 21 episode of AAA on FOX, a promotional vignette aired for James featuring the caption "Coming Soon."
