@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2321123/aew-bobby-lashley-isnt-considering-retirement-lot-left-tank": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى («تجعلانه») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-22T05:25:35.593Z"
+ },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -48,11 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-22T05:23:36.428Z"
- },
- "https://www.wrestlinginc.com/2321123/aew-bobby-lashley-isnt-considering-retirement-lot-left-tank": {
-  "reason": "المراجعة رفضته: اسم في الخبر العربي مختلف عن الإنجليزي: The Hurt Syndicate — انقل الاسم أو اللقب كما في المصدر (آش/إم/هيذر باي إليغانس مصارعات مختلفات، و«بيور» لقب غير بطولة السيدات العالمية)",
-  "retry": true,
-  "at": "2026-11-22T05:04:52.896Z"
  },
  "https://www.wrestlinginc.com/2324005/aew-collision-november-21-2026-results": {
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
