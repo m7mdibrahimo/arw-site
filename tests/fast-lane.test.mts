@@ -332,23 +332,16 @@ test('the render: only the saved pages and the first page of each listing, nothi
   assert.match(wf, /!\/content\/images\/\n\s+!\/dist\/videos\//);
 });
 
-test('the bell says «ظهر على الموقع» for a saved show or story the fast lane already shows', () => {
+test('INCIDENTS #1484: the bell says «ظهر على الموقع» only from the live /build.json, never from the fast copy', () => {
   const src = fs.readFileSync('studio/js/notify.js', 'utf8');
-  const body = src.slice(src.indexOf('export function inFastLane'), src.indexOf('export function setupBell'));
-  const inFastLane = new Function(`${body.replace('export ', '')}; return inFastLane;`)();
-  const at = Date.parse('2026-11-14T07:04:45Z');
-  const pages = [{ url: '/shows/smackdown/', input: 'content/shows/2026-smackdown.md', commit: A, commitTime: at / 1000 + 2 }];
-  assert.equal(inFastLane(pages, { type: 'create', collection: 'shows', slug: '2026-smackdown', commit: A, at }), true);
-  assert.equal(inFastLane(pages, { type: 'create', collection: 'shows', slug: '2026-smackdown', commit: B, at: at - 60_000 }), true, 'a later save\'s copy has it too');
-  assert.equal(inFastLane(pages, { type: 'create', collection: 'shows', slug: '2026-smackdown', commit: B, at: at + 60_000 }), false, 'an older copy doesn\'t have this save');
-  assert.equal(inFastLane(pages, { type: 'edit', collection: 'shows', slug: '2026-smackdown', commit: A, at }), true, 'an edit too');
-  assert.equal(inFastLane(pages, { type: 'delete', collection: 'shows', slug: '2026-smackdown', commit: A, at }), false);
-  assert.equal(inFastLane(pages, { type: 'create', collection: 'nostalgia', slug: '2026-smackdown', commit: A, at }), false);
-  assert.equal(inFastLane(pages, { type: 'create', collection: 'shows', slug: 'other', commit: A, at }), false);
-  // INCIDENTS #1482: only a new page — an edited page keeps serving its file until the build, so an edit waits for it
-  assert.match(src, /n\.status === 'pending' && n\.commit && n\.type === 'create'\);/);
-  assert.doesNotMatch(src, /n\.type === 'create' \|\| n\.type === 'edit'/);
-  assert.match(src, /const pages = await fastLanePages\(\); for \(const n of still\.filter\(n => inFastLane\(pages, n\)\)\) markLive\(n\.commit\);/);
+  assert.doesNotMatch(src, /fastLanePages|inFastLane/);
+  const settle = src.slice(src.indexOf('async function settlePending'), src.indexOf('export function setupBell'));
+  assert.match(settle, /if \(b\) for \(const n of waiting\.filter\(n => inBuild\(b, n\)\)\) markLive\(n\.commit\);/);
+  assert.equal((settle.match(/markLive\(/g) || []).length, 1, 'one way to «live»: the build');
+  // …and the panel's list loses «جاري النشر» at that same moment
+  const app = fs.readFileSync('studio/js/app.js', 'utf8');
+  const live = app.slice(app.indexOf("window.addEventListener('studio:live'"), app.indexOf('start();', app.indexOf("window.addEventListener('studio:live'")));
+  assert.match(live, /if \(\(h === '#\/' \|\| h\.startsWith\('#\/list\/'\)\) && !hasUnsavedChanges\(\)\) route\(\);/);
 });
 
 test('the fast render\'s tag index gives exactly Eleventy\'s own collections (same items, same order, new arrays)', async () => {

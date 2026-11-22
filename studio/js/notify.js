@@ -9,7 +9,7 @@
 //    live (with the platforms it reached), the spoiler shield, posts needing a check, reels.
 //    A story you published yourself is shown once — as your event, with its platforms.
 import { html, mount, $, icon, timeAgo } from './ui.js';
-import { notifications, fastLanePages } from './api.js';
+import { notifications } from './api.js';
 import { COLLECTIONS } from './schema.js';
 
 const LOCAL_KEY = 'arw_notif_events';
@@ -223,7 +223,9 @@ let settleTimer = null;
 export function inBuild(b, n) {
   if (!b || !n) return false;
   return (b.recent || []).includes(n.commit) || b.commit === n.commit || !!(b.commitTime && b.commitTime * 1000 > n.at + 5000)
-    || !!(b.builtAt && Date.parse(b.builtAt) > n.at + 60_000);
+    // (only an old build.json with no commitTime: a build that merely finished after the save may have started before
+    // it — with builds of about a minute that said «ظهر على الموقع» too early, INCIDENTS #1484)
+    || !!(!b.commitTime && b.builtAt && Date.parse(b.builtAt) > n.at + 60_000);
 }
 async function settlePending() {
   if (settleTimer) { clearTimeout(settleTimer); settleTimer = null; }
@@ -233,12 +235,10 @@ async function settlePending() {
     const b = await fetch(`${BUILD_URL}?_=${Date.now()}`, { cache: 'no-store' }).then(r => (r.ok ? r.json() : null));
     if (b) for (const n of waiting.filter(n => inBuild(b, n))) markLive(n.commit);
   } catch {}
-  try {
-    // a new page only: an edited page already has its file, which the site serves until the build — the fast copy of
-    // an edit isn't what visitors see, so an edit waits for /build.json (INCIDENTS #1482)
-    const still = localItems().filter(n => n.status === 'pending' && n.commit && n.type === 'create');
-    if (still.length) { const pages = await fastLanePages(); for (const n of still.filter(n => inFastLane(pages, n))) markLive(n.commit); }
-  } catch {}
+  // «ظهر على الموقع» only once the live site's own /build.json has the save — the whole site, every list and page —
+  // and the same moment the panel's list drops «جاري النشر» (api.js watchLive). Not from «النشر السريع» any more:
+  // that copy is only the page and the three lists, and the bell said «ظهر» while the list still said «جاري النشر»
+  // (INCIDENTS #1482, #1484). The full build comes about a minute after the fast copy now.
   // nothing settled it in two hours: no more «جاري…»
   const list = localItems();
   let stale = false;
@@ -247,13 +247,6 @@ async function settlePending() {
   if (localItems().some(n => n.status === 'pending' && n.commit)) settleTimer = setTimeout(settlePending, 15_000);
 }
 
-/** A saved show or story (new or edited) the site already shows through «النشر السريع» (worker/src/fast-lane.ts,
- *  INCIDENTS #1296) before its full build: its own file's fast copy, of this save's commit or a later one. */
-export function inFastLane(pages, n) {
-  if (!n || (n.type !== 'create' && n.type !== 'edit') || (n.collection !== 'shows' && n.collection !== 'news') || !n.slug) return false;
-  const input = `content/${n.collection}/${n.slug}.md`;
-  return (pages || []).some(p => p && p.input === input && (p.commit === n.commit || Number(p.commitTime) * 1000 > n.at + 5000));
-}
 export function setupBell() {
   const btn = $('#bell-btn'), pop = $('#bell-pop');
   if (!btn || !pop) return;
