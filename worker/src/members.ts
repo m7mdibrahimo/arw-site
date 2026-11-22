@@ -124,6 +124,9 @@ const emailsReady = new WeakSet<D1Database>();
 async function ensureEmails(db: D1Database): Promise<void> {
   if (emailsReady.has(db)) return;
   await db.prepare("CREATE TABLE IF NOT EXISTS member_emails (ekey TEXT PRIMARY KEY, member INTEGER NOT NULL, email TEXT NOT NULL, at INTEGER NOT NULL)").run();
+  // without it the check below read every kept address once per member: ~100,000 rows a call, ~100 million a day,
+  // twenty times the free plan's daily allowance (INCIDENTS #1476); with it, ~640 rows
+  await db.prepare("CREATE INDEX IF NOT EXISTS member_emails_member ON member_emails (member, email)").run();
   // members whose address isn't kept yet (the accounts made before this, and any added another way)
   const missing = (await db.prepare("SELECT id, email, created FROM members m WHERE NOT EXISTS (SELECT 1 FROM member_emails e WHERE e.member = m.id AND e.email = m.email) ORDER BY id LIMIT 500").all<{ id: number; email: string; created: number }>()).results || [];
   for (let i = 0; i < missing.length; i += 50) await db.batch(missing.slice(i, i + 50).map(m => db.prepare("INSERT OR IGNORE INTO member_emails (ekey, member, email, at) VALUES (?1, ?2, ?3, ?4)").bind(emailKey(m.email), m.id, m.email, Number(m.created) || 0)));

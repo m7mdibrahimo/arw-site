@@ -39,3 +39,8 @@ test('INCIDENTS #1476: /health reads the check run of either build', () => {
   assert.ok(!STATIC_BUILD.test('Workers Builds: arw-site-bot'));
   assert.ok(!health.includes('c?.name === "Workers Builds: arw-site-static"'));
 });
+
+test('INCIDENTS #1476: the members and inbox lookups have their indexes (100 million database rows a day without them)', () => {
+  assert.match(fs.readFileSync('worker/src/members.ts', 'utf8'), /CREATE INDEX IF NOT EXISTS member_emails_member ON member_emails \(member, email\)/);
+  assert.match(fs.readFileSync('worker/src/follows.ts', 'utf8'), /CREATE INDEX IF NOT EXISTS member_inbox_unpushed ON member_inbox \(pushed, read, at\)/);
+});

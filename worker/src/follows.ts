@@ -40,6 +40,8 @@ export function ensureFollows(db: D1Database): Promise<void> {
     db.prepare("CREATE TABLE IF NOT EXISTS member_inbox (id INTEGER PRIMARY KEY AUTOINCREMENT, member INTEGER NOT NULL, url TEXT NOT NULL, title TEXT NOT NULL, title_en TEXT NOT NULL DEFAULT '', image TEXT NOT NULL DEFAULT '', program TEXT NOT NULL DEFAULT '', fed TEXT NOT NULL DEFAULT '', at INTEGER NOT NULL, read INTEGER NOT NULL DEFAULT 0, pushed INTEGER NOT NULL DEFAULT 0)"),
     db.prepare("CREATE INDEX IF NOT EXISTS member_inbox_member ON member_inbox (member, id)"),
     db.prepare("CREATE UNIQUE INDEX IF NOT EXISTS member_inbox_once ON member_inbox (member, url)"),
+    // the push round's «unread, not pushed yet» lookup read the whole inbox every minute (INCIDENTS #1476)
+    db.prepare("CREATE INDEX IF NOT EXISTS member_inbox_unpushed ON member_inbox (pushed, read, at)"),
     db.prepare("CREATE TABLE IF NOT EXISTS member_push (endpoint TEXT PRIMARY KEY, member INTEGER NOT NULL, pk TEXT NOT NULL, created INTEGER NOT NULL)"),
     db.prepare("CREATE INDEX IF NOT EXISTS member_push_member ON member_push (member)"),
     db.prepare("CREATE INDEX IF NOT EXISTS member_push_pk ON member_push (pk)"),
