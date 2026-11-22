@@ -5,7 +5,7 @@
 //   • alert: /health raises «budget_high» (Telegram) when anything is near its allowance or on course to pass it
 //   • Cloudflare build minutes are watched like the rest: the builds are on GitHub now (INCIDENTS #1476), so any rise
 //     means a Workers Builds trigger came back
-//   • hard stop (INCIDENTS #1478, owner: «مش عايزه يسحب ابدا اكتر من كدا مهما يحصل»): once anything reaches 90% of what the
+//   • hard stop (INCIDENTS #1478, owner: «مش عايزه يسحب ابدا اكتر من كدا مهما يحصل»): once anything reaches 80% of what the
 //     plan includes, everything that costs stops until the next period begins on the 22nd — a zone firewall rule blocks
 //     the pictures and videos before any Worker runs, the bot's workers.dev address (the site's comments, members, chat,
 //     statistics) is switched off, and the bot's minute job does nothing but this check. The pages themselves stay up:
@@ -21,7 +21,9 @@ const BOT = "arw-site-bot";
 /** The minutes of each hour the check runs (the bot's cron runs every minute). */
 export const CHECK_MINUTES = [5, 20, 35, 50];
 /** The share of an allowance that stops everything that costs. */
-export const HARD_PCT = 90;
+// 80, not 90 (owner 2026-11-22: no spending limit on the card is possible, it pays for other things too): the wider
+// margin covers the 15 minutes between checks and what keeps running during a stop (pages' fast lane, the check itself)
+export const HARD_PCT = 80;
 
 /** What the 5-dollar plan includes each billing month (Workers Paid + R2's free tier). */
 export const INCLUDED = {
@@ -228,7 +230,7 @@ export function budgetProblems(status: BudgetStatus | null, now: number): { key:
   const keys = new Set([...(status.warn || []), ...(status.hard || [])]);
   const lines = status.metrics.filter((m) => keys.has(m.key)).map((m) => `${NAMES[m.key]}: ${m.pct}% مستخدم، ومتوقع ${m.projectedPct}% آخر الشهر`);
   const title = status.hardStop
-    ? "وصلنا ٩٠٪ من حد خطة الـ٥ دولار — الصور والتعليقات والأعضاء والإشعارات واقفين لحد يوم ٢٢، والصفحات شغالة"
+    ? "وصلنا ٨٠٪ من حد خطة الـ٥ دولار — الصور والتعليقات والأعضاء والإشعارات واقفين لحد يوم ٢٢، والصفحات شغالة"
     : "الاستهلاك قرب من حد خطة الـ٥ دولار" + (status.brakeCpu ? " — تصغير الصور الجديدة واقف" : "");
   return [{ key: "budget", code: "budget_high", title, detail: lines.join(" · ") }];
 }

@@ -1,4 +1,4 @@
-// INCIDENTS #1478: the owner — «مش عايزه يسحب ابدا اكتر من كدا مهما يحصل». Cloudflare has no spending cap, so at 90% of
+// INCIDENTS #1478: the owner — «مش عايزه يسحب ابدا اكتر من كدا مهما يحصل». Cloudflare has no spending cap, so at 80% of
 // anything the 5-dollar plan includes, the site stops everything that costs until the period ends on the 22nd: a zone
 // firewall rule blocks the pictures/videos before arw-media runs, the bot's workers.dev address goes off, the bot's minute
 // job does nothing but the check. Only what the guard stopped is switched back on, when the new period begins.
@@ -38,12 +38,12 @@ function api(start: { rules?: any[] | null; sub?: boolean } = {}) {
   return { st, f };
 }
 
-test('INCIDENTS #1478: 90% of any allowance (but build minutes) is a hard stop; below it is not', () => {
-  assert.equal(judge({ cpuMs: 26_000_000 }, now).hardStop, false);
-  const s = judge({ cpuMs: 27_000_000 }, now);
+test('INCIDENTS #1478: 80% of any allowance (but build minutes) is a hard stop; below it is not', () => {
+  assert.equal(judge({ cpuMs: 23_000_000 }, now).hardStop, false);
+  const s = judge({ cpuMs: 24_500_000 }, now);
   assert.equal(s.hardStop, true); assert.deepEqual(s.hard, ['cpuMs']); assert.equal(s.brakeCpu, true);
-  assert.deepEqual(judge({ requests: 9_100_000 }, now).hard, ['requests']);
-  assert.deepEqual(judge({ kvWrites: 950_000 }, now).hard, ['kvWrites']);
+  assert.deepEqual(judge({ requests: 8_100_000 }, now).hard, ['requests']);
+  assert.deepEqual(judge({ kvWrites: 810_000 }, now).hard, ['kvWrites']);
   assert.equal(judge({ buildMinutes: 5_900 }, now).hardStop, false, 'blocking visitors cannot stop a build trigger: alert only');
   assert.ok(judge({ buildMinutes: 5_900 }, now).warn.includes('buildMinutes'));
 });
@@ -92,7 +92,7 @@ test('INCIDENTS #1478: the owner is told on Telegram when the stop starts, and w
     ? new Response(JSON.stringify({ data: { viewer: { accounts: [{ w: [{ sum: { requests: 1, cpuTimeUs } }] }] } } }))
     : f(url, init)) as typeof fetch;
   await runBudgetCheck(env, now, usage(28_000_000_000));
-  assert.equal(st.tg.length, 1); assert.match(st.tg[0], /٩٠٪/); assert.match(st.tg[0], /يوم ٢٢/);
+  assert.equal(st.tg.length, 1); assert.match(st.tg[0], /٨٠٪/); assert.match(st.tg[0], /يوم ٢٢/);
   await runBudgetCheck(env, now + 900_000, usage(28_500_000_000));
   assert.equal(st.tg.length, 1, 'once, not every 15 minutes');
   await runBudgetCheck(env, Date.UTC(2026, 11, 22, 0, 5), usage(1_000));
