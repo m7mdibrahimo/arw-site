@@ -224,7 +224,7 @@ export function inBuild(b, n) {
   if (!b || !n) return false;
   return (b.recent || []).includes(n.commit) || b.commit === n.commit || !!(b.commitTime && b.commitTime * 1000 > n.at + 5000)
     // (only an old build.json with no commitTime: a build that merely finished after the save may have started before
-    // it — with builds of about a minute that said «ظهر على الموقع» too early, INCIDENTS #1484)
+    // it — with builds of about a minute that said «ظهر على الموقع» too early, INCIDENTS #1485)
     || !!(!b.commitTime && b.builtAt && Date.parse(b.builtAt) > n.at + 60_000);
 }
 async function settlePending() {
@@ -238,7 +238,7 @@ async function settlePending() {
   // «ظهر على الموقع» only once the live site's own /build.json has the save — the whole site, every list and page —
   // and the same moment the panel's list drops «جاري النشر» (api.js watchLive). Not from «النشر السريع» any more:
   // that copy is only the page and the three lists, and the bell said «ظهر» while the list still said «جاري النشر»
-  // (INCIDENTS #1482, #1484). The full build comes about a minute after the fast copy now.
+  // (INCIDENTS #1482, #1485). The full build comes about a minute after the fast copy now.
   // nothing settled it in two hours: no more «جاري…»
   const list = localItems();
   let stale = false;

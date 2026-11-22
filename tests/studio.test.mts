@@ -670,7 +670,7 @@ test('a save waiting to show on the site settles when the bell opens or the pane
   assert.equal(inBuild({ commit: 'zzz', recent: ['zzz', 'db946ab'] }, { commit: 'db946ab', at }), true);
   assert.equal(inBuild({ commit: 'old', commitTime: Date.parse('2026-10-18T09:00:00Z') / 1000, builtAt: '2026-10-18T09:05:00Z' }, { commit: 'db946ab', at }), false);
   assert.equal(inBuild({ commit: 'old', builtAt: '2026-10-18T11:00:00Z' }, { commit: 'db946ab', at }), true);
-  // INCIDENTS #1484: a build of an older commit that merely finished a minute after the save is not this save
+  // INCIDENTS #1485: a build of an older commit that merely finished a minute after the save is not this save
   assert.equal(inBuild({ commit: 'old', commitTime: at / 1000 - 30, recent: ['old'], builtAt: '2026-10-18T10:49:40Z' }, { commit: 'db946ab', at }), false);
   assert.match(fs.readFileSync('_headers', 'utf8'), /\/build\.json\n  Cache-Control: no-store\n  Access-Control-Allow-Origin: \*/);
 });

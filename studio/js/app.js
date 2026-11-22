@@ -255,7 +255,7 @@ function enter(user) {
 window.addEventListener('studio:live', (e) => {
   // Only a save from the last half hour: one found live after the panel was closed for hours is old news (INCIDENTS #417)
   for (const d of e.detail) if (!d.committedAt || Date.now() - d.committedAt < 30 * 60_000) toast(d.removed ? `«${d.title}» اختفى من الموقع ✓` : `«${d.title}» ظهر على الموقع ✓`, 'ok', 7000);
-  // the list and the home page drop «جاري النشر» at the same moment the bell says «ظهر على الموقع» (INCIDENTS #1484)
+  // the list and the home page drop «جاري النشر» at the same moment the bell says «ظهر على الموقع» (INCIDENTS #1485)
   const h = location.hash || '#/';
   if ((h === '#/' || h.startsWith('#/list/')) && !hasUnsavedChanges()) route();
 });

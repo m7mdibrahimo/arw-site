@@ -332,7 +332,7 @@ test('the render: only the saved pages and the first page of each listing, nothi
   assert.match(wf, /!\/content\/images\/\n\s+!\/dist\/videos\//);
 });
 
-test('INCIDENTS #1484: the bell says «ظهر على الموقع» only from the live /build.json, never from the fast copy', () => {
+test('INCIDENTS #1485: the bell says «ظهر على الموقع» only from the live /build.json, never from the fast copy', () => {
   const src = fs.readFileSync('studio/js/notify.js', 'utf8');
   assert.doesNotMatch(src, /fastLanePages|inFastLane/);
   const settle = src.slice(src.indexOf('async function settlePending'), src.indexOf('export function setupBell'));
