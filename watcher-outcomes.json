@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/rhea-ripley-reveals-she-needed-wwes-permission-cut-her-hair": {
+  "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا/شركة X وشركة Y»",
+  "retry": true,
+  "at": "2026-11-22T12:32:47.843Z"
+ },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-13T17:24:48.196Z"
- },
- "https://www.ringsidenews.com/aj-styles-wwe-nxt-role-clarified-amid-shawn-michaels-replacement-plans": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-13T17:19:22.375Z"
  }
 }
