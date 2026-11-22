@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2322610/wwe-aew-mvp-montez-ford-thoughts-lawsuit-do-not-touch-fans": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-22T21:16:20.648Z"
+ },
  "https://www.fightful.com/wrestling/trick-williams-wants-to-headline-his-first-wrestlemania-against-cody-rhodes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: المصدر مابيربطش المصارع بالاتحاد ده: AEW برودي كينج — اكتب «المصارع <الاسم>» من غير اسم اتحاد",
   "retry": true,
   "at": "2026-11-14T16:48:32.074Z"
- },
- "https://www.fightful.com/wrestling/johnny-gargano-says-he-was-over-the-moon-when-he-found-out-about-wwe-and-disneys-partnership": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-14T16:40:03.342Z"
  }
 }
