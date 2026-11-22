@@ -4432,7 +4432,7 @@ export function staleRatingsReport(title: string, url: string, sourceDate: strin
 }
 
 /** Only the news people read (owner 2026-11-22: «الاخبار عندي كتير ملهاش لازمة ومحدش بيشوفها خليك في المهم ال ممكن يتشاف
- *  فقط»; INCIDENTS #1479). The site's own statistics for the stories of 8–20 Nov: "high" 4.2 views each on average, WWE and
+ *  فقط»; INCIDENTS #1483). The site's own statistics for the stories of 8–20 Nov: "high" 4.2 views each on average, WWE and
  *  AEW "normal" 2.5, everything else 0.3–1.6 with about a third never opened at all. So: a show's results report and any
  *  "high" story always; a "normal" one only from WWE or AEW; "low" never. An unrated story (the rating call failed) counts
  *  as "normal", so a bad hour at Gemini doesn't empty the site. */
@@ -5116,7 +5116,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     socialVerdict = { spoils: true, kind: "show", age: "recent", note: "حصل جوه عرض اتذاع في آخر ٦ ساعات، فهو حرق من العرض" };
   }
   if (socialVerdict) console.log(`[Watcher] Social check: ${socialVerdict.spoils ? `🛡️ spoils (${socialVerdict.kind})` : "clean"} — ${socialVerdict.note}`);
-  // Only the news people read (INCIDENTS #1479): automatic runs skip the rest — remembered as done, never tried again
+  // Only the news people read (INCIDENTS #1483): automatic runs skip the rest — remembered as done, never tried again
   if (!options.manual && !options.keepUrl && !newsWorthPublishing(socialVerdict?.priority, rewritten.federation || "WWE", isShowResultsArticle(rawTitle, plainText))) {
     console.log(`[Watcher] ⏭️ Post #${postId} skipped: not important enough (${socialVerdict?.priority || "unrated"}, ${rewritten.federation || "WWE"}) — «${rewritten.title}»`);
     noteOutcome(postUrl, "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس");

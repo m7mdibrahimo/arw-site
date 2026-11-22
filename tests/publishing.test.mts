@@ -5445,7 +5445,10 @@ test('sanitizeWrestlingTerms keeps Quinton "Rampage" Jackson with any quote styl
 
 // INCIDENTS #850: a re-post of an old story by another site came out with the exact same Arabic headline as one published six days earlier.
 test('a headline already published is detected whatever its age', () => {
-  assert.equal(titleAlreadyPublished('إيليا دراغونوف يتحدث عن تجاهل بروك ليسنر لهجماته في عرض WWE Royal Rumble'), true);
+  // (a story lives a month now, INCIDENTS #1481: the oldest story still on the site, not a fixed old headline)
+  const files = fs.readdirSync('content/news').filter((f) => f.endsWith('.md')).sort();
+  const oldest = (fs.readFileSync(`content/news/${files[0]}`, 'utf8').match(/^title: (.+)$/m) || [])[1]!.replace(/^"|"$/g, '');
+  assert.equal(titleAlreadyPublished(oldest), true, oldest);
   assert.equal(titleAlreadyPublished('عنوان لم ينشر أبدا في أي مكان على الموقع'), false);
 });
 

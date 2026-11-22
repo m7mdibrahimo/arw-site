@@ -3,8 +3,10 @@
 // NOT read by Cloudflare Pages (the file name is not wrangler.jsonc): the Pages project keeps serving the site until
 // the owner points the domain at this Worker. Test: `npx wrangler dev --config wrangler.static.jsonc` after a build.
 //
-// «النشر السريع» (INCIDENTS #1296): site-worker/ runs only for an address with no file (a page saved a moment ago that
-// the deployment doesn't have yet). It no longer runs first for the listings and the show and story pages: that was
+// «النشر السريع» (INCIDENTS #1296): site-worker/ runs first for the three listings only — the home page, /shows/ and
+// /news/ — so a show saved a moment ago is on them too, not only on its own page (INCIDENTS #1482: without it the panel
+// said «ظهر على الموقع» while the home page didn't have the show yet); and for an address with no file (a page saved a moment ago that
+// the deployment doesn't have yet). It no longer runs first for the show and story pages: that was
 // ~51,000 Worker requests a day plus ~57,000 to arw-site-bot for the fast-lane list, and the free plan allows 100,000
 // in all (INCIDENTS #1476; the site builds on GitHub in ~3 minutes now); every other file is served straight from the assets. It shows a
 // page saved a moment ago (arw-site-bot, FAST) only until this deployment has it, never after (site-worker/fast.js).
@@ -16,7 +18,8 @@
     "directory": "./_site",
     "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
-    "not_found_handling": "none"
+    "not_found_handling": "none",
+    "run_worker_first": ["/", "/shows/", "/news/"]
   },
   "services": [{ "binding": "FAST", "service": "arw-site-bot" }]
 }

@@ -60,6 +60,23 @@ jobs:
       # for 4 minutes (INCIDENTS #315). If the mark never comes (Cloudflare down or not reporting), 5 minutes is the
       # most it waits. A newer run replaces a waiting one (cancel-in-progress) and everything counts from the last
       # «site» update, so the wait never grows.
+      # INCIDENTS #1482: a run can be cancelled (cancel-in-progress) after it moved «site» and before it started the
+      # build. The runs after it found «site» up to date and waited for a build nobody had started: a show saved at
+      # 16:04 waited for the next save, at 16:15. So every run first makes sure the current «site» has a build.
+      - name: Make sure the current «site» has a build
+        if: vars.SITE_BUILD_ON_GITHUB == '1'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          SITE=$(gh api "repos/$REPO/git/ref/heads/site" -q .object.sha 2>/dev/null) || exit 0
+          N=$(gh api "repos/$REPO/actions/workflows/site-build.yml/runs?head_sha=$SITE&per_page=20" -q '[.workflow_runs[] | select(.conclusion != "cancelled")] | length' 2>/dev/null) || exit 0
+          if [ "$N" != "0" ]; then echo "«site» $SITE has its build"; exit 0; fi
+          echo "«site» $SITE was never built: starting its build"
+          for TRY in 1 2 3 4; do
+            gh workflow run site-build.yml -R "$REPO" --ref site && exit 0
+            echo "could not start the build (try $TRY/4)"; sleep 5
+          done
       - name: Gather what was saved while Cloudflare builds
         if: github.event_name != 'workflow_dispatch'
         env:

@@ -207,8 +207,10 @@ test('a missing address is the nearest 404.html with status 404, as not_found_ha
   assert.equal(s.calls.length, 1);
   const cfg = fs.readFileSync('wrangler.static.jsonc', 'utf8');
   assert.match(cfg, /"not_found_handling": "none"/);
-  // INCIDENTS #1476: never first for the listings and pages any more (~108,000 Worker requests a day; free plan 100,000)
-  assert.doesNotMatch(cfg, /run_worker_first/);
+  // INCIDENTS #1476: never first for the show and story pages (~108,000 Worker requests a day); #1482: first for the
+  // three listings only, so a show saved a moment ago is on the home page as soon as the panel says it is live
+  assert.match(cfg, /"run_worker_first": \["\/", "\/shows\/", "\/news\/"\]/);
+  assert.doesNotMatch(cfg, /"\/shows\/\*"|"\/news\/\*"/);
   assert.match(cfg, /"main": "site-worker\/index\.js"/);
   assert.match(cfg, /"services": \[\{ "binding": "FAST", "service": "arw-site-bot" \}\]/);
   assert.equal(typeof notFound, 'function');
@@ -343,7 +345,9 @@ test('the bell says «ظهر على الموقع» for a saved show or story the
   assert.equal(inFastLane(pages, { type: 'delete', collection: 'shows', slug: '2026-smackdown', commit: A, at }), false);
   assert.equal(inFastLane(pages, { type: 'create', collection: 'nostalgia', slug: '2026-smackdown', commit: A, at }), false);
   assert.equal(inFastLane(pages, { type: 'create', collection: 'shows', slug: 'other', commit: A, at }), false);
-  assert.match(src, /n\.type === 'create' \|\| n\.type === 'edit'/);
+  // INCIDENTS #1482: only a new page — an edited page keeps serving its file until the build, so an edit waits for it
+  assert.match(src, /n\.status === 'pending' && n\.commit && n\.type === 'create'\);/);
+  assert.doesNotMatch(src, /n\.type === 'create' \|\| n\.type === 'edit'/);
   assert.match(src, /const pages = await fastLanePages\(\); for \(const n of still\.filter\(n => inFastLane\(pages, n\)\)\) markLive\(n\.commit\);/);
 });
 

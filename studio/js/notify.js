@@ -234,7 +234,9 @@ async function settlePending() {
     if (b) for (const n of waiting.filter(n => inBuild(b, n))) markLive(n.commit);
   } catch {}
   try {
-    const still = localItems().filter(n => n.status === 'pending' && n.commit && (n.type === 'create' || n.type === 'edit'));
+    // a new page only: an edited page already has its file, which the site serves until the build — the fast copy of
+    // an edit isn't what visitors see, so an edit waits for /build.json (INCIDENTS #1482)
+    const still = localItems().filter(n => n.status === 'pending' && n.commit && n.type === 'create');
     if (still.length) { const pages = await fastLanePages(); for (const n of still.filter(n => inFastLane(pages, n))) markLive(n.commit); }
   } catch {}
   // nothing settled it in two hours: no more «جاري…»
