@@ -1,13 +1,18 @@
 {
- "https://www.ringsidenews.com/cody-rhodes-talks-trash-about-steelers-61-year-winless-streak-philadelphia-during-eagles-game": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مدة زمنية في المتن غير مطابقة للمصدر: منذ عام، منذ عام",
+ "https://www.ringsidenews.com/trick-williams-reveals-what-really-happened-when-wwe-called-him-up-to-the-main-roster": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-22T20:21:05.249Z"
+  "at": "2026-11-22T20:30:40.941Z"
+ },
+ "https://www.ringsidenews.com/cody-rhodes-talks-trash-about-steelers-61-year-winless-streak-philadelphia-during-eagles-game": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-22T20:27:49.020Z"
  },
  "https://www.ringsidenews.com/zelina-vega-reveals-she-made-first-move-aleister-black-awkward-first-meeting": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يستعدان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-22T20:20:43.382Z"
+  "at": "2026-11-22T20:27:31.073Z"
  },
  "https://www.fightful.com/wrestling/trick-williams-comments-on-dark-match-with-gunther-the-punishment-to-gunther-was-putting-him-in-the-ring-with-me-knowing-that-he-cant-hang-with-the-big-dog": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-14T15:41:07.710Z"
- },
- "https://www.fightful.com/mma/ufc-334-gane-vs-hokit-weigh-in-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-14T14:06:36.624Z"
  }
 }
