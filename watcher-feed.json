@@ -1,5 +1,15 @@
 [
   {
+    "id": 340346,
+    "link": "https://www.fightful.com/wrestling/wwe-nxt-live-results-11-21/",
+    "date": "2026-11-22T10:17:25",
+    "date_gmt": "2026-11-22T15:17:25",
+    "title": {
+      "rendered": "WWE NXT Live Results (11/21)"
+    },
+    "featured_image": "https://www.fightful.com/wp-content/uploads/2025/09/nxt-2024.jpg"
+  },
+  {
     "id": 340342,
     "link": "https://www.fightful.com/wrestling/la-knight-asks-fans-to-respect-his-ex-girlfriends-privacy-she-didnt-sign-up-to-be-a-public-figure/",
     "date": "2026-11-22T10:02:18",
@@ -288,15 +298,5 @@
       "rendered": "Raj Dhesi Wants To Wrestle Twitch Streamer Amine"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/15174719/exYNFLVYC0J0WAUq.webp"
-  },
-  {
-    "id": 340225,
-    "link": "https://www.fightful.com/wrestling/raj-dhesi-details-working-final-slam-says-it-got-over-a-hundred-million-social-media-impressions/",
-    "date": "2026-11-21T14:18:32",
-    "date_gmt": "2026-11-21T19:18:32",
-    "title": {
-      "rendered": "Raj Dhesi Details Working Final Slam, Says It Got &#8216;Over A Hundred Million Social Media Impressions&#8217;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/21141529/HXG8iTYWEAEf3Md-1.webp"
   }
 ]
