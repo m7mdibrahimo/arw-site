@@ -1,6 +1,9 @@
 {
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
+  {"wrong":"النزال المشترك","right":"النزال الرئيسي الثاني","note":"Co-Main Event مش «نزال مشترك» (خبر باكولي ووايلدر، INCIDENTS #1503)"},
+  {"wrong":"نزالا مشتركا","right":"النزال الرئيسي الثاني","note":"نفس الغلطة بصيغة النكرة (INCIDENTS #1503)"},
+  {"wrong":"وتحديد منذ","right":"وتحديدا منذ","note":"ألف التنوين ناقصة (INCIDENTS #1503)"},
   {"wrong":"عرض\\s+(?<t>(?:Saw|Scream|Final Destination|The Conjuring|Jurassic World|Mission: Impossible|Fast X|The Hunger Games)(?:\\s+(?:\\d+|[IVX]+))?)(?![A-Za-z0-9])","right":"فيلم $<t>","regex":true,"note":"«عرض Saw 11» — Saw فيلم مش عرض مصارعة (خبر تشيلسي غرين، INCIDENTS #1502)"},
   {"wrong":"\\s*وتابع(?:ت)?\\s+مشيد(?:ا|ة)\\s+به\\.","right":"","regex":true,"note":"جملة فاضية «وتابعت مشيدة به.» في آخر فقرة من غير كلام منقول (خبر جايد كارغيل، INCIDENTS #1502)"},
   {"wrong":"أفضل نصيحة في مسيرتها الحالية في WWE ومساعدتها في التطور","right":"أفضل نصيحة في مسيرتها الحالية في WWE، وساعدها على التطور","note":"«ومساعدتها في التطور» معلقة من غير فعل (خبر جايد كارغيل، INCIDENTS #1502)"},
