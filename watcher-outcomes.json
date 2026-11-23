@@ -1,73 +1,78 @@
 {
- "https://www.ringsidenews.com/blake-monroe-recalls-severely-hungover-missing-most-her-first-american-thanksgiving": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-23T17:17:16.904Z"
+ "https://www.fightful.com/wrestling/hulk-hogans-right-boot-from-wrestlemania-x8-sells-for-494k": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-23T17:30:42.453Z"
  },
- "https://www.ringsidenews.com/wwe-2k27-cover-star-vote-comes-99-catch-fans": {
+ "https://www.fightful.com/wrestling/damian-priest-says-he-probably-looked-insane-while-voice-acting-in-the-booth-for-steps": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-23T17:30:41.007Z"
+ },
+ "https://www.fightful.com/wrestling/royce-isaacs-returns-to-in-ring-action": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-23T17:30:39.664Z"
+ },
+ "https://www.fightful.com/wrestling/produce-and-razor-pro-wrestling-announce-relaunch-of-mid-south-wrestling-for-2027": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-23T17:30:37.209Z"
+ },
+ "https://www.fightful.com/wrestling/kyle-fletcher-says-hes-been-slightly-tempted-to-dye-his-buzzcut-pink": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-23T17:30:34.368Z"
+ },
+ "https://www.fightful.com/wrestling/big-damo-confirms-progress-will-run-an-all-womens-tournament-next-year": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-23T17:13:56.297Z"
+  "at": "2026-11-23T17:29:28.177Z"
+ },
+ "https://www.fightful.com/wrestling/kyle-fletcher-says-he-will-rko-andrade-el-idolo-out-of-his-pants-for-jokingly-comparing-him-to-randy-orton": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-23T17:26:19.661Z"
+ },
+ "https://www.fightful.com/wrestling/njpw-world-tag-league-2026-standings-and-results-archive": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-23T17:26:19.508Z"
+ },
+ "https://www.fightful.com/wrestling/njpw-world-tag-league-night-one-results-11-23": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-23T17:26:19.413Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-23": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-23T17:26:19.315Z"
+ },
+ "https://www.fightful.com/wrestling/trick-williams-wants-to-headline-his-first-wrestlemania-against-cody-rhodes": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-23T17:26:18.716Z"
+ },
+ "https://www.fightful.com/wrestling/anna-jay-provides-another-update-on-shoulder-injury": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-23T17:26:18.553Z"
  },
  "https://www.wrestlinginc.com/2324658/aew-wwe-swerve-strickland-triple-h-believes-knew-potential": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-23T17:18:51.673Z"
  },
- "https://www.fightful.com/wrestling/royce-isaacs-returns-to-in-ring-action": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
-  "retry": true,
-  "at": "2026-11-23T16:59:16.156Z"
- },
- "https://www.fightful.com/wrestling/produce-and-razor-pro-wrestling-announce-relaunch-of-mid-south-wrestling-for-2027": {
+ "https://www.ringsidenews.com/blake-monroe-recalls-severely-hungover-missing-most-her-first-american-thanksgiving": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-23T16:57:36.506Z"
+  "at": "2026-11-23T17:17:16.904Z"
  },
  "https://www.ringsidenews.com/wwe-2k27-cover-star-vote-comes-99-catch-fans": {
   "reason": "المراجعة رفضته: المصدر بيتكلم عن Roman Reigns (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
   "retry": true,
   "at": "2026-11-23T16:53:33.016Z"
- },
- "https://www.fightful.com/wrestling/kyle-fletcher-says-hes-been-slightly-tempted-to-dye-his-buzzcut-pink": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-23T16:48:17.743Z"
- },
- "https://www.fightful.com/wrestling/big-damo-confirms-progress-will-run-an-all-womens-tournament-next-year": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-23T16:46:10.669Z"
- },
- "https://www.fightful.com/wrestling/kyle-fletcher-says-he-will-rko-andrade-el-idolo-out-of-his-pants-for-jokingly-comparing-him-to-randy-orton": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-23T16:42:34.770Z"
- },
- "https://www.fightful.com/wrestling/njpw-world-tag-league-2026-standings-and-results-archive": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-23T16:42:34.622Z"
- },
- "https://www.fightful.com/wrestling/njpw-world-tag-league-night-one-results-11-23": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-23T16:42:34.529Z"
- },
- "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-23": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-23T16:42:34.433Z"
- },
- "https://www.fightful.com/wrestling/trick-williams-wants-to-headline-his-first-wrestlemania-against-cody-rhodes": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-23T16:42:33.843Z"
- },
- "https://www.fightful.com/wrestling/anna-jay-provides-another-update-on-shoulder-injury": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-23T16:42:33.681Z"
  },
  "https://www.fightful.com/wrestling/trick-williams-comments-on-dark-match-with-gunther-the-punishment-to-gunther-was-putting-him-in-the-ring-with-me-knowing-that-he-cant-hang-with-the-big-dog": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,15 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-15T10:54:17.691Z"
- },
- "https://www.ringsidenews.com/update-fan-accidentally-kicked-face-mjf-aew-full-gear": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T07:52:32.122Z"
- },
- "https://www.fightful.com/wrestling/mjf-to-appear-on-11-18-aew-dynamite": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Katsuyori Shibata",
-  "retry": true,
-  "at": "2026-11-15T07:36:45.988Z"
  }
 }
