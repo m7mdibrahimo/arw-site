@@ -1,13 +1,13 @@
 {
+ "https://www.wrestlinginc.com/2324658/aew-wwe-swerve-strickland-triple-h-believes-knew-potential": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى («يتنافسان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-23T16:28:44.311Z"
+ },
  "https://www.ringsidenews.com/bill-watts-mid-south-wrestling-coming-back-his-death": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-23T16:23:53.334Z"
- },
- "https://www.wrestlinginc.com/2324658/aew-wwe-swerve-strickland-triple-h-believes-knew-potential": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-23T16:09:32.824Z"
  },
  "https://www.fightful.com/wrestling/produce-and-razor-pro-wrestling-announce-relaunch-of-mid-south-wrestling-for-2027": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
