@@ -3059,6 +3059,13 @@ export function fixDivasChampion(text: string, source: string): string {
   return String(text || "").replace(/(^|[^ء-ي])([وبلفك]?)(بطلة|لقب|بطولة)\s+WWE\s+للسيدات(?![ء-ي])/g, (_m, pre, pfx, w) => `${pre}${pfx}${w} الديفاز`);
 }
 
+// «It was claimed that Briscoe required and got knee surgery» came out «خضع لعملية جراحية ناجحة» (INCIDENTS #1495):
+// the source never said the surgery went well. When the source has no word of success, «ناجحة» after a surgery goes.
+export function fixUnsourcedSurgerySuccess(text: string, source: string): string {
+  if (/\bsuccess(?:ful(?:ly)?)?\b|\bwent (?:well|smoothly|great)\b|\bwithout complications?\b/i.test(source)) return text;
+  return String(text || "").replace(/((?:عملية\s+جراحية|عملية|جراحة)(?:\s+(?:في|على)\s+\S+)?)\s+ناجحة(?![ء-ي])/g, "$1");
+}
+
 // «Elijah» (Elias's musical persona in TNA) came out «إيليا» again and again (INCIDENTS #1268, #1274) — the glossary
 // and the site say «إلياس». When the source names Elijah (not Elijah Holyfield/Dragon) and no Ilja, a lone «إيليا»
 // is him. «إيليا دراغونوف»/«إيليا هوليفيلد»/«إيليا سميث» are other people and stay.
