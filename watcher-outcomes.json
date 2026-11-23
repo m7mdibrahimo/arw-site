@@ -99,11 +99,6 @@
   "retry": false,
   "at": "2026-11-23T20:47:54.853Z"
  },
- "https://www.wrestlinginc.com/2324900/wwe-raw-november-23-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-23T20:41:52.981Z"
- },
  "https://www.wrestlinginc.com/2325704/dave-meltzer-details-record-breaking-independent-wrestling-show-france": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
