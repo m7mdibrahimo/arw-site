@@ -4,6 +4,11 @@
   "retry": false,
   "at": "2026-11-23T15:04:16.795Z"
  },
+ "https://www.ringsidenews.com/mara-sade-says-shes-worth-wait-bikini-photo-drop": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-23T14:54:52.142Z"
+ },
  "https://www.fightful.com/wrestling/kyle-fletcher-says-he-will-rko-andrade-el-idolo-out-of-his-pants-for-jokingly-comparing-him-to-randy-orton": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-15T04:32:04.881Z"
- },
- "https://www.fightful.com/wrestling/aaa-on-fox-results-11-14-rey-mysterio-addresses-allegations": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T04:14:04.840Z"
  }
 }
