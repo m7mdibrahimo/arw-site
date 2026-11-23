@@ -1,53 +1,58 @@
 {
+ "https://www.fightful.com/wrestling/trick-williams-booker-t-was-one-of-the-first-ones-to-say-you-got-something-special-to-me": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Paul Heyman",
+  "retry": true,
+  "at": "2026-11-23T03:32:15.299Z"
+ },
  "https://www.fightful.com/wrestling/austin-creed-recalls-trying-to-double-leg-kurt-angle-the-way-he-sprawled-his-ankles-went-to-mount-olympus-and-my-head-went-to-the-ground": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-23T03:28:11.131Z"
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يرتفعان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-23T03:31:03.724Z"
  },
  "https://www.fightful.com/wrestling/trick-williams-wants-to-headline-his-first-wrestlemania-against-cody-rhodes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T03:27:50.352Z"
+  "at": "2026-11-23T03:30:38.643Z"
  },
  "https://www.fightful.com/wrestling/anna-jay-provides-another-update-on-shoulder-injury": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T03:27:50.204Z"
+  "at": "2026-11-23T03:30:38.494Z"
  },
  "https://www.fightful.com/wrestling/trick-williams-comments-on-dark-match-with-gunther-the-punishment-to-gunther-was-putting-him-in-the-ring-with-me-knowing-that-he-cant-hang-with-the-big-dog": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T03:27:50.070Z"
+  "at": "2026-11-23T03:30:38.359Z"
  },
  "https://www.fightful.com/wrestling/trick-williams-says-whole-project-with-lil-yachty-is-on-the-way": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T03:27:49.915Z"
+  "at": "2026-11-23T03:30:38.211Z"
  },
  "https://www.fightful.com/wrestling/three-unseen-matches-added-to-tna-impact-thanksgiving-special": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T03:27:49.679Z"
+  "at": "2026-11-23T03:30:37.978Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-appearance-more-added-to-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T03:27:49.491Z"
+  "at": "2026-11-23T03:30:37.787Z"
  },
  "https://www.fightful.com/wrestling/mjf-promises-he-will-get-brody-king-fired-following-daniel-garcia-injury-on-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T03:27:49.220Z"
+  "at": "2026-11-23T03:30:37.511Z"
  },
  "https://www.fightful.com/wrestling/la-knight-asks-fans-to-respect-his-ex-girlfriends-privacy-she-didnt-sign-up-to-be-a-public-figure": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T03:27:49.028Z"
+  "at": "2026-11-23T03:30:37.309Z"
  },
  "https://www.fightful.com/wrestling/charlotte-flair-says-alexa-bliss-episode-will-be-first-when-her-podcast-comes-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T03:27:48.791Z"
+  "at": "2026-11-23T03:30:37.071Z"
  },
  "https://www.ringsidenews.com/linda-hogan-threatens-possible-lawsuits-lies-following-hulk-hogans-death": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-14T19:50:45.191Z"
- },
- "https://www.ringsidenews.com/bobby-lashley-pushes-back-against-age-concerns-about-his-wrestling-future": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-14T19:24:37.875Z"
  }
 }
