@@ -12,7 +12,7 @@
  "https://www.wrestlinginc.com/2324658/aew-wwe-swerve-strickland-triple-h-believes-knew-potential": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-23T16:59:55.471Z"
+  "at": "2026-11-23T17:18:51.673Z"
  },
  "https://www.fightful.com/wrestling/royce-isaacs-returns-to-in-ring-action": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
@@ -23,6 +23,11 @@
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-23T16:57:36.506Z"
+ },
+ "https://www.ringsidenews.com/wwe-2k27-cover-star-vote-comes-99-catch-fans": {
+  "reason": "المراجعة رفضته: المصدر بيتكلم عن Roman Reigns (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
+  "retry": true,
+  "at": "2026-11-23T16:53:33.016Z"
  },
  "https://www.fightful.com/wrestling/kyle-fletcher-says-hes-been-slightly-tempted-to-dye-his-buzzcut-pink": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
