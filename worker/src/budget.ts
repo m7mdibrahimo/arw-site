@@ -54,18 +54,28 @@ export function periodOf(now: number): { start: number; end: number } {
   return { start, end };
 }
 
+/** What readUsage returns: the period's totals, plus (when Cloudflare answered for it) the last 24 hours of requests and
+ *  CPU, which is the pace the projection follows (INCIDENTS #1505). */
+export type Usage = Partial<Record<Metric, number>> & { last24?: Partial<Record<Metric, number>> };
+
 export interface MetricState { key: Metric; used: number; included: number; pct: number; projectedPct: number }
 export interface BudgetStatus { at: number; start: number; end: number; metrics: MetricState[]; brakeCpu: boolean; warn: Metric[] }
 
 /** The verdict from the raw usage: a metric warns at 60% used, or when it is on course to pass 90% by the period's end
- *  (judged only after a day, so the first hours' noise can't alarm); the CPU brake holds at 75% used or 95% projected. */
-export function judge(used: Partial<Record<Metric, number>>, now: number, period = periodOf(now)): BudgetStatus {
+ *  (judged only after a day, so the first hours' noise can't alarm); the CPU brake holds at 75% used or 95% projected.
+ *  Where the last 24 hours are known, the course is what's used plus that day's pace for the days left — not the average
+ *  since the 22nd, which kept a heavy first morning (before the fixes of INCIDENTS #1476/#1480) in the forecast for days
+ *  and raised «budget_high» on a pace the site no longer has (INCIDENTS #1505). */
+export function judge(used: Usage, now: number, period = periodOf(now)): BudgetStatus {
   const elapsed = Math.max(1, now - period.start), span = period.end - period.start;
   const metrics: MetricState[] = (Object.keys(INCLUDED) as Metric[]).map((key) => {
     const u = Number(used[key]) || 0, inc = INCLUDED[key];
     const pct = (u / inc) * 100;
     // storage isn't a running total: it is what is kept now
-    const projectedPct = key === "r2StorageBytes" ? pct : pct * (span / elapsed);
+    const pace = used.last24?.[key];
+    const projectedPct = key === "r2StorageBytes" ? pct
+      : pace != null && elapsed >= 86_400_000 ? ((u + Number(pace) * Math.max(0, period.end - now) / 86_400_000) / inc) * 100
+      : pct * (span / elapsed);
     return { key, used: u, included: inc, pct: Math.round(pct * 10) / 10, projectedPct: Math.round(projectedPct * 10) / 10 };
   });
   const settled = elapsed >= 86_400_000;
@@ -78,10 +88,11 @@ export function judge(used: Partial<Record<Metric, number>>, now: number, period
 const day = (t: number) => new Date(t).toISOString().slice(0, 10);
 
 /** One GraphQL call for everything (one subrequest). Dates are whole UTC days from the period's first day. */
-export async function readUsage(token: string, account: string, start: number, now: number, fetcher: typeof fetch = fetch): Promise<Partial<Record<Metric, number>>> {
+export async function readUsage(token: string, account: string, start: number, now: number, fetcher: typeof fetch = fetch): Promise<Usage> {
   const f = `{date_geq:"${day(start)}",date_leq:"${day(now)}"}`;
   const query = `{viewer{accounts(filter:{accountTag:"${account}"}){
     w:workersInvocationsAdaptive(limit:10000,filter:${f}){sum{requests cpuTimeUs}}
+    w1:workersInvocationsAdaptive(limit:10000,filter:{datetime_geq:"${new Date(now - 86_400_000).toISOString()}",datetime_leq:"${new Date(now).toISOString()}"}){sum{requests cpuTimeUs}}
     b:workersBuildsBuildMinutesAdaptiveGroups(limit:1000,filter:${f}){sum{buildMinutes}}
     k:kvOperationsAdaptiveGroups(limit:1000,filter:${f}){sum{requests}dimensions{actionType}}
     d:d1AnalyticsAdaptiveGroups(limit:1000,filter:${f}){sum{rowsRead rowsWritten}}
@@ -101,7 +112,7 @@ export async function readUsage(token: string, account: string, start: number, n
   // storage: each bucket's newest day
   const latest = new Map<string, number>();
   for (const x of a.s || []) { const b = String(x?.dimensions?.bucketName); if (!latest.has(b)) latest.set(b, (Number(x?.max?.payloadSize) || 0) + (Number(x?.max?.metadataSize) || 0)); }
-  return {
+  const usage: Usage = {
     requests: sum(a.w, (x) => x.sum.requests),
     cpuMs: sum(a.w, (x) => x.sum.cpuTimeUs) / 1000,
     buildMinutes: sum(a.b, (x) => x.sum.buildMinutes),
@@ -111,6 +122,8 @@ export async function readUsage(token: string, account: string, start: number, n
     r2ClassA: r2("A"), r2ClassB: r2("B"),
     r2StorageBytes: [...latest.values()].reduce((n, v) => n + v, 0),
   };
+  if (Array.isArray(a.w1)) usage.last24 = { requests: sum(a.w1, (x) => x.sum.requests), cpuMs: sum(a.w1, (x) => x.sum.cpuTimeUs) / 1000 };
+  return usage;
 }
 
 /** Hourly (minute 5): read, judge, keep the verdict in KV for /health and the brake in R2 for arw-media. */

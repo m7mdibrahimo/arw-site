@@ -55,6 +55,22 @@ test('INCIDENTS #1477: a quiet period neither brakes nor warns, and the first ho
   assert.equal(budgetProblems({ ...judge({ cpuMs: 25_000_000 }, start + 5 * 86_400_000) }, start + 9 * 86_400_000).length, 0, 'a verdict over 3 hours old says nothing');
 });
 
+test('INCIDENTS #1505: the forecast follows the last 24 hours, not a heavy first morning', () => {
+  const start = Date.UTC(2026, 10, 22), now = start + 41 * 3600_000;
+  // 23 Nov: 1.56M CPU-ms used (most of it on the 22nd, before the fixes), 0.6M in the last day
+  const avg = judge({ cpuMs: 1_560_000 }, now);
+  assert.deepEqual(avg.warn, ['cpuMs'], 'the old average said ~90%');
+  const paced = judge({ cpuMs: 1_560_000, last24: { cpuMs: 600_000 } }, now);
+  assert.deepEqual(paced.warn, []);
+  assert.ok(paced.metrics.find((m) => m.key === 'cpuMs')!.projectedPct < 65);
+  // a real rise in the last day still warns and brakes
+  const hot = judge({ cpuMs: 3_000_000, last24: { cpuMs: 1_200_000 } }, now);
+  assert.deepEqual(hot.warn, ['cpuMs']);
+  assert.equal(hot.brakeCpu, true);
+  // the first day still waits, whatever the pace
+  assert.deepEqual(judge({ cpuMs: 600_000, last24: { cpuMs: 600_000 } }, start + 12 * 3600_000).warn, []);
+});
+
 test('INCIDENTS #1477: R2 operations are counted in their class, deletes free', () => {
   assert.equal(r2Class('GetObject'), 'B');
   assert.equal(r2Class('HeadObject'), 'B');
@@ -80,6 +96,7 @@ test('INCIDENTS #1477: one GraphQL call reads every metric', async () => {
   }) as typeof fetch;
   const u = await readUsage('t', 'acc', Date.UTC(2026, 10, 22), Date.UTC(2026, 10, 23), fake);
   assert.equal(calls.length, 1);
+  assert.match(calls[0], /w1:workersInvocationsAdaptive\(limit:10000,filter:\{datetime_geq:"2026-11-22T00:00:00.000Z"/);
   assert.deepEqual(u, { requests: 15, cpuMs: 6, buildMinutes: 3, kvReads: 7, kvWrites: 2, kvDeletes: 0, kvLists: 0, d1RowsRead: 100, d1RowsWritten: 4, doRequests: 1, r2ClassA: 2, r2ClassB: 9, r2StorageBytes: 151 });
 });
 
