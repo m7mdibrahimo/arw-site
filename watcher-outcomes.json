@@ -1,23 +1,13 @@
 {
  "https://www.wrestlinginc.com/2325810/matt-jeff-hardy-four-years-before-in-ring-retirement": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: The Dudley Boyz، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Dudley Boyz",
   "retry": true,
-  "at": "2026-11-23T21:21:10.955Z"
+  "at": "2026-11-23T21:29:14.823Z"
  },
  "https://www.wrestlinginc.com/2324900/wwe-raw-november-23-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-23T21:07:36.268Z"
- },
- "https://www.ringsidenews.com/spoiler-closing-segment-november-23-2026-wwe-raw-revealed": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-23T20:57:06.669Z"
- },
- "https://www.ringsidenews.com/spoiler-opening-segment-november-23-2026-wwe-raw-revealed": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-23T20:56:16.504Z"
+  "at": "2026-11-23T21:28:00.145Z"
  },
  "https://www.fightful.com/wrestling/wwe-video-producer-releases-movie-the-boogeyman-featured-in-film": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
@@ -88,6 +78,16 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-23T21:04:46.551Z"
+ },
+ "https://www.ringsidenews.com/spoiler-closing-segment-november-23-2026-wwe-raw-revealed": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-23T20:57:06.669Z"
+ },
+ "https://www.ringsidenews.com/spoiler-opening-segment-november-23-2026-wwe-raw-revealed": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-23T20:56:16.504Z"
  },
  "https://www.fightful.com/wrestling/kyle-fletcher-says-he-will-rko-andrade-el-idolo-out-of-his-pants-for-jokingly-comparing-him-to-randy-orton": {
   "reason": "مكرر مع خبر نزل قبل كده",
