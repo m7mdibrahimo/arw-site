@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/mara-sade-says-shes-worth-wait-bikini-photo-drop": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-23T14:54:52.142Z"
+ },
  "https://www.fightful.com/wrestling/big-damo-confirms-progress-will-run-an-all-womens-tournament-next-year": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-15T04:14:04.840Z"
- },
- "https://www.ringsidenews.com/ilja-dragunov-wins-aew-national-championship-brutal-match-tommaso-ciampa-full-gear-2026": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T03:56:26.311Z"
  }
 }
