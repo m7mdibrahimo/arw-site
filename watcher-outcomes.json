@@ -1993,10 +1993,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-15T06:10:49.669Z"
- },
- "https://www.ringsidenews.com/mason-rook-makes-ring-return-serious-medical-scare": {
-  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، مدة زمنية في المتن غير مطابقة للمصدر: منذ شهر",
-  "retry": true,
-  "at": "2026-11-15T06:00:25.462Z"
  }
 }
