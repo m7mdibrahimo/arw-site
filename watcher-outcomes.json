@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2323520/jeff-hardy-ashamed-aew-dui-wwe-aew": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-23T05:23:29.612Z"
+ },
  "https://www.fightful.com/wrestling/trick-williams-wants-to-headline-his-first-wrestlemania-against-cody-rhodes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,11 +48,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-23T05:19:48.820Z"
- },
- "https://www.wrestlinginc.com/2323520/jeff-hardy-ashamed-aew-dui-wwe-aew": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-23T05:03:46.187Z"
  },
  "https://www.fightful.com/wrestling/trick-williams-discusses-being-a-leader-for-the-younger-generation": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
