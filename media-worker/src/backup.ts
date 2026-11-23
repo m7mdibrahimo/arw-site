@@ -1,7 +1,8 @@
 // A second copy of the site's pictures (owner 2026-10-13: «تحافظ علي الموقع العمر كله من كل شئ», INCIDENTS #483). Since
 // INCIDENTS #313 the pictures live only in R2 «arw-media» — one wrong delete, one bug in a cleanup job, and every picture of
 // the site is gone. Every hour the pictures that are new or changed are copied to «arw-media-backup», a few hundred at a
-// time. The backup never deletes anything: a picture removed from the site stays in the backup.
+// time. The backup deletes nothing by itself: a picture removed from the site stays in the backup — except an expired
+// story's own pictures, which the 30-day expiry removes from both (INCIDENTS #1507).
 
 export interface BackupEnv { MEDIA?: R2Bucket; MEDIA_BACKUP?: R2Bucket }
 

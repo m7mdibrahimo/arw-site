@@ -30,13 +30,13 @@ export function newLocalMedia(root = process.cwd()): string[] {
   return [...new Set(list.split("\0").filter(f => f && publicPath(f)))];
 }
 
-async function call(method: "PUT" | "DELETE", repoPath: string, body?: Buffer): Promise<boolean> {
+async function call(method: "PUT" | "DELETE", repoPath: string, body?: Buffer, query = ""): Promise<boolean> {
   const pub = publicPath(repoPath);
   const token = process.env.GITHUB_TOKEN;
   if (!pub || !token) return false;
   for (let attempt = 0; attempt < 4; attempt++) {
     try {
-      const r = await fetch(`${MEDIA_API}/upload${encodePath(pub)}`, {
+      const r = await fetch(`${MEDIA_API}/upload${encodePath(pub)}${query}`, {
         method, body: body ? new Uint8Array(body) : undefined, signal: AbortSignal.timeout(120_000),
         headers: { Authorization: `Bearer ${token}`, "Content-Type": TYPES[(pub.split(".").pop() || "").toLowerCase()] || "application/octet-stream" },
       });
@@ -49,7 +49,7 @@ async function call(method: "PUT" | "DELETE", repoPath: string, body?: Buffer): 
   return false;
 }
 export const uploadMedia = (repoPath: string, root = process.cwd()) => call("PUT", repoPath, fs.readFileSync(path.join(root, repoPath)));
-export const deleteMedia = (repoPath: string) => call("DELETE", repoPath);
+export const deleteMedia = (repoPath: string, opts: { withBackup?: boolean } = {}) => call("DELETE", repoPath, undefined, opts.withBackup ? "?backup=1" : "");
 
 /** A picture a script needs on disk (a reel's background) that this checkout doesn't have: fetched from the site. */
 export async function ensureLocal(repoPath: string, root = process.cwd()): Promise<boolean> {

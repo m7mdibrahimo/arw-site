@@ -53,3 +53,14 @@ test('INCIDENTS #1480: no English story is written, and /en/ is not built', () =
   assert.deepEqual(fs.existsSync('content/news-en') ? fs.readdirSync('content/news-en').filter((f) => f.endsWith('.md')) : [], []);
   assert.doesNotMatch(fs.readFileSync('eleventy.config.js', 'utf8'), /eleventyConfig\.on\("eleventy\.after", englishCopy\)/);
 });
+
+test('INCIDENTS #1507: an expired story\'s picture leaves the backup too, and nothing else does', () => {
+  const src = fs.readFileSync('scripts/expire-news.ts', 'utf8');
+  assert.match(src, /deleteMedia\(`content\/images\/\$\{p\}`, \{ withBackup: true \}\)/);
+  const store = fs.readFileSync('scripts/media-store.ts', 'utf8');
+  assert.match(store, /opts\.withBackup \? "\?backup=1" : ""/);
+  const media = fs.readFileSync('media-worker/src/index.ts', 'utf8');
+  assert.match(media, /url\.searchParams\.get\("backup"\) === "1" && key\.startsWith\("content\/images\/"\)/);
+  // the reels and the other deletes don't ask for it
+  assert.doesNotMatch(fs.readFileSync('scripts/show-reel-monitor.ts', 'utf8'), /withBackup/);
+});

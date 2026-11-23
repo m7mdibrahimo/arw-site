@@ -63,7 +63,8 @@ export function expireNews(now = Date.now(), opts: { dryRun?: boolean; maxPictur
 
 export async function dropPictures(names: string[]): Promise<number> {
   let removed = 0;
-  for (const p of names) if (await deleteMedia(`content/images/${p}`).catch(() => false)) removed++;
+  // the backup copy goes too: an expired story's picture isn't kept anywhere (INCIDENTS #1507)
+  for (const p of names) if (await deleteMedia(`content/images/${p}`, { withBackup: true }).catch(() => false)) removed++;
   return removed;
 }
 

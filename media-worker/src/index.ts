@@ -61,7 +61,14 @@ async function upload(req: Request, env: Env): Promise<Response> {
   if (!(await canWriteRepo(req.headers.get("Authorization"), env))) return json({ ok: false, error: "forbidden" }, 403);
   // a replaced or deleted picture's stored sizes go too (made again from the new one on the next request)
   const dropSized = () => (isPicture(key) ? env.MEDIA!.delete(WIDTHS.map((w) => sizedKeyOf(key, w))).catch(() => {}) : Promise.resolve());
-  if (req.method === "DELETE") { await env.MEDIA.delete(key); await dropSized(); return json({ ok: true, key, deleted: true }); }
+  if (req.method === "DELETE") {
+    await env.MEDIA.delete(key); await dropSized();
+    // «?backup=1»: the backup copy goes too — only for a story's picture the 30-day expiry removed (scripts/expire-news.ts),
+    // so the backup keeps what the site still has instead of growing forever (INCIDENTS #1507)
+    const backup = url.searchParams.get("backup") === "1" && key.startsWith("content/images/") && env.MEDIA_BACKUP;
+    if (backup) await backup.delete(key);
+    return json({ ok: true, key, deleted: true, backup: !!backup });
+  }
   let body = await req.arrayBuffer();
   if (!body.byteLength || body.byteLength > 95 * 1024 * 1024) return json({ ok: false, error: "empty or too big" }, 400);
   if (url.searchParams.get("replace") !== "1" && (await env.MEDIA.head(key))) return json({ ok: true, key, existed: true });
