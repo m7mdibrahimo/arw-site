@@ -1,8 +1,13 @@
 {
- "https://www.ringsidenews.com/cm-punk-begs-people-stop-running-touching-him-public": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+ "https://www.ringsidenews.com/aew-targets-daniel-garcia-injury-footage-copyright-takedowns": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-23T17:42:55.421Z"
+  "at": "2026-11-23T17:54:15.756Z"
+ },
+ "https://www.ringsidenews.com/cm-punk-begs-people-stop-running-touching-him-public": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-23T17:49:22.182Z"
  },
  "https://www.fightful.com/wrestling/hulk-hogans-right-boot-from-wrestlemania-x8-sells-for-494k": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-15T13:16:43.726Z"
- },
- "https://www.ringsidenews.com/mercedes-mones-aew-full-gear-2026-finish-didnt-go-planned": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T13:14:52.419Z"
  }
 }
