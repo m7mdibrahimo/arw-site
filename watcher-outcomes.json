@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/jeff-hardy-admits-first-wwe-match-almost-made-him-give-wrestling": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-11-23T21:57:31.068Z"
+ },
+ "https://www.ringsidenews.com/jeff-hardy-reveals-plans-new-horror-movie-version-willow": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-23T21:56:06.288Z"
+ },
  "https://www.fightful.com/wrestling/beyond-still-alive-results-11-21": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1988,15 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-15T20:31:56.879Z"
- },
- "https://www.fightful.com/wrestling/watch-aew-full-gear-post-show-media-scrum-11-14-26": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T20:12:43.979Z"
- },
- "https://www.wrestlinginc.com/2315550/wwe-rey-mysterio-eddie-guerrero-dragon-lee-friendship-reminds": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T20:03:26.175Z"
  }
 }
