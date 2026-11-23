@@ -1,63 +1,63 @@
 {
- "https://www.fightful.com/wrestling/chelsea-green-says-her-favorite-part-of-being-a-wrestler-is-having-an-alter-ego-and-playing-a-character": {
-  "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي",
-  "retry": false,
-  "at": "2026-11-23T14:24:33.791Z"
- },
  "https://www.fightful.com/wrestling/big-damo-confirms-progress-will-run-an-all-womens-tournament-next-year": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-23T14:21:04.715Z"
+  "at": "2026-11-23T14:30:19.728Z"
  },
  "https://www.fightful.com/wrestling/kyle-fletcher-says-he-will-rko-andrade-el-idolo-out-of-his-pants-for-jokingly-comparing-him-to-randy-orton": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T14:18:29.562Z"
+  "at": "2026-11-23T14:28:57.561Z"
  },
  "https://www.fightful.com/wrestling/njpw-world-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-23T14:18:29.464Z"
+  "at": "2026-11-23T14:28:57.413Z"
  },
  "https://www.fightful.com/wrestling/njpw-world-tag-league-night-one-results-11-23": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T14:18:29.403Z"
+  "at": "2026-11-23T14:28:57.318Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-23": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T14:18:29.341Z"
+  "at": "2026-11-23T14:28:57.222Z"
  },
  "https://www.fightful.com/wrestling/trick-williams-wants-to-headline-his-first-wrestlemania-against-cody-rhodes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T14:18:28.940Z"
+  "at": "2026-11-23T14:28:56.628Z"
  },
  "https://www.fightful.com/wrestling/anna-jay-provides-another-update-on-shoulder-injury": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T14:18:28.837Z"
+  "at": "2026-11-23T14:28:56.475Z"
  },
  "https://www.fightful.com/wrestling/trick-williams-comments-on-dark-match-with-gunther-the-punishment-to-gunther-was-putting-him-in-the-ring-with-me-knowing-that-he-cant-hang-with-the-big-dog": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T14:18:28.743Z"
+  "at": "2026-11-23T14:28:56.334Z"
  },
  "https://www.fightful.com/wrestling/trick-williams-says-whole-project-with-lil-yachty-is-on-the-way": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T14:18:28.646Z"
+  "at": "2026-11-23T14:28:56.184Z"
  },
  "https://www.fightful.com/wrestling/three-unseen-matches-added-to-tna-impact-thanksgiving-special": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T14:18:28.490Z"
+  "at": "2026-11-23T14:28:55.940Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-appearance-more-added-to-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T14:18:28.358Z"
+  "at": "2026-11-23T14:28:55.741Z"
+ },
+ "https://www.fightful.com/wrestling/chelsea-green-says-her-favorite-part-of-being-a-wrestler-is-having-an-alter-ego-and-playing-a-character": {
+  "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي",
+  "retry": false,
+  "at": "2026-11-23T14:24:33.791Z"
  },
  "https://www.ringsidenews.com/wwe-stars-kept-dark-about-john-cena-classic-opponents": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
