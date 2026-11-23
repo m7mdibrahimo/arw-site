@@ -64,6 +64,11 @@
   "retry": true,
   "at": "2026-11-23T13:43:00.621Z"
  },
+ "https://www.wrestlinginc.com/2323641/wwe-jade-cargill-cm-punk-best-advice-given": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-23T13:43:00.621Z"
+ },
  "https://www.ringsidenews.com/hulk-hogans-match-worn-boot-iconic-wrestlemania-18-match-sells-insane-price": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-15T02:30:33.182Z"
- },
- "https://www.fightful.com/mma/stephen-thompson-scores-tko-victory-in-retirement-fight": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-15T02:20:09.658Z"
  }
 }
