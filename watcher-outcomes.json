@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2323641/wwe-jade-cargill-cm-punk-best-advice-given": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-23T13:43:00.621Z"
+ },
  "https://www.fightful.com/wrestling/big-damo-confirms-progress-will-run-an-all-womens-tournament-next-year": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Nikki Bella",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-15T02:20:09.658Z"
- },
- "https://www.fightful.com/wrestling/4th-rope-x-mass-appeal-present-heelmatic-results-11-12": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T02:07:26.087Z"
  }
 }
