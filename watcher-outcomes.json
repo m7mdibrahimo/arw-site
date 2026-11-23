@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/why-jeff-hardys-planned-reality-tv-show-never-happened": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-23T22:10:35.610Z"
+ },
  "https://www.ringsidenews.com/jeff-hardy-admits-first-wwe-match-almost-made-him-give-wrestling": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-15T21:32:26.458Z"
- },
- "https://www.fightful.com/wrestling/rey-horus-out-world-x-cup-will-be-decided-in-an-elimination-match-between-home-town-man-vs-ricky-sosa-vs-amir-jordan-vs-fabian-aichner-vs-jason-hotch-at-tna-destination-x": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T20:31:56.879Z"
  }
 }
