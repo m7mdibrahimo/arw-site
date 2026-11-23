@@ -1,8 +1,13 @@
 {
- "https://www.ringsidenews.com/jasmin-st-claire-finally-pulls-trigger-long-planned-boob-job": {
+ "https://www.ringsidenews.com/wwe-stars-kept-dark-about-john-cena-classic-opponents": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-23T14:03:30.230Z"
+  "at": "2026-11-23T14:09:09.690Z"
+ },
+ "https://www.ringsidenews.com/jasmin-st-claire-finally-pulls-trigger-long-planned-boob-job": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-23T14:06:57.752Z"
  },
  "https://www.fightful.com/wrestling/big-damo-confirms-progress-will-run-an-all-womens-tournament-next-year": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة",
   "retry": true,
   "at": "2026-11-15T02:47:41.662Z"
- },
- "https://www.fightful.com/wrestling/aew-full-gear-results-11-14-2026-will-ospreay-vs-kyle-fletcher-texas-death-anarchy-in-the-arena-mercedes-mone-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T02:30:33.182Z"
  }
 }
