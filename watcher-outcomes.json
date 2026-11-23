@@ -1,13 +1,18 @@
 {
+ "https://www.ringsidenews.com/blake-monroe-recalls-severely-hungover-missing-most-her-first-american-thanksgiving": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-23T17:17:16.904Z"
+ },
+ "https://www.ringsidenews.com/wwe-2k27-cover-star-vote-comes-99-catch-fans": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-23T17:13:56.297Z"
+ },
  "https://www.wrestlinginc.com/2324658/aew-wwe-swerve-strickland-triple-h-believes-knew-potential": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-23T16:59:55.471Z"
- },
- "https://www.ringsidenews.com/wwe-2k27-cover-star-vote-comes-99-catch-fans": {
-  "reason": "المراجعة رفضته: المصدر بيتكلم عن Roman Reigns (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
-  "retry": true,
-  "at": "2026-11-23T16:53:33.016Z"
  },
  "https://www.fightful.com/wrestling/royce-isaacs-returns-to-in-ring-action": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Katsuyori Shibata",
   "retry": true,
   "at": "2026-11-15T07:36:45.988Z"
- },
- "https://www.ringsidenews.com/aew-full-gear-results-highlights-key-moments-november-14-2026": {
-  "reason": "المراجعة رفضته: «لصالح» من غير ضمير قبل «ضد/على» أو قبل علامة ترقيم («حسم النزال لصالح ضد منافسه»، «حسمه ري فينيكس لصالح،») — اكتب «لصالحه …» أو شيل «لصالح» (INCIDENTS #1208)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (صفقا/احتفلا/أمام عيني X وY…) ممنوعة: اكتب فعل جمع («مات وجيف صفقوا») أو «أمام X وY».",
-  "retry": true,
-  "at": "2026-11-15T07:21:45.036Z"
  }
 }
