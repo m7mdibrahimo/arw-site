@@ -19,11 +19,6 @@
   "retry": false,
   "at": "2026-11-23T18:37:00.651Z"
  },
- "https://www.ringsidenews.com/michael-romo-tried-save-his-tna-job-adult-film-career-exposed": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-23T18:37:00.651Z"
- },
  "https://www.fightful.com/wrestling/damian-priest-says-he-probably-looked-insane-while-voice-acting-in-the-booth-for-steps": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
