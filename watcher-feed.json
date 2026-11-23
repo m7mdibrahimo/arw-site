@@ -1,5 +1,15 @@
 [
   {
+    "id": 340416,
+    "link": "https://www.fightful.com/wrestling/mark-briscoe-sidelined-with-a-knee-injury/",
+    "date": "2026-11-22T21:29:33",
+    "date_gmt": "2026-11-23T02:29:33",
+    "title": {
+      "rendered": "Mark Briscoe Has Been Sidelined With A Knee Injury"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/06/10211315/Screenshot-247-e1781140404623.png"
+  },
+  {
     "id": 340412,
     "link": "https://www.fightful.com/wrestling/sami-zayn-i-do-have-a-great-relationship-with-the-fans-unfortunately-many-are-too-brain-dead-to-understand-greatness-when-its-standing-right-in-front-of-them/",
     "date": "2026-11-22T21:04:10",
@@ -288,15 +298,5 @@
       "rendered": "New Texas Pro and West Coast Pro Present Marvelous Pro Wrestling Results (11/20)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/21203423/HXYHCVsXsAAQki7.jpeg"
-  },
-  {
-    "id": 340305,
-    "link": "https://www.fightful.com/wrestling/mjf-to-appear-on-aew-dynamite-thanksgiving-eve/",
-    "date": "2026-11-21T22:33:22",
-    "date_gmt": "2026-11-22T03:33:22",
-    "title": {
-      "rendered": "MJF To Appear On AEW Dynamite Thanksgiving Eve"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/21223105/HXsvHdOX0AAYbAn.jpg"
   }
 ]
