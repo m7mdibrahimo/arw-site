@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/jasmin-st-claire-finally-pulls-trigger-long-planned-boob-job": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-23T14:03:30.230Z"
+ },
  "https://www.fightful.com/wrestling/big-damo-confirms-progress-will-run-an-all-womens-tournament-next-year": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
@@ -58,11 +63,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-23T13:50:13.530Z"
- },
- "https://www.wrestlinginc.com/2323641/wwe-jade-cargill-cm-punk-best-advice-given": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-23T13:43:00.621Z"
  },
  "https://www.wrestlinginc.com/2323641/wwe-jade-cargill-cm-punk-best-advice-given": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
