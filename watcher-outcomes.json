@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/wwe-raw-preview-november-23-2026-confirmed-matches-start-time-how-watch": {
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
+  "retry": true,
+  "at": "2026-11-23T10:56:16.840Z"
+ },
+ "https://www.ringsidenews.com/brie-bella-reveals-major-change-bedroom-life-bryan-danielson": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل مثنى («يمارسان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-23T10:54:01.898Z"
+ },
  "https://www.fightful.com/wrestling/cmll-domingo-familiar-results-11-22-2026-villano-iii-jr-bandido-francesco-akira-dark-panther-skadi-more": {
   "reason": "المراجعة رفضته: آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Galaxy، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
   "retry": true,
@@ -1988,15 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-14T21:27:27.886Z"
- },
- "https://www.fightful.com/wrestling/muhammad-hassan-says-he-never-had-a-bad-interaction-with-vince-mcmahon": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-14T20:43:59.865Z"
- },
- "https://www.fightful.com/wrestling/muhammad-hassan-regardless-of-what-happened-in-july-of-2005-in-london-i-think-that-character-was-on-a-trajectory-that-was-going-to-get-him-pulled-from-tv": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-14T20:39:48.048Z"
  }
 }
