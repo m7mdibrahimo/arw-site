@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/wwe-2k27-cover-star-vote-comes-99-catch-fans": {
+  "reason": "المراجعة رفضته: المصدر بيتكلم عن Roman Reigns (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
+  "retry": true,
+  "at": "2026-11-23T16:53:33.016Z"
+ },
+ "https://www.wrestlinginc.com/2324658/aew-wwe-swerve-strickland-triple-h-believes-knew-potential": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-23T16:45:35.941Z"
+ },
  "https://www.fightful.com/wrestling/royce-isaacs-returns-to-in-ring-action": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -58,16 +68,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-23T16:37:23.900Z"
- },
- "https://www.wrestlinginc.com/2324658/aew-wwe-swerve-strickland-triple-h-believes-knew-potential": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى («يتنافسان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-23T16:47:37.317Z"
- },
- "https://www.wrestlinginc.com/2324658/aew-wwe-swerve-strickland-triple-h-believes-knew-potential": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-23T16:45:35.941Z"
  },
  "https://www.wrestlinginc.com/2324638/wwe-nxt-viewership-ratings-november-17-2026": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
