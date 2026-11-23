@@ -9,65 +9,10 @@
   "retry": true,
   "at": "2026-11-23T19:02:01.624Z"
  },
- "https://www.fightful.com/wrestling/mlw-promotes-josef-samael-to-evp-of-wrestling-operations": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-23T19:01:56.837Z"
- },
- "https://www.fightful.com/wrestling/speedball-mike-bailey-says-continental-classic-season-is-their-favorite-season": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-23T19:00:05.050Z"
- },
- "https://www.fightful.com/wrestling/hulk-hogans-right-boot-from-wrestlemania-x8-sells-for-494k": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-23T18:54:40.227Z"
- },
- "https://www.fightful.com/wrestling/wwe-impact-njpw-roh-injury-report-expected-returns-more": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-23T18:44:48.746Z"
- },
- "https://www.fightful.com/wrestling/royce-isaacs-returns-to-in-ring-action": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-23T18:43:07.567Z"
- },
- "https://www.fightful.com/wrestling/produce-and-razor-pro-wrestling-announce-relaunch-of-mid-south-wrestling-for-2027": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-23T18:41:47.383Z"
- },
- "https://www.fightful.com/wrestling/kyle-fletcher-says-hes-been-slightly-tempted-to-dye-his-buzzcut-pink": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-23T18:41:14.588Z"
- },
- "https://www.fightful.com/wrestling/big-damo-confirms-progress-will-run-an-all-womens-tournament-next-year": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-23T18:39:20.912Z"
- },
- "https://www.fightful.com/wrestling/kyle-fletcher-says-he-will-rko-andrade-el-idolo-out-of-his-pants-for-jokingly-comparing-him-to-randy-orton": {
-  "reason": "مكرر مع خبر نزل قبل كده",
+ "https://www.ringsidenews.com/michael-romo-tried-save-his-tna-job-adult-film-career-exposed": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-23T18:38:32.769Z"
- },
- "https://www.fightful.com/wrestling/njpw-world-tag-league-2026-standings-and-results-archive": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-23T18:38:32.638Z"
- },
- "https://www.fightful.com/wrestling/njpw-world-tag-league-night-one-results-11-23": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-23T18:38:32.559Z"
- },
- "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-23": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-23T18:38:32.476Z"
+  "at": "2026-11-23T18:37:00.651Z"
  },
  "https://www.ringsidenews.com/michael-romo-tried-save-his-tna-job-adult-film-career-exposed": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
