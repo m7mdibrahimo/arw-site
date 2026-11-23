@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/jake-hagers-fiancee-pushes-back-permanent-vision-loss-claims-power-slap-injury": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-23T00:00:49.900Z"
+ },
  "https://www.fightful.com/wrestling/trick-williams-wants-to-headline-his-first-wrestlemania-against-cody-rhodes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-14T17:34:58.219Z"
- },
- "https://www.wrestlinginc.com/2314384/lance-storm-wwe-john-cena-classic-undermines-fundamental-principle-pro-wrestling": {
-  "reason": "المراجعة رفضته: فعل مثنى («يقوضان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-14T17:07:52.100Z"
  }
 }
