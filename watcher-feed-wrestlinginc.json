@@ -1,5 +1,15 @@
 [
   {
+    "id": 3930148677,
+    "link": "https://www.wrestlinginc.com/2324900/wwe-raw-november-23-2026-results/",
+    "date": "Mon, 23 Nov 2026 20:00:00 +0000",
+    "date_gmt": "2026-11-23T20:00:00.000Z",
+    "title": {
+      "rendered": "WWE Raw Results 11/23/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-results-112326-w-live-updates/l-intro-1795443272.jpg"
+  },
+  {
     "id": 3513546981,
     "link": "https://www.wrestlinginc.com/2325645/dave-meltzer-explains-rock-sudden-wwe-survivor-series-announcement/",
     "date": "Mon, 23 Nov 2026 19:43:59 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Injury Update On Former AEW Star Jake Hager"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/injury-update-on-former-aew-star-jake-hager/l-intro-1795374472.jpg"
-  },
-  {
-    "id": 1482862002,
-    "link": "https://www.wrestlinginc.com/2322555/aew-kenny-omega-njpw-g1-climax-yuya-uemura-ryohei-oiwa/",
-    "date": "Sun, 22 Nov 2026 18:30:00 +0000",
-    "date_gmt": "2026-11-22T18:30:00.000Z",
-    "title": {
-      "rendered": "AEW's Kenny Omega Praises NJPW G1 Climax Final Between Yuya Uemura And Ryohei Oiwa"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-kenny-omega-praises-njpw-g1-climax-final-between-yuya-uemura-and-ryohei-oiwa/l-intro-1795129750.jpg"
   }
 ]

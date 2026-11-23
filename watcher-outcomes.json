@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2324900/wwe-raw-november-23-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-23T20:08:38.571Z"
+ },
  "https://www.wrestlinginc.com/2325614/njpw-naoto-inoki-antonio-grandson-signing-additional-details": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
@@ -1938,10 +1943,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-15T16:57:00.071Z"
- },
- "https://www.fightful.com/wrestling/charlotte-flair-says-she-didnt-attend-her-first-royal-rumble-event-until-she-was-already-signed-to-wwe": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
-  "retry": true,
-  "at": "2026-11-15T16:43:02.687Z"
  }
 }
