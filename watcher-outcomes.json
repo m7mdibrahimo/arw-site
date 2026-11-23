@@ -1,18 +1,23 @@
 {
+ "https://www.wrestlinginc.com/2326109/wwe-cm-punk-begs-fans-do-not-run-people-street-touch-bad-behavior": {
+  "reason": "المراجعة رفضته: مثنى «عامي 2017 و2023 / شهري أكتوبر ونوفمبر» ممنوع — للمدة اكتب «من 2017 إلى 2023» أو «بين عام 2017 وعام 2023»، وللعامين بعينهما «عام 2017 وعام 2023» أو «شهر أكتوبر وشهر نوفمبر»",
+  "retry": true,
+  "at": "2026-11-23T23:14:02.163Z"
+ },
  "https://www.wrestlinginc.com/2326023/bully-ray-very-pissed-off-wwe-nxt-outcome-kelani-jordan-kendal-grey": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-23T23:04:57.565Z"
+  "at": "2026-11-23T23:12:58.250Z"
  },
  "https://www.wrestlinginc.com/2326017/biggest-winners-losers-week-november-23-2026": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: The Conglomeration",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-23T23:01:16.100Z"
+  "at": "2026-11-23T23:11:57.701Z"
  },
  "https://www.wrestlinginc.com/2324900/wwe-raw-november-23-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-23T22:58:59.120Z"
+  "at": "2026-11-23T23:08:48.814Z"
  },
  "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-23-2026": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
