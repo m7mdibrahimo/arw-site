@@ -1,5 +1,15 @@
 [
   {
+    "id": 340504,
+    "link": "https://www.fightful.com/wrestling/cody-rhodes-throws-an-interception/",
+    "date": "2026-11-23T13:24:21",
+    "date_gmt": "2026-11-23T18:24:21",
+    "title": {
+      "rendered": "Cody Rhodes Throws An Interception"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/23132340/Screenshot-2026-11-23-at-1.22.27-PM.png"
+  },
+  {
     "id": 340493,
     "link": "https://www.fightful.com/wrestling/speedball-mike-bailey-reacts-to-first-continental-classic-loss-i-have-to-make-sure-that-every-single-match-goes-perfectly-from-here-on-out/",
     "date": "2026-11-23T12:59:01",
@@ -288,15 +298,5 @@
       "rendered": "Jake Hager’s Fiancée Disputes Reports Of Permanent Vision Loss"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/18204615/images-2.jpg"
-  },
-  {
-    "id": 340403,
-    "link": "https://www.fightful.com/wrestling/paradigm-pro-50-midlife-crisis-results-11-20/",
-    "date": "2026-11-22T19:27:45",
-    "date_gmt": "2026-11-23T00:27:45",
-    "title": {
-      "rendered": "PARADIGM 150: Midlife Crisis Results (11/20)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/22192718/HSbQVw6XgAAzUKe.jpg.webp"
   }
 ]
