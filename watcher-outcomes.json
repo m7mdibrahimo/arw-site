@@ -1,13 +1,8 @@
 {
- "https://www.ringsidenews.com/michael-romo-tried-save-his-tna-job-adult-film-career-exposed": {
+ "https://www.wrestlinginc.com/2325614/njpw-naoto-inoki-antonio-grandson-signing-additional-details": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-23T18:37:00.651Z"
- },
- "https://www.wrestlinginc.com/2325414/mid-south-wrestling-2027-revival": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-23T18:30:46.284Z"
+  "at": "2026-11-23T19:42:17.231Z"
  },
  "https://www.fightful.com/wrestling/speedball-mike-bailey-reacts-to-first-continental-classic-loss-i-have-to-make-sure-that-every-single-match-goes-perfectly-from-here-on-out": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
@@ -73,6 +68,11 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-23T18:38:32.476Z"
+ },
+ "https://www.ringsidenews.com/michael-romo-tried-save-his-tna-job-adult-film-career-exposed": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-23T18:37:00.651Z"
  },
  "https://www.fightful.com/wrestling/damian-priest-says-he-probably-looked-insane-while-voice-acting-in-the-booth-for-steps": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
@@ -1998,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
   "retry": true,
   "at": "2026-11-15T16:43:02.687Z"
- },
- "https://www.fightful.com/wrestling/gcw-massacre-in-missoula-results-11-14": {
-  "reason": "المراجعة رفضته: أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الخامسة: نزال فردي — اكتب الفائز زي المصدر وبالماضي",
-  "retry": true,
-  "at": "2026-11-15T15:43:21.075Z"
  }
 }
