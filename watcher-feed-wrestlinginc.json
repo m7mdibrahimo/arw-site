@@ -1,5 +1,15 @@
 [
   {
+    "id": 3227218296,
+    "link": "https://www.wrestlinginc.com/2323520/jeff-hardy-ashamed-aew-dui-wwe-aew/",
+    "date": "Mon, 23 Nov 2026 04:59:00 +0000",
+    "date_gmt": "2026-11-23T04:59:00.000Z",
+    "title": {
+      "rendered": "Jeff Hardy 'Ashamed' Of DUIs In WWE And AEW"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/jeff-hardy-ashamed-of-duis-in-wwe-and-aew/l-intro-1795203930.jpg"
+  },
+  {
     "id": 2018662962,
     "link": "https://www.wrestlinginc.com/2323099/wwe-undertaker-trick-williams-last-person-ever-chokeslam/",
     "date": "Sun, 22 Nov 2026 21:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "AEW Dynamite Viewership & Ratings Report, 11/18/2026"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-viewership-ratings-report-11182026/l-intro-1795316534.jpg"
-  },
-  {
-    "id": 2679298979,
-    "link": "https://www.wrestlinginc.com/2324005/aew-collision-november-21-2026-results/",
-    "date": "Sat, 21 Nov 2026 22:00:00 +0000",
-    "date_gmt": "2026-11-21T22:00:00.000Z",
-    "title": {
-      "rendered": "AEW Collision Results 11/21/26 W/ Live Updates- Continental Classic Continues"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-collision-results-112126-w-live-updates/l-intro-1795320210.jpg"
   }
 ]
