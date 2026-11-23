@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/spoiler-closing-segment-november-23-2026-wwe-raw-revealed": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-23T20:57:06.669Z"
+ },
+ "https://www.ringsidenews.com/spoiler-opening-segment-november-23-2026-wwe-raw-revealed": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-23T20:56:16.504Z"
+ },
  "https://www.fightful.com/wrestling/wwe-video-producer-releases-movie-the-boogeyman-featured-in-film": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1988,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-15T19:34:01.346Z"
- },
- "https://www.wrestlinginc.com/2315660/luke-gallows-good-brothers-miserable-grumpy-a-holes-wwe-vince-mcmahon": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T19:22:59.617Z"
  }
 }
