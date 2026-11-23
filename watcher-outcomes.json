@@ -1,58 +1,63 @@
 {
+ "https://www.fightful.com/wrestling/paradigm-pro-50-midlife-crisis-results-11-20": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-23T00:30:33.283Z"
+ },
  "https://www.fightful.com/wrestling/trick-williams-wants-to-headline-his-first-wrestlemania-against-cody-rhodes": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T00:21:41.871Z"
+  "at": "2026-11-23T00:30:02.846Z"
  },
  "https://www.fightful.com/wrestling/anna-jay-provides-another-update-on-shoulder-injury": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T00:21:41.722Z"
+  "at": "2026-11-23T00:30:02.736Z"
  },
  "https://www.fightful.com/wrestling/trick-williams-comments-on-dark-match-with-gunther-the-punishment-to-gunther-was-putting-him-in-the-ring-with-me-knowing-that-he-cant-hang-with-the-big-dog": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T00:21:41.586Z"
+  "at": "2026-11-23T00:30:02.629Z"
  },
  "https://www.fightful.com/wrestling/trick-williams-says-whole-project-with-lil-yachty-is-on-the-way": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T00:21:41.437Z"
+  "at": "2026-11-23T00:30:02.503Z"
  },
  "https://www.fightful.com/wrestling/three-unseen-matches-added-to-tna-impact-thanksgiving-special": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T00:21:41.204Z"
+  "at": "2026-11-23T00:30:02.305Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-appearance-more-added-to-11-23-wwe-raw": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T00:21:41.013Z"
+  "at": "2026-11-23T00:30:02.168Z"
  },
  "https://www.fightful.com/wrestling/mjf-promises-he-will-get-brody-king-fired-following-daniel-garcia-injury-on-aew-collision": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T00:21:40.736Z"
+  "at": "2026-11-23T00:30:01.925Z"
  },
  "https://www.fightful.com/wrestling/la-knight-asks-fans-to-respect-his-ex-girlfriends-privacy-she-didnt-sign-up-to-be-a-public-figure": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T00:21:40.543Z"
+  "at": "2026-11-23T00:30:01.734Z"
  },
  "https://www.fightful.com/wrestling/charlotte-flair-says-alexa-bliss-episode-will-be-first-when-her-podcast-comes-out": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T00:21:40.299Z"
+  "at": "2026-11-23T00:30:01.539Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T00:21:39.847Z"
+  "at": "2026-11-23T00:30:01.173Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-night-two-recap": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-23T00:21:39.750Z"
+  "at": "2026-11-23T00:30:01.105Z"
  },
  "https://www.ringsidenews.com/jake-hagers-fiancee-pushes-back-permanent-vision-loss-claims-power-slap-injury": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-14T18:06:19.051Z"
- },
- "https://www.fightful.com/wrestling/brie-bella-is-hoping-to-resume-in-ring-training-in-january": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T17:34:58.219Z"
  }
 }

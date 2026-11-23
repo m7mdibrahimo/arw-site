@@ -1,5 +1,15 @@
 [
   {
+    "id": 340403,
+    "link": "https://www.fightful.com/wrestling/paradigm-pro-50-midlife-crisis-results-11-20/",
+    "date": "2026-11-22T19:27:45",
+    "date_gmt": "2026-11-23T00:27:45",
+    "title": {
+      "rendered": "PARADIGM 150: Midlife Crisis Results (11/20)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/22192718/HSbQVw6XgAAzUKe.jpg.webp"
+  },
+  {
     "id": 340399,
     "link": "https://www.fightful.com/wrestling/espn2-to-air-wwe-survivor-series-wargames-special-on-thanksgiving/",
     "date": "2026-11-22T17:13:18",
@@ -288,15 +298,5 @@
       "rendered": "AEW Continental Classic 2026 Night Two Recap"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/21222039/1-jay-white-Search-X-11-22-2026_08_50_AM.png"
-  },
-  {
-    "id": 340294,
-    "link": "https://www.fightful.com/wrestling/kiana-james-coming-soon-to-aaa/",
-    "date": "2026-11-21T22:16:31",
-    "date_gmt": "2026-11-22T03:16:31",
-    "title": {
-      "rendered": "Kiana James &#8216;Coming Soon&#8217; To AAA"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/21221559/HXsiVuhXcAAu0zD.jpeg"
   }
 ]
