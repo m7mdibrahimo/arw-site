@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/xia-brookside-other-companies-interested-tna-contract-talks-hit-roadblock": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-23T14:41:03.941Z"
+ },
  "https://www.wrestlinginc.com/2324563/wwe-cody-rhodes-strategy-possible-political-run": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-15T03:56:26.311Z"
- },
- "https://www.fightful.com/wrestling/tko-chief-administrative-officer-senior-counsel-says-he-will-be-transitioning-out": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-15T03:15:41.462Z"
  }
 }
