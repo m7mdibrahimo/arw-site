@@ -1,13 +1,23 @@
 {
- "https://www.wrestlinginc.com/2325810/matt-jeff-hardy-four-years-before-in-ring-retirement": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+ "https://www.wrestlinginc.com/2326023/bully-ray-very-pissed-off-wwe-nxt-outcome-kelani-jordan-kendal-grey": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-23T22:38:15.344Z"
+  "at": "2026-11-23T22:48:25.919Z"
+ },
+ "https://www.wrestlinginc.com/2326017/biggest-winners-losers-week-november-23-2026": {
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، المصدر بيتكلم عن Cody Rhodes (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
+  "retry": true,
+  "at": "2026-11-23T22:46:51.346Z"
+ },
+ "https://www.wrestlinginc.com/2325810/matt-jeff-hardy-four-years-before-in-ring-retirement": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-23T22:42:17.252Z"
  },
  "https://www.wrestlinginc.com/2324900/wwe-raw-november-23-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-23T22:36:44.882Z"
+  "at": "2026-11-23T22:40:28.609Z"
  },
  "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-23-2026": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
