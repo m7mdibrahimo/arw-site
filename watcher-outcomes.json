@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-23-2026": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-23T23:48:51.251Z"
+ },
  "https://www.wrestlinginc.com/2326023/bully-ray-very-pissed-off-wwe-nxt-outcome-kelani-jordan-kendal-grey": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
@@ -33,11 +38,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-23T23:35:53.966Z"
- },
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-23-2026": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-23T23:35:35.438Z"
  },
  "https://www.fightful.com/wrestling/uhaa-nation-nikki-storm-raj-dhesi-big-damo-no-longer-appearing-on-nwe-legends-tour": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
