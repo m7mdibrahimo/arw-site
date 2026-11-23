@@ -3441,7 +3441,7 @@ test('a show page title carries the dotted date people search with, only in the 
   const raw = { headline: 'عرض الرو 05.10.2026 مترجم', title: 'WWE RAW 05.10.2026', programName: 'WWE RAW', eventDate: new Date('2026-10-05'), day: '5 أكتوبر 2026', description: 'عرض الرو مترجم بالكامل مع جميع النزالات والأحداث.' };
   const latest = showSeoText({ ...raw, isLatest: true });
   assert.equal(latest.title, 'عرض الرو الأخير 05.10.2026 كامل مترجم — WWE RAW');
-  assert.equal(latest.description, 'مشاهدة وتحميل عرض الرو الأخير 05.10.2026 مترجم بالعربي كامل أونلاين، آخر عرض الرو 5 أكتوبر 2026 (دبليو دبليو إي راو 5 أكتوبر 2026، WWE RAW October 5, 2026)، من عروض المصارعة الحرة المترجمة.');
+  assert.equal(latest.description, 'مشاهدة وتحميل عرض الرو الأخير 05.10.2026 مترجم بالعربي كامل أونلاين، آخر عرض الرو 5 أكتوبر 2026 (دبليو دبليو إي راو 5 أكتوبر 2026، WWE RAW October 5, 2026)، من عروض المصارعة الحرة المترجمة وعروض WWE.');
   // the program's other spellings stay in the structured data, never as a list in the description (INCIDENTS #428)
   assert.doesNotMatch(showSeoText({ ...raw, isLatest: true, aliases: ['راو', 'RAW'] }).description, /ويعرف أيضا/); // «راو» once in «دبليو دبليو إي راو <date>» is the query itself (INCIDENTS #1187), not a spelling list
   // one date in the title, short enough for Google to show whole (INCIDENTS #428)

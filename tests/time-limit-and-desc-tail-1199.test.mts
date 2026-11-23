@@ -28,9 +28,9 @@ test("a description never ends on one starting word of the next sentence", () =>
 const seo = require("../lib/show-seo.cjs");
 test("WWE Evolve describes itself with the full category; so do RAW/SmackDown (#1221)", () => {
   const ev = seo.showSeoText({ headline: "عرض ايفولف 04.11.2026 مترجم", title: "WWE Evolve 04.11.2026", programName: "WWE Evolve", eventDate: "2026-11-04", day: "4 نوفمبر 2026", isLatest: false });
-  assert.match(ev.description, /من عروض المصارعة الحرة المترجمة\.$/);
+  assert.match(ev.description, /من عروض المصارعة الحرة المترجمة وعروض WWE\.$/);
   const sd = seo.showSeoText({ headline: "عرض سماك داون 06.11.2026 مترجم", title: "WWE SmackDown 06.11.2026", programName: "WWE SmackDown", eventDate: "2026-11-06", day: "6 نوفمبر 2026", isLatest: false });
-  assert.match(sd.description, /من عروض المصارعة الحرة المترجمة\.$/); // INCIDENTS #1221
+  assert.match(sd.description, /من عروض المصارعة الحرة المترجمة وعروض WWE\.$/); // INCIDENTS #1221
 });
 
 test("weekly pages carry «تحميل عروض المصارعة» in structured data", () => {
