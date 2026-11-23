@@ -15,7 +15,7 @@ social_priority: low
 tags:
   - WWE
   - AAA
-  - نتفليكس
+  - Netflix
   - أخبار المصارعة
   - عروض WWE
 image: /content/images/e1y3vof1k4339n8r.jpg
