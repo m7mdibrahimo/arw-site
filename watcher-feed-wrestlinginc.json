@@ -1,5 +1,15 @@
 [
   {
+    "id": 3223279285,
+    "link": "https://www.wrestlinginc.com/2324658/aew-wwe-swerve-strickland-triple-h-believes-knew-potential/",
+    "date": "Mon, 23 Nov 2026 16:00:00 +0000",
+    "date_gmt": "2026-11-23T16:00:00.000Z",
+    "title": {
+      "rendered": "AEW Star Swerve Strickland Believes WWE's Triple H Knew His Potential"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-star-swerve-strickland-believes-wwes-triple-h-knew-his-potential/l-intro-1795429800.jpg"
+  },
+  {
     "id": 3300329051,
     "link": "https://www.wrestlinginc.com/2324638/wwe-nxt-viewership-ratings-november-17-2026/",
     "date": "Mon, 23 Nov 2026 15:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE HOFer Kevin Nash On Paul Wight: 'The Nicest F****** Person'"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-hofer-kevin-nash-on-paul-wight-the-nicest-f-person/l-intro-1795105459.jpg"
-  },
-  {
-    "id": 1765444251,
-    "link": "https://www.wrestlinginc.com/2324298/aew-continental-classic-round-up-11-21-collision/",
-    "date": "Sun, 22 Nov 2026 15:30:22 +0000",
-    "date_gmt": "2026-11-22T15:30:22.000Z",
-    "title": {
-      "rendered": "AEW Continental Classic 2026 Round Up, 11/21 Collision"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-continental-classic-2026-round-up-1121-collision/l-intro-1795361352.jpg"
   }
 ]
