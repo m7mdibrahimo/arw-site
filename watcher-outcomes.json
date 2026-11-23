@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/hulk-hogans-match-worn-boot-iconic-wrestlemania-18-match-sells-insane-price": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-23T13:17:38.122Z"
+ },
  "https://www.fightful.com/wrestling/kyle-fletcher-says-he-will-rko-andrade-el-idolo-out-of-his-pants-for-jokingly-comparing-him-to-randy-orton": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-15T02:04:58.425Z"
- },
- "https://www.ringsidenews.com/liv-morgan-drops-500-puppy-she-found-side-road": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-15T01:48:37.328Z"
  }
 }
