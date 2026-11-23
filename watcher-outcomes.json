@@ -1,8 +1,13 @@
 {
+ "https://www.wrestlinginc.com/2325704/dave-meltzer-details-record-breaking-independent-wrestling-show-france": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-23T20:22:59.225Z"
+ },
  "https://www.wrestlinginc.com/2324900/wwe-raw-november-23-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-23T20:08:38.571Z"
+  "at": "2026-11-23T20:21:44.828Z"
  },
  "https://www.wrestlinginc.com/2325614/njpw-naoto-inoki-antonio-grandson-signing-additional-details": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
