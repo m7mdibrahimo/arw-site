@@ -1,8 +1,8 @@
 {
- "https://www.ringsidenews.com/vince-russo-claims-violent-j-rejected-his-attempts-expand-jcw-beyond-juggalo-fans": {
+ "https://www.ringsidenews.com/fired-tna-referee-michael-romo-caught-porn-star-allegations": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-23T11:41:35.742Z"
+  "at": "2026-11-23T11:45:08.051Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-preview-start-time-how-to-watch-location-11-23": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -53,6 +53,11 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-23T11:44:39.444Z"
+ },
+ "https://www.ringsidenews.com/vince-russo-claims-violent-j-rejected-his-attempts-expand-jcw-beyond-juggalo-fans": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-23T11:41:35.742Z"
  },
  "https://www.ringsidenews.com/andrade-trolls-kyle-fletcher-randy-orton-comparisons-ahead-aew-match": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى منصوب (لتحصلا/ليحسما/أن يلتقيا) ممنوع — اجمع الفعل («ليحسموا») أو استخدم المفرد لغير العاقل («لتنضم إلى البطاقة»)، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-14T22:58:20.639Z"
- },
- "https://www.fightful.com/wrestling/stephanie-vaquer-returns-on-11-13-wwe-smackdown": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-14T22:28:03.063Z"
  }
 }
