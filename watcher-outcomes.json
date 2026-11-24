@@ -134,11 +134,6 @@
   "retry": true,
   "at": "2026-11-24T19:51:26.327Z"
  },
- "https://www.ringsidenews.com/buddy-matthews-hints-pushing-aew-return-back-2027": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مدة زمنية في المتن غير مطابقة للمصدر: قبل عام",
-  "retry": true,
-  "at": "2026-11-24T19:50:45.521Z"
- },
  "https://www.fightful.com/wrestling/john-cena-says-the-final-invitees-to-the-john-cena-classic-will-be-revealed-at-survivor-series-2026": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
