@@ -114,11 +114,6 @@
   "retry": true,
   "at": "2026-11-24T01:07:03.288Z"
  },
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-23-2026": {
-  "reason": "المراجعة رفضته: المصدر بيتكلم عن Chad Gable (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
-  "retry": true,
-  "at": "2026-11-24T01:06:32.367Z"
- },
  "https://www.ringsidenews.com/seth-rollins-returns-wwe-raw-team-usas-final-member-survivor-series": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
