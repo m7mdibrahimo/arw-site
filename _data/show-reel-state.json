@@ -5830,7 +5830,8 @@
     "processing": [],
     "reviewPlatforms": [],
     "needsReview": false,
-    "tiktok": true
+    "tiktok": true,
+    "mediaDeleted": true
   },
   "20261124153512-cmll-domingo-familiar-22-11-2026": {
     "publishedAt": 1795528356467,
@@ -5853,9 +5854,9 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ان جيه بي دبليو وورلد تاج ليج (الليلة الاولى) 23.11.2026 مترجم",
-    "lastAttempt": 1795537889413,
+    "lastAttempt": 1795538750938,
     "errors": {
-      "instagram_reel": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا.",
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "انقطع الاتصال؛ راجع المنصة قبل إعادة المحاولة."
     },
     "processing": [
@@ -5866,6 +5867,6 @@
     ],
     "needsReview": true,
     "tiktok": true,
-    "reviewNotified": false
+    "reviewNotified": true
   }
 }
