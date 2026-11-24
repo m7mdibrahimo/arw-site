@@ -1,4 +1,19 @@
 {
+ "https://www.ringsidenews.com/reason-triple-h-absent-november-16-wwe-raw": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T14:42:47.161Z"
+ },
+ "https://www.ringsidenews.com/mr-kennedy-reveals-who-he-really-blames-for-his-wwe-firing": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T14:41:56.825Z"
+ },
+ "https://www.ringsidenews.com/john-cena-reveals-when-final-john-cena-classic-participants-will-announced": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-24T14:39:10.668Z"
+ },
  "https://www.fightful.com/wrestling/jeff-hardy-recalls-why-he-stopped-using-the-450-splash-almost-knocking-himself-out-with-one": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1983,20 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-16T23:08:07.290Z"
- },
- "https://www.ringsidenews.com/wwe-plans-massive-100-million-nxt-performance-center-seeks-7-million-orlando": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-11-16T22:46:28.867Z"
- },
- "https://www.fightful.com/wrestling/fallon-henley-says-wrestling-saved-her-life-after-she-was-lost-in-college": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-16T21:54:13.052Z"
- },
- "https://www.fightful.com/wrestling/beyond-wrestling-announces-still-alive-event-after-wedu-tv-studio-is-hit-by-lightning": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-16T21:33:51.920Z"
  }
 }
