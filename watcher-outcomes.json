@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2326697/ethan-page-wwe-intercontinental-title-win-chad-gable": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T17:45:47.494Z"
+ },
  "https://www.fightful.com/wrestling/iyo-sky-shares-that-triple-h-was-unable-to-take-post-title-win-photo-after-11-16-wwe-raw-because-he-was-sick": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -118,11 +123,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-24T17:36:12.369Z"
- },
- "https://www.ringsidenews.com/wwe-worlds-collide-doomsday-broadcast-plans-revealed": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T17:24:46.612Z"
  },
  "https://www.fightful.com/wrestling/triple-threat-tag-team-street-fight-set-for-12-5-aaa-on-fox": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
