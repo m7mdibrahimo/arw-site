@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2326017/biggest-winners-losers-week-november-23-2026": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T04:51:08.517Z"
+ },
  "https://www.fightful.com/wrestling/buddy-matthews-when-i-come-back-to-aew-im-not-coming-back-to-do-the-same-things-i-was-doing-before": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -118,11 +123,6 @@
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-24T04:47:13.223Z"
- },
- "https://www.wrestlinginc.com/2326017/biggest-winners-losers-week-november-23-2026": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T04:31:51.920Z"
  },
  "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-23-2026": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
