@@ -1,5 +1,35 @@
 [
   {
+    "id": 3735286396,
+    "link": "https://www.wrestlinginc.com/2327408/wwe-wrestlemania-43-dave-meltzer-rock-dwayne-johnson-speculates-availability/",
+    "date": "Tue, 24 Nov 2026 22:11:03 +0000",
+    "date_gmt": "2026-11-24T22:11:03.000Z",
+    "title": {
+      "rendered": "Dave Meltzer Speculates On The Rock's Availability For WWE WrestleMania 43"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/dave-meltzer-speculates-on-the-rocks-availability-for-wwe-wrestlemania-43/l-intro-1795558133.jpg"
+  },
+  {
+    "id": 5147961405,
+    "link": "https://www.wrestlinginc.com/2327394/wwe-womens-world-champion-liv-morgan-hooters-movie-cast/",
+    "date": "Tue, 24 Nov 2026 22:03:19 +0000",
+    "date_gmt": "2026-11-24T22:03:19.000Z",
+    "title": {
+      "rendered": "WWE Women's World Champ Liv Morgan Reportedly Joins Cast Of Hooters Movie"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-womens-world-champ-liv-morgan-reportedly-joins-cast-of-hooters-movie/l-intro-1795557517.jpg"
+  },
+  {
+    "id": 3675960077,
+    "link": "https://www.wrestlinginc.com/2326215/wwe-nxt-november-24-2026-results/",
+    "date": "Tue, 24 Nov 2026 22:00:00 +0000",
+    "date_gmt": "2026-11-24T22:00:00.000Z",
+    "title": {
+      "rendered": "WWE NXT Results 11/24/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-results-112426-w-live-updates/l-intro-1795488104.jpg"
+  },
+  {
     "id": 3750336009,
     "link": "https://www.wrestlinginc.com/2327214/wwe-eugene-nick-dinsmore-hospitalized-united-kingdom/",
     "date": "Tue, 24 Nov 2026 20:37:06 +0000",
@@ -168,35 +198,5 @@
       "rendered": "Rey Mysterio Officially Announces Fifth Member Of Team Mexico For WWE Survivor Series"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/rey-mysterio-officially-announces-fifth-member-of-team-usa-for-wwe-survivor-series/l-intro-1795478643.jpg"
-  },
-  {
-    "id": 3606218896,
-    "link": "https://www.wrestlinginc.com/2326142/wwe-raw-ethan-page-rey-fenix-first-mens-intercontinental-title-defense/",
-    "date": "Mon, 23 Nov 2026 23:39:59 +0000",
-    "date_gmt": "2026-11-23T23:39:59.000Z",
-    "title": {
-      "rendered": "Ethan Page Beats Rey Fenix On WWE Raw, Wins First Men's Intercontinental Title Defense"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/ethan-page-beats-rey-fenix-on-wwe-raw-wins-first-mens-intercontinental-title-defense/l-intro-1795477150.jpg"
-  },
-  {
-    "id": 1695424736,
-    "link": "https://www.wrestlinginc.com/2326136/complete-aew-streaming-library-available-hbo-max-december/",
-    "date": "Mon, 23 Nov 2026 23:32:05 +0000",
-    "date_gmt": "2026-11-23T23:32:05.000Z",
-    "title": {
-      "rendered": "Complete AEW Streaming Library To Be Available On HBO Max By The End Of December"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/complete-aew-streaming-library-to-be-available-on-hbo-max-by-the-end-of-december/l-intro-1795476598.jpg"
-  },
-  {
-    "id": 1192682440,
-    "link": "https://www.wrestlinginc.com/2326109/wwe-cm-punk-begs-fans-do-not-run-people-street-touch-bad-behavior/",
-    "date": "Mon, 23 Nov 2026 23:05:24 +0000",
-    "date_gmt": "2026-11-23T23:05:24.000Z",
-    "title": {
-      "rendered": "WWE's CM Punk Begs Fans: 'Do Not Run Up On People In The Street And Touch Them'"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-cm-punk-begs-fans-do-not-run-up-on-people-in-the-street-and-touch-them/l-intro-1795474931.jpg"
   }
 ]
