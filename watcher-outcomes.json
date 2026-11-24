@@ -119,6 +119,11 @@
   "retry": true,
   "at": "2026-11-24T17:36:12.369Z"
  },
+ "https://www.ringsidenews.com/wwe-worlds-collide-doomsday-broadcast-plans-revealed": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T17:24:46.612Z"
+ },
  "https://www.fightful.com/wrestling/triple-threat-tag-team-street-fight-set-for-12-5-aaa-on-fox": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -133,11 +138,6 @@
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-24T17:24:46.612Z"
- },
- "https://www.wrestlinginc.com/2326697/ethan-page-wwe-intercontinental-title-win-chad-gable": {
-  "reason": "المراجعة رفضته: حرف منفرد — كلمة مبتورة (حصل: «ق ليحكم»، «تضرب الح للمرة»)، اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Intercontinental Championship",
-  "retry": true,
-  "at": "2026-11-24T17:05:15.248Z"
  },
  "https://www.fightful.com/wrestling/340565-seth-rollins-wwe-survivor-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
