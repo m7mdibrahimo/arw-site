@@ -5838,7 +5838,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال دومينغو فاميليار 22.11.2026 مترجم",
-    "lastAttempt": 1795532663883,
+    "lastAttempt": 1795533527759,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5856,9 +5856,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض ان جيه بي دبليو وورلد تاج ليج (الليلة الاولى) 23.11.2026 مترجم",
-    "lastAttempt": 1795531800647,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1795533528681,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false,
     "tiktok": true
