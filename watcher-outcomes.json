@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/mr-kennedy-claims-vince-mcmahon-told-him-stop-entertaining-wwe": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T15:05:58.171Z"
+ },
  "https://www.fightful.com/wrestling/royce-keys-says-his-current-wwe-character-is-him-just-being-himself": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-17T00:12:31.817Z"
- },
- "https://www.fightful.com/wrestling/pharaoh-rhodes-logo-shirt-revealed-alexa-bliss-on-wwe-day-off-more-fight-size": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-16T23:08:07.290Z"
  }
 }
