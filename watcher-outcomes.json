@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2327071/wwe-john-cena-classic-reveals-final-participants-announced": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T21:07:51.696Z"
+ },
  "https://www.fightful.com/wrestling/royce-keys-warns-the-rock-ahead-of-wwe-survivor-series-i-hope-he-knows-his-place": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -133,11 +138,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-24T20:51:56.364Z"
- },
- "https://www.wrestlinginc.com/2327071/wwe-john-cena-classic-reveals-final-participants-announced": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T20:47:04.271Z"
  },
  "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-11-24": {
   "reason": "مكرر مع خبر نزل قبل كده",
