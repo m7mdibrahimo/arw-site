@@ -5155,6 +5155,17 @@ test("the newest episode's visible H1 says «الأخير» like its title (INCI
   assert.equal((layout.match(/latestH1\(showSeoData and showSeoData\.isLatest\)/g) || []).length, 2);
 });
 
+test("a tournament night's H1 and cards never say «الأخير» (INCIDENTS #1528)", () => {
+  const cfg = fs.readFileSync('eleventy.config.js', 'utf-8');
+  const part = cfg.match(/const PART_MARK = (\/.+\/);/)![1];
+  const re = eval(part);
+  assert.ok(re.test('عرض ان جيه بي دبليو وورلد تاج ليج (الليلة الثانية) مترجم'));
+  assert.ok(re.test('عرض سوبر جونيور تاج ليج (اليوم الثاني) مترجم'));
+  assert.ok(!re.test('عرض الرو مترجم'));
+  assert.match(cfg, /if \(!isLatest \|\| !t \|\| \/الأخير\|الاخير\/\.test\(t\) \|\| PART_MARK\.test\(t\)\) return t;/);
+  assert.match(cfg, /if \(!n \|\| \/الأخير\|الاخير\/\.test\(n\) \|\| PART_MARK\.test\(n\)\) return n;/);
+});
+
 // INCIDENTS #566: a one-event library page (Money in the Bank 2026) is searched with its year, not «الاخير»
 test("the library description of a yearly one-event program says the year and download/watch", () => {
   const t = fs.readFileSync("pages/library-program.njk", "utf-8");

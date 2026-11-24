@@ -356,3 +356,12 @@ test("a pre-show's title tail names the pre-show, not the main event", () => {
   // a weekly episode keeps its program tail
   assert.ok(mk("عرض سماك داون 13.11.2026 مترجم", "WWE SmackDown", "WWE SmackDown", "2026-11-13").endsWith("— WWE SmackDown"));
 });
+
+// INCIDENTS #1528: the newest night of a tournament read «وورلد تاج ليج (الليلة الثانية) الأخير مترجم» — «the final one»
+test("a night/day/part of an event never gets «الأخير», a weekly show still does", () => {
+  const night = showSeoText({ headline: "عرض ان جيه بي دبليو وورلد تاج ليج (الليلة الثانية) 24.11.2026 مترجم", title: "NJPW World Tag League Night 2 24.11.2026", programName: "NJPW World Tag League", eventDate: "2026-11-24", day: "24 نوفمبر 2026", isLatest: true, description: "" });
+  assert.ok(!night.title.includes("الأخير"), night.title);
+  assert.ok(night.title.includes("(الليلة الثانية)"), night.title);
+  const weekly = showSeoText({ headline: "عرض الرو 23.11.2026 مترجم", title: "WWE Raw 23.11.2026", programName: "WWE Raw", eventDate: "2026-11-23", day: "23 نوفمبر 2026", isLatest: true, description: "" });
+  assert.ok(weekly.title.includes("الأخير"), weekly.title);
+});

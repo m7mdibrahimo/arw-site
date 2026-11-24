@@ -1894,9 +1894,11 @@ module.exports = function(eleventyConfig) {
     }
     return out;
   });
+  // a night/day/part of an event («(الليلة الثانية)») never gets «الأخير»: it reads as «the final night» (INCIDENTS #1528)
+  const PART_MARK = /\(\s*(?:العرض|الجزء|الليلة|الحلقة|الجولة|اليوم)\s/;
   eleventyConfig.addNunjucksFilter("latestCardName", function(name, url, library) {
     const n = String(name || "");
-    if (!n || /الأخير|الاخير/.test(n)) return n;
+    if (!n || /الأخير|الاخير/.test(n) || PART_MARK.test(n)) return n;
     const prog = (library || []).find(p => p.latest && p.latest.url === url);
     if (!prog || (prog.count || 0) < 4) return n;
     const m = n.match(/^(.*?)\s+(\d{1,2}[.\/-]\d{1,2}[.\/-]\d{2,4}.*)$/);
@@ -1905,7 +1907,7 @@ module.exports = function(eleventyConfig) {
   // The newest episode is searched as «عرض الرو الأخير مترجم»: its visible H1 says «الأخير» too, like its title (INCIDENTS #565)
   eleventyConfig.addNunjucksFilter("latestH1", function(text, isLatest) {
     const t = String(text || "").trim();
-    if (!isLatest || !t || /الأخير|الاخير/.test(t)) return t;
+    if (!isLatest || !t || /الأخير|الاخير/.test(t) || PART_MARK.test(t)) return t;
     return /\sمترجم$/.test(t) ? t.replace(/\s(مترجم)$/, " الأخير $1") : t;
   });
   eleventyConfig.addNunjucksGlobal("showSeo", function(headline, title, programName, eventDate, url, library, description, commentary) {
