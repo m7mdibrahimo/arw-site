@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2326339/wwe-johnny-gargano-john-cena-classic-dream-wrestling-disney-world": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T16:45:53.402Z"
+ },
  "https://www.fightful.com/wrestling/charlotte-flair-says-wrestlemania-35-main-event-is-not-good-thinks-they-couldve-structured-it-differently": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-17T01:58:37.839Z"
- },
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-16-2026": {
-  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: نزال فردي — اكتب الفائز زي المصدر وبالماضي",
-  "retry": true,
-  "at": "2026-11-17T01:35:41.113Z"
  }
 }
