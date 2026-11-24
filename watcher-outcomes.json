@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/roman-reigns-bloodline-get-massive-brawl-946-wwe-raw": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T06:09:22.452Z"
+ },
  "https://www.fightful.com/wrestling/cmll-lunes-clasico-results-11-23-2026-averno-united-empire-vs-barbaro-cavernario-reyes-del-inframundo-more": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -148,11 +153,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-24T05:36:10.909Z"
- },
- "https://www.ringsidenews.com/roman-reigns-bloodline-get-massive-brawl-946-wwe-raw": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T05:11:56.711Z"
  },
  "https://www.fightful.com/wrestling/wwe-impact-njpw-roh-injury-report-expected-returns-more": {
   "reason": "المراجعة رفضته: المصدر بيتكلم عن Mini Vikingo (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
