@@ -1,18 +1,8 @@
 {
- "https://www.ringsidenews.com/kasper-brothers-turned-down-multiple-wwe-attempts-re-sign-them": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+ "https://www.wrestlinginc.com/2327071/wwe-john-cena-classic-reveals-final-participants-announced": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-24T20:00:38.755Z"
- },
- "https://www.ringsidenews.com/kasper-brothers-reveal-why-they-left-wwe-aew": {
-  "reason": "المراجعة رفضته: صيغة مثنى (تختاران/حافظتا/قطعتين/بطلي فرق) ممنوعة — اجمع الفعل أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم، مثنى (فريقيهما/لقبيهما/الزميلان) ممنوع — قول «فريقهم/لقبهم/الزملاء» أو كرر الأسماء، فعل مثنى («يكشفان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-24T19:59:51.854Z"
- },
- "https://www.ringsidenews.com/buddy-matthews-hints-pushing-aew-return-back-2027": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-24T19:58:52.420Z"
+  "at": "2026-11-24T20:18:32.855Z"
  },
  "https://www.fightful.com/wrestling/zayda-steel-marina-shafir-is-such-a-real-person-and-in-wrestling-theres-not-a-lot-of-them": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
@@ -104,35 +94,10 @@
   "retry": true,
   "at": "2026-11-24T20:07:41.557Z"
  },
- "https://www.fightful.com/wrestling/jeff-hardy-recalls-why-he-stopped-using-the-450-splash-almost-knocking-himself-out-with-one": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-24T20:04:46.265Z"
- },
- "https://www.fightful.com/wrestling/john-cena-says-the-final-invitees-to-the-john-cena-classic-will-be-revealed-at-survivor-series-2026": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-24T20:03:02.803Z"
- },
- "https://www.fightful.com/wrestling/jamie-hayter-says-she-is-not-injured": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-24T20:03:02.674Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-preview-start-time-how-to-watch-location-11-24": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-24T20:03:02.470Z"
- },
- "https://www.fightful.com/wrestling/ken-anderson-says-the-six-years-it-took-for-him-to-reach-wwe-felt-like-it-was-forever": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-24T20:03:02.294Z"
- },
- "https://www.fightful.com/wrestling/njpw-world-tag-league-2026-standings-and-results-archive": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+ "https://www.ringsidenews.com/kasper-brothers-turned-down-multiple-wwe-attempts-re-sign-them": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-24T19:59:56.689Z"
+  "at": "2026-11-24T20:00:38.755Z"
  },
  "https://www.fightful.com/wrestling/royce-keys-says-his-current-wwe-character-is-him-just-being-himself": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
