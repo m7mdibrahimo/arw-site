@@ -7,70 +7,110 @@
  "https://www.fightful.com/wrestling/340565-seth-rollins-wwe-survivor-series": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-24T01:07:07.343Z"
+  "at": "2026-11-24T01:24:46.067Z"
  },
  "https://www.fightful.com/wrestling/el-grande-americano-revealed-as-final-member-of-team-mexico-for-wwe-survivor-series-bout": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-24T01:07:06.996Z"
+  "at": "2026-11-24T01:24:45.605Z"
  },
  "https://www.fightful.com/wrestling/netflix-promotes-guarding-stars-with-viral-cm-punk-edit-wwe-raw-preview-more-fight-size": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-24T01:07:06.887Z"
+  "at": "2026-11-24T01:24:45.451Z"
  },
  "https://www.fightful.com/wrestling/jalen-brunson-if-roman-reigns-is-being-deemed-overrated-hes-doing-something-right": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-24T01:07:06.449Z"
+  "at": "2026-11-24T01:24:44.900Z"
  },
  "https://www.fightful.com/wrestling/wwe-raw-results-11-23-2026-roman-reigns-appears-intercontinental-title-match-more": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-24T01:07:06.000Z"
+  "at": "2026-11-24T01:24:44.360Z"
  },
  "https://www.fightful.com/wrestling/cm-punk-begs-fans-to-not-run-up-on-wrestlers-in-the-street-and-touch-them": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-24T01:07:05.695Z"
+  "at": "2026-11-24T01:24:43.954Z"
  },
  "https://www.fightful.com/wrestling/beyond-still-alive-results-11-21": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-24T01:07:05.588Z"
+  "at": "2026-11-24T01:24:43.798Z"
  },
  "https://www.fightful.com/wrestling/uhaa-nation-nikki-storm-raj-dhesi-big-damo-no-longer-appearing-on-nwe-legends-tour": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-24T01:07:05.245Z"
+  "at": "2026-11-24T01:24:43.369Z"
  },
  "https://www.fightful.com/wrestling/jeff-hardy-recalls-scoring-reality-tv-deal-in-2009-explains-why-it-didnt-pan-out": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-24T01:07:04.875Z"
+  "at": "2026-11-24T01:24:42.308Z"
  },
  "https://www.fightful.com/wrestling/wwe-video-producer-releases-movie-the-boogeyman-featured-in-film": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-24T01:07:04.489Z"
+  "at": "2026-11-24T01:24:41.756Z"
  },
  "https://www.fightful.com/wrestling/more-details-on-tna-firing-mike-romo": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-24T01:07:04.071Z"
+  "at": "2026-11-24T01:24:40.663Z"
  },
  "https://www.fightful.com/wrestling/natalya-hopes-the-british-bulldog-vs-bret-hart-at-summerslam-92-is-one-day-inducted-into-the-wwe-hall-of-fame": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-24T01:07:03.671Z"
+  "at": "2026-11-24T01:24:11.150Z"
+ },
+ "https://www.fightful.com/wrestling/cody-rhodes-throws-an-interception": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-24T01:20:59.957Z"
+ },
+ "https://www.fightful.com/wrestling/mlw-promotes-josef-samael-to-evp-of-wrestling-operations": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-24T01:20:01.212Z"
+ },
+ "https://www.fightful.com/wrestling/speedball-mike-bailey-says-continental-classic-season-is-their-favorite-season": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-24T01:18:55.471Z"
+ },
+ "https://www.fightful.com/wrestling/hulk-hogans-right-boot-from-wrestlemania-x8-sells-for-494k": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-24T01:18:55.314Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-impact-njpw-roh-injury-report-expected-returns-more": {
+  "reason": "المراجعة رفضته: المصدر بيتكلم عن Mark Briscoe (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن Mini Vikingo (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
+  "retry": true,
+  "at": "2026-11-24T01:17:53.009Z"
+ },
+ "https://www.fightful.com/wrestling/royce-isaacs-returns-to-in-ring-action": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-24T01:16:25.137Z"
+ },
+ "https://www.fightful.com/wrestling/produce-and-razor-pro-wrestling-announce-relaunch-of-mid-south-wrestling-for-2027": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-24T01:16:02.593Z"
+ },
+ "https://www.fightful.com/wrestling/kyle-fletcher-says-hes-been-slightly-tempted-to-dye-his-buzzcut-pink": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-24T01:15:32.859Z"
  },
  "https://www.fightful.com/wrestling/natalya-says-bayley-was-a-little-pouty-after-she-told-her-she-had-no-guinness-world-records": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-24T01:07:03.288Z"
  },
- "https://www.fightful.com/wrestling/cody-rhodes-throws-an-interception": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+ "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-23-2026": {
+  "reason": "المراجعة رفضته: المصدر بيتكلم عن Chad Gable (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
   "retry": true,
   "at": "2026-11-24T01:07:02.937Z"
  },
