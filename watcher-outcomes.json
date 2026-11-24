@@ -19,6 +19,16 @@
   "retry": true,
   "at": "2026-11-24T00:39:43.666Z"
  },
+ "https://www.ringsidenews.com/seth-rollins-returns-wwe-raw-team-usas-final-member-survivor-series": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-24T00:24:23.083Z"
+ },
+ "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-23-2026": {
+  "reason": "المراجعة رفضته: صيغة مثنى (صفقا/احتفلا/أمام عيني X وY…) ممنوعة: اكتب فعل جمع («مات وجيف صفقوا») أو «أمام X وY».، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، المصدر بيتكلم عن Royce Keys (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
+  "retry": true,
+  "at": "2026-11-24T00:23:29.557Z"
+ },
  "https://www.wrestlinginc.com/2324900/wwe-raw-november-23-2026-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -108,31 +118,6 @@
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-23T23:57:51.937Z"
- },
- "https://www.fightful.com/wrestling/cm-punk-begs-fans-to-not-run-up-on-wrestlers-in-the-street-and-touch-them": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-23T23:54:09.491Z"
- },
- "https://www.fightful.com/wrestling/beyond-still-alive-results-11-21": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-23T23:53:40.926Z"
- },
- "https://www.fightful.com/wrestling/uhaa-nation-nikki-storm-raj-dhesi-big-damo-no-longer-appearing-on-nwe-legends-tour": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-23T23:52:56.564Z"
- },
- "https://www.fightful.com/wrestling/jeff-hardy-recalls-scoring-reality-tv-deal-in-2009-explains-why-it-didnt-pan-out": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-23T23:51:52.157Z"
- },
- "https://www.fightful.com/wrestling/wwe-video-producer-releases-movie-the-boogeyman-featured-in-film": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-23T23:51:29.648Z"
  },
  "https://www.fightful.com/wrestling/aew-tv-schedule-announced-for-december-three-hour-block-set-for-12-2-and-12-16": {
   "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
