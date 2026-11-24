@@ -139,11 +139,6 @@
   "retry": true,
   "at": "2026-11-24T17:48:01.615Z"
  },
- "https://www.wrestlinginc.com/2326697/ethan-page-wwe-intercontinental-title-win-chad-gable": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T17:45:47.494Z"
- },
  "https://www.fightful.com/wrestling/lee-england-jr-reflects-on-playing-shinsuke-nakamura-to-ring-for-pro-wrestling-noah-recalls-positive-words-from-nakamura": {
   "reason": "المراجعة رفضته: علامة اقتباس اتفتحت ومتقفلتش (أو «» مع \" مخلوطين) — اقفل الاقتباس بنفس العلامة اللي اتفتح بيها",
   "retry": true,
