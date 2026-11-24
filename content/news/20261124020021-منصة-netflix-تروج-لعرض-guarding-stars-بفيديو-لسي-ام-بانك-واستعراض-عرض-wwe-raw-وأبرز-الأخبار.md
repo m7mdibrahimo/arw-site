@@ -1,6 +1,7 @@
 ---
 federation: WWE
-title: "منصة Netflix تروج لعرض Guarding Stars بفيديو لسي ام بانك واستعراض عرض WWE RAW وأبرز الأخبار"
+title: "منصة Netflix تروج لفيلم Guarding Stars بفيديو لسي ام بانك واستعراض عرض WWE RAW وأبرز الأخبار"
+permalink: "/news/منصة-netflix-تروج-لعرض-guarding-stars-بفيديو-لسي-ام-بانك-واستعراض-عرض-wwe-raw-وأبرز-الأخبار/index.html"
 date: 2026-11-24T02:00:21.000+03:00
 published_at: 2026-11-24T09:50:02.486Z
 source_id: 340546
