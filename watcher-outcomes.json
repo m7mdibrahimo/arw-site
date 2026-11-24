@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/buddy-matthews-hints-pushing-aew-return-back-2027": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T18:23:33.111Z"
+ },
+ "https://www.ringsidenews.com/reason-why-aew-dynamite-expanding-three-hours-twice-december": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-24T18:22:27.975Z"
+ },
  "https://www.fightful.com/wrestling/buddy-matthews-implies-that-he-wont-return-in-2026-i-dont-want-to-force-it-or-rush-anything": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1988,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Rhea Ripley",
   "retry": true,
   "at": "2026-11-17T12:56:33.102Z"
- },
- "https://www.fightful.com/wrestling/zoey-serrano-says-banshee-was-an-alternate-name-pitched-in-place-of-pure-fusion-collective": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى منصوب (لتحصلا/ليحسما/أن يلتقيا) ممنوع — اجمع الفعل («ليحسموا») أو استخدم المفرد لغير العاقل («لتنضم إلى البطاقة»)، فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-17T12:12:30.929Z"
  }
 }
