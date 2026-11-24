@@ -1,108 +1,103 @@
 {
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-23-2026": {
-  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، المصدر بيتكلم عن Chad Gable (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
+ "https://www.fightful.com/wrestling/el-grande-americano-revealed-as-final-member-of-team-mexico-for-wwe-survivor-series-bout": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-24T01:34:22.963Z"
+ },
+ "https://www.fightful.com/wrestling/netflix-promotes-guarding-stars-with-viral-cm-punk-edit-wwe-raw-preview-more-fight-size": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-24T01:21:24.240Z"
+  "at": "2026-11-24T01:34:22.784Z"
+ },
+ "https://www.fightful.com/wrestling/jalen-brunson-if-roman-reigns-is-being-deemed-overrated-hes-doing-something-right": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T01:32:24.657Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-raw-results-11-23-2026-roman-reigns-appears-intercontinental-title-match-more": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T01:32:24.049Z"
+ },
+ "https://www.fightful.com/wrestling/cm-punk-begs-fans-to-not-run-up-on-wrestlers-in-the-street-and-touch-them": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-24T01:32:09.542Z"
+ },
+ "https://www.fightful.com/wrestling/beyond-still-alive-results-11-21": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T01:32:09.375Z"
+ },
+ "https://www.fightful.com/wrestling/uhaa-nation-nikki-storm-raj-dhesi-big-damo-no-longer-appearing-on-nwe-legends-tour": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T01:32:08.910Z"
+ },
+ "https://www.fightful.com/wrestling/jeff-hardy-recalls-scoring-reality-tv-deal-in-2009-explains-why-it-didnt-pan-out": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T01:32:08.418Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-video-producer-releases-movie-the-boogeyman-featured-in-film": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T01:32:07.847Z"
+ },
+ "https://www.fightful.com/wrestling/more-details-on-tna-firing-mike-romo": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T01:32:07.213Z"
+ },
+ "https://www.fightful.com/wrestling/natalya-hopes-the-british-bulldog-vs-bret-hart-at-summerslam-92-is-one-day-inducted-into-the-wwe-hall-of-fame": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T01:32:06.644Z"
+ },
+ "https://www.fightful.com/wrestling/cody-rhodes-throws-an-interception": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T01:32:06.077Z"
+ },
+ "https://www.fightful.com/wrestling/mlw-promotes-josef-samael-to-evp-of-wrestling-operations": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T01:32:05.002Z"
+ },
+ "https://www.fightful.com/wrestling/speedball-mike-bailey-says-continental-classic-season-is-their-favorite-season": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-24T01:32:04.268Z"
+ },
+ "https://www.fightful.com/wrestling/hulk-hogans-right-boot-from-wrestlemania-x8-sells-for-494k": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T01:32:04.100Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-impact-njpw-roh-injury-report-expected-returns-more": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T01:32:03.288Z"
+ },
+ "https://www.fightful.com/wrestling/royce-isaacs-returns-to-in-ring-action": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T01:31:38.133Z"
+ },
+ "https://www.fightful.com/wrestling/produce-and-razor-pro-wrestling-announce-relaunch-of-mid-south-wrestling-for-2027": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («تعلنان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-24T01:30:35.793Z"
+ },
+ "https://www.fightful.com/wrestling/kyle-fletcher-says-hes-been-slightly-tempted-to-dye-his-buzzcut-pink": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T01:30:14.323Z"
  },
  "https://www.fightful.com/wrestling/340565-seth-rollins-wwe-survivor-series": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-24T01:24:46.067Z"
- },
- "https://www.fightful.com/wrestling/el-grande-americano-revealed-as-final-member-of-team-mexico-for-wwe-survivor-series-bout": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-24T01:24:45.605Z"
- },
- "https://www.fightful.com/wrestling/netflix-promotes-guarding-stars-with-viral-cm-punk-edit-wwe-raw-preview-more-fight-size": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T01:24:45.451Z"
- },
- "https://www.fightful.com/wrestling/jalen-brunson-if-roman-reigns-is-being-deemed-overrated-hes-doing-something-right": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T01:24:44.900Z"
- },
- "https://www.fightful.com/wrestling/wwe-raw-results-11-23-2026-roman-reigns-appears-intercontinental-title-match-more": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T01:24:44.360Z"
- },
- "https://www.fightful.com/wrestling/cm-punk-begs-fans-to-not-run-up-on-wrestlers-in-the-street-and-touch-them": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-24T01:24:43.954Z"
- },
- "https://www.fightful.com/wrestling/beyond-still-alive-results-11-21": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T01:24:43.798Z"
- },
- "https://www.fightful.com/wrestling/uhaa-nation-nikki-storm-raj-dhesi-big-damo-no-longer-appearing-on-nwe-legends-tour": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T01:24:43.369Z"
- },
- "https://www.fightful.com/wrestling/jeff-hardy-recalls-scoring-reality-tv-deal-in-2009-explains-why-it-didnt-pan-out": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T01:24:42.308Z"
- },
- "https://www.fightful.com/wrestling/wwe-video-producer-releases-movie-the-boogeyman-featured-in-film": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T01:24:41.756Z"
- },
- "https://www.fightful.com/wrestling/more-details-on-tna-firing-mike-romo": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T01:24:40.663Z"
- },
- "https://www.fightful.com/wrestling/natalya-hopes-the-british-bulldog-vs-bret-hart-at-summerslam-92-is-one-day-inducted-into-the-wwe-hall-of-fame": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T01:24:11.150Z"
- },
- "https://www.fightful.com/wrestling/cody-rhodes-throws-an-interception": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-24T01:20:59.957Z"
- },
- "https://www.fightful.com/wrestling/mlw-promotes-josef-samael-to-evp-of-wrestling-operations": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-24T01:20:01.212Z"
- },
- "https://www.fightful.com/wrestling/speedball-mike-bailey-says-continental-classic-season-is-their-favorite-season": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-24T01:18:55.471Z"
- },
- "https://www.fightful.com/wrestling/hulk-hogans-right-boot-from-wrestlemania-x8-sells-for-494k": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-24T01:18:55.314Z"
- },
- "https://www.fightful.com/wrestling/wwe-impact-njpw-roh-injury-report-expected-returns-more": {
-  "reason": "المراجعة رفضته: المصدر بيتكلم عن Mark Briscoe (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن Mini Vikingo (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
-  "retry": true,
-  "at": "2026-11-24T01:17:53.009Z"
- },
- "https://www.fightful.com/wrestling/royce-isaacs-returns-to-in-ring-action": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-24T01:16:25.137Z"
- },
- "https://www.fightful.com/wrestling/produce-and-razor-pro-wrestling-announce-relaunch-of-mid-south-wrestling-for-2027": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-24T01:16:02.593Z"
- },
- "https://www.fightful.com/wrestling/kyle-fletcher-says-hes-been-slightly-tempted-to-dye-his-buzzcut-pink": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-24T01:15:32.859Z"
  },
  "https://www.fightful.com/wrestling/natalya-says-bayley-was-a-little-pouty-after-she-told-her-she-had-no-guinness-world-records": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
@@ -112,47 +107,7 @@
  "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-23-2026": {
   "reason": "المراجعة رفضته: المصدر بيتكلم عن Chad Gable (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
   "retry": true,
-  "at": "2026-11-24T01:07:02.937Z"
- },
- "https://www.fightful.com/wrestling/mlw-promotes-josef-samael-to-evp-of-wrestling-operations": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T01:07:02.115Z"
- },
- "https://www.fightful.com/wrestling/speedball-mike-bailey-says-continental-classic-season-is-their-favorite-season": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-24T01:07:01.628Z"
- },
- "https://www.fightful.com/wrestling/hulk-hogans-right-boot-from-wrestlemania-x8-sells-for-494k": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T01:07:01.516Z"
- },
- "https://www.fightful.com/wrestling/wwe-impact-njpw-roh-injury-report-expected-returns-more": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T01:07:01.021Z"
- },
- "https://www.fightful.com/wrestling/royce-isaacs-returns-to-in-ring-action": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T01:06:41.702Z"
- },
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-23-2026": {
-  "reason": "المراجعة رفضته: المصدر بيتكلم عن Chad Gable (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
-  "retry": true,
   "at": "2026-11-24T01:06:32.367Z"
- },
- "https://www.fightful.com/wrestling/produce-and-razor-pro-wrestling-announce-relaunch-of-mid-south-wrestling-for-2027": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T01:06:08.151Z"
- },
- "https://www.fightful.com/wrestling/kyle-fletcher-says-hes-been-slightly-tempted-to-dye-his-buzzcut-pink": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-24T01:04:33.275Z"
  },
  "https://www.ringsidenews.com/seth-rollins-returns-wwe-raw-team-usas-final-member-survivor-series": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
