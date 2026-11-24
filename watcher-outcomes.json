@@ -149,11 +149,6 @@
   "retry": false,
   "at": "2026-11-24T20:44:58.710Z"
  },
- "https://www.ringsidenews.com/kasper-brothers-reveal-why-they-left-wwe-aew": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T20:34:55.766Z"
- },
  "https://www.fightful.com/wrestling/jeff-hardy-recalls-why-he-stopped-using-the-450-splash-almost-knocking-himself-out-with-one": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
