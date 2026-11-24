@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2326223/wwe-raw-november-23-2026-hated-loved-opinion-review": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Heavyweight Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
+  "retry": true,
+  "at": "2026-11-24T11:42:14.024Z"
+ },
  "https://www.ringsidenews.com/chad-gable-confirms-another-change-works-his-wwe-entrance": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -8,11 +13,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-24T11:34:57.886Z"
- },
- "https://www.wrestlinginc.com/2326223/wwe-raw-november-23-2026-hated-loved-opinion-review": {
-  "reason": "المراجعة رفضته: المصدر بيتكلم عن Royce Keys (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
-  "retry": true,
-  "at": "2026-11-24T11:22:16.151Z"
  },
  "https://www.fightful.com/wrestling/bandido-vs-konosuke-takeshita-nick-wayne-vs-tommaso-ciampa-among-continental-classic-matches-set-for-11-26-aew-collision": {
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
