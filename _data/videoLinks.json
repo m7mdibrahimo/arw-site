@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-24T11:08:04.693Z",
+ "checkedAt": "2026-11-24T13:00:01.915Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
@@ -11835,6 +11835,44 @@
    "strikes": 0,
    "checked": "2026-11-24T11:08:04.693Z",
    "lastOk": "2026-11-24T11:08:04.693Z"
+  },
+  "https://vidtube.one/embed-kuwgu2n3oq0y.html": {
+   "page": "https://arab-wrestling.com/shows/wwe-raw-23-11-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-24T13:00:01.915Z"
+  },
+  "https://vidmoly.org/embed-alduve6hbkkw.html": {
+   "page": "https://arab-wrestling.com/shows/wwe-raw-23-11-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-24T13:00:01.915Z",
+   "lastOk": "2026-11-24T13:00:01.915Z"
+  },
+  "https://ok.ru/videoembed/18251981458016": {
+   "page": "https://arab-wrestling.com/shows/wwe-raw-23-11-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-24T13:00:01.915Z"
+  },
+  "https://fembed.co/embed/YYQgMIv-7_8Hm": {
+   "page": "https://arab-wrestling.com/shows/wwe-raw-23-11-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-24T13:00:01.915Z",
+   "lastOk": "2026-11-24T13:00:01.915Z"
+  },
+  "https://hgcloud.to/e/pxsh3lt2k42z": {
+   "page": "https://arab-wrestling.com/shows/wwe-raw-23-11-2026/",
+   "status": "ok",
+   "reason": "the video plays (after the player's first source failed) (second try)",
+   "strikes": 0,
+   "checked": "2026-11-24T13:00:01.915Z",
+   "lastOk": "2026-11-24T13:00:01.915Z"
   }
  },
  "broken": [
