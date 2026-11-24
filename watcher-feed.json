@@ -1,5 +1,35 @@
 [
   {
+    "id": 340698,
+    "link": "https://www.fightful.com/wrestling/aew-featured-on-fast-companys-2026-brands-that-matter-list/",
+    "date": "2026-11-24T13:33:13",
+    "date_gmt": "2026-11-24T18:33:13",
+    "title": {
+      "rendered": "AEW Featured On Fast Company&#8217;s 2026 Brands That Matter List"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/09/11093616/Screenshot-2182.png"
+  },
+  {
+    "id": 340619,
+    "link": "https://www.fightful.com/wrestling/gabby-forza-names-amira-brooke-havok-dreya-mitchell-leah-sparks-as-wrestlers-shed-like-to-see-in-tna/",
+    "date": "2026-11-24T13:32:42",
+    "date_gmt": "2026-11-24T18:32:42",
+    "title": {
+      "rendered": "Gabby Forza Names Amira, Brooke Havok, Dreya Mitchell &amp; Leah Sparks As Wrestlers She&#8217;d Like To See In TNA"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/24125847/maxresdefault-122.jpg"
+  },
+  {
+    "id": 340701,
+    "link": "https://www.fightful.com/wrestling/cody-rhodes-travis-scott-did-everything-he-needed-to-do-for-us-he-was-wonderful/",
+    "date": "2026-11-24T13:30:50",
+    "date_gmt": "2026-11-24T18:30:50",
+    "title": {
+      "rendered": "Cody Rhodes: Travis Scott Did Everything He Needed To Do For Us, He Was Wonderful"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/22132750/GpBp6XNXQAA3xzJ.jpeg"
+  },
+  {
     "id": 340617,
     "link": "https://www.fightful.com/wrestling/gabby-forza-looks-back-on-eliminating-bear-bronson-from-tna-call-your-shot-gauntlet-i-got-a-chant-of-thats-your-man/",
     "date": "2026-11-24T13:23:26",
@@ -268,35 +298,5 @@
       "rendered": "NJPW World Tag League Night Two Results (11/24)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/24065649/cardmaker-image8.jpg"
-  },
-  {
-    "id": 340622,
-    "link": "https://www.fightful.com/wrestling/wwe-smackdown-spoilers-for-11-27-taped-on-11-23/",
-    "date": "2026-11-24T06:49:41",
-    "date_gmt": "2026-11-24T11:49:41",
-    "title": {
-      "rendered": "WWE SmackDown Spoilers For 11/27 (Taped On 11/23)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/08195538/WWE-SmackDown-logo-new-2024-e1726613767434.jpg"
-  },
-  {
-    "id": 340606,
-    "link": "https://www.fightful.com/wrestling/cmll-lunes-clasico-results-11-23-2026-averno-united-empire-vs-barbaro-cavernario-reyes-del-inframundo-more/",
-    "date": "2026-11-24T00:35:00",
-    "date_gmt": "2026-11-24T05:35:00",
-    "title": {
-      "rendered": "CMLL Lunes Clásico Results (11/23/2026): Averno &amp; United Empire vs. Barbaro Cavernario &amp; Reyes del Inframundo, More"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/24002929/image-464-scaled.png"
-  },
-  {
-    "id": 340604,
-    "link": "https://www.fightful.com/wrestling/bandido-vs-konosuke-takeshita-nick-wayne-vs-tommaso-ciampa-among-continental-classic-matches-set-for-11-26-aew-collision/",
-    "date": "2026-11-24T00:22:03",
-    "date_gmt": "2026-11-24T05:22:03",
-    "title": {
-      "rendered": "Bandido vs. Konosuke Takeshita, Nick Wayne vs. Tommaso Ciampa Among Continental Classic Matches Set For 11/26 AEW Collision"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/07/07041051/01-aew-collision-new-logo-2024.jpg"
   }
 ]
