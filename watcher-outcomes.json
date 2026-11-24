@@ -2,17 +2,12 @@
  "https://www.ringsidenews.com/kasper-brothers-reveal-why-they-left-wwe-aew": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-24T20:24:45.469Z"
+  "at": "2026-11-24T20:29:00.271Z"
  },
  "https://www.ringsidenews.com/buddy-matthews-hints-pushing-aew-return-back-2027": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مدة زمنية في المتن غير مطابقة للمصدر: قبل عام",
   "retry": true,
-  "at": "2026-11-24T20:23:42.821Z"
- },
- "https://www.wrestlinginc.com/2327071/wwe-john-cena-classic-reveals-final-participants-announced": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T20:18:32.855Z"
+  "at": "2026-11-24T20:27:42.417Z"
  },
  "https://www.fightful.com/wrestling/zayda-steel-marina-shafir-is-such-a-real-person-and-in-wrestling-theres-not-a-lot-of-them": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
@@ -84,25 +79,20 @@
   "retry": true,
   "at": "2026-11-24T20:20:35.938Z"
  },
+ "https://www.wrestlinginc.com/2327071/wwe-john-cena-classic-reveals-final-participants-announced": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T20:18:32.855Z"
+ },
  "https://www.fightful.com/wrestling/charlotte-flair-says-wrestlemania-35-main-event-is-not-good-thinks-they-couldve-structured-it-differently": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-24T20:16:11.999Z"
  },
- "https://www.fightful.com/wrestling/big-damo-explains-why-he-attacks-mistico-somebody-needs-to-bring-him-down-a-couple-of-pegs": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T20:15:34.018Z"
- },
  "https://www.fightful.com/wrestling/jeff-hardy-recalls-why-he-stopped-using-the-450-splash-almost-knocking-himself-out-with-one": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-24T20:14:59.386Z"
- },
- "https://www.fightful.com/wrestling/john-cena-says-the-final-invitees-to-the-john-cena-classic-will-be-revealed-at-survivor-series-2026": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-24T20:13:15.162Z"
  },
  "https://www.fightful.com/wrestling/jamie-hayter-says-she-is-not-injured": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -128,11 +118,6 @@
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-24T20:08:32.439Z"
- },
- "https://www.ringsidenews.com/kasper-brothers-turned-down-multiple-wwe-attempts-re-sign-them": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T20:08:31.167Z"
  },
  "https://www.fightful.com/wrestling/big-damo-explains-why-he-attacks-mistico-somebody-needs-to-bring-him-down-a-couple-of-pegs": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
