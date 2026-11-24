@@ -1,4 +1,24 @@
 {
+ "https://www.wrestlinginc.com/2326223/wwe-raw-november-23-2026-hated-loved-opinion-review": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T08:13:04.032Z"
+ },
+ "https://www.wrestlinginc.com/2323654/wwe-jbl-jacqueline-apa-wishes-longer-partnership-former-manager": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-24T08:09:50.238Z"
+ },
+ "https://www.wrestlinginc.com/2326023/bully-ray-very-pissed-off-wwe-nxt-outcome-kelani-jordan-kendal-grey": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-24T08:09:31.578Z"
+ },
+ "https://www.wrestlinginc.com/2326017/biggest-winners-losers-week-november-23-2026": {
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، المصدر بيتكلم عن Trick Williams (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن Damian Priest (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن Cody Rhodes (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن Jack Perry (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن Samoa Joe (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
+  "retry": true,
+  "at": "2026-11-24T08:07:58.134Z"
+ },
  "https://www.fightful.com/wrestling/cmll-lunes-clasico-results-11-23-2026-averno-united-empire-vs-barbaro-cavernario-reyes-del-inframundo-more": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -143,16 +163,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-24T07:45:33.115Z"
- },
- "https://www.wrestlinginc.com/2326017/biggest-winners-losers-week-november-23-2026": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T07:32:02.480Z"
- },
- "https://www.wrestlinginc.com/2326023/bully-ray-very-pissed-off-wwe-nxt-outcome-kelani-jordan-kendal-grey": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T05:51:19.877Z"
  },
  "https://www.fightful.com/wrestling/hulk-hogans-right-boot-from-wrestlemania-x8-sells-for-494k": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
@@ -1988,15 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-16T17:23:01.193Z"
- },
- "https://www.fightful.com/wrestling/cmll-domingo-familiar-results-11-15-2026-templario-syuri-hechicero-more-appear": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الثانية: نزال من جولتين من أصل ثلاث، المواجهة الثالثة: نزال فرق، المواجهة الرابعة: نزال من جولتين من أصل ثلاث، المواجهة الخامسة: نزال من جولتين من أصل ثلاث — اكتب الفائز زي المصدر وبالماضي",
-  "retry": true,
-  "at": "2026-11-16T16:59:46.466Z"
- },
- "https://www.fightful.com/wrestling/indi-hartwell-says-she-cant-make-it-to-tna-destination-x-to-defend-her-knockouts-world-championship": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-16T16:57:24.136Z"
  }
 }
