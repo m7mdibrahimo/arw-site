@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2323692/wwe-zoey-serrano-trish-stratus-becky-lynch-still-touch-mentors": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: TNA Knockouts Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: PROGRESS Tag Team Championships، اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: AAA Tag Team Championship",
+  "retry": true,
+  "at": "2026-11-24T13:46:36.603Z"
+ },
  "https://www.fightful.com/wrestling/ken-anderson-credits-paul-heyman-with-the-idea-for-him-to-do-his-own-ring-introduction": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-16T19:08:20.056Z"
- },
- "https://www.ringsidenews.com/johnny-gargano-explains-how-wwe-travel-schedule-him-scrambling-avoid-marvel-spoilers": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-16T19:06:45.294Z"
  }
 }
