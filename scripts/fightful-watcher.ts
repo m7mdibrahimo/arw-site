@@ -4807,7 +4807,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   }
 
   let proofEdits: ProofEdit[] = [];
-  const preIssues = checkArticle(draft.title, draft.body, draft.tags);
+  const preIssues = checkArticle(draft.title, draft.body, draft.tags, { now: new Date() });
   // A results report must carry every result the source lists: TNA iMPACT 1 Oct dropped «Cedric
   // Alexander def. Ricky Sosa» (INCIDENTS #221). The copy editor gets the source lines to add.
   const missing = missingResults(plainText, draft.body);
@@ -4870,7 +4870,7 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     draft = { ...draft, body: demoteUnplayedMainEvent(draft.body, rawTitle, plainText) };
   }
 
-  const blocking = checkArticle(draft.title, draft.body, draft.tags)
+  const blocking = checkArticle(draft.title, draft.body, draft.tags, { now: new Date() })
     .filter(i => BLOCKING_QA_CODES.includes(i.code));
   // the match called «الحدث الرئيسي» is not the source's last result (WWE Raw 16 Nov, INCIDENTS #1376).
   const lastWinner = mainEventNotLastResult(draft.body, plainText, WRESTLER_NAMES_MAP);
