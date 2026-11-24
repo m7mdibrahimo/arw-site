@@ -1,6 +1,10 @@
 {
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
+  {"wrong": "ما حولني", "right": "ما حولي", "note": "«حول» تاخد ياء المتكلم من غير نون: «أراقب ما حولي» (خبر رويس كيز، INCIDENTS #1527)"},
+  {"wrong": "كما اعتادنا", "right": "كما اعتدنا", "note": "الفعل مع «نا» الفاعلين: «اعتدنا» (خبر رويس كيز، INCIDENTS #1527)"},
+  {"wrong": "يعتقد الجماهير", "right": "تعتقد الجماهير", "note": "الجماهير جمع تكسير: الفعل قبلها مؤنث (خبر كين أندرسون، INCIDENTS #1527)"},
+  {"wrong": "أزمة الصيدليات", "right": "مشكلات تتعلق بالأدوية", "note": "ترجمة حرفية لـ pharmacy issues: المقصود مخالفة الأدوية (خبر كين أندرسون، INCIDENTS #1527)"},
   {"wrong": "على منحهم الحرية له", "right": "على منحه الحرية", "note": "الضمير بيرجع على المصارع: «شكر تريبل إتش ونيك خان على منحه الحرية» (خبر درو ماكنتاير، INCIDENTS #1520)"},
   {"wrong": "برصيد خالي من النقاط", "right": "دون أي نقاط", "note": "«خالٍ» منقوص نكرة؛ الأبسط «دون أي نقاط» (خبر تاكيشيتا، INCIDENTS #1520)"},
   {"wrong":"(?<p>[وف]?)(?<v>كون|لأن|أن|إن)هم\\s+من\\s+(?<w>المصارعات|النجمات|البطلات|اللاعبات)","right":"$<p>$<v>هن من $<w>","regex":true,"note":"ضمير جمع المذكر قبل «من المصارعات» غلط: «كونهن من المصارعات» (خبر بولي راي، INCIDENTS #1518)"},
