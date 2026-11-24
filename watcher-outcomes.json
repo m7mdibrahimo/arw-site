@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/kasper-brothers-turned-down-multiple-wwe-attempts-re-sign-them": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T23:11:18.285Z"
+ },
  "https://www.fightful.com/wrestling/ivar-wants-new-war-raiders-action-figures-wwe-raw-highlights-more": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -148,11 +153,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-24T23:09:35.094Z"
- },
- "https://www.ringsidenews.com/kasper-brothers-turned-down-multiple-wwe-attempts-re-sign-them": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T23:02:41.010Z"
  },
  "https://www.wrestlinginc.com/2327214/wwe-eugene-nick-dinsmore-hospitalized-united-kingdom": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
