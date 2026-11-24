@@ -134,16 +134,6 @@
   "retry": true,
   "at": "2026-11-24T19:53:20.423Z"
  },
- "https://www.fightful.com/wrestling/john-cena-says-the-final-invitees-to-the-john-cena-classic-will-be-revealed-at-survivor-series-2026": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T19:50:43.498Z"
- },
- "https://www.ringsidenews.com/kasper-brothers-reveal-why-they-left-wwe-aew": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T19:55:07.378Z"
- },
  "https://www.ringsidenews.com/kasper-brothers-reveal-why-they-left-wwe-aew": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل مثنى («يعتقدان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
@@ -153,6 +143,11 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مدة زمنية في المتن غير مطابقة للمصدر: قبل عام",
   "retry": true,
   "at": "2026-11-24T19:50:45.521Z"
+ },
+ "https://www.fightful.com/wrestling/john-cena-says-the-final-invitees-to-the-john-cena-classic-will-be-revealed-at-survivor-series-2026": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T19:50:43.498Z"
  },
  "https://www.fightful.com/wrestling/ken-anderson-denies-dropping-randy-orton-on-his-head-takes-full-responsibility-for-getting-fired-by-wwe": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Vince McMahon",
