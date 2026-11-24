@@ -1,4 +1,104 @@
 {
+ "https://www.fightful.com/wrestling/wwe-smackdown-spoilers-for-11-27-taped-on-11-23": {
+  "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
+  "retry": false,
+  "at": "2026-11-24T12:26:48.644Z"
+ },
+ "https://www.fightful.com/wrestling/jay-white-vs-hangman-adam-page-jon-moxley-vs-kevin-knight-continental-classic-bouts-added-to-11-25-aew-dynamite": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-24T12:19:18.562Z"
+ },
+ "https://www.fightful.com/wrestling/buddy-matthews-when-i-come-back-to-aew-im-not-coming-back-to-do-the-same-things-i-was-doing-before": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-24T12:17:48.281Z"
+ },
+ "https://www.fightful.com/wrestling/liv-morgan-cast-in-hooters-the-movie": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-24T12:16:38.167Z"
+ },
+ "https://www.fightful.com/wrestling/mlw-fusion-results-11-19": {
+  "reason": "المراجعة رفضته: آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Templario، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: نزال خماسي، المواجهة الثانية: نزال فردي، المواجهة الثالثة: نزال فردي، الحدث الرئيسي (Main Event): نصف نهائي بطولة كأس الأوبرا — اكتب الفائز زي المصدر وبالماضي",
+  "retry": true,
+  "at": "2026-11-24T12:16:37.994Z"
+ },
+ "https://www.fightful.com/wrestling/lee-england-jr-reflects-on-playing-shinsuke-nakamura-to-ring-for-pro-wrestling-noah-recalls-positive-words-from-nakamura": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-24T12:15:57.820Z"
+ },
+ "https://www.fightful.com/wrestling/triple-threat-tag-team-street-fight-set-for-12-5-aaa-on-fox": {
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
+  "retry": true,
+  "at": "2026-11-24T12:14:55.343Z"
+ },
+ "https://www.fightful.com/boxing/tyson-fury-reveals-schizophrenia-diagnosis": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-24T12:13:42.413Z"
+ },
+ "https://www.fightful.com/wrestling/340565-seth-rollins-wwe-survivor-series": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-24T12:11:18.111Z"
+ },
+ "https://www.fightful.com/wrestling/el-grande-americano-revealed-as-final-member-of-team-mexico-for-wwe-survivor-series-bout": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-24T12:11:18.029Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-raw-results-11-23-2026-roman-reigns-appears-intercontinental-title-match-more": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-24T12:11:17.820Z"
+ },
+ "https://www.fightful.com/wrestling/cm-punk-begs-fans-to-not-run-up-on-wrestlers-in-the-street-and-touch-them": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-24T12:11:17.736Z"
+ },
+ "https://www.fightful.com/wrestling/beyond-still-alive-results-11-21": {
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Brother Greatness، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
+  "retry": true,
+  "at": "2026-11-24T12:11:17.591Z"
+ },
+ "https://www.fightful.com/wrestling/uhaa-nation-nikki-storm-raj-dhesi-big-damo-no-longer-appearing-on-nwe-legends-tour": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-24T12:10:08.227Z"
+ },
+ "https://www.fightful.com/wrestling/jeff-hardy-recalls-scoring-reality-tv-deal-in-2009-explains-why-it-didnt-pan-out": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-24T12:09:15.009Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-video-producer-releases-movie-the-boogeyman-featured-in-film": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-24T12:07:32.335Z"
+ },
+ "https://www.fightful.com/wrestling/more-details-on-tna-firing-mike-romo": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-24T12:06:34.100Z"
+ },
+ "https://www.fightful.com/wrestling/natalya-hopes-the-british-bulldog-vs-bret-hart-at-summerslam-92-is-one-day-inducted-into-the-wwe-hall-of-fame": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-24T12:05:27.264Z"
+ },
+ "https://www.fightful.com/wrestling/cody-rhodes-throws-an-interception": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T12:03:52.937Z"
+ },
+ "https://www.fightful.com/wrestling/mlw-promotes-josef-samael-to-evp-of-wrestling-operations": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-24T12:02:52.576Z"
+ },
  "https://www.wrestlinginc.com/2326223/wwe-raw-november-23-2026-hated-loved-opinion-review": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Heavyweight Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
   "retry": true,
@@ -19,60 +119,15 @@
   "retry": true,
   "at": "2026-11-24T11:01:34.484Z"
  },
- "https://www.fightful.com/wrestling/jay-white-vs-hangman-adam-page-jon-moxley-vs-kevin-knight-continental-classic-bouts-added-to-11-25-aew-dynamite": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T11:00:38.213Z"
- },
  "https://www.fightful.com/wrestling/konosuke-takeshita-replacing-daniel-garcia-in-aew-continental-classic": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-24T10:59:43.843Z"
  },
- "https://www.fightful.com/wrestling/buddy-matthews-when-i-come-back-to-aew-im-not-coming-back-to-do-the-same-things-i-was-doing-before": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T10:58:54.732Z"
- },
- "https://www.fightful.com/wrestling/liv-morgan-cast-in-hooters-the-movie": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-24T10:57:57.541Z"
- },
- "https://www.fightful.com/wrestling/mlw-fusion-results-11-19": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T10:57:57.323Z"
- },
- "https://www.fightful.com/wrestling/lee-england-jr-reflects-on-playing-shinsuke-nakamura-to-ring-for-pro-wrestling-noah-recalls-positive-words-from-nakamura": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-24T10:56:54.366Z"
- },
- "https://www.fightful.com/wrestling/triple-threat-tag-team-street-fight-set-for-12-5-aaa-on-fox": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T10:54:05.698Z"
- },
- "https://www.fightful.com/boxing/tyson-fury-reveals-schizophrenia-diagnosis": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-24T10:52:21.620Z"
- },
  "https://www.fightful.com/wrestling/chad-gable-vs-big-cass-set-for-11-30-wwe-raw": {
   "reason": "المراجعة رفضته: معلومة في الخبر غير موجودة في المصدر: تفاصيل هتتكشف قريب / details to come",
   "retry": true,
   "at": "2026-11-24T10:51:30.795Z"
- },
- "https://www.fightful.com/wrestling/340565-seth-rollins-wwe-survivor-series": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-24T10:50:35.122Z"
- },
- "https://www.fightful.com/wrestling/el-grande-americano-revealed-as-final-member-of-team-mexico-for-wwe-survivor-series-bout": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-24T10:50:35.019Z"
  },
  "https://www.ringsidenews.com/kayla-braxton-exposes-people-flooding-her-racist-messages-n-word-incident": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -93,21 +148,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-24T10:25:04.791Z"
- },
- "https://www.fightful.com/wrestling/wwe-raw-results-11-23-2026-roman-reigns-appears-intercontinental-title-match-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-24T10:23:07.741Z"
- },
- "https://www.fightful.com/wrestling/cm-punk-begs-fans-to-not-run-up-on-wrestlers-in-the-street-and-touch-them": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-24T10:23:07.656Z"
- },
- "https://www.fightful.com/wrestling/beyond-still-alive-results-11-21": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يقدمانها/يخوضانه/انتقدا/اتفقا/أنهيا…) ممنوعة — اكتب الأسماء بفعل جمع أو أعد صياغة الجملة، فعل مثنى («يحققان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Brother Greatness، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Chase Burnett، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: نزال فرق، المواجهة الثانية: نزال فرق، المواجهة الرابعة: نزال فردي، المواجهة الخامسة: نزال فردي، المواجهة السادسة: نزال تورنادو للفرق على بطولة Wrestling Open للفرق، الحدث الرئيسي (Main Event): نزال فرق — اكتب الفائز زي المصدر وبالماضي",
-  "retry": true,
-  "at": "2026-11-24T10:23:07.517Z"
  },
  "https://www.wrestlinginc.com/2326017/biggest-winners-losers-week-november-23-2026": {
   "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، المصدر بيتكلم عن Cody Rhodes (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
@@ -1958,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-16T17:52:49.407Z"
- },
- "https://www.fightful.com/wrestling/tna-destination-x-results-11-15-two-ultimate-x-matches": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-16T17:39:03.828Z"
  }
 }
