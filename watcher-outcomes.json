@@ -139,11 +139,6 @@
   "retry": false,
   "at": "2026-11-24T21:42:21.115Z"
  },
- "https://www.wrestlinginc.com/2327071/wwe-john-cena-classic-reveals-final-participants-announced": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T21:25:41.308Z"
- },
  "https://www.ringsidenews.com/buddy-matthews-hints-pushing-aew-return-back-2027": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
