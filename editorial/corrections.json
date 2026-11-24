@@ -1,6 +1,7 @@
 {
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
+  {"wrong":"للتحادي","right":"للتحدي","note":"«للتحادي» كلمة غلط (RAW 23/11، INCIDENTS #1515)"},
   {"wrong":"(?<p>[وف]?)ثنائي\\s+الفرق","right":"$<p>الثنائي","regex":true,"note":"«غياب ثنائي الفرق إيزايا كاسيدي ومارك كوين» — ترجمة حرفية لـ tag team؛ الصح «الثنائي» (خبر الإصابات 2026-11-24، INCIDENTS #1514)"},
   {"wrong":"(?<p>[وف]?)ال\\s+ال\\s+ايه\\s+نايت","right":"$<p>ال ايه نايت","regex":true,"note":"«زملائه جيفون إيفانز وال ال ايه نايت» — «ال» اتكررت قبل الاسم (خبر سي ام بانك، INCIDENTS #1513)"},
   {"wrong":"يقام\\s+ب(?<v>(?:إيقاف|إلغاء|تنفيذ|إعلان|إجراء|حذف|منع|طرد|تسليم))","right":"يقوم ب$<v>","regex":true,"note":"«قبل أن يقام بإيقاف النزال» — الفاعل الحكم: «يقوم» مش «يقام» (خبر دانيال غارسيا، INCIDENTS #1506)"},

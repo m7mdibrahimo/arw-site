@@ -2646,7 +2646,7 @@ export function missingResults(sourceText: string, body: string): string[] {
   // count «def.» and hand the copy editor each one with its neighbours.
   const src = String(sourceText || "");
   const hits = [...src.matchAll(/\b(?:def\.|defeated|defeats)\s/gi)];
-  const winners = (String(body || "").match(/الفائز(?:ة|ان|تان|ون)?:/g) || []).length;
+  const winners = (String(body || "").match(/الفائز(?:ات|ة|ان|تان|ون|ين)?:/g) || []).length;
   if (hits.length <= winners) return [];
   return hits.map(m => src.slice(Math.max(0, m.index! - 45), m.index! + 55).replace(/\s+/g, " ").trim());
 }
