@@ -134,11 +134,6 @@
   "retry": true,
   "at": "2026-11-24T03:26:35.527Z"
  },
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-23-2026": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T03:11:11.391Z"
- },
  "https://www.fightful.com/wrestling/royce-isaacs-returns-to-in-ring-action": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
