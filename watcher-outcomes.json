@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/possible-location-wwe-summerslam-2027": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T19:00:23.708Z"
+ },
+ "https://www.ringsidenews.com/buddy-matthews-hints-pushing-aew-return-back-2027": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مدة زمنية في المتن غير مطابقة للمصدر: قبل عام",
+  "retry": true,
+  "at": "2026-11-24T18:59:20.365Z"
+ },
  "https://www.fightful.com/wrestling/aew-featured-on-fast-companys-2026-brands-that-matter-list": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -138,11 +148,6 @@
   "reason": "المراجعة رفضته: آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Masatora Yasuda، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، اسم مصارع في العنوان أو المتن غير موجود في المصدر: PROGRESS Tag Team Championships، اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: AAA Tag Team Championship",
   "retry": true,
   "at": "2026-11-24T18:47:44.457Z"
- },
- "https://www.ringsidenews.com/buddy-matthews-hints-pushing-aew-return-back-2027": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T18:43:24.535Z"
  },
  "https://www.fightful.com/wrestling/charlotte-flair-says-she-has-an-unspoken-bond-with-bianca-belair-i-understand-her": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-17T14:55:41.274Z"
- },
- "https://www.fightful.com/wrestling/fallon-henley-says-she-feels-like-she-made-it-when-she-sees-the-bella-twins-in-the-wwe-locker-room": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-17T14:42:12.683Z"
  }
 }
