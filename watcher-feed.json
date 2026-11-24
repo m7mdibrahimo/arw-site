@@ -1,5 +1,25 @@
 [
   {
+    "id": 340576,
+    "link": "https://www.fightful.com/boxing/tyson-fury-reveals-schizophrenia-diagnosis/",
+    "date": "2026-11-23T20:33:05",
+    "date_gmt": "2026-11-24T01:33:05",
+    "title": {
+      "rendered": "Tyson Fury Reveals Schizophrenia Diagnosis"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/23202656/Untitled-Design-15.jpg"
+  },
+  {
+    "id": 340574,
+    "link": "https://www.fightful.com/wrestling/chad-gable-vs-big-cass-set-for-11-30-wwe-raw/",
+    "date": "2026-11-23T20:32:35",
+    "date_gmt": "2026-11-24T01:32:35",
+    "title": {
+      "rendered": "Chad Gable vs. Big Cass Set For 11/30 WWE Raw"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/23202618/HX2fsLrbUAAUD5q.jpg"
+  },
+  {
     "id": 340565,
     "link": "https://www.fightful.com/wrestling/340565-seth-rollins-wwe-survivor-series/",
     "date": "2026-11-23T19:28:10",
@@ -278,25 +298,5 @@
       "rendered": "The Rock To Receive Multihyphenate Award From USC School of Dramatic Arts"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/02/04204754/the_rock_wwe_smackdown_0.jpg"
-  },
-  {
-    "id": 340453,
-    "link": "https://www.fightful.com/wrestling/chelsea-green-says-her-favorite-part-of-being-a-wrestler-is-having-an-alter-ego-and-playing-a-character/",
-    "date": "2026-11-23T09:14:07",
-    "date_gmt": "2026-11-23T14:14:07",
-    "title": {
-      "rendered": "Chelsea Green Says Her Favorite Part Of Being A Wrestler Is &#8216;Having An Alter Ego And Playing A Character&#8217;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/09/23145309/Chelsea-Green-Angry.jpg"
-  },
-  {
-    "id": 340452,
-    "link": "https://www.fightful.com/wrestling/chelsea-green-says-she-is-manifesting-a-potential-role-in-baywatch-and-maybe-reading-for-saw-11/",
-    "date": "2026-11-23T08:51:03",
-    "date_gmt": "2026-11-23T13:51:03",
-    "title": {
-      "rendered": "Chelsea Green Says She Is Manifesting A Potential Role In &#8216;Baywatch&#8217; And &#8216;Maybe Reading For Saw 11&#8217;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2024/11/17200346/chelsea_green_4.jpg"
   }
 ]
