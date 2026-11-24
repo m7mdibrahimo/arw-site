@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-worlds-collide-doomsday-broadcast-plans-revealed": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T17:24:46.612Z"
+ },
  "https://www.fightful.com/wrestling/iyo-sky-shares-that-triple-h-was-unable-to-take-post-title-win-photo-after-11-16-wwe-raw-because-he-was-sick": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-17T03:37:06.132Z"
- },
- "https://www.fightful.com/wrestling/dragon-lee-added-to-team-mexico-for-wwe-survivor-series-bout": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-17T02:43:26.551Z"
  }
 }
