@@ -149,11 +149,6 @@
   "retry": true,
   "at": "2026-11-24T19:03:35.317Z"
  },
- "https://www.ringsidenews.com/buddy-matthews-hints-pushing-aew-return-back-2027": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-24T19:03:10.147Z"
- },
  "https://www.fightful.com/wrestling/charlotte-flair-reveals-advice-she-got-from-john-cena-after-wrestlemania-41": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
