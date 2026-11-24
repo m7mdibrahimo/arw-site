@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/roman-reigns-bloodline-get-massive-brawl-946-wwe-raw": {
+  "reason": "شبه خبر منشور، وفحص التكرار مردّش؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T07:07:03.190Z"
+ },
  "https://www.fightful.com/wrestling/cmll-lunes-clasico-results-11-23-2026-averno-united-empire-vs-barbaro-cavernario-reyes-del-inframundo-more": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -138,11 +143,6 @@
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-24T06:48:59.782Z"
- },
- "https://www.ringsidenews.com/roman-reigns-bloodline-get-massive-brawl-946-wwe-raw": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T06:46:16.214Z"
  },
  "https://www.wrestlinginc.com/2326023/bully-ray-very-pissed-off-wwe-nxt-outcome-kelani-jordan-kendal-grey": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
