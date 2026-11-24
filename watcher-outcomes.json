@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/buddy-matthews-hints-pushing-aew-return-back-2027": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T18:43:24.535Z"
+ },
  "https://www.fightful.com/wrestling/gabby-forza-looks-back-on-eliminating-bear-bronson-from-tna-call-your-shot-gauntlet-i-got-a-chant-of-thats-your-man": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -133,11 +138,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-24T18:27:27.534Z"
- },
- "https://www.ringsidenews.com/buddy-matthews-hints-pushing-aew-return-back-2027": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T18:23:33.111Z"
  },
  "https://www.ringsidenews.com/reason-why-aew-dynamite-expanding-three-hours-twice-december": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
