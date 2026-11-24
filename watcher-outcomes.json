@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-23-2026": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T05:26:41.630Z"
+ },
  "https://www.fightful.com/wrestling/bandido-vs-konosuke-takeshita-nick-wayne-vs-tommaso-ciampa-among-continental-classic-matches-set-for-11-26-aew-collision": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -138,11 +143,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-24T05:11:56.711Z"
- },
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-23-2026": {
-  "reason": "المراجعة رفضته: مثنى (فريقيهما/لقبيهما/الزميلان) ممنوع — قول «فريقهم/لقبهم/الزملاء» أو كرر الأسماء، المصدر بيتكلم عن Fallon Henley (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
-  "retry": true,
-  "at": "2026-11-24T05:11:35.120Z"
  },
  "https://www.fightful.com/wrestling/wwe-impact-njpw-roh-injury-report-expected-returns-more": {
   "reason": "المراجعة رفضته: المصدر بيتكلم عن Mini Vikingo (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
