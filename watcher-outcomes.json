@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2327071/wwe-john-cena-classic-reveals-final-participants-announced": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T20:47:04.271Z"
+ },
  "https://www.fightful.com/wrestling/cm-punk-i-would-love-to-see-the-rock-vs-roman-reigns-at-wrestlemania-43": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -133,11 +138,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-24T20:32:53.847Z"
- },
- "https://www.wrestlinginc.com/2327071/wwe-john-cena-classic-reveals-final-participants-announced": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T20:18:32.855Z"
  },
  "https://www.fightful.com/wrestling/jeff-hardy-recalls-why-he-stopped-using-the-450-splash-almost-knocking-himself-out-with-one": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
