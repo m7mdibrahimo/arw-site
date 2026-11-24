@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/mr-kennedy-reveals-what-tna-management-promised-him-wwe-firing": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T15:09:42.643Z"
+ },
  "https://www.ringsidenews.com/mr-kennedy-claims-vince-mcmahon-told-him-stop-entertaining-wwe": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-17T00:27:08.463Z"
- },
- "https://www.ringsidenews.com/aj-lees-current-wwe-return-status-absence-continues": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-17T00:12:31.817Z"
  }
 }
