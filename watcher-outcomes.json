@@ -129,11 +129,6 @@
   "retry": false,
   "at": "2026-11-24T14:35:35.123Z"
  },
- "https://www.wrestlinginc.com/2326243/aew-jeff-jarrett-wwe-crown-jewel-2026-wrestlemania-worse": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T14:18:06.577Z"
- },
  "https://www.fightful.com/wrestling/cm-punk-begs-fans-to-not-run-up-on-wrestlers-in-the-street-and-touch-them": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
