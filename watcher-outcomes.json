@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2326243/aew-jeff-jarrett-wwe-crown-jewel-2026-wrestlemania-worse": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T14:18:06.577Z"
+ },
  "https://www.fightful.com/wrestling/john-cena-says-the-final-invitees-to-the-john-cena-classic-will-be-revealed-at-survivor-series-2026": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-16T21:23:01.242Z"
- },
- "https://www.ringsidenews.com/why-aj-styles-ended-his-podcast-finally-makes-sense-wwes-new-announcement": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، جملة قصيرة مكررة ورا بعض — اكتبها مرة واحدة",
-  "retry": true,
-  "at": "2026-11-16T20:45:46.518Z"
  }
 }
