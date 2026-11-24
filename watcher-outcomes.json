@@ -2,12 +2,7 @@
  "https://www.ringsidenews.com/kasper-brothers-turned-down-multiple-wwe-attempts-re-sign-them": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-24T22:20:43.826Z"
- },
- "https://www.ringsidenews.com/kasper-brothers-reveal-why-they-left-wwe-aew": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T22:19:33.122Z"
+  "at": "2026-11-24T22:24:12.038Z"
  },
  "https://www.fightful.com/wrestling/beyond-rent-free-results-11-21": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
@@ -153,6 +148,11 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-24T22:19:51.193Z"
+ },
+ "https://www.ringsidenews.com/kasper-brothers-reveal-why-they-left-wwe-aew": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T22:19:33.122Z"
  },
  "https://www.fightful.com/wrestling/john-cena-says-the-final-invitees-to-the-john-cena-classic-will-be-revealed-at-survivor-series-2026": {
   "reason": "مكرر مع خبر نزل قبل كده",
