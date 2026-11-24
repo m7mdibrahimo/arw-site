@@ -127,17 +127,17 @@
  "https://www.ringsidenews.com/kasper-brothers-reveal-why-they-left-wwe-aew": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-24T19:44:07.995Z"
+  "at": "2026-11-24T19:55:07.378Z"
  },
- "https://www.ringsidenews.com/identity-person-who-negotiated-mr-kennedys-wwe-legends-deal": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+ "https://www.ringsidenews.com/kasper-brothers-reveal-why-they-left-wwe-aew": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل مثنى («يعتقدان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-24T19:43:27.968Z"
+  "at": "2026-11-24T19:51:26.327Z"
  },
  "https://www.ringsidenews.com/buddy-matthews-hints-pushing-aew-return-back-2027": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مدة زمنية في المتن غير مطابقة للمصدر: قبل عام",
   "retry": true,
-  "at": "2026-11-24T19:42:18.853Z"
+  "at": "2026-11-24T19:50:45.521Z"
  },
  "https://www.fightful.com/wrestling/ken-anderson-denies-dropping-randy-orton-on-his-head-takes-full-responsibility-for-getting-fired-by-wwe": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Vince McMahon",
@@ -1993,10 +1993,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-17T16:58:00.633Z"
- },
- "https://www.ringsidenews.com/linda-hogan-deletes-tiktok-account-disgusted-animal-abuse-videos": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-17T16:18:17.297Z"
  }
 }
