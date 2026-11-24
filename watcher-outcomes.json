@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/wwe-smackdown-spoiler-lineup-november-27-2026-full-match-card-backstage-notes-revealed": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T07:46:04.337Z"
+ },
+ "https://www.ringsidenews.com/roman-reigns-bloodline-get-massive-brawl-946-wwe-raw": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-24T07:45:33.115Z"
+ },
  "https://www.fightful.com/wrestling/cmll-lunes-clasico-results-11-23-2026-averno-united-empire-vs-barbaro-cavernario-reyes-del-inframundo-more": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -138,11 +148,6 @@
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-24T07:32:02.480Z"
- },
- "https://www.ringsidenews.com/roman-reigns-bloodline-get-massive-brawl-946-wwe-raw": {
-  "reason": "شبه خبر منشور، وفحص التكرار مردّش؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T07:07:03.190Z"
  },
  "https://www.wrestlinginc.com/2326023/bully-ray-very-pissed-off-wwe-nxt-outcome-kelani-jordan-kendal-grey": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-16T16:57:24.136Z"
- },
- "https://www.ringsidenews.com/deonna-purrazzo-clears-misleading-headlines-about-womens-wrestling-comments": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-16T16:16:48.709Z"
  }
 }
