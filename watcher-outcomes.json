@@ -1,13 +1,13 @@
 {
- "https://www.ringsidenews.com/roman-reigns-bloodline-get-massive-brawl-946-wwe-raw": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+ "https://www.wrestlinginc.com/2326023/bully-ray-very-pissed-off-wwe-nxt-outcome-kelani-jordan-kendal-grey": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-24T02:00:15.991Z"
+  "at": "2026-11-24T02:11:40.610Z"
  },
- "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-23-2026": {
-  "reason": "المراجعة رفضته: مواجهة تحت عنوانها سطر النتيجة بس من غير جملة النزال (الجملة ضاعت أو اتكتبت فوق العنوان) — كل مواجهة: العنوان، ثم جملة النزال من سطر المصدر، ثم سطر الفائز، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، المصدر بيتكلم عن Chad Gable (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن Jacob Fatu (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
+ "https://www.wrestlinginc.com/2326017/biggest-winners-losers-week-november-23-2026": {
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، المصدر بيتكلم عن Cody Rhodes (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
   "retry": true,
-  "at": "2026-11-24T01:58:38.741Z"
+  "at": "2026-11-24T02:11:39.502Z"
  },
  "https://www.fightful.com/wrestling/triple-threat-tag-team-street-fight-set-for-12-5-aaa-on-fox": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
@@ -123,6 +123,16 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-24T02:02:45.708Z"
+ },
+ "https://www.ringsidenews.com/roman-reigns-bloodline-get-massive-brawl-946-wwe-raw": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T02:00:15.991Z"
+ },
+ "https://www.ringsidenews.com/wwe-raw-results-highlights-key-moments-november-23-2026": {
+  "reason": "المراجعة رفضته: مواجهة تحت عنوانها سطر النتيجة بس من غير جملة النزال (الجملة ضاعت أو اتكتبت فوق العنوان) — كل مواجهة: العنوان، ثم جملة النزال من سطر المصدر، ثم سطر الفائز، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، المصدر بيتكلم عن Chad Gable (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن Jacob Fatu (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
+  "retry": true,
+  "at": "2026-11-24T01:58:38.741Z"
  },
  "https://www.fightful.com/wrestling/natalya-says-bayley-was-a-little-pouty-after-she-told-her-she-had-no-guinness-world-records": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
@@ -1988,15 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-16T14:35:31.477Z"
- },
- "https://www.ringsidenews.com/kevin-nash-demands-rfk-jrs-removal-trump-administration-measles-outbreaks": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-16T14:06:15.336Z"
- },
- "https://www.fightful.com/wrestling/nia-jax-names-a-tv-cage-match-and-a-big-hoss-match-as-her-bucket-list-items-in-wrestling": {
-  "reason": "المراجعة رفضته: صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين",
-  "retry": true,
-  "at": "2026-11-16T13:42:53.624Z"
  }
 }
