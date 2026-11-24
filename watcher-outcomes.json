@@ -154,6 +154,11 @@
   "retry": true,
   "at": "2026-11-24T23:31:12.433Z"
  },
+ "https://www.ringsidenews.com/kasper-brothers-turned-down-multiple-wwe-attempts-re-sign-them": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T23:31:12.433Z"
+ },
  "https://www.wrestlinginc.com/2327214/wwe-eugene-nick-dinsmore-hospitalized-united-kingdom": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
   "at": "2026-11-17T21:39:27.442Z"
- },
- "https://www.ringsidenews.com/wwe-raw-ranks-7-globally-netflix-november-9-2026": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-17T21:23:24.682Z"
  }
 }
