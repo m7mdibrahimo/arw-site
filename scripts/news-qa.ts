@@ -1807,6 +1807,24 @@ export function dropTimezoneFromTitle(title: string): string {
 }
 
 /**
+ * "Walks away from Team USA" is leaving the ring in anger, not quitting the team: the CM Punk story went
+ * out as «سي ام بانك ينسحب من فريق أمريكا» while the source (and the story's own last line) said he is
+ * still on the team (INCIDENTS #1513). When the source uses the walk-away idiom and never says the person
+ * quit, «ينسحب من فريق X» becomes «يغادر الحلبة تاركا فريق X».
+ */
+export function walkedAwayNotQuit(text: string, source: string): string {
+  if (!/\bwalk(?:s|ed|ing)?\s+(?:away|out|off)\b/i.test(source)) return text;
+  if (/\b(?:quit(?:s|ting)?|withdr[ae]w[ns]?|withdrawing|pull(?:s|ed)?\s+out|no\s+longer\s+(?:a\s+)?(?:member|part)|leav(?:es|ing)\s+the\s+team|left\s+the\s+team|removed\s+from)\b/i.test(source)) return text;
+  const map: Array<[RegExp, string]> = [
+    [new RegExp(`(^|[^ء-ي])(و?)ينسحب\\s+من(\\s+(?:فريق|الفريق))`, "g"), "$1$2يغادر الحلبة تاركا$3"],
+    [new RegExp(`(^|[^ء-ي])(و?)تنسحب\\s+من(\\s+(?:فريق|الفريق))`, "g"), "$1$2تغادر الحلبة تاركة$3"],
+    [new RegExp(`(^|[^ء-ي])(و?)انسحب\\s+من(\\s+(?:فريق|الفريق))`, "g"), "$1$2غادر الحلبة تاركا$3"],
+    [new RegExp(`(^|[^ء-ي])(و?)انسحبت\\s+من(\\s+(?:فريق|الفريق))`, "g"), "$1$2غادرت الحلبة تاركة$3"],
+  ];
+  return map.reduce((t, [re, to]) => t.replace(re, to), text);
+}
+
+/**
  * "Shelved / on hold / tabled" is a pause, not a cancellation: «اتحاد AEW يلغي خططه لنزال بنمط
  * Elimination Chamber» when the source said the match is "still shelved and tabled" (INCIDENTS #291).
  * Unless the source itself cancels (cancel/scrap/nix/axe/drop), cancellation wording becomes freezing.

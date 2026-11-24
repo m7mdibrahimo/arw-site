@@ -5720,3 +5720,15 @@ test('autoFix joins a lone «ك» and turns a speaking «بطولة … السا
   assert.equal(autoFix('وأوضح بطولة العالم للوزن الثقيل السابق أنه'), 'وأوضح بطل العالم للوزن الثقيل السابق أنه');
   assert.equal(autoFix('أضاف بطولة جديدة إلى رصيده'), 'أضاف بطولة جديدة إلى رصيده');
 });
+
+test('"walks away from Team USA" is leaving the ring, not quitting the team (INCIDENTS #1513)', async () => {
+  const { walkedAwayNotQuit, applyCorrections } = await import('../scripts/news-qa');
+  const src = 'CM Punk Walks Away From Team USA. He eventually walked away as Rollins got in the ring. Punk confirmed he is still a member of Team USA.';
+  assert.equal(walkedAwayNotQuit('سي ام بانك ينسحب من فريق أمريكا في عرض WWE RAW', src), 'سي ام بانك يغادر الحلبة تاركا فريق أمريكا في عرض WWE RAW');
+  assert.equal(walkedAwayNotQuit('وانسحبت من الفريق', src), 'وغادرت الحلبة تاركة الفريق');
+  assert.equal(walkedAwayNotQuit('سي ام بانك ينسحب من فريق أمريكا', 'CM Punk walked out and quit Team USA.'), 'سي ام بانك ينسحب من فريق أمريكا');
+  assert.equal(walkedAwayNotQuit('سي ام بانك ينسحب من فريق أمريكا', 'CM Punk left the arena.'), 'سي ام بانك ينسحب من فريق أمريكا');
+  assert.equal(applyCorrections('برفقة جيفون إيفانز وال ال ايه نايت'), 'برفقة جيفون إيفانز وال ايه نايت');
+  const watcher = fs.readFileSync('scripts/fightful-watcher.ts', 'utf-8');
+  assert.match(watcher, /walkedAwayNotQuit\(draft\.title, plainText\)/);
+});
