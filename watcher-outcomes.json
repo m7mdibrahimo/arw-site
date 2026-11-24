@@ -1,4 +1,24 @@
 {
+ "https://www.ringsidenews.com/identity-person-who-negotiated-mr-kennedys-wwe-legends-deal": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T19:24:12.197Z"
+ },
+ "https://www.ringsidenews.com/new-match-added-november-24-wwe-nxt-lineup": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-24T19:23:33.456Z"
+ },
+ "https://www.ringsidenews.com/possible-location-wwe-summerslam-2027": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T19:22:53.335Z"
+ },
+ "https://www.ringsidenews.com/buddy-matthews-hints-pushing-aew-return-back-2027": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مدة زمنية في المتن غير مطابقة للمصدر: قبل عام",
+  "retry": true,
+  "at": "2026-11-24T19:21:04.322Z"
+ },
  "https://www.fightful.com/wrestling/zayda-steel-marina-shafir-is-such-a-real-person-and-in-wrestling-theres-not-a-lot-of-them": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1988,15 +2008,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-17T16:06:08.495Z"
- },
- "https://www.ringsidenews.com/cj-perry-wants-rusev-play-mafia-villain-upcoming-movie": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يتحدثان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-17T15:18:40.139Z"
- },
- "https://www.fightful.com/wrestling/fallon-henley-on-jacy-jayne-being-alongside-somebody-that-ive-known-so-long-it-makes-a-great-partnership": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-17T15:10:10.940Z"
  }
 }
