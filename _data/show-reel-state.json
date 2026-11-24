@@ -5824,15 +5824,42 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال سابادوس دي كوليسيو 21.11.2026 مترجم",
-    "lastAttempt": 1795527589414,
+    "lastAttempt": 1795528326675,
     "errors": {
       "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
       "instagram_reel",
-      "tiktok"
+      "instagram_story"
     ],
+    "reviewPlatforms": [],
+    "needsReview": false,
+    "tiktok": true
+  },
+  "20261124153512-cmll-domingo-familiar-22-11-2026": {
+    "publishedAt": 1795528356467,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال دومينغو فاميليار 22.11.2026 مترجم",
+    "lastAttempt": 1795528368718,
+    "errors": {},
+    "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261124154453-njpw-world-tag-league-night-1-23-11-2026": {
+    "publishedAt": 1795528397039,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ان جيه بي دبليو وورلد تاج ليج (الليلة الاولى) 23.11.2026 مترجم",
+    "lastAttempt": 1795528409706,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }
