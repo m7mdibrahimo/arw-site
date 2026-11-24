@@ -1,5 +1,15 @@
 [
   {
+    "id": 4813305745,
+    "link": "https://www.wrestlinginc.com/2326167/wwe-raw-rey-mysterio-el-grande-americano-team-mexico-survivor-series-2026/",
+    "date": "Tue, 24 Nov 2026 00:06:25 +0000",
+    "date_gmt": "2026-11-24T00:06:25.000Z",
+    "title": {
+      "rendered": "Rey Mysterio Officially Announces Fifth Member Of Team Mexico For WWE Survivor Series"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/rey-mysterio-officially-announces-fifth-member-of-team-usa-for-wwe-survivor-series/l-intro-1795478643.jpg"
+  },
+  {
     "id": 3606218896,
     "link": "https://www.wrestlinginc.com/2326142/wwe-raw-ethan-page-rey-fenix-first-mens-intercontinental-title-defense/",
     "date": "Mon, 23 Nov 2026 23:39:59 +0000",
@@ -105,7 +115,7 @@
     "date": "Mon, 23 Nov 2026 20:00:00 +0000",
     "date_gmt": "2026-11-23T20:00:00.000Z",
     "title": {
-      "rendered": "WWE Raw Results 11/23/26 W/ Live Updates: Rey Mysterio Announces Fifth Member Of Team Mexico"
+      "rendered": "WWE Raw Results 11/23/26 W/ Live Updates: Cody Rhodes Introduces Fifth Member Of Team USA"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-results-112326-w-live-updates/l-intro-1795443272.jpg"
   },
@@ -188,15 +198,5 @@
       "rendered": "AEW Star Swerve Strickland Believes WWE's Triple H Knew His Potential"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-star-swerve-strickland-believes-wwes-triple-h-knew-his-potential/l-intro-1795429800.jpg"
-  },
-  {
-    "id": 3300329051,
-    "link": "https://www.wrestlinginc.com/2324638/wwe-nxt-viewership-ratings-november-17-2026/",
-    "date": "Mon, 23 Nov 2026 15:30:00 +0000",
-    "date_gmt": "2026-11-23T15:30:00.000Z",
-    "title": {
-      "rendered": "WWE NXT Viewership & Ratings Report: 11/17/2026"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-viewership-ratings-report-11172026/l-intro-1795427565.jpg"
   }
 ]
