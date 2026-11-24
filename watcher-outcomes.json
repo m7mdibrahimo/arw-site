@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/jade-cargill-admits-none-her-wrestling-matches-have-ever-perfect": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T15:25:31.749Z"
+ },
+ "https://www.ringsidenews.com/mr-kennedy-reveals-what-tna-management-promised-him-wwe-firing": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T15:24:26.800Z"
+ },
  "https://www.fightful.com/wrestling/big-damo-explains-why-he-attacks-mistico-somebody-needs-to-bring-him-down-a-couple-of-pegs": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -118,11 +128,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-24T15:15:28.971Z"
- },
- "https://www.ringsidenews.com/mr-kennedy-reveals-what-tna-management-promised-him-wwe-firing": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T15:09:42.643Z"
  },
  "https://www.ringsidenews.com/mr-kennedy-claims-vince-mcmahon-told-him-stop-entertaining-wwe": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Intercontinental Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Tag Team Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Raquel Rodriguez",
   "retry": true,
   "at": "2026-11-17T01:15:29.490Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-holiday-live-tour-from-chicago-il-results-11-15": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-17T01:10:40.923Z"
  }
 }
