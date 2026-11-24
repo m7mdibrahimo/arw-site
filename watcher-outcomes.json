@@ -1,23 +1,8 @@
 {
  "https://www.wrestlinginc.com/2326223/wwe-raw-november-23-2026-hated-loved-opinion-review": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، المصدر بيتكلم عن Royce Keys (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
+  "reason": "المراجعة رفضته: المصدر بيتكلم عن Royce Keys (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
   "retry": true,
-  "at": "2026-11-24T11:05:25.921Z"
- },
- "https://www.ringsidenews.com/kayla-braxton-exposes-people-flooding-her-racist-messages-n-word-incident": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T10:47:40.624Z"
- },
- "https://www.ringsidenews.com/drew-mcintyres-current-wwe-return-timeline-amid-television-absence": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T10:46:52.173Z"
- },
- "https://www.ringsidenews.com/wwe-smackdown-spoiler-results-november-27-2026": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى منصوب (لتحصلا/ليحسما/أن يلتقيا) ممنوع — اجمع الفعل («ليحسموا») أو استخدم المفرد لغير العاقل («لتنضم إلى البطاقة»)، فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم، الفائز مش مذكور في وصف نزاله (1) — اكتب النزال من المصدر بأسماء الطرفين",
-  "retry": true,
-  "at": "2026-11-24T10:45:18.902Z"
+  "at": "2026-11-24T11:22:16.151Z"
  },
  "https://www.fightful.com/wrestling/bandido-vs-konosuke-takeshita-nick-wayne-vs-tommaso-ciampa-among-continental-classic-matches-set-for-11-26-aew-collision": {
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
@@ -79,60 +64,20 @@
   "retry": false,
   "at": "2026-11-24T10:50:35.019Z"
  },
- "https://www.fightful.com/wrestling/wwe-raw-results-11-23-2026-roman-reigns-appears-intercontinental-title-match-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-24T10:49:30.089Z"
- },
- "https://www.fightful.com/wrestling/cm-punk-begs-fans-to-not-run-up-on-wrestlers-in-the-street-and-touch-them": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-24T10:49:29.992Z"
- },
- "https://www.fightful.com/wrestling/beyond-still-alive-results-11-21": {
-  "reason": "المراجعة رفضته: آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Brother Greatness، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
-  "retry": true,
-  "at": "2026-11-24T10:49:29.826Z"
- },
- "https://www.fightful.com/wrestling/uhaa-nation-nikki-storm-raj-dhesi-big-damo-no-longer-appearing-on-nwe-legends-tour": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-24T10:47:27.916Z"
- },
- "https://www.fightful.com/wrestling/jeff-hardy-recalls-scoring-reality-tv-deal-in-2009-explains-why-it-didnt-pan-out": {
+ "https://www.ringsidenews.com/kayla-braxton-exposes-people-flooding-her-racist-messages-n-word-incident": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-24T10:45:47.559Z"
+  "at": "2026-11-24T10:47:40.624Z"
  },
- "https://www.fightful.com/wrestling/wwe-video-producer-releases-movie-the-boogeyman-featured-in-film": {
+ "https://www.ringsidenews.com/drew-mcintyres-current-wwe-return-timeline-amid-television-absence": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-24T10:44:30.813Z"
+  "at": "2026-11-24T10:46:52.173Z"
  },
- "https://www.fightful.com/wrestling/more-details-on-tna-firing-mike-romo": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-24T10:42:47.290Z"
- },
- "https://www.fightful.com/wrestling/natalya-hopes-the-british-bulldog-vs-bret-hart-at-summerslam-92-is-one-day-inducted-into-the-wwe-hall-of-fame": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+ "https://www.ringsidenews.com/wwe-smackdown-spoiler-results-november-27-2026": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى منصوب (لتحصلا/ليحسما/أن يلتقيا) ممنوع — اجمع الفعل («ليحسموا») أو استخدم المفرد لغير العاقل («لتنضم إلى البطاقة»)، فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم، الفائز مش مذكور في وصف نزاله (1) — اكتب النزال من المصدر بأسماء الطرفين",
   "retry": true,
-  "at": "2026-11-24T10:41:03.013Z"
- },
- "https://www.fightful.com/wrestling/cody-rhodes-throws-an-interception": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-24T10:38:50.204Z"
- },
- "https://www.fightful.com/wrestling/mlw-promotes-josef-samael-to-evp-of-wrestling-operations": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-24T10:37:15.620Z"
- },
- "https://www.fightful.com/wrestling/speedball-mike-bailey-says-continental-classic-season-is-their-favorite-season": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-24T10:36:49.084Z"
+  "at": "2026-11-24T10:45:18.902Z"
  },
  "https://www.fightful.com/wrestling/jalen-brunson-if-roman-reigns-is-being-deemed-overrated-hes-doing-something-right": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
