@@ -2755,6 +2755,9 @@ export function autoFix(text: string): string {
     .replace(new RegExp(`(?<![${AR}])([وف]?(?:قال|أوضح|أكد|أشار|صرح|اعترف|أقر|تابع|كشف))\\s+بطولة(?=(?:\\s+[^\\s.،]+){1,6}?\\s+(?:السابق|الحالي)(?![${AR}]))`, "g"), "$1 بطل")
     // «> كلام…»: a blockquote that lost its opening « (INCIDENTS #500)
     .replace(/^(>[ \t]*)([^«»\n]+»)/gm, "$1«$2")
+    // «> "…". وبدلا من …»: the narration after a quote's closing mark was left inside the blockquote —
+    // it goes back to its own paragraph (Kayla Braxton story, INCIDENTS #1520)
+    .replace(/^(>[ \t]*["«“][^"«»“”\n]*["»”])[ \t]*[.،]?[ \t]+([\u0621-\u064A][^"«»“”\n]*)$/gm, "$1\n\n$2")
     // "ل زينا" → "لـزينا", "ل *NXT" → "لـ *NXT", "و سامي" → "وسامي"
     .replace(new RegExp(`(^|[\\s(«"])([لب])\\s+(?=[${AR}])`, "gm"), "$1$2ـ")
     .replace(/(^|[\s(«"])([لب])\s+(?=[*«"]?[A-Za-z0-9"«])/gm, "$1$2ـ ")

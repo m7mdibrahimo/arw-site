@@ -5732,3 +5732,12 @@ test('"walks away from Team USA" is leaving the ring, not quitting the team (INC
   const watcher = fs.readFileSync('scripts/fightful-watcher.ts', 'utf-8');
   assert.match(watcher, /walkedAwayNotQuit\(draft\.title, plainText\)/);
 });
+
+test('NBA is not turned into NFL, a pronoun slip and a blockquote tail are fixed (Brunson / McIntyre / Braxton stories, INCIDENTS #1520)', () => {
+  assert.equal(applyCorrections('علق بطل الدوري الأمريكي للمحترفين (NBA) على الجدل.'), 'علق نجم دوري كرة السلة الأمريكي (NBA) على الجدل.');
+  assert.equal(applyCorrections('علق بطل دوري كرة القدم الأمريكية (NFL) (NBA) على الجدل.'), 'علق نجم دوري كرة السلة الأمريكي (NBA) على الجدل.');
+  assert.equal(applyCorrections('لاعب في الدوري الأمريكي للمحترفين منذ سنوات.'), 'لاعب في دوري كرة القدم الأمريكية (NFL) منذ سنوات.');
+  assert.equal(applyCorrections('شكر نيك خان على منحهم الحرية له لاستكشاف الفرص.'), 'شكر نيك خان على منحه الحرية لاستكشاف الفرص.');
+  assert.equal(autoFix('> "كل فترة يمكن أن يؤثر ذلك علي". وبدلا من الرد اكتفت بنشر اللقطات.'), '> "كل فترة يمكن أن يؤثر ذلك علي"\n\nوبدلا من الرد اكتفت بنشر اللقطات.');
+  assert.equal(autoFix('> "قال إن "الأمر" انتهى تماما وبدأ من جديد."'), '> "قال إن "الأمر" انتهى تماما وبدأ من جديد."');
+});
