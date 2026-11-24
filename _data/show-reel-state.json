@@ -5824,7 +5824,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال سابادوس دي كوليسيو 21.11.2026 مترجم",
-    "lastAttempt": 1795529251947,
+    "lastAttempt": 1795530048533,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -5842,15 +5842,16 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض سي ام ال ال دومينغو فاميليار 22.11.2026 مترجم",
-    "lastAttempt": 1795529282781,
+    "lastAttempt": 1795530059268,
     "errors": {
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "tiktok"
+      "instagram_reel"
     ],
     "reviewPlatforms": [],
-    "needsReview": false
+    "needsReview": false,
+    "tiktok": true
   },
   "20261124154453-njpw-world-tag-league-night-1-23-11-2026": {
     "publishedAt": 1795528397039,
