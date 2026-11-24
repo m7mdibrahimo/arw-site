@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-24T13:00:01.915Z",
+ "checkedAt": "2026-11-24T13:45:03.499Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
@@ -11841,38 +11841,98 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-24T13:00:01.915Z"
+   "checked": "2026-11-24T13:45:03.499Z"
   },
   "https://vidmoly.org/embed-alduve6hbkkw.html": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-23-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-24T13:00:01.915Z",
-   "lastOk": "2026-11-24T13:00:01.915Z"
+   "checked": "2026-11-24T13:45:03.499Z",
+   "lastOk": "2026-11-24T13:45:03.499Z"
   },
   "https://ok.ru/videoembed/18251981458016": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-23-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-24T13:00:01.915Z"
+   "checked": "2026-11-24T13:45:03.499Z"
   },
   "https://fembed.co/embed/YYQgMIv-7_8Hm": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-23-11-2026/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-24T13:00:01.915Z",
-   "lastOk": "2026-11-24T13:00:01.915Z"
+   "checked": "2026-11-24T13:45:03.499Z",
+   "lastOk": "2026-11-24T13:45:03.499Z"
   },
   "https://hgcloud.to/e/pxsh3lt2k42z": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-23-11-2026/",
    "status": "ok",
-   "reason": "the video plays (after the player's first source failed) (second try)",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-24T13:00:01.915Z",
-   "lastOk": "2026-11-24T13:00:01.915Z"
+   "checked": "2026-11-24T13:45:03.499Z",
+   "lastOk": "2026-11-24T13:45:03.499Z"
+  },
+  "https://fembed.co/embed/W_okYI-95zJfS": {
+   "page": "https://arab-wrestling.com/shows/cmll-domingo-familiar-22-11-2026/",
+   "status": "ok",
+   "reason": "the video plays",
+   "strikes": 0,
+   "checked": "2026-11-24T13:45:03.499Z",
+   "lastOk": "2026-11-24T13:45:03.499Z"
+  },
+  "https://vidmoly.org/embed-lqqqlgwarjmp.html": {
+   "page": "https://arab-wrestling.com/shows/cmll-domingo-familiar-22-11-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-24T13:45:03.499Z",
+   "lastOk": "2026-11-24T13:45:03.499Z"
+  },
+  "https://vidtube.one/embed-k4w103pxznp8.html": {
+   "page": "https://arab-wrestling.com/shows/cmll-domingo-familiar-22-11-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-24T13:45:03.499Z"
+  },
+  "https://ok.ru/videoembed/18252651170400": {
+   "page": "https://arab-wrestling.com/shows/cmll-domingo-familiar-22-11-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-24T13:45:03.499Z"
+  },
+  "https://fembed.co/embed/60-f_wzzEdizU": {
+   "page": "https://arab-wrestling.com/shows/cmll-sabados-de-coliseo-21-11-2026/",
+   "status": "ok",
+   "reason": "the video plays",
+   "strikes": 0,
+   "checked": "2026-11-24T13:45:03.499Z",
+   "lastOk": "2026-11-24T13:45:03.499Z"
+  },
+  "https://ok.ru/videoembed/18252519770720": {
+   "page": "https://arab-wrestling.com/shows/cmll-sabados-de-coliseo-21-11-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-24T13:45:03.499Z"
+  },
+  "https://vidmoly.org/embed-depi6cqdy1kj.html": {
+   "page": "https://arab-wrestling.com/shows/cmll-sabados-de-coliseo-21-11-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-24T13:45:03.499Z",
+   "lastOk": "2026-11-24T13:45:03.499Z"
+  },
+  "https://vidtube.one/embed-7jmpng0aizmm.html": {
+   "page": "https://arab-wrestling.com/shows/cmll-sabados-de-coliseo-21-11-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-24T13:45:03.499Z"
   }
  },
  "broken": [
