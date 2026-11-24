@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2326223/wwe-raw-november-23-2026-hated-loved-opinion-review": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، المصدر بيتكلم عن Royce Keys (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
+  "retry": true,
+  "at": "2026-11-24T09:46:25.683Z"
+ },
+ "https://www.wrestlinginc.com/2326017/biggest-winners-losers-week-november-23-2026": {
+  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، المصدر بيتكلم عن Cody Rhodes (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
+  "retry": true,
+  "at": "2026-11-24T09:44:03.455Z"
+ },
  "https://www.fightful.com/wrestling/cmll-lunes-clasico-results-11-23-2026-averno-united-empire-vs-barbaro-cavernario-reyes-del-inframundo-more": {
   "reason": "المراجعة رفضته: العنوان فيه «باربارو كافيرناريو» والنص مفيهوش الاسم ده خالص — يا تكتب في النص اللي حصل معاه زي المصدر، يا تشيل الاسم من العنوان",
   "retry": true,
@@ -123,16 +133,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-24T09:16:31.481Z"
- },
- "https://www.wrestlinginc.com/2326223/wwe-raw-november-23-2026-hated-loved-opinion-review": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-24T09:26:50.624Z"
- },
- "https://www.wrestlinginc.com/2326017/biggest-winners-losers-week-november-23-2026": {
-  "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، المصدر بيتكلم عن Cody Rhodes (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
-  "retry": true,
-  "at": "2026-11-24T09:24:42.774Z"
  },
  "https://www.wrestlinginc.com/2323654/wwe-jbl-jacqueline-apa-wishes-longer-partnership-former-manager": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
