@@ -142,6 +142,12 @@ export function goneTarget(path) {
     return /^\/news\/./.test(rest) ? "/news/" : rest;
   }
   if (/^\/news\/[^/]+\/?$/.test(path)) return "/news/";
+  // INCIDENTS #1516: with stories deleted after a month the lists got shorter — /federation/wwe/128/, /federations/277/
+  // no longer exist and Google kept sending visitors to their 404. A numbered page that is gone goes to its list's first
+  // page; a tag with no stories left goes to the tags index.
+  const paged = path.match(/^(\/[^.]+?)\/\d+\/?$/);
+  if (paged) return `${paged[1]}/`;
+  if (/^\/tag\/[^/]+\/?$/.test(path)) return "/tags/";
   return null;
 }
 
