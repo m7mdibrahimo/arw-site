@@ -1,5 +1,15 @@
 [
   {
+    "id": 340582,
+    "link": "https://www.fightful.com/wrestling/triple-threat-tag-team-street-fight-set-for-12-5-aaa-on-fox/",
+    "date": "2026-11-23T20:44:08",
+    "date_gmt": "2026-11-24T01:44:08",
+    "title": {
+      "rendered": "Triple Threat Tag Team Street Fight Set For 12/5 AAA On FOX"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/04/25223758/Screenshot-52-1-e1777171113703.png"
+  },
+  {
     "id": 340576,
     "link": "https://www.fightful.com/boxing/tyson-fury-reveals-schizophrenia-diagnosis/",
     "date": "2026-11-23T20:33:05",
@@ -288,15 +298,5 @@
       "rendered": "Martin Bakole To Face Deontay Wilder In Co-Main Event Of Fury vs. Joshua"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/23095439/Screenshot-2026-11-23-at-9.51.26-AM.png"
-  },
-  {
-    "id": 340463,
-    "link": "https://www.fightful.com/wrestling/the-rock-to-receive-multihyphenate-award-from-usc-school-of-dramatic-arts/",
-    "date": "2026-11-23T09:15:37",
-    "date_gmt": "2026-11-23T14:15:37",
-    "title": {
-      "rendered": "The Rock To Receive Multihyphenate Award From USC School of Dramatic Arts"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/02/04204754/the_rock_wwe_smackdown_0.jpg"
   }
 ]
