@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2326324/aew-rj-city-looks-back-brief-time-wwe": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-24T16:14:43.965Z"
+ },
  "https://www.fightful.com/wrestling/charlotte-flair-says-wrestlemania-35-main-event-is-not-good-thinks-they-couldve-structured-it-differently": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: نزال فردي — اكتب الفائز زي المصدر وبالماضي",
   "retry": true,
   "at": "2026-11-17T01:35:41.113Z"
- },
- "https://www.fightful.com/wrestling/cmll-sabado-de-coliseo-results-11-14-2026-templario-esfinge-vs-guerreros-laguneros-dragones-vs-herederos-more": {
-  "reason": "المراجعة رفضته: فائز مش موجود في نتايج المصدر (النزال لسه ما خلصش؟): المواجهة الخامسة: نزال من ثلاث جولات، في التقرير 1 فائز زيادة عن النتايج اللي في المصدر — نزال لسه ما خلصش اتكتبله فائز",
-  "retry": true,
-  "at": "2026-11-17T01:34:48.823Z"
  }
 }
