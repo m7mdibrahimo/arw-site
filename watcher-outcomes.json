@@ -1,8 +1,8 @@
 {
- "https://www.ringsidenews.com/cj-perry-says-her-buns-growing-stunning-bikini-photo-drop": {
+ "https://www.ringsidenews.com/wwe-raw-ranks-3-globally-netflix-november-16-2026": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T02:10:58.082Z"
+  "at": "2026-11-25T02:16:23.802Z"
  },
  "https://www.fightful.com/wrestling/myka-lockwood-pins-noam-dar-on-11-24-wwe-nxt": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
@@ -148,6 +148,11 @@
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-25T02:13:36.499Z"
+ },
+ "https://www.ringsidenews.com/cj-perry-says-her-buns-growing-stunning-bikini-photo-drop": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T02:10:58.082Z"
  },
  "https://www.fightful.com/wrestling/iyo-sky-shares-that-triple-h-was-unable-to-take-post-title-win-photo-after-11-16-wwe-raw-because-he-was-sick": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-18T00:43:24.441Z"
- },
- "https://www.fightful.com/wrestling/joey-janela-appears-on-loozecannons-stream": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-18T00:31:33.533Z"
  }
 }
