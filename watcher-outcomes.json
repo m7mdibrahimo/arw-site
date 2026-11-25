@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2326229/wwe-survivor-series-2026-draws-duds-team-usa-mexico-bloodline-946": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T14:47:08.507Z"
+ },
  "https://www.fightful.com/wrestling/njpw-world-tag-league-results-11-25-26-a-block-action-with-two-teams-reaching-four-points": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -93,11 +98,6 @@
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-25T14:37:28.834Z"
- },
- "https://www.wrestlinginc.com/2326229/wwe-survivor-series-2026-draws-duds-team-usa-mexico-bloodline-946": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، المصدر بيتكلم عن Roman Reigns (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
-  "retry": true,
-  "at": "2026-11-25T14:09:31.797Z"
  },
  "https://www.ringsidenews.com/stone-cold-steve-austin-enjoys-no-longer-treated-celebrity": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
