@@ -357,7 +357,7 @@
 </header>
 <main class="lv-page" id="lvRoot" data-key="{{ live_key or "" }}"{% if liveProg %} data-prog="{{ liveProg.key }}" data-title="{{ liveProg.ar }}" data-fed="{{ liveProg.fed }}"{% endif %}{% if live_key %} data-start="{{ start }}" data-end="{{ end }}" data-title="{{ title | replace("بث مباشر ", "") }}" data-fed="{{ federation }}" data-en="{{ program_en }}" data-img="{{ image or "" }}"{% endif %}>
 {%- if live_key or liveProg %}
-  <nav class="lv-crumbs" aria-label="مسار الصفحة"><a href="/">الرئيسية</a><span>›</span><a href="/live/">بث مباشر</a>{% if lvParent %}<span>›</span><a href="/live/{{ lvParent.key }}/">عرض {{ lvParent.ar }}</a>{% endif %}<span>›</span><b>{% if live_key %}{{ lvName }} {{ lvDay }}{% else %}عرض {{ liveProg.ar }}{% endif %}</b></nav>
+  <nav class="lv-crumbs" aria-label="مسار الصفحة"><a href="/">الرئيسية</a><span>›</span><a href="/live/">بث مباشر</a>{% if lvParent %}<span>›</span><a href="/live/{{ lvParent.key }}/">عرض {{ lvParent.ar }}</a>{% endif %}<span>›</span><b>{% if live_key %}{% if not lvParent %}{{ lvName }} {% endif %}{{ lvDay }}{% else %}عرض {{ liveProg.ar }}{% endif %}</b></nav>
 {%- endif %}
 {%- if liveProg %}
   <div class="lv-head lv-ph"><div><h1><i></i>بث مباشر عرض {{ liveProg.ar }}</h1><span class="lv-en" lang="en" dir="ltr">{{ liveProg.en }} Live</span><p>صفحة البث المباشر لعرض {{ liveProg.ar }} ({{ liveProg.en }}){% if liveProg.when %} {{ liveProg.when }}{% endif %}: عدّاد حتى لحظة البداية بتوقيت بلدك، ثم سيرفرات المشاهدة المباشرة داخل الصفحة.</p></div></div>
