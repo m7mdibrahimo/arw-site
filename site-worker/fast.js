@@ -155,6 +155,18 @@ export function goneTarget(path) {
 export async function handle(request, env, ctx) {
   const r = await serve(request, env, ctx);
   if (r.status !== 404) return r;
+  // «بث مباشر» (worker/src/live.ts): a show's live page works the minute the show is found, before its own page is built —
+  // the section's page fills itself for the show named in the address (assets/live.js)
+  const lp = new URL(request.url).pathname;
+  if (/^\/live\/[a-z0-9-]{3,80}\/?$/.test(lp) && (request.method === "GET" || request.method === "HEAD")) {
+    const shell = await env.ASSETS.fetch(new Request(new URL("/live/", request.url).toString(), { method: "GET" }));
+    if (shell.status === 200) {
+      const out = new Response(request.method === "HEAD" ? null : shell.body, shell);
+      out.headers.set("Cache-Control", "public, max-age=0, must-revalidate");
+      out.headers.set("X-Robots-Tag", "noindex");
+      return out;
+    }
+  }
   const to = goneTarget(decoded(new URL(request.url).pathname));
   if (!to) return r;
   return new Response(null, { status: 301, headers: { Location: encodeURI(to), "Cache-Control": "public, max-age=600" } });

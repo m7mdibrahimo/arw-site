@@ -39,6 +39,7 @@ import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRe
 import { runBudgetCheck } from "./budget";
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
+import { runLive, liveDataResponse, liveStatus } from "./live";
 import { recordView, pruneAnalytics } from "./analytics";
 import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumKind, studioPremiumDays, studioPremiumFind, studioPremiumRequest, studioPremiumMedia, premiumNotifications, runPremiumReminders } from "./premium";
 import { handleFollows, runFollowNotify, runFollowPush } from "./follows";
@@ -3610,6 +3611,9 @@ export default {
         if (who && removed) await studioAudit(env as any, who.user, "comments.delete", { count: removed }).catch(() => {});
         return json({ success: true, removed });
       }
+      // «بث مباشر» (worker/src/live.ts): the section's shows and links, 20 s at the edge; and each source's domain and health
+      if (path === "/live/data" && request.method === "GET") return liveDataResponse(env as any, CORS_HEADERS);
+      if (path === "/live/status" && request.method === "GET") return json(await liveStatus(env as any));
       if (path === "/top10" && request.method === "GET") return top10Response(env, url.searchParams.get("range") || "day");
       if (path === "/health" && request.method === "GET") {
         const h = await siteHealth(env);
@@ -4654,6 +4658,16 @@ export default {
       releaseEarly(env.ANALYTICS, { read: (p) => readRepoFile(env as any, p), commit: (p, text, msg) => commitFiles(env as any, [{ path: p, text }], msg) }, _controller.scheduledTime)
         .catch((e: any) => console.log("[early]", e?.message || e))
         .then(() => syncOk(env.ANALYTICS, env as any, _controller.scheduledTime, undefined, { read: (p) => readRepoFile(env as any, p), commit: (p, text, msg) => commitFiles(env as any, [{ path: p, text }], msg) })).catch((e: any) => console.log("[ok.ru]", e?.message || e)),
+      // «بث مباشر»: the four sources every minute; a new show gets its page, the merged links go to /live/data (worker/src/live.ts)
+      runLive(env as any, _controller.scheduledTime, {
+        commit: (changes, msg) => commitFiles(env as any, changes, msg),
+        uploadImage: async (p, bytes) => {
+          const svc = (env as any).MEDIA_SVC as Fetcher | undefined;
+          if (!svc || !env.GITHUB_TOKEN) return false;
+          const up = await svc.fetch(new Request(`https://arw-media/upload/${p.split("/").map(encodeURIComponent).join("/")}?replace=1`, { method: "PUT", body: bytes, headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}` } }));
+          return up.ok;
+        },
+      }).catch((e: any) => console.log("[live]", e?.message || e)),
       // a membership about to end, or just ended: the member is told (worker/src/premium.ts)
       minute === 20 ? runPremiumReminders(env as any, _controller.scheduledTime).catch(() => {}) : Promise.resolve(),
       // the rented encoding machine, off for 12 hours, is deleted so its disk isn't paid for (owner 2026-10-26)
