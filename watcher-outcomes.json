@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/indie-star-kaci-lennox-gets-thanksgiving-spirit-maroon-lingerie-photos": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T02:49:18.265Z"
+ },
  "https://www.fightful.com/wrestling/kasper-brothers-respond-to-criticism-of-cannonball-finisher": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "تقرير نتائج نفس العرض موجود على الموقع، وبيتحدّث لوحده",
   "retry": false,
   "at": "2026-11-18T02:13:29.543Z"
- },
- "https://www.fightful.com/wrestling/fallon-henley-says-she-wanted-to-burst-into-tears-after-fatal-influence-captured-the-wwe-womens-tag-titles": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T01:07:00.725Z"
  }
 }
