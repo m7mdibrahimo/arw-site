@@ -148,6 +148,8 @@ test('wiring: the bot polls every minute and serves /live/data; the site serves 
   assert.match(fast, /\/\^\\\/live\\\/\[a-z0-9-\]\{3,80\}\\\/\?\$\/\.test\(lp\)/);
   for (const f of ['index.njk', 'pages/shows.njk', 'pages/news.njk', '_includes/post-layout.njk', '_includes/live-layout.njk'])
     assert.match(fs.readFileSync(f, 'utf8'), /<a class="navlink nav-live( active)?" href="\/live\/">بث مباشر<\/a>/, f);
+  // no light beside it in the menu (owner 2026-11-25)
+  assert.doesNotMatch(fs.readFileSync('assets/features.css', 'utf8'), /nav-live::before/);
   assert.match(fs.readFileSync('assets/live.js', 'utf8'), /arw-site-bot\.m7mdibrahimpc\.workers\.dev\/live\/data/);
   // the section's page answering for a new show's address turns into that show's page
   assert.match(fs.readFileSync('assets/live.js', 'utf8'), /if \(isShow && !document\.getElementById\('lvShow'\)\) root\.innerHTML = '<div id="lvShow"><\/div>/);

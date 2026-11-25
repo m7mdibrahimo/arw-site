@@ -1093,6 +1093,4 @@ html[dir="ltr"] .arw-cw-x{ left:auto; right:8px; }
 footer, .related-posts-section, #comments{ content-visibility:auto; contain-intrinsic-size:auto 900px; }
 footer{ contain-intrinsic-size:auto 340px; }
 
-/* «بث مباشر» in the menu: a small red light (assets/live.css, worker/src/live.ts) */
-.nav a.navlink.nav-live, #navMenu a.navlink.nav-live{ display:inline-flex; align-items:center; gap:7px; }
-.nav a.navlink.nav-live::before, #navMenu a.navlink.nav-live::before{ content:""; width:8px; height:8px; border-radius:50%; background:var(--coral, #ff6f59); box-shadow:0 0 0 3px rgba(255,111,89,.2); flex:none; }
+/* «بث مباشر» in the menu: a plain link like the others — no light beside it (owner 2026-11-25) */
