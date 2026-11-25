@@ -84,11 +84,6 @@
   "retry": false,
   "at": "2026-11-25T12:10:14.803Z"
  },
- "https://www.wrestlinginc.com/2327662/wwe-nxt-november-24-2026-3-things-hated-loved-opinion-review": {
-  "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-25T11:48:13.270Z"
- },
  "https://www.wrestlinginc.com/2327553/aew-buddy-matthews-major-changes-return": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
