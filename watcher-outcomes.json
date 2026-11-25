@@ -1,13 +1,8 @@
 {
- "https://www.ringsidenews.com/ilja-dragunov-addresses-criticism-that-his-wrestling-style-top": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-25T16:03:21.345Z"
- },
- "https://www.ringsidenews.com/wwe-survivor-series-ticket-sales-surge-following-rocks-return-announcement": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-25T16:02:41.973Z"
+ "https://www.ringsidenews.com/pro-wrestling-legend-genichiro-tenryu-hospitalized-amid-health-concerns": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-25T16:13:20.418Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-wants-to-wrestle-people-who-are-drawn-to-a-certain-artistic-form-of-violence-like-jon-moxley-and-samoa-joe": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
@@ -88,6 +83,16 @@
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-25T16:05:16.646Z"
+ },
+ "https://www.ringsidenews.com/ilja-dragunov-addresses-criticism-that-his-wrestling-style-top": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T16:03:21.345Z"
+ },
+ "https://www.ringsidenews.com/wwe-survivor-series-ticket-sales-surge-following-rocks-return-announcement": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T16:02:41.973Z"
  },
  "https://www.fightful.com/wrestling/kendal-grey-wren-sinclair-invited-to-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-18T16:55:55.868Z"
- },
- "https://www.fightful.com/wrestling/anthony-bowens-expected-to-remain-with-aew": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T16:50:01.236Z"
  }
 }
