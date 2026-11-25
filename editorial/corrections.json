@@ -1,6 +1,8 @@
 {
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
+  {"wrong":"(?<w>عودته|عودتها|عودتهم|انضمامه|انضمامها|انضمامهم|انتقاله|انتقالها|انتقالهم)\\s+إلى\\s+عرض\\s+(?<p>AEW|WWE|TNA|ROH|NJPW)(?!\\s*[A-Za-z0-9&])(?!\\s+(?:الذي|المرتقب|المقبل|القادم))","right":"$<w> إلى $<p>","regex":true,"note":"الاتحاد لوحده مش عرض: «عند عودته إلى AEW» مش «إلى عرض AEW» (خبر بادي ماثيوز، INCIDENTS #1532)"},
+  {"wrong":"(?<v>انتقادات|انتقادا|غضبا|متاعب)\\s+كواليس","right":"$<v> في كواليس","regex":true,"note":"حرف الجر «في» قبل الكواليس: «تتعرض لانتقادات في كواليس WWE NXT» (خبر إيزي دايم، INCIDENTS #1532)"},
   {"wrong": "ما حولني", "right": "ما حولي", "note": "«حول» تاخد ياء المتكلم من غير نون: «أراقب ما حولي» (خبر رويس كيز، INCIDENTS #1527)"},
   {"wrong": "كما اعتادنا", "right": "كما اعتدنا", "note": "الفعل مع «نا» الفاعلين: «اعتدنا» (خبر رويس كيز، INCIDENTS #1527)"},
   {"wrong": "يعتقد الجماهير", "right": "تعتقد الجماهير", "note": "الجماهير جمع تكسير: الفعل قبلها مؤنث (خبر كين أندرسون، INCIDENTS #1527)"},
