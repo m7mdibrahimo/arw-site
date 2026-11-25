@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2327662/wwe-nxt-november-24-2026-3-things-hated-loved-opinion-review": {
+  "reason": "المراجعة رفضته: أداة إسبانية إنجليزي (Los/La/El) ملزوقة في اسم عربي («Los بيروس ديل مال») — اكتب الاسم كله بالعربي («لوس بيروس ديل مال») أو كله إنجليزي، كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي، حروف عربي ملزوقة في حروف إنجليزي جوه نفس الاسم (حصل: «يOH»، «نagai») — اكتب الاسم كله إنجليزي أو كله عربي، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
+  "retry": true,
+  "at": "2026-11-25T12:07:12.804Z"
+ },
  "https://www.fightful.com/wrestling/fatal-4-way-1-contenders-match-grayson-waller-mason-rook-face-to-face-announced-for-12-1-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -38,6 +43,11 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Intercontinental Championship",
   "retry": true,
   "at": "2026-11-25T12:03:32.825Z"
+ },
+ "https://www.wrestlinginc.com/2327553/aew-buddy-matthews-major-changes-return": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T11:46:11.945Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-he-was-going-to-get-time-off-after-wrestlemania-42": {
   "reason": "مكرر مع خبر نزل قبل كده",
