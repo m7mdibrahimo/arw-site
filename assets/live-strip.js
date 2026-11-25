@@ -23,6 +23,7 @@
     else { try { day = new Intl.DateTimeFormat('ar', { timeZone: tz || undefined, weekday: 'long' }).format(new Date(ts)); } catch (e) { day = ''; } if (p.h < 6) day = 'فجر ' + day; }
     return day + ' ' + (p.h % 12 || 12) + ':' + pad(p.mi) + ' ' + period(p.h) + ' ' + zone;
   }
+  function nm(s) { var t = s.t || ''; return !t || /^عرض\s/.test(t) ? t : 'عرض ' + t; }
   function paint() {
     if (!show) return;
     var n = now();
@@ -31,14 +32,14 @@
     if (n >= show.start) {
       a.className = 'lvs is-live';
       tagEl.textContent = 'مباشر الآن';
-      tEl.textContent = 'بث مباشر ' + show.t;
+      tEl.textContent = 'بث مباشر ' + nm(show);
       sEl.textContent = (show.n ? show.n + (show.n > 2 && show.n < 11 ? ' سيرفرات' : ' سيرفر') + ' تعمل داخل الموقع · ' : '') + 'بدأ ' + when(show.start).replace(/^(الليلة|اليوم) /, '');
       cdEl.hidden = true; goEl.textContent = 'شاهد الآن';
     } else {
       var left = Math.floor((show.start - n) / 1000), h = Math.floor(left / 3600), m = Math.floor(left % 3600 / 60), s = left % 60;
       a.className = 'lvs is-soon';
       tagEl.textContent = 'البث المباشر القادم';
-      tEl.textContent = 'بث مباشر ' + show.t;
+      tEl.textContent = 'بث مباشر ' + nm(show);
       sEl.textContent = 'يدقّ الجرس ' + when(show.start);
       cdEl.hidden = false; cdEl.textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
       goEl.textContent = 'صفحة البث';

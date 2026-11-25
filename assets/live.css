@@ -1,5 +1,10 @@
 /* «بث مباشر» — the section and a show's live page (owner's pick 2026-11-25: «العدّاد داخل الحلبة ويدقّ الجرس عند البداية») */
 .lv-page{max-width:1200px;margin:0 auto;padding:28px 20px 70px}
+/* the way back up: section › program › show (#1537) */
+.lv-crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font:700 13.5px Cairo,sans-serif;color:var(--muted);margin:0 0 14px}
+.lv-crumbs a{color:var(--teal);text-decoration:none}
+.lv-crumbs a:hover{text-decoration:underline}
+.lv-crumbs b{color:var(--ink);font-weight:800}
 .lv-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px}
 .lv-head h1{font-family:Cairo,sans-serif;font-weight:900;font-size:34px;color:var(--ink);display:flex;align-items:center;gap:12px}
 .lv-head h1 i{width:14px;height:14px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 6px var(--coral-soft);animation:lvPulse 1.6s ease-in-out infinite}
@@ -37,6 +42,10 @@
 .lv-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
 .lv-top h1,.lv-top h2{font-family:Cairo,sans-serif;font-size:38px;font-weight:900;line-height:1.25}
 .lv-top p{color:#b8c4d6;font-size:16px;margin-top:4px}
+/* the English name under the Arabic one (#1537) */
+.lv-en{display:block;font:800 15px/1.4 Inter,system-ui,sans-serif;letter-spacing:.2px;color:#8fb3c9;margin-top:2px;text-align:right;unicode-bidi:isolate}
+.lv-card .lv-en{color:var(--muted);font-size:13px;margin:-2px 0 4px}
+.lv-ph .lv-en{color:var(--muted);font-size:16px;margin:2px 0 6px}
 .lv-top .fed{background:#000;border:1px solid rgba(255,255,255,.22);font:900 14px Cairo,sans-serif;padding:6px 14px;border-radius:10px;letter-spacing:1px;white-space:nowrap}
 .lv-ring{position:relative;height:400px;margin-top:8px;perspective:1100px}
 .lv-ring .mat{position:absolute;left:50%;top:44px;width:min(640px,94%);height:300px;transform:translateX(-50%) rotateX(38deg);transform-origin:50% 60%;border-radius:6px;background:linear-gradient(180deg,#e9eef4,#c8d2de);box-shadow:0 40px 80px rgba(0,0,0,.55),inset 0 0 0 10px var(--teal)}

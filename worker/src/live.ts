@@ -344,9 +344,12 @@ export function slugOf(id: ShowId): string {
   return `${id.program.key}-${d}-${m}-${y}`.replace(/[^a-z0-9-]+/g, "-").replace(/-+/g, "-");
 }
 
-/** The Arabic name the site shows: «بث مباشر داينامايت» */
-export function arabicTitle(s: Pick<Show, "ar" | "name" | "fed">): string {
-  return s.ar ? `${s.ar}` : s.name;
+/** The Arabic name the site shows: «عرض داينامايت» (the owner, 2026-11-25: «عرض» before the name); a name the owner wrote
+ *  that already starts with it is kept as he wrote it */
+export function arabicTitle(s: Pick<Show, "ar" | "name" | "fed"> & { ownT?: 1 }): string {
+  if (!s.ar) return s.name;
+  if (s.ownT) return s.ar;
+  return /^عرض\s/.test(s.ar) ? s.ar : `عرض ${s.ar}`;
 }
 
 export type Status = "soon" | "live" | "ended";
@@ -432,7 +435,7 @@ export interface ManualShow {
   rev?: number; page?: Show["page"]; pageAt?: number; pageRev?: number; pageV?: number;
 }
 export interface Manual { shows: Record<string, ManualShow>; off?: 1 }
-export type EffShow = Show & { hide?: 1; note?: string; vod?: string; add?: ManualLink[]; block?: string[]; manual?: 1; rev?: number };
+export type EffShow = Show & { ownT?: 1; hide?: 1; note?: string; vod?: string; add?: ManualLink[]; block?: string[]; manual?: 1; rev?: number };
 
 /** The shows as the site shows them: the sources' merge with the owner's changes on top */
 export function applyManual(auto: Record<string, Show>, m: Manual | null | undefined): Record<string, EffShow> {
@@ -450,7 +453,7 @@ export function applyManual(auto: Record<string, Show>, m: Manual | null | undef
       } as EffShow;
     }
     if (!s) continue;
-    if (o.t) s.ar = o.t;
+    if (o.t) { s.ar = o.t; s.ownT = 1; }   // the owner's name, word for word
     if (o.start && o.start !== s.start) { s.end = o.end || s.end - s.start + o.start; s.start = o.start; s.how = "manual"; }
     else if (o.end) s.end = o.end;
     if (o.img) s.img = o.img;
@@ -658,7 +661,7 @@ export async function runLive(env: LiveEnv, now: number, deps: LiveDeps = {}): P
 /** The page file of a show: front matter only; the page fills itself from /live/data */
 export function pageFile(s: Show): string {
   const q = (v: string) => JSON.stringify(v);
-  const title = s.ar ? `بث مباشر ${s.ar}` : `بث مباشر ${s.name}`;
+  const title = `بث مباشر ${arabicTitle(s)}`;
   return [
     "---",
     `title: ${q(title)}`,
@@ -675,7 +678,7 @@ export function pageFile(s: Show): string {
 }
 /** The page file's format: a page written by an older one is written again (INCIDENTS #1537: the program's name without
  *  its date, for the page's title in the search results) */
-export const PAGE_V = 2;
+export const PAGE_V = 3;
 interface PageMark { key: string; set: Partial<Pick<Show, "page" | "pageAt" | "pageRev" | "pageV" | "img">> }
 /** Pages to write: a new show's, an edited show's again (the owner's change of name, time or picture), and a hidden
  *  or old show's away. Returns what changed on each show, for the caller to keep. */
@@ -838,7 +841,8 @@ export async function liveAdmin(env: LiveEnv, request: Request, deps: LiveDeps, 
     case "save": {                     // name, time, end, picture, a note on the page, the full show's page
       const bad = needShow(); if (bad) return bad;
       const e = entry(key);
-      if ("t" in b) { const t = clean(b.t, 80); if (t) e.t = t; else delete e.t; }
+      // the name as the sources give it («عرض داينامايت») is no change of the owner's
+      if ("t" in b) { const t = clean(b.t, 80); const src = st.shows[key]; if (t && !(src && t === arabicTitle(src))) e.t = t; else delete e.t; }
       if ("start" in b) { if (b.start === null || b.start === "") delete e.start; else { const t = time(b.start); if (!t) return fail("وقت البداية مش صحيح"); e.start = t; } }
       if ("end" in b) { if (b.end === null || b.end === "") delete e.end; else { const t = time(b.end); if (!t) return fail("وقت النهاية مش صحيح"); e.end = t; } }
       const s0 = e.start || show!.start, e0 = e.end || (e.start ? show!.end - show!.start + e.start : show!.end);

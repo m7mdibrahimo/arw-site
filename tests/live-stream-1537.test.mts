@@ -52,7 +52,7 @@ test('the owner\'s hand: name, time, picture, note, full show, servers added fir
   } } };
   const eff = L.applyManual(auto, m);
   const d = L.publicData(eff, DYN).shows[0];
-  assert.equal(d.t, 'داينامايت الليلة');
+  assert.equal(d.t, 'داينامايت الليلة', 'the owner\'s name word for word');
   assert.equal(d.start, DYN + 30 * 60_000);
   assert.equal(d.end, auto['dynamite-2026-11-25'].end + 30 * 60_000, 'the end moves with the start');
   assert.equal(d.st, 'soon');
@@ -178,4 +178,17 @@ test('every source gives servers: one with nothing that plays here still shows i
   assert.equal(sv.filter((v) => v.s === 3 && v.x).length, 1);
   assert.deepEqual(sv.map((v) => v.n), sv.map((_, i) => i + 1));
   assert.equal(L.publicData({ d: { ...both()['dynamite-2026-11-25'], links } } as any, DYN - 3_600_000).shows[0].srcs, 3);
+});
+
+test('the name: «عرض داينامايت» with its English name everywhere, the owner\'s own name word for word, and each page linked up', () => {
+  assert.equal(L.arabicTitle({ ar: 'داينامايت', name: 'AEW Dynamite', fed: 'AEW' }), 'عرض داينامايت');
+  assert.equal(L.arabicTitle({ ar: 'عرض الرو', name: 'WWE Raw', fed: 'WWE' }), 'عرض الرو');
+  assert.equal(L.arabicTitle({ ar: 'داينامايت الليلة', name: 'AEW Dynamite', fed: 'AEW', ownT: 1 }), 'داينامايت الليلة');
+  const js = fs.readFileSync('assets/live.js', 'utf8'), strip = fs.readFileSync('assets/live-strip.js', 'utf8'), lay = fs.readFileSync('_includes/live-layout.njk', 'utf8');
+  assert.match(js, /function nm\(s\)/); assert.match(js, /' Live<\/span>'/); assert.match(js, /' لعرض ' \+ esc\(bare\(s\.t\)\)/);
+  assert.match(strip, /'بث مباشر ' \+ nm\(show\)/);
+  assert.match(lay, /"بث مباشر " \+ lvName \+ " " \+ lvDay \+ " \| " \+ program_en \+ " Live"/);
+  assert.match(lay, /<h1><i><\/i>بث مباشر عرض \{\{ liveProg\.ar \}\}<\/h1><span class="lv-en" lang="en" dir="ltr">\{\{ liveProg\.en \}\} Live<\/span>/);
+  assert.match(lay, /<nav class="lv-crumbs"/);
+  assert.equal(L.PAGE_V, 3, 'the pages already out are written again with the new name');
 });

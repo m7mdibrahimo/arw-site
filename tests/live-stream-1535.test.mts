@@ -77,7 +77,7 @@ test('/live/data: the servers from the moment a source has them (owner: «مش �
   const shows = L.mergeShows([a], {}, DYN - 7_200_000);
   const early = L.publicData(shows, DYN - 3_600_000).shows[0];
   assert.equal(early.st, 'soon'); assert.equal(early.sv.length, 7); assert.equal(early.n, 7); assert.equal(early.srcs, 1);
-  assert.equal(early.t, 'داينامايت');
+  assert.equal(early.t, 'عرض داينامايت', '«عرض» before the name (owner 2026-11-25)');
   assert.equal(L.publicData(shows, DYN + 60_000).shows[0].st, 'live');
   const ended = L.publicData(shows, DYN + 3 * 3_600_000).shows[0];
   assert.equal(ended.st, 'ended'); assert.equal(ended.sv.length, 0);
@@ -135,7 +135,7 @@ test('a source that moved: the redirect is followed, the old domain\'s page poin
 test('a show\'s page file: front matter only, with the start and end the page counts to', () => {
   const s = { slug: 'dynamite-25-11-2026', ar: 'داينامايت', name: 'AEW Dynamite', fed: 'AEW', date: '2026-11-25', start: DYN, end: DYN + 9_000_000, img: '/content/images/live-dynamite-25-11-2026.jpg' } as L.Show;
   const f = L.pageFile(s);
-  assert.match(f, /^---\ntitle: "بث مباشر داينامايت"\nlive_key: "dynamite-25-11-2026"\n/);
+  assert.match(f, /^---\ntitle: "بث مباشر عرض داينامايت"\nlive_key: "dynamite-25-11-2026"\n/);
   assert.match(f, /start: "2026-11-26T01:00:00.000Z"/);
   assert.match(f, /image: "\/content\/images\/live-dynamite-25-11-2026.jpg"\n---\n$/);
 });

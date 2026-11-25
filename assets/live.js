@@ -115,6 +115,11 @@
   }
 
   // ── cards (the section, and «عروض أخرى» under a show) ──
+  // the show's name as the owner wants it written (2026-11-25): «عرض داينامايت», and its English name beside it for
+  // those who search in English («AEW Dynamite Live»)
+  function nm(s) { var t = (s && s.t) || ''; return !t || /^عرض\s/.test(t) ? t : 'عرض ' + t; }
+  function bare(t) { return String(t || '').replace(/^عرض\s+/, ''); }
+  function enLine(s) { return s && s.en ? '<span class="lv-en" lang="en" dir="ltr">' + esc(s.en) + ' Live</span>' : ''; }
   function card(s) {
     var st = status(s), p = parts(s.start - now()), v = st === 'ended' ? vodOf(s) : null;
     var top = st === 'live' ? '<span class="tagl"><i></i>مباشر الآن</span>' : v ? '<span class="tagl v">نُشر كاملًا</span>' :
@@ -124,7 +129,7 @@
     var pill = st === 'live' ? '<span class="lv-pill c">' + (s.n ? svText(s.n) + ' · ' : '') + 'ادخل البث</span>' : v ? '<span class="lv-pill">شاهد الآن</span>' : st === 'ended' ? '' :
       s.n ? '<span class="lv-pill">' + svText(s.n) + ' جاهزة</span>' : '<span class="lv-pill g">بانتظار السيرفرات</span>';
     var href = v ? v.u : '/live/' + s.k + '/';
-    return '<a class="lv-card' + (st === 'live' ? ' is-live' : '') + '" href="' + esc(href) + '"><div class="im" style="background-image:url(\'' + esc(img(s)) + '\')"><span class="fed">' + esc(s.fed) + '</span>' + top + '</div><div class="bd"><h3>' + esc(s.t) + '</h3><p>' + line + '</p><div class="ft">' + pill + (s.srcs ? '<small class="lv-src-n">' + srcText(s.srcs) + '</small>' : '') + '</div></div></a>';
+    return '<a class="lv-card' + (st === 'live' ? ' is-live' : '') + '" href="' + esc(href) + '"><div class="im" style="background-image:url(\'' + esc(img(s)) + '\')"><span class="fed">' + esc(s.fed) + '</span>' + top + '</div><div class="bd"><h3>' + esc(nm(s)) + '</h3>' + enLine(s) + '<p>' + line + '</p><div class="ft">' + pill + (s.srcs ? '<small class="lv-src-n">' + srcText(s.srcs) + '</small>' : '') + '</div></div></a>';
   }
   function listShows() {
     var shows = (data && data.shows || []).filter(function (s) { var st = status(s); return st !== 'ended' || vodOf(s); });
@@ -159,7 +164,7 @@
   }
   function stageHtml(s) {
     return '<div class="lv-stage" id="lvStage"><div class="bgimg" style="background-image:url(\'' + esc(img(s)) + '\')"></div>' +
-      '<div class="lv-top"><div><' + HT + '>بث مباشر ' + esc(s.t) + '</' + HT + '><p id="lvWhen">' + esc(when(s.start)) + '</p></div><span class="fed">' + esc(s.fed) + '</span></div>' +
+      '<div class="lv-top"><div><' + HT + '>بث مباشر ' + esc(nm(s)) + '</' + HT + '>' + enLine(s) + '<p id="lvWhen">' + esc(when(s.start)) + '</p></div><span class="fed">' + esc(s.fed) + '</span></div>' +
       '<div class="lv-ring"><div class="post p1"></div><div class="post p2"></div><div class="mat"></div><div class="rope r1"></div><div class="rope r2"></div>' +
       '<div class="lv-digits" role="timer" aria-label="الوقت المتبقي على بداية العرض"><div class="lv-d"><b id="lvD">00</b><small>يوم</small></div><div class="lv-sep">:</div><div class="lv-d"><b id="lvH">00</b><small>ساعة</small></div><div class="lv-sep">:</div><div class="lv-d"><b id="lvM">00</b><small>دقيقة</small></div><div class="lv-sep">:</div><div class="lv-d"><b id="lvS">00</b><small>ثانية</small></div></div>' +
       '<div class="lv-tension"><div class="t"><i id="lvT"></i></div><div class="lab"><span>آخر 24 ساعة قبل العرض</span><span>الحبال تشتدّ كلما اقترب الجرس</span><span id="lvClock">' + esc(clock(s.start)) + '</span></div></div></div>' +
@@ -168,7 +173,7 @@
   }
   function readyText(s) { return s.n ? svText(s.n) + ' جاهزة للمشاهدة أدناه' + (s.srcs > 1 ? ' من ' + srcText(s.srcs) : '') : s.pending ? 'جارٍ تحميل سيرفرات المشاهدة…' : 'سيرفرات المشاهدة تُضاف هنا فور نشرها'; }
   function onAirHtml(s) {
-    return '<div class="lv-onair"><div class="b">' + BELL + '</div><div><' + HT + '>بث مباشر ' + esc(s.t) + '</' + HT + '><p>دقّ الجرس — العرض مباشر الآن · بدأ ' + esc(clock(s.start)) + ' ' + esc(ZONE) + '</p></div><div class="lv-el"><b id="lvE">00:00:00</b><small>منذ بداية العرض</small></div></div>';
+    return '<div class="lv-onair"><div class="b">' + BELL + '</div><div><' + HT + '>بث مباشر ' + esc(nm(s)) + '</' + HT + '>' + enLine(s) + '<p>دقّ الجرس — العرض مباشر الآن · بدأ ' + esc(clock(s.start)) + ' ' + esc(ZONE) + '</p></div><div class="lv-el"><b id="lvE">00:00:00</b><small>منذ بداية العرض</small></div></div>';
   }
   // the servers: like a show's own page — the list on one side, the player on the other, nothing opens elsewhere
   function deckHtml(s, st) {
@@ -195,11 +200,11 @@
   function endedHtml(s) {
     var v = vodOf(s);
     if (v) return vodHtml(v, s, true) + '<button type="button" class="lv-stay" id="lvStay">البقاء في هذه الصفحة</button>';
-    return '<div class="lv-ended"><b>انتهى البث المباشر' + (s.t ? ' لعرض ' + esc(s.t) : '') + '</b><p>يُنشر العرض كاملًا على الموقع فور جاهزيته، وتنقلك هذه الصفحة إليه تلقائيًا عند نشره.</p><a href="/shows/">شاهد أحدث العروض كاملة</a></div>';
+    return '<div class="lv-ended"><b>انتهى البث المباشر' + (s.t ? ' لعرض ' + esc(bare(s.t)) : '') + '</b><p>يُنشر العرض كاملًا على الموقع فور جاهزيته، وتنقلك هذه الصفحة إليه تلقائيًا عند نشره.</p><a href="/shows/">شاهد أحدث العروض كاملة</a></div>';
   }
   function emptyProgHtml() {
     var t = root.getAttribute('data-title') || '';
-    return '<div class="lv-ended"><b>لا يوجد بث قادم لعرض ' + esc(t) + ' الآن</b><p>تظهر هنا صفحة البث المباشر للحلقة القادمة فور الإعلان عنها: عدّاد حتى لحظة البداية، ثم سيرفرات المشاهدة داخل الموقع.</p><a href="/live/">كل عروض البث المباشر</a></div>';
+    return '<div class="lv-ended"><b>لا يوجد بث قادم لعرض ' + esc(bare(t)) + ' الآن</b><p>تظهر هنا صفحة البث المباشر للحلقة القادمة فور الإعلان عنها: عدّاد حتى لحظة البداية، ثم سيرفرات المشاهدة داخل الموقع.</p><a href="/live/">كل عروض البث المباشر</a></div>';
   }
   function moreHtml(s) {
     var others = listShows().filter(function (x) { return !s || x.k !== s.k; }).slice(0, 3);
@@ -220,7 +225,7 @@
     if (!box) return;
     if (!s) { if (data) { box.innerHTML = key ? endedHtml({ t: root.getAttribute('data-title') || '' }) : emptyProgHtml(); mode = 'none'; } paintMore(null); return; }
     var st = status(s);
-    if (s.t && document.title.indexOf(s.t) < 0 && key) document.title = 'بث مباشر ' + s.t + ' | عرب راسلنج';
+    if (s.t && document.title.indexOf(nm(s)) < 0 && key) document.title = 'بث مباشر ' + nm(s) + (s.en ? ' | ' + s.en + ' Live' : '') + ' | عرب راسلنج';
     var svSig = JSON.stringify([s.sv, s.note, s.t, s.img, ZONE, s.pending ? 1 : 0]);
     if (st === 'soon') {
       if (mode !== 'soon' || built !== s.k + s.start) { box.innerHTML = stageHtml(s) + '<div id="lvDeckBox">' + deckHtml(s, st) + '</div>'; mode = 'soon'; built = s.k + s.start; sig = svSig; prev = {}; }
