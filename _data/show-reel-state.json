@@ -5951,12 +5951,18 @@
     "publishedAt": 1795634887310,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض تي ان ايه اكسبلوجن 20.11.2026 مترجم",
-    "lastAttempt": 1795634898415,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1795635767817,
+    "errors": {
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+    },
+    "processing": [
+      "instagram_story",
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
