@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/ilja-dragunov-addresses-criticism-that-his-wrestling-style-top": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T16:03:21.345Z"
+ },
+ "https://www.ringsidenews.com/wwe-survivor-series-ticket-sales-surge-following-rocks-return-announcement": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T16:02:41.973Z"
+ },
  "https://www.fightful.com/wrestling/ilja-dragunov-wants-to-wrestle-people-who-are-drawn-to-a-certain-artistic-form-of-violence-like-jon-moxley-and-samoa-joe": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1988,15 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-18T16:50:01.236Z"
- },
- "https://www.ringsidenews.com/roman-reigns-thanks-rock-paving-way-30-years-wwe": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-18T16:48:58.688Z"
- },
- "https://www.ringsidenews.com/aj-styles-admits-he-didnt-know-who-meiko-satomura-despite-his-wrestling-history-japan": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-18T16:47:09.381Z"
  }
 }
