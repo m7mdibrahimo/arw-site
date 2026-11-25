@@ -5934,13 +5934,11 @@
     "instagram_reel": true,
     "instagram_story": true,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 24.11.2026 مترجم",
-    "lastAttempt": 1795641892912,
+    "lastAttempt": 1795642671489,
     "errors": {
-      "tiktok": "تيك توك لسه بيجهز الفيديو عن طريق Buffer."
+      "tiktok": "Buffer: TikTok is not allowing this post to publish due to the TikTok account being banned."
     },
-    "processing": [
-      "tiktok"
-    ],
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   },
