@@ -109,6 +109,11 @@
   "retry": false,
   "at": "2026-11-25T15:29:51.884Z"
  },
+ "https://www.ringsidenews.com/logan-paul-accuses-gta-6-ripping-off-his-trading-card-business": {
+  "reason": "المراجعة رفضته: كلمة رقم عربية قدام رقم بالأرقام (مثل: أحد عشر 1000) — اكتب الرقم مرة واحدة",
+  "retry": false,
+  "at": "2026-11-25T15:29:51.884Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-says-he-was-going-to-get-time-off-after-wrestlemania-42": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
