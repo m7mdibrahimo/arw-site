@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/cm-punk-claims-seth-rollins-owes-his-private-locker-room-tour-bus-him-walking-out-wwe": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T00:31:02.910Z"
+ },
  "https://www.fightful.com/wrestling/the-hardys-tna-contracts-are-set-to-expire-soon": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
