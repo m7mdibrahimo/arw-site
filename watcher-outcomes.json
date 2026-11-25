@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2326229/wwe-survivor-series-2026-draws-duds-team-usa-mexico-bloodline-946": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، المصدر بيتكلم عن Roman Reigns (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
+  "retry": true,
+  "at": "2026-11-25T14:09:31.797Z"
+ },
  "https://www.fightful.com/wrestling/robert-stone-there-is-a-short-list-of-people-that-im-genuinely-happy-to-see-succeed-and-one-of-them-is-chelsea-green": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
@@ -58,6 +63,16 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Intercontinental Championship",
   "retry": true,
   "at": "2026-11-25T13:49:16.942Z"
+ },
+ "https://www.ringsidenews.com/stone-cold-steve-austin-enjoys-no-longer-treated-celebrity": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T13:48:37.103Z"
+ },
+ "https://www.ringsidenews.com/stone-cold-steve-austin-gives-fans-credit-getting-what-chant": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T13:48:10.590Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-he-was-going-to-get-time-off-after-wrestlemania-42": {
   "reason": "مكرر مع خبر نزل قبل كده",
