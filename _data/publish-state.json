@@ -1591,20 +1591,20 @@
     {
       "window": "15m",
       "remaining": 149,
-      "resetAt": 1795610426694,
-      "updatedAt": 1795609526694
+      "resetAt": 1795629242247,
+      "updatedAt": 1795628342247
     },
     {
       "window": "24h",
-      "remaining": 580,
-      "resetAt": 1795638227694,
-      "updatedAt": 1795609526694
+      "remaining": 579,
+      "resetAt": 1795638234247,
+      "updatedAt": 1795628342247
     },
     {
       "window": "30d",
-      "remaining": 1728,
-      "resetAt": 1797432579694,
-      "updatedAt": 1795609526694
+      "remaining": 1727,
+      "resetAt": 1797432586247,
+      "updatedAt": 1795628342247
     }
   ],
   "videoCooldowns": {
