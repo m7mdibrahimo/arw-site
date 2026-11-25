@@ -1,118 +1,123 @@
 {
+ "https://www.fightful.com/wrestling/stone-cold-steve-austin-says-he-doesnt-watch-wwe-programming-at-all-anymore": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T18:49:56.723Z"
+ },
+ "https://www.fightful.com/wrestling/stone-cold-steve-austin-doesnt-want-to-hog-up-a-bunch-of-tv-time-trying-to-get-himself-back-over-with-a-wwe-return": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-25T18:49:15.461Z"
+ },
  "https://www.fightful.com/wrestling/logan-paul-announced-to-return-to-the-ring-for-wwe-at-december-26th-live-event-at-madison-square-garden": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T18:40:31.715Z"
+  "at": "2026-11-25T18:49:15.366Z"
  },
  "https://www.fightful.com/wrestling/genichiro-tenryu-hospitalized": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T18:40:13.595Z"
+  "at": "2026-11-25T18:49:13.832Z"
  },
  "https://www.fightful.com/wrestling/stone-cold-steve-austin-would-give-the-crowd-more-credit-than-he-would-himself-for-what-chants-longevity": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T18:37:15.599Z"
+  "at": "2026-11-25T18:49:13.312Z"
  },
  "https://www.fightful.com/wrestling/buddy-matthews-names-three-dream-matches-he-has-his-eye-on-in-aew": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T18:36:32.537Z"
+  "at": "2026-11-25T18:49:12.623Z"
  },
  "https://www.fightful.com/wrestling/focus-pro-mo-money-mo-problems-4-results-11-21": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T18:34:16.601Z"
+  "at": "2026-11-25T18:49:12.064Z"
  },
  "https://www.fightful.com/wrestling/buddy-matthews-pac-was-beyond-an-awesome-person-and-just-amazing-in-the-ring": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T18:34:13.884Z"
+  "at": "2026-11-25T18:49:11.436Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-wants-to-wrestle-people-who-are-drawn-to-a-certain-artistic-form-of-violence-like-jon-moxley-and-samoa-joe": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T18:34:13.239Z"
+  "at": "2026-11-25T18:49:10.874Z"
  },
  "https://www.fightful.com/wrestling/njpw-world-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T18:34:12.448Z"
+  "at": "2026-11-25T18:49:10.185Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-i-feel-like-fighting-brings-out-your-true-face": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T18:34:12.369Z"
+  "at": "2026-11-25T18:49:10.093Z"
  },
  "https://www.fightful.com/wrestling/wwe-files-for-mid-south-wrestling-trademark": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T18:34:11.760Z"
+  "at": "2026-11-25T18:49:09.532Z"
  },
  "https://www.fightful.com/wrestling/njpw-world-tag-league-results-11-25-26-a-block-action-with-two-teams-reaching-four-points": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T18:34:11.312Z"
+  "at": "2026-11-25T18:49:09.108Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-wished-he-couldve-said-hi-to-drake-at-wwe-elimination-chamber-2025": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T18:34:10.736Z"
+  "at": "2026-11-25T18:49:08.599Z"
  },
  "https://www.fightful.com/wrestling/zayda-steel-i-dont-speak-to-a-couple-of-family-members-because-of-my-choice-of-becoming-a-wreslter": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T18:34:09.621Z"
+  "at": "2026-11-25T18:49:08.023Z"
  },
  "https://www.fightful.com/wrestling/kevin-knight-i-plan-on-putting-yawn-moxley-to-sleep-and-making-my-way-to-becoming-a-new-champion": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T18:34:07.219Z"
+  "at": "2026-11-25T18:49:05.615Z"
  },
  "https://www.fightful.com/wrestling/shawn-michaels-expresses-how-proud-he-is-of-thea-hail-following-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-25T18:33:57.319Z"
+  "at": "2026-11-25T18:48:59.948Z"
  },
  "https://www.fightful.com/wrestling/robert-stone-there-is-a-short-list-of-people-that-im-genuinely-happy-to-see-succeed-and-one-of-them-is-chelsea-green": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T18:33:57.182Z"
+  "at": "2026-11-25T18:48:59.796Z"
  },
  "https://www.fightful.com/wrestling/robert-stone-the-day-kendal-grey-started-nxt-you-just-knew-theres-something-special-about-them": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-25T18:30:40.292Z"
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-25T18:48:43.248Z"
  },
  "https://www.fightful.com/wrestling/fatal-4-way-1-contenders-match-grayson-waller-mason-rook-face-to-face-announced-for-12-1-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-25T18:29:03.763Z"
+  "at": "2026-11-25T18:47:22.445Z"
  },
  "https://www.fightful.com/wrestling/izzi-dame-def-zaria-to-become-two-time-nxt-womens-north-american-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-25T18:29:03.628Z"
+  "at": "2026-11-25T18:47:22.288Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-11-20-draws-1-2-million-viewers": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-25T18:29:03.541Z"
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-25T18:47:22.190Z"
  },
  "https://www.fightful.com/wrestling/kendal-grey-wren-sinclair-invited-to-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-25T18:26:11.240Z"
+  "at": "2026-11-25T18:43:52.580Z"
  },
  "https://www.fightful.com/wrestling/myka-lockwood-pins-noam-dar-on-11-24-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-25T18:26:10.988Z"
- },
- "https://www.fightful.com/wrestling/stone-cold-steve-austin-doesnt-want-to-hog-up-a-bunch-of-tv-time-trying-to-get-himself-back-over-with-a-wwe-return": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-25T18:23:39.354Z"
  },
  "https://www.fightful.com/wrestling/kelani-jordan-vs-kendal-grey-in-tlc-match-for-nxt-womens-title-made-official-for-tlc-ple": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-18T18:17:17.174Z"
- },
- "https://www.ringsidenews.com/rock-confirms-wwe-survivor-series-2026-return-changing-hollywood-schedule": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-18T18:12:00.599Z"
  }
 }
