@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2327214/wwe-eugene-nick-dinsmore-hospitalized-united-kingdom": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T02:52:43.911Z"
+ },
  "https://www.ringsidenews.com/indie-star-kaci-lennox-gets-thanksgiving-spirit-maroon-lingerie-photos": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -153,11 +158,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-25T02:48:37.893Z"
- },
- "https://www.wrestlinginc.com/2327214/wwe-eugene-nick-dinsmore-hospitalized-united-kingdom": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-25T02:33:42.413Z"
  },
  "https://www.fightful.com/wrestling/buddy-matthews-rhea-ripley-will-be-back-sooner-rather-than-later": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
