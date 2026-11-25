@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2327214/wwe-eugene-nick-dinsmore-hospitalized-united-kingdom": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T01:47:45.672Z"
+ },
  "https://www.fightful.com/wrestling/myka-lockwood-pins-noam-dar-on-11-24-wwe-nxt": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -158,11 +163,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-25T01:32:13.456Z"
- },
- "https://www.wrestlinginc.com/2327214/wwe-eugene-nick-dinsmore-hospitalized-united-kingdom": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-25T01:27:40.322Z"
  },
  "https://www.fightful.com/wrestling/jade-cargill-ive-been-placed-in-a-very-amazing-environment-with-women-who-strive-for-greatness-and-thats-what-i-want-to-do": {
   "reason": "مكرر مع خبر نزل قبل كده",
