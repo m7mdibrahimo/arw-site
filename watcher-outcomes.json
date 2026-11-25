@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-fined-cm-punk-using-piledriver-john-cena": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T16:57:06.490Z"
+ },
  "https://www.fightful.com/wrestling/buddy-matthews-pac-was-beyond-an-awesome-person-and-just-amazing-in-the-ring": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-18T17:26:13.891Z"
- },
- "https://www.wrestlinginc.com/2320592/aew-full-gear-2026-big-boom-aj-kasper-brothers-tony-khan-flew-private-jet-debuting-stars": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-18T16:58:34.403Z"
  }
 }
