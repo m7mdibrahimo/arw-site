@@ -92,9 +92,12 @@
 /* a show: the servers, like a show's own page («غرفة التحكم»): the list on one side, the player on the other */
 .lv-deck{margin-top:22px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px 20px 16px;box-shadow:0 10px 30px rgba(15,23,42,.06)}
 .lv-dh{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
-.lv-dh h2{font:900 19px Cairo,sans-serif;color:var(--ink);display:flex;align-items:center;gap:10px}
+.lv-dh h2{font:900 19px Cairo,sans-serif;color:var(--ink);display:flex;align-items:center;gap:10px;white-space:nowrap;min-width:0}
 .lv-dh h2 i{width:10px;height:10px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 5px var(--coral-soft);animation:lvPulse 1.6s ease-in-out infinite}
-.lv-dh h2 small{font:800 12.5px Cairo,sans-serif;color:var(--teal);background:var(--teal-soft);padding:3px 10px;border-radius:20px}
+.lv-dh h2 small{font:800 12.5px Cairo,sans-serif;color:var(--teal);background:var(--teal-soft);padding:3px 10px;border-radius:20px;white-space:nowrap}
+/* phones: the heading and its count stay on one line (#1537) */
+@media(max-width:420px){.lv-dh{gap:6px}.lv-dh h2{font-size:17px;gap:8px}}
+@media(max-width:350px){.lv-dh h2 small{display:none}}
 .lv-acts{display:flex;gap:2px}
 .lv-acts button{display:inline-flex;align-items:center;gap:6px;background:none;border:0;color:var(--muted);font:700 13px Cairo,sans-serif;padding:6px 9px;border-radius:8px;cursor:pointer}
 .lv-acts button:hover{color:var(--teal);background:var(--teal-soft)}
