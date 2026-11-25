@@ -1,5 +1,15 @@
 [
   {
+    "id": 340838,
+    "link": "https://www.fightful.com/wrestling/genichiro-tenryu-hospitalized/",
+    "date": "2026-11-25T12:43:51",
+    "date_gmt": "2026-11-25T17:43:51",
+    "title": {
+      "rendered": "Genichiro Tenryu Hospitalized"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2022/09/27233339/genichiro_tenryu.jpg"
+  },
+  {
     "id": 340830,
     "link": "https://www.fightful.com/wrestling/stone-cold-steve-austin-would-give-the-crowd-more-credit-than-he-would-himself-for-what-chants-longevity/",
     "date": "2026-11-25T12:36:57",
@@ -288,15 +298,5 @@
       "rendered": "WWE NXT Results (11/24/2026): ZARIA vs. Izzi Dame, Perros del Mal, Mason Rook, More"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/24194442/NXT-1124.jpg"
-  },
-  {
-    "id": 340746,
-    "link": "https://www.fightful.com/wrestling/the-hardys-tna-contracts-are-set-to-expire-soon/",
-    "date": "2026-11-24T18:50:40",
-    "date_gmt": "2026-11-24T23:50:40",
-    "title": {
-      "rendered": "The Hardys&#8217; TNA Contracts Are Set To Expire Soon"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/07/23222619/HN9XRUaWcAAFXHP.jpg"
   }
 ]
