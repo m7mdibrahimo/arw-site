@@ -1,5 +1,15 @@
 [
   {
+    "id": 340773,
+    "link": "https://www.fightful.com/wrestling/nwa-powerrr-results-11-21/",
+    "date": "2026-11-24T23:30:00",
+    "date_gmt": "2026-11-25T04:30:00",
+    "title": {
+      "rendered": "NWA Powerrr Results (11/21)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/05/07223643/Screenshot-2026-05-07-at-10.36.28-PM.png"
+  },
+  {
     "id": 340785,
     "link": "https://www.fightful.com/wrestling/fatal-4-way-1-contenders-match-grayson-waller-mason-rook-face-to-face-announced-for-12-1-wwe-nxt/",
     "date": "2026-11-24T22:16:42",
@@ -288,15 +298,5 @@
       "rendered": "Perros Del Mal vs. BirthRight Added To 11/24 WWE NXT"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/24131828/Screenshot-2026-11-24-at-1.18.16-PM.png"
-  },
-  {
-    "id": 340674,
-    "link": "https://www.fightful.com/wrestling/nick-wayne-says-kenny-omega-is-at-the-top-of-his-list-of-potential-opponents/",
-    "date": "2026-11-24T13:10:22",
-    "date_gmt": "2026-11-24T18:10:22",
-    "title": {
-      "rendered": "Nick Wayne Says Kenny Omega Is At The Top Of His List Of Potential Opponents"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/12025228/Screenshot-436-e1789195973305.png"
   }
 ]
