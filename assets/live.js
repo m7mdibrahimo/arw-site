@@ -17,6 +17,7 @@
   var skew = 0, data = null, recent = null, poll = null, rang = false, mode = '', built = '', sig = '', current = '', redirectT = null;
   var BELL = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a1 1 0 0 1 1 1v1.07A7 7 0 0 1 19 11v4.6l1.7 2.55A1.2 1.2 0 0 1 19.7 20H4.3a1.2 1.2 0 0 1-1-1.85L5 15.6V11a7 7 0 0 1 6-6.93V3a1 1 0 0 1 1-1Zm-2.5 19h5a2.5 2.5 0 0 1-5 0Z"/></svg>';
   var PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.6v14.8a1 1 0 0 0 1.52.85l12.1-7.4a1 1 0 0 0 0-1.7L8.52 3.75A1 1 0 0 0 7 4.6Z"/></svg>';
+  var EXT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
   var FS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>';
   var RL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>';
   var DAYS = { Sun: 'الأحد', Mon: 'الاثنين', Tue: 'الثلاثاء', Wed: 'الأربعاء', Thu: 'الخميس', Fri: 'الجمعة', Sat: 'السبت' };
@@ -176,15 +177,20 @@
   }
   // the servers: like a show's own page — the list on one side, the player on the other, nothing opens elsewhere
   function deckHtml(s, st) {
-    // only what plays inside the page (owner 2026-11-25): a link that opens elsewhere is never listed, even from old data
-    var sv = (s.sv || []).filter(function (v) { return !v.x; });
+    var sv = s.sv || [];
+    var firstExt = -1;
+    for (var k = 0; k < sv.length; k++) if (sv[k].x) { firstExt = k; break; }
     var list = sv.map(function (v, i) {
       var q = v.q ? '<span class="lv-q ' + esc(v.q) + '">' + esc(v.q) + '</span>' : '';
-      return '<button type="button" class="lv-srv' + (v.u === current ? ' active' : '') + '" data-play="' + esc(v.u) + '" data-n="' + (i + 1) + '" role="tab"><span class="n">' + (i + 1) + '</span><span class="nm"><b>سيرفر ' + (i + 1) + '</b><small>' + (v.m ? 'من عرب راسلنج' : 'يعمل داخل الصفحة') + '</small></span>' + q + '<span class="on">يعمل الآن</span></button>';
+      // the servers of other sources that open on their own site: said before them, never mixed in unmarked (#1537)
+      var head = i === firstExt && firstExt > 0 ? '<div class="lv-sep-ext">' + EXT + ' سيرفرات احتياطية تُفتح في صفحات مصادرها</div>' : '';
+      return head + (v.x ?
+        '<a class="lv-srv is-ext" href="' + esc(v.u) + '" target="_blank" rel="nofollow noopener noreferrer"><span class="n">' + EXT + '</span><span class="nm"><b>سيرفر ' + v.n + '</b><small>يفتح في صفحة المصدر</small></span>' + q + '</a>' :
+        '<button type="button" class="lv-srv' + (v.u === current ? ' active' : '') + '" data-play="' + esc(v.u) + '" data-n="' + v.n + '" role="tab"><span class="n">' + v.n + '</span><span class="nm"><b>سيرفر ' + v.n + '</b><small>' + (v.m ? 'من عرب راسلنج' : 'يعمل داخل الصفحة') + '</small></span>' + q + '<span class="on">يعمل الآن</span></button>');
     }).join('');
     var poster = '<button type="button" class="lv-poster" id="lvPoster" aria-label="تشغيل البث"><img src="' + esc(img(s)) + '" alt="" decoding="async"><span class="pl">' + PLAY + '</span><span class="cap">' +
       (st === 'soon' ? 'يبدأ البث ' + esc(when(s.start)) + '<small>السيرفرات جاهزة: جرّبها الآن واختر الأفضل لك قبل البداية</small>' : 'اضغط للمشاهدة المباشرة') + '</span></button>';
-    var screen = sv.length ? poster : '<div class="lv-nosrv">' + (s.pending ? 'جارٍ تحميل سيرفرات المشاهدة…' : 'سيرفرات المشاهدة تُضاف هنا فور نشرها، والصفحة تتحدّث وحدها كل دقيقة') + '</div>';
+    var screen = sv.some(function (v) { return !v.x; }) ? poster : '<div class="lv-nosrv">' + (sv.length ? 'سيرفرات هذا العرض تُفتح في صفحات مصادرها — اختر سيرفرًا من القائمة' : (s.pending ? 'جارٍ تحميل سيرفرات المشاهدة…' : 'سيرفرات المشاهدة تُضاف هنا فور نشرها، والصفحة تتحدّث وحدها كل دقيقة')) + '</div>';
     return '<section class="lv-deck' + (sv.length < 2 ? ' is-single' : '') + '" id="lvDeck" aria-label="المشاهدة المباشرة">' +
       '<div class="lv-dh"><h2><i></i>المشاهدة المباشرة' + (sv.length ? ' <small>' + svText(sv.length) + '</small>' : '') + '</h2><div class="lv-acts"><button type="button" id="lvFs" title="ملء الشاشة">' + FS + '<span>ملء الشاشة</span></button><button type="button" id="lvReload" title="إعادة تشغيل المشغل">' + RL + '<span>تحديث المشغل</span></button></div></div>' +
       (s.note ? '<p class="lv-own-note">' + esc(s.note) + '</p>' : '') +

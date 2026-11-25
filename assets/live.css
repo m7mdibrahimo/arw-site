@@ -129,6 +129,9 @@
 .lv-srv.active .n,.lv-srv.active .nm b{color:var(--teal)}
 .lv-deck.is-on .lv-srv.active .on{display:inline}
 .lv-deck.is-on .lv-srv.active .lv-q{display:none}
+.lv-srv.is-ext .nm small{color:#b7701a}
+.lv-sep-ext{flex:none;grid-column:1/-1;display:flex;align-items:center;gap:6px;padding:10px 12px 6px;font:800 12.5px Cairo,sans-serif;color:#b7701a;border-top:1px dashed var(--line)}
+.lv-sep-ext svg{width:13px;height:13px}
 .lv-screen{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#05070a;min-width:0}
 .lv-screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .lv-poster{position:absolute;inset:0;width:100%;border:0;padding:0;cursor:pointer;background:#05070a;color:#fff;display:grid;place-items:center}
@@ -217,6 +220,9 @@
   .lv-list{position:static;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;border:0;overflow:visible}
   .lv-srv,.lv-srv:last-child{min-height:50px;justify-content:center;padding:6px;border:1px solid var(--line);border-radius:10px}
   .lv-srv .n,.lv-srv .nm small,.lv-srv .on{display:none!important}
+  .lv-srv.is-ext{border-style:dashed}
+  .lv-srv.is-ext .n{display:inline-block!important;width:auto;color:#b7701a}
+  .lv-sep-ext{border-top:0;padding:8px 2px 2px}
   .lv-srv .nm{flex:none;align-items:center}
   .lv-srv .nm b{font-size:13.5px}
   .lv-srv.active{border-color:var(--teal)}
