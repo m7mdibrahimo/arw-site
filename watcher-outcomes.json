@@ -1,4 +1,79 @@
 {
+ "https://www.fightful.com/wrestling/fatal-4-way-1-contenders-match-grayson-waller-mason-rook-face-to-face-announced-for-12-1-wwe-nxt": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-25T13:07:44.096Z"
+ },
+ "https://www.fightful.com/wrestling/izzi-dame-def-zaria-to-become-two-time-nxt-womens-north-american-champion": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-25T13:07:43.980Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-smackdown-11-20-draws-1-2-million-viewers": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-25T13:07:43.901Z"
+ },
+ "https://www.fightful.com/wrestling/kendal-grey-wren-sinclair-invited-to-wwe-john-cena-classic": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-25T13:06:29.736Z"
+ },
+ "https://www.fightful.com/wrestling/myka-lockwood-pins-noam-dar-on-11-24-wwe-nxt": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-25T13:06:29.528Z"
+ },
+ "https://www.fightful.com/wrestling/kelani-jordan-vs-kendal-grey-in-tlc-match-for-nxt-womens-title-made-official-for-tlc-ple": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-25T13:06:29.458Z"
+ },
+ "https://www.fightful.com/wrestling/the-hardys-tna-contracts-are-set-to-expire-soon": {
+  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
+  "retry": false,
+  "at": "2026-11-25T13:06:29.310Z"
+ },
+ "https://www.fightful.com/wrestling/340733-wwe-raw-november-16": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-25T13:05:19.578Z"
+ },
+ "https://www.fightful.com/wrestling/cody-rhodes-says-he-was-going-to-get-time-off-after-wrestlemania-42": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-25T13:03:46.768Z"
+ },
+ "https://www.fightful.com/wrestling/swerve-strickland-scheduled-for-apc-france-show-in-january-2027": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-25T13:03:46.657Z"
+ },
+ "https://www.fightful.com/wrestling/cm-punk-says-hes-disappointed-and-irritated-with-cody-rhodes-slams-his-tremendously-unwise-decision": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-25T13:03:02.908Z"
+ },
+ "https://www.fightful.com/wrestling/zayda-steel-marina-shafir-is-such-a-real-person-and-in-wrestling-theres-not-a-lot-of-them": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-25T13:03:02.792Z"
+ },
+ "https://www.fightful.com/wrestling/aew-featured-on-fast-companys-2026-brands-that-matter-list": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T12:58:04.130Z"
+ },
+ "https://www.fightful.com/wrestling/gabby-forza-names-amira-brooke-havok-dreya-mitchell-leah-sparks-as-wrestlers-shed-like-to-see-in-tna": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-25T12:55:45.293Z"
+ },
+ "https://www.fightful.com/wrestling/gabby-forza-looks-back-on-eliminating-bear-bronson-from-tna-call-your-shot-gauntlet-i-got-a-chant-of-thats-your-man": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-25T12:53:24.342Z"
+ },
  "https://www.ringsidenews.com/aew-dynamite-preview-november-25-2026-confirmed-matches-start-time-how-watch": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، المصدر بيتكلم عن Kris Statlander (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
   "retry": true,
