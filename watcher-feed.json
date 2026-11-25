@@ -1,5 +1,15 @@
 [
   {
+    "id": 340845,
+    "link": "https://www.fightful.com/wrestling/aew-collision-11-21-draws-434000-viewers/",
+    "date": "2026-11-25T13:54:01",
+    "date_gmt": "2026-11-25T18:54:01",
+    "title": {
+      "rendered": "AEW Collision (11/21) Draws 434,000 Viewers"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/03/04215146/01-aew-collision-new-logo-2024-696x421-1.jpg"
+  },
+  {
     "id": 340835,
     "link": "https://www.fightful.com/wrestling/stone-cold-steve-austin-says-he-doesnt-watch-wwe-programming-at-all-anymore/",
     "date": "2026-11-25T13:39:37",
@@ -288,15 +298,5 @@
       "rendered": "Thea Hail Speaks Candidly About Alopecia Condition, Shaves Head On 11/24 WWE NXT"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/24212209/HX78pqWXsAA9Cz8.jpg"
-  },
-  {
-    "id": 340762,
-    "link": "https://www.fightful.com/wrestling/mason-rook-challenging-grayson-waller-for-nxt-title-at-tlc-ple/",
-    "date": "2026-11-24T21:10:30",
-    "date_gmt": "2026-11-25T02:10:30",
-    "title": {
-      "rendered": "Mason Rook Challenging Grayson Waller For NXT Title At TLC PLE"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/24210957/HX7s3O-WgAA31qS.jpg"
   }
 ]
