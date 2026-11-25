@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2327214/wwe-eugene-nick-dinsmore-hospitalized-united-kingdom": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T01:27:40.322Z"
+ },
  "https://www.fightful.com/wrestling/kelani-jordan-vs-kendal-grey-in-tlc-match-for-nxt-womens-title-made-official-for-tlc-ple": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -153,11 +158,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-25T01:16:13.583Z"
- },
- "https://www.wrestlinginc.com/2327214/wwe-eugene-nick-dinsmore-hospitalized-united-kingdom": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-25T01:08:10.908Z"
  },
  "https://www.ringsidenews.com/wwe-nxt-star-alyssa-daniele-undergoes-successful-surgery-shoulder-injury": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
