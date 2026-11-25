@@ -90,7 +90,10 @@ jobs:
           for P in $(echo "$PLATFORMS" | tr ',' ' '); do
             echo "── $P ──"
             OK=false
-            for i in $(seq 1 14); do
+            # TikTok and X go through Buffer, which can take an hour with a video (2026-11-25): asked again each minute
+            # for 50 minutes, where the others keep the short wait
+            TRIES=14; MINW=20; case "$P" in tiktok|x) TRIES=50; MINW=60 ;; esac
+            for i in $(seq 1 $TRIES); do
               jq -n --arg file "$FILE" --arg platform "$P" --rawfile caption promo/caption.txt --arg caption_x "$CX" --arg title "عرب راسلنج — المصارعة الحرة بالعربي" \
                 --argjson pin "$PIN" --argjson w "$W" --argjson h "$H" --argjson d "$D" \
                 '{file:$file, platform:$platform, caption:$caption, caption_x:$caption_x, title:$title, pin:$pin, width:$w, height:$h, duration:$d}' > body.json
@@ -102,7 +105,7 @@ jobs:
               # (the site's own news posts take Instagram's slot too: wait to the second the gap opens, not a fixed time)
             if jq -e '.post.status == "processing" or .post.status == "rate_limited"' res.json >/dev/null 2>&1; then
               RA=$(jq -r '.post.retryAt // 0' res.json | cut -d. -f1); NOW=$(date +%s%3N)
-              WAIT=$(( (RA - NOW) / 1000 + 2 )); [ "$WAIT" -lt 20 ] && WAIT=20; [ "$WAIT" -gt 900 ] && WAIT=900
+              WAIT=$(( (RA - NOW) / 1000 + 2 )); [ "$WAIT" -lt "$MINW" ] && WAIT=$MINW; [ "$WAIT" -gt 900 ] && WAIT=900
               echo "waiting ${WAIT}s"; sleep "$WAIT"; continue
             fi
               break
@@ -118,6 +121,9 @@ jobs:
             if [ "$OK" = true ]; then
               echo "✅ $P posted"
               if [ "$PIN" = "true" ]; then jq -r 'if .pin == null then "pin: —" elif .pin.ok then "📌 pinned" else "pin: " + (.pin.error // "not pinned") end' res.json; fi
+            elif jq -e '.post.status == "processing"' res.json >/dev/null 2>&1 && { [ "$P" = tiktok ] || [ "$P" = x ]; }; then
+              # Buffer took the video and still prepares it: it goes out from Buffer, not a failure of this run
+              echo "::notice::$P is still being prepared by Buffer — it goes out from there"
             else
               echo "::warning::$P was not posted"; FAILED=1
             fi
