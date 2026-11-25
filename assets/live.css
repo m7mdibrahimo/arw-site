@@ -1,6 +1,12 @@
 /* «بث مباشر» — the section and a show's live page (owner's pick 2026-11-25: «العدّاد داخل الحلبة ويدقّ الجرس عند البداية») */
 .lv-page{max-width:1200px;margin:0 auto;padding:28px 20px 70px}
 /* the way back up: section › program › show (#1537) */
+/* on a phone the path stays one line that slides sideways, like a show's own page (post-layout.css .is-watch) */
+@media (max-width:768px){
+  .lv-page .arw-crumbs{flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;scrollbar-width:none;font-size:12.5px;margin-bottom:12px;-webkit-mask-image:linear-gradient(to left,#000 84%,transparent);mask-image:linear-gradient(to left,#000 84%,transparent)}
+  .lv-page .arw-crumbs::-webkit-scrollbar{display:none}
+  .lv-page .arw-crumbs a,.lv-page .arw-crumbs span{flex:none}
+}
 .lv-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px}
 .lv-head h1{font-family:Cairo,sans-serif;font-weight:900;font-size:34px;color:var(--ink);display:flex;align-items:center;gap:12px}
 .lv-head h1 i{width:14px;height:14px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 6px var(--coral-soft);animation:lvPulse 1.6s ease-in-out infinite}
