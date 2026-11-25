@@ -1191,3 +1191,17 @@ test('AAA names, «تنظمن» and present-tense «يذكر أن يعرف» (IN
   assert.ok(checkArticle(t, 'يذكر أن يعرف تيكسانو وإنفيرنا باسم فريق واحد.' + pad).some(i => i.code === 'verb_after_yudhkar'));
   assert.ok(!checkArticle(t, 'ويعرف تيكسانو وإنفيرنا معا باسم فريق واحد.' + pad).some(i => i.code === 'verb_after_yudhkar'));
 });
+
+test('title_unquoted_chant blocks «هتاف ما» when the body quotes the chant (INCIDENTS #1536)', () => {
+  const body = 'أكد ستيف أوستن أن الجماهير هي المسؤولة عن نجاح هتاف "ما؟" الشهير وتحوله إلى ظاهرة جماهيرية مستمرة منذ أكثر من عشرين عاما داخل الحلبات.';
+  assert.ok(checkArticle('ستون كولد ستيف أوستن ينسب الفضل للجماهير في نجاح هتاف ما', body).some(i => i.code === 'title_unquoted_chant'));
+  assert.ok(!checkArticle('ستيف أوستن ينسب الفضل للجماهير في نجاح هتاف "What?" الشهير', body).some(i => i.code === 'title_unquoted_chant'));
+  assert.ok(BLOCKING_QA_CODES.includes('title_unquoted_chant') && RETRYABLE_QA_CODES.includes('title_unquoted_chant'));
+});
+
+test('the «نزال … المثير» correction keeps «المثير للجدل» (controversial) intact', () => {
+  const s = 'افتتحت العرض بالحديث عن نزال البطولة المثير للجدل الأسبوع الماضي، ثم تحدثت عن نزال السلالم الحماسي.';
+  const out = applyCorrections(s);
+  assert.ok(out.includes('نزال البطولة المثير للجدل'));
+  assert.ok(!out.includes('نزال السلالم الحماسي'));
+});
