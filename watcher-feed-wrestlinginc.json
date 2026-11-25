@@ -1,5 +1,25 @@
 [
   {
+    "id": 2317192178,
+    "link": "https://www.wrestlinginc.com/2327622/four-way-wwe-nxt-na-contenders-match-set/",
+    "date": "Wed, 25 Nov 2026 03:15:17 +0000",
+    "date_gmt": "2026-11-25T03:15:17.000Z",
+    "title": {
+      "rendered": "Four-Way WWE NXT NA Title Contender's Match Set"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/four-way-wwe-nxt-na-title-contenders-match-set/l-intro-1795576415.jpg"
+  },
+  {
+    "id": 906447942,
+    "link": "https://www.wrestlinginc.com/2327621/izzi-dame-dethrones-zaria-wwe-nxt-main-event/",
+    "date": "Wed, 25 Nov 2026 03:15:04 +0000",
+    "date_gmt": "2026-11-25T03:15:04.000Z",
+    "title": {
+      "rendered": "Izzi Dame Dethrones Zaria In WWE NXT Main Event"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/izzi-dame-dethrones-zaria-in-wwe-nxt-main-event/l-intro-1795576446.jpg"
+  },
+  {
     "id": 3368510918,
     "link": "https://www.wrestlinginc.com/2327610/mason-rook-books-ticket-wwe-nxt-tlc/",
     "date": "Wed, 25 Nov 2026 02:17:19 +0000",
@@ -178,25 +198,5 @@
       "rendered": "Charlotte Flair Is Aiming For WWE Title Win In 2027"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/charlotte-flair-is-aiming-for-wwe-title-win-in-2027/l-intro-1795535428.jpg"
-  },
-  {
-    "id": 4231637589,
-    "link": "https://www.wrestlinginc.com/2326254/nba-jalen-brunson-pushes-back-criticism-roman-reigns-overrated/",
-    "date": "Tue, 24 Nov 2026 14:30:00 +0000",
-    "date_gmt": "2026-11-24T14:30:00.000Z",
-    "title": {
-      "rendered": "Top NBA Star Pushes Back On Recent Criticism Of WWE's Roman Reigns"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/top-nba-star-pushes-back-on-recent-criticism-of-wwes-roman-reigns/l-intro-1795503478.jpg"
-  },
-  {
-    "id": 906949967,
-    "link": "https://www.wrestlinginc.com/2326243/aew-jeff-jarrett-wwe-crown-jewel-2026-wrestlemania-worse/",
-    "date": "Tue, 24 Nov 2026 14:00:00 +0000",
-    "date_gmt": "2026-11-24T14:00:00.000Z",
-    "title": {
-      "rendered": "AEW's Jeff Jarrett Talks Issues With WWE Crown Jewel, Says WrestleMania Will Be Worse"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-jeff-jarrett-talks-issues-with-wwe-crown-jewel-says-wrestlemania-will-be-worse/l-intro-1795501736.jpg"
   }
 ]
