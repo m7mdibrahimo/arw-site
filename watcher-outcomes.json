@@ -1,13 +1,13 @@
 {
+ "https://www.ringsidenews.com/jacy-jayne-addresses-idea-potential-wwe-babyface-turn": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T21:06:21.022Z"
+ },
  "https://www.ringsidenews.com/jacy-jayne-addresses-calls-her-leave-fatal-influence": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-25T21:03:14.310Z"
- },
- "https://www.ringsidenews.com/lance-storm-re-signs-tna-wrestling": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-25T21:02:24.436Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-was-worried-team-usa-vs-team-mexico-would-be-a-minefield-for-getting-canceled": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
@@ -1998,10 +1998,5 @@
   "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»",
   "retry": true,
   "at": "2026-11-18T21:42:49.743Z"
- },
- "https://www.fightful.com/wrestling/aew-dynamite-preview-start-time-how-to-watch-location-11-18": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T21:29:29.925Z"
  }
 }
