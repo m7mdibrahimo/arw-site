@@ -124,11 +124,6 @@
   "retry": false,
   "at": "2026-11-25T17:44:17.521Z"
  },
- "https://www.ringsidenews.com/cm-punk-explains-why-he-doesnt-wrestling-cody-rhodes": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-25T17:38:12.197Z"
- },
  "https://www.fightful.com/wrestling/340733-wwe-raw-november-16": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Intercontinental Championship",
   "retry": true,
