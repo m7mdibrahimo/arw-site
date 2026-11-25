@@ -1,5 +1,15 @@
 [
   {
+    "id": 1048212124,
+    "link": "https://www.wrestlinginc.com/2328832/wwe-logan-paul-long-injured-advertised-upcoming-match-madison-square-garden/",
+    "date": "Wed, 25 Nov 2026 22:49:48 +0000",
+    "date_gmt": "2026-11-25T22:49:48.000Z",
+    "title": {
+      "rendered": "Long-Injured WWE Star Advertised For Upcoming Match"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/long-injured-wwe-star-advertised-for-upcoming-match/l-intro-1795646926.jpg"
+  },
+  {
     "id": 2640392805,
     "link": "https://www.wrestlinginc.com/2328816/leon-slater-jeff-hardy-set-upcoming-tna-taping/",
     "date": "Wed, 25 Nov 2026 22:30:41 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE NXT Results 11/24/26 W/ Live Updates: TLC Title Scene Taking Shape"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-results-112426-w-live-updates/l-intro-1795488104.jpg"
-  },
-  {
-    "id": 3750336009,
-    "link": "https://www.wrestlinginc.com/2327214/wwe-eugene-nick-dinsmore-hospitalized-united-kingdom/",
-    "date": "Tue, 24 Nov 2026 20:37:06 +0000",
-    "date_gmt": "2026-11-24T20:37:06.000Z",
-    "title": {
-      "rendered": "Former WWE Star Nick Dinsmore (AKA Eugene) Reportedly Hospitalized In The UK"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/former-wwe-star-nick-dinsmore-aka-eugene-reportedly-hospitalized-in-the-uk/l-intro-1795552513.jpg"
   }
 ]
