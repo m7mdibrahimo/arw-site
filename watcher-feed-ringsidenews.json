@@ -1,5 +1,15 @@
 [
   {
+    "id": 802273209,
+    "link": "https://www.ringsidenews.com/wwe-announces-several-matches-segments-december-1-nxt/",
+    "date": "Wed, 25 Nov 2026 02:50:29 +0000",
+    "date_gmt": "2026-11-25T02:50:29.000Z",
+    "title": {
+      "rendered": "WWE Announces Several Matches and Segments for December 1 NXT"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/new-match-added-to-november-24-wwe-nxt-lineup-08.jpg?x36835"
+  },
+  {
     "id": 802273151,
     "link": "https://www.ringsidenews.com/john-cena-adds-two-more-wwe-nxt-stars-john-cena-classic-lineup/",
     "date": "Wed, 25 Nov 2026 02:47:08 +0000",
@@ -138,15 +148,5 @@
       "rendered": "Taya Valkyrie Reveals Real Reason She Walked Away From AEW"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/taya-valkyrie-reveals-real-reason-she-walked-away-from-aew-02.jpg?x36835"
-  },
-  {
-    "id": 802272939,
-    "link": "https://www.ringsidenews.com/indie-star-kaci-lennox-gets-thanksgiving-spirit-maroon-lingerie-photos/",
-    "date": "Tue, 24 Nov 2026 23:37:55 +0000",
-    "date_gmt": "2026-11-24T23:37:55.000Z",
-    "title": {
-      "rendered": "Indie Star Kaci Lennox Gets Into Thanksgiving Spirit With Maroon Lingerie Photos"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/indie-star-kaci-lennox-gets-into-thanksgiving-spirit-with-maroon-lingerie-photos-16.jpg?x36835"
   }
 ]
