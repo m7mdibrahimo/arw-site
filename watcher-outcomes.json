@@ -1,4 +1,84 @@
 {
+ "https://www.fightful.com/wrestling/fatal-4-way-1-contenders-match-grayson-waller-mason-rook-face-to-face-announced-for-12-1-wwe-nxt": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-25T11:52:32.044Z"
+ },
+ "https://www.fightful.com/wrestling/izzi-dame-def-zaria-to-become-two-time-nxt-womens-north-american-champion": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-25T11:52:31.915Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-smackdown-11-20-draws-1-2-million-viewers": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-25T11:52:31.831Z"
+ },
+ "https://www.fightful.com/wrestling/kendal-grey-wren-sinclair-invited-to-wwe-john-cena-classic": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-25T11:51:38.520Z"
+ },
+ "https://www.fightful.com/wrestling/myka-lockwood-pins-noam-dar-on-11-24-wwe-nxt": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-25T11:51:38.278Z"
+ },
+ "https://www.fightful.com/wrestling/kelani-jordan-vs-kendal-grey-in-tlc-match-for-nxt-womens-title-made-official-for-tlc-ple": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-25T11:51:38.189Z"
+ },
+ "https://www.fightful.com/wrestling/the-hardys-tna-contracts-are-set-to-expire-soon": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T11:51:38.011Z"
+ },
+ "https://www.fightful.com/wrestling/340733-wwe-raw-november-16": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T11:49:39.100Z"
+ },
+ "https://www.fightful.com/wrestling/cody-rhodes-says-he-was-going-to-get-time-off-after-wrestlemania-42": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-25T11:43:53.609Z"
+ },
+ "https://www.fightful.com/wrestling/swerve-strickland-scheduled-for-apc-france-show-in-january-2027": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T11:43:53.471Z"
+ },
+ "https://www.fightful.com/wrestling/kaspers-brothers-address-whether-they-had-heat-backstage-in-wwe": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يتحدثان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-25T11:41:28.115Z"
+ },
+ "https://www.fightful.com/wrestling/cm-punk-says-hes-disappointed-and-irritated-with-cody-rhodes-slams-his-tremendously-unwise-decision": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-25T11:40:18.614Z"
+ },
+ "https://www.fightful.com/wrestling/zayda-steel-marina-shafir-is-such-a-real-person-and-in-wrestling-theres-not-a-lot-of-them": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T11:40:18.480Z"
+ },
+ "https://www.fightful.com/wrestling/aew-featured-on-fast-companys-2026-brands-that-matter-list": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-25T11:37:26.839Z"
+ },
+ "https://www.fightful.com/wrestling/gabby-forza-names-amira-brooke-havok-dreya-mitchell-leah-sparks-as-wrestlers-shed-like-to-see-in-tna": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Tony Schiavone",
+  "retry": true,
+  "at": "2026-11-25T11:36:17.309Z"
+ },
+ "https://www.fightful.com/wrestling/gabby-forza-looks-back-on-eliminating-bear-bronson-from-tna-call-your-shot-gauntlet-i-got-a-chant-of-thats-your-man": {
+  "reason": "المراجعة رفضته: جملة قصيرة مكررة ورا بعض — اكتبها مرة واحدة",
+  "retry": true,
+  "at": "2026-11-25T11:34:54.090Z"
+ },
  "https://www.wrestlinginc.com/2327662/wwe-nxt-november-24-2026-3-things-hated-loved-opinion-review": {
   "reason": "المراجعة رفضته: كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
@@ -8,86 +88,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-25T11:46:11.945Z"
- },
- "https://www.fightful.com/wrestling/fatal-4-way-1-contenders-match-grayson-waller-mason-rook-face-to-face-announced-for-12-1-wwe-nxt": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-25T11:31:48.815Z"
- },
- "https://www.fightful.com/wrestling/izzi-dame-def-zaria-to-become-two-time-nxt-womens-north-american-champion": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-25T11:31:48.667Z"
- },
- "https://www.fightful.com/wrestling/wwe-smackdown-11-20-draws-1-2-million-viewers": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-25T11:31:48.567Z"
- },
- "https://www.fightful.com/wrestling/kendal-grey-wren-sinclair-invited-to-wwe-john-cena-classic": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-25T11:17:14.277Z"
- },
- "https://www.fightful.com/wrestling/myka-lockwood-pins-noam-dar-on-11-24-wwe-nxt": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-25T11:17:14.007Z"
- },
- "https://www.fightful.com/wrestling/kelani-jordan-vs-kendal-grey-in-tlc-match-for-nxt-womens-title-made-official-for-tlc-ple": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-25T11:17:13.917Z"
- },
- "https://www.fightful.com/wrestling/the-hardys-tna-contracts-are-set-to-expire-soon": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-25T11:17:13.728Z"
- },
- "https://www.fightful.com/wrestling/340733-wwe-raw-november-16": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Intercontinental Championship",
-  "retry": true,
-  "at": "2026-11-25T11:15:31.452Z"
- },
- "https://www.fightful.com/wrestling/cody-rhodes-says-he-was-going-to-get-time-off-after-wrestlemania-42": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-25T11:10:34.165Z"
- },
- "https://www.fightful.com/wrestling/swerve-strickland-scheduled-for-apc-france-show-in-january-2027": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-25T11:10:34.016Z"
- },
- "https://www.fightful.com/wrestling/kaspers-brothers-address-whether-they-had-heat-backstage-in-wwe": {
-  "reason": "المراجعة رفضته: صيغة مثنى (تختاران/حافظتا/قطعتين/بطلي فرق) ممنوعة — اجمع الفعل أو كرر الاسم، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى («يكشفان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-25T11:08:48.525Z"
- },
- "https://www.fightful.com/wrestling/cm-punk-says-hes-disappointed-and-irritated-with-cody-rhodes-slams-his-tremendously-unwise-decision": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-25T11:05:06.059Z"
- },
- "https://www.fightful.com/wrestling/zayda-steel-marina-shafir-is-such-a-real-person-and-in-wrestling-theres-not-a-lot-of-them": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-25T11:05:05.905Z"
- },
- "https://www.fightful.com/wrestling/aew-featured-on-fast-companys-2026-brands-that-matter-list": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-25T11:03:12.623Z"
- },
- "https://www.fightful.com/wrestling/gabby-forza-names-amira-brooke-havok-dreya-mitchell-leah-sparks-as-wrestlers-shed-like-to-see-in-tna": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-25T11:02:23.840Z"
- },
- "https://www.fightful.com/wrestling/gabby-forza-looks-back-on-eliminating-bear-bronson-from-tna-call-your-shot-gauntlet-i-got-a-chant-of-thats-your-man": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين",
-  "retry": true,
-  "at": "2026-11-25T11:01:21.957Z"
  },
  "https://www.wrestlinginc.com/2327623/john-cena-adds-two-more-wwe-nxt-stars-jcc": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، صفة مثنى مؤنث (الأخيرتين/الأولتين/السابقتين…) ممنوعة — اكتب «ختام» أو «آخر الجولات» بدون مثنى (INCIDENTS #850)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم، صفة مثنى مؤنث (الأخيرتين/الأولتين/السابقتين…) ممنوعة — اكتب «ختام» أو «آخر الجولات» بدون مثنى (INCIDENTS #850)",
