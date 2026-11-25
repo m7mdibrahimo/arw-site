@@ -1762,7 +1762,7 @@ export async function bufferTikTokChannel(env: Env): Promise<string> {
   await env.PUSH_KV?.put("buffer:tiktok-channel", id || "none", { expirationTtl: id ? 86400 : 3 * 3600 }).catch(() => {});
   return id;
 }
-async function postVideoToTikTokViaBuffer(env: Env, channelId: string, data: { videoUrl: string; title: string; postUrl?: string }): Promise<any> {
+async function postVideoToTikTokViaBuffer(env: Env, channelId: string, data: { videoUrl: string; title: string; postUrl?: string; text?: string }): Promise<any> {
   // the post Buffer accepted for this video (a retry polls it again instead of posting twice)
   const kvKey = `buffer-tiktok:${data.videoUrl}`;
   let postId = "";
@@ -1773,7 +1773,7 @@ async function postVideoToTikTokViaBuffer(env: Env, channelId: string, data: { v
           ... on PostActionSuccess { post { id } }
           ... on MutationError { message }
         }
-      }`, { text: buildReelCaption(data.title, data.postUrl), channelId, videoUrl: data.videoUrl });
+      }`, { text: data.text || buildReelCaption(data.title, data.postUrl), channelId, videoUrl: data.videoUrl });
     postId = result?.data?.createPost?.post?.id || "";
     if (!postId) {
       if (detectBufferRateLimit(result)) await setVideoCooldown(env, "tiktok");
@@ -1787,6 +1787,34 @@ async function postVideoToTikTokViaBuffer(env: Env, channelId: string, data: { v
   await env.PUSH_KV.delete(kvKey).catch(() => {});
   if (!outcome.ok && detectBufferRateLimit(outcome.raw)) await setVideoCooldown(env, "tiktok");
   return { ok: !!outcome.ok, ...(outcome.ok ? {} : { error: `Buffer: ${outcome.raw?.error?.message || "TikTok refused the video"}` }), result: outcome.raw };
+}
+
+/** A video on X through Buffer (the site's promo, INCIDENTS #1537): posted once — a retry polls the post Buffer took */
+async function postVideoToXViaBuffer(env: Env, data: { videoUrl: string; text: string }): Promise<any> {
+  if (!env.BUFFER_API_KEY || !env.BUFFER_X_CHANNEL_ID) return { ok: false, error: "قناة X مش متوصلة في Buffer." };
+  const kvKey = `buffer-x-video:${data.videoUrl}`;
+  let postId = "";
+  try { postId = JSON.parse((await env.PUSH_KV.get(kvKey)) || "null")?.id || ""; } catch { /* none */ }
+  if (!postId) {
+    if (!(await hasBufferQuota(env))) return { ok: false, status: "rate_limited", error: "حصة Buffer خلصت النهارده." };
+    const result = await bufferGraphQL(env, `mutation PostVideoToX($text: String!, $channelId: ChannelId!, $videoUrl: String!) {
+        createPost(input: { text: $text, channelId: $channelId, schedulingType: automatic, mode: shareNow, assets: [{ video: { url: $videoUrl } }] }) {
+          ... on PostActionSuccess { post { id } }
+          ... on MutationError { message }
+        }
+      }`, { text: data.text, channelId: env.BUFFER_X_CHANNEL_ID, videoUrl: data.videoUrl });
+    postId = result?.data?.createPost?.post?.id || "";
+    if (!postId) {
+      if (detectBufferRateLimit(result)) await setBufferRateLimitCooldown(env, extractBufferRateLimitDuration(result));
+      return { ok: false, error: `Buffer: ${result?.data?.createPost?.message || result?.errors?.[0]?.message || "لم يقبل الفيديو"}`, result };
+    }
+    await env.PUSH_KV.put(kvKey, JSON.stringify({ id: postId, createdAt: Date.now() }), { expirationTtl: 86400 }).catch(() => {});
+  }
+  const outcome = await pollBufferPostUntilResolved(env, postId);
+  if (!outcome.resolved) return { ok: false, status: "processing", error: "X لسه بيجهز الفيديو عن طريق Buffer." };
+  await env.PUSH_KV.delete(kvKey).catch(() => {});
+  if (outcome.ok) await markXAction(env);
+  return { ok: !!outcome.ok, id: postId, ...(outcome.ok ? {} : { error: `Buffer: ${outcome.raw?.error?.message || "X refused the video"}` }), result: outcome.raw };
 }
 
 async function postVideoToTikTok(env: Env, data: { videoUrl: string; title: string; postUrl?: string }): Promise<any> {
@@ -4522,7 +4550,8 @@ export default {
         const platform = String(body.platform || "") as PromoPlatform;
         if (!PROMO_FILE.test(file)) return json({ success: false, error: "اسم ملف الفيديو غير صالح." }, 400);
         if (!(PROMO_PLATFORMS as readonly string[]).includes(platform)) return json({ success: false, error: "المنصة غير معروفة." }, 400);
-        const caption = promoCaption(body.caption, platform === "telegram" ? 1024 : 2200);
+        // X takes 280 characters: its own short text (promo/caption-x.txt), never a cut one
+        const caption = platform === "x" ? promoCaption(body.caption_x, 270) : promoCaption(body.caption, platform === "telegram" ? 1024 : 2200);
         const title = promoCaption(body.title, 100);
         if (!caption) return json({ success: false, error: "نص المنشور مطلوب." }, 400);
         const videoUrl = `${env.SITE_ORIGIN}/videos/${file}`;
@@ -4533,9 +4562,16 @@ export default {
           if (wait > 0) return json({ success: false, platform, post: { ok: false, status: "processing", retryAt: Date.now() + wait, error: "فاصل إلزامي بين منشورات إنستجرام؛ أعد المحاولة بعده." } });
           if (!(await instagramRoomLeft(env, 0))) return json({ success: false, platform, post: { ok: false, status: "processing", error: "تم بلوغ الحد اليومي لمنشورات إنستجرام." } });
         }
-        const token = platform === "telegram" ? "" : await getPageAccessToken(env);
+        const token = platform === "facebook" || platform === "instagram" ? await getPageAccessToken(env) : "";
         const send = async () => {
           if (platform === "facebook") return promoFacebook({ pageId: env.FACEBOOK_PAGE_ID, token, videoUrl, title, caption });
+          if (platform === "x") return postVideoToXViaBuffer(env, { videoUrl, text: caption });
+          if (platform === "tiktok") {
+            const channel = await bufferTikTokChannel(env);
+            if (!channel) return { ok: false, error: "حساب تيك توك مش متوصل في Buffer." };
+            const r = await postVideoToTikTokViaBuffer(env, channel, { videoUrl, title, text: caption });
+            return { ...r, id: r.id || r.result?.id };
+          }
           if (platform === "instagram") {
             await markInstagramAction(env, "video");
             return publishInstagramVideo({ accountId: env.INSTAGRAM_BUSINESS_ACCOUNT_ID, token, videoUrl, caption, story: false, kv: env.PUSH_KV });
@@ -4553,7 +4589,7 @@ export default {
           } else if (platform === "telegram") {
             pin = await deliverOnce(env, `promo-pin:telegram:${file}`, () => pinTelegram({ botToken: env.TELEGRAM_BOT_TOKEN, chatId: env.TELEGRAM_CHAT_ID, messageId: String(post.id) }));
           } else {
-            pin = { ok: false, unsupported: true, error: "إنستجرام لا يسمح بتثبيت المنشورات من خارج التطبيق." };
+            pin = { ok: false, unsupported: true, error: platform === "instagram" ? "إنستجرام لا يسمح بتثبيت المنشورات من خارج التطبيق." : "التثبيت مش متاح للمنصة دي من هنا." };
           }
         }
         return json({ success: !!post.ok, platform, videoUrl, post, ...(pin ? { pin } : {}) });

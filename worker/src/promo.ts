@@ -10,7 +10,8 @@ const pause = (ms: number) => new Promise(r => setTimeout(r, ms));
 
 /** A promo file name: plain, lower-case, an MP4 */
 export const PROMO_FILE = /^[a-z0-9][a-z0-9-]{2,60}\.mp4$/;
-export const PROMO_PLATFORMS = ['facebook', 'instagram', 'telegram'] as const;
+// X and TikTok (INCIDENTS #1537: «نزله علي منصات التواصل كلها»): through Buffer, the way the show reels and X posts go
+export const PROMO_PLATFORMS = ['facebook', 'instagram', 'telegram', 'x', 'tiktok'] as const;
 export type PromoPlatform = typeof PROMO_PLATFORMS[number];
 
 /** The caption as the owner wrote it: no control characters, at most what Telegram takes under a video */

@@ -101,3 +101,12 @@ test('the promo route is behind the admin check and posts once a platform; the w
   assert.doesNotMatch(wf, /^\s+(push|schedule|pull_request):/m);
   assert.doesNotMatch(wf, /\$\{\{ inputs\.[a-z]+ \}\}"?\s*\|/, 'inputs reach the shell only through env');
 });
+
+test('the promo reaches X and TikTok too, through Buffer, X with its own short text (INCIDENTS #1537)', () => {
+  const src = fs.readFileSync('worker/src/index.ts', 'utf8'), promo = fs.readFileSync('worker/src/promo.ts', 'utf8'), wf = fs.readFileSync('.github/workflows/promo-publish.yml', 'utf8');
+  assert.match(promo, /PROMO_PLATFORMS = \['facebook', 'instagram', 'telegram', 'x', 'tiktok'\]/);
+  assert.match(src, /if \(platform === "x"\) return postVideoToXViaBuffer\(env, \{ videoUrl, text: caption \}\);/);
+  assert.match(src, /platform === "x" \? promoCaption\(body\.caption_x, 270\)/);
+  assert.match(src, /postVideoToTikTokViaBuffer\(env, channel, \{ videoUrl, title, text: caption \}\)/);
+  assert.match(wf, /caption_x:\$caption_x/);
+});

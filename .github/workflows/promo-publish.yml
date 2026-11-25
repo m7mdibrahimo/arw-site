@@ -7,6 +7,7 @@ name: Promo — post the site's promo video to its social accounts
 #    - صفحة فيسبوك (فيديو عادي، ويتثبت)
 #    - إنستجرام (ريل في الصفحة الرئيسية)
 #    - قناة تليجرام (ويتثبت)
+#    - X وتيك توك عن طريق Buffer (INCIDENTS #1537)؛ X بياخد نصه القصير من promo/caption-x.txt (لحد 270 حرف)
 #  التشغيل بإيد صاحب الموقع بس (workflow_dispatch). نفس الفيديو مبيتنشرش مرتين (worker/src/promo.ts).
 # ═══════════════════════════════════════════════════════
 
@@ -18,7 +19,7 @@ on:
         required: true
         default: "arab-wrestling-promo.mp4"
       platforms:
-        description: "المنصات، مفصولة بفاصلة"
+        description: "المنصات، مفصولة بفاصلة (facebook,telegram,instagram,x,tiktok)"
         required: true
         default: "facebook,telegram,instagram"
       pin:
@@ -85,13 +86,14 @@ jobs:
         run: |
           W=$(jq -r '.streams[0].width // 0' probe.json); H=$(jq -r '.streams[0].height // 0' probe.json); D=$(jq -r '.format.duration // 0' probe.json)
           FAILED=0
+          CX=$(cat promo/caption-x.txt 2>/dev/null || true)
           for P in $(echo "$PLATFORMS" | tr ',' ' '); do
             echo "── $P ──"
             OK=false
             for i in $(seq 1 14); do
-              jq -n --arg file "$FILE" --arg platform "$P" --rawfile caption promo/caption.txt --arg title "عرب راسلنج — المصارعة الحرة بالعربي" \
+              jq -n --arg file "$FILE" --arg platform "$P" --rawfile caption promo/caption.txt --arg caption_x "$CX" --arg title "عرب راسلنج — المصارعة الحرة بالعربي" \
                 --argjson pin "$PIN" --argjson w "$W" --argjson h "$H" --argjson d "$D" \
-                '{file:$file, platform:$platform, caption:$caption, title:$title, pin:$pin, width:$w, height:$h, duration:$d}' > body.json
+                '{file:$file, platform:$platform, caption:$caption, caption_x:$caption_x, title:$title, pin:$pin, width:$w, height:$h, duration:$d}' > body.json
               curl -sS --max-time 600 -X POST "$WORKER_API/api/videos/publish-promo" \
                 -H "Authorization: Bearer $GITHUB_TOKEN" -H "Content-Type: application/json" --data @body.json -o res.json || true
               cat res.json; echo
