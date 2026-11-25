@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/jacy-jayne-addresses-idea-potential-wwe-babyface-turn": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T21:25:50.638Z"
+ },
  "https://www.fightful.com/wrestling/cm-punk-says-hes-trying-to-have-light-hearted-fun-with-team-usa-vs-team-mexico-concept": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -103,11 +108,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-25T21:22:17.327Z"
- },
- "https://www.ringsidenews.com/jacy-jayne-addresses-idea-potential-wwe-babyface-turn": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-25T21:10:24.301Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-11-20-draws-1-2-million-viewers": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
