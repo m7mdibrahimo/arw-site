@@ -24012,16 +24012,16 @@
     "renderedAt": 1795608154299
   },
   {
-    "videoUrl": "/videos/reel-20261125210827-cmll-martes-populares-24-11-20.mp4",
-    "filename": "reel-20261125210827-cmll-martes-populares-24-11-20.mp4",
-    "title": "عرض سي ام ال ال مارتيس بوبيولاريس 24.11.2026 مترجم",
-    "secondaryTitle": "CMLL Martes Populares 24.11.2026",
-    "description": "عرض سي ام ال ال مارتيس بوبيولاريس مترجم بالكامل مع جميع النزالات والأحداث.",
-    "postUrl": "/shows/20261125210827-cmll-martes-populares-24-11-20",
+    "videoUrl": "/videos/reel-20261125211341-njpw-world-tag-league-night-3-.mp4",
+    "filename": "reel-20261125211341-njpw-world-tag-league-night-3-.mp4",
+    "title": "عرض ان جيه بي دبليو وورلد تاج ليج (الليلة الثالثة) 25.11.2026 مترجم",
+    "secondaryTitle": "NJPW World Tag League Night 3 25.11.2026",
+    "description": "عرض ان جيه بي دبليو وورلد تاج ليج (الليلة الثالثة) مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261125211341-njpw-world-tag-league-night-3-",
     "kind": "show",
-    "slug": "20261125210827-cmll-martes-populares-24-11-20",
-    "image": "/content/images/10pc7hoshp2b0vhd.jpg",
-    "renderedAt": 1795633946117
+    "slug": "20261125211341-njpw-world-tag-league-night-3-",
+    "image": "/content/images/q1tnaess0xhpphky.jpg",
+    "renderedAt": 1795634354217
   },
   {
     "videoUrl": "/videos/reel-20261024154929-aew-dynamite-21-10-2026.mp4",
@@ -24033,6 +24033,30 @@
     "kind": "show",
     "slug": "20261024154929-aew-dynamite-21-10-2026",
     "image": "/content/images/zhpj9w8wx1hmw8qf.jpg",
-    "renderedAt": 1795634036163
+    "renderedAt": 1795634454145
+  },
+  {
+    "videoUrl": "/videos/reel-20261125210827-cmll-martes-populares-24-11-20.mp4",
+    "filename": "reel-20261125210827-cmll-martes-populares-24-11-20.mp4",
+    "title": "عرض سي ام ال ال مارتيس بوبيولاريس 24.11.2026 مترجم",
+    "secondaryTitle": "CMLL Martes Populares 24.11.2026",
+    "description": "عرض سي ام ال ال مارتيس بوبيولاريس مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261125210827-cmll-martes-populares-24-11-20",
+    "kind": "show",
+    "slug": "20261125210827-cmll-martes-populares-24-11-20",
+    "image": "/content/images/10pc7hoshp2b0vhd.jpg",
+    "renderedAt": 1795634555234
+  },
+  {
+    "videoUrl": "/videos/reel-20261125211135-tna-xplosion-20-11-2026.mp4",
+    "filename": "reel-20261125211135-tna-xplosion-20-11-2026.mp4",
+    "title": "عرض تي ان ايه اكسبلوجن 20.11.2026 مترجم",
+    "secondaryTitle": "TNA Xplosion 20.11.2026",
+    "description": "عرض تي ان ايه اكسبلوجن مترجم بالكامل مع جميع النزالات والأحداث.",
+    "postUrl": "/shows/20261125211135-tna-xplosion-20-11-2026",
+    "kind": "show",
+    "slug": "20261125211135-tna-xplosion-20-11-2026",
+    "image": "/content/images/vmtxh7hbocdv3alh.jpg",
+    "renderedAt": 1795634652564
   }
 ]
