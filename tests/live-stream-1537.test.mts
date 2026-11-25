@@ -135,6 +135,10 @@ test('the home page tells of the section; the live page links the full show once
   // «شريط البث» (owner 2026-11-25: the glowing dot «باين انه معمول ب ai»): the show's picture, a countdown in cells, nothing pulsing
   assert.match(home, /<span class="lvs-im" id="lvsIm"/); assert.match(home, /id="lvsH">00<\/b><small>ساعة/);
   assert.doesNotMatch(home, /lvs-dot|lvsPulse/);
+  // phones: «بث مباشر» is a tab of the bottom bar, after «العروض» (owner 2026-11-25)
+  const feat = fs.readFileSync('assets/features.js', 'utf8');
+  assert.match(feat, /\['shows', '\/shows\/', 'العروض'\], \['live', '\/live\/', 'بث مباشر'\]/);
+  assert.match(feat, /\/\^\\\/live\\\/\/\.test\(path\) \? 'live'/);
   assert.match(home, /<script src="\/assets\/live-strip\.js\?v=\d+" defer><\/script>/);
   const js = fs.readFileSync('assets/live.js', 'utf8');
   assert.match(js, /var RECENT = '\/live\/recent\.json';/);
