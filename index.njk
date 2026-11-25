@@ -1352,31 +1352,42 @@ html.arw-dark .spotlight-ambient-glow { opacity: 0.48; filter: blur(85px); }
 .badge-row{ display:flex; flex-wrap:wrap; align-items:center; }
 .fresh-tag{ margin-inline-start:auto; margin-inline-end:0 !important; background:#dcfce7; color:#15803d; box-shadow:inset 0 0 0 1px rgba(21,128,61,.18); }
 html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-shadow:inset 0 0 0 1px rgba(134,239,172,.22); }
-  /* «بث مباشر» strip under the hero (assets/live-strip.js, INCIDENTS #1537) */
+  /* «بث مباشر» under the hero (assets/live-strip.js, INCIDENTS #1537) — «شريط البث» (owner's pick 2026-11-25): the show's own
+     picture, a plain red label, a countdown in fixed cells; nothing glows or pulses */
   .lvs-wrap{ position:relative; z-index:3; margin:-34px 0 26px; }
-  .lvs{ display:flex; align-items:center; gap:16px; padding:14px 18px; border-radius:20px; text-decoration:none; color:var(--ink); background:var(--card); border:1px solid var(--line); box-shadow:0 14px 34px rgba(15,23,42,.1); transition:transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s; }
-  .lvs:hover{ transform:translateY(-3px); box-shadow:0 20px 40px rgba(15,23,42,.14); }
-  .lvs-dot{ flex:none; width:46px; height:46px; border-radius:50%; display:grid; place-items:center; background:var(--coral-soft); }
-  .lvs-dot i{ width:14px; height:14px; border-radius:50%; background:var(--coral); box-shadow:0 0 0 0 rgba(255,111,89,.6); animation:lvsPulse 1.6s ease-out infinite; }
-  @keyframes lvsPulse{ 0%{ box-shadow:0 0 0 0 rgba(255,111,89,.55); } 100%{ box-shadow:0 0 0 14px rgba(255,111,89,0); } }
-  .lvs-tx{ flex:1; min-width:0; display:flex; flex-direction:column; line-height:1.45; }
-  .lvs-tx small{ font:800 12px 'Cairo',sans-serif; color:var(--coral); }
-  .lvs-tx b{ font:900 18px 'Cairo',sans-serif; }
+  .lvs{ display:flex; align-items:stretch; gap:0; padding:0; min-height:96px; border-radius:14px; overflow:hidden; text-decoration:none; color:var(--ink); background:var(--card); border:1px solid var(--line); box-shadow:0 10px 26px rgba(15,23,42,.08); transition:border-color .2s; }
+  .lvs:hover{ border-color:rgba(127,127,127,.35); }
+  /* the same side room as the spotlight card under it (.spotlight-section: 20 / 16 / 10px) */
+  .lvs-wrap .lvs{ margin:0 20px; }
+  @media (max-width:860px){ .lvs-wrap .lvs{ margin:0 16px; } }
+  @media (max-width:580px){ .lvs-wrap .lvs{ margin:0 10px; } }
+  .lvs-im{ flex:none; width:172px; background:#0b0f16 center/cover no-repeat; }
+  .lvs-tx{ flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center; gap:3px; padding:12px 20px; line-height:1.4; }
+  .lvs-row{ display:flex; align-items:center; gap:8px; }
+  .lvs-tag{ font:800 12px 'Cairo',sans-serif; color:#fff; background:#d93a3d; padding:1px 8px 2px; border-radius:4px; }
+  .lvs-fed{ font:800 11.5px 'Cairo',sans-serif; color:var(--muted); border:1px solid var(--line); padding:0 7px; border-radius:4px; }
+  .lvs-tx b{ font:900 19px 'Cairo',sans-serif; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
   .lvs-tx em{ font-style:normal; font-size:13.5px; color:var(--muted); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .lvs-cd{ flex:none; direction:ltr; font:900 24px 'Cairo',sans-serif; color:var(--ink); background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:4px 12px; font-variant-numeric:tabular-nums; }
-  .lvs-go{ flex:none; background:var(--ink); color:var(--bg); font:800 14px 'Cairo',sans-serif; padding:10px 18px; border-radius:12px; }
-  .lvs.is-live{ border:2px solid var(--coral); background:linear-gradient(135deg, var(--coral-soft), var(--card) 60%); }
-  .lvs.is-live .lvs-go{ background:var(--coral); color:#fff; }
-  .lvs.is-soon .lvs-go{ background:var(--teal); color:#fff; }
+  .lvs-cd{ flex:none; display:flex; align-items:center; gap:6px; padding:0 20px; direction:ltr; border-inline-start:1px solid var(--line); }
+  .lvs-cd[hidden]{ display:none; }
+  .lvs-cd span{ text-align:center; min-width:38px; }
+  .lvs-cd b{ display:block; font:900 26px 'Cairo',sans-serif; line-height:1.15; font-variant-numeric:tabular-nums; }
+  .lvs-cd small{ font:700 11px 'Cairo',sans-serif; color:var(--muted); }
+  .lvs-cd i{ font:900 22px 'Cairo',sans-serif; font-style:normal; color:var(--muted); margin-top:-16px; }
+  .lvs-go{ flex:none; display:flex; align-items:center; padding:0 24px; font:800 14.5px 'Cairo',sans-serif; color:var(--ink); background:var(--surface-2, rgba(127,127,127,.06)); border-inline-start:1px solid var(--line); }
+  .lvs.is-live{ border-color:#d93a3d; }
+  .lvs.is-live .lvs-go{ background:#d93a3d; color:#fff; border-color:#d93a3d; }
   @media (max-width:700px){
     .lvs-wrap{ margin:-26px 0 18px; }
-    .lvs{ flex-wrap:wrap; gap:10px 12px; padding:12px 14px; border-radius:16px; }
-    .lvs-dot{ width:38px; height:38px; }
-    .lvs-tx{ flex-basis:calc(100% - 60px); }
-    .lvs-tx b{ font-size:16px; }
+    .lvs{ flex-wrap:wrap; gap:0; padding:0 0 0; min-height:0; border-radius:12px; }
+    .lvs-im{ width:112px; height:63px; margin:12px 12px 0 0; border-radius:8px; }
+    .lvs-tx{ flex-basis:calc(100% - 124px); padding:10px 12px 0; gap:2px; }
+    .lvs-tx b{ font-size:16px; white-space:normal; }
     .lvs-tx em{ white-space:normal; font-size:12.5px; }
-    .lvs-cd{ font-size:19px; }
-    .lvs-go{ flex:1; text-align:center; padding:9px 12px; }
+    .lvs-cd{ flex:1; justify-content:center; padding:10px 8px; margin-top:10px; border-inline-start:0; border-top:1px solid var(--line); }
+    .lvs-cd b{ font-size:21px; }
+    .lvs-go{ flex:1; justify-content:center; padding:10px 12px; margin-top:10px; border-top:1px solid var(--line); }
+    .lvs-cd:not([hidden]) + .lvs-go{ flex:none; }
   }
 </style>
 <link rel="stylesheet" href="/assets/notif.css?v=20261016a">
@@ -1422,14 +1433,14 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
 <section class="lvs-wrap" aria-label="بث مباشر">
 <div class="wrap">
 <a class="lvs" id="lvStrip" href="/live/">
-<span class="lvs-dot" aria-hidden="true"><i></i></span>
-<span class="lvs-tx"><small id="lvsTag">جديد على عرب راسلنج</small><b id="lvsT">بث مباشر لعروض المصارعة داخل الموقع</b><em id="lvsS">الرو، سماك داون، داينامايت وكل العروض الكبرى: عدّاد حتى البداية بتوقيت بلدك، ثم المشاهدة المباشرة هنا</em></span>
-<span class="lvs-cd" id="lvsCd" hidden></span>
-<span class="lvs-go" id="lvsGo">ادخل البث المباشر</span>
+<span class="lvs-im" id="lvsIm" style="background-image:url('/assets/hero-bg.jpg')" aria-hidden="true"></span>
+<span class="lvs-tx"><span class="lvs-row"><span class="lvs-tag" id="lvsTag">جديد على عرب راسلنج</span><span class="lvs-fed" id="lvsFed" hidden></span></span><b id="lvsT">بث مباشر لعروض المصارعة داخل الموقع</b><em id="lvsS">الرو، سماك داون، داينامايت وكل العروض الكبرى: عدّاد حتى البداية بتوقيت بلدك، ثم المشاهدة المباشرة هنا</em></span>
+<span class="lvs-cd" id="lvsCd" hidden><span><b id="lvsH">00</b><small>ساعة</small></span><i>:</i><span><b id="lvsM">00</b><small>دقيقة</small></span><i>:</i><span><b id="lvsX">00</b><small>ثانية</small></span></span>
+<span class="lvs-go" id="lvsGo">ادخل البث المباشر ‹</span>
 </a>
 </div>
 </section>
-<script src="/assets/live-strip.js?v=1537" defer></script>
+<script src="/assets/live-strip.js?v=15372" defer></script>
 
 {% set slides = pinned | freshPinned(collections.all) %}
 {% if slides and slides.length > 0 %}

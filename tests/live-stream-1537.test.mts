@@ -132,6 +132,9 @@ function require_programs(): { key: string }[] {
 test('the home page tells of the section; the live page links the full show once it is out', () => {
   const home = fs.readFileSync('index.njk', 'utf8');
   assert.match(home, /<a class="lvs" id="lvStrip" href="\/live\/">/);
+  // «شريط البث» (owner 2026-11-25: the glowing dot «باين انه معمول ب ai»): the show's picture, a countdown in cells, nothing pulsing
+  assert.match(home, /<span class="lvs-im" id="lvsIm"/); assert.match(home, /id="lvsH">00<\/b><small>ساعة/);
+  assert.doesNotMatch(home, /lvs-dot|lvsPulse/);
   assert.match(home, /<script src="\/assets\/live-strip\.js\?v=\d+" defer><\/script>/);
   const js = fs.readFileSync('assets/live.js', 'utf8');
   assert.match(js, /var RECENT = '\/live\/recent\.json';/);
