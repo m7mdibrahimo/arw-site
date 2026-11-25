@@ -1,103 +1,113 @@
 {
- "https://www.ringsidenews.com/logan-paul-accuses-gta-6-ripping-off-his-trading-card-business": {
-  "reason": "المراجعة رفضته: كلمة رقم عربية قدام رقم بالأرقام (مثل: أحد عشر 1000) — اكتب الرقم مرة واحدة",
-  "retry": false,
-  "at": "2026-11-25T15:29:51.884Z"
+ "https://www.fightful.com/wrestling/ilja-dragunov-wants-to-wrestle-people-who-are-drawn-to-a-certain-artistic-form-of-violence-like-jon-moxley-and-samoa-joe": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T15:39:43.036Z"
+ },
+ "https://www.fightful.com/wrestling/njpw-world-tag-league-2026-standings-and-results-archive": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T15:39:42.267Z"
  },
  "https://www.fightful.com/wrestling/ilja-dragunov-i-feel-like-fighting-brings-out-your-true-face": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T15:32:06.259Z"
+  "at": "2026-11-25T15:39:42.175Z"
  },
  "https://www.fightful.com/wrestling/wwe-files-for-mid-south-wrestling-trademark": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T15:32:05.664Z"
+  "at": "2026-11-25T15:39:41.442Z"
  },
  "https://www.fightful.com/wrestling/njpw-world-tag-league-results-11-25-26-a-block-action-with-two-teams-reaching-four-points": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T15:32:05.120Z"
+  "at": "2026-11-25T15:39:40.876Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-wished-he-couldve-said-hi-to-drake-at-wwe-elimination-chamber-2025": {
   "reason": "عنوانه شبه خبر منشور، وفحص التكرار مردّش؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T15:32:04.478Z"
+  "at": "2026-11-25T15:39:40.104Z"
  },
  "https://www.fightful.com/wrestling/zayda-steel-i-dont-speak-to-a-couple-of-family-members-because-of-my-choice-of-becoming-a-wreslter": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T15:31:55.174Z"
+  "at": "2026-11-25T15:39:35.665Z"
  },
  "https://www.fightful.com/wrestling/kevin-knight-i-plan-on-putting-yawn-moxley-to-sleep-and-making-my-way-to-becoming-a-new-champion": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T15:31:54.559Z"
+  "at": "2026-11-25T15:39:34.840Z"
  },
  "https://www.fightful.com/wrestling/shawn-michaels-expresses-how-proud-he-is-of-thea-hail-following-wwe-nxt": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T15:31:52.759Z"
+  "at": "2026-11-25T15:39:33.628Z"
  },
  "https://www.fightful.com/wrestling/robert-stone-there-is-a-short-list-of-people-that-im-genuinely-happy-to-see-succeed-and-one-of-them-is-chelsea-green": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T15:31:52.083Z"
+  "at": "2026-11-25T15:39:32.839Z"
  },
  "https://www.fightful.com/wrestling/the-dangerous-new-level-segment-added-to-11-25-aew-dynamite": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T15:31:51.306Z"
+  "at": "2026-11-25T15:39:31.881Z"
  },
  "https://www.fightful.com/wrestling/robert-stone-the-day-kendal-grey-started-nxt-you-just-knew-theres-something-special-about-them": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T15:31:50.593Z"
+  "at": "2026-11-25T15:39:31.103Z"
  },
  "https://www.fightful.com/wrestling/robert-stone-robbie-e-to-me-is-no-different-than-the-vanity-project-is-now": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T15:31:49.857Z"
+  "at": "2026-11-25T15:39:30.280Z"
  },
  "https://www.fightful.com/wrestling/fatal-4-way-1-contenders-match-grayson-waller-mason-rook-face-to-face-announced-for-12-1-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-25T15:31:49.146Z"
+  "at": "2026-11-25T15:39:27.374Z"
  },
  "https://www.fightful.com/wrestling/izzi-dame-def-zaria-to-become-two-time-nxt-womens-north-american-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-25T15:31:49.014Z"
+  "at": "2026-11-25T15:39:27.224Z"
  },
  "https://www.fightful.com/wrestling/wwe-smackdown-11-20-draws-1-2-million-viewers": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T15:31:48.930Z"
+  "at": "2026-11-25T15:39:27.124Z"
  },
  "https://www.fightful.com/wrestling/kendal-grey-wren-sinclair-invited-to-wwe-john-cena-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-25T15:31:46.833Z"
+  "at": "2026-11-25T15:39:21.924Z"
  },
  "https://www.fightful.com/wrestling/myka-lockwood-pins-noam-dar-on-11-24-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-25T15:31:46.586Z"
+  "at": "2026-11-25T15:39:21.634Z"
  },
  "https://www.fightful.com/wrestling/kelani-jordan-vs-kendal-grey-in-tlc-match-for-nxt-womens-title-made-official-for-tlc-ple": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-25T15:31:46.505Z"
+  "at": "2026-11-25T15:39:21.536Z"
  },
  "https://www.fightful.com/wrestling/the-hardys-tna-contracts-are-set-to-expire-soon": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T15:31:46.318Z"
+  "at": "2026-11-25T15:39:21.330Z"
  },
  "https://www.fightful.com/wrestling/340733-wwe-raw-november-16": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "reason": "المراجعة رفضته: نفس العنوان منشور قبل كده — الخبر مكرر، اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Intercontinental Championship",
   "retry": true,
-  "at": "2026-11-25T15:31:24.629Z"
+  "at": "2026-11-25T15:38:52.849Z"
+ },
+ "https://www.ringsidenews.com/logan-paul-accuses-gta-6-ripping-off-his-trading-card-business": {
+  "reason": "المراجعة رفضته: كلمة رقم عربية قدام رقم بالأرقام (مثل: أحد عشر 1000) — اكتب الرقم مرة واحدة",
+  "retry": false,
+  "at": "2026-11-25T15:29:51.884Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-he-was-going-to-get-time-off-after-wrestlemania-42": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1988,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-18T16:47:09.381Z"
- },
- "https://www.fightful.com/wrestling/continental-classic-matches-tbs-title-four-way-announced-for-11-18-aew-dynamite": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T16:40:42.942Z"
  }
 }
