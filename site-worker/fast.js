@@ -151,6 +151,9 @@ export function goneTarget(path) {
   return null;
 }
 
+/** «بث مباشر»: the programs with a standing live page (_data/livePrograms.js) */
+const LIVE_PROGRAMS = ["raw", "smackdown", "nxt", "dynamite", "collision", "tna", "roh", "royal-rumble", "wrestlemania", "summerslam", "survivor-series", "elimination-chamber", "money-in-the-bank", "crown-jewel", "full-gear", "all-in", "double-or-nothing", "worlds-end", "forbidden-door"];
+
 /** The whole script: arw-site-static's fetch */
 export async function handle(request, env, ctx) {
   const r = await serve(request, env, ctx);
@@ -158,6 +161,13 @@ export async function handle(request, env, ctx) {
   // «بث مباشر» (worker/src/live.ts): a show's live page works the minute the show is found, before its own page is built —
   // the section's page fills itself for the show named in the address (assets/live.js)
   const lp = new URL(request.url).pathname;
+  // a show's live page removed days after the show (INCIDENTS #1537): its program's standing page, for the search engines
+  // and old shares alike — /live/raw-24-11-2026/ → /live/raw/
+  const old = lp.match(/^\/live\/([a-z0-9-]+)-(\d{2})-(\d{2})-(\d{4})\/?$/);
+  if (old && Date.UTC(+old[4], +old[3] - 1, +old[2]) < Date.now() - 3 * 86400000) {
+    const to = LIVE_PROGRAMS.includes(old[1]) ? `/live/${old[1]}/` : "/live/";
+    return new Response(null, { status: 301, headers: { Location: to, "Cache-Control": "public, max-age=3600" } });
+  }
   if (/^\/live\/[a-z0-9-]{3,80}\/?$/.test(lp) && (request.method === "GET" || request.method === "HEAD")) {
     const shell = await env.ASSETS.fetch(new Request(new URL("/live/", request.url).toString(), { method: "GET" }));
     if (shell.status === 200) {

@@ -117,4 +117,29 @@ eleventyExcludeFromCollections: true
     {% endif %}
   </url>
   {% endfor %}
+  {#- «بث مباشر» (INCIDENTS #1537): the section, each program's standing page, and each show's live page while it is up -#}
+  {%- set liveNow = liveIndex[0].start.slice(0, 10) if (liveIndex and liveIndex.length) else latestDate %}
+  <url>
+    <loc>https://arab-wrestling.com/live/</loc>
+    <lastmod>{{ liveNow }}</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  {%- for p in livePrograms %}
+  <url>
+    <loc>https://arab-wrestling.com/live/{{ p.key }}/</loc>
+    <lastmod>{{ liveNow }}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  {%- endfor %}
+  {%- for l in liveIndex %}
+  <url>
+    <loc>https://arab-wrestling.com/live/{{ l.key }}/</loc>
+    <lastmod>{{ l.start.slice(0, 10) }}</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.7</priority>{% if l.image %}
+    <image:image><image:loc>{{ ("https://arab-wrestling.com" + l.image) if l.image.charAt(0) == "/" else l.image }}</image:loc></image:image>{% endif %}
+  </url>
+  {%- endfor %}
 </urlset>

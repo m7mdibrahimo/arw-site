@@ -7,7 +7,7 @@
 <script>if(!['arab-wrestling.com','localhost','127.0.0.1'].includes(location.hostname)){location.replace('https://arab-wrestling.com'+location.pathname+location.search+location.hash);}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="{{ "noindex, follow" if live_key else "index, follow" }}">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
 <link rel="icon" type="image/png" href="/favicon.png?v=3">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
@@ -277,25 +277,55 @@
 <link rel="stylesheet" href="/assets/features.css?v=20261016a">
 <link rel="stylesheet" href="/assets/dark.css?v=20261016b">
 
-{%- set lvTitle = (title or "بث مباشر لعروض المصارعة الحرة") -%}
-{%- set lvUrl = "https://arab-wrestling.com" + (page.url | default("/live/")) -%}
-{%- set lvDesc = ("شاهد " + title + " بثًا مباشرًا: عدّاد حتى لحظة البداية ثم كل روابط البث المباشر في مكان واحد.") if live_key else "بث مباشر لعروض المصارعة الحرة: عدّاد دقيق حتى لحظة بداية كل عرض، ثم كل روابط البث المباشر في صفحة واحدة تتحدّث وحدها." -%}
-{%- set lvImg = ("https://arab-wrestling.com" + image) if (image and image.charAt(0) == "/") else (image or "https://arab-wrestling.com/assets/logo.png") -%}
+{#- SEO (owner 2026-11-25: «أرشف القسم في جوجل … لو أي حد بيدور على بث مباشر للعرض اللي عايزه هيلاقيه»): the words people
+    search («بث مباشر الرو»، «مشاهدة سماك داون مباشر») in the title and description, a standing page per program, and the
+    show's live broadcast as structured data — all in the head, nothing added to what visitors read -#}
+{%- set lvSite = "https://arab-wrestling.com" -%}
+{%- set lvUrl = lvSite + (page.url | default("/live/")) -%}
+{%- if live_key -%}
+  {%- set lvName = title | replace("بث مباشر ", "") -%}
+  {%- set lvDay = event_date | arDay -%}
+  {%- set lvTitle = "بث مباشر " + lvName + " " + lvDay + " | مشاهدة " + program_en + " مباشر" -%}
+  {%- set lvDesc = "بث مباشر عرض " + lvName + " (" + program_en + ") بتاريخ " + lvDay + ": شاهد العرض مباشرة على عرب راسلنج بسيرفرات تعمل داخل الصفحة، مع عدّاد دقيق حتى لحظة البداية بتوقيت بلدك، ثم العرض كاملًا مترجمًا فور نشره." -%}
+{%- elif liveProg -%}
+  {%- set lvTitle = "بث مباشر " + liveProg.ar + " اليوم | مشاهدة " + liveProg.en + " مباشر" -%}
+  {%- set lvDesc = "بث مباشر " + liveProg.ar + " (" + liveProg.en + ")" + ((" " + liveProg.when) if liveProg.when else "") + ": شاهد كل حلقة مباشرة على عرب راسلنج بسيرفرات تعمل داخل الصفحة، مع عدّاد دقيق حتى البداية بتوقيت بلدك، ثم العرض كاملًا مترجمًا فور نشره." -%}
+{%- else -%}
+  {%- set lvTitle = "بث مباشر لعروض المصارعة الحرة | مشاهدة الرو وسماك داون وداينامايت مباشر" -%}
+  {%- set lvDesc = "بث مباشر لعروض المصارعة الحرة: الرو، سماك داون، ان اكس تي، داينامايت وكل العروض الكبرى — عدّاد دقيق حتى البداية بتوقيت بلدك، ثم سيرفرات مشاهدة مباشرة تعمل داخل الصفحة." -%}
+{%- endif -%}
+{%- set lvImg = (lvSite + image) if (image and image.charAt(0) == "/") else (image or (lvSite + "/assets/logo.png")) -%}
 <title>{{ lvTitle }} | عرب راسلنج</title>
 <meta name="description" content="{{ lvDesc }}">
 <link rel="canonical" href="{{ lvUrl }}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="{{ "video.other" if live_key else "website" }}">
 <meta property="og:url" content="{{ lvUrl }}">
-<meta property="og:title" content="{{ lvTitle }} | عرب راسلنج">
+<meta property="og:title" content="{{ lvTitle }}">
 <meta property="og:description" content="{{ lvDesc }}">
 <meta property="og:image" content="{{ lvImg }}">
 <meta property="og:site_name" content="عرب راسلنج">
 <meta property="og:locale" content="ar_AR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ lvTitle }} | عرب راسلنج">
+<meta name="twitter:title" content="{{ lvTitle }}">
 <meta name="twitter:description" content="{{ lvDesc }}">
 <meta name="twitter:image" content="{{ lvImg }}">
-<link rel="stylesheet" href="/assets/live.css">
+{%- set lvParent = (live_key | liveProgOf(livePrograms)) if live_key else null -%}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://arab-wrestling.com/"},{"@type":"ListItem","position":2,"name":"بث مباشر","item":"https://arab-wrestling.com/live/"}
+{%- if lvParent %},{"@type":"ListItem","position":3,"name":{{ ("بث مباشر " + lvParent.ar) | jsonify | safe }},"item":{{ (lvSite + "/live/" + lvParent.key + "/") | jsonify | safe }}}{% endif %}
+{%- if live_key or liveProg %},{"@type":"ListItem","position":{{ 4 if lvParent else 3 }},"name":{{ lvTitle | jsonify | safe }},"item":{{ lvUrl | jsonify | safe }}}{% endif %}]}
+{%- if live_key %},
+{"@type":"VideoObject","@id":{{ (lvUrl + "#live") | jsonify | safe }},"name":{{ lvTitle | jsonify | safe }},"description":{{ lvDesc | jsonify | safe }},"thumbnailUrl":[{{ lvImg | jsonify | safe }}],"uploadDate":{{ start | jsonify | safe }},"inLanguage":"ar","isFamilyFriendly":true,
+ "publication":{"@type":"BroadcastEvent","isLiveBroadcast":true,"startDate":{{ start | jsonify | safe }},"endDate":{{ end | jsonify | safe }}},
+ "about":{"@type":"SportsEvent","name":{{ program_en | jsonify | safe }},"alternateName":{{ ("عرض " + lvName) | jsonify | safe }},"startDate":{{ start | jsonify | safe }},"endDate":{{ end | jsonify | safe }},"eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OnlineEventAttendanceMode","location":{"@type":"VirtualLocation","url":{{ lvUrl | jsonify | safe }}},"image":[{{ lvImg | jsonify | safe }}],"organizer":{"@type":"Organization","name":{{ federation | jsonify | safe }}},"description":{{ lvDesc | jsonify | safe }}},
+ "publisher":{"@type":"Organization","name":"عرب راسلنج","url":"https://arab-wrestling.com/","logo":{"@type":"ImageObject","url":"https://arab-wrestling.com/assets/logo.png"}}}
+{%- else %},
+{"@type":"CollectionPage","name":{{ lvTitle | jsonify | safe }},"description":{{ lvDesc | jsonify | safe }},"url":{{ lvUrl | jsonify | safe }},"inLanguage":"ar","isPartOf":{"@type":"WebSite","name":"عرب راسلنج","url":"https://arab-wrestling.com/"}}
+{%- endif %}
+]}
+</script>
+<link rel="stylesheet" href="/assets/live.css?v=1537">
 </head>
 <body>
 <header>
@@ -323,16 +353,21 @@
     </ul>
   </nav>
 </header>
-<main class="lv-page" id="lvRoot" data-key="{{ live_key or "" }}"{% if live_key %} data-start="{{ start }}" data-end="{{ end }}" data-title="{{ title | replace("بث مباشر ", "") }}" data-fed="{{ federation }}" data-en="{{ program_en }}" data-img="{{ image or "" }}"{% endif %}>
-{%- if live_key %}
+<main class="lv-page" id="lvRoot" data-key="{{ live_key or "" }}"{% if liveProg %} data-prog="{{ liveProg.key }}" data-title="{{ liveProg.ar }}" data-fed="{{ liveProg.fed }}"{% endif %}{% if live_key %} data-start="{{ start }}" data-end="{{ end }}" data-title="{{ title | replace("بث مباشر ", "") }}" data-fed="{{ federation }}" data-en="{{ program_en }}" data-img="{{ image or "" }}"{% endif %}>
+{%- if liveProg %}
+  <div class="lv-head lv-ph"><div><h1><i></i>بث مباشر {{ liveProg.ar }}</h1><p>صفحة البث المباشر لعرض {{ liveProg.ar }} ({{ liveProg.en }}){% if liveProg.when %} {{ liveProg.when }}{% endif %}: عدّاد حتى لحظة البداية بتوقيت بلدك، ثم سيرفرات المشاهدة المباشرة داخل الصفحة.</p></div></div>
+  <div id="lvShow"></div>
+  <section class="lv-more" id="lvMore"></section>
+{%- elif live_key %}
   <div id="lvShow"><noscript><div class="lv-ended"><b>{{ title }}</b><p>تحتاج هذه الصفحة إلى تفعيل جافاسكربت لعرض العدّاد وروابط البث.</p></div></noscript></div>
-  <section class="lv-more"><h2>عروض أخرى في البث المباشر</h2><p><a href="/live/" style="color:var(--teal);font-weight:800">كل عروض البث المباشر ←</a></p></section>
+  <section class="lv-more" id="lvMore"></section>
 {%- else %}
-  <div class="lv-head"><div><h1><i></i>بث مباشر</h1><p>كل عرض مصارعة يُبثّ مباشرة: عدّاد حتى دقّ الجرس، ثم كل روابط البث من كل المصادر في مكان واحد.</p></div></div>
+  <div class="lv-head"><div><h1><i></i>بث مباشر</h1><p>كل عرض مصارعة يُبثّ مباشرة: عدّاد حتى دقّ الجرس، ثم سيرفرات المشاهدة تعمل داخل الصفحة.</p><p class="lv-zone" id="lvZone"></p></div></div>
   <div id="lvList"><div class="lv-empty"><b>جارٍ التحميل…</b></div></div>
+  <nav class="lv-progs" aria-label="صفحات البث المباشر للعروض"><h2>صفحات البث المباشر الدائمة</h2><div>{% for p in livePrograms %}<a href="/live/{{ p.key }}/"><small>{{ p.fed }}</small>{{ p.ar }}</a>{% endfor %}</div></nav>
 {%- endif %}
 </main>
-<script src="/assets/live.js" defer></script>
+<script src="/assets/live.js?v=1537" defer></script>
 
 <footer>
   <div class="social-row">

@@ -1,0 +1,11 @@
+---
+permalink: "/live/recent.json"
+eleventyExcludeFromCollections: true
+---
+{#- «بث مباشر» (assets/live.js): the site's newest full shows — a live page links to its show's full episode the moment
+    it is published here, and shows the newest ones under it -#}
+[
+{%- for item in collections.shows | firstN(30) %}
+{ "u": {{ (item.url | cleanUrl) | jsonify | safe }}, "t": {{ (item.data.headline or item.data.title) | jsonify | safe }}, "p": {{ (item.data.program_name or item.data.title or "") | jsonify | safe }}, "d": {{ (item.data.event_date | ymd) | jsonify | safe }}, "img": "{% optImg item.data.image, '' %}" }{% if not loop.last %},{% endif %}
+{%- endfor %}
+]

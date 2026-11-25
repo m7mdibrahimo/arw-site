@@ -1883,6 +1883,11 @@ module.exports = function(eleventyConfig) {
   // «Maximum call stack size exceeded» (INCIDENTS #1169). The loop gets the first `n` items it would show — the same
   // non-nostalgia test the template makes — so its depth no longer grows with the archive.
   eleventyConfig.addNunjucksFilter("firstN", (items, n) => (Array.isArray(items) ? items.slice(0, n) : []));
+  // «بث مباشر» (pages/live-recent.njk): a show's US date as «2026-11-25», whether YAML read it as a date or a string
+  eleventyConfig.addFilter("arDay", (v) => { const m = String(v instanceof Date ? v.toISOString() : v || "").match(/^(\d{4})-(\d{2})-(\d{2})/); const M = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"]; return m ? `${+m[3]} ${M[+m[2] - 1]} ${m[1]}` : ""; });
+  // «بث مباشر»: the standing program page a show's live page belongs to («dynamite-25-11-2026» → /live/dynamite/)
+  eleventyConfig.addFilter("liveProgOf", (key, programs) => (programs || []).find((p) => new RegExp(`^${p.key}-\\d{2}-\\d{2}-\\d{4}$`).test(String(key || ""))) || null);
+  eleventyConfig.addFilter("ymd", (v) => (v instanceof Date && !isNaN(v) ? v.toISOString().slice(0, 10) : String(v || "").slice(0, 10)));
   eleventyConfig.addNunjucksFilter("homeFirst", function(items, n) {
     const out = [];
     for (const item of items || []) {

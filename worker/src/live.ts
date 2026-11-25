@@ -122,7 +122,9 @@ export function identify(title: string): ShowId | null {
     if (words.length < 2) return null;
     program = { key: words.join("-"), fed: fed.toUpperCase() === "IMPACT" ? "TNA" : fed.toUpperCase(), ar: "", dur: 180, ple: true };
   }
-  const name = t.replace(/\s*[–-]\s*\d.*$/, "").replace(/\b(?:watch|live|online|full show|free)\b/gi, "").replace(/\s+/g, " ").trim();
+  // the show's own name: what comes before its date («AEW Dynamite Live 11/25/26 November 25th 2026» → «AEW Dynamite»)
+  const cut = t.search(new RegExp(`\\s[–-]\\s*\\d|\\b\\d{1,2}/\\d{1,2}/\\d{2,4}\\b|\\b\\d{1,2}(?:st|nd|rd|th)\\b|\\b20\\d{2}\\b|\\b(?:${MONTHS.join("|")})\\b`, "i"));
+  const name = (cut > 0 ? t.slice(0, cut) : t).replace(/\b(?:watch|live|online|full show|free|stream(?:ing)?)\b/gi, "").replace(/\s+/g, " ").trim() || t;
   return { key: `${program.key}-${date}`, date, program, name };
 }
 
@@ -268,9 +270,9 @@ export interface PubLink { u: string; q: string; s: number; n: number; e?: 1; at
 export interface Show {
   key: string; slug: string; date: string; fed: string; prog: string; ar: string; name: string; ple?: boolean;
   start: number; how: string; end: number; img?: string | null; srcImg?: string | null; srcs: string[]; links: PubLink[];
-  firstAt: number; page?: "pending" | "done" | "gone"; pageAt?: number;
+  firstAt: number; page?: "pending" | "done" | "gone"; pageAt?: number; pageRev?: number; pageV?: number;
 }
-export interface LiveState { sources: Record<string, SourceState>; posts: Record<string, PostState>; shows: Record<string, Show> }
+export interface LiveState { sources: Record<string, SourceState>; posts: Record<string, PostState>; shows: Record<string, Show>; manual: Manual }
 
 const ENDED_KEEP = 3 * 86_400_000;      // an ended show's page stays three days, then goes
 const HORIZON = 8 * 86_400_000;         // shows further away than this are not listed yet
@@ -328,7 +330,7 @@ export function mergeShows(posts: PostState[], prev: Record<string, Show>, now: 
       key, slug: slugOf(id), date: id.date, fed: id.program.fed, prog: id.program.key, ar: id.program.ar || "", name: id.name,
       ...(id.program.ple ? { ple: true } : {}),
       start, how, end, srcImg, img: old?.img || null, srcs,
-      links, firstAt: old?.firstAt || now, ...(old?.page ? { page: old.page, pageAt: old.pageAt } : {}),
+      links, firstAt: old?.firstAt || now, ...(old?.page ? { page: old.page, pageAt: old.pageAt, ...(old.pageRev ? { pageRev: old.pageRev } : {}), ...(old.pageV ? { pageV: old.pageV } : {}) } : {}),
     };
   }
   // a show whose posts left the sources' first page stays until its end (and its page's three days)
@@ -352,18 +354,115 @@ export function statusOf(s: Pick<Show, "start" | "end">, now: number): Status {
   return now >= s.end ? "ended" : now >= s.start ? "live" : "soon";
 }
 
-/** What /live/data says: the shows of the section, links only from ten minutes before the start */
-export function publicData(shows: Record<string, Show>, now: number) {
-  const list = Object.values(shows)
-    .filter((s) => now < s.end + 6 * 3_600_000 && s.start - now < HORIZON)
+// ── Playing on the site ─────────────────────────────────────────────────────
+/** The address that plays a stream link inside our own page, or null when it plays only on its own site.
+ *  Checked in a browser 2026-11-25: sawlivenow.com's embed plays framed on any site (the sources' own pages only frame
+ *  it, with ads around); dailypudding's «alpha.php?live=chNN_Q» is that embed wrapped in ads; techfunlife's
+ *  «line=1080NN_Q» is the same channel behind a human check and refuses framing; blog.djt2.com short links open an ad
+ *  page; dramavideo.se allows framing. */
+export function playable(u: string): string | null {
+  let url: URL;
+  try { url = new URL(u); } catch { return null; }
+  if (url.protocol !== "https:" && url.protocol !== "http:") return null;
+  const host = url.hostname.replace(/^www\./, "").toLowerCase();
+  const ch = (v: string | null | undefined) => (v && /^ch\d{1,4}_[A-Z]{2,3}$/.test(v) ? `https://www.sawlivenow.com/embed/${v}/` : null);
+  if (host === "sawlivenow.com") return ch((url.pathname.match(/^\/embed\/([^/]+)\/?$/) || [])[1]);
+  const live = url.searchParams.get("live");
+  if (live) return ch(live);
+  const line = (url.searchParams.get("line") || "").match(/^1080(\d{1,4})_([A-Z]{2,3})$/);
+  if (line) return ch(`ch${line[1]}_${line[2]}`);
+  if (host === "dramavideo.se" || host.endsWith(".dramavideo.se")) return "https://" + url.host + url.pathname + url.search;
+  return null;
+}
+
+/** A server as /live/data gives it: «u» plays in our player, or (x) opens on its own site */
+export interface PubServer { u: string; q: string; s: number; n: number; at: number; x?: 1; m?: 1 }
+const QORDER: Record<string, number> = { HD: 0, FHD: 1, SD: 2, LQ: 3 };
+/** A show's servers: the owner's own first, then every source's in the order they came, the best quality first;
+ *  duplicates (the same channel under two pages) once; links that only open elsewhere only when nothing plays here */
+export function servers(s: Pick<EffShow, "links" | "add" | "block">): PubServer[] {
+  const block = new Set(s.block || []);
+  const play: PubServer[] = [], ext: PubServer[] = [], seen = new Set<string>();
+  for (const a of s.add || []) {
+    if (block.has(a.u)) continue;
+    const u = a.x ? a.u : playable(a.u) || a.u;
+    if (seen.has(u)) continue;
+    seen.add(u);
+    (a.x ? ext : play).push({ u, q: a.q || "", s: 0, n: 0, at: a.at, m: 1, ...(a.x ? { x: 1 as const } : {}) });
+  }
+  const auto: PubServer[] = [];
+  for (const l of s.links || []) {
+    if (block.has(l.u)) continue;
+    const p = l.e ? l.u : playable(l.u);
+    const u = p || l.u;
+    if (seen.has(u)) continue;
+    seen.add(u);
+    auto.push({ u, q: l.q, s: l.s, n: 0, at: l.at, ...(p ? {} : { x: 1 as const }) });
+  }
+  auto.sort((a, b) => a.s - b.s || (QORDER[a.q] ?? 4) - (QORDER[b.q] ?? 4));
+  for (const a of auto) (a.x ? ext : play).push(a);
+  const out = play.length ? play.concat(ext.filter((e) => e.m)) : ext;
+  out.forEach((v, i) => { v.n = i + 1; });
+  return out;
+}
+
+// ── The owner's hand (panel «البث المباشر») ────────────────────────────────
+/** A link the owner added: plays here unless marked as opening on its own site */
+export interface ManualLink { u: string; q?: string; x?: 1; at: number }
+/** What the owner changed on a show, or a show he added himself (def) */
+export interface ManualShow {
+  hide?: 1; t?: string; start?: number; end?: number; img?: string; note?: string; vod?: string;
+  add?: ManualLink[]; block?: string[];
+  def?: { name: string; fed: string; prog: string; date: string; ar: string; ple?: 1 };
+  rev?: number; page?: Show["page"]; pageAt?: number; pageRev?: number; pageV?: number;
+}
+export interface Manual { shows: Record<string, ManualShow>; off?: 1 }
+export type EffShow = Show & { hide?: 1; note?: string; vod?: string; add?: ManualLink[]; block?: string[]; manual?: 1; rev?: number };
+
+/** The shows as the site shows them: the sources' merge with the owner's changes on top */
+export function applyManual(auto: Record<string, Show>, m: Manual | null | undefined): Record<string, EffShow> {
+  const out: Record<string, EffShow> = {};
+  for (const [k, s] of Object.entries(auto)) out[k] = { ...s };
+  for (const [k, o] of Object.entries(m?.shows || {})) {
+    let s = out[k];
+    if (!s && o.def && o.start) {
+      const d = o.def;
+      const [y, mo, da] = d.date.split("-");
+      s = out[k] = {
+        key: k, slug: `${d.prog}-${da}-${mo}-${y}`.replace(/[^a-z0-9-]+/g, "-").replace(/-+/g, "-"), date: d.date, fed: d.fed, prog: d.prog, ar: d.ar, name: d.name,
+        ...(d.ple ? { ple: true } : {}), start: o.start, how: "manual", end: o.end || o.start + 3 * 3_600_000, img: o.img || null, srcs: [], links: [],
+        firstAt: 0, manual: 1, ...(o.page ? { page: o.page, pageAt: o.pageAt, pageRev: o.pageRev, pageV: o.pageV } : {}),
+      } as EffShow;
+    }
+    if (!s) continue;
+    if (o.t) s.ar = o.t;
+    if (o.start && o.start !== s.start) { s.end = o.end || s.end - s.start + o.start; s.start = o.start; s.how = "manual"; }
+    else if (o.end) s.end = o.end;
+    if (o.img) s.img = o.img;
+    if (o.hide) s.hide = 1;
+    if (o.note) s.note = o.note;
+    if (o.vod) s.vod = o.vod;
+    if (o.add?.length) s.add = o.add;
+    if (o.block?.length) s.block = o.block;
+    if (o.rev) s.rev = o.rev;
+  }
+  return out;
+}
+
+/** What /live/data says: the shows of the section with their servers, shown from the moment a source has them
+ *  (owner 2026-11-25: «خلي الروابط تظهر عادي مش مخفية لحد ما يشتغل العرض») until the show ends */
+export function publicData(shows: Record<string, EffShow>, now: number, off = false) {
+  const list = off ? [] : Object.values(shows)
+    .filter((s) => !s.hide && now < s.end + 6 * 3_600_000 && s.start - now < HORIZON)
     .sort((a, b) => a.start - b.start)
     .map((s) => {
       const st = statusOf(s, now);
-      const open = now >= s.start - 10 * 60_000 && st !== "ended";
+      const sv = st === "ended" ? [] : servers(s);
       return {
-        k: s.slug, t: arabicTitle(s), en: s.name, fed: s.fed, ple: s.ple ? 1 : 0, start: s.start, end: s.end, how: s.how, st,
-        img: s.img || null, srcs: new Set(s.links.map((l) => l.s)).size, n: s.links.length,
-        links: open ? s.links.map((l) => ({ u: l.u, q: l.q, s: l.s, n: l.n, ...(l.e ? { e: 1 } : {}), at: l.at })) : [],
+        k: s.slug, t: arabicTitle(s), en: s.name, fed: s.fed, ple: s.ple ? 1 : 0, d: s.date, p: s.prog, start: s.start, end: s.end, how: s.how, st,
+        img: s.img || null, srcs: new Set(sv.filter((v) => v.s).map((v) => v.s)).size + (sv.some((v) => v.m) ? 1 : 0), n: sv.length,
+        ...(s.note ? { note: s.note } : {}), ...(s.vod ? { vod: s.vod } : {}),
+        sv,
       };
     });
   return { now, shows: list };
@@ -462,7 +561,8 @@ export async function loadState(db: D1Database): Promise<LiveState> {
   await ensureTable(db);
   const rows = (await db.prepare("SELECT k, v FROM live_state").all<{ k: string; v: string }>()).results || [];
   const get = (k: string) => { const r = rows.find((x) => x.k === k); try { return r ? JSON.parse(r.v) : {}; } catch { return {}; } };
-  return { sources: get("sources"), posts: get("posts"), shows: get("shows") };
+  const manual = get("manual");
+  return { sources: get("sources"), posts: get("posts"), shows: get("shows"), manual: { shows: manual.shows || {}, ...(manual.off ? { off: 1 as const } : {}) } };
 }
 async function saveParts(db: D1Database, parts: [string, unknown][], now: number) {
   if (!parts.length) return;
@@ -524,7 +624,10 @@ export async function runLive(env: LiveEnv, now: number, deps: LiveDeps = {}): P
   for (const [k, p] of Object.entries(state.posts)) if (p.date < minDate && !(state.shows[p.key] && now < state.shows[p.key].end + ENDED_KEEP)) delete state.posts[k];
 
   state.shows = mergeShows(Object.values(state.posts), state.shows, now);
-  await pages(state, now, deps).catch((e) => console.log("[live] pages:", e?.message || e));
+  const marks = await pages(applyManual(state.shows, state.manual), now, deps).catch((e) => { console.log("[live] pages:", e?.message || e); return [] as PageMark[]; });
+  for (const mk of marks) if (state.shows[mk.key]) Object.assign(state.shows[mk.key], mk.set);
+  const manualMarks = marks.filter((mk) => !state.shows[mk.key]);
+  if (manualMarks.length) await markManualPages(db, manualMarks, now);
 
   const parts: [string, unknown][] = [];
   if (JSON.stringify(state.sources) !== before.sources) parts.push(["sources", state.sources]);
@@ -532,7 +635,7 @@ export async function runLive(env: LiveEnv, now: number, deps: LiveDeps = {}): P
   const showsChanged = JSON.stringify(state.shows) !== before.shows;
   if (showsChanged) parts.push(["shows", state.shows]);
   await saveParts(db, parts, now);
-  if (showsChanged) await purgeData().catch(() => {});
+  if (showsChanged || manualMarks.length) await purgeData().catch(() => {});
   return { changed: showsChanged, shows: Object.keys(state.shows).length };
 }
 
@@ -555,13 +658,21 @@ export function pageFile(s: Show): string {
     "",
   ].join("\n");
 }
-async function pages(state: LiveState, now: number, deps: LiveDeps) {
-  if (!deps.commit) return;
-  const shows = Object.values(state.shows);
-  const create = shows.filter((s) => !s.page && now < s.end && s.start - now < HORIZON);
-  const remove = shows.filter((s) => s.page === "done" && now > s.end + ENDED_KEEP);
-  if (!create.length && !remove.length) return;
+/** The page file's format: a page written by an older one is written again (INCIDENTS #1537: the program's name without
+ *  its date, for the page's title in the search results) */
+export const PAGE_V = 2;
+interface PageMark { key: string; set: Partial<Pick<Show, "page" | "pageAt" | "pageRev" | "pageV" | "img">> }
+/** Pages to write: a new show's, an edited show's again (the owner's change of name, time or picture), and a hidden
+ *  or old show's away. Returns what changed on each show, for the caller to keep. */
+async function pages(shows0: Record<string, EffShow>, now: number, deps: LiveDeps): Promise<PageMark[]> {
+  if (!deps.commit) return [];
+  const shows = Object.values(shows0);
+  const create = shows.filter((s) => !s.hide && (!s.page || s.page === "gone") && now < s.end && s.start - now < HORIZON);
+  const update = shows.filter((s) => !s.hide && s.page === "done" && ((s.rev || 0) !== (s.pageRev || 0) || (s.pageV || 1) !== PAGE_V) && now < s.end + ENDED_KEEP);
+  const remove = shows.filter((s) => s.page === "done" && (now > s.end + ENDED_KEEP || s.hide));
+  if (!create.length && !update.length && !remove.length) return [];
   // a show's picture: the source's, kept on the site's own picture store (sources change domains, hotlinks break)
+  const uploaded = new Map<string, string>();
   for (const s of create) {
     if (s.srcImg && !s.img && deps.uploadImage) {
       const r = await get(s.srcImg, 10000);
@@ -569,41 +680,61 @@ async function pages(state: LiveState, now: number, deps: LiveDeps) {
       if (r && r.ok && /^image\//.test(type)) {
         const ext = /png/.test(type) ? "png" : /webp/.test(type) ? "webp" : "jpg";
         const path = `content/images/live-${s.slug}.${ext}`;
-        if (await deps.uploadImage(path, await r.arrayBuffer(), type).catch(() => false)) s.img = "/" + path;
+        if (await deps.uploadImage(path, await r.arrayBuffer(), type).catch(() => false)) { s.img = "/" + path; uploaded.set(s.key, s.img); }
       }
     }
   }
   const changes = [
-    ...create.map((s) => ({ path: `content/live/${s.slug}.md`, text: pageFile(s) })),
+    ...create.concat(update).map((s) => ({ path: `content/live/${s.slug}.md`, text: pageFile(s) })),
     ...remove.map((s) => ({ path: `content/live/${s.slug}.md`, remove: true })),
   ];
-  const names = create.map((s) => s.slug).concat(remove.map((s) => `-${s.slug}`)).join("، ");
-  await deps.commit(changes, `${create.length ? "Create" : "Delete"} بث مباشر “${names}” (لوحة التحكم — البث المباشر)`);
-  for (const s of create) { s.page = "done"; s.pageAt = now; }
-  for (const s of remove) { s.page = "gone"; s.pageAt = now; }
+  const names = create.concat(update).map((s) => s.slug).concat(remove.map((s) => `-${s.slug}`)).join("، ");
+  const verb = create.length ? "Create" : update.length ? "Update" : "Delete";
+  await deps.commit(changes, `${verb} بث مباشر “${names}” (لوحة التحكم — البث المباشر)`);
+  const marks: PageMark[] = [];
+  // the picture uploaded for a new show is the show's own from now on
+  for (const s of create.concat(update)) marks.push({ key: s.key, set: { page: "done", pageAt: now, pageRev: s.rev || 0, pageV: PAGE_V, ...(uploaded.has(s.key) ? { img: uploaded.get(s.key) } : {}) } });
+  for (const s of remove) marks.push({ key: s.key, set: { page: "gone", pageAt: now } });
+  return marks;
+}
+/** The page state of the owner's own shows, written onto the latest «manual» row (the panel may have saved meanwhile) */
+async function markManualPages(db: D1Database, marks: PageMark[], now: number) {
+  const row = await db.prepare("SELECT v FROM live_state WHERE k = 'manual'").first<{ v: string }>();
+  let m: Manual = { shows: {} };
+  try { m = row ? JSON.parse(row.v) : m; } catch {}
+  m.shows = m.shows || {};
+  for (const mk of marks) if (m.shows[mk.key]) Object.assign(m.shows[mk.key], mk.set);
+  await saveParts(db, [["manual", m]], now);
 }
 
 // ── /live/data ─────────────────────────────────────────────────────────────
 const DATA_URL = "https://arw-site-bot.m7mdibrahimpc.workers.dev/live/data";
 async function purgeData() { await (caches as any).default.delete(new Request(DATA_URL)); }
 
-export async function liveDataResponse(env: LiveEnv, cors: Record<string, string>, now = Date.now()): Promise<Response> {
+/** /live/data: the section's shows (edge copy of 20 s), with the visitor's own country and time zone (from the request,
+ *  never cached) and the exact time of this answer — a countdown right to the second in the visitor's own time
+ *  (owner 2026-11-25: «أي حد بيدخل من بلد مختلفة يظهرله الوقت بتوقيت بلده علي حسب الـ IP ويتكتب اسم الدولة») */
+export async function liveDataResponse(env: LiveEnv, cors: Record<string, string>, request?: Request, now = Date.now()): Promise<Response> {
   const cache = (caches as any).default as Cache;
   const key = new Request(DATA_URL);
+  let body = "";
   const hit = await cache.match(key);
-  if (hit) { const r = new Response(hit.body, hit); for (const [k, v] of Object.entries(cors)) r.headers.set(k, v); return r; }
-  if (!env.ANALYTICS) return new Response(JSON.stringify({ now, shows: [] }), { headers: { "Content-Type": "application/json; charset=utf-8", ...cors } });
-  await ensureTable(env.ANALYTICS);
-  const row = await env.ANALYTICS.prepare("SELECT v FROM live_state WHERE k = 'shows'").first<{ v: string }>();
-  let shows: Record<string, Show> = {};
-  try { shows = row ? JSON.parse(row.v) : {}; } catch {}
-  const body = JSON.stringify(publicData(shows, now));
-  // 20 s at the edge: a crowd at the start of a show costs one database read per 20 s, and a new link shows within it
-  const res = new Response(body, { headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "public, max-age=20" } });
-  await cache.put(key, res.clone());
-  const out = new Response(body, res);
-  for (const [k, v] of Object.entries(cors)) out.headers.set(k, v);
-  return out;
+  if (hit) body = await hit.text();
+  else {
+    let shows: Record<string, Show> = {}, manual: Manual = { shows: {} };
+    if (env.ANALYTICS) {
+      await ensureTable(env.ANALYTICS);
+      const rows = (await env.ANALYTICS.prepare("SELECT k, v FROM live_state WHERE k IN ('shows', 'manual')").all<{ k: string; v: string }>()).results || [];
+      for (const r of rows) { try { if (r.k === "shows") shows = JSON.parse(r.v); else manual = JSON.parse(r.v); } catch {} }
+    }
+    body = JSON.stringify(publicData(applyManual(shows, manual), now, !!manual.off));
+    // 20 s at the edge: a crowd at the start of a show costs one database read per 20 s, and a new link shows within it
+    await cache.put(key, new Response(body, { headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "public, max-age=20" } }));
+  }
+  const cf: any = (request as any)?.cf || {};
+  const geo = { c: /^[A-Z]{2}$/.test(String(cf.country || "")) ? cf.country : "", tz: /^[A-Za-z_]+(?:\/[A-Za-z0-9_+-]+){0,2}$/.test(String(cf.timezone || "")) ? cf.timezone : "" };
+  const out = `{"geo":${JSON.stringify(geo)},"t":${Date.now()},` + body.slice(1);
+  return new Response(out, { headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "private, no-store", ...cors } });
 }
 
 /** /live/status: each source's domain and health, for the panel and the watchdog (no links) */
@@ -614,4 +745,200 @@ export async function liveStatus(env: LiveEnv): Promise<unknown> {
     sources: Object.fromEntries(Object.values(st.sources).map((s) => [s.id, { host: s.host, okAt: s.okAt, fails: s.fails || 0, err: s.err, movedFrom: s.movedFrom, movedAt: s.movedAt }])),
     shows: Object.values(st.shows).map((s) => ({ key: s.key, slug: s.slug, start: s.start, end: s.end, how: s.how, srcs: s.srcs, links: s.links.length, page: s.page })),
   };
+}
+
+// ── The panel: «الأدوات ← البث المباشر» (owner 2026-11-25: «تحكم كامل في القسم في اللوحة لو حبيت أضيف حاجة يدوي أو
+//    أعدل حاجة … كل الصلاحيات معايا كاملة») ─────────────────────────────────────────────────────────────────
+const PROGRAMS = (): { key: string; fed: string; ar: string; dur: number; ple?: 1 }[] => [
+  ...WEEKLY.map(([, p]) => ({ key: p.key, fed: p.fed, ar: p.ar, dur: p.dur })),
+  ...PLE.map(([, key, fed, ar]) => ({ key, fed, ar, dur: 240, ple: 1 as const })),
+];
+const clean = (v: unknown, max: number) => String(v ?? "").replace(/[\u0000-\u001f\u007f<>]/g, " ").replace(/\s+/g, " ").trim().slice(0, max);
+const httpsUrl = (v: unknown) => { const u = String(v ?? "").trim(); if (u.length > 1500) return null; try { const x = new URL(u); return x.protocol === "https:" || x.protocol === "http:" ? x.toString() : null; } catch { return null; } };
+const QUAL = new Set(["FHD", "HD", "SD", "LQ", ""]);
+
+/** Patch the sources' own shows row with page marks (the panel's write, the cron may have saved meanwhile) */
+async function markAutoPages(db: D1Database, marks: PageMark[], now: number) {
+  if (!marks.length) return;
+  const row = await db.prepare("SELECT v FROM live_state WHERE k = 'shows'").first<{ v: string }>();
+  let shows: Record<string, Show> = {};
+  try { shows = row ? JSON.parse(row.v) : {}; } catch {}
+  for (const mk of marks) if (shows[mk.key]) Object.assign(shows[mk.key], mk.set);
+  await saveParts(db, [["shows", shows]], now);
+}
+
+/** After the owner's change: the site's pages follow at once (a new show's page, a hidden one's gone, an edit rewritten) */
+async function syncPages(db: D1Database, now: number, deps: LiveDeps) {
+  const st = await loadState(db);
+  const marks = await pages(applyManual(st.shows, st.manual), now, deps);
+  await markAutoPages(db, marks.filter((m) => st.shows[m.key]), now);
+  const own = marks.filter((m) => !st.shows[m.key]);
+  if (own.length) await markManualPages(db, own, now);
+}
+
+function adminView(st: LiveState, now: number) {
+  const eff = applyManual(st.shows, st.manual);
+  const list = Object.values(eff).filter((s) => now < s.end + ENDED_KEEP || st.manual.shows[s.key]?.def && now < s.end + ENDED_KEEP);
+  list.sort((a, b) => { const A = now >= a.end ? 1 : 0, B = now >= b.end ? 1 : 0; return A - B || (A ? b.start - a.start : a.start - b.start); });
+  const srcName = (i: number, s: EffShow) => s.srcs[i - 1] || "";
+  return {
+    now, off: !!st.manual.off,
+    sources: SOURCES.map((d) => { const x = st.sources[d.id] || { id: d.id, host: d.host }; return { id: d.id, home: d.host, host: x.host, okAt: x.okAt || 0, fails: x.fails || 0, err: x.err || "", movedFrom: x.movedFrom || "", movedAt: x.movedAt || 0 }; }),
+    programs: PROGRAMS(),
+    shows: list.map((s) => {
+      const auto = st.shows[s.key];
+      const o = st.manual.shows[s.key] || {};
+      const block = new Set(s.block || []);
+      return {
+        key: s.key, slug: s.slug, t: arabicTitle(s), name: s.name, fed: s.fed, prog: s.prog, date: s.date, start: s.start, end: s.end, how: s.how,
+        st: statusOf(s, now), img: s.img || null, hide: !!s.hide, note: s.note || "", vod: s.vod || "", own: !auto, page: s.page || "", edited: !!st.manual.shows[s.key],
+        auto: auto ? { t: arabicTitle(auto), start: auto.start, end: auto.end, img: auto.img || null, how: auto.how } : null,
+        links: (s.links || []).map((l) => ({ u: l.u, q: l.q, src: srcName(l.s, s), play: l.e ? l.u : playable(l.u), blocked: block.has(l.u) })),
+        add: o.add || [],
+        servers: servers(s).length,
+      };
+    }),
+  };
+}
+
+export async function liveAdmin(env: LiveEnv, request: Request, deps: LiveDeps, now = Date.now()): Promise<{ status?: number; body: any }> {
+  const db = env.ANALYTICS;
+  if (!db) return { status: 500, body: { success: false, error: "قاعدة البيانات مش متوصلة" } };
+  const st = await loadState(db);
+  if (request.method === "GET") return { body: { success: true, ...adminView(st, now) } };
+  const b: any = await request.json().catch(() => ({}));
+  const fail = (error: string) => ({ status: 400, body: { success: false, error } });
+  const eff = applyManual(st.shows, st.manual);
+  const m = st.manual;
+  const entry = (k: string) => (m.shows[k] = m.shows[k] || {});
+  const bump = (k: string) => { const e = entry(k); e.rev = (e.rev || 0) + 1; };
+  const parts: [string, unknown][] = [];
+  let pagesToo = false;
+  const key = String(b.key || "");
+  const show = eff[key];
+  const needShow = () => (show ? null : fail("العرض ده مش موجود (يمكن اتشال)."));
+  const time = (v: unknown) => { const n = Number(v); return Number.isFinite(n) && n > now - 30 * 86_400_000 && n < now + 90 * 86_400_000 ? Math.round(n) : null; };
+
+  switch (b.action) {
+    case "save": {                     // name, time, end, picture, a note on the page, the full show's page
+      const bad = needShow(); if (bad) return bad;
+      const e = entry(key);
+      if ("t" in b) { const t = clean(b.t, 80); if (t) e.t = t; else delete e.t; }
+      if ("start" in b) { if (b.start === null || b.start === "") delete e.start; else { const t = time(b.start); if (!t) return fail("وقت البداية مش صحيح"); e.start = t; } }
+      if ("end" in b) { if (b.end === null || b.end === "") delete e.end; else { const t = time(b.end); if (!t) return fail("وقت النهاية مش صحيح"); e.end = t; } }
+      const s0 = e.start || show!.start, e0 = e.end || (e.start ? show!.end - show!.start + e.start : show!.end);
+      if (e0 <= s0 || e0 - s0 > 14 * 3_600_000) return fail("النهاية لازم تبقى بعد البداية وبحد أقصى 14 ساعة");
+      if ("img" in b) { const v = String(b.img || "").trim(); if (!v) delete e.img; else if (/^\/content\/images\/[\w.-]+$/.test(v) || httpsUrl(v)) e.img = v; else return fail("رابط الصورة مش صحيح"); }
+      if ("note" in b) { const n = clean(b.note, 300); if (n) e.note = n; else delete e.note; }
+      if ("vod" in b) {
+        const v = String(b.vod || "").trim().replace(/^https?:\/\/(?:www\.)?arab-wrestling\.com/i, "");
+        if (!v) delete e.vod; else if (/^\/[^\s<>"']{2,300}$/.test(v)) e.vod = v; else return fail("رابط العرض الكامل لازم يكون صفحة من الموقع");
+      }
+      bump(key); pagesToo = true; break;
+    }
+    case "hide": case "unhide": {
+      const bad = needShow(); if (bad) return bad;
+      if (b.action === "hide") entry(key).hide = 1; else delete entry(key).hide;
+      bump(key); pagesToo = true; break;
+    }
+    case "link-add": {
+      const bad = needShow(); if (bad) return bad;
+      const u = httpsUrl(b.u); if (!u) return fail("الرابط مش صحيح");
+      const q = QUAL.has(String(b.q || "")) ? String(b.q || "") : "";
+      const e = entry(key); e.add = e.add || [];
+      if (e.add.length >= 40) return fail("وصلت لأقصى عدد روابط يدوية للعرض (40)");
+      if (e.add.some((a) => a.u === u)) return fail("الرابط ده مضاف قبل كده");
+      e.add.unshift({ u, q, ...(b.x ? { x: 1 as const } : {}), at: now });
+      if (e.block) e.block = e.block.filter((x) => x !== u);
+      break;
+    }
+    case "link-move": {                 // the owner's own servers: up or down
+      const e = entry(key); const i = (e.add || []).findIndex((a) => a.u === b.u); const j = i + (b.dir === "up" ? -1 : 1);
+      if (i < 0 || j < 0 || j >= e.add!.length) return fail("مينفعش");
+      [e.add![i], e.add![j]] = [e.add![j], e.add![i]]; break;
+    }
+    case "link-del": {                  // the owner's link goes; a source's link is hidden (and comes back with «link-restore»)
+      const bad = needShow(); if (bad) return bad;
+      const u = String(b.u || ""); const e = entry(key);
+      if (e.add?.some((a) => a.u === u)) e.add = e.add.filter((a) => a.u !== u);
+      else { e.block = Array.from(new Set([...(e.block || []), u])).slice(-200); }
+      break;
+    }
+    case "link-restore": { const e = entry(key); e.block = (e.block || []).filter((x) => x !== String(b.u || "")); break; }
+    case "add-show": {                  // a show the owner adds by hand: it merges with the sources' when they post it
+      const prog = String(b.prog || "").toLowerCase().replace(/[^a-z0-9-]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40);
+      const date = String(b.date || "");
+      if (prog.length < 2) return fail("اختار البرنامج أو اكتب اسمه بالإنجليزي");
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return fail("التاريخ مش صحيح");
+      const start = time(b.start); if (!start) return fail("وقت البداية مش صحيح");
+      const end = b.end ? time(b.end) : null;
+      if (end && (end <= start || end - start > 14 * 3_600_000)) return fail("النهاية لازم تبقى بعد البداية وبحد أقصى 14 ساعة");
+      const k = `${prog}-${date}`;
+      if (eff[k] && !eff[k].hide) return fail("العرض ده موجود بالفعل في القسم — عدّله من القائمة");
+      const known = PROGRAMS().find((p) => p.key === prog);
+      const name = clean(b.name, 80) || (known ? `${known.fed} ${prog.replace(/-/g, " ")}` : prog.replace(/-/g, " "));
+      const ar = clean(b.ar, 80) || known?.ar || "";
+      const fed = clean(b.fed, 12).toUpperCase() || known?.fed || "WWE";
+      const old = m.shows[k] || {};
+      m.shows[k] = { ...old, def: { name, fed, prog, date, ar, ...(known?.ple ? { ple: 1 as const } : {}) }, start, ...(end ? { end } : old.end ? {} : { end: start + (known?.dur || 180) * 60_000 + GRACE }), rev: (old.rev || 0) + 1 };
+      delete m.shows[k].hide;
+      const img = String(b.img || "").trim();
+      if (img && (/^\/content\/images\/[\w.-]+$/.test(img) || httpsUrl(img))) m.shows[k].img = img;
+      pagesToo = true; break;
+    }
+    case "delete": {                    // the owner's own show goes for good; a sources' show is hidden
+      const bad = needShow(); if (bad) return bad;
+      if (st.shows[key]) { entry(key).hide = 1; bump(key); }
+      else { m.shows[key] = { ...m.shows[key], hide: 1 }; bump(key); }
+      pagesToo = true; break;
+    }
+    case "reset": {                     // back to what the sources say
+      if (!m.shows[key]) return fail("مفيش تعديلات على العرض ده");
+      if (!st.shows[key]) return fail("ده عرض مضاف يدوي — امسحه بدل ما ترجّعه");
+      const keep = m.shows[key];
+      m.shows[key] = { rev: (keep.rev || 0) + 1, ...(keep.pageRev ? { pageRev: keep.pageRev } : {}) };
+      pagesToo = true; break;
+    }
+    case "image": {                     // a picture from the owner's device (the panel's own resize), or from a link
+      const bad = needShow(); if (bad) return bad;
+      if (!deps.uploadImage) return fail("رفع الصور مش متاح");
+      let bytes: ArrayBuffer | null = null, type = "image/jpeg";
+      if (b.base64) { try { const bin = atob(String(b.base64)); const a = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) a[i] = bin.charCodeAt(i); bytes = a.buffer; } catch { return fail("الصورة بايظة"); } }
+      else if (b.url) {
+        const u = httpsUrl(b.url); if (!u) return fail("رابط الصورة مش صحيح");
+        const r = await get(u, 12000); type = r?.headers.get("content-type") || "";
+        if (!r || !r.ok || !/^image\//.test(type)) return fail("مقدرتش أجيب الصورة من الرابط ده");
+        bytes = await r.arrayBuffer();
+      }
+      if (!bytes || bytes.byteLength < 200 || bytes.byteLength > 8 * 1024 * 1024) return fail("الصورة فاضية أو أكبر من 8 ميجا");
+      const ext = /png/.test(type) ? "png" : /webp/.test(type) ? "webp" : "jpg";
+      const e = entry(key); const path = `content/images/live-${show!.slug}-${(e.rev || 0) + 1}.${ext}`;
+      if (!(await deps.uploadImage(path, bytes, type).catch(() => false))) return fail("رفع الصورة فشل، جرّب تاني");
+      e.img = "/" + path; bump(key); pagesToo = true; break;
+    }
+    case "refresh": {                   // read the sources' pages of this show again within the minute
+      const bad = needShow(); if (bad) return bad;
+      let n = 0;
+      for (const p of Object.values(st.posts)) if (p.key === key) { delete p.readAt; n++; }
+      if (!n) return fail("مفيش صفحات مصادر للعرض ده لسه");
+      parts.push(["posts", st.posts]); break;
+    }
+    case "off": case "on": { if (b.action === "off") m.off = 1; else delete m.off; break; }
+    case "host": {                      // a source moved and the bot didn't find it: its new domain by hand
+      const src = SOURCES.find((s) => s.id === b.src); if (!src) return fail("المصدر مش معروف");
+      const h = String(b.host || "").trim().toLowerCase().replace(/^https?:\/\//, "").replace(/\/.*$/, "").replace(/^www\./, "");
+      if (!/^[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(h)) return fail("اكتب الدومين بس، زي watchwrestling.to");
+      const x = st.sources[src.id] || { id: src.id, host: src.host };
+      st.sources[src.id] = { ...x, movedFrom: x.host, movedAt: now, host: h, fails: 0, err: "" };
+      parts.push(["sources", st.sources]); break;
+    }
+    default: return fail("طلب مش معروف");
+  }
+  parts.push(["manual", m]);
+  await saveParts(db, parts, now);
+  await purgeData().catch(() => {});
+  let pageErr = "";
+  if (pagesToo) await syncPages(db, now, deps).catch((e) => { pageErr = String(e?.message || e); });
+  const fresh = await loadState(db);
+  return { body: { success: true, ...(pageErr ? { pageErr } : {}), ...adminView(fresh, now) } };
 }

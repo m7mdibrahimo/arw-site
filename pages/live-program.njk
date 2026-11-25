@@ -1,0 +1,11 @@
+---
+pagination:
+  data: livePrograms
+  size: 1
+  alias: liveProg
+permalink: "/live/{{ liveProg.key }}/index.html"
+layout: live-layout.njk
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: "بث مباشر {{ liveProg.ar }}"
+---

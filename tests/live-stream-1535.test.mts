@@ -72,16 +72,15 @@ test('the same show on two sources is ONE show with both sources\' links, number
   assert.deepEqual(later['dynamite-2026-11-25'].srcs, s.srcs);
 });
 
-test('/live/data: links only from ten minutes before the bell, the status by the clock, nothing a day after the end', () => {
+test('/live/data: the servers from the moment a source has them (owner: «مش مخفية لحد ما يشتغل العرض»), none after the end, nothing a day later', () => {
   const a = post('1max', 1, fx('1max-dynamite.html'), '1max.top', '2026-11-25', 'AEW Dynamite Live 11/25/26 November 25th 2026');
   const shows = L.mergeShows([a], {}, DYN - 7_200_000);
   const early = L.publicData(shows, DYN - 3_600_000).shows[0];
-  assert.equal(early.st, 'soon'); assert.equal(early.links.length, 0); assert.equal(early.n, 14); assert.equal(early.srcs, 1);
+  assert.equal(early.st, 'soon'); assert.equal(early.sv.length, 7); assert.equal(early.n, 7); assert.equal(early.srcs, 1);
   assert.equal(early.t, 'داينامايت');
-  assert.equal(L.publicData(shows, DYN - 9 * 60_000).shows[0].links.length, 14);
   assert.equal(L.publicData(shows, DYN + 60_000).shows[0].st, 'live');
   const ended = L.publicData(shows, DYN + 3 * 3_600_000).shows[0];
-  assert.equal(ended.st, 'ended'); assert.equal(ended.links.length, 0);
+  assert.equal(ended.st, 'ended'); assert.equal(ended.sv.length, 0);
   assert.equal(L.publicData(shows, DYN + 10 * 3_600_000).shows.length, 0);
 });
 
@@ -144,12 +143,12 @@ test('a show\'s page file: front matter only, with the start and end the page co
 test('wiring: the bot polls every minute and serves /live/data; the site serves a new show\'s address at once; the menu links the section', () => {
   const idx = fs.readFileSync('worker/src/index.ts', 'utf8');
   assert.match(idx, /path === "\/live\/data" && request\.method === "GET"\) return liveDataResponse/);
-  assert.match(idx, /runLive\(env as any, _controller\.scheduledTime, \{/);
+  assert.match(idx, /runLive\(env as any, _controller\.scheduledTime, liveDeps\(env\)\)/);
   const fast = fs.readFileSync('site-worker/fast.js', 'utf8');
   assert.match(fast, /\/\^\\\/live\\\/\[a-z0-9-\]\{3,80\}\\\/\?\$\/\.test\(lp\)/);
   for (const f of ['index.njk', 'pages/shows.njk', 'pages/news.njk', '_includes/post-layout.njk', '_includes/live-layout.njk'])
     assert.match(fs.readFileSync(f, 'utf8'), /<a class="navlink nav-live( active)?" href="\/live\/">بث مباشر<\/a>/, f);
   assert.match(fs.readFileSync('assets/live.js', 'utf8'), /arw-site-bot\.m7mdibrahimpc\.workers\.dev\/live\/data/);
   // the section's page answering for a new show's address turns into that show's page
-  assert.match(fs.readFileSync('assets/live.js', 'utf8'), /if \(key && !document\.getElementById\('lvShow'\)\) root\.innerHTML = '<div id="lvShow"><\/div>/);
+  assert.match(fs.readFileSync('assets/live.js', 'utf8'), /if \(isShow && !document\.getElementById\('lvShow'\)\) root\.innerHTML = '<div id="lvShow"><\/div>/);
 });

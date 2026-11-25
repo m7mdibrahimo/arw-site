@@ -30,10 +30,10 @@ export interface QueryStat { q: string; clicks: number; impressions: number; pos
 interface Page { firstSeen: string; lastmod: string; pinged?: string; inspected?: string; verdict?: string; coverage?: string; indexedAt?: string; queries?: QueryStat[]; queriesAt?: string; googleCanonical?: string; crawledAt?: string; directAt?: string }
 interface State { pages: Record<string, Page>; sitemapPinged?: string; indexingApi?: { at: string; sent: number; error?: string } }
 
-/** Watch pages: one show, recap or nostalgia episode, and a program's library page. */
+/** Watch pages: one show, recap or nostalgia episode, a program's library page, and a live page («بث مباشر», INCIDENTS #1537). */
 export function isWatchUrl(u: string): boolean {
   const p = u.replace(ORIGIN, "");
-  return /^\/(shows|recaps|nostalgia|library)\/[^/]+\/$/.test(p);
+  return /^\/(shows|recaps|nostalgia|library|live)\/[^/]+\/$/.test(p);
 }
 
 /** <loc> and <lastmod> of every URL in a sitemap. */

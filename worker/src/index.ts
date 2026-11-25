@@ -39,7 +39,7 @@ import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRe
 import { runBudgetCheck } from "./budget";
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
-import { runLive, liveDataResponse, liveStatus } from "./live";
+import { runLive, liveDataResponse, liveStatus, liveAdmin, type LiveDeps } from "./live";
 import { recordView, pruneAnalytics } from "./analytics";
 import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumKind, studioPremiumDays, studioPremiumFind, studioPremiumRequest, studioPremiumMedia, premiumNotifications, runPremiumReminders } from "./premium";
 import { handleFollows, runFollowNotify, runFollowPush } from "./follows";
@@ -3288,6 +3288,19 @@ function json(body: unknown, status = 200): Response {
   });
 }
 
+/** «بث مباشر»: how the live section writes its pages and keeps its pictures (worker/src/live.ts) */
+function liveDeps(env: Env): LiveDeps {
+  return {
+    commit: (changes, msg) => commitFiles(env as any, changes, msg),
+    uploadImage: async (p, bytes) => {
+      const svc = (env as any).MEDIA_SVC as Fetcher | undefined;
+      if (!svc || !env.GITHUB_TOKEN) return false;
+      const up = await svc.fetch(new Request(`https://arw-media/upload/${p.split("/").map(encodeURIComponent).join("/")}?replace=1`, { method: "PUT", body: bytes, headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}` } }));
+      return up.ok;
+    },
+  };
+}
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: CORS_HEADERS });
@@ -3612,7 +3625,7 @@ export default {
         return json({ success: true, removed });
       }
       // «بث مباشر» (worker/src/live.ts): the section's shows and links, 20 s at the edge; and each source's domain and health
-      if (path === "/live/data" && request.method === "GET") return liveDataResponse(env as any, CORS_HEADERS);
+      if (path === "/live/data" && request.method === "GET") return liveDataResponse(env as any, CORS_HEADERS, request);
       if (path === "/live/status" && request.method === "GET") return json(await liveStatus(env as any));
       if (path === "/top10" && request.method === "GET") return top10Response(env, url.searchParams.get("range") || "day");
       if (path === "/health" && request.method === "GET") {
@@ -3662,6 +3675,11 @@ export default {
         // «ارفع ملف من جهازك» on «سيرفر التفريغ»: straight to the site's storage, the machine fetches it (enc-upload.ts)
         const uploaded = await encUploadStudio(request, env as any, path, url, json);
         if (uploaded) return uploaded;
+        // «البث المباشر»: every show of the section, its links, and the owner's own changes (worker/src/live.ts)
+        if (path === "/api/studio/tools/live" && (request.method === "GET" || request.method === "POST")) {
+          const r = await liveAdmin(env as any, request, liveDeps(env));
+          return json(r.body, r.status || 200);
+        }
         if (path === "/api/studio/tools/social" && request.method === "POST") return json(await studioSocialStatus(env, await request.json().catch(() => ({}))));
         if (path === "/api/studio/tools/sources" && request.method === "GET") return json(await studioSources(env));
         if (path === "/api/studio/tools/reels" && request.method === "GET") return json(await studioReels(env));
@@ -4659,15 +4677,7 @@ export default {
         .catch((e: any) => console.log("[early]", e?.message || e))
         .then(() => syncOk(env.ANALYTICS, env as any, _controller.scheduledTime, undefined, { read: (p) => readRepoFile(env as any, p), commit: (p, text, msg) => commitFiles(env as any, [{ path: p, text }], msg) })).catch((e: any) => console.log("[ok.ru]", e?.message || e)),
       // «بث مباشر»: the four sources every minute; a new show gets its page, the merged links go to /live/data (worker/src/live.ts)
-      runLive(env as any, _controller.scheduledTime, {
-        commit: (changes, msg) => commitFiles(env as any, changes, msg),
-        uploadImage: async (p, bytes) => {
-          const svc = (env as any).MEDIA_SVC as Fetcher | undefined;
-          if (!svc || !env.GITHUB_TOKEN) return false;
-          const up = await svc.fetch(new Request(`https://arw-media/upload/${p.split("/").map(encodeURIComponent).join("/")}?replace=1`, { method: "PUT", body: bytes, headers: { Authorization: `Bearer ${env.GITHUB_TOKEN}` } }));
-          return up.ok;
-        },
-      }).catch((e: any) => console.log("[live]", e?.message || e)),
+      runLive(env as any, _controller.scheduledTime, liveDeps(env)).catch((e: any) => console.log("[live]", e?.message || e)),
       // a membership about to end, or just ended: the member is told (worker/src/premium.ts)
       minute === 20 ? runPremiumReminders(env as any, _controller.scheduledTime).catch(() => {}) : Promise.resolve(),
       // the rented encoding machine, off for 12 hours, is deleted so its disk isn't paid for (owner 2026-10-26)
