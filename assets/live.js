@@ -5,6 +5,8 @@
   if (!root) return;
   var key = root.getAttribute('data-key') || '';
   if (!key) { var m = location.pathname.match(/^\/live\/([a-z0-9-]+)\/?$/); if (m) key = m[1]; }
+  // a show's address served by the section's page (site-worker/fast.js, before the show's own page is built): it becomes the show's page
+  if (key && !document.getElementById('lvShow')) root.innerHTML = '<div id="lvShow"></div><section class="lv-more"><h2>عروض أخرى في البث المباشر</h2><p><a href="/live/" style="color:var(--teal);font-weight:800">كل عروض البث المباشر ←</a></p></section>';
   var skew = 0; // the server's clock minus this device's: a countdown right even on a phone set a few minutes off
   var data = null, timer = null, poll = null, rang = false, lastLinks = '';
   var ORD = ['الأول', 'الثاني', 'الثالث', 'الرابع', 'الخامس', 'السادس'];
@@ -119,6 +121,7 @@
     if (!box) return;
     if (!s) { box.innerHTML = data ? endedHtml({ t: root.getAttribute('data-title') || 'هذا العرض' }) : ''; return; }
     var st = status(s);
+    if (s.t && document.title.indexOf(s.t) < 0) document.title = 'بث مباشر ' + s.t + ' | عرب راسلنج';
     if (st === 'soon') {
       if (mode !== 'soon' || built !== s.start) { box.innerHTML = stageHtml(s); mode = 'soon'; built = s.start; prev = {}; }
       var r = document.getElementById('lvReady'); if (r) r.innerHTML = readyText(s);

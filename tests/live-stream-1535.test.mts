@@ -150,4 +150,6 @@ test('wiring: the bot polls every minute and serves /live/data; the site serves 
   for (const f of ['index.njk', 'pages/shows.njk', 'pages/news.njk', '_includes/post-layout.njk', '_includes/live-layout.njk'])
     assert.match(fs.readFileSync(f, 'utf8'), /<a class="navlink nav-live( active)?" href="\/live\/">بث مباشر<\/a>/, f);
   assert.match(fs.readFileSync('assets/live.js', 'utf8'), /arw-site-bot\.m7mdibrahimpc\.workers\.dev\/live\/data/);
+  // the section's page answering for a new show's address turns into that show's page
+  assert.match(fs.readFileSync('assets/live.js', 'utf8'), /if \(key && !document\.getElementById\('lvShow'\)\) root\.innerHTML = '<div id="lvShow"><\/div>/);
 });
