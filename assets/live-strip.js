@@ -25,7 +25,8 @@
     return day + ' ' + (p.h % 12 || 12) + ':' + pad(p.mi) + ' ' + period(p.h) + ' ' + zone;
   }
   function nm(s) { var t = s.t || ''; return !t || /^عرض\s/.test(t) ? t : 'عرض ' + t; }
-  function srv(n) { return n ? n + (n > 2 && n < 11 ? ' سيرفرات' : ' سيرفرًا') : ''; }
+  // the number and its word never part at the end of a line (\u00a0)
+  function srv(n) { return n ? n + (n > 2 && n < 11 ? '\u00a0سيرفرات' : '\u00a0سيرفرًا') : ''; }
   function paint() {
     if (!show) return;
     var n = now();
@@ -38,14 +39,14 @@
       a.className = 'lvs is-live';
       tagEl.textContent = 'مباشر الآن';
       tEl.textContent = 'بث مباشر ' + nm(show);
-      sEl.textContent = (show.n ? srv(show.n) + ' جاهزة للمشاهدة · ' : '') + 'بدأ ' + when(show.start).replace(/^(الليلة|اليوم) /, '');
+      sEl.textContent = (show.n ? srv(show.n) + '\u00a0جاهزة للمشاهدة · ' : '') + 'بدأ ' + when(show.start).replace(/^(الليلة|اليوم) /, '');
       cdEl.hidden = true; goEl.textContent = 'شاهد الآن ‹';
     } else {
       var left = Math.floor((show.start - n) / 1000), h = Math.floor(left / 3600), m = Math.floor(left % 3600 / 60), s = left % 60;
       a.className = 'lvs is-soon';
       tagEl.textContent = 'البث القادم';
       tEl.textContent = 'بث مباشر ' + nm(show);
-      sEl.textContent = when(show.start) + (show.n ? ' · ' + srv(show.n) + ' جاهزة' : '');
+      sEl.textContent = when(show.start) + (show.n ? ' · ' + srv(show.n) + '\u00a0جاهزة' : '');
       cdEl.hidden = false; hEl.textContent = pad(h); mEl.textContent = pad(m); xEl.textContent = pad(s);
       goEl.textContent = 'صفحة البث ‹';
     }
