@@ -135,6 +135,11 @@ test('the home page tells of the section; the live page links the full show once
   // «شريط البث» (owner 2026-11-25: the glowing dot «باين انه معمول ب ai»): the show's picture, a countdown in cells, nothing pulsing
   assert.match(home, /<span class="lvs-im" id="lvsIm"/); assert.match(home, /id="lvsH">00<\/b><small>ساعة/);
   assert.doesNotMatch(home, /lvs-dot|lvsPulse/);
+  // no other picture before the show's own (owner 2026-11-25): no fixed picture in the markup, the last show painted
+  // before the first frame, the next one put in only once loaded
+  assert.doesNotMatch(home, /id="lvsIm"[^>]*hero-bg/); assert.match(home, /localStorage\.getItem\('arwLiveLast'\)/);
+  const stripJs = fs.readFileSync('assets/live-strip.js', 'utf8');
+  assert.match(stripJs, /im\.onload = im\.onerror/); assert.match(stripJs, /setItem\('arwLiveLast'/);
   // phones: «بث مباشر» is a tab of the bottom bar, after «العروض» (owner 2026-11-25)
   const feat = fs.readFileSync('assets/features.js', 'utf8');
   assert.match(feat, /\['shows', '\/shows\/', 'العروض'\], \['live', '\/live\/', 'بث مباشر'\]/);

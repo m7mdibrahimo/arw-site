@@ -1361,7 +1361,9 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
   .lvs-wrap .lvs{ margin:0 20px; }
   @media (max-width:860px){ .lvs-wrap .lvs{ margin:0 16px; } }
   @media (max-width:580px){ .lvs-wrap .lvs{ margin:0 10px; } }
-  .lvs-im{ flex:none; width:172px; background:#0b0f16 center/cover no-repeat; }
+  /* the picture comes in once it has loaded — never another picture first (owner 2026-11-25) */
+  .lvs-im{ flex:none; width:172px; background:#0b0f16 center/cover no-repeat; opacity:0; transition:opacity .25s; }
+  .lvs-im.is-in{ opacity:1; }
   .lvs-tx{ flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center; gap:3px; padding:12px 20px; line-height:1.4; }
   .lvs-row{ display:flex; align-items:center; gap:8px; }
   .lvs-tag{ font:800 12px 'Cairo',sans-serif; color:#fff; background:#d93a3d; padding:1px 8px 2px; border-radius:4px; }
@@ -1433,14 +1435,15 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
 <section class="lvs-wrap" aria-label="بث مباشر">
 <div class="wrap">
 <a class="lvs" id="lvStrip" href="/live/">
-<span class="lvs-im" id="lvsIm" style="background-image:url('/assets/hero-bg.jpg')" aria-hidden="true"></span>
+<span class="lvs-im" id="lvsIm" aria-hidden="true"></span>
 <span class="lvs-tx"><span class="lvs-row"><span class="lvs-tag" id="lvsTag">جديد على عرب راسلنج</span><span class="lvs-fed" id="lvsFed" hidden></span></span><b id="lvsT">بث مباشر لعروض المصارعة داخل الموقع</b><em id="lvsS">الرو، سماك داون، داينامايت وكل العروض الكبرى: عدّاد حتى البداية بتوقيت بلدك، ثم المشاهدة المباشرة هنا</em></span>
 <span class="lvs-cd" id="lvsCd" hidden><span><b id="lvsH">00</b><small>ساعة</small></span><i>:</i><span><b id="lvsM">00</b><small>دقيقة</small></span><i>:</i><span><b id="lvsX">00</b><small>ثانية</small></span></span>
 <span class="lvs-go" id="lvsGo">ادخل البث المباشر ‹</span>
 </a>
 </div>
 </section>
-<script src="/assets/live-strip.js?v=15372" defer></script>
+<script>(function(){try{var c=JSON.parse(localStorage.getItem('arwLiveLast')||'null'),n=Date.now();if(!c||!c.img||n>=c.end)return;var i=document.getElementById('lvsIm');i.style.backgroundImage="url('"+String(c.img).replace(/['\\()]/g,'')+"')";i.className='lvs-im is-in';document.getElementById('lvsT').textContent=c.title;document.getElementById('lvStrip').href='/live/'+c.k+'/';}catch(e){}})();</script>
+<script src="/assets/live-strip.js?v=15373" defer></script>
 
 {% set slides = pinned | freshPinned(collections.all) %}
 {% if slides and slides.length > 0 %}

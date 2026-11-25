@@ -27,13 +27,22 @@
   function nm(s) { var t = s.t || ''; return !t || /^عرض\s/.test(t) ? t : 'عرض ' + t; }
   // the number and its word never part at the end of a line (\u00a0)
   function srv(n) { return n ? n + (n > 2 && n < 11 ? '\u00a0سيرفرات' : '\u00a0سيرفرًا') : ''; }
+  // the show's picture is fetched first and put in only once it is whole (no other picture before it, no half-drawn one)
+  function setImg(src) {
+    shownImg = src;
+    var u = String(src).replace(/['\\()]/g, ''), im = new Image();
+    im.onload = im.onerror = function () { if (shownImg !== src) return; imEl.style.backgroundImage = "url('" + u + "')"; imEl.className = 'lvs-im is-in'; };
+    im.src = u;
+  }
+  // no show near: the section's own picture
+  function plain() { if (!shownImg) setImg('/assets/hero-bg.jpg'); }
   function paint() {
     if (!show) return;
     var n = now();
     if (n >= show.end) { show = null; return; }
     a.href = '/live/' + show.k + '/';
     // the show's own picture and its federation, once a show is known
-    if (show.img && shownImg !== show.img) { shownImg = show.img; imEl.style.backgroundImage = "url('" + String(show.img).replace(/['\\()]/g, '') + "')"; }
+    if (show.img) { if (shownImg !== show.img) setImg(show.img); } else plain();
     if (show.fed) { fedEl.textContent = show.fed; fedEl.hidden = false; }
     if (n >= show.start) {
       a.className = 'lvs is-live';
@@ -63,6 +72,9 @@
       else if (s.start > n && s.start - n < 48 * 3600000 && (!next || s.start < next.start)) next = s;
     });
     show = live || next;
+    // kept for the next visit: the strip shows this show from the first frame (index.njk), no other picture before it
+    try { if (show) localStorage.setItem('arwLiveLast', JSON.stringify({ k: show.k, img: show.img || '', title: 'بث مباشر ' + nm(show), end: show.end })); else localStorage.removeItem('arwLiveLast'); } catch (e) {}
+    if (!show) plain();
     paint();
     clearInterval(timer);
     if (show) timer = setInterval(paint, 1000);
