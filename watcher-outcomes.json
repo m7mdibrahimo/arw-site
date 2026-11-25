@@ -112,17 +112,12 @@
  "https://www.wrestlinginc.com/2328816/leon-slater-jeff-hardy-set-upcoming-tna-taping": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T23:13:36.363Z"
- },
- "https://www.wrestlinginc.com/2327631/aew-dynamite-thanksgiving-eve-november-25-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-25T23:13:12.770Z"
+  "at": "2026-11-25T23:17:02.136Z"
  },
  "https://www.ringsidenews.com/jacy-jayne-admits-she-used-bring-john-cena-sucks-signs-wwe-shows": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T22:57:49.041Z"
+  "at": "2026-11-25T23:13:12.770Z"
  },
  "https://www.fightful.com/wrestling/fatal-4-way-1-contenders-match-grayson-waller-mason-rook-face-to-face-announced-for-12-1-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
