@@ -12065,6 +12065,12 @@ Let me check git status to enumerate uncommitted changes.</think><tool_call>shel
 - متابعة تانية (المالك نفس الليلة): «ليه مش كل المصادر موجودة؟ لو مفيش غير انها تكون خارجية… رجعها تاني» — رجعنا السيرفرات الاحتياطية من باقي المصادر (لحد 6 لكل مصدر، بعد اللي بيشتغل جوه الموقع وتحت عنوان «سيرفرات احتياطية تُفتح في صفحات مصادرها») وخانة «بيفتح في صفحة تانية» في اللوحة؛ المسار الجديد للصفحة فضل زي ما هو.
 - متابعة تالتة (المالك بصورة: «البتاع البتنور دي… باين اوي انه معمول ب ai»): شريط «بث مباشر» في الرئيسية اتغيّر لـ«شريط البث» (اختيار المالك من 3 صور): صورة العرض نفسه، شارة حمراء عادية، الاتحاد، وعدّاد بخانات ساعة/دقيقة/ثانية؛ مفيش نقطة منورة ولا نبض، وبنفس هامش البطاقات اللي تحته.
 
+- Follow-up (owner, 2026-11-25): the home strip flashed the hero picture on every reload before the show's own. The box
+  now has no fixed picture — the last show the visitor saw is painted before the first frame (localStorage arwLiveLast),
+  a new picture goes in only once loaded. Several shows (on now, then within two days) take turns in the one strip like a
+  slider: 7 seconds each, a fade between, stops under the mouse, a swipe turns it on the phone, a plain mark per show; the
+  strip keeps its tallest height so the page never jumps.
+
 ## #1538 — 2026-11-25: غلطات كتابة في أخبار دراغونوف وروبرت ستون وبانك
 - اللي حصل: «تووقعها» و«أكبر سننا» و«بطل AEW الوطنية» (بطل مذكر) نزلوا في أخبار دراغونوف (وفي تقريرين نتائج قدام)، و«لو دخلت عليه» عن روبي إي، و«ووضع في المحادثة الجماعية» في خبر بانك.
 - السبب: Gemini كتبهم ومفيش تصحيح ثابت يمسكهم؛ واختبار aria-label كان واقع من قسم «بث مباشر» الجديد.
