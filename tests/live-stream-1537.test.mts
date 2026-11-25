@@ -27,13 +27,15 @@ test('a link plays on our page when its channel can be framed: the sources\' ad 
   assert.equal(L.playable('javascript:alert(1)'), null);
 });
 
-test('a show\'s servers: one per channel, HD first, the sources\' outside pages only when nothing plays here', () => {
+test('a show\'s servers: one per channel, HD first, then a few of each other source\'s own pages', () => {
   const s = both()['dynamite-2026-11-25'];
   const sv = L.servers(s);
-  assert.equal(sv.length, 7);
-  assert.ok(sv.every((v) => !v.x && v.u.startsWith('https://www.sawlivenow.com/embed/ch')));
-  assert.equal(new Set(sv.map((v) => v.u)).size, 7);
-  assert.deepEqual(sv.map((v) => v.n), [1, 2, 3, 4, 5, 6, 7]);
+  // 1max's seven channels play here; watchwrestling.re (short links behind ad pages) adds six of its own, after them
+  assert.equal(sv.length, 13);
+  assert.ok(sv.slice(0, 7).every((v) => !v.x && v.s === 1 && v.u.startsWith('https://www.sawlivenow.com/embed/ch')));
+  assert.ok(sv.slice(7).every((v) => v.x === 1 && v.s === 2 && v.u.startsWith('https://blog.djt2.com/')));
+  assert.equal(new Set(sv.map((v) => v.u)).size, 13);
+  assert.deepEqual(sv.map((v) => v.n), Array.from({ length: 13 }, (_, i) => i + 1));
   assert.equal(sv[0].q, 'HD');
   // only watchwrestling.re (short links that open an ad page): shown, as pages that open elsewhere
   const only = L.servers({ links: s.links.filter((l) => l.s === 2) });
@@ -57,7 +59,9 @@ test('the owner\'s hand: name, time, picture, note, full show, servers added fir
   assert.equal(d.note, 'السيرفر 1 الأفضل'); assert.equal(d.vod, '/shows/aew-dynamite-25-11-2026/'); assert.equal(d.img, '/content/images/x.jpg');
   assert.equal(d.sv[0].u, 'https://ok.ru/videoembed/1'); assert.equal(d.sv[0].m, 1);
   assert.ok(!d.sv.some((v) => v.u === 'https://www.sawlivenow.com/embed/ch87_HD/'), 'a hidden channel stays hidden under both its pages');
-  assert.equal(d.sv[d.sv.length - 1].u, 'https://example.com/watch', 'the owner\'s own outside link is kept');
+  const firstOut = d.sv.findIndex((v) => v.x);
+  assert.equal(d.sv[firstOut].u, 'https://example.com/watch', 'the owner\'s own outside link is kept, first of those that open elsewhere');
+  assert.ok(d.sv.slice(0, firstOut).every((v) => !v.x), 'every server that plays here comes first');
   // the sources' merge is untouched: «رجّعه زي المصادر» is just dropping the owner's entry
   assert.equal(auto['dynamite-2026-11-25'].ar, 'داينامايت');
   // hidden: gone from the site; the whole section off: nothing at all
@@ -155,4 +159,23 @@ test('the full shows under a live page fill whole rows at every width', () => {
   assert.match(js, /vodOf\(s\); return !v \|\| v\.u !== r\.u; \}\)\.slice\(0, 4\)/);
   assert.match(css, /\.lv-rec\{display:grid;grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
   assert.match(css, /@media\(max-width:900px\)\{\.lv-rec\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
+});
+
+test('every source gives servers: one with nothing that plays here still shows its own links, after ours, a few each', () => {
+  const at = 1;
+  const links = [
+    { u: 'https://dailypudding.com/category/alpha.php?live=ch87_HD', q: 'HD', s: 1, n: 1, at },
+    { u: 'https://techfunlife.com/Latest_posts/?line=108087_HD', q: 'HD', s: 1, n: 2, at },
+    ...Array.from({ length: 9 }, (_, i) => ({ u: `https://blog.djt2.com/x${i}`, q: i % 2 ? 'SD' : 'HD', s: 2, n: i + 1, at })),
+    { u: 'https://other.example/live3', q: 'FHD', s: 3, n: 1, at },
+  ];
+  const sv = L.servers({ links } as any);
+  assert.equal(sv[0].u, 'https://www.sawlivenow.com/embed/ch87_HD/');
+  assert.ok(!sv[0].x);
+  // source 1 plays here: its ad-page copy of the same channel is not repeated
+  assert.ok(!sv.some((v) => v.u.includes('techfunlife')));
+  assert.equal(sv.filter((v) => v.s === 2 && v.x).length, 6);
+  assert.equal(sv.filter((v) => v.s === 3 && v.x).length, 1);
+  assert.deepEqual(sv.map((v) => v.n), sv.map((_, i) => i + 1));
+  assert.equal(L.publicData({ d: { ...both()['dynamite-2026-11-25'], links } } as any, DYN - 3_600_000).shows[0].srcs, 3);
 });

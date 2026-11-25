@@ -380,6 +380,8 @@ export interface PubServer { u: string; q: string; s: number; n: number; at: num
 const QORDER: Record<string, number> = { HD: 0, FHD: 1, SD: 2, LQ: 3 };
 /** A show's servers: the owner's own first, then every source's in the order they came, the best quality first;
  *  duplicates (the same channel under two pages) once; links that only open elsewhere only when nothing plays here */
+/** At most this many links that open on a source's own site, per source, beside the ones playing here */
+const EXT_PER_SOURCE = 6;
 export function servers(s: Pick<EffShow, "links" | "add" | "block">): PubServer[] {
   const block = new Set(s.block || []);
   const play: PubServer[] = [], ext: PubServer[] = [], seen = new Set<string>();
@@ -401,7 +403,20 @@ export function servers(s: Pick<EffShow, "links" | "add" | "block">): PubServer[
   }
   auto.sort((a, b) => a.s - b.s || (QORDER[a.q] ?? 4) - (QORDER[b.q] ?? 4));
   for (const a of auto) (a.x ? ext : play).push(a);
-  const out = play.length ? play.concat(ext.filter((e) => e.m)) : ext;
+  // every source counts (owner 2026-11-25: «كل المصادر الأربعة… سيرفرات كتير من مصادر متنوعة»): a source with nothing that
+  // plays here still gives its own links, after ours, opening on its site — up to EXT_PER_SOURCE, best quality first; a
+  // source that plays here needs no copies of the same channels behind ad pages
+  const plays = new Set(play.map((p) => p.s));
+  const perSrc = new Map<number, number>();
+  const backup = ext.filter((e) => {
+    if (e.m) return true;
+    if (plays.has(e.s)) return false;
+    const c = perSrc.get(e.s) || 0;
+    if (c >= EXT_PER_SOURCE) return false;
+    perSrc.set(e.s, c + 1);
+    return true;
+  });
+  const out = play.length ? play.concat(backup) : ext;
   out.forEach((v, i) => { v.n = i + 1; });
   return out;
 }
