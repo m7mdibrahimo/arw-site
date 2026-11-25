@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/logan-paul-accuses-gta-6-ripping-off-his-trading-card-business": {
+  "reason": "المراجعة رفضته: كلمة رقم عربية قدام رقم بالأرقام (مثل: أحد عشر 1000) — اكتب الرقم مرة واحدة",
+  "retry": false,
+  "at": "2026-11-25T15:29:51.884Z"
+ },
  "https://www.fightful.com/wrestling/ilja-dragunov-i-feel-like-fighting-brings-out-your-true-face": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-18T16:40:42.942Z"
- },
- "https://www.ringsidenews.com/bayley-says-wrestlers-trying-too-hard-play-characters-can-hurt-their-performances": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-18T16:36:28.349Z"
  }
 }
