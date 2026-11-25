@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2328169/wwe-trick-williams-gunther-comments-controversial-dark-match-victory": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T16:37:52.953Z"
+ },
  "https://www.fightful.com/wrestling/ilja-dragunov-wants-to-wrestle-people-who-are-drawn-to-a-certain-artistic-form-of-violence-like-jon-moxley-and-samoa-joe": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-18T16:58:19.224Z"
- },
- "https://www.fightful.com/wrestling/ash-by-elegance-announces-pregnancy-opens-up-about-health-issues-provides-update-on-tna-contract": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T16:55:55.868Z"
  }
 }
