@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/taya-valkyrie-reveals-new-career-plans-following-aew-departure": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T03:06:18.696Z"
+ },
  "https://www.fightful.com/wrestling/wwe-smackdown-11-20-draws-1-2-million-viewers": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اقتباس بالإنجليزي جوه الخبر العربي — لازم يتترجم للعربي",
   "retry": true,
   "at": "2026-11-18T04:49:30.737Z"
- },
- "https://www.fightful.com/wrestling/nwa-powerrr-results-11-14": {
-  "reason": "المراجعة رفضته: آخر نزال في المصدر (الحدث الرئيسي) فاز فيه AJ Cazana، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
-  "retry": true,
-  "at": "2026-11-18T04:39:37.718Z"
  }
 }
