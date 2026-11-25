@@ -5919,9 +5919,9 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ان اكس تي 24.11.2026 مترجم",
-    "lastAttempt": 1795611212865,
+    "lastAttempt": 1795612071253,
     "errors": {
-      "instagram_story": "الفيديو ما زال قيد المعالجة؛ ستُستكمل نفس الحاوية لاحقًا."
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
       "instagram_story"
