@@ -27,20 +27,18 @@ test('a link plays on our page when its channel can be framed: the sources\' ad 
   assert.equal(L.playable('javascript:alert(1)'), null);
 });
 
-test('a show\'s servers: one per channel, HD first, then a few of each other source\'s own pages', () => {
+test('a show\'s servers: one per channel, HD first, and only what plays inside the page', () => {
   const s = both()['dynamite-2026-11-25'];
   const sv = L.servers(s);
-  // 1max's seven channels play here; watchwrestling.re (short links behind ad pages) adds six of its own, after them
-  assert.equal(sv.length, 13);
-  assert.ok(sv.slice(0, 7).every((v) => !v.x && v.s === 1 && v.u.startsWith('https://www.sawlivenow.com/embed/ch')));
-  assert.ok(sv.slice(7).every((v) => v.x === 1 && v.s === 2 && v.u.startsWith('https://blog.djt2.com/')));
-  assert.equal(new Set(sv.map((v) => v.u)).size, 13);
-  assert.deepEqual(sv.map((v) => v.n), Array.from({ length: 13 }, (_, i) => i + 1));
+  // 1max's seven channels play here; watchwrestling.re's short links open an ad page, so they are never listed
+  // (owner 2026-11-25: «عايز السيرفرات كلها تظهر في الموقع بس مباشرة»)
+  assert.equal(sv.length, 7);
+  assert.ok(sv.every((v) => !v.x && v.s === 1 && v.u.startsWith('https://www.sawlivenow.com/embed/ch')));
+  assert.equal(new Set(sv.map((v) => v.u)).size, 7);
+  assert.deepEqual(sv.map((v) => v.n), Array.from({ length: 7 }, (_, i) => i + 1));
   assert.equal(sv[0].q, 'HD');
-  // only watchwrestling.re (short links that open an ad page): shown, as pages that open elsewhere
-  const only = L.servers({ links: s.links.filter((l) => l.s === 2) });
-  assert.equal(only.length, 11);
-  assert.ok(only.every((v) => v.x === 1));
+  // only watchwrestling.re: nothing plays here, so nothing is shown
+  assert.equal(L.servers({ links: s.links.filter((l) => l.s === 2) }).length, 0);
 });
 
 test('the owner\'s hand: name, time, picture, note, full show, servers added first, a source\'s server hidden, a show hidden', () => {
@@ -59,9 +57,9 @@ test('the owner\'s hand: name, time, picture, note, full show, servers added fir
   assert.equal(d.note, 'السيرفر 1 الأفضل'); assert.equal(d.vod, '/shows/aew-dynamite-25-11-2026/'); assert.equal(d.img, '/content/images/x.jpg');
   assert.equal(d.sv[0].u, 'https://ok.ru/videoembed/1'); assert.equal(d.sv[0].m, 1);
   assert.ok(!d.sv.some((v) => v.u === 'https://www.sawlivenow.com/embed/ch87_HD/'), 'a hidden channel stays hidden under both its pages');
-  const firstOut = d.sv.findIndex((v) => v.x);
-  assert.equal(d.sv[firstOut].u, 'https://example.com/watch', 'the owner\'s own outside link is kept, first of those that open elsewhere');
-  assert.ok(d.sv.slice(0, firstOut).every((v) => !v.x), 'every server that plays here comes first');
+  // an old entry marked «opens elsewhere» plays in our player too: nothing opens outside the site
+  assert.equal(d.sv[1].u, 'https://example.com/watch'); assert.equal(d.sv[1].m, 1);
+  assert.ok(d.sv.every((v) => !v.x));
   // the sources' merge is untouched: «رجّعه زي المصادر» is just dropping the owner's entry
   assert.equal(auto['dynamite-2026-11-25'].ar, 'داينامايت');
   // hidden: gone from the site; the whole section off: nothing at all
@@ -161,23 +159,24 @@ test('the full shows under a live page fill whole rows at every width', () => {
   assert.match(css, /@media\(max-width:900px\)\{\.lv-rec\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
 });
 
-test('every source gives servers: one with nothing that plays here still shows its own links, after ours, a few each', () => {
+test('every source gives servers that play here; a link behind an ad page never reaches the page', () => {
   const at = 1;
   const links = [
     { u: 'https://dailypudding.com/category/alpha.php?live=ch87_HD', q: 'HD', s: 1, n: 1, at },
     { u: 'https://techfunlife.com/Latest_posts/?line=108087_HD', q: 'HD', s: 1, n: 2, at },
     ...Array.from({ length: 9 }, (_, i) => ({ u: `https://blog.djt2.com/x${i}`, q: i % 2 ? 'SD' : 'HD', s: 2, n: i + 1, at })),
-    { u: 'https://other.example/live3', q: 'FHD', s: 3, n: 1, at },
+    { u: 'https://dramavideo.se/watch?v=1', q: 'FHD', s: 3, n: 1, at },
+    { u: 'https://other.example/live3', q: 'FHD', s: 4, n: 1, at },
   ];
   const sv = L.servers({ links } as any);
-  assert.equal(sv[0].u, 'https://www.sawlivenow.com/embed/ch87_HD/');
-  assert.ok(!sv[0].x);
-  // source 1 plays here: its ad-page copy of the same channel is not repeated
-  assert.ok(!sv.some((v) => v.u.includes('techfunlife')));
-  assert.equal(sv.filter((v) => v.s === 2 && v.x).length, 6);
-  assert.equal(sv.filter((v) => v.s === 3 && v.x).length, 1);
-  assert.deepEqual(sv.map((v) => v.n), sv.map((_, i) => i + 1));
-  assert.equal(L.publicData({ d: { ...both()['dynamite-2026-11-25'], links } } as any, DYN - 3_600_000).shows[0].srcs, 3);
+  assert.deepEqual(sv.map((v) => v.u), ['https://www.sawlivenow.com/embed/ch87_HD/', 'https://dramavideo.se/watch?v=1']);
+  assert.ok(sv.every((v) => !v.x));
+  assert.deepEqual(sv.map((v) => v.n), [1, 2]);
+  assert.equal(L.publicData({ d: { ...both()['dynamite-2026-11-25'], links } } as any, DYN - 3_600_000).shows[0].srcs, 2);
+  const js = fs.readFileSync('assets/live.js', 'utf8');
+  assert.match(js, /filter\(function \(v\) \{ return !v\.x; \}\)/, 'an old cached list drops them too');
+  assert.doesNotMatch(js, /يفتح في صفحة المصدر|is-ext/);
+  assert.doesNotMatch(fs.readFileSync('studio/js/views/live.js', 'utf8'), /name="x"/, 'the panel adds only servers that play here');
 });
 
 test('the name: «عرض داينامايت» with its English name everywhere, the owner\'s own name word for word, and each page linked up', () => {
@@ -189,6 +188,8 @@ test('the name: «عرض داينامايت» with its English name everywhere, 
   assert.match(strip, /'بث مباشر ' \+ nm\(show\)/);
   assert.match(lay, /"بث مباشر " \+ lvName \+ " " \+ lvDay \+ " \| " \+ program_en \+ " Live"/);
   assert.match(lay, /<h1><i><\/i>بث مباشر عرض \{\{ liveProg\.ar \}\}<\/h1><span class="lv-en" lang="en" dir="ltr">\{\{ liveProg\.en \}\} Live<\/span>/);
-  assert.match(lay, /<nav class="lv-crumbs"/);
+  assert.match(lay, /<nav class="arw-crumbs" aria-label="مسار التنقل">/); // the site's own breadcrumbs (owner 2026-11-25)
+  assert.doesNotMatch(lay, /›/); // RTL: the site's separator is ‹
+  assert.match(lay, /حلقة \{\{ lvDay \}\}/);
   assert.equal(L.PAGE_V, 3, 'the pages already out are written again with the new name');
 });

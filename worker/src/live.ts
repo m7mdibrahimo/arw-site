@@ -378,48 +378,33 @@ export function playable(u: string): string | null {
   return null;
 }
 
-/** A server as /live/data gives it: «u» plays in our player, or (x) opens on its own site */
+/** A server as /live/data gives it: «u» plays in our player (x: kept for pages cached before 2026-11-25, never set now) */
 export interface PubServer { u: string; q: string; s: number; n: number; at: number; x?: 1; m?: 1 }
 const QORDER: Record<string, number> = { HD: 0, FHD: 1, SD: 2, LQ: 3 };
 /** A show's servers: the owner's own first, then every source's in the order they came, the best quality first;
- *  duplicates (the same channel under two pages) once; links that only open elsewhere only when nothing plays here */
-/** At most this many links that open on a source's own site, per source, beside the ones playing here */
-const EXT_PER_SOURCE = 6;
+ *  duplicates (the same channel under two pages) once. Only servers that play inside our page (owner 2026-11-25: «عايز
+ *  السيرفرات كلها تظهر في الموقع بس مباشرة»): a link that only opens on its own site (an ad page) is never shown. */
 export function servers(s: Pick<EffShow, "links" | "add" | "block">): PubServer[] {
   const block = new Set(s.block || []);
-  const play: PubServer[] = [], ext: PubServer[] = [], seen = new Set<string>();
+  const out: PubServer[] = [], seen = new Set<string>();
+  // the owner's own links play in our player as he gave them
   for (const a of s.add || []) {
     if (block.has(a.u)) continue;
-    const u = a.x ? a.u : playable(a.u) || a.u;
+    const u = playable(a.u) || a.u;
     if (seen.has(u)) continue;
     seen.add(u);
-    (a.x ? ext : play).push({ u, q: a.q || "", s: 0, n: 0, at: a.at, m: 1, ...(a.x ? { x: 1 as const } : {}) });
+    out.push({ u, q: a.q || "", s: 0, n: 0, at: a.at, m: 1 });
   }
   const auto: PubServer[] = [];
   for (const l of s.links || []) {
     if (block.has(l.u)) continue;
-    const p = l.e ? l.u : playable(l.u);
-    const u = p || l.u;
-    if (seen.has(u)) continue;
+    const u = l.e ? l.u : playable(l.u);
+    if (!u || seen.has(u)) continue;
     seen.add(u);
-    auto.push({ u, q: l.q, s: l.s, n: 0, at: l.at, ...(p ? {} : { x: 1 as const }) });
+    auto.push({ u, q: l.q, s: l.s, n: 0, at: l.at });
   }
   auto.sort((a, b) => a.s - b.s || (QORDER[a.q] ?? 4) - (QORDER[b.q] ?? 4));
-  for (const a of auto) (a.x ? ext : play).push(a);
-  // every source counts (owner 2026-11-25: «كل المصادر الأربعة… سيرفرات كتير من مصادر متنوعة»): a source with nothing that
-  // plays here still gives its own links, after ours, opening on its site — up to EXT_PER_SOURCE, best quality first; a
-  // source that plays here needs no copies of the same channels behind ad pages
-  const plays = new Set(play.map((p) => p.s));
-  const perSrc = new Map<number, number>();
-  const backup = ext.filter((e) => {
-    if (e.m) return true;
-    if (plays.has(e.s)) return false;
-    const c = perSrc.get(e.s) || 0;
-    if (c >= EXT_PER_SOURCE) return false;
-    perSrc.set(e.s, c + 1);
-    return true;
-  });
-  const out = play.length ? play.concat(backup) : ext;
+  out.push(...auto);
   out.forEach((v, i) => { v.n = i + 1; });
   return out;
 }
@@ -867,7 +852,7 @@ export async function liveAdmin(env: LiveEnv, request: Request, deps: LiveDeps, 
       const e = entry(key); e.add = e.add || [];
       if (e.add.length >= 40) return fail("وصلت لأقصى عدد روابط يدوية للعرض (40)");
       if (e.add.some((a) => a.u === u)) return fail("الرابط ده مضاف قبل كده");
-      e.add.unshift({ u, q, ...(b.x ? { x: 1 as const } : {}), at: now });
+      e.add.unshift({ u, q, at: now });
       if (e.block) e.block = e.block.filter((x) => x !== u);
       break;
     }

@@ -96,13 +96,12 @@ export async function renderLiveTool(page) {
       <form class="lv-a-add" data-add>
         <input class="input" name="u" dir="ltr" placeholder="رابط سيرفر (embed) أو صفحة بث…" required>
         ${q('')}
-        <label class="lv-a-chk"><input type="checkbox" name="x"> بيفتح في صفحة تانية</label>
         <button class="btn btn-sm btn-teal">${icon('plus')} ضيف</button>
       </form>
       <div class="rows lv-a-links">
-        ${s.add.map((a, i) => html`<div class="row"><span class="row-main"><b><span class="tag">سيرفرك</span> ${a.q || ''} ${a.x ? html`<span class="tag tag-off">بيفتح برا</span>` : html`<span class="tag tag-auto">بيشتغل في الموقع</span>`}</b><small dir="ltr">${a.u}</small></span>
+        ${s.add.map((a, i) => html`<div class="row"><span class="row-main"><b><span class="tag">سيرفرك</span> ${a.q || ''} <span class="tag tag-auto">بيشتغل في الموقع</span></b><small dir="ltr">${a.u}</small></span>
           <span class="row-actions"><button class="icon-btn sm" data-mv="up" data-u="${a.u}" ${i ? '' : 'disabled'}>▲</button><button class="icon-btn sm" data-mv="down" data-u="${a.u}" ${i < s.add.length - 1 ? '' : 'disabled'}>▼</button><button class="icon-btn sm danger" data-rm="${a.u}" title="امسحه">${icon('x')}</button></span></div>`)}
-        ${s.links.map(l => html`<div class="row ${l.blocked ? 'is-off' : ''}"><span class="row-main"><b>${SRC[l.src] || l.src || 'مصدر'} ${l.q || ''} ${l.play ? html`<span class="tag tag-auto">بيشتغل في الموقع</span>` : html`<span class="tag tag-off">بيفتح برا</span>`}${l.blocked ? html` <span class="tag tag-off">مخفي</span>` : ''}</b><small dir="ltr">${l.play || l.u}</small></span>
+        ${s.links.map(l => html`<div class="row ${l.blocked ? 'is-off' : ''}"><span class="row-main"><b>${SRC[l.src] || l.src || 'مصدر'} ${l.q || ''} ${l.play ? html`<span class="tag tag-auto">بيشتغل في الموقع</span>` : html`<span class="tag tag-off">مش ظاهر — بيفتح برا الموقع</span>`}${l.blocked ? html` <span class="tag tag-off">مخفي</span>` : ''}</b><small dir="ltr">${l.play || l.u}</small></span>
           <span class="row-actions">${l.blocked ? html`<button class="btn btn-sm" data-restore="${l.u}">${icon('eye')} رجّعه</button>` : html`<button class="btn btn-sm btn-ghost" data-rm="${l.u}">${icon('eyeOff')} اخفيه</button>`}</span></div>`)}
         ${!s.add.length && !s.links.length ? html`<p class="empty-sm">مفيش سيرفرات لسه — المصادر بتنزلها قبل العرض بشوية، أو ضيف سيرفر بإيدك.</p>` : ''}
       </div>
@@ -136,7 +135,7 @@ export async function renderLiveTool(page) {
       try { const p = await prepareImage(f); act({ action: 'image', key, base64: p.base64 }, null, 'الصورة اتغيرت'); }
       catch (err) { toast(err.message, 'error'); }
     };
-    $('[data-add]', ed).onsubmit = (e) => { e.preventDefault(); const f = e.currentTarget; act({ action: 'link-add', key, u: f.u.value.trim(), q: f.q.value, x: f.x.checked }, f.querySelector('button'), 'السيرفر اتضاف'); };
+    $('[data-add]', ed).onsubmit = (e) => { e.preventDefault(); const f = e.currentTarget; act({ action: 'link-add', key, u: f.u.value.trim(), q: f.q.value }, f.querySelector('button'), 'السيرفر اتضاف'); };
     $$('[data-rm]', ed).forEach(b => b.onclick = () => act({ action: 'link-del', key, u: b.dataset.rm }, b, 'اتشال'));
     $$('[data-restore]', ed).forEach(b => b.onclick = () => act({ action: 'link-restore', key, u: b.dataset.restore }, b, 'رجع'));
     $$('[data-mv]', ed).forEach(b => b.onclick = () => act({ action: 'link-move', key, u: b.dataset.u, dir: b.dataset.mv }, b));
