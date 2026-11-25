@@ -564,6 +564,9 @@ const RULES: Rule[] = [
   // «وأأنشطته» for «وأنشطته» went live (Steve Austin story, INCIDENTS #1534): the classes above leave «أ» out, and no
   // word in any story starts with «أأ» — it is always a hamza typed twice.
   { code: "doubled_first_letter", severity: "error", re: /(?<![\u0621-\u064A])[وفبلك]?أأ[\u0621-\u064A]*/g, message: "«أ» مكتوبة مرتين في أول الكلمة («وأأنشطته») — غلطة كتابة", fields: ["title", "body"] },
+  // «لابتتعاده» for «لابتعاده» went live (Ilja Dragunov story, INCIDENTS #1539): no word in any story, show or nostalgia
+  // page has «ابتت» — it is always «ت» typed twice in a «ابتعاد/ابتكار/ابتسامة» word.
+  { code: "impossible_letter_pair", severity: "error", re: /[\u0621-\u064A]*ابتت[\u0621-\u064A]*/g, message: "كلمة فيها «ابتت» («لابتتعاده») — التاء مكتوبة مرتين، غلطة كتابة («لابتعاده»)", fields: ["title", "body"] },
   { code: "impossible_letter_pair", severity: "error", re: /[\u0621-\u064A]*غئ[\u0621-\u064A]*/g, message: "كلمة فيها «غئ» («ليفاغئه») — مفيش كلمة عربية كده، غلطة كتابة («ليفاجئه»)", fields: ["title", "body"] },
   // «… إلى بطاقة عرض WWE SmackDown المقرر إقامته.» — the sentence ends before saying when (INCIDENTS #1286)
   // «ومع تأكيد المواعيد القضائية الجديدة لثمانية أسابيع ديسمبر وستشهد القضايا…»: a «ومع …» opening whose main verb comes
