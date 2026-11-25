@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-makes-move-block-bill-watts-mid-south-wrestling-revival-trademark-filing": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T20:33:31.869Z"
+ },
  "https://www.fightful.com/wrestling/aew-collision-11-21-draws-434000-viewers": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -93,11 +98,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-25T20:30:45.491Z"
- },
- "https://www.ringsidenews.com/wwe-makes-move-block-bill-watts-mid-south-wrestling-revival-trademark-filing": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Adam Page",
-  "retry": true,
-  "at": "2026-11-25T20:13:51.978Z"
  },
  "https://www.fightful.com/wrestling/robert-stone-the-day-kendal-grey-started-nxt-you-just-knew-theres-something-special-about-them": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
