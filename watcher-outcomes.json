@@ -109,11 +109,6 @@
   "retry": false,
   "at": "2026-11-25T22:09:27.091Z"
  },
- "https://www.ringsidenews.com/jacy-jayne-addresses-idea-potential-wwe-babyface-turn": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-25T21:55:22.174Z"
- },
  "https://www.fightful.com/wrestling/izzi-dame-def-zaria-to-become-two-time-nxt-womens-north-american-champion": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
