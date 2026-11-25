@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/jacy-jayne-admits-she-used-bring-john-cena-sucks-signs-wwe-shows": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T23:24:17.792Z"
+ },
  "https://www.fightful.com/wrestling/avery-styles-set-for-jersey-j-cup-2027-wwe-nxt-highlights-more-fight-size": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -113,11 +118,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-25T23:17:02.136Z"
- },
- "https://www.ringsidenews.com/jacy-jayne-admits-she-used-bring-john-cena-sucks-signs-wwe-shows": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-25T23:13:12.770Z"
  },
  "https://www.fightful.com/wrestling/fatal-4-way-1-contenders-match-grayson-waller-mason-rook-face-to-face-announced-for-12-1-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
