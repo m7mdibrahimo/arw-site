@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/cm-punk-explains-why-he-doesnt-wrestling-cody-rhodes": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T17:38:12.197Z"
+ },
  "https://www.fightful.com/wrestling/buddy-matthews-names-three-dream-matches-he-has-his-eye-on-in-aew": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -108,11 +113,6 @@
   "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
   "retry": false,
   "at": "2026-11-25T17:30:42.091Z"
- },
- "https://www.ringsidenews.com/cm-punk-explains-why-he-doesnt-wrestling-cody-rhodes": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-25T17:08:04.222Z"
  },
  "https://www.fightful.com/wrestling/340733-wwe-raw-november-16": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Intercontinental Championship",
