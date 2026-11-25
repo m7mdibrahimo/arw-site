@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/kasper-brothers-fire-back-accusations-their-finisher-unsafe": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T00:16:47.604Z"
+ },
  "https://www.fightful.com/wrestling/the-hardys-tna-contracts-are-set-to-expire-soon": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-17T21:57:54.892Z"
- },
- "https://www.ringsidenews.com/zilla-fatu-match-added-november-17-wwe-nxt-lineup": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-17T21:40:15.560Z"
  }
 }
