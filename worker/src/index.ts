@@ -4595,6 +4595,36 @@ export default {
         return json({ success: !!post.ok, platform, videoUrl, post, ...(pin ? { pin } : {}) });
       }
 
+      // Taking a promo post back (owner 2026-11-25, «فين الصوت»: the first cut of the «بث مباشر» promo went out silent and
+      // was replaced) — one platform, one post id from publish-promo's answer. Admin only (the check above).
+      if (path === "/api/videos/delete-promo" && request.method === "POST") {
+        const body: any = await request.json().catch(() => ({}));
+        const platform = String(body.platform || "");
+        const id = String(body.id || "");
+        if (!/^[A-Za-z0-9_]{1,64}$/.test(id)) return json({ success: false, error: "رقم المنشور غير صالح." }, 400);
+        let out: any;
+        if (platform === "facebook" || platform === "instagram") {
+          const token = await getPageAccessToken(env);
+          const r = await fetch(`https://graph.facebook.com/${GRAPH_API_VERSION}/${id}?access_token=${encodeURIComponent(token)}`, { method: "DELETE" });
+          out = { status: r.status, result: await r.json().catch(() => ({})) };
+          out.ok = r.ok && out.result?.success !== false;
+        } else if (platform === "telegram") {
+          const r = await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/deleteMessage`, {
+            method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, message_id: Number(id) }) });
+          out = { result: await r.json().catch(() => ({})) };
+          out.ok = !!out.result?.ok;
+        } else if (platform === "x" || platform === "tiktok") {
+          // a Buffer post: where it stands first, then Buffer takes it back (a pending one never goes out)
+          const before = await bufferGraphQL(env, `query GetPost($id: PostId!) { post(input: { id: $id }) { id status sentAt error { message } } }`, { id });
+          const del = await bufferGraphQL(env, `mutation DeletePost($id: PostId!) { deletePost(input: { id: $id }) { __typename ... on MutationError { message } } }`, { id });
+          await env.PUSH_KV.delete(`buffer-${platform === "x" ? "x-video" : "tiktok"}:${env.SITE_ORIGIN}/videos/${String(body.file || "")}`).catch(() => {});
+          out = { before: before?.data?.post || before?.errors, result: del };
+          out.ok = !!del?.data?.deletePost && !del?.data?.deletePost?.message && !del?.errors;
+        } else return json({ success: false, error: "المنصة غير معروفة." }, 400);
+        return json({ success: !!out.ok, platform, id, ...out });
+      }
+
       if (path === "/api/admin/clean-duplicate-social" && request.method === "POST") {
         try {
           const report: any = { telegram: [], facebook: [] };
