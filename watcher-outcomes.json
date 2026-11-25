@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-makes-move-block-bill-watts-mid-south-wrestling-revival-trademark-filing": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Adam Page",
+  "retry": true,
+  "at": "2026-11-25T20:13:51.978Z"
+ },
  "https://www.fightful.com/wrestling/aew-collision-11-21-draws-434000-viewers": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
   "at": "2026-11-18T19:02:18.709Z"
- },
- "https://www.ringsidenews.com/danhausen-reacts-rocks-wwe-survivor-series-2026-return-hilarious-throwback-photo": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-18T18:54:21.085Z"
  }
 }
