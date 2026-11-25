@@ -178,11 +178,15 @@
   // the servers: like a show's own page — the list on one side, the player on the other, nothing opens elsewhere
   function deckHtml(s, st) {
     var sv = s.sv || [];
+    var firstExt = -1;
+    for (var k = 0; k < sv.length; k++) if (sv[k].x) { firstExt = k; break; }
     var list = sv.map(function (v, i) {
       var q = v.q ? '<span class="lv-q ' + esc(v.q) + '">' + esc(v.q) + '</span>' : '';
-      return v.x ?
+      // the servers of other sources that open on their own site: said before them, never mixed in unmarked (#1537)
+      var head = i === firstExt && firstExt > 0 ? '<div class="lv-sep-ext">' + EXT + ' سيرفرات احتياطية تُفتح في صفحات مصادرها</div>' : '';
+      return head + (v.x ?
         '<a class="lv-srv is-ext" href="' + esc(v.u) + '" target="_blank" rel="nofollow noopener noreferrer"><span class="n">' + EXT + '</span><span class="nm"><b>سيرفر ' + v.n + '</b><small>يفتح في صفحة المصدر</small></span>' + q + '</a>' :
-        '<button type="button" class="lv-srv' + (v.u === current ? ' active' : '') + '" data-play="' + esc(v.u) + '" data-n="' + v.n + '" role="tab"><span class="n">' + v.n + '</span><span class="nm"><b>سيرفر ' + v.n + '</b><small>' + (v.m ? 'من عرب راسلنج' : 'يعمل داخل الصفحة') + '</small></span>' + q + '<span class="on">يعمل الآن</span></button>';
+        '<button type="button" class="lv-srv' + (v.u === current ? ' active' : '') + '" data-play="' + esc(v.u) + '" data-n="' + v.n + '" role="tab"><span class="n">' + v.n + '</span><span class="nm"><b>سيرفر ' + v.n + '</b><small>' + (v.m ? 'من عرب راسلنج' : 'يعمل داخل الصفحة') + '</small></span>' + q + '<span class="on">يعمل الآن</span></button>');
     }).join('');
     var poster = '<button type="button" class="lv-poster" id="lvPoster" aria-label="تشغيل البث"><img src="' + esc(img(s)) + '" alt="" decoding="async"><span class="pl">' + PLAY + '</span><span class="cap">' +
       (st === 'soon' ? 'يبدأ البث ' + esc(when(s.start)) + '<small>السيرفرات جاهزة: جرّبها الآن واختر الأفضل لك قبل البداية</small>' : 'اضغط للمشاهدة المباشرة') + '</span></button>';
