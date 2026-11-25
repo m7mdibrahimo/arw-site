@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/lance-storm-re-signs-tna-wrestling": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T20:44:35.231Z"
+ },
+ "https://www.ringsidenews.com/wwe-makes-move-block-bill-watts-mid-south-wrestling-revival-trademark-filing": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-25T20:44:14.517Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-was-worried-team-usa-vs-team-mexico-would-be-a-minefield-for-getting-canceled": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -103,11 +113,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-25T20:37:58.870Z"
- },
- "https://www.ringsidenews.com/wwe-makes-move-block-bill-watts-mid-south-wrestling-revival-trademark-filing": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-25T20:33:31.869Z"
  },
  "https://www.fightful.com/wrestling/robert-stone-the-day-kendal-grey-started-nxt-you-just-knew-theres-something-special-about-them": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-18T21:02:23.295Z"
- },
- "https://www.ringsidenews.com/erik-watts-breaks-silence-father-cowboy-bill-watts-death-heartbreaking-statement": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-18T19:31:13.211Z"
  }
 }
