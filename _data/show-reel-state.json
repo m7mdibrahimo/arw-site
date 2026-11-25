@@ -5949,11 +5949,13 @@
     "instagram_reel": true,
     "instagram_story": true,
     "title": "عرض تي ان ايه اكسبلوجن 20.11.2026 مترجم",
-    "lastAttempt": 1795640995825,
+    "lastAttempt": 1795644466918,
     "errors": {
-      "tiktok": "Buffer: TikTok is not allowing this post to publish due to the TikTok account being banned."
+      "tiktok": "الفيديو لم يظهر على الموقع بعد؛ سيُعاد إرساله إلى TikTok بعد النشر."
     },
-    "processing": [],
+    "processing": [
+      "tiktok"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   },
@@ -5961,17 +5963,15 @@
     "publishedAt": 1795634923672,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ان جيه بي دبليو وورلد تاج ليج (الليلة الثالثة) 25.11.2026 مترجم",
-    "lastAttempt": 1795640999184,
+    "lastAttempt": 1795644486904,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "tiktok": "Buffer: TikTok is not allowing this post to publish due to the TikTok account being banned."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
     "reviewPlatforms": [],
