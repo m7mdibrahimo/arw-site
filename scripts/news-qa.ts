@@ -561,6 +561,9 @@ const RULES: Rule[] = [
   { code: "doubled_first_letter", severity: "error", re: new RegExp(`(?<![${AR}])[وبل]([^ماتنيلأإآءوهبكفد\\s])\\1[${AR}]+`, "g"), message: "حرف مكتوب مرتين بعد حرف الجر أو الواو («بصصحبة»، «لصصلحهم»، «وررودز») — غلطة كتابة" },
   // «ليفاغئه» for «ليفاجئه» went live (The Rock story, round 2026-11-21): «غئ» stands in no Arabic word — the only hit in
   // every story, show and nostalgia page was that typo.
+  // «وأأنشطته» for «وأنشطته» went live (Steve Austin story, INCIDENTS #1534): the classes above leave «أ» out, and no
+  // word in any story starts with «أأ» — it is always a hamza typed twice.
+  { code: "doubled_first_letter", severity: "error", re: /(?<![\u0621-\u064A])[وفبلك]?أأ[\u0621-\u064A]*/g, message: "«أ» مكتوبة مرتين في أول الكلمة («وأأنشطته») — غلطة كتابة", fields: ["title", "body"] },
   { code: "impossible_letter_pair", severity: "error", re: /[\u0621-\u064A]*غئ[\u0621-\u064A]*/g, message: "كلمة فيها «غئ» («ليفاغئه») — مفيش كلمة عربية كده، غلطة كتابة («ليفاجئه»)", fields: ["title", "body"] },
   // «… إلى بطاقة عرض WWE SmackDown المقرر إقامته.» — the sentence ends before saying when (INCIDENTS #1286)
   // «ومع تأكيد المواعيد القضائية الجديدة لثمانية أسابيع ديسمبر وستشهد القضايا…»: a «ومع …» opening whose main verb comes
