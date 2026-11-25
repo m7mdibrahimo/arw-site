@@ -1,8 +1,8 @@
 {
- "https://www.ringsidenews.com/wwe-fined-cm-punk-using-piledriver-john-cena": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+ "https://www.ringsidenews.com/cm-punk-explains-why-he-doesnt-wrestling-cody-rhodes": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-25T16:57:06.490Z"
+  "at": "2026-11-25T17:08:04.222Z"
  },
  "https://www.fightful.com/wrestling/buddy-matthews-pac-was-beyond-an-awesome-person-and-just-amazing-in-the-ring": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
@@ -108,6 +108,11 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: WWE Intercontinental Championship",
   "retry": true,
   "at": "2026-11-25T17:00:22.991Z"
+ },
+ "https://www.ringsidenews.com/wwe-fined-cm-punk-using-piledriver-john-cena": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T16:57:06.490Z"
  },
  "https://www.wrestlinginc.com/2328169/wwe-trick-williams-gunther-comments-controversial-dark-match-victory": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-18T17:28:07.053Z"
- },
- "https://www.fightful.com/wrestling/chavo-guerrero-says-early-versions-of-lucha-underground-vignettes-kind-of-sucked": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-18T17:26:13.891Z"
  }
 }
