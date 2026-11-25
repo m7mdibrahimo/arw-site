@@ -202,8 +202,9 @@
     return '<div class="lv-ended"><b>لا يوجد بث قادم لعرض ' + esc(t) + ' الآن</b><p>تظهر هنا صفحة البث المباشر للحلقة القادمة فور الإعلان عنها: عدّاد حتى لحظة البداية، ثم سيرفرات المشاهدة داخل الموقع.</p><a href="/live/">كل عروض البث المباشر</a></div>';
   }
   function moreHtml(s) {
-    var others = listShows().filter(function (x) { return !s || x.k !== s.k; }).slice(0, 6);
-    var rec = (recent || []).filter(function (r) { var v = s && vodOf(s); return !v || v.u !== r.u; }).slice(0, 6);
+    var others = listShows().filter(function (x) { return !s || x.k !== s.k; }).slice(0, 3);
+    // full rows only (owner 2026-11-25): four shows — one row of four on a computer, two of two on a phone
+    var rec = (recent || []).filter(function (r) { var v = s && vodOf(s); return !v || v.u !== r.u; }).slice(0, 4);
     var h = '';
     if (others.length) h += '<div class="lv-mh"><h2><i class="dot"></i>عروض أخرى في البث المباشر</h2><a href="/live/">كل البث المباشر ←</a></div><div class="lv-grid sm">' + others.map(card).join('') + '</div>';
     if (rec.length) h += '<div class="lv-mh"><h2>أحدث العروض كاملة على الموقع</h2><a href="/shows/">كل العروض ←</a></div><div class="lv-rec">' + rec.map(function (r) {

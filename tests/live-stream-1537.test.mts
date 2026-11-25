@@ -135,3 +135,24 @@ test('the home page tells of the section; the live page links the full show once
   assert.ok(!js.includes('غدًا'), 'never «غدًا»: «الليلة» or the day by name');
   assert.match(fs.readFileSync('pages/live-recent.njk', 'utf8'), /permalink: "\/live\/recent\.json"/);
 });
+
+test('a page from before the last build never opens without its styles: an old content name gets the current file', async () => {
+  const { handle } = await import('../site-worker/fast.js');
+  const files: Record<string, string> = { '/assets/live.css': '.lv{}', '/assets/live.js': 'x()' };
+  const ASSETS = { fetch: async (r: Request) => { const p = new URL(r.url).pathname; return p in files ? new Response(files[p], { headers: { 'content-type': p.endsWith('.css') ? 'text/css' : 'text/javascript', etag: 'e' } }) : new Response('nf', { status: 404 }); } };
+  const ctx = { waitUntil() {} };
+  const css = await handle(new Request('https://arab-wrestling.com/assets/live.5c65b67c0d.css'), { ASSETS }, ctx);
+  assert.equal(css.status, 200);
+  assert.equal(await css.text(), '.lv{}');
+  assert.equal(css.headers.get('content-type'), 'text/css');
+  assert.equal(css.headers.get('cache-control'), 'public, max-age=120');
+  assert.equal((await handle(new Request('https://arab-wrestling.com/assets/live.12117c1b71.js'), { ASSETS }, ctx)).status, 200);
+  assert.equal((await handle(new Request('https://arab-wrestling.com/assets/gone.12117c1b71.js'), { ASSETS }, ctx)).status, 404);
+});
+
+test('the full shows under a live page fill whole rows at every width', () => {
+  const js = fs.readFileSync('assets/live.js', 'utf8'), css = fs.readFileSync('assets/live.css', 'utf8');
+  assert.match(js, /vodOf\(s\); return !v \|\| v\.u !== r\.u; \}\)\.slice\(0, 4\)/);
+  assert.match(css, /\.lv-rec\{display:grid;grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
+  assert.match(css, /@media\(max-width:900px\)\{\.lv-rec\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
+});

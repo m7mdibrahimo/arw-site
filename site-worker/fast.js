@@ -161,6 +161,19 @@ export async function handle(request, env, ctx) {
   // «بث مباشر» (worker/src/live.ts): a show's live page works the minute the show is found, before its own page is built —
   // the section's page fills itself for the show named in the address (assets/live.js)
   const lp = new URL(request.url).pathname;
+  // a page from before the last build asks for its stylesheet or script by the old content name, gone with that build —
+  // or a page of the new build reaches a machine still on the old one (INCIDENTS #1425): the page opened with no styles
+  // at all (the owner, a live page, 2026-11-25). The plain file is in every build: it answers, briefly cached
+  const hm = lp.match(/^(\/(?:en\/)?assets\/[^?#]+?)\.[0-9a-f]{10}\.(css|js)$/);
+  if (hm && (request.method === "GET" || request.method === "HEAD")) {
+    const plain = await env.ASSETS.fetch(new Request(new URL(hm[1] + "." + hm[2], request.url).toString(), { method: "GET" }));
+    if (plain.status === 200) {
+      const out = new Response(request.method === "HEAD" ? null : plain.body, plain);
+      out.headers.set("Cache-Control", "public, max-age=120");
+      out.headers.delete("etag");
+      return out;
+    }
+  }
   // a show's live page removed days after the show (INCIDENTS #1537): its program's standing page, for the search engines
   // and old shares alike — /live/raw-24-11-2026/ → /live/raw/
   const old = lp.match(/^\/live\/([a-z0-9-]+)-(\d{2})-(\d{2})-(\d{4})\/?$/);
