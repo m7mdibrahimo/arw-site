@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2327214/wwe-eugene-nick-dinsmore-hospitalized-united-kingdom": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T00:40:57.043Z"
+ },
  "https://www.fightful.com/wrestling/the-hardys-tna-contracts-are-set-to-expire-soon": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-17T23:02:04.515Z"
- },
- "https://www.fightful.com/wrestling/charlotte-flair-i-definitely-love-the-brutality-of-wargames": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-17T22:55:13.821Z"
  }
 }
