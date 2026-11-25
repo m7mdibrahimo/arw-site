@@ -171,7 +171,7 @@
       '<div class="lv-chips"><span>' + BELL + ' يدقّ الجرس <b id="lvBellAt">' + esc(dayWord(s.start) + ' ' + clock(s.start)) + '</b> <em id="lvZoneC">' + esc(ZONE) + '</em></span><span id="lvReady">' + readyText(s) + '</span></div>' +
       '<div class="lv-bell" id="lvBell"><div>' + BELL + '<b>دقّ الجرس!</b></div></div></div>';
   }
-  function readyText(s) { return s.n ? svText(s.n) + ' جاهزة للمشاهدة أدناه' + (s.srcs > 1 ? ' من ' + srcText(s.srcs) : '') : s.pending ? 'جارٍ تحميل سيرفرات المشاهدة…' : 'سيرفرات المشاهدة تُضاف هنا فور نشرها'; }
+  function readyText(s) { return s.n ? svText(s.n) + ' جاهزة للمشاهدة أدناه' + (s.srcs > 1 ? ' من ' + (s.srcs === 2 ? 'مصدرين' : srcText(s.srcs)) : '') : s.pending ? 'جارٍ تحميل سيرفرات المشاهدة…' : 'سيرفرات المشاهدة تُضاف هنا فور نشرها'; }
   function onAirHtml(s) {
     return '<div class="lv-onair"><div class="b">' + BELL + '</div><div><' + HT + '>بث مباشر ' + esc(nm(s)) + '</' + HT + '>' + enLine(s) + '<p>دقّ الجرس — العرض مباشر الآن · بدأ ' + esc(clock(s.start)) + ' ' + esc(ZONE) + '</p></div><div class="lv-el"><b id="lvE">00:00:00</b><small>منذ بداية العرض</small></div></div>';
   }
