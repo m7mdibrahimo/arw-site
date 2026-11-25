@@ -1988,15 +1988,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-19T03:30:56.295Z"
- },
- "https://www.wrestlinginc.com/2321406/new-aew-signees-kasper-brothers-set-major-winter-coming-match": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-19T02:29:24.570Z"
- },
- "https://www.fightful.com/wrestling/tony-schiavone-admits-swerve-strickland-drinking-hangman-pages-blood-was-pretty-gross": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-19T00:14:46.774Z"
  }
 }
