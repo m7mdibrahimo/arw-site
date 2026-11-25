@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/jacy-jayne-addresses-calls-her-leave-fatal-influence": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-25T21:03:14.310Z"
+ },
+ "https://www.ringsidenews.com/lance-storm-re-signs-tna-wrestling": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-25T21:02:24.436Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-was-worried-team-usa-vs-team-mexico-would-be-a-minefield-for-getting-canceled": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +2003,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-18T21:29:29.925Z"
- },
- "https://www.fightful.com/wrestling/big-boom-aj-reveals-he-was-on-the-same-private-plane-as-kasper-brothers-to-aew-full-gear": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-18T21:02:23.295Z"
  }
 }
