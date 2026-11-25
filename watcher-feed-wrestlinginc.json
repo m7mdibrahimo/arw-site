@@ -1,5 +1,15 @@
 [
   {
+    "id": 3979102319,
+    "link": "https://www.wrestlinginc.com/2324160/wwe-nxt-zilla-fatu-john-cena-classic-invitation-umaga/",
+    "date": "Wed, 25 Nov 2026 02:00:00 +0000",
+    "date_gmt": "2026-11-25T02:00:00.000Z",
+    "title": {
+      "rendered": "WWE NXT Star Zilla Fatu Opens Up About John Cena Classic Invitation, Father Umaga"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-star-zilla-fatu-opens-up-about-john-cena-classic-invitation-father-umaga/l-intro-1795294326.jpg"
+  },
+  {
     "id": 924935067,
     "link": "https://www.wrestlinginc.com/2327595/wwe-nxt-womens-title-defended-tlc-match-first-time/",
     "date": "Wed, 25 Nov 2026 01:43:01 +0000",
@@ -188,15 +198,5 @@
       "rendered": "Zoey Serrano Is Still In Touch With Her WWE Mentors"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/zoey-serrano-is-still-in-touch-with-her-wwe-mentors/l-intro-1795208993.jpg"
-  },
-  {
-    "id": 1285462012,
-    "link": "https://www.wrestlinginc.com/2326223/wwe-raw-november-23-2026-hated-loved-opinion-review/",
-    "date": "Tue, 24 Nov 2026 04:00:47 +0000",
-    "date_gmt": "2026-11-24T04:00:47.000Z",
-    "title": {
-      "rendered": "WWE RAW 11/23/2026: 3 Things We Hated & 3 Things We Loved"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-raw-11232026-3-things-we-hated-3-things-we-loved/l-intro-1795492636.jpg"
   }
 ]
