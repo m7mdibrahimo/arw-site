@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/paige-collett-reveals-plans-pursue-wwe-aew-contract-manager": {
+  "reason": "المراجعة رفضته: فعل مثنى («يشكلان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-26T18:53:09.277Z"
+ },
+ "https://www.ringsidenews.com/wwe-vince-mcmahon-could-headed-toward-settlement-ring-boy-sexual-abuse-lawsuit": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى («يتجهان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": true,
+  "at": "2026-11-26T18:52:07.775Z"
+ },
  "https://www.ringsidenews.com/paige-collett-reveals-plans-to-pursue-wwe-or-aew-contract-as-a-manager": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -8,11 +18,6 @@
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-26T18:48:18.237Z"
- },
- "https://www.ringsidenews.com/wwe-vince-mcmahon-could-headed-toward-settlement-ring-boy-sexual-abuse-lawsuit": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T18:47:52.794Z"
  },
  "https://www.fightful.com/wrestling/jacy-jayne-responds-to-criticism-surrounding-womens-us-title-run-im-done-proving-myself": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
   "retry": true,
   "at": "2026-11-20T04:15:08.031Z"
- },
- "https://www.fightful.com/wrestling/rocky-romero-and-volador-jr-to-challenge-for-roh-tag-team-titles": {
-  "reason": "المراجعة رفضته: فعل مثنى («ينافسان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، فعل مثنى («سينافسان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-20T02:31:26.653Z"
  }
 }
