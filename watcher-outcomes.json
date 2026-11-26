@@ -62,17 +62,27 @@
  "https://www.ringsidenews.com/kayla-braxton-claims-she-gets-grilled-her-family-why-shes-still-single": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-26T14:24:36.339Z"
+  "at": "2026-11-26T14:32:13.947Z"
+ },
+ "https://www.ringsidenews.com/kayla-braxton-explains-why-she-used-spend-thanksgiving-christmas-alone": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T14:31:32.970Z"
+ },
+ "https://www.ringsidenews.com/kayla-braxton-claims-she-gets-grilled-her-family-why-shes-still-single": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-26T14:30:16.250Z"
  },
  "https://www.ringsidenews.com/speculation-two-potential-wwe-main-roster-call-ups": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل مثنى («ستشاركان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-26T14:23:33.746Z"
+  "at": "2026-11-26T14:29:45.387Z"
  },
  "https://www.ringsidenews.com/aew-collision-spoiler-results-november-26-2026": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-26T14:23:07.882Z"
+  "at": "2026-11-26T14:29:11.571Z"
  },
  "https://www.ringsidenews.com/list-tna-wrestling-contracts-set-expire-end-2026": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
@@ -1988,15 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-19T17:04:08.758Z"
- },
- "https://www.fightful.com/wrestling/kieran-culkin-wears-sami-zayn-shirt-on-the-tonight-show": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-19T16:18:55.727Z"
- },
- "https://www.fightful.com/wrestling/roman-reigns-featured-on-wwe-royal-rumble-poster-wwe-nxt-highlights-more-fight-size": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-19T16:09:44.873Z"
  }
 }
