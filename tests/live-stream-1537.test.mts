@@ -224,6 +224,8 @@ test('the panel shows the servers as visitors see them: each once, what was hidd
 
 test('one source (1max) and the servers check: the fastest playing first, a stopped one out of sight, the real quality (owner 2026-11-26)', () => {
   assert.deepEqual(L.SOURCES.map((s) => s.id), ['1max']);
+  // 1max's buttons live on its links page (/busy/aew.php), read when the post has none
+  assert.match(fs.readFileSync('worker/src/live.ts', 'utf8'), /\/busy\/\[a-z0-9_-\]\{1,40\}/);
   const at = 1, now = 10_000_000;
   const ch = (c: string) => `https://www.sawlivenow.com/embed/${c}/`;
   const links = ['ch87_HD', 'ch86_HD', 'ch87_SD', 'ch86_SD'].map((c) => ({ u: `https://dailypudding.com/category/alpha.php?live=${c}`, q: c.split('_')[1], s: 1, at }))

@@ -642,6 +642,17 @@ export async function runLive(env: LiveEnv, now: number, deps: LiveDeps = {}): P
     p.readAt = now;
     p.start = findStart(postBody(html), p.date) || p.start || null;
     p.links = extractLinks(html, pageHost);
+    // 1max keeps the stream buttons on its own links page («If links doesnt load, Go Here» → /busy/aew.php), not in the
+    // post (2026-11-26): read from there when the post has none
+    if (!p.links.length) {
+      const esc = pageHost.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const busy = (html.match(new RegExp(`(?:https?:)?//(?:www\\.)?${esc}/busy/[a-z0-9_-]{1,40}\\.php`, "i")) || [])[0];
+      if (busy) {
+        const b = await get(busy.startsWith("//") ? "https:" + busy : busy, 10000);
+        const bh = b && b.ok ? await b.text().catch(() => "") : "";
+        if (bh) p.links = extractLinks(bh, pageHost);
+      }
+    }
     p.img = ogImage(html) || p.img || null;
   }));
   // posts of shows long gone are forgotten, and those of a source no longer followed (owner 2026-11-26: 1max only)
