@@ -1,5 +1,45 @@
 [
   {
+    "id": 5137231475,
+    "link": "https://www.wrestlinginc.com/2329268/aew-collision-thanksgiving-november-26-2027-results/",
+    "date": "Thu, 26 Nov 2026 23:00:00 +0000",
+    "date_gmt": "2026-11-26T23:00:00.000Z",
+    "title": {
+      "rendered": "AEW Collision Thanksgiving Results 11/26/26 W/ Live Updates"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-collision-thanksgiving-results-112626-w-live-updates/l-intro-1795732657.jpg"
+  },
+  {
+    "id": 3643911389,
+    "link": "https://www.wrestlinginc.com/2319887/wwe-damian-priest-lessons-learned-first-world-title-run/",
+    "date": "Thu, 26 Nov 2026 22:00:00 +0000",
+    "date_gmt": "2026-11-26T22:00:00.000Z",
+    "title": {
+      "rendered": "Damian Priest Talks Lessons Learned From First WWE World Title Run"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/damian-priest-talks-lessons-learned-from-first-wwe-world-title-run/l-intro-1794950342.jpg"
+  },
+  {
+    "id": 1465429414,
+    "link": "https://www.wrestlinginc.com/2319944/wwe-bret-hart-advice-younger-self-knees/",
+    "date": "Thu, 26 Nov 2026 21:30:00 +0000",
+    "date_gmt": "2026-11-26T21:30:00.000Z",
+    "title": {
+      "rendered": "WWE HOFer Bret Hart Reveals Advice He'd Give His Younger Self"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-hofer-bret-hart-reveals-advice-hed-give-his-younger-self/l-intro-1794952412.jpg"
+  },
+  {
+    "id": 4519794463,
+    "link": "https://www.wrestlinginc.com/2321030/wwe-njpw-jeff-cobb-explains-choice-leave-miscommunication-exit/",
+    "date": "Thu, 26 Nov 2026 21:00:00 +0000",
+    "date_gmt": "2026-11-26T21:00:00.000Z",
+    "title": {
+      "rendered": "Jeff Cobb Explains Choice To Leave NJPW For WWE, Recalls Miscommunication Over Exit"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/jeff-cobb-explains-choice-to-leave-njpw-for-wwe-recalls-miscommunication-over-exit/l-intro-1795031673.jpg"
+  },
+  {
     "id": 1568723092,
     "link": "https://www.wrestlinginc.com/2323371/wwe-hall-fame-ricky-morton-son-audition-americal-idol/",
     "date": "Thu, 26 Nov 2026 20:00:00 +0000",
@@ -158,45 +198,5 @@
       "rendered": "AEW Dynamite - 11/25/2026: 3 Things We Hated & 3 Things We Loved"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-11252026-3-things-we-hated-3-things-we-loved/l-intro-1795672183.jpg"
-  },
-  {
-    "id": 4609544899,
-    "link": "https://www.wrestlinginc.com/2328956/aew-world-champion-will-ospreay-facing-mjf-title-ladder-match/",
-    "date": "Thu, 26 Nov 2026 03:24:09 +0000",
-    "date_gmt": "2026-11-26T03:24:09.000Z",
-    "title": {
-      "rendered": "AEW World Champion Will Ospreay Facing MJF In Title For Title Ladder Match"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-world-champion-will-ospreay-facing-mjf-in-title-for-title-ladder-match/l-intro-1795663348.jpg"
-  },
-  {
-    "id": 1594112618,
-    "link": "https://www.wrestlinginc.com/2328952/wrathlander-defend-aew-womens-world-tag-team-championship/",
-    "date": "Thu, 26 Nov 2026 03:16:19 +0000",
-    "date_gmt": "2026-11-26T03:16:19.000Z",
-    "title": {
-      "rendered": "Wrathlander Defend AEW Women's World Tag Team Championship"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wrathlander-unseat-aew-womens-world-tag-team-champions/l-intro-1795662596.jpg"
-  },
-  {
-    "id": 3342332050,
-    "link": "https://www.wrestlinginc.com/2328935/aew-continental-classic-2026-update-night-3-dynamite/",
-    "date": "Thu, 26 Nov 2026 02:42:07 +0000",
-    "date_gmt": "2026-11-26T02:42:07.000Z",
-    "title": {
-      "rendered": "AEW Continental Classic 2026 Update - Night 3: AEW Dynamite"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-continental-classic-2026-update-night-3-aew-dynamite/l-intro-1795660816.jpg"
-  },
-  {
-    "id": 1445731514,
-    "link": "https://www.wrestlinginc.com/2328932/new-level-making-special-thaksgiving-defense-aew-world-trios-titles/",
-    "date": "Thu, 26 Nov 2026 02:20:34 +0000",
-    "date_gmt": "2026-11-26T02:20:34.000Z",
-    "title": {
-      "rendered": "New Level Making Special Thanksgiving Defense Of AEW World Trios Titles"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/new-level-making-special-thanksgiving-defense-of-aew-world-trios-titles/l-intro-1795659565.jpg"
   }
 ]
