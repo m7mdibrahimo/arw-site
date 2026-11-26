@@ -1,23 +1,23 @@
 {
+ "https://www.ringsidenews.com/cody-rhodes-could-facing-brutal-travel-schedule-john-cena-classic": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": true,
+  "at": "2026-11-26T14:47:30.448Z"
+ },
+ "https://www.ringsidenews.com/speculation-two-potential-wwe-main-roster-call-ups": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى («ستصعدان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-26T14:46:27.092Z"
+ },
+ "https://www.ringsidenews.com/aew-collision-spoiler-results-november-26-2026": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
+  "retry": true,
+  "at": "2026-11-26T14:45:09.270Z"
+ },
  "https://www.ringsidenews.com/kayla-braxton-explains-why-she-used-spend-thanksgiving-christmas-alone": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-26T14:38:30.934Z"
- },
- "https://www.ringsidenews.com/speculation-two-potential-wwe-main-roster-call-ups": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T14:37:53.033Z"
- },
- "https://www.ringsidenews.com/aew-collision-spoiler-results-november-26-2026": {
-  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-11-26T14:35:40.271Z"
- },
- "https://www.ringsidenews.com/kayla-braxton-claims-she-gets-grilled-her-family-why-shes-still-single": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-26T14:30:16.250Z"
  },
  "https://www.fightful.com/wrestling/will-ospreay-to-face-mjf-in-title-vs-title-ladder-match-at-aew-worlds-end": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -68,6 +68,11 @@
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-26T14:32:10.003Z"
+ },
+ "https://www.ringsidenews.com/kayla-braxton-claims-she-gets-grilled-her-family-why-shes-still-single": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-26T14:30:16.250Z"
  },
  "https://www.fightful.com/wrestling/stone-cold-steve-austin-would-give-the-crowd-more-credit-than-he-would-himself-for-what-chants-longevity": {
   "reason": "مكرر مع خبر نزل قبل كده",
