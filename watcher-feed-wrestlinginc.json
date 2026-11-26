@@ -1,5 +1,45 @@
 [
   {
+    "id": 4643369275,
+    "link": "https://www.wrestlinginc.com/2329050/wwe-cody-rhodes-randy-orton-punt-intends-keep-using/",
+    "date": "Thu, 26 Nov 2026 18:30:00 +0000",
+    "date_gmt": "2026-11-26T18:30:00.000Z",
+    "title": {
+      "rendered": "WWE's Cody Rhodes Intends To Keep Using Punt Kick Following Randy Orton Feud"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-cody-rhodes-intends-to-keep-using-punt-kick-following-randy-orton-feud/l-intro-1795685125.jpg"
+  },
+  {
+    "id": 1408164224,
+    "link": "https://www.wrestlinginc.com/2329057/wwe-smackdown-viewership-ratings-november-20-2026/",
+    "date": "Thu, 26 Nov 2026 18:30:00 +0000",
+    "date_gmt": "2026-11-26T18:30:00.000Z",
+    "title": {
+      "rendered": "WWE Smackdown Viewership & Ratings Report: 11/20/2026"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-viewership-ratings-report-11202026/l-intro-1795687066.jpg"
+  },
+  {
+    "id": 4580264451,
+    "link": "https://www.wrestlinginc.com/2322341/ken-anderson-wwe-prepared-acting/",
+    "date": "Thu, 26 Nov 2026 18:00:00 +0000",
+    "date_gmt": "2026-11-26T18:00:00.000Z",
+    "title": {
+      "rendered": "Ken Anderson Says WWE Prepared Him For Acting"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/ken-anderson-says-wwe-prepared-him-for-acting/l-intro-1795119397.jpg"
+  },
+  {
+    "id": 2671158598,
+    "link": "https://www.wrestlinginc.com/2322146/aew-swerve-strickland-hangman-adam-page-goal-make-viewers-uncomfortable/",
+    "date": "Thu, 26 Nov 2026 17:30:00 +0000",
+    "date_gmt": "2026-11-26T17:30:00.000Z",
+    "title": {
+      "rendered": "Swerve Strickland Says Goal With AEW's Adam Page Is To Make Viewers 'Uncomfortable'"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/swerve-strickland-says-goal-with-aews-adam-page-is-to-make-viewers-uncomfortable/l-intro-1795113474.jpg"
+  },
+  {
     "id": 4372877149,
     "link": "https://www.wrestlinginc.com/2329018/aew-wwe-kasper-brothers-explain-decision-turn-down-contract-offer/",
     "date": "Thu, 26 Nov 2026 17:00:00 +0000",
@@ -158,45 +198,5 @@
       "rendered": "WWE's Charlotte Flair On Marriage To Andrade Ending: 'It Broke My Heart'"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-charlotte-flair-on-marriage-to-andrade-ending-it-broke-my-heart/l-intro-1795653832.jpg"
-  },
-  {
-    "id": 1368445414,
-    "link": "https://www.wrestlinginc.com/2328877/contract-uodate-former-tna-tag-team-champions-hardys/",
-    "date": "Wed, 25 Nov 2026 23:36:56 +0000",
-    "date_gmt": "2026-11-25T23:36:56.000Z",
-    "title": {
-      "rendered": "Contract Update On Former TNA Tag Team Champions The Hardys"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/contract-update-on-former-tna-tag-team-champions-the-hardys/l-intro-1795649732.jpg"
-  },
-  {
-    "id": 1048212124,
-    "link": "https://www.wrestlinginc.com/2328832/wwe-logan-paul-long-injured-advertised-upcoming-match-madison-square-garden/",
-    "date": "Wed, 25 Nov 2026 22:49:48 +0000",
-    "date_gmt": "2026-11-25T22:49:48.000Z",
-    "title": {
-      "rendered": "Long-Injured WWE Star Advertised For Upcoming Match"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/long-injured-wwe-star-advertised-for-upcoming-match/l-intro-1795646926.jpg"
-  },
-  {
-    "id": 2640392805,
-    "link": "https://www.wrestlinginc.com/2328816/leon-slater-jeff-hardy-set-upcoming-tna-taping/",
-    "date": "Wed, 25 Nov 2026 22:30:41 +0000",
-    "date_gmt": "2026-11-25T22:30:41.000Z",
-    "title": {
-      "rendered": "Leon Slater Vs. Jeff Hardy Set For Upcoming TNA Taping"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/leon-slater-vs-jeff-hardy-set-for-upcoming-tna-taping/l-intro-1795645740.jpg"
-  },
-  {
-    "id": 4358524087,
-    "link": "https://www.wrestlinginc.com/2327631/aew-dynamite-thanksgiving-eve-november-25-2026-results/",
-    "date": "Wed, 25 Nov 2026 22:00:00 +0000",
-    "date_gmt": "2026-11-25T22:00:00.000Z",
-    "title": {
-      "rendered": "AEW Dynamite Thanksgiving Eve Results 11/25/26 W/ Live Updates: 18-Man Tag Match, More"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-dynamite-thanksgiving-eve-results-112526-w-live-updates/l-intro-1795578883.jpg"
   }
 ]
