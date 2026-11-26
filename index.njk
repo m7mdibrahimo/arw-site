@@ -1397,11 +1397,18 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
   .lvs-ar{ display:grid; place-items:center; width:28px; height:28px; padding:0; border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--ink); cursor:pointer; transition:border-color .15s, background .15s; }
   .lvs-ar:hover{ border-color:rgba(127,127,127,.55); background:var(--surface-2, rgba(127,127,127,.08)); }
   .lvs-ar:focus-visible{ outline:2px solid #d93a3d; outline-offset:2px; }
-  .lvs-dots{ display:flex; align-items:center; }
-  .lvs-dots button{ width:20px; height:20px; padding:0; border:0; background:none; cursor:pointer; display:grid; place-items:center; }
-  .lvs-dots button::before{ content:''; width:14px; height:4px; border-radius:2px; background:rgba(127,127,127,.35); transition:background .15s, width .15s; }
-  .lvs-dots button:hover::before{ background:rgba(127,127,127,.65); }
-  .lvs-dots button.on::before{ width:20px; background:#d93a3d; }
+  /* a mark per show; the shown one fills from end to end like the spotlight's bars, and the next show comes when it is
+     full (owner 2026-11-26: «اكنه بيحمل كدا لحد ما يجي للاخر وبعدين يتنقل … شبه الهيدر»). The fill slides in by transform
+     (as .spotlight-bar-fill), stops under the mouse */
+  .lvs-dots{ display:flex; align-items:center; gap:2px; }
+  .lvs-dots button{ height:20px; padding:0 2px; border:0; background:none; cursor:pointer; display:grid; place-items:center; }
+  .lvs-dots .tr{ position:relative; display:block; width:14px; height:4px; border-radius:2px; overflow:hidden; background:rgba(127,127,127,.35); transition:width .3s, background .15s; }
+  .lvs-dots button:hover .tr{ background:rgba(127,127,127,.6); }
+  .lvs-dots button.on .tr{ width:34px; background:rgba(127,127,127,.25); }
+  .lvs-dots .tr i{ position:absolute; inset:0; border-radius:2px; background:#d93a3d; transform:translateX(100%); }
+  @keyframes lvs-run{ from{ transform:translateX(100%); } to{ transform:translateX(0); } }
+  .lvs-dots button.on .tr i{ animation:lvs-run var(--lvs-turn, 7s) linear both; }
+  .lvs.is-paused .lvs-dots button.on .tr i{ animation-play-state:paused; }
   .lvs.is-done .lvs-tag{ background:#3b4252; }
   .lvs.is-done .lvs-go{ background:#0e9594; color:#fff; border-color:#0e9594; }
   .lvs.is-live .lvs-go{ background:#d93a3d; color:#fff; border-color:#d93a3d; }
@@ -1411,9 +1418,11 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
     .lvs-im{ width:112px; height:63px; margin:12px 12px 0 0; border-radius:8px; }
     .lvs-tx{ flex-basis:calc(100% - 124px); padding:10px 12px 0; gap:2px; }
     /* phones: the arrows on the strip's far corner, clear of the label; the marks give way to them */
-    .lvs-nav{ position:absolute; top:8px; left:8px; gap:4px; padding:0; margin:0; border:0; }
-    .lvs-dots{ display:none; }
-    .lvs-ar{ width:30px; height:30px; }
+    /* phones: the arrows on the strip's far corner, clear of the label; the marks under the picture */
+    .lvs-nav{ position:static; padding:0; margin:0; border:0; }
+    .lvs-ar{ position:absolute; z-index:2; top:8px; width:30px; height:30px; }
+    #lvsNext{ left:8px; } #lvsPrev{ left:42px; }
+    .lvs-dots{ position:absolute; z-index:2; top:80px; right:12px; width:112px; justify-content:center; }
     .lvs.has-nav .lvs-row{ padding-inline-end:70px; }
     .lvs-tx b{ font-size:16px; white-space:normal; }
     .lvs-tx em{ white-space:normal; font-size:12.5px; }

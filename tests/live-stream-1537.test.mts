@@ -146,13 +146,18 @@ test('the home page tells of the section; the live page links the full show once
   assert.match(stripJs, /im\.onload = im\.onerror/); assert.match(stripJs, /setItem\('arwLiveLast'/);
   // several shows: one at a time like a slider (owner 2026-11-25) — on now first, then the soonest; turns each few seconds,
   // stops under the mouse, a swipe turns it on the phone, a plain mark per show
-  assert.match(stripJs, /list = on\.concat\(soon, done\)/); assert.match(stripJs, /\+\+held >= TURN\) go\(idx \+ 1\)/);
+  assert.match(stripJs, /list = on\.concat\(soon, done\)/); assert.match(stripJs, /addEventListener\('animationend', function \(e\) \{ if \(e\.animationName === 'lvs-run' && list\.length > 1\) go\(idx \+ 1\); \}\)/);
   assert.match(stripJs, /touchend/); assert.match(home, /id="lvsDots"/); assert.match(home, /\.lvs\.is-turn \.lvs-tx > a/);
   // turned by hand too (owner 2026-11-26, INCIDENTS #1543): arrows and a mark per show, outside the link, never moving
   // between turns (first in the label's row, by the picture); an ended show stays a day once its full show is out
   assert.match(home, /<span class="lvs-row"><span class="lvs-nav" id="lvsNav" hidden><button type="button" class="lvs-ar" id="lvsPrev" aria-label="البث السابق">/);
   assert.match(home, /id="lvsNext" aria-label="البث التالي"/); assert.match(home, /\.lvs-a::after\{ content:''; position:absolute; inset:0; z-index:1; \}/);
-  assert.match(stripJs, /go\(idx \+ 1, true\)/); assert.match(stripJs, /m\.type = 'button'/);
+  assert.match(stripJs, /m\.type = 'button'/);
+  // the shown mark fills like the spotlight's bars and the next show comes when it is full; paused under the mouse
+  // (owner 2026-11-26, INCIDENTS #1544); the strip's state never wipes its other classes (has-nav, is-turn, is-paused)
+  assert.match(home, /\.lvs-dots button\.on \.tr i\{ animation:lvs-run var\(--lvs-turn, 7s\) linear both; \}/);
+  assert.match(home, /\.lvs\.is-paused \.lvs-dots button\.on \.tr i\{ animation-play-state:paused; \}/);
+  assert.match(stripJs, /box\.classList\.add\('is-paused'\)/); assert.doesNotMatch(stripJs, /box\.className =/);
   assert.match(stripJs, /tEl\.textContent = 'شاهد ' \+ nm\(show\) \+ ' كاملًا مترجمًا'/); assert.match(stripJs, /DONE_KEEP = 24 \* 3600000/);
   assert.match(stripJs, /RECENT = '\/live\/recent\.json'/);
   // phones: «بث مباشر» is a tab of the bottom bar, after «العروض» (owner 2026-11-25)

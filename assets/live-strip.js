@@ -10,7 +10,7 @@
   var navEl = document.getElementById('lvsNav'), recent = null;
   var tEl = document.getElementById('lvsT'), sEl = document.getElementById('lvsS'), tagEl = document.getElementById('lvsTag'), cdEl = document.getElementById('lvsCd'), goEl = document.getElementById('lvsGo'),
     imEl = document.getElementById('lvsIm'), dotsEl = document.getElementById('lvsDots'), fedEl = document.getElementById('lvsFed'), hEl = document.getElementById('lvsH'), mEl = document.getElementById('lvsM'), xEl = document.getElementById('lvsX'), shownImg = '';
-  var skew = 0, show = null, list = [], idx = 0, held = 0, hover = false, TURN = 7, tz = '', zone = 'بتوقيتك', timer = null;
+  var skew = 0, show = null, list = [], idx = 0, TURN = 7, tz = '', zone = 'بتوقيتك', timer = null;
   var SHORT = { SA: 'السعودية', AE: 'الإمارات', US: 'أمريكا', GB: 'بريطانيا', PS: 'فلسطين', SY: 'سوريا' };
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function now() { return Date.now() + skew; }
@@ -55,6 +55,8 @@
   }
   // no show near: the section's own picture
   function plain() { if (shownImg !== '/assets/hero-bg.jpg') setImg('/assets/hero-bg.jpg'); }
+  // the show's state on the strip, keeping its other marks (arrows shown, turning, paused under the mouse)
+  function state(c) { box.classList.remove('is-live', 'is-soon', 'is-done'); box.classList.add(c); }
   function paint() {
     if (!show) return;
     var n = now(), v = n >= show.end ? vodOf(show) : null;
@@ -64,20 +66,20 @@
     if (show.img) { if (shownImg !== show.img) setImg(show.img); } else plain();
     if (show.fed) { fedEl.textContent = show.fed; fedEl.hidden = false; }
     if (v) {
-      box.className = 'lvs is-done';
+      state('is-done');
       tagEl.textContent = 'انتهى البث';
       tEl.textContent = 'شاهد ' + nm(show) + ' كاملًا مترجمًا';
       sEl.textContent = 'العرض كاملًا ومترجمًا متاح الآن على الموقع';
       cdEl.hidden = true; goEl.textContent = 'شاهد العرض ‹';
     } else if (n >= show.start) {
-      box.className = 'lvs is-live';
+      state('is-live');
       tagEl.textContent = 'مباشر الآن';
       tEl.textContent = 'بث مباشر ' + nm(show);
       sEl.textContent = (show.n ? srv(show.n) + '\u00a0جاهزة للمشاهدة · ' : '') + 'بدأ ' + when(show.start).replace(/^(الليلة|اليوم) /, '');
       cdEl.hidden = true; goEl.textContent = 'شاهد الآن ‹';
     } else {
       var left = Math.floor((show.start - n) / 1000), h = Math.floor(left / 3600), m = Math.floor(left % 3600 / 60), s = left % 60;
-      box.className = 'lvs is-soon';
+      state('is-soon');
       tagEl.textContent = 'البث القادم';
       tEl.textContent = 'بث مباشر ' + nm(show);
       sEl.textContent = when(show.start) + (show.n ? ' · ' + srv(show.n) + '\u00a0جاهزة' : '');
@@ -123,22 +125,24 @@
     for (var i = 0; i < list.length && list.length > 1; i++) {
       var m = document.createElement('button');
       m.type = 'button'; m.setAttribute('aria-label', nm(list[i])); m.dataset.i = i;
+      m.innerHTML = '<span class="tr"><i></i></span>';
       if (i === idx) { m.className = 'on'; m.setAttribute('aria-current', 'true'); }
       dotsEl.appendChild(m);
     }
   }
-  function go(to, byHand) {
+  function go(to) {
     if (list.length < 2) return;
     idx = (to + list.length) % list.length;
-    // turned by hand: the next turn on its own waits twice as long
-    held = byHand ? -TURN : 0;
     box.classList.add('is-turn');
     setTimeout(function () { show = list[idx]; paint(); marks(); hold(); box.classList.remove('is-turn'); }, 200);
   }
   // RTL: «›» on the right goes back, «‹» on the left goes on
-  document.getElementById('lvsPrev').addEventListener('click', function () { go(idx - 1, true); });
-  document.getElementById('lvsNext').addEventListener('click', function () { go(idx + 1, true); });
-  dotsEl.addEventListener('click', function (e) { var t = e.target.closest('button'); if (t && +t.dataset.i !== idx) go(+t.dataset.i, true); });
+  document.getElementById('lvsPrev').addEventListener('click', function () { go(idx - 1); });
+  document.getElementById('lvsNext').addEventListener('click', function () { go(idx + 1); });
+  // the shown mark full: the next show (its fill runs TURN seconds, paused under the mouse; a turn by hand starts it again)
+  box.style.setProperty('--lvs-turn', TURN + 's');
+  dotsEl.addEventListener('animationend', function (e) { if (e.animationName === 'lvs-run' && list.length > 1) go(idx + 1); });
+  dotsEl.addEventListener('click', function (e) { var t = e.target.closest('button'); if (t && +t.dataset.i !== idx) go(+t.dataset.i); });
   // while several shows take turns the strip keeps its tallest height, so the page under it never jumps
   var tallest = 0;
   function hold() {
@@ -155,17 +159,16 @@
     var n = now(), gone = function (s) { return n >= s.end && !isDone(s, n); };
     if (list.some(gone)) { list = list.filter(function (s) { return !gone(s); }); if (idx >= list.length) idx = 0; show = list[idx] || null; marks(); if (!show) { plain(); return; } }
     paint();
-    if (list.length > 1 && !hover && !document.hidden && ++held >= TURN) go(idx + 1);
   }
-  box.addEventListener('mouseenter', function () { hover = true; });
-  box.addEventListener('mouseleave', function () { hover = false; });
+  box.addEventListener('mouseenter', function () { box.classList.add('is-paused'); });
+  box.addEventListener('mouseleave', function () { box.classList.remove('is-paused'); });
   // a swipe on the phone turns it by hand (and does not open the page)
   var sx = null, swiped = false;
   box.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; swiped = false; }, { passive: true });
   box.addEventListener('touchend', function (e) {
     if (sx === null || list.length < 2) return;
     var dx = e.changedTouches[0].clientX - sx; sx = null;
-    if (Math.abs(dx) > 40) { swiped = true; go(idx + (dx > 0 ? 1 : -1), true); }
+    if (Math.abs(dx) > 40) { swiped = true; go(idx + (dx > 0 ? 1 : -1)); }
   }, { passive: true });
   a.addEventListener('click', function (e) { if (swiped) { e.preventDefault(); swiped = false; } });
   function load() {
