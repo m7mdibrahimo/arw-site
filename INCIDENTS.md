@@ -12099,3 +12099,8 @@ Let me check git status to enumerate uncommitted changes.</think><tool_call>shel
 اللي حصل: «بمزابة» و«يورن موكسلي» و«إسقاطه في النوم» و«وعن ما» و«أليستير أرينا» وجملة مكسورة عن شغل ستون نزلوا على الموقع.
 السبب: ترجمة حرفية وتهجئة غلط من Gemini ومفيش تصحيح ثابت يمسكهم.
 الإصلاح: الأخبار اتصلحت بنفس الرابط (عنوان نايت اتثبت بـ permalink)، و5 تصحيحات جديدة في corrections.json، واختبار tests/corrections-1541.test.mts.
+
+## #1542 — 2026-11-26: الدوّار بالإنجليزي على العروض السنوية مكانش لاقي «watch online» و«full show download»
+اللي حصل: «aew full gear 2026 watch online» (11.6) و«wwe crown jewel 2026 full show download» (19.5) في Search Console، والصفحة العربي هي اللي بتطلع من ساعة ما النسخة الإنجليزي اتشالت.
+السبب: البيانات المنظمة للعرض السنوي كان فيها الاسم الإنجليزي لوحده من غير كلمات المشاهدة والتحميل بالإنجليزي.
+الإصلاح: lib/show-seo.cjs بقى يضيف «<الاسم> <السنة> watch online / full show / full show download / download» لكل عرض سنوي جديد (البيانات المنظمة بس)، مع اختبار tests/english-intent-1542.test.mts.
