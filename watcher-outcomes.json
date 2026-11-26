@@ -1,63 +1,68 @@
 {
- "https://www.fightful.com/wrestling/naoto-inoki-grandson-of-antonio-inoki-to-appear-at-njpw-wrestle-kingdom-21": {
-  "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
+ "https://www.fightful.com/wrestling/aew-collision-spoilers-for-11-26-taped-on-11-25": {
+  "reason": "المراجعة رفضته: أعضاء فريق غلط بين القوسين (اتاخدوا من سطر تاني) — اكتب أعضاء الفريق زي المصدر أو شيل القوسين (حصل: «ذا نيو ليفل (مارك ديفيس وجيك دويل)»)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
-  "at": "2026-11-26T14:53:26.658Z"
+  "at": "2026-11-26T15:00:28.003Z"
+ },
+ "https://www.fightful.com/wrestling/naoto-inoki-grandson-of-antonio-inoki-to-appear-at-njpw-wrestle-kingdom-21": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-11-26T14:59:20.519Z"
  },
  "https://www.fightful.com/wrestling/will-ospreay-to-face-mjf-in-title-vs-title-ladder-match-at-aew-worlds-end": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T14:52:42.230Z"
+  "at": "2026-11-26T14:58:47.225Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T14:52:42.085Z"
+  "at": "2026-11-26T14:58:47.133Z"
  },
  "https://www.fightful.com/wrestling/340881-aew-continental-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T14:52:41.992Z"
+  "at": "2026-11-26T14:58:47.077Z"
  },
  "https://www.fightful.com/wrestling/wwe-womens-tag-team-title-bout-more-added-to-11-27-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T14:52:41.803Z"
+  "at": "2026-11-26T14:58:46.961Z"
  },
  "https://www.fightful.com/wrestling/kazuchika-okada-and-don-callis-poke-fun-at-adam-copeland-for-bear-incident-on-aew-dynamite-thanksgiving-eve": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T14:52:41.658Z"
+  "at": "2026-11-26T14:58:46.867Z"
  },
  "https://www.fightful.com/wrestling/cm-punk-says-he-was-fined-for-hitting-john-cena-with-a-piledriver-in-february-2013-match": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T14:52:41.174Z"
+  "at": "2026-11-26T14:58:46.552Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-11-21-draws-434000-viewers": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-26T14:52:41.028Z"
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T14:58:46.433Z"
  },
  "https://www.fightful.com/wrestling/stone-cold-steve-austin-doesnt-want-to-hog-up-a-bunch-of-tv-time-trying-to-get-himself-back-over-with-a-wwe-return": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T14:52:23.376Z"
+  "at": "2026-11-26T14:57:39.646Z"
  },
  "https://www.fightful.com/wrestling/logan-paul-announced-to-return-to-the-ring-for-wwe-at-december-26th-live-event-at-madison-square-garden": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T14:52:23.283Z"
+  "at": "2026-11-26T14:57:39.588Z"
  },
  "https://www.fightful.com/wrestling/genichiro-tenryu-hospitalized": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T14:52:23.116Z"
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-26T14:57:39.488Z"
  },
  "https://www.fightful.com/wrestling/stone-cold-steve-austin-would-give-the-crowd-more-credit-than-he-would-himself-for-what-chants-longevity": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T14:51:14.920Z"
+  "at": "2026-11-26T14:55:19.230Z"
  },
  "https://www.fightful.com/wrestling/njpw-world-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-19T17:58:34.490Z"
- },
- "https://www.fightful.com/wrestling/sheamus-proves-he-has-zero-ring-rust-despite-being-out-of-action-for-a-year": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-19T17:53:24.210Z"
  }
 }
