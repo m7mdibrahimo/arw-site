@@ -1,23 +1,8 @@
 {
- "https://www.ringsidenews.com/brooke-hogan-opens-about-missing-hulk-hogan-ahead-thanksgiving": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-26T08:51:19.464Z"
- },
- "https://www.ringsidenews.com/backstage-name-behind-nick-waynes-aew-character-transformation-revealed": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-26T08:50:27.840Z"
- },
  "https://www.ringsidenews.com/braun-strowman-set-ring-return-upcoming-indie-wrestling-event": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T08:46:40.076Z"
- },
- "https://www.ringsidenews.com/jacy-jayne-admits-she-used-bring-john-cena-sucks-signs-wwe-shows": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-26T08:43:33.325Z"
+  "at": "2026-11-26T09:01:07.907Z"
  },
  "https://www.wrestlinginc.com/2328952/wrathlander-defend-aew-womens-world-tag-team-championship": {
   "reason": "المراجعة رفضته: ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
@@ -33,6 +18,21 @@
   "reason": "المراجعة رفضته: المصدر بيتكلم عن Swerve Strickland (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن Austin Creed (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن New Level (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
   "retry": true,
   "at": "2026-11-26T08:53:04.615Z"
+ },
+ "https://www.ringsidenews.com/brooke-hogan-opens-about-missing-hulk-hogan-ahead-thanksgiving": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-26T08:51:19.464Z"
+ },
+ "https://www.ringsidenews.com/backstage-name-behind-nick-waynes-aew-character-transformation-revealed": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-26T08:50:27.840Z"
+ },
+ "https://www.ringsidenews.com/jacy-jayne-admits-she-used-bring-john-cena-sucks-signs-wwe-shows": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-26T08:43:33.325Z"
  },
  "https://www.wrestlinginc.com/2328994/aew-dynamite-november-25-2026-3-things-hated-loved-opinion-review": {
   "reason": "المراجعة رفضته: نفس العنوان منشور قبل كده — الخبر مكرر، المصدر بيتكلم عن Kris Statlander (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
