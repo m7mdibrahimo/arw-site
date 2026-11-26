@@ -39,7 +39,7 @@ import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRe
 import { runBudgetCheck } from "./budget";
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
-import { runLive, liveDataResponse, liveStatus, liveAdmin, saveHealth, type LiveDeps, type Announce } from "./live";
+import { runLive, liveDataResponse, liveStatus, liveAdmin, saveHealth, loadState as loadLiveState, applyManual as applyLiveManual, announceOf as liveAnnounceOf, type LiveDeps, type Announce } from "./live";
 import { recordView, pruneAnalytics } from "./analytics";
 import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumKind, studioPremiumDays, studioPremiumFind, studioPremiumRequest, studioPremiumMedia, premiumNotifications, runPremiumReminders } from "./premium";
 import { handleFollows, runFollowNotify, runFollowPush } from "./follows";
@@ -3333,19 +3333,19 @@ function liveDeps(env: Env): LiveDeps {
 /** «بدأ الآن البث المباشر لعرض …» on Telegram, Facebook, Instagram and X, once per show (owner 2026-11-26). KV
  *  live:ann:<slug> is taken first (a slow minute never posts twice) and given back while Telegram hasn't gone, so the
  *  next minute tries again; each platform is kept once by publishToPlatform's own record. */
-async function announceLive(env: Env, a: Announce): Promise<void> {
-  if (!env.PUSH_KV || (await socialPaused(env))) return;
+async function announceLive(env: Env, a: Announce): Promise<string> {
+  if (!env.PUSH_KV || (await socialPaused(env))) return "paused";
   const claim = `live:ann:${a.slug}`;
-  if (await env.PUSH_KV.get(claim)) return;
+  if (await env.PUSH_KV.get(claim)) return "already";
   const verify = await verifyLiveOnSite(env, { url: a.url, image: a.img || undefined });
-  if (!verify.ok) return;                       // the page or its picture isn't served yet: next minute
+  if (!verify.ok) return "page";                // the page or its picture isn't served yet: next minute
   await env.PUSH_KV.put(claim, String(Date.now()), { expirationTtl: 3 * 86_400 });
   const key = `live-start:${a.slug}`;
   const payload = { title: a.title, text: a.text, url: env.SITE_ORIGIN + a.url };
   const tg = await publishToPlatform(env, "telegram", key, payload, verify, false);
   if (tg.status !== "sent" && tg.status !== "already_sent" && tg.status !== "uncertain") {
     await env.PUSH_KV.delete(claim);
-    return;
+    return "failed";
   }
   await publishToPlatform(env, "facebook", key, { ...payload, image: a.img || undefined, kind: "show" }, {}, false).catch(() => {});
   if (a.img && env.INSTAGRAM_AUTO_ENABLED !== "false") {
@@ -3356,6 +3356,7 @@ async function announceLive(env: Env, a: Announce): Promise<void> {
     const r = await publishToPlatform(env, "x", key, { ...payload, image: a.img || undefined }, {}, false).catch(() => null);
     if (r?.status === "sent") await markXAction(env);
   }
+  return "sent";
 }
 
 export default {
@@ -4626,6 +4627,14 @@ export default {
 
       // «بث مباشر»: what the servers check found (.github/workflows/live-check.yml, owner 2026-11-26: the fastest server
       // first, only working ones) — admin only (the check above: the workflow's own GitHub token)
+      // the post «the live started» for one show, by hand (admin only, the check above)
+      if (path === "/api/live/announce" && request.method === "POST") {
+        const body: any = await request.json().catch(() => ({}));
+        const st = await loadLiveState(env.ANALYTICS as any);
+        const show = Object.values(applyLiveManual(st.shows, st.manual)).find((s: any) => s.slug === String(body.slug || ""));
+        if (!show) return json({ success: false, error: "no such show" }, 404);
+        return json({ success: true, posted: await announceLive(env, liveAnnounceOf(show)) });
+      }
       if (path === "/api/live/health" && request.method === "POST") {
         const body: any = await request.json().catch(() => ({}));
         return json({ success: true, ...(await saveHealth(env as any, body.checks)) });

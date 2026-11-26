@@ -602,7 +602,7 @@ export function wantsRead(p: PostState, show: Show | undefined, now: number, cha
   return age >= 30 * 60_000;
 }
 
-export interface LiveDeps { commit?: (changes: { path: string; text?: string; remove?: boolean }[], message: string) => Promise<string>; uploadImage?: (path: string, bytes: ArrayBuffer, type: string) => Promise<boolean>; announce?: (a: Announce) => Promise<unknown> }
+export interface LiveDeps { commit?: (changes: { path: string; text?: string; remove?: boolean }[], message: string) => Promise<string>; uploadImage?: (path: string, bytes: ArrayBuffer, type: string) => Promise<boolean>; announce?: (a: Announce) => Promise<string> }
 
 /** A show whose live just started, for the post on social (owner 2026-11-26: «لما يبدا البث لاي عرض تنزل اعلان بوست ان
  *  نزل دلوقتي البث المباشر للعرض علي الموقع») */
@@ -613,11 +613,12 @@ export function toAnnounce(shows: Record<string, EffShow>, now: number, off = fa
   return Object.values(shows)
     .filter((s) => !s.hide && s.page === "done" && statusOf(s, now) === "live" && now - s.start < ANNOUNCE_WINDOW)
     .filter((s) => servers(s, health, now).some((v) => !v.d && !v.x))
-    .map((s) => {
-      const t = arabicTitle(s);
-      return { slug: s.slug, url: `/live/${s.slug}/`, img: s.img || null, title: `بدأ الآن البث المباشر ل${t}`,
-        text: `شاهدوا ${t} مباشرةً الآن على موقع عرب راسلنج، بأكثر من سيرفر وبجودات مختلفة، من داخل الموقع.` };
-    });
+    .map(announceOf);
+}
+export function announceOf(s: EffShow): Announce {
+  const t = arabicTitle(s);
+  return { slug: s.slug, url: `/live/${s.slug}/`, img: s.img || null, title: `بدأ الآن البث المباشر ل${t}`,
+    text: `شاهدوا ${t} مباشرةً الآن على موقع عرب راسلنج، بأكثر من سيرفر وبجودات مختلفة، من داخل الموقع.` };
 }
 
 export async function runLive(env: LiveEnv, now: number, deps: LiveDeps = {}): Promise<{ changed: boolean; shows: number }> {
@@ -1022,6 +1023,14 @@ export async function liveAdmin(env: LiveEnv, request: Request, deps: LiveDeps, 
       for (const p of Object.values(st.posts)) if (p.key === key) { delete p.readAt; n++; }
       if (!n) return fail("مفيش صفحات مصادر للعرض ده لسه");
       parts.push(["posts", st.posts]); break;
+    }
+    case "announce": {                  // the post «the live started» by hand (owner 2026-11-26: «انشر بقا عرض دايناميت انه لايف»)
+      const bad = needShow(); if (bad) return bad;
+      if (statusOf(show, now) !== "live" || show.page !== "done" || m.off || show.hide) return fail("العرض لازم يكون مباشر دلوقتي وصفحته على الموقع.");
+      if (!deps.announce) return fail("النشر مش متوصل");
+      const r = await deps.announce(announceOf(show));
+      const msg: Record<string, string> = { sent: "اتنشر", already: "اتنشر قبل كده للعرض ده", paused: "النشر على السوشيال متوقف من اللوحة", page: "صفحة العرض لسه مش ظاهرة على الموقع، جرب كمان دقيقة", failed: "تليجرام مردش، جرب تاني" };
+      return r === "sent" || r === "already" ? { body: { success: true, posted: r, msg: msg[r], ...adminView(st, now) } } : fail(msg[r] || r);
     }
     case "off": case "on": { if (b.action === "off") m.off = 1; else delete m.off; break; }
     case "host": {                      // a source moved and the bot didn't find it: its new domain by hand

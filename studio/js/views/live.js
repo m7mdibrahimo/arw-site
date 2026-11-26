@@ -129,6 +129,7 @@ export async function renderLiveTool(page) {
       <div class="lv-a-acts">
         <button class="btn btn-primary" data-save>${icon('check')} احفظ</button>
         <button class="btn btn-ghost" data-refresh title="يقرا صفحات المصادر للعرض ده تاني خلال دقيقة">${icon('refresh')} حدّث من المصادر</button>
+        ${s.st === 'live' ? html`<button class="btn btn-ghost" data-announce title="منشور «بدأ الآن البث المباشر» على تليجرام وفيسبوك وإنستجرام وإكس — بينزل لوحده أول ما العرض يبدأ، مرة واحدة بس">${icon('send')} انشر إن البث شغال</button>` : ''}
         <button class="btn btn-ghost" data-hide>${s.hide ? html`${icon('eye')} أظهره` : html`${icon('eyeOff')} اخفيه`}</button>
         ${s.edited && !s.own ? html`<button class="btn btn-ghost" data-reset>رجّعه زي المصادر</button>` : ''}
         ${s.own ? html`<button class="btn btn-danger" data-del>${icon('trash')} امسحه</button>` : ''}
@@ -161,6 +162,15 @@ export async function renderLiveTool(page) {
     const val = (n) => $(`[name="${n}"]`, ed).value;
     $('[data-save]', ed).onclick = (e) => act({ action: 'save', key, t: val('t'), start: fromLocal(val('start')), end: fromLocal(val('end')), note: val('note'), vod: val('vod') }, e.currentTarget, 'اتحفظ — بيظهر على الموقع خلال دقيقة');
     $('[data-refresh]', ed).onclick = (e) => act({ action: 'refresh', key }, e.currentTarget, 'هيتقري من المصادر تاني خلال دقيقة');
+    const ann = $('[data-announce]', ed);
+    if (ann) ann.onclick = async (e) => {
+      const btn = e.currentTarget;
+      if (!(await dialog({ title: 'انشر إن البث شغال؟', body: 'هينزل منشور «بدأ الآن البث المباشر» بصورة العرض ورابط صفحته على تليجرام وفيسبوك وإنستجرام وإكس. بينزل مرة واحدة بس للعرض.', confirm: 'انشر' }))) return;
+      btn.classList.add('loading');
+      try { const r = await tools.liveAct({ action: 'announce', key }); data = r; toast(r.msg || 'اتنشر'); draw(); }
+      catch (err) { toast(err.message, 'error', 6000); }
+      finally { btn.classList.remove('loading'); }
+    };
     $('[data-hide]', ed).onclick = (e) => { const s = data.shows.find(x => x.key === key); act({ action: s.hide ? 'unhide' : 'hide', key }, e.currentTarget, s.hide ? 'العرض رجع للقسم' : 'العرض اتخفى من القسم'); };
     const reset = $('[data-reset]', ed); if (reset) reset.onclick = async (e) => { const b = e.currentTarget; if (await dialog({ title: 'ترجّع العرض زي المصادر؟', body: 'كل تعديلاتك على العرض ده (الاسم، الميعاد، الصورة، السيرفرات اللي ضفتها أو خبيتها) هتتشال.', confirm: 'رجّعه', danger: true })) act({ action: 'reset', key }, b, 'رجع زي المصادر'); };
     const del = $('[data-del]', ed); if (del) del.onclick = async (e) => { const b = e.currentTarget; if (await dialog({ title: 'تمسح العرض ده؟', body: 'هيتشال من القسم وصفحته هتتمسح من الموقع.', confirm: 'امسحه', danger: true })) { open = ''; act({ action: 'delete', key }, b, 'اتمسح'); } };
