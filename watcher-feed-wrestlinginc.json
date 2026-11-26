@@ -1,5 +1,25 @@
 [
   {
+    "id": 4542481832,
+    "link": "https://www.wrestlinginc.com/2328995/tna-righteous-contract-status-backstage-update/",
+    "date": "Thu, 26 Nov 2026 15:00:00 +0000",
+    "date_gmt": "2026-11-26T15:00:00.000Z",
+    "title": {
+      "rendered": "Backstage Update On TNA Contract Status Of The Righteous"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-tna-contract-status-of-the-righteous/l-intro-1795672478.jpg"
+  },
+  {
+    "id": 4093258879,
+    "link": "https://www.wrestlinginc.com/2325667/tna-wwe-zoey-serrano-stark-details-release-final-months/",
+    "date": "Thu, 26 Nov 2026 14:30:00 +0000",
+    "date_gmt": "2026-11-26T14:30:00.000Z",
+    "title": {
+      "rendered": "TNA's Zoey Serrano Details WWE Release & Final Months"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tnas-zoey-serrano-details-wwe-release-final-months/l-intro-1795463506.jpg"
+  },
+  {
     "id": 1883401615,
     "link": "https://www.wrestlinginc.com/2328978/njpw-ajpw-genichiro-tenryu-hospitalized-heart-failure/",
     "date": "Thu, 26 Nov 2026 14:00:00 +0000",
@@ -178,25 +198,5 @@
       "rendered": "WWE's Paul Heyman Recalls Transition From WCW To ECW"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwes-paul-heyman-recalls-transition-from-wcw-to-ecw/l-intro-1795313148.jpg"
-  },
-  {
-    "id": 3379809071,
-    "link": "https://www.wrestlinginc.com/2327662/wwe-nxt-november-24-2026-3-things-hated-loved-opinion-review/",
-    "date": "Wed, 25 Nov 2026 07:33:06 +0000",
-    "date_gmt": "2026-11-25T07:33:06.000Z",
-    "title": {
-      "rendered": "WWE NXT - 11/24/2026: 3 Things We Hated & 3 Things We Loved"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-11242026-3-things-we-hated-3-things-we-loved/l-intro-1795591875.jpg"
-  },
-  {
-    "id": 4756330320,
-    "link": "https://www.wrestlinginc.com/2327623/john-cena-adds-two-more-wwe-nxt-stars-jcc/",
-    "date": "Wed, 25 Nov 2026 03:15:54 +0000",
-    "date_gmt": "2026-11-25T03:15:54.000Z",
-    "title": {
-      "rendered": "John Cena Adds Two More WWE NXT Stars To JCC"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/john-cena-adds-two-more-wwe-nxt-stars-to-jcc/l-intro-1795576413.jpg"
   }
 ]
