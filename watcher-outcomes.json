@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2327631/aew-dynamite-thanksgiving-eve-november-25-2026-results": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T05:56:19.243Z"
+ },
  "https://www.fightful.com/wrestling/340897-aew-dynamite-don-callis": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -148,11 +153,6 @@
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-26T05:42:23.360Z"
- },
- "https://www.wrestlinginc.com/2327631/aew-dynamite-thanksgiving-eve-november-25-2026-results": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T05:38:51.328Z"
  },
  "https://www.fightful.com/wrestling/njpw-world-tag-league-results-11-25-26-a-block-action-with-two-teams-reaching-four-points": {
   "reason": "مكرر مع خبر نزل قبل كده",
