@@ -1381,19 +1381,40 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
   /* several shows: one at a time, turning every 7 seconds (owner 2026-11-25) — the text and picture fade between them, a
      plain mark per show at the bottom edge */
   .lvs{ position:relative; }
-  .lvs-tx, .lvs-im, .lvs-cd{ transition:opacity .2s; }
-  .lvs.is-turn .lvs-tx, .lvs.is-turn .lvs-im, .lvs.is-turn .lvs-cd{ opacity:0 !important; }
-  .lvs-dots{ position:absolute; bottom:7px; right:192px; display:flex; gap:4px; }
-  @media (max-width:700px){ .lvs-dots{ bottom:auto; top:9px; right:auto; left:10px; } }
-  .lvs-dots[hidden]{ display:none; }
-  .lvs-dots i{ width:14px; height:3px; border-radius:2px; background:rgba(127,127,127,.35); }
-  .lvs-dots i.on{ background:#d93a3d; }
+  /* everything but the arrows fades, so they stay under the finger */
+  .lvs-tx > a, .lvs-tx > em, .lvs-row > span:not(.lvs-nav), .lvs-im, .lvs-cd{ transition:opacity .2s; }
+  .lvs.is-turn .lvs-tx > a, .lvs.is-turn .lvs-tx > em, .lvs.is-turn .lvs-row > span:not(.lvs-nav), .lvs.is-turn .lvs-im, .lvs.is-turn .lvs-cd{ opacity:0 !important; }
+  /* the whole strip opens the show (the title's link covers it); the arrows and marks sit above it and turn the shows by
+     hand (owner 2026-11-26: «اقدر اتنقل بين البثوث بشكل سلس وسهل … ب ايدي») */
+  .lvs-a{ display:block; min-width:0; color:inherit; text-decoration:none; }
+  .lvs-a::after{ content:''; position:absolute; inset:0; z-index:1; }
+  .lvs-a:focus-visible{ outline:2px solid #d93a3d; outline-offset:3px; border-radius:4px; }
+  .lvs-tx b{ display:block; }
+  /* first in the label's row, right by the picture: the same place on every show, so the arrows never move under the
+     mouse between turns */
+  .lvs-nav{ position:relative; z-index:2; display:flex; align-items:center; gap:4px; padding-inline-end:10px; margin-inline-end:2px; border-inline-end:1px solid var(--line); }
+  .lvs-nav[hidden]{ display:none; }
+  .lvs-ar{ display:grid; place-items:center; width:28px; height:28px; padding:0; border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--ink); cursor:pointer; transition:border-color .15s, background .15s; }
+  .lvs-ar:hover{ border-color:rgba(127,127,127,.55); background:var(--surface-2, rgba(127,127,127,.08)); }
+  .lvs-ar:focus-visible{ outline:2px solid #d93a3d; outline-offset:2px; }
+  .lvs-dots{ display:flex; align-items:center; }
+  .lvs-dots button{ width:20px; height:20px; padding:0; border:0; background:none; cursor:pointer; display:grid; place-items:center; }
+  .lvs-dots button::before{ content:''; width:14px; height:4px; border-radius:2px; background:rgba(127,127,127,.35); transition:background .15s, width .15s; }
+  .lvs-dots button:hover::before{ background:rgba(127,127,127,.65); }
+  .lvs-dots button.on::before{ width:20px; background:#d93a3d; }
+  .lvs.is-done .lvs-tag{ background:#3b4252; }
+  .lvs.is-done .lvs-go{ background:#0e9594; color:#fff; border-color:#0e9594; }
   .lvs.is-live .lvs-go{ background:#d93a3d; color:#fff; border-color:#d93a3d; }
   @media (max-width:700px){
     .lvs-wrap{ margin:-26px 0 18px; }
     .lvs{ flex-wrap:wrap; gap:0; padding:0 0 0; min-height:0; border-radius:12px; }
     .lvs-im{ width:112px; height:63px; margin:12px 12px 0 0; border-radius:8px; }
     .lvs-tx{ flex-basis:calc(100% - 124px); padding:10px 12px 0; gap:2px; }
+    /* phones: the arrows on the strip's far corner, clear of the label; the marks give way to them */
+    .lvs-nav{ position:absolute; top:8px; left:8px; gap:4px; padding:0; margin:0; border:0; }
+    .lvs-dots{ display:none; }
+    .lvs-ar{ width:30px; height:30px; }
+    .lvs.has-nav .lvs-row{ padding-inline-end:70px; }
     .lvs-tx b{ font-size:16px; white-space:normal; }
     .lvs-tx em{ white-space:normal; font-size:12.5px; }
     .lvs-cd{ flex:1; justify-content:center; padding:10px 8px; margin-top:10px; border-inline-start:0; border-top:1px solid var(--line); }
@@ -1444,16 +1465,16 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
     is near or on, that show — its countdown or «مباشر الآن» (assets/live-strip.js, data from /live/data) -#}
 <section class="lvs-wrap" aria-label="بث مباشر">
 <div class="wrap">
-<a class="lvs" id="lvStrip" href="/live/">
+<div class="lvs" id="lvBox">
 <span class="lvs-im" id="lvsIm" aria-hidden="true"></span>
-<span class="lvs-tx"><span class="lvs-row"><span class="lvs-tag" id="lvsTag">جديد على عرب راسلنج</span><span class="lvs-fed" id="lvsFed" hidden></span></span><b id="lvsT">بث مباشر لعروض المصارعة داخل الموقع</b><em id="lvsS">الرو، سماك داون، داينامايت وكل العروض الكبرى: عدّاد حتى البداية بتوقيت بلدك، ثم المشاهدة المباشرة هنا</em></span>
+<span class="lvs-tx"><span class="lvs-row"><span class="lvs-nav" id="lvsNav" hidden><button type="button" class="lvs-ar" id="lvsPrev" aria-label="البث السابق"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button><span class="lvs-dots" id="lvsDots"></span><button type="button" class="lvs-ar" id="lvsNext" aria-label="البث التالي"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button></span><span class="lvs-tag" id="lvsTag">جديد على عرب راسلنج</span><span class="lvs-fed" id="lvsFed" hidden></span></span><a class="lvs-a" id="lvStrip" href="/live/"><b id="lvsT">بث مباشر لعروض المصارعة داخل الموقع</b></a><em id="lvsS">الرو، سماك داون، داينامايت وكل العروض الكبرى: عدّاد حتى البداية بتوقيت بلدك، ثم المشاهدة المباشرة هنا</em></span>
 <span class="lvs-cd" id="lvsCd" hidden><span><b id="lvsH">00</b><small>ساعة</small></span><i>:</i><span><b id="lvsM">00</b><small>دقيقة</small></span><i>:</i><span><b id="lvsX">00</b><small>ثانية</small></span></span>
-<span class="lvs-go" id="lvsGo">ادخل البث المباشر ‹</span><span class="lvs-dots" id="lvsDots" hidden aria-hidden="true"></span>
-</a>
+<span class="lvs-go" id="lvsGo">ادخل البث المباشر ‹</span>
+</div>
 </div>
 </section>
 <script>(function(){try{var c=JSON.parse(localStorage.getItem('arwLiveLast')||'null'),n=Date.now();if(!c||!c.img||n>=c.end)return;var i=document.getElementById('lvsIm');i.style.backgroundImage="url('"+String(c.img).replace(/['\\()]/g,'')+"')";i.className='lvs-im is-in';document.getElementById('lvsT').textContent=c.title;document.getElementById('lvStrip').href='/live/'+c.k+'/';}catch(e){}})();</script>
-<script src="/assets/live-strip.js?v=15374" defer></script>
+<script src="/assets/live-strip.js?v=15431" defer></script>
 
 {% set slides = pinned | freshPinned(collections.all) %}
 {% if slides and slides.length > 0 %}
