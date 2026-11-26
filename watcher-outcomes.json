@@ -1,8 +1,18 @@
 {
+ "https://www.wrestlinginc.com/2328995/tna-righteous-contract-status-backstage-update": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-26T15:15:25.816Z"
+ },
  "https://www.ringsidenews.com/kevin-nash-compares-sticking-donald-trump-staying-abusive-relationship": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-26T15:10:45.481Z"
+ },
+ "https://www.fightful.com/wrestling/aew-collision-spoilers-for-11-26-taped-on-11-25": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-26T15:10:10.736Z"
  },
  "https://www.ringsidenews.com/possible-plans-womens-tag-team-championship-plans-aew-worlds-end": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
@@ -14,20 +24,15 @@
   "retry": true,
   "at": "2026-11-26T15:08:10.963Z"
  },
- "https://www.ringsidenews.com/aew-collision-spoiler-results-november-26-2026": {
-  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-11-26T15:06:26.827Z"
- },
- "https://www.fightful.com/wrestling/aew-collision-spoilers-for-11-26-taped-on-11-25": {
-  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-11-26T15:10:10.736Z"
- },
  "https://www.fightful.com/wrestling/naoto-inoki-grandson-of-antonio-inoki-to-appear-at-njpw-wrestle-kingdom-21": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-26T15:07:19.720Z"
+ },
+ "https://www.ringsidenews.com/aew-collision-spoiler-results-november-26-2026": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-26T15:06:26.827Z"
  },
  "https://www.fightful.com/wrestling/will-ospreay-to-face-mjf-in-title-vs-title-ladder-match-at-aew-worlds-end": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
   "retry": true,
   "at": "2026-11-19T18:20:56.596Z"
- },
- "https://www.fightful.com/wrestling/list-of-pro-wrestling-moves-added-to-gta-6": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-19T18:09:32.742Z"
  }
 }
