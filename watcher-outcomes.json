@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/jacy-jayne-admits-she-used-bring-john-cena-sucks-signs-wwe-shows": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T04:25:43.434Z"
+ },
  "https://www.fightful.com/wrestling/340897-aew-dynamite-don-callis": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -148,11 +153,6 @@
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-26T04:19:14.460Z"
- },
- "https://www.ringsidenews.com/jacy-jayne-admits-she-used-bring-john-cena-sucks-signs-wwe-shows": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T04:05:40.595Z"
  },
  "https://www.fightful.com/wrestling/njpw-world-tag-league-results-11-25-26-a-block-action-with-two-teams-reaching-four-points": {
   "reason": "مكرر مع خبر نزل قبل كده",
