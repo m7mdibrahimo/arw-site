@@ -1,5 +1,15 @@
 [
   {
+    "id": 1883401615,
+    "link": "https://www.wrestlinginc.com/2328978/njpw-ajpw-genichiro-tenryu-hospitalized-heart-failure/",
+    "date": "Thu, 26 Nov 2026 14:00:00 +0000",
+    "date_gmt": "2026-11-26T14:00:00.000Z",
+    "title": {
+      "rendered": "Former NJPW & AJPW Star Genichiro Tenryu Hospitalized Due To Heart Failure"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/former-njpw-ajpw-star-genichiro-tenryu-hospitalized-due-to-heart-failure/l-intro-1795668344.jpg"
+  },
+  {
     "id": 2711912186,
     "link": "https://www.wrestlinginc.com/2324455/cody-rhodes-denies-rumors-pitched-lose-undisputed-wwe-championship/",
     "date": "Thu, 26 Nov 2026 13:30:00 +0000",
@@ -188,15 +198,5 @@
       "rendered": "John Cena Adds Two More WWE NXT Stars To JCC"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/john-cena-adds-two-more-wwe-nxt-stars-to-jcc/l-intro-1795576413.jpg"
-  },
-  {
-    "id": 2317192178,
-    "link": "https://www.wrestlinginc.com/2327622/four-way-wwe-nxt-na-contenders-match-set/",
-    "date": "Wed, 25 Nov 2026 03:15:17 +0000",
-    "date_gmt": "2026-11-25T03:15:17.000Z",
-    "title": {
-      "rendered": "Four-Way WWE NXT NA Title Contender's Match Set"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/four-way-wwe-nxt-na-title-contenders-match-set/l-intro-1795576415.jpg"
   }
 ]

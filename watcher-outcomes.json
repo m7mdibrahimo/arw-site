@@ -67,17 +67,7 @@
  "https://www.ringsidenews.com/list-tna-wrestling-contracts-set-expire-end-2026": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-26T14:00:59.853Z"
- },
- "https://www.ringsidenews.com/speculation-two-potential-wwe-main-roster-call-ups": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T13:59:58.419Z"
- },
- "https://www.ringsidenews.com/aew-collision-spoiler-results-november-26-2026": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T13:59:23.057Z"
+  "at": "2026-11-26T14:14:54.317Z"
  },
  "https://www.ringsidenews.com/first-look-wwe-survivor-series-2026-setup-inside-daikin-park": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
@@ -1993,10 +1983,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-19T16:09:44.873Z"
- },
- "https://www.fightful.com/wrestling/gofundme-set-up-to-support-emily-jayes-family-after-tragic-loss": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-19T15:52:15.251Z"
  }
 }
