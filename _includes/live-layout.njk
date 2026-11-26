@@ -355,7 +355,7 @@
     </ul>
   </nav>
 </header>
-<main class="lv-page" id="lvRoot" data-key="{{ live_key or "" }}"{% if liveProg %} data-prog="{{ liveProg.key }}" data-title="{{ liveProg.ar }}" data-fed="{{ liveProg.fed }}"{% endif %}{% if live_key %} data-start="{{ start }}" data-end="{{ end }}" data-title="{{ title | replace("بث مباشر ", "") }}" data-fed="{{ federation }}" data-en="{{ program_en }}" data-img="{{ image or "" }}"{% endif %}>
+<main class="lv-page" id="lvRoot" data-key="{{ live_key or "" }}"{% if liveProg %} data-prog="{{ liveProg.key }}" data-title="{{ liveProg.ar }}" data-fed="{{ liveProg.fed }}"{% endif %}{% if live_key %} data-start="{{ start }}" data-end="{{ end }}" data-title="{{ title | replace("بث مباشر ", "") }}" data-fed="{{ federation }}" data-en="{{ program_en }}" data-ed="{{ en_date or "" }}" data-img="{{ image or "" }}"{% endif %}>
 {%- if live_key or liveProg %}
   <nav class="arw-crumbs" aria-label="مسار التنقل"><a href="/">الرئيسية</a><span aria-hidden="true">‹</span><a href="/live/">بث مباشر</a>{% if lvParent %}<span aria-hidden="true">‹</span><a href="/live/{{ lvParent.key }}/">عرض {{ lvParent.ar }}</a>{% endif %}<span aria-hidden="true">‹</span><a href="{{ page.url }}" aria-current="page">{% if live_key %}{% if lvParent %}حلقة {{ lvDay }}{% else %}{{ lvName }} {{ lvDay }}{% endif %}{% else %}عرض {{ liveProg.ar }}{% endif %}</a></nav>
 {%- endif %}

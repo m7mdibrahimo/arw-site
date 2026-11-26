@@ -284,14 +284,25 @@ test('the name: «عرض داينامايت» with its English name everywhere, 
   assert.equal(L.arabicTitle({ ar: 'عرض الرو', name: 'WWE Raw', fed: 'WWE' }), 'عرض الرو');
   assert.equal(L.arabicTitle({ ar: 'داينامايت الليلة', name: 'AEW Dynamite', fed: 'AEW', ownT: 1 }), 'داينامايت الليلة');
   const js = fs.readFileSync('assets/live.js', 'utf8'), strip = fs.readFileSync('assets/live-strip.js', 'utf8'), lay = fs.readFileSync('_includes/live-layout.njk', 'utf8');
-  assert.match(js, /function nm\(s\)/); assert.match(js, /' Live<\/span>'/); assert.match(js, /' لعرض ' \+ esc\(bare\(s\.t\)\)/);
+  assert.match(js, /function nm\(s\)/); assert.match(js, /' Live' \+ \(s\.ed \? ' · ' \+ esc\(s\.ed\) : ''\) \+ '<\/span>'/); assert.match(js, /' لعرض ' \+ esc\(bare\(s\.t\)\)/);
   assert.match(strip, /'بث مباشر ' \+ nm\(show\)/);
   assert.match(lay, /"بث مباشر " \+ lvName \+ " " \+ lvDay \+ " \| " \+ program_en \+ " Live"/);
   assert.match(lay, /<h1><i><\/i>بث مباشر عرض \{\{ liveProg\.ar \}\}<\/h1><span class="lv-en" lang="en" dir="ltr">\{\{ liveProg\.en \}\} Live<\/span>/);
   assert.match(lay, /<nav class="arw-crumbs" aria-label="مسار التنقل">/); // the site's own breadcrumbs (owner 2026-11-25)
   assert.doesNotMatch(lay, /›/); // RTL: the site's separator is ‹
   assert.match(lay, /حلقة \{\{ lvDay \}\}/);
-  assert.equal(L.PAGE_V, 3, 'the pages already out are written again with the new name');
+  assert.equal(L.PAGE_V, 4, 'the pages already out are written again with the new name');
+  // a monthly show carries its year, Arabic and English; the English line its date (owner 2026-11-26)
+  const ss: any = { ar: 'سيرفايفر سيريس', name: 'WWE Survivor Series WarGames', fed: 'WWE', ple: true, date: '2026-11-28' };
+  assert.equal(L.arabicTitle(ss), 'عرض سيرفايفر سيريس 2026');
+  assert.equal(L.englishName(ss), 'WWE Survivor Series WarGames 2026');
+  assert.equal(L.englishName({ ...ss, name: 'WWE WrestleMania 2026' }), 'WWE WrestleMania 2026');   // never twice
+  assert.equal(L.arabicTitle({ ar: 'كوليجن', name: 'AEW Collision', fed: 'AEW', date: '2026-11-26' }), 'عرض كوليجن');   // weekly: no year
+  assert.equal(L.arabicTitle({ ...ss, ar: 'سيرفايفر الليلة', ownT: 1 }), 'سيرفايفر الليلة');   // the owner's own name as he wrote it
+  assert.equal(L.enDate('2026-11-26'), '26/11/2026');
+  const f = L.pageFile({ ...ss, key: 'k', slug: 'survivor-series-28-11-2026', prog: 'survivor-series', start: 0, end: 1, how: 'usual', srcs: [], links: [], firstAt: 0 } as any);
+  assert.match(f, /title: "بث مباشر عرض سيرفايفر سيريس 2026"/); assert.match(f, /program_en: "WWE Survivor Series WarGames 2026"/); assert.match(f, /en_date: "28\/11\/2026"/);
+  assert.match(lay, /data-ed="\{\{ en_date or "" \}\}"/);
 });
 
 test('a show whose live just started is announced once its page is up and a server plays; not an hour after', () => {

@@ -349,11 +349,22 @@ export function slugOf(id: ShowId): string {
 
 /** The Arabic name the site shows: «عرض داينامايت» (the owner, 2026-11-25: «عرض» before the name); a name the owner wrote
  *  that already starts with it is kept as he wrote it */
-export function arabicTitle(s: Pick<Show, "ar" | "name" | "fed"> & { ownT?: 1 }): string {
-  if (!s.ar) return s.name;
+export function arabicTitle(s: Pick<Show, "ar" | "name" | "fed"> & { ownT?: 1; ple?: boolean | 1; date?: string }): string {
+  if (!s.ar) return englishName(s);
   if (s.ownT) return s.ar;
-  return /^عرض\s/.test(s.ar) ? s.ar : `عرض ${s.ar}`;
+  const t = /^عرض\s/.test(s.ar) ? s.ar : `عرض ${s.ar}`;
+  return withYear(t, s);
 }
+/** A monthly show (a premium live event) carries its year in its name, Arabic and English: «عرض سيرفايفر سيريس 2026»,
+ *  «WWE Survivor Series WarGames 2026» (owner 2026-11-26: «للبثوث ال زي دي الشهرية ينضاف فيها السنة») */
+function withYear(t: string, s: { ple?: boolean | 1; date?: string }): string {
+  const y = (s.date || "").slice(0, 4);
+  return s.ple && /^\d{4}$/.test(y) && !/\b(?:19|20)\d{2}\b/.test(t) ? `${t} ${y}` : t;
+}
+export function englishName(s: { name: string; ple?: boolean | 1; date?: string }): string { return withYear(s.name, s); }
+/** The show's date for the English line, day first: «28/11/2026» (owner 2026-11-26: «الاسم بالانجليزي يكون اسم العرض
+ *  وتاريخه») — the show's own date, the one in its address */
+export function enDate(date: string): string { const m = String(date || "").match(/^(\d{4})-(\d{2})-(\d{2})$/); return m ? `${m[3]}/${m[2]}/${m[1]}` : ""; }
 
 export type Status = "soon" | "live" | "ended";
 export function statusOf(s: Pick<Show, "start" | "end">, now: number): Status {
@@ -512,7 +523,7 @@ export function publicData(shows: Record<string, EffShow>, now: number, off = fa
       const sv = st === "ended" ? [] : servers(s, health, now);
       const shown = sv.filter((v) => !v.d);
       return {
-        k: s.slug, t: arabicTitle(s), en: s.name, fed: s.fed, ple: s.ple ? 1 : 0, d: s.date, p: s.prog, start: s.start, end: s.end, how: s.how, st,
+        k: s.slug, t: arabicTitle(s), en: englishName(s), ed: enDate(s.date), fed: s.fed, ple: s.ple ? 1 : 0, d: s.date, p: s.prog, start: s.start, end: s.end, how: s.how, st,
         img: s.img || null, srcs: new Set(shown.filter((v) => v.s).map((v) => v.s)).size + (shown.some((v) => v.m) ? 1 : 0), n: shown.length,
         ...(s.note ? { note: s.note } : {}), ...(s.vod ? { vod: s.vod } : {}),
         sv,
@@ -737,7 +748,8 @@ export function pageFile(s: Show): string {
     "---",
     `title: ${q(title)}`,
     `live_key: ${q(s.slug)}`,
-    `program_en: ${q(s.name)}`,
+    `program_en: ${q(englishName(s))}`,
+    `en_date: ${q(enDate(s.date))}`,
     `federation: ${q(s.fed)}`,
     `event_date: ${s.date}`,
     `start: ${q(new Date(s.start).toISOString())}`,
@@ -749,7 +761,7 @@ export function pageFile(s: Show): string {
 }
 /** The page file's format: a page written by an older one is written again (INCIDENTS #1537: the program's name without
  *  its date, for the page's title in the search results) */
-export const PAGE_V = 3;
+export const PAGE_V = 4;   // 4: the year in a monthly show's name, the date beside the English name (owner 2026-11-26)
 interface PageMark { key: string; set: Partial<Pick<Show, "page" | "pageAt" | "pageRev" | "pageV" | "img">> }
 /** Pages to write: a new show's, an edited show's again (the owner's change of name, time or picture), and a hidden
  *  or old show's away. Returns what changed on each show, for the caller to keep. */

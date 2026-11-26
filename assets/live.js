@@ -119,7 +119,8 @@
   // those who search in English («AEW Dynamite Live»)
   function nm(s) { var t = (s && s.t) || ''; return !t || /^عرض\s/.test(t) ? t : 'عرض ' + t; }
   function bare(t) { return String(t || '').replace(/^عرض\s+/, ''); }
-  function enLine(s) { return s && s.en ? '<span class="lv-en" lang="en" dir="ltr">' + esc(s.en) + ' Live</span>' : ''; }
+  // the English name with its date: «AEW Collision Live · 26/11/2026» (owner 2026-11-26: «اسم العرض وتاريخه»)
+  function enLine(s) { return s && s.en ? '<span class="lv-en" lang="en" dir="ltr">' + esc(s.en) + ' Live' + (s.ed ? ' · ' + esc(s.ed) : '') + '</span>' : ''; }
   function card(s) {
     var st = status(s), p = parts(s.start - now()), v = st === 'ended' ? vodOf(s) : null;
     var top = st === 'live' ? '<span class="tagl"><i></i>مباشر الآن</span>' : v ? '<span class="tagl v">نُشر كاملًا</span>' :
@@ -160,7 +161,7 @@
     if (s) return s;
     var a = root.getAttribute('data-start');
     if (!key || !a) return null;
-    return { k: key, t: root.getAttribute('data-title') || '', fed: root.getAttribute('data-fed') || '', start: Date.parse(a), end: Date.parse(root.getAttribute('data-end') || a), img: root.getAttribute('data-img') || '', en: root.getAttribute('data-en') || '', srcs: 0, n: 0, sv: [], pending: 1 };
+    return { k: key, t: root.getAttribute('data-title') || '', fed: root.getAttribute('data-fed') || '', start: Date.parse(a), end: Date.parse(root.getAttribute('data-end') || a), img: root.getAttribute('data-img') || '', en: root.getAttribute('data-en') || '', ed: root.getAttribute('data-ed') || '', srcs: 0, n: 0, sv: [], pending: 1 };
   }
   function stageHtml(s) {
     return '<div class="lv-stage" id="lvStage"><div class="bgimg" style="background-image:url(\'' + esc(img(s)) + '\')"></div>' +
