@@ -32,11 +32,14 @@ test('a link plays on our page when its channel can be framed: the sources\' ad 
 test('a show\'s servers: one per channel, HD first, only what plays inside our page', () => {
   const s = both()['dynamite-2026-11-25'];
   const sv = L.servers(s);
-  // 1max's seven channels play here; watchwrestling.re's short links behind ad pages are not shown (owner 2026-11-26)
-  assert.equal(sv.length, 7);
-  assert.ok(sv.every((v) => !v.x && v.s === 1 && v.u.startsWith('https://www.sawlivenow.com/embed/ch')));
-  assert.equal(new Set(sv.map((v) => v.u)).size, 7);
-  assert.deepEqual(sv.map((v) => v.n), Array.from({ length: 7 }, (_, i) => i + 1));
+  // 1max's seven channels play here; watchwrestling.re's short links behind ad pages are not shown (owner 2026-11-26);
+  // «CatchUp 83 FHD», with no in-page copy, opens on its own site, last («خليه خاريجي عادي»)
+  assert.equal(sv.length, 8);
+  const inPage = sv.slice(0, 7);
+  assert.ok(inPage.every((v) => !v.x && v.s === 1 && v.u.startsWith('https://www.sawlivenow.com/embed/ch')));
+  assert.ok(sv[7].x && /techfunlife\.com\/.*line=83_FHD/.test(sv[7].u));
+  assert.equal(new Set(sv.map((v) => v.u)).size, 8);
+  assert.deepEqual(sv.map((v) => v.n), Array.from({ length: 8 }, (_, i) => i + 1));
   assert.equal(sv[0].q, 'HD');
   // only watchwrestling.re: nothing to show (the page waits for servers rather than send people away)
   assert.equal(L.servers({ links: s.links.filter((l) => l.s === 2) }).length, 0);
@@ -284,4 +287,23 @@ test('a show whose live just started is announced once its page is up and a serv
   assert.equal(L.toAnnounce({ k: { ...base, links: [] } }, now).length, 0);                 // nothing to watch
   assert.equal(L.toAnnounce({ k: base }, now, true).length, 0);                             // section off
   assert.equal(L.toAnnounce({ k: { ...base, hide: 1 } }, now).length, 0);
+});
+
+test('1max «CatchUp 83 FHD» (a channel with no in-page embed) opens on its own site, after the in-page servers; its other CatchUps stay copies', () => {
+  const t = (line: string) => `https://techfunlife.com/Latest_posts/?cache=x&minify=gloria&line=${line}&meu=86-87`;
+  const links = [
+    { u: t('108087_HD'), q: 'HD', s: 1, n: 1, at: 0 },
+    { u: t('83_FHD'), q: 'FHD', s: 1, n: 2, at: 0 },
+    { u: 'https://dailypudding.com/category/alpha.php?live=ch87_HD', q: 'HD', s: 1, n: 3, at: 0 },
+    { u: 'https://dailypudding.com/category/alpha.php?live=ch83_HD', q: 'FHD', s: 1, n: 4, at: 0 },
+    { u: 'https://techfunlife.com/Latest_posts/?minify=M23&mirror=instalp_1&mainid=261125AD', q: '', s: 1, n: 5, at: 0 },
+  ];
+  const sv = L.servers({ links } as any);
+  assert.deepEqual(sv.map((v) => [v.u, v.x || 0]), [
+    ['https://www.sawlivenow.com/embed/ch87_HD/', 0],
+    ['https://www.sawlivenow.com/embed/ch83_HD/', 0],
+    [t('83_FHD'), 1],
+  ]);
+  assert.equal(sv[2].q, 'FHD');
+  assert.equal(L.outerLink('https://example.com/?line=83_FHD'), null);
 });

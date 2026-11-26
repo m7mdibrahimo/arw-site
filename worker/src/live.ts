@@ -384,6 +384,17 @@ export function playable(u: string): string | null {
   return null;
 }
 
+/** A source's own channel that can't play inside our page, kept as a server that opens on its own site (owner
+ *  2026-11-26, on 1max's «CatchUp 83 FHD»: «ضيف ال تقدر عليه مباشر ولو معرفش خلاص خليه خاريجي عادي»). Only 1max's
+ *  techfunlife player with a channel the sawlive embeds don't carry («line=83_FHD», behind a robot check that can't
+ *  sit in a frame); its «line=108087_HD» ones are the same channels as the in-page servers and stay copies. */
+export function outerLink(u: string): string | null {
+  let url: URL;
+  try { url = new URL(u); } catch { return null; }
+  if (url.protocol !== "https:" || url.hostname.replace(/^www\./, "").toLowerCase() !== "techfunlife.com") return null;
+  return /^\d{1,4}_[A-Z]{2,3}$/.test(url.searchParams.get("line") || "") ? url.toString() : null;
+}
+
 /** A server as /live/data gives it: «u» plays in our player, or (x) opens on its own site */
 export interface PubServer { u: string; q: string; s: number; n: number; at: number; x?: 1; m?: 1; d?: 1; ms?: number }
 /** The quality from the picture's real height (the check's measure beats a source's label: «83 FHD» played 960×540) */
@@ -404,16 +415,22 @@ export function servers(s: Pick<EffShow, "links" | "add" | "block">, health: Hea
     (a.x ? own : play).push({ u, q: a.q || "", s: 0, n: 0, at: a.at, m: 1, ...(a.x ? { x: 1 as const } : {}) });
   }
   const auto: PubServer[] = [];
+  const outer: PubServer[] = [];
   for (const l of s.links || []) {
     const u = l.e ? l.u : playable(l.u);
     // hidden by the owner under the source's address or the one that plays (the same channel from another source too)
     if (block.has(l.u) || (u && block.has(u))) continue;
-    if (!u || seen.has(u)) continue;
+    if (!u) {
+      const o = outerLink(l.u);
+      if (o && !seen.has(o)) { seen.add(o); outer.push({ u: o, q: l.q, s: l.s, n: 0, at: l.at, x: 1 }); }
+      continue;
+    }
+    if (seen.has(u)) continue;
     seen.add(u);
     auto.push({ u, q: l.q, s: l.s, n: 0, at: l.at });
   }
   auto.sort((a, b) => a.s - b.s || (QORDER[a.q] ?? 4) - (QORDER[b.q] ?? 4));
-  const base = play.concat(auto, own);
+  const base = play.concat(auto, own, outer);
   // the check (owner 2026-11-26: «خلي اول سيرفر دايما هو اسرع سيرفر… اتاكد منهم انهم شغاليين دايما»): the ones playing
   // first, fastest first; then the ones not known either way, in the usual order; one that answered «not found» last.
   // Never hidden: the check runs in the US, and a stream that answered «not found» there played from Egypt the same night
@@ -865,7 +882,7 @@ export function panelServers(s: EffShow, srcName: (i: number, s: EffShow) => str
   const shown = new Set(sv.map((v) => v.u)), hidden: { u: string; q: string; src: string }[] = [], hid = new Set<string>();
   let copies = 0, out = 0;
   for (const l of s.links || []) {
-    const u = l.e ? l.u : playable(l.u);
+    const u = l.e ? l.u : playable(l.u) || outerLink(l.u);
     if (!u) { out++; continue; }
     if (block.has(l.u) || block.has(u)) { if (!hid.has(u) && !shown.has(u)) { hid.add(u); hidden.push({ u, q: l.q, src: srcName(l.s, s) }); } continue; }
     if (shown.has(u)) copies++;
