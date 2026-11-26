@@ -2520,7 +2520,7 @@ test('company names follow the glossary in tags and text: one Paramount and one 
 
 test('«program» is a storyline, «Cage & Cope» is one team, and a named source is named (INCIDENTS #167)', async () => {
   const { applyCorrections } = await import('../scripts/news-qa');
-  assert.equal(applyCorrections('إثر تفوقهما على فريقي كيج وآدم كوبلاند وإف تي آر'), 'إثر تفوقهما على فريق كريستيان كيج وآدم كوبلاند وفريق إف تي آر');
+  assert.equal(applyCorrections('إثر تفوقهما على فريقي كيج وآدم كوبلاند وإف تي آر'), 'بعد تفوقهما على فريق كريستيان كيج وآدم كوبلاند وفريق إف تي آر');
   assert.equal(applyCorrections('انضمام أوميغا إلى برنامجهما الرئيسي'), 'انضمام أوميغا إلى قصتهما الكبرى');
   const writer = fs.readFileSync('scripts/fightful-watcher.ts', 'utf8');
   assert.match(writer, /\*\*program\*\* في المصارعة = \*\*قصة\*\*/);

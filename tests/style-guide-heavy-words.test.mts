@@ -58,3 +58,15 @@ test("two things never take the plural pronoun «هم» (INCIDENTS #875: «أغ�
     assert.doesNotMatch(s, /كلتا الأغنيتين/, f);
   }
 });
+
+test("«إثر/على إثرها» becomes «بعد/بعدها» in every story (INCIDENTS #1555)", async () => {
+  const { applyCorrections } = await import("../scripts/news-qa.ts");
+  assert.equal(applyCorrections("خضع لعملية جراحية غاب على إثرها لعدة أشهر"), "خضع لعملية جراحية غاب بعدها لعدة أشهر");
+  assert.equal(applyCorrections("غاب إثر إصابته"), "غاب بعد إصابته");
+  assert.equal(applyCorrections("وإثر ذلك"), "وبعد ذلك");
+  assert.ok(fs.readFileSync("editorial/style-guide.md", "utf-8").includes("يعتريهم"));
+  for (const f of fs.readdirSync("content/news").filter(f => f.endsWith(".md"))) {
+    const body = fs.readFileSync(`content/news/${f}`, "utf-8").split(/\n---\n/).slice(1).join("\n---\n");
+    assert.doesNotMatch(body, /(?<![ء-ي])[وف]?إثر/, f);
+  }
+});
