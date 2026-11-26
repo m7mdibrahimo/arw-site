@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/jacy-jayne-admits-she-used-bring-john-cena-sucks-signs-wwe-shows": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T02:00:47.582Z"
+ },
  "https://www.fightful.com/wrestling/wwe-womens-tag-team-title-bout-more-added-to-11-27-wwe-smackdown": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: المصدر بيتكلم عن New Level (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن Mercedes Mone (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
   "retry": true,
   "at": "2026-11-19T08:05:44.241Z"
- },
- "https://www.fightful.com/wrestling/wwe-evolve-results-11-18": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-19T05:46:10.646Z"
  }
 }
