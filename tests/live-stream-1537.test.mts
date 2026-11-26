@@ -286,7 +286,8 @@ test('the name: «عرض داينامايت» with its English name everywhere, 
   const js = fs.readFileSync('assets/live.js', 'utf8'), strip = fs.readFileSync('assets/live-strip.js', 'utf8'), lay = fs.readFileSync('_includes/live-layout.njk', 'utf8');
   assert.match(js, /function nm\(s\)/); assert.match(js, /' Live' \+ \(s\.ed \? ' · ' \+ esc\(s\.ed\) : ''\) \+ '<\/span>'/); assert.match(js, /' لعرض ' \+ esc\(bare\(s\.t\)\)/);
   assert.match(strip, /'بث مباشر ' \+ nm\(show\)/);
-  assert.match(lay, /"بث مباشر " \+ lvName \+ " " \+ lvDay \+ " \| " \+ program_en \+ " Live"/);
+  assert.match(lay, /"بث مباشر " \+ lvName \+ " " \+ lvTitleDay \+ " \| " \+ program_en \+ " Live"/);
+  assert.match(lay, /lvDay\.slice\(0, -5\) if lvName\.endsWith\(" " \+ lvYear\) else lvDay/);
   assert.match(lay, /<h1><i><\/i>بث مباشر عرض \{\{ liveProg\.ar \}\}<\/h1><span class="lv-en" lang="en" dir="ltr">\{\{ liveProg\.en \}\} Live<\/span>/);
   assert.match(lay, /<nav class="arw-crumbs" aria-label="مسار التنقل">/); // the site's own breadcrumbs (owner 2026-11-25)
   assert.doesNotMatch(lay, /›/); // RTL: the site's separator is ‹

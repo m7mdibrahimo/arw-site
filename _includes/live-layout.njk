@@ -287,7 +287,10 @@
   {%- set lvName = title | replace("بث مباشر ", "") | replace("عرض ", "") -%}
   {%- set lvName = "عرض " + lvName -%}
   {%- set lvDay = event_date | arDay -%}
-  {%- set lvTitle = "بث مباشر " + lvName + " " + lvDay + " | " + program_en + " Live" -%}
+  {#- a monthly show's name already says its year («سيرفايفر سيريس 2026»): the date beside it says only day and month -#}
+  {%- set lvYear = lvDay.slice(-4) -%}
+  {%- set lvTitleDay = lvDay.slice(0, -5) if lvName.endsWith(" " + lvYear) else lvDay -%}
+  {%- set lvTitle = "بث مباشر " + lvName + " " + lvTitleDay + " | " + program_en + " Live" -%}
   {%- set lvDesc = "بث مباشر " + lvName + " (" + program_en + " Live) بتاريخ " + lvDay + ": شاهد العرض مباشرة على عرب راسلنج بسيرفرات تعمل داخل الصفحة، مع عدّاد دقيق حتى لحظة البداية بتوقيت بلدك، ثم العرض كاملًا مترجمًا فور نشره." -%}
 {%- elif liveProg -%}
   {%- set lvTitle = "بث مباشر عرض " + liveProg.ar + " اليوم | " + liveProg.en + " Live" -%}
