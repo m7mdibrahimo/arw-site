@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2329268/aew-collision-thanksgiving-november-26-2027-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T23:36:07.382Z"
+ },
+ "https://www.wrestlinginc.com/2322604/wwe-star-charlotte-flair-sings-praises-tatum-paxley-izzi-dame-kelani-jordan-michin": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Stephanie Vaquer، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Stephanie McHare",
+  "retry": true,
+  "at": "2026-11-26T23:35:06.574Z"
+ },
  "https://www.ringsidenews.com/paige-collett-reveals-she-originally-planned-become-nun-before-wrestling": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
@@ -63,11 +73,6 @@
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-26T23:15:20.624Z"
- },
- "https://www.wrestlinginc.com/2322604/wwe-star-charlotte-flair-sings-praises-tatum-paxley-izzi-dame-kelani-jordan-michin": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Stephanie Vaquer، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Stephanie McHare",
-  "retry": true,
-  "at": "2026-11-26T22:58:07.145Z"
  },
  "https://www.ringsidenews.com/fired-tna-referee-michael-romo-drawing-interest-multiple-wrestling-promotions": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-20T14:49:05.862Z"
- },
- "https://www.ringsidenews.com/ddp-reveals-not-single-wwe-nxt-talent-practiced-breathing-exercise-he-assigned": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-20T13:50:38.523Z"
  }
 }
