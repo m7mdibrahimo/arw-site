@@ -305,5 +305,8 @@ test('1max «CatchUp 83 FHD» (a channel with no in-page embed) opens on its own
     [t('83_FHD'), 1],
   ]);
   assert.equal(sv[2].q, 'FHD');
+  // after a server the check found stopped, too
+  const late = L.servers({ links } as any, { 'https://www.sawlivenow.com/embed/ch83_HD/': { ok: 0, ms: 30000, at: Date.now() } });
+  assert.deepEqual(late.map((v) => v.x || 0), [0, 0, 1]);
   assert.equal(L.outerLink('https://example.com/?line=83_FHD'), null);
 });

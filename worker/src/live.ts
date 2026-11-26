@@ -438,7 +438,8 @@ export function servers(s: Pick<EffShow, "links" | "add" | "block">, health: Hea
   for (const v of base) { const h = fresh(v.u); if (h?.ok && h.h) v.q = qualityOf(h.h); if (h?.ok) v.ms = h.ms; }
   const alive = base.filter((v) => !v.x && fresh(v.u)?.ok).sort((a, b) => (a.ms || 0) - (b.ms || 0));
   const late = base.filter((v) => !v.x && fresh(v.u) && !fresh(v.u)!.ok);
-  const out = alive.concat(base.filter((v) => !alive.includes(v) && !late.includes(v)), late);
+  // what opens on another site always last, after every server that plays here
+  const out = alive.concat(base.filter((v) => !v.x && !alive.includes(v) && !late.includes(v)), late, base.filter((v) => v.x));
   out.forEach((v, i) => { v.n = i + 1; });
   return out;
 }
