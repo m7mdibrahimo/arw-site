@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/paige-collett-claims-her-family-told-her-god-put-her-wheelchair-punishment": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-26T18:37:41.554Z"
+ },
+ "https://www.ringsidenews.com/wwe-vince-mcmahon-could-headed-toward-settlement-ring-boy-sexual-abuse-lawsuit": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": true,
+  "at": "2026-11-26T18:37:20.921Z"
+ },
  "https://www.fightful.com/wrestling/jacy-jayne-responds-to-criticism-surrounding-womens-us-title-run-im-done-proving-myself": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,11 +63,6 @@
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-26T18:24:51.310Z"
- },
- "https://www.ringsidenews.com/wwe-vince-mcmahon-could-headed-toward-settlement-ring-boy-sexual-abuse-lawsuit": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T18:24:25.646Z"
  },
  "https://www.fightful.com/wrestling/stone-cold-steve-austin-doesnt-want-to-hog-up-a-bunch-of-tv-time-trying-to-get-himself-back-over-with-a-wwe-return": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-20T00:41:39.073Z"
- },
- "https://www.wrestlinginc.com/2322560/speedball-mike-bailey-continental-classic-loss-nick-wayne-aew-dynamite": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-19T23:41:07.043Z"
  }
 }
