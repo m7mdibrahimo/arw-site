@@ -1362,7 +1362,9 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
   @media (max-width:860px){ .lvs-wrap .lvs{ margin:0 16px; } }
   @media (max-width:580px){ .lvs-wrap .lvs{ margin:0 10px; } }
   /* the picture comes in once it has loaded — never another picture first (owner 2026-11-25) */
-  .lvs-im{ flex:none; width:172px; background:#0b0f16 center/cover no-repeat; opacity:0; transition:opacity .25s; }
+  /* the whole picture, never cut (owner 2026-11-26: «الصور تظهر كاملة في الرئيسية»): a 16:9 frame like the sources' own
+     pictures, and «contain» for any other shape */
+  .lvs-im{ flex:none; align-self:center; width:176px; height:99px; margin-inline-start:10px; border-radius:8px; background:#0b0f16 center/contain no-repeat; opacity:0; transition:opacity .25s; }
   .lvs-im.is-in{ opacity:1; }
   .lvs-tx{ flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center; gap:3px; padding:12px 20px; line-height:1.4; }
   .lvs-row{ display:flex; align-items:center; gap:8px; }
@@ -1387,6 +1389,13 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
   /* the whole strip opens the show (the title's link covers it); the arrows and marks sit above it and turn the shows by
      hand (owner 2026-11-26: «اقدر اتنقل بين البثوث بشكل سلس وسهل … ب ايدي») */
   .lvs-a{ display:block; min-width:0; color:inherit; text-decoration:none; }
+  /* dragged left or right like the spotlight (owner 2026-11-26): a hand over it, the text following the hand */
+  .lvs.has-nav{ cursor:grab; user-select:none; -webkit-user-select:none; touch-action:pan-y; }
+  .lvs.has-nav *{ -webkit-user-drag:none; }
+  .lvs.has-nav .lvs-a{ cursor:inherit; }
+  .lvs.is-dragging{ cursor:grabbing; }
+  .lvs-tx > a, .lvs-tx > em, .lvs-im{ transition:opacity .2s, transform .25s ease-out; }
+  .lvs.is-dragging .lvs-tx > a, .lvs.is-dragging .lvs-tx > em, .lvs.is-dragging .lvs-im{ transition:none; }
   .lvs-a::after{ content:''; position:absolute; inset:0; z-index:1; }
   .lvs-a:focus-visible{ outline:2px solid #d93a3d; outline-offset:3px; border-radius:4px; }
   .lvs-tx b{ display:block; }
@@ -1412,6 +1421,15 @@ html.arw-dark .fresh-tag{ background:rgba(74,222,128,.14); color:#86efac; box-sh
   .lvs.is-done .lvs-tag{ background:#3b4252; }
   .lvs.is-done .lvs-go{ background:#0e9594; color:#fff; border-color:#0e9594; }
   .lvs.is-live .lvs-go{ background:#d93a3d; color:#fff; border-color:#d93a3d; }
+  .lvs-tag, .lvs-fed{ white-space:nowrap; }
+  /* tablets and narrow windows: a smaller picture and tighter columns, so the name keeps its room */
+  @media (min-width:701px) and (max-width:1000px){
+    .lvs-im{ width:144px; height:81px; }
+    .lvs-tx{ padding:12px 14px; }
+    .lvs-cd{ padding:0 12px; gap:4px; }
+    .lvs-cd b{ font-size:22px; }
+    .lvs-go{ padding:0 14px; }
+  }
   @media (max-width:700px){
     .lvs-wrap{ margin:-26px 0 18px; }
     .lvs{ flex-wrap:wrap; gap:0; padding:0 0 0; min-height:0; border-radius:12px; }

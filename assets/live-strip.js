@@ -162,15 +162,44 @@
   }
   box.addEventListener('mouseenter', function () { box.classList.add('is-paused'); });
   box.addEventListener('mouseleave', function () { box.classList.remove('is-paused'); });
-  // a swipe on the phone turns it by hand (and does not open the page)
-  var sx = null, swiped = false;
-  box.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; swiped = false; }, { passive: true });
-  box.addEventListener('touchend', function (e) {
-    if (sx === null || list.length < 2) return;
-    var dx = e.changedTouches[0].clientX - sx; sx = null;
-    if (Math.abs(dx) > 40) { swiped = true; go(idx + (dx > 0 ? 1 : -1)); }
-  }, { passive: true });
-  a.addEventListener('click', function (e) { if (swiped) { e.preventDefault(); swiped = false; } });
+  // dragged by the mouse or the finger, left or right, turns the shows like the spotlight above it (owner 2026-11-26:
+  // «اتنقل بين البثوث بالشد بالماوس او بالتاتش يمين او شمال شبه الهيدر»): the same direction as the spotlight, the text
+  // follows the hand a little, a page scroll stays a scroll, and a drag never opens the page
+  var px = 0, py = 0, dx = 0, down = false, horiz = false, vert = false, blocked = false;
+  var moving = [document.querySelector('.lvs-tx > a'), sEl, imEl];
+  function follow(v) { moving.forEach(function (el) { if (el) el.style.transform = v ? 'translateX(' + v + 'px)' : ''; }); }
+  box.addEventListener('dragstart', function (e) { e.preventDefault(); });
+  box.addEventListener('pointerdown', function (e) {
+    if ((e.button !== undefined && e.button !== 0) || list.length < 2 || e.target.closest('.lvs-nav')) return;
+    down = true; horiz = vert = blocked = false; px = e.clientX; py = e.clientY; dx = 0;
+    box.classList.add('is-paused');
+  });
+  box.addEventListener('pointermove', function (e) {
+    if (!down) return;
+    dx = e.clientX - px; var dy = e.clientY - py, ax = Math.abs(dx), ay = Math.abs(dy);
+    if (!horiz && !vert) {
+      if (ay > 7 && ay >= ax) { vert = blocked = true; return; }
+      if (ax > 10 && ax > ay) {
+        horiz = blocked = true; box.classList.add('is-dragging');
+        try { box.setPointerCapture(e.pointerId); } catch (x) {}
+      }
+    }
+    if (horiz) follow(Math.max(-60, Math.min(60, dx * 0.35)));
+  });
+  function up(e) {
+    if (!down) return;
+    down = false;
+    box.classList.remove('is-dragging');
+    try { if (box.hasPointerCapture(e.pointerId)) box.releasePointerCapture(e.pointerId); } catch (x) {}
+    // a mouse still over the strip keeps it paused; a finger lifted lets it carry on
+    if (!(e.pointerType === 'mouse' && box.matches(':hover'))) box.classList.remove('is-paused');
+    follow(0);
+    if (horiz && Math.abs(dx) > 25) go(idx + (dx > 0 ? -1 : 1));
+    if (blocked || Math.abs(dx) > 8) setTimeout(function () { blocked = false; dx = 0; }, 150);
+  }
+  box.addEventListener('pointerup', up);
+  box.addEventListener('pointercancel', up);
+  a.addEventListener('click', function (e) { if (blocked || Math.abs(dx) > 8) { e.preventDefault(); e.stopPropagation(); } });
   function load() {
     var cached = null;
     try { cached = JSON.parse(sessionStorage.getItem('arwLiveStrip') || 'null'); } catch (e) { cached = null; }

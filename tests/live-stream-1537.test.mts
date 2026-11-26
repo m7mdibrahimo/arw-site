@@ -147,7 +147,12 @@ test('the home page tells of the section; the live page links the full show once
   // several shows: one at a time like a slider (owner 2026-11-25) — on now first, then the soonest; turns each few seconds,
   // stops under the mouse, a swipe turns it on the phone, a plain mark per show
   assert.match(stripJs, /list = on\.concat\(soon, done\)/); assert.match(stripJs, /addEventListener\('animationend', function \(e\) \{ if \(e\.animationName === 'lvs-run' && list\.length > 1\) go\(idx \+ 1\); \}\)/);
-  assert.match(stripJs, /touchend/); assert.match(home, /id="lvsDots"/); assert.match(home, /\.lvs\.is-turn \.lvs-tx > a/);
+  // dragged by the mouse or the finger like the spotlight (owner 2026-11-26, INCIDENTS #1545): pointer events, the
+  // spotlight's direction, a vertical scroll left alone, a drag never opens the page; the whole picture shown (contain, 16:9)
+  assert.match(stripJs, /box\.addEventListener\('pointerdown'/); assert.match(stripJs, /go\(idx \+ \(dx > 0 \? -1 : 1\)\)/);
+  assert.match(stripJs, /if \(ay > 7 && ay >= ax\) \{ vert = blocked = true; return; \}/);
+  assert.match(home, /\.lvs\.has-nav\{ cursor:grab; user-select:none; -webkit-user-select:none; touch-action:pan-y; \}/);
+  assert.match(home, /\.lvs-im\{ flex:none; align-self:center; width:176px; height:99px;[^}]*center\/contain no-repeat/); assert.match(home, /id="lvsDots"/); assert.match(home, /\.lvs\.is-turn \.lvs-tx > a/);
   // turned by hand too (owner 2026-11-26, INCIDENTS #1543): arrows and a mark per show, outside the link, never moving
   // between turns (first in the label's row, by the picture); an ended show stays a day once its full show is out
   assert.match(home, /<span class="lvs-row"><span class="lvs-nav" id="lvsNav" hidden><button type="button" class="lvs-ar" id="lvsPrev" aria-label="البث السابق">/);
