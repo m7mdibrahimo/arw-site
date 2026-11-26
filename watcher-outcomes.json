@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2322341/ken-anderson-wwe-prepared-acting": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-26T19:42:12.151Z"
+ },
  "https://www.fightful.com/wrestling/lebron-james-the-rock-is-an-unbelievable-person": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -53,11 +58,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-26T19:30:12.173Z"
- },
- "https://www.wrestlinginc.com/2322341/ken-anderson-wwe-prepared-acting": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T19:24:30.051Z"
  },
  "https://www.ringsidenews.com/paige-collett-reveals-plans-pursue-wwe-aew-contract-manager": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
