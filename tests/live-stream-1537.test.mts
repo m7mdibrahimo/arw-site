@@ -158,6 +158,9 @@ test('the home page tells of the section; the live page links the full show once
   assert.match(home, /<span class="lvs-row"><span class="lvs-nav" id="lvsNav" hidden><button type="button" class="lvs-ar" id="lvsPrev" aria-label="البث السابق">/);
   assert.match(home, /id="lvsNext" aria-label="البث التالي"/); assert.match(home, /\.lvs-a::after\{ content:''; position:absolute; inset:0; z-index:1; \}/);
   assert.match(stripJs, /m\.type = 'button'/);
+  // every coming show of the section, not only two days ahead (owner 2026-11-26, INCIDENTS #1547); days in the countdown
+  assert.match(stripJs, /else if \(s\.start > n\) soon\.push\(s\);/); assert.doesNotMatch(stripJs, /48 \* 3600000/);
+  assert.match(stripJs, /lab\[0\]\.textContent = far \? 'يوم' : 'ساعة'/);
   // the shown mark fills like the spotlight's bars and the next show comes when it is full; paused under the mouse
   // (owner 2026-11-26, INCIDENTS #1544); the strip's state never wipes its other classes (has-nav, is-turn, is-paused)
   assert.match(home, /\.lvs-dots button\.on \.tr i\{ animation:lvs-run var\(--lvs-turn, 7s\) linear both; \}/);

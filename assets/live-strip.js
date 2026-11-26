@@ -1,5 +1,5 @@
 /* «بث مباشر» on the home page (INCIDENTS #1537): the strip under the hero tells of the section, and of the show that is
-   on now («مباشر الآن») or the next one within two days (its countdown, in the visitor's own time). One request a visit,
+   on now («مباشر الآن») and every coming one of the section (its countdown, in the visitor's own time). One request a visit,
    kept for two minutes in the tab; again each minute only while a show is close or on.
    A show that ended stays a day while its full show is out on the site («شاهد العرض كاملًا مترجمًا», INCIDENTS #1543),
    and the shows are turned by hand too: the arrows and the marks of the strip (owner 2026-11-26). */
@@ -78,12 +78,16 @@
       sEl.textContent = (show.n ? srv(show.n) + '\u00a0جاهزة للمشاهدة · ' : '') + 'بدأ ' + when(show.start).replace(/^(الليلة|اليوم) /, '');
       cdEl.hidden = true; goEl.textContent = 'شاهد الآن ‹';
     } else {
-      var left = Math.floor((show.start - n) / 1000), h = Math.floor(left / 3600), m = Math.floor(left % 3600 / 60), s = left % 60;
+      var left = Math.floor((show.start - n) / 1000), d = Math.floor(left / 86400), h = Math.floor(left / 3600), m = Math.floor(left % 3600 / 60), s = left % 60;
       state('is-soon');
       tagEl.textContent = 'البث القادم';
       tEl.textContent = 'بث مباشر ' + nm(show);
       sEl.textContent = when(show.start) + (show.n ? ' · ' + srv(show.n) + '\u00a0جاهزة' : '');
-      cdEl.hidden = false; hEl.textContent = pad(h); mEl.textContent = pad(m); xEl.textContent = pad(s);
+      // a day or more away: days, hours and minutes, as the section's own cards; under a day: hours, minutes, seconds
+      var far = d > 0, lab = cdEl.querySelectorAll('small');
+      cdEl.hidden = false;
+      hEl.textContent = far ? d : pad(h); mEl.textContent = pad(far ? h % 24 : m); xEl.textContent = pad(far ? m : s);
+      lab[0].textContent = far ? 'يوم' : 'ساعة'; lab[1].textContent = far ? 'ساعة' : 'دقيقة'; lab[2].textContent = far ? 'دقيقة' : 'ثانية';
       goEl.textContent = 'صفحة البث ‹';
     }
   }
@@ -93,18 +97,19 @@
     var c = d.geo && d.geo.c, name = '';
     if (c) { name = SHORT[c] || ''; if (!name) try { name = new Intl.DisplayNames(['ar'], { type: 'region' }).of(c) || ''; } catch (e) { name = ''; } }
     zone = name ? 'بتوقيت ' + name : 'بتوقيتك';
-    // every show on now, then every one within two days, soonest first: one at a time, turning to the next every
+    // every show on now, then every coming one the section shows, soonest first (owner 2026-11-26: «تتاكد ان كل البثوث
+    // دي ظاهرة في الرئيسية» — two days left Survivor Series out, INCIDENTS #1547): one at a time, turning to the next every
     // few seconds like a slider (owner 2026-11-25)
     var n = now(), on = [], soon = [], done = [];
     d.shows.forEach(function (s) {
       if (n >= s.start && n < s.end) on.push(s);
-      else if (s.start > n && s.start - n < 48 * 3600000) soon.push(s);
+      else if (s.start > n) soon.push(s);
       else if (isDone(s, n)) done.push(s);
     });
     on.sort(function (x, y) { return x.start - y.start; }); soon.sort(function (x, y) { return x.start - y.start; });
     done.sort(function (x, y) { return y.end - x.end; });
     var keep = show && show.k;
-    list = on.concat(soon, done).slice(0, 6);
+    list = on.concat(soon, done).slice(0, 10);
     idx = 0; for (var i = 0; i < list.length; i++) if (list[i].k === keep) idx = i;
     show = list[idx] || null;
     list.forEach(function (s) { if (s.img) new Image().src = String(s.img).replace(/['\\()]/g, ''); });
