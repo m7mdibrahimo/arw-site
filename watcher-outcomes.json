@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2329050/wwe-cody-rhodes-randy-orton-punt-intends-keep-using": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T19:30:12.173Z"
+ },
+ "https://www.wrestlinginc.com/2322341/ken-anderson-wwe-prepared-acting": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T19:24:30.051Z"
+ },
  "https://www.fightful.com/wrestling/jacy-jayne-responds-to-criticism-surrounding-womens-us-title-run-im-done-proving-myself": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,16 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-26T19:25:02.112Z"
- },
- "https://www.wrestlinginc.com/2329050/wwe-cody-rhodes-randy-orton-punt-intends-keep-using": {
-  "reason": "المراجعة رفضته: Punt Kick تتكتب «ركلة البانت» — مش «الركلة القاضية/المباشرة» (الضربة القاضية = KO)",
-  "retry": true,
-  "at": "2026-11-26T19:04:32.577Z"
- },
- "https://www.wrestlinginc.com/2322341/ken-anderson-wwe-prepared-acting": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T19:03:45.561Z"
  },
  "https://www.ringsidenews.com/paige-collett-reveals-plans-pursue-wwe-aew-contract-manager": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
