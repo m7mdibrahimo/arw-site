@@ -362,7 +362,8 @@ export function statusOf(s: Pick<Show, "start" | "end">, now: number): Status {
  *  Checked in a browser 2026-11-25: sawlivenow.com's embed plays framed on any site (the sources' own pages only frame
  *  it, with ads around); dailypudding's «alpha.php?live=chNN_Q» is that embed wrapped in ads; techfunlife's
  *  «line=1080NN_Q» is the same channel behind a human check and refuses framing; blog.djt2.com short links open an ad
- *  page; dramavideo.se allows framing. */
+ *  page and refuses framing (X-Frame-Options SAMEORIGIN, 2026-11-26) — its player sits behind the ad wall, which is
+ *  never gone around; dramavideo.se allows framing. */
 export function playable(u: string): string | null {
   let url: URL;
   try { url = new URL(u); } catch { return null; }
@@ -372,6 +373,8 @@ export function playable(u: string): string | null {
   if (host === "sawlivenow.com") return ch((url.pathname.match(/^\/embed\/([^/]+)\/?$/) || [])[1]);
   const live = url.searchParams.get("live");
   if (live) return ch(live);
+  // afiyukent.one's «watch.php?id=ch87_SD&host=sawlive» (watchwrestlingtv, 2026-11-26) names the same embed in its address
+  if (/^sawlive/i.test(url.searchParams.get("host") || "")) return ch(url.searchParams.get("id"));
   const line = (url.searchParams.get("line") || "").match(/^1080(\d{1,4})_([A-Z]{2,3})$/);
   if (line) return ch(`ch${line[1]}_${line[2]}`);
   if (host === "dramavideo.se" || host.endsWith(".dramavideo.se")) return "https://" + url.host + url.pathname + url.search;
@@ -382,44 +385,30 @@ export function playable(u: string): string | null {
 export interface PubServer { u: string; q: string; s: number; n: number; at: number; x?: 1; m?: 1 }
 const QORDER: Record<string, number> = { HD: 0, FHD: 1, SD: 2, LQ: 3 };
 /** A show's servers: the owner's own first, then every source's in the order they came, the best quality first;
- *  duplicates (the same channel under two pages) once; links that only open elsewhere only when nothing plays here */
-/** At most this many links that open on a source's own site, per source, beside the ones playing here */
-const EXT_PER_SOURCE = 6;
+ *  duplicates (the same channel under two pages) once. Only what plays inside our page (owner 2026-11-26: «مش رابط خارجي
+ *  مش عايز الناس تطلع من الموقع»): a source link that opens only on its own site is never shown — the one exception is a
+ *  link the owner himself adds in the panel marked «بيفتح في صفحة تانية». */
 export function servers(s: Pick<EffShow, "links" | "add" | "block">): PubServer[] {
   const block = new Set(s.block || []);
-  const play: PubServer[] = [], ext: PubServer[] = [], seen = new Set<string>();
+  const play: PubServer[] = [], own: PubServer[] = [], seen = new Set<string>();
   for (const a of s.add || []) {
     if (block.has(a.u)) continue;
     const u = a.x ? a.u : playable(a.u) || a.u;
     if (seen.has(u)) continue;
     seen.add(u);
-    (a.x ? ext : play).push({ u, q: a.q || "", s: 0, n: 0, at: a.at, m: 1, ...(a.x ? { x: 1 as const } : {}) });
+    (a.x ? own : play).push({ u, q: a.q || "", s: 0, n: 0, at: a.at, m: 1, ...(a.x ? { x: 1 as const } : {}) });
   }
   const auto: PubServer[] = [];
   for (const l of s.links || []) {
-    if (block.has(l.u)) continue;
-    const p = l.e ? l.u : playable(l.u);
-    const u = p || l.u;
-    if (seen.has(u)) continue;
+    const u = l.e ? l.u : playable(l.u);
+    // hidden by the owner under the source's address or the one that plays (the same channel from another source too)
+    if (block.has(l.u) || (u && block.has(u))) continue;
+    if (!u || seen.has(u)) continue;
     seen.add(u);
-    auto.push({ u, q: l.q, s: l.s, n: 0, at: l.at, ...(p ? {} : { x: 1 as const }) });
+    auto.push({ u, q: l.q, s: l.s, n: 0, at: l.at });
   }
   auto.sort((a, b) => a.s - b.s || (QORDER[a.q] ?? 4) - (QORDER[b.q] ?? 4));
-  for (const a of auto) (a.x ? ext : play).push(a);
-  // every source counts (owner 2026-11-25: «كل المصادر الأربعة… سيرفرات كتير من مصادر متنوعة»): a source with nothing that
-  // plays here still gives its own links, after ours, opening on its site — up to EXT_PER_SOURCE, best quality first; a
-  // source that plays here needs no copies of the same channels behind ad pages
-  const plays = new Set(play.map((p) => p.s));
-  const perSrc = new Map<number, number>();
-  const backup = ext.filter((e) => {
-    if (e.m) return true;
-    if (plays.has(e.s)) return false;
-    const c = perSrc.get(e.s) || 0;
-    if (c >= EXT_PER_SOURCE) return false;
-    perSrc.set(e.s, c + 1);
-    return true;
-  });
-  const out = play.length ? play.concat(backup) : ext;
+  const out = play.concat(auto, own);
   out.forEach((v, i) => { v.n = i + 1; });
   return out;
 }
@@ -794,6 +783,26 @@ async function syncPages(db: D1Database, now: number, deps: LiveDeps) {
   if (own.length) await markManualPages(db, own, now);
 }
 
+/** The servers as the panel shows them (owner 2026-11-26: no duplicates, nothing that sends people away): «sv» exactly what
+ *  visitors see, in order, each once; «hidden» what the owner hid, each once; «dup» / «out» how many source links were left
+ *  out as copies of a server already shown / as pages that open only on their own site */
+export function panelServers(s: EffShow, srcName: (i: number, s: EffShow) => string) {
+  const block = new Set(s.block || []);
+  // an owner's own server keeps the address he typed (raw), which the panel moves or removes it by
+  const rawOf = (u: string) => (s.add || []).find((a) => (a.x ? a.u : playable(a.u) || a.u) === u)?.u || u;
+  const sv = servers(s).map((v) => ({ u: v.u, raw: v.m ? rawOf(v.u) : v.u, q: v.q, n: v.n, src: v.m ? "" : srcName(v.s, s), m: v.m ? 1 : 0, x: v.x ? 1 : 0 }));
+  const shown = new Set(sv.map((v) => v.u)), hidden: { u: string; q: string; src: string }[] = [], hid = new Set<string>();
+  let copies = 0, out = 0;
+  for (const l of s.links || []) {
+    const u = l.e ? l.u : playable(l.u);
+    if (!u) { out++; continue; }
+    if (block.has(l.u) || block.has(u)) { if (!hid.has(u) && !shown.has(u)) { hid.add(u); hidden.push({ u, q: l.q, src: srcName(l.s, s) }); } continue; }
+    if (shown.has(u)) copies++;
+  }
+  // every link that plays a shown server, less the one it is shown as: a copy
+  return { sv, hidden, dup: Math.max(0, copies - sv.filter((v) => !v.m).length), out };
+}
+
 function adminView(st: LiveState, now: number) {
   const eff = applyManual(st.shows, st.manual);
   const list = Object.values(eff).filter((s) => now < s.end + ENDED_KEEP || st.manual.shows[s.key]?.def && now < s.end + ENDED_KEEP);
@@ -806,12 +815,11 @@ function adminView(st: LiveState, now: number) {
     shows: list.map((s) => {
       const auto = st.shows[s.key];
       const o = st.manual.shows[s.key] || {};
-      const block = new Set(s.block || []);
       return {
         key: s.key, slug: s.slug, t: arabicTitle(s), name: s.name, fed: s.fed, prog: s.prog, date: s.date, start: s.start, end: s.end, how: s.how,
         st: statusOf(s, now), img: s.img || null, hide: !!s.hide, note: s.note || "", vod: s.vod || "", own: !auto, page: s.page || "", edited: !!st.manual.shows[s.key],
         auto: auto ? { t: arabicTitle(auto), start: auto.start, end: auto.end, img: auto.img || null, how: auto.how } : null,
-        links: (s.links || []).map((l) => ({ u: l.u, q: l.q, src: srcName(l.s, s), play: l.e ? l.u : playable(l.u), blocked: block.has(l.u) })),
+        ...panelServers(s, srcName),
         add: o.add || [],
         servers: servers(s).length,
       };
@@ -883,7 +891,10 @@ export async function liveAdmin(env: LiveEnv, request: Request, deps: LiveDeps, 
       else { e.block = Array.from(new Set([...(e.block || []), u])).slice(-200); }
       break;
     }
-    case "link-restore": { const e = entry(key); e.block = (e.block || []).filter((x) => x !== String(b.u || "")); break; }
+    case "link-restore": {             // back under every address it was hidden by (the source's or the one that plays)
+      const u = String(b.u || ""); const e = entry(key);
+      e.block = (e.block || []).filter((x) => x !== u && playable(x) !== u); break;
+    }
     case "add-show": {                  // a show the owner adds by hand: it merges with the sources' when they post it
       const prog = String(b.prog || "").toLowerCase().replace(/[^a-z0-9-]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40);
       const date = String(b.date || "");

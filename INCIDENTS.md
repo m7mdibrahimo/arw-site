@@ -12071,6 +12071,15 @@ Let me check git status to enumerate uncommitted changes.</think><tool_call>shel
   slider: 7 seconds each, a fade between, stops under the mouse, a swipe turns it on the phone, a plain mark per show; the
   strip keeps its tallest height so the page never jumps.
 
+- Follow-up (owner, 2026-11-26: «كل سيرفرات من كل المصادر تكون مباشرة علي الموقع… مش عايز الناس تطلع من الموقع»): only
+  servers that play inside our page are shown, for every show. watchwrestlingtv's afiyukent «watch.php?id=chNN_Q&host=sawlive»
+  names the sawlive embed in its address and plays here (all six were copies of channels already shown, so they fold into
+  them). watchwrestling.re's blog.djt2.com short links are ad pages that refuse framing (X-Frame-Options SAMEORIGIN) with
+  the player behind the ad wall, which is never gone around — they are not shown at all. A link the owner adds himself
+  marked «بيفتح في صفحة تانية» is the only one that opens elsewhere. The quality shows on every server or on none. The panel
+  lists the servers as visitors see them, each once (hidden once under every address; copies and ad pages counted), in its
+  own layout (the shared .row grid had squeezed each link into the picture column).
+
 ## #1538 — 2026-11-25: غلطات كتابة في أخبار دراغونوف وروبرت ستون وبانك
 - اللي حصل: «تووقعها» و«أكبر سننا» و«بطل AEW الوطنية» (بطل مذكر) نزلوا في أخبار دراغونوف (وفي تقريرين نتائج قدام)، و«لو دخلت عليه» عن روبي إي، و«ووضع في المحادثة الجماعية» في خبر بانك.
 - السبب: Gemini كتبهم ومفيش تصحيح ثابت يمسكهم؛ واختبار aria-label كان واقع من قسم «بث مباشر» الجديد.

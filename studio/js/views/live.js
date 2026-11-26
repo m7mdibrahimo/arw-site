@@ -45,7 +45,7 @@ export async function renderLiveTool(page) {
       <section class="panel"><header class="panel-head"><h2>${icon('show')} العروض <span class="count-pill">${data.shows.length}</span></h2></header>
         <div class="rows">${data.shows.length ? data.shows.map(row) : html`<p class="empty-sm">مفيش عروض في القسم دلوقتي — أول ما أي مصدر ينزل عرض هيظهر هنا، أو ضيف واحد بإيدك.</p>`}</div></section>
       <section class="panel"><header class="panel-head"><h2>${icon('globe')} المصادر</h2></header>
-        <div class="rows">${data.sources.map(s => html`<div class="row">
+        <div class="rows">${data.sources.map(s => html`<div class="row lv-a-src">
           <span class="row-main"><b>${SRC[s.id] || s.id}</b><small><bdi dir="ltr">${s.host}</bdi>${s.movedFrom ? html` · نقل من <bdi dir="ltr">${s.movedFrom}</bdi>` : ''} · ${s.fails ? html`<span class="lv-a-bad">مش بيرد من ${s.fails} دقيقة${s.err ? ` (${s.err})` : ''}</span>` : html`<span class="lv-a-ok">شغال</span>`}${s.okAt ? ` · آخر رد ${timeAgo(s.okAt)}` : ''}</small></span>
           <span class="row-actions"><button class="btn btn-sm" data-host="${s.id}">${icon('edit')} غيّر الدومين</button></span></div>`)}</div></section>
     </div>`);
@@ -66,6 +66,30 @@ export async function renderLiveTool(page) {
       </div>
       ${isOpen ? editor(s) : ''}
     </div>`;
+  }
+
+  // the servers exactly as visitors see them, each once and in order (owner 2026-11-26: no duplicates, nothing that opens
+  // outside the site): the number, quality, where it came from, the address it plays; then what the owner hid
+  const shortUrl = (u) => { try { const x = new URL(u); return x.hostname.replace(/^www\./, '') + (x.pathname + x.search).replace(/\/$/, ''); } catch { return u; } };
+  function servList(s) {
+    const mine = s.add.map(a => a.u);
+    const left = [s.dup ? `${s.dup} ${s.dup === 1 ? 'رابط مكرر' : 'روابط مكررة'} لنفس القناة` : '', s.out ? `${s.out} ${s.out === 1 ? 'رابط بيفتح' : 'روابط بتفتح'} برا الموقع (صفحات إعلانات)` : ''].filter(Boolean);
+    return html`<div class="lv-a-svs">
+      ${s.sv.length ? s.sv.map(v => { const i = mine.indexOf(v.raw); return html`<div class="lv-a-sv ${v.x ? 'is-ext' : ''} ${v.m ? 'is-own' : ''}">
+        <span class="lv-a-n">${v.n}</span>
+        <span class="lv-a-svm"><b>سيرفر ${v.n}${v.q ? html`<span class="lv-a-qb">${v.q}</span>` : ''}<span class="lv-a-from">${v.m ? 'سيرفرك' : (SRC[v.src] || v.src || 'مصدر')}</span>${v.x ? html`<span class="tag tag-off">بيفتح في صفحة تانية</span>` : ''}</b>
+          <small dir="ltr" title="${v.u}">${shortUrl(v.u)}</small></span>
+        <span class="lv-a-sva">
+          <a class="icon-btn sm" href="${v.u}" target="_blank" rel="noopener" title="جرّبه">${icon('eye')}</a>
+          ${v.m ? html`<button class="icon-btn sm" data-mv="up" data-u="${v.raw}" ${i > 0 ? '' : 'disabled'} title="لفوق">▲</button><button class="icon-btn sm" data-mv="down" data-u="${v.raw}" ${i > -1 && i < mine.length - 1 ? '' : 'disabled'} title="لتحت">▼</button><button class="icon-btn sm danger" data-rm="${v.raw}" title="امسحه">${icon('x')}</button>`
+            : html`<button class="btn btn-sm btn-ghost" data-rm="${v.u}" title="اخفيه عن الزوار">${icon('eyeOff')}<span>اخفيه</span></button>`}
+        </span></div>`; }) : html`<p class="empty-sm">مفيش سيرفرات لسه — المصادر بتنزلها قبل العرض بشوية، أو ضيف سيرفر بإيدك.</p>`}
+    </div>
+    ${s.hidden.length ? html`<h4 class="lv-a-h2">مخفية عن الزوار <span class="count-pill">${s.hidden.length}</span></h4>
+      <div class="lv-a-svs is-off">${s.hidden.map(v => html`<div class="lv-a-sv"><span class="lv-a-n">–</span>
+        <span class="lv-a-svm"><b>${v.q ? html`<span class="lv-a-qb">${v.q}</span>` : ''}<span class="lv-a-from">${SRC[v.src] || v.src || 'مصدر'}</span></b><small dir="ltr" title="${v.u}">${shortUrl(v.u)}</small></span>
+        <span class="lv-a-sva"><button class="btn btn-sm" data-restore="${v.u}" title="رجّعه للزوار">${icon('eye')}<span>رجّعه</span></button></span></div>`)}</div>` : ''}
+    ${left.length ? html`<p class="muted lv-a-foot">اتشال لوحده ومش بيظهر للزوار: ${left.join(' · ')}.</p>` : ''}`;
   }
 
   function editor(s) {
@@ -92,21 +116,14 @@ export async function renderLiveTool(page) {
         ${s.edited && !s.own ? html`<button class="btn btn-ghost" data-reset>رجّعه زي المصادر</button>` : ''}
         ${s.own ? html`<button class="btn btn-danger" data-del>${icon('trash')} امسحه</button>` : ''}
       </div>
-      <h3 class="lv-a-h">${icon('link')} السيرفرات</h3>
+      <h3 class="lv-a-h">${icon('link')} السيرفرات اللي الزوار شايفينها <span class="count-pill">${s.sv.length}</span></h3>
       <form class="lv-a-add" data-add>
         <input class="input" name="u" dir="ltr" placeholder="رابط سيرفر (embed) أو صفحة بث…" required>
         ${q('')}
         <label class="lv-a-chk"><input type="checkbox" name="x"> بيفتح في صفحة تانية</label>
         <button class="btn btn-sm btn-teal">${icon('plus')} ضيف</button>
       </form>
-      <div class="rows lv-a-links">
-        ${s.add.map((a, i) => html`<div class="row"><span class="row-main"><b><span class="tag">سيرفرك</span> ${a.q || ''} ${a.x ? html`<span class="tag tag-off">بيفتح برا</span>` : html`<span class="tag tag-auto">بيشتغل في الموقع</span>`}</b><small dir="ltr">${a.u}</small></span>
-          <span class="row-actions"><button class="icon-btn sm" data-mv="up" data-u="${a.u}" ${i ? '' : 'disabled'}>▲</button><button class="icon-btn sm" data-mv="down" data-u="${a.u}" ${i < s.add.length - 1 ? '' : 'disabled'}>▼</button><button class="icon-btn sm danger" data-rm="${a.u}" title="امسحه">${icon('x')}</button></span></div>`)}
-        ${s.links.map(l => html`<div class="row ${l.blocked ? 'is-off' : ''}"><span class="row-main"><b>${SRC[l.src] || l.src || 'مصدر'} ${l.q || ''} ${l.play ? html`<span class="tag tag-auto">بيشتغل في الموقع</span>` : html`<span class="tag tag-off">بيفتح برا</span>`}${l.blocked ? html` <span class="tag tag-off">مخفي</span>` : ''}</b><small dir="ltr">${l.play || l.u}</small></span>
-          <span class="row-actions">${l.blocked ? html`<button class="btn btn-sm" data-restore="${l.u}">${icon('eye')} رجّعه</button>` : html`<button class="btn btn-sm btn-ghost" data-rm="${l.u}">${icon('eyeOff')} اخفيه</button>`}</span></div>`)}
-        ${!s.add.length && !s.links.length ? html`<p class="empty-sm">مفيش سيرفرات لسه — المصادر بتنزلها قبل العرض بشوية، أو ضيف سيرفر بإيدك.</p>` : ''}
-      </div>
-      <p class="muted lv-a-foot">الروابط اللي «بتشتغل في الموقع» بتتعرض في مشغل الصفحة نفسها. اللي «بتفتح برا» بتظهر للزوار بس لو مفيش ولا سيرفر شغال جوه الموقع (أو لو إنت ضفتها).</p>
+      ${servList(s)}
     </div>`;
   }
 

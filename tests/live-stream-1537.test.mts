@@ -22,25 +22,24 @@ test('a link plays on our page when its channel can be framed: the sources\' ad 
   assert.equal(L.playable('https://www.sawlivenow.com/embed/ch83_HD/'), 'https://www.sawlivenow.com/embed/ch83_HD/');
   assert.equal(L.playable('https://dramavideo.se/watch?v=83218'), 'https://dramavideo.se/watch?v=83218');
   assert.equal(L.playable('https://blog.djt2.com/Aokehg'), null);
+  assert.equal(L.playable('https://afiyukent.one/watch.php/?id=ch87_SD&host=sawlive'), 'https://www.sawlivenow.com/embed/ch87_SD/');
+  assert.equal(L.playable('https://afiyukent.one/watch.php/?id=ch87_SD"><b&host=sawlive'), null);
   assert.equal(L.playable('https://techfunlife.com/Latest_posts/?line=83_FHD'), null);
   assert.equal(L.playable('https://evil.example/?live=ch87_HD"><script>'), null);
   assert.equal(L.playable('javascript:alert(1)'), null);
 });
 
-test('a show\'s servers: one per channel, HD first, then a few of each other source\'s own pages', () => {
+test('a show\'s servers: one per channel, HD first, only what plays inside our page', () => {
   const s = both()['dynamite-2026-11-25'];
   const sv = L.servers(s);
-  // 1max's seven channels play here; watchwrestling.re (short links behind ad pages) adds six of its own, after them
-  assert.equal(sv.length, 13);
-  assert.ok(sv.slice(0, 7).every((v) => !v.x && v.s === 1 && v.u.startsWith('https://www.sawlivenow.com/embed/ch')));
-  assert.ok(sv.slice(7).every((v) => v.x === 1 && v.s === 2 && v.u.startsWith('https://blog.djt2.com/')));
-  assert.equal(new Set(sv.map((v) => v.u)).size, 13);
-  assert.deepEqual(sv.map((v) => v.n), Array.from({ length: 13 }, (_, i) => i + 1));
+  // 1max's seven channels play here; watchwrestling.re's short links behind ad pages are not shown (owner 2026-11-26)
+  assert.equal(sv.length, 7);
+  assert.ok(sv.every((v) => !v.x && v.s === 1 && v.u.startsWith('https://www.sawlivenow.com/embed/ch')));
+  assert.equal(new Set(sv.map((v) => v.u)).size, 7);
+  assert.deepEqual(sv.map((v) => v.n), Array.from({ length: 7 }, (_, i) => i + 1));
   assert.equal(sv[0].q, 'HD');
-  // only watchwrestling.re (short links that open an ad page): shown, as pages that open elsewhere
-  const only = L.servers({ links: s.links.filter((l) => l.s === 2) });
-  assert.equal(only.length, 11);
-  assert.ok(only.every((v) => v.x === 1));
+  // only watchwrestling.re: nothing to show (the page waits for servers rather than send people away)
+  assert.equal(L.servers({ links: s.links.filter((l) => l.s === 2) }).length, 0);
 });
 
 test('the owner\'s hand: name, time, picture, note, full show, servers added first, a source\'s server hidden, a show hidden', () => {
@@ -177,23 +176,50 @@ test('the full shows under a live page fill whole rows at every width', () => {
   assert.match(css, /@media\(max-width:900px\)\{\.lv-rec\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
 });
 
-test('every source gives servers: one with nothing that plays here still shows its own links, after ours, a few each', () => {
+test('only servers that play inside our page: a link that opens only on its source\'s site is never shown (owner 2026-11-26)', () => {
   const at = 1;
   const links = [
     { u: 'https://dailypudding.com/category/alpha.php?live=ch87_HD', q: 'HD', s: 1, n: 1, at },
     { u: 'https://techfunlife.com/Latest_posts/?line=108087_HD', q: 'HD', s: 1, n: 2, at },
     ...Array.from({ length: 9 }, (_, i) => ({ u: `https://blog.djt2.com/x${i}`, q: i % 2 ? 'SD' : 'HD', s: 2, n: i + 1, at })),
-    { u: 'https://other.example/live3', q: 'FHD', s: 3, n: 1, at },
+    { u: 'https://dramavideo.se/watch?v=1', q: '', s: 3, n: 1, at },
+    { u: 'https://afiyukent.one/watch.php/?id=ch86_SD&host=sawlive', q: '', s: 4, n: 1, at },
+    { u: 'https://afiyukent.one/watch.php/?id=ch87_HD&host=sawlive', q: '', s: 4, n: 2, at },
+    { u: 'https://other.example/live3', q: 'FHD', s: 4, n: 3, at },
   ];
-  const sv = L.servers({ links } as any);
-  assert.equal(sv[0].u, 'https://www.sawlivenow.com/embed/ch87_HD/');
-  assert.ok(!sv[0].x);
-  // source 1 plays here: its ad-page copy of the same channel is not repeated
-  assert.ok(!sv.some((v) => v.u.includes('techfunlife')));
-  assert.equal(sv.filter((v) => v.s === 2 && v.x).length, 6);
-  assert.equal(sv.filter((v) => v.s === 3 && v.x).length, 1);
-  assert.deepEqual(sv.map((v) => v.n), sv.map((_, i) => i + 1));
-  assert.equal(L.publicData({ d: { ...both()['dynamite-2026-11-25'], links } } as any, DYN - 3_600_000).shows[0].srcs, 3);
+  const sv = L.servers({ links, add: [{ u: 'https://own.example/x', x: 1, at }] } as any);
+  assert.deepEqual(sv.map((v) => v.u), [
+    'https://www.sawlivenow.com/embed/ch87_HD/', 'https://dramavideo.se/watch?v=1', 'https://www.sawlivenow.com/embed/ch86_SD/',
+    'https://own.example/x']);
+  // the only link opening elsewhere is the owner's own, last
+  assert.deepEqual(sv.filter((v) => v.x).map((v) => v.m), [1]);
+  assert.deepEqual(sv.map((v) => v.n), [1, 2, 3, 4]);
+  assert.doesNotMatch(fs.readFileSync('worker/src/live.ts', 'utf8'), /EXT_PER_SOURCE/);
+});
+
+test('the panel shows the servers as visitors see them: each once, what was hidden once, the copies and ad pages counted (owner 2026-11-26)', () => {
+  const at = 1;
+  const links = [
+    { u: 'https://dailypudding.com/category/alpha.php?live=ch87_HD', q: 'HD', s: 1, at },
+    { u: 'https://dailypudding.com/category/alpha.php?live=ch86_LQ', q: 'LQ', s: 1, at },
+    { u: 'https://techfunlife.com/Latest_posts/?line=108087_HD', q: 'HD', s: 1, at },
+    { u: 'https://afiyukent.one/watch.php/?id=ch87_HD&host=sawlive', q: '', s: 2, at },
+    { u: 'https://afiyukent.one/watch.php/?id=ch86_LQ&host=sawlive', q: '', s: 2, at },
+    { u: 'https://blog.djt2.com/a', q: 'HD', s: 3, at },
+  ];
+  const s: any = { srcs: ['1max', 'wwtv', 'wwre'], links, add: [{ u: 'https://dailypudding.com/category/alpha.php?live=ch83_HD', q: 'FHD', at }], block: ['https://www.sawlivenow.com/embed/ch86_LQ/'] };
+  const p = L.panelServers(s, (i: number, x: any) => x.srcs[i - 1] || '');
+  assert.deepEqual(p.sv.map((v) => v.u), ['https://www.sawlivenow.com/embed/ch83_HD/', 'https://www.sawlivenow.com/embed/ch87_HD/']);
+  assert.equal(p.sv[0].raw, 'https://dailypudding.com/category/alpha.php?live=ch83_HD'); // the owner's own, by the address he typed
+  assert.deepEqual(p.hidden.map((v) => v.u), ['https://www.sawlivenow.com/embed/ch86_LQ/']); // hidden once, from every source
+  assert.equal(p.dup, 2); assert.equal(p.out, 1);
+  // hidden under the address that plays: the same channel from another source stays hidden too
+  assert.ok(!L.servers(s).some((v) => v.u.includes('ch86_LQ')));
+  const view = fs.readFileSync('studio/js/views/live.js', 'utf8'), css = fs.readFileSync('studio/studio.css', 'utf8');
+  assert.match(view, /function servList\(s\)/); assert.doesNotMatch(view, /s\.links\.map/);
+  assert.match(css, /\.lv-a-sv \{ display: grid; grid-template-columns: 34px minmax\(0, 1fr\) auto/);
+  // the quality on every server or on none
+  assert.match(fs.readFileSync('assets/live.js', 'utf8'), /var allQ = sv\.length > 0 && sv\.every/);
 });
 
 test('the name: «عرض داينامايت» with its English name everywhere, the owner\'s own name word for word, and each page linked up', () => {

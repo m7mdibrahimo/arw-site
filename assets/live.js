@@ -180,8 +180,10 @@
     var sv = s.sv || [];
     var firstExt = -1;
     for (var k = 0; k < sv.length; k++) if (sv[k].x) { firstExt = k; break; }
+    // the quality on every server or on none (owner 2026-11-26: «مش يكون جزء كدا وجزء كدا»)
+    var allQ = sv.length > 0 && sv.every(function (v) { return !!v.q; });
     var list = sv.map(function (v, i) {
-      var q = v.q ? '<span class="lv-q ' + esc(v.q) + '">' + esc(v.q) + '</span>' : '';
+      var q = allQ ? '<span class="lv-q ' + esc(v.q) + '">' + esc(v.q) + '</span>' : '';
       // the servers of other sources that open on their own site: said before them, never mixed in unmarked (#1537)
       var head = i === firstExt && firstExt > 0 ? '<div class="lv-sep-ext">' + EXT + ' سيرفرات احتياطية تُفتح في صفحات مصادرها</div>' : '';
       return head + (v.x ?
