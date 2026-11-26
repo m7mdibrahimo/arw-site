@@ -18,9 +18,10 @@ const both = () => L.mergeShows([
 
 test('a link plays on our page when its channel can be framed: the sources\' ad pages and human checks become the player itself', () => {
   assert.equal(L.playable('https://dailypudding.com/category/alpha.php?cache=15y6sumR&minify=sr&live=ch87_HD&meu=86-87'), 'https://www.sawlivenow.com/embed/ch87_HD/');
-  // 1max's «CatchUp» player can't sit in a frame (a robot check): it opens on its own site (owner 2026-11-26)
+  // 1max's «CatchUp» player works only when clicked on 1max's own page: never a server, inside or outside (owner 2026-11-26)
   assert.equal(L.playable('https://techfunlife.com/Latest_posts/?cache=15y6sumR87h&minify=gloria&line=108087_HD&meu=86-87'), null);
-  assert.ok(L.outerLink('https://techfunlife.com/Latest_posts/?cache=15y6sumR87h&minify=gloria&line=108087_HD&meu=86-87'));
+  assert.equal(L.outerLink('https://techfunlife.com/Latest_posts/?cache=15y6sumR87h&minify=gloria&line=108087_HD&meu=86-87'), null);
+  assert.equal(L.outerLink('https://1max.top/busy/aew.php'), 'https://1max.top/busy/aew.php');
   assert.equal(L.playable('https://www.sawlivenow.com/embed/ch83_HD/'), 'https://www.sawlivenow.com/embed/ch83_HD/');
   assert.equal(L.playable('https://dramavideo.se/watch?v=83218'), 'https://dramavideo.se/watch?v=83218');
   assert.equal(L.playable('https://blog.djt2.com/Aokehg'), null);
@@ -35,13 +36,11 @@ test('a show\'s servers: one per channel, HD first, only what plays inside our p
   const s = both()['dynamite-2026-11-25'];
   const sv = L.servers(s);
   // 1max's seven channels play here; watchwrestling.re's short links behind ad pages are not shown (owner 2026-11-26);
-  // its seven «CatchUp» buttons open on their own site, after them («ضيف ال تقدر عليه مباشر والباقي عادي خاريجي»)
-  assert.equal(sv.length, 14);
-  const inPage = sv.slice(0, 7);
-  assert.ok(inPage.every((v) => !v.x && v.s === 1 && v.u.startsWith('https://www.sawlivenow.com/embed/ch')));
-  assert.ok(sv.slice(7).every((v) => v.x && /techfunlife\.com\/.*line=/.test(v.u)));
-  assert.equal(new Set(sv.map((v) => v.u)).size, 14);
-  assert.deepEqual(sv.map((v) => v.n), Array.from({ length: 14 }, (_, i) => i + 1));
+  // its «CatchUp» buttons don't play when opened from our page: never shown (owner 2026-11-26)
+  assert.equal(sv.length, 7);
+  assert.ok(sv.every((v) => !v.x && v.s === 1 && v.u.startsWith('https://www.sawlivenow.com/embed/ch')));
+  assert.equal(new Set(sv.map((v) => v.u)).size, 7);
+  assert.deepEqual(sv.map((v) => v.n), Array.from({ length: 7 }, (_, i) => i + 1));
   assert.equal(sv[0].q, 'HD');
   // only watchwrestling.re: nothing to show (the page waits for servers rather than send people away)
   assert.equal(L.servers({ links: s.links.filter((l) => l.s === 2) }).length, 0);
@@ -195,10 +194,10 @@ test('only servers that play inside our page: a link that opens only on its sour
   const sv = L.servers({ links, add: [{ u: 'https://own.example/x', x: 1, at }] } as any);
   assert.deepEqual(sv.map((v) => v.u), [
     'https://www.sawlivenow.com/embed/ch87_HD/', 'https://dramavideo.se/watch?v=1', 'https://www.sawlivenow.com/embed/ch86_SD/',
-    'https://own.example/x', 'https://techfunlife.com/Latest_posts/?line=108087_HD']);
-  // opening elsewhere: the owner's own, then 1max's «CatchUp»; ad pages and unknown pages never
-  assert.deepEqual(sv.filter((v) => v.x).map((v) => v.m || 0), [1, 0]);
-  assert.deepEqual(sv.map((v) => v.n), [1, 2, 3, 4, 5]);
+    'https://own.example/x']);
+  // the only link opening elsewhere is the owner's own; ad pages, «CatchUp» and unknown pages never
+  assert.deepEqual(sv.filter((v) => v.x).map((v) => v.m), [1]);
+  assert.deepEqual(sv.map((v) => v.n), [1, 2, 3, 4]);
   assert.doesNotMatch(fs.readFileSync('worker/src/live.ts', 'utf8'), /EXT_PER_SOURCE/);
 });
 
@@ -214,10 +213,10 @@ test('the panel shows the servers as visitors see them: each once, what was hidd
   ];
   const s: any = { srcs: ['1max', 'wwtv', 'wwre'], links, add: [{ u: 'https://dailypudding.com/category/alpha.php?live=ch83_HD', q: 'FHD', at }], block: ['https://www.sawlivenow.com/embed/ch86_LQ/'] };
   const p = L.panelServers(s, (i: number, x: any) => x.srcs[i - 1] || '');
-  assert.deepEqual(p.sv.map((v) => v.u), ['https://www.sawlivenow.com/embed/ch83_HD/', 'https://www.sawlivenow.com/embed/ch87_HD/', 'https://techfunlife.com/Latest_posts/?line=108087_HD']);
+  assert.deepEqual(p.sv.map((v) => v.u), ['https://www.sawlivenow.com/embed/ch83_HD/', 'https://www.sawlivenow.com/embed/ch87_HD/']);
   assert.equal(p.sv[0].raw, 'https://dailypudding.com/category/alpha.php?live=ch83_HD'); // the owner's own, by the address he typed
   assert.deepEqual(p.hidden.map((v) => v.u), ['https://www.sawlivenow.com/embed/ch86_LQ/']); // hidden once, from every source
-  assert.equal(p.dup, 1); assert.equal(p.out, 1);
+  assert.equal(p.dup, 1); assert.equal(p.out, 2);
   // hidden under the address that plays: the same channel from another source stays hidden too
   assert.ok(!L.servers(s).some((v) => v.u.includes('ch86_LQ')));
   const view = fs.readFileSync('studio/js/views/live.js', 'utf8'), css = fs.readFileSync('studio/studio.css', 'utf8');
@@ -291,28 +290,29 @@ test('a show whose live just started is announced once its page is up and a serv
   assert.equal(L.toAnnounce({ k: { ...base, hide: 1 } }, now).length, 0);
 });
 
-test('1max «CatchUp» buttons open on their own site, after the in-page servers, in the order their channels play here', () => {
-  const t = (line: string) => `https://techfunlife.com/Latest_posts/?cache=x&minify=gloria&line=${line}&meu=86-87`;
+test('1max: its links page is the one server that opens outside — once, after every in-page one; no «CatchUp» ever (owner 2026-11-26)', () => {
+  const tf = (line: string) => `https://techfunlife.com/Latest_posts/?cache=x&minify=gloria&line=${line}&meu=86-87`;
   const links = [
-    { u: t('108087_HD'), q: 'HD', s: 1, n: 1, at: 0 },
-    { u: t('83_FHD'), q: 'FHD', s: 1, n: 2, at: 0 },
+    { u: tf('108087_HD'), q: 'HD', s: 1, n: 1, at: 0 },
+    { u: tf('83_FHD'), q: 'FHD', s: 1, n: 2, at: 0 },
     { u: 'https://dailypudding.com/category/alpha.php?live=ch87_HD', q: 'HD', s: 1, n: 3, at: 0 },
     { u: 'https://dailypudding.com/category/alpha.php?live=ch83_HD', q: 'FHD', s: 1, n: 4, at: 0 },
-    { u: 'https://techfunlife.com/Latest_posts/?minify=M23&mirror=instalp_1&mainid=261125AD', q: '', s: 1, n: 5, at: 0 },
+    { u: 'https://1max.top/busy/aew.php', q: '', s: 1, n: 5, at: 0 },
+    { u: 'https://1max.top/busy/aew.php', q: '', s: 1, n: 6, at: 0 },
+    { u: 'https://techfunlife.com/Latest_posts/?minify=M23&mirror=instalp_1&mainid=261125AD', q: '', s: 1, n: 7, at: 0 },
   ];
-  const sv = L.servers({ links } as any);
-  assert.deepEqual(sv.map((v) => [v.u, v.x || 0]), [
-    ['https://www.sawlivenow.com/embed/ch87_HD/', 0],
-    ['https://www.sawlivenow.com/embed/ch83_HD/', 0],
-    [t('108087_HD'), 1],
-    [t('83_FHD'), 1],
+  const sv = L.servers({ links, add: [{ u: 'https://own.example/x', x: 1, at: 0 }] } as any);
+  assert.deepEqual(sv.map((v) => [v.u, v.x || 0, v.p || 0]), [
+    ['https://www.sawlivenow.com/embed/ch87_HD/', 0, 0],
+    ['https://www.sawlivenow.com/embed/ch83_HD/', 0, 0],
+    ['https://own.example/x', 1, 0],
+    ['https://1max.top/busy/aew.php', 1, 1],
   ]);
-  assert.equal(sv[3].q, 'FHD');
-  // «الاسرع ثم الاسرع»: when 83 plays fastest, its CatchUp comes first of those outside too; a stopped one stays in-page-last
-  const now = Date.now();
-  const fast = L.servers({ links } as any, { 'https://www.sawlivenow.com/embed/ch83_HD/': { ok: 1, ms: 3000, h: 1080, at: now } }, now);
-  assert.deepEqual(fast.map((v) => v.u), ['https://www.sawlivenow.com/embed/ch83_HD/', 'https://www.sawlivenow.com/embed/ch87_HD/', t('83_FHD'), t('108087_HD')]);
-  const late = L.servers({ links } as any, { 'https://www.sawlivenow.com/embed/ch83_HD/': { ok: 0, ms: 30000, at: now } }, now);
-  assert.deepEqual(late.map((v) => v.x || 0), [0, 0, 1, 1]);
-  assert.equal(L.outerLink('https://example.com/?line=83_FHD'), null);
+  assert.equal(new Set(sv.map((v) => v.u)).size, sv.length, 'never the same link twice');
+  // the page names it «سيرفرات إضافية», with no quality; the others keep theirs
+  const js = fs.readFileSync('assets/live.js', 'utf8');
+  assert.match(js, /v\.p \? 'سيرفرات إضافية'/);
+  assert.match(js, /sv\.every\(function \(v\) \{ return v\.p \|\| !!v\.q; \}\)/);
+  // the worker adds 1max's links page to the links it reads from there
+  assert.match(fs.readFileSync('worker/src/live.ts', 'utf8'), /extractLinks\(bh, pageHost\)\.concat\(\[\{ url: busy/);
 });

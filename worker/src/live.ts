@@ -382,18 +382,19 @@ export function playable(u: string): string | null {
   return null;
 }
 
-/** 1max's «CatchUp» buttons (techfunlife's player, «line=108087_HD» / «line=83_FHD»), kept as servers that open on their
- *  own site: behind a robot check that can't sit in a frame (owner 2026-11-26, «انا عايزك تضيف النسخ دي كلها ضيف ال تقدر
- *  عليه مباشر والباقي عادي خاريجي») */
+/** The one server that opens outside: 1max's own links page (/busy/<show>.php). Its «CatchUp» buttons work only when clicked
+ *  there — techfunlife's player sends anyone coming from another site to dailypudding's «Go To WatchWrestlingUP.org»
+ *  (its script writes nothing else for «minify=gloria»; owner 2026-11-26: «عايزك تتاكد 100٪ من السيرفرات الخاريجية …
+ *  وخليها متتكررش تاني ابدا»). So no «CatchUp» link is ever shown, and the page holding them is shown once. */
 export function outerLink(u: string): string | null {
   let url: URL;
   try { url = new URL(u); } catch { return null; }
-  if (url.protocol !== "https:" || url.hostname.replace(/^www\./, "").toLowerCase() !== "techfunlife.com") return null;
-  return /^\d{1,8}_[A-Z]{2,3}$/.test(url.searchParams.get("line") || "") ? url.toString() : null;
+  if (url.protocol !== "https:" || url.search || !/^\/busy\/[a-z0-9_-]{1,40}\.php$/i.test(url.pathname)) return null;
+  return url.toString();
 }
 
 /** A server as /live/data gives it: «u» plays in our player, or (x) opens on its own site */
-export interface PubServer { u: string; q: string; s: number; n: number; at: number; x?: 1; m?: 1; d?: 1; ms?: number }
+export interface PubServer { u: string; q: string; s: number; n: number; at: number; x?: 1; m?: 1; d?: 1; ms?: number; p?: 1 }
 /** The quality from the picture's real height (the check's measure beats a source's label: «83 FHD» played 960×540) */
 export function qualityOf(h: number): string { return h >= 1000 ? "FHD" : h >= 700 ? "HD" : h >= 450 ? "SD" : h > 0 ? "LQ" : ""; }
 // HD, SD, LQ, then FHD: 1max's own word on its channels («87 PipFree & Most Stable | 83 FHD but can buffer»), and the list
@@ -421,7 +422,7 @@ export function servers(s: Pick<EffShow, "links" | "add" | "block">, health: Hea
     if (block.has(l.u) || (u && block.has(u))) continue;
     if (!u) {
       const o = outerLink(l.u);
-      if (o && !seen.has(o)) { seen.add(o); outer.push({ u: o, q: l.q, s: l.s, n: 0, at: l.at, x: 1 }); }
+      if (o && !seen.has(o)) { seen.add(o); outer.push({ u: o, q: "", s: l.s, n: 0, at: l.at, x: 1, p: 1 }); }
       continue;
     }
     if (seen.has(u)) continue;
@@ -437,22 +438,9 @@ export function servers(s: Pick<EffShow, "links" | "add" | "block">, health: Hea
   for (const v of base) { const h = fresh(v.u); if (h?.ok && h.h) v.q = qualityOf(h.h); if (h?.ok) v.ms = h.ms; }
   const alive = base.filter((v) => !v.x && fresh(v.u)?.ok).sort((a, b) => (a.ms || 0) - (b.ms || 0));
   const late: PubServer[] = [];
-  // what opens on another site always last, after every server that plays here — in the same order as their channels
-  // play here («الاسرع ثم الاسرع»): «CatchUp 87 HD» where «ch87_HD» stands, «83 FHD» where «ch83_*» stands
+  // what opens on another site always last, after every server that plays here: the owner's own, then the source's page
   const inPage = alive.concat(base.filter((v) => !v.x && !alive.includes(v) && !late.includes(v)), late);
-  const chOf = (u: string) => (u.match(/\/embed\/ch(\d{1,4})_([A-Z]{2,3})\//) || []).slice(1);
-  const rank = (v: PubServer) => {
-    if (v.m) return -1;                  // the owner's own outside links first of these, in his order
-    const m = (() => { try { return (new URL(v.u).searchParams.get("line") || "").match(/^(?:1080)?(\d{1,4})_([A-Z]{2,3})$/); } catch { return null; } })();
-    if (!m) return 1e6;
-    const same = inPage.findIndex((p) => { const [c, q] = chOf(p.u); return c === m[1] && q === m[2]; });
-    if (same >= 0) return same;
-    const chan = inPage.findIndex((p) => chOf(p.u)[0] === m[1]);
-    return chan >= 0 ? chan + 0.5 : 1e5;
-  };
   const ext = base.filter((v) => v.x);
-  const order = new Map(ext.map((v, i) => [v, rank(v) * 100 + i]));
-  ext.sort((a, b) => order.get(a)! - order.get(b)!);
   const out = inPage.concat(ext);
   out.forEach((v, i) => { v.n = i + 1; });
   return out;
@@ -697,7 +685,10 @@ export async function runLive(env: LiveEnv, now: number, deps: LiveDeps = {}): P
       if (busy) {
         const b = await get(busy.startsWith("//") ? "https:" + busy : busy, 10000);
         const bh = b && b.ok ? await b.text().catch(() => "") : "";
-        if (bh) p.links = extractLinks(bh, pageHost);
+        // its «CatchUp» buttons play only when clicked from that page: their player sends anyone coming from elsewhere to
+        // «Go To WatchWrestlingUP.org» (owner 2026-11-26, opened from our page). So the page itself is the one server
+        // that opens outside, and every other «CatchUp» stays out (outerLink)
+        if (bh) p.links = extractLinks(bh, pageHost).concat([{ url: busy.startsWith("//") ? "https:" + busy : busy, label: "", group: "", q: "", embed: false }]);
       }
     }
     p.img = ogImage(html) || p.img || null;

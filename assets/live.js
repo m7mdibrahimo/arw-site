@@ -182,7 +182,8 @@
     var firstExt = -1;
     for (var k = 0; k < sv.length; k++) if (sv[k].x) { firstExt = k; break; }
     // the quality on every server or on none (owner 2026-11-26: «مش يكون جزء كدا وجزء كدا»)
-    var allQ = sv.length > 0 && sv.every(function (v) { return !!v.q; });
+    // (the source's own page, «p», is a page of buttons, not one stream: no quality of its own, and not counted)
+    var allQ = sv.length > 0 && sv.every(function (v) { return v.p || !!v.q; });
     var list = sv.map(function (v, i) {
       var q = allQ ? '<span class="lv-q ' + esc(v.q) + '">' + esc(v.q) + '</span>' : '';
       // the servers of other sources that open on their own site: said before them, never mixed in unmarked (#1537)
@@ -190,7 +191,7 @@
       // says it opens elsewhere (owner 2026-11-26: «يكونوا مرتبين ومنظمين مش عايز شكل عشوائي»)
       var head = i === firstExt && firstExt > 0 ? '<div class="lv-sep-ext">' + EXT + ' تُفتح في صفحة المصدر</div>' : '';
       return head + (v.x ?
-        '<a class="lv-srv is-ext" href="' + esc(v.u) + '" target="_blank" rel="nofollow noopener noreferrer" title="يفتح في صفحة المصدر"><span class="n">' + v.n + '</span><span class="nm"><b>سيرفر ' + v.n + '</b></span>' + q + '<span class="xi">' + EXT + '</span></a>' :
+        '<a class="lv-srv is-ext" href="' + esc(v.u) + '" target="_blank" rel="nofollow noopener noreferrer" title="يفتح في صفحة المصدر"><span class="n">' + v.n + '</span><span class="nm"><b>' + (v.p ? 'سيرفرات إضافية' : 'سيرفر ' + v.n) + '</b></span>' + (v.p ? '' : q) + '<span class="xi">' + EXT + '</span></a>' :
         '<button type="button" class="lv-srv' + (v.u === current ? ' active' : '') + '" data-play="' + esc(v.u) + '" data-n="' + v.n + '" role="tab"><span class="n">' + v.n + '</span><span class="nm"><b>سيرفر ' + v.n + '</b></span>' + q + '<span class="on">يعمل الآن</span></button>');
     }).join('');
     var poster = '<button type="button" class="lv-poster" id="lvPoster" aria-label="تشغيل البث"><img src="' + esc(img(s)) + '" alt="" decoding="async"><span class="pl">' + PLAY + '</span><span class="cap">' +
