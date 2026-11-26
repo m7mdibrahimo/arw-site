@@ -1,6 +1,7 @@
 ---
 federation: WWE
-title: "WWE تسجل حقوق استخدام علامة Mid-South Wrestling"
+title: "WWE تتقدم بطلب لتسجيل علامة Mid-South Wrestling"
+permalink: "/news/wwe-تسجل-حقوق-استخدام-علامة-mid-south-wrestling/index.html"
 date: 2026-11-25T17:39:31.000+03:00
 published_at: 2026-11-26T10:15:48.308Z
 source_id: 340814
