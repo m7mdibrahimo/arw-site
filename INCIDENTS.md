@@ -12090,6 +12090,8 @@ Let me check git status to enumerate uncommitted changes.</think><tool_call>shel
   left as it is), and hidden only while another plays. No «يعمل داخل الصفحة» under each server. The panel shows each
   server's check.
 
+- 2026-11-26 (follow-up): one source only (1max.top) via its /busy/<show>.php links page; servers check every 10 min in real Chrome (live-check.yml → /api/live/health) orders servers — playing ones first by speed, «not found» last — never hides one (the US runner can't see what plays from Egypt).
+
 ## #1538 — 2026-11-25: غلطات كتابة في أخبار دراغونوف وروبرت ستون وبانك
 - اللي حصل: «تووقعها» و«أكبر سننا» و«بطل AEW الوطنية» (بطل مذكر) نزلوا في أخبار دراغونوف (وفي تقريرين نتائج قدام)، و«لو دخلت عليه» عن روبي إي، و«ووضع في المحادثة الجماعية» في خبر بانك.
 - السبب: Gemini كتبهم ومفيش تصحيح ثابت يمسكهم؛ واختبار aria-label كان واقع من قسم «بث مباشر» الجديد.
