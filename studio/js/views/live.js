@@ -86,7 +86,7 @@ export async function renderLiveTool(page) {
   // one that answered «not found» last
   const chkLine = (v) => v.x ? '' : v.chk ? (v.chk.ok
     ? html`<span class="lv-a-st ok">شغال · الصورة بتظهر في ${(v.chk.ms / 1000).toFixed(1)} ثانية · اتفحص ${timeAgo(v.chk.at)}</span>`
-    : html`<span class="lv-a-st bad">مردّش في الفحص (اتحط في الآخر) · اتفحص ${timeAgo(v.chk.at)}</span>`)
+    : html`<span class="lv-a-st bad">مردّش في الفحص · اتفحص ${timeAgo(v.chk.at)}</span>`)
     : html`<span class="lv-a-st">لسه متفحصش — الفحص بيشتغل قبل العرض بـ3 ساعات</span>`;
   function servList(s) {
     const mine = s.add.map(a => a.u);

@@ -396,7 +396,9 @@ export function outerLink(u: string): string | null {
 export interface PubServer { u: string; q: string; s: number; n: number; at: number; x?: 1; m?: 1; d?: 1; ms?: number }
 /** The quality from the picture's real height (the check's measure beats a source's label: «83 FHD» played 960×540) */
 export function qualityOf(h: number): string { return h >= 1000 ? "FHD" : h >= 700 ? "HD" : h >= 450 ? "SD" : h > 0 ? "LQ" : ""; }
-const QORDER: Record<string, number> = { HD: 0, FHD: 1, SD: 2, LQ: 3 };
+// HD, SD, LQ, then FHD: 1max's own word on its channels («87 PipFree & Most Stable | 83 FHD but can buffer»), and the list
+// reads in even steps — 87 and 86 in pairs, the heavy one last (owner 2026-11-26: «مرتبين ومنظمين»)
+const QORDER: Record<string, number> = { HD: 0, SD: 1, LQ: 2, FHD: 3 };
 /** A show's servers: the owner's own first, then every source's in the order they came, the best quality first;
  *  duplicates (the same channel under two pages) once. Only what plays inside our page (owner 2026-11-26: «مش رابط خارجي
  *  مش عايز الناس تطلع من الموقع»): a source link that opens only on its own site is never shown — the one exception is a
@@ -429,12 +431,12 @@ export function servers(s: Pick<EffShow, "links" | "add" | "block">, health: Hea
   auto.sort((a, b) => a.s - b.s || (QORDER[a.q] ?? 4) - (QORDER[b.q] ?? 4));
   const base = play.concat(auto, own, outer);
   // the check (owner 2026-11-26: «خلي اول سيرفر دايما هو اسرع سيرفر… اتاكد منهم انهم شغاليين دايما»): the ones playing
-  // first, fastest first; then the ones not known either way, in the usual order; one that answered «not found» last.
-  // Never hidden: the check runs in the US, and a stream that answered «not found» there played from Egypt the same night
+  // first, fastest first; then the rest in the usual order. One that answered «not found» is not moved down: the check runs
+  // in the US (a stream «not found» there played from Egypt the same night), and moving it scrambled the list («عشوائي»)
   const fresh = (u: string) => { const h = health[u]; return h && now - h.at < HEALTH_FRESH ? h : null; };
   for (const v of base) { const h = fresh(v.u); if (h?.ok && h.h) v.q = qualityOf(h.h); if (h?.ok) v.ms = h.ms; }
   const alive = base.filter((v) => !v.x && fresh(v.u)?.ok).sort((a, b) => (a.ms || 0) - (b.ms || 0));
-  const late = base.filter((v) => !v.x && fresh(v.u) && !fresh(v.u)!.ok);
+  const late: PubServer[] = [];
   // what opens on another site always last, after every server that plays here — in the same order as their channels
   // play here («الاسرع ثم الاسرع»): «CatchUp 87 HD» where «ch87_HD» stands, «83 FHD» where «ch83_*» stands
   const inPage = alive.concat(base.filter((v) => !v.x && !alive.includes(v) && !late.includes(v)), late);

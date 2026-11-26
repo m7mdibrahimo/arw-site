@@ -235,8 +235,8 @@ test('one source (1max) and the servers check: the fastest playing first, a stop
   const ch = (c: string) => `https://www.sawlivenow.com/embed/${c}/`;
   const links = ['ch87_HD', 'ch86_HD', 'ch87_SD', 'ch86_SD'].map((c) => ({ u: `https://dailypudding.com/category/alpha.php?live=${c}`, q: c.split('_')[1], s: 1, at }))
     .concat([{ u: 'https://dailypudding.com/category/alpha.php?live=ch83_HD', q: 'FHD', s: 1, at }]);
-  // nothing checked yet: the usual order, nothing hidden
-  assert.deepEqual(L.servers({ links } as any, {}, now).map((v) => v.u), [ch('ch87_HD'), ch('ch86_HD'), ch('ch83_HD'), ch('ch87_SD'), ch('ch86_SD')]);
+  // nothing checked yet: the usual order in even steps — HD, SD, then the heavy FHD (owner: «مرتبين ومنظمين»)
+  assert.deepEqual(L.servers({ links } as any, {}, now).map((v) => v.u), [ch('ch87_HD'), ch('ch86_HD'), ch('ch87_SD'), ch('ch86_SD'), ch('ch83_HD')]);
   const health: L.Health = {
     [ch('ch87_HD')]: { ok: 0, ms: 30000, at: now - 60_000 },
     [ch('ch86_HD')]: { ok: 1, ms: 9000, h: 720, at: now - 60_000 },
@@ -244,8 +244,8 @@ test('one source (1max) and the servers check: the fastest playing first, a stop
     [ch('ch87_SD')]: { ok: 0, ms: 30000, at: now - 60_000 },
   };
   const sv = L.servers({ links } as any, health, now);
-  // fastest playing first, then the ones not known, then «not found» — none hidden (the check runs far from the visitors)
-  assert.deepEqual(sv.map((v) => v.u), [ch('ch83_HD'), ch('ch86_HD'), ch('ch86_SD'), ch('ch87_HD'), ch('ch87_SD')]);
+  // fastest playing first, then the rest in the usual order — «not found» is not moved (the check runs far from the visitors)
+  assert.deepEqual(sv.map((v) => v.u), [ch('ch83_HD'), ch('ch86_HD'), ch('ch87_HD'), ch('ch87_SD'), ch('ch86_SD')]);
   assert.deepEqual(sv.map((v) => v.n), [1, 2, 3, 4, 5]);
   assert.ok(!sv.some((v) => v.d));
   assert.equal(sv[0].q, 'SD'); // «83 FHD» played 960x540: its real quality
