@@ -1,68 +1,68 @@
 {
- "https://www.ringsidenews.com/aew-collision-spoiler-results-november-26-2026": {
-  "reason": "المراجعة رفضته: مواجهة تحت عنوانها سطر النتيجة بس من غير جملة النزال (الجملة ضاعت أو اتكتبت فوق العنوان) — كل مواجهة: العنوان، ثم جملة النزال من سطر المصدر، ثم سطر الفائز، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-11-26T12:44:45.186Z"
- },
  "https://www.fightful.com/wrestling/will-ospreay-to-face-mjf-in-title-vs-title-ladder-match-at-aew-worlds-end": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T12:40:58.223Z"
+  "at": "2026-11-26T12:51:36.062Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T12:40:58.095Z"
+  "at": "2026-11-26T12:51:35.920Z"
  },
  "https://www.fightful.com/wrestling/340881-aew-continental-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T12:40:58.014Z"
+  "at": "2026-11-26T12:51:35.830Z"
  },
  "https://www.fightful.com/wrestling/wwe-womens-tag-team-title-bout-more-added-to-11-27-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T12:40:57.852Z"
+  "at": "2026-11-26T12:51:35.645Z"
  },
  "https://www.fightful.com/wrestling/kazuchika-okada-and-don-callis-poke-fun-at-adam-copeland-for-bear-incident-on-aew-dynamite-thanksgiving-eve": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T12:40:57.727Z"
+  "at": "2026-11-26T12:51:35.499Z"
  },
  "https://www.fightful.com/wrestling/cm-punk-says-he-was-fined-for-hitting-john-cena-with-a-piledriver-in-february-2013-match": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T12:40:57.304Z"
+  "at": "2026-11-26T12:51:35.014Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-11-21-draws-434000-viewers": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-26T12:40:57.173Z"
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-26T12:51:34.863Z"
  },
  "https://www.fightful.com/wrestling/stone-cold-steve-austin-doesnt-want-to-hog-up-a-bunch-of-tv-time-trying-to-get-himself-back-over-with-a-wwe-return": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T12:39:47.612Z"
+  "at": "2026-11-26T12:50:32.140Z"
  },
  "https://www.fightful.com/wrestling/logan-paul-announced-to-return-to-the-ring-for-wwe-at-december-26th-live-event-at-madison-square-garden": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T12:39:47.530Z"
+  "at": "2026-11-26T12:50:32.046Z"
  },
  "https://www.fightful.com/wrestling/genichiro-tenryu-hospitalized": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-26T12:39:47.398Z"
+  "at": "2026-11-26T12:50:31.894Z"
  },
  "https://www.fightful.com/wrestling/stone-cold-steve-austin-would-give-the-crowd-more-credit-than-he-would-himself-for-what-chants-longevity": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T12:39:16.622Z"
+  "at": "2026-11-26T12:49:43.910Z"
  },
  "https://www.fightful.com/wrestling/njpw-world-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-26T12:39:16.338Z"
+  "at": "2026-11-26T12:49:43.582Z"
+ },
+ "https://www.ringsidenews.com/aew-collision-spoiler-results-november-26-2026": {
+  "reason": "المراجعة رفضته: مواجهة تحت عنوانها سطر النتيجة بس من غير جملة النزال (الجملة ضاعت أو اتكتبت فوق العنوان) — كل مواجهة: العنوان، ثم جملة النزال من سطر المصدر، ثم سطر الفائز، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-26T12:44:45.186Z"
  },
  "https://www.fightful.com/wrestling/focus-pro-mo-money-mo-problems-4-results-11-21": {
   "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
