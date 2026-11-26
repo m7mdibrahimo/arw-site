@@ -1,5 +1,15 @@
 [
   {
+    "id": 802273674,
+    "link": "https://www.ringsidenews.com/two-new-matches-announced-wwe-smackdown-before-survivor-series/",
+    "date": "Thu, 26 Nov 2026 02:04:42 +0000",
+    "date_gmt": "2026-11-26T02:04:42.000Z",
+    "title": {
+      "rendered": "Two New Matches Announced for WWE SmackDown Before Survivor Series"
+    },
+    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/06/title-match-revealed-for-june-26-wwe-smackdown-in-london-23.jpg?x48228"
+  },
+  {
     "id": 802273578,
     "link": "https://www.ringsidenews.com/brooke-hogan-opens-about-missing-hulk-hogan-ahead-thanksgiving/",
     "date": "Thu, 26 Nov 2026 01:58:18 +0000",
@@ -138,15 +148,5 @@
       "rendered": "CM Punk Reveals How He Felt Waking Up on Day of Shocking WWE Return"
     },
     "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/cm-punk-reveals-how-he-felt-waking-up-on-day-of-shocking-wwe-return-28.jpg?x48228"
-  },
-  {
-    "id": 802273489,
-    "link": "https://www.ringsidenews.com/top-wwe-superstars-advertised-wrestlepalooza-2026-perth-revealed/",
-    "date": "Wed, 25 Nov 2026 19:26:47 +0000",
-    "date_gmt": "2026-11-25T19:26:47.000Z",
-    "title": {
-      "rendered": "Top WWE Superstars Advertised for Wrestlepalooza 2026 in Perth Revealed"
-    },
-    "featured_image": "https://www.ringsidenews.com/wp-content/uploads/2026/11/top-wwe-superstars-advertised-for-wrestlepalooza-2026-in-perth-revealed-56.jpg?x48228"
   }
 ]
