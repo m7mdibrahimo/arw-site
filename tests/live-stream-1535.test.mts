@@ -113,7 +113,7 @@ test('a source that moved: the redirect is followed, the old domain\'s page poin
       return new Response('', { status: 404 });
     };
     const st: L.SourceState = { id: 'wwae', host: 'watchwrestling.ae', fp: { name: 'Watch Wrestling', desc: 'Watch WWE | WWE Raw | Smackdown Live' }, fpAt: Date.now() };
-    const got = await L.listSource(L.SOURCES.find((s) => s.id === 'wwae')!, st, Date.now(), new Set(['watchwrestling.re']));
+    const got = await L.listSource(({ id: 'wwae', host: 'watchwrestling.ae', base: 'watchwrestling', mirrors: [], rank: 3 } as L.SourceDef), st, Date.now(), new Set(['watchwrestling.re']));
     assert.equal(st.host, 'watchwrestling.to');
     assert.equal(st.movedFrom, 'watchwrestling.ae');
     assert.equal(got.posts.length, 1);
@@ -126,7 +126,7 @@ test('a source that moved: the redirect is followed, the old domain\'s page poin
       throw new Error('dns');
     };
     const st2: L.SourceState = { id: 'wwtv', host: 'watchwrestlingtv.se', fails: 4, fp: { name: 'Watch Wrestling', desc: '' }, fpAt: Date.now() };
-    await L.listSource(L.SOURCES.find((s) => s.id === 'wwtv')!, st2, Date.now(), new Set());
+    await L.listSource(({ id: 'wwtv', host: 'watchwrestlingtv.se', base: 'watchwrestlingtv', mirrors: [], rank: 4 } as L.SourceDef), st2, Date.now(), new Set());
     assert.equal(st2.host, 'watchwrestlingtv.ch');
     assert.equal(st2.movedFrom, 'watchwrestlingtv.se');
   } finally { globalThis.fetch = real; }

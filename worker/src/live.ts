@@ -24,9 +24,8 @@ export interface LiveEnv {
 export interface SourceDef { id: string; host: string; base: string; mirrors: string[]; rank: number }
 export const SOURCES: SourceDef[] = [
   { id: "1max", host: "1max.top", base: "1max", mirrors: ["watchwrestlingup.org", "watchwrestlingup.com", "watchwrestlingup.net"], rank: 1 },
-  { id: "wwre", host: "watchwrestling.re", base: "watchwrestling", mirrors: [], rank: 2 },
-  { id: "wwae", host: "watchwrestling.ae", base: "watchwrestling", mirrors: [], rank: 3 },
-  { id: "wwtv", host: "watchwrestlingtv.se", base: "watchwrestlingtv", mirrors: [], rank: 4 },
+  // only 1max (owner 2026-11-26: «خليك في الموقع ده وبس بلاش 4 مواقع») — its links are the sawlive channels themselves;
+  // the other three gave the same channels behind ad pages or wrappers
 ];
 /** Domain endings tried when a source vanished and nothing points to its new home */
 export const SWEEP_TLDS = ["to", "ae", "re", "se", "ch", "sx", "bz", "io", "co", "cc", "tv", "top", "one", "is", "ws", "la", "li", "me", "nz", "uno", "lol", "pro", "net", "org", "xyz", "su", "lc", "vc", "ac", "sh", "st", "ms", "gg", "fm", "im", "cx", "mx", "eu", "live", "site", "online", "club", "info", "biz", "us", "in", "pk", "ru", "fun", "icu", "win", "lat", "tw", "ink", "ec", "nu", "tf", "pw", "cam", "zone"];
@@ -272,7 +271,11 @@ export interface Show {
   start: number; how: string; end: number; img?: string | null; srcImg?: string | null; srcs: string[]; links: PubLink[];
   firstAt: number; page?: "pending" | "done" | "gone"; pageAt?: number; pageRev?: number; pageV?: number;
 }
-export interface LiveState { sources: Record<string, SourceState>; posts: Record<string, PostState>; shows: Record<string, Show>; manual: Manual }
+export interface LiveState { sources: Record<string, SourceState>; posts: Record<string, PostState>; shows: Record<string, Show>; manual: Manual; health?: Health }
+/** Each server as the check found it (.github/workflows/live-check.yml opens it like a visitor, every ten minutes around
+ *  a show): playing or not, how long until the picture came, and the picture's real height */
+export type Health = Record<string, { ok: 0 | 1; ms: number; h?: number; at: number }>;
+const HEALTH_FRESH = 40 * 60_000;
 
 const ENDED_KEEP = 3 * 86_400_000;      // an ended show's page stays three days, then goes
 const HORIZON = 8 * 86_400_000;         // shows further away than this are not listed yet
@@ -382,13 +385,15 @@ export function playable(u: string): string | null {
 }
 
 /** A server as /live/data gives it: «u» plays in our player, or (x) opens on its own site */
-export interface PubServer { u: string; q: string; s: number; n: number; at: number; x?: 1; m?: 1 }
+export interface PubServer { u: string; q: string; s: number; n: number; at: number; x?: 1; m?: 1; d?: 1; ms?: number }
+/** The quality from the picture's real height (the check's measure beats a source's label: «83 FHD» played 960×540) */
+export function qualityOf(h: number): string { return h >= 1000 ? "FHD" : h >= 700 ? "HD" : h >= 450 ? "SD" : h > 0 ? "LQ" : ""; }
 const QORDER: Record<string, number> = { HD: 0, FHD: 1, SD: 2, LQ: 3 };
 /** A show's servers: the owner's own first, then every source's in the order they came, the best quality first;
  *  duplicates (the same channel under two pages) once. Only what plays inside our page (owner 2026-11-26: «مش رابط خارجي
  *  مش عايز الناس تطلع من الموقع»): a source link that opens only on its own site is never shown — the one exception is a
  *  link the owner himself adds in the panel marked «بيفتح في صفحة تانية». */
-export function servers(s: Pick<EffShow, "links" | "add" | "block">): PubServer[] {
+export function servers(s: Pick<EffShow, "links" | "add" | "block">, health: Health = {}, now = Date.now()): PubServer[] {
   const block = new Set(s.block || []);
   const play: PubServer[] = [], own: PubServer[] = [], seen = new Set<string>();
   for (const a of s.add || []) {
@@ -408,9 +413,19 @@ export function servers(s: Pick<EffShow, "links" | "add" | "block">): PubServer[
     auto.push({ u, q: l.q, s: l.s, n: 0, at: l.at });
   }
   auto.sort((a, b) => a.s - b.s || (QORDER[a.q] ?? 4) - (QORDER[b.q] ?? 4));
-  const out = play.concat(auto, own);
+  const base = play.concat(auto, own);
+  // the check (owner 2026-11-26: «خلي اول سيرفر دايما هو اسرع سيرفر… اتاكد منهم انهم شغاليين دايما»): the ones playing
+  // first, fastest first; then the ones not checked yet, in the usual order; a stopped one is kept out of sight (d) — but
+  // only while another plays, so a check that fails as a whole never empties the page
+  const fresh = (u: string) => { const h = health[u]; return h && now - h.at < HEALTH_FRESH ? h : null; };
+  for (const v of base) { const h = fresh(v.u); if (h?.ok && h.h) v.q = qualityOf(h.h); if (h?.ok) v.ms = h.ms; }
+  const alive = base.filter((v) => !v.x && fresh(v.u)?.ok).sort((a, b) => (a.ms || 0) - (b.ms || 0));
+  const dead = alive.length ? base.filter((v) => !v.x && fresh(v.u) && !fresh(v.u)!.ok) : [];
+  const rest = base.filter((v) => !alive.includes(v) && !dead.includes(v));
+  const out = alive.concat(rest);
   out.forEach((v, i) => { v.n = i + 1; });
-  return out;
+  for (const v of dead) { v.d = 1; v.n = 0; }
+  return out.concat(dead);
 }
 
 // ── The owner's hand (panel «البث المباشر») ────────────────────────────────
@@ -458,16 +473,17 @@ export function applyManual(auto: Record<string, Show>, m: Manual | null | undef
 
 /** What /live/data says: the shows of the section with their servers, shown from the moment a source has them
  *  (owner 2026-11-25: «خلي الروابط تظهر عادي مش مخفية لحد ما يشتغل العرض») until the show ends */
-export function publicData(shows: Record<string, EffShow>, now: number, off = false) {
+export function publicData(shows: Record<string, EffShow>, now: number, off = false, health: Health = {}) {
   const list = off ? [] : Object.values(shows)
     .filter((s) => !s.hide && now < s.end + 6 * 3_600_000 && s.start - now < HORIZON)
     .sort((a, b) => a.start - b.start)
     .map((s) => {
       const st = statusOf(s, now);
-      const sv = st === "ended" ? [] : servers(s);
+      const sv = st === "ended" ? [] : servers(s, health, now);
+      const shown = sv.filter((v) => !v.d);
       return {
         k: s.slug, t: arabicTitle(s), en: s.name, fed: s.fed, ple: s.ple ? 1 : 0, d: s.date, p: s.prog, start: s.start, end: s.end, how: s.how, st,
-        img: s.img || null, srcs: new Set(sv.filter((v) => v.s).map((v) => v.s)).size + (sv.some((v) => v.m) ? 1 : 0), n: sv.length,
+        img: s.img || null, srcs: new Set(shown.filter((v) => v.s).map((v) => v.s)).size + (shown.some((v) => v.m) ? 1 : 0), n: shown.length,
         ...(s.note ? { note: s.note } : {}), ...(s.vod ? { vod: s.vod } : {}),
         sv,
       };
@@ -569,7 +585,7 @@ export async function loadState(db: D1Database): Promise<LiveState> {
   const rows = (await db.prepare("SELECT k, v FROM live_state").all<{ k: string; v: string }>()).results || [];
   const get = (k: string) => { const r = rows.find((x) => x.k === k); try { return r ? JSON.parse(r.v) : {}; } catch { return {}; } };
   const manual = get("manual");
-  return { sources: get("sources"), posts: get("posts"), shows: get("shows"), manual: { shows: manual.shows || {}, ...(manual.off ? { off: 1 as const } : {}) } };
+  return { sources: get("sources"), posts: get("posts"), shows: get("shows"), manual: { shows: manual.shows || {}, ...(manual.off ? { off: 1 as const } : {}) }, health: get("health") };
 }
 async function saveParts(db: D1Database, parts: [string, unknown][], now: number) {
   if (!parts.length) return;
@@ -596,6 +612,7 @@ export async function runLive(env: LiveEnv, now: number, deps: LiveDeps = {}): P
   const state = await loadState(db);
   const before = { sources: JSON.stringify(state.sources), posts: JSON.stringify(state.posts), shows: JSON.stringify(state.shows) };
   for (const s of SOURCES) if (!state.sources[s.id]) state.sources[s.id] = { id: s.id, host: s.host };
+  for (const id of Object.keys(state.sources)) if (!SOURCES.some((d) => d.id === id)) delete state.sources[id];
   const taken = new Set(Object.values(state.sources).map((s) => s.host));
   const lists = await Promise.all(SOURCES.map((s) => { const own = new Set(taken); own.delete(state.sources[s.id].host); return listSource(s, state.sources[s.id], now, own); }));
 
@@ -627,7 +644,8 @@ export async function runLive(env: LiveEnv, now: number, deps: LiveDeps = {}): P
     p.links = extractLinks(html, pageHost);
     p.img = ogImage(html) || p.img || null;
   }));
-  // posts of shows long gone are forgotten
+  // posts of shows long gone are forgotten, and those of a source no longer followed (owner 2026-11-26: 1max only)
+  for (const [k, p] of Object.entries(state.posts)) if (!SOURCES.some((d) => d.id === p.src)) delete state.posts[k];
   for (const [k, p] of Object.entries(state.posts)) if (p.date < minDate && !(state.shows[p.key] && now < state.shows[p.key].end + ENDED_KEEP)) delete state.posts[k];
 
   state.shows = mergeShows(Object.values(state.posts), state.shows, now);
@@ -728,13 +746,13 @@ export async function liveDataResponse(env: LiveEnv, cors: Record<string, string
   const hit = await cache.match(key);
   if (hit) body = await hit.text();
   else {
-    let shows: Record<string, Show> = {}, manual: Manual = { shows: {} };
+    let shows: Record<string, Show> = {}, manual: Manual = { shows: {} }, health: Health = {};
     if (env.ANALYTICS) {
       await ensureTable(env.ANALYTICS);
-      const rows = (await env.ANALYTICS.prepare("SELECT k, v FROM live_state WHERE k IN ('shows', 'manual')").all<{ k: string; v: string }>()).results || [];
-      for (const r of rows) { try { if (r.k === "shows") shows = JSON.parse(r.v); else manual = JSON.parse(r.v); } catch {} }
+      const rows = (await env.ANALYTICS.prepare("SELECT k, v FROM live_state WHERE k IN ('shows', 'manual', 'health')").all<{ k: string; v: string }>()).results || [];
+      for (const r of rows) { try { if (r.k === "shows") shows = JSON.parse(r.v); else if (r.k === "health") health = JSON.parse(r.v); else manual = JSON.parse(r.v); } catch {} }
     }
-    body = JSON.stringify(publicData(applyManual(shows, manual), now, !!manual.off));
+    body = JSON.stringify(publicData(applyManual(shows, manual), now, !!manual.off, health));
     // 20 s at the edge: a crowd at the start of a show costs one database read per 20 s, and a new link shows within it
     await cache.put(key, new Response(body, { headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "public, max-age=20" } }));
   }
@@ -742,6 +760,26 @@ export async function liveDataResponse(env: LiveEnv, cors: Record<string, string
   const geo = { c: /^[A-Z]{2}$/.test(String(cf.country || "")) ? cf.country : "", tz: /^[A-Za-z_]+(?:\/[A-Za-z0-9_+-]+){0,2}$/.test(String(cf.timezone || "")) ? cf.timezone : "" };
   const out = `{"geo":${JSON.stringify(geo)},"t":${Date.now()},` + body.slice(1);
   return new Response(out, { headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "private, no-store", ...cors } });
+}
+
+/** The check's answer (POST /api/live/health from .github/workflows/live-check.yml): kept for the servers it names, the
+ *  old ones dropped after a day; /live/data shows it within its 20 s edge copy */
+export async function saveHealth(env: LiveEnv, checks: any[], now = Date.now()): Promise<{ saved: number }> {
+  const db = env.ANALYTICS; if (!db) return { saved: 0 };
+  await ensureTable(db);
+  const row = await db.prepare("SELECT v FROM live_state WHERE k = 'health'").first<{ v: string }>();
+  let h: Health = {}; try { h = row ? JSON.parse(row.v) : {}; } catch { h = {}; }
+  for (const k of Object.keys(h)) if (now - h[k].at > 86_400_000) delete h[k];
+  let saved = 0;
+  for (const c of (Array.isArray(checks) ? checks : []).slice(0, 60)) {
+    const u = typeof c?.u === "string" && /^https:\/\/[^\s"'<>]{4,400}$/.test(c.u) ? c.u : ""; if (!u) continue;
+    if (c.unknown) { delete h[u]; saved++; continue; }   // not known either way: neither first nor hidden
+    h[u] = { ok: c.ok ? 1 : 0, ms: Math.max(0, Math.min(120_000, Math.round(+c.ms || 0))), ...(+c.h > 0 ? { h: Math.min(4320, Math.round(+c.h)) } : {}), at: now };
+    saved++;
+  }
+  await saveParts(db, [["health", h]], now);
+  await purgeData().catch(() => {});
+  return { saved };
 }
 
 /** /live/status: each source's domain and health, for the panel and the watchdog (no links) */
@@ -786,11 +824,12 @@ async function syncPages(db: D1Database, now: number, deps: LiveDeps) {
 /** The servers as the panel shows them (owner 2026-11-26: no duplicates, nothing that sends people away): «sv» exactly what
  *  visitors see, in order, each once; «hidden» what the owner hid, each once; «dup» / «out» how many source links were left
  *  out as copies of a server already shown / as pages that open only on their own site */
-export function panelServers(s: EffShow, srcName: (i: number, s: EffShow) => string) {
+export function panelServers(s: EffShow, srcName: (i: number, s: EffShow) => string, health: Health = {}, now = Date.now()) {
   const block = new Set(s.block || []);
   // an owner's own server keeps the address he typed (raw), which the panel moves or removes it by
   const rawOf = (u: string) => (s.add || []).find((a) => (a.x ? a.u : playable(a.u) || a.u) === u)?.u || u;
-  const sv = servers(s).map((v) => ({ u: v.u, raw: v.m ? rawOf(v.u) : v.u, q: v.q, n: v.n, src: v.m ? "" : srcName(v.s, s), m: v.m ? 1 : 0, x: v.x ? 1 : 0 }));
+  const chk = (u: string) => { const h = health[u]; return h && now - h.at < HEALTH_FRESH ? { ok: h.ok, ms: h.ms, at: h.at } : null; };
+  const sv = servers(s, health, now).map((v) => ({ u: v.u, raw: v.m ? rawOf(v.u) : v.u, q: v.q, n: v.n, src: v.m ? "" : srcName(v.s, s), m: v.m ? 1 : 0, x: v.x ? 1 : 0, d: v.d ? 1 : 0, chk: chk(v.u) }));
   const shown = new Set(sv.map((v) => v.u)), hidden: { u: string; q: string; src: string }[] = [], hid = new Set<string>();
   let copies = 0, out = 0;
   for (const l of s.links || []) {
@@ -819,9 +858,9 @@ function adminView(st: LiveState, now: number) {
         key: s.key, slug: s.slug, t: arabicTitle(s), name: s.name, fed: s.fed, prog: s.prog, date: s.date, start: s.start, end: s.end, how: s.how,
         st: statusOf(s, now), img: s.img || null, hide: !!s.hide, note: s.note || "", vod: s.vod || "", own: !auto, page: s.page || "", edited: !!st.manual.shows[s.key],
         auto: auto ? { t: arabicTitle(auto), start: auto.start, end: auto.end, img: auto.img || null, how: auto.how } : null,
-        ...panelServers(s, srcName),
+        ...panelServers(s, srcName, st.health || {}, now),
         add: o.add || [],
-        servers: servers(s).length,
+        servers: servers(s, st.health || {}, now).filter((v) => !v.d).length,
       };
     }),
   };

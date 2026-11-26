@@ -1282,6 +1282,10 @@ button.pager-num, button.pager-step { border: 0; font: inherit; font-weight: 800
 .lv-a-h2 { display: flex; align-items: center; gap: 8px; margin: 18px 0 0; font-size: 14px; color: var(--muted); }
 .row.lv-a-src { grid-template-columns: minmax(0, 1fr) auto; }
 .lv-a-sva .btn { gap: 6px; }
+.lv-a-st { font-size: 11.5px; font-weight: 700; color: var(--muted); }
+.lv-a-st.ok { color: var(--teal); }
+.lv-a-st.bad { color: var(--red, #d93a3d); }
+.lv-a-sv.is-dead { opacity: .6; }
 @media (max-width: 560px) {
   .lv-a-sv { grid-template-columns: 26px minmax(0, 1fr) auto; gap: 8px; padding: 10px 8px; }
   .lv-a-n { width: 26px; height: 26px; font-size: 12px; }

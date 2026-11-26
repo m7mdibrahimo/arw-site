@@ -39,7 +39,7 @@ import { publishFacebookVideo, publishInstagramVideo, publishTikTokVideo, mustRe
 import { runBudgetCheck } from "./budget";
 import { runSiteHealthCheck, siteHealth } from "./health";
 import { top10Response } from "./top10";
-import { runLive, liveDataResponse, liveStatus, liveAdmin, type LiveDeps } from "./live";
+import { runLive, liveDataResponse, liveStatus, liveAdmin, saveHealth, type LiveDeps } from "./live";
 import { recordView, pruneAnalytics } from "./analytics";
 import { handlePremium, studioPremium, studioPremiumGrant, studioPremiumKind, studioPremiumDays, studioPremiumFind, studioPremiumRequest, studioPremiumMedia, premiumNotifications, runPremiumReminders } from "./premium";
 import { handleFollows, runFollowNotify, runFollowPush } from "./follows";
@@ -4593,6 +4593,13 @@ export default {
           }
         }
         return json({ success: !!post.ok, platform, videoUrl, post, ...(pin ? { pin } : {}) });
+      }
+
+      // «بث مباشر»: what the servers check found (.github/workflows/live-check.yml, owner 2026-11-26: the fastest server
+      // first, only working ones) — admin only (the check above: the workflow's own GitHub token)
+      if (path === "/api/live/health" && request.method === "POST") {
+        const body: any = await request.json().catch(() => ({}));
+        return json({ success: true, ...(await saveHealth(env as any, body.checks)) });
       }
 
       // Taking a promo post back (owner 2026-11-25, «فين الصوت»: the first cut of the «بث مباشر» promo went out silent and

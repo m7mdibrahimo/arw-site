@@ -12080,6 +12080,16 @@ Let me check git status to enumerate uncommitted changes.</think><tool_call>shel
   lists the servers as visitors see them, each once (hidden once under every address; copies and ad pages counted), in its
   own layout (the shared .row grid had squeezed each link into the picture column).
 
+- Follow-up (owner, 2026-11-26): one source only, 1max («خليك في الموقع ده وبس»): its «Stream 87/86 SD·LQ·HD» and
+  «Stream 83 FHD» are the sawlive channels themselves (its «CatchUp» buttons are techfunlife copies of the same channels,
+  which refuse framing). The other three sources' posts and states are dropped. A servers check
+  (.github/workflows/live-check.yml → scripts/live-check.mjs → POST /api/live/health) opens each server every ten minutes
+  from three hours before a show, framed in our page like a visitor: the ones that play go first, fastest first, with
+  the quality from the picture's real height («83 FHD» played 960×540); a server is marked stopped only on a plain «not
+  found» (a player that only spins in a robot browser — the hosts start behind an ad window on a visitor's click — is
+  left as it is), and hidden only while another plays. No «يعمل داخل الصفحة» under each server. The panel shows each
+  server's check.
+
 ## #1538 — 2026-11-25: غلطات كتابة في أخبار دراغونوف وروبرت ستون وبانك
 - اللي حصل: «تووقعها» و«أكبر سننا» و«بطل AEW الوطنية» (بطل مذكر) نزلوا في أخبار دراغونوف (وفي تقريرين نتائج قدام)، و«لو دخلت عليه» عن روبي إي، و«ووضع في المحادثة الجماعية» في خبر بانك.
 - السبب: Gemini كتبهم ومفيش تصحيح ثابت يمسكهم؛ واختبار aria-label كان واقع من قسم «بث مباشر» الجديد.

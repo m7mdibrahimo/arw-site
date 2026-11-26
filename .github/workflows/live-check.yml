@@ -1,37 +1,42 @@
-name: Live Check
-
-# What the live site really sends for one page: its cache headers, the stylesheets it points to, and a few markers.
-# For «I changed it but I still see the old page» (INCIDENTS #354): run it by hand with the page's address.
+name: Live servers check
+# «بث مباشر» (owner 2026-11-26): every ten minutes around a show, each server is opened like a visitor opens it; the
+# fastest that plays goes first, a stopped one is kept out of sight (scripts/live-check.mjs → /api/live/health)
 on:
+  schedule:
+    - cron: "*/10 * * * *"
   workflow_dispatch:
-    inputs:
-      path:
-        description: 'Page path, e.g. /shows/aew-dynamite-06-10-2026/ (or a full https address)'
-        required: true
-        default: '/'
-      grep:
-        description: 'Text to look for in the page (optional)'
-        required: false
-        default: ''
 
+concurrency:
+  group: live-check
+  cancel-in-progress: false
+
+# write: the bot's admin check accepts a token that can push (worker/src/delivery.ts authorizeAdmin); nothing is written here
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 15
     steps:
-      - name: Fetch the page as a visitor would
-        env:
-          P: ${{ inputs.path }}
-          G: ${{ inputs.grep }}
+      - name: Is a show near?
+        id: near
         run: |
-          set -u
-          case "$P" in https://*) U="$P";; *) U="https://arab-wrestling.com${P}";; esac
-          echo "== headers for $U"; curl -sS -D - -o page.html -A "Mozilla/5.0 (live-check)" "$U" | grep -iE '^(HTTP|cache-control|cf-cache-status|age|etag|last-modified|cdn-cache-control|cloudflare-cdn-cache-control|x-served-by|content-type):'
-          echo "== stylesheets and scripts it points to"; grep -oE '(href|src)="/(en/)?assets/[^"]+"' page.html | sort -u
-          echo "== build"; curl -sS "https://arab-wrestling.com/build.json?_=$(date +%s)" | head -c 300; echo
-          if [ -n "$G" ]; then echo "== «$G» in the page: $(grep -c -- "$G" page.html) line(s)"; grep -o -- ".\{0,120\}$G.\{0,160\}" page.html | head -5; fi
-          CSS=$(grep -oE 'href="/assets/post-layout\.css[^"]*"' page.html | head -1 | sed 's/href="//; s/"$//')
-          if [ -n "$CSS" ]; then echo "== $CSS"; curl -sS -D - -o css.css "https://arab-wrestling.com$CSS" | grep -iE '^(cache-control|cf-cache-status|age):'; grep -o '\.post-wrap\.is-watch \.post-ep-name{[^}]*}' css.css | head -2; fi
+          N=$(curl -s --max-time 20 https://arw-site-bot.m7mdibrahimpc.workers.dev/live/data | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{try{const d=JSON.parse(s),n=Date.now();console.log((d.shows||[]).filter(x=>n>x.start-3*3600e3&&n<x.end&&(x.sv||[]).length).length)}catch{console.log(0)}})')
+          echo "shows near: $N"; echo "n=$N" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        if: steps.near.outputs.n != '0'
+        with:
+          sparse-checkout: scripts/live-check.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        if: steps.near.outputs.n != '0'
+        with:
+          node-version: 20
+      - name: Check the servers
+        if: steps.near.outputs.n != '0'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          npm i --no-save --no-audit --no-fund playwright@1.49.1 >/dev/null
+          node scripts/live-check.mjs

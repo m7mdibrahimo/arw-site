@@ -71,14 +71,20 @@ export async function renderLiveTool(page) {
   // the servers exactly as visitors see them, each once and in order (owner 2026-11-26: no duplicates, nothing that opens
   // outside the site): the number, quality, where it came from, the address it plays; then what the owner hid
   const shortUrl = (u) => { try { const x = new URL(u); return x.hostname.replace(/^www\./, '') + (x.pathname + x.search).replace(/\/$/, ''); } catch { return u; } };
+  // what the check found (every ten minutes around a show, .github/workflows/live-check.yml): the fastest playing first,
+  // a stopped one out of sight while another plays
+  const chkLine = (v) => v.x ? '' : v.chk ? (v.chk.ok
+    ? html`<span class="lv-a-st ok">شغال · الصورة بتظهر في ${(v.chk.ms / 1000).toFixed(1)} ثانية · اتفحص ${timeAgo(v.chk.at)}</span>`
+    : html`<span class="lv-a-st bad">واقف${v.d ? ' ومخفي عن الزوار' : ''} · اتفحص ${timeAgo(v.chk.at)}</span>`)
+    : html`<span class="lv-a-st">لسه متفحصش — الفحص بيشتغل قبل العرض بـ3 ساعات</span>`;
   function servList(s) {
     const mine = s.add.map(a => a.u);
-    const left = [s.dup ? `${s.dup} ${s.dup === 1 ? 'رابط مكرر' : 'روابط مكررة'} لنفس القناة` : '', s.out ? `${s.out} ${s.out === 1 ? 'رابط بيفتح' : 'روابط بتفتح'} برا الموقع (صفحات إعلانات)` : ''].filter(Boolean);
+    const left = [s.dup ? `${s.dup} ${s.dup === 1 ? 'رابط مكرر' : 'روابط مكررة'} لنفس القناة` : '', s.out ? `${s.out} ${s.out === 1 ? 'رابط بيفتح' : 'روابط مبتشتغلش'} جوه الموقع` : ''].filter(Boolean);
     return html`<div class="lv-a-svs">
-      ${s.sv.length ? s.sv.map(v => { const i = mine.indexOf(v.raw); return html`<div class="lv-a-sv ${v.x ? 'is-ext' : ''} ${v.m ? 'is-own' : ''}">
-        <span class="lv-a-n">${v.n}</span>
-        <span class="lv-a-svm"><b>سيرفر ${v.n}${v.q ? html`<span class="lv-a-qb">${v.q}</span>` : ''}<span class="lv-a-from">${v.m ? 'سيرفرك' : (SRC[v.src] || v.src || 'مصدر')}</span>${v.x ? html`<span class="tag tag-off">بيفتح في صفحة تانية</span>` : ''}</b>
-          <small dir="ltr" title="${v.u}">${shortUrl(v.u)}</small></span>
+      ${s.sv.length ? s.sv.map(v => { const i = mine.indexOf(v.raw); return html`<div class="lv-a-sv ${v.x ? 'is-ext' : ''} ${v.m ? 'is-own' : ''} ${v.d ? 'is-dead' : ''}">
+        <span class="lv-a-n">${v.d ? '–' : v.n}</span>
+        <span class="lv-a-svm"><b>${v.d ? 'واقف' : `سيرفر ${v.n}`}${v.q ? html`<span class="lv-a-qb">${v.q}</span>` : ''}<span class="lv-a-from">${v.m ? 'سيرفرك' : (SRC[v.src] || v.src || 'مصدر')}</span>${v.x ? html`<span class="tag tag-off">بيفتح في صفحة تانية</span>` : ''}</b>
+          <small dir="ltr" title="${v.u}">${shortUrl(v.u)}</small>${chkLine(v)}</span>
         <span class="lv-a-sva">
           <a class="icon-btn sm" href="${v.u}" target="_blank" rel="noopener" title="جرّبه">${icon('eye')}</a>
           ${v.m ? html`<button class="icon-btn sm" data-mv="up" data-u="${v.raw}" ${i > 0 ? '' : 'disabled'} title="لفوق">▲</button><button class="icon-btn sm" data-mv="down" data-u="${v.raw}" ${i > -1 && i < mine.length - 1 ? '' : 'disabled'} title="لتحت">▼</button><button class="icon-btn sm danger" data-rm="${v.raw}" title="امسحه">${icon('x')}</button>`
@@ -116,7 +122,7 @@ export async function renderLiveTool(page) {
         ${s.edited && !s.own ? html`<button class="btn btn-ghost" data-reset>رجّعه زي المصادر</button>` : ''}
         ${s.own ? html`<button class="btn btn-danger" data-del>${icon('trash')} امسحه</button>` : ''}
       </div>
-      <h3 class="lv-a-h">${icon('link')} السيرفرات اللي الزوار شايفينها <span class="count-pill">${s.sv.length}</span></h3>
+      <h3 class="lv-a-h">${icon('link')} السيرفرات اللي الزوار شايفينها <span class="count-pill">${s.sv.filter(v => !v.d).length}</span></h3>
       <form class="lv-a-add" data-add>
         <input class="input" name="u" dir="ltr" placeholder="رابط سيرفر (embed) أو صفحة بث…" required>
         ${q('')}
