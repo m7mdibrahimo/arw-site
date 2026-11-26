@@ -602,7 +602,23 @@ export function wantsRead(p: PostState, show: Show | undefined, now: number, cha
   return age >= 30 * 60_000;
 }
 
-export interface LiveDeps { commit?: (changes: { path: string; text?: string; remove?: boolean }[], message: string) => Promise<string>; uploadImage?: (path: string, bytes: ArrayBuffer, type: string) => Promise<boolean> }
+export interface LiveDeps { commit?: (changes: { path: string; text?: string; remove?: boolean }[], message: string) => Promise<string>; uploadImage?: (path: string, bytes: ArrayBuffer, type: string) => Promise<boolean>; announce?: (a: Announce) => Promise<unknown> }
+
+/** A show whose live just started, for the post on social (owner 2026-11-26: «لما يبدا البث لاي عرض تنزل اعلان بوست ان
+ *  نزل دلوقتي البث المباشر للعرض علي الموقع») */
+export interface Announce { slug: string; url: string; title: string; text: string; img?: string | null }
+const ANNOUNCE_WINDOW = 60 * 60_000;   // a show found live later than this after its start is not announced
+export function toAnnounce(shows: Record<string, EffShow>, now: number, off = false, health: Health = {}): Announce[] {
+  if (off) return [];
+  return Object.values(shows)
+    .filter((s) => !s.hide && s.page === "done" && statusOf(s, now) === "live" && now - s.start < ANNOUNCE_WINDOW)
+    .filter((s) => servers(s, health, now).some((v) => !v.d && !v.x))
+    .map((s) => {
+      const t = arabicTitle(s);
+      return { slug: s.slug, url: `/live/${s.slug}/`, img: s.img || null, title: `بدأ الآن البث المباشر ل${t}`,
+        text: `شاهدوا ${t} مباشرةً الآن على موقع عرب راسلنج، بأكثر من سيرفر وبجودات مختلفة، من داخل الموقع.` };
+    });
+}
 
 export async function runLive(env: LiveEnv, now: number, deps: LiveDeps = {}): Promise<{ changed: boolean; shows: number }> {
   const db = env.ANALYTICS;
@@ -662,6 +678,12 @@ export async function runLive(env: LiveEnv, now: number, deps: LiveDeps = {}): P
   for (const mk of marks) if (state.shows[mk.key]) Object.assign(state.shows[mk.key], mk.set);
   const manualMarks = marks.filter((mk) => !state.shows[mk.key]);
   if (manualMarks.length) await markManualPages(db, manualMarks, now);
+  // the post «the live started» on social, once per show (the deps keep which went)
+  if (deps.announce) {
+    for (const a of toAnnounce(applyManual(state.shows, state.manual), now, !!state.manual.off, state.health)) {
+      await deps.announce(a).catch((e) => console.log("[live] announce:", e?.message || e));
+    }
+  }
 
   const parts: [string, unknown][] = [];
   if (JSON.stringify(state.sources) !== before.sources) parts.push(["sources", state.sources]);

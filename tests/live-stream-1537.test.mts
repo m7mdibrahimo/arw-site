@@ -268,3 +268,20 @@ test('the name: «عرض داينامايت» with its English name everywhere, 
   assert.match(lay, /حلقة \{\{ lvDay \}\}/);
   assert.equal(L.PAGE_V, 3, 'the pages already out are written again with the new name');
 });
+
+test('a show whose live just started is announced once its page is up and a server plays; not an hour after', () => {
+  const now = Date.UTC(2026, 10, 26, 1, 10);
+  const base: any = { key: 'k', slug: 'dynamite-25-11-2026', date: '2026-11-25', fed: 'AEW', prog: 'dynamite', ar: 'داينامايت', name: 'AEW Dynamite',
+    start: now - 10 * 60_000, end: now + 3 * 3_600_000, how: 'usual', srcs: ['1max'], firstAt: 0, page: 'done', img: '/content/images/live-x.jpg',
+    links: [{ u: 'https://www.sawlivenow.com/embed/ch87_HD/', q: 'HD', s: 1, n: 1, e: 1, at: 0 }] };
+  const a = L.toAnnounce({ k: base }, now);
+  assert.equal(a.length, 1);
+  assert.equal(a[0].title, 'بدأ الآن البث المباشر لعرض داينامايت');
+  assert.equal(a[0].url, '/live/dynamite-25-11-2026/');
+  assert.equal(L.toAnnounce({ k: { ...base, start: now - 61 * 60_000 } }, now).length, 0);   // found too late
+  assert.equal(L.toAnnounce({ k: { ...base, start: now + 60_000 } }, now).length, 0);        // not started
+  assert.equal(L.toAnnounce({ k: { ...base, page: 'pending' } }, now).length, 0);           // no page yet
+  assert.equal(L.toAnnounce({ k: { ...base, links: [] } }, now).length, 0);                 // nothing to watch
+  assert.equal(L.toAnnounce({ k: base }, now, true).length, 0);                             // section off
+  assert.equal(L.toAnnounce({ k: { ...base, hide: 1 } }, now).length, 0);
+});
