@@ -1,7 +1,8 @@
 ---
-title: "بث مباشر عرض سيرفايفر سيريس"
+title: "بث مباشر عرض سيرفايفر سيريس 2026"
 live_key: "survivor-series-28-11-2026"
-program_en: "WWE Survivor Series WarGames"
+program_en: "WWE Survivor Series WarGames 2026"
+en_date: "28/11/2026"
 federation: "WWE"
 event_date: 2026-11-28
 start: "2026-11-28T21:00:00.000Z"
