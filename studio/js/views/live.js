@@ -72,10 +72,10 @@ export async function renderLiveTool(page) {
   // outside the site): the number, quality, where it came from, the address it plays; then what the owner hid
   const shortUrl = (u) => { try { const x = new URL(u); return x.hostname.replace(/^www\./, '') + (x.pathname + x.search).replace(/\/$/, ''); } catch { return u; } };
   // what the check found (every ten minutes around a show, .github/workflows/live-check.yml): the fastest playing first,
-  // a stopped one out of sight while another plays
+  // one that answered «not found» last
   const chkLine = (v) => v.x ? '' : v.chk ? (v.chk.ok
     ? html`<span class="lv-a-st ok">شغال · الصورة بتظهر في ${(v.chk.ms / 1000).toFixed(1)} ثانية · اتفحص ${timeAgo(v.chk.at)}</span>`
-    : html`<span class="lv-a-st bad">واقف${v.d ? ' ومخفي عن الزوار' : ''} · اتفحص ${timeAgo(v.chk.at)}</span>`)
+    : html`<span class="lv-a-st bad">مردّش في الفحص (اتحط في الآخر) · اتفحص ${timeAgo(v.chk.at)}</span>`)
     : html`<span class="lv-a-st">لسه متفحصش — الفحص بيشتغل قبل العرض بـ3 ساعات</span>`;
   function servList(s) {
     const mine = s.add.map(a => a.u);

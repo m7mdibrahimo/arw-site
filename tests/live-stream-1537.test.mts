@@ -239,16 +239,13 @@ test('one source (1max) and the servers check: the fastest playing first, a stop
     [ch('ch87_SD')]: { ok: 0, ms: 30000, at: now - 60_000 },
   };
   const sv = L.servers({ links } as any, health, now);
-  const shown = sv.filter((v) => !v.d);
-  assert.deepEqual(shown.map((v) => v.u), [ch('ch83_HD'), ch('ch86_HD'), ch('ch86_SD')]); // fastest first, unchecked after
-  assert.deepEqual(shown.map((v) => v.n), [1, 2, 3]);
-  assert.equal(shown[0].q, 'SD'); // «83 FHD» played 960x540: its real quality
-  assert.deepEqual(sv.filter((v) => v.d).map((v) => v.u), [ch('ch87_HD'), ch('ch87_SD')]);
-  // every check stopped (the check itself may be failing): nothing hidden
-  const allDead = Object.fromEntries(Object.keys(health).map((k) => [k, { ok: 0 as const, ms: 30000, at: now - 60_000 }]));
-  assert.ok(!L.servers({ links } as any, allDead, now).some((v) => v.d));
+  // fastest playing first, then the ones not known, then «not found» — none hidden (the check runs far from the visitors)
+  assert.deepEqual(sv.map((v) => v.u), [ch('ch83_HD'), ch('ch86_HD'), ch('ch86_SD'), ch('ch87_HD'), ch('ch87_SD')]);
+  assert.deepEqual(sv.map((v) => v.n), [1, 2, 3, 4, 5]);
+  assert.ok(!sv.some((v) => v.d));
+  assert.equal(sv[0].q, 'SD'); // «83 FHD» played 960x540: its real quality
   // an old check counts for nothing
-  assert.ok(!L.servers({ links } as any, { [ch('ch87_HD')]: { ok: 0, ms: 1, at: now - 3_600_000 }, [ch('ch86_HD')]: { ok: 1, ms: 1, at: now - 3_600_000 } }, now).some((v) => v.d));
+  assert.deepEqual(L.servers({ links } as any, { [ch('ch87_HD')]: { ok: 0, ms: 1, at: now - 3_600_000 }, [ch('ch86_HD')]: { ok: 1, ms: 1, at: now - 3_600_000 } }, now).map((v) => v.u)[0], ch('ch87_HD'));
   // the page: no «يعمل داخل الصفحة», the stopped ones left out; the check opens each server framed in our page
   const js = fs.readFileSync('assets/live.js', 'utf8');
   assert.doesNotMatch(js, /يعمل داخل الصفحة/); assert.match(js, /filter\(function \(v\) \{ return !v\.d; \}\)/);

@@ -415,17 +415,15 @@ export function servers(s: Pick<EffShow, "links" | "add" | "block">, health: Hea
   auto.sort((a, b) => a.s - b.s || (QORDER[a.q] ?? 4) - (QORDER[b.q] ?? 4));
   const base = play.concat(auto, own);
   // the check (owner 2026-11-26: «خلي اول سيرفر دايما هو اسرع سيرفر… اتاكد منهم انهم شغاليين دايما»): the ones playing
-  // first, fastest first; then the ones not checked yet, in the usual order; a stopped one is kept out of sight (d) — but
-  // only while another plays, so a check that fails as a whole never empties the page
+  // first, fastest first; then the ones not known either way, in the usual order; one that answered «not found» last.
+  // Never hidden: the check runs in the US, and a stream that answered «not found» there played from Egypt the same night
   const fresh = (u: string) => { const h = health[u]; return h && now - h.at < HEALTH_FRESH ? h : null; };
   for (const v of base) { const h = fresh(v.u); if (h?.ok && h.h) v.q = qualityOf(h.h); if (h?.ok) v.ms = h.ms; }
   const alive = base.filter((v) => !v.x && fresh(v.u)?.ok).sort((a, b) => (a.ms || 0) - (b.ms || 0));
-  const dead = alive.length ? base.filter((v) => !v.x && fresh(v.u) && !fresh(v.u)!.ok) : [];
-  const rest = base.filter((v) => !alive.includes(v) && !dead.includes(v));
-  const out = alive.concat(rest);
+  const late = base.filter((v) => !v.x && fresh(v.u) && !fresh(v.u)!.ok);
+  const out = alive.concat(base.filter((v) => !alive.includes(v) && !late.includes(v)), late);
   out.forEach((v, i) => { v.n = i + 1; });
-  for (const v of dead) { v.d = 1; v.n = 0; }
-  return out.concat(dead);
+  return out;
 }
 
 // ── The owner's hand (panel «البث المباشر») ────────────────────────────────
