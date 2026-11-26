@@ -33,7 +33,7 @@ layout: post-layout.njk
 
 **المواجهة الثالثة: بطولة Focus Pro للفرق**
 
-نجح فريق Dolphin Funeral (جوليزي ورولو) في الدفاع عن لقبه بالفوز على فريق Controlled Kaos (بابا جوس وكيد كاوص).
+نجح فريق Dolphin Funeral (جوليزي ورولو) في الدفاع عن لقبه بالفوز على فريق Controlled Kaos (بابا جوس وكيد كاوس).
 
 🏆 **الفائزون:** فريق Dolphin Funeral (جوليزي ورولو)
 
