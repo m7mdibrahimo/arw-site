@@ -746,3 +746,22 @@ test("source's own coverage written as ours, «حجزين» and «الإجار»
   assert.ok(checkArticle("ويلي ماك يتحدث عن عقده", "طلب تأمين حجزين له في الشهر.").some((i) => i.code === "dual_noun"));
   assert.equal(applyCorrections("لدفع أجر الإجار"), "لدفع الإيجار");
 });
+
+test("a doubled list «و» before a glossary name is fixed, «ووكر/وودز» stay (INCIDENTS #1548)", () => {
+  assert.equal(autoFix("ثلاثي المكون من جوش ألكسندر ووهيتشيسيرو وروكي روميرو."), "ثلاثي المكون من جوش ألكسندر وهيتشيسيرو وروكي روميرو.");
+  assert.equal(autoFix("فريق (المكون من وواردلو، ترينت بيريتا)."), "فريق (المكون من واردلو، ترينت بيريتا).");
+  assert.ok(autoFix("فاز ووكر ستيوارت على خصمه.").includes("ووكر ستيوارت"));
+  assert.ok(autoFix("حافلة بلونها الأصفر ووجود رمز.").includes("ووجود"));
+});
+
+test("a dual with a glued pronoun («انتصاريه»، «خسراه») is blocked (INCIDENTS #1548)", () => {
+  assert.ok(checkArticle("عنوان خبر نيك واين", "استغل نيك واين انتصاريه على كريس جيريكو.").some((i) => i.code === "dual_form"));
+  assert.ok(checkArticle("عنوان خبر الفريق", "سعيا لاستعادة اللقب الذي خسراه سابقا.").some((i) => i.code === "dual_form"));
+  assert.ok(!checkArticle("عنوان خبر نيك واين", "استغل نيك واين فوزه مرتين على كريس جيريكو.").some((i) => i.code === "dual_form"));
+});
+
+test("a results intro naming a main event that isn't the last match is blocked (INCIDENTS #1548)", () => {
+  const body = (intro: string) => `${intro}\n\n**المواجهة الأولى: نزال فردي**\n\nتغلب جاي وايت على هانغمان آدم بيدج.\n\n🏆 **الفائز:** جاي وايت\n\n**المواجهة الثانية: نزال فردي**\n\nانتصر كايل فليتشر على أندرادي إل إيدولو.\n\n🏆 **الفائز:** كايل فليتشر`;
+  assert.ok(checkArticle("نتائج عرض AEW Dynamite", body("أقيم العرض أمس. وتصدر النزال الرئيسي مواجهة جمعت بين بانديدو وهانغمان آدم بيدج.")).some((i) => i.code === "intro_main_event_not_last"));
+  assert.ok(!checkArticle("نتائج عرض AEW Dynamite", body("أقيم العرض أمس. واختتم العرض بالنزال الرئيسي بين كايل فليتشر وأندرادي إل إيدولو.")).some((i) => i.code === "intro_main_event_not_last"));
+});

@@ -791,6 +791,9 @@ const RULES: Rule[] = [
   { code: "dual_form", severity: "error", re: /(?<![ء-ي])(?:[وف]?(?:ل|لي|كي|في)?|س)?(?:يهزم|تهزم|يفوز|تفوز|يحقق|تحقق|يتوج|تتوج|يعود|تعود|يشارك|تشارك|يدافع|تدافع|ينتصر|تنتصر|يخسر|تخسر|يتغلب|تتغلب|يلتقي|تلتقي|يتواجه|تتواجه)ا(?![ء-ي])/g, message: "فعل مثنى (ليهزما/ويتوجا/يفوزا…) ممنوع — اجمع الفعل (هزم، توج، فازوا) أو كرر الاسم", fields: ["title", "body"] },
   // INCIDENTS #1241: «طوله ووزنه جعلا نجوم WWE يظهرون أصغر» and the headline «League of Legends والمصارعة متشابهتان» went live.
   { code: "dual_form", severity: "error", re: /(?<![ء-ي])(?:[وف]?(?:ال)?متشابه(?:تان|تين|ان|ين)|[وف]?جعلا(?=\s)|[وف]?جعلتا)(?![ء-ي])/g, message: "صيغة مثنى (جعلا/متشابهتان) ممنوعة — «X وY جعلت…» أو «X تشبه Y»", fields: ["title", "body"] },
+  // «استغل نيك واين انتصاريه على كريس جيريكو» and «اللقب الذي خسراه سابقا» went live (26 November, INCIDENTS #1548):
+  // a dual noun or a dual past verb with a pronoun glued to it — the lists above only knew the bare forms.
+  { code: "dual_form", severity: "error", re: /(?<![ء-ي])(?:[وفبل]?(?:انتصاري|فوزي|هزيمتي|خسارتي|نزالي|لقبي|مواجهتي|عرضي)(?:ه|ها|هم)|[وف]?(?:خسرا|هزما|حققا|ربحا|انتزعا|استعادا|حملا|فقدا)(?:ه|ها|هم))(?![ء-ي])/g, message: "مثنى متصل بضمير (انتصاريه/خسراه/لقبيهم) ممنوع — «فوزه مرتين»، «الذي خسروه/خسرته»", fields: ["title", "body"] },
   // «تخلي» (the verbal noun of تخلّى) takes «عن»: «قبل تخلي قناعه» is a broken sentence (INCIDENTS #862)
   // Only the broken shape «تخلي + noun with a possessive pronoun» («قبل تخلي قناعه»): «التخلي وإلغاء» and «التخلي تماما عن» are correct
   { code: "tarakki_without_an", severity: "error", re: /(?<![ء-ي])(?:ال)?تخلي\s+(?!عن)[ء-ي]{2,}(?:ه|ها|هم|هن)(?![ء-ي])/g, message: "«تخلي» لازم يتبعها «عن» — اكتب «التخلي عن …» أو «قبل أن يتخلى عن …»", fields: ["title", "body"] },
@@ -893,7 +896,7 @@ export function showOnWrongWeekday(text: string, year = new Date().getUTCFullYea
  * dual_noun / dual_form joined them in INCIDENTS #471: ~4% of stories reached the site with «نزالين» / «حققا» / «أنهما»
  * although the style guide bans the dual. english_title_name is not blocking: «Championship» is also part of tournament names.
  */
-export const BLOCKING_QA_CODES = ["title_promo_uncovered", "wrong_current_month", "title_verbal_noun_passive", "duplicate_match", "curse_as_manner", "unnamed_person_title", "wrong_team_members", "verb_missing_object", "repeated_win_clause", "dangling_headquarters", "repeated_phrase", "betting_promo", "title_no_result", "invented_winner", "adverb_without_alef", "title_not_arabic", "english_quote", "english_caption_line", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "dq_as_no_result", "fem_win_masc_purpose", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "glued_prefix_quote", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "singles_label_multi_body", "team_size_label", "glued_arabic_words", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "verbless_opening", "lowercase_latin_fragment", "orphan_in_favor", "inconsistent_name", "spanish_article_mixed", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "same_title_published", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", "hidden_stipulation_title", "hidden_match_title", "federation_as_championship", "half_english_name", "tripled_letter", "crowned_new_belt", "title_champions_no_name", "pair_singular_verb", "title_vague_topic", "dont_expect_literal", "invisible_char", "empty_parens", "repeated_backstage", "period_vs_itself", "winner_not_in_match", "doubled_show_word", "arabic_possessive_s", "unbalanced_quotes", "ddp_surname", "mixed_verb_gender", "indefinite_noun_definite_adjective", "stuttered_word", "doubled_first_letter", "played_against", "draw_trophy", "redundant_soon", "forbidden_door_arabic", "dangling_scheduled", "team_faces_show", "title_name_not_in_body", "hype_closing", "reader_link_claim", "source_self_promo", "vague_finish", "move_as_beating", "doubled_alef", "names_without_waw", "program_around_clock", "ultimate_x_as_tag", "masc_verb_woman", "waw_after_ma_clause", "result_missing_loser", "scrubbed_reporter_gender", "scrubbed_reporter_appearance", "impossible_letter_pair", "title_repeated_verb", "clipped_surname", "match_without_text", "narration_in_quote", "title_unquoted_chant", ];
+export const BLOCKING_QA_CODES = ["intro_main_event_not_last", "title_promo_uncovered", "wrong_current_month", "title_verbal_noun_passive", "duplicate_match", "curse_as_manner", "unnamed_person_title", "wrong_team_members", "verb_missing_object", "repeated_win_clause", "dangling_headquarters", "repeated_phrase", "betting_promo", "title_no_result", "invented_winner", "adverb_without_alef", "title_not_arabic", "english_quote", "english_caption_line", "artifact", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "body_too_short", "mangled_date", "vague_result", "draw_as_winner", "dq_as_no_result", "fem_win_masc_purpose", "broken_word", "fem_plural_kn", "glued_latin_arabic", "detached_prefix", "glued_prefix_quote", "number_word_digits", "dropped_alef", "mixed_script_word", "tatweel_before_arabic", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "singles_label_multi_body", "team_size_label", "glued_arabic_words", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "verbless_opening", "lowercase_latin_fragment", "orphan_in_favor", "inconsistent_name", "spanish_article_mixed", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "same_title_published", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", "hidden_stipulation_title", "hidden_match_title", "federation_as_championship", "half_english_name", "tripled_letter", "crowned_new_belt", "title_champions_no_name", "pair_singular_verb", "title_vague_topic", "dont_expect_literal", "invisible_char", "empty_parens", "repeated_backstage", "period_vs_itself", "winner_not_in_match", "doubled_show_word", "arabic_possessive_s", "unbalanced_quotes", "ddp_surname", "mixed_verb_gender", "indefinite_noun_definite_adjective", "stuttered_word", "doubled_first_letter", "played_against", "draw_trophy", "redundant_soon", "forbidden_door_arabic", "dangling_scheduled", "team_faces_show", "title_name_not_in_body", "hype_closing", "reader_link_claim", "source_self_promo", "vague_finish", "move_as_beating", "doubled_alef", "names_without_waw", "program_around_clock", "ultimate_x_as_tag", "masc_verb_woman", "waw_after_ma_clause", "result_missing_loser", "scrubbed_reporter_gender", "scrubbed_reporter_appearance", "impossible_letter_pair", "title_repeated_verb", "clipped_surname", "match_without_text", "narration_in_quote", "title_unquoted_chant", ];
 /** Blocking codes that are one-off Gemini glitches: a fresh translation on the next run usually comes out clean. */
 export const RETRYABLE_QA_CODES = ["title_promo_uncovered", "wrong_current_month", "title_verbal_noun_passive", "duplicate_match", "curse_as_manner", "unnamed_person_title", "wrong_team_members", "verb_missing_object", "repeated_win_clause", "dangling_headquarters", "repeated_phrase", "artifact", "title_no_result", "invented_winner", "adverb_without_alef", "foreign_script", "hamza_dropped", "ai_leak", "editor_note", "vague_result", "results_without_winners", "fem_win_masc_purpose", "english_quote", "english_caption_line", "mixed_script_word", "name_not_in_source", "main_wrestler_missing", "spanish_article_mixed", "orphan_in_favor", "dual_noun", "dual_form", "dangling_speech", "stray_heading", "show_wrong_day", "weekday_mismatch", "show_feminine_adjective", "punt_kick_wording", "singles_label_team_winner", "singles_label_multi_body", "team_size_label", "arabic_wrestling_name", "federation_mismatch", "winner_mismatch", "title_cut_word", "scrubbed_source_garbage", "verb_after_yudhkar", "title_date_not_in_body", "title_period_mismatch", "truncated_word", "tarakki_without_an", "broken_attribution", "scrubbed_reporter_interviewer", "wrong_gabe", "federation_arabic_name", "push_as_payments", "attention_verb", "role_on_appearing", "banned_word_festival", "title_missing_preposition", "hidden_stipulation_title", "hidden_match_title", "federation_as_championship", "half_english_name", "tripled_letter", "crowned_new_belt", "title_champions_no_name", "pair_singular_verb", "title_vague_topic", "dont_expect_literal", "repeated_backstage", "period_vs_itself", "winner_not_in_match", "doubled_show_word", "arabic_possessive_s", "unbalanced_quotes", "mixed_verb_gender", "indefinite_noun_definite_adjective", "stuttered_word", "doubled_first_letter", "redundant_soon", "forbidden_door_arabic", "dangling_scheduled", "team_faces_show", "title_name_not_in_body", "hype_closing", "reader_link_claim", "source_self_promo", "vague_finish", "move_as_beating", "doubled_alef", "names_without_waw", "masc_verb_woman", "waw_after_ma_clause", "result_missing_loser", "scrubbed_reporter_gender", "scrubbed_reporter_appearance", "impossible_letter_pair", "title_repeated_verb", "clipped_surname", "match_without_text", "narration_in_quote", "title_unquoted_chant", ];
 
@@ -1260,8 +1263,30 @@ export function titlePromotionsUncovered(title: string, body: string): string[] 
   const sentences = String(body || "").split(/[.!؟?\n]+/).map(x => x.trim()).filter(Boolean);
   return listed.filter(p => !sentences.some(x => alias(p).test(x) && !listed.some(o => o !== p && alias(o).test(x))));
 }
+/**
+ * A results report whose opening paragraph names a «النزال الرئيسي» that is not the show's last match: AEW Dynamite
+ * 25 Nov opened «وتصدر النزال الرئيسي مواجهة جمعت بين بانديدو وهانغمان آدم بيدج» while Bandido never wrestled and the
+ * last match was Kyle Fletcher vs. Andrade (INCIDENTS #1548). Glossary names in that sentence must appear in the last
+ * match block; when none does, returns the sentence, else null.
+ */
+export function introMainEventNotLast(body: string): string | null {
+  if (!body || !/الحدث الرئيسي|النزال الرئيسي/.test(body)) return null;
+  const blocks = body.split(/\n(?=\s*\*\*(?:المواجهة|النزال|المباراة|الحدث الرئيسي)[^\n]*\*\*)/);
+  if (blocks.length < 3) return null;
+  const intro = blocks[0], last = blocks[blocks.length - 1].split(/\n\s*\n(?!\s*🏆)/).slice(0, 3).join("\n");
+  if (!GLOSSARY_AR) glossaryNamesIn("");
+  for (const sentence of intro.split(/[.\n؛]+/)) {
+    if (!/(?:الحدث|النزال) الرئيسي/.test(sentence)) continue;
+    const names = (GLOSSARY_AR || []).filter((n) => new RegExp(`(?<![\\u0621-\\u064A])و?${n}(?![\\u0621-\\u064A])`).test(sentence));
+    if (names.length && !names.some((n) => last.includes(n))) return sentence.trim();
+  }
+  return null;
+}
+
 export function checkArticle(title: string, body: string, tags: string[] = [], opts: { now?: Date } = {}): QaIssue[] {
   const issues: QaIssue[] = [];
+  const wrongMain = introMainEventNotLast(body);
+  if (wrongMain) issues.push({ code: "intro_main_event_not_last", severity: "error", field: "body", message: "أول الخبر بيقول إن النزال الرئيسي كان بين ناس مش في آخر نزال في التقرير — اكتب النزال الرئيسي صح أو شيل الجملة", excerpt: wrongMain });
   for (const p of titlePromotionsUncovered(title, body)) {
     issues.push({ code: "title_promo_uncovered", severity: "error", field: "body", message: `العنوان بيذكر ${p} والخبر مفيهوش ولا جملة عنه — كل اتحاد في العنوان لازم ياخد جملة خاصة بيه في المتن، أو يتشال من العنوان`, excerpt: p });
   }
@@ -2618,6 +2643,26 @@ export function endProseParagraphs(body: string): string {
   }).join("\n");
 }
 
+/** «ثلاثي دون كاليس فاميلي المكون من جوش ألكسندر ووهيتشيسيرو وروكي روميرو» and «(المكون من وواردلو، ترينت بيريتا…)»
+ *  went live (Collision and Dynamite stories of 26 November, INCIDENTS #1548): the list's «و» typed twice before a name,
+ *  or a «و» before the FIRST name of a list. A glossary word is the proof: «وو» + a name that doesn't start with «و»
+ *  is one «و» too many (names of five letters or more only: «ووجود» is «و» + «وجود», not a name «جود»; «ووكر/وودز» stay), and «من و» + a name that starts with «و»
+ *  loses the stray «و» only when what is left is a glossary word and the «و»-form isn't. */
+let WAW_WORDS: Set<string> | null = null;
+export function fixDoubledWaw(text: string): string {
+  if (!text || !text.includes("وو")) return text;
+  if (!WAW_WORDS) {
+    noWawRe();
+    WAW_WORDS = new Set(ALL_AR_NAMES.flatMap((v) => v.split(/\s+/)).filter((w) => /^[\u0621-\u064A]{3,}$/.test(w)));
+  }
+  const words = WAW_WORDS;
+  return text
+    .replace(/(?<![\u0621-\u064A])وو([\u0621-\u064A]{5,})(?![\u0621-\u064A])/g, (m, w: string) =>
+      !w.startsWith("و") && words.has(w) && !words.has(`وو${w}`) ? `و${w}` : m)
+    .replace(/((?:^|[\s(])(?:من|المكون من|المكونة من|بقيادة|ضم|تضم|يضم)\s)و(و[\u0621-\u064A]{2,})(?![\u0621-\u064A])/g, (m, pre: string, w: string) =>
+      words.has(w) && !words.has(`و${w}`) ? `${pre}${w}` : m);
+}
+
 export function autoFix(text: string): string {
   if (!text) return text;
   text = text.replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF\u00AD]/g, "");
@@ -2626,7 +2671,7 @@ export function autoFix(text: string): string {
   text = dropFillerOpeners(text);
   text = dropLinkPointerSentences(text);
   text = dropJokeExplainers(text);
-  text = fixNamesWithoutWaw(fixHalfEnglishNames(fixDoubledAlef(fixTripledLetters(text))));
+  text = fixNamesWithoutWaw(fixHalfEnglishNames(fixDoubledWaw(fixDoubledAlef(fixTripledLetters(text)))));
   text = fixDefiniteSurnames(text);
   // «عرض» is masculine: «في عرض SmackDown الأخيرة» went live in 28 stories (INCIDENTS #621) — the adjective agrees with it
   text = text.replace(/(عرض\s+(?:[A-Za-z0-9'’!.&*-]+\s+){0,5}[A-Za-z0-9'’!.&*-]+\s+)(الأخير|الاخير|القادم|الماضي)ة(?![\u0621-\u064A])/g, "$1$2");
