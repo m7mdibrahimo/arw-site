@@ -1,78 +1,93 @@
 {
- "https://www.fightful.com/wrestling/340897-aew-dynamite-don-callis": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T09:49:27.060Z"
+ "https://www.fightful.com/wrestling/will-ospreay-to-face-mjf-in-title-vs-title-ladder-match-at-aew-worlds-end": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-26T10:12:37.368Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T09:47:31.727Z"
+  "at": "2026-11-26T10:12:37.224Z"
+ },
+ "https://www.fightful.com/wrestling/340881-aew-continental-classic": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-26T10:12:37.135Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-womens-tag-team-title-bout-more-added-to-11-27-wwe-smackdown": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-26T10:12:36.898Z"
  },
  "https://www.fightful.com/wrestling/kazuchika-okada-and-don-callis-poke-fun-at-adam-copeland-for-bear-incident-on-aew-dynamite-thanksgiving-eve": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-26T09:47:08.491Z"
+  "at": "2026-11-26T10:12:36.752Z"
  },
  "https://www.fightful.com/wrestling/jacy-jayne-says-shes-happy-with-scary-money-in-the-bank-spot-that-looked-way-better-than-we-anticipated": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-26T09:31:42.143Z"
+  "at": "2026-11-26T10:07:37.139Z"
  },
  "https://www.fightful.com/wrestling/carmelo-anthony-says-john-cena-gifted-him-wwe-us-title-in-2005": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-26T09:30:47.682Z"
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T10:02:06.983Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-was-worried-team-usa-vs-team-mexico-would-be-a-minefield-for-getting-canceled": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Carmelo Hayes",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-26T09:29:41.092Z"
+  "at": "2026-11-26T09:59:48.767Z"
  },
  "https://www.fightful.com/wrestling/cm-punk-says-he-was-fined-for-hitting-john-cena-with-a-piledriver-in-february-2013-match": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T09:29:16.286Z"
+  "at": "2026-11-26T09:58:39.885Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-11-21-draws-434000-viewers": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-26T09:29:16.128Z"
+  "at": "2026-11-26T09:58:39.743Z"
  },
  "https://www.fightful.com/wrestling/stone-cold-steve-austin-doesnt-want-to-hog-up-a-bunch-of-tv-time-trying-to-get-himself-back-over-with-a-wwe-return": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T09:28:32.944Z"
+  "at": "2026-11-26T09:54:55.312Z"
  },
  "https://www.fightful.com/wrestling/logan-paul-announced-to-return-to-the-ring-for-wwe-at-december-26th-live-event-at-madison-square-garden": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T09:28:32.849Z"
+  "at": "2026-11-26T09:54:55.228Z"
  },
  "https://www.fightful.com/wrestling/genichiro-tenryu-hospitalized": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-26T09:28:32.690Z"
+  "at": "2026-11-26T09:54:55.074Z"
  },
  "https://www.fightful.com/wrestling/stone-cold-steve-austin-would-give-the-crowd-more-credit-than-he-would-himself-for-what-chants-longevity": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T09:27:07.539Z"
+  "at": "2026-11-26T09:53:17.494Z"
  },
  "https://www.fightful.com/wrestling/focus-pro-mo-money-mo-problems-4-results-11-21": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة السادسة: بطولة السيدات لـ Focus Pro، المواجهة السابعة: بطولة السيدات لـ Focus Pro — اكتب الفائز زي المصدر وبالماضي",
   "retry": true,
-  "at": "2026-11-26T09:27:07.330Z"
+  "at": "2026-11-26T09:53:17.318Z"
  },
  "https://www.fightful.com/wrestling/njpw-world-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-26T09:25:52.873Z"
+  "at": "2026-11-26T09:52:18.041Z"
  },
  "https://www.fightful.com/wrestling/wwe-files-for-mid-south-wrestling-trademark": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-26T09:25:52.730Z"
+  "at": "2026-11-26T09:52:17.773Z"
+ },
+ "https://www.fightful.com/wrestling/340897-aew-dynamite-don-callis": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T09:49:27.060Z"
  },
  "https://www.wrestlinginc.com/2328952/wrathlander-defend-aew-womens-world-tag-team-championship": {
   "reason": "المراجعة رفضته: ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
@@ -134,25 +149,10 @@
   "retry": true,
   "at": "2026-11-26T07:57:26.609Z"
  },
- "https://www.fightful.com/wrestling/will-ospreay-to-face-mjf-in-title-vs-title-ladder-match-at-aew-worlds-end": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T07:57:26.346Z"
- },
- "https://www.fightful.com/wrestling/340881-aew-continental-classic": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T07:57:26.114Z"
- },
  "https://www.fightful.com/wrestling/wwe-main-event-results-11-25": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-26T07:57:25.919Z"
- },
- "https://www.fightful.com/wrestling/wwe-womens-tag-team-title-bout-more-added-to-11-27-wwe-smackdown": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T07:57:25.690Z"
  },
  "https://www.fightful.com/wrestling/aew-dynamite-results-11-25-2026-hangman-page-vs-jay-white-andrade-vs-kyle-fletcher-tag-title-match-jon-moxley-more": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
