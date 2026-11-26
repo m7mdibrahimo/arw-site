@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/sheamus-wife-isabella-shows-off-her-wrestling-skills-during-ring-training": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-26T18:12:00.525Z"
+ },
+ "https://www.ringsidenews.com/wwe-vince-mcmahon-could-headed-toward-settlement-ring-boy-sexual-abuse-lawsuit": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T18:11:42.515Z"
+ },
  "https://www.fightful.com/wrestling/aew-collision-spoilers-for-11-26-taped-on-11-25": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -53,16 +63,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-26T17:56:18.187Z"
- },
- "https://www.ringsidenews.com/sheamus-wife-isabella-shows-off-her-wrestling-skills-during-ring-training": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-26T17:51:54.671Z"
- },
- "https://www.ringsidenews.com/wwe-vince-mcmahon-could-headed-toward-settlement-ring-boy-sexual-abuse-lawsuit": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": true,
-  "at": "2026-11-26T17:51:30.673Z"
  },
  "https://www.fightful.com/wrestling/genichiro-tenryu-hospitalized": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
