@@ -1,4 +1,24 @@
 {
+ "https://www.wrestlinginc.com/2329050/wwe-cody-rhodes-randy-orton-punt-intends-keep-using": {
+  "reason": "المراجعة رفضته: Punt Kick تتكتب «ركلة البانت» — مش «الركلة القاضية/المباشرة» (الضربة القاضية = KO)",
+  "retry": true,
+  "at": "2026-11-26T19:04:32.577Z"
+ },
+ "https://www.wrestlinginc.com/2322341/ken-anderson-wwe-prepared-acting": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T19:03:45.561Z"
+ },
+ "https://www.ringsidenews.com/paige-collett-reveals-plans-pursue-wwe-aew-contract-manager": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T19:00:00.624Z"
+ },
+ "https://www.ringsidenews.com/wwe-vince-mcmahon-could-headed-toward-settlement-ring-boy-sexual-abuse-lawsuit": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T18:59:21.587Z"
+ },
  "https://www.fightful.com/wrestling/jacy-jayne-responds-to-criticism-surrounding-womens-us-title-run-im-done-proving-myself": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,16 +63,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-26T19:00:41.849Z"
- },
- "https://www.ringsidenews.com/paige-collett-reveals-plans-pursue-wwe-aew-contract-manager": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T19:00:00.624Z"
- },
- "https://www.ringsidenews.com/wwe-vince-mcmahon-could-headed-toward-settlement-ring-boy-sexual-abuse-lawsuit": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T18:59:21.587Z"
  },
  "https://www.ringsidenews.com/paige-collett-reveals-plans-to-pursue-wwe-or-aew-contract-as-a-manager": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1988,10 +1998,5 @@
   "reason": "المراجعة رفضته: مثنى (فريقيهما/لقبيهما/الزميلان) ممنوع — قول «فريقهم/لقبهم/الزملاء» أو كرر الأسماء",
   "retry": true,
   "at": "2026-11-20T12:01:35.322Z"
- },
- "https://www.wrestlinginc.com/2321436/tna-thursday-night-impact-november-19-2026-results": {
-  "reason": "المراجعة رفضته: المواجهة مكتوبة «نزال فردي» والفقرة تحتها بتقول «نزال ثلاثي/فرق» — صحح العنوان حسب سطر المصدر، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Gabby Forza، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، المصدر بيتكلم عن John Skyler (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
-  "retry": true,
-  "at": "2026-11-20T04:24:36.173Z"
  }
 }
