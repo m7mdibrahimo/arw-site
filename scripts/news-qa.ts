@@ -135,7 +135,8 @@ export function fixCountDuals(text: string): string {
  * feminine one («لتحصلا») has no single right form and is blocked by dual_form. «يضمنا» is left out: it is
  * also «يضم» + «نا» («آمن بنا بما يكفي ليضمنا إلى صفوفه»). Idempotent.
  */
-const SUBJ_DUAL_VERBS = "تواجه|حسم|حقق|فوز|توج|حافظ|حتفظ|صبح|تأهل|واجه|عود|نتزع|ستعيد|نال|كمل|خطف|ثبت|حصل|خوض|نجح|تغلب|هزم|دافع|نضم|ظهر|شارك|قتنص|نتصر|خرج|حجز|عزل|تمكن|ستطيع";
+const SUBJ_DUAL_VERBS = "تواجه|حسم|حقق|فوز|توج|حافظ|حتفظ|صبح|تأهل|واجه|عود|نتزع|ستعيد|نال|كمل|خطف|ثبت|حصل|خوض|نجح|تغلب|هزم|دافع|نضم|ظهر|شارك|قتنص|نتصر|خرج|حجز|عزل|تمكن|ستطيع|نفصل|فترق|تحالف|تعاون";
+// «قبل أن ينفصلا في WrestleMania 37» (Alexa Bliss/Bray Wyatt story) — «نفصل|فترق|تحالف|تعاون» added in INCIDENTS #1558.
 // «دون أن يتواجها» (Mr. Kennedy story, Gemini wrote it broken as «يتواها») — «تواجه» added in INCIDENTS #1359.
 // «لن يتمكنا من اللحاق» (Destination X travel story) — «تمكن|ستطيع» added in INCIDENTS #1335; the feminine «لن تتمكنا» is blocked by dual_form.
 // «ليقتنصا التثبيت ويخرجا بانتصار» (ROH TV 27 Aug, SmackDown 4 Sep) — «قتنص|نتصر|خرج|حجز|عزل» added in INCIDENTS #1272.
