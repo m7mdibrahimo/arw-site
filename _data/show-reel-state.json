@@ -5934,7 +5934,7 @@
     "instagram_reel": true,
     "instagram_story": true,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 24.11.2026 مترجم",
-    "lastAttempt": 1795704583577,
+    "lastAttempt": 1795705488302,
     "errors": {
       "tiktok": "الفيديو لم يظهر على الموقع بعد؛ سيُعاد إرساله إلى TikTok بعد النشر."
     },
@@ -5973,6 +5973,25 @@
       "tiktok": "Buffer: TikTok is not allowing this post to publish due to the TikTok account being banned."
     },
     "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261126165318-aew-dynamite-25-11-2026": {
+    "publishedAt": 1795705514345,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض داينامايت 25.11.2026 مترجم",
+    "lastAttempt": 1795705527939,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
