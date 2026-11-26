@@ -2,9 +2,10 @@
 // حاجة … كل الصلاحيات معايا كاملة»): every show of /live/, what the sources found and what the owner changed — name,
 // time, picture, a note on the page, the full show's page, servers added / hidden / reordered, a show added by hand,
 // a show hidden, the whole section off, and a source's new domain when the bot couldn't follow it. (worker/src/live.ts)
-import { tools } from '../api.js';
+import { tools, api } from '../api.js';
 import { prepareImage } from '../image.js';
-import { html, mount, $, $$, icon, toast, dialog, esc, timeAgo } from '../ui.js';
+import { html, mount, $, $$, icon, toast, dialog, esc, timeAgo, num } from '../ui.js';
+import { viewsOf } from './list.js';
 
 const SITE = 'https://arab-wrestling.com';
 const ST = { soon: ['قادم', 'tag-auto'], live: ['مباشر دلوقتي', 'tag-live'], ended: ['خلص', 'tag-off'] };
@@ -22,6 +23,15 @@ export async function renderLiveTool(page) {
   mount(page, html`<div class="loading-page"><div class="spinner"></div></div>`);
   let data, open = '';
   try { data = await tools.live(); } catch (e) { return mount(page, html`<div class="empty"><h2>مقدرتش أجيب البث المباشر</h2><p class="muted">${e.message}</p></div>`); }
+  // each show page's real views, like every list of the panel (owner 2026-11-26: «توريني عدد المشاهدات في اللوحة للعروض
+  // البث المباشر زي باقي المواضيع»): the site's own counter, people only; never holds the page back
+  let views = null, viewsSince = '';
+  api.pageViews().then((d) => {
+    if (!d || !d.views) return;
+    views = d.views;
+    viewsSince = d.since ? new Date(`${d.since}T12:00:00Z`).toLocaleDateString('ar-EG-u-nu-latn', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
+    draw();
+  }).catch(() => {});
 
   const act = async (body, btn, okMsg) => {
     if (btn) btn.classList.add('loading');
@@ -61,6 +71,7 @@ export async function renderLiveTool(page) {
         <span class="row-main"><b>${s.t}</b><small><bdi dir="ltr">${s.name}</bdi> · ${when(s.start)} (بتوقيت جهازك)</small>
           <span class="lv-a-tags"><span class="tag ${stc}">${stl}</span>${s.hide ? html`<span class="tag tag-off">مخفي</span>` : ''}${s.own ? html`<span class="tag">مضاف بإيدك</span>` : s.edited ? html`<span class="tag">معدّل</span>` : ''}<span class="tag">${s.servers} سيرفر</span>${s.how === 'usual' ? html`<span class="tag" title="المصادر لسه مقالتش الميعاد بالظبط">ميعاد العرض المعتاد</span>` : ''}</span></span>
         <span class="row-actions">
+          ${views ? html`<span class="views-pill" title="${`مشاهدات حقيقية من الناس بس (من غير محركات البحث والروبوتات)${viewsSince ? ` من ${viewsSince}` : ''}`}">${icon('chart')}<b>${num(viewsOf(views, `/live/${s.slug}/`))}</b><small>مشاهدة</small></span>` : ''}
           <a class="btn btn-sm btn-ghost" href="${SITE}/live/${s.slug}/" target="_blank" title="صفحة العرض">${icon('eye')}</a>
           <button class="btn btn-sm" data-open="${s.key}">${icon('edit')} ${isOpen ? 'اقفل' : 'تحكم'}</button></span>
       </div>
