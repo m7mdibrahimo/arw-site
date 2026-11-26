@@ -5934,7 +5934,7 @@
     "instagram_reel": true,
     "instagram_story": true,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 24.11.2026 مترجم",
-    "lastAttempt": 1795723904039,
+    "lastAttempt": 1795724743593,
     "errors": {
       "tiktok": "الفيديو لم يظهر على الموقع بعد؛ سيُعاد إرساله إلى TikTok بعد النشر."
     },
@@ -5986,6 +5986,25 @@
     "lastAttempt": 1795709962167,
     "errors": {},
     "processing": [],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261126221723-cmll-concurso-de-fisicoculturismo-mr-and-miss-cmll-25-11-2026": {
+    "publishedAt": 1795724766235,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض سي ام ال ال سيليكتيفو مستر وميس 25.11.2026 مترجم",
+    "lastAttempt": 1795724777990,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
+      "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel",
+      "instagram_story"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
