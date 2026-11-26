@@ -1,5 +1,15 @@
 [
   {
+    "id": 1594112618,
+    "link": "https://www.wrestlinginc.com/2328952/wrathlander-defend-aew-womens-world-tag-team-championship/",
+    "date": "Thu, 26 Nov 2026 03:16:19 +0000",
+    "date_gmt": "2026-11-26T03:16:19.000Z",
+    "title": {
+      "rendered": "Wrathlander Defend AEW Women's World Tag Team Championship"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wrathlander-unseat-aew-womens-world-tag-team-champions/l-intro-1795662596.jpg"
+  },
+  {
     "id": 3342332050,
     "link": "https://www.wrestlinginc.com/2328935/aew-continental-classic-2026-update-night-3-dynamite/",
     "date": "Thu, 26 Nov 2026 02:42:07 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE NXT Star Zilla Fatu Opens Up About John Cena Classic Invitation, Father Umaga"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-star-zilla-fatu-opens-up-about-john-cena-classic-invitation-father-umaga/l-intro-1795294326.jpg"
-  },
-  {
-    "id": 924935067,
-    "link": "https://www.wrestlinginc.com/2327595/wwe-nxt-womens-title-defended-tlc-match-first-time/",
-    "date": "Wed, 25 Nov 2026 01:43:01 +0000",
-    "date_gmt": "2026-11-25T01:43:01.000Z",
-    "title": {
-      "rendered": "WWE NXT Women's Title To Be Defended In TLC Match For First Time"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-womens-title-to-be-defended-in-tlc-match-for-first-time/l-intro-1795570892.jpg"
   }
 ]
