@@ -1,53 +1,53 @@
 {
- "https://www.ringsidenews.com/jey-uso-jaida-parker-spotted-sharing-kiss-airport-wwe-raw": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة، فعل مثنى («يتبادلان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، فعل مثنى («يتبادلان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-26T22:37:43.544Z"
- },
  "https://www.fightful.com/wrestling/lebron-james-the-rock-is-an-unbelievable-person": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T22:36:36.330Z"
+  "at": "2026-11-26T22:46:13.729Z"
  },
  "https://www.fightful.com/wrestling/jacy-jayne-responds-to-criticism-surrounding-womens-us-title-run-im-done-proving-myself": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T22:36:36.200Z"
+  "at": "2026-11-26T22:46:13.611Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-spoilers-for-11-26-taped-on-11-25": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: أعضاء فريق غلط بين القوسين (اتاخدوا من سطر تاني) — اكتب أعضاء الفريق زي المصدر أو شيل القوسين (حصل: «ذا نيو ليفل (مارك ديفيس وجيك دويل)»)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
-  "at": "2026-11-26T22:36:36.053Z"
+  "at": "2026-11-26T22:46:13.480Z"
  },
  "https://www.fightful.com/wrestling/naoto-inoki-grandson-of-antonio-inoki-to-appear-at-njpw-wrestle-kingdom-21": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-26T22:35:07.366Z"
+  "at": "2026-11-26T22:45:34.750Z"
  },
  "https://www.fightful.com/wrestling/will-ospreay-to-face-mjf-in-title-vs-title-ladder-match-at-aew-worlds-end": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T22:34:46.824Z"
+  "at": "2026-11-26T22:45:16.234Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T22:34:46.691Z"
+  "at": "2026-11-26T22:45:16.108Z"
  },
  "https://www.fightful.com/wrestling/340881-aew-continental-classic": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T22:34:46.608Z"
+  "at": "2026-11-26T22:45:16.029Z"
  },
  "https://www.fightful.com/wrestling/wwe-womens-tag-team-title-bout-more-added-to-11-27-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T22:34:46.437Z"
+  "at": "2026-11-26T22:45:15.862Z"
  },
  "https://www.fightful.com/wrestling/kazuchika-okada-and-don-callis-poke-fun-at-adam-copeland-for-bear-incident-on-aew-dynamite-thanksgiving-eve": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-26T22:34:46.302Z"
+  "at": "2026-11-26T22:45:15.734Z"
+ },
+ "https://www.ringsidenews.com/jey-uso-jaida-parker-spotted-sharing-kiss-airport-wwe-raw": {
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة، فعل مثنى («يتبادلان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، فعل مثنى («يتبادلان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-26T22:37:43.544Z"
  },
  "https://www.ringsidenews.com/fired-tna-referee-michael-romo-drawing-interest-multiple-wrestling-promotions": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
