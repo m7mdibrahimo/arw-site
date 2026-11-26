@@ -1,14 +1,4 @@
 {
-  "https://www.wrestlinginc.com/2312265/aew-roh-truth-magnum-outrunners-engaged-chris-jericho-cruise/": {
-    "matchedFile": "20261110063533-تروث-ماجنوم-يطلب-الزواج-من-صديقته-خلال-عرض-jericho-cruise.md",
-    "reason": "الخبر الجديد يتحدث عن نفس الحدث تماماً (خطوبة تروث ماجنوم في رحلة كريس جيريكو البحرية وطلب الزواج داخل الحلبة) وقد تم نشر الخبر مسبقاً بناءً على تغطية موقع Fightful ونفس التفاصيل.",
-    "at": "2026-11-10T17:39:41.859Z"
-  },
-  "https://www.fightful.com/wrestling/renee-paquette-announces-passing-of-her-and-jon-moxleys-dog-blue/": {
-    "matchedFile": "20261110195748-رينيه-باكيت-وجون-موكسلي-ينعون-وفاة-كلبهم-بلوبري-j-good.md",
-    "reason": "الخبر الجديد يتناول نفس واقعة وفاة الكلب بلو التي تم تغطيتها بالفعل في الخبر رقم 0، ولا يقدم أي تطور جديد أو معلومة إضافية جوهرية.",
-    "at": "2026-11-10T17:44:11.431Z"
-  },
   "https://www.fightful.com/wrestling/westside-gunn-meets-with-wwe-thanks-nick-khan-for-making-everything-right/": {
     "matchedFile": "20261110205421-ويستسايد-غان-يكشف-أن-نيك-خان-صحح-الأمور-بعد-خلافه-السابق-مع-wwe.md",
     "reason": "الخبر الجديد يتناول نفس الواقعة (اجتماع ويستسايد غان مع نيك خان وتصحيح الأمور) التي غطاها الخبر المنشور بالفعل، ولا يقدم تطوراً جديداً أو معلومة إضافية جوهرية.",
@@ -2498,5 +2488,15 @@
     "matchedFile": "20261126054207-تفاصيل-الليلة-الثالثة-من-بطولة-continental-classic-في-عرض-aew-dynamite.md",
     "reason": "الخبر الجديد يغطي نفس نتائج مباريات بطولة Continental Classic في عرض AEW Dynamite (مثل فوز جون موكسلي على كيفن نايت ونزال الحدث الرئيسي)، والتي تم نشر تفاصيلها بالفعل في الخبر رقم 3.",
     "at": "2026-11-26T08:38:06.618Z"
+  },
+  "https://www.ringsidenews.com/aew-dynamite-thanksgiving-eve-results-highlights-key-moments-november-25-2026/": {
+    "matchedFile": "20261126054207-تفاصيل-الليلة-الثالثة-من-بطولة-continental-classic-في-عرض-aew-dynamite.md",
+    "reason": "الخبر الجديد يغطي نفس نتائج نزالات بطولة Continental Classic في عرض AEW Dynamite والتي تم نشر تفاصيل نتائجها مسبقاً في الخبر رقم 1 والخبر رقم 0.",
+    "at": "2026-11-26T08:50:47.913Z"
+  },
+  "https://www.ringsidenews.com/two-new-matches-announced-wwe-smackdown-before-survivor-series/": {
+    "matchedFile": "20261124133321-نتائج-تسريبات-عرض-wwe-smackdown-27-نوفمبر-2026-سي-ام-بانك-يفتتح-العرض-وبطولة-جديدة-في-نزال-الفرق.md",
+    "reason": "الخبر الجديد يتحدث عن الإعلان عن مواجهات في عرض SmackDown، بينما الخبر رقم 0 هو تقرير نتائج كامل لنفس العرض يتضمن بالفعل نتائج هذه المواجهات التي تم الإعلان عنها.",
+    "at": "2026-11-26T08:51:56.223Z"
   }
 }
