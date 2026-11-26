@@ -2703,6 +2703,9 @@ export function autoFix(text: string): string {
   // line (Hyperactive story, INCIDENTS #1216). Only a long Arabic sentence ending on a letter — never a heading, a list,
   // a quote or a card line.
   out = out.replace(/^([ء-ي][^\n*#>|🏆\u0000]*[ء-ي])[ \t]*(?=\n[ \t]*\n)/gm, (m: string, line: string) => (line.split(/\s+/).length >= 12 ? line + "." : m));
+  // …and the story's LAST paragraph, after an earlier one («…نيك واين مع توماسو تشامبا» at the very end, INCIDENTS #1546);
+  // never a lone line or a match line («فريق … ضد فريق …»).
+  out = out.replace(/(\n[ \t]*\n)([ء-ي][^\n*#>|🏆\u0000]*[ء-ي])[ \t]*(\s*)$/, (m: string, gap: string, line: string, tail: string) => (line.split(/\s+/).length >= 12 && !/(?<![ء-ي])ضد(?![ء-ي])/.test(line) ? gap + line + "." + tail : m));
   out = out
     // "TNA iMPACT (9/24/2026)": an American M/D/YYYY date copied from the source
     // title used to get the whole article blocked (mangled_date) — convert it.
