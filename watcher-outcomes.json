@@ -1,4 +1,24 @@
 {
+ "https://www.ringsidenews.com/grayson-waller-fat-shames-mason-rook-calling-thanksgiving-wrestlemania-big-guys": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T16:20:37.355Z"
+ },
+ "https://www.ringsidenews.com/brian-cage-challenges-critics-back-accusations-hes-injury-prone": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T16:19:46.282Z"
+ },
+ "https://www.ringsidenews.com/possible-plans-womens-tag-team-championship-plans-aew-worlds-end": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل أو اسم مثنى (يتحديان/كمالكين/كشريكين…) ممنوع — اكتب «ضد» أو «يواجه» أو اذكر الاسمين بفعل جمع، فعل مثنى («يستهدفان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-26T16:18:29.854Z"
+ },
+ "https://www.ringsidenews.com/speculation-two-potential-wwe-main-roster-call-ups": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى (فريقيهما/لقبيهما/الزميلان) ممنوع — قول «فريقهم/لقبهم/الزملاء» أو كرر الأسماء",
+  "retry": true,
+  "at": "2026-11-26T16:12:55.541Z"
+ },
  "https://www.fightful.com/wrestling/aew-collision-spoilers-for-11-26-taped-on-11-25": {
   "reason": "المراجعة رفضته: أعضاء فريق غلط بين القوسين (اتاخدوا من سطر تاني) — اكتب أعضاء الفريق زي المصدر أو شيل القوسين (حصل: «ذا نيو ليفل (مارك ديفيس وجيك دويل)»)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
@@ -1983,15 +2003,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-19T19:05:37.322Z"
- },
- "https://www.fightful.com/wrestling/those-within-wwe-absolutely-believe-camping-world-stadium-in-orlando-is-clear-frontrunner-to-host-royal-rumble-2028": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-19T18:56:54.818Z"
- },
- "https://www.fightful.com/wrestling/hechicero-challenges-zack-sabre-jr-for-wrestle-kingdom-21": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-19T18:51:31.660Z"
  }
 }
