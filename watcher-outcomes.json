@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2328816/leon-slater-jeff-hardy-set-upcoming-tna-taping": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T03:14:58.823Z"
+ },
+ "https://www.wrestlinginc.com/2327631/aew-dynamite-thanksgiving-eve-november-25-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T03:14:54.790Z"
+ },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -143,16 +153,6 @@
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-26T03:06:43.171Z"
- },
- "https://www.wrestlinginc.com/2327631/aew-dynamite-thanksgiving-eve-november-25-2026-results": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T02:54:51.299Z"
- },
- "https://www.wrestlinginc.com/2328816/leon-slater-jeff-hardy-set-upcoming-tna-taping": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T02:44:40.433Z"
  },
  "https://www.fightful.com/wrestling/shawn-michaels-expresses-how-proud-he-is-of-thea-hail-following-wwe-nxt": {
   "reason": "مكرر مع خبر نزل قبل كده",
