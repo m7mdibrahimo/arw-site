@@ -3802,6 +3802,71 @@ async function resolvePostFeaturedImage(post: any, contentHtml: string = ""): Pr
   return "";
 }
 
+/** A story's cover is missing when the bot fell back to the site icon (or wrote none). */
+export function isMissingCover(image: string | undefined | null): boolean {
+  const v = String(image || "").trim().replace(/^["']|["']$/g, "");
+  return !v || /(^|\/)favicon\.(png|ico|svg)$/i.test(v);
+}
+
+/** Minutes a fresh story waits for its source to add a picture before it is published without one. A Fightful
+ *  preview went out 13 seconds before its author attached the picture and showed the site icon (INCIDENTS #1553). */
+export const COVER_WAIT_MINUTES = 45;
+
+/** Should a fresh automatic story with no picture wait for the next run instead of publishing now? */
+export function shouldWaitForCover(sourceDateGmt: string | undefined, now: number = Date.now()): boolean {
+  if (!sourceDateGmt) return false;
+  const t = new Date(/Z$|[+-]\d\d:?\d\d$/.test(sourceDateGmt) ? sourceDateGmt : `${sourceDateGmt}Z`).getTime();
+  if (isNaN(t)) return false;
+  return now - t < COVER_WAIT_MINUTES * 60000;
+}
+
+/** The source's picture for a published story: Fightful's API by post ID, else the source page's og:image. */
+async function sourceCoverUrl(sourceUrl: string, sourceId: string): Promise<string> {
+  if (/fightful\.com/i.test(sourceUrl) && /^\d+$/.test(sourceId)) {
+    try {
+      const r = await fetch(`https://www.fightful.com/wp-json/wp/v2/posts/${sourceId}?_embed=1`, {
+        signal: AbortSignal.timeout(8000),
+        headers: { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36", "Accept": "application/json" },
+      });
+      if (r.ok) {
+        const u = getQuickFeaturedImageUrl(await r.json());
+        if (u) return u;
+      }
+    } catch (e) {}
+  }
+  return sourceUrl ? resolvePostFeaturedImage({ link: sourceUrl }, " ") : "";
+}
+
+/** Every run: a published story still showing the site icon gets its source's picture as soon as the source has
+ *  one (INCIDENTS #1553). The link stays the same; nothing is re-posted to social media. */
+export async function healMissingCovers(maxPerRun: number = 3): Promise<number> {
+  if (!fs.existsSync(NEWS_DIR)) return 0;
+  let fixed = 0, tried = 0;
+  for (const file of fs.readdirSync(NEWS_DIR).filter(f => f.endsWith(".md")).sort().reverse()) {
+    if (tried >= maxPerRun) break;
+    const fp = path.join(NEWS_DIR, file);
+    let text = "";
+    try { text = fs.readFileSync(fp, "utf-8"); } catch (e) { continue; }
+    const fm = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    if (!fm) continue;
+    const field = (k: string) => (fm[1].match(new RegExp(`^${k}:\\s*["']?([^"'\\r\\n]*)["']?\\s*$`, "m")) || [])[1] || "";
+    const imgLine = fm[1].match(/^image:.*$/m);
+    if (imgLine && !isMissingCover(field("image"))) continue;
+    const sourceUrl = field("source_url");
+    if (!sourceUrl) continue;
+    tried++;
+    const remote = await sourceCoverUrl(sourceUrl, field("source_id"));
+    if (!remote) { console.log(`[Watcher] 🖼️ ${file}: the source still has no picture — next run.`); continue; }
+    const local = await downloadAndOptimizeImage(remote);
+    if (!local) continue;
+    const head = imgLine ? fm[1].replace(/^image:.*$/m, `image: ${local}`) : `${fm[1]}\nimage: ${local}`;
+    fs.writeFileSync(fp, text.replace(fm[1], head), "utf-8");
+    fixed++;
+    console.log(`[Watcher] 🖼️ ${file}: cover was the site icon — now the source's picture ${local}`);
+  }
+  return fixed;
+}
+
 // Fetch posts from Fightful WordPress REST API
 async function fetchLatestFightfulPosts(limit: number = 10): Promise<any[]> {
   const fetchCount = Math.max(limit, 30);
@@ -4605,6 +4670,14 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
     } catch (e) {}
   }
 
+  // The source often attaches the picture a little after publishing: a fresh story waits for it (INCIDENTS #1553)
+  if (!localImagePath && !options.manual && !isUpdate && shouldWaitForCover(post.date_gmt || post.date)) {
+    console.log(`[Watcher] 🖼️ Post #${postId} has no picture yet at the source — waiting for it (retry next run, up to ${COVER_WAIT_MINUTES} min).`);
+    noteOutcome(postUrl, "المصدر لسه مضافش صورة للخبر؛ هيتحاول تاني لما الصورة تنزل", true);
+    lastPostRetryable = true;
+    return false;
+  }
+
   if (!localImagePath) {
     console.warn(`[Watcher] Could not download image for post #${postId}, using reliable site fallback banner.`);
     const defaultBanner = path.join(IMAGES_DIR, "wwe_perth_official.jpg");
@@ -5258,6 +5331,8 @@ const MAX_AUTO_PUBLISH_AGE_HOURS = 24;
 export async function runWatcher(options: { forceLatest?: boolean; maxCount?: number; maxPerRun?: number } = {}) {
   // Pre-execution deduplication guarantee
   deduplicateNewsFiles();
+  // A story that went out with the site icon gets its source's picture (INCIDENTS #1553)
+  try { await healMissingCovers(); } catch (e: any) { console.warn("[Watcher] cover repair failed:", e?.message || e); }
 
   const state = loadState();
 
