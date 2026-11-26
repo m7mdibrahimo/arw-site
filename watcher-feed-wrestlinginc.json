@@ -1,5 +1,15 @@
 [
   {
+    "id": 3342332050,
+    "link": "https://www.wrestlinginc.com/2328935/aew-continental-classic-2026-update-night-3-dynamite/",
+    "date": "Thu, 26 Nov 2026 02:42:07 +0000",
+    "date_gmt": "2026-11-26T02:42:07.000Z",
+    "title": {
+      "rendered": "AEW Continental Classic 2026 Update - Night 3: AEW Dynamite"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-continental-classic-2026-update-night-3-aew-dynamite/l-intro-1795660816.jpg"
+  },
+  {
     "id": 1445731514,
     "link": "https://www.wrestlinginc.com/2328932/new-level-making-special-thaksgiving-defense-aew-world-trios-titles/",
     "date": "Thu, 26 Nov 2026 02:20:34 +0000",
@@ -188,15 +198,5 @@
       "rendered": "WWE NXT Women's Title To Be Defended In TLC Match For First Time"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-nxt-womens-title-to-be-defended-in-tlc-match-for-first-time/l-intro-1795570892.jpg"
-  },
-  {
-    "id": 1134600136,
-    "link": "https://www.wrestlinginc.com/2327553/aew-buddy-matthews-major-changes-return/",
-    "date": "Wed, 25 Nov 2026 00:34:46 +0000",
-    "date_gmt": "2026-11-25T00:34:46.000Z",
-    "title": {
-      "rendered": "Buddy Matthews Hints At Major Changes Upon AEW Return"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/buddy-matthews-hints-at-major-changes-upon-aew-return/l-intro-1795566805.jpg"
   }
 ]
