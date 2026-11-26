@@ -1,4 +1,49 @@
 {
+ "https://www.fightful.com/wrestling/lebron-james-the-rock-is-an-unbelievable-person": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-26T23:48:59.260Z"
+ },
+ "https://www.fightful.com/wrestling/jacy-jayne-responds-to-criticism-surrounding-womens-us-title-run-im-done-proving-myself": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-26T23:48:59.133Z"
+ },
+ "https://www.fightful.com/wrestling/aew-collision-spoilers-for-11-26-taped-on-11-25": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T23:48:58.999Z"
+ },
+ "https://www.fightful.com/wrestling/naoto-inoki-grandson-of-antonio-inoki-to-appear-at-njpw-wrestle-kingdom-21": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-26T23:47:48.380Z"
+ },
+ "https://www.fightful.com/wrestling/will-ospreay-to-face-mjf-in-title-vs-title-ladder-match-at-aew-worlds-end": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-26T23:47:18.917Z"
+ },
+ "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-26T23:47:18.792Z"
+ },
+ "https://www.fightful.com/wrestling/340881-aew-continental-classic": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-26T23:47:18.713Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-womens-tag-team-title-bout-more-added-to-11-27-wwe-smackdown": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-26T23:47:18.550Z"
+ },
+ "https://www.fightful.com/wrestling/kazuchika-okada-and-don-callis-poke-fun-at-adam-copeland-for-bear-incident-on-aew-dynamite-thanksgiving-eve": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-26T23:47:18.420Z"
+ },
  "https://www.wrestlinginc.com/2329268/aew-collision-thanksgiving-november-26-2027-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
