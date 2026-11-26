@@ -1,13 +1,48 @@
 {
- "https://www.ringsidenews.com/jey-uso-jaida-parker-spotted-sharing-kiss-airport-wwe-raw": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يتبادلان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-26T23:13:43.972Z"
+ "https://www.fightful.com/wrestling/lebron-james-the-rock-is-an-unbelievable-person": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-26T23:22:29.611Z"
  },
- "https://www.wrestlinginc.com/2323371/wwe-hall-fame-ricky-morton-son-audition-americal-idol": {
-  "reason": "المراجعة رفضته: اسم البرنامج/البودكاست اتترجم للعربي — اكتبه بالإنجليزي زي المصدر: Busted Open",
+ "https://www.fightful.com/wrestling/jacy-jayne-responds-to-criticism-surrounding-womens-us-title-run-im-done-proving-myself": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-26T23:22:29.524Z"
+ },
+ "https://www.fightful.com/wrestling/aew-collision-spoilers-for-11-26-taped-on-11-25": {
+  "reason": "المراجعة رفضته: أعضاء فريق غلط بين القوسين (اتاخدوا من سطر تاني) — اكتب أعضاء الفريق زي المصدر أو شيل القوسين (حصل: «ذا نيو ليفل (مارك ديفيس وجيك دويل)»)، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة، فعل مثنى («تسيطران») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Swerve Strickland، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
   "retry": true,
-  "at": "2026-11-26T23:18:01.708Z"
+  "at": "2026-11-26T23:22:29.421Z"
+ },
+ "https://www.fightful.com/wrestling/naoto-inoki-grandson-of-antonio-inoki-to-appear-at-njpw-wrestle-kingdom-21": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-11-26T23:21:46.622Z"
+ },
+ "https://www.fightful.com/wrestling/will-ospreay-to-face-mjf-in-title-vs-title-ladder-match-at-aew-worlds-end": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-26T23:21:31.098Z"
+ },
+ "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-26T23:21:31.001Z"
+ },
+ "https://www.fightful.com/wrestling/340881-aew-continental-classic": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-26T23:21:30.942Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-womens-tag-team-title-bout-more-added-to-11-27-wwe-smackdown": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-26T23:21:30.816Z"
+ },
+ "https://www.fightful.com/wrestling/kazuchika-okada-and-don-callis-poke-fun-at-adam-copeland-for-bear-incident-on-aew-dynamite-thanksgiving-eve": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-26T23:21:30.718Z"
  },
  "https://www.wrestlinginc.com/2319887/wwe-damian-priest-lessons-learned-first-world-title-run": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: World Heavyweight Championship، اسم مصارع في العنوان أو المتن غير موجود في المصدر: ACTION World Championship",
@@ -23,51 +58,6 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Stephanie Vaquer، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Stephanie McHare",
   "retry": true,
   "at": "2026-11-26T22:58:07.145Z"
- },
- "https://www.fightful.com/wrestling/lebron-james-the-rock-is-an-unbelievable-person": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-26T22:56:03.121Z"
- },
- "https://www.fightful.com/wrestling/jacy-jayne-responds-to-criticism-surrounding-womens-us-title-run-im-done-proving-myself": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-26T22:56:03.005Z"
- },
- "https://www.fightful.com/wrestling/aew-collision-spoilers-for-11-26-taped-on-11-25": {
-  "reason": "المراجعة رفضته: أعضاء فريق غلط بين القوسين (اتاخدوا من سطر تاني) — اكتب أعضاء الفريق زي المصدر أو شيل القوسين (حصل: «ذا نيو ليفل (مارك ديفيس وجيك دويل)»)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Swerve Strickland، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
-  "retry": true,
-  "at": "2026-11-26T22:56:02.878Z"
- },
- "https://www.fightful.com/wrestling/naoto-inoki-grandson-of-antonio-inoki-to-appear-at-njpw-wrestle-kingdom-21": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-26T22:55:36.128Z"
- },
- "https://www.fightful.com/wrestling/will-ospreay-to-face-mjf-in-title-vs-title-ladder-match-at-aew-worlds-end": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-26T22:55:16.493Z"
- },
- "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-26T22:55:16.369Z"
- },
- "https://www.fightful.com/wrestling/340881-aew-continental-classic": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-26T22:55:16.291Z"
- },
- "https://www.fightful.com/wrestling/wwe-womens-tag-team-title-bout-more-added-to-11-27-wwe-smackdown": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-26T22:55:16.130Z"
- },
- "https://www.fightful.com/wrestling/kazuchika-okada-and-don-callis-poke-fun-at-adam-copeland-for-bear-incident-on-aew-dynamite-thanksgiving-eve": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-26T22:55:16.004Z"
  },
  "https://www.ringsidenews.com/jey-uso-jaida-parker-spotted-sharing-kiss-airport-wwe-raw": {
   "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة، فعل مثنى («يتبادلان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، فعل مثنى («يتبادلان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
