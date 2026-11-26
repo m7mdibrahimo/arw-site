@@ -378,21 +378,18 @@ export function playable(u: string): string | null {
   if (live) return ch(live);
   // afiyukent.one's «watch.php?id=ch87_SD&host=sawlive» (watchwrestlingtv, 2026-11-26) names the same embed in its address
   if (/^sawlive/i.test(url.searchParams.get("host") || "")) return ch(url.searchParams.get("id"));
-  const line = (url.searchParams.get("line") || "").match(/^1080(\d{1,4})_([A-Z]{2,3})$/);
-  if (line) return ch(`ch${line[1]}_${line[2]}`);
   if (host === "dramavideo.se" || host.endsWith(".dramavideo.se")) return "https://" + url.host + url.pathname + url.search;
   return null;
 }
 
-/** A source's own channel that can't play inside our page, kept as a server that opens on its own site (owner
- *  2026-11-26, on 1max's «CatchUp 83 FHD»: «ضيف ال تقدر عليه مباشر ولو معرفش خلاص خليه خاريجي عادي»). Only 1max's
- *  techfunlife player with a channel the sawlive embeds don't carry («line=83_FHD», behind a robot check that can't
- *  sit in a frame); its «line=108087_HD» ones are the same channels as the in-page servers and stay copies. */
+/** 1max's «CatchUp» buttons (techfunlife's player, «line=108087_HD» / «line=83_FHD»), kept as servers that open on their
+ *  own site: behind a robot check that can't sit in a frame (owner 2026-11-26, «انا عايزك تضيف النسخ دي كلها ضيف ال تقدر
+ *  عليه مباشر والباقي عادي خاريجي») */
 export function outerLink(u: string): string | null {
   let url: URL;
   try { url = new URL(u); } catch { return null; }
   if (url.protocol !== "https:" || url.hostname.replace(/^www\./, "").toLowerCase() !== "techfunlife.com") return null;
-  return /^\d{1,4}_[A-Z]{2,3}$/.test(url.searchParams.get("line") || "") ? url.toString() : null;
+  return /^\d{1,8}_[A-Z]{2,3}$/.test(url.searchParams.get("line") || "") ? url.toString() : null;
 }
 
 /** A server as /live/data gives it: «u» plays in our player, or (x) opens on its own site */
@@ -438,8 +435,23 @@ export function servers(s: Pick<EffShow, "links" | "add" | "block">, health: Hea
   for (const v of base) { const h = fresh(v.u); if (h?.ok && h.h) v.q = qualityOf(h.h); if (h?.ok) v.ms = h.ms; }
   const alive = base.filter((v) => !v.x && fresh(v.u)?.ok).sort((a, b) => (a.ms || 0) - (b.ms || 0));
   const late = base.filter((v) => !v.x && fresh(v.u) && !fresh(v.u)!.ok);
-  // what opens on another site always last, after every server that plays here
-  const out = alive.concat(base.filter((v) => !v.x && !alive.includes(v) && !late.includes(v)), late, base.filter((v) => v.x));
+  // what opens on another site always last, after every server that plays here — in the same order as their channels
+  // play here («الاسرع ثم الاسرع»): «CatchUp 87 HD» where «ch87_HD» stands, «83 FHD» where «ch83_*» stands
+  const inPage = alive.concat(base.filter((v) => !v.x && !alive.includes(v) && !late.includes(v)), late);
+  const chOf = (u: string) => (u.match(/\/embed\/ch(\d{1,4})_([A-Z]{2,3})\//) || []).slice(1);
+  const rank = (v: PubServer) => {
+    if (v.m) return -1;                  // the owner's own outside links first of these, in his order
+    const m = (() => { try { return (new URL(v.u).searchParams.get("line") || "").match(/^(?:1080)?(\d{1,4})_([A-Z]{2,3})$/); } catch { return null; } })();
+    if (!m) return 1e6;
+    const same = inPage.findIndex((p) => { const [c, q] = chOf(p.u); return c === m[1] && q === m[2]; });
+    if (same >= 0) return same;
+    const chan = inPage.findIndex((p) => chOf(p.u)[0] === m[1]);
+    return chan >= 0 ? chan + 0.5 : 1e5;
+  };
+  const ext = base.filter((v) => v.x);
+  const order = new Map(ext.map((v, i) => [v, rank(v) * 100 + i]));
+  ext.sort((a, b) => order.get(a)! - order.get(b)!);
+  const out = inPage.concat(ext);
   out.forEach((v, i) => { v.n = i + 1; });
   return out;
 }

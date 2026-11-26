@@ -76,7 +76,7 @@ test('/live/data: the servers from the moment a source has them (owner: «مش �
   const a = post('1max', 1, fx('1max-dynamite.html'), '1max.top', '2026-11-25', 'AEW Dynamite Live 11/25/26 November 25th 2026');
   const shows = L.mergeShows([a], {}, DYN - 7_200_000);
   const early = L.publicData(shows, DYN - 3_600_000).shows[0];
-  assert.equal(early.st, 'soon'); assert.equal(early.sv.length, 8); assert.equal(early.n, 8); assert.equal(early.srcs, 1);
+  assert.equal(early.st, 'soon'); assert.equal(early.sv.length, 14); assert.equal(early.n, 14); assert.equal(early.srcs, 1);
   assert.equal(early.t, 'عرض داينامايت', '«عرض» before the name (owner 2026-11-25)');
   assert.equal(L.publicData(shows, DYN + 60_000).shows[0].st, 'live');
   const ended = L.publicData(shows, DYN + 3 * 3_600_000).shows[0];
