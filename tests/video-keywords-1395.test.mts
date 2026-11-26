@@ -22,7 +22,8 @@ test("among the searched forms, the program's own name and «الاخير» come
   const list = ["عرض الرو", "عرض رو مترجم", "اخر عرض الرو", "آخر عرض الرو", "عرض الرو كامل", "عرض رو الاخير", "عرض WWE مترجم", "تحميل عرض الرو",
     "عرض الرو الاخير", "عرض الرو الاخير مترجم", "عرض الرو مترجم", "رو", "راو", "عرض الرو 16/11/2026", "WWE RAW November 16 2026"];
   const kw = keywordList([], list, 8, true);
-  assert.deepEqual(kw.slice(2, 7), ["عرض الرو", "عرض الرو الاخير", "عرض الرو مترجم", "تحميل عرض الرو", "عرض الرو كامل"]);
+  // «عرض الرو الاخير مترجم» is its own search word since INCIDENTS #1562
+  assert.deepEqual(kw.slice(2, 7), ["عرض الرو", "عرض الرو الاخير", "عرض الرو الاخير مترجم", "عرض الرو مترجم", "تحميل عرض الرو"]);
   assert.ok(!kw.includes("عرض WWE مترجم"));
 });
 
