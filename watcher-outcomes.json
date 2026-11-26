@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/xia-brookside-celebrates-thanksgiving-stunning-white-underwear-photos": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-26T18:24:51.310Z"
+ },
+ "https://www.ringsidenews.com/wwe-vince-mcmahon-could-headed-toward-settlement-ring-boy-sexual-abuse-lawsuit": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T18:24:25.646Z"
+ },
  "https://www.fightful.com/wrestling/jacy-jayne-responds-to-criticism-surrounding-womens-us-title-run-im-done-proving-myself": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -58,11 +68,6 @@
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-26T18:12:00.525Z"
- },
- "https://www.ringsidenews.com/wwe-vince-mcmahon-could-headed-toward-settlement-ring-boy-sexual-abuse-lawsuit": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T18:11:42.515Z"
  },
  "https://www.fightful.com/wrestling/logan-paul-announced-to-return-to-the-ring-for-wwe-at-december-26th-live-event-at-madison-square-garden": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-19T23:41:07.043Z"
- },
- "https://www.ringsidenews.com/jeff-hardy-issues-emotional-apology-past-drunk-driving-admits-he-could-have-killed-someone": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": true,
-  "at": "2026-11-19T20:56:38.636Z"
  }
 }
