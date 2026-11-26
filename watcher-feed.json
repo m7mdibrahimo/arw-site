@@ -1,5 +1,15 @@
 [
   {
+    "id": 340886,
+    "link": "https://www.fightful.com/wrestling/wwe-main-event-results-11-25/",
+    "date": "2026-11-25T21:01:22",
+    "date_gmt": "2026-11-26T02:01:22",
+    "title": {
+      "rendered": "WWE Main Event Results (11/25)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/25204450/20261123_MainEvent_TatumMichin_16x9_tonight.jpg"
+  },
+  {
     "id": 340889,
     "link": "https://www.fightful.com/wrestling/wwe-womens-tag-team-title-bout-more-added-to-11-27-wwe-smackdown/",
     "date": "2026-11-25T20:53:47",
@@ -288,15 +298,5 @@
       "rendered": "Shawn Michaels Expresses How Proud He Is Of Thea Hail Following WWE NXT"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/24212209/HX78pqWXsAA9Cz8.jpg"
-  },
-  {
-    "id": 340793,
-    "link": "https://www.fightful.com/wrestling/robert-stone-there-is-a-short-list-of-people-that-im-genuinely-happy-to-see-succeed-and-one-of-them-is-chelsea-green/",
-    "date": "2026-11-25T08:33:18",
-    "date_gmt": "2026-11-25T13:33:18",
-    "title": {
-      "rendered": "Robert Stone: There Is A Short List Of People That I&#8217;m Genuinely Happy To See Succeed And One Of Them Is Chelsea Green"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/08/08085050/maxresdefault-57.jpg"
   }
 ]
