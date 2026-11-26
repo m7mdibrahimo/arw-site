@@ -1,13 +1,13 @@
 {
+ "https://www.wrestlinginc.com/2328952/wrathlander-defend-aew-womens-world-tag-team-championship": {
+  "reason": "المراجعة رفضته: ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-26T09:11:12.277Z"
+ },
  "https://www.ringsidenews.com/braun-strowman-set-ring-return-upcoming-indie-wrestling-event": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-26T09:01:07.907Z"
- },
- "https://www.wrestlinginc.com/2328952/wrathlander-defend-aew-womens-world-tag-team-championship": {
-  "reason": "المراجعة رفضته: ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-26T08:55:05.694Z"
  },
  "https://www.wrestlinginc.com/2328877/contract-uodate-former-tna-tag-team-champions-hardys": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
