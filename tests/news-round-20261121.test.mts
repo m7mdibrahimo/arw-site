@@ -24,3 +24,12 @@ test('CMLL names are not split or misspelled: Máster Wato, Okumura, Reyes del I
   assert.equal(applyCorrections('فريق رييس ديل إنفراستروموندو'), 'فريق رييس ديل إنفراموندو');
   assert.equal(applyCorrections('شوما كاتو وأوكومورا'), 'شوما كاتو وأوكومورا');
 });
+
+test('Resurgence in English (glossary + correction), «في كواليس» (INCIDENTS #1554)', async () => {
+  const { applyCorrections } = await import('../scripts/news-qa.ts');
+  assert.equal(applyCorrections('في عرض NJPW ريزرجنس'), 'في عرض NJPW Resurgence');
+  const g = JSON.parse(fs.readFileSync('scripts/wrestler-names.json', 'utf8'));
+  assert.equal(g.Resurgence, 'Resurgence');
+  assert.equal(applyCorrections('حيث هاجمت موني شافير كواليس العرض'), 'حيث هاجمت موني شافير في كواليس العرض');
+  assert.equal(applyCorrections('هاجمت موني شافير في كواليس العرض'), 'هاجمت موني شافير في كواليس العرض');
+});
