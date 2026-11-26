@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2329268/aew-collision-thanksgiving-november-26-2027-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-26T23:55:02.640Z"
+ },
+ "https://www.wrestlinginc.com/2322604/wwe-star-charlotte-flair-sings-praises-tatum-paxley-izzi-dame-kelani-jordan-michin": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Stephanie Vaquer، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Stephanie McHare",
+  "retry": true,
+  "at": "2026-11-26T23:55:02.516Z"
+ },
  "https://www.fightful.com/wrestling/lebron-james-the-rock-is-an-unbelievable-person": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -43,16 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-26T23:47:18.420Z"
- },
- "https://www.wrestlinginc.com/2329268/aew-collision-thanksgiving-november-26-2027-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-26T23:36:07.382Z"
- },
- "https://www.wrestlinginc.com/2322604/wwe-star-charlotte-flair-sings-praises-tatum-paxley-izzi-dame-kelani-jordan-michin": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Stephanie Vaquer، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Stephanie McHare",
-  "retry": true,
-  "at": "2026-11-26T23:35:06.574Z"
  },
  "https://www.ringsidenews.com/paige-collett-reveals-she-originally-planned-become-nun-before-wrestling": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
