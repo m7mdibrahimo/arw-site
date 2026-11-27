@@ -5,14 +5,69 @@
   "at": "2026-11-27T22:24:19.471Z"
  },
  "https://www.fightful.com/wrestling/francesco-akira-feels-more-confident-wrestling-in-mexico-after-cmll-tours": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T22:13:24.403Z"
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T22:24:29.708Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-heres-my-political-high-horse-i-really-do-like-the-presidents-fitness-council": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T22:12:39.473Z"
+  "at": "2026-11-27T22:23:31.417Z"
+ },
+ "https://www.fightful.com/wrestling/cody-rhodes-on-whether-he-wants-to-ultimately-have-the-pencil-in-wwe-i-would-be-honored-to-be-in-that-spot": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-27T22:22:28.389Z"
+ },
+ "https://www.fightful.com/wrestling/leon-cage-set-for-2027-jersey-j-cup-tna-impact-highlights-more-fight-size": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T22:22:28.231Z"
+ },
+ "https://www.fightful.com/wrestling/katsuhiko-nakajima-announced-for-2027-wxw-germany-16-carat-gold-tournament": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T22:21:39.107Z"
+ },
+ "https://www.fightful.com/wrestling/aaas-la-parka-scheduled-for-gleats-december-30th-show": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T22:21:11.583Z"
+ },
+ "https://www.fightful.com/wrestling/340871-jacy-jayne-babyface": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-27T22:20:34.713Z"
+ },
+ "https://www.fightful.com/wrestling/dutch-mantell-discloses-what-is-the-most-money-hes-made-in-wrestling": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T22:20:34.546Z"
+ },
+ "https://www.fightful.com/wrestling/njpw-world-tag-league-2026-standings-and-results-archive": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T22:19:17.342Z"
+ },
+ "https://www.fightful.com/wrestling/njpw-world-tag-league-night-night-four-results-11-27": {
+  "reason": "المراجعة رفضته: لقب «أومينو» اتكتب بعد كده «أوموري» — اكتبه «أومينو» زي المصدر في الخبر كله، مواجهة تحت عنوانها سطر النتيجة بس من غير جملة النزال (الجملة ضاعت أو اتكتبت فوق العنوان) — كل مواجهة: العنوان، ثم جملة النزال من سطر المصدر، ثم سطر الفائز، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه HOUSE OF TORTURE، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: نزال فرق سداسي، المواجهة الثانية: نزال فرق سداسي، المواجهة الرابعة: نزال فرق سداسي — اكتب الفائز زي المصدر وبالماضي",
+  "retry": true,
+  "at": "2026-11-27T22:19:17.249Z"
+ },
+ "https://www.fightful.com/wrestling/roman-reigns-launches-youtube-channel-with-new-vlog-series": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-27T22:18:46.053Z"
+ },
+ "https://www.fightful.com/wrestling/parker-boudreaux-on-being-the-first-american-to-sign-with-gleat-it-is-an-honor-i-do-not-take-lightly": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T22:18:45.874Z"
+ },
+ "https://www.fightful.com/wrestling/brian-cage-responds-to-claims-that-hes-injury-prone": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-27T22:16:34.510Z"
  },
  "https://www.fightful.com/wrestling/charlotte-flair-discusses-people-hating-on-ashley-and-not-charlotte-the-wrestlemania-roast": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
@@ -57,27 +112,7 @@
  "https://www.fightful.com/wrestling/njpw-world-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-27T22:04:17.427Z"
- },
- "https://www.fightful.com/wrestling/njpw-world-tag-league-night-night-four-results-11-27": {
-  "reason": "المراجعة رفضته: لقب «أومينو» اتكتب بعد كده «أوموري» — اكتبه «أومينو» زي المصدر في الخبر كله، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه HOUSE OF TORTURE، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الثالثة: نزال فرق — اكتب الفائز زي المصدر وبالماضي",
-  "retry": true,
-  "at": "2026-11-27T22:04:17.347Z"
- },
- "https://www.fightful.com/wrestling/roman-reigns-launches-youtube-channel-with-new-vlog-series": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-27T22:03:15.740Z"
- },
- "https://www.fightful.com/wrestling/parker-boudreaux-on-being-the-first-american-to-sign-with-gleat-it-is-an-honor-i-do-not-take-lightly": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-27T22:03:15.600Z"
- },
- "https://www.fightful.com/wrestling/brian-cage-responds-to-claims-that-hes-injury-prone": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-27T22:02:19.561Z"
+  "at": "2026-11-27T22:05:32.680Z"
  },
  "https://www.fightful.com/wrestling/details-about-korakuen-hall-renovations": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
