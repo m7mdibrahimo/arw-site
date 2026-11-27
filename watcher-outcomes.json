@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aj-styles-reveals-why-his-children-kept-him-playing-grand-theft-auto": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T15:27:37.939Z"
+ },
  "https://www.ringsidenews.com/aj-styles-reveals-how-protective-he-his-12-year-old-daughter": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-21T01:24:31.893Z"
- },
- "https://www.fightful.com/wrestling/tna-issues-statement-on-departures-of-the-personal-concierge-referee-michael-romo": {
-  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": false,
-  "at": "2026-11-21T01:13:05.169Z"
  }
 }
