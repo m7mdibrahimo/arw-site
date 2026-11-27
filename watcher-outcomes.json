@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2329268/aew-collision-thanksgiving-november-26-2027-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T00:56:42.552Z"
+ },
  "https://www.fightful.com/wrestling/aew-collision-results-11-26-continental-classic-continues": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
@@ -48,11 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-27T00:49:43.707Z"
- },
- "https://www.wrestlinginc.com/2329268/aew-collision-thanksgiving-november-26-2027-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T00:36:13.208Z"
  },
  "https://www.ringsidenews.com/kevin-nash-fires-back-critics-bringing-his-late-son-tristen": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
