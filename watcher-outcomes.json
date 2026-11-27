@@ -20,29 +20,79 @@
   "at": "2026-11-27T13:16:45.012Z"
  },
  "https://www.fightful.com/wrestling/gabe-kidd-has-thanksgiving-dinner-with-fans-family-in-nebraska": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-27T13:03:38.537Z"
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T13:26:09.233Z"
  },
  "https://www.fightful.com/wrestling/details-about-korakuen-hall-renovations": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-27T13:02:38.932Z"
+  "at": "2026-11-27T13:25:48.959Z"
  },
  "https://www.fightful.com/wrestling/bde-expected-to-leave-tna-when-contract-expires": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-27T13:00:50.351Z"
+  "at": "2026-11-27T13:25:15.590Z"
  },
  "https://www.fightful.com/wrestling/gabby-forza-vs-zoey-serrano-added-to-12-3-tna-impact": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى («يشكلان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-27T13:00:14.602Z"
+  "at": "2026-11-27T13:24:26.963Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T12:59:11.208Z"
+  "at": "2026-11-27T13:23:48.359Z"
+ },
+ "https://www.fightful.com/wrestling/xia-brookside-offered-new-contract-by-tna-wrestling": {
+  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
+  "retry": false,
+  "at": "2026-11-27T13:13:54.075Z"
+ },
+ "https://www.fightful.com/wrestling/independent-promotions-express-interest-in-booking-mike-romo": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T13:12:56.105Z"
+ },
+ "https://www.fightful.com/wrestling/mark-davis-set-for-roh-world-title-survival-of-the-fittest-match-at-final-battle": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-27T13:11:56.967Z"
+ },
+ "https://www.fightful.com/wrestling/artist-of-stardom-championship-match-added-to-roh-final-battle": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T13:10:54.993Z"
+ },
+ "https://www.fightful.com/wrestling/joe-coffey-wins-mlw-southern-crown-championship": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T13:09:56.811Z"
+ },
+ "https://www.fightful.com/wrestling/aew-collision-results-11-26-continental-classic-continues": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل أو اسم مثنى (يتحديان/كمالكين/كشريكين…) ممنوع — اكتب «ضد» أو «يواجه» أو اذكر الاسمين بفعل جمع، فعل مثنى («تستهدفان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Swerve Strickland، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
+  "retry": true,
+  "at": "2026-11-27T13:09:18.593Z"
+ },
+ "https://www.fightful.com/wrestling/lebron-james-the-rock-is-an-unbelievable-person": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-27T13:07:20.463Z"
+ },
+ "https://www.fightful.com/wrestling/jacy-jayne-responds-to-criticism-surrounding-womens-us-title-run-im-done-proving-myself": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-27T13:07:20.329Z"
+ },
+ "https://www.fightful.com/wrestling/aew-collision-spoilers-for-11-26-taped-on-11-25": {
+  "reason": "المراجعة رفضته: أعضاء فريق غلط بين القوسين (اتاخدوا من سطر تاني) — اكتب أعضاء الفريق زي المصدر أو شيل القوسين (حصل: «ذا نيو ليفل (مارك ديفيس وجيك دويل)»)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Swerve Strickland، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
+  "retry": true,
+  "at": "2026-11-27T13:07:20.176Z"
+ },
+ "https://www.fightful.com/wrestling/naoto-inoki-grandson-of-antonio-inoki-to-appear-at-njpw-wrestle-kingdom-21": {
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-11-27T13:06:40.626Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-night-four-recap-11-26-26": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
