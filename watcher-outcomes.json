@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/stephanie-mcmahon-shares-update-daughter-vaughn-evelyns-music-career": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T15:54:27.133Z"
+ },
  "https://www.ringsidenews.com/cody-rhodes-reveals-he-wants-wwe-booking-role-despite-past-creative-failures": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-21T02:27:24.452Z"
- },
- "https://www.fightful.com/wrestling/aaa-tag-team-title-bout-more-added-to-11-21-aaa-on-fox": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى («سيدافعان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-21T02:17:58.749Z"
  }
 }
