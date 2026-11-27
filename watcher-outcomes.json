@@ -1,13 +1,13 @@
 {
+ "https://www.ringsidenews.com/tna-wrestlings-mila-moore-turns-heat-beach-bikini-photos": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T16:12:17.210Z"
+ },
  "https://www.ringsidenews.com/stephanie-mcmahon-shares-update-daughter-vaughn-evelyns-music-career": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-27T15:54:27.133Z"
- },
- "https://www.ringsidenews.com/cody-rhodes-reveals-he-wants-wwe-booking-role-despite-past-creative-failures": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T15:49:58.096Z"
+  "at": "2026-11-27T16:11:54.258Z"
  },
  "https://www.fightful.com/wrestling/njpw-world-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
@@ -78,6 +78,11 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-27T15:49:59.901Z"
+ },
+ "https://www.ringsidenews.com/cody-rhodes-reveals-he-wants-wwe-booking-role-despite-past-creative-failures": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T15:49:58.096Z"
  },
  "https://www.fightful.com/wrestling/joe-coffey-wins-mlw-southern-crown-championship": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-21T02:52:56.376Z"
- },
- "https://www.fightful.com/wrestling/johnny-gargano-sami-zayn-is-hope-for-guys-like-me": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-21T02:27:24.452Z"
  }
 }
