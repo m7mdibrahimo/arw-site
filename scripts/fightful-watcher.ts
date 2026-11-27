@@ -5,7 +5,7 @@ import crypto from "crypto";
 import { execFileSync } from "child_process";
 import sharp from "sharp";
 import matter from "gray-matter";
-import { stableSwappedFromEnglish, confusableSwappedFromEnglish, fixDecadeFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, liveEventInResults, fixTitleSubjectGender, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, walkedAwayNotQuit, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, mainWrestlerMissing, fixNearGlossaryNames, fixSwappedSurnames, threeWayAsCount, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixElijahAsIlya, fixUnsourcedSurgerySuccess, fixEventCalledMovie, fixDivasChampion, seriesTitleTranslated, demoteUnplayedMainEvent, mainEventNotLastResult, champDqLossAsDefense, tweetDateAsShowDate, titleChangeWrittenAsDefense, endProseParagraphs, type NewsFile } from "./news-qa";
+import { stableSwappedFromEnglish, confusableSwappedFromEnglish, fixDecadeFromEnglish, tonyKhanTweetMisattributed, BLOCKING_QA_CODES, RETRYABLE_QA_CODES, resultsTitleOutcome, liveEventInResults, fixTitleSubjectGender, numberWordsInTitle, applyCorrections, decodeHtmlEntities, autoFix, spelledAgesToDigits, spelledMoneyToDigits, checkArticle, noWinnerLines, NO_WINNER_VALUE, isHeadlineTag, isJunkTag, loadNews, tonightInTitle, dropTimezoneFromTitle, shelvedNotCancelled, walkedAwayNotQuit, vinceIsRusso, cleanSpoilerNote, ageNotInSource, agoSpanNotInSource, careerStartNotInSource, claimNotInSource, promotionLabelNotInSource, showEventFromBrandLabel, titleSegmentAsMatch, titleCauseNotInSource, quotedTitleNotInSource, upcomingTitleAsDone, wrestlerNotInSource, mainWrestlerMissing, fixNearGlossaryNames, fixSwappedSurnames, threeWayAsCount, snapTagsToStoryNames, fixShortenedFirstNames, fixEnforcerAsReferee, fixJoinedListedNames, fixLetterDigitHandles, timeLimitWinAsDraw, podcastNameTranslated, fixYouWereQuote, fixElijahAsIlya, fixUnsourcedSurgerySuccess, fixEventCalledMovie, fixDivasChampion, seriesTitleTranslated, demoteUnplayedMainEvent, mainEventNotLastResult, champDqLossAsDefense, tweetDateAsShowDate, titleChangeWrittenAsDefense, endProseParagraphs, type NewsFile } from "./news-qa";
 import {
   editorialGuideForPrompt, proofreadPrompt, parseProofEdits, applyProofEdits, findDuplicateCandidates,
   duplicatePrompt, parseDuplicateAnswer, newSubject, newMedicalOutcome, isKnownDuplicate, recordDuplicate, logProofEdits,
@@ -5055,6 +5055,12 @@ export async function processPost(post: any, customDate?: Date | string, bypassS
   const badPromos = promotionLabelNotInSource(`${draft.title}\n${draft.body}`, `${rawTitle}\n${plainText}`, WRESTLER_NAMES_MAP);
   if (badPromos.length) {
     blocking.push({ code: "promotion_not_in_source", severity: "error", field: "body", message: `المصدر مابيربطش المصارع بالاتحاد ده: ${badPromos.join("، ")} — اكتب «المصارع <الاسم>» من غير اسم اتحاد`, excerpt: badPromos.join(" ") });
+    lastPostRetryable = true;
+  }
+  // '"WWE SmackDown" star Damian Priest' written as «… في عرض WWE SmackDown» — a brand label turned into an event (INCIDENTS #1563).
+  const brandEvents = showEventFromBrandLabel(`${draft.title}\n${draft.body}`, `${rawTitle}\n${plainText}`);
+  if (brandEvents.length) {
+    blocking.push({ code: "claim_not_in_source", severity: "error", field: "body", message: `المصدر بيذكر العرض كوصف للمصارع بس ("SmackDown star" = نجم عرض SmackDown)، والخبر كتب إن الكلام أو الحدث حصل ${brandEvents.join("، ")} — احذف العرض أو اكتب «نجم عرض SmackDown»`, excerpt: brandEvents.join(" ") });
     lastPostRetryable = true;
   }
   // «دافع بيدج وكينج وبانديدو عن ألقابهم أمام سويرف» when the source says Swerve and the New Level won the titles (INCIDENTS #1335).

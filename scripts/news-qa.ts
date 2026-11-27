@@ -2435,6 +2435,29 @@ export function promotionLabelNotInSource(text: string, source: string, glossary
   return out;
 }
 /**
+ * «تحدث داميان بريست عن فترته الأولى كبطل العالم في WWE في عرض WWE SmackDown» when the source only says
+ * '"WWE SmackDown" star Damian Priest' and the talk was a podcast (INCIDENTS #1563): a brand label became an
+ * event at that show. For each «في/خلال/ضمن عرض <show>» in the text, the source must name that show somewhere
+ * other than a "<show> star/superstar/talent" label. Returns the phrases with no such support.
+ */
+const WEEKLY_SHOWS = ["Raw", "SmackDown", "NXT", "Dynamite", "Collision", "Rampage"];
+export function showEventFromBrandLabel(text: string, source: string): string[] {
+  const src = String(source || "");
+  if (src.replace(/\s+/g, " ").trim().length < 200) return [];
+  const out: string[] = [];
+  for (const show of WEEKLY_SHOWS) {
+    const re = new RegExp(`(?<![ء-ي])(?:في|خلال|ضمن)\\s+عرض\\s+(?:(?:WWE|AEW)\\s+)?${show}(?![A-Za-z])`, "gi");
+    const hits = [...String(text || "").matchAll(re)].map(m => m[0]);
+    if (!hits.length) continue;
+    const showRe = new RegExp(`\\b${show}\\b`, "i");
+    if (!showRe.test(src)) continue; // never named at all: other checks own that case
+    const label = new RegExp(`\\b(?:WWE\\s+|AEW\\s+)?${show}["”'’]?\\s+(?:super)?(?:stars?|talents?|wrestlers?|roster(?:\\s+member)?)\\b`, "gi");
+    if (showRe.test(src.replace(label, " "))) continue;
+    out.push(...hits);
+  }
+  return out;
+}
+/**
  * «بدأ مسيرته في عالم المصارعة عام 1987» must be what the source says (began / started his
  * career, debuted). "He started working for the then-WWFW in 1987" is a company start, not a
  * career start: the writer compressed it and gave the career a year that is not its own — Bruce
