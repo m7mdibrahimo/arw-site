@@ -1100,9 +1100,12 @@ test("a career-start year the source never gives is dropped (INCIDENTS #906)", a
   const aja = "Aja Kong began her career in 1986 and won titles everywhere.";
   assert.equal(careerStartNotInSource("كونغ التي بدأت مسيرتها عام 1986 وحققت ألقابا كثيرة.", aja), "كونغ التي بدأت مسيرتها عام 1986 وحققت ألقابا كثيرة.");
   // والخبر المنشور نفسه مبقاش فيه السنة الغلط
-  const story = fs.readFileSync("content/news/20261028023753-تطورات-مهمة-حول-مستقبل-بروس-بريتشارد-في-wwe.md", "utf-8");
-  assert.doesNotMatch(story, /بدأ[^.]{0,40}مسيرته[^.]{0,40}عام\s+1987/);
-  assert.match(story, /التحق باتحاد WWF عام 1987/);
+  const prichardFile = "content/news/20261028023753-تطورات-مهمة-حول-مستقبل-بروس-بريتشارد-في-wwe.md";
+  if (fs.existsSync(prichardFile)) { // deleted after 30 days (INCIDENTS #1481, #1567)
+    const story = fs.readFileSync(prichardFile, "utf-8");
+    assert.doesNotMatch(story, /بدأ[^.]{0,40}مسيرته[^.]{0,40}عام\s+1987/);
+    assert.match(story, /التحق باتحاد WWF عام 1987/);
+  }
   // والقاعدة موجودة في الدليل اللي بيتقرا لجيميناي وفي برومبت المدقق
   const guide = fs.readFileSync("editorial/style-guide.md", "utf-8");
   assert.match(guide, /started working for the WWF in 1987/);
@@ -1176,9 +1179,12 @@ test("a title that drops the preposition before a show name is blocked (round 20
     "توني خان يؤكد حضور مسؤولي WBD لعرض AEW Dynamite ويكرر حماسه",
   ]) assert.equal(titleMissingPreposition(ok), null, ok);
   // the story this round fixed keeps the same URL and a complete headline
-  const story = fs.readFileSync("content/news/20261028051051-توني-خان-يكشف-عن-اجتماعه-مع-فريق-سكاي-دانس-وحضور-مسؤولي-وارنر-براذرز-عرض-aew-dynamite-الليلة.md", "utf-8");
-  assert.match(story, /title: "[^"]*وحضور مسؤولي وارنر براذرز في عرض AEW Dynamite الليلة"/);
-  assert.match(story, /permalink: "\/news\/توني-خان-يكشف-عن-اجتماعه-مع-فريق-سكاي-دانس-وحضور-مسؤولي-وارنر-براذرز-عرض-aew-dynamite-الليلة\/index\.html"/);
+  const tonyFile = "content/news/20261028051051-توني-خان-يكشف-عن-اجتماعه-مع-فريق-سكاي-دانس-وحضور-مسؤولي-وارنر-براذرز-عرض-aew-dynamite-الليلة.md";
+  if (fs.existsSync(tonyFile)) { // deleted after 30 days (INCIDENTS #1481, #1567)
+    const story = fs.readFileSync(tonyFile, "utf-8");
+    assert.match(story, /title: "[^"]*وحضور مسؤولي وارنر براذرز في عرض AEW Dynamite الليلة"/);
+    assert.match(story, /permalink: "\/news\/توني-خان-يكشف-عن-اجتماعه-مع-فريق-سكاي-دانس-وحضور-مسؤولي-وارنر-براذرز-عرض-aew-dynamite-الليلة\/index\.html"/);
+  }
 });
 
 // «illness-related» was written «أسباب صحية ومرضية» (Vaquer story, round 2026-10-28): two words for one meaning.
