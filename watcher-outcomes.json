@@ -29,6 +29,11 @@
   "retry": true,
   "at": "2026-11-27T15:09:24.183Z"
  },
+ "https://www.ringsidenews.com/rock-his-mom-recall-thanksgiving-when-their-family-no-food-barely-place-live": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T14:58:15.106Z"
+ },
  "https://www.fightful.com/wrestling/details-about-korakuen-hall-renovations": {
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
