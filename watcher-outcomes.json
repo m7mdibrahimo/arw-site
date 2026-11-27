@@ -7,82 +7,82 @@
  "https://www.fightful.com/wrestling/no-holds-barred-match-for-aew-womens-world-title-tbs-title-bout-continental-classic-continues-will-ospreay-returns-on-12-2-three-hour-dynamite-collision": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-27T04:44:55.016Z"
+  "at": "2026-11-27T04:54:54.181Z"
  },
  "https://www.fightful.com/wrestling/wwe-wrestlemania-43-planned-to-air-live": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-27T04:44:54.414Z"
+  "at": "2026-11-27T04:54:53.731Z"
  },
  "https://www.fightful.com/wrestling/bde-expected-to-leave-tna-when-contract-expires": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-27T04:44:53.877Z"
+  "at": "2026-11-27T04:54:53.310Z"
  },
  "https://www.fightful.com/wrestling/gabby-forza-vs-zoey-serrano-added-to-12-3-tna-impact": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-27T04:44:53.406Z"
+  "at": "2026-11-27T04:54:52.946Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T04:44:52.969Z"
+  "at": "2026-11-27T04:54:52.569Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-night-four-recap-11-26-26": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-27T04:44:52.869Z"
+  "at": "2026-11-27T04:54:52.501Z"
  },
  "https://www.fightful.com/wrestling/xia-brookside-offered-new-contract-by-tna-wrestling": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T04:44:51.876Z"
- },
- "https://www.fightful.com/wrestling/independent-promotions-express-interest-in-booking-mike-romo": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T04:44:51.426Z"
- },
- "https://www.fightful.com/wrestling/mark-davis-set-for-roh-world-title-survival-of-the-fittest-match-at-final-battle": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-27T04:44:50.899Z"
+  "at": "2026-11-27T04:54:51.771Z"
+ },
+ "https://www.fightful.com/wrestling/independent-promotions-express-interest-in-booking-mike-romo": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T04:54:36.727Z"
+ },
+ "https://www.fightful.com/wrestling/mark-davis-set-for-roh-world-title-survival-of-the-fittest-match-at-final-battle": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Adam Page",
+  "retry": true,
+  "at": "2026-11-27T04:52:26.370Z"
  },
  "https://www.fightful.com/wrestling/artist-of-stardom-championship-match-added-to-roh-final-battle": {
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
-  "at": "2026-11-27T04:44:27.560Z"
+  "at": "2026-11-27T04:51:31.536Z"
  },
  "https://www.fightful.com/wrestling/joe-coffey-wins-mlw-southern-crown-championship": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-27T04:43:25.915Z"
+  "at": "2026-11-27T04:50:24.462Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-results-11-26-continental-classic-continues": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: أعضاء فريق غلط بين القوسين (اتاخدوا من سطر تاني) — اكتب أعضاء الفريق زي المصدر أو شيل القوسين (حصل: «ذا نيو ليفل (مارك ديفيس وجيك دويل)»)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
-  "at": "2026-11-27T04:43:08.535Z"
+  "at": "2026-11-27T04:49:31.034Z"
  },
  "https://www.fightful.com/wrestling/lebron-james-the-rock-is-an-unbelievable-person": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T04:42:22.044Z"
+  "at": "2026-11-27T04:48:34.798Z"
  },
  "https://www.fightful.com/wrestling/jacy-jayne-responds-to-criticism-surrounding-womens-us-title-run-im-done-proving-myself": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T04:42:21.905Z"
+  "at": "2026-11-27T04:48:34.705Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-spoilers-for-11-26-taped-on-11-25": {
-  "reason": "المراجعة رفضته: أعضاء فريق غلط بين القوسين (اتاخدوا من سطر تاني) — اكتب أعضاء الفريق زي المصدر أو شيل القوسين (حصل: «ذا نيو ليفل (مارك ديفيس وجيك دويل)»)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Swerve Strickland، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: بطولة العالم للفرق الثلاثية، المواجهة الثانية: نزال فرق، المواجهة الثالثة: ضمن بطولة Continental Classic (مجموعة الزرقاء)، المواجهة الرابعة: ضمن بطولة Continental Classic (مجموعة الزرقاء)، المواجهة الخامسة: نزال فرق، المواجهة السادسة: نزال فرق للسيدات، الحدث الرئيسي: ضمن بطولة Continental Classic (مجموعة الذهبية) — اكتب الفائز زي المصدر وبالماضي",
   "retry": true,
-  "at": "2026-11-27T04:42:21.748Z"
+  "at": "2026-11-27T04:48:34.598Z"
  },
  "https://www.fightful.com/wrestling/naoto-inoki-grandson-of-antonio-inoki-to-appear-at-njpw-wrestle-kingdom-21": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-27T04:41:27.567Z"
+  "at": "2026-11-27T04:47:34.139Z"
  },
  "https://www.ringsidenews.com/mercedes-mone-defend-aew-womens-world-title-no-holds-barred-match-december-2-dynamite": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
