@@ -1,5 +1,15 @@
 [
   {
+    "id": 341006,
+    "link": "https://www.fightful.com/wrestling/roman-reigns-launches-youtube-channel-with-new-vlog-series/",
+    "date": "2026-11-27T09:28:06",
+    "date_gmt": "2026-11-27T14:28:06",
+    "title": {
+      "rendered": "Roman Reigns Launches YouTube Channel With New Vlog Series"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/11112947/Screenshot-2026-10-11-162927.png"
+  },
+  {
     "id": 341004,
     "link": "https://www.fightful.com/wrestling/parker-boudreaux-on-being-the-first-american-to-sign-with-gleat-it-is-an-honor-i-do-not-take-lightly/",
     "date": "2026-11-27T08:50:39",
@@ -288,15 +298,5 @@
       "rendered": "WWE Main Event Results (11/25)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/25204450/20261123_MainEvent_TatumMichin_16x9_tonight.jpg"
-  },
-  {
-    "id": 340889,
-    "link": "https://www.fightful.com/wrestling/wwe-womens-tag-team-title-bout-more-added-to-11-27-wwe-smackdown/",
-    "date": "2026-11-25T20:53:47",
-    "date_gmt": "2026-11-26T01:53:47",
-    "title": {
-      "rendered": "WWE Women&#8217;s Tag Team Title Bout, More Added To 11/27 WWE SmackDown"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/25205303/HYA-jQPWwAEb1bq.jpeg"
   }
 ]
