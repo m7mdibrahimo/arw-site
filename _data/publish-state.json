@@ -487,7 +487,8 @@
     "httpsarab-wrestlingcomnewsالسبب-وراء-استمرار-wwe-وaew-في-العودة-إلى-أستراليا-لتنظيم-الفعاليات-الكبرى": 1795783232571,
     "httpsarab-wrestlingcomnewsكودي-رودز-ينصح-مصارعي-wwe-بالتوقف-عن-الاعتذار-عن-كل-جدل-عبر-الإنترنت": 1795783292158,
     "httpsarab-wrestlingcomnewsكودي-رودز-يوضح-سبب-تعمده-إفساد-فقرة-خلف-الكواليس-مع-تريبل-إتش": 1795784371177,
-    "https___arab-wrestling_com_news______-______-_______-__-_____-aew-continental-classic_": 1795785824761
+    "https___arab-wrestling_com_news______-______-_______-__-_____-aew-continental-classic_": 1795785824761,
+    "httpsarab-wrestlingcomnewsنتائج-الليلة-الرابعة-من-بطولة-aew-continental-classic": 1795786225698
   },
   "facebook": {
     "httpsarab-wrestlingcomnewsبري-بيلا-عانت-من-مرض-خطير-خلال-ظهورها-الترويجي-لحدث-wwe-royal-rumble": 1795179163211,
@@ -977,7 +978,8 @@
     "httpsarab-wrestlingcomnewsالسبب-وراء-استمرار-wwe-وaew-في-العودة-إلى-أستراليا-لتنظيم-الفعاليات-الكبرى": 1795783242955,
     "httpsarab-wrestlingcomnewsكودي-رودز-ينصح-مصارعي-wwe-بالتوقف-عن-الاعتذار-عن-كل-جدل-عبر-الإنترنت": 1795783301109,
     "httpsarab-wrestlingcomnewsكودي-رودز-يوضح-سبب-تعمده-إفساد-فقرة-خلف-الكواليس-مع-تريبل-إتش": 1795784380533,
-    "https___arab-wrestling_com_news______-______-_______-__-_____-aew-continental-classic_": 1795785824761
+    "https___arab-wrestling_com_news______-______-_______-__-_____-aew-continental-classic_": 1795785824761,
+    "httpsarab-wrestlingcomnewsنتائج-الليلة-الرابعة-من-بطولة-aew-continental-classic": 1795786225698
   },
   "instagram": {
     "httpsarab-wrestlingcomnewsبري-بيلا-عانت-من-مرض-خطير-خلال-ظهورها-الترويجي-لحدث-wwe-royal-rumble": 1795179228204,
@@ -1346,7 +1348,8 @@
     "httpsarab-wrestlingcomnewsثيا-هيل-تكشف-كواليس-حالتها-النفسية-قبل-حلق-شعرها-في-عرض-wwe-nxt": 1795782523632,
     "httpsarab-wrestlingcomnewsكودي-رودز-ينصح-مصارعي-wwe-بالتوقف-عن-الاعتذار-عن-كل-جدل-عبر-الإنترنت": 1795784323802,
     "httpsarab-wrestlingcomnewsكودي-رودز-يوضح-سبب-تعمده-إفساد-فقرة-خلف-الكواليس-مع-تريبل-إتش": 1795784982524,
-    "httpsarab-wrestlingcomnewsالسبب-وراء-استمرار-wwe-وaew-في-العودة-إلى-أستراليا-لتنظيم-الفعاليات-الكبرى": 1795785658464
+    "httpsarab-wrestlingcomnewsالسبب-وراء-استمرار-wwe-وaew-في-العودة-إلى-أستراليا-لتنظيم-الفعاليات-الكبرى": 1795785658464,
+    "httpsarab-wrestlingcomnewsنتائج-الليلة-الرابعة-من-بطولة-aew-continental-classic": 1795786225698
   },
   "x": {
     "https___arab-wrestling_com_news________-____-_____-______-____-___-_______-__-wwe-_________-______-____-_____-________": 1795180085786,
@@ -1446,7 +1449,8 @@
     "live-start:tna-26-11-2026": 1795744874100,
     "httpsarab-wrestlingcomnewsنزال-بلا-قوانين-على-بطولة-aew-للسيدات-نزال-على-بطولة-tbs-استمرار-بطولة-continental-classic-وعودة-ويل-أوسبراي-في-عرض-aew-dynamite-collision-يوم-2-ديسمبر": 1795767986790,
     "live-start:njpw-world-tag-league-27-11-2026": 1795773673680,
-    "https___arab-wrestling_com_news______-______-_______-__-_____-aew-continental-classic_": 1795785824761
+    "https___arab-wrestling_com_news______-______-_______-__-_____-aew-continental-classic_": 1795785824761,
+    "httpsarab-wrestlingcomnewsنتائج-الليلة-الرابعة-من-بطولة-aew-continental-classic": 1795786225698
   },
   "cooldowns": {
     "facebook": 1789639159562,
@@ -2792,6 +2796,16 @@
       "reason": "return",
       "why": "title",
       "note": "الخبر عبارة عن إعلان مسبق لنزالات وعروض مستقبلية (يوم 2 ديسمبر) وليس كشفاً لنتائج أو أحداث تمت بالفعل."
+    },
+    "httpsarab-wrestlingcomnewsنتائج-الليلة-الرابعة-من-بطولة-aew-continental-classic": {
+      "at": 1795786225698,
+      "title": "نتائج الليلة الرابعة من بطولة AEW Continental Classic",
+      "url": "/news/نتائج-الليلة-الرابعة-من-بطولة-aew-continental-classic/",
+      "image": "/content/images/5j0i83omc7p24umh.jpg",
+      "reason": "result",
+      "why": "lead",
+      "lead": "شهدت الليلة الرابعة من منافسات بطولة AEW Continental Classic، والتي أقيمت خلال عرض AEW Collision، إقامة ثلاث مواجهات قوية موزعة على مجموعتي البطولة. في مواجهات المجموعة الزرقاء، نجح ريكوشيه في تحقيق الفوز على برودي كينج.…",
+      "note": "الخبر يتحدث عن نتائج عرض أقيم يوم 26 نوفمبر، أي منذ أكثر من 6 ساعات، لذا لا يعتبر حرقاً."
     }
   },
   "byFile": {
