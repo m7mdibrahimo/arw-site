@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2329687/dave-meltzer-rock-moved-considerabe-wwe-survivor-series-tickets": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T19:41:17.516Z"
+ },
  "https://www.ringsidenews.com/nikki-bella-urges-people-help-those-who-have-lost-their-jobs-during-holidays": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-21T18:11:01.401Z"
- },
- "https://www.ringsidenews.com/former-wwe-star-says-aew-talent-too-sensitive-him-work": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-21T17:34:13.827Z"
  }
 }
