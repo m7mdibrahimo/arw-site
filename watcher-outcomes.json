@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2329268/aew-collision-thanksgiving-november-26-2027-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T02:14:56.868Z"
+ },
  "https://www.fightful.com/wrestling/artist-of-stardom-championship-match-added-to-roh-final-battle": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -48,11 +53,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-27T02:03:48.775Z"
- },
- "https://www.wrestlinginc.com/2329268/aew-collision-thanksgiving-november-26-2027-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T01:58:39.491Z"
  },
  "https://www.fightful.com/wrestling/wwe-womens-tag-team-title-bout-more-added-to-11-27-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
