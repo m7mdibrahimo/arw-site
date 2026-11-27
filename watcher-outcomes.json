@@ -1,4 +1,14 @@
 {
+ "https://www.wrestlinginc.com/2329298/aew-collision-viewership-ratings-november-21-2026": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T01:40:02.590Z"
+ },
+ "https://www.wrestlinginc.com/2329268/aew-collision-thanksgiving-november-26-2027-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T01:39:42.378Z"
+ },
  "https://www.fightful.com/wrestling/artist-of-stardom-championship-match-added-to-roh-final-battle": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
@@ -58,16 +68,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-27T01:32:39.817Z"
- },
- "https://www.wrestlinginc.com/2329298/aew-collision-viewership-ratings-november-21-2026": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T01:21:16.405Z"
- },
- "https://www.wrestlinginc.com/2329268/aew-collision-thanksgiving-november-26-2027-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T01:20:45.691Z"
  },
  "https://www.ringsidenews.com/kevin-nash-fires-back-critics-bringing-his-late-son-tristen": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
