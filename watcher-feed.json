@@ -1,5 +1,15 @@
 [
   {
+    "id": 341001,
+    "link": "https://www.fightful.com/wrestling/brian-cage-responds-to-claims-that-hes-injury-prone/",
+    "date": "2026-11-27T08:20:46",
+    "date_gmt": "2026-11-27T13:20:46",
+    "title": {
+      "rendered": "Brian Cage Responds To Claims That He&#8217;s Injury-Prone"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/13003137/cagegym.jpeg"
+  },
+  {
     "id": 340969,
     "link": "https://www.fightful.com/wrestling/wwe-smackdown-preview-start-time-how-to-watch-location-11-20-2/",
     "date": "2026-11-27T08:00:00",
@@ -288,15 +298,5 @@
       "rendered": "Kazuchika Okada And Don Callis Poke Fun At Adam Copeland For Bear Incident On AEW Dynamite Thanksgiving Eve"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/25202854/HYA6cjnXYAAAW2v-scaled-e1795656546376.jpg"
-  },
-  {
-    "id": 340842,
-    "link": "https://www.fightful.com/wrestling/aew-dynamite-results-11-25-2026-hangman-page-vs-jay-white-andrade-vs-kyle-fletcher-tag-title-match-jon-moxley-more/",
-    "date": "2026-11-25T19:15:00",
-    "date_gmt": "2026-11-26T00:15:00",
-    "title": {
-      "rendered": "AEW Dynamite Results (11/25/2026): Hangman Page vs. Jay White, Andrade vs. Kyle Fletcher, Tag Title Match, Jon Moxley, More"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/24170241/HX5qWhKXEAApPTM.jpeg"
   }
 ]
