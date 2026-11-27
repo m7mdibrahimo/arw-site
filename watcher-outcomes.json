@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/rey-mysterio-wants-aalyah-share-ring-eddie-guerreros-daughter": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T16:42:02.064Z"
+ },
  "https://www.ringsidenews.com/rey-mysterio-reveals-how-wwes-reduced-schedule-changed-life-wrestlers": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
@@ -1903,10 +1908,5 @@
   "reason": "المراجعة رفضته: نفس العنوان منشور قبل كده — الخبر مكرر",
   "retry": false,
   "at": "2026-11-21T12:07:11.441Z"
- },
- "https://www.fightful.com/wrestling/cmll-viernes-espectacular-results-11-20-2026-leyenda-azul-eliminator-thunder-rosa-united-empire-more": {
-  "reason": "المراجعة رفضته: فائز مش موجود في نتايج المصدر (النزال لسه ما خلصش؟): المواجهة الثانية: نزال فرق سداسي",
-  "retry": true,
-  "at": "2026-11-21T05:42:21.825Z"
  }
 }
