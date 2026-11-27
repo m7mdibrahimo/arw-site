@@ -5934,7 +5934,7 @@
     "instagram_reel": true,
     "instagram_story": true,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 24.11.2026 مترجم",
-    "lastAttempt": 1795789663446,
+    "lastAttempt": 1795790566463,
     "errors": {
       "tiktok": "الفيديو لم يظهر على الموقع بعد؛ سيُعاد إرساله إلى TikTok بعد النشر."
     },
@@ -6035,7 +6035,7 @@
     "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض كوليجن 26.11.2026 مترجم",
-    "lastAttempt": 1795789701952,
+    "lastAttempt": 1795790569137,
     "errors": {
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
@@ -6052,9 +6052,13 @@
     "instagram_reel": false,
     "instagram_story": false,
     "title": "عرض تي ان ايه امباكت 26.11.2026 مترجم",
-    "lastAttempt": 1795788849091,
-    "errors": {},
-    "processing": [],
+    "lastAttempt": 1795790570321,
+    "errors": {
+      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
+    },
+    "processing": [
+      "instagram_reel"
+    ],
     "reviewPlatforms": [],
     "needsReview": false
   }
