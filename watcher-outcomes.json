@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/rock-his-mom-recall-thanksgiving-when-their-family-no-food-barely-place-live": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T14:58:15.106Z"
+ },
  "https://www.fightful.com/wrestling/roman-reigns-launches-youtube-channel-with-new-vlog-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
@@ -83,11 +88,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-27T14:44:05.982Z"
- },
- "https://www.ringsidenews.com/rock-his-mom-recall-thanksgiving-when-their-family-no-food-barely-place-live": {
-  "reason": "المراجعة رفضته: فعل مثنى («يتذكران») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-27T14:38:22.125Z"
  },
  "https://www.ringsidenews.com/original-plans-behind-nick-patricks-nwo-heel-turn": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
