@@ -67,6 +67,8 @@ const WEEKLY: [RegExp, Program][] = [
 const NOT_WRESTLING = /\b(?:ufc|bellator|boxing|mma|pfl|one championship|one fight night|bkfc|ksi|misfits|nfl|nba)\b/i;
 const NOT_LIVE_POST = /\b(?:highlights?|results?|press conference|recap|review|predictions?|post[- ]show|kick[- ]?off only|main event)\b/i;
 const FED = /\b(wwe|aew|nxt|tna|impact|roh|njpw|stardom|mlw|nwa|gcw)\b/i;
+/** A federation's name in Arabic letters, for an event that isn't one of the programs above */
+const FED_AR: Record<string, string> = { WWE: "دبليو دبليو إي", AEW: "إيه إي دبليو", NXT: "إن إكس تي", TNA: "تي ان ايه", ROH: "ار او اتش", NJPW: "ان جيه بي دبليو", STARDOM: "ستاردم", MLW: "إم إل دبليو", NWA: "إن دبليو إيه", GCW: "جي سي دبليو" };
 
 const MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
 
@@ -119,11 +121,18 @@ export function identify(title: string): ShowId | null {
       .replace(/\b(?:watch|live|stream|online|full|show|free|ppv|pay per view|hd|fhd|replay|20\d\d|the|and|of|in|–)\b/g, " ")
       .replace(/[^a-z]+/g, " ").trim().split(/\s+/).filter((w) => w.length > 1).slice(0, 6);
     if (words.length < 2) return null;
-    program = { key: words.join("-"), fed: fed.toUpperCase() === "IMPACT" ? "TNA" : fed.toUpperCase(), ar: "", dur: 180, ple: true };
+    // its Arabic name is its federation's (owner 2026-11-27: «صلح الاسم العربي ل njpw خليه اسمه عرض ان جيه بي دبليو»);
+    // not a monthly show of the list: no year added to it
+    const f = fed.toUpperCase() === "IMPACT" ? "TNA" : fed.toUpperCase();
+    program = { key: words.join("-"), fed: f, ar: FED_AR[f] || "", dur: 180 };
   }
-  // the show's own name: what comes before its date («AEW Dynamite Live 11/25/26 November 25th 2026» → «AEW Dynamite»)
-  const cut = t.search(new RegExp(`\\s[–-]\\s*\\d|\\b\\d{1,2}/\\d{1,2}/\\d{2,4}\\b|\\b\\d{1,2}(?:st|nd|rd|th)\\b|\\b20\\d{2}\\b|\\b(?:${MONTHS.join("|")})\\b`, "i"));
-  const name = (cut > 0 ? t.slice(0, cut) : t).replace(/\b(?:watch|live|online|full show|free|stream(?:ing)?)\b/gi, "").replace(/\s+/g, " ").trim() || t;
+  // the show's own name: what comes before its date («AEW Dynamite Live 11/25/26 November 25th 2026» → «AEW Dynamite»);
+  // a title that starts with its date («November 27th 2026 – NJPW World Tag League 2026») is named by what follows it
+  // (owner 2026-11-27: «وشيل November 27th 2026 كمان»)
+  const lead = new RegExp(`^\\s*(?:(?:${MONTHS.join("|")})\\s+\\d{1,2}(?:st|nd|rd|th)?,?\\s+20\\d{2}|\\d{1,2}(?:st|nd|rd|th)?\\s+(?:${MONTHS.join("|")}),?\\s+20\\d{2}|\\d{1,2}/\\d{1,2}/\\d{2,4})\\s*[–—:|-]?\\s*`, "i");
+  const body = t.replace(lead, "");
+  const cut = body.search(new RegExp(`\\s[–-]\\s*\\d|\\b\\d{1,2}/\\d{1,2}/\\d{2,4}\\b|\\b\\d{1,2}(?:st|nd|rd|th)\\b|\\b(?:${MONTHS.join("|")})\\b${body === t ? "|\\b20\\d{2}\\b" : ""}`, "i"));
+  const name = (cut > 0 ? body.slice(0, cut) : body).replace(/\b(?:watch|live|online|full show|free|stream(?:ing)?)\b/gi, "").replace(/\s+/g, " ").trim() || t;
   return { key: `${program.key}-${date}`, date, program, name };
 }
 
@@ -761,7 +770,8 @@ export function pageFile(s: Show): string {
 }
 /** The page file's format: a page written by an older one is written again (INCIDENTS #1537: the program's name without
  *  its date, for the page's title in the search results) */
-export const PAGE_V = 4;   // 4: the year in a monthly show's name, the date beside the English name (owner 2026-11-26)
+export const PAGE_V = 5;   // 5: an event outside the programs named in Arabic by its federation (owner 2026-11-27)
+// was 4:   // 4: the year in a monthly show's name, the date beside the English name (owner 2026-11-26)
 interface PageMark { key: string; set: Partial<Pick<Show, "page" | "pageAt" | "pageRev" | "pageV" | "img">> }
 /** Pages to write: a new show's, an edited show's again (the owner's change of name, time or picture), and a hidden
  *  or old show's away. Returns what changed on each show, for the caller to keep. */

@@ -294,7 +294,7 @@ test('the name: «عرض داينامايت» with its English name everywhere, 
   assert.match(lay, /<nav class="arw-crumbs" aria-label="مسار التنقل">/); // the site's own breadcrumbs (owner 2026-11-25)
   assert.doesNotMatch(lay, /›/); // RTL: the site's separator is ‹
   assert.match(lay, /حلقة \{\{ lvDay \}\}/);
-  assert.equal(L.PAGE_V, 4, 'the pages already out are written again with the new name');
+  assert.ok(L.PAGE_V >= 4, 'the pages already out are written again with the new name');
   // a monthly show carries its year, Arabic and English; the English line its date (owner 2026-11-26)
   const ss: any = { ar: 'سيرفايفر سيريس', name: 'WWE Survivor Series WarGames', fed: 'WWE', ple: true, date: '2026-11-28' };
   assert.equal(L.arabicTitle(ss), 'عرض سيرفايفر سيريس 2026');
@@ -349,4 +349,25 @@ test('1max «CatchUp» buttons open on their own site, after the in-page servers
   const late = L.servers({ links } as any, { 'https://www.sawlivenow.com/embed/ch83_HD/': { ok: 0, ms: 30000, at: now } }, now);
   assert.deepEqual(late.map((v) => v.x || 0), [0, 0, 1, 1]);
   assert.equal(L.outerLink('https://example.com/?line=83_FHD'), null);
+});
+
+test('NJPW (and any event outside the named programs): «عرض ان جيه بي دبليو», its English name without the date in front, no year added (owner 2026-11-27)', () => {
+  for (const [title, en] of [
+    ['November 27th 2026 – NJPW World Tag League 2026', 'NJPW World Tag League 2026'],
+    ['27th November 2026 - NJPW World Tag League 2026', 'NJPW World Tag League 2026'],
+    ['11/27/26 – NJPW World Tag League 2026', 'NJPW World Tag League 2026'],
+    ['NJPW World Tag League 2026 Day 5 11/27/26', 'NJPW World Tag League'],
+    ['NJPW Wrestle Kingdom 21 January 4th 2027', 'NJPW Wrestle Kingdom 21'],
+  ] as const) {
+    const id = L.identify(title)!;
+    assert.ok(id, title);
+    assert.equal(id.name, en, title);
+    assert.doesNotMatch(id.name, /November|January|\d{1,2}(?:st|nd|rd|th)\b|\d+\/\d+/);
+    const s: any = { ar: id.program.ar, name: id.name, fed: id.program.fed, ple: id.program.ple, date: id.date };
+    assert.equal(L.arabicTitle(s), 'عرض ان جيه بي دبليو', title);
+  }
+  // the named programs keep their own names and years
+  const ss = L.identify('WWE Survivor Series WarGames 2026 Live 11/28/26')!;
+  assert.equal(L.arabicTitle({ ar: ss.program.ar, name: ss.name, fed: 'WWE', ple: ss.program.ple, date: ss.date }), 'عرض سيرفايفر سيريس 2026');
+  assert.equal(L.PAGE_V, 5);
 });
