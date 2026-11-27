@@ -1,7 +1,7 @@
 ---
-title: "بث مباشر November 27th 2026 – NJPW World Tag League 2026"
+title: "بث مباشر عرض ان جيه بي دبليو"
 live_key: "njpw-world-tag-league-27-11-2026"
-program_en: "November 27th 2026 – NJPW World Tag League 2026"
+program_en: "NJPW World Tag League 2026"
 en_date: "27/11/2026"
 federation: "NJPW"
 event_date: 2026-11-27
