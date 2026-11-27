@@ -5,79 +5,84 @@
   "at": "2026-11-27T22:05:32.680Z"
  },
  "https://www.fightful.com/wrestling/francesco-akira-feels-more-confident-wrestling-in-mexico-after-cmll-tours": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T22:13:24.403Z"
+ },
+ "https://www.fightful.com/wrestling/cody-rhodes-heres-my-political-high-horse-i-really-do-like-the-presidents-fitness-council": {
+  "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T21:58:29.937Z"
+  "at": "2026-11-27T22:12:39.473Z"
  },
  "https://www.fightful.com/wrestling/charlotte-flair-discusses-people-hating-on-ashley-and-not-charlotte-the-wrestlemania-roast": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-27T21:53:28.344Z"
+  "at": "2026-11-27T22:12:39.209Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-on-whether-he-wants-to-ultimately-have-the-pencil-in-wwe-i-would-be-honored-to-be-in-that-spot": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T21:52:28.563Z"
+  "at": "2026-11-27T22:08:14.037Z"
  },
  "https://www.fightful.com/wrestling/leon-cage-set-for-2027-jersey-j-cup-tna-impact-highlights-more-fight-size": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-27T21:52:28.420Z"
+  "at": "2026-11-27T22:08:13.906Z"
  },
  "https://www.fightful.com/wrestling/katsuhiko-nakajima-announced-for-2027-wxw-germany-16-carat-gold-tournament": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-27T21:51:27.589Z"
+  "at": "2026-11-27T22:07:14.745Z"
  },
  "https://www.fightful.com/wrestling/aaas-la-parka-scheduled-for-gleats-december-30th-show": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-27T21:50:20.814Z"
+  "at": "2026-11-27T22:06:15.612Z"
  },
  "https://www.fightful.com/wrestling/340871-jacy-jayne-babyface": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T21:49:21.889Z"
+  "at": "2026-11-27T22:05:17.746Z"
  },
  "https://www.fightful.com/wrestling/dutch-mantell-discloses-what-is-the-most-money-hes-made-in-wrestling": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-27T21:49:21.745Z"
+  "at": "2026-11-27T22:05:17.613Z"
  },
  "https://www.fightful.com/wrestling/njpw-world-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-27T21:48:21.073Z"
+  "at": "2026-11-27T22:04:17.427Z"
  },
  "https://www.fightful.com/wrestling/njpw-world-tag-league-night-night-four-results-11-27": {
-  "reason": "المراجعة رفضته: لقب «أومينو» اتكتب بعد كده «أوموري» — اكتبه «أومينو» زي المصدر في الخبر كله، كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه HOUSE OF TORTURE، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الثالثة: نزال فرق — اكتب الفائز زي المصدر وبالماضي",
+  "reason": "المراجعة رفضته: لقب «أومينو» اتكتب بعد كده «أوموري» — اكتبه «أومينو» زي المصدر في الخبر كله، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه HOUSE OF TORTURE، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الثالثة: نزال فرق — اكتب الفائز زي المصدر وبالماضي",
   "retry": true,
-  "at": "2026-11-27T21:48:20.989Z"
+  "at": "2026-11-27T22:04:17.347Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-launches-youtube-channel-with-new-vlog-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T21:47:21.846Z"
+  "at": "2026-11-27T22:03:15.740Z"
  },
  "https://www.fightful.com/wrestling/parker-boudreaux-on-being-the-first-american-to-sign-with-gleat-it-is-an-honor-i-do-not-take-lightly": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-27T21:47:21.699Z"
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T22:03:15.600Z"
  },
  "https://www.fightful.com/wrestling/brian-cage-responds-to-claims-that-hes-injury-prone": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T21:46:23.073Z"
+  "at": "2026-11-27T22:02:19.561Z"
+ },
+ "https://www.fightful.com/wrestling/details-about-korakuen-hall-renovations": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T22:01:59.586Z"
  },
  "https://www.fightful.com/wrestling/gabe-kidd-has-thanksgiving-dinner-with-fans-family-in-nebraska": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-27T21:46:22.889Z"
- },
- "https://www.fightful.com/wrestling/details-about-korakuen-hall-renovations": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-27T21:45:20.733Z"
  },
  "https://www.fightful.com/wrestling/bde-expected-to-leave-tna-when-contract-expires": {
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: EVOLVE Wrestling",
@@ -93,11 +98,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-27T21:42:43.632Z"
- },
- "https://www.fightful.com/wrestling/cody-rhodes-heres-my-political-high-horse-i-really-do-like-the-presidents-fitness-council": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T21:39:31.488Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-says-hes-excited-about-doing-more-acting-teases-new-unannounced-project": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
