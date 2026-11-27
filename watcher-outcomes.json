@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2329308/wwe-smackdown-november-27-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T22:44:26.399Z"
+ },
  "https://www.fightful.com/wrestling/francesco-akira-feels-united-empire-shouldnt-be-recruiting-right-now": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -113,11 +118,6 @@
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-27T22:12:39.209Z"
- },
- "https://www.wrestlinginc.com/2329308/wwe-smackdown-november-27-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T22:05:32.680Z"
  },
  "https://www.fightful.com/wrestling/details-about-korakuen-hall-renovations": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
