@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/jey-uso-message-nosey-people-video-him-kissing-jaida-parker-leaks-online": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T19:05:46.209Z"
+ },
+ "https://www.ringsidenews.com/rey-mysterio-wants-aalyah-share-ring-eddie-guerreros-daughter": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، مثنى (فريقيهما/لقبيهما/الزميلان) ممنوع — قول «فريقهم/لقبهم/الزملاء» أو كرر الأسماء",
+  "retry": true,
+  "at": "2026-11-27T19:03:54.151Z"
+ },
  "https://www.fightful.com/wrestling/pwj-loyalty-over-everything-results-11-22": {
   "reason": "المراجعة رفضته: حرف منفرد — كلمة مبتورة (حصل: «ق ليحكم»، «تضرب الح للمرة»)",
   "retry": true,
@@ -113,16 +123,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-27T18:39:51.134Z"
- },
- "https://www.ringsidenews.com/jey-uso-message-nosey-people-video-him-kissing-jaida-parker-leaks-online": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، ضمير مثنى (منهما/لهما/بهما/صعودهما…) ممنوع — قول «منهم/لهم/بهم» أو كرر الاسم، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة، فعل مثنى («يتبادلان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-27T18:38:56.184Z"
- },
- "https://www.ringsidenews.com/rey-mysterio-wants-aalyah-share-ring-eddie-guerreros-daughter": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T18:38:38.540Z"
  },
  "https://www.ringsidenews.com/gail-kim-questions-why-tna-keeps-offering-six-month-contracts-despite-losing-valuable-talent": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
