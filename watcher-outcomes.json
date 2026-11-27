@@ -1,18 +1,88 @@
 {
+ "https://www.fightful.com/wrestling/gabe-kidd-has-thanksgiving-dinner-with-fans-family-in-nebraska": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T08:23:19.303Z"
+ },
+ "https://www.fightful.com/wrestling/details-about-korakuen-hall-renovations": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T08:22:21.016Z"
+ },
+ "https://www.fightful.com/wrestling/bde-expected-to-leave-tna-when-contract-expires": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T08:20:31.463Z"
+ },
+ "https://www.fightful.com/wrestling/gabby-forza-vs-zoey-serrano-added-to-12-3-tna-impact": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T08:20:03.197Z"
+ },
+ "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-27T08:18:37.142Z"
+ },
+ "https://www.fightful.com/wrestling/aew-continental-classic-night-four-recap-11-26-26": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-27T08:18:37.051Z"
+ },
+ "https://www.fightful.com/wrestling/xia-brookside-offered-new-contract-by-tna-wrestling": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T08:17:00.187Z"
+ },
+ "https://www.fightful.com/wrestling/independent-promotions-express-interest-in-booking-mike-romo": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T08:16:09.230Z"
+ },
+ "https://www.fightful.com/wrestling/mark-davis-set-for-roh-world-title-survival-of-the-fittest-match-at-final-battle": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T08:15:34.063Z"
+ },
+ "https://www.fightful.com/wrestling/artist-of-stardom-championship-match-added-to-roh-final-battle": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-27T08:15:15.821Z"
+ },
+ "https://www.fightful.com/wrestling/joe-coffey-wins-mlw-southern-crown-championship": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T08:12:40.917Z"
+ },
+ "https://www.fightful.com/wrestling/aew-collision-results-11-26-continental-classic-continues": {
+  "reason": "المراجعة رفضته: نفس الاسمين مكتوبين مرتين حوالين فعل («داكس هاروود وكاش ويلر سيدافع داكس هاروود وكاش ويلر») — اكتبهم مرة واحدة، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين، فعل أو اسم مثنى (يتحديان/كمالكين/كشريكين…) ممنوع — اكتب «ضد» أو «يواجه» أو اذكر الاسمين بفعل جمع، فعل مثنى («تستهدفان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Swerve Strickland، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
+  "retry": true,
+  "at": "2026-11-27T08:11:06.965Z"
+ },
+ "https://www.fightful.com/wrestling/lebron-james-the-rock-is-an-unbelievable-person": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-27T08:09:37.931Z"
+ },
+ "https://www.fightful.com/wrestling/jacy-jayne-responds-to-criticism-surrounding-womens-us-title-run-im-done-proving-myself": {
+  "reason": "مكرر مع خبر نزل قبل كده",
+  "retry": false,
+  "at": "2026-11-27T08:09:37.814Z"
+ },
+ "https://www.fightful.com/wrestling/aew-collision-spoilers-for-11-26-taped-on-11-25": {
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Swerve Strickland، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
+  "retry": true,
+  "at": "2026-11-27T08:09:37.681Z"
+ },
+ "https://www.fightful.com/wrestling/naoto-inoki-grandson-of-antonio-inoki-to-appear-at-njpw-wrestle-kingdom-21": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T08:08:38.676Z"
+ },
  "https://www.wrestlinginc.com/2329268/aew-collision-thanksgiving-november-26-2027-results": {
   "reason": "المراجعة رفضته: مثنى (فريقيهما/لقبيهما/الزميلان) ممنوع — قول «فريقهم/لقبهم/الزملاء» أو كرر الأسماء، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، المصدر بيتكلم عن Daniel Garcia (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، المصدر بيتكلم عن Maya World (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر، اسم في الخبر العربي مختلف عن الإنجليزي: Pure Championship — انقل الاسم أو اللقب كما في المصدر (آش/إم/هيذر باي إليغانس مصارعات مختلفات، و«بيور» لقب غير بطولة السيدات العالمية)",
   "retry": true,
   "at": "2026-11-27T08:22:55.414Z"
- },
- "https://www.fightful.com/wrestling/gabe-kidd-has-thanksgiving-dinner-with-fans-family-in-nebraska": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T07:58:44.107Z"
- },
- "https://www.fightful.com/wrestling/details-about-korakuen-hall-renovations": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T07:58:43.620Z"
  },
  "https://www.fightful.com/wrestling/no-holds-barred-match-for-aew-womens-world-title-tbs-title-bout-continental-classic-continues-will-ospreay-returns-on-12-2-three-hour-dynamite-collision": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
@@ -23,76 +93,6 @@
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-27T07:58:42.442Z"
- },
- "https://www.fightful.com/wrestling/bde-expected-to-leave-tna-when-contract-expires": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T07:58:41.843Z"
- },
- "https://www.fightful.com/wrestling/gabby-forza-vs-zoey-serrano-added-to-12-3-tna-impact": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T07:58:41.289Z"
- },
- "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-27T07:58:40.720Z"
- },
- "https://www.fightful.com/wrestling/aew-continental-classic-night-four-recap-11-26-26": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T07:58:40.627Z"
- },
- "https://www.fightful.com/wrestling/xia-brookside-offered-new-contract-by-tna-wrestling": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T07:58:40.072Z"
- },
- "https://www.fightful.com/wrestling/independent-promotions-express-interest-in-booking-mike-romo": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T07:58:39.512Z"
- },
- "https://www.fightful.com/wrestling/mark-davis-set-for-roh-world-title-survival-of-the-fittest-match-at-final-battle": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T07:58:38.963Z"
- },
- "https://www.fightful.com/wrestling/artist-of-stardom-championship-match-added-to-roh-final-battle": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T07:58:38.401Z"
- },
- "https://www.fightful.com/wrestling/joe-coffey-wins-mlw-southern-crown-championship": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T07:58:37.783Z"
- },
- "https://www.fightful.com/wrestling/aew-collision-results-11-26-continental-classic-continues": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T07:58:36.312Z"
- },
- "https://www.fightful.com/wrestling/lebron-james-the-rock-is-an-unbelievable-person": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-27T07:58:35.675Z"
- },
- "https://www.fightful.com/wrestling/jacy-jayne-responds-to-criticism-surrounding-womens-us-title-run-im-done-proving-myself": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-27T07:58:35.539Z"
- },
- "https://www.fightful.com/wrestling/aew-collision-spoilers-for-11-26-taped-on-11-25": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T07:58:35.382Z"
- },
- "https://www.fightful.com/wrestling/naoto-inoki-grandson-of-antonio-inoki-to-appear-at-njpw-wrestle-kingdom-21": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T07:58:34.290Z"
  },
  "https://www.ringsidenews.com/mercedes-mone-defend-aew-womens-world-title-no-holds-barred-match-december-2-dynamite": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
