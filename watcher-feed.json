@@ -1,5 +1,25 @@
 [
   {
+    "id": 341042,
+    "link": "https://www.fightful.com/wrestling/austin-creed-feels-there-was-a-lack-of-creative-evolution-with-new-day-in-wwe/",
+    "date": "2026-11-27T13:15:18",
+    "date_gmt": "2026-11-27T18:15:18",
+    "title": {
+      "rendered": "Austin Creed Feels There Was A Lack Of Creative Evolution With New Day In WWE"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/05/05145744/Screenshot-75.png"
+  },
+  {
+    "id": 341032,
+    "link": "https://www.fightful.com/wrestling/katsuhiko-nakajima-announced-for-2027-wxw-germany-16-carat-gold-tournament/",
+    "date": "2026-11-27T12:56:26",
+    "date_gmt": "2026-11-27T17:56:26",
+    "title": {
+      "rendered": "Katsuhiko Nakajima Announced For 2027 wXw Germany 16 Carat Gold Tournament"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/27121343/3doskloinq4h1-e1795799661551.jpeg"
+  },
+  {
     "id": 341026,
     "link": "https://www.fightful.com/wrestling/aaas-la-parka-scheduled-for-gleats-december-30th-show/",
     "date": "2026-11-27T12:09:19",
@@ -105,7 +125,7 @@
     "date": "2026-11-27T08:00:00",
     "date_gmt": "2026-11-27T13:00:00",
     "title": {
-      "rendered": "WWE SmackDown Preview, Start Time, How To Watch, Location (11/20)"
+      "rendered": "WWE SmackDown Preview, Start Time, How To Watch, Location (11/27)"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/25205303/HYA-jQPWwAEb1bq.jpeg"
   },
@@ -278,25 +298,5 @@
       "rendered": "Ring Boy Lawsuit Put On Hold, Private Mediation With McMahons and WWE To Take Place"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/26135454/113674254.jpg.avif"
-  },
-  {
-    "id": 340865,
-    "link": "https://www.fightful.com/wrestling/jacy-jayne-responds-to-criticism-surrounding-womens-us-title-run-im-done-proving-myself/",
-    "date": "2026-11-26T13:00:00",
-    "date_gmt": "2026-11-26T18:00:00",
-    "title": {
-      "rendered": "Jacy Jayne Responds To Criticism Surrounding Women&#8217;s US Title Run, &#8216;I&#8217;m Done Proving Myself&#8217;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/12212607/029_MITB_10102026CM_155144-e1791854783704.jpg"
-  },
-  {
-    "id": 340920,
-    "link": "https://www.fightful.com/wrestling/aew-collision-spoilers-for-11-26-taped-on-11-25/",
-    "date": "2026-11-26T09:51:23",
-    "date_gmt": "2026-11-26T14:51:23",
-    "title": {
-      "rendered": "AEW Collision Spoilers For 11/26 (Taped On 11/25)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2025/03/04215146/01-aew-collision-new-logo-2024-696x421-1.jpg"
   }
 ]
