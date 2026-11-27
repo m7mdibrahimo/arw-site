@@ -1,4 +1,14 @@
 {
+ "https://www.ringsidenews.com/original-plans-behind-nick-patricks-nwo-heel-turn": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T14:13:09.364Z"
+ },
+ "https://www.ringsidenews.com/rock-his-mom-recall-thanksgiving-when-their-family-no-food-barely-place-live": {
+  "reason": "المراجعة رفضته: فعل مثنى («يتذكران») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-27T14:12:14.676Z"
+ },
  "https://www.ringsidenews.com/eric-bischoff-shuts-down-claims-his-nwo-heel-turn-driven-ego": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
@@ -8,11 +18,6 @@
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-27T14:05:30.782Z"
- },
- "https://www.ringsidenews.com/rock-his-mom-recall-thanksgiving-when-their-family-no-food-barely-place-live": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة، فعل مثنى («يتذكران») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم، فعل مثنى («يتحدثان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-27T14:05:04.298Z"
  },
  "https://www.wrestlinginc.com/2325165/clark-connors-addresses-comparisons-aew-hangman-page": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين",
