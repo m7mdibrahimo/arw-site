@@ -568,6 +568,9 @@ const RULES: Rule[] = [
   // «لابتتعاده» for «لابتعاده» went live (Ilja Dragunov story, INCIDENTS #1539): no word in any story, show or nostalgia
   // page has «ابتت» — it is always «ت» typed twice in a «ابتعاد/ابتكار/ابتسامة» word.
   { code: "impossible_letter_pair", severity: "error", re: /[\u0621-\u064A]*ابتت[\u0621-\u064A]*/g, message: "كلمة فيها «ابتت» («لابتتعاده») — التاء مكتوبة مرتين، غلطة كتابة («لابتعاده»)", fields: ["title", "body"] },
+  // «ينتتقد» for «ينتقد» went live in a headline (D-Von Dudley story, round 2026-11-27): no word in any story, show or
+  // nostalgia page has «نتت» — it is always «ت» typed twice in a «انتقد/انتظر/انتهى» word.
+  { code: "impossible_letter_pair", severity: "error", re: /[\u0621-\u064A]*نتت[\u0621-\u064A]*/g, message: "كلمة فيها «نتت» («ينتتقد») — التاء مكتوبة مرتين، غلطة كتابة («ينتقد»)", fields: ["title", "body"] },
   { code: "impossible_letter_pair", severity: "error", re: /[\u0621-\u064A]*غئ[\u0621-\u064A]*/g, message: "كلمة فيها «غئ» («ليفاغئه») — مفيش كلمة عربية كده، غلطة كتابة («ليفاجئه»)", fields: ["title", "body"] },
   // «… إلى بطاقة عرض WWE SmackDown المقرر إقامته.» — the sentence ends before saying when (INCIDENTS #1286)
   // «ومع تأكيد المواعيد القضائية الجديدة لثمانية أسابيع ديسمبر وستشهد القضايا…»: a «ومع …» opening whose main verb comes

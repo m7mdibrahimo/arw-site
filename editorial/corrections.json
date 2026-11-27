@@ -1,6 +1,9 @@
 {
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
+  {"wrong":"(?<a>[ء-ي]*)نتت(?<b>[ء-ي]*)","right":"$<a>نت$<b>","regex":true,"note":"التاء مكتوبة مرتين: «ينتقد» مش «ينتتقد» (خبر ديفون دادلي 2026-11-27)"},
+  {"wrong":"عنصرى","right":"عنصري","note":"«عنصري» بالياء مش بالألف المقصورة (خبر ديفون دادلي وجيم روس 2026-11-27)"},
+  {"wrong":"(?<al>ال)?هاركودر","right":"$<al>هاردكور","regex":true,"note":"بطولة Hardcore = «الهاردكور» مش «الهاركودر» (خبر سبايك دادلي 2026-11-27)"},
   {"wrong":"عدوات(?<s>نا|ي|ك|كم|كما|هما|هن)","right":"عداوت$<s>","regex":true,"note":"«عداوة» مع الضمير: «عداوتنا» مش «عدواتنا» (خبر سويرف ستريكلاند، INCIDENTS #1559)"},
   {"wrong":"الشروط الإجراءات","right":"الشروط الإجرائية","note":"صفة مش مضاف إليه: «الشروط الإجرائية» (خبر تامي سيتش، INCIDENTS #1559)"},
   {"wrong":"(?<w>عودته|عودتها|عودتهم|انضمامه|انضمامها|انضمامهم|انتقاله|انتقالها|انتقالهم)\\s+إلى\\s+عرض\\s+(?<p>AEW|WWE|TNA|ROH|NJPW)(?!\\s*[A-Za-z0-9&])(?!\\s+(?:الذي|المرتقب|المقبل|القادم))","right":"$<w> إلى $<p>","regex":true,"note":"الاتحاد لوحده مش عرض: «عند عودته إلى AEW» مش «إلى عرض AEW» (خبر بادي ماثيوز، INCIDENTS #1532)"},
