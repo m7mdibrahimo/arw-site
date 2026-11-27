@@ -5,84 +5,84 @@
   "at": "2026-11-27T11:02:30.321Z"
  },
  "https://www.fightful.com/wrestling/gabe-kidd-has-thanksgiving-dinner-with-fans-family-in-nebraska": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-27T10:58:13.872Z"
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-27T11:14:39.044Z"
  },
  "https://www.fightful.com/wrestling/details-about-korakuen-hall-renovations": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-27T10:57:07.209Z"
+  "at": "2026-11-27T11:13:38.201Z"
  },
  "https://www.fightful.com/wrestling/bde-expected-to-leave-tna-when-contract-expires": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T10:56:46.232Z"
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T11:12:39.135Z"
  },
  "https://www.fightful.com/wrestling/gabby-forza-vs-zoey-serrano-added-to-12-3-tna-impact": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل مثنى («يعرفان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
   "retry": true,
-  "at": "2026-11-27T10:54:21.121Z"
+  "at": "2026-11-27T11:11:39.048Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T10:53:42.548Z"
+  "at": "2026-11-27T11:10:36.280Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-night-four-recap-11-26-26": {
-  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-27T10:53:42.465Z"
+  "at": "2026-11-27T11:10:36.176Z"
  },
  "https://www.fightful.com/wrestling/xia-brookside-offered-new-contract-by-tna-wrestling": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Shiloh Hill، المصدر بيتكلم عن Xia Brookside (اسمه متكرر فيه) والخبر مفيهوش الاسم ده خالص — غالبا اتكتب اسم مصارع تاني مكانه، اكتب الاسم زي المصدر",
-  "retry": true,
-  "at": "2026-11-27T10:52:40.346Z"
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T11:09:36.330Z"
  },
  "https://www.fightful.com/wrestling/independent-promotions-express-interest-in-booking-mike-romo": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T10:52:25.678Z"
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T11:08:34.838Z"
  },
  "https://www.fightful.com/wrestling/mark-davis-set-for-roh-world-title-survival-of-the-fittest-match-at-final-battle": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T10:51:59.498Z"
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T11:07:34.219Z"
  },
  "https://www.fightful.com/wrestling/artist-of-stardom-championship-match-added-to-roh-final-battle": {
-  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-11-27T10:50:51.044Z"
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T11:06:34.788Z"
  },
  "https://www.fightful.com/wrestling/joe-coffey-wins-mlw-southern-crown-championship": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T10:50:28.366Z"
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T11:05:49.492Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-results-11-26-continental-classic-continues": {
-  "reason": "المراجعة رفضته: أعضاء فريق غلط بين القوسين (اتاخدوا من سطر تاني) — اكتب أعضاء الفريق زي المصدر أو شيل القوسين (حصل: «ذا نيو ليفل (مارك ديفيس وجيك دويل)»)، مواجهة تحت عنوانها سطر النتيجة بس من غير جملة النزال (الجملة ضاعت أو اتكتبت فوق العنوان) — كل مواجهة: العنوان، ثم جملة النزال من سطر المصدر، ثم سطر الفائز، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "reason": "المراجعة رفضته: أعضاء فريق غلط بين القوسين (اتاخدوا من سطر تاني) — اكتب أعضاء الفريق زي المصدر أو شيل القوسين (حصل: «ذا نيو ليفل (مارك ديفيس وجيك دويل)»)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
   "retry": true,
-  "at": "2026-11-27T10:50:04.658Z"
+  "at": "2026-11-27T11:04:25.006Z"
  },
  "https://www.fightful.com/wrestling/lebron-james-the-rock-is-an-unbelievable-person": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T10:48:55.761Z"
+  "at": "2026-11-27T11:03:38.360Z"
  },
  "https://www.fightful.com/wrestling/jacy-jayne-responds-to-criticism-surrounding-womens-us-title-run-im-done-proving-myself": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T10:48:55.644Z"
+  "at": "2026-11-27T11:03:38.209Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-spoilers-for-11-26-taped-on-11-25": {
-  "reason": "المراجعة رفضته: أعضاء فريق غلط بين القوسين (اتاخدوا من سطر تاني) — اكتب أعضاء الفريق زي المصدر أو شيل القوسين (حصل: «ذا نيو ليفل (مارك ديفيس وجيك دويل)»)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Swerve Strickland، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
+  "reason": "المراجعة رفضته: أعضاء فريق غلط بين القوسين (اتاخدوا من سطر تاني) — اكتب أعضاء الفريق زي المصدر أو شيل القوسين (حصل: «ذا نيو ليفل (مارك ديفيس وجيك دويل)»)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: بطولة العالم للفرق الثلاثية، المواجهة الثانية: نزال فرق، المواجهة الثالثة: نزال في المجموعة الزرقاء لبطولة Continental Classic، المواجهة الرابعة: نزال في المجموعة الزرقاء لبطولة Continental Classic، المواجهة الخامسة: نزال فرق، المواجهة السادسة: نزال فرق، المواجهة السابعة: نزال في المجموعة الذهبية لبطولة Continental Classic — اكتب الفائز زي المصدر وبالماضي",
   "retry": true,
-  "at": "2026-11-27T10:48:55.510Z"
+  "at": "2026-11-27T11:03:38.024Z"
  },
  "https://www.fightful.com/wrestling/naoto-inoki-grandson-of-antonio-inoki-to-appear-at-njpw-wrestle-kingdom-21": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T10:48:22.708Z"
+  "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
+  "retry": false,
+  "at": "2026-11-27T11:01:37.162Z"
  },
  "https://www.wrestlinginc.com/2318609/aew-andrade-el-idolo-wwe-nxt-transition-main-roster": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
