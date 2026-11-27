@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2329268/aew-collision-thanksgiving-november-26-2027-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T00:36:13.208Z"
+ },
  "https://www.ringsidenews.com/kevin-nash-fires-back-critics-bringing-his-late-son-tristen": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
@@ -8,11 +13,6 @@
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-27T00:27:34.100Z"
- },
- "https://www.wrestlinginc.com/2329268/aew-collision-thanksgiving-november-26-2027-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T00:18:18.885Z"
  },
  "https://www.wrestlinginc.com/2329293/hiroshi-tanahashi-wwe-hofer-antonio-inoki-grandson-wrestle-kingdom-21": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
