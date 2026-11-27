@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2329308/wwe-smackdown-november-27-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T22:05:32.680Z"
+ },
  "https://www.fightful.com/wrestling/francesco-akira-feels-more-confident-wrestling-in-mexico-after-cmll-tours": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-21T20:41:27.202Z"
- },
- "https://www.wrestlinginc.com/2319510/wwe-cody-rhodes-latest-thoughts-prospect-heel-turn": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-21T20:35:41.676Z"
  }
 }
