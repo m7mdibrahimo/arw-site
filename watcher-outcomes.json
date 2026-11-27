@@ -1,6 +1,6 @@
 {
- "https://www.wrestlinginc.com/2329308/wwe-smackdown-november-27-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+ "https://www.ringsidenews.com/royce-keys-shuts-down-fan-predicting-hell-fired-wwe": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-27T22:24:19.471Z"
  },
@@ -38,6 +38,11 @@
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-27T22:06:15.612Z"
+ },
+ "https://www.wrestlinginc.com/2329308/wwe-smackdown-november-27-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T22:05:32.680Z"
  },
  "https://www.fightful.com/wrestling/340871-jacy-jayne-babyface": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-21T21:42:39.423Z"
- },
- "https://www.fightful.com/wrestling/wwe-smackdown-results-11-20-2026-charlotte-flair-vs-jade-cargill-trick-williams-bakusai-more": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-21T20:41:27.202Z"
  }
 }
