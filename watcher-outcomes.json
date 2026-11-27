@@ -1,13 +1,13 @@
 {
+ "https://www.ringsidenews.com/rey-mysterio-wants-aalyah-share-ring-eddie-guerreros-daughter": {
+  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، مثنى (فريقيهما/لقبيهما/الزميلان) ممنوع — قول «فريقهم/لقبهم/الزملاء» أو كرر الأسماء",
+  "retry": true,
+  "at": "2026-11-27T17:01:54.317Z"
+ },
  "https://www.wrestlinginc.com/2329567/aew-premieres-first-entry-toni-storm-tapes": {
   "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا/شركة X وشركة Y»",
   "retry": true,
   "at": "2026-11-27T16:49:03.598Z"
- },
- "https://www.ringsidenews.com/rey-mysterio-wants-aalyah-share-ring-eddie-guerreros-daughter": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T16:42:02.064Z"
  },
  "https://www.ringsidenews.com/rey-mysterio-reveals-how-wwes-reduced-schedule-changed-life-wrestlers": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
