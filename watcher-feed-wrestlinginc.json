@@ -1,15 +1,5 @@
 [
   {
-    "id": 3859970399,
-    "link": "https://www.wrestlinginc.com/2318609/aew-andrade-el-idolo-wwe-nxt-transition-main-roster/",
-    "date": "Fri, 27 Nov 2026 04:59:00 +0000",
-    "date_gmt": "2026-11-27T04:59:00.000Z",
-    "title": {
-      "rendered": "AEW's Andrade El Idolo Looks Back On WWE NXT Run, Transition To Main Roster"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/aews-andrade-el-idolo-looks-back-on-wwe-nxt-run-transition-to-main-roster/l-intro-1794868552.jpg"
-  },
-  {
     "id": 4761405020,
     "link": "https://www.wrestlinginc.com/2324464/wwe-bayley-lodestone-helped-reconnect-indie-wrestling-missed/",
     "date": "Fri, 27 Nov 2026 02:00:00 +0000",
@@ -198,5 +188,15 @@
       "rendered": "Backstage Update On TNA Contract Status Of The Righteous"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/backstage-update-on-tna-contract-status-of-the-righteous/l-intro-1795672478.jpg"
+  },
+  {
+    "id": 4093258879,
+    "link": "https://www.wrestlinginc.com/2325667/tna-wwe-zoey-serrano-stark-details-release-final-months/",
+    "date": "Thu, 26 Nov 2026 14:30:00 +0000",
+    "date_gmt": "2026-11-26T14:30:00.000Z",
+    "title": {
+      "rendered": "TNA's Zoey Serrano Details WWE Release & Final Months"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/tnas-zoey-serrano-details-wwe-release-final-months/l-intro-1795463506.jpg"
   }
 ]
