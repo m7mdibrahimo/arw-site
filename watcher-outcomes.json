@@ -1898,30 +1898,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-21T13:52:46.163Z"
- },
- "https://www.ringsidenews.com/r-truths-son-shows-off-impressive-wrestling-skills-during-training-session": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة، فعل مثنى («يتشاركان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-21T13:39:52.980Z"
- },
- "https://www.fightful.com/wrestling/aew-collision-preview-start-time-how-to-watch-location-11-21": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-21T13:03:51.764Z"
- },
- "https://www.ringsidenews.com/rvd-reveals-explains-why-he-turned-down-bigger-role-aew": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Swerve Strickland",
-  "retry": true,
-  "at": "2026-11-21T12:38:55.163Z"
- },
- "https://www.ringsidenews.com/willie-mack-claims-aew-still-restricts-some-outside-bookings-despite-ending-his-salary": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-21T12:13:40.998Z"
- },
- "https://www.ringsidenews.com/aew-collision-preview-november-21-2026-confirmed-matches-start-time-how-watch": {
-  "reason": "المراجعة رفضته: نفس العنوان منشور قبل كده — الخبر مكرر",
-  "retry": false,
-  "at": "2026-11-21T12:07:11.441Z"
  }
 }
