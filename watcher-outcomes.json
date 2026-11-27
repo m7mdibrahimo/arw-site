@@ -109,11 +109,6 @@
   "retry": false,
   "at": "2026-11-27T22:33:56.698Z"
  },
- "https://www.ringsidenews.com/royce-keys-shuts-down-fan-predicting-hell-fired-wwe": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T22:24:19.471Z"
- },
  "https://www.fightful.com/wrestling/charlotte-flair-discusses-people-hating-on-ashley-and-not-charlotte-the-wrestlemania-roast": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
