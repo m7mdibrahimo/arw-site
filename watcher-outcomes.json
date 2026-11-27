@@ -1893,15 +1893,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-21T14:18:01.166Z"
- },
- "https://www.fightful.com/wrestling/ken-anderson-recalls-meeting-his-wife-at-a-wrestling-event-her-laughing-off-his-insults-in-character": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
-  "retry": true,
-  "at": "2026-11-21T14:11:13.539Z"
- },
- "https://www.fightful.com/wrestling/wwe-survivor-series-odds-courtesy-of-mybookie": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-21T13:52:46.163Z"
  }
 }
