@@ -1,18 +1,23 @@
 {
+ "https://www.ringsidenews.com/gail-kim-questions-why-tna-keeps-offering-six-month-contracts-despite-losing-valuable-talent": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T18:36:08.977Z"
+ },
+ "https://www.ringsidenews.com/jey-uso-message-nosey-people-video-him-kissing-jaida-parker-leaks-online": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، فعل أو اسم مثنى (يتحديان/كمالكين/كشريكين…) ممنوع — اكتب «ضد» أو «يواجه» أو اذكر الاسمين بفعل جمع، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة، فعل مثنى («يتبادلان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-27T18:33:55.098Z"
+ },
+ "https://www.ringsidenews.com/rey-mysterio-wants-aalyah-share-ring-eddie-guerreros-daughter": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T18:33:31.747Z"
+ },
  "https://www.ringsidenews.com/triple-h-reveals-official-theme-song-wwe-survivor-series-2026": {
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
   "at": "2026-11-27T18:30:40.914Z"
- },
- "https://www.ringsidenews.com/jey-uso-message-nosey-people-video-him-kissing-jaida-parker-leaks-online": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، صيغة مثنى (يساعدان/ضيفين/وهما…) ممنوعة — اكتب فعل جمع (يساعدون، وهم) أو «ضيوفا» أو أعد صياغة الجملة، فعل مثنى («يحملان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-27T18:17:59.308Z"
- },
- "https://www.ringsidenews.com/rey-mysterio-wants-aalyah-share-ring-eddie-guerreros-daughter": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-27T18:17:43.650Z"
  },
  "https://www.wrestlinginc.com/2329625/rj-city-says-toni-storm-ran-ship-timeless-aew": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
