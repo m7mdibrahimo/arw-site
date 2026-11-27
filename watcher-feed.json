@@ -1,5 +1,25 @@
 [
   {
+    "id": 340442,
+    "link": "https://www.fightful.com/wrestling/njpw-world-tag-league-2026-standings-and-results-archive/",
+    "date": "2026-11-27T10:00:00",
+    "date_gmt": "2026-11-27T15:00:00",
+    "title": {
+      "rendered": "NJPW World Tag League 2026 Standings And Results Archive"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/09/08093301/Untitled-Design-1.jpg"
+  },
+  {
+    "id": 341010,
+    "link": "https://www.fightful.com/wrestling/njpw-world-tag-league-night-night-four-results-11-27/",
+    "date": "2026-11-27T09:57:06",
+    "date_gmt": "2026-11-27T14:57:06",
+    "title": {
+      "rendered": "NJPW World Tag League Night Night Four Results (11/27)"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/27095632/cardmaker-image7.jpg"
+  },
+  {
     "id": 341006,
     "link": "https://www.fightful.com/wrestling/roman-reigns-launches-youtube-channel-with-new-vlog-series/",
     "date": "2026-11-27T09:28:06",
@@ -278,25 +298,5 @@
       "rendered": "Will Ospreay To Face MJF In Title vs. Title Ladder Match At AEW Worlds End"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/25221253/HYBQEStXUAAOQQe-e1795662781176.jpg"
-  },
-  {
-    "id": 340881,
-    "link": "https://www.fightful.com/wrestling/340881-aew-continental-classic/",
-    "date": "2026-11-25T21:34:52",
-    "date_gmt": "2026-11-26T02:34:52",
-    "title": {
-      "rendered": "AEW Continental Classic 2026 Night Three Recap"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/25213414/HYBFHD5XkAA40CX.jpg"
-  },
-  {
-    "id": 340886,
-    "link": "https://www.fightful.com/wrestling/wwe-main-event-results-11-25/",
-    "date": "2026-11-25T21:01:22",
-    "date_gmt": "2026-11-26T02:01:22",
-    "title": {
-      "rendered": "WWE Main Event Results (11/25)"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/25204450/20261123_MainEvent_TatumMichin_16x9_tonight.jpg"
   }
 ]
