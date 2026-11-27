@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/austin-creed-calls-out-wwe-hypocrisy-ronda-rousey-wore-his-banned-dragon-ball-z-shirt": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T16:27:06.028Z"
+ },
  "https://www.ringsidenews.com/stephanie-mcmahon-shares-update-daughter-vaughn-evelyns-music-career": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-21T04:09:03.351Z"
- },
- "https://www.fightful.com/wrestling/toni-storm-tapes-to-premiere-on-november-27": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-21T02:52:56.376Z"
  }
 }
