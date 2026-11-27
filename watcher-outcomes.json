@@ -1,8 +1,13 @@
 {
+ "https://www.wrestlinginc.com/2329298/aew-collision-viewership-ratings-november-21-2026": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-27T01:01:15.703Z"
+ },
  "https://www.wrestlinginc.com/2329268/aew-collision-thanksgiving-november-26-2027-results": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-27T00:56:42.552Z"
+  "at": "2026-11-27T01:00:43.884Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-results-11-26-continental-classic-continues": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-20T16:52:06.900Z"
- },
- "https://www.fightful.com/wrestling/joe-lando-announces-dislocated-elbow-injury-my-2026-comes-to-an-abrupt-end": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-20T15:49:13.575Z"
  }
 }
