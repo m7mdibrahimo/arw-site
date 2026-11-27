@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-27T10:58:03.705Z",
+ "checkedAt": "2026-11-27T12:07:27.788Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
@@ -12226,113 +12226,151 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-27T10:58:03.705Z"
+   "checked": "2026-11-27T12:07:27.788Z"
   },
   "https://hgcloud.to/e/9jz4j67vt8mx": {
    "page": "https://arab-wrestling.com/shows/aew-dynamite-thanksgiving-eve-25-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-27T10:58:03.705Z",
-   "lastOk": "2026-11-27T10:58:03.705Z"
+   "checked": "2026-11-27T12:07:27.788Z",
+   "lastOk": "2026-11-27T12:07:27.788Z"
   },
   "https://vidmoly.org/embed-m5p6cyx77hkf.html": {
    "page": "https://arab-wrestling.com/shows/aew-dynamite-thanksgiving-eve-25-11-2026/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-27T10:58:03.705Z",
-   "lastOk": "2026-11-27T10:58:03.705Z"
+   "checked": "2026-11-27T12:07:27.788Z",
+   "lastOk": "2026-11-27T12:07:27.788Z"
   },
   "https://ok.ru/videoembed/18285536152160": {
    "page": "https://arab-wrestling.com/shows/aew-dynamite-thanksgiving-eve-25-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-27T10:58:03.705Z"
+   "checked": "2026-11-27T12:07:27.788Z"
   },
   "https://fembed.co/embed/2g4_Sk-yvcQSC": {
    "page": "https://arab-wrestling.com/shows/aew-dynamite-thanksgiving-eve-25-11-2026/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-27T10:58:03.705Z",
-   "lastOk": "2026-11-27T10:58:03.705Z"
+   "checked": "2026-11-27T12:07:27.788Z",
+   "lastOk": "2026-11-27T12:07:27.788Z"
   },
   "https://vidtube.one/embed-6let6rpgwwtv.html": {
    "page": "https://arab-wrestling.com/shows/wwe-main-event-25-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-27T10:58:03.705Z"
+   "checked": "2026-11-27T12:07:27.788Z"
   },
   "https://vidmoly.org/embed-77wxl53bxu8n.html": {
    "page": "https://arab-wrestling.com/shows/wwe-main-event-25-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-27T10:58:03.705Z",
-   "lastOk": "2026-11-27T10:58:03.705Z"
+   "checked": "2026-11-27T12:07:27.788Z",
+   "lastOk": "2026-11-27T12:07:27.788Z"
   },
   "https://ok.ru/videoembed/18291237849696": {
    "page": "https://arab-wrestling.com/shows/wwe-main-event-25-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-27T10:58:03.705Z"
+   "checked": "2026-11-27T12:07:27.788Z"
   },
   "https://fembed.co/embed/D_qXrN7zx-RA6": {
    "page": "https://arab-wrestling.com/shows/wwe-main-event-25-11-2026/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-27T10:58:03.705Z",
-   "lastOk": "2026-11-27T10:58:03.705Z"
+   "checked": "2026-11-27T12:07:27.788Z",
+   "lastOk": "2026-11-27T12:07:27.788Z"
   },
   "https://hgcloud.to/e/fqu4hf3kfxra": {
    "page": "https://arab-wrestling.com/shows/cmll-concurso-de-fisicoculturismo-mr-and-miss-cmll-25-11-2026/",
    "status": "ok",
-   "reason": "the video plays",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-27T10:58:03.705Z",
-   "lastOk": "2026-11-27T10:58:03.705Z"
+   "checked": "2026-11-27T12:07:27.788Z",
+   "lastOk": "2026-11-27T12:07:27.788Z"
   },
   "https://ok.ru/videoembed/18291237915232": {
    "page": "https://arab-wrestling.com/shows/cmll-concurso-de-fisicoculturismo-mr-and-miss-cmll-25-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-27T10:58:03.705Z"
+   "checked": "2026-11-27T12:07:27.788Z"
   },
   "https://hgcloud.to/e/rspk7tcjyr0g": {
    "page": "https://arab-wrestling.com/shows/wwe-main-event-25-11-2026/",
-   "status": "unknown",
-   "reason": "StreamHG's first source failed and its fallback hadn't come yet ([helpers/jwplayer/api/core-shim]: JW Player Error 232011)",
+   "status": "ok",
+   "reason": "the video plays (after the player's first source failed)",
    "strikes": 0,
-   "checked": "2026-11-27T10:58:03.705Z"
+   "checked": "2026-11-27T12:07:27.788Z",
+   "lastOk": "2026-11-27T12:07:27.788Z"
   },
   "https://vidmoly.org/embed-ei8yb0p2d7tb.html": {
    "page": "https://arab-wrestling.com/shows/cmll-concurso-de-fisicoculturismo-mr-and-miss-cmll-25-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-27T10:58:03.705Z",
-   "lastOk": "2026-11-27T10:58:03.705Z"
+   "checked": "2026-11-27T12:07:27.788Z",
+   "lastOk": "2026-11-27T12:07:27.788Z"
   },
   "https://vidtube.one/embed-knv3dk8hs3wb.html": {
    "page": "https://arab-wrestling.com/shows/cmll-concurso-de-fisicoculturismo-mr-and-miss-cmll-25-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-27T10:58:03.705Z"
+   "checked": "2026-11-27T12:07:27.788Z"
   },
   "https://fembed.co/embed/QYeFH_kQti-U0": {
    "page": "https://arab-wrestling.com/shows/cmll-concurso-de-fisicoculturismo-mr-and-miss-cmll-25-11-2026/",
    "status": "ok",
-   "reason": "the video plays",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-27T10:58:03.705Z",
-   "lastOk": "2026-11-27T10:58:03.705Z"
+   "checked": "2026-11-27T12:07:27.788Z",
+   "lastOk": "2026-11-27T12:07:27.788Z"
+  },
+  "https://vidtube.one/embed-1r9b99gsgcpw.html": {
+   "page": "https://arab-wrestling.com/shows/wwe-nxt-24-11-2026-تعليق-عربي/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-27T12:07:27.788Z"
+  },
+  "https://vidmoly.org/embed-6gh1ie6wgyu8.html": {
+   "page": "https://arab-wrestling.com/shows/wwe-nxt-24-11-2026-تعليق-عربي/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-27T12:07:27.788Z",
+   "lastOk": "2026-11-27T12:07:27.788Z"
+  },
+  "https://ok.ru/videoembed/18299738786400": {
+   "page": "https://arab-wrestling.com/shows/wwe-nxt-24-11-2026-تعليق-عربي/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-27T12:07:27.788Z"
+  },
+  "https://fembed.co/embed/vd_FTj-cgeQ8O": {
+   "page": "https://arab-wrestling.com/shows/wwe-nxt-24-11-2026-تعليق-عربي/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-27T12:07:27.788Z",
+   "lastOk": "2026-11-27T12:07:27.788Z"
+  },
+  "https://hgcloud.to/e/n3bv1amto38l": {
+   "page": "https://arab-wrestling.com/shows/wwe-nxt-24-11-2026-تعليق-عربي/",
+   "status": "unknown",
+   "reason": "StreamHG's first source failed and its fallback hadn't come yet ([helpers/jwplayer/api/core-shim]: JW Player Error 232011)",
+   "strikes": 0,
+   "checked": "2026-11-27T12:07:27.788Z"
   }
  },
  "broken": [
