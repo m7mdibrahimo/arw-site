@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/rock-his-mom-recall-thanksgiving-when-their-family-no-food-barely-place-live": {
+  "reason": "المراجعة رفضته: فعل مثنى («يتذكران») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "retry": true,
+  "at": "2026-11-27T13:40:50.093Z"
+ },
  "https://www.wrestlinginc.com/2325165/clark-connors-addresses-comparisons-aew-hangman-page": {
   "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صيغة مثنى (هذان/هذين/إنهما/لأنهما/الرجلان) ممنوعة — قول «هؤلاء/إنهم/لأنهم» أو كرر الاسمين",
   "retry": true,
@@ -38,11 +43,6 @@
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-27T13:22:53.090Z"
- },
- "https://www.ringsidenews.com/rock-his-mom-recall-thanksgiving-when-their-family-no-food-barely-place-live": {
-  "reason": "المراجعة رفضته: فعل مثنى («يتذكران») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-27T13:22:35.727Z"
  },
  "https://www.ringsidenews.com/aj-francis-blasts-wrestlers-who-complain-about-nepotism-losers": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
