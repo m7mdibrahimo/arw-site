@@ -5934,7 +5934,7 @@
     "instagram_reel": true,
     "instagram_story": true,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 24.11.2026 مترجم",
-    "lastAttempt": 1795780965802,
+    "lastAttempt": 1795781876088,
     "errors": {
       "tiktok": "الفيديو لم يظهر على الموقع بعد؛ سيُعاد إرساله إلى TikTok بعد النشر."
     },
@@ -6019,16 +6019,14 @@
     "publishedAt": 1795780994325,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض ان اكس تي 24.11.2026 (تعليق عربي)",
-    "lastAttempt": 1795781010479,
+    "lastAttempt": 1795781919296,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
     "reviewPlatforms": [],
