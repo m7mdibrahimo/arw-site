@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2329625/rj-city-says-toni-storm-ran-ship-timeless-aew": {
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "retry": true,
+  "at": "2026-11-27T17:49:16.249Z"
+ },
  "https://www.ringsidenews.com/chad-gable-reveals-plans-aaa-return-losing-his-el-grande-americano-mask": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
