@@ -12,52 +12,52 @@
  "https://www.fightful.com/wrestling/xia-brookside-offered-new-contract-by-tna-wrestling": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-27T03:36:57.279Z"
+  "at": "2026-11-27T03:48:11.045Z"
  },
  "https://www.fightful.com/wrestling/independent-promotions-express-interest-in-booking-mike-romo": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T03:33:53.385Z"
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T03:47:21.619Z"
  },
  "https://www.fightful.com/wrestling/mark-davis-set-for-roh-world-title-survival-of-the-fittest-match-at-final-battle": {
-  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
-  "retry": true,
-  "at": "2026-11-27T03:28:34.558Z"
- },
- "https://www.fightful.com/wrestling/artist-of-stardom-championship-match-added-to-roh-final-battle": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-27T03:28:22.539Z"
+  "at": "2026-11-27T03:44:39.610Z"
+ },
+ "https://www.fightful.com/wrestling/artist-of-stardom-championship-match-added-to-roh-final-battle": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T03:44:20.353Z"
  },
  "https://www.fightful.com/wrestling/joe-coffey-wins-mlw-southern-crown-championship": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-27T03:27:54.301Z"
+  "at": "2026-11-27T03:43:28.963Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-results-11-26-continental-classic-continues": {
-  "reason": "المراجعة رفضته: أعضاء فريق غلط بين القوسين (اتاخدوا من سطر تاني) — اكتب أعضاء الفريق زي المصدر أو شيل القوسين (حصل: «ذا نيو ليفل (مارك ديفيس وجيك دويل)»)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: بطولة AEW العالمية للفرق الثلاثية، المواجهة الثانية: نزال فرق، المواجهة الثالثة: نزال فردي (بطولة Continental Classic - المجموعة الزرقاء)، المواجهة الرابعة: نزال فردي (بطولة Continental Classic - المجموعة الزرقاء)، المواجهة الخامسة: نزال فرق، المواجهة السادسة: نزال فرق، المواجهة السابعة: نزال فردي (بطولة Continental Classic - المجموعة الذهبية) — اكتب الفائز زي المصدر وبالماضي",
+  "reason": "المراجعة رفضته: أعضاء فريق غلط بين القوسين (اتاخدوا من سطر تاني) — اكتب أعضاء الفريق زي المصدر أو شيل القوسين (حصل: «ذا نيو ليفل (مارك ديفيس وجيك دويل)»)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، تقرير نتائج بلا أي نتيجة، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: بطولة AEW العالمية للفرق الثلاثية، المواجهة الثانية: نزال فرق، المواجهة الثالثة: مجموعة Blue في بطولة Continental Classic، المواجهة الرابعة: مجموعة Blue في بطولة Continental Classic، المواجهة الخامسة: نزال فرق، المواجهة السادسة: نزال فرق، المواجهة السابعة: مجموعة Gold في بطولة Continental Classic — اكتب الفائز زي المصدر وبالماضي",
   "retry": true,
-  "at": "2026-11-27T03:26:49.201Z"
+  "at": "2026-11-27T03:43:02.406Z"
  },
  "https://www.fightful.com/wrestling/lebron-james-the-rock-is-an-unbelievable-person": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T03:26:15.015Z"
+  "at": "2026-11-27T03:42:05.487Z"
  },
  "https://www.fightful.com/wrestling/jacy-jayne-responds-to-criticism-surrounding-womens-us-title-run-im-done-proving-myself": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T03:26:14.876Z"
+  "at": "2026-11-27T03:42:05.349Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-spoilers-for-11-26-taped-on-11-25": {
-  "reason": "المراجعة رفضته: أعضاء فريق غلط بين القوسين (اتاخدوا من سطر تاني) — اكتب أعضاء الفريق زي المصدر أو شيل القوسين (حصل: «ذا نيو ليفل (مارك ديفيس وجيك دويل)»)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Swerve Strickland، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: بطولة AEW للفرق الثلاثية، المواجهة الثانية: نزال فرق للسيدات، المواجهة الثالثة: نزال ضمن بطولة Continental Classic (المجموعة الزرقاء)، المواجهة الرابعة: نزال ضمن بطولة Continental Classic (المجموعة الزرقاء)، المواجهة الخامسة: نزال فرق، المواجهة السادسة: نزال فرق للسيدات — اكتب الفائز زي المصدر وبالماضي",
+  "reason": "المراجعة رفضته: أعضاء فريق غلط بين القوسين (اتاخدوا من سطر تاني) — اكتب أعضاء الفريق زي المصدر أو شيل القوسين (حصل: «ذا نيو ليفل (مارك ديفيس وجيك دويل)»)، تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Swerve Strickland، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
   "retry": true,
-  "at": "2026-11-27T03:26:14.711Z"
+  "at": "2026-11-27T03:42:05.194Z"
  },
  "https://www.fightful.com/wrestling/naoto-inoki-grandson-of-antonio-inoki-to-appear-at-njpw-wrestle-kingdom-21": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: اسم اليوم مش مطابق للتاريخ — صحح اليوم من التاريخ",
   "retry": true,
-  "at": "2026-11-27T03:20:30.603Z"
+  "at": "2026-11-27T03:41:37.969Z"
  },
  "https://www.fightful.com/wrestling/will-ospreay-to-face-mjf-in-title-vs-title-ladder-match-at-aew-worlds-end": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -68,11 +68,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-27T02:34:34.181Z"
- },
- "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-27T02:03:48.866Z"
  },
  "https://www.fightful.com/wrestling/wwe-womens-tag-team-title-bout-more-added-to-11-27-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
@@ -1993,10 +1988,5 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: EVOLVE Wrestling، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Zack Sabre Jr.، اسم مصارع في العنوان أو المتن غير موجود في المصدر: Mike Bailey",
   "retry": true,
   "at": "2026-11-20T18:37:29.568Z"
- },
- "https://www.fightful.com/wrestling/rj-city-wrestling-needs-to-be-more-self-aware-of-how-homoerotic-it-is": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-20T18:06:17.481Z"
  }
 }
