@@ -17,27 +17,27 @@
  "https://www.fightful.com/wrestling/njpw-world-tag-league-2026-standings-and-results-archive": {
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-27T15:22:24.324Z"
+  "at": "2026-11-27T15:32:25.459Z"
  },
  "https://www.fightful.com/wrestling/njpw-world-tag-league-night-night-four-results-11-27": {
-  "reason": "المراجعة رفضته: لقب «أومينو» اتكتب بعد كده «أوموري» — اكتبه «أومينو» زي المصدر في الخبر كله، كلمة مكسورة: حروف إنجليزي صغيرة ملزوقة في كلمة عربي، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه HOUSE OF TORTURE، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
+  "reason": "المراجعة رفضته: لقب «أومينو» اتكتب بعد كده «أوموري» — اكتبه «أومينو» زي المصدر في الخبر كله، آخر نزال في المصدر (الحدث الرئيسي) فاز فيه HOUSE OF TORTURE، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الأولى: نزال فرق سداسي، المواجهة الثانية: نزال فرق سداسي، المواجهة الثالثة: نزال فرق سداسي، المواجهة الرابعة: نزال فرق سداسي — اكتب الفائز زي المصدر وبالماضي",
   "retry": true,
-  "at": "2026-11-27T15:22:24.245Z"
+  "at": "2026-11-27T15:32:25.400Z"
  },
  "https://www.fightful.com/wrestling/roman-reigns-launches-youtube-channel-with-new-vlog-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T15:21:56.471Z"
+  "at": "2026-11-27T15:31:17.175Z"
  },
  "https://www.fightful.com/wrestling/parker-boudreaux-on-being-the-first-american-to-sign-with-gleat-it-is-an-honor-i-do-not-take-lightly": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-27T15:21:56.340Z"
+  "at": "2026-11-27T15:31:17.072Z"
  },
  "https://www.fightful.com/wrestling/brian-cage-responds-to-claims-that-hes-injury-prone": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T15:20:50.496Z"
+  "at": "2026-11-27T15:30:32.274Z"
  },
  "https://www.fightful.com/wrestling/gabe-kidd-has-thanksgiving-dinner-with-fans-family-in-nebraska": {
   "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
@@ -47,62 +47,62 @@
  "https://www.fightful.com/wrestling/details-about-korakuen-hall-renovations": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-27T15:20:27.986Z"
+  "at": "2026-11-27T15:29:42.081Z"
  },
  "https://www.fightful.com/wrestling/bde-expected-to-leave-tna-when-contract-expires": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: EVOLVE Wrestling",
   "retry": true,
-  "at": "2026-11-27T15:19:16.328Z"
+  "at": "2026-11-27T15:29:23.497Z"
  },
  "https://www.fightful.com/wrestling/gabby-forza-vs-zoey-serrano-added-to-12-3-tna-impact": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-27T15:17:34.614Z"
+  "at": "2026-11-27T15:28:45.582Z"
  },
  "https://www.fightful.com/wrestling/aew-continental-classic-2026-standings-and-results-archive": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T15:16:36.790Z"
+  "at": "2026-11-27T15:28:25.993Z"
  },
  "https://www.fightful.com/wrestling/xia-brookside-offered-new-contract-by-tna-wrestling": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
   "retry": false,
-  "at": "2026-11-27T15:16:36.676Z"
+  "at": "2026-11-27T15:28:25.901Z"
  },
  "https://www.fightful.com/wrestling/independent-promotions-express-interest-in-booking-mike-romo": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "reason": "المراجعة رفضته: نص الخبر قصير جدًا أو فاضي",
   "retry": false,
-  "at": "2026-11-27T15:15:39.041Z"
+  "at": "2026-11-27T15:27:34.310Z"
  },
  "https://www.fightful.com/wrestling/mark-davis-set-for-roh-world-title-survival-of-the-fittest-match-at-final-battle": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-27T15:14:40.911Z"
+  "reason": "المراجعة رفضته: تاريخ العرض مش في يومه الأسبوعي — راجع التاريخ من المصدر",
+  "retry": true,
+  "at": "2026-11-27T15:26:36.686Z"
  },
  "https://www.fightful.com/wrestling/artist-of-stardom-championship-match-added-to-roh-final-battle": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-27T15:13:42.720Z"
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Adam Page",
+  "retry": true,
+  "at": "2026-11-27T15:25:36.825Z"
  },
  "https://www.fightful.com/wrestling/joe-coffey-wins-mlw-southern-crown-championship": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-27T15:13:06.108Z"
+  "at": "2026-11-27T15:25:03.347Z"
  },
  "https://www.fightful.com/wrestling/aew-collision-results-11-26-continental-classic-continues": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T15:12:47.458Z"
+  "at": "2026-11-27T15:24:44.499Z"
  },
  "https://www.fightful.com/wrestling/lebron-james-the-rock-is-an-unbelievable-person": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T15:12:47.382Z"
+  "at": "2026-11-27T15:24:44.437Z"
  },
  "https://www.fightful.com/wrestling/jacy-jayne-responds-to-criticism-surrounding-womens-us-title-run-im-done-proving-myself": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-27T15:12:47.269Z"
+  "at": "2026-11-27T15:24:44.348Z"
  },
  "https://www.ringsidenews.com/rock-his-mom-recall-thanksgiving-when-their-family-no-food-barely-place-live": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
