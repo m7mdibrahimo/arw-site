@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/aj-styles-reveals-bad-habits-independent-wrestlers-must-break-before-joining-wwe": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T15:32:35.294Z"
+ },
  "https://www.ringsidenews.com/aj-styles-reveals-why-his-children-kept-him-playing-grand-theft-auto": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-21T01:40:56.243Z"
- },
- "https://www.fightful.com/wrestling/wwe-nxt-11-17-viewership-increases-demo-remains-the-same": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-21T01:24:31.893Z"
  }
 }
