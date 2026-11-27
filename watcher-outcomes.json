@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/kevin-nash-fires-back-critics-bringing-his-late-son-tristen": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T00:30:44.004Z"
+ },
  "https://www.ringsidenews.com/kevin-nash-says-fans-mistook-his-physical-limitations-laziness": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-20T15:44:28.493Z"
- },
- "https://www.fightful.com/wrestling/the-rocks-wwe-return-announcement-surprised-many-people-at-wwe-hq": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-20T15:15:42.784Z"
  }
 }
