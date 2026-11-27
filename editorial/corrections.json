@@ -1,6 +1,10 @@
 {
  "_comment": "Wrong→right fixes applied to EVERY article (title, body, tags) before publishing, and shown to Gemini as spellings to never use. Add a line here whenever a mistake reaches the site; it is then fixed automatically forever. regex:true entries are regular expressions; all entries only match whole Arabic words.",
  "corrections": [
+  {"wrong":"الثمنينيات","right":"الثمانينيات","note":"ألف ناقصة (خبر تشاد غيبل 2026-11-27، INCIDENTS #1570)"},
+  {"wrong":"الثمنينات","right":"الثمانينيات","note":"ألف ناقصة (INCIDENTS #1570)"},
+  {"wrong":"هل يزال","right":"هل لا يزال","note":"«يزال» من غير نفي غلط (خبر تشاد غيبل 2026-11-27، INCIDENTS #1570)"},
+  {"wrong":"هل تزال","right":"هل لا تزال","note":"«تزال» من غير نفي غلط (INCIDENTS #1570)"},
   {"wrong":"(?<a>[ء-ي]*)نتت(?<b>[ء-ي]*)","right":"$<a>نت$<b>","regex":true,"note":"التاء مكتوبة مرتين: «ينتقد» مش «ينتتقد» (خبر ديفون دادلي 2026-11-27)"},
   {"wrong":"عنصرى","right":"عنصري","note":"«عنصري» بالياء مش بالألف المقصورة (خبر ديفون دادلي وجيم روس 2026-11-27)"},
   {"wrong":"(?<al>ال)?هاركودر","right":"$<al>هاردكور","regex":true,"note":"بطولة Hardcore = «الهاردكور» مش «الهاركودر» (خبر سبايك دادلي 2026-11-27)"},

@@ -3300,7 +3300,12 @@ export function fixEventCalledMovie(text: string, source: string): string {
     if (!new RegExp(`(^|[^A-Za-z])${n}([^A-Za-z]|$)`, "i").test(src)) return m;
     // «the 2026 adaptation of Street Fighter» is a film: «فيلم Street Fighter» became «عرض Street Fighter» (Cody Rhodes story, INCIDENTS #1465)
     const movie = new RegExp(`\\b(?:movie|film|picture)s?\\s+(?:called\\s+|titled\\s+|the\\s+)?${n}|\\b(?:adaptation|remake|reboot|biopic)s?\\s+of\\s+(?:the\\s+)?${n}|${n}\\s+(?:adaptation|remake|reboot|biopic)\\b|${n}['’]?s?\\s+(?:\\(\\d{4}\\)\\s+)?(?:\\w+\\s+){0,2}(?:movie|film)|\\b\\d{4}\\s+(?:\\w+\\s+)?(?:movie|film)\\s+${n}|${n}\\s*\\(\\d{4}\\)`, "i");
-    return movie.test(src) ? m : `${pre}${pfx}عرض${sp}${name}`;
+    if (movie.test(src)) return m;
+    // «John Travolta's famous scene from Pulp Fiction» (no «movie» word) became «عرض Pulp Fiction» (Chad Gable story,
+    // INCIDENTS #1570): a scene, clip or cast is a film signal, and only a name the source puts at an event becomes «عرض».
+    if (new RegExp(`\\b(?:scenes?|clips?|cast|starred|stars|starring|actor|actress|sequel|trailer)\\b[^.\\n]{0,30}?\\b(?:from|in|of)\\s+(?:the\\s+)?${n}`, "i").test(src)) return m;
+    const event = new RegExp(`\\b(?:at|during|attended|attend|attending)\\s+(?:the\\s+)?${n}|${n}\\s+(?:event|show|PPV|pay-per-view|card|tapings?)\\b`, "i");
+    return event.test(src) ? `${pre}${pfx}عرض${sp}${name}` : m;
   });
 }
 
