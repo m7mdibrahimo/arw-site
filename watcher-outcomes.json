@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/paige-collett-credits-ddp-yoga-helping-her-walk-again-wrestling-injury": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-27T21:33:37.543Z"
+ },
  "https://www.fightful.com/wrestling/cody-rhodes-heres-my-political-high-horse-i-really-do-like-the-presidents-fitness-council": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Legends contract",
   "retry": true,
   "at": "2026-11-21T20:10:17.499Z"
- },
- "https://www.wrestlinginc.com/2319284/bret-hart-modern-wrestlers-arent-making-effort-feel-real": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-21T19:35:39.504Z"
  }
 }
