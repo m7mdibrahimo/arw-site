@@ -1,5 +1,15 @@
 [
   {
+    "id": 341130,
+    "link": "https://www.fightful.com/?p=341130",
+    "date": "2026-11-27T22:15:00",
+    "date_gmt": "2026-11-28T03:15:00",
+    "title": {
+      "rendered": "WWE SmackDown Results (11/27/2026): Kevin Owens &amp; Finn Balor vs. GUNTHER &amp; Sami Zayn, Tag Title Match, More"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/27165440/20261127_SD_Match_FinnKOGuntherSami_16x9_Tonight-1.jpg"
+  },
+  {
     "id": 341129,
     "link": "https://www.fightful.com/wrestling/wrestling-world-remembers-bronson-reed/",
     "date": "2026-11-27T21:31:06",
@@ -288,15 +298,5 @@
       "rendered": "Jacy Jayne Didn&#8217;t Do Hardcore Matches Before Coming To WWE, &#8216;It Was Quite Eye Opening&#8217;"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/27111845/maxresdefault-137.jpg"
-  },
-  {
-    "id": 340871,
-    "link": "https://www.fightful.com/wrestling/340871-jacy-jayne-babyface/",
-    "date": "2026-11-27T11:00:00",
-    "date_gmt": "2026-11-27T16:00:00",
-    "title": {
-      "rendered": "Jacy Jayne Comments On Possible Babyface Run, &#8216;We&#8217;ll Get There&#8217;"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/10/12212607/029_MITB_10102026CM_155144-e1791854783704.jpg"
   }
 ]
