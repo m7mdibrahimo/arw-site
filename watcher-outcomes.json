@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2329308/wwe-smackdown-november-27-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-28T00:01:21.629Z"
+ },
  "https://www.fightful.com/wrestling/dragon-lee-says-wwe-survivor-series-wargames-will-be-an-amazing-night-for-mexicans": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -113,11 +118,6 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-27T23:38:45.013Z"
- },
- "https://www.wrestlinginc.com/2329308/wwe-smackdown-november-27-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-27T23:23:25.724Z"
  },
  "https://www.fightful.com/wrestling/charlotte-flair-discusses-people-hating-on-ashley-and-not-charlotte-the-wrestlemania-roast": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
