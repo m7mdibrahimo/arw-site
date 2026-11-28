@@ -1,5 +1,15 @@
 [
   {
+    "id": 4355670182,
+    "link": "https://www.wrestlinginc.com/2325403/wwe-wrestlemania-sheamus-gunther-details-unrealized-pitch/",
+    "date": "Sat, 28 Nov 2026 02:00:00 +0000",
+    "date_gmt": "2026-11-28T02:00:00.000Z",
+    "title": {
+      "rendered": "Former WWE Star Sheamus Details Unrealized WrestleMania Pitch Against GUNTHER"
+    },
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/former-wwe-star-sheamus-details-unrealized-wrestlemania-pitch-against-gunther/l-intro-1795456116.jpg"
+  },
+  {
     "id": 4819769990,
     "link": "https://www.wrestlinginc.com/2329933/bronson-reed-dead-wwe-38/",
     "date": "Sat, 28 Nov 2026 00:43:58 +0000",
@@ -15,9 +25,9 @@
     "date": "Fri, 27 Nov 2026 22:00:00 +0000",
     "date_gmt": "2026-11-27T22:00:00.000Z",
     "title": {
-      "rendered": "WWE SmackDown Results 11/27/26 W/ Live Updates: Women's Tag Team Title On The Line"
+      "rendered": "WWE SmackDown Results 11/27/26 W/ Live Updates: Chelsea Green Faces Blake Monroe"
     },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-results-112726-w-live-updates/l-intro-1795829003.jpg"
+    "featured_image": "https://www.wrestlinginc.com/img/gallery/wwe-smackdown-results-112726-w-live-updates/l-intro-1795830864.jpg"
   },
   {
     "id": 2995770240,
@@ -188,15 +198,5 @@
       "rendered": "AEW Collision Thanksgiving Results 11/26/26 W/ Live Updates"
     },
     "featured_image": "https://www.wrestlinginc.com/img/gallery/aew-collision-thanksgiving-results-112626-w-live-updates/l-intro-1795753411.jpg"
-  },
-  {
-    "id": 3643911389,
-    "link": "https://www.wrestlinginc.com/2319887/wwe-damian-priest-lessons-learned-first-world-title-run/",
-    "date": "Thu, 26 Nov 2026 22:00:00 +0000",
-    "date_gmt": "2026-11-26T22:00:00.000Z",
-    "title": {
-      "rendered": "Damian Priest Talks Lessons Learned From First WWE World Title Run"
-    },
-    "featured_image": "https://www.wrestlinginc.com/img/gallery/damian-priest-talks-lessons-learned-from-first-wwe-world-title-run/l-intro-1794950342.jpg"
   }
 ]
