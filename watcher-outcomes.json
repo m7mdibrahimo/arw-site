@@ -1,8 +1,13 @@
 {
+ "https://www.ringsidenews.com/wwe-donating-bronson-reed-merchandise-proceeds-support-his-wife-children": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-28T12:52:41.092Z"
+ },
  "https://www.ringsidenews.com/spike-dudley-would-reject-wwe-hall-fame-induction-saudi-arabia": {
-  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Legends contract",
-  "retry": true,
-  "at": "2026-11-28T12:25:42.688Z"
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-28T12:48:01.020Z"
  },
  "https://www.fightful.com/wrestling/cmll-leyenda-azul-results-11-27-2026-hechicero-vs-barbaro-cavernario-sky-team-vs-dcf-persephone-vs-marina-shafir-more": {
   "reason": "المراجعة رفضته: تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر، أغلب نزالات التقرير من غير سطر «🏆 الفائز»، المصدر فيه نتيجة النزال ده والتقرير كتبه من غير سطر «🏆 الفائز»: المواجهة الثانية: نزال غرار التيرناتيفا، المواجهة الثالثة: نزال فرق، المواجهة الرابعة: بطولة CMLL العالمية للسيدات، المواجهة الخامسة: بطولة ROH العالمية للفرق — اكتب الفائز زي المصدر وبالماضي",
@@ -1993,10 +1998,5 @@
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
   "at": "2026-11-22T16:35:15.193Z"
- },
- "https://www.fightful.com/wrestling/kevin-knight-says-don-callis-has-put-that-pressure-on-his-back-to-win-the-continental-classic": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-22T15:59:20.488Z"
  }
 }
