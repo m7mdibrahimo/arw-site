@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-honors-bronson-reed-ten-bell-salute-live-event-athens-georgia": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-28T04:10:20.779Z"
+ },
  "https://www.fightful.com/wrestling/two-title-bouts-more-set-for-roh-final-battle": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -128,11 +133,6 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-28T04:01:44.680Z"
- },
- "https://www.ringsidenews.com/wwe-honors-bronson-reed-ten-bell-salute-live-event-athens-georgia": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-28T03:50:20.835Z"
  },
  "https://www.fightful.com/?p=341130": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
