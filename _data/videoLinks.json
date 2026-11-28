@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-11-27T16:57:59.220Z",
+ "checkedAt": "2026-11-28T03:24:50.742Z",
  "links": {
   "https://ok.ru/videoembed/17533505243744": {
    "page": "https://arab-wrestling.com/shows/wwe-raw-05-10-2026/",
@@ -12341,114 +12341,181 @@
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-27T16:57:59.220Z"
+   "checked": "2026-11-28T03:24:50.742Z"
   },
   "https://vidmoly.org/embed-6gh1ie6wgyu8.html": {
    "page": "https://arab-wrestling.com/shows/wwe-nxt-24-11-2026-تعليق-عربي/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-27T16:57:59.220Z",
-   "lastOk": "2026-11-27T16:57:59.220Z"
+   "checked": "2026-11-28T03:24:50.742Z",
+   "lastOk": "2026-11-28T03:24:50.742Z"
   },
   "https://ok.ru/videoembed/18299738786400": {
    "page": "https://arab-wrestling.com/shows/wwe-nxt-24-11-2026-تعليق-عربي/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-27T16:57:59.220Z"
+   "checked": "2026-11-28T03:24:50.742Z"
   },
   "https://fembed.co/embed/vd_FTj-cgeQ8O": {
    "page": "https://arab-wrestling.com/shows/wwe-nxt-24-11-2026-تعليق-عربي/",
    "status": "ok",
    "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-27T16:57:59.220Z",
-   "lastOk": "2026-11-27T16:57:59.220Z"
+   "checked": "2026-11-28T03:24:50.742Z",
+   "lastOk": "2026-11-28T03:24:50.742Z"
   },
   "https://hgcloud.to/e/n3bv1amto38l": {
    "page": "https://arab-wrestling.com/shows/wwe-nxt-24-11-2026-تعليق-عربي/",
-   "status": "unknown",
-   "reason": "StreamHG's first source failed and its fallback hadn't come yet ([helpers/jwplayer/api/core-shim]: JW Player Error 232011)",
+   "status": "ok",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-27T16:57:59.220Z",
-   "lastOk": "2026-11-27T14:24:19.643Z"
+   "checked": "2026-11-28T03:24:50.742Z",
+   "lastOk": "2026-11-28T03:24:50.742Z"
   },
   "https://vidtube.one/embed-rev64wnf671g.html": {
    "page": "https://arab-wrestling.com/shows/tna-impact-thanksgiving-special-26-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-27T16:57:59.220Z"
+   "checked": "2026-11-28T03:24:50.742Z"
   },
   "https://hgcloud.to/e/zupgvfq2c05h": {
    "page": "https://arab-wrestling.com/shows/tna-impact-thanksgiving-special-26-11-2026/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-27T16:57:59.220Z",
-   "lastOk": "2026-11-27T16:57:59.220Z"
+   "checked": "2026-11-28T03:24:50.742Z",
+   "lastOk": "2026-11-28T03:24:50.742Z"
   },
   "https://vidmoly.org/embed-370s0ddqdqau.html": {
    "page": "https://arab-wrestling.com/shows/tna-impact-thanksgiving-special-26-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-27T16:57:59.220Z",
-   "lastOk": "2026-11-27T16:57:59.220Z"
+   "checked": "2026-11-28T03:24:50.742Z",
+   "lastOk": "2026-11-28T03:24:50.742Z"
   },
   "https://ok.ru/videoembed/18301469985376": {
    "page": "https://arab-wrestling.com/shows/tna-impact-thanksgiving-special-26-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-27T16:57:59.220Z"
+   "checked": "2026-11-28T03:24:50.742Z"
   },
   "https://fembed.co/embed/vJetwxAe_y-B7": {
    "page": "https://arab-wrestling.com/shows/tna-impact-thanksgiving-special-26-11-2026/",
    "status": "ok",
-   "reason": "the stream arrives",
+   "reason": "the video plays",
    "strikes": 0,
-   "checked": "2026-11-27T16:57:59.220Z",
-   "lastOk": "2026-11-27T16:57:59.220Z"
+   "checked": "2026-11-28T03:24:50.742Z",
+   "lastOk": "2026-11-28T03:24:50.742Z"
   },
   "https://vidmoly.org/embed-k304j1p27h5s.html": {
    "page": "https://arab-wrestling.com/shows/aew-collision-thanksgiving-26-11-2026/",
    "status": "ok",
-   "reason": "the video plays",
+   "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-27T16:57:59.220Z",
-   "lastOk": "2026-11-27T16:57:59.220Z"
+   "checked": "2026-11-28T03:24:50.742Z",
+   "lastOk": "2026-11-28T03:24:50.742Z"
   },
   "https://hgcloud.to/e/x2gj2fpzwh4q": {
    "page": "https://arab-wrestling.com/shows/aew-collision-thanksgiving-26-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-27T16:57:59.220Z",
-   "lastOk": "2026-11-27T16:57:59.220Z"
+   "checked": "2026-11-28T03:24:50.742Z",
+   "lastOk": "2026-11-28T03:24:50.742Z"
   },
   "https://ok.ru/videoembed/18301469919840": {
    "page": "https://arab-wrestling.com/shows/aew-collision-thanksgiving-26-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-27T16:57:59.220Z"
+   "checked": "2026-11-28T03:24:50.742Z"
   },
   "https://vidtube.one/embed-2ocs4846ijea.html": {
    "page": "https://arab-wrestling.com/shows/aew-collision-thanksgiving-26-11-2026/",
    "status": "unknown",
    "reason": "no stream seen",
    "strikes": 0,
-   "checked": "2026-11-27T16:57:59.220Z"
+   "checked": "2026-11-28T03:24:50.742Z"
   },
   "https://fembed.co/embed/i5G_mxgA-ZyzH": {
    "page": "https://arab-wrestling.com/shows/aew-collision-thanksgiving-26-11-2026/",
    "status": "ok",
    "reason": "the stream arrives",
    "strikes": 0,
-   "checked": "2026-11-27T16:57:59.220Z",
-   "lastOk": "2026-11-27T16:57:59.220Z"
+   "checked": "2026-11-28T03:24:50.742Z",
+   "lastOk": "2026-11-28T03:24:50.742Z"
+  },
+  "https://fembed.co/embed/6_Tq1sb0ln-WA": {
+   "page": "https://arab-wrestling.com/shows/njpw-world-tag-league-night-4-27-11-2026/",
+   "status": "ok",
+   "reason": "the video plays",
+   "strikes": 0,
+   "checked": "2026-11-28T03:24:50.742Z",
+   "lastOk": "2026-11-28T03:24:50.742Z"
+  },
+  "https://vidmoly.org/embed-1ob7vhonor8g.html": {
+   "page": "https://arab-wrestling.com/shows/njpw-world-tag-league-night-4-27-11-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-28T03:24:50.742Z",
+   "lastOk": "2026-11-28T03:24:50.742Z"
+  },
+  "https://vidtube.one/embed-3bxegy0fdsh5.html": {
+   "page": "https://arab-wrestling.com/shows/njpw-world-tag-league-night-4-27-11-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-28T03:24:50.742Z"
+  },
+  "https://ok.ru/videoembed/18309670111840": {
+   "page": "https://arab-wrestling.com/shows/njpw-world-tag-league-night-4-27-11-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-28T03:24:50.742Z"
+  },
+  "https://vidtube.one/embed-7y4rgf4a4anw.html": {
+   "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-24-11-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-28T03:24:50.742Z"
+  },
+  "https://ok.ru/videoembed/18309670177376": {
+   "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-24-11-2026/",
+   "status": "unknown",
+   "reason": "no stream seen",
+   "strikes": 0,
+   "checked": "2026-11-28T03:24:50.742Z"
+  },
+  "https://vidmoly.org/embed-2wcedxcwiuk5.html": {
+   "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-24-11-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-28T03:24:50.742Z",
+   "lastOk": "2026-11-28T03:24:50.742Z"
+  },
+  "https://fembed.co/embed/E-2Ls8FvOF_D8": {
+   "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-24-11-2026/",
+   "status": "ok",
+   "reason": "the stream arrives",
+   "strikes": 0,
+   "checked": "2026-11-28T03:24:50.742Z",
+   "lastOk": "2026-11-28T03:24:50.742Z"
+  },
+  "https://hgcloud.to/e/rbefpr4vcyg8": {
+   "page": "https://arab-wrestling.com/shows/cmll-martes-de-glamour-24-11-2026/",
+   "status": "unknown",
+   "reason": "StreamHG's first source failed and its fallback hadn't come yet ([helpers/jwplayer/api/core-shim]: JW Player Error 232011)",
+   "strikes": 0,
+   "checked": "2026-11-28T03:24:50.742Z"
   }
  },
  "broken": [
