@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-honors-bronson-reed-ten-bell-salute-live-event-athens-georgia": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-28T03:20:25.831Z"
+ },
  "https://www.fightful.com/?p=341130": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -123,11 +128,6 @@
   "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
   "retry": true,
   "at": "2026-11-28T03:05:19.494Z"
- },
- "https://www.ringsidenews.com/wwe-honors-bronson-reed-ten-bell-salute-live-event-athens-georgia": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-28T02:40:10.119Z"
  },
  "https://www.fightful.com/wrestling/dutch-mantell-discloses-what-is-the-most-money-hes-made-in-wrestling": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
