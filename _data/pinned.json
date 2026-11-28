@@ -1,5 +1,27 @@
 [
   {
+    "url": "/shows/wwe-smackdown-27-11-2026-تعليق-عربي/",
+    "title": "عرض سماك داون 27.11.2026 (تعليق عربي)",
+    "subtitle": "WWE Smackdown 27.11.2026 (تعليق عربي)",
+    "image": "/content/images/atdr1kvwrklid1yw.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري بتعليق عربي",
+    "description": "عرض سماك داون (تعليق عربي) بالكامل مع جميع النزالات والأحداث."
+  },
+  {
+    "url": "/shows/roh-on-honorclub-27-11-2026/",
+    "title": "عرض ار او اتش اون اونر كلوب 27.11.2026 مترجم",
+    "subtitle": "ROH on HonorClub 27.11.2026",
+    "image": "/content/images/lfysph12zhh30dhw.jpg?w=800",
+    "federation": "ROH",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض ار او اتش اون اونر كلوب مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/wwe-smackdown-27-11-2026/",
     "title": "عرض سماك داون 27.11.2026 مترجم",
     "subtitle": "WWE Smackdown 27.11.2026",
@@ -86,16 +108,5 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/roh-on-honorclub-19-11-2026/",
-    "title": "عرض ار او اتش اون اونر كلوب 19.11.2026 مترجم",
-    "subtitle": "ROH on HonorClub 19.11.2026",
-    "image": "/content/images/oakys7jidbq4q8kg.jpg?w=800",
-    "federation": "ROH",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض ار او اتش اون اونر كلوب مترجم بالكامل مع جميع النزالات والأحداث."
   }
 ]
