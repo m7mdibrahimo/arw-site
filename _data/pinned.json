@@ -1,5 +1,16 @@
 [
   {
+    "url": "/shows/wwe-smackdown-27-11-2026/",
+    "title": "عرض سماك داون 27.11.2026 مترجم",
+    "subtitle": "WWE Smackdown 27.11.2026",
+    "image": "/content/images/fwsm53cwb45lnqut.jpg?w=800",
+    "federation": "WWE",
+    "kind": "show",
+    "kindLabel": "عرض",
+    "badge": "حصري ومترجم",
+    "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث."
+  },
+  {
     "url": "/shows/aew-collision-thanksgiving-26-11-2026/",
     "title": "عرض كوليجن 26.11.2026 مترجم",
     "subtitle": "AEW Collision Thanksgiving 26.11.2026",
@@ -75,28 +86,6 @@
     "kindLabel": "عرض",
     "badge": "حصري ومترجم",
     "description": "عرض ايه ايه ايه مترجم بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-smackdown-20-11-2026-تعليق-عربي/",
-    "title": "عرض سماك داون 20.11.2026 (تعليق عربي)",
-    "subtitle": "WWE Smackdown 20.11.2026 (تعليق عربي)",
-    "image": "/content/images/v4v43idxxrvkuyop.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري بتعليق عربي",
-    "description": "عرض سماك داون (تعليق عربي) بالكامل مع جميع النزالات والأحداث."
-  },
-  {
-    "url": "/shows/wwe-smackdown-20-11-2026/",
-    "title": "عرض سماك داون 20.11.2026 مترجم",
-    "subtitle": "WWE Smackdown 20.11.2026",
-    "image": "/content/images/nts2010erfxz9i2n.jpg?w=800",
-    "federation": "WWE",
-    "kind": "show",
-    "kindLabel": "عرض",
-    "badge": "حصري ومترجم",
-    "description": "عرض سماك داون مترجم بالكامل مع جميع النزالات والأحداث."
   },
   {
     "url": "/shows/roh-on-honorclub-19-11-2026/",
