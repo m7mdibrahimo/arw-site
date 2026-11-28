@@ -1,13 +1,23 @@
 [
   {
+    "id": 341149,
+    "link": "https://www.fightful.com/wrestling/two-title-bouts-more-set-for-roh-final-battle/",
+    "date": "2026-11-27T23:02:40",
+    "date_gmt": "2026-11-28T04:02:40",
+    "title": {
+      "rendered": "Two Title Bouts, More Set For ROH Final Battle"
+    },
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/27230221/HYKsJCAW0AAXBQd.jpeg"
+  },
+  {
     "id": 341115,
-    "link": "https://www.fightful.com/?p=341115",
+    "link": "https://www.fightful.com/wrestling/asuka-serves-as-honorary-police-chief-in-osaka-sprays-attacker-with-mist-during-training-session/",
     "date": "2026-11-27T23:00:00",
     "date_gmt": "2026-11-28T04:00:00",
     "title": {
       "rendered": "Asuka Serves As Honorary Police Chief In Osaka, Sprays &#8216;Attacker&#8217; With Mist During Training Session"
     },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/27202204/HYHQBFXXIAAWLWh-e1795828940458.jpg?v=20261128024519"
+    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/27202204/HYHQBFXXIAAWLWh-e1795828940458.jpg"
   },
   {
     "id": 341138,
@@ -288,15 +298,5 @@
       "rendered": "Katsuhiko Nakajima Announced For 2027 wXw Germany 16 Carat Gold Tournament"
     },
     "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/27121343/3doskloinq4h1-e1795799661551.jpeg"
-  },
-  {
-    "id": 341026,
-    "link": "https://www.fightful.com/wrestling/aaas-la-parka-scheduled-for-gleats-december-30th-show/",
-    "date": "2026-11-27T12:09:19",
-    "date_gmt": "2026-11-27T17:09:19",
-    "title": {
-      "rendered": "AAA&#8217;s La Parka Scheduled For GLEAT&#8217;s December 30th Show"
-    },
-    "featured_image": "https://d1fcaprh3kb5t7.cloudfront.net/wp-content/uploads/2026/11/27115606/Screenshot-606.png"
   }
 ]
