@@ -9,6 +9,11 @@
   "retry": true,
   "at": "2026-11-28T14:17:11.401Z"
  },
+ "https://www.ringsidenews.com/leila-grey-rides-elephant-while-rocking-bikini-during-thailand-vacation": {
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-28T13:53:34.855Z"
+ },
  "https://www.fightful.com/wrestling/aew-pays-tribute-to-jermaine-haley-bronson-reed": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
