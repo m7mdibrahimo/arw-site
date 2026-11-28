@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/wwe-honors-bronson-reed-ten-bell-salute-live-event-athens-georgia": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-28T02:40:10.119Z"
+ },
  "https://www.fightful.com/wrestling/wrestling-world-remembers-bronson-reed": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
   "at": "2026-11-22T12:50:55.690Z"
- },
- "https://www.ringsidenews.com/rhea-ripley-reveals-she-needed-wwes-permission-cut-her-hair": {
-  "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا/شركة X وشركة Y»",
-  "retry": true,
-  "at": "2026-11-22T12:32:47.843Z"
  }
 }
