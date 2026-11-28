@@ -1,113 +1,113 @@
 {
  "https://www.fightful.com/wrestling/cmll-leyenda-azul-results-11-27-2026-hechicero-vs-barbaro-cavernario-sky-team-vs-dcf-persephone-vs-marina-shafir-more": {
-  "reason": "المراجعة رفضته: آخر نزال في المصدر (الحدث الرئيسي) فاز فيه Alexius، والتقرير سمّى نزال تاني «الحدث الرئيسي» — رتّب النزالات زي المصدر وخلي آخر نزال فيه هو الحدث الرئيسي، والعنوان يتكلم عنه",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-28T11:47:42.425Z"
+  "at": "2026-11-28T12:09:35.168Z"
  },
  "https://www.fightful.com/wrestling/aew-pays-tribute-to-jermaine-haley-bronson-reed": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-28T11:46:43.013Z"
+  "at": "2026-11-28T12:08:12.028Z"
  },
  "https://www.fightful.com/wrestling/hechicero-and-matt-sydal-qualify-for-survival-of-the-fittest-match-at-roh-final-battle": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا/شركة X وشركة Y»، فعل مثنى («يتأهلان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-28T11:46:42.868Z"
+  "at": "2026-11-28T12:08:11.925Z"
  },
  "https://www.fightful.com/wrestling/two-title-bouts-more-set-for-roh-final-battle": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا/شركة X وشركة Y»",
-  "retry": true,
-  "at": "2026-11-28T11:45:43.825Z"
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-28T12:02:24.086Z"
  },
  "https://www.fightful.com/wrestling/asuka-serves-as-honorary-police-chief-in-osaka-sprays-attacker-with-mist-during-training-session": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-28T11:44:45.614Z"
+  "at": "2026-11-28T11:57:47.455Z"
  },
  "https://www.fightful.com/wrestling/wrestling-world-remembers-bronson-reed": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-28T11:43:47.466Z"
+  "at": "2026-11-28T11:57:32.248Z"
  },
  "https://www.fightful.com/wrestling/wwe-does-10-bell-salute-for-jermaine-haley-bronson-reed-at-house-show": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-28T11:43:47.328Z"
+  "at": "2026-11-28T11:57:32.148Z"
  },
  "https://www.fightful.com/wrestling/wwe-pays-tribute-to-bronson-reed-on-11-27-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-28T11:43:47.187Z"
+  "at": "2026-11-28T11:57:32.047Z"
  },
  "https://www.fightful.com/wrestling/alexa-bliss-tatum-paxley-win-wwe-womens-tag-team-titles-on-11-27-wwe-smackdown": {
-  "reason": "المراجعة رفضته: صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، مثنى مقنّع (2 عرض / متتاليين) ممنوع — اكتب الجملة بشكل تاني (سيقام عدة عروض / عروض متتالية)، صيغة مثنى (اللذان/اللذين/حققا/واصلا/يواجهان/يحتفظان/تفوزان/البطلتين/حاملتي...) ممنوعة — اجمع الفعل والضمير (اللي، حققوا، واصلوا، يواجهون) أو كرر الاسم، صفة مثنى مؤنث (الأخيرتين/الأولتين/السابقتين…) ممنوعة — اكتب «ختام» أو «آخر الجولات» بدون مثنى (INCIDENTS #850)، فعل مثنى («تفوزان») ممنوع — اجمع الفعل («يخطفون»، «يحضرون»، «ستتواجه») أو كرر الاسم",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-28T11:43:47.041Z"
+  "at": "2026-11-28T11:57:31.939Z"
  },
  "https://www.fightful.com/wrestling/bronson-reed-passes-away-due-to-medical-complications": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-28T11:42:47.356Z"
+  "at": "2026-11-28T11:57:03.972Z"
  },
  "https://www.fightful.com/wrestling/dragon-lee-says-wwe-survivor-series-wargames-will-be-an-amazing-night-for-mexicans": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-28T11:42:47.216Z"
+  "at": "2026-11-28T11:57:03.866Z"
  },
  "https://www.fightful.com/wrestling/austin-creed-recalls-cutting-a-promo-about-pokemon-go-vince-mcmahon-not-understanding-it": {
-  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
-  "retry": false,
-  "at": "2026-11-28T11:42:47.068Z"
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-28T11:57:03.758Z"
  },
  "https://www.fightful.com/wrestling/francesco-akira-feels-united-empire-shouldnt-be-recruiting-right-now": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-28T11:41:47.602Z"
+  "at": "2026-11-28T11:55:45.382Z"
  },
  "https://www.fightful.com/wrestling/francesco-akira-thinks-current-njpw-junior-heavyweights-are-hungrier-than-ever": {
-  "reason": "المراجعة رفضته: نهاية أو تدخل من غير معنى («لصالح الأحداث»، «أسفرت عن تثبيت الخصم وإعلان الفوز»): اكتب مين عمل إيه في مين ومين اتثبت زي المصدر (INCIDENTS #1320)",
-  "retry": true,
-  "at": "2026-11-28T11:40:46.835Z"
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-28T11:54:40.103Z"
  },
  "https://www.fightful.com/wrestling/francesco-akira-discusses-united-empire-forming-in-usa-while-existing-in-japan": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-28T11:39:06.337Z"
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-28T11:53:44.222Z"
  },
  "https://www.fightful.com/wrestling/power-pro-lucha-neon-genesis-cibernetico-results-11-22": {
-  "reason": "المراجعة رفضته: كلمة إنجليزية مكتوبة بحروف عربية (dynasty ← سلالة، lineage ← نسب)، تاريخ في العنوان مش مذكور في نص الخبر — احذفه أو اكتب التاريخ الصحيح من المصدر",
-  "retry": true,
-  "at": "2026-11-28T11:37:49.677Z"
+  "reason": "المراجعة رفضته: كلمة إنجليزية مكتوبة بحروف عربية (dynasty ← سلالة، lineage ← نسب)",
+  "retry": false,
+  "at": "2026-11-28T11:52:47.609Z"
  },
  "https://www.fightful.com/wrestling/kevin-owens-finn-balor-vs-sami-zayn-gunther-cm-punk-appearance-more-added-to-11-27-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-28T11:36:45.103Z"
+  "at": "2026-11-28T11:51:50.151Z"
  },
  "https://www.fightful.com/wrestling/cm-punk-reacts-to-team-charlotte-flairs-wargames-photoshoot-this-looks-cool-i-remember-when-my-team-had-no-bitches-on-it": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
+  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
   "retry": true,
-  "at": "2026-11-28T11:36:44.929Z"
+  "at": "2026-11-28T11:51:50.049Z"
  },
  "https://www.fightful.com/wrestling/francesco-akira-recalls-reaction-to-finding-out-hed-be-facing-blue-panther-in-cmll-what-the-fck-is-happening": {
   "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
   "retry": false,
-  "at": "2026-11-28T11:36:04.754Z"
+  "at": "2026-11-28T11:50:52.392Z"
  },
  "https://www.fightful.com/wrestling/rey-mysterio-thought-chad-gable-was-going-to-be-the-fifth-member-of-team-usa-at-wwe-survivor-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-28T11:35:01.977Z"
+  "at": "2026-11-28T11:50:16.769Z"
  },
  "https://www.fightful.com/wrestling/francesco-akira-feels-more-confident-wrestling-in-mexico-after-cmll-tours": {
-  "reason": "المراجعة رفضته: اسم المصدر اتمسح وسابله جملة مكسورة («تقارير صحفية» مكررة) — لازم تتكتب من غير الاسم",
-  "retry": true,
-  "at": "2026-11-28T11:35:01.823Z"
+  "reason": "خبر مش مهم كفاية: الموقع بينشر الأخبار المهمة بس",
+  "retry": false,
+  "at": "2026-11-28T11:50:16.660Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-heres-my-political-high-horse-i-really-do-like-the-presidents-fitness-council": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-28T11:34:43.166Z"
+  "at": "2026-11-28T11:50:00.073Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-on-whether-he-wants-to-ultimately-have-the-pencil-in-wwe-i-would-be-honored-to-be-in-that-spot": {
   "reason": "مكرر مع خبر نزل قبل كده",
