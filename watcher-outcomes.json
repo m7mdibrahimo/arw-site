@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2329308/wwe-smackdown-november-27-2026-results": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-28T04:22:38.658Z"
+ },
  "https://www.fightful.com/wrestling/aew-pays-tribute-to-jermaine-haley-bronson-reed": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-22T14:42:40.849Z"
- },
- "https://www.fightful.com/wrestling/the-rock-im-coming-to-houston-to-say-thank-you-and-i-love-you": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-22T14:00:24.288Z"
  }
 }
