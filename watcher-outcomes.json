@@ -1,4 +1,9 @@
 {
+ "https://www.ringsidenews.com/spike-dudley-would-reject-wwe-hall-fame-induction-saudi-arabia": {
+  "reason": "المراجعة رفضته: اسم مصارع في العنوان أو المتن غير موجود في المصدر: Legends contract",
+  "retry": true,
+  "at": "2026-11-28T12:25:42.688Z"
+ },
  "https://www.fightful.com/wrestling/cmll-leyenda-azul-results-11-27-2026-hechicero-vs-barbaro-cavernario-sky-team-vs-dcf-persephone-vs-marina-shafir-more": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
@@ -1993,10 +1998,5 @@
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
   "at": "2026-11-22T15:59:20.488Z"
- },
- "https://www.fightful.com/wrestling/njpw-road-to-world-tag-league-results-11-21": {
-  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-22T15:49:57.660Z"
  }
 }
