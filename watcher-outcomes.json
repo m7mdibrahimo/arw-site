@@ -1,103 +1,113 @@
 {
+ "https://www.fightful.com/wrestling/wrestling-world-remembers-bronson-reed": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-28T02:33:02.852Z"
+ },
+ "https://www.fightful.com/wrestling/wwe-does-10-bell-salute-for-jermaine-haley-bronson-reed-at-house-show": {
+  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-28T02:33:02.422Z"
+ },
  "https://www.fightful.com/wrestling/wwe-pays-tribute-to-bronson-reed-on-11-27-wwe-smackdown": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-28T02:29:37.380Z"
+  "at": "2026-11-28T02:33:02.018Z"
  },
  "https://www.fightful.com/wrestling/alexa-bliss-tatum-paxley-win-wwe-womens-tag-team-titles-on-11-27-wwe-smackdown": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-28T02:29:37.257Z"
+  "at": "2026-11-28T02:33:01.895Z"
  },
  "https://www.fightful.com/wrestling/bronson-reed-passes-away-due-to-medical-complications": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-28T02:29:36.849Z"
+  "at": "2026-11-28T02:33:01.367Z"
  },
  "https://www.fightful.com/wrestling/dragon-lee-says-wwe-survivor-series-wargames-will-be-an-amazing-night-for-mexicans": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-28T02:29:36.726Z"
+  "at": "2026-11-28T02:33:01.244Z"
  },
  "https://www.fightful.com/wrestling/austin-creed-recalls-cutting-a-promo-about-pokemon-go-vince-mcmahon-not-understanding-it": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-28T02:29:36.603Z"
+  "at": "2026-11-28T02:33:01.121Z"
  },
  "https://www.fightful.com/wrestling/francesco-akira-feels-united-empire-shouldnt-be-recruiting-right-now": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-28T02:29:36.263Z"
+  "at": "2026-11-28T02:33:00.682Z"
  },
  "https://www.fightful.com/wrestling/francesco-akira-thinks-current-njpw-junior-heavyweights-are-hungrier-than-ever": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-28T02:29:35.905Z"
+  "at": "2026-11-28T02:33:00.269Z"
  },
  "https://www.fightful.com/wrestling/francesco-akira-discusses-united-empire-forming-in-usa-while-existing-in-japan": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-28T02:29:35.544Z"
+  "at": "2026-11-28T02:32:59.844Z"
  },
  "https://www.fightful.com/wrestling/power-pro-lucha-neon-genesis-cibernetico-results-11-22": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-28T02:29:35.176Z"
+  "at": "2026-11-28T02:32:59.411Z"
  },
  "https://www.fightful.com/wrestling/kevin-owens-finn-balor-vs-sami-zayn-gunther-cm-punk-appearance-more-added-to-11-27-wwe-smackdown": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-28T02:29:34.730Z"
+  "at": "2026-11-28T02:32:58.861Z"
  },
  "https://www.fightful.com/wrestling/cm-punk-reacts-to-team-charlotte-flairs-wargames-photoshoot-this-looks-cool-i-remember-when-my-team-had-no-bitches-on-it": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-28T02:29:34.229Z"
+  "at": "2026-11-28T02:32:58.304Z"
  },
  "https://www.fightful.com/wrestling/francesco-akira-recalls-reaction-to-finding-out-hed-be-facing-blue-panther-in-cmll-what-the-fck-is-happening": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-28T02:29:33.796Z"
+  "at": "2026-11-28T02:32:57.829Z"
  },
  "https://www.fightful.com/wrestling/rey-mysterio-thought-chad-gable-was-going-to-be-the-fifth-member-of-team-usa-at-wwe-survivor-series": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-28T02:29:33.430Z"
+  "at": "2026-11-28T02:32:57.370Z"
  },
  "https://www.fightful.com/wrestling/francesco-akira-feels-more-confident-wrestling-in-mexico-after-cmll-tours": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-28T02:29:33.308Z"
+  "at": "2026-11-28T02:32:57.244Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-heres-my-political-high-horse-i-really-do-like-the-presidents-fitness-council": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-28T02:29:32.481Z"
+  "at": "2026-11-28T02:32:56.327Z"
  },
  "https://www.fightful.com/wrestling/cody-rhodes-on-whether-he-wants-to-ultimately-have-the-pencil-in-wwe-i-would-be-honored-to-be-in-that-spot": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-28T02:29:32.202Z"
+  "at": "2026-11-28T02:32:56.059Z"
  },
  "https://www.fightful.com/wrestling/leon-cage-set-for-2027-jersey-j-cup-tna-impact-highlights-more-fight-size": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-28T02:29:32.078Z"
+  "at": "2026-11-28T02:32:55.932Z"
  },
  "https://www.fightful.com/wrestling/katsuhiko-nakajima-announced-for-2027-wxw-germany-16-carat-gold-tournament": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-28T02:29:31.525Z"
+  "at": "2026-11-28T02:32:55.291Z"
  },
  "https://www.fightful.com/wrestling/aaas-la-parka-scheduled-for-gleats-december-30th-show": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-28T02:29:31.098Z"
+  "at": "2026-11-28T02:32:54.530Z"
  },
  "https://www.fightful.com/wrestling/340871-jacy-jayne-babyface": {
   "reason": "مكرر مع خبر نزل قبل كده",
   "retry": false,
-  "at": "2026-11-28T02:29:30.438Z"
+  "at": "2026-11-28T02:32:17.689Z"
  },
  "https://www.fightful.com/wrestling/dutch-mantell-discloses-what-is-the-most-money-hes-made-in-wrestling": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1988,15 +1998,5 @@
   "reason": "المراجعة رفضته: اسم مثنى (ابنيه/شقيقيه/اتحادا/لقبي بطولة/مواجهتي بطولة…) ممنوع — قول «أبنائه/إخوته/اتحاد X واتحاد Y/نزالات/بطولة كذا وبطولة كذا/شركة X وشركة Y»",
   "retry": true,
   "at": "2026-11-22T12:32:47.843Z"
- },
- "https://www.ringsidenews.com/chad-gable-explains-unexpected-downside-wwe-cutting-back-live-events": {
-  "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)",
-  "retry": true,
-  "at": "2026-11-22T07:39:04.197Z"
- },
- "https://www.ringsidenews.com/trick-williams-unloads-damian-priest-saying-he-doesnt-deserve-world-title-shot": {
-  "reason": "المراجعة رفضته: فعل مثنى (ظهرا/تحالفا مع/التقيا/يتأهلان…) ممنوع — اجمع الفعل (ظهروا، تحالفوا، يتأهلون) أو كرر الاسم",
-  "retry": true,
-  "at": "2026-11-22T07:26:58.017Z"
  }
 }
