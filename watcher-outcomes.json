@@ -134,10 +134,10 @@
   "retry": true,
   "at": "2026-11-28T05:22:24.731Z"
  },
- "https://www.ringsidenews.com/wwe-honors-bronson-reed-ten-bell-salute-live-event-athens-georgia": {
-  "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
+ "https://www.wrestlinginc.com/2329308/wwe-smackdown-november-27-2026-results": {
+  "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
   "retry": true,
-  "at": "2026-11-28T04:49:27.069Z"
+  "at": "2026-11-28T05:22:24.731Z"
  },
  "https://www.fightful.com/wrestling/katsuhiko-nakajima-announced-for-2027-wxw-germany-16-carat-gold-tournament": {
   "reason": "المراجعة اللغوية مكانتش متاحة، ومش بينزل من غير مراجعة؛ هيتحاول تاني",
@@ -1993,10 +1993,5 @@
   "reason": "المراجعة رفضته: الخبر يصف شخصاً بالراحل/المتوفى والمصدر لا يذكر أي وفاة",
   "retry": false,
   "at": "2026-11-22T15:17:43.177Z"
- },
- "https://www.fightful.com/wrestling/jake-hager-retained-some-sight-in-the-eye-after-two-surgeries": {
-  "reason": "مكرر مع خبر نزل قبل كده",
-  "retry": false,
-  "at": "2026-11-22T14:57:48.598Z"
  }
 }
