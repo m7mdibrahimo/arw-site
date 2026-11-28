@@ -1,4 +1,9 @@
 {
+ "https://www.wrestlinginc.com/2329308/wwe-smackdown-november-27-2026-results": {
+  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
+  "retry": true,
+  "at": "2026-11-28T00:21:01.872Z"
+ },
  "https://www.fightful.com/wrestling/dragon-lee-says-wwe-survivor-series-wargames-will-be-an-amazing-night-for-mexicans": {
   "reason": "خدمة الكتابة بالذكاء الاصطناعي مردتش، هيتحاول تاني",
   "retry": true,
@@ -108,11 +113,6 @@
   "reason": "المراجعة رفضته: اسم مثنى (نزالين//مواجهتين/لقبين…) ممنوع — قول «نزالات» أو «نزال فرق ونزال سيدات» أو العدد (2)، مدة زمنية في المتن غير مطابقة للمصدر: منذ عام",
   "retry": true,
   "at": "2026-11-28T00:14:44.309Z"
- },
- "https://www.wrestlinginc.com/2329308/wwe-smackdown-november-27-2026-results": {
-  "reason": "تقرير النتائج لسه متنزلش كامل في المصدر، هيتحاول تاني",
-  "retry": true,
-  "at": "2026-11-28T00:01:21.629Z"
  },
  "https://www.fightful.com/wrestling/brian-cage-responds-to-claims-that-hes-injury-prone": {
   "reason": "مكرر مع خبر نزل قبل كده",
