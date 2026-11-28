@@ -5934,7 +5934,7 @@
     "instagram_reel": true,
     "instagram_story": true,
     "title": "عرض سي ام ال ال مارتيس بوبيولاريس 24.11.2026 مترجم",
-    "lastAttempt": 1795836212525,
+    "lastAttempt": 1795837062397,
     "errors": {
       "tiktok": "الفيديو لم يظهر على الموقع بعد؛ سيُعاد إرساله إلى TikTok بعد النشر."
     },
@@ -6058,18 +6058,29 @@
     "publishedAt": 1795836180663,
     "facebook_reel": true,
     "facebook_story": true,
-    "instagram_reel": false,
+    "instagram_reel": true,
     "instagram_story": false,
     "title": "عرض سي ام ال ال مارتيس دي غلامور 24.11.2026 مترجم",
-    "lastAttempt": 1795836216224,
+    "lastAttempt": 1795837103143,
     "errors": {
-      "instagram_reel": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا.",
       "instagram_story": "فاصل زمني إلزامي بين منشورات إنستجرام؛ ستتم إعادة المحاولة تلقائيًا."
     },
     "processing": [
-      "instagram_reel",
       "instagram_story"
     ],
+    "reviewPlatforms": [],
+    "needsReview": false
+  },
+  "20261128051405-njpw-world-tag-league-night-4-27-11-2026": {
+    "publishedAt": 1795837131712,
+    "facebook_reel": true,
+    "facebook_story": true,
+    "instagram_reel": false,
+    "instagram_story": false,
+    "title": "عرض ان جيه بي دبليو وورلد تاج ليج (الليلة الرابعة) 27.11.2026 مترجم",
+    "lastAttempt": 1795837141162,
+    "errors": {},
+    "processing": [],
     "reviewPlatforms": [],
     "needsReview": false
   }
